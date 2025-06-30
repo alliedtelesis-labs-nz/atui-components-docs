@@ -1,4 +1,4 @@
-import { A as AtuiColorStatusCell$1, d as defineCustomElement$1 } from './p-BbGPURi7.js';
+import { A as AtuiColorStatusCell$1, d as defineCustomElement$1 } from './p-DFR0kxvN.js';
 
 const AtuiColorStatusCell = AtuiColorStatusCell$1;
 const defineCustomElement = defineCustomElement$1;

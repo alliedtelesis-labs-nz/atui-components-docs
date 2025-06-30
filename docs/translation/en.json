@@ -74,6 +74,21 @@
             },
             "ALL": "All Time",
             "ALL_TIME_LABEL": "All Time (No filter applied)"
+        },
+        "PROMPT": {
+            "NO_MESSAGES_YET": "No messages yet",
+            "START_CONVERSATION": "Start a conversation",
+            "START_CONVERSATION_DESCRIPTION": "Send a message to begin chatting with the AI assistant",
+            "AI_ASSISTANT": "AI Assistant",
+            "ASSISTANT": "Assistant",
+            "USER": "user",
+            "TYPE_MESSAGE_PLACEHOLDER": "Type your message here...",
+            "TYPING": "Typing...",
+            "CLEAR": "Clear",
+            "SEND": "Send",
+            "NEW_THREAD": "New Thread",
+            "MESSAGE_TOO_LONG": "Message is too long ({current}/{max} characters)",
+            "ERROR_GENERATING_RESPONSE": "An error occurred while generating the response."
         }
     }
 }

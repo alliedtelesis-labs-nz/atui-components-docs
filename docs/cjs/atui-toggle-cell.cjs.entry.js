@@ -27,7 +27,7 @@ const AtuiToggleCell = class {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (index.h(index.Host, { key: 'e3fa97b4cb3721c504987d0f3257cb1f22cfb4fa', class: "flex h-full items-center leading-[100%]" }, index.h("atui-toggle-switch", { key: '4e0951636e82653fa32d6e1661042c128fcedfe9', label: this.params.getLabel(this.params), onChange: () => this.params.onTrigger(this.params), label_position: "after", value: this.params.value })));
+        return (index.h(index.Host, { key: '82de1279aa8c9e17a9b7f2ebbcd3af9064687a7f', class: "flex h-full items-center leading-[100%]" }, index.h("atui-toggle-switch", { key: '948f7f6d76fe0add0f5ced1f081bca1149aaa55c', label: this.params.getLabel(this.params), onChange: () => this.params.onTrigger(this.params), label_position: "after", value: this.params.value })));
     }
     get el() { return index.getElement(this); }
 };

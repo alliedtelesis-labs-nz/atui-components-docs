@@ -5,6 +5,8 @@ export { AtuiAccordionItemComponent as AtuiAccordionItem } from '../types/compon
 export { defineCustomElement as defineCustomElementAtuiAccordionItem } from './atui-accordion-item';
 export { AtuiAccordionTriggerComponent as AtuiAccordionTrigger } from '../types/components/atui-accordion/atui-accordion-item/atui-accordion-trigger/atui-accordion-trigger';
 export { defineCustomElement as defineCustomElementAtuiAccordionTrigger } from './atui-accordion-trigger';
+export { AtuiAvatar as AtuiAvatar } from '../types/components/atui-avatar/atui-avatar';
+export { defineCustomElement as defineCustomElementAtuiAvatar } from './atui-avatar';
 export { AtuiBadgeComponent as AtuiBadge } from '../types/components/atui-badge/atui-badge';
 export { defineCustomElement as defineCustomElementAtuiBadge } from './atui-badge';
 export { AtuiBreadcrumbComponent as AtuiBreadcrumb } from '../types/components/atui-breadcrumb/atui-breadcrumb';
@@ -85,6 +87,10 @@ export { AtuiPlaceholderComponent as AtuiPlaceholder } from '../types/components
 export { defineCustomElement as defineCustomElementAtuiPlaceholder } from './atui-placeholder';
 export { AtuiPromptInputComponent as AtuiPromptInput } from '../types/components/prompt/atui-prompt-input/atui-prompt-input';
 export { defineCustomElement as defineCustomElementAtuiPromptInput } from './atui-prompt-input';
+export { AtuiPromptMessage as AtuiPromptMessage } from '../types/components/prompt/atui-prompt-message/atui-prompt-message';
+export { defineCustomElement as defineCustomElementAtuiPromptMessage } from './atui-prompt-message';
+export { AtuiPromptThread as AtuiPromptThread } from '../types/components/prompt/atui-prompt-thread/atui-prompt-thread';
+export { defineCustomElement as defineCustomElementAtuiPromptThread } from './atui-prompt-thread';
 export { AtuiRadio as AtuiRadio } from '../types/components/atui-radio-group/atui-radio/atui-radio';
 export { defineCustomElement as defineCustomElementAtuiRadio } from './atui-radio';
 export { AtuiRadioGroup as AtuiRadioGroup } from '../types/components/atui-radio-group/atui-radio-group';

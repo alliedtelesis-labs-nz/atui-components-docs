@@ -11,6 +11,7 @@ import { type AtuiCustomTimeRangeCustomEvent, type AtuiListSelectorCustomEvent, 
 import { AtuiAccordionItem as AtuiAccordionItemElement, defineCustomElement as defineAtuiAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion-item.js";
 import { AtuiAccordionTrigger as AtuiAccordionTriggerElement, defineCustomElement as defineAtuiAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion-trigger.js";
 import { AtuiAccordion as AtuiAccordionElement, defineCustomElement as defineAtuiAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion.js";
+import { AtuiAvatar as AtuiAvatarElement, defineCustomElement as defineAtuiAvatar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-avatar.js";
 import { AtuiBadge as AtuiBadgeElement, defineCustomElement as defineAtuiBadge } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-badge.js";
 import { AtuiBreadcrumbItem as AtuiBreadcrumbItemElement, defineCustomElement as defineAtuiBreadcrumbItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-breadcrumb-item.js";
 import { AtuiBreadcrumb as AtuiBreadcrumbElement, defineCustomElement as defineAtuiBreadcrumb } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-breadcrumb.js";
@@ -50,6 +51,8 @@ import { AtuiMultiBtnCell as AtuiMultiBtnCellElement, defineCustomElement as def
 import { AtuiMultiSelect as AtuiMultiSelectElement, defineCustomElement as defineAtuiMultiSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-multi-select.js";
 import { AtuiPlaceholder as AtuiPlaceholderElement, defineCustomElement as defineAtuiPlaceholder } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-placeholder.js";
 import { AtuiPromptInput as AtuiPromptInputElement, defineCustomElement as defineAtuiPromptInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-input.js";
+import { AtuiPromptMessage as AtuiPromptMessageElement, defineCustomElement as defineAtuiPromptMessage } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-message.js";
+import { AtuiPromptThread as AtuiPromptThreadElement, defineCustomElement as defineAtuiPromptThread } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-thread.js";
 import { AtuiRadioGroup as AtuiRadioGroupElement, defineCustomElement as defineAtuiRadioGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-radio-group.js";
 import { AtuiRadio as AtuiRadioElement, defineCustomElement as defineAtuiRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-radio.js";
 import { AtuiSearchTable as AtuiSearchTableElement, defineCustomElement as defineAtuiSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-search-table.js";
@@ -121,6 +124,17 @@ export const AtuiAccordionTrigger: StencilReactComponent<AtuiAccordionTriggerEle
     react: React,
     events: {} as AtuiAccordionTriggerEvents,
     defineCustomElement: defineAtuiAccordionTrigger
+});
+
+type AtuiAvatarEvents = NonNullable<unknown>;
+
+export const AtuiAvatar: StencilReactComponent<AtuiAvatarElement, AtuiAvatarEvents> = /*@__PURE__*/ createComponent<AtuiAvatarElement, AtuiAvatarEvents>({
+    tagName: 'atui-avatar',
+    elementClass: AtuiAvatarElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtuiAvatarEvents,
+    defineCustomElement: defineAtuiAvatar
 });
 
 type AtuiBadgeEvents = NonNullable<unknown>;
@@ -576,6 +590,54 @@ export const AtuiPromptInput: StencilReactComponent<AtuiPromptInputElement, Atui
         onAtuiStop: 'atuiStop'
     } as AtuiPromptInputEvents,
     defineCustomElement: defineAtuiPromptInput
+});
+
+type AtuiPromptMessageEvents = {
+    onAtuiCopy: EventName<CustomEvent<string>>,
+    onAtuiFeedbackPositive: EventName<CustomEvent<void>>,
+    onAtuiFeedbackNegative: EventName<CustomEvent<void>>,
+    onAtuiRetry: EventName<CustomEvent<void>>,
+    onAtuiEdit: EventName<CustomEvent<string>>
+};
+
+export const AtuiPromptMessage: StencilReactComponent<AtuiPromptMessageElement, AtuiPromptMessageEvents> = /*@__PURE__*/ createComponent<AtuiPromptMessageElement, AtuiPromptMessageEvents>({
+    tagName: 'atui-prompt-message',
+    elementClass: AtuiPromptMessageElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiCopy: 'atuiCopy',
+        onAtuiFeedbackPositive: 'atuiFeedbackPositive',
+        onAtuiFeedbackNegative: 'atuiFeedbackNegative',
+        onAtuiRetry: 'atuiRetry',
+        onAtuiEdit: 'atuiEdit'
+    } as AtuiPromptMessageEvents,
+    defineCustomElement: defineAtuiPromptMessage
+});
+
+type AtuiPromptThreadEvents = {
+    onAtuiMessageCopy: EventName<CustomEvent<{
+        messageId: string;
+        content: string;
+    }>>,
+    onAtuiMessageRetry: EventName<CustomEvent<{ messageId: string }>>,
+    onAtuiMessageEdit: EventName<CustomEvent<{
+        messageId: string;
+        content: string;
+    }>>
+};
+
+export const AtuiPromptThread: StencilReactComponent<AtuiPromptThreadElement, AtuiPromptThreadEvents> = /*@__PURE__*/ createComponent<AtuiPromptThreadElement, AtuiPromptThreadEvents>({
+    tagName: 'atui-prompt-thread',
+    elementClass: AtuiPromptThreadElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiMessageCopy: 'atuiMessageCopy',
+        onAtuiMessageRetry: 'atuiMessageRetry',
+        onAtuiMessageEdit: 'atuiMessageEdit'
+    } as AtuiPromptThreadEvents,
+    defineCustomElement: defineAtuiPromptThread
 });
 
 type AtuiRadioEvents = { onAtuiChange: EventName<CustomEvent<boolean>> };

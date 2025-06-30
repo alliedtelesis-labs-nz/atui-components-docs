@@ -35,7 +35,7 @@ export class AtuiTabContent {
         this.isActive = id === this.tab_id;
     }
     render() {
-        return (h("div", { key: 'fde188dc3d5f4e3dd870ba163575ad8bdb7a8b25', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '4afbec4b9904d1199504187e7426ef3ff5d7d233' })));
+        return (h("div", { key: 'ec3545b9a19bb3d5b313f668e5300a2665507873', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'bbec25b4a6a6091c70eab081c891ffcafc1be7c8' })));
     }
     static get is() { return "atui-tab-content"; }
     static get properties() {

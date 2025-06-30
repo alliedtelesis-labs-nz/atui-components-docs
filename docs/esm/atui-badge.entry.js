@@ -56,7 +56,7 @@ const AtuiBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '576b1653a777091fd0eb93d73b738bb8ff927b50', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'c3885da4672c2fd65cf3fb9e9e8093526334e9e8', class: "material-icons icon-sm relative my-2 h-[14px] w-[14px] text-sm", "data-name": "badge-icon" }, this.icon)), h("span", { key: '5451cd84fcbd4059d3b4fcf8c6f2edcf7864442f', "data-name": "badge-label" }, this.label), h("slot", { key: '22f9a3fbf478332fafdf2ff01068406e3e710fbe' })));
+        return (h(Host, { key: 'd9f39a6474e84dec1c356cfafcfd8d339c5f0b8d', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'e49e07d2ff84c9dff6870b44e61356f9d6874547', class: "material-icons icon-sm relative my-2 h-[14px] w-[14px] text-sm", "data-name": "badge-icon" }, this.icon)), h("span", { key: '37092cd0ca402c922761336f1a314e1b21aef924', "data-name": "badge-label" }, this.label), h("slot", { key: '5eda5c2b1b332599395102c0bb0be61a37c68fcd' })));
     }
 };
 

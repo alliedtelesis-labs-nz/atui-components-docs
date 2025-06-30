@@ -135,6 +135,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-prompt-input.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-prompt-thread.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-prompt-thread.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-radio-group.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -215,6 +219,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-list-selector-item.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-prompt-message.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-prompt-message.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-radio.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -227,6 +235,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-accordion-trigger.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-avatar.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-avatar.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-button-group-option.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -263,6 +275,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-menu.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-form-label.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-form-label.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-tooltip.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-tooltip.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-dialog.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -283,10 +303,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-input-numeric.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'atui-form-label_2.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './atui-form-label_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-button-group_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

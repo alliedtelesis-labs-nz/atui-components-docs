@@ -32,7 +32,7 @@ const AtuiMultiBtnCell = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '66eebedcd30c5f9fa56cfd311502b00417035db4', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: '19abf3a96db0d35485c85b4cd20c4c60b1669dd0', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
     }
     get el() { return index.getElement(this); }
 };

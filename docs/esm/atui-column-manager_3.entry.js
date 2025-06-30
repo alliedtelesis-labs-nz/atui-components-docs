@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-HJO1YDmC.js';
-import { f as fetchTranslations } from './translation-CDu8lP-T.js';
+import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { atui_checkbox_cell as AtuiCheckboxCellComponent } from './atui-checkbox-cell.entry.js';
 import { atui_text_badge_cell as AtuiTextBadgeCell } from './atui-text-badge-cell.entry.js';
 import { atui_text_cell as AtuiTextCellComponent } from './atui-text-cell.entry.js';
@@ -57,7 +57,7 @@ const AtuiColumnManagerComponent = class {
         });
     }
     render() {
-        return (h("atui-menu", { key: '16f8826dd61ffcf2b47ed0223158f3f9554b1d7e', autoclose: false, width: "auto", align: "end" }, h("atui-tooltip", { key: '708b517923e3d2d3e4bdedf47cf9209d517521fd', slot: "menu-trigger", position: "top" }, h("atui-button", { key: '0cdd8c0b4fd7ee730b7a94a121c56b1670474e65', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: 'fbd03641b7bd36bd01b73434e787bdfc3a47c07e', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS)), h("atui-checkbox-group", { key: 'caac1ae8d3dde16db17b762a0281062030cb4b8a', slot: "menu-content", options: this.col_defs
+        return (h("atui-menu", { key: '46c25974fd67ef3feec70edde700398d5d3d0ae5', autoclose: false, width: "auto", align: "end" }, h("atui-tooltip", { key: '4b1224dc0a94d77240d0accdfcad18fe25d3643e', slot: "menu-trigger", position: "top" }, h("atui-button", { key: '6c287d10f2f1060c3b1f13ec2a9cd6ef10a431a2', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '833b282a0eb97d2c143db4687ed199dc73915738', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS)), h("atui-checkbox-group", { key: '1ae8823af37eda93576f921643e20475233ff587', slot: "menu-content", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
@@ -47958,7 +47958,7 @@ const AtuiTableComponent = class {
         return this.agGrid;
     }
     render() {
-        return h(Host, { key: 'd0492c9e3b9490c46ab97bceb5177db84975d79a', class: "ag-theme-material" });
+        return h(Host, { key: '9c54cc5ff587c371c7575314b9a67b4793c0ec14', class: "ag-theme-material" });
     }
     get el() { return getElement(this); }
     static get watchers() { return {
@@ -48005,7 +48005,7 @@ const AtuiTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '83751196794e345ebcc83997137130419a96c20d', class: "relative z-menu flex flex-col gap-8 pb-8 pt-8" }, h("div", { key: '20edcd52d35a1dd4eb607a03c7285591dc662143', class: "flex justify-between" }, h("div", { key: '2c9ac7b22c4b9ede1820b3cba6c04c585251f977', class: "flex" }, h("slot", { key: 'e43ce67dd5f11a688d0bc7eabc03b0e54f6d4ca6', name: "search" })), h("div", { key: '55b4b3f476970e591435817599f643d820b02dad', class: "flex" }, h("slot", { key: 'dfd8af3f0081051bacee5c23b1be588f4a020151', name: "export-menu" }), h("slot", { key: '0c903187dcf4ec207341053bbbd2e8ee5bd4ed28', name: "column-manager" }), h("slot", { key: '8f650769e186956205c565cec02057e2c35fbda0', name: "actions" }))), h("slot", { key: '39fb695c19994e9234876fc0794b9eba9027b6b3', name: "filters" })));
+        return (h(Host, { key: 'e82b3e18ba5b8a334669d549d40c0cb0c8039ae5', class: "relative z-menu flex flex-col gap-8 pb-8 pt-8" }, h("div", { key: 'fdfa996c80d5511ad24b3ff4d40eea9f5115f14a', class: "flex justify-between" }, h("div", { key: '4d48c5c8e937602960cd5dc62202c0c9bc8d572d', class: "flex" }, h("slot", { key: 'ac484912b1d511c6ac13337b9be93c504dae4f3f', name: "search" })), h("div", { key: 'e08b03e86ac367d1cb8f46004e08546f018dbb22', class: "flex" }, h("slot", { key: '8ec48ef5f56714ecc3e966f28fc2b6e6342e1859', name: "export-menu" }), h("slot", { key: '96003f1bf7607a07faa997b8b00878dbae5a61b4', name: "column-manager" }), h("slot", { key: '262c4b918d48f149a58f8156f9f795cb870a026d', name: "actions" }))), h("slot", { key: 'c3debabb606081861f6eeda37fd10b547eb247aa', name: "filters" })));
     }
 };
 

@@ -21,7 +21,7 @@ export class AtuiColorStatusCell {
         this.params.color = newValue;
     }
     render() {
-        return (h(Host, { key: '5e39c8cfe5a91bc24f74986787d774488bf82086', class: "flex h-full items-center leading-[100%]" }, h("atui-tooltip", { key: '6c0a83e5f7026b1eecde5936d9baa754b97601ee', position: "right", is_visible: !!this.params.generateTooltip }, h("div", { key: '140379a435a4ff397b0afad5e1c994c012af5dac', slot: "tooltip-trigger", style: this.containerStyles, onClick: () => this.params.click(this.params), "data-present": this.dataPresent }), this.params.generateTooltip && (h("span", { key: '0d6cafe3777e0f4b134738806f2d3dc5027420e5', slot: "tooltip-content" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: '6b19412e636f1334171dc0430969b20199b5d9d1', class: "flex h-full items-center leading-[100%]" }, h("atui-tooltip", { key: 'c7da97d5d0e8e1d5b30b14bd970a4444e178b2f1', position: "right", is_visible: !!this.params.generateTooltip }, h("div", { key: 'b3b34ba1115f9e48ab1fabb4f21511f5a8ff8e3a', slot: "tooltip-trigger", style: this.containerStyles, onClick: () => this.params.click(this.params), "data-present": this.dataPresent }), this.params.generateTooltip && (h("span", { key: '47e76d488c52c2619c9870d8af0864c5c6c911f1', slot: "tooltip-content" }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "atui-color-status-cell"; }
     static get states() {

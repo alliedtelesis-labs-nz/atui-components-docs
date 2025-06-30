@@ -115,6 +115,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-prompt-input.entry.js').then(processMod, consoleError);
+                case 'atui-prompt-thread':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-prompt-thread.entry.js').then(processMod, consoleError);
                 case 'atui-radio-group':
                     return import(
                       /* webpackMode: "lazy" */
@@ -195,6 +199,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-list-selector-item.entry.js').then(processMod, consoleError);
+                case 'atui-prompt-message':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-prompt-message.entry.js').then(processMod, consoleError);
                 case 'atui-radio':
                     return import(
                       /* webpackMode: "lazy" */
@@ -207,6 +215,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-accordion-trigger.entry.js').then(processMod, consoleError);
+                case 'atui-avatar':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-avatar.entry.js').then(processMod, consoleError);
                 case 'atui-button-group-option':
                     return import(
                       /* webpackMode: "lazy" */
@@ -243,6 +255,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-menu.entry.js').then(processMod, consoleError);
+                case 'atui-form-label':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-form-label.entry.js').then(processMod, consoleError);
+                case 'atui-tooltip':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-tooltip.entry.js').then(processMod, consoleError);
                 case 'atui-dialog':
                     return import(
                       /* webpackMode: "lazy" */
@@ -263,10 +283,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-input-numeric.entry.js').then(processMod, consoleError);
-                case 'atui-form-label_2':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-form-label_2.entry.js').then(processMod, consoleError);
                 case 'atui-button-group_3':
                     return import(
                       /* webpackMode: "lazy" */

@@ -1,4 +1,4 @@
-import { A as AtuiChipList$1, d as defineCustomElement$1 } from './p-DjSPSIsG.js';
+import { A as AtuiChipList$1, d as defineCustomElement$1 } from './p-DwGW1_W3.js';
 
 const AtuiChipList = AtuiChipList$1;
 const defineCustomElement = defineCustomElement$1;

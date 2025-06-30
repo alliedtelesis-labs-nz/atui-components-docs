@@ -36,7 +36,7 @@ const AtuiTitleSubtitleDateCell = class {
         return TimeDatePresentationUtil.getFormattedDate(this.value, DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (h(Host, { key: '74e390b03d39fedac8687dbeff5d49799c2aecd4' }, h("div", { key: 'de7b1bb0846ba467fbb2221cdb4c7a1f116f6cd9', class: "flex h-full flex-col justify-center" }, h("div", { key: '4e412abfe225ad445e6bf692f3b281d766b33fde', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: '24d0f94a7f2ed85ab199cf2568546c1fba5d70a2', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
+        return (h(Host, { key: 'b1ba682af47b1337fdbb54721576247312fb024f' }, h("div", { key: '087f9100165096c76e137432c5fac213119115cd', class: "flex h-full flex-col justify-center" }, h("div", { key: '65bdcb972209643a18c5f3eac3f7c806f7689477', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: '88028e7ab99a785bef45fb5108acf3858a0d80a7', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
     }
     get el() { return getElement(this); }
 };

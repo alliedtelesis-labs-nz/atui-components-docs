@@ -1,10 +1,10 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$7 } from './p-CNIPth1r.js';
-import { d as defineCustomElement$6 } from './p-CEO3zNbx.js';
+import { d as defineCustomElement$7 } from './p-CGoVUV9r.js';
+import { d as defineCustomElement$6 } from './p-BYrz7h7d.js';
 import { d as defineCustomElement$5 } from './p-ByK4-pDJ.js';
-import { d as defineCustomElement$4 } from './p-BlC_9xQ9.js';
-import { d as defineCustomElement$3 } from './p-B-R-HO9p.js';
-import { d as defineCustomElement$2 } from './p-BIS2bAMQ.js';
+import { d as defineCustomElement$4 } from './p-D7IRw6kM.js';
+import { d as defineCustomElement$3 } from './p-DjfM-T-T.js';
+import { d as defineCustomElement$2 } from './p-BLBTk09G.js';
 
 const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePagination extends H {
     constructor() {
@@ -32,7 +32,7 @@ const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePa
         ];
     }
     render() {
-        return (h(Host, { key: '062c3d8e8e48b983aa858401d97f3bf1ee56a698', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'd2378443e412dad3f8a914900f68dcfa6b4b37a8' }, "Page Size: "), h("atui-select", { key: '0b9696c861b24aa576f769a7d2f4ebc20838a598', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atuiChangeSize.emit(parseInt(event.detail)) }), h("atui-button", { key: '0c4444f2bfc8d43593ace78bfc388a5370280eee', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atuiChange.emit(1) }), h("atui-button", { key: 'cad3040ab1e9577c2695ab3638846dcfe440f9c8', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atuiChange.emit(this.current_page - 1) }), h("span", { key: '8b40e6945bffcb64aa54a01e5430d13eb6a49dac' }, "Page ", this.current_page, " of ", this.num_pages), h("atui-button", { key: '9f7d3f48891939dec591b9ae18454efc47bb8902', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atuiChange.emit(this.current_page + 1) }), h("atui-button", { key: 'a37c683b317ce051802859df5eaefd41d8b0e2a6', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atuiChange.emit(this.num_pages) })));
+        return (h(Host, { key: 'b6ec69de608324f24a0f7722c8c7acb2141cdfcd', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '4a12ba6a37522786e9c0bbc4a61ecb38eca0b26d' }, "Page Size: "), h("atui-select", { key: '4ee16bce4123e571654f9845089a0c7d9c84dfed', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atuiChangeSize.emit(parseInt(event.detail)) }), h("atui-button", { key: '24c488d9def2b7fac737baeb420a659726fa7dd6', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atuiChange.emit(1) }), h("atui-button", { key: '40e84e6dab961c88d71f9d9990b21ab9c7c03e06', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atuiChange.emit(this.current_page - 1) }), h("span", { key: '713ac607859f6008342417718468327637a608ba' }, "Page ", this.current_page, " of ", this.num_pages), h("atui-button", { key: '7005a6763d7e02a0ab293574a2d979ed033ad02b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atuiChange.emit(this.current_page + 1) }), h("atui-button", { key: '86e94a23ac3093c89fc76b7e8e37c968119cd88e', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atuiChange.emit(this.num_pages) })));
     }
 }, [0, "atui-table-pagination", {
         "current_page": [2],

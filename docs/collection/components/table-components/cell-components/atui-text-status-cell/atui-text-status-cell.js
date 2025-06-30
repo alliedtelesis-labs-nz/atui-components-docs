@@ -37,7 +37,7 @@ export class AtuiTextStatusCellComponent {
     }
     render() {
         var _a;
-        return (h(Host, { key: '95138d7e2e250fe97161892e83a1e9dc56ba6a34', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'a3c67703205780a23dde7f37efbfdf6368b0e304', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: 'd22a04f733cdf9d5b8e79307839f3ffa98fd751a', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'caf9278097823be053b463757476c727497b35eb', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (h("atui-tooltip", { position: "right", is_visible: true }, h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text, onClick: () => {
                     if (this.params.click)

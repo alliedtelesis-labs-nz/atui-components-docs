@@ -53,10 +53,10 @@ const AtuiTextCellComponent = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: 'dc5d33092f8d3e9b6f6da7468826b178a80363ce', class: "align-center flex h-full" }, h("atui-tooltip", { key: 'b09323cf8b4a87216a08f40b7454cf5299a80f2e', position: "right", is_visible: !!this.params.generateTooltip }, h("span", { key: 'a5191bc10d441d1cef5c161b88b91284b6964319', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
+        return (h(Host, { key: 'b9a2614deb0dccb50d18171f454f967b3f5ea436', class: "align-center flex h-full" }, h("atui-tooltip", { key: '6e81572a04e76fe333895ca0c1b6b70264e538e6', position: "right", is_visible: !!this.params.generateTooltip }, h("span", { key: '1be4d2145957591e15a818a2849d8dfcf2f9bacc', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'f15883e55d8641000eb7524cca9aa34c7c0f8afd', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '963f599c9acc097f52c70f6882853b7bb8c63131', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
     get el() { return getElement(this); }
 };

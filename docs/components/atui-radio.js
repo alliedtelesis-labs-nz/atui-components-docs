@@ -1,4 +1,4 @@
-import { A as AtuiRadio$1, d as defineCustomElement$1 } from './p-Hb5mLmEc.js';
+import { A as AtuiRadio$1, d as defineCustomElement$1 } from './p-B5pjFO1t.js';
 
 const AtuiRadio = AtuiRadio$1;
 const defineCustomElement = defineCustomElement$1;

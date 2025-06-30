@@ -1,4 +1,4 @@
-import { A as AtuiTextStatusCellComponent, d as defineCustomElement$1 } from './p-BwkLDD0Y.js';
+import { A as AtuiTextStatusCellComponent, d as defineCustomElement$1 } from './p-BLIOuyM-.js';
 
 const AtuiTextStatusCell = AtuiTextStatusCellComponent;
 const defineCustomElement = defineCustomElement$1;

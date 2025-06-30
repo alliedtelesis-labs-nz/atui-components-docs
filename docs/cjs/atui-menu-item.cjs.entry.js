@@ -23,7 +23,7 @@ const AtuiMenuitemComponent = class {
         const classname = variants({
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: '1f69713d4fd0b434ef0f278a763e5edb6ee0ae5b', role: "menuitem", tabindex: "0", class: classname }, this.icon && (index.h("span", { key: '626f46a5aa575e042b6f4dede4fae5f6aae3a54c', "data-name": "menu-item-icon", class: "material-icons flex items-center justify-center text-icon-lg" }, this.icon)), this.label && (index.h("span", { key: '4e0f88af9411d935cee55c83eab190f0bbfdd81e', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'a2fb3787e398d9a23ab24da8dc2ba40a34f1f7d1' })));
+        return (index.h(index.Host, { key: 'b007c9049f4ffa25abce1597dbbf2707665f6689', role: "menuitem", tabindex: "0", class: classname }, this.icon && (index.h("span", { key: '701147dd434a5b7e99271aafe76b7b18a1d67ea6', "data-name": "menu-item-icon", class: "material-icons flex items-center justify-center text-icon-lg" }, this.icon)), this.label && (index.h("span", { key: '1d82d113363780c5f3a759ebdbfb9a4f90709df5', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'fa084759e24c9469ea880ff386bff702bc74e6e3' })));
     }
 };
 

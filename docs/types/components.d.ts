@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionItem } from "./components/atui-accordion/atui-accordion";
+import { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 import { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 import { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
 import { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
@@ -27,6 +28,7 @@ import { LoadingSize, LoadingType, LoadingVariant } from "./components/atui-load
 import { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-menu";
 import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
+import { MessageRole, PromptMessage } from "./types/prompt";
 import { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
 import { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
@@ -43,6 +45,7 @@ import { TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
 import { TreeNode } from "./types/tree";
 import { TreeItemSize } from "./components/atui-tree/atui-tree-item/atui-tree-item";
 export { AccordionItem } from "./components/atui-accordion/atui-accordion";
+export { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 export { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 export { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
 export { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
@@ -64,6 +67,7 @@ export { LoadingSize, LoadingType, LoadingVariant } from "./components/atui-load
 export { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-menu";
 export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
+export { MessageRole, PromptMessage } from "./types/prompt";
 export { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
 export { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
@@ -160,6 +164,34 @@ export namespace Components {
           * Text to display on the trigger for the accordion item.
          */
         "label": string;
+    }
+    /**
+     * @category Decoration
+     * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
+     */
+    interface AtuiAvatar {
+        /**
+          * Alt text for the avatar image
+         */
+        "alt"?: string;
+        /**
+          * Initials text to display when no image is provided
+         */
+        "initials"?: string;
+        /**
+          * Size of the avatar
+          * @default 'md'
+         */
+        "size": AvatarSize;
+        /**
+          * URL for the avatar image  Recommended cropped image sizes for optimal display: - sm:24x24px - md:32x32px - lg:40x40px  Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
+         */
+        "src"?: string;
+        /**
+          * Visual variant of the avatar
+          * @default 'secondary'
+         */
+        "variant": AvatarVariant;
     }
     /**
      * @category Feedback
@@ -1417,6 +1449,80 @@ export namespace Components {
         "value": string;
     }
     /**
+     * @category Prompt
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     */
+    interface AtuiPromptMessage {
+        /**
+          * URL for a custom avatar image
+         */
+        "avatar": string;
+        /**
+          * The message content text
+          * @default ''
+         */
+        "content": string;
+        /**
+          * Shows error state styling and enables retry action
+          * @default false
+         */
+        "error": boolean;
+        /**
+          * Custom error message text (defaults to generic error message)
+         */
+        "error_message": string;
+        /**
+          * Shows loading state with animated placeholder content
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Display name for the message sender
+         */
+        "name": string;
+        /**
+          * The role/type of the message sender (only 'user' and 'assistant' are supported)
+          * @default 'user'
+         */
+        "role": Exclude<MessageRole, 'system'>;
+    }
+    /**
+     * @category Prompt
+     * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
+     */
+    interface AtuiPromptThread {
+        /**
+          * Automatically scroll to the bottom when new messages are added
+          * @default true
+         */
+        "auto_scroll": boolean;
+        /**
+          * Display name for chatbot/assistant messages
+          * @default 'Assistant'
+         */
+        "chatbot_title": string;
+        /**
+          * Description text displayed when no messages are present
+          * @default 'Start a conversation by sending a message'
+         */
+        "empty_state_description": string;
+        /**
+          * Title text displayed when no messages are present
+          * @default 'No messages yet'
+         */
+        "empty_state_title": string;
+        /**
+          * Shows a loading indicator for incoming messages
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Array of messages to display in the conversation thread
+          * @default []
+         */
+        "messages": PromptMessage[];
+    }
+    /**
      * @category Form Controls
      * @description A radio button component for selecting a single option from a predefined list.
      */
@@ -2414,6 +2520,14 @@ export interface AtuiPromptInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtuiPromptInputElement;
 }
+export interface AtuiPromptMessageCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtuiPromptMessageElement;
+}
+export interface AtuiPromptThreadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtuiPromptThreadElement;
+}
 export interface AtuiRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtuiRadioElement;
@@ -2518,6 +2632,16 @@ declare global {
     var HTMLAtuiAccordionTriggerElement: {
         prototype: HTMLAtuiAccordionTriggerElement;
         new (): HTMLAtuiAccordionTriggerElement;
+    };
+    /**
+     * @category Decoration
+     * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
+     */
+    interface HTMLAtuiAvatarElement extends Components.AtuiAvatar, HTMLStencilElement {
+    }
+    var HTMLAtuiAvatarElement: {
+        prototype: HTMLAtuiAvatarElement;
+        new (): HTMLAtuiAvatarElement;
     };
     /**
      * @category Feedback
@@ -3111,6 +3235,60 @@ declare global {
     var HTMLAtuiPromptInputElement: {
         prototype: HTMLAtuiPromptInputElement;
         new (): HTMLAtuiPromptInputElement;
+    };
+    interface HTMLAtuiPromptMessageElementEventMap {
+        "atuiCopy": string;
+        "atuiFeedbackPositive": void;
+        "atuiFeedbackNegative": void;
+        "atuiRetry": void;
+        "atuiEdit": string;
+    }
+    /**
+     * @category Prompt
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     */
+    interface HTMLAtuiPromptMessageElement extends Components.AtuiPromptMessage, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtuiPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtuiPromptMessageElement, ev: AtuiPromptMessageCustomEvent<HTMLAtuiPromptMessageElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtuiPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtuiPromptMessageElement, ev: AtuiPromptMessageCustomEvent<HTMLAtuiPromptMessageElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtuiPromptMessageElement: {
+        prototype: HTMLAtuiPromptMessageElement;
+        new (): HTMLAtuiPromptMessageElement;
+    };
+    interface HTMLAtuiPromptThreadElementEventMap {
+        "atuiMessageCopy": {
+        messageId: string;
+        content: string;
+    };
+        "atuiMessageRetry": { messageId: string };
+        "atuiMessageEdit": {
+        messageId: string;
+        content: string;
+    };
+    }
+    /**
+     * @category Prompt
+     * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
+     */
+    interface HTMLAtuiPromptThreadElement extends Components.AtuiPromptThread, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtuiPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtuiPromptThreadElement, ev: AtuiPromptThreadCustomEvent<HTMLAtuiPromptThreadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtuiPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtuiPromptThreadElement, ev: AtuiPromptThreadCustomEvent<HTMLAtuiPromptThreadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtuiPromptThreadElement: {
+        prototype: HTMLAtuiPromptThreadElement;
+        new (): HTMLAtuiPromptThreadElement;
     };
     interface HTMLAtuiRadioElementEventMap {
         "atuiChange": boolean;
@@ -3712,6 +3890,7 @@ declare global {
         "atui-accordion": HTMLAtuiAccordionElement;
         "atui-accordion-item": HTMLAtuiAccordionItemElement;
         "atui-accordion-trigger": HTMLAtuiAccordionTriggerElement;
+        "atui-avatar": HTMLAtuiAvatarElement;
         "atui-badge": HTMLAtuiBadgeElement;
         "atui-breadcrumb": HTMLAtuiBreadcrumbElement;
         "atui-breadcrumb-item": HTMLAtuiBreadcrumbItemElement;
@@ -3752,6 +3931,8 @@ declare global {
         "atui-multi-select": HTMLAtuiMultiSelectElement;
         "atui-placeholder": HTMLAtuiPlaceholderElement;
         "atui-prompt-input": HTMLAtuiPromptInputElement;
+        "atui-prompt-message": HTMLAtuiPromptMessageElement;
+        "atui-prompt-thread": HTMLAtuiPromptThreadElement;
         "atui-radio": HTMLAtuiRadioElement;
         "atui-radio-group": HTMLAtuiRadioGroupElement;
         "atui-search": HTMLAtuiSearchElement;
@@ -3848,6 +4029,34 @@ declare namespace LocalJSX {
           * Text to display on the trigger for the accordion item.
          */
         "label"?: string;
+    }
+    /**
+     * @category Decoration
+     * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
+     */
+    interface AtuiAvatar {
+        /**
+          * Alt text for the avatar image
+         */
+        "alt"?: string;
+        /**
+          * Initials text to display when no image is provided
+         */
+        "initials"?: string;
+        /**
+          * Size of the avatar
+          * @default 'md'
+         */
+        "size"?: AvatarSize;
+        /**
+          * URL for the avatar image  Recommended cropped image sizes for optimal display: - sm:24x24px - md:32x32px - lg:40x40px  Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
+         */
+        "src"?: string;
+        /**
+          * Visual variant of the avatar
+          * @default 'secondary'
+         */
+        "variant"?: AvatarVariant;
     }
     /**
      * @category Feedback
@@ -5147,6 +5356,118 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * @category Prompt
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     */
+    interface AtuiPromptMessage {
+        /**
+          * URL for a custom avatar image
+         */
+        "avatar"?: string;
+        /**
+          * The message content text
+          * @default ''
+         */
+        "content"?: string;
+        /**
+          * Shows error state styling and enables retry action
+          * @default false
+         */
+        "error"?: boolean;
+        /**
+          * Custom error message text (defaults to generic error message)
+         */
+        "error_message"?: string;
+        /**
+          * Shows loading state with animated placeholder content
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Display name for the message sender
+         */
+        "name"?: string;
+        /**
+          * Emitted when the copy action is triggered
+         */
+        "onAtuiCopy"?: (event: AtuiPromptMessageCustomEvent<string>) => void;
+        /**
+          * Emitted when the edit action is triggered (for user messages)
+         */
+        "onAtuiEdit"?: (event: AtuiPromptMessageCustomEvent<string>) => void;
+        /**
+          * Emitted when negative feedback action is triggered
+         */
+        "onAtuiFeedbackNegative"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        /**
+          * Emitted when positive feedback action is triggered
+         */
+        "onAtuiFeedbackPositive"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        /**
+          * Emitted when the retry action is triggered (for assistant messages with errors)
+         */
+        "onAtuiRetry"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        /**
+          * The role/type of the message sender (only 'user' and 'assistant' are supported)
+          * @default 'user'
+         */
+        "role"?: Exclude<MessageRole, 'system'>;
+    }
+    /**
+     * @category Prompt
+     * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
+     */
+    interface AtuiPromptThread {
+        /**
+          * Automatically scroll to the bottom when new messages are added
+          * @default true
+         */
+        "auto_scroll"?: boolean;
+        /**
+          * Display name for chatbot/assistant messages
+          * @default 'Assistant'
+         */
+        "chatbot_title"?: string;
+        /**
+          * Description text displayed when no messages are present
+          * @default 'Start a conversation by sending a message'
+         */
+        "empty_state_description"?: string;
+        /**
+          * Title text displayed when no messages are present
+          * @default 'No messages yet'
+         */
+        "empty_state_title"?: string;
+        /**
+          * Shows a loading indicator for incoming messages
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Array of messages to display in the conversation thread
+          * @default []
+         */
+        "messages"?: PromptMessage[];
+        /**
+          * Emitted when a message copy action is requested
+         */
+        "onAtuiMessageCopy"?: (event: AtuiPromptThreadCustomEvent<{
+        messageId: string;
+        content: string;
+    }>) => void;
+        /**
+          * Emitted when a message edit action is requested
+         */
+        "onAtuiMessageEdit"?: (event: AtuiPromptThreadCustomEvent<{
+        messageId: string;
+        content: string;
+    }>) => void;
+        /**
+          * Emitted when a message retry action is requested
+         */
+        "onAtuiMessageRetry"?: (event: AtuiPromptThreadCustomEvent<{ messageId: string }>) => void;
+    }
+    /**
      * @category Form Controls
      * @description A radio button component for selecting a single option from a predefined list.
      */
@@ -6139,6 +6460,7 @@ declare namespace LocalJSX {
         "atui-accordion": AtuiAccordion;
         "atui-accordion-item": AtuiAccordionItem;
         "atui-accordion-trigger": AtuiAccordionTrigger;
+        "atui-avatar": AtuiAvatar;
         "atui-badge": AtuiBadge;
         "atui-breadcrumb": AtuiBreadcrumb;
         "atui-breadcrumb-item": AtuiBreadcrumbItem;
@@ -6179,6 +6501,8 @@ declare namespace LocalJSX {
         "atui-multi-select": AtuiMultiSelect;
         "atui-placeholder": AtuiPlaceholder;
         "atui-prompt-input": AtuiPromptInput;
+        "atui-prompt-message": AtuiPromptMessage;
+        "atui-prompt-thread": AtuiPromptThread;
         "atui-radio": AtuiRadio;
         "atui-radio-group": AtuiRadioGroup;
         "atui-search": AtuiSearch;
@@ -6240,6 +6564,11 @@ declare module "@stencil/core" {
              */
             "atui-accordion-item": LocalJSX.AtuiAccordionItem & JSXBase.HTMLAttributes<HTMLAtuiAccordionItemElement>;
             "atui-accordion-trigger": LocalJSX.AtuiAccordionTrigger & JSXBase.HTMLAttributes<HTMLAtuiAccordionTriggerElement>;
+            /**
+             * @category Decoration
+             * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
+             */
+            "atui-avatar": LocalJSX.AtuiAvatar & JSXBase.HTMLAttributes<HTMLAtuiAvatarElement>;
             /**
              * @category Feedback
              * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
@@ -6452,6 +6781,16 @@ declare module "@stencil/core" {
              * @description A specialized input component optimized for AI prompt interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
              */
             "atui-prompt-input": LocalJSX.AtuiPromptInput & JSXBase.HTMLAttributes<HTMLAtuiPromptInputElement>;
+            /**
+             * @category Prompt
+             * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+             */
+            "atui-prompt-message": LocalJSX.AtuiPromptMessage & JSXBase.HTMLAttributes<HTMLAtuiPromptMessageElement>;
+            /**
+             * @category Prompt
+             * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
+             */
+            "atui-prompt-thread": LocalJSX.AtuiPromptThread & JSXBase.HTMLAttributes<HTMLAtuiPromptThreadElement>;
             /**
              * @category Form Controls
              * @description A radio button component for selecting a single option from a predefined list.

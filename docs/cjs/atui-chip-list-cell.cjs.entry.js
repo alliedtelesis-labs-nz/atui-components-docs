@@ -20,7 +20,7 @@ const AtuiChipListCell = class {
         this.params.value = newValue;
     }
     render() {
-        return (index.h(index.Host, { key: '8d96c01476e82e82e778eda696c6ed8a6b0183cf', class: "flex h-full items-center leading-[100%]" }, index.h("atui-chip-list", { key: 'e90360c1621de2ba4e4ee603b54aad81c662c7a0', chips: this.params.value, show_clear_all: false, disabled: true })));
+        return (index.h(index.Host, { key: '895d628081ef57628b57f20d2adc65a3062af895', class: "flex h-full items-center leading-[100%]" }, index.h("atui-chip-list", { key: 'eb091e9d4300c4936e81b9eb3a37c7ddcf2dd905', chips: this.params.value, show_clear_all: false, disabled: true })));
     }
     get el() { return index.getElement(this); }
 };

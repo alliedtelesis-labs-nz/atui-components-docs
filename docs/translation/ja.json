@@ -74,6 +74,20 @@
             },
             "ALL": "全期間",
             "ALL_TIME_LABEL": "全期間（フィルターなし）"
+        },
+        "PROMPT": {
+            "NO_MESSAGES_YET": "まだメッセージがありません",
+            "START_CONVERSATION": "会話を開始",
+            "START_CONVERSATION_DESCRIPTION": "AIアシスタントとのチャットを開始するためにメッセージを送信してください",
+            "AI_ASSISTANT": "AIアシスタント",
+            "ASSISTANT": "アシスタント",
+            "USER": "user",
+            "TYPE_MESSAGE_PLACEHOLDER": "ここにメッセージを入力してください...",
+            "TYPING": "入力中...",
+            "CLEAR": "クリア",
+            "SEND": "送信",
+            "NEW_THREAD": "新しいスレッド",
+            "MESSAGE_TOO_LONG": "メッセージが長すぎます（{current}/{max} 文字）"
         }
     }
 }

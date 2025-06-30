@@ -22,7 +22,7 @@ const AtuiTitleSubtitleCell = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: 'c479412ce05622b3848089dadb82b58a05015332' }, h("div", { key: 'cc1fb4b767632a6a22854ab9b182592073b6c821', class: "flex h-full flex-col justify-center" }, h("div", { key: '485b9f2b0cc418c3f7ec419cc4f1dfc051f16edd', class: "truncate text-sm leading-normal" }, (_a = this.value) === null || _a === void 0 ? void 0 : _a.title), h("div", { key: '7ecae6d04378b376d29d53b9f8d16d8d6db514a9', class: "truncate text-xs font-normal leading-normal text-med" }, (_b = this.value) === null || _b === void 0 ? void 0 : _b.subtitle))));
+        return (h(Host, { key: '04bc7340760dd99a243cd5648aff43b6cbb01850' }, h("div", { key: 'a702ca4101dfc1e209c6d62c4ae1ed847cdc9bbb', class: "flex h-full flex-col justify-center" }, h("div", { key: '724227fd63185a5a3f5c6258ccb5e7c5b9076c34', class: "truncate text-sm leading-normal" }, (_a = this.value) === null || _a === void 0 ? void 0 : _a.title), h("div", { key: 'd473594779cf546833bd540196bd5e393eebf9b3', class: "truncate text-xs font-normal leading-normal text-med" }, (_b = this.value) === null || _b === void 0 ? void 0 : _b.subtitle))));
     }
     get el() { return getElement(this); }
 };

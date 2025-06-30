@@ -38,7 +38,7 @@ const AtuiButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: '31cd69d0f0b35014b15df3a0ed5e63ea79da6eae', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: () => this.handleClick(), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '6957f9c1c0b052f1c027a3fa6718cf4c720e65e6', name: "icon" }), this.label));
+        return (index.h("button", { key: 'b43ad996d5dc962ac97300b01b7e0239e43a5888', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: () => this.handleClick(), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '630d3805d7305af3496f73971f10c77be1e54387', name: "icon" }), this.label));
     }
     get el() { return index.getElement(this); }
 };

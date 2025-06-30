@@ -149,13 +149,13 @@ export class AtuiSelectComponent {
         }
     }
     render() {
-        return (h(Host, { key: '7f2812c52602e4261108e3ea6529028770f679fa', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '2fd089fa843e8c6df8474d58f758d6222b2d79dd', class: "group/select", onFocusout: async (event) => {
                 if (!this.el.contains(event.relatedTarget)) {
                     await this.menuRef.closeMenu();
                 }
-            } }, this.renderlabel(), h("atui-menu", { key: '5a94cb01f157b701103e69b2eb87e73c28c3bdd4', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderlabel(), h("atui-menu", { key: '12c4c552386244d09e553441a94d3ce5c854950a', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '1f028f2a475f547bd2af821386c812548897796b' }, this.error_text && this.invalid && (h("span", { key: '432734cc0741d833a467e86f7b5e694fd3a96a03', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '87b923e65f362509de51daae509f8335301e0f02' }, this.error_text && this.invalid && (h("span", { key: '17f0ff916d34d10159a2dbd5dea16ac7112b53a3', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderlabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))));

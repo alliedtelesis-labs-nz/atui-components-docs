@@ -95,7 +95,7 @@ export class AtuiTabSelector {
         }
     }
     render() {
-        return h(Host, { key: '9781334488b20e484455bcb91ba5bb8f3769df96' }, this.checkLayoutAndRender());
+        return h(Host, { key: '77cdcb5ebd2c1cb3b919b5c01ac7d950682ed131' }, this.checkLayoutAndRender());
     }
     static get is() { return "atui-tab-selector"; }
     static get properties() {

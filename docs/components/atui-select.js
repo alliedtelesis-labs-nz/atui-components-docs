@@ -1,4 +1,4 @@
-import { A as AtuiSelectComponent, d as defineCustomElement$1 } from './p-B-R-HO9p.js';
+import { A as AtuiSelectComponent, d as defineCustomElement$1 } from './p-DjfM-T-T.js';
 
 const AtuiSelect = AtuiSelectComponent;
 const defineCustomElement = defineCustomElement$1;

@@ -2,6 +2,7 @@ export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as 
 export { AtuiAccordion, defineCustomElement as defineCustomElementAtuiAccordion } from './atui-accordion.js';
 export { AtuiAccordionItem, defineCustomElement as defineCustomElementAtuiAccordionItem } from './atui-accordion-item.js';
 export { AtuiAccordionTrigger, defineCustomElement as defineCustomElementAtuiAccordionTrigger } from './atui-accordion-trigger.js';
+export { AtuiAvatar, defineCustomElement as defineCustomElementAtuiAvatar } from './atui-avatar.js';
 export { AtuiBadge, defineCustomElement as defineCustomElementAtuiBadge } from './atui-badge.js';
 export { AtuiBreadcrumb, defineCustomElement as defineCustomElementAtuiBreadcrumb } from './atui-breadcrumb.js';
 export { AtuiBreadcrumbItem, defineCustomElement as defineCustomElementAtuiBreadcrumbItem } from './atui-breadcrumb-item.js';
@@ -42,6 +43,8 @@ export { AtuiMultiBtnCell, defineCustomElement as defineCustomElementAtuiMultiBt
 export { AtuiMultiSelect, defineCustomElement as defineCustomElementAtuiMultiSelect } from './atui-multi-select.js';
 export { AtuiPlaceholder, defineCustomElement as defineCustomElementAtuiPlaceholder } from './atui-placeholder.js';
 export { AtuiPromptInput, defineCustomElement as defineCustomElementAtuiPromptInput } from './atui-prompt-input.js';
+export { AtuiPromptMessage, defineCustomElement as defineCustomElementAtuiPromptMessage } from './atui-prompt-message.js';
+export { AtuiPromptThread, defineCustomElement as defineCustomElementAtuiPromptThread } from './atui-prompt-thread.js';
 export { AtuiRadio, defineCustomElement as defineCustomElementAtuiRadio } from './atui-radio.js';
 export { AtuiRadioGroup, defineCustomElement as defineCustomElementAtuiRadioGroup } from './atui-radio-group.js';
 export { AtuiSearch, defineCustomElement as defineCustomElementAtuiSearch } from './atui-search.js';

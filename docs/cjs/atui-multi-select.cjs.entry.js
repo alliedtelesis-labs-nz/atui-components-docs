@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-DGivrgtr.js');
-var translation = require('./translation-BYk3qId2.js');
+var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const inputVariants = index$1.cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
@@ -174,14 +174,14 @@ const AtuiMultiSelectComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'bcf35e4ebcc3f6154c92014eff3814c437e70060', class: "relative", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'b617bade43254a39e79d23893b037db748531035', class: "relative", onFocusout: async (event) => {
                 var _a;
                 if (!this.el.contains(event.relatedTarget)) {
                     await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                 }
-            } }, this.renderLabel(), index.h("atui-menu", { key: '793577ab1890d2185feb586cf843ab3fc7717db8', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: 'c240e61997b7e1b59cf4f2db4bfeda83ffc8afbd', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '686bce35b80f0c302b03689fe2ef6dc1e62d4ec7' }, this.error_text && this.invalid && (index.h("span", { key: '142c1c0e04bb884453f06d267c0e79a64dca8987', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (index.h("atui-chip-list", { key: 'd56386b5ebc4f6f6dde0486a592ef7ba13daf0b6', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), index.h("div", { key: '8c3b9c1e7a47ffdec97f7ea41e6d59fc3e65c323' }, this.error_text && this.invalid && (index.h("span", { key: '76bb057970fffb2b6d30f1dd5f6e79a6ba91040d', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (index.h("atui-chip-list", { key: '2a2181587b9444dda08fbb8dd257c8ebec63bd21', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));

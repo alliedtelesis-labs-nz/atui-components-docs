@@ -52,7 +52,7 @@ export class AtuiDialogComponent {
         }
     }
     render() {
-        return (h("dialog", { key: 'd737bf3473fb6aaac60827f6eeaa9689a55303ca', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '2bea7064f764cd226f919f998cea6c338f0b207a', class: "backdrop-content" }, h("slot", { key: '21af482a740f2b23964556dced96795bfcaffb12' }))));
+        return (h("dialog", { key: '84c80f1f47f2e6c157b60fcdf53ce9af733e6763', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'ca1d3894f886d338ec97929d034f15d8b697d4f5', class: "backdrop-content" }, h("slot", { key: 'c818707aec856895a92c640170b45bcb0911261a' }))));
     }
     static get is() { return "atui-dialog"; }
     static get originalStyleUrls() {

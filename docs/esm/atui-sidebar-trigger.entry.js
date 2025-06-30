@@ -26,7 +26,7 @@ const AtuiSidebarTriggerComponent = class {
         await this.updateIsOpen();
     }
     render() {
-        return (h("atui-button", { key: '649737b2866e905d2e4ff22a3247c620cd0f368c', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("atui-button", { key: '801d3a5b4543a050cdef52d85e6dcec6d997effa', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return getElement(this); }
 };

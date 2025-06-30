@@ -202,7 +202,7 @@ export class AtuiChartBarLine {
         return { min: startDate.toString(), max: endDate.toString() };
     }
     render() {
-        return (h(Host, { key: 'd1273c6bc468c71205d31f726446ac1980e67008', style: { height: '100%', width: '100%' } }, h("section", { key: '341a3bfcbf6fca76a1fec9c709a6fc068002e79a', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '47ceb12a09422c27f5ae18e8f609b633fcd92220', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: '898778662cb387a3847e4bb65816d7c44a5b708e', style: { height: '100%', width: '100%' } }, h("section", { key: 'bada335acbdea9975e4f1b5a7f977ea64b8282e9', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '2efe1b250a941f2cf17101815f8a69c47cba33e9', ref: (el) => (this.canvasEl = el) }))));
     }
     static get is() { return "atui-chart-bar-line"; }
     static get properties() {
