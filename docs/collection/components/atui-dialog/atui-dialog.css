@@ -1,0 +1,49 @@
+.c-atui-dialog {
+  margin: auto;
+  display: block;
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  visibility: hidden;
+  z-index: var(--token-z-index-modal);
+  transform-origin: bottom center;
+  opacity: 0;
+  scale: 0.95;
+  box-shadow: var(--token-shadow-3);
+  transition: translate var(--token-transition-time), scale var(--token-transition-time), filter var(--token-transition-time), opacity var(--token-transition-time), visibility var(--token-transition-time);
+}
+.c-atui-dialog::backdrop {
+  animation: fadeIn 0.3s ease forwards;
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;
+}
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+.c-atui-dialog > * {
+  max-height: calc(100dvh - 48px);
+}
+.c-atui-dialog[open] {
+  translate: 0 0;
+  scale: 1;
+  opacity: 1;
+  visibility: visible;
+}
+@starting-style {
+  .c-atui-dialog[open] {
+    opacity: 0;
+    scale: 1.15;
+  }
+}
+.c-atui-dialog:not([open]) {
+  scale: 0.95;
+  opacity: 0;
+  visibility: hidden;
+}
