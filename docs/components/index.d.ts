@@ -107,10 +107,10 @@ export { AtuiSidebarComponent as AtuiSidebar } from '../types/components/atui-si
 export { defineCustomElement as defineCustomElementAtuiSidebar } from './atui-sidebar';
 export { AtuiSidebarMenuComponent as AtuiSidebarMenu } from '../types/components/atui-sidebar/atui-sidebar-menu/atui-sidebar-menu';
 export { defineCustomElement as defineCustomElementAtuiSidebarMenu } from './atui-sidebar-menu';
-export { AtuiSidebarMenuSubComponent as AtuiSidebarMenuSub } from '../types/components/atui-sidebar/atui-sidebar-menu-sub/atui-sidebar-menu-sub';
-export { defineCustomElement as defineCustomElementAtuiSidebarMenuSub } from './atui-sidebar-menu-sub';
 export { AtuiSidebarMenuitemComponent as AtuiSidebarMenuitem } from '../types/components/atui-sidebar/atui-sidebar-menuitem/atui-sidebar-menuitem';
 export { defineCustomElement as defineCustomElementAtuiSidebarMenuitem } from './atui-sidebar-menuitem';
+export { AtuiSidebarSubmenuComponent as AtuiSidebarSubmenu } from '../types/components/atui-sidebar/atui-sidebar-submenu/atui-sidebar-submenu';
+export { defineCustomElement as defineCustomElementAtuiSidebarSubmenu } from './atui-sidebar-submenu';
 export { AtuiSidebarTriggerComponent as AtuiSidebarTrigger } from '../types/components/atui-sidebar/atui-sidebar-trigger/atui-sidebar-trigger';
 export { defineCustomElement as defineCustomElementAtuiSidebarTrigger } from './atui-sidebar-trigger';
 export { AtuiSrcDestComponent as AtuiSrcDest } from '../types/components/atui-src-dest/atui-src-dest';

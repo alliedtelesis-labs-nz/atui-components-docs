@@ -42,7 +42,7 @@ export class AtuiTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'e82b3e18ba5b8a334669d549d40c0cb0c8039ae5', class: "relative z-menu flex flex-col gap-8 pb-8 pt-8" }, h("div", { key: 'fdfa996c80d5511ad24b3ff4d40eea9f5115f14a', class: "flex justify-between" }, h("div", { key: '4d48c5c8e937602960cd5dc62202c0c9bc8d572d', class: "flex" }, h("slot", { key: 'ac484912b1d511c6ac13337b9be93c504dae4f3f', name: "search" })), h("div", { key: 'e08b03e86ac367d1cb8f46004e08546f018dbb22', class: "flex" }, h("slot", { key: '8ec48ef5f56714ecc3e966f28fc2b6e6342e1859', name: "export-menu" }), h("slot", { key: '96003f1bf7607a07faa997b8b00878dbae5a61b4', name: "column-manager" }), h("slot", { key: '262c4b918d48f149a58f8156f9f795cb870a026d', name: "actions" }))), h("slot", { key: 'c3debabb606081861f6eeda37fd10b547eb247aa', name: "filters" })));
+        return (h(Host, { key: 'a2d3ea630e1eba238aeab484c7f9372c270f4a2e', class: "relative z-menu flex flex-col gap-8 pb-8 pt-8" }, h("div", { key: 'f9cb949f333cac9e97668053c6a85baf475ff1c8', class: "flex justify-between" }, h("div", { key: 'ab0c6cd07806991ded6a4781898b589712facfa7', class: "flex" }, h("slot", { key: '04de67a9f33bf6420af04cdac6bc6d29d60884f7', name: "search" })), h("div", { key: '139ad0b3b82b822eff729f90981328934a49157b', class: "flex" }, h("slot", { key: 'df7e55ff3d92dc1837ecd32166e9dacd6977c22e', name: "export-menu" }), h("slot", { key: 'aae2b9bbd656ba09f6787f1dd7a1b827b1c4fb12', name: "column-manager" }), h("slot", { key: 'e7aea19f16fb2fb5c05779f331186a47571eec39', name: "actions" }))), h("slot", { key: 'ed10cd949bdb137c84438334784c9125b79883df', name: "filters" })));
     }
     static get is() { return "atui-table-actions"; }
     static get properties() {

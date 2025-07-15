@@ -1,4 +1,4 @@
-import { A as AtuiCheckboxHeaderComponent, d as defineCustomElement$1 } from './p-BrpwQuGT.js';
+import { A as AtuiCheckboxHeaderComponent, d as defineCustomElement$1 } from './p-CDZsn6je.js';
 
 const AtuiCheckboxHeader = AtuiCheckboxHeaderComponent;
 const defineCustomElement = defineCustomElement$1;

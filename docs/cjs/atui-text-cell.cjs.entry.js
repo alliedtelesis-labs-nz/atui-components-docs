@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiTextCellComponent = class {
     constructor(hostRef) {
@@ -55,10 +55,10 @@ const AtuiTextCellComponent = class {
     }
     render() {
         var _a, _b;
-        return (index.h(index.Host, { key: 'b9a2614deb0dccb50d18171f454f967b3f5ea436', class: "align-center flex h-full" }, index.h("atui-tooltip", { key: '6e81572a04e76fe333895ca0c1b6b70264e538e6', position: "right", is_visible: !!this.params.generateTooltip }, index.h("span", { key: '1be4d2145957591e15a818a2849d8dfcf2f9bacc', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
+        return (index.h(index.Host, { key: 'd0f860b5bc46e77ed3043b271d15563ef83202bc', class: "align-center flex h-full" }, index.h("atui-tooltip", { key: '13c3820849937cd67ffb671f6d80b00b4940e1da', position: "right", is_visible: !!this.params.generateTooltip }, index.h("span", { key: 'f1d316ce44e95af2713d5eafd32a76b1cc506197', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: '963f599c9acc097f52c70f6882853b7bb8c63131', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'f123a0dfbc99b84bd8d50b8625e2fa93fbb70e95', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
     get el() { return index.getElement(this); }
 };

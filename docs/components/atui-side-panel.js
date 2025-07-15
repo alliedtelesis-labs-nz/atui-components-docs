@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$2 } from './p-DX_-Zy22.js';
+import { p as proxyCustomElement, H, h } from './p-DDLUhBkV.js';
+import { d as defineCustomElement$2 } from './p-_JEK28rN.js';
 
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',

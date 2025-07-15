@@ -59,9 +59,9 @@ import { AtuiSearchTable as AtuiSearchTableElement, defineCustomElement as defin
 import { AtuiSearch as AtuiSearchElement, defineCustomElement as defineAtuiSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-search.js";
 import { AtuiSelect as AtuiSelectElement, defineCustomElement as defineAtuiSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-select.js";
 import { AtuiSidePanel as AtuiSidePanelElement, defineCustomElement as defineAtuiSidePanel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-side-panel.js";
-import { AtuiSidebarMenuSub as AtuiSidebarMenuSubElement, defineCustomElement as defineAtuiSidebarMenuSub } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar-menu-sub.js";
 import { AtuiSidebarMenu as AtuiSidebarMenuElement, defineCustomElement as defineAtuiSidebarMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar-menu.js";
 import { AtuiSidebarMenuitem as AtuiSidebarMenuitemElement, defineCustomElement as defineAtuiSidebarMenuitem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar-menuitem.js";
+import { AtuiSidebarSubmenu as AtuiSidebarSubmenuElement, defineCustomElement as defineAtuiSidebarSubmenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar-submenu.js";
 import { AtuiSidebarTrigger as AtuiSidebarTriggerElement, defineCustomElement as defineAtuiSidebarTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar-trigger.js";
 import { AtuiSidebar as AtuiSidebarElement, defineCustomElement as defineAtuiSidebar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-sidebar.js";
 import { AtuiSrcDest as AtuiSrcDestElement, defineCustomElement as defineAtuiSrcDest } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-src-dest.js";
@@ -79,6 +79,7 @@ import { AtuiTextBadgeCell as AtuiTextBadgeCellElement, defineCustomElement as d
 import { AtuiTextCell as AtuiTextCellElement, defineCustomElement as defineAtuiTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-text-cell.js";
 import { AtuiTextIconCell as AtuiTextIconCellElement, defineCustomElement as defineAtuiTextIconCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-text-icon-cell.js";
 import { AtuiTextImageCell as AtuiTextImageCellElement, defineCustomElement as defineAtuiTextImageCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-text-image-cell.js";
+import { AtuiTextStatusCell as AtuiTextStatusCellElement, defineCustomElement as defineAtuiTextStatusCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-text-status-cell.js";
 import { AtuiTextarea as AtuiTextareaElement, defineCustomElement as defineAtuiTextarea } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-textarea.js";
 import { AtuiTimeRange as AtuiTimeRangeElement, defineCustomElement as defineAtuiTimeRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-time-range.js";
 import { AtuiTimeWithUnit as AtuiTimeWithUnitElement, defineCustomElement as defineAtuiTimeWithUnit } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-time-with-unit.js";
@@ -104,14 +105,14 @@ export const AtuiAccordion: StencilReactComponent<AtuiAccordionElement, AtuiAcco
     defineCustomElement: defineAtuiAccordion
 });
 
-type AtuiAccordionItemEvents = NonNullable<unknown>;
+type AtuiAccordionItemEvents = { onAtuiAccordionChange: EventName<CustomEvent<boolean>> };
 
 export const AtuiAccordionItem: StencilReactComponent<AtuiAccordionItemElement, AtuiAccordionItemEvents> = /*@__PURE__*/ createComponent<AtuiAccordionItemElement, AtuiAccordionItemEvents>({
     tagName: 'atui-accordion-item',
     elementClass: AtuiAccordionItemElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtuiAccordionItemEvents,
+    events: { onAtuiAccordionChange: 'atuiAccordionChange' } as AtuiAccordionItemEvents,
     defineCustomElement: defineAtuiAccordionItem
 });
 
@@ -706,14 +707,14 @@ export const AtuiSidePanel: StencilReactComponent<AtuiSidePanelElement, AtuiSide
     defineCustomElement: defineAtuiSidePanel
 });
 
-type AtuiSidebarEvents = { onAtuiChange: EventName<CustomEvent<any>> };
+type AtuiSidebarEvents = { onAtuiSidebarChange: EventName<CustomEvent<any>> };
 
 export const AtuiSidebar: StencilReactComponent<AtuiSidebarElement, AtuiSidebarEvents> = /*@__PURE__*/ createComponent<AtuiSidebarElement, AtuiSidebarEvents>({
     tagName: 'atui-sidebar',
     elementClass: AtuiSidebarElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiChange: 'atuiChange' } as AtuiSidebarEvents,
+    events: { onAtuiSidebarChange: 'atuiSidebarChange' } as AtuiSidebarEvents,
     defineCustomElement: defineAtuiSidebar
 });
 
@@ -728,17 +729,6 @@ export const AtuiSidebarMenu: StencilReactComponent<AtuiSidebarMenuElement, Atui
     defineCustomElement: defineAtuiSidebarMenu
 });
 
-type AtuiSidebarMenuSubEvents = NonNullable<unknown>;
-
-export const AtuiSidebarMenuSub: StencilReactComponent<AtuiSidebarMenuSubElement, AtuiSidebarMenuSubEvents> = /*@__PURE__*/ createComponent<AtuiSidebarMenuSubElement, AtuiSidebarMenuSubEvents>({
-    tagName: 'atui-sidebar-menu-sub',
-    elementClass: AtuiSidebarMenuSubElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-    react: React,
-    events: {} as AtuiSidebarMenuSubEvents,
-    defineCustomElement: defineAtuiSidebarMenuSub
-});
-
 type AtuiSidebarMenuitemEvents = NonNullable<unknown>;
 
 export const AtuiSidebarMenuitem: StencilReactComponent<AtuiSidebarMenuitemElement, AtuiSidebarMenuitemEvents> = /*@__PURE__*/ createComponent<AtuiSidebarMenuitemElement, AtuiSidebarMenuitemEvents>({
@@ -748,6 +738,17 @@ export const AtuiSidebarMenuitem: StencilReactComponent<AtuiSidebarMenuitemEleme
     react: React,
     events: {} as AtuiSidebarMenuitemEvents,
     defineCustomElement: defineAtuiSidebarMenuitem
+});
+
+type AtuiSidebarSubmenuEvents = NonNullable<unknown>;
+
+export const AtuiSidebarSubmenu: StencilReactComponent<AtuiSidebarSubmenuElement, AtuiSidebarSubmenuEvents> = /*@__PURE__*/ createComponent<AtuiSidebarSubmenuElement, AtuiSidebarSubmenuEvents>({
+    tagName: 'atui-sidebar-submenu',
+    elementClass: AtuiSidebarSubmenuElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtuiSidebarSubmenuEvents,
+    defineCustomElement: defineAtuiSidebarSubmenu
 });
 
 type AtuiSidebarTriggerEvents = NonNullable<unknown>;
@@ -943,6 +944,17 @@ export const AtuiTextImageCell: StencilReactComponent<AtuiTextImageCellElement, 
     react: React,
     events: {} as AtuiTextImageCellEvents,
     defineCustomElement: defineAtuiTextImageCell
+});
+
+type AtuiTextStatusCellEvents = NonNullable<unknown>;
+
+export const AtuiTextStatusCell: StencilReactComponent<AtuiTextStatusCellElement, AtuiTextStatusCellEvents> = /*@__PURE__*/ createComponent<AtuiTextStatusCellElement, AtuiTextStatusCellEvents>({
+    tagName: 'atui-text-status-cell',
+    elementClass: AtuiTextStatusCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtuiTextStatusCellEvents,
+    defineCustomElement: defineAtuiTextStatusCell
 });
 
 type AtuiTextareaEvents = { onAtuiChange: EventName<CustomEvent<string>> };

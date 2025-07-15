@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const variants = index$1.cva('z-50box-border pointer-events-none absolute z-modal flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
@@ -66,7 +66,7 @@ const AtuiTooltipComponent = class {
         const classname = variants({
             open: this.is_visible,
         });
-        return (index.h(index.Host, { key: '57088d350cfe39e0b1e6ae805fbb68cd1b19eb51', class: "relative inline-block" }, index.h("div", { key: '96069692bd30e0484c900d80d3d7cc7cf6c2435b', class: "peer contents", ref: (el) => (this.triggerEl = el) }, index.h("slot", { key: 'edee4e63d113c6096b46499db04e6f6fb677dd79', name: "tooltip-trigger" })), index.h("div", { key: 'fd1cd12e1a4557ce2d0ecf6a81f9919e5a12d6bf', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, index.h("slot", { key: '51383871c7a57171dccfbfd8454f3780c000861f', name: "tooltip-content" }))));
+        return (index.h(index.Host, { key: '6d95439168563f94bc88b5210ae788b712d75955', class: "relative inline-block" }, index.h("div", { key: '24458c7b3422265bfe2e776fdf8c1212381fe07e', class: "peer contents", ref: (el) => (this.triggerEl = el) }, index.h("slot", { key: '57a745dc8488346a9a642733fd42f36a05f2d75c', name: "tooltip-trigger" })), index.h("div", { key: '22341d18b0e9c0530292185700b07597835fe594', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, index.h("slot", { key: 'f971c7b8583ab6fa46c588faf8fe288dcdba0cde', name: "tooltip-content" }))));
     }
     get el() { return index.getElement(this); }
 };

@@ -19,7 +19,6 @@ interface InitParams extends ITextStatusCellParams, ICellRendererParams {
 /**
  * @category Table Cell
  * @description A cell component for displaying a text with a status.
- * @internal
  */
 export declare class AtuiTextStatusCellComponent implements ICellRendererComp {
     el: any;

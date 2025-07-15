@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiAccordionComponent = class {
     constructor(hostRef) {
@@ -68,7 +68,7 @@ const AtuiAccordionComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '040fca730e8e8016f675d494ef0f3f1c07f047fd', class: "flex flex-col gap-2" }, index.h("slot", { key: '082e66a9b29b1c267c92856e8f068fb07bd8efe4' }), this.items &&
+        return (index.h(index.Host, { key: 'f523e84989f8fac2d5c0c97fb870fb2717585d1d', class: "flex flex-col gap-2" }, index.h("slot", { key: '6181300c87e7310b130ef911fbe4bf35a4edb111' }), this.items &&
             this.items.map((item) => {
                 return (index.h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

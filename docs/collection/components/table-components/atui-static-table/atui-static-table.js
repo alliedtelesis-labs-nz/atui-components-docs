@@ -29,7 +29,7 @@ export class AtuiStaticTable {
         }
     }
     render() {
-        return (h(Host, { key: 'af64384c8095b4b69e2b10c867669209ef172a55' }, !this.hide_column_manager && (h("atui-table-actions", { key: '54c35a5db977f0d67c94d29c49d73e4bc69de426', ag_grid: this.agGrid }, h("atui-column-manager", { key: 'cf2c8b94d97b517bca5f9a422250c5cc627eac36', slot: "column-manager", col_defs: this.col_defs }))), h("atui-table", { key: 'da2ba2635f488a62d9b66d9288c98fe660c7757c', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '70d1be68fc1df9d6a5f02159cca7f0be2be8af20' }, !this.hide_column_manager && (h("atui-table-actions", { key: '19a448ebc3f8b2974c4ccfa1cedabd90e2936a73', ag_grid: this.agGrid }, h("atui-column-manager", { key: '65712ad5b0861c30b53e24bd7c0c3db41d0e42b2', slot: "column-manager", col_defs: this.col_defs }))), h("atui-table", { key: '0a95cd4aa19998bc44ed06aaaad0b1c659188e9b', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
     static get is() { return "atui-static-table"; }
     static get properties() {

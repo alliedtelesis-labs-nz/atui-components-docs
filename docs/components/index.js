@@ -1,4 +1,4 @@
-export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as setPlatformOptions } from './p-DJD-7SVX.js';
+export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as setPlatformOptions } from './p-DDLUhBkV.js';
 export { AtuiAccordion, defineCustomElement as defineCustomElementAtuiAccordion } from './atui-accordion.js';
 export { AtuiAccordionItem, defineCustomElement as defineCustomElementAtuiAccordionItem } from './atui-accordion-item.js';
 export { AtuiAccordionTrigger, defineCustomElement as defineCustomElementAtuiAccordionTrigger } from './atui-accordion-trigger.js';
@@ -53,8 +53,8 @@ export { AtuiSelect, defineCustomElement as defineCustomElementAtuiSelect } from
 export { AtuiSidePanel, defineCustomElement as defineCustomElementAtuiSidePanel } from './atui-side-panel.js';
 export { AtuiSidebar, defineCustomElement as defineCustomElementAtuiSidebar } from './atui-sidebar.js';
 export { AtuiSidebarMenu, defineCustomElement as defineCustomElementAtuiSidebarMenu } from './atui-sidebar-menu.js';
-export { AtuiSidebarMenuSub, defineCustomElement as defineCustomElementAtuiSidebarMenuSub } from './atui-sidebar-menu-sub.js';
 export { AtuiSidebarMenuitem, defineCustomElement as defineCustomElementAtuiSidebarMenuitem } from './atui-sidebar-menuitem.js';
+export { AtuiSidebarSubmenu, defineCustomElement as defineCustomElementAtuiSidebarSubmenu } from './atui-sidebar-submenu.js';
 export { AtuiSidebarTrigger, defineCustomElement as defineCustomElementAtuiSidebarTrigger } from './atui-sidebar-trigger.js';
 export { AtuiSrcDest, defineCustomElement as defineCustomElementAtuiSrcDest } from './atui-src-dest.js';
 export { AtuiStaticTable, defineCustomElement as defineCustomElementAtuiStaticTable } from './atui-static-table.js';

@@ -1,0 +1,23 @@
+import{j as n,M as i}from"./index-lk0VIocu.js";import{useMDXComponents as r}from"./index-BZ-WbQW8.js";import{ar as l}from"./MermaidMarkdown-CscjgtQN.js";import"./iframe-BLGK-kH0.js";import"./index-CfOrKyLd.js";import"./index-DrFu-skq.js";const s=`# atui-icon-cell
+
+<!-- Auto Generated Below -->
+
+
+## Dependencies
+
+### Depends on
+
+- [atui-tooltip](../../../atui-tooltip)
+
+### Graph
+\`\`\`mermaid
+graph TD;
+  atui-icon-cell --> atui-tooltip
+  style atui-icon-cell fill:#f9f,stroke:#333,stroke-width:4px
+\`\`\`
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
+`;function o(t){return n.jsxs(n.Fragment,{children:[n.jsx(i,{title:"Components/Table Components/Cell Components/Icon Cell/Icon Cell"}),`
+`,n.jsx(l,{md:s})]})}function x(t={}){const{wrapper:e}={...r(),...t.components};return e?n.jsx(e,{...t,children:n.jsx(o,{...t})}):o()}export{x as default};

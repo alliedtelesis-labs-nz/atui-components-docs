@@ -15,7 +15,7 @@ export class AtuiMenuCellComponent {
     }
     render() {
         var _a;
-        return (h(Host, { key: '6fef07c9d74a59a0bab3ab5afd424a0e892b8799', class: "flex h-full items-center gap-4" }, this.params.value && h("span", { key: 'd8722a29ab5240f34cf1416db203da8fab391131' }, this.params.value), h("atui-menu", { key: 'f2ff60264fa11c75db07a9d62d6bb694f4c178eb' }, h("atui-button", { key: '197495adab5e940fffe183d23fe57a143bed3684', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), h("div", { key: 'f61ebb6e073778a31ab7faae356dbe76374eabc1', slot: "menu-content", class: "flex max-h-120 w-full flex-col overflow-auto" }, this.params.actions &&
+        return (h(Host, { key: '29bc6c5b3d5de13fbfae0f16a786d56c9fb62dba', class: "flex h-full items-center gap-4" }, this.params.value && h("span", { key: '32125c9e14d19bbd62aeac56f6f390419b8a9eb9' }, this.params.value), h("atui-menu", { key: 'd958befd2705c78264f209dcf890b94ac29709a5' }, h("atui-button", { key: 'ba46826631e0413b2d32f4c887b4048ce5044206', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), h("div", { key: 'cbe95a4ba046f059818f7180df90886a6fdab18c', slot: "menu-content", class: "flex max-h-120 w-full flex-col overflow-auto" }, this.params.actions &&
             this.params.actions.map((action) => {
                 var _a;
                 return typeof action === 'object' ? (h("atui-tooltip", { is_visible: action.getDisabled

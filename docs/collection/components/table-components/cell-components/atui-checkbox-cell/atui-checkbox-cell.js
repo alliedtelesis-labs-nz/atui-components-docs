@@ -23,7 +23,7 @@ export class AtuiCheckboxCellComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'f62dec540ef4f4ba2f64e8a1f2cd50f06e564eb3', class: "flex h-full items-center" }, h("atui-checkbox", { key: '44debc90b9350cff807071582109dd01be139bbd', class: "w-auto self-center", disabled: this.params.getDisabled
+        return (h(Host, { key: '6969f0fdc6fb0fd04bdc698a8cd427cc2f03e19b', class: "flex h-full items-center" }, h("atui-checkbox", { key: '7340da4565fefff2ef986f55df51246178e18f21', class: "w-auto self-center", disabled: this.params.getDisabled
                 ? this.params.getDisabled(this.params.data)
                 : false, value: this.params.value, onAtuiChange: (event) => this.setValue(event.detail) })));
     }

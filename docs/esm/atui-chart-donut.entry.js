@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host } from './index-8kq1vl9Q.js';
 import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-BBCTxdQr.js';
 import './moment-9az102YM.js';
 import './moment-C5Sle45O.js';

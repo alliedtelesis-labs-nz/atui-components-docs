@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, g as getElement } from './index-8kq1vl9Q.js';
 
 const AtuiSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -26,7 +26,7 @@ const AtuiSidebarTriggerComponent = class {
         await this.updateIsOpen();
     }
     render() {
-        return (h("atui-button", { key: '801d3a5b4543a050cdef52d85e6dcec6d997effa', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("atui-button", { key: 'c177b8c3533078b49bff7fa1b3c73b67b6acf29a', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return getElement(this); }
 };

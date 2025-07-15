@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-8kq1vl9Q.js';
 
 const AtuiMultiBtnCell = class {
     constructor(hostRef) {
@@ -30,7 +30,7 @@ const AtuiMultiBtnCell = class {
         });
     }
     render() {
-        return (h(Host, { key: '19abf3a96db0d35485c85b4cd20c4c60b1669dd0', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (h(Host, { key: '17e152644b573c163102aba7e01fb5d506b2c084', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
     }
     get el() { return getElement(this); }
 };

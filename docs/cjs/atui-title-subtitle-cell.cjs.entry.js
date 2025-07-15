@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -24,7 +24,7 @@ const AtuiTitleSubtitleCell = class {
     }
     render() {
         var _a, _b;
-        return (index.h(index.Host, { key: '04bc7340760dd99a243cd5648aff43b6cbb01850' }, index.h("div", { key: 'a702ca4101dfc1e209c6d62c4ae1ed847cdc9bbb', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '724227fd63185a5a3f5c6258ccb5e7c5b9076c34', class: "truncate text-sm leading-normal" }, (_a = this.value) === null || _a === void 0 ? void 0 : _a.title), index.h("div", { key: 'd473594779cf546833bd540196bd5e393eebf9b3', class: "truncate text-xs font-normal leading-normal text-med" }, (_b = this.value) === null || _b === void 0 ? void 0 : _b.subtitle))));
+        return (index.h(index.Host, { key: 'f2a5555b3d5ce6cd6c69c77df6b81f20fad32400' }, index.h("div", { key: 'cb376395a33c413e9b9d4f58ea9140087e9dade0', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '0db1be2609cd306a6288e4910f6cf3800b662135', class: "truncate text-sm leading-normal" }, (_a = this.value) === null || _a === void 0 ? void 0 : _a.title), index.h("div", { key: 'cd1859876101dc9342d28eb146aeb45f5af3f8af', class: "truncate text-xs font-normal leading-normal text-med" }, (_b = this.value) === null || _b === void 0 ? void 0 : _b.subtitle))));
     }
     get el() { return index.getElement(this); }
 };

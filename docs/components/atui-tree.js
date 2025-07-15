@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, d as createEvent, h } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$3 } from './p-BLBTk09G.js';
-import { d as defineCustomElement$2 } from './p-oK3fdkN_.js';
+import { p as proxyCustomElement, H, d as createEvent, h } from './p-DDLUhBkV.js';
+import { d as defineCustomElement$3 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$2 } from './p-BR_pUpiA.js';
 
 const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeComponent extends H {
     constructor() {
@@ -57,7 +57,7 @@ const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeCompone
         }
     }
     render() {
-        return (h("div", { key: 'f1fcf983c0e5a3ecc0dd421c99ebd6763fe7eefe', class: "w-full" }, h("slot", { key: '64a66447ecb1b3893676ed3a8c9a4ee7550d9699' }), this.flattenedItemList &&
+        return (h("div", { key: '8f8edf9c530595eaea061ffb8a24320662a09ee6', class: "w-full" }, h("slot", { key: '5d871a8a8e90a18e3d7f875a56fe6b1a400de914' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("atui-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("atui-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", { slot: "tooltip-content" }, item.tooltip))) : (h("atui-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

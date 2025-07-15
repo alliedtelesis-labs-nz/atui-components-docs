@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DJD-7SVX.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',

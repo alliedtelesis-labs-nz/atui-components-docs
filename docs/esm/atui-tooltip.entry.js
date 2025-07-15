@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-8kq1vl9Q.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
 const variants = cva('z-50box-border pointer-events-none absolute z-modal flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
@@ -64,7 +64,7 @@ const AtuiTooltipComponent = class {
         const classname = variants({
             open: this.is_visible,
         });
-        return (h(Host, { key: '57088d350cfe39e0b1e6ae805fbb68cd1b19eb51', class: "relative inline-block" }, h("div", { key: '96069692bd30e0484c900d80d3d7cc7cf6c2435b', class: "peer contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: 'edee4e63d113c6096b46499db04e6f6fb677dd79', name: "tooltip-trigger" })), h("div", { key: 'fd1cd12e1a4557ce2d0ecf6a81f9919e5a12d6bf', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: '51383871c7a57171dccfbfd8454f3780c000861f', name: "tooltip-content" }))));
+        return (h(Host, { key: '6d95439168563f94bc88b5210ae788b712d75955', class: "relative inline-block" }, h("div", { key: '24458c7b3422265bfe2e776fdf8c1212381fe07e', class: "peer contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: '57a745dc8488346a9a642733fd42f36a05f2d75c', name: "tooltip-trigger" })), h("div", { key: '22341d18b0e9c0530292185700b07597835fe594', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: 'f971c7b8583ab6fa46c588faf8fe288dcdba0cde', name: "tooltip-content" }))));
     }
     get el() { return getElement(this); }
 };

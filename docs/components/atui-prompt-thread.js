@@ -1,9 +1,9 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$6 } from './p-DYfNNaX5.js';
-import { d as defineCustomElement$5 } from './p-CGoVUV9r.js';
-import { d as defineCustomElement$4 } from './p-ByK4-pDJ.js';
-import { d as defineCustomElement$3 } from './p-CDfCrFsJ.js';
-import { d as defineCustomElement$2 } from './p-BLBTk09G.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
+import { d as defineCustomElement$6 } from './p-2g_c_cFm.js';
+import { d as defineCustomElement$5 } from './p-BOygyBmB.js';
+import { d as defineCustomElement$4 } from './p-Bxc6CMPN.js';
+import { d as defineCustomElement$3 } from './p-BDsp4U90.js';
+import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
 
 const AtuiPromptThread$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptThread extends H {
     constructor() {
@@ -100,7 +100,7 @@ const AtuiPromptThread$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptThre
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '830801e8822bc7b728bfa073b4c6c11fde34edba', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'f1dfa0ebcdabb0e8c7e64edf275f3125dcf295c5', name: "messages" })));
+        return (h(Host, { key: 'b97103ed7f1aabe94b5d1cf683103ad3349fcfff', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'cd17ca68d66842a1637a097bd9f0827482727178', name: "messages" })));
     }
 }, [4, "atui-prompt-thread", {
         "messages": [16],

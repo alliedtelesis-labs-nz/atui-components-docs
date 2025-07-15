@@ -2,7 +2,6 @@ import { h, Host } from "@stencil/core";
 /**
  * @category Table Cell
  * @description A cell component for displaying a text with a status.
- * @internal
  */
 export class AtuiTextStatusCellComponent {
     constructor() {
@@ -37,7 +36,7 @@ export class AtuiTextStatusCellComponent {
     }
     render() {
         var _a;
-        return (h(Host, { key: 'd22a04f733cdf9d5b8e79307839f3ffa98fd751a', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'caf9278097823be053b463757476c727497b35eb', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: '8b13698cb29607553519083a9b020d9bb7d67373', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '8bbfa63d70c75b615fe0668ab80f53e73bb88c9a', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (h("atui-tooltip", { position: "right", is_visible: true }, h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text, onClick: () => {
                     if (this.params.click)

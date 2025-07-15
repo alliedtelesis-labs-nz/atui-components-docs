@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-HJO1YDmC.js';
+import { r as registerInstance, c as createEvent, h } from './index-8kq1vl9Q.js';
 
 const AtuiChipList = class {
     constructor(hostRef) {

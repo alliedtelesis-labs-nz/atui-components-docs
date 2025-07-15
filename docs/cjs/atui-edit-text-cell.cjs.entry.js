@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiEditTextCell = class {
     constructor(hostRef) {
@@ -23,7 +23,7 @@ const AtuiEditTextCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'e43d8f1823896f13a0df6285d53bfc5dd3753db0', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: 'dc0fa5277473dbcdc1f60fc570343c2e24301f9f', readonly: !this.params.writePermission, clearable: true, value: this.params.value, onInput: (event) => this.updateCell(event.target.value), onMouseDown: (event) => event.stopPropagation() })));
+        return (index.h(index.Host, { key: 'c54beb143f043db73e5da528d29d17819a4659d6', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: '97db1b978c67f42b05508ce77d29dc0013738aae', readonly: !this.params.writePermission, clearable: true, value: this.params.value, onInput: (event) => this.updateCell(event.target.value), onMouseDown: (event) => event.stopPropagation() })));
     }
     get el() { return index.getElement(this); }
 };

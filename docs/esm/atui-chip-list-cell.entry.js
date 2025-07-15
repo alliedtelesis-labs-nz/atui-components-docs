@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-8kq1vl9Q.js';
 
 const AtuiChipListCell = class {
     constructor(hostRef) {
@@ -18,7 +18,7 @@ const AtuiChipListCell = class {
         this.params.value = newValue;
     }
     render() {
-        return (h(Host, { key: '895d628081ef57628b57f20d2adc65a3062af895', class: "flex h-full items-center leading-[100%]" }, h("atui-chip-list", { key: 'eb091e9d4300c4936e81b9eb3a37c7ddcf2dd905', chips: this.params.value, show_clear_all: false, disabled: true })));
+        return (h(Host, { key: '1288df72f2210935688c5ce296fbe561a9059160', class: "flex h-full items-center leading-[100%]" }, h("atui-chip-list", { key: 'f6961ae1f7281c7e0448d7284e14c6e305730dd4', chips: this.params.value, show_clear_all: false, disabled: true })));
     }
     get el() { return getElement(this); }
 };

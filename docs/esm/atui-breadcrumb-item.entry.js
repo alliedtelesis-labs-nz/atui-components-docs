@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-8kq1vl9Q.js';
 
 const AtuiBreadcrumbItem = class {
     constructor(hostRef) {

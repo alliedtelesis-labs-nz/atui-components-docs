@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, g as getElement } from './index-8kq1vl9Q.js';
 
 const AtuiTabContent = class {
     constructor(hostRef) {
@@ -33,7 +33,7 @@ const AtuiTabContent = class {
         this.isActive = id === this.tab_id;
     }
     render() {
-        return (h("div", { key: 'ec3545b9a19bb3d5b313f668e5300a2665507873', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'bbec25b4a6a6091c70eab081c891ffcafc1be7c8' })));
+        return (h("div", { key: '06b99722607eee5b9c353d1877e6fd4ef61d4f18', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '69c26ae7f30121798031bc08fdbc4d54478ff723' })));
     }
     get el() { return getElement(this); }
 };

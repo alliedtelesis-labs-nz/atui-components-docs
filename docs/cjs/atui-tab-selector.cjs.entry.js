@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiTabSelector = class {
     constructor(hostRef) {
@@ -87,7 +87,7 @@ const AtuiTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '77cdcb5ebd2c1cb3b919b5c01ac7d950682ed131' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'b1a0bd168d3b333d434460d05c4dbf4a9f7c7ea2' }, this.checkLayoutAndRender());
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

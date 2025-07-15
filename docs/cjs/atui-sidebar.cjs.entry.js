@@ -1,7 +1,9 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 var index$1 = require('./index-palgSxc9.js');
+
+const atuiSidebarCss = "atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:36px}atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:50px}atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:64px}atui-menu [data-name=menu-content-wrapper]{border:2px solid red;background-color:var(--token-sidebar-background)}";
 
 const variants = index$1.cva('transition-size relative flex flex-col overflow-y-auto overflow-x-hidden bg-sidebar-background text-sidebar-foreground duration-300 ease-in-out', {
     variants: {
@@ -19,7 +21,7 @@ const variants = index$1.cva('transition-size relative flex flex-col overflow-y-
 const AtuiSidebarComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.atuiChange = index.createEvent(this, "atuiChange", 7);
+        this.atuiSidebarChange = index.createEvent(this, "atuiSidebarChange", 7);
         /**
          * Position of the sidebar on the page
          */
@@ -42,14 +44,15 @@ const AtuiSidebarComponent = class {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
-        this.atuiChange.emit(this.isOpen);
+        this.atuiSidebarChange.emit(this.isOpen);
     }
     /**
      * Toggles the sidebar's open state.
      */
     async toggleSidebar() {
         this.isOpen = !this.isOpen;
-        this.atuiChange.emit(this.isOpen);
+        console.log('stenciltoggleSidebar', this.isOpen);
+        this.atuiSidebarChange.emit(this.isOpen);
     }
     /**
      * Getter method for the open state of the sidebar
@@ -63,9 +66,10 @@ const AtuiSidebarComponent = class {
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (index.h(index.Host, { key: 'd7f42212e86640f5da0e20437ca7fac5a5c1a7d9', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '973e6f0fc19eafe7350e223f8a88734556638ee6', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("div", { key: '771058c6c8996b7505e3ad69059f5abfe898ae94', class: `flex p-8 ${this.side === 'left' ? 'justify-end' : 'justify-start'}` }, index.h("slot", { key: '5dd5570015fc745c3c936706b768849e5b03b3f4', name: "sidebar-header" })), index.h("div", { key: 'e636f15750568bcb5c89b0cac31dc0b01b4fc6ee', class: "align-items flex flex-1 flex-col pb-8 pl-[10px] pr-8 pt-8" }, index.h("slot", { key: '5591dbb68d50f50738d40b3cd59e17626224cc72', name: "sidebar-content" })), index.h("div", { key: 'bdd8dccbe59c660e1ae019106b88a55d8c47d558', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '872065e2c39c351cb0db286f5b12feccaf6e3594', name: "sidebar-footer" }))), index.h("div", { key: 'a7c39a837e6d112c43c7551299f6f12176479961', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'cf61d24586aa62fbfd71c3f355158f54c941149b', name: "page-content" }))));
+        return (index.h(index.Host, { key: '42781d85322781d8b5d151f0b2175f161630f2b0', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '51404a8d1d961c847176352cb0706ec31c9e9a72', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("div", { key: '8cd1703c7cc1b2d2179f09d18d9bc2fac9315dfe', class: "flex p-8" }, index.h("slot", { key: '7d88db3ae8e1343021df286d39b725f54ff9af22', name: "sidebar-header" })), index.h("div", { key: 'b76c6878da6dc341ec9394e6cbfc32e60a275255', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '1b9734f52014c743322fd461a94f7f267d6d6095', name: "sidebar-content" })), index.h("div", { key: '90bd60167615b848f5d127c7491351853599dab7', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '3007a731fc19f0340a80baefae8d4666209df62c', name: "sidebar-footer" }))), index.h("div", { key: '1c7448ba440c5c319fd890a0d43aac82e72a81ac', class: "flex w-full overflow-auto" }, index.h("slot", { key: '5b2d9a1348a5693f78c988263997e2d526e008b0', name: "page-content" }))));
     }
 };
+AtuiSidebarComponent.style = atuiSidebarCss;
 
 exports.atui_sidebar = AtuiSidebarComponent;
 //# sourceMappingURL=atui-sidebar.entry.cjs.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host } from './index-8kq1vl9Q.js';
 
 const badgeVariants = {
     base: 'inline-block rounded-[4px] font-normal whitespace-nowrap leading-[0.9286rem]',

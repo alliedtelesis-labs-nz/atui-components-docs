@@ -1,0 +1,14 @@
+atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem {
+  padding-left: 36px;
+}
+atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem {
+  padding-left: 50px;
+}
+atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem {
+  padding-left: 64px;
+}
+
+atui-menu [data-name=menu-content-wrapper] {
+  border: 2px solid red;
+  background-color: var(--token-sidebar-background);
+}

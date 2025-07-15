@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',

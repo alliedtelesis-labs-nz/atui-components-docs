@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-BJDFmEHZ.js');
 
 const AtuiToggleCell = class {
     constructor(hostRef) {
@@ -27,7 +27,7 @@ const AtuiToggleCell = class {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (index.h(index.Host, { key: '82de1279aa8c9e17a9b7f2ebbcd3af9064687a7f', class: "flex h-full items-center leading-[100%]" }, index.h("atui-toggle-switch", { key: '948f7f6d76fe0add0f5ced1f081bca1149aaa55c', label: this.params.getLabel(this.params), onChange: () => this.params.onTrigger(this.params), label_position: "after", value: this.params.value })));
+        return (index.h(index.Host, { key: '13b0c9f5a25e2eff0de5c8e0f6093973a0eb2799', class: "flex h-full items-center leading-[100%]" }, index.h("atui-toggle-switch", { key: '694f5991eba64cdc8c1fc6c2822f8e63179622a2', label: this.params.getLabel(this.params), onChange: () => this.params.onTrigger(this.params), label_position: "after", value: this.params.value })));
     }
     get el() { return index.getElement(this); }
 };

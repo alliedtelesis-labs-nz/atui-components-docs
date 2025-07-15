@@ -30,7 +30,7 @@ export class AtuiMultiBtnCell {
         });
     }
     render() {
-        return (h(Host, { key: '19abf3a96db0d35485c85b4cd20c4c60b1669dd0', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (h(Host, { key: '17e152644b573c163102aba7e01fb5d506b2c084', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
     }
     static get is() { return "atui-multi-btn-cell"; }
     static get states() {

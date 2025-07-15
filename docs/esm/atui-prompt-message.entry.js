@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host, g as getElement } from './index-8kq1vl9Q.js';
 import { c as cva } from './index-CVoOBWGd.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
@@ -91,7 +91,7 @@ const AtuiPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'fa97c7d1adf4ec3f4509e7f31e027e9849ffaa5a', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: 'c3d69887082551ccb90b05e65102d71f90e25e36', class: "space-y-1 flex-1" }, h("div", { key: 'ec7ee1d3f8e06921ce3d437f0e51461ef4c0984b', class: "flex items-center gap-8" }, this.name && (h("span", { key: '2435e4d59fb451e58f3daf57d9afe4531af5bdae', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: 'ee144ff316888117ab76cabcf796fba7d15aa10a', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '5d6350c3769d8267a395dd0996988fae8dc3e0d4', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: 'f81b84174d1080815a5d379880b026b9c142374a', class: "space-y-1 flex-1" }, h("div", { key: 'a14343473c394c9996e74570ff18080e0d5477b0', class: "flex items-center gap-8" }, this.name && (h("span", { key: '46ff5e1844cde5f52237664ba4398d5b42675076', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: 'b37738fbc7db545474144549eac13eeafe8a8855', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     get el() { return getElement(this); }
 };

@@ -142,6 +142,10 @@ export namespace Components {
          */
         "content": string;
         /**
+          * Return the accordion items open state
+         */
+        "getIsOpen": () => Promise<boolean>;
+        /**
           * Used to identify the accordion item among the other accordion items
          */
         "item_id": string;
@@ -1844,12 +1848,6 @@ export namespace Components {
     }
     /**
      * @category Navigation
-     * @description A sidebar menu sub component for the sidebar.
-     */
-    interface AtuiSidebarMenuSub {
-    }
-    /**
-     * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
     interface AtuiSidebarMenuitem {
@@ -1869,6 +1867,31 @@ export namespace Components {
           * Label to be displayed for the menu item
          */
         "label"?: string;
+    }
+    /**
+     * @category Navigation
+     * @description Display nested sub-menus in the atui-sidebar.
+     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
+     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
+     * Menu indent styling is supported up to 3 levels.
+     */
+    interface AtuiSidebarSubmenu {
+        /**
+          * Alert badge for the menu item
+         */
+        "badge"?: string;
+        /**
+          * Icon to be displayed with the label
+         */
+        "icon"?: string;
+        /**
+          * Will change the styling of the menuitem when set
+         */
+        "is_active"?: boolean;
+        /**
+          * Label to be displayed for the menu item
+         */
+        "label": string;
     }
     /**
      * @category Navigation
@@ -2456,6 +2479,10 @@ export namespace Components {
         "size": TreeItemSize;
     }
 }
+export interface AtuiAccordionItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtuiAccordionItemElement;
+}
 export interface AtuiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtuiBreadcrumbElement;
@@ -2617,11 +2644,22 @@ declare global {
         prototype: HTMLAtuiAccordionElement;
         new (): HTMLAtuiAccordionElement;
     };
+    interface HTMLAtuiAccordionItemElementEventMap {
+        "atuiAccordionChange": boolean;
+    }
     /**
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
     interface HTMLAtuiAccordionItemElement extends Components.AtuiAccordionItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtuiAccordionItemElement: {
         prototype: HTMLAtuiAccordionItemElement;
@@ -3395,7 +3433,7 @@ declare global {
         new (): HTMLAtuiSidePanelElement;
     };
     interface HTMLAtuiSidebarElementEventMap {
-        "atuiChange": any;
+        "atuiSidebarChange": any;
     }
     /**
      * @category Navigation
@@ -3427,16 +3465,6 @@ declare global {
     };
     /**
      * @category Navigation
-     * @description A sidebar menu sub component for the sidebar.
-     */
-    interface HTMLAtuiSidebarMenuSubElement extends Components.AtuiSidebarMenuSub, HTMLStencilElement {
-    }
-    var HTMLAtuiSidebarMenuSubElement: {
-        prototype: HTMLAtuiSidebarMenuSubElement;
-        new (): HTMLAtuiSidebarMenuSubElement;
-    };
-    /**
-     * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
     interface HTMLAtuiSidebarMenuitemElement extends Components.AtuiSidebarMenuitem, HTMLStencilElement {
@@ -3444,6 +3472,19 @@ declare global {
     var HTMLAtuiSidebarMenuitemElement: {
         prototype: HTMLAtuiSidebarMenuitemElement;
         new (): HTMLAtuiSidebarMenuitemElement;
+    };
+    /**
+     * @category Navigation
+     * @description Display nested sub-menus in the atui-sidebar.
+     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
+     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
+     * Menu indent styling is supported up to 3 levels.
+     */
+    interface HTMLAtuiSidebarSubmenuElement extends Components.AtuiSidebarSubmenu, HTMLStencilElement {
+    }
+    var HTMLAtuiSidebarSubmenuElement: {
+        prototype: HTMLAtuiSidebarSubmenuElement;
+        new (): HTMLAtuiSidebarSubmenuElement;
     };
     /**
      * @category Navigation
@@ -3941,8 +3982,8 @@ declare global {
         "atui-side-panel": HTMLAtuiSidePanelElement;
         "atui-sidebar": HTMLAtuiSidebarElement;
         "atui-sidebar-menu": HTMLAtuiSidebarMenuElement;
-        "atui-sidebar-menu-sub": HTMLAtuiSidebarMenuSubElement;
         "atui-sidebar-menuitem": HTMLAtuiSidebarMenuitemElement;
+        "atui-sidebar-submenu": HTMLAtuiSidebarSubmenuElement;
         "atui-sidebar-trigger": HTMLAtuiSidebarTriggerElement;
         "atui-src-dest": HTMLAtuiSrcDestElement;
         "atui-static-table": HTMLAtuiStaticTableElement;
@@ -4018,6 +4059,7 @@ declare namespace LocalJSX {
           * Provides an atui-accordion-trigger with this label if set
          */
         "label"?: string;
+        "onAtuiAccordionChange"?: (event: AtuiAccordionItemCustomEvent<boolean>) => void;
         /**
           * Used for setting if the accordion is open.
           * @default false
@@ -5780,7 +5822,7 @@ declare namespace LocalJSX {
         /**
           * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
          */
-        "onAtuiChange"?: (event: AtuiSidebarCustomEvent<any>) => void;
+        "onAtuiSidebarChange"?: (event: AtuiSidebarCustomEvent<any>) => void;
         /**
           * Position of the sidebar on the page
           * @default 'left'
@@ -5797,12 +5839,6 @@ declare namespace LocalJSX {
      * @description 
      */
     interface AtuiSidebarMenu {
-    }
-    /**
-     * @category Navigation
-     * @description A sidebar menu sub component for the sidebar.
-     */
-    interface AtuiSidebarMenuSub {
     }
     /**
      * @category Navigation
@@ -5825,6 +5861,31 @@ declare namespace LocalJSX {
           * Label to be displayed for the menu item
          */
         "label"?: string;
+    }
+    /**
+     * @category Navigation
+     * @description Display nested sub-menus in the atui-sidebar.
+     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
+     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
+     * Menu indent styling is supported up to 3 levels.
+     */
+    interface AtuiSidebarSubmenu {
+        /**
+          * Alert badge for the menu item
+         */
+        "badge"?: string;
+        /**
+          * Icon to be displayed with the label
+         */
+        "icon"?: string;
+        /**
+          * Will change the styling of the menuitem when set
+         */
+        "is_active"?: boolean;
+        /**
+          * Label to be displayed for the menu item
+         */
+        "label": string;
     }
     /**
      * @category Navigation
@@ -6511,8 +6572,8 @@ declare namespace LocalJSX {
         "atui-side-panel": AtuiSidePanel;
         "atui-sidebar": AtuiSidebar;
         "atui-sidebar-menu": AtuiSidebarMenu;
-        "atui-sidebar-menu-sub": AtuiSidebarMenuSub;
         "atui-sidebar-menuitem": AtuiSidebarMenuitem;
+        "atui-sidebar-submenu": AtuiSidebarSubmenu;
         "atui-sidebar-trigger": AtuiSidebarTrigger;
         "atui-src-dest": AtuiSrcDest;
         "atui-static-table": AtuiStaticTable;
@@ -6833,14 +6894,17 @@ declare module "@stencil/core" {
             "atui-sidebar-menu": LocalJSX.AtuiSidebarMenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuElement>;
             /**
              * @category Navigation
-             * @description A sidebar menu sub component for the sidebar.
-             */
-            "atui-sidebar-menu-sub": LocalJSX.AtuiSidebarMenuSub & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuSubElement>;
-            /**
-             * @category Navigation
              * @description A sidebar menu item component for the sidebar.
              */
             "atui-sidebar-menuitem": LocalJSX.AtuiSidebarMenuitem & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuitemElement>;
+            /**
+             * @category Navigation
+             * @description Display nested sub-menus in the atui-sidebar.
+             * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
+             * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
+             * Menu indent styling is supported up to 3 levels.
+             */
+            "atui-sidebar-submenu": LocalJSX.AtuiSidebarSubmenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarSubmenuElement>;
             /**
              * @category Navigation
              * @description A sidebar trigger component for the sidebar.

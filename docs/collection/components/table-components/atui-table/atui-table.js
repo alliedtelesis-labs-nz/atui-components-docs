@@ -101,7 +101,7 @@ export class AtuiTableComponent {
         return this.agGrid;
     }
     render() {
-        return h(Host, { key: '9c54cc5ff587c371c7575314b9a67b4793c0ec14', class: "ag-theme-material" });
+        return h(Host, { key: '06e7841abad491b7cdc60afc755e6079e10905ec', class: "ag-theme-material" });
     }
     static get is() { return "atui-table"; }
     static get originalStyleUrls() {
