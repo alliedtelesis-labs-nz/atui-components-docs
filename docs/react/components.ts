@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtuiCustomTimeRangeCustomEvent, type AtuiListSelectorCustomEvent, type AtuiTimeRangeCustomEvent, type AtuiTimeWithUnitCustomEvent, type AtuiTreeCustomEvent, type DateRangeStrings, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtuiButtonCustomEvent, type AtuiButtonGroupOptionCustomEvent, type AtuiColumnManagerCustomEvent, type AtuiCustomTimeRangeCustomEvent, type AtuiEvent, type AtuiListSelectorCustomEvent, type AtuiTableFiltersCustomEvent, type AtuiTimeRangeCustomEvent, type AtuiTimeWithUnitCustomEvent, type AtuiTreeCustomEvent, type AtuiTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtuiAccordionItem as AtuiAccordionItemElement, defineCustomElement as defineAtuiAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion-item.js";
 import { AtuiAccordionTrigger as AtuiAccordionTriggerElement, defineCustomElement as defineAtuiAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion-trigger.js";
 import { AtuiAccordion as AtuiAccordionElement, defineCustomElement as defineAtuiAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-accordion.js";
@@ -73,6 +73,7 @@ import { AtuiTab as AtuiTabElement, defineCustomElement as defineAtuiTab } from 
 import { AtuiTableActions as AtuiTableActionsElement, defineCustomElement as defineAtuiTableActions } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table-actions.js";
 import { AtuiTableExportMenu as AtuiTableExportMenuElement, defineCustomElement as defineAtuiTableExportMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table-export-menu.js";
 import { AtuiTableFilterMenu as AtuiTableFilterMenuElement, defineCustomElement as defineAtuiTableFilterMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table-filter-menu.js";
+import { AtuiTableFilters as AtuiTableFiltersElement, defineCustomElement as defineAtuiTableFilters } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table-filters.js";
 import { AtuiTablePagination as AtuiTablePaginationElement, defineCustomElement as defineAtuiTablePagination } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table-pagination.js";
 import { AtuiTable as AtuiTableElement, defineCustomElement as defineAtuiTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-table.js";
 import { AtuiTextBadgeCell as AtuiTextBadgeCellElement, defineCustomElement as defineAtuiTextBadgeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-text-badge-cell.js";
@@ -171,7 +172,7 @@ export const AtuiBreadcrumbItem: StencilReactComponent<AtuiBreadcrumbItemElement
     defineCustomElement: defineAtuiBreadcrumbItem
 });
 
-type AtuiButtonEvents = { onAtuiClick: EventName<CustomEvent<any>> };
+type AtuiButtonEvents = { onAtuiClick: EventName<AtuiButtonCustomEvent<AtuiEvent>> };
 
 export const AtuiButton: StencilReactComponent<AtuiButtonElement, AtuiButtonEvents> = /*@__PURE__*/ createComponent<AtuiButtonElement, AtuiButtonEvents>({
     tagName: 'atui-button',
@@ -199,7 +200,7 @@ export const AtuiButtonGroup: StencilReactComponent<AtuiButtonGroupElement, Atui
     defineCustomElement: defineAtuiButtonGroup
 });
 
-type AtuiButtonGroupOptionEvents = { onAtuiClick: EventName<CustomEvent<any>> };
+type AtuiButtonGroupOptionEvents = { onAtuiClick: EventName<AtuiButtonGroupOptionCustomEvent<AtuiEvent>> };
 
 export const AtuiButtonGroupOption: StencilReactComponent<AtuiButtonGroupOptionElement, AtuiButtonGroupOptionEvents> = /*@__PURE__*/ createComponent<AtuiButtonGroupOptionElement, AtuiButtonGroupOptionEvents>({
     tagName: 'atui-button-group-option',
@@ -320,7 +321,7 @@ export const AtuiColorStatusCell: StencilReactComponent<AtuiColorStatusCellEleme
     defineCustomElement: defineAtuiColorStatusCell
 });
 
-type AtuiColumnManagerEvents = { onAtuiChange: EventName<CustomEvent<any>> };
+type AtuiColumnManagerEvents = { onAtuiChange: EventName<AtuiColumnManagerCustomEvent<ColumnManagerChangeEvent>> };
 
 export const AtuiColumnManager: StencilReactComponent<AtuiColumnManagerElement, AtuiColumnManagerEvents> = /*@__PURE__*/ createComponent<AtuiColumnManagerElement, AtuiColumnManagerEvents>({
     tagName: 'atui-column-manager',
@@ -471,7 +472,7 @@ export const AtuiListItem: StencilReactComponent<AtuiListItemElement, AtuiListIt
 
 type AtuiListSelectorEvents = {
     onAtuiChange: EventName<AtuiListSelectorCustomEvent<ListSelectorItem>>,
-    onAtuiClickInfoButton: EventName<CustomEvent<any>>
+    onAtuiInfoButtonClick: EventName<AtuiListSelectorCustomEvent<AtuiEvent>>
 };
 
 export const AtuiListSelector: StencilReactComponent<AtuiListSelectorElement, AtuiListSelectorEvents> = /*@__PURE__*/ createComponent<AtuiListSelectorElement, AtuiListSelectorEvents>({
@@ -481,7 +482,7 @@ export const AtuiListSelector: StencilReactComponent<AtuiListSelectorElement, At
     react: React,
     events: {
         onAtuiChange: 'atuiChange',
-        onAtuiClickInfoButton: 'atuiClickInfoButton'
+        onAtuiInfoButtonClick: 'atuiInfoButtonClick'
     } as AtuiListSelectorEvents,
     defineCustomElement: defineAtuiListSelector
 });
@@ -497,14 +498,14 @@ export const AtuiLoading: StencilReactComponent<AtuiLoadingElement, AtuiLoadingE
     defineCustomElement: defineAtuiLoading
 });
 
-type AtuiMenuEvents = { onMenuStateChange: EventName<CustomEvent<boolean>> };
+type AtuiMenuEvents = { onAtuiMenuStateChange: EventName<CustomEvent<boolean>> };
 
 export const AtuiMenu: StencilReactComponent<AtuiMenuElement, AtuiMenuEvents> = /*@__PURE__*/ createComponent<AtuiMenuElement, AtuiMenuEvents>({
     tagName: 'atui-menu',
     elementClass: AtuiMenuElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onMenuStateChange: 'menuStateChange' } as AtuiMenuEvents,
+    events: { onAtuiMenuStateChange: 'atuiMenuStateChange' } as AtuiMenuEvents,
     defineCustomElement: defineAtuiMenu
 });
 
@@ -595,8 +596,8 @@ export const AtuiPromptInput: StencilReactComponent<AtuiPromptInputElement, Atui
 
 type AtuiPromptMessageEvents = {
     onAtuiCopy: EventName<CustomEvent<string>>,
-    onAtuiFeedbackPositive: EventName<CustomEvent<void>>,
-    onAtuiFeedbackNegative: EventName<CustomEvent<void>>,
+    onAtuiPositiveFeedback: EventName<CustomEvent<void>>,
+    onAtuiNegativeFeedback: EventName<CustomEvent<void>>,
     onAtuiRetry: EventName<CustomEvent<void>>,
     onAtuiEdit: EventName<CustomEvent<string>>
 };
@@ -608,8 +609,8 @@ export const AtuiPromptMessage: StencilReactComponent<AtuiPromptMessageElement, 
     react: React,
     events: {
         onAtuiCopy: 'atuiCopy',
-        onAtuiFeedbackPositive: 'atuiFeedbackPositive',
-        onAtuiFeedbackNegative: 'atuiFeedbackNegative',
+        onAtuiPositiveFeedback: 'atuiPositiveFeedback',
+        onAtuiNegativeFeedback: 'atuiNegativeFeedback',
         onAtuiRetry: 'atuiRetry',
         onAtuiEdit: 'atuiEdit'
     } as AtuiPromptMessageEvents,
@@ -663,7 +664,7 @@ export const AtuiRadioGroup: StencilReactComponent<AtuiRadioGroupElement, AtuiRa
     defineCustomElement: defineAtuiRadioGroup
 });
 
-type AtuiSearchEvents = { onAtuiChange: EventName<CustomEvent<any>> };
+type AtuiSearchEvents = { onAtuiChange: EventName<CustomEvent<string>> };
 
 export const AtuiSearch: StencilReactComponent<AtuiSearchElement, AtuiSearchEvents> = /*@__PURE__*/ createComponent<AtuiSearchElement, AtuiSearchEvents>({
     tagName: 'atui-search',
@@ -817,7 +818,7 @@ export const AtuiTabContent: StencilReactComponent<AtuiTabContentElement, AtuiTa
     defineCustomElement: defineAtuiTabContent
 });
 
-type AtuiTabSelectorEvents = { onAtuiChange: EventName<CustomEvent<any>> };
+type AtuiTabSelectorEvents = { onAtuiChange: EventName<CustomEvent<string>> };
 
 export const AtuiTabSelector: StencilReactComponent<AtuiTabSelectorElement, AtuiTabSelectorEvents> = /*@__PURE__*/ createComponent<AtuiTabSelectorElement, AtuiTabSelectorEvents>({
     tagName: 'atui-tab-selector',
@@ -863,7 +864,7 @@ export const AtuiTableActions: StencilReactComponent<AtuiTableActionsElement, At
     defineCustomElement: defineAtuiTableActions
 });
 
-type AtuiTableExportMenuEvents = { onAtuiChange: EventName<CustomEvent<any>> };
+type AtuiTableExportMenuEvents = { onAtuiChange: EventName<CustomEvent<string>> };
 
 export const AtuiTableExportMenu: StencilReactComponent<AtuiTableExportMenuElement, AtuiTableExportMenuEvents> = /*@__PURE__*/ createComponent<AtuiTableExportMenuElement, AtuiTableExportMenuEvents>({
     tagName: 'atui-table-export-menu',
@@ -885,9 +886,20 @@ export const AtuiTableFilterMenu: StencilReactComponent<AtuiTableFilterMenuEleme
     defineCustomElement: defineAtuiTableFilterMenu
 });
 
+type AtuiTableFiltersEvents = { onAtuiChange: EventName<AtuiTableFiltersCustomEvent<FilterEvent[]>> };
+
+export const AtuiTableFilters: StencilReactComponent<AtuiTableFiltersElement, AtuiTableFiltersEvents> = /*@__PURE__*/ createComponent<AtuiTableFiltersElement, AtuiTableFiltersEvents>({
+    tagName: 'atui-table-filters',
+    elementClass: AtuiTableFiltersElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiChange: 'atuiChange' } as AtuiTableFiltersEvents,
+    defineCustomElement: defineAtuiTableFilters
+});
+
 type AtuiTablePaginationEvents = {
     onAtuiChange: EventName<CustomEvent<number>>,
-    onAtuiChangeSize: EventName<CustomEvent<number>>
+    onAtuiPageSizeChange: EventName<CustomEvent<number>>
 };
 
 export const AtuiTablePagination: StencilReactComponent<AtuiTablePaginationElement, AtuiTablePaginationEvents> = /*@__PURE__*/ createComponent<AtuiTablePaginationElement, AtuiTablePaginationEvents>({
@@ -897,7 +909,7 @@ export const AtuiTablePagination: StencilReactComponent<AtuiTablePaginationEleme
     react: React,
     events: {
         onAtuiChange: 'atuiChange',
-        onAtuiChangeSize: 'atuiChangeSize'
+        onAtuiPageSizeChange: 'atuiPageSizeChange'
     } as AtuiTablePaginationEvents,
     defineCustomElement: defineAtuiTablePagination
 });
@@ -1062,7 +1074,7 @@ export const AtuiTree: StencilReactComponent<AtuiTreeElement, AtuiTreeEvents> = 
     defineCustomElement: defineAtuiTree
 });
 
-type AtuiTreeItemEvents = { onAtuiClick: EventName<CustomEvent<any>> };
+type AtuiTreeItemEvents = { onAtuiClick: EventName<AtuiTreeItemCustomEvent<AtuiEvent>> };
 
 export const AtuiTreeItem: StencilReactComponent<AtuiTreeItemElement, AtuiTreeItemEvents> = /*@__PURE__*/ createComponent<AtuiTreeItemElement, AtuiTreeItemEvents>({
     tagName: 'atui-tree-item',

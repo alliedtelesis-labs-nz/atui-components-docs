@@ -70,7 +70,7 @@ export declare class AtuiMenu {
     /**
      * Emits an event containing the open menu state.
      */
-    menuStateChange: EventEmitter<boolean>;
+    atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
     private observer;
     componentDidLoad(): void;

@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { LoadingType } from '../atui-loading/atui-loading';
+import { AtuiEvent } from '../../types/events';
 export type ButtonType = 'primary' | 'primaryOutline' | 'primaryText' | 'secondary' | 'secondaryOutline' | 'secondaryText' | 'destructive' | 'destructiveOutline' | 'destructiveText';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 /**
@@ -49,7 +50,7 @@ export declare class AtuiButtonComponent {
     /**
      * Emits when the button is clicked
      */
-    atuiClick: EventEmitter<any>;
+    atuiClick: EventEmitter<AtuiEvent>;
     canHideSpinner: boolean;
     get spinnerColour(): LoadingType;
     private hideSpinnerIfAfterMinimumDisplayPeriod;

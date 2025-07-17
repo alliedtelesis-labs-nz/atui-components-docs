@@ -1,4 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
+import { AtuiEvent } from '../../../types/events';
 export type TreeItemSize = 'sm' | 'md' | 'lg';
 /**
  * @slot - Placed after the label, content is positioned at far right.
@@ -32,7 +33,7 @@ export declare class AtuiTreeItemComponent {
     /**
      * Emits when the button is clicked
      */
-    atuiClick: EventEmitter<any>;
+    atuiClick: EventEmitter<AtuiEvent>;
     handleClick(event: Event): void;
     handleKeyDown(event: KeyboardEvent): void;
     render(): any;

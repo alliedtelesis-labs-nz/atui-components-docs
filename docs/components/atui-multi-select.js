@@ -2,11 +2,11 @@ import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { c as cva } from './p-CVoOBWGd.js';
 import { d as defineCustomElement$8 } from './p-DuzY8Lpl.js';
-import { d as defineCustomElement$7 } from './p-BOygyBmB.js';
-import { d as defineCustomElement$6 } from './p-CM_cAdTk.js';
+import { d as defineCustomElement$7 } from './p-BkUGamka.js';
+import { d as defineCustomElement$6 } from './p-Blwiso62.js';
 import { d as defineCustomElement$5 } from './p-Desv48Pq.js';
 import { d as defineCustomElement$4 } from './p-Bxc6CMPN.js';
-import { d as defineCustomElement$3 } from './p-CDm6COvb.js';
+import { d as defineCustomElement$3 } from './p-DrInZzUc.js';
 import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
 
 const inputVariants = cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
@@ -185,9 +185,9 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
                 if (!this.el.contains(event.relatedTarget)) {
                     await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                 }
-            } }, this.renderLabel(), h("atui-menu", { key: 'c240e61997b7e1b59cf4f2db4bfeda83ffc8afbd', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("atui-menu", { key: '04e783719210015a75118cfb0f064fdf70226c55', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '8c3b9c1e7a47ffdec97f7ea41e6d59fc3e65c323' }, this.error_text && this.invalid && (h("span", { key: '76bb057970fffb2b6d30f1dd5f6e79a6ba91040d', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: '2a2181587b9444dda08fbb8dd257c8ebec63bd21', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), h("div", { key: 'fcdd59ee18ed69e3b89359339aebe587e5edf755' }, this.error_text && this.invalid && (h("span", { key: '07966e701ae5c7b98b13e8a887e655fb006639a0', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: '21c326c4be493844b44da88ecb50e44ba844d899', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));

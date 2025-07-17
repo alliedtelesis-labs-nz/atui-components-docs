@@ -22,8 +22,8 @@ const AtuiPromptMessage = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiCopy = createEvent(this, "atuiCopy", 7);
-        this.atuiFeedbackPositive = createEvent(this, "atuiFeedbackPositive", 7);
-        this.atuiFeedbackNegative = createEvent(this, "atuiFeedbackNegative", 7);
+        this.atuiPositiveFeedback = createEvent(this, "atuiPositiveFeedback", 7);
+        this.atuiNegativeFeedback = createEvent(this, "atuiNegativeFeedback", 7);
         this.atuiRetry = createEvent(this, "atuiRetry", 7);
         this.atuiEdit = createEvent(this, "atuiEdit", 7);
         /**
@@ -52,10 +52,10 @@ const AtuiPromptMessage = class {
             this.atuiEdit.emit(this.content);
         };
         this.handleFeedbackPositive = () => {
-            this.atuiFeedbackPositive.emit();
+            this.atuiPositiveFeedback.emit();
         };
         this.handleFeedbackNegative = () => {
-            this.atuiFeedbackNegative.emit();
+            this.atuiNegativeFeedback.emit();
         };
     }
     async componentWillLoad() {

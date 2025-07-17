@@ -87,7 +87,7 @@ const AtuiTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: 'b1a0bd168d3b333d434460d05c4dbf4a9f7c7ea2' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '47aeabae6bee07e21dc054ef9e1a1c4261928c7a' }, this.checkLayoutAndRender());
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

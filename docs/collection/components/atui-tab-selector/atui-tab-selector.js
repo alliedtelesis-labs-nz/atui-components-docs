@@ -95,7 +95,7 @@ export class AtuiTabSelector {
         }
     }
     render() {
-        return h(Host, { key: 'b1a0bd168d3b333d434460d05c4dbf4a9f7c7ea2' }, this.checkLayoutAndRender());
+        return h(Host, { key: '47aeabae6bee07e21dc054ef9e1a1c4261928c7a' }, this.checkLayoutAndRender());
     }
     static get is() { return "atui-tab-selector"; }
     static get properties() {
@@ -204,8 +204,8 @@ export class AtuiTabSelector {
                     "text": "Emits the id of the tab when a new active_tab is set"
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "string",
+                    "resolved": "string",
                     "references": {}
                 }
             }];

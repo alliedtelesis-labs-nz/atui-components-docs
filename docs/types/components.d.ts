@@ -9,6 +9,7 @@ import { AccordionItem } from "./components/atui-accordion/atui-accordion";
 import { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 import { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 import { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
+import { AtuiEvent } from "./types/events";
 import { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
 import { ChartDataset, Plugin } from "chart.js";
 import { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
@@ -18,6 +19,7 @@ import { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donu
 import { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 import { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
 import { ColDef, GridApi, GridOptions } from "ag-grid-community";
+import { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
 import { DateRangeStrings } from "./types";
 import { HeaderSizes } from "./components/atui-header/atui-header";
 import { InputType } from "./components/atui-input/atui-input";
@@ -37,6 +39,7 @@ import { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
 import { StatusBar } from "./components/atui-status-bar/atui-status-bar";
 import { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
 import { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
+import { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
 import { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
@@ -48,6 +51,7 @@ export { AccordionItem } from "./components/atui-accordion/atui-accordion";
 export { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 export { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 export { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
+export { AtuiEvent } from "./types/events";
 export { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
 export { ChartDataset, Plugin } from "chart.js";
 export { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
@@ -57,6 +61,7 @@ export { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donu
 export { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 export { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
 export { ColDef, GridApi, GridOptions } from "ag-grid-community";
+export { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
 export { DateRangeStrings } from "./types";
 export { HeaderSizes } from "./components/atui-header/atui-header";
 export { InputType } from "./components/atui-input/atui-input";
@@ -76,6 +81,7 @@ export { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
 export { StatusBar } from "./components/atui-status-bar/atui-status-bar";
 export { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
 export { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
+export { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
 export { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
@@ -2152,10 +2158,6 @@ export namespace Components {
          */
         "selected": string[];
     }
-    /**
-     * @category Data Tables
-     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
-     */
     interface AtuiTableFilters {
         /**
           * Column definitions used in your atui-table
@@ -2724,7 +2726,7 @@ declare global {
         new (): HTMLAtuiBreadcrumbItemElement;
     };
     interface HTMLAtuiButtonElementEventMap {
-        "atuiClick": any;
+        "atuiClick": AtuiEvent;
     }
     /**
      * @category Actions
@@ -2767,7 +2769,7 @@ declare global {
         new (): HTMLAtuiButtonGroupElement;
     };
     interface HTMLAtuiButtonGroupOptionElementEventMap {
-        "atuiClick": any;
+        "atuiClick": AtuiEvent;
     }
     /**
      * @category Form Controls
@@ -2948,7 +2950,7 @@ declare global {
         new (): HTMLAtuiColorStatusCellElement;
     };
     interface HTMLAtuiColumnManagerElementEventMap {
-        "atuiChange": any;
+        "atuiChange": ColumnManagerChangeEvent;
     }
     interface HTMLAtuiColumnManagerElement extends Components.AtuiColumnManager, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtuiColumnManagerElement, ev: AtuiColumnManagerCustomEvent<HTMLAtuiColumnManagerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3127,7 +3129,7 @@ declare global {
     };
     interface HTMLAtuiListSelectorElementEventMap {
         "atuiChange": ListSelectorItem;
-        "atuiClickInfoButton": any;
+        "atuiInfoButtonClick": AtuiEvent;
     }
     /**
      * @category Navigation
@@ -3168,7 +3170,7 @@ declare global {
         new (): HTMLAtuiLoadingElement;
     };
     interface HTMLAtuiMenuElementEventMap {
-        "menuStateChange": boolean;
+        "atuiMenuStateChange": boolean;
     }
     interface HTMLAtuiMenuElement extends Components.AtuiMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiMenuElementEventMap>(type: K, listener: (this: HTMLAtuiMenuElement, ev: AtuiMenuCustomEvent<HTMLAtuiMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3276,8 +3278,8 @@ declare global {
     };
     interface HTMLAtuiPromptMessageElementEventMap {
         "atuiCopy": string;
-        "atuiFeedbackPositive": void;
-        "atuiFeedbackNegative": void;
+        "atuiPositiveFeedback": void;
+        "atuiNegativeFeedback": void;
         "atuiRetry": void;
         "atuiEdit": string;
     }
@@ -3371,7 +3373,7 @@ declare global {
         new (): HTMLAtuiRadioGroupElement;
     };
     interface HTMLAtuiSearchElementEventMap {
-        "atuiChange": any;
+        "atuiChange": string;
     }
     /**
      * @category Form Controls
@@ -3547,7 +3549,7 @@ declare global {
         new (): HTMLAtuiTabContentElement;
     };
     interface HTMLAtuiTabSelectorElementEventMap {
-        "atuiChange": any;
+        "atuiChange": string;
     }
     /**
      * ### interface Tab
@@ -3622,7 +3624,7 @@ declare global {
         new (): HTMLAtuiTableActionsElement;
     };
     interface HTMLAtuiTableExportMenuElementEventMap {
-        "atuiChange": any;
+        "atuiChange": string;
     }
     /**
      * @category Data Tables
@@ -3664,12 +3666,8 @@ declare global {
         new (): HTMLAtuiTableFilterMenuElement;
     };
     interface HTMLAtuiTableFiltersElementEventMap {
-        "atuiChange": any;
+        "atuiChange": FilterEvent[];
     }
-    /**
-     * @category Data Tables
-     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
-     */
     interface HTMLAtuiTableFiltersElement extends Components.AtuiTableFilters, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtuiTableFiltersElement, ev: AtuiTableFiltersCustomEvent<HTMLAtuiTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3686,7 +3684,7 @@ declare global {
     };
     interface HTMLAtuiTablePaginationElementEventMap {
         "atuiChange": number;
-        "atuiChangeSize": number;
+        "atuiPageSizeChange": number;
     }
     /**
      * @category Data Tables
@@ -3911,7 +3909,7 @@ declare global {
         new (): HTMLAtuiTreeElement;
     };
     interface HTMLAtuiTreeItemElementEventMap {
-        "atuiClick": any;
+        "atuiClick": AtuiEvent;
     }
     interface HTMLAtuiTreeItemElement extends Components.AtuiTreeItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiTreeItemElementEventMap>(type: K, listener: (this: HTMLAtuiTreeItemElement, ev: AtuiTreeItemCustomEvent<HTMLAtuiTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4203,7 +4201,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonCustomEvent<any>) => void;
+        "onAtuiClick"?: (event: AtuiButtonCustomEvent<AtuiEvent>) => void;
         /**
           * Size of the button
           * @default 'lg'
@@ -4292,7 +4290,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonGroupOptionCustomEvent<any>) => void;
+        "onAtuiClick"?: (event: AtuiButtonGroupOptionCustomEvent<AtuiEvent>) => void;
         /**
           * ID of the button element and its option
          */
@@ -4631,7 +4629,7 @@ declare namespace LocalJSX {
         /**
           * Custom event used by atui-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
          */
-        "onAtuiChange"?: (event: AtuiColumnManagerCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiColumnManagerCustomEvent<ColumnManagerChangeEvent>) => void;
     }
     interface AtuiCustomTimeRange {
         /**
@@ -5047,9 +5045,9 @@ declare namespace LocalJSX {
          */
         "onAtuiChange"?: (event: AtuiListSelectorCustomEvent<ListSelectorItem>) => void;
         /**
-          * Emits when event the when info button of an item is clicked
+          * Emits when event when the info button of an item is clicked
          */
-        "onAtuiClickInfoButton"?: (event: AtuiListSelectorCustomEvent<any>) => void;
+        "onAtuiInfoButtonClick"?: (event: AtuiListSelectorCustomEvent<AtuiEvent>) => void;
         /**
           * List of items.
           * @default []
@@ -5150,7 +5148,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the open menu state.
          */
-        "onMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
+        "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
         /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
@@ -5440,11 +5438,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when negative feedback action is triggered
          */
-        "onAtuiFeedbackNegative"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        "onAtuiNegativeFeedback"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
         /**
           * Emitted when positive feedback action is triggered
          */
-        "onAtuiFeedbackPositive"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        "onAtuiPositiveFeedback"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
         /**
           * Emitted when the retry action is triggered (for assistant messages with errors)
          */
@@ -5627,7 +5625,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when the input is changed. Used by atui-table.
          */
-        "onAtuiChange"?: (event: AtuiSearchCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiSearchCustomEvent<string>) => void;
         /**
           * Placeholder text inside the search component.
          */
@@ -6051,7 +6049,7 @@ declare namespace LocalJSX {
         /**
           * Emits the id of the tab when a new active_tab is set
          */
-        "onAtuiChange"?: (event: AtuiTabSelectorCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiTabSelectorCustomEvent<string>) => void;
         /**
           * List of tabs the selector will have
           * @default []
@@ -6136,7 +6134,7 @@ declare namespace LocalJSX {
         /**
           * Emits id of the clicked button, either 'CSV' or 'PDF'.
          */
-        "onAtuiChange"?: (event: AtuiTableExportMenuCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiTableExportMenuCustomEvent<string>) => void;
     }
     /**
      * @category Data Tables
@@ -6157,19 +6155,15 @@ declare namespace LocalJSX {
          */
         "selected"?: string[];
     }
-    /**
-     * @category Data Tables
-     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
-     */
     interface AtuiTableFilters {
         /**
           * Column definitions used in your atui-table
          */
         "col_defs"?: ColDef[];
         /**
-          * Emits id of column to filter and value to filter by filter on change.
+          * Emits id of column and filter value on change.
          */
-        "onAtuiChange"?: (event: AtuiTableFiltersCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiTableFiltersCustomEvent<FilterEvent[]>) => void;
         /**
           * Currently selected columns and filter values
           * @default []
@@ -6200,7 +6194,7 @@ declare namespace LocalJSX {
         /**
           * Emits event with ```event.detail``` as the new page size
          */
-        "onAtuiChangeSize"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
+        "onAtuiPageSizeChange"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
         /**
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
@@ -6505,7 +6499,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiTreeItemCustomEvent<any>) => void;
+        "onAtuiClick"?: (event: AtuiTreeItemCustomEvent<AtuiEvent>) => void;
         /**
           * Determines the direction of the indicator arrow
           * @default false
@@ -6967,10 +6961,6 @@ declare module "@stencil/core" {
              * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
              */
             "atui-table-filter-menu": LocalJSX.AtuiTableFilterMenu & JSXBase.HTMLAttributes<HTMLAtuiTableFilterMenuElement>;
-            /**
-             * @category Data Tables
-             * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
-             */
             "atui-table-filters": LocalJSX.AtuiTableFilters & JSXBase.HTMLAttributes<HTMLAtuiTableFiltersElement>;
             /**
              * @category Data Tables

@@ -49,10 +49,10 @@ export class AtuiPromptMessage {
             this.atuiEdit.emit(this.content);
         };
         this.handleFeedbackPositive = () => {
-            this.atuiFeedbackPositive.emit();
+            this.atuiPositiveFeedback.emit();
         };
         this.handleFeedbackNegative = () => {
-            this.atuiFeedbackNegative.emit();
+            this.atuiNegativeFeedback.emit();
         };
     }
     async componentWillLoad() {
@@ -264,8 +264,8 @@ export class AtuiPromptMessage {
                     "references": {}
                 }
             }, {
-                "method": "atuiFeedbackPositive",
-                "name": "atuiFeedbackPositive",
+                "method": "atuiPositiveFeedback",
+                "name": "atuiPositiveFeedback",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -279,8 +279,8 @@ export class AtuiPromptMessage {
                     "references": {}
                 }
             }, {
-                "method": "atuiFeedbackNegative",
-                "name": "atuiFeedbackNegative",
+                "method": "atuiNegativeFeedback",
+                "name": "atuiNegativeFeedback",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,

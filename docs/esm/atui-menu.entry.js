@@ -12,7 +12,7 @@ const variants = cva('fixed z-menu w-full rounded-md border border-solid border-
 const AtuiMenu = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.menuStateChange = createEvent(this, "menuStateChange", 7);
+        this.atuiMenuStateChange = createEvent(this, "atuiMenuStateChange", 7);
         /**
          * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
          */
@@ -69,7 +69,7 @@ const AtuiMenu = class {
      * Toggles the dropdown menu's open state.
      */
     async toggleMenu() {
-        this.menuStateChange.emit(!this.isOpen);
+        this.atuiMenuStateChange.emit(!this.isOpen);
         this.isOpen = !this.isOpen;
         this.updatePosition();
     }
@@ -78,14 +78,14 @@ const AtuiMenu = class {
      */
     async openMenu() {
         this.isOpen = true;
-        this.menuStateChange.emit(true);
+        this.atuiMenuStateChange.emit(true);
     }
     /**
      * Toggles the dropdown menu's open state.
      */
     async closeMenu() {
         this.isOpen = false;
-        this.menuStateChange.emit(false);
+        this.atuiMenuStateChange.emit(false);
     }
     /**
      * Return the current menu open state
@@ -155,13 +155,13 @@ const AtuiMenu = class {
             clearTimeout(this.timedOutCloser);
         if (!this.isOpen) {
             this.isOpen = true;
-            this.menuStateChange.emit(true);
+            this.atuiMenuStateChange.emit(true);
             this.updatePosition();
         }
     }
     mouseLeaveHandler() {
         this.isOpen = false;
-        this.menuStateChange.emit(false);
+        this.atuiMenuStateChange.emit(false);
     }
     get positionStyle() {
         var _a, _b;
@@ -215,9 +215,9 @@ const AtuiMenu = class {
         const classname = variants({
             open: this.isOpen,
         });
-        return (h(Host, { key: 'e3bcb9a968ff521391ea75c55cdf2580b08f002a' }, h("div", { key: '6bd2c883986b5354ff880435f6859de4a7481064', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (h(Host, { key: '23b47de71ea9b397d257fac0597ad347c0937a6b' }, h("div", { key: '0c491d413415451f14d7e975e4b8c7b04b40f1db', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, h("div", { key: '9cf2d5eeedeb17295385a25cb6f52ff32c1b1046', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, h("div", { key: '667edb9cd222600f2da52c91566a78f03879dbba', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 if (event.key === 'Escape') {
@@ -227,7 +227,7 @@ const AtuiMenu = class {
                 ? this.mouseLeaveHandler()
                 : null, onClick: () => this.trigger === 'click' && !this.disabled
                 ? this.toggleMenu()
-                : null, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'c16d4efc9f700d2a72f0f0378cfccea7648caa2b', name: "menu-trigger" })), h("div", { key: '1a895b723e0fa27ec622d874a1c660d6b88f2017', role: this.role, style: this.positionStyle, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, onMouseEnter: () => this.trigger === 'hover' &&
+                : null, class: this.disabled ? 'contents' : '' }, h("slot", { key: '401129981392a64300b9e4fdbfa4e0555c6d917c', name: "menu-trigger" })), h("div", { key: '3434330e723e9d26563527ae308a6edef948c129', role: this.role, style: this.positionStyle, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -239,7 +239,7 @@ const AtuiMenu = class {
                         this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: classname, "data-name": "menu-content-wrapper" }, h("slot", { key: '60ba1db461d29b2b443cf800981d9bef1738884a', name: "menu-content" })))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: classname, "data-name": "menu-content-wrapper" }, h("slot", { key: 'a635182689f4d391af86c99f1754ab8389536ba1', name: "menu-content" })))));
     }
     get el() { return getElement(this); }
 };

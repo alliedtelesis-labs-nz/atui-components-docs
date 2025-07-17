@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h } from './p-DDLUhBkV.js';
 import { d as defineCustomElement$3 } from './p-IMVeGR0G.js';
-import { d as defineCustomElement$2 } from './p-BR_pUpiA.js';
+import { d as defineCustomElement$2 } from './p-B_83HO2s.js';
 
 const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeComponent extends H {
     constructor() {

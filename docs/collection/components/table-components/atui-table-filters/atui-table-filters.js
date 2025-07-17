@@ -1,10 +1,5 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
-/**
- * @category Data Tables
- * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
- * @internal
- */
 export class AtuiTableFilters {
     constructor() {
         /**
@@ -33,7 +28,7 @@ export class AtuiTableFilters {
         this.atuiChange.emit(this.selected);
     }
     render() {
-        return (this.col_defs && (h(Host, { key: '5d637fabe6f17fb2cad801ef3eee09f8555419d2', class: "flex items-start gap-8" }, h("div", { key: 'ac95e5f710a420d75b9f70b0ad5ff4236cb89a7d', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: 'fcba479cd96adf414584283a434f2d339b46332b', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: '7911975e80252c5dded18958a8983163ad563894', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '294d98271e9a213afe732df8e3321714f7e43de2', class: "flex items-start gap-8" }, h("div", { key: 'f9bd6abd8d61d1d8775d489eb99cfe99dfb65957', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: '9421f4449bb5b6ce59f61fbee20bdc0dc8950319', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: 'c4d49bc7ee2863a459c78216a70d8bb88c0db12e', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "atui-table-filters"; }
     static get properties() {
@@ -97,12 +92,18 @@ export class AtuiTableFilters {
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emits id of column to filter and value to filter by filter on change."
+                    "text": "Emits id of column and filter value on change."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "FilterEvent[]",
+                    "resolved": "FilterEvent[]",
+                    "references": {
+                        "FilterEvent": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/atui-table-filters/atui-table-filters.tsx",
+                            "id": "src/components/table-components/atui-table-filters/atui-table-filters.tsx::FilterEvent"
+                        }
+                    }
                 }
             }];
     }

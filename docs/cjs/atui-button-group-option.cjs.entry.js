@@ -28,9 +28,13 @@ const AtuiButtonGroupOption = class {
         this.provider = this.el.closest('atui-button-group');
         this.host_disabled = this.provider.disabled;
     }
-    handleClick() {
+    handleClick(event) {
         this.is_active = true;
-        this.atuiClick.emit();
+        this.atuiClick.emit({
+            originalEvent: event,
+            componentType: 'atui-button-group-option',
+            element: this.el,
+        });
     }
     render() {
         const classname = variants({
@@ -38,7 +42,7 @@ const AtuiButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: 'b43ad996d5dc962ac97300b01b7e0239e43a5888', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: () => this.handleClick(), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '630d3805d7305af3496f73971f10c77be1e54387', name: "icon" }), this.label));
+        return (index.h("button", { key: '227ff47a1dc5b641891bc34914dedb81e66516fb', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: 'd454b31f4db213994e5edc0ec7e3184c0fde1c94', name: "icon" }), this.label));
     }
     get el() { return index.getElement(this); }
 };

@@ -144,7 +144,10 @@ const AtuiButtonComponent = class {
         }
     }
     handleClick(event) {
-        this.atuiClick.emit(event);
+        this.atuiClick.emit({
+            originalEvent: event,
+            componentType: 'atui-button',
+        });
         if (this.submit) {
             this.el.closest('form').requestSubmit();
         }
@@ -152,7 +155,11 @@ const AtuiButtonComponent = class {
     handleKeyDown(event) {
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
-            this.atuiClick.emit(event);
+            this.atuiClick.emit({
+                originalEvent: event,
+                componentType: 'atui-button',
+                element: this.el,
+            });
             if (this.submit) {
                 this.el.closest('form').requestSubmit();
             }
@@ -171,7 +178,7 @@ const AtuiButtonComponent = class {
         const focusIndicatorClassname = focusIndicatorVariants({
             type: this.type,
         });
-        return (h(Host, { key: 'c9a169ceee09af9fb1caf8e79862924b9e430b21', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '66cdfb1d1f1b69f7311c1f53014508a13d5bf41b', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("atui-loading", { key: '576d96313a3458086a16f71df035f7b1f7cf94a7', class: "absolute", size: "sm", type: this.spinnerColour })), this.icon && (h("span", { key: 'c62ce15ee08a0bf84a3df4a4f5af3b86a3b4a758', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'b98f2085b2b5749f0f08eb570f61b91886aeee12', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '0c03343b4ecec962a230407aa6bee0ba8800cb34' }), this.icon_right && (h("span", { key: 'c986c5f89cca19261d002c755595c99c27357385', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_right))), h("div", { key: '4a3afc99d7c5083c375ed52c2fafe8ed6eefb573', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'd4196b825ad2d2859be64dc7bdfd7796ee4423b4', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '26f3be2175a8766f646c93461bc6d9c3a2e0fae3', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("atui-loading", { key: '65248084418ed8292fe589062627bf148bf764ad', class: "absolute", size: "sm", type: this.spinnerColour })), this.icon && (h("span", { key: '9d641778263519d0f864f1e9a07081f68aabeaeb', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'f2e6d0979b214b5bf0ce9d14f0b04e212075ff4e', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '54bcfbcaa311648c50a56b804ba25662174b4937' }), this.icon_right && (h("span", { key: '9a72417d46662209e32fa51455a0f70fc0f05fab', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_right))), h("div", { key: '2ae7de4b57f58a815ddb0e32e3181e1ea129a8e8', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     get el() { return getElement(this); }
 };

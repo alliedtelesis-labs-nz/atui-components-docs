@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$3 } from './p-BOygyBmB.js';
+import { d as defineCustomElement$3 } from './p-BkUGamka.js';
 import { d as defineCustomElement$2 } from './p-Bxc6CMPN.js';
 
 const AtuiSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarTriggerComponent extends H {

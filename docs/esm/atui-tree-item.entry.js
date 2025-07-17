@@ -36,14 +36,20 @@ const AtuiTreeItemComponent = class {
         this.disabled = false;
     }
     handleClick(event) {
-        this.atuiClick.emit(event);
+        this.atuiClick.emit({
+            originalEvent: event,
+            componentType: 'atui-tree-item',
+            element: this.el,
+        });
     }
     handleKeyDown(event) {
-        console.log('KeyDown:', event.key);
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
-            console.log('dsds');
-            this.atuiClick.emit(event);
+            this.atuiClick.emit({
+                originalEvent: event,
+                componentType: 'atui-tree-item',
+                element: this.el,
+            });
         }
     }
     render() {
@@ -55,9 +61,9 @@ const AtuiTreeItemComponent = class {
         const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: '4fbe272437b6bac249b7d60c02ddf2dce31b67a6', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '6ca9a91c1c39d75f384fe44f0377d6e616b68092', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '333b58e5791cdace464124b6db78ab0fa35500a1', class: "flex gap-4" }, this.has_children && (h("span", { key: '4abcb310609d42ec4938d53c8019aa3f0faf9f45', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (h(Host, { key: 'fa8192f387626220d7b89c29798ff68f1c9daf2d', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'cee059987f1cd587ae2aead161d2e64b352a1daf', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '1d25a32028084d6811677523d664fa3821f4b345', class: "flex gap-4" }, this.has_children && (h("span", { key: '9479a675fe453b069d1c3bbe8c6f597e9154b973', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (h("span", { key: '098203f8b124787df2d3bc6d053b0e32edce289c', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), h("slot", { key: '04fb771185250efc4c2a80ee59862b544b76fbf8' })), h("div", { key: 'cf546e828191d91676187355ad1491a5cb1bae7a', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (h("span", { key: 'cac095dc00bdc819cae5b1c159ea0d0350e8010b', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), h("slot", { key: '81e416dedeb861312cdca90a439642876c453c50' })), h("div", { key: 'c245c449ed9765343de2f4c3b466266c3162f832', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
     get el() { return getElement(this); }
 };

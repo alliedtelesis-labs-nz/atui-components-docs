@@ -38,7 +38,7 @@ export declare class AtuiTabSelector {
     /**
      * Emits the id of the tab when a new active_tab is set
      */
-    atuiChange: EventEmitter<any>;
+    atuiChange: EventEmitter<string>;
     componentDidLoad(): void;
     componentDidUpdate(): void;
     handleActiveTabChange(newValue: string): void;

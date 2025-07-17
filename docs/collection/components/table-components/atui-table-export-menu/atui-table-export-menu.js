@@ -12,7 +12,7 @@ export class AtuiTableExportMenu {
         this.atuiChange.emit(event.target.id);
     }
     render() {
-        return (h("atui-menu", { key: '759c53fbe29895ebaa4b3f498bd284bc43621442', width: 'auto', align: "end" }, h("atui-tooltip", { key: '474c55b800909d844553f3b1bac2ebe040095e74', slot: "menu-trigger", position: "top" }, h("atui-button", { key: 'b00a2478991c3493e3c34934abf2a45ae21615c8', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '2985c9e0a7921a9cd2c262a32e4a9822936e2c6a', slot: "tooltip-content" }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: 'd90554b4b26ddab18581fd36b81457c5dda64307', slot: "menu-content" }, h("atui-button", { key: '7a177056498a73aa9d4ebdbea82786363c132710', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), h("atui-button", { key: 'dc1b5e4bdae345fc18cee6d78f97c6974a11eda8', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
+        return (h("atui-menu", { key: 'f48579b701c1f0edbff730af90a0a23ea02ca4de', width: 'auto', align: "end" }, h("atui-tooltip", { key: '5782ab6770f7130d50f68974a129791221edcb61', slot: "menu-trigger", position: "top" }, h("atui-button", { key: 'a78a2ba87f082124aeb0bad8b5988bb44764edfa', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '985170b1d73728c97d38ed1dd403ad8f2fcc3ef3', slot: "tooltip-content" }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: '99c4e39c4f9ab6f41f3a3de3a69aaa5777b0c9a3', slot: "menu-content" }, h("atui-button", { key: '0fe522b2ea7768990efa155a4bb56d3d2dbb4a03', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), h("atui-button", { key: '88b206aa2c838749f548db5c117713a5ce6bf006', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
     }
     static get is() { return "atui-table-export-menu"; }
     static get states() {
@@ -32,8 +32,8 @@ export class AtuiTableExportMenu {
                     "text": "Emits id of the clicked button, either 'CSV' or 'PDF'."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "string",
+                    "resolved": "string",
                     "references": {}
                 }
             }];
