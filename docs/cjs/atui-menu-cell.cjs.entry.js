@@ -22,13 +22,13 @@ const AtuiMenuCellComponent = class {
                 var _a;
                 return typeof action === 'object' ? (index.h("atui-tooltip", { is_visible: action.getDisabled
                         ? action.getDisabled(this.params.data)
-                        : false }, index.h("atui-button", { class: "w-full *:justify-start", type: "secondaryText", label: action.title, slot: "tooltip-trigger", disabled: action.getDisabled
+                        : false }, "sssssssss", index.h("atui-button", { class: "w-full *:justify-start", type: "secondaryText", label: action.title, slot: "tooltip-trigger", disabled: action.getDisabled
                         ? action.getDisabled(this.params.data)
                         : false, onClick: (params) => {
                         if (action.onTrigger !==
                             undefined)
                             action.onTrigger(params);
-                    } }), index.h("span", { slot: "tooltip-content" }, (_a = action.disabledTooltip) !== null && _a !== void 0 ? _a : ''))) : (index.h("span", { class: "py-4" }, action));
+                    } }), index.h("span", { slot: "tooltip-content" }, (_a = action.disabledTooltip) !== null && _a !== void 0 ? _a : ''))) : (index.h("span", { class: "py-4" }, "sssssssss", action));
             })))));
     }
     get el() { return index.getElement(this); }

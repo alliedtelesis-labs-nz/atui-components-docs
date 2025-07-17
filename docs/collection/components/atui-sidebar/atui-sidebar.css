@@ -7,6 +7,6 @@ atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-
 atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem {
   padding-left: 64px;
 }
-atui-sidebar atui-menu [data-name=menu-content-wrapper] {
+atui-sidebar atui-sidebar-submenu atui-menu [data-name=menu-content-wrapper] {
   background-color: var(--token-sidebar-background);
 }

@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-8kq1vl9Q.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
-const atuiSidebarCss = "atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:36px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:50px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:64px}atui-sidebar atui-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}";
+const atuiSidebarCss = "atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:36px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:50px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:64px}atui-sidebar atui-sidebar-submenu atui-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}";
 
 const variants = cva('transition-size relative flex flex-col overflow-y-auto overflow-x-hidden bg-sidebar-background text-sidebar-foreground duration-300 ease-in-out', {
     variants: {
@@ -49,7 +49,6 @@ const AtuiSidebarComponent = class {
      */
     async toggleSidebar() {
         this.isOpen = !this.isOpen;
-        console.log('stenciltoggleSidebar', this.isOpen);
         this.atuiSidebarChange.emit(this.isOpen);
     }
     /**
@@ -64,7 +63,7 @@ const AtuiSidebarComponent = class {
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (h(Host, { key: '42781d85322781d8b5d151f0b2175f161630f2b0', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, h("nav", { key: '51404a8d1d961c847176352cb0706ec31c9e9a72', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("div", { key: '8cd1703c7cc1b2d2179f09d18d9bc2fac9315dfe', class: "flex p-8" }, h("slot", { key: '7d88db3ae8e1343021df286d39b725f54ff9af22', name: "sidebar-header" })), h("div", { key: 'b76c6878da6dc341ec9394e6cbfc32e60a275255', class: "align-items flex flex-1 flex-col p-8" }, h("slot", { key: '1b9734f52014c743322fd461a94f7f267d6d6095', name: "sidebar-content" })), h("div", { key: '90bd60167615b848f5d127c7491351853599dab7', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '3007a731fc19f0340a80baefae8d4666209df62c', name: "sidebar-footer" }))), h("div", { key: '1c7448ba440c5c319fd890a0d43aac82e72a81ac', class: "flex w-full overflow-auto" }, h("slot", { key: '5b2d9a1348a5693f78c988263997e2d526e008b0', name: "page-content" }))));
+        return (h(Host, { key: '6751cfde1b6e8f04da4e97bb37ab565cad85e206', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, h("nav", { key: '4645af244235a3597da4c01c09082d7d5c9291a5', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("div", { key: '13634bd8d3e13d1a87e1a2afd21aece610b9dc2a', class: "flex p-8" }, h("slot", { key: '199390ea46de140ac296911ff54b96cdbc30f88a', name: "sidebar-header" })), h("div", { key: '56f3ff0c39cb80b0f81a20e57a464073cdb7243b', class: "align-items flex flex-1 flex-col p-8" }, h("slot", { key: 'e21e18da1c7345897a1da34ff058f2a3cd5804e5', name: "sidebar-content" })), h("div", { key: '95227a81b2894305e45acb4c7f698a2371bea054', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '12ac154d93fdf124a82087885f5daabf861a95f6', name: "sidebar-footer" }))), h("div", { key: '21767aa7f039e47f7b283ba21c382b2cb7578113', class: "flex w-full overflow-auto" }, h("slot", { key: '590cb784adb16c28a1585cbbbdb8a3bd1783a415', name: "page-content" }))));
     }
 };
 AtuiSidebarComponent.style = atuiSidebarCss;

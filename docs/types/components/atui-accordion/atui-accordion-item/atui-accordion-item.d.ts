@@ -28,6 +28,9 @@ export declare class AtuiAccordionItemComponent {
      * Used for setting if the accordion is open.
      */
     open: boolean;
+    /**
+     * Emitted when the accordion item's open state changes
+     */
     atuiAccordionChange: EventEmitter<boolean>;
     private accordionElement;
     componentDidLoad(): void;

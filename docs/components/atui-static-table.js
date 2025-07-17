@@ -7,7 +7,7 @@ import { d as defineCustomElement$7 } from './p-Desv48Pq.js';
 import { d as defineCustomElement$6 } from './p-Bxc6CMPN.js';
 import { d as defineCustomElement$5 } from './p-DrInZzUc.js';
 import { d as defineCustomElement$4 } from './p-BxFu4ytg.js';
-import { d as defineCustomElement$3 } from './p-Bozx4pkF.js';
+import { d as defineCustomElement$3 } from './p-D5_9OEVv.js';
 import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
 
 const AtuiStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStaticTable extends H {

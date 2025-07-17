@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$6 } from './p-O88V4QY0.js';
+import { d as defineCustomElement$6 } from './p-DUFTHd3T.js';
 import { d as defineCustomElement$5 } from './p-DMcgrjfY.js';
 import { d as defineCustomElement$4 } from './p-DuzY8Lpl.js';
 import { d as defineCustomElement$3 } from './p-DrInZzUc.js';
-import { d as defineCustomElement$2 } from './p-CmBivjvm.js';
+import { d as defineCustomElement$2 } from './p-Cb-0Ly8w.js';
 
 const AtuiSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarSubmenuComponent extends H {
     constructor() {
@@ -49,7 +49,7 @@ const AtuiSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiS
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: 'a109a23d13079895044c1199bd283e4a6da96a9c' }, h("atui-accordion-item", { key: 'ca11f7e5018211d8335893aa9f29b4235aaf426d', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("atui-sidebar-menuitem", { key: 'c626025dd2745bacc06f255b219bb6f65b7a08f4', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: 'd18d20c79352469747229c0913d147f89d6deded', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '328dbba07b34655d68b4df611b50cbc32eb858bf', slot: "accordion-content" }, h("slot", { key: '4f2bba630b2f2f80e0adca65f3e895fd89742c6c', name: "submenu-content" }))), h("atui-menu", { key: '19601fc77ef4b0729553d0b9bef0bd975e982b46', class: this.isSidebarOpen ? 'hidden' : '', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start" }, h("atui-sidebar-menuitem", { key: 'b4def404aa75f4698c40dc6e456214e95001470e', class: "pl-16", slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: 'a042383c71be0ef73ad861003175172665586609', slot: "menu-content" }, h("slot", { key: 'e8769d3cb9bac1d75fe317ee3bb28b9cc12cf89d', name: "submenu-hover-content" })))));
+        return (h(Host, { key: 'a109a23d13079895044c1199bd283e4a6da96a9c' }, h("atui-accordion-item", { key: 'ca11f7e5018211d8335893aa9f29b4235aaf426d', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("atui-sidebar-menuitem", { key: 'c626025dd2745bacc06f255b219bb6f65b7a08f4', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: 'd18d20c79352469747229c0913d147f89d6deded', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '328dbba07b34655d68b4df611b50cbc32eb858bf', slot: "accordion-content" }, h("slot", { key: '4f2bba630b2f2f80e0adca65f3e895fd89742c6c', name: "submenu-content" }))), h("atui-menu", { key: 'cd9e511650eac2943de50dccae0567251a7d296c', class: this.isSidebarOpen ? 'hidden' : 'w-input-sm bg-red-400', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start" }, h("atui-sidebar-menuitem", { key: 'f1b4a4769af170a5f2afe619fccf1e3968537105', class: "pl-16", slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '0e38d866b81aa7f79e22a00f52d36d22114a576f', slot: "menu-content" }, h("slot", { key: 'd5909a4848dfe4dbe4a4a0fde3737908a945b28e', name: "submenu-hover-content" })))));
     }
     get el() { return this; }
 }, [4, "atui-sidebar-submenu", {

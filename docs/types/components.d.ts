@@ -712,28 +712,45 @@ export namespace Components {
     }
     interface AtuiCustomTimeRange {
         /**
+          * Whether time selection is enabled in addition to date selection
           * @default true
          */
         "can_set_time": boolean;
+        /**
+          * Default value for the from date
+         */
         "default_from_date": Date;
+        /**
+          * Default value for the to date
+         */
         "default_to_date": Date;
+        /**
+          * Current value of the from date
+         */
         "from_date_value": Date;
         /**
+          * Whether to lock the end date to the current time
           * @default false
          */
         "lock_end_date_to_now": boolean;
         /**
+          * Maximum selectable date
           * @default new Date(Date.now())
          */
         "max_date": Date;
         /**
+          * Minimum selectable date
           * @default MIN_DATE
          */
         "min_date": Date;
         /**
+          * Minimum number of seconds for the time range
           * @default 60
          */
         "min_seconds": number;
+        /**
+          * Current value of the to date
+         */
         "to_date_value": Date;
     }
     /**
@@ -2328,28 +2345,42 @@ export namespace Components {
      * @description A time with unit component for selecting a time period.
      */
     interface AtuiTimeWithUnit {
+        /**
+          * Common time preset options to display
+         */
         "common_options": TimePresets[];
         /**
+          * Custom error message to display when validation fails
           * @default null
          */
         "custom_error_message": any;
+        /**
+          * Initial time selection value
+         */
         "initial_selected_time": TimeWithUnit | TimeRangeDisplay.ALL;
         /**
+          * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
          */
         "max_seconds": number;
         /**
+          * Minimum date constraint for time selection
           * @default null
          */
         "min_date": Date;
         /**
+          * Minimum number of seconds allowed for time selection
           * @default 60
          */
         "min_seconds": number;
         /**
+          * Whether to show the 'All Time' option
           * @default false
          */
         "show_all_time": boolean;
+        /**
+          * Available time units for selection
+         */
         "units": TimeUnit[];
     }
     /**
@@ -4057,6 +4088,9 @@ declare namespace LocalJSX {
           * Provides an atui-accordion-trigger with this label if set
          */
         "label"?: string;
+        /**
+          * Emitted when the accordion item's open state changes
+         */
         "onAtuiAccordionChange"?: (event: AtuiAccordionItemCustomEvent<boolean>) => void;
         /**
           * Used for setting if the accordion is open.
@@ -4633,30 +4667,53 @@ declare namespace LocalJSX {
     }
     interface AtuiCustomTimeRange {
         /**
+          * Whether time selection is enabled in addition to date selection
           * @default true
          */
         "can_set_time"?: boolean;
+        /**
+          * Default value for the from date
+         */
         "default_from_date"?: Date;
+        /**
+          * Default value for the to date
+         */
         "default_to_date"?: Date;
+        /**
+          * Current value of the from date
+         */
         "from_date_value"?: Date;
         /**
+          * Whether to lock the end date to the current time
           * @default false
          */
         "lock_end_date_to_now"?: boolean;
         /**
+          * Maximum selectable date
           * @default new Date(Date.now())
          */
         "max_date"?: Date;
         /**
+          * Minimum selectable date
           * @default MIN_DATE
          */
         "min_date"?: Date;
         /**
+          * Minimum number of seconds for the time range
           * @default 60
          */
         "min_seconds"?: number;
+        /**
+          * Emitted when the user cancels the time range selection
+         */
         "onAtuiCancel"?: (event: AtuiCustomTimeRangeCustomEvent<null>) => void;
+        /**
+          * Emitted when the user submits the time range selection
+         */
         "onAtuiSubmit"?: (event: AtuiCustomTimeRangeCustomEvent<DateRangeStrings>) => void;
+        /**
+          * Current value of the to date
+         */
         "to_date_value"?: Date;
     }
     /**
@@ -6345,30 +6402,50 @@ declare namespace LocalJSX {
      * @description A time with unit component for selecting a time period.
      */
     interface AtuiTimeWithUnit {
+        /**
+          * Common time preset options to display
+         */
         "common_options"?: TimePresets[];
         /**
+          * Custom error message to display when validation fails
           * @default null
          */
         "custom_error_message"?: any;
+        /**
+          * Initial time selection value
+         */
         "initial_selected_time"?: TimeWithUnit | TimeRangeDisplay.ALL;
         /**
+          * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
          */
         "max_seconds"?: number;
         /**
+          * Minimum date constraint for time selection
           * @default null
          */
         "min_date"?: Date;
         /**
+          * Minimum number of seconds allowed for time selection
           * @default 60
          */
         "min_seconds"?: number;
+        /**
+          * Emitted when the user cancels the time selection
+         */
         "onAtuiCancel"?: (event: AtuiTimeWithUnitCustomEvent<null>) => void;
+        /**
+          * Emitted when the user submits the time selection
+         */
         "onAtuiSubmit"?: (event: AtuiTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>) => void;
         /**
+          * Whether to show the 'All Time' option
           * @default false
          */
         "show_all_time"?: boolean;
+        /**
+          * Available time units for selection
+         */
         "units"?: TimeUnit[];
     }
     /**
