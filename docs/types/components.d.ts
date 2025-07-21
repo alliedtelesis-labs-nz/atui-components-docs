@@ -18,7 +18,7 @@ import { ChartColorPalette } from "./types/chart-color";
 import { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
 import { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 import { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
-import { ColDef, GridApi, GridOptions } from "ag-grid-community";
+import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
 import { DateRangeStrings } from "./types";
 import { HeaderSizes } from "./components/atui-header/atui-header";
@@ -60,7 +60,7 @@ export { ChartColorPalette } from "./types/chart-color";
 export { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
 export { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 export { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
-export { ColDef, GridApi, GridOptions } from "ag-grid-community";
+export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
 export { DateRangeStrings } from "./types";
 export { HeaderSizes } from "./components/atui-header/atui-header";
@@ -1671,6 +1671,12 @@ export namespace Components {
          */
         "col_defs": ColDef[];
         /**
+          * Returns the **currently displayed row nodes** from the ag-Grid instance.  This asynchronous method retrieves an array of row nodes representing the rows currently visible (rendered) in the grid, after filtering, sorting, and other view-based operations.
+          * @template T The data type contained in each row node.
+          * @returns Promise resolving to an array of displayed row nodes.
+         */
+        "getDisplayedRows": <T>() => Promise<IRowNode<T>[]>;
+        /**
           * If true the column manager will not be added
          */
         "hide_column_manager"?: boolean;
@@ -1710,6 +1716,15 @@ export namespace Components {
         items: any[];
         total: number;
     };
+        /**
+          * Updates the data of rows in the AG Grid based on their displayed row index.  Use this method when you need to programmatically update one or more specific rows in the grid, identified by their current displayed index. This is particularly useful when you want to perform partial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a server), and want to reflect these changes immediately in the UI with optional visual feedback.
+          * @template T - The data type of the row's underlying data structure.
+          * @param rowUpdates - An array of objects specifying the row indices and the data updates to apply. - `index`: The displayed index of the row to update. - `update`: An object containing the updated data for the row.
+          * @param options - Optional settings for the update operation. - `flash`: Whether to visually flash the updated rows after the data change (improves user visibility). - `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios).
+          * @example // Update row at displayed index 2 with new values and flash the change updateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });
+          * @remarks - This function works with currently rendered rows; if rows are virtualized or paged out, ensure   the specified indices match the grid's current rendering context. - Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,   websocket pushes, or UI triggers).
+         */
+        "updateRowByIndex": <T>(rowUpdates: RowUpdate<T>[], options?: RowUpdateOptions) => Promise<void>;
         /**
           * If true, disables pagination on the table and shows all data at once. Useful for server-side pagination where you want to control pagination externally.
           * @default false

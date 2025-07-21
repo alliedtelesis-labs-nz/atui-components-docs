@@ -1,4 +1,4 @@
-import { h, Host } from "@stencil/core";
+import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 /**
  * @category Data Tables
@@ -34,6 +34,60 @@ export class AtuiSearchTable {
     }
     async componentDidUpdate() {
         await this.initGrid();
+    }
+    /**
+     * Updates the data of rows in the AG Grid based on their displayed row index.
+     *
+     * Use this method when you need to programmatically update one or more specific rows in the grid,
+     * identified by their current displayed index. This is particularly useful when you want to perform
+     * partial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a
+     * server), and want to reflect these changes immediately in the UI with optional visual feedback.
+     *
+     * @template T - The data type of the row's underlying data structure.
+     * @param {RowUpdate<T>[]} rowUpdates - An array of objects specifying the row indices and the data updates to apply.
+     *   - `index`: The displayed index of the row to update.
+     *   - `update`: An object containing the updated data for the row.
+     * @param {RowUpdateOptions} [options] - Optional settings for the update operation.
+     *   - `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).
+     *   - `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios).
+     *
+     * @example
+     * // Update row at displayed index 2 with new values and flash the change
+     * updateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });
+     *
+     * @remarks
+     * - This function works with currently rendered rows; if rows are virtualized or paged out, ensure
+     *   the specified indices match the grid's current rendering context.
+     * - Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,
+     *   websocket pushes, or UI triggers).
+     */
+    async updateRowByIndex(rowUpdates, options) {
+        const displayedRows = this.agGrid.getRenderedNodes();
+        rowUpdates.forEach(({ index, update }) => {
+            const displayedRow = displayedRows.find((row) => row.rowIndex === index);
+            if (displayedRow) {
+                displayedRow.updateData(update);
+                if (options === null || options === void 0 ? void 0 : options.flash) {
+                    this.agGrid.flashCells({ rowNodes: [displayedRow] });
+                }
+                this.agGrid.refreshCells({
+                    rowNodes: [displayedRow],
+                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                });
+            }
+        });
+    }
+    /**
+     * Returns the **currently displayed row nodes** from the ag-Grid instance.
+     *
+     * This asynchronous method retrieves an array of row nodes representing the rows currently visible
+     * (rendered) in the grid, after filtering, sorting, and other view-based operations.
+     *
+     * @template T The data type contained in each row node.
+     * @returns {Promise<IRowNode<T>[]>} Promise resolving to an array of displayed row nodes.
+     */
+    async getDisplayedRows() {
+        return this.agGrid.getRenderedNodes();
     }
     async initGrid() {
         var _a;
@@ -143,7 +197,7 @@ export class AtuiSearchTable {
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '0388d25406001d0472e9d5af634843dd3fee396f' }, h("atui-table-actions", { key: '0782344bb453410ede23a5c80d38a17a909dbf7d', ag_grid: this.agGrid }, h("div", { key: '6d4848f876e361b05805d783bbb4024dbc4fffce', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '153b3b6ba89e2f7fd919d2cdf0c5d492d5111e08', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: '6e38fddfe2d4580f216546672e15c9a9ac1b41d3', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '75e51fedb18c3986e861f09e11fb065c8f55154c', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: 'ae22e7c3c6c77aeed9f625e82e1dcca238b32c53', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: '6be1e90adbe77823c9a2f94f2ae246a2b09f26d1', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: '2156b70fb445a89e20c9c2b6e05cf02b48b3b6bc', slot: "actions" }, h("slot", { key: 'adade4a626815d478f150bb3d72415ad06dea43b', name: "actions" }))), h("slot", { key: 'f689362be6df7c4c2f790d666f7948bc9172d69c', name: "multi-select-actions" }), h("atui-table", { key: '6e80157a24878d82b88249ce35515b50713d4310', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '4c2598c93c350489da9aabb14becb4ac3a7a1b17' }, h("atui-table-actions", { key: '69e425b83f8d1521344f1a3123b1b132c6aea8b3', ag_grid: this.agGrid }, h("div", { key: 'f617060bc1cf9f277d814dbb1bf0ab0c3380871e', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '65e694dbd10a1a1b4f58fca66d4fb741ca5e907c', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: '160ecc9b1828bb4cf6141ec8410f6c892259480e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '6e590bdb124af1fb5cb4b1c6c673cbc2a5e92f9d', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: '8ca9b6f0c3fcea29a4f62fe4d4bbc1e14c1f4aaa', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: '7e08182de30325b74d8fc82c7141b9509b38a78e', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'ddcd708522e3fff981b53cf77775a8173621d2ca', slot: "actions" }, h("slot", { key: '78182336857c86ef414ddb6b346fefc2e2c42d88', name: "actions" }))), h("slot", { key: '5b3501390290e7363bd29e6ae55eeaaa564e71d8', name: "multi-select-actions" }), h("atui-table", { key: 'a9e796054eb4e3462e842b46dfbc4d879f587dab', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
     static get is() { return "atui-search-table"; }
     static get properties() {
@@ -374,6 +428,94 @@ export class AtuiSearchTable {
             "selectedFilters": {},
             "menuSelectedIds": {},
             "searchValue": {}
+        };
+    }
+    static get methods() {
+        return {
+            "updateRowByIndex": {
+                "complexType": {
+                    "signature": "<T>(rowUpdates: RowUpdate<T>[], options?: RowUpdateOptions) => Promise<void>",
+                    "parameters": [{
+                            "name": "rowUpdates",
+                            "type": "RowUpdate<T>[]",
+                            "docs": "- An array of objects specifying the row indices and the data updates to apply.\n- `index`: The displayed index of the row to update.\n- `update`: An object containing the updated data for the row."
+                        }, {
+                            "name": "options",
+                            "type": "{ flash: boolean; forceRefresh: boolean; }",
+                            "docs": "- Optional settings for the update operation.\n- `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).\n- `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios)."
+                        }],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        },
+                        "RowUpdate": {
+                            "location": "global",
+                            "id": "global::RowUpdate"
+                        },
+                        "T": {
+                            "location": "global",
+                            "id": "global::T"
+                        },
+                        "RowUpdateOptions": {
+                            "location": "global",
+                            "id": "global::RowUpdateOptions"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Updates the data of rows in the AG Grid based on their displayed row index.\n\nUse this method when you need to programmatically update one or more specific rows in the grid,\nidentified by their current displayed index. This is particularly useful when you want to perform\npartial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a\nserver), and want to reflect these changes immediately in the UI with optional visual feedback.",
+                    "tags": [{
+                            "name": "template",
+                            "text": "T - The data type of the row's underlying data structure."
+                        }, {
+                            "name": "param",
+                            "text": "rowUpdates - An array of objects specifying the row indices and the data updates to apply.\n- `index`: The displayed index of the row to update.\n- `update`: An object containing the updated data for the row."
+                        }, {
+                            "name": "param",
+                            "text": "options - Optional settings for the update operation.\n- `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).\n- `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios)."
+                        }, {
+                            "name": "example",
+                            "text": "// Update row at displayed index 2 with new values and flash the change\nupdateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });"
+                        }, {
+                            "name": "remarks",
+                            "text": "- This function works with currently rendered rows; if rows are virtualized or paged out, ensure\n  the specified indices match the grid's current rendering context.\n- Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,\n  websocket pushes, or UI triggers)."
+                        }]
+                }
+            },
+            "getDisplayedRows": {
+                "complexType": {
+                    "signature": "<T>() => Promise<IRowNode<T>[]>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        },
+                        "IRowNode": {
+                            "location": "import",
+                            "path": "ag-grid-community",
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode"
+                        },
+                        "T": {
+                            "location": "global",
+                            "id": "global::T"
+                        }
+                    },
+                    "return": "Promise<IRowNode<T>[]>"
+                },
+                "docs": {
+                    "text": "Returns the **currently displayed row nodes** from the ag-Grid instance.\n\nThis asynchronous method retrieves an array of row nodes representing the rows currently visible\n(rendered) in the grid, after filtering, sorting, and other view-based operations.",
+                    "tags": [{
+                            "name": "template",
+                            "text": "T The data type contained in each row node."
+                        }, {
+                            "name": "returns",
+                            "text": "Promise resolving to an array of displayed row nodes."
+                        }]
+                }
+            }
         };
     }
     static get elementRef() { return "el"; }
