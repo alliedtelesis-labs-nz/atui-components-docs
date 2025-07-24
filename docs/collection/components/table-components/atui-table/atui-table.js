@@ -101,7 +101,7 @@ export class AtuiTableComponent {
         return this.agGrid;
     }
     render() {
-        return h(Host, { key: '06e7841abad491b7cdc60afc755e6079e10905ec', class: "ag-theme-material" });
+        return h(Host, { key: '5bd1bf5adfd520717bd2ab4c1fc961329c05c459', class: "ag-theme-material" });
     }
     static get is() { return "atui-table"; }
     static get originalStyleUrls() {
@@ -293,7 +293,7 @@ export class AtuiTableComponent {
         return {
             "createGrid": {
                 "complexType": {
-                    "signature": "() => Promise<GridApi<any>>",
+                    "signature": "() => Promise<GridApi>",
                     "parameters": [],
                     "references": {
                         "Promise": {

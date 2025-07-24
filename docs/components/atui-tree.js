@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, d as createEvent, h } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$3 } from './p-IMVeGR0G.js';
-import { d as defineCustomElement$2 } from './p-B_83HO2s.js';
+import { p as proxyCustomElement, H, d as createEvent, h } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$3 } from './p-DRSCT2MW.js';
+import { d as defineCustomElement$2 } from './p-DZjH1m8a.js';
 
 const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeComponent extends H {
     constructor() {
@@ -65,7 +65,7 @@ const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeCompone
                 }, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));
     }
-}, [4, "atui-tree", {
+}, [260, "atui-tree", {
         "item_list": [1040],
         "size": [1],
         "flattenedItemList": [32],

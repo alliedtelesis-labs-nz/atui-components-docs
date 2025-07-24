@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const AtuiStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStatusBar extends H {
     constructor() {
@@ -27,7 +27,7 @@ const AtuiStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStatusBar ext
     render() {
         return (h(Host, { key: '656401c7c18872d74e095ddbed9ec386722fd370', class: this.statusBarClass }, h("div", { key: 'b4d30684d8582a6535bf99e7d1372add5b651a1c', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
-}, [0, "atui-status-bar", {
+}, [256, "atui-status-bar", {
         "status_bar": [16],
         "size": [1],
         "disable_tooltip": [4]

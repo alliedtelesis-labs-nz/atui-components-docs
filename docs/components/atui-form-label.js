@@ -1,4 +1,4 @@
-import { A as AtuiFormLabelComponent, d as defineCustomElement$1 } from './p-Desv48Pq.js';
+import { A as AtuiFormLabelComponent, d as defineCustomElement$1 } from './p-DKz0HNdG.js';
 
 const AtuiFormLabel = AtuiFormLabelComponent;
 const defineCustomElement = defineCustomElement$1;

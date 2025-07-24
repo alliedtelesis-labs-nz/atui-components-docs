@@ -19,6 +19,7 @@ export var AvailableCells;
     AvailableCells["COLOR_STATUS_CELL"] = "AtuiColorStatusCell";
     AvailableCells["IMAGE_CELL"] = "AtuiImageCell";
     AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtuiTextImageCell";
+    AvailableCells["MENU_CELL"] = "AtuiMenuCell";
 })(AvailableCells || (AvailableCells = {}));
 export var AvailableHeaders;
 (function (AvailableHeaders) {

@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-BJDFmEHZ.js');
+var index = require('./index-BAt2i-T2.js');
 var index$1 = require('./index-palgSxc9.js');
 
-const variants = index$1.cva('z-50box-border pointer-events-none absolute z-modal flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
+const variants = index$1.cva('absolute z-50 z-modal box-border flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
     variants: {
         open: {
             true: null,
@@ -66,7 +66,7 @@ const AtuiTooltipComponent = class {
         const classname = variants({
             open: this.is_visible,
         });
-        return (index.h(index.Host, { key: '6d95439168563f94bc88b5210ae788b712d75955', class: "relative inline-block" }, index.h("div", { key: '24458c7b3422265bfe2e776fdf8c1212381fe07e', class: "peer contents", ref: (el) => (this.triggerEl = el) }, index.h("slot", { key: '57a745dc8488346a9a642733fd42f36a05f2d75c', name: "tooltip-trigger" })), index.h("div", { key: '22341d18b0e9c0530292185700b07597835fe594', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, index.h("slot", { key: 'f971c7b8583ab6fa46c588faf8fe288dcdba0cde', name: "tooltip-content" }))));
+        return (index.h(index.Host, { key: '8f91f7184564c1c94d35934b7483f0c2aa4f83e8', class: "relative inline-block" }, index.h("div", { key: '25b4f2354215ad112e0997dccbd75cb618f42bc5', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, index.h("slot", { key: 'd6d5d7f4e0b3faf7ca62970c8147c03b678ccf0e', name: "tooltip-trigger" })), index.h("div", { key: '7eaa027ca06f6da463f511134e174d5bd13894a7', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, index.h("slot", { key: 'c6c33dffeb18c8eb1a36f699a8c97f09eab6def0', name: "tooltip-content" }))));
     }
     get el() { return index.getElement(this); }
 };

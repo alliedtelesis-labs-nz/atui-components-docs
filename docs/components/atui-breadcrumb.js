@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$2 } from './p-TCJd6U_j.js';
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$2 } from './p-Bu5mES--.js';
 
 const AtuiBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtuiBreadcrumbComponent extends H {
     constructor() {
@@ -25,7 +25,7 @@ const AtuiBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtuiBread
             this.values.map((value, index) => (h(Fragment, null, h("atui-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), h("slot", { key: '3e748cce1dfb62d3bfd2265e0298d453452e7051' })));
     }
     get el() { return this; }
-}, [4, "atui-breadcrumb", {
+}, [260, "atui-breadcrumb", {
         "get_prefix": [16],
         "prefix_delimiter": [1],
         "values": [16]

@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, h } from './p-kcU6cSzl.js';
 
 const AtuiTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTabContent extends H {
     constructor() {
@@ -37,7 +37,7 @@ const AtuiTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTabContent e
         return (h("div", { key: '06b99722607eee5b9c353d1877e6fd4ef61d4f18', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '69c26ae7f30121798031bc08fdbc4d54478ff723' })));
     }
     get el() { return this; }
-}, [4, "atui-tab-content", {
+}, [260, "atui-tab-content", {
         "tab_id": [1],
         "is_active": [516],
         "isActive": [32]

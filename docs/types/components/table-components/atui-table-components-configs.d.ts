@@ -14,6 +14,7 @@ import { AtuiMultiBtnCell } from './cell-components/atui-multi-btn-cell/atui-mul
 import { AtuiColorStatusCell } from './cell-components/atui-color-status-cell/atui-color-status-cell';
 import { AtuiImageCell } from './cell-components/atui-image-cell/atui-image-cell';
 import { AtuiTextImageCell } from './cell-components/atui-text-image-cell/atui-text-image-cell';
+import { AtuiMenuCellComponent } from './cell-components/atui-menu-cell/atui-menu-cell';
 export declare class AtuiTableComponentsConfigs {
     static readonly defaultPageSize = 10;
     static getFrameworkComponents(): {
@@ -33,5 +34,6 @@ export declare class AtuiTableComponentsConfigs {
         AtuiColorStatusCell: typeof AtuiColorStatusCell;
         AtuiTextImageCell: typeof AtuiTextImageCell;
         AtuiImageCell: typeof AtuiImageCell;
+        AtuiMenuCell: typeof AtuiMenuCellComponent;
     };
 }

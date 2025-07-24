@@ -1,4 +1,4 @@
-import { A as AtuiPromptMessage$1, d as defineCustomElement$1 } from './p-DI9nAyqc.js';
+import { A as AtuiPromptMessage$1, d as defineCustomElement$1 } from './p-B46wztEs.js';
 
 const AtuiPromptMessage = AtuiPromptMessage$1;
 const defineCustomElement = defineCustomElement$1;

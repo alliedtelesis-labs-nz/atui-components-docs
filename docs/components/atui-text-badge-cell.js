@@ -1,4 +1,4 @@
-import { A as AtuiTextBadgeCell$1, d as defineCustomElement$1 } from './p-CK6BGTcO.js';
+import { A as AtuiTextBadgeCell$1, d as defineCustomElement$1 } from './p-lPnpsqtb.js';
 
 const AtuiTextBadgeCell = AtuiTextBadgeCell$1;
 const defineCustomElement = defineCustomElement$1;

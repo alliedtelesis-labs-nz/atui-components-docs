@@ -20,7 +20,8 @@ export declare enum AvailableCells {
     MULTI_BTN_CELL = "AtuiMultiBtnCell",
     COLOR_STATUS_CELL = "AtuiColorStatusCell",
     IMAGE_CELL = "AtuiImageCell",
-    TEXT_WITH_IMAGE_CELL = "AtuiTextImageCell"
+    TEXT_WITH_IMAGE_CELL = "AtuiTextImageCell",
+    MENU_CELL = "AtuiMenuCell"
 }
 export declare enum AvailableHeaders {
     CHECKBOX_HEADER = "checkboxHeader",

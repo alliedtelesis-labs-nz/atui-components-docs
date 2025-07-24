@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BJDFmEHZ.js');
+var index = require('./index-BAt2i-T2.js');
 
 const AtuiToggleCell = class {
     constructor(hostRef) {

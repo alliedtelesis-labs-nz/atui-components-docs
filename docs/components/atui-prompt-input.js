@@ -1,8 +1,8 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$5 } from './p-BkUGamka.js';
-import { d as defineCustomElement$4 } from './p-Desv48Pq.js';
-import { d as defineCustomElement$3 } from './p-Bxc6CMPN.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$5 } from './p-VjTTylTi.js';
+import { d as defineCustomElement$4 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$3 } from './p-CHkT-iof.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const AtuiPromptInputComponent = /*@__PURE__*/ proxyCustomElement(class AtuiPromptInputComponent extends H {
     constructor() {
@@ -100,7 +100,7 @@ const AtuiPromptInputComponent = /*@__PURE__*/ proxyCustomElement(class AtuiProm
             }, "data-name": "prompt-send-button" })))), h("slot", { key: '872ad414bbcfc96efb98c85f0bfd431be043f4e3', name: "footer" })));
     }
     get el() { return this; }
-}, [4, "atui-prompt-input", {
+}, [260, "atui-prompt-input", {
         "label": [1],
         "hint_text": [1],
         "info_text": [1],

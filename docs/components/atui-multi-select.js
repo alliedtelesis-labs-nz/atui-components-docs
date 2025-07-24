@@ -1,13 +1,13 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { c as cva } from './p-CVoOBWGd.js';
-import { d as defineCustomElement$8 } from './p-DuzY8Lpl.js';
-import { d as defineCustomElement$7 } from './p-BkUGamka.js';
-import { d as defineCustomElement$6 } from './p-Blwiso62.js';
-import { d as defineCustomElement$5 } from './p-Desv48Pq.js';
-import { d as defineCustomElement$4 } from './p-Bxc6CMPN.js';
-import { d as defineCustomElement$3 } from './p-DrInZzUc.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$8 } from './p-BNyf5aaw.js';
+import { d as defineCustomElement$7 } from './p-VjTTylTi.js';
+import { d as defineCustomElement$6 } from './p-66vRzbq_.js';
+import { d as defineCustomElement$5 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$4 } from './p-CHkT-iof.js';
+import { d as defineCustomElement$3 } from './p-q1ydcm97.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const inputVariants = cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
     variants: {
@@ -236,7 +236,7 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
         return (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, h("i", { role: "presentation", class: `material-icons h-16 w-16 text-sm ease-in-out ${this.value.includes(option.value) ? 'visible' : 'hidden'}` }, "check"), option.value));
     }
     get el() { return this; }
-}, [4, "atui-multi-select", {
+}, [260, "atui-multi-select", {
         "options": [16],
         "label": [1],
         "hint_text": [1],

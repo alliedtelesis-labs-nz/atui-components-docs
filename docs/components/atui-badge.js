@@ -1,4 +1,4 @@
-import { A as AtuiBadgeComponent, d as defineCustomElement$1 } from './p-DuzY8Lpl.js';
+import { A as AtuiBadgeComponent, d as defineCustomElement$1 } from './p-BNyf5aaw.js';
 
 const AtuiBadge = AtuiBadgeComponent;
 const defineCustomElement = defineCustomElement$1;

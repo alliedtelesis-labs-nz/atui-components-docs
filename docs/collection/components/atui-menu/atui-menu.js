@@ -1,6 +1,7 @@
 import { h, Host, } from "@stencil/core";
 import { cva } from "class-variance-authority";
-const variants = cva('fixed z-menu w-full rounded-md border border-solid border-light bg-white p-4 shadow-md', {
+import { computePosition, flip, shift, offset, autoUpdate, } from "@floating-ui/dom";
+const variants = cva('z-menu w-full rounded-md border border-solid border-light bg-white p-4 shadow-md', {
     variants: {
         open: {
             true: null,
@@ -46,18 +47,22 @@ export class AtuiMenu {
          * Prevent opening menu
          */
         this.disabled = false;
+        /**
+         * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
+         */
+        this.portal = false;
         this.isOpen = false;
-        this.isIntersectingViewport = false;
-        this.updatePosition = () => {
-            requestAnimationFrame(() => {
-                const trigger = this.triggerEl;
-                if (trigger) {
-                    this.triggerPosition = trigger.getBoundingClientRect();
-                }
-            });
+        this.portalContainer = null;
+        this.updatePosition = async () => {
+            if (this.triggerEl && this.menuEl && this.isOpen) {
+                await this.updateFloatingPosition();
+            }
         };
         this.handleOutsideClick = (event) => {
-            if (this.isOpen && !this.el.contains(event.target)) {
+            var _a;
+            if (this.isOpen &&
+                !this.el.contains(event.target) &&
+                !((_a = this.portalContainer) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {
                 this.mouseLeaveHandler();
             }
         };
@@ -68,6 +73,12 @@ export class AtuiMenu {
     async toggleMenu() {
         this.atuiMenuStateChange.emit(!this.isOpen);
         this.isOpen = !this.isOpen;
+        if (this.isOpen && this.portal) {
+            this.moveMenuToPortal();
+        }
+        else if (!this.isOpen && this.portal) {
+            this.restoreMenuFromPortal();
+        }
         this.updatePosition();
     }
     /**
@@ -76,6 +87,10 @@ export class AtuiMenu {
     async openMenu() {
         this.isOpen = true;
         this.atuiMenuStateChange.emit(true);
+        if (this.portal) {
+            this.moveMenuToPortal();
+        }
+        this.updatePosition();
     }
     /**
      * Toggles the dropdown menu's open state.
@@ -83,6 +98,9 @@ export class AtuiMenu {
     async closeMenu() {
         this.isOpen = false;
         this.atuiMenuStateChange.emit(false);
+        if (this.portal) {
+            this.restoreMenuFromPortal();
+        }
     }
     /**
      * Return the current menu open state
@@ -91,61 +109,13 @@ export class AtuiMenu {
         return this.isOpen;
     }
     componentDidLoad() {
-        this.updatePosition();
-        window.addEventListener('scroll', this.updatePosition, true);
-        window.addEventListener('resize', this.updatePosition);
         window.addEventListener('click', this.handleOutsideClick);
-        this.initIntersectionObserver();
+        this.setupFloatingUI();
     }
     disconnectedCallback() {
-        window.removeEventListener('scroll', this.updatePosition, true);
-        window.removeEventListener('resize', this.updatePosition);
         window.removeEventListener('click', this.handleOutsideClick);
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-    }
-    initIntersectionObserver() {
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 1.0,
-        };
-        this.observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    this.isIntersectingViewport = true;
-                    this.positionStrategy(entry);
-                }
-                else {
-                    this.isIntersectingViewport = false;
-                }
-            });
-        }, options);
-        const menuElement = this.el.querySelector('[data-name="menu-content-wrapper"]');
-        if (menuElement) {
-            this.observer.observe(menuElement);
-        }
-    }
-    positionStrategy(entry) {
-        if (!this.isOpen)
-            return;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const { top, right, left, height } = entry.boundingClientRect;
-        // TODO: VCOMPLIB-887: Improve menu positioning strategy
-        if (this.position === 'bottom' && top + height >= viewportHeight) {
-            this.position = 'top';
-        }
-        else if (this.position === 'top' && top <= 0) {
-            this.position = 'bottom';
-        }
-        if (this.position === 'right' && right >= viewportWidth) {
-            this.position = 'left';
-        }
-        else if (this.position === 'left' && left <= 0) {
-            this.position = 'right';
-        }
+        this.cleanupFloatingUI();
+        this.cleanupPortalContainer();
     }
     mouseEnterHandler() {
         if (this.timedOutCloser)
@@ -153,68 +123,160 @@ export class AtuiMenu {
         if (!this.isOpen) {
             this.isOpen = true;
             this.atuiMenuStateChange.emit(true);
+            if (this.portal) {
+                this.moveMenuToPortal();
+            }
             this.updatePosition();
         }
     }
     mouseLeaveHandler() {
         this.isOpen = false;
         this.atuiMenuStateChange.emit(false);
-    }
-    get positionStyle() {
-        var _a, _b;
-        const style = {};
-        const triggerRect = (_a = this.triggerEl) === null || _a === void 0 ? void 0 : _a.getBoundingClientRect();
-        const menuRect = (_b = this.menuEl) === null || _b === void 0 ? void 0 : _b.getBoundingClientRect();
-        if (!triggerRect)
-            return style;
-        switch (this.position) {
-            case 'top':
-                style.top = `${triggerRect.top - menuRect.height}px`;
-                if (this.align === 'start') {
-                    style.left = `${triggerRect.left}px`;
-                }
-                else {
-                    style.right = `${window.innerWidth - triggerRect.right}px`;
-                }
-                break;
-            case 'bottom':
-                style.top = `${triggerRect.bottom + this.offset_y}px`;
-                if (this.align === 'start') {
-                    style.left = `${triggerRect.left}px`;
-                }
-                else {
-                    style.right = `${window.innerWidth - triggerRect.right - 8}px`;
-                }
-                break;
-            case 'left':
-                style.left = `${triggerRect.left - menuRect.width}px`;
-                if (this.align === 'start') {
-                    style.top = `${triggerRect.top}px`;
-                }
-                else {
-                    style.bottom = `${window.innerHeight - triggerRect.bottom}px`;
-                }
-                break;
-            case 'right':
-                style.left = `${triggerRect.right + this.offset_x}px`;
-                if (this.align === 'start') {
-                    style.top = `${triggerRect.top}px`;
-                }
-                else {
-                    style.bottom = `${window.innerHeight - triggerRect.bottom}px`;
-                }
-                break;
+        if (this.portal) {
+            this.restoreMenuFromPortal();
         }
-        style.width = this.width;
-        return style;
+    }
+    //TODO: Replace floatingUI positioning with CSS popover and anchor positioning when supported in a browsers
+    createPortalContainer() {
+        if (!this.portalContainer) {
+            this.portalContainer = document.createElement('div');
+            Object.assign(this.portalContainer.style, {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none',
+                zIndex: '9999',
+            });
+            this.portalContainer.setAttribute('data-atui-menu-portal', 'true');
+            document.body.appendChild(this.portalContainer);
+        }
+    }
+    moveMenuToPortal() {
+        if (this.portal && this.menuEl && this.isOpen) {
+            this.createPortalContainer();
+            this.portalContainer.innerHTML = '';
+            this.portalContainer.appendChild(this.menuEl);
+            this.menuEl.style.display = '';
+            Object.assign(this.menuEl.style, {
+                pointerEvents: 'auto',
+                display: 'block',
+                visibility: 'visible',
+                position: 'fixed',
+                width: this.width,
+                zIndex: '9999',
+            });
+            this.setupFloatingUI();
+        }
+    }
+    restoreMenuFromPortal() {
+        if (this.portal && this.portalContainer) {
+            this.portalContainer.innerHTML = '';
+            const originalMenu = this.el.querySelector('[data-name="menu-content-wrapper"]');
+            if (originalMenu) {
+                originalMenu.style.display = '';
+                this.menuEl = originalMenu;
+            }
+            this.cleanupPortalContainer();
+        }
+    }
+    cleanupPortalContainer() {
+        if (this.portalContainer && this.portalContainer.parentNode) {
+            this.portalContainer.parentNode.removeChild(this.portalContainer);
+            this.portalContainer = null;
+        }
+    }
+    setupFloatingUI() {
+        if (this.cleanupAutoUpdate) {
+            this.cleanupAutoUpdate();
+        }
+        if (this.triggerEl && this.menuEl) {
+            const observer = new IntersectionObserver((entries) => {
+                if (!entries[0].isIntersecting && this.isOpen) {
+                    this.mouseLeaveHandler();
+                }
+            }, { threshold: 0 });
+            observer.observe(this.triggerEl);
+            this.cleanupAutoUpdate = autoUpdate(this.triggerEl, this.menuEl, () => {
+                if (this.isOpen) {
+                    const placement = this.getFloatingUIPlacement();
+                    const strategy = this.portal ? 'fixed' : 'absolute';
+                    computePosition(this.triggerEl, this.menuEl, {
+                        placement,
+                        strategy,
+                        middleware: [
+                            offset(this.position === 'bottom' ||
+                                this.position === 'top'
+                                ? this.offset_y
+                                : this.offset_x),
+                            flip({
+                                fallbackStrategy: 'bestFit',
+                                padding: 8,
+                            }),
+                            shift({
+                                padding: 8,
+                                mainAxis: true,
+                                crossAxis: true,
+                            }),
+                        ],
+                    }).then(({ x, y }) => {
+                        Object.assign(this.menuEl.style, {
+                            position: strategy,
+                            left: `${x}px`,
+                            top: `${y}px`,
+                            width: this.width,
+                            zIndex: '9999',
+                        });
+                    });
+                }
+            }, {
+                ancestorScroll: true,
+                ancestorResize: true,
+                elementResize: true,
+                layoutShift: true,
+                animationFrame: true,
+            });
+            const originalCleanup = this.cleanupAutoUpdate;
+            this.cleanupAutoUpdate = () => {
+                originalCleanup();
+                observer.disconnect();
+            };
+        }
+    }
+    cleanupFloatingUI() {
+        if (this.cleanupAutoUpdate) {
+            this.cleanupAutoUpdate();
+            this.cleanupAutoUpdate = undefined;
+        }
+    }
+    async updateFloatingPosition() {
+        if (!this.triggerEl || !this.menuEl)
+            return;
+        this.setupFloatingUI();
+    }
+    getFloatingUIPlacement() {
+        const positionMap = {
+            top: 'top',
+            bottom: 'bottom',
+            left: 'left',
+            right: 'right',
+        };
+        const alignMap = {
+            start: 'start',
+            end: 'end',
+        };
+        const position = positionMap[this.position] || 'bottom';
+        const align = alignMap[this.align] || 'start';
+        return `${position}-${align}`;
     }
     render() {
         const classname = variants({
             open: this.isOpen,
         });
-        return (h(Host, { key: '23b47de71ea9b397d257fac0597ad347c0937a6b' }, h("div", { key: '0c491d413415451f14d7e975e4b8c7b04b40f1db', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (h(Host, { key: 'a3871c57d3c9380ec560e409a7e76944088fa1c5' }, h("div", { key: '41a0c87e0f32e83bb03c95fcd4d928e12bab15b9', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, h("div", { key: '667edb9cd222600f2da52c91566a78f03879dbba', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, h("div", { key: '3f14f59d7ab917f0a07c0cbbf4b2603b2f757838', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 if (event.key === 'Escape') {
@@ -224,7 +286,7 @@ export class AtuiMenu {
                 ? this.mouseLeaveHandler()
                 : null, onClick: () => this.trigger === 'click' && !this.disabled
                 ? this.toggleMenu()
-                : null, class: this.disabled ? 'contents' : '' }, h("slot", { key: '401129981392a64300b9e4fdbfa4e0555c6d917c', name: "menu-trigger" })), h("div", { key: '3434330e723e9d26563527ae308a6edef948c129', role: this.role, style: this.positionStyle, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, onMouseEnter: () => this.trigger === 'hover' &&
+                : null, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'afd8a6a4ca299f1c873971035eb74856ea31bb5c', name: "menu-trigger" })), h("div", { key: '76adc0172921ee2e5b0b44e3b81a2858a0dc7526', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -236,7 +298,7 @@ export class AtuiMenu {
                         this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: classname, "data-name": "menu-content-wrapper" }, h("slot", { key: 'a635182689f4d391af86c99f1754ab8389536ba1', name: "menu-content" })))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: classname, "data-name": "menu-content-wrapper" }, h("slot", { key: '186ef0cb4fb354ffe169e517ff155b4f03f24ee5', name: "menu-content" })))));
     }
     static get is() { return "atui-menu"; }
     static get properties() {
@@ -444,14 +506,32 @@ export class AtuiMenu {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "false"
+            },
+            "portal": {
+                "type": "boolean",
+                "attribute": "portal",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "false"
             }
         };
     }
     static get states() {
         return {
-            "isOpen": {},
-            "isIntersectingViewport": {},
-            "triggerPosition": {}
+            "isOpen": {}
         };
     }
     static get events() {

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BJDFmEHZ.js');
+var index = require('./index-BAt2i-T2.js');
 var translation = require('./translation-HqquF7bU.js');
 var atuiCheckboxCell_entry = require('./atui-checkbox-cell.entry.cjs.js');
 var atuiTextBadgeCell_entry = require('./atui-text-badge-cell.entry.cjs.js');
@@ -18,6 +18,7 @@ var atuiMultiBtnCell_entry = require('./atui-multi-btn-cell.entry.cjs.js');
 var atuiColorStatusCell_entry = require('./atui-color-status-cell.entry.cjs.js');
 var atuiImageCell_entry = require('./atui-image-cell.entry.cjs.js');
 var atuiTextImageCell_entry = require('./atui-text-image-cell.entry.cjs.js');
+var atuiMenuCell_entry = require('./atui-menu-cell.entry.cjs.js');
 require('./time-date-presentation.util-B9Nq5Am9.js');
 require('./moment-DRlRqWvO.js');
 require('./moment-w2EYXu2o.js');
@@ -44,29 +45,36 @@ const AtuiColumnManagerComponent = class {
         }
     }
     changeHandler(event) {
-        const checkboxEl = event.target;
-        const columnId = checkboxEl.id;
-        const isChecked = checkboxEl.checked;
-        if (isChecked) {
-            this.checkedColumns = [...this.checkedColumns, columnId];
-        }
-        else {
-            this.checkedColumns = this.checkedColumns.filter((id) => id !== columnId);
-        }
-        this.atuiChange.emit({
-            id: columnId,
-            checked: isChecked,
+        const selectedColumns = event.detail || [];
+        const previousColumns = new Set(this.checkedColumns);
+        const currentColumns = new Set(selectedColumns);
+        selectedColumns.forEach((columnId) => {
+            if (!previousColumns.has(columnId)) {
+                this.atuiChange.emit({
+                    id: columnId,
+                    checked: true,
+                });
+            }
         });
+        Array.from(previousColumns).forEach((columnId) => {
+            if (!currentColumns.has(columnId)) {
+                this.atuiChange.emit({
+                    id: columnId,
+                    checked: false,
+                });
+            }
+        });
+        this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("atui-menu", { key: '2b06358f15b93053f7d71dc2419e6888c1d6a259', autoclose: false, width: "auto", align: "end" }, index.h("atui-tooltip", { key: '909127fd069abbab0e5f761f244d48e61ca7e96d', slot: "menu-trigger", position: "top" }, index.h("atui-button", { key: '33a85b7299051b095c3430c101a1ce67c78127e6', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: 'd26940e8aacf55953ebacc3777240c6952877e54', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS)), index.h("atui-checkbox-group", { key: 'f181d4f4db7b6088edb6ca138080d496fee88192', slot: "menu-content", options: this.col_defs
+        return (index.h("atui-menu", { key: 'd691b5c05bd87035cb11ced7519febd90fcf27b3', autoclose: false, width: "auto", align: "end" }, index.h("atui-tooltip", { key: '0b0402e3619bedcdf4e82f7cc559d7f6962e6a17', slot: "menu-trigger", position: "top" }, index.h("atui-button", { key: 'db5d14ff4e61f9472d2d86342625d1994726354b', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: '01ae0a0ea920459ed1be3a7b23e1804dfed2b40c', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS)), index.h("atui-checkbox-group", { key: 'd69e76e395d4ba9978b88d9256d237622d660ded', slot: "menu-content", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
                         label: colDef.field,
                     };
                 })
-                : [], value: this.checkedColumns, onChange: (event) => this.changeHandler(event) })));
+                : [], value: this.checkedColumns, onAtuiChange: (event) => this.changeHandler(event) })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
@@ -47829,6 +47837,7 @@ var AvailableCells;
     AvailableCells["COLOR_STATUS_CELL"] = "AtuiColorStatusCell";
     AvailableCells["IMAGE_CELL"] = "AtuiImageCell";
     AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtuiTextImageCell";
+    AvailableCells["MENU_CELL"] = "AtuiMenuCell";
 })(AvailableCells || (AvailableCells = {}));
 var AvailableHeaders;
 (function (AvailableHeaders) {
@@ -47855,6 +47864,7 @@ class AtuiTableComponentsConfigs {
             [AvailableCells.COLOR_STATUS_CELL]: atuiColorStatusCell_entry.atui_color_status_cell,
             [AvailableCells.TEXT_WITH_IMAGE_CELL]: atuiTextImageCell_entry.atui_text_image_cell,
             [AvailableCells.IMAGE_CELL]: atuiImageCell_entry.atui_image_cell,
+            [AvailableCells.MENU_CELL]: atuiMenuCell_entry.atui_menu_cell,
         };
     }
 }
@@ -47960,7 +47970,7 @@ const AtuiTableComponent = class {
         return this.agGrid;
     }
     render() {
-        return index.h(index.Host, { key: '06e7841abad491b7cdc60afc755e6079e10905ec', class: "ag-theme-material" });
+        return index.h(index.Host, { key: '5bd1bf5adfd520717bd2ab4c1fc961329c05c459', class: "ag-theme-material" });
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
@@ -48007,7 +48017,7 @@ const AtuiTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'f6b6e42193d50b462edce94a446a3012d9b10e8e', class: "relative flex flex-col gap-8 pb-8 pt-8" }, index.h("div", { key: '23040583cc676fa637ef6df32ff5e576e5d96bf7', class: "flex justify-between" }, index.h("div", { key: 'fb60878fb06177a80355f68a0ac060fde2e3d9cf', class: "flex" }, index.h("slot", { key: 'f68bc075e493d7325f1ff96f6a783f335d7bb2c1', name: "search" })), index.h("div", { key: 'c52b557fa7654bb8f2df56cffe45a7341cc6572e', class: "flex" }, index.h("slot", { key: '5d7d6f85df72398f908f4409837646a4511a3488', name: "export-menu" }), index.h("slot", { key: '7d435fc35bf1940cded7f5b0994345fe3cbc32fc', name: "column-manager" }), index.h("slot", { key: 'f1d41e4d8e9b33671b08fbdbd5a4bac4efc4bc0e', name: "actions" }))), index.h("slot", { key: '50b35a70984913d83d94a1d3c31e7e2d50d9223d', name: "filters" })));
+        return (index.h(index.Host, { key: '5c424ecea9b024c4087166af8a3cf24f35837e84', class: "relative flex flex-col gap-8 pb-8 pt-8" }, index.h("div", { key: '24ffd4a853c672b6d6a72924083cce62002bc720', class: "flex justify-between" }, index.h("div", { key: 'b52bea64a2489bd2d170ade435eb22d954f0b050', class: "flex" }, index.h("slot", { key: 'cd53d79cdffd7536aa3fe9c215fe033e3548a878', name: "search" })), index.h("div", { key: '6090746e2b50328b2099615180ffb53dddd96dcc', class: "flex" }, index.h("slot", { key: 'c017b99719daf9ecd0f7bbc3ffffa6f369f7f521', name: "export-menu" }), index.h("slot", { key: '14cc791576358f08f334843150bf4ec7fcfec5f4', name: "column-manager" }), index.h("slot", { key: 'dbf7f5a762f1d7f2232fbf753498d3d2b79ff1d1', name: "actions" }))), index.h("slot", { key: '3eabf1bc5161af5d95f1270f6ae8bb24e09dfc72', name: "filters" })));
     }
 };
 

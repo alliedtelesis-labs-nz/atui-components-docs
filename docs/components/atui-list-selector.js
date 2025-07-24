@@ -1,7 +1,7 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$4 } from './p-DuzY8Lpl.js';
-import { d as defineCustomElement$3 } from './p-D8_nzSZQ.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$4 } from './p-BNyf5aaw.js';
+import { d as defineCustomElement$3 } from './p-CJLKdIYd.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const AtuiListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiListSelector extends H {
     constructor() {
@@ -53,7 +53,7 @@ const AtuiListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiListSelect
         return (h(Host, { key: 'e419bc7e2c633c81d95484263c5a9c553ef95bad', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'e4040936ff92afa660488e31fb49015f5327e543', name: "header" }), !!this.options.length && (h("nav", { key: '3357d56b130b8273aab451e05a8ebdfe8e70a8e0', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '98e53dcf07ca5afb6c0cbb5168bfb99c953bcfa3', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '6d6cd9fb24e9f4852651f414b85753854b1f3f8f' })));
     }
     get el() { return this; }
-}, [4, "atui-list-selector", {
+}, [260, "atui-list-selector", {
         "options": [16],
         "selected_item_id": [1025],
         "has_border": [4]

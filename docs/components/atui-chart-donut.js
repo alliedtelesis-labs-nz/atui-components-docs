@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
 import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-Dpe9AFEu.js';
 
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -173,7 +173,7 @@ const AtuiChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtuiChartDonut e
                 maxHeight: '100%',
             } })));
     }
-}, [0, "atui-chart-donut", {
+}, [256, "atui-chart-donut", {
         "data": [16],
         "options": [16],
         "height": [1],

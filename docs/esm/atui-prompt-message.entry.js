@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host, g as getElement } from './index-8kq1vl9Q.js';
+import { r as registerInstance, c as createEvent, h, F as Fragment, H as Host, g as getElement } from './index-Cd7WF2gX.js';
 import { c as cva } from './index-CVoOBWGd.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 

@@ -1,4 +1,4 @@
-import { A as AtuiTextImageCell$1, d as defineCustomElement$1 } from './p-35fRkAER.js';
+import { A as AtuiTextImageCell$1, d as defineCustomElement$1 } from './p-BLmn4qic.js';
 
 const AtuiTextImageCell = AtuiTextImageCell$1;
 const defineCustomElement = defineCustomElement$1;

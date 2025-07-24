@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$2 } from './p-_JEK28rN.js';
+import { p as proxyCustomElement, H, h } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$2 } from './p-BFy7NYqh.js';
 
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
@@ -75,7 +75,7 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
     render() {
         return (h("div", { key: 'a75539d485edf9558cf437a4394327835e08fe8e' }, h("dialog", { key: '31f9f751d8a14fafadb16870d852372bce492049', id: this.panel_id, ref: (el) => (this.panelDialog = el) }, h("div", { key: '28fa97384358ffaa1e400b6352baece7ead52f34', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '5eebcaf0bd924b67aad83545f185da277a5301ea', class: 'sticky top-0 z-nav' }, h("atui-header", { key: '648655b29a858e4977fc4bbc3fc8b225dc519c34', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '76dc622b0d6ef598b192a5aeed718351391871ff', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '2e9550ede86946a9d0a78770cd617a48187be637', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: () => this.handleClose(), "data-name": "panel-close" }, "close"))))), h("div", { key: 'c3fe4506e5897ea200de6b1f60fb39c4bb30e591', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '7a425052671ee8e60f15607c0fbddbe68c7953fb', name: 'content' }))))));
     }
-}, [4, "atui-side-panel", {
+}, [260, "atui-side-panel", {
         "size": [1],
         "panel_id": [1],
         "panel_title": [1],

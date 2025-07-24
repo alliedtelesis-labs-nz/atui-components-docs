@@ -1242,6 +1242,11 @@ export namespace Components {
          */
         "openMenu": () => Promise<void>;
         /**
+          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
+          * @default false
+         */
+        "portal": boolean;
+        /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
          */
@@ -1273,6 +1278,11 @@ export namespace Components {
     interface AtuiMenuCell {
     }
     interface AtuiMenuItem {
+        /**
+          * Disables user interaction with the menu-item and updates visual style to appear inactive
+          * @default false
+         */
+        "disabled": boolean;
         /**
           * Icon to be displayed with the label
          */
@@ -2125,7 +2135,7 @@ export namespace Components {
           * Method used to initialize the table.
           * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
          */
-        "createGrid": () => Promise<GridApi<any>>;
+        "createGrid": () => Promise<GridApi>;
         /**
           * If true, disables automatic grid initialization. When disabled, you must manually call createGrid(). Used when the table is controlled by a parent component.
           * @default false
@@ -5222,6 +5232,11 @@ declare namespace LocalJSX {
          */
         "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
         /**
+          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
+          * @default false
+         */
+        "portal"?: boolean;
+        /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
          */
@@ -5249,6 +5264,11 @@ declare namespace LocalJSX {
     interface AtuiMenuCell {
     }
     interface AtuiMenuItem {
+        /**
+          * Disables user interaction with the menu-item and updates visual style to appear inactive
+          * @default false
+         */
+        "disabled"?: boolean;
         /**
           * Icon to be displayed with the label
          */

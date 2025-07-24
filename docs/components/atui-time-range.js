@@ -1,19 +1,19 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { d as TimeUnit, T as TimeDateUtil, M as MIN_DATE, D as Duration, c as TimeRangeDisplay } from './p-BP6gV1HR.js';
 import { h as hooks } from './p-C5Sle45O.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$d } from './p-BkUGamka.js';
-import { d as defineCustomElement$c } from './p-Kb0jVVAL.js';
-import { d as defineCustomElement$b } from './p-CZ4YkGEO.js';
-import { d as defineCustomElement$a } from './p-CKIasAqb.js';
-import { d as defineCustomElement$9 } from './p-Desv48Pq.js';
-import { d as defineCustomElement$8 } from './p-BCcBK0_r.js';
-import { d as defineCustomElement$7 } from './p-Bxc6CMPN.js';
-import { d as defineCustomElement$6 } from './p-DrInZzUc.js';
-import { d as defineCustomElement$5 } from './p-COg8YhEc.js';
-import { d as defineCustomElement$4 } from './p-DYiXDLmd.js';
-import { d as defineCustomElement$3 } from './p-CFXPqWM9.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$d } from './p-VjTTylTi.js';
+import { d as defineCustomElement$c } from './p-Bz-Gws74.js';
+import { d as defineCustomElement$b } from './p-CYj8E7Bo.js';
+import { d as defineCustomElement$a } from './p-BS64wsfP.js';
+import { d as defineCustomElement$9 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$8 } from './p-D02wrYYb.js';
+import { d as defineCustomElement$7 } from './p-CHkT-iof.js';
+import { d as defineCustomElement$6 } from './p-q1ydcm97.js';
+import { d as defineCustomElement$5 } from './p-BZSQgTa5.js';
+import { d as defineCustomElement$4 } from './p-Cyu9vVIV.js';
+import { d as defineCustomElement$3 } from './p-Dl1uX_No.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {
@@ -192,7 +192,7 @@ const AtuiTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTimeRa
             } }))));
     }
     get el() { return this; }
-}, [0, "atui-time-range", {
+}, [256, "atui-time-range", {
         "selected_time_range": [16],
         "range_limit": [2],
         "presets": [16],

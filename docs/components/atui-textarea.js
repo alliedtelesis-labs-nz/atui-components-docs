@@ -1,7 +1,7 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { c as cva } from './p-CVoOBWGd.js';
-import { d as defineCustomElement$3 } from './p-Desv48Pq.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$3 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const inputVariants = cva('align-center transition[background-color,color,box-shadow] relative flex h-full w-full resize-none rounded-md border border-solid px-8 py-[6px] text-body outline-none duration-300 ease-in-out', {
     variants: {
@@ -71,7 +71,7 @@ const AtuiTextareaComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTextare
             }, class: "invisible whitespace-pre-wrap rounded-sm border px-8 py-[6px] text-body" }, this.value)), this.error_text && this.invalid && (h("span", { key: 'd8ffbc7397e8d32ad53ad5ca53efecf9814a7be1', class: "text-sm text-error", "data-name": "textarea-error" }, this.error_text))));
     }
     get el() { return this; }
-}, [4, "atui-textarea", {
+}, [260, "atui-textarea", {
         "label": [1],
         "hint_text": [1],
         "info_text": [1],

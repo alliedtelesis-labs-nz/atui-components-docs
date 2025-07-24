@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BJDFmEHZ.js');
+var index = require('./index-BAt2i-T2.js');
 var chartColor = require('./chart-color-G_dDk1sq.js');
 var timeDate_util = require('./time-date.util-CvNz3hWU.js');
 require('./moment-w2EYXu2o.js');

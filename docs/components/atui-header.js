@@ -1,4 +1,4 @@
-import { A as AtuiHeader$1, d as defineCustomElement$1 } from './p-_JEK28rN.js';
+import { A as AtuiHeader$1, d as defineCustomElement$1 } from './p-BFy7NYqh.js';
 
 const AtuiHeader = AtuiHeader$1;
 const defineCustomElement = defineCustomElement$1;

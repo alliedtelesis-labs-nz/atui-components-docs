@@ -21,6 +21,6 @@ export declare class AtuiColumnManagerComponent {
      * Emitted when checkbox is clicked
      */
     atuiChange: EventEmitter<ColumnManagerChangeEvent>;
-    changeHandler(event: Event): void;
+    changeHandler(event: CustomEvent<string[]>): void;
     render(): any;
 }

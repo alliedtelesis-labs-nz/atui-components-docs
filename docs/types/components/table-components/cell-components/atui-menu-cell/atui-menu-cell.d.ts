@@ -1,13 +1,13 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface IMenuAction {
+export interface MenuAction {
     title: string;
-    onTrigger?: (params: any) => void;
+    onTrigger: (params: ICellRendererParams) => void;
     getDisabled?: (data: any) => boolean;
     disabledTooltip?: string;
 }
-export interface IMenuCellParams {
+export interface AtuiMenuCellParams extends ICellRendererParams {
     icon?: string;
-    actions: (IMenuAction | string)[];
+    actions: MenuAction[] | ((params: ICellRendererParams) => MenuAction[]);
 }
 /**
  * @category Table Cell
@@ -15,8 +15,8 @@ export interface IMenuCellParams {
  */
 export declare class AtuiMenuCellComponent implements ICellRendererComp {
     el: any;
-    params: ICellRendererParams & IMenuCellParams;
-    init(params: ICellRendererParams & IMenuCellParams): void;
+    params: AtuiMenuCellParams;
+    init(params: AtuiMenuCellParams): void;
     getGui(): HTMLElement;
     refresh(_: any): boolean;
     render(): any;

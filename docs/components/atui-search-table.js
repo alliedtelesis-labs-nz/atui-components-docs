@@ -1,20 +1,20 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$g } from './p-BkUGamka.js';
-import { d as defineCustomElement$f } from './p-DQB8otHh.js';
-import { d as defineCustomElement$e } from './p-hkaXAVmf.js';
-import { d as defineCustomElement$d } from './p-VQJuKPJ5.js';
-import { d as defineCustomElement$c } from './p-Desv48Pq.js';
-import { d as defineCustomElement$b } from './p-COxJAoev.js';
-import { d as defineCustomElement$a } from './p-Bxc6CMPN.js';
-import { d as defineCustomElement$9 } from './p-DrInZzUc.js';
-import { d as defineCustomElement$8 } from './p-DIfRrM-3.js';
-import { d as defineCustomElement$7 } from './p-BxFu4ytg.js';
-import { d as defineCustomElement$6 } from './p-D5_9OEVv.js';
-import { d as defineCustomElement$5 } from './p-Dlg0fYrx.js';
-import { d as defineCustomElement$4 } from './p-B0toxaGx.js';
-import { d as defineCustomElement$3 } from './p-COttyGNG.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$g } from './p-VjTTylTi.js';
+import { d as defineCustomElement$f } from './p-B7VanSx_.js';
+import { d as defineCustomElement$e } from './p-x-TAIsEw.js';
+import { d as defineCustomElement$d } from './p-BxGLZFNA.js';
+import { d as defineCustomElement$c } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$b } from './p-BxzM5-EZ.js';
+import { d as defineCustomElement$a } from './p-CHkT-iof.js';
+import { d as defineCustomElement$9 } from './p-q1ydcm97.js';
+import { d as defineCustomElement$8 } from './p-Ckx2cW5S.js';
+import { d as defineCustomElement$7 } from './p-BVKWYA7v.js';
+import { d as defineCustomElement$6 } from './p-BIUedxwY.js';
+import { d as defineCustomElement$5 } from './p-o4_-Jmzo.js';
+import { d as defineCustomElement$4 } from './p-BU89EAth.js';
+import { d as defineCustomElement$3 } from './p-B4fwjtmk.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const AtuiSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtuiSearchTable extends H {
     constructor() {
@@ -209,13 +209,13 @@ const AtuiSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtuiSearchTable
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '4c2598c93c350489da9aabb14becb4ac3a7a1b17' }, h("atui-table-actions", { key: '69e425b83f8d1521344f1a3123b1b132c6aea8b3', ag_grid: this.agGrid }, h("div", { key: 'f617060bc1cf9f277d814dbb1bf0ab0c3380871e', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '65e694dbd10a1a1b4f58fca66d4fb741ca5e907c', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: '160ecc9b1828bb4cf6141ec8410f6c892259480e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '6e590bdb124af1fb5cb4b1c6c673cbc2a5e92f9d', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: '8ca9b6f0c3fcea29a4f62fe4d4bbc1e14c1f4aaa', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: '7e08182de30325b74d8fc82c7141b9509b38a78e', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'ddcd708522e3fff981b53cf77775a8173621d2ca', slot: "actions" }, h("slot", { key: '78182336857c86ef414ddb6b346fefc2e2c42d88', name: "actions" }))), h("slot", { key: '5b3501390290e7363bd29e6ae55eeaaa564e71d8', name: "multi-select-actions" }), h("atui-table", { key: 'a9e796054eb4e3462e842b46dfbc4d879f587dab', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '9ff952dfc644b8d38e7906a571e01fe530c1fe4f' }, h("atui-table-actions", { key: '79cc771961ce24a4802c699652204f49f4293918', ag_grid: this.agGrid }, h("div", { key: 'f589ec2e18e7e1befa582d30e13da1d837423bef', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '406936437bdb96237968d4e30177c5559e1df750', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: 'bef5d3764e0683af8cee224154978e6319b1181e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '6c8b2b5133644391cd5f1266aad9cbb38d830cd5', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: 'ca8f92e26999eab62a3b5e8ef445b7df7bd102c8', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: 'b594c994fef534d906279ff481e3f6c17d975d73', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'a342462dbeaf61d712e45c1f7822fde85ec49a4b', slot: "actions" }, h("slot", { key: '95b80901587ff3351fea7f9f85c87665b02e021f', name: "actions" }))), h("slot", { key: '0b410d2667f43898473c83f259b48c79499afd18', name: "multi-select-actions" }), h("atui-table", { key: '02560ed57708cf549d4636c42cca70171aea18c1', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
     get el() { return this; }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]
     }; }
-}, [4, "atui-search-table", {
+}, [260, "atui-search-table", {
         "table_data": [16],
         "label": [1],
         "search_label": [1],

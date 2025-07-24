@@ -68,7 +68,7 @@ export declare class AtuiTableComponent {
      *
      * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
      */
-    createGrid(): Promise<GridApi<any>>;
+    createGrid(): Promise<GridApi>;
     /**
      * Gets the AG Grid API instance
      *

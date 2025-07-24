@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-8kq1vl9Q.js';
+import { r as registerInstance, c as createEvent, h } from './index-Cd7WF2gX.js';
 
 const AtuiTreeComponent = class {
     constructor(hostRef) {

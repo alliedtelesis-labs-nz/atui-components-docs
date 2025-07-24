@@ -1,8 +1,8 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { c as cva } from './p-CVoOBWGd.js';
-import { d as defineCustomElement$4 } from './p-Desv48Pq.js';
-import { d as defineCustomElement$3 } from './p-OlaTsMW0.js';
-import { d as defineCustomElement$2 } from './p-IMVeGR0G.js';
+import { d as defineCustomElement$4 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$3 } from './p-eIS1hdjf.js';
+import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
 
 const layoutVariants = cva('gap-4', {
     variants: {
@@ -70,7 +70,7 @@ const AtuiRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class AtuiRadioGroup e
             this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'aa769980468a619508af43fca47c7e278e4f396f', class: "text-sm text-error", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     get el() { return this; }
-}, [4, "atui-radio-group", {
+}, [260, "atui-radio-group", {
         "label": [1],
         "info_text": [1],
         "layout": [1],

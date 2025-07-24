@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
-import { d as defineCustomElement$3 } from './p-DUFTHd3T.js';
-import { d as defineCustomElement$2 } from './p-DMcgrjfY.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
+import { d as defineCustomElement$3 } from './p-3_c1iLDm.js';
+import { d as defineCustomElement$2 } from './p-D2aySMT2.js';
 
 const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccordionComponent extends H {
     constructor() {
@@ -75,7 +75,7 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
             })));
     }
     get el() { return this; }
-}, [4, "atui-accordion", {
+}, [260, "atui-accordion", {
         "items": [16],
         "default_open": [4],
         "toggleById": [64],

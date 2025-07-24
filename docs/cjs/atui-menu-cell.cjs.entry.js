@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BJDFmEHZ.js');
+var index = require('./index-BAt2i-T2.js');
 
 const AtuiMenuCellComponent = class {
     constructor(hostRef) {
@@ -17,19 +17,26 @@ const AtuiMenuCellComponent = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '809243d67aee34d28410b68e86ae9dd8bb9c27e5', class: "flex h-full items-center gap-4" }, this.params.value && index.h("span", { key: 'd95e5d85d7b7f9777015773cf98688adba1f5c0a' }, this.params.value), index.h("atui-menu", { key: '355a60632a43905ed58668b9172eddc81d95f9dd' }, index.h("atui-button", { key: '683c9ecd748ed5499e383c448b6527aa134ddd25', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: 'de723058c933eadc7da2b62dac1f1d1b275384ed', slot: "menu-content", class: "flex max-h-120 w-full flex-col overflow-auto" }, this.params.actions &&
-            this.params.actions.map((action) => {
-                var _a;
-                return typeof action === 'object' ? (index.h("atui-tooltip", { is_visible: action.getDisabled
-                        ? action.getDisabled(this.params.data)
-                        : false }, "sssssssss", index.h("atui-button", { class: "w-full *:justify-start", type: "secondaryText", label: action.title, slot: "tooltip-trigger", disabled: action.getDisabled
-                        ? action.getDisabled(this.params.data)
-                        : false, onClick: (params) => {
+        const actions = typeof this.params.actions === 'function'
+            ? this.params.actions(this.params)
+            : this.params.actions;
+        return (index.h(index.Host, { key: 'ea3e0e66b77252986740d179645cf27ab7f6faaf', class: "flex h-full items-center gap-4" }, index.h("atui-menu", { key: 'c870a7e7a2198f458c893aed9c1e56b92941be63', width: "auto", portal: true }, index.h("atui-button", { key: 'eeeade5554c540c931103ec7970545816f538b11', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: 'a6644d2a49fbd756a26284ecfab7b951936f0df5', slot: "menu-content", class: "flex flex-col" }, actions &&
+            actions.map((action) => typeof action === 'object' &&
+                (action.getDisabled &&
+                    action.getDisabled(this.params.data) &&
+                    action.disabledTooltip ? (index.h("atui-tooltip", null, index.h("div", { slot: "tooltip-trigger", class: "w-full" }, index.h("atui-menu-item", { label: action.title, disabled: true, onClick: () => {
                         if (action.onTrigger !==
-                            undefined)
-                            action.onTrigger(params);
-                    } }), index.h("span", { slot: "tooltip-content" }, (_a = action.disabledTooltip) !== null && _a !== void 0 ? _a : ''))) : (index.h("span", { class: "py-4" }, "sssssssss", action));
-            })))));
+                            undefined) {
+                            action.onTrigger(this.params);
+                        }
+                    } })), index.h("span", { slot: "tooltip-content" }, action.disabledTooltip))) : (index.h("atui-menu-item", { label: action.title, disabled: action.getDisabled
+                        ? action.getDisabled(this.params.data)
+                        : false, onClick: () => {
+                        if (action.onTrigger !==
+                            undefined) {
+                            action.onTrigger(this.params);
+                        }
+                    } }))))))));
     }
     get el() { return index.getElement(this); }
 };

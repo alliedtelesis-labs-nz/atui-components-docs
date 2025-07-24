@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DDLUhBkV.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
 import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-Dpe9AFEu.js';
 import { T as TimeDateUtil } from './p-BP6gV1HR.js';
 
@@ -176,7 +176,7 @@ const AtuiChartBarLine$1 = /*@__PURE__*/ proxyCustomElement(class AtuiChartBarLi
     render() {
         return (h(Host, { key: '898778662cb387a3847e4bb65816d7c44a5b708e', style: { height: '100%', width: '100%' } }, h("section", { key: 'bada335acbdea9975e4f1b5a7f977ea64b8282e9', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '2efe1b250a941f2cf17101815f8a69c47cba33e9', ref: (el) => (this.canvasEl = el) }))));
     }
-}, [0, "atui-chart-bar-line", {
+}, [256, "atui-chart-bar-line", {
         "type": [1],
         "data": [1040],
         "x_axis_format": [16],

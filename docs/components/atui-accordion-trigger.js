@@ -1,4 +1,4 @@
-import { A as AtuiAccordionTriggerComponent, d as defineCustomElement$1 } from './p-DMcgrjfY.js';
+import { A as AtuiAccordionTriggerComponent, d as defineCustomElement$1 } from './p-D2aySMT2.js';
 
 const AtuiAccordionTrigger = AtuiAccordionTriggerComponent;
 const defineCustomElement = defineCustomElement$1;
