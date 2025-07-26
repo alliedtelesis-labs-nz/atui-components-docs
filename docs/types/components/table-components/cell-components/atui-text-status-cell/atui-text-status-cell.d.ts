@@ -1,13 +1,15 @@
-import { IClickCell, ITooltipCell } from '../../../../types/table-cells';
-import { CSSProperties } from '../../../../types/styles';
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
+import { ITooltipCell } from '../../../../types';
 import { BadgeType } from '../../../atui-badge/atui-badge';
-export interface ITextStatusCellParams extends ITooltipCell, IClickCell {
+export interface TextStatusCellData {
+    value: 'active' | 'warning' | 'error' | 'default' | string;
+    tooltip?: string;
+}
+export interface ITextStatusCellParams extends ITooltipCell {
     mapValueToText?: (value: any) => string;
+    mapValueToStatus?: (value: any) => string | 'default';
+    showSimpleText?: boolean;
     checkShouldShowSimpleText?: (value: any) => boolean;
-    textStyles?: CSSProperties;
-    containerStyles?: CSSProperties;
-    mapValueToBadge?: (value: any) => string | 'default';
     textTransform?: (params: ICellRendererParams, value: string) => string;
     useIconHeaderTooltip?: boolean;
 }

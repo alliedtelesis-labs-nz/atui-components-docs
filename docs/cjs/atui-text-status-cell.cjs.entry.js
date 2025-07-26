@@ -31,20 +31,14 @@ const AtuiTextStatusCellComponent = class {
         this.type = badgeType;
     }
     mapValueToBadgeType(params, value) {
-        const badgeType = params.mapValueToBadge && params.mapValueToBadge(value);
+        const badgeType = params.mapValueToStatus && params.mapValueToStatus(value);
         return badgeType || 'default';
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '8b13698cb29607553519083a9b020d9bb7d67373', class: "flex h-full items-center" }, this.showSimpleText && this.params && (index.h("span", { key: '8bbfa63d70c75b615fe0668ab80f53e73bb88c9a', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (index.h(index.Host, { key: 'b18a599d63dbd7a86335c30af7698f8c8a683085', class: "flex h-full items-center" }, this.showSimpleText && this.params && (index.h("span", { key: '94d4d9fd16fb67b06a4247dad6ea4f1d0bd0a2ff', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
-            (this.params.generateTooltip ? (index.h("atui-tooltip", { position: "right", is_visible: true }, index.h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text, onClick: () => {
-                    if (this.params.click)
-                        this.params.click(this.params);
-                } }), index.h("span", { slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (index.h("atui-badge", { type: this.type, label: this.text, onClick: () => {
-                    if (this.params.click)
-                        this.params.click(this.params);
-                } })))));
+            (this.params.generateTooltip ? (index.h("atui-tooltip", { position: "right", is_visible: true }, index.h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), index.h("span", { slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (index.h("atui-badge", { type: this.type, label: this.text })))));
     }
     get el() { return index.getElement(this); }
 };

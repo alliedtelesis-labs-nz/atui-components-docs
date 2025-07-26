@@ -1,0 +1,2 @@
+import{r as a,h as e,H as s}from"./p-Cd7WF2gX.js";const r=class{constructor(e){a(this,e)}render(){return e(s,{key:"bf66c4e423b9e56f1a446a42b46d20da06905034",class:"flex min-w-0 flex-1 flex-col gap-2",role:"menu","data-name":"sidebar-menu"},e("slot",{key:"ae2fa312cf33178fcc8a7899a553849e00fff4a0"}))}};export{r as atui_sidebar_menu};
+//# sourceMappingURL=p-7b6bd608.entry.js.map

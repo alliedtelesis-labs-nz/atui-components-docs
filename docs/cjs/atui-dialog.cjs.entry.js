@@ -52,7 +52,7 @@ const AtuiDialogComponent = class {
         }
     }
     render() {
-        return (index.h("dialog", { key: '84c80f1f47f2e6c157b60fcdf53ce9af733e6763', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: 'ca1d3894f886d338ec97929d034f15d8b697d4f5', class: "backdrop-content" }, index.h("slot", { key: 'c818707aec856895a92c640170b45bcb0911261a' }))));
+        return (index.h("dialog", { key: '6ce9fdf4ad7a3f9d6f330d8918503c7c8b974844', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '0e371596f239f495a2b773183c53b57bb5adc5fc', class: "backdrop-content" }, index.h("slot", { key: 'd5f069f499caae7eedfd830f798e767f49fa4792' }))));
     }
     get el() { return index.getElement(this); }
 };

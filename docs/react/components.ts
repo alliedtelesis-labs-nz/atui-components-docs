@@ -34,8 +34,6 @@ import { AtuiDialog as AtuiDialogElement, defineCustomElement as defineAtuiDialo
 import { AtuiEditTextCell as AtuiEditTextCellElement, defineCustomElement as defineAtuiEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-edit-text-cell.js";
 import { AtuiFormLabel as AtuiFormLabelElement, defineCustomElement as defineAtuiFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-form-label.js";
 import { AtuiHeader as AtuiHeaderElement, defineCustomElement as defineAtuiHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-header.js";
-import { AtuiIconCell as AtuiIconCellElement, defineCustomElement as defineAtuiIconCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-icon-cell.js";
-import { AtuiImageCell as AtuiImageCellElement, defineCustomElement as defineAtuiImageCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-image-cell.js";
 import { AtuiInputNumeric as AtuiInputNumericElement, defineCustomElement as defineAtuiInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-input-numeric.js";
 import { AtuiInputRange as AtuiInputRangeElement, defineCustomElement as defineAtuiInputRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-input-range.js";
 import { AtuiInput as AtuiInputElement, defineCustomElement as defineAtuiInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-input.js";
@@ -391,28 +389,6 @@ export const AtuiHeader: StencilReactComponent<AtuiHeaderElement, AtuiHeaderEven
     react: React,
     events: {} as AtuiHeaderEvents,
     defineCustomElement: defineAtuiHeader
-});
-
-type AtuiIconCellEvents = NonNullable<unknown>;
-
-export const AtuiIconCell: StencilReactComponent<AtuiIconCellElement, AtuiIconCellEvents> = /*@__PURE__*/ createComponent<AtuiIconCellElement, AtuiIconCellEvents>({
-    tagName: 'atui-icon-cell',
-    elementClass: AtuiIconCellElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-    react: React,
-    events: {} as AtuiIconCellEvents,
-    defineCustomElement: defineAtuiIconCell
-});
-
-type AtuiImageCellEvents = NonNullable<unknown>;
-
-export const AtuiImageCell: StencilReactComponent<AtuiImageCellElement, AtuiImageCellEvents> = /*@__PURE__*/ createComponent<AtuiImageCellElement, AtuiImageCellEvents>({
-    tagName: 'atui-image-cell',
-    elementClass: AtuiImageCellElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-    react: React,
-    events: {} as AtuiImageCellEvents,
-    defineCustomElement: defineAtuiImageCell
 });
 
 type AtuiInputEvents = { onAtuiChange: EventName<CustomEvent<string | number>> };

@@ -54,7 +54,7 @@ const AtuiTreeComponent = class {
         }
     }
     render() {
-        return (h("div", { key: '8f8edf9c530595eaea061ffb8a24320662a09ee6', class: "w-full" }, h("slot", { key: '5d871a8a8e90a18e3d7f875a56fe6b1a400de914' }), this.flattenedItemList &&
+        return (h("div", { key: 'a9d46558b1f1e53046fc2bcc775e0c5075a50732', class: "w-full" }, h("slot", { key: 'febf277c39a2b7408bd524feda66e81aaf53b2a4' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("atui-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("atui-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", { slot: "tooltip-content" }, item.tooltip))) : (h("atui-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

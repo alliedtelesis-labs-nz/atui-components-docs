@@ -5,22 +5,21 @@ var index = require('./index-BAt2i-T2.js');
 const AtuiChipListCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
+        this.chips = [];
     }
     init(params) {
         this.params = params;
+        this.chips = params.chips(params.data);
     }
     getGui() {
         return this.el;
     }
     refresh(params) {
-        this.updateCell(params.value);
+        this.init(params);
         return true;
     }
-    updateCell(newValue) {
-        this.params.value = newValue;
-    }
     render() {
-        return (index.h(index.Host, { key: '1288df72f2210935688c5ce296fbe561a9059160', class: "flex h-full items-center leading-[100%]" }, index.h("atui-chip-list", { key: 'f6961ae1f7281c7e0448d7284e14c6e305730dd4', chips: this.params.value, show_clear_all: false, disabled: true })));
+        return (index.h(index.Host, { key: '60945cecec4fb2fdc798608c84f2a8de5d1f43e6', class: "flex h-full items-center" }, index.h("atui-chip-list", { key: 'df8e8f3f0a55c1a9fb1d354d03e464f9535f026b', chips: this.chips, show_clear_all: false, readonly: true })));
     }
     get el() { return index.getElement(this); }
 };

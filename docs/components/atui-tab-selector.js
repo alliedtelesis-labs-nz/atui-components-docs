@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$3 } from './p-n0H18GwK.js';
-import { d as defineCustomElement$2 } from './p-DSkVRsFC.js';
+import { d as defineCustomElement$3 } from './p-U_OBcU_J.js';
+import { d as defineCustomElement$2 } from './p-D3XA4Bd_.js';
 
 const AtuiTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTabSelector extends H {
     constructor() {
@@ -88,7 +88,7 @@ const AtuiTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTabSelector
         }
     }
     render() {
-        return h(Host, { key: '47aeabae6bee07e21dc054ef9e1a1c4261928c7a' }, this.checkLayoutAndRender());
+        return h(Host, { key: '7a0f19c2f3f74ff8d65fd458fba8add47308a61f' }, this.checkLayoutAndRender());
     }
     get el() { return this; }
     static get watchers() { return {

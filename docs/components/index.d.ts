@@ -51,10 +51,6 @@ export { AtuiFormLabelComponent as AtuiFormLabel } from '../types/components/atu
 export { defineCustomElement as defineCustomElementAtuiFormLabel } from './atui-form-label';
 export { AtuiHeader as AtuiHeader } from '../types/components/atui-header/atui-header';
 export { defineCustomElement as defineCustomElementAtuiHeader } from './atui-header';
-export { AtuiIconCell as AtuiIconCell } from '../types/components/table-components/cell-components/atui-icon-cell/atui-icon-cell';
-export { defineCustomElement as defineCustomElementAtuiIconCell } from './atui-icon-cell';
-export { AtuiImageCell as AtuiImageCell } from '../types/components/table-components/cell-components/atui-image-cell/atui-image-cell';
-export { defineCustomElement as defineCustomElementAtuiImageCell } from './atui-image-cell';
 export { AtuiInputComponent as AtuiInput } from '../types/components/atui-input/atui-input';
 export { defineCustomElement as defineCustomElementAtuiInput } from './atui-input';
 export { AtuiInputNumericComponent as AtuiInputNumeric } from '../types/components/atui-input-numeric/atui-input-numeric';
@@ -73,7 +69,7 @@ export { AtuiLoadingComponent as AtuiLoading } from '../types/components/atui-lo
 export { defineCustomElement as defineCustomElementAtuiLoading } from './atui-loading';
 export { AtuiMenu as AtuiMenu } from '../types/components/atui-menu/atui-menu';
 export { defineCustomElement as defineCustomElementAtuiMenu } from './atui-menu';
-export { AtuiMenuCellComponent as AtuiMenuCell } from '../types/components/table-components/cell-components/atui-menu-cell/atui-menu-cell';
+export { AtuiMenuCell as AtuiMenuCell } from '../types/components/table-components/cell-components/atui-menu-cell/atui-menu-cell';
 export { defineCustomElement as defineCustomElementAtuiMenuCell } from './atui-menu-cell';
 export { AtuiMenuitemComponent as AtuiMenuItem } from '../types/components/atui-menu/atui-menu-item/atui-menu-item';
 export { defineCustomElement as defineCustomElementAtuiMenuItem } from './atui-menu-item';

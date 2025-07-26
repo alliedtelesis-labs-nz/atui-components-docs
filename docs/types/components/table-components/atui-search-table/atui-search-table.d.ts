@@ -62,6 +62,11 @@ export declare class AtuiSearchTable {
      * Useful for server-side pagination where you want to control pagination externally.
      */
     use_custom_pagination?: boolean;
+    /**
+     * If true, enables automatic column resizing to fit available space.
+     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     */
+    auto_size_columns: boolean;
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;

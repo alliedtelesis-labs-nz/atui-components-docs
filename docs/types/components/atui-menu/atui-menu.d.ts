@@ -83,7 +83,6 @@ export declare class AtuiMenu {
     private handleOutsideClick;
     private createPortalContainer;
     private moveMenuToPortal;
-    private restoreMenuFromPortal;
     private cleanupPortalContainer;
     private setupFloatingUI;
     private cleanupFloatingUI;

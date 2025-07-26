@@ -15,6 +15,11 @@ const AtuiSearchTable = class {
          * Useful for server-side pagination where you want to control pagination externally.
          */
         this.use_custom_pagination = false;
+        /**
+         * If true, enables automatic column resizing to fit available space.
+         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+         */
+        this.auto_size_columns = true;
         this.tableCreated = false;
         this.activeFilters = {};
         this.selectedFilters = [];
@@ -23,6 +28,7 @@ const AtuiSearchTable = class {
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
+        this.updateActiveFilters();
     }
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
@@ -112,15 +118,58 @@ const AtuiSearchTable = class {
             const searchValue = this.activeFilters['__search__'];
             if (searchValue) {
                 const searchLower = searchValue.toLowerCase();
-                const matchesSearch = Object.values(node.data).some((value) => value &&
-                    String(value).toLowerCase().includes(searchLower));
+                // Check all column definitions and use their valueGetter if available
+                const matchesSearch = this.col_defs.some((colDef) => {
+                    let cellValue;
+                    if (colDef.valueGetter &&
+                        typeof colDef.valueGetter === 'function') {
+                        // Use valueGetter for processed values (custom cells)
+                        cellValue = colDef.valueGetter({
+                            data: node.data,
+                            node,
+                            colDef,
+                            api: this.agGrid,
+                            context: null,
+                            getValue: (field) => node.data[field],
+                            column: null, // Not available in external filter context
+                        });
+                    }
+                    else if (colDef.field) {
+                        // Use raw field value for simple cells
+                        cellValue = node.data[colDef.field];
+                    }
+                    return (cellValue &&
+                        String(cellValue)
+                            .toLowerCase()
+                            .includes(searchLower));
+                });
                 if (!matchesSearch)
                     return false;
             }
             const columnFilterResult = Object.entries(this.activeFilters).every(([colId, filterValue]) => {
                 if (colId === '__search__' || !filterValue)
                     return true;
-                const value = node.data[colId];
+                // Find the column definition for this field
+                const colDef = this.col_defs.find((def) => def.field === colId);
+                let value;
+                if (colDef &&
+                    colDef.valueGetter &&
+                    typeof colDef.valueGetter === 'function') {
+                    // Use valueGetter for processed values (custom cells)
+                    value = colDef.valueGetter({
+                        data: node.data,
+                        node,
+                        colDef,
+                        api: this.agGrid,
+                        context: null,
+                        getValue: (field) => node.data[field],
+                        column: null, // Not available in external filter context
+                    });
+                }
+                else {
+                    // Use raw field value for simple cells
+                    value = node.data[colId];
+                }
                 const matches = value &&
                     String(value)
                         .toLowerCase()
@@ -173,15 +222,18 @@ const AtuiSearchTable = class {
         }
     }
     updateActiveFilters() {
+        // Keep existing search value in activeFilters - it's managed by handleSearchChange
+        const currentSearch = this.activeFilters['__search__'];
         this.activeFilters = {};
+        // Restore search if it exists
+        if (currentSearch) {
+            this.activeFilters['__search__'] = currentSearch;
+        }
         this.selectedFilters.forEach((filter) => {
             if (filter.value) {
                 this.activeFilters[filter.id] = filter.value;
             }
         });
-        if (this.searchValue) {
-            this.activeFilters['__search__'] = this.searchValue;
-        }
         if (this.agGrid) {
             this.setupExternalFilters();
             this.agGrid.onFilterChanged();
@@ -192,10 +244,17 @@ const AtuiSearchTable = class {
     }
     handleSearchChange(event) {
         this.searchValue = event.detail || '';
+        // Add search to activeFilters for custom external filter logic
+        if (this.searchValue) {
+            this.activeFilters['__search__'] = this.searchValue;
+        }
+        else {
+            delete this.activeFilters['__search__'];
+        }
         this.updateActiveFilters();
     }
     render() {
-        return (index.h(index.Host, { key: '9ff952dfc644b8d38e7906a571e01fe530c1fe4f' }, index.h("atui-table-actions", { key: '79cc771961ce24a4802c699652204f49f4293918', ag_grid: this.agGrid }, index.h("div", { key: 'f589ec2e18e7e1befa582d30e13da1d837423bef', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filter-menu", { key: '406936437bdb96237968d4e30177c5559e1df750', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), index.h("atui-search", { key: 'bef5d3764e0683af8cee224154978e6319b1181e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filters", { key: '6c8b2b5133644391cd5f1266aad9cbb38d830cd5', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("atui-table-export-menu", { key: 'ca8f92e26999eab62a3b5e8ef445b7df7bd102c8', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (index.h("atui-column-manager", { key: 'b594c994fef534d906279ff481e3f6c17d975d73', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: 'a342462dbeaf61d712e45c1f7822fde85ec49a4b', slot: "actions" }, index.h("slot", { key: '95b80901587ff3351fea7f9f85c87665b02e021f', name: "actions" }))), index.h("slot", { key: '0b410d2667f43898473c83f259b48c79499afd18', name: "multi-select-actions" }), index.h("atui-table", { key: '02560ed57708cf549d4636c42cca70171aea18c1', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (index.h(index.Host, { key: '8ea070d7dfbc803cd5cda3843b6124fa87041fdd' }, index.h("atui-table-actions", { key: 'efa72ba6ed250c7be03b3f10c58852e7bb72b4af', ag_grid: this.agGrid }, index.h("div", { key: '2833dd636fa89cfe607b5631a199a00f3401b55d', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filter-menu", { key: 'aa96c591dd0a5c51dd80b5cd2d44470229c26af0', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), index.h("atui-search", { key: '3c579dcf664aed25d365df1f13baced515f48b16', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filters", { key: '566d8d9dd753cb33f12a475afd971c36b8041593', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("atui-table-export-menu", { key: '2f2edd32391170437ede3bec7649908bbfd80967', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (index.h("atui-column-manager", { key: '5bbc44a387356ae29bb01757632f692687320b19', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '0e7556326e99012bbc30937b9122293c3aa5e786', slot: "actions" }, index.h("slot", { key: 'a0dcf6300cdef668718f1754abb04aa9c4622852', name: "actions" }))), index.h("slot", { key: '2dffb0771c3af7c6385ca0f4cf5ee4e87593f9fd', name: "multi-select-actions" }), index.h("atui-table", { key: 'c96c81641079ce60bd2da099572195a3659e6c7f', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

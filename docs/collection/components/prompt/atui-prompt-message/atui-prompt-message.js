@@ -88,7 +88,7 @@ export class AtuiPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '5d6350c3769d8267a395dd0996988fae8dc3e0d4', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: 'f81b84174d1080815a5d379880b026b9c142374a', class: "space-y-1 flex-1" }, h("div", { key: 'a14343473c394c9996e74570ff18080e0d5477b0', class: "flex items-center gap-8" }, this.name && (h("span", { key: '46ff5e1844cde5f52237664ba4398d5b42675076', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: 'b37738fbc7db545474144549eac13eeafe8a8855', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'b74c42f66318328008f024a4cb5416d40d3ef73c', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: 'f922b3374f1c18dc78a6550bfde7c91760ed5e9d', class: "space-y-1 flex-1" }, h("div", { key: '8673d9983e2e0bfa95cc71d154aa71a0cca3ca26', class: "flex items-center gap-8" }, this.name && (h("span", { key: '6e54e979f8e9cf7189141473487e293f0d48eda1', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: '32eeab70fa042c67c40f81e7ad3bdb78b5316223', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "atui-prompt-message"; }
     static get properties() {

@@ -1,4 +1,4 @@
-import { A as AtuiEditTextCell$1, d as defineCustomElement$1 } from './p-BFnQ9Uy_.js';
+import { A as AtuiEditTextCell$1, d as defineCustomElement$1 } from './p-BeNB7ZZh.js';
 
 const AtuiEditTextCell = AtuiEditTextCell$1;
 const defineCustomElement = defineCustomElement$1;

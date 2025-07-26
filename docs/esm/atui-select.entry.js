@@ -148,13 +148,13 @@ const AtuiSelectComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '2fd089fa843e8c6df8474d58f758d6222b2d79dd', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '3194d935aa118b1c4ac18aa2ff08c7302cfaa648', class: "group/select", onFocusout: async (event) => {
                 if (!this.el.contains(event.relatedTarget)) {
                     await this.menuRef.closeMenu();
                 }
-            } }, this.renderlabel(), h("atui-menu", { key: '0e5185672d10a3900624aaa5d4c759b9621ca4d9', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderlabel(), h("atui-menu", { key: 'c8c2f9eb6e863e2ddd80efe85ca2b99a81b23c6b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '2cc36f5821b8b51cc3a00ea5fb70b2952379d8a8' }, this.error_text && this.invalid && (h("span", { key: '06d8fecf72538b6abda15840cf53536c7f00b742', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: 'f2ed16414d6c0fac7c34712ba6f11efd28045128' }, this.error_text && this.invalid && (h("span", { key: '4514da115460280d17e096bd6fed065ba82630df', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderlabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))));

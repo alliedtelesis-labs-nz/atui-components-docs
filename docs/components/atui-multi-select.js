@@ -1,13 +1,13 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { c as cva } from './p-CVoOBWGd.js';
-import { d as defineCustomElement$8 } from './p-BNyf5aaw.js';
-import { d as defineCustomElement$7 } from './p-VjTTylTi.js';
-import { d as defineCustomElement$6 } from './p-66vRzbq_.js';
-import { d as defineCustomElement$5 } from './p-DKz0HNdG.js';
+import { d as defineCustomElement$8 } from './p-BVyEJE0-.js';
+import { d as defineCustomElement$7 } from './p-DpoOUufO.js';
+import { d as defineCustomElement$6 } from './p-CZLQ4gqR.js';
+import { d as defineCustomElement$5 } from './p-BPMyXZEz.js';
 import { d as defineCustomElement$4 } from './p-CHkT-iof.js';
-import { d as defineCustomElement$3 } from './p-q1ydcm97.js';
-import { d as defineCustomElement$2 } from './p-DRSCT2MW.js';
+import { d as defineCustomElement$3 } from './p-FL7N6jaz.js';
+import { d as defineCustomElement$2 } from './p-CYjfaOKk.js';
 
 const inputVariants = cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
     variants: {
@@ -180,14 +180,14 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
         }
     }
     render() {
-        return (h(Host, { key: 'b617bade43254a39e79d23893b037db748531035', class: "relative", onFocusout: async (event) => {
+        return (h(Host, { key: '610effeae9d2f20190b8a3ddf94b103819f23b65', class: "relative", onFocusout: async (event) => {
                 var _a;
                 if (!this.el.contains(event.relatedTarget)) {
                     await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                 }
-            } }, this.renderLabel(), h("atui-menu", { key: '04e783719210015a75118cfb0f064fdf70226c55', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("atui-menu", { key: '15ce8bb1eafb64078e384268d6c7fcdf9997d109', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'fcdd59ee18ed69e3b89359339aebe587e5edf755' }, this.error_text && this.invalid && (h("span", { key: '07966e701ae5c7b98b13e8a887e655fb006639a0', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: '21c326c4be493844b44da88ecb50e44ba844d899', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), h("div", { key: '15c6fccdbfa1fff96207a010f07812c302d4a0f0' }, this.error_text && this.invalid && (h("span", { key: '582e3691ff40c45d8ea68291ba041bb7615db66b', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: '2b2ff3840b03253695ff1425aa467371fa7bcb82', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));

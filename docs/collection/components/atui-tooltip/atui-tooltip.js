@@ -69,7 +69,7 @@ export class AtuiTooltipComponent {
         const classname = variants({
             open: this.is_visible,
         });
-        return (h(Host, { key: '8f91f7184564c1c94d35934b7483f0c2aa4f83e8', class: "relative inline-block" }, h("div", { key: '25b4f2354215ad112e0997dccbd75cb618f42bc5', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: 'd6d5d7f4e0b3faf7ca62970c8147c03b678ccf0e', name: "tooltip-trigger" })), h("div", { key: '7eaa027ca06f6da463f511134e174d5bd13894a7', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: 'c6c33dffeb18c8eb1a36f699a8c97f09eab6def0', name: "tooltip-content" }))));
+        return (h(Host, { key: '144fc9c131ffa461ee469d69ee5ff9eed86bf93d', class: "relative inline-block" }, h("div", { key: '52a44a45449f2a575d7474bfa16f42147c0e87a7', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: '6cc0b456b2b4de3d696f9607b629f73fe13a6fd0', name: "tooltip-trigger" })), h("div", { key: '45194021ca57a0f1a52344d591f33aa76af35771', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: '8239e7f31c42da33a8890573b64f8837a94f20bf', name: "tooltip-content" }))));
     }
     static get is() { return "atui-tooltip"; }
     static get properties() {

@@ -27,12 +27,20 @@ export class AtuiTableComponent {
          * Used when the table is controlled by a parent component.
          */
         this.disable_auto_init = false;
+        /**
+         * If true, enables automatic column resizing to fit available space.
+         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+         */
+        this.auto_size_columns = true;
         this.activeFilters = {};
         this.tableCreated = false;
     }
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', (newData === null || newData === void 0 ? void 0 : newData.items) || []);
+            if (this.auto_size_columns) {
+                setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
+            }
         }
     }
     async componentDidLoad() {
@@ -40,6 +48,14 @@ export class AtuiTableComponent {
             this.tableCreated = true;
         }
         await this.initGrid();
+        if (this.auto_size_columns) {
+            this.resizeListener = () => {
+                if (this.agGrid) {
+                    this.agGrid.sizeColumnsToFit();
+                }
+            };
+            window.addEventListener('resize', this.resizeListener);
+        }
     }
     async componentDidUpdate() {
         await this.initGrid();
@@ -68,6 +84,16 @@ export class AtuiTableComponent {
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
             components: AtuiTableComponentsConfigs.getFrameworkComponents(),
+            onGridSizeChanged: (params) => {
+                if (this.auto_size_columns) {
+                    params.api.sizeColumnsToFit();
+                }
+            },
+            onGridReady: (params) => {
+                if (this.auto_size_columns) {
+                    params.api.sizeColumnsToFit();
+                }
+            },
             onSortChanged: (event) => {
                 const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
                 this.atuiSortChange.emit({
@@ -90,6 +116,10 @@ export class AtuiTableComponent {
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
+        // Initial column sizing
+        if (this.auto_size_columns) {
+            setTimeout(() => gridApi.sizeColumnsToFit(), 0);
+        }
         return gridApi;
     }
     /**
@@ -100,8 +130,14 @@ export class AtuiTableComponent {
     async getGridApi() {
         return this.agGrid;
     }
+    disconnectedCallback() {
+        // Clean up resize listener
+        if (this.resizeListener) {
+            window.removeEventListener('resize', this.resizeListener);
+        }
+    }
     render() {
-        return h(Host, { key: '5bd1bf5adfd520717bd2ab4c1fc961329c05c459', class: "ag-theme-material" });
+        return h(Host, { key: 'bf8d510d959d3468ce0d9bd2628ab0645dd3f3b5', class: "ag-theme-material" });
     }
     static get is() { return "atui-table"; }
     static get originalStyleUrls() {
@@ -238,6 +274,26 @@ export class AtuiTableComponent {
                 "reflect": false,
                 "defaultValue": "false"
             },
+            "auto_size_columns": {
+                "type": "boolean",
+                "attribute": "auto_size_columns",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, enables automatic column resizing to fit available space.\nColumns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "true"
+            },
             "ag_grid": {
                 "type": "unknown",
                 "attribute": "ag_grid",
@@ -284,7 +340,7 @@ export class AtuiTableComponent {
                 },
                 "complexType": {
                     "original": "{\n        colId: string;\n        sortDirection: 'asc' | 'desc' | null;\n    }",
-                    "resolved": "{ colId: string; sortDirection: \"desc\" | \"asc\"; }",
+                    "resolved": "{ colId: string; sortDirection: \"asc\" | \"desc\"; }",
                     "references": {}
                 }
             }];

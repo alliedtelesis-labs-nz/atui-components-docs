@@ -1,7 +1,10 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { IClickCell } from '../../../../types/table-cells';
+import { IClickCell } from '../../../../types';
 import { CSSProperties } from '../../../../types/styles';
-export interface IMultiBtnCellParams extends IClickCell {
+export interface MultiBtnCellData {
+    buttons: IBtnParams[];
+}
+export interface IMultiBtnCellParams extends ICellRendererParams, IClickCell {
     containerStyles?: CSSProperties;
     buttons?: IBtnParams[] | ((params: ICellRendererParams) => IBtnParams[]);
 }
@@ -14,8 +17,7 @@ export interface IBtnParams {
     hidden?: boolean;
     dataNameValue?: string;
 }
-interface InitParams extends IMultiBtnCellParams, ICellRendererParams {
-}
+type InitParams = IMultiBtnCellParams;
 /**
  * @category Table Cell
  * @description A cell component for displaying multiple buttons.
@@ -25,9 +27,9 @@ export declare class AtuiMultiBtnCell implements ICellRendererComp {
     params: InitParams;
     buttons: IBtnParams[];
     containerStyles: CSSProperties;
-    init(params: InitParams): void;
+    init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
-    refresh(params: InitParams): boolean;
+    refresh(params: ICellRendererParams): boolean;
     private updateCell;
     handleClick(btn: IBtnParams): any;
     get buttonsToRender(): any;

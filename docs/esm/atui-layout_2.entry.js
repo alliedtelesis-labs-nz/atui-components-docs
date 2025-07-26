@@ -24,7 +24,7 @@ const AtuiLayout = class {
         }
     }
     render() {
-        return h(Host, { key: '04bed0384cac8725c10e330e318af2cc54310a21' }, this.layoutElement);
+        return h(Host, { key: 'db2b75e170ad5cabae51539af9fe6cb0873c2eaf' }, this.layoutElement);
     }
 };
 
@@ -65,7 +65,7 @@ const AtuiTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'a545ceea66e7b670468c770a0560e41bb841ce75', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '18e58a385df6890c7f624fe949f65bcac20db6f7', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '21a90344643d0e8fb21cccc8263831cd5a018fbe' }))));
+        return (h(Host, { key: '1be5c479313ca58983429e1018ac1f52ce2ca82c', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'a90b8f7be6a06831887b021aa785166d06ecfe72', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'e505e134e8845641c0eb2a6de4a994ba09fdd421' }))));
     }
 };
 

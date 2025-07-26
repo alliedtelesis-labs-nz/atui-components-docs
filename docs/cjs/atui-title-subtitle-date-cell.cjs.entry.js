@@ -1,8 +1,9 @@
 'use strict';
 
 var index = require('./index-BAt2i-T2.js');
-var timeDatePresentation_util = require('./time-date-presentation.util-B9Nq5Am9.js');
+var timeDatePresentation_util = require('./time-date-presentation.util-C0ftp5M6.js');
 var timeDate_util = require('./time-date.util-CvNz3hWU.js');
+require('./table-styles-wF-7Uyu8.js');
 require('./moment-DRlRqWvO.js');
 require('./moment-w2EYXu2o.js');
 
@@ -11,13 +12,12 @@ const AtuiTitleSubtitleDateCell = class {
         index.registerInstance(this, hostRef);
     }
     init(params) {
-        const { value } = params;
         this.params = params;
-        if (typeof value === 'string') {
-            this.value = new Date(value);
+        if (typeof params.value === 'string') {
+            this.value = new Date(params.value);
         }
         else {
-            this.value = value;
+            this.value = params.value;
         }
     }
     getGui() {
@@ -38,7 +38,7 @@ const AtuiTitleSubtitleDateCell = class {
         return timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.value, timeDate_util.DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (index.h(index.Host, { key: '03a0795982813323c39e918cb20d1b4fee993f52' }, index.h("div", { key: '5db05ec76f7d17c81de156351358bbcc70fd1225', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '572ae72c1294e84414f2cd3fbf07b875c2a5b5e4', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), index.h("div", { key: '341d44e9120c15283c328d73c8b26bc0d99419b7', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
+        return (index.h(index.Host, { key: 'c5f23fb43427665d31076bd80452ea9ec21b7fe0' }, index.h("div", { key: '2c601332a3cc8c2958f54f208051be2e6201b07c', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '16c41d9fb006a006cfe39c5178fd78143b9baf56', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), index.h("div", { key: 'e56a5202c82cabc01f9dd46f17a2707b7354c611', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
     }
     get el() { return index.getElement(this); }
 };

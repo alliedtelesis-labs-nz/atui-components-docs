@@ -25,8 +25,6 @@ export { AtuiDialog, defineCustomElement as defineCustomElementAtuiDialog } from
 export { AtuiEditTextCell, defineCustomElement as defineCustomElementAtuiEditTextCell } from './atui-edit-text-cell.js';
 export { AtuiFormLabel, defineCustomElement as defineCustomElementAtuiFormLabel } from './atui-form-label.js';
 export { AtuiHeader, defineCustomElement as defineCustomElementAtuiHeader } from './atui-header.js';
-export { AtuiIconCell, defineCustomElement as defineCustomElementAtuiIconCell } from './atui-icon-cell.js';
-export { AtuiImageCell, defineCustomElement as defineCustomElementAtuiImageCell } from './atui-image-cell.js';
 export { AtuiInput, defineCustomElement as defineCustomElementAtuiInput } from './atui-input.js';
 export { AtuiInputNumeric, defineCustomElement as defineCustomElementAtuiInputNumeric } from './atui-input-numeric.js';
 export { AtuiInputRange, defineCustomElement as defineCustomElementAtuiInputRange } from './atui-input-range.js';

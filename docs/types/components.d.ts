@@ -700,7 +700,7 @@ export namespace Components {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status.
+     * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface AtuiColorStatusCell {
     }
@@ -837,18 +837,6 @@ export namespace Components {
           * Subtitle of the header.
          */
         "subtitle"?: string;
-    }
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an icon.
-     */
-    interface AtuiIconCell {
-    }
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an image.
-     */
-    interface AtuiImageCell {
     }
     /**
      * @category Form Controls
@@ -1677,6 +1665,11 @@ export namespace Components {
      */
     interface AtuiSearchTable {
         /**
+          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+          * @default true
+         */
+        "auto_size_columns": boolean;
+        /**
           * Column definitions passed to atui-table component.
          */
         "col_defs": ColDef[];
@@ -2128,6 +2121,11 @@ export namespace Components {
          */
         "ag_grid": GridApi;
         /**
+          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+          * @default true
+         */
+        "auto_size_columns": boolean;
+        /**
           * Column definitions for the table
          */
         "col_defs": ColDef[];
@@ -2248,7 +2246,7 @@ export namespace Components {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with an icon.
+     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface AtuiTextIconCell {
     }
@@ -2997,7 +2995,7 @@ declare global {
     };
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status.
+     * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface HTMLAtuiColorStatusCellElement extends Components.AtuiColorStatusCell, HTMLStencilElement {
     }
@@ -3079,26 +3077,6 @@ declare global {
     var HTMLAtuiHeaderElement: {
         prototype: HTMLAtuiHeaderElement;
         new (): HTMLAtuiHeaderElement;
-    };
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an icon.
-     */
-    interface HTMLAtuiIconCellElement extends Components.AtuiIconCell, HTMLStencilElement {
-    }
-    var HTMLAtuiIconCellElement: {
-        prototype: HTMLAtuiIconCellElement;
-        new (): HTMLAtuiIconCellElement;
-    };
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an image.
-     */
-    interface HTMLAtuiImageCellElement extends Components.AtuiImageCell, HTMLStencilElement {
-    }
-    var HTMLAtuiImageCellElement: {
-        prototype: HTMLAtuiImageCellElement;
-        new (): HTMLAtuiImageCellElement;
     };
     interface HTMLAtuiInputElementEventMap {
         "atuiChange": string | number;
@@ -3784,7 +3762,7 @@ declare global {
     };
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with an icon.
+     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface HTMLAtuiTextIconCellElement extends Components.AtuiTextIconCell, HTMLStencilElement {
     }
@@ -4008,8 +3986,6 @@ declare global {
         "atui-edit-text-cell": HTMLAtuiEditTextCellElement;
         "atui-form-label": HTMLAtuiFormLabelElement;
         "atui-header": HTMLAtuiHeaderElement;
-        "atui-icon-cell": HTMLAtuiIconCellElement;
-        "atui-image-cell": HTMLAtuiImageCellElement;
         "atui-input": HTMLAtuiInputElement;
         "atui-input-numeric": HTMLAtuiInputNumericElement;
         "atui-input-range": HTMLAtuiInputRangeElement;
@@ -4676,7 +4652,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status.
+     * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface AtuiColorStatusCell {
     }
@@ -4815,18 +4791,6 @@ declare namespace LocalJSX {
           * Subtitle of the header.
          */
         "subtitle"?: string;
-    }
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an icon.
-     */
-    interface AtuiIconCell {
-    }
-    /**
-     * @category Table Cell
-     * @description A cell component for displaying an image.
-     */
-    interface AtuiImageCell {
     }
     /**
      * @category Form Controls
@@ -5729,6 +5693,11 @@ declare namespace LocalJSX {
      */
     interface AtuiSearchTable {
         /**
+          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+          * @default true
+         */
+        "auto_size_columns"?: boolean;
+        /**
           * Column definitions passed to atui-table component.
          */
         "col_defs"?: ColDef[];
@@ -6158,6 +6127,11 @@ declare namespace LocalJSX {
          */
         "ag_grid"?: GridApi;
         /**
+          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+          * @default true
+         */
+        "auto_size_columns"?: boolean;
+        /**
           * Column definitions for the table
          */
         "col_defs"?: ColDef[];
@@ -6307,7 +6281,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with an icon.
+     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface AtuiTextIconCell {
     }
@@ -6650,8 +6624,6 @@ declare namespace LocalJSX {
         "atui-edit-text-cell": AtuiEditTextCell;
         "atui-form-label": AtuiFormLabel;
         "atui-header": AtuiHeader;
-        "atui-icon-cell": AtuiIconCell;
-        "atui-image-cell": AtuiImageCell;
         "atui-input": AtuiInput;
         "atui-input-numeric": AtuiInputNumeric;
         "atui-input-range": AtuiInputRange;
@@ -6841,7 +6813,7 @@ declare module "@stencil/core" {
             "atui-chip-list-cell": LocalJSX.AtuiChipListCell & JSXBase.HTMLAttributes<HTMLAtuiChipListCellElement>;
             /**
              * @category Table Cell
-             * @description A cell component for displaying a color status.
+             * @description A cell component for displaying a color status indicator based on predefined types
              */
             "atui-color-status-cell": LocalJSX.AtuiColorStatusCell & JSXBase.HTMLAttributes<HTMLAtuiColorStatusCellElement>;
             "atui-column-manager": LocalJSX.AtuiColumnManager & JSXBase.HTMLAttributes<HTMLAtuiColumnManagerElement>;
@@ -6866,16 +6838,6 @@ declare module "@stencil/core" {
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
             "atui-header": LocalJSX.AtuiHeader & JSXBase.HTMLAttributes<HTMLAtuiHeaderElement>;
-            /**
-             * @category Table Cell
-             * @description A cell component for displaying an icon.
-             */
-            "atui-icon-cell": LocalJSX.AtuiIconCell & JSXBase.HTMLAttributes<HTMLAtuiIconCellElement>;
-            /**
-             * @category Table Cell
-             * @description A cell component for displaying an image.
-             */
-            "atui-image-cell": LocalJSX.AtuiImageCell & JSXBase.HTMLAttributes<HTMLAtuiImageCellElement>;
             /**
              * @category Form Controls
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
@@ -7093,7 +7055,7 @@ declare module "@stencil/core" {
             "atui-text-cell": LocalJSX.AtuiTextCell & JSXBase.HTMLAttributes<HTMLAtuiTextCellElement>;
             /**
              * @category Table Cell
-             * @description A cell component for displaying a text with an icon.
+             * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
              */
             "atui-text-icon-cell": LocalJSX.AtuiTextIconCell & JSXBase.HTMLAttributes<HTMLAtuiTextIconCellElement>;
             /**

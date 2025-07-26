@@ -5,14 +5,19 @@ import { h, Host } from "@stencil/core";
  */
 export class AtuiTextBadgeCell {
     init(params) {
-        const { textTransform, badgeText } = params;
+        var _a, _b;
         this.params = params;
-        this.textValue = params.value;
-        this.badgeTextValue = badgeText(params);
-        if (params.data) {
-            if (textTransform) {
-                this.textValue = textTransform(params.data, params.value);
-            }
+        if (this.params.text) {
+            this.textValue = this.params.text(params.data);
+        }
+        else {
+            this.textValue = ((_a = params.value) === null || _a === void 0 ? void 0 : _a.text) || '';
+        }
+        if (this.params.badgeText) {
+            this.badgeTextValue = this.params.badgeText(params.data);
+        }
+        else {
+            this.badgeTextValue = ((_b = params.value) === null || _b === void 0 ? void 0 : _b.badgeText) || '';
         }
     }
     getGui() {
@@ -27,14 +32,8 @@ export class AtuiTextBadgeCell {
         this.textValue = this.params.value;
     }
     render() {
-        var _a, _b, _c;
-        return (h(Host, { key: '06688d2f88e803fa9fe40bfdd5b75bb4e7fd579d', class: "align-center flex h-full" }, h("atui-tooltip", { key: '1f7de985662542647932b2851853996df96a9e60', position: "right", is_visible: !!this.params.generateTooltip }, h("span", { key: '1ba32fea4960734f3b2a64bdb01dfb08091949ac', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, class: "truncate", onClick: () => {
-                if (this.params.click)
-                    this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'b9479897b34d7f06b30f35a96c508a3b686453b4', slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))), h("atui-tooltip", { key: '001cee21af866cec8c56850071ef3d47e0ace18e', position: "right", is_visible: !!this.params.generateBadgeTooltip }, h("span", { key: '67f215e4cff8920f96d4cfd5b0ab22e39619fb71', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, class: "truncate", onClick: () => {
-                if (this.params.click)
-                    this.params.click(this.params);
-            } }, h("atui-badge", { key: '4ba17f21f09f4d3fcf02f6f23f16e7dd731fc9f0', type: (_b = this.params) === null || _b === void 0 ? void 0 : _b.badgeType, class: "ml-4", label: this.badgeTextValue })), this.params.generateBadgeTooltip && (h("span", { key: '8805dec1b04b3b16b409bf3229649734423140f6', slot: "tooltip-content", class: `${(_c = this.params.badgeTooltipClass) !== null && _c !== void 0 ? _c : ''} leading-normal` }, this.params.generateBadgeTooltip(this.params))))));
+        var _a;
+        return (h(Host, { key: '9045a3d6a93eb93bbfdea1e5c7a2df22d15474e0', class: "flex h-full items-center" }, h("atui-tooltip", { key: '8954627407f0328bca6d9d93f5988c9a4e277f48', position: "right", is_visible: !!this.params.generateTooltip }, h("div", { key: '04963df6fbeb656434fd20c08b7fc852e76bc99f', slot: "tooltip-trigger" }, h("span", { key: '6fd70a802ff56fc062a1adc363e48be6c824add2', class: "truncate" }, this.textValue), h("atui-badge", { key: 'df650e682caa9d5f9ef7ca23bddfc7a92f59d7e1', type: "info", class: "ml-4", label: this.badgeTextValue })), ((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) && (h("span", { key: 'c41f0ae1c3dc8de2c891319fda1920a94f50a2c8', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "atui-text-badge-cell"; }
     static get states() {

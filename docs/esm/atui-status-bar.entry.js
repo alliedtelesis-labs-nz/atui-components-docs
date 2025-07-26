@@ -23,7 +23,7 @@ const AtuiStatusBar = class {
             } }), h("span", { slot: "tooltip-content" }, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '656401c7c18872d74e095ddbed9ec386722fd370', class: this.statusBarClass }, h("div", { key: 'b4d30684d8582a6535bf99e7d1372add5b651a1c', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '4d2273308709b7f63740ec9c43d5cc2f452ad637', class: this.statusBarClass }, h("div", { key: 'bc7c5ae6d49838d2ef4210bc5bb9c56db953b5f4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

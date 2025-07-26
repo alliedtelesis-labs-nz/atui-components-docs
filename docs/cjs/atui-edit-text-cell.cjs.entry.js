@@ -23,7 +23,10 @@ const AtuiEditTextCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'c54beb143f043db73e5da528d29d17819a4659d6', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: '97db1b978c67f42b05508ce77d29dc0013738aae', readonly: !this.params.writePermission, clearable: true, value: this.params.value, onInput: (event) => this.updateCell(event.target.value), onMouseDown: (event) => event.stopPropagation() })));
+        return (index.h(index.Host, { key: '3aa95b743af187ad43021b2ad5411e6837ff6ebf', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: '051e9a3d6d6eb351ca4e84be3c076940d818c000', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+                // Changed to onAtuiChange
+                this.updateCell(event.detail);
+            }, onMouseDown: (event) => event.stopPropagation() })));
     }
     get el() { return index.getElement(this); }
 };

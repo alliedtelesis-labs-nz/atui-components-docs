@@ -6,7 +6,7 @@ import { h, Host } from "@stencil/core";
 export class AtuiMultiBtnCell {
     init(params) {
         this.params = params;
-        const { containerStyles, buttons } = params;
+        const { containerStyles, buttons } = this.params;
         this.containerStyles = containerStyles;
         this.buttons =
             typeof buttons === 'function' ? buttons(params) : buttons;
@@ -30,7 +30,7 @@ export class AtuiMultiBtnCell {
         });
     }
     render() {
-        return (h(Host, { key: '17e152644b573c163102aba7e01fb5d506b2c084', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (h(Host, { key: 'fe7f8d2feae47f8994719018d48ae1c0d70e99ca', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     static get is() { return "atui-multi-btn-cell"; }
     static get states() {

@@ -1,6 +1,7 @@
 import { r as registerInstance, h, H as Host, g as getElement } from './index-Cd7WF2gX.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-DxoFI1OS.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-DbNUio8W.js';
 import { c as DateFormat } from './time-date.util-BsTT-_r-.js';
+import './table-styles-3wjBk_6c.js';
 import './moment-C5Sle45O.js';
 import './moment-9az102YM.js';
 
@@ -9,13 +10,12 @@ const AtuiTitleSubtitleDateCell = class {
         registerInstance(this, hostRef);
     }
     init(params) {
-        const { value } = params;
         this.params = params;
-        if (typeof value === 'string') {
-            this.value = new Date(value);
+        if (typeof params.value === 'string') {
+            this.value = new Date(params.value);
         }
         else {
-            this.value = value;
+            this.value = params.value;
         }
     }
     getGui() {
@@ -36,7 +36,7 @@ const AtuiTitleSubtitleDateCell = class {
         return TimeDatePresentationUtil.getFormattedDate(this.value, DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (h(Host, { key: '03a0795982813323c39e918cb20d1b4fee993f52' }, h("div", { key: '5db05ec76f7d17c81de156351358bbcc70fd1225', class: "flex h-full flex-col justify-center" }, h("div", { key: '572ae72c1294e84414f2cd3fbf07b875c2a5b5e4', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: '341d44e9120c15283c328d73c8b26bc0d99419b7', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
+        return (h(Host, { key: 'c5f23fb43427665d31076bd80452ea9ec21b7fe0' }, h("div", { key: '2c601332a3cc8c2958f54f208051be2e6201b07c', class: "flex h-full flex-col justify-center" }, h("div", { key: '16c41d9fb006a006cfe39c5178fd78143b9baf56', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: 'e56a5202c82cabc01f9dd46f17a2707b7354c611', class: "truncate text-xs font-normal leading-[100%] text-med" }, this.yearMonthDay))));
     }
     get el() { return getElement(this); }
 };

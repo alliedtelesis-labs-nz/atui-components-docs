@@ -8,7 +8,7 @@ const AtuiMultiBtnCell = class {
     }
     init(params) {
         this.params = params;
-        const { containerStyles, buttons } = params;
+        const { containerStyles, buttons } = this.params;
         this.containerStyles = containerStyles;
         this.buttons =
             typeof buttons === 'function' ? buttons(params) : buttons;
@@ -32,7 +32,7 @@ const AtuiMultiBtnCell = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '17e152644b573c163102aba7e01fb5d506b2c084', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: 'fe7f8d2feae47f8994719018d48ae1c0d70e99ca', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     get el() { return index.getElement(this); }
 };

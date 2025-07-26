@@ -68,7 +68,7 @@ const AtuiAccordionComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'f523e84989f8fac2d5c0c97fb870fb2717585d1d', class: "flex flex-col gap-2" }, index.h("slot", { key: '6181300c87e7310b130ef911fbe4bf35a4edb111' }), this.items &&
+        return (index.h(index.Host, { key: 'bddaf7cc56ad839608ddf653ebd4f5a569edc5f0', class: "flex flex-col gap-2" }, index.h("slot", { key: '7f141d39bde2de7078f522d20c1a325afd169e3d' }), this.items &&
             this.items.map((item) => {
                 return (index.h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

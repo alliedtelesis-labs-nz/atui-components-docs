@@ -1,6 +1,6 @@
-import { A as AtuiMenuCellComponent, d as defineCustomElement$1 } from './p-MXgaENgg.js';
+import { A as AtuiMenuCell$1, d as defineCustomElement$1 } from './p-BkF8g_0e.js';
 
-const AtuiMenuCell = AtuiMenuCellComponent;
+const AtuiMenuCell = AtuiMenuCell$1;
 const defineCustomElement = defineCustomElement$1;
 
 export { AtuiMenuCell, defineCustomElement };

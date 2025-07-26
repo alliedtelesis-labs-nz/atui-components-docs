@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$6 } from './p-3_c1iLDm.js';
-import { d as defineCustomElement$5 } from './p-D2aySMT2.js';
-import { d as defineCustomElement$4 } from './p-BNyf5aaw.js';
-import { d as defineCustomElement$3 } from './p-q1ydcm97.js';
-import { d as defineCustomElement$2 } from './p-C9jJSBR0.js';
+import { d as defineCustomElement$6 } from './p-w9jjWZDj.js';
+import { d as defineCustomElement$5 } from './p-DeBrQKIq.js';
+import { d as defineCustomElement$4 } from './p-BVyEJE0-.js';
+import { d as defineCustomElement$3 } from './p-FL7N6jaz.js';
+import { d as defineCustomElement$2 } from './p-CttroVkw.js';
 
 const AtuiSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarSubmenuComponent extends H {
     constructor() {
@@ -49,7 +49,7 @@ const AtuiSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiS
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: 'a109a23d13079895044c1199bd283e4a6da96a9c' }, h("atui-accordion-item", { key: 'ca11f7e5018211d8335893aa9f29b4235aaf426d', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("atui-sidebar-menuitem", { key: 'c626025dd2745bacc06f255b219bb6f65b7a08f4', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: 'd18d20c79352469747229c0913d147f89d6deded', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '328dbba07b34655d68b4df611b50cbc32eb858bf', slot: "accordion-content" }, h("slot", { key: '4f2bba630b2f2f80e0adca65f3e895fd89742c6c', name: "submenu-content" }))), h("atui-menu", { key: 'cd9e511650eac2943de50dccae0567251a7d296c', class: this.isSidebarOpen ? 'hidden' : 'w-input-sm bg-red-400', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start" }, h("atui-sidebar-menuitem", { key: 'f1b4a4769af170a5f2afe619fccf1e3968537105', class: "pl-16", slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '0e38d866b81aa7f79e22a00f52d36d22114a576f', slot: "menu-content" }, h("slot", { key: 'd5909a4848dfe4dbe4a4a0fde3737908a945b28e', name: "submenu-hover-content" })))));
+        return (h(Host, { key: '8b3fee949d177d9f9153e207f0568ae458e280c4' }, h("atui-accordion-item", { key: 'ddf577e7f6019faabd6db6c7c2212cbb9923edaa', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("atui-sidebar-menuitem", { key: '589df1f73eef8dac25259a763e3af56b239077d3', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: '91ca797a4433926224c81a733f532f8eeb644dee', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '34275f0f2be45e31235f4f7171b9de29e2a9783e', slot: "accordion-content" }, h("slot", { key: 'b162af68dab9f40ed97f9e8b949f053de4905266', name: "submenu-content" }))), h("atui-menu", { key: '422c77d89b32df336754c7cd8dad5397f81e4e1f', class: this.isSidebarOpen ? 'hidden' : 'w-input-sm', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", portal: true }, h("atui-sidebar-menuitem", { key: '75cb5aec0b05424d63e884a9eb94462c4fba3c59', class: "pl-16", slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '93795d7bbfab6f82f0cf1e7d5e879d0f1112aac7', slot: "menu-content" }, h("slot", { key: 'aa3e8951f4fa3e1c594f648fed0d433d53b97a3b', name: "submenu-hover-content" })))));
     }
     get el() { return this; }
 }, [260, "atui-sidebar-submenu", {

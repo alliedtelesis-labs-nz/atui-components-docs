@@ -235,14 +235,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-badge.entry.js').then(processMod, consoleError);
-                case 'atui-form-label':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-form-label.entry.js').then(processMod, consoleError);
-                case 'atui-tooltip':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-tooltip.entry.js').then(processMod, consoleError);
                 case 'atui-dialog':
                     return import(
                       /* webpackMode: "lazy" */
@@ -271,6 +263,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-input-numeric.entry.js').then(processMod, consoleError);
+                case 'atui-form-label_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-form-label_2.entry.js').then(processMod, consoleError);
                 case 'atui-button-group_3':
                     return import(
                       /* webpackMode: "lazy" */
@@ -311,14 +307,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-edit-text-cell.entry.js').then(processMod, consoleError);
-                case 'atui-icon-cell':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-icon-cell.entry.js').then(processMod, consoleError);
-                case 'atui-image-cell':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-image-cell.entry.js').then(processMod, consoleError);
                 case 'atui-menu-cell':
                     return import(
                       /* webpackMode: "lazy" */

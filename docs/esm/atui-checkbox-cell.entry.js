@@ -7,7 +7,6 @@ const AtuiCheckboxCellComponent = class {
     init(params) {
         this.params = params;
         this.params.api.refreshHeader();
-        this.params.width = 60;
     }
     getGui() {
         return this.el;
@@ -17,15 +16,20 @@ const AtuiCheckboxCellComponent = class {
         return true;
     }
     setValue(checked) {
-        if (checked !== undefined) {
+        var _a;
+        if (checked !== undefined && ((_a = this.params) === null || _a === void 0 ? void 0 : _a.setValue)) {
             this.params.setValue(checked);
             this.params.api.refreshHeader();
         }
     }
     render() {
-        return (h(Host, { key: '6969f0fdc6fb0fd04bdc698a8cd427cc2f03e19b', class: "flex h-full items-center" }, h("atui-checkbox", { key: '7340da4565fefff2ef986f55df51246178e18f21', class: "w-auto self-center", disabled: this.params.getDisabled
-                ? this.params.getDisabled(this.params.data)
-                : false, value: this.params.value, onAtuiChange: (event) => this.setValue(event.detail) })));
+        const isChecked = this.params.checked
+            ? this.params.checked(this.params.data)
+            : false;
+        const isDisabled = this.params.getDisabled
+            ? this.params.getDisabled(this.params.data)
+            : false;
+        return (h(Host, { key: '88c0ce5ba35a3b29d37cee988b86f374200e625f', class: "flex h-full items-center" }, h("atui-checkbox", { key: '6a29b06d667e972db448e821ceeb3a438d5afb45', class: "w-auto self-center", disabled: isDisabled, value: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
     get el() { return getElement(this); }
 };
