@@ -39,12 +39,12 @@ const AtuiChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (index.h("div", { key: 'deb1ec01aacac3f1db8e1761da1c7f5179426016', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (index.h("div", { key: '3ead214596babee38a781a7adf914b41294027db', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (index.h("atui-button", { key: '2cc73f67b6bddcff607213f12f8c5d9b9fa4ddf7', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
+            this.show_clear_all && (index.h("atui-button", { key: '76142e1f4274386842b8bbe3d233a44062931782', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), index.h("slot", { key: 'e120a5bc552fb7db0ba79ec341690b7c1d9d281f' })));
+            } })), index.h("slot", { key: 'af0e556dc6b37bb150cf0c2ac0ba7405060aeac4' })));
     }
 };
 

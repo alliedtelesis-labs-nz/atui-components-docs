@@ -164,7 +164,7 @@ const AtuiChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtuiChartDonut e
         }
     }
     render() {
-        return (h(Host, { key: '6004c4b8b496a154fca4e0e9e117dec0e0a5ab91', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '9048c17b9c636a7cdf55167f42f8d9bd0016a3ff', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: 'a543562fcba9bbdab4ae2d7cda53a1ca26ea9d7d', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '9286262c3951d8ea2235113921d7601d4a389c9b', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',

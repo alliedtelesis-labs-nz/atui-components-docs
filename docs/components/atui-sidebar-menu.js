@@ -6,7 +6,7 @@ const AtuiSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSide
         this.__registerHost();
     }
     render() {
-        return (h(Host, { key: 'bf66c4e423b9e56f1a446a42b46d20da06905034', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'ae2fa312cf33178fcc8a7899a553849e00fff4a0' })));
+        return (h(Host, { key: '7ed4e68bbbeedb2abc4ca775364cd6853b7f0771', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '18e7a1112ff3ef406e9ea0857fcddea3a5020c94' })));
     }
 }, [260, "atui-sidebar-menu"]);
 function defineCustomElement$1() {

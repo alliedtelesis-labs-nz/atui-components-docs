@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$3 } from './p-DpoOUufO.js';
+import { d as defineCustomElement$3 } from './p-DRPzh5AP.js';
 import { d as defineCustomElement$2 } from './p-CHkT-iof.js';
 
 const AtuiSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarTriggerComponent extends H {
@@ -29,7 +29,7 @@ const AtuiSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtuiS
         await this.updateIsOpen();
     }
     render() {
-        return (h("atui-button", { key: '3aed72a8137c647e422e5290b0dcc3347569687f', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("atui-button", { key: 'bfa564d04411dbdc045942592a66cb715cbf880a', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return this; }
 }, [256, "atui-sidebar-trigger", {

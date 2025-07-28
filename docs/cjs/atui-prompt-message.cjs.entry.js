@@ -93,7 +93,7 @@ const AtuiPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'b74c42f66318328008f024a4cb5416d40d3ef73c', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), index.h("div", { key: 'f922b3374f1c18dc78a6550bfde7c91760ed5e9d', class: "space-y-1 flex-1" }, index.h("div", { key: '8673d9983e2e0bfa95cc71d154aa71a0cca3ca26', class: "flex items-center gap-8" }, this.name && (index.h("span", { key: '6e54e979f8e9cf7189141473487e293f0d48eda1', class: "text-sm text-light", "data-name": "message-name" }, this.name))), index.h("div", { key: '32eeab70fa042c67c40f81e7ad3bdb78b5316223', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '1db966cab534c25d160b3a8dd514f5a1ce29284c', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), index.h("div", { key: '11bb6ee96a61e622e28f2f91c57de9d1ab9907d1', class: "space-y-1 flex-1" }, index.h("div", { key: '686dd51e7808c12746cc0020247a83be5e89da9a', class: "flex items-center gap-8" }, this.name && (index.h("span", { key: 'c3b4c62fb5b05309aca02f4d9a28221af2368885', class: "text-sm text-light", "data-name": "message-name" }, this.name))), index.h("div", { key: 'ed3a8491ead700933e9700ace54e40b603c0c92f', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     get el() { return index.getElement(this); }
 };

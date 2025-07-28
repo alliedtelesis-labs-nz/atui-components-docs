@@ -8,11 +8,11 @@ export class AtuiTableFilters {
         this.selected = [];
         this.clearFilters = () => {
             this.selected = [];
-            this.atuiChange.emit([{ id: '', value: '' }]);
+            this.atuiChange.emit([]);
         };
         this.clearSingleFilter = (columnId) => {
             this.selected = this.selected.filter((column) => column.id !== columnId);
-            this.atuiChange.emit(this.selected);
+            this.atuiChange.emit(this.selected.length ? this.selected : []);
         };
     }
     async componentWillLoad() {
@@ -28,7 +28,7 @@ export class AtuiTableFilters {
         this.atuiChange.emit(this.selected);
     }
     render() {
-        return (this.col_defs && (h(Host, { key: '78c3c6f157a38e018b25cd9736f238d5a0a5ae9a', class: "flex items-start gap-8" }, h("div", { key: 'a5083957e7dc1eb84dce205ff38cf2605f603ec3', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: 'db27a9d2132d967ccde463592b2134e6f19c5395', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: '8e5b789cd79e0b6495b440143ef0e7d9d2fd3cd8', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '8a0a70893046eae9ba52465d2412387c03d0cc6a', class: "flex items-start gap-8" }, h("div", { key: '6dc0e1baad3a56545b53147672add1ea19d1071b', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: '7e3e7fb5d42193d06c8ffba8c5b6a110772b92c8', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: 'd271ebf380617e3885501029c366e0086d641cda', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "atui-table-filters"; }
     static get properties() {

@@ -12,6 +12,10 @@ export class AtuiDialogComponent {
          */
         this.role = 'dialog';
         /**
+         * Whether to show a backdrop behind the dialog
+         */
+        this.backdrop = false;
+        /**
          * Internal state to track if dialog is open
          */
         this.isOpen = false;
@@ -37,6 +41,9 @@ export class AtuiDialogComponent {
         if (dialog && !this.isOpen) {
             dialog.showModal();
             this.isOpen = true;
+            if (this.backdrop) {
+                dialog.classList.add('backdrop');
+            }
         }
     }
     /**
@@ -49,10 +56,11 @@ export class AtuiDialogComponent {
             dialog.close();
             this.isOpen = false;
             dialog.removeAttribute('open');
+            dialog.classList.remove('backdrop');
         }
     }
     render() {
-        return (h("dialog", { key: '6ce9fdf4ad7a3f9d6f330d8918503c7c8b974844', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '0e371596f239f495a2b773183c53b57bb5adc5fc', class: "backdrop-content" }, h("slot", { key: 'd5f069f499caae7eedfd830f798e767f49fa4792' }))));
+        return (h("dialog", { key: 'a7cf76492afd7f55bbadc23b360f0fccb41457c9', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '07a3552e9e0adc62e8f7cd301c89337c4763e1a3', class: "backdrop-content" }, h("slot", { key: '7466c89b5b53865fd8a3c69243ce6e8a32980960' }))));
     }
     static get is() { return "atui-dialog"; }
     static get originalStyleUrls() {
@@ -105,6 +113,26 @@ export class AtuiDialogComponent {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "'dialog'"
+            },
+            "backdrop": {
+                "type": "boolean",
+                "attribute": "backdrop",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Whether to show a backdrop behind the dialog"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "false"
             }
         };
     }

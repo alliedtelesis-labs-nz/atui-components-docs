@@ -289,7 +289,7 @@ export namespace Components {
         /**
           * Material icon to be displayed after the label within the button
          */
-        "icon_right"?: string;
+        "icon_after"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -758,6 +758,11 @@ export namespace Components {
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
     interface AtuiDialog {
+        /**
+          * Whether to show a backdrop behind the dialog
+          * @default false
+         */
+        "backdrop": boolean;
         /**
           * Closes the dialog modal
           * @returns Promise that resolves when the dialog is closed
@@ -1804,6 +1809,16 @@ export namespace Components {
      */
     interface AtuiSidePanel {
         /**
+          * Whether to show a backdrop behind the panel
+          * @default false
+         */
+        "backdrop": boolean;
+        /**
+          * Closes the side panel
+          * @returns Promise that resolves when the panel is closed
+         */
+        "closeSidePanel": () => Promise<void>;
+        /**
           * Will close the sidepanel if clicked off when set
           * @default false
          */
@@ -1823,6 +1838,11 @@ export namespace Components {
           * @default true
          */
         "has_scrollbar": boolean;
+        /**
+          * Opens the side panel
+          * @returns Promise that resolves when the panel is opened
+         */
+        "openSidePanel": () => Promise<void>;
         /**
           * Position of the side panel
           * @default 'right'
@@ -4223,7 +4243,7 @@ declare namespace LocalJSX {
         /**
           * Material icon to be displayed after the label within the button
          */
-        "icon_right"?: string;
+        "icon_after"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -4722,6 +4742,11 @@ declare namespace LocalJSX {
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
     interface AtuiDialog {
+        /**
+          * Whether to show a backdrop behind the dialog
+          * @default false
+         */
+        "backdrop"?: boolean;
         /**
           * ID of the dialog element (used to open and close the modal)
          */
@@ -5820,6 +5845,11 @@ declare namespace LocalJSX {
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
      */
     interface AtuiSidePanel {
+        /**
+          * Whether to show a backdrop behind the panel
+          * @default false
+         */
+        "backdrop"?: boolean;
         /**
           * Will close the sidepanel if clicked off when set
           * @default false

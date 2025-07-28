@@ -37,7 +37,7 @@ export declare class AtuiButtonComponent {
     /**
      * Material icon to be displayed after the label within the button
      */
-    icon_right?: string;
+    icon_after?: string;
     /**
      * When set, will display a loading spinner inside the button and hide all labels & icons
      */

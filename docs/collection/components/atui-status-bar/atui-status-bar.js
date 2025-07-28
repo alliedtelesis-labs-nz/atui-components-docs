@@ -25,7 +25,7 @@ export class AtuiStatusBar {
             } }), h("span", { slot: "tooltip-content" }, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '4d2273308709b7f63740ec9c43d5cc2f452ad637', class: this.statusBarClass }, h("div", { key: 'bc7c5ae6d49838d2ef4210bc5bb9c56db953b5f4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '82a2a7adf088ccfbf50a5c5181d2377f002e7e2d', class: this.statusBarClass }, h("div", { key: '753b0337ec004a2743b18c23beae25358aba4e36', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
     static get is() { return "atui-status-bar"; }
     static get properties() {

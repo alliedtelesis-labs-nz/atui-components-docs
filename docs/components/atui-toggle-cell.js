@@ -1,4 +1,4 @@
-import { A as AtuiToggleCell$1, d as defineCustomElement$1 } from './p-C2Fzl-Oe.js';
+import { A as AtuiToggleCell$1, d as defineCustomElement$1 } from './p-CybA-YSf.js';
 
 const AtuiToggleCell = AtuiToggleCell$1;
 const defineCustomElement = defineCustomElement$1;

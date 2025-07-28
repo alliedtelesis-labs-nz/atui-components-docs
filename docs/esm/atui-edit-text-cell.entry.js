@@ -21,7 +21,7 @@ const AtuiEditTextCell = class {
         }
     }
     render() {
-        return (h(Host, { key: '3aa95b743af187ad43021b2ad5411e6837ff6ebf', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: '051e9a3d6d6eb351ca4e84be3c076940d818c000', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: '2b5b7a7c7cfd5d3a9f3dd1fae1fc93b92538425a', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: 'acb00b14c33449b0abd46e554b09c36340ce8c81', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));

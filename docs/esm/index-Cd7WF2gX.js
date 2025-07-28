@@ -119,10 +119,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-search-table.entry.js').then(processMod, consoleError);
-                case 'atui-side-panel':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-side-panel.entry.js').then(processMod, consoleError);
                 case 'atui-sidebar-menu':
                     return import(
                       /* webpackMode: "lazy" */
@@ -243,6 +239,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-input-range.entry.js').then(processMod, consoleError);
+                case 'atui-side-panel':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-side-panel.entry.js').then(processMod, consoleError);
                 case 'atui-sidebar':
                     return import(
                       /* webpackMode: "lazy" */

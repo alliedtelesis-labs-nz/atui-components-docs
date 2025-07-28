@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
 import { d as defineCustomElement$6 } from './p-ahrzBTL4.js';
-import { d as defineCustomElement$5 } from './p-DpoOUufO.js';
+import { d as defineCustomElement$5 } from './p-DRPzh5AP.js';
 import { d as defineCustomElement$4 } from './p-CHkT-iof.js';
-import { d as defineCustomElement$3 } from './p-DC4GG51k.js';
-import { d as defineCustomElement$2 } from './p-CYjfaOKk.js';
+import { d as defineCustomElement$3 } from './p-B9vhHaRh.js';
+import { d as defineCustomElement$2 } from './p-B9oksuag.js';
 
 const AtuiPromptThread$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptThread extends H {
     constructor() {
@@ -100,7 +100,7 @@ const AtuiPromptThread$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptThre
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: 'bef51dfdd678fe916e5193bce26a2a06498e917d', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '029a58b6904870bf5fe406b18cc0930f8a956670', name: "messages" })));
+        return (h(Host, { key: 'c30e2b3ca68b1f6d6132630e9b3bf021aa7f9ffe', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'dcbf13bca286be9b0be3072167ac013acaa93542', name: "messages" })));
     }
 }, [260, "atui-prompt-thread", {
         "messages": [16],

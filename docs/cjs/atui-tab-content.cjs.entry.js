@@ -35,7 +35,7 @@ const AtuiTabContent = class {
         this.isActive = id === this.tab_id;
     }
     render() {
-        return (index.h("div", { key: '9545c07d798364b96ef11f755123f4bec877afa0', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '27b9a3f768646eee14973554ae23254ebfa30205' })));
+        return (index.h("div", { key: 'd83e6da79acf65f25590920538894ca73aa97a32', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '461f47ad68deff6409474163f387db8697aa019a' })));
     }
     get el() { return index.getElement(this); }
 };

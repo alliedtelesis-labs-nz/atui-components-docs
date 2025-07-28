@@ -1,4 +1,4 @@
-import { A as AtuiCustomTimeRangeComponent, d as defineCustomElement$1 } from './p-DsyWiKxp.js';
+import { A as AtuiCustomTimeRangeComponent, d as defineCustomElement$1 } from './p-1gonP8ie.js';
 
 const AtuiCustomTimeRange = AtuiCustomTimeRangeComponent;
 const defineCustomElement = defineCustomElement$1;

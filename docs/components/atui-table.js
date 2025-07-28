@@ -1,4 +1,4 @@
-import { A as AtuiTableComponent, d as defineCustomElement$1 } from './p-CdTSN34u.js';
+import { A as AtuiTableComponent, d as defineCustomElement$1 } from './p-Dzk6JpCu.js';
 
 const AtuiTable = AtuiTableComponent;
 const defineCustomElement = defineCustomElement$1;

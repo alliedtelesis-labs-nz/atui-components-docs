@@ -1,5 +1,7 @@
 import { p as proxyCustomElement, H, h } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$2 } from './p-DpB_Sinf.js';
+import { d as defineCustomElement$2 } from './p-DN6ePLjC.js';
+
+const atuiSidePanelCss = "dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}";
 
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
@@ -24,7 +26,7 @@ const sizeVariants = {
         xl: 'w-panel-xl',
     },
 };
-const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogComponent extends H {
+const AtuiSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidePanelComponent extends H {
     constructor() {
         super();
         this.__registerHost();
@@ -52,11 +54,49 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
          * If sidepanel should used fixed positioning (otherwise absolute)
          */
         this.fixed = true;
+        /**
+         * Whether to show a backdrop behind the panel
+         */
+        this.backdrop = false;
         this.isExpanded = false;
+        this.handleClose = () => {
+            this.closeSidePanel();
+        };
     }
-    handleClose() {
-        this.panelDialog.close();
-        this.isExpanded = false;
+    /**
+     * Opens the side panel
+     * @returns Promise that resolves when the panel is opened
+     */
+    async openSidePanel() {
+        if (this.panelDialog && !this.panelDialog.open) {
+            this.panelDialog.showModal();
+            this.isExpanded = true;
+            if (this.backdrop) {
+                this.panelDialog.classList.add('backdrop');
+            }
+        }
+    }
+    /**
+     * Closes the side panel
+     * @returns Promise that resolves when the panel is closed
+     */
+    async closeSidePanel() {
+        if (this.panelDialog && this.panelDialog.open) {
+            this.panelDialog.close();
+            this.isExpanded = false;
+            this.panelDialog.classList.remove('backdrop');
+        }
+    }
+    offClickHandler(event) {
+        var _a, _b;
+        if (!this.close_backdrop || !((_a = this.panelDialog) === null || _a === void 0 ? void 0 : _a.open))
+            return;
+        if (!((_b = this.sidePanelWrapper) === null || _b === void 0 ? void 0 : _b.contains(event.target))) {
+            this.handleClose();
+        }
+    }
+    render() {
+        return (h("div", { key: '590e61ab100a8a92e84258feb41acab7318e2f46' }, h("dialog", { key: '0b64751e65029937eca42d90f1627bbf177b0a0b', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '' }, h("div", { key: '506da7487920748c72c088678ac8ac1c2fcbf036', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '52d6928ea586fbf44d7a44543ad4340902433e97', class: 'sticky top-0 z-nav' }, h("atui-header", { key: 'afcfb2438095853c4c30b94a880d8d2ef2961b37', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '3f6404d18342b0eebe20347aee4cd95439954f11', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '6fc03eaac2366ecd318cc8a7eae678827206f9de', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: 'b527dd9a9ec9dd18260bbccb862a2a3b6c82c515', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '8708fdfd43d6b747182882def558f368a1cac5e8', name: 'content' }))))));
     }
     get panelClasses() {
         return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
@@ -65,16 +105,8 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
     get sizeClasses() {
         return `${sizeVariants.base} ${sizeVariants.size[this.size]}`;
     }
-    offClickHandler(event) {
-        if (!this.close_backdrop || !this.panelDialog.open)
-            return;
-        if (!this.sidePanelWrapper.contains(event.target)) {
-            this.handleClose();
-        }
-    }
-    render() {
-        return (h("div", { key: '2331314a9d681bee6b145dd211a248e10c2ead36' }, h("dialog", { key: '795f60de78016850c2e1f8b736fd94ffeadb1e7e', id: this.panel_id, ref: (el) => (this.panelDialog = el) }, h("div", { key: 'f3460bcb6adcfb3c9e1d7829afa192116fca3942', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: 'ecec539dd4c2e79007ac868f0b37d8092d3719dc', class: 'sticky top-0 z-nav' }, h("atui-header", { key: 'e36aa02d28022b6ce9d96b1cecdd0fde371079a5', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: 'ad7ecf58f172b94a8869e93e42d72f943e5e42fc', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '8bd352ae36665cb43a377ec28998a5363ea0d910', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: () => this.handleClose(), "data-name": "panel-close" }, "close"))))), h("div", { key: '2e2cd97b6f54eb7573fe63f748c7bbaee416ea02', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: 'fafe52992808cb3f1ffa17522b38a8fb905c28fc', name: 'content' }))))));
-    }
+    get el() { return this; }
+    static get style() { return atuiSidePanelCss; }
 }, [260, "atui-side-panel", {
         "size": [1],
         "panel_id": [1],
@@ -85,9 +117,10 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
         "has_close_button": [4],
         "close_backdrop": [4],
         "fixed": [4],
+        "backdrop": [4],
         "isExpanded": [32],
-        "sidePanelWrapper": [32],
-        "panelDialog": [32]
+        "openSidePanel": [64],
+        "closeSidePanel": [64]
     }, [[5, "mousedown", "offClickHandler"]]]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
@@ -97,7 +130,7 @@ function defineCustomElement$1() {
     components.forEach(tagName => { switch (tagName) {
         case "atui-side-panel":
             if (!customElements.get(tagName)) {
-                customElements.define(tagName, AtuiDialogComponent);
+                customElements.define(tagName, AtuiSidePanelComponent);
             }
             break;
         case "atui-header":
@@ -108,7 +141,7 @@ function defineCustomElement$1() {
     } });
 }
 
-const AtuiSidePanel = AtuiDialogComponent;
+const AtuiSidePanel = AtuiSidePanelComponent;
 const defineCustomElement = defineCustomElement$1;
 
 export { AtuiSidePanel, defineCustomElement };

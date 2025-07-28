@@ -9,7 +9,7 @@ export declare class AtuiColumnManagerComponent {
      * Column definitions used in your atui-table
      */
     col_defs: ColDef[];
-    el: any;
+    el: HTMLElement;
     translations: any;
     checkedColumns: string[];
     componentWillLoad(): Promise<void>;

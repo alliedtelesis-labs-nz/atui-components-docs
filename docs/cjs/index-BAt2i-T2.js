@@ -139,10 +139,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-search-table.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'atui-side-panel.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './atui-side-panel.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-sidebar-menu.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -263,6 +259,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-input-range.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-side-panel.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-side-panel.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-sidebar.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -97,7 +97,7 @@ export { AtuiSearchTable as AtuiSearchTable } from '../types/components/table-co
 export { defineCustomElement as defineCustomElementAtuiSearchTable } from './atui-search-table';
 export { AtuiSelectComponent as AtuiSelect } from '../types/components/atui-select/atui-select';
 export { defineCustomElement as defineCustomElementAtuiSelect } from './atui-select';
-export { AtuiDialogComponent as AtuiSidePanel } from '../types/components/atui-side-panel/atui-side-panel';
+export { AtuiSidePanelComponent as AtuiSidePanel } from '../types/components/atui-side-panel/atui-side-panel';
 export { defineCustomElement as defineCustomElementAtuiSidePanel } from './atui-side-panel';
 export { AtuiSidebarComponent as AtuiSidebar } from '../types/components/atui-sidebar/atui-sidebar';
 export { defineCustomElement as defineCustomElementAtuiSidebar } from './atui-sidebar';

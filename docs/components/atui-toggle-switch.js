@@ -1,4 +1,4 @@
-import { A as AtuiToggleSwitchComponent, d as defineCustomElement$1 } from './p-CaFuKsvI.js';
+import { A as AtuiToggleSwitchComponent, d as defineCustomElement$1 } from './p-DZxocY14.js';
 
 const AtuiToggleSwitch = AtuiToggleSwitchComponent;
 const defineCustomElement = defineCustomElement$1;

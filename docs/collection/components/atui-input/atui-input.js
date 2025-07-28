@@ -61,10 +61,10 @@ export class AtuiInputComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '5079cca66dcd22ecbfb4736ae071a00a3d45cf42' }, h("div", { key: '450b39e12b13ed4de005877118a71ebfcb5991f7', class: "flex flex-col" }, h("slot", { key: '5baaf7e724b398e1da89cd95f838baef9f4bf09f', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '331da60ad34aa0c2ddb6e95488e20ec736b0516c', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'e4b0b00b897bb0bff5de00e584f3b496bef26222', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'a9e43baff375673ee05964c54f230fc6d820351c', class: classname }, h("input", { key: '39e32a9a565edbd5c49f4ef885802414c865bf0e', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: 'd079aaa57216966da324f72f6a0f8b8216b878c6', class: "flex items-center py-4 pr-4" }, h("slot", { key: '833e63a4781295bdda14ecd6d1fed7d97226c980', name: "input-actions" }), this.clearable &&
+        return (h(Host, { key: '275a04fca921759c5476b414e0fcb457fd72f53b' }, h("div", { key: '79f751989d18cd76dd0b147ee14793f48f058114', class: "flex flex-col" }, h("slot", { key: 'c97f707facff378e0b0d6435e0f8f1f2a2825678', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '92c517f2a20309f4edc5f5fdd17af71b03406808', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '05075144833a46df4ad920675621f2387b5f99c9', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'ce168fe24bd105987cf4365a9de554a6f02605f9', class: classname }, h("input", { key: '1b90f2acbd029031eefab560ff4438b9a75b5787', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '59fa955808dc3713c5bba029ba52e553f46c34e1', class: "flex items-center py-4 pr-4" }, h("slot", { key: '69a05f62d0a75b92b41be1f54cb5a8b10b4f1702', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("atui-button", { key: '19d6b52547ac6320c7bedfb3803307c93a9118d9', class: `transition-all duration-300 ease-in-out ${this.clearable &&
+            this.value && (h("atui-button", { key: '046870fa914a4292d24f1b4fa1334713496d5baf', class: `transition-all duration-300 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -72,7 +72,7 @@ export class AtuiInputComponent {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: 'f98a5d11c084ae8f9ce9f97827abd8084a3e0c90', class: "text-sm text-error", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: '8f4b67b847cab15ae82b39edf666ba2e2c0b3d5b', class: "text-sm text-error", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "atui-input"; }
     static get properties() {

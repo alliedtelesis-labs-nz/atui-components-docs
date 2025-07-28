@@ -108,9 +108,7 @@ const AtuiSearchTable = class {
         if (!this.agGrid)
             return;
         this.agGrid.setGridOption('isExternalFilterPresent', () => {
-            const hasFilters = Object.keys(this.activeFilters).length > 0;
-            console.log('isExternalFilterPresent called, hasFilters:', hasFilters);
-            return hasFilters;
+            return Object.keys(this.activeFilters).length > 0;
         });
         this.agGrid.setGridOption('doesExternalFilterPass', (node) => {
             if (!node.data)
@@ -118,12 +116,10 @@ const AtuiSearchTable = class {
             const searchValue = this.activeFilters['__search__'];
             if (searchValue) {
                 const searchLower = searchValue.toLowerCase();
-                // Check all column definitions and use their valueGetter if available
                 const matchesSearch = this.col_defs.some((colDef) => {
                     let cellValue;
                     if (colDef.valueGetter &&
                         typeof colDef.valueGetter === 'function') {
-                        // Use valueGetter for processed values (custom cells)
                         cellValue = colDef.valueGetter({
                             data: node.data,
                             node,
@@ -131,11 +127,10 @@ const AtuiSearchTable = class {
                             api: this.agGrid,
                             context: null,
                             getValue: (field) => node.data[field],
-                            column: null, // Not available in external filter context
+                            column: null,
                         });
                     }
                     else if (colDef.field) {
-                        // Use raw field value for simple cells
                         cellValue = node.data[colDef.field];
                     }
                     return (cellValue &&
@@ -149,13 +144,11 @@ const AtuiSearchTable = class {
             const columnFilterResult = Object.entries(this.activeFilters).every(([colId, filterValue]) => {
                 if (colId === '__search__' || !filterValue)
                     return true;
-                // Find the column definition for this field
                 const colDef = this.col_defs.find((def) => def.field === colId);
                 let value;
                 if (colDef &&
                     colDef.valueGetter &&
                     typeof colDef.valueGetter === 'function') {
-                    // Use valueGetter for processed values (custom cells)
                     value = colDef.valueGetter({
                         data: node.data,
                         node,
@@ -163,11 +156,10 @@ const AtuiSearchTable = class {
                         api: this.agGrid,
                         context: null,
                         getValue: (field) => node.data[field],
-                        column: null, // Not available in external filter context
+                        column: null,
                     });
                 }
                 else {
-                    // Use raw field value for simple cells
                     value = node.data[colId];
                 }
                 const matches = value &&
@@ -190,13 +182,19 @@ const AtuiSearchTable = class {
         this.col_defs = updatedColDefs;
     }
     handleFilterChange(event) {
-        if (event.detail) {
-            if (Array.isArray(event.detail) &&
-                typeof event.detail[0] === 'string') {
+        if (!event.detail ||
+            (Array.isArray(event.detail) && event.detail.length === 0)) {
+            // Handle clear all case
+            this.selectedFilters = [];
+            this.menuSelectedIds = [];
+            this.updateActiveFilters();
+            return;
+        }
+        if (Array.isArray(event.detail)) {
+            if (typeof event.detail[0] === 'string') {
                 this.handleMenuFilterChange(event.detail);
             }
-            else if (Array.isArray(event.detail) &&
-                typeof event.detail[0] === 'object') {
+            else if (typeof event.detail[0] === 'object') {
                 this.handleFilterListChange(event.detail);
             }
         }
@@ -210,15 +208,15 @@ const AtuiSearchTable = class {
         this.menuSelectedIds = selectedIds;
     }
     handleFilterListChange(filters) {
-        if (filters.length === 1 && filters[0].id === '') {
+        // If filters array is empty or contains a single empty filter, reset all states
+        if (!filters.length || (filters.length === 1 && filters[0].id === '')) {
             this.selectedFilters = [];
             this.menuSelectedIds = [];
         }
         else {
             this.selectedFilters = filters;
-            this.menuSelectedIds = filters
-                .filter((f) => f.value && f.value.trim() !== '')
-                .map((f) => f.id);
+            // Set menuSelectedIds based on all filter IDs, regardless of their values
+            this.menuSelectedIds = filters.map((filter) => filter.id);
         }
     }
     updateActiveFilters() {
@@ -234,6 +232,9 @@ const AtuiSearchTable = class {
                 this.activeFilters[filter.id] = filter.value;
             }
         });
+        if (this.searchValue) {
+            this.activeFilters['__search__'] = this.searchValue;
+        }
         if (this.agGrid) {
             this.setupExternalFilters();
             this.agGrid.onFilterChanged();
@@ -244,7 +245,6 @@ const AtuiSearchTable = class {
     }
     handleSearchChange(event) {
         this.searchValue = event.detail || '';
-        // Add search to activeFilters for custom external filter logic
         if (this.searchValue) {
             this.activeFilters['__search__'] = this.searchValue;
         }
@@ -254,7 +254,7 @@ const AtuiSearchTable = class {
         this.updateActiveFilters();
     }
     render() {
-        return (index.h(index.Host, { key: '8ea070d7dfbc803cd5cda3843b6124fa87041fdd' }, index.h("atui-table-actions", { key: 'efa72ba6ed250c7be03b3f10c58852e7bb72b4af', ag_grid: this.agGrid }, index.h("div", { key: '2833dd636fa89cfe607b5631a199a00f3401b55d', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filter-menu", { key: 'aa96c591dd0a5c51dd80b5cd2d44470229c26af0', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), index.h("atui-search", { key: '3c579dcf664aed25d365df1f13baced515f48b16', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filters", { key: '566d8d9dd753cb33f12a475afd971c36b8041593', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("atui-table-export-menu", { key: '2f2edd32391170437ede3bec7649908bbfd80967', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (index.h("atui-column-manager", { key: '5bbc44a387356ae29bb01757632f692687320b19', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '0e7556326e99012bbc30937b9122293c3aa5e786', slot: "actions" }, index.h("slot", { key: 'a0dcf6300cdef668718f1754abb04aa9c4622852', name: "actions" }))), index.h("slot", { key: '2dffb0771c3af7c6385ca0f4cf5ee4e87593f9fd', name: "multi-select-actions" }), index.h("atui-table", { key: 'c96c81641079ce60bd2da099572195a3659e6c7f', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (index.h(index.Host, { key: '3045ac09b42475f85f4a06d7d4e18d7dfd532a5a' }, index.h("atui-table-actions", { key: 'e5d733d57d9a2bf0b828ff0955f48c2800580825', ag_grid: this.agGrid }, index.h("div", { key: '6e089936a5cdff37dd324ddebd4d0b1e342089f3', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filter-menu", { key: 'cc7bd0de32ff72ddb806f1d151a226c7525d8478', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), index.h("atui-search", { key: '3e1c13633a1edb86dcb572457a3f32bde504867b', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (index.h("atui-table-filters", { key: '480aac98405124e64ca72759f11db2e16184c7d4', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("atui-table-export-menu", { key: 'b671cdbc77f9dcc78c459abe3e10aabe096e82de', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (index.h("atui-column-manager", { key: '690a511bc1bc5be8180a3dd57481d0aca23c2924', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '3f22bdbae8a46adb1c4346177a981eb925353501', slot: "actions" }, index.h("slot", { key: '56c214619f50b29dfff083d95a99cdbbbee644e2', name: "actions" }))), index.h("slot", { key: 'adf290a7939087319e23e8fd8075ab9a864c0465', name: "multi-select-actions" }), index.h("atui-table", { key: 'd48b34e9af88625b5e781101a46927feab904482', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

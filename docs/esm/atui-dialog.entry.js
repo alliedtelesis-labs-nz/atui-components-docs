@@ -1,6 +1,6 @@
 import { r as registerInstance, h, g as getElement } from './index-Cd7WF2gX.js';
 
-const atuiDialogCss = ".c-atui-dialog {\n  margin: auto;\n  display: block;\n  max-height: calc(100dvh - 48px);\n  overflow: hidden;\n  border: 0;\n  padding: 0;\n  background: transparent;\n  visibility: hidden;\n  z-index: var(--token-z-index-modal);\n  transform-origin: bottom center;\n  opacity: 0;\n  scale: 0.95;\n  box-shadow: var(--token-shadow-3);\n  transition: translate var(--token-transition-time), scale var(--token-transition-time), filter var(--token-transition-time), opacity var(--token-transition-time), visibility var(--token-transition-time);\n}\n.c-atui-dialog::backdrop {\n  animation: fadeIn 0.3s ease forwards;\n  background: rgba(0, 0, 0, 0.2);\n  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;\n}\n@keyframes fadeIn {\n  from {\n    background-color: rgba(0, 0, 0, 0);\n  }\n  to {\n    background-color: rgba(0, 0, 0, 0.6);\n  }\n}\n.c-atui-dialog > * {\n  max-height: calc(100dvh - 48px);\n}\n.c-atui-dialog[open] {\n  translate: 0 0;\n  scale: 1;\n  opacity: 1;\n  visibility: visible;\n}\n@starting-style {\n  .c-atui-dialog[open] {\n    opacity: 0;\n    scale: 1.15;\n  }\n}\n.c-atui-dialog:not([open]) {\n  scale: 0.95;\n  opacity: 0;\n  visibility: hidden;\n}";
+const atuiDialogCss = "dialog.backdrop::backdrop {\n  background: rgba(0, 0, 0, 0.2);\n  transition: opacity 0.3s ease;\n  animation: fadeIn 0.3s ease forwards;\n  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;\n}\n\ndialog.backdrop::backdrop {\n  z-index: var(--z-backdrop, 1000);\n}\n\n@keyframes fadeIn {\n  from {\n    background-color: rgba(0, 0, 0, 0);\n  }\n  to {\n    background-color: rgba(0, 0, 0, 0.2);\n  }\n}\n.c-atui-dialog {\n  position: fixed;\n  inset: 0;\n  margin: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  max-height: calc(100dvh - 48px);\n  overflow: hidden;\n  border: 0;\n  padding: 0;\n  background: transparent;\n  z-index: var(--token-z-index-modal);\n  transform-origin: center;\n  opacity: 0;\n  scale: 0.95;\n  box-shadow: var(--token-shadow-3);\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;\n  visibility: hidden;\n}\n.c-atui-dialog::backdrop {\n  background: none;\n}\n.c-atui-dialog .backdrop-content {\n  display: flex;\n  max-height: calc(100dvh - 48px);\n}\n.c-atui-dialog[open] {\n  translate: 0 0;\n  scale: 1;\n  opacity: 1;\n  visibility: visible;\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;\n}\n@starting-style {\n  .c-atui-dialog[open] {\n    opacity: 0;\n    scale: 1.15;\n  }\n}\n.c-atui-dialog:not([open]) {\n  scale: 0.95;\n  opacity: 0;\n  visibility: hidden;\n}";
 
 const AtuiDialogComponent = class {
     constructor(hostRef) {
@@ -9,6 +9,10 @@ const AtuiDialogComponent = class {
          * Role of the dialog element. Can be either 'dialog' or 'alertdialog'
          */
         this.role = 'dialog';
+        /**
+         * Whether to show a backdrop behind the dialog
+         */
+        this.backdrop = false;
         /**
          * Internal state to track if dialog is open
          */
@@ -35,6 +39,9 @@ const AtuiDialogComponent = class {
         if (dialog && !this.isOpen) {
             dialog.showModal();
             this.isOpen = true;
+            if (this.backdrop) {
+                dialog.classList.add('backdrop');
+            }
         }
     }
     /**
@@ -47,10 +54,11 @@ const AtuiDialogComponent = class {
             dialog.close();
             this.isOpen = false;
             dialog.removeAttribute('open');
+            dialog.classList.remove('backdrop');
         }
     }
     render() {
-        return (h("dialog", { key: '6ce9fdf4ad7a3f9d6f330d8918503c7c8b974844', class: "c-atui-dialog", id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '0e371596f239f495a2b773183c53b57bb5adc5fc', class: "backdrop-content" }, h("slot", { key: 'd5f069f499caae7eedfd830f798e767f49fa4792' }))));
+        return (h("dialog", { key: 'a7cf76492afd7f55bbadc23b360f0fccb41457c9', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '07a3552e9e0adc62e8f7cd301c89337c4763e1a3', class: "backdrop-content" }, h("slot", { key: '7466c89b5b53865fd8a3c69243ce6e8a32980960' }))));
     }
     get el() { return getElement(this); }
 };

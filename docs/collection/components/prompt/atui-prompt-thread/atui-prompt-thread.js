@@ -93,7 +93,7 @@ export class AtuiPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: 'bef51dfdd678fe916e5193bce26a2a06498e917d', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '029a58b6904870bf5fe406b18cc0930f8a956670', name: "messages" })));
+        return (h(Host, { key: 'c30e2b3ca68b1f6d6132630e9b3bf021aa7f9ffe', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'dcbf13bca286be9b0be3072167ac013acaa93542', name: "messages" })));
     }
     static get is() { return "atui-prompt-thread"; }
     static get properties() {
