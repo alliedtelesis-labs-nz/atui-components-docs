@@ -1,1 +1,0 @@
-{"version":3,"file":"tree.js","sourceRoot":"","sources":["../../src/types/tree.ts"],"names":[],"mappings":"","sourcesContent":["export interface TreeNode {\n    id: string;\n    displayName: string;\n    children: TreeNode[];\n    selected?: boolean;\n    tooltip?: string;\n    depth?: number;\n}\n"]}

@@ -1,1 +1,0 @@
-{"version":3,"file":"styles.js","sourceRoot":"","sources":["../../src/types/styles.ts"],"names":[],"mappings":"","sourcesContent":["// Allows specifying CSS styles for text, icons, etc.\nexport interface CSSProperties {\n    [key: string]: string;\n}\n"]}
