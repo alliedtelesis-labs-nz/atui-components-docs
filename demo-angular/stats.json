@@ -13899,7 +13899,7 @@
       "format": "esm"
     },
     "src/app/app.component.ts": {
-      "bytes": 5790,
+      "bytes": 5775,
       "imports": [
         {
           "path": "../../node_modules/@angular/common/fesm2022/common.mjs",
@@ -16687,7 +16687,7 @@
       },
       "bytes": 359
     },
-    "main-FPYRG7QE.js": {
+    "main-NGXT67N6.js": {
       "imports": [
         {
           "path": "chunk-RMHSFJCT.js",
@@ -16789,13 +16789,13 @@
           "bytesInOutput": 3652
         },
         "src/app/app.component.ts": {
-          "bytesInOutput": 2615
+          "bytesInOutput": 2600
         },
         "src/main.ts": {
           "bytesInOutput": 48
         }
       },
-      "bytes": 141709
+      "bytes": 141694
     },
     "chunk-RMHSFJCT.js": {
       "imports": [
