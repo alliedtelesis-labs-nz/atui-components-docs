@@ -81,11 +81,13 @@ export { AtuiMultiSelectComponent as AtuiMultiSelect } from '../types/components
 export { defineCustomElement as defineCustomElementAtuiMultiSelect } from './atui-multi-select';
 export { AtuiPlaceholderComponent as AtuiPlaceholder } from '../types/components/atui-placeholder/atui-placeholder';
 export { defineCustomElement as defineCustomElementAtuiPlaceholder } from './atui-placeholder';
-export { AtuiPromptInputComponent as AtuiPromptInput } from '../types/components/prompt/atui-prompt-input/atui-prompt-input';
+export { AtuiPromptContainer as AtuiPromptContainer } from '../types/components/prompt-components/atui-prompt-container/atui-prompt-container';
+export { defineCustomElement as defineCustomElementAtuiPromptContainer } from './atui-prompt-container';
+export { AtuiPromptInputComponent as AtuiPromptInput } from '../types/components/prompt-components/atui-prompt-input/atui-prompt-input';
 export { defineCustomElement as defineCustomElementAtuiPromptInput } from './atui-prompt-input';
-export { AtuiPromptMessage as AtuiPromptMessage } from '../types/components/prompt/atui-prompt-message/atui-prompt-message';
+export { AtuiPromptMessage as AtuiPromptMessage } from '../types/components/prompt-components/atui-prompt-message/atui-prompt-message';
 export { defineCustomElement as defineCustomElementAtuiPromptMessage } from './atui-prompt-message';
-export { AtuiPromptThread as AtuiPromptThread } from '../types/components/prompt/atui-prompt-thread/atui-prompt-thread';
+export { AtuiPromptThread as AtuiPromptThread } from '../types/components/prompt-components/atui-prompt-thread/atui-prompt-thread';
 export { defineCustomElement as defineCustomElementAtuiPromptThread } from './atui-prompt-thread';
 export { AtuiRadio as AtuiRadio } from '../types/components/atui-radio-group/atui-radio/atui-radio';
 export { defineCustomElement as defineCustomElementAtuiRadio } from './atui-radio';

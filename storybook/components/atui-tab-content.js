@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h } from './p-kcU6cSzl.js';
+import { p as proxyCustomElement, H, h } from './p-CIJrXZgf.js';
 
 const AtuiTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTabContent extends H {
     constructor() {

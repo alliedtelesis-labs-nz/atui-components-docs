@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$2 } from './p-J4FKJjWf.js';
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-CIJrXZgf.js';
+import { d as defineCustomElement$2 } from './p-B98RoPe0.js';
 
 const AtuiBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtuiBreadcrumbComponent extends H {
     constructor() {

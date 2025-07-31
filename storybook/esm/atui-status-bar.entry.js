@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-Cd7WF2gX.js';
+import { r as registerInstance, h, H as Host } from './index-DV1DLMEm.js';
 
 const AtuiStatusBar = class {
     constructor(hostRef) {

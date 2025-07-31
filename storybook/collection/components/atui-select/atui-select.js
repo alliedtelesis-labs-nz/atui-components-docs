@@ -153,9 +153,9 @@ export class AtuiSelectComponent {
                 if (!this.el.contains(event.relatedTarget)) {
                     await this.menuRef.closeMenu();
                 }
-            } }, this.renderlabel(), h("atui-menu", { key: '790f295c2aba76993362dfa8b4b16c0a32e81a49', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderlabel(), h("atui-menu", { key: '299132d0bcf80df25bb06ab0c62242c6dc7398c1', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", portal: true, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'b24d055170a1f07e1cbe93227726b5faacff6d51' }, this.error_text && this.invalid && (h("span", { key: 'ebc28f3db51de53fa28058124e74afaef9f6c867', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: 'fa783f4797085925a8f066f98de0c89d4e2d3ddc' }, this.error_text && this.invalid && (h("span", { key: '7f9cb9feee7d38ef5da2cdb36997479373283bf7', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderlabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))));

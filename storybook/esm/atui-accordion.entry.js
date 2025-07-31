@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-Cd7WF2gX.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-DV1DLMEm.js';
 
 const AtuiAccordionComponent = class {
     constructor(hostRef) {

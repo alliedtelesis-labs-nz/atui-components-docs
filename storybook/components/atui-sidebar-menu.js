@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CIJrXZgf.js';
 
 const AtuiSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarMenuComponent extends H {
     constructor() {

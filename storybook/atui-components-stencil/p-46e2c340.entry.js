@@ -1,0 +1,2 @@
+import{r as e,h as a,H as s}from"./p-DV1DLMEm.js";const r=class{constructor(a){e(this,a)}render(){return a(s,{key:"7ed4e68bbbeedb2abc4ca775364cd6853b7f0771",class:"flex min-w-0 flex-1 flex-col gap-2",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"18e7a1112ff3ef406e9ea0857fcddea3a5020c94"}))}};export{r as atui_sidebar_menu};
+//# sourceMappingURL=p-46e2c340.entry.js.map

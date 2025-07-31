@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BAt2i-T2.js');
+var index = require('./index-DSZ-ppzm.js');
 
 const AtuiEditTextCell = class {
     constructor(hostRef) {
@@ -23,7 +23,7 @@ const AtuiEditTextCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '2b5b7a7c7cfd5d3a9f3dd1fae1fc93b92538425a', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: 'acb00b14c33449b0abd46e554b09c36340ce8c81', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (index.h(index.Host, { key: '0f856845b0103ec2440aab2e9afcba0c73f8f0b7', class: "flex h-full items-center leading-[100%]" }, index.h("atui-input", { key: 'f859491dd6e8297a4330c5fd5ed07547fd23915a', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));

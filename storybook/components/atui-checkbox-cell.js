@@ -1,4 +1,4 @@
-import { A as AtuiCheckboxCellComponent, d as defineCustomElement$1 } from './p-DMHZyXFy.js';
+import { A as AtuiCheckboxCellComponent, d as defineCustomElement$1 } from './p-KKBKhavn.js';
 
 const AtuiCheckboxCell = AtuiCheckboxCellComponent;
 const defineCustomElement = defineCustomElement$1;

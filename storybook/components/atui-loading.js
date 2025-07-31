@@ -1,4 +1,4 @@
-import { A as AtuiLoadingComponent, d as defineCustomElement$1 } from './p-CHkT-iof.js';
+import { A as AtuiLoadingComponent, d as defineCustomElement$1 } from './p-CJ9qvvtn.js';
 
 const AtuiLoading = AtuiLoadingComponent;
 const defineCustomElement = defineCustomElement$1;

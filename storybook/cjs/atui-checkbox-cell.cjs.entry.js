@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BAt2i-T2.js');
+var index = require('./index-DSZ-ppzm.js');
 
 const AtuiCheckboxCellComponent = class {
     constructor(hostRef) {

@@ -1,10 +1,10 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$7 } from './p-DRPzh5AP.js';
-import { d as defineCustomElement$6 } from './p-CoOWTCxi.js';
-import { d as defineCustomElement$5 } from './p-CHkT-iof.js';
-import { d as defineCustomElement$4 } from './p-BAl9Vi-7.js';
-import { d as defineCustomElement$3 } from './p-D_texZXN.js';
-import { d as defineCustomElement$2 } from './p-B9oksuag.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CIJrXZgf.js';
+import { d as defineCustomElement$7 } from './p-B1aOcDAw.js';
+import { d as defineCustomElement$6 } from './p-DdMgDskk.js';
+import { d as defineCustomElement$5 } from './p-CJ9qvvtn.js';
+import { d as defineCustomElement$4 } from './p-DeMNeAJ_.js';
+import { d as defineCustomElement$3 } from './p-Djo-0dGf.js';
+import { d as defineCustomElement$2 } from './p-b7uiw7OS.js';
 
 const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePagination extends H {
     constructor() {
@@ -32,7 +32,7 @@ const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePa
         ];
     }
     render() {
-        return (h(Host, { key: '21890ad20be0c622751c5ba2cc8310d4c1c71857', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '5eab6277f2e0804db53a07515c690bd7cbb4bad1' }, "Page Size: "), h("atui-select", { key: '8c787d2269090248081807c7936a15ce4051457e', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atuiPageSizeChange.emit(parseInt(event.detail)) }), h("atui-button", { key: '50bbdbd4353c0876212aca13b0ddf300668e46cd', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atuiChange.emit(1) }), h("atui-button", { key: '241f9de2d37b281814ac5835ea1dd165b79a5317', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atuiChange.emit(this.current_page - 1) }), h("span", { key: 'adbcf2130c5e3eee8410793f91fa12263fa8f2a5' }, "Page ", this.current_page, " of ", this.num_pages), h("atui-button", { key: 'ef75930b3b01f672cbbdca8f667ad75c747952fc', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atuiChange.emit(this.current_page + 1) }), h("atui-button", { key: 'eef07a797288a86018041ee4bd63675f80d24de3', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atuiChange.emit(this.num_pages) })));
+        return (h(Host, { key: 'ddd883253cfc64f9f74a2cbabdd6281807d0a514', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '30594211217fde1cc00da8a21e7302318871ad98' }, "Page Size: "), h("atui-select", { key: '8e6ded458de34a263209ae6ff93eebc43c02b249', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atuiPageSizeChange.emit(parseInt(event.detail)) }), h("atui-button", { key: '26511692fe0317b39cbf3c34b8f4303a95ab4940', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atuiChange.emit(1) }), h("atui-button", { key: '7f17214ebe3fdc47a7a3b37b6444cef8c4a7e1df', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atuiChange.emit(this.current_page - 1) }), h("span", { key: 'b440bcf81f3fe0f4c704073c59a8bbd54d5633c9' }, "Page ", this.current_page, " of ", this.num_pages), h("atui-button", { key: '3d298ac09393108223795024498e4cfb4d147a8a', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atuiChange.emit(this.current_page + 1) }), h("atui-button", { key: '5470278ff263637944ad73746c3a25936baf3ba0', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atuiChange.emit(this.num_pages) })));
     }
 }, [256, "atui-table-pagination", {
         "current_page": [2],

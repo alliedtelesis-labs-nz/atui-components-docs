@@ -48,6 +48,7 @@ import { AtuiMessage as AtuiMessageElement, defineCustomElement as defineAtuiMes
 import { AtuiMultiBtnCell as AtuiMultiBtnCellElement, defineCustomElement as defineAtuiMultiBtnCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-multi-btn-cell.js";
 import { AtuiMultiSelect as AtuiMultiSelectElement, defineCustomElement as defineAtuiMultiSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-multi-select.js";
 import { AtuiPlaceholder as AtuiPlaceholderElement, defineCustomElement as defineAtuiPlaceholder } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-placeholder.js";
+import { AtuiPromptContainer as AtuiPromptContainerElement, defineCustomElement as defineAtuiPromptContainer } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-container.js";
 import { AtuiPromptInput as AtuiPromptInputElement, defineCustomElement as defineAtuiPromptInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-input.js";
 import { AtuiPromptMessage as AtuiPromptMessageElement, defineCustomElement as defineAtuiPromptMessage } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-message.js";
 import { AtuiPromptThread as AtuiPromptThreadElement, defineCustomElement as defineAtuiPromptThread } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/atui-prompt-thread.js";
@@ -551,10 +552,47 @@ export const AtuiPlaceholder: StencilReactComponent<AtuiPlaceholderElement, Atui
     defineCustomElement: defineAtuiPlaceholder
 });
 
+type AtuiPromptContainerEvents = {
+    onAtuiSubmit: EventName<CustomEvent<string>>,
+    onAtuiStop: EventName<CustomEvent<void>>,
+    onAtuiNewThread: EventName<CustomEvent<void>>,
+    onAtuiMessageCopy: EventName<CustomEvent<{
+        messageId: string;
+        content: string;
+    }>>,
+    onAtuiMessageRetry: EventName<CustomEvent<{ messageId: string }>>,
+    onAtuiMessageEdit: EventName<CustomEvent<{
+        messageId: string;
+        content: string;
+    }>>,
+    onAtuiMessageVote: EventName<CustomEvent<{
+        messageId: string;
+        score: number;
+    }>>
+};
+
+export const AtuiPromptContainer: StencilReactComponent<AtuiPromptContainerElement, AtuiPromptContainerEvents> = /*@__PURE__*/ createComponent<AtuiPromptContainerElement, AtuiPromptContainerEvents>({
+    tagName: 'atui-prompt-container',
+    elementClass: AtuiPromptContainerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiSubmit: 'atuiSubmit',
+        onAtuiStop: 'atuiStop',
+        onAtuiNewThread: 'atuiNewThread',
+        onAtuiMessageCopy: 'atuiMessageCopy',
+        onAtuiMessageRetry: 'atuiMessageRetry',
+        onAtuiMessageEdit: 'atuiMessageEdit',
+        onAtuiMessageVote: 'atuiMessageVote'
+    } as AtuiPromptContainerEvents,
+    defineCustomElement: defineAtuiPromptContainer
+});
+
 type AtuiPromptInputEvents = {
     onAtuiChange: EventName<CustomEvent<string>>,
     onAtuiSubmit: EventName<CustomEvent<string>>,
-    onAtuiStop: EventName<CustomEvent<void>>
+    onAtuiStop: EventName<CustomEvent<void>>,
+    onAtuiFocus: EventName<CustomEvent<void>>
 };
 
 export const AtuiPromptInput: StencilReactComponent<AtuiPromptInputElement, AtuiPromptInputEvents> = /*@__PURE__*/ createComponent<AtuiPromptInputElement, AtuiPromptInputEvents>({
@@ -565,15 +603,15 @@ export const AtuiPromptInput: StencilReactComponent<AtuiPromptInputElement, Atui
     events: {
         onAtuiChange: 'atuiChange',
         onAtuiSubmit: 'atuiSubmit',
-        onAtuiStop: 'atuiStop'
+        onAtuiStop: 'atuiStop',
+        onAtuiFocus: 'atuiFocus'
     } as AtuiPromptInputEvents,
     defineCustomElement: defineAtuiPromptInput
 });
 
 type AtuiPromptMessageEvents = {
     onAtuiCopy: EventName<CustomEvent<string>>,
-    onAtuiPositiveFeedback: EventName<CustomEvent<void>>,
-    onAtuiNegativeFeedback: EventName<CustomEvent<void>>,
+    onAtuiVote: EventName<CustomEvent<{ messageId: string; score: number }>>,
     onAtuiRetry: EventName<CustomEvent<void>>,
     onAtuiEdit: EventName<CustomEvent<string>>
 };
@@ -585,8 +623,7 @@ export const AtuiPromptMessage: StencilReactComponent<AtuiPromptMessageElement, 
     react: React,
     events: {
         onAtuiCopy: 'atuiCopy',
-        onAtuiPositiveFeedback: 'atuiPositiveFeedback',
-        onAtuiNegativeFeedback: 'atuiNegativeFeedback',
+        onAtuiVote: 'atuiVote',
         onAtuiRetry: 'atuiRetry',
         onAtuiEdit: 'atuiEdit'
     } as AtuiPromptMessageEvents,
@@ -602,6 +639,10 @@ type AtuiPromptThreadEvents = {
     onAtuiMessageEdit: EventName<CustomEvent<{
         messageId: string;
         content: string;
+    }>>,
+    onAtuiMessageVote: EventName<CustomEvent<{
+        messageId: string;
+        score: number;
     }>>
 };
 
@@ -613,7 +654,8 @@ export const AtuiPromptThread: StencilReactComponent<AtuiPromptThreadElement, At
     events: {
         onAtuiMessageCopy: 'atuiMessageCopy',
         onAtuiMessageRetry: 'atuiMessageRetry',
-        onAtuiMessageEdit: 'atuiMessageEdit'
+        onAtuiMessageEdit: 'atuiMessageEdit',
+        onAtuiMessageVote: 'atuiMessageVote'
     } as AtuiPromptThreadEvents,
     defineCustomElement: defineAtuiPromptThread
 });

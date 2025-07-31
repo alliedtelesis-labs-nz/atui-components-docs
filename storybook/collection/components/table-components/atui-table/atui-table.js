@@ -137,7 +137,7 @@ export class AtuiTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '0fb2a2e8d726c5c4419fbdd33c910b8e4fab2998', class: "ag-theme-material" });
+        return h(Host, { key: '35ff997dd40ed6e716fab1feaecb289894169088', class: "ag-theme-material" });
     }
     static get is() { return "atui-table"; }
     static get originalStyleUrls() {

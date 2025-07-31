@@ -88,7 +88,16 @@
             "SEND": "Send",
             "NEW_THREAD": "New Thread",
             "MESSAGE_TOO_LONG": "Message is too long ({current}/{max} characters)",
-            "ERROR_GENERATING_RESPONSE": "An error occurred while generating the response."
+            "ERROR_GENERATING_RESPONSE": "An error occurred while generating the response.",
+            "HELPFUL": "Helpful",
+            "NOT_HELPFUL": "Not Helpful",
+            "EDIT": "Edit",
+            "RETRY": "Retry",
+            "COPY": "Copy",
+            "COPIED": "Copied",
+            "VOTE_UP": "Vote Up",
+            "VOTE_DOWN": "Vote Down",
+            "ERROR_MESSAGE": "Message content has exceeded the maximum length, please shorten your message or split it into multiple messages."
         }
     }
 }

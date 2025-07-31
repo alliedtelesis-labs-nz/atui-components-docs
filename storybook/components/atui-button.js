@@ -1,4 +1,4 @@
-import { A as AtuiButtonComponent, d as defineCustomElement$1 } from './p-DRPzh5AP.js';
+import { A as AtuiButtonComponent, d as defineCustomElement$1 } from './p-B1aOcDAw.js';
 
 const AtuiButton = AtuiButtonComponent;
 const defineCustomElement = defineCustomElement$1;

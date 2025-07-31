@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-kcU6cSzl.js';
-import { d as defineCustomElement$2 } from './p-B9oksuag.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CIJrXZgf.js';
+import { d as defineCustomElement$2 } from './p-b7uiw7OS.js';
 
 const AtuiStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStatusBar extends H {
     constructor() {

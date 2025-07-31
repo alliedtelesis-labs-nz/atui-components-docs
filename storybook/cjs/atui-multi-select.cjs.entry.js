@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BAt2i-T2.js');
+var index = require('./index-DSZ-ppzm.js');
 var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index-palgSxc9.js');
 
@@ -179,9 +179,9 @@ const AtuiMultiSelectComponent = class {
                 if (!this.el.contains(event.relatedTarget)) {
                     await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                 }
-            } }, this.renderLabel(), index.h("atui-menu", { key: '9b1f2a9fce7873361ecaf5f86758f6ec71f143ea', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: '5e95505e4b47854665592910eb6d95b847de1922', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, portal: true, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'fd97c87c22c58fb5197c018527544f876278b2b6' }, this.error_text && this.invalid && (index.h("span", { key: 'e672b18d4406533119b18ea3a25f58b777b2ee3f', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (index.h("atui-chip-list", { key: '75114137fb37ca27f2db8737be523b6f00b6efe8', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), index.h("div", { key: '7e553b33977d0c40adb6a82c7c2ec299ad57e16f' }, this.error_text && this.invalid && (index.h("span", { key: '8e0dacfd466ea006ff04381ac3e64fba37bc69df', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (index.h("atui-chip-list", { key: 'fe3157e0bce58c2b335476879a8480d08c6b786b', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));

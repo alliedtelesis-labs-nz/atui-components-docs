@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BAt2i-T2.js');
+var index = require('./index-DSZ-ppzm.js');
 
 const AtuiStaticTable = class {
     constructor(hostRef) {
@@ -29,7 +29,7 @@ const AtuiStaticTable = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'e233f56cf02215ed1a7134c0005f5ad48d9beced' }, !this.hide_column_manager && (index.h("atui-table-actions", { key: '5014b08f768a3bd964680bc56b2ea6e68a1f1ada', ag_grid: this.agGrid }, index.h("atui-column-manager", { key: '9a89ad8c7fb41887ed812ca78658333047c462fc', slot: "column-manager", col_defs: this.col_defs }))), index.h("atui-table", { key: '67b8160056b3e9fca2f455a0a94c823c4450f729', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (index.h(index.Host, { key: '13357efc03e27252114972f3829e43d9c3da96ca' }, !this.hide_column_manager && (index.h("atui-table-actions", { key: '6812586e35b8908db4be020efc24e78bbd4deba9', ag_grid: this.agGrid }, index.h("atui-column-manager", { key: '572ba9f1ed9782a47ba1f029ef9f9db4b0d74990', slot: "column-manager", col_defs: this.col_defs }))), index.h("atui-table", { key: 'cece09dfda38fd0fbb4e3cae0beabf694899b7bc', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
 };
 

@@ -1,4 +1,4 @@
-import { A as AtuiTitleSubtitleCell$1, d as defineCustomElement$1 } from './p--aivSazc.js';
+import { A as AtuiTitleSubtitleCell$1, d as defineCustomElement$1 } from './p-c1-mfumG.js';
 
 const AtuiTitleSubtitleCell = AtuiTitleSubtitleCell$1;
 const defineCustomElement = defineCustomElement$1;
