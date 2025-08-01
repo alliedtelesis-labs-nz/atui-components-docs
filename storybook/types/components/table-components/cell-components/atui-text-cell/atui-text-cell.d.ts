@@ -17,7 +17,7 @@ export interface ITextCellParams extends ICellRendererParams, ITooltipCell {
  * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
  */
 export declare class AtuiTextCellComponent implements ICellRendererComp {
-    el: any;
+    el: HTMLElement;
     containerStyles: CSSProperties;
     textStyles: CSSProperties;
     textClass: string;
