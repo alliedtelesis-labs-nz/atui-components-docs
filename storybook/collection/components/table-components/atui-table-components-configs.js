@@ -15,7 +15,51 @@ import { AtuiColorStatusCell } from "./cell-components/atui-color-status-cell/at
 import { AtuiTextImageCell } from "./cell-components/atui-text-image-cell/atui-text-image-cell";
 import { AtuiMenuCell } from "./cell-components/atui-menu-cell/atui-menu-cell";
 export class AtuiTableComponentsConfigs {
+    /**
+     * Ensures all table cell components are registered as custom elements.
+     * This is crucial for production builds where tree-shaking might remove
+     * seemingly unused components.
+     */
+    static ensureCellComponentsLoaded() {
+        if (this.cellComponentsLoaded)
+            return;
+        try {
+            // Prevent tree-shaking by referencing all components
+            const cellComponents = [
+                AtuiCheckboxCellComponent,
+                AtuiTextCellComponent,
+                AtuiTextStatusCellComponent,
+                AtuiTextBadgeCell,
+                AtuiTextIconCell,
+                AtuiTitleSubtitleCell,
+                AtuiTitleSubtitleDateCell,
+                AtuiEditTextCell,
+                AtuiChipListCell,
+                AtuiToggleCell,
+                AtuiMultiBtnCell,
+                AtuiColorStatusCell,
+                AtuiTextImageCell,
+                AtuiMenuCell,
+                AtuiCheckboxHeaderComponent,
+            ];
+            // Force reference to prevent tree-shaking
+            cellComponents.forEach((component) => {
+                if (typeof component !== 'function') {
+                    throw new Error(`Invalid component: ${component}`);
+                }
+            });
+            this.cellComponentsLoaded = true;
+        }
+        catch (error) {
+            console.error('Error preserving table cell components:', error);
+        }
+    }
+    /**
+     * Returns the framework components for AG Grid.
+     * Automatically ensures all cell components are loaded before returning.
+     */
     static getFrameworkComponents() {
+        this.ensureCellComponentsLoaded();
         return {
             [AvailableCells.TEXT_CELL]: AtuiTextCellComponent,
             [AvailableCells.TEXT_STATUS_CELL]: AtuiTextStatusCellComponent,
@@ -34,6 +78,13 @@ export class AtuiTableComponentsConfigs {
             [AvailableCells.MENU_CELL]: AtuiMenuCell,
         };
     }
+    /**
+     * Force reset the loading state (useful for testing)
+     */
+    static reset() {
+        this.cellComponentsLoaded = false;
+    }
 }
 AtuiTableComponentsConfigs.defaultPageSize = 10;
+AtuiTableComponentsConfigs.cellComponentsLoaded = false;
 //# sourceMappingURL=atui-table-components-configs.js.map

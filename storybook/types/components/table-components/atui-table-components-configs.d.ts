@@ -15,6 +15,17 @@ import { AtuiTextImageCell } from './cell-components/atui-text-image-cell/atui-t
 import { AtuiMenuCell } from './cell-components/atui-menu-cell/atui-menu-cell';
 export declare class AtuiTableComponentsConfigs {
     static readonly defaultPageSize = 10;
+    private static cellComponentsLoaded;
+    /**
+     * Ensures all table cell components are registered as custom elements.
+     * This is crucial for production builds where tree-shaking might remove
+     * seemingly unused components.
+     */
+    private static ensureCellComponentsLoaded;
+    /**
+     * Returns the framework components for AG Grid.
+     * Automatically ensures all cell components are loaded before returning.
+     */
     static getFrameworkComponents(): {
         AtuiTextCell: typeof AtuiTextCellComponent;
         AtuiTextStatusCell: typeof AtuiTextStatusCellComponent;
@@ -32,4 +43,8 @@ export declare class AtuiTableComponentsConfigs {
         AtuiTextImageCell: typeof AtuiTextImageCell;
         AtuiMenuCell: typeof AtuiMenuCell;
     };
+    /**
+     * Force reset the loading state (useful for testing)
+     */
+    static reset(): void;
 }

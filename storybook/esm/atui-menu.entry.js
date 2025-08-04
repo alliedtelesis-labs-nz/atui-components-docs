@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-DV1DLMEm.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
 /**
@@ -423,7 +423,7 @@ const flip$1 = function (options) {
           if (!ignoreCrossAxisOverflow ||
           // We leave the current main axis only if every placement on that axis
           // overflows the main axis.
-          overflowsData.every(d => d.overflows[0] > 0 && getSideAxis(d.placement) === initialSideAxis)) {
+          overflowsData.every(d => getSideAxis(d.placement) === initialSideAxis ? d.overflows[0] > 0 : true)) {
             // Try next placement and re-run the lifecycle.
             return {
               data: {

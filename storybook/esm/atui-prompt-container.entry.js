@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-DV1DLMEm.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtuiPromptContainer = class {

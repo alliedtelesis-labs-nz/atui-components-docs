@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CIJrXZgf.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
 
 const AtuiSrcDestComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSrcDestComponent extends H {
     constructor() {

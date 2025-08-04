@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-DV1DLMEm.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-D3rwhcmG.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
 const variants = cva('group/switch flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-none outline-0 outline-active hover:bg-surface-1 focus:bg-surface-1', {

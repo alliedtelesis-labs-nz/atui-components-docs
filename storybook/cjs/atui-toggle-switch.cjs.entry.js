@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DSZ-ppzm.js');
+var index = require('./index-43B6Ydvl.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const variants = index$1.cva('group/switch flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-none outline-0 outline-active hover:bg-surface-1 focus:bg-surface-1', {

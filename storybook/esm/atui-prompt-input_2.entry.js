@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-DV1DLMEm.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { c as cva } from './index-CVoOBWGd.js';
-import { V as VoteStatus } from './atui-prompt-message-DS7TxEac.js';
+import { V as VoteStatus } from './atui-prompt-message-DsHg5GtE.js';
 
 const promptInputContainerVariants = cva('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
@@ -301,7 +301,7 @@ const AtuiPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: 'a618e18bd706226b9df6d6ed7f822d31096e0d09', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '7a1ebf1cb7ff8ba43b759ab6b46d563c6762d2fe', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth px-16", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '79cdc484c7cc33fdba2f68bfc9a4137cbdddf2ce', name: "thread-messages" }))));
+        return (h(Host, { key: 'a618e18bd706226b9df6d6ed7f822d31096e0d09', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'f8504349bb21927baecc1491d02905568d1240bd', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '031206d22787e03e47dbe2cf81a1eee6e5ac986d', name: "thread-messages" }))));
     }
 };
 

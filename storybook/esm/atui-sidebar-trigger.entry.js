@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-DV1DLMEm.js';
+import { r as registerInstance, h, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiSidebarTriggerComponent = class {
     constructor(hostRef) {

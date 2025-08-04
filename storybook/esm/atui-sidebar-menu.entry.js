@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-DV1DLMEm.js';
+import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
 
 const AtuiSidebarMenuComponent = class {
     constructor(hostRef) {

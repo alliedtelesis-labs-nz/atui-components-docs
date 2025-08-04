@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CIJrXZgf.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
 import { c as cva } from './p-CVoOBWGd.js';
 
 const avatarVariants = cva('flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-medium', {

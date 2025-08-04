@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DSZ-ppzm.js');
+var index = require('./index-43B6Ydvl.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const variants = index$1.cva('group/checkbox transition-[color,background-color, box-shadow] relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-active-foreground/30', {

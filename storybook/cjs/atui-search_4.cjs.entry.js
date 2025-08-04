@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DSZ-ppzm.js');
+var index = require('./index-43B6Ydvl.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtuiSearch = class {

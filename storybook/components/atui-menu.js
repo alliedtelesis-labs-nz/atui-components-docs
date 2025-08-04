@@ -1,4 +1,4 @@
-import { A as AtuiMenu$1, d as defineCustomElement$1 } from './p-DeMNeAJ_.js';
+import { A as AtuiMenu$1, d as defineCustomElement$1 } from './p-s0ZGYtrg.js';
 
 const AtuiMenu = AtuiMenu$1;
 const defineCustomElement = defineCustomElement$1;
