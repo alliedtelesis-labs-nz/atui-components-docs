@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { cva } from "class-variance-authority";
-const variants = cva('absolute z-50 z-modal box-border flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
+const variants = cva('z-50box-border pointer-events-none absolute z-modal flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
     variants: {
         open: {
             true: null,
@@ -69,7 +69,7 @@ export class AtuiTooltipComponent {
         const classname = variants({
             open: this.is_visible,
         });
-        return (h(Host, { key: '44fb43e8d3a4008ddcd72dbd87a828af92e85c06', class: "relative inline-block" }, h("div", { key: '3496c94ba8468a2776c1dde9a05657b4f23760ab', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: 'bbef6af02e615f14d715d85583a08581a248cbea', name: "tooltip-trigger" })), h("div", { key: '86bdbd368d6c433bbd5aadfbe4edc0ae138d9a28', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: 'f823f73745c222ccbd23b1e79dffaf40733c24d4', name: "tooltip-content" }))));
+        return (h(Host, { key: '57088d350cfe39e0b1e6ae805fbb68cd1b19eb51', class: "relative inline-block" }, h("div", { key: '96069692bd30e0484c900d80d3d7cc7cf6c2435b', class: "peer contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: 'edee4e63d113c6096b46499db04e6f6fb677dd79', name: "tooltip-trigger" })), h("div", { key: 'fd1cd12e1a4557ce2d0ecf6a81f9919e5a12d6bf', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: '51383871c7a57171dccfbfd8454f3780c000861f', name: "tooltip-content" }))));
     }
     static get is() { return "atui-tooltip"; }
     static get properties() {

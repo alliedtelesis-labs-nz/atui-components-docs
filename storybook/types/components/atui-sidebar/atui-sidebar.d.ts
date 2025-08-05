@@ -31,7 +31,7 @@ export declare class AtuiSidebarComponent {
     /**
      * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
      */
-    atuiSidebarChange: EventEmitter;
+    atuiChange: EventEmitter;
     componentWillLoad(): void;
     /**
      * Toggles the sidebar's open state.

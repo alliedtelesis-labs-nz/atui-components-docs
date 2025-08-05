@@ -1,7 +1,7 @@
-import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host } from './index-HJO1YDmC.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
-const variants = cva('group relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left text-button transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-active-foreground/30', {
+const variants = cva('group relative flex w-full cursor-pointer items-center gap-8 overflow-visible rounded-md p-8 text-left text-button transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-active-foreground/30', {
     variants: {
         active: {
             true: 'bg-sidebar-primary text-sidebar-primary-foreground',
@@ -28,7 +28,7 @@ const AtuiSidebarMenuitemComponent = class {
         const focusIndicatorClassname = focusIndicatorVariants({
             active: this.is_active,
         });
-        return (h(Host, { key: '9d998cc22a2181024ab89df65b38b3df5006c815', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname }, h("div", { key: 'c8b4bb01ed0ce88008910aaab6ef9b274b9de139', class: "flex items-center gap-8 truncate" }, h("slot", { key: '9dec95a16c9771dd91cd15a69bbb6a3e91378f61', name: "menu-item-label" }), this.badge && (h("atui-badge", { key: 'f80dcb5627a597e91443fe54a7bd8f6359de9da0', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute left-[22px] top-[-8px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !font-medium !leading-[10px]", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: '261e1112517b2a1dbda9bb9b867386b68bff6c55', class: "material-icons z-10 flex items-center justify-center text-icon-xl" }, this.icon)), this.label && (h("span", { key: '7e05f6328469b334638bd4a6ef8a95662afa7b2f', "data-name": "sidebar-menu-item-label", class: "z-10 truncate whitespace-nowrap" }, this.label))), h("slot", { key: '53d8b0c730be870bc9682adf366b5880dd050698', name: "menu-item-actions" }), h("div", { key: 'dbee02c6a03bac30a312c8c42513eb66c990510d', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'fa61a0dbf5025d76fa20c9e167203c6433876d18', role: "menuitem", class: classname }, this.badge && (h("div", { key: 'ffd50c1d6131ce32b3d13fa9d6d9b939fe11dfea', "data-name": "menu-badge", role: "presentation", class: "absolute left-[18px] top-[-4px] z-10" }, h("atui-badge", { key: 'db5d533584b75347bec3a53353943918b5a56f53', class: "!rounded-[4px] !px-[3px] !py-4 !text-[11px] !font-medium !leading-[10px]", type: "error", impact: "high", rounded: false, label: this.badge }))), this.icon && (h("span", { key: '83ccb7181cf51f56597e6713a1d350301c1c8716', class: "material-icons z-10 flex items-center justify-center text-icon-xl" }, this.icon)), this.label && (h("span", { key: '33d93d058fe7aa5c7627828984574b2a52e7f20f', "data-name": "sidebar-menu-item-label", class: "z-10 truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: 'c0a4d662cc09e0de2cedf2506b688ac86a71de29' }), h("div", { key: '5d8089bbfc2371698c4b24f517d33e7055001961', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 

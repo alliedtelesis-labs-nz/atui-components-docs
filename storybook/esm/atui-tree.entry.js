@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-D3rwhcmG.js';
+import { r as registerInstance, c as createEvent, h } from './index-HJO1YDmC.js';
 
 const AtuiTreeComponent = class {
     constructor(hostRef) {
@@ -54,7 +54,7 @@ const AtuiTreeComponent = class {
         }
     }
     render() {
-        return (h("div", { key: 'e549da8e1b1a690d4db9e5bb3cca814efdf80337', class: "w-full" }, h("slot", { key: '1337e7ada57a2601459b8f53dd39fb90adafa275' }), this.flattenedItemList &&
+        return (h("div", { key: 'f1fcf983c0e5a3ecc0dd421c99ebd6763fe7eefe', class: "w-full" }, h("slot", { key: '64a66447ecb1b3893676ed3a8c9a4ee7550d9699' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("atui-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("atui-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", { slot: "tooltip-content" }, item.tooltip))) : (h("atui-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

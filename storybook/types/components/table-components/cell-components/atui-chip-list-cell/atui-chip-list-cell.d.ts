@@ -1,9 +1,8 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface ChipCellData {
-    chips: string[];
+import { ColorCell, IClickCell, ITooltipCell } from '../../../../types/table-cells';
+export interface IChipCellParams extends ITooltipCell, IClickCell, ColorCell {
 }
-export interface IChipCellParams extends ICellRendererParams {
-    chips: (data: any) => string[];
+interface InitParams extends IChipCellParams, ICellRendererParams {
 }
 /**
  * @category Table Cell
@@ -11,10 +10,11 @@ export interface IChipCellParams extends ICellRendererParams {
  */
 export declare class AtuiChipListCell implements ICellRendererComp {
     el: HTMLElement;
-    params: IChipCellParams;
-    chips: string[];
-    init(params: IChipCellParams): void;
+    params: InitParams;
+    init(params: InitParams): void;
     getGui(): HTMLElement;
-    refresh(params: IChipCellParams): boolean;
+    refresh(params: InitParams): boolean;
+    protected updateCell(newValue: any): void;
     render(): any;
 }
+export {};

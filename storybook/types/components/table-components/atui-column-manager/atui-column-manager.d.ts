@@ -1,15 +1,11 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef } from 'ag-grid-community';
-export interface ColumnManagerChangeEvent {
-    id: string;
-    checked: boolean;
-}
 export declare class AtuiColumnManagerComponent {
     /**
      * Column definitions used in your atui-table
      */
     col_defs: ColDef[];
-    el: HTMLElement;
+    el: any;
     translations: any;
     checkedColumns: string[];
     componentWillLoad(): Promise<void>;
@@ -20,7 +16,7 @@ export declare class AtuiColumnManagerComponent {
      *
      * Emitted when checkbox is clicked
      */
-    atuiChange: EventEmitter<ColumnManagerChangeEvent>;
-    changeHandler(event: CustomEvent<string[]>): void;
+    atuiChange: EventEmitter;
+    changeHandler(event: Event): void;
     render(): any;
 }

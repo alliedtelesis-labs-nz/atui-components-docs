@@ -26,6 +26,6 @@ export declare class AtuiTablePagination {
     /**
      * Emits event with ```event.detail``` as the new page size
      */
-    atuiPageSizeChange: EventEmitter<number>;
+    atuiChangeSize: EventEmitter<number>;
     render(): any;
 }

@@ -1,0 +1,75 @@
+import { p as proxyCustomElement, H, h, c as Host } from './p-DJD-7SVX.js';
+import { d as defineCustomElement$2 } from './p-BwCBNhgU.js';
+import { d as defineCustomElement$1 } from './p-BLBTk09G.js';
+
+const AtuiTextBadgeCell = /*@__PURE__*/ proxyCustomElement(class AtuiTextBadgeCell extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+    }
+    init(params) {
+        const { textTransform, badgeText } = params;
+        this.params = params;
+        this.textValue = params.value;
+        this.badgeTextValue = badgeText(params);
+        if (params.data) {
+            if (textTransform) {
+                this.textValue = textTransform(params.data, params.value);
+            }
+        }
+    }
+    getGui() {
+        return this.el;
+    }
+    refresh(params) {
+        this.updateCell(String(params.value));
+        return true;
+    }
+    updateCell(newValue) {
+        this.params.value = newValue;
+        this.textValue = this.params.value;
+    }
+    render() {
+        var _a, _b, _c;
+        return (h(Host, { key: 'c4a1d605581b6e3d67a8b0c53c9281c86f0bea15', class: "align-center flex h-full" }, h("atui-tooltip", { key: '94f5e8eec560ece9b8eb8293e73dace27e252cfe', position: "right", is_visible: !!this.params.generateTooltip }, h("span", { key: '53bf5bd948ed0ea247dfccb9b712a77ad6bdba6b', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, class: "truncate", onClick: () => {
+                if (this.params.click)
+                    this.params.click(this.params);
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'ba75a8b46e482895a06c9789c3a76699604dabe9', slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))), h("atui-tooltip", { key: 'd59b8830277484c60d238af1175fd4ca9a588a38', position: "right", is_visible: !!this.params.generateBadgeTooltip }, h("span", { key: '9daa20527e1d4ac545de2beff33aaa9d591c3443', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, class: "truncate", onClick: () => {
+                if (this.params.click)
+                    this.params.click(this.params);
+            } }, h("atui-badge", { key: '70e2549f833949932ad38ea2bd8b89bc387e667e', type: (_b = this.params) === null || _b === void 0 ? void 0 : _b.badgeType, class: "ml-4", label: this.badgeTextValue })), this.params.generateBadgeTooltip && (h("span", { key: '8b94209f3c66f63437792cec4046234c0c6284d3', slot: "tooltip-content", class: `${(_c = this.params.badgeTooltipClass) !== null && _c !== void 0 ? _c : ''} leading-normal` }, this.params.generateBadgeTooltip(this.params))))));
+    }
+    get el() { return this; }
+}, [0, "atui-text-badge-cell", {
+        "textValue": [32],
+        "badgeTextValue": [32],
+        "params": [32]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["atui-text-badge-cell", "atui-badge", "atui-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "atui-text-badge-cell":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtuiTextBadgeCell);
+            }
+            break;
+        case "atui-badge":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+        case "atui-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
+
+export { AtuiTextBadgeCell as A, defineCustomElement as d };
+//# sourceMappingURL=p-BXi4UrFQ.js.map
+
+//# sourceMappingURL=p-BXi4UrFQ.js.map

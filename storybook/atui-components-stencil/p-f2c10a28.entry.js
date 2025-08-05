@@ -1,0 +1,2 @@
+import{r as e,h as r,H as a}from"./p-HJO1YDmC.js";const s=class{constructor(r){e(this,r)}render(){return r(a,{key:"4279ab2c88d751b6e58762f455491c6914b75c8b",class:"sidebar-border mb-16 ml-16 mt-8 flex w-[calc(100%-16px)] flex-col gap-2 border-l border-solid border-sidebar-border/20 pl-8 group-data-[state=collapsed]/sidebar-wrapper:hidden",role:"menu","data-name":"sidebar-sub-menu"},r("slot",{key:"8956cacfab38a44c25935ed9936736439a8719c1"}))}};export{s as atui_sidebar_menu_sub};
+//# sourceMappingURL=p-f2c10a28.entry.js.map

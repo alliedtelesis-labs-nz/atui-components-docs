@@ -1,20 +1,19 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
-import { d as TimeUnit, T as TimeDateUtil, M as MIN_DATE, D as Duration, c as TimeRangeDisplay } from './p-wxnR6VRT.js';
-import './p-CKQAHFp4.js';
-import { h as hooks } from './p-BMuAbjcg.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DJD-7SVX.js';
+import { d as TimeUnit, T as TimeDateUtil, M as MIN_DATE, D as Duration, c as TimeRangeDisplay } from './p-BP6gV1HR.js';
+import { h as hooks } from './p-C5Sle45O.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$d } from './p-C9eqBXeS.js';
-import { d as defineCustomElement$c } from './p-CcaMjRm4.js';
-import { d as defineCustomElement$b } from './p-D_g3hxnG.js';
-import { d as defineCustomElement$a } from './p-_gOvHiKk.js';
-import { d as defineCustomElement$9 } from './p-D9T3c7Wy.js';
-import { d as defineCustomElement$8 } from './p-wJ5tBH66.js';
-import { d as defineCustomElement$7 } from './p-BmgpvZ_L.js';
-import { d as defineCustomElement$6 } from './p-s0ZGYtrg.js';
-import { d as defineCustomElement$5 } from './p--F2nlpGz.js';
-import { d as defineCustomElement$4 } from './p-CX0wD6u8.js';
-import { d as defineCustomElement$3 } from './p-DxkeMl9u.js';
-import { d as defineCustomElement$2 } from './p-CpnV9PUz.js';
+import { d as defineCustomElement$d } from './p-CGoVUV9r.js';
+import { d as defineCustomElement$c } from './p-DMz4MVfW.js';
+import { d as defineCustomElement$b } from './p-CyG09UfR.js';
+import { d as defineCustomElement$a } from './p-Do5CKMwv.js';
+import { d as defineCustomElement$9 } from './p-BYrz7h7d.js';
+import { d as defineCustomElement$8 } from './p-CTWl1Fr1.js';
+import { d as defineCustomElement$7 } from './p-ByK4-pDJ.js';
+import { d as defineCustomElement$6 } from './p-D7IRw6kM.js';
+import { d as defineCustomElement$5 } from './p-DjfM-T-T.js';
+import { d as defineCustomElement$4 } from './p-B7AXFdMn.js';
+import { d as defineCustomElement$3 } from './p-CwX_VO1t.js';
+import { d as defineCustomElement$2 } from './p-BLBTk09G.js';
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {
@@ -170,10 +169,10 @@ const AtuiTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTimeRa
     }
     render() {
         var _a, _b, _c;
-        return (h(Host, { key: '533a5429e39415277bdf2fc07310de7ac94a7e2c', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("atui-button-group", { key: 'ebd5b6be4f7c2757ba3ea45b339037bf267477d8', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+        return (h(Host, { key: 'd07e8b17309291a2685b7103746266bba72a1958', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("atui-button-group", { key: '2eba6a88504a0ddd6216f3a6d401d529eff1557b', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
-                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("atui-button-group", { key: '2b963702da3ce3c82b7bf17545b36167ee6bcdd7', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("atui-button-group", { key: '69767eea4bba11607c037f8bb169696261a14e05', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
@@ -181,19 +180,19 @@ const AtuiTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTimeRa
                     this.predefinedTimeRanges.length - 1) {
                     this.absoluteTimeMenuEl.focus();
                 }
-            } })), h("div", { key: 'bc6361a98fd35fd4ca04d22858f11828f5f5da46', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("atui-time-with-unit", { key: '1f753f37070b34bf711da800cd24e3ace12adaa8', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+            } })), h("div", { key: '00027710277d9cafbcc10ef468f345dd697335bb', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("atui-time-with-unit", { key: '01e0f91b6e86a89b7059914668beeb10fdbac4f2', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: 'b472ce874b4501802372efde9ed7f92f65d8caf3', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("atui-custom-time-range", { key: 'ac1043bd6cd70cbbd9edce3c5b3cccb387f6d4b3', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: (_a = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _a === void 0 ? void 0 : _a.fromDate, to_date_value: (_b = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _b === void 0 ? void 0 : _b.toDate, lock_end_date_to_now: (_c = this.selected_time_range.custom) === null || _c === void 0 ? void 0 : _c.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: '8643e058491ac5038835c96f97eb2fbbc73a7e58', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("atui-custom-time-range", { key: '9f55b8a5d1c9700518eb7d060dbe720aaf200020', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: (_a = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _a === void 0 ? void 0 : _a.fromDate, to_date_value: (_b = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _b === void 0 ? void 0 : _b.toDate, lock_end_date_to_now: (_c = this.selected_time_range.custom) === null || _c === void 0 ? void 0 : _c.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));
     }
     get el() { return this; }
-}, [256, "atui-time-range", {
+}, [0, "atui-time-range", {
         "selected_time_range": [16],
         "range_limit": [2],
         "presets": [16],

@@ -49,10 +49,10 @@ export class AtuiPromptMessage {
             this.atuiEdit.emit(this.content);
         };
         this.handleFeedbackPositive = () => {
-            this.atuiPositiveFeedback.emit();
+            this.atuiFeedbackPositive.emit();
         };
         this.handleFeedbackNegative = () => {
-            this.atuiNegativeFeedback.emit();
+            this.atuiFeedbackNegative.emit();
         };
     }
     async componentWillLoad() {
@@ -88,7 +88,7 @@ export class AtuiPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '1db966cab534c25d160b3a8dd514f5a1ce29284c', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: '11bb6ee96a61e622e28f2f91c57de9d1ab9907d1', class: "space-y-1 flex-1" }, h("div", { key: '686dd51e7808c12746cc0020247a83be5e89da9a', class: "flex items-center gap-8" }, this.name && (h("span", { key: 'c3b4c62fb5b05309aca02f4d9a28221af2368885', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: 'ed3a8491ead700933e9700ace54e40b603c0c92f', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'fa97c7d1adf4ec3f4509e7f31e027e9849ffaa5a', class: "flex w-full gap-8", "data-name": "message-container" }, this.avatar && this.renderAvatar(), h("div", { key: 'c3d69887082551ccb90b05e65102d71f90e25e36', class: "space-y-1 flex-1" }, h("div", { key: 'ec7ee1d3f8e06921ce3d437f0e51461ef4c0984b', class: "flex items-center gap-8" }, this.name && (h("span", { key: '2435e4d59fb451e58f3daf57d9afe4531af5bdae', class: "text-sm text-light", "data-name": "message-name" }, this.name))), h("div", { key: 'ee144ff316888117ab76cabcf796fba7d15aa10a', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "atui-prompt-message"; }
     static get properties() {
@@ -264,8 +264,8 @@ export class AtuiPromptMessage {
                     "references": {}
                 }
             }, {
-                "method": "atuiPositiveFeedback",
-                "name": "atuiPositiveFeedback",
+                "method": "atuiFeedbackPositive",
+                "name": "atuiFeedbackPositive",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -279,8 +279,8 @@ export class AtuiPromptMessage {
                     "references": {}
                 }
             }, {
-                "method": "atuiNegativeFeedback",
-                "name": "atuiNegativeFeedback",
+                "method": "atuiFeedbackNegative",
+                "name": "atuiFeedbackNegative",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,

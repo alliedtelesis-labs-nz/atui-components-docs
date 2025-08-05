@@ -36,20 +36,14 @@ export class AtuiTreeItemComponent {
         this.disabled = false;
     }
     handleClick(event) {
-        this.atuiClick.emit({
-            originalEvent: event,
-            componentType: 'atui-tree-item',
-            element: this.el,
-        });
+        this.atuiClick.emit(event);
     }
     handleKeyDown(event) {
+        console.log('KeyDown:', event.key);
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
-            this.atuiClick.emit({
-                originalEvent: event,
-                componentType: 'atui-tree-item',
-                element: this.el,
-            });
+            console.log('dsds');
+            this.atuiClick.emit(event);
         }
     }
     render() {
@@ -61,9 +55,9 @@ export class AtuiTreeItemComponent {
         const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: '3f77199ce2b5beac95ec85758ce88fc081741628', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'b54e1721ff569d1ff27b252b49e2cb1562c9e77a', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'aabb281a34969b2be8800320145342cf5b3e86ef', class: "flex gap-4" }, this.has_children && (h("span", { key: '692f4d04090dd157d13db1c931de4643ffc7be4b', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (h(Host, { key: 'd68ff852a057be4df6d9edea317a44274b68b5d7', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'ce54a4358ea06326489296e20183442c4210b24f', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'e9e66a55e6ca2537783dc295d41f6be0fe2b1ac0', class: "flex gap-4" }, this.has_children && (h("span", { key: '9b05237bcc0b1f1a31c8dca18de2e851ccd7ffb3', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (h("span", { key: 'ca69cdaf3ba777e35e3319f0b6cd988d02339129', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), h("slot", { key: '66c748035c247040baacb19d19f51894a6b734c3' })), h("div", { key: '3940140c48b61885d253c9e8a979ccc19eb282ec', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (h("span", { key: '4b4bb4fa8884ad269f355bcaa5932acf9b78932c', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), h("slot", { key: 'b3a368659224b9fbb66c156a9069baad9eec03e4' })), h("div", { key: 'dab79184f43a9a6777a84d2183c521777b9d1d61', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
     static get is() { return "atui-tree-item"; }
     static get properties() {
@@ -206,15 +200,9 @@ export class AtuiTreeItemComponent {
                     "text": "Emits when the button is clicked"
                 },
                 "complexType": {
-                    "original": "AtuiEvent",
-                    "resolved": "AtuiEvent",
-                    "references": {
-                        "AtuiEvent": {
-                            "location": "import",
-                            "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtuiEvent"
-                        }
-                    }
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
                 }
             }];
     }

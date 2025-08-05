@@ -40,11 +40,11 @@ export declare class AtuiPromptMessage {
     /**
      * Emitted when positive feedback action is triggered
      */
-    atuiPositiveFeedback: EventEmitter<void>;
+    atuiFeedbackPositive: EventEmitter<void>;
     /**
      * Emitted when negative feedback action is triggered
      */
-    atuiNegativeFeedback: EventEmitter<void>;
+    atuiFeedbackNegative: EventEmitter<void>;
     /**
      * Emitted when the retry action is triggered (for assistant messages with errors)
      */

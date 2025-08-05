@@ -6,8 +6,7 @@ export type SidePanelSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
  *
  * @slot content - Used for placing the content of the side panel.
  */
-export declare class AtuiSidePanelComponent {
-    el: HTMLAtuiSidePanelElement;
+export declare class AtuiDialogComponent {
     /**
      * Size of the size panel
      */
@@ -44,26 +43,12 @@ export declare class AtuiSidePanelComponent {
      * If sidepanel should used fixed positioning (otherwise absolute)
      */
     fixed: boolean;
-    /**
-     * Whether to show a backdrop behind the panel
-     */
-    backdrop: boolean;
     isExpanded: boolean;
-    private sidePanelWrapper;
-    private panelDialog;
-    /**
-     * Opens the side panel
-     * @returns Promise that resolves when the panel is opened
-     */
-    openSidePanel(): Promise<void>;
-    /**
-     * Closes the side panel
-     * @returns Promise that resolves when the panel is closed
-     */
-    closeSidePanel(): Promise<void>;
-    private handleClose;
-    offClickHandler(event: any): void;
-    render(): any;
+    sidePanelWrapper: HTMLElement;
+    panelDialog: HTMLDialogElement;
+    handleClose(): void;
     get panelClasses(): string;
     get sizeClasses(): string;
+    offClickHandler(event: any): void;
+    render(): any;
 }

@@ -19,36 +19,29 @@ export class AtuiColumnManagerComponent {
         }
     }
     changeHandler(event) {
-        const selectedColumns = event.detail || [];
-        const previousColumns = new Set(this.checkedColumns);
-        const currentColumns = new Set(selectedColumns);
-        selectedColumns.forEach((columnId) => {
-            if (!previousColumns.has(columnId)) {
-                this.atuiChange.emit({
-                    id: columnId,
-                    checked: true,
-                });
-            }
+        const checkboxEl = event.target;
+        const columnId = checkboxEl.id;
+        const isChecked = checkboxEl.checked;
+        if (isChecked) {
+            this.checkedColumns = [...this.checkedColumns, columnId];
+        }
+        else {
+            this.checkedColumns = this.checkedColumns.filter((id) => id !== columnId);
+        }
+        this.atuiChange.emit({
+            id: columnId,
+            checked: isChecked,
         });
-        Array.from(previousColumns).forEach((columnId) => {
-            if (!currentColumns.has(columnId)) {
-                this.atuiChange.emit({
-                    id: columnId,
-                    checked: false,
-                });
-            }
-        });
-        this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("atui-menu", { key: '7955f28b88a8a9dfbd1afe09c86ba621eceb1ab0', autoclose: false, width: "auto", align: "end", portal: true }, h("div", { key: '42a2e89394d4fe204fb85cd4068601aa9fdb24e0', slot: "menu-trigger" }, h("atui-tooltip", { key: 'ce17b061f80e9500e6032820a94eb979bb507d75', position: "top" }, h("atui-button", { key: '5a9ab2289996b0115615c7ef6a2abee59a40f4fc', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: 'd1e11688426b0381a9fa41fa979d2d24f80c3699', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("atui-checkbox-group", { key: '3f66fb30627bc084d84d95df0ea0e86c7e64357d', slot: "menu-content", options: this.col_defs
+        return (h("atui-menu", { key: '46c25974fd67ef3feec70edde700398d5d3d0ae5', autoclose: false, width: "auto", align: "end" }, h("atui-tooltip", { key: '4b1224dc0a94d77240d0accdfcad18fe25d3643e', slot: "menu-trigger", position: "top" }, h("atui-button", { key: '6c287d10f2f1060c3b1f13ec2a9cd6ef10a431a2', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '833b282a0eb97d2c143db4687ed199dc73915738', slot: "tooltip-content" }, this.translations.ATUI.TABLE.MANAGE_COLUMNS)), h("atui-checkbox-group", { key: '1ae8823af37eda93576f921643e20475233ff587', slot: "menu-content", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
                         label: colDef.field,
                     };
                 })
-                : [], value: this.checkedColumns, onAtuiChange: (event) => this.changeHandler(event) })));
+                : [], value: this.checkedColumns, onChange: (event) => this.changeHandler(event) })));
     }
     static get is() { return "atui-column-manager"; }
     static get properties() {
@@ -97,15 +90,9 @@ export class AtuiColumnManagerComponent {
                     "text": "Custom event used by atui-table-actions to perform ag-grid logic\n\nEmitted when checkbox is clicked"
                 },
                 "complexType": {
-                    "original": "ColumnManagerChangeEvent",
-                    "resolved": "ColumnManagerChangeEvent",
-                    "references": {
-                        "ColumnManagerChangeEvent": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/atui-column-manager/atui-column-manager.tsx",
-                            "id": "src/components/table-components/atui-column-manager/atui-column-manager.tsx::ColumnManagerChangeEvent"
-                        }
-                    }
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
                 }
             }];
     }

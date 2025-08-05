@@ -6467,10 +6467,6 @@ input[class^=ag-][type=range]:disabled {
   color: var(--ag-material-primary-color);
 }
 
-:root {
-  --colorStatusColWidth: 12px;
-}
-
 .ag-header-cell {
   height: 48px;
 }
@@ -6485,12 +6481,4 @@ input[class^=ag-][type=range]:disabled {
 .ag-cell atui-checkbox[aria-checked],
 atui-menu atui-checkbox[aria-checked] {
   background-color: transparent;
-}
-
-.ag-header-cell[col-id=colorStatusCell],
-.ag-cell[col-id=colorStatusCell] {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  width: var(--colorStatusColWidth) !important;
-  border: none !important;
 }

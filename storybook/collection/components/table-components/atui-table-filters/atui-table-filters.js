@@ -1,5 +1,10 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
+/**
+ * @category Data Tables
+ * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+ * @internal
+ */
 export class AtuiTableFilters {
     constructor() {
         /**
@@ -8,11 +13,11 @@ export class AtuiTableFilters {
         this.selected = [];
         this.clearFilters = () => {
             this.selected = [];
-            this.atuiChange.emit([]);
+            this.atuiChange.emit([{ id: '', value: '' }]);
         };
         this.clearSingleFilter = (columnId) => {
             this.selected = this.selected.filter((column) => column.id !== columnId);
-            this.atuiChange.emit(this.selected.length ? this.selected : []);
+            this.atuiChange.emit(this.selected);
         };
     }
     async componentWillLoad() {
@@ -28,7 +33,7 @@ export class AtuiTableFilters {
         this.atuiChange.emit(this.selected);
     }
     render() {
-        return (this.col_defs && (h(Host, { key: '38e039f1c01b5434561bf610f5fa2e8baaeaba1a', class: "flex items-start gap-8" }, h("div", { key: '93c68a854fc10cd93b0875e99b1c7f3a94ae48f6', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: '3b8c1bfb10f6f30a01f021b62579f731f8471bed', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: 'bcc8a26ecf6061c2b691d9026a74eb447dee792d', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '2eac139e5aa9b061ff338ae110e9e15ed3b152cc', class: "flex items-start gap-8" }, h("div", { key: '407592fb7c35d1bda89c2a363fdb3376271bf74e', class: "flex min-h-[36px] flex-wrap items-end gap-8 rounded-md bg-surface-0 p-8" }, !this.selected.length && (h("p", { key: 'd461063b1dd0fcc489ddfe2fd0714d10ec68af19', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("atui-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("atui-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("atui-button", { key: 'e871347965e4a1f7f3e3e2b9b28e72cbee282542', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "atui-table-filters"; }
     static get properties() {
@@ -92,18 +97,12 @@ export class AtuiTableFilters {
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emits id of column and filter value on change."
+                    "text": "Emits id of column to filter and value to filter by filter on change."
                 },
                 "complexType": {
-                    "original": "FilterEvent[]",
-                    "resolved": "FilterEvent[]",
-                    "references": {
-                        "FilterEvent": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/atui-table-filters/atui-table-filters.tsx",
-                            "id": "src/components/table-components/atui-table-filters/atui-table-filters.tsx::FilterEvent"
-                        }
-                    }
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
                 }
             }];
     }

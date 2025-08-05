@@ -1,13 +1,13 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-DJD-7SVX.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { c as cva } from './p-CVoOBWGd.js';
-import { d as defineCustomElement$8 } from './p-CGN7bmSd.js';
-import { d as defineCustomElement$7 } from './p-C9eqBXeS.js';
-import { d as defineCustomElement$6 } from './p-7l-2MdAg.js';
-import { d as defineCustomElement$5 } from './p-D9T3c7Wy.js';
-import { d as defineCustomElement$4 } from './p-BmgpvZ_L.js';
-import { d as defineCustomElement$3 } from './p-s0ZGYtrg.js';
-import { d as defineCustomElement$2 } from './p-CpnV9PUz.js';
+import { d as defineCustomElement$8 } from './p-BwCBNhgU.js';
+import { d as defineCustomElement$7 } from './p-CGoVUV9r.js';
+import { d as defineCustomElement$6 } from './p-DwGW1_W3.js';
+import { d as defineCustomElement$5 } from './p-BYrz7h7d.js';
+import { d as defineCustomElement$4 } from './p-ByK4-pDJ.js';
+import { d as defineCustomElement$3 } from './p-D7IRw6kM.js';
+import { d as defineCustomElement$2 } from './p-BLBTk09G.js';
 
 const inputVariants = cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
     variants: {
@@ -180,14 +180,14 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
         }
     }
     render() {
-        return (h(Host, { key: '0c4532cb6b8da829e7543ac729ae9ebac6eb7b84', class: "relative", onFocusout: async (event) => {
+        return (h(Host, { key: 'b617bade43254a39e79d23893b037db748531035', class: "relative", onFocusout: async (event) => {
                 var _a;
                 if (!this.el.contains(event.relatedTarget)) {
                     await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                 }
-            } }, this.renderLabel(), h("atui-menu", { key: '5e95505e4b47854665592910eb6d95b847de1922', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, portal: true, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("atui-menu", { key: 'c240e61997b7e1b59cf4f2db4bfeda83ffc8afbd', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '7e553b33977d0c40adb6a82c7c2ec299ad57e16f' }, this.error_text && this.invalid && (h("span", { key: '8e0dacfd466ea006ff04381ac3e64fba37bc69df', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: 'fe3157e0bce58c2b335476879a8480d08c6b786b', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), h("div", { key: '8c3b9c1e7a47ffdec97f7ea41e6d59fc3e65c323' }, this.error_text && this.invalid && (h("span", { key: '76bb057970fffb2b6d30f1dd5f6e79a6ba91040d', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (h("atui-chip-list", { key: '2a2181587b9444dda08fbb8dd257c8ebec63bd21', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -236,7 +236,7 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
         return (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, h("i", { role: "presentation", class: `material-icons h-16 w-16 text-sm ease-in-out ${this.value.includes(option.value) ? 'visible' : 'hidden'}` }, "check"), option.value));
     }
     get el() { return this; }
-}, [260, "atui-multi-select", {
+}, [4, "atui-multi-select", {
         "options": [16],
         "label": [1],
         "hint_text": [1],

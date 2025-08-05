@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-DGivrgtr.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const AtuiLayout = class {
@@ -26,7 +26,7 @@ const AtuiLayout = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '2eb9250f40ae36f137808988eaa1ae3911b575b9' }, this.layoutElement);
+        return index.h(index.Host, { key: '04bed0384cac8725c10e330e318af2cc54310a21' }, this.layoutElement);
     }
 };
 
@@ -67,7 +67,7 @@ const AtuiTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: '730c054bb654024e3fcf3c3495ea0ddfb03f7a5d', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, index.h("a", { key: '7ed1ee6ceaefc7c62dff6d1a42345475afac3c7c', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: 'e8d0cb997a7aa94bf03d02706ad5822489bf1066' }))));
+        return (index.h(index.Host, { key: 'b8359972637a0189df3025c9c42d243babfffa82', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, index.h("a", { key: '47f0404f3a227cf37b799dd9331ef56fbf7963d7', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: '27796ad31b8d5147ea6b49e19e32741dfa75e7b7' }))));
     }
 };
 

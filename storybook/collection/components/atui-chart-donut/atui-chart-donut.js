@@ -168,7 +168,7 @@ export class AtuiChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: 'a543562fcba9bbdab4ae2d7cda53a1ca26ea9d7d', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '9286262c3951d8ea2235113921d7601d4a389c9b', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: 'ac5921e9c348e6129466b454aca434fe1aebb9e7', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '84ca4b0bca6b234b8336ab6ff9a3228c97d2b35a', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',

@@ -11,9 +11,5 @@ export declare class AtuiMenuitemComponent {
      * Will change the styling of the menuitem when set
      */
     is_active?: boolean;
-    /**
-     * Disables user interaction with the menu-item and updates visual style to appear inactive
-     */
-    disabled: boolean;
     render(): any;
 }

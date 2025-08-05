@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-D3rwhcmG.js';
+import { r as registerInstance, c as createEvent, h } from './index-HJO1YDmC.js';
 
 const AtuiChipList = class {
     constructor(hostRef) {
@@ -37,12 +37,12 @@ const AtuiChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (h("div", { key: '3ead214596babee38a781a7adf914b41294027db', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (h("div", { key: '9ff41a67f60fae3db4989f34593b31cdc47c21a2', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("atui-button", { key: '76142e1f4274386842b8bbe3d233a44062931782', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
+            this.show_clear_all && (h("atui-button", { key: '99af7304f0fde7488b7e3c65a467b3d8b0dd898e', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), h("slot", { key: 'af0e556dc6b37bb150cf0c2ac0ba7405060aeac4' })));
+            } })), h("slot", { key: '094569f976687b5153a82a30b8a8e4572c12ee7f' })));
     }
 };
 

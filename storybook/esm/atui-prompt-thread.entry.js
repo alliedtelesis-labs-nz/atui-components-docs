@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-Cd7WF2gX.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-HJO1YDmC.js';
 
 const AtuiPromptThread = class {
     constructor(hostRef) {
@@ -94,7 +94,7 @@ const AtuiPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: 'c30e2b3ca68b1f6d6132630e9b3bf021aa7f9ffe', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'dcbf13bca286be9b0be3072167ac013acaa93542', name: "messages" })));
+        return (h(Host, { key: '830801e8822bc7b728bfa073b4c6c11fde34edba', class: "block h-full overflow-y-auto scroll-smooth pb-32", ref: (el) => (this.threadContainer = el), "data-name": "thread-container" }, !hasMessages ? (this.renderEmptyState()) : (h("div", { "data-name": "messages-container" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'f1dfa0ebcdabb0e8c7e64edf275f3125dcf295c5', name: "messages" })));
     }
 };
 

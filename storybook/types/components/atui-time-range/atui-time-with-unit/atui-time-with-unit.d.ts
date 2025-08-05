@@ -7,37 +7,13 @@ import { DateRange, TimeRangeDisplay } from '../../../types/date';
  * @description A time with unit component for selecting a time period.
  */
 export declare class AtuiTimeWithUnitComponent {
-    /**
-     * Available time units for selection
-     */
     units: TimeUnit[];
-    /**
-     * Common time preset options to display
-     */
     common_options: TimePresets[];
-    /**
-     * Minimum date constraint for time selection
-     */
     min_date: Date;
-    /**
-     * Minimum number of seconds allowed for time selection
-     */
     min_seconds: number;
-    /**
-     * Maximum number of seconds allowed for time selection
-     */
     max_seconds: number;
-    /**
-     * Initial time selection value
-     */
     initial_selected_time: TimeWithUnit | TimeRangeDisplay.ALL;
-    /**
-     * Custom error message to display when validation fails
-     */
     custom_error_message: any;
-    /**
-     * Whether to show the 'All Time' option
-     */
     show_all_time: boolean;
     errorText: string;
     secondaryErrorText: string;
@@ -59,13 +35,7 @@ export declare class AtuiTimeWithUnitComponent {
     updateSelectedRange(value: TimeWithUnit): void;
     getRelativeDate(): DateRange;
     clearSelection(): void;
-    /**
-     * Emitted when the user cancels the time selection
-     */
     atuiCancel: EventEmitter<null>;
-    /**
-     * Emitted when the user submits the time selection
-     */
     atuiSubmit: EventEmitter<TimeWithUnit | TimeRangeDisplay.ALL>;
     handleCancel(): void;
     handleSubmit(): void;

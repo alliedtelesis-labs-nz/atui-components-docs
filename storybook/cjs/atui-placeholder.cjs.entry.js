@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-DGivrgtr.js');
 
 const placeholderVariants = {
     iconSizes: {
@@ -31,7 +31,7 @@ const AtuiPlaceholderComponent = class {
         return placeholderVariants.iconSizes[this.size];
     }
     render() {
-        return (index.h("div", { key: '2bfb0fb5b09355a20ec7eed7d86846cbd0ea645c', class: `${this.placeholderSizeClass} flex w-full items-center gap-16 rounded-sm bg-surface-0 text-center text-med`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (index.h("span", { key: 'e98a8a3440e224ee8c9179ce2dc56d62005d7013', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), index.h("div", { key: 'f9f10e4bc3b17f972c5dc83ed066dd352b2e5f73', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: '8417a947534a3e16f5aac822502805bb7379326e', class: "flex items-center" }, this.show_loading_spinner && (index.h("atui-loading", { key: '41bc4ae74ee860e81e1a412096753170d5794624', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: 'ebb9412088b202f3d8f705c8742d6288f533b668', class: "text-sm font-medium text-med", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '1bb3ca63533be2f3c2f3e71b3a7889b3ccfb66d6', class: "text-sm text-med", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: '2d017d71e20484261455c8f2a2a1fd641cda154e' }))));
+        return (index.h("div", { key: '79903c0876cc9767cf77b861a640f8d8218f1394', class: `${this.placeholderSizeClass} flex w-full items-center gap-16 rounded-sm bg-surface-0 text-center text-med`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (index.h("span", { key: '54256885b735532c585ff041104ff4822128825d', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), index.h("div", { key: '50c2c7a3b3050ac9fcc926c7565365f0bc676571', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: '2a81f4429b016e5732f61947944233a6336d1ca8', class: "flex items-center" }, this.show_loading_spinner && (index.h("atui-loading", { key: '12b813c02682e0539b7d7cd7beb305bf68f07aed', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: 'e249c146186a5412b2fde2dc3257f558eb8dd57c', class: "text-sm font-medium text-med", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '51ed285bb4c5a066da812684553d51eda72e51bf', class: "text-sm text-med", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: 'ed975fd8ec6679a598f25b0cc32d9d9634a1ee41' }))));
     }
 };
 

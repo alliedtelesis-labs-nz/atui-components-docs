@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-DJD-7SVX.js';
 
 const AtuiSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarMenuComponent extends H {
     constructor() {
@@ -6,9 +6,9 @@ const AtuiSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSide
         this.__registerHost();
     }
     render() {
-        return (h(Host, { key: '7ed4e68bbbeedb2abc4ca775364cd6853b7f0771', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '18e7a1112ff3ef406e9ea0857fcddea3a5020c94' })));
+        return (h(Host, { key: 'ed7e6640376ee02b130680971bceaa2c760da905', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'e91cec544e2e5314167c5bbdd467aefe563a2903' })));
     }
-}, [260, "atui-sidebar-menu"]);
+}, [4, "atui-sidebar-menu"]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
