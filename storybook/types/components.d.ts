@@ -9,7 +9,6 @@ import { AccordionItem } from "./components/atui-accordion/atui-accordion";
 import { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 import { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 import { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
-import { AtuiEvent } from "./types/events";
 import { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
 import { ChartDataset, Plugin } from "chart.js";
 import { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
@@ -18,9 +17,8 @@ import { ChartColorPalette } from "./types/chart-color";
 import { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
 import { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 import { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
-import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-import { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
-import { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
+import { ColDef, GridApi, GridOptions } from "ag-grid-community";
+import { DateRangeStrings } from "./types";
 import { HeaderSizes } from "./components/atui-header/atui-header";
 import { InputType } from "./components/atui-input/atui-input";
 import { InputPosition } from "./components/atui-input-range/atui-input-range";
@@ -31,7 +29,6 @@ import { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-m
 import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
 import { MessageRole, PromptMessage } from "./types/prompt";
-import { VoteStatus } from "./components/prompt-components/atui-prompt-message/atui-prompt-message";
 import { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
 import { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
@@ -40,7 +37,6 @@ import { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
 import { StatusBar } from "./components/atui-status-bar/atui-status-bar";
 import { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
 import { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
-import { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
 import { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
@@ -52,7 +48,6 @@ export { AccordionItem } from "./components/atui-accordion/atui-accordion";
 export { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
 export { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
 export { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
-export { AtuiEvent } from "./types/events";
 export { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
 export { ChartDataset, Plugin } from "chart.js";
 export { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
@@ -61,9 +56,8 @@ export { ChartColorPalette } from "./types/chart-color";
 export { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
 export { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
 export { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
-export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-export { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
-export { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
+export { ColDef, GridApi, GridOptions } from "ag-grid-community";
+export { DateRangeStrings } from "./types";
 export { HeaderSizes } from "./components/atui-header/atui-header";
 export { InputType } from "./components/atui-input/atui-input";
 export { InputPosition } from "./components/atui-input-range/atui-input-range";
@@ -74,7 +68,6 @@ export { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-m
 export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
 export { MessageRole, PromptMessage } from "./types/prompt";
-export { VoteStatus } from "./components/prompt-components/atui-prompt-message/atui-prompt-message";
 export { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
 export { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
@@ -83,7 +76,6 @@ export { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
 export { StatusBar } from "./components/atui-status-bar/atui-status-bar";
 export { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
 export { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
-export { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
 export { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
@@ -149,10 +141,6 @@ export namespace Components {
           * String content to display when the accordion is open
          */
         "content": string;
-        /**
-          * Return the accordion items open state
-         */
-        "getIsOpen": () => Promise<boolean>;
         /**
           * Used to identify the accordion item among the other accordion items
          */
@@ -291,7 +279,7 @@ export namespace Components {
         /**
           * Material icon to be displayed after the label within the button
          */
-        "icon_after"?: string;
+        "icon_right"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -702,7 +690,7 @@ export namespace Components {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status indicator based on predefined types
+     * @description A cell component for displaying a color status.
      */
     interface AtuiColorStatusCell {
     }
@@ -714,45 +702,28 @@ export namespace Components {
     }
     interface AtuiCustomTimeRange {
         /**
-          * Whether time selection is enabled in addition to date selection
           * @default true
          */
         "can_set_time": boolean;
-        /**
-          * Default value for the from date
-         */
         "default_from_date": Date;
-        /**
-          * Default value for the to date
-         */
         "default_to_date": Date;
-        /**
-          * Current value of the from date
-         */
         "from_date_value": Date;
         /**
-          * Whether to lock the end date to the current time
           * @default false
          */
         "lock_end_date_to_now": boolean;
         /**
-          * Maximum selectable date
           * @default new Date(Date.now())
          */
         "max_date": Date;
         /**
-          * Minimum selectable date
           * @default MIN_DATE
          */
         "min_date": Date;
         /**
-          * Minimum number of seconds for the time range
           * @default 60
          */
         "min_seconds": number;
-        /**
-          * Current value of the to date
-         */
         "to_date_value": Date;
     }
     /**
@@ -760,11 +731,6 @@ export namespace Components {
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
     interface AtuiDialog {
-        /**
-          * Whether to show a backdrop behind the dialog
-          * @default false
-         */
-        "backdrop": boolean;
         /**
           * Closes the dialog modal
           * @returns Promise that resolves when the dialog is closed
@@ -844,6 +810,18 @@ export namespace Components {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an icon.
+     */
+    interface AtuiIconCell {
+    }
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an image.
+     */
+    interface AtuiImageCell {
     }
     /**
      * @category Form Controls
@@ -1237,11 +1215,6 @@ export namespace Components {
          */
         "openMenu": () => Promise<void>;
         /**
-          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
-          * @default false
-         */
-        "portal": boolean;
-        /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
          */
@@ -1273,11 +1246,6 @@ export namespace Components {
     interface AtuiMenuCell {
     }
     interface AtuiMenuItem {
-        /**
-          * Disables user interaction with the menu-item and updates visual style to appear inactive
-          * @default false
-         */
-        "disabled": boolean;
         /**
           * Icon to be displayed with the label
          */
@@ -1330,6 +1298,10 @@ export namespace Components {
      * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
     interface AtuiMultiSelect {
+        /**
+          * Display selected options outside of input. In readonly mode selected options are displayed as chips within input.
+         */
+        "chip_list"?: boolean;
         /**
           * Set the select to be clearable.
          */
@@ -1418,110 +1390,11 @@ export namespace Components {
     }
     /**
      * @category Prompt
-     * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
-     */
-    interface AtuiPromptContainer {
-        /**
-          * Programmatically add a message to the conversation thread
-          * @param role - The message role
-          * @param content - The message content
-         */
-        "addMessage": (role: MessageRole, content: string) => Promise<void>;
-        /**
-          * Append content to the last message in the thread (useful for streaming responses)
-          * @param content - The content to append
-          * @returns Promise<boolean> - Returns true if successful, false if no messages exist or last message is not from assistant
-         */
-        "appendToLastMessage": (content: string) => Promise<boolean>;
-        /**
-          * Disables all interactions with the container
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * Display copy action for assistant messages
-          * @default true
-         */
-        "enable_copy": boolean;
-        /**
-          * Display edit action for user messages
-          * @default false
-         */
-        "enable_edit": boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default true
-         */
-        "enable_vote": boolean;
-        /**
-          * Error text displayed when invalid is set via max length
-         */
-        "error_text": string;
-        /**
-          * Programmatically focus the input field
-         */
-        "focusInput": () => Promise<void>;
-        /**
-          * Title displayed in the header section
-          * @default 'AI Assistant'
-         */
-        "header_title": string;
-        /**
-          * Shows loading state and disables input
-          * @default false
-         */
-        "loading": boolean;
-        /**
-          * Maximum character length for input messages
-          * @default 2000
-         */
-        "max_message_length": number;
-        /**
-          * Array of messages to display in the conversation thread
-          * @default []
-         */
-        "messages": PromptMessage[];
-        /**
-          * Start a new conversation thread by clearing all messages and resetting state
-         */
-        "newThread": () => Promise<void>;
-        /**
-          * Placeholder text for the input field
-          * @default 'Type your message here...'
-         */
-        "placeholder": string;
-        /**
-          * Control the send button state programmatically
-          * @param enabled - Whether the send functionality should be enabled
-         */
-        "setSendEnabled": (enabled: boolean) => Promise<void>;
-        /**
-          * Controls visibility of the header section
-          * @default true
-         */
-        "show_header": boolean;
-        /**
-          * Controls visibility of the "New Thread" button in the header
-          * @default true
-         */
-        "show_new_thread_button": boolean;
-        /**
-          * Subtitle displayed below the title in the header
-         */
-        "subtitle": string;
-    }
-    /**
-     * @category Prompt
-     * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
+     * @description A specialized input component optimized for AI prompt interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
     interface AtuiPromptInput {
         /**
-          * Disable input interactions and apply visual indication
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * Error text displayed when invalid is set via max length
+          * Error text displayed when invalid is set
          */
         "error_text": string;
         /**
@@ -1538,6 +1411,10 @@ export namespace Components {
          */
         "info_text": string;
         /**
+          * Shows the error text
+         */
+        "invalid": boolean;
+        /**
           * Label above the input container
          */
         "label": string;
@@ -1548,14 +1425,23 @@ export namespace Components {
         "max_height": number;
         /**
           * Maximum character length with counter display
-          * @default 2000
          */
         "max_length": number;
+        /**
+          * The model to use
+          * @default 'gpt-4o'
+         */
+        "model": string;
         /**
           * Placeholder text to be shown when no input is passed
           * @default 'Enter your message...'
          */
         "placeholder": string;
+        /**
+          * Controls whether the model select is shown
+          * @default false
+         */
+        "show_model_select": boolean;
         /**
           * The value of the input
           * @default ''
@@ -1568,25 +1454,14 @@ export namespace Components {
      */
     interface AtuiPromptMessage {
         /**
+          * URL for a custom avatar image
+         */
+        "avatar": string;
+        /**
           * The message content text
           * @default ''
          */
         "content": string;
-        /**
-          * Display copy action for assistant messages - copies message content to clipboard
-          * @default false
-         */
-        "enable_copy": boolean;
-        /**
-          * Display edit action for user messages
-          * @default false
-         */
-        "enable_edit": boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default false
-         */
-        "enable_vote": boolean;
         /**
           * Shows error state styling and enables retry action
           * @default false
@@ -1602,10 +1477,6 @@ export namespace Components {
          */
         "loading": boolean;
         /**
-          * Unique identifier for the message
-         */
-        "message_id": string;
-        /**
           * Display name for the message sender
          */
         "name": string;
@@ -1613,12 +1484,7 @@ export namespace Components {
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role": Exclude<MessageRole1, 'system'>;
-        /**
-          * The current vote status of the message
-          * @default VoteStatus.None
-         */
-        "vote_status": VoteStatus;
+        "role": Exclude<MessageRole, 'system'>;
     }
     /**
      * @category Prompt
@@ -1636,20 +1502,15 @@ export namespace Components {
          */
         "chatbot_title": string;
         /**
-          * Display copy action for assistant messages
-          * @default true
+          * Description text displayed when no messages are present
+          * @default 'Start a conversation by sending a message'
          */
-        "enable_copy": boolean;
+        "empty_state_description": string;
         /**
-          * Display edit action for user messages
-          * @default false
+          * Title text displayed when no messages are present
+          * @default 'No messages yet'
          */
-        "enable_edit": boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default true
-         */
-        "enable_vote": boolean;
+        "empty_state_title": string;
         /**
           * Shows a loading indicator for incoming messages
           * @default false
@@ -1659,15 +1520,7 @@ export namespace Components {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages": PromptMessage1[];
-        /**
-          * Scrolls the last user message to the top of the viewport
-         */
-        "scrollLastMessageToTop": () => Promise<void>;
-        /**
-          * Scrolls the thread to the bottom with smooth animation
-         */
-        "scrollToBottom": () => Promise<void>;
+        "messages": PromptMessage[];
     }
     /**
      * @category Form Controls
@@ -1787,20 +1640,9 @@ export namespace Components {
      */
     interface AtuiSearchTable {
         /**
-          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-          * @default true
-         */
-        "auto_size_columns": boolean;
-        /**
           * Column definitions passed to atui-table component.
          */
         "col_defs": ColDef[];
-        /**
-          * Returns the **currently displayed row nodes** from the ag-Grid instance.  This asynchronous method retrieves an array of row nodes representing the rows currently visible (rendered) in the grid, after filtering, sorting, and other view-based operations.
-          * @template T The data type contained in each row node.
-          * @returns Promise resolving to an array of displayed row nodes.
-         */
-        "getDisplayedRows": <T>() => Promise<IRowNode<T>[]>;
         /**
           * If true the column manager will not be added
          */
@@ -1841,15 +1683,6 @@ export namespace Components {
         items: any[];
         total: number;
     };
-        /**
-          * Updates the data of rows in the AG Grid based on their displayed row index.  Use this method when you need to programmatically update one or more specific rows in the grid, identified by their current displayed index. This is particularly useful when you want to perform partial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a server), and want to reflect these changes immediately in the UI with optional visual feedback.
-          * @template T - The data type of the row's underlying data structure.
-          * @param rowUpdates - An array of objects specifying the row indices and the data updates to apply. - `index`: The displayed index of the row to update. - `update`: An object containing the updated data for the row.
-          * @param options - Optional settings for the update operation. - `flash`: Whether to visually flash the updated rows after the data change (improves user visibility). - `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios).
-          * @example // Update row at displayed index 2 with new values and flash the change updateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });
-          * @remarks - This function works with currently rendered rows; if rows are virtualized or paged out, ensure   the specified indices match the grid's current rendering context. - Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,   websocket pushes, or UI triggers).
-         */
-        "updateRowByIndex": <T>(rowUpdates: RowUpdate<T>[], options?: RowUpdateOptions) => Promise<void>;
         /**
           * If true, disables pagination on the table and shows all data at once. Useful for server-side pagination where you want to control pagination externally.
           * @default false
@@ -1926,16 +1759,6 @@ export namespace Components {
      */
     interface AtuiSidePanel {
         /**
-          * Whether to show a backdrop behind the panel
-          * @default false
-         */
-        "backdrop": boolean;
-        /**
-          * Closes the side panel
-          * @returns Promise that resolves when the panel is closed
-         */
-        "closeSidePanel": () => Promise<void>;
-        /**
           * Will close the sidepanel if clicked off when set
           * @default false
          */
@@ -1955,11 +1778,6 @@ export namespace Components {
           * @default true
          */
         "has_scrollbar": boolean;
-        /**
-          * Opens the side panel
-          * @returns Promise that resolves when the panel is opened
-         */
-        "openSidePanel": () => Promise<void>;
         /**
           * Position of the side panel
           * @default 'right'
@@ -2026,6 +1844,12 @@ export namespace Components {
     }
     /**
      * @category Navigation
+     * @description A sidebar menu sub component for the sidebar.
+     */
+    interface AtuiSidebarMenuSub {
+    }
+    /**
+     * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
     interface AtuiSidebarMenuitem {
@@ -2045,31 +1869,6 @@ export namespace Components {
           * Label to be displayed for the menu item
          */
         "label"?: string;
-    }
-    /**
-     * @category Navigation
-     * @description Display nested sub-menus in the atui-sidebar.
-     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
-     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
-     * Menu indent styling is supported up to 3 levels.
-     */
-    interface AtuiSidebarSubmenu {
-        /**
-          * Alert badge for the menu item
-         */
-        "badge"?: string;
-        /**
-          * Icon to be displayed with the label
-         */
-        "icon"?: string;
-        /**
-          * Will change the styling of the menuitem when set
-         */
-        "is_active"?: boolean;
-        /**
-          * Label to be displayed for the menu item
-         */
-        "label": string;
     }
     /**
      * @category Navigation
@@ -2258,11 +2057,6 @@ export namespace Components {
          */
         "ag_grid": GridApi;
         /**
-          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-          * @default true
-         */
-        "auto_size_columns": boolean;
-        /**
           * Column definitions for the table
          */
         "col_defs": ColDef[];
@@ -2270,7 +2064,7 @@ export namespace Components {
           * Method used to initialize the table.
           * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
          */
-        "createGrid": () => Promise<GridApi>;
+        "createGrid": () => Promise<GridApi<any>>;
         /**
           * If true, disables automatic grid initialization. When disabled, you must manually call createGrid(). Used when the table is controlled by a parent component.
           * @default false
@@ -2335,6 +2129,10 @@ export namespace Components {
          */
         "selected": string[];
     }
+    /**
+     * @category Data Tables
+     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     */
     interface AtuiTableFilters {
         /**
           * Column definitions used in your atui-table
@@ -2383,7 +2181,7 @@ export namespace Components {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with an icon.
      */
     interface AtuiTextIconCell {
     }
@@ -2505,42 +2303,28 @@ export namespace Components {
      * @description A time with unit component for selecting a time period.
      */
     interface AtuiTimeWithUnit {
-        /**
-          * Common time preset options to display
-         */
         "common_options": TimePresets[];
         /**
-          * Custom error message to display when validation fails
           * @default null
          */
         "custom_error_message": any;
-        /**
-          * Initial time selection value
-         */
         "initial_selected_time": TimeWithUnit | TimeRangeDisplay.ALL;
         /**
-          * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
          */
         "max_seconds": number;
         /**
-          * Minimum date constraint for time selection
           * @default null
          */
         "min_date": Date;
         /**
-          * Minimum number of seconds allowed for time selection
           * @default 60
          */
         "min_seconds": number;
         /**
-          * Whether to show the 'All Time' option
           * @default false
          */
         "show_all_time": boolean;
-        /**
-          * Available time units for selection
-         */
         "units": TimeUnit[];
     }
     /**
@@ -2672,10 +2456,6 @@ export namespace Components {
         "size": TreeItemSize;
     }
 }
-export interface AtuiAccordionItemCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLAtuiAccordionItemElement;
-}
 export interface AtuiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtuiBreadcrumbElement;
@@ -2735,10 +2515,6 @@ export interface AtuiMenuCustomEvent<T> extends CustomEvent<T> {
 export interface AtuiMultiSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtuiMultiSelectElement;
-}
-export interface AtuiPromptContainerCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLAtuiPromptContainerElement;
 }
 export interface AtuiPromptInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2841,22 +2617,11 @@ declare global {
         prototype: HTMLAtuiAccordionElement;
         new (): HTMLAtuiAccordionElement;
     };
-    interface HTMLAtuiAccordionItemElementEventMap {
-        "atuiAccordionChange": boolean;
-    }
     /**
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
     interface HTMLAtuiAccordionItemElement extends Components.AtuiAccordionItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtuiAccordionItemElement: {
         prototype: HTMLAtuiAccordionItemElement;
@@ -2921,7 +2686,7 @@ declare global {
         new (): HTMLAtuiBreadcrumbItemElement;
     };
     interface HTMLAtuiButtonElementEventMap {
-        "atuiClick": AtuiEvent;
+        "atuiClick": any;
     }
     /**
      * @category Actions
@@ -2964,7 +2729,7 @@ declare global {
         new (): HTMLAtuiButtonGroupElement;
     };
     interface HTMLAtuiButtonGroupOptionElementEventMap {
-        "atuiClick": AtuiEvent;
+        "atuiClick": any;
     }
     /**
      * @category Form Controls
@@ -3136,7 +2901,7 @@ declare global {
     };
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status indicator based on predefined types
+     * @description A cell component for displaying a color status.
      */
     interface HTMLAtuiColorStatusCellElement extends Components.AtuiColorStatusCell, HTMLStencilElement {
     }
@@ -3145,7 +2910,7 @@ declare global {
         new (): HTMLAtuiColorStatusCellElement;
     };
     interface HTMLAtuiColumnManagerElementEventMap {
-        "atuiChange": ColumnManagerChangeEvent;
+        "atuiChange": any;
     }
     interface HTMLAtuiColumnManagerElement extends Components.AtuiColumnManager, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtuiColumnManagerElement, ev: AtuiColumnManagerCustomEvent<HTMLAtuiColumnManagerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3218,6 +2983,26 @@ declare global {
     var HTMLAtuiHeaderElement: {
         prototype: HTMLAtuiHeaderElement;
         new (): HTMLAtuiHeaderElement;
+    };
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an icon.
+     */
+    interface HTMLAtuiIconCellElement extends Components.AtuiIconCell, HTMLStencilElement {
+    }
+    var HTMLAtuiIconCellElement: {
+        prototype: HTMLAtuiIconCellElement;
+        new (): HTMLAtuiIconCellElement;
+    };
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an image.
+     */
+    interface HTMLAtuiImageCellElement extends Components.AtuiImageCell, HTMLStencilElement {
+    }
+    var HTMLAtuiImageCellElement: {
+        prototype: HTMLAtuiImageCellElement;
+        new (): HTMLAtuiImageCellElement;
     };
     interface HTMLAtuiInputElementEventMap {
         "atuiChange": string | number;
@@ -3304,7 +3089,7 @@ declare global {
     };
     interface HTMLAtuiListSelectorElementEventMap {
         "atuiChange": ListSelectorItem;
-        "atuiInfoButtonClick": AtuiEvent;
+        "atuiClickInfoButton": any;
     }
     /**
      * @category Navigation
@@ -3345,7 +3130,7 @@ declare global {
         new (): HTMLAtuiLoadingElement;
     };
     interface HTMLAtuiMenuElementEventMap {
-        "atuiMenuStateChange": boolean;
+        "menuStateChange": boolean;
     }
     interface HTMLAtuiMenuElement extends Components.AtuiMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiMenuElementEventMap>(type: K, listener: (this: HTMLAtuiMenuElement, ev: AtuiMenuCustomEvent<HTMLAtuiMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3428,51 +3213,14 @@ declare global {
         prototype: HTMLAtuiPlaceholderElement;
         new (): HTMLAtuiPlaceholderElement;
     };
-    interface HTMLAtuiPromptContainerElementEventMap {
-        "atuiSubmit": string;
-        "atuiStop": void;
-        "atuiNewThread": void;
-        "atuiMessageCopy": {
-        messageId: string;
-        content: string;
-    };
-        "atuiMessageRetry": { messageId: string };
-        "atuiMessageEdit": {
-        messageId: string;
-        content: string;
-    };
-        "atuiMessageVote": {
-        messageId: string;
-        score: number;
-    };
-    }
-    /**
-     * @category Prompt
-     * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
-     */
-    interface HTMLAtuiPromptContainerElement extends Components.AtuiPromptContainer, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtuiPromptContainerElement, ev: AtuiPromptContainerCustomEvent<HTMLAtuiPromptContainerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtuiPromptContainerElement, ev: AtuiPromptContainerCustomEvent<HTMLAtuiPromptContainerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLAtuiPromptContainerElement: {
-        prototype: HTMLAtuiPromptContainerElement;
-        new (): HTMLAtuiPromptContainerElement;
-    };
     interface HTMLAtuiPromptInputElementEventMap {
         "atuiChange": string;
         "atuiSubmit": string;
         "atuiStop": void;
-        "atuiFocus": void;
     }
     /**
      * @category Prompt
-     * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
+     * @description A specialized input component optimized for AI prompt interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
     interface HTMLAtuiPromptInputElement extends Components.AtuiPromptInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiPromptInputElementEventMap>(type: K, listener: (this: HTMLAtuiPromptInputElement, ev: AtuiPromptInputCustomEvent<HTMLAtuiPromptInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3490,7 +3238,8 @@ declare global {
     };
     interface HTMLAtuiPromptMessageElementEventMap {
         "atuiCopy": string;
-        "atuiVote": { messageId: string; score: number };
+        "atuiFeedbackPositive": void;
+        "atuiFeedbackNegative": void;
         "atuiRetry": void;
         "atuiEdit": string;
     }
@@ -3521,10 +3270,6 @@ declare global {
         "atuiMessageEdit": {
         messageId: string;
         content: string;
-    };
-        "atuiMessageVote": {
-        messageId: string;
-        score: number;
     };
     }
     /**
@@ -3588,7 +3333,7 @@ declare global {
         new (): HTMLAtuiRadioGroupElement;
     };
     interface HTMLAtuiSearchElementEventMap {
-        "atuiChange": string;
+        "atuiChange": any;
     }
     /**
      * @category Form Controls
@@ -3650,7 +3395,7 @@ declare global {
         new (): HTMLAtuiSidePanelElement;
     };
     interface HTMLAtuiSidebarElementEventMap {
-        "atuiSidebarChange": any;
+        "atuiChange": any;
     }
     /**
      * @category Navigation
@@ -3682,6 +3427,16 @@ declare global {
     };
     /**
      * @category Navigation
+     * @description A sidebar menu sub component for the sidebar.
+     */
+    interface HTMLAtuiSidebarMenuSubElement extends Components.AtuiSidebarMenuSub, HTMLStencilElement {
+    }
+    var HTMLAtuiSidebarMenuSubElement: {
+        prototype: HTMLAtuiSidebarMenuSubElement;
+        new (): HTMLAtuiSidebarMenuSubElement;
+    };
+    /**
+     * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
     interface HTMLAtuiSidebarMenuitemElement extends Components.AtuiSidebarMenuitem, HTMLStencilElement {
@@ -3689,19 +3444,6 @@ declare global {
     var HTMLAtuiSidebarMenuitemElement: {
         prototype: HTMLAtuiSidebarMenuitemElement;
         new (): HTMLAtuiSidebarMenuitemElement;
-    };
-    /**
-     * @category Navigation
-     * @description Display nested sub-menus in the atui-sidebar.
-     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
-     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
-     * Menu indent styling is supported up to 3 levels.
-     */
-    interface HTMLAtuiSidebarSubmenuElement extends Components.AtuiSidebarSubmenu, HTMLStencilElement {
-    }
-    var HTMLAtuiSidebarSubmenuElement: {
-        prototype: HTMLAtuiSidebarSubmenuElement;
-        new (): HTMLAtuiSidebarSubmenuElement;
     };
     /**
      * @category Navigation
@@ -3764,7 +3506,7 @@ declare global {
         new (): HTMLAtuiTabContentElement;
     };
     interface HTMLAtuiTabSelectorElementEventMap {
-        "atuiChange": string;
+        "atuiChange": any;
     }
     /**
      * ### interface Tab
@@ -3839,7 +3581,7 @@ declare global {
         new (): HTMLAtuiTableActionsElement;
     };
     interface HTMLAtuiTableExportMenuElementEventMap {
-        "atuiChange": string;
+        "atuiChange": any;
     }
     /**
      * @category Data Tables
@@ -3881,8 +3623,12 @@ declare global {
         new (): HTMLAtuiTableFilterMenuElement;
     };
     interface HTMLAtuiTableFiltersElementEventMap {
-        "atuiChange": FilterEvent[];
+        "atuiChange": any;
     }
+    /**
+     * @category Data Tables
+     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     */
     interface HTMLAtuiTableFiltersElement extends Components.AtuiTableFilters, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtuiTableFiltersElement, ev: AtuiTableFiltersCustomEvent<HTMLAtuiTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3899,7 +3645,7 @@ declare global {
     };
     interface HTMLAtuiTablePaginationElementEventMap {
         "atuiChange": number;
-        "atuiPageSizeChange": number;
+        "atuiChangeSize": number;
     }
     /**
      * @category Data Tables
@@ -3943,7 +3689,7 @@ declare global {
     };
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with an icon.
      */
     interface HTMLAtuiTextIconCellElement extends Components.AtuiTextIconCell, HTMLStencilElement {
     }
@@ -4124,7 +3870,7 @@ declare global {
         new (): HTMLAtuiTreeElement;
     };
     interface HTMLAtuiTreeItemElementEventMap {
-        "atuiClick": AtuiEvent;
+        "atuiClick": any;
     }
     interface HTMLAtuiTreeItemElement extends Components.AtuiTreeItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtuiTreeItemElementEventMap>(type: K, listener: (this: HTMLAtuiTreeItemElement, ev: AtuiTreeItemCustomEvent<HTMLAtuiTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4167,6 +3913,8 @@ declare global {
         "atui-edit-text-cell": HTMLAtuiEditTextCellElement;
         "atui-form-label": HTMLAtuiFormLabelElement;
         "atui-header": HTMLAtuiHeaderElement;
+        "atui-icon-cell": HTMLAtuiIconCellElement;
+        "atui-image-cell": HTMLAtuiImageCellElement;
         "atui-input": HTMLAtuiInputElement;
         "atui-input-numeric": HTMLAtuiInputNumericElement;
         "atui-input-range": HTMLAtuiInputRangeElement;
@@ -4182,7 +3930,6 @@ declare global {
         "atui-multi-btn-cell": HTMLAtuiMultiBtnCellElement;
         "atui-multi-select": HTMLAtuiMultiSelectElement;
         "atui-placeholder": HTMLAtuiPlaceholderElement;
-        "atui-prompt-container": HTMLAtuiPromptContainerElement;
         "atui-prompt-input": HTMLAtuiPromptInputElement;
         "atui-prompt-message": HTMLAtuiPromptMessageElement;
         "atui-prompt-thread": HTMLAtuiPromptThreadElement;
@@ -4194,8 +3941,8 @@ declare global {
         "atui-side-panel": HTMLAtuiSidePanelElement;
         "atui-sidebar": HTMLAtuiSidebarElement;
         "atui-sidebar-menu": HTMLAtuiSidebarMenuElement;
+        "atui-sidebar-menu-sub": HTMLAtuiSidebarMenuSubElement;
         "atui-sidebar-menuitem": HTMLAtuiSidebarMenuitemElement;
-        "atui-sidebar-submenu": HTMLAtuiSidebarSubmenuElement;
         "atui-sidebar-trigger": HTMLAtuiSidebarTriggerElement;
         "atui-src-dest": HTMLAtuiSrcDestElement;
         "atui-static-table": HTMLAtuiStaticTableElement;
@@ -4271,10 +4018,6 @@ declare namespace LocalJSX {
           * Provides an atui-accordion-trigger with this label if set
          */
         "label"?: string;
-        /**
-          * Emitted when the accordion item's open state changes
-         */
-        "onAtuiAccordionChange"?: (event: AtuiAccordionItemCustomEvent<boolean>) => void;
         /**
           * Used for setting if the accordion is open.
           * @default false
@@ -4405,7 +4148,7 @@ declare namespace LocalJSX {
         /**
           * Material icon to be displayed after the label within the button
          */
-        "icon_after"?: string;
+        "icon_right"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -4418,7 +4161,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtuiButtonCustomEvent<any>) => void;
         /**
           * Size of the button
           * @default 'lg'
@@ -4507,7 +4250,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonGroupOptionCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtuiButtonGroupOptionCustomEvent<any>) => void;
         /**
           * ID of the button element and its option
          */
@@ -4834,7 +4577,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a color status indicator based on predefined types
+     * @description A cell component for displaying a color status.
      */
     interface AtuiColorStatusCell {
     }
@@ -4846,57 +4589,34 @@ declare namespace LocalJSX {
         /**
           * Custom event used by atui-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
          */
-        "onAtuiChange"?: (event: AtuiColumnManagerCustomEvent<ColumnManagerChangeEvent>) => void;
+        "onAtuiChange"?: (event: AtuiColumnManagerCustomEvent<any>) => void;
     }
     interface AtuiCustomTimeRange {
         /**
-          * Whether time selection is enabled in addition to date selection
           * @default true
          */
         "can_set_time"?: boolean;
-        /**
-          * Default value for the from date
-         */
         "default_from_date"?: Date;
-        /**
-          * Default value for the to date
-         */
         "default_to_date"?: Date;
-        /**
-          * Current value of the from date
-         */
         "from_date_value"?: Date;
         /**
-          * Whether to lock the end date to the current time
           * @default false
          */
         "lock_end_date_to_now"?: boolean;
         /**
-          * Maximum selectable date
           * @default new Date(Date.now())
          */
         "max_date"?: Date;
         /**
-          * Minimum selectable date
           * @default MIN_DATE
          */
         "min_date"?: Date;
         /**
-          * Minimum number of seconds for the time range
           * @default 60
          */
         "min_seconds"?: number;
-        /**
-          * Emitted when the user cancels the time range selection
-         */
         "onAtuiCancel"?: (event: AtuiCustomTimeRangeCustomEvent<null>) => void;
-        /**
-          * Emitted when the user submits the time range selection
-         */
         "onAtuiSubmit"?: (event: AtuiCustomTimeRangeCustomEvent<DateRangeStrings>) => void;
-        /**
-          * Current value of the to date
-         */
         "to_date_value"?: Date;
     }
     /**
@@ -4904,11 +4624,6 @@ declare namespace LocalJSX {
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
     interface AtuiDialog {
-        /**
-          * Whether to show a backdrop behind the dialog
-          * @default false
-         */
-        "backdrop"?: boolean;
         /**
           * ID of the dialog element (used to open and close the modal)
          */
@@ -4978,6 +4693,18 @@ declare namespace LocalJSX {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an icon.
+     */
+    interface AtuiIconCell {
+    }
+    /**
+     * @category Table Cell
+     * @description A cell component for displaying an image.
+     */
+    interface AtuiImageCell {
     }
     /**
      * @category Form Controls
@@ -5278,9 +5005,9 @@ declare namespace LocalJSX {
          */
         "onAtuiChange"?: (event: AtuiListSelectorCustomEvent<ListSelectorItem>) => void;
         /**
-          * Emits when event when the info button of an item is clicked
+          * Emits when event the when info button of an item is clicked
          */
-        "onAtuiInfoButtonClick"?: (event: AtuiListSelectorCustomEvent<AtuiEvent>) => void;
+        "onAtuiClickInfoButton"?: (event: AtuiListSelectorCustomEvent<any>) => void;
         /**
           * List of items.
           * @default []
@@ -5381,12 +5108,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the open menu state.
          */
-        "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
-        /**
-          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
-          * @default false
-         */
-        "portal"?: boolean;
+        "onMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
         /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
@@ -5415,11 +5137,6 @@ declare namespace LocalJSX {
     interface AtuiMenuCell {
     }
     interface AtuiMenuItem {
-        /**
-          * Disables user interaction with the menu-item and updates visual style to appear inactive
-          * @default false
-         */
-        "disabled"?: boolean;
         /**
           * Icon to be displayed with the label
          */
@@ -5472,6 +5189,10 @@ declare namespace LocalJSX {
      * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
     interface AtuiMultiSelect {
+        /**
+          * Display selected options outside of input. In readonly mode selected options are displayed as chips within input.
+         */
+        "chip_list"?: boolean;
         /**
           * Set the select to be clearable.
          */
@@ -5564,122 +5285,11 @@ declare namespace LocalJSX {
     }
     /**
      * @category Prompt
-     * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
-     */
-    interface AtuiPromptContainer {
-        /**
-          * Disables all interactions with the container
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * Display copy action for assistant messages
-          * @default true
-         */
-        "enable_copy"?: boolean;
-        /**
-          * Display edit action for user messages
-          * @default false
-         */
-        "enable_edit"?: boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default true
-         */
-        "enable_vote"?: boolean;
-        /**
-          * Error text displayed when invalid is set via max length
-         */
-        "error_text"?: string;
-        /**
-          * Title displayed in the header section
-          * @default 'AI Assistant'
-         */
-        "header_title"?: string;
-        /**
-          * Shows loading state and disables input
-          * @default false
-         */
-        "loading"?: boolean;
-        /**
-          * Maximum character length for input messages
-          * @default 2000
-         */
-        "max_message_length"?: number;
-        /**
-          * Array of messages to display in the conversation thread
-          * @default []
-         */
-        "messages"?: PromptMessage[];
-        /**
-          * Emitted when a message copy action is requested
-         */
-        "onAtuiMessageCopy"?: (event: AtuiPromptContainerCustomEvent<{
-        messageId: string;
-        content: string;
-    }>) => void;
-        /**
-          * Emitted when a message edit action is requested
-         */
-        "onAtuiMessageEdit"?: (event: AtuiPromptContainerCustomEvent<{
-        messageId: string;
-        content: string;
-    }>) => void;
-        /**
-          * Emitted when a message retry action is requested
-         */
-        "onAtuiMessageRetry"?: (event: AtuiPromptContainerCustomEvent<{ messageId: string }>) => void;
-        /**
-          * Emitted when a message vote action is requested
-         */
-        "onAtuiMessageVote"?: (event: AtuiPromptContainerCustomEvent<{
-        messageId: string;
-        score: number;
-    }>) => void;
-        /**
-          * Emitted when the "New Thread" button is clicked
-         */
-        "onAtuiNewThread"?: (event: AtuiPromptContainerCustomEvent<void>) => void;
-        /**
-          * Emits when the stop button is clicked
-         */
-        "onAtuiStop"?: (event: AtuiPromptContainerCustomEvent<void>) => void;
-        /**
-          * Emits when a message should be sent
-         */
-        "onAtuiSubmit"?: (event: AtuiPromptContainerCustomEvent<string>) => void;
-        /**
-          * Placeholder text for the input field
-          * @default 'Type your message here...'
-         */
-        "placeholder"?: string;
-        /**
-          * Controls visibility of the header section
-          * @default true
-         */
-        "show_header"?: boolean;
-        /**
-          * Controls visibility of the "New Thread" button in the header
-          * @default true
-         */
-        "show_new_thread_button"?: boolean;
-        /**
-          * Subtitle displayed below the title in the header
-         */
-        "subtitle"?: string;
-    }
-    /**
-     * @category Prompt
-     * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
+     * @description A specialized input component optimized for AI prompt interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
     interface AtuiPromptInput {
         /**
-          * Disable input interactions and apply visual indication
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * Error text displayed when invalid is set via max length
+          * Error text displayed when invalid is set
          */
         "error_text"?: string;
         /**
@@ -5696,6 +5306,10 @@ declare namespace LocalJSX {
          */
         "info_text"?: string;
         /**
+          * Shows the error text
+         */
+        "invalid"?: boolean;
+        /**
           * Label above the input container
          */
         "label"?: string;
@@ -5706,17 +5320,17 @@ declare namespace LocalJSX {
         "max_height"?: number;
         /**
           * Maximum character length with counter display
-          * @default 2000
          */
         "max_length"?: number;
         /**
-          * Emits when the value changes
+          * The model to use
+          * @default 'gpt-4o'
+         */
+        "model"?: string;
+        /**
+          * Emits when the  value changes
          */
         "onAtuiChange"?: (event: AtuiPromptInputCustomEvent<string>) => void;
-        /**
-          * Emits when the input receives focus
-         */
-        "onAtuiFocus"?: (event: AtuiPromptInputCustomEvent<void>) => void;
         /**
           * Emits when the stop button is clicked
          */
@@ -5731,6 +5345,11 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Controls whether the model select is shown
+          * @default false
+         */
+        "show_model_select"?: boolean;
+        /**
           * The value of the input
           * @default ''
          */
@@ -5742,25 +5361,14 @@ declare namespace LocalJSX {
      */
     interface AtuiPromptMessage {
         /**
+          * URL for a custom avatar image
+         */
+        "avatar"?: string;
+        /**
           * The message content text
           * @default ''
          */
         "content"?: string;
-        /**
-          * Display copy action for assistant messages - copies message content to clipboard
-          * @default false
-         */
-        "enable_copy"?: boolean;
-        /**
-          * Display edit action for user messages
-          * @default false
-         */
-        "enable_edit"?: boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default false
-         */
-        "enable_vote"?: boolean;
         /**
           * Shows error state styling and enables retry action
           * @default false
@@ -5776,10 +5384,6 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Unique identifier for the message
-         */
-        "message_id"?: string;
-        /**
           * Display name for the message sender
          */
         "name"?: string;
@@ -5792,23 +5396,22 @@ declare namespace LocalJSX {
          */
         "onAtuiEdit"?: (event: AtuiPromptMessageCustomEvent<string>) => void;
         /**
+          * Emitted when negative feedback action is triggered
+         */
+        "onAtuiFeedbackNegative"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        /**
+          * Emitted when positive feedback action is triggered
+         */
+        "onAtuiFeedbackPositive"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        /**
           * Emitted when the retry action is triggered (for assistant messages with errors)
          */
         "onAtuiRetry"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
         /**
-          * Emitted when a vote action is triggered
-         */
-        "onAtuiVote"?: (event: AtuiPromptMessageCustomEvent<{ messageId: string; score: number }>) => void;
-        /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role"?: Exclude<MessageRole1, 'system'>;
-        /**
-          * The current vote status of the message
-          * @default VoteStatus.None
-         */
-        "vote_status"?: VoteStatus;
+        "role"?: Exclude<MessageRole, 'system'>;
     }
     /**
      * @category Prompt
@@ -5826,20 +5429,15 @@ declare namespace LocalJSX {
          */
         "chatbot_title"?: string;
         /**
-          * Display copy action for assistant messages
-          * @default true
+          * Description text displayed when no messages are present
+          * @default 'Start a conversation by sending a message'
          */
-        "enable_copy"?: boolean;
+        "empty_state_description"?: string;
         /**
-          * Display edit action for user messages
-          * @default false
+          * Title text displayed when no messages are present
+          * @default 'No messages yet'
          */
-        "enable_edit"?: boolean;
-        /**
-          * Display voting actions for assistant messages
-          * @default true
-         */
-        "enable_vote"?: boolean;
+        "empty_state_title"?: string;
         /**
           * Shows a loading indicator for incoming messages
           * @default false
@@ -5849,7 +5447,7 @@ declare namespace LocalJSX {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages"?: PromptMessage1[];
+        "messages"?: PromptMessage[];
         /**
           * Emitted when a message copy action is requested
          */
@@ -5868,13 +5466,6 @@ declare namespace LocalJSX {
           * Emitted when a message retry action is requested
          */
         "onAtuiMessageRetry"?: (event: AtuiPromptThreadCustomEvent<{ messageId: string }>) => void;
-        /**
-          * Emitted when a message vote action is requested
-         */
-        "onAtuiMessageVote"?: (event: AtuiPromptThreadCustomEvent<{
-        messageId: string;
-        score: number;
-    }>) => void;
     }
     /**
      * @category Form Controls
@@ -5994,7 +5585,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when the input is changed. Used by atui-table.
          */
-        "onAtuiChange"?: (event: AtuiSearchCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtuiSearchCustomEvent<any>) => void;
         /**
           * Placeholder text inside the search component.
          */
@@ -6005,11 +5596,6 @@ declare namespace LocalJSX {
      * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
      */
     interface AtuiSearchTable {
-        /**
-          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-          * @default true
-         */
-        "auto_size_columns"?: boolean;
         /**
           * Column definitions passed to atui-table component.
          */
@@ -6134,11 +5720,6 @@ declare namespace LocalJSX {
      */
     interface AtuiSidePanel {
         /**
-          * Whether to show a backdrop behind the panel
-          * @default false
-         */
-        "backdrop"?: boolean;
-        /**
           * Will close the sidepanel if clicked off when set
           * @default false
          */
@@ -6199,7 +5780,7 @@ declare namespace LocalJSX {
         /**
           * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
          */
-        "onAtuiSidebarChange"?: (event: AtuiSidebarCustomEvent<any>) => void;
+        "onAtuiChange"?: (event: AtuiSidebarCustomEvent<any>) => void;
         /**
           * Position of the sidebar on the page
           * @default 'left'
@@ -6216,6 +5797,12 @@ declare namespace LocalJSX {
      * @description 
      */
     interface AtuiSidebarMenu {
+    }
+    /**
+     * @category Navigation
+     * @description A sidebar menu sub component for the sidebar.
+     */
+    interface AtuiSidebarMenuSub {
     }
     /**
      * @category Navigation
@@ -6238,31 +5825,6 @@ declare namespace LocalJSX {
           * Label to be displayed for the menu item
          */
         "label"?: string;
-    }
-    /**
-     * @category Navigation
-     * @description Display nested sub-menus in the atui-sidebar.
-     * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
-     * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
-     * Menu indent styling is supported up to 3 levels.
-     */
-    interface AtuiSidebarSubmenu {
-        /**
-          * Alert badge for the menu item
-         */
-        "badge"?: string;
-        /**
-          * Icon to be displayed with the label
-         */
-        "icon"?: string;
-        /**
-          * Will change the styling of the menuitem when set
-         */
-        "is_active"?: boolean;
-        /**
-          * Label to be displayed for the menu item
-         */
-        "label": string;
     }
     /**
      * @category Navigation
@@ -6428,7 +5990,7 @@ declare namespace LocalJSX {
         /**
           * Emits the id of the tab when a new active_tab is set
          */
-        "onAtuiChange"?: (event: AtuiTabSelectorCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtuiTabSelectorCustomEvent<any>) => void;
         /**
           * List of tabs the selector will have
           * @default []
@@ -6444,11 +6006,6 @@ declare namespace LocalJSX {
           * The AG Grid API
          */
         "ag_grid"?: GridApi;
-        /**
-          * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-          * @default true
-         */
-        "auto_size_columns"?: boolean;
         /**
           * Column definitions for the table
          */
@@ -6518,7 +6075,7 @@ declare namespace LocalJSX {
         /**
           * Emits id of the clicked button, either 'CSV' or 'PDF'.
          */
-        "onAtuiChange"?: (event: AtuiTableExportMenuCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtuiTableExportMenuCustomEvent<any>) => void;
     }
     /**
      * @category Data Tables
@@ -6539,15 +6096,19 @@ declare namespace LocalJSX {
          */
         "selected"?: string[];
     }
+    /**
+     * @category Data Tables
+     * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     */
     interface AtuiTableFilters {
         /**
           * Column definitions used in your atui-table
          */
         "col_defs"?: ColDef[];
         /**
-          * Emits id of column and filter value on change.
+          * Emits id of column to filter and value to filter by filter on change.
          */
-        "onAtuiChange"?: (event: AtuiTableFiltersCustomEvent<FilterEvent[]>) => void;
+        "onAtuiChange"?: (event: AtuiTableFiltersCustomEvent<any>) => void;
         /**
           * Currently selected columns and filter values
           * @default []
@@ -6578,7 +6139,7 @@ declare namespace LocalJSX {
         /**
           * Emits event with ```event.detail``` as the new page size
          */
-        "onAtuiPageSizeChange"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
+        "onAtuiChangeSize"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
         /**
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
@@ -6599,7 +6160,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Table Cell
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with an icon.
      */
     interface AtuiTextIconCell {
     }
@@ -6729,50 +6290,30 @@ declare namespace LocalJSX {
      * @description A time with unit component for selecting a time period.
      */
     interface AtuiTimeWithUnit {
-        /**
-          * Common time preset options to display
-         */
         "common_options"?: TimePresets[];
         /**
-          * Custom error message to display when validation fails
           * @default null
          */
         "custom_error_message"?: any;
-        /**
-          * Initial time selection value
-         */
         "initial_selected_time"?: TimeWithUnit | TimeRangeDisplay.ALL;
         /**
-          * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
          */
         "max_seconds"?: number;
         /**
-          * Minimum date constraint for time selection
           * @default null
          */
         "min_date"?: Date;
         /**
-          * Minimum number of seconds allowed for time selection
           * @default 60
          */
         "min_seconds"?: number;
-        /**
-          * Emitted when the user cancels the time selection
-         */
         "onAtuiCancel"?: (event: AtuiTimeWithUnitCustomEvent<null>) => void;
-        /**
-          * Emitted when the user submits the time selection
-         */
         "onAtuiSubmit"?: (event: AtuiTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>) => void;
         /**
-          * Whether to show the 'All Time' option
           * @default false
          */
         "show_all_time"?: boolean;
-        /**
-          * Available time units for selection
-         */
         "units"?: TimeUnit[];
     }
     /**
@@ -6903,7 +6444,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiTreeItemCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtuiTreeItemCustomEvent<any>) => void;
         /**
           * Determines the direction of the indicator arrow
           * @default false
@@ -6942,6 +6483,8 @@ declare namespace LocalJSX {
         "atui-edit-text-cell": AtuiEditTextCell;
         "atui-form-label": AtuiFormLabel;
         "atui-header": AtuiHeader;
+        "atui-icon-cell": AtuiIconCell;
+        "atui-image-cell": AtuiImageCell;
         "atui-input": AtuiInput;
         "atui-input-numeric": AtuiInputNumeric;
         "atui-input-range": AtuiInputRange;
@@ -6957,7 +6500,6 @@ declare namespace LocalJSX {
         "atui-multi-btn-cell": AtuiMultiBtnCell;
         "atui-multi-select": AtuiMultiSelect;
         "atui-placeholder": AtuiPlaceholder;
-        "atui-prompt-container": AtuiPromptContainer;
         "atui-prompt-input": AtuiPromptInput;
         "atui-prompt-message": AtuiPromptMessage;
         "atui-prompt-thread": AtuiPromptThread;
@@ -6969,8 +6511,8 @@ declare namespace LocalJSX {
         "atui-side-panel": AtuiSidePanel;
         "atui-sidebar": AtuiSidebar;
         "atui-sidebar-menu": AtuiSidebarMenu;
+        "atui-sidebar-menu-sub": AtuiSidebarMenuSub;
         "atui-sidebar-menuitem": AtuiSidebarMenuitem;
-        "atui-sidebar-submenu": AtuiSidebarSubmenu;
         "atui-sidebar-trigger": AtuiSidebarTrigger;
         "atui-src-dest": AtuiSrcDest;
         "atui-static-table": AtuiStaticTable;
@@ -7132,7 +6674,7 @@ declare module "@stencil/core" {
             "atui-chip-list-cell": LocalJSX.AtuiChipListCell & JSXBase.HTMLAttributes<HTMLAtuiChipListCellElement>;
             /**
              * @category Table Cell
-             * @description A cell component for displaying a color status indicator based on predefined types
+             * @description A cell component for displaying a color status.
              */
             "atui-color-status-cell": LocalJSX.AtuiColorStatusCell & JSXBase.HTMLAttributes<HTMLAtuiColorStatusCellElement>;
             "atui-column-manager": LocalJSX.AtuiColumnManager & JSXBase.HTMLAttributes<HTMLAtuiColumnManagerElement>;
@@ -7157,6 +6699,16 @@ declare module "@stencil/core" {
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
             "atui-header": LocalJSX.AtuiHeader & JSXBase.HTMLAttributes<HTMLAtuiHeaderElement>;
+            /**
+             * @category Table Cell
+             * @description A cell component for displaying an icon.
+             */
+            "atui-icon-cell": LocalJSX.AtuiIconCell & JSXBase.HTMLAttributes<HTMLAtuiIconCellElement>;
+            /**
+             * @category Table Cell
+             * @description A cell component for displaying an image.
+             */
+            "atui-image-cell": LocalJSX.AtuiImageCell & JSXBase.HTMLAttributes<HTMLAtuiImageCellElement>;
             /**
              * @category Form Controls
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
@@ -7226,12 +6778,7 @@ declare module "@stencil/core" {
             "atui-placeholder": LocalJSX.AtuiPlaceholder & JSXBase.HTMLAttributes<HTMLAtuiPlaceholderElement>;
             /**
              * @category Prompt
-             * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
-             */
-            "atui-prompt-container": LocalJSX.AtuiPromptContainer & JSXBase.HTMLAttributes<HTMLAtuiPromptContainerElement>;
-            /**
-             * @category Prompt
-             * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
+             * @description A specialized input component optimized for AI prompt interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
              */
             "atui-prompt-input": LocalJSX.AtuiPromptInput & JSXBase.HTMLAttributes<HTMLAtuiPromptInputElement>;
             /**
@@ -7286,17 +6833,14 @@ declare module "@stencil/core" {
             "atui-sidebar-menu": LocalJSX.AtuiSidebarMenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuElement>;
             /**
              * @category Navigation
+             * @description A sidebar menu sub component for the sidebar.
+             */
+            "atui-sidebar-menu-sub": LocalJSX.AtuiSidebarMenuSub & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuSubElement>;
+            /**
+             * @category Navigation
              * @description A sidebar menu item component for the sidebar.
              */
             "atui-sidebar-menuitem": LocalJSX.AtuiSidebarMenuitem & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuitemElement>;
-            /**
-             * @category Navigation
-             * @description Display nested sub-menus in the atui-sidebar.
-             * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
-             * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
-             * Menu indent styling is supported up to 3 levels.
-             */
-            "atui-sidebar-submenu": LocalJSX.AtuiSidebarSubmenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarSubmenuElement>;
             /**
              * @category Navigation
              * @description A sidebar trigger component for the sidebar.
@@ -7359,6 +6903,10 @@ declare module "@stencil/core" {
              * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
              */
             "atui-table-filter-menu": LocalJSX.AtuiTableFilterMenu & JSXBase.HTMLAttributes<HTMLAtuiTableFilterMenuElement>;
+            /**
+             * @category Data Tables
+             * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+             */
             "atui-table-filters": LocalJSX.AtuiTableFilters & JSXBase.HTMLAttributes<HTMLAtuiTableFiltersElement>;
             /**
              * @category Data Tables
@@ -7379,7 +6927,7 @@ declare module "@stencil/core" {
             "atui-text-cell": LocalJSX.AtuiTextCell & JSXBase.HTMLAttributes<HTMLAtuiTextCellElement>;
             /**
              * @category Table Cell
-             * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+             * @description A cell component for displaying a text with an icon.
              */
             "atui-text-icon-cell": LocalJSX.AtuiTextIconCell & JSXBase.HTMLAttributes<HTMLAtuiTextIconCellElement>;
             /**

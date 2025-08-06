@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-DGivrgtr.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const variants = index$1.cva('group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden whitespace-nowrap rounded-[0.3rem] bg-transparent text-button font-medium capitalize text-foreground outline-none duration-150 ease-in-out hover:bg-surface-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-active-foreground/30 group-focus:bg-slate-200', {
@@ -38,20 +38,14 @@ const AtuiTreeItemComponent = class {
         this.disabled = false;
     }
     handleClick(event) {
-        this.atuiClick.emit({
-            originalEvent: event,
-            componentType: 'atui-tree-item',
-            element: this.el,
-        });
+        this.atuiClick.emit(event);
     }
     handleKeyDown(event) {
+        console.log('KeyDown:', event.key);
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
-            this.atuiClick.emit({
-                originalEvent: event,
-                componentType: 'atui-tree-item',
-                element: this.el,
-            });
+            console.log('dsds');
+            this.atuiClick.emit(event);
         }
     }
     render() {
@@ -63,9 +57,9 @@ const AtuiTreeItemComponent = class {
         const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (index.h(index.Host, { key: '1cfe884570efd8bb066a098983e0bbda33eaa02c', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '99c1a6031f3b7e319d5bd55441cb5ef250a361e8', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: '3b3df17b5bce807bcd08f5703ed7a37ccb993195', class: "flex gap-4" }, this.has_children && (index.h("span", { key: 'fc096d8f83eabd1a161525618472cdf37f17891b', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (index.h(index.Host, { key: 'd68ff852a057be4df6d9edea317a44274b68b5d7', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'ce54a4358ea06326489296e20183442c4210b24f', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: 'e9e66a55e6ca2537783dc295d41f6be0fe2b1ac0', class: "flex gap-4" }, this.has_children && (index.h("span", { key: '9b05237bcc0b1f1a31c8dca18de2e851ccd7ffb3', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (index.h("span", { key: '5c16b1684ab138d67d67079ef2d0d25446571b60', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), index.h("slot", { key: 'c4c0ef55275970b2cb7bd89bad50b96acf21d07a' })), index.h("div", { key: '53c0a1d9c6d2cd9d13b3f8b2df0313bd2bf55368', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (index.h("span", { key: '4b4bb4fa8884ad269f355bcaa5932acf9b78932c', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label))), index.h("slot", { key: 'b3a368659224b9fbb66c156a9069baad9eec03e4' })), index.h("div", { key: 'dab79184f43a9a6777a84d2183c521777b9d1d61', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute left-0 top-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
     get el() { return index.getElement(this); }
 };

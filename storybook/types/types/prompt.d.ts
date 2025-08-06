@@ -5,8 +5,8 @@ export interface PromptMessage {
     content: string;
     timestamp?: string;
     name?: string;
+    avatar?: string;
     loading?: boolean;
     error?: boolean;
     error_message?: string;
-    vote_status?: number;
 }

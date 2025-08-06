@@ -1,20 +1,26 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export type StatusType = 'disabled' | 'success' | 'warning' | 'error';
-export interface ColorStatusCellData {
-    status: StatusType;
+import { IClickCell, ITooltipCell } from '../../../../types/table-cells';
+import { CSSProperties } from '../../../../types/styles';
+export interface ColorStatusCellParams extends ITooltipCell, IClickCell {
+    color: string;
+    dataPresent: boolean;
+    containerStyles: CSSProperties;
 }
-export interface ColorStatusCellParams extends ICellRendererParams<ColorStatusCellData> {
-    mapValueToStatus: (data: any) => StatusType;
+interface InitParams extends ColorStatusCellParams, ICellRendererParams {
 }
 /**
  * @category Table Cell
- * @description A cell component for displaying a color status indicator based on predefined types
+ * @description A cell component for displaying a color status.
  */
 export declare class AtuiColorStatusCell implements ICellRendererComp {
     el: HTMLElement;
-    type: StatusType;
-    init(params: ColorStatusCellParams): void;
+    params: InitParams;
+    containerStyles: CSSProperties;
+    dataPresent: boolean;
+    init(params: InitParams): void;
     getGui(): HTMLElement;
-    refresh(params: ColorStatusCellParams): boolean;
+    refresh(params: InitParams): boolean;
+    protected updateCell(newValue: any): void;
     render(): any;
 }
+export {};

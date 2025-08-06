@@ -15,11 +15,12 @@ export declare enum AvailableCells {
     TITLE_SUBTITLE_DATE_CELL = "AtuiTitleSubtitleDateCell",
     EDIT_TEXT_CELL = "AtuiEditTextCell",
     CHIP_LIST_CELL = "AtuiChipListCell",
+    ICON_CELL = "AtuiIconCell",
     TOGGLE_CELL = "AtuiToggleCell",
     MULTI_BTN_CELL = "AtuiMultiBtnCell",
     COLOR_STATUS_CELL = "AtuiColorStatusCell",
-    TEXT_WITH_IMAGE_CELL = "AtuiTextImageCell",
-    MENU_CELL = "AtuiMenuCell"
+    IMAGE_CELL = "AtuiImageCell",
+    TEXT_WITH_IMAGE_CELL = "AtuiTextImageCell"
 }
 export declare enum AvailableHeaders {
     CHECKBOX_HEADER = "checkboxHeader",

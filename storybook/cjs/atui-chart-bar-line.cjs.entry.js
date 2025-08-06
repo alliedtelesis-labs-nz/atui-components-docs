@@ -1,9 +1,10 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
-var chartColor = require('./chart-color-CyKHCJde.js');
-var timeDate_util = require('./time-date.util-C4HWFPJU.js');
-require('./moment-BU5SUH_o.js');
+var index = require('./index-DGivrgtr.js');
+var chartColor = require('./chart-color-G_dDk1sq.js');
+var timeDate_util = require('./time-date.util-CvNz3hWU.js');
+require('./moment-w2EYXu2o.js');
+require('./moment-DRlRqWvO.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -176,7 +177,7 @@ const AtuiChartBarLine = class {
         return { min: startDate.toString(), max: endDate.toString() };
     }
     render() {
-        return (index.h(index.Host, { key: 'fabb29f2822c45e1530ceacbfc83d881a947f72b', style: { height: '100%', width: '100%' } }, index.h("section", { key: '21787abd38db8cc618b5c5c0f292de6597b3ce16', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '33d8164c93fd969197f88a14818548f68514e612', ref: (el) => (this.canvasEl = el) }))));
+        return (index.h(index.Host, { key: '898778662cb387a3847e4bb65816d7c44a5b708e', style: { height: '100%', width: '100%' } }, index.h("section", { key: 'bada335acbdea9975e4f1b5a7f977ea64b8282e9', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '2efe1b250a941f2cf17101815f8a69c47cba33e9', ref: (el) => (this.canvasEl = el) }))));
     }
 };
 

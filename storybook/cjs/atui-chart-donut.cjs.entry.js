@@ -1,8 +1,9 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
-var chartColor = require('./chart-color-CyKHCJde.js');
-require('./moment-BU5SUH_o.js');
+var index = require('./index-DGivrgtr.js');
+var chartColor = require('./chart-color-G_dDk1sq.js');
+require('./moment-w2EYXu2o.js');
+require('./moment-DRlRqWvO.js');
 
 const TOKEN_TEXT_DARK = '#0f172a';
 const heightVariants = {
@@ -166,7 +167,7 @@ const AtuiChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'a543562fcba9bbdab4ae2d7cda53a1ca26ea9d7d', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, index.h("canvas", { key: '9286262c3951d8ea2235113921d7601d4a389c9b', ref: (el) => (this.canvasEl = el), style: {
+        return (index.h(index.Host, { key: 'ac5921e9c348e6129466b454aca434fe1aebb9e7', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, index.h("canvas", { key: '84ca4b0bca6b234b8336ab6ff9a3228c97d2b35a', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',

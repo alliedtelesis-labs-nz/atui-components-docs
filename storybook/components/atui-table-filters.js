@@ -1,4 +1,4 @@
-import { A as AtuiTableFilters$1, d as defineCustomElement$1 } from './p-CrqYe6rc.js';
+import { A as AtuiTableFilters$1, d as defineCustomElement$1 } from './p-OCi6Urel.js';
 
 const AtuiTableFilters = AtuiTableFilters$1;
 const defineCustomElement = defineCustomElement$1;

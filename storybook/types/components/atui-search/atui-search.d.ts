@@ -28,7 +28,7 @@ export declare class AtuiSearch {
     /**
      * Emits an event when the input is changed. Used by atui-table.
      */
-    atuiChange: EventEmitter<string>;
+    atuiChange: EventEmitter;
     onChangeFn(): void;
     clearFn(): void;
     render(): any;

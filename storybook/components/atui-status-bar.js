@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$2 } from './p-D9Wtum9m.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-DJD-7SVX.js';
+import { d as defineCustomElement$2 } from './p-BLBTk09G.js';
 
 const AtuiStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStatusBar extends H {
     constructor() {
@@ -25,9 +25,9 @@ const AtuiStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStatusBar ext
             } }), h("span", { slot: "tooltip-content" }, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '4d2273308709b7f63740ec9c43d5cc2f452ad637', class: this.statusBarClass }, h("div", { key: 'bc7c5ae6d49838d2ef4210bc5bb9c56db953b5f4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '4d3ea82045acd8dbf856a3888d7063ebb36c0e75', class: this.statusBarClass }, h("div", { key: '9fcf00747e6ecf6fe44042e8ac29db7cbf4376a2', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
-}, [256, "atui-status-bar", {
+}, [0, "atui-status-bar", {
         "status_bar": [16],
         "size": [1],
         "disable_tooltip": [4]

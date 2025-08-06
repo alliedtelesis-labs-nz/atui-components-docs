@@ -15,10 +15,6 @@ export declare class AtuiDialogComponent {
      */
     role: 'dialog' | 'alertdialog';
     /**
-     * Whether to show a backdrop behind the dialog
-     */
-    backdrop: boolean;
-    /**
      * Internal state to track if dialog is open
      */
     isOpen: boolean;

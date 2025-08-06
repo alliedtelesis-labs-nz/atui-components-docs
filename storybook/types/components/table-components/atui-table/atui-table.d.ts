@@ -37,16 +37,10 @@ export declare class AtuiTableComponent {
      */
     disable_auto_init: boolean;
     /**
-     * If true, enables automatic column resizing to fit available space.
-     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-     */
-    auto_size_columns: boolean;
-    /**
      * The AG Grid API
      */
     ag_grid: GridApi;
     el: HTMLAtuiTableElement;
-    private resizeListener;
     /**
      * Emits an event when a column's sorting state changes.
      * Used to perform sorting outside of agGrid, when use_custom_sorting is set.
@@ -74,13 +68,12 @@ export declare class AtuiTableComponent {
      *
      * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
      */
-    createGrid(): Promise<GridApi>;
+    createGrid(): Promise<GridApi<any>>;
     /**
      * Gets the AG Grid API instance
      *
      * @returns The AG Grid API
      */
     getGridApi(): Promise<GridApi>;
-    disconnectedCallback(): void;
     render(): any;
 }

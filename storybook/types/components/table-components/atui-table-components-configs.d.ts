@@ -8,24 +8,14 @@ import { AtuiTitleSubtitleDateCell } from './cell-components/atui-title-subtitle
 import { AtuiTitleSubtitleCell } from './cell-components/atui-title-subtitle-cell/atui-title-subtitle-cell';
 import { AtuiEditTextCell } from './cell-components/atui-edit-text-cell/atui-edit-text-cell';
 import { AtuiChipListCell } from './cell-components/atui-chip-list-cell/atui-chip-list-cell';
+import { AtuiIconCell } from './cell-components/atui-icon-cell/atui-icon-cell';
 import { AtuiToggleCell } from './cell-components/atui-toggle-cell/atui-toggle-cell';
 import { AtuiMultiBtnCell } from './cell-components/atui-multi-btn-cell/atui-multi-btn-cell';
 import { AtuiColorStatusCell } from './cell-components/atui-color-status-cell/atui-color-status-cell';
+import { AtuiImageCell } from './cell-components/atui-image-cell/atui-image-cell';
 import { AtuiTextImageCell } from './cell-components/atui-text-image-cell/atui-text-image-cell';
-import { AtuiMenuCell } from './cell-components/atui-menu-cell/atui-menu-cell';
 export declare class AtuiTableComponentsConfigs {
     static readonly defaultPageSize = 10;
-    private static cellComponentsLoaded;
-    /**
-     * Ensures all table cell components are registered as custom elements.
-     * This is crucial for production builds where tree-shaking might remove
-     * seemingly unused components.
-     */
-    private static ensureCellComponentsLoaded;
-    /**
-     * Returns the framework components for AG Grid.
-     * Automatically ensures all cell components are loaded before returning.
-     */
     static getFrameworkComponents(): {
         AtuiTextCell: typeof AtuiTextCellComponent;
         AtuiTextStatusCell: typeof AtuiTextStatusCellComponent;
@@ -37,14 +27,11 @@ export declare class AtuiTableComponentsConfigs {
         AtuiChipListCell: typeof AtuiChipListCell;
         AtuiCheckboxCell: typeof AtuiCheckboxCellComponent;
         checkboxHeader: typeof AtuiCheckboxHeaderComponent;
+        AtuiIconCell: typeof AtuiIconCell;
         AtuiToggleCell: typeof AtuiToggleCell;
         AtuiMultiBtnCell: typeof AtuiMultiBtnCell;
         AtuiColorStatusCell: typeof AtuiColorStatusCell;
         AtuiTextImageCell: typeof AtuiTextImageCell;
-        AtuiMenuCell: typeof AtuiMenuCell;
+        AtuiImageCell: typeof AtuiImageCell;
     };
-    /**
-     * Force reset the loading state (useful for testing)
-     */
-    static reset(): void;
 }

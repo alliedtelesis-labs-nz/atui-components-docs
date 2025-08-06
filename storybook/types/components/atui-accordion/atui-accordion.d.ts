@@ -4,12 +4,6 @@ export interface AccordionItem {
     content?: string;
 }
 /**
- * @category Layout
- * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
- *
- * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
- */
-/**
  * ### ```interface AccordionItem```
  * ```
  * item_id: string;
@@ -53,3 +47,9 @@ export declare class AtuiAccordionComponent {
     private accordionId;
     render(): any;
 }
+/**
+ * @category Layout
+ * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
+ *
+ * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
+ */

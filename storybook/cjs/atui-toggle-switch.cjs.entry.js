@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-DGivrgtr.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const variants = index$1.cva('group/switch flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-none outline-0 outline-active hover:bg-surface-1 focus:bg-surface-1', {
@@ -75,12 +75,12 @@ const AtuiToggleSwitchComponent = class {
             active: this.value,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: '3add744b9ff5c61338e1434948a0a0516fb4e5c7', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (index.h(index.Host, { key: '56d7b1dfc17f7be6f5a5b6f9201eced5bfa6eeb1', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, index.h("div", { key: '58c8d854889be05963a7cca47f9f1d46d548b698', class: "flex flex-col" }, index.h("slot", { key: '6a4ccaab4d25b2d7cb93d23e7842eefe6e45ed81', name: "label" }), !!this.label && this.show_label && (index.h("atui-form-label", { key: '9ab232bbe044f47c46210c2ec1da806b2a17ae69', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: '4affadca2f0013ad7fd085f6a02e14d3579c4c8e', class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: '7ba893950624c6f6a83a5f9fa3c9fe828328d4f7', class: "relative flex h-20 w-40" }, index.h("input", { key: '3ed414d0e39b17dd2692141d9b4b20af02e579d3', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '87d4cb268876cede92f456dd70d4488ee0664d3d', class: trackClassname }, index.h("span", { key: 'decc698d8c36204efafe6daa0dab92abd1801eeb', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, index.h("div", { key: 'd1ca851f3e9bece31bb2efe2cd058fe8fe784f3d', class: "flex flex-col" }, index.h("slot", { key: '02ff68397fbfdf48e9e1d487f2b054b94716fb8e', name: "label" }), !!this.label && this.show_label && (index.h("atui-form-label", { key: '348582d08b33a9081f24a5f1caee6f4caa0bb4a4', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: 'dcaca4e1a5f5c42a19d388b1a71d107a0b27019a', class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: 'e82e97332c1c6acefdcaca7e698b0d628d3281db', class: "relative flex h-20 w-40" }, index.h("input", { key: 'c5553cdb4afbcfa7f87e2bb63f0a756db5623414', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '4aa0adf7758700637f9cd2387b373a9b4c59f017', class: trackClassname }, index.h("span", { key: '365077f2c2bd3879e22905f68826d905f0b2af45', class: thumbClassname }, this.value ? 'check' : 'remove')))));
     }
 };
 

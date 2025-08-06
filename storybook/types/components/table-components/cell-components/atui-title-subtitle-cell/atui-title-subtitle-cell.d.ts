@@ -1,26 +1,16 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
-export interface TitleSubtitleData {
-    title: string;
-    subtitle: string;
-    tooltip?: string;
-}
-export interface ITitleSubtitleCellParams extends ICellRendererParams, ITooltipCell {
-    title?: (data: any) => string;
-    subtitle?: (data: any) => string;
-}
+import { ITitleSubtitle } from '../../../../types/table-cells';
 /**
  * @category Table Cell
  * @description A cell component for displaying a title and subtitle.
  */
 export declare class AtuiTitleSubtitleCell implements ICellRendererComp {
-    el: HTMLElement;
-    params: ITitleSubtitleCellParams;
-    title: string;
-    subtitle: string;
-    init(params: ITitleSubtitleCellParams): void;
-    refresh(params: ITitleSubtitleCellParams): boolean;
+    el: any;
+    value: ITitleSubtitle;
+    params: ICellRendererParams;
+    init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
-    private setParams;
+    refresh(params: ICellRendererParams): boolean;
+    private updateCell;
     render(): any;
 }

@@ -1,14 +1,13 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
-export interface TextBadgeCellData {
-    text: string;
-    badgeText: string;
-    tooltip?: string;
+import { InitTextCellParams, ITooltipCell } from '../../../../types/table-cells';
+import { BadgeType } from '../../../atui-badge/atui-badge';
+export interface ITextWithBadgeCellParams extends ITooltipCell {
+    badgeText: (params: ICellRendererParams) => string;
+    badgeType?: BadgeType;
+    badgeTooltipClass?: string;
+    generateBadgeTooltip?: (params: ICellRendererParams) => HTMLElement | string;
 }
-export interface ITextBadgeCellParams extends ICellRendererParams, ITooltipCell {
-    text?: (data: any) => string;
-    badgeText?: (data: any) => string;
-    badgeType?: string;
+interface InitParams extends ITextWithBadgeCellParams, InitTextCellParams {
 }
 /**
  * @category Table Cell
@@ -18,10 +17,11 @@ export declare class AtuiTextBadgeCell implements ICellRendererComp {
     el: HTMLElement;
     textValue: string;
     badgeTextValue: string;
-    params: ITextBadgeCellParams;
-    init(params: ICellRendererParams): void;
+    params: InitParams;
+    init(params: InitParams): void;
     getGui(): HTMLElement;
     refresh(params: ICellRendererParams): boolean;
     private updateCell;
     render(): any;
 }
+export {};

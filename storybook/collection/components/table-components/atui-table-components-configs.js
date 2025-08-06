@@ -9,57 +9,14 @@ import { AtuiTitleSubtitleDateCell } from "./cell-components/atui-title-subtitle
 import { AtuiTitleSubtitleCell } from "./cell-components/atui-title-subtitle-cell/atui-title-subtitle-cell";
 import { AtuiEditTextCell } from "./cell-components/atui-edit-text-cell/atui-edit-text-cell";
 import { AtuiChipListCell } from "./cell-components/atui-chip-list-cell/atui-chip-list-cell";
+import { AtuiIconCell } from "./cell-components/atui-icon-cell/atui-icon-cell";
 import { AtuiToggleCell } from "./cell-components/atui-toggle-cell/atui-toggle-cell";
 import { AtuiMultiBtnCell } from "./cell-components/atui-multi-btn-cell/atui-multi-btn-cell";
 import { AtuiColorStatusCell } from "./cell-components/atui-color-status-cell/atui-color-status-cell";
+import { AtuiImageCell } from "./cell-components/atui-image-cell/atui-image-cell";
 import { AtuiTextImageCell } from "./cell-components/atui-text-image-cell/atui-text-image-cell";
-import { AtuiMenuCell } from "./cell-components/atui-menu-cell/atui-menu-cell";
 export class AtuiTableComponentsConfigs {
-    /**
-     * Ensures all table cell components are registered as custom elements.
-     * This is crucial for production builds where tree-shaking might remove
-     * seemingly unused components.
-     */
-    static ensureCellComponentsLoaded() {
-        if (this.cellComponentsLoaded)
-            return;
-        try {
-            // Prevent tree-shaking by referencing all components
-            const cellComponents = [
-                AtuiCheckboxCellComponent,
-                AtuiTextCellComponent,
-                AtuiTextStatusCellComponent,
-                AtuiTextBadgeCell,
-                AtuiTextIconCell,
-                AtuiTitleSubtitleCell,
-                AtuiTitleSubtitleDateCell,
-                AtuiEditTextCell,
-                AtuiChipListCell,
-                AtuiToggleCell,
-                AtuiMultiBtnCell,
-                AtuiColorStatusCell,
-                AtuiTextImageCell,
-                AtuiMenuCell,
-                AtuiCheckboxHeaderComponent,
-            ];
-            // Force reference to prevent tree-shaking
-            cellComponents.forEach((component) => {
-                if (typeof component !== 'function') {
-                    throw new Error(`Invalid component: ${component}`);
-                }
-            });
-            this.cellComponentsLoaded = true;
-        }
-        catch (error) {
-            console.error('Error preserving table cell components:', error);
-        }
-    }
-    /**
-     * Returns the framework components for AG Grid.
-     * Automatically ensures all cell components are loaded before returning.
-     */
     static getFrameworkComponents() {
-        this.ensureCellComponentsLoaded();
         return {
             [AvailableCells.TEXT_CELL]: AtuiTextCellComponent,
             [AvailableCells.TEXT_STATUS_CELL]: AtuiTextStatusCellComponent,
@@ -71,20 +28,14 @@ export class AtuiTableComponentsConfigs {
             [AvailableCells.CHIP_LIST_CELL]: AtuiChipListCell,
             [AvailableCells.CHECKBOX_CELL]: AtuiCheckboxCellComponent,
             [AvailableHeaders.CHECKBOX_HEADER]: AtuiCheckboxHeaderComponent,
+            [AvailableCells.ICON_CELL]: AtuiIconCell,
             [AvailableCells.TOGGLE_CELL]: AtuiToggleCell,
             [AvailableCells.MULTI_BTN_CELL]: AtuiMultiBtnCell,
             [AvailableCells.COLOR_STATUS_CELL]: AtuiColorStatusCell,
             [AvailableCells.TEXT_WITH_IMAGE_CELL]: AtuiTextImageCell,
-            [AvailableCells.MENU_CELL]: AtuiMenuCell,
+            [AvailableCells.IMAGE_CELL]: AtuiImageCell,
         };
-    }
-    /**
-     * Force reset the loading state (useful for testing)
-     */
-    static reset() {
-        this.cellComponentsLoaded = false;
     }
 }
 AtuiTableComponentsConfigs.defaultPageSize = 10;
-AtuiTableComponentsConfigs.cellComponentsLoaded = false;
 //# sourceMappingURL=atui-table-components-configs.js.map

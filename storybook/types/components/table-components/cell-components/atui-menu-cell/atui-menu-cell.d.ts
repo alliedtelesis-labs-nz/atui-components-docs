@@ -1,28 +1,13 @@
-import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
-export interface MenuAction {
-    title: string;
-    onTrigger: (params: ICellRendererParams) => void;
-    disabled?: (data: any) => boolean;
-    disabledTooltip?: string;
-}
-export interface MenuCellData {
-    text?: string;
-    actions: MenuAction[];
-}
-export interface AtuiMenuCellParams extends ICellRendererParams, ITooltipCell {
-    icon?: string;
-    actions: MenuAction[] | ((params: ICellRendererParams) => MenuAction[]);
-}
+import { ICellRendererComp } from 'ag-grid-community';
 /**
  * @category Table Cell
  * @description A cell component for displaying a menu.
  */
-export declare class AtuiMenuCell implements ICellRendererComp {
-    el: HTMLElement;
-    params: AtuiMenuCellParams;
-    init(params: ICellRendererParams): void;
+export declare class AtuiMenuCellComponent implements ICellRendererComp {
+    el: any;
+    params: any;
+    init(params: any): void;
     getGui(): HTMLElement;
-    refresh(params: ICellRendererParams): boolean;
+    refresh(_: any): boolean;
     render(): any;
 }

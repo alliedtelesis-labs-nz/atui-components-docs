@@ -5,10 +5,6 @@ import { ColDef } from 'ag-grid-community';
  * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
  * @internal
  */
-export interface FilterEvent {
-    id: string;
-    value: string;
-}
 export declare class AtuiTableFilters {
     /**
      * Column definitions used in your atui-table
@@ -24,9 +20,9 @@ export declare class AtuiTableFilters {
     translations: any;
     el: HTMLAtuiTableFiltersElement;
     /**
-     * Emits id of column and filter value on change.
+     * Emits id of column to filter and value to filter by filter on change.
      */
-    atuiChange: EventEmitter<FilterEvent[]>;
+    atuiChange: EventEmitter;
     componentWillLoad(): Promise<void>;
     filterChangeHandler(event: CustomEvent, columnId: string): void;
     clearFilters: () => void;

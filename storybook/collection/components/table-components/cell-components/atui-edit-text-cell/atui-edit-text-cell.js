@@ -21,10 +21,7 @@ export class AtuiEditTextCell {
         }
     }
     render() {
-        return (h(Host, { key: '6c15bd79915a4e8d1f7e886b1f4baa55fb0748c7', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: 'a02d2c712839e1539d4bfeb7cea05741d0edef4f', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
-                // Changed to onAtuiChange
-                this.updateCell(event.detail);
-            }, onMouseDown: (event) => event.stopPropagation() })));
+        return (h(Host, { key: 'e43d8f1823896f13a0df6285d53bfc5dd3753db0', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: 'dc0fa5277473dbcdc1f60fc570343c2e24301f9f', readonly: !this.params.writePermission, clearable: true, value: this.params.value, onInput: (event) => this.updateCell(event.target.value), onMouseDown: (event) => event.stopPropagation() })));
     }
     static get is() { return "atui-edit-text-cell"; }
     static get states() {

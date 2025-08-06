@@ -1,5 +1,4 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtuiEvent } from '../../types/events';
 export interface ListSelectorItem {
     id: string;
     title: string;
@@ -35,13 +34,13 @@ export declare class AtuiListSelector {
      */
     atuiChange: EventEmitter<ListSelectorItem>;
     /**
-     * Emits when event when the info button of an item is clicked
+     * Emits when event the when info button of an item is clicked
      */
-    atuiInfoButtonClick: EventEmitter<AtuiEvent>;
+    atuiClickInfoButton: EventEmitter<any>;
     el: HTMLAtuiListSelectorElement;
     listItemEls: HTMLAtuiListSelectorItemElement[];
     onSelect(item: ListSelectorItem): void;
-    onClickInfoButton(event: Event): void;
+    onClickInfoButton(): void;
     focusAndClickRelativeItem(relativePosition: number): void;
     handleKeyDown(event: KeyboardEvent): void;
     get getListItems(): any;

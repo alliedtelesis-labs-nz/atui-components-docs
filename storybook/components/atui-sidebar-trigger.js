@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, h } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$3 } from './p-C9eqBXeS.js';
-import { d as defineCustomElement$2 } from './p-BmgpvZ_L.js';
+import { p as proxyCustomElement, H, h } from './p-DJD-7SVX.js';
+import { d as defineCustomElement$3 } from './p-CGoVUV9r.js';
+import { d as defineCustomElement$2 } from './p-ByK4-pDJ.js';
 
 const AtuiSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarTriggerComponent extends H {
     constructor() {
@@ -29,10 +29,10 @@ const AtuiSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtuiS
         await this.updateIsOpen();
     }
     render() {
-        return (h("atui-button", { key: '3aed72a8137c647e422e5290b0dcc3347569687f', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("atui-button", { key: '801d3a5b4543a050cdef52d85e6dcec6d997effa', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return this; }
-}, [256, "atui-sidebar-trigger", {
+}, [0, "atui-sidebar-trigger", {
         "size": [1],
         "isOpen": [32]
     }]);
