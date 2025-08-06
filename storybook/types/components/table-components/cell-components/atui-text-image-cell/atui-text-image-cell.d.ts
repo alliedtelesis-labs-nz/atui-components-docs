@@ -1,15 +1,17 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { GetImageSourceFunction, ITooltipCell } from '../../../../types/table-cells';
-export interface ITextWithImageCell extends ITooltipCell {
-    imageSource?: string;
-    text?: string;
-    imageHeight?: number;
-    isImageAtFront?: boolean;
-    getImageSource?: GetImageSourceFunction;
-    getRouterLink?: (cellInput: any, cellValue: string) => any[];
-    isLinkDisabled?: (cellInput: any) => boolean;
+import { ITooltipCell } from '../../../../types';
+export interface TextImageCellData {
+    text: string;
+    image: string;
+    tooltip?: string;
 }
-interface InitParams extends ITextWithImageCell, ICellRendererParams {
+export interface ITextImageCellParams extends ICellRendererParams, ITooltipCell {
+    text?: (data: any) => string;
+    imageSource: (data: any) => string;
+    imageHeight?: number;
+    imageWidth?: number;
+    imageClass?: string;
+    imagePosition?: 'before' | 'after';
 }
 /**
  * @category Table Cell
@@ -17,14 +19,16 @@ interface InitParams extends ITextWithImageCell, ICellRendererParams {
  */
 export declare class AtuiTextImageCell implements ICellRendererComp {
     el: HTMLElement;
-    params: InitParams;
-    imageSource: string;
-    imageHeight: number;
+    private params;
     text: string;
-    init(params: InitParams): void;
-    getGui(): HTMLElement;
+    private imageHeight;
+    private imageWidth?;
+    private imageClass?;
+    private imagePosition;
+    init(params: ICellRendererParams): void;
     refresh(params: ICellRendererParams): boolean;
-    private updateCell;
+    private updateTextAndImage;
+    getGui(): HTMLElement;
+    private get imageSource();
     render(): any;
 }
-export {};

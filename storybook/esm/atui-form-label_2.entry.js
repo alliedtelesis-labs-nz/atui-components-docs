@@ -77,7 +77,7 @@ const AtuiTooltipComponent = class {
         const classname = variants({
             open: this.is_visible,
         });
-        return (h(Host, { key: '44fb43e8d3a4008ddcd72dbd87a828af92e85c06', class: "relative inline-block" }, h("div", { key: '3496c94ba8468a2776c1dde9a05657b4f23760ab', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: 'bbef6af02e615f14d715d85583a08581a248cbea', name: "tooltip-trigger" })), h("div", { key: '86bdbd368d6c433bbd5aadfbe4edc0ae138d9a28', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: 'f823f73745c222ccbd23b1e79dffaf40733c24d4', name: "tooltip-content" }))));
+        return (h(Host, { key: '144fc9c131ffa461ee469d69ee5ff9eed86bf93d', class: "relative inline-block" }, h("div", { key: '52a44a45449f2a575d7474bfa16f42147c0e87a7', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, h("slot", { key: '6cc0b456b2b4de3d696f9607b629f73fe13a6fd0', name: "tooltip-trigger" })), h("div", { key: '45194021ca57a0f1a52344d591f33aa76af35771', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, h("slot", { key: '8239e7f31c42da33a8890573b64f8837a94f20bf', name: "tooltip-content" }))));
     }
     get el() { return getElement(this); }
 };

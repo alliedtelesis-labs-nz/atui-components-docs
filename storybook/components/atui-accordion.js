@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$3 } from './p-WW7Yxuqc.js';
-import { d as defineCustomElement$2 } from './p-BjagG9M_.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { d as defineCustomElement$3 } from './p-DmG0mWrs.js';
+import { d as defineCustomElement$2 } from './p-hW4-nYw0.js';
 
 const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccordionComponent extends H {
     constructor() {
@@ -69,13 +69,13 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
         });
     }
     render() {
-        return (h(Host, { key: '040fca730e8e8016f675d494ef0f3f1c07f047fd', class: "flex flex-col gap-2" }, h("slot", { key: '082e66a9b29b1c267c92856e8f068fb07bd8efe4' }), this.items &&
+        return (h(Host, { key: 'bddaf7cc56ad839608ddf653ebd4f5a569edc5f0', class: "flex flex-col gap-2" }, h("slot", { key: '7f141d39bde2de7078f522d20c1a325afd169e3d' }), this.items &&
             this.items.map((item) => {
                 return (h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));
     }
     get el() { return this; }
-}, [4, "atui-accordion", {
+}, [260, "atui-accordion", {
         "items": [16],
         "default_open": [4],
         "toggleById": [64],

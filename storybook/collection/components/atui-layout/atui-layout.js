@@ -31,7 +31,7 @@ export class AtuiLayout {
         }
     }
     render() {
-        return h(Host, { key: '04bed0384cac8725c10e330e318af2cc54310a21' }, this.layoutElement);
+        return h(Host, { key: '2eb9250f40ae36f137808988eaa1ae3911b575b9' }, this.layoutElement);
     }
     static get is() { return "atui-layout"; }
     static get properties() {

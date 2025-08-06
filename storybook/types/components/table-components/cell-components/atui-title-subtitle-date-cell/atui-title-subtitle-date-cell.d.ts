@@ -1,10 +1,16 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
+export interface TitleSubtitleDateData {
+    date: string;
+}
+export interface ITitleSubtitleDateCellParams extends ICellRendererParams {
+    getTitleSubtitleDateData?: (data: any) => TitleSubtitleDateData;
+}
 /**
  * @category Table Cell
  * @description A cell component for displaying a title and subtitle with a date.
  */
 export declare class AtuiTitleSubtitleDateCell implements ICellRendererComp {
-    el: any;
+    el: HTMLElement;
     value: Date;
     params: ICellRendererParams;
     init(params: ICellRendererParams): void;

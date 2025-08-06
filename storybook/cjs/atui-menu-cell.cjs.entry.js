@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 
-const AtuiMenuCellComponent = class {
+const AtuiMenuCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
@@ -12,29 +12,37 @@ const AtuiMenuCellComponent = class {
     getGui() {
         return this.el;
     }
-    refresh(_) {
+    refresh(params) {
+        this.init(params);
         return false;
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '6fef07c9d74a59a0bab3ab5afd424a0e892b8799', class: "flex h-full items-center gap-4" }, this.params.value && index.h("span", { key: 'd8722a29ab5240f34cf1416db203da8fab391131' }, this.params.value), index.h("atui-menu", { key: 'f2ff60264fa11c75db07a9d62d6bb694f4c178eb' }, index.h("atui-button", { key: '197495adab5e940fffe183d23fe57a143bed3684', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: 'f61ebb6e073778a31ab7faae356dbe76374eabc1', slot: "menu-content", class: "flex max-h-120 w-full flex-col overflow-auto" }, this.params.actions &&
-            this.params.actions.map((action) => {
-                var _a;
-                return typeof action === 'object' ? (index.h("atui-tooltip", { is_visible: action.getDisabled
-                        ? action.getDisabled(this.params.data)
-                        : false }, index.h("atui-button", { class: "w-full *:justify-start", type: "secondaryText", label: action.title, slot: "tooltip-trigger", disabled: action.getDisabled
-                        ? action.getDisabled(this.params.data)
-                        : false, onClick: (params) => {
+        const actions = typeof this.params.actions === 'function'
+            ? this.params.actions(this.params)
+            : this.params.actions;
+        return (index.h(index.Host, { key: 'caf59aa9ed7d4b177a48659a7ecdabe06a233561', class: "flex h-full items-center gap-4" }, index.h("atui-menu", { key: 'e54de53498e7acc59a5d4406e06dc8f5e691da89', width: "auto", position: "left", portal: true }, index.h("atui-button", { key: '974ff119136def020b107d141f2500b44dde5728', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: '27702ed466dfe5d6782f9e1bd53d791373c3fdde', slot: "menu-content", class: "flex flex-col" }, actions &&
+            actions.map((action) => typeof action === 'object' &&
+                (action.disabled &&
+                    action.disabled(this.params.data) &&
+                    action.disabledTooltip ? (index.h("atui-tooltip", null, index.h("div", { slot: "tooltip-trigger", class: "w-full" }, index.h("atui-menu-item", { label: action.title, disabled: true, onClick: () => {
                         if (action.onTrigger !==
-                            undefined)
-                            action.onTrigger(params);
-                    } }), index.h("span", { slot: "tooltip-content" }, (_a = action.disabledTooltip) !== null && _a !== void 0 ? _a : ''))) : (index.h("span", { class: "py-4" }, action));
-            })))));
+                            undefined) {
+                            action.onTrigger(this.params);
+                        }
+                    } })), index.h("span", { slot: "tooltip-content" }, action.disabledTooltip))) : (index.h("atui-menu-item", { label: action.title, disabled: action.disabled
+                        ? action.disabled(this.params.data)
+                        : false, onClick: () => {
+                        if (action.onTrigger !==
+                            undefined) {
+                            action.onTrigger(this.params);
+                        }
+                    } }))))))));
     }
     get el() { return index.getElement(this); }
 };
 
-exports.atui_menu_cell = AtuiMenuCellComponent;
+exports.atui_menu_cell = AtuiMenuCell;
 //# sourceMappingURL=atui-menu-cell.entry.cjs.js.map
 
 //# sourceMappingURL=atui-menu-cell.cjs.entry.js.map

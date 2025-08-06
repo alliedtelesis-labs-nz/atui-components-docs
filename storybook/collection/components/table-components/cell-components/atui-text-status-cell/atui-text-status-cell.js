@@ -2,7 +2,6 @@ import { h, Host } from "@stencil/core";
 /**
  * @category Table Cell
  * @description A cell component for displaying a text with a status.
- * @internal
  */
 export class AtuiTextStatusCellComponent {
     constructor() {
@@ -32,20 +31,14 @@ export class AtuiTextStatusCellComponent {
         this.type = badgeType;
     }
     mapValueToBadgeType(params, value) {
-        const badgeType = params.mapValueToBadge && params.mapValueToBadge(value);
+        const badgeType = params.mapValueToStatus && params.mapValueToStatus(value);
         return badgeType || 'default';
     }
     render() {
         var _a;
-        return (h(Host, { key: 'd22a04f733cdf9d5b8e79307839f3ffa98fd751a', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'caf9278097823be053b463757476c727497b35eb', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: 'b18a599d63dbd7a86335c30af7698f8c8a683085', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '94d4d9fd16fb67b06a4247dad6ea4f1d0bd0a2ff', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
-            (this.params.generateTooltip ? (h("atui-tooltip", { position: "right", is_visible: true }, h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text, onClick: () => {
-                    if (this.params.click)
-                        this.params.click(this.params);
-                } }), h("span", { slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("atui-badge", { type: this.type, label: this.text, onClick: () => {
-                    if (this.params.click)
-                        this.params.click(this.params);
-                } })))));
+            (this.params.generateTooltip ? (h("atui-tooltip", { position: "right", is_visible: true }, h("atui-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { slot: "tooltip-content", class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("atui-badge", { type: this.type, label: this.text })))));
     }
     static get is() { return "atui-text-status-cell"; }
     static get states() {

@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, d as createEvent, h } from './p-DJD-7SVX.js';
-import { d as defineCustomElement$3 } from './p-BLBTk09G.js';
-import { d as defineCustomElement$2 } from './p-oK3fdkN_.js';
+import { p as proxyCustomElement, H, d as createEvent, h } from './p-CaGsJoRH.js';
+import { d as defineCustomElement$3 } from './p-D9Wtum9m.js';
+import { d as defineCustomElement$2 } from './p-BK3KqhUH.js';
 
 const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeComponent extends H {
     constructor() {
@@ -57,7 +57,7 @@ const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeCompone
         }
     }
     render() {
-        return (h("div", { key: 'f1fcf983c0e5a3ecc0dd421c99ebd6763fe7eefe', class: "w-full" }, h("slot", { key: '64a66447ecb1b3893676ed3a8c9a4ee7550d9699' }), this.flattenedItemList &&
+        return (h("div", { key: 'a9d46558b1f1e53046fc2bcc775e0c5075a50732', class: "w-full" }, h("slot", { key: 'febf277c39a2b7408bd524feda66e81aaf53b2a4' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("atui-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("atui-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", { slot: "tooltip-content" }, item.tooltip))) : (h("atui-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +
@@ -65,7 +65,7 @@ const AtuiTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtuiTreeCompone
                 }, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));
     }
-}, [4, "atui-tree", {
+}, [260, "atui-tree", {
         "item_list": [1040],
         "size": [1],
         "flattenedItemList": [32],

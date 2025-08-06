@@ -1,10 +1,18 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface IToggleCellParams {
-    getLabel: (params: ICellRendererParams) => string;
-    onTrigger: (params: ICellRendererParams) => void;
-    getDisabled?: (data: any) => boolean;
+import { LabelPosition } from '../../../atui-toggle-switch/atui-toggle-switch';
+import { ITooltipCell } from '../../../../types/table-cells';
+export interface ToggleCellData {
+    value: boolean;
+    label?: string;
+    labelPosition?: 'before' | 'after';
+    disabled?: boolean;
 }
-interface InitParams extends IToggleCellParams, ICellRendererParams {
+export interface IToggleCellParams extends ICellRendererParams, ITooltipCell {
+    toggleValue?: (data: any) => boolean;
+    label?: (data: any) => string;
+    labelPosition?: (data: any) => LabelPosition;
+    onTrigger?: (params: ICellRendererParams) => void;
+    disabled?: (data: any) => boolean;
 }
 /**
  * @category Table Cell
@@ -12,13 +20,16 @@ interface InitParams extends IToggleCellParams, ICellRendererParams {
  */
 export declare class AtuiToggleCell implements ICellRendererComp {
     el: HTMLElement;
-    params: InitParams;
+    params: IToggleCellParams;
+    label: string;
+    labelPosition: LabelPosition;
+    disabled: boolean;
+    value: boolean;
     timer: any;
-    init(params: InitParams): void;
+    init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
-    refresh(params: InitParams): boolean;
+    refresh(params: ICellRendererParams): boolean;
     toggleHandler(change: CustomEvent): void;
     private updateCell;
     render(): any;
 }
-export {};

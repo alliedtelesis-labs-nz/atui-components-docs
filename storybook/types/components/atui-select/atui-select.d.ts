@@ -80,9 +80,6 @@ export declare class AtuiSelectComponent {
     private updateIsOpenState;
     private handleChange;
     private handleClear;
-    private focusOption;
-    private handleSearchChange;
-    private handleKeyDownInput;
     private handleKeyDownMenu;
     render(): any;
     renderlabel(): any;

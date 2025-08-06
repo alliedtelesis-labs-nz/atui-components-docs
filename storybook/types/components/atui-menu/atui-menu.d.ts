@@ -44,11 +44,15 @@ export declare class AtuiMenu {
      * Prevent opening menu
      */
     disabled: boolean;
+    /**
+     * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
+     */
+    portal: boolean;
     isOpen: boolean;
-    isIntersectingViewport: boolean;
-    triggerPosition: DOMRect;
     triggerEl: HTMLElement;
     menuEl: HTMLElement;
+    private portalContainer;
+    private cleanupAutoUpdate?;
     private updatePosition;
     el: HTMLElement;
     /**
@@ -70,18 +74,20 @@ export declare class AtuiMenu {
     /**
      * Emits an event containing the open menu state.
      */
-    menuStateChange: EventEmitter<boolean>;
+    atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
-    private observer;
     componentDidLoad(): void;
     disconnectedCallback(): void;
-    private initIntersectionObserver;
-    private positionStrategy;
     private mouseEnterHandler;
     private mouseLeaveHandler;
     private handleOutsideClick;
-    get positionStyle(): {
-        [key: string]: string;
-    };
+    private createPortalContainer;
+    private moveMenuToPortal;
+    private handleMenuKeyDown;
+    private cleanupPortalContainer;
+    private setupFloatingUI;
+    private cleanupFloatingUI;
+    private updateFloatingPosition;
+    private getFloatingUIPlacement;
     render(): any;
 }

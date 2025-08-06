@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiMultiBtnCell = class {
     constructor(hostRef) {
@@ -8,7 +8,7 @@ const AtuiMultiBtnCell = class {
     }
     init(params) {
         this.params = params;
-        const { containerStyles, buttons } = params;
+        const { containerStyles, buttons } = this.params;
         this.containerStyles = containerStyles;
         this.buttons =
             typeof buttons === 'function' ? buttons(params) : buttons;
@@ -32,7 +32,7 @@ const AtuiMultiBtnCell = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '19abf3a96db0d35485c85b4cd20c4c60b1669dd0', class: "flex h-full items-center leading-[100%]" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: 'fe7f8d2feae47f8994719018d48ae1c0d70e99ca', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     get el() { return index.getElement(this); }
 };

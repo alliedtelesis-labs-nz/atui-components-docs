@@ -1,10 +1,10 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiListSelector = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        this.atuiClickInfoButton = createEvent(this, "atuiClickInfoButton", 7);
+        this.atuiInfoButtonClick = createEvent(this, "atuiInfoButtonClick", 7);
         /**
          * List of items.
          */
@@ -15,8 +15,11 @@ const AtuiListSelector = class {
         this.selected_item_id = item.id;
         this.atuiChange.emit(item);
     }
-    onClickInfoButton() {
-        this.atuiClickInfoButton.emit();
+    onClickInfoButton(event) {
+        this.atuiInfoButtonClick.emit({
+            originalEvent: event,
+            componentType: 'atui-list-selector',
+        });
     }
     focusAndClickRelativeItem(relativePosition) {
         const indexOfActiveItem = this.listItemEls.indexOf(this.el.ownerDocument
@@ -40,10 +43,10 @@ const AtuiListSelector = class {
     }
     get getListItems() {
         return this.options.map((item) => (h("atui-tooltip", { position: "right", is_visible: item.tooltip !== undefined }, h("div", { slot: "tooltip-trigger" }, h("atui-list-selector-item", { item_id: item.id, item_title: item.title, subtitle: item.subtitle, icon: item.icon, item_prefix: item.prefix, has_border: this.has_border, is_selected: this.selected_item_id &&
-                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("atui-tooltip", { slot: "badge", position: "right" }, h("atui-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", { slot: "tooltip-content" }, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: () => this.onClickInfoButton() }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", { slot: "tooltip-content" }, item.tooltip))));
+                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("atui-tooltip", { slot: "badge", position: "right" }, h("atui-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", { slot: "tooltip-content" }, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", { slot: "tooltip-content" }, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '9a68eb4fc6eadcd6930033fb8b0afbe3b5469b63', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'e866aba25ed4efb005112cb5961a3bb41508620a', name: "header" }), !!this.options.length && (h("nav", { key: 'bcc26c280e74090233b7e5bcb4f9af9ac23bcebf', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '0482991a0ae2d7a839f5f1ec425886e1ba5fef17', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'd5016f6e7353fd006c67f4c218991b47438662d1' })));
+        return (h(Host, { key: '1aa78b7a2127c294ca489a8f1b9897c0be9c420d', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'be8a3cfd432d8953043f6a21a1ddc376a90aefd4', name: "header" }), !!this.options.length && (h("nav", { key: '2a7230d2b8850f22b6c5dca33552c6349aad220e', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '4fd672f2145f21910fd17179a96648d0e14b3a1c', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '6a31555c46b0a6574f5a3bb8d07694f08ed47106' })));
     }
     get el() { return getElement(this); }
 };

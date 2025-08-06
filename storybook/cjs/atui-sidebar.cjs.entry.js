@@ -1,7 +1,9 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 var index$1 = require('./index-palgSxc9.js');
+
+const atuiSidebarCss = "atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:36px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:50px}atui-sidebar atui-sidebar-menu atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-submenu [slot=submenu-content] atui-sidebar-menuitem{padding-left:64px}atui-sidebar atui-sidebar-submenu atui-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}";
 
 const variants = index$1.cva('transition-size relative flex flex-col overflow-y-auto overflow-x-hidden bg-sidebar-background text-sidebar-foreground duration-300 ease-in-out', {
     variants: {
@@ -19,7 +21,7 @@ const variants = index$1.cva('transition-size relative flex flex-col overflow-y-
 const AtuiSidebarComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.atuiChange = index.createEvent(this, "atuiChange", 7);
+        this.atuiSidebarChange = index.createEvent(this, "atuiSidebarChange", 7);
         /**
          * Position of the sidebar on the page
          */
@@ -42,14 +44,14 @@ const AtuiSidebarComponent = class {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
-        this.atuiChange.emit(this.isOpen);
+        this.atuiSidebarChange.emit(this.isOpen);
     }
     /**
      * Toggles the sidebar's open state.
      */
     async toggleSidebar() {
         this.isOpen = !this.isOpen;
-        this.atuiChange.emit(this.isOpen);
+        this.atuiSidebarChange.emit(this.isOpen);
     }
     /**
      * Getter method for the open state of the sidebar
@@ -63,9 +65,10 @@ const AtuiSidebarComponent = class {
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (index.h(index.Host, { key: 'd7f42212e86640f5da0e20437ca7fac5a5c1a7d9', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '973e6f0fc19eafe7350e223f8a88734556638ee6', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("div", { key: '771058c6c8996b7505e3ad69059f5abfe898ae94', class: `flex p-8 ${this.side === 'left' ? 'justify-end' : 'justify-start'}` }, index.h("slot", { key: '5dd5570015fc745c3c936706b768849e5b03b3f4', name: "sidebar-header" })), index.h("div", { key: 'e636f15750568bcb5c89b0cac31dc0b01b4fc6ee', class: "align-items flex flex-1 flex-col pb-8 pl-[10px] pr-8 pt-8" }, index.h("slot", { key: '5591dbb68d50f50738d40b3cd59e17626224cc72', name: "sidebar-content" })), index.h("div", { key: 'bdd8dccbe59c660e1ae019106b88a55d8c47d558', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '872065e2c39c351cb0db286f5b12feccaf6e3594', name: "sidebar-footer" }))), index.h("div", { key: 'a7c39a837e6d112c43c7551299f6f12176479961', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'cf61d24586aa62fbfd71c3f355158f54c941149b', name: "page-content" }))));
+        return (index.h(index.Host, { key: 'f881d18398ddb132b24ca668b34635dd8aeb3283', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '39ea4b8d8ec47a71d111caa7b1c85003f448e5d4', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("slot", { key: '0de4c24620fce041b64f71b9f8721e89897da2ea', name: "sidebar-header" }), index.h("div", { key: '9179ed9258544622e589107411e809250424386a', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '81d7a33d81818101349f5b38da5af291f2f7eb39', name: "sidebar-content" })), index.h("div", { key: '439cbe7e6bc4564d80db675ca051ab2977e7a79a', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '684a4c570fbbb18a93b7fb3fdf463c8113a2ff5e', name: "sidebar-footer" }))), index.h("div", { key: '3a56cd911d779b1c3aa253cfa70a4d62daee299c', class: "flex w-full overflow-auto" }, index.h("slot", { key: '94124468f8144534ee4f5e30dc2c64acbbd65983', name: "page-content" }))));
     }
 };
+AtuiSidebarComponent.style = atuiSidebarCss;
 
 exports.atui_sidebar = AtuiSidebarComponent;
 //# sourceMappingURL=atui-sidebar.entry.cjs.js.map

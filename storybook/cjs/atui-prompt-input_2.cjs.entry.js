@@ -3,7 +3,7 @@
 var index = require('./index-43B6Ydvl.js');
 var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index-palgSxc9.js');
-var atuiPromptMessage_entry = require('./atui-prompt-message-Dzgks4xJ.js');
+var atuiPromptMessage_entry = require('./atui-prompt-message-Cp6oiaUN.js');
 
 const promptInputContainerVariants = index$1.cva('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
@@ -146,16 +146,16 @@ const AtuiPromptInputComponent = class {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'e54ed43826666c740d703ec3d1d4865369f086e5', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: '5e2256bae1571ad99113275872256b91f18f5dac', class: "flex flex-col" }, index.h("slot", { key: 'dc6fdfec65f2c270d3244159a206d5d0dbf79c22', name: "label" }), (this.label || this.info_text) && (index.h("atui-form-label", { key: '15ada6eccb75433b71a11a9e7036b23df4eb8a74', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: '74c6e846501d488f4418f00f90dba0e2024ea37a', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: 'ba6c2ace5bae12a2cdb3318f8702c3f5b99aa6d2', class: containerClass }, index.h("textarea", { key: 'baa4bda2ac54d5662a99563586bdceebf7905077', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (index.h(index.Host, { key: 'aa968cd0ec4da3fe4afe9a8e53084a87c161d813', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: 'd3231c29c5b2926c8f2287c96fdafbf4815755ab', class: "flex flex-col" }, index.h("slot", { key: 'f22ecd5434d3ea0da975b8f3515f9038e43f9ac7', name: "label" }), (this.label || this.info_text) && (index.h("atui-form-label", { key: '5713272d9b12e90434bb8245f89d4d70c4538828', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: 'd480a19cb061b8dcd5b3ddb7932ca59eeb934d28', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: '9e619856eb62d4cb9b77f4c0ac7c7189b8a01f0c', class: containerClass }, index.h("textarea", { key: 'bfb86532a9bde8ca2d47f06d98a558c970a6705c', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'hidden',
-            }, "data-name": "prompt-input" }), index.h("div", { key: 'c2984a8ae6fdfc7b21f1aec3691b8c7adb314cb1', class: "gap-1 flex w-full items-center justify-between" }, index.h("div", { key: '386dbe72a4f679ff042f4c871cf09e74aaadfc5d', class: "flex items-center gap-4" }, index.h("slot", { key: '00d4c8c41c61f663b44849199017b13e6437e5cc', name: "actions-left" })), index.h("div", { key: '7169b8dfd37574b4b48ad9b3f526307978063963', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: 'b1d6cfd0d86ac0c41fb9f1284f9500cb7d4aaaa0', name: "actions-right" }), index.h("atui-button", { key: 'a5da2893a3ef7c500701d2eb5daed7a3ece9362d', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), index.h("div", { key: '7f7675707feffad6694ec5151ea3c690222161e4', class: "gap-1 flex w-full items-center justify-between" }, index.h("div", { key: 'b392664eaee8f5d98fdf798d88a65b3c2e4e650e', class: "flex items-center gap-4" }, index.h("slot", { key: '5e5aaee983a84b29f39592c9877e6869b806f0e1', name: "actions-left" })), index.h("div", { key: '3c8ad41b2964af794df0926e9eb9350be5e75292', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: '7639389078abb571310dee5a9762d3caf0546886', name: "actions-right" }), index.h("atui-button", { key: 'c8657bbfe05dd62ae93f99e1a372e1edcd7d61fe', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), index.h("slot", { key: 'a1852979197f8078ad043ad75b570d453356bdec', name: "footer" }), this.invalid && (index.h("span", { key: '19f61ee46cb85601a265b63adfb8db85afbc2783', class: "text-xs text-error-dark", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), index.h("slot", { key: '47da738299a326283f129c428f6a7e9b754c199c', name: "footer" }), this.invalid && (index.h("span", { key: 'f1d6f1a6f4af9d7d987113ceb7d43e148da2eef7', class: "text-xs text-error-dark", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
@@ -303,7 +303,7 @@ const AtuiPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (index.h(index.Host, { key: 'a618e18bd706226b9df6d6ed7f822d31096e0d09', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: 'f8504349bb21927baecc1491d02905568d1240bd', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: '031206d22787e03e47dbe2cf81a1eee6e5ac986d', name: "thread-messages" }))));
+        return (index.h(index.Host, { key: '4ebdba767270a8f6ba4b2e4cb3dd5d7ecd895042', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: '23aa505f865b39b4ce78ba065d9730dd6c0a35c3', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: '7f39a717637c1b87fa73a6b3840a0ad9bb914fe0', name: "thread-messages" }))));
     }
 };
 

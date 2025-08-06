@@ -124,7 +124,7 @@ export class AtuiPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '72b46c749303325fcf53598a6bc3cad2b489a7ab', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '86b25133b3d2847222e3d4ae4721495a5030cfef', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '6b707f76a474b3f743a1dd4a942b02f6e660301b', class: "self-start text-sm text-light", "data-name": "message-name" }, this.name)), h("div", { key: '8afefba823510d0925b174605a38b07d901f443c', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '9e3bd33653e63685fe07ce845c7675f2219d1548', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '2a71b744b7e7690f37cee010278aacd71efc6dbd', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'c8da2be6f55c8762d9b9d4295e22c03fdb546a01', class: "self-start text-sm text-light", "data-name": "message-name" }, this.name)), h("div", { key: '6aa116577468031e0b26e9c101b1b9ebba64615d', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "atui-prompt-message"; }
     static get properties() {

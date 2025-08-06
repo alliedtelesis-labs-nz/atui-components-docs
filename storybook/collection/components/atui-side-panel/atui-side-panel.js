@@ -1,4 +1,4 @@
-import { h } from "@stencil/core";
+import { h, } from "@stencil/core";
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
     origin: {
@@ -28,7 +28,7 @@ const sizeVariants = {
  *
  * @slot content - Used for placing the content of the side panel.
  */
-export class AtuiDialogComponent {
+export class AtuiSidePanelComponent {
     constructor() {
         /**
          * Size of the size panel
@@ -54,11 +54,49 @@ export class AtuiDialogComponent {
          * If sidepanel should used fixed positioning (otherwise absolute)
          */
         this.fixed = true;
+        /**
+         * Whether to show a backdrop behind the panel
+         */
+        this.backdrop = false;
         this.isExpanded = false;
+        this.handleClose = () => {
+            this.closeSidePanel();
+        };
     }
-    handleClose() {
-        this.panelDialog.close();
-        this.isExpanded = false;
+    /**
+     * Opens the side panel
+     * @returns Promise that resolves when the panel is opened
+     */
+    async openSidePanel() {
+        if (this.panelDialog && !this.panelDialog.open) {
+            this.panelDialog.showModal();
+            this.isExpanded = true;
+            if (this.backdrop) {
+                this.panelDialog.classList.add('backdrop');
+            }
+        }
+    }
+    /**
+     * Closes the side panel
+     * @returns Promise that resolves when the panel is closed
+     */
+    async closeSidePanel() {
+        if (this.panelDialog && this.panelDialog.open) {
+            this.panelDialog.close();
+            this.isExpanded = false;
+            this.panelDialog.classList.remove('backdrop');
+        }
+    }
+    offClickHandler(event) {
+        var _a, _b;
+        if (!this.close_backdrop || !((_a = this.panelDialog) === null || _a === void 0 ? void 0 : _a.open))
+            return;
+        if (!((_b = this.sidePanelWrapper) === null || _b === void 0 ? void 0 : _b.contains(event.target))) {
+            this.handleClose();
+        }
+    }
+    render() {
+        return (h("div", { key: 'dd5997b4f7b0b72be4eaa25f0eb9edd13928ad5e' }, h("dialog", { key: '15bca474c6cc7736d89fe8a426a78c084a5bfc67', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '' }, h("div", { key: '140f01234a892eab163b2ebdf84b9b8030fa3818', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '047dc44a98299aefccfd5c805ca4210ee9d3e9ff', class: 'sticky top-0 z-nav' }, h("atui-header", { key: '8a293a6c36ae58ed69cc69a4ad2d971d5fc14af3', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: 'da50b74bca5bdd9cdf0ac2555917d206fdb9c43b', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: 'e3cfda2ac5e167c122dc11a09a62053dd4ece3b7', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: '8fa71de39a93bfde19facec8d3312f23102d386f', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: 'eb4af5d45dfd6954ced389b7b638e24cd05a0dac', name: 'content' }))))));
     }
     get panelClasses() {
         return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
@@ -67,17 +105,17 @@ export class AtuiDialogComponent {
     get sizeClasses() {
         return `${sizeVariants.base} ${sizeVariants.size[this.size]}`;
     }
-    offClickHandler(event) {
-        if (!this.close_backdrop || !this.panelDialog.open)
-            return;
-        if (!this.sidePanelWrapper.contains(event.target)) {
-            this.handleClose();
-        }
-    }
-    render() {
-        return (h("div", { key: 'a75539d485edf9558cf437a4394327835e08fe8e' }, h("dialog", { key: '31f9f751d8a14fafadb16870d852372bce492049', id: this.panel_id, ref: (el) => (this.panelDialog = el) }, h("div", { key: '28fa97384358ffaa1e400b6352baece7ead52f34', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '5eebcaf0bd924b67aad83545f185da277a5301ea', class: 'sticky top-0 z-nav' }, h("atui-header", { key: '648655b29a858e4977fc4bbc3fc8b225dc519c34', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '76dc622b0d6ef598b192a5aeed718351391871ff', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '2e9550ede86946a9d0a78770cd617a48187be637', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: () => this.handleClose(), "data-name": "panel-close" }, "close"))))), h("div", { key: 'c3fe4506e5897ea200de6b1f60fb39c4bb30e591', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '7a425052671ee8e60f15607c0fbddbe68c7953fb', name: 'content' }))))));
-    }
     static get is() { return "atui-side-panel"; }
+    static get originalStyleUrls() {
+        return {
+            "$": ["atui-side-panel.scss"]
+        };
+    }
+    static get styleUrls() {
+        return {
+            "$": ["atui-side-panel.css"]
+        };
+    }
     static get properties() {
         return {
             "size": {
@@ -268,16 +306,79 @@ export class AtuiDialogComponent {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "true"
+            },
+            "backdrop": {
+                "type": "boolean",
+                "attribute": "backdrop",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Whether to show a backdrop behind the panel"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "false"
             }
         };
     }
     static get states() {
         return {
-            "isExpanded": {},
-            "sidePanelWrapper": {},
-            "panelDialog": {}
+            "isExpanded": {}
         };
     }
+    static get methods() {
+        return {
+            "openSidePanel": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Opens the side panel",
+                    "tags": [{
+                            "name": "returns",
+                            "text": "Promise that resolves when the panel is opened"
+                        }]
+                }
+            },
+            "closeSidePanel": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Closes the side panel",
+                    "tags": [{
+                            "name": "returns",
+                            "text": "Promise that resolves when the panel is closed"
+                        }]
+                }
+            }
+        };
+    }
+    static get elementRef() { return "el"; }
     static get listeners() {
         return [{
                 "name": "mousedown",

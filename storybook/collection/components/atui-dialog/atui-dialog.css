@@ -1,33 +1,47 @@
-.c-atui-dialog {
-  margin: auto;
-  display: block;
-  max-height: calc(100dvh - 48px);
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  visibility: hidden;
-  z-index: var(--token-z-index-modal);
-  transform-origin: bottom center;
-  opacity: 0;
-  scale: 0.95;
-  box-shadow: var(--token-shadow-3);
-  transition: translate var(--token-transition-time), scale var(--token-transition-time), filter var(--token-transition-time), opacity var(--token-transition-time), visibility var(--token-transition-time);
-}
-.c-atui-dialog::backdrop {
-  animation: fadeIn 0.3s ease forwards;
+dialog.backdrop::backdrop {
   background: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
   transition: opacity var(--token-transition-time) ease-in-out allow-discrete;
 }
+
+dialog.backdrop::backdrop {
+  z-index: var(--z-backdrop, 1000);
+}
+
 @keyframes fadeIn {
   from {
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }
-.c-atui-dialog > * {
+.c-atui-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  z-index: var(--token-z-index-modal);
+  transform-origin: center;
+  opacity: 0;
+  scale: 0.95;
+  box-shadow: var(--token-shadow-3);
+  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+  visibility: hidden;
+}
+.c-atui-dialog::backdrop {
+  background: none;
+}
+.c-atui-dialog .backdrop-content {
+  display: flex;
   max-height: calc(100dvh - 48px);
 }
 .c-atui-dialog[open] {
@@ -35,6 +49,7 @@
   scale: 1;
   opacity: 1;
   visibility: visible;
+  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;
 }
 @starting-style {
   .c-atui-dialog[open] {

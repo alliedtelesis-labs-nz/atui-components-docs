@@ -1,13 +1,13 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiSidebarMenuComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'ed7e6640376ee02b130680971bceaa2c760da905', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: 'e91cec544e2e5314167c5bbdd467aefe563a2903' })));
+        return (index.h(index.Host, { key: 'bf66c4e423b9e56f1a446a42b46d20da06905034', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: 'ae2fa312cf33178fcc8a7899a553849e00fff4a0' })));
     }
 };
 

@@ -1,4 +1,4 @@
-import { h, Host } from "@stencil/core";
+import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 /**
  * @category Data Tables
@@ -17,6 +17,11 @@ export class AtuiSearchTable {
          * Useful for server-side pagination where you want to control pagination externally.
          */
         this.use_custom_pagination = false;
+        /**
+         * If true, enables automatic column resizing to fit available space.
+         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+         */
+        this.auto_size_columns = true;
         this.tableCreated = false;
         this.activeFilters = {};
         this.selectedFilters = [];
@@ -25,6 +30,7 @@ export class AtuiSearchTable {
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
+        this.updateActiveFilters();
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
@@ -34,6 +40,60 @@ export class AtuiSearchTable {
     }
     async componentDidUpdate() {
         await this.initGrid();
+    }
+    /**
+     * Updates the data of rows in the AG Grid based on their displayed row index.
+     *
+     * Use this method when you need to programmatically update one or more specific rows in the grid,
+     * identified by their current displayed index. This is particularly useful when you want to perform
+     * partial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a
+     * server), and want to reflect these changes immediately in the UI with optional visual feedback.
+     *
+     * @template T - The data type of the row's underlying data structure.
+     * @param {RowUpdate<T>[]} rowUpdates - An array of objects specifying the row indices and the data updates to apply.
+     *   - `index`: The displayed index of the row to update.
+     *   - `update`: An object containing the updated data for the row.
+     * @param {RowUpdateOptions} [options] - Optional settings for the update operation.
+     *   - `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).
+     *   - `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios).
+     *
+     * @example
+     * // Update row at displayed index 2 with new values and flash the change
+     * updateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });
+     *
+     * @remarks
+     * - This function works with currently rendered rows; if rows are virtualized or paged out, ensure
+     *   the specified indices match the grid's current rendering context.
+     * - Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,
+     *   websocket pushes, or UI triggers).
+     */
+    async updateRowByIndex(rowUpdates, options) {
+        const displayedRows = this.agGrid.getRenderedNodes();
+        rowUpdates.forEach(({ index, update }) => {
+            const displayedRow = displayedRows.find((row) => row.rowIndex === index);
+            if (displayedRow) {
+                displayedRow.updateData(update);
+                if (options === null || options === void 0 ? void 0 : options.flash) {
+                    this.agGrid.flashCells({ rowNodes: [displayedRow] });
+                }
+                this.agGrid.refreshCells({
+                    rowNodes: [displayedRow],
+                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                });
+            }
+        });
+    }
+    /**
+     * Returns the **currently displayed row nodes** from the ag-Grid instance.
+     *
+     * This asynchronous method retrieves an array of row nodes representing the rows currently visible
+     * (rendered) in the grid, after filtering, sorting, and other view-based operations.
+     *
+     * @template T The data type contained in each row node.
+     * @returns {Promise<IRowNode<T>[]>} Promise resolving to an array of displayed row nodes.
+     */
+    async getDisplayedRows() {
+        return this.agGrid.getRenderedNodes();
     }
     async initGrid() {
         var _a;
@@ -50,9 +110,7 @@ export class AtuiSearchTable {
         if (!this.agGrid)
             return;
         this.agGrid.setGridOption('isExternalFilterPresent', () => {
-            const hasFilters = Object.keys(this.activeFilters).length > 0;
-            console.log('isExternalFilterPresent called, hasFilters:', hasFilters);
-            return hasFilters;
+            return Object.keys(this.activeFilters).length > 0;
         });
         this.agGrid.setGridOption('doesExternalFilterPass', (node) => {
             if (!node.data)
@@ -60,15 +118,52 @@ export class AtuiSearchTable {
             const searchValue = this.activeFilters['__search__'];
             if (searchValue) {
                 const searchLower = searchValue.toLowerCase();
-                const matchesSearch = Object.values(node.data).some((value) => value &&
-                    String(value).toLowerCase().includes(searchLower));
+                const matchesSearch = this.col_defs.some((colDef) => {
+                    let cellValue;
+                    if (colDef.valueGetter &&
+                        typeof colDef.valueGetter === 'function') {
+                        cellValue = colDef.valueGetter({
+                            data: node.data,
+                            node,
+                            colDef,
+                            api: this.agGrid,
+                            context: null,
+                            getValue: (field) => node.data[field],
+                            column: null,
+                        });
+                    }
+                    else if (colDef.field) {
+                        cellValue = node.data[colDef.field];
+                    }
+                    return (cellValue &&
+                        String(cellValue)
+                            .toLowerCase()
+                            .includes(searchLower));
+                });
                 if (!matchesSearch)
                     return false;
             }
             const columnFilterResult = Object.entries(this.activeFilters).every(([colId, filterValue]) => {
                 if (colId === '__search__' || !filterValue)
                     return true;
-                const value = node.data[colId];
+                const colDef = this.col_defs.find((def) => def.field === colId);
+                let value;
+                if (colDef &&
+                    colDef.valueGetter &&
+                    typeof colDef.valueGetter === 'function') {
+                    value = colDef.valueGetter({
+                        data: node.data,
+                        node,
+                        colDef,
+                        api: this.agGrid,
+                        context: null,
+                        getValue: (field) => node.data[field],
+                        column: null,
+                    });
+                }
+                else {
+                    value = node.data[colId];
+                }
                 const matches = value &&
                     String(value)
                         .toLowerCase()
@@ -89,13 +184,19 @@ export class AtuiSearchTable {
         this.col_defs = updatedColDefs;
     }
     handleFilterChange(event) {
-        if (event.detail) {
-            if (Array.isArray(event.detail) &&
-                typeof event.detail[0] === 'string') {
+        if (!event.detail ||
+            (Array.isArray(event.detail) && event.detail.length === 0)) {
+            // Handle clear all case
+            this.selectedFilters = [];
+            this.menuSelectedIds = [];
+            this.updateActiveFilters();
+            return;
+        }
+        if (Array.isArray(event.detail)) {
+            if (typeof event.detail[0] === 'string') {
                 this.handleMenuFilterChange(event.detail);
             }
-            else if (Array.isArray(event.detail) &&
-                typeof event.detail[0] === 'object') {
+            else if (typeof event.detail[0] === 'object') {
                 this.handleFilterListChange(event.detail);
             }
         }
@@ -109,19 +210,25 @@ export class AtuiSearchTable {
         this.menuSelectedIds = selectedIds;
     }
     handleFilterListChange(filters) {
-        if (filters.length === 1 && filters[0].id === '') {
+        // If filters array is empty or contains a single empty filter, reset all states
+        if (!filters.length || (filters.length === 1 && filters[0].id === '')) {
             this.selectedFilters = [];
             this.menuSelectedIds = [];
         }
         else {
             this.selectedFilters = filters;
-            this.menuSelectedIds = filters
-                .filter((f) => f.value && f.value.trim() !== '')
-                .map((f) => f.id);
+            // Set menuSelectedIds based on all filter IDs, regardless of their values
+            this.menuSelectedIds = filters.map((filter) => filter.id);
         }
     }
     updateActiveFilters() {
+        // Keep existing search value in activeFilters - it's managed by handleSearchChange
+        const currentSearch = this.activeFilters['__search__'];
         this.activeFilters = {};
+        // Restore search if it exists
+        if (currentSearch) {
+            this.activeFilters['__search__'] = currentSearch;
+        }
         this.selectedFilters.forEach((filter) => {
             if (filter.value) {
                 this.activeFilters[filter.id] = filter.value;
@@ -140,10 +247,16 @@ export class AtuiSearchTable {
     }
     handleSearchChange(event) {
         this.searchValue = event.detail || '';
+        if (this.searchValue) {
+            this.activeFilters['__search__'] = this.searchValue;
+        }
+        else {
+            delete this.activeFilters['__search__'];
+        }
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '7a1130a2edb0a79ff95974c63f585a50052935d9' }, h("atui-table-actions", { key: 'dd23e58d8a8be2b27b519c9f0f9ecbcb538770b6', ag_grid: this.agGrid }, h("div", { key: '23528c8c7e40507f9163135c7bef2102a355f127', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '67cffcf664a867e9a5398bb4c93aab566fbd547a', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: '662cc2131202b96197e0b1be7f7b1ca5f36ccea2', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '074baef61b7f52a71a7059a83e8416dcd598c086', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: '1b574ada495d711d850737dcc39bf9009c4f3250', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: '37e60f8493d33acbc0e380956bd5a4cfa0962228', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: '08c996a95d10308a490a97315499ec737434e363', slot: "actions" }, h("slot", { key: 'd6de402f44aa412b40d30660c0c979f5ef62382e', name: "actions" }))), h("slot", { key: 'e9dd2648aa4dbbd53cdeda0b7781ec681af8d134', name: "multi-select-actions" }), h("atui-table", { key: '4687e9fc0d8e0774c573e60df13a750d7a3572d5', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '1002674356d2c62f09a55d64bed63d2d49ab7a17' }, h("atui-table-actions", { key: 'a853271a49994edac33ffca85827ff0804963f75', ag_grid: this.agGrid }, h("div", { key: 'b87984b843b2e2d840f62fcaaff7ab3e6985fa00', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filter-menu", { key: '9b7a5833fd7bddc60eabfd133329cd3eff55aabb', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtuiChange: (event) => this.handleFilterChange(event) })), h("atui-search", { key: '6820462967ad101a6893c3d7a54896652cf6c02e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtuiChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("atui-table-filters", { key: '0662e5a98f483f97a7fd560651c26886c892a166', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtuiChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("atui-table-export-menu", { key: '4cc5d0f4bfeba2bc2e6ce22d1c79b70f7ee489ff', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("atui-column-manager", { key: 'c437604f5c0145d835a5df762c356b91913a626c', slot: "column-manager", col_defs: this.col_defs, onAtuiChange: (event) => this.handleColumnChange(event) })), h("div", { key: '4223bb6cf817c854aba5d42461bcecc668a9a43c', slot: "actions" }, h("slot", { key: '7c39963c941fb06b3405937bb4c6e0e901ec71f0', name: "actions" }))), h("slot", { key: '5c99072c6e0755fefd4eed74f27755ea967033d2', name: "multi-select-actions" }), h("atui-table", { key: 'b40ccdbffd79ed7bf981ef7c935b97d8fc279902', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get is() { return "atui-search-table"; }
     static get properties() {
@@ -362,6 +475,26 @@ export class AtuiSearchTable {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "false"
+            },
+            "auto_size_columns": {
+                "type": "boolean",
+                "attribute": "auto_size_columns",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, enables automatic column resizing to fit available space.\nColumns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "true"
             }
         };
     }
@@ -374,6 +507,94 @@ export class AtuiSearchTable {
             "selectedFilters": {},
             "menuSelectedIds": {},
             "searchValue": {}
+        };
+    }
+    static get methods() {
+        return {
+            "updateRowByIndex": {
+                "complexType": {
+                    "signature": "<T>(rowUpdates: RowUpdate<T>[], options?: RowUpdateOptions) => Promise<void>",
+                    "parameters": [{
+                            "name": "rowUpdates",
+                            "type": "RowUpdate<T>[]",
+                            "docs": "- An array of objects specifying the row indices and the data updates to apply.\n- `index`: The displayed index of the row to update.\n- `update`: An object containing the updated data for the row."
+                        }, {
+                            "name": "options",
+                            "type": "{ flash: boolean; forceRefresh: boolean; }",
+                            "docs": "- Optional settings for the update operation.\n- `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).\n- `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios)."
+                        }],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        },
+                        "RowUpdate": {
+                            "location": "global",
+                            "id": "global::RowUpdate"
+                        },
+                        "T": {
+                            "location": "global",
+                            "id": "global::T"
+                        },
+                        "RowUpdateOptions": {
+                            "location": "global",
+                            "id": "global::RowUpdateOptions"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Updates the data of rows in the AG Grid based on their displayed row index.\n\nUse this method when you need to programmatically update one or more specific rows in the grid,\nidentified by their current displayed index. This is particularly useful when you want to perform\npartial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a\nserver), and want to reflect these changes immediately in the UI with optional visual feedback.",
+                    "tags": [{
+                            "name": "template",
+                            "text": "T - The data type of the row's underlying data structure."
+                        }, {
+                            "name": "param",
+                            "text": "rowUpdates - An array of objects specifying the row indices and the data updates to apply.\n- `index`: The displayed index of the row to update.\n- `update`: An object containing the updated data for the row."
+                        }, {
+                            "name": "param",
+                            "text": "options - Optional settings for the update operation.\n- `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).\n- `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios)."
+                        }, {
+                            "name": "example",
+                            "text": "// Update row at displayed index 2 with new values and flash the change\nupdateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });"
+                        }, {
+                            "name": "remarks",
+                            "text": "- This function works with currently rendered rows; if rows are virtualized or paged out, ensure\n  the specified indices match the grid's current rendering context.\n- Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,\n  websocket pushes, or UI triggers)."
+                        }]
+                }
+            },
+            "getDisplayedRows": {
+                "complexType": {
+                    "signature": "<T>() => Promise<IRowNode<T>[]>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        },
+                        "IRowNode": {
+                            "location": "import",
+                            "path": "ag-grid-community",
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode"
+                        },
+                        "T": {
+                            "location": "global",
+                            "id": "global::T"
+                        }
+                    },
+                    "return": "Promise<IRowNode<T>[]>"
+                },
+                "docs": {
+                    "text": "Returns the **currently displayed row nodes** from the ag-Grid instance.\n\nThis asynchronous method retrieves an array of row nodes representing the rows currently visible\n(rendered) in the grid, after filtering, sorting, and other view-based operations.",
+                    "tags": [{
+                            "name": "template",
+                            "text": "T The data type contained in each row node."
+                        }, {
+                            "name": "returns",
+                            "text": "Promise resolving to an array of displayed row nodes."
+                        }]
+                }
+            }
         };
     }
     static get elementRef() { return "el"; }
