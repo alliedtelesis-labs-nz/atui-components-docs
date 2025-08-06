@@ -1,30 +1,42 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiTitleSubtitleCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
+        this.title = '';
+        this.subtitle = '';
     }
     init(params) {
-        const { value } = params;
-        this.params = params;
-        this.value = value;
+        this.setParams(params);
+    }
+    refresh(params) {
+        this.setParams(params);
+        return true;
     }
     getGui() {
         return this.el;
     }
-    refresh(params) {
-        this.updateCell(params.value);
-        return true;
-    }
-    updateCell(newValue) {
-        this.params.value = newValue;
-        this.value = newValue;
+    setParams(params) {
+        var _a, _b, _c, _d;
+        this.params = params;
+        if (params.title) {
+            this.title = params.title(params.data);
+        }
+        else {
+            this.title = ((_b = (_a = params.data) === null || _a === void 0 ? void 0 : _a.titleSubtitleCell) === null || _b === void 0 ? void 0 : _b.title) || '';
+        }
+        if (params.subtitle) {
+            this.subtitle = params.subtitle(params.data);
+        }
+        else {
+            this.subtitle = ((_d = (_c = params.data) === null || _c === void 0 ? void 0 : _c.titleSubtitleCell) === null || _d === void 0 ? void 0 : _d.subtitle) || '';
+        }
     }
     render() {
         var _a, _b;
-        return (index.h(index.Host, { key: '04bc7340760dd99a243cd5648aff43b6cbb01850' }, index.h("div", { key: 'a702ca4101dfc1e209c6d62c4ae1ed847cdc9bbb', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '724227fd63185a5a3f5c6258ccb5e7c5b9076c34', class: "truncate text-sm leading-normal" }, (_a = this.value) === null || _a === void 0 ? void 0 : _a.title), index.h("div", { key: 'd473594779cf546833bd540196bd5e393eebf9b3', class: "truncate text-xs font-normal leading-normal text-med" }, (_b = this.value) === null || _b === void 0 ? void 0 : _b.subtitle))));
+        return (index.h(index.Host, { key: '7e81564568f33deeddc3b8770d6b8b9e38df2865', class: "flex h-full items-center" }, index.h("atui-tooltip", { key: '10b6f66cefdbb1af2989158b1719eaee0ba65beb', position: "right", is_visible: !!((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, index.h("div", { key: 'e5c91cf150fd5817b307e1bf5802d405e360e378', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, index.h("div", { key: '386d94f889e7dcafc491d51e313ca8c167d54850', class: "truncate text-sm leading-normal" }, this.title), index.h("div", { key: 'a98695d68997a3fb2eb10eff975a43050b716831', class: "truncate text-xs font-normal leading-normal text-med" }, this.subtitle)), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (index.h("span", { key: '90e6e7e224447ae7209029a184552b758524b1f0', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     get el() { return index.getElement(this); }
 };

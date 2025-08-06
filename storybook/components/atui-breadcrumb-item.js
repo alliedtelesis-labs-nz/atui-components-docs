@@ -1,4 +1,4 @@
-import { A as AtuiBreadcrumbItem$1, d as defineCustomElement$1 } from './p-C85m39jO.js';
+import { A as AtuiBreadcrumbItem$1, d as defineCustomElement$1 } from './p-DDULCfSr.js';
 
 const AtuiBreadcrumbItem = AtuiBreadcrumbItem$1;
 const defineCustomElement = defineCustomElement$1;

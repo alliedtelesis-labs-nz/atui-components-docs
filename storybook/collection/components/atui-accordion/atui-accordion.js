@@ -1,5 +1,11 @@
 import { h, Host } from "@stencil/core";
 /**
+ * @category Layout
+ * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
+ *
+ * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
+ */
+/**
  * ### ```interface AccordionItem```
  * ```
  * item_id: string;
@@ -76,7 +82,7 @@ export class AtuiAccordionComponent {
         });
     }
     render() {
-        return (h(Host, { key: '040fca730e8e8016f675d494ef0f3f1c07f047fd', class: "flex flex-col gap-2" }, h("slot", { key: '082e66a9b29b1c267c92856e8f068fb07bd8efe4' }), this.items &&
+        return (h(Host, { key: 'bddaf7cc56ad839608ddf653ebd4f5a569edc5f0', class: "flex flex-col gap-2" }, h("slot", { key: '7f141d39bde2de7078f522d20c1a325afd169e3d' }), this.items &&
             this.items.map((item) => {
                 return (h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));
@@ -212,10 +218,4 @@ export class AtuiAccordionComponent {
     }
     static get elementRef() { return "el"; }
 }
-/**
- * @category Layout
- * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
- *
- * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
- */
 //# sourceMappingURL=atui-accordion.js.map

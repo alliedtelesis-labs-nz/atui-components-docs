@@ -40,7 +40,7 @@ export class AtuiTab {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'b8359972637a0189df3025c9c42d243babfffa82', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '47f0404f3a227cf37b799dd9331ef56fbf7963d7', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '27796ad31b8d5147ea6b49e19e32741dfa75e7b7' }))));
+        return (h(Host, { key: '1be5c479313ca58983429e1018ac1f52ce2ca82c', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'a90b8f7be6a06831887b021aa785166d06ecfe72', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'e505e134e8845641c0eb2a6de4a994ba09fdd421' }))));
     }
     static get is() { return "atui-tab"; }
     static get properties() {

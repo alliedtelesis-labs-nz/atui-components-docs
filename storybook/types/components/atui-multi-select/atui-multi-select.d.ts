@@ -50,10 +50,6 @@ export declare class AtuiMultiSelectComponent {
      */
     readonly?: boolean;
     /**
-     * Display selected options outside of input. In readonly mode selected options are displayed as chips within input.
-     */
-    chip_list?: boolean;
-    /**
      * Set the select to enable typeahead search.
      */
     typeahead?: boolean;
@@ -70,7 +66,7 @@ export declare class AtuiMultiSelectComponent {
     private inputEl;
     private menuId;
     private menuRef;
-    private optionEls;
+    private triggerEl;
     /**
      * Emits an event containing a list of the selected items when the selection changes.
      */
@@ -80,9 +76,6 @@ export declare class AtuiMultiSelectComponent {
     private updateIsOpenState;
     private handleChange;
     handleClear(): void;
-    private focusOption;
-    private handleSearchChange;
-    private handleKeyDownInput;
     private handleKeyDownMenu;
     render(): any;
     renderLabel(): any;

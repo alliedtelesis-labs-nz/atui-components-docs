@@ -1,8 +1,9 @@
 'use strict';
 
-var index = require('./index-DGivrgtr.js');
+var index = require('./index-43B6Ydvl.js');
 var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index-palgSxc9.js');
+var keyboardNavigation = require('./keyboard-navigation-C86hnC6q.js');
 
 const inputVariants = index$1.cva('min-h-36 placeholder-text-light relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none transition-colors duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
     variants: {
@@ -27,22 +28,6 @@ const inputVariants = index$1.cva('min-h-36 placeholder-text-light relative flex
         disabled: false,
         readonly: false,
         invalid: false,
-        typeahead: false,
-    },
-});
-const searchVariants = index$1.cva('transition[background-color,color] h-24 flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out', {
-    variants: {
-        typeahead: {
-            true: 'focus:bg-surface-1',
-            false: 'cursor-pointer bg-transparent caret-transparent',
-        },
-        disabled: {
-            true: 'pointer-events-none bg-transparent',
-            false: 'bg-surface-base',
-        },
-    },
-    defaultVariants: {
-        disabled: false,
         typeahead: false,
     },
 });
@@ -87,17 +72,11 @@ const AtuiMultiSelectComponent = class {
         this.hasMatchingOptions = false;
         this.parentWidth = '';
         this.menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
-        this.optionEls = [];
     }
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
     componentDidLoad() {
-        this.el
-            .querySelectorAll('li[data-name="select-option"]')
-            .forEach((option) => {
-            this.optionEls.push(option);
-        });
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
     }
@@ -114,74 +93,46 @@ const AtuiMultiSelectComponent = class {
     }
     handleClear() {
         this.searchText = '';
-        this.value = [];
-        this.inputEl.value = '';
-        this.inputEl.focus();
-        this.atuiChange.emit(this.value);
-    }
-    focusOption(relativePosition) {
-        const indexOfActiveOption = this.optionEls.indexOf(this.el.ownerDocument.activeElement);
-        const nextOptionEl = this.optionEls[(indexOfActiveOption +
-            relativePosition +
-            this.optionEls.length) %
-            this.optionEls.length];
-        nextOptionEl.focus();
-    }
-    handleSearchChange(event) {
-        var _a;
-        this.searchText = event.target.value.toLowerCase();
-        const trimmedSearch = this.searchText.trim().toLowerCase();
-        this.hasMatchingOptions = trimmedSearch
-            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
-            : false;
-    }
-    async handleKeyDownInput(event) {
-        switch (event.key) {
-            case 'Enter':
-            case 'Space':
-                await this.menuRef.toggleMenu();
-                break;
-            case 'Escape':
-                await this.menuRef.closeMenu();
-                break;
-            default:
-                this.handleSearchChange(event);
-                await this.menuRef.openMenu();
-                break;
-        }
     }
     async handleKeyDownMenu(event) {
-        switch (event.key) {
-            case 'Escape':
-                await this.menuRef.closeMenu;
-                break;
-            case 'Enter':
-            case ' ':
-                if (event.target instanceof HTMLLIElement) {
-                    event.target.click();
-                }
-                break;
-            case 'ArrowUp':
-            case 'ArrowLeft':
-                event.preventDefault();
-                this.focusOption(-1);
-                break;
-            case 'ArrowDown':
-            case 'ArrowRight':
-                event.preventDefault();
-                this.focusOption(1);
-                break;
+        var _a;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            await this.menuRef.closeMenu();
+            (_a = this.triggerEl) === null || _a === void 0 ? void 0 : _a.focus();
+            return;
         }
+        if (event.key === 'Enter' || event.key === ' ') {
+            if (event.target instanceof HTMLLIElement) {
+                event.preventDefault();
+                event.target.click();
+            }
+            return;
+        }
+        if (event.key === 'Tab') {
+            return;
+        }
+        const menuContainer = this.el.querySelector(`ul[id="${this.menuId}"]`);
+        if (!menuContainer)
+            return;
+        keyboardNavigation.handleArrowNavigation(event, menuContainer);
+        keyboardNavigation.handleHomeEndNavigation(event, menuContainer);
     }
     render() {
-        return (index.h(index.Host, { key: 'b617bade43254a39e79d23893b037db748531035', class: "relative", onFocusout: async (event) => {
-                var _a;
-                if (!this.el.contains(event.relatedTarget)) {
-                    await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+        return (index.h(index.Host, { key: 'c8bd2d8bc4c4f0630afe270b13a26612662c09ab', class: "group/select", onFocusout: async (event) => {
+                const relatedTarget = event.relatedTarget;
+                if (!relatedTarget ||
+                    (!this.el.contains(relatedTarget) &&
+                        !relatedTarget.closest('[data-atui-menu-portal]'))) {
+                    this.handleClear();
+                    setTimeout(async () => {
+                        var _a;
+                        await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+                    }, 100);
                 }
-            } }, this.renderLabel(), index.h("atui-menu", { key: 'c240e61997b7e1b59cf4f2db4bfeda83ffc8afbd', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, autoclose: false, disabled: this.disabled || this.readonly, onMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: 'e2fe5b1b44858689067bd18f457d6c08248f172d', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", role: "listbox", width: this.parentWidth, portal: true, autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '8c3b9c1e7a47ffdec97f7ea41e6d59fc3e65c323' }, this.error_text && this.invalid && (index.h("span", { key: '76bb057970fffb2b6d30f1dd5f6e79a6ba91040d', "data-name": "multi-select-error", class: "text-error" }, this.error_text)), this.chip_list && (index.h("atui-chip-list", { key: '2a2181587b9444dda08fbb8dd257c8ebec63bd21', onAtuiRemoveChip: (event) => (this.value = this.value.filter((item) => !event.detail.includes(item))), chips: this.value, "data-name": "multi-select-chips-outside" })))));
+            : null), index.h("div", { key: 'ae429c09f666cc1feb70f4e218a10941beb85617' }, this.error_text && this.invalid && (index.h("span", { key: '91629101afadfaff872975aa8e31634e3e461631', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -193,41 +144,46 @@ const AtuiMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        const searchClassname = searchVariants({
-            typeahead: this.typeahead,
-        });
-        return (index.h("div", { class: classname, tabIndex: -1, slot: "menu-trigger" }, index.h("atui-chip-list", { size: "sm", class: "w-full", readonly: this.readonly, disabled: this.disabled, show_clear_all: false, onAtuiRemoveChip: (event) => {
-                if (!this.disabled &&
-                    !this.readonly &&
-                    this.typeahead) {
-                    this.inputEl.focus();
-                }
+        return (index.h("div", { class: classname, slot: "menu-trigger", tabindex: 0, ref: (el) => (this.triggerEl = el) }, index.h("div", { onClick: (e) => e.stopPropagation() }, index.h("atui-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: false, onAtuiRemoveChip: (event) => {
                 this.value = this.value.filter((item) => !event.detail.includes(item));
-            }, chips: this.chip_list ? [] : this.value, tabIndex: -1, "data-name": "multi-select-chips-inside" }, this.typeahead && (index.h("input", { id: `input-${this.menuId}`, role: "combobox", "aria-autocomplete": this.typeahead ? 'list' : undefined, "aria-haspopup": !this.chip_list ? true : undefined, "aria-controls": this.menuId, class: searchClassname, type: "text", readOnly: this.readonly, placeholder: this.placeholder, onKeyDown: async (event) => {
-                await this.handleKeyDownInput(event);
-            }, "data-name": "multi-select-search-input", ref: (el) => (this.inputEl = el) }))), !this.readonly && !this.disabled && (index.h("div", { class: "absolute right-4 flex items-center" }, this.clearable && (index.h("atui-button", { class: `transition-all duration-300 ease-in-out ${!!this.value.length || this.searchText
-                ? 'scale-100 opacity-100'
-                : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
-                event.stopPropagation();
-                this.handleClear();
-            }, "data-name": "multi-select-clear" })), index.h("atui-button", { size: "sm", class: "!i>text-light h-[18pz] w-[18px]", icon: this.isOpen
-                ? 'arrow_drop_up'
-                : 'arrow_drop_down', type: "secondaryText", onClick: async () => {
-                await this.menuRef.toggleMenu;
-            } })))));
+                this.atuiChange.emit(this.value);
+            }, chips: this.value, "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-light" }, this.placeholder)))), !this.readonly && !this.disabled && (index.h("div", { class: "absolute right-4 flex items-center" }, index.h("div", { class: "user-select-none pointer-events-none flex h-full items-center bg-transparent p-4 text-foreground", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
+            ? 'arrow_drop_up'
+            : 'arrow_drop_down'))))));
     }
     renderOptions() {
-        var _a;
+        var _a, _b, _c;
         return (index.h("ul", { id: this.menuId, role: "listbox", class: "contents", slot: "menu-content", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, (_a = this.options) === null || _a === void 0 ? void 0 :
-            _a.filter((option) => option.value.toLowerCase().includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead && !this.hasMatchingOptions && (index.h("div", { class: "w-full bg-white px-16 py-8 text-body text-light" }, this.translations.ATUI.NO_RESULTS_FOUND))));
+            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] mb-4 h-24 w-full flex-shrink flex-grow basis-0 rounded-md bg-surface-1 p-8 outline-0 ring-active-foreground/30 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: "Search...", value: this.searchText, onInput: (event) => {
+                var _a;
+                this.searchText = event.target.value.toLowerCase();
+                const trimmedSearch = this.searchText
+                    .trim()
+                    .toLowerCase();
+                this.hasMatchingOptions = trimmedSearch
+                    ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value
+                        .toLowerCase()
+                        .includes(trimmedSearch))
+                    : true;
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.inputEl = el) }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute right-4 top-4" }, index.h("atui-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
+                event.stopPropagation();
+                this.searchText = '';
+                this.inputEl.value = '';
+            }, "data-name": "multi-select-search-clear" }))))), (_a = this.options) === null || _a === void 0 ? void 0 :
+            _a.filter((option) => !this.searchText ||
+                option.value
+                    .toLowerCase()
+                    .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
+            this.searchText &&
+            !this.hasMatchingOptions && (index.h("div", { class: "w-full bg-white px-16 py-8 text-body text-light" }, ((_c = (_b = this.translations) === null || _b === void 0 ? void 0 : _b.ATUI) === null || _c === void 0 ? void 0 : _c.NO_RESULTS_FOUND) ||
+            'No results found'))));
     }
     renderOption(option) {
         const classname = optionVariants({
             active: this.value.includes(option.value),
         });
-        return (index.h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, index.h("i", { role: "presentation", class: `material-icons h-16 w-16 text-sm ease-in-out ${this.value.includes(option.value) ? 'visible' : 'hidden'}` }, "check"), option.value));
+        return (index.h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
     }
     get el() { return index.getElement(this); }
 };

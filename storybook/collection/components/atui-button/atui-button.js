@@ -147,7 +147,10 @@ export class AtuiButtonComponent {
         }
     }
     handleClick(event) {
-        this.atuiClick.emit(event);
+        this.atuiClick.emit({
+            originalEvent: event,
+            componentType: 'atui-button',
+        });
         if (this.submit) {
             this.el.closest('form').requestSubmit();
         }
@@ -155,7 +158,11 @@ export class AtuiButtonComponent {
     handleKeyDown(event) {
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
-            this.atuiClick.emit(event);
+            this.atuiClick.emit({
+                originalEvent: event,
+                componentType: 'atui-button',
+                element: this.el,
+            });
             if (this.submit) {
                 this.el.closest('form').requestSubmit();
             }
@@ -174,7 +181,7 @@ export class AtuiButtonComponent {
         const focusIndicatorClassname = focusIndicatorVariants({
             type: this.type,
         });
-        return (h(Host, { key: 'c9a169ceee09af9fb1caf8e79862924b9e430b21', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '66cdfb1d1f1b69f7311c1f53014508a13d5bf41b', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("atui-loading", { key: '576d96313a3458086a16f71df035f7b1f7cf94a7', class: "absolute", size: "sm", type: this.spinnerColour })), this.icon && (h("span", { key: 'c62ce15ee08a0bf84a3df4a4f5af3b86a3b4a758', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'b98f2085b2b5749f0f08eb570f61b91886aeee12', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '0c03343b4ecec962a230407aa6bee0ba8800cb34' }), this.icon_right && (h("span", { key: 'c986c5f89cca19261d002c755595c99c27357385', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_right))), h("div", { key: '4a3afc99d7c5083c375ed52c2fafe8ed6eefb573', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'af899a6b76c37a7d0a005c3881473c60ab3b76f7', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '8536d8a42c8a608ba2c22e1d30ae6ca51fe86f47', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("atui-loading", { key: '306a1491c4477ad5afda4ed7f1df4fa79689334e', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '6899ef26b1f0735d49178ad0f00792a60d159869', name: "icon" }), this.icon && (h("span", { key: 'bdf7533ad8bd9fc32dceffca97894f40802eaf1b', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: '28320dc18bda05c7d4b846aa6608df370f00a343', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '33367fb007d47af4deca2d6f487d598c2f39df72' }), h("slot", { key: 'da3079c41cfa8efc78fc9a22998348f460e05424', name: "icon_after" }), this.icon_after && (h("span", { key: 'a95f921b7c6ea98cf124d59d43ec04cb3c0714e8', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: 'b411067ca81bfaeb3b5740098e25e30950151fdf', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get is() { return "atui-button"; }
     static get properties() {
@@ -309,9 +316,9 @@ export class AtuiButtonComponent {
                 "setter": false,
                 "reflect": false
             },
-            "icon_right": {
+            "icon_after": {
                 "type": "string",
-                "attribute": "icon_right",
+                "attribute": "icon_after",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -382,9 +389,15 @@ export class AtuiButtonComponent {
                     "text": "Emits when the button is clicked"
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "AtuiEvent",
+                    "resolved": "AtuiEvent",
+                    "references": {
+                        "AtuiEvent": {
+                            "location": "import",
+                            "path": "../../types/events",
+                            "id": "src/types/events.ts::AtuiEvent"
+                        }
+                    }
                 }
             }];
     }

@@ -10,7 +10,7 @@ export declare class AtuiTableExportMenu {
     /**
      * Emits id of the clicked button, either 'CSV' or 'PDF'.
      */
-    atuiChange: EventEmitter;
+    atuiChange: EventEmitter<string>;
     clickHandler(event: Event): void;
     render(): any;
 }

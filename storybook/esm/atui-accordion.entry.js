@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-HJO1YDmC.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiAccordionComponent = class {
     constructor(hostRef) {
@@ -66,7 +66,7 @@ const AtuiAccordionComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '040fca730e8e8016f675d494ef0f3f1c07f047fd', class: "flex flex-col gap-2" }, h("slot", { key: '082e66a9b29b1c267c92856e8f068fb07bd8efe4' }), this.items &&
+        return (h(Host, { key: 'bddaf7cc56ad839608ddf653ebd4f5a569edc5f0', class: "flex flex-col gap-2" }, h("slot", { key: '7f141d39bde2de7078f522d20c1a325afd169e3d' }), this.items &&
             this.items.map((item) => {
                 return (h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

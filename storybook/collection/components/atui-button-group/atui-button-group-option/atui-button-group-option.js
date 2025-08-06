@@ -25,9 +25,13 @@ export class AtuiButtonGroupOption {
         this.provider = this.el.closest('atui-button-group');
         this.host_disabled = this.provider.disabled;
     }
-    handleClick() {
+    handleClick(event) {
         this.is_active = true;
-        this.atuiClick.emit();
+        this.atuiClick.emit({
+            originalEvent: event,
+            componentType: 'atui-button-group-option',
+            element: this.el,
+        });
     }
     render() {
         const classname = variants({
@@ -35,7 +39,7 @@ export class AtuiButtonGroupOption {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: 'b43ad996d5dc962ac97300b01b7e0239e43a5888', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: () => this.handleClick(), "data-name": "button-group-option", type: "button" }, h("slot", { key: '630d3805d7305af3496f73971f10c77be1e54387', name: "icon" }), this.label));
+        return (h("button", { key: 'c8b2b919e23a1a549aa75a43240f2dfcf0faf3b6', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '71d62e074d2ceefbe025c62d1ada40f950c488f2', name: "icon" }), this.label));
     }
     static get is() { return "atui-button-group-option"; }
     static get properties() {
@@ -154,9 +158,15 @@ export class AtuiButtonGroupOption {
                     "text": "Emits when the button is clicked"
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "AtuiEvent",
+                    "resolved": "AtuiEvent",
+                    "references": {
+                        "AtuiEvent": {
+                            "location": "import",
+                            "path": "../../../types/events",
+                            "id": "src/types/events.ts::AtuiEvent"
+                        }
+                    }
                 }
             }];
     }

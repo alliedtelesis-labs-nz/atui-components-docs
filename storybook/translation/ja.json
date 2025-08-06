@@ -9,6 +9,7 @@
         "SETTINGS": "設定",
         "ENABLED": "有効",
         "DISABLED": "無効",
+        "SEARCH": "検索",
         "NO_ITEMS_FOUND": "項目がありません。",
         "NO_RESULTS_FOUND": "結果がありません。",
         "NO_PERMISSION_EDIT_SETTING": "管理者アカウントでのみ設定を変更できます。",
@@ -87,7 +88,17 @@
             "CLEAR": "クリア",
             "SEND": "送信",
             "NEW_THREAD": "新しいスレッド",
-            "MESSAGE_TOO_LONG": "メッセージが長すぎます（{current}/{max} 文字）"
+            "MESSAGE_TOO_LONG": "メッセージが長すぎます（{current}/{max} 文字）",
+            "ERROR_GENERATING_RESPONSE": "応答の生成中にエラーが発生しました。",
+            "HELPFUL": "役に立つ",
+            "NOT_HELPFUL": "役に立たない",
+            "EDIT": "編集",
+            "RETRY": "再試行",
+            "COPY": "コピー",
+            "COPIED": "コピー済み",
+            "VOTE_UP": "高評価",
+            "VOTE_DOWN": "低評価",
+            "ERROR_MESSAGE": "メッセージの内容が最大長を超えています。メッセージを短くするか、複数のメッセージに分割してください。"
         }
     }
 }

@@ -1,4 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
+import { AtuiEvent } from '../../../types/events';
 /**
  * @category Form Controls
  * @description A button group option component for the button group.
@@ -28,10 +29,10 @@ export declare class AtuiButtonGroupOption {
     /**
      * Emits when the button is clicked
      */
-    atuiClick: EventEmitter;
+    atuiClick: EventEmitter<AtuiEvent>;
     host_disabled: boolean;
     private provider;
     componentDidLoad(): Promise<void>;
-    handleClick(): void;
+    handleClick(event: Event): void;
     render(): any;
 }
