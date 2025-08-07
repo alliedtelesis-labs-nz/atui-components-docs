@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-nKeTsW5N.js');
 
 const AtuiStatusBar = class {
     constructor(hostRef) {

@@ -71,6 +71,7 @@ export declare class AtuiSelectComponent {
     private menuId;
     private menuRef;
     private optionEls;
+    private searchInputEl;
     /**
      * Emits an event containing the selected value when changed.
      */
@@ -81,8 +82,9 @@ export declare class AtuiSelectComponent {
     private handleChange;
     private handleClear;
     private handleKeyDownMenu;
+    private handleSearchInput;
     render(): any;
-    renderlabel(): any;
+    renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
     renderOption(option: SelectOption): any;

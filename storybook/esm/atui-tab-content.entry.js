@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, g as getElement } from './index-BvDeEv6o.js';
 
 const AtuiTabContent = class {
     constructor(hostRef) {

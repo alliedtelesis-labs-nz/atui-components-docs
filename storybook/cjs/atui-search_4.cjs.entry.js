@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-nKeTsW5N.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtuiSearch = class {
@@ -77,7 +77,7 @@ const AtuiTableFilterMenu = class {
         this.atuiChange.emit(this.selected);
     }
     render() {
-        return (index.h(index.Host, { key: 'e49b326c2f3f4c2581e553dadfe10a21edbbb3d6' }, index.h("atui-menu", { key: '33fa8d8893181f32022411621815d34078bef1b6', autoclose: false, width: "auto", class: "self-start", portal: true }, index.h("atui-tooltip", { key: '1c7d301621a4faeec4c9584dbac1573e74d3b67f', slot: "menu-trigger", position: "top" }, index.h("atui-button", { key: '2db8a786f7c44975780ba5641600504d7abc1b37', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: '5e01bba9df12e73e15656e99984b6f82091b5fb9', slot: "tooltip-content" }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '0a7c03db24df7c7e71418d7c5fb194de1b9b8f12', slot: "menu-content", class: "flex flex-col" }, index.h("atui-checkbox-group", { key: '204aec996c5520a92cf99a5c373910b2a4c62db9', slot: "menu-content", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (index.h(index.Host, { key: 'e49b326c2f3f4c2581e553dadfe10a21edbbb3d6' }, index.h("atui-menu", { key: '732c72d2edd59dc638b1bae9af146c46fa0a424e', autoclose: false, width: "fit-content", class: "self-start" }, index.h("atui-tooltip", { key: '601d33ced3c53c7f184f265e4c6692215a9e6b4c', slot: "menu-trigger", position: "top" }, index.h("atui-button", { key: '2d82bd643ff3852490681c94eabf3cd115f29583', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: '2702177078f6e1ada5a2e54451b7a60800f24797', slot: "tooltip-content" }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '8ae2fd4f6a509634c3236db8de33c393817803ef', slot: "menu-content", class: "flex flex-col" }, index.h("atui-checkbox-group", { key: '43e6a307949049b1cd9249a46e232318b094eba0', slot: "menu-content", class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

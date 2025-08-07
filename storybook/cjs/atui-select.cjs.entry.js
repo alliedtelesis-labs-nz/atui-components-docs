@@ -1,18 +1,18 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-nKeTsW5N.js');
 var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index-palgSxc9.js');
-var keyboardNavigation = require('./keyboard-navigation-C86hnC6q.js');
+var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
-const inputVariants = index$1.cva('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out focus:ring-2', {
+const inputVariants = index$1.cva('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer select-none rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out focus:ring-2', {
     variants: {
         focused: {
             false: 'ring-active-foreground/30',
             true: 'pointer-events-none',
         },
         disabled: {
-            false: 'bg-white focus-within:ring-active-foreground/30',
+            false: 'cursor-pointer bg-white focus-within:ring-active-foreground/30',
             true: 'pointer-events-none border-none bg-surface-1 !text-disabled',
         },
         readonly: {
@@ -70,6 +70,13 @@ const AtuiSelectComponent = class {
     }
     updateIsOpenState(event) {
         this.isOpen = event.detail;
+        if (this.isOpen && this.typeahead) {
+            requestAnimationFrame(() => {
+                if (this.searchInputEl) {
+                    this.searchInputEl.focus();
+                }
+            });
+        }
     }
     async handleChange(option) {
         var _a;
@@ -77,7 +84,6 @@ const AtuiSelectComponent = class {
             await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
         }
         this.value = option;
-        this.searchText = '';
         this.inputEl.focus();
         this.atuiChange.emit(this.value);
     }
@@ -85,20 +91,11 @@ const AtuiSelectComponent = class {
         this.searchText = '';
     }
     async handleKeyDownMenu(event) {
-        if (event.key === 'Escape') {
-            event.preventDefault();
-            await this.menuRef.closeMenu();
-            this.inputEl.focus();
-            return;
-        }
         if (event.key === 'Enter' || event.key === ' ') {
             if (event.target instanceof HTMLLIElement) {
                 event.preventDefault();
                 event.target.click();
             }
-            return;
-        }
-        if (event.key === 'Tab') {
             return;
         }
         const menuContainer = this.el.querySelector('ul[id="atui-select"]');
@@ -107,23 +104,30 @@ const AtuiSelectComponent = class {
         keyboardNavigation.handleArrowNavigation(event, menuContainer);
         keyboardNavigation.handleHomeEndNavigation(event, menuContainer);
     }
+    handleSearchInput(event) {
+        var _a;
+        const inputEl = event.target;
+        this.searchText = inputEl.value.toLowerCase();
+        const trimmedSearch = this.searchText.trim().toLowerCase();
+        this.hasMatchingOptions = trimmedSearch
+            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
+            : true;
+    }
     render() {
-        return (index.h(index.Host, { key: '58deee56f8d6ab3ea1d779b45686c11bbaf64c21', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '0ee1e70949339d9efee11f0d96a6533ce9b7244c', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
-                if (!relatedTarget ||
-                    (!this.el.contains(relatedTarget) &&
-                        !relatedTarget.closest('[data-atui-menu-portal]'))) {
+                if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         var _a;
                         await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                     }, 100);
                 }
-            } }, this.renderlabel(), index.h("atui-menu", { key: '6165bc8488e64a7aa761f444788202be2657020d', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", portal: true, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: '71be687e805e467c0ad4b00f9d41671230f1846c', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '18d998354c477ff1d690043bc98d3be86e51086e' }, this.error_text && this.invalid && (index.h("span", { key: '163d5c88c2e27d003b8bb3d60b24201bb05f8af9', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'f4f3063c1caf7f1494b5610516178ce35b1963be' }, this.error_text && this.invalid && (index.h("span", { key: '2c08596c95c852bab3883a32b50f73dacd997a51', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
-    renderlabel() {
+    renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
@@ -132,33 +136,25 @@ const AtuiSelectComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, index.h("input", { class: classname, role: "combobox", list: "atui-select", autoComplete: "off", "aria-autocomplete": this.typeahead ? 'list' : undefined, "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, disabled: this.disabled, placeholder: this.placeholder, value: this.value, onInput: (e) => e.preventDefault(), "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (index.h("div", { class: "user-select-none pointer-events-none absolute right-4 flex h-full items-center bg-transparent p-4 text-foreground", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
+        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, index.h("input", { class: classname, role: "combobox", list: "atui-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 absolute right-4 top-4 flex h-full cursor-pointer select-none items-center rounded-md p-4", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
     }
     renderOptions() {
-        var _a, _b, _c;
+        var _a, _b, _c, _d, _e;
         return (index.h("ul", { slot: "menu-content", class: "contents", id: "atui-select", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] mb-4 h-24 w-full flex-shrink flex-grow basis-0 rounded-md bg-surface-1 p-8 outline-0 ring-active-foreground/30 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: "Search...", value: this.searchText, onInput: (event) => {
-                var _a;
-                this.searchText = event.target.value.toLowerCase();
-                const trimmedSearch = this.searchText
-                    .trim()
-                    .toLowerCase();
-                this.hasMatchingOptions = trimmedSearch
-                    ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value
-                        .toLowerCase()
-                        .includes(trimmedSearch))
-                    : true;
-            }, onClick: (e) => e.stopPropagation() }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute right-4 top-4" }, index.h("atui-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
+            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md bg-surface-1 p-8 outline-0 ring-active-foreground/30 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
-                this.handleClear();
-            }, "data-name": "select-clear" }))))), (_a = this.options) === null || _a === void 0 ? void 0 :
-            _a.filter((option) => !this.searchText ||
+                this.handleSearchInput(event);
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute right-4 top-4" }, index.h("atui-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+                event.stopPropagation();
+                await this.handleClear();
+            }, "data-name": "select-clear" }))))), (_c = this.options) === null || _c === void 0 ? void 0 :
+            _c.filter((option) => !this.searchText ||
                 option.value
                     .toLowerCase()
                     .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (index.h("div", { class: "w-full bg-white px-16 py-8 text-body text-light" }, ((_c = (_b = this.translations) === null || _b === void 0 ? void 0 : _b.ATUI) === null || _c === void 0 ? void 0 : _c.NO_RESULTS_FOUND) ||
+            !this.hasMatchingOptions && (index.h("div", { class: "w-full bg-white px-16 py-8 text-body text-light" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
             'No results found'))));
     }
     renderOption(option) {

@@ -1210,7 +1210,7 @@ export namespace Components {
          */
         "autoclose": boolean;
         /**
-          * Toggles the dropdown menu's open state.
+          * Closes the dropdown menu.
          */
         "closeMenu": () => Promise<void>;
         /**
@@ -1233,14 +1233,9 @@ export namespace Components {
          */
         "offset_y": number;
         /**
-          * Toggles the dropdown menu's open state.
+          * Opens the dropdown menu.
          */
         "openMenu": () => Promise<void>;
-        /**
-          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
-          * @default false
-         */
-        "portal": boolean;
         /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
@@ -1261,8 +1256,7 @@ export namespace Components {
          */
         "trigger": OpenOn;
         /**
-          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). Use auto when you want the menu to inherit the host's width..
-          * @default '280px'
+          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
          */
         "width"?: string;
     }
@@ -5383,11 +5377,6 @@ declare namespace LocalJSX {
          */
         "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
         /**
-          * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
-          * @default false
-         */
-        "portal"?: boolean;
-        /**
           * Position of opened menu element relative to trigger element.
           * @default 'bottom'
          */
@@ -5403,8 +5392,7 @@ declare namespace LocalJSX {
          */
         "trigger"?: OpenOn;
         /**
-          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). Use auto when you want the menu to inherit the host's width..
-          * @default '280px'
+          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
          */
         "width"?: string;
     }

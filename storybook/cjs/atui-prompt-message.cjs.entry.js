@@ -1,7 +1,7 @@
 'use strict';
 
-var atuiPromptMessage_entry = require('./atui-prompt-message-Cp6oiaUN.js');
-require('./index-43B6Ydvl.js');
+var atuiPromptMessage_entry = require('./atui-prompt-message-DVAixQWD.js');
+require('./index-nKeTsW5N.js');
 require('./index-palgSxc9.js');
 require('./translation-HqquF7bU.js');
 

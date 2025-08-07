@@ -63,10 +63,9 @@ export declare class AtuiMultiSelectComponent {
     hasMatchingOptions: boolean;
     parentWidth: string;
     el: HTMLElement;
-    private inputEl;
     private menuId;
     private menuRef;
-    private triggerEl;
+    private searchInputEl;
     /**
      * Emits an event containing a list of the selected items when the selection changes.
      */
@@ -77,6 +76,7 @@ export declare class AtuiMultiSelectComponent {
     private handleChange;
     handleClear(): void;
     private handleKeyDownMenu;
+    private handleSearchInput;
     render(): any;
     renderLabel(): any;
     renderInput(): any;

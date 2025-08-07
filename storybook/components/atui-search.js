@@ -1,4 +1,4 @@
-import { A as AtuiSearch$1, d as defineCustomElement$1 } from './p-BG11iuAx.js';
+import { A as AtuiSearch$1, d as defineCustomElement$1 } from './p-gEzibryh.js';
 
 const AtuiSearch = AtuiSearch$1;
 const defineCustomElement = defineCustomElement$1;

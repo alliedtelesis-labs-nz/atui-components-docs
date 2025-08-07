@@ -1,4 +1,4 @@
-import { A as AtuiColumnManagerComponent, d as defineCustomElement$1 } from './p-D6dxJ86d.js';
+import { A as AtuiColumnManagerComponent, d as defineCustomElement$1 } from './p-CbiySVie.js';
 
 const AtuiColumnManager = AtuiColumnManagerComponent;
 const defineCustomElement = defineCustomElement$1;

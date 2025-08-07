@@ -1,4 +1,4 @@
-import { A as AtuiButtonGroup$1, d as defineCustomElement$1 } from './p-CEQrunkL.js';
+import { A as AtuiButtonGroup$1, d as defineCustomElement$1 } from './p-B96lDhvw.js';
 
 const AtuiButtonGroup = AtuiButtonGroup$1;
 const defineCustomElement = defineCustomElement$1;

@@ -1,0 +1,2 @@
+import{r as e,h as t,H as s,g as r}from"./p-BvDeEv6o.js";const i=class{constructor(t){e(this,t);this.chips=[]}init(e){this.params=e;this.chips=e.chips(e.data)}getGui(){return this.el}refresh(e){this.init(e);return true}render(){return t(s,{key:"60945cecec4fb2fdc798608c84f2a8de5d1f43e6",class:"flex h-full items-center"},t("atui-chip-list",{key:"df8e8f3f0a55c1a9fb1d354d03e464f9535f026b",chips:this.chips,show_clear_all:false,readonly:true}))}get el(){return r(this)}};export{i as atui_chip_list_cell};
+//# sourceMappingURL=p-33897171.entry.js.map

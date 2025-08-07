@@ -1,4 +1,4 @@
-import { r as registerInstance, h, F as Fragment, H as Host, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, F as Fragment, H as Host, g as getElement } from './index-BvDeEv6o.js';
 
 const AtuiTextIconCell = class {
     constructor(hostRef) {

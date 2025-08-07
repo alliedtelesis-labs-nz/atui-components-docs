@@ -25,7 +25,8 @@ export declare class AtuiMenu {
      */
     align: Align;
     /**
-     * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). Use auto when you want the menu to inherit the host's width..
+     * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width.
+     * To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
      */
     width?: string;
     /**
@@ -44,15 +45,12 @@ export declare class AtuiMenu {
      * Prevent opening menu
      */
     disabled: boolean;
-    /**
-     * Use portal-style positioning (fixed to viewport) instead of relative positioning - required for ag-grid cell components
-     */
-    portal: boolean;
+    disabledChanged(newValue: boolean): void;
     isOpen: boolean;
     triggerEl: HTMLElement;
     menuEl: HTMLElement;
-    private portalContainer;
     private cleanupAutoUpdate?;
+    private popoverId;
     private updatePosition;
     el: HTMLElement;
     /**
@@ -60,11 +58,11 @@ export declare class AtuiMenu {
      */
     toggleMenu(): Promise<void>;
     /**
-     * Toggles the dropdown menu's open state.
+     * Opens the dropdown menu.
      */
     openMenu(): Promise<void>;
     /**
-     * Toggles the dropdown menu's open state.
+     * Closes the dropdown menu.
      */
     closeMenu(): Promise<void>;
     /**
@@ -76,15 +74,11 @@ export declare class AtuiMenu {
      */
     atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
-    componentDidLoad(): void;
+    componentDidLoad(): Promise<void>;
+    private setupPopoverEventListeners;
     disconnectedCallback(): void;
     private mouseEnterHandler;
     private mouseLeaveHandler;
-    private handleOutsideClick;
-    private createPortalContainer;
-    private moveMenuToPortal;
-    private handleMenuKeyDown;
-    private cleanupPortalContainer;
     private setupFloatingUI;
     private cleanupFloatingUI;
     private updateFloatingPosition;

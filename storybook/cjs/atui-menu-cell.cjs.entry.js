@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-nKeTsW5N.js');
 
 const AtuiMenuCell = class {
     constructor(hostRef) {
@@ -21,7 +21,7 @@ const AtuiMenuCell = class {
         const actions = typeof this.params.actions === 'function'
             ? this.params.actions(this.params)
             : this.params.actions;
-        return (index.h(index.Host, { key: 'caf59aa9ed7d4b177a48659a7ecdabe06a233561', class: "flex h-full items-center gap-4" }, index.h("atui-menu", { key: 'e54de53498e7acc59a5d4406e06dc8f5e691da89', width: "auto", position: "left", portal: true }, index.h("atui-button", { key: '974ff119136def020b107d141f2500b44dde5728', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: '27702ed466dfe5d6782f9e1bd53d791373c3fdde', slot: "menu-content", class: "flex flex-col" }, actions &&
+        return (index.h(index.Host, { key: 'caf59aa9ed7d4b177a48659a7ecdabe06a233561', class: "flex h-full items-center gap-4" }, index.h("atui-menu", { key: '29303460a13593a3a90b74b824b4e8a2045d0543', width: "fit-content", position: "left" }, index.h("atui-button", { key: 'febfeb579c929313f0d2df9bf56c4348ed53d205', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), index.h("div", { key: 'a829108554c4c3d614bf1e5ca724f5cfb8d8a359', slot: "menu-content", class: "flex flex-col" }, actions &&
             actions.map((action) => typeof action === 'object' &&
                 (action.disabled &&
                     action.disabled(this.params.data) &&

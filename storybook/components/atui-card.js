@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CHjIMSAP.js';
 import { c as cva } from './p-CVoOBWGd.js';
 
 const containerVariants = cva('flex flex-col overflow-hidden rounded-lg bg-card', {

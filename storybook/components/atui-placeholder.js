@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$2 } from './p-BmgpvZ_L.js';
+import { p as proxyCustomElement, H, h } from './p-CHjIMSAP.js';
+import { d as defineCustomElement$2 } from './p-DbhUEjmd.js';
 
 const placeholderVariants = {
     iconSizes: {
