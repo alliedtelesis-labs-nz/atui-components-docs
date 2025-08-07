@@ -1,4 +1,4 @@
-import { A as AtuiTimeWithUnitComponent, d as defineCustomElement$1 } from './p-CoqPJHPg.js';
+import { A as AtuiTimeWithUnitComponent, d as defineCustomElement$1 } from './p-DMXEI1uM.js';
 
 const AtuiTimeWithUnit = AtuiTimeWithUnitComponent;
 const defineCustomElement = defineCustomElement$1;

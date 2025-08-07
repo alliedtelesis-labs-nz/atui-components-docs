@@ -135,7 +135,7 @@ export class AtuiSelectComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, h("input", { class: classname, role: "combobox", list: "atui-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 absolute right-4 top-4 flex h-full cursor-pointer select-none items-center rounded-md p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
+        return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, h("input", { class: classname, role: "combobox", list: "atui-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 absolute right-4 top-4 flex h-full cursor-pointer select-none items-center rounded-md p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
     }
     renderOptions() {
         var _a, _b, _c, _d, _e;
@@ -342,25 +342,6 @@ export class AtuiSelectComponent {
                 "setter": false,
                 "reflect": false
             },
-            "readonly": {
-                "type": "boolean",
-                "attribute": "readonly",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Set input to readonly mode, allows users to select any active values."
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false
-            },
             "disabled": {
                 "type": "boolean",
                 "attribute": "disabled",
@@ -375,6 +356,25 @@ export class AtuiSelectComponent {
                 "docs": {
                     "tags": [],
                     "text": "Disable user interaction. Disabled state should be applied via form control."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
+            },
+            "readonly": {
+                "type": "boolean",
+                "attribute": "readonly",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Set input to readonly mode, allows users to select any active values."
                 },
                 "getter": false,
                 "setter": false,

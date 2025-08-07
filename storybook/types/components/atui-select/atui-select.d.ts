@@ -42,13 +42,13 @@ export declare class AtuiSelectComponent {
      */
     invalid?: boolean;
     /**
-     * Set input to readonly mode, allows users to select any active values.
-     */
-    readonly?: boolean;
-    /**
      * Disable user interaction. Disabled state should be applied via form control.
      */
     disabled?: boolean;
+    /**
+     * Set input to readonly mode, allows users to select any active values.
+     */
+    readonly?: boolean;
     /**
      * Set the select input to be clearable. Only enabled on typeahead selects.
      */

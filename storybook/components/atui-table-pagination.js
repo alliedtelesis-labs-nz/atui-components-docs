@@ -3,7 +3,7 @@ import { d as defineCustomElement$7 } from './p-DuXqj3_2.js';
 import { d as defineCustomElement$6 } from './p-DROFJHTo.js';
 import { d as defineCustomElement$5 } from './p-DbhUEjmd.js';
 import { d as defineCustomElement$4 } from './p-Yk76b9OE.js';
-import { d as defineCustomElement$3 } from './p-lNbc6ZoV.js';
+import { d as defineCustomElement$3 } from './p-BzTz1KFC.js';
 import { d as defineCustomElement$2 } from './p-Dl92gNAv.js';
 
 const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePagination extends H {

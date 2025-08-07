@@ -1,7 +1,12 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BvDeEv6o.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { c as cva } from './index-CVoOBWGd.js';
-import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CHjIMSAP.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { c as cva } from './p-CVoOBWGd.js';
+import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
+import { d as defineCustomElement$5 } from './p-DuXqj3_2.js';
+import { d as defineCustomElement$4 } from './p-DROFJHTo.js';
+import { d as defineCustomElement$3 } from './p-DbhUEjmd.js';
+import { d as defineCustomElement$2 } from './p-Yk76b9OE.js';
+import { d as defineCustomElement$1 } from './p-Dl92gNAv.js';
 
 const inputVariants = cva('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer select-none rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out focus:ring-2', {
     variants: {
@@ -36,9 +41,10 @@ const optionVariants = cva('transition[background-color,color,box-shadow] flex w
         },
     },
 });
-const AtuiSelectComponent = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
+const AtuiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSelectComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * Set the select to appear as a typeahead input.
@@ -162,10 +168,68 @@ const AtuiSelectComponent = class {
         const isSelected = this.value === option.value;
         return (h("li", { role: "option", value: option.value, "data-name": "select-option", "aria-selected": isSelected ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
     }
-    get el() { return getElement(this); }
-};
+    get el() { return this; }
+}, [260, "atui-select", {
+        "value": [1025],
+        "options": [16],
+        "label": [1],
+        "hint_text": [1],
+        "info_text": [1],
+        "placeholder": [1],
+        "error_text": [1],
+        "required": [4],
+        "invalid": [4],
+        "disabled": [4],
+        "readonly": [4],
+        "clearable": [4],
+        "typeahead": [4],
+        "autoclose": [4],
+        "searchText": [32],
+        "isOpen": [32],
+        "translations": [32],
+        "hasMatchingOptions": [32],
+        "parentWidth": [32]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["atui-select", "atui-button", "atui-form-label", "atui-loading", "atui-menu", "atui-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "atui-select":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtuiSelectComponent);
+            }
+            break;
+        case "atui-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "atui-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "atui-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "atui-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+        case "atui-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
 
-export { AtuiSelectComponent as atui_select };
-//# sourceMappingURL=atui-select.entry.js.map
+export { AtuiSelectComponent as A, defineCustomElement as d };
+//# sourceMappingURL=p-BzTz1KFC.js.map
 
-//# sourceMappingURL=atui-select.entry.js.map
+//# sourceMappingURL=p-BzTz1KFC.js.map
