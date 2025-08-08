@@ -18,6 +18,8 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
         this.accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     }
     async componentDidLoad() {
+        // Wait for child components to be ready
+        await new Promise((resolve) => setTimeout(resolve, 0));
         this.accordionItems = Array.from(this.el.querySelectorAll('atui-accordion-item'));
         if (this.default_open) {
             await this.openAll();
@@ -28,6 +30,7 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
      * @param value Id of element to be toggled
      */
     async toggleById(value) {
+        this.refreshAccordionItems();
         this.accordionItems.forEach((item) => {
             if (item.item_id === value) {
                 if (item.open) {
@@ -43,6 +46,7 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
      * Opens all accordion items
      */
     async openAll() {
+        this.refreshAccordionItems();
         this.accordionItems.forEach((item) => {
             item.openAccordion();
         });
@@ -51,6 +55,7 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
      * Closes all accordion items.
      */
     async closeAll() {
+        this.refreshAccordionItems();
         this.accordionItems.forEach((item) => {
             item.closeAccordion();
         });
@@ -59,6 +64,7 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
      * Toggles all accordion item's open state.
      */
     async toggleAll() {
+        this.refreshAccordionItems();
         this.accordionItems.forEach((item) => {
             if (item.open) {
                 item.closeAccordion();
@@ -68,8 +74,11 @@ const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccord
             }
         });
     }
+    refreshAccordionItems() {
+        this.accordionItems = Array.from(this.el.querySelectorAll('atui-accordion-item'));
+    }
     render() {
-        return (h(Host, { key: 'bddaf7cc56ad839608ddf653ebd4f5a569edc5f0', class: "flex flex-col gap-2" }, h("slot", { key: '7f141d39bde2de7078f522d20c1a325afd169e3d' }), this.items &&
+        return (h(Host, { key: 'c3713a4994a8842a864bb89ac3105d06f251274e', class: "flex flex-col gap-2" }, h("slot", { key: '633adb5bfcef4a02e24af8dc1716b10a0acf683e' }), this.items &&
             this.items.map((item) => {
                 return (h("atui-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

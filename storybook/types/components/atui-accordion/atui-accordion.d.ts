@@ -50,6 +50,7 @@ export declare class AtuiAccordionComponent {
      * Toggles all accordion item's open state.
      */
     toggleAll(): Promise<void>;
+    private refreshAccordionItems;
     private accordionId;
     render(): any;
 }
