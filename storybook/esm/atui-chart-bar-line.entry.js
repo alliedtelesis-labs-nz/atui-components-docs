@@ -174,7 +174,7 @@ const AtuiChartBarLine = class {
         return { min: startDate.toString(), max: endDate.toString() };
     }
     render() {
-        return (h(Host, { key: 'fabb29f2822c45e1530ceacbfc83d881a947f72b', style: { height: '100%', width: '100%' } }, h("section", { key: '21787abd38db8cc618b5c5c0f292de6597b3ce16', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '33d8164c93fd969197f88a14818548f68514e612', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: 'a856592ba9102110d7f9587c0254d8de89d8c88b', style: { height: '100%', width: '100%' } }, h("section", { key: 'b70d0e361fed7d6c987b6edc477993e5979cfc8c', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '998e08519b8642dc3f70582c7c3c5c47e3ded16d', ref: (el) => (this.canvasEl = el) }))));
     }
 };
 

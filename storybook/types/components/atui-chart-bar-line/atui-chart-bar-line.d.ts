@@ -1,6 +1,5 @@
 import { ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
 import 'chartjs-adapter-moment';
-import { SelectedTimeRange } from '../../types';
 import { SelectedTimeRangeExtended } from '../../components';
 import { Height } from '../atui-chart-donut/atui-chart-donut';
 import { ChartColorPalette } from '../../types/chart-color';
@@ -128,7 +127,7 @@ export declare class AtuiChartBarLine {
     componentDidLoad(): void;
     pointStylesSetup(): void;
     applyPresetPalette(colors: string[]): void;
-    getMinMaxDateStrings(timeRange: SelectedTimeRange): {
+    getMinMaxDateStrings(timeRange: SelectedTimeRangeExtended): {
         min: string;
         max: string;
     };
