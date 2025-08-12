@@ -1,1 +1,0 @@
-import{a,b as e,c as r}from"./chunk-TTFBLXUB.js";import"./chunk-B7O3QC5Z.js";var n=class{constructor(s){a(this,s)}render(){return e(r,{key:"bf66c4e423b9e56f1a446a42b46d20da06905034",class:"flex min-w-0 flex-1 flex-col gap-2",role:"menu","data-name":"sidebar-menu"},e("slot",{key:"ae2fa312cf33178fcc8a7899a553849e00fff4a0"}))}};export{n as atui_sidebar_menu};
