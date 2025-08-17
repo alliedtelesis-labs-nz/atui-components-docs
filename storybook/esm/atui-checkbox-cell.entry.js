@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BvDeEv6o.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiCheckboxCellComponent = class {
     constructor(hostRef) {

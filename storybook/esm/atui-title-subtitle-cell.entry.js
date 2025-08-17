@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BvDeEv6o.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -34,7 +34,7 @@ const AtuiTitleSubtitleCell = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: '7e81564568f33deeddc3b8770d6b8b9e38df2865', class: "flex h-full items-center" }, h("atui-tooltip", { key: '10b6f66cefdbb1af2989158b1719eaee0ba65beb', position: "right", is_visible: !!((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, h("div", { key: 'e5c91cf150fd5817b307e1bf5802d405e360e378', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: '386d94f889e7dcafc491d51e313ca8c167d54850', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: 'a98695d68997a3fb2eb10eff975a43050b716831', class: "truncate text-xs font-normal leading-normal text-med" }, this.subtitle)), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (h("span", { key: '90e6e7e224447ae7209029a184552b758524b1f0', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: '7e81564568f33deeddc3b8770d6b8b9e38df2865', class: "flex h-full items-center" }, h("atui-tooltip", { key: '79e15abf71f8b733a16d770cec161c7bc1d7d3c6', position: "right", disabled: !((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, h("div", { key: '335425ca7d67de564571442acb7899928c1f68da', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'b85f675f0b7af73c3053ad3f27b48035af11d71a', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '06414f84b865e52c28c73ac1e7962df60589a188', class: "truncate text-xs font-normal leading-normal text-med" }, this.subtitle)), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (h("span", { key: '3f8d73ffe381635bf3aa1bd3f66417bef75947bd', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     get el() { return getElement(this); }
 };

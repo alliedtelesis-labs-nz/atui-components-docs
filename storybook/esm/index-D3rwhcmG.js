@@ -227,6 +227,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-badge.entry.js').then(processMod, consoleError);
+                case 'atui-menu':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './atui-menu.entry.js').then(processMod, consoleError);
                 case 'atui-dialog':
                     return import(
                       /* webpackMode: "lazy" */
@@ -279,10 +283,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './atui-search_4.entry.js').then(processMod, consoleError);
-                case 'atui-menu':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './atui-menu.entry.js').then(processMod, consoleError);
                 case 'atui-column-manager_3':
                     return import(
                       /* webpackMode: "lazy" */

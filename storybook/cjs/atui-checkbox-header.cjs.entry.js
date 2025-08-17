@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-nKeTsW5N.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiCheckboxHeaderComponent = class {
     constructor(hostRef) {

@@ -45,7 +45,7 @@ import { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
 import { LabelPosition } from "./components/atui-toggle-switch/atui-toggle-switch";
-import { TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
+import { TooltipAlign, TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
 import { TreeNode } from "./types/tree";
 import { TreeItemSize } from "./components/atui-tree/atui-tree-item/atui-tree-item";
 export { AccordionItem } from "./components/atui-accordion/atui-accordion";
@@ -88,7 +88,7 @@ export { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
 export { LabelPosition } from "./components/atui-toggle-switch/atui-toggle-switch";
-export { TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
+export { TooltipAlign, TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
 export { TreeNode } from "./types/tree";
 export { TreeItemSize } from "./components/atui-tree/atui-tree-item/atui-tree-item";
 export namespace Components {
@@ -1237,7 +1237,7 @@ export namespace Components {
          */
         "openMenu": () => Promise<void>;
         /**
-          * Position of opened menu element relative to trigger element.
+          * Position of opened menu element relative to the trigger element.
           * @default 'bottom'
          */
         "position": Position;
@@ -2589,28 +2589,46 @@ export namespace Components {
         "value": boolean;
     }
     /**
-     * @category Overlays
-     * @description A tooltip component that displays contextual information when hovering over or focusing on an element. Provides accessible hover/focus behavior with customizable positioning and content.
+     * @category **Overlays**
+     * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface AtuiTooltip {
         /**
-          * If false, forces the tooltip to hide. If true, tooltip will show when trigger is hovered
-          * @default true
+          * Alignment of opened tooltip element relative to trigger element.
+          * @default 'center'
          */
-        "is_visible"?: boolean;
+        "align": TooltipAlign;
+        /**
+          * Closes the tooltip.
+         */
+        "closeTooltip": () => Promise<void>;
+        /**
+          * Delay before showing and hiding the tooltip when interacting with the trigger element.
+          * @default 150
+         */
+        "delay"?: number;
+        /**
+          * Prevent opening tooltip
+          * @default false
+         */
+        "disabled": boolean;
         /**
           * Offset in pixels from the edge of the trigger element
           * @default 8
          */
         "offset"?: number;
         /**
-          * Position of the tooltip content relative to the atui-tooltip
-          * @default 'bottom'
+          * Opens the tooltip.
+         */
+        "openTooltip": () => Promise<void>;
+        /**
+          * Position of opened tooltip element relative to the trigger element.
+          * @default 'top'
          */
         "position": TooltipPosition;
         /**
-          * String representing the 'max-width' style of the tooltip element (e.g., 'auto', '200px', '50%')
-          * @default 'auto'
+          * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+          * @default '200px'
          */
         "width"?: string;
     }
@@ -4081,8 +4099,8 @@ declare global {
         new (): HTMLAtuiToggleSwitchElement;
     };
     /**
-     * @category Overlays
-     * @description A tooltip component that displays contextual information when hovering over or focusing on an element. Provides accessible hover/focus behavior with customizable positioning and content.
+     * @category **Overlays**
+     * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface HTMLAtuiTooltipElement extends Components.AtuiTooltip, HTMLStencilElement {
     }
@@ -5377,7 +5395,7 @@ declare namespace LocalJSX {
          */
         "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
         /**
-          * Position of opened menu element relative to trigger element.
+          * Position of opened menu element relative to the trigger element.
           * @default 'bottom'
          */
         "position"?: Position;
@@ -6819,28 +6837,38 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     /**
-     * @category Overlays
-     * @description A tooltip component that displays contextual information when hovering over or focusing on an element. Provides accessible hover/focus behavior with customizable positioning and content.
+     * @category **Overlays**
+     * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface AtuiTooltip {
         /**
-          * If false, forces the tooltip to hide. If true, tooltip will show when trigger is hovered
-          * @default true
+          * Alignment of opened tooltip element relative to trigger element.
+          * @default 'center'
          */
-        "is_visible"?: boolean;
+        "align"?: TooltipAlign;
+        /**
+          * Delay before showing and hiding the tooltip when interacting with the trigger element.
+          * @default 150
+         */
+        "delay"?: number;
+        /**
+          * Prevent opening tooltip
+          * @default false
+         */
+        "disabled"?: boolean;
         /**
           * Offset in pixels from the edge of the trigger element
           * @default 8
          */
         "offset"?: number;
         /**
-          * Position of the tooltip content relative to the atui-tooltip
-          * @default 'bottom'
+          * Position of opened tooltip element relative to the trigger element.
+          * @default 'top'
          */
         "position"?: TooltipPosition;
         /**
-          * String representing the 'max-width' style of the tooltip element (e.g., 'auto', '200px', '50%')
-          * @default 'auto'
+          * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+          * @default '200px'
          */
         "width"?: string;
     }
@@ -7416,8 +7444,8 @@ declare module "@stencil/core" {
              */
             "atui-toggle-switch": LocalJSX.AtuiToggleSwitch & JSXBase.HTMLAttributes<HTMLAtuiToggleSwitchElement>;
             /**
-             * @category Overlays
-             * @description A tooltip component that displays contextual information when hovering over or focusing on an element. Provides accessible hover/focus behavior with customizable positioning and content.
+             * @category **Overlays**
+             * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
              */
             "atui-tooltip": LocalJSX.AtuiTooltip & JSXBase.HTMLAttributes<HTMLAtuiTooltipElement>;
             /**

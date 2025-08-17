@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 /**
- * @category Actions
- * @description A versatile menu component for actions with keyboard support and positioning. Features auto-open behavior, customizable triggers, and accessible menu item management.
+ * @category Overlays
+ * @description A popover menu component for displaying action lists when via click or hover on a trigger element.
  */
 export type Position = 'top' | 'bottom' | 'left' | 'right';
 export type Align = 'start' | 'end';
@@ -17,7 +17,7 @@ export declare class AtuiMenu {
      */
     offset_y: number;
     /**
-     * Position of opened menu element relative to trigger element.
+     * Position of opened menu element relative to the trigger element.
      */
     position: Position;
     /**

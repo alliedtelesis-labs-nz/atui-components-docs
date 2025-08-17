@@ -11,7 +11,7 @@ export class AtuiMenu {
          */
         this.offset_y = 0;
         /**
-         * Position of opened menu element relative to trigger element.
+         * Position of opened menu element relative to the trigger element.
          */
         this.position = 'bottom';
         /**
@@ -198,7 +198,7 @@ export class AtuiMenu {
     async updateFloatingPosition() {
         if (!this.triggerEl || !this.menuEl)
             return;
-        this.setupFloatingUI();
+        await this.setupFloatingUI();
     }
     getFloatingUIPlacement() {
         const positionMap = {
@@ -216,14 +216,9 @@ export class AtuiMenu {
         return `${position}-${align}`;
     }
     render() {
-        const popoverAttrs = {
-            popover: 'auto',
-            id: this.popoverId,
-        };
-        const triggerAttrs = {};
-        return (h(Host, { key: 'daea5bb52871c22f749e376ddfeea4bec58b3688', class: "relative z-modal" }, h("div", { key: 'dba4f637383eae25ee84c6d907a26d7a003bf5ec', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (h(Host, { key: '0ccc40e271fd4a14df7653ffd3b74645573589c8', class: "relative z-modal" }, h("div", { key: 'fcb61f0ffe05715d172148d4654f517487bb1c1c', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, h("div", Object.assign({ key: '67f378f73edce625ba9e04a1733909d8ea4c88f3', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}` }, triggerAttrs, { onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, h("div", { key: 'c3c7f3fbd692af418a01b60c8098625bd2addaae', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -249,19 +244,19 @@ export class AtuiMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }), h("slot", { key: '63769b68d5bea6e94deb3a25f399e3c5fccf7070', name: "menu-trigger" })), h("div", Object.assign({ key: '5740471e881c4aa21d0b0e4ff598fc23b37b6a5a', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}` }, popoverAttrs, { onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '0a898fb587915acb5f2838767a035aaaee6da384', name: "menu-trigger" })), h("div", { key: '34440c8dc0ea4ef501b2b70a96234bdfcd207b0d', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
-                this.mouseLeaveHandler(), onKeyDown: (event) => {
+                this.mouseLeaveHandler(), onKeyDown: async (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ' ||
                     event.key === 'Escape') {
                     if (this.autoclose) {
-                        this.mouseLeaveHandler();
+                        await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md border border-solid border-light bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }), h("slot", { key: '22aaaffd1e1187b4724c50b81b6c99d5ebc3167c', name: "menu-content" })))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, h("slot", { key: '179740be7f893b123e430b0b11469d24600a4a42', name: "menu-content" })))));
     }
     static get is() { return "atui-menu"; }
     static get properties() {
@@ -325,7 +320,7 @@ export class AtuiMenu {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Position of opened menu element relative to trigger element."
+                    "text": "Position of opened menu element relative to the trigger element."
                 },
                 "getter": false,
                 "setter": false,

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-BvDeEv6o.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-D3rwhcmG.js';
 
 const AtuiTablePagination = class {
     constructor(hostRef) {

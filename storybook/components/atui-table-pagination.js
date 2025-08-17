@@ -1,10 +1,10 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CHjIMSAP.js';
-import { d as defineCustomElement$7 } from './p-DuXqj3_2.js';
-import { d as defineCustomElement$6 } from './p-DROFJHTo.js';
-import { d as defineCustomElement$5 } from './p-DbhUEjmd.js';
-import { d as defineCustomElement$4 } from './p-Yk76b9OE.js';
-import { d as defineCustomElement$3 } from './p-BzTz1KFC.js';
-import { d as defineCustomElement$2 } from './p-Dl92gNAv.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
+import { d as defineCustomElement$7 } from './p-C9eqBXeS.js';
+import { d as defineCustomElement$6 } from './p-DafgtWaH.js';
+import { d as defineCustomElement$5 } from './p-BmgpvZ_L.js';
+import { d as defineCustomElement$4 } from './p-BSMjqe5c.js';
+import { d as defineCustomElement$3 } from './p-B_vKCaoj.js';
+import { d as defineCustomElement$2 } from './p-B_gZMcKc.js';
 
 const AtuiTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtuiTablePagination extends H {
     constructor() {

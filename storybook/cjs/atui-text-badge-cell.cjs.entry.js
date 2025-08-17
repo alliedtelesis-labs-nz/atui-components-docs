@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-nKeTsW5N.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiTextBadgeCell = class {
     constructor(hostRef) {
@@ -35,7 +35,7 @@ const AtuiTextBadgeCell = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '9045a3d6a93eb93bbfdea1e5c7a2df22d15474e0', class: "flex h-full items-center" }, index.h("atui-tooltip", { key: '8954627407f0328bca6d9d93f5988c9a4e277f48', position: "right", is_visible: !!this.params.generateTooltip }, index.h("div", { key: '04963df6fbeb656434fd20c08b7fc852e76bc99f', slot: "tooltip-trigger" }, index.h("span", { key: '6fd70a802ff56fc062a1adc363e48be6c824add2', class: "truncate" }, this.textValue), index.h("atui-badge", { key: 'df650e682caa9d5f9ef7ca23bddfc7a92f59d7e1', type: "info", class: "ml-4", label: this.badgeTextValue })), ((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) && (index.h("span", { key: 'c41f0ae1c3dc8de2c891319fda1920a94f50a2c8', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (index.h(index.Host, { key: '9045a3d6a93eb93bbfdea1e5c7a2df22d15474e0', class: "flex h-full items-center" }, index.h("atui-tooltip", { key: '099af47a38a18b3150fbe44b65a04cdc279c9207', position: "right", disabled: !this.params.generateTooltip }, index.h("div", { key: '09deda0fabffc1f9b1280ecffac65bb0664b7822', slot: "tooltip-trigger" }, index.h("span", { key: '7a9fe4d0600eaade3b326b705795bd015a3e6adf', class: "truncate" }, this.textValue), index.h("atui-badge", { key: 'd4e5fd3213de79c0afbc3512b33969a08b318527', type: "info", class: "ml-4", label: this.badgeTextValue })), ((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) && (index.h("span", { key: 'f1c83b6d999f13a2c9efaec0c7e6f13fcb97576b', slot: "tooltip-content", class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     get el() { return index.getElement(this); }
 };

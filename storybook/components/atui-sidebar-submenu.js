@@ -1,9 +1,9 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CHjIMSAP.js';
-import { d as defineCustomElement$6 } from './p-BXToQCgd.js';
-import { d as defineCustomElement$5 } from './p-BGbOX7qR.js';
-import { d as defineCustomElement$4 } from './p-Bq2RTHNk.js';
-import { d as defineCustomElement$3 } from './p-Yk76b9OE.js';
-import { d as defineCustomElement$2 } from './p-BQeGYboX.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { d as defineCustomElement$6 } from './p-DmG0mWrs.js';
+import { d as defineCustomElement$5 } from './p-hW4-nYw0.js';
+import { d as defineCustomElement$4 } from './p-CGN7bmSd.js';
+import { d as defineCustomElement$3 } from './p-BSMjqe5c.js';
+import { d as defineCustomElement$2 } from './p-hm34JOJw.js';
 
 const AtuiSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarSubmenuComponent extends H {
     constructor() {

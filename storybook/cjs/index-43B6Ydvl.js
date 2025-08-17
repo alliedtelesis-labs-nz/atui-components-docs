@@ -247,6 +247,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-badge.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'atui-menu.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './atui-menu.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-dialog.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -299,10 +303,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './atui-search_4.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'atui-menu.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './atui-menu.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'atui-column-manager_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -1,6 +1,6 @@
-import { A as AtuiTooltipComponent, d as defineCustomElement$1 } from './p-Dl92gNAv.js';
+import { A as AtuiTooltip$1, d as defineCustomElement$1 } from './p-B_gZMcKc.js';
 
-const AtuiTooltip = AtuiTooltipComponent;
+const AtuiTooltip = AtuiTooltip$1;
 const defineCustomElement = defineCustomElement$1;
 
 export { AtuiTooltip, defineCustomElement };

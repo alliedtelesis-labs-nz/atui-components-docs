@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-BvDeEv6o.js';
+import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-D3rwhcmG.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtuiSearch = class {

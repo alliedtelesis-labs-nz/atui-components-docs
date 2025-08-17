@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BvDeEv6o.js';
+import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
 
 const AtuiStatusBar = class {
     constructor(hostRef) {
@@ -16,14 +16,14 @@ const AtuiStatusBar = class {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-sm`;
     }
     get segments() {
-        return this.status_bar.map((segment) => (h("atui-tooltip", { position: "bottom", class: "flex flex-grow items-stretch justify-center", is_visible: !this.disable_tooltip, style: {
+        return this.status_bar.map((segment) => (h("atui-tooltip", { position: "bottom", class: "flex flex-grow items-stretch justify-center", disabled: this.disable_tooltip, style: {
                 flexBasis: segment.percentage.toString() + '%',
             } }, h("div", { class: "flex flex-grow", slot: "tooltip-trigger", style: {
                 background: segment.backgroundColor,
             } }), h("span", { slot: "tooltip-content" }, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '4d2273308709b7f63740ec9c43d5cc2f452ad637', class: this.statusBarClass }, h("div", { key: 'bc7c5ae6d49838d2ef4210bc5bb9c56db953b5f4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '9bed28d51580ff58775039d87682b51be9183995', class: this.statusBarClass }, h("div", { key: '0fd990f0f15419bc69fa5d2c016b62ced0b3962e', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

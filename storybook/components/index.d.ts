@@ -159,7 +159,7 @@ export { AtuiToggleCell as AtuiToggleCell } from '../types/components/table-comp
 export { defineCustomElement as defineCustomElementAtuiToggleCell } from './atui-toggle-cell';
 export { AtuiToggleSwitchComponent as AtuiToggleSwitch } from '../types/components/atui-toggle-switch/atui-toggle-switch';
 export { defineCustomElement as defineCustomElementAtuiToggleSwitch } from './atui-toggle-switch';
-export { AtuiTooltipComponent as AtuiTooltip } from '../types/components/atui-tooltip/atui-tooltip';
+export { AtuiTooltip as AtuiTooltip } from '../types/components/atui-tooltip/atui-tooltip';
 export { defineCustomElement as defineCustomElementAtuiTooltip } from './atui-tooltip';
 export { AtuiTreeComponent as AtuiTree } from '../types/components/atui-tree/atui-tree';
 export { defineCustomElement as defineCustomElementAtuiTree } from './atui-tree';

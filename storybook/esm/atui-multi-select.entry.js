@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BvDeEv6o.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { c as cva } from './index-CVoOBWGd.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BvDeEv6o.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
 
 const AtuiTextCellComponent = class {
     constructor(hostRef) {
@@ -53,10 +53,10 @@ const AtuiTextCellComponent = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: '6f54b669e842e6baec536ef5d1cdef4e1f3c2003', class: "align-center flex h-full" }, h("atui-tooltip", { key: 'db0dbee51c8af0dbac3dd8f98099e7eb7ac5e332', position: "right", is_visible: !!this.params.generateTooltip }, h("span", { key: '3bff885ac86e1c33b5d6ca1bcd2121e96d13841f', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
+        return (h(Host, { key: '6f54b669e842e6baec536ef5d1cdef4e1f3c2003', class: "align-center flex h-full" }, h("atui-tooltip", { key: '4b379c68e720714e55c5e4aa2d5d9429161e9382', position: "right", disabled: !this.params.generateTooltip }, h("span", { key: '4d3fba764a0d10ea40b294d09ec36ebc75dd2019', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '223ef15afd4d08f345ec2c9e4b3cdf5f99cd1523', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '85c8956da4c187194432ce4bc0ef75cdcfd0fb89', slot: "tooltip-content", class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
     get el() { return getElement(this); }
 };

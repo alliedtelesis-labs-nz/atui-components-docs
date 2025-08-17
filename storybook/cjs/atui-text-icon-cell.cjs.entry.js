@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-nKeTsW5N.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiTextIconCell = class {
     constructor(hostRef) {
@@ -28,12 +28,12 @@ const AtuiTextIconCell = class {
         return true;
     }
     renderIcons() {
-        return (index.h(index.Fragment, null, this.params.icons().map((icon) => (index.h("atui-tooltip", { position: "right", is_visible: !!icon.tooltip }, index.h("div", { slot: "tooltip-trigger" }, index.h("i", { class: `material-icons mt-4 cursor-pointer text-icon-md ${icon.iconClass || ''}` }, icon.iconName)), icon.tooltip && (index.h("span", { slot: "tooltip-content", class: "leading-normal" }, icon.tooltip)))))));
+        return (index.h(index.Fragment, null, this.params.icons().map((icon) => (index.h("atui-tooltip", { position: "right", disabled: !icon.tooltip }, index.h("div", { slot: "tooltip-trigger" }, index.h("i", { class: `material-icons mt-4 cursor-pointer text-icon-md ${icon.iconClass || ''}` }, icon.iconName)), icon.tooltip && (index.h("span", { slot: "tooltip-content", class: "leading-normal" }, icon.tooltip)))))));
     }
     render() {
         var _a;
         const iconPosition = ((_a = this.params) === null || _a === void 0 ? void 0 : _a.iconPosition) || 'before';
-        return (index.h(index.Host, { key: 'bc8d32e3dd8d8f452b657ed406c0cac222e4ce48', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: 'dcc17cb2a261dedb11c9f7baf0fbd5d1d7d1dcca', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (index.h(index.Host, { key: '25b5acf03bafa4ea7a2b5390a1785d457cc76b47', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: 'e8b6133bae8dee55cf791244f2dccac346a91444', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
     get el() { return index.getElement(this); }
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-nKeTsW5N.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiMultiBtnCell = class {
     constructor(hostRef) {
@@ -28,11 +28,11 @@ const AtuiMultiBtnCell = class {
     }
     get buttonsToRender() {
         return this.buttons.map((button) => {
-            return (index.h("atui-tooltip", { position: "right", is_visible: !!button.tooltip }, button && (index.h("atui-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (index.h("span", { slot: "tooltip-content", class: `leading-normal` }, button.tooltip))));
+            return (index.h("atui-tooltip", { position: "right", disabled: !button.tooltip }, button && (index.h("atui-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (index.h("span", { slot: "tooltip-content", class: `leading-normal` }, button.tooltip))));
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'fe7f8d2feae47f8994719018d48ae1c0d70e99ca', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: '9fb4ade99471dc1269702f700af3426db1f7bf3c', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     get el() { return index.getElement(this); }
 };

@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-nKeTsW5N.js');
-var index$1 = require('./index-palgSxc9.js');
+var index = require('./index-43B6Ydvl.js');
+var floatingUi_dom = require('./floating-ui.dom-Dg6oEjx3.js');
 
 const AtuiFormLabelComponent = class {
     constructor(hostRef) {
@@ -16,76 +16,235 @@ const AtuiFormLabelComponent = class {
     }
 };
 
-const variants = index$1.cva('absolute z-50 z-modal box-border flex scale-75 whitespace-nowrap rounded bg-disabled-dark px-4 py-2 text-sm text-white opacity-0 transition-[transform,opacity] peer-hover:scale-100 peer-hover:opacity-100', {
-    variants: {
-        open: {
-            true: null,
-            false: 'hidden',
-        },
-    },
-});
-const AtuiTooltipComponent = class {
+const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
+const AtuiTooltip = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         /**
-         * Position of the tooltip content relative to the atui-tooltip
+         * Position of opened tooltip element relative to the trigger element.
          */
-        this.position = 'bottom';
+        this.position = 'top';
         /**
-         * If false, forces the tooltip to hide.
-         * If true, tooltip will show when trigger is hovered
+         * Alignment of opened tooltip element relative to trigger element.
          */
-        this.is_visible = true;
+        this.align = 'center';
         /**
-         * String representing the 'max-width' style of the tooltip element (e.g., 'auto', '200px', '50%')
+         * Prevent opening tooltip
          */
-        this.width = 'auto';
+        this.disabled = false;
+        /**
+         * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+         */
+        this.width = '200px';
         /**
          * Offset in pixels from the edge of the trigger element
          */
         this.offset = 8;
-        this.updateTooltipWidth = () => {
-            if (!this.tooltipEl)
-                return;
-            requestAnimationFrame(() => {
-                if (this.width !== 'auto') {
-                    this.tooltipEl.style.maxWidth = `${this.width}px`;
-                }
-            });
+        /**
+         * Delay before showing and hiding the tooltip when interacting with the trigger element.
+         */
+        this.delay = 150;
+        this.isOpen = false;
+        this.updatePosition = async () => {
+            if (this.triggerEl && this.tooltipEl && this.isOpen) {
+                await this.updateFloatingPosition();
+            }
         };
     }
-    componentDidLoad() {
-        window.addEventListener('resize', this.updateTooltipWidth);
+    async disabledChanged(newValue) {
+        if (newValue && this.isOpen) {
+            await this.closeTooltip();
+        }
+    }
+    /**
+     * Opens the tooltip.
+     */
+    async openTooltip() {
+        if (this.disabled)
+            return;
+        if (this.tooltipEl) {
+            this.tooltipEl.showPopover();
+            this.isOpen = true;
+        }
+        await this.updatePosition();
+    }
+    /**
+     * Closes the tooltip.
+     */
+    async closeTooltip() {
+        if (this.tooltipEl) {
+            this.tooltipEl.hidePopover();
+            this.isOpen = false;
+        }
+    }
+    async componentDidLoad() {
+        this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
+        await this.setupFloatingUI();
+        setTimeout(() => this.setupPopoverEventListeners(), 0);
     }
     disconnectedCallback() {
-        window.removeEventListener('resize', this.updateTooltipWidth);
+        this.cleanupFloatingUI();
+        if (this.showTimeout) {
+            clearTimeout(this.showTimeout);
+            this.showTimeout = undefined;
+        }
+        if (this.hideTimeout) {
+            clearTimeout(this.hideTimeout);
+            this.hideTimeout = undefined;
+        }
     }
-    get positionStyle() {
-        var _a, _b;
-        const offset = (_a = this.offset) !== null && _a !== void 0 ? _a : 8;
-        const width = ((_b = this.width) === null || _b === void 0 ? void 0 : _b.trim()) || 'auto';
-        const baseStyles = {
-            width: width,
+    async setupPopoverEventListeners() {
+        if (this.tooltipEl) {
+            this.tooltipEl.addEventListener('toggle', (event) => {
+                const customEvent = event;
+                this.isOpen = customEvent.newState === 'open';
+                if (this.isOpen) {
+                    requestAnimationFrame(() => {
+                        this.tooltipEl.style.opacity = '1';
+                        this.updatePosition();
+                    });
+                }
+                else {
+                    this.tooltipEl.style.opacity = '0';
+                }
+            });
+        }
+    }
+    async mouseEnterHandler() {
+        if (this.hideTimeout) {
+            clearTimeout(this.hideTimeout);
+            this.hideTimeout = undefined;
+        }
+        if (this.isOpen)
+            return;
+        if (this.showTimeout) {
+            clearTimeout(this.showTimeout);
+        }
+        this.showTimeout = setTimeout(async () => {
+            if (!this.disabled && !this.isOpen) {
+                await this.openTooltip();
+            }
+            this.showTimeout = undefined;
+        }, this.delay || 0);
+    }
+    async mouseLeaveHandler() {
+        if (this.showTimeout) {
+            clearTimeout(this.showTimeout);
+            this.showTimeout = undefined;
+        }
+        if (!this.isOpen)
+            return;
+        const hideDelay = Math.min(this.delay || 0, 150);
+        this.hideTimeout = setTimeout(async () => {
+            if (this.isOpen) {
+                await this.closeTooltip();
+            }
+            this.hideTimeout = undefined;
+        }, hideDelay);
+    }
+    async setupFloatingUI() {
+        if (this.cleanupAutoUpdate) {
+            this.cleanupAutoUpdate();
+        }
+        if (this.triggerEl && this.tooltipEl) {
+            const observer = new IntersectionObserver((entries) => {
+                if (!entries[0].isIntersecting && this.isOpen) {
+                    this.closeTooltip();
+                }
+            }, { threshold: 0 });
+            observer.observe(this.triggerEl);
+            this.cleanupAutoUpdate = floatingUi_dom.autoUpdate(this.triggerEl, this.tooltipEl, () => {
+                var _a;
+                if (this.isOpen) {
+                    const placement = this.getFloatingUIPlacement();
+                    const strategy = 'fixed';
+                    floatingUi_dom.computePosition(this.triggerEl, this.tooltipEl, {
+                        placement,
+                        strategy,
+                        middleware: [
+                            floatingUi_dom.offset((_a = this.offset) !== null && _a !== void 0 ? _a : 8),
+                            floatingUi_dom.flip({
+                                fallbackStrategy: 'bestFit',
+                                padding: 8,
+                            }),
+                            floatingUi_dom.shift({
+                                padding: 8,
+                                mainAxis: true,
+                                crossAxis: true,
+                            }),
+                            floatingUi_dom.size({
+                                apply: ({ availableWidth, availableHeight, elements, }) => {
+                                    const userMax = parseInt((this.width || '200px').toString(), 10) || DEFAULT_TOOLTIP_MAX_WIDTH;
+                                    Object.assign(elements.floating.style, {
+                                        maxWidth: `${Math.min(availableWidth, userMax)}px`,
+                                        maxHeight: `${availableHeight}px`,
+                                    });
+                                },
+                            }),
+                        ],
+                    }).then(({ x, y }) => {
+                        const styles = {
+                            position: strategy,
+                            left: `${x}px`,
+                            top: `${y}px`,
+                            margin: '0',
+                            transform: 'none',
+                            maxWidth: this.width || '200px',
+                        };
+                        Object.assign(this.tooltipEl.style, styles);
+                    });
+                }
+            }, {
+                ancestorScroll: true,
+                ancestorResize: true,
+                elementResize: true,
+                layoutShift: true,
+                animationFrame: true,
+            });
+            const originalCleanup = this.cleanupAutoUpdate;
+            this.cleanupAutoUpdate = () => {
+                originalCleanup();
+                observer.disconnect();
+            };
+        }
+    }
+    cleanupFloatingUI() {
+        var _a;
+        (_a = this.cleanupAutoUpdate) === null || _a === void 0 ? void 0 : _a.call(this);
+        this.cleanupAutoUpdate = undefined;
+    }
+    async updateFloatingPosition() {
+        if (!this.triggerEl || !this.tooltipEl)
+            return;
+        this.setupFloatingUI();
+    }
+    getFloatingUIPlacement() {
+        const positionMap = {
+            top: 'top',
+            bottom: 'bottom',
+            left: 'left',
+            right: 'right',
         };
-        const positionStyles = {
-            top: Object.assign(Object.assign({}, baseStyles), { bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: `${offset}px` }),
-            bottom: Object.assign(Object.assign({}, baseStyles), { top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: `${offset}px` }),
-            left: Object.assign(Object.assign({}, baseStyles), { right: '100%', top: '50%', transform: 'translateY(-50%)', marginRight: `${offset}px` }),
-            right: Object.assign(Object.assign({}, baseStyles), { left: '100%', top: '50%', transform: 'translateY(-50%)', marginLeft: `${offset}px` }),
+        const alignMap = {
+            start: 'start',
+            end: 'end',
+            center: 'center',
         };
-        return positionStyles[this.position] || {};
+        const position = positionMap[this.position] || 'bottom';
+        const align = alignMap[this.align] || 'center';
+        return `${position}-${align}`;
     }
     render() {
-        const classname = variants({
-            open: this.is_visible,
-        });
-        return (index.h(index.Host, { key: '144fc9c131ffa461ee469d69ee5ff9eed86bf93d', class: "relative inline-block" }, index.h("div", { key: '52a44a45449f2a575d7474bfa16f42147c0e87a7', class: "peer pointer-events-auto contents", ref: (el) => (this.triggerEl = el) }, index.h("slot", { key: '6cc0b456b2b4de3d696f9607b629f73fe13a6fd0', name: "tooltip-trigger" })), index.h("div", { key: '45194021ca57a0f1a52344d591f33aa76af35771', ref: (el) => (this.tooltipEl = el), style: this.positionStyle, class: classname }, index.h("slot", { key: '8239e7f31c42da33a8890573b64f8837a94f20bf', name: "tooltip-content" }))));
+        return (index.h(index.Host, { key: '940d6889b7728360a5f35c80c7e9ff052dd62d73', class: "relative" }, index.h("div", { key: '81b7537909dcd1a7be899c9702eb2a200a82bb24', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '64b188a432c067200b63fc6e48eec2079681d332', name: "tooltip-trigger" })), index.h("div", { key: 'cd56d8d701203e835dcc485560cc693409943404', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '3b5e34aa71d4a69c557f1868628c02b29b01f7de', name: "tooltip-content" }))));
     }
     get el() { return index.getElement(this); }
+    static get watchers() { return {
+        "disabled": ["disabledChanged"]
+    }; }
 };
 
 exports.atui_form_label = AtuiFormLabelComponent;
-exports.atui_tooltip = AtuiTooltipComponent;
+exports.atui_tooltip = AtuiTooltip;
 //# sourceMappingURL=atui-form-label.atui-tooltip.entry.cjs.js.map
 
 //# sourceMappingURL=atui-form-label_2.cjs.entry.js.map
