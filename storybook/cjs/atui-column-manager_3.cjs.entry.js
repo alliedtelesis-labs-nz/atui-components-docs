@@ -1249,42 +1249,46 @@ var ControlsColService = class extends BeanStub {
     super(...arguments);
     this.beanName = "controlsColService";
   }
-  createControlsCols() {
+  isControlsColEnabled() {
     const { gos } = this;
     const so = gos.get("rowSelection");
     if (!so || typeof so !== "object") {
-      return [];
+      return false;
     }
     const checkboxes = _getCheckboxes(so);
     const headerCheckbox = _getHeaderCheckbox(so);
-    if (checkboxes || headerCheckbox) {
-      const selectionColumnDef = gos.get("selectionColumnDef");
-      const enableRTL = gos.get("enableRtl");
-      const colDef = {
-        // overridable properties
-        maxWidth: 50,
-        resizable: false,
-        suppressHeaderMenuButton: true,
-        sortable: false,
-        suppressMovable: true,
-        lockPosition: enableRTL ? "right" : "left",
-        comparator(valueA, valueB, nodeA, nodeB) {
-          const aSelected = nodeA.isSelected();
-          const bSelected = nodeB.isSelected();
-          return aSelected && bSelected ? 0 : aSelected ? 1 : -1;
-        },
-        editable: false,
-        suppressFillHandle: true,
-        // overrides
-        ...selectionColumnDef,
-        // non-overridable properties
-        colId: `${CONTROLS_COLUMN_ID_PREFIX}`
-      };
-      const col = new AgColumn(colDef, null, colDef.colId, false);
-      this.createBean(col);
-      return [col];
+    return !!(checkboxes || headerCheckbox);
+  }
+  createControlsCols() {
+    if (!this.isControlsColEnabled()) {
+      return [];
     }
-    return [];
+    const { gos } = this;
+    const selectionColumnDef = gos.get("selectionColumnDef");
+    const enableRTL = gos.get("enableRtl");
+    const colDef = {
+      // overridable properties
+      maxWidth: 50,
+      resizable: false,
+      suppressHeaderMenuButton: true,
+      sortable: false,
+      suppressMovable: true,
+      lockPosition: enableRTL ? "right" : "left",
+      comparator(valueA, valueB, nodeA, nodeB) {
+        const aSelected = nodeA.isSelected();
+        const bSelected = nodeB.isSelected();
+        return aSelected && bSelected ? 0 : aSelected ? 1 : -1;
+      },
+      editable: false,
+      suppressFillHandle: true,
+      // overrides
+      ...selectionColumnDef,
+      // non-overridable properties
+      colId: `${CONTROLS_COLUMN_ID_PREFIX}`
+    };
+    const col = new AgColumn(colDef, null, colDef.colId, false);
+    this.createBean(col);
+    return [col];
   }
 };
 
@@ -1422,6 +1426,9 @@ function _iterateObject(object, callback) {
     return;
   }
   for (const [key, value] of Object.entries(object)) {
+    if (SKIP_JS_BUILTINS.has(key)) {
+      continue;
+    }
     callback(key, value);
   }
 }
@@ -2699,11 +2706,12 @@ var ColumnModel = class extends BeanStub {
   getColsToShow() {
     const showAutoGroupAndValuesOnly = this.isPivotMode() && !this.isShowingPivotResult();
     const valueColumns = this.funcColsService.getValueColumns();
+    const showSelectionCol = this.controlsColService?.isControlsColEnabled();
     const res = this.cols.list.filter((col) => {
       const isAutoGroupCol = isColumnGroupAutoCol(col);
       if (showAutoGroupAndValuesOnly) {
         const isValueCol = valueColumns && _includes(valueColumns, col);
-        return isAutoGroupCol || isValueCol;
+        return isAutoGroupCol || isValueCol || showSelectionCol && isColumnControlsCol(col);
       } else {
         return isAutoGroupCol || col.isVisible();
       }
@@ -17367,7 +17375,7 @@ function _defineModule(definition) {
 }
 
 // community-modules/core/src/version.ts
-var VERSION = "32.3.8";
+var VERSION = "32.3.9";
 
 // community-modules/core/src/filter/columnFilterApi.ts
 function isColumnFilterPresent(beans) {
@@ -41613,17 +41621,17 @@ var _GridOptionsService = class _GridOptionsService extends BeanStub {
         const fireEvent = (name, e) => {
           const eventHandler = this.gridOptions[ComponentUtil.getCallbackForEvent(name)];
           if (typeof eventHandler === "function") {
-            this.frameworkOverrides.wrapOutgoing(() => eventHandler(event));
+            this.frameworkOverrides.wrapOutgoing(() => eventHandler(e));
           }
         };
         if (this.gridReadyFired) {
-          fireEvent(eventName);
+          fireEvent(eventName, event);
         } else {
           if (eventName === "gridReady") {
-            fireEvent(eventName);
+            fireEvent(eventName, event);
             this.gridReadyFired = true;
             for (const q of this.queueEvents) {
-              fireEvent(q.eventName);
+              fireEvent(q.eventName, q.event);
             }
             this.queueEvents = [];
           } else {
@@ -46488,7 +46496,7 @@ var SortStage = class extends BeanStub {
 };
 
 // community-modules/client-side-row-model/src/version.ts
-var VERSION2 = "32.3.8";
+var VERSION2 = "32.3.9";
 
 // community-modules/client-side-row-model/src/clientSideRowModelModule.ts
 var ClientSideRowModelCoreModule = _defineModule({
@@ -47175,7 +47183,7 @@ var GridSerializer = class extends BeanStub {
     });
   }
 };
-var VERSION3 = "32.3.8";
+var VERSION3 = "32.3.9";
 var CsvExportCoreModule = _defineModule({
   version: VERSION3,
   moduleName: `${"@ag-grid-community/csv-export" /* CsvExportModule */}-core`,
@@ -47782,7 +47790,7 @@ function purgeInfiniteCache(beans) {
 function getInfiniteRowCount(beans) {
   return beans.rowModelHelperService?.getInfiniteRowModel()?.getRowCount();
 }
-var VERSION4 = "32.3.8";
+var VERSION4 = "32.3.9";
 var InfiniteRowModelCoreModule = _defineModule({
   version: VERSION4,
   moduleName: `${"@ag-grid-community/infinite-row-model" /* InfiniteRowModelModule */}-core`,
