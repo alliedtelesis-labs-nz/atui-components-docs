@@ -1,4 +1,4 @@
-import { A as AtuiPromptThread$1, d as defineCustomElement$1 } from './p-COSDFSIQ.js';
+import { A as AtuiPromptThread$1, d as defineCustomElement$1 } from './p-Dh_dQW6y.js';
 
 const AtuiPromptThread = AtuiPromptThread$1;
 const defineCustomElement = defineCustomElement$1;

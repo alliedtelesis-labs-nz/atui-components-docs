@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-s6Ut5Yq6.js');
+var index = require('./index-43B6Ydvl.js');
 var translation = require('./translation-HqquF7bU.js');
 var tableStyles = require('./table-styles-wF-7Uyu8.js');
 var atuiCheckboxCell_entry = require('./atui-checkbox-cell.entry.cjs.js');

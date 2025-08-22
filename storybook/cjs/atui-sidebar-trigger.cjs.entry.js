@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-s6Ut5Yq6.js');
+var index = require('./index-43B6Ydvl.js');
 
 const AtuiSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -28,7 +28,7 @@ const AtuiSidebarTriggerComponent = class {
         await this.updateIsOpen();
     }
     render() {
-        return (index.h("atui-button", { key: 'b81855323e274291bcb912260019666d66114e0f', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (index.h("atui-button", { key: '3aed72a8137c647e422e5290b0dcc3347569687f', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return index.getElement(this); }
 };
