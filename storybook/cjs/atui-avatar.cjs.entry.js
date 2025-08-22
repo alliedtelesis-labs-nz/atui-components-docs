@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-s6Ut5Yq6.js');
 var index$1 = require('./index-palgSxc9.js');
 
 const avatarVariants = index$1.cva('flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-medium', {

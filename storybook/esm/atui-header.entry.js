@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host } from './index-CIq6mZ3i.js';
 
 const AtuiHeader = class {
     constructor(hostRef) {

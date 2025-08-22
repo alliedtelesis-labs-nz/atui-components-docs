@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host, a as getElement } from './index-CIq6mZ3i.js';
 
 const AtuiTextBadgeCell = class {
     constructor(hostRef) {

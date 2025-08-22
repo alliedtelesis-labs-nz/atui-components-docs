@@ -1,14 +1,15 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-DzGFYGds.js';
 
 const AtuiSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtuiSidebarMenuComponent extends H {
     constructor() {
         super();
         this.__registerHost();
+        this.__attachShadow();
     }
     render() {
-        return (h(Host, { key: 'bf66c4e423b9e56f1a446a42b46d20da06905034', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'ae2fa312cf33178fcc8a7899a553849e00fff4a0' })));
+        return (h(Host, { key: '37d1e3bba33a56b8bacac8df243129abc2408948', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '21151700ea5fb459778dcb7174de1871a06dca30' })));
     }
-}, [260, "atui-sidebar-menu"]);
+}, [257, "atui-sidebar-menu"]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;

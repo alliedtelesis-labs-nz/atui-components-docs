@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host } from './index-CIq6mZ3i.js';
 import { c as cva } from './index-CVoOBWGd.js';
 
 const avatarVariants = cva('flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-medium', {
