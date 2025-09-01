@@ -9,7 +9,7 @@ const variants = index$1.cva('transition-size relative flex flex-col overflow-y-
     variants: {
         collapsible: {
             none: null,
-            icon: 'min-w-sidebar-collapsed group-data-[state=collapsed]/sidebar-wrapper:w-sidebar-collapsed',
+            icon: 'group-data-[state=collapsed]/sidebar-wrapper:w-sidebar-collapsed',
             offcanvas: 'group-data-[state=collapsed]/sidebar-wrapper:w-0',
         },
         side: {
@@ -65,7 +65,7 @@ const AtuiSidebarComponent = class {
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (index.h(index.Host, { key: 'f881d18398ddb132b24ca668b34635dd8aeb3283', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '65413b5813188f6f118992bc68d12f455c8a31f3', "data-name": "sidebar-nav", class: `min-w-${this.width} ` + classname }, index.h("slot", { key: 'b83b6d02d2988feae1af96f34d72e80157118c1e', name: "sidebar-header" }), index.h("div", { key: 'a2c8d714b49524932fc7e577907108b212190b49', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '2999f583721e4c6d8ba6b920c9a5ce33e24bc993', name: "sidebar-content" })), index.h("div", { key: 'c0b3f4f06493b95d5be64467f3f7b76054475383', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '0dc7e88a1bbb674877c1a6f3ddd85b6c5eb35d23', name: "sidebar-footer" }))), index.h("div", { key: 'b04be3dd0892b63ca0d82f20753b2a53902c0a7f', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'c509f7d4fa94c9ce123fe2b1e5128638d8683854', name: "page-content" }))));
+        return (index.h(index.Host, { key: '0f6077d574f4241c24ed18aa2680f6d7be71132a', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-y-auto overflow-x-hidden" }, index.h("nav", { key: '56afc49121827894236d921ed6d13878c83d06ab', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("slot", { key: '985d8b7078e30d70e5f66da32583f02fb68089e4', name: "sidebar-header" }), index.h("div", { key: '1cab70bd0fa7aac3e5bd2c573ff8a21af3978236', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '397500d70d6873951aaca4db97231171ab57a847', name: "sidebar-content" })), index.h("div", { key: '3feef7735352193a46443e0ddd755a39d84cbcd6', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: '1cf67e89eeb1ef44a29c3029471556606943bec7', name: "sidebar-footer" }))), index.h("div", { key: '608784c7e103fc59c58fdd1fed00d979b37905f0', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'be5111947603f7009ffc5fe747e8773f8cae0253', name: "page-content" }))));
     }
 };
 AtuiSidebarComponent.style = atuiSidebarCss;

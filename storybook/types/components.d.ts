@@ -2072,7 +2072,7 @@ export namespace Components {
     interface AtuiSidebarTrigger {
         /**
           * Size of the button
-          * @default 'md'
+          * @default 'lg'
          */
         "size": ButtonSize1;
     }
@@ -6277,7 +6277,7 @@ declare namespace LocalJSX {
     interface AtuiSidebarTrigger {
         /**
           * Size of the button
-          * @default 'md'
+          * @default 'lg'
          */
         "size"?: ButtonSize1;
     }

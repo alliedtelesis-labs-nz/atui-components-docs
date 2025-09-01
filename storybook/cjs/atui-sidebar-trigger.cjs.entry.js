@@ -9,7 +9,7 @@ const AtuiSidebarTriggerComponent = class {
         /**
          * Size of the button
          */
-        this.size = 'md';
+        this.size = 'lg';
     }
     async updateIsOpen() {
         if (this.provider && typeof this.provider.getIsOpen === 'function') {
