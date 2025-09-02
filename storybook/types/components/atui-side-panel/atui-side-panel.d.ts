@@ -4,7 +4,7 @@ export type SidePanelSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
  * @category Overlays
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
  *
- * @slot content - Used for placing the content of the side panel.
+ * @slot default - Used for placing the content of the side panel.
  */
 export declare class AtuiSidePanelComponent {
     el: HTMLAtuiSidePanelElement;
@@ -48,9 +48,20 @@ export declare class AtuiSidePanelComponent {
      * Whether to show a backdrop behind the panel
      */
     backdrop: boolean;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+     */
+    trigger_id?: string;
     isExpanded: boolean;
     private sidePanelWrapper;
     private panelDialog;
+    private triggerEls;
+    private externalTriggerListeners;
+    /**
+     * Toggles the side panel between open and closed states
+     * @returns Promise that resolves when the panel state is toggled
+     */
+    toggleSidePanel(): Promise<void>;
     /**
      * Opens the side panel
      * @returns Promise that resolves when the panel is opened
@@ -62,7 +73,13 @@ export declare class AtuiSidePanelComponent {
      */
     closeSidePanel(): Promise<void>;
     private handleClose;
+    private handleDialogClose;
+    private handleKeyDown;
     offClickHandler(event: any): void;
+    componentDidLoad(): Promise<void>;
+    disconnectedCallback(): void;
+    private cleanupExternalTriggerListeners;
+    private setupExternalTriggerListeners;
     render(): any;
     get panelClasses(): string;
     get sizeClasses(): string;

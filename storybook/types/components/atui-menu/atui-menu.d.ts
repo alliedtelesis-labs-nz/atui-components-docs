@@ -2,6 +2,9 @@ import { EventEmitter } from '../../stencil-public-runtime';
 /**
  * @category Overlays
  * @description A popover menu component for displaying action lists when via click or hover on a trigger element.
+ *
+ * @slot menu-trigger - Trigger element for the menu (only used when trigger_id is not provided)
+ * @slot default - Content to display inside the menu
  */
 export type Position = 'top' | 'bottom' | 'left' | 'right';
 export type Align = 'start' | 'end';
@@ -45,12 +48,17 @@ export declare class AtuiMenu {
      * Prevent opening menu
      */
     disabled: boolean;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
+    trigger_id?: string;
     disabledChanged(newValue: boolean): void;
     isOpen: boolean;
     triggerEl: HTMLElement;
     menuEl: HTMLElement;
-    private cleanupAutoUpdate?;
+    private triggerEls;
     private popoverId;
+    private cleanupAutoUpdate?;
     private updatePosition;
     el: HTMLElement;
     /**
@@ -65,6 +73,7 @@ export declare class AtuiMenu {
      * Closes the dropdown menu.
      */
     closeMenu(): Promise<void>;
+    private updateAriaExpanded;
     /**
      * Return the current menu open state
      */
@@ -76,7 +85,10 @@ export declare class AtuiMenu {
     private timedOutCloser;
     componentDidLoad(): Promise<void>;
     private setupPopoverEventListeners;
+    private setupExternalTriggerListeners;
     disconnectedCallback(): void;
+    private externalTriggerListeners;
+    private cleanupExternalTriggerListeners;
     private mouseEnterHandler;
     private mouseLeaveHandler;
     private setupFloatingUI;

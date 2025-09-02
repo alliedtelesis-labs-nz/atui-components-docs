@@ -28,7 +28,7 @@ export class AtuiSidebarTriggerComponent {
         await this.updateIsOpen();
     }
     render() {
-        return (h("atui-button", { key: '3aed72a8137c647e422e5290b0dcc3347569687f', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("atui-button", { key: 'dec36cc960100251f24466744686f8689a0fd258', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     static get is() { return "atui-sidebar-trigger"; }
     static get properties() {

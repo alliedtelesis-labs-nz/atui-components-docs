@@ -9,7 +9,7 @@ const AtuiFormLabelComponent = class {
         var _a;
         return (h("div", { key: 'bcc4dfe305f44384713dc1594862c39392d98a9e', class: "flex items-center gap-8" }, [
             (this.label || this.required) && (h("label", { key: '3a6bbb492697dd4c313d0d3768721c5446273389', htmlFor: (_a = this.for) !== null && _a !== void 0 ? _a : undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: '889253bed723ed0ca6fd16f9941e9fce8e82ce22', class: "text-error" }, "*"))),
-            this.info_text && (h("atui-tooltip", { key: '31eeeb645d00c497a1fd5482217cc3a30c1c2646', position: "right" }, h("span", { key: '888f9b50a50e822471f1689507f2ad7314ee9d58', slot: "tooltip-trigger", class: "material-icons cursor-pointer !text-icon-sm text-light" }, "info_outline"), h("span", { key: 'd697f497964404119454cf9526f99a5e648b12f2', slot: "tooltip-content" }, this.info_text))),
+            this.info_text && (h("atui-tooltip", { key: '31eeeb645d00c497a1fd5482217cc3a30c1c2646', position: "right" }, h("span", { key: '888f9b50a50e822471f1689507f2ad7314ee9d58', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '2034d8f2b7db1ac39e5e44853ad2114680326a4a' }, this.info_text))),
         ]));
     }
 };
@@ -43,11 +43,13 @@ const AtuiTooltip = class {
          */
         this.delay = 150;
         this.isOpen = false;
+        this.triggerEls = [];
         this.updatePosition = async () => {
             if (this.triggerEl && this.tooltipEl && this.isOpen) {
                 await this.updateFloatingPosition();
             }
         };
+        this.externalTriggerListeners = [];
     }
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
@@ -65,6 +67,7 @@ const AtuiTooltip = class {
             this.isOpen = true;
         }
         await this.updatePosition();
+        this.updateAriaExpanded();
     }
     /**
      * Closes the tooltip.
@@ -74,14 +77,34 @@ const AtuiTooltip = class {
             this.tooltipEl.hidePopover();
             this.isOpen = false;
         }
+        this.updateAriaExpanded();
+    }
+    updateAriaExpanded() {
+        if (this.trigger_id && this.triggerEl) {
+            this.triggerEl.setAttribute('aria-expanded', this.isOpen ? 'true' : 'false');
+        }
     }
     async componentDidLoad() {
         this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-tooltip: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+        }
+        else {
+            this.triggerEl = this.el.querySelector('[data-name="tooltip-trigger"]');
+        }
         await this.setupFloatingUI();
         setTimeout(() => this.setupPopoverEventListeners(), 0);
+        if (this.trigger_id && this.triggerEls.length) {
+            this.setupExternalTriggerListeners();
+        }
     }
     disconnectedCallback() {
         this.cleanupFloatingUI();
+        this.cleanupExternalTriggerListeners();
         if (this.showTimeout) {
             clearTimeout(this.showTimeout);
             this.showTimeout = undefined;
@@ -90,6 +113,12 @@ const AtuiTooltip = class {
             clearTimeout(this.hideTimeout);
             this.hideTimeout = undefined;
         }
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
     }
     async setupPopoverEventListeners() {
         if (this.tooltipEl) {
@@ -107,6 +136,37 @@ const AtuiTooltip = class {
                 }
             });
         }
+    }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        this.triggerEls.forEach((el) => {
+            const mouseEnterHandler = () => {
+                if (!this.disabled) {
+                    this.triggerEl = el;
+                    this.mouseEnterHandler();
+                }
+            };
+            const mouseLeaveHandler = () => {
+                if (!this.disabled) {
+                    this.triggerEl = el;
+                    this.mouseLeaveHandler();
+                }
+            };
+            el.addEventListener('mouseenter', mouseEnterHandler);
+            el.addEventListener('mouseleave', mouseLeaveHandler);
+            this.externalTriggerListeners.push({
+                element: el,
+                event: 'mouseenter',
+                handler: mouseEnterHandler,
+            }, {
+                element: el,
+                event: 'mouseleave',
+                handler: mouseLeaveHandler,
+            });
+            el.setAttribute('aria-haspopup', 'true');
+            el.setAttribute('aria-expanded', 'false');
+        });
     }
     async mouseEnterHandler() {
         if (this.hideTimeout) {
@@ -233,7 +293,7 @@ const AtuiTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '940d6889b7728360a5f35c80c7e9ff052dd62d73', class: "relative" }, h("div", { key: '81b7537909dcd1a7be899c9702eb2a200a82bb24', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '64b188a432c067200b63fc6e48eec2079681d332', name: "tooltip-trigger" })), h("div", { key: 'cd56d8d701203e835dcc485560cc693409943404', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '3b5e34aa71d4a69c557f1868628c02b29b01f7de', name: "tooltip-content" }))));
+        return (h(Host, { key: '7069e77b2151799b5606bf5d7e8323baa51da61c', class: "relative" }, !this.trigger_id && (h("div", { key: 'cbcb9b5fcabac07549631274894b5d3ce7073dbc', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'c00ae787af05445475d179bfb33e8c8b34573944', name: "tooltip-trigger" }))), h("div", { key: '3685a033ca7b1bba1bcdc6cd49f9820b2fc5bdf6', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '8c357671b4016c7acde9fd239f1a29ca34bfc75d' }))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

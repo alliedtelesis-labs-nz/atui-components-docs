@@ -8,7 +8,7 @@ const atuiInputNumericCss = "input::-webkit-outer-spin-button,input::-webkit-inn
 const containerVariants = index$1.cva('height-[36px] relative flex rounded-md', {
     variants: {
         showButtons: {
-            true: 'border border-solid border-med',
+            true: 'border-med border border-solid',
             false: '',
         },
     },
@@ -17,15 +17,15 @@ const inputVariants = index$1.cva('height-[36px] transition[background-color,col
     variants: {
         disabled: {
             false: 'bg-white',
-            true: 'pointer-events-none border-none bg-surface-1 !text-disabled',
+            true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
             false: 'bg-white',
-            true: 'border-none bg-surface-1 text-dark',
+            true: 'bg-surface-1 text-dark border-none',
         },
         invalid: {
-            false: 'border-med focus:border-active-dark focus:ring-2 focus:ring-active-foreground/30',
-            true: 'border-error-base focus:ring-2 focus:ring-destructive-foreground/30',
+            false: 'border-med focus:border-active-dark focus:ring-active-foreground/30 focus:ring-2',
+            true: 'border-error-base focus:ring-destructive-foreground/30 focus:ring-2',
         },
         activePlaceholder: {
             false: 'placeholder:text-disabled',
@@ -117,7 +117,7 @@ const AtuiInputNumericComponent = class {
             readonly: this.readonly,
             showButtons: this.show_buttons,
         });
-        return (index.h(index.Host, { key: 'c8c32a1e517cee8336fecaaa090cb90818b4583c', class: "w-full" }, index.h("div", { key: 'fb7981f3a3bfd3f000ca0a7d1605dea9c09ebb89', class: "flex flex-col" }, index.h("slot", { key: 'df61cd7e3a48062a20b363a572c8d4bab741bcbc', name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { key: 'd4a48a2000bfb209ce7d230b44a23266dbb873e7', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '0ac6780a89101d060cf03da9a39bd2559acdbdd6', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '1d52711e9e2489a7c32ec020296a5b88bfebccf7', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("atui-button", { key: 'e38a916120ce0bb93716e8625709702f2f90c810', class: "rounded-l-md rounded-r-none border-r border-solid border-med", type: "secondaryText", icon: "remove", onClick: this.handleDecrease, disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" })), index.h("input", { key: '9bed6e0398a525dbda502080c9919449457dc3c8', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", placeholder: `${this.placeholder}`, onInput: (event) => (this.value = Number(event.target.value)), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("atui-button", { key: '144d0631a57485bf80c431a5244d8ca51f048917', class: "rounded-l-none rounded-r-md border-l border-solid border-med", type: "secondaryText", icon: "add", onClick: this.handleIncrease, disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }))), this.error_text && this.invalid && (index.h("span", { key: '214dfdc87cb1e9e56f4df385bf1a63ef54781694', class: "text-sm text-error", "data-name": "input-error" }, this.error_text))));
+        return (index.h(index.Host, { key: 'c8c32a1e517cee8336fecaaa090cb90818b4583c', class: "w-full" }, index.h("div", { key: 'fb7981f3a3bfd3f000ca0a7d1605dea9c09ebb89', class: "flex flex-col" }, index.h("slot", { key: 'df61cd7e3a48062a20b363a572c8d4bab741bcbc', name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { key: 'd4a48a2000bfb209ce7d230b44a23266dbb873e7', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '0ac6780a89101d060cf03da9a39bd2559acdbdd6', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '1d52711e9e2489a7c32ec020296a5b88bfebccf7', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("atui-button", { key: 'e38a916120ce0bb93716e8625709702f2f90c810', class: "border-med rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", icon: "remove", onClick: this.handleDecrease, disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" })), index.h("input", { key: '9bed6e0398a525dbda502080c9919449457dc3c8', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", placeholder: `${this.placeholder}`, onInput: (event) => (this.value = Number(event.target.value)), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("atui-button", { key: '144d0631a57485bf80c431a5244d8ca51f048917', class: "border-med rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", icon: "add", onClick: this.handleIncrease, disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }))), this.error_text && this.invalid && (index.h("span", { key: '214dfdc87cb1e9e56f4df385bf1a63ef54781694', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     get el() { return index.getElement(this); }
 };

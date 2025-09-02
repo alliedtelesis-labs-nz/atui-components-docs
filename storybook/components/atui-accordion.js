@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$3 } from './p-DmG0mWrs.js';
+import { d as defineCustomElement$3 } from './p-BuTyK9fz.js';
 import { d as defineCustomElement$2 } from './p-hW4-nYw0.js';
 
 const AtuiAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtuiAccordionComponent extends H {

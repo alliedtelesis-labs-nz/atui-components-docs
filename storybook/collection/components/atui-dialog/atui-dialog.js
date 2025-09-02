@@ -19,6 +19,8 @@ export class AtuiDialogComponent {
          * Internal state to track if dialog is open
          */
         this.isOpen = false;
+        this.triggerEls = [];
+        this.externalTriggerListeners = [];
         this.handleDialogClose = (event) => {
             event.preventDefault();
             if (this.isOpen) {
@@ -31,6 +33,18 @@ export class AtuiDialogComponent {
                 this.closeDialog();
             }
         };
+    }
+    /**
+     * Toggles the dialog modal between open and closed states
+     * @returns Promise that resolves when the dialog state is toggled
+     */
+    async toggleDialog() {
+        if (this.isOpen) {
+            await this.closeDialog();
+        }
+        else {
+            await this.openDialog();
+        }
     }
     /**
      * Opens the dialog modal
@@ -59,8 +73,50 @@ export class AtuiDialogComponent {
             dialog.classList.remove('backdrop');
         }
     }
+    async componentDidLoad() {
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-dialog: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+            this.setupExternalTriggerListeners();
+        }
+    }
+    disconnectedCallback() {
+        this.cleanupExternalTriggerListeners();
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
+    }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        const clickHandler = async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            await this.toggleDialog();
+        };
+        const keydownHandler = async (event) => {
+            switch (event.key) {
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    await this.toggleDialog();
+                    break;
+            }
+        };
+        this.triggerEls.forEach((el) => {
+            el.addEventListener('click', clickHandler);
+            el.addEventListener('keydown', keydownHandler);
+            this.externalTriggerListeners.push({ element: el, event: 'click', handler: clickHandler }, { element: el, event: 'keydown', handler: keydownHandler });
+        });
+    }
     render() {
-        return (h("dialog", { key: 'a7cf76492afd7f55bbadc23b360f0fccb41457c9', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '07a3552e9e0adc62e8f7cd301c89337c4763e1a3', class: "backdrop-content" }, h("slot", { key: '7466c89b5b53865fd8a3c69243ce6e8a32980960' }))));
+        return (h("dialog", { key: '7f9eee22d5fc66b0a5fadd0ada23876e1026e686', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '2e2925023c03d4736879b8e6f16ed536b1f6c7a7', class: "backdrop-content" }, h("slot", { key: '873af6c2c05cc8b3b44fc0db2064dc9102cbc191' }))));
     }
     static get is() { return "atui-dialog"; }
     static get originalStyleUrls() {
@@ -133,6 +189,25 @@ export class AtuiDialogComponent {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "false"
+            },
+            "trigger_id": {
+                "type": "string",
+                "attribute": "trigger_id",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
             }
         };
     }
@@ -143,6 +218,26 @@ export class AtuiDialogComponent {
     }
     static get methods() {
         return {
+            "toggleDialog": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Toggles the dialog modal between open and closed states",
+                    "tags": [{
+                            "name": "returns",
+                            "text": "Promise that resolves when the dialog state is toggled"
+                        }]
+                }
+            },
             "openDialog": {
                 "complexType": {
                     "signature": "() => Promise<void>",

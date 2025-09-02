@@ -1,14 +1,14 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$b } from './p-C9eqBXeS.js';
-import { d as defineCustomElement$a } from './p-Bgl_Yiy5.js';
-import { d as defineCustomElement$9 } from './p-Bt9YsSYm.js';
-import { d as defineCustomElement$8 } from './p-DzeRmStt.js';
-import { d as defineCustomElement$7 } from './p-DafgtWaH.js';
+import { d as defineCustomElement$b } from './p-BkB7yMfB.js';
+import { d as defineCustomElement$a } from './p-BjeWQPdc.js';
+import { d as defineCustomElement$9 } from './p-ByKYx6Hh.js';
+import { d as defineCustomElement$8 } from './p-CJjhP-rH.js';
+import { d as defineCustomElement$7 } from './p-cJhPHVMD.js';
 import { d as defineCustomElement$6 } from './p-BmgpvZ_L.js';
-import { d as defineCustomElement$5 } from './p-BSMjqe5c.js';
-import { d as defineCustomElement$4 } from './p-BokaO-e4.js';
-import { d as defineCustomElement$3 } from './p-BtPfkm2c.js';
-import { d as defineCustomElement$2 } from './p-B_gZMcKc.js';
+import { d as defineCustomElement$5 } from './p-C6qlH9rK.js';
+import { d as defineCustomElement$4 } from './p-ChXDDdsB.js';
+import { d as defineCustomElement$3 } from './p-B63odi3N.js';
+import { d as defineCustomElement$2 } from './p-CSWbCoPk.js';
 
 const AtuiStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStaticTable extends H {
     constructor() {
@@ -38,7 +38,7 @@ const AtuiStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtuiStaticTable
         }
     }
     render() {
-        return (h(Host, { key: 'ce8424f45e3d1e62c4941ccbd57cd5a680d3219a' }, !this.hide_column_manager && (h("atui-table-actions", { key: '92c3c22580a85872c8ec4804927dcb61f556c3af', ag_grid: this.agGrid }, h("atui-column-manager", { key: '247ce3085f4fc97dcb95311a56f600c3d1aa475a', slot: "column-manager", col_defs: this.col_defs }))), h("atui-table", { key: 'f6232a2cc9e3c851392f3eb858475f04586b18f1', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '22c2f362eef20a1b197f2f42cd34ada943987986' }, !this.hide_column_manager && (h("atui-table-actions", { key: 'cd20f141ddfa4dc15d86c50436ed899a693408e1', ag_grid: this.agGrid }, h("atui-column-manager", { key: 'c4df2b8b65ca54bfafef5c694730552c33567d2d', slot: "column-manager", col_defs: this.col_defs }))), h("atui-table", { key: '723dc06f3d34274dc4988dcc404c0b237303ae9d', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
 }, [256, "atui-static-table", {
         "table_data": [16],

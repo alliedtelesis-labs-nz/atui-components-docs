@@ -16,7 +16,7 @@ const AtuiLayout = class {
     get layoutElement() {
         switch (this.template) {
             case 'master-detail':
-                return (h("div", { class: "flex h-full flex-grow overflow-hidden", "data-name": "wrapper-master-detail" }, h("div", { class: "flex w-sidebar flex-col overflow-hidden" }, h("slot", { name: "master" })), h("div", { class: `flex flex-grow flex-col ${this.overflow ? 'overflow-auto' : 'overflow-hidden'}` }, h("slot", { name: "detail" }))));
+                return (h("div", { class: "flex h-full flex-grow overflow-hidden", "data-name": "wrapper-master-detail" }, h("div", { class: "w-sidebar flex flex-col overflow-hidden" }, h("slot", { name: "master" })), h("div", { class: `flex flex-grow flex-col ${this.overflow ? 'overflow-auto' : 'overflow-hidden'}` }, h("slot", { name: "detail" }))));
             case 'tabset':
                 return (h("div", { class: "flex w-full flex-col", "data-name": "wrapper-tabset" }, h("slot", { name: "tabset-navigation" }), h("div", { class: "flex w-full flex-col overflow-auto" }, h("slot", { name: "tabset-content" }))));
             case 'content-container':
@@ -28,7 +28,7 @@ const AtuiLayout = class {
     }
 };
 
-const variants = cva('transition[background-color,color,box-shadow] relative flex h-[40px] w-full cursor-pointer items-center gap-8 overflow-visible truncate rounded-md p-8 px-16 py-8 text-left text-body font-normal leading-[24px] duration-300 ease-in-out hover:bg-surface-1 focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-active-foreground/40', {
+const variants = cva('transition[background-color,color,box-shadow] text-body hover:bg-surface-1 focus-visible:ring-active-foreground/40 relative flex h-[40px] w-full cursor-pointer items-center gap-8 truncate overflow-visible rounded-md p-8 px-16 py-8 text-left leading-[24px] font-normal duration-300 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', {
     variants: {
         layout: {
             horizontal: 'inline-block',
@@ -65,7 +65,7 @@ const AtuiTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '1be5c479313ca58983429e1018ac1f52ce2ca82c', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'a90b8f7be6a06831887b021aa785166d06ecfe72', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'e505e134e8845641c0eb2a6de4a994ba09fdd421' }))));
+        return (h(Host, { key: '4935a769aaba8d0bbd2cd3374d931d7338546e14', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1fe0e278045bbb6f96661d83417e20ff2302fb61', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '2c30b2689b206cd2b1c8cfaf83c00aea4a15960b' }))));
     }
 };
 

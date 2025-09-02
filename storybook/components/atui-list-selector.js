@@ -1,7 +1,7 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
 import { d as defineCustomElement$4 } from './p-CGN7bmSd.js';
-import { d as defineCustomElement$3 } from './p-BEzkrJ9H.js';
-import { d as defineCustomElement$2 } from './p-B_gZMcKc.js';
+import { d as defineCustomElement$3 } from './p-BNtZ4qRm.js';
+import { d as defineCustomElement$2 } from './p-CSWbCoPk.js';
 
 const AtuiListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiListSelector extends H {
     constructor() {
@@ -47,10 +47,10 @@ const AtuiListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtuiListSelect
     }
     get getListItems() {
         return this.options.map((item) => (h("atui-tooltip", { position: "right", disabled: !item.tooltip }, h("div", { slot: "tooltip-trigger" }, h("atui-list-selector-item", { item_id: item.id, item_title: item.title, subtitle: item.subtitle, icon: item.icon, item_prefix: item.prefix, has_border: this.has_border, is_selected: this.selected_item_id &&
-                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("atui-tooltip", { slot: "badge", position: "right" }, h("atui-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", { slot: "tooltip-content" }, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", { slot: "tooltip-content" }, item.tooltip))));
+                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("atui-tooltip", { slot: "badge", position: "right" }, h("atui-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '46911fdaad4dc4fb63cef2849e6403835e397eb3', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '12c36dbb644b9de9ab0dacdcd32784232de83ad6', name: "header" }), !!this.options.length && (h("nav", { key: '9646306b73b6a5fc02a42f6ccbe8403fc46bcb42', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '9d48a7a24be11e4a9093fb949b4032fce8e5804f', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '45ad7349d6e00f6e60032ec49a6e454920ccac2e' })));
+        return (h(Host, { key: 'aad6039888a89d73c08382cc54a59a5ae45e3b86', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '94ea7ca4321bda0d1ae76b9d4e078282403fa941', name: "header" }), !!this.options.length && (h("nav", { key: '2bd593d4cba6e1768809be0276434bbec3a92aad', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '0cb4091416b1dfb272061f92384186a16e693047', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'eb74b7724f6b6b266346c9212ed169d9a1b38c86' })));
     }
     get el() { return this; }
 }, [260, "atui-list-selector", {

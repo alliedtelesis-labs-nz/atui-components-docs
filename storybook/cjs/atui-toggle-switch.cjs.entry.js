@@ -3,7 +3,7 @@
 var index = require('./index-43B6Ydvl.js');
 var index$1 = require('./index-palgSxc9.js');
 
-const variants = index$1.cva('group/switch flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-none outline-0 outline-active hover:bg-surface-1 focus:bg-surface-1', {
+const variants = index$1.cva('group/switch outline-active hover:bg-surface-1 focus:bg-surface-1 flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-0 outline-none', {
     variants: {
         disabled: {
             false: null,
@@ -15,24 +15,24 @@ const variants = index$1.cva('group/switch flex w-fit cursor-pointer items-cente
         },
     },
 });
-const trackVariants = index$1.cva('absolute bottom-0 left-0 right-0 top-0 flex h-[20px] w-[40px] items-center justify-center rounded-full align-middle [transition:0.2s]', {
+const trackVariants = index$1.cva('absolute top-0 right-0 bottom-0 left-0 flex h-[20px] w-[40px] items-center justify-center rounded-full align-middle [transition:0.2s]', {
     variants: {
         disabled: {
             false: 'shadow-inset-xs cursor-pointer',
             true: 'shadow-inset-xs cursor-default',
         },
         active: {
-            false: 'border border-solid border-med bg-surface-2',
-            true: 'bg-active-foreground/30 group-focus-within/switch:ring-1 group-focus-within/switch:ring-active-foreground',
+            false: 'border-med bg-surface-2 border border-solid',
+            true: 'bg-active-foreground/30 group-focus-within/switch:ring-active-foreground group-focus-within/switch:ring-1',
         },
     },
 });
-const thumbVariants = index$1.cva('scale-1 material-icons absolute relative m-2 flex h-[16px] w-[16px] select-none items-center justify-center rounded-full text-center text-icon-md text-white ' +
+const thumbVariants = index$1.cva('material-icons text-icon-md absolute relative m-2 flex h-[16px] w-[16px] scale-1 items-center justify-center rounded-full text-center text-white select-none ' +
     'transition-all duration-300 ease-in-out', {
     variants: {
         active: {
-            false: 'translate-x-[-10px] bg-disabled-dark',
-            true: 'translate-x-[10px] bg-active-foreground group-focus-within/switch:ring-[6px] group-focus-within/switch:ring-active-foreground/30',
+            false: 'bg-disabled-dark translate-x-[-10px]',
+            true: 'bg-active-foreground group-focus-within/switch:ring-active-foreground/30 translate-x-[10px] group-focus-within/switch:ring-[6px]',
         },
         disabled: {
             false: 'cursor-pointer',
@@ -80,7 +80,7 @@ const AtuiToggleSwitchComponent = class {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, index.h("div", { key: '58c8d854889be05963a7cca47f9f1d46d548b698', class: "flex flex-col" }, index.h("slot", { key: '6a4ccaab4d25b2d7cb93d23e7842eefe6e45ed81', name: "label" }), !!this.label && this.show_label && (index.h("atui-form-label", { key: '9ab232bbe044f47c46210c2ec1da806b2a17ae69', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: '4affadca2f0013ad7fd085f6a02e14d3579c4c8e', class: "inline-block text-xs leading-tight text-light", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: '7ba893950624c6f6a83a5f9fa3c9fe828328d4f7', class: "relative flex h-20 w-40" }, index.h("input", { key: '3ed414d0e39b17dd2692141d9b4b20af02e579d3', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '87d4cb268876cede92f456dd70d4488ee0664d3d', class: trackClassname }, index.h("span", { key: 'decc698d8c36204efafe6daa0dab92abd1801eeb', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, index.h("div", { key: '58c8d854889be05963a7cca47f9f1d46d548b698', class: "flex flex-col" }, index.h("slot", { key: '6a4ccaab4d25b2d7cb93d23e7842eefe6e45ed81', name: "label" }), !!this.label && this.show_label && (index.h("atui-form-label", { key: '9ab232bbe044f47c46210c2ec1da806b2a17ae69', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: '4affadca2f0013ad7fd085f6a02e14d3579c4c8e', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: '7ba893950624c6f6a83a5f9fa3c9fe828328d4f7', class: "relative flex h-20 w-40" }, index.h("input", { key: '3ed414d0e39b17dd2692141d9b4b20af02e579d3', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '87d4cb268876cede92f456dd70d4488ee0664d3d', class: trackClassname }, index.h("span", { key: 'decc698d8c36204efafe6daa0dab92abd1801eeb', class: thumbClassname }, this.value ? 'check' : 'remove')))));
     }
 };
 

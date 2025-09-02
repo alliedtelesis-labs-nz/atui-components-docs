@@ -1,0 +1,217 @@
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { c as cva } from './p-CVoOBWGd.js';
+import { d as defineCustomElement$4 } from './p-BkB7yMfB.js';
+import { d as defineCustomElement$3 } from './p-cJhPHVMD.js';
+import { d as defineCustomElement$2 } from './p-BmgpvZ_L.js';
+import { d as defineCustomElement$1 } from './p-CSWbCoPk.js';
+
+const promptInputContainerVariants = cva('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
+    variants: {
+        invalid: {
+            true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring-2',
+            false: 'border-med focus-within:border-active-foreground focus-within:ring-active-foreground/30 focus-within:ring-2',
+        },
+        disabled: {
+            true: 'bg-surface-1 pointer-events-none',
+            false: 'bg-white',
+        },
+    },
+    compoundVariants: [
+        {
+            disabled: true,
+            className: 'focus-within:ring-0',
+        },
+    ],
+    defaultVariants: {
+        invalid: false,
+        disabled: false,
+    },
+});
+const promptInputVariants = cva('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
+    variants: {
+        invalid: {
+            true: 'border-destructive-foreground',
+            false: 'border-med',
+        },
+        disabled: {
+            true: 'bg-surface-1 pointer-events-none',
+            false: 'bg-disableD-LIGHT',
+        },
+    },
+    defaultVariants: {
+        invalid: false,
+        disabled: false,
+    },
+});
+const AtuiPromptInputComponent = /*@__PURE__*/ proxyCustomElement(class AtuiPromptInputComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.atuiChange = createEvent(this, "atuiChange", 7);
+        this.atuiSubmit = createEvent(this, "atuiSubmit", 7);
+        this.atuiStop = createEvent(this, "atuiStop", 7);
+        this.atuiFocus = createEvent(this, "atuiFocus", 7);
+        /**
+         * Placeholder text to be shown when no input is passed
+         */
+        this.placeholder = 'Enter your message...';
+        /**
+         * Maximum height in pixels for auto-resize
+         */
+        this.max_height = 240;
+        /**
+         * Maximum character length with counter display
+         */
+        this.max_length = 2000;
+        /**
+         * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
+         */
+        this.in_progress = false;
+        /**
+         * The value of the input
+         */
+        this.value = '';
+        /**
+         * Disable input interactions and apply visual indication
+         */
+        this.disabled = false;
+        this.invalid = false;
+        /**
+         * @slot label - Custom label content (alternative to using the label prop)
+         */
+        this.inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
+    }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
+    focusInput() {
+        if (this.textareaEl) {
+            this.textareaEl.focus();
+            this.atuiFocus.emit();
+        }
+    }
+    handleInput(event) {
+        event.stopPropagation();
+        this.value = event.target.value;
+        if (this.max_length && this.value.length > this.max_length) {
+            this.invalid = true;
+        }
+        else {
+            this.invalid = false;
+        }
+        this.atuiChange.emit(this.value);
+        this.autoResize();
+    }
+    autoResize() {
+        if (this.textareaEl) {
+            this.textareaEl.style.height = 'auto';
+            const scrollHeight = this.textareaEl.scrollHeight;
+            const newHeight = Math.max(44, Math.min(scrollHeight, this.max_height));
+            this.textareaEl.style.height = `${newHeight}px`;
+        }
+    }
+    componentDidLoad() {
+        setTimeout(() => {
+            this.autoResize();
+        }, 0);
+    }
+    handleKeyDown(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            this.sendMessage();
+        }
+    }
+    sendMessage() {
+        if (this.in_progress) {
+            this.atuiStop.emit();
+        }
+        else if (this.value && this.value.trim() !== '' && !this.invalid) {
+            this.atuiSubmit.emit(this.value.trim());
+            this.value = '';
+            this.invalid = false; // Reset invalid state when message is sent
+            setTimeout(() => {
+                this.autoResize();
+                this.focusInput();
+            }, 0);
+        }
+    }
+    render() {
+        const canSend = !this.disabled &&
+            !this.invalid &&
+            (this.in_progress || (this.value && this.value.trim() !== ''));
+        const containerClass = promptInputContainerVariants({
+            invalid: this.invalid,
+            disabled: this.disabled,
+        });
+        const inputClass = promptInputVariants({
+            invalid: this.invalid,
+            disabled: this.disabled,
+        });
+        return (h(Host, { key: 'ee5c3fba49ee97a41f09031ca29f759bb632b955', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: 'f0ea36e28357a97a3a1ca158e3ad443f7c1f5398', class: "flex flex-col" }, h("slot", { key: 'ce93591375228598dff38c66b7eb94d8fe43d10d', name: "label" }), (this.label || this.info_text) && (h("atui-form-label", { key: 'b72fb68114db5f1785a4e1a3f933ca9e8956eea3', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '66cf715c65c7e425a1e67d90c5f8570577561ae4', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'edf9ca31b64b53394b0adc1c22da4062d1d8a8a0', class: containerClass }, h("textarea", { key: '00d1983738684086a6c892a15467d83bf3c7d4a9', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+                minHeight: '44px',
+                maxHeight: this.max_height + 'px',
+                overflow: 'hidden',
+            }, "data-name": "prompt-input" }), h("div", { key: 'bb6210a33bee195391eac9cdabda28611218f33e', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'a5fb9b56116410e927c29d33952b12c703eca354', class: "flex items-center gap-4" }, h("slot", { key: '4cf0aba14a91cb43ffa9125fee04c829c3d98c51', name: "actions-left" })), h("div", { key: '7deb708baef913568eb839877047d699db985f06', class: "flex items-center gap-4 self-end" }, h("slot", { key: '61a01b0adee60053227750589e0d3be370c15e0c', name: "actions-right" }), h("atui-button", { key: '4f561c812b92442fd05ee0b91f1577cd3738bf5b', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+                if (event.key === 'Enter' ||
+                    event.key === ' ') {
+                    this.sendMessage();
+                }
+            }, "data-name": "prompt-send-button" })))), h("slot", { key: 'bbf9d43fb8b939776ff37e710c6dcd7b9dfc958f', name: "footer" }), this.invalid && (h("span", { key: '7b9e97595c06aca0e9984e39419fed2f5ada9788', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            ? this.error_text
+            : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
+    }
+    get el() { return this; }
+}, [260, "atui-prompt-input", {
+        "label": [1],
+        "hint_text": [1],
+        "info_text": [1],
+        "error_text": [1],
+        "placeholder": [1],
+        "max_height": [2],
+        "max_length": [2],
+        "in_progress": [4],
+        "value": [1025],
+        "disabled": [4],
+        "textareaEl": [32],
+        "translations": [32],
+        "invalid": [32]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["atui-prompt-input", "atui-button", "atui-form-label", "atui-loading", "atui-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "atui-prompt-input":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtuiPromptInputComponent);
+            }
+            break;
+        case "atui-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "atui-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "atui-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+        case "atui-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
+
+export { AtuiPromptInputComponent as A, defineCustomElement as d };
+//# sourceMappingURL=p-B31FxhVM.js.map
+
+//# sourceMappingURL=p-B31FxhVM.js.map

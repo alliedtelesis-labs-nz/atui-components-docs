@@ -3,15 +3,15 @@ import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { c as cva } from './index-CVoOBWGd.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 
-const inputVariants = cva('min-h-36 placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pl-8 pr-24 outline-none duration-300 ease-in-out focus-within:outline-0 focus-within:ring-2', {
+const inputVariants = cva('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', {
     variants: {
         disabled: {
-            false: 'bg-white focus-within:ring-active-foreground/30',
-            true: 'pointer-events-none border-none bg-surface-1 !text-disabled',
+            false: 'focus-within:ring-active-foreground/30 bg-white',
+            true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
             false: 'focus-within:ring-active-foreground/30',
-            true: 'cursor-text border-none !bg-surface-1 !text-dark',
+            true: '!bg-surface-1 !text-dark cursor-text border-none',
         },
         invalid: {
             false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
@@ -29,11 +29,11 @@ const inputVariants = cva('min-h-36 placeholder-text-light transition[background
         typeahead: false,
     },
 });
-const optionVariants = cva('transition[background-color,color,box-shadow] flex w-full cursor-pointer items-center truncate p-8 text-body font-normal duration-300 ease-in-out focus:outline-0 focus:ring-2 focus:ring-inset focus:ring-active-foreground/40', {
+const optionVariants = cva('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', {
     variants: {
         active: {
             true: 'bg-active-light text-active',
-            false: 'bg-white hover:bg-disabled-light',
+            false: 'hover:bg-disabled-light bg-white',
         },
     },
 });
@@ -135,7 +135,7 @@ const AtuiMultiSelectComponent = class {
             : null), h("div", { key: '31aa97991a974932d240cd9941ed4724a2aecffc' }, this.error_text && this.invalid && (h("span", { key: '1381282422010f0c610315a8d5966a1cb3a40f15', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-xs leading-tight text-med", "data-name": "multi-select-hint" }, this.hint_text))));
+        return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
         const classname = inputVariants({
@@ -147,18 +147,18 @@ const AtuiMultiSelectComponent = class {
         return (h("div", { class: classname, slot: "menu-trigger", tabindex: 0 }, h("div", null, h("atui-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtuiRemoveChip: (event) => {
                 this.value = this.value.filter((item) => !event.detail.includes(item));
                 this.atuiChange.emit(this.value);
-            }, chips: this.value, "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "pointer-events-none select-none text-body text-disabled" }, this.placeholder)))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none pointer-events-none flex h-full items-center bg-transparent p-4 text-foreground", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
+            }, chips: this.value, "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder)))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
             ? 'arrow_drop_up'
             : 'arrow_drop_down'))))));
     }
     renderOptions() {
         var _a, _b, _c, _d, _e;
-        return (h("ul", { id: this.menuId, role: "listbox", class: "contents", slot: "menu-content", onKeyDown: async (event) => {
+        return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md bg-surface-1 p-8 outline-0 ring-active-foreground/30 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute right-4 top-4" }, h("atui-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("atui-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.searchText = '';
                 this.searchInputEl.value = '';
@@ -168,7 +168,7 @@ const AtuiMultiSelectComponent = class {
                     .toLowerCase()
                     .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "w-full bg-white px-16 py-8 text-body text-light" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
+            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
             'No results found'))));
     }
     renderOption(option) {

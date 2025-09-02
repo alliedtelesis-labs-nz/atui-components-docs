@@ -784,6 +784,15 @@ export namespace Components {
           * @default 'dialog'
          */
         "role": 'dialog' | 'alertdialog';
+        /**
+          * Toggles the dialog modal between open and closed states
+          * @returns Promise that resolves when the dialog state is toggled
+         */
+        "toggleDialog": () => Promise<void>;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog.
+         */
+        "trigger_id"?: string;
     }
     /**
      * @category Table Cell
@@ -1255,6 +1264,10 @@ export namespace Components {
           * @default 'click'
          */
         "trigger": OpenOn;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+         */
+        "trigger_id"?: string;
         /**
           * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
          */
@@ -1976,6 +1989,15 @@ export namespace Components {
           * @default 'xs'
          */
         "size": SidePanelSize;
+        /**
+          * Toggles the side panel between open and closed states
+          * @returns Promise that resolves when the panel state is toggled
+         */
+        "toggleSidePanel": () => Promise<void>;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+         */
+        "trigger_id"?: string;
     }
     /**
      * @category Navigation
@@ -2626,6 +2648,10 @@ export namespace Components {
           * @default 'top'
          */
         "position": TooltipPosition;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+         */
+        "trigger_id"?: string;
         /**
           * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
           * @default '200px'
@@ -4930,6 +4956,10 @@ declare namespace LocalJSX {
           * @default 'dialog'
          */
         "role"?: 'dialog' | 'alertdialog';
+        /**
+          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog.
+         */
+        "trigger_id"?: string;
     }
     /**
      * @category Table Cell
@@ -5409,6 +5439,10 @@ declare namespace LocalJSX {
           * @default 'click'
          */
         "trigger"?: OpenOn;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+         */
+        "trigger_id"?: string;
         /**
           * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
          */
@@ -6186,6 +6220,10 @@ declare namespace LocalJSX {
           * @default 'xs'
          */
         "size"?: SidePanelSize;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+         */
+        "trigger_id"?: string;
     }
     /**
      * @category Navigation
@@ -6866,6 +6904,10 @@ declare namespace LocalJSX {
           * @default 'top'
          */
         "position"?: TooltipPosition;
+        /**
+          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+         */
+        "trigger_id"?: string;
         /**
           * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
           * @default '200px'

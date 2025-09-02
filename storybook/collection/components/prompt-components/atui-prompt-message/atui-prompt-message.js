@@ -8,11 +8,11 @@ export var VoteStatus;
     VoteStatus[VoteStatus["Up"] = 1] = "Up";
     VoteStatus[VoteStatus["Down"] = -1] = "Down";
 })(VoteStatus || (VoteStatus = {}));
-const messageVariants = cva('text-base rounded-lg py-4', {
+const messageVariants = cva('rounded-lg py-4 text-base', {
     variants: {
         role: {
-            user: 'ml-auto inline-block bg-surface-2 p-8 text-dark',
-            assistant: 'mr-auto text-dark',
+            user: 'bg-surface-2 text-dark ml-auto inline-block p-8',
+            assistant: 'text-dark mr-auto',
         },
         loading: {
             true: 'animate-pulse',
@@ -95,17 +95,17 @@ export class AtuiPromptMessage {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
         if (this.loading)
             return null;
-        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", { slot: "tooltip-content" }, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Up), "data-name": "vote-up-button" }, this.vote_status === VoteStatus.Up ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" // token-border-dark
-        }, h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", { slot: "tooltip-content" }, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
+        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Up), "data-name": "vote-up-button" }, this.vote_status === VoteStatus.Up ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" // token-border-dark
+        }, h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
             'Helpful')), h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Down), "data-name": "vote-down-button" }, this.vote_status === VoteStatus.Down ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "0 -960 960 960", height: "15px", fill: "#adb5bd" // token-border-dark
-        }, h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", { slot: "tooltip-content" }, ((_j = (_h = (_g = this.translations) === null || _g === void 0 ? void 0 : _g.ATUI) === null || _h === void 0 ? void 0 : _h.PROMPT) === null || _j === void 0 ? void 0 : _j.NOT_HELPFUL) ||
+        }, h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, ((_j = (_h = (_g = this.translations) === null || _g === void 0 ? void 0 : _g.ATUI) === null || _h === void 0 ? void 0 : _h.PROMPT) === null || _j === void 0 ? void 0 : _j.NOT_HELPFUL) ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
-                : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), h("span", { slot: "tooltip-content" }, this.copyFeedbackVisible
+                : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), h("span", null, this.copyFeedbackVisible
             ? ((_m = (_l = (_k = this.translations) === null || _k === void 0 ? void 0 : _k.ATUI) === null || _l === void 0 ? void 0 : _l.PROMPT) === null || _m === void 0 ? void 0 : _m.COPIED) ||
                 'Copied'
             : ((_q = (_p = (_o = this.translations) === null || _o === void 0 ? void 0 : _o.ATUI) === null || _p === void 0 ? void 0 : _p.PROMPT) === null || _q === void 0 ? void 0 : _q.COPY) ||
-                'Copy'))), this.role === 'assistant' && this.error && (h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), h("span", { slot: "tooltip-content" }, ((_t = (_s = (_r = this.translations) === null || _r === void 0 ? void 0 : _r.ATUI) === null || _s === void 0 ? void 0 : _s.PROMPT) === null || _t === void 0 ? void 0 : _t.RETRY) || 'Retry')))));
+                'Copy'))), this.role === 'assistant' && this.error && (h("atui-tooltip", { position: "top" }, h("atui-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), h("span", null, ((_t = (_s = (_r = this.translations) === null || _r === void 0 ? void 0 : _r.ATUI) === null || _s === void 0 ? void 0 : _s.PROMPT) === null || _t === void 0 ? void 0 : _t.RETRY) || 'Retry')))));
     }
     renderContent() {
         var _a, _b, _c;
@@ -124,7 +124,7 @@ export class AtuiPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '9e3bd33653e63685fe07ce845c7675f2219d1548', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '2a71b744b7e7690f37cee010278aacd71efc6dbd', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'c8da2be6f55c8762d9b9d4295e22c03fdb546a01', class: "self-start text-sm text-light", "data-name": "message-name" }, this.name)), h("div", { key: '6aa116577468031e0b26e9c101b1b9ebba64615d', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '5c5df178f5e289a410aa1bc238bf484ef247cef9', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '213edb1718882c907998f0fba0247fa2b4b0be3d', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ab7b79b2e9046e3610d127a804a2a8f9c7108ab5', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'f41d9da7b1249b310fea96d005ea2303e12a6f21', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "atui-prompt-message"; }
     static get properties() {

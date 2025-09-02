@@ -26,11 +26,11 @@ const AtuiMultiBtnCell = class {
     }
     get buttonsToRender() {
         return this.buttons.map((button) => {
-            return (h("atui-tooltip", { position: "right", disabled: !button.tooltip }, button && (h("atui-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (h("span", { slot: "tooltip-content", class: `leading-normal` }, button.tooltip))));
+            return (h("atui-tooltip", { position: "right", disabled: !button.tooltip }, button && (h("atui-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (h("span", { class: `leading-normal` }, button.tooltip))));
         });
     }
     render() {
-        return (h(Host, { key: '9fb4ade99471dc1269702f700af3426db1f7bf3c', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (h(Host, { key: 'dc9a79f862d65caba3eda731c9d95eb76ca9c6d4', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     get el() { return getElement(this); }
 };

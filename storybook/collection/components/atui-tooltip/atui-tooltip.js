@@ -5,8 +5,8 @@ const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
  * @category **Overlays**
  * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
  *
- * @slot tooltip-trigger - Shows the tooltip when hovered
- * @slot tooltip-content - Content to go inside the tooltip
+ * @slot tooltip-trigger - Shows the tooltip when hovered (only used when trigger_id is not provided)
+ * @slot default - Content to go inside the tooltip
  */
 export class AtuiTooltip {
     constructor() {
@@ -35,11 +35,13 @@ export class AtuiTooltip {
          */
         this.delay = 150;
         this.isOpen = false;
+        this.triggerEls = [];
         this.updatePosition = async () => {
             if (this.triggerEl && this.tooltipEl && this.isOpen) {
                 await this.updateFloatingPosition();
             }
         };
+        this.externalTriggerListeners = [];
     }
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
@@ -57,6 +59,7 @@ export class AtuiTooltip {
             this.isOpen = true;
         }
         await this.updatePosition();
+        this.updateAriaExpanded();
     }
     /**
      * Closes the tooltip.
@@ -66,14 +69,34 @@ export class AtuiTooltip {
             this.tooltipEl.hidePopover();
             this.isOpen = false;
         }
+        this.updateAriaExpanded();
+    }
+    updateAriaExpanded() {
+        if (this.trigger_id && this.triggerEl) {
+            this.triggerEl.setAttribute('aria-expanded', this.isOpen ? 'true' : 'false');
+        }
     }
     async componentDidLoad() {
         this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-tooltip: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+        }
+        else {
+            this.triggerEl = this.el.querySelector('[data-name="tooltip-trigger"]');
+        }
         await this.setupFloatingUI();
         setTimeout(() => this.setupPopoverEventListeners(), 0);
+        if (this.trigger_id && this.triggerEls.length) {
+            this.setupExternalTriggerListeners();
+        }
     }
     disconnectedCallback() {
         this.cleanupFloatingUI();
+        this.cleanupExternalTriggerListeners();
         if (this.showTimeout) {
             clearTimeout(this.showTimeout);
             this.showTimeout = undefined;
@@ -82,6 +105,12 @@ export class AtuiTooltip {
             clearTimeout(this.hideTimeout);
             this.hideTimeout = undefined;
         }
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
     }
     async setupPopoverEventListeners() {
         if (this.tooltipEl) {
@@ -99,6 +128,37 @@ export class AtuiTooltip {
                 }
             });
         }
+    }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        this.triggerEls.forEach((el) => {
+            const mouseEnterHandler = () => {
+                if (!this.disabled) {
+                    this.triggerEl = el;
+                    this.mouseEnterHandler();
+                }
+            };
+            const mouseLeaveHandler = () => {
+                if (!this.disabled) {
+                    this.triggerEl = el;
+                    this.mouseLeaveHandler();
+                }
+            };
+            el.addEventListener('mouseenter', mouseEnterHandler);
+            el.addEventListener('mouseleave', mouseLeaveHandler);
+            this.externalTriggerListeners.push({
+                element: el,
+                event: 'mouseenter',
+                handler: mouseEnterHandler,
+            }, {
+                element: el,
+                event: 'mouseleave',
+                handler: mouseLeaveHandler,
+            });
+            el.setAttribute('aria-haspopup', 'true');
+            el.setAttribute('aria-expanded', 'false');
+        });
     }
     async mouseEnterHandler() {
         if (this.hideTimeout) {
@@ -225,7 +285,7 @@ export class AtuiTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '940d6889b7728360a5f35c80c7e9ff052dd62d73', class: "relative" }, h("div", { key: '81b7537909dcd1a7be899c9702eb2a200a82bb24', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '64b188a432c067200b63fc6e48eec2079681d332', name: "tooltip-trigger" })), h("div", { key: 'cd56d8d701203e835dcc485560cc693409943404', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '3b5e34aa71d4a69c557f1868628c02b29b01f7de', name: "tooltip-content" }))));
+        return (h(Host, { key: '7069e77b2151799b5606bf5d7e8323baa51da61c', class: "relative" }, !this.trigger_id && (h("div", { key: 'cbcb9b5fcabac07549631274894b5d3ce7073dbc', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'c00ae787af05445475d179bfb33e8c8b34573944', name: "tooltip-trigger" }))), h("div", { key: '3685a033ca7b1bba1bcdc6cd49f9820b2fc5bdf6', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '8c357671b4016c7acde9fd239f1a29ca34bfc75d' }))));
     }
     static get is() { return "atui-tooltip"; }
     static get properties() {
@@ -361,6 +421,25 @@ export class AtuiTooltip {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "150"
+            },
+            "trigger_id": {
+                "type": "string",
+                "attribute": "trigger_id",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
             }
         };
     }

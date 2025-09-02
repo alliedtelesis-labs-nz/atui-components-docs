@@ -1,17 +1,17 @@
 import { h, } from "@stencil/core";
 import { cva } from "class-variance-authority";
-const variants = cva('relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 font-normal leading-none outline-none transition-colors duration-300 ease-in-out focus-visible:border-active-foreground focus-visible:ring-2 focus-visible:ring-active-foreground/40 focus-visible:ring-offset-0', {
+const variants = cva('focus-visible:border-active-foreground focus-visible:ring-active-foreground/40 relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-offset-0', {
     variants: {
         active: {
             true: 'bg-active-foreground/15 text-active',
             false: 'text-dark',
         },
         disabled: {
-            true: 'pointer-events-none text-disabled hover:text-disabled',
+            true: 'text-disabled hover:text-disabled pointer-events-none',
             false: null,
         },
         hostDisabled: {
-            true: 'pointer-events-none text-disabled hover:text-disabled',
+            true: 'text-disabled hover:text-disabled pointer-events-none',
             false: null,
         },
     },

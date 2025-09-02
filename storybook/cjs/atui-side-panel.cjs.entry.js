@@ -59,9 +59,35 @@ const AtuiSidePanelComponent = class {
          */
         this.backdrop = false;
         this.isExpanded = false;
+        this.triggerEls = [];
+        this.externalTriggerListeners = [];
         this.handleClose = () => {
             this.closeSidePanel();
         };
+        this.handleDialogClose = (event) => {
+            event.preventDefault();
+            if (this.isExpanded) {
+                this.closeSidePanel();
+            }
+        };
+        this.handleKeyDown = (event) => {
+            if (event.key === 'Escape' && this.isExpanded) {
+                event.preventDefault();
+                this.closeSidePanel();
+            }
+        };
+    }
+    /**
+     * Toggles the side panel between open and closed states
+     * @returns Promise that resolves when the panel state is toggled
+     */
+    async toggleSidePanel() {
+        if (this.isExpanded) {
+            await this.closeSidePanel();
+        }
+        else {
+            await this.openSidePanel();
+        }
     }
     /**
      * Opens the side panel
@@ -95,8 +121,50 @@ const AtuiSidePanelComponent = class {
             this.handleClose();
         }
     }
+    async componentDidLoad() {
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-side-panel: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+            this.setupExternalTriggerListeners();
+        }
+    }
+    disconnectedCallback() {
+        this.cleanupExternalTriggerListeners();
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
+    }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        const clickHandler = async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            await this.toggleSidePanel();
+        };
+        const keydownHandler = async (event) => {
+            switch (event.key) {
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    await this.toggleSidePanel();
+                    break;
+            }
+        };
+        this.triggerEls.forEach((el) => {
+            el.addEventListener('click', clickHandler);
+            el.addEventListener('keydown', keydownHandler);
+            this.externalTriggerListeners.push({ element: el, event: 'click', handler: clickHandler }, { element: el, event: 'keydown', handler: keydownHandler });
+        });
+    }
     render() {
-        return (index.h("div", { key: 'dd5997b4f7b0b72be4eaa25f0eb9edd13928ad5e' }, index.h("dialog", { key: '15bca474c6cc7736d89fe8a426a78c084a5bfc67', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '' }, index.h("div", { key: '140f01234a892eab163b2ebdf84b9b8030fa3818', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, index.h("div", { key: '047dc44a98299aefccfd5c805ca4210ee9d3e9ff', class: 'sticky top-0 z-nav' }, index.h("atui-header", { key: '8a293a6c36ae58ed69cc69a4ad2d971d5fc14af3', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (index.h("span", { key: 'da50b74bca5bdd9cdf0ac2555917d206fdb9c43b', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, index.h("i", { key: 'e3cfda2ac5e167c122dc11a09a62053dd4ece3b7', class: "material-icons md-16 right-16 top-20 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), index.h("div", { key: '8fa71de39a93bfde19facec8d3312f23102d386f', class: 'flex w-full flex-1 flex-col' }, index.h("slot", { key: 'eb4af5d45dfd6954ced389b7b638e24cd05a0dac', name: 'content' }))))));
+        return (index.h("div", { key: 'd211a07eda5723a9f10055ecf4bd13f4d07e16a3' }, index.h("dialog", { key: '257c0d45235db65655cdb240bbd742b2819507eb', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '6d71bf2195605e7481c539cbd138c01bcba53f23', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, index.h("div", { key: '4df526e0383659b51f97b55c682e6db7c1bffb61', class: 'z-nav sticky top-0' }, index.h("atui-header", { key: '98a932a3be955172f52d24a1e021b73aa06eb777', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (index.h("span", { key: '494443344e7d61d874f4ac8be271b1c819e1091f', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, index.h("i", { key: 'ffdf8745d6ee4dbac16f15ee0836397033a45367', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), index.h("div", { key: '75225667d5eb12d6079cae60b85988bb22bda085', class: 'flex w-full flex-1 flex-col' }, index.h("slot", { key: 'e4c264f4bb6f31c20d1855e42602a4b1a77a3f05' }))))));
     }
     get panelClasses() {
         return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 

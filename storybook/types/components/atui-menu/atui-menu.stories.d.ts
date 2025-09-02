@@ -1,14 +1,23 @@
 declare const _default: {
     title: string;
     argTypes: {
-        origin_x: {
+        position: {
             options: string[];
             control: {
                 type: string;
             };
         };
-        origin_y: {
-            options: string[];
+        width: {
+            control: {
+                type: string;
+            };
+        };
+        triggerLabel: {
+            control: {
+                type: string;
+            };
+        };
+        triggerId: {
             control: {
                 type: string;
             };
@@ -16,4 +25,7 @@ declare const _default: {
     };
 };
 export default _default;
-export declare const Primary: any;
+export declare const AutoOpenMenu: any;
+export declare const SlotTrigger: any;
+export declare const ExternalTrigger: any;
+export declare const TableRowExample: any;

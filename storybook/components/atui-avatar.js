@@ -1,12 +1,12 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
 import { c as cva } from './p-CVoOBWGd.js';
 
-const avatarVariants = cva('flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-medium', {
+const avatarVariants = cva('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', {
     variants: {
         size: {
             sm: 'h-24 w-24 text-xs',
             md: 'h-32 w-32 text-sm',
-            lg: 'text-base h-40 w-40',
+            lg: 'h-40 w-40 text-base',
         },
         variant: {
             primary: 'bg-primary text-primary-foreground',

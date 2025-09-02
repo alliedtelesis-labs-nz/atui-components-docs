@@ -2,9 +2,7 @@ const ManualInitTemplate = (args) => {
     var _a;
     return `
 <div>
-  <button id="init-btn" style="margin-bottom: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-    Initialize Table
-  </button>
+  <atui-button id="init-btn" label="Initialize Table" type="primary" style="margin-bottom: 20px;"></atui-button>
   <p id="status" style="margin-bottom: 20px; color: #666;">
     Table not initialized. Click the button to initialize.
   </p>
@@ -115,9 +113,7 @@ const ConditionalInitTemplate = (args) => {
     <label style="margin-right: 10px;">
       <input type="checkbox" id="custom-pagination"> Use Custom Pagination
     </label>
-    <button id="apply-config" style="padding: 8px 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
-      Apply Configuration & Initialize
-    </button>
+    <atui-button id="apply-config" label="Apply Configuration & Initialize" type="primary"></atui-button>
   </div>
   <p id="config-status" style="margin-bottom: 20px; color: #666;">
     Configure options above, then click "Apply Configuration" to initialize the table.
@@ -189,12 +185,8 @@ const ExternalGridApiTemplate = (args) => {
     return `
 <div>
   <div style="margin-bottom: 20px;">
-    <button id="create-external-grid" style="padding: 8px 16px; background-color: #6f42c1; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
-      Create External Grid API
-    </button>
-    <button id="attach-to-table" disabled style="padding: 8px 16px; background-color: #17a2b8; color: white; border: none; border-radius: 4px; cursor: pointer;">
-      Attach to Table
-    </button>
+    <atui-button id="create-external-grid" label="Create External Grid API" type="secondary" style="margin-right: 10px;"></atui-button>
+    <atui-button id="attach-to-table" label="Attach to Table" type="primary" disabled></atui-button>
   </div>
   <p id="external-status" style="margin-bottom: 20px; color: #666;">
     Click "Create External Grid API" to create a shared grid instance, then attach it to the table.

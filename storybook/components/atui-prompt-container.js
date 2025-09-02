@@ -1,13 +1,13 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$9 } from './p-C9eqBXeS.js';
-import { d as defineCustomElement$8 } from './p-DafgtWaH.js';
-import { d as defineCustomElement$7 } from './p-CjuJO3CY.js';
+import { d as defineCustomElement$9 } from './p-BkB7yMfB.js';
+import { d as defineCustomElement$8 } from './p-cJhPHVMD.js';
+import { d as defineCustomElement$7 } from './p-CpLZCvqa.js';
 import { d as defineCustomElement$6 } from './p-BmgpvZ_L.js';
-import { d as defineCustomElement$5 } from './p-BhIa1CHh.js';
-import { d as defineCustomElement$4 } from './p-BIkEKQbn.js';
-import { d as defineCustomElement$3 } from './p-Dh_dQW6y.js';
-import { d as defineCustomElement$2 } from './p-B_gZMcKc.js';
+import { d as defineCustomElement$5 } from './p-B31FxhVM.js';
+import { d as defineCustomElement$4 } from './p-C6WHRWw1.js';
+import { d as defineCustomElement$3 } from './p-l0YJ22lp.js';
+import { d as defineCustomElement$2 } from './p-CSWbCoPk.js';
 
 const AtuiPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptContainer extends H {
     constructor() {
@@ -181,7 +181,7 @@ const AtuiPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtuiPromptC
         return (h("div", { class: "p-4" }, h("atui-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtuiSubmit: (event) => this.handleSubmit(event.detail), onAtuiStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '917e270cd63941ff59a50f8e1ff8c88763811ea0', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '981c3c350f1ec08bf17b559ce4ffb691639d8971', name: "prompt-container-header" }), h("div", { key: '12e18d43113545c8a1f5de896d5cfe036ae3256a', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("atui-prompt-thread", { key: '2f22ce7bda58e229b1d3b177d703d977aa563a57', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '581fcdc1e8f3fbec2383a12d6365439a83b94340', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '31852c347b013a39f8560b3bc596e03411d80dd9', name: "prompt-container-footer" }))));
+        return (h(Host, { key: 'efba6f3acfaf494d77c54e6578ce4f671eb7105c', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '7d55b37305d257f0747ddd22507aed206115c47a', name: "prompt-container-header" }), h("div", { key: 'a93ef2180c1de83f5b6121979a35a13d29b7e8b4', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("atui-prompt-thread", { key: 'af4f0c3da0d64de6c6515ee8ae29ecaeeba1d298', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '46c84f273ac1babeca06cb49ffb1b32a125892cd', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '39deaa3d37dcd14f9928e8b249c62586402f9235', name: "prompt-container-footer" }))));
     }
     get el() { return this; }
 }, [260, "atui-prompt-container", {

@@ -35,11 +35,13 @@ export class AtuiMenu {
          */
         this.disabled = false;
         this.isOpen = false;
+        this.triggerEls = [];
         this.updatePosition = async () => {
             if (this.triggerEl && this.menuEl && this.isOpen) {
                 await this.updateFloatingPosition();
             }
         };
+        this.externalTriggerListeners = [];
     }
     disabledChanged(newValue) {
         if (newValue && this.isOpen) {
@@ -59,13 +61,14 @@ export class AtuiMenu {
         }
         this.atuiMenuStateChange.emit(this.isOpen);
         await this.updatePosition();
+        this.updateAriaExpanded();
     }
     /**
      * Opens the dropdown menu.
      */
     async openMenu() {
         if (this.disabled) {
-            return; // Don't open if disabled
+            return;
         }
         if (this.menuEl) {
             this.menuEl.showPopover();
@@ -73,6 +76,7 @@ export class AtuiMenu {
         }
         this.atuiMenuStateChange.emit(true);
         await this.updatePosition();
+        this.updateAriaExpanded();
     }
     /**
      * Closes the dropdown menu.
@@ -83,6 +87,12 @@ export class AtuiMenu {
             this.isOpen = false;
         }
         this.atuiMenuStateChange.emit(false);
+        this.updateAriaExpanded();
+    }
+    updateAriaExpanded() {
+        if (this.trigger_id && this.triggerEl) {
+            this.triggerEl.setAttribute('aria-expanded', this.isOpen ? 'true' : 'false');
+        }
     }
     /**
      * Return the current menu open state
@@ -92,8 +102,21 @@ export class AtuiMenu {
     }
     async componentDidLoad() {
         this.popoverId = `atui-menu-${Math.random().toString(36).substr(2, 9)}`;
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-menu: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+        }
+        else {
+            this.triggerEl = this.el.querySelector('[data-name="menu-trigger"]');
+        }
         await this.setupFloatingUI();
         setTimeout(() => this.setupPopoverEventListeners(), 0);
+        if (this.trigger_id && this.triggerEls.length) {
+            this.setupExternalTriggerListeners();
+        }
     }
     setupPopoverEventListeners() {
         if (this.menuEl) {
@@ -107,8 +130,79 @@ export class AtuiMenu {
             });
         }
     }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        this.triggerEls.forEach((el) => {
+            const listeners = [];
+            if (this.trigger === 'hover') {
+                const mouseEnterHandler = () => {
+                    if (!this.disabled) {
+                        this.triggerEl = el;
+                        this.mouseEnterHandler();
+                    }
+                };
+                const mouseLeaveHandler = () => {
+                    if (!this.disabled) {
+                        this.triggerEl = el;
+                        this.mouseLeaveHandler();
+                    }
+                };
+                listeners.push({ event: 'mouseenter', handler: mouseEnterHandler }, { event: 'mouseleave', handler: mouseLeaveHandler });
+            }
+            if (this.trigger === 'click') {
+                const clickHandler = async (event) => {
+                    if (!this.disabled) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        this.triggerEl = el;
+                        if (this.isOpen) {
+                            await this.closeMenu();
+                        }
+                        else {
+                            await this.openMenu();
+                        }
+                    }
+                };
+                listeners.push({ event: 'click', handler: clickHandler });
+            }
+            const keydownHandler = async (event) => {
+                if (!this.disabled) {
+                    this.triggerEl = el;
+                    switch (event.key) {
+                        case 'Escape':
+                            await this.closeMenu();
+                            break;
+                        case 'Enter':
+                        case ' ':
+                            event.preventDefault();
+                            await this.toggleMenu();
+                            break;
+                    }
+                }
+            };
+            listeners.push({ event: 'keydown', handler: keydownHandler });
+            listeners.forEach(({ event, handler }) => {
+                el.addEventListener(event, handler);
+                this.externalTriggerListeners.push({
+                    element: el,
+                    event,
+                    handler,
+                });
+            });
+            el.setAttribute('aria-haspopup', 'true');
+            el.setAttribute('aria-expanded', 'false');
+        });
+    }
     disconnectedCallback() {
         this.cleanupFloatingUI();
+        this.cleanupExternalTriggerListeners();
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
     }
     async mouseEnterHandler() {
         if (this.timedOutCloser)
@@ -216,9 +310,9 @@ export class AtuiMenu {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '0ccc40e271fd4a14df7653ffd3b74645573589c8', class: "relative z-modal" }, h("div", { key: 'fcb61f0ffe05715d172148d4654f517487bb1c1c', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (h(Host, { key: 'ed4ba146ec1573c03321a7a953e728f187c52ae9', class: "z-modal relative" }, h("div", { key: 'ef6afe909b65031db18630ffc261f04e8f14b7bf', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, h("div", { key: 'c3c7f3fbd692af418a01b60c8098625bd2addaae', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, !this.trigger_id && (h("div", { key: '60f8046051e3ee2cf2f29cdb9466f2b7961122d0', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -234,7 +328,8 @@ export class AtuiMenu {
             }, onMouseLeave: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseLeaveHandler()
                 : null, onClick: async (event) => {
-                if (this.trigger === 'click' && !this.disabled) {
+                if (this.trigger === 'click' &&
+                    !this.disabled) {
                     event.preventDefault();
                     event.stopPropagation();
                     if (this.isOpen) {
@@ -244,7 +339,7 @@ export class AtuiMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '0a898fb587915acb5f2838767a035aaaee6da384', name: "menu-trigger" })), h("div", { key: '34440c8dc0ea4ef501b2b70a96234bdfcd207b0d', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '9d4c2a003bce41631d5a4048492e37c6e7cfb6d1', name: "menu-trigger" }))), h("div", { key: 'fee26237ddee3aa478228196bee21592a087dd6b', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -256,7 +351,7 @@ export class AtuiMenu {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, h("slot", { key: '179740be7f893b123e430b0b11469d24600a4a42', name: "menu-content" })))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, h("slot", { key: '0fb0d453f16a42d0c7458eca80f931f8bf71a574' })))));
     }
     static get is() { return "atui-menu"; }
     static get properties() {
@@ -463,6 +558,25 @@ export class AtuiMenu {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "false"
+            },
+            "trigger_id": {
+                "type": "string",
+                "attribute": "trigger_id",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
             }
         };
     }

@@ -18,6 +18,8 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
          * Internal state to track if dialog is open
          */
         this.isOpen = false;
+        this.triggerEls = [];
+        this.externalTriggerListeners = [];
         this.handleDialogClose = (event) => {
             event.preventDefault();
             if (this.isOpen) {
@@ -30,6 +32,18 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
                 this.closeDialog();
             }
         };
+    }
+    /**
+     * Toggles the dialog modal between open and closed states
+     * @returns Promise that resolves when the dialog state is toggled
+     */
+    async toggleDialog() {
+        if (this.isOpen) {
+            await this.closeDialog();
+        }
+        else {
+            await this.openDialog();
+        }
     }
     /**
      * Opens the dialog modal
@@ -58,8 +72,50 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
             dialog.classList.remove('backdrop');
         }
     }
+    async componentDidLoad() {
+        if (this.trigger_id) {
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            if (this.triggerEls.length === 0) {
+                console.warn(`atui-dialog: No elements found with data-id="${this.trigger_id}"`);
+                return;
+            }
+            this.setupExternalTriggerListeners();
+        }
+    }
+    disconnectedCallback() {
+        this.cleanupExternalTriggerListeners();
+    }
+    cleanupExternalTriggerListeners() {
+        this.externalTriggerListeners.forEach(({ element, event, handler }) => {
+            element.removeEventListener(event, handler);
+        });
+        this.externalTriggerListeners = [];
+    }
+    setupExternalTriggerListeners() {
+        if (!this.triggerEls || this.triggerEls.length === 0)
+            return;
+        const clickHandler = async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            await this.toggleDialog();
+        };
+        const keydownHandler = async (event) => {
+            switch (event.key) {
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    await this.toggleDialog();
+                    break;
+            }
+        };
+        this.triggerEls.forEach((el) => {
+            el.addEventListener('click', clickHandler);
+            el.addEventListener('keydown', keydownHandler);
+            this.externalTriggerListeners.push({ element: el, event: 'click', handler: clickHandler }, { element: el, event: 'keydown', handler: keydownHandler });
+        });
+    }
     render() {
-        return (h("dialog", { key: 'a7cf76492afd7f55bbadc23b360f0fccb41457c9', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '07a3552e9e0adc62e8f7cd301c89337c4763e1a3', class: "backdrop-content" }, h("slot", { key: '7466c89b5b53865fd8a3c69243ce6e8a32980960' }))));
+        return (h("dialog", { key: '7f9eee22d5fc66b0a5fadd0ada23876e1026e686', class: `c-atui-dialog ${this.backdrop ? 'backdrop' : ''}`, id: this.dialog_id, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '2e2925023c03d4736879b8e6f16ed536b1f6c7a7', class: "backdrop-content" }, h("slot", { key: '873af6c2c05cc8b3b44fc0db2064dc9102cbc191' }))));
     }
     get el() { return this; }
     static get style() { return atuiDialogCss; }
@@ -67,7 +123,9 @@ const AtuiDialogComponent = /*@__PURE__*/ proxyCustomElement(class AtuiDialogCom
         "dialog_id": [1],
         "role": [1],
         "backdrop": [4],
+        "trigger_id": [1],
         "isOpen": [32],
+        "toggleDialog": [64],
         "openDialog": [64],
         "closeDialog": [64]
     }]);

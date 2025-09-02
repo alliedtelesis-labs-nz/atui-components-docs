@@ -43,7 +43,7 @@ export class AtuiCheckboxHeaderComponent {
         }
     }
     render() {
-        return (h("atui-checkbox", { key: 'de8974bb8cc444f8022084ee52c5367bf92d42fb', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("atui-checkbox", { key: 'c128369ffee132636465b6e217fe6e57da5dbf8e', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
     static get is() { return "atui-checkbox-header"; }
     static get states() {

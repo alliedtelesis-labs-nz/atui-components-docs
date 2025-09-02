@@ -19,9 +19,20 @@ export declare class AtuiDialogComponent {
      */
     backdrop: boolean;
     /**
+     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog.
+     */
+    trigger_id?: string;
+    /**
      * Internal state to track if dialog is open
      */
     isOpen: boolean;
+    private triggerEls;
+    private externalTriggerListeners;
+    /**
+     * Toggles the dialog modal between open and closed states
+     * @returns Promise that resolves when the dialog state is toggled
+     */
+    toggleDialog(): Promise<void>;
     /**
      * Opens the dialog modal
      * @returns Promise that resolves when the dialog is opened
@@ -34,5 +45,9 @@ export declare class AtuiDialogComponent {
     closeDialog(): Promise<void>;
     private handleDialogClose;
     private handleKeyDown;
+    componentDidLoad(): Promise<void>;
+    disconnectedCallback(): void;
+    private cleanupExternalTriggerListeners;
+    private setupExternalTriggerListeners;
     render(): any;
 }

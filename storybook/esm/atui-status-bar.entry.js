@@ -20,10 +20,10 @@ const AtuiStatusBar = class {
                 flexBasis: segment.percentage.toString() + '%',
             } }, h("div", { class: "flex flex-grow", slot: "tooltip-trigger", style: {
                 background: segment.backgroundColor,
-            } }), h("span", { slot: "tooltip-content" }, segment.tooltip))));
+            } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '9bed28d51580ff58775039d87682b51be9183995', class: this.statusBarClass }, h("div", { key: '0fd990f0f15419bc69fa5d2c016b62ced0b3962e', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: 'e80ca29cc5d1b925042e588b1f908679a113688a', class: this.statusBarClass }, h("div", { key: '2b702c1dc4fc95af3ab1212f2d8f98e51b74c425', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

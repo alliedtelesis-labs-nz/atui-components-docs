@@ -77,7 +77,7 @@ const AtuiTabSelector = class {
     }
     checkLayoutAndRender() {
         if (this.layout === 'horizontal') {
-            return (index.h("atui-layout", { class: "flex flex-grow", template: "tabset", "data-name": "navigation-top" }, !this.hide_nav && (index.h("div", { slot: "tabset-navigation" }, index.h("nav", { role: "tablist", class: "relative flex flex-wrap border-b border-gray-200 text-center text-sm font-medium", id: `container-${this.tabsetId}` }, this.tabOptions, index.h("slot", { name: "tab-nav" }), index.h("div", { id: `indicator-${this.tabsetId}`, class: "pointer-events-none absolute bottom-0 z-10 mx-8 h-2 rounded-sm bg-active-foreground transition-[left] duration-150 ease-in-out", style: {
+            return (index.h("atui-layout", { class: "flex flex-grow", template: "tabset", "data-name": "navigation-top" }, !this.hide_nav && (index.h("div", { slot: "tabset-navigation" }, index.h("nav", { role: "tablist", class: "relative flex flex-wrap border-b border-gray-200 text-center text-sm font-medium", id: `container-${this.tabsetId}` }, this.tabOptions, index.h("slot", { name: "tab-nav" }), index.h("div", { id: `indicator-${this.tabsetId}`, class: "bg-active-foreground pointer-events-none absolute bottom-0 z-10 mx-8 h-2 rounded-sm transition-[left] duration-150 ease-in-out", style: {
                     left: '0',
                     opacity: '0',
                 }, "aria-hidden": "true", role: "presentation" })))), index.h("div", { role: "tabpanel", slot: "tabset-content" }, index.h("slot", null))));
@@ -87,7 +87,7 @@ const AtuiTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '7a0f19c2f3f74ff8d65fd458fba8add47308a61f' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '9edee9acc8704328366e1406bc82a0bda94bb65a' }, this.checkLayoutAndRender());
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

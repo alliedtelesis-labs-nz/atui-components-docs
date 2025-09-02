@@ -1,18 +1,18 @@
 import { h, Host, } from "@stencil/core";
 import { cva } from "class-variance-authority";
-const inputVariants = cva('align-center transition[background-color,color,box-shadow] relative flex h-full w-full resize-none rounded-md border border-solid px-8 py-[6px] text-body outline-none duration-300 ease-in-out', {
+const inputVariants = cva('align-center transition[background-color,color,box-shadow] text-body relative flex h-full w-full resize-none rounded-md border border-solid px-8 py-[6px] duration-300 ease-in-out outline-none', {
     variants: {
         disabled: {
             false: 'bg-white',
-            true: 'border-none bg-surface-1 text-disabled focus:ring-0',
+            true: 'bg-surface-1 text-disabled border-none focus:ring-0',
         },
         readonly: {
             false: 'bg-white',
-            true: 'border-none text-dark focus:ring-0',
+            true: 'text-dark border-none focus:ring-0',
         },
         invalid: {
-            false: 'border-med focus:border-active-dark focus:ring-2 focus:ring-active-foreground/30',
-            true: 'border-error-base focus:ring-2 focus:ring-destructive-foreground/30',
+            false: 'border-med focus:border-active-dark focus:ring-active-foreground/30 focus:ring-2',
+            true: 'border-error-base focus:ring-destructive-foreground/30 focus:ring-2',
         },
     },
     compoundVariants: [
@@ -20,7 +20,7 @@ const inputVariants = cva('align-center transition[background-color,color,box-sh
             readonly: false,
             disabled: false,
             invalid: false,
-            class: 'border-med bg-white text-dark focus:border-active-foreground focus:ring-2 focus:ring-active-foreground/30',
+            class: 'border-med text-dark focus:border-active-foreground focus:ring-active-foreground/30 bg-white focus:ring-2',
         },
     ],
     defaultVariants: {
@@ -60,13 +60,13 @@ export class AtuiTextareaComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '470761f35227b68442370de418ecc1dd1c3704d7' }, h("div", { key: 'd47979e4690793b74eefd4ea35118506cb9c8278', class: "flex flex-col" }, h("slot", { key: '9009679bbe4086ad81f1d1a06a0c41f49a9a6ae4', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: 'b4ed8e4219e0074873e1a632a5beb6277ca5a2a0', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'fb55e05e76ad16ebe82aaeebdcc1dd867a1a99ff', class: "mb-8 inline-block text-xs leading-tight text-light", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '756983aff85deb971c2985ea443e13c2e293bbb4', class: "grid" }, h("textarea", { key: '632da53b54634d9cf34d37ca6ce2626803e0e7df', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => {
+        return (h(Host, { key: '848b2f0bfe5a475133411312bbcfc9afeae59eb1' }, h("div", { key: '05936d831e43c21bb44435609935eb02f6f5c5da', class: "flex flex-col" }, h("slot", { key: 'c446ff7428ef5ae7922048dc07ea1205e20d1d91', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: 'fde57591d3e75658caadf8b0a903d01d31d8b88a', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '459c47a0924c05ba866ac8d1f068d96bf74557c9', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '2ca304209c57ff934c574384d91af37e118c0916', class: "grid" }, h("textarea", { key: '73ea87068c5aa9714bac24d54a1e7686529e0a18', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => {
                 this.value = event.target.value;
-            }, onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '6449ff9c652a8f814bd114fb009829e3fd314697', "data-name": "textarea-resize-container", style: {
+            }, onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: 'c283e9a516117a9fcf80c21327ead2ced4ef5976', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "invisible whitespace-pre-wrap rounded-sm border px-8 py-[6px] text-body" }, this.value)), this.error_text && this.invalid && (h("span", { key: '25f9b5f2790b9e254522e023add10b1ed2996708', class: "text-sm text-error", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '35f778ba838a1a91a1e696fd3fc92deca4203098', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
     static get is() { return "atui-textarea"; }
     static get properties() {
