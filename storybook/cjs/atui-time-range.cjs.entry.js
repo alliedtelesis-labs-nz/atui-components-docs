@@ -1,10 +1,10 @@
 'use strict';
 
 var index = require('./index-i7hIKTeN.js');
-var timeDate_util = require('./time-date.util-C4HWFPJU.js');
-require('./table-styles-wF-7Uyu8.js');
+var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 var moment = require('./moment-BU5SUH_o.js');
 var translation = require('./translation-HqquF7bU.js');
+var date = require('./date-2rkBZCUu.js');
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {
@@ -78,7 +78,7 @@ const AtuiTimeRangeComponent = class {
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
             ? moment.hooks().subtract(this.range_limit, 'day').toDate()
-            : timeDate_util.TimeDateUtil.floorDateByTimeUnit(timeDate_util.MIN_DATE, timeDate_util.Duration.HOURS);
+            : timeDate_util.TimeDateUtil.floorDateByTimeUnit(date.MIN_DATE, timeDate_util.Duration.HOURS);
         this.defaultFromDate = moment.hooks(this.today).subtract(1, 'hours').toDate();
     }
     getLongUnitDisplay(time) {
@@ -107,7 +107,7 @@ const AtuiTimeRangeComponent = class {
     }
     onChangeCustomTime(customTime) {
         this.selected_time_range = {
-            selected: timeDate_util.TimeRangeDisplay.CUSTOM,
+            selected: date.TimeRangeDisplay.CUSTOM,
             custom: customTime,
         };
         this.atuiChange.emit(Object.assign({}, this.selected_time_range));
@@ -121,7 +121,7 @@ const AtuiTimeRangeComponent = class {
     get buttonGroupOptions() {
         var _a, _b;
         const output = [];
-        if (this.selected_time_range.selected === timeDate_util.TimeRangeDisplay.ALL) {
+        if (this.selected_time_range.selected === date.TimeRangeDisplay.ALL) {
             output.push({
                 value: (index.h("div", { class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", { class: "font-medium" }, this.translations.ATUI.TIME.ALL_TIME_LABEL))),
             });
@@ -171,8 +171,8 @@ const AtuiTimeRangeComponent = class {
                     this.absoluteTimeMenuEl.focus();
                 }
             } })), index.h("div", { key: '171c41d4925ab2e0d9c0e01d58a0d3f8701984ad', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, index.h("atui-time-with-unit", { key: '4c42059069276abd669c2e97b23466e64e846776', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
-                timeDate_util.TimeRangeDisplay.CUSTOM
-                ? timeDate_util.TimeRangeDisplay.ALL
+                date.TimeRangeDisplay.CUSTOM
+                ? date.TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();

@@ -2,7 +2,7 @@
 
 var index = require('./index-i7hIKTeN.js');
 var chartColor = require('./chart-color-CyKHCJde.js');
-var timeDate_util = require('./time-date.util-C4HWFPJU.js');
+var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 require('./moment-BU5SUH_o.js');
 
 const heightVariants = {

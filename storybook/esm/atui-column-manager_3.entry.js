@@ -1,6 +1,5 @@
 import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-C8uvvL0O.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { A as AvailableCells, a as AvailableHeaders } from './table-styles-3wjBk_6c.js';
 import { atui_checkbox_cell as AtuiCheckboxCellComponent } from './atui-checkbox-cell.entry.js';
 import { atui_text_badge_cell as AtuiTextBadgeCell } from './atui-text-badge-cell.entry.js';
 import { atui_text_cell as AtuiTextCellComponent } from './atui-text-cell.entry.js';
@@ -16,9 +15,37 @@ import { atui_multi_btn_cell as AtuiMultiBtnCell } from './atui-multi-btn-cell.e
 import { atui_color_status_cell as AtuiColorStatusCell } from './atui-color-status-cell.entry.js';
 import { atui_text_image_cell as AtuiTextImageCell } from './atui-text-image-cell.entry.js';
 import { atui_menu_cell as AtuiMenuCell } from './atui-menu-cell.entry.js';
-import './time-date-presentation.util-WdLhbnM8.js';
+import './time-date-presentation.util-D5XPK9mo.js';
 import './moment-BMuAbjcg.js';
-import './time-date.util-M_jUzjda.js';
+import './time-date.util-DLaek6ce.js';
+import './date-DJyIoUiL.js';
+
+/**
+ * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * so that ag-grid can import and render the cell components
+ */
+var AvailableCells;
+(function (AvailableCells) {
+    AvailableCells["CHECKBOX_CELL"] = "AtuiCheckboxCell";
+    AvailableCells["TEXT_CELL"] = "AtuiTextCell";
+    AvailableCells["TEXT_STATUS_CELL"] = "AtuiTextStatusCell";
+    AvailableCells["TEXT_WITH_BADGE_CELL"] = "AtuiTextBadgeCell";
+    AvailableCells["TEXT_WITH_ICON_CELL"] = "AtuiTextIconCell";
+    AvailableCells["TITLE_SUBTITLE_CELL"] = "AtuiTitleSubtitleCell";
+    AvailableCells["TITLE_SUBTITLE_DATE_CELL"] = "AtuiTitleSubtitleDateCell";
+    AvailableCells["EDIT_TEXT_CELL"] = "AtuiEditTextCell";
+    AvailableCells["CHIP_LIST_CELL"] = "AtuiChipListCell";
+    AvailableCells["TOGGLE_CELL"] = "AtuiToggleCell";
+    AvailableCells["MULTI_BTN_CELL"] = "AtuiMultiBtnCell";
+    AvailableCells["COLOR_STATUS_CELL"] = "AtuiColorStatusCell";
+    AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtuiTextImageCell";
+    AvailableCells["MENU_CELL"] = "AtuiMenuCell";
+})(AvailableCells || (AvailableCells = {}));
+var AvailableHeaders;
+(function (AvailableHeaders) {
+    AvailableHeaders["CHECKBOX_HEADER"] = "checkboxHeader";
+    AvailableHeaders["ICON_HEADER"] = "iconHeader";
+})(AvailableHeaders || (AvailableHeaders = {}));
 
 const AtuiColumnManagerComponent = class {
     constructor(hostRef) {

@@ -2,7 +2,6 @@
 
 var index = require('./index-i7hIKTeN.js');
 var translation = require('./translation-HqquF7bU.js');
-var tableStyles = require('./table-styles-wF-7Uyu8.js');
 var atuiCheckboxCell_entry = require('./atui-checkbox-cell.entry.cjs.js');
 var atuiTextBadgeCell_entry = require('./atui-text-badge-cell.entry.cjs.js');
 var atuiTextCell_entry = require('./atui-text-cell.entry.cjs.js');
@@ -18,9 +17,37 @@ var atuiMultiBtnCell_entry = require('./atui-multi-btn-cell.entry.cjs.js');
 var atuiColorStatusCell_entry = require('./atui-color-status-cell.entry.cjs.js');
 var atuiTextImageCell_entry = require('./atui-text-image-cell.entry.cjs.js');
 var atuiMenuCell_entry = require('./atui-menu-cell.entry.cjs.js');
-require('./time-date-presentation.util-CNDeyeHs.js');
+require('./time-date-presentation.util-C9fOrkKs.js');
 require('./moment-BU5SUH_o.js');
-require('./time-date.util-C4HWFPJU.js');
+require('./time-date.util-D_xgQTJS.js');
+require('./date-2rkBZCUu.js');
+
+/**
+ * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * so that ag-grid can import and render the cell components
+ */
+var AvailableCells;
+(function (AvailableCells) {
+    AvailableCells["CHECKBOX_CELL"] = "AtuiCheckboxCell";
+    AvailableCells["TEXT_CELL"] = "AtuiTextCell";
+    AvailableCells["TEXT_STATUS_CELL"] = "AtuiTextStatusCell";
+    AvailableCells["TEXT_WITH_BADGE_CELL"] = "AtuiTextBadgeCell";
+    AvailableCells["TEXT_WITH_ICON_CELL"] = "AtuiTextIconCell";
+    AvailableCells["TITLE_SUBTITLE_CELL"] = "AtuiTitleSubtitleCell";
+    AvailableCells["TITLE_SUBTITLE_DATE_CELL"] = "AtuiTitleSubtitleDateCell";
+    AvailableCells["EDIT_TEXT_CELL"] = "AtuiEditTextCell";
+    AvailableCells["CHIP_LIST_CELL"] = "AtuiChipListCell";
+    AvailableCells["TOGGLE_CELL"] = "AtuiToggleCell";
+    AvailableCells["MULTI_BTN_CELL"] = "AtuiMultiBtnCell";
+    AvailableCells["COLOR_STATUS_CELL"] = "AtuiColorStatusCell";
+    AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtuiTextImageCell";
+    AvailableCells["MENU_CELL"] = "AtuiMenuCell";
+})(AvailableCells || (AvailableCells = {}));
+var AvailableHeaders;
+(function (AvailableHeaders) {
+    AvailableHeaders["CHECKBOX_HEADER"] = "checkboxHeader";
+    AvailableHeaders["ICON_HEADER"] = "iconHeader";
+})(AvailableHeaders || (AvailableHeaders = {}));
 
 const AtuiColumnManagerComponent = class {
     constructor(hostRef) {
@@ -47869,21 +47896,21 @@ class AtuiTableComponentsConfigs {
     static getFrameworkComponents() {
         this.ensureCellComponentsLoaded();
         return {
-            [tableStyles.AvailableCells.TEXT_CELL]: atuiTextCell_entry.atui_text_cell,
-            [tableStyles.AvailableCells.TEXT_STATUS_CELL]: atuiTextStatusCell_entry.atui_text_status_cell,
-            [tableStyles.AvailableCells.TEXT_WITH_BADGE_CELL]: atuiTextBadgeCell_entry.atui_text_badge_cell,
-            [tableStyles.AvailableCells.TEXT_WITH_ICON_CELL]: atuiTextIconCell_entry.atui_text_icon_cell,
-            [tableStyles.AvailableCells.TITLE_SUBTITLE_CELL]: atuiTitleSubtitleCell_entry.atui_title_subtitle_cell,
-            [tableStyles.AvailableCells.TITLE_SUBTITLE_DATE_CELL]: atuiTitleSubtitleDateCell_entry.atui_title_subtitle_date_cell,
-            [tableStyles.AvailableCells.EDIT_TEXT_CELL]: atuiEditTextCell_entry.atui_edit_text_cell,
-            [tableStyles.AvailableCells.CHIP_LIST_CELL]: atuiChipListCell_entry.atui_chip_list_cell,
-            [tableStyles.AvailableCells.CHECKBOX_CELL]: atuiCheckboxCell_entry.atui_checkbox_cell,
-            [tableStyles.AvailableHeaders.CHECKBOX_HEADER]: atuiCheckboxHeader_entry.atui_checkbox_header,
-            [tableStyles.AvailableCells.TOGGLE_CELL]: atuiToggleCell_entry.atui_toggle_cell,
-            [tableStyles.AvailableCells.MULTI_BTN_CELL]: atuiMultiBtnCell_entry.atui_multi_btn_cell,
-            [tableStyles.AvailableCells.COLOR_STATUS_CELL]: atuiColorStatusCell_entry.atui_color_status_cell,
-            [tableStyles.AvailableCells.TEXT_WITH_IMAGE_CELL]: atuiTextImageCell_entry.atui_text_image_cell,
-            [tableStyles.AvailableCells.MENU_CELL]: atuiMenuCell_entry.atui_menu_cell,
+            [AvailableCells.TEXT_CELL]: atuiTextCell_entry.atui_text_cell,
+            [AvailableCells.TEXT_STATUS_CELL]: atuiTextStatusCell_entry.atui_text_status_cell,
+            [AvailableCells.TEXT_WITH_BADGE_CELL]: atuiTextBadgeCell_entry.atui_text_badge_cell,
+            [AvailableCells.TEXT_WITH_ICON_CELL]: atuiTextIconCell_entry.atui_text_icon_cell,
+            [AvailableCells.TITLE_SUBTITLE_CELL]: atuiTitleSubtitleCell_entry.atui_title_subtitle_cell,
+            [AvailableCells.TITLE_SUBTITLE_DATE_CELL]: atuiTitleSubtitleDateCell_entry.atui_title_subtitle_date_cell,
+            [AvailableCells.EDIT_TEXT_CELL]: atuiEditTextCell_entry.atui_edit_text_cell,
+            [AvailableCells.CHIP_LIST_CELL]: atuiChipListCell_entry.atui_chip_list_cell,
+            [AvailableCells.CHECKBOX_CELL]: atuiCheckboxCell_entry.atui_checkbox_cell,
+            [AvailableHeaders.CHECKBOX_HEADER]: atuiCheckboxHeader_entry.atui_checkbox_header,
+            [AvailableCells.TOGGLE_CELL]: atuiToggleCell_entry.atui_toggle_cell,
+            [AvailableCells.MULTI_BTN_CELL]: atuiMultiBtnCell_entry.atui_multi_btn_cell,
+            [AvailableCells.COLOR_STATUS_CELL]: atuiColorStatusCell_entry.atui_color_status_cell,
+            [AvailableCells.TEXT_WITH_IMAGE_CELL]: atuiTextImageCell_entry.atui_text_image_cell,
+            [AvailableCells.MENU_CELL]: atuiMenuCell_entry.atui_menu_cell,
         };
     }
     /**

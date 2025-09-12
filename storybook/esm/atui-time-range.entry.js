@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { a as TimeUnit, T as TimeDateUtil, M as MIN_DATE, D as Duration, b as TimeRangeDisplay } from './time-date.util-M_jUzjda.js';
-import './table-styles-3wjBk_6c.js';
+import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-DLaek6ce.js';
 import { h as hooks } from './moment-BMuAbjcg.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
+import { M as MIN_DATE, T as TimeRangeDisplay } from './date-DJyIoUiL.js';
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {

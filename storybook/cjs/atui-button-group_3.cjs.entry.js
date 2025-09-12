@@ -1,11 +1,11 @@
 'use strict';
 
 var index = require('./index-i7hIKTeN.js');
-var timeDate_util = require('./time-date.util-C4HWFPJU.js');
-require('./table-styles-wF-7Uyu8.js');
+var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 var translation = require('./translation-HqquF7bU.js');
-var timeDatePresentation_util = require('./time-date-presentation.util-CNDeyeHs.js');
+var timeDatePresentation_util = require('./time-date-presentation.util-C9fOrkKs.js');
 var moment = require('./moment-BU5SUH_o.js');
+var date = require('./date-2rkBZCUu.js');
 
 const AtuiButtonGroup = class {
     constructor(hostRef) {
@@ -66,7 +66,7 @@ const AtuiCustomTimeRangeComponent = class {
         /**
          * Minimum selectable date
          */
-        this.min_date = timeDate_util.MIN_DATE;
+        this.min_date = date.MIN_DATE;
         /**
          * Maximum selectable date
          */
@@ -193,10 +193,10 @@ const AtuiCustomTimeRangeComponent = class {
     get getFromTimes() {
         this.updateMinMaxFlags();
         if (this.isFromMinDay) {
-            return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.min_date, timeDate_util.DateFormat.HOURS_ONLY));
+            return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.min_date, date.DateFormat.HOURS_ONLY));
         }
         else if (this.isFromMaxDay) {
-            const fromMaxTime = timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(timeDate_util.TimeDateUtil.shiftDateByUnit(this.max_date, -1, timeDate_util.Duration.HOURS), timeDate_util.DateFormat.HOURS_ONLY);
+            const fromMaxTime = timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(timeDate_util.TimeDateUtil.shiftDateByUnit(this.max_date, -1, timeDate_util.Duration.HOURS), date.DateFormat.HOURS_ONLY);
             return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(undefined, fromMaxTime);
         }
         else {
@@ -206,11 +206,11 @@ const AtuiCustomTimeRangeComponent = class {
     get getToTimes() {
         this.updateMinMaxFlags();
         if (this.isToMinDay) {
-            const toMaxTime = timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(timeDate_util.TimeDateUtil.shiftDateByUnit(this.min_date, 1, timeDate_util.Duration.HOURS), timeDate_util.DateFormat.HOURS_ONLY);
+            const toMaxTime = timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(timeDate_util.TimeDateUtil.shiftDateByUnit(this.min_date, 1, timeDate_util.Duration.HOURS), date.DateFormat.HOURS_ONLY);
             return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(toMaxTime);
         }
         else if (this.isToMaxDay) {
-            return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(undefined, timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.max_date, timeDate_util.DateFormat.HOURS_ONLY));
+            return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions(undefined, timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.max_date, date.DateFormat.HOURS_ONLY));
         }
         else {
             return timeDatePresentation_util.TimeDatePresentationUtil.getTimeOptions();
@@ -326,7 +326,7 @@ const AtuiTimeWithUnitComponent = class {
             this.selectedTime = { unit, value };
         }
         else {
-            this.selectedTime = timeDate_util.TimeRangeDisplay.ALL;
+            this.selectedTime = date.TimeRangeDisplay.ALL;
             if (this.timeValue) {
                 this.timeValue = null;
             }
@@ -335,7 +335,7 @@ const AtuiTimeWithUnitComponent = class {
         this.startDate = (_a = this.getRelativeDate()) === null || _a === void 0 ? void 0 : _a.startDate;
     }
     validateInput() {
-        if (this.selectedTime !== timeDate_util.TimeRangeDisplay.ALL) {
+        if (this.selectedTime !== date.TimeRangeDisplay.ALL) {
             const maxSeconds = this.min_date
                 ? timeDate_util.TimeDateUtil.getSecondsAgoFromDate(this.min_date)
                 : this.max_seconds;
@@ -396,8 +396,8 @@ const AtuiTimeWithUnitComponent = class {
         return (index.h("div", { key: 'd2c7c5a37cc2571c546f452bd8d18c26b820c2c2', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
                 this.handleSubmit(), tabindex: 0 }, index.h("div", { key: '2b82e491bee922c786a8b69e621eabfe5d7c5085', class: "flex flex-col gap-8 p-12" }, index.h("h5", { key: '447c38bcf5ca27ffb6c204e24e2cff088e7fbc06', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), index.h("div", { key: 'fc43fd736d4c69024830f4d11e0297747c8d40a2', class: "flex flex-col gap-8" }, index.h("atui-input-numeric", { key: '5c4e191bccb234c9c938b8bbed8d717754e610fc', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), index.h("atui-select", { key: '7ea0ad0b90c1f5814c8b7d2b1f86e735056eb7db', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => this.translations.ATUI.TIME[option])
-                : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (index.h(index.Fragment, null, index.h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (index.h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== timeDate_util.TimeRangeDisplay.ALL ? (this.timeValue &&
-            ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.unit) && (index.h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === timeDate_util.TimeRangeDisplay.ALL && (index.h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (index.h("div", { key: 'b2753025830979201c86945b8a6a1fae12efca89', class: "flex flex-col gap-8 px-12" }, index.h("h5", { key: 'da906f9d8ae164ece94ed4b727d890f4039e9833', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), index.h("div", { key: 'c65998dd499df0255e7c3e0eef08528fa3430913', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
+                : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (index.h(index.Fragment, null, index.h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (index.h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== date.TimeRangeDisplay.ALL ? (this.timeValue &&
+            ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.unit) && (index.h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === date.TimeRangeDisplay.ALL && (index.h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (index.h("div", { key: 'b2753025830979201c86945b8a6a1fae12efca89', class: "flex flex-col gap-8 px-12" }, index.h("h5", { key: 'da906f9d8ae164ece94ed4b727d890f4039e9833', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), index.h("div", { key: 'c65998dd499df0255e7c3e0eef08528fa3430913', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
             this.common_options.map((timerange) => {
                 var _a, _b;
                 return (index.h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
@@ -405,7 +405,7 @@ const AtuiTimeWithUnitComponent = class {
                         if (event.key === 'Enter' ||
                             event.key === ' ')
                             this.updateSelectedRange(timerange);
-                    }, tabindex: 0, class: `${this.selectedTime !== timeDate_util.TimeRangeDisplay.ALL && ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.value) === timerange.value && ((_b = this.selectedTime) === null || _b === void 0 ? void 0 : _b.unit) === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, index.h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit])));
+                    }, tabindex: 0, class: `${this.selectedTime !== date.TimeRangeDisplay.ALL && ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.value) === timerange.value && ((_b = this.selectedTime) === null || _b === void 0 ? void 0 : _b.unit) === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, index.h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit])));
             })))), index.h("footer", { key: 'eca09c3415e1f20fd6409bef631c86049251f8fa', class: "flex justify-between p-8" }, index.h("atui-button", { key: '9e6091b4fcc84426269754a3665f55310206a4dd', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), index.h("div", { key: 'e425057b969d6730452bf422baa05d617d64125f', class: "flex gap-8" }, index.h("atui-button", { key: 'c7e54ff2e487835540820b22deb9f341f805f6d9', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), index.h("atui-button", { key: 'f674caf6ef058306c27a614c03f40f735711a3a5', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     get el() { return index.getElement(this); }
