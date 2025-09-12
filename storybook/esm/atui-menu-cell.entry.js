@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
 
 const AtuiMenuCell = class {
     constructor(hostRef) {
@@ -19,7 +19,7 @@ const AtuiMenuCell = class {
         const actions = typeof this.params.actions === 'function'
             ? this.params.actions(this.params)
             : this.params.actions;
-        return (h(Host, { key: 'caf59aa9ed7d4b177a48659a7ecdabe06a233561', class: "flex h-full items-center gap-4" }, h("atui-menu", { key: '29303460a13593a3a90b74b824b4e8a2045d0543', width: "fit-content", position: "left" }, h("atui-button", { key: 'febfeb579c929313f0d2df9bf56c4348ed53d205', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), h("div", { key: '2aae9cb01fc39e1ddc1db2f428002857b2a24620', class: "flex flex-col" }, actions &&
+        return (h(Host, { key: '089d357a69e76344f97728ff867b919fcf29ae56', class: "flex h-full items-center gap-4" }, h("atui-menu", { key: '82bf7201d1d02722345ff4b2bf368d6c201f6ced', width: "fit-content", position: "left" }, h("atui-button", { key: '7b0080efe87bf05800e43b8f6482ed65e31b8df9', type: "secondaryText", icon: (_a = this.params.icon) !== null && _a !== void 0 ? _a : 'more_vert', slot: "menu-trigger" }), h("div", { key: '53645427abd324f0ed039fbe1339f3263309dcb4', class: "flex flex-col" }, actions &&
             actions.map((action) => typeof action === 'object' &&
                 (action.disabled &&
                     action.disabled(this.params.data) &&

@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const variants = cva('text-body focus-visible:ring-active-foreground/40 relative flex w-full cursor-pointer items-center gap-8 truncate overflow-hidden rounded-md p-8 text-left font-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', {
+import { classlist } from "../../../utils/classlist";
+const variantsConfig = {
     variants: {
         disabled: {
             true: 'pointer-events-none opacity-30 grayscale-[1]',
@@ -11,7 +11,7 @@ const variants = cva('text-body focus-visible:ring-active-foreground/40 relative
             false: 'hover:bg-surface-1',
         },
     },
-});
+};
 export class AtuiMenuitemComponent {
     constructor() {
         /**
@@ -24,16 +24,17 @@ export class AtuiMenuitemComponent {
         this.disabled = false;
     }
     render() {
-        const classname = variants({
+        const getClassname = classlist('text-body focus-visible:ring-active-foreground/40 relative flex w-full cursor-pointer items-center gap-8 truncate overflow-hidden rounded-md p-8 text-left font-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', variantsConfig);
+        const classname = getClassname({
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '8c308b9f9dc0eb3d5c008ecf2628abf90baa7e64', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: '5beff427493f782245a2ce8b699b8c74b5c7b98d', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
                 }
-            } }, this.icon && (h("span", { key: '6c6fbc12b73970ca7de1ab2e88f49371429348bd', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (h("span", { key: '008e6a268f32cc845cd86a274447804a0d8f73a5', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '99d921d8b05d4ce55e10155e341ddaee8110375c' })));
+            } }, this.icon && (h("span", { key: '9dc54f9996e25f78a84fea751ab8886a7637e2c8', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (h("span", { key: 'fd5e8636bb4b757340c614bdb70db5f432e18c8b', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '4a462c049c55e85aba4ac37a05895e4cb7daeb3f' })));
     }
     static get is() { return "atui-menu-item"; }
     static get properties() {

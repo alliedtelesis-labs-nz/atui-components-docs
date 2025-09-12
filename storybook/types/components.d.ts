@@ -408,7 +408,7 @@ export namespace Components {
         "padding"?: boolean;
         /**
           * Box-shadow around card.
-          * @default 'sm'
+          * @default 'none'
          */
         "shadow"?: 'none' | 'sm' | 'lg';
         /**
@@ -4576,7 +4576,7 @@ declare namespace LocalJSX {
         "padding"?: boolean;
         /**
           * Box-shadow around card.
-          * @default 'sm'
+          * @default 'none'
          */
         "shadow"?: 'none' | 'sm' | 'lg';
         /**

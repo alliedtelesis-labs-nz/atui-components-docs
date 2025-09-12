@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 var chartColor = require('./chart-color-CyKHCJde.js');
 var timeDate_util = require('./time-date.util-C4HWFPJU.js');
 require('./moment-BU5SUH_o.js');
@@ -176,7 +176,7 @@ const AtuiChartBarLine = class {
         return { min: startDate.toString(), max: endDate.toString() };
     }
     render() {
-        return (index.h(index.Host, { key: 'a856592ba9102110d7f9587c0254d8de89d8c88b', style: { height: '100%', width: '100%' } }, index.h("section", { key: 'b70d0e361fed7d6c987b6edc477993e5979cfc8c', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '998e08519b8642dc3f70582c7c3c5c47e3ded16d', ref: (el) => (this.canvasEl = el) }))));
+        return (index.h(index.Host, { key: 'e0349794257f3e2b5e2c1b03b3770d19b3be557f', style: { height: '100%', width: '100%' } }, index.h("section", { key: '0f56a4e07429ef5e2e12707eecac0bfb06cff43c', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '6c72cc409054fada682faf30a326095eac08917a', ref: (el) => (this.canvasEl = el) }))));
     }
 };
 

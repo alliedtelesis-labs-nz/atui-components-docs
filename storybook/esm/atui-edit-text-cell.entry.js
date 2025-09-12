@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
 
 const AtuiEditTextCell = class {
     constructor(hostRef) {
@@ -21,7 +21,7 @@ const AtuiEditTextCell = class {
         }
     }
     render() {
-        return (h(Host, { key: '9bbfbfa36d5fb30a395d7384cf85c82d77916a83', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: '9d63231351a6f517a905d5887b6ae93db6b4b3e4', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: '6c15bd79915a4e8d1f7e886b1f4baa55fb0748c7', class: "flex h-full items-center leading-[100%]" }, h("atui-input", { key: 'a02d2c712839e1539d4bfeb7cea05741d0edef4f', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));

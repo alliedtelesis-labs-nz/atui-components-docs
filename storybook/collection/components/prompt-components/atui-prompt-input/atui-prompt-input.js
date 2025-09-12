@@ -1,7 +1,7 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
-import { cva } from "class-variance-authority";
-const promptInputContainerVariants = cva('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
+import { classlist } from "../../../utils/classlist";
+const promptInputContainerVariants = classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
         invalid: {
             true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring-2',
@@ -15,7 +15,7 @@ const promptInputContainerVariants = cva('relative flex flex-col items-end gap-2
     compoundVariants: [
         {
             disabled: true,
-            className: 'focus-within:ring-0',
+            class: 'focus-within:ring-0',
         },
     ],
     defaultVariants: {
@@ -23,7 +23,7 @@ const promptInputContainerVariants = cva('relative flex flex-col items-end gap-2
         disabled: false,
     },
 });
-const promptInputVariants = cva('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
+const promptInputVariants = classlist('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
     variants: {
         invalid: {
             true: 'border-destructive-foreground',
@@ -145,16 +145,16 @@ export class AtuiPromptInputComponent {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'ee5c3fba49ee97a41f09031ca29f759bb632b955', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: 'f0ea36e28357a97a3a1ca158e3ad443f7c1f5398', class: "flex flex-col" }, h("slot", { key: 'ce93591375228598dff38c66b7eb94d8fe43d10d', name: "label" }), (this.label || this.info_text) && (h("atui-form-label", { key: 'b72fb68114db5f1785a4e1a3f933ca9e8956eea3', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '66cf715c65c7e425a1e67d90c5f8570577561ae4', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'edf9ca31b64b53394b0adc1c22da4062d1d8a8a0', class: containerClass }, h("textarea", { key: '00d1983738684086a6c892a15467d83bf3c7d4a9', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (h(Host, { key: '1592ab4d84c1d42627897aaaffec2e224b491fd2', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '8f6568cd35daef210b7822024e911a1c1a823194', class: "flex flex-col" }, h("slot", { key: '1ae9a4d2eb186f352fbade9eefa32a754ea5911d', name: "label" }), (this.label || this.info_text) && (h("atui-form-label", { key: 'aebf43494069bcffbf9bd218c2281fb7debe1ede', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: 'ef7d2889e4876348aa53fbb9354e32b0553b599e', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: '1d8011a3f55cfdef71e9e752d9e5b92f93a07481', class: containerClass }, h("textarea", { key: '8a35b0ad2d385d63595de1552cf5758e681a9455', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'hidden',
-            }, "data-name": "prompt-input" }), h("div", { key: 'bb6210a33bee195391eac9cdabda28611218f33e', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'a5fb9b56116410e927c29d33952b12c703eca354', class: "flex items-center gap-4" }, h("slot", { key: '4cf0aba14a91cb43ffa9125fee04c829c3d98c51', name: "actions-left" })), h("div", { key: '7deb708baef913568eb839877047d699db985f06', class: "flex items-center gap-4 self-end" }, h("slot", { key: '61a01b0adee60053227750589e0d3be370c15e0c', name: "actions-right" }), h("atui-button", { key: '4f561c812b92442fd05ee0b91f1577cd3738bf5b', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), h("div", { key: 'c621ac97fa67fcfe0ef777c1b8260048c9431950', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: '862c38467b207d6472d198d127fe11998f806cb4', class: "flex items-center gap-4" }, h("slot", { key: '67e3cb04461d25f7015abcb062e6a49000560f00', name: "actions-left" })), h("div", { key: '762b3352dccca14e6ecea89d1aa5666ed14f3e57', class: "flex items-center gap-4 self-end" }, h("slot", { key: '2ec9c2bd1233deec40759abf6e4b2dc3d38d9b05', name: "actions-right" }), h("atui-button", { key: '75dbccf3ffaa1bb5a4104f3aeda952cb60cb7712', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), h("slot", { key: 'bbf9d43fb8b939776ff37e710c6dcd7b9dfc958f', name: "footer" }), this.invalid && (h("span", { key: '7b9e97595c06aca0e9984e39419fed2f5ada9788', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), h("slot", { key: 'dde3f7a1d572672a46cfc7988185da9cbd102973', name: "footer" }), this.invalid && (h("span", { key: '048cb5b08c8aa5652b1a452310831713b4158929', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }

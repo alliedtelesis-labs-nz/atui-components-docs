@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 var translation = require('./translation-HqquF7bU.js');
-var index$1 = require('./index-palgSxc9.js');
-var atuiPromptMessage_entry = require('./atui-prompt-message-Bv4k1V4-.js');
+var classlist = require('./classlist-BddvonaD.js');
+var atuiPromptMessage_entry = require('./atui-prompt-message-DK82d2S_.js');
 
-const promptInputContainerVariants = index$1.cva('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
+const promptInputContainerVariants = classlist.classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
         invalid: {
             true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring-2',
@@ -19,7 +19,7 @@ const promptInputContainerVariants = index$1.cva('relative flex flex-col items-e
     compoundVariants: [
         {
             disabled: true,
-            className: 'focus-within:ring-0',
+            class: 'focus-within:ring-0',
         },
     ],
     defaultVariants: {
@@ -27,7 +27,7 @@ const promptInputContainerVariants = index$1.cva('relative flex flex-col items-e
         disabled: false,
     },
 });
-const promptInputVariants = index$1.cva('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
+const promptInputVariants = classlist.classlist('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
     variants: {
         invalid: {
             true: 'border-destructive-foreground',
@@ -146,16 +146,16 @@ const AtuiPromptInputComponent = class {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'ee5c3fba49ee97a41f09031ca29f759bb632b955', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: 'f0ea36e28357a97a3a1ca158e3ad443f7c1f5398', class: "flex flex-col" }, index.h("slot", { key: 'ce93591375228598dff38c66b7eb94d8fe43d10d', name: "label" }), (this.label || this.info_text) && (index.h("atui-form-label", { key: 'b72fb68114db5f1785a4e1a3f933ca9e8956eea3', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: '66cf715c65c7e425a1e67d90c5f8570577561ae4', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: 'edf9ca31b64b53394b0adc1c22da4062d1d8a8a0', class: containerClass }, index.h("textarea", { key: '00d1983738684086a6c892a15467d83bf3c7d4a9', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (index.h(index.Host, { key: '1592ab4d84c1d42627897aaaffec2e224b491fd2', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: '8f6568cd35daef210b7822024e911a1c1a823194', class: "flex flex-col" }, index.h("slot", { key: '1ae9a4d2eb186f352fbade9eefa32a754ea5911d', name: "label" }), (this.label || this.info_text) && (index.h("atui-form-label", { key: 'aebf43494069bcffbf9bd218c2281fb7debe1ede', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: 'ef7d2889e4876348aa53fbb9354e32b0553b599e', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: '1d8011a3f55cfdef71e9e752d9e5b92f93a07481', class: containerClass }, index.h("textarea", { key: '8a35b0ad2d385d63595de1552cf5758e681a9455', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'hidden',
-            }, "data-name": "prompt-input" }), index.h("div", { key: 'bb6210a33bee195391eac9cdabda28611218f33e', class: "flex w-full items-center justify-between gap-1" }, index.h("div", { key: 'a5fb9b56116410e927c29d33952b12c703eca354', class: "flex items-center gap-4" }, index.h("slot", { key: '4cf0aba14a91cb43ffa9125fee04c829c3d98c51', name: "actions-left" })), index.h("div", { key: '7deb708baef913568eb839877047d699db985f06', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: '61a01b0adee60053227750589e0d3be370c15e0c', name: "actions-right" }), index.h("atui-button", { key: '4f561c812b92442fd05ee0b91f1577cd3738bf5b', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), index.h("div", { key: 'c621ac97fa67fcfe0ef777c1b8260048c9431950', class: "flex w-full items-center justify-between gap-1" }, index.h("div", { key: '862c38467b207d6472d198d127fe11998f806cb4', class: "flex items-center gap-4" }, index.h("slot", { key: '67e3cb04461d25f7015abcb062e6a49000560f00', name: "actions-left" })), index.h("div", { key: '762b3352dccca14e6ecea89d1aa5666ed14f3e57', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: '2ec9c2bd1233deec40759abf6e4b2dc3d38d9b05', name: "actions-right" }), index.h("atui-button", { key: '75dbccf3ffaa1bb5a4104f3aeda952cb60cb7712', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), index.h("slot", { key: 'bbf9d43fb8b939776ff37e710c6dcd7b9dfc958f', name: "footer" }), this.invalid && (index.h("span", { key: '7b9e97595c06aca0e9984e39419fed2f5ada9788', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), index.h("slot", { key: 'dde3f7a1d572672a46cfc7988185da9cbd102973', name: "footer" }), this.invalid && (index.h("span", { key: '048cb5b08c8aa5652b1a452310831713b4158929', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
@@ -303,7 +303,7 @@ const AtuiPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (index.h(index.Host, { key: '393488bb21da132fa526c5dbfbc4c271c7e137b3', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: '34a49965167059e27b2c311c882084c482de546d', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: '9fe037c26a7be91b1c9ff0f2143330cd5aed20b6', name: "thread-messages" }))));
+        return (index.h(index.Host, { key: '9baf993b641b3a23e8c604920bd585a313d85eb5', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: 'd2dd756860dcc9d000ba1f6f4789ac639afa5ebe', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: 'bfdfaf6365c481acc6070e8b494f565adcee2179', name: "thread-messages" }))));
     }
 };
 

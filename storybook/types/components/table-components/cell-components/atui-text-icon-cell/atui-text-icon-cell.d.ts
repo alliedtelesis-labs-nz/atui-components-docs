@@ -1,5 +1,5 @@
 import { ICellRendererComp } from 'ag-grid-community';
-import { IconTextCellParams, ITooltipCell } from '../../../../types';
+import type { IconTextCellParams, ITooltipCell } from '../../../../types';
 export interface IconConfig {
     iconName: string;
     iconClass?: string;

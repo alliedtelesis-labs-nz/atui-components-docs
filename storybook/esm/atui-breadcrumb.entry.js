@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, F as Fragment, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, c as createEvent, h, F as Fragment, g as getElement } from './index-C8uvvL0O.js';
 
 const AtuiBreadcrumbComponent = class {
     constructor(hostRef) {

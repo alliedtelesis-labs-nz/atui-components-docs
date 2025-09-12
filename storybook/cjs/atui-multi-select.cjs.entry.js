@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 var translation = require('./translation-HqquF7bU.js');
-var index$1 = require('./index-palgSxc9.js');
+var classlist = require('./classlist-BddvonaD.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
-const inputVariants = index$1.cva('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', {
+const inputVariantsConfig = {
     variants: {
         disabled: {
             false: 'focus-within:ring-active-foreground/30 bg-white',
@@ -30,15 +30,15 @@ const inputVariants = index$1.cva('placeholder-text-light transition[background-
         invalid: false,
         typeahead: false,
     },
-});
-const optionVariants = index$1.cva('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', {
+};
+const optionVariantsConfig = {
     variants: {
         active: {
             true: 'bg-active-light text-active',
             false: 'hover:bg-disabled-light bg-white',
         },
     },
-});
+};
 const AtuiMultiSelectComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -123,7 +123,7 @@ const AtuiMultiSelectComponent = class {
             : true;
     }
     render() {
-        return (index.h(index.Host, { key: 'b9d6c8937df024d066b5b00d860ebbc85189c90a', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'ce3996dba0d807e80a3eb675c57cef08df743c03', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -132,15 +132,16 @@ const AtuiMultiSelectComponent = class {
                         await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("atui-menu", { key: '2e367c9a6469d24a57524773f3c64f25200699cc', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: 'a4f1abe7de98d87d88f2ee8d7f921d7660a21e49', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '31aa97991a974932d240cd9941ed4724a2aecffc' }, this.error_text && this.invalid && (index.h("span", { key: '1381282422010f0c610315a8d5966a1cb3a40f15', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '36ac8db79962b08fad88a9c451aa241e9f25a999' }, this.error_text && this.invalid && (index.h("span", { key: '6fab56da3fc48690dbb4a06235be95133d7d6226', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const classname = inputVariants({
+        const getClassname = classlist.classlist('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
@@ -174,7 +175,8 @@ const AtuiMultiSelectComponent = class {
             'No results found'))));
     }
     renderOption(option) {
-        const classname = optionVariants({
+        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const classname = getOptionClassname({
             active: this.value.includes(option.value),
         });
         return (index.h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));

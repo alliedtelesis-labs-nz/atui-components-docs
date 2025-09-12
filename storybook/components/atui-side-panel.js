@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-CaGsJoRH.js';
-import { d as defineCustomElement$2 } from './p-CpLZCvqa.js';
+import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
+import { d as defineCustomElement$2 } from './p-ujLxb3Rx.js';
 
 const atuiSidePanelCss = "dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}";
 

@@ -1,4 +1,4 @@
-import { A as AtuiButtonGroupOption$1, d as defineCustomElement$1 } from './p-E9sdbpIp.js';
+import { A as AtuiButtonGroupOption$1, d as defineCustomElement$1 } from './p-BzOwo0WN.js';
 
 const AtuiButtonGroupOption = AtuiButtonGroupOption$1;
 const defineCustomElement = defineCustomElement$1;

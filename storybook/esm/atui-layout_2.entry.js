@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
-import { c as cva } from './index-CVoOBWGd.js';
+import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { c as classlist } from './classlist-Bfa-pAao.js';
 
 const AtuiLayout = class {
     constructor(hostRef) {
@@ -28,7 +28,7 @@ const AtuiLayout = class {
     }
 };
 
-const variants = cva('transition[background-color,color,box-shadow] text-body hover:bg-surface-1 focus-visible:ring-active-foreground/40 relative flex h-[40px] w-full cursor-pointer items-center gap-8 truncate overflow-visible rounded-md p-8 px-16 py-8 text-left leading-[24px] font-normal duration-300 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', {
+const variantsConfig = {
     variants: {
         layout: {
             horizontal: 'inline-block',
@@ -46,7 +46,7 @@ const variants = cva('transition[background-color,color,box-shadow] text-body ho
             class: 'bg-active-foreground/10',
         },
     ],
-});
+};
 const AtuiTab = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -61,11 +61,12 @@ const AtuiTab = class {
         }
     }
     render() {
-        const classname = variants({
+        const getClassname = classlist('group/tab text-button relative box-border flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-md border border-solid border-transparent font-medium capitalize duration-150 ease-in-out outline-none focus:outline-none', variantsConfig);
+        const classname = getClassname({
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '4935a769aaba8d0bbd2cd3374d931d7338546e14', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1fe0e278045bbb6f96661d83417e20ff2302fb61', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '2c30b2689b206cd2b1c8cfaf83c00aea4a15960b' }))));
+        return (h(Host, { key: '1147d9b8d4d39f45ca13287e9b50a42f83eb3710', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'ba5ecc1583c2d7678f202c8fc784dfc0bbf7bb0d', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '42a79e350ebfb77946bc3484c22e0bee1cfb66b9' }))));
     }
 };
 

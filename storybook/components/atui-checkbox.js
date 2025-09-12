@@ -1,4 +1,4 @@
-import { A as AtuiCheckbox$1, d as defineCustomElement$1 } from './p-BjeWQPdc.js';
+import { A as AtuiCheckbox$1, d as defineCustomElement$1 } from './p-CullAxsK.js';
 
 const AtuiCheckbox = AtuiCheckbox$1;
 const defineCustomElement = defineCustomElement$1;

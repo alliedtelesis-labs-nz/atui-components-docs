@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
+import type { ITooltipCell } from '../../../../types';
 export interface MenuAction {
     title: string;
     onTrigger: (params: ICellRendererParams) => void;

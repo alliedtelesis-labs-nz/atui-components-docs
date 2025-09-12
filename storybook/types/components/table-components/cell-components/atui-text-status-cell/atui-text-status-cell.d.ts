@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
+import type { ITooltipCell } from '../../../../types';
 import { BadgeType } from '../../../atui-badge/atui-badge';
 export interface TextStatusCellData {
     value: 'active' | 'warning' | 'error' | 'default' | string;

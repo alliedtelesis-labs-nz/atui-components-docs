@@ -233,12 +233,12 @@
       1
   );
 }
+.range-slider > input:nth-of-type(1) + output:not(:only-of-type) {
+  --flip: calc(var(--thumbs-too-close) * -1);
+}
 .range-slider > input:nth-of-type(1) + output {
   --value: var(--value-a);
   --x-offset: calc(var(--completed-a) * -1%);
-}
-.range-slider > input:nth-of-type(1) + output:not(:only-of-type) {
-  --flip: calc(var(--thumbs-too-close) * -1);
 }
 .range-slider > input:nth-of-type(1) + output::after {
   content: var(--prefix, "") var(--text-value-a) var(--suffix, "");

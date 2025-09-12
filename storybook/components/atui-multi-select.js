@@ -1,16 +1,16 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { c as cva } from './p-CVoOBWGd.js';
+import { c as classlist } from './p-Bfa-pAao.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
-import { d as defineCustomElement$8 } from './p-CGN7bmSd.js';
-import { d as defineCustomElement$7 } from './p-BkB7yMfB.js';
-import { d as defineCustomElement$6 } from './p-CM3-but3.js';
-import { d as defineCustomElement$5 } from './p-cJhPHVMD.js';
-import { d as defineCustomElement$4 } from './p-BmgpvZ_L.js';
-import { d as defineCustomElement$3 } from './p-C6qlH9rK.js';
-import { d as defineCustomElement$2 } from './p-CSWbCoPk.js';
+import { d as defineCustomElement$8 } from './p-1w9harR4.js';
+import { d as defineCustomElement$7 } from './p-CSzRt9NY.js';
+import { d as defineCustomElement$6 } from './p-DClu7vNB.js';
+import { d as defineCustomElement$5 } from './p-C65WlsXe.js';
+import { d as defineCustomElement$4 } from './p-DBWEgk0R.js';
+import { d as defineCustomElement$3 } from './p-BNd1Uawm.js';
+import { d as defineCustomElement$2 } from './p-BtsG-JMI.js';
 
-const inputVariants = cva('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', {
+const inputVariantsConfig = {
     variants: {
         disabled: {
             false: 'focus-within:ring-active-foreground/30 bg-white',
@@ -35,15 +35,15 @@ const inputVariants = cva('placeholder-text-light transition[background-color,co
         invalid: false,
         typeahead: false,
     },
-});
-const optionVariants = cva('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', {
+};
+const optionVariantsConfig = {
     variants: {
         active: {
             true: 'bg-active-light text-active',
             false: 'hover:bg-disabled-light bg-white',
         },
     },
-});
+};
 const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMultiSelectComponent extends H {
     constructor() {
         super();
@@ -129,7 +129,7 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
             : true;
     }
     render() {
-        return (h(Host, { key: 'b9d6c8937df024d066b5b00d860ebbc85189c90a', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'ce3996dba0d807e80a3eb675c57cef08df743c03', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -138,15 +138,16 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
                         await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                     }, 100);
                 }
-            } }, this.renderLabel(), h("atui-menu", { key: '2e367c9a6469d24a57524773f3c64f25200699cc', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("atui-menu", { key: 'a4f1abe7de98d87d88f2ee8d7f921d7660a21e49', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '31aa97991a974932d240cd9941ed4724a2aecffc' }, this.error_text && this.invalid && (h("span", { key: '1381282422010f0c610315a8d5966a1cb3a40f15', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '36ac8db79962b08fad88a9c451aa241e9f25a999' }, this.error_text && this.invalid && (h("span", { key: '6fab56da3fc48690dbb4a06235be95133d7d6226', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const classname = inputVariants({
+        const getClassname = classlist('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
@@ -180,7 +181,8 @@ const AtuiMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtuiMult
             'No results found'))));
     }
     renderOption(option) {
-        const classname = optionVariants({
+        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const classname = getOptionClassname({
             active: this.value.includes(option.value),
         });
         return (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));

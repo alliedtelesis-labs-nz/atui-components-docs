@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-CaGsJoRH.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
 import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-CYy36CI5.js';
 import { T as TimeDateUtil } from './p-wxnR6VRT.js';
 
@@ -174,7 +174,7 @@ const AtuiChartBarLine$1 = /*@__PURE__*/ proxyCustomElement(class AtuiChartBarLi
         return { min: startDate.toString(), max: endDate.toString() };
     }
     render() {
-        return (h(Host, { key: 'a856592ba9102110d7f9587c0254d8de89d8c88b', style: { height: '100%', width: '100%' } }, h("section", { key: 'b70d0e361fed7d6c987b6edc477993e5979cfc8c', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '998e08519b8642dc3f70582c7c3c5c47e3ded16d', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: 'e0349794257f3e2b5e2c1b03b3770d19b3be557f', style: { height: '100%', width: '100%' } }, h("section", { key: '0f56a4e07429ef5e2e12707eecac0bfb06cff43c', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '6c72cc409054fada682faf30a326095eac08917a', ref: (el) => (this.canvasEl = el) }))));
     }
 }, [256, "atui-chart-bar-line", {
         "type": [1],

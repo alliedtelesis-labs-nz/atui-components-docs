@@ -1,6 +1,6 @@
 import { h, Host, } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const layoutVariants = cva('gap-4', {
+import { classlist } from "../../utils/classlist";
+const layoutVariantsConfig = {
     variants: {
         layout: {
             column: 'flex flex-col gap-4',
@@ -8,7 +8,7 @@ const layoutVariants = cva('gap-4', {
             grid: 'grid grid-cols-3',
         },
     },
-});
+};
 /**
  * ### ```interface CheckboxOptions```
  * ```
@@ -78,11 +78,12 @@ export class AtuiCheckboxGroup {
         this.atuiChange.emit(this.value);
     }
     render() {
-        const classname = layoutVariants({
+        const getLayoutClassname = classlist('gap-4', layoutVariantsConfig);
+        const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: 'd1b1c16d37a7f560e6c243ec5f0c199931da6e6a', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '46b3d1ca277a684a46f309bfc179783629213a9c', class: "flex flex-col" }, h("slot", { key: '1918617713ad4cfd82d53c350af180d3403277a0', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '6fee351a3144fc86794160c0fa517f1954395a85', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '00c97df27bbb1080659b5a6a61486885bb5dd347', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '49826ac3e1b4966269fd00b8055053d6fda48559', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: 'b8a513864459a03791611054555e4796c71daf76' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '384bd1187e6f120cc9735c8297fbe6d45da8c861', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '5ec8f62f5bb205bf56e2f3f9491b53bc0e5e6e92', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '0246bb06326c602cf1fe724046506ab330612928', class: "flex flex-col" }, h("slot", { key: '6c54df66e074bea437f493cfe36e4d9f34845351', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '17886f2a5a1741ee3f48b14f2e8ff41e2c521045', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'd45e5e1c2a7d280a486726bb69a300250b7a13d2', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '21392d526a5e68a030743dde94efe6203a6e3e76', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '8690eb07b05d3bf6c84bd00c5dee420e9e48772f' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'e312d302f4f700324f09307effaac00132974c3f', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get is() { return "atui-checkbox-group"; }
     static get properties() {

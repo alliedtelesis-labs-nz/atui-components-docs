@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtuiTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtuiTitleSubtitleCell = class {
     }
     render() {
         var _a, _b;
-        return (index.h(index.Host, { key: '7e81564568f33deeddc3b8770d6b8b9e38df2865', class: "flex h-full items-center" }, index.h("atui-tooltip", { key: '79e15abf71f8b733a16d770cec161c7bc1d7d3c6', position: "right", disabled: !((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, index.h("div", { key: '335425ca7d67de564571442acb7899928c1f68da', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, index.h("div", { key: 'b85f675f0b7af73c3053ad3f27b48035af11d71a', class: "truncate text-sm leading-normal" }, this.title), index.h("div", { key: '06414f84b865e52c28c73ac1e7962df60589a188', class: "text-med truncate text-xs leading-normal font-normal" }, this.subtitle)), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (index.h("span", { key: 'aa8315525190bafd80e2ad7ba837253e9af82e5b', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (index.h(index.Host, { key: '6c74dca28073aae0f5391a65a71f8614fc8a38ef', class: "flex h-full items-center" }, index.h("atui-tooltip", { key: '6af9b75ddc06cd80430d081e1c673d6c89e305a7', position: "right", disabled: !((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, index.h("div", { key: '5c5ac8dc30a719b5376598941850d77654e65ad0', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, index.h("div", { key: '3feeaed039248cb6075c420a84fc9a322b9655ac', class: "truncate text-sm leading-normal" }, this.title), index.h("div", { key: 'eabaa6e21b5c083a9172becb63f6262ae5eabf59', class: "text-med truncate text-xs leading-normal font-normal" }, this.subtitle)), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (index.h("span", { key: 'ebd6074980cea2ac88154fca22632251ba7504a4', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     get el() { return index.getElement(this); }
 };

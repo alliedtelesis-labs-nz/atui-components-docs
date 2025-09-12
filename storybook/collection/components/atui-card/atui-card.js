@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const containerVariants = cva('bg-card flex flex-col overflow-hidden rounded-lg', {
+import { classlist } from "../../utils/classlist";
+const containerVariantsConfig = {
     variants: {
         shadow: {
             none: 'shadow-none',
@@ -8,8 +8,8 @@ const containerVariants = cva('bg-card flex flex-col overflow-hidden rounded-lg'
             lg: 'shadow-lg',
         },
     },
-});
-const contentVariants = cva('relative flex flex-auto flex-col', {
+};
+const contentVariantsConfig = {
     variants: {
         padding: {
             true: 'px-16 pt-8 pb-16',
@@ -20,23 +20,23 @@ const contentVariants = cva('relative flex flex-auto flex-col', {
             false: '',
         },
     },
-});
-const headerVariants = cva('hide-empty z-10 flex items-center justify-between p-16', {
+};
+const headerVariantsConfig = {
     variants: {
         sticky: {
             true: 'bg-card/80 sticky top-0 backdrop-blur',
             false: '',
         },
     },
-});
-const footerVariants = cva('hide-empty z-index-10 p-16', {
+};
+const footerVariantsConfig = {
     variants: {
         sticky: {
             true: 'bg-card/80 sticky bottom-0 backdrop-blur',
             false: '',
         },
     },
-});
+};
 /**
  * @category Layout
  * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
@@ -67,23 +67,27 @@ export class AtuiCardComponent {
         /**
          * Box-shadow around card.
          */
-        this.shadow = 'sm';
+        this.shadow = 'none';
     }
     render() {
-        const containerClassname = containerVariants({
+        const getContainerClassname = classlist('relative z-1 border border-light bg-card flex flex-col overflow-hidden rounded-lg', containerVariantsConfig);
+        const containerClassname = getContainerClassname({
             shadow: this.shadow,
         });
-        const contentClassname = contentVariants({
+        const getHeaderClassname = classlist('hide-empty relative z-2 flex items-center justify-between gap-8 rounded-t-lg p-16', headerVariantsConfig);
+        const headerClassname = getHeaderClassname({
+            sticky: this.sticky_header,
+        });
+        const getContentClassname = classlist('relative flex flex-auto flex-col', contentVariantsConfig);
+        const contentClassname = getContentClassname({
             padding: this.padding,
             overflow: this.overflow_content,
         });
-        const headerClassname = headerVariants({
-            sticky: this.sticky_header,
-        });
-        const footerClassname = footerVariants({
+        const getFooterClassname = classlist('hide-empty z-index-10 p-16', footerVariantsConfig);
+        const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (h(Host, { key: '569e08d70abfd7a2b8aa6a345ed3be8e4826761a', class: containerClassname }, h("div", { key: 'b28e574833492e955f3d6b6f19b9dc6a76289552', class: headerClassname }, h("slot", { key: '6fc1b3a86de1462cee6ad88c1dfae9cae5e19075', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: 'f7ab93aa292fc66330c2d65d44d84803dddd14ce', class: "flex flex-col" }, this.card_title && (h("h4", { key: '29f2686ee38371688d1d0caa65f9f4589fad000b', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '5acd54676e27d80f5d94c45af8fa76ad35653652', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: 'ed802ab617984ca5ac54e9d3261f085cd1694e02', name: "card-header-actions" })), h("div", { key: '5595c4b127a63da43616074c967cf91049958fc8', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: 'fb123b513146973b37393982bfb4be11ba0039a3' })), h("div", { key: '971047f4bbde10f3b33173d9a11d2245fe9e8984', class: footerClassname }, h("slot", { key: '74656943f39a9b442cd4ee56b2831d06eed9aa01', name: "card-footer" }))));
+        return (h(Host, { key: 'b86a4202992014d9bed779cacee11479d19d8ba2', class: containerClassname }, h("div", { key: 'd58a6cd4ea1e0e8b769f58e16f02ce04d083dc7b', class: headerClassname }, h("slot", { key: '2a48db1ef318d5ada535af8c6f6b49f646f6cbdd', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '1b2bcb07a27c3a7c4589ce24c8c570eb5a6e20fe', class: "flex flex-col" }, this.card_title && (h("h4", { key: 'ddf2653e347f09c4149342c8a672ba4146f398d2', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: 'aa4206b6da219c95d68391996eade119c2c60779', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: 'bf14b7c57e42006fcf467fa19e6d770f2b124d54', name: "card-header-actions" })), h("div", { key: 'ea4785380d7e7ce36ec572c1a54174cc15349243', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: '30fba60c17a43eec0ea36038bd68c8933e295b58' })), h("div", { key: '8bc16950940a44e58166d74190a7362324716e86', class: footerClassname }, h("slot", { key: '83fb2766e2a5e793d8091f92f986d50e702a61de', name: "card-footer" }))));
     }
     static get is() { return "atui-card"; }
     static get properties() {
@@ -243,7 +247,7 @@ export class AtuiCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "'sm'"
+                "defaultValue": "'none'"
             }
         };
     }

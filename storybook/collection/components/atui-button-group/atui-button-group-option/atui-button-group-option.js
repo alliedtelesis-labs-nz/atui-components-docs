@@ -1,6 +1,6 @@
 import { h, } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const variants = cva('focus-visible:border-active-foreground focus-visible:ring-active-foreground/40 relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-offset-0', {
+import { classlist } from "../../../utils/classlist";
+const variantsConfig = {
     variants: {
         active: {
             true: 'bg-active-foreground/15 text-active',
@@ -15,7 +15,8 @@ const variants = cva('focus-visible:border-active-foreground focus-visible:ring-
             false: null,
         },
     },
-});
+};
+const getButtonClasses = classlist('focus-visible:border-active-foreground focus-visible:ring-active-foreground/40 relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-offset-0', variantsConfig);
 /**
  * @category Form Controls
  * @description A button group option component for the button group.
@@ -34,12 +35,12 @@ export class AtuiButtonGroupOption {
         });
     }
     render() {
-        const classname = variants({
+        const classname = getButtonClasses({
             active: this.is_active,
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: 'c8b2b919e23a1a549aa75a43240f2dfcf0faf3b6', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '71d62e074d2ceefbe025c62d1ada40f950c488f2', name: "icon" }), this.label));
+        return (h("button", { key: '05ec6f2cf1830837f1836ff2d511d29643fb08fa', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '6ad59961158ca3eb03b51725f574f0de3b5a6cda', name: "icon" }), this.label));
     }
     static get is() { return "atui-button-group-option"; }
     static get properties() {

@@ -1,4 +1,4 @@
-export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as setPlatformOptions } from './p-CaGsJoRH.js';
+export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as setPlatformOptions } from './p-Cv5ME95Z.js';
 export { AtuiAccordion, defineCustomElement as defineCustomElementAtuiAccordion } from './atui-accordion.js';
 export { AtuiAccordionItem, defineCustomElement as defineCustomElementAtuiAccordionItem } from './atui-accordion-item.js';
 export { AtuiAccordionTrigger, defineCustomElement as defineCustomElementAtuiAccordionTrigger } from './atui-accordion-trigger.js';

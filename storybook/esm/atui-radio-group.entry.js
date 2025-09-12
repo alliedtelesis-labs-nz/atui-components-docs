@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
-import { c as cva } from './index-CVoOBWGd.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { c as classlist } from './classlist-Bfa-pAao.js';
 
-const layoutVariants = cva('gap-4', {
+const layoutVariantsConfig = {
     variants: {
         layout: {
             column: 'flex flex-col',
@@ -9,7 +9,8 @@ const layoutVariants = cva('gap-4', {
             grid: 'grid grid-cols-3',
         },
     },
-});
+};
+const getLayoutClass = classlist('gap-4', layoutVariantsConfig);
 const AtuiRadioGroup = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -59,11 +60,11 @@ const AtuiRadioGroup = class {
         }
     }
     render() {
-        const classname = layoutVariants({
+        const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: 'd0ebd5ff3b33c8fa9c8e7a94b8b442038472e2fb', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'e7ef4d58add12fbcde3584fc3093f8a5ed0d947e', class: "flex flex-col" }, h("slot", { key: 'ddbf3ad932480fff28102424f992543641385a01', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: 'a5b79ef7175a1a472190a13f8234db4d65ec5054', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '3e5748f07109b8111f04d16c58afaabeadf2e38c', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '282ec6158bc3eec492942729541fb014b30b0bf5', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '520b574c5377b5d68e5ca815662cb60b062b3a4a' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'f1879bbfd9dfff72c10b303c9a38787ce8ff9399', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '92870c9fb516f5753ca3664b00a41bbf2a831c14', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '7815a822c78aa2d75c0dd44313163ec015bd1adb', class: "flex flex-col" }, h("slot", { key: 'c463e97e13a867accaeba13e7db2a94ceeef6355', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '3114c5802e66c9c32930bd74eb2b24d2465ce0b4', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '5aaae0df1ebabb07320cbcc1524b8dbdb345f897', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '3b84689d0900112c783de3c1bf637b890c609ab8', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'b845a953a0acc46355c9d820b3b845c52f8ebe85' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'b8c67eab2b406fe27da0f090a166607225e6a68c', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     get el() { return getElement(this); }
 };

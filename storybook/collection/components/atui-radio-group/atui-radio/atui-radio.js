@@ -1,6 +1,6 @@
 import { h, Host, } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const variants = cva('focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 transition-[color,background-color,box-shadow] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2', {
+import { classlist } from "../../../utils/classlist";
+const variantsConfig = {
     variants: {
         disabled: {
             false: '',
@@ -15,7 +15,8 @@ const variants = cva('focus-visible:ring-active-foreground/30 relative flex w-fu
             true: 'bg-active-foreground/15',
         },
     },
-});
+};
+const getRadioClasses = classlist('focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 transition-[color,background-color,box-shadow] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2', variantsConfig);
 /**
  * @category Form Controls
  * @description A radio button component for selecting a single option from a predefined list.
@@ -42,12 +43,12 @@ export class AtuiRadio {
         }
     }
     render() {
-        const classname = variants({
+        const classname = getRadioClasses({
             disabled: this.disabled,
             checked: this.value,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'ed682fd82dc16676eccec6d56b40090f074ca83f', "aria-checked": this.value, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: '0279a1b13c0cc8481ebc31a5943a178eca1efa78', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.value, value: this.option_id, id: this.option_id, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: '92fc204c64b09936916d868c1c2ca06ebdd8a473', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: 'ac1329ba58d10becb90dc6c3680a52209d9206a6', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: '83598e20032ef28beca909a11167671576d7a89d', class: "text-light mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: 'c69f608e5b89ec7fa3c51a73ef7197cfda714924' }))));
+        return (h(Host, { key: '148c1b6081f52f909cab4ddb9d03b7fda7da2ee6', "aria-checked": this.value, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: '4dd544866e94808505f1f2c435d7adcec3058459', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.value, value: this.option_id, id: this.option_id, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: 'd9dfb26c7d3ebf92dd5ff11c4fd39ae907a579ef', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: 'fa55c8033084701f5508ff6162a8da0e42c9c828', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: '7e5903c9ac28e6d31e2e5a59ed24f006783e02d7', class: "text-light mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: 'c626dd0b0ab91f16d43016737014e10e765e3993' }))));
     }
     static get is() { return "atui-radio"; }
     static get properties() {

@@ -1,6 +1,6 @@
 import { h, Host, } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const variants = cva('transition-size bg-sidebar-background text-sidebar-foreground relative flex flex-col overflow-x-hidden overflow-y-auto duration-300 ease-in-out', {
+import { classlist } from "../../utils/classlist";
+const variantsConfig = {
     variants: {
         collapsible: {
             none: null,
@@ -12,7 +12,7 @@ const variants = cva('transition-size bg-sidebar-background text-sidebar-foregro
             right: 'order-1',
         },
     },
-});
+};
 /**
  * @category Navigation
  * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
@@ -62,11 +62,15 @@ export class AtuiSidebarComponent {
         return this.isOpen;
     }
     render() {
-        const classname = variants({
+        const getClassname = classlist(`atui-sidebar group/sidebar bg-sidebar-background 
+                  text-sidebar-foreground relative z-20 flex h-screen w-full
+                  flex-col overflow-hidden border-r border-solid border-r-med 
+                  transition-[width] duration-300 ease-in-out`, variantsConfig);
+        const classname = getClassname({
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (h(Host, { key: '0f6077d574f4241c24ed18aa2680f6d7be71132a', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, h("nav", { key: '56afc49121827894236d921ed6d13878c83d06ab', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("slot", { key: '985d8b7078e30d70e5f66da32583f02fb68089e4', name: "sidebar-header" }), h("div", { key: '1cab70bd0fa7aac3e5bd2c573ff8a21af3978236', class: "align-items flex flex-1 flex-col p-8" }, h("slot", { key: '397500d70d6873951aaca4db97231171ab57a847', name: "sidebar-content" })), h("div", { key: '3feef7735352193a46443e0ddd755a39d84cbcd6', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '1cf67e89eeb1ef44a29c3029471556606943bec7', name: "sidebar-footer" }))), h("div", { key: '608784c7e103fc59c58fdd1fed00d979b37905f0', class: "flex w-full overflow-auto" }, h("slot", { key: 'be5111947603f7009ffc5fe747e8773f8cae0253', name: "page-content" }))));
+        return (h(Host, { key: 'f1e43becf60065cf39778b86fe09c928a2c2c42b', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, h("nav", { key: 'd8272ef4a83a360a509e31d07e7191b8a5c4da4b', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("slot", { key: '987135f27d288ceda00a4297b6ed0260edea2bb3', name: "sidebar-header" }), h("div", { key: '5180c94002c2f0d660286a5131f069eb04847324', class: "align-items flex flex-1 flex-col p-8" }, h("slot", { key: 'aaf3050bf0249b057b687b4ff0bc8ff23ee4c5bf', name: "sidebar-content" })), h("div", { key: 'd37cce803f6c1f472a48290d9201e1dcb783739d', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: 'e995c6998da0efe42776a8b544993bf25dc7ffd8', name: "sidebar-footer" }))), h("div", { key: 'f90e98336d54d2ef14bf7e13faaa3a98a8d58128', class: "flex w-full overflow-auto" }, h("slot", { key: '6b710cf597beec21260c8c0e7323d016d2c4e4c7', name: "page-content" }))));
     }
     static get is() { return "atui-sidebar"; }
     static get originalStyleUrls() {

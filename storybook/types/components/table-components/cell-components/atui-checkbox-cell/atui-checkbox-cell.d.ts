@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { ITooltipCell } from '../../../../types';
+import type { ITooltipCell } from '../../../../types';
 export interface CheckboxCellData {
     checked: boolean;
     disabled?: boolean;

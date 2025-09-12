@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { InitTextCellParams, ITooltipCell } from '../../../../types';
+import type { InitTextCellParams, ITooltipCell } from '../../../../types';
 import { CSSProperties } from '../../../../types/styles';
 export interface TextCellData {
     text: string;

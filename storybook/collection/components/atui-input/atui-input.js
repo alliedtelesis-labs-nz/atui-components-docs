@@ -1,6 +1,6 @@
 import { h, Host, } from "@stencil/core";
-import { cva } from "class-variance-authority";
-const inputVariants = cva('placeholder-text-light pr -24 relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-md border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', {
+import { classlist } from "../../utils/classlist";
+const inputVariantsConfig = {
     variants: {
         disabled: {
             false: 'focus-within:ring-active-foreground/30 bg-white',
@@ -20,7 +20,7 @@ const inputVariants = cva('placeholder-text-light pr -24 relative flex min-h-36 
         readonly: false,
         invalid: false,
     },
-});
+};
 /**
  * @category Form Controls
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
@@ -56,15 +56,16 @@ export class AtuiInputComponent {
         this.atuiChange.emit('');
     }
     render() {
-        const classname = inputVariants({
+        const getClassname = classlist('placeholder-text-light pr -24 relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-md border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '275a04fca921759c5476b414e0fcb457fd72f53b' }, h("div", { key: '79f751989d18cd76dd0b147ee14793f48f058114', class: "flex flex-col" }, h("slot", { key: 'c97f707facff378e0b0d6435e0f8f1f2a2825678', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '92c517f2a20309f4edc5f5fdd17af71b03406808', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '05075144833a46df4ad920675621f2387b5f99c9', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'ce168fe24bd105987cf4365a9de554a6f02605f9', class: classname }, h("input", { key: '1b90f2acbd029031eefab560ff4438b9a75b5787', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '59fa955808dc3713c5bba029ba52e553f46c34e1', class: "flex items-center py-4 pr-4" }, h("slot", { key: '69a05f62d0a75b92b41be1f54cb5a8b10b4f1702', name: "input-actions" }), this.clearable &&
+        return (h(Host, { key: 'd4db69b2f5139edfc0da828de298245840ca9b37' }, h("div", { key: '02da6046a8f3fa23bc760eae9f55f3b87c277654', class: "flex flex-col" }, h("slot", { key: 'ed25b245741406a2227d0d2c24fb72958c666e37', name: "label" }), (this.label || this.required || this.info_text) && (h("atui-form-label", { key: '1dde867f2d07eebb5b40885ea263f0d62fd03571', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'c42c467f18b34c71fc9dd7323e4633d15f93e5dc', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'fdab3a7d0c3127ed3237ec9b1bb5d52ad6be4495', class: classname }, h("input", { key: 'c0ecc9c39e79e62bb2c1381b31c4ebce776e9d6f', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: 'f055e7ee528da4aa02b5310ab5845997e27f5980', class: "flex items-center py-4 pr-4" }, h("slot", { key: '27968f9045486da2899fb658a1210725dba6d659', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("atui-button", { key: '046870fa914a4292d24f1b4fa1334713496d5baf', class: `transition-all duration-300 ease-in-out ${this.clearable &&
+            this.value && (h("atui-button", { key: 'de815a5bb3bd14454e88b0967d80af9998dd65eb', class: `transition-all duration-300 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -72,7 +73,7 @@ export class AtuiInputComponent {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: '8f4b67b847cab15ae82b39edf666ba2e2c0b3d5b', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: 'd76325bbf01a31d82254b2dfbc385b33ad33ceb1', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "atui-input"; }
     static get properties() {

@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { MessageRole } from '../../../types';
+import type { MessageRole } from '../../../types';
 export declare enum VoteStatus {
     None = 0,
     Up = 1,

@@ -1,5 +1,5 @@
 import { Host, h, Fragment, } from "@stencil/core";
-import { cva } from "class-variance-authority";
+import { classlist } from "../../../utils/classlist";
 import { fetchTranslations } from "../../../utils/translation";
 // Add vote status enum to match Angular implementation
 export var VoteStatus;
@@ -8,7 +8,7 @@ export var VoteStatus;
     VoteStatus[VoteStatus["Up"] = 1] = "Up";
     VoteStatus[VoteStatus["Down"] = -1] = "Down";
 })(VoteStatus || (VoteStatus = {}));
-const messageVariants = cva('rounded-lg py-4 text-base', {
+const messageVariantsConfig = {
     variants: {
         role: {
             user: 'bg-surface-2 text-dark ml-auto inline-block p-8',
@@ -23,7 +23,8 @@ const messageVariants = cva('rounded-lg py-4 text-base', {
         role: 'user',
         loading: false,
     },
-});
+};
+const getMessageClasses = classlist('rounded-lg py-4 text-base', messageVariantsConfig);
 /**
  * @category Prompt
  * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
@@ -120,11 +121,11 @@ export class AtuiPromptMessage {
         return (h("div", { class: "prose prose-sm preserve-newlines max-w-none", "data-name": "message-content" }, h("slot", null), this.content));
     }
     render() {
-        const messageClasses = messageVariants({
+        const messageClasses = getMessageClasses({
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '5c5df178f5e289a410aa1bc238bf484ef247cef9', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '213edb1718882c907998f0fba0247fa2b4b0be3d', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ab7b79b2e9046e3610d127a804a2a8f9c7108ab5', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'f41d9da7b1249b310fea96d005ea2303e12a6f21', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '6305bcb6d213e0128871996d4121197fef451fc4', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'c19dbd8e715f7bea556f25ce1e168479563ff130', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'f87aafa5831d5ccf10c9fdc24c3aa8d54fb7f4f5', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '5b8280212b929360fc2b00b8470326ab8cf72d8e', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "atui-prompt-message"; }
     static get properties() {

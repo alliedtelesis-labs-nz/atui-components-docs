@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
-var index$1 = require('./index-palgSxc9.js');
+var index = require('./index-i7hIKTeN.js');
+var classlist = require('./classlist-BddvonaD.js');
 
-const avatarVariants = index$1.cva('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', {
+const avatarVariantsConfig = {
     variants: {
         size: {
             sm: 'h-24 w-24 text-xs',
@@ -20,7 +20,7 @@ const avatarVariants = index$1.cva('flex shrink-0 items-center justify-center ov
         size: 'md',
         variant: 'primary',
     },
-});
+};
 const AtuiAvatar = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -34,11 +34,12 @@ const AtuiAvatar = class {
         this.variant = 'secondary';
     }
     render() {
-        const classes = avatarVariants({
+        const getClasses = classlist.classlist('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', avatarVariantsConfig);
+        const classes = getClasses({
             size: this.size,
             variant: this.variant,
         });
-        return (index.h(index.Host, { key: '7743792adc60538960ca01ae78999d2c4842119e', class: classes, "data-name": "avatar-container" }, this.src && (index.h("img", { key: 'e5aa4598f11dd1351312f923dc9a299dab0ff808', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (index.h("span", { key: '282478ac1baa4d43bc1ecdca465f6d9831974ea9', "data-name": "avatar-initials" }, this.initials)), index.h("slot", { key: 'e5b31580049d77f0fe408e09cc852b16fbe636dc' })));
+        return (index.h(index.Host, { key: '3123c8b28836f56e0414fc3767b2f0cae720d8b2', class: classes, "data-name": "avatar-container" }, this.src && (index.h("img", { key: '2440ce069658b510452f55198a26f4846ea03da9', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (index.h("span", { key: 'c07521f14ccd46369c038f538b029e5d81b532cd', "data-name": "avatar-initials" }, this.initials)), index.h("slot", { key: '8af4b7591c2eb83e2db096e2095c160f2c681c44' })));
     }
 };
 

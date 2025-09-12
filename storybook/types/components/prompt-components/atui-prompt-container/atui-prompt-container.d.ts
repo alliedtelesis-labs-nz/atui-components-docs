@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { PromptMessage, MessageRole } from '../../../types/prompt';
+import type { PromptMessage, MessageRole } from '../../../types/prompt';
 /**
  * @category Prompt
  * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.

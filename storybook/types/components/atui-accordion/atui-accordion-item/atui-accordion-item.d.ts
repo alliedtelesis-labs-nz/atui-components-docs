@@ -4,7 +4,7 @@ import { EventEmitter } from '../../../stencil-public-runtime';
  * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
  *
  * @slot accordion-trigger - Used for placing the atui-accordion-trigger for this accordion item. Only use if not using the 'label' prop on this element.
- * @slot accordion-content - Used for placing the content for this accordion item.
+ * @slot default - Used for placing the content for this accordion item.
  */
 export declare class AtuiAccordionItemComponent {
     el: HTMLElement;

@@ -53,10 +53,10 @@ export class AtuiTextCellComponent {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: '6f54b669e842e6baec536ef5d1cdef4e1f3c2003', class: "align-center flex h-full" }, h("atui-tooltip", { key: '4b379c68e720714e55c5e4aa2d5d9429161e9382', position: "right", disabled: !this.params.generateTooltip }, h("span", { key: '4d3fba764a0d10ea40b294d09ec36ebc75dd2019', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
+        return (h(Host, { key: 'd513608fc2656299bae795c2899c1e1b69722e3d', class: "align-center flex h-full" }, h("atui-tooltip", { key: '409503cb64cabb7c49d6fd540df1dd26db804236', position: "right", disabled: !this.params.generateTooltip }, h("span", { key: '21b0b509660155ba472750587313567b82668ebe', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '61f2170fff2849af06b5277654fcad68c8ec459a', class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'b2c968c3ef750357770566b661993f0f3fc20bd0', class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "atui-text-cell"; }
     static get states() {

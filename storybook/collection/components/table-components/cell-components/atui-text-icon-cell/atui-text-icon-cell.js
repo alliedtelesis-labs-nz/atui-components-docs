@@ -33,7 +33,7 @@ export class AtuiTextIconCell {
     render() {
         var _a;
         const iconPosition = ((_a = this.params) === null || _a === void 0 ? void 0 : _a.iconPosition) || 'before';
-        return (h(Host, { key: 'e66b113331763b04e1a65fff505488f6bbd4a758', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: 'e23ab0d662e0c0bfe53ff45872c0248c97712934', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (h(Host, { key: '5a8d2b4356cc6da0b6b9238dfde40e455eec4f1f', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: '9c26e4d069d0d3d72e7d7b932a64975212ce26ad', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
     static get is() { return "atui-text-icon-cell"; }
     static get states() {

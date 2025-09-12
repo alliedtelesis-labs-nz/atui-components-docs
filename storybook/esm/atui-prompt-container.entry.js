@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D3rwhcmG.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtuiPromptContainer = class {
@@ -172,7 +172,7 @@ const AtuiPromptContainer = class {
         return (h("div", { class: "p-4" }, h("atui-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtuiSubmit: (event) => this.handleSubmit(event.detail), onAtuiStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: 'efba6f3acfaf494d77c54e6578ce4f671eb7105c', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '7d55b37305d257f0747ddd22507aed206115c47a', name: "prompt-container-header" }), h("div", { key: 'a93ef2180c1de83f5b6121979a35a13d29b7e8b4', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("atui-prompt-thread", { key: 'af4f0c3da0d64de6c6515ee8ae29ecaeeba1d298', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '46c84f273ac1babeca06cb49ffb1b32a125892cd', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '39deaa3d37dcd14f9928e8b249c62586402f9235', name: "prompt-container-footer" }))));
+        return (h(Host, { key: 'ebb9b82721b0812c9f21139df13808478a03e8ac', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '2124122c3fdb640825e351355d5535f74ce0de4b', name: "prompt-container-header" }), h("div", { key: 'fb818dffdebc5d911e97b115ba3110980816f434', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("atui-prompt-thread", { key: '424ef20d956e1e667ed3ee97c15b5e4f1ae53e7e', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: 'f4ad7650d32a04fef7a811209bfffca5ab6643e7', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '0af32a02bdd958258e1250c3c58b6af2de545099', name: "prompt-container-footer" }))));
     }
     get el() { return getElement(this); }
 };

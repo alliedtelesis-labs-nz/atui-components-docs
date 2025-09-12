@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 var translation = require('./translation-HqquF7bU.js');
-var index$1 = require('./index-palgSxc9.js');
+var classlist = require('./classlist-BddvonaD.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
-const inputVariants = index$1.cva('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out select-none focus:ring-2', {
+const inputVariantsConfig = {
     variants: {
         focused: {
             false: 'ring-active-foreground/30',
@@ -29,15 +29,15 @@ const inputVariants = index$1.cva('height-[36px] transition[background-color,col
         readonly: false,
         invalid: false,
     },
-});
-const optionVariants = index$1.cva('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', {
+};
+const optionVariantsConfig = {
     variants: {
         active: {
             true: 'bg-active-light text-active',
             false: 'hover:bg-disabled-light bg-white',
         },
     },
-});
+};
 const AtuiSelectComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -114,7 +114,7 @@ const AtuiSelectComponent = class {
             : true;
     }
     render() {
-        return (index.h(index.Host, { key: '0ee1e70949339d9efee11f0d96a6533ce9b7244c', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'dedac843c3bf2509213f4fe4f5632c13d4365260', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -123,15 +123,16 @@ const AtuiSelectComponent = class {
                         await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("atui-menu", { key: '71be687e805e467c0ad4b00f9d41671230f1846c', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("atui-menu", { key: 'b73eb4989a44f29563c1545bb3e712846fe04d48', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'f4f3063c1caf7f1494b5610516178ce35b1963be' }, this.error_text && this.invalid && (index.h("span", { key: '2c08596c95c852bab3883a32b50f73dacd997a51', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '827ebfa927c0ba85bc177f8b7902781a8989f58a' }, this.error_text && this.invalid && (index.h("span", { key: 'e574aa1c1980bce7337e57719c1005af0b9e140f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("atui-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const classname = inputVariants({
+        const getClassname = classlist.classlist('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out select-none focus:ring-2', inputVariantsConfig);
+        const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
@@ -158,7 +159,8 @@ const AtuiSelectComponent = class {
             'No results found'))));
     }
     renderOption(option) {
-        const classname = optionVariants({
+        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const classname = getOptionClassname({
             active: this.value === option.value,
         });
         const isSelected = this.value === option.value;

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtuiCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -45,7 +45,7 @@ const AtuiCheckboxHeaderComponent = class {
         }
     }
     render() {
-        return (index.h("atui-checkbox", { key: 'c128369ffee132636465b6e217fe6e57da5dbf8e', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (index.h("atui-checkbox", { key: 'de8974bb8cc444f8022084ee52c5367bf92d42fb', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
     get el() { return index.getElement(this); }
 };

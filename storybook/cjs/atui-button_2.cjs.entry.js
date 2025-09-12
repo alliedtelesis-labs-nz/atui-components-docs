@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
-var index$1 = require('./index-palgSxc9.js');
+var index = require('./index-i7hIKTeN.js');
+var classlist = require('./classlist-BddvonaD.js');
 
-const variants = index$1.cva('group text-button relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', {
+const buttonVariantsConfig = {
     variants: {
         disabled: {
             false: null,
@@ -68,8 +68,8 @@ const variants = index$1.cva('group text-button relative box-border flex inline-
         hasLabel: true,
         disabled: false,
     },
-});
-const focusIndicatorVariants = index$1.cva('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', {
+};
+const focusIndicatorVariantsConfig = {
     variants: {
         type: {
             primary: 'group-hover:bg-blue-900/30 group-active:bg-blue-900/70',
@@ -83,7 +83,8 @@ const focusIndicatorVariants = index$1.cva('pointer-events-none absolute top-0 l
             destructiveText: 'group-hover:bg-destructive-foreground/10 group-active:bg-destructive-foreground/20',
         },
     },
-});
+};
+// Note: iconVariantsConfig was unused; removed to satisfy TS noUnusedLocals
 const spinnerColourPerType = {
     primary: 'default',
     primaryOutline: 'secondary',
@@ -171,16 +172,16 @@ const AtuiButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = variants({
+        const classname = classlist.classlist('group text-button relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
             hasLabel: !!this.label,
         });
-        const focusIndicatorClassname = focusIndicatorVariants({
+        const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: 'af899a6b76c37a7d0a005c3881473c60ab3b76f7', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '8536d8a42c8a608ba2c22e1d30ae6ca51fe86f47', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("atui-loading", { key: '306a1491c4477ad5afda4ed7f1df4fa79689334e', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: '6899ef26b1f0735d49178ad0f00792a60d159869', name: "icon" }), this.icon && (index.h("span", { key: 'bdf7533ad8bd9fc32dceffca97894f40802eaf1b', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: '28320dc18bda05c7d4b846aa6608df370f00a343', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '33367fb007d47af4deca2d6f487d598c2f39df72' }), index.h("slot", { key: 'da3079c41cfa8efc78fc9a22998348f460e05424', name: "icon_after" }), this.icon_after && (index.h("span", { key: 'a95f921b7c6ea98cf124d59d43ec04cb3c0714e8', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: 'b411067ca81bfaeb3b5740098e25e30950151fdf', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: 'a5100444d13dc88c9bcc53bce6e743bb5a376c99', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '97e65f4f95253bdddcf766ebac051775ff1855eb', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("atui-loading", { key: '89da814d2c61965fddfaa9a1fd74499962c1a7c6', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: '3cdb643ecc2afcb573dd0c504234955fd35bcf2c', name: "icon" }), this.icon && (index.h("span", { key: '83dab241840b3544b1cabac522e87d075e0a5bf3', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: '07c2815b2eca41ea25581298ec513f7588c18b41', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '26e0e468e6ab33d38f22d6b5a8daf1a973b83366' }), index.h("slot", { key: '8f0880a72d87dcfad1778ae92f73cccd98d01e3d', name: "icon_after" }), this.icon_after && (index.h("span", { key: 'd5598c7d142b14549b3b4affb287e4d29b74e13c', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: '2453a4e58b4cc787928781e7946a258eb900a85f', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     get el() { return index.getElement(this); }
 };

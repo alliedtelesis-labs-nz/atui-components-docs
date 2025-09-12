@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { PromptMessage } from '../../../types';
+import type { PromptMessage } from '../../../types';
 /**
  * @category Prompt
  * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.

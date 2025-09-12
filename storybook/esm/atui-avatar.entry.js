@@ -1,7 +1,7 @@
-import { r as registerInstance, h, H as Host } from './index-D3rwhcmG.js';
-import { c as cva } from './index-CVoOBWGd.js';
+import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { c as classlist } from './classlist-Bfa-pAao.js';
 
-const avatarVariants = cva('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', {
+const avatarVariantsConfig = {
     variants: {
         size: {
             sm: 'h-24 w-24 text-xs',
@@ -18,7 +18,7 @@ const avatarVariants = cva('flex shrink-0 items-center justify-center overflow-h
         size: 'md',
         variant: 'primary',
     },
-});
+};
 const AtuiAvatar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -32,11 +32,12 @@ const AtuiAvatar = class {
         this.variant = 'secondary';
     }
     render() {
-        const classes = avatarVariants({
+        const getClasses = classlist('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', avatarVariantsConfig);
+        const classes = getClasses({
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: '7743792adc60538960ca01ae78999d2c4842119e', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'e5aa4598f11dd1351312f923dc9a299dab0ff808', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '282478ac1baa4d43bc1ecdca465f6d9831974ea9', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: 'e5b31580049d77f0fe408e09cc852b16fbe636dc' })));
+        return (h(Host, { key: '3123c8b28836f56e0414fc3767b2f0cae720d8b2', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '2440ce069658b510452f55198a26f4846ea03da9', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: 'c07521f14ccd46369c038f538b029e5d81b532cd', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '8af4b7591c2eb83e2db096e2095c160f2c681c44' })));
     }
 };
 

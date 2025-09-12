@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
-var index$1 = require('./index-palgSxc9.js');
+var index = require('./index-i7hIKTeN.js');
+var classlist = require('./classlist-BddvonaD.js');
 
-const variants = index$1.cva('focus-visible:border-active-foreground focus-visible:ring-active-foreground/40 relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-offset-0', {
+const variantsConfig = {
     variants: {
         active: {
             true: 'bg-active-foreground/15 text-active',
@@ -18,7 +18,8 @@ const variants = index$1.cva('focus-visible:border-active-foreground focus-visib
             false: null,
         },
     },
-});
+};
+const getButtonClasses = classlist.classlist('focus-visible:border-active-foreground focus-visible:ring-active-foreground/40 relative flex h-[30px] items-center gap-4 rounded-md border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring-2 focus-visible:ring-offset-0', variantsConfig);
 const AtuiButtonGroupOption = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -37,12 +38,12 @@ const AtuiButtonGroupOption = class {
         });
     }
     render() {
-        const classname = variants({
+        const classname = getButtonClasses({
             active: this.is_active,
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: 'c8b2b919e23a1a549aa75a43240f2dfcf0faf3b6', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '71d62e074d2ceefbe025c62d1ada40f950c488f2', name: "icon" }), this.label));
+        return (index.h("button", { key: '05ec6f2cf1830837f1836ff2d511d29643fb08fa', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '6ad59961158ca3eb03b51725f574f0de3b5a6cda', name: "icon" }), this.label));
     }
     get el() { return index.getElement(this); }
 };

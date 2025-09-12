@@ -1,4 +1,4 @@
-import { A as AtuiTab$1, d as defineCustomElement$1 } from './p-BMp20lMO.js';
+import { A as AtuiTab$1, d as defineCustomElement$1 } from './p-pEaZ4RSC.js';
 
 const AtuiTab = AtuiTab$1;
 const defineCustomElement = defineCustomElement$1;

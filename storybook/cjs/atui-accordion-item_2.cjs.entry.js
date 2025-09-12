@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-43B6Ydvl.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtuiAccordionItemComponent = class {
     constructor(hostRef) {
@@ -56,7 +56,7 @@ const AtuiAccordionItemComponent = class {
         return this.open;
     }
     render() {
-        return (index.h(index.Host, { key: '1a9654b4035a12401817c366e5b9cb877f36ec3a', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: '79bf4d6c09339cd0ad36dee32d7db178a5238886', class: `group/accordion-item'}`, ref: (el) => (this.accordionElement = el), role: "group", open: this.open }, index.h("summary", { key: '92c4eddb6b24dbb25c88e51d19dab80c0f7de7ff', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: "group/accordion-item focus-within:ring-active-foreground/30 flex rounded-sm outline-0 focus-within:ring-2", onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (index.h("atui-accordion-trigger", { key: '3d28787034f26807d6a69827cb9f8dd8b932533b', label: this.label })), index.h("slot", { key: '271fe989e0e11624e7822e178baa0d23a11d5faf', name: "accordion-trigger" })), index.h("div", { key: '14bd170c05c41515a717bd6845e3267bbe9825e8', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, hidden: !this.open, "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: '7e29db60e804c48bef30108180faea3f0bbc88d1', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: 'da72b10da95eb048af46888558743d88646ab644', name: "accordion-content" })))));
+        return (index.h(index.Host, { key: 'df0b30a98b7d675e0026913f2b3cd57272457800', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: '0b75f2bdf3de83a5c105542d9c437855e1e96b89', class: `group/accordion-item'}`, ref: (el) => (this.accordionElement = el), role: "group", open: this.open }, index.h("summary", { key: 'c4b999f81876ba1e07e400a7fe7ce332d172cd9e', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: "group/accordion-item focus-within:ring-active-foreground/30 flex rounded-sm outline-0 focus-within:ring-2", onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (index.h("atui-accordion-trigger", { key: 'e5049b8c8e163c55d45be30cf8c196533dfc0886', label: this.label })), index.h("slot", { key: 'a84adee22e7a2beef61dfdd93d981847e581902f', name: "accordion-trigger" })), index.h("div", { key: '04d8ff768d0e626f8497b7a00e0f4fc0bb5f07e7', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, hidden: !this.open, "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: 'd889e4a9325db52818e5fbb8a2169263910ec55e', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: 'd1ec326240f0dbdbef1519470c275a713693e863' })))));
     }
     get el() { return index.getElement(this); }
 };

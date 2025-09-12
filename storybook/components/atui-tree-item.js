@@ -1,4 +1,4 @@
-import { A as AtuiTreeItemComponent, d as defineCustomElement$1 } from './p-VfYC73zk.js';
+import { A as AtuiTreeItemComponent, d as defineCustomElement$1 } from './p-Crv5qcVP.js';
 
 const AtuiTreeItem = AtuiTreeItemComponent;
 const defineCustomElement = defineCustomElement$1;

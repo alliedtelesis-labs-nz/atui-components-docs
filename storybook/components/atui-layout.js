@@ -1,4 +1,4 @@
-import { A as AtuiLayout$1, d as defineCustomElement$1 } from './p-CUQXJKlY.js';
+import { A as AtuiLayout$1, d as defineCustomElement$1 } from './p--g82WiWo.js';
 
 const AtuiLayout = AtuiLayout$1;
 const defineCustomElement = defineCustomElement$1;

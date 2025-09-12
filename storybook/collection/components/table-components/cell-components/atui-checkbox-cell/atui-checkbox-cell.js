@@ -29,7 +29,7 @@ export class AtuiCheckboxCellComponent {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (h(Host, { key: '88c0ce5ba35a3b29d37cee988b86f374200e625f', class: "flex h-full items-center" }, h("atui-checkbox", { key: '6a29b06d667e972db448e821ceeb3a438d5afb45', class: "w-auto self-center", disabled: isDisabled, value: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
+        return (h(Host, { key: '22c897b5802f69b9d0707e06cf109b4fc930ee7e', class: "flex h-full items-center" }, h("atui-checkbox", { key: 'a9aed7d33dae59075e576834d6c0ab5cc8c48458', class: "w-auto self-center", disabled: isDisabled, value: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
     static get is() { return "atui-checkbox-cell"; }
     static get elementRef() { return "el"; }

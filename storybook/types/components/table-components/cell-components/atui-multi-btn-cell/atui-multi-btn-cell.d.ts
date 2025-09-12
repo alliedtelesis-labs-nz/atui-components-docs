@@ -1,5 +1,5 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { IClickCell } from '../../../../types';
+import type { IClickCell } from '../../../../types';
 import { CSSProperties } from '../../../../types/styles';
 export interface MultiBtnCellData {
     buttons: IBtnParams[];
