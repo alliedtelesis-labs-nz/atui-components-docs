@@ -5,92 +5,92 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionItem } from "./components/atui-accordion/atui-accordion";
-import { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
-import { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
-import { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
-import { AtuiEvent } from "./types/events";
-import { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
+import { AccordionItem } from "./components/at-accordion/at-accordion";
+import { AvatarSize, AvatarVariant } from "./components/at-avatar/at-avatar";
+import { BadgeContrast, BadgeSize, BadgeType } from "./components/at-badge/at-badge";
+import { ButtonSize, ButtonType } from "./components/at-button/at-button";
+import { AtEvent } from "./types/events";
+import { ButtonGroupOption } from "./components/at-button-group/at-button-group";
 import { ChartDataset, Plugin } from "chart.js";
-import { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
-import { Height } from "./components/atui-chart-donut/atui-chart-donut";
+import { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+import { Height } from "./components/at-chart-donut/at-chart-donut";
 import { ChartColorPalette } from "./types/chart-color";
-import { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
-import { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
-import { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
+import { Height as Height1 } from "./components/at-chart-donut/at-chart-donut";
+import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-import { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
+import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
-import { HeaderSizes } from "./components/atui-header/atui-header";
-import { InputType } from "./components/atui-input/atui-input";
-import { InputPosition } from "./components/atui-input-range/atui-input-range";
-import { Template } from "./components/atui-layout/atui-layout";
-import { ListSelectorItem } from "./components/atui-list-selector/atui-list-selector";
-import { LoadingSize, LoadingType, LoadingVariant } from "./components/atui-loading/atui-loading";
-import { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-menu";
+import { HeaderSizes } from "./components/at-header/at-header";
+import { InputType } from "./components/at-input/at-input";
+import { InputPosition } from "./components/at-input-range/at-input-range";
+import { Template } from "./components/at-layout/at-layout";
+import { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
+import { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
+import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 import { SelectOption } from "./types/select";
-import { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
+import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { MessageRole, PromptMessage } from "./types/prompt";
-import { VoteStatus } from "./components/prompt-components/atui-prompt-message/atui-prompt-message";
-import { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
-import { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
-import { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
-import { ButtonSize as ButtonSize1 } from "./components/atui-button/atui-button";
-import { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
-import { StatusBar } from "./components/atui-status-bar/atui-status-bar";
-import { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
-import { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
-import { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
-import { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
+import { VoteStatus } from "./components/prompt-components/at-prompt-message/at-prompt-message";
+import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
+import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
+import { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
+import { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
+import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
+import { StatusBar } from "./components/at-status-bar/at-status-bar";
+import { Layout } from "./components/at-tab-selector/at-tab/at-tab";
+import { Layout as Layout1, Tab } from "./components/at-tab-selector/at-tab-selector";
+import { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+import { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
-import { LabelPosition } from "./components/atui-toggle-switch/atui-toggle-switch";
-import { TooltipAlign, TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
+import { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
+import { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 import { TreeNode } from "./types/tree";
-import { TreeItemSize } from "./components/atui-tree/atui-tree-item/atui-tree-item";
-export { AccordionItem } from "./components/atui-accordion/atui-accordion";
-export { AvatarSize, AvatarVariant } from "./components/atui-avatar/atui-avatar";
-export { BadgeContrast, BadgeSize, BadgeType } from "./components/atui-badge/atui-badge";
-export { ButtonSize, ButtonType } from "./components/atui-button/atui-button";
-export { AtuiEvent } from "./types/events";
-export { ButtonGroupOption } from "./components/atui-button-group/atui-button-group";
+import { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
+export { AccordionItem } from "./components/at-accordion/at-accordion";
+export { AvatarSize, AvatarVariant } from "./components/at-avatar/at-avatar";
+export { BadgeContrast, BadgeSize, BadgeType } from "./components/at-badge/at-badge";
+export { ButtonSize, ButtonType } from "./components/at-button/at-button";
+export { AtEvent } from "./types/events";
+export { ButtonGroupOption } from "./components/at-button-group/at-button-group";
 export { ChartDataset, Plugin } from "chart.js";
-export { PointStyles, Threshold } from "./components/atui-chart-bar-line/atui-chart-bar-line";
-export { Height } from "./components/atui-chart-donut/atui-chart-donut";
+export { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+export { Height } from "./components/at-chart-donut/at-chart-donut";
 export { ChartColorPalette } from "./types/chart-color";
-export { Height as Height1 } from "./components/atui-chart-donut/atui-chart-donut";
-export { CheckboxLayout, CheckboxOptions } from "./components/atui-checkbox-group/atui-checkbox-group";
-export { BadgeSize as BadgeSize1 } from "./components/atui-chip-list/atui-chip-list";
+export { Height as Height1 } from "./components/at-chart-donut/at-chart-donut";
+export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-export { ColumnManagerChangeEvent } from "./components/table-components/atui-column-manager/atui-column-manager";
+export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
-export { HeaderSizes } from "./components/atui-header/atui-header";
-export { InputType } from "./components/atui-input/atui-input";
-export { InputPosition } from "./components/atui-input-range/atui-input-range";
-export { Template } from "./components/atui-layout/atui-layout";
-export { ListSelectorItem } from "./components/atui-list-selector/atui-list-selector";
-export { LoadingSize, LoadingType, LoadingVariant } from "./components/atui-loading/atui-loading";
-export { Align, AriaRole, OpenOn, Position } from "./components/atui-menu/atui-menu";
+export { HeaderSizes } from "./components/at-header/at-header";
+export { InputType } from "./components/at-input/at-input";
+export { InputPosition } from "./components/at-input-range/at-input-range";
+export { Template } from "./components/at-layout/at-layout";
+export { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
+export { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
+export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 export { SelectOption } from "./types/select";
-export { PlaceholderSize } from "./components/atui-placeholder/atui-placeholder";
+export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { MessageRole, PromptMessage } from "./types/prompt";
-export { VoteStatus } from "./components/prompt-components/atui-prompt-message/atui-prompt-message";
-export { RadioLayout, RadioOption } from "./components/atui-radio-group/atui-radio-group";
-export { SidePanelDirection, SidePanelSize } from "./components/atui-side-panel/atui-side-panel";
-export { Collapsible, Side, Width } from "./components/atui-sidebar/atui-sidebar";
-export { ButtonSize as ButtonSize1 } from "./components/atui-button/atui-button";
-export { SrcDestAlign } from "./components/atui-src-dest/atui-src-dest";
-export { StatusBar } from "./components/atui-status-bar/atui-status-bar";
-export { Layout } from "./components/atui-tab-selector/atui-tab/atui-tab";
-export { Layout as Layout1, Tab } from "./components/atui-tab-selector/atui-tab-selector";
-export { FilterEvent } from "./components/table-components/atui-table-filters/atui-table-filters";
-export { SelectedTimeRangeExtended, TimePresets } from "./models/atui-time-range.models";
+export { VoteStatus } from "./components/prompt-components/at-prompt-message/at-prompt-message";
+export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
+export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
+export { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
+export { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
+export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
+export { StatusBar } from "./components/at-status-bar/at-status-bar";
+export { Layout } from "./components/at-tab-selector/at-tab/at-tab";
+export { Layout as Layout1, Tab } from "./components/at-tab-selector/at-tab-selector";
+export { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+export { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
-export { LabelPosition } from "./components/atui-toggle-switch/atui-toggle-switch";
-export { TooltipAlign, TooltipPosition } from "./components/atui-tooltip/atui-tooltip";
+export { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
+export { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 export { TreeNode } from "./types/tree";
-export { TreeItemSize } from "./components/atui-tree/atui-tree-item/atui-tree-item";
+export { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
 export namespace Components {
     /**
      * ### ```interface AccordionItem```
@@ -102,7 +102,7 @@ export namespace Components {
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface AtuiAccordion {
+    interface AtAccordion {
         /**
           * Closes all accordion items.
          */
@@ -135,7 +135,7 @@ export namespace Components {
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface AtuiAccordionItem {
+    interface AtAccordionItem {
         /**
           * Puts a light gray separator below the accordion item
           * @default true
@@ -171,7 +171,7 @@ export namespace Components {
          */
         "openAccordion": () => Promise<void>;
     }
-    interface AtuiAccordionTrigger {
+    interface AtAccordionTrigger {
         /**
           * Text to display on the trigger for the accordion item.
          */
@@ -181,7 +181,7 @@ export namespace Components {
      * @category Decoration
      * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
      */
-    interface AtuiAvatar {
+    interface AtAvatar {
         /**
           * Alt text for the avatar image
          */
@@ -209,7 +209,7 @@ export namespace Components {
      * @category Feedback
      * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
      */
-    interface AtuiBadge {
+    interface AtBadge {
         /**
           * Icon appearing to the left of the badge title. MUST use mat-icon name.
          */
@@ -244,7 +244,7 @@ export namespace Components {
      * Provides clickable path navigation with customizable separators and accessibility features.
      * @category Navigation
      */
-    interface AtuiBreadcrumb {
+    interface AtBreadcrumb {
         /**
           * Function to get the prefix for breadcrumbs.
           * @default () => ''
@@ -264,7 +264,7 @@ export namespace Components {
      * @category Navigation
      * @description A breadcrumb item component for the breadcrumb.
      */
-    interface AtuiBreadcrumbItem {
+    interface AtBreadcrumbItem {
         /**
           * Applies different styling and makes the element non-clickable when set
          */
@@ -278,7 +278,7 @@ export namespace Components {
      * @category Actions
      * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
      */
-    interface AtuiButton {
+    interface AtButton {
         /**
           * When set the button's styling will change and will no longer be interactive
           * @default false
@@ -326,7 +326,7 @@ export namespace Components {
      * @category Form Controls
      * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
      */
-    interface AtuiButtonGroup {
+    interface AtButtonGroup {
         /**
           * Disables the button group and prevents interaction
          */
@@ -361,7 +361,7 @@ export namespace Components {
      * @category Form Controls
      * @description A button group option component for the button group.
      */
-    interface AtuiButtonGroupOption {
+    interface AtButtonGroupOption {
         /**
           * Will disable interaction if set
          */
@@ -387,7 +387,7 @@ export namespace Components {
      * @category Layout
      * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
      */
-    interface AtuiCard {
+    interface AtCard {
         /**
           * Title of the card.
          */
@@ -450,7 +450,7 @@ export namespace Components {
      *  stepped?: boolean;
      * ```
      */
-    interface AtuiChartBarLine {
+    interface AtChartBarLine {
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
           * @default ChartColorPalette.CATEGORICAL
@@ -514,7 +514,7 @@ export namespace Components {
      * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
-    interface AtuiChartDonut {
+    interface AtChartDonut {
         /**
           * Animations added to the chart configuration
          */
@@ -577,7 +577,7 @@ export namespace Components {
      * @category Form Controls
      * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.
      */
-    interface AtuiCheckbox {
+    interface AtCheckbox {
         /**
           * Disables interaction with the checkbox
          */
@@ -603,7 +603,7 @@ export namespace Components {
      * @category Table Cell
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
-    interface AtuiCheckboxCell {
+    interface AtCheckboxCell {
     }
     /**
      * ### ```interface CheckboxOptions```
@@ -616,7 +616,7 @@ export namespace Components {
      * @category Form Controls
      * @description A checkbox group component for selecting multiple options from a predefined list. Provides grouped validation, labeling, and accessibility features for checkbox collections.
      */
-    interface AtuiCheckboxGroup {
+    interface AtCheckboxGroup {
         /**
           * Disables interaction with the checkbox
          */
@@ -664,13 +664,13 @@ export namespace Components {
      * @category Table Cell
      * @description A header component for displaying a checkbox.
      */
-    interface AtuiCheckboxHeader {
+    interface AtCheckboxHeader {
     }
     /**
      * @category Utilities
      * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
      */
-    interface AtuiChipList {
+    interface AtChipList {
         /**
           * Items in the chip list.
          */
@@ -698,21 +698,21 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying a list of chips.
      */
-    interface AtuiChipListCell {
+    interface AtChipListCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a color status indicator based on predefined types
      */
-    interface AtuiColorStatusCell {
+    interface AtColorStatusCell {
     }
-    interface AtuiColumnManager {
+    interface AtColumnManager {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs": ColDef[];
     }
-    interface AtuiCustomTimeRange {
+    interface AtCustomTimeRange {
         /**
           * Whether time selection is enabled in addition to date selection
           * @default true
@@ -759,7 +759,7 @@ export namespace Components {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
-    interface AtuiDialog {
+    interface AtDialog {
         /**
           * Whether to show a backdrop behind the dialog
           * @default false
@@ -798,13 +798,13 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying and editing text.
      */
-    interface AtuiEditTextCell {
+    interface AtEditTextCell {
     }
     /**
      * @category Form Controls
      * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
      */
-    interface AtuiFormLabel {
+    interface AtFormLabel {
         /**
           * Placed in the 'for' attribute on the label element
          */
@@ -826,7 +826,7 @@ export namespace Components {
      * @category Layout
      * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
      */
-    interface AtuiHeader {
+    interface AtHeader {
         /**
           * Adds a border to the bottom of the header.
          */
@@ -858,7 +858,7 @@ export namespace Components {
      * @category Form Controls
      * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
      */
-    interface AtuiInput {
+    interface AtInput {
         /**
           * Sets the 'autocomplete' attribute on the input element
           * @default 'on'
@@ -920,7 +920,7 @@ export namespace Components {
      * @category Form Controls
      * @description A numeric input component for entering numerical values.
      */
-    interface AtuiInputNumeric {
+    interface AtInputNumeric {
         /**
           * Disables interaction with the input
           * @default false
@@ -989,7 +989,7 @@ export namespace Components {
      * @category Form Controls
      * @description A range input component for selecting a value within a specified range.
      */
-    interface AtuiInputRange {
+    interface AtInputRange {
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -1079,7 +1079,7 @@ export namespace Components {
      * @category Layout
      * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
      */
-    interface AtuiLayout {
+    interface AtLayout {
         /**
           * If overflow is allowed on the detail in master-detail
           * @default true
@@ -1095,7 +1095,7 @@ export namespace Components {
      * @category Layout
      * @description A list item component for the list.
      */
-    interface AtuiListItem {
+    interface AtListItem {
         /**
           * Border below the list item.
           * @default true
@@ -1131,7 +1131,7 @@ export namespace Components {
      * @category Navigation
      * @description A list selector component for selecting an item from a list.
      */
-    interface AtuiListSelector {
+    interface AtListSelector {
         /**
           * Whether each item has a bottom border.
          */
@@ -1150,7 +1150,7 @@ export namespace Components {
      * @category Navigation
      * @description A list selector item component for the list selector.
      */
-    interface AtuiListSelectorItem {
+    interface AtListSelectorItem {
         /**
           * Border below the list item.
           * @default false
@@ -1185,7 +1185,7 @@ export namespace Components {
      * @category Feedback
      * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
      */
-    interface AtuiLoading {
+    interface AtLoading {
         /**
           * Size of the loading indicator
           * @default 'md'
@@ -1207,7 +1207,7 @@ export namespace Components {
          */
         "variant": LoadingVariant;
     }
-    interface AtuiMenu {
+    interface AtMenu {
         /**
           * Alignment of opened menu element relative to trigger element.
           * @default 'start'
@@ -1277,9 +1277,9 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying a menu.
      */
-    interface AtuiMenuCell {
+    interface AtMenuCell {
     }
-    interface AtuiMenuItem {
+    interface AtMenuItem {
         /**
           * Disables user interaction with the menu-item and updates visual style to appear inactive
           * @default false
@@ -1303,7 +1303,7 @@ export namespace Components {
      * @category Feedback
      * @description A message component for displaying notifications, alerts, or informational messages.
      */
-    interface AtuiMessage {
+    interface AtMessage {
         /**
           * Content of the message.
          */
@@ -1330,13 +1330,13 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying multiple buttons.
      */
-    interface AtuiMultiBtnCell {
+    interface AtMultiBtnCell {
     }
     /**
      * @category Form Controls
      * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface AtuiMultiSelect {
+    interface AtMultiSelect {
         /**
           * Set the select to be clearable.
          */
@@ -1400,7 +1400,7 @@ export namespace Components {
      * @category Feedback
      * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
      */
-    interface AtuiPlaceholder {
+    interface AtPlaceholder {
         /**
           * Content to be displayed below the title
          */
@@ -1427,7 +1427,7 @@ export namespace Components {
      * @category Prompt
      * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
      */
-    interface AtuiPromptContainer {
+    interface AtPromptContainer {
         /**
           * Programmatically add a message to the conversation thread
           * @param role - The message role
@@ -1521,7 +1521,7 @@ export namespace Components {
      * @category Prompt
      * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
-    interface AtuiPromptInput {
+    interface AtPromptInput {
         /**
           * Disable input interactions and apply visual indication
           * @default false
@@ -1573,7 +1573,7 @@ export namespace Components {
      * @category Prompt
      * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
      */
-    interface AtuiPromptMessage {
+    interface AtPromptMessage {
         /**
           * The message content text
           * @default ''
@@ -1631,7 +1631,7 @@ export namespace Components {
      * @category Prompt
      * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
      */
-    interface AtuiPromptThread {
+    interface AtPromptThread {
         /**
           * Automatically scroll to the bottom when new messages are added
           * @default true
@@ -1680,7 +1680,7 @@ export namespace Components {
      * @category Form Controls
      * @description A radio button component for selecting a single option from a predefined list.
      */
-    interface AtuiRadio {
+    interface AtRadio {
         /**
           * Disables interaction with the radio
          */
@@ -1715,7 +1715,7 @@ export namespace Components {
      * @category Form Controls
      * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
      */
-    interface AtuiRadioGroup {
+    interface AtRadioGroup {
         /**
           * Disables the radio options but keeps the text readable. Use for global readonly form state.
          */
@@ -1766,7 +1766,7 @@ export namespace Components {
      * @category Form Controls
      * @description A search component for filtering data.
      */
-    interface AtuiSearch {
+    interface AtSearch {
         /**
           * Hint text for the input, appears below the search bar.
          */
@@ -1792,14 +1792,14 @@ export namespace Components {
      * @category Data Tables
      * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
      */
-    interface AtuiSearchTable {
+    interface AtSearchTable {
         /**
           * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
           * @default true
          */
         "auto_size_columns": boolean;
         /**
-          * Column definitions passed to atui-table component.
+          * Column definitions passed to at-table component.
          */
         "col_defs": ColDef[];
         /**
@@ -1842,7 +1842,7 @@ export namespace Components {
          */
         "search_label": string;
         /**
-          * Table data passed to atui-table component.
+          * Table data passed to at-table component.
          */
         "table_data": {
         items: any[];
@@ -1867,7 +1867,7 @@ export namespace Components {
      * @category Form Controls
      * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface AtuiSelect {
+    interface AtSelect {
         /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default true
@@ -1931,7 +1931,7 @@ export namespace Components {
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
      */
-    interface AtuiSidePanel {
+    interface AtSidePanel {
         /**
           * Whether to show a backdrop behind the panel
           * @default false
@@ -2003,7 +2003,7 @@ export namespace Components {
      * @category Navigation
      * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
      */
-    interface AtuiSidebar {
+    interface AtSidebar {
         /**
           * Size of the sidebar when collapsed.
           * @default 'icon'
@@ -2038,13 +2038,13 @@ export namespace Components {
      * @category Navigation
      * @description 
      */
-    interface AtuiSidebarMenu {
+    interface AtSidebarMenu {
     }
     /**
      * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
-    interface AtuiSidebarMenuitem {
+    interface AtSidebarMenuitem {
         /**
           * Alert badge for the menu item
          */
@@ -2069,7 +2069,7 @@ export namespace Components {
      * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
      * Menu indent styling is supported up to 3 levels.
      */
-    interface AtuiSidebarSubmenu {
+    interface AtSidebarSubmenu {
         /**
           * Alert badge for the menu item
          */
@@ -2091,7 +2091,7 @@ export namespace Components {
      * @category Navigation
      * @description A sidebar trigger component for the sidebar.
      */
-    interface AtuiSidebarTrigger {
+    interface AtSidebarTrigger {
         /**
           * Size of the button
           * @default 'lg'
@@ -2102,7 +2102,7 @@ export namespace Components {
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
-    interface AtuiSrcDest {
+    interface AtSrcDest {
         /**
           * Aligns the content to the left or center of the container
           * @default 'left'
@@ -2137,7 +2137,7 @@ export namespace Components {
      * @category Data Tables
      * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
      */
-    interface AtuiStaticTable {
+    interface AtStaticTable {
         /**
           * Column definitions for the table
          */
@@ -2168,7 +2168,7 @@ export namespace Components {
      * @category Data Visualization
      * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
      */
-    interface AtuiStatusBar {
+    interface AtStatusBar {
         /**
           * Disables the tooltip when hovered
          */
@@ -2188,7 +2188,7 @@ export namespace Components {
      * @category Navigation
      * @description A tab component for the tab selector.
      */
-    interface AtuiTab {
+    interface AtTab {
         /**
           * Applies styling when active
          */
@@ -2211,7 +2211,7 @@ export namespace Components {
      * @category Navigation
      * @description A tab content component for the tab selector.
      */
-    interface AtuiTabContent {
+    interface AtTabContent {
         /**
           * Determines if the tab content is active
           * @default false
@@ -2233,7 +2233,7 @@ export namespace Components {
      * @category Navigation
      * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
      */
-    interface AtuiTabSelector {
+    interface AtTabSelector {
         /**
           * Sets the current active tab
          */
@@ -2268,7 +2268,7 @@ export namespace Components {
      * @category Data Tables
      * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
      */
-    interface AtuiTable {
+    interface AtTable {
         /**
           * The AG Grid API
          */
@@ -2324,9 +2324,9 @@ export namespace Components {
      * @category Data Tables
      * @description A container component for table actions, including search, export, and column management. Provides a unified interface for managing table interactions and data export.
      */
-    interface AtuiTableActions {
+    interface AtTableActions {
         /**
-          * AG Grid Api (provided by atui-table createGrid method)
+          * AG Grid Api (provided by at-table createGrid method)
          */
         "ag_grid": GridApi;
     }
@@ -2334,15 +2334,15 @@ export namespace Components {
      * @category Data Tables
      * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
      */
-    interface AtuiTableExportMenu {
+    interface AtTableExportMenu {
     }
     /**
      * @category Data Tables
      * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
      */
-    interface AtuiTableFilterMenu {
+    interface AtTableFilterMenu {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs": ColDef[];
         /**
@@ -2351,9 +2351,9 @@ export namespace Components {
          */
         "selected": string[];
     }
-    interface AtuiTableFilters {
+    interface AtTableFilters {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs": ColDef[];
         /**
@@ -2364,11 +2364,11 @@ export namespace Components {
     }
     /**
      * @category Data Tables
-     * @description Optional component for use with ```<atui-table>```.
+     * @description Optional component for use with ```<at-table>```.
      * Provides controls for pagination if you would like to
      * have control of the table's pagination.
      */
-    interface AtuiTablePagination {
+    interface AtTablePagination {
         /**
           * Current page number
           * @default 1
@@ -2389,37 +2389,37 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying a text with a badge.
      */
-    interface AtuiTextBadgeCell {
+    interface AtTextBadgeCell {
     }
     /**
      * @category Table Cell
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
-    interface AtuiTextCell {
+    interface AtTextCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
-    interface AtuiTextIconCell {
+    interface AtTextIconCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with an image.
      */
-    interface AtuiTextImageCell {
+    interface AtTextImageCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with a status.
      */
-    interface AtuiTextStatusCell {
+    interface AtTextStatusCell {
     }
     /**
      * @category Form Controls
      * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
      */
-    interface AtuiTextarea {
+    interface AtTextarea {
         /**
           * Sets the 'autocomplete' attribute on the textarea
           * @default 'on'
@@ -2480,7 +2480,7 @@ export namespace Components {
      * @category Form Controls
      * @description A time range component for selecting time periods.
      */
-    interface AtuiTimeRange {
+    interface AtTimeRange {
         /**
           * Custom error message to show when an invalid time is inputted.
           * @default null
@@ -2520,7 +2520,7 @@ export namespace Components {
      * @category Form Controls
      * @description A time with unit component for selecting a time period.
      */
-    interface AtuiTimeWithUnit {
+    interface AtTimeWithUnit {
         /**
           * Common time preset options to display
          */
@@ -2563,25 +2563,25 @@ export namespace Components {
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle.
      */
-    interface AtuiTitleSubtitleCell {
+    interface AtTitleSubtitleCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle with a date.
      */
-    interface AtuiTitleSubtitleDateCell {
+    interface AtTitleSubtitleDateCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a toggle.
      */
-    interface AtuiToggleCell {
+    interface AtToggleCell {
     }
     /**
      * @category Form Controls
      * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
      */
-    interface AtuiToggleSwitch {
+    interface AtToggleSwitch {
         /**
           * Disable interaction with the toggle.
          */
@@ -2614,7 +2614,7 @@ export namespace Components {
      * @category **Overlays**
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
-    interface AtuiTooltip {
+    interface AtTooltip {
         /**
           * Alignment of opened tooltip element relative to trigger element.
           * @default 'center'
@@ -2668,7 +2668,7 @@ export namespace Components {
      *  tooltip?: string;
      * ```
      */
-    interface AtuiTree {
+    interface AtTree {
         /**
           * List of items to be displayed in the tree
          */
@@ -2679,7 +2679,7 @@ export namespace Components {
          */
         "size": ButtonSize1;
     }
-    interface AtuiTreeItem {
+    interface AtTreeItem {
         /**
           * Defines the indent of the tree item
          */
@@ -2710,157 +2710,157 @@ export namespace Components {
         "size": TreeItemSize;
     }
 }
-export interface AtuiAccordionItemCustomEvent<T> extends CustomEvent<T> {
+export interface AtAccordionItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiAccordionItemElement;
+    target: HTMLAtAccordionItemElement;
 }
-export interface AtuiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
+export interface AtBreadcrumbCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiBreadcrumbElement;
+    target: HTMLAtBreadcrumbElement;
 }
-export interface AtuiButtonCustomEvent<T> extends CustomEvent<T> {
+export interface AtButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiButtonElement;
+    target: HTMLAtButtonElement;
 }
-export interface AtuiButtonGroupCustomEvent<T> extends CustomEvent<T> {
+export interface AtButtonGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiButtonGroupElement;
+    target: HTMLAtButtonGroupElement;
 }
-export interface AtuiButtonGroupOptionCustomEvent<T> extends CustomEvent<T> {
+export interface AtButtonGroupOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiButtonGroupOptionElement;
+    target: HTMLAtButtonGroupOptionElement;
 }
-export interface AtuiCheckboxCustomEvent<T> extends CustomEvent<T> {
+export interface AtCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiCheckboxElement;
+    target: HTMLAtCheckboxElement;
 }
-export interface AtuiCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
+export interface AtCheckboxGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiCheckboxGroupElement;
+    target: HTMLAtCheckboxGroupElement;
 }
-export interface AtuiChipListCustomEvent<T> extends CustomEvent<T> {
+export interface AtChipListCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiChipListElement;
+    target: HTMLAtChipListElement;
 }
-export interface AtuiColumnManagerCustomEvent<T> extends CustomEvent<T> {
+export interface AtColumnManagerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiColumnManagerElement;
+    target: HTMLAtColumnManagerElement;
 }
-export interface AtuiCustomTimeRangeCustomEvent<T> extends CustomEvent<T> {
+export interface AtCustomTimeRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiCustomTimeRangeElement;
+    target: HTMLAtCustomTimeRangeElement;
 }
-export interface AtuiInputCustomEvent<T> extends CustomEvent<T> {
+export interface AtInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiInputElement;
+    target: HTMLAtInputElement;
 }
-export interface AtuiInputNumericCustomEvent<T> extends CustomEvent<T> {
+export interface AtInputNumericCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiInputNumericElement;
+    target: HTMLAtInputNumericElement;
 }
-export interface AtuiInputRangeCustomEvent<T> extends CustomEvent<T> {
+export interface AtInputRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiInputRangeElement;
+    target: HTMLAtInputRangeElement;
 }
-export interface AtuiListSelectorCustomEvent<T> extends CustomEvent<T> {
+export interface AtListSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiListSelectorElement;
+    target: HTMLAtListSelectorElement;
 }
-export interface AtuiMenuCustomEvent<T> extends CustomEvent<T> {
+export interface AtMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiMenuElement;
+    target: HTMLAtMenuElement;
 }
-export interface AtuiMultiSelectCustomEvent<T> extends CustomEvent<T> {
+export interface AtMultiSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiMultiSelectElement;
+    target: HTMLAtMultiSelectElement;
 }
-export interface AtuiPromptContainerCustomEvent<T> extends CustomEvent<T> {
+export interface AtPromptContainerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiPromptContainerElement;
+    target: HTMLAtPromptContainerElement;
 }
-export interface AtuiPromptInputCustomEvent<T> extends CustomEvent<T> {
+export interface AtPromptInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiPromptInputElement;
+    target: HTMLAtPromptInputElement;
 }
-export interface AtuiPromptMessageCustomEvent<T> extends CustomEvent<T> {
+export interface AtPromptMessageCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiPromptMessageElement;
+    target: HTMLAtPromptMessageElement;
 }
-export interface AtuiPromptThreadCustomEvent<T> extends CustomEvent<T> {
+export interface AtPromptThreadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiPromptThreadElement;
+    target: HTMLAtPromptThreadElement;
 }
-export interface AtuiRadioCustomEvent<T> extends CustomEvent<T> {
+export interface AtRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiRadioElement;
+    target: HTMLAtRadioElement;
 }
-export interface AtuiRadioGroupCustomEvent<T> extends CustomEvent<T> {
+export interface AtRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiRadioGroupElement;
+    target: HTMLAtRadioGroupElement;
 }
-export interface AtuiSearchCustomEvent<T> extends CustomEvent<T> {
+export interface AtSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiSearchElement;
+    target: HTMLAtSearchElement;
 }
-export interface AtuiSelectCustomEvent<T> extends CustomEvent<T> {
+export interface AtSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiSelectElement;
+    target: HTMLAtSelectElement;
 }
-export interface AtuiSidebarCustomEvent<T> extends CustomEvent<T> {
+export interface AtSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiSidebarElement;
+    target: HTMLAtSidebarElement;
 }
-export interface AtuiTabSelectorCustomEvent<T> extends CustomEvent<T> {
+export interface AtTabSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTabSelectorElement;
+    target: HTMLAtTabSelectorElement;
 }
-export interface AtuiTableCustomEvent<T> extends CustomEvent<T> {
+export interface AtTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTableElement;
+    target: HTMLAtTableElement;
 }
-export interface AtuiTableActionsCustomEvent<T> extends CustomEvent<T> {
+export interface AtTableActionsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTableActionsElement;
+    target: HTMLAtTableActionsElement;
 }
-export interface AtuiTableExportMenuCustomEvent<T> extends CustomEvent<T> {
+export interface AtTableExportMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTableExportMenuElement;
+    target: HTMLAtTableExportMenuElement;
 }
-export interface AtuiTableFilterMenuCustomEvent<T> extends CustomEvent<T> {
+export interface AtTableFilterMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTableFilterMenuElement;
+    target: HTMLAtTableFilterMenuElement;
 }
-export interface AtuiTableFiltersCustomEvent<T> extends CustomEvent<T> {
+export interface AtTableFiltersCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTableFiltersElement;
+    target: HTMLAtTableFiltersElement;
 }
-export interface AtuiTablePaginationCustomEvent<T> extends CustomEvent<T> {
+export interface AtTablePaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTablePaginationElement;
+    target: HTMLAtTablePaginationElement;
 }
-export interface AtuiTextareaCustomEvent<T> extends CustomEvent<T> {
+export interface AtTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTextareaElement;
+    target: HTMLAtTextareaElement;
 }
-export interface AtuiTimeRangeCustomEvent<T> extends CustomEvent<T> {
+export interface AtTimeRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTimeRangeElement;
+    target: HTMLAtTimeRangeElement;
 }
-export interface AtuiTimeWithUnitCustomEvent<T> extends CustomEvent<T> {
+export interface AtTimeWithUnitCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTimeWithUnitElement;
+    target: HTMLAtTimeWithUnitElement;
 }
-export interface AtuiToggleSwitchCustomEvent<T> extends CustomEvent<T> {
+export interface AtToggleSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiToggleSwitchElement;
+    target: HTMLAtToggleSwitchElement;
 }
-export interface AtuiTreeCustomEvent<T> extends CustomEvent<T> {
+export interface AtTreeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTreeElement;
+    target: HTMLAtTreeElement;
 }
-export interface AtuiTreeItemCustomEvent<T> extends CustomEvent<T> {
+export interface AtTreeItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAtuiTreeItemElement;
+    target: HTMLAtTreeItemElement;
 }
 declare global {
     /**
@@ -2873,60 +2873,60 @@ declare global {
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface HTMLAtuiAccordionElement extends Components.AtuiAccordion, HTMLStencilElement {
+    interface HTMLAtAccordionElement extends Components.AtAccordion, HTMLStencilElement {
     }
-    var HTMLAtuiAccordionElement: {
-        prototype: HTMLAtuiAccordionElement;
-        new (): HTMLAtuiAccordionElement;
+    var HTMLAtAccordionElement: {
+        prototype: HTMLAtAccordionElement;
+        new (): HTMLAtAccordionElement;
     };
-    interface HTMLAtuiAccordionItemElementEventMap {
+    interface HTMLAtAccordionItemElementEventMap {
         "atuiAccordionChange": boolean;
     }
     /**
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface HTMLAtuiAccordionItemElement extends Components.AtuiAccordionItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtAccordionItemElement extends Components.AtAccordionItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtAccordionItemElement, ev: AtAccordionItemCustomEvent<HTMLAtAccordionItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtuiAccordionItemElement, ev: AtuiAccordionItemCustomEvent<HTMLAtuiAccordionItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtAccordionItemElementEventMap>(type: K, listener: (this: HTMLAtAccordionItemElement, ev: AtAccordionItemCustomEvent<HTMLAtAccordionItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiAccordionItemElement: {
-        prototype: HTMLAtuiAccordionItemElement;
-        new (): HTMLAtuiAccordionItemElement;
+    var HTMLAtAccordionItemElement: {
+        prototype: HTMLAtAccordionItemElement;
+        new (): HTMLAtAccordionItemElement;
     };
-    interface HTMLAtuiAccordionTriggerElement extends Components.AtuiAccordionTrigger, HTMLStencilElement {
+    interface HTMLAtAccordionTriggerElement extends Components.AtAccordionTrigger, HTMLStencilElement {
     }
-    var HTMLAtuiAccordionTriggerElement: {
-        prototype: HTMLAtuiAccordionTriggerElement;
-        new (): HTMLAtuiAccordionTriggerElement;
+    var HTMLAtAccordionTriggerElement: {
+        prototype: HTMLAtAccordionTriggerElement;
+        new (): HTMLAtAccordionTriggerElement;
     };
     /**
      * @category Decoration
      * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
      */
-    interface HTMLAtuiAvatarElement extends Components.AtuiAvatar, HTMLStencilElement {
+    interface HTMLAtAvatarElement extends Components.AtAvatar, HTMLStencilElement {
     }
-    var HTMLAtuiAvatarElement: {
-        prototype: HTMLAtuiAvatarElement;
-        new (): HTMLAtuiAvatarElement;
+    var HTMLAtAvatarElement: {
+        prototype: HTMLAtAvatarElement;
+        new (): HTMLAtAvatarElement;
     };
     /**
      * @category Feedback
      * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
      */
-    interface HTMLAtuiBadgeElement extends Components.AtuiBadge, HTMLStencilElement {
+    interface HTMLAtBadgeElement extends Components.AtBadge, HTMLStencilElement {
     }
-    var HTMLAtuiBadgeElement: {
-        prototype: HTMLAtuiBadgeElement;
-        new (): HTMLAtuiBadgeElement;
+    var HTMLAtBadgeElement: {
+        prototype: HTMLAtBadgeElement;
+        new (): HTMLAtBadgeElement;
     };
-    interface HTMLAtuiBreadcrumbElementEventMap {
+    interface HTMLAtBreadcrumbElementEventMap {
         "atuiClick": number;
     }
     /**
@@ -2934,52 +2934,52 @@ declare global {
      * Provides clickable path navigation with customizable separators and accessibility features.
      * @category Navigation
      */
-    interface HTMLAtuiBreadcrumbElement extends Components.AtuiBreadcrumb, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiBreadcrumbElementEventMap>(type: K, listener: (this: HTMLAtuiBreadcrumbElement, ev: AtuiBreadcrumbCustomEvent<HTMLAtuiBreadcrumbElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtBreadcrumbElement extends Components.AtBreadcrumb, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtBreadcrumbElementEventMap>(type: K, listener: (this: HTMLAtBreadcrumbElement, ev: AtBreadcrumbCustomEvent<HTMLAtBreadcrumbElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiBreadcrumbElementEventMap>(type: K, listener: (this: HTMLAtuiBreadcrumbElement, ev: AtuiBreadcrumbCustomEvent<HTMLAtuiBreadcrumbElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtBreadcrumbElementEventMap>(type: K, listener: (this: HTMLAtBreadcrumbElement, ev: AtBreadcrumbCustomEvent<HTMLAtBreadcrumbElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiBreadcrumbElement: {
-        prototype: HTMLAtuiBreadcrumbElement;
-        new (): HTMLAtuiBreadcrumbElement;
+    var HTMLAtBreadcrumbElement: {
+        prototype: HTMLAtBreadcrumbElement;
+        new (): HTMLAtBreadcrumbElement;
     };
     /**
      * @category Navigation
      * @description A breadcrumb item component for the breadcrumb.
      */
-    interface HTMLAtuiBreadcrumbItemElement extends Components.AtuiBreadcrumbItem, HTMLStencilElement {
+    interface HTMLAtBreadcrumbItemElement extends Components.AtBreadcrumbItem, HTMLStencilElement {
     }
-    var HTMLAtuiBreadcrumbItemElement: {
-        prototype: HTMLAtuiBreadcrumbItemElement;
-        new (): HTMLAtuiBreadcrumbItemElement;
+    var HTMLAtBreadcrumbItemElement: {
+        prototype: HTMLAtBreadcrumbItemElement;
+        new (): HTMLAtBreadcrumbItemElement;
     };
-    interface HTMLAtuiButtonElementEventMap {
-        "atuiClick": AtuiEvent;
+    interface HTMLAtButtonElementEventMap {
+        "atuiClick": AtEvent;
     }
     /**
      * @category Actions
      * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
      */
-    interface HTMLAtuiButtonElement extends Components.AtuiButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiButtonElementEventMap>(type: K, listener: (this: HTMLAtuiButtonElement, ev: AtuiButtonCustomEvent<HTMLAtuiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtButtonElement extends Components.AtButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtButtonElementEventMap>(type: K, listener: (this: HTMLAtButtonElement, ev: AtButtonCustomEvent<HTMLAtButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiButtonElementEventMap>(type: K, listener: (this: HTMLAtuiButtonElement, ev: AtuiButtonCustomEvent<HTMLAtuiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtButtonElementEventMap>(type: K, listener: (this: HTMLAtButtonElement, ev: AtButtonCustomEvent<HTMLAtButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiButtonElement: {
-        prototype: HTMLAtuiButtonElement;
-        new (): HTMLAtuiButtonElement;
+    var HTMLAtButtonElement: {
+        prototype: HTMLAtButtonElement;
+        new (): HTMLAtButtonElement;
     };
-    interface HTMLAtuiButtonGroupElementEventMap {
+    interface HTMLAtButtonGroupElementEventMap {
         "atuiIndexChange": number;
         "atuiChange": string;
     }
@@ -2987,50 +2987,50 @@ declare global {
      * @category Form Controls
      * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
      */
-    interface HTMLAtuiButtonGroupElement extends Components.AtuiButtonGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiButtonGroupElementEventMap>(type: K, listener: (this: HTMLAtuiButtonGroupElement, ev: AtuiButtonGroupCustomEvent<HTMLAtuiButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtButtonGroupElement extends Components.AtButtonGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtButtonGroupElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupElement, ev: AtButtonGroupCustomEvent<HTMLAtButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiButtonGroupElementEventMap>(type: K, listener: (this: HTMLAtuiButtonGroupElement, ev: AtuiButtonGroupCustomEvent<HTMLAtuiButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtButtonGroupElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupElement, ev: AtButtonGroupCustomEvent<HTMLAtButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiButtonGroupElement: {
-        prototype: HTMLAtuiButtonGroupElement;
-        new (): HTMLAtuiButtonGroupElement;
+    var HTMLAtButtonGroupElement: {
+        prototype: HTMLAtButtonGroupElement;
+        new (): HTMLAtButtonGroupElement;
     };
-    interface HTMLAtuiButtonGroupOptionElementEventMap {
-        "atuiClick": AtuiEvent;
+    interface HTMLAtButtonGroupOptionElementEventMap {
+        "atuiClick": AtEvent;
     }
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
      */
-    interface HTMLAtuiButtonGroupOptionElement extends Components.AtuiButtonGroupOption, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtuiButtonGroupOptionElement, ev: AtuiButtonGroupOptionCustomEvent<HTMLAtuiButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtButtonGroupOptionElement extends Components.AtButtonGroupOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupOptionElement, ev: AtButtonGroupOptionCustomEvent<HTMLAtButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtuiButtonGroupOptionElement, ev: AtuiButtonGroupOptionCustomEvent<HTMLAtuiButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupOptionElement, ev: AtButtonGroupOptionCustomEvent<HTMLAtButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiButtonGroupOptionElement: {
-        prototype: HTMLAtuiButtonGroupOptionElement;
-        new (): HTMLAtuiButtonGroupOptionElement;
+    var HTMLAtButtonGroupOptionElement: {
+        prototype: HTMLAtButtonGroupOptionElement;
+        new (): HTMLAtButtonGroupOptionElement;
     };
     /**
      * @category Layout
      * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
      */
-    interface HTMLAtuiCardElement extends Components.AtuiCard, HTMLStencilElement {
+    interface HTMLAtCardElement extends Components.AtCard, HTMLStencilElement {
     }
-    var HTMLAtuiCardElement: {
-        prototype: HTMLAtuiCardElement;
-        new (): HTMLAtuiCardElement;
+    var HTMLAtCardElement: {
+        prototype: HTMLAtCardElement;
+        new (): HTMLAtCardElement;
     };
     /**
      * ### ```interface PointStyles```
@@ -3056,54 +3056,54 @@ declare global {
      *  stepped?: boolean;
      * ```
      */
-    interface HTMLAtuiChartBarLineElement extends Components.AtuiChartBarLine, HTMLStencilElement {
+    interface HTMLAtChartBarLineElement extends Components.AtChartBarLine, HTMLStencilElement {
     }
-    var HTMLAtuiChartBarLineElement: {
-        prototype: HTMLAtuiChartBarLineElement;
-        new (): HTMLAtuiChartBarLineElement;
+    var HTMLAtChartBarLineElement: {
+        prototype: HTMLAtChartBarLineElement;
+        new (): HTMLAtChartBarLineElement;
     };
     /**
      * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
-    interface HTMLAtuiChartDonutElement extends Components.AtuiChartDonut, HTMLStencilElement {
+    interface HTMLAtChartDonutElement extends Components.AtChartDonut, HTMLStencilElement {
     }
-    var HTMLAtuiChartDonutElement: {
-        prototype: HTMLAtuiChartDonutElement;
-        new (): HTMLAtuiChartDonutElement;
+    var HTMLAtChartDonutElement: {
+        prototype: HTMLAtChartDonutElement;
+        new (): HTMLAtChartDonutElement;
     };
-    interface HTMLAtuiCheckboxElementEventMap {
+    interface HTMLAtCheckboxElementEventMap {
         "atuiChange": boolean;
     }
     /**
      * @category Form Controls
      * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.
      */
-    interface HTMLAtuiCheckboxElement extends Components.AtuiCheckbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiCheckboxElementEventMap>(type: K, listener: (this: HTMLAtuiCheckboxElement, ev: AtuiCheckboxCustomEvent<HTMLAtuiCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtCheckboxElement extends Components.AtCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtCheckboxElementEventMap>(type: K, listener: (this: HTMLAtCheckboxElement, ev: AtCheckboxCustomEvent<HTMLAtCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiCheckboxElementEventMap>(type: K, listener: (this: HTMLAtuiCheckboxElement, ev: AtuiCheckboxCustomEvent<HTMLAtuiCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtCheckboxElementEventMap>(type: K, listener: (this: HTMLAtCheckboxElement, ev: AtCheckboxCustomEvent<HTMLAtCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiCheckboxElement: {
-        prototype: HTMLAtuiCheckboxElement;
-        new (): HTMLAtuiCheckboxElement;
+    var HTMLAtCheckboxElement: {
+        prototype: HTMLAtCheckboxElement;
+        new (): HTMLAtCheckboxElement;
     };
     /**
      * @category Table Cell
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
-    interface HTMLAtuiCheckboxCellElement extends Components.AtuiCheckboxCell, HTMLStencilElement {
+    interface HTMLAtCheckboxCellElement extends Components.AtCheckboxCell, HTMLStencilElement {
     }
-    var HTMLAtuiCheckboxCellElement: {
-        prototype: HTMLAtuiCheckboxCellElement;
-        new (): HTMLAtuiCheckboxCellElement;
+    var HTMLAtCheckboxCellElement: {
+        prototype: HTMLAtCheckboxCellElement;
+        new (): HTMLAtCheckboxCellElement;
     };
-    interface HTMLAtuiCheckboxGroupElementEventMap {
+    interface HTMLAtCheckboxGroupElementEventMap {
         "atuiChange": string[];
     }
     /**
@@ -3117,369 +3117,369 @@ declare global {
      * @category Form Controls
      * @description A checkbox group component for selecting multiple options from a predefined list. Provides grouped validation, labeling, and accessibility features for checkbox collections.
      */
-    interface HTMLAtuiCheckboxGroupElement extends Components.AtuiCheckboxGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLAtuiCheckboxGroupElement, ev: AtuiCheckboxGroupCustomEvent<HTMLAtuiCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtCheckboxGroupElement extends Components.AtCheckboxGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLAtCheckboxGroupElement, ev: AtCheckboxGroupCustomEvent<HTMLAtCheckboxGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLAtuiCheckboxGroupElement, ev: AtuiCheckboxGroupCustomEvent<HTMLAtuiCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtCheckboxGroupElementEventMap>(type: K, listener: (this: HTMLAtCheckboxGroupElement, ev: AtCheckboxGroupCustomEvent<HTMLAtCheckboxGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiCheckboxGroupElement: {
-        prototype: HTMLAtuiCheckboxGroupElement;
-        new (): HTMLAtuiCheckboxGroupElement;
+    var HTMLAtCheckboxGroupElement: {
+        prototype: HTMLAtCheckboxGroupElement;
+        new (): HTMLAtCheckboxGroupElement;
     };
     /**
      * @category Table Cell
      * @description A header component for displaying a checkbox.
      */
-    interface HTMLAtuiCheckboxHeaderElement extends Components.AtuiCheckboxHeader, HTMLStencilElement {
+    interface HTMLAtCheckboxHeaderElement extends Components.AtCheckboxHeader, HTMLStencilElement {
     }
-    var HTMLAtuiCheckboxHeaderElement: {
-        prototype: HTMLAtuiCheckboxHeaderElement;
-        new (): HTMLAtuiCheckboxHeaderElement;
+    var HTMLAtCheckboxHeaderElement: {
+        prototype: HTMLAtCheckboxHeaderElement;
+        new (): HTMLAtCheckboxHeaderElement;
     };
-    interface HTMLAtuiChipListElementEventMap {
-        "atuiRemoveChip": string[];
+    interface HTMLAtChipListElementEventMap {
+        "atRemoveChip": string[];
     }
     /**
      * @category Utilities
      * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
      */
-    interface HTMLAtuiChipListElement extends Components.AtuiChipList, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiChipListElementEventMap>(type: K, listener: (this: HTMLAtuiChipListElement, ev: AtuiChipListCustomEvent<HTMLAtuiChipListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtChipListElement extends Components.AtChipList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtChipListElementEventMap>(type: K, listener: (this: HTMLAtChipListElement, ev: AtChipListCustomEvent<HTMLAtChipListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiChipListElementEventMap>(type: K, listener: (this: HTMLAtuiChipListElement, ev: AtuiChipListCustomEvent<HTMLAtuiChipListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtChipListElementEventMap>(type: K, listener: (this: HTMLAtChipListElement, ev: AtChipListCustomEvent<HTMLAtChipListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiChipListElement: {
-        prototype: HTMLAtuiChipListElement;
-        new (): HTMLAtuiChipListElement;
+    var HTMLAtChipListElement: {
+        prototype: HTMLAtChipListElement;
+        new (): HTMLAtChipListElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a list of chips.
      */
-    interface HTMLAtuiChipListCellElement extends Components.AtuiChipListCell, HTMLStencilElement {
+    interface HTMLAtChipListCellElement extends Components.AtChipListCell, HTMLStencilElement {
     }
-    var HTMLAtuiChipListCellElement: {
-        prototype: HTMLAtuiChipListCellElement;
-        new (): HTMLAtuiChipListCellElement;
+    var HTMLAtChipListCellElement: {
+        prototype: HTMLAtChipListCellElement;
+        new (): HTMLAtChipListCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a color status indicator based on predefined types
      */
-    interface HTMLAtuiColorStatusCellElement extends Components.AtuiColorStatusCell, HTMLStencilElement {
+    interface HTMLAtColorStatusCellElement extends Components.AtColorStatusCell, HTMLStencilElement {
     }
-    var HTMLAtuiColorStatusCellElement: {
-        prototype: HTMLAtuiColorStatusCellElement;
-        new (): HTMLAtuiColorStatusCellElement;
+    var HTMLAtColorStatusCellElement: {
+        prototype: HTMLAtColorStatusCellElement;
+        new (): HTMLAtColorStatusCellElement;
     };
-    interface HTMLAtuiColumnManagerElementEventMap {
-        "atuiChange": ColumnManagerChangeEvent;
+    interface HTMLAtColumnManagerElementEventMap {
+        "atChange": ColumnManagerChangeEvent;
     }
-    interface HTMLAtuiColumnManagerElement extends Components.AtuiColumnManager, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtuiColumnManagerElement, ev: AtuiColumnManagerCustomEvent<HTMLAtuiColumnManagerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtColumnManagerElement extends Components.AtColumnManager, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtColumnManagerElement, ev: AtColumnManagerCustomEvent<HTMLAtColumnManagerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtuiColumnManagerElement, ev: AtuiColumnManagerCustomEvent<HTMLAtuiColumnManagerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtColumnManagerElement, ev: AtColumnManagerCustomEvent<HTMLAtColumnManagerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiColumnManagerElement: {
-        prototype: HTMLAtuiColumnManagerElement;
-        new (): HTMLAtuiColumnManagerElement;
+    var HTMLAtColumnManagerElement: {
+        prototype: HTMLAtColumnManagerElement;
+        new (): HTMLAtColumnManagerElement;
     };
-    interface HTMLAtuiCustomTimeRangeElementEventMap {
+    interface HTMLAtCustomTimeRangeElementEventMap {
         "atuiCancel": null;
         "atuiSubmit": DateRangeStrings;
     }
-    interface HTMLAtuiCustomTimeRangeElement extends Components.AtuiCustomTimeRange, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiCustomTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtuiCustomTimeRangeElement, ev: AtuiCustomTimeRangeCustomEvent<HTMLAtuiCustomTimeRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtCustomTimeRangeElement extends Components.AtCustomTimeRange, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtCustomTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtCustomTimeRangeElement, ev: AtCustomTimeRangeCustomEvent<HTMLAtCustomTimeRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiCustomTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtuiCustomTimeRangeElement, ev: AtuiCustomTimeRangeCustomEvent<HTMLAtuiCustomTimeRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtCustomTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtCustomTimeRangeElement, ev: AtCustomTimeRangeCustomEvent<HTMLAtCustomTimeRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiCustomTimeRangeElement: {
-        prototype: HTMLAtuiCustomTimeRangeElement;
-        new (): HTMLAtuiCustomTimeRangeElement;
+    var HTMLAtCustomTimeRangeElement: {
+        prototype: HTMLAtCustomTimeRangeElement;
+        new (): HTMLAtCustomTimeRangeElement;
     };
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
-    interface HTMLAtuiDialogElement extends Components.AtuiDialog, HTMLStencilElement {
+    interface HTMLAtDialogElement extends Components.AtDialog, HTMLStencilElement {
     }
-    var HTMLAtuiDialogElement: {
-        prototype: HTMLAtuiDialogElement;
-        new (): HTMLAtuiDialogElement;
+    var HTMLAtDialogElement: {
+        prototype: HTMLAtDialogElement;
+        new (): HTMLAtDialogElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying and editing text.
      */
-    interface HTMLAtuiEditTextCellElement extends Components.AtuiEditTextCell, HTMLStencilElement {
+    interface HTMLAtEditTextCellElement extends Components.AtEditTextCell, HTMLStencilElement {
     }
-    var HTMLAtuiEditTextCellElement: {
-        prototype: HTMLAtuiEditTextCellElement;
-        new (): HTMLAtuiEditTextCellElement;
+    var HTMLAtEditTextCellElement: {
+        prototype: HTMLAtEditTextCellElement;
+        new (): HTMLAtEditTextCellElement;
     };
     /**
      * @category Form Controls
      * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
      */
-    interface HTMLAtuiFormLabelElement extends Components.AtuiFormLabel, HTMLStencilElement {
+    interface HTMLAtFormLabelElement extends Components.AtFormLabel, HTMLStencilElement {
     }
-    var HTMLAtuiFormLabelElement: {
-        prototype: HTMLAtuiFormLabelElement;
-        new (): HTMLAtuiFormLabelElement;
+    var HTMLAtFormLabelElement: {
+        prototype: HTMLAtFormLabelElement;
+        new (): HTMLAtFormLabelElement;
     };
     /**
      * @category Layout
      * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
      */
-    interface HTMLAtuiHeaderElement extends Components.AtuiHeader, HTMLStencilElement {
+    interface HTMLAtHeaderElement extends Components.AtHeader, HTMLStencilElement {
     }
-    var HTMLAtuiHeaderElement: {
-        prototype: HTMLAtuiHeaderElement;
-        new (): HTMLAtuiHeaderElement;
+    var HTMLAtHeaderElement: {
+        prototype: HTMLAtHeaderElement;
+        new (): HTMLAtHeaderElement;
     };
-    interface HTMLAtuiInputElementEventMap {
+    interface HTMLAtInputElementEventMap {
         "atuiChange": string | number;
     }
     /**
      * @category Form Controls
      * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
      */
-    interface HTMLAtuiInputElement extends Components.AtuiInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiInputElementEventMap>(type: K, listener: (this: HTMLAtuiInputElement, ev: AtuiInputCustomEvent<HTMLAtuiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtInputElement extends Components.AtInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtInputElementEventMap>(type: K, listener: (this: HTMLAtInputElement, ev: AtInputCustomEvent<HTMLAtInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiInputElementEventMap>(type: K, listener: (this: HTMLAtuiInputElement, ev: AtuiInputCustomEvent<HTMLAtuiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtInputElementEventMap>(type: K, listener: (this: HTMLAtInputElement, ev: AtInputCustomEvent<HTMLAtInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiInputElement: {
-        prototype: HTMLAtuiInputElement;
-        new (): HTMLAtuiInputElement;
+    var HTMLAtInputElement: {
+        prototype: HTMLAtInputElement;
+        new (): HTMLAtInputElement;
     };
-    interface HTMLAtuiInputNumericElementEventMap {
+    interface HTMLAtInputNumericElementEventMap {
         "atuiChange": string | number;
     }
     /**
      * @category Form Controls
      * @description A numeric input component for entering numerical values.
      */
-    interface HTMLAtuiInputNumericElement extends Components.AtuiInputNumeric, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiInputNumericElementEventMap>(type: K, listener: (this: HTMLAtuiInputNumericElement, ev: AtuiInputNumericCustomEvent<HTMLAtuiInputNumericElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtInputNumericElement extends Components.AtInputNumeric, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtInputNumericElementEventMap>(type: K, listener: (this: HTMLAtInputNumericElement, ev: AtInputNumericCustomEvent<HTMLAtInputNumericElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiInputNumericElementEventMap>(type: K, listener: (this: HTMLAtuiInputNumericElement, ev: AtuiInputNumericCustomEvent<HTMLAtuiInputNumericElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtInputNumericElementEventMap>(type: K, listener: (this: HTMLAtInputNumericElement, ev: AtInputNumericCustomEvent<HTMLAtInputNumericElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiInputNumericElement: {
-        prototype: HTMLAtuiInputNumericElement;
-        new (): HTMLAtuiInputNumericElement;
+    var HTMLAtInputNumericElement: {
+        prototype: HTMLAtInputNumericElement;
+        new (): HTMLAtInputNumericElement;
     };
-    interface HTMLAtuiInputRangeElementEventMap {
+    interface HTMLAtInputRangeElementEventMap {
         "atuiChange": number;
     }
     /**
      * @category Form Controls
      * @description A range input component for selecting a value within a specified range.
      */
-    interface HTMLAtuiInputRangeElement extends Components.AtuiInputRange, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiInputRangeElementEventMap>(type: K, listener: (this: HTMLAtuiInputRangeElement, ev: AtuiInputRangeCustomEvent<HTMLAtuiInputRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtInputRangeElement extends Components.AtInputRange, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtInputRangeElementEventMap>(type: K, listener: (this: HTMLAtInputRangeElement, ev: AtInputRangeCustomEvent<HTMLAtInputRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiInputRangeElementEventMap>(type: K, listener: (this: HTMLAtuiInputRangeElement, ev: AtuiInputRangeCustomEvent<HTMLAtuiInputRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtInputRangeElementEventMap>(type: K, listener: (this: HTMLAtInputRangeElement, ev: AtInputRangeCustomEvent<HTMLAtInputRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiInputRangeElement: {
-        prototype: HTMLAtuiInputRangeElement;
-        new (): HTMLAtuiInputRangeElement;
+    var HTMLAtInputRangeElement: {
+        prototype: HTMLAtInputRangeElement;
+        new (): HTMLAtInputRangeElement;
     };
     /**
      * @category Layout
      * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
      */
-    interface HTMLAtuiLayoutElement extends Components.AtuiLayout, HTMLStencilElement {
+    interface HTMLAtLayoutElement extends Components.AtLayout, HTMLStencilElement {
     }
-    var HTMLAtuiLayoutElement: {
-        prototype: HTMLAtuiLayoutElement;
-        new (): HTMLAtuiLayoutElement;
+    var HTMLAtLayoutElement: {
+        prototype: HTMLAtLayoutElement;
+        new (): HTMLAtLayoutElement;
     };
     /**
      * @category Layout
      * @description A list item component for the list.
      */
-    interface HTMLAtuiListItemElement extends Components.AtuiListItem, HTMLStencilElement {
+    interface HTMLAtListItemElement extends Components.AtListItem, HTMLStencilElement {
     }
-    var HTMLAtuiListItemElement: {
-        prototype: HTMLAtuiListItemElement;
-        new (): HTMLAtuiListItemElement;
+    var HTMLAtListItemElement: {
+        prototype: HTMLAtListItemElement;
+        new (): HTMLAtListItemElement;
     };
-    interface HTMLAtuiListSelectorElementEventMap {
+    interface HTMLAtListSelectorElementEventMap {
         "atuiChange": ListSelectorItem;
-        "atuiInfoButtonClick": AtuiEvent;
+        "atuiInfoButtonClick": AtEvent;
     }
     /**
      * @category Navigation
      * @description A list selector component for selecting an item from a list.
      */
-    interface HTMLAtuiListSelectorElement extends Components.AtuiListSelector, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiListSelectorElementEventMap>(type: K, listener: (this: HTMLAtuiListSelectorElement, ev: AtuiListSelectorCustomEvent<HTMLAtuiListSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtListSelectorElement extends Components.AtListSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtListSelectorElementEventMap>(type: K, listener: (this: HTMLAtListSelectorElement, ev: AtListSelectorCustomEvent<HTMLAtListSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiListSelectorElementEventMap>(type: K, listener: (this: HTMLAtuiListSelectorElement, ev: AtuiListSelectorCustomEvent<HTMLAtuiListSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtListSelectorElementEventMap>(type: K, listener: (this: HTMLAtListSelectorElement, ev: AtListSelectorCustomEvent<HTMLAtListSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiListSelectorElement: {
-        prototype: HTMLAtuiListSelectorElement;
-        new (): HTMLAtuiListSelectorElement;
+    var HTMLAtListSelectorElement: {
+        prototype: HTMLAtListSelectorElement;
+        new (): HTMLAtListSelectorElement;
     };
     /**
      * @category Navigation
      * @description A list selector item component for the list selector.
      */
-    interface HTMLAtuiListSelectorItemElement extends Components.AtuiListSelectorItem, HTMLStencilElement {
+    interface HTMLAtListSelectorItemElement extends Components.AtListSelectorItem, HTMLStencilElement {
     }
-    var HTMLAtuiListSelectorItemElement: {
-        prototype: HTMLAtuiListSelectorItemElement;
-        new (): HTMLAtuiListSelectorItemElement;
+    var HTMLAtListSelectorItemElement: {
+        prototype: HTMLAtListSelectorItemElement;
+        new (): HTMLAtListSelectorItemElement;
     };
     /**
      * @category Feedback
      * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
      */
-    interface HTMLAtuiLoadingElement extends Components.AtuiLoading, HTMLStencilElement {
+    interface HTMLAtLoadingElement extends Components.AtLoading, HTMLStencilElement {
     }
-    var HTMLAtuiLoadingElement: {
-        prototype: HTMLAtuiLoadingElement;
-        new (): HTMLAtuiLoadingElement;
+    var HTMLAtLoadingElement: {
+        prototype: HTMLAtLoadingElement;
+        new (): HTMLAtLoadingElement;
     };
-    interface HTMLAtuiMenuElementEventMap {
+    interface HTMLAtMenuElementEventMap {
         "atuiMenuStateChange": boolean;
     }
-    interface HTMLAtuiMenuElement extends Components.AtuiMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiMenuElementEventMap>(type: K, listener: (this: HTMLAtuiMenuElement, ev: AtuiMenuCustomEvent<HTMLAtuiMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtMenuElement extends Components.AtMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtMenuElementEventMap>(type: K, listener: (this: HTMLAtMenuElement, ev: AtMenuCustomEvent<HTMLAtMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiMenuElementEventMap>(type: K, listener: (this: HTMLAtuiMenuElement, ev: AtuiMenuCustomEvent<HTMLAtuiMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtMenuElementEventMap>(type: K, listener: (this: HTMLAtMenuElement, ev: AtMenuCustomEvent<HTMLAtMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiMenuElement: {
-        prototype: HTMLAtuiMenuElement;
-        new (): HTMLAtuiMenuElement;
+    var HTMLAtMenuElement: {
+        prototype: HTMLAtMenuElement;
+        new (): HTMLAtMenuElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a menu.
      */
-    interface HTMLAtuiMenuCellElement extends Components.AtuiMenuCell, HTMLStencilElement {
+    interface HTMLAtMenuCellElement extends Components.AtMenuCell, HTMLStencilElement {
     }
-    var HTMLAtuiMenuCellElement: {
-        prototype: HTMLAtuiMenuCellElement;
-        new (): HTMLAtuiMenuCellElement;
+    var HTMLAtMenuCellElement: {
+        prototype: HTMLAtMenuCellElement;
+        new (): HTMLAtMenuCellElement;
     };
-    interface HTMLAtuiMenuItemElement extends Components.AtuiMenuItem, HTMLStencilElement {
+    interface HTMLAtMenuItemElement extends Components.AtMenuItem, HTMLStencilElement {
     }
-    var HTMLAtuiMenuItemElement: {
-        prototype: HTMLAtuiMenuItemElement;
-        new (): HTMLAtuiMenuItemElement;
+    var HTMLAtMenuItemElement: {
+        prototype: HTMLAtMenuItemElement;
+        new (): HTMLAtMenuItemElement;
     };
     /**
      * @category Feedback
      * @description A message component for displaying notifications, alerts, or informational messages.
      */
-    interface HTMLAtuiMessageElement extends Components.AtuiMessage, HTMLStencilElement {
+    interface HTMLAtMessageElement extends Components.AtMessage, HTMLStencilElement {
     }
-    var HTMLAtuiMessageElement: {
-        prototype: HTMLAtuiMessageElement;
-        new (): HTMLAtuiMessageElement;
+    var HTMLAtMessageElement: {
+        prototype: HTMLAtMessageElement;
+        new (): HTMLAtMessageElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying multiple buttons.
      */
-    interface HTMLAtuiMultiBtnCellElement extends Components.AtuiMultiBtnCell, HTMLStencilElement {
+    interface HTMLAtMultiBtnCellElement extends Components.AtMultiBtnCell, HTMLStencilElement {
     }
-    var HTMLAtuiMultiBtnCellElement: {
-        prototype: HTMLAtuiMultiBtnCellElement;
-        new (): HTMLAtuiMultiBtnCellElement;
+    var HTMLAtMultiBtnCellElement: {
+        prototype: HTMLAtMultiBtnCellElement;
+        new (): HTMLAtMultiBtnCellElement;
     };
-    interface HTMLAtuiMultiSelectElementEventMap {
+    interface HTMLAtMultiSelectElementEventMap {
         "atuiChange": string[];
     }
     /**
      * @category Form Controls
      * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface HTMLAtuiMultiSelectElement extends Components.AtuiMultiSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiMultiSelectElementEventMap>(type: K, listener: (this: HTMLAtuiMultiSelectElement, ev: AtuiMultiSelectCustomEvent<HTMLAtuiMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtMultiSelectElement extends Components.AtMultiSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtMultiSelectElementEventMap>(type: K, listener: (this: HTMLAtMultiSelectElement, ev: AtMultiSelectCustomEvent<HTMLAtMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiMultiSelectElementEventMap>(type: K, listener: (this: HTMLAtuiMultiSelectElement, ev: AtuiMultiSelectCustomEvent<HTMLAtuiMultiSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtMultiSelectElementEventMap>(type: K, listener: (this: HTMLAtMultiSelectElement, ev: AtMultiSelectCustomEvent<HTMLAtMultiSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiMultiSelectElement: {
-        prototype: HTMLAtuiMultiSelectElement;
-        new (): HTMLAtuiMultiSelectElement;
+    var HTMLAtMultiSelectElement: {
+        prototype: HTMLAtMultiSelectElement;
+        new (): HTMLAtMultiSelectElement;
     };
     /**
      * @category Feedback
      * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
      */
-    interface HTMLAtuiPlaceholderElement extends Components.AtuiPlaceholder, HTMLStencilElement {
+    interface HTMLAtPlaceholderElement extends Components.AtPlaceholder, HTMLStencilElement {
     }
-    var HTMLAtuiPlaceholderElement: {
-        prototype: HTMLAtuiPlaceholderElement;
-        new (): HTMLAtuiPlaceholderElement;
+    var HTMLAtPlaceholderElement: {
+        prototype: HTMLAtPlaceholderElement;
+        new (): HTMLAtPlaceholderElement;
     };
-    interface HTMLAtuiPromptContainerElementEventMap {
-        "atuiSubmit": string;
-        "atuiStop": void;
-        "atuiNewThread": void;
-        "atuiMessageCopy": {
+    interface HTMLAtPromptContainerElementEventMap {
+        "atSubmit": string;
+        "atStop": void;
+        "atNewThread": void;
+        "atMessageCopy": {
         messageId: string;
         content: string;
     };
-        "atuiMessageRetry": { messageId: string };
-        "atuiMessageEdit": {
+        "atMessageRetry": { messageId: string };
+        "atMessageEdit": {
         messageId: string;
         content: string;
     };
-        "atuiMessageVote": {
+        "atMessageVote": {
         messageId: string;
         score: number;
     };
@@ -3488,79 +3488,79 @@ declare global {
      * @category Prompt
      * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
      */
-    interface HTMLAtuiPromptContainerElement extends Components.AtuiPromptContainer, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtuiPromptContainerElement, ev: AtuiPromptContainerCustomEvent<HTMLAtuiPromptContainerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtPromptContainerElement extends Components.AtPromptContainer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtPromptContainerElement, ev: AtPromptContainerCustomEvent<HTMLAtPromptContainerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtuiPromptContainerElement, ev: AtuiPromptContainerCustomEvent<HTMLAtuiPromptContainerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtPromptContainerElementEventMap>(type: K, listener: (this: HTMLAtPromptContainerElement, ev: AtPromptContainerCustomEvent<HTMLAtPromptContainerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiPromptContainerElement: {
-        prototype: HTMLAtuiPromptContainerElement;
-        new (): HTMLAtuiPromptContainerElement;
+    var HTMLAtPromptContainerElement: {
+        prototype: HTMLAtPromptContainerElement;
+        new (): HTMLAtPromptContainerElement;
     };
-    interface HTMLAtuiPromptInputElementEventMap {
-        "atuiChange": string;
-        "atuiSubmit": string;
-        "atuiStop": void;
-        "atuiFocus": void;
+    interface HTMLAtPromptInputElementEventMap {
+        "atChange": string;
+        "atSubmit": string;
+        "atStop": void;
+        "atFocus": void;
     }
     /**
      * @category Prompt
      * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
-    interface HTMLAtuiPromptInputElement extends Components.AtuiPromptInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiPromptInputElementEventMap>(type: K, listener: (this: HTMLAtuiPromptInputElement, ev: AtuiPromptInputCustomEvent<HTMLAtuiPromptInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtPromptInputElement extends Components.AtPromptInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtPromptInputElementEventMap>(type: K, listener: (this: HTMLAtPromptInputElement, ev: AtPromptInputCustomEvent<HTMLAtPromptInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiPromptInputElementEventMap>(type: K, listener: (this: HTMLAtuiPromptInputElement, ev: AtuiPromptInputCustomEvent<HTMLAtuiPromptInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtPromptInputElementEventMap>(type: K, listener: (this: HTMLAtPromptInputElement, ev: AtPromptInputCustomEvent<HTMLAtPromptInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiPromptInputElement: {
-        prototype: HTMLAtuiPromptInputElement;
-        new (): HTMLAtuiPromptInputElement;
+    var HTMLAtPromptInputElement: {
+        prototype: HTMLAtPromptInputElement;
+        new (): HTMLAtPromptInputElement;
     };
-    interface HTMLAtuiPromptMessageElementEventMap {
-        "atuiCopy": string;
-        "atuiVote": { messageId: string; score: number };
-        "atuiRetry": void;
-        "atuiEdit": string;
+    interface HTMLAtPromptMessageElementEventMap {
+        "atCopy": string;
+        "atVote": { messageId: string; score: number };
+        "atRetry": void;
+        "atEdit": string;
     }
     /**
      * @category Prompt
      * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
      */
-    interface HTMLAtuiPromptMessageElement extends Components.AtuiPromptMessage, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtuiPromptMessageElement, ev: AtuiPromptMessageCustomEvent<HTMLAtuiPromptMessageElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtPromptMessageElement extends Components.AtPromptMessage, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtPromptMessageElement, ev: AtPromptMessageCustomEvent<HTMLAtPromptMessageElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtuiPromptMessageElement, ev: AtuiPromptMessageCustomEvent<HTMLAtuiPromptMessageElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtPromptMessageElement, ev: AtPromptMessageCustomEvent<HTMLAtPromptMessageElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiPromptMessageElement: {
-        prototype: HTMLAtuiPromptMessageElement;
-        new (): HTMLAtuiPromptMessageElement;
+    var HTMLAtPromptMessageElement: {
+        prototype: HTMLAtPromptMessageElement;
+        new (): HTMLAtPromptMessageElement;
     };
-    interface HTMLAtuiPromptThreadElementEventMap {
-        "atuiMessageCopy": {
+    interface HTMLAtPromptThreadElementEventMap {
+        "atMessageCopy": {
         messageId: string;
         content: string;
     };
-        "atuiMessageRetry": { messageId: string };
-        "atuiMessageEdit": {
+        "atMessageRetry": { messageId: string };
+        "atMessageEdit": {
         messageId: string;
         content: string;
     };
-        "atuiMessageVote": {
+        "atMessageVote": {
         messageId: string;
         score: number;
     };
@@ -3569,164 +3569,164 @@ declare global {
      * @category Prompt
      * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
      */
-    interface HTMLAtuiPromptThreadElement extends Components.AtuiPromptThread, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtuiPromptThreadElement, ev: AtuiPromptThreadCustomEvent<HTMLAtuiPromptThreadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtPromptThreadElement extends Components.AtPromptThread, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtPromptThreadElement, ev: AtPromptThreadCustomEvent<HTMLAtPromptThreadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtuiPromptThreadElement, ev: AtuiPromptThreadCustomEvent<HTMLAtuiPromptThreadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtPromptThreadElementEventMap>(type: K, listener: (this: HTMLAtPromptThreadElement, ev: AtPromptThreadCustomEvent<HTMLAtPromptThreadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiPromptThreadElement: {
-        prototype: HTMLAtuiPromptThreadElement;
-        new (): HTMLAtuiPromptThreadElement;
+    var HTMLAtPromptThreadElement: {
+        prototype: HTMLAtPromptThreadElement;
+        new (): HTMLAtPromptThreadElement;
     };
-    interface HTMLAtuiRadioElementEventMap {
+    interface HTMLAtRadioElementEventMap {
         "atuiChange": boolean;
     }
     /**
      * @category Form Controls
      * @description A radio button component for selecting a single option from a predefined list.
      */
-    interface HTMLAtuiRadioElement extends Components.AtuiRadio, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiRadioElementEventMap>(type: K, listener: (this: HTMLAtuiRadioElement, ev: AtuiRadioCustomEvent<HTMLAtuiRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtRadioElement extends Components.AtRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtRadioElementEventMap>(type: K, listener: (this: HTMLAtRadioElement, ev: AtRadioCustomEvent<HTMLAtRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiRadioElementEventMap>(type: K, listener: (this: HTMLAtuiRadioElement, ev: AtuiRadioCustomEvent<HTMLAtuiRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtRadioElementEventMap>(type: K, listener: (this: HTMLAtRadioElement, ev: AtRadioCustomEvent<HTMLAtRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiRadioElement: {
-        prototype: HTMLAtuiRadioElement;
-        new (): HTMLAtuiRadioElement;
+    var HTMLAtRadioElement: {
+        prototype: HTMLAtRadioElement;
+        new (): HTMLAtRadioElement;
     };
-    interface HTMLAtuiRadioGroupElementEventMap {
+    interface HTMLAtRadioGroupElementEventMap {
         "atuiChange": string;
     }
     /**
      * @category Form Controls
      * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
      */
-    interface HTMLAtuiRadioGroupElement extends Components.AtuiRadioGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiRadioGroupElementEventMap>(type: K, listener: (this: HTMLAtuiRadioGroupElement, ev: AtuiRadioGroupCustomEvent<HTMLAtuiRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtRadioGroupElement extends Components.AtRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtRadioGroupElementEventMap>(type: K, listener: (this: HTMLAtRadioGroupElement, ev: AtRadioGroupCustomEvent<HTMLAtRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiRadioGroupElementEventMap>(type: K, listener: (this: HTMLAtuiRadioGroupElement, ev: AtuiRadioGroupCustomEvent<HTMLAtuiRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtRadioGroupElementEventMap>(type: K, listener: (this: HTMLAtRadioGroupElement, ev: AtRadioGroupCustomEvent<HTMLAtRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiRadioGroupElement: {
-        prototype: HTMLAtuiRadioGroupElement;
-        new (): HTMLAtuiRadioGroupElement;
+    var HTMLAtRadioGroupElement: {
+        prototype: HTMLAtRadioGroupElement;
+        new (): HTMLAtRadioGroupElement;
     };
-    interface HTMLAtuiSearchElementEventMap {
-        "atuiChange": string;
+    interface HTMLAtSearchElementEventMap {
+        "atChange": string;
     }
     /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
-    interface HTMLAtuiSearchElement extends Components.AtuiSearch, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiSearchElementEventMap>(type: K, listener: (this: HTMLAtuiSearchElement, ev: AtuiSearchCustomEvent<HTMLAtuiSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtSearchElement extends Components.AtSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSearchElementEventMap>(type: K, listener: (this: HTMLAtSearchElement, ev: AtSearchCustomEvent<HTMLAtSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiSearchElementEventMap>(type: K, listener: (this: HTMLAtuiSearchElement, ev: AtuiSearchCustomEvent<HTMLAtuiSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSearchElementEventMap>(type: K, listener: (this: HTMLAtSearchElement, ev: AtSearchCustomEvent<HTMLAtSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiSearchElement: {
-        prototype: HTMLAtuiSearchElement;
-        new (): HTMLAtuiSearchElement;
+    var HTMLAtSearchElement: {
+        prototype: HTMLAtSearchElement;
+        new (): HTMLAtSearchElement;
     };
     /**
      * @category Data Tables
      * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
      */
-    interface HTMLAtuiSearchTableElement extends Components.AtuiSearchTable, HTMLStencilElement {
+    interface HTMLAtSearchTableElement extends Components.AtSearchTable, HTMLStencilElement {
     }
-    var HTMLAtuiSearchTableElement: {
-        prototype: HTMLAtuiSearchTableElement;
-        new (): HTMLAtuiSearchTableElement;
+    var HTMLAtSearchTableElement: {
+        prototype: HTMLAtSearchTableElement;
+        new (): HTMLAtSearchTableElement;
     };
-    interface HTMLAtuiSelectElementEventMap {
+    interface HTMLAtSelectElementEventMap {
         "atuiChange": string;
     }
     /**
      * @category Form Controls
      * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface HTMLAtuiSelectElement extends Components.AtuiSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiSelectElementEventMap>(type: K, listener: (this: HTMLAtuiSelectElement, ev: AtuiSelectCustomEvent<HTMLAtuiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtSelectElement extends Components.AtSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSelectElementEventMap>(type: K, listener: (this: HTMLAtSelectElement, ev: AtSelectCustomEvent<HTMLAtSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiSelectElementEventMap>(type: K, listener: (this: HTMLAtuiSelectElement, ev: AtuiSelectCustomEvent<HTMLAtuiSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSelectElementEventMap>(type: K, listener: (this: HTMLAtSelectElement, ev: AtSelectCustomEvent<HTMLAtSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiSelectElement: {
-        prototype: HTMLAtuiSelectElement;
-        new (): HTMLAtuiSelectElement;
+    var HTMLAtSelectElement: {
+        prototype: HTMLAtSelectElement;
+        new (): HTMLAtSelectElement;
     };
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
      */
-    interface HTMLAtuiSidePanelElement extends Components.AtuiSidePanel, HTMLStencilElement {
+    interface HTMLAtSidePanelElement extends Components.AtSidePanel, HTMLStencilElement {
     }
-    var HTMLAtuiSidePanelElement: {
-        prototype: HTMLAtuiSidePanelElement;
-        new (): HTMLAtuiSidePanelElement;
+    var HTMLAtSidePanelElement: {
+        prototype: HTMLAtSidePanelElement;
+        new (): HTMLAtSidePanelElement;
     };
-    interface HTMLAtuiSidebarElementEventMap {
+    interface HTMLAtSidebarElementEventMap {
         "atuiSidebarChange": any;
     }
     /**
      * @category Navigation
      * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
      */
-    interface HTMLAtuiSidebarElement extends Components.AtuiSidebar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiSidebarElementEventMap>(type: K, listener: (this: HTMLAtuiSidebarElement, ev: AtuiSidebarCustomEvent<HTMLAtuiSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtSidebarElement extends Components.AtSidebar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSidebarElementEventMap>(type: K, listener: (this: HTMLAtSidebarElement, ev: AtSidebarCustomEvent<HTMLAtSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiSidebarElementEventMap>(type: K, listener: (this: HTMLAtuiSidebarElement, ev: AtuiSidebarCustomEvent<HTMLAtuiSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSidebarElementEventMap>(type: K, listener: (this: HTMLAtSidebarElement, ev: AtSidebarCustomEvent<HTMLAtSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiSidebarElement: {
-        prototype: HTMLAtuiSidebarElement;
-        new (): HTMLAtuiSidebarElement;
+    var HTMLAtSidebarElement: {
+        prototype: HTMLAtSidebarElement;
+        new (): HTMLAtSidebarElement;
     };
     /**
      * @category Navigation
      * @description 
      */
-    interface HTMLAtuiSidebarMenuElement extends Components.AtuiSidebarMenu, HTMLStencilElement {
+    interface HTMLAtSidebarMenuElement extends Components.AtSidebarMenu, HTMLStencilElement {
     }
-    var HTMLAtuiSidebarMenuElement: {
-        prototype: HTMLAtuiSidebarMenuElement;
-        new (): HTMLAtuiSidebarMenuElement;
+    var HTMLAtSidebarMenuElement: {
+        prototype: HTMLAtSidebarMenuElement;
+        new (): HTMLAtSidebarMenuElement;
     };
     /**
      * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
-    interface HTMLAtuiSidebarMenuitemElement extends Components.AtuiSidebarMenuitem, HTMLStencilElement {
+    interface HTMLAtSidebarMenuitemElement extends Components.AtSidebarMenuitem, HTMLStencilElement {
     }
-    var HTMLAtuiSidebarMenuitemElement: {
-        prototype: HTMLAtuiSidebarMenuitemElement;
-        new (): HTMLAtuiSidebarMenuitemElement;
+    var HTMLAtSidebarMenuitemElement: {
+        prototype: HTMLAtSidebarMenuitemElement;
+        new (): HTMLAtSidebarMenuitemElement;
     };
     /**
      * @category Navigation
@@ -3735,73 +3735,73 @@ declare global {
      * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
      * Menu indent styling is supported up to 3 levels.
      */
-    interface HTMLAtuiSidebarSubmenuElement extends Components.AtuiSidebarSubmenu, HTMLStencilElement {
+    interface HTMLAtSidebarSubmenuElement extends Components.AtSidebarSubmenu, HTMLStencilElement {
     }
-    var HTMLAtuiSidebarSubmenuElement: {
-        prototype: HTMLAtuiSidebarSubmenuElement;
-        new (): HTMLAtuiSidebarSubmenuElement;
+    var HTMLAtSidebarSubmenuElement: {
+        prototype: HTMLAtSidebarSubmenuElement;
+        new (): HTMLAtSidebarSubmenuElement;
     };
     /**
      * @category Navigation
      * @description A sidebar trigger component for the sidebar.
      */
-    interface HTMLAtuiSidebarTriggerElement extends Components.AtuiSidebarTrigger, HTMLStencilElement {
+    interface HTMLAtSidebarTriggerElement extends Components.AtSidebarTrigger, HTMLStencilElement {
     }
-    var HTMLAtuiSidebarTriggerElement: {
-        prototype: HTMLAtuiSidebarTriggerElement;
-        new (): HTMLAtuiSidebarTriggerElement;
+    var HTMLAtSidebarTriggerElement: {
+        prototype: HTMLAtSidebarTriggerElement;
+        new (): HTMLAtSidebarTriggerElement;
     };
     /**
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
-    interface HTMLAtuiSrcDestElement extends Components.AtuiSrcDest, HTMLStencilElement {
+    interface HTMLAtSrcDestElement extends Components.AtSrcDest, HTMLStencilElement {
     }
-    var HTMLAtuiSrcDestElement: {
-        prototype: HTMLAtuiSrcDestElement;
-        new (): HTMLAtuiSrcDestElement;
+    var HTMLAtSrcDestElement: {
+        prototype: HTMLAtSrcDestElement;
+        new (): HTMLAtSrcDestElement;
     };
     /**
      * @category Data Tables
      * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
      */
-    interface HTMLAtuiStaticTableElement extends Components.AtuiStaticTable, HTMLStencilElement {
+    interface HTMLAtStaticTableElement extends Components.AtStaticTable, HTMLStencilElement {
     }
-    var HTMLAtuiStaticTableElement: {
-        prototype: HTMLAtuiStaticTableElement;
-        new (): HTMLAtuiStaticTableElement;
+    var HTMLAtStaticTableElement: {
+        prototype: HTMLAtStaticTableElement;
+        new (): HTMLAtStaticTableElement;
     };
     /**
      * @category Data Visualization
      * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
      */
-    interface HTMLAtuiStatusBarElement extends Components.AtuiStatusBar, HTMLStencilElement {
+    interface HTMLAtStatusBarElement extends Components.AtStatusBar, HTMLStencilElement {
     }
-    var HTMLAtuiStatusBarElement: {
-        prototype: HTMLAtuiStatusBarElement;
-        new (): HTMLAtuiStatusBarElement;
+    var HTMLAtStatusBarElement: {
+        prototype: HTMLAtStatusBarElement;
+        new (): HTMLAtStatusBarElement;
     };
     /**
      * @category Navigation
      * @description A tab component for the tab selector.
      */
-    interface HTMLAtuiTabElement extends Components.AtuiTab, HTMLStencilElement {
+    interface HTMLAtTabElement extends Components.AtTab, HTMLStencilElement {
     }
-    var HTMLAtuiTabElement: {
-        prototype: HTMLAtuiTabElement;
-        new (): HTMLAtuiTabElement;
+    var HTMLAtTabElement: {
+        prototype: HTMLAtTabElement;
+        new (): HTMLAtTabElement;
     };
     /**
      * @category Navigation
      * @description A tab content component for the tab selector.
      */
-    interface HTMLAtuiTabContentElement extends Components.AtuiTabContent, HTMLStencilElement {
+    interface HTMLAtTabContentElement extends Components.AtTabContent, HTMLStencilElement {
     }
-    var HTMLAtuiTabContentElement: {
-        prototype: HTMLAtuiTabContentElement;
-        new (): HTMLAtuiTabContentElement;
+    var HTMLAtTabContentElement: {
+        prototype: HTMLAtTabContentElement;
+        new (): HTMLAtTabContentElement;
     };
-    interface HTMLAtuiTabSelectorElementEventMap {
+    interface HTMLAtTabSelectorElementEventMap {
         "atuiChange": string;
     }
     /**
@@ -3815,22 +3815,22 @@ declare global {
      * @category Navigation
      * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
      */
-    interface HTMLAtuiTabSelectorElement extends Components.AtuiTabSelector, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtuiTabSelectorElement, ev: AtuiTabSelectorCustomEvent<HTMLAtuiTabSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTabSelectorElement extends Components.AtTabSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtTabSelectorElement, ev: AtTabSelectorCustomEvent<HTMLAtTabSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtuiTabSelectorElement, ev: AtuiTabSelectorCustomEvent<HTMLAtuiTabSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtTabSelectorElement, ev: AtTabSelectorCustomEvent<HTMLAtTabSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTabSelectorElement: {
-        prototype: HTMLAtuiTabSelectorElement;
-        new (): HTMLAtuiTabSelectorElement;
+    var HTMLAtTabSelectorElement: {
+        prototype: HTMLAtTabSelectorElement;
+        new (): HTMLAtTabSelectorElement;
     };
-    interface HTMLAtuiTableElementEventMap {
-        "atuiSortChange": {
+    interface HTMLAtTableElementEventMap {
+        "atSortChange": {
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
     };
@@ -3839,219 +3839,219 @@ declare global {
      * @category Data Tables
      * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
      */
-    interface HTMLAtuiTableElement extends Components.AtuiTable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTableElementEventMap>(type: K, listener: (this: HTMLAtuiTableElement, ev: AtuiTableCustomEvent<HTMLAtuiTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTableElement extends Components.AtTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTableElementEventMap>(type: K, listener: (this: HTMLAtTableElement, ev: AtTableCustomEvent<HTMLAtTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTableElementEventMap>(type: K, listener: (this: HTMLAtuiTableElement, ev: AtuiTableCustomEvent<HTMLAtuiTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTableElementEventMap>(type: K, listener: (this: HTMLAtTableElement, ev: AtTableCustomEvent<HTMLAtTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTableElement: {
-        prototype: HTMLAtuiTableElement;
-        new (): HTMLAtuiTableElement;
+    var HTMLAtTableElement: {
+        prototype: HTMLAtTableElement;
+        new (): HTMLAtTableElement;
     };
-    interface HTMLAtuiTableActionsElementEventMap {
-        "atuiExportCsv": any;
-        "atuiExportPdf": any;
-        "atuiChange": any;
+    interface HTMLAtTableActionsElementEventMap {
+        "atExportCsv": any;
+        "atExportPdf": any;
+        "atChange": any;
     }
     /**
      * @category Data Tables
      * @description A container component for table actions, including search, export, and column management. Provides a unified interface for managing table interactions and data export.
      */
-    interface HTMLAtuiTableActionsElement extends Components.AtuiTableActions, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTableActionsElementEventMap>(type: K, listener: (this: HTMLAtuiTableActionsElement, ev: AtuiTableActionsCustomEvent<HTMLAtuiTableActionsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTableActionsElement extends Components.AtTableActions, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTableActionsElementEventMap>(type: K, listener: (this: HTMLAtTableActionsElement, ev: AtTableActionsCustomEvent<HTMLAtTableActionsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTableActionsElementEventMap>(type: K, listener: (this: HTMLAtuiTableActionsElement, ev: AtuiTableActionsCustomEvent<HTMLAtuiTableActionsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTableActionsElementEventMap>(type: K, listener: (this: HTMLAtTableActionsElement, ev: AtTableActionsCustomEvent<HTMLAtTableActionsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTableActionsElement: {
-        prototype: HTMLAtuiTableActionsElement;
-        new (): HTMLAtuiTableActionsElement;
+    var HTMLAtTableActionsElement: {
+        prototype: HTMLAtTableActionsElement;
+        new (): HTMLAtTableActionsElement;
     };
-    interface HTMLAtuiTableExportMenuElementEventMap {
-        "atuiChange": string;
+    interface HTMLAtTableExportMenuElementEventMap {
+        "atChange": string;
     }
     /**
      * @category Data Tables
      * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
      */
-    interface HTMLAtuiTableExportMenuElement extends Components.AtuiTableExportMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTableExportMenuElementEventMap>(type: K, listener: (this: HTMLAtuiTableExportMenuElement, ev: AtuiTableExportMenuCustomEvent<HTMLAtuiTableExportMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTableExportMenuElement extends Components.AtTableExportMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTableExportMenuElementEventMap>(type: K, listener: (this: HTMLAtTableExportMenuElement, ev: AtTableExportMenuCustomEvent<HTMLAtTableExportMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTableExportMenuElementEventMap>(type: K, listener: (this: HTMLAtuiTableExportMenuElement, ev: AtuiTableExportMenuCustomEvent<HTMLAtuiTableExportMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTableExportMenuElementEventMap>(type: K, listener: (this: HTMLAtTableExportMenuElement, ev: AtTableExportMenuCustomEvent<HTMLAtTableExportMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTableExportMenuElement: {
-        prototype: HTMLAtuiTableExportMenuElement;
-        new (): HTMLAtuiTableExportMenuElement;
+    var HTMLAtTableExportMenuElement: {
+        prototype: HTMLAtTableExportMenuElement;
+        new (): HTMLAtTableExportMenuElement;
     };
-    interface HTMLAtuiTableFilterMenuElementEventMap {
-        "atuiChange": string[];
+    interface HTMLAtTableFilterMenuElementEventMap {
+        "atChange": string[];
     }
     /**
      * @category Data Tables
      * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
      */
-    interface HTMLAtuiTableFilterMenuElement extends Components.AtuiTableFilterMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTableFilterMenuElementEventMap>(type: K, listener: (this: HTMLAtuiTableFilterMenuElement, ev: AtuiTableFilterMenuCustomEvent<HTMLAtuiTableFilterMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTableFilterMenuElement extends Components.AtTableFilterMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTableFilterMenuElementEventMap>(type: K, listener: (this: HTMLAtTableFilterMenuElement, ev: AtTableFilterMenuCustomEvent<HTMLAtTableFilterMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTableFilterMenuElementEventMap>(type: K, listener: (this: HTMLAtuiTableFilterMenuElement, ev: AtuiTableFilterMenuCustomEvent<HTMLAtuiTableFilterMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTableFilterMenuElementEventMap>(type: K, listener: (this: HTMLAtTableFilterMenuElement, ev: AtTableFilterMenuCustomEvent<HTMLAtTableFilterMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTableFilterMenuElement: {
-        prototype: HTMLAtuiTableFilterMenuElement;
-        new (): HTMLAtuiTableFilterMenuElement;
+    var HTMLAtTableFilterMenuElement: {
+        prototype: HTMLAtTableFilterMenuElement;
+        new (): HTMLAtTableFilterMenuElement;
     };
-    interface HTMLAtuiTableFiltersElementEventMap {
-        "atuiChange": FilterEvent[];
+    interface HTMLAtTableFiltersElementEventMap {
+        "atChange": FilterEvent[];
     }
-    interface HTMLAtuiTableFiltersElement extends Components.AtuiTableFilters, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtuiTableFiltersElement, ev: AtuiTableFiltersCustomEvent<HTMLAtuiTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTableFiltersElement extends Components.AtTableFilters, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtTableFiltersElement, ev: AtTableFiltersCustomEvent<HTMLAtTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtuiTableFiltersElement, ev: AtuiTableFiltersCustomEvent<HTMLAtuiTableFiltersElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtTableFiltersElement, ev: AtTableFiltersCustomEvent<HTMLAtTableFiltersElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTableFiltersElement: {
-        prototype: HTMLAtuiTableFiltersElement;
-        new (): HTMLAtuiTableFiltersElement;
+    var HTMLAtTableFiltersElement: {
+        prototype: HTMLAtTableFiltersElement;
+        new (): HTMLAtTableFiltersElement;
     };
-    interface HTMLAtuiTablePaginationElementEventMap {
-        "atuiChange": number;
-        "atuiPageSizeChange": number;
+    interface HTMLAtTablePaginationElementEventMap {
+        "atChange": number;
+        "atPageSizeChange": number;
     }
     /**
      * @category Data Tables
-     * @description Optional component for use with ```<atui-table>```.
+     * @description Optional component for use with ```<at-table>```.
      * Provides controls for pagination if you would like to
      * have control of the table's pagination.
      */
-    interface HTMLAtuiTablePaginationElement extends Components.AtuiTablePagination, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTablePaginationElementEventMap>(type: K, listener: (this: HTMLAtuiTablePaginationElement, ev: AtuiTablePaginationCustomEvent<HTMLAtuiTablePaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTablePaginationElement extends Components.AtTablePagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTablePaginationElementEventMap>(type: K, listener: (this: HTMLAtTablePaginationElement, ev: AtTablePaginationCustomEvent<HTMLAtTablePaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTablePaginationElementEventMap>(type: K, listener: (this: HTMLAtuiTablePaginationElement, ev: AtuiTablePaginationCustomEvent<HTMLAtuiTablePaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTablePaginationElementEventMap>(type: K, listener: (this: HTMLAtTablePaginationElement, ev: AtTablePaginationCustomEvent<HTMLAtTablePaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTablePaginationElement: {
-        prototype: HTMLAtuiTablePaginationElement;
-        new (): HTMLAtuiTablePaginationElement;
+    var HTMLAtTablePaginationElement: {
+        prototype: HTMLAtTablePaginationElement;
+        new (): HTMLAtTablePaginationElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with a badge.
      */
-    interface HTMLAtuiTextBadgeCellElement extends Components.AtuiTextBadgeCell, HTMLStencilElement {
+    interface HTMLAtTextBadgeCellElement extends Components.AtTextBadgeCell, HTMLStencilElement {
     }
-    var HTMLAtuiTextBadgeCellElement: {
-        prototype: HTMLAtuiTextBadgeCellElement;
-        new (): HTMLAtuiTextBadgeCellElement;
+    var HTMLAtTextBadgeCellElement: {
+        prototype: HTMLAtTextBadgeCellElement;
+        new (): HTMLAtTextBadgeCellElement;
     };
     /**
      * @category Table Cell
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
-    interface HTMLAtuiTextCellElement extends Components.AtuiTextCell, HTMLStencilElement {
+    interface HTMLAtTextCellElement extends Components.AtTextCell, HTMLStencilElement {
     }
-    var HTMLAtuiTextCellElement: {
-        prototype: HTMLAtuiTextCellElement;
-        new (): HTMLAtuiTextCellElement;
+    var HTMLAtTextCellElement: {
+        prototype: HTMLAtTextCellElement;
+        new (): HTMLAtTextCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
-    interface HTMLAtuiTextIconCellElement extends Components.AtuiTextIconCell, HTMLStencilElement {
+    interface HTMLAtTextIconCellElement extends Components.AtTextIconCell, HTMLStencilElement {
     }
-    var HTMLAtuiTextIconCellElement: {
-        prototype: HTMLAtuiTextIconCellElement;
-        new (): HTMLAtuiTextIconCellElement;
+    var HTMLAtTextIconCellElement: {
+        prototype: HTMLAtTextIconCellElement;
+        new (): HTMLAtTextIconCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with an image.
      */
-    interface HTMLAtuiTextImageCellElement extends Components.AtuiTextImageCell, HTMLStencilElement {
+    interface HTMLAtTextImageCellElement extends Components.AtTextImageCell, HTMLStencilElement {
     }
-    var HTMLAtuiTextImageCellElement: {
-        prototype: HTMLAtuiTextImageCellElement;
-        new (): HTMLAtuiTextImageCellElement;
+    var HTMLAtTextImageCellElement: {
+        prototype: HTMLAtTextImageCellElement;
+        new (): HTMLAtTextImageCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with a status.
      */
-    interface HTMLAtuiTextStatusCellElement extends Components.AtuiTextStatusCell, HTMLStencilElement {
+    interface HTMLAtTextStatusCellElement extends Components.AtTextStatusCell, HTMLStencilElement {
     }
-    var HTMLAtuiTextStatusCellElement: {
-        prototype: HTMLAtuiTextStatusCellElement;
-        new (): HTMLAtuiTextStatusCellElement;
+    var HTMLAtTextStatusCellElement: {
+        prototype: HTMLAtTextStatusCellElement;
+        new (): HTMLAtTextStatusCellElement;
     };
-    interface HTMLAtuiTextareaElementEventMap {
+    interface HTMLAtTextareaElementEventMap {
         "atuiChange": string;
     }
     /**
      * @category Form Controls
      * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
      */
-    interface HTMLAtuiTextareaElement extends Components.AtuiTextarea, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTextareaElementEventMap>(type: K, listener: (this: HTMLAtuiTextareaElement, ev: AtuiTextareaCustomEvent<HTMLAtuiTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTextareaElement extends Components.AtTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTextareaElementEventMap>(type: K, listener: (this: HTMLAtTextareaElement, ev: AtTextareaCustomEvent<HTMLAtTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTextareaElementEventMap>(type: K, listener: (this: HTMLAtuiTextareaElement, ev: AtuiTextareaCustomEvent<HTMLAtuiTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTextareaElementEventMap>(type: K, listener: (this: HTMLAtTextareaElement, ev: AtTextareaCustomEvent<HTMLAtTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTextareaElement: {
-        prototype: HTMLAtuiTextareaElement;
-        new (): HTMLAtuiTextareaElement;
+    var HTMLAtTextareaElement: {
+        prototype: HTMLAtTextareaElement;
+        new (): HTMLAtTextareaElement;
     };
-    interface HTMLAtuiTimeRangeElementEventMap {
+    interface HTMLAtTimeRangeElementEventMap {
         "atuiChange": SelectedTimeRangeExtended;
     }
     /**
      * @category Form Controls
      * @description A time range component for selecting time periods.
      */
-    interface HTMLAtuiTimeRangeElement extends Components.AtuiTimeRange, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtuiTimeRangeElement, ev: AtuiTimeRangeCustomEvent<HTMLAtuiTimeRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTimeRangeElement extends Components.AtTimeRange, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtTimeRangeElement, ev: AtTimeRangeCustomEvent<HTMLAtTimeRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtuiTimeRangeElement, ev: AtuiTimeRangeCustomEvent<HTMLAtuiTimeRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtTimeRangeElement, ev: AtTimeRangeCustomEvent<HTMLAtTimeRangeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTimeRangeElement: {
-        prototype: HTMLAtuiTimeRangeElement;
-        new (): HTMLAtuiTimeRangeElement;
+    var HTMLAtTimeRangeElement: {
+        prototype: HTMLAtTimeRangeElement;
+        new (): HTMLAtTimeRangeElement;
     };
-    interface HTMLAtuiTimeWithUnitElementEventMap {
+    interface HTMLAtTimeWithUnitElementEventMap {
         "atuiCancel": null;
         "atuiSubmit": TimeWithUnit | TimeRangeDisplay.ALL;
     }
@@ -4059,82 +4059,82 @@ declare global {
      * @category Form Controls
      * @description A time with unit component for selecting a time period.
      */
-    interface HTMLAtuiTimeWithUnitElement extends Components.AtuiTimeWithUnit, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTimeWithUnitElementEventMap>(type: K, listener: (this: HTMLAtuiTimeWithUnitElement, ev: AtuiTimeWithUnitCustomEvent<HTMLAtuiTimeWithUnitElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTimeWithUnitElement extends Components.AtTimeWithUnit, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTimeWithUnitElementEventMap>(type: K, listener: (this: HTMLAtTimeWithUnitElement, ev: AtTimeWithUnitCustomEvent<HTMLAtTimeWithUnitElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTimeWithUnitElementEventMap>(type: K, listener: (this: HTMLAtuiTimeWithUnitElement, ev: AtuiTimeWithUnitCustomEvent<HTMLAtuiTimeWithUnitElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTimeWithUnitElementEventMap>(type: K, listener: (this: HTMLAtTimeWithUnitElement, ev: AtTimeWithUnitCustomEvent<HTMLAtTimeWithUnitElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTimeWithUnitElement: {
-        prototype: HTMLAtuiTimeWithUnitElement;
-        new (): HTMLAtuiTimeWithUnitElement;
+    var HTMLAtTimeWithUnitElement: {
+        prototype: HTMLAtTimeWithUnitElement;
+        new (): HTMLAtTimeWithUnitElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle.
      */
-    interface HTMLAtuiTitleSubtitleCellElement extends Components.AtuiTitleSubtitleCell, HTMLStencilElement {
+    interface HTMLAtTitleSubtitleCellElement extends Components.AtTitleSubtitleCell, HTMLStencilElement {
     }
-    var HTMLAtuiTitleSubtitleCellElement: {
-        prototype: HTMLAtuiTitleSubtitleCellElement;
-        new (): HTMLAtuiTitleSubtitleCellElement;
+    var HTMLAtTitleSubtitleCellElement: {
+        prototype: HTMLAtTitleSubtitleCellElement;
+        new (): HTMLAtTitleSubtitleCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle with a date.
      */
-    interface HTMLAtuiTitleSubtitleDateCellElement extends Components.AtuiTitleSubtitleDateCell, HTMLStencilElement {
+    interface HTMLAtTitleSubtitleDateCellElement extends Components.AtTitleSubtitleDateCell, HTMLStencilElement {
     }
-    var HTMLAtuiTitleSubtitleDateCellElement: {
-        prototype: HTMLAtuiTitleSubtitleDateCellElement;
-        new (): HTMLAtuiTitleSubtitleDateCellElement;
+    var HTMLAtTitleSubtitleDateCellElement: {
+        prototype: HTMLAtTitleSubtitleDateCellElement;
+        new (): HTMLAtTitleSubtitleDateCellElement;
     };
     /**
      * @category Table Cell
      * @description A cell component for displaying a toggle.
      */
-    interface HTMLAtuiToggleCellElement extends Components.AtuiToggleCell, HTMLStencilElement {
+    interface HTMLAtToggleCellElement extends Components.AtToggleCell, HTMLStencilElement {
     }
-    var HTMLAtuiToggleCellElement: {
-        prototype: HTMLAtuiToggleCellElement;
-        new (): HTMLAtuiToggleCellElement;
+    var HTMLAtToggleCellElement: {
+        prototype: HTMLAtToggleCellElement;
+        new (): HTMLAtToggleCellElement;
     };
-    interface HTMLAtuiToggleSwitchElementEventMap {
+    interface HTMLAtToggleSwitchElementEventMap {
         "atuiChange": boolean;
     }
     /**
      * @category Form Controls
      * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
      */
-    interface HTMLAtuiToggleSwitchElement extends Components.AtuiToggleSwitch, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiToggleSwitchElementEventMap>(type: K, listener: (this: HTMLAtuiToggleSwitchElement, ev: AtuiToggleSwitchCustomEvent<HTMLAtuiToggleSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtToggleSwitchElement extends Components.AtToggleSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtToggleSwitchElementEventMap>(type: K, listener: (this: HTMLAtToggleSwitchElement, ev: AtToggleSwitchCustomEvent<HTMLAtToggleSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiToggleSwitchElementEventMap>(type: K, listener: (this: HTMLAtuiToggleSwitchElement, ev: AtuiToggleSwitchCustomEvent<HTMLAtuiToggleSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtToggleSwitchElementEventMap>(type: K, listener: (this: HTMLAtToggleSwitchElement, ev: AtToggleSwitchCustomEvent<HTMLAtToggleSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiToggleSwitchElement: {
-        prototype: HTMLAtuiToggleSwitchElement;
-        new (): HTMLAtuiToggleSwitchElement;
+    var HTMLAtToggleSwitchElement: {
+        prototype: HTMLAtToggleSwitchElement;
+        new (): HTMLAtToggleSwitchElement;
     };
     /**
      * @category **Overlays**
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
-    interface HTMLAtuiTooltipElement extends Components.AtuiTooltip, HTMLStencilElement {
+    interface HTMLAtTooltipElement extends Components.AtTooltip, HTMLStencilElement {
     }
-    var HTMLAtuiTooltipElement: {
-        prototype: HTMLAtuiTooltipElement;
-        new (): HTMLAtuiTooltipElement;
+    var HTMLAtTooltipElement: {
+        prototype: HTMLAtTooltipElement;
+        new (): HTMLAtTooltipElement;
     };
-    interface HTMLAtuiTreeElementEventMap {
+    interface HTMLAtTreeElementEventMap {
         "atuiClick": TreeNode;
     }
     /**
@@ -4147,121 +4147,121 @@ declare global {
      *  tooltip?: string;
      * ```
      */
-    interface HTMLAtuiTreeElement extends Components.AtuiTree, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTreeElementEventMap>(type: K, listener: (this: HTMLAtuiTreeElement, ev: AtuiTreeCustomEvent<HTMLAtuiTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTreeElement extends Components.AtTree, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTreeElementEventMap>(type: K, listener: (this: HTMLAtTreeElement, ev: AtTreeCustomEvent<HTMLAtTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTreeElementEventMap>(type: K, listener: (this: HTMLAtuiTreeElement, ev: AtuiTreeCustomEvent<HTMLAtuiTreeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTreeElementEventMap>(type: K, listener: (this: HTMLAtTreeElement, ev: AtTreeCustomEvent<HTMLAtTreeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTreeElement: {
-        prototype: HTMLAtuiTreeElement;
-        new (): HTMLAtuiTreeElement;
+    var HTMLAtTreeElement: {
+        prototype: HTMLAtTreeElement;
+        new (): HTMLAtTreeElement;
     };
-    interface HTMLAtuiTreeItemElementEventMap {
-        "atuiClick": AtuiEvent;
+    interface HTMLAtTreeItemElementEventMap {
+        "atuiClick": AtEvent;
     }
-    interface HTMLAtuiTreeItemElement extends Components.AtuiTreeItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtuiTreeItemElementEventMap>(type: K, listener: (this: HTMLAtuiTreeItemElement, ev: AtuiTreeItemCustomEvent<HTMLAtuiTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLAtTreeItemElement extends Components.AtTreeItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTreeItemElementEventMap>(type: K, listener: (this: HTMLAtTreeItemElement, ev: AtTreeItemCustomEvent<HTMLAtTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtuiTreeItemElementEventMap>(type: K, listener: (this: HTMLAtuiTreeItemElement, ev: AtuiTreeItemCustomEvent<HTMLAtuiTreeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTreeItemElementEventMap>(type: K, listener: (this: HTMLAtTreeItemElement, ev: AtTreeItemCustomEvent<HTMLAtTreeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLAtuiTreeItemElement: {
-        prototype: HTMLAtuiTreeItemElement;
-        new (): HTMLAtuiTreeItemElement;
+    var HTMLAtTreeItemElement: {
+        prototype: HTMLAtTreeItemElement;
+        new (): HTMLAtTreeItemElement;
     };
     interface HTMLElementTagNameMap {
-        "atui-accordion": HTMLAtuiAccordionElement;
-        "atui-accordion-item": HTMLAtuiAccordionItemElement;
-        "atui-accordion-trigger": HTMLAtuiAccordionTriggerElement;
-        "atui-avatar": HTMLAtuiAvatarElement;
-        "atui-badge": HTMLAtuiBadgeElement;
-        "atui-breadcrumb": HTMLAtuiBreadcrumbElement;
-        "atui-breadcrumb-item": HTMLAtuiBreadcrumbItemElement;
-        "atui-button": HTMLAtuiButtonElement;
-        "atui-button-group": HTMLAtuiButtonGroupElement;
-        "atui-button-group-option": HTMLAtuiButtonGroupOptionElement;
-        "atui-card": HTMLAtuiCardElement;
-        "atui-chart-bar-line": HTMLAtuiChartBarLineElement;
-        "atui-chart-donut": HTMLAtuiChartDonutElement;
-        "atui-checkbox": HTMLAtuiCheckboxElement;
-        "atui-checkbox-cell": HTMLAtuiCheckboxCellElement;
-        "atui-checkbox-group": HTMLAtuiCheckboxGroupElement;
-        "atui-checkbox-header": HTMLAtuiCheckboxHeaderElement;
-        "atui-chip-list": HTMLAtuiChipListElement;
-        "atui-chip-list-cell": HTMLAtuiChipListCellElement;
-        "atui-color-status-cell": HTMLAtuiColorStatusCellElement;
-        "atui-column-manager": HTMLAtuiColumnManagerElement;
-        "atui-custom-time-range": HTMLAtuiCustomTimeRangeElement;
-        "atui-dialog": HTMLAtuiDialogElement;
-        "atui-edit-text-cell": HTMLAtuiEditTextCellElement;
-        "atui-form-label": HTMLAtuiFormLabelElement;
-        "atui-header": HTMLAtuiHeaderElement;
-        "atui-input": HTMLAtuiInputElement;
-        "atui-input-numeric": HTMLAtuiInputNumericElement;
-        "atui-input-range": HTMLAtuiInputRangeElement;
-        "atui-layout": HTMLAtuiLayoutElement;
-        "atui-list-item": HTMLAtuiListItemElement;
-        "atui-list-selector": HTMLAtuiListSelectorElement;
-        "atui-list-selector-item": HTMLAtuiListSelectorItemElement;
-        "atui-loading": HTMLAtuiLoadingElement;
-        "atui-menu": HTMLAtuiMenuElement;
-        "atui-menu-cell": HTMLAtuiMenuCellElement;
-        "atui-menu-item": HTMLAtuiMenuItemElement;
-        "atui-message": HTMLAtuiMessageElement;
-        "atui-multi-btn-cell": HTMLAtuiMultiBtnCellElement;
-        "atui-multi-select": HTMLAtuiMultiSelectElement;
-        "atui-placeholder": HTMLAtuiPlaceholderElement;
-        "atui-prompt-container": HTMLAtuiPromptContainerElement;
-        "atui-prompt-input": HTMLAtuiPromptInputElement;
-        "atui-prompt-message": HTMLAtuiPromptMessageElement;
-        "atui-prompt-thread": HTMLAtuiPromptThreadElement;
-        "atui-radio": HTMLAtuiRadioElement;
-        "atui-radio-group": HTMLAtuiRadioGroupElement;
-        "atui-search": HTMLAtuiSearchElement;
-        "atui-search-table": HTMLAtuiSearchTableElement;
-        "atui-select": HTMLAtuiSelectElement;
-        "atui-side-panel": HTMLAtuiSidePanelElement;
-        "atui-sidebar": HTMLAtuiSidebarElement;
-        "atui-sidebar-menu": HTMLAtuiSidebarMenuElement;
-        "atui-sidebar-menuitem": HTMLAtuiSidebarMenuitemElement;
-        "atui-sidebar-submenu": HTMLAtuiSidebarSubmenuElement;
-        "atui-sidebar-trigger": HTMLAtuiSidebarTriggerElement;
-        "atui-src-dest": HTMLAtuiSrcDestElement;
-        "atui-static-table": HTMLAtuiStaticTableElement;
-        "atui-status-bar": HTMLAtuiStatusBarElement;
-        "atui-tab": HTMLAtuiTabElement;
-        "atui-tab-content": HTMLAtuiTabContentElement;
-        "atui-tab-selector": HTMLAtuiTabSelectorElement;
-        "atui-table": HTMLAtuiTableElement;
-        "atui-table-actions": HTMLAtuiTableActionsElement;
-        "atui-table-export-menu": HTMLAtuiTableExportMenuElement;
-        "atui-table-filter-menu": HTMLAtuiTableFilterMenuElement;
-        "atui-table-filters": HTMLAtuiTableFiltersElement;
-        "atui-table-pagination": HTMLAtuiTablePaginationElement;
-        "atui-text-badge-cell": HTMLAtuiTextBadgeCellElement;
-        "atui-text-cell": HTMLAtuiTextCellElement;
-        "atui-text-icon-cell": HTMLAtuiTextIconCellElement;
-        "atui-text-image-cell": HTMLAtuiTextImageCellElement;
-        "atui-text-status-cell": HTMLAtuiTextStatusCellElement;
-        "atui-textarea": HTMLAtuiTextareaElement;
-        "atui-time-range": HTMLAtuiTimeRangeElement;
-        "atui-time-with-unit": HTMLAtuiTimeWithUnitElement;
-        "atui-title-subtitle-cell": HTMLAtuiTitleSubtitleCellElement;
-        "atui-title-subtitle-date-cell": HTMLAtuiTitleSubtitleDateCellElement;
-        "atui-toggle-cell": HTMLAtuiToggleCellElement;
-        "atui-toggle-switch": HTMLAtuiToggleSwitchElement;
-        "atui-tooltip": HTMLAtuiTooltipElement;
-        "atui-tree": HTMLAtuiTreeElement;
-        "atui-tree-item": HTMLAtuiTreeItemElement;
+        "at-accordion": HTMLAtAccordionElement;
+        "at-accordion-item": HTMLAtAccordionItemElement;
+        "at-accordion-trigger": HTMLAtAccordionTriggerElement;
+        "at-avatar": HTMLAtAvatarElement;
+        "at-badge": HTMLAtBadgeElement;
+        "at-breadcrumb": HTMLAtBreadcrumbElement;
+        "at-breadcrumb-item": HTMLAtBreadcrumbItemElement;
+        "at-button": HTMLAtButtonElement;
+        "at-button-group": HTMLAtButtonGroupElement;
+        "at-button-group-option": HTMLAtButtonGroupOptionElement;
+        "at-card": HTMLAtCardElement;
+        "at-chart-bar-line": HTMLAtChartBarLineElement;
+        "at-chart-donut": HTMLAtChartDonutElement;
+        "at-checkbox": HTMLAtCheckboxElement;
+        "at-checkbox-cell": HTMLAtCheckboxCellElement;
+        "at-checkbox-group": HTMLAtCheckboxGroupElement;
+        "at-checkbox-header": HTMLAtCheckboxHeaderElement;
+        "at-chip-list": HTMLAtChipListElement;
+        "at-chip-list-cell": HTMLAtChipListCellElement;
+        "at-color-status-cell": HTMLAtColorStatusCellElement;
+        "at-column-manager": HTMLAtColumnManagerElement;
+        "at-custom-time-range": HTMLAtCustomTimeRangeElement;
+        "at-dialog": HTMLAtDialogElement;
+        "at-edit-text-cell": HTMLAtEditTextCellElement;
+        "at-form-label": HTMLAtFormLabelElement;
+        "at-header": HTMLAtHeaderElement;
+        "at-input": HTMLAtInputElement;
+        "at-input-numeric": HTMLAtInputNumericElement;
+        "at-input-range": HTMLAtInputRangeElement;
+        "at-layout": HTMLAtLayoutElement;
+        "at-list-item": HTMLAtListItemElement;
+        "at-list-selector": HTMLAtListSelectorElement;
+        "at-list-selector-item": HTMLAtListSelectorItemElement;
+        "at-loading": HTMLAtLoadingElement;
+        "at-menu": HTMLAtMenuElement;
+        "at-menu-cell": HTMLAtMenuCellElement;
+        "at-menu-item": HTMLAtMenuItemElement;
+        "at-message": HTMLAtMessageElement;
+        "at-multi-btn-cell": HTMLAtMultiBtnCellElement;
+        "at-multi-select": HTMLAtMultiSelectElement;
+        "at-placeholder": HTMLAtPlaceholderElement;
+        "at-prompt-container": HTMLAtPromptContainerElement;
+        "at-prompt-input": HTMLAtPromptInputElement;
+        "at-prompt-message": HTMLAtPromptMessageElement;
+        "at-prompt-thread": HTMLAtPromptThreadElement;
+        "at-radio": HTMLAtRadioElement;
+        "at-radio-group": HTMLAtRadioGroupElement;
+        "at-search": HTMLAtSearchElement;
+        "at-search-table": HTMLAtSearchTableElement;
+        "at-select": HTMLAtSelectElement;
+        "at-side-panel": HTMLAtSidePanelElement;
+        "at-sidebar": HTMLAtSidebarElement;
+        "at-sidebar-menu": HTMLAtSidebarMenuElement;
+        "at-sidebar-menuitem": HTMLAtSidebarMenuitemElement;
+        "at-sidebar-submenu": HTMLAtSidebarSubmenuElement;
+        "at-sidebar-trigger": HTMLAtSidebarTriggerElement;
+        "at-src-dest": HTMLAtSrcDestElement;
+        "at-static-table": HTMLAtStaticTableElement;
+        "at-status-bar": HTMLAtStatusBarElement;
+        "at-tab": HTMLAtTabElement;
+        "at-tab-content": HTMLAtTabContentElement;
+        "at-tab-selector": HTMLAtTabSelectorElement;
+        "at-table": HTMLAtTableElement;
+        "at-table-actions": HTMLAtTableActionsElement;
+        "at-table-export-menu": HTMLAtTableExportMenuElement;
+        "at-table-filter-menu": HTMLAtTableFilterMenuElement;
+        "at-table-filters": HTMLAtTableFiltersElement;
+        "at-table-pagination": HTMLAtTablePaginationElement;
+        "at-text-badge-cell": HTMLAtTextBadgeCellElement;
+        "at-text-cell": HTMLAtTextCellElement;
+        "at-text-icon-cell": HTMLAtTextIconCellElement;
+        "at-text-image-cell": HTMLAtTextImageCellElement;
+        "at-text-status-cell": HTMLAtTextStatusCellElement;
+        "at-textarea": HTMLAtTextareaElement;
+        "at-time-range": HTMLAtTimeRangeElement;
+        "at-time-with-unit": HTMLAtTimeWithUnitElement;
+        "at-title-subtitle-cell": HTMLAtTitleSubtitleCellElement;
+        "at-title-subtitle-date-cell": HTMLAtTitleSubtitleDateCellElement;
+        "at-toggle-cell": HTMLAtToggleCellElement;
+        "at-toggle-switch": HTMLAtToggleSwitchElement;
+        "at-tooltip": HTMLAtTooltipElement;
+        "at-tree": HTMLAtTreeElement;
+        "at-tree-item": HTMLAtTreeItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -4275,7 +4275,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface AtuiAccordion {
+    interface AtAccordion {
         /**
           * If set, all child accordions will be open by default.
           * @default false
@@ -4291,7 +4291,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
      */
-    interface AtuiAccordionItem {
+    interface AtAccordionItem {
         /**
           * Puts a light gray separator below the accordion item
           * @default true
@@ -4312,14 +4312,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the accordion item's open state changes
          */
-        "onAtuiAccordionChange"?: (event: AtuiAccordionItemCustomEvent<boolean>) => void;
+        "onAtuiAccordionChange"?: (event: AtAccordionItemCustomEvent<boolean>) => void;
         /**
           * Used for setting if the accordion is open.
           * @default false
          */
         "open"?: boolean;
     }
-    interface AtuiAccordionTrigger {
+    interface AtAccordionTrigger {
         /**
           * Text to display on the trigger for the accordion item.
          */
@@ -4329,7 +4329,7 @@ declare namespace LocalJSX {
      * @category Decoration
      * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
      */
-    interface AtuiAvatar {
+    interface AtAvatar {
         /**
           * Alt text for the avatar image
          */
@@ -4357,7 +4357,7 @@ declare namespace LocalJSX {
      * @category Feedback
      * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
      */
-    interface AtuiBadge {
+    interface AtBadge {
         /**
           * Icon appearing to the left of the badge title. MUST use mat-icon name.
          */
@@ -4392,7 +4392,7 @@ declare namespace LocalJSX {
      * Provides clickable path navigation with customizable separators and accessibility features.
      * @category Navigation
      */
-    interface AtuiBreadcrumb {
+    interface AtBreadcrumb {
         /**
           * Function to get the prefix for breadcrumbs.
           * @default () => ''
@@ -4401,7 +4401,7 @@ declare namespace LocalJSX {
         /**
           * Emits when one of the breadcrumb-items is clicked, `event.detail` is the 0-based index of the breadcrumb-item
          */
-        "onAtuiClick"?: (event: AtuiBreadcrumbCustomEvent<number>) => void;
+        "onAtuiClick"?: (event: AtBreadcrumbCustomEvent<number>) => void;
         /**
           * Delimiter between the prefix and the prefix.
           * @default ''
@@ -4416,7 +4416,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A breadcrumb item component for the breadcrumb.
      */
-    interface AtuiBreadcrumbItem {
+    interface AtBreadcrumbItem {
         /**
           * Applies different styling and makes the element non-clickable when set
          */
@@ -4430,7 +4430,7 @@ declare namespace LocalJSX {
      * @category Actions
      * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
      */
-    interface AtuiButton {
+    interface AtButton {
         /**
           * When set the button's styling will change and will no longer be interactive
           * @default false
@@ -4456,7 +4456,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtButtonCustomEvent<AtEvent>) => void;
         /**
           * Size of the button
           * @default 'lg'
@@ -4482,7 +4482,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
      */
-    interface AtuiButtonGroup {
+    interface AtButtonGroup {
         /**
           * Disables the button group and prevents interaction
          */
@@ -4506,11 +4506,11 @@ declare namespace LocalJSX {
         /**
           * When the active button is changed, this will emit the text value of the active button
          */
-        "onAtuiChange"?: (event: AtuiButtonGroupCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtButtonGroupCustomEvent<string>) => void;
         /**
           * When the active button is changed, this will emit the 0-based index of the active button
          */
-        "onAtuiIndexChange"?: (event: AtuiButtonGroupCustomEvent<number>) => void;
+        "onAtuiIndexChange"?: (event: AtButtonGroupCustomEvent<number>) => void;
         /**
           * List of options to be displayed on the button group.
           * @default []
@@ -4525,7 +4525,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A button group option component for the button group.
      */
-    interface AtuiButtonGroupOption {
+    interface AtButtonGroupOption {
         /**
           * Will disable interaction if set
          */
@@ -4545,7 +4545,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiButtonGroupOptionCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtButtonGroupOptionCustomEvent<AtEvent>) => void;
         /**
           * ID of the button element and its option
          */
@@ -4555,7 +4555,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
      */
-    interface AtuiCard {
+    interface AtCard {
         /**
           * Title of the card.
          */
@@ -4618,7 +4618,7 @@ declare namespace LocalJSX {
      *  stepped?: boolean;
      * ```
      */
-    interface AtuiChartBarLine {
+    interface AtChartBarLine {
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
           * @default ChartColorPalette.CATEGORICAL
@@ -4677,7 +4677,7 @@ declare namespace LocalJSX {
      * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
-    interface AtuiChartDonut {
+    interface AtChartDonut {
         /**
           * Animations added to the chart configuration
          */
@@ -4735,7 +4735,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.
      */
-    interface AtuiCheckbox {
+    interface AtCheckbox {
         /**
           * Disables interaction with the checkbox
          */
@@ -4751,7 +4751,7 @@ declare namespace LocalJSX {
         /**
           * When the checkbox is toggled, this will emit true if the current value is checked, vice versa.
          */
-        "onAtuiChange"?: (event: AtuiCheckboxCustomEvent<boolean>) => void;
+        "onAtuiChange"?: (event: AtCheckboxCustomEvent<boolean>) => void;
         /**
           * Id of the checkbox.
          */
@@ -4765,7 +4765,7 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
-    interface AtuiCheckboxCell {
+    interface AtCheckboxCell {
     }
     /**
      * ### ```interface CheckboxOptions```
@@ -4778,7 +4778,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A checkbox group component for selecting multiple options from a predefined list. Provides grouped validation, labeling, and accessibility features for checkbox collections.
      */
-    interface AtuiCheckboxGroup {
+    interface AtCheckboxGroup {
         /**
           * Disables interaction with the checkbox
          */
@@ -4811,7 +4811,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the 'selected' prop when changed
          */
-        "onAtuiChange"?: (event: AtuiCheckboxGroupCustomEvent<string[]>) => void;
+        "onAtuiChange"?: (event: AtCheckboxGroupCustomEvent<string[]>) => void;
         /**
           * Options displayed in the checkbox group.
          */
@@ -4830,13 +4830,13 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A header component for displaying a checkbox.
      */
-    interface AtuiCheckboxHeader {
+    interface AtCheckboxHeader {
     }
     /**
      * @category Utilities
      * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
      */
-    interface AtuiChipList {
+    interface AtChipList {
         /**
           * Items in the chip list.
          */
@@ -4848,7 +4848,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
          */
-        "onAtuiRemoveChip"?: (event: AtuiChipListCustomEvent<string[]>) => void;
+        "onAtRemoveChip"?: (event: AtChipListCustomEvent<string[]>) => void;
         /**
           * Disables the list of chips but keeps the text readable. Prevents removing a chip.
          */
@@ -4868,25 +4868,25 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying a list of chips.
      */
-    interface AtuiChipListCell {
+    interface AtChipListCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a color status indicator based on predefined types
      */
-    interface AtuiColorStatusCell {
+    interface AtColorStatusCell {
     }
-    interface AtuiColumnManager {
+    interface AtColumnManager {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs"?: ColDef[];
         /**
-          * Custom event used by atui-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
+          * Custom event used by at-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
          */
-        "onAtuiChange"?: (event: AtuiColumnManagerCustomEvent<ColumnManagerChangeEvent>) => void;
+        "onAtChange"?: (event: AtColumnManagerCustomEvent<ColumnManagerChangeEvent>) => void;
     }
-    interface AtuiCustomTimeRange {
+    interface AtCustomTimeRange {
         /**
           * Whether time selection is enabled in addition to date selection
           * @default true
@@ -4927,11 +4927,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the user cancels the time range selection
          */
-        "onAtuiCancel"?: (event: AtuiCustomTimeRangeCustomEvent<null>) => void;
+        "onAtuiCancel"?: (event: AtCustomTimeRangeCustomEvent<null>) => void;
         /**
           * Emitted when the user submits the time range selection
          */
-        "onAtuiSubmit"?: (event: AtuiCustomTimeRangeCustomEvent<DateRangeStrings>) => void;
+        "onAtuiSubmit"?: (event: AtCustomTimeRangeCustomEvent<DateRangeStrings>) => void;
         /**
           * Current value of the to date
          */
@@ -4941,7 +4941,7 @@ declare namespace LocalJSX {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
-    interface AtuiDialog {
+    interface AtDialog {
         /**
           * Whether to show a backdrop behind the dialog
           * @default false
@@ -4965,13 +4965,13 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying and editing text.
      */
-    interface AtuiEditTextCell {
+    interface AtEditTextCell {
     }
     /**
      * @category Form Controls
      * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
      */
-    interface AtuiFormLabel {
+    interface AtFormLabel {
         /**
           * Placed in the 'for' attribute on the label element
          */
@@ -4993,7 +4993,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
      */
-    interface AtuiHeader {
+    interface AtHeader {
         /**
           * Adds a border to the bottom of the header.
          */
@@ -5025,7 +5025,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
      */
-    interface AtuiInput {
+    interface AtInput {
         /**
           * Sets the 'autocomplete' attribute on the input element
           * @default 'on'
@@ -5063,7 +5063,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the text string or number when the input's content is changed
          */
-        "onAtuiChange"?: (event: AtuiInputCustomEvent<string | number>) => void;
+        "onAtuiChange"?: (event: AtInputCustomEvent<string | number>) => void;
         /**
           * Placeholder text to be shown when no input is passed
           * @default ''
@@ -5091,7 +5091,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A numeric input component for entering numerical values.
      */
-    interface AtuiInputNumeric {
+    interface AtInputNumeric {
         /**
           * Disables interaction with the input
           * @default false
@@ -5130,7 +5130,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the text string or number when the input's content is changed
          */
-        "onAtuiChange"?: (event: AtuiInputNumericCustomEvent<string | number>) => void;
+        "onAtuiChange"?: (event: AtInputNumericCustomEvent<string | number>) => void;
         /**
           * Placeholder text to be shown when no input is passed
           * @default ''
@@ -5164,7 +5164,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A range input component for selecting a value within a specified range.
      */
-    interface AtuiInputRange {
+    interface AtInputRange {
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -5207,7 +5207,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the current value when the text input or slider input's content is changed
          */
-        "onAtuiChange"?: (event: AtuiInputRangeCustomEvent<number>) => void;
+        "onAtuiChange"?: (event: AtInputRangeCustomEvent<number>) => void;
         /**
           * Set the input to a readonly state.
          */
@@ -5258,7 +5258,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
      */
-    interface AtuiLayout {
+    interface AtLayout {
         /**
           * If overflow is allowed on the detail in master-detail
           * @default true
@@ -5274,7 +5274,7 @@ declare namespace LocalJSX {
      * @category Layout
      * @description A list item component for the list.
      */
-    interface AtuiListItem {
+    interface AtListItem {
         /**
           * Border below the list item.
           * @default true
@@ -5310,7 +5310,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A list selector component for selecting an item from a list.
      */
-    interface AtuiListSelector {
+    interface AtListSelector {
         /**
           * Whether each item has a bottom border.
          */
@@ -5318,11 +5318,11 @@ declare namespace LocalJSX {
         /**
           * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
          */
-        "onAtuiChange"?: (event: AtuiListSelectorCustomEvent<ListSelectorItem>) => void;
+        "onAtuiChange"?: (event: AtListSelectorCustomEvent<ListSelectorItem>) => void;
         /**
           * Emits when event when the info button of an item is clicked
          */
-        "onAtuiInfoButtonClick"?: (event: AtuiListSelectorCustomEvent<AtuiEvent>) => void;
+        "onAtuiInfoButtonClick"?: (event: AtListSelectorCustomEvent<AtEvent>) => void;
         /**
           * List of items.
           * @default []
@@ -5337,7 +5337,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A list selector item component for the list selector.
      */
-    interface AtuiListSelectorItem {
+    interface AtListSelectorItem {
         /**
           * Border below the list item.
           * @default false
@@ -5372,7 +5372,7 @@ declare namespace LocalJSX {
      * @category Feedback
      * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
      */
-    interface AtuiLoading {
+    interface AtLoading {
         /**
           * Size of the loading indicator
           * @default 'md'
@@ -5394,7 +5394,7 @@ declare namespace LocalJSX {
          */
         "variant"?: LoadingVariant;
     }
-    interface AtuiMenu {
+    interface AtMenu {
         /**
           * Alignment of opened menu element relative to trigger element.
           * @default 'start'
@@ -5423,7 +5423,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the open menu state.
          */
-        "onAtuiMenuStateChange"?: (event: AtuiMenuCustomEvent<boolean>) => void;
+        "onAtuiMenuStateChange"?: (event: AtMenuCustomEvent<boolean>) => void;
         /**
           * Position of opened menu element relative to the trigger element.
           * @default 'bottom'
@@ -5452,9 +5452,9 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying a menu.
      */
-    interface AtuiMenuCell {
+    interface AtMenuCell {
     }
-    interface AtuiMenuItem {
+    interface AtMenuItem {
         /**
           * Disables user interaction with the menu-item and updates visual style to appear inactive
           * @default false
@@ -5478,7 +5478,7 @@ declare namespace LocalJSX {
      * @category Feedback
      * @description A message component for displaying notifications, alerts, or informational messages.
      */
-    interface AtuiMessage {
+    interface AtMessage {
         /**
           * Content of the message.
          */
@@ -5505,13 +5505,13 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying multiple buttons.
      */
-    interface AtuiMultiBtnCell {
+    interface AtMultiBtnCell {
     }
     /**
      * @category Form Controls
      * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface AtuiMultiSelect {
+    interface AtMultiSelect {
         /**
           * Set the select to be clearable.
          */
@@ -5547,7 +5547,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing a list of the selected items when the selection changes.
          */
-        "onAtuiChange"?: (event: AtuiMultiSelectCustomEvent<string[]>) => void;
+        "onAtuiChange"?: (event: AtMultiSelectCustomEvent<string[]>) => void;
         /**
           * Options displayed in the dropdown menu.
          */
@@ -5579,7 +5579,7 @@ declare namespace LocalJSX {
      * @category Feedback
      * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
      */
-    interface AtuiPlaceholder {
+    interface AtPlaceholder {
         /**
           * Content to be displayed below the title
          */
@@ -5606,7 +5606,7 @@ declare namespace LocalJSX {
      * @category Prompt
      * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
      */
-    interface AtuiPromptContainer {
+    interface AtPromptContainer {
         /**
           * Disables all interactions with the container
           * @default false
@@ -5654,40 +5654,40 @@ declare namespace LocalJSX {
         /**
           * Emitted when a message copy action is requested
          */
-        "onAtuiMessageCopy"?: (event: AtuiPromptContainerCustomEvent<{
+        "onAtMessageCopy"?: (event: AtPromptContainerCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message edit action is requested
          */
-        "onAtuiMessageEdit"?: (event: AtuiPromptContainerCustomEvent<{
+        "onAtMessageEdit"?: (event: AtPromptContainerCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message retry action is requested
          */
-        "onAtuiMessageRetry"?: (event: AtuiPromptContainerCustomEvent<{ messageId: string }>) => void;
+        "onAtMessageRetry"?: (event: AtPromptContainerCustomEvent<{ messageId: string }>) => void;
         /**
           * Emitted when a message vote action is requested
          */
-        "onAtuiMessageVote"?: (event: AtuiPromptContainerCustomEvent<{
+        "onAtMessageVote"?: (event: AtPromptContainerCustomEvent<{
         messageId: string;
         score: number;
     }>) => void;
         /**
           * Emitted when the "New Thread" button is clicked
          */
-        "onAtuiNewThread"?: (event: AtuiPromptContainerCustomEvent<void>) => void;
+        "onAtNewThread"?: (event: AtPromptContainerCustomEvent<void>) => void;
         /**
           * Emits when the stop button is clicked
          */
-        "onAtuiStop"?: (event: AtuiPromptContainerCustomEvent<void>) => void;
+        "onAtStop"?: (event: AtPromptContainerCustomEvent<void>) => void;
         /**
           * Emits when a message should be sent
          */
-        "onAtuiSubmit"?: (event: AtuiPromptContainerCustomEvent<string>) => void;
+        "onAtSubmit"?: (event: AtPromptContainerCustomEvent<string>) => void;
         /**
           * Placeholder text for the input field
           * @default 'Type your message here...'
@@ -5712,7 +5712,7 @@ declare namespace LocalJSX {
      * @category Prompt
      * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
-    interface AtuiPromptInput {
+    interface AtPromptInput {
         /**
           * Disable input interactions and apply visual indication
           * @default false
@@ -5752,19 +5752,19 @@ declare namespace LocalJSX {
         /**
           * Emits when the value changes
          */
-        "onAtuiChange"?: (event: AtuiPromptInputCustomEvent<string>) => void;
+        "onAtChange"?: (event: AtPromptInputCustomEvent<string>) => void;
         /**
           * Emits when the input receives focus
          */
-        "onAtuiFocus"?: (event: AtuiPromptInputCustomEvent<void>) => void;
+        "onAtFocus"?: (event: AtPromptInputCustomEvent<void>) => void;
         /**
           * Emits when the stop button is clicked
          */
-        "onAtuiStop"?: (event: AtuiPromptInputCustomEvent<void>) => void;
+        "onAtStop"?: (event: AtPromptInputCustomEvent<void>) => void;
         /**
           * Emits when a message should be sent
          */
-        "onAtuiSubmit"?: (event: AtuiPromptInputCustomEvent<string>) => void;
+        "onAtSubmit"?: (event: AtPromptInputCustomEvent<string>) => void;
         /**
           * Placeholder text to be shown when no input is passed
           * @default 'Enter your message...'
@@ -5780,7 +5780,7 @@ declare namespace LocalJSX {
      * @category Prompt
      * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
      */
-    interface AtuiPromptMessage {
+    interface AtPromptMessage {
         /**
           * The message content text
           * @default ''
@@ -5826,19 +5826,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the copy action is triggered
          */
-        "onAtuiCopy"?: (event: AtuiPromptMessageCustomEvent<string>) => void;
+        "onAtCopy"?: (event: AtPromptMessageCustomEvent<string>) => void;
         /**
           * Emitted when the edit action is triggered (for user messages)
          */
-        "onAtuiEdit"?: (event: AtuiPromptMessageCustomEvent<string>) => void;
+        "onAtEdit"?: (event: AtPromptMessageCustomEvent<string>) => void;
         /**
           * Emitted when the retry action is triggered (for assistant messages with errors)
          */
-        "onAtuiRetry"?: (event: AtuiPromptMessageCustomEvent<void>) => void;
+        "onAtRetry"?: (event: AtPromptMessageCustomEvent<void>) => void;
         /**
           * Emitted when a vote action is triggered
          */
-        "onAtuiVote"?: (event: AtuiPromptMessageCustomEvent<{ messageId: string; score: number }>) => void;
+        "onAtVote"?: (event: AtPromptMessageCustomEvent<{ messageId: string; score: number }>) => void;
         /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
@@ -5854,7 +5854,7 @@ declare namespace LocalJSX {
      * @category Prompt
      * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
      */
-    interface AtuiPromptThread {
+    interface AtPromptThread {
         /**
           * Automatically scroll to the bottom when new messages are added
           * @default true
@@ -5893,25 +5893,25 @@ declare namespace LocalJSX {
         /**
           * Emitted when a message copy action is requested
          */
-        "onAtuiMessageCopy"?: (event: AtuiPromptThreadCustomEvent<{
+        "onAtMessageCopy"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message edit action is requested
          */
-        "onAtuiMessageEdit"?: (event: AtuiPromptThreadCustomEvent<{
+        "onAtMessageEdit"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message retry action is requested
          */
-        "onAtuiMessageRetry"?: (event: AtuiPromptThreadCustomEvent<{ messageId: string }>) => void;
+        "onAtMessageRetry"?: (event: AtPromptThreadCustomEvent<{ messageId: string }>) => void;
         /**
           * Emitted when a message vote action is requested
          */
-        "onAtuiMessageVote"?: (event: AtuiPromptThreadCustomEvent<{
+        "onAtMessageVote"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         score: number;
     }>) => void;
@@ -5920,7 +5920,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A radio button component for selecting a single option from a predefined list.
      */
-    interface AtuiRadio {
+    interface AtRadio {
         /**
           * Disables interaction with the radio
          */
@@ -5940,7 +5940,7 @@ declare namespace LocalJSX {
         /**
           * Emits the current state of the radio when clicked.
          */
-        "onAtuiChange"?: (event: AtuiRadioCustomEvent<boolean>) => void;
+        "onAtuiChange"?: (event: AtRadioCustomEvent<boolean>) => void;
         /**
           * ID of the radio button element and its option
          */
@@ -5959,7 +5959,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
      */
-    interface AtuiRadioGroup {
+    interface AtRadioGroup {
         /**
           * Disables the radio options but keeps the text readable. Use for global readonly form state.
          */
@@ -5992,7 +5992,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
          */
-        "onAtuiChange"?: (event: AtuiRadioGroupCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtRadioGroupCustomEvent<string>) => void;
         /**
           * Options displayed in the radio group.
          */
@@ -6014,7 +6014,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A search component for filtering data.
      */
-    interface AtuiSearch {
+    interface AtSearch {
         /**
           * Hint text for the input, appears below the search bar.
          */
@@ -6034,7 +6034,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when the input is changed. Used by atui-table.
          */
-        "onAtuiChange"?: (event: AtuiSearchCustomEvent<string>) => void;
+        "onAtChange"?: (event: AtSearchCustomEvent<string>) => void;
         /**
           * Placeholder text inside the search component.
          */
@@ -6044,14 +6044,14 @@ declare namespace LocalJSX {
      * @category Data Tables
      * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
      */
-    interface AtuiSearchTable {
+    interface AtSearchTable {
         /**
           * If true, enables automatic column resizing to fit available space. Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
           * @default true
          */
         "auto_size_columns"?: boolean;
         /**
-          * Column definitions passed to atui-table component.
+          * Column definitions passed to at-table component.
          */
         "col_defs"?: ColDef[];
         /**
@@ -6088,7 +6088,7 @@ declare namespace LocalJSX {
          */
         "search_label"?: string;
         /**
-          * Table data passed to atui-table component.
+          * Table data passed to at-table component.
          */
         "table_data"?: {
         items: any[];
@@ -6104,7 +6104,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
      */
-    interface AtuiSelect {
+    interface AtSelect {
         /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default true
@@ -6141,7 +6141,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the selected value when changed.
          */
-        "onAtuiChange"?: (event: AtuiSelectCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtSelectCustomEvent<string>) => void;
         /**
           * Sets the options in the dropdown
          */
@@ -6172,7 +6172,7 @@ declare namespace LocalJSX {
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
      */
-    interface AtuiSidePanel {
+    interface AtSidePanel {
         /**
           * Whether to show a backdrop behind the panel
           * @default false
@@ -6229,7 +6229,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
      */
-    interface AtuiSidebar {
+    interface AtSidebar {
         /**
           * Size of the sidebar when collapsed.
           * @default 'icon'
@@ -6243,7 +6243,7 @@ declare namespace LocalJSX {
         /**
           * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
          */
-        "onAtuiSidebarChange"?: (event: AtuiSidebarCustomEvent<any>) => void;
+        "onAtuiSidebarChange"?: (event: AtSidebarCustomEvent<any>) => void;
         /**
           * Position of the sidebar on the page
           * @default 'left'
@@ -6259,13 +6259,13 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description 
      */
-    interface AtuiSidebarMenu {
+    interface AtSidebarMenu {
     }
     /**
      * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
-    interface AtuiSidebarMenuitem {
+    interface AtSidebarMenuitem {
         /**
           * Alert badge for the menu item
          */
@@ -6290,7 +6290,7 @@ declare namespace LocalJSX {
      * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
      * Menu indent styling is supported up to 3 levels.
      */
-    interface AtuiSidebarSubmenu {
+    interface AtSidebarSubmenu {
         /**
           * Alert badge for the menu item
          */
@@ -6312,7 +6312,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A sidebar trigger component for the sidebar.
      */
-    interface AtuiSidebarTrigger {
+    interface AtSidebarTrigger {
         /**
           * Size of the button
           * @default 'lg'
@@ -6323,7 +6323,7 @@ declare namespace LocalJSX {
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
-    interface AtuiSrcDest {
+    interface AtSrcDest {
         /**
           * Aligns the content to the left or center of the container
           * @default 'left'
@@ -6358,7 +6358,7 @@ declare namespace LocalJSX {
      * @category Data Tables
      * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
      */
-    interface AtuiStaticTable {
+    interface AtStaticTable {
         /**
           * Column definitions for the table
          */
@@ -6389,7 +6389,7 @@ declare namespace LocalJSX {
      * @category Data Visualization
      * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
      */
-    interface AtuiStatusBar {
+    interface AtStatusBar {
         /**
           * Disables the tooltip when hovered
          */
@@ -6409,7 +6409,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A tab component for the tab selector.
      */
-    interface AtuiTab {
+    interface AtTab {
         /**
           * Applies styling when active
          */
@@ -6432,7 +6432,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A tab content component for the tab selector.
      */
-    interface AtuiTabContent {
+    interface AtTabContent {
         /**
           * Determines if the tab content is active
           * @default false
@@ -6454,7 +6454,7 @@ declare namespace LocalJSX {
      * @category Navigation
      * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
      */
-    interface AtuiTabSelector {
+    interface AtTabSelector {
         /**
           * Sets the current active tab
          */
@@ -6472,7 +6472,7 @@ declare namespace LocalJSX {
         /**
           * Emits the id of the tab when a new active_tab is set
          */
-        "onAtuiChange"?: (event: AtuiTabSelectorCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtTabSelectorCustomEvent<string>) => void;
         /**
           * List of tabs the selector will have
           * @default []
@@ -6483,7 +6483,7 @@ declare namespace LocalJSX {
      * @category Data Tables
      * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
      */
-    interface AtuiTable {
+    interface AtTable {
         /**
           * The AG Grid API
          */
@@ -6505,7 +6505,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when a column's sorting state changes. Used to perform sorting outside of agGrid, when use_custom_sorting is set. Data in the table should be updated using the agGrid api: ```agGrid.setGridOption("rowData", yourNewData)```
          */
-        "onAtuiSortChange"?: (event: AtuiTableCustomEvent<{
+        "onAtSortChange"?: (event: AtTableCustomEvent<{
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
     }>) => void;
@@ -6536,62 +6536,62 @@ declare namespace LocalJSX {
      * @category Data Tables
      * @description A container component for table actions, including search, export, and column management. Provides a unified interface for managing table interactions and data export.
      */
-    interface AtuiTableActions {
+    interface AtTableActions {
         /**
-          * AG Grid Api (provided by atui-table createGrid method)
+          * AG Grid Api (provided by at-table createGrid method)
          */
         "ag_grid"?: GridApi;
         /**
           * Emits an event when filters change
          */
-        "onAtuiChange"?: (event: AtuiTableActionsCustomEvent<any>) => void;
+        "onAtChange"?: (event: AtTableActionsCustomEvent<any>) => void;
         /**
-          * Emits an event when 'Export CSV' is pressed on provided atui-table-export-menu
+          * Emits an event when 'Export CSV' is pressed on provided at-table-export-menu
          */
-        "onAtuiExportCsv"?: (event: AtuiTableActionsCustomEvent<any>) => void;
+        "onAtExportCsv"?: (event: AtTableActionsCustomEvent<any>) => void;
         /**
-          * Emits an event when 'Export PDF' is pressed on provided atui-table-export-menu
+          * Emits an event when 'Export PDF' is pressed on provided at-table-export-menu
          */
-        "onAtuiExportPdf"?: (event: AtuiTableActionsCustomEvent<any>) => void;
+        "onAtExportPdf"?: (event: AtTableActionsCustomEvent<any>) => void;
     }
     /**
      * @category Data Tables
      * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
      */
-    interface AtuiTableExportMenu {
+    interface AtTableExportMenu {
         /**
           * Emits id of the clicked button, either 'CSV' or 'PDF'.
          */
-        "onAtuiChange"?: (event: AtuiTableExportMenuCustomEvent<string>) => void;
+        "onAtChange"?: (event: AtTableExportMenuCustomEvent<string>) => void;
     }
     /**
      * @category Data Tables
      * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
      */
-    interface AtuiTableFilterMenu {
+    interface AtTableFilterMenu {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs"?: ColDef[];
         /**
           * Emits selected columns when checkbox selection changes
          */
-        "onAtuiChange"?: (event: AtuiTableFilterMenuCustomEvent<string[]>) => void;
+        "onAtChange"?: (event: AtTableFilterMenuCustomEvent<string[]>) => void;
         /**
           * Currently selected filter columns
           * @default []
          */
         "selected"?: string[];
     }
-    interface AtuiTableFilters {
+    interface AtTableFilters {
         /**
-          * Column definitions used in your atui-table
+          * Column definitions used in your at-table
          */
         "col_defs"?: ColDef[];
         /**
           * Emits id of column and filter value on change.
          */
-        "onAtuiChange"?: (event: AtuiTableFiltersCustomEvent<FilterEvent[]>) => void;
+        "onAtChange"?: (event: AtTableFiltersCustomEvent<FilterEvent[]>) => void;
         /**
           * Currently selected columns and filter values
           * @default []
@@ -6600,11 +6600,11 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description Optional component for use with ```<atui-table>```.
+     * @description Optional component for use with ```<at-table>```.
      * Provides controls for pagination if you would like to
      * have control of the table's pagination.
      */
-    interface AtuiTablePagination {
+    interface AtTablePagination {
         /**
           * Current page number
           * @default 1
@@ -6618,11 +6618,11 @@ declare namespace LocalJSX {
         /**
           * Emits event with ```event.detail``` as the new page number
          */
-        "onAtuiChange"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
+        "onAtChange"?: (event: AtTablePaginationCustomEvent<number>) => void;
         /**
           * Emits event with ```event.detail``` as the new page size
          */
-        "onAtuiPageSizeChange"?: (event: AtuiTablePaginationCustomEvent<number>) => void;
+        "onAtPageSizeChange"?: (event: AtTablePaginationCustomEvent<number>) => void;
         /**
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
@@ -6633,37 +6633,37 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying a text with a badge.
      */
-    interface AtuiTextBadgeCell {
+    interface AtTextBadgeCell {
     }
     /**
      * @category Table Cell
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
-    interface AtuiTextCell {
+    interface AtTextCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
-    interface AtuiTextIconCell {
+    interface AtTextIconCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with an image.
      */
-    interface AtuiTextImageCell {
+    interface AtTextImageCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a text with a status.
      */
-    interface AtuiTextStatusCell {
+    interface AtTextStatusCell {
     }
     /**
      * @category Form Controls
      * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
      */
-    interface AtuiTextarea {
+    interface AtTextarea {
         /**
           * Sets the 'autocomplete' attribute on the textarea
           * @default 'on'
@@ -6706,7 +6706,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the text string when the textarea's content is changed
          */
-        "onAtuiChange"?: (event: AtuiTextareaCustomEvent<string>) => void;
+        "onAtuiChange"?: (event: AtTextareaCustomEvent<string>) => void;
         /**
           * Placeholder in the textarea when no text is placed
          */
@@ -6728,7 +6728,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A time range component for selecting time periods.
      */
-    interface AtuiTimeRange {
+    interface AtTimeRange {
         /**
           * Custom error message to show when an invalid time is inputted.
           * @default null
@@ -6747,7 +6747,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the selected time range when it changes
          */
-        "onAtuiChange"?: (event: AtuiTimeRangeCustomEvent<SelectedTimeRangeExtended>) => void;
+        "onAtuiChange"?: (event: AtTimeRangeCustomEvent<SelectedTimeRangeExtended>) => void;
         /**
           * Define the presets for the relative time ranges.
          */
@@ -6772,7 +6772,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A time with unit component for selecting a time period.
      */
-    interface AtuiTimeWithUnit {
+    interface AtTimeWithUnit {
         /**
           * Common time preset options to display
          */
@@ -6804,11 +6804,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the user cancels the time selection
          */
-        "onAtuiCancel"?: (event: AtuiTimeWithUnitCustomEvent<null>) => void;
+        "onAtuiCancel"?: (event: AtTimeWithUnitCustomEvent<null>) => void;
         /**
           * Emitted when the user submits the time selection
          */
-        "onAtuiSubmit"?: (event: AtuiTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>) => void;
+        "onAtuiSubmit"?: (event: AtTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>) => void;
         /**
           * Whether to show the 'All Time' option
           * @default false
@@ -6823,25 +6823,25 @@ declare namespace LocalJSX {
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle.
      */
-    interface AtuiTitleSubtitleCell {
+    interface AtTitleSubtitleCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a title and subtitle with a date.
      */
-    interface AtuiTitleSubtitleDateCell {
+    interface AtTitleSubtitleDateCell {
     }
     /**
      * @category Table Cell
      * @description A cell component for displaying a toggle.
      */
-    interface AtuiToggleCell {
+    interface AtToggleCell {
     }
     /**
      * @category Form Controls
      * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
      */
-    interface AtuiToggleSwitch {
+    interface AtToggleSwitch {
         /**
           * Disable interaction with the toggle.
          */
@@ -6862,7 +6862,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when toggled with `event.detail` being true if the switch is enabled
          */
-        "onAtuiChange"?: (event: AtuiToggleSwitchCustomEvent<boolean>) => void;
+        "onAtuiChange"?: (event: AtToggleSwitchCustomEvent<boolean>) => void;
         /**
           * Show the toggle label.
           * @default true
@@ -6878,7 +6878,7 @@ declare namespace LocalJSX {
      * @category **Overlays**
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
-    interface AtuiTooltip {
+    interface AtTooltip {
         /**
           * Alignment of opened tooltip element relative to trigger element.
           * @default 'center'
@@ -6924,7 +6924,7 @@ declare namespace LocalJSX {
      *  tooltip?: string;
      * ```
      */
-    interface AtuiTree {
+    interface AtTree {
         /**
           * List of items to be displayed in the tree
          */
@@ -6932,14 +6932,14 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiTreeCustomEvent<TreeNode>) => void;
+        "onAtuiClick"?: (event: AtTreeCustomEvent<TreeNode>) => void;
         /**
           * Set the size of the tree button, default sm
           * @default 'sm'
          */
         "size"?: ButtonSize1;
     }
-    interface AtuiTreeItem {
+    interface AtTreeItem {
         /**
           * Defines the indent of the tree item
          */
@@ -6961,7 +6961,7 @@ declare namespace LocalJSX {
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtuiTreeItemCustomEvent<AtuiEvent>) => void;
+        "onAtuiClick"?: (event: AtTreeItemCustomEvent<AtEvent>) => void;
         /**
           * Determines the direction of the indicator arrow
           * @default false
@@ -6974,89 +6974,89 @@ declare namespace LocalJSX {
         "size"?: TreeItemSize;
     }
     interface IntrinsicElements {
-        "atui-accordion": AtuiAccordion;
-        "atui-accordion-item": AtuiAccordionItem;
-        "atui-accordion-trigger": AtuiAccordionTrigger;
-        "atui-avatar": AtuiAvatar;
-        "atui-badge": AtuiBadge;
-        "atui-breadcrumb": AtuiBreadcrumb;
-        "atui-breadcrumb-item": AtuiBreadcrumbItem;
-        "atui-button": AtuiButton;
-        "atui-button-group": AtuiButtonGroup;
-        "atui-button-group-option": AtuiButtonGroupOption;
-        "atui-card": AtuiCard;
-        "atui-chart-bar-line": AtuiChartBarLine;
-        "atui-chart-donut": AtuiChartDonut;
-        "atui-checkbox": AtuiCheckbox;
-        "atui-checkbox-cell": AtuiCheckboxCell;
-        "atui-checkbox-group": AtuiCheckboxGroup;
-        "atui-checkbox-header": AtuiCheckboxHeader;
-        "atui-chip-list": AtuiChipList;
-        "atui-chip-list-cell": AtuiChipListCell;
-        "atui-color-status-cell": AtuiColorStatusCell;
-        "atui-column-manager": AtuiColumnManager;
-        "atui-custom-time-range": AtuiCustomTimeRange;
-        "atui-dialog": AtuiDialog;
-        "atui-edit-text-cell": AtuiEditTextCell;
-        "atui-form-label": AtuiFormLabel;
-        "atui-header": AtuiHeader;
-        "atui-input": AtuiInput;
-        "atui-input-numeric": AtuiInputNumeric;
-        "atui-input-range": AtuiInputRange;
-        "atui-layout": AtuiLayout;
-        "atui-list-item": AtuiListItem;
-        "atui-list-selector": AtuiListSelector;
-        "atui-list-selector-item": AtuiListSelectorItem;
-        "atui-loading": AtuiLoading;
-        "atui-menu": AtuiMenu;
-        "atui-menu-cell": AtuiMenuCell;
-        "atui-menu-item": AtuiMenuItem;
-        "atui-message": AtuiMessage;
-        "atui-multi-btn-cell": AtuiMultiBtnCell;
-        "atui-multi-select": AtuiMultiSelect;
-        "atui-placeholder": AtuiPlaceholder;
-        "atui-prompt-container": AtuiPromptContainer;
-        "atui-prompt-input": AtuiPromptInput;
-        "atui-prompt-message": AtuiPromptMessage;
-        "atui-prompt-thread": AtuiPromptThread;
-        "atui-radio": AtuiRadio;
-        "atui-radio-group": AtuiRadioGroup;
-        "atui-search": AtuiSearch;
-        "atui-search-table": AtuiSearchTable;
-        "atui-select": AtuiSelect;
-        "atui-side-panel": AtuiSidePanel;
-        "atui-sidebar": AtuiSidebar;
-        "atui-sidebar-menu": AtuiSidebarMenu;
-        "atui-sidebar-menuitem": AtuiSidebarMenuitem;
-        "atui-sidebar-submenu": AtuiSidebarSubmenu;
-        "atui-sidebar-trigger": AtuiSidebarTrigger;
-        "atui-src-dest": AtuiSrcDest;
-        "atui-static-table": AtuiStaticTable;
-        "atui-status-bar": AtuiStatusBar;
-        "atui-tab": AtuiTab;
-        "atui-tab-content": AtuiTabContent;
-        "atui-tab-selector": AtuiTabSelector;
-        "atui-table": AtuiTable;
-        "atui-table-actions": AtuiTableActions;
-        "atui-table-export-menu": AtuiTableExportMenu;
-        "atui-table-filter-menu": AtuiTableFilterMenu;
-        "atui-table-filters": AtuiTableFilters;
-        "atui-table-pagination": AtuiTablePagination;
-        "atui-text-badge-cell": AtuiTextBadgeCell;
-        "atui-text-cell": AtuiTextCell;
-        "atui-text-icon-cell": AtuiTextIconCell;
-        "atui-text-image-cell": AtuiTextImageCell;
-        "atui-text-status-cell": AtuiTextStatusCell;
-        "atui-textarea": AtuiTextarea;
-        "atui-time-range": AtuiTimeRange;
-        "atui-time-with-unit": AtuiTimeWithUnit;
-        "atui-title-subtitle-cell": AtuiTitleSubtitleCell;
-        "atui-title-subtitle-date-cell": AtuiTitleSubtitleDateCell;
-        "atui-toggle-cell": AtuiToggleCell;
-        "atui-toggle-switch": AtuiToggleSwitch;
-        "atui-tooltip": AtuiTooltip;
-        "atui-tree": AtuiTree;
-        "atui-tree-item": AtuiTreeItem;
+        "at-accordion": AtAccordion;
+        "at-accordion-item": AtAccordionItem;
+        "at-accordion-trigger": AtAccordionTrigger;
+        "at-avatar": AtAvatar;
+        "at-badge": AtBadge;
+        "at-breadcrumb": AtBreadcrumb;
+        "at-breadcrumb-item": AtBreadcrumbItem;
+        "at-button": AtButton;
+        "at-button-group": AtButtonGroup;
+        "at-button-group-option": AtButtonGroupOption;
+        "at-card": AtCard;
+        "at-chart-bar-line": AtChartBarLine;
+        "at-chart-donut": AtChartDonut;
+        "at-checkbox": AtCheckbox;
+        "at-checkbox-cell": AtCheckboxCell;
+        "at-checkbox-group": AtCheckboxGroup;
+        "at-checkbox-header": AtCheckboxHeader;
+        "at-chip-list": AtChipList;
+        "at-chip-list-cell": AtChipListCell;
+        "at-color-status-cell": AtColorStatusCell;
+        "at-column-manager": AtColumnManager;
+        "at-custom-time-range": AtCustomTimeRange;
+        "at-dialog": AtDialog;
+        "at-edit-text-cell": AtEditTextCell;
+        "at-form-label": AtFormLabel;
+        "at-header": AtHeader;
+        "at-input": AtInput;
+        "at-input-numeric": AtInputNumeric;
+        "at-input-range": AtInputRange;
+        "at-layout": AtLayout;
+        "at-list-item": AtListItem;
+        "at-list-selector": AtListSelector;
+        "at-list-selector-item": AtListSelectorItem;
+        "at-loading": AtLoading;
+        "at-menu": AtMenu;
+        "at-menu-cell": AtMenuCell;
+        "at-menu-item": AtMenuItem;
+        "at-message": AtMessage;
+        "at-multi-btn-cell": AtMultiBtnCell;
+        "at-multi-select": AtMultiSelect;
+        "at-placeholder": AtPlaceholder;
+        "at-prompt-container": AtPromptContainer;
+        "at-prompt-input": AtPromptInput;
+        "at-prompt-message": AtPromptMessage;
+        "at-prompt-thread": AtPromptThread;
+        "at-radio": AtRadio;
+        "at-radio-group": AtRadioGroup;
+        "at-search": AtSearch;
+        "at-search-table": AtSearchTable;
+        "at-select": AtSelect;
+        "at-side-panel": AtSidePanel;
+        "at-sidebar": AtSidebar;
+        "at-sidebar-menu": AtSidebarMenu;
+        "at-sidebar-menuitem": AtSidebarMenuitem;
+        "at-sidebar-submenu": AtSidebarSubmenu;
+        "at-sidebar-trigger": AtSidebarTrigger;
+        "at-src-dest": AtSrcDest;
+        "at-static-table": AtStaticTable;
+        "at-status-bar": AtStatusBar;
+        "at-tab": AtTab;
+        "at-tab-content": AtTabContent;
+        "at-tab-selector": AtTabSelector;
+        "at-table": AtTable;
+        "at-table-actions": AtTableActions;
+        "at-table-export-menu": AtTableExportMenu;
+        "at-table-filter-menu": AtTableFilterMenu;
+        "at-table-filters": AtTableFilters;
+        "at-table-pagination": AtTablePagination;
+        "at-text-badge-cell": AtTextBadgeCell;
+        "at-text-cell": AtTextCell;
+        "at-text-icon-cell": AtTextIconCell;
+        "at-text-image-cell": AtTextImageCell;
+        "at-text-status-cell": AtTextStatusCell;
+        "at-textarea": AtTextarea;
+        "at-time-range": AtTimeRange;
+        "at-time-with-unit": AtTimeWithUnit;
+        "at-title-subtitle-cell": AtTitleSubtitleCell;
+        "at-title-subtitle-date-cell": AtTitleSubtitleDateCell;
+        "at-toggle-cell": AtToggleCell;
+        "at-toggle-switch": AtToggleSwitch;
+        "at-tooltip": AtTooltip;
+        "at-tree": AtTree;
+        "at-tree-item": AtTreeItem;
     }
 }
 export { LocalJSX as JSX };
@@ -7073,54 +7073,54 @@ declare module "@stencil/core" {
              * @category Layout
              * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
              */
-            "atui-accordion": LocalJSX.AtuiAccordion & JSXBase.HTMLAttributes<HTMLAtuiAccordionElement>;
+            "at-accordion": LocalJSX.AtAccordion & JSXBase.HTMLAttributes<HTMLAtAccordionElement>;
             /**
              * @category Layout
              * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
              */
-            "atui-accordion-item": LocalJSX.AtuiAccordionItem & JSXBase.HTMLAttributes<HTMLAtuiAccordionItemElement>;
-            "atui-accordion-trigger": LocalJSX.AtuiAccordionTrigger & JSXBase.HTMLAttributes<HTMLAtuiAccordionTriggerElement>;
+            "at-accordion-item": LocalJSX.AtAccordionItem & JSXBase.HTMLAttributes<HTMLAtAccordionItemElement>;
+            "at-accordion-trigger": LocalJSX.AtAccordionTrigger & JSXBase.HTMLAttributes<HTMLAtAccordionTriggerElement>;
             /**
              * @category Decoration
              * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
              */
-            "atui-avatar": LocalJSX.AtuiAvatar & JSXBase.HTMLAttributes<HTMLAtuiAvatarElement>;
+            "at-avatar": LocalJSX.AtAvatar & JSXBase.HTMLAttributes<HTMLAtAvatarElement>;
             /**
              * @category Feedback
              * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
              */
-            "atui-badge": LocalJSX.AtuiBadge & JSXBase.HTMLAttributes<HTMLAtuiBadgeElement>;
+            "at-badge": LocalJSX.AtBadge & JSXBase.HTMLAttributes<HTMLAtBadgeElement>;
             /**
              * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
              * Provides clickable path navigation with customizable separators and accessibility features.
              * @category Navigation
              */
-            "atui-breadcrumb": LocalJSX.AtuiBreadcrumb & JSXBase.HTMLAttributes<HTMLAtuiBreadcrumbElement>;
+            "at-breadcrumb": LocalJSX.AtBreadcrumb & JSXBase.HTMLAttributes<HTMLAtBreadcrumbElement>;
             /**
              * @category Navigation
              * @description A breadcrumb item component for the breadcrumb.
              */
-            "atui-breadcrumb-item": LocalJSX.AtuiBreadcrumbItem & JSXBase.HTMLAttributes<HTMLAtuiBreadcrumbItemElement>;
+            "at-breadcrumb-item": LocalJSX.AtBreadcrumbItem & JSXBase.HTMLAttributes<HTMLAtBreadcrumbItemElement>;
             /**
              * @category Actions
              * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
              */
-            "atui-button": LocalJSX.AtuiButton & JSXBase.HTMLAttributes<HTMLAtuiButtonElement>;
+            "at-button": LocalJSX.AtButton & JSXBase.HTMLAttributes<HTMLAtButtonElement>;
             /**
              * @category Form Controls
              * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
              */
-            "atui-button-group": LocalJSX.AtuiButtonGroup & JSXBase.HTMLAttributes<HTMLAtuiButtonGroupElement>;
+            "at-button-group": LocalJSX.AtButtonGroup & JSXBase.HTMLAttributes<HTMLAtButtonGroupElement>;
             /**
              * @category Form Controls
              * @description A button group option component for the button group.
              */
-            "atui-button-group-option": LocalJSX.AtuiButtonGroupOption & JSXBase.HTMLAttributes<HTMLAtuiButtonGroupOptionElement>;
+            "at-button-group-option": LocalJSX.AtButtonGroupOption & JSXBase.HTMLAttributes<HTMLAtButtonGroupOptionElement>;
             /**
              * @category Layout
              * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
              */
-            "atui-card": LocalJSX.AtuiCard & JSXBase.HTMLAttributes<HTMLAtuiCardElement>;
+            "at-card": LocalJSX.AtCard & JSXBase.HTMLAttributes<HTMLAtCardElement>;
             /**
              * ### ```interface PointStyles```
              * ```
@@ -7145,22 +7145,22 @@ declare module "@stencil/core" {
              *  stepped?: boolean;
              * ```
              */
-            "atui-chart-bar-line": LocalJSX.AtuiChartBarLine & JSXBase.HTMLAttributes<HTMLAtuiChartBarLineElement>;
+            "at-chart-bar-line": LocalJSX.AtChartBarLine & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
             /**
              * @category Data Visualization
              * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
              */
-            "atui-chart-donut": LocalJSX.AtuiChartDonut & JSXBase.HTMLAttributes<HTMLAtuiChartDonutElement>;
+            "at-chart-donut": LocalJSX.AtChartDonut & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
             /**
              * @category Form Controls
              * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.
              */
-            "atui-checkbox": LocalJSX.AtuiCheckbox & JSXBase.HTMLAttributes<HTMLAtuiCheckboxElement>;
+            "at-checkbox": LocalJSX.AtCheckbox & JSXBase.HTMLAttributes<HTMLAtCheckboxElement>;
             /**
              * @category Table Cell
              * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
              */
-            "atui-checkbox-cell": LocalJSX.AtuiCheckboxCell & JSXBase.HTMLAttributes<HTMLAtuiCheckboxCellElement>;
+            "at-checkbox-cell": LocalJSX.AtCheckboxCell & JSXBase.HTMLAttributes<HTMLAtCheckboxCellElement>;
             /**
              * ### ```interface CheckboxOptions```
              * ```
@@ -7172,181 +7172,181 @@ declare module "@stencil/core" {
              * @category Form Controls
              * @description A checkbox group component for selecting multiple options from a predefined list. Provides grouped validation, labeling, and accessibility features for checkbox collections.
              */
-            "atui-checkbox-group": LocalJSX.AtuiCheckboxGroup & JSXBase.HTMLAttributes<HTMLAtuiCheckboxGroupElement>;
+            "at-checkbox-group": LocalJSX.AtCheckboxGroup & JSXBase.HTMLAttributes<HTMLAtCheckboxGroupElement>;
             /**
              * @category Table Cell
              * @description A header component for displaying a checkbox.
              */
-            "atui-checkbox-header": LocalJSX.AtuiCheckboxHeader & JSXBase.HTMLAttributes<HTMLAtuiCheckboxHeaderElement>;
+            "at-checkbox-header": LocalJSX.AtCheckboxHeader & JSXBase.HTMLAttributes<HTMLAtCheckboxHeaderElement>;
             /**
              * @category Utilities
              * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
              */
-            "atui-chip-list": LocalJSX.AtuiChipList & JSXBase.HTMLAttributes<HTMLAtuiChipListElement>;
+            "at-chip-list": LocalJSX.AtChipList & JSXBase.HTMLAttributes<HTMLAtChipListElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a list of chips.
              */
-            "atui-chip-list-cell": LocalJSX.AtuiChipListCell & JSXBase.HTMLAttributes<HTMLAtuiChipListCellElement>;
+            "at-chip-list-cell": LocalJSX.AtChipListCell & JSXBase.HTMLAttributes<HTMLAtChipListCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a color status indicator based on predefined types
              */
-            "atui-color-status-cell": LocalJSX.AtuiColorStatusCell & JSXBase.HTMLAttributes<HTMLAtuiColorStatusCellElement>;
-            "atui-column-manager": LocalJSX.AtuiColumnManager & JSXBase.HTMLAttributes<HTMLAtuiColumnManagerElement>;
-            "atui-custom-time-range": LocalJSX.AtuiCustomTimeRange & JSXBase.HTMLAttributes<HTMLAtuiCustomTimeRangeElement>;
+            "at-color-status-cell": LocalJSX.AtColorStatusCell & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
+            "at-column-manager": LocalJSX.AtColumnManager & JSXBase.HTMLAttributes<HTMLAtColumnManagerElement>;
+            "at-custom-time-range": LocalJSX.AtCustomTimeRange & JSXBase.HTMLAttributes<HTMLAtCustomTimeRangeElement>;
             /**
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
              */
-            "atui-dialog": LocalJSX.AtuiDialog & JSXBase.HTMLAttributes<HTMLAtuiDialogElement>;
+            "at-dialog": LocalJSX.AtDialog & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying and editing text.
              */
-            "atui-edit-text-cell": LocalJSX.AtuiEditTextCell & JSXBase.HTMLAttributes<HTMLAtuiEditTextCellElement>;
+            "at-edit-text-cell": LocalJSX.AtEditTextCell & JSXBase.HTMLAttributes<HTMLAtEditTextCellElement>;
             /**
              * @category Form Controls
              * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
              */
-            "atui-form-label": LocalJSX.AtuiFormLabel & JSXBase.HTMLAttributes<HTMLAtuiFormLabelElement>;
+            "at-form-label": LocalJSX.AtFormLabel & JSXBase.HTMLAttributes<HTMLAtFormLabelElement>;
             /**
              * @category Layout
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
-            "atui-header": LocalJSX.AtuiHeader & JSXBase.HTMLAttributes<HTMLAtuiHeaderElement>;
+            "at-header": LocalJSX.AtHeader & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
             /**
              * @category Form Controls
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
              */
-            "atui-input": LocalJSX.AtuiInput & JSXBase.HTMLAttributes<HTMLAtuiInputElement>;
+            "at-input": LocalJSX.AtInput & JSXBase.HTMLAttributes<HTMLAtInputElement>;
             /**
              * @category Form Controls
              * @description A numeric input component for entering numerical values.
              */
-            "atui-input-numeric": LocalJSX.AtuiInputNumeric & JSXBase.HTMLAttributes<HTMLAtuiInputNumericElement>;
+            "at-input-numeric": LocalJSX.AtInputNumeric & JSXBase.HTMLAttributes<HTMLAtInputNumericElement>;
             /**
              * @category Form Controls
              * @description A range input component for selecting a value within a specified range.
              */
-            "atui-input-range": LocalJSX.AtuiInputRange & JSXBase.HTMLAttributes<HTMLAtuiInputRangeElement>;
+            "at-input-range": LocalJSX.AtInputRange & JSXBase.HTMLAttributes<HTMLAtInputRangeElement>;
             /**
              * @category Layout
              * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
              */
-            "atui-layout": LocalJSX.AtuiLayout & JSXBase.HTMLAttributes<HTMLAtuiLayoutElement>;
+            "at-layout": LocalJSX.AtLayout & JSXBase.HTMLAttributes<HTMLAtLayoutElement>;
             /**
              * @category Layout
              * @description A list item component for the list.
              */
-            "atui-list-item": LocalJSX.AtuiListItem & JSXBase.HTMLAttributes<HTMLAtuiListItemElement>;
+            "at-list-item": LocalJSX.AtListItem & JSXBase.HTMLAttributes<HTMLAtListItemElement>;
             /**
              * @category Navigation
              * @description A list selector component for selecting an item from a list.
              */
-            "atui-list-selector": LocalJSX.AtuiListSelector & JSXBase.HTMLAttributes<HTMLAtuiListSelectorElement>;
+            "at-list-selector": LocalJSX.AtListSelector & JSXBase.HTMLAttributes<HTMLAtListSelectorElement>;
             /**
              * @category Navigation
              * @description A list selector item component for the list selector.
              */
-            "atui-list-selector-item": LocalJSX.AtuiListSelectorItem & JSXBase.HTMLAttributes<HTMLAtuiListSelectorItemElement>;
+            "at-list-selector-item": LocalJSX.AtListSelectorItem & JSXBase.HTMLAttributes<HTMLAtListSelectorItemElement>;
             /**
              * @category Feedback
              * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
              */
-            "atui-loading": LocalJSX.AtuiLoading & JSXBase.HTMLAttributes<HTMLAtuiLoadingElement>;
-            "atui-menu": LocalJSX.AtuiMenu & JSXBase.HTMLAttributes<HTMLAtuiMenuElement>;
+            "at-loading": LocalJSX.AtLoading & JSXBase.HTMLAttributes<HTMLAtLoadingElement>;
+            "at-menu": LocalJSX.AtMenu & JSXBase.HTMLAttributes<HTMLAtMenuElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a menu.
              */
-            "atui-menu-cell": LocalJSX.AtuiMenuCell & JSXBase.HTMLAttributes<HTMLAtuiMenuCellElement>;
-            "atui-menu-item": LocalJSX.AtuiMenuItem & JSXBase.HTMLAttributes<HTMLAtuiMenuItemElement>;
+            "at-menu-cell": LocalJSX.AtMenuCell & JSXBase.HTMLAttributes<HTMLAtMenuCellElement>;
+            "at-menu-item": LocalJSX.AtMenuItem & JSXBase.HTMLAttributes<HTMLAtMenuItemElement>;
             /**
              * @category Feedback
              * @description A message component for displaying notifications, alerts, or informational messages.
              */
-            "atui-message": LocalJSX.AtuiMessage & JSXBase.HTMLAttributes<HTMLAtuiMessageElement>;
+            "at-message": LocalJSX.AtMessage & JSXBase.HTMLAttributes<HTMLAtMessageElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying multiple buttons.
              */
-            "atui-multi-btn-cell": LocalJSX.AtuiMultiBtnCell & JSXBase.HTMLAttributes<HTMLAtuiMultiBtnCellElement>;
+            "at-multi-btn-cell": LocalJSX.AtMultiBtnCell & JSXBase.HTMLAttributes<HTMLAtMultiBtnCellElement>;
             /**
              * @category Form Controls
              * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
-            "atui-multi-select": LocalJSX.AtuiMultiSelect & JSXBase.HTMLAttributes<HTMLAtuiMultiSelectElement>;
+            "at-multi-select": LocalJSX.AtMultiSelect & JSXBase.HTMLAttributes<HTMLAtMultiSelectElement>;
             /**
              * @category Feedback
              * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
              */
-            "atui-placeholder": LocalJSX.AtuiPlaceholder & JSXBase.HTMLAttributes<HTMLAtuiPlaceholderElement>;
+            "at-placeholder": LocalJSX.AtPlaceholder & JSXBase.HTMLAttributes<HTMLAtPlaceholderElement>;
             /**
              * @category Prompt
              * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
              */
-            "atui-prompt-container": LocalJSX.AtuiPromptContainer & JSXBase.HTMLAttributes<HTMLAtuiPromptContainerElement>;
+            "at-prompt-container": LocalJSX.AtPromptContainer & JSXBase.HTMLAttributes<HTMLAtPromptContainerElement>;
             /**
              * @category Prompt
              * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
              */
-            "atui-prompt-input": LocalJSX.AtuiPromptInput & JSXBase.HTMLAttributes<HTMLAtuiPromptInputElement>;
+            "at-prompt-input": LocalJSX.AtPromptInput & JSXBase.HTMLAttributes<HTMLAtPromptInputElement>;
             /**
              * @category Prompt
              * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
              */
-            "atui-prompt-message": LocalJSX.AtuiPromptMessage & JSXBase.HTMLAttributes<HTMLAtuiPromptMessageElement>;
+            "at-prompt-message": LocalJSX.AtPromptMessage & JSXBase.HTMLAttributes<HTMLAtPromptMessageElement>;
             /**
              * @category Prompt
              * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
              */
-            "atui-prompt-thread": LocalJSX.AtuiPromptThread & JSXBase.HTMLAttributes<HTMLAtuiPromptThreadElement>;
+            "at-prompt-thread": LocalJSX.AtPromptThread & JSXBase.HTMLAttributes<HTMLAtPromptThreadElement>;
             /**
              * @category Form Controls
              * @description A radio button component for selecting a single option from a predefined list.
              */
-            "atui-radio": LocalJSX.AtuiRadio & JSXBase.HTMLAttributes<HTMLAtuiRadioElement>;
+            "at-radio": LocalJSX.AtRadio & JSXBase.HTMLAttributes<HTMLAtRadioElement>;
             /**
              * @category Form Controls
              * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
              */
-            "atui-radio-group": LocalJSX.AtuiRadioGroup & JSXBase.HTMLAttributes<HTMLAtuiRadioGroupElement>;
+            "at-radio-group": LocalJSX.AtRadioGroup & JSXBase.HTMLAttributes<HTMLAtRadioGroupElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.
              */
-            "atui-search": LocalJSX.AtuiSearch & JSXBase.HTMLAttributes<HTMLAtuiSearchElement>;
+            "at-search": LocalJSX.AtSearch & JSXBase.HTMLAttributes<HTMLAtSearchElement>;
             /**
              * @category Data Tables
              * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
              */
-            "atui-search-table": LocalJSX.AtuiSearchTable & JSXBase.HTMLAttributes<HTMLAtuiSearchTableElement>;
+            "at-search-table": LocalJSX.AtSearchTable & JSXBase.HTMLAttributes<HTMLAtSearchTableElement>;
             /**
              * @category Form Controls
              * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
-            "atui-select": LocalJSX.AtuiSelect & JSXBase.HTMLAttributes<HTMLAtuiSelectElement>;
+            "at-select": LocalJSX.AtSelect & JSXBase.HTMLAttributes<HTMLAtSelectElement>;
             /**
              * @category Overlays
              * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
              */
-            "atui-side-panel": LocalJSX.AtuiSidePanel & JSXBase.HTMLAttributes<HTMLAtuiSidePanelElement>;
+            "at-side-panel": LocalJSX.AtSidePanel & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;
             /**
              * @category Navigation
              * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
              */
-            "atui-sidebar": LocalJSX.AtuiSidebar & JSXBase.HTMLAttributes<HTMLAtuiSidebarElement>;
+            "at-sidebar": LocalJSX.AtSidebar & JSXBase.HTMLAttributes<HTMLAtSidebarElement>;
             /**
              * @category Navigation
              * @description 
              */
-            "atui-sidebar-menu": LocalJSX.AtuiSidebarMenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuElement>;
+            "at-sidebar-menu": LocalJSX.AtSidebarMenu & JSXBase.HTMLAttributes<HTMLAtSidebarMenuElement>;
             /**
              * @category Navigation
              * @description A sidebar menu item component for the sidebar.
              */
-            "atui-sidebar-menuitem": LocalJSX.AtuiSidebarMenuitem & JSXBase.HTMLAttributes<HTMLAtuiSidebarMenuitemElement>;
+            "at-sidebar-menuitem": LocalJSX.AtSidebarMenuitem & JSXBase.HTMLAttributes<HTMLAtSidebarMenuitemElement>;
             /**
              * @category Navigation
              * @description Display nested sub-menus in the atui-sidebar.
@@ -7354,37 +7354,37 @@ declare module "@stencil/core" {
              * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
              * Menu indent styling is supported up to 3 levels.
              */
-            "atui-sidebar-submenu": LocalJSX.AtuiSidebarSubmenu & JSXBase.HTMLAttributes<HTMLAtuiSidebarSubmenuElement>;
+            "at-sidebar-submenu": LocalJSX.AtSidebarSubmenu & JSXBase.HTMLAttributes<HTMLAtSidebarSubmenuElement>;
             /**
              * @category Navigation
              * @description A sidebar trigger component for the sidebar.
              */
-            "atui-sidebar-trigger": LocalJSX.AtuiSidebarTrigger & JSXBase.HTMLAttributes<HTMLAtuiSidebarTriggerElement>;
+            "at-sidebar-trigger": LocalJSX.AtSidebarTrigger & JSXBase.HTMLAttributes<HTMLAtSidebarTriggerElement>;
             /**
              * @category Utilities
              * @description A src-dest component for displaying source and destination information.
              */
-            "atui-src-dest": LocalJSX.AtuiSrcDest & JSXBase.HTMLAttributes<HTMLAtuiSrcDestElement>;
+            "at-src-dest": LocalJSX.AtSrcDest & JSXBase.HTMLAttributes<HTMLAtSrcDestElement>;
             /**
              * @category Data Tables
              * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
              */
-            "atui-static-table": LocalJSX.AtuiStaticTable & JSXBase.HTMLAttributes<HTMLAtuiStaticTableElement>;
+            "at-static-table": LocalJSX.AtStaticTable & JSXBase.HTMLAttributes<HTMLAtStaticTableElement>;
             /**
              * @category Data Visualization
              * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
              */
-            "atui-status-bar": LocalJSX.AtuiStatusBar & JSXBase.HTMLAttributes<HTMLAtuiStatusBarElement>;
+            "at-status-bar": LocalJSX.AtStatusBar & JSXBase.HTMLAttributes<HTMLAtStatusBarElement>;
             /**
              * @category Navigation
              * @description A tab component for the tab selector.
              */
-            "atui-tab": LocalJSX.AtuiTab & JSXBase.HTMLAttributes<HTMLAtuiTabElement>;
+            "at-tab": LocalJSX.AtTab & JSXBase.HTMLAttributes<HTMLAtTabElement>;
             /**
              * @category Navigation
              * @description A tab content component for the tab selector.
              */
-            "atui-tab-content": LocalJSX.AtuiTabContent & JSXBase.HTMLAttributes<HTMLAtuiTabContentElement>;
+            "at-tab-content": LocalJSX.AtTabContent & JSXBase.HTMLAttributes<HTMLAtTabContentElement>;
             /**
              * ### interface Tab
              * ```
@@ -7396,100 +7396,100 @@ declare module "@stencil/core" {
              * @category Navigation
              * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
              */
-            "atui-tab-selector": LocalJSX.AtuiTabSelector & JSXBase.HTMLAttributes<HTMLAtuiTabSelectorElement>;
+            "at-tab-selector": LocalJSX.AtTabSelector & JSXBase.HTMLAttributes<HTMLAtTabSelectorElement>;
             /**
              * @category Data Tables
              * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
              */
-            "atui-table": LocalJSX.AtuiTable & JSXBase.HTMLAttributes<HTMLAtuiTableElement>;
+            "at-table": LocalJSX.AtTable & JSXBase.HTMLAttributes<HTMLAtTableElement>;
             /**
              * @category Data Tables
              * @description A container component for table actions, including search, export, and column management. Provides a unified interface for managing table interactions and data export.
              */
-            "atui-table-actions": LocalJSX.AtuiTableActions & JSXBase.HTMLAttributes<HTMLAtuiTableActionsElement>;
+            "at-table-actions": LocalJSX.AtTableActions & JSXBase.HTMLAttributes<HTMLAtTableActionsElement>;
             /**
              * @category Data Tables
              * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
              */
-            "atui-table-export-menu": LocalJSX.AtuiTableExportMenu & JSXBase.HTMLAttributes<HTMLAtuiTableExportMenuElement>;
+            "at-table-export-menu": LocalJSX.AtTableExportMenu & JSXBase.HTMLAttributes<HTMLAtTableExportMenuElement>;
             /**
              * @category Data Tables
              * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
              */
-            "atui-table-filter-menu": LocalJSX.AtuiTableFilterMenu & JSXBase.HTMLAttributes<HTMLAtuiTableFilterMenuElement>;
-            "atui-table-filters": LocalJSX.AtuiTableFilters & JSXBase.HTMLAttributes<HTMLAtuiTableFiltersElement>;
+            "at-table-filter-menu": LocalJSX.AtTableFilterMenu & JSXBase.HTMLAttributes<HTMLAtTableFilterMenuElement>;
+            "at-table-filters": LocalJSX.AtTableFilters & JSXBase.HTMLAttributes<HTMLAtTableFiltersElement>;
             /**
              * @category Data Tables
-             * @description Optional component for use with ```<atui-table>```.
+             * @description Optional component for use with ```<at-table>```.
              * Provides controls for pagination if you would like to
              * have control of the table's pagination.
              */
-            "atui-table-pagination": LocalJSX.AtuiTablePagination & JSXBase.HTMLAttributes<HTMLAtuiTablePaginationElement>;
+            "at-table-pagination": LocalJSX.AtTablePagination & JSXBase.HTMLAttributes<HTMLAtTablePaginationElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a text with a badge.
              */
-            "atui-text-badge-cell": LocalJSX.AtuiTextBadgeCell & JSXBase.HTMLAttributes<HTMLAtuiTextBadgeCellElement>;
+            "at-text-badge-cell": LocalJSX.AtTextBadgeCell & JSXBase.HTMLAttributes<HTMLAtTextBadgeCellElement>;
             /**
              * @category Table Cell
              * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
              */
-            "atui-text-cell": LocalJSX.AtuiTextCell & JSXBase.HTMLAttributes<HTMLAtuiTextCellElement>;
+            "at-text-cell": LocalJSX.AtTextCell & JSXBase.HTMLAttributes<HTMLAtTextCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
              */
-            "atui-text-icon-cell": LocalJSX.AtuiTextIconCell & JSXBase.HTMLAttributes<HTMLAtuiTextIconCellElement>;
+            "at-text-icon-cell": LocalJSX.AtTextIconCell & JSXBase.HTMLAttributes<HTMLAtTextIconCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a text with an image.
              */
-            "atui-text-image-cell": LocalJSX.AtuiTextImageCell & JSXBase.HTMLAttributes<HTMLAtuiTextImageCellElement>;
+            "at-text-image-cell": LocalJSX.AtTextImageCell & JSXBase.HTMLAttributes<HTMLAtTextImageCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a text with a status.
              */
-            "atui-text-status-cell": LocalJSX.AtuiTextStatusCell & JSXBase.HTMLAttributes<HTMLAtuiTextStatusCellElement>;
+            "at-text-status-cell": LocalJSX.AtTextStatusCell & JSXBase.HTMLAttributes<HTMLAtTextStatusCellElement>;
             /**
              * @category Form Controls
              * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
              */
-            "atui-textarea": LocalJSX.AtuiTextarea & JSXBase.HTMLAttributes<HTMLAtuiTextareaElement>;
+            "at-textarea": LocalJSX.AtTextarea & JSXBase.HTMLAttributes<HTMLAtTextareaElement>;
             /**
              * @category Form Controls
              * @description A time range component for selecting time periods.
              */
-            "atui-time-range": LocalJSX.AtuiTimeRange & JSXBase.HTMLAttributes<HTMLAtuiTimeRangeElement>;
+            "at-time-range": LocalJSX.AtTimeRange & JSXBase.HTMLAttributes<HTMLAtTimeRangeElement>;
             /**
              * @category Form Controls
              * @description A time with unit component for selecting a time period.
              */
-            "atui-time-with-unit": LocalJSX.AtuiTimeWithUnit & JSXBase.HTMLAttributes<HTMLAtuiTimeWithUnitElement>;
+            "at-time-with-unit": LocalJSX.AtTimeWithUnit & JSXBase.HTMLAttributes<HTMLAtTimeWithUnitElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a title and subtitle.
              */
-            "atui-title-subtitle-cell": LocalJSX.AtuiTitleSubtitleCell & JSXBase.HTMLAttributes<HTMLAtuiTitleSubtitleCellElement>;
+            "at-title-subtitle-cell": LocalJSX.AtTitleSubtitleCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a title and subtitle with a date.
              */
-            "atui-title-subtitle-date-cell": LocalJSX.AtuiTitleSubtitleDateCell & JSXBase.HTMLAttributes<HTMLAtuiTitleSubtitleDateCellElement>;
+            "at-title-subtitle-date-cell": LocalJSX.AtTitleSubtitleDateCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleDateCellElement>;
             /**
              * @category Table Cell
              * @description A cell component for displaying a toggle.
              */
-            "atui-toggle-cell": LocalJSX.AtuiToggleCell & JSXBase.HTMLAttributes<HTMLAtuiToggleCellElement>;
+            "at-toggle-cell": LocalJSX.AtToggleCell & JSXBase.HTMLAttributes<HTMLAtToggleCellElement>;
             /**
              * @category Form Controls
              * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
              */
-            "atui-toggle-switch": LocalJSX.AtuiToggleSwitch & JSXBase.HTMLAttributes<HTMLAtuiToggleSwitchElement>;
+            "at-toggle-switch": LocalJSX.AtToggleSwitch & JSXBase.HTMLAttributes<HTMLAtToggleSwitchElement>;
             /**
              * @category **Overlays**
              * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
              */
-            "atui-tooltip": LocalJSX.AtuiTooltip & JSXBase.HTMLAttributes<HTMLAtuiTooltipElement>;
+            "at-tooltip": LocalJSX.AtTooltip & JSXBase.HTMLAttributes<HTMLAtTooltipElement>;
             /**
              * ### ```interface ItemNode```
              * ```
@@ -7500,8 +7500,8 @@ declare module "@stencil/core" {
              *  tooltip?: string;
              * ```
              */
-            "atui-tree": LocalJSX.AtuiTree & JSXBase.HTMLAttributes<HTMLAtuiTreeElement>;
-            "atui-tree-item": LocalJSX.AtuiTreeItem & JSXBase.HTMLAttributes<HTMLAtuiTreeItemElement>;
+            "at-tree": LocalJSX.AtTree & JSXBase.HTMLAttributes<HTMLAtTreeElement>;
+            "at-tree-item": LocalJSX.AtTreeItem & JSXBase.HTMLAttributes<HTMLAtTreeItemElement>;
         }
     }
 }

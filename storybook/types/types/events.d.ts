@@ -1,4 +1,4 @@
-export interface AtuiEvent {
+export interface AtEvent {
     originalEvent: Event;
     componentType?: string;
     element?: HTMLElement;

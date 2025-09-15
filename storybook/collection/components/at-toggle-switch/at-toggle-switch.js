@@ -1,0 +1,233 @@
+import { h, Host } from "@stencil/core";
+import { classlist } from "../../utils/classlist";
+const variantsConfig = {
+    variants: {
+        disabled: {
+            false: null,
+            true: 'pointer-events-none opacity-50 grayscale-[1]',
+        },
+        labelPosition: {
+            before: 'flex-row',
+            after: 'flex-row-reverse',
+        },
+    },
+};
+const trackVariantsConfig = {
+    variants: {
+        disabled: {
+            false: 'shadow-inset-xs cursor-pointer',
+            true: 'shadow-inset-xs cursor-default',
+        },
+        active: {
+            false: 'border-med bg-surface-2 border border-solid',
+            true: 'bg-active-foreground/30 group-focus-within/switch:ring-active-foreground group-focus-within/switch:ring-1',
+        },
+    },
+};
+const thumbVariantsConfig = {
+    variants: {
+        active: {
+            false: 'bg-disabled-dark translate-x-[-10px]',
+            true: 'bg-active-foreground group-focus-within/switch:ring-active-foreground/30 translate-x-[10px] group-focus-within/switch:ring-[6px]',
+        },
+        disabled: {
+            false: 'cursor-pointer',
+            true: null,
+        },
+    },
+};
+/**
+ * @category Form Controls
+ * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+ */
+export class AtToggleSwitchComponent {
+    constructor() {
+        /**
+         * Position of the label, left or right of the toggle.
+         */
+        this.label_position = 'before';
+        /**
+         * Show the toggle label.
+         */
+        this.show_label = true;
+        /**
+         * Set the toggles state.
+         */
+        this.value = false;
+        this.toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
+    }
+    onToggle(change) {
+        this.value = change;
+        this.atuiChange.emit(change);
+    }
+    render() {
+        const getClassname = classlist('group/switch outline-active hover:bg-surface-1 focus:bg-surface-1 flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-0 outline-none', variantsConfig);
+        const classname = getClassname({
+            disabled: this.disabled,
+            labelPosition: this.label_position,
+        });
+        const getThumbClassname = classlist('material-icons text-icon-md absolute relative m-2 flex h-[16px] w-[16px] scale-1 items-center justify-center rounded-full text-center text-white select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
+        const thumbClassname = getThumbClassname({
+            active: this.value,
+            disabled: this.disabled,
+        });
+        const getTrackClassname = classlist('absolute top-0 right-0 bottom-0 left-0 flex h-[20px] w-[40px] items-center justify-center rounded-full align-middle [transition:0.2s]', trackVariantsConfig);
+        const trackClassname = getTrackClassname({
+            disabled: this.disabled,
+            active: this.value,
+        });
+        return (h(Host, { key: '2d9372275175988dc56799066a596f261bd7bc72', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+                if (event.key === ' ' || event.key === 'Enter') {
+                    event.preventDefault();
+                    this.inputEl.click();
+                }
+            } }, h("div", { key: '8f00756c3154468c25143b19533b4e42f59bdf18', class: "flex flex-col" }, h("slot", { key: '9a0e0123f8a91b184be803889e75791aa83f4c0f', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '81b4db9f5be672a390842adf7084926cb296512e', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '18a5caea3ec7c586dd7a7ed9539b670ad02baa78', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'de0393cec1fa2f08bb1780d5538875cdb44267ec', class: "relative flex h-20 w-40" }, h("input", { key: '5b44fe94efcae79b3ff2088dcb23353f1154a5be', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '014b6d54914a2b8ff68e1fc8558c1dae87765b61', class: trackClassname }, h("span", { key: '39a5f122db885c00643ca61fd4a8b47b32cb48de', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+    }
+    static get is() { return "at-toggle-switch"; }
+    static get properties() {
+        return {
+            "label": {
+                "type": "string",
+                "attribute": "label",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Label displayed alongside the toggle."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
+            },
+            "hint_text": {
+                "type": "string",
+                "attribute": "hint_text",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Short description or validation hint if required."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
+            },
+            "label_position": {
+                "type": "string",
+                "attribute": "label_position",
+                "mutable": false,
+                "complexType": {
+                    "original": "LabelPosition",
+                    "resolved": "\"after\" | \"before\"",
+                    "references": {
+                        "LabelPosition": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-toggle-switch/at-toggle-switch.tsx",
+                            "id": "src/components/at-toggle-switch/at-toggle-switch.tsx::LabelPosition"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Position of the label, left or right of the toggle."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'before'"
+            },
+            "show_label": {
+                "type": "boolean",
+                "attribute": "show_label",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Show the toggle label."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "true"
+            },
+            "disabled": {
+                "type": "boolean",
+                "attribute": "disabled",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Disable interaction with the toggle."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
+            },
+            "value": {
+                "type": "boolean",
+                "attribute": "value",
+                "mutable": true,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Set the toggles state."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "false"
+            }
+        };
+    }
+    static get events() {
+        return [{
+                "method": "atuiChange",
+                "name": "atuiChange",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emits an event when toggled with `event.detail` being true if the switch is enabled"
+                },
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                }
+            }];
+    }
+}
+//# sourceMappingURL=at-toggle-switch.js.map

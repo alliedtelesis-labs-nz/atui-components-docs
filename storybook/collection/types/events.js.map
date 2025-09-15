@@ -1,1 +1,1 @@
-{"version":3,"file":"events.js","sourceRoot":"","sources":["../../src/types/events.ts"],"names":[],"mappings":"","sourcesContent":["export interface AtuiEvent {\n    originalEvent: Event;\n    componentType?: string;\n    element?: HTMLElement;\n}\n"]}
+{"version":3,"file":"events.js","sourceRoot":"","sources":["../../src/types/events.ts"],"names":[],"mappings":"","sourcesContent":["export interface AtEvent {\n    originalEvent: Event;\n    componentType?: string;\n    element?: HTMLElement;\n}\n"]}

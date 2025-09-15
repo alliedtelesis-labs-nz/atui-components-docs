@@ -6,20 +6,20 @@ import { CSSProperties } from '../styles';
  * so that ag-grid can import and render the cell components
  */
 export declare enum AvailableCells {
-    CHECKBOX_CELL = "AtuiCheckboxCell",
-    TEXT_CELL = "AtuiTextCell",
-    TEXT_STATUS_CELL = "AtuiTextStatusCell",
-    TEXT_WITH_BADGE_CELL = "AtuiTextBadgeCell",
-    TEXT_WITH_ICON_CELL = "AtuiTextIconCell",
-    TITLE_SUBTITLE_CELL = "AtuiTitleSubtitleCell",
-    TITLE_SUBTITLE_DATE_CELL = "AtuiTitleSubtitleDateCell",
-    EDIT_TEXT_CELL = "AtuiEditTextCell",
-    CHIP_LIST_CELL = "AtuiChipListCell",
-    TOGGLE_CELL = "AtuiToggleCell",
-    MULTI_BTN_CELL = "AtuiMultiBtnCell",
-    COLOR_STATUS_CELL = "AtuiColorStatusCell",
-    TEXT_WITH_IMAGE_CELL = "AtuiTextImageCell",
-    MENU_CELL = "AtuiMenuCell"
+    CHECKBOX_CELL = "AtCheckboxCell",
+    TEXT_CELL = "AtTextCell",
+    TEXT_STATUS_CELL = "AtTextStatusCell",
+    TEXT_WITH_BADGE_CELL = "AtTextBadgeCell",
+    TEXT_WITH_ICON_CELL = "AtTextIconCell",
+    TITLE_SUBTITLE_CELL = "AtTitleSubtitleCell",
+    TITLE_SUBTITLE_DATE_CELL = "AtTitleSubtitleDateCell",
+    EDIT_TEXT_CELL = "AtEditTextCell",
+    CHIP_LIST_CELL = "AtChipListCell",
+    TOGGLE_CELL = "AtToggleCell",
+    MULTI_BTN_CELL = "AtMultiBtnCell",
+    COLOR_STATUS_CELL = "AtColorStatusCell",
+    TEXT_WITH_IMAGE_CELL = "AtTextImageCell",
+    MENU_CELL = "AtMenuCell"
 }
 export declare enum AvailableHeaders {
     CHECKBOX_HEADER = "checkboxHeader",

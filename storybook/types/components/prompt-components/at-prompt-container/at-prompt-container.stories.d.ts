@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+declare const meta: Meta;
+export default meta;
+type Story = StoryObj;
+export declare const Default: Story;
+export declare const WithSubtitle: Story;
+export declare const NoHeader: Story;
+export declare const CompactSize: Story;
+export declare const Loading: Story;
+export declare const Disabled: Story;
+export declare const WithCharacterLimit: Story;
+export declare const CustomEmptyState: Story;
+export declare const InteractiveDemo: Story;

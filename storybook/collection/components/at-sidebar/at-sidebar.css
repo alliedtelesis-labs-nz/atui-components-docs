@@ -1,0 +1,12 @@
+at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+  padding-left: 36px;
+}
+at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+  padding-left: 50px;
+}
+at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+  padding-left: 64px;
+}
+at-sidebar at-sidebar-submenu at-menu [data-name=menu-content-wrapper] {
+  background-color: var(--token-sidebar-background);
+}

@@ -30,7 +30,7 @@ filePaths.forEach((filePath) => {
                 .relative('../components', path.dirname(filePath))
                 .split('/')
                 .slice(0, -1)
-                .map((name) => `${formatFilename(name.replace('atui-', ''))}/`)
+                .map((name) => `${formatFilename(name.replace('at-', ''))}/`)
                 .join('');
             const filename = filePath.replace('.tsx', '.mdx');
             fs.writeFile(filename, `import { Meta } from '@storybook/blocks';
