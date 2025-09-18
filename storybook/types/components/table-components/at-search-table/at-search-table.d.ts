@@ -71,6 +71,7 @@ export declare class AtSearchTable {
     translations: any;
     agGrid: GridApi;
     tableCreated: boolean;
+    isInitialized: boolean;
     activeFilters: {
         [key: string]: string;
     };
@@ -81,6 +82,8 @@ export declare class AtSearchTable {
     menuSelectedIds: string[];
     searchValue: string;
     tableEl: HTMLAtTableElement;
+    get shouldShowDropdownFilters(): boolean;
+    get shouldShowColumnManager(): boolean;
     handleSelectedFiltersChange(newValue: {
         id: string;
         value: string;

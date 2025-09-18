@@ -1800,6 +1800,7 @@ export namespace Components {
         "auto_size_columns": boolean;
         /**
           * Column definitions passed to at-table component.
+          * @default []
          */
         "col_defs": ColDef[];
         /**
@@ -6052,6 +6053,7 @@ declare namespace LocalJSX {
         "auto_size_columns"?: boolean;
         /**
           * Column definitions passed to at-table component.
+          * @default []
          */
         "col_defs"?: ColDef[];
         /**

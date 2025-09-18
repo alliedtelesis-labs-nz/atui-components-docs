@@ -5,6 +5,10 @@ const AtSearchTable = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         /**
+         * Column definitions passed to at-table component.
+         */
+        this.col_defs = [];
+        /**
          * Default page size of the table
          */
         this.page_size = 10;
@@ -19,10 +23,23 @@ const AtSearchTable = class {
          */
         this.auto_size_columns = true;
         this.tableCreated = false;
+        this.isInitialized = false;
         this.activeFilters = {};
         this.selectedFilters = [];
         this.menuSelectedIds = [];
         this.searchValue = '';
+    }
+    get shouldShowDropdownFilters() {
+        return (!this.hide_dropdown_filters &&
+            this.col_defs &&
+            this.col_defs.length > 0 &&
+            this.isInitialized);
+    }
+    get shouldShowColumnManager() {
+        return (!this.hide_column_manager &&
+            this.col_defs &&
+            this.col_defs.length > 0 &&
+            this.isInitialized);
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
@@ -30,6 +47,7 @@ const AtSearchTable = class {
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
+        this.isInitialized = true;
     }
     async componentDidLoad() {
         await this.initGrid();
@@ -252,7 +270,7 @@ const AtSearchTable = class {
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '43c8623e1484b2ed7ac3916b23d15ec6b3be0d20' }, h("at-table-actions", { key: 'fb81b282332073b63a46d904366fbe222acc1bec', ag_grid: this.agGrid }, h("div", { key: 'b70ac4208ffaef486ea165eac5ad9ad5affbbad8', class: "flex items-center gap-8", slot: "search" }, !this.hide_dropdown_filters && this.col_defs && (h("at-table-filter-menu", { key: '301cd95c190658357f8bb81f0a1763c8ffb05a73', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '70a58066339b45d5fe30c7c566a365ed22402d63', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), !this.hide_dropdown_filters && this.col_defs && (h("at-table-filters", { key: '30413f497a8e8f3c6534902967e5aa3711ddc726', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'bc9c206a594f51e88b80a1caf847780c231e53b2', slot: "export-menu" })), !this.hide_column_manager && this.col_defs && (h("at-column-manager", { key: '5ce0acccd7f605b2dd7457fb68530ba63bc674d3', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '664a58aea824e2d94e4ceae2f0c7654e23ff1a12', slot: "actions" }, h("slot", { key: 'f141bb871a5a3ecd7c2f48f0706e54d1492f2af9', name: "actions" }))), h("slot", { key: 'e033197b1d998a4c3b150f5b27640a16d6db969a', name: "multi-select-actions" }), h("at-table", { key: '672d5f400a4c68dff46dbb74b96689186a238cd8', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: '2da4bf009f957131bf3ad99644c77a4933c6aea5' }, h("at-table-actions", { key: 'd38f422484109d09d468982ea80605d727b52e10', ag_grid: this.agGrid }, h("div", { key: '1d5cda16792cfb23e52e4663612197f3ea8ce6f7', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '92fc36c775ce20d172ff2429233db9d09c4c46f8', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd49135b66e09ad46861125b886a45adfd580aa04', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '4226babd78fe29223a5e13c0b4b649fcb9537611', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '189b7b41025e962ac264ae0cdc01e63195d72c11', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'eff0f8025a4d39e3792411321ef841e3729c28fb', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'fb7f2915ecd9c6751b5742a430eb50c46775045c', slot: "actions" }, h("slot", { key: '72f36b4ccec8ed1916b7a8e6428aa2b2d4e3f668', name: "actions" }))), h("slot", { key: '17f8b5d307fb812594eebea08b1ab858dcadb386', name: "multi-select-actions" }), h("at-table", { key: 'b44c107845f5e0058f6509c99cc18b81b61ffe84', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
