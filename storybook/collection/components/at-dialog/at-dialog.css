@@ -1,3 +1,7 @@
+dialog.no-backdrop::backdrop {
+  display: none;
+}
+
 dialog.backdrop::backdrop {
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease;

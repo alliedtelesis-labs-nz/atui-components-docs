@@ -25,7 +25,6 @@ const AtSearchTable = class {
          */
         this.auto_size_columns = true;
         this.tableCreated = false;
-        this.isInitialized = false;
         this.activeFilters = {};
         this.selectedFilters = [];
         this.menuSelectedIds = [];
@@ -34,14 +33,12 @@ const AtSearchTable = class {
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
             this.col_defs &&
-            this.col_defs.length > 0 &&
-            this.isInitialized);
+            this.col_defs.length > 0);
     }
     get shouldShowColumnManager() {
         return (!this.hide_column_manager &&
             this.col_defs &&
-            this.col_defs.length > 0 &&
-            this.isInitialized);
+            this.col_defs.length > 0);
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
@@ -49,7 +46,6 @@ const AtSearchTable = class {
     }
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
-        this.isInitialized = true;
     }
     async componentDidLoad() {
         await this.initGrid();
@@ -272,7 +268,7 @@ const AtSearchTable = class {
         this.updateActiveFilters();
     }
     render() {
-        return (index.h(index.Host, { key: '2da4bf009f957131bf3ad99644c77a4933c6aea5' }, index.h("at-table-actions", { key: 'd38f422484109d09d468982ea80605d727b52e10', ag_grid: this.agGrid }, index.h("div", { key: '1d5cda16792cfb23e52e4663612197f3ea8ce6f7', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (index.h("at-table-filter-menu", { key: '92fc36c775ce20d172ff2429233db9d09c4c46f8', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: 'd49135b66e09ad46861125b886a45adfd580aa04', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (index.h("at-table-filters", { key: '4226babd78fe29223a5e13c0b4b649fcb9537611', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '189b7b41025e962ac264ae0cdc01e63195d72c11', slot: "export-menu" })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: 'eff0f8025a4d39e3792411321ef841e3729c28fb', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: 'fb7f2915ecd9c6751b5742a430eb50c46775045c', slot: "actions" }, index.h("slot", { key: '72f36b4ccec8ed1916b7a8e6428aa2b2d4e3f668', name: "actions" }))), index.h("slot", { key: '17f8b5d307fb812594eebea08b1ab858dcadb386', name: "multi-select-actions" }), index.h("at-table", { key: 'b44c107845f5e0058f6509c99cc18b81b61ffe84', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (index.h(index.Host, { key: 'd85f97cf132db93621b6d6869474eff4a6c60e13' }, index.h("at-table-actions", { key: '1d065231b4a4b0c4b3e6373edda8f01fcc316065', ag_grid: this.agGrid }, index.h("div", { key: '07053c513c5ebe16f8d202b9220202093a6fa881', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (index.h("at-table-filter-menu", { key: '6f0594db68b4957e2690f8e74ab93700b7aab8d7', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: '482a7884befad4ee072a96653e41c60e4db0e46c', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (index.h("at-table-filters", { key: 'c97b434c75535c0d459d1e280b0deb8d3bb4eb4c', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '548a857da67454d8c19f01e93de25bcf48427a8c', slot: "export-menu" })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: '3473eb2ede3736db4ffb141c3667f841ddf49d98', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '0dbfd09a8e7c83c6813ceac1010dd9057935f2b5', slot: "actions" }, index.h("slot", { key: 'f4afa99396ce7f1a6478817cb184623832d54966', name: "actions" }))), index.h("slot", { key: '56bf654673ad0a2dae5ef1f62299a8cbce072e9d', name: "multi-select-actions" }), index.h("at-table", { key: 'b5e057cc317af6776a2219f9c9eb666838a22988', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

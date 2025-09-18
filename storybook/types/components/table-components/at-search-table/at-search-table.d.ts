@@ -71,7 +71,6 @@ export declare class AtSearchTable {
     translations: any;
     agGrid: GridApi;
     tableCreated: boolean;
-    isInitialized: boolean;
     activeFilters: {
         [key: string]: string;
     };
