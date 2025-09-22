@@ -63,13 +63,13 @@ const AtSidebarComponent = class {
     render() {
         const getClassname = classlist.classlist(`atui-sidebar group/sidebar bg-sidebar-background 
                   text-sidebar-foreground relative z-20 flex h-screen w-full
-                  flex-col overflow-hidden border-r border-solid border-r-med 
+                  flex-col overflow-y-auto border-r border-solid border-r-med 
                   transition-[width] duration-300 ease-in-out`, variantsConfig);
         const classname = getClassname({
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (index.h(index.Host, { key: '815d658bb4cd87051ff90d90b1dcf31e884d2d7e', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, index.h("nav", { key: '0c304e956fb67602bae6b8c47909c118b8425942', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("slot", { key: '1a452f31c8ab2cb7bd27beab30fb8eee89f188c2', name: "sidebar-header" }), index.h("div", { key: '19c073950f53198400a78ced14340818b45c3838', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '419d63010b0fc437a0e683abd2d0440ae7575607', name: "sidebar-content" })), index.h("div", { key: '5f0a7bf82aa010ee70930a6ac96bb27e2c029e5a', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: 'd44723a74b0dd1ce43c5a6735f81e256353f8cd4', name: "sidebar-footer" }))), index.h("div", { key: '6f11a79f2bc58d10bb544df31857987201758622', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'd9fcb0e87fbfe2b281d60d56b01c2ddf04e3c32a', name: "page-content" }))));
+        return (index.h(index.Host, { key: '815d658bb4cd87051ff90d90b1dcf31e884d2d7e', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, index.h("nav", { key: '0c304e956fb67602bae6b8c47909c118b8425942', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("slot", { key: '1a452f31c8ab2cb7bd27beab30fb8eee89f188c2', name: "sidebar-header" }), index.h("div", { key: '08c85df6e0ed846e2f4b34c60c91f4c0dbcdc2df', class: "align-items oveflow-y-auto flex flex-1 flex-col p-8" }, index.h("slot", { key: '0c497c4560844188b763c0ac4818d55026d8f165', name: "sidebar-content" })), index.h("div", { key: '03d9324b35da913fe49eb15fec6b4a0eb8096597', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: 'bb49ebfc3bbebd4eceb3432c11336341cb1569f6', name: "sidebar-footer" }))), index.h("div", { key: '833f428bb67e56d74ce2f875463becffdf392bee', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'd57c12f2c69548fe23265dc64062eae3bf642a23', name: "page-content" }))));
     }
 };
 AtSidebarComponent.style = atSidebarCss;
