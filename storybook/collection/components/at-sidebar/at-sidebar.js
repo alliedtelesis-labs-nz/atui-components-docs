@@ -62,15 +62,13 @@ export class AtSidebarComponent {
         return this.isOpen;
     }
     render() {
-        const getClassname = classlist(`atui-sidebar group/sidebar bg-sidebar-background 
-                  text-sidebar-foreground relative z-20 flex h-screen w-full
-                  flex-col overflow-y-auto border-r border-solid border-r-med 
-                  transition-[width] duration-300 ease-in-out`, variantsConfig);
+        const getClassname = classlist(``, variantsConfig);
         const classname = getClassname({
             collapsible: this.collapsible,
             side: this.side,
         });
-        return (h(Host, { key: '39690ccaeb7bfe7183973bc3306e915ba7229e8d', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-hidden" }, h("nav", { key: 'f791757c9fe9b72e4ba7f5a04753eff5cea3881f', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("slot", { key: '6f0d93fee49d09cf5885460be7b107ff57b57845', name: "sidebar-header" }), h("div", { key: '9330554a48b8b4757aac5e5d9fb432aaf99e06a4', class: "align-items oveflow-y-auto flex flex-1 flex-col p-8" }, h("slot", { key: 'cbed6ae1019e7f569b6f26be6337c43708630e77', name: "sidebar-content" })), h("div", { key: 'f413f33f30428b094e96e02d386fced8f95ae531', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '0138347136ed649c7073f64996147296d1334d3b', name: "sidebar-footer" }))), h("div", { key: 'bd1c1f329d5615776c66c19f2b2a0bd6b84e70dc', class: "flex w-full overflow-auto" }, h("slot", { key: 'd336b0b5cf4156152b3b9f57eeddd42c0d16f109', name: "page-content" }))));
+        return (h(Host, { key: '97cea839494f075f729a87f123e11f22b6ad719d', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-hidden" }, h("nav", { key: '2bd995a48d23148f1b40540e72d948cdf21b563d', "data-name": "sidebar-nav", class: `bg-sidebar-background text-sidebar-foreground relative z-20 flex h-screen flex-col overflow-y-auto transition-[width] duration-300 ease-in-out w-${this.width} ` +
+                classname }, h("slot", { key: '98afc7259297af216d366ceacd4ee0ccb57faad7', name: "sidebar-header" }), h("div", { key: '8b6f271abc907f030cef2354d153e4bc1613b5f9', class: "align-items oveflow-y-auto flex flex-1 flex-col p-8" }, h("slot", { key: '0a4666be4f90e81d662b80ae305ac289ae218187', name: "sidebar-content" })), h("div", { key: '02a7ed39ad7a24609abd81bc0ff3cfbb79c9e0d8', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '66b6a473be5d3ea9e225e1c39f71d7d3d47d5861', name: "sidebar-footer" }))), h("div", { key: '726e2837a206e02d75449cb55757821c50e36a6c', class: "flex w-full overflow-auto" }, h("slot", { key: 'ec0b05314038c13ef16982b58e8be8323bd845eb', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
     static get originalStyleUrls() {
