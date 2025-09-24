@@ -5,8 +5,8 @@ import { d as defineCustomElement$8 } from './p-BaOP2SR_.js';
 import { d as defineCustomElement$7 } from './p-ZP8fFsoE.js';
 import { d as defineCustomElement$6 } from './p-pDYyfeah.js';
 import { d as defineCustomElement$5 } from './p-tzNOGSqt.js';
-import { d as defineCustomElement$4 } from './p-Bw7tDqos.js';
-import { d as defineCustomElement$3 } from './p-DOMTgal9.js';
+import { d as defineCustomElement$4 } from './p-D9_ltksi.js';
+import { d as defineCustomElement$3 } from './p-D477t2NW.js';
 import { d as defineCustomElement$2 } from './p-BUjvE2eq.js';
 
 const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
@@ -111,9 +111,10 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { vote_status: event.detail.score });
+            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
             this.messages = updatedMessages;
         }
+        this.atMessageVote.emit(event.detail);
     }
     /**
      * Programmatically add a message to the conversation thread
@@ -181,7 +182,7 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '3901dc5b26e561b776855a1bb408414dddfb257f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'c8a36a4f584581bf8487257a0f80bbeef5252842', name: "prompt-container-header" }), h("div", { key: '135e7e62c498fe00357c3529a5a115784c399b06', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '9bf80c9694fd575ed8cd168010ddf01a29ef7223', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '48327d43d3a871eedcc5949ae28bcd0ec6792235', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '9cf7058f2f32878d10cab95e3379b49c474c9190', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '0f4b8f57b3953d899f2dde0116cbcffeab222760', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'a920d6600b79ad649cc2134e7d9ec39668e48532', name: "prompt-container-header" }), h("div", { key: '1201b3510e37c6e7f4793c92b681402947570714', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '177ff852356f334a777271b7e3ec8a59f3d2643c', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: 'f5db18718cd0b858b12fe6862cbc2126ac3a973b', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '24231f43075d7f00271d2f306685bb22a282aadd', name: "prompt-container-footer" }))));
     }
     get el() { return this; }
 }, [260, "at-prompt-container", {
@@ -208,7 +209,7 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         "newThread": [64],
         "setSendEnabled": [64],
         "focusInput": [64]
-    }, [[0, "atuiSubmit", "handleInputSubmit"], [0, "atuiMessageCopy", "handleMessageCopy"], [0, "atuiMessageRetry", "handleMessageRetry"], [0, "atuiMessageEdit", "handleMessageEdit"], [0, "atuiMessageVote", "handleMessageVote"]]]);
+    }, [[0, "atSubmit", "handleInputSubmit"], [0, "atMessageCopy", "handleMessageCopy"], [0, "atMessageRetry", "handleMessageRetry"], [0, "atMessageEdit", "handleMessageEdit"], [0, "atMessageVote", "handleMessageVote"]]]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;

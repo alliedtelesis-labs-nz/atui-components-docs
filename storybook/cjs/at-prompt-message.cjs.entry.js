@@ -1,6 +1,6 @@
 'use strict';
 
-var atPromptMessage_entry = require('./at-prompt-message-CVnkSzYQ.js');
+var atPromptMessage_entry = require('./at-prompt-message-ws1SSfUG.js');
 require('./index-i7hIKTeN.js');
 require('./classlist-BddvonaD.js');
 require('./translation-HqquF7bU.js');

@@ -87,7 +87,7 @@ export class AtPromptThread {
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { vote_status: event.detail.score });
+            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }
@@ -135,14 +135,14 @@ export class AtPromptThread {
         const name = message.role === 'user'
             ? message.name
             : message.name || this.chatbot_title;
-        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, vote_status: message.vote_status || VoteStatus.None, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": `message-${index}`, "data-message-index": index }));
+        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || VoteStatus.None, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": `message-${index}`, "data-message-index": index }));
     }
     renderMessages() {
         return this.messages.map((message, index) => this.renderMessage(message, index));
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '12893c4c4c837592ce7a4a725559c77bcf6c9e68', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'a2db6eb7aae901e200331a20fab4b47aefe7bb50', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '55d0e60716732a5fa59840afb68a6db9e3b63d53', name: "thread-messages" }))));
+        return (h(Host, { key: '84530d904474442e7c6a375e58567c7441810b79', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '1f4168fb1ccbf147efd701defacb7170c6e48a2f', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '12fa05df1b5c0d3ce3d0ad98d8828ed359b4cf87', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
@@ -150,7 +150,7 @@ export class AtPromptThread {
             "messages": {
                 "type": "unknown",
                 "attribute": "messages",
-                "mutable": false,
+                "mutable": true,
                 "complexType": {
                     "original": "PromptMessage[]",
                     "resolved": "PromptMessage[]",
@@ -401,25 +401,25 @@ export class AtPromptThread {
     }
     static get listeners() {
         return [{
-                "name": "atuiVote",
+                "name": "atVote",
                 "method": "handleVote",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiCopy",
+                "name": "atCopy",
                 "method": "handleMessageCopy",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiRetry",
+                "name": "atRetry",
                 "method": "handleMessageRetry",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiEdit",
+                "name": "atEdit",
                 "method": "handleMessageEdit",
                 "target": undefined,
                 "capture": false,

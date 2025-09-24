@@ -1,4 +1,4 @@
-import { A as AtPromptThread$1, d as defineCustomElement$1 } from './p-DOMTgal9.js';
+import { A as AtPromptThread$1, d as defineCustomElement$1 } from './p-D477t2NW.js';
 
 const AtPromptThread = AtPromptThread$1;
 const defineCustomElement = defineCustomElement$1;

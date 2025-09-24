@@ -8,5 +8,5 @@ export interface PromptMessage {
     loading?: boolean;
     error?: boolean;
     error_message?: string;
-    vote_status?: number;
+    score?: number;
 }

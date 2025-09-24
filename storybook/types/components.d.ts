@@ -1622,10 +1622,10 @@ export namespace Components {
          */
         "role": Exclude<MessageRole1, 'system'>;
         /**
-          * The current vote status of the message
+          * The current vote score of the message
           * @default VoteStatus.None
          */
-        "vote_status": VoteStatus;
+        "score": VoteStatus;
     }
     /**
      * @category Prompt
@@ -5846,10 +5846,10 @@ declare namespace LocalJSX {
          */
         "role"?: Exclude<MessageRole1, 'system'>;
         /**
-          * The current vote status of the message
+          * The current vote score of the message
           * @default VoteStatus.None
          */
-        "vote_status"?: VoteStatus;
+        "score"?: VoteStatus;
     }
     /**
      * @category Prompt

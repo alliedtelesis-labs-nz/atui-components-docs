@@ -36,9 +36,9 @@ export declare class AtPromptMessage {
      */
     error_message: string;
     /**
-     * The current vote status of the message
+     * The current vote score of the message
      */
-    vote_status: VoteStatus;
+    score: VoteStatus;
     /**
      * Display voting actions for assistant messages
      */
