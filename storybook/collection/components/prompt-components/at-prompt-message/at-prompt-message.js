@@ -1,18 +1,13 @@
-import { Host, h, Fragment, } from "@stencil/core";
+import { Fragment, h, Host, } from "@stencil/core";
 import { classlist } from "../../../utils/classlist";
 import { fetchTranslations } from "../../../utils/translation";
-// Add vote status enum to match Angular implementation
-export var VoteStatus;
-(function (VoteStatus) {
-    VoteStatus[VoteStatus["None"] = 0] = "None";
-    VoteStatus[VoteStatus["Up"] = 1] = "Up";
-    VoteStatus[VoteStatus["Down"] = -1] = "Down";
-})(VoteStatus || (VoteStatus = {}));
+import { PromptResponseScore, } from "../../../types";
 const messageVariantsConfig = {
     variants: {
         role: {
             user: 'bg-surface-2 text-dark ml-auto inline-block p-8',
             assistant: 'text-dark mr-auto',
+            system: 'text-dark mr-auto',
         },
         loading: {
             true: 'animate-pulse',
@@ -51,7 +46,7 @@ export class AtPromptMessage {
         /**
          * The current vote score of the message
          */
-        this.score = VoteStatus.None;
+        this.score = PromptResponseScore.NONE;
         /**
          * Display voting actions for assistant messages
          */
@@ -64,7 +59,16 @@ export class AtPromptMessage {
          * Display edit action for user messages
          */
         this.enable_edit = false;
+        /**
+         * Animation type for text streaming effect
+         * - 'none': No animation (default)
+         * - 'fade': Fade in the entire message
+         * - 'words': Animate words appearing sequentially
+         */
+        this.response_animation = 'words';
         this.copyFeedbackVisible = false;
+        this.animatedContent = '';
+        this.isAnimating = false;
         this.handleCopy = async () => {
             try {
                 await navigator.clipboard.writeText(this.content);
@@ -85,19 +89,65 @@ export class AtPromptMessage {
             this.atEdit.emit(this.content);
         };
         this.handleVote = (score) => {
-            const newScore = this.score === score ? VoteStatus.None : score;
+            const newScore = this.score === score ? PromptResponseScore.NONE : score;
             this.atVote.emit({ messageId: this.message_id, score: newScore });
         };
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
+        this.initializeContent();
+    }
+    watchContentChange(newContent) {
+        if (newContent &&
+            this.response_animation === 'words' &&
+            this.role === 'assistant') {
+            this.startWordAnimation(newContent);
+        }
+        else {
+            this.animatedContent = newContent;
+        }
+    }
+    initializeContent() {
+        if (this.content &&
+            this.response_animation === 'words' &&
+            this.role === 'assistant') {
+            this.startWordAnimation(this.content);
+        }
+        else {
+            this.animatedContent = this.content;
+        }
+    }
+    startWordAnimation(content) {
+        if (this.isAnimating)
+            return;
+        this.isAnimating = true;
+        this.animatedContent = '';
+        const words = content.split(' ');
+        let currentWordIndex = 0;
+        const animateNextWord = () => {
+            if (currentWordIndex < words.length) {
+                if (currentWordIndex === 0) {
+                    this.animatedContent = words[currentWordIndex];
+                }
+                else {
+                    this.animatedContent += ' ' + words[currentWordIndex];
+                }
+                currentWordIndex++;
+                const delay = Math.random() * 30 + 30;
+                setTimeout(animateNextWord, delay);
+            }
+            else {
+                this.isAnimating = false;
+            }
+        };
+        setTimeout(animateNextWord, 30);
     }
     renderActions() {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
         if (this.loading)
             return null;
-        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Up), "data-name": "vote-up-button" }, this.score === VoteStatus.Up ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" }, h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
-            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Down), "data-name": "vote-down-button" }, this.score === VoteStatus.Down ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "0 -960 960 960", height: "15px", fill: "#adb5bd" // token-border-dark
+        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === PromptResponseScore.UP ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" }, h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
+            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === PromptResponseScore.DOWN ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "0 -960 960 960", height: "15px", fill: "#adb5bd" // token-border-dark
         }, h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, ((_j = (_h = (_g = this.translations) === null || _g === void 0 ? void 0 : _g.ATUI) === null || _h === void 0 ? void 0 : _h.PROMPT) === null || _j === void 0 ? void 0 : _j.NOT_HELPFUL) ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
@@ -117,16 +167,33 @@ export class AtPromptMessage {
                 ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.ERROR_GENERATING_RESPONSE) ||
                 'Error generating response')));
         }
-        return (h("div", { class: "prose prose-sm preserve-newlines max-w-none", "data-name": "message-content" }, h("slot", null), this.content));
+        const contentToDisplay = this.response_animation === 'words' && this.role === 'assistant'
+            ? this.animatedContent
+            : this.content;
+        const animationClass = this.response_animation === 'fade' ||
+            this.response_animation === 'words'
+            ? 'at-prompt-fade-in'
+            : '';
+        return (h("div", { class: `prose prose-sm preserve-newlines max-w-none ${animationClass}`, "data-name": "message-content" }, h("slot", null), contentToDisplay));
     }
     render() {
         const messageClasses = getMessageClasses({
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'a4e0a8760cd49e99cea8455e7a4cb42901b13ec5', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '8c630ec2cace06160d271d6e3937a53f4ab026a0', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '63d8433f5a708a3d1323566b9ac45e2040bf1d68', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '4d1b5e2847ad0097fc8c383288722aacb06f6dd4', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'bafb1c5e8d8a454e7c7b62be9d9bf2f3d0b1cba3', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'a23b3c0ed1637425a83e88a56438d256bb5ccdba', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '24d0f6e224c6cfb86b46341a3e555d9822028f55', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'e8511492e5985f8a94584fc1253f5786e7f68c4b', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
+    static get originalStyleUrls() {
+        return {
+            "$": ["at-prompt-message.scss"]
+        };
+    }
+    static get styleUrls() {
+        return {
+            "$": ["at-prompt-message.css"]
+        };
+    }
     static get properties() {
         return {
             "role": {
@@ -134,17 +201,13 @@ export class AtPromptMessage {
                 "attribute": "role",
                 "mutable": false,
                 "complexType": {
-                    "original": "Exclude<MessageRole, 'system'>",
+                    "original": "PromptUserRole",
                     "resolved": "\"assistant\" | \"user\"",
                     "references": {
-                        "Exclude": {
-                            "location": "global",
-                            "id": "global::Exclude"
-                        },
-                        "MessageRole": {
+                        "PromptUserRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::MessageRole"
+                            "id": "src/types/index.ts::PromptUserRole"
                         }
                     }
                 },
@@ -262,13 +325,13 @@ export class AtPromptMessage {
                 "attribute": "score",
                 "mutable": false,
                 "complexType": {
-                    "original": "VoteStatus",
-                    "resolved": "VoteStatus.Down | VoteStatus.None | VoteStatus.Up",
+                    "original": "PromptResponseScore",
+                    "resolved": "PromptResponseScore.DOWN | PromptResponseScore.NONE | PromptResponseScore.UP",
                     "references": {
-                        "VoteStatus": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/prompt-components/at-prompt-message/at-prompt-message.tsx",
-                            "id": "src/components/prompt-components/at-prompt-message/at-prompt-message.tsx::VoteStatus"
+                        "PromptResponseScore": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::PromptResponseScore"
                         }
                     }
                 },
@@ -281,7 +344,7 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "VoteStatus.None"
+                "defaultValue": "PromptResponseScore.NONE"
             },
             "enable_vote": {
                 "type": "boolean",
@@ -361,13 +424,41 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false
+            },
+            "response_animation": {
+                "type": "string",
+                "attribute": "response_animation",
+                "mutable": false,
+                "complexType": {
+                    "original": "PromptResponseAnimation",
+                    "resolved": "\"fade\" | \"none\" | \"words\"",
+                    "references": {
+                        "PromptResponseAnimation": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::PromptResponseAnimation"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Animation type for text streaming effect\n- 'none': No animation (default)\n- 'fade': Fade in the entire message\n- 'words': Animate words appearing sequentially"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'words'"
             }
         };
     }
     static get states() {
         return {
             "translations": {},
-            "copyFeedbackVisible": {}
+            "copyFeedbackVisible": {},
+            "animatedContent": {},
+            "isAnimating": {}
         };
     }
     static get events() {
@@ -434,5 +525,11 @@ export class AtPromptMessage {
             }];
     }
     static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "content",
+                "methodName": "watchContentChange"
+            }];
+    }
 }
 //# sourceMappingURL=at-prompt-message.js.map

@@ -1,12 +1,11 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$9 } from './p-CAIgKcTX.js';
-import { d as defineCustomElement$8 } from './p-BaOP2SR_.js';
-import { d as defineCustomElement$7 } from './p-ZP8fFsoE.js';
+import { d as defineCustomElement$8 } from './p-CAIgKcTX.js';
+import { d as defineCustomElement$7 } from './p-BaOP2SR_.js';
 import { d as defineCustomElement$6 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$5 } from './p-tzNOGSqt.js';
-import { d as defineCustomElement$4 } from './p-D9_ltksi.js';
-import { d as defineCustomElement$3 } from './p-D477t2NW.js';
+import { d as defineCustomElement$5 } from './p-B4s-q2Nt.js';
+import { d as defineCustomElement$4 } from './p-B0uH_oa8.js';
+import { d as defineCustomElement$3 } from './p-d1UOSjfA.js';
 import { d as defineCustomElement$2 } from './p-BUjvE2eq.js';
 
 const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
@@ -25,10 +24,6 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
          */
         this.messages = [];
         /**
-         * Title displayed in the header section
-         */
-        this.header_title = 'AI Assistant';
-        /**
          * Placeholder text for the input field
          */
         this.placeholder = 'Type your message here...';
@@ -40,10 +35,6 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
          * Disables all interactions with the container
          */
         this.disabled = false;
-        /**
-         * Controls visibility of the header section
-         */
-        this.show_header = true;
         /**
          * Controls visibility of the "New Thread" button in the header
          */
@@ -64,6 +55,13 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
          * Display edit action for user messages
          */
         this.enable_edit = false;
+        /**
+         * Enable streaming text animations for system/assistant messages
+         * - 'none': No animation
+         * - 'fade': Fade in the entire message
+         * - 'words': Animate words appearing sequentially like ChatGPT
+         */
+        this.response_animation = 'words';
         this.currentInput = '';
         this.inputInvalid = false;
         this.inputError = '';
@@ -113,6 +111,7 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
             const updatedMessages = [...this.messages];
             updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
             this.messages = updatedMessages;
+            this.atMessageVote.emit(event.detail);
         }
         this.atMessageVote.emit(event.detail);
     }
@@ -173,32 +172,30 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
     }
     renderHeader() {
         var _a, _b, _c;
-        if (!this.show_header)
+        if (!this.show_new_thread_button)
             return null;
         const newThreadText = ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.NEW_THREAD) || 'New Thread';
-        return (h("at-header", { size: "h3", header_title: this.header_title, subtitle: this.subtitle, border: true, "data-name": "prompt-container-header" }, this.show_new_thread_button && (h("at-button", { slot: "actions", size: "sm", type: "secondaryText", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText))));
+        return (h("div", { class: "flex justify-end pb-16" }, h("at-button", { slot: "actions", size: "md", type: "primaryOutline", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText)));
     }
     renderFooter() {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '0f4b8f57b3953d899f2dde0116cbcffeab222760', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'a920d6600b79ad649cc2134e7d9ec39668e48532', name: "prompt-container-header" }), h("div", { key: '1201b3510e37c6e7f4793c92b681402947570714', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '177ff852356f334a777271b7e3ec8a59f3d2643c', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: 'f5db18718cd0b858b12fe6862cbc2126ac3a973b', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '24231f43075d7f00271d2f306685bb22a282aadd', name: "prompt-container-footer" }))));
+        return (h(Host, { key: 'a4368b0a0b00bc7aeec0f12eb1f59b3e03d62593', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'c1d88491491a576c9843f77c9e34649d7c9e1da4', name: "prompt-container-header" }), h("div", { key: '7b811780676236312efa1edada17be66db4aeeb3', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '0d1124b5ad370bac9a2824f4a192e6bd57596597', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: 'e152acf41b7f9725576da0257b8fcd3395a71f55', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'fcfab2cfab86345e103ded7053cedf821c5607a7', name: "prompt-container-footer" }))));
     }
     get el() { return this; }
 }, [260, "at-prompt-container", {
         "messages": [1040],
-        "header_title": [1],
-        "subtitle": [1],
         "placeholder": [1],
         "error_text": [1],
         "loading": [4],
         "disabled": [4],
-        "show_header": [4],
         "show_new_thread_button": [4],
         "max_message_length": [2],
         "enable_vote": [4],
         "enable_copy": [4],
         "enable_edit": [4],
+        "response_animation": [1],
         "currentInput": [32],
         "inputInvalid": [32],
         "inputError": [32],
@@ -214,7 +211,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["at-prompt-container", "at-button", "at-form-label", "at-header", "at-loading", "at-prompt-input", "at-prompt-message", "at-prompt-thread", "at-tooltip"];
+    const components = ["at-prompt-container", "at-button", "at-form-label", "at-loading", "at-prompt-input", "at-prompt-message", "at-prompt-thread", "at-tooltip"];
     components.forEach(tagName => { switch (tagName) {
         case "at-prompt-container":
             if (!customElements.get(tagName)) {
@@ -223,15 +220,10 @@ function defineCustomElement$1() {
             break;
         case "at-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$9();
-            }
-            break;
-        case "at-form-label":
-            if (!customElements.get(tagName)) {
                 defineCustomElement$8();
             }
             break;
-        case "at-header":
+        case "at-form-label":
             if (!customElements.get(tagName)) {
                 defineCustomElement$7();
             }

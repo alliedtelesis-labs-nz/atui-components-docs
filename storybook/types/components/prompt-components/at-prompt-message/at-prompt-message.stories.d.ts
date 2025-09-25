@@ -1,12 +1,51 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-declare const meta: Meta;
-export default meta;
-type Story = StoryObj;
-export declare const UserMessage: Story;
-export declare const AssistantMessage: Story;
-export declare const SystemMessage: Story;
-export declare const LoadingMessage: Story;
-export declare const ErrorMessage: Story;
-export declare const WithAvatar: Story;
-export declare const WithSlotContent: Story;
-export declare const Conversation: Story;
+declare const _default: {
+    title: string;
+    argTypes: {
+        role: {
+            control: string;
+            options: string[];
+            description: string;
+        };
+        content: {
+            control: string;
+            description: string;
+        };
+        name: {
+            control: string;
+            description: string;
+        };
+        avatar: {
+            control: string;
+            description: string;
+        };
+        timestamp: {
+            control: string;
+            description: string;
+        };
+        loading: {
+            control: string;
+            description: string;
+        };
+        error: {
+            control: string;
+            description: string;
+        };
+        error_message: {
+            control: string;
+            description: string;
+        };
+        animate: {
+            control: string;
+            options: string[];
+            description: string;
+        };
+    };
+};
+export default _default;
+export declare const UserMessage: any;
+export declare const AssistantMessage: any;
+export declare const LoadingMessage: any;
+export declare const ErrorMessage: any;
+export declare const AnimatedWords: any;
+export declare const WithSlotContent: any;
+export declare const Conversation: any;

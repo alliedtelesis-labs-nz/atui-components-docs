@@ -1,5 +1,5 @@
 import { Host, h, } from "@stencil/core";
-import { VoteStatus } from "../at-prompt-message/at-prompt-message";
+import { PromptResponseScore, } from "../../../types";
 /**
  * @category Prompt
  * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
@@ -36,6 +36,13 @@ export class AtPromptThread {
          * Display edit action for user messages
          */
         this.enable_edit = false;
+        /**
+         * Enable streaming text animations for system/assistant messages
+         * - 'none': No animation (default)
+         * - 'fade': Fade in the entire message
+         * - 'words': Animate words appearing sequentially like ChatGPT
+         */
+        this.response_animation = 'words';
     }
     componentDidUpdate() {
         if (this.auto_scroll && this.scrollContainer) {
@@ -128,21 +135,22 @@ export class AtPromptThread {
     renderLoadingIndicator() {
         if (!this.loading)
             return null;
-        return (h("div", { class: "flex flex-col gap-16", "data-name": "loading-container" }, h("at-prompt-message", { role: "assistant", content: "Typing...", name: this.chatbot_title, loading: true, "data-name": "loading-message" })));
+        return (h("div", { class: "flex flex-col gap-16", "data-name": "loading-container" }, h("at-prompt-message", { role: 'assistant', content: "Typing...", name: this.chatbot_title, loading: true, "data-name": "loading-message" })));
     }
     renderMessage(message, index) {
-        const role = message.role === 'system' ? 'assistant' : message.role;
+        const role = message.role;
         const name = message.role === 'user'
             ? message.name
             : message.name || this.chatbot_title;
-        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || VoteStatus.None, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": `message-${index}`, "data-message-index": index }));
+        const animate = message.role === 'assistant' ? this.response_animation : 'fade';
+        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || PromptResponseScore.NONE, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: animate, "data-name": `message-${index}`, "data-message-index": index }));
     }
     renderMessages() {
         return this.messages.map((message, index) => this.renderMessage(message, index));
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '84530d904474442e7c6a375e58567c7441810b79', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '1f4168fb1ccbf147efd701defacb7170c6e48a2f', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '12fa05df1b5c0d3ce3d0ad98d8828ed359b4cf87', name: "thread-messages" }))));
+        return (h(Host, { key: 'de960d9a9b96e1a1af1a73bf7747cee906ef0ddc', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '671ff981fa52e74b6587f851589188923184eeaf', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'cad587f5a9489907196f95505d7298151f4880b9', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
@@ -291,6 +299,32 @@ export class AtPromptThread {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "false"
+            },
+            "response_animation": {
+                "type": "string",
+                "attribute": "response_animation",
+                "mutable": false,
+                "complexType": {
+                    "original": "PromptResponseAnimation",
+                    "resolved": "\"fade\" | \"none\" | \"words\"",
+                    "references": {
+                        "PromptResponseAnimation": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::PromptResponseAnimation"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Enable streaming text animations for system/assistant messages\n- 'none': No animation (default)\n- 'fade': Fade in the entire message\n- 'words': Animate words appearing sequentially like ChatGPT"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'words'"
             }
         };
     }

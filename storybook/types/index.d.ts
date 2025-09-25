@@ -21,3 +21,4 @@ export { ColorStatusCellData } from './components/table-components/cell-componen
 export { TextImageCellData } from './components/table-components/cell-components/at-text-image-cell/at-text-image-cell';
 export { ChipCellData } from './components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell';
 export { CheckboxCellData } from './components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';
+export { type PromptMessage, type PromptUserRole, type PromptResponseAnimation, PromptResponseScore, } from './types/prompt';

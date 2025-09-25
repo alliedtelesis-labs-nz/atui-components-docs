@@ -20,7 +20,7 @@ import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-import { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
+import { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 import { HeaderSizes } from "./components/at-header/at-header";
 import { InputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
@@ -30,8 +30,6 @@ import { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loadin
 import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
-import { MessageRole, PromptMessage } from "./types/prompt";
-import { VoteStatus } from "./components/prompt-components/at-prompt-message/at-prompt-message";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
@@ -63,7 +61,7 @@ export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-export { DateRangeStrings, MessageRole as MessageRole1, PromptMessage as PromptMessage1 } from "./types";
+export { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 export { HeaderSizes } from "./components/at-header/at-header";
 export { InputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
@@ -73,8 +71,6 @@ export { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loadin
 export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
-export { MessageRole, PromptMessage } from "./types/prompt";
-export { VoteStatus } from "./components/prompt-components/at-prompt-message/at-prompt-message";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
@@ -1433,7 +1429,7 @@ export namespace Components {
           * @param role - The message role
           * @param content - The message content
          */
-        "addMessage": (role: MessageRole, content: string) => Promise<void>;
+        "addMessage": (role: PromptUserRole, content: string) => Promise<void>;
         /**
           * Append content to the last message in the thread (useful for streaming responses)
           * @param content - The content to append
@@ -1469,11 +1465,6 @@ export namespace Components {
          */
         "focusInput": () => Promise<void>;
         /**
-          * Title displayed in the header section
-          * @default 'AI Assistant'
-         */
-        "header_title": string;
-        /**
           * Shows loading state and disables input
           * @default false
          */
@@ -1498,24 +1489,20 @@ export namespace Components {
          */
         "placeholder": string;
         /**
+          * Enable streaming text animations for system/assistant messages - 'none': No animation - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
+          * @default 'words'
+         */
+        "response_animation": PromptResponseAnimation;
+        /**
           * Control the send button state programmatically
           * @param enabled - Whether the send functionality should be enabled
          */
         "setSendEnabled": (enabled: boolean) => Promise<void>;
         /**
-          * Controls visibility of the header section
-          * @default true
-         */
-        "show_header": boolean;
-        /**
           * Controls visibility of the "New Thread" button in the header
           * @default true
          */
         "show_new_thread_button": boolean;
-        /**
-          * Subtitle displayed below the title in the header
-         */
-        "subtitle": string;
     }
     /**
      * @category Prompt
@@ -1617,15 +1604,20 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Animation type for text streaming effect - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially
+          * @default 'words'
+         */
+        "response_animation": PromptResponseAnimation;
+        /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role": Exclude<MessageRole1, 'system'>;
+        "role": PromptUserRole;
         /**
           * The current vote score of the message
-          * @default VoteStatus.None
+          * @default PromptResponseScore.NONE
          */
-        "score": VoteStatus;
+        "score": PromptResponseScore;
     }
     /**
      * @category Prompt
@@ -1666,7 +1658,12 @@ export namespace Components {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages": PromptMessage1[];
+        "messages": PromptMessage[];
+        /**
+          * Enable streaming text animations for system/assistant messages - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
+          * @default 'words'
+         */
+        "response_animation": PromptResponseAnimation;
         /**
           * Scrolls the last user message to the top of the viewport
          */
@@ -5633,11 +5630,6 @@ declare namespace LocalJSX {
          */
         "error_text"?: string;
         /**
-          * Title displayed in the header section
-          * @default 'AI Assistant'
-         */
-        "header_title"?: string;
-        /**
           * Shows loading state and disables input
           * @default false
          */
@@ -5695,19 +5687,15 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Controls visibility of the header section
-          * @default true
+          * Enable streaming text animations for system/assistant messages - 'none': No animation - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
+          * @default 'words'
          */
-        "show_header"?: boolean;
+        "response_animation"?: PromptResponseAnimation;
         /**
           * Controls visibility of the "New Thread" button in the header
           * @default true
          */
         "show_new_thread_button"?: boolean;
-        /**
-          * Subtitle displayed below the title in the header
-         */
-        "subtitle"?: string;
     }
     /**
      * @category Prompt
@@ -5841,15 +5829,20 @@ declare namespace LocalJSX {
          */
         "onAtVote"?: (event: AtPromptMessageCustomEvent<{ messageId: string; score: number }>) => void;
         /**
+          * Animation type for text streaming effect - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially
+          * @default 'words'
+         */
+        "response_animation"?: PromptResponseAnimation;
+        /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role"?: Exclude<MessageRole1, 'system'>;
+        "role"?: PromptUserRole;
         /**
           * The current vote score of the message
-          * @default VoteStatus.None
+          * @default PromptResponseScore.NONE
          */
-        "score"?: VoteStatus;
+        "score"?: PromptResponseScore;
     }
     /**
      * @category Prompt
@@ -5890,7 +5883,7 @@ declare namespace LocalJSX {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages"?: PromptMessage1[];
+        "messages"?: PromptMessage[];
         /**
           * Emitted when a message copy action is requested
          */
@@ -5916,6 +5909,11 @@ declare namespace LocalJSX {
         messageId: string;
         score: number;
     }>) => void;
+        /**
+          * Enable streaming text animations for system/assistant messages - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
+          * @default 'words'
+         */
+        "response_animation"?: PromptResponseAnimation;
     }
     /**
      * @category Form Controls

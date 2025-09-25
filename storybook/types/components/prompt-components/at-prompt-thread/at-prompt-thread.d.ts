@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import type { PromptMessage } from '../../../types';
+import { PromptResponseAnimation, PromptMessage } from '../../../types';
 /**
  * @category Prompt
  * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
@@ -35,6 +35,13 @@ export declare class AtPromptThread {
      * Display edit action for user messages
      */
     enable_edit: boolean;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation (default)
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation: PromptResponseAnimation;
     /**
      * Emitted when a message copy action is requested
      */

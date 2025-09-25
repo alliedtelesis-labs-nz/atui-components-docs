@@ -1,7 +1,26 @@
-import { html } from "lit";
-const meta = {
+const Template = (args) => {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    return `
+<at-prompt-input
+    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
+    placeholder="${(_b = args.placeholder) !== null && _b !== void 0 ? _b : ''}"
+    value="${(_c = args.value) !== null && _c !== void 0 ? _c : ''}"
+    hint_text="${(_d = args.hint_text) !== null && _d !== void 0 ? _d : ''}"
+    error_text="${(_e = args.error_text) !== null && _e !== void 0 ? _e : ''}"
+    info_text="${(_f = args.info_text) !== null && _f !== void 0 ? _f : ''}"
+    min_rows="${(_g = args.min_rows) !== null && _g !== void 0 ? _g : 1}"
+    max_rows="${(_h = args.max_rows) !== null && _h !== void 0 ? _h : 4}"
+    max_length="${(_j = args.max_length) !== null && _j !== void 0 ? _j : 2000}"
+    ${args.disabled ? 'disabled' : ''}
+    ${args.readonly ? 'readonly' : ''}
+    ${args.required ? 'required' : ''}
+    ${args.invalid ? 'invalid' : ''}
+    ${args.in_progress ? 'in_progress' : ''}
+></at-prompt-input>
+`;
+};
+export default {
     title: 'Components/Prompt/Input',
-    component: 'at-prompt-input',
     argTypes: {
         label: {
             control: 'text',
@@ -57,189 +76,56 @@ const meta = {
         },
         in_progress: {
             control: 'boolean',
-            description: 'Controls whether the component is in progress (shows stop button) or ready to send (shows send button)',
+            description: 'Shows stop button instead of send button',
         },
     },
 };
-export default meta;
-export const Default = {
-    args: {
-        placeholder: 'Enter your message...',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const Default = Template.bind({});
+Default.args = {
+    placeholder: 'Enter your message...',
 };
-export const WithLabel = {
-    args: {
-        label: 'Your Message',
-        placeholder: 'Type your message here...',
-        hint_text: 'Enter a clear and concise message',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+    label: 'Your Message',
+    placeholder: 'Type your message here...',
+    hint_text: 'Enter a clear and concise message',
 };
-export const LargeTextarea = {
-    args: {
-        label: 'Detailed Message',
-        placeholder: 'Enter a longer message...',
-        min_rows: 4,
-        max_rows: 12,
-        hint_text: 'Use multiple lines for detailed explanations',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .variant=${args.variant}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const LargeTextarea = Template.bind({});
+LargeTextarea.args = {
+    label: 'Detailed Message',
+    placeholder: 'Enter a longer message...',
+    min_rows: 4,
+    max_rows: 12,
+    hint_text: 'Use multiple lines for detailed explanations',
 };
-export const WithCharacterLimit = {
-    args: {
-        label: 'Message',
-        placeholder: 'Enter your message...',
-        max_length: 500,
-        hint_text: 'Maximum 500 characters',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const WithCharacterLimit = Template.bind({});
+WithCharacterLimit.args = {
+    label: 'Message',
+    placeholder: 'Enter your message...',
+    max_length: 500,
+    hint_text: 'Maximum 500 characters',
 };
-export const WithError = {
-    args: {
-        label: 'Message',
-        placeholder: 'Enter your message...',
-        error_text: 'This field is required',
-        invalid: true,
-        required: true,
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const WithError = Template.bind({});
+WithError.args = {
+    label: 'Message',
+    placeholder: 'Enter your message...',
+    error_text: 'This field is required',
+    invalid: true,
+    required: true,
 };
-export const Disabled = {
-    args: {
-        label: 'Message',
-        placeholder: 'Enter your message...',
-        disabled: true,
-        value: 'This input is disabled',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const Disabled = Template.bind({});
+Disabled.args = {
+    label: 'Message',
+    placeholder: 'Enter your message...',
+    disabled: true,
+    value: 'This input is disabled',
 };
-export const InProgress = {
-    args: {
-        label: 'Message',
-        placeholder: 'Generating response...',
-        value: 'Tell me about AI',
-        in_progress: true,
-        hint_text: 'Click stop to interrupt generation',
-    },
-    render: (args) => html `
-        <at-prompt-input
-            .placeholder=${args.placeholder}
-            .value=${args.value}
-            .label=${args.label}
-            .hint_text=${args.hint_text}
-            .error_text=${args.error_text}
-            .info_text=${args.info_text}
-            .disabled=${args.disabled}
-            .readonly=${args.readonly}
-            .required=${args.required}
-            .invalid=${args.invalid}
-            .max_length=${args.max_length}
-            .min_rows=${args.min_rows}
-            .max_rows=${args.max_rows}
-            .in_progress=${args.in_progress}
-        ></at-prompt-input>
-    `,
+export const InProgress = Template.bind({});
+InProgress.args = {
+    label: 'Message',
+    placeholder: 'Generating response...',
+    value: 'Tell me about AI',
+    in_progress: true,
+    hint_text: 'Click stop to interrupt generation',
 };
 //# sourceMappingURL=at-prompt-input.stories.js.map
