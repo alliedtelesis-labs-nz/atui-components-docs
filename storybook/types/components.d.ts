@@ -33,7 +33,7 @@ import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
-import { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
+import { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
 import { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -74,7 +74,7 @@ export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
-export { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
+export { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
 export { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -313,7 +313,7 @@ export namespace Components {
          */
         "submit": boolean;
         /**
-          * Styling of the button
+          * Theme of the button. Default primary
           * @default 'primary'
          */
         "type": ButtonType;
@@ -2052,7 +2052,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Will change the styling of the menuitem when set
+          * Will change style to indicate menuitem is active when set
          */
         "is_active"?: boolean;
         /**
@@ -2095,6 +2095,11 @@ export namespace Components {
           * @default 'lg'
          */
         "size": ButtonSize1;
+        /**
+          * Theme of the button. Default secondary
+          * @default 'secondary'
+         */
+        "type": ButtonType1;
     }
     /**
      * @category Utilities
@@ -4471,7 +4476,7 @@ declare namespace LocalJSX {
          */
         "submit"?: boolean;
         /**
-          * Styling of the button
+          * Theme of the button. Default primary
           * @default 'primary'
          */
         "type"?: ButtonType;
@@ -6275,7 +6280,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Will change the styling of the menuitem when set
+          * Will change style to indicate menuitem is active when set
          */
         "is_active"?: boolean;
         /**
@@ -6318,6 +6323,11 @@ declare namespace LocalJSX {
           * @default 'lg'
          */
         "size"?: ButtonSize1;
+        /**
+          * Theme of the button. Default secondary
+          * @default 'secondary'
+         */
+        "type"?: ButtonType1;
     }
     /**
      * @category Utilities

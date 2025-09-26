@@ -15,7 +15,7 @@ export declare class AtButtonComponent {
      */
     submit: boolean;
     /**
-     * Styling of the button
+     * Theme of the button. Default primary
      */
     type: ButtonType;
     /**

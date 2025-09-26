@@ -10,6 +10,10 @@ export class AtSidebarTriggerComponent {
          * Size of the button
          */
         this.size = 'lg';
+        /**
+         * Theme of the button. Default secondary
+         */
+        this.type = 'secondary';
     }
     async updateIsOpen() {
         if (this.provider && typeof this.provider.getIsOpen === 'function') {
@@ -28,7 +32,7 @@ export class AtSidebarTriggerComponent {
         await this.updateIsOpen();
     }
     render() {
-        return (h("at-button", { key: 'd6ceb638cd355e7c996b88e959d949473617bfae', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("at-button", { key: '38b0ab64d1815f3518135df67325ed53aa31bb6a', type: "secondaryText", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     static get is() { return "at-sidebar-trigger"; }
     static get properties() {
@@ -58,6 +62,32 @@ export class AtSidebarTriggerComponent {
                 "setter": false,
                 "reflect": false,
                 "defaultValue": "'lg'"
+            },
+            "type": {
+                "type": "string",
+                "attribute": "type",
+                "mutable": false,
+                "complexType": {
+                    "original": "ButtonType",
+                    "resolved": "\"destructive\" | \"destructiveOutline\" | \"destructiveText\" | \"primary\" | \"primaryOutline\" | \"primaryText\" | \"secondary\" | \"secondaryOutline\" | \"secondaryText\"",
+                    "references": {
+                        "ButtonType": {
+                            "location": "import",
+                            "path": "../../at-button/at-button",
+                            "id": "src/components/at-button/at-button.tsx::ButtonType"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Theme of the button. Default secondary"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'secondary'"
             }
         };
     }

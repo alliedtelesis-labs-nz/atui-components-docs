@@ -66,7 +66,7 @@ const AtTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '8b23a39aadf7647b9c53ec5df3d1d15cd93affc3', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1cfe93744a35a96f97f0b7d1ea4bf6308d431d6c', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '2ba439225f03786d6fc91b46b2a450bc319afa34' }))));
+        return (h(Host, { key: '2cd98d82fdc7640a21246ce513cbeb53bfe67683', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'e3b89c615529f0c20afade56cd182a9233e49216', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '458b761921ed1f17c3cf596cfef301c2a2bff8b9' }))));
     }
 };
 

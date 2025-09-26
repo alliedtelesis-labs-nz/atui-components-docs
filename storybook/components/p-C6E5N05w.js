@@ -1,0 +1,68 @@
+import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { c as classlist } from './p-Bfa-pAao.js';
+import { d as defineCustomElement$1 } from './p-DgHX4Tx7.js';
+
+const atSidebarMenuitemCss = "[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label]{font-weight:400}";
+
+const variantsConfig = {
+    variants: {
+        active: {
+            true: 'bg-sidebar-primary text-sidebar-primary-foreground',
+            false: 'text-sidebar-foreground',
+        },
+    },
+};
+const focusIndicatorVariantsConfig = {
+    variants: {
+        active: {
+            true: 'group-hover:bg-blue-900/30 group-active:bg-blue-900/70',
+            false: 'group-active:bg-surface-4/20 group-hover:bg-surface-4/10',
+        },
+    },
+};
+const AtSidebarMenuitemComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarMenuitemComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+    }
+    render() {
+        const getClassname = classlist('group text-button focus-visible:ring-active-foreground/30 font-medium relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
+        const classname = getClassname({
+            active: this.is_active,
+        });
+        const getFocusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-0 h-full w-full rounded-md transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig);
+        const focusIndicatorClassname = getFocusIndicatorClassname({
+            active: this.is_active,
+        });
+        return (h(Host, { key: 'dd7e094100f9664f7a1e0272799ab5f53b7a7f17', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname }, h("div", { key: 'fc2522342914429d0a514f5042170803934718d5', class: "flex items-center gap-8 truncate" }, h("slot", { key: '9489239b7629389c0a9c14f15efcf9e42b5f2b70', name: "menu-item-label" }), this.badge && (h("at-badge", { key: '995e55fa6f8060fbd28564e50b965735d23f0c0a', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: 'dc6e0e215ab7d3cc537e31f18c62e628b3a3f842', class: "material-icons text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (h("span", { key: '784f3652b70454ee4911a1e8edf880a517269b61', "data-name": "sidebar-menu-item-label", class: "label z-10 truncate whitespace-nowrap" }, this.label))), h("slot", { key: '200f44341a9d2afcc62a07904186bb21a663a05b', name: "menu-item-actions" }), h("div", { key: '5d77e53d45216fd5d56612517097308d762a4024', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+    }
+    static get style() { return atSidebarMenuitemCss; }
+}, [260, "at-sidebar-menuitem", {
+        "label": [1],
+        "icon": [1],
+        "badge": [1],
+        "is_active": [1028]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-sidebar-menuitem", "at-badge"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-sidebar-menuitem":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtSidebarMenuitemComponent);
+            }
+            break;
+        case "at-badge":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
+
+export { AtSidebarMenuitemComponent as A, defineCustomElement as d };
+//# sourceMappingURL=p-C6E5N05w.js.map
+
+//# sourceMappingURL=p-C6E5N05w.js.map

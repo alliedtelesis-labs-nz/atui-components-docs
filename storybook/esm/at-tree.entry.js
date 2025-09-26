@@ -54,7 +54,7 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (h("div", { key: '8077e353c3d7af1ed3231212c3d8a9e96355f737', class: "w-full" }, h("slot", { key: 'd32dfa06ae986fe51328b526eea289ec0c7ec4e7' }), this.flattenedItemList &&
+        return (h("div", { key: '4d19857ccf55599959f314559fecd9bccf76f8fe', class: "w-full" }, h("slot", { key: '93db62a2489b02e6f4f922f90b77eb18373b432d' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

@@ -137,7 +137,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '26991c7429992112198c0ee790056d7afe4c766f', class: "ag-theme-material" });
+        return h(Host, { key: '6ae5a6d58ebaad724798e7d520a5eb2b8e653919', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {

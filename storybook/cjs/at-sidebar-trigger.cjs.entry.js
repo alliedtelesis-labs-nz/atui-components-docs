@@ -10,6 +10,10 @@ const AtSidebarTriggerComponent = class {
          * Size of the button
          */
         this.size = 'lg';
+        /**
+         * Theme of the button. Default secondary
+         */
+        this.type = 'secondary';
     }
     async updateIsOpen() {
         if (this.provider && typeof this.provider.getIsOpen === 'function') {
@@ -28,7 +32,7 @@ const AtSidebarTriggerComponent = class {
         await this.updateIsOpen();
     }
     render() {
-        return (index.h("at-button", { key: 'd6ceb638cd355e7c996b88e959d949473617bfae', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (index.h("at-button", { key: '38b0ab64d1815f3518135df67325ed53aa31bb6a', type: "secondaryText", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     get el() { return index.getElement(this); }
 };

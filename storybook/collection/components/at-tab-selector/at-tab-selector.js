@@ -95,7 +95,7 @@ export class AtTabSelector {
         }
     }
     render() {
-        return h(Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
+        return h(Host, { key: '2b71eff64cb07d464c7aa0abf9b15ecfdec7915a' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tab-selector"; }
     static get properties() {

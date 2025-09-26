@@ -1,0 +1,4 @@
+[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],
+at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label] {
+  font-weight: 400;
+}

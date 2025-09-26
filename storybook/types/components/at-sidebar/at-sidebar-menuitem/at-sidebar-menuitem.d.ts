@@ -16,7 +16,7 @@ export declare class AtSidebarMenuitemComponent {
      */
     badge?: string;
     /**
-     * Will change the styling of the menuitem when set
+     * Will change style to indicate menuitem is active when set
      */
     is_active?: boolean;
     render(): any;

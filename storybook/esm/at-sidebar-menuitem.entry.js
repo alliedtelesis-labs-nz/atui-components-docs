@@ -1,6 +1,8 @@
 import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
 import { c as classlist } from './classlist-Bfa-pAao.js';
 
+const atSidebarMenuitemCss = "[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label]{font-weight:400}";
+
 const variantsConfig = {
     variants: {
         active: {
@@ -22,7 +24,7 @@ const AtSidebarMenuitemComponent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        const getClassname = classlist('group text-button focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
+        const getClassname = classlist('group text-button focus-visible:ring-active-foreground/30 font-medium relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
         const classname = getClassname({
             active: this.is_active,
         });
@@ -30,9 +32,10 @@ const AtSidebarMenuitemComponent = class {
         const focusIndicatorClassname = getFocusIndicatorClassname({
             active: this.is_active,
         });
-        return (h(Host, { key: 'dfcdaa0f4dac1f49300324d53a4aa19cbde0b6bc', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname }, h("div", { key: 'e27686ec6c35b35b08bc30751975fb8fcb3e514f', class: "flex items-center gap-8 truncate" }, h("slot", { key: 'ca533ec09b00da17a677fbeba87262e8bc4ce051', name: "menu-item-label" }), this.badge && (h("at-badge", { key: '071b4190bcc92cc81b2683468ac73fce54960d4e', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: '89e4b93c849215e5eb0bc27baef6f07d913b6dfe', class: "material-icons text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (h("span", { key: '43e7f1e1acdffea38e7811f5dd85520601cf4c87', "data-name": "sidebar-menu-item-label", class: "z-10 truncate whitespace-nowrap" }, this.label))), h("slot", { key: '7569fb35c16ef003ae505a514913116768a27e5a', name: "menu-item-actions" }), h("div", { key: '0ce4a8ab63d68170440253d397d9427e7d928d56', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'dd7e094100f9664f7a1e0272799ab5f53b7a7f17', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname }, h("div", { key: 'fc2522342914429d0a514f5042170803934718d5', class: "flex items-center gap-8 truncate" }, h("slot", { key: '9489239b7629389c0a9c14f15efcf9e42b5f2b70', name: "menu-item-label" }), this.badge && (h("at-badge", { key: '995e55fa6f8060fbd28564e50b965735d23f0c0a', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: 'dc6e0e215ab7d3cc537e31f18c62e628b3a3f842', class: "material-icons text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (h("span", { key: '784f3652b70454ee4911a1e8edf880a517269b61', "data-name": "sidebar-menu-item-label", class: "label z-10 truncate whitespace-nowrap" }, this.label))), h("slot", { key: '200f44341a9d2afcc62a07904186bb21a663a05b', name: "menu-item-actions" }), h("div", { key: '5d77e53d45216fd5d56612517097308d762a4024', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
+AtSidebarMenuitemComponent.style = atSidebarMenuitemCss;
 
 export { AtSidebarMenuitemComponent as at_sidebar_menuitem };
 //# sourceMappingURL=at-sidebar-menuitem.entry.js.map

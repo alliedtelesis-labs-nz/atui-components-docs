@@ -106,7 +106,7 @@ export class AtButtonComponent {
          */
         this.submit = false;
         /**
-         * Styling of the button
+         * Theme of the button. Default primary
          */
         this.type = 'primary';
         /**
@@ -182,7 +182,7 @@ export class AtButtonComponent {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: '0f22a11b5885b940c59163a3320e7ea788c38c5b', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'f21401deec889ed2bca3a068ee6d9f9ec19f4e55', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '515e92529f374a8b639e80ede94ccab1512c16b5', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: 'e1b5c4dd4fa56048edabde33760fc0cc3670e751', name: "icon" }), this.icon && (h("span", { key: 'b068f16aa0fd587e7b14eababa320489d0220953', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'fe56570743dd6d42895a94f197f52308caeaa157', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f0c5bf836c91d4dd8b9d2645996338324d6994a2' }), h("slot", { key: '0344d7795fa5e8af20ccd5a51ca3b8a1468e4ea3', name: "icon_after" }), this.icon_after && (h("span", { key: 'a9ab30f90aa7e1c403c22c23250f1ba45dd7bf67', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: 'c5a4598afaa80c6a802eacaee3572b42326461f2', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'e6d81182d7c75e6abed8f87991363e8d2876558c', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '25a0e633a38e3fc6cc32b9532ada0e9fb1a1b553', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: 'd59bd6ff266f70080d87989daffe2b3b8a395707', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '2c1ec128747ab02f99764f4eb38b69939191e4c1', name: "icon" }), this.icon && (h("span", { key: '49497ae85f9a10fced0527f79761f09ed442b5c9', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: '62f742fcc716c146be829844f9b0804ea2eef511', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f1dcd11855595c11ea989d9ba9b55f83abe063d1' }), h("slot", { key: 'd87d6bf9e28ab638465ef80fb0ddd07a9c7063cf', name: "icon_after" }), this.icon_after && (h("span", { key: '95f94176783250225f2cae374c1e58b0988fd199', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '10d14c7f0a299c00410d9ad0320b9932be797a3e', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get is() { return "at-button"; }
     static get properties() {
@@ -226,7 +226,7 @@ export class AtButtonComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Styling of the button"
+                    "text": "Theme of the button. Default primary"
                 },
                 "getter": false,
                 "setter": false,

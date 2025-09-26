@@ -87,7 +87,7 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '2b71eff64cb07d464c7aa0abf9b15ecfdec7915a' }, this.checkLayoutAndRender());
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
