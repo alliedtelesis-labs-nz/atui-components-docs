@@ -32,7 +32,7 @@ export class AtSidebarTriggerComponent {
         await this.updateIsOpen();
     }
     render() {
-        return (h("at-button", { key: '38b0ab64d1815f3518135df67325ed53aa31bb6a', type: "secondaryText", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
+        return (h("at-button", { key: 'bb0f5a2001355e3fad0fdbed2a6a5630255f5d85', type: this.type, size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     static get is() { return "at-sidebar-trigger"; }
     static get properties() {

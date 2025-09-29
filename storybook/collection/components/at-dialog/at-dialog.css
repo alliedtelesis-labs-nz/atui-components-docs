@@ -1,3 +1,11 @@
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
 dialog.no-backdrop::backdrop {
   display: none;
 }
@@ -13,14 +21,6 @@ dialog.backdrop::backdrop {
   z-index: var(--z-backdrop, 1000);
 }
 
-@keyframes fadeIn {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-}
 .c-atui-dialog {
   position: fixed;
   inset: 0;

@@ -68,7 +68,7 @@ const AtTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: '2cd98d82fdc7640a21246ce513cbeb53bfe67683', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, index.h("a", { key: 'e3b89c615529f0c20afade56cd182a9233e49216', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: '458b761921ed1f17c3cf596cfef301c2a2bff8b9' }))));
+        return (index.h(index.Host, { key: 'a8fe5840ca492529c559443e69473a3fe8c6ab50', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, index.h("a", { key: '2ab06c53a9d8eb9114038bf90e13b4919c837c86', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: 'ab7e7503c65fd1ffbdd869dc17d6e314ae80d442' }))));
     }
 };
 

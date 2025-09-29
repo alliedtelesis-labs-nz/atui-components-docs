@@ -15,7 +15,7 @@ const buttonVariantsConfig = {
             primary: 'bg-active-foreground text-impact focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/90 group-focus:bg-active-foreground/80 focus-visible:ring-2',
             primaryOutline: 'border-primary-foreground text-active-foreground focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
             primaryText: 'text-active-foreground focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 bg-transparent focus-visible:ring-2',
-            secondary: 'text-impact focus-visible:ring-active-foreground/30 bg-slate-600 group-hover:bg-slate-700 group-focus:bg-slate-800 focus-visible:ring-2',
+            secondary: 'text-impact focus-visible:ring-active-foreground/30 bg-secondary group-hover:bg-slate-700 group-focus:bg-slate-800 focus-visible:ring-2',
             secondaryOutline: 'border-dark text-foreground focus-visible:ring-active-foreground/30 border border-solid bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
             secondaryText: 'text-foreground focus-visible:ring-active-foreground/30 bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
             destructive: 'bg-destructive-foreground text-impact focus-visible:ring-active-foreground/30 group-hover:bg-destructive-foreground/90 group-focus:bg-destructive-foreground/80 focus-visible:ring-2',
@@ -148,6 +148,9 @@ export class AtButtonComponent {
         }
     }
     handleClick(event) {
+        if (this.disabled) {
+            return;
+        }
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-button',
@@ -157,6 +160,9 @@ export class AtButtonComponent {
         }
     }
     handleKeyDown(event) {
+        if (this.disabled) {
+            return;
+        }
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
             this.atuiClick.emit({
@@ -182,7 +188,7 @@ export class AtButtonComponent {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: 'e6d81182d7c75e6abed8f87991363e8d2876558c', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '25a0e633a38e3fc6cc32b9532ada0e9fb1a1b553', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: 'd59bd6ff266f70080d87989daffe2b3b8a395707', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '2c1ec128747ab02f99764f4eb38b69939191e4c1', name: "icon" }), this.icon && (h("span", { key: '49497ae85f9a10fced0527f79761f09ed442b5c9', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: '62f742fcc716c146be829844f9b0804ea2eef511', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f1dcd11855595c11ea989d9ba9b55f83abe063d1' }), h("slot", { key: 'd87d6bf9e28ab638465ef80fb0ddd07a9c7063cf', name: "icon_after" }), this.icon_after && (h("span", { key: '95f94176783250225f2cae374c1e58b0988fd199', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '10d14c7f0a299c00410d9ad0320b9932be797a3e', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'af460532aa993f54e957af3d1d4572f1af6c91d2', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'ab4a6dade60b9e8e50da04ad6d4b1b4a67911a5e', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '09e2a27766ee4ff176d993c443d4e0505c42662e', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '51d2a1fb06a90647e0297532b1783ceb931a81b5', name: "icon" }), this.icon && (h("span", { key: 'faa1c96f934937e8424a8f0d364fb69e81ab533a', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'f6dab556f201e35766c9d680dccef7cf105e9894', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '60efc897fa8844682134e7ca46cfe7d8daa936ec' }), h("slot", { key: '23353cc2e8fd245c6c09e72a3d0cd69f6f9eacd2', name: "icon_after" }), this.icon_after && (h("span", { key: '3e1548a0ca68cb53b8d7d5068c21f4081a8c31b7', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '5baf79305fd68651bfa34bddc65a45d909e872c1', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get is() { return "at-button"; }
     static get properties() {

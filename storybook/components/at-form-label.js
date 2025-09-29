@@ -1,4 +1,4 @@
-import { A as AtFormLabelComponent, d as defineCustomElement$1 } from './p-CdWdq1MG.js';
+import { A as AtFormLabelComponent, d as defineCustomElement$1 } from './p-DUaiIRm3.js';
 
 const AtFormLabel = AtFormLabelComponent;
 const defineCustomElement = defineCustomElement$1;

@@ -19,5 +19,7 @@ export declare class AtSidebarMenuitemComponent {
      * Will change style to indicate menuitem is active when set
      */
     is_active?: boolean;
+    el: HTMLAtSidebarMenuitemElement;
+    private handleKeyDown;
     render(): any;
 }

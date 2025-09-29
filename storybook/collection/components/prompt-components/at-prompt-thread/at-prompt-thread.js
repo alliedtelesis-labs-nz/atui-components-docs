@@ -150,7 +150,7 @@ export class AtPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '7ece58018fe242e655ec711188baec8ac8828dc6', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '4189692590f0fb0640212dbb832b26068ebb49c5', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'b470446c9250f7c627124701c86f0279b54729a0', name: "thread-messages" }))));
+        return (h(Host, { key: 'fd20b5a52e7b5df840c60acd2006c48cefd34654', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'be6df124612b52017491a1c975b2551743257c77', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '8597727b09a73704809edc1ce0c55f1b6f34267d', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {

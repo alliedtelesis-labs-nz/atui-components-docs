@@ -5,7 +5,7 @@ const AtSidebarMenuComponent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '6d49e371a3b880d91501733c83d9a8e41e2528b8', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '6c4728dc21a3690c4e5fb7307050e003254c5c66' })));
+        return (h(Host, { key: 'ba139fe92061da41c3e199c0173b5a869fff1435', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '391ff827a2fd52fe9001c6b1fb584c7adff8438d' })));
     }
 };
 

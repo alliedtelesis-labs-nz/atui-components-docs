@@ -1,18 +1,4 @@
 import { h, Host, } from "@stencil/core";
-import { classlist } from "../../utils/classlist";
-const variantsConfig = {
-    variants: {
-        collapsible: {
-            none: null,
-            icon: 'group-data-[state=collapsed]/sidebar-wrapper:w-sidebar-collapsed',
-            offcanvas: 'group-data-[state=collapsed]/sidebar-wrapper:w-0',
-        },
-        side: {
-            left: null,
-            right: 'order-1',
-        },
-    },
-};
 /**
  * @category Navigation
  * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
@@ -36,10 +22,23 @@ export class AtSidebarComponent {
          */
         this.collapsible = 'icon';
         /**
+         * How the sidenav interacts with main content when open
+         */
+        this.mode = 'push';
+        /**
+         * Display a clickable backdrop when mode = over
+         */
+        this.backdrop = false;
+        /**
          * Opens the sidebar by default when set
          */
-        this.default_open = true;
+        this.default_open = false;
         this.isOpen = false;
+        this.handleBackdropClick = () => {
+            if (this.mode === 'over' && this.isOpen) {
+                this.toggleSidebar();
+            }
+        };
     }
     componentWillLoad() {
         if (this.default_open !== undefined) {
@@ -62,13 +61,10 @@ export class AtSidebarComponent {
         return this.isOpen;
     }
     render() {
-        const getClassname = classlist(``, variantsConfig);
-        const classname = getClassname({
-            collapsible: this.collapsible,
-            side: this.side,
-        });
-        return (h(Host, { key: '97cea839494f075f729a87f123e11f22b6ad719d', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-hidden" }, h("nav", { key: '2bd995a48d23148f1b40540e72d948cdf21b563d', "data-name": "sidebar-nav", class: `bg-sidebar-background text-sidebar-foreground relative z-20 flex h-screen flex-col overflow-y-auto transition-[width] duration-300 ease-in-out w-${this.width} ` +
-                classname }, h("slot", { key: '98afc7259297af216d366ceacd4ee0ccb57faad7', name: "sidebar-header" }), h("div", { key: '8b6f271abc907f030cef2354d153e4bc1613b5f9', class: "align-items oveflow-y-auto flex flex-1 flex-col p-8" }, h("slot", { key: '0a4666be4f90e81d662b80ae305ac289ae218187', name: "sidebar-content" })), h("div", { key: '02a7ed39ad7a24609abd81bc0ff3cfbb79c9e0d8', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '66b6a473be5d3ea9e225e1c39f71d7d3d47d5861', name: "sidebar-footer" }))), h("div", { key: '726e2837a206e02d75449cb55757821c50e36a6c', class: "flex w-full overflow-auto" }, h("slot", { key: 'ec0b05314038c13ef16982b58e8be8323bd845eb', name: "page-content" }))));
+        const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
+        return (h(Host, { key: '24fadf3eb08708fc8b54687a6a3f3ef170f40699', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side}` }, isModalOverlay && (h("div", { key: '2e09eac70082f414d594beae024ee3d4e137ff3f', class: "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '0b7170c4a74d797c0038fb336fb589a275b85436', "data-name": "sidebar-nav", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+                ? 'true'
+                : 'false', class: `nav collapse-${this.collapsible}` }, h("slot", { key: '1c56f379926d2568465fa850661cb43d84574448', name: "sidebar-header" }), h("div", { key: '1d861b409b51a6e5a9ffd9fcb0b263116b522a64', class: "nav-content" }, h("slot", { key: 'd4bf2fd0634bf0a5077017dba12c1b9a65e736fd', name: "sidebar-content" })), h("div", { key: '1c7d8bd84548ab98fad465645e5b05ba5caef3a4', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '3f1c9506e998cf0cd7f17560c11011c81637f741', name: "sidebar-footer" }))), h("div", { key: 'c84c512008a7d89924b4fee3a78f9d086118cc17', class: "content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '933226f13fc7f3e837283f84d7f02afb09fa7465', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
     static get originalStyleUrls() {
@@ -161,6 +157,52 @@ export class AtSidebarComponent {
                 "reflect": false,
                 "defaultValue": "'icon'"
             },
+            "mode": {
+                "type": "string",
+                "attribute": "mode",
+                "mutable": false,
+                "complexType": {
+                    "original": "Mode",
+                    "resolved": "\"over\" | \"push\"",
+                    "references": {
+                        "Mode": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
+                            "id": "src/components/at-sidebar/at-sidebar.tsx::Mode"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "How the sidenav interacts with main content when open"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'push'"
+            },
+            "backdrop": {
+                "type": "boolean",
+                "attribute": "backdrop",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Display a clickable backdrop when mode = over"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "false"
+            },
             "default_open": {
                 "type": "boolean",
                 "attribute": "default_open",
@@ -179,7 +221,7 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "true"
+                "defaultValue": "false"
             }
         };
     }

@@ -1,6 +1,7 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type Side = 'left' | 'right';
 export type Collapsible = 'offcanvas' | 'icon' | 'none';
+export type Mode = 'over' | 'push';
 export type Width = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
 /**
  * @category Navigation
@@ -24,6 +25,14 @@ export declare class AtSidebarComponent {
      */
     collapsible: Collapsible;
     /**
+     * How the sidenav interacts with main content when open
+     */
+    mode: Mode;
+    /**
+     * Display a clickable backdrop when mode = over
+     */
+    backdrop: boolean;
+    /**
      * Opens the sidebar by default when set
      */
     default_open?: boolean;
@@ -42,5 +51,6 @@ export declare class AtSidebarComponent {
      * @returns The current open state of the sidebar
      */
     getIsOpen(): Promise<boolean>;
+    private handleBackdropClick;
     render(): any;
 }

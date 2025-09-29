@@ -1,4 +1,4 @@
-import { A as AtTextBadgeCell$1, d as defineCustomElement$1 } from './p-eN4uN5p2.js';
+import { A as AtTextBadgeCell$1, d as defineCustomElement$1 } from './p-DYK87TR1.js';
 
 const AtTextBadgeCell = AtTextBadgeCell$1;
 const defineCustomElement = defineCustomElement$1;

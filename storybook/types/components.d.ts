@@ -32,7 +32,7 @@ import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-import { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
+import { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
 import { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
@@ -73,7 +73,7 @@ export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-export { Collapsible, Side, Width } from "./components/at-sidebar/at-sidebar";
+export { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
 export { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
@@ -2003,13 +2003,18 @@ export namespace Components {
      */
     interface AtSidebar {
         /**
+          * Display a clickable backdrop when mode = over
+          * @default false
+         */
+        "backdrop": boolean;
+        /**
           * Size of the sidebar when collapsed.
           * @default 'icon'
          */
         "collapsible": Collapsible;
         /**
           * Opens the sidebar by default when set
-          * @default true
+          * @default false
          */
         "default_open"?: boolean;
         /**
@@ -2017,6 +2022,11 @@ export namespace Components {
           * @returns The current open state of the sidebar
          */
         "getIsOpen": () => Promise<boolean>;
+        /**
+          * How the sidenav interacts with main content when open
+          * @default 'push'
+         */
+        "mode": Mode;
         /**
           * Position of the sidebar on the page
           * @default 'left'
@@ -6236,15 +6246,25 @@ declare namespace LocalJSX {
      */
     interface AtSidebar {
         /**
+          * Display a clickable backdrop when mode = over
+          * @default false
+         */
+        "backdrop"?: boolean;
+        /**
           * Size of the sidebar when collapsed.
           * @default 'icon'
          */
         "collapsible"?: Collapsible;
         /**
           * Opens the sidebar by default when set
-          * @default true
+          * @default false
          */
         "default_open"?: boolean;
+        /**
+          * How the sidenav interacts with main content when open
+          * @default 'push'
+         */
+        "mode"?: Mode;
         /**
           * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
          */
