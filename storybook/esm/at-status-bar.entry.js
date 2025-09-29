@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -28,6 +28,4 @@ const AtStatusBar = class {
 };
 
 export { AtStatusBar as at_status_bar };
-//# sourceMappingURL=at-status-bar.entry.js.map
-
 //# sourceMappingURL=at-status-bar.entry.js.map

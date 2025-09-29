@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {
@@ -35,6 +35,4 @@ const AtCheckboxCellComponent = class {
 };
 
 export { AtCheckboxCellComponent as at_checkbox_cell };
-//# sourceMappingURL=at-checkbox-cell.entry.js.map
-
 //# sourceMappingURL=at-checkbox-cell.entry.js.map

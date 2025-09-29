@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { c as classlist } from './classlist-DowIpD9s.js';
 
 const atSidebarMenuitemCss = "[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label]{font-weight:400}";
 
@@ -45,6 +45,4 @@ const AtSidebarMenuitemComponent = class {
 AtSidebarMenuitemComponent.style = atSidebarMenuitemCss;
 
 export { AtSidebarMenuitemComponent as at_sidebar_menuitem };
-//# sourceMappingURL=at-sidebar-menuitem.entry.js.map
-
 //# sourceMappingURL=at-sidebar-menuitem.entry.js.map

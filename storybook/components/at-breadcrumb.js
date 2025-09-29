@@ -1,10 +1,12 @@
-import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$2 } from './p-BmMSxK_W.js';
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-Bx9nFool.js';
+import { d as defineCustomElement$2 } from './p-BdzsEk-c.js';
 
 const AtBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtBreadcrumbComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiClick = createEvent(this, "atuiClick", 7);
         /**
          * Function to get the prefix for breadcrumbs.

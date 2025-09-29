@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtFormLabelComponent = class {
@@ -306,5 +306,3 @@ const AtTooltip = class {
 exports.at_form_label = AtFormLabelComponent;
 exports.at_tooltip = AtTooltip;
 //# sourceMappingURL=at-form-label.at-tooltip.entry.cjs.js.map
-
-//# sourceMappingURL=at-form-label_2.cjs.entry.js.map

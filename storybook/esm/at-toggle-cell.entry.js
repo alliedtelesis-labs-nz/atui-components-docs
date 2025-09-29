@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtToggleCell = class {
     constructor(hostRef) {
@@ -46,6 +46,4 @@ const AtToggleCell = class {
 };
 
 export { AtToggleCell as at_toggle_cell };
-//# sourceMappingURL=at-toggle-cell.entry.js.map
-
 //# sourceMappingURL=at-toggle-cell.entry.js.map

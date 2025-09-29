@@ -1,17 +1,19 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$8 } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$7 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$6 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$5 } from './p-D2YPYvPf.js';
-import { d as defineCustomElement$4 } from './p-D59mlF0L.js';
-import { d as defineCustomElement$3 } from './p-owoOk14V.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { d as defineCustomElement$8 } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$7 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$6 } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$5 } from './p-C5bKrspa.js';
+import { d as defineCustomElement$4 } from './p-OPP0lD1u.js';
+import { d as defineCustomElement$3 } from './p-N65Oby0l.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atSubmit = createEvent(this, "atSubmit", 7);
         this.atStop = createEvent(this, "atStop", 7);
         this.atNewThread = createEvent(this, "atNewThread", 7);

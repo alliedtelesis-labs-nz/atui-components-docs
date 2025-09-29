@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtAccordionItemComponent = class {
     constructor(hostRef) {
@@ -70,5 +70,3 @@ const AtAccordionTriggerComponent = class {
 
 export { AtAccordionItemComponent as at_accordion_item, AtAccordionTriggerComponent as at_accordion_trigger };
 //# sourceMappingURL=at-accordion-item.at-accordion-trigger.entry.js.map
-
-//# sourceMappingURL=at-accordion-item_2.entry.js.map

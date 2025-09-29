@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtMenuCell = class {
     constructor(hostRef) {
@@ -41,6 +41,4 @@ const AtMenuCell = class {
 };
 
 export { AtMenuCell as at_menu_cell };
-//# sourceMappingURL=at-menu-cell.entry.js.map
-
 //# sourceMappingURL=at-menu-cell.entry.js.map

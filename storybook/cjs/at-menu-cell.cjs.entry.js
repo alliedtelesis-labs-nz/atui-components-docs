@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtMenuCell = class {
     constructor(hostRef) {
@@ -44,5 +44,3 @@ const AtMenuCell = class {
 
 exports.at_menu_cell = AtMenuCell;
 //# sourceMappingURL=at-menu-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-menu-cell.cjs.entry.js.map

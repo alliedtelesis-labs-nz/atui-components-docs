@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
 import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color--d9I1YXP.js';
 import { T as TimeDateUtil } from './time-date.util-DLaek6ce.js';
 import './moment-BMuAbjcg.js';
@@ -179,6 +179,4 @@ const AtChartBarLine = class {
 };
 
 export { AtChartBarLine as at_chart_bar_line };
-//# sourceMappingURL=at-chart-bar-line.entry.js.map
-
 //# sourceMappingURL=at-chart-bar-line.entry.js.map

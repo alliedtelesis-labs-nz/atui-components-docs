@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearchTable = class {
@@ -278,5 +278,3 @@ const AtSearchTable = class {
 
 exports.at_search_table = AtSearchTable;
 //# sourceMappingURL=at-search-table.entry.cjs.js.map
-
-//# sourceMappingURL=at-search-table.cjs.entry.js.map

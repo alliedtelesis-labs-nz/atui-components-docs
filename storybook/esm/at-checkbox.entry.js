@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { c as classlist } from './classlist-DowIpD9s.js';
 
 const variants = classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2', {
     variants: {
@@ -51,6 +51,4 @@ const AtCheckbox = class {
 };
 
 export { AtCheckbox as at_checkbox };
-//# sourceMappingURL=at-checkbox.entry.js.map
-
 //# sourceMappingURL=at-checkbox.entry.js.map

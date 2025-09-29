@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtPromptContainer = class {
@@ -182,5 +182,3 @@ const AtPromptContainer = class {
 
 exports.at_prompt_container = AtPromptContainer;
 //# sourceMappingURL=at-prompt-container.entry.cjs.js.map
-
-//# sourceMappingURL=at-prompt-container.cjs.entry.js.map

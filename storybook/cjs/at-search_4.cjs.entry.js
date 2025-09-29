@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearch = class {
@@ -125,5 +125,3 @@ exports.at_table_export_menu = AtTableExportMenu;
 exports.at_table_filter_menu = AtTableFilterMenu;
 exports.at_table_filters = AtTableFilters;
 //# sourceMappingURL=at-search.at-table-export-menu.at-table-filter-menu.at-table-filters.entry.cjs.js.map
-
-//# sourceMappingURL=at-search_4.cjs.entry.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtHeader = class {
     constructor(hostRef) {
@@ -32,5 +32,3 @@ const AtHeader = class {
 
 exports.at_header = AtHeader;
 //# sourceMappingURL=at-header.entry.cjs.js.map
-
-//# sourceMappingURL=at-header.cjs.entry.js.map

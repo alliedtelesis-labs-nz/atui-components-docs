@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtPromptContainer = class {
@@ -179,6 +179,4 @@ const AtPromptContainer = class {
 };
 
 export { AtPromptContainer as at_prompt_container };
-//# sourceMappingURL=at-prompt-container.entry.js.map
-
 //# sourceMappingURL=at-prompt-container.entry.js.map

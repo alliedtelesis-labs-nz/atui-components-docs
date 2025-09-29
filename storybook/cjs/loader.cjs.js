@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
 const defineCustomElements = async (win, options) => {
@@ -11,6 +11,4 @@ const defineCustomElements = async (win, options) => {
 
 exports.setNonce = index.setNonce;
 exports.defineCustomElements = defineCustomElements;
-//# sourceMappingURL=loader.cjs.js.map
-
 //# sourceMappingURL=loader.cjs.js.map

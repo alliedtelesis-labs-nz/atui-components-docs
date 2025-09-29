@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtMenu = class {
@@ -363,6 +363,4 @@ const AtMenu = class {
 };
 
 export { AtMenu as at_menu };
-//# sourceMappingURL=at-menu.entry.js.map
-
 //# sourceMappingURL=at-menu.entry.js.map

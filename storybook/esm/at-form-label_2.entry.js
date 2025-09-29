@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtFormLabelComponent = class {
@@ -303,5 +303,3 @@ const AtTooltip = class {
 
 export { AtFormLabelComponent as at_form_label, AtTooltip as at_tooltip };
 //# sourceMappingURL=at-form-label.at-tooltip.entry.js.map
-
-//# sourceMappingURL=at-form-label_2.entry.js.map

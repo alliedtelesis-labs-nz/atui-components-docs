@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtChipList = class {
     constructor(hostRef) {
@@ -50,5 +50,3 @@ const AtChipList = class {
 
 exports.at_chip_list = AtChipList;
 //# sourceMappingURL=at-chip-list.entry.cjs.js.map
-
-//# sourceMappingURL=at-chip-list.cjs.entry.js.map

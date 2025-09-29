@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const variantsConfig = {
     variants: {
@@ -44,5 +44,3 @@ const AtMenuitemComponent = class {
 
 exports.at_menu_item = AtMenuitemComponent;
 //# sourceMappingURL=at-menu-item.entry.cjs.js.map
-
-//# sourceMappingURL=at-menu-item.cjs.entry.js.map

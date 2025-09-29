@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var translation = require('./translation-HqquF7bU.js');
-var classlist = require('./classlist-BddvonaD.js');
+var classlist = require('./classlist-OJYetzVw.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
 const inputVariantsConfig = {
@@ -171,5 +171,3 @@ const AtSelectComponent = class {
 
 exports.at_select = AtSelectComponent;
 //# sourceMappingURL=at-select.entry.cjs.js.map
-
-//# sourceMappingURL=at-select.cjs.entry.js.map

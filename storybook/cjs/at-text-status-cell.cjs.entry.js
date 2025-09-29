@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTextStatusCellComponent = class {
     constructor(hostRef) {
@@ -45,5 +45,3 @@ const AtTextStatusCellComponent = class {
 
 exports.at_text_status_cell = AtTextStatusCellComponent;
 //# sourceMappingURL=at-text-status-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-text-status-cell.cjs.entry.js.map

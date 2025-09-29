@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, g as getElement } from './index-BlNBm0E8.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -39,6 +39,4 @@ const AtTabContent = class {
 };
 
 export { AtTabContent as at_tab_content };
-//# sourceMappingURL=at-tab-content.entry.js.map
-
 //# sourceMappingURL=at-tab-content.entry.js.map

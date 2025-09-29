@@ -1,11 +1,13 @@
-import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$3 } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$2 } from './p-pDYyfeah.js';
+import { p as proxyCustomElement, H, h } from './p-Bx9nFool.js';
+import { d as defineCustomElement$3 } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$2 } from './p-Cf5bpagt.js';
 
 const AtSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarTriggerComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.isOpen = false;
         /**
          * Size of the button

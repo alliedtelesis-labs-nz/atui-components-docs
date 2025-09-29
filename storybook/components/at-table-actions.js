@@ -1,4 +1,4 @@
-import { A as AtTableActionsComponent, d as defineCustomElement$1 } from './p-CyYS0Qbs.js';
+import { A as AtTableActionsComponent, d as defineCustomElement$1 } from './p-C977_r-m.js';
 
 const AtTableActions = AtTableActionsComponent;
 const defineCustomElement = defineCustomElement$1;

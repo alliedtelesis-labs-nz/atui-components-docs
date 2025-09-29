@@ -1,11 +1,13 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$3 } from './p-DYG46fqd.js';
-import { d as defineCustomElement$2 } from './p-DvENVlhs.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$3 } from './p-B_VIIa3f.js';
+import { d as defineCustomElement$2 } from './p-Cg8CAO2B.js';
 
 const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * List of tabs the selector will have

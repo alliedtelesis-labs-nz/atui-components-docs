@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$2 } from './p-ZP8fFsoE.js';
+import { p as proxyCustomElement, H, h } from './p-Bx9nFool.js';
+import { d as defineCustomElement$2 } from './p-szMSzLAj.js';
 
 const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.no-backdrop::backdrop{display:none}dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}";
 
@@ -27,9 +27,11 @@ const sizeVariants = {
     },
 };
 const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Size of the size panel
          */

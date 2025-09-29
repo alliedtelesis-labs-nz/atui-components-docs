@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h } from './index-BlNBm0E8.js';
 
 const AtTreeComponent = class {
     constructor(hostRef) {
@@ -65,6 +65,4 @@ const AtTreeComponent = class {
 };
 
 export { AtTreeComponent as at_tree };
-//# sourceMappingURL=at-tree.entry.js.map
-
 //# sourceMappingURL=at-tree.entry.js.map

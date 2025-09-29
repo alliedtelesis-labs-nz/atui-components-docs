@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -39,5 +39,3 @@ const AtSidebarTriggerComponent = class {
 
 exports.at_sidebar_trigger = AtSidebarTriggerComponent;
 //# sourceMappingURL=at-sidebar-trigger.entry.cjs.js.map
-
-//# sourceMappingURL=at-sidebar-trigger.cjs.entry.js.map

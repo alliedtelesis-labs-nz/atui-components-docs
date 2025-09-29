@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h } from './index-BlNBm0E8.js';
 
 const AtChipList = class {
     constructor(hostRef) {
@@ -47,6 +47,4 @@ const AtChipList = class {
 };
 
 export { AtChipList as at_chip_list };
-//# sourceMappingURL=at-chip-list.entry.js.map
-
 //# sourceMappingURL=at-chip-list.entry.js.map

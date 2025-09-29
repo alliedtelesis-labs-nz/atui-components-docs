@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
@@ -28,6 +28,4 @@ const AtColorStatusCell = class {
 };
 
 export { AtColorStatusCell as at_color_status_cell };
-//# sourceMappingURL=at-color-status-cell.entry.js.map
-
 //# sourceMappingURL=at-color-status-cell.entry.js.map

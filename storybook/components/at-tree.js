@@ -1,11 +1,13 @@
-import { p as proxyCustomElement, H, d as createEvent, h } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$3 } from './p-BNT2yQBz.js';
-import { d as defineCustomElement$2 } from './p-BwkFYPKk.js';
+import { p as proxyCustomElement, H, d as createEvent, h } from './p-Bx9nFool.js';
+import { d as defineCustomElement$3 } from './p-BQo85g_v.js';
+import { d as defineCustomElement$2 } from './p-hOAoizip.js';
 
 const AtTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtTreeComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiClick = createEvent(this, "atuiClick", 7);
         /**
          * Set the size of the tree button, default sm

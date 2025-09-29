@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',
@@ -30,5 +30,3 @@ const AtListItem = class {
 
 exports.at_list_item = AtListItem;
 //# sourceMappingURL=at-list-item.entry.cjs.js.map
-
-//# sourceMappingURL=at-list-item.cjs.entry.js.map

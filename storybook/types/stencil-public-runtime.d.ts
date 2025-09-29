@@ -1,4 +1,5 @@
 declare type CustomMethodDecorator<T> = (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
+type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (x: infer I) => void ? I : never;
 export interface ComponentDecorator {
     (opts?: ComponentOptions): ClassDecorator;
 }
@@ -349,6 +350,28 @@ export declare function readTask(task: RafCallback): void;
  * Unhandled exception raised while rendering, during event handling, or lifecycles will trigger the custom event handler.
  */
 export declare const setErrorHandler: (handler: ErrorHandler) => void;
+export type MixinFactory = <TBase extends new (...args: any[]) => any>(base: TBase) => abstract new (...args: ConstructorParameters<TBase>) => any;
+/**
+ * Compose multiple mixin classes into a single constructor.
+ * The resulting class has the combined instance types of all mixed-in classes.
+ *
+ * Example:
+ * ```
+ * import { Mixin, MixinFactory } from '@stencil/core';
+ *
+ * const AWrap: MixinFactory = (Base) => {class A extends Base { propA = A }; return A;}
+ * const BWrap: MixinFactory = (Base) => {class B extends Base { propB = B }; return B;}
+ * const CWrap: MixinFactory = (Base) => {class C extends Base { propC = C }; return C;}
+ *
+ * class X extends Mixin(AWrap, BWrap, CWrap) {
+ *   render() { return <div>{this.propA} {this.propB} {this.propC}</div>; }
+ * }
+ * ```
+ *
+ * @param mixinFactories mixin factory functions that return a class which extends from the provided class.
+ * @returns a class that that is composed from extending each of the provided classes in the order they were provided.
+ */
+export declare function Mixin<TMixins extends readonly MixinFactory[]>(...mixinFactories: TMixins): abstract new (...args: any[]) => UnionToIntersection<InstanceType<ReturnType<TMixins[number]>>>;
 /**
  * This file gets copied to all distributions of stencil component collections.
  * - no imports

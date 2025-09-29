@@ -1,25 +1,27 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$g } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$f } from './p-Df2_temq.js';
-import { d as defineCustomElement$e } from './p-Cj1J0V_y.js';
-import { d as defineCustomElement$d } from './p-BtmfB7Vj.js';
-import { d as defineCustomElement$c } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$b } from './p-Euzkpg0E.js';
-import { d as defineCustomElement$a } from './p-pDYyfeah.js';
-import { d as defineCustomElement$9 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$8 } from './p-BTvri-B9.js';
-import { d as defineCustomElement$7 } from './p-fCBJHWXE.js';
-import { d as defineCustomElement$6 } from './p-CyYS0Qbs.js';
-import { d as defineCustomElement$5 } from './p-hMWfFjNp.js';
-import { d as defineCustomElement$4 } from './p-CKNTMUl9.js';
-import { d as defineCustomElement$3 } from './p-B7_AmDwS.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { d as defineCustomElement$g } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$f } from './p-eHfVgeIr.js';
+import { d as defineCustomElement$e } from './p-B-4g9i0U.js';
+import { d as defineCustomElement$d } from './p-BG0_55e2.js';
+import { d as defineCustomElement$c } from './p-IkAgp4un.js';
+import { d as defineCustomElement$b } from './p-CUVypgz_.js';
+import { d as defineCustomElement$a } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$9 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$8 } from './p-_Yxn_7Dg.js';
+import { d as defineCustomElement$7 } from './p-B42W5ska.js';
+import { d as defineCustomElement$6 } from './p-C977_r-m.js';
+import { d as defineCustomElement$5 } from './p-BoYQVBTu.js';
+import { d as defineCustomElement$4 } from './p-57wfuEac.js';
+import { d as defineCustomElement$3 } from './p-B3Lia15R.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Column definitions passed to at-table component.
          */

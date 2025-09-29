@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -40,6 +40,4 @@ const AtTitleSubtitleCell = class {
 };
 
 export { AtTitleSubtitleCell as at_title_subtitle_cell };
-//# sourceMappingURL=at-title-subtitle-cell.entry.js.map
-
 //# sourceMappingURL=at-title-subtitle-cell.entry.js.map

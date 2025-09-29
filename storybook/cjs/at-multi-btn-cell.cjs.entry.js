@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtMultiBtnCell = class {
     constructor(hostRef) {
@@ -39,5 +39,3 @@ const AtMultiBtnCell = class {
 
 exports.at_multi_btn_cell = AtMultiBtnCell;
 //# sourceMappingURL=at-multi-btn-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-multi-btn-cell.cjs.entry.js.map

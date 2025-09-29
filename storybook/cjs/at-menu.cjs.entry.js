@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtMenu = class {
@@ -366,5 +366,3 @@ const AtMenu = class {
 
 exports.at_menu = AtMenu;
 //# sourceMappingURL=at-menu.entry.cjs.js.map
-
-//# sourceMappingURL=at-menu.cjs.entry.js.map

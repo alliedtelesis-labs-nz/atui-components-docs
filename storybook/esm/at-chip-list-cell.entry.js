@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtChipListCell = class {
     constructor(hostRef) {
@@ -23,6 +23,4 @@ const AtChipListCell = class {
 };
 
 export { AtChipListCell as at_chip_list_cell };
-//# sourceMappingURL=at-chip-list-cell.entry.js.map
-
 //# sourceMappingURL=at-chip-list-cell.entry.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtSrcDestComponent = class {
     constructor(hostRef) {
@@ -17,5 +17,3 @@ const AtSrcDestComponent = class {
 
 exports.at_src_dest = AtSrcDestComponent;
 //# sourceMappingURL=at-src-dest.entry.cjs.js.map
-
-//# sourceMappingURL=at-src-dest.cjs.entry.js.map

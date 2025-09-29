@@ -1,9 +1,11 @@
-import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h } from './p-Bx9nFool.js';
 
 const AtTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtTabContent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Determines if the tab content is active
          */

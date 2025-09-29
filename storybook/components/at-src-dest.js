@@ -1,9 +1,11 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
 
 const AtSrcDestComponent = /*@__PURE__*/ proxyCustomElement(class AtSrcDestComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Aligns the content to the left or center of the container
          */

@@ -1,11 +1,13 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$3 } from './p-2_xEzlfW.js';
-import { d as defineCustomElement$2 } from './p-Jpa-oIRC.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$3 } from './p-BwOU2faU.js';
+import { d as defineCustomElement$2 } from './p-yFLsD4Rx.js';
 
 const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Used to create accordion items.
          */

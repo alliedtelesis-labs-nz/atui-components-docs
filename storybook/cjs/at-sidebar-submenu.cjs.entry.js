@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtSidebarSubmenuComponent = class {
     constructor(hostRef) {
@@ -52,5 +52,3 @@ const AtSidebarSubmenuComponent = class {
 
 exports.at_sidebar_submenu = AtSidebarSubmenuComponent;
 //# sourceMappingURL=at-sidebar-submenu.entry.cjs.js.map
-
-//# sourceMappingURL=at-sidebar-submenu.cjs.entry.js.map

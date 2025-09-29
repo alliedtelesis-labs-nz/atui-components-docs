@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtTextCellComponent = class {
     constructor(hostRef) {
@@ -62,6 +62,4 @@ const AtTextCellComponent = class {
 };
 
 export { AtTextCellComponent as at_text_cell };
-//# sourceMappingURL=at-text-cell.entry.js.map
-
 //# sourceMappingURL=at-text-cell.entry.js.map

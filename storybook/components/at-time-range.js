@@ -1,19 +1,19 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
 import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-BI7XO4bL.js';
 import { h as hooks } from './p-BMuAbjcg.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$d } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$c } from './p-DxtTjg-V.js';
-import { d as defineCustomElement$b } from './p-C-N_4Z35.js';
-import { d as defineCustomElement$a } from './p-BZRe3SEF.js';
-import { d as defineCustomElement$9 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$8 } from './p-BxpMfgIb.js';
-import { d as defineCustomElement$7 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$6 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$5 } from './p-w8B7AqwF.js';
-import { d as defineCustomElement$4 } from './p-H68c9gyS.js';
-import { d as defineCustomElement$3 } from './p-BMrwxCv3.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { d as defineCustomElement$d } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$c } from './p-BaS_z50J.js';
+import { d as defineCustomElement$b } from './p-BJJVVx6R.js';
+import { d as defineCustomElement$a } from './p-CEYXprDL.js';
+import { d as defineCustomElement$9 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$8 } from './p-B6tQblYe.js';
+import { d as defineCustomElement$7 } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$6 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$5 } from './p-DeoDtO0C.js';
+import { d as defineCustomElement$4 } from './p-DIhEiT0O.js';
+import { d as defineCustomElement$3 } from './p-BqWEBDII.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './p-DJyIoUiL.js';
 
 var AbreviatedTimeUnits;
@@ -38,9 +38,11 @@ var FullTimeUnits;
 })(FullTimeUnits || (FullTimeUnits = {}));
 
 const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * Selected time range.

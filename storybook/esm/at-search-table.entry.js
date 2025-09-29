@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtSearchTable = class {
@@ -275,6 +275,4 @@ const AtSearchTable = class {
 };
 
 export { AtSearchTable as at_search_table };
-//# sourceMappingURL=at-search-table.entry.js.map
-
 //# sourceMappingURL=at-search-table.entry.js.map

@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { c as classlist } from './p-Bfa-pAao.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { c as classlist } from './p-DowIpD9s.js';
 
 const containerVariantsConfig = {
     variants: {
@@ -39,9 +39,11 @@ const footerVariantsConfig = {
     },
 };
 const AtCardComponent = /*@__PURE__*/ proxyCustomElement(class AtCardComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Enables overflow on the content area. If false overflow will be applied on the host.
          */

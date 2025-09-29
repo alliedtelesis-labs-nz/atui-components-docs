@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const variantsConfig = {
     variants: {
@@ -88,5 +88,3 @@ const AtToggleSwitchComponent = class {
 
 exports.at_toggle_switch = AtToggleSwitchComponent;
 //# sourceMappingURL=at-toggle-switch.entry.cjs.js.map
-
-//# sourceMappingURL=at-toggle-switch.cjs.entry.js.map

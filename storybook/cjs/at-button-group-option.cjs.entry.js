@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const variantsConfig = {
     variants: {
@@ -50,5 +50,3 @@ const AtButtonGroupOption = class {
 
 exports.at_button_group_option = AtButtonGroupOption;
 //# sourceMappingURL=at-button-group-option.entry.cjs.js.map
-
-//# sourceMappingURL=at-button-group-option.cjs.entry.js.map

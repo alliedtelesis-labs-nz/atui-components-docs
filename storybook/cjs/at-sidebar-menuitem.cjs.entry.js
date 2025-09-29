@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const atSidebarMenuitemCss = "[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label]{font-weight:400}";
 
@@ -48,5 +48,3 @@ AtSidebarMenuitemComponent.style = atSidebarMenuitemCss;
 
 exports.at_sidebar_menuitem = AtSidebarMenuitemComponent;
 //# sourceMappingURL=at-sidebar-menuitem.entry.cjs.js.map
-
-//# sourceMappingURL=at-sidebar-menuitem.cjs.entry.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, g as getElement } from './index-BlNBm0E8.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -49,6 +49,4 @@ const AtCheckboxHeaderComponent = class {
 };
 
 export { AtCheckboxHeaderComponent as at_checkbox_header };
-//# sourceMappingURL=at-checkbox-header.entry.js.map
-
 //# sourceMappingURL=at-checkbox-header.entry.js.map

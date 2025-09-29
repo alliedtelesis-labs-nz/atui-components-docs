@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, g as getElement } from './index-BlNBm0E8.js';
 
 const AtSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -36,6 +36,4 @@ const AtSidebarTriggerComponent = class {
 };
 
 export { AtSidebarTriggerComponent as at_sidebar_trigger };
-//# sourceMappingURL=at-sidebar-trigger.entry.js.map
-
 //# sourceMappingURL=at-sidebar-trigger.entry.js.map

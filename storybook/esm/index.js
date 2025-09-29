@@ -7,5 +7,3 @@ var PromptResponseScore;
 
 export { PromptResponseScore };
 //# sourceMappingURL=index.js.map
-
-//# sourceMappingURL=index.js.map

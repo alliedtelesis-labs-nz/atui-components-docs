@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement, F as Fragment } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement, F as Fragment } from './index-BlNBm0E8.js';
 import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DLaek6ce.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-D5XPK9mo.js';
@@ -415,5 +415,3 @@ const AtTimeWithUnitComponent = class {
 
 export { AtButtonGroup as at_button_group, AtCustomTimeRangeComponent as at_custom_time_range, AtTimeWithUnitComponent as at_time_with_unit };
 //# sourceMappingURL=at-button-group.at-custom-time-range.at-time-with-unit.entry.js.map
-
-//# sourceMappingURL=at-button-group_3.entry.js.map

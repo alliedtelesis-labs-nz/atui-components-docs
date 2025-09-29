@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
+import { c as classlist } from './classlist-DowIpD9s.js';
 
 const avatarVariantsConfig = {
     variants: {
@@ -42,6 +42,4 @@ const AtAvatar = class {
 };
 
 export { AtAvatar as at_avatar };
-//# sourceMappingURL=at-avatar.entry.js.map
-
 //# sourceMappingURL=at-avatar.entry.js.map

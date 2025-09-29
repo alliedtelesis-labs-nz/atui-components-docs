@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
 import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-CYy36CI5.js';
 
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -11,9 +11,11 @@ const heightVariants = {
     auto: 'h-full',
 };
 const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Height of the chart
          */

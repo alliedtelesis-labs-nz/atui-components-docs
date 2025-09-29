@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
 var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 /*
- Stencil Client Patch Browser v4.36.3 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v4.37.1 | MIT Licensed | https://stenciljs.com
  */
 
 var patchBrowser = () => {
@@ -23,6 +23,4 @@ patchBrowser().then(async (options) => {
 });
 
 exports.setNonce = index.setNonce;
-//# sourceMappingURL=atui-components-stencil.cjs.js.map
-
 //# sourceMappingURL=atui-components-stencil.cjs.js.map

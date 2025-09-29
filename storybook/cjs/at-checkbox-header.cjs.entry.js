@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -52,5 +52,3 @@ const AtCheckboxHeaderComponent = class {
 
 exports.at_checkbox_header = AtCheckboxHeaderComponent;
 //# sourceMappingURL=at-checkbox-header.entry.cjs.js.map
-
-//# sourceMappingURL=at-checkbox-header.cjs.entry.js.map

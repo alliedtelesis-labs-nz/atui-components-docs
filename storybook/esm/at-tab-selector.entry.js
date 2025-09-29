@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtTabSelector = class {
     constructor(hostRef) {
@@ -94,6 +94,4 @@ const AtTabSelector = class {
 };
 
 export { AtTabSelector as at_tab_selector };
-//# sourceMappingURL=at-tab-selector.entry.js.map
-
 //# sourceMappingURL=at-tab-selector.entry.js.map

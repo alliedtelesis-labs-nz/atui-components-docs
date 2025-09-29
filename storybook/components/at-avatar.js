@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { c as classlist } from './p-Bfa-pAao.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { c as classlist } from './p-DowIpD9s.js';
 
 const avatarVariantsConfig = {
     variants: {
@@ -20,9 +20,11 @@ const avatarVariantsConfig = {
     },
 };
 const AtAvatar$1 = /*@__PURE__*/ proxyCustomElement(class AtAvatar extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Size of the avatar
          */

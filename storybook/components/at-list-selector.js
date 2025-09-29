@@ -1,12 +1,14 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$4 } from './p-DgHX4Tx7.js';
-import { d as defineCustomElement$3 } from './p-Ddyrz-Gs.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$4 } from './p-B7BACRtj.js';
+import { d as defineCustomElement$3 } from './p-DA6GX-Tb.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtListSelector extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         this.atuiInfoButtonClick = createEvent(this, "atuiInfoButtonClick", 7);
         /**

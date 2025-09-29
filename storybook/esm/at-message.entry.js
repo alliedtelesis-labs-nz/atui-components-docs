@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-C8uvvL0O.js';
+import { r as registerInstance, h } from './index-BlNBm0E8.js';
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -52,6 +52,4 @@ const AtMessage = class {
 };
 
 export { AtMessage as at_message };
-//# sourceMappingURL=at-message.entry.js.map
-
 //# sourceMappingURL=at-message.entry.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -43,5 +43,3 @@ const AtTitleSubtitleCell = class {
 
 exports.at_title_subtitle_cell = AtTitleSubtitleCell;
 //# sourceMappingURL=at-title-subtitle-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-title-subtitle-cell.cjs.entry.js.map

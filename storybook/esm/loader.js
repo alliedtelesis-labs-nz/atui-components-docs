@@ -1,5 +1,5 @@
-import { b as bootstrapLazy } from './index-C8uvvL0O.js';
-export { s as setNonce } from './index-C8uvvL0O.js';
+import { b as bootstrapLazy } from './index-BlNBm0E8.js';
+export { s as setNonce } from './index-BlNBm0E8.js';
 import { g as globalScripts } from './app-globals-DQuL1Twl.js';
 
 const defineCustomElements = async (win, options) => {
@@ -9,6 +9,4 @@ const defineCustomElements = async (win, options) => {
 };
 
 export { defineCustomElements };
-//# sourceMappingURL=loader.js.map
-
 //# sourceMappingURL=loader.js.map

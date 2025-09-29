@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
@@ -31,5 +31,3 @@ const AtColorStatusCell = class {
 
 exports.at_color_status_cell = AtColorStatusCell;
 //# sourceMappingURL=at-color-status-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-color-status-cell.cjs.entry.js.map

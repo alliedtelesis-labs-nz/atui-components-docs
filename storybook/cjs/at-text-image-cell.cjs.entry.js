@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTextImageCell = class {
     constructor(hostRef) {
@@ -55,5 +55,3 @@ const AtTextImageCell = class {
 
 exports.at_text_image_cell = AtTextImageCell;
 //# sourceMappingURL=at-text-image-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-text-image-cell.cjs.entry.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.no-backdrop::backdrop{display:none}dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}";
 
@@ -179,5 +179,3 @@ AtSidePanelComponent.style = atSidePanelCss;
 
 exports.at_side_panel = AtSidePanelComponent;
 //# sourceMappingURL=at-side-panel.entry.cjs.js.map
-
-//# sourceMappingURL=at-side-panel.cjs.entry.js.map

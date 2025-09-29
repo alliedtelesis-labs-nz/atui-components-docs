@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {
@@ -38,5 +38,3 @@ const AtCheckboxCellComponent = class {
 
 exports.at_checkbox_cell = AtCheckboxCellComponent;
 //# sourceMappingURL=at-checkbox-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-checkbox-cell.cjs.entry.js.map

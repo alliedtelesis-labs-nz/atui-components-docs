@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-BlNBm0E8.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
 import { at_text_badge_cell as AtTextBadgeCell } from './at-text-badge-cell.entry.js';
@@ -48110,5 +48110,3 @@ const AtTableActionsComponent = class {
 
 export { AtColumnManagerComponent as at_column_manager, AtTableComponent as at_table, AtTableActionsComponent as at_table_actions };
 //# sourceMappingURL=at-column-manager.at-table.at-table-actions.entry.js.map
-
-//# sourceMappingURL=at-column-manager_3.entry.js.map

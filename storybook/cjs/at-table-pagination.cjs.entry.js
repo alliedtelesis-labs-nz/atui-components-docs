@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTablePagination = class {
     constructor(hostRef) {
@@ -33,5 +33,3 @@ const AtTablePagination = class {
 
 exports.at_table_pagination = AtTablePagination;
 //# sourceMappingURL=at-table-pagination.entry.cjs.js.map
-
-//# sourceMappingURL=at-table-pagination.cjs.entry.js.map

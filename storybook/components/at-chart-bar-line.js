@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
 import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-CYy36CI5.js';
 import { T as TimeDateUtil } from './p-BI7XO4bL.js';
 
@@ -11,9 +11,11 @@ const heightVariants = {
     auto: 'h-full',
 };
 const AtChartBarLine$1 = /*@__PURE__*/ proxyCustomElement(class AtChartBarLine extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Height of the chart.
          */

@@ -1,14 +1,16 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$6 } from './p-2_xEzlfW.js';
-import { d as defineCustomElement$5 } from './p-Jpa-oIRC.js';
-import { d as defineCustomElement$4 } from './p-DgHX4Tx7.js';
-import { d as defineCustomElement$3 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$2 } from './p-BV-CRzGp.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$6 } from './p-BwOU2faU.js';
+import { d as defineCustomElement$5 } from './p-yFLsD4Rx.js';
+import { d as defineCustomElement$4 } from './p-B7BACRtj.js';
+import { d as defineCustomElement$3 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$2 } from './p-BtOEC7tt.js';
 
 const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarSubmenuComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.isSidebarOpen = false;
         this.isAccordionOpen = false;
         this.handleAtuiChange = this.handleAtuiChange.bind(this);

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var chartColor = require('./chart-color-CyKHCJde.js');
 require('./moment-BU5SUH_o.js');
 
@@ -179,5 +179,3 @@ const AtChartDonut = class {
 
 exports.at_chart_donut = AtChartDonut;
 //# sourceMappingURL=at-chart-donut.entry.cjs.js.map
-
-//# sourceMappingURL=at-chart-donut.cjs.entry.js.map

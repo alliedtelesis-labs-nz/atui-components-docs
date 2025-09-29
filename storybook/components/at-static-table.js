@@ -1,19 +1,21 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$b } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$a } from './p-Df2_temq.js';
-import { d as defineCustomElement$9 } from './p-Cj1J0V_y.js';
-import { d as defineCustomElement$8 } from './p-BtmfB7Vj.js';
-import { d as defineCustomElement$7 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$6 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$5 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$4 } from './p-fCBJHWXE.js';
-import { d as defineCustomElement$3 } from './p-CyYS0Qbs.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$b } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$a } from './p-eHfVgeIr.js';
+import { d as defineCustomElement$9 } from './p-B-4g9i0U.js';
+import { d as defineCustomElement$8 } from './p-BG0_55e2.js';
+import { d as defineCustomElement$7 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$6 } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$5 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$4 } from './p-B42W5ska.js';
+import { d as defineCustomElement$3 } from './p-C977_r-m.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtStaticTable extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Max number of items per page
          */

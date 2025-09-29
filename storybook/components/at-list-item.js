@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',
@@ -7,9 +7,11 @@ const listItemVariants = {
     lg: 'min-h-[48px] text-body',
 };
 const AtListItem$1 = /*@__PURE__*/ proxyCustomElement(class AtListItem extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Size of the list item.
          */

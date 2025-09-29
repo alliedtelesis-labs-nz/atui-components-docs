@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
 
 const AtSidebarSubmenuComponent = class {
     constructor(hostRef) {
@@ -49,6 +49,4 @@ const AtSidebarSubmenuComponent = class {
 };
 
 export { AtSidebarSubmenuComponent as at_sidebar_submenu };
-//# sourceMappingURL=at-sidebar-submenu.entry.js.map
-
 //# sourceMappingURL=at-sidebar-submenu.entry.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
 
 const AtSidebarMenuComponent = class {
     constructor(hostRef) {
@@ -10,6 +10,4 @@ const AtSidebarMenuComponent = class {
 };
 
 export { AtSidebarMenuComponent as at_sidebar_menu };
-//# sourceMappingURL=at-sidebar-menu.entry.js.map
-
 //# sourceMappingURL=at-sidebar-menu.entry.js.map

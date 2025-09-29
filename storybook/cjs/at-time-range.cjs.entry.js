@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 var moment = require('./moment-BU5SUH_o.js');
 var translation = require('./translation-HqquF7bU.js');
@@ -186,5 +186,3 @@ const AtTimeRangeComponent = class {
 
 exports.at_time_range = AtTimeRangeComponent;
 //# sourceMappingURL=at-time-range.entry.cjs.js.map
-
-//# sourceMappingURL=at-time-range.cjs.entry.js.map

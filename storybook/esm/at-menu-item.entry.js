@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
+import { c as classlist } from './classlist-DowIpD9s.js';
 
 const variantsConfig = {
     variants: {
@@ -41,6 +41,4 @@ const AtMenuitemComponent = class {
 };
 
 export { AtMenuitemComponent as at_menu_item };
-//# sourceMappingURL=at-menu-item.entry.js.map
-
 //# sourceMappingURL=at-menu-item.entry.js.map

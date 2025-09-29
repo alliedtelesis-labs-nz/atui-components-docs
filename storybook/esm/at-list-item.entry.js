@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',
@@ -27,6 +27,4 @@ const AtListItem = class {
 };
 
 export { AtListItem as at_list_item };
-//# sourceMappingURL=at-list-item.entry.js.map
-
 //# sourceMappingURL=at-list-item.entry.js.map

@@ -1,10 +1,12 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtStatusBar extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * List of segments that make up the status bar. Each segment implements the StatusBar interface.
          */

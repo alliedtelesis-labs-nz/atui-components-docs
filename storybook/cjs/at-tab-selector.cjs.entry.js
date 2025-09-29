@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTabSelector = class {
     constructor(hostRef) {
@@ -97,5 +97,3 @@ const AtTabSelector = class {
 
 exports.at_tab_selector = AtTabSelector;
 //# sourceMappingURL=at-tab-selector.entry.cjs.js.map
-
-//# sourceMappingURL=at-tab-selector.cjs.entry.js.map

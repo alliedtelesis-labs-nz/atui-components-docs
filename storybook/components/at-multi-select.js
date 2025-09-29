@@ -1,14 +1,14 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { c as classlist } from './p-Bfa-pAao.js';
+import { c as classlist } from './p-DowIpD9s.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
-import { d as defineCustomElement$8 } from './p-DgHX4Tx7.js';
-import { d as defineCustomElement$7 } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$6 } from './p-7579NvjV.js';
-import { d as defineCustomElement$5 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$4 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$3 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { d as defineCustomElement$8 } from './p-B7BACRtj.js';
+import { d as defineCustomElement$7 } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$6 } from './p-Bl9SCKd0.js';
+import { d as defineCustomElement$5 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$4 } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$3 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -45,9 +45,11 @@ const optionVariantsConfig = {
     },
 };
 const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSelectComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * Label of the select.

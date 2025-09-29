@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
+import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
 
 const AtListSelectorItem = class {
     constructor(hostRef) {
@@ -14,6 +14,4 @@ const AtListSelectorItem = class {
 };
 
 export { AtListSelectorItem as at_list_selector_item };
-//# sourceMappingURL=at-list-selector-item.entry.js.map
-
 //# sourceMappingURL=at-list-selector-item.entry.js.map

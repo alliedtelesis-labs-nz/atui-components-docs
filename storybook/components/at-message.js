@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
+import { p as proxyCustomElement, H, h } from './p-Bx9nFool.js';
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -28,9 +28,11 @@ const messageVariants = {
     },
 };
 const AtMessage$1 = /*@__PURE__*/ proxyCustomElement(class AtMessage extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Theme of the message, either "light" or "default".
          */

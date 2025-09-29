@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$2 } from './p-pDYyfeah.js';
+import { p as proxyCustomElement, H, h } from './p-Bx9nFool.js';
+import { d as defineCustomElement$2 } from './p-Cf5bpagt.js';
 
 const placeholderVariants = {
     iconSizes: {
@@ -16,9 +16,11 @@ const placeholderVariants = {
     },
 };
 const AtPlaceholderComponent = /*@__PURE__*/ proxyCustomElement(class AtPlaceholderComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         /**
          * Size of the placeholder
          */

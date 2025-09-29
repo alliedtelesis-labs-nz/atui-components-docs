@@ -1,15 +1,17 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
-import { d as defineCustomElement$7 } from './p-DCrgmCxL.js';
-import { d as defineCustomElement$6 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$5 } from './p-pDYyfeah.js';
-import { d as defineCustomElement$4 } from './p-BvmILoSj.js';
-import { d as defineCustomElement$3 } from './p-w8B7AqwF.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
+import { d as defineCustomElement$7 } from './p-Ixc4AGPB.js';
+import { d as defineCustomElement$6 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$5 } from './p-Cf5bpagt.js';
+import { d as defineCustomElement$4 } from './p-CM3Zn5og.js';
+import { d as defineCustomElement$3 } from './p-DeoDtO0C.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagination extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atChange = createEvent(this, "atChange", 7);
         this.atPageSizeChange = createEvent(this, "atPageSizeChange", 7);
         /**

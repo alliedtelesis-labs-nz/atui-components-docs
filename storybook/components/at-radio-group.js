@@ -1,8 +1,8 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
-import { c as classlist } from './p-Bfa-pAao.js';
-import { d as defineCustomElement$4 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$3 } from './p-DSONuuM3.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
+import { c as classlist } from './p-DowIpD9s.js';
+import { d as defineCustomElement$4 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$3 } from './p-DybuC9yX.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const layoutVariantsConfig = {
     variants: {
@@ -15,9 +15,11 @@ const layoutVariantsConfig = {
 };
 const getLayoutClass = classlist('gap-4', layoutVariantsConfig);
 const AtRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class AtRadioGroup extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * Direction that the radio elements are placed

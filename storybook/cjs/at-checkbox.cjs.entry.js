@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const variants = classlist.classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2', {
     variants: {
@@ -54,5 +54,3 @@ const AtCheckbox = class {
 
 exports.at_checkbox = AtCheckbox;
 //# sourceMappingURL=at-checkbox.entry.cjs.js.map
-
-//# sourceMappingURL=at-checkbox.cjs.entry.js.map

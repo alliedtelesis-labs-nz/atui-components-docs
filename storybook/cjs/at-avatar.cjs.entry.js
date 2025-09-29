@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-LVEefvKk.js');
+var classlist = require('./classlist-OJYetzVw.js');
 
 const avatarVariantsConfig = {
     variants: {
@@ -45,5 +45,3 @@ const AtAvatar = class {
 
 exports.at_avatar = AtAvatar;
 //# sourceMappingURL=at-avatar.entry.cjs.js.map
-
-//# sourceMappingURL=at-avatar.cjs.entry.js.map

@@ -1,7 +1,7 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
-import { c as classlist } from './p-Bfa-pAao.js';
-import { d as defineCustomElement$3 } from './p-DUaiIRm3.js';
-import { d as defineCustomElement$2 } from './p-BNT2yQBz.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
+import { c as classlist } from './p-DowIpD9s.js';
+import { d as defineCustomElement$3 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -34,9 +34,11 @@ const inputVariantsConfig = {
 };
 const getInputClasses = classlist('align-center transition[background-color,color,box-shadow] text-body relative flex h-full w-full resize-none rounded-md border border-solid px-8 py-[6px] duration-300 ease-in-out outline-none', inputVariantsConfig);
 const AtTextareaComponent = /*@__PURE__*/ proxyCustomElement(class AtTextareaComponent extends H {
-    constructor() {
+    constructor(registerHost) {
         super();
-        this.__registerHost();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
         /**
          * Minimum number of rows to display

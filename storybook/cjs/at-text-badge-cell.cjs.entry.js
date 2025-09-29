@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
@@ -42,5 +42,3 @@ const AtTextBadgeCell = class {
 
 exports.at_text_badge_cell = AtTextBadgeCell;
 //# sourceMappingURL=at-text-badge-cell.entry.cjs.js.map
-
-//# sourceMappingURL=at-text-badge-cell.cjs.entry.js.map

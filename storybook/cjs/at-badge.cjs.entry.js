@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-LVEefvKk.js');
 
 const badgeVariants = {
     base: 'inline-block rounded-[4px] font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
@@ -64,5 +64,3 @@ const AtBadgeComponent = class {
 
 exports.at_badge = AtBadgeComponent;
 //# sourceMappingURL=at-badge.entry.cjs.js.map
-
-//# sourceMappingURL=at-badge.cjs.entry.js.map

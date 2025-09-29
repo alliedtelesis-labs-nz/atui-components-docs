@@ -7,5 +7,3 @@ exports.PromptResponseScore = void 0;
     PromptResponseScore[PromptResponseScore["DOWN"] = -1] = "DOWN";
 })(exports.PromptResponseScore || (exports.PromptResponseScore = {}));
 //# sourceMappingURL=index.cjs.js.map
-
-//# sourceMappingURL=index.cjs.js.map
