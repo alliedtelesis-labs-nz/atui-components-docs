@@ -1,10 +1,10 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
-import { d as defineCustomElement$7 } from './p-Ixc4AGPB.js';
-import { d as defineCustomElement$6 } from './p-C5bGvK_v.js';
-import { d as defineCustomElement$5 } from './p-Cf5bpagt.js';
-import { d as defineCustomElement$4 } from './p-DmKmq4RT.js';
-import { d as defineCustomElement$3 } from './p-CxffRu7z.js';
-import { d as defineCustomElement$2 } from './p-CDDohbWp.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BRRmBK9P.js';
+import { d as defineCustomElement$7 } from './p-nHcnaAyy.js';
+import { d as defineCustomElement$6 } from './p-DUrPhBc7.js';
+import { d as defineCustomElement$5 } from './p-CIqSXlz0.js';
+import { d as defineCustomElement$4 } from './p-Bra11bSv.js';
+import { d as defineCustomElement$3 } from './p-D2aexQoV.js';
+import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
 
 const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagination extends H {
     constructor(registerHost) {
@@ -34,7 +34,7 @@ const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagina
         ];
     }
     render() {
-        return (h(Host, { key: 'c9ef4792f8b44740e8a6e98f7316ebb1a97a1d6d', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'bcaa2e90775baf33f4750dae3e6dd215acf8f8c2' }, "Page Size: "), h("at-select", { key: 'f1963d2ab5d2b91e619a2bf9c08c4b3b89fe5d51', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '687549c24c5535712536aaa32dfd8a317876aa89', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '39f1a47c66c31c1f3a7196659f2317755e66a78e', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'e9bdd30b153153d2506de39fdf45be338bc2c2d3' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: 'f5374812428dacb4cbff67cb116cc9a4e68f86c1', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '1da27e60638d9179e4ab7da218bfe93b7da855e0', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: '7493b744af3bae2557cd8b239c1103efa5a85de6', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'e5cacc7e033142710b4002ea6428de756a764286' }, "Page Size: "), h("at-select", { key: '83b835cc0958daf728ec6b15fa4297ace41d0b2c', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '41c7f4456f12c147285291f918b1f96d113b6d94', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: 'd78f89c7f2013fbb0af63a6cf89f13447f2bdaa8', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'c30eaefd23094b430567ff5a5753a5a2f7a64f2a' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '2968df6ccd4bee0d71707128c41f0733030e71f0', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: 'c479c9869c803acf792433ea54d52306920f5782', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
 }, [256, "at-table-pagination", {
         "current_page": [2],

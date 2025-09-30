@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
 import { c as classlist } from './classlist-DowIpD9s.js';
 
 const variants = classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2', {

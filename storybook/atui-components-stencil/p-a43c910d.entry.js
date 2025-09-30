@@ -1,0 +1,2 @@
+import{r as e,h as t,H as s,a as r}from"./p-C3PSGxNR.js";const i=class{constructor(t){e(this,t);this.chips=[]}init(e){this.params=e;this.chips=e.chips(e.data)}getGui(){return this.el}refresh(e){this.init(e);return true}render(){return t(s,{key:"066bd84aedbd02d58c687149bb74719943a442ff",class:"flex h-full items-center"},t("at-chip-list",{key:"88a14e9b7b3fecc707b90fbd9c49532e611e33c5",chips:this.chips,show_clear_all:false,readonly:true}))}get el(){return r(this)}};export{i as at_chip_list_cell};
+//# sourceMappingURL=p-a43c910d.entry.js.map

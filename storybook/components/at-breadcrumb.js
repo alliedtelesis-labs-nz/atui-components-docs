@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-Bx9nFool.js';
-import { d as defineCustomElement$2 } from './p-BdzsEk-c.js';
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-BRRmBK9P.js';
+import { d as defineCustomElement$2 } from './p-BphJGdZ6.js';
 
 const AtBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtBreadcrumbComponent extends H {
     constructor(registerHost) {

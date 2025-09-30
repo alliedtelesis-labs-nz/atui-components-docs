@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BlNBm0E8.js';
+import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -23,7 +23,7 @@ const AtStatusBar = class {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '97e01ae3d24b6f56841111e906b9bb0a279fbec9', class: this.statusBarClass }, h("div", { key: '328b762e1b579128cda2d098bea37c462afa51b4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '9e45065adb294d40bae5be4e2ca87526035bddcb', class: this.statusBarClass }, h("div", { key: '583ce6795b6f365680f3c4e02f77f01eb60615c5', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { r as registerInstance, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
 import { c as classlist } from './classlist-DowIpD9s.js';
 
 const atSidebarMenuitemCss = "[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label]{font-weight:400}";

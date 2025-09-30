@@ -1,6 +1,8 @@
 'use strict';
 
-var index = require('./index-LVEefvKk.js');
+var index = require('./index-BzjIU9ss.js');
+
+const atSidebarTriggerCss = ":host{position:relative;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;border-radius:var(--token-border-radius-md);cursor:pointer;padding:8px;font-weight:var(--token-font-weight-med);color:var(--token-sidebar-foreground);height:var(--token-input-btn-height);background-color:var(--token-sidebar-background);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}:host i.material-icons{font-style:normal;display:flex;align-items:center;justify-content:center;font-size:var(--token-font-size-icon-xl);z-index:10}:host div[data-name=focus-indicator]{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);opacity:0;transition:background-color var(--token-transition-time-fast)}:host(:hover) div[data-name=focus-indicator]{opacity:0.1}:host(:focus-visible){outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent)}";
 
 const AtSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -41,10 +43,11 @@ const AtSidebarTriggerComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '9ff21c1bf966ff8021dce8bd1a8fcb0563f674aa', role: "button", class: "group text-button focus-visible:ring-active-foreground/30 text-sidebar-foreground relative flex cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left font-medium transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, index.h("div", { key: '5500d2a27bc4701efb7804a1f8fc30511e415f3f', class: "flex w-full justify-end gap-8 truncate" }, this.isOpen !== undefined && (index.h("span", { key: 'fc68e3d4b51dd7d1e64b910be698f3f715bfa8f5', class: "material-icons !text-icon-xl z-10 flex items-center justify-center p-2" }, this.isOpen ? 'menu_open' : 'menu')), index.h("slot", { key: 'cf9ffb59f661d98ffc11136aee557d5f9753b80e' })), index.h("div", { key: 'e35686aade2af9ef771218f55d0ef9a70c6518b9', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-0 h-full w-full rounded-md transition-colors duration-300 ease-in-out group-hover:bg-slate-400/10" })));
+        return (index.h(index.Host, { key: 'f5b02725e61a67b713243798665412dc6b1e291b', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (index.h("i", { key: '36646cb5662ad4eef28a826b104b2df53be54e95', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), index.h("div", { key: '6a5727fe59cf6b54508e91ea89981cca7379721a', "data-name": "focus-indicator", role: "presentation" })));
     }
     get el() { return index.getElement(this); }
 };
+AtSidebarTriggerComponent.style = atSidebarTriggerCss;
 
 exports.at_sidebar_trigger = AtSidebarTriggerComponent;
 //# sourceMappingURL=at-sidebar-trigger.entry.cjs.js.map

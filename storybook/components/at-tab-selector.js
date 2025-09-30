@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
-import { d as defineCustomElement$3 } from './p-B_VIIa3f.js';
-import { d as defineCustomElement$2 } from './p-DkmnXZ6N.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BRRmBK9P.js';
+import { d as defineCustomElement$3 } from './p-B7EO1XL3.js';
+import { d as defineCustomElement$2 } from './p-DGt5_n5u.js';
 
 const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector extends H {
     constructor(registerHost) {
@@ -90,7 +90,7 @@ const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector ext
         }
     }
     render() {
-        return h(Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
+        return h(Host, { key: '8d6c4ffa425ebc01f51e0ffcc0b445917ecc8100' }, this.checkLayoutAndRender());
     }
     get el() { return this; }
     static get watchers() { return {

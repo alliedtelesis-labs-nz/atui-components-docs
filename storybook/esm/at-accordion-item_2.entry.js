@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
 
 const atAccordionItemCss = "details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}";
 

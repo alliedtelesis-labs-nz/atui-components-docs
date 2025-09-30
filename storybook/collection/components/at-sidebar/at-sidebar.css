@@ -83,6 +83,9 @@ at-sidebar at-sidebar-submenu at-menu [data-name=menu-content-wrapper] {
 at-sidebar at-sidebar-trigger at-button [data-name=button-icon] {
   font-size: var(--token-font-size-icon-xl) !important;
 }
+at-sidebar[data-state=collapsed] .nav at-sidebar-trigger {
+  width: 100%;
+}
 at-sidebar[data-state=collapsed] i[slot=menu-item-actions],
 at-sidebar[data-state=collapsed] * > [data-name=sidebar-menu-item-label] {
   opacity: 0;
@@ -91,23 +94,23 @@ at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
 at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
   opacity: 1;
 }
-at-sidebar[data-state=collapsed] .nav.collapse-offcanvas {
+at-sidebar[data-state=collapsed].collapse-offcanvas .nav {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
 }
-at-sidebar[data-state=collapsed] .nav.collapse-icon {
+at-sidebar[data-state=collapsed].collapse-icon .nav {
   width: var(--token-width-sidebar-collapsed);
 }
-at-sidebar[data-state=collapsed] .nav.collapse-none {
+at-sidebar[data-state=collapsed].collapse-none .nav {
   width: var(--token-width-sidebar);
 }
 at-sidebar.mode-over .nav {
   position: absolute;
 }
-at-sidebar.mode-over:not(.side-right) .content {
+at-sidebar.mode-over.collapse-icon:not(.side-right) .content {
   padding-left: var(--token-width-sidebar-collapsed);
 }
-at-sidebar.mode-over.side-right .content {
+at-sidebar.mode-over.collapse-icon.side-right .content {
   padding-right: var(--token-width-sidebar-collapsed);
 }
 at-sidebar.side-right {

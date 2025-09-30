@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BlNBm0E8.js';
+import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
 
 const AtTabSelector = class {
     constructor(hostRef) {
@@ -85,7 +85,7 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return h(Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
+        return h(Host, { key: '8d6c4ffa425ebc01f51e0ffcc0b445917ecc8100' }, this.checkLayoutAndRender());
     }
     get el() { return getElement(this); }
     static get watchers() { return {
