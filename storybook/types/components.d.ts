@@ -33,7 +33,6 @@ import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
-import { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
 import { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -45,6 +44,7 @@ import { TimeRangeDisplay } from "./types/date";
 import { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
 import { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 import { TreeNode } from "./types/tree";
+import { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
 import { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
 export { AccordionItem } from "./components/at-accordion/at-accordion";
 export { AvatarSize, AvatarVariant } from "./components/at-avatar/at-avatar";
@@ -74,7 +74,6 @@ export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
-export { ButtonSize as ButtonSize1, ButtonType as ButtonType1 } from "./components/at-button/at-button";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
 export { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -86,6 +85,7 @@ export { TimeRangeDisplay } from "./types/date";
 export { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
 export { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 export { TreeNode } from "./types/tree";
+export { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
 export { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
 export namespace Components {
     /**
@@ -2100,16 +2100,6 @@ export namespace Components {
      * @description A sidebar trigger component for the sidebar.
      */
     interface AtSidebarTrigger {
-        /**
-          * Size of the button
-          * @default 'lg'
-         */
-        "size": ButtonSize1;
-        /**
-          * Theme of the button. Default secondary
-          * @default 'secondary'
-         */
-        "type": ButtonType1;
     }
     /**
      * @category Utilities
@@ -6338,16 +6328,6 @@ declare namespace LocalJSX {
      * @description A sidebar trigger component for the sidebar.
      */
     interface AtSidebarTrigger {
-        /**
-          * Size of the button
-          * @default 'lg'
-         */
-        "size"?: ButtonSize1;
-        /**
-          * Theme of the button. Default secondary
-          * @default 'secondary'
-         */
-        "type"?: ButtonType1;
     }
     /**
      * @category Utilities

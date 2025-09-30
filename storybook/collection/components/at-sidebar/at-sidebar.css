@@ -8,7 +8,7 @@
 }
 at-sidebar {
   display: flex;
-  height: 100dvh;
+  height: 100%;
   width: 100%;
   align-items: stretch;
   overflow: hidden;
@@ -56,14 +56,8 @@ at-sidebar .content {
   flex-grow: 1;
 }
 at-sidebar i[slot=menu-item-actions],
-at-sidebar [data-name=sidebar-menu-item-label] {
+at-sidebar * > [data-name=sidebar-menu-item-label] {
   transition: opacity 150ms ease;
-  transition-delay: 150ms;
-}
-at-sidebar at-menu [data-name=menu-trigger] [data-name=sidebar-menu-item-label],
-at-sidebar at-accordion-item [data-name=sidebar-menu-item-label] {
-  transition: opacity 150ms ease;
-  transition-delay: 150ms;
 }
 at-sidebar :not(at-menu) i[slot=menu-item-actions],
 at-sidebar :not(at-menu) [data-name=sidebar-menu-item-label] {
@@ -85,21 +79,20 @@ at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-
 at-sidebar at-sidebar-submenu at-menu [data-name=menu-content-wrapper] {
   background-color: var(--token-sidebar-background);
 }
-at-sidebar[data-state=collapsed] at-sidebar-trigger at-button {
-  width: 100%;
+at-sidebar at-sidebar-trigger at-button [data-name=button-icon] {
+  font-size: var(--token-font-size-icon-xl) !important;
 }
 at-sidebar[data-state=collapsed] i[slot=menu-item-actions],
-at-sidebar[data-state=collapsed] span[data-name=sidebar-menu-item-label],
-at-sidebar[data-state=collapsed] at-menu [data-name=menu-trigger] [data-name=sidebar-menu-item-label],
-at-sidebar[data-state=collapsed] at-accordion-item [data-name=sidebar-menu-item-label] {
+at-sidebar[data-state=collapsed] * > [data-name=sidebar-menu-item-label] {
   opacity: 0;
 }
 at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
 at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
   opacity: 1;
 }
-at-sidebar[data-state=collapsed] .nav.collapse-offscreen {
-  width: var(--token-width-sidebar-offscreen) !important;
+at-sidebar[data-state=collapsed] .nav.collapse-offcanvas {
+  width: var(--token-width-sidebar-offscreen);
+  overflow: hidden;
 }
 at-sidebar[data-state=collapsed] .nav.collapse-icon {
   width: var(--token-width-sidebar-collapsed);

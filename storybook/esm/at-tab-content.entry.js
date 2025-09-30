@@ -33,7 +33,7 @@ const AtTabContent = class {
         this.isActive = id === this.tab_id;
     }
     render() {
-        return (h("div", { key: 'eedbb8e6c3c8e30dc42356056663c98194ea8162', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'eba946c75b68e5bc7fafdcf55e07faf86a35cf49' })));
+        return (h("div", { key: '1e0a2a17792af6ffbe54f7807c42ecfd01cded8b', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '590c6637db6743d13a32418f61d9ee6c257625f7' })));
     }
     get el() { return getElement(this); }
 };

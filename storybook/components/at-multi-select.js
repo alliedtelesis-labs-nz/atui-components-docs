@@ -5,10 +5,10 @@ import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF
 import { d as defineCustomElement$8 } from './p-B7BACRtj.js';
 import { d as defineCustomElement$7 } from './p-Ixc4AGPB.js';
 import { d as defineCustomElement$6 } from './p-Bl9SCKd0.js';
-import { d as defineCustomElement$5 } from './p-IkAgp4un.js';
+import { d as defineCustomElement$5 } from './p-C5bGvK_v.js';
 import { d as defineCustomElement$4 } from './p-Cf5bpagt.js';
-import { d as defineCustomElement$3 } from './p-CM3Zn5og.js';
-import { d as defineCustomElement$2 } from './p-BQo85g_v.js';
+import { d as defineCustomElement$3 } from './p-DmKmq4RT.js';
+import { d as defineCustomElement$2 } from './p-CDDohbWp.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -131,7 +131,7 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
             : true;
     }
     render() {
-        return (h(Host, { key: '76cacca2a1c67893add4544dfeca4944f9a80182', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '0d41147cf4dd4185fff7b716b529e0056cb172fa', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -140,9 +140,9 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
                         await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '6b13a41a3090891e8e4312937ff7dc618d93358b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'f75ffb136109f628b3d2ec85c69efecdd420a1b3', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '4271907f3b133521d599167c0f164f540165ce8f' }, this.error_text && this.invalid && (h("span", { key: '601cf1a98d849e5b0892655653339258a7c1244b', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: 'd23de602596a37021f0b5a2b3015e2acb6f299e8' }, this.error_text && this.invalid && (h("span", { key: 'df9326c91bf483c0ce74e3b9c22a7fd30e382be6', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));

@@ -33,12 +33,12 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'df3098c48e4fc55b080029f70b5b3e2ea29e7384', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: '6498a11dfb918dae21cf7829d5ce2587c51a4b67', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
                 }
-            } }, this.icon && (index.h("span", { key: '189076fb88aad420379603de7748e18c57835a78', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: '46be1dc1e364a126923de19df1d9523f30e2d487', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'ba7da888f1754c87e26d7eebc47b2f08684df172' })));
+            } }, this.icon && (index.h("span", { key: '30a102dd2fe594d2d1deae1bac0733ca2983cab5', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: '81a6e678c2dbd36664cd76343e85fcd2ead1ecd1', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '6ac0e54cef6927492f5decf6110f0de90e099d6d' })));
     }
 };
 

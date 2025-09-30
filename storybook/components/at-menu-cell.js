@@ -1,4 +1,4 @@
-import { A as AtMenuCell$1, d as defineCustomElement$1 } from './p-CMG68zqM.js';
+import { A as AtMenuCell$1, d as defineCustomElement$1 } from './p-BUuQm6DI.js';
 
 const AtMenuCell = AtMenuCell$1;
 const defineCustomElement = defineCustomElement$1;

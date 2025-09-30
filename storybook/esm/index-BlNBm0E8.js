@@ -260,10 +260,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-sidebar-menuitem.entry.js').then(processMod, consoleError);
-                case 'at-accordion-item_2':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-accordion-item_2.entry.js').then(processMod, consoleError);
                 case 'at-prompt-message':
                     return import(
                       /* webpackMode: "lazy" */
@@ -280,6 +276,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-button-group_3.entry.js').then(processMod, consoleError);
+                case 'at-accordion-item_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-accordion-item_2.entry.js').then(processMod, consoleError);
                 case 'at-button_2':
                     return import(
                       /* webpackMode: "lazy" */

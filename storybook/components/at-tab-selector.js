@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Bx9nFool.js';
 import { d as defineCustomElement$3 } from './p-B_VIIa3f.js';
-import { d as defineCustomElement$2 } from './p-Cg8CAO2B.js';
+import { d as defineCustomElement$2 } from './p-DkmnXZ6N.js';
 
 const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector extends H {
     constructor(registerHost) {
@@ -90,7 +90,7 @@ const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector ext
         }
     }
     render() {
-        return h(Host, { key: '5004ddf85ab6d9f93f904b312fdbee897147129a' }, this.checkLayoutAndRender());
+        return h(Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
     }
     get el() { return this; }
     static get watchers() { return {
