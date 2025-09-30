@@ -9,7 +9,7 @@ const variantsConfig = {
     variants: {
         active: {
             true: 'bg-sidebar-primary text-sidebar-primary-foreground',
-            false: 'text-sidebar-foreground',
+            false: 'bg-secondary text-sidebar-foreground',
         },
     },
 };
@@ -40,7 +40,7 @@ const AtSidebarMenuitemComponent = class {
         const focusIndicatorClassname = getFocusIndicatorClassname({
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: 'f946086d344120c2526f44263888f021dab365dd', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname, tabIndex: 0, onKeyDown: this.handleKeyDown }, index.h("div", { key: '1673a9ea9845d576f0a8b63685ec3f0b7fcb4101', class: "flex items-center gap-8 truncate" }, index.h("slot", { key: '956ae9e43e9aa8e278b421db61c6982c5c6ba6d5', name: "menu-item-label" }), this.badge && (index.h("at-badge", { key: '61fe4b6f4ca7ecb0f856222929cd489cb5350c31', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (index.h("span", { key: '3382992610ef134c22361b99d0cf9878a759fac5', class: "material-icons !text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (index.h("span", { key: 'a972a3ddbf37b7ebd0c943fb7d7b7db1062436d2', "data-name": "sidebar-menu-item-label", class: "label z-10 truncate whitespace-nowrap" }, this.label))), index.h("slot", { key: '6428e8d6d48008398e90e27076172561e55c3f4b', name: "menu-item-actions" }), index.h("div", { key: '2557231f601a5325de5d58e6c13d16bb76d1df5a', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '10a159a33fd1a33e0e1da205787d9708d6db4efb', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname, tabIndex: 0, onKeyDown: this.handleKeyDown }, index.h("div", { key: '83a54fca2cf9aab6795844f68ee9945ebe11aece', class: "flex items-center gap-8 truncate" }, index.h("slot", { key: 'c3b35cefa4a484b522b2b698a9f33d1ec9dbf258', name: "menu-item-label" }), this.badge && (index.h("at-badge", { key: '568c99f805618cde6447a6a842f0e6f9138e41e2', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (index.h("span", { key: 'a41521cd5811ed5af0aeccc484cb8a4d1e9abfd0', class: "material-icons !text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (index.h("span", { key: 'ac2a2607127404a43a4d170dbcddf9c3ea035b74', "data-name": "sidebar-menu-item-label", class: "label z-10 truncate whitespace-nowrap" }, this.label))), index.h("slot", { key: 'be4ca7ed03570d2eb1309c92a9354d0eedc9e166', name: "menu-item-actions" }), index.h("div", { key: '1268be04cb9d0d060ab3ee758e0c7461dbb0858b', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     get el() { return index.getElement(this); }
 };

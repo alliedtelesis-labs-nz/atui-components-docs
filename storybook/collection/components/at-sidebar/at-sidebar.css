@@ -35,6 +35,7 @@ at-sidebar .nav {
   height: 100%;
   background-color: var(--token-sidebar-background);
   color: var(--token-sidebar-foreground);
+  overflow-y: auto;
   z-index: var(--token-z-index-nav);
   will-change: width;
   transition: width var(--token-transition-time);
