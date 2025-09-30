@@ -83,27 +83,6 @@
 :host at-sidebar-trigger at-button [data-name=button-icon] {
   font-size: var(--token-font-size-icon-xl) !important;
 }
-:host[data-state=collapsed] .nav at-sidebar-trigger {
-  width: 100%;
-}
-:host[data-state=collapsed] i[slot=menu-item-actions],
-:host[data-state=collapsed] * > [data-name=sidebar-menu-item-label] {
-  opacity: 0;
-}
-:host[data-state=collapsed] at-menu i[slot=menu-item-actions],
-:host[data-state=collapsed] at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
-  opacity: 1;
-}
-:host[data-state=collapsed].collapse-offcanvas .nav {
-  width: var(--token-width-sidebar-offscreen);
-  overflow: hidden;
-}
-:host[data-state=collapsed].collapse-icon .nav {
-  width: var(--token-width-sidebar-collapsed);
-}
-:host[data-state=collapsed].collapse-none .nav {
-  width: var(--token-width-sidebar);
-}
 :host.mode-over .nav {
   position: absolute;
 }
@@ -115,4 +94,26 @@
 }
 :host.side-right {
   flex-direction: row-reverse;
+}
+
+:host([data-state=collapsed]) .nav at-sidebar-trigger {
+  width: 100%;
+}
+:host([data-state=collapsed]) i[slot=menu-item-actions],
+:host([data-state=collapsed]) * > [data-name=sidebar-menu-item-label] {
+  opacity: 0;
+}
+:host([data-state=collapsed]) at-menu i[slot=menu-item-actions],
+:host([data-state=collapsed]) at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
+  opacity: 1;
+}
+:host([data-state=collapsed]) .nav.collapse-offcanvas {
+  width: var(--token-width-sidebar-offscreen);
+  overflow: hidden;
+}
+:host([data-state=collapsed]) .nav.collapse-icon {
+  width: var(--token-width-sidebar-collapsed);
+}
+:host([data-state=collapsed]) .nav.collapse-none {
+  width: var(--token-width-sidebar);
 }

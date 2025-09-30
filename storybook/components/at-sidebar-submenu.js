@@ -3,7 +3,7 @@ import { d as defineCustomElement$6 } from './p-OYY5LFKA.js';
 import { d as defineCustomElement$5 } from './p-BdCQaXxx.js';
 import { d as defineCustomElement$4 } from './p-CTWY0kLr.js';
 import { d as defineCustomElement$3 } from './p-PSc2GWK0.js';
-import { d as defineCustomElement$2 } from './p-C6Wakrkj.js';
+import { d as defineCustomElement$2 } from './p-p61xCLIr.js';
 
 const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarSubmenuComponent extends H {
     /**
