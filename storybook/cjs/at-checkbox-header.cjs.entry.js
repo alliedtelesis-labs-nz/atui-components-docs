@@ -1,11 +1,15 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    params;
+    disabled;
+    isChecked;
+    get el() { return index.getElement(this); }
     init(params) {
         this.params = params;
         this.params.width = 60;
@@ -35,8 +39,7 @@ const AtCheckboxHeaderComponent = class {
         }
     }
     setDisabled() {
-        var _a;
-        if (!((_a = this.params) === null || _a === void 0 ? void 0 : _a.api))
+        if (!this.params?.api)
             return;
         const renderedNodes = this.params.api.getRenderedNodes();
         const data = renderedNodes.map((node) => node.data);
@@ -47,7 +50,6 @@ const AtCheckboxHeaderComponent = class {
     render() {
         return (index.h("at-checkbox", { key: 'a0cc687edbb566cc47f5c0e892a338927793fd9d', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_checkbox_header = AtCheckboxHeaderComponent;

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const placeholderVariants = {
     iconSizes: {
@@ -19,11 +19,27 @@ const placeholderVariants = {
 const AtPlaceholderComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Size of the placeholder
-         */
-        this.size = 'md';
     }
+    /**
+     * Size of the placeholder
+     */
+    size = 'md';
+    /**
+     * Material icon to be displayed in the center of the placeholder
+     */
+    icon;
+    /**
+     * Title to be displayed below the icon
+     */
+    placeholder_title;
+    /**
+     * Content to be displayed below the title
+     */
+    content;
+    /**
+     * Will show a loading spinner when set
+     */
+    show_loading_spinner;
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }

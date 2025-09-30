@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {
     variants: {
@@ -16,17 +16,39 @@ const AtCheckboxGroup = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
-        /**
-         * Sets the layout of the checkbox-group
-         */
-        this.layout = 'column';
-        /**
-         * A list of strings, containing the Id's of the currently selected checkboxes
-         */
-        this.value = [];
-        this.checkboxEls = [];
-        this.formControlSelected = null;
     }
+    /**
+     * Label of the checkbox group.
+     */
+    label;
+    /**
+     * Info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Hint to be placed below the label
+     */
+    hint_text;
+    /**
+     * Displayed when the input is invalid
+     */
+    error_text;
+    /**
+     * Disables interaction with the checkbox
+     */
+    disabled;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Options displayed in the checkbox group.
+     */
+    options;
     updateSelected() {
         this.options.forEach((option) => {
             if (option.value === true &&
@@ -39,6 +61,21 @@ const AtCheckboxGroup = class {
             }
         });
     }
+    /**
+     * Sets the layout of the checkbox-group
+     */
+    layout = 'column';
+    /**
+     * A list of strings, containing the Id's of the currently selected checkboxes
+     */
+    value = [];
+    get el() { return index.getElement(this); }
+    checkboxEls = [];
+    /**
+     * Emits an event containing the 'selected' prop when changed
+     */
+    atuiChange;
+    formControlSelected = null;
     componentDidLoad() {
         if (!this.getCheckBoxes) {
             this.el
@@ -77,7 +114,6 @@ const AtCheckboxGroup = class {
         return (index.h(index.Host, { key: '741608699735a7ca8eb63296f26171d4f356568e', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, index.h("div", { key: '0b02dfcd31b02a8f974a68f2d84e6f8edd88dbc9', class: "flex flex-col" }, index.h("slot", { key: 'db676069e7f5fb73e89e1e3675f5bbb6991e883c', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '5ba539507c8fea2b9a341264413175d23cdf2fdc', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '9ad19cf1e91b4474dc9543ca90392f799543ce86', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), index.h("ul", { key: '968fc82901a9e7e0353181d80b6be1ef05924f8b', class: classname, "data-name": "checkbox-group-options" }, index.h("slot", { key: '53204e65d0f59f25f99add0186f775c3e37113bf' }), this.getCheckBoxes &&
             this.getCheckBoxes.map((checkbox) => (index.h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (index.h("span", { key: 'd11b1d39b0b8f3d0dba62c35dd8dcff612855b2c', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "options": ["updateSelected"]
     }; }

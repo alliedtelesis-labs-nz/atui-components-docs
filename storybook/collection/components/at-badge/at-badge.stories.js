@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a, _b, _c, _d;
-    return `
+const Template = (args) => `
 <at-badge 
     ${args.count ? `count="${args.count}"` : ''}
-    icon="${(_a = args.icon) !== null && _a !== void 0 ? _a : ''}"
-    label="${(_b = args.label) !== null && _b !== void 0 ? _b : ''}"
+    icon="${args.icon ?? ''}"
+    label="${args.label ?? ''}"
     ${args.rounded ? 'rounded' : ''}
-    impact="${(_c = args.impact) !== null && _c !== void 0 ? _c : 'low'}"
-    type="${(_d = args.type) !== null && _d !== void 0 ? _d : 'default'}"
+    impact="${args.impact ?? 'low'}"
+    type="${args.type ?? 'default'}"
 />`;
-};
 export default {
     title: 'Components/Badge',
     argTypes: {

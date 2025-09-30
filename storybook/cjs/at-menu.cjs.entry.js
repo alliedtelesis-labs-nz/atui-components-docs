@@ -1,58 +1,71 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtMenu = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiMenuStateChange = index.createEvent(this, "atuiMenuStateChange", 7);
-        /**
-         * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
-         */
-        this.offset_x = 0;
-        /**
-         * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
-         */
-        this.offset_y = 0;
-        /**
-         * Position of opened menu element relative to the trigger element.
-         */
-        this.position = 'bottom';
-        /**
-         * Alignment of opened menu element relative to trigger element.
-         */
-        this.align = 'start';
-        /**
-         * Prevent closing of menu when options are selected. Used for multi-selection controls.
-         */
-        this.autoclose = true;
-        /**
-         * Event type that triggers the menu open state. Click or Hover.
-         */
-        this.trigger = 'click';
-        /**
-         * Close the menu when the user clicks within the menu panel. Default for single selection menus.
-         */
-        this.role = 'menu';
-        /**
-         * Prevent opening menu
-         */
-        this.disabled = false;
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.updatePosition = async () => {
-            if (this.triggerEl && this.menuEl && this.isOpen) {
-                await this.updateFloatingPosition();
-            }
-        };
-        this.externalTriggerListeners = [];
     }
+    /**
+     * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
+     */
+    offset_x = 0;
+    /**
+     * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
+     */
+    offset_y = 0;
+    /**
+     * Position of opened menu element relative to the trigger element.
+     */
+    position = 'bottom';
+    /**
+     * Alignment of opened menu element relative to trigger element.
+     */
+    align = 'start';
+    /**
+     * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width.
+     * To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
+     */
+    width;
+    /**
+     * Prevent closing of menu when options are selected. Used for multi-selection controls.
+     */
+    autoclose = true;
+    /**
+     * Event type that triggers the menu open state. Click or Hover.
+     */
+    trigger = 'click';
+    /**
+     * Close the menu when the user clicks within the menu panel. Default for single selection menus.
+     */
+    role = 'menu';
+    /**
+     * Prevent opening menu
+     */
+    disabled = false;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
+    trigger_id;
     disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             this.closeMenu();
         }
     }
+    isOpen = false;
+    triggerEl;
+    menuEl;
+    triggerEls = [];
+    popoverId;
+    cleanupAutoUpdate;
+    updatePosition = async () => {
+        if (this.triggerEl && this.menuEl && this.isOpen) {
+            await this.updateFloatingPosition();
+        }
+    };
+    get el() { return index.getElement(this); }
     /**
      * Toggles the dropdown menu's open state.
      */
@@ -105,6 +118,11 @@ const AtMenu = class {
     async getIsOpen() {
         return this.isOpen;
     }
+    /**
+     * Emits an event containing the open menu state.
+     */
+    atuiMenuStateChange;
+    timedOutCloser;
     async componentDidLoad() {
         this.popoverId = `atui-menu-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
@@ -203,6 +221,7 @@ const AtMenu = class {
         this.cleanupFloatingUI();
         this.cleanupExternalTriggerListeners();
     }
+    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -357,7 +376,6 @@ const AtMenu = class {
                 }
             }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, index.h("slot", { key: 'bcafa5c06494a4ced815acd5706ae4782368bc77' }))));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "disabled": ["disabledChanged"]
     }; }

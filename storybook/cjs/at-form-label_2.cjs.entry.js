@@ -1,16 +1,31 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtFormLabelComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    /**
+     * Label that appears before the info icon.
+     */
+    label;
+    /**
+     * When true, there will be a red star on the label.
+     */
+    required;
+    /**
+     * The text to be contained in the tooltip.
+     */
+    info_text;
+    /**
+     * Placed in the 'for' attribute on the label element
+     */
+    for;
     render() {
-        var _a;
         return (index.h("div", { key: 'e52a5a37130898e8537efeea0d5bc6b041fd426b', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (index.h("label", { key: '7c0dc564ab386bb31cf5dc79c5b741b8b7e19864', htmlFor: (_a = this.for) !== null && _a !== void 0 ? _a : undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'aba209d4d38d4954bb3edc9773cb0211019e08fb', class: "text-error" }, "*"))),
+            (this.label || this.required) && (index.h("label", { key: '7c0dc564ab386bb31cf5dc79c5b741b8b7e19864', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'aba209d4d38d4954bb3edc9773cb0211019e08fb', class: "text-error" }, "*"))),
             this.info_text && (index.h("at-tooltip", { key: '84a13a0b082af880513ec632864012e6b2256f2d', position: "right" }, index.h("span", { key: '2b19e12fb91e1c09fe731f3bc7e7307f0dad61f4', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), index.h("span", { key: '817587626ab1406bc6c6b321f54f1e2fb2cb323e' }, this.info_text))),
         ]));
     }
@@ -20,44 +35,54 @@ const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
 const AtTooltip = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Position of opened tooltip element relative to the trigger element.
-         */
-        this.position = 'top';
-        /**
-         * Alignment of opened tooltip element relative to trigger element.
-         */
-        this.align = 'center';
-        /**
-         * Prevent opening tooltip
-         */
-        this.disabled = false;
-        /**
-         * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
-         */
-        this.width = '200px';
-        /**
-         * Offset in pixels from the edge of the trigger element
-         */
-        this.offset = 8;
-        /**
-         * Delay before showing and hiding the tooltip when interacting with the trigger element.
-         */
-        this.delay = 150;
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.updatePosition = async () => {
-            if (this.triggerEl && this.tooltipEl && this.isOpen) {
-                await this.updateFloatingPosition();
-            }
-        };
-        this.externalTriggerListeners = [];
     }
+    /**
+     * Position of opened tooltip element relative to the trigger element.
+     */
+    position = 'top';
+    /**
+     * Alignment of opened tooltip element relative to trigger element.
+     */
+    align = 'center';
+    /**
+     * Prevent opening tooltip
+     */
+    disabled = false;
+    /**
+     * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+     */
+    width = '200px';
+    /**
+     * Offset in pixels from the edge of the trigger element
+     */
+    offset = 8;
+    /**
+     * Delay before showing and hiding the tooltip when interacting with the trigger element.
+     */
+    delay = 150;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
+    trigger_id;
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             await this.closeTooltip();
         }
     }
+    isOpen = false;
+    get el() { return index.getElement(this); }
+    triggerEl;
+    tooltipEl;
+    triggerEls = [];
+    cleanupAutoUpdate;
+    popoverId;
+    showTimeout;
+    hideTimeout;
+    updatePosition = async () => {
+        if (this.triggerEl && this.tooltipEl && this.isOpen) {
+            await this.updateFloatingPosition();
+        }
+    };
     /**
      * Opens the tooltip.
      */
@@ -116,6 +141,7 @@ const AtTooltip = class {
             this.hideTimeout = undefined;
         }
     }
+    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -214,7 +240,6 @@ const AtTooltip = class {
             }, { threshold: 0 });
             observer.observe(this.triggerEl);
             this.cleanupAutoUpdate = floatingUi_dom.autoUpdate(this.triggerEl, this.tooltipEl, () => {
-                var _a;
                 if (this.isOpen) {
                     const placement = this.getFloatingUIPlacement();
                     const strategy = 'fixed';
@@ -222,7 +247,7 @@ const AtTooltip = class {
                         placement,
                         strategy,
                         middleware: [
-                            floatingUi_dom.offset((_a = this.offset) !== null && _a !== void 0 ? _a : 8),
+                            floatingUi_dom.offset(this.offset ?? 8),
                             floatingUi_dom.flip({
                                 fallbackStrategy: 'bestFit',
                                 padding: 8,
@@ -269,8 +294,7 @@ const AtTooltip = class {
         }
     }
     cleanupFloatingUI() {
-        var _a;
-        (_a = this.cleanupAutoUpdate) === null || _a === void 0 ? void 0 : _a.call(this);
+        this.cleanupAutoUpdate?.();
         this.cleanupAutoUpdate = undefined;
     }
     async updateFloatingPosition() {
@@ -297,7 +321,6 @@ const AtTooltip = class {
     render() {
         return (index.h(index.Host, { key: '0f4222dbfc1b17df45db17d948849b8ca3ce67ca', class: "relative" }, !this.trigger_id && (index.h("div", { key: 'c1742514df2d9a127b9f99b4a4d792dc6429ea9c', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '739ba9bf95088b456c917b9f8394c129261ed754', name: "tooltip-trigger" }))), index.h("div", { key: '919225403d956c9fa0682838a70999621e06b8e0', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '175fae69a5bdd3797d8dd0a96db67c47343ced0a' }))));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "disabled": ["disabledChanged"]
     }; }

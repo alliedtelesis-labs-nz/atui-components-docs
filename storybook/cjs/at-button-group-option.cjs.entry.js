@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
     variants: {
@@ -25,6 +25,33 @@ const AtButtonGroupOption = class {
         index.registerInstance(this, hostRef);
         this.atuiClick = index.createEvent(this, "atuiClick", 7);
     }
+    /**
+     * ID of the button element and its option
+     */
+    option_id;
+    /**
+     * String to be displayed in the button
+     */
+    label;
+    /**
+     * Icon to be displayed in the button
+     */
+    icon;
+    /**
+     * Will disable interaction if set
+     */
+    disabled;
+    /**
+     * Will apply active styling to the button
+     */
+    is_active;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    host_disabled;
+    provider;
     async componentDidLoad() {
         this.provider = this.el.closest('at-button-group');
         this.host_disabled = this.provider.disabled;
@@ -45,7 +72,6 @@ const AtButtonGroupOption = class {
         });
         return (index.h("button", { key: '96906f6753e18011b80594a1d4acd3a8dae6eee9', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '173611a4c1c2d028b342c61a665443734d6cc187', name: "icon" }), this.label));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_button_group_option = AtButtonGroupOption;

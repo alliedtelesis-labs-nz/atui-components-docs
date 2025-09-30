@@ -1,11 +1,13 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtEditTextCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    get el() { return index.getElement(this); }
+    params;
     init(params) {
         this.params = params;
     }
@@ -28,7 +30,6 @@ const AtEditTextCell = class {
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_edit_text_cell = AtEditTextCell;

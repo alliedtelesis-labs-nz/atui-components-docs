@@ -15,6 +15,8 @@ import { AtColorStatusCell } from "./cell-components/at-color-status-cell/at-col
 import { AtTextImageCell } from "./cell-components/at-text-image-cell/at-text-image-cell";
 import { AtMenuCell } from "./cell-components/at-menu-cell/at-menu-cell";
 export class AtTableComponentsConfigs {
+    static defaultPageSize = 10;
+    static cellComponentsLoaded = false;
     /**
      * Ensures all table cell components are registered as custom elements.
      * This is crucial for production builds where tree-shaking might remove
@@ -85,6 +87,4 @@ export class AtTableComponentsConfigs {
         this.cellComponentsLoaded = false;
     }
 }
-AtTableComponentsConfigs.defaultPageSize = 10;
-AtTableComponentsConfigs.cellComponentsLoaded = false;
 //# sourceMappingURL=at-table-components-configs.js.map

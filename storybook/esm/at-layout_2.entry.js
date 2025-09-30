@@ -1,18 +1,18 @@
-import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
-import { c as classlist } from './classlist-DowIpD9s.js';
+import { r as registerInstance, h, H as Host } from './index-CzNdk2S6.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Template used to display content
-         */
-        this.template = 'master-detail';
-        /**
-         * If overflow is allowed on the detail in master-detail
-         */
-        this.overflow = true;
     }
+    /**
+     * Template used to display content
+     */
+    template = 'master-detail';
+    /**
+     * If overflow is allowed on the detail in master-detail
+     */
+    overflow = true;
     get layoutElement() {
         switch (this.template) {
             case 'master-detail':
@@ -50,11 +50,24 @@ const variantsConfig = {
 const AtTab = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Styling based on the layout of the tabs
-         */
-        this.layout = 'horizontal';
     }
+    /**
+     * ID of the tab
+     */
+    tab_id;
+    /**
+     * Title to be displayed in the tab
+     */
+    tab_title;
+    /**
+     * Styling based on the layout of the tabs
+     */
+    layout = 'horizontal';
+    /**
+     * Applies styling when active
+     */
+    is_active;
+    tabEl;
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
             this.tabEl.click();

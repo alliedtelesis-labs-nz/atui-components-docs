@@ -1,13 +1,11 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f;
-    return `
+const Template = (args) => `
 <at-button
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
-    icon="${(_b = args.icon) !== null && _b !== void 0 ? _b : ''}"
-    icon_right="${(_c = args.icon_right) !== null && _c !== void 0 ? _c : ''}"
-    size="${(_d = args.size) !== null && _d !== void 0 ? _d : 'lg'}"
-    type="${(_e = args.type) !== null && _e !== void 0 ? _e : 'primary'}"
-    spinner_minimum_display_period_ms=${(_f = args.spinner_minimum_display_period_ms) !== null && _f !== void 0 ? _f : 1000}
+    label="${args.label ?? ''}"
+    icon="${args.icon ?? ''}"
+    icon_right="${args.icon_right ?? ''}"
+    size="${args.size ?? 'lg'}"
+    type="${args.type ?? 'primary'}"
+    spinner_minimum_display_period_ms=${args.spinner_minimum_display_period_ms ?? 1000}
     ${args.submit ? 'submit' : ''}
     ${args.border ? 'border' : ''}
     ${args.rounded ? 'rounded' : ''}
@@ -15,7 +13,6 @@ const Template = (args) => {
     ${args.in_progress ? 'in_progress' : ''}
 />
 `;
-};
 export default {
     title: 'Components/Button',
     argTypes: {

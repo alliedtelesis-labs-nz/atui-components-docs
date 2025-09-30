@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var translation = require('./translation-HqquF7bU.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
 const inputVariantsConfig = {
@@ -43,36 +43,72 @@ const AtMultiSelectComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
-        /**
-         * Label of the select.
-         */
-        this.label = '';
-        /**
-         * Short description or validation hint if required.
-         */
-        this.hint_text = '';
-        /**
-         * Error text for the select.
-         */
-        this.error_text = '';
-        /**
-         * Optional info icon with detailed tooltip description. Displayed at right of label.
-         */
-        this.info_text = '';
-        /**
-         * Placeholder text for the select.
-         */
-        this.placeholder = '';
-        /**
-         * The selected items
-         */
-        this.value = [];
-        this.searchText = '';
-        this.isOpen = false;
-        this.hasMatchingOptions = false;
-        this.parentWidth = '';
-        this.menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Options displayed in the dropdown menu.
+     */
+    options;
+    /**
+     * Label of the select.
+     */
+    label = '';
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text = '';
+    /**
+     * Error text for the select.
+     */
+    error_text = '';
+    /**
+     * Optional info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text = '';
+    /**
+     * Placeholder text for the select.
+     */
+    placeholder = '';
+    /**
+     * Indicated form field is required.
+     */
+    required;
+    /**
+     * Set the select to appear invalid.
+     */
+    invalid;
+    /**
+     * Set the select to be clearable.
+     */
+    clearable;
+    /**
+     * Disable user interaction. Disabled state should be applied via form control.
+     */
+    disabled;
+    /**
+     * Set input to readonly mode, allows users to select any active values.
+     */
+    readonly;
+    /**
+     * Set the select to enable typeahead search.
+     */
+    typeahead;
+    /**
+     * The selected items
+     */
+    value = [];
+    searchText = '';
+    isOpen = false;
+    translations;
+    hasMatchingOptions = false;
+    parentWidth = '';
+    get el() { return index.getElement(this); }
+    menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    menuRef;
+    searchInputEl;
+    /**
+     * Emits an event containing a list of the selected items when the selection changes.
+     */
+    atuiChange;
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
@@ -114,12 +150,11 @@ const AtMultiSelectComponent = class {
         keyboardNavigation.handleHomeEndNavigation(event, menuContainer);
     }
     handleSearchInput(event) {
-        var _a;
         const inputEl = event.target;
         this.searchText = inputEl.value.toLowerCase();
         const trimmedSearch = this.searchText.trim().toLowerCase();
         this.hasMatchingOptions = trimmedSearch
-            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
+            ? this.options?.some((option) => option.value.toLowerCase().includes(trimmedSearch))
             : true;
     }
     render() {
@@ -128,8 +163,7 @@ const AtMultiSelectComponent = class {
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
                     setTimeout(async () => {
-                        var _a;
-                        await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+                        await this.menuRef?.closeMenu();
                     }, 100);
                 }
             } }, this.renderLabel(), index.h("at-menu", { key: 'f75ffb136109f628b3d2ec85c69efecdd420a1b3', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
@@ -155,23 +189,23 @@ const AtMultiSelectComponent = class {
             : 'arrow_drop_down'))))));
     }
     renderOptions() {
-        var _a, _b, _c, _d, _e;
         return (index.h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.searchText = '';
                 this.searchInputEl.value = '';
-            }, "data-name": "multi-select-search-clear" }))))), (_c = this.options) === null || _c === void 0 ? void 0 :
-            _c.filter((option) => !this.searchText ||
-                option.value
-                    .toLowerCase()
-                    .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
+            }, "data-name": "multi-select-search-clear" }))))), this.options
+            ?.filter((option) => !this.searchText ||
+            option.value
+                .toLowerCase()
+                .includes(this.searchText))
+            .map((option) => this.renderOption(option)), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
+            !this.hasMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
             'No results found'))));
     }
     renderOption(option) {
@@ -181,7 +215,6 @@ const AtMultiSelectComponent = class {
         });
         return (index.h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_multi_select = AtMultiSelectComponent;

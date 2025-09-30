@@ -18,18 +18,16 @@ import { h, Host } from "@stencil/core";
  * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
  */
 export class AtAccordionComponent {
-    constructor() {
-        /**
-         * Used to create accordion items.
-         */
-        this.items = [];
-        /**
-         * If set, all child accordions will be open by default.
-         */
-        this.default_open = false;
-        this.accordionItems = [];
-        this.accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    el;
+    /**
+     * Used to create accordion items.
+     */
+    items = [];
+    /**
+     * If set, all child accordions will be open by default.
+     */
+    default_open = false;
+    accordionItems = [];
     async componentDidLoad() {
         // Wait for child components to be ready
         await new Promise((resolve) => setTimeout(resolve, 0));
@@ -90,6 +88,7 @@ export class AtAccordionComponent {
     refreshAccordionItems() {
         this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
     }
+    accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
         return (h(Host, { key: '6b2195a25f6dd26a68baafd11b6748e79fbcf6ff', class: "flex flex-col gap-2" }, h("slot", { key: '93ff2fb04b308503cd077f2f35834a46ed0d9038' }), this.items &&
             this.items.map((item) => {

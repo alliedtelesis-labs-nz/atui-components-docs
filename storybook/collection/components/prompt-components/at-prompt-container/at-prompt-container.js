@@ -7,70 +7,88 @@ import { fetchTranslations } from "../../../utils/translation";
  * @slot prompt-container-footer - Custom content displayed below the message input
  */
 export class AtPromptContainer {
-    constructor() {
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Placeholder text for the input field
-         */
-        this.placeholder = 'Type your message here...';
-        /**
-         * Shows loading state and disables input
-         */
-        this.loading = false;
-        /**
-         * Disables all interactions with the container
-         */
-        this.disabled = false;
-        /**
-         * Controls visibility of the "New Thread" button in the header
-         */
-        this.show_new_thread_button = true;
-        /**
-         * Maximum character length for input messages
-         */
-        this.max_message_length = 2000;
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        /**
-         * Enable streaming text animations for system/assistant messages
-         * - 'none': No animation
-         * - 'fade': Fade in the entire message
-         * - 'words': Animate words appearing sequentially like ChatGPT
-         */
-        this.response_animation = 'words';
-        this.currentInput = '';
-        this.inputInvalid = false;
-        this.inputError = '';
-        this.isSendEnabled = true;
-        this.translations = {};
-        this.handleSubmit = async (content) => {
-            if (!content || this.disabled || this.loading || !this.isSendEnabled) {
-                return;
-            }
-            this.isSendEnabled = false;
-            await this.addMessage('user', content);
-            this.atSubmit.emit(content);
-        };
-        this.handleStop = () => {
-            this.atStop.emit();
-        };
-        this.handleNewThread = async () => {
-            await this.newThread();
-        };
-    }
+    el;
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Placeholder text for the input field
+     */
+    placeholder = 'Type your message here...';
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Shows loading state and disables input
+     */
+    loading = false;
+    /**
+     * Disables all interactions with the container
+     */
+    disabled = false;
+    /**
+     * Controls visibility of the "New Thread" button in the header
+     */
+    show_new_thread_button = true;
+    /**
+     * Maximum character length for input messages
+     */
+    max_message_length = 2000;
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    currentInput = '';
+    inputInvalid = false;
+    inputError = '';
+    isSendEnabled = true;
+    translations = {};
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emitted when the "New Thread" button is clicked
+     */
+    atNewThread;
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atMessageVote;
+    inputComponent;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -98,7 +116,10 @@ export class AtPromptContainer {
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }
@@ -159,11 +180,24 @@ export class AtPromptContainer {
             }, 0);
         }
     }
+    handleSubmit = async (content) => {
+        if (!content || this.disabled || this.loading || !this.isSendEnabled) {
+            return;
+        }
+        this.isSendEnabled = false;
+        await this.addMessage('user', content);
+        this.atSubmit.emit(content);
+    };
+    handleStop = () => {
+        this.atStop.emit();
+    };
+    handleNewThread = async () => {
+        await this.newThread();
+    };
     renderHeader() {
-        var _a, _b, _c;
         if (!this.show_new_thread_button)
             return null;
-        const newThreadText = ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.NEW_THREAD) || 'New Thread';
+        const newThreadText = this.translations?.ATUI?.PROMPT?.NEW_THREAD || 'New Thread';
         return (h("div", { class: "flex justify-end pb-16" }, h("at-button", { slot: "actions", size: "md", type: "primaryOutline", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText)));
     }
     renderFooter() {

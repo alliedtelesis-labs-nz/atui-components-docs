@@ -10,9 +10,27 @@ import { h, Host, } from "@stencil/core";
  * @slot submenu-hover-content - To place the atui-sidebar-menuitem(s) in the sub menu on collapsed mode
  */
 export class AtSidebarSubmenuComponent {
+    /**
+     * Label to be displayed for the menu item
+     */
+    label;
+    /**
+     * Icon to be displayed with the label
+     */
+    icon;
+    /**
+     * Alert badge for the menu item
+     */
+    badge;
+    /**
+     * Will change the styling of the menuitem when set
+     */
+    is_active;
+    isSidebarOpen = false;
+    isAccordionOpen = false;
+    atuiAccordionItem;
+    el;
     constructor() {
-        this.isSidebarOpen = false;
-        this.isAccordionOpen = false;
         this.handleAtuiChange = this.handleAtuiChange.bind(this);
     }
     async componentDidLoad() {

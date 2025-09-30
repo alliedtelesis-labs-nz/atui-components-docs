@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
-import { c as classlist } from './classlist-DowIpD9s.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -26,24 +26,66 @@ const AtInputComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * Type of the input
-         */
-        this.type = 'text';
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = '';
-        /**
-         * Sets the 'autocomplete' attribute on the input element
-         */
-        this.autocomplete = 'on';
-        /**
-         * Disables interaction with the input
-         */
-        this.disabled = false;
-        this.inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Type of the input
+     */
+    type = 'text';
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = '';
+    /**
+     * Adds a required * to the element
+     */
+    required;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Sets the 'autocomplete' attribute on the input element
+     */
+    autocomplete = 'on';
+    /**
+     * Makes the input read only
+     */
+    readonly;
+    /**
+     * Disables interaction with the input
+     */
+    disabled = false;
+    /**
+     * Allows the input to be cleared with a 'x' at the end of the input element
+     */
+    clearable;
+    /**
+     * The value of the input
+     */
+    value;
+    inputEl;
+    get el() { return getElement(this); }
+    /**
+     * Emits an event containing the text string or number when the input's content is changed
+     */
+    atuiChange;
+    inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
         this.value = event.target.value;
@@ -74,7 +116,6 @@ const AtInputComponent = class {
                 this.handleClear();
             }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: '4911951e7e30d6653369e5c0529f1d4e7711ba46', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtInputComponent as at_input };

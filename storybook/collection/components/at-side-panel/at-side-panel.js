@@ -29,54 +29,56 @@ const sizeVariants = {
  * @slot default - Used for placing the content of the side panel.
  */
 export class AtSidePanelComponent {
-    constructor() {
-        /**
-         * Size of the size panel
-         */
-        this.size = 'xs';
-        /**
-         *  Position of the side panel
-         */
-        this.origin = 'right';
-        /**
-         * Puts a scrollbar on the sidepanel if set
-         */
-        this.has_scrollbar = true;
-        /**
-         * Displays a close button if set
-         */
-        this.has_close_button = true;
-        /**
-         * Will close the sidepanel if clicked off when set
-         */
-        this.close_backdrop = false;
-        /**
-         * If sidepanel should used fixed positioning (otherwise absolute)
-         */
-        this.fixed = true;
-        /**
-         * Whether to show a backdrop behind the panel
-         */
-        this.backdrop = false;
-        this.isExpanded = false;
-        this.triggerEls = [];
-        this.externalTriggerListeners = [];
-        this.handleClose = () => {
-            this.closeSidePanel();
-        };
-        this.handleDialogClose = (event) => {
-            event.preventDefault();
-            if (this.isExpanded) {
-                this.closeSidePanel();
-            }
-        };
-        this.handleKeyDown = (event) => {
-            if (event.key === 'Escape' && this.isExpanded) {
-                event.preventDefault();
-                this.closeSidePanel();
-            }
-        };
-    }
+    el;
+    /**
+     * Size of the size panel
+     */
+    size = 'xs';
+    /**
+     * ID of the panel
+     */
+    panel_id;
+    /**
+     * Title displayed in the side panel
+     */
+    panel_title;
+    /**
+     * Subtitle displayed in the side panel
+     */
+    panel_subtitle;
+    /**
+     *  Position of the side panel
+     */
+    origin = 'right';
+    /**
+     * Puts a scrollbar on the sidepanel if set
+     */
+    has_scrollbar = true;
+    /**
+     * Displays a close button if set
+     */
+    has_close_button = true;
+    /**
+     * Will close the sidepanel if clicked off when set
+     */
+    close_backdrop = false;
+    /**
+     * If sidepanel should used fixed positioning (otherwise absolute)
+     */
+    fixed = true;
+    /**
+     * Whether to show a backdrop behind the panel
+     */
+    backdrop = false;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+     */
+    trigger_id;
+    isExpanded = false;
+    sidePanelWrapper;
+    panelDialog;
+    triggerEls = [];
+    externalTriggerListeners = [];
     /**
      * Toggles the side panel between open and closed states
      * @returns Promise that resolves when the panel state is toggled
@@ -113,11 +115,25 @@ export class AtSidePanelComponent {
             this.panelDialog.classList.remove('backdrop');
         }
     }
+    handleClose = () => {
+        this.closeSidePanel();
+    };
+    handleDialogClose = (event) => {
+        event.preventDefault();
+        if (this.isExpanded) {
+            this.closeSidePanel();
+        }
+    };
+    handleKeyDown = (event) => {
+        if (event.key === 'Escape' && this.isExpanded) {
+            event.preventDefault();
+            this.closeSidePanel();
+        }
+    };
     offClickHandler(event) {
-        var _a, _b;
-        if (!this.close_backdrop || !((_a = this.panelDialog) === null || _a === void 0 ? void 0 : _a.open))
+        if (!this.close_backdrop || !this.panelDialog?.open)
             return;
-        if (!((_b = this.sidePanelWrapper) === null || _b === void 0 ? void 0 : _b.contains(event.target))) {
+        if (!this.sidePanelWrapper?.contains(event.target)) {
             this.handleClose();
         }
     }

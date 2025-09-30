@@ -4,6 +4,10 @@ import { h, Host } from "@stencil/core";
  * @description A cell component for displaying multiple buttons.
  */
 export class AtMultiBtnCell {
+    el;
+    params;
+    buttons;
+    containerStyles;
     init(params) {
         this.params = params;
         const { containerStyles, buttons } = this.params;

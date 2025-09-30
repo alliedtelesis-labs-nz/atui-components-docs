@@ -1,14 +1,14 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BRRmBK9P.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BAZ2N91w.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { c as classlist } from './p-DowIpD9s.js';
+import { c as classlist } from './p-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
-import { d as defineCustomElement$8 } from './p-HlugIoZb.js';
-import { d as defineCustomElement$7 } from './p-nHcnaAyy.js';
-import { d as defineCustomElement$6 } from './p-C0kTbNe6.js';
-import { d as defineCustomElement$5 } from './p-DUrPhBc7.js';
-import { d as defineCustomElement$4 } from './p-CIqSXlz0.js';
-import { d as defineCustomElement$3 } from './p-Bra11bSv.js';
-import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
+import { d as defineCustomElement$8 } from './p-CTWY0kLr.js';
+import { d as defineCustomElement$7 } from './p-DOZocyOp.js';
+import { d as defineCustomElement$6 } from './p-BGuMaSmf.js';
+import { d as defineCustomElement$5 } from './p-DOJpzqxq.js';
+import { d as defineCustomElement$4 } from './p-Dqduj1vs.js';
+import { d as defineCustomElement$3 } from './p-PSc2GWK0.js';
+import { d as defineCustomElement$2 } from './p-C03bPuQn.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -51,36 +51,72 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
             this.__registerHost();
         }
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * Label of the select.
-         */
-        this.label = '';
-        /**
-         * Short description or validation hint if required.
-         */
-        this.hint_text = '';
-        /**
-         * Error text for the select.
-         */
-        this.error_text = '';
-        /**
-         * Optional info icon with detailed tooltip description. Displayed at right of label.
-         */
-        this.info_text = '';
-        /**
-         * Placeholder text for the select.
-         */
-        this.placeholder = '';
-        /**
-         * The selected items
-         */
-        this.value = [];
-        this.searchText = '';
-        this.isOpen = false;
-        this.hasMatchingOptions = false;
-        this.parentWidth = '';
-        this.menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Options displayed in the dropdown menu.
+     */
+    options;
+    /**
+     * Label of the select.
+     */
+    label = '';
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text = '';
+    /**
+     * Error text for the select.
+     */
+    error_text = '';
+    /**
+     * Optional info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text = '';
+    /**
+     * Placeholder text for the select.
+     */
+    placeholder = '';
+    /**
+     * Indicated form field is required.
+     */
+    required;
+    /**
+     * Set the select to appear invalid.
+     */
+    invalid;
+    /**
+     * Set the select to be clearable.
+     */
+    clearable;
+    /**
+     * Disable user interaction. Disabled state should be applied via form control.
+     */
+    disabled;
+    /**
+     * Set input to readonly mode, allows users to select any active values.
+     */
+    readonly;
+    /**
+     * Set the select to enable typeahead search.
+     */
+    typeahead;
+    /**
+     * The selected items
+     */
+    value = [];
+    searchText = '';
+    isOpen = false;
+    translations;
+    hasMatchingOptions = false;
+    parentWidth = '';
+    get el() { return this; }
+    menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    menuRef;
+    searchInputEl;
+    /**
+     * Emits an event containing a list of the selected items when the selection changes.
+     */
+    atuiChange;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -122,12 +158,11 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
         handleHomeEndNavigation(event, menuContainer);
     }
     handleSearchInput(event) {
-        var _a;
         const inputEl = event.target;
         this.searchText = inputEl.value.toLowerCase();
         const trimmedSearch = this.searchText.trim().toLowerCase();
         this.hasMatchingOptions = trimmedSearch
-            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
+            ? this.options?.some((option) => option.value.toLowerCase().includes(trimmedSearch))
             : true;
     }
     render() {
@@ -136,8 +171,7 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
                     setTimeout(async () => {
-                        var _a;
-                        await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+                        await this.menuRef?.closeMenu();
                     }, 100);
                 }
             } }, this.renderLabel(), h("at-menu", { key: 'f75ffb136109f628b3d2ec85c69efecdd420a1b3', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
@@ -163,23 +197,23 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
             : 'arrow_drop_down'))))));
     }
     renderOptions() {
-        var _a, _b, _c, _d, _e;
         return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.searchText = '';
                 this.searchInputEl.value = '';
-            }, "data-name": "multi-select-search-clear" }))))), (_c = this.options) === null || _c === void 0 ? void 0 :
-            _c.filter((option) => !this.searchText ||
-                option.value
-                    .toLowerCase()
-                    .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
+            }, "data-name": "multi-select-search-clear" }))))), this.options
+            ?.filter((option) => !this.searchText ||
+            option.value
+                .toLowerCase()
+                .includes(this.searchText))
+            .map((option) => this.renderOption(option)), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
+            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
             'No results found'))));
     }
     renderOption(option) {
@@ -189,7 +223,6 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
         });
         return (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
     }
-    get el() { return this; }
 }, [260, "at-multi-select", {
         "options": [16],
         "label": [1],

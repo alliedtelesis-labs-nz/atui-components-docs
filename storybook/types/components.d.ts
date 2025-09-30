@@ -32,7 +32,7 @@ import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-import { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
+import { Width } from "./components/at-sidebar/at-sidebar";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
 import { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -73,7 +73,7 @@ export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-export { Collapsible, Mode, Side, Width } from "./components/at-sidebar/at-sidebar";
+export { Width } from "./components/at-sidebar/at-sidebar";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
 export { Layout } from "./components/at-tab-selector/at-tab/at-tab";
@@ -2009,9 +2009,8 @@ export namespace Components {
         "backdrop": boolean;
         /**
           * Size of the sidebar when collapsed.
-          * @default 'icon'
          */
-        "collapsible": Collapsible;
+        "collapsible": 'offcanvas' | 'icon' | 'none';
         /**
           * Opens the sidebar by default when set
           * @default false
@@ -2024,14 +2023,12 @@ export namespace Components {
         "getIsOpen": () => Promise<boolean>;
         /**
           * How the sidenav interacts with main content when open
-          * @default 'push'
          */
-        "mode": Mode;
+        "mode": 'over' | 'push';
         /**
           * Position of the sidebar on the page
-          * @default 'left'
          */
-        "side": Side;
+        "side": 'left' | 'right';
         /**
           * Toggles the sidebar's open state.
          */
@@ -6242,9 +6239,8 @@ declare namespace LocalJSX {
         "backdrop"?: boolean;
         /**
           * Size of the sidebar when collapsed.
-          * @default 'icon'
          */
-        "collapsible"?: Collapsible;
+        "collapsible"?: 'offcanvas' | 'icon' | 'none';
         /**
           * Opens the sidebar by default when set
           * @default false
@@ -6252,18 +6248,16 @@ declare namespace LocalJSX {
         "default_open"?: boolean;
         /**
           * How the sidenav interacts with main content when open
-          * @default 'push'
          */
-        "mode"?: Mode;
+        "mode"?: 'over' | 'push';
         /**
           * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
          */
         "onAtuiSidebarChange"?: (event: AtSidebarCustomEvent<any>) => void;
         /**
           * Position of the sidebar on the page
-          * @default 'left'
          */
-        "side"?: Side;
+        "side"?: 'left' | 'right';
         /**
           * Width of the sidebar
           * @default 'menu'

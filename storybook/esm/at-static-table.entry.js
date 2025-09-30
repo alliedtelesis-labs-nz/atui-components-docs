@@ -1,19 +1,33 @@
-import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
+import { r as registerInstance, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtStaticTable = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Max number of items per page
-         */
-        this.page_size = 10;
-        /**
-         * If true, disables pagination on the table and shows all data at once.
-         * Useful for server-side pagination where you want to control pagination externally.
-         */
-        this.use_custom_pagination = false;
-        this.tableCreated = false;
     }
+    /**
+     * Data to go into the table
+     */
+    table_data;
+    /**
+     * Column definitions for the table
+     */
+    col_defs;
+    /**
+     * Max number of items per page
+     */
+    page_size = 10;
+    /**
+     * If true the column manager will not be added
+     */
+    hide_column_manager;
+    /**
+     * If true, disables pagination on the table and shows all data at once.
+     * Useful for server-side pagination where you want to control pagination externally.
+     */
+    use_custom_pagination = false;
+    agGrid;
+    tableEl;
+    tableCreated = false;
     async componentDidLoad() {
         if (this.col_defs && !this.tableCreated) {
             this.agGrid = await this.tableEl.createGrid();

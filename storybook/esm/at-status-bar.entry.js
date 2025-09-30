@@ -1,17 +1,21 @@
-import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
+import { r as registerInstance, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtStatusBar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * List of segments that make up the status bar. Each segment implements the StatusBar interface.
-         */
-        this.status_bar = [];
-        /**
-         * Height of the status bar
-         */
-        this.size = 'sm';
     }
+    /**
+     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     */
+    status_bar = [];
+    /**
+     * Height of the status bar
+     */
+    size = 'sm';
+    /**
+     * Disables the tooltip when hovered
+     */
+    disable_tooltip;
     get statusBarClass() {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-sm`;
     }

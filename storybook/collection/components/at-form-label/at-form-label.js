@@ -4,10 +4,25 @@ import { h } from "@stencil/core";
  * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
  */
 export class AtFormLabelComponent {
+    /**
+     * Label that appears before the info icon.
+     */
+    label;
+    /**
+     * When true, there will be a red star on the label.
+     */
+    required;
+    /**
+     * The text to be contained in the tooltip.
+     */
+    info_text;
+    /**
+     * Placed in the 'for' attribute on the label element
+     */
+    for;
     render() {
-        var _a;
         return (h("div", { key: 'e52a5a37130898e8537efeea0d5bc6b041fd426b', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (h("label", { key: '7c0dc564ab386bb31cf5dc79c5b741b8b7e19864', htmlFor: (_a = this.for) !== null && _a !== void 0 ? _a : undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'aba209d4d38d4954bb3edc9773cb0211019e08fb', class: "text-error" }, "*"))),
+            (this.label || this.required) && (h("label", { key: '7c0dc564ab386bb31cf5dc79c5b741b8b7e19864', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'aba209d4d38d4954bb3edc9773cb0211019e08fb', class: "text-error" }, "*"))),
             this.info_text && (h("at-tooltip", { key: '84a13a0b082af880513ec632864012e6b2256f2d', position: "right" }, h("span", { key: '2b19e12fb91e1c09fe731f3bc7e7307f0dad61f4', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '817587626ab1406bc6c6b321f54f1e2fb2cb323e' }, this.info_text))),
         ]));
     }

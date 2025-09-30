@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement, F as Fragment } from './index-C3PSGxNR.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host, F as Fragment } from './index-CzNdk2S6.js';
 import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DLaek6ce.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-D5XPK9mo.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-j8nVdcoJ.js';
 import { h as hooks } from './moment-BMuAbjcg.js';
 import { M as MIN_DATE, D as DateFormat, T as TimeRangeDisplay } from './date-DJyIoUiL.js';
 
@@ -10,13 +10,48 @@ const AtButtonGroup = class {
         registerInstance(this, hostRef);
         this.atuiIndexChange = createEvent(this, "atuiIndexChange", 7);
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * List of options to be displayed on the button group.
-         */
-        this.options = [];
-        this.buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
-        this.buttonRefs = [];
     }
+    /**
+     * Label for button group.
+     */
+    label;
+    /**
+     * Optional info icon with detailed tooltip description.
+     *
+     * Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Hint for options.
+     */
+    hint_text;
+    /**
+     * Error text for invalid choices.
+     */
+    error_text;
+    /**
+     * List of options to be displayed on the button group.
+     */
+    options = [];
+    /**
+     * Sets the current active button
+     */
+    value;
+    /**
+     * Disables the button group and prevents interaction
+     */
+    disabled;
+    get el() { return getElement(this); }
+    buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * When the active button is changed, this will emit the 0-based index of the active button
+     */
+    atuiIndexChange;
+    /**
+     * When the active button is changed, this will emit the text value of the active button
+     */
+    atuiChange;
+    buttonRefs = [];
     componentDidLoad() {
         this.setInitialActiveButton();
     }
@@ -45,7 +80,6 @@ const AtButtonGroup = class {
                 }
             } }))));
     }
-    get el() { return getElement(this); }
 };
 
 const AtCustomTimeRangeComponent = class {
@@ -53,47 +87,47 @@ const AtCustomTimeRangeComponent = class {
         registerInstance(this, hostRef);
         this.atuiCancel = createEvent(this, "atuiCancel", 7);
         this.atuiSubmit = createEvent(this, "atuiSubmit", 7);
-        /**
-         * Whether time selection is enabled in addition to date selection
-         */
-        this.can_set_time = true;
-        /**
-         * Minimum number of seconds for the time range
-         */
-        this.min_seconds = 60;
-        /**
-         * Minimum selectable date
-         */
-        this.min_date = MIN_DATE;
-        /**
-         * Maximum selectable date
-         */
-        this.max_date = new Date(Date.now());
-        /**
-         * Whether to lock the end date to the current time
-         */
-        this.lock_end_date_to_now = false;
-        this.isFromMinDay = true;
-        this.isToMaxDay = true;
-        this.isFromMaxDay = false;
-        this.isToMinDay = false;
     }
+    /**
+     * Whether time selection is enabled in addition to date selection
+     */
+    can_set_time = true;
+    /**
+     * Minimum number of seconds for the time range
+     */
+    min_seconds = 60;
+    /**
+     * Minimum selectable date
+     */
+    min_date = MIN_DATE;
     validateMinDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.min_date = this.floorMinDate(newValue);
     }
+    /**
+     * Maximum selectable date
+     */
+    max_date = new Date(Date.now());
     validateMaxDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.max_date = this.ceilingMaxDate(newValue);
     }
+    /**
+     * Default value for the from date
+     */
+    default_from_date;
     validateDefaultFromDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.default_from_date = this.floorMinDate(newValue);
         this.from_date_value = this.default_from_date;
     }
+    /**
+     * Default value for the to date
+     */
+    default_to_date;
     validateDefaultToDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -102,6 +136,10 @@ const AtCustomTimeRangeComponent = class {
             ? this.default_to_date
             : this.max_date;
     }
+    /**
+     * Current value of the from date
+     */
+    from_date_value;
     validateFromDateValue(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -114,6 +152,10 @@ const AtCustomTimeRangeComponent = class {
         this.setFromDateAndTime(this.from_date_value);
         this.updateMinMaxFlags();
     }
+    /**
+     * Current value of the to date
+     */
+    to_date_value;
     validateToDateValue(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -126,6 +168,23 @@ const AtCustomTimeRangeComponent = class {
         this.setToDateAndTime(this.to_date_value);
         this.updateMinMaxFlags();
     }
+    /**
+     * Whether to lock the end date to the current time
+     */
+    lock_end_date_to_now = false;
+    isFromMinDay = true;
+    isToMaxDay = true;
+    isFromMaxDay = false;
+    isToMinDay = false;
+    toDate;
+    toTime;
+    fromDate;
+    fromTime;
+    translations;
+    setDateNowSwitch;
+    toDatePickerEl;
+    toTimePickerEl;
+    get el() { return getElement(this); }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -214,6 +273,14 @@ const AtCustomTimeRangeComponent = class {
             return TimeDatePresentationUtil.getTimeOptions();
         }
     }
+    /**
+     * Emitted when the user cancels the time range selection
+     */
+    atuiCancel;
+    /**
+     * Emitted when the user submits the time range selection
+     */
+    atuiSubmit;
     handleCancel() {
         this.atuiCancel.emit();
     }
@@ -245,7 +312,6 @@ const AtCustomTimeRangeComponent = class {
             .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: 'd100cd18f316999a1b6e53d4f4649ecb5ce9d35c', class: "text-med text-xs" }, this.translations.ATUI.TIME
             .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: 'fc32ab09e043611c3c7a4bb0bac62f16df71b7ea', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), h("div", { key: '726565a4745b830c4f41b5e11111dd82a468167e', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '62044382878f9f8bfc1f905585e197914e449a3f', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onClick: () => this.clearSelection() }), h("div", { key: '5725d6b0a80976365e89331ac4fbb258dd2f9716', class: "flex flex-row gap-8" }, h("at-button", { key: 'e63efe26513f05dad36afc7f1d73bf20ea2fffd1', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onClick: () => this.handleCancel() }), h("at-button", { key: '0f0fcc406e8cc09b25f7d553beacf85c34b645e3', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, onClick: () => this.handleSubmit() })))));
     }
-    get el() { return getElement(this); }
     static get watchers() { return {
         "min_date": ["validateMinDate"],
         "max_date": ["validateMaxDate"],
@@ -261,35 +327,54 @@ const AtTimeWithUnitComponent = class {
         registerInstance(this, hostRef);
         this.atuiCancel = createEvent(this, "atuiCancel", 7);
         this.atuiSubmit = createEvent(this, "atuiSubmit", 7);
-        /**
-         * Minimum date constraint for time selection
-         */
-        this.min_date = null;
-        /**
-         * Minimum number of seconds allowed for time selection
-         */
-        this.min_seconds = 60;
-        /**
-         * Maximum number of seconds allowed for time selection
-         */
-        this.max_seconds = Number.MAX_SAFE_INTEGER;
-        /**
-         * Custom error message to display when validation fails
-         */
-        this.custom_error_message = null;
-        /**
-         * Whether to show the 'All Time' option
-         */
-        this.show_all_time = false;
-        this.errorText = '';
-        this.secondaryErrorText = '';
     }
+    /**
+     * Available time units for selection
+     */
+    units;
+    /**
+     * Common time preset options to display
+     */
+    common_options;
+    /**
+     * Minimum date constraint for time selection
+     */
+    min_date = null;
+    /**
+     * Minimum number of seconds allowed for time selection
+     */
+    min_seconds = 60;
+    /**
+     * Maximum number of seconds allowed for time selection
+     */
+    max_seconds = Number.MAX_SAFE_INTEGER;
+    /**
+     * Initial time selection value
+     */
+    initial_selected_time;
+    /**
+     * Custom error message to display when validation fails
+     */
+    custom_error_message = null;
+    /**
+     * Whether to show the 'All Time' option
+     */
+    show_all_time = false;
+    errorText = '';
+    secondaryErrorText = '';
+    translations;
+    dropdownOptions;
+    timeValue;
     watchTimeValue() {
         this.updateSelectedTime(this.timeValue);
     }
+    timeUnit;
     watchTimeUnit() {
         this.updateSelectedTime(this.timeValue);
     }
+    selectedTime;
+    startDate;
+    get el() { return getElement(this); }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -305,7 +390,6 @@ const AtTimeWithUnitComponent = class {
             : this.units;
     }
     initSelectedTime(initialTimeRange) {
-        var _a;
         const unit = typeof initialTimeRange === 'object'
             ? TimeDateUtil.getCurrentOrDefaultUnit(initialTimeRange.unit, this.units)
             : TimeExtraOptions.ALL;
@@ -315,10 +399,9 @@ const AtTimeWithUnitComponent = class {
         this.timeUnit = unit;
         this.timeValue = value;
         this.selectedTime = initialTimeRange;
-        this.startDate = (_a = this.getRelativeDate()) === null || _a === void 0 ? void 0 : _a.startDate;
+        this.startDate = this.getRelativeDate()?.startDate;
     }
     updateSelectedTime(value) {
-        var _a;
         const unit = this.timeUnit;
         if (unit !== TimeExtraOptions.ALL) {
             this.selectedTime = { unit, value };
@@ -330,7 +413,7 @@ const AtTimeWithUnitComponent = class {
             }
         }
         this.validateInput();
-        this.startDate = (_a = this.getRelativeDate()) === null || _a === void 0 ? void 0 : _a.startDate;
+        this.startDate = this.getRelativeDate()?.startDate;
     }
     validateInput() {
         if (this.selectedTime !== TimeRangeDisplay.ALL) {
@@ -374,6 +457,14 @@ const AtTimeWithUnitComponent = class {
             this.timeUnit = TimeExtraOptions.ALL;
         }
     }
+    /**
+     * Emitted when the user cancels the time selection
+     */
+    atuiCancel;
+    /**
+     * Emitted when the user submits the time selection
+     */
+    atuiSubmit;
     handleCancel() {
         this.atuiCancel.emit();
     }
@@ -390,23 +481,18 @@ const AtTimeWithUnitComponent = class {
             : newValue);
     }
     render() {
-        var _a;
         return (h("div", { key: '9ee8fafbc4954ef5b8079141bcc1f406e48086e0', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
                 this.handleSubmit(), tabindex: 0 }, h("div", { key: '2b2e58d84d0295dc9726bc8d08bfed05198a6168', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'fb77c410f02c14c09ceddb5ddad936e5422b4083', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '71e923910f59821b5e888c27e895be51ab8d5936', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '24eb4affb160dd2cc9e4254e502904774d09e0a6', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: '0d03c5779054d417f22a96480704066accb47fc6', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => this.translations.ATUI.TIME[option])
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
-            ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.unit) && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '06e729a089ba185cb25d96a1a911aa15619a7ce5', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '7211317752ee8e03312100a66556ddc15bd536d1', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '5e9795d6f3cfbcbf245a2778b55b36b68c04be83', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
-            this.common_options.map((timerange) => {
-                var _a, _b;
-                return (h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
-                        event.stopPropagation();
-                        if (event.key === 'Enter' ||
-                            event.key === ' ')
-                            this.updateSelectedRange(timerange);
-                    }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.value) === timerange.value && ((_b = this.selectedTime) === null || _b === void 0 ? void 0 : _b.unit) === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit])));
-            })))), h("footer", { key: '50dac8f26391a6eb89e6c23a4eca3a7968feca7e', class: "flex justify-between p-8" }, h("at-button", { key: '0b7e65dddb5eab137dcdf55e76e34790dc4ae144', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '4978b51872679918bc4a35c7b86ad02aba36220e', class: "flex gap-8" }, h("at-button", { key: 'c23c7993a52260a9d9aa53ed0ce8bfb8f26880cf', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'e04e90d14bb520840165c01f03d9d7bca987e259', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
+            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '06e729a089ba185cb25d96a1a911aa15619a7ce5', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '7211317752ee8e03312100a66556ddc15bd536d1', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '5e9795d6f3cfbcbf245a2778b55b36b68c04be83', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
+            this.common_options.map((timerange) => (h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
+                    event.stopPropagation();
+                    if (event.key === 'Enter' ||
+                        event.key === ' ')
+                        this.updateSelectedRange(timerange);
+                }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '50dac8f26391a6eb89e6c23a4eca3a7968feca7e', class: "flex justify-between p-8" }, h("at-button", { key: '0b7e65dddb5eab137dcdf55e76e34790dc4ae144', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '4978b51872679918bc4a35c7b86ad02aba36220e', class: "flex gap-8" }, h("at-button", { key: 'c23c7993a52260a9d9aa53ed0ce8bfb8f26880cf', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'e04e90d14bb520840165c01f03d9d7bca987e259', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
-    get el() { return getElement(this); }
     static get watchers() { return {
         "timeValue": ["watchTimeValue"],
         "timeUnit": ["watchTimeUnit"]

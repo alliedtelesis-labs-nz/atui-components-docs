@@ -6,7 +6,7 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
-at-sidebar {
+:host {
   display: flex;
   height: 100%;
   width: 100%;
@@ -14,7 +14,7 @@ at-sidebar {
   overflow: hidden;
   position: relative;
 }
-at-sidebar .backdrop {
+:host .backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,12 +27,12 @@ at-sidebar .backdrop {
   transition: opacity var(--token-transition-time);
   animation: fadeIn 300ms forwards;
 }
-at-sidebar .nav {
+:host .nav {
   position: relative;
   width: var(--token-width-sidebar);
   display: flex;
   flex: 0 0 auto;
-  height: 100%;
+  min-height: 100%;
   background-color: var(--token-sidebar-background);
   color: var(--token-sidebar-foreground);
   overflow-y: auto;
@@ -40,79 +40,79 @@ at-sidebar .nav {
   will-change: width;
   transition: width var(--token-transition-time);
 }
-at-sidebar .nav at-sidebar-trigger {
+:host .nav at-sidebar-trigger {
   display: flex;
   width: 100%;
 }
-at-sidebar .nav-content {
+:host .nav-content {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
   padding: 8px;
 }
-at-sidebar .content {
+:host .content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-at-sidebar i[slot=menu-item-actions],
-at-sidebar * > [data-name=sidebar-menu-item-label] {
+:host i[slot=menu-item-actions],
+:host * > [data-name=sidebar-menu-item-label] {
   transition: opacity 150ms ease;
 }
-at-sidebar :not(at-menu) i[slot=menu-item-actions],
-at-sidebar :not(at-menu) [data-name=sidebar-menu-item-label] {
+:host :not(at-menu) i[slot=menu-item-actions],
+:host :not(at-menu) [data-name=sidebar-menu-item-label] {
   opacity: 1;
 }
-at-sidebar at-sidebar-trigger {
+:host at-sidebar-trigger {
   display: flex;
   justify-content: flex-end;
 }
-at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+:host at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
   padding-left: 36px;
 }
-at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+:host at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
   padding-left: 50px;
 }
-at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
+:host at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
   padding-left: 64px;
 }
-at-sidebar at-sidebar-submenu at-menu [data-name=menu-content-wrapper] {
+:host at-sidebar-submenu at-menu [data-name=menu-content-wrapper] {
   background-color: var(--token-sidebar-background);
 }
-at-sidebar at-sidebar-trigger at-button [data-name=button-icon] {
+:host at-sidebar-trigger at-button [data-name=button-icon] {
   font-size: var(--token-font-size-icon-xl) !important;
 }
-at-sidebar[data-state=collapsed] .nav at-sidebar-trigger {
+:host[data-state=collapsed] .nav at-sidebar-trigger {
   width: 100%;
 }
-at-sidebar[data-state=collapsed] i[slot=menu-item-actions],
-at-sidebar[data-state=collapsed] * > [data-name=sidebar-menu-item-label] {
+:host[data-state=collapsed] i[slot=menu-item-actions],
+:host[data-state=collapsed] * > [data-name=sidebar-menu-item-label] {
   opacity: 0;
 }
-at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
-at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
+:host[data-state=collapsed] at-menu i[slot=menu-item-actions],
+:host[data-state=collapsed] at-menu [data-name=menu-content-wrapper] [data-name=sidebar-menu-item-label] {
   opacity: 1;
 }
-at-sidebar[data-state=collapsed].collapse-offcanvas .nav {
+:host[data-state=collapsed].collapse-offcanvas .nav {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
 }
-at-sidebar[data-state=collapsed].collapse-icon .nav {
+:host[data-state=collapsed].collapse-icon .nav {
   width: var(--token-width-sidebar-collapsed);
 }
-at-sidebar[data-state=collapsed].collapse-none .nav {
+:host[data-state=collapsed].collapse-none .nav {
   width: var(--token-width-sidebar);
 }
-at-sidebar.mode-over .nav {
+:host.mode-over .nav {
   position: absolute;
 }
-at-sidebar.mode-over.collapse-icon:not(.side-right) .content {
+:host.collapse-icon.mode-over:not(.side-right) .content {
   padding-left: var(--token-width-sidebar-collapsed);
 }
-at-sidebar.mode-over.collapse-icon.side-right .content {
+:host.collapse-icon.mode-over.side-right .content {
   padding-right: var(--token-width-sidebar-collapsed);
 }
-at-sidebar.side-right {
+:host.side-right {
   flex-direction: row-reverse;
 }

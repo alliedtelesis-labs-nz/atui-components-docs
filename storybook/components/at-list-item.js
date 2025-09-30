@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BRRmBK9P.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',
@@ -12,15 +12,35 @@ const AtListItem$1 = /*@__PURE__*/ proxyCustomElement(class AtListItem extends H
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Size of the list item.
-         */
-        this.size = 'sm';
-        /**
-         * Border below the list item.
-         */
-        this.border = true;
     }
+    /**
+     * Optional icon shown to the left of the list item - use mat-icon name.
+     */
+    icon;
+    /**
+     * Optional prefix.
+     */
+    item_prefix;
+    /**
+     * Title of the list item.
+     */
+    item_title;
+    /**
+     * Optional subtitle of the list item.
+     */
+    subtitle;
+    /**
+     * Content of the list item placed at the right of the item.
+     */
+    content;
+    /**
+     * Size of the list item.
+     */
+    size = 'sm';
+    /**
+     * Border below the list item.
+     */
+    border = true;
     get sizeClasses() {
         return listItemVariants[this.size];
     }

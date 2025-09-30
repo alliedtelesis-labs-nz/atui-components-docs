@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h } from './p-BRRmBK9P.js';
+import { p as proxyCustomElement, H, h } from './p-BAZ2N91w.js';
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -33,11 +33,30 @@ const AtMessage$1 = /*@__PURE__*/ proxyCustomElement(class AtMessage extends H {
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Theme of the message, either "light" or "default".
-         */
-        this.impact = 'high';
     }
+    /**
+     * Type of the message.
+     */
+    type;
+    /**
+     * Theme of the message, either "light" or "default".
+     */
+    impact = 'high';
+    /**
+     * Title of the app message.
+     */
+    message_title;
+    /**
+     * An icon is provided for success, warning, error, or info types.
+     * You can provide a custom value to replace the default icon.
+     *
+     * Must use material icon name.
+     */
+    icon;
+    /**
+     * Content of the message.
+     */
+    content;
     get iconName() {
         if (this.icon) {
             return this.icon;

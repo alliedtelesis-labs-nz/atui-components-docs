@@ -1,6 +1,6 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BRRmBK9P.js';
-import { d as defineCustomElement$3 } from './p-CzPbRmJi.js';
-import { d as defineCustomElement$2 } from './p-DmhKo4b5.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
+import { d as defineCustomElement$3 } from './p-OYY5LFKA.js';
+import { d as defineCustomElement$2 } from './p-BdCQaXxx.js';
 
 const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionComponent extends H {
     constructor(registerHost) {
@@ -8,17 +8,17 @@ const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionC
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Used to create accordion items.
-         */
-        this.items = [];
-        /**
-         * If set, all child accordions will be open by default.
-         */
-        this.default_open = false;
-        this.accordionItems = [];
-        this.accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     }
+    get el() { return this; }
+    /**
+     * Used to create accordion items.
+     */
+    items = [];
+    /**
+     * If set, all child accordions will be open by default.
+     */
+    default_open = false;
+    accordionItems = [];
     async componentDidLoad() {
         // Wait for child components to be ready
         await new Promise((resolve) => setTimeout(resolve, 0));
@@ -79,13 +79,13 @@ const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionC
     refreshAccordionItems() {
         this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
     }
+    accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
         return (h(Host, { key: '6b2195a25f6dd26a68baafd11b6748e79fbcf6ff', class: "flex flex-col gap-2" }, h("slot", { key: '93ff2fb04b308503cd077f2f35834a46ed0d9038' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));
     }
-    get el() { return this; }
 }, [260, "at-accordion", {
         "items": [16],
         "default_open": [4],

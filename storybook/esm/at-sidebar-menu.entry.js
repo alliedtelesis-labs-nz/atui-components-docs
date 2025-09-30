@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
+import { r as registerInstance, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtSidebarMenuComponent = class {
     constructor(hostRef) {

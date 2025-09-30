@@ -1,22 +1,19 @@
-const Template = (args) => {
-    var _a, _b, _c, _d;
-    return `
+const Template = (args) => `
 <at-button-group
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
-    hint_text="${(_b = args.hint_text) !== null && _b !== void 0 ? _b : ''}"
-    error_text="${(_c = args.error_text) !== null && _c !== void 0 ? _c : ''}"
-    info_text="${(_d = args.info_text) !== null && _d !== void 0 ? _d : ''}"
+    label="${args.label ?? ''}"
+    hint_text="${args.hint_text ?? ''}"
+    error_text="${args.error_text ?? ''}"
+    info_text="${args.info_text ?? ''}"
     ${args.invalid ? 'invalid' : ''}
     ${args.disabled ? 'disabled' : ''}
 />
 ${args.options
-        ? `
+    ? `
 <script>
 document.querySelector('at-button-group').options = ${JSON.stringify(args.options, null, 4)}
 </script>`
-        : ''}
+    : ''}
 `;
-};
 export default {
     title: 'Components/Button Group',
 };

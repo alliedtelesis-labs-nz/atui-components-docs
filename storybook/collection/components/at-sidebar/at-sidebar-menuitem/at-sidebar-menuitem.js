@@ -21,14 +21,29 @@ const focusIndicatorVariantsConfig = {
  * @description A sidebar menu item component for the sidebar.
  */
 export class AtSidebarMenuitemComponent {
-    constructor() {
-        this.handleKeyDown = (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                this.el.click();
-            }
-        };
-    }
+    /**
+     * Label to be displayed for the menu item
+     */
+    label;
+    /**
+     * Icon to be displayed with the label
+     */
+    icon;
+    /**
+     * Alert badge for the menu item
+     */
+    badge;
+    /**
+     * Will change style to indicate menuitem is active when set
+     */
+    is_active;
+    el;
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.el.click();
+        }
+    };
     render() {
         const getClassname = classlist('group text-button focus-visible:ring-active-foreground/30 font-medium relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
         const classname = getClassname({

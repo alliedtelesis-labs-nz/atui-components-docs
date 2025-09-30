@@ -100,33 +100,48 @@ const spinnerColourPerType = {
  * @slot - Placed after the label, but before the icon_right. Can be used as a replacement for the label prop.
  */
 export class AtButtonComponent {
-    constructor() {
-        /**
-         * If set, will request submit from the closest form element when clicked
-         */
-        this.submit = false;
-        /**
-         * Theme of the button. Default primary
-         */
-        this.type = 'primary';
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
-        /**
-         * When set, will display a loading spinner inside the button and hide all labels & icons
-         */
-        this.in_progress = false;
-        /**
-         * Delay period on spinner
-         */
-        this.spinner_delay_ms = 1000;
-        this.canHideSpinner = true;
-    }
+    /**
+     * If set, will request submit from the closest form element when clicked
+     */
+    submit = false;
+    /**
+     * Theme of the button. Default primary
+     */
+    type = 'primary';
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    /**
+     * Material icon to be displayed before the label within the button
+     */
+    icon;
+    /**
+     * Material icon to be displayed after the label within the button
+     */
+    icon_after;
+    /**
+     * When set, will display a loading spinner inside the button and hide all labels & icons
+     */
+    in_progress = false;
+    /**
+     * Delay period on spinner
+     */
+    spinner_delay_ms = 1000;
+    el;
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    canHideSpinner = true;
     get spinnerColour() {
         return spinnerColourPerType[this.type];
     }

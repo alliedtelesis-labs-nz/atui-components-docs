@@ -4,6 +4,10 @@ import { h } from "@stencil/core";
  * @description A header component for displaying a checkbox.
  */
 export class AtCheckboxHeaderComponent {
+    params;
+    disabled;
+    isChecked;
+    el;
     init(params) {
         this.params = params;
         this.params.width = 60;
@@ -33,8 +37,7 @@ export class AtCheckboxHeaderComponent {
         }
     }
     setDisabled() {
-        var _a;
-        if (!((_a = this.params) === null || _a === void 0 ? void 0 : _a.api))
+        if (!this.params?.api)
             return;
         const renderedNodes = this.params.api.getRenderedNodes();
         const data = renderedNodes.map((node) => node.data);

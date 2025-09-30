@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-HqquF7bU.js');
 var index$1 = require('./index.cjs.js');
 
@@ -32,72 +32,80 @@ const AtPromptMessage = class {
         this.atVote = index.createEvent(this, "atVote", 7);
         this.atRetry = index.createEvent(this, "atRetry", 7);
         this.atEdit = index.createEvent(this, "atEdit", 7);
-        /**
-         * The role/type of the message sender (only 'user' and 'assistant' are supported)
-         */
-        this.role = 'user';
-        /**
-         * The message content text
-         */
-        this.content = '';
-        /**
-         * Shows loading state with animated placeholder content
-         */
-        this.loading = false;
-        /**
-         * Shows error state styling and enables retry action
-         */
-        this.error = false;
-        /**
-         * The current vote score of the message
-         */
-        this.score = index$1.PromptResponseScore.NONE;
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = false;
-        /**
-         * Display copy action for assistant messages - copies message content to clipboard
-         */
-        this.enable_copy = false;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        /**
-         * Animation type for text streaming effect
-         * - 'none': No animation (default)
-         * - 'fade': Fade in the entire message
-         * - 'words': Animate words appearing sequentially
-         */
-        this.response_animation = 'words';
-        this.copyFeedbackVisible = false;
-        this.animatedContent = '';
-        this.isAnimating = false;
-        this.handleCopy = async () => {
-            try {
-                await navigator.clipboard.writeText(this.content);
-                this.copyFeedbackVisible = true;
-                this.atCopy.emit(this.content);
-                setTimeout(() => {
-                    this.copyFeedbackVisible = false;
-                }, 2000);
-            }
-            catch (err) {
-                console.error('Failed to copy text:', err);
-            }
-        };
-        this.handleRetry = () => {
-            this.atRetry.emit();
-        };
-        this.handleEdit = () => {
-            this.atEdit.emit(this.content);
-        };
-        this.handleVote = (score) => {
-            const newScore = this.score === score ? index$1.PromptResponseScore.NONE : score;
-            this.atVote.emit({ messageId: this.message_id, score: newScore });
-        };
     }
+    /**
+     * The role/type of the message sender (only 'user' and 'assistant' are supported)
+     */
+    role = 'user';
+    /**
+     * The message content text
+     */
+    content = '';
+    /**
+     * Display name for the message sender
+     */
+    name;
+    /**
+     * Shows loading state with animated placeholder content
+     */
+    loading = false;
+    /**
+     * Shows error state styling and enables retry action
+     */
+    error = false;
+    /**
+     * Custom error message text (defaults to generic error message)
+     */
+    error_message;
+    /**
+     * The current vote score of the message
+     */
+    score = index$1.PromptResponseScore.NONE;
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = false;
+    /**
+     * Display copy action for assistant messages - copies message content to clipboard
+     */
+    enable_copy = false;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Unique identifier for the message
+     */
+    message_id;
+    /**
+     * Animation type for text streaming effect
+     * - 'none': No animation (default)
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially
+     */
+    response_animation = 'words';
+    /**
+     * Emitted when the copy action is triggered
+     */
+    atCopy;
+    /**
+     * Emitted when a vote action is triggered
+     */
+    atVote;
+    /**
+     * Emitted when the retry action is triggered (for assistant messages with errors)
+     */
+    atRetry;
+    /**
+     * Emitted when the edit action is triggered (for user messages)
+     */
+    atEdit;
+    translations;
+    copyFeedbackVisible = false;
+    animatedContent = '';
+    isAnimating = false;
+    errorEl;
+    get el() { return index.getElement(this); }
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
         this.initializeContent();
@@ -147,29 +155,51 @@ const AtPromptMessage = class {
         };
         setTimeout(animateNextWord, 30);
     }
+    handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(this.content);
+            this.copyFeedbackVisible = true;
+            this.atCopy.emit(this.content);
+            setTimeout(() => {
+                this.copyFeedbackVisible = false;
+            }, 2000);
+        }
+        catch (err) {
+            console.error('Failed to copy text:', err);
+        }
+    };
+    handleRetry = () => {
+        this.atRetry.emit();
+    };
+    handleEdit = () => {
+        this.atEdit.emit(this.content);
+    };
+    handleVote = (score) => {
+        const newScore = this.score === score ? index$1.PromptResponseScore.NONE : score;
+        this.atVote.emit({ messageId: this.message_id, score: newScore });
+    };
     renderActions() {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
         if (this.loading)
             return null;
-        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === index$1.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
+        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === index$1.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
             'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === index$1.PromptResponseScore.DOWN ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "0 -960 960 960", height: "15px", fill: "#adb5bd" // token-border-dark
-        }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), index.h("span", null, ((_j = (_h = (_g = this.translations) === null || _g === void 0 ? void 0 : _g.ATUI) === null || _h === void 0 ? void 0 : _h.PROMPT) === null || _j === void 0 ? void 0 : _j.NOT_HELPFUL) ||
+        }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
                 : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), index.h("span", null, this.copyFeedbackVisible
-            ? ((_m = (_l = (_k = this.translations) === null || _k === void 0 ? void 0 : _k.ATUI) === null || _l === void 0 ? void 0 : _l.PROMPT) === null || _m === void 0 ? void 0 : _m.COPIED) ||
+            ? this.translations?.ATUI?.PROMPT?.COPIED ||
                 'Copied'
-            : ((_q = (_p = (_o = this.translations) === null || _o === void 0 ? void 0 : _o.ATUI) === null || _p === void 0 ? void 0 : _p.PROMPT) === null || _q === void 0 ? void 0 : _q.COPY) ||
-                'Copy'))), this.role === 'assistant' && this.error && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), index.h("span", null, ((_t = (_s = (_r = this.translations) === null || _r === void 0 ? void 0 : _r.ATUI) === null || _s === void 0 ? void 0 : _s.PROMPT) === null || _t === void 0 ? void 0 : _t.RETRY) || 'Retry')))));
+            : this.translations?.ATUI?.PROMPT?.COPY ||
+                'Copy'))), this.role === 'assistant' && this.error && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.RETRY || 'Retry')))));
     }
     renderContent() {
-        var _a, _b, _c;
         if (this.loading) {
             return (index.h("div", { class: "py-8", "data-name": "loading-wrapper" }, index.h("at-loading", { class: "flex items-center gap-4 py-8", "data-name": "loading-content", variant: "typing", size: "sm" })));
         }
         if (this.error) {
             return (index.h("div", { class: "space-y-2", ref: (el) => (this.errorEl = el), "data-name": "error-content" }, index.h("p", { class: "text-destructive-foreground" }, this.error_message ||
-                ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.ERROR_GENERATING_RESPONSE) ||
+                this.translations?.ATUI?.PROMPT
+                    ?.ERROR_GENERATING_RESPONSE ||
                 'Error generating response')));
         }
         const contentToDisplay = this.response_animation === 'words' && this.role === 'assistant'
@@ -188,7 +218,6 @@ const AtPromptMessage = class {
         });
         return (index.h(index.Host, { key: 'fe94af139d34195e654aa9c4f5f3fb214c1ef6fb', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '738a74088a37b7c45297457b93118281382c0b77', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '19557ac1ee5dd799e9956bc11dc76c6f6410d3db', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '536dbe46d1bbbb0c9123b5462336fd084a99e3a7', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "content": ["watchContentChange"]
     }; }

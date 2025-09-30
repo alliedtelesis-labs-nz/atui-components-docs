@@ -6,14 +6,47 @@ import { h, Host, } from "@stencil/core";
  * @slot - used to place your own atui-button-group-options if 'options' prop isn't set. Button changing logic will not apply.
  */
 export class AtButtonGroup {
-    constructor() {
-        /**
-         * List of options to be displayed on the button group.
-         */
-        this.options = [];
-        this.buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
-        this.buttonRefs = [];
-    }
+    /**
+     * Label for button group.
+     */
+    label;
+    /**
+     * Optional info icon with detailed tooltip description.
+     *
+     * Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Hint for options.
+     */
+    hint_text;
+    /**
+     * Error text for invalid choices.
+     */
+    error_text;
+    /**
+     * List of options to be displayed on the button group.
+     */
+    options = [];
+    /**
+     * Sets the current active button
+     */
+    value;
+    /**
+     * Disables the button group and prevents interaction
+     */
+    disabled;
+    el;
+    buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * When the active button is changed, this will emit the 0-based index of the active button
+     */
+    atuiIndexChange;
+    /**
+     * When the active button is changed, this will emit the text value of the active button
+     */
+    atuiChange;
+    buttonRefs = [];
     componentDidLoad() {
         this.setInitialActiveButton();
     }

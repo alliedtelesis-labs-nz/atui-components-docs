@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a, _b;
-    return `
+const Template = (args) => `
 <at-tab-selector
-    active_tab="${(_a = args.active_tab) !== null && _a !== void 0 ? _a : ''}"
-    layout="${(_b = args.layout) !== null && _b !== void 0 ? _b : 'horizontal'}"
+    active_tab="${args.active_tab ?? ''}"
+    layout="${args.layout ?? 'horizontal'}"
 />
 <script>
 document.querySelector('at-tab-selector').tabs = ${JSON.stringify(args.tabs, null, 4)}
 </script>
 `;
-};
 export default {
     title: 'Components/Tab Selector',
     argTypes: {

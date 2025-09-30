@@ -28,30 +28,33 @@ export const TableColorTokens = {
     LIGHT_GREYER: '#f8f9fa', // TOKEN_COLOR_GRAY_LIGHTER
 };
 export class TableStyles {
+    static linkStyles = {
+        'font-weight': '500',
+        'color': TableColorTokens.PRIMARY_BLUE,
+    };
+    static iconLinkStyles = {
+        ...TableStyles.linkStyles,
+        cursor: 'pointer',
+    };
+    static warningStyles = {
+        'font-weight': '500',
+        'color': TableColorTokens.RED,
+    };
+    static infoIconStyle = {
+        'cursor': 'pointer',
+        'color': TableColorTokens.PRIMARY_BLUE,
+        'font-size': '16px',
+        'height': 'auto',
+        'width': 'auto',
+        'padding-left': '5px',
+        'align-self': 'center',
+    };
+    static actionBtnStyle = {
+        color: TableColorTokens.PRIMARY_BLUE,
+        background: '#FAFBFC',
+        borderRadius: '2px',
+        padding: '10px',
+        cursor: 'pointer',
+    };
 }
-TableStyles.linkStyles = {
-    'font-weight': '500',
-    'color': TableColorTokens.PRIMARY_BLUE,
-};
-TableStyles.iconLinkStyles = Object.assign(Object.assign({}, TableStyles.linkStyles), { cursor: 'pointer' });
-TableStyles.warningStyles = {
-    'font-weight': '500',
-    'color': TableColorTokens.RED,
-};
-TableStyles.infoIconStyle = {
-    'cursor': 'pointer',
-    'color': TableColorTokens.PRIMARY_BLUE,
-    'font-size': '16px',
-    'height': 'auto',
-    'width': 'auto',
-    'padding-left': '5px',
-    'align-self': 'center',
-};
-TableStyles.actionBtnStyle = {
-    color: TableColorTokens.PRIMARY_BLUE,
-    background: '#FAFBFC',
-    borderRadius: '2px',
-    padding: '10px',
-    cursor: 'pointer',
-};
 //# sourceMappingURL=table-styles.js.map

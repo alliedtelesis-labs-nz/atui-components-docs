@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtSidebarMenuComponent = class {
     constructor(hostRef) {

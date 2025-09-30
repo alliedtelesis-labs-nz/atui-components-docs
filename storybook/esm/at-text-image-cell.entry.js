@@ -1,19 +1,22 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtTextImageCell = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.text = '';
-        this.imageHeight = 24;
-        this.imagePosition = 'before';
     }
+    get el() { return getElement(this); }
+    params;
+    text = '';
+    imageHeight = 24;
+    imageWidth;
+    imageClass;
+    imagePosition = 'before';
     init(params) {
-        var _a, _b;
         this.params = params;
-        this.imageHeight = (_a = this.params.imageHeight) !== null && _a !== void 0 ? _a : this.imageHeight;
+        this.imageHeight = this.params.imageHeight ?? this.imageHeight;
         this.imageWidth = this.params.imageWidth;
         this.imageClass = this.params.imageClass;
-        this.imagePosition = (_b = this.params.imagePosition) !== null && _b !== void 0 ? _b : 'before';
+        this.imagePosition = this.params.imagePosition ?? 'before';
         this.updateTextAndImage();
     }
     refresh(params) {
@@ -22,10 +25,9 @@ const AtTextImageCell = class {
         return true;
     }
     updateTextAndImage() {
-        var _a;
         this.text = this.params.text
             ? this.params.text(this.params.data)
-            : ((_a = this.params.value) !== null && _a !== void 0 ? _a : '');
+            : (this.params.value ?? '');
     }
     getGui() {
         return this.el;
@@ -34,8 +36,7 @@ const AtTextImageCell = class {
         return this.params.imageSource(this.params.data);
     }
     render() {
-        var _a, _b;
-        return (h(Host, { key: 'c582383171eb0238420aafa09efdc1a812cd31e5', class: "flex h-full items-center" }, h("at-tooltip", { key: '843b3a245163e2b2d542e6f8d40f0d31c8fa3272', position: "right", disabled: !((_a = this.params) === null || _a === void 0 ? void 0 : _a.generateTooltip) }, h("div", { key: '06839d14e1ff10a70fbd441ef57b9d48d6813379', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
+        return (h(Host, { key: 'c582383171eb0238420aafa09efdc1a812cd31e5', class: "flex h-full items-center" }, h("at-tooltip", { key: '843b3a245163e2b2d542e6f8d40f0d31c8fa3272', position: "right", disabled: !this.params?.generateTooltip }, h("div", { key: '06839d14e1ff10a70fbd441ef57b9d48d6813379', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
             this.imageSource && (h("img", { key: 'c5896719b8d61430b1219c067ba8828be3bc5b9a', src: this.imageSource, style: {
                 height: `${this.imageHeight}px`,
                 width: this.imageWidth
@@ -46,9 +47,8 @@ const AtTextImageCell = class {
                 width: this.imageWidth
                     ? `${this.imageWidth}px`
                     : undefined,
-            }, class: this.imageClass && this.imageClass, alt: "" }))), ((_b = this.params) === null || _b === void 0 ? void 0 : _b.generateTooltip) && (h("span", { key: 'dce804e345050c7b5594e2857c2198ae321470c9' }, this.params.generateTooltip(this.params))))));
+            }, class: this.imageClass && this.imageClass, alt: "" }))), this.params?.generateTooltip && (h("span", { key: 'dce804e345050c7b5594e2857c2198ae321470c9' }, this.params.generateTooltip(this.params))))));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtTextImageCell as at_text_image_cell };

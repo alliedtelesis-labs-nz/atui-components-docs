@@ -6,38 +6,58 @@ import { AtTableComponentsConfigs } from "../at-table-components-configs";
  * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
  */
 export class AtTableComponent {
-    constructor() {
-        /**
-         * Default page size of the table if pagination is activated
-         */
-        this.page_size = 10;
-        /**
-         * Disables the default sorting provided by agGrid.
-         */
-        this.use_custom_sorting = false;
-        /**
-         * Disables the default pagination provided by agGrid.
-         * When using custom pagination, the default sorting
-         * provided by ag grid will not work correctly.
-         */
-        this.use_custom_pagination = false;
-        /**
-         * If true, disables automatic grid initialization.
-         * When disabled, you must manually call createGrid().
-         * Used when the table is controlled by a parent component.
-         */
-        this.disable_auto_init = false;
-        /**
-         * If true, enables automatic column resizing to fit available space.
-         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-         */
-        this.auto_size_columns = true;
-        this.activeFilters = {};
-        this.tableCreated = false;
-    }
+    /**
+     * Data provided to the table
+     */
+    table_data;
+    /**
+     * Column definitions for the table
+     */
+    col_defs;
+    /**
+     * Default page size of the table if pagination is activated
+     */
+    page_size = 10;
+    /**
+     * Disables the default sorting provided by agGrid.
+     */
+    use_custom_sorting = false;
+    /**
+     * Disables the default pagination provided by agGrid.
+     * When using custom pagination, the default sorting
+     * provided by ag grid will not work correctly.
+     */
+    use_custom_pagination = false;
+    /**
+     * If true, disables automatic grid initialization.
+     * When disabled, you must manually call createGrid().
+     * Used when the table is controlled by a parent component.
+     */
+    disable_auto_init = false;
+    /**
+     * If true, enables automatic column resizing to fit available space.
+     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     */
+    auto_size_columns = true;
+    /**
+     * The AG Grid API
+     */
+    ag_grid;
+    el;
+    resizeListener;
+    /**
+     * Emits an event when a column's sorting state changes.
+     * Used to perform sorting outside of agGrid, when use_custom_sorting is set.
+     * Data in the table should be updated using the agGrid api:
+     * ```agGrid.setGridOption("rowData", yourNewData)```
+     */
+    atSortChange;
+    activeFilters = {};
+    agGrid;
+    tableCreated = false;
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('rowData', (newData === null || newData === void 0 ? void 0 : newData.items) || []);
+            this.agGrid.setGridOption('rowData', newData?.items || []);
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -103,7 +123,10 @@ export class AtTableComponent {
             },
         };
         if (this.use_custom_sorting) {
-            gridOptions.columnDefs = this.col_defs.map((colDef) => (Object.assign(Object.assign({}, colDef), { comparator: () => 0 })));
+            gridOptions.columnDefs = this.col_defs.map((colDef) => ({
+                ...colDef,
+                comparator: () => 0,
+            }));
         }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;

@@ -24,12 +24,23 @@ const variantsConfig = {
  * @description A tab component for the tab selector.
  */
 export class AtTab {
-    constructor() {
-        /**
-         * Styling based on the layout of the tabs
-         */
-        this.layout = 'horizontal';
-    }
+    /**
+     * ID of the tab
+     */
+    tab_id;
+    /**
+     * Title to be displayed in the tab
+     */
+    tab_title;
+    /**
+     * Styling based on the layout of the tabs
+     */
+    layout = 'horizontal';
+    /**
+     * Applies styling when active
+     */
+    is_active;
+    tabEl;
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
             this.tabEl.click();

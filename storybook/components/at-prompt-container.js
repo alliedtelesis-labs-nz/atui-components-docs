@@ -1,12 +1,12 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BRRmBK9P.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BAZ2N91w.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$8 } from './p-nHcnaAyy.js';
-import { d as defineCustomElement$7 } from './p-DUrPhBc7.js';
-import { d as defineCustomElement$6 } from './p-CIqSXlz0.js';
-import { d as defineCustomElement$5 } from './p-oFBzrVt6.js';
-import { d as defineCustomElement$4 } from './p-9yJ4llPu.js';
-import { d as defineCustomElement$3 } from './p-zUrngKZE.js';
-import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
+import { d as defineCustomElement$8 } from './p-DOZocyOp.js';
+import { d as defineCustomElement$7 } from './p-DOJpzqxq.js';
+import { d as defineCustomElement$6 } from './p-Dqduj1vs.js';
+import { d as defineCustomElement$5 } from './p-CNiwS5tD.js';
+import { d as defineCustomElement$4 } from './p-BJqdSrwg.js';
+import { d as defineCustomElement$3 } from './p-DESSosJy.js';
+import { d as defineCustomElement$2 } from './p-C03bPuQn.js';
 
 const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
     constructor(registerHost) {
@@ -21,69 +21,89 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         this.atMessageRetry = createEvent(this, "atMessageRetry", 7);
         this.atMessageEdit = createEvent(this, "atMessageEdit", 7);
         this.atMessageVote = createEvent(this, "atMessageVote", 7);
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Placeholder text for the input field
-         */
-        this.placeholder = 'Type your message here...';
-        /**
-         * Shows loading state and disables input
-         */
-        this.loading = false;
-        /**
-         * Disables all interactions with the container
-         */
-        this.disabled = false;
-        /**
-         * Controls visibility of the "New Thread" button in the header
-         */
-        this.show_new_thread_button = true;
-        /**
-         * Maximum character length for input messages
-         */
-        this.max_message_length = 2000;
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        /**
-         * Enable streaming text animations for system/assistant messages
-         * - 'none': No animation
-         * - 'fade': Fade in the entire message
-         * - 'words': Animate words appearing sequentially like ChatGPT
-         */
-        this.response_animation = 'words';
-        this.currentInput = '';
-        this.inputInvalid = false;
-        this.inputError = '';
-        this.isSendEnabled = true;
-        this.translations = {};
-        this.handleSubmit = async (content) => {
-            if (!content || this.disabled || this.loading || !this.isSendEnabled) {
-                return;
-            }
-            this.isSendEnabled = false;
-            await this.addMessage('user', content);
-            this.atSubmit.emit(content);
-        };
-        this.handleStop = () => {
-            this.atStop.emit();
-        };
-        this.handleNewThread = async () => {
-            await this.newThread();
-        };
     }
+    get el() { return this; }
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Placeholder text for the input field
+     */
+    placeholder = 'Type your message here...';
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Shows loading state and disables input
+     */
+    loading = false;
+    /**
+     * Disables all interactions with the container
+     */
+    disabled = false;
+    /**
+     * Controls visibility of the "New Thread" button in the header
+     */
+    show_new_thread_button = true;
+    /**
+     * Maximum character length for input messages
+     */
+    max_message_length = 2000;
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    currentInput = '';
+    inputInvalid = false;
+    inputError = '';
+    isSendEnabled = true;
+    translations = {};
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emitted when the "New Thread" button is clicked
+     */
+    atNewThread;
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atMessageVote;
+    inputComponent;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -111,7 +131,10 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }
@@ -172,11 +195,24 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
             }, 0);
         }
     }
+    handleSubmit = async (content) => {
+        if (!content || this.disabled || this.loading || !this.isSendEnabled) {
+            return;
+        }
+        this.isSendEnabled = false;
+        await this.addMessage('user', content);
+        this.atSubmit.emit(content);
+    };
+    handleStop = () => {
+        this.atStop.emit();
+    };
+    handleNewThread = async () => {
+        await this.newThread();
+    };
     renderHeader() {
-        var _a, _b, _c;
         if (!this.show_new_thread_button)
             return null;
-        const newThreadText = ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.NEW_THREAD) || 'New Thread';
+        const newThreadText = this.translations?.ATUI?.PROMPT?.NEW_THREAD || 'New Thread';
         return (h("div", { class: "flex justify-end pb-16" }, h("at-button", { slot: "actions", size: "md", type: "primaryOutline", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText)));
     }
     renderFooter() {
@@ -185,7 +221,6 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
     render() {
         return (h(Host, { key: '1b4a2f9303bf79e919246ddda56c9a5dc2b30583', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '1eb89b561e1f49406903e65c599a52b42ed17bbb', name: "prompt-container-header" }), h("div", { key: 'd1e50c1fded3f42cc75b4370f91340226f99a414', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '22c364fa66a33feb9a360ff3fd27f0f325f005d2', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '06147f03e1e05b5927777fcce1bdfca5f599acc4', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '76e57bcd3c8fc16e15d0d747cf5f19664fe95b66', name: "prompt-container-footer" }))));
     }
-    get el() { return this; }
 }, [260, "at-prompt-container", {
         "messages": [1040],
         "placeholder": [1],

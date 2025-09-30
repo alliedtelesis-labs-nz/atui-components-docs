@@ -10,16 +10,14 @@ import { h, Host } from "@stencil/core";
  * @slot - Content when template is content-container
  */
 export class AtLayout {
-    constructor() {
-        /**
-         * Template used to display content
-         */
-        this.template = 'master-detail';
-        /**
-         * If overflow is allowed on the detail in master-detail
-         */
-        this.overflow = true;
-    }
+    /**
+     * Template used to display content
+     */
+    template = 'master-detail';
+    /**
+     * If overflow is allowed on the detail in master-detail
+     */
+    overflow = true;
     get layoutElement() {
         switch (this.template) {
             case 'master-detail':

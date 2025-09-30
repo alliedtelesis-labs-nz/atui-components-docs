@@ -14,51 +14,57 @@ import { h } from "@stencil/core";
  * ```
  */
 export class AtTreeComponent {
-    constructor() {
-        /**
-         * Set the size of the tree button, default sm
-         */
-        this.size = 'sm';
-        this.flattenedItemList = [];
-        this.flattenedItemStyles = [];
-        this.handleClick = (id) => {
-            let clickedItem = null;
-            const updateIsSelected = (items) => {
-                const tempItems = [];
-                items.forEach((item) => {
-                    const tempItem = Object.assign({}, item);
-                    if (item.id === id) {
-                        tempItem.selected = !tempItem.selected;
-                        clickedItem = tempItem;
-                    }
-                    if (item.children) {
-                        tempItem.children = updateIsSelected(item.children);
-                    }
-                    tempItems.push(tempItem);
-                });
-                return tempItems;
-            };
-            this.item_list = updateIsSelected(this.item_list);
-            this.flattenItemList(this.item_list);
-            if (clickedItem) {
-                this.atuiClick.emit(clickedItem);
-            }
+    /**
+     * List of items to be displayed in the tree
+     */
+    item_list;
+    /**
+     * Set the size of the tree button, default sm
+     */
+    size = 'sm';
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    flattenedItemList = [];
+    flattenedItemStyles = [];
+    handleClick = (id) => {
+        let clickedItem = null;
+        const updateIsSelected = (items) => {
+            const tempItems = [];
+            items.forEach((item) => {
+                const tempItem = { ...item };
+                if (item.id === id) {
+                    tempItem.selected = !tempItem.selected;
+                    clickedItem = tempItem;
+                }
+                if (item.children) {
+                    tempItem.children = updateIsSelected(item.children);
+                }
+                tempItems.push(tempItem);
+            });
+            return tempItems;
         };
-        this.flattenItemList = (itemList) => {
-            const tempItemList = [];
-            const addToFlattenedAndCheckChildren = (items, layer) => {
-                items.forEach((item) => {
-                    const itemWithDepth = Object.assign(Object.assign({}, item), { depth: layer });
-                    tempItemList.push(itemWithDepth);
-                    if (item.selected && item.children && item.children.length) {
-                        addToFlattenedAndCheckChildren(item.children, layer + 1);
-                    }
-                });
-            };
-            addToFlattenedAndCheckChildren(itemList, 0);
-            this.flattenedItemList = tempItemList;
+        this.item_list = updateIsSelected(this.item_list);
+        this.flattenItemList(this.item_list);
+        if (clickedItem) {
+            this.atuiClick.emit(clickedItem);
+        }
+    };
+    flattenItemList = (itemList) => {
+        const tempItemList = [];
+        const addToFlattenedAndCheckChildren = (items, layer) => {
+            items.forEach((item) => {
+                const itemWithDepth = { ...item, depth: layer };
+                tempItemList.push(itemWithDepth);
+                if (item.selected && item.children && item.children.length) {
+                    addToFlattenedAndCheckChildren(item.children, layer + 1);
+                }
+            });
         };
-    }
+        addToFlattenedAndCheckChildren(itemList, 0);
+        this.flattenedItemList = tempItemList;
+    };
     componentWillRender() {
         if (this.item_list && this.item_list.length) {
             this.flattenItemList(this.item_list);

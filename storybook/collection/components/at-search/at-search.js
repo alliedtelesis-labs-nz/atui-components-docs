@@ -4,6 +4,31 @@ import { h } from "@stencil/core";
  * @description A search component for filtering data.
  */
 export class AtSearch {
+    /**
+     * Label text above the search bar.
+     */
+    label;
+    /**
+     * Hint text for the input, appears below the search bar.
+     */
+    hint_text;
+    /**
+     * Tooltip description.
+     */
+    info_text;
+    /**
+     * Placeholder text inside the search component.
+     */
+    placeholder;
+    /**
+     * String content of the search.
+     */
+    model;
+    searchEl;
+    /**
+     * Emits an event when the input is changed. Used by atui-table.
+     */
+    atuiChange;
     onChangeFn() {
         this.atuiChange.emit(this.searchEl.value);
         this.model = this.searchEl.value;

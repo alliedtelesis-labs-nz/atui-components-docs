@@ -1,16 +1,14 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
-    return `
+const Template = (args) => `
 <at-prompt-input
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
-    placeholder="${(_b = args.placeholder) !== null && _b !== void 0 ? _b : ''}"
-    value="${(_c = args.value) !== null && _c !== void 0 ? _c : ''}"
-    hint_text="${(_d = args.hint_text) !== null && _d !== void 0 ? _d : ''}"
-    error_text="${(_e = args.error_text) !== null && _e !== void 0 ? _e : ''}"
-    info_text="${(_f = args.info_text) !== null && _f !== void 0 ? _f : ''}"
-    min_rows="${(_g = args.min_rows) !== null && _g !== void 0 ? _g : 1}"
-    max_rows="${(_h = args.max_rows) !== null && _h !== void 0 ? _h : 4}"
-    max_length="${(_j = args.max_length) !== null && _j !== void 0 ? _j : 2000}"
+    label="${args.label ?? ''}"
+    placeholder="${args.placeholder ?? ''}"
+    value="${args.value ?? ''}"
+    hint_text="${args.hint_text ?? ''}"
+    error_text="${args.error_text ?? ''}"
+    info_text="${args.info_text ?? ''}"
+    min_rows="${args.min_rows ?? 1}"
+    max_rows="${args.max_rows ?? 4}"
+    max_length="${args.max_length ?? 2000}"
     ${args.disabled ? 'disabled' : ''}
     ${args.readonly ? 'readonly' : ''}
     ${args.required ? 'required' : ''}
@@ -18,7 +16,6 @@ const Template = (args) => {
     ${args.in_progress ? 'in_progress' : ''}
 ></at-prompt-input>
 `;
-};
 export default {
     title: 'Components/Prompt/Input',
     argTypes: {

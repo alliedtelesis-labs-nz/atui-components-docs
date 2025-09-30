@@ -1,16 +1,13 @@
-const Template = (args) => {
-    var _a, _b;
-    return `
+const Template = (args) => `
 <at-avatar
     ${args.src ? `src="${args.src}"` : ''}
     ${args.alt ? `alt="${args.alt}"` : ''}
     ${args.initials ? `initials="${args.initials}"` : ''}
     ${args.ariaLabel ? `aria-label="${args.ariaLabel}"` : ''}
     ${args.decorative ? 'decorative' : ''}
-    size="${(_a = args.size) !== null && _a !== void 0 ? _a : 'md'}"
-    variant="${(_b = args.variant) !== null && _b !== void 0 ? _b : 'primary'}"
+    size="${args.size ?? 'md'}"
+    variant="${args.variant ?? 'primary'}"
 />`;
-};
 export default {
     title: 'Components/Avatar',
     argTypes: {

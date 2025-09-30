@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var translation = require('./translation-HqquF7bU.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var classlist = require('./classlist-BPb95vgj.js');
 var index$1 = require('./index.cjs.js');
 
 const promptInputContainerVariants = classlist.classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
@@ -50,36 +50,71 @@ const AtPromptInputComponent = class {
         this.atSubmit = index.createEvent(this, "atSubmit", 7);
         this.atStop = index.createEvent(this, "atStop", 7);
         this.atFocus = index.createEvent(this, "atFocus", 7);
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = 'Enter your message...';
-        /**
-         * Maximum height in pixels for auto-resize
-         */
-        this.max_height = 240;
-        /**
-         * Maximum character length with counter display
-         */
-        this.max_length = 2000;
-        /**
-         * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
-         */
-        this.in_progress = false;
-        /**
-         * The value of the input
-         */
-        this.value = '';
-        /**
-         * Disable input interactions and apply visual indication
-         */
-        this.disabled = false;
-        this.invalid = false;
-        /**
-         * @slot label - Custom label content (alternative to using the label prop)
-         */
-        this.inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = 'Enter your message...';
+    /**
+     * Maximum height in pixels for auto-resize
+     */
+    max_height = 240;
+    /**
+     * Maximum character length with counter display
+     */
+    max_length = 2000;
+    /**
+     * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
+     */
+    in_progress = false;
+    /**
+     * The value of the input
+     */
+    value = '';
+    /**
+     * Disable input interactions and apply visual indication
+     */
+    disabled = false;
+    textareaEl;
+    translations;
+    invalid = false;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits when the value changes
+     */
+    atChange;
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emits when the input receives focus
+     */
+    atFocus;
+    /**
+     * @slot label - Custom label content (alternative to using the label prop)
+     */
+    inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
@@ -159,7 +194,6 @@ const AtPromptInputComponent = class {
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
-    get el() { return index.getElement(this); }
 };
 
 const AtPromptThread = class {
@@ -169,42 +203,62 @@ const AtPromptThread = class {
         this.atMessageRetry = index.createEvent(this, "atMessageRetry", 7);
         this.atMessageEdit = index.createEvent(this, "atMessageEdit", 7);
         this.atMessageVote = index.createEvent(this, "atMessageVote", 7);
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Shows a loading indicator for incoming messages
-         */
-        this.loading = false;
-        /**
-         * Automatically scroll to the bottom when new messages are added
-         */
-        this.auto_scroll = true;
-        /**
-         * Display name for chatbot/assistant messages
-         */
-        this.chatbot_title = 'Assistant';
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        /**
-         * Enable streaming text animations for system/assistant messages
-         * - 'none': No animation (default)
-         * - 'fade': Fade in the entire message
-         * - 'words': Animate words appearing sequentially like ChatGPT
-         */
-        this.response_animation = 'words';
     }
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Shows a loading indicator for incoming messages
+     */
+    loading = false;
+    /**
+     * Automatically scroll to the bottom when new messages are added
+     */
+    auto_scroll = true;
+    /**
+     * Display name for chatbot/assistant messages
+     */
+    chatbot_title = 'Assistant';
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation (default)
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atMessageVote;
+    /**
+     * @slot messages - Custom message content (alternative to using the messages prop)
+     */
+    scrollContainer;
     componentDidUpdate() {
         if (this.auto_scroll && this.scrollContainer) {
             this.scrollToBottom();
@@ -255,7 +309,10 @@ const AtPromptThread = class {
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }

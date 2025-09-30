@@ -18,24 +18,35 @@ const getTreeItemClasses = classlist('group text-button text-foreground hover:bg
  * @slot - Placed after the label, content is positioned at far right.
  */
 export class AtTreeItemComponent {
-    constructor() {
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * Determines whether to add the arrow indicator icon
-         */
-        this.has_children = false;
-        /**
-         * Determines the direction of the indicator arrow
-         */
-        this.selected = false;
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
-    }
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * Defines the indent of the tree item
+     */
+    depth;
+    /**
+     * Determines whether to add the arrow indicator icon
+     */
+    has_children = false;
+    /**
+     * Determines the direction of the indicator arrow
+     */
+    selected = false;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    el;
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
     handleClick(event) {
         this.atuiClick.emit({
             originalEvent: event,
@@ -54,12 +65,11 @@ export class AtTreeItemComponent {
         }
     }
     render() {
-        var _a;
         const classname = getTreeItemClasses({
             disabled: this.disabled,
             size: this.size,
         });
-        const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
+        const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
         return (h(Host, { key: '9c933f31b5c0dc5e97eb1e03524501caf82d8555', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '9a964d42b7a1d2d1d4653abe391d48c3ca5d39d5', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'fa4d671b73bc076fb05cfd4579ef7ca0312573f1', class: "flex gap-4" }, this.has_children && (h("span", { key: '5f45292cf40a22933edce87888442fa653cde2b1', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected

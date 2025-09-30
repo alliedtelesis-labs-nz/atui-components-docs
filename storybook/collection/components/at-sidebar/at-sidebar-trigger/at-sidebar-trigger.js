@@ -4,18 +4,9 @@ import { h, Host } from "@stencil/core";
  * @description A sidebar trigger component for the sidebar.
  */
 export class AtSidebarTriggerComponent {
-    constructor() {
-        this.isOpen = false;
-        this.handleKeyDown = (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                this.el.click();
-            }
-        };
-        this.handleSidebarChange = (event) => {
-            this.isOpen = event.detail;
-        };
-    }
+    el;
+    isOpen = false;
+    provider;
     async updateIsOpen() {
         if (this.provider && typeof this.provider.getIsOpen === 'function') {
             this.isOpen = await this.provider.getIsOpen();
@@ -28,6 +19,12 @@ export class AtSidebarTriggerComponent {
             await this.updateIsOpen();
         }
     }
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.el.click();
+        }
+    };
     async componentDidLoad() {
         this.provider = this.el.closest('at-sidebar');
         await this.updateIsOpen();
@@ -40,6 +37,9 @@ export class AtSidebarTriggerComponent {
             this.provider.removeEventListener('atuiSidebarChange', this.handleSidebarChange);
         }
     }
+    handleSidebarChange = (event) => {
+        this.isOpen = event.detail;
+    };
     render() {
         return (h(Host, { key: 'f5b02725e61a67b713243798665412dc6b1e291b', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '36646cb5662ad4eef28a826b104b2df53be54e95', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: '6a5727fe59cf6b54508e91ea89981cca7379721a', "data-name": "focus-indicator", role: "presentation" })));
     }

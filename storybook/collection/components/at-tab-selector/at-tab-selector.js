@@ -13,21 +13,27 @@ import { h, Host, } from "@stencil/core";
  * @slot nav-content - Content to be placed after the tabs
  */
 export class AtTabSelector {
-    constructor() {
-        /**
-         * List of tabs the selector will have
-         */
-        this.tabs = [];
-        /**
-         * Layout of the tabs
-         */
-        this.layout = 'horizontal';
-        /**
-         * hide navigation when you want to provide custom controls
-         */
-        this.hide_nav = false;
-        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    el;
+    /**
+     * List of tabs the selector will have
+     */
+    tabs = [];
+    /**
+     * Layout of the tabs
+     */
+    layout = 'horizontal';
+    /**
+     * hide navigation when you want to provide custom controls
+     */
+    hide_nav = false;
+    /**
+     * Sets the current active tab
+     */
+    active_tab;
+    /**
+     * Emits the id of the tab when a new active_tab is set
+     */
+    atuiChange;
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -43,6 +49,7 @@ export class AtTabSelector {
             });
         }
     }
+    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }

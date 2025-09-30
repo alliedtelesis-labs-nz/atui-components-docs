@@ -1,14 +1,14 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BRRmBK9P.js';
-import { d as defineCustomElement$b } from './p-nHcnaAyy.js';
-import { d as defineCustomElement$a } from './p-QHTKrdkV.js';
-import { d as defineCustomElement$9 } from './p-gfu-kd-C.js';
-import { d as defineCustomElement$8 } from './p-BX9CtZN0.js';
-import { d as defineCustomElement$7 } from './p-DUrPhBc7.js';
-import { d as defineCustomElement$6 } from './p-CIqSXlz0.js';
-import { d as defineCustomElement$5 } from './p-Bra11bSv.js';
-import { d as defineCustomElement$4 } from './p-BRoB_Jr6.js';
-import { d as defineCustomElement$3 } from './p-BlT5vuPL.js';
-import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
+import { d as defineCustomElement$b } from './p-DOZocyOp.js';
+import { d as defineCustomElement$a } from './p-BufkcaDA.js';
+import { d as defineCustomElement$9 } from './p-CQDZhLJk.js';
+import { d as defineCustomElement$8 } from './p-YP0QMism.js';
+import { d as defineCustomElement$7 } from './p-DOJpzqxq.js';
+import { d as defineCustomElement$6 } from './p-Dqduj1vs.js';
+import { d as defineCustomElement$5 } from './p-PSc2GWK0.js';
+import { d as defineCustomElement$4 } from './p-CEZ7owa7.js';
+import { d as defineCustomElement$3 } from './p-BJugxRCw.js';
+import { d as defineCustomElement$2 } from './p-C03bPuQn.js';
 
 const AtStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtStaticTable extends H {
     constructor(registerHost) {
@@ -16,17 +16,31 @@ const AtStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtStaticTable ext
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Max number of items per page
-         */
-        this.page_size = 10;
-        /**
-         * If true, disables pagination on the table and shows all data at once.
-         * Useful for server-side pagination where you want to control pagination externally.
-         */
-        this.use_custom_pagination = false;
-        this.tableCreated = false;
     }
+    /**
+     * Data to go into the table
+     */
+    table_data;
+    /**
+     * Column definitions for the table
+     */
+    col_defs;
+    /**
+     * Max number of items per page
+     */
+    page_size = 10;
+    /**
+     * If true the column manager will not be added
+     */
+    hide_column_manager;
+    /**
+     * If true, disables pagination on the table and shows all data at once.
+     * Useful for server-side pagination where you want to control pagination externally.
+     */
+    use_custom_pagination = false;
+    agGrid;
+    tableEl;
+    tableCreated = false;
     async componentDidLoad() {
         if (this.col_defs && !this.tableCreated) {
             this.agGrid = await this.tableEl.createGrid();

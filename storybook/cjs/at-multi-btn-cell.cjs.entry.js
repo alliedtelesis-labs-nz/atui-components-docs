@@ -1,11 +1,15 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtMultiBtnCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    get el() { return index.getElement(this); }
+    params;
+    buttons;
+    containerStyles;
     init(params) {
         this.params = params;
         const { containerStyles, buttons } = this.params;
@@ -34,7 +38,6 @@ const AtMultiBtnCell = class {
     render() {
         return (index.h(index.Host, { key: '5e869e148e5c3ee3bd8984a022a6b4cec97c2942', class: "flex h-full items-center" }, this.buttonsToRender));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_multi_btn_cell = AtMultiBtnCell;

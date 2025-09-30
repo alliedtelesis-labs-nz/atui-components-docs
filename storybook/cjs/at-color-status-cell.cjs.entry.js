@@ -1,12 +1,13 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.type = 'disabled';
     }
+    get el() { return index.getElement(this); }
+    type = 'disabled';
     init(params) {
         this.type = params.mapValueToStatus(params.data);
     }
@@ -26,7 +27,6 @@ const AtColorStatusCell = class {
         };
         return (index.h(index.Host, { key: 'f8049a4c2216fb59d99f7759543be67fb029f40c', class: "flex h-full items-center" }, index.h("div", { key: '58fc5148e5aee3b49f9b27a55d80d98d59784ad1', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_color_status_cell = AtColorStatusCell;

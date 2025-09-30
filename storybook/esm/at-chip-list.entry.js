@@ -1,18 +1,34 @@
-import { r as registerInstance, c as createEvent, h } from './index-C3PSGxNR.js';
+import { r as registerInstance, c as createEvent, h } from './index-CzNdk2S6.js';
 
 const AtChipList = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiRemoveChip = createEvent(this, "atRemoveChip", 6);
-        /**
-         * Shows the 'Clear All' button
-         */
-        this.show_clear_all = true;
-        /**
-         * Size of the chips. Determines padding and font-size. For use in input chip lists.
-         */
-        this.size = 'lg';
     }
+    /**
+     * Items in the chip list.
+     */
+    chips;
+    /**
+     * Disables the list of chips. Prevents removing a chip.
+     */
+    disabled;
+    /**
+     * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+     */
+    readonly;
+    /**
+     * Shows the 'Clear All' button
+     */
+    show_clear_all = true;
+    /**
+     * Size of the chips. Determines padding and font-size. For use in input chip lists.
+     */
+    size = 'lg';
+    /**
+     * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
+     */
+    atuiRemoveChip;
     keyDownHandler(event, chipsToRemove) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();

@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { c as classlist } from './classlist-DowIpD9s.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 
 const inputVariantsConfig = {
@@ -40,20 +40,78 @@ const AtSelectComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * Set the select to appear as a typeahead input.
-         */
-        this.typeahead = false;
-        /**
-         * Close the menu when the user clicks within the menu panel. Default for single selection menus.
-         */
-        this.autoclose = true;
-        this.searchText = '';
-        this.isOpen = false;
-        this.hasMatchingOptions = false;
-        this.menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
-        this.optionEls = [];
     }
+    /**
+     * Value of the currently selected option
+     */
+    value;
+    /**
+     * Sets the options in the dropdown
+     */
+    options;
+    /**
+     * Label of the input.
+     */
+    label;
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Placeholder for the select.
+     */
+    placeholder;
+    /**
+     * Error message visible when input is valid.
+     */
+    error_text;
+    /**
+     * Indicated form field is required.
+     */
+    required;
+    /**
+     * Set the input to appear valid.
+     */
+    invalid;
+    /**
+     * Disable user interaction. Disabled state should be applied via form control.
+     */
+    disabled;
+    /**
+     * Set input to readonly mode, allows users to select any active values.
+     */
+    readonly;
+    /**
+     * Set the select input to be clearable. Only enabled on typeahead selects.
+     */
+    clearable;
+    /**
+     * Set the select to appear as a typeahead input.
+     */
+    typeahead = false;
+    /**
+     * Close the menu when the user clicks within the menu panel. Default for single selection menus.
+     */
+    autoclose = true;
+    inputEl;
+    searchText = '';
+    isOpen = false;
+    translations;
+    hasMatchingOptions = false;
+    parentWidth;
+    get el() { return getElement(this); }
+    menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    menuRef;
+    optionEls = [];
+    searchInputEl;
+    /**
+     * Emits an event containing the selected value when changed.
+     */
+    atuiChange;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -77,9 +135,8 @@ const AtSelectComponent = class {
         }
     }
     async handleChange(option) {
-        var _a;
         if (this.autoclose) {
-            await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+            await this.menuRef?.closeMenu();
         }
         this.value = option;
         this.inputEl.focus();
@@ -103,12 +160,11 @@ const AtSelectComponent = class {
         handleHomeEndNavigation(event, menuContainer);
     }
     handleSearchInput(event) {
-        var _a;
         const inputEl = event.target;
         this.searchText = inputEl.value.toLowerCase();
         const trimmedSearch = this.searchText.trim().toLowerCase();
         this.hasMatchingOptions = trimmedSearch
-            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
+            ? this.options?.some((option) => option.value.toLowerCase().includes(trimmedSearch))
             : true;
     }
     render() {
@@ -117,8 +173,7 @@ const AtSelectComponent = class {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
-                        var _a;
-                        await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+                        await this.menuRef?.closeMenu();
                     }, 100);
                 }
             } }, this.renderLabel(), h("at-menu", { key: '2b7833207f4a1cdd0f6eaea380a536bb2bfc6b5b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
@@ -138,22 +193,22 @@ const AtSelectComponent = class {
         return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
     }
     renderOptions() {
-        var _a, _b, _c, _d, _e;
         return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
                 event.stopPropagation();
                 await this.handleClear();
-            }, "data-name": "select-clear" }))))), (_c = this.options) === null || _c === void 0 ? void 0 :
-            _c.filter((option) => !this.searchText ||
-                option.value
-                    .toLowerCase()
-                    .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
+            }, "data-name": "select-clear" }))))), this.options
+            ?.filter((option) => !this.searchText ||
+            option.value
+                .toLowerCase()
+                .includes(this.searchText))
+            .map((option) => this.renderOption(option)), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { class: "text-body text-light w-full bg-white px-16 py-8" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
+            !this.hasMatchingOptions && (h("div", { class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
             'No results found'))));
     }
     renderOption(option) {
@@ -164,7 +219,6 @@ const AtSelectComponent = class {
         const isSelected = this.value === option.value;
         return (h("li", { role: "option", value: option.value, "data-name": "select-option", "aria-selected": isSelected ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtSelectComponent as at_select };

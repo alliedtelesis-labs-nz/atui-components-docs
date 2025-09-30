@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a, _b;
-    return `
+const Template = (args) => `
 <at-toggle-switch
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
-    label_position="${(_b = args.label_position) !== null && _b !== void 0 ? _b : ''}"
+    label="${args.label ?? ''}"
+    label_position="${args.label_position ?? ''}"
     show_label=${args.show_label ? true : false}
     ${args.value ? 'value' : ''}
     ${args.disabled ? 'disabled' : ''}
 />
 `;
-};
 export default {
     title: 'Components/Toggle Switch',
     argTypes: {

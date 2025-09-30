@@ -4,9 +4,9 @@ import { h, Host } from "@stencil/core";
  * @description A cell component for displaying a list of chips.
  */
 export class AtChipListCell {
-    constructor() {
-        this.chips = [];
-    }
+    el;
+    params;
+    chips = [];
     init(params) {
         this.params = params;
         this.chips = params.chips(params.data);

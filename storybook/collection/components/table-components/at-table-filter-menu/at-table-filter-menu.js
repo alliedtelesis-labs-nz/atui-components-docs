@@ -5,12 +5,20 @@ import { fetchTranslations } from "../../../utils/translation";
  * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
  */
 export class AtTableFilterMenu {
-    constructor() {
-        /**
-         * Currently selected filter columns
-         */
-        this.selected = [];
-    }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    /**
+     * Currently selected filter columns
+     */
+    selected = [];
+    translations;
+    el;
+    /**
+     * Emits selected columns when checkbox selection changes
+     */
+    atChange;
     get filteredColumns() {
         return this.col_defs
             .filter((colDef) => colDef.field !== 'Checkbox')

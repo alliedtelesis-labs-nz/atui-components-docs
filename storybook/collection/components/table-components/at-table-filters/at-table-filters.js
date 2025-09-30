@@ -1,20 +1,20 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 export class AtTableFilters {
-    constructor() {
-        /**
-         * Currently selected columns and filter values
-         */
-        this.selected = [];
-        this.clearFilters = () => {
-            this.selected = [];
-            this.atChange.emit([]);
-        };
-        this.clearSingleFilter = (columnId) => {
-            this.selected = this.selected.filter((column) => column.id !== columnId);
-            this.atChange.emit(this.selected.length ? this.selected : []);
-        };
-    }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    /**
+     * Currently selected columns and filter values
+     */
+    selected = [];
+    translations;
+    el;
+    /**
+     * Emits id of column and filter value on change.
+     */
+    atChange;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -27,6 +27,14 @@ export class AtTableFilters {
         });
         this.atChange.emit(this.selected);
     }
+    clearFilters = () => {
+        this.selected = [];
+        this.atChange.emit([]);
+    };
+    clearSingleFilter = (columnId) => {
+        this.selected = this.selected.filter((column) => column.id !== columnId);
+        this.atChange.emit(this.selected.length ? this.selected : []);
+    };
     render() {
         return (this.col_defs && (h(Host, { key: 'd4112402a81d0e4243c94db2912ce6cd00332f06', class: "flex items-start gap-8" }, h("div", { key: 'bb6deb7639a2ea124921f49a7cb912190b440de0', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, !this.selected.length && (h("p", { key: '00e198f1c999a45016919004ecdbbe9355130134', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("at-button", { key: '75d72bf1eb9353da4681d02a0fbdd6550cd8da3e', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }

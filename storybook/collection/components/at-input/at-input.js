@@ -26,25 +26,65 @@ const inputVariantsConfig = {
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
  */
 export class AtInputComponent {
-    constructor() {
-        /**
-         * Type of the input
-         */
-        this.type = 'text';
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = '';
-        /**
-         * Sets the 'autocomplete' attribute on the input element
-         */
-        this.autocomplete = 'on';
-        /**
-         * Disables interaction with the input
-         */
-        this.disabled = false;
-        this.inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Type of the input
+     */
+    type = 'text';
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = '';
+    /**
+     * Adds a required * to the element
+     */
+    required;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Sets the 'autocomplete' attribute on the input element
+     */
+    autocomplete = 'on';
+    /**
+     * Makes the input read only
+     */
+    readonly;
+    /**
+     * Disables interaction with the input
+     */
+    disabled = false;
+    /**
+     * Allows the input to be cleared with a 'x' at the end of the input element
+     */
+    clearable;
+    /**
+     * The value of the input
+     */
+    value;
+    inputEl;
+    el;
+    /**
+     * Emits an event containing the text string or number when the input's content is changed
+     */
+    atuiChange;
+    inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
         this.value = event.target.value;

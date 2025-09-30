@@ -5,6 +5,21 @@ import { isEmpty, replace } from "lodash";
 import { DateFormat, Duration, TimeRangeDisplay, TimeRangesInHours, } from "../types";
 momentDurationFormatSetup(moment);
 export class TimeDatePresentationUtil {
+    static times = [
+        '12:00',
+        '01:00',
+        '02:00',
+        '03:00',
+        '04:00',
+        '05:00',
+        '06:00',
+        '07:00',
+        '08:00',
+        '09:00',
+        '10:00',
+        '11:00',
+    ];
+    static timeMode = ['am', 'pm'];
     static buildDateFromStrings(fromDate, fromTime) {
         const formattedDate = this.dateBuilder(fromDate);
         return moment(`${formattedDate} ${fromTime}`, 'M/D/YYYY hh:mm a').toDate();
@@ -167,22 +182,10 @@ export class TimeDatePresentationUtil {
         }
     }
 }
-TimeDatePresentationUtil.times = [
-    '12:00',
-    '01:00',
-    '02:00',
-    '03:00',
-    '04:00',
-    '05:00',
-    '06:00',
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-];
-TimeDatePresentationUtil.timeMode = ['am', 'pm'];
 export class FlooredDateRange {
+    startDate;
+    endDate;
+    unit;
     constructor(startDate, endDate, unit) {
         this.startDate = startDate;
         this.endDate = endDate;

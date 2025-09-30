@@ -5,48 +5,46 @@ import { fetchTranslations } from "../../../utils/translation";
 import { TimeDatePresentationUtil } from "../../../utils/time-date-presentation.util";
 import moment from "moment";
 export class AtCustomTimeRangeComponent {
-    constructor() {
-        /**
-         * Whether time selection is enabled in addition to date selection
-         */
-        this.can_set_time = true;
-        /**
-         * Minimum number of seconds for the time range
-         */
-        this.min_seconds = 60;
-        /**
-         * Minimum selectable date
-         */
-        this.min_date = MIN_DATE;
-        /**
-         * Maximum selectable date
-         */
-        this.max_date = new Date(Date.now());
-        /**
-         * Whether to lock the end date to the current time
-         */
-        this.lock_end_date_to_now = false;
-        this.isFromMinDay = true;
-        this.isToMaxDay = true;
-        this.isFromMaxDay = false;
-        this.isToMinDay = false;
-    }
+    /**
+     * Whether time selection is enabled in addition to date selection
+     */
+    can_set_time = true;
+    /**
+     * Minimum number of seconds for the time range
+     */
+    min_seconds = 60;
+    /**
+     * Minimum selectable date
+     */
+    min_date = MIN_DATE;
     validateMinDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.min_date = this.floorMinDate(newValue);
     }
+    /**
+     * Maximum selectable date
+     */
+    max_date = new Date(Date.now());
     validateMaxDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.max_date = this.ceilingMaxDate(newValue);
     }
+    /**
+     * Default value for the from date
+     */
+    default_from_date;
     validateDefaultFromDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
         this.default_from_date = this.floorMinDate(newValue);
         this.from_date_value = this.default_from_date;
     }
+    /**
+     * Default value for the to date
+     */
+    default_to_date;
     validateDefaultToDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -55,6 +53,10 @@ export class AtCustomTimeRangeComponent {
             ? this.default_to_date
             : this.max_date;
     }
+    /**
+     * Current value of the from date
+     */
+    from_date_value;
     validateFromDateValue(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -67,6 +69,10 @@ export class AtCustomTimeRangeComponent {
         this.setFromDateAndTime(this.from_date_value);
         this.updateMinMaxFlags();
     }
+    /**
+     * Current value of the to date
+     */
+    to_date_value;
     validateToDateValue(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
@@ -79,6 +85,23 @@ export class AtCustomTimeRangeComponent {
         this.setToDateAndTime(this.to_date_value);
         this.updateMinMaxFlags();
     }
+    /**
+     * Whether to lock the end date to the current time
+     */
+    lock_end_date_to_now = false;
+    isFromMinDay = true;
+    isToMaxDay = true;
+    isFromMaxDay = false;
+    isToMinDay = false;
+    toDate;
+    toTime;
+    fromDate;
+    fromTime;
+    translations;
+    setDateNowSwitch;
+    toDatePickerEl;
+    toTimePickerEl;
+    el;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -167,6 +190,14 @@ export class AtCustomTimeRangeComponent {
             return TimeDatePresentationUtil.getTimeOptions();
         }
     }
+    /**
+     * Emitted when the user cancels the time range selection
+     */
+    atuiCancel;
+    /**
+     * Emitted when the user submits the time range selection
+     */
+    atuiSubmit;
     handleCancel() {
         this.atuiCancel.emit();
     }

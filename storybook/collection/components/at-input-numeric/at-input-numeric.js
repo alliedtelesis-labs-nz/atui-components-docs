@@ -57,54 +57,86 @@ const inputVariantsConfig = {
  * @description A numeric input component for entering numerical values.
  */
 export class AtInputNumericComponent {
-    constructor() {
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = '';
-        /**
-         * Disables interaction with the input
-         */
-        this.disabled = false;
-        /**
-         * Min selectable value of the input.
-         */
-        this.min = 0;
-        /**
-         * Max selectable value of the input.
-         */
-        this.max = 100;
-        /**
-         * Interval between selections.
-         */
-        this.step = 1;
-        /**
-         * Show buttons inside input or outside
-         */
-        this.show_buttons = true;
-        /**
-         * The value of the input
-         */
-        this.value = 0;
-        this.inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
-        this.handleDecrease = () => {
-            if (this.value > this.min) {
-                this.value = Math.max(this.value - this.step, this.min);
-                this.atuiChange.emit(this.value);
-            }
-        };
-        this.handleIncrease = () => {
-            if (this.value < this.max) {
-                this.value = Math.min(this.value + this.step, this.max);
-                this.atuiChange.emit(this.value);
-            }
-        };
-    }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = '';
+    /**
+     * Adds a required * to the element
+     */
+    required;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Makes the input read only
+     */
+    readonly;
+    /**
+     * Disables interaction with the input
+     */
+    disabled = false;
+    /**
+     * Min selectable value of the input.
+     */
+    min = 0;
+    /**
+     * Max selectable value of the input.
+     */
+    max = 100;
+    /**
+     * Interval between selections.
+     */
+    step = 1;
+    /**
+     * Show buttons inside input or outside
+     */
+    show_buttons = true;
+    /**
+     * The value of the input
+     */
+    value = 0;
+    inputEl;
+    el;
+    /**
+     * Emits an event containing the text string or number when the input's content is changed
+     */
+    atuiChange;
+    inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
         this.value = Number(event.target.value);
         this.atuiChange.emit(this.value);
     }
+    handleDecrease = () => {
+        if (this.value > this.min) {
+            this.value = Math.max(this.value - this.step, this.min);
+            this.atuiChange.emit(this.value);
+        }
+    };
+    handleIncrease = () => {
+        if (this.value < this.max) {
+            this.value = Math.min(this.value + this.step, this.max);
+            this.atuiChange.emit(this.value);
+        }
+    };
     render() {
         const getContainerClassname = classlist('height-[36px] relative flex rounded-md', containerVariantsConfig);
         const containerClassname = getContainerClassname({

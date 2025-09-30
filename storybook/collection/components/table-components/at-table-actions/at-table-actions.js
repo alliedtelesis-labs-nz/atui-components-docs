@@ -11,6 +11,22 @@ import { h, Host, } from "@stencil/core";
 
 */
 export class AtTableActionsComponent {
+    /**
+     * AG Grid Api (provided by at-table createGrid method)
+     */
+    ag_grid;
+    /**
+     * Emits an event when 'Export CSV' is pressed on provided at-table-export-menu
+     */
+    atExportCsv;
+    /**
+     * Emits an event when 'Export PDF' is pressed on provided at-table-export-menu
+     */
+    atExportPdf;
+    /**
+     * Emits an event when filters change
+     */
+    atChange;
     changeHandler(event) {
         const target = event.target;
         switch (target.slot) {
@@ -36,7 +52,7 @@ export class AtTableActionsComponent {
             const userProvidedColDef = column.getUserProvidedColDef();
             return {
                 actualWidth: column.getActualWidth(),
-                field: (userProvidedColDef === null || userProvidedColDef === void 0 ? void 0 : userProvidedColDef.field) || '',
+                field: userProvidedColDef?.field || '',
                 displayName: this.ag_grid.getDisplayNameForColumn(column, 'header'),
             };
         });

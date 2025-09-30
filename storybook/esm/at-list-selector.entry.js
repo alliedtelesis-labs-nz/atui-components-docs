@@ -1,16 +1,33 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtListSelector = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
         this.atuiInfoButtonClick = createEvent(this, "atuiInfoButtonClick", 7);
-        /**
-         * List of items.
-         */
-        this.options = [];
-        this.listItemEls = [];
     }
+    /**
+     * List of items.
+     */
+    options = [];
+    /**
+     * The selected item.
+     */
+    selected_item_id;
+    /**
+     * Whether each item has a bottom border.
+     */
+    has_border;
+    /**
+     * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
+     */
+    atuiChange;
+    /**
+     * Emits when event when the info button of an item is clicked
+     */
+    atuiInfoButtonClick;
+    get el() { return getElement(this); }
+    listItemEls = [];
     onSelect(item) {
         this.selected_item_id = item.id;
         this.atuiChange.emit(item);
@@ -48,7 +65,6 @@ const AtListSelector = class {
     render() {
         return (h(Host, { key: '6be26c2389224e0f47a7272510f479afc4b538f1', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'b0fa93694a3a2d57b815f53c0e2d624f76d3bbac', name: "header" }), !!this.options.length && (h("nav", { key: 'a7c32df5e626cba32a2039e5ff510f86083ac47b', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '2e68019db31babb42f4e039527a07c83ebf1ff27', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '2f3d544695b91fef1c6cd2b6d0e51305178ae61a' })));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtListSelector as at_list_selector };

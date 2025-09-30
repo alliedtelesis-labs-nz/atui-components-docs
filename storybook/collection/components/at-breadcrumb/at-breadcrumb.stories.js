@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a;
-    return `
+const Template = (args) => `
 <at-breadcrumb 
-    prefix_delimiter="${(_a = args.prefix_delimiter) !== null && _a !== void 0 ? _a : ''}"
+    prefix_delimiter="${args.prefix_delimiter ?? ''}"
 />
 <script>
 document.querySelector('at-breadcrumb').values = ${JSON.stringify(args.values, null, 4)};
 ${args.get_prefix ? `document.querySelector('at-breadcrumb').get_prefix = ${'' + args.get_prefix};` : ''}
 </script>
 `;
-};
 export default {
     title: 'Components/Breadcrumb',
 };

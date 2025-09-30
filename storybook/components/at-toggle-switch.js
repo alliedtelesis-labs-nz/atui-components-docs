@@ -1,4 +1,4 @@
-import { A as AtToggleSwitchComponent, d as defineCustomElement$1 } from './p-BbmIaxhu.js';
+import { A as AtToggleSwitchComponent, d as defineCustomElement$1 } from './p-2qtycxf0.js';
 
 const AtToggleSwitch = AtToggleSwitchComponent;
 const defineCustomElement = defineCustomElement$1;

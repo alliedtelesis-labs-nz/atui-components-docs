@@ -1,35 +1,71 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearchTable = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Column definitions passed to at-table component.
-         */
-        this.col_defs = [];
-        /**
-         * Default page size of the table
-         */
-        this.page_size = 10;
-        /**
-         * If true, disables pagination on the table and shows all data at once.
-         * Useful for server-side pagination where you want to control pagination externally.
-         */
-        this.use_custom_pagination = false;
-        /**
-         * If true, enables automatic column resizing to fit available space.
-         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-         */
-        this.auto_size_columns = true;
-        this.tableCreated = false;
-        this.activeFilters = {};
-        this.selectedFilters = [];
-        this.menuSelectedIds = [];
-        this.searchValue = '';
     }
+    /**
+     * Table data passed to at-table component.
+     */
+    table_data;
+    /**
+     * Label for the table, appears above the search input.
+     */
+    label;
+    /**
+     * Label for the search input.
+     */
+    search_label;
+    /**
+     * Hint text displayed below the search label.
+     */
+    search_hint;
+    /**
+     * Info text displayed in the search info tooltip.
+     */
+    search_info_tooltip;
+    /**
+     * Column definitions passed to at-table component.
+     */
+    col_defs = [];
+    /**
+     * Default page size of the table
+     */
+    page_size = 10;
+    /**
+     * If true the table dropdown filters will not be added
+     */
+    hide_dropdown_filters;
+    /**
+     * If true the column manager will not be added
+     */
+    hide_column_manager;
+    /**
+     * If true the table export menu will not be added
+     */
+    hide_export_menu;
+    /**
+     * If true, disables pagination on the table and shows all data at once.
+     * Useful for server-side pagination where you want to control pagination externally.
+     */
+    use_custom_pagination = false;
+    /**
+     * If true, enables automatic column resizing to fit available space.
+     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     */
+    auto_size_columns = true;
+    get el() { return index.getElement(this); }
+    translations;
+    agGrid;
+    tableCreated = false;
+    activeFilters = {};
+    selectedFilters = [];
+    menuSelectedIds = [];
+    searchValue = '';
+    tableEl;
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
             this.col_defs &&
@@ -85,12 +121,12 @@ const AtSearchTable = class {
             const displayedRow = displayedRows.find((row) => row.rowIndex === index);
             if (displayedRow) {
                 displayedRow.updateData(update);
-                if (options === null || options === void 0 ? void 0 : options.flash) {
+                if (options?.flash) {
                     this.agGrid.flashCells({ rowNodes: [displayedRow] });
                 }
                 this.agGrid.refreshCells({
                     rowNodes: [displayedRow],
-                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                    force: options?.forceRefresh || false,
                 });
             }
         });
@@ -108,12 +144,11 @@ const AtSearchTable = class {
         return this.agGrid.getRenderedNodes();
     }
     async initGrid() {
-        var _a;
         if (this.col_defs && !this.tableCreated && this.tableEl) {
             this.agGrid = await this.tableEl.createGrid();
             this.tableCreated = true;
             this.setupExternalFilters();
-            if ((_a = this.table_data) === null || _a === void 0 ? void 0 : _a.items) {
+            if (this.table_data?.items) {
                 this.agGrid.setGridOption('rowData', this.table_data.items);
             }
         }
@@ -189,7 +224,7 @@ const AtSearchTable = class {
         const { id, checked } = event.detail;
         const updatedColDefs = this.col_defs.map((colDef) => {
             if (colDef.field === id) {
-                return Object.assign(Object.assign({}, colDef), { hide: !checked });
+                return { ...colDef, hide: !checked };
             }
             return colDef;
         });
@@ -270,7 +305,6 @@ const AtSearchTable = class {
     render() {
         return (index.h(index.Host, { key: '1791bd96498d20355c60af8ce452253d0e09e806' }, index.h("at-table-actions", { key: '996556d84a6620de3d6680804af376a94af645a2', ag_grid: this.agGrid }, index.h("div", { key: '12f183801b7bed97631ad07c37da82026fdce88b', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (index.h("at-table-filter-menu", { key: 'd9faea268222ea0b859d061696a0362e1dc625c4', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: 'bff72f550d0352041be5ad1f0285728816a38ec4', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (index.h("at-table-filters", { key: 'd8a37c2d2a3d8fa9371c08555ccc1e5d78747c73', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '4e51cbd9aa9e256b3e45475597f68afa8da1d98b', slot: "export-menu" })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: '717ee770a98126a0f7e849eb45cfef14b2a0d2d1', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '870e0d3d13d788553baea7a74e56eb378306b070', slot: "actions" }, index.h("slot", { key: 'e6ae44863aa11c6b58d6fea1d04cedc6ae56eb75', name: "actions" }))), index.h("slot", { key: 'ab1d54551aa1dbd375018de91114e4581619b232', name: "multi-select-actions" }), index.h("at-table", { key: '5a7911e9e82fe47943a9c37a0655d57955fcfd07', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]
     }; }

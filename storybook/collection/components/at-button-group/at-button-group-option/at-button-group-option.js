@@ -22,6 +22,33 @@ const getButtonClasses = classlist('focus-visible:border-active-foreground focus
  * @description A button group option component for the button group.
  */
 export class AtButtonGroupOption {
+    /**
+     * ID of the button element and its option
+     */
+    option_id;
+    /**
+     * String to be displayed in the button
+     */
+    label;
+    /**
+     * Icon to be displayed in the button
+     */
+    icon;
+    /**
+     * Will disable interaction if set
+     */
+    disabled;
+    /**
+     * Will apply active styling to the button
+     */
+    is_active;
+    el;
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    host_disabled;
+    provider;
     async componentDidLoad() {
         this.provider = this.el.closest('at-button-group');
         this.host_disabled = this.provider.disabled;

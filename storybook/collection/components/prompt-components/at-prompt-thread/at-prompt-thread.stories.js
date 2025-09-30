@@ -28,14 +28,12 @@ const sampleMessages = [
         timestamp: '2:31 PM',
     },
 ];
-const Template = (args) => {
-    var _a, _b, _c;
-    return `
+const Template = (args) => `
 <div style="height: 400px; border: 1px solid #e2e8f0; border-radius: 8px;">
     <at-prompt-thread
-        messages='${JSON.stringify((_a = args.messages) !== null && _a !== void 0 ? _a : [])}'
-        chatbot_title="${(_b = args.chatbot_title) !== null && _b !== void 0 ? _b : 'Assistant'}"
-        response_animation="${(_c = args.response_animation) !== null && _c !== void 0 ? _c : 'none'}"
+        messages='${JSON.stringify(args.messages ?? [])}'
+        chatbot_title="${args.chatbot_title ?? 'Assistant'}"
+        response_animation="${args.response_animation ?? 'none'}"
         ${args.loading ? 'loading' : ''}
         ${args.auto_scroll ? 'auto_scroll' : ''}
         ${args.enable_vote ? 'enable_vote' : ''}
@@ -44,7 +42,6 @@ const Template = (args) => {
     ></at-prompt-thread>
 </div>
 `;
-};
 export default {
     title: 'Components/Prompt/Thread',
     argTypes: {

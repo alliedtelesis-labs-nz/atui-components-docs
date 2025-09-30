@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BRRmBK9P.js';
-import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
+import { d as defineCustomElement$2 } from './p-C03bPuQn.js';
 
 const AtStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtStatusBar extends H {
     constructor(registerHost) {
@@ -7,15 +7,19 @@ const AtStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtStatusBar extends
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * List of segments that make up the status bar. Each segment implements the StatusBar interface.
-         */
-        this.status_bar = [];
-        /**
-         * Height of the status bar
-         */
-        this.size = 'sm';
     }
+    /**
+     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     */
+    status_bar = [];
+    /**
+     * Height of the status bar
+     */
+    size = 'sm';
+    /**
+     * Disables the tooltip when hovered
+     */
+    disable_tooltip;
     get statusBarClass() {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-sm`;
     }

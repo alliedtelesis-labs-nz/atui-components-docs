@@ -23,16 +23,33 @@ const avatarVariantsConfig = {
  * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
  */
 export class AtAvatar {
-    constructor() {
-        /**
-         * Size of the avatar
-         */
-        this.size = 'md';
-        /**
-         * Visual variant of the avatar
-         */
-        this.variant = 'secondary';
-    }
+    /**
+     * URL for the avatar image
+     *
+     * Recommended cropped image sizes for optimal display:
+     * - sm:24x24px
+     * - md:32x32px
+     * - lg:40x40px
+     *
+     * Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
+     */
+    src;
+    /**
+     * Alt text for the avatar image
+     */
+    alt;
+    /**
+     * Initials text to display when no image is provided
+     */
+    initials;
+    /**
+     * Size of the avatar
+     */
+    size = 'md';
+    /**
+     * Visual variant of the avatar
+     */
+    variant = 'secondary';
     render() {
         const getClasses = classlist('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', avatarVariantsConfig);
         const classes = getClasses({

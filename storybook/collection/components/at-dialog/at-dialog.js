@@ -6,34 +6,29 @@ import { h } from "@stencil/core";
  * @slot - Content placed inside of the dialog box
  */
 export class AtDialogComponent {
-    constructor() {
-        /**
-         * Role of the dialog element. Can be either 'dialog' or 'alertdialog'
-         */
-        this.role = 'dialog';
-        /**
-         * Whether to show a backdrop behind the dialog
-         */
-        this.backdrop = false;
-        /**
-         * Internal state to track if dialog is open
-         */
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.externalTriggerListeners = [];
-        this.handleDialogClose = (event) => {
-            event.preventDefault();
-            if (this.isOpen) {
-                this.closeDialog();
-            }
-        };
-        this.handleKeyDown = (event) => {
-            if (event.key === 'Escape' && this.isOpen) {
-                event.preventDefault();
-                this.closeDialog();
-            }
-        };
-    }
+    el;
+    /**
+     * ID of the dialog element (used to open and close the modal)
+     */
+    dialog_id;
+    /**
+     * Role of the dialog element. Can be either 'dialog' or 'alertdialog'
+     */
+    role = 'dialog';
+    /**
+     * Whether to show a backdrop behind the dialog
+     */
+    backdrop = false;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog.
+     */
+    trigger_id;
+    /**
+     * Internal state to track if dialog is open
+     */
+    isOpen = false;
+    triggerEls = [];
+    externalTriggerListeners = [];
     /**
      * Toggles the dialog modal between open and closed states
      * @returns Promise that resolves when the dialog state is toggled
@@ -73,6 +68,18 @@ export class AtDialogComponent {
             dialog.classList.remove('backdrop');
         }
     }
+    handleDialogClose = (event) => {
+        event.preventDefault();
+        if (this.isOpen) {
+            this.closeDialog();
+        }
+    };
+    handleKeyDown = (event) => {
+        if (event.key === 'Escape' && this.isOpen) {
+            event.preventDefault();
+            this.closeDialog();
+        }
+    };
     async componentDidLoad() {
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));

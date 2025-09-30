@@ -4,6 +4,8 @@ import { h, Host } from "@stencil/core";
  * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
  */
 export class AtCheckboxCellComponent {
+    el;
+    params;
     init(params) {
         this.params = params;
         this.params.api.refreshHeader();
@@ -16,8 +18,7 @@ export class AtCheckboxCellComponent {
         return true;
     }
     setValue(checked) {
-        var _a;
-        if (checked !== undefined && ((_a = this.params) === null || _a === void 0 ? void 0 : _a.setValue)) {
+        if (checked !== undefined && this.params?.setValue) {
             this.params.setValue(checked);
             this.params.api.refreshHeader();
         }

@@ -7,16 +7,23 @@ import { Fragment, h, } from "@stencil/core";
  * @slot - Can be used to place atui-breadcrumb-item(s) and atui-breadcrumb-separator(s) when `values` prop is not set
  */
 export class AtBreadcrumbComponent {
-    constructor() {
-        /**
-         * Function to get the prefix for breadcrumbs.
-         */
-        this.get_prefix = () => '';
-        /**
-         * Delimiter between the prefix and the prefix.
-         */
-        this.prefix_delimiter = '';
-    }
+    /**
+     * Function to get the prefix for breadcrumbs.
+     */
+    get_prefix = () => '';
+    /**
+     * Delimiter between the prefix and the prefix.
+     */
+    prefix_delimiter = '';
+    /**
+     * Used to place atui-breadcrumb-item(s) and atui-breadcrumb-separator(s) automatically with the string values given
+     */
+    values;
+    el;
+    /**
+     * Emits when one of the breadcrumb-items is clicked, `event.detail` is the 0-based index of the breadcrumb-item
+     */
+    atuiClick;
     handleClick(event) {
         const idOfEventTarget = Array.prototype.indexOf.call(this.el.querySelectorAll('at-breadcrumb-item > a'), event.target);
         if (idOfEventTarget >= 0)

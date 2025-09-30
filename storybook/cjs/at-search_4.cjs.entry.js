@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearch = class {
@@ -8,6 +8,31 @@ const AtSearch = class {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atChange", 7);
     }
+    /**
+     * Label text above the search bar.
+     */
+    label;
+    /**
+     * Hint text for the input, appears below the search bar.
+     */
+    hint_text;
+    /**
+     * Tooltip description.
+     */
+    info_text;
+    /**
+     * Placeholder text inside the search component.
+     */
+    placeholder;
+    /**
+     * String content of the search.
+     */
+    model;
+    searchEl;
+    /**
+     * Emits an event when the input is changed. Used by atui-table.
+     */
+    atuiChange;
     onChangeFn() {
         this.atuiChange.emit(this.searchEl.value);
         this.model = this.searchEl.value;
@@ -36,27 +61,42 @@ const AtTableExportMenu = class {
         index.registerInstance(this, hostRef);
         this.atChange = index.createEvent(this, "atChange", 7);
     }
+    get el() { return index.getElement(this); }
+    translations;
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
+    /**
+     * Emits id of the clicked button, either 'CSV' or 'PDF'.
+     */
+    atChange;
     clickHandler(event) {
         this.atChange.emit(event.target.id);
     }
     render() {
         return (index.h("at-menu", { key: 'b7ca749f0da767dedd8c40c415ff06345db93ca4', width: 'auto', align: "end" }, index.h("at-tooltip", { key: '01d43e72f58aab6eec98c33d3714f4cde93a6625', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: '2376f8accd88d361943b403f7132c15c47f4bfba', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), index.h("span", { key: 'ad1101b918860e6d24853c48e55db89f4caed4ce' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), index.h("div", { key: '1bf7b05a2a3438e07d5979d98ba30cc593a6f542' }, index.h("at-button", { key: '56c37fb1bc0ef2fb14cd2c3216ff1b17df9b328f', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), index.h("at-button", { key: '9a6e9f6192819d54b3cb61adc50b950e15e1811c', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
     }
-    get el() { return index.getElement(this); }
 };
 
 const AtTableFilterMenu = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atChange = index.createEvent(this, "atChange", 7);
-        /**
-         * Currently selected filter columns
-         */
-        this.selected = [];
     }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    /**
+     * Currently selected filter columns
+     */
+    selected = [];
+    translations;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits selected columns when checkbox selection changes
+     */
+    atChange;
     get filteredColumns() {
         return this.col_defs
             .filter((colDef) => colDef.field !== 'Checkbox')
@@ -79,7 +119,6 @@ const AtTableFilterMenu = class {
     render() {
         return (index.h(index.Host, { key: '7633c9d7e00b401dbbe0a65c882db9ec0653ba69' }, index.h("at-menu", { key: 'd6cb04b7ad4aa97a60089a6f611eddb83ad54a2b', autoclose: false, width: "fit-content", class: "self-start" }, index.h("at-tooltip", { key: 'fc17ee2d4cb5b15879666a4b083b4b32335a0e72', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: 'f6feaae96d2de0d2c4fa9b2a8603c3df5136f566', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: 'e3464ae959d2796b9704cf56f564141b95c2674d' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '638e68349da73bad3dd0d7eea971e9d710fd9fbe', class: "flex flex-col" }, index.h("at-checkbox-group", { key: '9f313b4b875e3d861a06f78b640cb2341170f813', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "selected": ["handleSelectedChange"]
     }; }
@@ -89,19 +128,21 @@ const AtTableFilters = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atChange = index.createEvent(this, "atChange", 7);
-        /**
-         * Currently selected columns and filter values
-         */
-        this.selected = [];
-        this.clearFilters = () => {
-            this.selected = [];
-            this.atChange.emit([]);
-        };
-        this.clearSingleFilter = (columnId) => {
-            this.selected = this.selected.filter((column) => column.id !== columnId);
-            this.atChange.emit(this.selected.length ? this.selected : []);
-        };
     }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    /**
+     * Currently selected columns and filter values
+     */
+    selected = [];
+    translations;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits id of column and filter value on change.
+     */
+    atChange;
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
@@ -114,10 +155,17 @@ const AtTableFilters = class {
         });
         this.atChange.emit(this.selected);
     }
+    clearFilters = () => {
+        this.selected = [];
+        this.atChange.emit([]);
+    };
+    clearSingleFilter = (columnId) => {
+        this.selected = this.selected.filter((column) => column.id !== columnId);
+        this.atChange.emit(this.selected.length ? this.selected : []);
+    };
     render() {
         return (this.col_defs && (index.h(index.Host, { key: 'd4112402a81d0e4243c94db2912ce6cd00332f06', class: "flex items-start gap-8" }, index.h("div", { key: 'bb6deb7639a2ea124921f49a7cb912190b440de0', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, !this.selected.length && (index.h("p", { key: '00e198f1c999a45016919004ecdbbe9355130134', class: "text-light" }, "0 Filters")), this.selected.map((column) => (index.h("div", { class: "flex items-center gap-2" }, index.h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, index.h("div", { slot: "input-actions" }, index.h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (index.h("at-button", { key: '75d72bf1eb9353da4681d02a0fbdd6550cd8da3e', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_search = AtSearch;

@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
     variants: {
@@ -43,20 +43,37 @@ const AtToggleSwitchComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
-        /**
-         * Position of the label, left or right of the toggle.
-         */
-        this.label_position = 'before';
-        /**
-         * Show the toggle label.
-         */
-        this.show_label = true;
-        /**
-         * Set the toggles state.
-         */
-        this.value = false;
-        this.toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label displayed alongside the toggle.
+     */
+    label;
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text;
+    /**
+     * Position of the label, left or right of the toggle.
+     */
+    label_position = 'before';
+    /**
+     * Show the toggle label.
+     */
+    show_label = true;
+    /**
+     * Disable interaction with the toggle.
+     */
+    disabled;
+    /**
+     * Set the toggles state.
+     */
+    value = false;
+    inputEl;
+    toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * Emits an event when toggled with `event.detail` being true if the switch is enabled
+     */
+    atuiChange;
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);

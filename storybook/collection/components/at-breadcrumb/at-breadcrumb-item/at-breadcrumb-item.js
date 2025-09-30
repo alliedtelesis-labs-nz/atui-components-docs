@@ -4,6 +4,15 @@ import { h, Host } from "@stencil/core";
  * @description A breadcrumb item component for the breadcrumb.
  */
 export class AtBreadcrumbItem {
+    /**
+     * Applies different styling and makes the element non-clickable when set
+     */
+    is_active;
+    /**
+     * Label for the breadcrumb item
+     */
+    label;
+    el;
     render() {
         return (h(Host, { key: 'dd0bbdc96bab3c552998956f396561cdce6cac18', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (h("a", { class: "text-light hover:text-dark cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
     }

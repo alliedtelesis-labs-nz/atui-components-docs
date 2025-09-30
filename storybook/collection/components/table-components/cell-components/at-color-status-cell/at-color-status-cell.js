@@ -4,9 +4,8 @@ import { h, Host } from "@stencil/core";
  * @description A cell component for displaying a color status indicator based on predefined types
  */
 export class AtColorStatusCell {
-    constructor() {
-        this.type = 'disabled';
-    }
+    el;
+    type = 'disabled';
     init(params) {
         this.type = params.mapValueToStatus(params.data);
     }

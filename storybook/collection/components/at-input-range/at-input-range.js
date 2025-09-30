@@ -4,41 +4,47 @@ import { h, Host, } from "@stencil/core";
  * @description A range input component for selecting a value within a specified range.
  */
 export class AtInputRangeComponent {
-    constructor() {
-        /**
-         * Min selectable value of the slider.
-         */
-        this.min = 0;
-        /**
-         * Max selectable value of the slider.
-         */
-        this.max = 100;
-        /**
-         * Interval between selections.
-         */
-        this.step = 1;
-        /**
-         * Display min and max text values.
-         */
-        this.show_minmax = true;
-        /**
-         * Display step indicators.
-         */
-        this.show_ticks = true;
-        /**
-         * Display order of input and slider.
-         */
-        this.show_value = true;
-        /**
-         * Display numeric input with slider.
-         */
-        this.show_input = true;
-        /**
-         * Position of the numeric input, left or right of the slider.
-         */
-        this.label_position = 'after';
-        this.sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label of the input.
+     */
+    label;
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text;
+    /**
+     * Info icon with detailed tooltip description if required. Content is available via info icon tooltip.
+     */
+    info_text;
+    /**
+     * suffix message for the input.
+     */
+    suffix;
+    /**
+     * Warning message for the input.
+     */
+    warning_text;
+    /**
+     *
+     * Error message visible when input is invalid.
+     */
+    error_text;
+    /**
+     * Set the input to an invalid state.
+     */
+    invalid;
+    /**
+     * Set the input to a readonly state.
+     */
+    readonly;
+    /**
+     * Disable user interaction. Disabled state should be applied via form control.
+     */
+    disabled;
+    /**
+     * Indicated form field is required.
+     */
+    required;
     /**
      * Numeric value of the slider component.
      */
@@ -48,6 +54,46 @@ export class AtInputRangeComponent {
     set value(val) {
         this._value = Math.max(this.min, Math.min(this.max, val));
     }
+    _value;
+    /**
+     * Min selectable value of the slider.
+     */
+    min = 0;
+    /**
+     * Max selectable value of the slider.
+     */
+    max = 100;
+    /**
+     * Interval between selections.
+     */
+    step = 1;
+    /**
+     * Display min and max text values.
+     */
+    show_minmax = true;
+    /**
+     * Display step indicators.
+     */
+    show_ticks = true;
+    /**
+     * Display order of input and slider.
+     */
+    show_value = true;
+    /**
+     * Display numeric input with slider.
+     */
+    show_input = true;
+    /**
+     * Position of the numeric input, left or right of the slider.
+     */
+    label_position = 'after';
+    /**
+     * Emits an event containing the current value when the text input or slider input's content is changed
+     */
+    atuiChange;
+    el;
+    sliderContainerRef;
+    sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
     onChange(inputVal) {
         const newValue = Math.max(this.min, Math.min(this.max, inputVal)); // Clamp value
         this.value = newValue;

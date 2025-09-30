@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {
     variants: {
@@ -37,20 +37,66 @@ const AtTextareaComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
-        /**
-         * Minimum number of rows to display
-         */
-        this.min_rows = 1;
-        /**
-         * Maximum number of rows to expand to
-         */
-        this.max_rows = 10;
-        /**
-         * Sets the 'autocomplete' attribute on the textarea
-         */
-        this.autocomplete = 'on';
-        this.textareaId = `textarea-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label to be displayed for the textarea
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Displayed when invalid is set
+     */
+    error_text;
+    /**
+     * Placeholder in the textarea when no text is placed
+     */
+    placeholder;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Displays then error text when set
+     */
+    invalid;
+    /**
+     * Makes the textarea read only
+     */
+    readonly;
+    /**
+     * Disables interaction with the textarea
+     */
+    disabled;
+    /**
+     * Minimum number of rows to display
+     */
+    min_rows = 1;
+    /**
+     * Maximum number of rows to expand to
+     */
+    max_rows = 10;
+    /**
+     * Sets the 'autocomplete' attribute on the textarea
+     */
+    autocomplete = 'on';
+    /**
+     * Sets the value of the textarea
+     */
+    value;
+    textareaEl;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits an event containing the text string when the textarea's content is changed
+     */
+    atuiChange;
+    textareaId = `textarea-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
         this.value = event.target.value;
@@ -70,7 +116,6 @@ const AtTextareaComponent = class {
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
             }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (index.h("span", { key: '8a3c1edecd4c59a9d8dffb8b384dc6a78c977ced', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_textarea = AtTextareaComponent;

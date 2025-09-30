@@ -24,12 +24,41 @@ const getRadioClasses = classlist('focus-visible:ring-active-foreground/30 relat
  * @slot - Placed below the title/subtitle
  */
 export class AtRadio {
-    constructor() {
-        /**
-         * Disables the radio option but keeps the text readable. Used for global readonly form state.
-         */
-        this.readonly = false;
-    }
+    el;
+    /**
+     * Title of the radio component.
+     */
+    label;
+    /**
+     * Subtitle of the radio component.
+     */
+    hint_text;
+    /**
+     * Sets the value of the checkbox
+     */
+    value;
+    /**
+     * ID of the radio button element and its option
+     */
+    option_id;
+    /**
+     * Name of radio group.
+     * Buttons sharing a name are associated with the same radio group.
+     */
+    group;
+    /**
+     * Disables interaction with the radio
+     */
+    disabled;
+    /**
+     * Disables the radio option but keeps the text readable. Used for global readonly form state.
+     */
+    readonly = false;
+    radioEl;
+    /**
+     * Emits the current state of the radio when clicked.
+     */
+    atuiChange;
     handleChange() {
         if (!this.disabled && !this.readonly && !this.value) {
             this.value = true;

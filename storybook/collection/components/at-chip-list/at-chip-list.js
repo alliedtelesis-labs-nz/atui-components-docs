@@ -6,16 +6,30 @@ import { h, } from "@stencil/core";
  * @slot - Placed after the chips & the 'clear all' button
  */
 export class AtChipList {
-    constructor() {
-        /**
-         * Shows the 'Clear All' button
-         */
-        this.show_clear_all = true;
-        /**
-         * Size of the chips. Determines padding and font-size. For use in input chip lists.
-         */
-        this.size = 'lg';
-    }
+    /**
+     * Items in the chip list.
+     */
+    chips;
+    /**
+     * Disables the list of chips. Prevents removing a chip.
+     */
+    disabled;
+    /**
+     * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+     */
+    readonly;
+    /**
+     * Shows the 'Clear All' button
+     */
+    show_clear_all = true;
+    /**
+     * Size of the chips. Determines padding and font-size. For use in input chip lists.
+     */
+    size = 'lg';
+    /**
+     * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
+     */
+    atuiRemoveChip;
     keyDownHandler(event, chipsToRemove) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();

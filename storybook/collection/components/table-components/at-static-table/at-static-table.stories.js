@@ -1,8 +1,6 @@
-const Template = (args) => {
-    var _a;
-    return `
+const Template = (args) => `
 <at-static-table 
-    page_size=${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10} 
+    page_size=${args.page_size ?? 10} 
     ${args.hide_column_manager ? 'hide_column_manager' : ''}
 />
 <script>
@@ -10,7 +8,6 @@ document.querySelector('at-static-table').table_data = ${JSON.stringify(args.tab
 document.querySelector('at-static-table').col_defs = ${JSON.stringify(args.col_defs, null, 4)}
 </script>
 `;
-};
 export default {
     title: 'Components/Static Table',
 };

@@ -1,8 +1,8 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BRRmBK9P.js';
-import { c as classlist } from './p-DowIpD9s.js';
-import { d as defineCustomElement$4 } from './p-DUrPhBc7.js';
-import { d as defineCustomElement$3 } from './p-DyvbKjbh.js';
-import { d as defineCustomElement$2 } from './p-CB1W_yTO.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BAZ2N91w.js';
+import { c as classlist } from './p-COG8_R0C.js';
+import { d as defineCustomElement$4 } from './p-DOJpzqxq.js';
+import { d as defineCustomElement$3 } from './p-CpPLK6fL.js';
+import { d as defineCustomElement$2 } from './p-C03bPuQn.js';
 
 const layoutVariantsConfig = {
     variants: {
@@ -21,13 +21,59 @@ const AtRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class AtRadioGroup exten
             this.__registerHost();
         }
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * Direction that the radio elements are placed
-         */
-        this.layout = 'column';
-        this.radioEls = [];
-        this.radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label of the radio group.
+     */
+    label;
+    /**
+     * Optional info icon with detailed tooltip description.
+     * Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Direction that the radio elements are placed
+     */
+    layout = 'column';
+    /**
+     * Disables the radio options but keeps the text readable. Use for global readonly form state.
+     */
+    disabled;
+    /**
+     * Disables interaction with atui-radio elements when set
+     */
+    readonly;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Shown when 'invalid' prop is set
+     */
+    error_text;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Options displayed in the radio group.
+     */
+    options;
+    /**
+     * A string containing the Id of the currently selected radio
+     */
+    value;
+    get el() { return this; }
+    radioEls = [];
+    radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
+     */
+    atuiChange;
     handleChange(optionId) {
         if (this.value !== optionId) {
             this.value = optionId;
@@ -72,7 +118,6 @@ const AtRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class AtRadioGroup exten
         return (h(Host, { key: '691e2c440c340943889f738a6252bdf3cbabd5dc', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '959eb580217efc7aefc5e42de6c6f53ba922694a', class: "flex flex-col" }, h("slot", { key: '475ae273fd9bf940d1d9511b6bb4396a83ac8d9f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '1e22b55776d6ac143834695bebd50784741cedd3', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'bf41227fb6b26becb6b17e3a64adaf9272997ca1', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: 'ed839d37790b9c50713af29629a7a05bfb38ff03', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'eb822b5949fadc7d94f4dd1cdaa4b41dcefa7a6e' }), this.getRadios &&
             this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'e6fd94bf719269146df84b37bb37243107ddc6d9', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
-    get el() { return this; }
 }, [260, "at-radio-group", {
         "label": [1],
         "info_text": [1],

@@ -1,14 +1,12 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    return `
+const Template = (args) => `
 <at-select
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}"
-    hint_text="${(_b = args.hint_text) !== null && _b !== void 0 ? _b : ''}"
-    info_text="${(_c = args.info_text) !== null && _c !== void 0 ? _c : ''}"
-    error_text="${(_d = args.error_text) !== null && _d !== void 0 ? _d : ''}"
-    placeholder="${(_e = args.placeholder) !== null && _e !== void 0 ? _e : ''}"
-    value="${(_f = args.value) !== null && _f !== void 0 ? _f : ''}"
-    group_by="${(_g = args.group_by) !== null && _g !== void 0 ? _g : ''}"
+    label="${args.label ?? ''}"
+    hint_text="${args.hint_text ?? ''}"
+    info_text="${args.info_text ?? ''}"
+    error_text="${args.error_text ?? ''}"
+    placeholder="${args.placeholder ?? ''}"
+    value="${args.value ?? ''}"
+    group_by="${args.group_by ?? ''}"
     ${args.grouped ? 'grouped' : ''}
     ${args.required ? 'required' : ''}
     ${args.readonly ? 'readonly' : ''}
@@ -21,7 +19,6 @@ const Template = (args) => {
 document.querySelector('at-select').options = ${JSON.stringify(args.options, null, 4)};
 </script>
     `;
-};
 export default {
     title: 'Components/Select',
 };

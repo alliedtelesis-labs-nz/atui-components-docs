@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BRRmBK9P.js';
-import { c as classlist } from './p-DowIpD9s.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
+import { c as classlist } from './p-COG8_R0C.js';
 
 const containerVariantsConfig = {
     variants: {
@@ -44,27 +44,39 @@ const AtCardComponent = /*@__PURE__*/ proxyCustomElement(class AtCardComponent e
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Enables overflow on the content area. If false overflow will be applied on the host.
-         */
-        this.overflow_content = false;
-        /**
-         * Display header persistently at top of card.
-         */
-        this.sticky_header = true;
-        /**
-         * Display footer persistently at bottom of card.
-         */
-        this.sticky_footer = true;
-        /**
-         * Apply or remove padding form the card content area.
-         */
-        this.padding = true;
-        /**
-         * Box-shadow around card.
-         */
-        this.shadow = 'none';
     }
+    /**
+     * Title of the card.
+     */
+    card_title;
+    /**
+     * Subtitle of the card, placed below title.
+     */
+    subtitle;
+    /**
+     * Content of the card, placed below title, and subtitle.
+     */
+    content;
+    /**
+     * Enables overflow on the content area. If false overflow will be applied on the host.
+     */
+    overflow_content = false;
+    /**
+     * Display header persistently at top of card.
+     */
+    sticky_header = true;
+    /**
+     * Display footer persistently at bottom of card.
+     */
+    sticky_footer = true;
+    /**
+     * Apply or remove padding form the card content area.
+     */
+    padding = true;
+    /**
+     * Box-shadow around card.
+     */
+    shadow = 'none';
     render() {
         const getContainerClassname = classlist('relative z-1 border border-light bg-card flex flex-col overflow-hidden rounded-lg', containerVariantsConfig);
         const containerClassname = getContainerClassname({

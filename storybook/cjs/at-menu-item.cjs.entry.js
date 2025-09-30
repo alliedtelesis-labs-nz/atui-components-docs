@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
     variants: {
@@ -18,15 +18,23 @@ const variantsConfig = {
 const AtMenuitemComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Will change the styling of the menuitem when set
-         */
-        this.is_active = false;
-        /**
-         * Disables user interaction with the menu-item and updates visual style to appear inactive
-         */
-        this.disabled = false;
     }
+    /**
+     * Label to be displayed for the menu item
+     */
+    label;
+    /**
+     * Icon to be displayed with the label
+     */
+    icon;
+    /**
+     * Will change the styling of the menuitem when set
+     */
+    is_active = false;
+    /**
+     * Disables user interaction with the menu-item and updates visual style to appear inactive
+     */
+    disabled = false;
     render() {
         const getClassname = classlist.classlist('text-body focus-visible:ring-active-foreground/40 relative flex w-full cursor-pointer items-center gap-8 truncate overflow-hidden rounded-md p-8 text-left font-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', variantsConfig);
         const classname = getClassname({

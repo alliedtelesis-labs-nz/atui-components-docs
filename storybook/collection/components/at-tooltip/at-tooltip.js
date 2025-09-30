@@ -9,45 +9,53 @@ const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
  * @slot default - Content to go inside the tooltip
  */
 export class AtTooltip {
-    constructor() {
-        /**
-         * Position of opened tooltip element relative to the trigger element.
-         */
-        this.position = 'top';
-        /**
-         * Alignment of opened tooltip element relative to trigger element.
-         */
-        this.align = 'center';
-        /**
-         * Prevent opening tooltip
-         */
-        this.disabled = false;
-        /**
-         * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
-         */
-        this.width = '200px';
-        /**
-         * Offset in pixels from the edge of the trigger element
-         */
-        this.offset = 8;
-        /**
-         * Delay before showing and hiding the tooltip when interacting with the trigger element.
-         */
-        this.delay = 150;
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.updatePosition = async () => {
-            if (this.triggerEl && this.tooltipEl && this.isOpen) {
-                await this.updateFloatingPosition();
-            }
-        };
-        this.externalTriggerListeners = [];
-    }
+    /**
+     * Position of opened tooltip element relative to the trigger element.
+     */
+    position = 'top';
+    /**
+     * Alignment of opened tooltip element relative to trigger element.
+     */
+    align = 'center';
+    /**
+     * Prevent opening tooltip
+     */
+    disabled = false;
+    /**
+     * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+     */
+    width = '200px';
+    /**
+     * Offset in pixels from the edge of the trigger element
+     */
+    offset = 8;
+    /**
+     * Delay before showing and hiding the tooltip when interacting with the trigger element.
+     */
+    delay = 150;
+    /**
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
+    trigger_id;
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             await this.closeTooltip();
         }
     }
+    isOpen = false;
+    el;
+    triggerEl;
+    tooltipEl;
+    triggerEls = [];
+    cleanupAutoUpdate;
+    popoverId;
+    showTimeout;
+    hideTimeout;
+    updatePosition = async () => {
+        if (this.triggerEl && this.tooltipEl && this.isOpen) {
+            await this.updateFloatingPosition();
+        }
+    };
     /**
      * Opens the tooltip.
      */
@@ -106,6 +114,7 @@ export class AtTooltip {
             this.hideTimeout = undefined;
         }
     }
+    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -204,7 +213,6 @@ export class AtTooltip {
             }, { threshold: 0 });
             observer.observe(this.triggerEl);
             this.cleanupAutoUpdate = autoUpdate(this.triggerEl, this.tooltipEl, () => {
-                var _a;
                 if (this.isOpen) {
                     const placement = this.getFloatingUIPlacement();
                     const strategy = 'fixed';
@@ -212,7 +220,7 @@ export class AtTooltip {
                         placement,
                         strategy,
                         middleware: [
-                            offset((_a = this.offset) !== null && _a !== void 0 ? _a : 8),
+                            offset(this.offset ?? 8),
                             flip({
                                 fallbackStrategy: 'bestFit',
                                 padding: 8,
@@ -259,8 +267,7 @@ export class AtTooltip {
         }
     }
     cleanupFloatingUI() {
-        var _a;
-        (_a = this.cleanupAutoUpdate) === null || _a === void 0 ? void 0 : _a.call(this);
+        this.cleanupAutoUpdate?.();
         this.cleanupAutoUpdate = undefined;
     }
     async updateFloatingPosition() {

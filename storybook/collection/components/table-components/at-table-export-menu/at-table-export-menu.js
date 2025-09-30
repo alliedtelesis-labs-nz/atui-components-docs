@@ -5,9 +5,15 @@ import { fetchTranslations } from "../../../utils/translation";
  * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
  */
 export class AtTableExportMenu {
+    el;
+    translations;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
+    /**
+     * Emits id of the clicked button, either 'CSV' or 'PDF'.
+     */
+    atChange;
     clickHandler(event) {
         this.atChange.emit(event.target.id);
     }

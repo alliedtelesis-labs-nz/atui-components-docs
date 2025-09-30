@@ -17,14 +17,58 @@ const getLayoutClass = classlist('gap-4', layoutVariantsConfig);
  * @slot - Used to place atui-radio elements when 'options' is not set
  */
 export class AtRadioGroup {
-    constructor() {
-        /**
-         * Direction that the radio elements are placed
-         */
-        this.layout = 'column';
-        this.radioEls = [];
-        this.radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label of the radio group.
+     */
+    label;
+    /**
+     * Optional info icon with detailed tooltip description.
+     * Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Direction that the radio elements are placed
+     */
+    layout = 'column';
+    /**
+     * Disables the radio options but keeps the text readable. Use for global readonly form state.
+     */
+    disabled;
+    /**
+     * Disables interaction with atui-radio elements when set
+     */
+    readonly;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Shown when 'invalid' prop is set
+     */
+    error_text;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Options displayed in the radio group.
+     */
+    options;
+    /**
+     * A string containing the Id of the currently selected radio
+     */
+    value;
+    el;
+    radioEls = [];
+    radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
+     */
+    atuiChange;
     handleChange(optionId) {
         if (this.value !== optionId) {
             this.value = optionId;

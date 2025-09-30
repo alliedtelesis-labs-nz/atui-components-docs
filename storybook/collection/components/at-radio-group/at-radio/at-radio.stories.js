@@ -1,13 +1,10 @@
-const Template = (args) => {
-    var _a, _b;
-    return `
+const Template = (args) => `
 <at-radio 
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}" 
-    subtitle="${(_b = args.subtitle) !== null && _b !== void 0 ? _b : ''}"
+    label="${args.label ?? ''}" 
+    subtitle="${args.subtitle ?? ''}"
     ${args.checked ? 'checked' : ''}
     ${args.disabled ? 'disabled' : ''}
 />`;
-};
 export default {
     title: 'Components/Radio',
 };

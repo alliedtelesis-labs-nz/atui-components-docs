@@ -1,21 +1,18 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f;
-    return `
+const Template = (args) => `
 <at-side-panel 
-    panel_id="${(_a = args.panel_id) !== null && _a !== void 0 ? _a : ''}"
-    panel_subtitle="${(_b = args.panel_subtitle) !== null && _b !== void 0 ? _b : ''}"
-    panel_title="${(_c = args.panel_title) !== null && _c !== void 0 ? _c : ''}"
-    origin="${(_d = args.origin) !== null && _d !== void 0 ? _d : ''}"
-    size="${(_e = args.size) !== null && _e !== void 0 ? _e : ''}"
+    panel_id="${args.panel_id ?? ''}"
+    panel_subtitle="${args.panel_subtitle ?? ''}"
+    panel_title="${args.panel_title ?? ''}"
+    origin="${args.origin ?? ''}"
+    size="${args.size ?? ''}"
     show_close_button=${args.show_close_button ? true : false}
     ${args.click_out_to_close ? 'click_out_to_close' : ''}
     ${args.hide_scrollbar ? 'hide_scrollbar' : ''}
 >
     <at-message message_title="Sidepanel content" icon="preview" slot="content"></at-message>
 </at-side-panel>
-<at-button label="Open Sidepanel" onclick={document.querySelector("#${(_f = args.panel_id) !== null && _f !== void 0 ? _f : ''}").showModal()} />
+<at-button label="Open Sidepanel" onclick={document.querySelector("#${args.panel_id ?? ''}").showModal()} />
 `;
-};
 const ExternalTriggerTemplate = (args) => `
 <at-button id="${args.trigger_id}" label="${args.trigger_label || 'Open Side Panel'}" type="primary"></at-button>
 <at-side-panel 

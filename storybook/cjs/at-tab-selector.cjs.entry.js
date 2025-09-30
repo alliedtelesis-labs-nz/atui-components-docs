@@ -1,25 +1,33 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtTabSelector = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
-        /**
-         * List of tabs the selector will have
-         */
-        this.tabs = [];
-        /**
-         * Layout of the tabs
-         */
-        this.layout = 'horizontal';
-        /**
-         * hide navigation when you want to provide custom controls
-         */
-        this.hide_nav = false;
-        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     }
+    get el() { return index.getElement(this); }
+    /**
+     * List of tabs the selector will have
+     */
+    tabs = [];
+    /**
+     * Layout of the tabs
+     */
+    layout = 'horizontal';
+    /**
+     * hide navigation when you want to provide custom controls
+     */
+    hide_nav = false;
+    /**
+     * Sets the current active tab
+     */
+    active_tab;
+    /**
+     * Emits the id of the tab when a new active_tab is set
+     */
+    atuiChange;
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -35,6 +43,7 @@ const AtTabSelector = class {
             });
         }
     }
+    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }
@@ -89,7 +98,6 @@ const AtTabSelector = class {
     render() {
         return index.h(index.Host, { key: '8d6c4ffa425ebc01f51e0ffcc0b445917ecc8100' }, this.checkLayoutAndRender());
     }
-    get el() { return index.getElement(this); }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]
     }; }

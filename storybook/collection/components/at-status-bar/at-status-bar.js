@@ -4,16 +4,18 @@ import { h, Host } from "@stencil/core";
  * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
  */
 export class AtStatusBar {
-    constructor() {
-        /**
-         * List of segments that make up the status bar. Each segment implements the StatusBar interface.
-         */
-        this.status_bar = [];
-        /**
-         * Height of the status bar
-         */
-        this.size = 'sm';
-    }
+    /**
+     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     */
+    status_bar = [];
+    /**
+     * Height of the status bar
+     */
+    size = 'sm';
+    /**
+     * Disables the tooltip when hovered
+     */
+    disable_tooltip;
     get statusBarClass() {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-sm`;
     }

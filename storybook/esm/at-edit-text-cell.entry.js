@@ -1,9 +1,11 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtEditTextCell = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
+    get el() { return getElement(this); }
+    params;
     init(params) {
         this.params = params;
     }
@@ -26,7 +28,6 @@ const AtEditTextCell = class {
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtEditTextCell as at_edit_text_cell };

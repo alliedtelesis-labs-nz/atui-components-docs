@@ -1,13 +1,11 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e;
-    return `
+const Template = (args) => `
 <div style="width: 100%; max-width: 800px; margin: 0 auto;">
     <at-prompt-container
-        messages='${JSON.stringify((_a = args.messages) !== null && _a !== void 0 ? _a : [])}'
-        placeholder="${(_b = args.placeholder) !== null && _b !== void 0 ? _b : ''}"
-        error_text="${(_c = args.error_text) !== null && _c !== void 0 ? _c : ''}"
-        max_message_length="${(_d = args.max_message_length) !== null && _d !== void 0 ? _d : 2000}"
-        response_animation="${(_e = args.response_animation) !== null && _e !== void 0 ? _e : 'none'}"
+        messages='${JSON.stringify(args.messages ?? [])}'
+        placeholder="${args.placeholder ?? ''}"
+        error_text="${args.error_text ?? ''}"
+        max_message_length="${args.max_message_length ?? 2000}"
+        response_animation="${args.response_animation ?? 'none'}"
         ${args.loading ? 'loading' : ''}
         ${args.disabled ? 'disabled' : ''}
         ${args.show_new_thread_button ? 'show_new_thread_button' : ''}
@@ -17,7 +15,6 @@ const Template = (args) => {
     ></at-prompt-container>
 </div>
 `;
-};
 export default {
     title: 'Components/Prompt/Container',
     argTypes: {

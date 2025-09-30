@@ -1,19 +1,16 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    return `
+const Template = (args) => `
 <at-prompt-message
-    role="${(_a = args.role) !== null && _a !== void 0 ? _a : ''}"
-    content="${(_b = args.content) !== null && _b !== void 0 ? _b : ''}"
-    name="${(_c = args.name) !== null && _c !== void 0 ? _c : ''}"
-    avatar="${(_d = args.avatar) !== null && _d !== void 0 ? _d : ''}"
-    timestamp="${(_e = args.timestamp) !== null && _e !== void 0 ? _e : ''}"
-    error_message="${(_f = args.error_message) !== null && _f !== void 0 ? _f : ''}"
-    animate="${(_g = args.animate) !== null && _g !== void 0 ? _g : ''}"
+    role="${args.role ?? ''}"
+    content="${args.content ?? ''}"
+    name="${args.name ?? ''}"
+    avatar="${args.avatar ?? ''}"
+    timestamp="${args.timestamp ?? ''}"
+    error_message="${args.error_message ?? ''}"
+    animate="${args.animate ?? ''}"
     ${args.loading ? 'loading' : ''}
     ${args.error ? 'error' : ''}
 ></at-prompt-message>
 `;
-};
 export default {
     title: 'Components/Prompt/Message',
     argTypes: {
@@ -93,17 +90,15 @@ AnimatedWords.args = {
     timestamp: '2:35 PM',
     animate: 'words',
 };
-const WithSlotContentTemplate = (args) => {
-    var _a, _b, _c, _d, _e;
-    return `
+const WithSlotContentTemplate = (args) => `
 <at-prompt-message
-    role="${(_a = args.role) !== null && _a !== void 0 ? _a : ''}"
-    name="${(_b = args.name) !== null && _b !== void 0 ? _b : ''}"
-    avatar="${(_c = args.avatar) !== null && _c !== void 0 ? _c : ''}"
-    timestamp="${(_d = args.timestamp) !== null && _d !== void 0 ? _d : ''}"
+    role="${args.role ?? ''}"
+    name="${args.name ?? ''}"
+    avatar="${args.avatar ?? ''}"
+    timestamp="${args.timestamp ?? ''}"
     ${args.loading ? 'loading' : ''}
     ${args.error ? 'error' : ''}
-    error_message="${(_e = args.error_message) !== null && _e !== void 0 ? _e : ''}"
+    error_message="${args.error_message ?? ''}"
 >
     <div>
         <p><strong>Here's a complex response with custom HTML:</strong></p>
@@ -116,7 +111,6 @@ const WithSlotContentTemplate = (args) => {
     </div>
 </at-prompt-message>
 `;
-};
 export const WithSlotContent = WithSlotContentTemplate.bind({});
 WithSlotContent.args = {
     role: 'assistant',

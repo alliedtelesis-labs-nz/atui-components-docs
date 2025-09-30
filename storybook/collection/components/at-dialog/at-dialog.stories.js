@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a, _b, _c;
-    return `
-<at-dialog dialog_id="${(_a = args.dialog_id) !== null && _a !== void 0 ? _a : ''}">
+const Template = (args) => `
+<at-dialog dialog_id="${args.dialog_id ?? ''}">
     <div style="display: flex; flex-direction: column; justify-content: center; padding: 3rem;">
         <at-header header_title="Dialog Title" icon="preview"></at-header>
-        <at-button label="Close dialog" onclick={document.querySelector("#${(_b = args.dialog_id) !== null && _b !== void 0 ? _b : ''}").close()} />
+        <at-button label="Close dialog" onclick={document.querySelector("#${args.dialog_id ?? ''}").close()} />
     </div>
 </at-dialog>
-<at-button label="Open Dialog" onclick={document.querySelector("#${(_c = args.dialog_id) !== null && _c !== void 0 ? _c : ''}").showModal()} />
+<at-button label="Open Dialog" onclick={document.querySelector("#${args.dialog_id ?? ''}").showModal()} />
 `;
-};
 const ExternalTriggerTemplate = (args) => `
 <at-button data-id="${args.trigger_id}" label="${args.trigger_label || 'Open Dialog'}" type="primary"></at-button>
 <at-dialog dialog_id="${args.dialog_id}" trigger_id="${args.trigger_id}">

@@ -21,24 +21,22 @@ const loadingVariants = {
  * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
  */
 export class AtLoadingComponent {
-    constructor() {
-        /**
-         * Type of loading animation to display
-         */
-        this.variant = 'spinner';
-        /**
-         * Visual type/color of the loading indicator
-         */
-        this.type = 'default';
-        /**
-         * Size of the loading indicator
-         */
-        this.size = 'md';
-        /**
-         * Custom text to display with text-based animations
-         */
-        this.text = 'Loading';
-    }
+    /**
+     * Type of loading animation to display
+     */
+    variant = 'spinner';
+    /**
+     * Visual type/color of the loading indicator
+     */
+    type = 'default';
+    /**
+     * Size of the loading indicator
+     */
+    size = 'md';
+    /**
+     * Custom text to display with text-based animations
+     */
+    text = 'Loading';
     get typeClasses() {
         return loadingVariants.type[this.type];
     }

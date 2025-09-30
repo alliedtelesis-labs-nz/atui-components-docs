@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
-import { c as classlist } from './classlist-DowIpD9s.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const buttonVariantsConfig = {
     variants: {
@@ -98,32 +98,49 @@ const AtButtonComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiClick = createEvent(this, "atuiClick", 7);
-        /**
-         * If set, will request submit from the closest form element when clicked
-         */
-        this.submit = false;
-        /**
-         * Theme of the button. Default primary
-         */
-        this.type = 'primary';
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
-        /**
-         * When set, will display a loading spinner inside the button and hide all labels & icons
-         */
-        this.in_progress = false;
-        /**
-         * Delay period on spinner
-         */
-        this.spinner_delay_ms = 1000;
-        this.canHideSpinner = true;
     }
+    /**
+     * If set, will request submit from the closest form element when clicked
+     */
+    submit = false;
+    /**
+     * Theme of the button. Default primary
+     */
+    type = 'primary';
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    /**
+     * Material icon to be displayed before the label within the button
+     */
+    icon;
+    /**
+     * Material icon to be displayed after the label within the button
+     */
+    icon_after;
+    /**
+     * When set, will display a loading spinner inside the button and hide all labels & icons
+     */
+    in_progress = false;
+    /**
+     * Delay period on spinner
+     */
+    spinner_delay_ms = 1000;
+    get el() { return getElement(this); }
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    canHideSpinner = true;
     get spinnerColour() {
         return spinnerColourPerType[this.type];
     }
@@ -187,7 +204,6 @@ const AtButtonComponent = class {
         });
         return (h(Host, { key: 'af460532aa993f54e957af3d1d4572f1af6c91d2', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'ab4a6dade60b9e8e50da04ad6d4b1b4a67911a5e', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '09e2a27766ee4ff176d993c443d4e0505c42662e', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '51d2a1fb06a90647e0297532b1783ceb931a81b5', name: "icon" }), this.icon && (h("span", { key: 'faa1c96f934937e8424a8f0d364fb69e81ab533a', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'f6dab556f201e35766c9d680dccef7cf105e9894', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '60efc897fa8844682134e7ca46cfe7d8daa936ec' }), h("slot", { key: '23353cc2e8fd245c6c09e72a3d0cd69f6f9eacd2', name: "icon_after" }), this.icon_after && (h("span", { key: '3e1548a0ca68cb53b8d7d5068c21f4081a8c31b7', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '5baf79305fd68651bfa34bddc65a45d909e872c1', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
-    get el() { return getElement(this); }
 };
 
 const atLoadingCss = "@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}";
@@ -212,23 +228,23 @@ const loadingVariants = {
 const AtLoadingComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Type of loading animation to display
-         */
-        this.variant = 'spinner';
-        /**
-         * Visual type/color of the loading indicator
-         */
-        this.type = 'default';
-        /**
-         * Size of the loading indicator
-         */
-        this.size = 'md';
-        /**
-         * Custom text to display with text-based animations
-         */
-        this.text = 'Loading';
     }
+    /**
+     * Type of loading animation to display
+     */
+    variant = 'spinner';
+    /**
+     * Visual type/color of the loading indicator
+     */
+    type = 'default';
+    /**
+     * Size of the loading indicator
+     */
+    size = 'md';
+    /**
+     * Custom text to display with text-based animations
+     */
+    text = 'Loading';
     get typeClasses() {
         return loadingVariants.type[this.type];
     }

@@ -35,21 +35,65 @@ const getInputClasses = classlist('align-center transition[background-color,colo
  * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
  */
 export class AtTextareaComponent {
-    constructor() {
-        /**
-         * Minimum number of rows to display
-         */
-        this.min_rows = 1;
-        /**
-         * Maximum number of rows to expand to
-         */
-        this.max_rows = 10;
-        /**
-         * Sets the 'autocomplete' attribute on the textarea
-         */
-        this.autocomplete = 'on';
-        this.textareaId = `textarea-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label to be displayed for the textarea
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Displayed when invalid is set
+     */
+    error_text;
+    /**
+     * Placeholder in the textarea when no text is placed
+     */
+    placeholder;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Displays then error text when set
+     */
+    invalid;
+    /**
+     * Makes the textarea read only
+     */
+    readonly;
+    /**
+     * Disables interaction with the textarea
+     */
+    disabled;
+    /**
+     * Minimum number of rows to display
+     */
+    min_rows = 1;
+    /**
+     * Maximum number of rows to expand to
+     */
+    max_rows = 10;
+    /**
+     * Sets the 'autocomplete' attribute on the textarea
+     */
+    autocomplete = 'on';
+    /**
+     * Sets the value of the textarea
+     */
+    value;
+    textareaEl;
+    el;
+    /**
+     * Emits an event containing the text string when the textarea's content is changed
+     */
+    atuiChange;
+    textareaId = `textarea-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
         this.value = event.target.value;

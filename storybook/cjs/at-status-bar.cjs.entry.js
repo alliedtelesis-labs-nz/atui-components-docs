@@ -1,19 +1,23 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtStatusBar = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * List of segments that make up the status bar. Each segment implements the StatusBar interface.
-         */
-        this.status_bar = [];
-        /**
-         * Height of the status bar
-         */
-        this.size = 'sm';
     }
+    /**
+     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     */
+    status_bar = [];
+    /**
+     * Height of the status bar
+     */
+    size = 'sm';
+    /**
+     * Disables the tooltip when hovered
+     */
+    disable_tooltip;
     get statusBarClass() {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-sm`;
     }

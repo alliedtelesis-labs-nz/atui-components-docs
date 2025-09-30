@@ -32,24 +32,30 @@ const badgeVariants = {
  * @slot - Content placed after the label
  */
 export class AtBadgeComponent {
-    constructor() {
-        /**
-         * Type of the badge. Determines colour theming.
-         */
-        this.type = 'default';
-        /**
-         * Size of the badge. Determines padding and font-size. For use in input chip lists.
-         */
-        this.size = 'lg';
-        /**
-         * Impact of the badge, changes the colours.
-         */
-        this.impact = 'low';
-        /**
-         * Boolean value to round the edges of the badge.
-         */
-        this.rounded = false;
-    }
+    /**
+     * Icon appearing to the left of the badge title. MUST use mat-icon name.
+     */
+    icon;
+    /**
+     * Title shown on the badge.
+     */
+    label;
+    /**
+     * Type of the badge. Determines colour theming.
+     */
+    type = 'default';
+    /**
+     * Size of the badge. Determines padding and font-size. For use in input chip lists.
+     */
+    size = 'lg';
+    /**
+     * Impact of the badge, changes the colours.
+     */
+    impact = 'low';
+    /**
+     * Boolean value to round the edges of the badge.
+     */
+    rounded = false;
     get baseClasses() {
         return `${badgeVariants.base} ${this.rounded ? badgeVariants.rounded : ''}`;
     }

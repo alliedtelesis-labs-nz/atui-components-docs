@@ -1,13 +1,10 @@
-const Template = (args) => {
-    var _a, _b, _c;
-    return `<at-checkbox 
-    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}" 
-    subtitle="${(_b = args.subtitle) !== null && _b !== void 0 ? _b : ''}"
-    checkbox_id="${(_c = args.checkbox_id) !== null && _c !== void 0 ? _c : ''}"
+const Template = (args) => `<at-checkbox 
+    label="${args.label ?? ''}" 
+    subtitle="${args.subtitle ?? ''}"
+    checkbox_id="${args.checkbox_id ?? ''}"
     ${args.checked ? 'checked' : ''}
     ${args.disabled ? 'disabled' : ''}
 />`;
-};
 export default {
     title: 'Components/Checkbox',
 };

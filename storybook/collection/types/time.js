@@ -24,6 +24,8 @@ export var Duration;
     Duration["YEARS"] = "years";
 })(Duration || (Duration = {}));
 export class SelectedTimeRange {
+    custom;
+    selected;
     /**
      * Generate a unique key when you need ISelectedTimeRange as an argument key of a function call caching.
      * Please see https://lodash.com/docs/4.17.15#memoize

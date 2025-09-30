@@ -4,6 +4,8 @@ import { h, Host } from "@stencil/core";
  * @description A cell component for displaying and editing text.
  */
 export class AtEditTextCell {
+    el;
+    params;
     init(params) {
         this.params = params;
     }

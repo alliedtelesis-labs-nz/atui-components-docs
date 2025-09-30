@@ -1,20 +1,36 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtChipList = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiRemoveChip = index.createEvent(this, "atRemoveChip", 6);
-        /**
-         * Shows the 'Clear All' button
-         */
-        this.show_clear_all = true;
-        /**
-         * Size of the chips. Determines padding and font-size. For use in input chip lists.
-         */
-        this.size = 'lg';
     }
+    /**
+     * Items in the chip list.
+     */
+    chips;
+    /**
+     * Disables the list of chips. Prevents removing a chip.
+     */
+    disabled;
+    /**
+     * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+     */
+    readonly;
+    /**
+     * Shows the 'Clear All' button
+     */
+    show_clear_all = true;
+    /**
+     * Size of the chips. Determines padding and font-size. For use in input chip lists.
+     */
+    size = 'lg';
+    /**
+     * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
+     */
+    atuiRemoveChip;
     keyDownHandler(event, chipsToRemove) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();

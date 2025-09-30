@@ -1,9 +1,13 @@
-import { r as registerInstance, h, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, a as getElement, h } from './index-CzNdk2S6.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
+    params;
+    disabled;
+    isChecked;
+    get el() { return getElement(this); }
     init(params) {
         this.params = params;
         this.params.width = 60;
@@ -33,8 +37,7 @@ const AtCheckboxHeaderComponent = class {
         }
     }
     setDisabled() {
-        var _a;
-        if (!((_a = this.params) === null || _a === void 0 ? void 0 : _a.api))
+        if (!this.params?.api)
             return;
         const renderedNodes = this.params.api.getRenderedNodes();
         const data = renderedNodes.map((node) => node.data);
@@ -45,7 +48,6 @@ const AtCheckboxHeaderComponent = class {
     render() {
         return (h("at-checkbox", { key: 'a0cc687edbb566cc47f5c0e892a338927793fd9d', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtCheckboxHeaderComponent as at_checkbox_header };

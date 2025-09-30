@@ -23,18 +23,38 @@ const layoutVariantsConfig = {
  * @slot - Used to place checkboxes manually when 'options' property is not set.
  */
 export class AtCheckboxGroup {
-    constructor() {
-        /**
-         * Sets the layout of the checkbox-group
-         */
-        this.layout = 'column';
-        /**
-         * A list of strings, containing the Id's of the currently selected checkboxes
-         */
-        this.value = [];
-        this.checkboxEls = [];
-        this.formControlSelected = null;
-    }
+    /**
+     * Label of the checkbox group.
+     */
+    label;
+    /**
+     * Info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text;
+    /**
+     * Hint to be placed below the label
+     */
+    hint_text;
+    /**
+     * Displayed when the input is invalid
+     */
+    error_text;
+    /**
+     * Disables interaction with the checkbox
+     */
+    disabled;
+    /**
+     * Shows the error text
+     */
+    invalid;
+    /**
+     * Adds a required * to the label
+     */
+    required;
+    /**
+     * Options displayed in the checkbox group.
+     */
+    options;
     updateSelected() {
         this.options.forEach((option) => {
             if (option.value === true &&
@@ -47,6 +67,21 @@ export class AtCheckboxGroup {
             }
         });
     }
+    /**
+     * Sets the layout of the checkbox-group
+     */
+    layout = 'column';
+    /**
+     * A list of strings, containing the Id's of the currently selected checkboxes
+     */
+    value = [];
+    el;
+    checkboxEls = [];
+    /**
+     * Emits an event containing the 'selected' prop when changed
+     */
+    atuiChange;
+    formControlSelected = null;
     componentDidLoad() {
         if (!this.getCheckBoxes) {
             this.el

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -32,11 +32,30 @@ const messageVariants = {
 const AtMessage = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Theme of the message, either "light" or "default".
-         */
-        this.impact = 'high';
     }
+    /**
+     * Type of the message.
+     */
+    type;
+    /**
+     * Theme of the message, either "light" or "default".
+     */
+    impact = 'high';
+    /**
+     * Title of the app message.
+     */
+    message_title;
+    /**
+     * An icon is provided for success, warning, error, or info types.
+     * You can provide a custom value to replace the default icon.
+     *
+     * Must use material icon name.
+     */
+    icon;
+    /**
+     * Content of the message.
+     */
+    content;
     get iconName() {
         if (this.icon) {
             return this.icon;

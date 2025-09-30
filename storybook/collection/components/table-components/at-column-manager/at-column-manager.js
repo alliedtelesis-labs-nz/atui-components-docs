@@ -1,9 +1,13 @@
 import { h, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 export class AtColumnManagerComponent {
-    constructor() {
-        this.checkedColumns = [];
-    }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    el;
+    translations;
+    checkedColumns = [];
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
         this.initializeCheckedColumns();
@@ -18,6 +22,12 @@ export class AtColumnManagerComponent {
                 .map((colDef) => colDef.field);
         }
     }
+    /**
+     * Custom event used by at-table-actions to perform ag-grid logic
+     *
+     * Emitted when checkbox is clicked
+     */
+    atChange;
     changeHandler(event) {
         const selectedColumns = event.detail || [];
         const previousColumns = new Set(this.checkedColumns);

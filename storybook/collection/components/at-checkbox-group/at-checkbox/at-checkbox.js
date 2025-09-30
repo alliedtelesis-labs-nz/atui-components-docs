@@ -32,6 +32,32 @@ const checkboxVariants = classlist('material-icons shadow-inset-xs accent-active
  * @slot - Placed after the title & subtitle elements.
  */
 export class AtCheckbox {
+    el;
+    /**
+     * Title of the checkbox component.
+     */
+    label;
+    /**
+     * Subtitle of the checkbox component.
+     */
+    hint_text;
+    /**
+     * Id of the checkbox.
+     */
+    option_id;
+    /**
+     * State of the checkbox
+     */
+    value;
+    /**
+     * Disables interaction with the checkbox
+     */
+    disabled;
+    checkboxEl;
+    /**
+     * When the checkbox is toggled, this will emit true if the current value is checked, vice versa.
+     */
+    atuiChange;
     handleChange(value) {
         this.value = value.target.checked;
         this.atuiChange.emit(this.value);

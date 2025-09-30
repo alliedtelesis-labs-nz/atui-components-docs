@@ -8,38 +8,35 @@ import { h, Host, } from "@stencil/core";
  * @slot page-content - Content of the page
  */
 export class AtSidebarComponent {
-    constructor() {
-        /**
-         * Position of the sidebar on the page
-         */
-        this.side = 'left';
-        /**
-         * Width of the sidebar
-         */
-        this.width = 'menu';
-        /**
-         * Size of the sidebar when collapsed.
-         */
-        this.collapsible = 'icon';
-        /**
-         * How the sidenav interacts with main content when open
-         */
-        this.mode = 'push';
-        /**
-         * Display a clickable backdrop when mode = over
-         */
-        this.backdrop = false;
-        /**
-         * Opens the sidebar by default when set
-         */
-        this.default_open = false;
-        this.isOpen = false;
-        this.handleBackdropClick = () => {
-            if (this.mode === 'over' && this.isOpen) {
-                this.toggleSidebar();
-            }
-        };
-    }
+    /**
+     * Position of the sidebar on the page
+     */
+    side;
+    /**
+     * Width of the sidebar
+     */
+    width = 'menu';
+    /**
+     * Size of the sidebar when collapsed.
+     */
+    collapsible;
+    /**
+     * How the sidenav interacts with main content when open
+     */
+    mode;
+    /**
+     * Display a clickable backdrop when mode = over
+     */
+    backdrop = false;
+    /**
+     * Opens the sidebar by default when set
+     */
+    default_open = false;
+    isOpen = false;
+    /**
+     * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
+     */
+    atuiSidebarChange;
     componentWillLoad() {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
@@ -60,13 +57,19 @@ export class AtSidebarComponent {
     async getIsOpen() {
         return this.isOpen;
     }
+    handleBackdropClick = () => {
+        if (this.mode === 'over' && this.isOpen) {
+            this.toggleSidebar();
+        }
+    };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: '9b4bd79d6a0a3fe97e385cecfcdc0f775ee9d11d', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '7e22303df51c83711b6744447b0401469f358d53', class: "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '298ffd06f33f3b8a3b2d0d32afc3b98a49a7c54d', "data-name": "sidebar-nav", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (h(Host, { key: 'ab4b783de19ced626d905213e2b4eca117be04a6', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '0d0a64b41bb8e8904911e55fd95b403c214045d1', class: "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'ab04d1e978634673b483c4b4ef242a24f98cf98c', "data-name": "sidebar-nav", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false', class: `nav collapse-${this.collapsible}` }, h("slot", { key: 'cb4a166fb8a1f1686ac0639ba902cb2d2848bf05', name: "sidebar-header" }), h("div", { key: 'e299272b849b94c3e1844bd0d7c3619d93900b6c', class: "nav-content" }, h("slot", { key: 'ee1b49ff112d01cb81ce562235aa7bbf3aad8b26', name: "sidebar-content" })), h("div", { key: '0cbdfa3b8272524ec55dd69b7146eeb4a775160c', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: 'c4d8899d1e7c621a2fd88c71fb5d224c9fde5c8b', name: "sidebar-footer" }))), h("div", { key: 'bb3ce25387b198a261e37f00bf976948a3eeb02d', class: "content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: 'dcbba99ae1295f8fec2408ee54293c0a9bc7bc5d', name: "page-content" }))));
+                : 'false', class: `nav collapse-${this.collapsible}` }, h("slot", { key: 'f4943fdf381c0aa9ad27ee7f6e4fc2cc1957d675', name: "sidebar-header" }), h("div", { key: 'bb16c1e9771642b91a28032c979f35606216afd7', class: "nav-content" }, h("slot", { key: '69907faacbf59096ce249f0072454016406e424d', name: "sidebar-content" })), h("div", { key: 'f63a88587b38593e4fb47d8ab127dae010a5f6c0', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '696a95520d6f290e0e5e117f0e36462fa8d03cf7', name: "sidebar-footer" }))), h("div", { key: '3920a1e04222e3ffd7e7e899dc1993b7f6a35b90', class: "content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: 'c55e6ddec6de52e62bc5be4396e3472cd95547f8', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["at-sidebar.scss"]
@@ -84,15 +87,9 @@ export class AtSidebarComponent {
                 "attribute": "side",
                 "mutable": false,
                 "complexType": {
-                    "original": "Side",
+                    "original": "'left' | 'right'",
                     "resolved": "\"left\" | \"right\"",
-                    "references": {
-                        "Side": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
-                            "id": "src/components/at-sidebar/at-sidebar.tsx::Side"
-                        }
-                    }
+                    "references": {}
                 },
                 "required": false,
                 "optional": false,
@@ -102,8 +99,7 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "defaultValue": "'left'"
+                "reflect": false
             },
             "width": {
                 "type": "string",
@@ -136,15 +132,9 @@ export class AtSidebarComponent {
                 "attribute": "collapsible",
                 "mutable": false,
                 "complexType": {
-                    "original": "Collapsible",
+                    "original": "'offcanvas' | 'icon' | 'none'",
                     "resolved": "\"icon\" | \"none\" | \"offcanvas\"",
-                    "references": {
-                        "Collapsible": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
-                            "id": "src/components/at-sidebar/at-sidebar.tsx::Collapsible"
-                        }
-                    }
+                    "references": {}
                 },
                 "required": false,
                 "optional": false,
@@ -154,23 +144,16 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "defaultValue": "'icon'"
+                "reflect": false
             },
             "mode": {
                 "type": "string",
                 "attribute": "mode",
                 "mutable": false,
                 "complexType": {
-                    "original": "Mode",
+                    "original": "'over' | 'push'",
                     "resolved": "\"over\" | \"push\"",
-                    "references": {
-                        "Mode": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
-                            "id": "src/components/at-sidebar/at-sidebar.tsx::Mode"
-                        }
-                    }
+                    "references": {}
                 },
                 "required": false,
                 "optional": false,
@@ -180,8 +163,7 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "defaultValue": "'push'"
+                "reflect": false
             },
             "backdrop": {
                 "type": "boolean",

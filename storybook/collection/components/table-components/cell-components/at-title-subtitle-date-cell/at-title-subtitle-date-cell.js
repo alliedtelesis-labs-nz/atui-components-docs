@@ -6,6 +6,9 @@ import { DateFormat } from "../../../../types";
  * @description A cell component for displaying a title and subtitle with a date.
  */
 export class AtTitleSubtitleDateCell {
+    el;
+    value;
+    params;
     init(params) {
         this.params = params;
         if (typeof params.value === 'string') {

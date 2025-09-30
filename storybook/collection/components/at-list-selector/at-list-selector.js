@@ -6,13 +6,28 @@ import { h, Host, } from "@stencil/core";
  * @slot - Placed after the list items
  */
 export class AtListSelector {
-    constructor() {
-        /**
-         * List of items.
-         */
-        this.options = [];
-        this.listItemEls = [];
-    }
+    /**
+     * List of items.
+     */
+    options = [];
+    /**
+     * The selected item.
+     */
+    selected_item_id;
+    /**
+     * Whether each item has a bottom border.
+     */
+    has_border;
+    /**
+     * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
+     */
+    atuiChange;
+    /**
+     * Emits when event when the info button of an item is clicked
+     */
+    atuiInfoButtonClick;
+    el;
+    listItemEls = [];
     onSelect(item) {
         this.selected_item_id = item.id;
         this.atuiChange.emit(item);

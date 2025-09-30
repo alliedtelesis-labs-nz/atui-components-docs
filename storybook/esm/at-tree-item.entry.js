@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
-import { c as classlist } from './classlist-DowIpD9s.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
     variants: {
@@ -19,23 +19,36 @@ const AtTreeItemComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiClick = createEvent(this, "atuiClick", 7);
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * Determines whether to add the arrow indicator icon
-         */
-        this.has_children = false;
-        /**
-         * Determines the direction of the indicator arrow
-         */
-        this.selected = false;
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
     }
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * Defines the indent of the tree item
+     */
+    depth;
+    /**
+     * Determines whether to add the arrow indicator icon
+     */
+    has_children = false;
+    /**
+     * Determines the direction of the indicator arrow
+     */
+    selected = false;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    get el() { return getElement(this); }
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
     handleClick(event) {
         this.atuiClick.emit({
             originalEvent: event,
@@ -54,19 +67,17 @@ const AtTreeItemComponent = class {
         }
     }
     render() {
-        var _a;
         const classname = getTreeItemClasses({
             disabled: this.disabled,
             size: this.size,
         });
-        const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
+        const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
         return (h(Host, { key: '9c933f31b5c0dc5e97eb1e03524501caf82d8555', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '9a964d42b7a1d2d1d4653abe391d48c3ca5d39d5', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'fa4d671b73bc076fb05cfd4579ef7ca0312573f1', class: "flex gap-4" }, this.has_children && (h("span", { key: '5f45292cf40a22933edce87888442fa653cde2b1', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
             : 'keyboard_arrow_right')), this.label && (h("span", { key: '319c782b11a3edf0eaaebc2581c16d80b506897f', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '51b0e368806c169e2b28eddf43efc4a554f01ce7', name: "label" })), h("slot", { key: '7ab4dcbda42e08d1a69c7bcd805e09a98ed80ee0' })), h("div", { key: '161c4eefdfa85b3a149a107e073c9fb62852ba49', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtTreeItemComponent as at_tree_item };

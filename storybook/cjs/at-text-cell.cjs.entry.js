@@ -1,11 +1,17 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 
 const AtTextCellComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    get el() { return index.getElement(this); }
+    containerStyles;
+    textStyles;
+    textClass;
+    textValue;
+    params;
     init(params) {
         const { size, color, textStyles, containerStyles, textClass, textTransform, } = params;
         this.textClass = textClass;
@@ -15,7 +21,11 @@ const AtTextCellComponent = class {
             this.textStyles = textStyles(params);
         }
         else {
-            this.textStyles = Object.assign({ fontSize: size || null, color: color || null }, textStyles);
+            this.textStyles = {
+                fontSize: size || null,
+                color: color || null,
+                ...textStyles,
+            };
         }
         this.textValue = this.getTextValue(params);
         if (textTransform) {
@@ -54,13 +64,11 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        var _a, _b;
-        return (index.h(index.Host, { key: '737a51ab3e6e92117f597ba01fa02872eeb96332', class: "align-center flex h-full" }, index.h("at-tooltip", { key: '68d7bbc2b52b576db35ab9155fedc881dd85e901', position: "right", disabled: !this.params.generateTooltip }, index.h("span", { key: 'c64d614996b078b9ad0169dcbbefad5f3e4874dc', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${(_a = this.textClass) !== null && _a !== void 0 ? _a : ''} truncate`, onClick: () => {
+        return (index.h(index.Host, { key: '737a51ab3e6e92117f597ba01fa02872eeb96332', class: "align-center flex h-full" }, index.h("at-tooltip", { key: '68d7bbc2b52b576db35ab9155fedc881dd85e901', position: "right", disabled: !this.params.generateTooltip }, index.h("span", { key: 'c64d614996b078b9ad0169dcbbefad5f3e4874dc', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: '457a0eca462d69b4534fe106f17309fadc3af347', class: `${(_b = this.params.tooltipClass) !== null && _b !== void 0 ? _b : ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: '457a0eca462d69b4534fe106f17309fadc3af347', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_text_cell = AtTextCellComponent;

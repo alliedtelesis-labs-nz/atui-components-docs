@@ -1,9 +1,13 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-C3PSGxNR.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtMultiBtnCell = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
+    get el() { return getElement(this); }
+    params;
+    buttons;
+    containerStyles;
     init(params) {
         this.params = params;
         const { containerStyles, buttons } = this.params;
@@ -32,7 +36,6 @@ const AtMultiBtnCell = class {
     render() {
         return (h(Host, { key: '5e869e148e5c3ee3bd8984a022a6b4cec97c2942', class: "flex h-full items-center" }, this.buttonsToRender));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtMultiBtnCell as at_multi_btn_cell };

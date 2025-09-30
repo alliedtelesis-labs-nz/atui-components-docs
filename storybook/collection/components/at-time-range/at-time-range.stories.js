@@ -1,9 +1,7 @@
-const Template = (args) => {
-    var _a, _b;
-    return `
+const Template = (args) => `
 <at-time-range
-    custom_error_message="${(_a = args.custom_error_message) !== null && _a !== void 0 ? _a : ''}"
-    range_limit=${(_b = args.range_limit) !== null && _b !== void 0 ? _b : 7}
+    custom_error_message="${args.custom_error_message ?? ''}"
+    range_limit=${args.range_limit ?? 7}
     enable_range_limit=${args.enable_range_limit ? true : false}
     enable_relative_time=${args.enable_relative_time ? true : false}
     ${args.show_all_time ? 'show_all_time' : ''}
@@ -13,7 +11,6 @@ ${args.presets ? `document.querySelector('at-time-range').presets = ${JSON.strin
 ${args.selected_time_range ? `document.querySelector('at-time-range').selected_time_range = ${JSON.stringify(args.selected_time_range, null, 4)}` : ''}
 </script>
 `;
-};
 export default {
     title: 'Components/Time Range',
 };

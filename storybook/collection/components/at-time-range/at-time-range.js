@@ -9,47 +9,56 @@ import { fetchTranslations } from "../../utils/translation";
  * @description A time range component for selecting time periods.
  */
 export class AtTimeRangeComponent {
-    constructor() {
-        /**
-         * Selected time range.
-         */
-        this.selected_time_range = {
-            selected: {
-                unit: TimeUnit.HOURS,
-                value: 1,
-            },
-        };
-        /**
-         * Lower limit of the time range.
-         */
-        this.range_limit = 7;
-        /**
-         * Enable relative time selection.
-         */
-        this.enable_relative_time = true;
-        /**
-         * Custom error message to show when an invalid time is inputted.
-         */
-        this.custom_error_message = null;
-        /**
-         * Enable all time selection.
-         */
-        this.show_all_time = false;
-        /**
-         * Enable range limit setting. If set to false, use Jan 1, 1985 as the lower limit of time range, ignoring
-         * the value of range limit.
-         */
-        this.enable_range_limit = true;
-        this.units = [
-            TimeUnit.MINUTES,
-            TimeUnit.HOURS,
-            TimeUnit.DAYS,
-            TimeUnit.WEEKS,
-            TimeUnit.MONTHS,
-            TimeUnit.YEARS,
-        ];
-        this.minSeconds = 300;
-    }
+    /**
+     * Selected time range.
+     */
+    selected_time_range = {
+        selected: {
+            unit: TimeUnit.HOURS,
+            value: 1,
+        },
+    };
+    /**
+     * Lower limit of the time range.
+     */
+    range_limit = 7;
+    /**
+     * Define the presets for the relative time ranges.
+     */
+    presets;
+    /**
+     * Enable relative time selection.
+     */
+    enable_relative_time = true;
+    /**
+     * Custom error message to show when an invalid time is inputted.
+     */
+    custom_error_message = null;
+    /**
+     * Enable all time selection.
+     */
+    show_all_time = false;
+    /**
+     * Enable range limit setting. If set to false, use Jan 1, 1985 as the lower limit of time range, ignoring
+     * the value of range limit.
+     */
+    enable_range_limit = true;
+    today;
+    lowerLimit;
+    defaultFromDate;
+    translations;
+    relativeTimeMenuEl;
+    absoluteTimeMenuEl;
+    el;
+    units = [
+        TimeUnit.MINUTES,
+        TimeUnit.HOURS,
+        TimeUnit.DAYS,
+        TimeUnit.WEEKS,
+        TimeUnit.MONTHS,
+        TimeUnit.YEARS,
+    ];
+    minSeconds = 300;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
         this.today = new Date();
@@ -84,21 +93,24 @@ export class AtTimeRangeComponent {
     getShortUnitDisplay(time) {
         return AbreviatedTimeUnits[time.unit];
     }
+    /**
+     * Emits an event containing the selected time range when it changes
+     */
+    atuiChange;
     onChangeCustomTime(customTime) {
         this.selected_time_range = {
             selected: TimeRangeDisplay.CUSTOM,
             custom: customTime,
         };
-        this.atuiChange.emit(Object.assign({}, this.selected_time_range));
+        this.atuiChange.emit({ ...this.selected_time_range });
     }
     onChangeRelativeTime(time) {
         this.selected_time_range = {
             selected: time,
         };
-        this.atuiChange.emit(Object.assign({}, this.selected_time_range));
+        this.atuiChange.emit({ ...this.selected_time_range });
     }
     get buttonGroupOptions() {
-        var _a, _b;
         const output = [];
         if (this.selected_time_range.selected === TimeRangeDisplay.ALL) {
             output.push({
@@ -108,9 +120,9 @@ export class AtTimeRangeComponent {
         else if (this.selected_time_range.custom) {
             output.push({
                 value: [
-                    h("div", { class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, (_a = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _a === void 0 ? void 0 : _a.fromDate.toLocaleString()), h("span", { class: "icon-md material-icons text-light" }, "arrow_forward"), h("span", null, this.selected_time_range.custom.lockEndDateToNow
+                    h("div", { class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate.toLocaleString()), h("span", { class: "icon-md material-icons text-light" }, "arrow_forward"), h("span", null, this.selected_time_range.custom.lockEndDateToNow
                         ? 'NOW'
-                        : (_b = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _b === void 0 ? void 0 : _b.toDate.toLocaleString())),
+                        : this.getCustomStartAndEndDate(this.selected_time_range)?.toDate.toLocaleString())),
                 ],
             });
         }
@@ -137,7 +149,6 @@ export class AtTimeRangeComponent {
         return output;
     }
     render() {
-        var _a, _b, _c;
         return (h(Host, { key: '68e1ebaa44a0aceb533de7d9dd98fc09ed5492c1', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: '6db7d034018b455bf68d2239b6462f64b9e13bf4', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
@@ -155,7 +166,7 @@ export class AtTimeRangeComponent {
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: 'e782df11d78fee894c9ce04e4fa4b3b7f9a20b1e', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '4d65d260c519071416be6242204d71d49dff09dc', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: (_a = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _a === void 0 ? void 0 : _a.fromDate, to_date_value: (_b = this.getCustomStartAndEndDate(this.selected_time_range)) === null || _b === void 0 ? void 0 : _b.toDate, lock_end_date_to_now: (_c = this.selected_time_range.custom) === null || _c === void 0 ? void 0 : _c.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: 'e782df11d78fee894c9ce04e4fa4b3b7f9a20b1e', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '4d65d260c519071416be6242204d71d49dff09dc', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));

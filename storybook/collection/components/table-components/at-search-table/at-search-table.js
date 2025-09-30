@@ -7,31 +7,65 @@ import { fetchTranslations } from "../../../utils/translation";
  * @slot multi-select-actions - Used to place actions related to row selection
  */
 export class AtSearchTable {
-    constructor() {
-        /**
-         * Column definitions passed to at-table component.
-         */
-        this.col_defs = [];
-        /**
-         * Default page size of the table
-         */
-        this.page_size = 10;
-        /**
-         * If true, disables pagination on the table and shows all data at once.
-         * Useful for server-side pagination where you want to control pagination externally.
-         */
-        this.use_custom_pagination = false;
-        /**
-         * If true, enables automatic column resizing to fit available space.
-         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-         */
-        this.auto_size_columns = true;
-        this.tableCreated = false;
-        this.activeFilters = {};
-        this.selectedFilters = [];
-        this.menuSelectedIds = [];
-        this.searchValue = '';
-    }
+    /**
+     * Table data passed to at-table component.
+     */
+    table_data;
+    /**
+     * Label for the table, appears above the search input.
+     */
+    label;
+    /**
+     * Label for the search input.
+     */
+    search_label;
+    /**
+     * Hint text displayed below the search label.
+     */
+    search_hint;
+    /**
+     * Info text displayed in the search info tooltip.
+     */
+    search_info_tooltip;
+    /**
+     * Column definitions passed to at-table component.
+     */
+    col_defs = [];
+    /**
+     * Default page size of the table
+     */
+    page_size = 10;
+    /**
+     * If true the table dropdown filters will not be added
+     */
+    hide_dropdown_filters;
+    /**
+     * If true the column manager will not be added
+     */
+    hide_column_manager;
+    /**
+     * If true the table export menu will not be added
+     */
+    hide_export_menu;
+    /**
+     * If true, disables pagination on the table and shows all data at once.
+     * Useful for server-side pagination where you want to control pagination externally.
+     */
+    use_custom_pagination = false;
+    /**
+     * If true, enables automatic column resizing to fit available space.
+     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     */
+    auto_size_columns = true;
+    el;
+    translations;
+    agGrid;
+    tableCreated = false;
+    activeFilters = {};
+    selectedFilters = [];
+    menuSelectedIds = [];
+    searchValue = '';
+    tableEl;
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
             this.col_defs &&
@@ -87,12 +121,12 @@ export class AtSearchTable {
             const displayedRow = displayedRows.find((row) => row.rowIndex === index);
             if (displayedRow) {
                 displayedRow.updateData(update);
-                if (options === null || options === void 0 ? void 0 : options.flash) {
+                if (options?.flash) {
                     this.agGrid.flashCells({ rowNodes: [displayedRow] });
                 }
                 this.agGrid.refreshCells({
                     rowNodes: [displayedRow],
-                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                    force: options?.forceRefresh || false,
                 });
             }
         });
@@ -110,12 +144,11 @@ export class AtSearchTable {
         return this.agGrid.getRenderedNodes();
     }
     async initGrid() {
-        var _a;
         if (this.col_defs && !this.tableCreated && this.tableEl) {
             this.agGrid = await this.tableEl.createGrid();
             this.tableCreated = true;
             this.setupExternalFilters();
-            if ((_a = this.table_data) === null || _a === void 0 ? void 0 : _a.items) {
+            if (this.table_data?.items) {
                 this.agGrid.setGridOption('rowData', this.table_data.items);
             }
         }
@@ -191,7 +224,7 @@ export class AtSearchTable {
         const { id, checked } = event.detail;
         const updatedColDefs = this.col_defs.map((colDef) => {
             if (colDef.field === id) {
-                return Object.assign(Object.assign({}, colDef), { hide: !checked });
+                return { ...colDef, hide: !checked };
             }
             return colDef;
         });

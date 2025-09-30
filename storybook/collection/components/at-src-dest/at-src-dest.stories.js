@@ -1,17 +1,14 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    return `
+const Template = (args) => `
 <at-src-dest
-    src_title="${(_a = args.src_title) !== null && _a !== void 0 ? _a : ''}"
-    src_subtitle="${(_b = args.src_subtitle) !== null && _b !== void 0 ? _b : ''}"
-    src_text="${(_c = args.src_text) !== null && _c !== void 0 ? _c : ''}"
-    dest_title="${(_d = args.dest_title) !== null && _d !== void 0 ? _d : ''}"
-    dest_subtitle="${(_e = args.dest_subtitle) !== null && _e !== void 0 ? _e : ''}"
-    dest_text="${(_f = args.dest_text) !== null && _f !== void 0 ? _f : ''}"
-    align="${(_g = args.align) !== null && _g !== void 0 ? _g : 'left'}"
+    src_title="${args.src_title ?? ''}"
+    src_subtitle="${args.src_subtitle ?? ''}"
+    src_text="${args.src_text ?? ''}"
+    dest_title="${args.dest_title ?? ''}"
+    dest_subtitle="${args.dest_subtitle ?? ''}"
+    dest_text="${args.dest_text ?? ''}"
+    align="${args.align ?? 'left'}"
 />
 `;
-};
 export default {
     title: 'Components/Src Dest',
     argTypes: {

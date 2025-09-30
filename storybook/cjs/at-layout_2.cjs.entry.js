@@ -1,20 +1,20 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
-var classlist = require('./classlist-OJYetzVw.js');
+var index = require('./index-CSKVyFU4.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const AtLayout = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Template used to display content
-         */
-        this.template = 'master-detail';
-        /**
-         * If overflow is allowed on the detail in master-detail
-         */
-        this.overflow = true;
     }
+    /**
+     * Template used to display content
+     */
+    template = 'master-detail';
+    /**
+     * If overflow is allowed on the detail in master-detail
+     */
+    overflow = true;
     get layoutElement() {
         switch (this.template) {
             case 'master-detail':
@@ -52,11 +52,24 @@ const variantsConfig = {
 const AtTab = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Styling based on the layout of the tabs
-         */
-        this.layout = 'horizontal';
     }
+    /**
+     * ID of the tab
+     */
+    tab_id;
+    /**
+     * Title to be displayed in the tab
+     */
+    tab_title;
+    /**
+     * Styling based on the layout of the tabs
+     */
+    layout = 'horizontal';
+    /**
+     * Applies styling when active
+     */
+    is_active;
+    tabEl;
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
             this.tabEl.click();

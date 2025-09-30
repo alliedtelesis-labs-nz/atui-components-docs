@@ -1,15 +1,12 @@
-const Template = (args) => {
-    var _a, _b, _c, _d, _e;
-    return `
+const Template = (args) => `
 <at-message
-    message_title="${(_a = args.message_title) !== null && _a !== void 0 ? _a : ''}"
-    icon="${(_b = args.icon) !== null && _b !== void 0 ? _b : ''}"
-    content="${(_c = args.content) !== null && _c !== void 0 ? _c : ''}"
-    theme="${(_d = args.theme) !== null && _d !== void 0 ? _d : ''}"
-    type="${(_e = args.type) !== null && _e !== void 0 ? _e : ''}"
+    message_title="${args.message_title ?? ''}"
+    icon="${args.icon ?? ''}"
+    content="${args.content ?? ''}"
+    theme="${args.theme ?? ''}"
+    type="${args.type ?? ''}"
 />
 `;
-};
 export default {
     title: 'Components/Message',
     argTypes: {

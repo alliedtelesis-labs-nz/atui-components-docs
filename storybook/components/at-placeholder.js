@@ -1,5 +1,5 @@
-import { p as proxyCustomElement, H, h } from './p-BRRmBK9P.js';
-import { d as defineCustomElement$2 } from './p-CIqSXlz0.js';
+import { p as proxyCustomElement, H, h } from './p-BAZ2N91w.js';
+import { d as defineCustomElement$2 } from './p-Dqduj1vs.js';
 
 const placeholderVariants = {
     iconSizes: {
@@ -21,11 +21,27 @@ const AtPlaceholderComponent = /*@__PURE__*/ proxyCustomElement(class AtPlacehol
         if (registerHost !== false) {
             this.__registerHost();
         }
-        /**
-         * Size of the placeholder
-         */
-        this.size = 'md';
     }
+    /**
+     * Size of the placeholder
+     */
+    size = 'md';
+    /**
+     * Material icon to be displayed in the center of the placeholder
+     */
+    icon;
+    /**
+     * Title to be displayed below the icon
+     */
+    placeholder_title;
+    /**
+     * Content to be displayed below the title
+     */
+    content;
+    /**
+     * Will show a loading spinner when set
+     */
+    show_loading_spinner;
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }

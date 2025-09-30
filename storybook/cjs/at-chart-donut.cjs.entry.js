@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzjIU9ss.js');
+var index = require('./index-CSKVyFU4.js');
 var chartColor = require('./chart-color-CyKHCJde.js');
 require('./moment-BU5SUH_o.js');
 
@@ -16,57 +16,76 @@ const heightVariants = {
 const AtChartDonut = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Height of the chart
-         */
-        this.height = 'md';
-        /**
-         * Additional options for formatting the legend
-         */
-        this.legend_format = {
-            labels: {
-                boxWidth: 10,
-                boxHeight: 10,
-                fontSize: 11,
-            },
-            onHover: (event) => {
-                if (event.native) {
-                    event.native.target.style.cursor = 'pointer';
-                }
-            },
-            display: true,
-        };
-        /**
-         * Additional options for the tooltip
-         */
-        this.tooltip_options = {
-            mode: 'index',
-            intersect: false,
-            position: 'nearest',
-        };
-        /**
-         * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
-         * 'categorical' : For charts with data that have distinct labels and no natural order
-         * 'sequential' : For charts with data that is numeric or is naturally ordered.
-         * 'alert' : For charts that relate to health state. Note that data requires a specific order.
-         * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-         */
-        this.color_palette = chartColor.ChartColorPalette.CATEGORICAL;
-        /**
-         * Controls the thickness of the donut ring. Value between 0 and 100.
-         * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
-         * Default is 70.
-         */
-        this.cutout = 70;
-        this.defaultPieTooltipOptions = {
-            mode: 'index',
-            intersect: true,
-            position: 'nearest',
-            animation: {
-                duration: 150,
-            },
-        };
     }
+    /**
+     * Data to be shown in the chart. ChartDataset properties can be found
+     * [here](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
+     */
+    data;
+    /**
+     * Additional options to be added to the chart configuration
+     */
+    options;
+    /**
+     * Height of the chart
+     */
+    height = 'md';
+    /**
+     * Additional options for formatting the legend
+     */
+    legend_format = {
+        labels: {
+            boxWidth: 10,
+            boxHeight: 10,
+            fontSize: 11,
+        },
+        onHover: (event) => {
+            if (event.native) {
+                event.native.target.style.cursor = 'pointer';
+            }
+        },
+        display: true,
+    };
+    /**
+     * Additional options for the tooltip
+     */
+    tooltip_options = {
+        mode: 'index',
+        intersect: false,
+        position: 'nearest',
+    };
+    /**
+     * Additional plugin options
+     */
+    plugins;
+    /**
+     * Animations added to the chart configuration
+     */
+    animations;
+    /**
+     * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
+     * 'categorical' : For charts with data that have distinct labels and no natural order
+     * 'sequential' : For charts with data that is numeric or is naturally ordered.
+     * 'alert' : For charts that relate to health state. Note that data requires a specific order.
+     * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+     */
+    color_palette = chartColor.ChartColorPalette.CATEGORICAL;
+    /**
+     * Optional value text to display in the center of the donut chart
+     */
+    center_value;
+    /**
+     * Optional heading text to display in the center of the donut chart
+     */
+    center_text;
+    /**
+     * Controls the thickness of the donut ring. Value between 0 and 100.
+     * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
+     * Default is 70.
+     */
+    cutout = 70;
+    canvasEl;
+    config;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -74,6 +93,14 @@ const AtChartDonut = class {
     async getConfig() {
         return this.config;
     }
+    defaultPieTooltipOptions = {
+        mode: 'index',
+        intersect: true,
+        position: 'nearest',
+        animation: {
+            duration: 150,
+        },
+    };
     getDrawCenterTextPlugin() {
         return {
             id: 'DrawCenterTextPlugin',
@@ -128,13 +155,26 @@ const AtChartDonut = class {
         }
         this.config = {
             type: 'doughnut',
-            data: Object.assign(Object.assign({}, this.data), { datasets: this.data.datasets.map((dataset) => (Object.assign(Object.assign({}, dataset), { cutout: `${this.cutout}%` }))) }),
-            options: Object.assign(Object.assign({ animation: this.animations }, this.options), { maintainAspectRatio: true, aspectRatio: 1, layout: {
+            data: {
+                ...this.data,
+                datasets: this.data.datasets.map((dataset) => ({
+                    ...dataset,
+                    cutout: `${this.cutout}%`,
+                })),
+            },
+            options: {
+                animation: this.animations,
+                ...this.options,
+                maintainAspectRatio: true,
+                aspectRatio: 1,
+                layout: {
                     padding: 16,
-                }, plugins: {
+                },
+                plugins: {
                     legend: this.legend_format,
                     tooltip: this.tooltip_options || this.defaultPieTooltipOptions,
-                } }),
+                },
+            },
             plugins: plugins,
         };
         new chartColor.Chart(this.canvasEl, this.config);
@@ -147,7 +187,13 @@ const AtChartDonut = class {
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
             const color = dataset.data.map((_, index) => colors[index % colors.length]);
-            return Object.assign(Object.assign({}, dataset), { backgroundColor: color, hoverBackgroundColor: color, borderColor: color, hoverBorderColor: color });
+            return {
+                ...dataset,
+                backgroundColor: color,
+                hoverBackgroundColor: color,
+                borderColor: color,
+                hoverBorderColor: color,
+            };
         });
     }
     componentDidUpdate() {

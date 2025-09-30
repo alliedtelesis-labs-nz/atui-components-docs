@@ -41,21 +41,36 @@ const thumbVariantsConfig = {
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
  */
 export class AtToggleSwitchComponent {
-    constructor() {
-        /**
-         * Position of the label, left or right of the toggle.
-         */
-        this.label_position = 'before';
-        /**
-         * Show the toggle label.
-         */
-        this.show_label = true;
-        /**
-         * Set the toggles state.
-         */
-        this.value = false;
-        this.toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label displayed alongside the toggle.
+     */
+    label;
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text;
+    /**
+     * Position of the label, left or right of the toggle.
+     */
+    label_position = 'before';
+    /**
+     * Show the toggle label.
+     */
+    show_label = true;
+    /**
+     * Disable interaction with the toggle.
+     */
+    disabled;
+    /**
+     * Set the toggles state.
+     */
+    value = false;
+    inputEl;
+    toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
+    /**
+     * Emits an event when toggled with `event.detail` being true if the switch is enabled
+     */
+    atuiChange;
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);

@@ -7,43 +7,61 @@ import { PromptResponseScore, } from "../../../types";
  * @slot thread-messages - Content is placed within the messages wrapper. Used for placing custom messages content.
  */
 export class AtPromptThread {
-    constructor() {
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Shows a loading indicator for incoming messages
-         */
-        this.loading = false;
-        /**
-         * Automatically scroll to the bottom when new messages are added
-         */
-        this.auto_scroll = true;
-        /**
-         * Display name for chatbot/assistant messages
-         */
-        this.chatbot_title = 'Assistant';
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        /**
-         * Enable streaming text animations for system/assistant messages
-         * - 'none': No animation (default)
-         * - 'fade': Fade in the entire message
-         * - 'words': Animate words appearing sequentially like ChatGPT
-         */
-        this.response_animation = 'words';
-    }
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Shows a loading indicator for incoming messages
+     */
+    loading = false;
+    /**
+     * Automatically scroll to the bottom when new messages are added
+     */
+    auto_scroll = true;
+    /**
+     * Display name for chatbot/assistant messages
+     */
+    chatbot_title = 'Assistant';
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation (default)
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atMessageVote;
+    /**
+     * @slot messages - Custom message content (alternative to using the messages prop)
+     */
+    scrollContainer;
     componentDidUpdate() {
         if (this.auto_scroll && this.scrollContainer) {
             this.scrollToBottom();
@@ -94,7 +112,10 @@ export class AtPromptThread {
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { score: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }

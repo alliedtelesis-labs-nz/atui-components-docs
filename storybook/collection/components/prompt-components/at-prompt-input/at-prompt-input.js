@@ -48,37 +48,70 @@ const promptInputVariants = classlist('text-body text-dark w-full resize-none bo
  * @slot footer - Custom content displayed below input
  */
 export class AtPromptInputComponent {
-    constructor() {
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = 'Enter your message...';
-        /**
-         * Maximum height in pixels for auto-resize
-         */
-        this.max_height = 240;
-        /**
-         * Maximum character length with counter display
-         */
-        this.max_length = 2000;
-        /**
-         * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
-         */
-        this.in_progress = false;
-        /**
-         * The value of the input
-         */
-        this.value = '';
-        /**
-         * Disable input interactions and apply visual indication
-         */
-        this.disabled = false;
-        this.invalid = false;
-        /**
-         * @slot label - Custom label content (alternative to using the label prop)
-         */
-        this.inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = 'Enter your message...';
+    /**
+     * Maximum height in pixels for auto-resize
+     */
+    max_height = 240;
+    /**
+     * Maximum character length with counter display
+     */
+    max_length = 2000;
+    /**
+     * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
+     */
+    in_progress = false;
+    /**
+     * The value of the input
+     */
+    value = '';
+    /**
+     * Disable input interactions and apply visual indication
+     */
+    disabled = false;
+    textareaEl;
+    translations;
+    invalid = false;
+    el;
+    /**
+     * Emits when the value changes
+     */
+    atChange;
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emits when the input receives focus
+     */
+    atFocus;
+    /**
+     * @slot label - Custom label content (alternative to using the label prop)
+     */
+    inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }

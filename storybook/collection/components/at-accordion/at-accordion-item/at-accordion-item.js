@@ -7,16 +7,32 @@ import { h, Host, } from "@stencil/core";
  * @slot default - Used for placing the content for this accordion item.
  */
 export class AtAccordionItemComponent {
-    constructor() {
-        /**
-         * Puts a light gray separator below the accordion item
-         */
-        this.border = true;
-        /**
-         * Used for setting if the accordion is open.
-         */
-        this.open = false;
-    }
+    el;
+    /**
+     * Used to identify the accordion item among the other accordion items
+     */
+    item_id;
+    /**
+     * Provides an atui-accordion-trigger with this label if set
+     */
+    label;
+    /**
+     * Puts a light gray separator below the accordion item
+     */
+    border = true;
+    /**
+     * String content to display when the accordion is open
+     */
+    content;
+    /**
+     * Used for setting if the accordion is open.
+     */
+    open = false;
+    /**
+     * Emitted when the accordion item's open state changes
+     */
+    atuiAccordionChange;
+    accordionElement;
     componentDidLoad() {
         this.accordionElement = this.el.querySelector('details');
     }

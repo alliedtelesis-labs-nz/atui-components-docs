@@ -1,7 +1,4 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type Side = 'left' | 'right';
-export type Collapsible = 'offcanvas' | 'icon' | 'none';
-export type Mode = 'over' | 'push';
 export type Width = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
 /**
  * @category Navigation
@@ -15,7 +12,7 @@ export declare class AtSidebarComponent {
     /**
      * Position of the sidebar on the page
      */
-    side: Side;
+    side: 'left' | 'right';
     /**
      * Width of the sidebar
      */
@@ -23,11 +20,11 @@ export declare class AtSidebarComponent {
     /**
      * Size of the sidebar when collapsed.
      */
-    collapsible: Collapsible;
+    collapsible: 'offcanvas' | 'icon' | 'none';
     /**
      * How the sidenav interacts with main content when open
      */
-    mode: Mode;
+    mode: 'over' | 'push';
     /**
      * Display a clickable backdrop when mode = over
      */

@@ -1,17 +1,33 @@
-import { r as registerInstance, h, H as Host } from './index-C3PSGxNR.js';
+import { r as registerInstance, h, H as Host } from './index-CzNdk2S6.js';
 
 const AtHeader = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Size of the header.
-         */
-        this.size = 'h1';
-        /**
-         * Adds 16 pixels of padding to the header element
-         */
-        this.padding = true;
     }
+    /**
+     * Size of the header.
+     */
+    size = 'h1';
+    /**
+     * Icon of header. Must use mat-icon name.
+     */
+    icon;
+    /**
+     * Title of the header.
+     */
+    header_title;
+    /**
+     * Subtitle of the header.
+     */
+    subtitle;
+    /**
+     * Adds a border to the bottom of the header.
+     */
+    border;
+    /**
+     * Adds 16 pixels of padding to the header element
+     */
+    padding = true;
     render() {
         const validHeadings = [
             'h1',
