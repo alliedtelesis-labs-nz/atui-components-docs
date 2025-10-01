@@ -305,7 +305,7 @@ const AtPromptThread = class {
         });
     }
     handleVote(event) {
-        event.stopPropagation();
+        // event.stopPropagation();
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
@@ -316,6 +316,7 @@ const AtPromptThread = class {
             this.messages = updatedMessages;
             this.atMessageVote.emit(event.detail);
         }
+        console.log('at-prompt-thread: ', event);
     }
     handleMessageCopy(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
@@ -368,7 +369,7 @@ const AtPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (index.h(index.Host, { key: '0b2cd317329f39e1057ba7b6b5f49a6be59f1efa', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: 'f70b24cf058afaeb534a002d7bdcfab78d6f72af', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: 'a42aab6369ad0137b78d01176eab083cc6ec40c7', name: "thread-messages" }))));
+        return (index.h(index.Host, { key: 'bb48376a909ae4c3521ce254ed14a563e801d6e1', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: '96f259a2b2fef15b56efd748023a6c9bc6424e57', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: 'f4558c66990b21d64f518ca8595c9a8d25833fde', name: "thread-messages" }))));
     }
 };
 
