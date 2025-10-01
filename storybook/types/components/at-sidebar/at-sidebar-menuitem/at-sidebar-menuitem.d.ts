@@ -16,6 +16,10 @@ export declare class AtSidebarMenuitemComponent {
      */
     badge?: string;
     /**
+     * Defines menuitem styling for font weight and indent 0-3  Default 0
+     */
+    depth?: number;
+    /**
      * Will change style to indicate menuitem is active when set
      */
     is_active?: boolean;

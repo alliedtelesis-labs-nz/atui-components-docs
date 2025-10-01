@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-CSKVyFU4.js');
+var index = require('./index-d67_TXqR.js');
 
-const atSidebarTriggerCss = ":host{position:relative;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;border-radius:var(--token-border-radius-md);cursor:pointer;padding:8px;font-weight:var(--token-font-weight-med);color:var(--token-sidebar-foreground);height:var(--token-input-btn-height);background-color:var(--token-sidebar-background);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}:host i.material-icons{font-style:normal;display:flex;align-items:center;justify-content:center;font-size:var(--token-font-size-icon-xl);z-index:10}:host div[data-name=focus-indicator]{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);opacity:0;transition:background-color var(--token-transition-time-fast)}:host(:hover) div[data-name=focus-indicator]{opacity:0.1}:host(:focus-visible){outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent)}";
+const atSidebarTriggerCss = "at-sidebar-trigger{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--token-border-radius-md);cursor:pointer;padding:6px;font-weight:var(--token-font-weight-med);color:var(--token-sidebar-foreground);background-color:var(--token-sidebar-background);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}at-sidebar-trigger i.material-icons{font-style:normal;display:flex;align-items:center;justify-content:center;font-size:var(--token-font-size-icon-lg);z-index:10}at-sidebar-trigger div[data-name=focus-indicator]{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);opacity:0;transition:background-color var(--token-transition-time-fast)}at-sidebar-trigger:hover div[data-name=focus-indicator]{opacity:0.1}at-sidebar-trigger:focus-visible{outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent)}";
 
 const AtSidebarTriggerComponent = class {
     constructor(hostRef) {
@@ -45,7 +45,7 @@ const AtSidebarTriggerComponent = class {
         this.isOpen = event.detail;
     };
     render() {
-        return (index.h(index.Host, { key: 'f5b02725e61a67b713243798665412dc6b1e291b', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (index.h("i", { key: '36646cb5662ad4eef28a826b104b2df53be54e95', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), index.h("div", { key: '6a5727fe59cf6b54508e91ea89981cca7379721a', "data-name": "focus-indicator", role: "presentation" })));
+        return (index.h(index.Host, { key: 'bec58e31dd7200d80f5687684154acae4bb4ff47', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (index.h("i", { key: '8ff09a5aaff1def3ea6c43617594a74a4adc6c61', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), index.h("div", { key: 'f7f7fef6e4146fcaacae3734afc8706916c66a1e', "data-name": "focus-indicator", role: "presentation" })));
     }
 };
 AtSidebarTriggerComponent.style = atSidebarTriggerCss;

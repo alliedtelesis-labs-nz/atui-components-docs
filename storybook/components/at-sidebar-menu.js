@@ -1,4 +1,6 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-BAZ2N91w.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-DCAHuMKA.js';
+
+const atSidebarMenuCss = "at-sidebar-menu{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px;overflow-y:auto;overflow-x:visible}";
 
 const AtSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarMenuComponent extends H {
     constructor(registerHost) {
@@ -8,8 +10,9 @@ const AtSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarM
         }
     }
     render() {
-        return (h(Host, { key: '6d49e371a3b880d91501733c83d9a8e41e2528b8', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '6c4728dc21a3690c4e5fb7307050e003254c5c66' })));
+        return (h(Host, { key: 'b75cd861fa8082e9767ce9e85a279d2d4c5aaefd', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'b7b8042413149e880558b066fb29402d5246e94b' })));
     }
+    static get style() { return atSidebarMenuCss; }
 }, [260, "at-sidebar-menu"]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {

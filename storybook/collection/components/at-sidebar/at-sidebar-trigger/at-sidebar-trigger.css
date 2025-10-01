@@ -1,27 +1,26 @@
-:host {
+at-sidebar-trigger {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   overflow: hidden;
   border-radius: var(--token-border-radius-md);
   cursor: pointer;
-  padding: 8px;
+  padding: 6px;
   font-weight: var(--token-font-weight-med);
   color: var(--token-sidebar-foreground);
-  height: var(--token-input-btn-height);
   background-color: var(--token-sidebar-background);
   transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
-:host i.material-icons {
+at-sidebar-trigger i.material-icons {
   font-style: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--token-font-size-icon-xl);
+  font-size: var(--token-font-size-icon-lg);
   z-index: 10;
 }
-:host div[data-name=focus-indicator] {
+at-sidebar-trigger div[data-name=focus-indicator] {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -34,11 +33,11 @@
   transition: background-color var(--token-transition-time-fast);
 }
 
-:host(:hover) div[data-name=focus-indicator] {
+at-sidebar-trigger:hover div[data-name=focus-indicator] {
   opacity: 0.1;
 }
 
-:host(:focus-visible) {
+at-sidebar-trigger:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent);
 }

@@ -41,10 +41,9 @@ export class AtSidebarTriggerComponent {
         this.isOpen = event.detail;
     };
     render() {
-        return (h(Host, { key: 'f5b02725e61a67b713243798665412dc6b1e291b', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '36646cb5662ad4eef28a826b104b2df53be54e95', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: '6a5727fe59cf6b54508e91ea89981cca7379721a', "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: 'bec58e31dd7200d80f5687684154acae4bb4ff47', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '8ff09a5aaff1def3ea6c43617594a74a4adc6c61', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: 'f7f7fef6e4146fcaacae3734afc8706916c66a1e', "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-trigger"; }
-    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["./at-sidebar-trigger.scss"]

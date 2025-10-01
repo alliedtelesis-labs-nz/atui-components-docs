@@ -1,4 +1,4 @@
-import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-p61xCLIr.js';
+import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-Ded4KIDS.js';
 
 const AtSidebarMenuitem = AtSidebarMenuitemComponent;
 const defineCustomElement = defineCustomElement$1;

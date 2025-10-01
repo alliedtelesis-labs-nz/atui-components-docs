@@ -2055,6 +2055,10 @@ export namespace Components {
          */
         "badge"?: string;
         /**
+          * Defines menuitem styling for font weight and indent 0-3  Default 0
+         */
+        "depth"?: number;
+        /**
           * Icon to be displayed with the label
          */
         "icon"?: string;
@@ -6279,6 +6283,10 @@ declare namespace LocalJSX {
           * Alert badge for the menu item
          */
         "badge"?: string;
+        /**
+          * Defines menuitem styling for font weight and indent 0-3  Default 0
+         */
+        "depth"?: number;
         /**
           * Icon to be displayed with the label
          */

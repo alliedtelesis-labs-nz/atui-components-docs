@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-CzNdk2S6.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-CoTuPdnC.js';
 
 const AtTablePagination = class {
     constructor(hostRef) {

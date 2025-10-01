@@ -1,21 +1,4 @@
 import { h, Host } from "@stencil/core";
-import { classlist } from "../../../utils/classlist";
-const variantsConfig = {
-    variants: {
-        active: {
-            true: 'bg-sidebar-primary text-sidebar-primary-foreground',
-            false: 'bg-secondary text-sidebar-foreground',
-        },
-    },
-};
-const focusIndicatorVariantsConfig = {
-    variants: {
-        active: {
-            true: 'group-hover:bg-blue-900/30 ',
-            false: 'group-hover:bg-slate-400/10',
-        },
-    },
-};
 /**
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
@@ -34,6 +17,10 @@ export class AtSidebarMenuitemComponent {
      */
     badge;
     /**
+     * Defines menuitem styling for font weight and indent 0-3  Default 0
+     */
+    depth;
+    /**
      * Will change style to indicate menuitem is active when set
      */
     is_active;
@@ -45,15 +32,7 @@ export class AtSidebarMenuitemComponent {
         }
     };
     render() {
-        const getClassname = classlist('group text-button focus-visible:ring-active-foreground/30 font-medium relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md px-8 py-[6px] text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
-        const classname = getClassname({
-            active: this.is_active,
-        });
-        const getFocusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-0 h-full w-full rounded-md transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig);
-        const focusIndicatorClassname = getFocusIndicatorClassname({
-            active: this.is_active,
-        });
-        return (h(Host, { key: '72e698a28b5dc954b4758579d115ad46fc228fd4', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname, tabIndex: 0, onKeyDown: this.handleKeyDown }, h("div", { key: 'feab1aa8d6253e79cf3ffb566cd5682ff982d5dc', class: "flex items-center gap-8 truncate" }, h("slot", { key: '719163cf7e66ef28a8b167e3bca43d90e8b29230', name: "menu-item-label" }), this.badge && (h("at-badge", { key: '5917064ab689f3b27799e0f406aa622e4b1f83f2', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: '7e9a6cccc8c26f4ca386da287c21ae2f5c0230f6', class: "material-icons !text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (h("span", { key: '5c7180c5665e8ae559013aa03e06f22676b278b7', "data-name": "sidebar-menu-item-label", class: "label z-10 truncate whitespace-nowrap" }, this.label))), h("slot", { key: 'c2c03911dec989df7ea4a54a73b8db07e35407c5', name: "menu-item-actions" }), h("div", { key: '8338e1181f7c6cd1b1996a906acbc869456da16d', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '09ee9ff5f6c4255224d78ba0a72c1ef6201ce4cb', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, class: this.depth ? `depth-${this.depth}` : '', onKeyDown: this.handleKeyDown }, h("div", { key: '02a67551554722151bffab8721505f46c2d0d67d', class: "at-sidebar-menuitem__content" }, h("slot", { key: '8209d09119e5fdbae1b63655bdabe598200f5be8', name: "menu-item-label" }), this.badge && (h("at-badge", { key: '6a278e5bac4d1a278193a837be136ebc06218903', "data-name": "menu-badge", role: "presentation", class: "at-sidebar-menuitem__badge", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: 'fff0d8e91473941a473495edff4002a806385dbf', class: "material-icons" }, this.icon)), this.label && (h("span", { key: 'f8f08f2e8e818fd1103f42e2098fbd223a8a3cc0', part: "label", "data-name": "sidebar-menu-item-label", class: "at-sidebar-menuitem__label" }, this.label))), h("slot", { key: '2e6da4ce658243bb9b18ecfd9df921bb5e8c5159', name: "menu-item-actions" }), h("div", { key: '6929abc4861c3ae37abacbfb3ed20431f9e9b593', "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get originalStyleUrls() {
@@ -120,6 +99,25 @@ export class AtSidebarMenuitemComponent {
                 "docs": {
                     "tags": [],
                     "text": "Alert badge for the menu item"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
+            },
+            "depth": {
+                "type": "number",
+                "attribute": "depth",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Defines menuitem styling for font weight and indent 0-3  Default 0"
                 },
                 "getter": false,
                 "setter": false,

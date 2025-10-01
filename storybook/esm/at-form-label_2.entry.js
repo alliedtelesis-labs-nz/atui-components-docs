@@ -1,4 +1,4 @@
-import { r as registerInstance, h, a as getElement, H as Host } from './index-CzNdk2S6.js';
+import { r as registerInstance, h, g as getElement, H as Host } from './index-CoTuPdnC.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtFormLabelComponent = class {
