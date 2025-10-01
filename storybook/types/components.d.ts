@@ -3532,7 +3532,10 @@ declare global {
     };
     interface HTMLAtPromptMessageElementEventMap {
         "atCopy": string;
-        "atVote": { messageId: string; score: number };
+        "atVote": {
+        messageId: string;
+        score: number;
+    };
         "atRetry": void;
         "atEdit": string;
     }
@@ -3559,7 +3562,9 @@ declare global {
         messageId: string;
         content: string;
     };
-        "atMessageRetry": { messageId: string };
+        "atMessageRetry": {
+        messageId: string;
+    };
         "atMessageEdit": {
         messageId: string;
         content: string;
@@ -5833,7 +5838,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when a vote action is triggered
          */
-        "onAtVote"?: (event: AtPromptMessageCustomEvent<{ messageId: string; score: number }>) => void;
+        "onAtVote"?: (event: AtPromptMessageCustomEvent<{
+        messageId: string;
+        score: number;
+    }>) => void;
         /**
           * Animation type for text streaming effect - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially
           * @default 'words'
@@ -5907,7 +5915,9 @@ declare namespace LocalJSX {
         /**
           * Emitted when a message retry action is requested
          */
-        "onAtMessageRetry"?: (event: AtPromptThreadCustomEvent<{ messageId: string }>) => void;
+        "onAtMessageRetry"?: (event: AtPromptThreadCustomEvent<{
+        messageId: string;
+    }>) => void;
         /**
           * Emitted when a message vote action is requested
          */

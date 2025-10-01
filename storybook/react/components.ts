@@ -611,7 +611,10 @@ export const AtPromptInput: StencilReactComponent<AtPromptInputElement, AtPrompt
 
 type AtPromptMessageEvents = {
     onAtCopy: EventName<CustomEvent<string>>,
-    onAtVote: EventName<CustomEvent<{ messageId: string; score: number }>>,
+    onAtVote: EventName<CustomEvent<{
+        messageId: string;
+        score: number;
+    }>>,
     onAtRetry: EventName<CustomEvent<void>>,
     onAtEdit: EventName<CustomEvent<string>>
 };
@@ -635,7 +638,9 @@ type AtPromptThreadEvents = {
         messageId: string;
         content: string;
     }>>,
-    onAtMessageRetry: EventName<CustomEvent<{ messageId: string }>>,
+    onAtMessageRetry: EventName<CustomEvent<{
+        messageId: string;
+    }>>,
     onAtMessageEdit: EventName<CustomEvent<{
         messageId: string;
         content: string;
