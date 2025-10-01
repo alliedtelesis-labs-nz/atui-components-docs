@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-DCAHuMKA.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-_-xuBOrs.js';
 
 const atSidebarMenuCss = "at-sidebar-menu{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px;overflow-y:auto;overflow-x:visible}";
 

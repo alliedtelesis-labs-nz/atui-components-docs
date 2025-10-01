@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-d67_TXqR.js');
+var index = require('./index-w3vomLqM.js');
 var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 var translation = require('./translation-HqquF7bU.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-B-nAI0C1.js');

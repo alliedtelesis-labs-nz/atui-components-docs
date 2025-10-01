@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CoTuPdnC.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {

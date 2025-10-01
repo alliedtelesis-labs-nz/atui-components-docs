@@ -1,4 +1,4 @@
-import { g as getElement, r as registerInstance, h, H as Host } from './index-CoTuPdnC.js';
+import { a as getElement, r as registerInstance, h, H as Host } from './index-B5bw8iR3.js';
 
 const AtSidebarSubmenuComponent = class {
     /**

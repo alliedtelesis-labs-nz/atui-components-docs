@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-d67_TXqR.js');
+var index = require('./index-w3vomLqM.js');
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',

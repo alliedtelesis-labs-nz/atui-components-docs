@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h } from './index-CoTuPdnC.js';
+import { r as registerInstance, a as getElement, h } from './index-B5bw8iR3.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {

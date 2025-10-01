@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CoTuPdnC.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
 import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-DLaek6ce.js';
 import { h as hooks } from './moment-BMuAbjcg.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';

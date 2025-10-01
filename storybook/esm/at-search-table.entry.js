@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-CoTuPdnC.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtSearchTable = class {

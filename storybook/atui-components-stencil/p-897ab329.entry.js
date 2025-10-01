@@ -1,0 +1,2 @@
+import{r as e,h as a,H as r}from"./p-B5bw8iR3.js";const o="at-sidebar-menu{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px;overflow-y:auto;overflow-x:visible}";const s=class{constructor(a){e(this,a)}render(){return a(r,{key:"b75cd861fa8082e9767ce9e85a279d2d4c5aaefd",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"b7b8042413149e880558b066fb29402d5246e94b"}))}};s.style=o;export{s as at_sidebar_menu};
+//# sourceMappingURL=p-897ab329.entry.js.map

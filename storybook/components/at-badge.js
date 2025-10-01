@@ -1,4 +1,4 @@
-import { A as AtBadgeComponent, d as defineCustomElement$1 } from './p-BzsPb4KK.js';
+import { A as AtBadgeComponent, d as defineCustomElement$1 } from './p-C1ISvew5.js';
 
 const AtBadge = AtBadgeComponent;
 const defineCustomElement = defineCustomElement$1;

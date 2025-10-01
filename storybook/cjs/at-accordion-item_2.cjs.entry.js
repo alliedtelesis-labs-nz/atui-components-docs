@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-d67_TXqR.js');
+var index = require('./index-w3vomLqM.js');
 
 const atAccordionItemCss = "details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}";
 

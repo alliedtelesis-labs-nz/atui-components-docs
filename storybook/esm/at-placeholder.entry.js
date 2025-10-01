@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-CoTuPdnC.js';
+import { r as registerInstance, h } from './index-B5bw8iR3.js';
 
 const placeholderVariants = {
     iconSizes: {
