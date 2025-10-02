@@ -305,7 +305,6 @@ const AtPromptThread = class {
         });
     }
     handleVote(event) {
-        event.stopPropagation();
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
@@ -368,7 +367,7 @@ const AtPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (index.h(index.Host, { key: '8c966afc378be24c3353d7e44d40fb0e9d613afb', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: '7e80c57de12c2a6d893096b6bd1f06fbaa06428b', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: '746ce29008fc6c4e25efc27f5518a70a2dd9b746', name: "thread-messages" }))));
+        return (index.h(index.Host, { key: 'a1d380f2786ff3335a27e39d05a8d7bf59fd3572', class: "block h-full", "data-name": "thread-container" }, index.h("div", { key: '310bd5e411e00ac7395be990ede053036e6f916e', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (index.h("slot", { name: "thread-empty-state" })) : (index.h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), index.h("slot", { key: '84dc546479f72bc57b205784c6e67a76ca53dce4', name: "thread-messages" }))));
     }
 };
 
