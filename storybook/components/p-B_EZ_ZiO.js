@@ -1,7 +1,16 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment, H as Host } from './index-B5bw8iR3.js';
-import { c as classlist } from './classlist-COG8_R0C.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { PromptResponseScore } from './index.js';
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment, c as Host } from './p-_-xuBOrs.js';
+import { c as classlist } from './p-COG8_R0C.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { d as defineCustomElement$3 } from './p-BXHzlZWJ.js';
+import { d as defineCustomElement$2 } from './p-DnZAJRYA.js';
+import { d as defineCustomElement$1 } from './p-Dz-BF1zu.js';
+
+var PromptResponseScore;
+(function (PromptResponseScore) {
+    PromptResponseScore[PromptResponseScore["NONE"] = 0] = "NONE";
+    PromptResponseScore[PromptResponseScore["UP"] = 1] = "UP";
+    PromptResponseScore[PromptResponseScore["DOWN"] = -1] = "DOWN";
+})(PromptResponseScore || (PromptResponseScore = {}));
 
 const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
 
@@ -23,9 +32,12 @@ const messageVariantsConfig = {
     },
 };
 const getMessageClasses = classlist('rounded-lg py-4 text-base', messageVariantsConfig);
-const AtPromptMessage = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
+const AtPromptMessage = /*@__PURE__*/ proxyCustomElement(class AtPromptMessage extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atCopy = createEvent(this, "atCopy", 7);
         this.atVote = createEvent(this, "atVote", 7);
         this.atRetry = createEvent(this, "atRetry", 7);
@@ -103,7 +115,7 @@ const AtPromptMessage = class {
     animatedContent = '';
     isAnimating = false;
     errorEl;
-    get el() { return getElement(this); }
+    get el() { return this; }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
         this.initializeContent();
@@ -219,8 +231,57 @@ const AtPromptMessage = class {
     static get watchers() { return {
         "content": ["watchContentChange"]
     }; }
-};
-AtPromptMessage.style = atPromptMessageCss;
+    static get style() { return atPromptMessageCss; }
+}, [260, "at-prompt-message", {
+        "role": [1],
+        "content": [1],
+        "name": [1],
+        "loading": [4],
+        "error": [4],
+        "error_message": [1],
+        "score": [2],
+        "enable_vote": [4],
+        "enable_copy": [4],
+        "enable_edit": [4],
+        "message_id": [1],
+        "response_animation": [1],
+        "translations": [32],
+        "copyFeedbackVisible": [32],
+        "animatedContent": [32],
+        "isAnimating": [32]
+    }, undefined, {
+        "content": ["watchContentChange"]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-prompt-message", "at-button", "at-loading", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-prompt-message":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtPromptMessage);
+            }
+            break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
 
-export { AtPromptMessage as at_prompt_message };
-//# sourceMappingURL=at-prompt-message.entry.js.map
+export { AtPromptMessage as A, PromptResponseScore as P, defineCustomElement as d };
+//# sourceMappingURL=p-B_EZ_ZiO.js.map
+
+//# sourceMappingURL=p-B_EZ_ZiO.js.map

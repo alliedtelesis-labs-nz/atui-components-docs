@@ -177,7 +177,6 @@ const AtPromptMessage = class {
     handleVote = (score) => {
         const newScore = this.score === score ? index$1.PromptResponseScore.NONE : score;
         this.atVote.emit({ messageId: this.message_id, score: newScore });
-        console.log('at-prompt-message handle vote: ', this.message_id, newScore);
     };
     renderActions() {
         if (this.loading)
@@ -217,7 +216,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: '002cffe1bff2d0637b466044008eb0714fdba4ce', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '02c581bfde9506ffff6fe0c11fa7bb445d8a515d', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'd71a46f79c40c3fbb233b0f243843212cd625f6b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '0663192fcb690c35c8f30dba3f9aa54709ebca4a', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '5d36fce78be47c281c454d8e3c4a5dbde4d47a98', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '022c43ac8bee4f9547ce6a6694cdb6dd958e8d9a', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'a8cb763b63a6cffba412f6226d2bbb28eb9bcc81', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '4dfa5663e749fd7a9598c4254f6368746f4b8c81', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": ["watchContentChange"]
