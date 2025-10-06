@@ -348,14 +348,14 @@ export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, 
     defineCustomElement: defineAtCustomTimeRange
 });
 
-type AtDialogEvents = NonNullable<unknown>;
+type AtDialogEvents = { onAtuiDialogChange: EventName<CustomEvent<any>> };
 
 export const AtDialog: StencilReactComponent<AtDialogElement, AtDialogEvents> = /*@__PURE__*/ createComponent<AtDialogElement, AtDialogEvents>({
     tagName: 'at-dialog',
     elementClass: AtDialogElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtDialogEvents,
+    events: { onAtuiDialogChange: 'atuiDialogChange' } as AtDialogEvents,
     defineCustomElement: defineAtDialog
 });
 
@@ -720,14 +720,14 @@ export const AtSelect: StencilReactComponent<AtSelectElement, AtSelectEvents> = 
     defineCustomElement: defineAtSelect
 });
 
-type AtSidePanelEvents = NonNullable<unknown>;
+type AtSidePanelEvents = { onAtuiSidepanelChange: EventName<CustomEvent<any>> };
 
 export const AtSidePanel: StencilReactComponent<AtSidePanelElement, AtSidePanelEvents> = /*@__PURE__*/ createComponent<AtSidePanelElement, AtSidePanelEvents>({
     tagName: 'at-side-panel',
     elementClass: AtSidePanelElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtSidePanelEvents,
+    events: { onAtuiSidepanelChange: 'atuiSidepanelChange' } as AtSidePanelEvents,
     defineCustomElement: defineAtSidePanel
 });
 

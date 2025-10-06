@@ -757,8 +757,8 @@ export namespace Components {
      */
     interface AtDialog {
         /**
-          * Whether to show a backdrop behind the dialog
-          * @default false
+          * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
+          * @default true
          */
         "backdrop": boolean;
         /**
@@ -767,9 +767,15 @@ export namespace Components {
          */
         "closeDialog": () => Promise<void>;
         /**
-          * ID of the dialog element (used to open and close the modal)
+          * Will close the dialog if clicked
+          * @default false
          */
-        "dialog_id": string;
+        "close_backdrop": boolean;
+        /**
+          * Getter method for the open state of the dialog
+          * @returns The current open state of the dialog
+         */
+        "getIsOpen": () => Promise<boolean>;
         /**
           * Opens the dialog modal
           * @returns Promise that resolves when the dialog is opened
@@ -1931,7 +1937,7 @@ export namespace Components {
      */
     interface AtSidePanel {
         /**
-          * Whether to show a backdrop behind the panel
+          * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
           * @default false
          */
         "backdrop": boolean;
@@ -1941,7 +1947,7 @@ export namespace Components {
          */
         "closeSidePanel": () => Promise<void>;
         /**
-          * Will close the sidepanel if clicked off when set
+          * Will close the sidepanel if clicked
           * @default false
          */
         "close_backdrop": boolean;
@@ -1950,6 +1956,11 @@ export namespace Components {
           * @default true
          */
         "fixed": boolean;
+        /**
+          * Getter method for the open state of the side panel
+          * @returns The current open state of the side panel
+         */
+        "getIsOpen": () => Promise<boolean>;
         /**
           * Displays a close button if set
           * @default true
@@ -1970,10 +1981,6 @@ export namespace Components {
           * @default 'right'
          */
         "origin": SidePanelDirection;
-        /**
-          * ID of the panel
-         */
-        "panel_id": string;
         /**
           * Subtitle displayed in the side panel
          */
@@ -2754,6 +2761,10 @@ export interface AtCustomTimeRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtCustomTimeRangeElement;
 }
+export interface AtDialogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtDialogElement;
+}
 export interface AtInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtInputElement;
@@ -2809,6 +2820,10 @@ export interface AtSearchCustomEvent<T> extends CustomEvent<T> {
 export interface AtSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSelectElement;
+}
+export interface AtSidePanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtSidePanelElement;
 }
 export interface AtSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3221,11 +3236,22 @@ declare global {
         prototype: HTMLAtCustomTimeRangeElement;
         new (): HTMLAtCustomTimeRangeElement;
     };
+    interface HTMLAtDialogElementEventMap {
+        "atuiDialogChange": any;
+    }
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      */
     interface HTMLAtDialogElement extends Components.AtDialog, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtDialogElementEventMap>(type: K, listener: (this: HTMLAtDialogElement, ev: AtDialogCustomEvent<HTMLAtDialogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtDialogElementEventMap>(type: K, listener: (this: HTMLAtDialogElement, ev: AtDialogCustomEvent<HTMLAtDialogElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtDialogElement: {
         prototype: HTMLAtDialogElement;
@@ -3686,11 +3712,22 @@ declare global {
         prototype: HTMLAtSelectElement;
         new (): HTMLAtSelectElement;
     };
+    interface HTMLAtSidePanelElementEventMap {
+        "atuiSidepanelChange": any;
+    }
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
      */
     interface HTMLAtSidePanelElement extends Components.AtSidePanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSidePanelElementEventMap>(type: K, listener: (this: HTMLAtSidePanelElement, ev: AtSidePanelCustomEvent<HTMLAtSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSidePanelElementEventMap>(type: K, listener: (this: HTMLAtSidePanelElement, ev: AtSidePanelCustomEvent<HTMLAtSidePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtSidePanelElement: {
         prototype: HTMLAtSidePanelElement;
@@ -4952,14 +4989,19 @@ declare namespace LocalJSX {
      */
     interface AtDialog {
         /**
-          * Whether to show a backdrop behind the dialog
-          * @default false
+          * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
+          * @default true
          */
         "backdrop"?: boolean;
         /**
-          * ID of the dialog element (used to open and close the modal)
+          * Will close the dialog if clicked
+          * @default false
          */
-        "dialog_id"?: string;
+        "close_backdrop"?: boolean;
+        /**
+          * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open
+         */
+        "onAtuiDialogChange"?: (event: AtDialogCustomEvent<any>) => void;
         /**
           * Role of the dialog element. Can be either 'dialog' or 'alertdialog'
           * @default 'dialog'
@@ -6190,12 +6232,12 @@ declare namespace LocalJSX {
      */
     interface AtSidePanel {
         /**
-          * Whether to show a backdrop behind the panel
+          * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
           * @default false
          */
         "backdrop"?: boolean;
         /**
-          * Will close the sidepanel if clicked off when set
+          * Will close the sidepanel if clicked
           * @default false
          */
         "close_backdrop"?: boolean;
@@ -6215,14 +6257,14 @@ declare namespace LocalJSX {
          */
         "has_scrollbar"?: boolean;
         /**
+          * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
+         */
+        "onAtuiSidepanelChange"?: (event: AtSidePanelCustomEvent<any>) => void;
+        /**
           * Position of the side panel
           * @default 'right'
          */
         "origin"?: SidePanelDirection;
-        /**
-          * ID of the panel
-         */
-        "panel_id"?: string;
         /**
           * Subtitle displayed in the side panel
          */

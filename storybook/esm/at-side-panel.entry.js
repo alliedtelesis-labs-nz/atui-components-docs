@@ -1,6 +1,6 @@
-import { r as registerInstance, a as getElement, h } from './index-B5bw8iR3.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
 
-const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.no-backdrop::backdrop{display:none}dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}";
+const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}";
 
 const panelVariants = {
     base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
@@ -28,16 +28,13 @@ const sizeVariants = {
 const AtSidePanelComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.atuiSidepanelChange = createEvent(this, "atuiSidepanelChange", 7);
     }
     get el() { return getElement(this); }
     /**
      * Size of the size panel
      */
     size = 'xs';
-    /**
-     * ID of the panel
-     */
-    panel_id;
     /**
      * Title displayed in the side panel
      */
@@ -59,22 +56,27 @@ const AtSidePanelComponent = class {
      */
     has_close_button = true;
     /**
-     * Will close the sidepanel if clicked off when set
-     */
-    close_backdrop = false;
-    /**
      * If sidepanel should used fixed positioning (otherwise absolute)
      */
     fixed = true;
     /**
-     * Whether to show a backdrop behind the panel
+     * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
      */
     backdrop = false;
+    /**
+     * Will close the sidepanel if clicked
+     */
+    close_backdrop = false;
     /**
      * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
      */
     trigger_id;
     isExpanded = false;
+    isOpen = false;
+    /**
+     * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
+     */
+    atuiSidepanelChange;
     sidePanelWrapper;
     panelDialog;
     triggerEls = [];
@@ -97,8 +99,15 @@ const AtSidePanelComponent = class {
      */
     async openSidePanel() {
         if (this.panelDialog && !this.panelDialog.open) {
-            this.panelDialog.showModal();
+            if (this.backdrop === true) {
+                this.panelDialog.showModal();
+            }
+            else {
+                this.panelDialog.show();
+            }
             this.isExpanded = true;
+            this.isOpen = true;
+            this.atuiSidepanelChange.emit(this.isOpen);
             if (this.backdrop) {
                 this.panelDialog.classList.add('backdrop');
             }
@@ -112,8 +121,17 @@ const AtSidePanelComponent = class {
         if (this.panelDialog && this.panelDialog.open) {
             this.panelDialog.close();
             this.isExpanded = false;
+            this.isOpen = false;
+            this.atuiSidepanelChange.emit(this.isOpen);
             this.panelDialog.classList.remove('backdrop');
         }
+    }
+    /**
+     * Getter method for the open state of the side panel
+     * @returns The current open state of the side panel
+     */
+    async getIsOpen() {
+        return this.isOpen;
     }
     handleClose = () => {
         this.closeSidePanel();
@@ -180,7 +198,7 @@ const AtSidePanelComponent = class {
         });
     }
     render() {
-        return (h("div", { key: '1bdac146247129818bdd0ec5e62aec03c32e4e94' }, h("dialog", { key: 'ba3fbe217bd0127c495909aa83c79ec09fcecec4', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : 'no-backdrop', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'eb01c8bd72de9d6dc2f54c8b78447fbf2bdafc19', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '3474159f54200070391e2a98995ab84b3dc1e6ce', class: 'z-nav sticky top-0' }, h("at-header", { key: '3011bba258c4075973e8284f97d1f291af074c47', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '1615ce23b8ac52c4060815ca1272ac7293b1c961', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '3e17ac98a2c08e33285d67d989928d5246d9cfde', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: '520352e94f9a17ae292405a8a1a89326940d158d', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '9d19cd6f316d859b7502d83e48f91b952c8c0886' }))))));
+        return (h(Host, { key: 'ffa42101a339fd2696b305509ab5babaf6612e8f', class: "contents" }, h("dialog", { key: '5b5a5c1ffb2b55e9348b9d6e8c4957ead4519598', ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : 'no-backdrop', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'a72bacc62b0a73d8b694b89f22d63354ba006a90', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '5b8299fcec698f97426e35e87576c7407c9d1030', class: 'z-nav sticky top-0' }, h("at-header", { key: 'f4527db8f06cc4b256f478f66c62b8795aa7141f', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '2855e8bf6ae6f125f24aa78630180cbde1d86c57', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '7fd2d79ffc711adf38c92da2269346d2cd4947da', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: 'ee0518401ad0ad1f7912e0b81a570ef7d8e40d29', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '4edd22b72660ff6c037adc050a18134426ba56fc' }))))));
     }
     get panelClasses() {
         return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 

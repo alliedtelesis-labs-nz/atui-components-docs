@@ -96,7 +96,7 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '8d6c4ffa425ebc01f51e0ffcc0b445917ecc8100' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '85fc74458aa2bb9f27ee1dddbd624ee250715848' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

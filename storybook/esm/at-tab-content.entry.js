@@ -39,7 +39,7 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: 'a4537c6de3a9232b19184397f7ed8c105a187847', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '4f59ad99e32d9a163c7df447c7c18eb5cb7bef34' })));
+        return (h("div", { key: 'd0b25cbc378fd5831d11529525c305bc5d2ebfac', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '0e6a0d763891830683e7f20064d86a9662f9e6c2' })));
     }
 };
 

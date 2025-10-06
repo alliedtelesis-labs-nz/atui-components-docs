@@ -21,9 +21,9 @@ export class AtFormLabelComponent {
      */
     for;
     render() {
-        return (h("div", { key: 'e52a5a37130898e8537efeea0d5bc6b041fd426b', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (h("label", { key: '7c0dc564ab386bb31cf5dc79c5b741b8b7e19864', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'aba209d4d38d4954bb3edc9773cb0211019e08fb', class: "text-error" }, "*"))),
-            this.info_text && (h("at-tooltip", { key: '84a13a0b082af880513ec632864012e6b2256f2d', position: "right" }, h("span", { key: '2b19e12fb91e1c09fe731f3bc7e7307f0dad61f4', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '817587626ab1406bc6c6b321f54f1e2fb2cb323e' }, this.info_text))),
+        return (h("div", { key: '7c43daf06c476eb7337e6e4444c183fcb1b5b105', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (h("label", { key: 'd13de59bbb0ba68f6c314e82f3b9bc0dfb54936e', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: '2624483e0e5343f0ccc7d5493646196335769872', class: "text-error" }, "*"))),
+            this.info_text && (h("at-tooltip", { key: '96ab5f84b3ad4988ed125e41957eed91a35931e8', position: "right" }, h("span", { key: 'cc7eec120ef350ea8373c240d30c93efd8be52ad', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '843d4357be5a77e4416992987af21630dcf8a142' }, this.info_text))),
         ]));
     }
     static get is() { return "at-form-label"; }
