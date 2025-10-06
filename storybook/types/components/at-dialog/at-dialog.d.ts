@@ -3,7 +3,13 @@ import { EventEmitter } from '../../stencil-public-runtime';
  * @category Overlays
  * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
  *
+ * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+ *
  * @slot - Display content within the dialog
+ *
+ * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+ * @csspart backdrop - The container for content displayed within the dialog backdrop.
+ *
  */
 export declare class AtDialogComponent {
     el: HTMLAtDialogElement;

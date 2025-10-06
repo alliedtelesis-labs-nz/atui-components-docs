@@ -34,7 +34,7 @@ export declare class AtSidePanelComponent {
      */
     has_close_button: boolean;
     /**
-     * If sidepanel should used fixed positioning (otherwise absolute)
+     * If sidepanel should use fixed positioning (will fallback to absolute)
      */
     fixed: boolean;
     /**
@@ -46,7 +46,7 @@ export declare class AtSidePanelComponent {
      */
     close_backdrop: boolean;
     /**
-     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
      */
     trigger_id?: string;
     isExpanded: boolean;

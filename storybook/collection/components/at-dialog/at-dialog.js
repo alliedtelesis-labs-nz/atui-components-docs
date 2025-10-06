@@ -3,7 +3,13 @@ import { h, Host, } from "@stencil/core";
  * @category Overlays
  * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
  *
+ * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+ *
  * @slot - Display content within the dialog
+ *
+ * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+ * @csspart backdrop - The container for content displayed within the dialog backdrop.
+ *
  */
 export class AtDialogComponent {
     el;
@@ -99,22 +105,17 @@ export class AtDialogComponent {
         if (!this.close_backdrop || !this.dialog?.open)
             return;
         if (!this.dialogWrapper?.contains(event.target)) {
-            console.log('asdasd');
             this.handleDialogClose();
         }
     }
     async componentDidLoad() {
-        this.dialog = this.el.querySelector('dialog');
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-dialog="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-dialog: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`atui-dialog: No elements found with data-dialog="${this.trigger_id}"`);
                 return;
             }
             this.setupExternalTriggerListeners();
-        }
-        if (this.backdrop) {
-            this.dialog.classList.add('backdrop');
         }
     }
     disconnectedCallback() {
@@ -150,7 +151,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '4f36bfbda3e8ee3d0343e831b25d44804fd3412f' }, h("dialog", { key: '717cdffc2f07266019a66c4f3aa944a07aa6a044', part: "dialog", id: "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '568e3107f7a9c285c3f3b972b0ff110b2ced0fea', part: "backdrop", id: "backdrop", class: "backdrop-content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'ce160d14d4e683333f3fe4d0806ef98ae810dcbe' })))));
+        return (h(Host, { key: '515033ce35c88ea76524bc52972f04b12f483c21' }, h("dialog", { key: '82e0c1f09b4fd5156f5671562484aeee42daa4c4', ref: (el) => (this.dialog = el), part: "dialog", id: "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '54b126c1c5f1c367335d4da0d6494c6d47e21ae3', part: "content", id: "content", class: "backdrop-content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'ae0e48969c9682722398e79f23a8fcf414c6e0dd' })))));
     }
     static get is() { return "at-dialog"; }
     static get originalStyleUrls() {
@@ -202,7 +203,7 @@ export class AtDialogComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "true"
             },
             "close_backdrop": {
@@ -222,7 +223,7 @@ export class AtDialogComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "false"
             },
             "trigger_id": {

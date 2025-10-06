@@ -754,6 +754,9 @@ export namespace Components {
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface AtDialog {
         /**
@@ -1952,7 +1955,7 @@ export namespace Components {
          */
         "close_backdrop": boolean;
         /**
-          * If sidepanel should used fixed positioning (otherwise absolute)
+          * If sidepanel should use fixed positioning (will fallback to absolute)
           * @default true
          */
         "fixed": boolean;
@@ -2000,7 +2003,7 @@ export namespace Components {
          */
         "toggleSidePanel": () => Promise<void>;
         /**
-          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
          */
         "trigger_id"?: string;
     }
@@ -3242,6 +3245,9 @@ declare global {
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface HTMLAtDialogElement extends Components.AtDialog, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDialogElementEventMap>(type: K, listener: (this: HTMLAtDialogElement, ev: AtDialogCustomEvent<HTMLAtDialogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4986,6 +4992,9 @@ declare namespace LocalJSX {
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface AtDialog {
         /**
@@ -6242,7 +6251,7 @@ declare namespace LocalJSX {
          */
         "close_backdrop"?: boolean;
         /**
-          * If sidepanel should used fixed positioning (otherwise absolute)
+          * If sidepanel should use fixed positioning (will fallback to absolute)
           * @default true
          */
         "fixed"?: boolean;
@@ -6279,7 +6288,7 @@ declare namespace LocalJSX {
          */
         "size"?: SidePanelSize;
         /**
-          * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
          */
         "trigger_id"?: string;
     }
@@ -7262,6 +7271,9 @@ declare module "@stencil/core" {
             /**
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+             * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+             * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
+             * @csspart backdrop - The container for content displayed within the dialog backdrop.
              */
             "at-dialog": LocalJSX.AtDialog & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**

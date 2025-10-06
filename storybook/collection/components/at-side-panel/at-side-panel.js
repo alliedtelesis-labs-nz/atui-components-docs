@@ -55,7 +55,7 @@ export class AtSidePanelComponent {
      */
     has_close_button = true;
     /**
-     * If sidepanel should used fixed positioning (otherwise absolute)
+     * If sidepanel should use fixed positioning (will fallback to absolute)
      */
     fixed = true;
     /**
@@ -67,7 +67,7 @@ export class AtSidePanelComponent {
      */
     close_backdrop = false;
     /**
-     * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
      */
     trigger_id;
     isExpanded = false;
@@ -156,9 +156,9 @@ export class AtSidePanelComponent {
     }
     async componentDidLoad() {
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-side-panel: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`atui-side-panel: No elements found with data-sidepanel="${this.trigger_id}"`);
                 return;
             }
             this.setupExternalTriggerListeners();
@@ -197,7 +197,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'ffa42101a339fd2696b305509ab5babaf6612e8f', class: "contents" }, h("dialog", { key: '5b5a5c1ffb2b55e9348b9d6e8c4957ead4519598', ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : 'no-backdrop', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'a72bacc62b0a73d8b694b89f22d63354ba006a90', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '5b8299fcec698f97426e35e87576c7407c9d1030', class: 'z-nav sticky top-0' }, h("at-header", { key: 'f4527db8f06cc4b256f478f66c62b8795aa7141f', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '2855e8bf6ae6f125f24aa78630180cbde1d86c57', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '7fd2d79ffc711adf38c92da2269346d2cd4947da', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: 'ee0518401ad0ad1f7912e0b81a570ef7d8e40d29', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '4edd22b72660ff6c037adc050a18134426ba56fc' }))))));
+        return (h(Host, { key: '66505e6426941af162ccdec74b8955ac5869faad', class: "contents" }, h("dialog", { key: '53ae16a9f607281693fdb6ec0edc7b02127bbb5e', ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : 'no-backdrop', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '69f5eecaf4305a912c72c8424aeaef17e311cea6', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: 'fbddaa65ef682fdfddd3156f3424929cb9a21ea4', class: 'z-nav sticky top-0' }, h("at-header", { key: 'fb7a442ed5cf438385269b493f97c3802b04a017', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '99a54b049d169b3999ea041e8c8c5f91bd08a11f', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '1b2d1eca6b18cd2cf5e564137b62cba91308f5ff', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: '3fa2642481f14349f4e3bb2a5034b0bb2a075fab', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '1879bc3fe50f2ad27fd6cca8651c5cfa608fd7d3' }))))));
     }
     get panelClasses() {
         return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
@@ -242,7 +242,7 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "'xs'"
             },
             "panel_title": {
@@ -306,7 +306,7 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "'right'"
             },
             "has_scrollbar": {
@@ -362,7 +362,7 @@ export class AtSidePanelComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "If sidepanel should used fixed positioning (otherwise absolute)"
+                    "text": "If sidepanel should use fixed positioning (will fallback to absolute)"
                 },
                 "getter": false,
                 "setter": false,
@@ -386,7 +386,7 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "false"
             },
             "close_backdrop": {
@@ -406,7 +406,7 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "defaultValue": "false"
             },
             "trigger_id": {
@@ -422,7 +422,7 @@ export class AtSidePanelComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel."
+                    "text": "Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel."
                 },
                 "getter": false,
                 "setter": false,
