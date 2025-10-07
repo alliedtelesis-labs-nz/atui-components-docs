@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Cod2-jIY.js';
 
-const atDialogCss = "@keyframes fadeIn {\n  from {\n    background-color: rgba(0, 0, 0, 0);\n  }\n  to {\n    background-color: rgba(0, 0, 0, 0.2);\n  }\n}\ndialog.backdrop::backdrop {\n  background: rgba(0, 0, 0, 0.2);\n  transition: opacity 0.3s ease;\n  animation: fadeIn 0.3s ease forwards;\n  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;\n}\n\ndialog.backdrop::backdrop {\n  z-index: var(--z-backdrop, 1000);\n}\n\n:host {\n  display: contents;\n}\n\n#dialog {\n  position: fixed;\n  inset: 0;\n  margin: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  max-height: calc(100dvh - 48px);\n  overflow: hidden;\n  border: 0;\n  padding: 0;\n  background: transparent;\n  z-index: var(--token-z-index-modal);\n  transform-origin: center;\n  opacity: 0;\n  scale: 0.95;\n  box-shadow: var(--token-shadow-3);\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;\n  visibility: hidden;\n}\n#dialog .backdrop {\n  display: flex;\n  max-height: calc(100dvh - 48px);\n}\n#dialog[open] {\n  translate: 0 0;\n  scale: 1;\n  opacity: 1;\n  visibility: visible;\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;\n}\n@starting-style {\n  #dialog[open] {\n    opacity: 0;\n    scale: 1.15;\n  }\n}\n#dialog:not([open]) {\n  scale: 0.95;\n  opacity: 0;\n  visibility: hidden;\n}";
+const atDialogCss = "@keyframes fadeIn {\n  from {\n    background-color: rgba(0, 0, 0, 0);\n  }\n  to {\n    background-color: rgba(0, 0, 0, 0.2);\n  }\n}\ndialog.backdrop.sc-at-dialog::backdrop {\n  background: rgba(0, 0, 0, 0.2);\n  transition: opacity 0.3s ease;\n  animation: fadeIn 0.3s ease forwards;\n  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;\n}\n\ndialog.backdrop.sc-at-dialog::backdrop {\n  z-index: var(--z-backdrop, 1000);\n}\n\n.sc-at-dialog-h {\n  display: contents;\n}\n.sc-at-dialog-h dialog.sc-at-dialog {\n  position: fixed;\n  inset: 0;\n  margin: auto;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  max-height: calc(100dvh - 48px);\n  overflow: hidden;\n  border: 0;\n  padding: 0;\n  background: transparent;\n  z-index: var(--token-z-index-modal);\n  transform-origin: center;\n  opacity: 0;\n  scale: 0.95;\n  box-shadow: var(--token-shadow-3);\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;\n  visibility: hidden;\n}\n.sc-at-dialog-h dialog.backdrop.sc-at-dialog {\n  display: flex;\n  max-height: calc(100dvh - 48px);\n}\n.sc-at-dialog-h dialog[open].sc-at-dialog {\n  translate: 0 0;\n  scale: 1;\n  opacity: 1;\n  visibility: visible;\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;\n}\n@starting-style {\n  .sc-at-dialog-h dialog[open] {\n    opacity: 0;\n    scale: 1.15;\n  }\n}\n.sc-at-dialog-h dialog.sc-at-dialog:not([open]) {\n  scale: 0.95;\n  opacity: 0;\n  visibility: hidden;\n}";
 
 const AtDialogComponent = class {
     constructor(hostRef) {
@@ -53,13 +53,12 @@ const AtDialogComponent = class {
      * @returns Promise that resolves when the dialog is opened
      */
     async openDialog() {
-        const dialog = this.el.querySelector('dialog');
-        if (dialog && !this.isOpen) {
+        if (this.dialog && !this.isOpen) {
             if (this.backdrop === true) {
-                dialog.showModal();
+                this.dialog.showModal();
             }
             else {
-                dialog.show();
+                this.dialog.show();
             }
             this.isOpen = true;
             this.atuiDialogChange.emit(this.isOpen);
@@ -70,12 +69,11 @@ const AtDialogComponent = class {
      * @returns Promise that resolves when the dialog is closed
      */
     async closeDialog() {
-        const dialog = this.el.querySelector('dialog');
-        if (dialog && this.isOpen) {
-            dialog.close();
+        if (this.dialog && this.isOpen) {
+            this.dialog.close();
             this.isOpen = false;
             this.atuiDialogChange.emit(this.isOpen);
-            dialog.removeAttribute('open');
+            this.dialog.removeAttribute('open');
         }
     }
     /**
@@ -146,7 +144,7 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '515033ce35c88ea76524bc52972f04b12f483c21' }, h("dialog", { key: '82e0c1f09b4fd5156f5671562484aeee42daa4c4', ref: (el) => (this.dialog = el), part: "dialog", id: "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '54b126c1c5f1c367335d4da0d6494c6d47e21ae3', part: "content", id: "content", class: "backdrop-content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'ae0e48969c9682722398e79f23a8fcf414c6e0dd' })))));
+        return (h(Host, { key: 'ead91f965ec95ffded3e64967413cb273c3ad984', "data-open": this.isOpen }, h("dialog", { key: 'af5f75b134e7fb225d09d819aece521843f6ad98', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'f2bbe30426232f8c647820382be2ed538359ae76', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '8f41ab0ad45b5ed7643c89892ef04897ae10b03b' })))));
     }
 };
 AtDialogComponent.style = atDialogCss;

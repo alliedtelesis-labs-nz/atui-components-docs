@@ -7,9 +7,6 @@ import { h, Host, } from "@stencil/core";
  *
  * @slot - Display content within the dialog
  *
- * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
- * @csspart backdrop - The container for content displayed within the dialog backdrop.
- *
  */
 export class AtDialogComponent {
     el;
@@ -58,13 +55,12 @@ export class AtDialogComponent {
      * @returns Promise that resolves when the dialog is opened
      */
     async openDialog() {
-        const dialog = this.el.querySelector('dialog');
-        if (dialog && !this.isOpen) {
+        if (this.dialog && !this.isOpen) {
             if (this.backdrop === true) {
-                dialog.showModal();
+                this.dialog.showModal();
             }
             else {
-                dialog.show();
+                this.dialog.show();
             }
             this.isOpen = true;
             this.atuiDialogChange.emit(this.isOpen);
@@ -75,12 +71,11 @@ export class AtDialogComponent {
      * @returns Promise that resolves when the dialog is closed
      */
     async closeDialog() {
-        const dialog = this.el.querySelector('dialog');
-        if (dialog && this.isOpen) {
-            dialog.close();
+        if (this.dialog && this.isOpen) {
+            this.dialog.close();
             this.isOpen = false;
             this.atuiDialogChange.emit(this.isOpen);
-            dialog.removeAttribute('open');
+            this.dialog.removeAttribute('open');
         }
     }
     /**
@@ -151,9 +146,10 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '515033ce35c88ea76524bc52972f04b12f483c21' }, h("dialog", { key: '82e0c1f09b4fd5156f5671562484aeee42daa4c4', ref: (el) => (this.dialog = el), part: "dialog", id: "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, "data-name": "dialog", role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '54b126c1c5f1c367335d4da0d6494c6d47e21ae3', part: "content", id: "content", class: "backdrop-content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'ae0e48969c9682722398e79f23a8fcf414c6e0dd' })))));
+        return (h(Host, { key: 'ead91f965ec95ffded3e64967413cb273c3ad984', "data-open": this.isOpen }, h("dialog", { key: 'af5f75b134e7fb225d09d819aece521843f6ad98', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'f2bbe30426232f8c647820382be2ed538359ae76', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '8f41ab0ad45b5ed7643c89892ef04897ae10b03b' })))));
     }
     static get is() { return "at-dialog"; }
+    static get encapsulation() { return "scoped"; }
     static get originalStyleUrls() {
         return {
             "$": ["at-dialog.scss"]
@@ -300,10 +296,6 @@ export class AtDialogComponent {
                         "Promise": {
                             "location": "global",
                             "id": "global::Promise"
-                        },
-                        "HTMLDialogElement": {
-                            "location": "global",
-                            "id": "global::HTMLDialogElement"
                         }
                     },
                     "return": "Promise<void>"
@@ -324,10 +316,6 @@ export class AtDialogComponent {
                         "Promise": {
                             "location": "global",
                             "id": "global::Promise"
-                        },
-                        "HTMLDialogElement": {
-                            "location": "global",
-                            "id": "global::HTMLDialogElement"
                         }
                     },
                     "return": "Promise<void>"

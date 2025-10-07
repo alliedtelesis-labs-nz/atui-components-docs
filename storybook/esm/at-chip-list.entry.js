@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-B5bw8iR3.js';
+import { r as registerInstance, c as createEvent, h } from './index-Cod2-jIY.js';
 
 const AtChipList = class {
     constructor(hostRef) {

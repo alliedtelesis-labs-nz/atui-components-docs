@@ -16,3 +16,71 @@ dialog.backdrop::backdrop {
 dialog.backdrop::backdrop {
   z-index: var(--z-backdrop, 1000);
 }
+
+:host {
+  display: contents;
+}
+:host .container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: var(--token-z-index-nav);
+  min-width: var(--token-width-panel-xs);
+  background-color: var(--token-color-white);
+  box-shadow: var(--token-shadow-md);
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  opacity: 0;
+  transition: all 300ms ease;
+  will-change: transform, opacity;
+}
+:host .container.width-xs {
+  width: var(--token-width-panel-xs);
+}
+:host .container.width-sm {
+  width: var(--token-width-panel-sm);
+}
+:host .container.width-md {
+  width: var(--token-width-panel-md);
+}
+:host .container.width-lg {
+  width: var(--token-width-panel-lg);
+}
+:host .container.width-xl {
+  width: var(--token-width-panel-xl);
+}
+:host .container.origin-left {
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+}
+:host .container.origin-right {
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+}
+:host .container.position-absolute {
+  position: absolute;
+}
+:host .container:not([data-scrollable]) {
+  overflow-y: hidden;
+}
+:host .container[data-open] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+:host .header {
+  z-index: var(--token-z-index-nav);
+  position: sticky;
+  top: 0;
+  background-color: rgba(var(--token-color-white), 80%);
+  backdrop-filter: blur(10px);
+}
+:host .content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}

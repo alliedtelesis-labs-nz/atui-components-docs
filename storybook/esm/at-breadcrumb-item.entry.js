@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B5bw8iR3.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-Cod2-jIY.js';
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {

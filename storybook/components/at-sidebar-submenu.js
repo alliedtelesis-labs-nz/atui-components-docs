@@ -1,9 +1,9 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-_-xuBOrs.js';
-import { d as defineCustomElement$6 } from './p-kQK15-PH.js';
-import { d as defineCustomElement$5 } from './p-Cdyb40Lt.js';
-import { d as defineCustomElement$4 } from './p-C1ISvew5.js';
-import { d as defineCustomElement$3 } from './p-cDxARn9R.js';
-import { d as defineCustomElement$2 } from './p-DO0PSbAA.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-BcFc6fJK.js';
+import { d as defineCustomElement$6 } from './p-D6Vns73x.js';
+import { d as defineCustomElement$5 } from './p-gtmTzY9j.js';
+import { d as defineCustomElement$4 } from './p-Czbqv7Vo.js';
+import { d as defineCustomElement$3 } from './p-Lg8p3TGm.js';
+import { d as defineCustomElement$2 } from './p-DnBi5Bnh.js';
 
 const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarSubmenuComponent extends H {
     /**
@@ -69,7 +69,7 @@ const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSideb
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: 'df338d16a58a6d50c186e1adefc6101f3098ef1c' }, h("at-accordion-item", { key: '861b5be728fc38cdcc382c0f1ff60cea6b4ad7e6', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: '95e33f9107c8cc9ae85226f6c0e147f73ea4d627', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: '942b6f153b5e16bb169731114093c6c750c703e4', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: 'b89fe035b09521036231eaee9c6834968b93e2fa', class: "mb-16" }, h("slot", { key: 'e9be7fe079470f4495ca60484dc3af8cbd1d2826', name: "submenu-content" }))), h("at-menu", { key: '1c3353423cdc88ecb5f1db9cbb92fde004334f69', class: this.isSidebarOpen ? 'hidden' : 'w-menu', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: this.isSidebarOpen ? '0' : 'w-menu' }, h("at-sidebar-menuitem", { key: '0d9b6828057ab03e9c93f4bb6835261aa9c34904', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: 'be17768d756edc5d27018b5da740590c932a0a43', class: "font-normal" }, h("slot", { key: '0f275ec107b0f4eab1bbb7b025cb4252e4a74d3e', name: "submenu-hover-content" })))));
+        return (h(Host, { key: '24692a40e2afed6e9cc60389428d4b6595e52ca2' }, h("at-accordion-item", { key: '7a7b164c3a4058bd669eaf234b596cb0c63f82e9', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: '5a263c7abf79f59174c3463e2b3fc09e607e8f2f', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: '82e976d363f935af8ab0a875946813dfcc3f348f', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '1c583907ee7bd874f3e6d71dc7a6500f56368237', class: "mb-16" }, h("slot", { key: '36f8fa5e8c2d4a9acf5c7df5b8307dd6f46de763', name: "submenu-content" }))), h("at-menu", { key: '75dccbc501f4212cdedc5b9ba01c1ad2698d9d2b', class: this.isSidebarOpen ? 'hidden' : 'w-menu', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: this.isSidebarOpen ? '0' : 'w-menu' }, h("at-sidebar-menuitem", { key: '254324e4d5171ea70fa45f9f4bbd9794cb61c863', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '8274428a96479b6e0f63ccb763e68a7c608e3592', class: "font-normal" }, h("slot", { key: '431b40007e8fcd7115b48a1ef3f74c8b9b33c3d5', name: "submenu-hover-content" })))));
     }
 }, [260, "at-sidebar-submenu", {
         "label": [1],

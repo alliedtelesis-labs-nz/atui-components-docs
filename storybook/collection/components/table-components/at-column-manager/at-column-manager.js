@@ -51,7 +51,7 @@ export class AtColumnManagerComponent {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '395ee3b441d3e6215fb7087e6af80255460c7ad6', autoclose: false, width: "fit-content", align: "start" }, h("div", { key: '742c68ab5dda4000429f0316a3cd594571999a7a', slot: "menu-trigger" }, h("at-tooltip", { key: 'a6b691407ccb5d91a94ddd680b6a7d1305150b41', position: "top" }, h("at-button", { key: 'd2f128467e0414cdd8d23542729c19df9bcdcf5f', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '047faa0258cf815fba480a5afccafac75fcd575c' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '8dbf6c79ab520c25652bd2592a2fade5b24fe31d', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: 'cdecdc7167c74c5f4d165e2370dace7bc9ed6864', autoclose: false, width: "fit-content", align: "start" }, h("div", { key: '1d92db906644ae4eb92fc9c362438b853288f9fc', slot: "menu-trigger" }, h("at-tooltip", { key: 'f1b67a1d5f7898f1d520f5a69ea84f390fb1e253', position: "top" }, h("at-button", { key: '7c2f3329a84d03ad32201e5935147caac766372b', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: 'b265b91535496b94524be4acbf289be61bd9b823' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '763e726f2ee8c1736b6b4604e1d4c65e3300fee1', class: "w-fit", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,

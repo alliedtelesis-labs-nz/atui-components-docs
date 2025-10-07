@@ -1,4 +1,4 @@
-import { r as registerInstance, h, a as getElement, H as Host } from './index-B5bw8iR3.js';
+import { r as registerInstance, h, a as getElement, H as Host } from './index-Cod2-jIY.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtFormLabelComponent = class {
@@ -317,7 +317,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '2a9a71fe621940e90f3b56bae60df961cec65a8f', class: "relative" }, !this.trigger_id && (h("div", { key: '1f1d0bdf408cfdf41b7c3c88a2b8291b8777df86', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '45a4bbed1f88c9a8ed7bfcb0882e9080d137e3f6', name: "tooltip-trigger" }))), h("div", { key: 'd823a8c9b3b8fcda945c1e290fe837cb9eff332b', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'dd5b94651906df1c5d63f78c2585e5c2169f8793' }))));
+        return (h(Host, { key: '0f4222dbfc1b17df45db17d948849b8ca3ce67ca', class: "relative" }, !this.trigger_id && (h("div", { key: 'c1742514df2d9a127b9f99b4a4d792dc6429ea9c', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '739ba9bf95088b456c917b9f8394c129261ed754', name: "tooltip-trigger" }))), h("div", { key: '919225403d956c9fa0682838a70999621e06b8e0', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '175fae69a5bdd3797d8dd0a96db67c47343ced0a' }))));
     }
     static get watchers() { return {
         "disabled": ["disabledChanged"]

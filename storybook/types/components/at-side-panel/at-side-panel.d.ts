@@ -1,11 +1,15 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type SidePanelDirection = 'left' | 'right';
 export type SidePanelSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type SidePanelPosition = 'absolute' | 'fixed';
 /**
  * @category Overlays
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
  *
  * @slot - Display content within the dialog
+ *
+ * @dependency at-header
+ * @dependency at-button
  */
 export declare class AtSidePanelComponent {
     el: HTMLAtSidePanelElement;
@@ -26,7 +30,7 @@ export declare class AtSidePanelComponent {
      */
     origin: SidePanelDirection;
     /**
-     * Puts a scrollbar on the sidepanel if set
+     * Enables scroll overflow on the sidepanel container
      */
     has_scrollbar: boolean;
     /**
@@ -36,7 +40,7 @@ export declare class AtSidePanelComponent {
     /**
      * If sidepanel should use fixed positioning (will fallback to absolute)
      */
-    fixed: boolean;
+    position: SidePanelPosition;
     /**
      * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
      */
@@ -88,6 +92,4 @@ export declare class AtSidePanelComponent {
     private cleanupExternalTriggerListeners;
     private setupExternalTriggerListeners;
     render(): any;
-    get panelClasses(): string;
-    get sizeClasses(): string;
 }

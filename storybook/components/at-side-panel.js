@@ -1,31 +1,10 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-_-xuBOrs.js';
-import { d as defineCustomElement$2 } from './p-BYDvdt9w.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BcFc6fJK.js';
+import { d as defineCustomElement$4 } from './p-Dq-LpriF.js';
+import { d as defineCustomElement$3 } from './p-BuIq2CNs.js';
+import { d as defineCustomElement$2 } from './p-CBwqQuQ7.js';
 
-const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}";
+const atSidePanelCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}dialog.backdrop.sc-at-side-panel::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop.sc-at-side-panel::backdrop{z-index:var(--z-backdrop, 1000)}.sc-at-side-panel-h{display:contents}.sc-at-side-panel-h .container.sc-at-side-panel{position:fixed;display:flex;flex-direction:column;z-index:var(--token-z-index-nav);min-width:var(--token-width-panel-xs);background-color:var(--token-color-white);box-shadow:var(--token-shadow-md);overflow-x:hidden;overflow-y:auto;height:100%;opacity:0;transition:all 300ms ease;will-change:transform, opacity}.sc-at-side-panel-h .container.width-xs.sc-at-side-panel{width:var(--token-width-panel-xs)}.sc-at-side-panel-h .container.width-sm.sc-at-side-panel{width:var(--token-width-panel-sm)}.sc-at-side-panel-h .container.width-md.sc-at-side-panel{width:var(--token-width-panel-md)}.sc-at-side-panel-h .container.width-lg.sc-at-side-panel{width:var(--token-width-panel-lg)}.sc-at-side-panel-h .container.width-xl.sc-at-side-panel{width:var(--token-width-panel-xl)}.sc-at-side-panel-h .container.origin-left.sc-at-side-panel{left:0;top:0;transform:translateX(-100%)}.sc-at-side-panel-h .container.origin-right.sc-at-side-panel{right:0;top:0;transform:translateX(100%)}.sc-at-side-panel-h .container.position-absolute.sc-at-side-panel{position:absolute}.sc-at-side-panel-h .container.sc-at-side-panel:not([data-scrollable]){overflow-y:hidden}.sc-at-side-panel-h .container[data-open].sc-at-side-panel{opacity:1;visibility:visible;transform:translateX(0)}.sc-at-side-panel-h .header.sc-at-side-panel{z-index:var(--token-z-index-nav);position:sticky;top:0;background-color:rgba(var(--token-color-white), 80%);backdrop-filter:blur(10px)}.sc-at-side-panel-h .content.sc-at-side-panel{display:flex;flex-direction:column;flex-grow:1;width:100%}";
 
-const panelVariants = {
-    base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
-    origin: {
-        left: 'left-0 top-0',
-        right: 'right-0 top-0',
-    },
-    isExpanded: 'border-l-med border-l-2 transition-transform duration-[300ms] ease-[cubic-bezier(0.455,0.03,0.515,0.955)]',
-    fixed: {
-        true: 'fixed h-full top-0',
-        false: 'absolute h-full',
-    },
-    noScrollbar: 'overflow-y-hidden',
-};
-const sizeVariants = {
-    base: 'overflow-x-hidden overflow-y-auto h-full flex flex-col',
-    size: {
-        xs: 'w-panel-xs',
-        sm: 'w-panel-sm',
-        md: 'w-panel-md',
-        lg: 'w-panel-lg',
-        xl: 'w-panel-xl',
-    },
-};
 const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelComponent extends H {
     constructor(registerHost) {
         super();
@@ -52,7 +31,7 @@ const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelC
      */
     origin = 'right';
     /**
-     * Puts a scrollbar on the sidepanel if set
+     * Enables scroll overflow on the sidepanel container
      */
     has_scrollbar = true;
     /**
@@ -62,7 +41,7 @@ const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelC
     /**
      * If sidepanel should use fixed positioning (will fallback to absolute)
      */
-    fixed = true;
+    position = 'fixed';
     /**
      * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
      */
@@ -109,12 +88,15 @@ const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelC
             else {
                 this.panelDialog.show();
             }
-            this.isExpanded = true;
-            this.isOpen = true;
-            this.atuiSidepanelChange.emit(this.isOpen);
             if (this.backdrop) {
                 this.panelDialog.classList.add('backdrop');
             }
+            // Use requestAnimationFrame to delay the state change and apply css
+            requestAnimationFrame(() => {
+                this.isExpanded = true;
+                this.isOpen = true;
+                this.atuiSidepanelChange.emit(this.isOpen);
+            });
         }
     }
     /**
@@ -163,7 +145,7 @@ const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelC
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-side-panel: No elements found with data-sidepanel="${this.trigger_id}"`);
+                console.warn(`at-side-panel: No elements found with data-sidepanel="${this.trigger_id}"`);
                 return;
             }
             this.setupExternalTriggerListeners();
@@ -202,24 +184,17 @@ const AtSidePanelComponent = /*@__PURE__*/ proxyCustomElement(class AtSidePanelC
         });
     }
     render() {
-        return (h(Host, { key: '66505e6426941af162ccdec74b8955ac5869faad', class: "contents" }, h("dialog", { key: '53ae16a9f607281693fdb6ec0edc7b02127bbb5e', ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : 'no-backdrop', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '69f5eecaf4305a912c72c8424aeaef17e311cea6', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: 'fbddaa65ef682fdfddd3156f3424929cb9a21ea4', class: 'z-nav sticky top-0' }, h("at-header", { key: 'fb7a442ed5cf438385269b493f97c3802b04a017', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '99a54b049d169b3999ea041e8c8c5f91bd08a11f', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: '1b2d1eca6b18cd2cf5e564137b62cba91308f5ff', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: '3fa2642481f14349f4e3bb2a5034b0bb2a075fab', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '1879bc3fe50f2ad27fd6cca8651c5cfa608fd7d3' }))))));
-    }
-    get panelClasses() {
-        return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
-        ${this.fixed ? panelVariants.fixed.true : panelVariants.fixed.false} ${!this.has_scrollbar ? panelVariants.noScrollbar : ''}`;
-    }
-    get sizeClasses() {
-        return `${sizeVariants.base} ${sizeVariants.size[this.size]}`;
+        return (h(Host, { key: '013de3f91ad26d8e7dfd5fb6ae2aa2ce3a611bb3', "data-open": this.isOpen }, h("dialog", { key: 'd8f704fabe4411c5f5c56aad7928cc2d4669a13b', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '8de84f8c174dd2ea5611367389281ebce0c58514', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("div", { key: '240adc0d8808fb3119498482318f01b72de8bd3f', class: "header", "data-name": "header" }, h("at-header", { key: '08eacf29392a407f46314e894b2ab6a92dd3a249', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("at-button", { key: '0b063797e1990c77712cfc16b0bbc8fb9d1c55f0', slot: 'actions', size: "md", icon: "close", "data-name": "panel-close", onClick: this.handleClose })))), h("div", { key: 'e8503f518e85e7d5c594b5f9baccf3d56fe6426f', "data-name": "content", class: "content" }, h("slot", { key: 'd31b1b94a807b23974de4d225ebf27b7ff5e37df' }))))));
     }
     static get style() { return atSidePanelCss; }
-}, [260, "at-side-panel", {
+}, [262, "at-side-panel", {
         "size": [513],
         "panel_title": [1],
         "panel_subtitle": [1],
         "origin": [513],
-        "has_scrollbar": [4],
+        "has_scrollbar": [516],
         "has_close_button": [4],
-        "fixed": [4],
+        "position": [513],
         "backdrop": [516],
         "close_backdrop": [516],
         "trigger_id": [1],
@@ -234,14 +209,24 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["at-side-panel", "at-header"];
+    const components = ["at-side-panel", "at-button", "at-header", "at-loading"];
     components.forEach(tagName => { switch (tagName) {
         case "at-side-panel":
             if (!customElements.get(tagName)) {
                 customElements.define(tagName, AtSidePanelComponent);
             }
             break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
         case "at-header":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-loading":
             if (!customElements.get(tagName)) {
                 defineCustomElement$2();
             }

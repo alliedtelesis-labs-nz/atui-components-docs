@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-w3vomLqM.js');
+var index = require('./index-CA9vC8ae.js');
 
 const atSidebarTriggerCss = "at-sidebar-trigger{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--token-border-radius-md);cursor:pointer;padding:6px;font-weight:var(--token-font-weight-med);color:var(--token-sidebar-foreground);background-color:var(--token-sidebar-background);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}at-sidebar-trigger i.material-icons{font-style:normal;display:flex;align-items:center;justify-content:center;font-size:var(--token-font-size-icon-lg);z-index:10}at-sidebar-trigger div[data-name=focus-indicator]{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);opacity:0;transition:background-color var(--token-transition-time-fast)}at-sidebar-trigger:hover div[data-name=focus-indicator]{opacity:0.1}at-sidebar-trigger:focus-visible{outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent)}";
 
@@ -45,7 +45,7 @@ const AtSidebarTriggerComponent = class {
         this.isOpen = event.detail;
     };
     render() {
-        return (index.h(index.Host, { key: '8c5a5ae8b3cae01df9386fddcd034d5b0afe2a17', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (index.h("i", { key: '946379472af8beb5d6e12e48e86a47af406c1019', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), index.h("div", { key: 'b256b8ef13e47882e533c634e12219481f8fbdae', "data-name": "focus-indicator", role: "presentation" })));
+        return (index.h(index.Host, { key: 'bec58e31dd7200d80f5687684154acae4bb4ff47', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (index.h("i", { key: '8ff09a5aaff1def3ea6c43617594a74a4adc6c61', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), index.h("div", { key: 'f7f7fef6e4146fcaacae3734afc8706916c66a1e', "data-name": "focus-indicator", role: "presentation" })));
     }
 };
 AtSidebarTriggerComponent.style = atSidebarTriggerCss;

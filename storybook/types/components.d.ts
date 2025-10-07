@@ -31,7 +31,7 @@ import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu"
 import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
-import { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
+import { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { Width } from "./components/at-sidebar/at-sidebar";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
@@ -72,7 +72,7 @@ export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu"
 export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
-export { SidePanelDirection, SidePanelSize } from "./components/at-side-panel/at-side-panel";
+export { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { Width } from "./components/at-sidebar/at-sidebar";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
@@ -755,8 +755,6 @@ export namespace Components {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
-     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
-     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface AtDialog {
         /**
@@ -1937,6 +1935,8 @@ export namespace Components {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
+     * @dependency at-header
+     * @dependency at-button
      */
     interface AtSidePanel {
         /**
@@ -1955,11 +1955,6 @@ export namespace Components {
          */
         "close_backdrop": boolean;
         /**
-          * If sidepanel should use fixed positioning (will fallback to absolute)
-          * @default true
-         */
-        "fixed": boolean;
-        /**
           * Getter method for the open state of the side panel
           * @returns The current open state of the side panel
          */
@@ -1970,7 +1965,7 @@ export namespace Components {
          */
         "has_close_button": boolean;
         /**
-          * Puts a scrollbar on the sidepanel if set
+          * Enables scroll overflow on the sidepanel container
           * @default true
          */
         "has_scrollbar": boolean;
@@ -1992,6 +1987,11 @@ export namespace Components {
           * Title displayed in the side panel
          */
         "panel_title": string;
+        /**
+          * If sidepanel should use fixed positioning (will fallback to absolute)
+          * @default 'fixed'
+         */
+        "position": SidePanelPosition;
         /**
           * Size of the size panel
           * @default 'xs'
@@ -3246,8 +3246,6 @@ declare global {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
-     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
-     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface HTMLAtDialogElement extends Components.AtDialog, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDialogElementEventMap>(type: K, listener: (this: HTMLAtDialogElement, ev: AtDialogCustomEvent<HTMLAtDialogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3724,6 +3722,8 @@ declare global {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
+     * @dependency at-header
+     * @dependency at-button
      */
     interface HTMLAtSidePanelElement extends Components.AtSidePanel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtSidePanelElementEventMap>(type: K, listener: (this: HTMLAtSidePanelElement, ev: AtSidePanelCustomEvent<HTMLAtSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4993,8 +4993,6 @@ declare namespace LocalJSX {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
-     * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
-     * @csspart backdrop - The container for content displayed within the dialog backdrop.
      */
     interface AtDialog {
         /**
@@ -6238,6 +6236,8 @@ declare namespace LocalJSX {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
+     * @dependency at-header
+     * @dependency at-button
      */
     interface AtSidePanel {
         /**
@@ -6251,17 +6251,12 @@ declare namespace LocalJSX {
          */
         "close_backdrop"?: boolean;
         /**
-          * If sidepanel should use fixed positioning (will fallback to absolute)
-          * @default true
-         */
-        "fixed"?: boolean;
-        /**
           * Displays a close button if set
           * @default true
          */
         "has_close_button"?: boolean;
         /**
-          * Puts a scrollbar on the sidepanel if set
+          * Enables scroll overflow on the sidepanel container
           * @default true
          */
         "has_scrollbar"?: boolean;
@@ -6282,6 +6277,11 @@ declare namespace LocalJSX {
           * Title displayed in the side panel
          */
         "panel_title"?: string;
+        /**
+          * If sidepanel should use fixed positioning (will fallback to absolute)
+          * @default 'fixed'
+         */
+        "position"?: SidePanelPosition;
         /**
           * Size of the size panel
           * @default 'xs'
@@ -7272,8 +7272,6 @@ declare module "@stencil/core" {
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
              * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
-             * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
-             * @csspart backdrop - The container for content displayed within the dialog backdrop.
              */
             "at-dialog": LocalJSX.AtDialog & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**
@@ -7406,6 +7404,8 @@ declare module "@stencil/core" {
             /**
              * @category Overlays
              * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
+             * @dependency at-header
+             * @dependency at-button
              */
             "at-side-panel": LocalJSX.AtSidePanel & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;
             /**

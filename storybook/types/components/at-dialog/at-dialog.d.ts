@@ -7,9 +7,6 @@ import { EventEmitter } from '../../stencil-public-runtime';
  *
  * @slot - Display content within the dialog
  *
- * @csspart dialog - The dialog element container which spans the entire viewport, ::backdrop is applied to this element.
- * @csspart backdrop - The container for content displayed within the dialog backdrop.
- *
  */
 export declare class AtDialogComponent {
     el: HTMLAtDialogElement;

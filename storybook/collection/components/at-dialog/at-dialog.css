@@ -20,8 +20,7 @@ dialog.backdrop::backdrop {
 :host {
   display: contents;
 }
-
-#dialog {
+:host dialog {
   position: fixed;
   inset: 0;
   margin: auto;
@@ -41,11 +40,11 @@ dialog.backdrop::backdrop {
   transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
   visibility: hidden;
 }
-#dialog .backdrop {
+:host dialog.backdrop {
   display: flex;
   max-height: calc(100dvh - 48px);
 }
-#dialog[open] {
+:host dialog[open] {
   translate: 0 0;
   scale: 1;
   opacity: 1;
@@ -53,12 +52,12 @@ dialog.backdrop::backdrop {
   transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;
 }
 @starting-style {
-  #dialog[open] {
+  :host dialog[open] {
     opacity: 0;
     scale: 1.15;
   }
 }
-#dialog:not([open]) {
+:host dialog:not([open]) {
   scale: 0.95;
   opacity: 0;
   visibility: hidden;
