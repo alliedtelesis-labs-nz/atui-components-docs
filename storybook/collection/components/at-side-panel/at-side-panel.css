@@ -18,6 +18,7 @@ dialog.backdrop::backdrop {
 }
 
 :host {
+  --token-color-white-rgb: 255, 255, 255;
   display: contents;
 }
 :host .container {
@@ -75,8 +76,28 @@ dialog.backdrop::backdrop {
   z-index: var(--token-z-index-nav);
   position: sticky;
   top: 0;
-  background-color: rgba(var(--token-color-white), 80%);
+  padding: 12px 8px 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: rgba(var(--token-color-white-rgb), 0.8);
   backdrop-filter: blur(10px);
+}
+:host .header div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+:host .header div .title {
+  font-size: var(--token-font-size-h4);
+  font-weight: var(--token-font-weight-med);
+  color: var(--token-text-dark);
+  line-height: 1;
+}
+:host .header div .subtitle {
+  font-size: var(--token-font-size-sm);
+  color: var(--token-text-light);
+  line-height: 1;
 }
 :host .content {
   display: flex;

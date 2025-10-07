@@ -52,7 +52,7 @@ export class AtTab {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '6debf8848bcbe442e5546f4ebf232a74a196095b', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '042607cf72dd2b348430ea695a62c3ebe6a20250', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '196b9f6bd9603b18421c5716dd03d56204bebfb4' }))));
+        return (h(Host, { key: 'fb79d712db848a9c94e1bf640c7146cdcc8896fe', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'f5c0b354ed230579ebe4283c3e4106fcaca05bd5', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '5c32bfeb728736295f4fb144426f0f494c90f773' }))));
     }
     static get is() { return "at-tab"; }
     static get properties() {

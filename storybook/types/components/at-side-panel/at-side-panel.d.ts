@@ -8,7 +8,6 @@ export type SidePanelPosition = 'absolute' | 'fixed';
  *
  * @slot - Display content within the dialog
  *
- * @dependency at-header
  * @dependency at-button
  */
 export declare class AtSidePanelComponent {

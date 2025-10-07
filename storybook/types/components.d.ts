@@ -1935,7 +1935,6 @@ export namespace Components {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
-     * @dependency at-header
      * @dependency at-button
      */
     interface AtSidePanel {
@@ -3722,7 +3721,6 @@ declare global {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
-     * @dependency at-header
      * @dependency at-button
      */
     interface HTMLAtSidePanelElement extends Components.AtSidePanel, HTMLStencilElement {
@@ -6236,7 +6234,6 @@ declare namespace LocalJSX {
     /**
      * @category Overlays
      * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
-     * @dependency at-header
      * @dependency at-button
      */
     interface AtSidePanel {
@@ -7404,7 +7401,6 @@ declare module "@stencil/core" {
             /**
              * @category Overlays
              * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
-             * @dependency at-header
              * @dependency at-button
              */
             "at-side-panel": LocalJSX.AtSidePanel & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;

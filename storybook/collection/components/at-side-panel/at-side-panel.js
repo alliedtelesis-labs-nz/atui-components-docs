@@ -5,7 +5,6 @@ import { h, Host, } from "@stencil/core";
  *
  * @slot - Display content within the dialog
  *
- * @dependency at-header
  * @dependency at-button
  */
 export class AtSidePanelComponent {
@@ -180,7 +179,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '013de3f91ad26d8e7dfd5fb6ae2aa2ce3a611bb3', "data-open": this.isOpen }, h("dialog", { key: 'd8f704fabe4411c5f5c56aad7928cc2d4669a13b', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '8de84f8c174dd2ea5611367389281ebce0c58514', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("div", { key: '240adc0d8808fb3119498482318f01b72de8bd3f', class: "header", "data-name": "header" }, h("at-header", { key: '08eacf29392a407f46314e894b2ab6a92dd3a249', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("at-button", { key: '0b063797e1990c77712cfc16b0bbc8fb9d1c55f0', slot: 'actions', size: "md", icon: "close", "data-name": "panel-close", onClick: this.handleClose })))), h("div", { key: 'e8503f518e85e7d5c594b5f9baccf3d56fe6426f', "data-name": "content", class: "content" }, h("slot", { key: 'd31b1b94a807b23974de4d225ebf27b7ff5e37df' }))))));
+        return (h(Host, { key: '2fb3059c14471ce7af539619c0396729a9898c76', "data-open": this.isOpen }, h("dialog", { key: 'cd7da20e1daba7cc759f339b94befda23076e1f1', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '08093ce9011832d3eedab15906a4a99f705edd97', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '0b30bd6560c0faad1b12e8084e55a0dd9a7a1178', class: "header", "data-name": "header" }, h("div", { key: 'b8e92e2b9ad7556412ddbb74bb24ccfde20aca12' }, this.panel_title && (h("h3", { key: 'bc65ec8993b003928b298f66be59d91e73f490c0', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'e3470dca20a2840ba0eb94ce426fa858fafdd8f3', class: "subtitle" }, this.panel_subtitle))), this.has_close_button && (h("at-button", { key: '334063438b8b23589191e6c77bc401e7b54b2523', size: "md", icon: "close", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }))), h("div", { key: '9fa6b480b3ed07d141f40fc6f8582c5e0223fe23', "data-name": "content", class: "content" }, h("slot", { key: '938f29ec20cfdffad6aa4e4c5bc4a6bea7945dbe' }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
