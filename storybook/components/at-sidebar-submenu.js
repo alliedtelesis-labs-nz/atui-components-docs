@@ -2,7 +2,7 @@ import { p as proxyCustomElement, H, h, c as Host } from './p-B9UDFE-Z.js';
 import { d as defineCustomElement$6 } from './p-BzQvN24E.js';
 import { d as defineCustomElement$5 } from './p-BdkRfxCr.js';
 import { d as defineCustomElement$4 } from './p-BmhjLSrf.js';
-import { d as defineCustomElement$3 } from './p-j-J-vMej.js';
+import { d as defineCustomElement$3 } from './p-DHd1yjL8.js';
 import { d as defineCustomElement$2 } from './p-DczwoWg8.js';
 
 const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}at-sidebar at-sidebar-submenu at-menu .sc-at-sidebar-menuitem-h .label.sc-at-sidebar-menuitem{color:var(--token-sidebar-foreground);font-weight:var(--token-font-weight-normal)}";

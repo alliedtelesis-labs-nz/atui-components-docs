@@ -49,7 +49,7 @@ export declare class AtSidePanelComponent {
      */
     close_backdrop: boolean;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
      */
     trigger_id?: string;
     isExpanded: boolean;

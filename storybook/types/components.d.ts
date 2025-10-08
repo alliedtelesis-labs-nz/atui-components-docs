@@ -1268,11 +1268,11 @@ export namespace Components {
          */
         "trigger": OpenOn;
         /**
-          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**
-          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
+          * String representing the 'width' style of the menu element ('NUMpx'). To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
          */
         "width"?: string;
     }
@@ -2002,7 +2002,7 @@ export namespace Components {
          */
         "toggleSidePanel": () => Promise<void>;
         /**
-          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
     }
@@ -2662,7 +2662,7 @@ export namespace Components {
          */
         "position": TooltipPosition;
         /**
-          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**
@@ -5496,11 +5496,11 @@ declare namespace LocalJSX {
          */
         "trigger"?: OpenOn;
         /**
-          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**
-          * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width. To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
+          * String representing the 'width' style of the menu element ('NUMpx'). To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
          */
         "width"?: string;
     }
@@ -6285,7 +6285,7 @@ declare namespace LocalJSX {
          */
         "size"?: SidePanelSize;
         /**
-          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel value will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
     }
@@ -6975,7 +6975,7 @@ declare namespace LocalJSX {
          */
         "position"?: TooltipPosition;
         /**
-          * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**

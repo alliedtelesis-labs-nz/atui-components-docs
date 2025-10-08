@@ -28,8 +28,8 @@ export declare class AtMenu {
      */
     align: Align;
     /**
-     * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width.
-     * To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
+     * String representing the 'width' style of the menu element ('NUMpx').
+     * To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
      */
     width?: string;
     /**
@@ -49,8 +49,7 @@ export declare class AtMenu {
      */
     disabled: boolean;
     /**
-     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
-     */
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
     trigger_id?: string;
     disabledChanged(newValue: boolean): void;
     isOpen: boolean;

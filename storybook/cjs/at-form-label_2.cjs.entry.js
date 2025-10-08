@@ -61,8 +61,8 @@ const AtTooltip = class {
      */
     delay = 150;
     /**
-     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
-     */
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+     * */
     trigger_id;
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
@@ -114,9 +114,9 @@ const AtTooltip = class {
     async componentDidLoad() {
         this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-tooltip="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-tooltip: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`atui-tooltip: No elements found with data-tooltip="${this.trigger_id}"`);
                 return;
             }
         }
@@ -319,7 +319,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: '4fba0b9aaec61b86d9d411a3c36e609f6a7ba8f6', class: "relative" }, !this.trigger_id && (index.h("div", { key: '285002d323849ae2e78b4eb23a9eb62a68374430', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '9e9c80550ad339e31e37310f1e1ffe4ad99eb324', name: "tooltip-trigger" }))), index.h("div", { key: 'b2bdb444e9d31e9a0c22a09e855408fdc2b615ce', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '83acd4c411a3b5248b436f790ba71b777c9fa41e' }))));
+        return (index.h(index.Host, { key: 'd1537b3c999cff6418f974ce8318a2c62b000d0b', class: "relative" }, !this.trigger_id && (index.h("div", { key: '0c63af5cba0fd7ce164892267842004f0a14a182', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '9fbbaa6e85bee3d14ba313ce5d360017a47fe7a4', name: "tooltip-trigger" }))), index.h("div", { key: '35e35284eaa27eba34a4ddf1ce7209c1306396bb', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'eca85feaf129d5bafadd06e84eb74ee08d37a294' }))));
     }
     static get watchers() { return {
         "disabled": ["disabledChanged"]

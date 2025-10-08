@@ -1,4 +1,4 @@
-import { A as AtSelectComponent, d as defineCustomElement$1 } from './p-CFIrAiXU.js';
+import { A as AtSelectComponent, d as defineCustomElement$1 } from './p-BMGE2x5y.js';
 
 const AtSelect = AtSelectComponent;
 const defineCustomElement = defineCustomElement$1;
