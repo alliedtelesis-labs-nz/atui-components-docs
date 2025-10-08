@@ -91,7 +91,6 @@ export class AtAccordionItemComponent {
         return {
             "item_id": {
                 "type": "string",
-                "attribute": "item_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -106,11 +105,11 @@ export class AtAccordionItemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_id"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -125,11 +124,11 @@ export class AtAccordionItemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "border": {
                 "type": "boolean",
-                "attribute": "border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -145,11 +144,11 @@ export class AtAccordionItemComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border",
                 "defaultValue": "true"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -164,11 +163,11 @@ export class AtAccordionItemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             },
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -184,6 +183,7 @@ export class AtAccordionItemComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "open",
                 "defaultValue": "false"
             }
         };

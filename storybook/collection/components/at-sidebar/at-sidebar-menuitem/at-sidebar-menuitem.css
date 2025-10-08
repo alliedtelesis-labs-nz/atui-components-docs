@@ -1,4 +1,4 @@
-at-sidebar-menuitem .at-sidebar-menuitem__content, at-sidebar-menuitem .at-sidebar-menuitem__label {
+at-sidebar-menuitem .content, at-sidebar-menuitem .label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -17,24 +17,27 @@ at-sidebar-menuitem {
   font-size: var(--token-font-size-button);
   transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
-at-sidebar-menuitem .at-sidebar-menuitem__content {
+at-sidebar-menuitem .content {
   display: flex;
   align-items: center;
+  flex-grow: 1;
   gap: 8px;
 }
-at-sidebar-menuitem .at-sidebar-menuitem__badge {
+at-sidebar-menuitem .badge {
   position: absolute;
   top: -8px;
   left: 22px;
   z-index: 20;
-  padding: 4px 3px;
   pointer-events: none;
+  padding: 2px 2px;
+  font-size: 10px;
 }
-at-sidebar-menuitem .at-sidebar-menuitem__label {
+at-sidebar-menuitem .label {
   z-index: 10;
   font-weight: var(--token-font-weight-med);
 }
 at-sidebar-menuitem i.material-icons {
+  font-family: "Material Icons";
   font-style: normal;
   display: flex;
   align-items: center;
@@ -42,7 +45,7 @@ at-sidebar-menuitem i.material-icons {
   font-size: var(--token-font-size-icon-xl);
   z-index: 10;
 }
-at-sidebar-menuitem div[data-name=focus-indicator] {
+at-sidebar-menuitem .focus-indicator {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -54,7 +57,7 @@ at-sidebar-menuitem div[data-name=focus-indicator] {
   opacity: 0;
   transition: background-color var(--token-transition-time-fast);
 }
-at-sidebar-menuitem:hover div[data-name=focus-indicator] {
+at-sidebar-menuitem:hover .focus-indicator {
   opacity: 0.1;
 }
 at-sidebar-menuitem:focus-visible {
@@ -83,7 +86,7 @@ at-sidebar-menuitem.depth-3 {
   font-weight: var(--token-font-weight-light);
 }
 
-[data-name=accordion-item-content] at-sidebar-menuitem span[data-name=sidebar-menu-item-label],
-at-menu at-sidebar-menuitem span[data-name=sidebar-menu-item-label] {
+[data-name=accordion-item-content] at-sidebar-menuitem .label,
+at-menu at-sidebar-menuitem .label {
   font-weight: 400;
 }

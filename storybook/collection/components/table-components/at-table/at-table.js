@@ -160,7 +160,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '8b63faf95a6f0bb1096687abedc04473294b83cd', class: "ag-theme-material" });
+        return h(Host, { key: '6bb83afd09782d10031c4cac95de62e3591f4022', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -177,7 +177,6 @@ export class AtTableComponent {
         return {
             "table_data": {
                 "type": "unknown",
-                "attribute": "table_data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        items: any[];\n        total: number;\n    }",
@@ -195,7 +194,6 @@ export class AtTableComponent {
             },
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -219,7 +217,6 @@ export class AtTableComponent {
             },
             "page_size": {
                 "type": "number",
-                "attribute": "page_size",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -235,11 +232,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "page_size",
                 "defaultValue": "10"
             },
             "use_custom_sorting": {
                 "type": "boolean",
-                "attribute": "use_custom_sorting",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -255,11 +252,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "use_custom_sorting",
                 "defaultValue": "false"
             },
             "use_custom_pagination": {
                 "type": "boolean",
-                "attribute": "use_custom_pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -275,11 +272,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             },
             "disable_auto_init": {
                 "type": "boolean",
-                "attribute": "disable_auto_init",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -295,11 +292,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disable_auto_init",
                 "defaultValue": "false"
             },
             "auto_size_columns": {
                 "type": "boolean",
-                "attribute": "auto_size_columns",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -315,11 +312,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto_size_columns",
                 "defaultValue": "true"
             },
             "ag_grid": {
                 "type": "unknown",
-                "attribute": "ag_grid",
                 "mutable": false,
                 "complexType": {
                     "original": "GridApi",

@@ -1,7 +1,7 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BcFc6fJK.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-B9UDFE-Z.js';
 import { c as classlist } from './p-COG8_R0C.js';
-import { d as defineCustomElement$3 } from './p-Co_VxbkM.js';
-import { d as defineCustomElement$2 } from './p-BGi0-vGV.js';
+import { d as defineCustomElement$3 } from './p-WlpZZSTx.js';
+import { d as defineCustomElement$2 } from './p-CMEk0jwv.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -111,13 +111,13 @@ const AtTextareaComponent = /*@__PURE__*/ proxyCustomElement(class AtTextareaCom
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'b0ce1b6d6e56533f7abd67e0a58d8827927e7bed' }, h("div", { key: 'c8a1aaf5827ba6c453224df26acec41c211f95eb', class: "flex flex-col" }, h("slot", { key: '7285d892ee3d84a1858147c41b27cc3540113da0', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'a09563749d02f486cecd24b5a381ba8044cf266e', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '251a99c5e51ccae06cf9c22182795ef1e2f268ac', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: 'd4baba14930060ea43092770e60279e6dc6dbdae', class: "grid" }, h("textarea", { key: '417b49a13747904b320c2900029d03857911b980', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => {
+        return (h(Host, { key: '8fa5eaeccba25d52c12694cdac2b5947ee3507cc' }, h("div", { key: '9c6bb048cbc9cb1070650a0bff476a312130fee6', class: "flex flex-col" }, h("slot", { key: 'b80b305d77e755998a89bde3539bf20cfc6e6f7f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '0f5cc2af9ce3d189abd0c0fe5568b3e3e049984c', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'f97f2db04c2000d77b6c4dd5694ffedad15dfac5', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '9d8440633a07269816257f82f59f8a4a21f82cd5', class: "grid" }, h("textarea", { key: '393a2924550b5ded13679cb4eee1333c137bf8c7', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => {
                 this.value = event.target.value;
-            }, onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '54673e93e15030b04585495e2bca5c699a8fd48a', "data-name": "textarea-resize-container", style: {
+            }, onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: 'ae903bc0b55a4f8f6fa8a126eaef5b4da219de8c', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '249de857c0623744872defd62e4d5db44e5759f4', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '660162bb2f36ba9ad151ee788225390166cbe0ad', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
 }, [260, "at-textarea", {
         "label": [1],

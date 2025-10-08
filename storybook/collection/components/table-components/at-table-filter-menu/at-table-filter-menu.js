@@ -39,14 +39,13 @@ export class AtTableFilterMenu {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (h(Host, { key: '5940b92f7f69d89d5f4a3b65b27dadfaa7981dcd' }, h("at-menu", { key: '8f44c54eadef9a7dd3e035c83d4a3fff600852b3', autoclose: false, width: "fit-content", class: "self-start" }, h("at-tooltip", { key: '960486b1a5358404fd4637c068e20d287f66ed33', slot: "menu-trigger", position: "top" }, h("at-button", { key: '80fda7b9a4070ddf0bac766a91817b74474a7f82', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: '5ad305c2a07f10baf0eecd1c0c07484882997d84' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: 'bfb6632cc2591e4554556e842ce8bbe06fbc0bdb', class: "flex flex-col" }, h("at-checkbox-group", { key: '34057e86c5b50e2e526e624345a324ab76d1518d', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: 'e3dbb195c2e1e29477035d17579324f4cb4ba9f4' }, h("at-menu", { key: 'c8d7c86228c9ca50172eefa638015db02c31c4f4', autoclose: false, width: "fit-content", class: "self-start" }, h("at-tooltip", { key: '4ce7a30efb439da5b9664e6a6a54f7d3d57fcad7', slot: "menu-trigger", position: "top" }, h("at-button", { key: '9f1d9de5d0d9ad4f37a1f7af976de8ad41303755', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: 'b2b1e74a05715a296838a96265e0db79e7406bd7' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: 'e430df408ad7c938e49dd60b0ac63f74118be2c2', class: "flex flex-col" }, h("at-checkbox-group", { key: 'f0151a26e76bd9b489a9cbaa96ec41b52e61f68b', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get is() { return "at-table-filter-menu"; }
     static get properties() {
         return {
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -70,7 +69,6 @@ export class AtTableFilterMenu {
             },
             "selected": {
                 "type": "unknown",
-                "attribute": "selected",
                 "mutable": true,
                 "complexType": {
                     "original": "string[]",

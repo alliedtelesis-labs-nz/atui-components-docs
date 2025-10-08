@@ -66,7 +66,6 @@ export class AtChipList {
         return {
             "chips": {
                 "type": "unknown",
-                "attribute": "chips",
                 "mutable": true,
                 "complexType": {
                     "original": "string[]",
@@ -84,7 +83,6 @@ export class AtChipList {
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -99,11 +97,11 @@ export class AtChipList {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -118,11 +116,11 @@ export class AtChipList {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "show_clear_all": {
                 "type": "boolean",
-                "attribute": "show_clear_all",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -138,11 +136,11 @@ export class AtChipList {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_clear_all",
                 "defaultValue": "true"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "BadgeSize",
@@ -164,6 +162,7 @@ export class AtChipList {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'lg'"
             }
         };

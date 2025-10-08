@@ -267,7 +267,6 @@ export class AtChartBarLine {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "'bar' | 'line'",
@@ -282,11 +281,11 @@ export class AtChartBarLine {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "type"
             },
             "data": {
                 "type": "unknown",
-                "attribute": "data",
                 "mutable": true,
                 "complexType": {
                     "original": "{\n        labels: string[];\n        datasets: ChartDataset[];\n    }",
@@ -310,7 +309,6 @@ export class AtChartBarLine {
             },
             "x_axis_format": {
                 "type": "unknown",
-                "attribute": "x_axis_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -328,7 +326,6 @@ export class AtChartBarLine {
             },
             "y_axis_format": {
                 "type": "unknown",
-                "attribute": "y_axis_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -346,7 +343,6 @@ export class AtChartBarLine {
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -364,7 +360,6 @@ export class AtChartBarLine {
             },
             "tooltip_options": {
                 "type": "unknown",
-                "attribute": "tooltip_options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -382,7 +377,6 @@ export class AtChartBarLine {
             },
             "legend_format": {
                 "type": "unknown",
-                "attribute": "legend_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -400,7 +394,6 @@ export class AtChartBarLine {
             },
             "thresholds": {
                 "type": "unknown",
-                "attribute": "thresholds",
                 "mutable": false,
                 "complexType": {
                     "original": "Threshold[]",
@@ -424,7 +417,6 @@ export class AtChartBarLine {
             },
             "point_styles": {
                 "type": "unknown",
-                "attribute": "point_styles",
                 "mutable": false,
                 "complexType": {
                     "original": "PointStyles",
@@ -448,7 +440,6 @@ export class AtChartBarLine {
             },
             "time_range": {
                 "type": "any",
-                "attribute": "time_range",
                 "mutable": false,
                 "complexType": {
                     "original": "SelectedTimeRangeExtended",
@@ -468,11 +459,11 @@ export class AtChartBarLine {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "time_range"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "Height",
@@ -494,11 +485,11 @@ export class AtChartBarLine {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "'md'"
             },
             "color_palette": {
                 "type": "string",
-                "attribute": "color_palette",
                 "mutable": false,
                 "complexType": {
                     "original": "ChartColorPalette",
@@ -520,6 +511,7 @@ export class AtChartBarLine {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color_palette",
                 "defaultValue": "ChartColorPalette.CATEGORICAL"
             }
         };

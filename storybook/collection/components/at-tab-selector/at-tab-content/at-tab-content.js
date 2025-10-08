@@ -39,14 +39,13 @@ export class AtTabContent {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: '1e0a2a17792af6ffbe54f7807c42ecfd01cded8b', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '590c6637db6743d13a32418f61d9ee6c257625f7' })));
+        return (h("div", { key: '6d012f0ffb8cc431c67282e8ac6f252c305b5486', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '070aad11b122acb8a3bdd5af5e836fad94a5ac22' })));
     }
     static get is() { return "at-tab-content"; }
     static get properties() {
         return {
             "tab_id": {
                 "type": "string",
-                "attribute": "tab_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -61,11 +60,11 @@ export class AtTabContent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "tab_id"
             },
             "is_active": {
                 "type": "boolean",
-                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -81,6 +80,7 @@ export class AtTabContent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "is_active",
                 "defaultValue": "false"
             }
         };

@@ -178,16 +178,16 @@ export class AtPromptInputComponent {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'fb6a5379573d270b291a91f91a8c0fc710776be1', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: 'fffff266a81143cc2e8954ec36a4ba0b4644f0ea', class: "flex flex-col" }, h("slot", { key: '6d0ab0af81d74349a4660a21a6fd17224eb5cc88', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '56bf4e898e953db5986b41e0607b5f39b11a3d85', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '9fa14ff4536caa3015df263c81bf2f794c0d6cb2', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: '3b987620b5222c0c607aaf0508f11e3908fb6989', class: containerClass }, h("textarea", { key: '7f65a9528a8d091a1a3680d19dfd036b419d37bd', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (h(Host, { key: 'd8d136b3842cd70e7c140fe61ccba2beac2f1b72', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '45be2ede957cf93e314111d25e1027e2544b2095', class: "flex flex-col" }, h("slot", { key: 'e8bd5f5187dbd9453c71c8197f3889b795452292', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '0872190d7243f633df4871d23d3b5822627a3dec', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: 'c8106abe5d016aebd25733e79d488f53f469c9d6', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'b1f1a1c2602f074b6ce8c5592ea400e0e4d355aa', class: containerClass }, h("textarea", { key: '35c4c99d36d0fc5245032a526c74e04d28baf87c', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'auto',
-            }, "data-name": "prompt-input" }), h("div", { key: '68725be35e9ab1d6d2a2bacfff6d451bfa0da2ac', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: '324f8ad8810b41b78b8942a558c3ef6256aa7ce5', class: "flex items-center gap-4" }, h("slot", { key: 'a6ed4efd5805bd7ae28e5ceef503a3c5a9192830', name: "actions-left" })), h("div", { key: '76199ffcf372803b5723c7c997b0bab4eeaa5193', class: "flex items-center gap-4 self-end" }, h("slot", { key: '62f32fedba140b5b6e0ca6468a8b077c2184df3b', name: "actions-right" }), h("at-button", { key: 'b3c0bdfcd9d6e9641391c3a35f50ca46dc124d94', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), h("div", { key: '7b16cfbbe2b02dc369cb727cbf5befa8c98a8042', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'd4e914fc724411d5a1101eeaa4060069a8bd7382', class: "flex items-center gap-4" }, h("slot", { key: '2d442d80c56caefcbfe00538c8a88224bf2ae2b2', name: "actions-left" })), h("div", { key: '77b37e84dce32d786f06b9bde347129d8a414c0f', class: "flex items-center gap-4 self-end" }, h("slot", { key: 'f7fa395ac82fcf56f80f2e3a038dd5e2a1fe632e', name: "actions-right" }), h("at-button", { key: '78f71a501e3d097bb7265ad5a814df175ceda757', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), h("slot", { key: '57ea6356e0f2e990e6e3801576e6374deb786285', name: "footer" }), this.invalid && (h("span", { key: 'afb68dddd5ca6ca00d7fe2d72cd3d55631a5b49d', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), h("slot", { key: '543b4369bddc16ac8ab7801a1f0bb91ba4d87fbe', name: "footer" }), this.invalid && (h("span", { key: 'b7d4440b474b5d9e0fb8c162a4164dc8b0a193dc', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
@@ -196,7 +196,6 @@ export class AtPromptInputComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -211,11 +210,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -230,11 +229,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -249,11 +248,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -268,11 +267,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -288,11 +287,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "'Enter your message...'"
             },
             "max_height": {
                 "type": "number",
-                "attribute": "max_height",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -308,11 +307,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_height",
                 "defaultValue": "240"
             },
             "max_length": {
                 "type": "number",
-                "attribute": "max_length",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -328,11 +327,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_length",
                 "defaultValue": "2000"
             },
             "in_progress": {
                 "type": "boolean",
-                "attribute": "in_progress",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -348,11 +347,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "in_progress",
                 "defaultValue": "false"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -368,11 +367,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -388,6 +387,7 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };

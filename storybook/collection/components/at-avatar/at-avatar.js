@@ -63,7 +63,6 @@ export class AtAvatar {
         return {
             "src": {
                 "type": "string",
-                "attribute": "src",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -78,11 +77,11 @@ export class AtAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "src"
             },
             "alt": {
                 "type": "string",
-                "attribute": "alt",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -97,11 +96,11 @@ export class AtAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "alt"
             },
             "initials": {
                 "type": "string",
-                "attribute": "initials",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -116,11 +115,11 @@ export class AtAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "initials"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "AvatarSize",
@@ -142,11 +141,11 @@ export class AtAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'md'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "AvatarVariant",
@@ -168,6 +167,7 @@ export class AtAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'secondary'"
             }
         };

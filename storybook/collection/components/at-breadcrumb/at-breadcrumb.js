@@ -38,7 +38,6 @@ export class AtBreadcrumbComponent {
         return {
             "get_prefix": {
                 "type": "unknown",
-                "attribute": "get_prefix",
                 "mutable": false,
                 "complexType": {
                     "original": "(idx: number) => string",
@@ -57,7 +56,6 @@ export class AtBreadcrumbComponent {
             },
             "prefix_delimiter": {
                 "type": "string",
-                "attribute": "prefix_delimiter",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -73,11 +71,11 @@ export class AtBreadcrumbComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "prefix_delimiter",
                 "defaultValue": "''"
             },
             "values": {
                 "type": "unknown",
-                "attribute": "values",
                 "mutable": false,
                 "complexType": {
                     "original": "string[]",

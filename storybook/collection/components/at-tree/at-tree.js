@@ -71,7 +71,7 @@ export class AtTreeComponent {
         }
     }
     render() {
-        return (h("div", { key: '8d36a054d61e01c6773f117b622b0ee21e0130d5', class: "w-full" }, h("slot", { key: 'ee7b14a6e4286bbf0c12bae3f2ea3dab08aba8e0' }), this.flattenedItemList &&
+        return (h("div", { key: '18705ea035ca6ff091b021269f077b31e4d7bed6', class: "w-full" }, h("slot", { key: 'a3cd012004d619067d8281f072fc3505a716beff' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +
@@ -84,7 +84,6 @@ export class AtTreeComponent {
         return {
             "item_list": {
                 "type": "unknown",
-                "attribute": "item_list",
                 "mutable": true,
                 "complexType": {
                     "original": "TreeNode[]",
@@ -108,7 +107,6 @@ export class AtTreeComponent {
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonSize",
@@ -130,6 +128,7 @@ export class AtTreeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'sm'"
             }
         };

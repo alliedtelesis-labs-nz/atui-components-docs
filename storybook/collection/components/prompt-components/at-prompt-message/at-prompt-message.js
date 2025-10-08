@@ -209,7 +209,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '86f5a6d4f29c6de273fcd402fd639436de4f6cb1', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '0d1a5a9fd8583d88a368d900115ec5eb20e9c8e2', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ab5a758470afba91842a0d34edf81306cf4dee21', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'f29e5eaef7df42681d338e12f579c01aada1223d', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '7eb664b1022817c8fdc2d2006f0eb5a5b841c314', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '880f2d376009b30ce75e635788336fe195d72a84', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'df72f4f1c8d293ca4d49ee9ad8cd3c9875927446', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '5bc27a1aed36b498c9877bbdbd1f92f926fc90ad', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {
@@ -226,7 +226,6 @@ export class AtPromptMessage {
         return {
             "role": {
                 "type": "string",
-                "attribute": "role",
                 "mutable": false,
                 "complexType": {
                     "original": "PromptUserRole",
@@ -248,11 +247,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "role",
                 "defaultValue": "'user'"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -268,11 +267,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "content",
                 "defaultValue": "''"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -287,11 +286,11 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -307,11 +306,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "error": {
                 "type": "boolean",
-                "attribute": "error",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -327,11 +326,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error",
                 "defaultValue": "false"
             },
             "error_message": {
                 "type": "string",
-                "attribute": "error_message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -346,11 +345,11 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_message"
             },
             "score": {
                 "type": "number",
-                "attribute": "score",
                 "mutable": false,
                 "complexType": {
                     "original": "PromptResponseScore",
@@ -372,11 +371,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "score",
                 "defaultValue": "PromptResponseScore.NONE"
             },
             "enable_vote": {
                 "type": "boolean",
-                "attribute": "enable_vote",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -392,11 +391,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_vote",
                 "defaultValue": "false"
             },
             "enable_copy": {
                 "type": "boolean",
-                "attribute": "enable_copy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -412,11 +411,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_copy",
                 "defaultValue": "false"
             },
             "enable_edit": {
                 "type": "boolean",
-                "attribute": "enable_edit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -432,11 +431,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_edit",
                 "defaultValue": "false"
             },
             "message_id": {
                 "type": "string",
-                "attribute": "message_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -451,11 +450,11 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "message_id"
             },
             "response_animation": {
                 "type": "string",
-                "attribute": "response_animation",
                 "mutable": false,
                 "complexType": {
                     "original": "PromptResponseAnimation",
@@ -477,6 +476,7 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "response_animation",
                 "defaultValue": "'words'"
             }
         };

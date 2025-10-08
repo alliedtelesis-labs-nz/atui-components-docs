@@ -164,7 +164,6 @@ export class AtDialogComponent {
         return {
             "role": {
                 "type": "string",
-                "attribute": "role",
                 "mutable": false,
                 "complexType": {
                     "original": "'dialog' | 'alertdialog'",
@@ -180,11 +179,11 @@ export class AtDialogComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "role",
                 "defaultValue": "'dialog'"
             },
             "backdrop": {
                 "type": "boolean",
-                "attribute": "backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -200,11 +199,11 @@ export class AtDialogComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "backdrop",
                 "defaultValue": "true"
             },
             "close_backdrop": {
                 "type": "boolean",
-                "attribute": "close_backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -220,11 +219,11 @@ export class AtDialogComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "close_backdrop",
                 "defaultValue": "false"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -239,7 +238,8 @@ export class AtDialogComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }

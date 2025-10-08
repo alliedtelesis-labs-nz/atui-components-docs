@@ -125,7 +125,6 @@ export class AtCheckboxGroup {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -140,11 +139,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -159,11 +158,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -178,11 +177,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -197,11 +196,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -216,11 +215,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -235,11 +234,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -254,11 +253,11 @@ export class AtCheckboxGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "CheckboxOptions[]",
@@ -282,7 +281,6 @@ export class AtCheckboxGroup {
             },
             "layout": {
                 "type": "string",
-                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "CheckboxLayout",
@@ -304,11 +302,11 @@ export class AtCheckboxGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "layout",
                 "defaultValue": "'column'"
             },
             "value": {
                 "type": "unknown",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string[]",

@@ -31,7 +31,6 @@ export class AtFormLabelComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -46,11 +45,11 @@ export class AtFormLabelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -65,11 +64,11 @@ export class AtFormLabelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -84,11 +83,11 @@ export class AtFormLabelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "for": {
                 "type": "string",
-                "attribute": "for",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -103,7 +102,8 @@ export class AtFormLabelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "for"
             }
         };
     }

@@ -118,7 +118,6 @@ export class AtRadioGroup {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -133,11 +132,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -152,11 +151,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "layout": {
                 "type": "string",
-                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "RadioLayout",
@@ -178,11 +177,11 @@ export class AtRadioGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "layout",
                 "defaultValue": "'column'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -197,11 +196,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -216,11 +215,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -235,11 +234,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -254,11 +253,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -273,11 +272,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -292,11 +291,11 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "RadioOption[]",
@@ -320,7 +319,6 @@ export class AtRadioGroup {
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -335,7 +333,8 @@ export class AtRadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             }
         };
     }

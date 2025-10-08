@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Cod2-jIY.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CVZ0O9-b.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtPromptContainer = class {
@@ -208,7 +208,7 @@ const AtPromptContainer = class {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '961fbd6341fd254b1aeaeb8b74bf4ab84fc4a3b1', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'aecd464c8192b4ae2ff5237390b664f408689659', name: "prompt-container-header" }), h("div", { key: 'a381492a901ceb15909a9bdc3ada4fdf2a4c6378', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '302aa188e34d72f2977b72e11f97f5ebb46c2576', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '9b6d0330d0c912e3fc6b9fcbb85af38b60222665', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '5660156910fc40577a87153000243c9328516519', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '1862871591763b7ff4fb41c6210731a497162c95', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '9eb025fa36e0be3802185238c8a70ac188b07079', name: "prompt-container-header" }), h("div", { key: 'd333f9a9f6464dd7afa0e52f138e89dbfb103ed8', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '0943fdee900d4fca40fcdbd104b146e773cb3cf2', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '72e7a38632aea80ad396acd401488e428d05c22c', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'a6d4778705c618e020489236246ea0302a2d25ee', name: "prompt-container-footer" }))));
     }
 };
 

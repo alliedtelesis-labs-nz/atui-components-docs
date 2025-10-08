@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CA9vC8ae.js');
+var index = require('./index-DVvGgFNV.js');
 
 const AtTabSelector = class {
     constructor(hostRef) {
@@ -96,7 +96,7 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '8b4f8e5aa96543ad425bb1930aa3eab07e8bd7a3' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

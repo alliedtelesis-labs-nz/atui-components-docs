@@ -27,14 +27,13 @@ export class AtStatusBar {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '97e01ae3d24b6f56841111e906b9bb0a279fbec9', class: this.statusBarClass }, h("div", { key: '328b762e1b579128cda2d098bea37c462afa51b4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '144aa00f4eb0ca706c92ed1b4bfe25efd6f24135', class: this.statusBarClass }, h("div", { key: 'c7069d1108784bd888766a2b8d8c4796b57e6bec', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
     static get is() { return "at-status-bar"; }
     static get properties() {
         return {
             "status_bar": {
                 "type": "unknown",
-                "attribute": "status_bar",
                 "mutable": false,
                 "complexType": {
                     "original": "StatusBar[]",
@@ -59,7 +58,6 @@ export class AtStatusBar {
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "Size",
@@ -80,11 +78,11 @@ export class AtStatusBar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'sm'"
             },
             "disable_tooltip": {
                 "type": "boolean",
-                "attribute": "disable_tooltip",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -99,7 +97,8 @@ export class AtStatusBar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disable_tooltip"
             }
         };
     }

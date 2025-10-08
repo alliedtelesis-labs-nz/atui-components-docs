@@ -120,7 +120,6 @@ export class AtInputComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -135,11 +134,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "InputType",
@@ -161,11 +160,11 @@ export class AtInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'text'"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -180,11 +179,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -199,11 +198,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -218,11 +217,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "placeholder": {
                 "type": "any",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string | number",
@@ -238,11 +237,11 @@ export class AtInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -257,11 +256,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -276,11 +275,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "autocomplete": {
                 "type": "string",
-                "attribute": "autocomplete",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -296,11 +295,11 @@ export class AtInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autocomplete",
                 "defaultValue": "'on'"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -315,11 +314,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -335,11 +334,11 @@ export class AtInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "clearable": {
                 "type": "boolean",
-                "attribute": "clearable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -354,11 +353,11 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "clearable"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -373,7 +372,8 @@ export class AtInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             }
         };
     }

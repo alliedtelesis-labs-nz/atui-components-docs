@@ -1,0 +1,12 @@
+:host .content {
+  margin-bottom: 16px;
+}
+:host .hover-content {
+  font-weight: var(--token-font-weight-normal);
+}
+:host .hover-menu {
+  width: var(--token-width-menu);
+}
+:host .hover-menu[data-open] {
+  display: none;
+}

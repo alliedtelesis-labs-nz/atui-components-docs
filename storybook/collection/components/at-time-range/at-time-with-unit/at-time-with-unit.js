@@ -161,24 +161,23 @@ export class AtTimeWithUnitComponent {
             : newValue);
     }
     render() {
-        return (h("div", { key: '0f9fd3c90d4cb183ce0d36dd75f65e5db530ccc4', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.handleSubmit(), tabindex: 0 }, h("div", { key: 'f116463896c4f98dc0bccf14fd85d285e3ed16bd', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'a810248c3eb6c280385ff342c5f3152295fb8827', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '67d4b84c34a8bf150f36209f8139d3abb1ff4b49', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '530d69b1b61bf4c4879ec25cad592fb3c0ecf824', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: 'b57fe2de231f609a89464b22dbc9d23af77fd592', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
+        return (h("div", { key: 'c39144a58e5fc13dfdf52d384a0defee93154204', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.handleSubmit(), tabindex: 0 }, h("div", { key: 'ca761d69068f4ce9a7e6f40ab9d3fda65482e3be', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'a06b1f4eca47f9c5e884658724c0d8be677d360d', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '8eb803f7a0dcc3cf35f47be408f495cae5cf0f1e', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '900517ab5af470643b078b2472bdd48e8bd256b1', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: '79e18aed56ae6d3ebc0072e0f55cbfbe62091c4d', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => this.translations.ATUI.TIME[option])
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
-            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '2bb5f6ff21d941ca6f5fdc7a2b249da173b8fb7b', class: "flex flex-col gap-8 px-12" }, h("h5", { key: 'fe92137e5bcfe2e198c9cb8c51b9cc518e8a15de', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '5f93391ed245c85cd8b9a88d75700948d0e8bf88', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
+            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: 'e60ee62c09602089eb73122d0a51519118860c05', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '165b603b43e31cb947375f2a6c87e8ed14fce76d', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: 'bac68525eda5d741982b850c14727c524aff2a6b', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
             this.common_options.map((timerange) => (h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
                     event.stopPropagation();
                     if (event.key === 'Enter' ||
                         event.key === ' ')
                         this.updateSelectedRange(timerange);
-                }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '70292ad93d4d1292394774cd0327e476e2b16fdf', class: "flex justify-between p-8" }, h("at-button", { key: '71613190e21abf2773634ac1cf22cc00e72d0fa0', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '9c43fd250b55514230fb7df776102c98d8a5d307', class: "flex gap-8" }, h("at-button", { key: '9a4efee52f98a7ff73baeb6ce20fb24b20bb4bd7', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'caed0786e9d8f7aa58860431a87b018fbc588fd7', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
+                }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '7b7f37453c97b3d6e36122341dbf53c26b6fd3e7', class: "flex justify-between p-8" }, h("at-button", { key: 'b9b420a9f9fc02a59d7f974f9d8df3e22d318537', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '70d6d7e2e599335a670661f0d68e3eae196dfc27', class: "flex gap-8" }, h("at-button", { key: '522d38cbe023332db73132bf4dec73c21e7fb3e4', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '988e37059fea0989adde06486a1e4415fac4064c', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-time-with-unit"; }
     static get properties() {
         return {
             "units": {
                 "type": "unknown",
-                "attribute": "units",
                 "mutable": false,
                 "complexType": {
                     "original": "TimeUnit[]",
@@ -202,7 +201,6 @@ export class AtTimeWithUnitComponent {
             },
             "common_options": {
                 "type": "unknown",
-                "attribute": "common_options",
                 "mutable": false,
                 "complexType": {
                     "original": "TimePresets[]",
@@ -226,7 +224,6 @@ export class AtTimeWithUnitComponent {
             },
             "min_date": {
                 "type": "unknown",
-                "attribute": "min_date",
                 "mutable": false,
                 "complexType": {
                     "original": "Date",
@@ -250,7 +247,6 @@ export class AtTimeWithUnitComponent {
             },
             "min_seconds": {
                 "type": "number",
-                "attribute": "min_seconds",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -266,11 +262,11 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min_seconds",
                 "defaultValue": "60"
             },
             "max_seconds": {
                 "type": "number",
-                "attribute": "max_seconds",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -286,11 +282,11 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_seconds",
                 "defaultValue": "Number.MAX_SAFE_INTEGER"
             },
             "initial_selected_time": {
                 "type": "string",
-                "attribute": "initial_selected_time",
                 "mutable": false,
                 "complexType": {
                     "original": "TimeWithUnit | TimeRangeDisplay.ALL",
@@ -316,11 +312,11 @@ export class AtTimeWithUnitComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "initial_selected_time"
             },
             "custom_error_message": {
                 "type": "any",
-                "attribute": "custom_error_message",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -336,11 +332,11 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "custom_error_message",
                 "defaultValue": "null"
             },
             "show_all_time": {
                 "type": "boolean",
-                "attribute": "show_all_time",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -356,6 +352,7 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_all_time",
                 "defaultValue": "false"
             }
         };

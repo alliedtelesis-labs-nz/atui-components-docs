@@ -1,4 +1,4 @@
-import { A as AtChipList$1, d as defineCustomElement$1 } from './p-Cn08UTeQ.js';
+import { A as AtChipList$1, d as defineCustomElement$1 } from './p-BgiVKu1i.js';
 
 const AtChipList = AtChipList$1;
 const defineCustomElement = defineCustomElement$1;

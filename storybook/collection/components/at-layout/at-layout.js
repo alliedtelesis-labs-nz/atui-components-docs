@@ -36,7 +36,6 @@ export class AtLayout {
         return {
             "template": {
                 "type": "string",
-                "attribute": "template",
                 "mutable": false,
                 "complexType": {
                     "original": "Template",
@@ -58,11 +57,11 @@ export class AtLayout {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "template",
                 "defaultValue": "'master-detail'"
             },
             "overflow": {
                 "type": "boolean",
-                "attribute": "overflow",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -78,6 +77,7 @@ export class AtLayout {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "overflow",
                 "defaultValue": "true"
             }
         };

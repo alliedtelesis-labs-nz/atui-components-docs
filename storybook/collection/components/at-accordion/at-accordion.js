@@ -100,7 +100,6 @@ export class AtAccordionComponent {
         return {
             "items": {
                 "type": "unknown",
-                "attribute": "items",
                 "mutable": false,
                 "complexType": {
                     "original": "AccordionItem[]",
@@ -125,7 +124,6 @@ export class AtAccordionComponent {
             },
             "default_open": {
                 "type": "boolean",
-                "attribute": "default_open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -141,6 +139,7 @@ export class AtAccordionComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "default_open",
                 "defaultValue": "false"
             }
         };

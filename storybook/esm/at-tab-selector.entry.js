@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Cod2-jIY.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CVZ0O9-b.js';
 
 const AtTabSelector = class {
     constructor(hostRef) {
@@ -94,7 +94,7 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return h(Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
+        return h(Host, { key: '8b4f8e5aa96543ad425bb1930aa3eab07e8bd7a3' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

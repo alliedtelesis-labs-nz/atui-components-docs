@@ -1,4 +1,9 @@
-at-sidebar-trigger {
+.material-icons {
+  font-family: "Material Icons";
+  font-size: 16px;
+}
+
+:host {
   position: relative;
   display: flex;
   align-items: center;
@@ -12,7 +17,7 @@ at-sidebar-trigger {
   background-color: var(--token-sidebar-background);
   transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
-at-sidebar-trigger i.material-icons {
+:host i.material-icons {
   font-style: normal;
   display: flex;
   align-items: center;
@@ -20,7 +25,7 @@ at-sidebar-trigger i.material-icons {
   font-size: var(--token-font-size-icon-lg);
   z-index: 10;
 }
-at-sidebar-trigger div[data-name=focus-indicator] {
+:host .focus-indicator {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -32,12 +37,10 @@ at-sidebar-trigger div[data-name=focus-indicator] {
   opacity: 0;
   transition: background-color var(--token-transition-time-fast);
 }
-
-at-sidebar-trigger:hover div[data-name=focus-indicator] {
+:host:hover .focus-indicator {
   opacity: 0.1;
 }
-
-at-sidebar-trigger:focus-visible {
+:host:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent);
 }

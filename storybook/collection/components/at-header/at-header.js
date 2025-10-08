@@ -52,7 +52,6 @@ export class AtHeader {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "HeaderSizes",
@@ -74,11 +73,11 @@ export class AtHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'h1'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -93,11 +92,11 @@ export class AtHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "header_title": {
                 "type": "string",
-                "attribute": "header_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -112,11 +111,11 @@ export class AtHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "header_title"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -131,11 +130,11 @@ export class AtHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "subtitle"
             },
             "border": {
                 "type": "boolean",
-                "attribute": "border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -150,11 +149,11 @@ export class AtHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "border"
             },
             "padding": {
                 "type": "boolean",
-                "attribute": "padding",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -170,6 +169,7 @@ export class AtHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "padding",
                 "defaultValue": "true"
             }
         };

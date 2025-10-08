@@ -75,7 +75,6 @@ export class AtMessage {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "'error' | 'warning' | 'success' | 'info' | 'default'",
@@ -90,11 +89,11 @@ export class AtMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "type"
             },
             "impact": {
                 "type": "string",
-                "attribute": "impact",
                 "mutable": false,
                 "complexType": {
                     "original": "'low' | 'high'",
@@ -110,11 +109,11 @@ export class AtMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "impact",
                 "defaultValue": "'high'"
             },
             "message_title": {
                 "type": "string",
-                "attribute": "message_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -129,11 +128,11 @@ export class AtMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "message_title"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -148,11 +147,11 @@ export class AtMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -167,7 +166,8 @@ export class AtMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             }
         };
     }

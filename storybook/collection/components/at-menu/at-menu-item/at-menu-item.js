@@ -47,7 +47,6 @@ export class AtMenuitemComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -62,11 +61,11 @@ export class AtMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -81,11 +80,11 @@ export class AtMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "is_active": {
                 "type": "boolean",
-                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -101,11 +100,11 @@ export class AtMenuitemComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "is_active",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -121,6 +120,7 @@ export class AtMenuitemComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };

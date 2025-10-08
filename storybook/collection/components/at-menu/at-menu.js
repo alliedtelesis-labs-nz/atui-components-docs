@@ -374,7 +374,6 @@ export class AtMenu {
         return {
             "offset_x": {
                 "type": "number",
-                "attribute": "offset_x",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -390,11 +389,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset_x",
                 "defaultValue": "0"
             },
             "offset_y": {
                 "type": "number",
-                "attribute": "offset_y",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -410,11 +409,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset_y",
                 "defaultValue": "0"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "Position",
@@ -436,11 +435,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'bottom'"
             },
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "Align",
@@ -462,11 +461,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'start'"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -481,11 +480,11 @@ export class AtMenu {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "width"
             },
             "autoclose": {
                 "type": "boolean",
-                "attribute": "autoclose",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -501,11 +500,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoclose",
                 "defaultValue": "true"
             },
             "trigger": {
                 "type": "string",
-                "attribute": "trigger",
                 "mutable": false,
                 "complexType": {
                     "original": "OpenOn",
@@ -527,11 +526,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "trigger",
                 "defaultValue": "'click'"
             },
             "role": {
                 "type": "string",
-                "attribute": "role",
                 "mutable": false,
                 "complexType": {
                     "original": "AriaRole",
@@ -553,11 +552,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "role",
                 "defaultValue": "'menu'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -573,11 +572,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -592,7 +591,8 @@ export class AtMenu {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }

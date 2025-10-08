@@ -1,6 +1,8 @@
 'use strict';
 
-var index = require('./index-CA9vC8ae.js');
+var index = require('./index-DVvGgFNV.js');
+
+const atSidebarSubmenuCss = ".sc-at-sidebar-submenu-h .content.sc-at-sidebar-submenu{margin-bottom:16px}.sc-at-sidebar-submenu-h .hover-content.sc-at-sidebar-submenu{font-weight:var(--token-font-weight-normal)}.sc-at-sidebar-submenu-h .hover-menu.sc-at-sidebar-submenu{width:var(--token-width-menu)}.sc-at-sidebar-submenu-h .hover-menu[data-open].sc-at-sidebar-submenu{display:none}";
 
 const AtSidebarSubmenuComponent = class {
     /**
@@ -63,9 +65,10 @@ const AtSidebarSubmenuComponent = class {
         return this.is_active;
     }
     render() {
-        return (index.h(index.Host, { key: '88169a862294b97bcb1e6732a37c5ccac5c9c155' }, index.h("at-accordion-item", { key: '36633e3e3e07ccea832723c0d4ba9def1b89bfc7', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (index.h("at-sidebar-menuitem", { key: 'fae7c7b3a4b03bff85e5a8e8b56541643445b224', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (index.h("i", { key: 'c2efd7368a296a3b657ecae24b565c241268553b', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), index.h("div", { key: '24e57f407fec0c2726bee658628944e92eac4f65', class: "mb-16" }, index.h("slot", { key: '283d6a00b055de72a283486c0b1f14e664b3077f', name: "submenu-content" }))), index.h("at-menu", { key: '5f447cd98f4edf0fde86544fef3908357f92964e', class: this.isSidebarOpen ? 'hidden' : 'w-menu', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: this.isSidebarOpen ? '0' : 'w-menu' }, index.h("at-sidebar-menuitem", { key: 'f1e5f71c7f3c7b672eef281db420d6da5e11d4ff', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), index.h("div", { key: '425fc44b55ce800b4bb2a7409ce1c2c042535a82', class: "font-normal" }, index.h("slot", { key: 'd0b3256e83c45f12238e002db7ae40edf3868fec', name: "submenu-hover-content" })))));
+        return (index.h(index.Host, { key: '84e2b99ecc93130069f99ca71e8370242e56cc0a' }, index.h("at-accordion-item", { key: '24a4fb4b59ba9b01f5f39595ac8f68f202e1d3ca', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (index.h("at-sidebar-menuitem", { key: '52ec176699e64a684fe10d71d78fdd30ca864798', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (index.h("i", { key: '4cc8abf32b92b5ac71109d62834bd728a905c3a3', slot: "actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), index.h("div", { key: 'f1cf3b1ccf1d3cdabe15dda18a5260cd986459d4', class: "content" }, index.h("slot", { key: '88d704de25b8063d39d497e43437b9feacf0ee79', name: "submenu-content" }))), index.h("at-menu", { key: 'ca1562f390c6a34296151b3bf8d32e3f99f4e822', "data-open": this.isSidebarOpen, class: "hover-menu", "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start" }, index.h("at-sidebar-menuitem", { key: 'ffc0e266999abeb9f81a340b68f6731cd97ad1cc', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), index.h("div", { key: 'b8979c7e7e8f1835895da8accc6863e49319b28e', class: "submenu-hover-content" }, index.h("slot", { key: 'e9abc0ec3c029b84d76394405644254c3d34c5a7', name: "submenu-hover-content" })))));
     }
 };
+AtSidebarSubmenuComponent.style = atSidebarSubmenuCss;
 
 exports.at_sidebar_submenu = AtSidebarSubmenuComponent;
 //# sourceMappingURL=at-sidebar-submenu.entry.cjs.js.map

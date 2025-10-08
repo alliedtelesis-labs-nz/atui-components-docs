@@ -292,14 +292,13 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'e6052dac66eeb524f426fa02af842cd826accc0c', class: "relative" }, !this.trigger_id && (h("div", { key: '4cbe71c448fe7b1f9444aacbe7eb93b8fb9c7961', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'c5b301e2f5072b93ecd18cd6a2cfbde83ba4f80e', name: "tooltip-trigger" }))), h("div", { key: '0ecd652b4eacf627a02e9294da7acea2332f6637', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '7d61d795b486332e0111cb65da9c56f5d9067b6c' }))));
+        return (h(Host, { key: '4fba0b9aaec61b86d9d411a3c36e609f6a7ba8f6', class: "relative" }, !this.trigger_id && (h("div", { key: '285002d323849ae2e78b4eb23a9eb62a68374430', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '9e9c80550ad339e31e37310f1e1ffe4ad99eb324', name: "tooltip-trigger" }))), h("div", { key: 'b2bdb444e9d31e9a0c22a09e855408fdc2b615ce', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '83acd4c411a3b5248b436f790ba71b777c9fa41e' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
         return {
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "TooltipPosition",
@@ -321,11 +320,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'top'"
             },
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "TooltipAlign",
@@ -347,11 +346,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'center'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -367,11 +366,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -387,11 +386,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "'200px'"
             },
             "offset": {
                 "type": "number",
-                "attribute": "offset",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -407,11 +406,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset",
                 "defaultValue": "8"
             },
             "delay": {
                 "type": "number",
-                "attribute": "delay",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -427,11 +426,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "delay",
                 "defaultValue": "150"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -446,7 +445,8 @@ export class AtTooltip {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }

@@ -217,7 +217,6 @@ export class AtMultiSelectComponent {
         return {
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "SelectOption[]",
@@ -241,7 +240,6 @@ export class AtMultiSelectComponent {
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -257,11 +255,11 @@ export class AtMultiSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -277,11 +275,11 @@ export class AtMultiSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "hint_text",
                 "defaultValue": "''"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -297,11 +295,11 @@ export class AtMultiSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error_text",
                 "defaultValue": "''"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -317,11 +315,11 @@ export class AtMultiSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "info_text",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -337,11 +335,11 @@ export class AtMultiSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -356,11 +354,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -375,11 +373,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "clearable": {
                 "type": "boolean",
-                "attribute": "clearable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -394,11 +392,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "clearable"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -413,11 +411,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -432,11 +430,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "typeahead": {
                 "type": "boolean",
-                "attribute": "typeahead",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -451,11 +449,11 @@ export class AtMultiSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "typeahead"
             },
             "value": {
                 "type": "unknown",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string[]",

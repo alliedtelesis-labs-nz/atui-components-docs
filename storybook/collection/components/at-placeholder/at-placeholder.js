@@ -54,7 +54,6 @@ export class AtPlaceholderComponent {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "PlaceholderSize",
@@ -76,11 +75,11 @@ export class AtPlaceholderComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'md'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -95,11 +94,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "placeholder_title": {
                 "type": "string",
-                "attribute": "placeholder_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -114,11 +113,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "placeholder_title"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -133,11 +132,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             },
             "show_loading_spinner": {
                 "type": "boolean",
-                "attribute": "show_loading_spinner",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -152,7 +151,8 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "show_loading_spinner"
             }
         };
     }

@@ -45,7 +45,6 @@ export class AtListSelectorItem {
         return {
             "item_id": {
                 "type": "string",
-                "attribute": "item_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -60,11 +59,11 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_id"
             },
             "item_title": {
                 "type": "string",
-                "attribute": "item_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -79,11 +78,11 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_title"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -98,11 +97,11 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "subtitle"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -117,11 +116,11 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "item_prefix": {
                 "type": "string",
-                "attribute": "item_prefix",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -136,11 +135,11 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_prefix"
             },
             "has_border": {
                 "type": "boolean",
-                "attribute": "has_border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -156,11 +155,11 @@ export class AtListSelectorItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "has_border",
                 "defaultValue": "false"
             },
             "is_selected": {
                 "type": "boolean",
-                "attribute": "is_selected",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -175,7 +174,8 @@ export class AtListSelectorItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "is_selected"
             }
         };
     }

@@ -210,7 +210,6 @@ export class AtButtonComponent {
         return {
             "submit": {
                 "type": "boolean",
-                "attribute": "submit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -226,11 +225,11 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "submit",
                 "defaultValue": "false"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonType",
@@ -252,11 +251,11 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'primary'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonSize",
@@ -278,11 +277,11 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'lg'"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -297,11 +296,11 @@ export class AtButtonComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -317,11 +316,11 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -336,11 +335,11 @@ export class AtButtonComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "icon_after": {
                 "type": "string",
-                "attribute": "icon_after",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -355,11 +354,11 @@ export class AtButtonComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon_after"
             },
             "in_progress": {
                 "type": "boolean",
-                "attribute": "in_progress",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -375,11 +374,11 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "in_progress",
                 "defaultValue": "false"
             },
             "spinner_delay_ms": {
                 "type": "number",
-                "attribute": "spinner_delay_ms",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -395,6 +394,7 @@ export class AtButtonComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "spinner_delay_ms",
                 "defaultValue": "1000"
             }
         };

@@ -2,6 +2,9 @@ import { h, Host } from "@stencil/core";
 /**
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
+ *
+ * @slot label: Content displayed at the left of the menu item.
+ * @slot actions: Content displayed at the right of the menu item.
  */
 export class AtSidebarMenuitemComponent {
     /**
@@ -32,7 +35,7 @@ export class AtSidebarMenuitemComponent {
         }
     };
     render() {
-        return (h(Host, { key: 'c19b383e10dfc520e0dccdac283a41489820a350', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, class: this.depth ? `depth-${this.depth}` : '', onKeyDown: this.handleKeyDown }, h("div", { key: '4190dad43a75e01467a210f36f27c58fce4d7e73', class: "at-sidebar-menuitem__content" }, h("slot", { key: 'e195c5bd4e43544ef5610bbb2a440898c184311c', name: "menu-item-label" }), this.badge && (h("at-badge", { key: 'e8e07dcd24b355b19a1d01bd4bd34f2d0427ddec', "data-name": "menu-badge", role: "presentation", class: "at-sidebar-menuitem__badge", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: '5f6575395d88251d49f078736449a72f919b0fa0', class: "material-icons" }, this.icon)), this.label && (h("span", { key: '2dd5ab73ce39d94c2d51aa2bf5af3b6cf4063c03', part: "label", "data-name": "sidebar-menu-item-label", class: "at-sidebar-menuitem__label" }, this.label))), h("slot", { key: '58b823af32a890592d6db2c541101ced7b722416', name: "menu-item-actions" }), h("div", { key: 'c86c8fdb8e65a700a380b0aba49832d7615c9b3f', "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: '7a9a61fcc213598023ab55ecdac4ee1b14bb004e', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, class: this.depth ? `depth-${this.depth}` : '', onKeyDown: this.handleKeyDown }, h("div", { key: '902808cad59ab673434c5f07d86ab2bf97b2518e', class: "content", "data-name": "content" }, h("slot", { key: 'eb1d711faeb6f8b72760fff1a7bd905e1a23db64', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: 'ace8ff3863d8d3bad89c79d670f98074edc8ac67', class: "badge", "data-name": "badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (h("span", { key: 'e86769a3de2ee4c1b863836e8133939df38f6dea', class: "material-icons" }, this.icon)), this.label && (h("span", { key: '0ec77ad211130b42c59e41ce83b32b7b8a55606f', "data-name": "label", class: "label" }, this.label))), h("slot", { key: 'd1a8cae22312a119a1c4158c58ee5500fe1d50c4', name: "actions" }), h("div", { key: '9ad8214ff9e9461e3683f5f91a65765439e334df', class: "focus-visible:", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get originalStyleUrls() {
@@ -49,7 +52,6 @@ export class AtSidebarMenuitemComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -64,11 +66,11 @@ export class AtSidebarMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -83,11 +85,11 @@ export class AtSidebarMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "badge": {
                 "type": "string",
-                "attribute": "badge",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -102,11 +104,11 @@ export class AtSidebarMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "badge"
             },
             "depth": {
                 "type": "number",
-                "attribute": "depth",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -121,11 +123,11 @@ export class AtSidebarMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "depth"
             },
             "is_active": {
                 "type": "boolean",
-                "attribute": "is_active",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -140,7 +142,8 @@ export class AtSidebarMenuitemComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "is_active"
             }
         };
     }

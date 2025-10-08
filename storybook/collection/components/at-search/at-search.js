@@ -55,7 +55,6 @@ export class AtSearch {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -70,11 +69,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -89,11 +88,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -108,11 +107,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -127,11 +126,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "placeholder"
             },
             "model": {
                 "type": "string",
-                "attribute": "model",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -146,7 +145,8 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "model"
             }
         };
     }

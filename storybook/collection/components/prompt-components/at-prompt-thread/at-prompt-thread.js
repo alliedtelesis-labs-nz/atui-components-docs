@@ -170,14 +170,13 @@ export class AtPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: 'd431a29921ba7f3e049f51e3f81da762d3245339', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '7fe838b54db1a2a0a8649ce74da48bc73de6df25', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'ae75bf4bcd603773e52cdc40de6d9cfdbe7b85e1', name: "thread-messages" }))));
+        return (h(Host, { key: '38357fcbcde4615c093ff826746c777a405d131f', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'c5b94bc31ec98e5d2fabce5c7a15bcd244a0a0db', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '37abd519e1edd259ec02eb5e576fd4ecf0859324', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
         return {
             "messages": {
                 "type": "unknown",
-                "attribute": "messages",
                 "mutable": true,
                 "complexType": {
                     "original": "PromptMessage[]",
@@ -202,7 +201,6 @@ export class AtPromptThread {
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -218,11 +216,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "auto_scroll": {
                 "type": "boolean",
-                "attribute": "auto_scroll",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -238,11 +236,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto_scroll",
                 "defaultValue": "true"
             },
             "chatbot_title": {
                 "type": "string",
-                "attribute": "chatbot_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -258,11 +256,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "chatbot_title",
                 "defaultValue": "'Assistant'"
             },
             "enable_vote": {
                 "type": "boolean",
-                "attribute": "enable_vote",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -278,11 +276,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_vote",
                 "defaultValue": "true"
             },
             "enable_copy": {
                 "type": "boolean",
-                "attribute": "enable_copy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -298,11 +296,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_copy",
                 "defaultValue": "true"
             },
             "enable_edit": {
                 "type": "boolean",
-                "attribute": "enable_edit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -318,11 +316,11 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_edit",
                 "defaultValue": "false"
             },
             "response_animation": {
                 "type": "string",
-                "attribute": "response_animation",
                 "mutable": false,
                 "complexType": {
                     "original": "PromptResponseAnimation",
@@ -344,6 +342,7 @@ export class AtPromptThread {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "response_animation",
                 "defaultValue": "'words'"
             }
         };

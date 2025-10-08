@@ -15,7 +15,6 @@ export class AtAccordionTriggerComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -30,7 +29,8 @@ export class AtAccordionTriggerComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             }
         };
     }

@@ -79,7 +79,6 @@ export class AtCheckbox {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -94,11 +93,11 @@ export class AtCheckbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -113,11 +112,11 @@ export class AtCheckbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "option_id": {
                 "type": "string",
-                "attribute": "option_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -132,11 +131,11 @@ export class AtCheckbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "option_id"
             },
             "value": {
                 "type": "boolean",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -151,11 +150,11 @@ export class AtCheckbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -170,7 +169,8 @@ export class AtCheckbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             }
         };
     }

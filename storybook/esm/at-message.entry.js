@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-Cod2-jIY.js';
+import { r as registerInstance, h } from './index-CVZ0O9-b.js';
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',

@@ -73,7 +73,6 @@ export class AtBadgeComponent {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -88,11 +87,11 @@ export class AtBadgeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -107,11 +106,11 @@ export class AtBadgeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "BadgeType",
@@ -133,11 +132,11 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "BadgeSize",
@@ -159,11 +158,11 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'lg'"
             },
             "impact": {
                 "type": "string",
-                "attribute": "impact",
                 "mutable": false,
                 "complexType": {
                     "original": "BadgeContrast",
@@ -185,11 +184,11 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "impact",
                 "defaultValue": "'low'"
             },
             "rounded": {
                 "type": "boolean",
-                "attribute": "rounded",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -205,6 +204,7 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "rounded",
                 "defaultValue": "false"
             }
         };

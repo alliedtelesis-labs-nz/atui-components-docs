@@ -102,14 +102,13 @@ export class AtTabSelector {
         }
     }
     render() {
-        return h(Host, { key: '156c137aac446a204aa86488a479f9422731082b' }, this.checkLayoutAndRender());
+        return h(Host, { key: '8b4f8e5aa96543ad425bb1930aa3eab07e8bd7a3' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tab-selector"; }
     static get properties() {
         return {
             "tabs": {
                 "type": "unknown",
-                "attribute": "tabs",
                 "mutable": false,
                 "complexType": {
                     "original": "Tab[]",
@@ -134,7 +133,6 @@ export class AtTabSelector {
             },
             "layout": {
                 "type": "string",
-                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "Layout",
@@ -156,11 +154,11 @@ export class AtTabSelector {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "layout",
                 "defaultValue": "'horizontal'"
             },
             "hide_nav": {
                 "type": "boolean",
-                "attribute": "hide_nav",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -176,11 +174,11 @@ export class AtTabSelector {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "hide_nav",
                 "defaultValue": "false"
             },
             "active_tab": {
                 "type": "string",
-                "attribute": "active_tab",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -195,7 +193,8 @@ export class AtTabSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "active_tab"
             }
         };
     }

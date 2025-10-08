@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h } from './index-Cod2-jIY.js';
+import { r as registerInstance, g as getElement, h } from './index-CVZ0O9-b.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -46,7 +46,7 @@ const AtCheckboxHeaderComponent = class {
         }
     }
     render() {
-        return (h("at-checkbox", { key: '715609609364b9968b3b011d2e9cf5108bdac224', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: '2da59d3db27b4f42a2d9690ef65a5dc08935574c', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
 };
 

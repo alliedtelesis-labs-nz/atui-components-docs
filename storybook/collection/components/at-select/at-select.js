@@ -223,7 +223,6 @@ export class AtSelectComponent {
         return {
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -238,11 +237,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "SelectOption[]",
@@ -266,7 +265,6 @@ export class AtSelectComponent {
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -281,11 +279,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -300,11 +298,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -319,11 +317,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -338,11 +336,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "placeholder"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -357,11 +355,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -376,11 +374,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -395,11 +393,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -414,11 +412,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -433,11 +431,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "clearable": {
                 "type": "boolean",
-                "attribute": "clearable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -452,11 +450,11 @@ export class AtSelectComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "clearable"
             },
             "typeahead": {
                 "type": "boolean",
-                "attribute": "typeahead",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -472,11 +470,11 @@ export class AtSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "typeahead",
                 "defaultValue": "false"
             },
             "autoclose": {
                 "type": "boolean",
-                "attribute": "autoclose",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -492,6 +490,7 @@ export class AtSelectComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoclose",
                 "defaultValue": "true"
             }
         };

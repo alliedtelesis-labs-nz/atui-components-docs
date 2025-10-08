@@ -211,30 +211,29 @@ export class AtCustomTimeRangeComponent {
         }
     }
     render() {
-        return (h("div", { key: '69cde304a184f343d269fa2764c3a6abdb5fe7f3', class: "flex w-fit flex-col gap-8 border border-gray-300" }, h("h5", { key: '473ce409668d27fcee1cb97257aa5ba3eb636354', class: "text-h5 text-dark p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '9cd6d0a96d49ece743e87cd15de47e94bdc2ae3b', class: "flex flex-row gap-16 px-12" }, h("div", { key: 'd787548c23a6be0e38f626efcfbde2298eb4c5be', class: "flex-fill flex flex-col gap-8" }, h("div", { key: 'd8143f30d28d2391e856f27c05c48861a60e0c60' }, h("label", { key: '5dd980238e71256631a3cdcf9c30af88e94fab29' }, this.translations.ATUI.TIME.FROM_DATE), h("div", { key: '73d4fba20f509dc29210dcacf54859da9afcff2c' }, h("input", { key: '4faa31eabec0ba34dfe7edf1bd84b4f060712c99', type: "date", name: "fromDp", class: "cursor-pointer", min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), value: this.fromDate, onChange: (event) => {
+        return (h("div", { key: '667e9b2ff6d1a6068d23fa5f2e7fe14f7d8bf81c', class: "flex w-fit flex-col gap-8 border border-gray-300" }, h("h5", { key: '01c52ef06cf6592772a8b2755551fa2e050f15ff', class: "text-h5 text-dark p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '55c093ebe4b7232e52a1e225b16dbff031235c5d', class: "flex flex-row gap-16 px-12" }, h("div", { key: 'e5c90c05d8b660a8a6d8918eb3ce227012372c03', class: "flex-fill flex flex-col gap-8" }, h("div", { key: '25c054ea665fefce016d520f9b99bf9c636e2220' }, h("label", { key: 'ecde9f638953a9dcdd3c5bde1abeef8e79973403' }, this.translations.ATUI.TIME.FROM_DATE), h("div", { key: '0185d373ccbd4bd3dff603413933d5a263b4f23b' }, h("input", { key: 'ed40143649595177371f9b7a1bd99ecea7e632e1', type: "date", name: "fromDp", class: "cursor-pointer", min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), value: this.fromDate, onChange: (event) => {
                 this.from_date_value =
                     TimeDatePresentationUtil.buildDateFromStrings(event.target.value, this.fromTime);
                 this.setToDateAndTime(this.to_date_value);
-            } }))), this.can_set_time && (h("div", { key: '54d1d588456d8fa29cc7351f1307b56887b14590' }, h("label", { key: 'e3a3313a4bd703da1db587455048bab6c973dd47' }, this.translations.ATUI.TIME.FROM_TIME), h("div", { key: 'b5201abb30b5f6e3c784951219019df657203359' }, h("at-select", { key: '274a0f5a4e8c1cea8442c21e2c068d699c0cdbd5', options: this.getFromTimes, value: this.fromTime, onAtuiChange: (event) => {
+            } }))), this.can_set_time && (h("div", { key: 'f96e6251e732ce7095407f2bb1ce50761a2f7949' }, h("label", { key: '6a0c7bdd51066d71a1e9d2fd02bff30c0c25aa07' }, this.translations.ATUI.TIME.FROM_TIME), h("div", { key: '4cf20797570b57f59a0e338850a492ada989fd1b' }, h("at-select", { key: 'da9cced39f7a0f17435b1627e546e09bd526e5fc', options: this.getFromTimes, value: this.fromTime, onAtuiChange: (event) => {
                 this.from_date_value =
                     TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, event.detail);
-            } }))))), h("div", { key: '6495a2d15f7dfc160b8678c7f19b935885bf3a8d', class: "flex-fill flex flex-col gap-8" }, h("div", { key: '1e2f6f069a77b513b07f87caa5637cf41b4ebf4c' }, h("label", { key: 'c16e20c221287ec2667a97ba514b38fb8f8dffba' }, this.translations.ATUI.TIME.TO_DATE), h("div", { key: '9a176efc394871c86329fed099559b9e1fc17f88' }, h("input", { key: '64462f0db49329385c7267104b940fcbbcd4a8a8', type: "date", name: "toDp", class: "cursor-pointer", disabled: this.lock_end_date_to_now, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), value: this.toDate, ref: (el) => (this.toDatePickerEl = el), onChange: (event) => {
+            } }))))), h("div", { key: '4ebae73e2cca6688c59de6b2d498a6a51f58c0e3', class: "flex-fill flex flex-col gap-8" }, h("div", { key: '5c1d3ae1d64c95529152e66a327d5abeb836fbf6' }, h("label", { key: 'b3d65e6ca7094c7c27c9e5b672af9a5350aeffe8' }, this.translations.ATUI.TIME.TO_DATE), h("div", { key: 'bc6d9088853219f7b068e9d62800e922a2a5ce3e' }, h("input", { key: '9236ac75013b5b2265afcd1fb2703416346803b1', type: "date", name: "toDp", class: "cursor-pointer", disabled: this.lock_end_date_to_now, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), value: this.toDate, ref: (el) => (this.toDatePickerEl = el), onChange: (event) => {
                 this.to_date_value =
                     TimeDatePresentationUtil.buildDateFromStrings(event.target.value, this.toTime);
                 this.setToDateAndTime(this.to_date_value);
-            } }))), this.can_set_time && (h("div", { key: '86666586fd389a9714ba69b3d11ba3a0fa1c9076' }, h("label", { key: '47d0a51ffbf96c17d834e14831f4cc5ac33611da' }, this.translations.ATUI.TIME.TO_TIME), h("div", { key: '3a889ed2b3372d4420e9e57fa9f8ad5e4ddaa610' }, h("at-select", { key: '3dd1695e5367c9463d315fc5877a08fed34536a0', options: this.getToTimes, value: this.toTime, disabled: this.lock_end_date_to_now, ref: (el) => (this.toTimePickerEl = el), onAtuiChange: (event) => {
+            } }))), this.can_set_time && (h("div", { key: 'c905a21e108e278bfcd788631b818321f3dcf942' }, h("label", { key: '87fb1ef887c8b31517d0fef4ac4b6700b75556d4' }, this.translations.ATUI.TIME.TO_TIME), h("div", { key: '6eea60a90c77dcd725dd10982f915a6de88f9a95' }, h("at-select", { key: '22163e5891aaefc43c14a599ef1d0fc1a006a841', options: this.getToTimes, value: this.toTime, disabled: this.lock_end_date_to_now, ref: (el) => (this.toTimePickerEl = el), onAtuiChange: (event) => {
                 this.to_date_value =
                     TimeDatePresentationUtil.buildDateFromStrings(this.toDate, event.detail);
-            } })))))), h("div", { key: '235886c6f537ad5b5868b5e361f7a7e180260864', class: "align-center my-8 flex flex-row justify-between gap-8 rounded-md px-12" }, h("div", { key: 'd73a5828a786c0aa48ce640bb03a831c2257bda6', class: "flex flex-col" }, h("label", { key: '47e179e1f58020b3f6f3ca840ea5afbd36a567c3', class: "c-form__label" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '0edfdbfb1c1b9b3fc0c1540750f6e3f2527688ce', class: "text-med text-xs" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: '287f601a5f863bef2beedf9cf33ea3a79708d864', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), h("div", { key: 'ecc292679d75ebc06f44012b92836e7f484a6e26', class: "flex flex-row justify-between p-8" }, h("at-button", { key: 'fc8cc6b326ec3c9d3d78d8bcea91ad6108817d87', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onClick: () => this.clearSelection() }), h("div", { key: '5d65148a53de358bc04f1485e769be527552077a', class: "flex flex-row gap-8" }, h("at-button", { key: 'ccd7b324639d41f69d44d614bb6f256af8f911ce', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onClick: () => this.handleCancel() }), h("at-button", { key: 'a7fedb70a73e5996676683cf1b73e6b0ccac240d', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, onClick: () => this.handleSubmit() })))));
+            } })))))), h("div", { key: '36a10e319eb59565906804d256b9fb80379a91ab', class: "align-center my-8 flex flex-row justify-between gap-8 rounded-md px-12" }, h("div", { key: 'a4b95fa97114cba1707b6443f89da38ddd76157a', class: "flex flex-col" }, h("label", { key: '8049bfb62e841d964fb0b0992ff0235d4785a048', class: "c-form__label" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: 'ceabf440d26a654cd9a119a2191aa7874d65e028', class: "text-med text-xs" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: 'bfa92836c47decf9e732a719a6cc336c6f6ffb9c', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), h("div", { key: 'd453719328948798a3ccbfa828a7a8bffa818919', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '155b8245b34a135bff3e0785b1cfd53a020b7ea4', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onClick: () => this.clearSelection() }), h("div", { key: '0933ebf1a37d857d32b9a92dfef5044638587db2', class: "flex flex-row gap-8" }, h("at-button", { key: 'b1cf35aed1d42a68780c93f02b0bb0bd59718ea6', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onClick: () => this.handleCancel() }), h("at-button", { key: '40b2192bc034ddca6446cdf7584b062e9fa3d59b', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, onClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-custom-time-range"; }
     static get properties() {
         return {
             "can_set_time": {
                 "type": "boolean",
-                "attribute": "can_set_time",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -250,11 +249,11 @@ export class AtCustomTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "can_set_time",
                 "defaultValue": "true"
             },
             "min_seconds": {
                 "type": "number",
-                "attribute": "min_seconds",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -270,11 +269,11 @@ export class AtCustomTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min_seconds",
                 "defaultValue": "60"
             },
             "min_date": {
                 "type": "unknown",
-                "attribute": "min_date",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -298,7 +297,6 @@ export class AtCustomTimeRangeComponent {
             },
             "max_date": {
                 "type": "unknown",
-                "attribute": "max_date",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -322,7 +320,6 @@ export class AtCustomTimeRangeComponent {
             },
             "default_from_date": {
                 "type": "unknown",
-                "attribute": "default_from_date",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -345,7 +342,6 @@ export class AtCustomTimeRangeComponent {
             },
             "default_to_date": {
                 "type": "unknown",
-                "attribute": "default_to_date",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -368,7 +364,6 @@ export class AtCustomTimeRangeComponent {
             },
             "from_date_value": {
                 "type": "unknown",
-                "attribute": "from_date_value",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -391,7 +386,6 @@ export class AtCustomTimeRangeComponent {
             },
             "to_date_value": {
                 "type": "unknown",
-                "attribute": "to_date_value",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -414,7 +408,6 @@ export class AtCustomTimeRangeComponent {
             },
             "lock_end_date_to_now": {
                 "type": "boolean",
-                "attribute": "lock_end_date_to_now",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -430,6 +423,7 @@ export class AtCustomTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "lock_end_date_to_now",
                 "defaultValue": "false"
             }
         };

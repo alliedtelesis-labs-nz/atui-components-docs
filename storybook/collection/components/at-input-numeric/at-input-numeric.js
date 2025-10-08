@@ -166,7 +166,6 @@ export class AtInputNumericComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -181,11 +180,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -200,11 +199,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -219,11 +218,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -238,11 +237,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -258,11 +257,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -277,11 +276,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -296,11 +295,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -315,11 +314,11 @@ export class AtInputNumericComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -335,11 +334,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "min": {
                 "type": "number",
-                "attribute": "min",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -355,11 +354,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min",
                 "defaultValue": "0"
             },
             "max": {
                 "type": "number",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -375,11 +374,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max",
                 "defaultValue": "100"
             },
             "step": {
                 "type": "number",
-                "attribute": "step",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -395,11 +394,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "step",
                 "defaultValue": "1"
             },
             "show_buttons": {
                 "type": "boolean",
-                "attribute": "show_buttons",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -415,11 +414,11 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_buttons",
                 "defaultValue": "true"
             },
             "value": {
                 "type": "number",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -435,6 +434,7 @@ export class AtInputNumericComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "0"
             }
         };

@@ -1,4 +1,4 @@
-import { A as AtBreadcrumbItem$1, d as defineCustomElement$1 } from './p-DKGHF9Uj.js';
+import { A as AtBreadcrumbItem$1, d as defineCustomElement$1 } from './p-CRPsBaVR.js';
 
 const AtBreadcrumbItem = AtBreadcrumbItem$1;
 const defineCustomElement = defineCustomElement$1;

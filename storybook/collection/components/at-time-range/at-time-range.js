@@ -149,10 +149,10 @@ export class AtTimeRangeComponent {
         return output;
     }
     render() {
-        return (h(Host, { key: 'cafdb74d06beda3b6dc2f32cde119c04cdf5fad4', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'cd2e45babbd9d5372f47be10539b3c3a7fc9bbee', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+        return (h(Host, { key: 'f5489383a83318b935c043ff839930323255be0d', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'fcae26ef8383808289d639765b63f73f1200708a', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
-                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '42fd9f964d78c66e584a0e7d58da4722d0eb7881', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '16132ee5118ce5a75f08ec1af62dae8f11ab5222', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
@@ -160,13 +160,13 @@ export class AtTimeRangeComponent {
                     this.predefinedTimeRanges.length - 1) {
                     this.absoluteTimeMenuEl.focus();
                 }
-            } })), h("div", { key: '4e2b9d9a04dc8f45c9b6fd2f12ec9e0567cd6610', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '5af8a3014e711618bc371c0b677f27f7ce3b6a65', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+            } })), h("div", { key: '5acbad2c454064e264debd80f1734144f5dc2297', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: 'c7a1440a0cc2d046723e0bef3c054be43c8a648a', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: '828e9b05824e2f3b199876fc00840e62ac1dd716', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '44c6f552f22016cccf4eab00a334f9311f7e380e', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: 'cf56996ecb9e9c0b7340ec97e2ed1f781e66490d', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: 'eabb4b4a330a887a2853a015c3d9879004264189', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));
@@ -176,7 +176,6 @@ export class AtTimeRangeComponent {
         return {
             "selected_time_range": {
                 "type": "unknown",
-                "attribute": "selected_time_range",
                 "mutable": false,
                 "complexType": {
                     "original": "SelectedTimeRangeExtended",
@@ -201,7 +200,6 @@ export class AtTimeRangeComponent {
             },
             "range_limit": {
                 "type": "number",
-                "attribute": "range_limit",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -217,11 +215,11 @@ export class AtTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "range_limit",
                 "defaultValue": "7"
             },
             "presets": {
                 "type": "unknown",
-                "attribute": "presets",
                 "mutable": false,
                 "complexType": {
                     "original": "TimePresets[]",
@@ -245,7 +243,6 @@ export class AtTimeRangeComponent {
             },
             "enable_relative_time": {
                 "type": "boolean",
-                "attribute": "enable_relative_time",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -261,11 +258,11 @@ export class AtTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_relative_time",
                 "defaultValue": "true"
             },
             "custom_error_message": {
                 "type": "any",
-                "attribute": "custom_error_message",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -281,11 +278,11 @@ export class AtTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "custom_error_message",
                 "defaultValue": "null"
             },
             "show_all_time": {
                 "type": "boolean",
-                "attribute": "show_all_time",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -301,11 +298,11 @@ export class AtTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_all_time",
                 "defaultValue": "false"
             },
             "enable_range_limit": {
                 "type": "boolean",
-                "attribute": "enable_range_limit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -321,6 +318,7 @@ export class AtTimeRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_range_limit",
                 "defaultValue": "true"
             }
         };

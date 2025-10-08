@@ -81,7 +81,6 @@ export class AtLoadingComponent {
         return {
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingVariant",
@@ -103,11 +102,11 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'spinner'"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingType",
@@ -129,11 +128,11 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingSize",
@@ -155,11 +154,11 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'md'"
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -175,6 +174,7 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "text",
                 "defaultValue": "'Loading'"
             }
         };

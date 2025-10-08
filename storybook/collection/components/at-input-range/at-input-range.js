@@ -133,7 +133,6 @@ export class AtInputRangeComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -148,11 +147,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -167,11 +166,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -186,11 +185,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "suffix": {
                 "type": "string",
-                "attribute": "suffix",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -205,11 +204,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "suffix"
             },
             "warning_text": {
                 "type": "string",
-                "attribute": "warning_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -224,11 +223,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "warning_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -243,11 +242,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "invalid": {
                 "type": "boolean",
-                "attribute": "invalid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -262,11 +261,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "invalid"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -281,11 +280,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "readonly"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -300,11 +299,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -319,11 +318,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "value": {
                 "type": "number",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -338,11 +337,11 @@ export class AtInputRangeComponent {
                 },
                 "getter": true,
                 "setter": true,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "min": {
                 "type": "number",
-                "attribute": "min",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -358,11 +357,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min",
                 "defaultValue": "0"
             },
             "max": {
                 "type": "number",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -378,11 +377,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max",
                 "defaultValue": "100"
             },
             "step": {
                 "type": "number",
-                "attribute": "step",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -398,11 +397,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "step",
                 "defaultValue": "1"
             },
             "show_minmax": {
                 "type": "boolean",
-                "attribute": "show_minmax",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -418,11 +417,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_minmax",
                 "defaultValue": "true"
             },
             "show_ticks": {
                 "type": "boolean",
-                "attribute": "show_ticks",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -438,11 +437,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_ticks",
                 "defaultValue": "true"
             },
             "show_value": {
                 "type": "boolean",
-                "attribute": "show_value",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -458,11 +457,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_value",
                 "defaultValue": "true"
             },
             "show_input": {
                 "type": "boolean",
-                "attribute": "show_input",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -478,11 +477,11 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_input",
                 "defaultValue": "true"
             },
             "label_position": {
                 "type": "string",
-                "attribute": "label_position",
                 "mutable": false,
                 "complexType": {
                     "original": "InputPosition",
@@ -504,6 +503,7 @@ export class AtInputRangeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label_position",
                 "defaultValue": "'after'"
             }
         };

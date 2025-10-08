@@ -36,14 +36,13 @@ export class AtTableFilters {
         this.atChange.emit(this.selected.length ? this.selected : []);
     };
     render() {
-        return (this.col_defs && (h(Host, { key: 'ae720bc323423fd279af3171ccea27ba87521942', class: "flex items-start gap-8" }, h("div", { key: 'a5f1785c775656e515fb2ad65d15e8b4b689d95a', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, !this.selected.length && (h("p", { key: '109179ca64b8ccf9c6bc0da28101b18361460a9e', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("at-button", { key: '510f9e9ead96e3da96967c34743a544e875b38e9', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '7fc5ccb15bc5560a8f46d236c2c16649dc3382b2', class: "flex items-start gap-8" }, h("div", { key: 'bb845fe88f81a6cd38db094b5d78f18e41602908', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, !this.selected.length && (h("p", { key: '10f2397271e0864aa873245b48bdcfbbc56ef46b', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("at-button", { key: '190dae3ff9768d9f63bb313a42ce377753d761fb', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "at-table-filters"; }
     static get properties() {
         return {
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -67,7 +66,6 @@ export class AtTableFilters {
             },
             "selected": {
                 "type": "unknown",
-                "attribute": "selected",
                 "mutable": true,
                 "complexType": {
                     "original": "{ id: string; value: string }[]",

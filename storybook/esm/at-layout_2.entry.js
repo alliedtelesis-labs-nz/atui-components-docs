@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-Cod2-jIY.js';
+import { r as registerInstance, h, H as Host } from './index-CVZ0O9-b.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -79,7 +79,7 @@ const AtTab = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'fb79d712db848a9c94e1bf640c7146cdcc8896fe', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'f5c0b354ed230579ebe4283c3e4106fcaca05bd5', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '5c32bfeb728736295f4fb144426f0f494c90f773' }))));
+        return (h(Host, { key: 'c291afe3f9562d713c57d5840ed193cea77f50c2', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1f4d5cd4fc84609f0e3ea28135caaf2cdfd27551', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'e09f2465789f32779ca8b223294e2cc3cc042821' }))));
     }
 };
 

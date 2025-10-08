@@ -52,7 +52,6 @@ export class AtListItem {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -67,11 +66,11 @@ export class AtListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "item_prefix": {
                 "type": "string",
-                "attribute": "item_prefix",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -86,11 +85,11 @@ export class AtListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_prefix"
             },
             "item_title": {
                 "type": "string",
-                "attribute": "item_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -105,11 +104,11 @@ export class AtListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "item_title"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -124,11 +123,11 @@ export class AtListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "subtitle"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -143,11 +142,11 @@ export class AtListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "Size",
@@ -168,11 +167,11 @@ export class AtListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'sm'"
             },
             "border": {
                 "type": "boolean",
-                "attribute": "border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -188,6 +187,7 @@ export class AtListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border",
                 "defaultValue": "true"
             }
         };

@@ -203,14 +203,13 @@ export class AtPromptContainer {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '961fbd6341fd254b1aeaeb8b74bf4ab84fc4a3b1', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'aecd464c8192b4ae2ff5237390b664f408689659', name: "prompt-container-header" }), h("div", { key: 'a381492a901ceb15909a9bdc3ada4fdf2a4c6378', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '302aa188e34d72f2977b72e11f97f5ebb46c2576', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '9b6d0330d0c912e3fc6b9fcbb85af38b60222665', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '5660156910fc40577a87153000243c9328516519', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '1862871591763b7ff4fb41c6210731a497162c95', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '9eb025fa36e0be3802185238c8a70ac188b07079', name: "prompt-container-header" }), h("div", { key: 'd333f9a9f6464dd7afa0e52f138e89dbfb103ed8', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '0943fdee900d4fca40fcdbd104b146e773cb3cf2', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '72e7a38632aea80ad396acd401488e428d05c22c', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'a6d4778705c618e020489236246ea0302a2d25ee', name: "prompt-container-footer" }))));
     }
     static get is() { return "at-prompt-container"; }
     static get properties() {
         return {
             "messages": {
                 "type": "unknown",
-                "attribute": "messages",
                 "mutable": true,
                 "complexType": {
                     "original": "PromptMessage[]",
@@ -235,7 +234,6 @@ export class AtPromptContainer {
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -251,11 +249,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "'Type your message here...'"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -270,11 +268,11 @@ export class AtPromptContainer {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -290,11 +288,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -310,11 +308,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "show_new_thread_button": {
                 "type": "boolean",
-                "attribute": "show_new_thread_button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -330,11 +328,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_new_thread_button",
                 "defaultValue": "true"
             },
             "max_message_length": {
                 "type": "number",
-                "attribute": "max_message_length",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -350,11 +348,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_message_length",
                 "defaultValue": "2000"
             },
             "enable_vote": {
                 "type": "boolean",
-                "attribute": "enable_vote",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -370,11 +368,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_vote",
                 "defaultValue": "true"
             },
             "enable_copy": {
                 "type": "boolean",
-                "attribute": "enable_copy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -390,11 +388,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_copy",
                 "defaultValue": "true"
             },
             "enable_edit": {
                 "type": "boolean",
-                "attribute": "enable_edit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -410,11 +408,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_edit",
                 "defaultValue": "false"
             },
             "response_animation": {
                 "type": "string",
-                "attribute": "response_animation",
                 "mutable": false,
                 "complexType": {
                     "original": "PromptResponseAnimation",
@@ -436,6 +434,7 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "response_animation",
                 "defaultValue": "'words'"
             }
         };

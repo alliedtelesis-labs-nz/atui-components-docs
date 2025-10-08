@@ -70,7 +70,6 @@ export class AtListSelector {
         return {
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "ListSelectorItem[]",
@@ -95,7 +94,6 @@ export class AtListSelector {
             },
             "selected_item_id": {
                 "type": "string",
-                "attribute": "selected_item_id",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -110,11 +108,11 @@ export class AtListSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "selected_item_id"
             },
             "has_border": {
                 "type": "boolean",
-                "attribute": "has_border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -129,7 +127,8 @@ export class AtListSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "has_border"
             }
         };
     }

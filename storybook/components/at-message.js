@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h } from './p-BcFc6fJK.js';
+import { p as proxyCustomElement, H, h } from './p-B9UDFE-Z.js';
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',

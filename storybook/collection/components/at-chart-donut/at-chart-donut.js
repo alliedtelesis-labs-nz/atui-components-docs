@@ -226,7 +226,6 @@ export class AtChartDonut {
         return {
             "data": {
                 "type": "unknown",
-                "attribute": "data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        labels: string[];\n        datasets: ChartDataset[];\n    }",
@@ -250,7 +249,6 @@ export class AtChartDonut {
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -268,7 +266,6 @@ export class AtChartDonut {
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "Height",
@@ -290,11 +287,11 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "'md'"
             },
             "legend_format": {
                 "type": "unknown",
-                "attribute": "legend_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -318,7 +315,6 @@ export class AtChartDonut {
             },
             "tooltip_options": {
                 "type": "unknown",
-                "attribute": "tooltip_options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -337,7 +333,6 @@ export class AtChartDonut {
             },
             "plugins": {
                 "type": "unknown",
-                "attribute": "plugins",
                 "mutable": false,
                 "complexType": {
                     "original": "Plugin[]",
@@ -361,7 +356,6 @@ export class AtChartDonut {
             },
             "animations": {
                 "type": "unknown",
-                "attribute": "animations",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -379,7 +373,6 @@ export class AtChartDonut {
             },
             "color_palette": {
                 "type": "string",
-                "attribute": "color_palette",
                 "mutable": false,
                 "complexType": {
                     "original": "ChartColorPalette",
@@ -401,11 +394,11 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color_palette",
                 "defaultValue": "ChartColorPalette.CATEGORICAL"
             },
             "center_value": {
                 "type": "string",
-                "attribute": "center_value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -420,11 +413,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "center_value"
             },
             "center_text": {
                 "type": "string",
-                "attribute": "center_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -439,11 +432,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "center_text"
             },
             "cutout": {
                 "type": "number",
-                "attribute": "cutout",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -459,6 +452,7 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "cutout",
                 "defaultValue": "70"
             }
         };

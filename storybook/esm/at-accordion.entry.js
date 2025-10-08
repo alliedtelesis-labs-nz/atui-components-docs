@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-Cod2-jIY.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-CVZ0O9-b.js';
 
 const AtAccordionComponent = class {
     constructor(hostRef) {

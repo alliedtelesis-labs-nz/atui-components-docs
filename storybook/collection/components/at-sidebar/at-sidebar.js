@@ -64,12 +64,11 @@ export class AtSidebarComponent {
     };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: 'a56784c31b58e370c93033745a94934c9427e31d', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '7603b205f95a004bc8f1145b352755bd660023cf', class: "at-sidebar__backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'eb96151eac7bb1ca1015e71d3ef71197421bca75', "data-name": "sidebar-nav", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (h(Host, { key: '1ada3eae2e5ec35bc427b40714810a9e44bb1f54', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '6493e5124a5c8154c746ea64decc16693f96ff15', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'e24993b18b4291cd29b03d94797f7112fb6c3027', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false', part: "nav", class: `at-sidebar__nav collapse-${this.collapsible}` }, h("slot", { key: 'd7ca0f314a58e77ff6d0043e1354d960222861c1', name: "at-sidebar__header" }), h("div", { key: 'b95c08cbba51df77bfefcb355f5283ac378aa5d9', class: "at-sidebar__nav-content" }, h("slot", { key: 'af25dcfad1743406829da578751e63c087268737', name: "sidebar-content" })), h("div", { key: 'eec4047b19719a8778528de3319e99a0ca5e7962', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: '924e166a93c8c854b4798d28b5acb1a92c3d4051', name: "sidebar-footer" }))), h("div", { key: 'c502dc22bd3da68b9a43aec059c03adbf57bb2e4', class: "at-sidebar__content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '7ab5228f46a43622b47cd7c256a74fa3993ba24e', name: "page-content" }))));
+                : 'false' }, h("div", { key: '2011840180a84c6c672d3cccd5327d0a25c23149', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: 'a1a5574a9837f12ca9b9cc0f0a3c3039fda1ba4d', name: "sidebar-header" })), h("div", { key: 'd03363aef09af9d132cb91975387973bdd7b8db3', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '2143055625cba5659f0d284b063489351fc8c09c', name: "sidebar-content" })), h("div", { key: 'a0c3a87d887d65ccdd4b9f1d7f6b2e8aa8a6f56a', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: 'd9ae89e366d21b3c780e8135fe3d9578c8799435', name: "sidebar-footer" }))), h("div", { key: '40d4db81624a20b788fc0e1609601637d7bdde56', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '05c8aababfd8cb472865805f07af5027ebb94254', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
-    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["at-sidebar.scss"]
@@ -84,7 +83,6 @@ export class AtSidebarComponent {
         return {
             "side": {
                 "type": "string",
-                "attribute": "side",
                 "mutable": false,
                 "complexType": {
                     "original": "'left' | 'right'",
@@ -99,11 +97,11 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "side"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "Width",
@@ -125,11 +123,11 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "'menu'"
             },
             "collapsible": {
                 "type": "string",
-                "attribute": "collapsible",
                 "mutable": false,
                 "complexType": {
                     "original": "'offcanvas' | 'icon' | 'none'",
@@ -144,11 +142,11 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "collapsible"
             },
             "mode": {
                 "type": "string",
-                "attribute": "mode",
                 "mutable": false,
                 "complexType": {
                     "original": "'over' | 'push'",
@@ -163,11 +161,11 @@ export class AtSidebarComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "mode"
             },
             "backdrop": {
                 "type": "boolean",
-                "attribute": "backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -183,11 +181,11 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "backdrop",
                 "defaultValue": "false"
             },
             "default_open": {
                 "type": "boolean",
-                "attribute": "default_open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -203,6 +201,7 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "default_open",
                 "defaultValue": "false"
             }
         };

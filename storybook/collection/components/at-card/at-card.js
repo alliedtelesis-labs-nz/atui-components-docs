@@ -104,7 +104,6 @@ export class AtCardComponent {
         return {
             "card_title": {
                 "type": "string",
-                "attribute": "card_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -119,11 +118,11 @@ export class AtCardComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "card_title"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -138,11 +137,11 @@ export class AtCardComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "subtitle"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -157,11 +156,11 @@ export class AtCardComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             },
             "overflow_content": {
                 "type": "boolean",
-                "attribute": "overflow_content",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -177,11 +176,11 @@ export class AtCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "overflow_content",
                 "defaultValue": "false"
             },
             "sticky_header": {
                 "type": "boolean",
-                "attribute": "sticky_header",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -197,11 +196,11 @@ export class AtCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sticky_header",
                 "defaultValue": "true"
             },
             "sticky_footer": {
                 "type": "boolean",
-                "attribute": "sticky_footer",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -217,11 +216,11 @@ export class AtCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sticky_footer",
                 "defaultValue": "true"
             },
             "padding": {
                 "type": "boolean",
-                "attribute": "padding",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -237,11 +236,11 @@ export class AtCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "padding",
                 "defaultValue": "true"
             },
             "shadow": {
                 "type": "string",
-                "attribute": "shadow",
                 "mutable": false,
                 "complexType": {
                     "original": "'none' | 'sm' | 'lg'",
@@ -257,6 +256,7 @@ export class AtCardComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "shadow",
                 "defaultValue": "'none'"
             }
         };

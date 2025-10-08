@@ -1,19 +1,19 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-BcFc6fJK.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-B9UDFE-Z.js';
 import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-BI7XO4bL.js';
 import { h as hooks } from './p-BMuAbjcg.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$d } from './p-Dq-LpriF.js';
-import { d as defineCustomElement$c } from './p-P_SYZ95y.js';
-import { d as defineCustomElement$b } from './p-C-caTtBr.js';
-import { d as defineCustomElement$a } from './p-KD0m13Aq.js';
-import { d as defineCustomElement$9 } from './p-Co_VxbkM.js';
-import { d as defineCustomElement$8 } from './p-C_LpuejR.js';
-import { d as defineCustomElement$7 } from './p-CBwqQuQ7.js';
-import { d as defineCustomElement$6 } from './p-Lg8p3TGm.js';
-import { d as defineCustomElement$5 } from './p-Ddf5cSu6.js';
-import { d as defineCustomElement$4 } from './p-B5dIzFTX.js';
-import { d as defineCustomElement$3 } from './p-CnlSvDka.js';
-import { d as defineCustomElement$2 } from './p-BGi0-vGV.js';
+import { d as defineCustomElement$d } from './p-CG2_IoFa.js';
+import { d as defineCustomElement$c } from './p-BJdVIs1L.js';
+import { d as defineCustomElement$b } from './p-BdBxbPyK.js';
+import { d as defineCustomElement$a } from './p-BgyHlkr3.js';
+import { d as defineCustomElement$9 } from './p-WlpZZSTx.js';
+import { d as defineCustomElement$8 } from './p-DgCcAZ0b.js';
+import { d as defineCustomElement$7 } from './p-DORhZCum.js';
+import { d as defineCustomElement$6 } from './p-D48BsHhG.js';
+import { d as defineCustomElement$5 } from './p-jBxEW1ij.js';
+import { d as defineCustomElement$4 } from './p-CccnuxYm.js';
+import { d as defineCustomElement$3 } from './p-BqyyHlC8.js';
+import { d as defineCustomElement$2 } from './p-CMEk0jwv.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './p-DJyIoUiL.js';
 
 var AbreviatedTimeUnits;
@@ -185,10 +185,10 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
         return output;
     }
     render() {
-        return (h(Host, { key: 'cafdb74d06beda3b6dc2f32cde119c04cdf5fad4', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'cd2e45babbd9d5372f47be10539b3c3a7fc9bbee', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+        return (h(Host, { key: 'f5489383a83318b935c043ff839930323255be0d', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'fcae26ef8383808289d639765b63f73f1200708a', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
-                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '42fd9f964d78c66e584a0e7d58da4722d0eb7881', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '16132ee5118ce5a75f08ec1af62dae8f11ab5222', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
@@ -196,13 +196,13 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
                     this.predefinedTimeRanges.length - 1) {
                     this.absoluteTimeMenuEl.focus();
                 }
-            } })), h("div", { key: '4e2b9d9a04dc8f45c9b6fd2f12ec9e0567cd6610', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '5af8a3014e711618bc371c0b677f27f7ce3b6a65', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+            } })), h("div", { key: '5acbad2c454064e264debd80f1734144f5dc2297', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: 'c7a1440a0cc2d046723e0bef3c054be43c8a648a', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: '828e9b05824e2f3b199876fc00840e62ac1dd716', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '44c6f552f22016cccf4eab00a334f9311f7e380e', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: 'cf56996ecb9e9c0b7340ec97e2ed1f781e66490d', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: 'eabb4b4a330a887a2853a015c3d9879004264189', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));

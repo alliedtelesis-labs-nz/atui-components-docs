@@ -1,4 +1,4 @@
-import { A as AtTextImageCell$1, d as defineCustomElement$1 } from './p-DR11H-k4.js';
+import { A as AtTextImageCell$1, d as defineCustomElement$1 } from './p-CS8lsSMu.js';
 
 const AtTextImageCell = AtTextImageCell$1;
 const defineCustomElement = defineCustomElement$1;

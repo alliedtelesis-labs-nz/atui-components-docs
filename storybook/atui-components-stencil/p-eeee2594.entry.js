@@ -1,0 +1,2 @@
+import{r as e,h as a,H as s}from"./p-CVZ0O9-b.js";const r=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px}";const t=class{constructor(a){e(this,a)}render(){return a(s,{key:"5b09b31644a717a79c5abd418ae34a180227b61a",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"2de7091b6d224897bd0d55fc54b8158c40e381a1"}))}};t.style=r;export{t as at_sidebar_menu};
+//# sourceMappingURL=p-eeee2594.entry.js.map

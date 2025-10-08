@@ -52,14 +52,13 @@ export class AtTab {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'fb79d712db848a9c94e1bf640c7146cdcc8896fe', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: 'f5c0b354ed230579ebe4283c3e4106fcaca05bd5', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '5c32bfeb728736295f4fb144426f0f494c90f773' }))));
+        return (h(Host, { key: 'c291afe3f9562d713c57d5840ed193cea77f50c2', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1f4d5cd4fc84609f0e3ea28135caaf2cdfd27551', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'e09f2465789f32779ca8b223294e2cc3cc042821' }))));
     }
     static get is() { return "at-tab"; }
     static get properties() {
         return {
             "tab_id": {
                 "type": "string",
-                "attribute": "tab_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -74,11 +73,11 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "tab_id"
             },
             "tab_title": {
                 "type": "string",
-                "attribute": "tab_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -93,11 +92,11 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "tab_title"
             },
             "layout": {
                 "type": "string",
-                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "Layout",
@@ -119,11 +118,11 @@ export class AtTab {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "layout",
                 "defaultValue": "'horizontal'"
             },
             "is_active": {
                 "type": "boolean",
-                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -138,7 +137,8 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "is_active"
             }
         };
     }

@@ -103,7 +103,6 @@ export class AtToggleSwitchComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -118,11 +117,11 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -137,11 +136,11 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "label_position": {
                 "type": "string",
-                "attribute": "label_position",
                 "mutable": false,
                 "complexType": {
                     "original": "LabelPosition",
@@ -163,11 +162,11 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label_position",
                 "defaultValue": "'before'"
             },
             "show_label": {
                 "type": "boolean",
-                "attribute": "show_label",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -183,11 +182,11 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_label",
                 "defaultValue": "true"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -202,11 +201,11 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "disabled"
             },
             "value": {
                 "type": "boolean",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -222,6 +221,7 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "false"
             }
         };

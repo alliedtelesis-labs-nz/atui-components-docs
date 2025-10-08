@@ -1,6 +1,9 @@
 /**
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
+ *
+ * @slot label: Content displayed at the left of the menu item.
+ * @slot actions: Content displayed at the right of the menu item.
  */
 export declare class AtSidebarMenuitemComponent {
     /**

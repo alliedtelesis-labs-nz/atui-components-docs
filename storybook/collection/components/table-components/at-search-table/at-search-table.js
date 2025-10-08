@@ -303,14 +303,13 @@ export class AtSearchTable {
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '7d636cc6c35c6b8649145a89bbec429b64bb1c01' }, h("at-table-actions", { key: 'cabbdc51f82906bec51c59778b1233c03f3b47d5', ag_grid: this.agGrid }, h("div", { key: '0fd19c941744e2f09a78103be11e8a382ea6c4ce', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'f5e13c89f8a81cfbac9dce5397093349ea970f4e', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '7d5c07ab043e63775e93c068bb13baabe4c77345', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '55587ad0756d125bb19c1f921d77afb3b16e56e7', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'f30e77ab3c44d0585b795eaded09c6948dea766c', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'f9fa3bce9133ddceda4bcfcf59d28c9c99db1717', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '51ee39ba65ad6f21187edfd664b2fd2399f496ea', slot: "actions" }, h("slot", { key: 'e54a9e792adee83a3099765bc68769283a720256', name: "actions" }))), h("slot", { key: '23cdb5ebdae650be2df2dfeb310aa2f48f934873', name: "multi-select-actions" }), h("at-table", { key: 'e5c04bedb5cd13e3bd6547799c6b7b33ba6c5c04', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: '395e30d739d8fe27ddce5541443f2003d667963d' }, h("at-table-actions", { key: 'b62e36ceed43865e2ed920cd3d9de65574bddd52', ag_grid: this.agGrid }, h("div", { key: '04c97a39842a97d7d27159dda094a7e448a534fa', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '00da3fcaae27527a885f2b0f13cf1ee275d38080', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '4770b2b88502fbdcc4b3e79c5ba09f5010ac7a75', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '91f236c73422955cec60320d71ba8812501f5d95', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'db6ec8cb7096ca321e69ee1944e77e2b7773f51d', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '2685c378b123485c4a76bf250663f103035328d3', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '92ff72b7bf00f71af3478cc28d017a36b0c19dcd', slot: "actions" }, h("slot", { key: '2bf7dfd31c58829798967874e47c33daba410ef7', name: "actions" }))), h("slot", { key: 'c8aeb0ea961bfc89fe1ce107b845453a4fdcb480', name: "multi-select-actions" }), h("at-table", { key: 'c79366ef8e338d4574fa739a6a305549340ef709', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get is() { return "at-search-table"; }
     static get properties() {
         return {
             "table_data": {
                 "type": "unknown",
-                "attribute": "table_data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        items: any[];\n        total: number;\n    }",
@@ -328,7 +327,6 @@ export class AtSearchTable {
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -343,11 +341,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "search_label": {
                 "type": "string",
-                "attribute": "search_label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -362,11 +360,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_label"
             },
             "search_hint": {
                 "type": "string",
-                "attribute": "search_hint",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -381,11 +379,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_hint"
             },
             "search_info_tooltip": {
                 "type": "string",
-                "attribute": "search_info_tooltip",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -400,11 +398,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_info_tooltip"
             },
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -429,7 +427,6 @@ export class AtSearchTable {
             },
             "page_size": {
                 "type": "number",
-                "attribute": "page_size",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -445,11 +442,11 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "page_size",
                 "defaultValue": "10"
             },
             "hide_dropdown_filters": {
                 "type": "boolean",
-                "attribute": "hide_dropdown_filters",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -464,11 +461,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_dropdown_filters"
             },
             "hide_column_manager": {
                 "type": "boolean",
-                "attribute": "hide_column_manager",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -483,11 +480,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_column_manager"
             },
             "hide_export_menu": {
                 "type": "boolean",
-                "attribute": "hide_export_menu",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -502,11 +499,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_export_menu"
             },
             "use_custom_pagination": {
                 "type": "boolean",
-                "attribute": "use_custom_pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -522,11 +519,11 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             },
             "auto_size_columns": {
                 "type": "boolean",
-                "attribute": "auto_size_columns",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -542,6 +539,7 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto_size_columns",
                 "defaultValue": "true"
             }
         };

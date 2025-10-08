@@ -21,7 +21,6 @@ export class AtBreadcrumbItem {
         return {
             "is_active": {
                 "type": "boolean",
-                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -36,11 +35,11 @@ export class AtBreadcrumbItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "is_active"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -55,7 +54,8 @@ export class AtBreadcrumbItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             }
         };
     }

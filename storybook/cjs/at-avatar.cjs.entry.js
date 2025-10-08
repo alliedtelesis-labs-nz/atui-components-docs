@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CA9vC8ae.js');
+var index = require('./index-DVvGgFNV.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const avatarVariantsConfig = {

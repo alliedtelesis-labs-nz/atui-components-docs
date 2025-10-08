@@ -197,7 +197,6 @@ export class AtSidePanelComponent {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "SidePanelSize",
@@ -219,11 +218,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "size",
                 "defaultValue": "'xs'"
             },
             "panel_title": {
                 "type": "string",
-                "attribute": "panel_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -238,11 +237,11 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "panel_title"
             },
             "panel_subtitle": {
                 "type": "string",
-                "attribute": "panel_subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -257,11 +256,11 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "panel_subtitle"
             },
             "origin": {
                 "type": "string",
-                "attribute": "origin",
                 "mutable": false,
                 "complexType": {
                     "original": "SidePanelDirection",
@@ -283,11 +282,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "origin",
                 "defaultValue": "'right'"
             },
             "has_scrollbar": {
                 "type": "boolean",
-                "attribute": "has_scrollbar",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -303,11 +302,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "has_scrollbar",
                 "defaultValue": "true"
             },
             "has_close_button": {
                 "type": "boolean",
-                "attribute": "has_close_button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -323,11 +322,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "has_close_button",
                 "defaultValue": "true"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "SidePanelPosition",
@@ -349,11 +348,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "position",
                 "defaultValue": "'fixed'"
             },
             "backdrop": {
                 "type": "boolean",
-                "attribute": "backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -369,11 +368,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "backdrop",
                 "defaultValue": "false"
             },
             "close_backdrop": {
                 "type": "boolean",
-                "attribute": "close_backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -389,11 +388,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "close_backdrop",
                 "defaultValue": "false"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -408,7 +407,8 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }
