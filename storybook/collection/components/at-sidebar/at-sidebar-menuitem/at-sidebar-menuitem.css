@@ -1,10 +1,10 @@
-at-sidebar-menuitem .content, at-sidebar-menuitem .label {
+:host .content, :host .label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-at-sidebar-menuitem {
+:host {
   position: relative;
   display: flex;
   align-items: center;
@@ -17,13 +17,13 @@ at-sidebar-menuitem {
   font-size: var(--token-font-size-button);
   transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
-at-sidebar-menuitem .content {
+:host .content {
   display: flex;
   align-items: center;
   flex-grow: 1;
   gap: 8px;
 }
-at-sidebar-menuitem .badge {
+:host .badge {
   position: absolute;
   top: -8px;
   left: 22px;
@@ -32,20 +32,21 @@ at-sidebar-menuitem .badge {
   padding: 2px 2px;
   font-size: 10px;
 }
-at-sidebar-menuitem .label {
+:host .label {
   z-index: 10;
   font-weight: var(--token-font-weight-med);
 }
-at-sidebar-menuitem i.material-icons {
+:host .icon {
   font-family: "Material Icons";
   font-style: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--token-font-size-icon-xl);
+  line-height: 1;
+  font-size: var(--token-font-size-icon-lg) !important;
   z-index: 10;
 }
-at-sidebar-menuitem .focus-indicator {
+:host .focus-indicator {
   pointer-events: none;
   position: absolute;
   top: 0;
@@ -54,39 +55,37 @@ at-sidebar-menuitem .focus-indicator {
   height: 100%;
   z-index: 0;
   background-color: var(--token-sidebar-foreground);
+  border-radius: var(--token-border-radius-md);
   opacity: 0;
   transition: background-color var(--token-transition-time-fast);
 }
-at-sidebar-menuitem:hover .focus-indicator {
+:host:hover [data-name=focus-indicator] {
   opacity: 0.1;
 }
-at-sidebar-menuitem:focus-visible {
+:host:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 60%, transparent);
 }
-at-sidebar-menuitem[data-state=active] {
+:host[data-state=active] {
   background-color: var(--token-state-active-foreground);
 }
-at-sidebar-menuitem[data-state=active] div[data-name=focus-indicator] {
-  opacity: 0.1;
-}
-at-sidebar-menuitem.depth-0 {
+:host.depth-0 {
   font-weight: var(--token-font-weight-light);
 }
-at-sidebar-menuitem.depth-1 {
+:host.depth-1 {
   padding-left: 36px;
   font-weight: var(--token-font-weight-light);
 }
-at-sidebar-menuitem.depth-2 {
+:host.depth-2 {
   padding-left: 50px;
   font-weight: var(--token-font-weight-light);
 }
-at-sidebar-menuitem.depth-3 {
+:host.depth-3 {
   padding-left: 64px;
   font-weight: var(--token-font-weight-light);
 }
 
-[data-name=accordion-item-content] at-sidebar-menuitem .label,
-at-menu at-sidebar-menuitem .label {
-  font-weight: 400;
+:host(.submenu-hover-content) .label.sc-at-sidebar-menuitem {
+  color: var(--token-sidebar-foreground);
+  font-weight: var(--token-font-weight-normal);
 }

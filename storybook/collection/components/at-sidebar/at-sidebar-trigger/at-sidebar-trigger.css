@@ -17,12 +17,14 @@
   background-color: var(--token-sidebar-background);
   transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
-:host i.material-icons {
+:host i.icon {
+  font-family: "Material Icons";
   font-style: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--token-font-size-icon-lg);
+  line-height: 1;
+  font-size: var(--token-font-size-icon-lg) !important;
   z-index: 10;
 }
 :host .focus-indicator {

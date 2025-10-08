@@ -1,4 +1,4 @@
-import { A as AtTableComponent, d as defineCustomElement$1 } from './p-BY_uRESO.js';
+import { A as AtTableComponent, d as defineCustomElement$1 } from './p-BjdoBu6t.js';
 
 const AtTable = AtTableComponent;
 const defineCustomElement = defineCustomElement$1;

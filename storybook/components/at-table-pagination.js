@@ -2,8 +2,8 @@ import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-
 import { d as defineCustomElement$7 } from './p-CG2_IoFa.js';
 import { d as defineCustomElement$6 } from './p-WlpZZSTx.js';
 import { d as defineCustomElement$5 } from './p-DORhZCum.js';
-import { d as defineCustomElement$4 } from './p-D48BsHhG.js';
-import { d as defineCustomElement$3 } from './p-jBxEW1ij.js';
+import { d as defineCustomElement$4 } from './p-j-J-vMej.js';
+import { d as defineCustomElement$3 } from './p-CFIrAiXU.js';
 import { d as defineCustomElement$2 } from './p-CMEk0jwv.js';
 
 const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagination extends H {
