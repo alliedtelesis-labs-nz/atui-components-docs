@@ -63,6 +63,9 @@ at-sidebar.side-right {
 at-sidebar.mode-over .sidebar {
   position: absolute;
 }
+at-sidebar at-menu {
+  display: none;
+}
 at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
@@ -84,6 +87,9 @@ at-sidebar[data-state=collapsed] at-sidebar-menuitem > [data-name=label] {
   opacity: 0;
   transition: opacity 150ms ease 0s;
 }
+at-sidebar[data-state=collapsed] at-menu {
+  display: block;
+}
 at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
 at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] > at-sidebar-menuitem > [data-name=label] {
   opacity: 1;
@@ -104,13 +110,13 @@ at-sidebar at-sidebar-menuitem > [data-name=label] {
   transition: opacity 150ms ease 0.3s;
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
-  padding-left: 34px;
+  padding-left: 40px;
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
-  padding-left: 48px;
+  padding-left: 50px;
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
-  padding-left: 64px;
+  padding-left: 60px;
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem [data-name=label] {
   font-weight: var(--token-font-weight-normal);
