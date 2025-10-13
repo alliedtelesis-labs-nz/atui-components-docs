@@ -20,10 +20,6 @@ export class AtSidebarMenuitemComponent {
      */
     badge;
     /**
-     * Defines menuitem styling for font weight and indent 0-3  Default 0
-     */
-    depth;
-    /**
      * Will change style to indicate menuitem is active when set
      */
     is_active;
@@ -35,7 +31,7 @@ export class AtSidebarMenuitemComponent {
         }
     };
     render() {
-        return (h(Host, { key: '7dac43336ec92609066b9f6c40c2e5dc94a62f08', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, class: this.depth ? `depth-${this.depth}` : '', onKeyDown: this.handleKeyDown }, h("div", { key: '9aa8599e918ad44a286ef4ced7ca8d628f47c306', class: "content", "data-name": "content" }, h("slot", { key: '3b5ee34f5a789069a1f1b614029699f0071e2a57', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: 'c6c4382f0348e98b8c79e35cdf517d7364b13137', class: "badge", "data-name": "badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && h("i", { key: 'f7e8826b99a3c9fc826ba5903a4125d918a80e2a', class: "icon" }, this.icon), this.label && (h("span", { key: '29caf7781ebb7599485085e39c864325da2e5ac5', "data-name": "label", class: "label" }, this.label))), h("slot", { key: 'c72b6cef60da8bd184a0c010e0270a0df387e0d8', name: "actions" }), h("div", { key: 'af25ae5e0402bfecf72d0b34755e6a56323e2c14', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: '2c093d841f54af2d1dead8bb4c9aaa7283341e31', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: this.handleKeyDown }, h("div", { key: '0a9ae877c784e0b7d009718d2bca81c9798ff3df', class: "content", "data-name": "content" }, h("slot", { key: 'ce28dac5e06cc5c1ebdcb3748567ce7d5dc079b2', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: 'c16edce48139bc8b31310d094e86cb43e50f1a7b', class: "badge", "data-name": "badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && h("i", { key: 'af24b33fa4eed02b668e4bb5a27487c1493cce63', class: "icon" }, this.icon), this.label && (h("span", { key: 'a7bec70d45404917a01a2271e44e1c9d15b547c1', "data-name": "label", class: "label" }, this.label))), h("slot", { key: '0c80b90adacadc48ed984537fe419f35d86b6c21', name: "actions" }), h("div", { key: 'c3e5f50d5839713737a51d8a523947f591031d0b', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get encapsulation() { return "scoped"; }
@@ -107,25 +103,6 @@ export class AtSidebarMenuitemComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "badge"
-            },
-            "depth": {
-                "type": "number",
-                "mutable": false,
-                "complexType": {
-                    "original": "number",
-                    "resolved": "number",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Defines menuitem styling for font weight and indent 0-3  Default 0"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "depth"
             },
             "is_active": {
                 "type": "boolean",

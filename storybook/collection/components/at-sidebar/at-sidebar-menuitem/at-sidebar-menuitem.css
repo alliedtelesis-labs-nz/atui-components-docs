@@ -43,8 +43,9 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  font-size: var(--token-font-size-icon-lg) !important;
+  font-size: 22px;
   z-index: 10;
+  width: 24px;
 }
 :host .focus-indicator {
   pointer-events: none;
@@ -68,24 +69,4 @@
 }
 :host[data-state=active] {
   background-color: var(--token-state-active-foreground);
-}
-:host.depth-0 {
-  font-weight: var(--token-font-weight-light);
-}
-:host.depth-1 {
-  padding-left: 36px;
-  font-weight: var(--token-font-weight-light);
-}
-:host.depth-2 {
-  padding-left: 50px;
-  font-weight: var(--token-font-weight-light);
-}
-:host.depth-3 {
-  padding-left: 64px;
-  font-weight: var(--token-font-weight-light);
-}
-
-:host(.submenu-hover-content) .label.sc-at-sidebar-menuitem {
-  color: var(--token-sidebar-foreground);
-  font-weight: var(--token-font-weight-normal);
 }

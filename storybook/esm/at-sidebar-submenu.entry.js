@@ -1,6 +1,6 @@
 import { g as getElement, r as registerInstance, h, H as Host } from './index-CVZ0O9-b.js';
 
-const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}at-sidebar at-sidebar-submenu at-menu .sc-at-sidebar-menuitem-h .label.sc-at-sidebar-menuitem{color:var(--token-sidebar-foreground);font-weight:var(--token-font-weight-normal)}";
+const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
 
 const AtSidebarSubmenuComponent = class {
     /**
