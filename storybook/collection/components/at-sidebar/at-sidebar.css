@@ -150,6 +150,10 @@ at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger {
   justify-content: center;
 }
 
+at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i {
+  min-width: 24px;
+}
+
 at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper] {
   background-color: var(--token-sidebar-background);
 }

@@ -3,7 +3,7 @@ import { d as defineCustomElement$6 } from './p-BzQvN24E.js';
 import { d as defineCustomElement$5 } from './p-BdkRfxCr.js';
 import { d as defineCustomElement$4 } from './p-BmhjLSrf.js';
 import { d as defineCustomElement$3 } from './p-DHd1yjL8.js';
-import { d as defineCustomElement$2 } from './p-CoxqVNXm.js';
+import { d as defineCustomElement$2 } from './p-CpX5DBIv.js';
 
 const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
 
