@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variants = classlist.classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2', {

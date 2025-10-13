@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
+var index = require('./index-COiLLAKF.js');
 var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
 var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 /*
- Stencil Client Patch Browser v4.38.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v4.38.1 | MIT Licensed | https://stenciljs.com
  */
 
 var patchBrowser = () => {

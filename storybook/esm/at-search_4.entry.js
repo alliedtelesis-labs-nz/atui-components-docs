@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-CVZ0O9-b.js';
+import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-EP34iaAr.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtSearch = class {
@@ -72,7 +72,7 @@ const AtTableExportMenu = class {
         this.atChange.emit(event.target.id);
     }
     render() {
-        return (h("at-menu", { key: '5ce7545077a936f45aaa1844df66b0e70ae1c2b4', width: 'auto', align: "end" }, h("at-tooltip", { key: '942826b72bcd69cf39dcd21f14438f9c663b3689', slot: "menu-trigger", position: "top" }, h("at-button", { key: '73f0e9f59dfafcd775162a22b746ca0e8c9f5b64', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '362947112cf1b1b195dc97711caa1abe7e6c3f55' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: '6cd1a429d9bc6f1c0b371a208785305b5a04930c' }, h("at-button", { key: '376e3ddc749a332889829597222fa52358ca2f9b', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), h("at-button", { key: '7e085a3bf3787e2b281871edae4cd1beeab6dd38', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
+        return (h("at-menu", { key: 'a41b85dd4f6eb8ef8bebf166f143a70aa842ce51', width: '200px', align: "end" }, h("at-tooltip", { key: '192f633f5b0a60418b242f3229317959591d842f', slot: "menu-trigger", position: "top" }, h("at-button", { key: '83ff5e02abb4508cb13bb9ba1870b537d71bdc81', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '7ebf0723c588312269eab8f14719324ca4edcee1' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: 'bd1f95a828cc454d12695e30ff61139704ced1da' }, h("at-button", { key: 'a23082ee616cc1771831bec0507404bc7a6eecef', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), h("at-button", { key: '8066809ff9cabb481c521503cf01df6a38c6ad88', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
     }
 };
 

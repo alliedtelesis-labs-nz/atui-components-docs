@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
+var index = require('./index-COiLLAKF.js');
 
 const listItemVariants = {
     xs: 'min-h-16 text-sm',

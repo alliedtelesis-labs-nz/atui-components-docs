@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-B9UDFE-Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
 
 const atSidebarMenuCss = ".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px}";
 

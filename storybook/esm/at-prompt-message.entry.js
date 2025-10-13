@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-CVZ0O9-b.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { PromptResponseScore } from './index.js';

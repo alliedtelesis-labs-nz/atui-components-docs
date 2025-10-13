@@ -1,4 +1,4 @@
-import { g as getElement, r as registerInstance, h, H as Host } from './index-CVZ0O9-b.js';
+import { g as getElement, r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 
 const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const buttonVariantsConfig = {

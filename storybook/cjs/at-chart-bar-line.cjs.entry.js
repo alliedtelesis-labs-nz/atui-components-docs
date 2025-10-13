@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
-var chartColor = require('./chart-color-CyKHCJde.js');
+var index = require('./index-COiLLAKF.js');
+var chartColor = require('./chart-color-7KKxG0Bj.js');
 var timeDate_util = require('./time-date.util-D_xgQTJS.js');
 require('./moment-BU5SUH_o.js');
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-CVZ0O9-b.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-EP34iaAr.js';
 import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DLaek6ce.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-j8nVdcoJ.js';

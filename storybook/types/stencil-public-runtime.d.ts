@@ -338,8 +338,9 @@ export declare function forceUpdate(ref: any): void;
  * @returns the rendering ref
  */
 export declare function getRenderingRef(): any;
-export interface HTMLStencilElement extends HTMLElement {
+export interface HTMLStencilElement extends Omit<HTMLElement, 'autocorrect'> {
     componentOnReady(): Promise<this>;
+    autocorrect: 'on' | 'off';
 }
 /**
  * Schedules a DOM-write task. The provided callback will be executed

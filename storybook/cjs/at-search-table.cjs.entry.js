@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DVvGgFNV.js');
+var index = require('./index-COiLLAKF.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearchTable = class {

@@ -1,4 +1,4 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-B9UDFE-Z.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
 import { c as classlist } from './p-COG8_R0C.js';
 
 const avatarVariantsConfig = {

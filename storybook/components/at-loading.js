@@ -1,4 +1,4 @@
-import { A as AtLoadingComponent, d as defineCustomElement$1 } from './p-DORhZCum.js';
+import { A as AtLoadingComponent, d as defineCustomElement$1 } from './p-bn76tgB4.js';
 
 const AtLoading = AtLoadingComponent;
 const defineCustomElement = defineCustomElement$1;

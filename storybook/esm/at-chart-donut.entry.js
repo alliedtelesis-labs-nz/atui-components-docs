@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-CVZ0O9-b.js';
-import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color--d9I1YXP.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-CdyBNAVl.js';
 import './moment-BMuAbjcg.js';
 
 const TOKEN_TEXT_DARK = '#0f172a';
