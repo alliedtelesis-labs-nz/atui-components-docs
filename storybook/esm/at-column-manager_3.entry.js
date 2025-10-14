@@ -48093,7 +48093,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return h(Host, { key: '6bb83afd09782d10031c4cac95de62e3591f4022', class: "ag-theme-material" });
+        return h(Host, { key: 'b15750b0cfa38e371f08ac4412f7d4eac5fe7cc1', class: "ag-theme-material" });
     }
     static get watchers() { return {
         "table_data": ["handleTableDataChange"]

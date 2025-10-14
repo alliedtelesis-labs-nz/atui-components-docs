@@ -9,7 +9,7 @@ export declare class AtCheckboxHeaderComponent implements ICellRendererComp {
     isChecked: boolean;
     el: HTMLAtCheckboxHeaderElement;
     init(params: any): void;
-    getGui(): HTMLAtCheckboxHeaderElement;
+    getGui(): HTMLElement;
     refresh(params: any): boolean;
     setRowsValue(checked: boolean): void;
     private setDisabled;

@@ -160,7 +160,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '6bb83afd09782d10031c4cac95de62e3591f4022', class: "ag-theme-material" });
+        return h(Host, { key: 'b15750b0cfa38e371f08ac4412f7d4eac5fe7cc1', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -385,6 +385,10 @@ export class AtTableComponent {
                             "location": "import",
                             "path": "ag-grid-community",
                             "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions"
+                        },
+                        "HTMLElement": {
+                            "location": "global",
+                            "id": "global::HTMLElement"
                         }
                     },
                     "return": "Promise<GridApi<any>>"
