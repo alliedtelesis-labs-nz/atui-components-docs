@@ -8,9 +8,8 @@ export declare class AtTableExportMenu {
     translations: any;
     componentWillLoad(): Promise<void>;
     /**
-     * Emits id of the clicked button, either 'CSV' or 'PDF'.
+     * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
      */
     atChange: EventEmitter<string>;
-    clickHandler(event: Event): void;
     render(): any;
 }

@@ -65,14 +65,11 @@ const AtTableExportMenu = class {
         this.translations = await fetchTranslations(this.el);
     }
     /**
-     * Emits id of the clicked button, either 'CSV' or 'PDF'.
+     * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
      */
     atChange;
-    clickHandler(event) {
-        this.atChange.emit(event.target.id);
-    }
     render() {
-        return (h("at-menu", { key: 'a41b85dd4f6eb8ef8bebf166f143a70aa842ce51', width: '200px', align: "end" }, h("at-tooltip", { key: '192f633f5b0a60418b242f3229317959591d842f', slot: "menu-trigger", position: "top" }, h("at-button", { key: '83ff5e02abb4508cb13bb9ba1870b537d71bdc81', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '7ebf0723c588312269eab8f14719324ca4edcee1' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: 'bd1f95a828cc454d12695e30ff61139704ced1da' }, h("at-button", { key: 'a23082ee616cc1771831bec0507404bc7a6eecef', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV" }), h("at-button", { key: '8066809ff9cabb481c521503cf01df6a38c6ad88', type: "secondaryText", label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF" }))));
+        return (h("at-menu", { key: '1334afc74573706f7beb23b48f4b34dd7e2e3e08', width: "fit-content", align: "end" }, h("at-tooltip", { key: 'c6c7af0d33aea3ab4003afa7906c9c361234d26a', slot: "menu-trigger", position: "top" }, h("at-button", { key: 'bd1cec0e0ea5efd3703f1850753618051fad93e2', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '5a56258406c1a664026a6ef40044efc2cc6e0ad0' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: 'a616d3c9f56d00dc71517eda40e8632ceb8032c0' }, h("at-menu-item", { key: '9712e46905e3931bafd80280622c358783b11a9d', label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') }), h("at-menu-item", { key: '9fb8ee47838fc9e48a4941cf2700fc7ed1676419', label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') }))));
     }
 };
 
@@ -162,7 +159,7 @@ const AtTableFilters = class {
         this.atChange.emit(this.selected.length ? this.selected : []);
     };
     render() {
-        return (this.col_defs && (h(Host, { key: '257622b5f6799270ac74d564619d65ab57bd3624', class: "flex items-start gap-8" }, h("div", { key: '6616e3859ed9a1fd238c4f31db2b61da2d85ef58', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("at-button", { key: 'a2f781ae7b86b3556afec73d22d3a65fefe7afd2', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '257622b5f6799270ac74d564619d65ab57bd3624', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '5d7a3272465159c566c15bde21b1b933cd498118', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), h("at-button", { key: 'bff7d46a16256d5a24fe352137d84aa2417b463b', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
 };
 

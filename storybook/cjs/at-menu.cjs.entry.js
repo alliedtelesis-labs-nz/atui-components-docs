@@ -28,7 +28,7 @@ const AtMenu = class {
      * String representing the 'width' style of the menu element ('NUMpx').
      * To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
      */
-    width;
+    width = 'fit-content';
     /**
      * Prevent closing of menu when options are selected. Used for multi-selection controls.
      */
@@ -333,9 +333,9 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: '035a6c36eb09d23abc240efa4b5480489b244a62', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (index.h(index.Host, { key: '9acac01248d93d35cf5b3976d24617d3d9b88241', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, !this.trigger_id && (index.h("div", { key: '292086d7f40aa03142fd7afb99f9c5c1fc095495', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, !this.trigger_id && (index.h("div", { key: '893ec963ced8ba1072d43540e08170d90244ca9c', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -361,7 +361,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: 'ed799cc7f950b0f544affb15d790d3291cc6b310', name: "menu-trigger" }))), index.h("div", { key: 'e6b8224bcaaf65707592e2b0553e9666bb6022db', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: '55e6509009bf05de8f2712df71907e030ed99772', name: "menu-trigger" }))), index.h("div", { key: '5b15717c2b40eda7b8e961d58d6baad894aba941', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -373,7 +373,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '8a7772f04a3b45c6555a07b29021bc7654f7fdee' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '532ffe596295e90725604de6caac7e784f03028b' }))));
     }
     static get watchers() { return {
         "disabled": ["disabledChanged"]

@@ -1273,6 +1273,7 @@ export namespace Components {
         "trigger_id"?: string;
         /**
           * String representing the 'width' style of the menu element ('NUMpx'). To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
+          * @default 'fit-content'
          */
         "width"?: string;
     }
@@ -2783,6 +2784,10 @@ export interface AtMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtMenuElement;
 }
+export interface AtMenuItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtMenuItemElement;
+}
 export interface AtMultiSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtMultiSelectElement;
@@ -3438,7 +3443,18 @@ declare global {
         prototype: HTMLAtMenuCellElement;
         new (): HTMLAtMenuCellElement;
     };
+    interface HTMLAtMenuItemElementEventMap {
+        "atuiClick": AtEvent;
+    }
     interface HTMLAtMenuItemElement extends Components.AtMenuItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtMenuItemElementEventMap>(type: K, listener: (this: HTMLAtMenuItemElement, ev: AtMenuItemCustomEvent<HTMLAtMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtMenuItemElementEventMap>(type: K, listener: (this: HTMLAtMenuItemElement, ev: AtMenuItemCustomEvent<HTMLAtMenuItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtMenuItemElement: {
         prototype: HTMLAtMenuItemElement;
@@ -5497,6 +5513,7 @@ declare namespace LocalJSX {
         "trigger_id"?: string;
         /**
           * String representing the 'width' style of the menu element ('NUMpx'). To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
+          * @default 'fit-content'
          */
         "width"?: string;
     }
@@ -5525,6 +5542,10 @@ declare namespace LocalJSX {
           * Label to be displayed for the menu item
          */
         "label"?: string;
+        /**
+          * Emits when the button is clicked
+         */
+        "onAtuiClick"?: (event: AtMenuItemCustomEvent<AtEvent>) => void;
     }
     /**
      * @category Feedback
@@ -6622,7 +6643,7 @@ declare namespace LocalJSX {
      */
     interface AtTableExportMenu {
         /**
-          * Emits id of the clicked button, either 'CSV' or 'PDF'.
+          * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
          */
         "onAtChange"?: (event: AtTableExportMenuCustomEvent<string>) => void;
     }
