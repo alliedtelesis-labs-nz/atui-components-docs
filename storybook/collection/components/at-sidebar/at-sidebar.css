@@ -157,3 +157,7 @@ at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i {
 at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper] {
   background-color: var(--token-sidebar-background);
 }
+
+at-sidebar .sidebar-content [data-name=accordion-item-content] {
+  padding-bottom: 16px;
+}
