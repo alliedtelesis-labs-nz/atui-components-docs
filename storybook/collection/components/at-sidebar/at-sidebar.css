@@ -63,9 +63,6 @@ at-sidebar.side-right {
 at-sidebar.mode-over .sidebar {
   position: absolute;
 }
-at-sidebar[data-state=expanded] .sidebar-content at-menu {
-  display: none;
-}
 at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
@@ -160,4 +157,8 @@ at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper] {
 
 at-sidebar .sidebar-content [data-name=accordion-item-content] {
   padding-bottom: 16px;
+}
+
+at-sidebar[data-state=expanded] .sidebar-content > at-menu {
+  display: none;
 }
