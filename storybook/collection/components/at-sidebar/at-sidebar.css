@@ -63,7 +63,7 @@ at-sidebar.side-right {
 at-sidebar.mode-over .sidebar {
   position: absolute;
 }
-at-sidebar at-menu {
+at-sidebar[data-state=expanded] .sidebar-content at-menu {
   display: none;
 }
 at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
