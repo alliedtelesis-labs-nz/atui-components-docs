@@ -103,6 +103,9 @@ export class AtTableComponent {
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
+            autoSizeStrategy: {
+                type: 'fitGridWidth',
+            },
             components: AtTableComponentsConfigs.getFrameworkComponents(),
             onGridSizeChanged: (params) => {
                 if (this.auto_size_columns) {
@@ -160,7 +163,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: 'b15750b0cfa38e371f08ac4412f7d4eac5fe7cc1', class: "ag-theme-material" });
+        return h(Host, { key: '71e4a63491ab1c377a6bd3edba23b8efec8094fc', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
