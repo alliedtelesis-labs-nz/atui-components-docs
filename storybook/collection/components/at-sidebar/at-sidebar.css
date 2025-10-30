@@ -159,7 +159,3 @@ at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper] {
 at-sidebar .sidebar-content [data-name=accordion-item-content] {
   padding-bottom: 16px;
 }
-
-at-sidebar[data-state=expanded] .sidebar-content > at-menu {
-  display: none;
-}
