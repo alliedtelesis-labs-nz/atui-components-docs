@@ -7,8 +7,9 @@
   }
 }
 dialog.backdrop::backdrop {
+  margin: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s ease;
   animation: fadeIn 0.3s ease forwards;
   transition: opacity var(--token-transition-time) ease-in-out allow-discrete;
 }
@@ -23,11 +24,12 @@ dialog.backdrop::backdrop {
 :host dialog {
   position: fixed;
   inset: 0;
-  margin: auto;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: calc(100dvh - 48px);
+  min-width: 100vw;
+  min-height: 100vh;
   overflow: hidden;
   border: 0;
   padding: 0;
@@ -35,14 +37,14 @@ dialog.backdrop::backdrop {
   z-index: var(--token-z-index-modal);
   transform-origin: center;
   opacity: 0;
-  scale: 0.95;
   box-shadow: var(--token-shadow-3);
-  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
   visibility: hidden;
+  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 :host dialog.backdrop {
   display: flex;
-  max-height: calc(100dvh - 48px);
+  width: 100vw;
+  height: 100vh;
 }
 :host dialog[open] {
   translate: 0 0;
@@ -54,11 +56,9 @@ dialog.backdrop::backdrop {
 @starting-style {
   :host dialog[open] {
     opacity: 0;
-    scale: 1.15;
   }
 }
 :host dialog:not([open]) {
-  scale: 0.95;
   opacity: 0;
   visibility: hidden;
 }
