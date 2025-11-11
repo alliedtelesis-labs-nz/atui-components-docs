@@ -46,7 +46,7 @@ const AtSidebarTriggerComponent = /*@__PURE__*/ proxyCustomElement(class AtSideb
         this.isOpen = event.detail;
     };
     render() {
-        return (h(Host, { key: '764254e2411fbb0aa5a275c9be1621b1a09985c3', role: "button", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '20c531e52e9ec546e933b50f6c024a18f5efa46d', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: '050ce5f2511b99f1920b795c96e1111c1352064d', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: 'ff389159a6fa828dcc29424187b065e1a6aafb2d', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '64782a9d4e350ee61d9b1a2f332b3aadda8a2043', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: 'd6071ff9be0da2cae46c3d86c73f885efa75fc83', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get style() { return atSidebarTriggerCss; }
 }, [258, "at-sidebar-trigger", {
