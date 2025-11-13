@@ -1,4 +1,4 @@
-import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-aYeonhNr.js';
+import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-CApt58oO.js';
 
 const AtSidebarMenuitem = AtSidebarMenuitemComponent;
 const defineCustomElement = defineCustomElement$1;

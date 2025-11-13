@@ -1,3 +1,5 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
+import { AtEvent } from '../../../types/events';
 /**
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
@@ -22,7 +24,12 @@ export declare class AtSidebarMenuitemComponent {
      * Will change style to indicate menuitem is active when set
      */
     is_active?: boolean;
+    /**
+     * Emits when the menu item is clicked
+     */
+    atuiClick: EventEmitter<AtEvent>;
     el: HTMLAtSidebarMenuitemElement;
+    handleClick(event: Event): void;
     private handleKeyDown;
     render(): any;
 }

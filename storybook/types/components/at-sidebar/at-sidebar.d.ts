@@ -38,7 +38,9 @@ export declare class AtSidebarComponent {
      * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
      */
     atuiSidebarChange: EventEmitter;
+    el: HTMLAtSidebarElement;
     componentWillLoad(): void;
+    componentDidLoad(): void;
     /**
      * Toggles the sidebar's open state.
      */
@@ -49,5 +51,9 @@ export declare class AtSidebarComponent {
      */
     getIsOpen(): Promise<boolean>;
     private handleBackdropClick;
+    /**
+    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
+     */
+    private handleMenuItemClick;
     render(): any;
 }

@@ -38,11 +38,15 @@ const AtSidebarComponent = class {
      * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
      */
     atuiSidebarChange;
+    get el() { return index.getElement(this); }
     componentWillLoad() {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
         this.atuiSidebarChange.emit(this.isOpen);
+    }
+    componentDidLoad() {
+        this.el.addEventListener('atuiClick', this.handleMenuItemClick);
     }
     /**
      * Toggles the sidebar's open state.
@@ -63,11 +67,19 @@ const AtSidebarComponent = class {
             this.toggleSidebar();
         }
     };
+    /**
+    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
+     */
+    handleMenuItemClick = () => {
+        if (this.collapsible === 'offcanvas' && this.isOpen) {
+            this.toggleSidebar();
+        }
+    };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (index.h(index.Host, { key: '1ada3eae2e5ec35bc427b40714810a9e44bb1f54', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (index.h("div", { key: '6493e5124a5c8154c746ea64decc16693f96ff15', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), index.h("nav", { key: 'e24993b18b4291cd29b03d94797f7112fb6c3027', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (index.h(index.Host, { key: 'fd68a53a74dc05eaf45dd595f2de468bead19fb8', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (index.h("div", { key: '4b417bc44a7615fc79476321c4511d1194526c63', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), index.h("nav", { key: '87d2af01a0ba18703145fe09666818f6bc88cc77', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false' }, index.h("div", { key: '2011840180a84c6c672d3cccd5327d0a25c23149', class: "sidebar-header", "data-name": "sidebar-header" }, index.h("slot", { key: 'a1a5574a9837f12ca9b9cc0f0a3c3039fda1ba4d', name: "sidebar-header" })), index.h("div", { key: 'd03363aef09af9d132cb91975387973bdd7b8db3', class: "sidebar-content", "data-name": "sidebar-content" }, index.h("slot", { key: '2143055625cba5659f0d284b063489351fc8c09c', name: "sidebar-content" })), index.h("div", { key: 'a0c3a87d887d65ccdd4b9f1d7f6b2e8aa8a6f56a', class: `sidebar-footer`, "data-name": "sidebar-footer" }, index.h("slot", { key: 'd9ae89e366d21b3c780e8135fe3d9578c8799435', name: "sidebar-footer" }))), index.h("div", { key: '40d4db81624a20b788fc0e1609601637d7bdde56', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, index.h("slot", { key: '05c8aababfd8cb472865805f07af5027ebb94254', name: "page-content" }))));
+                : 'false' }, index.h("div", { key: 'b3d2b5a048853a5b12003f96c425832f9d6427b4', class: "sidebar-header", "data-name": "sidebar-header" }, index.h("slot", { key: 'f127a52a33883df93fecdda3831d2f2120c91f59', name: "sidebar-header" })), index.h("div", { key: 'd8a3b62cc5d40061b9a9c00269d779ee7c8c2422', class: "sidebar-content", "data-name": "sidebar-content" }, index.h("slot", { key: '66fc269544b3c47385dd8c42a2d6b55cdf516922', name: "sidebar-content" })), index.h("div", { key: '6213380b28458924e9a141234260155513f8a61e', class: `sidebar-footer`, "data-name": "sidebar-footer" }, index.h("slot", { key: '0e511f22eafe54c47527e1548baa38a13da8112d', name: "sidebar-footer" }))), index.h("div", { key: 'be775657c31bec571ee56c0573cd5acf095af13a', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, index.h("slot", { key: '11b231be8305e4bf4e0150cdd8bc4b8e91e0e957', name: "page-content" }))));
     }
 };
 AtSidebarComponent.style = atSidebarCss;

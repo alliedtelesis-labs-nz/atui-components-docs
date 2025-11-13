@@ -2832,6 +2832,10 @@ export interface AtSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSidebarElement;
 }
+export interface AtSidebarMenuitemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtSidebarMenuitemElement;
+}
 export interface AtTabSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtTabSelectorElement;
@@ -3780,11 +3784,22 @@ declare global {
         prototype: HTMLAtSidebarMenuElement;
         new (): HTMLAtSidebarMenuElement;
     };
+    interface HTMLAtSidebarMenuitemElementEventMap {
+        "atuiClick": AtEvent;
+    }
     /**
      * @category Navigation
      * @description A sidebar menu item component for the sidebar.
      */
     interface HTMLAtSidebarMenuitemElement extends Components.AtSidebarMenuitem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSidebarMenuitemElementEventMap>(type: K, listener: (this: HTMLAtSidebarMenuitemElement, ev: AtSidebarMenuitemCustomEvent<HTMLAtSidebarMenuitemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSidebarMenuitemElementEventMap>(type: K, listener: (this: HTMLAtSidebarMenuitemElement, ev: AtSidebarMenuitemCustomEvent<HTMLAtSidebarMenuitemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtSidebarMenuitemElement: {
         prototype: HTMLAtSidebarMenuitemElement;
@@ -6370,6 +6385,10 @@ declare namespace LocalJSX {
           * Label to be displayed for the menu item
          */
         "label"?: string;
+        /**
+          * Emits when the menu item is clicked
+         */
+        "onAtuiClick"?: (event: AtSidebarMenuitemCustomEvent<AtEvent>) => void;
     }
     /**
      * @category Navigation

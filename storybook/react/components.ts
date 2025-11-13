@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -753,14 +753,14 @@ export const AtSidebarMenu: StencilReactComponent<AtSidebarMenuElement, AtSideba
     defineCustomElement: defineAtSidebarMenu
 });
 
-type AtSidebarMenuitemEvents = NonNullable<unknown>;
+type AtSidebarMenuitemEvents = { onAtuiClick: EventName<AtSidebarMenuitemCustomEvent<AtEvent>> };
 
 export const AtSidebarMenuitem: StencilReactComponent<AtSidebarMenuitemElement, AtSidebarMenuitemEvents> = /*@__PURE__*/ createComponent<AtSidebarMenuitemElement, AtSidebarMenuitemEvents>({
     tagName: 'at-sidebar-menuitem',
     elementClass: AtSidebarMenuitemElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtSidebarMenuitemEvents,
+    events: { onAtuiClick: 'atuiClick' } as AtSidebarMenuitemEvents,
     defineCustomElement: defineAtSidebarMenuitem
 });
 

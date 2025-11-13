@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 
 const atSidebarCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}at-sidebar{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar .backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeIn 300ms forwards}at-sidebar .sidebar{position:relative;width:var(--token-width-sidebar);display:flex;flex:0 0 auto;height:100%;background-color:var(--token-sidebar-background);color:var(--token-sidebar-foreground);z-index:var(--token-z-index-nav);will-change:width;transition:width var(--token-transition-time);overflow:visible}at-sidebar .sidebar at-sidebar-trigger{display:flex;width:100%}at-sidebar .sidebar-content{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:8px;overflow-y:auto}at-sidebar .page-content{display:flex;flex-direction:column;flex-grow:1;overflow:auto}at-sidebar.side-right{flex-direction:row-reverse}at-sidebar.mode-over .sidebar{position:absolute}at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas{width:var(--token-width-sidebar-offscreen);overflow:hidden}at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas .sidebar-footer{display:none}at-sidebar[data-state=collapsed] .sidebar.collapse-icon{width:var(--token-width-sidebar-collapsed)}at-sidebar[data-state=collapsed] .sidebar.collapse-icon .sidebar-footer{display:none}at-sidebar[data-state=collapsed] .sidebar.collapse-none{width:var(--token-width-sidebar)}at-sidebar[data-state=collapsed] i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-sidebar-menuitem>[data-name=label]{opacity:0;transition:opacity 150ms ease 0s}at-sidebar[data-state=collapsed] at-menu{display:block}at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper]>at-sidebar-menuitem>[data-name=label]{opacity:1}at-sidebar .sidebar at-sidebar-trigger{width:100%;justify-content:flex-end}at-sidebar.collapse-icon.mode-over:not(.side-right) .at-sidebar__content{padding-left:var(--token-width-sidebar-collapsed)}at-sidebar.collapse-icon.mode-over.side-right .at-sidebar__content{padding-right:var(--token-width-sidebar-collapsed)}at-sidebar i[slot=menu-item-actions],at-sidebar at-sidebar-menuitem>[data-name=label]{opacity:1;transition:opacity 150ms ease 0.3s}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:40px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:50px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:60px}at-sidebar i[slot=menu-item-actions],at-sidebar *>at-sidebar-menuitem [data-name=label]{transition:opacity 150ms ease}at-sidebar .sc-at-sidebar-menuitem .label,at-sidebar at-accordion-item details summary at-sidebar-menuitem .label{font-weight:bold !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label,at-sidebar at-accordion-item [data-name=accordion-item-content] at-sidebar-menuitem .label{font-weight:var(--token-font-weight-normal) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label{color:var(--token-sidebar-foreground)}at-sidebar .sidebar-content at-sidebar-trigger{display:flex;justify-content:flex-end}at-sidebar .sidebar-content at-sidebar-trigger i{font-size:22px !important}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger{display:flex;justify-content:center}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i{min-width:24px}at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}at-sidebar .sidebar-content [data-name=accordion-item-content]{padding-bottom:16px}";
 
@@ -36,11 +36,15 @@ const AtSidebarComponent = class {
      * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
      */
     atuiSidebarChange;
+    get el() { return getElement(this); }
     componentWillLoad() {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
         this.atuiSidebarChange.emit(this.isOpen);
+    }
+    componentDidLoad() {
+        this.el.addEventListener('atuiClick', this.handleMenuItemClick);
     }
     /**
      * Toggles the sidebar's open state.
@@ -61,11 +65,19 @@ const AtSidebarComponent = class {
             this.toggleSidebar();
         }
     };
+    /**
+    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
+     */
+    handleMenuItemClick = () => {
+        if (this.collapsible === 'offcanvas' && this.isOpen) {
+            this.toggleSidebar();
+        }
+    };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: '1ada3eae2e5ec35bc427b40714810a9e44bb1f54', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '6493e5124a5c8154c746ea64decc16693f96ff15', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'e24993b18b4291cd29b03d94797f7112fb6c3027', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (h(Host, { key: 'fd68a53a74dc05eaf45dd595f2de468bead19fb8', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '4b417bc44a7615fc79476321c4511d1194526c63', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '87d2af01a0ba18703145fe09666818f6bc88cc77', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false' }, h("div", { key: '2011840180a84c6c672d3cccd5327d0a25c23149', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: 'a1a5574a9837f12ca9b9cc0f0a3c3039fda1ba4d', name: "sidebar-header" })), h("div", { key: 'd03363aef09af9d132cb91975387973bdd7b8db3', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '2143055625cba5659f0d284b063489351fc8c09c', name: "sidebar-content" })), h("div", { key: 'a0c3a87d887d65ccdd4b9f1d7f6b2e8aa8a6f56a', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: 'd9ae89e366d21b3c780e8135fe3d9578c8799435', name: "sidebar-footer" }))), h("div", { key: '40d4db81624a20b788fc0e1609601637d7bdde56', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '05c8aababfd8cb472865805f07af5027ebb94254', name: "page-content" }))));
+                : 'false' }, h("div", { key: 'b3d2b5a048853a5b12003f96c425832f9d6427b4', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: 'f127a52a33883df93fecdda3831d2f2120c91f59', name: "sidebar-header" })), h("div", { key: 'd8a3b62cc5d40061b9a9c00269d779ee7c8c2422', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '66fc269544b3c47385dd8c42a2d6b55cdf516922', name: "sidebar-content" })), h("div", { key: '6213380b28458924e9a141234260155513f8a61e', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: '0e511f22eafe54c47527e1548baa38a13da8112d', name: "sidebar-footer" }))), h("div", { key: 'be775657c31bec571ee56c0573cd5acf095af13a', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '11b231be8305e4bf4e0150cdd8bc4b8e91e0e957', name: "page-content" }))));
     }
 };
 AtSidebarComponent.style = atSidebarCss;
