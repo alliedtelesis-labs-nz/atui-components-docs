@@ -1,4 +1,4 @@
-import { A as AtButtonComponent, d as defineCustomElement$1 } from './p-CKz8F0U4.js';
+import { A as AtButtonComponent, d as defineCustomElement$1 } from './p-CneQ50Br.js';
 
 const AtButton = AtButtonComponent;
 const defineCustomElement = defineCustomElement$1;
