@@ -1,11 +1,11 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { d as defineCustomElement$8 } from './p-CneQ50Br.js';
-import { d as defineCustomElement$7 } from './p-CGXPhA5w.js';
+import { d as defineCustomElement$7 } from './p-CIL9MUFC.js';
 import { d as defineCustomElement$6 } from './p-bn76tgB4.js';
-import { d as defineCustomElement$5 } from './p-5w0YDcHW.js';
-import { d as defineCustomElement$4 } from './p-BUH2-H8P.js';
-import { d as defineCustomElement$3 } from './p-cOtlVAAc.js';
-import { d as defineCustomElement$2 } from './p-GavH1i81.js';
+import { d as defineCustomElement$5 } from './p-C1-3O-ig.js';
+import { d as defineCustomElement$4 } from './p-DKmuiKgQ.js';
+import { d as defineCustomElement$3 } from './p-yH1iu8rH.js';
+import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
 
 const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagination extends H {
     constructor(registerHost) {
@@ -43,7 +43,7 @@ const AtTablePagination$1 = /*@__PURE__*/ proxyCustomElement(class AtTablePagina
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: '466e8ea83cd77eb706ad356e521aa3e898a05cde', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '8b678b14b1531f6e66693049c078ef5841578387' }, "Page Size: "), h("at-select", { key: '431cb58fd75651e0100a9cd46d2662db59aaf51a', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '62ea23b1a6e8de1be84bf9679db09eb37d7b2040', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '7259171c1b6f530abea936d12752320163555ab4', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: '321ffc72cdafba18e237ee19c1782d06f6e71f40' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '138a27a22a3c609b6cc4802a1cd7c80f80280c24', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: 'e206cfef260608aff1a174a826af12653893973b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: '9acafab5661a980e2a91fdf02cd297b8fbc47e4c', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '5f79338b8b8012aa38d92440d965ee3ca21603c2' }, "Page Size: "), h("at-select", { key: '6698c6dde17f23244f860fe0a7ac2634594246be', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '9fdfb3f8fe59951cb31ef3bc283b5c1ee8cc3535', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: 'ceac86e6bb0e840549d24d954484f2368a8f9b45', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'e02c0e6beff3d6a2af777aacb341f22433aa93a2' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '76c94e4ea8abec1fadf850a98fc738cea3f541d5', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '9e99bfc681e4299bf661e78453950019d7dc2218', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
 }, [256, "at-table-pagination", {
         "current_page": [2],

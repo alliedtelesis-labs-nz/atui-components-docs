@@ -70,7 +70,7 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: '96906f6753e18011b80594a1d4acd3a8dae6eee9', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, index.h("slot", { key: '173611a4c1c2d028b342c61a665443734d6cc187', name: "icon" }), this.label));
+        return (index.h("button", { key: '96906f6753e18011b80594a1d4acd3a8dae6eee9', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (index.h("span", { key: '76d80cdc472cf98a9a394e485639cc1c35beb804', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), index.h("slot", { key: '46df4fb4b79564029d16b293f358aed778b79843', name: "icon" }), this.label));
     }
 };
 

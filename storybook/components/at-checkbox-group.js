@@ -1,4 +1,4 @@
-import { A as AtCheckboxGroup$1, d as defineCustomElement$1 } from './p-CWPWF70m.js';
+import { A as AtCheckboxGroup$1, d as defineCustomElement$1 } from './p-BfGvvgY-.js';
 
 const AtCheckboxGroup = AtCheckboxGroup$1;
 const defineCustomElement = defineCustomElement$1;

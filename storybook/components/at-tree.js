@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h } from './p-89eupKrN.js';
-import { d as defineCustomElement$3 } from './p-GavH1i81.js';
-import { d as defineCustomElement$2 } from './p-CYdO926Z.js';
+import { d as defineCustomElement$3 } from './p-B8lZLFeC.js';
+import { d as defineCustomElement$2 } from './p-BYwaK-JS.js';
 
 const AtTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtTreeComponent extends H {
     constructor(registerHost) {
@@ -67,7 +67,7 @@ const AtTreeComponent = /*@__PURE__*/ proxyCustomElement(class AtTreeComponent e
         }
     }
     render() {
-        return (h("div", { key: 'fb22ba8f6187422e5055b7c3161a0b29c63cca46', class: "w-full" }, h("slot", { key: '3f34d4b880183bbff7585a6195c8b04acdda23fd' }), this.flattenedItemList &&
+        return (h("div", { key: 'f657576f2a3697935dcbada4df87ae1a9e4c6471', class: "w-full" }, h("slot", { key: '2cc58863d980d0fb7a30c2dcbea929bf349d47cf' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

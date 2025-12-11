@@ -35,7 +35,7 @@ export class AtSelectOptionComponent {
         const classname = getOptionClassname({
             active: this.is_active,
         });
-        return (h("li", { key: 'fde3b350ee2dd1609cc376483191f9666aa8dd71', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '25ae12d21b641730d0186ac5c30f5820b19c941a' }), this.value));
+        return (h("li", { key: 'c665cc1ea4eff953e23bcfff6918f352200d003c', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '28a6613f97a815e6653e4702874133a0e9ae18c1' }), this.value));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

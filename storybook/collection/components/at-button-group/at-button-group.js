@@ -3,7 +3,7 @@ import { h, Host, } from "@stencil/core";
  * @category Form Controls
  * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
  *
- * @slot - used to place your own atui-button-group-options if 'options' prop isn't set. Button changing logic will not apply.
+ * @slot - used to place your own at-button-group-options if 'options' prop isn't set. Parent will manage button selection and emit change events.
  */
 export class AtButtonGroup {
     /**
@@ -46,34 +46,92 @@ export class AtButtonGroup {
      * When the active button is changed, this will emit the text value of the active button
      */
     atuiChange;
-    buttonRefs = [];
+    buttonEls = [];
+    handleValueChange(newValue) {
+        if (!this.options || this.options.length === 0) {
+            this.buttonEls.forEach((child) => {
+                child.is_active = child.option_id === newValue;
+            });
+        }
+    }
     componentDidLoad() {
-        this.setInitialActiveButton();
+        if (!this.options || this.options.length === 0) {
+            this.buttonEls = this.getButtonElements();
+            this.initializeButtons();
+            this.attachEventListenersToButtons();
+            setTimeout(() => this.activateOptionButton());
+        }
+        this.el.addEventListener('keydown', this.handleKeyDown);
     }
-    handleChange(value, index) {
-        this.value = value;
-        this.atuiChange.emit(value);
+    getButtonElements() {
+        return Array.from(this.el.querySelectorAll('at-button-group-option'));
+    }
+    initializeButtons() {
+        this.buttonEls.forEach((buttonEl, index) => {
+            buttonEl.option_id = buttonEl.option_id || `${index}`;
+            if (this.value !== undefined && this.value !== null) {
+                buttonEl.is_active = this.value === buttonEl.option_id;
+            }
+            buttonEl.disabled = this.disabled || buttonEl.disabled;
+        });
+    }
+    attachEventListenersToButtons() {
+        this.buttonEls.forEach((buttonEl, index) => {
+            buttonEl.addEventListener('atuiClick', (event) => this.handleChange(event, buttonEl.option_id, index));
+        });
+    }
+    activateOptionButton() {
+        const activeChild = this.buttonEls.find((child) => child.is_active && !child.disabled);
+        const initialButton = activeChild || this.buttonEls.find((child) => !child.disabled);
+        if (initialButton) {
+            initialButton.is_active = true;
+            this.value = initialButton.option_id;
+        }
+    }
+    get getButtonGroupOptions() {
+        if (this.options) {
+            return this.options.map((option, index) => (h("at-button-group-option", { option_id: option.option_id, label: option.label, is_active: this.value === option.option_id, disabled: option.disabled, icon: option.icon, onAtuiClick: (event) => this.handleChange(event, option.option_id, index) })));
+        }
+        return null;
+    }
+    handleChange(event, optionId, index) {
+        event.stopPropagation();
+        this.value = optionId;
+        this.atuiChange.emit(this.value);
         this.atuiIndexChange.emit(index);
+        this.buttonEls.forEach((child) => {
+            child.is_active = child.option_id === optionId;
+        });
     }
-    setInitialActiveButton() {
-        const activeOption = this.options.find((option) => option.option_id === this.value);
-        if (activeOption) {
-            this.value = activeOption.option_id;
+    /**
+     * Handles keyboard navigation for all button options.
+     */
+    handleKeyDown = (evt) => {
+        if (evt.key !== 'Enter' && evt.key !== ' ')
+            return;
+        const target = evt.target;
+        if (target.tagName !== 'BUTTON')
+            return;
+        const option = target.closest('at-button-group-option');
+        if (!option || option.disabled)
+            return;
+        evt.preventDefault();
+        const index = this.options?.length > 0
+            ? this.options.findIndex((opt) => opt.option_id === option.option_id)
+            : this.buttonEls.indexOf(option);
+        if (index >= 0) {
+            const customEvent = new CustomEvent('atuiClick', {
+                detail: { element: option },
+            });
+            this.handleChange(customEvent, option.option_id, index);
         }
-        else if (this.options.length > 0) {
-            this.value = this.options[0].option_id;
-        }
+    };
+    disconnectedCallback() {
+        this.el.removeEventListener('keydown', this.handleKeyDown);
     }
     render() {
-        return (h(Host, { key: '17b28aa128c82b5e35ce1c923f613b7ce08e1b17', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '31f94c8c6825ef0b303cda47fd69a0cecf16dd0a', class: "flex flex-col" }, h("slot", { key: 'd64ad6f37622deb7ac016260452946092b5186d7', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '19260c04612021bfd271830d4f78ee7243058626', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '8781e317ce36089c2062dc7dd69ea3059e6274f4', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '07f0e9f0fa567d2f86238685a3705c66641f46ca', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: 'd8ebaecce0a8a88a9db3bfdaf264a989c1617895', class: "relative z-20 m-[3px] flex flex-row", "data-name": "button-group-options" }, this.renderOptions(), h("slot", { key: 'ee2bcae1219eeea8e241d4dff112095f736367ae' }))), this.error_text && (h("span", { key: 'cc327bdd3f275579e8aec4b9732aab958cef14e2', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
-    }
-    renderOptions() {
-        return this.options.map((option, index) => (h("li", { class: `relative z-10 mr-[-1px] ${this.disabled ? 'pointer-events-none' : ''}`, ref: (el) => (this.buttonRefs[index] = el) }, h("at-button-group-option", { option_id: option.option_id, label: option.label, is_active: this.value === option.option_id, disabled: option.disabled, onAtuiClick: () => this.handleChange(option.option_id, index), onKeyDown: (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    this.handleChange(option.option_id, index);
-                    event.preventDefault();
-                }
-            } }))));
+        return (h(Host, { key: '51fa784b699db525255c34ac93615650732eb0cb', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '3accfdaf2d1b8e0bf61b32890ac5fab61851ed90', class: "flex flex-col" }, h("slot", { key: '7135fcbc0d853a9385da60c7827f9787b03b2703', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '4269bb20e1c00dbc578df7f236f54f1455f9ff84', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: 'a2d2eb2276c2a6925c5277227ee01444d9a6bb95', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '830f331d4db615a7314d192a956dca9f60d400ea', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: 'bf709d82367f4d86f05a4a8ed4d86c8146983ff2', class: "relative z-20 m-[3px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: 'cb0c5db96a787bb4ad8a5d36f17870076ffffffa' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: 'efeb2acbdb4a46e832b19d69ae122594d826ce8d', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {
@@ -252,5 +310,11 @@ export class AtButtonGroup {
             }];
     }
     static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "value",
+                "methodName": "handleValueChange"
+            }];
+    }
 }
 //# sourceMappingURL=at-button-group.js.map

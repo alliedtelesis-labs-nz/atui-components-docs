@@ -1,4 +1,4 @@
-import { A as AtTitleSubtitleCell$1, d as defineCustomElement$1 } from './p-Dthb7cYt.js';
+import { A as AtTitleSubtitleCell$1, d as defineCustomElement$1 } from './p-BTCXmU16.js';
 
 const AtTitleSubtitleCell = AtTitleSubtitleCell$1;
 const defineCustomElement = defineCustomElement$1;

@@ -42,7 +42,7 @@ const AtTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtTabContent exten
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: 'b59bd1f545fc38212d7a6bdc9e7659b9851f871c', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'a924d8e5d5a056b478f41df315f1c828dc700f62' })));
+        return (h("div", { key: 'b8afcc447397a4902aba5ed35dc3c5de86ad9f6e', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '99a9e4bc0f3e6bce10c3508575d2dfa8b156d2bb' })));
     }
 }, [260, "at-tab-content", {
         "tab_id": [1],

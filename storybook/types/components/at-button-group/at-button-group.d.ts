@@ -11,7 +11,7 @@ export interface ButtonGroupOption {
  * @category Form Controls
  * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
  *
- * @slot - used to place your own atui-button-group-options if 'options' prop isn't set. Button changing logic will not apply.
+ * @slot - used to place your own at-button-group-options if 'options' prop isn't set. Parent will manage button selection and emit change events.
  */
 export declare class AtButtonGroup {
     /**
@@ -54,10 +54,19 @@ export declare class AtButtonGroup {
      * When the active button is changed, this will emit the text value of the active button
      */
     atuiChange: EventEmitter<string>;
-    private buttonRefs;
+    buttonEls: HTMLAtButtonGroupOptionElement[];
+    handleValueChange(newValue: string): void;
     componentDidLoad(): void;
-    handleChange(value: string, index: number): void;
-    private setInitialActiveButton;
+    getButtonElements(): HTMLAtButtonGroupOptionElement[];
+    initializeButtons(): void;
+    attachEventListenersToButtons(): void;
+    activateOptionButton(): void;
+    get getButtonGroupOptions(): any;
+    handleChange(event: CustomEvent, optionId: string, index: number): void;
+    /**
+     * Handles keyboard navigation for all button options.
+     */
+    private handleKeyDown;
+    disconnectedCallback(): void;
     render(): any;
-    renderOptions(): any[];
 }

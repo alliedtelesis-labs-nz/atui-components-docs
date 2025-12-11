@@ -22,9 +22,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (h("div", { key: '7c43daf06c476eb7337e6e4444c183fcb1b5b105', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (h("label", { key: 'd13de59bbb0ba68f6c314e82f3b9bc0dfb54936e', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: '2624483e0e5343f0ccc7d5493646196335769872', class: "text-error" }, "*"))),
-            this.info_text && (h("at-tooltip", { key: '96ab5f84b3ad4988ed125e41957eed91a35931e8', position: "right" }, h("span", { key: 'cc7eec120ef350ea8373c240d30c93efd8be52ad', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '843d4357be5a77e4416992987af21630dcf8a142' }, this.info_text))),
+        return (h("div", { key: 'e01090c68771ffed22245a13690edc8f48fcb5c9', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (h("label", { key: 'c252d4b23f41d33fdcb287ea8060546ecd261c34', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'b773a79d3e5089ef447617830bf9253f37d12cec', class: "text-error" }, "*"))),
+            this.info_text && (h("at-tooltip", { key: 'f20cc801f79759efa3fe554a4f0b21dd18f76f71', position: "right" }, h("span", { key: '71adaa0747cdc948d52294f51d32fb77909244da', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '926a6b15c7905f61e34ce6791d9986dc84a2c1a7' }, this.info_text))),
         ]));
     }
 };
@@ -317,7 +317,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '8df3ea246c2cebe43a56f582e691fff6abe74671', class: "relative" }, !this.trigger_id && (h("div", { key: '88eff6d3e62b2cd0d2710d2281e1682725ccf403', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '93a9d40220d0e5832b650ea9a063eb6bf0cce50a', name: "tooltip-trigger" }))), h("div", { key: 'fd25a8cbf854e0df1b4895f5881c7f4c5e6d30a7', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '84ef97e3a40e4156889cf35ca3f43842369fbdb4' }))));
+        return (h(Host, { key: '2ef1afc5e5e8d4d3fe3741934ff06d9f6e0ddb8c', class: "relative" }, !this.trigger_id && (h("div", { key: '65916b0145c47fd48a1e46b8e888bacc351e62aa', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '7a9fee4331a59317ae91bd8042a499f969409ebf', name: "tooltip-trigger" }))), h("div", { key: '909a404a081e6c8f396340e76b992ba75e878f36', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '7e27b552b120b8ddd7fab35ca930debf66cadf95' }))));
     }
     static get watchers() { return {
         "disabled": ["disabledChanged"]
