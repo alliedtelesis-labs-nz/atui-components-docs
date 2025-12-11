@@ -665,7 +665,7 @@ export const AtPromptThread: StencilReactComponent<AtPromptThreadElement, AtProm
     defineCustomElement: defineAtPromptThread
 });
 
-type AtRadioEvents = { onAtuiChange: EventName<CustomEvent<boolean>> };
+type AtRadioEvents = { onAtuiChange: EventName<CustomEvent<string>> };
 
 export const AtRadio: StencilReactComponent<AtRadioElement, AtRadioEvents> = /*@__PURE__*/ createComponent<AtRadioElement, AtRadioEvents>({
     tagName: 'at-radio',

@@ -62,7 +62,7 @@ export class AtRadio {
     handleChange() {
         if (!this.disabled && !this.readonly && !this.value) {
             this.value = true;
-            this.atuiChange.emit(this.value);
+            this.atuiChange.emit(this.option_id);
         }
     }
     handleKeyDown(event) {
@@ -77,7 +77,7 @@ export class AtRadio {
             checked: this.value,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '64812fb5ebf8d07f503b6d0e59757485c26b496d', "aria-checked": this.value, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: '2a404c88d3bc07cca77c6a20cb174c9148e2c3ec', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.value, value: this.option_id, id: this.option_id, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: 'da5e64b6008202eff42f5b4f510634a4f198c36f', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: 'a5490862d1124bb16d7ee2c1cd8d8ca72a0ceeef', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: '7ee67c6a15abb68479602dc75cab0120f5b21ce6', class: "text-light mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: 'cbcf787faca2726d08188b8db3884ccb1226f053' }))));
+        return (h(Host, { key: 'd4ea41051b909a8c59195c8ee1e2f1de4c1b868e', "aria-checked": this.value, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: 'bd14862bc09c360402d48a674754c815fad2f8e9', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.value, value: this.option_id, id: this.option_id, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: 'ccfeceb02cbc00ec5ffd76327b92ca4d993a0b37', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: '921927fd41a1d10d2344f57bbcc6ad8d9fce0e69', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: 'a1ac0e08a11a4ee1386b53f3b2cbb47d73ee6f0a', class: "text-light mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: '42059117913ad971640d4cfebd70d9ea0f53dd92' }))));
     }
     static get is() { return "at-radio"; }
     static get properties() {
@@ -230,8 +230,8 @@ export class AtRadio {
                     "text": "Emits the current state of the radio when clicked."
                 },
                 "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
+                    "original": "string",
+                    "resolved": "string",
                     "references": {}
                 }
             }];

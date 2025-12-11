@@ -40,8 +40,8 @@ export declare class AtRadio {
     /**
      * Emits the current state of the radio when clicked.
      */
-    atuiChange: EventEmitter<boolean>;
+    atuiChange: EventEmitter<string>;
     handleChange(): void;
     handleKeyDown(event: KeyboardEvent): void;
-    render(): any;
+    render(): JSX.Element;
 }

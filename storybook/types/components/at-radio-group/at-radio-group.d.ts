@@ -12,7 +12,7 @@ export type RadioLayout = 'column' | 'row' | 'grid';
  * @category Form Controls
  * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
  *
- * @slot - Used to place atui-radio elements when 'options' is not set
+ * @slot - Use this slot to manually add <at-radio> elements. All <at-radio> elements added via the slot will be grouped together by the radio group.
  */
 export declare class AtRadioGroup {
     /**
@@ -61,6 +61,7 @@ export declare class AtRadioGroup {
      */
     value: string;
     el: HTMLAtRadioGroupElement;
+    watchValue(newValue: string): void;
     private radioEls;
     private radioGroupId;
     /**
@@ -70,6 +71,11 @@ export declare class AtRadioGroup {
     handleChange(optionId: string): void;
     focusAndClickRelativeRadio(relativePosition: number): void;
     handleKeyDown(event: KeyboardEvent): void;
-    get getRadios(): any;
-    render(): any;
+    get getRadios(): JSX.Element[] | undefined;
+    getSlottedRadios(): HTMLAtRadioElement[];
+    componentDidLoad(): void;
+    initializeSlottedRadios(): void;
+    handleSlottedRadioChange(event: CustomEvent<string>): void;
+    updateSlottedRadiosState(selectedOptionId: string): void;
+    render(): JSX.Element;
 }

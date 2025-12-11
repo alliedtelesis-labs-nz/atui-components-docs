@@ -3638,7 +3638,7 @@ declare global {
         new (): HTMLAtPromptThreadElement;
     };
     interface HTMLAtRadioElementEventMap {
-        "atuiChange": boolean;
+        "atuiChange": string;
     }
     /**
      * @category Form Controls
@@ -6034,7 +6034,7 @@ declare namespace LocalJSX {
         /**
           * Emits the current state of the radio when clicked.
          */
-        "onAtuiChange"?: (event: AtRadioCustomEvent<boolean>) => void;
+        "onAtuiChange"?: (event: AtRadioCustomEvent<string>) => void;
         /**
           * ID of the radio button element and its option
          */
