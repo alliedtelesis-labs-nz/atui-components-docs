@@ -3,6 +3,7 @@ export type LabelPosition = 'before' | 'after';
 /**
  * @category Form Controls
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+ * @slot label -  place before "form label" to add custom label content.
  */
 export declare class AtToggleSwitchComponent {
     /**

@@ -2,6 +2,7 @@ import { EventEmitter } from '../../stencil-public-runtime';
 /**
  * @category Form Controls
  * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
+ * @slot label -  place before "form label" to add custom label content.
  */
 export declare class AtTextareaComponent {
     /**

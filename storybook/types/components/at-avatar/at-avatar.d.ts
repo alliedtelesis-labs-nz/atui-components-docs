@@ -3,6 +3,7 @@ export type AvatarVariant = 'primary' | 'secondary' | 'muted';
 /**
  * @category Decoration
  * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
+ * @slot - Content place after the image and initials.
  */
 export declare class AtAvatar {
     /**

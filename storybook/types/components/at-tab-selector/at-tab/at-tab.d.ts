@@ -2,6 +2,7 @@ export type Layout = 'vertical' | 'horizontal';
 /**
  * @category Navigation
  * @description A tab component for the tab selector.
+ * @slot - Use this slot to add custom elements after the tab title.
  */
 export declare class AtTab {
     /**

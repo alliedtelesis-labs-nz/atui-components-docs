@@ -27,17 +27,10 @@ const inputVariantsConfig = {
         invalid: false,
     },
 };
-const optionVariantsConfig = {
-    variants: {
-        active: {
-            true: 'bg-active-light text-active',
-            false: 'hover:bg-disabled-light bg-white',
-        },
-    },
-};
 /**
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
+ * @slot - Use this slot to manually add <at-select-option> elements in your HTML. Options added via slot will appear in the dropdown alongside those provided via the 'options' prop. Both methods support search, selection, and display together (options being display before the manually added).
  */
 export class AtSelectComponent {
     /**
@@ -101,12 +94,26 @@ export class AtSelectComponent {
     isOpen = false;
     translations;
     hasMatchingOptions = false;
+    hasMatchingElOptions = false;
     parentWidth;
     el;
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     menuRef;
     optionEls = [];
     searchInputEl;
+    watchValue(newValue) {
+        this.optionEls.forEach((optionEl) => {
+            optionEl.is_active = newValue === optionEl.value;
+        });
+    }
+    watchSearchText(newSearch) {
+        const trimmedSearch = newSearch.trim().toLowerCase();
+        this.optionEls.forEach((optionEl) => {
+            const matches = !trimmedSearch ||
+                optionEl.value.toLowerCase().includes(trimmedSearch);
+            optionEl.style.display = matches ? '' : 'none';
+        });
+    }
     /**
      * Emits an event containing the selected value when changed.
      */
@@ -115,10 +122,13 @@ export class AtSelectComponent {
         this.translations = await fetchTranslations(this.el);
     }
     componentDidLoad() {
-        this.el
-            .querySelectorAll('li[data-name="select-option"]')
-            .forEach((option) => {
-            this.optionEls.push(option);
+        this.el.querySelectorAll('at-select-option').forEach((option) => {
+            const optionEl = option;
+            optionEl.is_active = this.value === optionEl.value;
+            optionEl.addEventListener('atuiClick', (event) => {
+                this.handleChange(event.detail);
+            });
+            this.optionEls.push(optionEl);
         });
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
@@ -165,9 +175,12 @@ export class AtSelectComponent {
         this.hasMatchingOptions = trimmedSearch
             ? this.options?.some((option) => option.value.toLowerCase().includes(trimmedSearch))
             : true;
+        this.hasMatchingElOptions = trimmedSearch
+            ? this.optionEls?.some((option) => option.value.toLowerCase().includes(trimmedSearch))
+            : true;
     }
     render() {
-        return (h(Host, { key: 'c0fb105f036bc4c84f56645d8d1bd1788a5a5eab', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '9ac79191912a0e9c6d7118284fbe7467f867e5b1', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -175,9 +188,9 @@ export class AtSelectComponent {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '339b9509216e3e55c89669a51d6b6fa58531b709', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '7b33c4c2b4f76c68af333d06dd9988e0cf05991b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '512f2ac192a4e31ec2446090a4d08712a0847bc2' }, this.error_text && this.invalid && (h("span", { key: '0e9c2fcf4502b70394cf8d405a70d2039bd38e76', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '8f52c8b5b8dc7ed13b67d9d213947ef7c9a9f356' }, this.error_text && this.invalid && (h("span", { key: '2906580c5a3a728f113341a4a40d5ee1c176af6e', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -205,18 +218,14 @@ export class AtSelectComponent {
             option.value
                 .toLowerCase()
                 .includes(this.searchText))
-            .map((option) => this.renderOption(option)), this.typeahead &&
+            .map((option) => this.renderOption(option)), h("slot", null), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            !this.hasMatchingOptions &&
+            !this.hasMatchingElOptions && (h("div", { class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
             'No results found'))));
     }
     renderOption(option) {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
-        const classname = getOptionClassname({
-            active: this.value === option.value,
-        });
-        const isSelected = this.value === option.value;
-        return (h("li", { role: "option", value: option.value, "data-name": "select-option", "aria-selected": isSelected ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
+        return (h("at-select-option", { value: option.value, is_active: this.value === option.value, onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get is() { return "at-select"; }
     static get properties() {
@@ -501,6 +510,7 @@ export class AtSelectComponent {
             "isOpen": {},
             "translations": {},
             "hasMatchingOptions": {},
+            "hasMatchingElOptions": {},
             "parentWidth": {}
         };
     }
@@ -523,5 +533,14 @@ export class AtSelectComponent {
             }];
     }
     static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "value",
+                "methodName": "watchValue"
+            }, {
+                "propName": "searchText",
+                "methodName": "watchSearchText"
+            }];
+    }
 }
 //# sourceMappingURL=at-select.js.map

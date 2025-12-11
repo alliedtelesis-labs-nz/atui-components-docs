@@ -50,6 +50,7 @@
     "components/at-radio-group/at-radio/at-radio.js",
     "components/at-search/at-search.js",
     "components/at-select/at-select.js",
+    "components/at-select/at-select-option/at-select-option.js",
     "components/at-side-panel/at-side-panel.js",
     "components/at-sidebar/at-sidebar.js",
     "components/at-sidebar/at-sidebar-menu/at-sidebar-menu.js",

@@ -24,6 +24,8 @@ const inputVariantsConfig = {
 /**
  * @category Form Controls
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
+ * @slot label -  Place before "form label" to add custom label content.
+ * @slot input-actions - Place inside the input container to add custom action elements (e.g., icons, buttons) next to the input field.
  */
 export class AtInputComponent {
     /**
@@ -102,10 +104,10 @@ export class AtInputComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'db0b11154bb4bfde1060ff98f920d025ffab5ac8' }, h("div", { key: '7433f948cddf6c0f866f896be601f86d7a7f7ff4', class: "flex flex-col" }, h("slot", { key: '2c3721dabc2b68059f7ad82609ab230bf84b90f0', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '75dd379d767b3025413cc248a75697c3acdb71a8', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '9f8dab2f60d72e7ef9747111e3cb3841604cd4bd', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '51a9fffbd947ee7fb1d0b9958dd35df22a31456a', class: classname }, h("input", { key: 'f796beb20197316201dc8e01a813205090473991', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: 'dd1443d44ae81fd6f619f2d6ce5c2a53bc1eefab', class: "flex items-center py-4 pr-4" }, h("slot", { key: '804cc5cc71564f0cc67033b91aea709834bb5377', name: "input-actions" }), this.clearable &&
+        return (h(Host, { key: '9c96255bcd52f461b732aa5743a0aceea9f7586b' }, h("div", { key: 'fdfb1f0cd6aa5f9e090f0df013b5de54e132b808', class: "flex flex-col" }, h("slot", { key: '5de00248595d5541f44c361fe4188c1099d9186c', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'f1f95919a5eb9b7302afae6936c8842f89a6bce6', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'ce4f229a9108db41d48a66a2772ea5a9852f261f', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '13f42768a5030c13d28f49781006778f8da5b16b', class: classname }, h("input", { key: '5dc4b4fd8139c390c102697b648176e16a5fea29', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: 'e92447834f6c557c3b5c5669daf44dad1946fb3c', class: "flex items-center py-4 pr-4" }, h("slot", { key: '3e59706890a04d217562a0dca1cc84922cd9dc35', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("at-button", { key: '37c3b8252f01ef603ab3a68cb464f630ddadcf4e', class: `transition-all duration-300 ease-in-out ${this.clearable &&
+            this.value && (h("at-button", { key: '25974eb88c3c201aafeda4df779c670e9bd77c2a', class: `transition-all duration-300 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -113,7 +115,7 @@ export class AtInputComponent {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: 'f825d43ad082468eafd69df2c653d3f591481df6', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" })))), this.error_text && this.invalid && (h("span", { key: '7f122fab41df20e89768206002eb5de7d6dd5858', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "at-input"; }
     static get properties() {

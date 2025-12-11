@@ -1,6 +1,7 @@
 /**
  * @category Navigation
  * @description A tab content component for the tab selector.
+ * @slot - Use this slot to add custom elements within the tab content area.
  */
 export declare class AtTabContent {
     el: HTMLElement;

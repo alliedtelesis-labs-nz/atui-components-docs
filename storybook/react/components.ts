@@ -56,6 +56,7 @@ import { AtRadioGroup as AtRadioGroupElement, defineCustomElement as defineAtRad
 import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio.js";
 import { AtSearchTable as AtSearchTableElement, defineCustomElement as defineAtSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search-table.js";
 import { AtSearch as AtSearchElement, defineCustomElement as defineAtSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search.js";
+import { AtSelectOption as AtSelectOptionElement, defineCustomElement as defineAtSelectOption } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-option.js";
 import { AtSelect as AtSelectElement, defineCustomElement as defineAtSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select.js";
 import { AtSidePanel as AtSidePanelElement, defineCustomElement as defineAtSidePanel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-side-panel.js";
 import { AtSidebarMenu as AtSidebarMenuElement, defineCustomElement as defineAtSidebarMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-menu.js";
@@ -718,6 +719,17 @@ export const AtSelect: StencilReactComponent<AtSelectElement, AtSelectEvents> = 
     react: React,
     events: { onAtuiChange: 'atuiChange' } as AtSelectEvents,
     defineCustomElement: defineAtSelect
+});
+
+type AtSelectOptionEvents = { onAtuiClick: EventName<CustomEvent<string>> };
+
+export const AtSelectOption: StencilReactComponent<AtSelectOptionElement, AtSelectOptionEvents> = /*@__PURE__*/ createComponent<AtSelectOptionElement, AtSelectOptionEvents>({
+    tagName: 'at-select-option',
+    elementClass: AtSelectOptionElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiClick: 'atuiClick' } as AtSelectOptionEvents,
+    defineCustomElement: defineAtSelectOption
 });
 
 type AtSidePanelEvents = { onAtuiSidepanelChange: EventName<CustomEvent<any>> };

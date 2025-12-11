@@ -1,12 +1,12 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$8 } from './p-CneQ50Br.js';
-import { d as defineCustomElement$7 } from './p-DS8rd89A.js';
+import { d as defineCustomElement$7 } from './p-CGXPhA5w.js';
 import { d as defineCustomElement$6 } from './p-bn76tgB4.js';
-import { d as defineCustomElement$5 } from './p-CNNN9wX_.js';
-import { d as defineCustomElement$4 } from './p-B57hnbgZ.js';
-import { d as defineCustomElement$3 } from './p-BJpHxmmY.js';
-import { d as defineCustomElement$2 } from './p-CJ4jwrx3.js';
+import { d as defineCustomElement$5 } from './p-D7SB58aF.js';
+import { d as defineCustomElement$4 } from './p-fXx2Bbmd.js';
+import { d as defineCustomElement$3 } from './p-Cc2k1jiU.js';
+import { d as defineCustomElement$2 } from './p-GavH1i81.js';
 
 const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
     constructor(registerHost) {
@@ -218,7 +218,7 @@ const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptConta
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '1862871591763b7ff4fb41c6210731a497162c95', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '9eb025fa36e0be3802185238c8a70ac188b07079', name: "prompt-container-header" }), h("div", { key: 'd333f9a9f6464dd7afa0e52f138e89dbfb103ed8', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '0943fdee900d4fca40fcdbd104b146e773cb3cf2', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '72e7a38632aea80ad396acd401488e428d05c22c', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'a6d4778705c618e020489236246ea0302a2d25ee', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '0289a0f29b291aab823cdbbaa0417b44ad05f145', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '3c1ad538962370f3ec0e6ca4652646164cbc7b79', name: "prompt-container-header" }), h("div", { key: '4b25a811154f51b2a97f39d73e26f3f9727b9bea', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: 'fec6f880d45c88a860b5730db6ebb54706d8ff93', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: 'bc51fdc82d9c568aa2ac7f5fb8406c321096b914', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'f8d6976008ef80a2b1fbe84c96a9eefbaf8974d6', name: "prompt-container-footer" }))));
     }
 }, [260, "at-prompt-container", {
         "messages": [1040],

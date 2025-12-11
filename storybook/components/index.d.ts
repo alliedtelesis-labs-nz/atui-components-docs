@@ -99,6 +99,8 @@ export { AtSearchTable as AtSearchTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtSearchTable } from './at-search-table';
 export { AtSelectComponent as AtSelect } from '../types/components/at-select/at-select';
 export { defineCustomElement as defineCustomElementAtSelect } from './at-select';
+export { AtSelectOptionComponent as AtSelectOption } from '../types/components/at-select/at-select-option/at-select-option';
+export { defineCustomElement as defineCustomElementAtSelectOption } from './at-select-option';
 export { AtSidePanelComponent as AtSidePanel } from '../types/components/at-side-panel/at-side-panel';
 export { defineCustomElement as defineCustomElementAtSidePanel } from './at-side-panel';
 export { AtSidebarComponent as AtSidebar } from '../types/components/at-sidebar/at-sidebar';

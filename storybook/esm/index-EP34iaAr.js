@@ -241,10 +241,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-checkbox-group.entry.js').then(processMod, consoleError);
-                case 'at-select':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-select.entry.js').then(processMod, consoleError);
                 case 'at-checkbox':
                     return import(
                       /* webpackMode: "lazy" */
@@ -309,6 +305,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-input-numeric.entry.js').then(processMod, consoleError);
+                case 'at-select_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-select_2.entry.js').then(processMod, consoleError);
                 case 'at-form-label_2':
                     return import(
                       /* webpackMode: "lazy" */

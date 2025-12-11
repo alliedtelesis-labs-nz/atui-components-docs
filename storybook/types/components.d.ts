@@ -1283,6 +1283,10 @@ export namespace Components {
      */
     interface AtMenuCell {
     }
+    /**
+     * @category Form Controls
+     * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
+     */
     interface AtMenuItem {
         /**
           * Disables user interaction with the menu-item and updates visual style to appear inactive
@@ -1930,6 +1934,22 @@ export namespace Components {
         "typeahead"?: boolean;
         /**
           * Value of the currently selected option
+         */
+        "value": string;
+    }
+    /**
+     * @category Form Controls
+     * @description A select option component used within the AtSelect component.
+     * @Slot - Use this slot to add custom content inside the select option before the text.
+     */
+    interface AtSelectOption {
+        /**
+          * Will apply the active styling to the select option
+          * @default false
+         */
+        "is_active"?: boolean;
+        /**
+          * Value of the select option
          */
         "value": string;
     }
@@ -2824,6 +2844,10 @@ export interface AtSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSelectElement;
 }
+export interface AtSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtSelectOptionElement;
+}
 export interface AtSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSidePanelElement;
@@ -3450,6 +3474,10 @@ declare global {
     interface HTMLAtMenuItemElementEventMap {
         "atuiClick": AtEvent;
     }
+    /**
+     * @category Form Controls
+     * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
+     */
     interface HTMLAtMenuItemElement extends Components.AtMenuItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtMenuItemElementEventMap>(type: K, listener: (this: HTMLAtMenuItemElement, ev: AtMenuItemCustomEvent<HTMLAtMenuItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3730,6 +3758,28 @@ declare global {
     var HTMLAtSelectElement: {
         prototype: HTMLAtSelectElement;
         new (): HTMLAtSelectElement;
+    };
+    interface HTMLAtSelectOptionElementEventMap {
+        "atuiClick": string;
+    }
+    /**
+     * @category Form Controls
+     * @description A select option component used within the AtSelect component.
+     * @Slot - Use this slot to add custom content inside the select option before the text.
+     */
+    interface HTMLAtSelectOptionElement extends Components.AtSelectOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSelectOptionElementEventMap>(type: K, listener: (this: HTMLAtSelectOptionElement, ev: AtSelectOptionCustomEvent<HTMLAtSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSelectOptionElementEventMap>(type: K, listener: (this: HTMLAtSelectOptionElement, ev: AtSelectOptionCustomEvent<HTMLAtSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtSelectOptionElement: {
+        prototype: HTMLAtSelectOptionElement;
+        new (): HTMLAtSelectOptionElement;
     };
     interface HTMLAtSidePanelElementEventMap {
         "atuiSidepanelChange": any;
@@ -4306,6 +4356,7 @@ declare global {
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
+        "at-select-option": HTMLAtSelectOptionElement;
         "at-side-panel": HTMLAtSidePanelElement;
         "at-sidebar": HTMLAtSidebarElement;
         "at-sidebar-menu": HTMLAtSidebarMenuElement;
@@ -5538,6 +5589,10 @@ declare namespace LocalJSX {
      */
     interface AtMenuCell {
     }
+    /**
+     * @category Form Controls
+     * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
+     */
     interface AtMenuItem {
         /**
           * Disables user interaction with the menu-item and updates visual style to appear inactive
@@ -6260,6 +6315,26 @@ declare namespace LocalJSX {
         "typeahead"?: boolean;
         /**
           * Value of the currently selected option
+         */
+        "value"?: string;
+    }
+    /**
+     * @category Form Controls
+     * @description A select option component used within the AtSelect component.
+     * @Slot - Use this slot to add custom content inside the select option before the text.
+     */
+    interface AtSelectOption {
+        /**
+          * Will apply the active styling to the select option
+          * @default false
+         */
+        "is_active"?: boolean;
+        /**
+          * Emitted when the select option is clicked
+         */
+        "onAtuiClick"?: (event: AtSelectOptionCustomEvent<string>) => void;
+        /**
+          * Value of the select option
          */
         "value"?: string;
     }
@@ -7126,6 +7201,7 @@ declare namespace LocalJSX {
         "at-search": AtSearch;
         "at-search-table": AtSearchTable;
         "at-select": AtSelect;
+        "at-select-option": AtSelectOption;
         "at-side-panel": AtSidePanel;
         "at-sidebar": AtSidebar;
         "at-sidebar-menu": AtSidebarMenu;
@@ -7364,6 +7440,10 @@ declare module "@stencil/core" {
              * @description A cell component for displaying a menu.
              */
             "at-menu-cell": LocalJSX.AtMenuCell & JSXBase.HTMLAttributes<HTMLAtMenuCellElement>;
+            /**
+             * @category Form Controls
+             * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
+             */
             "at-menu-item": LocalJSX.AtMenuItem & JSXBase.HTMLAttributes<HTMLAtMenuItemElement>;
             /**
              * @category Feedback
@@ -7430,6 +7510,12 @@ declare module "@stencil/core" {
              * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
             "at-select": LocalJSX.AtSelect & JSXBase.HTMLAttributes<HTMLAtSelectElement>;
+            /**
+             * @category Form Controls
+             * @description A select option component used within the AtSelect component.
+             * @Slot - Use this slot to add custom content inside the select option before the text.
+             */
+            "at-select-option": LocalJSX.AtSelectOption & JSXBase.HTMLAttributes<HTMLAtSelectOptionElement>;
             /**
              * @category Overlays
              * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.

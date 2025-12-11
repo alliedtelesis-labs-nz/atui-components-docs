@@ -3,6 +3,8 @@ export type InputType = 'text' | 'url' | 'email' | 'password';
 /**
  * @category Form Controls
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
+ * @slot label -  Place before "form label" to add custom label content.
+ * @slot input-actions - Place inside the input container to add custom action elements (e.g., icons, buttons) next to the input field.
  */
 export declare class AtInputComponent {
     /**

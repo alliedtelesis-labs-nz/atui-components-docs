@@ -2,6 +2,8 @@ import { h } from "@stencil/core";
 /**
  * @category Navigation
  * @description A tree component for displaying hierarchical data.
+ * @slot - Use this slot to add custom elements before the tree navigation.
+ * @slot item-content - Use this slot to add custom content inside each tree item.
  */
 /**
  * ### ```interface ItemNode```
@@ -71,7 +73,7 @@ export class AtTreeComponent {
         }
     }
     render() {
-        return (h("div", { key: '18705ea035ca6ff091b021269f077b31e4d7bed6', class: "w-full" }, h("slot", { key: 'a3cd012004d619067d8281f072fc3505a716beff' }), this.flattenedItemList &&
+        return (h("div", { key: 'fb22ba8f6187422e5055b7c3161a0b29c63cca46', class: "w-full" }, h("slot", { key: '3f34d4b880183bbff7585a6195c8b04acdda23fd' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +

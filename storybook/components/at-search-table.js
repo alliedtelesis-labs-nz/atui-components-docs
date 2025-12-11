@@ -2,20 +2,20 @@ import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$h } from './p-CneQ50Br.js';
 import { d as defineCustomElement$g } from './p-DF-2ncG7.js';
-import { d as defineCustomElement$f } from './p-6ZhdjdcM.js';
-import { d as defineCustomElement$e } from './p-CxjxCzXI.js';
-import { d as defineCustomElement$d } from './p-DS8rd89A.js';
-import { d as defineCustomElement$c } from './p-DV3U6Cgz.js';
+import { d as defineCustomElement$f } from './p-CWPWF70m.js';
+import { d as defineCustomElement$e } from './p-DDnsCNR0.js';
+import { d as defineCustomElement$d } from './p-CGXPhA5w.js';
+import { d as defineCustomElement$c } from './p-PomM-FKs.js';
 import { d as defineCustomElement$b } from './p-bn76tgB4.js';
 import { d as defineCustomElement$a } from './p-5w0YDcHW.js';
-import { d as defineCustomElement$9 } from './p-DKr4t2CX.js';
-import { d as defineCustomElement$8 } from './p-B7n6iT2q.js';
-import { d as defineCustomElement$7 } from './p-DnS0dJR8.js';
-import { d as defineCustomElement$6 } from './p-BXdubPvN.js';
-import { d as defineCustomElement$5 } from './p-nVlOVA4G.js';
-import { d as defineCustomElement$4 } from './p-C9tYSJd4.js';
-import { d as defineCustomElement$3 } from './p-B5XZMWzL.js';
-import { d as defineCustomElement$2 } from './p-CJ4jwrx3.js';
+import { d as defineCustomElement$9 } from './p-BunMLKfG.js';
+import { d as defineCustomElement$8 } from './p-KU0SC9n2.js';
+import { d as defineCustomElement$7 } from './p-g14C9j-_.js';
+import { d as defineCustomElement$6 } from './p-D3zRCMdv.js';
+import { d as defineCustomElement$5 } from './p-C9LDs7-7.js';
+import { d as defineCustomElement$4 } from './p-a5xil2Ot.js';
+import { d as defineCustomElement$3 } from './p-njrRUXH-.js';
+import { d as defineCustomElement$2 } from './p-GavH1i81.js';
 
 const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable extends H {
     constructor(registerHost) {
@@ -320,7 +320,7 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '395e30d739d8fe27ddce5541443f2003d667963d' }, h("at-table-actions", { key: 'b62e36ceed43865e2ed920cd3d9de65574bddd52', ag_grid: this.agGrid }, h("div", { key: '04c97a39842a97d7d27159dda094a7e448a534fa', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '00da3fcaae27527a885f2b0f13cf1ee275d38080', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '4770b2b88502fbdcc4b3e79c5ba09f5010ac7a75', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '91f236c73422955cec60320d71ba8812501f5d95', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'db6ec8cb7096ca321e69ee1944e77e2b7773f51d', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '2685c378b123485c4a76bf250663f103035328d3', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '92ff72b7bf00f71af3478cc28d017a36b0c19dcd', slot: "actions" }, h("slot", { key: '2bf7dfd31c58829798967874e47c33daba410ef7', name: "actions" }))), h("slot", { key: 'c8aeb0ea961bfc89fe1ce107b845453a4fdcb480', name: "multi-select-actions" }), h("at-table", { key: 'c79366ef8e338d4574fa739a6a305549340ef709', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: '6db71073fc04de882bd403fa6b8c80de2724082f' }, h("at-table-actions", { key: 'b6e0952cfe8556c922f5ac40478c79045d9b8758', ag_grid: this.agGrid }, h("div", { key: '08476de461326d8e5e7e14a53124f52ad8a5710b', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '5a2daa5306e3732aee57fd2ddb711165d72b71d5', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '4339e7b1030636c97b47556ff29702d6fd7f4049', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'c471fafe18a2a5dda2aadd7bec26b06187ef096c', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '48af31525951356f35dabf77628de72151a15c7f', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'b961f90578d13f0fa49dcd2b53f3013c13b8cf4a', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'cff522387819c1d09d488fb7ec2b0ba897640519', slot: "actions" }, h("slot", { key: '2b2690c3dbb5e839b8b177c3b43b0c8e1e679772', name: "actions" }))), h("slot", { key: 'd8b7bbb831e43828a852fa2c20b0665eac040660', name: "multi-select-actions" }), h("at-table", { key: '9b21c3cc5d1853273569883cc7453936b0e8346c', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]

@@ -39,6 +39,7 @@ const thumbVariantsConfig = {
 /**
  * @category Form Controls
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+ * @slot label -  place before "form label" to add custom label content.
  */
 export class AtToggleSwitchComponent {
     /**
@@ -91,12 +92,12 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '2d9372275175988dc56799066a596f261bd7bc72', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '0c57dd7b272ec00379aff60c1afa4d68e09001ef', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '8f00756c3154468c25143b19533b4e42f59bdf18', class: "flex flex-col" }, h("slot", { key: '9a0e0123f8a91b184be803889e75791aa83f4c0f', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '81b4db9f5be672a390842adf7084926cb296512e', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '18a5caea3ec7c586dd7a7ed9539b670ad02baa78', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'de0393cec1fa2f08bb1780d5538875cdb44267ec', class: "relative flex h-20 w-40" }, h("input", { key: '5b44fe94efcae79b3ff2088dcb23353f1154a5be', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '014b6d54914a2b8ff68e1fc8558c1dae87765b61', class: trackClassname }, h("span", { key: '39a5f122db885c00643ca61fd4a8b47b32cb48de', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, h("div", { key: 'a865f1447b059526c7fcf3a4aad3b567502fe53c', class: "flex flex-col" }, h("slot", { key: '80f3cf68feea55d60bc486cfa1cffb3f5f9954fa', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'f8076551bcc3f3c3544c95f51772766b9a38319a', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: 'b2858baec55854b9fcffe2625204fe0fb8009b2a', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '958db12e9f14bd03364ffcffbfc1878b85cae9c0', class: "relative flex h-20 w-40" }, h("input", { key: '9e02b6ebd7b7a60123de5ca47ae419ec2e2301dc', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '6d7286fef72bef7aaf59e0844e7ff0fd0b2a7ba3', class: trackClassname }, h("span", { key: '67b6354d3e8ab1a499cf9acff781f6916326ade8', class: thumbClassname }, this.value ? 'check' : 'remove')))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {

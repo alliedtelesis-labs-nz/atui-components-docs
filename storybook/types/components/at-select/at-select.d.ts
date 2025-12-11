@@ -3,6 +3,7 @@ import { SelectOption } from '../../types/select';
 /**
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
+ * @slot - Use this slot to manually add <at-select-option> elements in your HTML. Options added via slot will appear in the dropdown alongside those provided via the 'options' prop. Both methods support search, selection, and display together (options being display before the manually added).
  */
 export declare class AtSelectComponent {
     /**
@@ -66,12 +67,15 @@ export declare class AtSelectComponent {
     isOpen: boolean;
     translations: any;
     hasMatchingOptions: boolean;
+    hasMatchingElOptions: boolean;
     parentWidth: string;
     el: HTMLElement;
     private menuId;
     private menuRef;
     private optionEls;
     private searchInputEl;
+    watchValue(newValue: string): void;
+    watchSearchText(newSearch: string): void;
     /**
      * Emits an event containing the selected value when changed.
      */
