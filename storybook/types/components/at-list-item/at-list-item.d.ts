@@ -1,10 +1,10 @@
 type Size = 'xs' | 'sm' | 'md' | 'lg';
 /**
  * @category Layout
- * @description A list item component for the list.
+ * @description A list item component for data in key:value format.
  *
- * @slot badge - Placed alongside the item_title
- * @slot - Placed before the content
+ * @slot title - Placed in the title position
+ * @slot - PLace custom content or items before the content
  */
 export declare class AtListItem {
     /**
@@ -35,6 +35,10 @@ export declare class AtListItem {
      * Border below the list item.
      */
     border?: boolean;
+    /**
+     * Adds background and cursor styles to indicate selection
+     */
+    selectable?: boolean;
     get sizeClasses(): string;
     render(): any;
 }

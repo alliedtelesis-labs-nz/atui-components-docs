@@ -1096,7 +1096,7 @@ export namespace Components {
     }
     /**
      * @category Layout
-     * @description A list item component for the list.
+     * @description A list item component for data in key:value format.
      */
     interface AtListItem {
         /**
@@ -1120,6 +1120,11 @@ export namespace Components {
           * Title of the list item.
          */
         "item_title": string;
+        /**
+          * Adds background and cursor styles to indicate selection
+          * @default false
+         */
+        "selectable"?: boolean;
         /**
           * Size of the list item.
           * @default 'sm'
@@ -3394,7 +3399,7 @@ declare global {
     };
     /**
      * @category Layout
-     * @description A list item component for the list.
+     * @description A list item component for data in key:value format.
      */
     interface HTMLAtListItemElement extends Components.AtListItem, HTMLStencilElement {
     }
@@ -5406,7 +5411,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Layout
-     * @description A list item component for the list.
+     * @description A list item component for data in key:value format.
      */
     interface AtListItem {
         /**
@@ -5430,6 +5435,11 @@ declare namespace LocalJSX {
           * Title of the list item.
          */
         "item_title"?: string;
+        /**
+          * Adds background and cursor styles to indicate selection
+          * @default false
+         */
+        "selectable"?: boolean;
         /**
           * Size of the list item.
           * @default 'sm'
@@ -7416,7 +7426,7 @@ declare module "@stencil/core" {
             "at-layout": LocalJSX.AtLayout & JSXBase.HTMLAttributes<HTMLAtLayoutElement>;
             /**
              * @category Layout
-             * @description A list item component for the list.
+             * @description A list item component for data in key:value format.
              */
             "at-list-item": LocalJSX.AtListItem & JSXBase.HTMLAttributes<HTMLAtListItemElement>;
             /**
