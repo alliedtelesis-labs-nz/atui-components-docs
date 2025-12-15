@@ -596,7 +596,7 @@ export namespace Components {
         "value"?: boolean;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
     interface AtCheckboxCell {
@@ -657,7 +657,7 @@ export namespace Components {
         "value": string[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A header component for displaying a checkbox.
      */
     interface AtCheckboxHeader {
@@ -691,13 +691,13 @@ export namespace Components {
         "size": BadgeSize1;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a list of chips.
      */
     interface AtChipListCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface AtColorStatusCell {
@@ -798,7 +798,7 @@ export namespace Components {
         "trigger_id"?: string;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying and editing text.
      */
     interface AtEditTextCell {
@@ -1283,7 +1283,7 @@ export namespace Components {
         "width"?: string;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a menu.
      */
     interface AtMenuCell {
@@ -1340,7 +1340,7 @@ export namespace Components {
         "type": 'error' | 'warning' | 'success' | 'info' | 'default';
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying multiple buttons.
      */
     interface AtMultiBtnCell {
@@ -2421,31 +2421,31 @@ export namespace Components {
         "page_size_options": SelectOption[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a badge.
      */
     interface AtTextBadgeCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
     interface AtTextCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface AtTextIconCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with an image.
      */
     interface AtTextImageCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a status.
      */
     interface AtTextStatusCell {
@@ -2595,19 +2595,19 @@ export namespace Components {
         "units": TimeUnit[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle.
      */
     interface AtTitleSubtitleCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle with a date.
      */
     interface AtTitleSubtitleDateCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
     interface AtToggleCell {
@@ -3149,7 +3149,7 @@ declare global {
         new (): HTMLAtCheckboxElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
     interface HTMLAtCheckboxCellElement extends Components.AtCheckboxCell, HTMLStencilElement {
@@ -3187,7 +3187,7 @@ declare global {
         new (): HTMLAtCheckboxGroupElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A header component for displaying a checkbox.
      */
     interface HTMLAtCheckboxHeaderElement extends Components.AtCheckboxHeader, HTMLStencilElement {
@@ -3218,7 +3218,7 @@ declare global {
         new (): HTMLAtChipListElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a list of chips.
      */
     interface HTMLAtChipListCellElement extends Components.AtChipListCell, HTMLStencilElement {
@@ -3228,7 +3228,7 @@ declare global {
         new (): HTMLAtChipListCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface HTMLAtColorStatusCellElement extends Components.AtColorStatusCell, HTMLStencilElement {
@@ -3295,7 +3295,7 @@ declare global {
         new (): HTMLAtDialogElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying and editing text.
      */
     interface HTMLAtEditTextCellElement extends Components.AtEditTextCell, HTMLStencilElement {
@@ -3467,7 +3467,7 @@ declare global {
         new (): HTMLAtMenuElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a menu.
      */
     interface HTMLAtMenuCellElement extends Components.AtMenuCell, HTMLStencilElement {
@@ -3508,7 +3508,7 @@ declare global {
         new (): HTMLAtMessageElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying multiple buttons.
      */
     interface HTMLAtMultiBtnCellElement extends Components.AtMultiBtnCell, HTMLStencilElement {
@@ -4092,7 +4092,7 @@ declare global {
         new (): HTMLAtTablePaginationElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a badge.
      */
     interface HTMLAtTextBadgeCellElement extends Components.AtTextBadgeCell, HTMLStencilElement {
@@ -4102,7 +4102,7 @@ declare global {
         new (): HTMLAtTextBadgeCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
     interface HTMLAtTextCellElement extends Components.AtTextCell, HTMLStencilElement {
@@ -4112,7 +4112,7 @@ declare global {
         new (): HTMLAtTextCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface HTMLAtTextIconCellElement extends Components.AtTextIconCell, HTMLStencilElement {
@@ -4122,7 +4122,7 @@ declare global {
         new (): HTMLAtTextIconCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with an image.
      */
     interface HTMLAtTextImageCellElement extends Components.AtTextImageCell, HTMLStencilElement {
@@ -4132,7 +4132,7 @@ declare global {
         new (): HTMLAtTextImageCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a status.
      */
     interface HTMLAtTextStatusCellElement extends Components.AtTextStatusCell, HTMLStencilElement {
@@ -4206,7 +4206,7 @@ declare global {
         new (): HTMLAtTimeWithUnitElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle.
      */
     interface HTMLAtTitleSubtitleCellElement extends Components.AtTitleSubtitleCell, HTMLStencilElement {
@@ -4216,7 +4216,7 @@ declare global {
         new (): HTMLAtTitleSubtitleCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle with a date.
      */
     interface HTMLAtTitleSubtitleDateCellElement extends Components.AtTitleSubtitleDateCell, HTMLStencilElement {
@@ -4226,7 +4226,7 @@ declare global {
         new (): HTMLAtTitleSubtitleDateCellElement;
     };
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
     interface HTMLAtToggleCellElement extends Components.AtToggleCell, HTMLStencilElement {
@@ -4895,7 +4895,7 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
      */
     interface AtCheckboxCell {
@@ -4960,7 +4960,7 @@ declare namespace LocalJSX {
         "value"?: string[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A header component for displaying a checkbox.
      */
     interface AtCheckboxHeader {
@@ -4998,13 +4998,13 @@ declare namespace LocalJSX {
         "size"?: BadgeSize1;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a list of chips.
      */
     interface AtChipListCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a color status indicator based on predefined types
      */
     interface AtColorStatusCell {
@@ -5101,7 +5101,7 @@ declare namespace LocalJSX {
         "trigger_id"?: string;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying and editing text.
      */
     interface AtEditTextCell {
@@ -5594,7 +5594,7 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a menu.
      */
     interface AtMenuCell {
@@ -5655,7 +5655,7 @@ declare namespace LocalJSX {
         "type"?: 'error' | 'warning' | 'success' | 'info' | 'default';
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying multiple buttons.
      */
     interface AtMultiBtnCell {
@@ -6817,31 +6817,31 @@ declare namespace LocalJSX {
         "page_size_options"?: SelectOption[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a badge.
      */
     interface AtTextBadgeCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
      */
     interface AtTextCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
      */
     interface AtTextIconCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with an image.
      */
     interface AtTextImageCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a text with a status.
      */
     interface AtTextStatusCell {
@@ -7007,19 +7007,19 @@ declare namespace LocalJSX {
         "units"?: TimeUnit[];
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle.
      */
     interface AtTitleSubtitleCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a title and subtitle with a date.
      */
     interface AtTitleSubtitleDateCell {
     }
     /**
-     * @category Table Cell
+     * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
     interface AtToggleCell {
@@ -7345,7 +7345,7 @@ declare module "@stencil/core" {
              */
             "at-checkbox": LocalJSX.AtCheckbox & JSXBase.HTMLAttributes<HTMLAtCheckboxElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
              */
             "at-checkbox-cell": LocalJSX.AtCheckboxCell & JSXBase.HTMLAttributes<HTMLAtCheckboxCellElement>;
@@ -7362,7 +7362,7 @@ declare module "@stencil/core" {
              */
             "at-checkbox-group": LocalJSX.AtCheckboxGroup & JSXBase.HTMLAttributes<HTMLAtCheckboxGroupElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A header component for displaying a checkbox.
              */
             "at-checkbox-header": LocalJSX.AtCheckboxHeader & JSXBase.HTMLAttributes<HTMLAtCheckboxHeaderElement>;
@@ -7372,12 +7372,12 @@ declare module "@stencil/core" {
              */
             "at-chip-list": LocalJSX.AtChipList & JSXBase.HTMLAttributes<HTMLAtChipListElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a list of chips.
              */
             "at-chip-list-cell": LocalJSX.AtChipListCell & JSXBase.HTMLAttributes<HTMLAtChipListCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a color status indicator based on predefined types
              */
             "at-color-status-cell": LocalJSX.AtColorStatusCell & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
@@ -7390,7 +7390,7 @@ declare module "@stencil/core" {
              */
             "at-dialog": LocalJSX.AtDialog & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying and editing text.
              */
             "at-edit-text-cell": LocalJSX.AtEditTextCell & JSXBase.HTMLAttributes<HTMLAtEditTextCellElement>;
@@ -7446,7 +7446,7 @@ declare module "@stencil/core" {
             "at-loading": LocalJSX.AtLoading & JSXBase.HTMLAttributes<HTMLAtLoadingElement>;
             "at-menu": LocalJSX.AtMenu & JSXBase.HTMLAttributes<HTMLAtMenuElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a menu.
              */
             "at-menu-cell": LocalJSX.AtMenuCell & JSXBase.HTMLAttributes<HTMLAtMenuCellElement>;
@@ -7461,7 +7461,7 @@ declare module "@stencil/core" {
              */
             "at-message": LocalJSX.AtMessage & JSXBase.HTMLAttributes<HTMLAtMessageElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying multiple buttons.
              */
             "at-multi-btn-cell": LocalJSX.AtMultiBtnCell & JSXBase.HTMLAttributes<HTMLAtMultiBtnCellElement>;
@@ -7626,27 +7626,27 @@ declare module "@stencil/core" {
              */
             "at-table-pagination": LocalJSX.AtTablePagination & JSXBase.HTMLAttributes<HTMLAtTablePaginationElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a text with a badge.
              */
             "at-text-badge-cell": LocalJSX.AtTextBadgeCell & JSXBase.HTMLAttributes<HTMLAtTextBadgeCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
              */
             "at-text-cell": LocalJSX.AtTextCell & JSXBase.HTMLAttributes<HTMLAtTextCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
              */
             "at-text-icon-cell": LocalJSX.AtTextIconCell & JSXBase.HTMLAttributes<HTMLAtTextIconCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a text with an image.
              */
             "at-text-image-cell": LocalJSX.AtTextImageCell & JSXBase.HTMLAttributes<HTMLAtTextImageCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a text with a status.
              */
             "at-text-status-cell": LocalJSX.AtTextStatusCell & JSXBase.HTMLAttributes<HTMLAtTextStatusCellElement>;
@@ -7666,17 +7666,17 @@ declare module "@stencil/core" {
              */
             "at-time-with-unit": LocalJSX.AtTimeWithUnit & JSXBase.HTMLAttributes<HTMLAtTimeWithUnitElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a title and subtitle.
              */
             "at-title-subtitle-cell": LocalJSX.AtTitleSubtitleCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a title and subtitle with a date.
              */
             "at-title-subtitle-date-cell": LocalJSX.AtTitleSubtitleDateCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleDateCellElement>;
             /**
-             * @category Table Cell
+             * @category Data Tables
              * @description A cell component for displaying a toggle.
              */
             "at-toggle-cell": LocalJSX.AtToggleCell & JSXBase.HTMLAttributes<HTMLAtToggleCellElement>;

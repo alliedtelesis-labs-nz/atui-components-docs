@@ -1,6 +1,6 @@
 import { ICellRendererComp } from 'ag-grid-community';
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A header component for displaying a checkbox.
  */
 export declare class AtCheckboxHeaderComponent implements ICellRendererComp {

@@ -7,7 +7,7 @@ export interface ColorStatusCellParams extends ICellRendererParams<ColorStatusCe
     mapValueToStatus: (data: any) => StatusType;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a color status indicator based on predefined types
  */
 export declare class AtColorStatusCell implements ICellRendererComp {

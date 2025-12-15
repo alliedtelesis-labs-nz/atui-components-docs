@@ -8,7 +8,7 @@ export interface IEditTextCellParams {
 interface InitParams extends IEditTextCellParams, ICellRendererParams {
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying and editing text.
  */
 export declare class AtEditTextCell implements ICellRendererComp {

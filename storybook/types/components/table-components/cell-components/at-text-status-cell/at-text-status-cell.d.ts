@@ -19,7 +19,7 @@ export interface TextStatusValueParam {
 interface InitParams extends ITextStatusCellParams, ICellRendererParams {
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a text with a status.
  */
 export declare class AtTextStatusCellComponent implements ICellRendererComp {

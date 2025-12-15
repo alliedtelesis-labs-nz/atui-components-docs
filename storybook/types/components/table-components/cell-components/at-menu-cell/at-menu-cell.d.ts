@@ -15,7 +15,7 @@ export interface AtuiMenuCellParams extends ICellRendererParams, ITooltipCell {
     actions: MenuAction[] | ((params: ICellRendererParams) => MenuAction[]);
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a menu.
  */
 export declare class AtMenuCell implements ICellRendererComp {

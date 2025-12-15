@@ -68,16 +68,20 @@ const AtSidebarComponent = class {
     /**
     Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
      */
-    handleMenuItemClick = () => {
+    handleMenuItemClick = (event) => {
+        const target = event.target;
+        if (target.getAttribute('slot') === 'accordion-trigger') {
+            return;
+        }
         if (this.collapsible === 'offcanvas' && this.isOpen) {
             this.toggleSidebar();
         }
     };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: 'd99a114452db694a6c667a00196e1816017caba9', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '8e013f4d9d74d4fa3b57d139bf30a08a2086f95c', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '2992ada397d0e0c9f0d53d76759af57feeed6522', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (h(Host, { key: '34f8dff158d04bb9bfb5d55bf9b8ea593e429331', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: 'c058f01bc6b245ced24e7697eef49d6e53a5d215', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'aa55e1b9ed28f0b8078c7f3f08cc5dda8d6d1120', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false' }, h("div", { key: '06cfe81ded9b1c45ee44865e274d63576a2a8ee9', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: 'c7a74e1392cf4e5031babbfa2452a6406004fb54', name: "sidebar-header" })), h("div", { key: '7e793b3e5a53c0a73076647d0e8bd5411a41c694', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: 'e60c9d87217ac1d1b5bc0b115f56b3c8cb8b6c59', name: "sidebar-content" })), h("div", { key: 'db1f86a0cb26e764411ea9953eac7fbc32b5f1cc', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: '3ba0e4bcbddc8dba7cf8e0736ef774c584e5f89b', name: "sidebar-footer" }))), h("div", { key: '0c7f10fd6d93ec845fb5aac6ae96885065589cc5', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: 'dbd09baa948cd97c04008fe77675a5e30883957e', name: "page-content" }))));
+                : 'false' }, h("div", { key: '9e28eb3d7ed4be6f533285df0eb55dfca33c9507', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: '444eda92b848d6284be5279148962c0969c27b27', name: "sidebar-header" })), h("div", { key: '5a532693d996183326ce3ece0f86aeb2f2e962c7', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '1592777a13b96f8c01b20977b2e0ab00d767425f', name: "sidebar-content" })), h("div", { key: '357bf31bb6615043ea105095de2c9ca506d9d331', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: 'ad82d13c6c0a5b1611786beaaf9744225a199cab', name: "sidebar-footer" }))), h("div", { key: 'd3fdeb9cd80e4f3155e015908e3cc5d83c27564b', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: 'e2b8d65e99e76e97abfe85c361756967093bdc70', name: "page-content" }))));
     }
 };
 AtSidebarComponent.style = atSidebarCss;

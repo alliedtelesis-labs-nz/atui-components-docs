@@ -13,7 +13,7 @@ export interface ITextCellParams extends ICellRendererParams, ITooltipCell {
     textTransform?: (data: any, value: any) => string;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
  */
 export declare class AtTextCellComponent implements ICellRendererComp {

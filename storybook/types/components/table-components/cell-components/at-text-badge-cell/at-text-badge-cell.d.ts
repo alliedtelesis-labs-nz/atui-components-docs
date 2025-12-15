@@ -11,7 +11,7 @@ export interface ITextBadgeCellParams extends ICellRendererParams, ITooltipCell 
     badgeType?: string;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a text with a badge.
  */
 export declare class AtTextBadgeCell implements ICellRendererComp {

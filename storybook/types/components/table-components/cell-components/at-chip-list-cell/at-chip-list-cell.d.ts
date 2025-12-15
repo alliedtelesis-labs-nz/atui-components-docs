@@ -6,7 +6,7 @@ export interface IChipCellParams extends ICellRendererParams {
     chips: (data: any) => string[];
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a list of chips.
  */
 export declare class AtChipListCell implements ICellRendererComp {

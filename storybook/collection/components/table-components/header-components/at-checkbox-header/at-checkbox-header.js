@@ -1,6 +1,6 @@
 import { h } from "@stencil/core";
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A header component for displaying a checkbox.
  */
 export class AtCheckboxHeaderComponent {
@@ -46,7 +46,7 @@ export class AtCheckboxHeaderComponent {
         }
     }
     render() {
-        return (h("at-checkbox", { key: 'c77a85e3e7c4566bb3adc8bdaed7e292ef975d2f', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: '1fd92d99e5b1ab6ec5aa6af2849ae4a1c0abadb8', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
     static get is() { return "at-checkbox-header"; }
     static get states() {

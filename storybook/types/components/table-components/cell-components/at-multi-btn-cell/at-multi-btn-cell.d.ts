@@ -19,7 +19,7 @@ export interface IBtnParams {
 }
 type InitParams = IMultiBtnCellParams;
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying multiple buttons.
  */
 export declare class AtMultiBtnCell implements ICellRendererComp {

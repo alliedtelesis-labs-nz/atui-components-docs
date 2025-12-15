@@ -16,7 +16,7 @@ export interface ITextIconCellParams extends IconTextCellParams, ITooltipCell {
 }
 type InitParams = ITextIconCellParams;
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
  */
 export declare class AtTextIconCell implements ICellRendererComp {

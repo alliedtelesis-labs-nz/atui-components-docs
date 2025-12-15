@@ -15,7 +15,7 @@ export interface IToggleCellParams extends ICellRendererParams, ITooltipCell {
     disabled?: (data: any) => boolean;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a toggle.
  */
 export declare class AtToggleCell implements ICellRendererComp {

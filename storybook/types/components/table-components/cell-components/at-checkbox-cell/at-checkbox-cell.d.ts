@@ -10,7 +10,7 @@ export interface ICheckboxCellParams extends ICellRendererParams, ITooltipCell {
     getDisabled?: (data: any) => boolean;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
  */
 export declare class AtCheckboxCellComponent implements ICellRendererComp {

@@ -14,7 +14,7 @@ export interface ITextImageCellParams extends ICellRendererParams, ITooltipCell 
     imagePosition?: 'before' | 'after';
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a text with an image.
  */
 export declare class AtTextImageCell implements ICellRendererComp {

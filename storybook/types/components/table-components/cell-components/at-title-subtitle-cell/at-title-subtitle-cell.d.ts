@@ -10,7 +10,7 @@ export interface ITitleSubtitleCellParams extends ICellRendererParams, ITooltipC
     subtitle?: (data: any) => string;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a title and subtitle.
  */
 export declare class AtTitleSubtitleCell implements ICellRendererComp {

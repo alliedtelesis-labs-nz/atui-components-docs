@@ -6,7 +6,7 @@ export interface ITitleSubtitleDateCellParams extends ICellRendererParams {
     getTitleSubtitleDateData?: (data: any) => TitleSubtitleDateData;
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a title and subtitle with a date.
  */
 export declare class AtTitleSubtitleDateCell implements ICellRendererComp {
