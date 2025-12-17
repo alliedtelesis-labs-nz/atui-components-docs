@@ -185,14 +185,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-tab-content.entry.js').then(processMod, consoleError);
-                case 'at-tab-selector':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-tab-selector.entry.js').then(processMod, consoleError);
                 case 'at-table-pagination':
                     return import(
                       /* webpackMode: "lazy" */
                       './at-table-pagination.entry.js').then(processMod, consoleError);
+                case 'at-tabs':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-tabs.entry.js').then(processMod, consoleError);
                 case 'at-textarea':
                     return import(
                       /* webpackMode: "lazy" */

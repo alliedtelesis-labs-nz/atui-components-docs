@@ -68,14 +68,14 @@ import { AtSrcDest as AtSrcDestElement, defineCustomElement as defineAtSrcDest }
 import { AtStaticTable as AtStaticTableElement, defineCustomElement as defineAtStaticTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-static-table.js";
 import { AtStatusBar as AtStatusBarElement, defineCustomElement as defineAtStatusBar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-status-bar.js";
 import { AtTabContent as AtTabContentElement, defineCustomElement as defineAtTabContent } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab-content.js";
-import { AtTabSelector as AtTabSelectorElement, defineCustomElement as defineAtTabSelector } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab-selector.js";
-import { AtTab as AtTabElement, defineCustomElement as defineAtTab } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab.js";
+import { AtTabTrigger as AtTabTriggerElement, defineCustomElement as defineAtTabTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab-trigger.js";
 import { AtTableActions as AtTableActionsElement, defineCustomElement as defineAtTableActions } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-actions.js";
 import { AtTableExportMenu as AtTableExportMenuElement, defineCustomElement as defineAtTableExportMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-export-menu.js";
 import { AtTableFilterMenu as AtTableFilterMenuElement, defineCustomElement as defineAtTableFilterMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-filter-menu.js";
 import { AtTableFilters as AtTableFiltersElement, defineCustomElement as defineAtTableFilters } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-filters.js";
 import { AtTablePagination as AtTablePaginationElement, defineCustomElement as defineAtTablePagination } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-pagination.js";
 import { AtTable as AtTableElement, defineCustomElement as defineAtTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table.js";
+import { AtTabs as AtTabsElement, defineCustomElement as defineAtTabs } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tabs.js";
 import { AtTextBadgeCell as AtTextBadgeCellElement, defineCustomElement as defineAtTextBadgeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-text-badge-cell.js";
 import { AtTextCell as AtTextCellElement, defineCustomElement as defineAtTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-text-cell.js";
 import { AtTextIconCell as AtTextIconCellElement, defineCustomElement as defineAtTextIconCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-text-icon-cell.js";
@@ -831,17 +831,6 @@ export const AtStatusBar: StencilReactComponent<AtStatusBarElement, AtStatusBarE
     defineCustomElement: defineAtStatusBar
 });
 
-type AtTabEvents = NonNullable<unknown>;
-
-export const AtTab: StencilReactComponent<AtTabElement, AtTabEvents> = /*@__PURE__*/ createComponent<AtTabElement, AtTabEvents>({
-    tagName: 'at-tab',
-    elementClass: AtTabElement,
-    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
-    react: React,
-    events: {} as AtTabEvents,
-    defineCustomElement: defineAtTab
-});
-
 type AtTabContentEvents = NonNullable<unknown>;
 
 export const AtTabContent: StencilReactComponent<AtTabContentElement, AtTabContentEvents> = /*@__PURE__*/ createComponent<AtTabContentElement, AtTabContentEvents>({
@@ -853,15 +842,15 @@ export const AtTabContent: StencilReactComponent<AtTabContentElement, AtTabConte
     defineCustomElement: defineAtTabContent
 });
 
-type AtTabSelectorEvents = { onAtuiChange: EventName<CustomEvent<string>> };
+type AtTabTriggerEvents = NonNullable<unknown>;
 
-export const AtTabSelector: StencilReactComponent<AtTabSelectorElement, AtTabSelectorEvents> = /*@__PURE__*/ createComponent<AtTabSelectorElement, AtTabSelectorEvents>({
-    tagName: 'at-tab-selector',
-    elementClass: AtTabSelectorElement,
+export const AtTabTrigger: StencilReactComponent<AtTabTriggerElement, AtTabTriggerEvents> = /*@__PURE__*/ createComponent<AtTabTriggerElement, AtTabTriggerEvents>({
+    tagName: 'at-tab-trigger',
+    elementClass: AtTabTriggerElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiChange: 'atuiChange' } as AtTabSelectorEvents,
-    defineCustomElement: defineAtTabSelector
+    events: {} as AtTabTriggerEvents,
+    defineCustomElement: defineAtTabTrigger
 });
 
 type AtTableEvents = {
@@ -947,6 +936,17 @@ export const AtTablePagination: StencilReactComponent<AtTablePaginationElement, 
         onAtPageSizeChange: 'atPageSizeChange'
     } as AtTablePaginationEvents,
     defineCustomElement: defineAtTablePagination
+});
+
+type AtTabsEvents = { onAtuiChange: EventName<CustomEvent<string>> };
+
+export const AtTabs: StencilReactComponent<AtTabsElement, AtTabsEvents> = /*@__PURE__*/ createComponent<AtTabsElement, AtTabsEvents>({
+    tagName: 'at-tabs',
+    elementClass: AtTabsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiChange: 'atuiChange' } as AtTabsEvents,
+    defineCustomElement: defineAtTabs
 });
 
 type AtTextBadgeCellEvents = NonNullable<unknown>;

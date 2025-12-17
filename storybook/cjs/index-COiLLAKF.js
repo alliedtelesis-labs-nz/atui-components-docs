@@ -205,14 +205,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-tab-content.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-tab-selector.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-tab-selector.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-table-pagination.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-table-pagination.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-tabs.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-tabs.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-textarea.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

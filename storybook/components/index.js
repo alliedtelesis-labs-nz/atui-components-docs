@@ -60,15 +60,15 @@ export { AtSidebarTrigger, defineCustomElement as defineCustomElementAtSidebarTr
 export { AtSrcDest, defineCustomElement as defineCustomElementAtSrcDest } from './at-src-dest.js';
 export { AtStaticTable, defineCustomElement as defineCustomElementAtStaticTable } from './at-static-table.js';
 export { AtStatusBar, defineCustomElement as defineCustomElementAtStatusBar } from './at-status-bar.js';
-export { AtTab, defineCustomElement as defineCustomElementAtTab } from './at-tab.js';
 export { AtTabContent, defineCustomElement as defineCustomElementAtTabContent } from './at-tab-content.js';
-export { AtTabSelector, defineCustomElement as defineCustomElementAtTabSelector } from './at-tab-selector.js';
+export { AtTabTrigger, defineCustomElement as defineCustomElementAtTabTrigger } from './at-tab-trigger.js';
 export { AtTable, defineCustomElement as defineCustomElementAtTable } from './at-table.js';
 export { AtTableActions, defineCustomElement as defineCustomElementAtTableActions } from './at-table-actions.js';
 export { AtTableExportMenu, defineCustomElement as defineCustomElementAtTableExportMenu } from './at-table-export-menu.js';
 export { AtTableFilterMenu, defineCustomElement as defineCustomElementAtTableFilterMenu } from './at-table-filter-menu.js';
 export { AtTableFilters, defineCustomElement as defineCustomElementAtTableFilters } from './at-table-filters.js';
 export { AtTablePagination, defineCustomElement as defineCustomElementAtTablePagination } from './at-table-pagination.js';
+export { AtTabs, defineCustomElement as defineCustomElementAtTabs } from './at-tabs.js';
 export { AtTextBadgeCell, defineCustomElement as defineCustomElementAtTextBadgeCell } from './at-text-badge-cell.js';
 export { AtTextCell, defineCustomElement as defineCustomElementAtTextCell } from './at-text-cell.js';
 export { AtTextIconCell, defineCustomElement as defineCustomElementAtTextIconCell } from './at-text-icon-cell.js';

@@ -33,12 +33,12 @@ const AtLayout = class {
 const variantsConfig = {
     variants: {
         layout: {
-            horizontal: 'inline-block',
+            horizontal: 'inline-block ',
             vertical: 'flex',
         },
         active: {
             true: 'z-index-20 text-active-foreground',
-            false: 'text-light',
+            false: 'text-light hover:bg-surface-1',
         },
     },
     compoundVariants: [
@@ -49,7 +49,7 @@ const variantsConfig = {
         },
     ],
 };
-const AtTab = class {
+const AtTabTrigger = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
@@ -69,6 +69,11 @@ const AtTab = class {
      * Applies styling when active
      */
     is_active;
+    /**
+     * If true, the tab will fill the parent container's width.
+     * Set by parent <at-tabs> to control layout.
+     */
+    fill = false;
     tabEl;
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -76,15 +81,15 @@ const AtTab = class {
         }
     }
     render() {
-        const getClassname = classlist.classlist('group/tab text-button relative box-border flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-md border border-solid border-transparent font-medium capitalize duration-150 ease-in-out outline-none focus:outline-none', variantsConfig);
+        const getClassname = classlist.classlist('group/tab text-button relative box-border flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-md border border-solid border-transparent font-medium capitalize duration-150 ease-in-out outline-none focus:outline-none p-8 ', variantsConfig);
         const classname = getClassname({
             layout: this.layout,
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: '74c002f1ba2c4b5d2265b74f87f2cfbf6342e8f1', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, index.h("a", { key: '0a8abdc07fed97c03430b52b86f64a09b998bd8e', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: 'efb7a678da989b5f5265e2b3d36cc873dddcab23' }))));
+        return (index.h(index.Host, { key: '2504abc0d76b0b7b112039275dc424e8e65bd3e2', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, index.h("a", { key: '3e096c20b1aef3884f941f0be99ff44d960ee9fd', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: 'fbaf82507d01c1de2a177b35e55d823bff3ca6d4' }))));
     }
 };
 
 exports.at_layout = AtLayout;
-exports.at_tab = AtTab;
-//# sourceMappingURL=at-layout.at-tab.entry.cjs.js.map
+exports.at_tab_trigger = AtTabTrigger;
+//# sourceMappingURL=at-layout.at-tab-trigger.entry.cjs.js.map

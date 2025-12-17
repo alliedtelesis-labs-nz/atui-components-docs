@@ -119,12 +119,10 @@ export { AtStaticTable as AtStaticTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtStaticTable } from './at-static-table';
 export { AtStatusBar as AtStatusBar } from '../types/components/at-status-bar/at-status-bar';
 export { defineCustomElement as defineCustomElementAtStatusBar } from './at-status-bar';
-export { AtTab as AtTab } from '../types/components/at-tab-selector/at-tab/at-tab';
-export { defineCustomElement as defineCustomElementAtTab } from './at-tab';
-export { AtTabContent as AtTabContent } from '../types/components/at-tab-selector/at-tab-content/at-tab-content';
+export { AtTabContent as AtTabContent } from '../types/components/at-tabs/at-tab-content/at-tab-content';
 export { defineCustomElement as defineCustomElementAtTabContent } from './at-tab-content';
-export { AtTabSelector as AtTabSelector } from '../types/components/at-tab-selector/at-tab-selector';
-export { defineCustomElement as defineCustomElementAtTabSelector } from './at-tab-selector';
+export { AtTabTrigger as AtTabTrigger } from '../types/components/at-tabs/at-tab-trigger/at-tab-trigger';
+export { defineCustomElement as defineCustomElementAtTabTrigger } from './at-tab-trigger';
 export { AtTableComponent as AtTable } from '../types/components/table-components/at-table/at-table';
 export { defineCustomElement as defineCustomElementAtTable } from './at-table';
 export { AtTableActionsComponent as AtTableActions } from '../types/components/table-components/at-table-actions/at-table-actions';
@@ -137,6 +135,8 @@ export { AtTableFilters as AtTableFilters } from '../types/components/table-comp
 export { defineCustomElement as defineCustomElementAtTableFilters } from './at-table-filters';
 export { AtTablePagination as AtTablePagination } from '../types/components/table-components/at-table-pagination/at-table-pagination';
 export { defineCustomElement as defineCustomElementAtTablePagination } from './at-table-pagination';
+export { AtTabs as AtTabs } from '../types/components/at-tabs/at-tabs';
+export { defineCustomElement as defineCustomElementAtTabs } from './at-tabs';
 export { AtTextBadgeCell as AtTextBadgeCell } from '../types/components/table-components/cell-components/at-text-badge-cell/at-text-badge-cell';
 export { defineCustomElement as defineCustomElementAtTextBadgeCell } from './at-text-badge-cell';
 export { AtTextCellComponent as AtTextCell } from '../types/components/table-components/cell-components/at-text-cell/at-text-cell';

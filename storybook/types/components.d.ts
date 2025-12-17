@@ -35,9 +35,9 @@ import { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./componen
 import { Width } from "./components/at-sidebar/at-sidebar";
 import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { StatusBar } from "./components/at-status-bar/at-status-bar";
-import { Layout } from "./components/at-tab-selector/at-tab/at-tab";
-import { Layout as Layout1, Tab } from "./components/at-tab-selector/at-tab-selector";
+import { Layout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 import { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+import { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
 import { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
@@ -76,9 +76,9 @@ export { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./componen
 export { Width } from "./components/at-sidebar/at-sidebar";
 export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { StatusBar } from "./components/at-status-bar/at-status-bar";
-export { Layout } from "./components/at-tab-selector/at-tab/at-tab";
-export { Layout as Layout1, Tab } from "./components/at-tab-selector/at-tab-selector";
+export { Layout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 export { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+export { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
 export { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
@@ -2221,9 +2221,29 @@ export namespace Components {
     }
     /**
      * @category Navigation
-     * @description A tab component for the tab selector.
+     * @description A tab content component for the tab selector.
      */
-    interface AtTab {
+    interface AtTabContent {
+        /**
+          * Determines if the tab content is active
+          * @default false
+         */
+        "is_active": boolean;
+        /**
+          * ID of the tab
+         */
+        "tab_id": string;
+    }
+    /**
+     * @category Navigation
+     * @description A tab trigger component for the tab selector.
+     */
+    interface AtTabTrigger {
+        /**
+          * If true, the tab will fill the parent container's width. Set by parent <at-tabs> to control layout.
+          * @default false
+         */
+        "fill": boolean;
         /**
           * Applies styling when active
          */
@@ -2241,63 +2261,6 @@ export namespace Components {
           * Title to be displayed in the tab
          */
         "tab_title": string;
-    }
-    /**
-     * @category Navigation
-     * @description A tab content component for the tab selector.
-     */
-    interface AtTabContent {
-        /**
-          * Determines if the tab content is active
-          * @default false
-         */
-        "is_active": boolean;
-        /**
-          * ID of the tab
-         */
-        "tab_id": string;
-    }
-    /**
-     * ### interface Tab
-     * ```
-     * {
-     *   id: string;
-     *   title: string;
-     * }
-     * ```
-     * @category Navigation
-     * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
-     */
-    interface AtTabSelector {
-        /**
-          * Sets the current active tab
-         */
-        "active_tab"?: string;
-        /**
-          * Gets the current active tab
-          * @returns The current active_tab value
-         */
-        "getActiveTab": () => Promise<string>;
-        /**
-          * hide navigation when you want to provide custom controls
-          * @default false
-         */
-        "hide_nav": boolean;
-        /**
-          * Layout of the tabs
-          * @default 'horizontal'
-         */
-        "layout": Layout1;
-        /**
-          * Sets the current active tab
-          * @param value - The tab id to set as active
-         */
-        "setActiveTab": (value: string) => Promise<void>;
-        /**
-          * List of tabs the selector will have
-          * @default []
-         */
-        "tabs": Tab[];
     }
     /**
      * @category Data Tables
@@ -2419,6 +2382,53 @@ export namespace Components {
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
         "page_size_options": SelectOption[];
+    }
+    /**
+     * ### interface Tab
+     * ```
+     * {
+     *   id: string;
+     *   title: string;
+     * }
+     * ```
+     * @category Navigation
+     * @description A tabs component for switching between different content sections. Provides keyboard navigation and accessible tab panel management. It acts as a controller.
+     */
+    interface AtTabs {
+        /**
+          * Sets the current active tab
+         */
+        "active_tab"?: string;
+        /**
+          * If true, tabs will fill the width of the container
+          * @default false
+         */
+        "fill"?: boolean;
+        /**
+          * Gets the current active tab
+          * @returns The current active_tab value
+         */
+        "getActiveTab": () => Promise<string>;
+        /**
+          * hide navigation when you want to provide custom controls
+          * @default false
+         */
+        "hide_nav": boolean;
+        /**
+          * Layout of the tabs
+          * @default 'horizontal'
+         */
+        "layout": Layout1;
+        /**
+          * Sets the current active tab
+          * @param value - The tab id to set as active
+         */
+        "setActiveTab": (value: string) => Promise<void>;
+        /**
+          * List of tabs the selector will have
+          * @default []
+         */
+        "tabs": Tab[];
     }
     /**
      * @category Data Tables
@@ -2865,10 +2875,6 @@ export interface AtSidebarMenuitemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSidebarMenuitemElement;
 }
-export interface AtTabSelectorCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLAtTabSelectorElement;
-}
 export interface AtTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtTableElement;
@@ -2892,6 +2898,10 @@ export interface AtTableFiltersCustomEvent<T> extends CustomEvent<T> {
 export interface AtTablePaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtTablePaginationElement;
+}
+export interface AtTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtTabsElement;
 }
 export interface AtTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3915,16 +3925,6 @@ declare global {
     };
     /**
      * @category Navigation
-     * @description A tab component for the tab selector.
-     */
-    interface HTMLAtTabElement extends Components.AtTab, HTMLStencilElement {
-    }
-    var HTMLAtTabElement: {
-        prototype: HTMLAtTabElement;
-        new (): HTMLAtTabElement;
-    };
-    /**
-     * @category Navigation
      * @description A tab content component for the tab selector.
      */
     interface HTMLAtTabContentElement extends Components.AtTabContent, HTMLStencilElement {
@@ -3933,33 +3933,15 @@ declare global {
         prototype: HTMLAtTabContentElement;
         new (): HTMLAtTabContentElement;
     };
-    interface HTMLAtTabSelectorElementEventMap {
-        "atuiChange": string;
-    }
     /**
-     * ### interface Tab
-     * ```
-     * {
-     *   id: string;
-     *   title: string;
-     * }
-     * ```
      * @category Navigation
-     * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
+     * @description A tab trigger component for the tab selector.
      */
-    interface HTMLAtTabSelectorElement extends Components.AtTabSelector, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLAtTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtTabSelectorElement, ev: AtTabSelectorCustomEvent<HTMLAtTabSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLAtTabSelectorElementEventMap>(type: K, listener: (this: HTMLAtTabSelectorElement, ev: AtTabSelectorCustomEvent<HTMLAtTabSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    interface HTMLAtTabTriggerElement extends Components.AtTabTrigger, HTMLStencilElement {
     }
-    var HTMLAtTabSelectorElement: {
-        prototype: HTMLAtTabSelectorElement;
-        new (): HTMLAtTabSelectorElement;
+    var HTMLAtTabTriggerElement: {
+        prototype: HTMLAtTabTriggerElement;
+        new (): HTMLAtTabTriggerElement;
     };
     interface HTMLAtTableElementEventMap {
         "atSortChange": {
@@ -4090,6 +4072,34 @@ declare global {
     var HTMLAtTablePaginationElement: {
         prototype: HTMLAtTablePaginationElement;
         new (): HTMLAtTablePaginationElement;
+    };
+    interface HTMLAtTabsElementEventMap {
+        "atuiChange": string;
+    }
+    /**
+     * ### interface Tab
+     * ```
+     * {
+     *   id: string;
+     *   title: string;
+     * }
+     * ```
+     * @category Navigation
+     * @description A tabs component for switching between different content sections. Provides keyboard navigation and accessible tab panel management. It acts as a controller.
+     */
+    interface HTMLAtTabsElement extends Components.AtTabs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTabsElementEventMap>(type: K, listener: (this: HTMLAtTabsElement, ev: AtTabsCustomEvent<HTMLAtTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTabsElementEventMap>(type: K, listener: (this: HTMLAtTabsElement, ev: AtTabsCustomEvent<HTMLAtTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtTabsElement: {
+        prototype: HTMLAtTabsElement;
+        new (): HTMLAtTabsElement;
     };
     /**
      * @category Data Tables
@@ -4371,15 +4381,15 @@ declare global {
         "at-src-dest": HTMLAtSrcDestElement;
         "at-static-table": HTMLAtStaticTableElement;
         "at-status-bar": HTMLAtStatusBarElement;
-        "at-tab": HTMLAtTabElement;
         "at-tab-content": HTMLAtTabContentElement;
-        "at-tab-selector": HTMLAtTabSelectorElement;
+        "at-tab-trigger": HTMLAtTabTriggerElement;
         "at-table": HTMLAtTableElement;
         "at-table-actions": HTMLAtTableActionsElement;
         "at-table-export-menu": HTMLAtTableExportMenuElement;
         "at-table-filter-menu": HTMLAtTableFilterMenuElement;
         "at-table-filters": HTMLAtTableFiltersElement;
         "at-table-pagination": HTMLAtTablePaginationElement;
+        "at-tabs": HTMLAtTabsElement;
         "at-text-badge-cell": HTMLAtTextBadgeCellElement;
         "at-text-cell": HTMLAtTextCellElement;
         "at-text-icon-cell": HTMLAtTextIconCellElement;
@@ -6594,9 +6604,29 @@ declare namespace LocalJSX {
     }
     /**
      * @category Navigation
-     * @description A tab component for the tab selector.
+     * @description A tab content component for the tab selector.
      */
-    interface AtTab {
+    interface AtTabContent {
+        /**
+          * Determines if the tab content is active
+          * @default false
+         */
+        "is_active"?: boolean;
+        /**
+          * ID of the tab
+         */
+        "tab_id"?: string;
+    }
+    /**
+     * @category Navigation
+     * @description A tab trigger component for the tab selector.
+     */
+    interface AtTabTrigger {
+        /**
+          * If true, the tab will fill the parent container's width. Set by parent <at-tabs> to control layout.
+          * @default false
+         */
+        "fill"?: boolean;
         /**
           * Applies styling when active
          */
@@ -6614,57 +6644,6 @@ declare namespace LocalJSX {
           * Title to be displayed in the tab
          */
         "tab_title"?: string;
-    }
-    /**
-     * @category Navigation
-     * @description A tab content component for the tab selector.
-     */
-    interface AtTabContent {
-        /**
-          * Determines if the tab content is active
-          * @default false
-         */
-        "is_active"?: boolean;
-        /**
-          * ID of the tab
-         */
-        "tab_id"?: string;
-    }
-    /**
-     * ### interface Tab
-     * ```
-     * {
-     *   id: string;
-     *   title: string;
-     * }
-     * ```
-     * @category Navigation
-     * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
-     */
-    interface AtTabSelector {
-        /**
-          * Sets the current active tab
-         */
-        "active_tab"?: string;
-        /**
-          * hide navigation when you want to provide custom controls
-          * @default false
-         */
-        "hide_nav"?: boolean;
-        /**
-          * Layout of the tabs
-          * @default 'horizontal'
-         */
-        "layout"?: Layout1;
-        /**
-          * Emits the id of the tab when a new active_tab is set
-         */
-        "onAtuiChange"?: (event: AtTabSelectorCustomEvent<string>) => void;
-        /**
-          * List of tabs the selector will have
-          * @default []
-         */
-        "tabs"?: Tab[];
     }
     /**
      * @category Data Tables
@@ -6815,6 +6794,47 @@ declare namespace LocalJSX {
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
         "page_size_options"?: SelectOption[];
+    }
+    /**
+     * ### interface Tab
+     * ```
+     * {
+     *   id: string;
+     *   title: string;
+     * }
+     * ```
+     * @category Navigation
+     * @description A tabs component for switching between different content sections. Provides keyboard navigation and accessible tab panel management. It acts as a controller.
+     */
+    interface AtTabs {
+        /**
+          * Sets the current active tab
+         */
+        "active_tab"?: string;
+        /**
+          * If true, tabs will fill the width of the container
+          * @default false
+         */
+        "fill"?: boolean;
+        /**
+          * hide navigation when you want to provide custom controls
+          * @default false
+         */
+        "hide_nav"?: boolean;
+        /**
+          * Layout of the tabs
+          * @default 'horizontal'
+         */
+        "layout"?: Layout1;
+        /**
+          * Emits the id of the tab when a new active_tab is set
+         */
+        "onAtuiChange"?: (event: AtTabsCustomEvent<string>) => void;
+        /**
+          * List of tabs the selector will have
+          * @default []
+         */
+        "tabs"?: Tab[];
     }
     /**
      * @category Data Tables
@@ -7221,15 +7241,15 @@ declare namespace LocalJSX {
         "at-src-dest": AtSrcDest;
         "at-static-table": AtStaticTable;
         "at-status-bar": AtStatusBar;
-        "at-tab": AtTab;
         "at-tab-content": AtTabContent;
-        "at-tab-selector": AtTabSelector;
+        "at-tab-trigger": AtTabTrigger;
         "at-table": AtTable;
         "at-table-actions": AtTableActions;
         "at-table-export-menu": AtTableExportMenu;
         "at-table-filter-menu": AtTableFilterMenu;
         "at-table-filters": AtTableFilters;
         "at-table-pagination": AtTablePagination;
+        "at-tabs": AtTabs;
         "at-text-badge-cell": AtTextBadgeCell;
         "at-text-cell": AtTextCell;
         "at-text-icon-cell": AtTextIconCell;
@@ -7577,26 +7597,14 @@ declare module "@stencil/core" {
             "at-status-bar": LocalJSX.AtStatusBar & JSXBase.HTMLAttributes<HTMLAtStatusBarElement>;
             /**
              * @category Navigation
-             * @description A tab component for the tab selector.
-             */
-            "at-tab": LocalJSX.AtTab & JSXBase.HTMLAttributes<HTMLAtTabElement>;
-            /**
-             * @category Navigation
              * @description A tab content component for the tab selector.
              */
             "at-tab-content": LocalJSX.AtTabContent & JSXBase.HTMLAttributes<HTMLAtTabContentElement>;
             /**
-             * ### interface Tab
-             * ```
-             * {
-             *   id: string;
-             *   title: string;
-             * }
-             * ```
              * @category Navigation
-             * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
+             * @description A tab trigger component for the tab selector.
              */
-            "at-tab-selector": LocalJSX.AtTabSelector & JSXBase.HTMLAttributes<HTMLAtTabSelectorElement>;
+            "at-tab-trigger": LocalJSX.AtTabTrigger & JSXBase.HTMLAttributes<HTMLAtTabTriggerElement>;
             /**
              * @category Data Tables
              * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
@@ -7625,6 +7633,18 @@ declare module "@stencil/core" {
              * have control of the table's pagination.
              */
             "at-table-pagination": LocalJSX.AtTablePagination & JSXBase.HTMLAttributes<HTMLAtTablePaginationElement>;
+            /**
+             * ### interface Tab
+             * ```
+             * {
+             *   id: string;
+             *   title: string;
+             * }
+             * ```
+             * @category Navigation
+             * @description A tabs component for switching between different content sections. Provides keyboard navigation and accessible tab panel management. It acts as a controller.
+             */
+            "at-tabs": LocalJSX.AtTabs & JSXBase.HTMLAttributes<HTMLAtTabsElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a text with a badge.

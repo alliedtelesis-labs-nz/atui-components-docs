@@ -19,7 +19,7 @@ const AtTabContent = class {
         this.isActive = this.is_active;
     }
     async componentDidLoad() {
-        this.tabSelector = this.el.closest('at-tab-selector');
+        this.tabSelector = this.el.closest('at-tabs');
         if (this.tabSelector) {
             const activeTab = await this.tabSelector.getActiveTab();
             this.setIsActive(activeTab);
@@ -39,7 +39,7 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: 'b8afcc447397a4902aba5ed35dc3c5de86ad9f6e', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '99a9e4bc0f3e6bce10c3508575d2dfa8b156d2bb' })));
+        return (h("div", { key: '107e607de5a2df1d048699402a7b7a2cd280ca3b', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'b192d736e58da0c2c96c3e96f5d90af7c3dc603c' })));
     }
 };
 
