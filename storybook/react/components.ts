@@ -938,14 +938,14 @@ export const AtTablePagination: StencilReactComponent<AtTablePaginationElement, 
     defineCustomElement: defineAtTablePagination
 });
 
-type AtTabsEvents = { onAtuiChange: EventName<CustomEvent<string>> };
+type AtTabsEvents = { onAtuiTabChange: EventName<CustomEvent<string>> };
 
 export const AtTabs: StencilReactComponent<AtTabsElement, AtTabsEvents> = /*@__PURE__*/ createComponent<AtTabsElement, AtTabsEvents>({
     tagName: 'at-tabs',
     elementClass: AtTabsElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiChange: 'atuiChange' } as AtTabsEvents,
+    events: { onAtuiTabChange: 'atuiTabChange' } as AtTabsEvents,
     defineCustomElement: defineAtTabs
 });
 

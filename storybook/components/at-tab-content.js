@@ -26,7 +26,7 @@ const AtTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtTabContent exten
         if (this.tabSelector) {
             const activeTab = await this.tabSelector.getActiveTab();
             this.setIsActive(activeTab);
-            this.tabSelector.addEventListener('atuiChange', this.updateActiveState);
+            this.tabSelector.addEventListener('atuiTabChange', this.updateActiveState);
         }
     }
     disconnectedCallback() {
@@ -42,7 +42,7 @@ const AtTabContent$1 = /*@__PURE__*/ proxyCustomElement(class AtTabContent exten
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: '107e607de5a2df1d048699402a7b7a2cd280ca3b', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'b192d736e58da0c2c96c3e96f5d90af7c3dc603c' })));
+        return (h("div", { key: 'b024117bd990a528d9f47c54cb84f84640402553', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '8cefae6e661f0600f976bf02ea8548806ace3043' })));
     }
 }, [260, "at-tab-content", {
         "tab_id": [1],

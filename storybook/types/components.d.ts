@@ -4074,7 +4074,7 @@ declare global {
         new (): HTMLAtTablePaginationElement;
     };
     interface HTMLAtTabsElementEventMap {
-        "atuiChange": string;
+        "atuiTabChange": string;
     }
     /**
      * ### interface Tab
@@ -6829,7 +6829,7 @@ declare namespace LocalJSX {
         /**
           * Emits the id of the tab when a new active_tab is set
          */
-        "onAtuiChange"?: (event: AtTabsCustomEvent<string>) => void;
+        "onAtuiTabChange"?: (event: AtTabsCustomEvent<string>) => void;
         /**
           * List of tabs the selector will have
           * @default []

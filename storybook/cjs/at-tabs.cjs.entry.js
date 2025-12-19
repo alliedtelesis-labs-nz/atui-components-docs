@@ -5,7 +5,7 @@ var index = require('./index-COiLLAKF.js');
 const AtTabs = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.atuiChange = index.createEvent(this, "atuiChange", 7);
+        this.atuiTabChange = index.createEvent(this, "atuiTabChange", 3);
     }
     get el() { return index.getElement(this); }
     /**
@@ -32,10 +32,10 @@ const AtTabs = class {
     /**
      * Emits the id of the tab when a new active_tab is set
      */
-    atuiChange;
+    atuiTabChange;
     tabEls = [];
     tabManualAdded = [];
-    componentDidLoad() {
+    componentDidRender() {
         this.tabEls = this.getTabsElements();
         requestAnimationFrame(() => {
             this.initializeTabs();
@@ -68,7 +68,10 @@ const AtTabs = class {
         });
     }
     getTabsElements() {
-        return Array.from(this.el.querySelectorAll('at-tab-trigger'));
+        const navContainer = this.el.querySelector(`#container-${this.tabsetId}`);
+        if (!navContainer)
+            return [];
+        return Array.from(navContainer.querySelectorAll('at-tab-trigger'));
     }
     componentDidUpdate() {
         this.updateIndicatorPosition();
@@ -77,14 +80,14 @@ const AtTabs = class {
         const activeTab = this.tabs.find((tab) => tab.id === newValue);
         const activeManualtab = this.tabManualAdded.find((tab) => tab.id === newValue);
         if (activeTab) {
-            this.atuiChange.emit(activeTab.id);
+            this.atuiTabChange.emit(activeTab.id);
             this.updateTabActiveStates(newValue);
             requestAnimationFrame(() => {
                 this.updateIndicatorPosition();
             });
         }
         else if (activeManualtab) {
-            this.atuiChange.emit(activeManualtab.id);
+            this.atuiTabChange.emit(activeManualtab.id);
             this.updateTabActiveStates(newValue);
             requestAnimationFrame(() => {
                 this.updateIndicatorPosition();
@@ -145,11 +148,11 @@ const AtTabs = class {
                 }, "aria-hidden": "true", role: "presentation" })))), index.h("div", { role: "tabpanel", slot: "tabset-content" }, index.h("slot", { name: "tab-content" }))));
         }
         if (this.layout === 'vertical') {
-            return (index.h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, index.h("div", { slot: "master" }, index.h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16" }, this.tabOptions, index.h("slot", { name: "tab-list" }), index.h("slot", { name: "tab-nav" }))), index.h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, index.h("slot", { name: "tab-content" }))));
+            return (index.h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, index.h("div", { slot: "master" }, index.h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16", id: `container-${this.tabsetId}` }, this.tabOptions, index.h("slot", { name: "tab-list" }), index.h("slot", { name: "tab-nav" }))), index.h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, index.h("slot", { name: "tab-content" }))));
         }
     }
     render() {
-        return index.h(index.Host, { key: '627ea8b9ca290933a0b8e62fc9119ef4f9477f6a' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'a67c315ca4053aeee31272d974467136772f355c' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

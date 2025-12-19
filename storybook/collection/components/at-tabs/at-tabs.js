@@ -40,10 +40,10 @@ export class AtTabs {
     /**
      * Emits the id of the tab when a new active_tab is set
      */
-    atuiChange;
+    atuiTabChange;
     tabEls = [];
     tabManualAdded = [];
-    componentDidLoad() {
+    componentDidRender() {
         this.tabEls = this.getTabsElements();
         requestAnimationFrame(() => {
             this.initializeTabs();
@@ -76,7 +76,10 @@ export class AtTabs {
         });
     }
     getTabsElements() {
-        return Array.from(this.el.querySelectorAll('at-tab-trigger'));
+        const navContainer = this.el.querySelector(`#container-${this.tabsetId}`);
+        if (!navContainer)
+            return [];
+        return Array.from(navContainer.querySelectorAll('at-tab-trigger'));
     }
     componentDidUpdate() {
         this.updateIndicatorPosition();
@@ -85,14 +88,14 @@ export class AtTabs {
         const activeTab = this.tabs.find((tab) => tab.id === newValue);
         const activeManualtab = this.tabManualAdded.find((tab) => tab.id === newValue);
         if (activeTab) {
-            this.atuiChange.emit(activeTab.id);
+            this.atuiTabChange.emit(activeTab.id);
             this.updateTabActiveStates(newValue);
             requestAnimationFrame(() => {
                 this.updateIndicatorPosition();
             });
         }
         else if (activeManualtab) {
-            this.atuiChange.emit(activeManualtab.id);
+            this.atuiTabChange.emit(activeManualtab.id);
             this.updateTabActiveStates(newValue);
             requestAnimationFrame(() => {
                 this.updateIndicatorPosition();
@@ -153,11 +156,11 @@ export class AtTabs {
                 }, "aria-hidden": "true", role: "presentation" })))), h("div", { role: "tabpanel", slot: "tabset-content" }, h("slot", { name: "tab-content" }))));
         }
         if (this.layout === 'vertical') {
-            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16" }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, h("slot", { name: "tab-content" }))));
+            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, h("slot", { name: "tab-content" }))));
         }
     }
     render() {
-        return h(Host, { key: '627ea8b9ca290933a0b8e62fc9119ef4f9477f6a' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'a67c315ca4053aeee31272d974467136772f355c' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {
@@ -278,9 +281,9 @@ export class AtTabs {
     }
     static get events() {
         return [{
-                "method": "atuiChange",
-                "name": "atuiChange",
-                "bubbles": true,
+                "method": "atuiTabChange",
+                "name": "atuiTabChange",
+                "bubbles": false,
                 "cancelable": true,
                 "composed": true,
                 "docs": {

@@ -45,13 +45,13 @@ export declare class AtTabs {
     /**
      * Emits the id of the tab when a new active_tab is set
      */
-    atuiChange: EventEmitter<string>;
+    atuiTabChange: EventEmitter<string>;
     tabEls: HTMLAtTabTriggerElement[];
     tabManualAdded: {
         id: string;
         title: string;
     }[];
-    componentDidLoad(): void;
+    componentDidRender(): void;
     initializeTabs(): void;
     addEventListenersToTabs(): void;
     getTabsElements(): HTMLAtTabTriggerElement[];
