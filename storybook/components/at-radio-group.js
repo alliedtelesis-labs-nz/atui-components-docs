@@ -1,7 +1,7 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { c as classlist } from './p-COG8_R0C.js';
 import { d as defineCustomElement$4 } from './p-CIL9MUFC.js';
-import { d as defineCustomElement$3 } from './p-CNDRt07F.js';
+import { d as defineCustomElement$3 } from './p-BOj0tOV2.js';
 import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
 
 const layoutVariantsConfig = {

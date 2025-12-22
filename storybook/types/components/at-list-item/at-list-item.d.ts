@@ -35,10 +35,6 @@ export declare class AtListItem {
      * Border below the list item.
      */
     border?: boolean;
-    /**
-     * Adds background and cursor styles to indicate selection
-     */
-    selectable?: boolean;
     get sizeClasses(): string;
     render(): any;
 }

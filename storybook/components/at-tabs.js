@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { d as defineCustomElement$3 } from './p-C2Xc8lF0.js';
-import { d as defineCustomElement$2 } from './p-CfCnCt6Q.js';
+import { d as defineCustomElement$2 } from './p-DCWVLbQS.js';
 
 const AtTabs$1 = /*@__PURE__*/ proxyCustomElement(class AtTabs extends H {
     constructor(registerHost) {
@@ -151,11 +151,11 @@ const AtTabs$1 = /*@__PURE__*/ proxyCustomElement(class AtTabs extends H {
                 }, "aria-hidden": "true", role: "presentation" })))), h("div", { role: "tabpanel", slot: "tabset-content" }, h("slot", { name: "tab-content" }))));
         }
         if (this.layout === 'vertical') {
-            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, h("slot", { name: "tab-content" }))));
+            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col p-[2px] p-[16px]", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { role: "tabpanel", slot: "detail", class: "flex-col] flex flex-grow" }, h("slot", { name: "tab-content" }))));
         }
     }
     render() {
-        return h(Host, { key: 'a67c315ca4053aeee31272d974467136772f355c' }, this.checkLayoutAndRender());
+        return h(Host, { key: '496eef67c55d893a488bd3e914ab5f4437c31cc4' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

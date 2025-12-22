@@ -3,8 +3,8 @@ import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { c as classlist } from './p-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
 import { d as defineCustomElement$8 } from './p-BRoK1DxF.js';
-import { d as defineCustomElement$7 } from './p-BT8_JQR7.js';
-import { d as defineCustomElement$6 } from './p-DjMng_8R.js';
+import { d as defineCustomElement$7 } from './p-Dx91wqSp.js';
+import { d as defineCustomElement$6 } from './p-p0pQejKl.js';
 import { d as defineCustomElement$5 } from './p-CIL9MUFC.js';
 import { d as defineCustomElement$4 } from './p-bn76tgB4.js';
 import { d as defineCustomElement$3 } from './p-C1-3O-ig.js';
@@ -13,15 +13,15 @@ import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/30 bg-white',
+            false: 'focus-within:ring-active-foreground/40 bg-white',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/30',
+            false: 'focus-within:ring-active-foreground/40',
             true: '!bg-surface-1 !text-dark cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
+            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/40',
             true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
         },
         typeahead: {
@@ -199,7 +199,7 @@ const AtMultiSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtMultiSel
     renderOptions() {
         return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {

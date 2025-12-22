@@ -3,15 +3,15 @@ import { classlist } from "../../utils/classlist";
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/30 bg-white',
+            false: 'focus-within:ring-active-foreground/40 bg-white',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/30',
+            false: 'focus-within:ring-active-foreground/40',
             true: '!bg-surface-1 !text-dark cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
+            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/40',
             true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
         },
     },

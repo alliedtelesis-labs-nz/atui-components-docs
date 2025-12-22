@@ -1121,11 +1121,6 @@ export namespace Components {
          */
         "item_title": string;
         /**
-          * Adds background and cursor styles to indicate selection
-          * @default false
-         */
-        "selectable"?: boolean;
-        /**
           * Size of the list item.
           * @default 'sm'
          */
@@ -5445,11 +5440,6 @@ declare namespace LocalJSX {
           * Title of the list item.
          */
         "item_title"?: string;
-        /**
-          * Adds background and cursor styles to indicate selection
-          * @default false
-         */
-        "selectable"?: boolean;
         /**
           * Size of the list item.
           * @default 'sm'

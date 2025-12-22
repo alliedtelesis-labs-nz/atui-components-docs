@@ -148,11 +148,11 @@ const AtTabs = class {
                 }, "aria-hidden": "true", role: "presentation" })))), index.h("div", { role: "tabpanel", slot: "tabset-content" }, index.h("slot", { name: "tab-content" }))));
         }
         if (this.layout === 'vertical') {
-            return (index.h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, index.h("div", { slot: "master" }, index.h("nav", { role: "tablist", class: "flex flex-grow flex-col pr-16", id: `container-${this.tabsetId}` }, this.tabOptions, index.h("slot", { name: "tab-list" }), index.h("slot", { name: "tab-nav" }))), index.h("div", { role: "tabpanel", slot: "detail", class: "flex flex-grow flex-col" }, index.h("slot", { name: "tab-content" }))));
+            return (index.h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, index.h("div", { slot: "master" }, index.h("nav", { role: "tablist", class: "flex flex-grow flex-col p-[2px] p-[16px]", id: `container-${this.tabsetId}` }, this.tabOptions, index.h("slot", { name: "tab-list" }), index.h("slot", { name: "tab-nav" }))), index.h("div", { role: "tabpanel", slot: "detail", class: "flex-col] flex flex-grow" }, index.h("slot", { name: "tab-content" }))));
         }
     }
     render() {
-        return index.h(index.Host, { key: 'a67c315ca4053aeee31272d974467136772f355c' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '496eef67c55d893a488bd3e914ab5f4437c31cc4' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]

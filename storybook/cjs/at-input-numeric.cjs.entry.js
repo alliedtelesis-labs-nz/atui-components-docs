@@ -24,7 +24,7 @@ const inputVariantsConfig = {
             true: 'bg-surface-1 text-dark border-none',
         },
         invalid: {
-            false: 'border-med focus:border-active-dark focus:ring-active-foreground/30 focus:ring-2',
+            false: 'border-med focus:border-active-dark focus:ring-active-foreground/40 focus:ring-2',
             true: 'border-error-base focus:ring-destructive-foreground/30 focus:ring-2',
         },
         activePlaceholder: {
@@ -46,7 +46,7 @@ const inputVariantsConfig = {
             readonly: false,
             disabled: false,
             invalid: false,
-            class: 'border-med text-dark focus:border-active-foreground focus:ring-active-foreground/30 bg-white focus:ring-2',
+            class: 'border-med text-dark focus:border-active-foreground focus:ring-active-foreground/40 bg-white focus:ring-2',
         },
     ],
     defaultVariants: {
