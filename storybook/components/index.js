@@ -42,6 +42,7 @@ export { AtMessage, defineCustomElement as defineCustomElementAtMessage } from '
 export { AtMultiBtnCell, defineCustomElement as defineCustomElementAtMultiBtnCell } from './at-multi-btn-cell.js';
 export { AtMultiSelect, defineCustomElement as defineCustomElementAtMultiSelect } from './at-multi-select.js';
 export { AtPlaceholder, defineCustomElement as defineCustomElementAtPlaceholder } from './at-placeholder.js';
+export { AtProgressBar, defineCustomElement as defineCustomElementAtProgressBar } from './at-progress-bar.js';
 export { AtPromptContainer, defineCustomElement as defineCustomElementAtPromptContainer } from './at-prompt-container.js';
 export { AtPromptInput, defineCustomElement as defineCustomElementAtPromptInput } from './at-prompt-input.js';
 export { AtPromptMessage, defineCustomElement as defineCustomElementAtPromptMessage } from './at-prompt-message.js';

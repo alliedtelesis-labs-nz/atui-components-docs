@@ -161,6 +161,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-placeholder.entry.js').then(processMod, consoleError);
+                case 'at-progress-bar':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-progress-bar.entry.js').then(processMod, consoleError);
                 case 'at-prompt-container':
                     return import(
                       /* webpackMode: "lazy" */

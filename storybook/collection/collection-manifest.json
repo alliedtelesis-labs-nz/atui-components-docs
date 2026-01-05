@@ -47,6 +47,7 @@
     "components/at-message/at-message.js",
     "components/at-multi-select/at-multi-select.js",
     "components/at-placeholder/at-placeholder.js",
+    "components/at-progress-bar/at-progress-bar.js",
     "components/at-radio-group/at-radio-group.js",
     "components/at-radio-group/at-radio/at-radio.js",
     "components/at-search/at-search.js",

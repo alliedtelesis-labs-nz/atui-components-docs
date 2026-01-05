@@ -83,6 +83,8 @@ export { AtMultiSelectComponent as AtMultiSelect } from '../types/components/at-
 export { defineCustomElement as defineCustomElementAtMultiSelect } from './at-multi-select';
 export { AtPlaceholderComponent as AtPlaceholder } from '../types/components/at-placeholder/at-placeholder';
 export { defineCustomElement as defineCustomElementAtPlaceholder } from './at-placeholder';
+export { AtProgressBar as AtProgressBar } from '../types/components/at-progress-bar/at-progress-bar';
+export { defineCustomElement as defineCustomElementAtProgressBar } from './at-progress-bar';
 export { AtPromptContainer as AtPromptContainer } from '../types/components/prompt-components/at-prompt-container/at-prompt-container';
 export { defineCustomElement as defineCustomElementAtPromptContainer } from './at-prompt-container';
 export { AtPromptInputComponent as AtPromptInput } from '../types/components/prompt-components/at-prompt-input/at-prompt-input';

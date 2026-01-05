@@ -30,6 +30,7 @@ import { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loadin
 import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 import { SelectOption } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
+import { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 import { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { Width } from "./components/at-sidebar/at-sidebar";
@@ -71,6 +72,7 @@ export { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loadin
 export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
 export { SelectOption } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
+export { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
 export { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { Width } from "./components/at-sidebar/at-sidebar";
@@ -1479,6 +1481,32 @@ export namespace Components {
           * @default 'md'
          */
         "size": PlaceholderSize;
+    }
+    /**
+     * @category Data Visualization
+     * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
+     */
+    interface AtProgressBar {
+        /**
+          * Mode of the progress bar, either determinate or indeterminate (loading).
+          * @default 'determinate'
+         */
+        "mode"?: 'determinate' | 'indeterminate';
+        /**
+          * Percentage value of the progress bar.
+          * @default 0
+         */
+        "percentage": number;
+        /**
+          * Height of the progress bar
+          * @default 'sm'
+         */
+        "size"?: Size;
+        /**
+          * Type of the progress bar, which determines its color.
+          * @default 'info'
+         */
+        "type"?: ProgressBarType;
     }
     /**
      * @category Prompt
@@ -3623,6 +3651,16 @@ declare global {
         prototype: HTMLAtPlaceholderElement;
         new (): HTMLAtPlaceholderElement;
     };
+    /**
+     * @category Data Visualization
+     * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
+     */
+    interface HTMLAtProgressBarElement extends Components.AtProgressBar, HTMLStencilElement {
+    }
+    var HTMLAtProgressBarElement: {
+        prototype: HTMLAtProgressBarElement;
+        new (): HTMLAtProgressBarElement;
+    };
     interface HTMLAtPromptContainerElementEventMap {
         "atSubmit": string;
         "atStop": void;
@@ -4428,6 +4466,7 @@ declare global {
         "at-multi-btn-cell": HTMLAtMultiBtnCellElement;
         "at-multi-select": HTMLAtMultiSelectElement;
         "at-placeholder": HTMLAtPlaceholderElement;
+        "at-progress-bar": HTMLAtProgressBarElement;
         "at-prompt-container": HTMLAtPromptContainerElement;
         "at-prompt-input": HTMLAtPromptInputElement;
         "at-prompt-message": HTMLAtPromptMessageElement;
@@ -5878,6 +5917,32 @@ declare namespace LocalJSX {
           * @default 'md'
          */
         "size"?: PlaceholderSize;
+    }
+    /**
+     * @category Data Visualization
+     * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
+     */
+    interface AtProgressBar {
+        /**
+          * Mode of the progress bar, either determinate or indeterminate (loading).
+          * @default 'determinate'
+         */
+        "mode"?: 'determinate' | 'indeterminate';
+        /**
+          * Percentage value of the progress bar.
+          * @default 0
+         */
+        "percentage"?: number;
+        /**
+          * Height of the progress bar
+          * @default 'sm'
+         */
+        "size"?: Size;
+        /**
+          * Type of the progress bar, which determines its color.
+          * @default 'info'
+         */
+        "type"?: ProgressBarType;
     }
     /**
      * @category Prompt
@@ -7337,6 +7402,7 @@ declare namespace LocalJSX {
         "at-multi-btn-cell": AtMultiBtnCell;
         "at-multi-select": AtMultiSelect;
         "at-placeholder": AtPlaceholder;
+        "at-progress-bar": AtProgressBar;
         "at-prompt-container": AtPromptContainer;
         "at-prompt-input": AtPromptInput;
         "at-prompt-message": AtPromptMessage;
@@ -7611,6 +7677,11 @@ declare module "@stencil/core" {
              * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
              */
             "at-placeholder": LocalJSX.AtPlaceholder & JSXBase.HTMLAttributes<HTMLAtPlaceholderElement>;
+            /**
+             * @category Data Visualization
+             * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
+             */
+            "at-progress-bar": LocalJSX.AtProgressBar & JSXBase.HTMLAttributes<HTMLAtProgressBarElement>;
             /**
              * @category Prompt
              * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
