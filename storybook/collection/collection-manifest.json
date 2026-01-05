@@ -38,6 +38,7 @@
     "components/at-input-date/at-input-date.js",
     "components/at-input-numeric/at-input-numeric.js",
     "components/at-input-range/at-input-range.js",
+    "components/at-input-time/at-input-time.js",
     "components/at-layout/at-layout.js",
     "components/at-list-item/at-list-item.js",
     "components/at-list-selector/at-list-selector.js",

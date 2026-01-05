@@ -158,7 +158,7 @@ const AtMultiSelectComponent = class {
             : true;
     }
     render() {
-        return (index.h(index.Host, { key: 'c8a60e8189f2adb846845bf27c3574d18ddd1d01', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '88ac9835939a7d80255007b3d0f5d938dfe45f35', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -166,9 +166,9 @@ const AtMultiSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'ddfbde3ff838cb51b2c3cb3d5a9c0951072199df', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'f018cdb4aec027f91683a487485fd09d391df839', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '83508f114487940d25901c043f4aa4ab266b5801' }, this.error_text && this.invalid && (index.h("span", { key: '741ecf226671e686d3f72d352d2da22e7a73760e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '83abe75ab0db4d423d34c48b41283a178f029f2e' }, this.error_text && this.invalid && (index.h("span", { key: 'e28bf8677fafc145c136645a387fce01902f3114', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));

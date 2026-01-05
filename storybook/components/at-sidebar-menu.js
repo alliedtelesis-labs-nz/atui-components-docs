@@ -10,7 +10,7 @@ const AtSidebarMenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarM
         }
     }
     render() {
-        return (h(Host, { key: '9715570f767e3bbba1c01b3caf768fb01ca5f0ab', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'f65c399fa0ac7ec2303a1331ff4ad7b391370368' })));
+        return (h(Host, { key: '32e978734eb7da443094ee8740c919547b2de8bd', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'f0c77c4f9ebcf988e298c7e889a1ad418480f545' })));
     }
     static get style() { return atSidebarMenuCss; }
 }, [262, "at-sidebar-menu"]);

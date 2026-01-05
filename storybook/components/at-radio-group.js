@@ -1,8 +1,8 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { c as classlist } from './p-COG8_R0C.js';
-import { d as defineCustomElement$4 } from './p-CnKCj2oj.js';
-import { d as defineCustomElement$3 } from './p-BJcAAOhe.js';
-import { d as defineCustomElement$2 } from './p-CdUod9Pr.js';
+import { d as defineCustomElement$4 } from './p-C267TtKm.js';
+import { d as defineCustomElement$3 } from './p-yeoegcsl.js';
+import { d as defineCustomElement$2 } from './p-DOs9EXMS.js';
 
 const layoutVariantsConfig = {
     variants: {
@@ -166,8 +166,8 @@ const AtRadioGroup$1 = /*@__PURE__*/ proxyCustomElement(class AtRadioGroup exten
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: '8a652e75167db6cbbce30ed46d7ab59059797dac', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'a2c45350cdf562c779de7aa50bbe575869a9b88e', class: "flex flex-col" }, h("slot", { key: '9b7bf3a57d1f23d058e63bfbe734dee3340e4414', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '62f670364f9ce0c979f3853332e816f92d9fc485', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'bca2eb968b1a8a9701fb185d123674e73fc33a7f', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '5b739f263088f39ea2167914919fe36a0bebc869', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'e63aa905ab45785fda2ee32a06ba3a7fc3170085' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'a93497c9cd8a5c078b71bf52ee604025cfdecbf7', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '6f49b86b1f2c2051613a84f9b8db0a1e1b6fb584', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'acbcbffb2f9baf72905ef4a8e7b8f4c2e64bc2c5', class: "flex flex-col" }, h("slot", { key: '6d27c0ddf1cb2834254c05be773a3aeeddf9cef7', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'b9a9e7ff872fee786b52d2339ca7c1e0386385c6', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '6dd3f8c9a7dba7c30125415523a4065c1b06b5fd', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '669406371aaff6bc14c94808e4341734b8eb28e5', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '6a0ee0ed74476a1ec73c97451fdbee8821299df3' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '8f21287e94a9017945bacee6243d6992fdc52586', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "value": ["watchValue"]

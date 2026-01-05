@@ -59,6 +59,8 @@ export { AtInputNumericComponent as AtInputNumeric } from '../types/components/a
 export { defineCustomElement as defineCustomElementAtInputNumeric } from './at-input-numeric';
 export { AtInputRangeComponent as AtInputRange } from '../types/components/at-input-range/at-input-range';
 export { defineCustomElement as defineCustomElementAtInputRange } from './at-input-range';
+export { AtInputTime as AtInputTime } from '../types/components/at-input-time/at-input-time';
+export { defineCustomElement as defineCustomElementAtInputTime } from './at-input-time';
 export { AtLayout as AtLayout } from '../types/components/at-layout/at-layout';
 export { defineCustomElement as defineCustomElementAtLayout } from './at-layout';
 export { AtListItem as AtListItem } from '../types/components/at-list-item/at-list-item';

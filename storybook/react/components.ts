@@ -37,6 +37,7 @@ import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } fr
 import { AtInputDate as AtInputDateElement, defineCustomElement as defineAtInputDate } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-date.js";
 import { AtInputNumeric as AtInputNumericElement, defineCustomElement as defineAtInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-numeric.js";
 import { AtInputRange as AtInputRangeElement, defineCustomElement as defineAtInputRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-range.js";
+import { AtInputTime as AtInputTimeElement, defineCustomElement as defineAtInputTime } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-time.js";
 import { AtInput as AtInputElement, defineCustomElement as defineAtInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input.js";
 import { AtLayout as AtLayoutElement, defineCustomElement as defineAtLayout } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-layout.js";
 import { AtListItem as AtListItemElement, defineCustomElement as defineAtListItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-list-item.js";
@@ -437,6 +438,17 @@ export const AtInputRange: StencilReactComponent<AtInputRangeElement, AtInputRan
     react: React,
     events: { onAtuiChange: 'atuiChange' } as AtInputRangeEvents,
     defineCustomElement: defineAtInputRange
+});
+
+type AtInputTimeEvents = { onAtuiChange: EventName<CustomEvent<string | null>> };
+
+export const AtInputTime: StencilReactComponent<AtInputTimeElement, AtInputTimeEvents> = /*@__PURE__*/ createComponent<AtInputTimeElement, AtInputTimeEvents>({
+    tagName: 'at-input-time',
+    elementClass: AtInputTimeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiChange: 'atuiChange' } as AtInputTimeEvents,
+    defineCustomElement: defineAtInputTime
 });
 
 type AtLayoutEvents = NonNullable<unknown>;

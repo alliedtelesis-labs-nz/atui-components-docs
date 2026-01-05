@@ -1129,6 +1129,57 @@ export namespace Components {
          */
         "warning_text"?: string;
     }
+    interface AtInputTime {
+        /**
+          * Disabled flag
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text displayed when invalid is set
+         */
+        "error_text"?: string;
+        /**
+          * Short description or validation hint displayed under the label
+         */
+        "hint_text"?: string;
+        /**
+          * Optional info icon tooltip text (used by at-form-label)
+         */
+        "info_text"?: string;
+        /**
+          * Shows the error state styling and error text
+         */
+        "invalid"?: boolean;
+        /**
+          * Label text displayed above the input
+         */
+        "label"?: string;
+        /**
+          * Maximum time (e.g., "18:30")
+         */
+        "max"?: string;
+        /**
+          * Minimum time (e.g., "08:00")
+         */
+        "min"?: string;
+        /**
+          * Readonly flag
+         */
+        "readonly"?: boolean;
+        /**
+          * Required flag
+         */
+        "required"?: boolean;
+        /**
+          * Step in seconds (e.g., 60 for minute granularity, 1 to allow seconds)
+          * @default 60
+         */
+        "step"?: number;
+        /**
+          * Current value in "HH:MM" or "HH:MM:SS"
+         */
+        "value"?: string;
+    }
     /**
      * @category Layout
      * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
@@ -2887,6 +2938,10 @@ export interface AtInputRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtInputRangeElement;
 }
+export interface AtInputTimeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtInputTimeElement;
+}
 export interface AtListSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtListSelectorElement;
@@ -3489,6 +3544,23 @@ declare global {
     var HTMLAtInputRangeElement: {
         prototype: HTMLAtInputRangeElement;
         new (): HTMLAtInputRangeElement;
+    };
+    interface HTMLAtInputTimeElementEventMap {
+        "atuiChange": string | null;
+    }
+    interface HTMLAtInputTimeElement extends Components.AtInputTime, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtInputTimeElementEventMap>(type: K, listener: (this: HTMLAtInputTimeElement, ev: AtInputTimeCustomEvent<HTMLAtInputTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtInputTimeElementEventMap>(type: K, listener: (this: HTMLAtInputTimeElement, ev: AtInputTimeCustomEvent<HTMLAtInputTimeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtInputTimeElement: {
+        prototype: HTMLAtInputTimeElement;
+        new (): HTMLAtInputTimeElement;
     };
     /**
      * @category Layout
@@ -4454,6 +4526,7 @@ declare global {
         "at-input-date": HTMLAtInputDateElement;
         "at-input-numeric": HTMLAtInputNumericElement;
         "at-input-range": HTMLAtInputRangeElement;
+        "at-input-time": HTMLAtInputTimeElement;
         "at-layout": HTMLAtLayoutElement;
         "at-list-item": HTMLAtListItemElement;
         "at-list-selector": HTMLAtListSelectorElement;
@@ -5560,6 +5633,61 @@ declare namespace LocalJSX {
           * Warning message for the input.
          */
         "warning_text"?: string;
+    }
+    interface AtInputTime {
+        /**
+          * Disabled flag
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text displayed when invalid is set
+         */
+        "error_text"?: string;
+        /**
+          * Short description or validation hint displayed under the label
+         */
+        "hint_text"?: string;
+        /**
+          * Optional info icon tooltip text (used by at-form-label)
+         */
+        "info_text"?: string;
+        /**
+          * Shows the error state styling and error text
+         */
+        "invalid"?: boolean;
+        /**
+          * Label text displayed above the input
+         */
+        "label"?: string;
+        /**
+          * Maximum time (e.g., "18:30")
+         */
+        "max"?: string;
+        /**
+          * Minimum time (e.g., "08:00")
+         */
+        "min"?: string;
+        /**
+          * Emits when value changes (normalized string or null)
+         */
+        "onAtuiChange"?: (event: AtInputTimeCustomEvent<string | null>) => void;
+        /**
+          * Readonly flag
+         */
+        "readonly"?: boolean;
+        /**
+          * Required flag
+         */
+        "required"?: boolean;
+        /**
+          * Step in seconds (e.g., 60 for minute granularity, 1 to allow seconds)
+          * @default 60
+         */
+        "step"?: number;
+        /**
+          * Current value in "HH:MM" or "HH:MM:SS"
+         */
+        "value"?: string;
     }
     /**
      * @category Layout
@@ -7390,6 +7518,7 @@ declare namespace LocalJSX {
         "at-input-date": AtInputDate;
         "at-input-numeric": AtInputNumeric;
         "at-input-range": AtInputRange;
+        "at-input-time": AtInputTime;
         "at-layout": AtLayout;
         "at-list-item": AtListItem;
         "at-list-selector": AtListSelector;
@@ -7621,6 +7750,7 @@ declare module "@stencil/core" {
              * @description A range input component for selecting a value within a specified range.
              */
             "at-input-range": LocalJSX.AtInputRange & JSXBase.HTMLAttributes<HTMLAtInputRangeElement>;
+            "at-input-time": LocalJSX.AtInputTime & JSXBase.HTMLAttributes<HTMLAtInputTimeElement>;
             /**
              * @category Layout
              * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
