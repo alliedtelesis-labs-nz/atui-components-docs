@@ -1,7 +1,13 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { c as classlist } from './classlist-COG8_R0C.js';
-import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { c as classlist } from './p-COG8_R0C.js';
+import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './p-CF3ljWUs.js';
+import { d as defineCustomElement$6 } from './p-Dx91wqSp.js';
+import { d as defineCustomElement$5 } from './p-CIL9MUFC.js';
+import { d as defineCustomElement$4 } from './p-bn76tgB4.js';
+import { d as defineCustomElement$3 } from './p-C1-3O-ig.js';
+import { d as defineCustomElement$2 } from './p-yH1iu8rH.js';
+import { d as defineCustomElement$1 } from './p-B8lZLFeC.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -28,9 +34,12 @@ const inputVariantsConfig = {
         invalid: false,
     },
 };
-const AtSelectComponent = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
+const AtSelectComponent = /*@__PURE__*/ proxyCustomElement(class AtSelectComponent extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
         this.atuiChange = createEvent(this, "atuiChange", 7);
     }
     /**
@@ -96,7 +105,7 @@ const AtSelectComponent = class {
     hasMatchingOptions = false;
     hasMatchingElOptions = false;
     parentWidth;
-    get el() { return getElement(this); }
+    get el() { return this; }
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     menuRef;
     optionEls = [];
@@ -236,44 +245,76 @@ const AtSelectComponent = class {
         "value": ["watchValue"],
         "searchText": ["watchSearchText"]
     }; }
-};
+}, [260, "at-select", {
+        "value": [1025],
+        "options": [16],
+        "label": [1],
+        "hint_text": [1],
+        "info_text": [1],
+        "placeholder": [1],
+        "error_text": [1],
+        "required": [4],
+        "invalid": [4],
+        "disabled": [4],
+        "readonly": [4],
+        "clearable": [4],
+        "typeahead": [4],
+        "autoclose": [4],
+        "searchText": [32],
+        "isOpen": [32],
+        "translations": [32],
+        "hasMatchingOptions": [32],
+        "hasMatchingElOptions": [32],
+        "parentWidth": [32]
+    }, undefined, {
+        "value": ["watchValue"],
+        "searchText": ["watchSearchText"]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-select", "at-button", "at-form-label", "at-loading", "at-menu", "at-select-option", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-select":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtSelectComponent);
+            }
+            break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "at-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "at-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "at-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-select-option":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$1();
+            }
+            break;
+    } });
+}
 
-const optionVariantsConfig = {
-    variants: {
-        active: {
-            true: 'bg-active-light text-active',
-            false: 'hover:bg-disabled-light bg-white',
-        },
-    },
-};
-const AtSelectOptionComponent = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
-        this.atuiClick = createEvent(this, "atuiClick", 7);
-    }
-    /**
-     * Value of the select option
-     */
-    value;
-    /**
-     * Will apply the active styling to the select option
-     */
-    is_active = false;
-    /**
-     * Emitted when the select option is clicked
-     */
-    atuiClick;
-    handleClick() {
-        this.atuiClick.emit(this.value);
-    }
-    render() {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
-        const classname = getOptionClassname({
-            active: this.is_active,
-        });
-        return (h("li", { key: 'c665cc1ea4eff953e23bcfff6918f352200d003c', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '28a6613f97a815e6653e4702874133a0e9ae18c1' }), this.value));
-    }
-};
+export { AtSelectComponent as A, defineCustomElement as d };
+//# sourceMappingURL=p-lR0ZcJ9k.js.map
 
-export { AtSelectComponent as at_select, AtSelectOptionComponent as at_select_option };
-//# sourceMappingURL=at-select.at-select-option.entry.js.map
+//# sourceMappingURL=p-lR0ZcJ9k.js.map
