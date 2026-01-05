@@ -54,7 +54,6 @@ export declare class AtCustomTimeRangeComponent {
     fromTime: string;
     translations: any;
     setDateNowSwitch: HTMLAtToggleSwitchElement;
-    toDatePickerEl: HTMLInputElement;
     toTimePickerEl: HTMLAtSelectElement;
     el: any;
     componentWillLoad(): Promise<void>;

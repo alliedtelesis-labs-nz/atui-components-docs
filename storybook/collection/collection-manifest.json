@@ -35,6 +35,7 @@
     "components/at-form-label/at-form-label.js",
     "components/at-header/at-header.js",
     "components/at-input/at-input.js",
+    "components/at-input-date/at-input-date.js",
     "components/at-input-numeric/at-input-numeric.js",
     "components/at-input-range/at-input-range.js",
     "components/at-layout/at-layout.js",

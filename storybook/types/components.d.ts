@@ -919,6 +919,55 @@ export namespace Components {
          */
         "value": string;
     }
+    interface AtInputDate {
+        /**
+          * Disables interaction with the input
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Error text displayed when invalid is set
+         */
+        "error_text": string;
+        /**
+          * Short description or validation hint if required
+         */
+        "hint_text": string;
+        /**
+          * Optional info icon with detailed tooltip description
+         */
+        "info_text"?: string;
+        /**
+          * Shows the error text
+         */
+        "invalid": boolean;
+        /**
+          * Label text displayed above the date picker
+         */
+        "label"?: string;
+        /**
+          * Maximum selectable date
+          * @default MAX_DATE
+         */
+        "max_date": Date;
+        /**
+          * Minimum selectable date
+          * @default MIN_DATE
+         */
+        "min_date": Date;
+        /**
+          * Makes the input read only
+         */
+        "readonly": boolean;
+        /**
+          * Adds a required * to the element
+         */
+        "required": boolean;
+        /**
+          * Current value of the selected date
+         */
+        "value": Date;
+    }
     /**
      * @category Form Controls
      * @description A numeric input component for entering numerical values.
@@ -2798,6 +2847,10 @@ export interface AtInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtInputElement;
 }
+export interface AtInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtInputDateElement;
+}
 export interface AtInputNumericCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtInputNumericElement;
@@ -3349,6 +3402,23 @@ declare global {
     var HTMLAtInputElement: {
         prototype: HTMLAtInputElement;
         new (): HTMLAtInputElement;
+    };
+    interface HTMLAtInputDateElementEventMap {
+        "atuiChange": Date;
+    }
+    interface HTMLAtInputDateElement extends Components.AtInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtInputDateElementEventMap>(type: K, listener: (this: HTMLAtInputDateElement, ev: AtInputDateCustomEvent<HTMLAtInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtInputDateElementEventMap>(type: K, listener: (this: HTMLAtInputDateElement, ev: AtInputDateCustomEvent<HTMLAtInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtInputDateElement: {
+        prototype: HTMLAtInputDateElement;
+        new (): HTMLAtInputDateElement;
     };
     interface HTMLAtInputNumericElementEventMap {
         "atuiChange": string | number;
@@ -4343,6 +4413,7 @@ declare global {
         "at-form-label": HTMLAtFormLabelElement;
         "at-header": HTMLAtHeaderElement;
         "at-input": HTMLAtInputElement;
+        "at-input-date": HTMLAtInputDateElement;
         "at-input-numeric": HTMLAtInputNumericElement;
         "at-input-range": HTMLAtInputRangeElement;
         "at-layout": HTMLAtLayoutElement;
@@ -5230,6 +5301,59 @@ declare namespace LocalJSX {
           * The value of the input
          */
         "value"?: string;
+    }
+    interface AtInputDate {
+        /**
+          * Disables interaction with the input
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text displayed when invalid is set
+         */
+        "error_text"?: string;
+        /**
+          * Short description or validation hint if required
+         */
+        "hint_text"?: string;
+        /**
+          * Optional info icon with detailed tooltip description
+         */
+        "info_text"?: string;
+        /**
+          * Shows the error text
+         */
+        "invalid"?: boolean;
+        /**
+          * Label text displayed above the date picker
+         */
+        "label"?: string;
+        /**
+          * Maximum selectable date
+          * @default MAX_DATE
+         */
+        "max_date"?: Date;
+        /**
+          * Minimum selectable date
+          * @default MIN_DATE
+         */
+        "min_date"?: Date;
+        /**
+          * Emitted when the date selection changes
+         */
+        "onAtuiChange"?: (event: AtInputDateCustomEvent<Date>) => void;
+        /**
+          * Makes the input read only
+         */
+        "readonly"?: boolean;
+        /**
+          * Adds a required * to the element
+         */
+        "required"?: boolean;
+        /**
+          * Current value of the selected date
+         */
+        "value"?: Date;
     }
     /**
      * @category Form Controls
@@ -7198,6 +7322,7 @@ declare namespace LocalJSX {
         "at-form-label": AtFormLabel;
         "at-header": AtHeader;
         "at-input": AtInput;
+        "at-input-date": AtInputDate;
         "at-input-numeric": AtInputNumeric;
         "at-input-range": AtInputRange;
         "at-layout": AtLayout;
@@ -7419,6 +7544,7 @@ declare module "@stencil/core" {
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
              */
             "at-input": LocalJSX.AtInput & JSXBase.HTMLAttributes<HTMLAtInputElement>;
+            "at-input-date": LocalJSX.AtInputDate & JSXBase.HTMLAttributes<HTMLAtInputDateElement>;
             /**
              * @category Form Controls
              * @description A numeric input component for entering numerical values.

@@ -1,7 +1,7 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { d as defineCustomElement$4 } from './p-BRoK1DxF.js';
-import { d as defineCustomElement$3 } from './p-Cgxo6lye.js';
-import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
+import { d as defineCustomElement$3 } from './p-CXiuAj1d.js';
+import { d as defineCustomElement$2 } from './p-CdUod9Pr.js';
 
 const AtListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtListSelector extends H {
     constructor(registerHost) {
@@ -69,7 +69,7 @@ const AtListSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtListSelector e
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'ee28c623f24276fccb2733a942a84b33a367be4b', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'fea7b16a4becc94ce203239b0066963b3dbb0104', name: "header" }), !!this.options.length && (h("nav", { key: '8a3d8a5ce7af2c43f5125c00155a16207e6d533b', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '0b91c6fc50b4072f1cc5e4cb00f0173ad7d62ee9', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'c75db3c34e8f1112d6da1473ecaeb14b0ea359a1' })));
+        return (h(Host, { key: '0bd17658fd17bf07f5a68468db732d560516e0b3', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '9ac0b73bd348f7e7e8d26be6e6737834a1535da0', name: "header" }), !!this.options.length && (h("nav", { key: '6f7946922476fe3ee859da92eae173b69479b1a6', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '9d530626eeef2a84d0ad2974e6a29f4078abc3e6', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '399359db7b1bbd1d29e1d323b5fd26d1919a2fe0' })));
     }
 }, [260, "at-list-selector", {
         "options": [16],

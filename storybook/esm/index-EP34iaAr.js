@@ -137,6 +137,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-header.entry.js').then(processMod, consoleError);
+                case 'at-input-date':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-input-date.entry.js').then(processMod, consoleError);
                 case 'at-list-item':
                     return import(
                       /* webpackMode: "lazy" */

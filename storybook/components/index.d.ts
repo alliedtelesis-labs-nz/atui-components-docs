@@ -53,6 +53,8 @@ export { AtHeader as AtHeader } from '../types/components/at-header/at-header';
 export { defineCustomElement as defineCustomElementAtHeader } from './at-header';
 export { AtInputComponent as AtInput } from '../types/components/at-input/at-input';
 export { defineCustomElement as defineCustomElementAtInput } from './at-input';
+export { AtInputDate as AtInputDate } from '../types/components/at-input-date/at-input-date';
+export { defineCustomElement as defineCustomElementAtInputDate } from './at-input-date';
 export { AtInputNumericComponent as AtInputNumeric } from '../types/components/at-input-numeric/at-input-numeric';
 export { defineCustomElement as defineCustomElementAtInputNumeric } from './at-input-numeric';
 export { AtInputRangeComponent as AtInputRange } from '../types/components/at-input-range/at-input-range';

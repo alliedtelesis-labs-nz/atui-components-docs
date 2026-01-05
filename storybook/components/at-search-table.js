@@ -2,20 +2,20 @@ import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$h } from './p-Dx91wqSp.js';
 import { d as defineCustomElement$g } from './p-CS_tFK1i.js';
-import { d as defineCustomElement$f } from './p-CpHb97w9.js';
-import { d as defineCustomElement$e } from './p-Cifu7gs6.js';
-import { d as defineCustomElement$d } from './p-CIL9MUFC.js';
-import { d as defineCustomElement$c } from './p-CDuJDwMh.js';
+import { d as defineCustomElement$f } from './p-BIFgX30f.js';
+import { d as defineCustomElement$e } from './p-CaLxn7R6.js';
+import { d as defineCustomElement$d } from './p-CnKCj2oj.js';
+import { d as defineCustomElement$c } from './p-CZ3oWC0n.js';
 import { d as defineCustomElement$b } from './p-bn76tgB4.js';
-import { d as defineCustomElement$a } from './p-C1-3O-ig.js';
-import { d as defineCustomElement$9 } from './p-BTi5B4eH.js';
-import { d as defineCustomElement$8 } from './p-CgPg7b0T.js';
-import { d as defineCustomElement$7 } from './p-Df70fj1w.js';
-import { d as defineCustomElement$6 } from './p-D3MCKtPw.js';
-import { d as defineCustomElement$5 } from './p-B1duW6oT.js';
-import { d as defineCustomElement$4 } from './p-B0XKmHYr.js';
-import { d as defineCustomElement$3 } from './p-CZFVfg5J.js';
-import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
+import { d as defineCustomElement$a } from './p-DEfR-Zk2.js';
+import { d as defineCustomElement$9 } from './p--m8JsGR8.js';
+import { d as defineCustomElement$8 } from './p-CM5BHSwP.js';
+import { d as defineCustomElement$7 } from './p-ZFy849lr.js';
+import { d as defineCustomElement$6 } from './p-Cy5e8zyF.js';
+import { d as defineCustomElement$5 } from './p-CKKLwvPU.js';
+import { d as defineCustomElement$4 } from './p-D6U1PJyk.js';
+import { d as defineCustomElement$3 } from './p-9-zCkbyL.js';
+import { d as defineCustomElement$2 } from './p-CdUod9Pr.js';
 
 const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable extends H {
     constructor(registerHost) {
@@ -320,7 +320,7 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: '2ba6a345255e978723836352b26fe25f0a2525e2' }, h("at-table-actions", { key: '7be27e39c18ee69d0ce0c2e538bebd7e506ee979', ag_grid: this.agGrid }, h("div", { key: '9886c78598ded27217d485e5287a13adcb19cd51', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '2546fd7ecca866666bbf750ab548392c3d9863ff', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '58b88f0fdc7c5cdb50249dd185f08225afabfcaf', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '92a5778c449dadc99e1c3093838e3552677c2ed6', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '9787328d3fdb735195d9f3ab9c663d598e9717fd', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'e966ad44d4b41f862bdd204098d1aa5cdbc249d2', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '34c8111ef817b41310990a6adf36515ae84ce23d', slot: "actions" }, h("slot", { key: '4f14d255fa611f32a0112be9d623d2d33a68bef1', name: "actions" }))), h("slot", { key: '9952045055968e0e5f041f11ba1684c15837c8ac', name: "multi-select-actions" }), h("at-table", { key: '4a3059dfd49917266a466de4187828c877098ef8', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: '40ae19c38d992ee6107c01e84d299e8dff04b778' }, h("at-table-actions", { key: '29e1eabb3b400cc00b12a40513f5f917470f2176', ag_grid: this.agGrid }, h("div", { key: '7b0053a3ec65d775bd50ef621645efe2798067d2', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'f67427bbbac0dcc792d1ead8f62f7f5b7eac052f', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '311a38826ce285711e2645cf32f830833e41c269', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '5933d9021f50841ce0f05cc3d35060a882347a75', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'dbd551c2df15716686a8dfbbffe896a138fd32d0', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '2bcb6c0c8feb64c49d5bb730594e22f0ebc59e15', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'adb28cd9ef870dbb2dca602a2ce5e4995869d3be', slot: "actions" }, h("slot", { key: 'b19d352baabd5286442f5c1462bcdac5b1a60d90', name: "actions" }))), h("slot", { key: 'd0fbbc0b496c951665e5831e6a858da9ab6c90ba', name: "multi-select-actions" }), h("at-table", { key: 'c7a8d79a081f8ebbddea3a7ad728a2142a9337de', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]

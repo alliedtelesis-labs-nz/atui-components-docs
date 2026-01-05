@@ -29,7 +29,7 @@ const AtStatusBar = class {
             } }), index.h("span", null, segment.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: 'f9216124850fdc4520eef3a8cea3d3b85514288e', class: this.statusBarClass }, index.h("div", { key: '729e7db4fb4506cf7b536994d9759cdc2afd3778', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (index.h(index.Host, { key: '9224f800472b15cda85ea13ac9fb32fa935eef96', class: this.statusBarClass }, index.h("div", { key: 'c4acf764d7ea94f8aee38499bd4c19f883a978de', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

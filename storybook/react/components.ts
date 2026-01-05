@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -34,6 +34,7 @@ import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } fr
 import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineAtEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-edit-text-cell.js";
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
 import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-header.js";
+import { AtInputDate as AtInputDateElement, defineCustomElement as defineAtInputDate } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-date.js";
 import { AtInputNumeric as AtInputNumericElement, defineCustomElement as defineAtInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-numeric.js";
 import { AtInputRange as AtInputRangeElement, defineCustomElement as defineAtInputRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-range.js";
 import { AtInput as AtInputElement, defineCustomElement as defineAtInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input.js";
@@ -402,6 +403,17 @@ export const AtInput: StencilReactComponent<AtInputElement, AtInputEvents> = /*@
     react: React,
     events: { onAtuiChange: 'atuiChange' } as AtInputEvents,
     defineCustomElement: defineAtInput
+});
+
+type AtInputDateEvents = { onAtuiChange: EventName<AtInputDateCustomEvent<Date>> };
+
+export const AtInputDate: StencilReactComponent<AtInputDateElement, AtInputDateEvents> = /*@__PURE__*/ createComponent<AtInputDateElement, AtInputDateEvents>({
+    tagName: 'at-input-date',
+    elementClass: AtInputDateElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiChange: 'atuiChange' } as AtInputDateEvents,
+    defineCustomElement: defineAtInputDate
 });
 
 type AtInputNumericEvents = { onAtuiChange: EventName<CustomEvent<string | number>> };

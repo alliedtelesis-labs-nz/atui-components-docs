@@ -3,19 +3,19 @@ import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-BI7XO4bL.js
 import { h as hooks } from './p-BMuAbjcg.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$e } from './p-Dx91wqSp.js';
-import { d as defineCustomElement$d } from './p-D-CTp2za.js';
+import { d as defineCustomElement$d } from './p-DHRioiT6.js';
 import { d as defineCustomElement$c } from './p-D0rx_oNk.js';
-import { d as defineCustomElement$b } from './p-ChWklvYH.js';
-import { d as defineCustomElement$a } from './p-CIL9MUFC.js';
-import { d as defineCustomElement$9 } from './p-Cmhf3fqz.js';
+import { d as defineCustomElement$b } from './p-DwFRhG8Y.js';
+import { d as defineCustomElement$a } from './p-CnKCj2oj.js';
+import { d as defineCustomElement$9 } from './p-D5Rw23jW.js';
 import { d as defineCustomElement$8 } from './p-bn76tgB4.js';
-import { d as defineCustomElement$7 } from './p-C1-3O-ig.js';
-import { d as defineCustomElement$6 } from './p-lR0ZcJ9k.js';
-import { d as defineCustomElement$5 } from './p-yH1iu8rH.js';
-import { d as defineCustomElement$4 } from './p-uTGsfZ9v.js';
-import { d as defineCustomElement$3 } from './p-CASkfbwQ.js';
-import { d as defineCustomElement$2 } from './p-B8lZLFeC.js';
-import { M as MIN_DATE, T as TimeRangeDisplay } from './p-DJyIoUiL.js';
+import { d as defineCustomElement$7 } from './p-DEfR-Zk2.js';
+import { d as defineCustomElement$6 } from './p-fwisEudU.js';
+import { d as defineCustomElement$5 } from './p-BV7qlkPx.js';
+import { d as defineCustomElement$4 } from './p-nuXkGBnl.js';
+import { d as defineCustomElement$3 } from './p-c4hNTROE.js';
+import { d as defineCustomElement$2 } from './p-CdUod9Pr.js';
+import { M as MIN_DATE, T as TimeRangeDisplay } from './p-C3LwY5aR.js';
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {
@@ -186,10 +186,10 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
         return output;
     }
     render() {
-        return (h(Host, { key: '54a9b149ccd64d47f3bd70a57586a259ab96edb9', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: '3550ed87bff01e314407a8a7fc996c92b533405f', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+        return (h(Host, { key: '6925ed6991cec4a612385a49aec007d699f56a41', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'ab974bf495b76e34afa2ec35d822af32c29e8262', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
-                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '24a940ac18fd00bc2f952748598f31925399f93c', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '52d950521818a7f1dded75257ae45f027d9545c0', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
@@ -197,13 +197,13 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
                     this.predefinedTimeRanges.length - 1) {
                     this.absoluteTimeMenuEl.focus();
                 }
-            } })), h("div", { key: 'f69cbeba4ce9ad29131c7734c0388eccc537f136', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '53258931402cf46bcf4031a63c06c55e6e8581c6', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+            } })), h("div", { key: '42b18a447ac0d8985b05c6ea887efd74e895d8f7', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '99180daa378fe12023c9ecaa34bc6b37dd8a76ec', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: '2a749d92dbbb7fbef1370c1f2c6a330f96516354', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: 'c79de8e13603a15123d52751459c600a065996b8', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: 'f9ec8c3c8091025dac4b7f2da30352e00c655c4d', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '316ca1469f34b77af7b380d549b25d8be95b7ce2', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));

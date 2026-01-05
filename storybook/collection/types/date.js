@@ -27,5 +27,6 @@ export var TimeRangesInHours;
     TimeRangesInHours[TimeRangesInHours["7d"] = 168] = "7d";
 })(TimeRangesInHours || (TimeRangesInHours = {}));
 export const MIN_DATE = new Date('1985-01-01T00:00:00');
+export const MAX_DATE = new Date('2099-12-31T23:59:59');
 export const DEFAULT_TIME_RANGE = TimeRangeDisplay.TWENTY_FOUR_HOURS;
 //# sourceMappingURL=date.js.map

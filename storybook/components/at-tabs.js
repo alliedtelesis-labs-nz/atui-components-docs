@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
-import { d as defineCustomElement$3 } from './p-C2Xc8lF0.js';
-import { d as defineCustomElement$2 } from './p-DCWVLbQS.js';
+import { d as defineCustomElement$3 } from './p-DH-OFGy-.js';
+import { d as defineCustomElement$2 } from './p-V3mLjeuK.js';
 
 const AtTabs$1 = /*@__PURE__*/ proxyCustomElement(class AtTabs extends H {
     constructor(registerHost) {
@@ -155,7 +155,7 @@ const AtTabs$1 = /*@__PURE__*/ proxyCustomElement(class AtTabs extends H {
         }
     }
     render() {
-        return h(Host, { key: '496eef67c55d893a488bd3e914ab5f4437c31cc4' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'b6c12187063bd15ff3de668bb014fb4359f390d9' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]
