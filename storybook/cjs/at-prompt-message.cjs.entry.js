@@ -3,7 +3,7 @@
 var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-HqquF7bU.js');
-var index$1 = require('./index.cjs.js');
+var prompt = require('./prompt-BA0_qDnC.js');
 
 const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
 
@@ -60,7 +60,7 @@ const AtPromptMessage = class {
     /**
      * The current vote score of the message
      */
-    score = index$1.PromptResponseScore.NONE;
+    score = prompt.PromptResponseScore.NONE;
     /**
      * Display voting actions for assistant messages
      */
@@ -175,14 +175,14 @@ const AtPromptMessage = class {
         this.atEdit.emit(this.content);
     };
     handleVote = (score) => {
-        const newScore = this.score === score ? index$1.PromptResponseScore.NONE : score;
+        const newScore = this.score === score ? prompt.PromptResponseScore.NONE : score;
         this.atVote.emit({ messageId: this.message_id, score: newScore });
     };
     renderActions() {
         if (this.loading)
             return null;
-        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === index$1.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
-            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === index$1.PromptResponseScore.DOWN ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#000000" }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "http://www.w3.org/2000/svg", height: "15px", fill: "#adb5bd" // token-border-dark
+        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === prompt.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
+            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === prompt.PromptResponseScore.DOWN ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#000000" }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "http://www.w3.org/2000/svg", height: "15px", fill: "#adb5bd" // token-border-dark
         }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
@@ -216,7 +216,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: '7f702fa9a9133bb166ff2f732d988d0471b49ebe', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '131222d2beb8ab4ae7cb73a75f771c1bc71b5960', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '4ff4ae79ed441c7a02f8570339a3dfb656239956', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: 'a61ca3501ac7b6de52f68cbc1586ba2957b1206c', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: 'bafa49858caff1f986b9044684f293ffec213d9b', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '19e89d805829b6acf936f0e43674dcfdbbe5f639', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'b9d7daaf2d5d471b07fd9b489fa10987a244f40b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '947d954edf80b58020db1f71ffe4ba93db306f95', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": ["watchContentChange"]

@@ -89,6 +89,7 @@ import { AtTimeRange as AtTimeRangeElement, defineCustomElement as defineAtTimeR
 import { AtTimeWithUnit as AtTimeWithUnitElement, defineCustomElement as defineAtTimeWithUnit } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-time-with-unit.js";
 import { AtTitleSubtitleCell as AtTitleSubtitleCellElement, defineCustomElement as defineAtTitleSubtitleCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-title-subtitle-cell.js";
 import { AtTitleSubtitleDateCell as AtTitleSubtitleDateCellElement, defineCustomElement as defineAtTitleSubtitleDateCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-title-subtitle-date-cell.js";
+import { AtToaster as AtToasterElement, defineCustomElement as defineAtToaster } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-toaster.js";
 import { AtToggleCell as AtToggleCellElement, defineCustomElement as defineAtToggleCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-toggle-cell.js";
 import { AtToggleSwitch as AtToggleSwitchElement, defineCustomElement as defineAtToggleSwitch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-toggle-switch.js";
 import { AtTooltip as AtTooltipElement, defineCustomElement as defineAtTooltip } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tooltip.js";
@@ -1099,6 +1100,17 @@ export const AtTitleSubtitleDateCell: StencilReactComponent<AtTitleSubtitleDateC
     react: React,
     events: {} as AtTitleSubtitleDateCellEvents,
     defineCustomElement: defineAtTitleSubtitleDateCell
+});
+
+type AtToasterEvents = NonNullable<unknown>;
+
+export const AtToaster: StencilReactComponent<AtToasterElement, AtToasterEvents> = /*@__PURE__*/ createComponent<AtToasterElement, AtToasterEvents>({
+    tagName: 'at-toaster',
+    elementClass: AtToasterElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtToasterEvents,
+    defineCustomElement: defineAtToaster
 });
 
 type AtToggleCellEvents = NonNullable<unknown>;

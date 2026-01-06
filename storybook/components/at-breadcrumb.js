@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-89eupKrN.js';
-import { d as defineCustomElement$2 } from './p-BaBfz5nl.js';
+import { d as defineCustomElement$2 } from './p-zTIXIjpO.js';
 
 const AtBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtBreadcrumbComponent extends H {
     constructor(registerHost) {
@@ -32,8 +32,8 @@ const AtBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtBreadcrum
             this.atuiClick.emit(idOfEventTarget);
     }
     render() {
-        return (h("nav", { key: '583326fa338ea9e21197d317cc3108070ff83b58', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), h("slot", { key: '6471373aa832e5c0314c8c4d6d1c5913be20c91f' })));
+        return (h("nav", { key: 'e666cc52e558220485fbde61fe10ae26ca23cd0a', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
+            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), h("slot", { key: '88882b18d32c3e98f49500c391a4ccfeb3dee8c3' })));
     }
 }, [260, "at-breadcrumb", {
         "get_prefix": [16],

@@ -55,12 +55,12 @@ const AtChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (index.h("div", { key: 'e79e8aeed2f9bdf35bdf0aa5605c30d1e7a0c7ba', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (index.h("div", { key: 'c131ee06b1921070287b38d0d925169f87fa9709', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (index.h("at-button", { key: '046ba6acc259db6bc4991a607e703dee8d175120', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
+            this.show_clear_all && (index.h("at-button", { key: 'af1b5fcd656308a8038e1411826f0e71c7441e68', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), index.h("slot", { key: '5bfcabd7de237ca2077562faddf2fae94b995d76' })));
+            } })), index.h("slot", { key: '60c7e91484c06e99937cf66c6e8c106e4793c132' })));
     }
 };
 

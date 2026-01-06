@@ -212,7 +212,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '03fcf954da659ba3abe87a42a72918cc140a5236', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, index.h("canvas", { key: '95331aeb19fbed9b529facf375d66fc79480e9e8', ref: (el) => (this.canvasEl = el), style: {
+        return (index.h(index.Host, { key: '8c9f28902414ab8d81a34963cba1a59ee6fc867e', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, index.h("canvas", { key: '5f8adcbc14fe77068b9dcb0082edf4b00b357ff4', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',

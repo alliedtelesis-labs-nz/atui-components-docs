@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
-import { d as defineCustomElement$3 } from './p-kHqi1FxQ.js';
-import { d as defineCustomElement$2 } from './p-Bos8rqAS.js';
+import { d as defineCustomElement$3 } from './p-DEamTzT1.js';
+import { d as defineCustomElement$2 } from './p-CRYD-ANM.js';
 
 const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionComponent extends H {
     constructor(registerHost) {
@@ -81,7 +81,7 @@ const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionC
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: '6b2195a25f6dd26a68baafd11b6748e79fbcf6ff', class: "flex flex-col gap-2" }, h("slot", { key: '93ff2fb04b308503cd077f2f35834a46ed0d9038' }), this.items &&
+        return (h(Host, { key: '4913c309f9a431713bb9cbd0dea7e9e3f528ea99', class: "flex flex-col gap-2" }, h("slot", { key: '1e054c3edab80d711198d1b6920e3ac516d24dea' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

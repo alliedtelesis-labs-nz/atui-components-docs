@@ -1,4 +1,4 @@
-import { A as AtAccordionItemComponent, d as defineCustomElement$1 } from './p-kHqi1FxQ.js';
+import { A as AtAccordionItemComponent, d as defineCustomElement$1 } from './p-DEamTzT1.js';
 
 const AtAccordionItem = AtAccordionItemComponent;
 const defineCustomElement = defineCustomElement$1;

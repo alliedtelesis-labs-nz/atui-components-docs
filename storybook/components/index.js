@@ -1,5 +1,5 @@
 export { g as getAssetPath, r as render, s as setAssetPath, a as setNonce, b as setPlatformOptions } from './p-89eupKrN.js';
-export { P as PromptResponseScore } from './p-B222JnIF.js';
+export { P as PromptResponseScore } from './p-DPuUkY-u.js';
 export { AtAccordion, defineCustomElement as defineCustomElementAtAccordion } from './at-accordion.js';
 export { AtAccordionItem, defineCustomElement as defineCustomElementAtAccordionItem } from './at-accordion-item.js';
 export { AtAccordionTrigger, defineCustomElement as defineCustomElementAtAccordionTrigger } from './at-accordion-trigger.js';
@@ -82,11 +82,57 @@ export { AtTimeRange, defineCustomElement as defineCustomElementAtTimeRange } fr
 export { AtTimeWithUnit, defineCustomElement as defineCustomElementAtTimeWithUnit } from './at-time-with-unit.js';
 export { AtTitleSubtitleCell, defineCustomElement as defineCustomElementAtTitleSubtitleCell } from './at-title-subtitle-cell.js';
 export { AtTitleSubtitleDateCell, defineCustomElement as defineCustomElementAtTitleSubtitleDateCell } from './at-title-subtitle-date-cell.js';
+export { AtToaster, defineCustomElement as defineCustomElementAtToaster } from './at-toaster.js';
 export { AtToggleCell, defineCustomElement as defineCustomElementAtToggleCell } from './at-toggle-cell.js';
 export { AtToggleSwitch, defineCustomElement as defineCustomElementAtToggleSwitch } from './at-toggle-switch.js';
 export { AtTooltip, defineCustomElement as defineCustomElementAtTooltip } from './at-tooltip.js';
 export { AtTree, defineCustomElement as defineCustomElementAtTree } from './at-tree.js';
 export { AtTreeItem, defineCustomElement as defineCustomElementAtTreeItem } from './at-tree-item.js';
+
+const DEFAULT_TOAST_OPTIONS = {
+    position: 'bottom-right',
+    timeout: 5000,
+    dismissible: true,
+    closeButton: false,
+};
+
+class ToasterService {
+    static id = 0;
+    static containers = new Map();
+    /**
+     * Show a toast message
+     *
+     * @param type The type of the toast
+     * @param message The message to display in the toast
+     * @param options Additional options for the toast (title, position, timeout, dismissible)
+     */
+    static async show(type, message, options = {}) {
+        const id = this.id++;
+        const toastOptions = {
+            ...DEFAULT_TOAST_OPTIONS,
+            ...options,
+        };
+        const toast = { id, type, message, ...toastOptions };
+        this.getToaster(toastOptions.position).addToast(toast);
+    }
+    /**
+     * Get or create at-toaster component
+     * Stores the toaster container with position in the Map
+     */
+    static getToaster(position) {
+        if (this.containers.has(position)) {
+            return this.containers.get(position);
+        }
+        const el = document.createElement('at-toaster');
+        el.setAttribute('position', position);
+        document.body.appendChild(el);
+        const toasterEl = el;
+        this.containers.set(position, toasterEl);
+        return toasterEl;
+    }
+}
+
+export { ToasterService };
 //# sourceMappingURL=index.js.map
 
 //# sourceMappingURL=index.js.map

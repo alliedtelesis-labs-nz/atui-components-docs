@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
-import { d as defineCustomElement$6 } from './p-kHqi1FxQ.js';
-import { d as defineCustomElement$5 } from './p-Bos8rqAS.js';
+import { d as defineCustomElement$6 } from './p-DEamTzT1.js';
+import { d as defineCustomElement$5 } from './p-CRYD-ANM.js';
 import { d as defineCustomElement$4 } from './p-BRoK1DxF.js';
-import { d as defineCustomElement$3 } from './p-DHT6iuTT.js';
-import { d as defineCustomElement$2 } from './p-DcSnWo6w.js';
+import { d as defineCustomElement$3 } from './p-CSzxFmVR.js';
+import { d as defineCustomElement$2 } from './p-Ce0ZDVLm.js';
 
 const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
 
@@ -71,7 +71,7 @@ const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSideb
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: '7be8aac59fea26e3ec9aec005634666e338b5b64' }, h("at-accordion-item", { key: '22a97b47815cd29f8309d6fdb534bce935bc1404', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: 'b06282d23c855aab6059acec751f2ff805b01831', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: '5aaf892cbf2b5f94a7fe1e03e6b3a7571457ca56', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), h("div", { key: '7af5305e6209df7e312e3978e7f0a2077c68e1a6', class: "content" }, h("slot", { key: '154228ee2364140385fbf0e9bbde50717dfdd0f7', name: "submenu-content" }))), h("at-menu", { key: 'a24c0d54f99565fadadb130e16eead004be4f849', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, h("at-sidebar-menuitem", { key: '37f663473dc5d349cd136800d8b8e88ede5d1013', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: 'f17ee2b6b35b8fd21d47a13487ac3281c163d049', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, h("slot", { key: 'ed7bb974dc9db2884e28c09904dbdb925c8b6d9c', name: "submenu-hover-content" })))));
+        return (h(Host, { key: '874839e6a5b1d7f393277d3599493781c3f58731' }, h("at-accordion-item", { key: '3cf64759ff325323fbfbe141faf55c9881486f11', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: '57ae43c04c608c74bc2f8f413b802dfb3405c953', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: 'b0f851f8b86a05e400d41d7af30ae666158b1789', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), h("div", { key: '0df1fdbf970bd9f6ec650088aeaf6d2224267f5f', class: "content" }, h("slot", { key: 'e303051424f9b69bda942893870ebd489221167c', name: "submenu-content" }))), h("at-menu", { key: 'd3b49d9b942474c1eb9e02e54ab24513e67c8cfd', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, h("at-sidebar-menuitem", { key: '1a093963ed1213d7b1103b08ccef72d9e82ee0a0', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '45364738bb794463364a22885d3d84d57242b7ba', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, h("slot", { key: '95e8d006dc444c4ea11acf34163c1946cf1885eb', name: "submenu-hover-content" })))));
     }
     static get style() { return atSidebarSubmenuCss; }
 }, [260, "at-sidebar-submenu", {
