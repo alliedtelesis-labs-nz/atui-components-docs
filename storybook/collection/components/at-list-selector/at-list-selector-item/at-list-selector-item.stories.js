@@ -23,4 +23,3 @@ Default.args = {
     has_border: true,
     is_selected: false,
 };
-//# sourceMappingURL=at-list-selector-item.stories.js.map

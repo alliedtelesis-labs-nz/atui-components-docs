@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearch = class {
@@ -117,7 +117,9 @@ const AtTableFilterMenu = class {
         return (index.h(index.Host, { key: 'b982bedd9cf638b517f00832d752aeaeecba96db' }, index.h("at-menu", { key: 'bf8f22a4fa6ac4ccddacdcc825e69269fe23bd77', autoclose: false, width: "fit-content", class: "self-start" }, index.h("at-tooltip", { key: '9216544491ae36d10083ee8f8e6853ddccaa6631', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: '1e8f32604348bce0580e95fded72c415daf0a136', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: 'f7dbcd35203bff4d997b33cdf833544438dc4b5a' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '6d7291e39268932327b07b603be7528e806ad14f', class: "flex flex-col" }, index.h("at-checkbox-group", { key: '03c3354e7be00b1c22c9c84d0e93ee7454097bef', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
-        "selected": ["handleSelectedChange"]
+        "selected": [{
+                "handleSelectedChange": 0
+            }]
     }; }
 };
 
@@ -169,4 +171,3 @@ exports.at_search = AtSearch;
 exports.at_table_export_menu = AtTableExportMenu;
 exports.at_table_filter_menu = AtTableFilterMenu;
 exports.at_table_filters = AtTableFilters;
-//# sourceMappingURL=at-search.at-table-export-menu.at-table-filter-menu.at-table-filters.entry.cjs.js.map

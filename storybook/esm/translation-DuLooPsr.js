@@ -112,6 +112,3 @@ const fallback = {
 };
 
 export { fetchTranslations as f };
-//# sourceMappingURL=translation-DuLooPsr.js.map
-
-//# sourceMappingURL=translation-DuLooPsr.js.map

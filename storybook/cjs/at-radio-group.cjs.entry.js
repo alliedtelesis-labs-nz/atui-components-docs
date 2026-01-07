@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {
@@ -166,9 +166,10 @@ const AtRadioGroup = class {
             this.getRadios.map((radio) => (index.h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (index.h("span", { key: '5dfd482c5af05d430f468eee015eaf0347c5c8d0', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "value": ["watchValue"]
+        "value": [{
+                "watchValue": 0
+            }]
     }; }
 };
 
 exports.at_radio_group = AtRadioGroup;
-//# sourceMappingURL=at-radio-group.entry.cjs.js.map

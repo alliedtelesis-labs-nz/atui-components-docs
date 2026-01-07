@@ -174,4 +174,3 @@ export class AtAvatar {
         };
     }
 }
-//# sourceMappingURL=at-avatar.js.map

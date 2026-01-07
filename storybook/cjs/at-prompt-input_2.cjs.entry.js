@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 var translation = require('./translation-HqquF7bU.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var prompt = require('./prompt-BA0_qDnC.js');
@@ -373,4 +373,3 @@ const AtPromptThread = class {
 
 exports.at_prompt_input = AtPromptInputComponent;
 exports.at_prompt_thread = AtPromptThread;
-//# sourceMappingURL=at-prompt-input.at-prompt-thread.entry.cjs.js.map

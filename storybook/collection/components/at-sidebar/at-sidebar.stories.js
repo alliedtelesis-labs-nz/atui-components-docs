@@ -44,4 +44,3 @@ Default.args = {
     default_open: true,
     collapsible: 'icon',
 };
-//# sourceMappingURL=at-sidebar.stories.js.map

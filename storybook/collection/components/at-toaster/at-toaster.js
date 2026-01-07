@@ -11,7 +11,8 @@ export class AtToasterComponent {
     toasts = [];
     /**
      * Adds a new toast to the toaster container
-     * This method is called from the ToasterUtil when a new toast is created.
+     * This method is called from ToasterService.show()
+     * The toast will be automatically dismissed after timeout if it is dismissible
      *
      * @param toast The toast to add
      */
@@ -23,7 +24,7 @@ export class AtToasterComponent {
     }
     /**
      * Removes a toast from the toaster container by its ID
-     * This method is called by tapToast.
+     * This method is called by tapToast or clickCloseButton
      *
      * @param id The ID of the toast to remove
      */
@@ -60,7 +61,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '58fa94d1de3b68eae9d962ebb65ee669f56723cc', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
+        return (h("div", { key: '2a95481bd4df0b0d84e026e6706753d45a705f6e', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }))))))));
@@ -89,7 +90,8 @@ export class AtToasterComponent {
                         "ToastPosition": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::ToastPosition"
+                            "id": "src/types/toast.ts::ToastPosition",
+                            "referenceLocation": "ToastPosition"
                         }
                     }
                 },
@@ -129,13 +131,14 @@ export class AtToasterComponent {
                         "Toast": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::Toast"
+                            "id": "src/types/toast.ts::Toast",
+                            "referenceLocation": "Toast"
                         }
                     },
                     "return": "Promise<void>"
                 },
                 "docs": {
-                    "text": "Adds a new toast to the toaster container\nThis method is called from the ToasterUtil when a new toast is created.",
+                    "text": "Adds a new toast to the toaster container\nThis method is called from ToasterService.show()\nThe toast will be automatically dismissed after timeout if it is dismissible",
                     "tags": [{
                             "name": "param",
                             "text": "toast The toast to add"
@@ -159,7 +162,7 @@ export class AtToasterComponent {
                     "return": "Promise<void>"
                 },
                 "docs": {
-                    "text": "Removes a toast from the toaster container by its ID\nThis method is called by tapToast.",
+                    "text": "Removes a toast from the toaster container by its ID\nThis method is called by tapToast or clickCloseButton",
                     "tags": [{
                             "name": "param",
                             "text": "id The ID of the toast to remove"
@@ -169,4 +172,3 @@ export class AtToasterComponent {
         };
     }
 }
-//# sourceMappingURL=at-toaster.js.map

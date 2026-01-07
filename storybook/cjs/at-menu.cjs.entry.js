@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtMenu = class {
@@ -376,9 +376,10 @@ const AtMenu = class {
             }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: 'f619b76072ed7846e0750252246a7f83c07b0b64' }))));
     }
     static get watchers() { return {
-        "disabled": ["disabledChanged"]
+        "disabled": [{
+                "disabledChanged": 0
+            }]
     }; }
 };
 
 exports.at_menu = AtMenu;
-//# sourceMappingURL=at-menu.entry.cjs.js.map

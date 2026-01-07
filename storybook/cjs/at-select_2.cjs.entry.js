@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 var translation = require('./translation-HqquF7bU.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -235,8 +235,12 @@ const AtSelectComponent = class {
         return (index.h("at-select-option", { value: option.value, is_active: this.value === option.value, onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get watchers() { return {
-        "value": ["watchValue"],
-        "searchText": ["watchSearchText"]
+        "value": [{
+                "watchValue": 0
+            }],
+        "searchText": [{
+                "watchSearchText": 0
+            }]
     }; }
 };
 
@@ -279,4 +283,3 @@ const AtSelectOptionComponent = class {
 
 exports.at_select = AtSelectComponent;
 exports.at_select_option = AtSelectOptionComponent;
-//# sourceMappingURL=at-select.at-select-option.entry.cjs.js.map

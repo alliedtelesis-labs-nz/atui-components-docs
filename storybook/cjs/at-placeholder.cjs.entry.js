@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 
 const placeholderVariants = {
     iconSizes: {
@@ -52,4 +52,3 @@ const AtPlaceholderComponent = class {
 };
 
 exports.at_placeholder = AtPlaceholderComponent;
-//# sourceMappingURL=at-placeholder.entry.cjs.js.map

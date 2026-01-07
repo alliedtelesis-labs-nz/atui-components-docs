@@ -4,4 +4,3 @@ export const DEFAULT_TOAST_OPTIONS = {
     dismissible: true,
     closeButton: false,
 };
-//# sourceMappingURL=toast.js.map

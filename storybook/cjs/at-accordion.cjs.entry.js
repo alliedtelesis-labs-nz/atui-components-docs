@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 
 const AtAccordionComponent = class {
     constructor(hostRef) {
@@ -86,4 +86,3 @@ const AtAccordionComponent = class {
 };
 
 exports.at_accordion = AtAccordionComponent;
-//# sourceMappingURL=at-accordion.entry.cjs.js.map

@@ -62,4 +62,3 @@ export class AtSidebarTriggerComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-sidebar-trigger.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-7z-rGOwX.js';
 import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-CdyBNAVl.js';
 import './moment-BMuAbjcg.js';
 
@@ -222,4 +222,3 @@ const AtChartDonut = class {
 };
 
 export { AtChartDonut as at_chart_donut };
-//# sourceMappingURL=at-chart-donut.entry.js.map

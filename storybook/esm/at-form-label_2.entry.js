@@ -1,4 +1,4 @@
-import { r as registerInstance, h, g as getElement, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, g as getElement, H as Host } from './index-7z-rGOwX.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtFormLabelComponent = class {
@@ -320,9 +320,10 @@ const AtTooltip = class {
         return (h(Host, { key: '4caead5f211f1627b47ec4076f8f7770ac751b4c', class: "relative" }, !this.trigger_id && (h("div", { key: '7580e2abb9f20907ddc8153eeddf2362b0953c17', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'e005e1dd7eece87de8394895ae3d56d48413b55a', name: "tooltip-trigger" }))), h("div", { key: '345d3a23f9d35c314591891b250d235752e5f331', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'd91f2f8c110bd58fdbce8bc86496eb22d5d61aa5' }))));
     }
     static get watchers() { return {
-        "disabled": ["disabledChanged"]
+        "disabled": [{
+                "disabledChanged": 0
+            }]
     }; }
 };
 
 export { AtFormLabelComponent as at_form_label, AtTooltip as at_tooltip };
-//# sourceMappingURL=at-form-label.at-tooltip.entry.js.map

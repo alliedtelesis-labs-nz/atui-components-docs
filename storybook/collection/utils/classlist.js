@@ -53,4 +53,3 @@ export function classlist(base, config) {
 export function cn(...inputs) {
     return clsx(inputs);
 }
-//# sourceMappingURL=classlist.js.map

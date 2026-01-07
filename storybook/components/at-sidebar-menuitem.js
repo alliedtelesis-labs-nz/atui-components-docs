@@ -1,9 +1,1 @@
-import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-Ce0ZDVLm.js';
-
-const AtSidebarMenuitem = AtSidebarMenuitemComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtSidebarMenuitem, defineCustomElement };
-//# sourceMappingURL=at-sidebar-menuitem.js.map
-
-//# sourceMappingURL=at-sidebar-menuitem.js.map
+import{A as o,d as r}from"./p-CoIxFr6e.js";const s=o,p=r;export{s as AtSidebarMenuitem,p as defineCustomElement}

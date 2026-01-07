@@ -1,5 +1,6 @@
 type CustomMethodDecorator<T> = (target: object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
-type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (x: infer I) => void ? I : never;
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+type MixinInstance<F> = F extends (base: MixedInCtor) => MixedInCtor<infer I> ? I : never;
 export interface ComponentDecorator {
     (opts?: ComponentOptions): ClassDecorator;
 }
@@ -62,6 +63,12 @@ export interface ShadowRootOptions {
      * focusable part is given focus, and the shadow host is given any available `:focus` styling.
      */
     delegatesFocus?: boolean;
+    /**
+     * Sets the slot assignment mode for the shadow root. When set to `'manual'`, enables imperative
+     * slotting using the `HTMLSlotElement.assign()` method. Defaults to `'named'` for standard
+     * declarative slotting behavior.
+     */
+    slotAssignment?: 'manual' | 'named';
 }
 export interface ModeStyles {
     [modeName: string]: string | string[];
@@ -124,6 +131,9 @@ export interface AttachInternalsDecorator {
 export interface ListenDecorator {
     (eventName: string, opts?: ListenOptions): CustomMethodDecorator<any>;
 }
+export interface ResolveVarFunction {
+    <T>(variable: T): string;
+}
 export interface ListenOptions {
     /**
      * Handlers can also be registered for an event other than the host itself.
@@ -152,7 +162,9 @@ export interface StateDecorator {
     (): PropertyDecorator;
 }
 export interface WatchDecorator {
-    (propName: any): CustomMethodDecorator<(newValue?: any, oldValue?: any, propName?: any, ...args: any[]) => any | void>;
+    (propName: any, watchOptions?: {
+        immediate?: boolean;
+    }): CustomMethodDecorator<(newValue?: any, oldValue?: any, propName?: any, ...args: any[]) => any | void>;
 }
 export interface PropSerializeDecorator {
     (propName: any): CustomMethodDecorator<(newValue?: any, propName?: string, ...args: any[]) => string | null>;
@@ -207,6 +219,24 @@ export declare const AttachInternals: AttachInternalsDecorator;
  * https://stenciljs.com/docs/events#listen-decorator
  */
 export declare const Listen: ListenDecorator;
+/**
+ * The `resolveVar()` function is a compile-time utility that resolves const variables
+ * and object properties to their string literal values. This allows variables to be
+ * used in `@Listen` and `@Event` decorators instead of hardcoded strings.
+ *
+ * @example
+ * ```ts
+ * const MY_EVENT = 'myEvent';
+ * @Listen(resolveVar(MY_EVENT))
+ * ```
+ *
+ * @example
+ * ```ts
+ * const EVENTS = { MY_EVENT: 'myEvent' } as const;
+ * @Event({ eventName: resolveVar(EVENTS.MY_EVENT) })
+ * ```
+ */
+export declare const resolveVar: ResolveVarFunction;
 /**
  * The `@Method()` decorator is used to expose methods on the public API.
  * Class methods decorated with the @Method() decorator can be called directly
@@ -338,9 +368,8 @@ export declare function forceUpdate(ref: any): void;
  * @returns the rendering ref
  */
 export declare function getRenderingRef(): any;
-export interface HTMLStencilElement extends Omit<HTMLElement, 'autocorrect'> {
+export interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
-    autocorrect: 'on' | 'off';
 }
 /**
  * Schedules a DOM-write task. The provided callback will be executed
@@ -365,18 +394,48 @@ export declare function readTask(task: RafCallback): void;
  * Unhandled exception raised while rendering, during event handling, or lifecycles will trigger the custom event handler.
  */
 export declare const setErrorHandler: (handler: ErrorHandler) => void;
-export type MixinFactory = <TBase extends new (...args: any[]) => any>(base: TBase) => abstract new (...args: ConstructorParameters<TBase>) => any;
+export type TagTransformer = (tag: string) => string;
+/**
+ * Sets a tag transformer to be used when rendering your custom elements.
+ * ```ts
+ * setTagTransformer((tag) => {
+ *  if (tag.startsWith('my-')) return `new-${tag}`
+ *  return tag;
+ * });
+ * ```
+ * Will mean all your components that start with `my-` are defined instead with `new-my-` prefix.
+ *
+ * @param transformer the transformer function to use which must return a string.
+ */
+export declare function setTagTransformer(transformer: TagTransformer): void;
+/**
+ * Transforms a tag name using a transformer set via `setTagTransformer`
+ *
+ * @param tag - the tag to transform e.g. `my-tag`
+ * @returns the transformed tag e.g. `new-my-tag`
+ */
+export declare function transformTag(tag: string): string;
+/**
+ * @deprecated - Use `MixedInCtor` instead:
+ * ```ts
+ * import { MixedInCtor } from '@stencil/core';
+ *
+ * const AFactoryFn = <B extends MixedInCtor>(Base: B) => {class A extends Base { propA = A }; return A;}
+ * ```
+ */
+export type MixinFactory = (base: MixedInCtor) => MixedInCtor;
+export type MixedInCtor<T = {}> = new (...args: any[]) => T;
 /**
  * Compose multiple mixin classes into a single constructor.
  * The resulting class has the combined instance types of all mixed-in classes.
  *
  * Example:
- * ```
- * import { Mixin, MixinFactory } from '@stencil/core';
+ * ```ts
+ * import { Mixin, MixedInCtor } from '@stencil/core';
  *
- * const AWrap: MixinFactory = (Base) => {class A extends Base { propA = A }; return A;}
- * const BWrap: MixinFactory = (Base) => {class B extends Base { propB = B }; return B;}
- * const CWrap: MixinFactory = (Base) => {class C extends Base { propC = C }; return C;}
+ * const AWrap = <B extends MixedInCtor>(Base: B) => {class A extends Base { propA = A }; return A;}
+ * const BWrap = <B extends MixedInCtor>(Base: B) => {class B extends Base { propB = B }; return B;}
+ * const CWrap = <B extends MixedInCtor>(Base: B) => {class C extends Base { propC = C }; return C;}
  *
  * class X extends Mixin(AWrap, BWrap, CWrap) {
  *   render() { return <div>{this.propA} {this.propB} {this.propC}</div>; }
@@ -384,9 +443,9 @@ export type MixinFactory = <TBase extends new (...args: any[]) => any>(base: TBa
  * ```
  *
  * @param mixinFactories mixin factory functions that return a class which extends from the provided class.
- * @returns a class that that is composed from extending each of the provided classes in the order they were provided.
+ * @returns a class that is composed from extending each of the provided classes in the order they were provided.
  */
-export declare function Mixin<TMixins extends readonly MixinFactory[]>(...mixinFactories: TMixins): abstract new (...args: any[]) => UnionToIntersection<InstanceType<ReturnType<TMixins[number]>>>;
+export declare function Mixin<const TMixins extends readonly MixinFactory[]>(...mixinFactories: TMixins): abstract new (...args: any[]) => UnionToIntersection<MixinInstance<TMixins[number]>>;
 /**
  * This file gets copied to all distributions of stencil component collections.
  * - no imports
@@ -614,6 +673,35 @@ export declare function h(sel: any, text: string): VNode;
 export declare function h(sel: any, children: Array<VNode | undefined | null>): VNode;
 export declare function h(sel: any, data: VNodeData | null, text: string): VNode;
 export declare function h(sel: any, data: VNodeData | null, children: Array<VNode | undefined | null>): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsx mode.
+ * These functions are called automatically by TypeScript when using "jsx": "react-jsx".
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @returns a jsx vnode
+ */
+export declare function jsx(type: any, props: any, key?: string): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsxmode with multiple children.
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @returns a jsx vnode
+ */
+export declare function jsxs(type: any, props: any, key?: string): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsxdev mode.
+ * These functions are called automatically by TypeScript when using "jsx": "react-jsxdev".
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @param isStaticChildren indicates if the children are static
+ * @param source source information
+ * @param self reference to the component instance
+ * @returns a jsx vnode
+ */
+export declare function jsxDEV(type: any, props: any, key?: string | number, isStaticChildren?: boolean, source?: any, self?: any): VNode;
 export declare function h(sel: any, data: VNodeData | null, children: VNode): VNode;
 /**
  * A virtual DOM node
@@ -644,7 +732,7 @@ declare namespace LocalJSX {
 export { LocalJSX as JSX };
 export declare namespace JSXBase {
     interface IntrinsicElements {
-        slot: JSXBase.SlotAttributes;
+        slot: JSXBase.SlotAttributes<HTMLSlotElement>;
         a: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement>;
         abbr: JSXBase.HTMLAttributes;
         address: JSXBase.HTMLAttributes;
@@ -814,7 +902,7 @@ export declare namespace JSXBase {
         use: JSXBase.SVGAttributes;
         view: JSXBase.SVGAttributes;
     }
-    interface SlotAttributes extends JSXAttributes {
+    interface SlotAttributes<T = HTMLSlotElement> extends JSXAttributes<T> {
         name?: string;
         slot?: string;
         onSlotchange?: (event: Event) => void;
@@ -870,6 +958,9 @@ export declare namespace JSXBase {
         popoverTargetAction?: string;
         popoverTargetElement?: Element | null;
         popoverTarget?: string;
+        command?: string;
+        commandFor?: string;
+        commandfor?: string;
     }
     interface CanvasHTMLAttributes<T> extends HTMLAttributes<T> {
         height?: number | string;
@@ -1738,6 +1829,7 @@ export interface CustomElementsDefineOptions {
     exclude?: string[];
     resourcesUrl?: string;
     syncQueue?: boolean;
+    /** @deprecated in-favour of `setTagTransformer` and `transformTag` */
     transformTagName?: (tagName: string) => string;
     jmp?: (c: Function) => any;
     raf?: (c: FrameRequestCallback) => number;

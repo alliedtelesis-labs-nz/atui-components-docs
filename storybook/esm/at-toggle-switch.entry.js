@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-7z-rGOwX.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -102,4 +102,3 @@ const AtToggleSwitchComponent = class {
 };
 
 export { AtToggleSwitchComponent as at_toggle_switch };
-//# sourceMappingURL=at-toggle-switch.entry.js.map

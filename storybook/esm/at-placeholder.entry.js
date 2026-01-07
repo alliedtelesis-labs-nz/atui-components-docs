@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-EP34iaAr.js';
+import { r as registerInstance, h } from './index-7z-rGOwX.js';
 
 const placeholderVariants = {
     iconSizes: {
@@ -50,4 +50,3 @@ const AtPlaceholderComponent = class {
 };
 
 export { AtPlaceholderComponent as at_placeholder };
-//# sourceMappingURL=at-placeholder.entry.js.map

@@ -1,9 +1,1 @@
-import { A as AtTableComponent, d as defineCustomElement$1 } from './p-B5PKfzcW.js';
-
-const AtTable = AtTableComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtTable, defineCustomElement };
-//# sourceMappingURL=at-table.js.map
-
-//# sourceMappingURL=at-table.js.map
+import{A as o,d as s}from"./p-BAw_2AmW.js";const m=o,p=s;export{m as AtTable,p as defineCustomElement}

@@ -26,4 +26,3 @@ Default.args = {
     mode: 'determinate',
     type: 'info',
 };
-//# sourceMappingURL=at-progress-bar.stories.js.map

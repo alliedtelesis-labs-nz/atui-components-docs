@@ -5682,6 +5682,3 @@ var moment = /*#__PURE__*/Object.freeze({
 });
 
 export { hooks as h, moment as m };
-//# sourceMappingURL=moment-BMuAbjcg.js.map
-
-//# sourceMappingURL=moment-BMuAbjcg.js.map

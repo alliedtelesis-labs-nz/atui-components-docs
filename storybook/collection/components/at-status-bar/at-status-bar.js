@@ -103,4 +103,3 @@ export class AtStatusBar {
         };
     }
 }
-//# sourceMappingURL=at-status-bar.js.map

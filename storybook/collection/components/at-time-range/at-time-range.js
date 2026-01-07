@@ -184,7 +184,8 @@ export class AtTimeRangeComponent {
                         "SelectedTimeRangeExtended": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended"
+                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended",
+                            "referenceLocation": "SelectedTimeRangeExtended"
                         }
                     }
                 },
@@ -228,7 +229,8 @@ export class AtTimeRangeComponent {
                         "TimePresets": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::TimePresets"
+                            "id": "src/models/at-time-range.models.ts::TimePresets",
+                            "referenceLocation": "TimePresets"
                         }
                     }
                 },
@@ -351,7 +353,8 @@ export class AtTimeRangeComponent {
                         "SelectedTimeRangeExtended": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended"
+                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended",
+                            "referenceLocation": "SelectedTimeRangeExtended"
                         }
                     }
                 }
@@ -359,4 +362,3 @@ export class AtTimeRangeComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-time-range.js.map

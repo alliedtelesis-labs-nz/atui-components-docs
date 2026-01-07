@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-7z-rGOwX.js';
 
 const AtStaticTable = class {
     constructor(hostRef) {
@@ -46,4 +46,3 @@ const AtStaticTable = class {
 };
 
 export { AtStaticTable as at_static_table };
-//# sourceMappingURL=at-static-table.entry.js.map

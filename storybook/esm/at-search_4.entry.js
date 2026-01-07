@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, h, g as getElement, H as Host } from './index-7z-rGOwX.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 
 const AtSearch = class {
@@ -115,7 +115,9 @@ const AtTableFilterMenu = class {
         return (h(Host, { key: 'b982bedd9cf638b517f00832d752aeaeecba96db' }, h("at-menu", { key: 'bf8f22a4fa6ac4ccddacdcc825e69269fe23bd77', autoclose: false, width: "fit-content", class: "self-start" }, h("at-tooltip", { key: '9216544491ae36d10083ee8f8e6853ddccaa6631', slot: "menu-trigger", position: "top" }, h("at-button", { key: '1e8f32604348bce0580e95fded72c415daf0a136', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: 'f7dbcd35203bff4d997b33cdf833544438dc4b5a' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '6d7291e39268932327b07b603be7528e806ad14f', class: "flex flex-col" }, h("at-checkbox-group", { key: '03c3354e7be00b1c22c9c84d0e93ee7454097bef', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
-        "selected": ["handleSelectedChange"]
+        "selected": [{
+                "handleSelectedChange": 0
+            }]
     }; }
 };
 
@@ -164,4 +166,3 @@ const AtTableFilters = class {
 };
 
 export { AtSearch as at_search, AtTableExportMenu as at_table_export_menu, AtTableFilterMenu as at_table_filter_menu, AtTableFilters as at_table_filters };
-//# sourceMappingURL=at-search.at-table-export-menu.at-table-filter-menu.at-table-filters.entry.js.map

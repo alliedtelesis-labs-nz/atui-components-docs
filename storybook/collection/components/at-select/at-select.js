@@ -264,7 +264,8 @@ export class AtSelectComponent {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption"
+                            "id": "src/types/select.ts::SelectOption",
+                            "referenceLocation": "SelectOption"
                         }
                     }
                 },
@@ -548,4 +549,3 @@ export class AtSelectComponent {
             }];
     }
 }
-//# sourceMappingURL=at-select.js.map

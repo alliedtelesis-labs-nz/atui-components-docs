@@ -1,9 +1,1 @@
-import { A as AtBadgeComponent, d as defineCustomElement$1 } from './p-BRoK1DxF.js';
-
-const AtBadge = AtBadgeComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtBadge, defineCustomElement };
-//# sourceMappingURL=at-badge.js.map
-
-//# sourceMappingURL=at-badge.js.map
+import{A as o,d as s}from"./p-BNB6SRg8.js";const p=o,r=s;export{p as AtBadge,r as defineCustomElement}

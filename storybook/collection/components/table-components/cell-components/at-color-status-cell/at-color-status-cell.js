@@ -33,4 +33,3 @@ export class AtColorStatusCell {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-color-status-cell.js.map

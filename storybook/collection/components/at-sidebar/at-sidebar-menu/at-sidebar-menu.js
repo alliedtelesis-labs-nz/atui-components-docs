@@ -22,4 +22,3 @@ export class AtSidebarMenuComponent {
         };
     }
 }
-//# sourceMappingURL=at-sidebar-menu.js.map

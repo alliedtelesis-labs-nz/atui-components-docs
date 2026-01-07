@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CNxmwTiq.js');
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -34,4 +34,3 @@ const AtStatusBar = class {
 };
 
 exports.at_status_bar = AtStatusBar;
-//# sourceMappingURL=at-status-bar.entry.cjs.js.map

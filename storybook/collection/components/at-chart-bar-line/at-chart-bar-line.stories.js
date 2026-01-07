@@ -556,4 +556,3 @@ export const Area = {
     },
     render: Template,
 };
-//# sourceMappingURL=at-chart-bar-line.stories.js.map

@@ -54,4 +54,3 @@ export const Default = Template.bind({});
 Default.args = {
     template: 'master-detail',
 };
-//# sourceMappingURL=at-layout.stories.js.map

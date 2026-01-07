@@ -186,4 +186,3 @@ export class AtSidebarSubmenuComponent {
             }];
     }
 }
-//# sourceMappingURL=at-sidebar-submenu.js.map

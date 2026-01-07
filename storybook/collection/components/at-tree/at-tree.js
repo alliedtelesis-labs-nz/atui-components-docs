@@ -94,7 +94,8 @@ export class AtTreeComponent {
                         "TreeNode": {
                             "location": "import",
                             "path": "../../types/tree",
-                            "id": "src/types/tree.ts::TreeNode"
+                            "id": "src/types/tree.ts::TreeNode",
+                            "referenceLocation": "TreeNode"
                         }
                     }
                 },
@@ -117,7 +118,8 @@ export class AtTreeComponent {
                         "ButtonSize": {
                             "location": "import",
                             "path": "../at-button/at-button",
-                            "id": "src/components/at-button/at-button.tsx::ButtonSize"
+                            "id": "src/components/at-button/at-button.tsx::ButtonSize",
+                            "referenceLocation": "ButtonSize"
                         }
                     }
                 },
@@ -159,11 +161,11 @@ export class AtTreeComponent {
                         "TreeNode": {
                             "location": "import",
                             "path": "../../types/tree",
-                            "id": "src/types/tree.ts::TreeNode"
+                            "id": "src/types/tree.ts::TreeNode",
+                            "referenceLocation": "TreeNode"
                         }
                     }
                 }
             }];
     }
 }
-//# sourceMappingURL=at-tree.js.map

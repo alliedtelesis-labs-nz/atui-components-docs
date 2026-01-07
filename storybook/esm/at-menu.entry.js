@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
 
 const AtMenu = class {
@@ -374,9 +374,10 @@ const AtMenu = class {
             }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: 'f619b76072ed7846e0750252246a7f83c07b0b64' }))));
     }
     static get watchers() { return {
-        "disabled": ["disabledChanged"]
+        "disabled": [{
+                "disabledChanged": 0
+            }]
     }; }
 };
 
 export { AtMenu as at_menu };
-//# sourceMappingURL=at-menu.entry.js.map

@@ -54,7 +54,8 @@ export class AtTableFilterMenu {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
+                            "referenceLocation": "ColDef"
                         }
                     }
                 },
@@ -118,4 +119,3 @@ export class AtTableFilterMenu {
             }];
     }
 }
-//# sourceMappingURL=at-table-filter-menu.js.map

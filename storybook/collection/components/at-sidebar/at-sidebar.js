@@ -288,4 +288,3 @@ export class AtSidebarComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-sidebar.js.map

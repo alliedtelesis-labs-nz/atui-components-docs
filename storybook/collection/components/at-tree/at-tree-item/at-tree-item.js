@@ -223,7 +223,8 @@ export class AtTreeItemComponent {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtEvent"
+                            "id": "src/types/events.ts::AtEvent",
+                            "referenceLocation": "AtEvent"
                         }
                     }
                 }
@@ -231,4 +232,3 @@ export class AtTreeItemComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-tree-item.js.map

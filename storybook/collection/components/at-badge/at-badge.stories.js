@@ -81,4 +81,3 @@ Disabled.args = {
     impact: 'low',
     type: 'disabled',
 };
-//# sourceMappingURL=at-badge.stories.js.map

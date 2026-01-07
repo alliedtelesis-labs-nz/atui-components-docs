@@ -33,6 +33,3 @@ const MAX_DATE = new Date('2099-12-31T23:59:59');
 
 exports.MAX_DATE = MAX_DATE;
 exports.MIN_DATE = MIN_DATE;
-//# sourceMappingURL=date-DDRmOnS1.js.map
-
-//# sourceMappingURL=date-DDRmOnS1.js.map

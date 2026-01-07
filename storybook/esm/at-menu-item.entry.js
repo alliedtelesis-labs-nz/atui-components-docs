@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-7z-rGOwX.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -57,4 +57,3 @@ const AtMenuitemComponent = class {
 };
 
 export { AtMenuitemComponent as at_menu_item };
-//# sourceMappingURL=at-menu-item.entry.js.map

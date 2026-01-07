@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-7z-rGOwX.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -89,4 +89,3 @@ const AtTabTrigger = class {
 };
 
 export { AtLayout as at_layout, AtTabTrigger as at_tab_trigger };
-//# sourceMappingURL=at-layout.at-tab-trigger.entry.js.map

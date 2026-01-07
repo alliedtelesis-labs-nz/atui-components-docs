@@ -53,4 +53,3 @@ export default {
     title: 'Components/Table Components/Table Dropdown Filters',
 };
 export const Default = Template.bind({});
-//# sourceMappingURL=at-table-filters.stories.js.map

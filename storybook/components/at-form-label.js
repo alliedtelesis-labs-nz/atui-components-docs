@@ -1,9 +1,1 @@
-import { A as AtFormLabelComponent, d as defineCustomElement$1 } from './p-C5fEyGHP.js';
-
-const AtFormLabel = AtFormLabelComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtFormLabel, defineCustomElement };
-//# sourceMappingURL=at-form-label.js.map
-
-//# sourceMappingURL=at-form-label.js.map
+import{A as o,d as r}from"./p-CricFCQ3.js";const s=o,p=r;export{s as AtFormLabel,p as defineCustomElement}

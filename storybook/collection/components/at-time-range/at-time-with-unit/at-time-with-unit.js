@@ -186,7 +186,8 @@ export class AtTimeWithUnitComponent {
                         "TimeUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeUnit"
+                            "id": "src/types/time.ts::TimeUnit",
+                            "referenceLocation": "TimeUnit"
                         }
                     }
                 },
@@ -209,7 +210,8 @@ export class AtTimeWithUnitComponent {
                         "TimePresets": {
                             "location": "import",
                             "path": "../../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::TimePresets"
+                            "id": "src/models/at-time-range.models.ts::TimePresets",
+                            "referenceLocation": "TimePresets"
                         }
                     }
                 },
@@ -295,12 +297,14 @@ export class AtTimeWithUnitComponent {
                         "TimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit"
+                            "id": "src/types/time.ts::TimeWithUnit",
+                            "referenceLocation": "TimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",
                             "path": "../../../types/date",
-                            "id": "src/types/date.ts::TimeRangeDisplay"
+                            "id": "src/types/date.ts::TimeRangeDisplay",
+                            "referenceLocation": "TimeRangeDisplay"
                         }
                     }
                 },
@@ -402,12 +406,14 @@ export class AtTimeWithUnitComponent {
                         "TimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit"
+                            "id": "src/types/time.ts::TimeWithUnit",
+                            "referenceLocation": "TimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",
                             "path": "../../../types/date",
-                            "id": "src/types/date.ts::TimeRangeDisplay"
+                            "id": "src/types/date.ts::TimeRangeDisplay",
+                            "referenceLocation": "TimeRangeDisplay"
                         }
                     }
                 }
@@ -424,4 +430,3 @@ export class AtTimeWithUnitComponent {
             }];
     }
 }
-//# sourceMappingURL=at-time-with-unit.js.map
