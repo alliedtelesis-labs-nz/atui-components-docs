@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtSearchTable = class {
@@ -306,10 +306,9 @@ const AtSearchTable = class {
         return (index.h(index.Host, { key: '9b56dd0082afe4bca017e8ff2d07c4c678ac1b98' }, index.h("at-table-actions", { key: 'ef158ad6ef230780c574b52e41036acccf3660e3', ag_grid: this.agGrid }, index.h("div", { key: 'cb8a3448bab4211e9a74934527efae57f3d871be', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (index.h("at-table-filter-menu", { key: 'ef95fee5dc34673f133fcc6ea3f50d84ca0aea80', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: '88c4affd3aadc2c7b40acadbc1261306f6c42a74', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (index.h("at-table-filters", { key: '2595dd831cc106261dc6f685329a93a2c6b4ec9a', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '1443bb97563a8e09e009620bba59d27397832480', slot: "export-menu" })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: '2b677623f4e5b52e6421ec398e50e681d27c3c09', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '8c8a0288ad1888df6d599c28218f2fc6e26ad543', slot: "actions" }, index.h("slot", { key: '792586db4931007bd45488b03f03133fc86f2801', name: "actions" }))), index.h("slot", { key: '43141ef555639bfa40040257c497ef56ceb258c6', name: "multi-select-actions" }), index.h("at-table", { key: 'b0c45b3b9b32b4c5da290a5079a7458fb1fbdb82', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get watchers() { return {
-        "selectedFilters": [{
-                "handleSelectedFiltersChange": 0
-            }]
+        "selectedFilters": ["handleSelectedFiltersChange"]
     }; }
 };
 
 exports.at_search_table = AtSearchTable;
+//# sourceMappingURL=at-search-table.entry.cjs.js.map

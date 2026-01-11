@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-EP34iaAr.js';
 
 const AtTablePagination = class {
     constructor(hostRef) {
@@ -38,3 +38,4 @@ const AtTablePagination = class {
 };
 
 export { AtTablePagination as at_table_pagination };
+//# sourceMappingURL=at-table-pagination.entry.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -153,10 +153,9 @@ const AtTabs = class {
         return h(Host, { key: 'af1f0efa1ac5fe6e21ca48b910a5de79abb37daf' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
-        "active_tab": [{
-                "handleActiveTabChange": 0
-            }]
+        "active_tab": ["handleActiveTabChange"]
     }; }
 };
 
 export { AtTabs as at_tabs };
+//# sourceMappingURL=at-tabs.entry.js.map

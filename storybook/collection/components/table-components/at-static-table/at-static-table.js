@@ -73,8 +73,7 @@ export class AtStaticTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -155,3 +154,4 @@ export class AtStaticTable {
         };
     }
 }
+//# sourceMappingURL=at-static-table.js.map

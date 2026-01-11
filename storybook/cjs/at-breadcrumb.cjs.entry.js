@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtBreadcrumbComponent = class {
     constructor(hostRef) {
@@ -36,3 +36,4 @@ const AtBreadcrumbComponent = class {
 };
 
 exports.at_breadcrumb = AtBreadcrumbComponent;
+//# sourceMappingURL=at-breadcrumb.entry.cjs.js.map

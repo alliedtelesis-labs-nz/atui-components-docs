@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtStaticTable = class {
     constructor(hostRef) {
@@ -48,3 +48,4 @@ const AtStaticTable = class {
 };
 
 exports.at_static_table = AtStaticTable;
+//# sourceMappingURL=at-static-table.entry.cjs.js.map

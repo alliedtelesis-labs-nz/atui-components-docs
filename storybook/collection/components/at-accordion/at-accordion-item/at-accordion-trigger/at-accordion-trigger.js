@@ -35,3 +35,4 @@ export class AtAccordionTriggerComponent {
         };
     }
 }
+//# sourceMappingURL=at-accordion-trigger.js.map

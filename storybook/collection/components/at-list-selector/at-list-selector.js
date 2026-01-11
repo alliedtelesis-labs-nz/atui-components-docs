@@ -171,8 +171,7 @@ export class AtListSelector {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -180,3 +179,4 @@ export class AtListSelector {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-list-selector.js.map

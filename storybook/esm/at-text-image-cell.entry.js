@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 
 const AtTextImageCell = class {
     constructor(hostRef) {
@@ -52,3 +52,4 @@ const AtTextImageCell = class {
 };
 
 export { AtTextImageCell as at_text_image_cell };
+//# sourceMappingURL=at-text-image-cell.entry.js.map

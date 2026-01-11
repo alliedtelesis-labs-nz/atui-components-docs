@@ -1,12 +1,11 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const listItemVariants = {
-    xs: 'min-h-16 text-sm',
-    sm: 'min-h-[32px] text-sm',
-    md: 'min-h-[40px] text-body',
-    lg: 'min-h-[48px] text-body',
+    sm: 'py-4 text-sm',
+    md: 'py-8 text-body',
+    lg: 'py-[12px] text-body',
 };
 const AtListItem = class {
     constructor(hostRef) {
@@ -44,8 +43,9 @@ const AtListItem = class {
         return listItemVariants[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: 'ca59a07938b4a8752f465e959772d81cc800746f', role: "listitem", tabIndex: 0, class: "hover:bg-surface-1 flex items-center gap-3 px-4 py-3" }, index.h("div", { key: '5c089b9bbfed407a80186e2047b2e7f1e339d4ef', class: "flex flex-grow flex-col" }, index.h("div", { key: 'a031c1ce4ee474fb5c489c6133a7244fa62f03e8', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, this.icon && (index.h("span", { key: '113d2377945f9b479c7a6cfe7aea650f7963dc3a', class: "material-icons text-light items-center text-sm" }, this.icon)), this.item_prefix && (index.h("span", { key: '7dc54ac345e06309e9a133f95018d9ef2a94b618', class: "text-med mr-[4px] font-normal" }, this.item_prefix)), index.h("span", { key: '63a7ffb23649624461e759f616e3529f40278bf6', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, index.h("span", { key: '25d5cfba857f254e9dd1604ef2eac95016e4c97e', class: "flex flex-row font-normal" }, index.h("span", { key: 'ef25f0905faf1ca4cc80615a7cb807525710ebfb', class: "mr-4" }, this.item_title), index.h("slot", { key: '4a0d329490d652a7bd98bd79b13a7768153b3e1e', name: "title" })), this.subtitle && (index.h("span", { key: 'aaa71e6f81ce7289e6780a191701596a088afb63', class: "text-med inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), index.h("div", { key: '1e2d2115e1e9bce6edea9c2343052e74c3bff20e', class: "flex flex-wrap items-end justify-end gap-8" }, index.h("slot", { key: '782bfd10d37e1c29fa4b61e0a8a0954ae3c8c200' }), this.content && (index.h("span", { key: '05991aaeaa7bc2bbe9255097be41ed3fbfb02cd6', "data-name": "content" }, this.content)))));
+        return (index.h(index.Host, { key: 'e415c7a94d3db5baa280d19936a41ab4a6743761', role: "listitem", tabIndex: 0, class: `flex items-center gap-3 px-4 ${this.sizeClasses} ${this.border ? 'border-border border-b border-solid' : ''}` }, index.h("div", { key: '780b48424407c4437a9c9b8d9860cd7fe6a84dae', class: "flex flex-grow flex-col" }, index.h("div", { key: '235dbdaa8d1dd3038abed9539ae7622054390416', class: `flex items-center justify-start gap-8 whitespace-nowrap` }, this.icon && (index.h("span", { key: '06e55a655cddadb5023c07b1ed24a789694fe62b', class: "material-icons text-light items-center text-sm" }, this.icon)), this.item_prefix && (index.h("span", { key: '6e93fb59d8f5d928c6ee261d2bb57ec273415a3b', class: "text-med mr-[4px] font-normal" }, this.item_prefix)), index.h("span", { key: '39a3ed971afc3f72dc232c2ec2d31dc167091f20', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, index.h("span", { key: '886493a967125a5d70b3d31f61409d10878e0777', class: "flex flex-row font-normal" }, index.h("span", { key: 'f1f935a40ecd0e4f92aa46e7b102602a5b9b8349', class: "mr-4" }, this.item_title), index.h("slot", { key: '18528f3c5ea587e96412d7bbba9531a0c14bd40f', name: "title" })), this.subtitle && (index.h("span", { key: 'ddb5625bda65d9ff83eaf1a1ff387bb10cdc1d45', class: "text-med inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), index.h("div", { key: 'f43455c961e83e8e6d45cb9d7865de51f6819b04', class: "flex flex-wrap items-end justify-end gap-8" }, index.h("slot", { key: '227f747fbc98acf16844abd71e8adf87b6cb837f' }), this.content && (index.h("span", { key: 'e542b8f14fbe8744df2b99577811ed3d81768b60', "data-name": "content" }, this.content)))));
     }
 };
 
 exports.at_list_item = AtListItem;
+//# sourceMappingURL=at-list-item.entry.cjs.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtListSelectorItem = class {
     constructor(hostRef) {
@@ -40,3 +40,4 @@ const AtListSelectorItem = class {
 };
 
 exports.at_list_selector_item = AtListSelectorItem;
+//# sourceMappingURL=at-list-selector-item.entry.cjs.js.map

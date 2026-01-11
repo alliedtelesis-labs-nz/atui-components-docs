@@ -471,8 +471,7 @@ export class AtCustomTimeRangeComponent {
                         "DateRangeStrings": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::DateRangeStrings",
-                            "referenceLocation": "DateRangeStrings"
+                            "id": "src/types/index.ts::DateRangeStrings"
                         }
                     }
                 }
@@ -501,3 +500,4 @@ export class AtCustomTimeRangeComponent {
             }];
     }
 }
+//# sourceMappingURL=at-custom-time-range.js.map

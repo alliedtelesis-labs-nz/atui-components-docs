@@ -411,8 +411,7 @@ export class AtSearchTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -622,8 +621,7 @@ export class AtSearchTable {
                         "IRowNode": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode",
-                            "referenceLocation": "IRowNode"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode"
                         },
                         "T": {
                             "location": "global",
@@ -653,3 +651,4 @@ export class AtSearchTable {
             }];
     }
 }
+//# sourceMappingURL=at-search-table.js.map

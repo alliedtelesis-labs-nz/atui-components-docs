@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtEditTextCell = class {
     constructor(hostRef) {
@@ -33,3 +33,4 @@ const AtEditTextCell = class {
 };
 
 exports.at_edit_text_cell = AtEditTextCell;
+//# sourceMappingURL=at-edit-text-cell.entry.cjs.js.map

@@ -38,3 +38,4 @@ export class SelectedTimeRange {
         return `${value.selected}`;
     }
 }
+//# sourceMappingURL=time.js.map

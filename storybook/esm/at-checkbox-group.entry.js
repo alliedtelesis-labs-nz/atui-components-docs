@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const layoutVariantsConfig = {
@@ -113,10 +113,9 @@ const AtCheckboxGroup = class {
             this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'faa72737884600863daa9053be5fb5afbcbd9b0c', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "options": [{
-                "updateSelected": 0
-            }]
+        "options": ["updateSelected"]
     }; }
 };
 
 export { AtCheckboxGroup as at_checkbox_group };
+//# sourceMappingURL=at-checkbox-group.entry.js.map

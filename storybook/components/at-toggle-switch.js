@@ -1,1 +1,9 @@
-import{A as o,d as s}from"./p-Bo-aBI8M.js";const a=o,p=s;export{a as AtToggleSwitch,p as defineCustomElement}
+import { A as AtToggleSwitchComponent, d as defineCustomElement$1 } from './p-DSDMRn44.js';
+
+const AtToggleSwitch = AtToggleSwitchComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtToggleSwitch, defineCustomElement };
+//# sourceMappingURL=at-toggle-switch.js.map
+
+//# sourceMappingURL=at-toggle-switch.js.map

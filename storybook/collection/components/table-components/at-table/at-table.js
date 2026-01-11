@@ -205,8 +205,7 @@ export class AtTableComponent {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -329,8 +328,7 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         }
                     }
                 },
@@ -384,14 +382,12 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         },
                         "GridOptions": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions",
-                            "referenceLocation": "GridOptions"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions"
                         },
                         "HTMLElement": {
                             "location": "global",
@@ -420,8 +416,7 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         }
                     },
                     "return": "Promise<GridApi<any>>"
@@ -444,3 +439,4 @@ export class AtTableComponent {
             }];
     }
 }
+//# sourceMappingURL=at-table.js.map

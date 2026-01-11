@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtFormLabelComponent = class {
@@ -322,11 +322,10 @@ const AtTooltip = class {
         return (index.h(index.Host, { key: '4caead5f211f1627b47ec4076f8f7770ac751b4c', class: "relative" }, !this.trigger_id && (index.h("div", { key: '7580e2abb9f20907ddc8153eeddf2362b0953c17', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: 'e005e1dd7eece87de8394895ae3d56d48413b55a', name: "tooltip-trigger" }))), index.h("div", { key: '345d3a23f9d35c314591891b250d235752e5f331', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'd91f2f8c110bd58fdbce8bc86496eb22d5d61aa5' }))));
     }
     static get watchers() { return {
-        "disabled": [{
-                "disabledChanged": 0
-            }]
+        "disabled": ["disabledChanged"]
     }; }
 };
 
 exports.at_form_label = AtFormLabelComponent;
 exports.at_tooltip = AtTooltip;
+//# sourceMappingURL=at-form-label.at-tooltip.entry.cjs.js.map

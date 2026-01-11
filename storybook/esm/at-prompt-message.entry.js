@@ -1,9 +1,9 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { P as PromptResponseScore } from './prompt-Btgx1mEX.js';
 
-const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
+const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
 
 const messageVariantsConfig = {
     variants: {
@@ -217,11 +217,10 @@ const AtPromptMessage = class {
         return (h(Host, { key: 'bafa49858caff1f986b9044684f293ffec213d9b', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '19e89d805829b6acf936f0e43674dcfdbbe5f639', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'b9d7daaf2d5d471b07fd9b489fa10987a244f40b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '947d954edf80b58020db1f71ffe4ba93db306f95', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
-        "content": [{
-                "watchContentChange": 0
-            }]
+        "content": ["watchContentChange"]
     }; }
 };
-AtPromptMessage.style = atPromptMessageCss();
+AtPromptMessage.style = atPromptMessageCss;
 
 export { AtPromptMessage as at_prompt_message };
+//# sourceMappingURL=at-prompt-message.entry.js.map

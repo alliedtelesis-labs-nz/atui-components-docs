@@ -234,8 +234,7 @@ export class AtPromptMessage {
                         "PromptUserRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptUserRole",
-                            "referenceLocation": "PromptUserRole"
+                            "id": "src/types/index.ts::PromptUserRole"
                         }
                     }
                 },
@@ -359,8 +358,7 @@ export class AtPromptMessage {
                         "PromptResponseScore": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseScore",
-                            "referenceLocation": "PromptResponseScore"
+                            "id": "src/types/index.ts::PromptResponseScore"
                         }
                     }
                 },
@@ -465,8 +463,7 @@ export class AtPromptMessage {
                         "PromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::PromptResponseAnimation"
                         }
                     }
                 },
@@ -563,3 +560,4 @@ export class AtPromptMessage {
             }];
     }
 }
+//# sourceMappingURL=at-prompt-message.js.map

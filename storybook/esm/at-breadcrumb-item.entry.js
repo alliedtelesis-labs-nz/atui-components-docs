@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {
@@ -19,3 +19,4 @@ const AtBreadcrumbItem = class {
 };
 
 export { AtBreadcrumbItem as at_breadcrumb_item };
+//# sourceMappingURL=at-breadcrumb-item.entry.js.map

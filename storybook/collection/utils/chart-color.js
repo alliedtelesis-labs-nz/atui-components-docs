@@ -20,3 +20,4 @@ export function generateColourPalette(dataCount) {
     }
     return colours;
 }
+//# sourceMappingURL=chart-color.js.map

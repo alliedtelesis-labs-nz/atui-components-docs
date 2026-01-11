@@ -4,3 +4,4 @@ export const paginationText = {
     to: 'TO',
     of: 'OF',
 };
+//# sourceMappingURL=index.js.map

@@ -218,8 +218,7 @@ export class AtPromptContainer {
                         "PromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::PromptMessage"
                         }
                     }
                 },
@@ -422,8 +421,7 @@ export class AtPromptContainer {
                         "PromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::PromptResponseAnimation"
                         }
                     }
                 },
@@ -580,14 +578,12 @@ export class AtPromptContainer {
                         "PromptUserRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptUserRole",
-                            "referenceLocation": "PromptUserRole"
+                            "id": "src/types/index.ts::PromptUserRole"
                         },
                         "PromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::PromptMessage"
                         }
                     },
                     "return": "Promise<void>"
@@ -725,3 +721,4 @@ export class AtPromptContainer {
             }];
     }
 }
+//# sourceMappingURL=at-prompt-container.js.map

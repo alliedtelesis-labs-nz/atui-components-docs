@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -83,3 +83,4 @@ const AtTreeItemComponent = class {
 };
 
 exports.at_tree_item = AtTreeItemComponent;
+//# sourceMappingURL=at-tree-item.entry.cjs.js.map

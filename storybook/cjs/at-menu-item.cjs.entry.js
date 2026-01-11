@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -59,3 +59,4 @@ const AtMenuitemComponent = class {
 };
 
 exports.at_menu_item = AtMenuitemComponent;
+//# sourceMappingURL=at-menu-item.entry.cjs.js.map

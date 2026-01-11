@@ -47,3 +47,4 @@ export class AtTextBadgeCell {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-text-badge-cell.js.map

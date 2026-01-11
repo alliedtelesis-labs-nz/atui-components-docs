@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {
@@ -103,3 +103,4 @@ const AtInputTime = class {
 };
 
 exports.at_input_time = AtInputTime;
+//# sourceMappingURL=at-input-time.entry.cjs.js.map

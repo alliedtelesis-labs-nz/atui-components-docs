@@ -30,3 +30,6 @@ const MIN_DATE = new Date('1985-01-01T00:00:00');
 const MAX_DATE = new Date('2099-12-31T23:59:59');
 
 export { DateFormat as D, MIN_DATE as M, TimeRangeDisplay as T, MAX_DATE as a, TimeRangesInHours as b };
+//# sourceMappingURL=date-C3LwY5aR.js.map
+
+//# sourceMappingURL=date-C3LwY5aR.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-EP34iaAr.js';
 import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DLaek6ce.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-z4fe7bzG.js';
@@ -139,9 +139,7 @@ const AtButtonGroup = class {
             this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: '5cb5c708115daffd941c658ce1cfc03ea6e1b481', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "value": [{
-                "handleValueChange": 0
-            }]
+        "value": ["handleValueChange"]
     }; }
 };
 
@@ -371,24 +369,12 @@ const AtCustomTimeRangeComponent = class {
             .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: 'd25e6976a8b335ddbbf034920c49bee71f0f06d7', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), h("div", { key: 'b74789809de4dc3af497b2aca7b67d103ac529a6', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '3f619a0552f5ca88b6fbbcb81c8373bc9d38c53d', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onClick: () => this.clearSelection() }), h("div", { key: '031e9771d6baa04daae317e4420012c69de141fd', class: "flex flex-row gap-8" }, h("at-button", { key: '02aef76a5d9b347ca19fd2e5bee8c413abe1381e', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onClick: () => this.handleCancel() }), h("at-button", { key: 'bea251f52f949a64786edef20567f0f4a4e6006f', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, onClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
-        "min_date": [{
-                "validateMinDate": 0
-            }],
-        "max_date": [{
-                "validateMaxDate": 0
-            }],
-        "default_from_date": [{
-                "validateDefaultFromDate": 0
-            }],
-        "default_to_date": [{
-                "validateDefaultToDate": 0
-            }],
-        "from_date_value": [{
-                "validateFromDateValue": 0
-            }],
-        "to_date_value": [{
-                "validateToDateValue": 0
-            }]
+        "min_date": ["validateMinDate"],
+        "max_date": ["validateMaxDate"],
+        "default_from_date": ["validateDefaultFromDate"],
+        "default_to_date": ["validateDefaultToDate"],
+        "from_date_value": ["validateFromDateValue"],
+        "to_date_value": ["validateToDateValue"]
     }; }
 };
 
@@ -564,13 +550,10 @@ const AtTimeWithUnitComponent = class {
                 }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '22e28aeb9b4862e5b62a315ecca173492b58eb2e', class: "flex justify-between p-8" }, h("at-button", { key: '4691f44757526c63dbcbe780ffa3e975c8ef41bd', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '33daa228f57c32f170bf0a4826c8f219c9d6719e', class: "flex gap-8" }, h("at-button", { key: 'd6700cfd1b1fb5d2a4cb6ee56d3b2d7239fa6b7f', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '08df792fddde0fa2e238db977c9466b736d3a418', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
-        "timeValue": [{
-                "watchTimeValue": 0
-            }],
-        "timeUnit": [{
-                "watchTimeUnit": 0
-            }]
+        "timeValue": ["watchTimeValue"],
+        "timeUnit": ["watchTimeUnit"]
     }; }
 };
 
 export { AtButtonGroup as at_button_group, AtCustomTimeRangeComponent as at_custom_time_range, AtTimeWithUnitComponent as at_time_with_unit };
+//# sourceMappingURL=at-button-group.at-custom-time-range.at-time-with-unit.entry.js.map

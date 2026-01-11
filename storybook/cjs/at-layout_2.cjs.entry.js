@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const AtLayout = class {
@@ -92,3 +92,4 @@ const AtTabTrigger = class {
 
 exports.at_layout = AtLayout;
 exports.at_tab_trigger = AtTabTrigger;
+//# sourceMappingURL=at-layout.at-tab-trigger.entry.cjs.js.map

@@ -192,8 +192,7 @@ export class AtButtonGroupOption {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -201,3 +200,4 @@ export class AtButtonGroupOption {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-button-group-option.js.map

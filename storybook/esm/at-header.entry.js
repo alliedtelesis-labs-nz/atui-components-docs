@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 
 const AtHeader = class {
     constructor(hostRef) {
@@ -45,3 +45,4 @@ const AtHeader = class {
 };
 
 export { AtHeader as at_header };
+//# sourceMappingURL=at-header.entry.js.map

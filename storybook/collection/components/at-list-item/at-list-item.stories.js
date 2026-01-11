@@ -13,7 +13,7 @@ export default {
     title: 'Components/List Item',
     argTypes: {
         size: {
-            options: ['lg', 'md', 'sm', 'xs'],
+            options: ['lg', 'md', 'sm'],
             control: { type: 'select' },
         },
     },

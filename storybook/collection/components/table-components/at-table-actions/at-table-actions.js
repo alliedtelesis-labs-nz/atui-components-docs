@@ -73,8 +73,7 @@ export class AtTableActionsComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         }
                     }
                 },
@@ -147,3 +146,4 @@ export class AtTableActionsComponent {
             }];
     }
 }
+//# sourceMappingURL=at-table-actions.js.map

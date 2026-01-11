@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 
 const AtSrcDestComponent = class {
     constructor(hostRef) {
@@ -38,3 +38,4 @@ const AtSrcDestComponent = class {
 };
 
 export { AtSrcDestComponent as at_src_dest };
+//# sourceMappingURL=at-src-dest.entry.js.map

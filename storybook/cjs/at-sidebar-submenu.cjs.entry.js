@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
-const atSidebarSubmenuCss = () => `:host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}`;
+const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
 
 const AtSidebarSubmenuComponent = class {
     /**
@@ -68,6 +68,7 @@ const AtSidebarSubmenuComponent = class {
         return (index.h(index.Host, { key: '874839e6a5b1d7f393277d3599493781c3f58731' }, index.h("at-accordion-item", { key: '3cf64759ff325323fbfbe141faf55c9881486f11', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (index.h("at-sidebar-menuitem", { key: '57ae43c04c608c74bc2f8f413b802dfb3405c953', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (index.h("i", { key: 'b0f851f8b86a05e400d41d7af30ae666158b1789', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), index.h("div", { key: '0df1fdbf970bd9f6ec650088aeaf6d2224267f5f', class: "content" }, index.h("slot", { key: 'e303051424f9b69bda942893870ebd489221167c', name: "submenu-content" }))), index.h("at-menu", { key: 'd3b49d9b942474c1eb9e02e54ab24513e67c8cfd', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, index.h("at-sidebar-menuitem", { key: '1a093963ed1213d7b1103b08ccef72d9e82ee0a0', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), index.h("div", { key: '45364738bb794463364a22885d3d84d57242b7ba', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, index.h("slot", { key: '95e8d006dc444c4ea11acf34163c1946cf1885eb', name: "submenu-hover-content" })))));
     }
 };
-AtSidebarSubmenuComponent.style = atSidebarSubmenuCss();
+AtSidebarSubmenuComponent.style = atSidebarSubmenuCss;
 
 exports.at_sidebar_submenu = AtSidebarSubmenuComponent;
+//# sourceMappingURL=at-sidebar-submenu.entry.cjs.js.map

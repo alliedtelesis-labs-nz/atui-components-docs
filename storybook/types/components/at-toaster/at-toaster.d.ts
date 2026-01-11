@@ -11,15 +11,14 @@ export declare class AtToasterComponent {
     toasts: Toast[];
     /**
      * Adds a new toast to the toaster container
-     * This method is called from ToasterService.show()
-     * The toast will be automatically dismissed after timeout if it is dismissible
+     * This method is called from the ToasterUtil when a new toast is created.
      *
      * @param toast The toast to add
      */
     addToast(toast: Toast): Promise<void>;
     /**
      * Removes a toast from the toaster container by its ID
-     * This method is called by tapToast or clickCloseButton
+     * This method is called by tapToast.
      *
      * @param id The ID of the toast to remove
      */

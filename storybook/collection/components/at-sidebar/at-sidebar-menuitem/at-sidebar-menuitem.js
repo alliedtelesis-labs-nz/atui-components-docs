@@ -156,8 +156,7 @@ export class AtSidebarMenuitemComponent {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -165,3 +164,4 @@ export class AtSidebarMenuitemComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-sidebar-menuitem.js.map

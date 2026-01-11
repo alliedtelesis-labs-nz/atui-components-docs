@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -46,3 +46,4 @@ const AtTabContent = class {
 };
 
 exports.at_tab_content = AtTabContent;
+//# sourceMappingURL=at-tab-content.entry.cjs.js.map

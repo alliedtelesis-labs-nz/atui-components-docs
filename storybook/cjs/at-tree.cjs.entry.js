@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtTreeComponent = class {
     constructor(hostRef) {
@@ -75,3 +75,4 @@ const AtTreeComponent = class {
 };
 
 exports.at_tree = AtTreeComponent;
+//# sourceMappingURL=at-tree.entry.cjs.js.map

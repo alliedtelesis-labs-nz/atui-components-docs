@@ -1613,3 +1613,6 @@ const computePosition = (reference, floating, options) => {
 };
 
 export { autoUpdate as a, size as b, computePosition as c, flip as f, offset as o, shift as s };
+//# sourceMappingURL=floating-ui.dom-BO6p966C.js.map
+
+//# sourceMappingURL=floating-ui.dom-BO6p966C.js.map

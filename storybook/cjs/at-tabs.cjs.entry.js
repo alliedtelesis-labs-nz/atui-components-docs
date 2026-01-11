@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CNxmwTiq.js');
+var index = require('./index-COiLLAKF.js');
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -155,10 +155,9 @@ const AtTabs = class {
         return index.h(index.Host, { key: 'af1f0efa1ac5fe6e21ca48b910a5de79abb37daf' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
-        "active_tab": [{
-                "handleActiveTabChange": 0
-            }]
+        "active_tab": ["handleActiveTabChange"]
     }; }
 };
 
 exports.at_tabs = AtTabs;
+//# sourceMappingURL=at-tabs.entry.cjs.js.map

@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
-const atInputNumericCss = () => `input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}`;
+const atInputNumericCss = "input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}";
 
 const containerVariantsConfig = {
     variants: {
@@ -155,6 +155,7 @@ const AtInputNumericComponent = class {
         return (h(Host, { key: 'c584cb987d0f43145d95ebae9adf8b599e234333', class: "w-full" }, h("div", { key: '5717a0ada3c6bc9598a5324938e4d4faf195c8e1', class: "flex flex-col" }, h("slot", { key: 'edc253d3130ba815ee20392bf0aa8ed0d9031a0c', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '7d195fe17ff938788ab0d31eeb27a2ea7df5cb02', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'e1f96c013c1d83e9e68c80a9f924de0be20247fb', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '3a16de2e8886d2a3a25f198a56f7e01c80989d0a', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '8e0f74a34d787e834420e4c4358119c2b6b8e5a4', class: "border-med rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", icon: "remove", onClick: this.handleDecrease, disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" })), h("input", { key: '898bbc29248033ada4845d48ad45708db9c996d2', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", placeholder: `${this.placeholder}`, onInput: (event) => (this.value = Number(event.target.value)), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: 'b73d69b6b028e6ee34a66be1bb3e8aca5bfae833', class: "border-med rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", icon: "add", onClick: this.handleIncrease, disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }))), this.error_text && this.invalid && (h("span", { key: '6c60d98c00891acfd630ec706419b5072a95e00e', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
-AtInputNumericComponent.style = atInputNumericCss();
+AtInputNumericComponent.style = atInputNumericCss;
 
 export { AtInputNumericComponent as at_input_numeric };
+//# sourceMappingURL=at-input-numeric.entry.js.map

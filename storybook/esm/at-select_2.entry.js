@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-7z-rGOwX.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
@@ -233,12 +233,8 @@ const AtSelectComponent = class {
         return (h("at-select-option", { value: option.value, is_active: this.value === option.value, onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get watchers() { return {
-        "value": [{
-                "watchValue": 0
-            }],
-        "searchText": [{
-                "watchSearchText": 0
-            }]
+        "value": ["watchValue"],
+        "searchText": ["watchSearchText"]
     }; }
 };
 
@@ -280,3 +276,4 @@ const AtSelectOptionComponent = class {
 };
 
 export { AtSelectComponent as at_select, AtSelectOptionComponent as at_select_option };
+//# sourceMappingURL=at-select.at-select-option.entry.js.map

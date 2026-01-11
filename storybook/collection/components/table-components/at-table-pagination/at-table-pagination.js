@@ -88,8 +88,7 @@ export class AtTablePagination {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../../types/select",
-                            "id": "src/types/select.ts::SelectOption",
-                            "referenceLocation": "SelectOption"
+                            "id": "src/types/select.ts::SelectOption"
                         }
                     }
                 },
@@ -139,3 +138,4 @@ export class AtTablePagination {
             }];
     }
 }
+//# sourceMappingURL=at-table-pagination.js.map

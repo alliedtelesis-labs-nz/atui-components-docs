@@ -1,1 +1,2 @@
-var N;!function(N){N[N.NONE=0]="NONE",N[N.UP=1]="UP",N[N.DOWN=-1]="DOWN"}(N||(N={}));export{N as P}
+var N;(function(N){N[N["NONE"]=0]="NONE";N[N["UP"]=1]="UP";N[N["DOWN"]=-1]="DOWN"})(N||(N={}));export{N as P};
+//# sourceMappingURL=p-Btgx1mEX.js.map

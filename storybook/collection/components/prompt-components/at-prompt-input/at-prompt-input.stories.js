@@ -125,3 +125,4 @@ InProgress.args = {
     in_progress: true,
     hint_text: 'Click stop to interrupt generation',
 };
+//# sourceMappingURL=at-prompt-input.stories.js.map

@@ -185,8 +185,7 @@ export class AtPromptThread {
                         "PromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::PromptMessage"
                         }
                     }
                 },
@@ -330,8 +329,7 @@ export class AtPromptThread {
                         "PromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::PromptResponseAnimation"
                         }
                     }
                 },
@@ -482,3 +480,4 @@ export class AtPromptThread {
             }];
     }
 }
+//# sourceMappingURL=at-prompt-thread.js.map

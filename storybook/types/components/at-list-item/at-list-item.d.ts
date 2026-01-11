@@ -1,4 +1,4 @@
-type Size = 'xs' | 'sm' | 'md' | 'lg';
+type Size = 'sm' | 'md' | 'lg';
 /**
  * @category Layout
  * @description A list item component for data in key:value format.

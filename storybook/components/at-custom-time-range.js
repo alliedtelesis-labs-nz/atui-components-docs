@@ -1,1 +1,9 @@
-import{A as o,d as s}from"./p-DXmOQ8DX.js";const m=o,p=s;export{m as AtCustomTimeRange,p as defineCustomElement}
+import { A as AtCustomTimeRangeComponent, d as defineCustomElement$1 } from './p-BWN7eOkD.js';
+
+const AtCustomTimeRange = AtCustomTimeRangeComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtCustomTimeRange, defineCustomElement };
+//# sourceMappingURL=at-custom-time-range.js.map
+
+//# sourceMappingURL=at-custom-time-range.js.map

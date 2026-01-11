@@ -225,8 +225,7 @@ export class AtMultiSelectComponent {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption",
-                            "referenceLocation": "SelectOption"
+                            "id": "src/types/select.ts::SelectOption"
                         }
                     }
                 },
@@ -502,3 +501,4 @@ export class AtMultiSelectComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-multi-select.js.map
