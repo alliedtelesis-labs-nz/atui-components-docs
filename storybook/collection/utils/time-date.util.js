@@ -1,5 +1,5 @@
 import moment from "moment";
-import { clone, floor, isEmpty, round } from "lodash";
+import { floor, isEmpty, round, clone } from "lodash-es";
 import { Duration, TimeUnit, } from "../types/time";
 export class TimeDateUtil {
     /**

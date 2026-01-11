@@ -1,14 +1,15 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-EP34iaAr.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-BjQmC0mE.js';
-import { D as DateFormat } from './date-C3LwY5aR.js';
-import './moment-BMuAbjcg.js';
-import './time-date.util-h594ms27.js';
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+import { T as TimeDatePresentationUtil } from './p-DmuEKRw7.js';
+import { D as DateFormat } from './p-C3LwY5aR.js';
 
-const AtTitleSubtitleDateCell = class {
-    constructor(hostRef) {
-        registerInstance(this, hostRef);
+const AtTitleSubtitleDateCell = /*@__PURE__*/ proxyCustomElement(class AtTitleSubtitleDateCell extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
     }
-    get el() { return getElement(this); }
+    get el() { return this; }
     value;
     params;
     init(params) {
@@ -40,7 +41,25 @@ const AtTitleSubtitleDateCell = class {
     render() {
         return (h(Host, { key: '564b16bd93937abdf2c46b714e619893a2e6d3b8' }, h("div", { key: 'ff9c9eba0540e6bd34dd36ffede9d89d1eb4cb55', class: "flex h-full flex-col justify-center" }, h("div", { key: '4105c6da64e89c183364c02f5371158867305815', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: 'f89608533c167b7b525481f3b9e7ea8af4f4e5d5', class: "text-med truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
     }
-};
+}, [256, "at-title-subtitle-date-cell", {
+        "value": [32],
+        "params": [32]
+    }]);
+function defineCustomElement() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-title-subtitle-date-cell"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-title-subtitle-date-cell":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtTitleSubtitleDateCell);
+            }
+            break;
+    } });
+}
 
-export { AtTitleSubtitleDateCell as at_title_subtitle_date_cell };
-//# sourceMappingURL=at-title-subtitle-date-cell.entry.js.map
+export { AtTitleSubtitleDateCell as A, defineCustomElement as d };
+//# sourceMappingURL=p-B4Fq_lGG.js.map
+
+//# sourceMappingURL=p-B4Fq_lGG.js.map
