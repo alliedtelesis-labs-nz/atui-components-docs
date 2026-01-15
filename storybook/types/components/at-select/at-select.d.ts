@@ -80,12 +80,14 @@ export declare class AtSelectComponent {
      * Emits an event containing the selected value when changed.
      */
     atuiChange: EventEmitter<string>;
-    componentWillLoad(): Promise<void>;
+    componentWillLoad(): void;
     componentDidLoad(): void;
+    private setupOptionElements;
     private updateIsOpenState;
     private handleChange;
     private handleClear;
     private handleKeyDownMenu;
+    private hasMatchingItems;
     private handleSearchInput;
     render(): any;
     renderLabel(): any;

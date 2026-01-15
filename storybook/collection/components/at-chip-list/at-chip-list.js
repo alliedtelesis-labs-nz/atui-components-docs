@@ -57,9 +57,9 @@ export class AtChipList {
         return (h("div", { key: 'e79e8aeed2f9bdf35bdf0aa5605c30d1e7a0c7ba', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: '046ba6acc259db6bc4991a607e703dee8d175120', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: '45ce89f2d81caa18afb362d0cf68ad9dd1d09451', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), h("slot", { key: '5bfcabd7de237ca2077562faddf2fae94b995d76' })));
+            } })), h("slot", { key: 'f3914a81bce09dcf0b76f3211a1f4ff2f8cc483a' })));
     }
     static get is() { return "at-chip-list"; }
     static get properties() {
