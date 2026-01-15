@@ -39,7 +39,7 @@ export class AtTableFilterMenu {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (h(Host, { key: 'b982bedd9cf638b517f00832d752aeaeecba96db' }, h("at-menu", { key: 'bf8f22a4fa6ac4ccddacdcc825e69269fe23bd77', autoclose: false, width: "fit-content", class: "self-start" }, h("at-tooltip", { key: '9216544491ae36d10083ee8f8e6853ddccaa6631', slot: "menu-trigger", position: "top" }, h("at-button", { key: '1e8f32604348bce0580e95fded72c415daf0a136', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: 'f7dbcd35203bff4d997b33cdf833544438dc4b5a' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '6d7291e39268932327b07b603be7528e806ad14f', class: "flex flex-col" }, h("at-checkbox-group", { key: '03c3354e7be00b1c22c9c84d0e93ee7454097bef', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: '04d971342ea40ae7cc08e699edc09fb06f2db03f' }, h("at-menu", { key: 'fc2ef5c7bd04b3dc66bbfdf6d764f6616fbc2efd', autoclose: false, width: "fit-content", class: "self-start" }, h("at-tooltip", { key: '090f59476d40c48c23b5c5d50cc058ac5b0981cd', slot: "menu-trigger", position: "top" }, h("at-button", { key: '45b21f7d0d4a868a7b4d6636c57e7d296a6ea809', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: '0ed2a7365345e8b79976536c63651fa7f7b64aec' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: 'cd3ecae8a374262b76ac625aa008ced562c15dba', class: "flex flex-col" }, h("at-checkbox-group", { key: 'cbdd495081672c6aeee5d82e1bf0c9831ee63a1e', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get is() { return "at-table-filter-menu"; }
     static get properties() {
@@ -54,7 +54,8 @@ export class AtTableFilterMenu {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
+                            "referenceLocation": "ColDef"
                         }
                     }
                 },
@@ -118,4 +119,3 @@ export class AtTableFilterMenu {
             }];
     }
 }
-//# sourceMappingURL=at-table-filter-menu.js.map

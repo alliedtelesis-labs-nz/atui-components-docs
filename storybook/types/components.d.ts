@@ -21,6 +21,7 @@ import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list"
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+import { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { HeaderSizes } from "./components/at-header/at-header";
 import { InputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
@@ -64,6 +65,7 @@ export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list"
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+export { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { HeaderSizes } from "./components/at-header/at-header";
 export { InputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
@@ -754,6 +756,12 @@ export namespace Components {
           * Current value of the to date
          */
         "to_date_value": Date;
+    }
+    interface AtDashboard {
+        /**
+          * @default []
+         */
+        "widget_items": CustomGridStackItem[];
     }
     /**
      * @category Overlays
@@ -2940,6 +2948,10 @@ export interface AtCustomTimeRangeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtCustomTimeRangeElement;
 }
+export interface AtDashboardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtDashboardElement;
+}
 export interface AtDialogCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtDialogElement;
@@ -3434,6 +3446,25 @@ declare global {
     var HTMLAtCustomTimeRangeElement: {
         prototype: HTMLAtCustomTimeRangeElement;
         new (): HTMLAtCustomTimeRangeElement;
+    };
+    interface HTMLAtDashboardElementEventMap {
+        "changedItem": CustomGridStackItem;
+        "removedItem": CustomGridStackItem;
+        "resizeDragEvent": CustomGridStackItem;
+    }
+    interface HTMLAtDashboardElement extends Components.AtDashboard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtDashboardElementEventMap>(type: K, listener: (this: HTMLAtDashboardElement, ev: AtDashboardCustomEvent<HTMLAtDashboardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtDashboardElementEventMap>(type: K, listener: (this: HTMLAtDashboardElement, ev: AtDashboardCustomEvent<HTMLAtDashboardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtDashboardElement: {
+        prototype: HTMLAtDashboardElement;
+        new (): HTMLAtDashboardElement;
     };
     interface HTMLAtDialogElementEventMap {
         "atuiDialogChange": any;
@@ -4550,6 +4581,7 @@ declare global {
         "at-color-status-cell": HTMLAtColorStatusCellElement;
         "at-column-manager": HTMLAtColumnManagerElement;
         "at-custom-time-range": HTMLAtCustomTimeRangeElement;
+        "at-dashboard": HTMLAtDashboardElement;
         "at-dialog": HTMLAtDialogElement;
         "at-edit-text-cell": HTMLAtEditTextCellElement;
         "at-form-label": HTMLAtFormLabelElement;
@@ -5290,6 +5322,15 @@ declare namespace LocalJSX {
           * Current value of the to date
          */
         "to_date_value"?: Date;
+    }
+    interface AtDashboard {
+        "onChangedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        "onRemovedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        "onResizeDragEvent"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        /**
+          * @default []
+         */
+        "widget_items"?: CustomGridStackItem[];
     }
     /**
      * @category Overlays
@@ -7553,6 +7594,7 @@ declare namespace LocalJSX {
         "at-color-status-cell": AtColorStatusCell;
         "at-column-manager": AtColumnManager;
         "at-custom-time-range": AtCustomTimeRange;
+        "at-dashboard": AtDashboard;
         "at-dialog": AtDialog;
         "at-edit-text-cell": AtEditTextCell;
         "at-form-label": AtFormLabel;
@@ -7757,6 +7799,7 @@ declare module "@stencil/core" {
             "at-color-status-cell": LocalJSX.AtColorStatusCell & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
             "at-column-manager": LocalJSX.AtColumnManager & JSXBase.HTMLAttributes<HTMLAtColumnManagerElement>;
             "at-custom-time-range": LocalJSX.AtCustomTimeRange & JSXBase.HTMLAttributes<HTMLAtCustomTimeRangeElement>;
+            "at-dashboard": LocalJSX.AtDashboard & JSXBase.HTMLAttributes<HTMLAtDashboardElement>;
             /**
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.

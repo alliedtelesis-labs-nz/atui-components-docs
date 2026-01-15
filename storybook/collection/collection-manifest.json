@@ -32,6 +32,7 @@
     "components/at-checkbox-group/at-checkbox-group.js",
     "components/at-checkbox-group/at-checkbox/at-checkbox.js",
     "components/at-chip-list/at-chip-list.js",
+    "components/at-dashboard/at-dashboard.js",
     "components/at-dialog/at-dialog.js",
     "components/at-form-label/at-form-label.js",
     "components/at-header/at-header.js",
@@ -91,8 +92,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.38.1",
-    "typescriptVersion": "5.9.3"
+    "version": "4.41.1",
+    "typescriptVersion": "5.8.3"
   },
   "collections": [],
   "bundles": []

@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 
-const atAccordionItemCss = "details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}";
+const atAccordionItemCss = () => `details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}`;
 
 const AtAccordionItemComponent = class {
     constructor(hostRef) {
@@ -79,7 +79,7 @@ const AtAccordionItemComponent = class {
         return (index.h(index.Host, { key: 'a80ad48f711d150246419584a2a60bd30d70054f', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: '3257fb86563823efb0bc0890f8b602e5398eb643', class: `group/accordion-item'}`, ref: (el) => (this.accordionElement = el), role: "group", open: this.open }, index.h("summary", { key: 'f30c7de30d4b28205cabeec79ef0977b78512d9d', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: "group/accordion-item focus-within:ring-active-foreground/40 flex rounded-sm outline-0 focus-within:ring-2", onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (index.h("at-accordion-trigger", { key: '6b48ce2637f4c637f468691be2ae59fcb352e2f6', label: this.label })), index.h("slot", { key: '4f02cbf85eedffa2ada85529933f279c1defada5', name: "accordion-trigger" })), index.h("div", { key: '26f4cf7ca50a8996ffe77adbe866559f0605fd01', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, hidden: !this.open, "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: '75f6aa08fc93ef2ea1bdcf972eb58bef1fbff282', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: '526f20fa12e1ede7d9103b13b1de59ce7c7e2570' })))));
     }
 };
-AtAccordionItemComponent.style = atAccordionItemCss;
+AtAccordionItemComponent.style = atAccordionItemCss();
 
 const AtAccordionTriggerComponent = class {
     constructor(hostRef) {
@@ -96,4 +96,3 @@ const AtAccordionTriggerComponent = class {
 
 exports.at_accordion_item = AtAccordionItemComponent;
 exports.at_accordion_trigger = AtAccordionTriggerComponent;
-//# sourceMappingURL=at-accordion-item.at-accordion-trigger.entry.cjs.js.map

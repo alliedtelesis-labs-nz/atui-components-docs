@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-DW9Wz0FM.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const inputVariantsConfig = {
@@ -106,13 +106,12 @@ const AtTextareaComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '8c798758b0b6a763ee10cd13643acc49870146a2' }, h("div", { key: '2f08cd21de8d3ac7bbbc55d6c7fa85f128c35b1e', class: "flex flex-col" }, h("slot", { key: '7e4cf9b4c79cbbba7ba4adb7afed32138644c25f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '6385fd1736e116e8faa726037802bc7e1f2c640c', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'ecab637f5bd7f4d65f28d32d08baff43ac285929', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '567af2198eaf6c66e5ef88b9d11bb6b75cfe46d8', class: "grid" }, h("textarea", { key: '3b6c6318e66d30c5ca6875b3559a2bd1412ddd54', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '3ec1f281305377f786add1d348661eaf111bef3b', "data-name": "textarea-resize-container", style: {
+        return (h(Host, { key: '84f05a5fb06adf6059100d3510fa3f6fdbaff7b9' }, h("div", { key: 'b56ca5390c6c96b3afc48e5049130ffc6be1f5c1', class: "flex flex-col" }, h("slot", { key: '251ac433d7decef9096e711899dff9476207b25a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '119bb15654b80e60b51bfc6207f248bb20fddcb0', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '110e6a6b525d204950e6c855ceeca562d29d1bff', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: 'd4f9497e48b8933e51d4ec54d56ee2f56bde708b', class: "grid" }, h("textarea", { key: '46cc196f7bf815aec57a760d1e5588cc11ffe7a0', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: 'bb1be3531698a05bb309d461846255d11e78590e', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '20cc7c818c1ff463c9936ba4676bd7bead506a42', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '60b37e9a368c61e2a3f4fd10074a99540a6ff03e', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
 };
 
 export { AtTextareaComponent as at_textarea };
-//# sourceMappingURL=at-textarea.entry.js.map

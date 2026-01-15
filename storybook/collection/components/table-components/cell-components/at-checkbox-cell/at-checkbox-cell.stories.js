@@ -43,4 +43,3 @@ Default.args = {
     },
     page_size: 10,
 };
-//# sourceMappingURL=at-checkbox-cell.stories.js.map

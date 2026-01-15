@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-EP34iaAr.js';
+import { r as registerInstance, h } from './index-DW9Wz0FM.js';
 
-const atToasterCss = "@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}.at-toaster.sc-at-toaster{position:fixed;display:flex;flex-direction:column;z-index:var(--token-z-index-modal);gap:8px;padding:12px}.at-toaster.top-right.sc-at-toaster{top:12px;right:12px;align-items:flex-end}.at-toaster.top-left.sc-at-toaster{top:12px;left:12px;align-items:flex-start}.at-toaster.bottom-right.sc-at-toaster{bottom:12px;right:12px;align-items:flex-end}.at-toaster.bottom-left.sc-at-toaster{bottom:12px;left:12px;align-items:flex-start}.at-toaster.top-center.sc-at-toaster{top:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toaster.bottom-center.sc-at-toaster{bottom:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toast.sc-at-toaster{min-width:var(--token-width-panel-xs);max-width:var(--token-width-panel-sm);box-shadow:var(--token-shadow-1);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;animation:animInUp 300ms ease-out forwards}.at-toast.undismissible.sc-at-toaster{cursor:default}.at-toast.close.sc-at-toaster{animation:animOut 200ms ease-out forwards}";
+const atToasterCss = () => `@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}.at-toaster.sc-at-toaster{position:fixed;display:flex;flex-direction:column;z-index:var(--token-z-index-modal);gap:8px;padding:12px}.at-toaster.top-right.sc-at-toaster{top:12px;right:12px;align-items:flex-end}.at-toaster.top-left.sc-at-toaster{top:12px;left:12px;align-items:flex-start}.at-toaster.bottom-right.sc-at-toaster{bottom:12px;right:12px;align-items:flex-end}.at-toaster.bottom-left.sc-at-toaster{bottom:12px;left:12px;align-items:flex-start}.at-toaster.top-center.sc-at-toaster{top:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toaster.bottom-center.sc-at-toaster{bottom:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toast.sc-at-toaster{min-width:var(--token-width-panel-xs);max-width:var(--token-width-panel-sm);box-shadow:var(--token-shadow-1);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;animation:animInUp 300ms ease-out forwards}.at-toast.undismissible.sc-at-toaster{cursor:default}.at-toast.close.sc-at-toaster{animation:animOut 200ms ease-out forwards}`;
 
 const AtToasterComponent = class {
     constructor(hostRef) {
@@ -68,7 +68,6 @@ const AtToasterComponent = class {
             } }))))))));
     }
 };
-AtToasterComponent.style = atToasterCss;
+AtToasterComponent.style = atToasterCss();
 
 export { AtToasterComponent as at_toaster };
-//# sourceMappingURL=at-toaster.entry.js.map

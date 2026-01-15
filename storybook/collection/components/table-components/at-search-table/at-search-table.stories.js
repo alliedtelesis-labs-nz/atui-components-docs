@@ -49,4 +49,3 @@ Default.args = {
     },
     page_size: 10,
 };
-//# sourceMappingURL=at-search-table.stories.js.map

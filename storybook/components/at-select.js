@@ -1,9 +1,1 @@
-import { A as AtSelectComponent, d as defineCustomElement$1 } from './p-CI7CdUkA.js';
-
-const AtSelect = AtSelectComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtSelect, defineCustomElement };
-//# sourceMappingURL=at-select.js.map
-
-//# sourceMappingURL=at-select.js.map
+import{A as o,d as s}from"./p-CzYFZi3n.js";const p=o,r=s;export{p as AtSelect,r as defineCustomElement}

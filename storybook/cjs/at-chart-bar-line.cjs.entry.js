@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 var chartColor = require('./chart-color-7KKxG0Bj.js');
 var timeDate_util = require('./time-date.util-C_CqOfBv.js');
 require('./moment-BU5SUH_o.js');
@@ -241,4 +241,3 @@ const AtChartBarLine = class {
 };
 
 exports.at_chart_bar_line = AtChartBarLine;
-//# sourceMappingURL=at-chart-bar-line.entry.cjs.js.map

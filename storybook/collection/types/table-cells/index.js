@@ -24,4 +24,3 @@ export var AvailableHeaders;
     AvailableHeaders["CHECKBOX_HEADER"] = "checkboxHeader";
     AvailableHeaders["ICON_HEADER"] = "iconHeader";
 })(AvailableHeaders || (AvailableHeaders = {}));
-//# sourceMappingURL=index.js.map

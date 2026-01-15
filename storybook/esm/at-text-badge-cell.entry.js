@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-DW9Wz0FM.js';
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
@@ -40,4 +40,3 @@ const AtTextBadgeCell = class {
 };
 
 export { AtTextBadgeCell as at_text_badge_cell };
-//# sourceMappingURL=at-text-badge-cell.entry.js.map

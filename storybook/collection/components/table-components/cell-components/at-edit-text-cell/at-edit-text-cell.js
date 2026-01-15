@@ -23,7 +23,7 @@ export class AtEditTextCell {
         }
     }
     render() {
-        return (h(Host, { key: '3acf728f92dffd1e8706de69025d35f5c1babb5f', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: 'a5c9696cac888937e95307fbd55313cc1c7f830f', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: '8a5cc82069fe525cf0e1437a5e703df3c4f6b24d', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '09c2cef7447730d24a4fd3ef3a95e48b1fda0b87', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
@@ -36,4 +36,3 @@ export class AtEditTextCell {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-edit-text-cell.js.map

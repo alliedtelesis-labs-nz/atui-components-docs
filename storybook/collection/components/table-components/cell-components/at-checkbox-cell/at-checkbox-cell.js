@@ -35,4 +35,3 @@ export class AtCheckboxCellComponent {
     static get is() { return "at-checkbox-cell"; }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-checkbox-cell.js.map

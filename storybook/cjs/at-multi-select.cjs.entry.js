@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 var translation = require('./translation-HqquF7bU.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -158,7 +158,7 @@ const AtMultiSelectComponent = class {
             : true;
     }
     render() {
-        return (index.h(index.Host, { key: 'ce5314aa425ac7d544c78dd602f1e78333c23ae8', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '7afe8290feabb88f0daf65799c360670d262de7e', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -166,9 +166,9 @@ const AtMultiSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '307c02e414146dace1297aa8126d6bb530b1249c', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '0bdfd3b0c390b03efe0bfe58a716100833c7587a', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'ac53197b9e2ee390a37f12e09707dbdfb07a6739' }, this.error_text && this.invalid && (index.h("span", { key: '0591d295d4f201c2413cf7ab7030d7d824a49b81', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '2a92a4712b2f1d2ce9241835fc7e1054251efe5b' }, this.error_text && this.invalid && (index.h("span", { key: 'eac5b56c762242ecde8c32b41acfbcdcec6f0049', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -218,4 +218,3 @@ const AtMultiSelectComponent = class {
 };
 
 exports.at_multi_select = AtMultiSelectComponent;
-//# sourceMappingURL=at-multi-select.entry.cjs.js.map

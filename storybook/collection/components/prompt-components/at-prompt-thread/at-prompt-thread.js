@@ -170,7 +170,7 @@ export class AtPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '05f056ab6d90618364a8dc32351968dce6dbfaa5', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'ad643c303ce7de7b0f52c04f12e908c97d64625b', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '7fba9dd602bbe657841097c8be7a68f9fd140509', name: "thread-messages" }))));
+        return (h(Host, { key: '6fd2e1a6342a53e35101ab2afd581c249f18f0cf', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '872fe409888306e9c0a9e56aead55d9f84c993d6', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '249b18c06b7ebdf1512ee021d76f08f26d5781c5', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
@@ -185,7 +185,8 @@ export class AtPromptThread {
                         "PromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage"
+                            "id": "src/types/index.ts::PromptMessage",
+                            "referenceLocation": "PromptMessage"
                         }
                     }
                 },
@@ -329,7 +330,8 @@ export class AtPromptThread {
                         "PromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation"
+                            "id": "src/types/index.ts::PromptResponseAnimation",
+                            "referenceLocation": "PromptResponseAnimation"
                         }
                     }
                 },
@@ -480,4 +482,3 @@ export class AtPromptThread {
             }];
     }
 }
-//# sourceMappingURL=at-prompt-thread.js.map

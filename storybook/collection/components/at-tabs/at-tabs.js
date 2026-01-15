@@ -160,7 +160,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: 'af1f0efa1ac5fe6e21ca48b910a5de79abb37daf' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'bd32f635e98e16dad751e49edbaca9192d0b4819' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {
@@ -357,4 +357,3 @@ export class AtTabs {
  * @category Form Controls
  * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
  */
-//# sourceMappingURL=at-tabs.js.map

@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h } from './index-EP34iaAr.js';
+import { r as registerInstance, g as getElement, h } from './index-DW9Wz0FM.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -39,9 +39,8 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: '46edd9c61bb1ce7f6cd24ae13b9fa85c1977d953', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '80381ff249b0b4378b0a03427003dce5bb223494' })));
+        return (h("div", { key: '489221fceb3423e5bfd93c6e4ec0b3d64146cfc9', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '6a34a0ea3fbae9e8bbe5f10d3896847f1f1647b6' })));
     }
 };
 
 export { AtTabContent as at_tab_content };
-//# sourceMappingURL=at-tab-content.entry.js.map

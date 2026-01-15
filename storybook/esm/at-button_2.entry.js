@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-DW9Wz0FM.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const buttonVariantsConfig = {
@@ -206,7 +206,7 @@ const AtButtonComponent = class {
     }
 };
 
-const atLoadingCss = "@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}";
+const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
 
 const loadingVariants = {
     type: {
@@ -275,7 +275,6 @@ const AtLoadingComponent = class {
         }
     }
 };
-AtLoadingComponent.style = atLoadingCss;
+AtLoadingComponent.style = atLoadingCss();
 
 export { AtButtonComponent as at_button, AtLoadingComponent as at_loading };
-//# sourceMappingURL=at-button.at-loading.entry.js.map

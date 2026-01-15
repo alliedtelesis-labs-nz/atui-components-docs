@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtMenu = class {
@@ -333,9 +333,9 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: 'edcdf23fcaacae2ff314b471f7e0ed5ce17282a9', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+        return (index.h(index.Host, { key: '144a141a806758a8f3066c755fbe78ac281f19a0', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
                 ? this.mouseLeaveHandler()
-                : null }, !this.trigger_id && (index.h("div", { key: '070709696f501bb619ec26eb50b13a590b256546', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+                : null }, !this.trigger_id && (index.h("div", { key: '40396b10f8d088980502764682aa0125a4dd7645', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -361,7 +361,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: 'ab724d7d0b60bd52b05b83cd1c26b56c1b48b045', name: "menu-trigger" }))), index.h("div", { key: 'd45e059f581b004a56d58b07beab5a9bf4f60c95', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: '7d4d6432d199a426f6b3d6c4d79e9f3dc6032fce', name: "menu-trigger" }))), index.h("div", { key: '1d997423edf1f2bba344301bf0d65aff6119dea4', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -373,12 +373,13 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: 'f619b76072ed7846e0750252246a7f83c07b0b64' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-fit rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '39f2c55bd85323abc89f92521f944e56cac4da59' }))));
     }
     static get watchers() { return {
-        "disabled": ["disabledChanged"]
+        "disabled": [{
+                "disabledChanged": 0
+            }]
     }; }
 };
 
 exports.at_menu = AtMenu;
-//# sourceMappingURL=at-menu.entry.cjs.js.map

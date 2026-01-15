@@ -88,7 +88,7 @@ export class AtCardComponent {
         const headerClassname = getHeaderClassname({
             sticky: this.sticky_header,
         });
-        const getContentClassname = classlist('relative flex flex-auto flex-col', contentVariantsConfig);
+        const getContentClassname = classlist('relative flex flex-auto flex-col min-h-0', contentVariantsConfig);
         const contentClassname = getContentClassname({
             padding: this.padding,
             overflow: this.overflow_content,
@@ -97,7 +97,7 @@ export class AtCardComponent {
         const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (h(Host, { key: '0f33739d95f69fead2f11f682008b180b6b67053', class: containerClassname }, h("div", { key: '7c1621b2b354e169b01489d795f1f2dc43d97e9d', class: headerClassname }, h("slot", { key: 'ed8792a4f6d6352ad5dd2ea228b51a9940fff16a', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '44302d7c95d5de3b91a867f71744ac33584923a0', class: "flex flex-col" }, this.card_title && (h("h4", { key: 'ac60f4b79621c0ed5c437b8a40f295d6fe843294', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '6249beebc6feb0e5324b2eef103cb30784bfea98', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: 'fe281ca7ecc2d1bf68e18bf258222c502790cf35', name: "card-header-actions" })), h("div", { key: '08e8fe60458018165de2c9b7b44945278ab39e90', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: '693f6d4fcb79d80ce7b086d11570248b79466a56' })), h("div", { key: 'b7e82cbe517161bfe1c078f2e3630f73e8a9566b', class: footerClassname }, h("slot", { key: '8a3749a5ba2a1593f07cd8a9322823a8f4f012a0', name: "card-footer" }))));
+        return (h(Host, { key: 'e1fa474bd6b99632280b97e380787fba6be2eee7', class: containerClassname }, h("div", { key: 'd79a8aa4034b35aaa9229ee6f598b048c00d1558', class: headerClassname }, h("slot", { key: '73dfd447390122c60c68041bc404df3cdf3630d5', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '4ead7cf75db6cbdc83286a3dd544b0d8eaed88a5', class: "flex flex-col" }, this.card_title && (h("h4", { key: '283768233cfac4eac381a666e4c59e47517c186d', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '921d914b4fc998d27c0f3569ec98fcbb8b35f4d7', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '66af9407d2f44a53bd6f2b6a2edc17bca88daa04', name: "card-header-actions" })), h("div", { key: '752915ba49f6d3836c5ebc689192b2dfd88e2a60', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: 'c97c51638551cfca052e325bfba7f006890ae258' })), h("div", { key: '193ccc881ab96ae6e5cbbc18ad8685d075b37cd2', class: footerClassname }, h("slot", { key: '9ccebb136468e611c9166a63ea2ce7b249279400', name: "card-footer" }))));
     }
     static get is() { return "at-card"; }
     static get properties() {
@@ -262,4 +262,3 @@ export class AtCardComponent {
         };
     }
 }
-//# sourceMappingURL=at-card.js.map

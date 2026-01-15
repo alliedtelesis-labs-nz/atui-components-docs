@@ -40,15 +40,15 @@ export class AtSearch {
         this.searchEl.focus();
     }
     render() {
-        return (h("div", { key: '69cb67a3483a542385bf18f9ce0f97f45e8b15cd' }, (this.label || this.info_text) && (h("at-form-label", { key: '0c71f93e2c57c52ea8cb503ff33d1cada65587cd', label: this.label, for: this.label
+        return (h("div", { key: 'c5256436a65aacba1c842f3c12de3ea2af8937d6' }, (this.label || this.info_text) && (h("at-form-label", { key: 'd8eb8d37c4be7dd8dba40b511943638f0481aad8', label: this.label, for: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, info_text: this.info_text })), h("div", { key: '9b03a84476a8fc52ec02b8b04d4ff18f70ad2a9f', class: "active-within:border-active-dark transition[background-color,color,box-shadow] border-med bg-surface-0 focus-within:border-active-dark focus-within:ring-active-foreground/40 relative flex h-[36px] flex-row items-center justify-center rounded-md border duration-300 ease-in-out focus-within:ring-2" }, h("span", { key: '9b72ce0209e8c385abaf961778ab5da467c956c7', class: "px-8" }, h("i", { key: '73c0c41b9cdd24b15f7f15cd4bd7b7a4c5b07f48', class: "material-icons text-light !text-[16px] !leading-[30px]" }, "search")), h("input", { key: 'b4f9a4a9e808043e701acbaf9d54cedf82b9f895', id: this.label
+                : undefined, info_text: this.info_text })), h("div", { key: '967e0d53429f9f9d2e8f6b61d43f3bb3025836f0', class: "active-within:border-active-dark transition[background-color,color,box-shadow] border-med bg-surface-0 focus-within:border-active-dark focus-within:ring-active-foreground/40 relative flex h-[36px] flex-row items-center justify-center rounded-md border duration-300 ease-in-out focus-within:ring-2" }, h("span", { key: 'fe4784779d3c594c66e7ebfa317a20d9c81cd8b3', class: "px-8" }, h("i", { key: '4f15b9758063c118227051adcfb9f5f4be2199d8', class: "material-icons text-light !text-[16px] !leading-[30px]" }, "search")), h("input", { key: '9200e76b6ba47e9e6134baa41e7caf0f981f4cb9', id: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: 'e9cf3c67eaeade044d139d7a383a378b7b92613e', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '3185f1185483a9cd6a8a13ea333c770bc7892134', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: 'bb70e4d80a187afbaa414f4d6a16fa269c69a2ff', size: "sm", type: "secondaryText", icon: "backspace", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '147582bd92e8b136975d2d47f3cad2b3286f9c03', size: "sm", type: "secondaryText", icon: "backspace", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }))), h("span", { key: '1fd981e04ef5bf87c9fbcc31cd1cffea5d742788', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
+                : '-1' }))), h("span", { key: 'a03283fd484b0832c5b67436560c4559757aea5f', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
     }
     static get is() { return "at-search"; }
     static get properties() {
@@ -174,4 +174,3 @@ export class AtSearch {
             }];
     }
 }
-//# sourceMappingURL=at-search.js.map

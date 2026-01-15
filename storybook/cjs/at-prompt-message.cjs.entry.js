@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-HqquF7bU.js');
 var prompt = require('./prompt-BA0_qDnC.js');
 
-const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
+const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
 
 const messageVariantsConfig = {
     variants: {
@@ -216,13 +216,14 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'bafa49858caff1f986b9044684f293ffec213d9b', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '19e89d805829b6acf936f0e43674dcfdbbe5f639', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'b9d7daaf2d5d471b07fd9b489fa10987a244f40b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '947d954edf80b58020db1f71ffe4ba93db306f95', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: 'e8d2987e49c6a8e49593e34d4b8db12aa2757a14', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'd92a1c0465cce62d4560cc9ee13a8c1186aa7407', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'ec1605220b7abc644bcad717d388cd9521ee0d49', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '7e17c2ffec642d11605c76794be35654f2379906', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
-        "content": ["watchContentChange"]
+        "content": [{
+                "watchContentChange": 0
+            }]
     }; }
 };
-AtPromptMessage.style = atPromptMessageCss;
+AtPromptMessage.style = atPromptMessageCss();
 
 exports.at_prompt_message = AtPromptMessage;
-//# sourceMappingURL=at-prompt-message.entry.cjs.js.map

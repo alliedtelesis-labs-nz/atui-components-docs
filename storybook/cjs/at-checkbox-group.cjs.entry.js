@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {
@@ -115,9 +115,10 @@ const AtCheckboxGroup = class {
             this.getCheckBoxes.map((checkbox) => (index.h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (index.h("span", { key: 'faa72737884600863daa9053be5fb5afbcbd9b0c', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "options": ["updateSelected"]
+        "options": [{
+                "updateSelected": 0
+            }]
     }; }
 };
 
 exports.at_checkbox_group = AtCheckboxGroup;
-//# sourceMappingURL=at-checkbox-group.entry.cjs.js.map

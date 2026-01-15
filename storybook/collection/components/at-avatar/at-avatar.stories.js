@@ -91,4 +91,3 @@ UserProfileExample.args = {
     size: 'lg',
     variant: 'primary',
 };
-//# sourceMappingURL=at-avatar.stories.js.map

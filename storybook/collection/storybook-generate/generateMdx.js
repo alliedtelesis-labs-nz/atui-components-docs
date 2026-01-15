@@ -49,4 +49,3 @@ import readme from './readme.md?raw';
         }
     });
 });
-//# sourceMappingURL=generateMdx.js.map

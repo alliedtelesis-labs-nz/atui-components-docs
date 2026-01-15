@@ -43,6 +43,8 @@ export { AtColumnManagerComponent as AtColumnManager } from '../types/components
 export { defineCustomElement as defineCustomElementAtColumnManager } from './at-column-manager';
 export { AtCustomTimeRangeComponent as AtCustomTimeRange } from '../types/components/at-time-range/at-custom-time-range/at-custom-time-range';
 export { defineCustomElement as defineCustomElementAtCustomTimeRange } from './at-custom-time-range';
+export { AtDashboard as AtDashboard } from '../types/components/at-dashboard/at-dashboard';
+export { defineCustomElement as defineCustomElementAtDashboard } from './at-dashboard';
 export { AtDialogComponent as AtDialog } from '../types/components/at-dialog/at-dialog';
 export { defineCustomElement as defineCustomElementAtDialog } from './at-dialog';
 export { AtEditTextCell as AtEditTextCell } from '../types/components/table-components/cell-components/at-edit-text-cell/at-edit-text-cell';
@@ -209,4 +211,5 @@ export interface SetPlatformOptions {
   rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;
 }
 export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;
+
 export * from '../types';

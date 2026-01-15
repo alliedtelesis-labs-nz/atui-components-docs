@@ -89,7 +89,8 @@ export class AtToasterComponent {
                         "ToastPosition": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::ToastPosition"
+                            "id": "src/types/toast.ts::ToastPosition",
+                            "referenceLocation": "ToastPosition"
                         }
                     }
                 },
@@ -129,7 +130,8 @@ export class AtToasterComponent {
                         "Toast": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::Toast"
+                            "id": "src/types/toast.ts::Toast",
+                            "referenceLocation": "Toast"
                         }
                     },
                     "return": "Promise<void>"
@@ -169,4 +171,3 @@ export class AtToasterComponent {
         };
     }
 }
-//# sourceMappingURL=at-toaster.js.map

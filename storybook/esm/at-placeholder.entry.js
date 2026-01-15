@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-EP34iaAr.js';
+import { r as registerInstance, h } from './index-DW9Wz0FM.js';
 
 const placeholderVariants = {
     iconSizes: {
@@ -45,9 +45,8 @@ const AtPlaceholderComponent = class {
         return placeholderVariants.iconSizes[this.size];
     }
     render() {
-        return (h("div", { key: 'dda712223f09d4ce1451428d74788b67c07f70f3', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '6544ed3fd83a67468c24bb2c7bdeeb0706b4aee7', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: 'f3a5fe9d2ed8cfc049a16ddbe0cb725cf3a96e9d', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '9b8df30bbdf456d5a4b51918139d5bfde51398ea', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'dc3c3e4e5a92858a82ac6cf730d634a3688b413c', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: 'a400dffcdde207cd0de1208eb9e43e5ea6ec287a', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '28977e483d8d8519af8b5a9f43227ddb02bc6b88', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: 'b04c602ec4cc3f46ba69b30f285051fa8b1daf2a' }))));
+        return (h("div", { key: '92b2c1bf3ce3190e464debbe72808e494ac1679d', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '1f7fee213fef98f90d9a51647a27a24fc5332774', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: '39c32d3c3ac45a10743395b1ee35b96c672151fa', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '3753192afeafb8bb85596736f31afdb2d722d0f5', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: '9c68071f02bfe4642aabcfc721e91f8b4df81cd7', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '54423f775c44e6f0dc8e244294632e361da6c64f', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: 'c0d671d6654dacc0269eb57be1bdbf824fd0a30c', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '51332ee990fb36f3e6031cec76ccecc87f533f16' }))));
     }
 };
 
 export { AtPlaceholderComponent as at_placeholder };
-//# sourceMappingURL=at-placeholder.entry.js.map

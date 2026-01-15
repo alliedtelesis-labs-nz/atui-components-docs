@@ -15,7 +15,7 @@ export class AtTableExportMenu {
      */
     atChange;
     render() {
-        return (h("at-menu", { key: '24e16ab32e7f58d1222f0f3aa41663fe08da1e8d', width: "fit-content", align: "end" }, h("at-tooltip", { key: '3f3ef8c0c76a2425fa8ede6a288927afcda8963a', slot: "menu-trigger", position: "top" }, h("at-button", { key: '87d5c9d0503303df3be2f7e73929fc4aff4cb4df', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '14763b02959cb43c94381a04746c1a9ba0af8e51' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: '8bb03302a4e06ac77d08ddd8a6f9184880694387' }, h("at-menu-item", { key: '638f9c081b7bfe4fb1e6e1e904c0d46da0424c9e', label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') }), h("at-menu-item", { key: 'fa936e5a682b14e13e09a368354cd593b89b9e69', label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') }))));
+        return (h("at-menu", { key: 'ba5ff1f1c34e24ae63c314ac58ff74e3643a2432', width: "fit-content", align: "end" }, h("at-tooltip", { key: '95fbf0bd30080421be8da20e7f2a8196a072b2f6', slot: "menu-trigger", position: "top" }, h("at-button", { key: '86a2e410b444c37abfcd88caeaf7b4fd7ab1a983', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), h("span", { key: '80031b67595a66fd97135e816043b5a561382c6c' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", { key: '97df7463831452b2958c761fcc7bfa132e64b814' }, h("at-menu-item", { key: '759fc5068b460ee93315daca3bc04b97a5b4c8d4', label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') }), h("at-menu-item", { key: 'a3134e2683c9ae9e92b583691d093f06316f1185', label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') }))));
     }
     static get is() { return "at-table-export-menu"; }
     static get states() {
@@ -43,4 +43,3 @@ export class AtTableExportMenu {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-table-export-menu.js.map

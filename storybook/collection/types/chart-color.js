@@ -67,4 +67,3 @@ export const palettes = {
     sequential: sequential,
     alert: alert,
 };
-//# sourceMappingURL=chart-color.js.map

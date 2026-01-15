@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-DW9Wz0FM.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
@@ -185,7 +185,7 @@ const AtSelectComponent = class {
             : true;
     }
     render() {
-        return (h(Host, { key: '64ca72a37304d81fbc3accdbbba817bdaf478189', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'd1ca1c69cd6d72cbcdcaaa36db326b3756126dfd', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -193,9 +193,9 @@ const AtSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: 'a1e05cecabea6d3a9f7b3b22453b0a4efd335210', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '095285141726ff09579b3945e4d0cb923b0a872b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '0e48c19e46cff23e4d513ff3c4dc2f6adbc667e9' }, this.error_text && this.invalid && (h("span", { key: 'a4f0ef55537676e44781a02c1c5de7517d041e56', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '9f9ac97a124666ce0383d86b4fd1f3e2c976eb9f' }, this.error_text && this.invalid && (h("span", { key: 'f1d6971dd905b5f2cc7554a461c7bf343d0db53c', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -233,8 +233,12 @@ const AtSelectComponent = class {
         return (h("at-select-option", { value: option.value, is_active: this.value === option.value, onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get watchers() { return {
-        "value": ["watchValue"],
-        "searchText": ["watchSearchText"]
+        "value": [{
+                "watchValue": 0
+            }],
+        "searchText": [{
+                "watchSearchText": 0
+            }]
     }; }
 };
 
@@ -271,9 +275,8 @@ const AtSelectOptionComponent = class {
         const classname = getOptionClassname({
             active: this.is_active,
         });
-        return (h("li", { key: '1ab83ae80e7e9c378ca57396ec16c75848ae6f3c', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '132f04858348182949c664d379e92f8aa14268ae' }), this.value));
+        return (h("li", { key: '63ecf52c67f66dd6b14c982f9a640f761ce60e12', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '12affec6b4b47f2ee9b63e0a886571c31e103464' }), this.value));
     }
 };
 
 export { AtSelectComponent as at_select, AtSelectOptionComponent as at_select_option };
-//# sourceMappingURL=at-select.at-select-option.entry.js.map

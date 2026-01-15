@@ -294,7 +294,8 @@ export class AtChartBarLine {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
+                            "referenceLocation": "ChartDataset"
                         }
                     }
                 },
@@ -472,7 +473,8 @@ export class AtChartBarLine {
                         "Height": {
                             "location": "import",
                             "path": "../at-chart-donut/at-chart-donut",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height",
+                            "referenceLocation": "Height"
                         }
                     }
                 },
@@ -498,7 +500,8 @@ export class AtChartBarLine {
                         "ChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette"
+                            "id": "src/types/chart-color.ts::ChartColorPalette",
+                            "referenceLocation": "ChartColorPalette"
                         }
                     }
                 },
@@ -541,4 +544,3 @@ export class AtChartBarLine {
         };
     }
 }
-//# sourceMappingURL=at-chart-bar-line.js.map

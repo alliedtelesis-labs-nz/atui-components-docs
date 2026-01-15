@@ -39,4 +39,3 @@ Default.args = {
     readonly: false,
     disabled: false,
 };
-//# sourceMappingURL=at-input-date.stories.js.map

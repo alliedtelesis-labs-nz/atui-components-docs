@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-EP34iaAr.js';
+import { r as registerInstance, h } from './index-DW9Wz0FM.js';
 
-const atMessageCss = "[slot=actions]{align-self:start}";
+const atMessageCss = () => `[slot=actions]{align-self:start}`;
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -68,10 +68,9 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (h("div", { key: 'a1ea5b279705b39b35d8834ecef6dbfc78880e67', class: this.hostClasses, "data-name": "message-container" }, h("i", { key: '202842ec0fba53f858f839db8fdcb71562beea4d', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), h("div", { key: '4269562ed9368ef3c8e7b1003b6b3862e09fefa0', class: "flex w-full flex-row gap-4" }, h("div", { key: 'b7d15bccc46e356b835f35172dd1333e70b55d9a' }, this.message_title && (h("div", { key: '22f27acd754aa380686afc92994b5be431687f50', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: '649444cc8dfd9e5ce0e3423c1aa895a7b6b0bdf5', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '9e3236077a185695db66da954859aca07a013a5b' })), h("slot", { key: 'fa431ebab9dcea3731a3a47446c3936ae1818b2b', name: "actions" }))));
+        return (h("div", { key: '5da3c769c31bf2b626804e0cc8b8f85f727f7bd2', class: this.hostClasses, "data-name": "message-container" }, h("i", { key: '706e2c485b73f9f49edaa398d2308330e04b4bd9', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), h("div", { key: 'c3e9e242ca09e3ea62342a56fcebdb05008dfa2c', class: "flex w-full flex-row gap-4" }, h("div", { key: '73e334fe663d9eee6dea26e7cf066326fa163fa7' }, this.message_title && (h("div", { key: 'be1251032cbba4a617e02558426066237b24b592', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: '0d8921cb9d0c42cd43eca3b69fb29f5f88d9fa80', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: 'efd6e2b17f0694824e6fa444bcf382648cb52e5a' })), h("slot", { key: '5cae7ad9c52d628ccb903b497b6e52bcb570706d', name: "actions" }))));
     }
 };
-AtMessage.style = atMessageCss;
+AtMessage.style = atMessageCss();
 
 export { AtMessage as at_message };
-//# sourceMappingURL=at-message.entry.js.map

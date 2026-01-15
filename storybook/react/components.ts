@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type CustomGridStackItem, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -30,6 +30,7 @@ import { AtChipList as AtChipListElement, defineCustomElement as defineAtChipLis
 import { AtColorStatusCell as AtColorStatusCellElement, defineCustomElement as defineAtColorStatusCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-color-status-cell.js";
 import { AtColumnManager as AtColumnManagerElement, defineCustomElement as defineAtColumnManager } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-column-manager.js";
 import { AtCustomTimeRange as AtCustomTimeRangeElement, defineCustomElement as defineAtCustomTimeRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-custom-time-range.js";
+import { AtDashboard as AtDashboardElement, defineCustomElement as defineAtDashboard } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dashboard.js";
 import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dialog.js";
 import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineAtEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-edit-text-cell.js";
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
@@ -351,6 +352,25 @@ export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, 
         onAtuiSubmit: 'atuiSubmit'
     } as AtCustomTimeRangeEvents,
     defineCustomElement: defineAtCustomTimeRange
+});
+
+type AtDashboardEvents = {
+    onChangedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
+    onRemovedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
+    onResizeDragEvent: EventName<AtDashboardCustomEvent<CustomGridStackItem>>
+};
+
+export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardEvents> = /*@__PURE__*/ createComponent<AtDashboardElement, AtDashboardEvents>({
+    tagName: 'at-dashboard',
+    elementClass: AtDashboardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onChangedItem: 'changedItem',
+        onRemovedItem: 'removedItem',
+        onResizeDragEvent: 'resizeDragEvent'
+    } as AtDashboardEvents,
+    defineCustomElement: defineAtDashboard
 });
 
 type AtDialogEvents = { onAtuiDialogChange: EventName<CustomEvent<any>> };

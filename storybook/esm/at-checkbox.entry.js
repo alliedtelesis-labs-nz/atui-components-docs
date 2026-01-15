@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-DW9Wz0FM.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variants = classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-foreground/40 relative flex w-full cursor-pointer items-start gap-8 rounded-md p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring-2', {
@@ -76,4 +76,3 @@ const AtCheckbox = class {
 };
 
 export { AtCheckbox as at_checkbox };
-//# sourceMappingURL=at-checkbox.entry.js.map

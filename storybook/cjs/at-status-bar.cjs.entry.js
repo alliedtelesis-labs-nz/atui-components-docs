@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-ChzPazsa.js');
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -29,9 +29,8 @@ const AtStatusBar = class {
             } }), index.h("span", null, segment.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: 'f29d4dbb59db452a1800c01dfee29afd4c723fee', class: this.statusBarClass }, index.h("div", { key: '673974208107dad10ea3b03e3a3cb18398663e56', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (index.h(index.Host, { key: '1094907e29d7a8f2bd25e24538b06d9682bd32df', class: this.statusBarClass }, index.h("div", { key: '104e89e704205caddef194145c7a0e1a7cd21726', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 
 exports.at_status_bar = AtStatusBar;
-//# sourceMappingURL=at-status-bar.entry.cjs.js.map

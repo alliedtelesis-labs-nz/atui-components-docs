@@ -155,7 +155,7 @@ export class AtMultiSelectComponent {
             : true;
     }
     render() {
-        return (h(Host, { key: 'ce5314aa425ac7d544c78dd602f1e78333c23ae8', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '7afe8290feabb88f0daf65799c360670d262de7e', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -163,9 +163,9 @@ export class AtMultiSelectComponent {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '307c02e414146dace1297aa8126d6bb530b1249c', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '0bdfd3b0c390b03efe0bfe58a716100833c7587a', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'ac53197b9e2ee390a37f12e09707dbdfb07a6739' }, this.error_text && this.invalid && (h("span", { key: '0591d295d4f201c2413cf7ab7030d7d824a49b81', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '2a92a4712b2f1d2ce9241835fc7e1054251efe5b' }, this.error_text && this.invalid && (h("span", { key: 'eac5b56c762242ecde8c32b41acfbcdcec6f0049', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -225,7 +225,8 @@ export class AtMultiSelectComponent {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption"
+                            "id": "src/types/select.ts::SelectOption",
+                            "referenceLocation": "SelectOption"
                         }
                     }
                 },
@@ -501,4 +502,3 @@ export class AtMultiSelectComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-multi-select.js.map

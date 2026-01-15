@@ -263,4 +263,3 @@ export class AtAccordionItemComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-accordion-item.js.map

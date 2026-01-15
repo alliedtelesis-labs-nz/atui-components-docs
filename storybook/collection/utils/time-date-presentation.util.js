@@ -200,4 +200,3 @@ export class FlooredDateRange {
         return TimeDateUtil.floorDateByTimeUnit(time, this.unit);
     }
 }
-//# sourceMappingURL=time-date-presentation.util.js.map
