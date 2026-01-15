@@ -1,7 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
-import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-CdyBNAVl.js';
-import { T as TimeDateUtil } from './time-date.util-DLaek6ce.js';
-import './moment-BMuAbjcg.js';
+import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-BFIVuvTv.js';
+import { T as TimeDateUtil } from './time-date.util-DK-HoBk1.js';
+import 'moment';
 
 const heightVariants = {
     xs: 'h-[70px]',

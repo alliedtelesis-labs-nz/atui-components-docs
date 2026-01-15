@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-EP34iaAr.js';
-import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DLaek6ce.js';
+import { T as TimeDateUtil, D as Duration, b as TimeExtraOptions } from './time-date.util-DK-HoBk1.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-z4fe7bzG.js';
-import { h as hooks } from './moment-BMuAbjcg.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-ChhOWwRR.js';
+import moment from 'moment';
 import { M as MIN_DATE, D as DateFormat, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
 const AtButtonGroup = class {
@@ -345,7 +345,7 @@ const AtCustomTimeRangeComponent = class {
         this.atuiCancel.emit();
     }
     handleSubmit() {
-        if (hooks(this.from_date_value).isBefore(hooks(this.to_date_value))) {
+        if (moment(this.from_date_value).isBefore(moment(this.to_date_value))) {
             this.atuiSubmit.emit({
                 from: TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, this.fromTime).toISOString(),
                 to: TimeDatePresentationUtil.buildDateFromStrings(this.toDate, this.toTime).toISOString(),

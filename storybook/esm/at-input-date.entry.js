@@ -1,10 +1,10 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-z4fe7bzG.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-ChhOWwRR.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { M as MIN_DATE, a as MAX_DATE } from './date-C3LwY5aR.js';
-import './moment-BMuAbjcg.js';
-import './time-date.util-DLaek6ce.js';
+import 'moment';
+import './time-date.util-DK-HoBk1.js';
 
 const inputVariantsConfig = {
     variants: {

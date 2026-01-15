@@ -1,18 +1,18 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
-import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-BI7XO4bL.js';
-import { h as hooks } from './p-BMuAbjcg.js';
+import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-CE-UZHrH.js';
+import moment from 'moment';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$e } from './p-Dx91wqSp.js';
 import { d as defineCustomElement$d } from './p-DQenFiCV.js';
 import { d as defineCustomElement$c } from './p-D0rx_oNk.js';
-import { d as defineCustomElement$b } from './p-opyJle8L.js';
+import { d as defineCustomElement$b } from './p-CuPMcKsH.js';
 import { d as defineCustomElement$a } from './p-0L3Bm0n5.js';
 import { d as defineCustomElement$9 } from './p-Bf6QQo89.js';
 import { d as defineCustomElement$8 } from './p-bn76tgB4.js';
 import { d as defineCustomElement$7 } from './p-CSzxFmVR.js';
 import { d as defineCustomElement$6 } from './p-CLGugxhO.js';
 import { d as defineCustomElement$5 } from './p-QnyidAJz.js';
-import { d as defineCustomElement$4 } from './p-CNiFBuc8.js';
+import { d as defineCustomElement$4 } from './p-DLyFwYST.js';
 import { d as defineCustomElement$3 } from './p-UzOkv0aB.js';
 import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './p-C3LwY5aR.js';
@@ -102,9 +102,9 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
     }
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
-            ? hooks().subtract(this.range_limit, 'day').toDate()
+            ? moment().subtract(this.range_limit, 'day').toDate()
             : TimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
-        this.defaultFromDate = hooks(this.today).subtract(1, 'hours').toDate();
+        this.defaultFromDate = moment(this.today).subtract(1, 'hours').toDate();
     }
     getLongUnitDisplay(time) {
         if (time.custom || !time.selected) {
@@ -123,8 +123,8 @@ const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeC
             return;
         }
         const { from, to } = selectedTime.custom;
-        const fromDate = hooks(from).toDate();
-        const toDate = hooks(to).toDate();
+        const fromDate = moment(from).toDate();
+        const toDate = moment(to).toDate();
         return { fromDate, toDate };
     }
     getShortUnitDisplay(time) {

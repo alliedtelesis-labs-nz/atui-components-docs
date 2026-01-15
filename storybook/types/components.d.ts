@@ -22,7 +22,6 @@ import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 import { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
-import { GridStackNode } from "gridstack";
 import { HeaderSizes } from "./components/at-header/at-header";
 import { InputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
@@ -66,7 +65,6 @@ export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 export { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
-export { GridStackNode } from "gridstack";
 export { HeaderSizes } from "./components/at-header/at-header";
 export { InputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
@@ -761,7 +759,7 @@ export namespace Components {
         /**
           * @default []
          */
-        "widget_templates": CustomGridStackItem[];
+        "widget_items": CustomGridStackItem[];
     }
     /**
      * @category Overlays
@@ -3430,7 +3428,7 @@ declare global {
     interface HTMLAtDashboardElementEventMap {
         "changedItem": CustomGridStackItem;
         "removedItem": CustomGridStackItem;
-        "resizeEvent": GridStackNode;
+        "resizeDragEvent": CustomGridStackItem;
     }
     interface HTMLAtDashboardElement extends Components.AtDashboard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDashboardElementEventMap>(type: K, listener: (this: HTMLAtDashboardElement, ev: AtDashboardCustomEvent<HTMLAtDashboardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5295,11 +5293,11 @@ declare namespace LocalJSX {
     interface AtDashboard {
         "onChangedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
         "onRemovedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
-        "onResizeEvent"?: (event: AtDashboardCustomEvent<GridStackNode>) => void;
+        "onResizeDragEvent"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
         /**
           * @default []
          */
-        "widget_templates"?: CustomGridStackItem[];
+        "widget_items"?: CustomGridStackItem[];
     }
     /**
      * @category Overlays

@@ -8,7 +8,7 @@ var atTextCell_entry = require('./at-text-cell.cjs.entry.js');
 var atTextStatusCell_entry = require('./at-text-status-cell.cjs.entry.js');
 var atCheckboxHeader_entry = require('./at-checkbox-header.cjs.entry.js');
 var atTextIconCell_entry = require('./at-text-icon-cell.cjs.entry.js');
-var atTitleSubtitleDateCell_entry = require('./at-title-subtitle-date-cell.cjs.entry.js');
+var atTitleSubtitleDateCell = require('./at-title-subtitle-date-cell-C77LiDuE.js');
 var atTitleSubtitleCell_entry = require('./at-title-subtitle-cell.cjs.entry.js');
 var atEditTextCell_entry = require('./at-edit-text-cell.cjs.entry.js');
 var atChipListCell_entry = require('./at-chip-list-cell.cjs.entry.js');
@@ -17,9 +17,9 @@ var atMultiBtnCell_entry = require('./at-multi-btn-cell.cjs.entry.js');
 var atColorStatusCell_entry = require('./at-color-status-cell.cjs.entry.js');
 var atTextImageCell_entry = require('./at-text-image-cell.cjs.entry.js');
 var atMenuCell_entry = require('./at-menu-cell.cjs.entry.js');
-require('./time-date-presentation.util-4vEUjJhF.js');
-require('./moment-BU5SUH_o.js');
-require('./time-date.util-D_xgQTJS.js');
+require('./time-date-presentation.util-BL3McLDd.js');
+require('moment');
+require('./time-date.util-B46y0gtD.js');
 require('./date-DDRmOnS1.js');
 
 /**
@@ -47880,7 +47880,7 @@ class AtTableComponentsConfigs {
                 atTextBadgeCell_entry.at_text_badge_cell,
                 atTextIconCell_entry.at_text_icon_cell,
                 atTitleSubtitleCell_entry.at_title_subtitle_cell,
-                atTitleSubtitleDateCell_entry.at_title_subtitle_date_cell,
+                atTitleSubtitleDateCell.AtTitleSubtitleDateCell,
                 atEditTextCell_entry.at_edit_text_cell,
                 atChipListCell_entry.at_chip_list_cell,
                 atToggleCell_entry.at_toggle_cell,
@@ -47914,7 +47914,7 @@ class AtTableComponentsConfigs {
             [AvailableCells.TEXT_WITH_BADGE_CELL]: atTextBadgeCell_entry.at_text_badge_cell,
             [AvailableCells.TEXT_WITH_ICON_CELL]: atTextIconCell_entry.at_text_icon_cell,
             [AvailableCells.TITLE_SUBTITLE_CELL]: atTitleSubtitleCell_entry.at_title_subtitle_cell,
-            [AvailableCells.TITLE_SUBTITLE_DATE_CELL]: atTitleSubtitleDateCell_entry.at_title_subtitle_date_cell,
+            [AvailableCells.TITLE_SUBTITLE_DATE_CELL]: atTitleSubtitleDateCell.AtTitleSubtitleDateCell,
             [AvailableCells.EDIT_TEXT_CELL]: atEditTextCell_entry.at_edit_text_cell,
             [AvailableCells.CHIP_LIST_CELL]: atChipListCell_entry.at_chip_list_cell,
             [AvailableCells.CHECKBOX_CELL]: atCheckboxCell_entry.at_checkbox_cell,

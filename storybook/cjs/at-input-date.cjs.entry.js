@@ -2,11 +2,11 @@
 
 var index = require('./index-COiLLAKF.js');
 var translation = require('./translation-HqquF7bU.js');
-var timeDatePresentation_util = require('./time-date-presentation.util-4vEUjJhF.js');
+var timeDatePresentation_util = require('./time-date-presentation.util-BL3McLDd.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var date = require('./date-DDRmOnS1.js');
-require('./moment-BU5SUH_o.js');
-require('./time-date.util-D_xgQTJS.js');
+require('moment');
+require('./time-date.util-B46y0gtD.js');
 
 const inputVariantsConfig = {
     variants: {

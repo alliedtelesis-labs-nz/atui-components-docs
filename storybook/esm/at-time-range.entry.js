@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
-import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-DLaek6ce.js';
-import { h as hooks } from './moment-BMuAbjcg.js';
+import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-DK-HoBk1.js';
+import moment from 'moment';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
@@ -86,9 +86,9 @@ const AtTimeRangeComponent = class {
     }
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
-            ? hooks().subtract(this.range_limit, 'day').toDate()
+            ? moment().subtract(this.range_limit, 'day').toDate()
             : TimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
-        this.defaultFromDate = hooks(this.today).subtract(1, 'hours').toDate();
+        this.defaultFromDate = moment(this.today).subtract(1, 'hours').toDate();
     }
     getLongUnitDisplay(time) {
         if (time.custom || !time.selected) {
@@ -107,8 +107,8 @@ const AtTimeRangeComponent = class {
             return;
         }
         const { from, to } = selectedTime.custom;
-        const fromDate = hooks(from).toDate();
-        const toDate = hooks(to).toDate();
+        const fromDate = moment(from).toDate();
+        const toDate = moment(to).toDate();
         return { fromDate, toDate };
     }
     getShortUnitDisplay(time) {

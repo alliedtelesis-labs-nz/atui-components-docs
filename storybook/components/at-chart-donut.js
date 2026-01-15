@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
-import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-7mQ_RyCI.js';
+import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-BFIVuvTv.js';
 
 const TOKEN_TEXT_DARK = '#0f172a';
 const heightVariants = {

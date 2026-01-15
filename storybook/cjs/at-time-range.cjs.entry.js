@@ -1,10 +1,14 @@
 'use strict';
 
 var index = require('./index-COiLLAKF.js');
-var timeDate_util = require('./time-date.util-D_xgQTJS.js');
-var moment = require('./moment-BU5SUH_o.js');
+var timeDate_util = require('./time-date.util-B46y0gtD.js');
+var moment = require('moment');
 var translation = require('./translation-HqquF7bU.js');
 var date = require('./date-DDRmOnS1.js');
+
+function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }
+
+var moment__default = /*#__PURE__*/_interopDefault(moment);
 
 var AbreviatedTimeUnits;
 (function (AbreviatedTimeUnits) {
@@ -88,9 +92,9 @@ const AtTimeRangeComponent = class {
     }
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
-            ? moment.hooks().subtract(this.range_limit, 'day').toDate()
+            ? moment__default.default().subtract(this.range_limit, 'day').toDate()
             : timeDate_util.TimeDateUtil.floorDateByTimeUnit(date.MIN_DATE, timeDate_util.Duration.HOURS);
-        this.defaultFromDate = moment.hooks(this.today).subtract(1, 'hours').toDate();
+        this.defaultFromDate = moment__default.default(this.today).subtract(1, 'hours').toDate();
     }
     getLongUnitDisplay(time) {
         if (time.custom || !time.selected) {
@@ -109,8 +113,8 @@ const AtTimeRangeComponent = class {
             return;
         }
         const { from, to } = selectedTime.custom;
-        const fromDate = moment.hooks(from).toDate();
-        const toDate = moment.hooks(to).toDate();
+        const fromDate = moment__default.default(from).toDate();
+        const toDate = moment__default.default(to).toDate();
         return { fromDate, toDate };
     }
     getShortUnitDisplay(time) {

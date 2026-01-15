@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { T as TimeDatePresentationUtil } from './p-0CqVQUFb.js';
+import { T as TimeDatePresentationUtil } from './p-BV5FKNhG.js';
 import { c as classlist } from './p-COG8_R0C.js';
 import { d as defineCustomElement$3 } from './p-0L3Bm0n5.js';
 import { d as defineCustomElement$2 } from './p-BlmpD1px.js';

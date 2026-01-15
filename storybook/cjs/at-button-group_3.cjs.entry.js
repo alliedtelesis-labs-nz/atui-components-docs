@@ -1,11 +1,15 @@
 'use strict';
 
 var index = require('./index-COiLLAKF.js');
-var timeDate_util = require('./time-date.util-D_xgQTJS.js');
+var timeDate_util = require('./time-date.util-B46y0gtD.js');
 var translation = require('./translation-HqquF7bU.js');
-var timeDatePresentation_util = require('./time-date-presentation.util-4vEUjJhF.js');
-var moment = require('./moment-BU5SUH_o.js');
+var timeDatePresentation_util = require('./time-date-presentation.util-BL3McLDd.js');
+var moment = require('moment');
 var date = require('./date-DDRmOnS1.js');
+
+function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }
+
+var moment__default = /*#__PURE__*/_interopDefault(moment);
 
 const AtButtonGroup = class {
     constructor(hostRef) {
@@ -347,7 +351,7 @@ const AtCustomTimeRangeComponent = class {
         this.atuiCancel.emit();
     }
     handleSubmit() {
-        if (moment.hooks(this.from_date_value).isBefore(moment.hooks(this.to_date_value))) {
+        if (moment__default.default(this.from_date_value).isBefore(moment__default.default(this.to_date_value))) {
             this.atuiSubmit.emit({
                 from: timeDatePresentation_util.TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, this.fromTime).toISOString(),
                 to: timeDatePresentation_util.TimeDatePresentationUtil.buildDateFromStrings(this.toDate, this.toTime).toISOString(),

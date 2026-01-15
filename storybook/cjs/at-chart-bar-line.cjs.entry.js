@@ -1,9 +1,9 @@
 'use strict';
 
 var index = require('./index-COiLLAKF.js');
-var chartColor = require('./chart-color-7KKxG0Bj.js');
-var timeDate_util = require('./time-date.util-D_xgQTJS.js');
-require('./moment-BU5SUH_o.js');
+var chartColor = require('./chart-color-C9LMZwU4.js');
+var timeDate_util = require('./time-date.util-B46y0gtD.js');
+require('moment');
 
 const heightVariants = {
     xs: 'h-[70px]',

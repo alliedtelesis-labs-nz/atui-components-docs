@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type CustomGridStackItem, type DateRangeStrings, type FilterEvent, type GridStackNode, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnManagerChangeEvent, type CustomGridStackItem, type DateRangeStrings, type FilterEvent, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -356,7 +356,7 @@ export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, 
 type AtDashboardEvents = {
     onChangedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
     onRemovedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
-    onResizeEvent: EventName<AtDashboardCustomEvent<GridStackNode>>
+    onResizeDragEvent: EventName<AtDashboardCustomEvent<CustomGridStackItem>>
 };
 
 export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardEvents> = /*@__PURE__*/ createComponent<AtDashboardElement, AtDashboardEvents>({
@@ -367,7 +367,7 @@ export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardE
     events: {
         onChangedItem: 'changedItem',
         onRemovedItem: 'removedItem',
-        onResizeEvent: 'resizeEvent'
+        onResizeDragEvent: 'resizeDragEvent'
     } as AtDashboardEvents,
     defineCustomElement: defineAtDashboard
 });

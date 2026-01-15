@@ -109,6 +109,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
+                case 'at-title-subtitle-date-cell':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-title-subtitle-date-cell.entry.js').then(processMod, consoleError);
                 case 'at-accordion':
                     return import(
                       /* webpackMode: "lazy" */
@@ -401,10 +405,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-title-subtitle-cell.entry.js').then(processMod, consoleError);
-                case 'at-title-subtitle-date-cell':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-title-subtitle-date-cell.entry.js').then(processMod, consoleError);
                 case 'at-toggle-cell':
                     return import(
                       /* webpackMode: "lazy" */

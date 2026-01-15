@@ -6357,33 +6357,27 @@ GridStack.Engine = GridStackEngine;
 /** @internal current version compiled in code */
 GridStack.GDRev = '12.4.1';
 
-const gridstackMinCss = ".grid-stack{position:relative}.grid-stack-rtl{direction:ltr}.grid-stack-rtl>.grid-stack-item{direction:rtl}.grid-stack-placeholder>.placeholder-content{background-color:rgba(0,0,0,.1);margin:0;position:absolute;width:auto;z-index:0!important}.grid-stack>.grid-stack-item{position:absolute;padding:0;top:0;left:0;width:var(--gs-column-width);height:var(--gs-cell-height)}.grid-stack>.grid-stack-item>.grid-stack-item-content{margin:0;position:absolute;width:auto;overflow-x:hidden;overflow-y:auto}.grid-stack>.grid-stack-item.size-to-content:not(.size-to-content-max)>.grid-stack-item-content{overflow-y:hidden}.grid-stack>.grid-stack-item>.grid-stack-item-content,.grid-stack>.grid-stack-placeholder>.placeholder-content{top:var(--gs-item-margin-top);right:var(--gs-item-margin-right);bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-handle{position:absolute;font-size:.1px;display:block;-ms-touch-action:none;touch-action:none}.grid-stack-item.ui-resizable-autohide>.ui-resizable-handle,.grid-stack-item.ui-resizable-disabled>.ui-resizable-handle{display:none}.grid-stack-item>.ui-resizable-ne,.grid-stack-item>.ui-resizable-nw,.grid-stack-item>.ui-resizable-se,.grid-stack-item>.ui-resizable-sw{background-image:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"%23666\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 20 20\"><path d=\"m10 3 2 2H8l2-2v14l-2-2h4l-2 2\"/></svg>');background-repeat:no-repeat;background-position:center}.grid-stack-item>.ui-resizable-ne{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-sw{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-nw{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-se{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-nw{cursor:nw-resize;width:20px;height:20px;top:var(--gs-item-margin-top);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-n{cursor:n-resize;height:10px;top:var(--gs-item-margin-top);left:25px;right:25px}.grid-stack-item>.ui-resizable-ne{cursor:ne-resize;width:20px;height:20px;top:var(--gs-item-margin-top);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-e{cursor:e-resize;width:10px;top:15px;bottom:15px;right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-se{cursor:se-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-s{cursor:s-resize;height:10px;left:25px;bottom:var(--gs-item-margin-bottom);right:25px}.grid-stack-item>.ui-resizable-sw{cursor:sw-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-w{cursor:w-resize;width:10px;top:15px;bottom:15px;left:var(--gs-item-margin-left)}.grid-stack-item.ui-draggable-dragging>.ui-resizable-handle{display:none!important}.grid-stack-item.ui-draggable-dragging{will-change:left,top}.grid-stack-item.ui-resizable-resizing{will-change:width,height}.ui-draggable-dragging,.ui-resizable-resizing{z-index:10000}.ui-draggable-dragging>.grid-stack-item-content,.ui-resizable-resizing>.grid-stack-item-content{box-shadow:1px 4px 6px rgba(0,0,0,.2);opacity:.8}.grid-stack-animate,.grid-stack-animate .grid-stack-item{transition:left .3s,top .3s,height .3s,width .3s}.grid-stack-animate .grid-stack-item.grid-stack-placeholder,.grid-stack-animate .grid-stack-item.ui-draggable-dragging,.grid-stack-animate .grid-stack-item.ui-resizable-resizing{transition:left 0s,top 0s,height 0s,width 0s}.grid-stack>.grid-stack-item[gs-y=\"0\"]{top:0}.grid-stack>.grid-stack-item[gs-x=\"0\"]{left:0}";
+const atDashboardCss = ".grid-stack{position:relative}.grid-stack-rtl{direction:ltr}.grid-stack-rtl>.grid-stack-item{direction:rtl}.grid-stack-placeholder>.placeholder-content{background-color:rgba(0,0,0,.1);margin:0;position:absolute;width:auto;z-index:0!important}.grid-stack>.grid-stack-item{position:absolute;padding:0;top:0;left:0;width:var(--gs-column-width);height:var(--gs-cell-height)}.grid-stack>.grid-stack-item>.grid-stack-item-content{margin:0;position:absolute;width:auto;overflow-x:hidden;overflow-y:auto}.grid-stack>.grid-stack-item.size-to-content:not(.size-to-content-max)>.grid-stack-item-content{overflow-y:hidden}.grid-stack>.grid-stack-item>.grid-stack-item-content,.grid-stack>.grid-stack-placeholder>.placeholder-content{top:var(--gs-item-margin-top);right:var(--gs-item-margin-right);bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-handle{position:absolute;font-size:.1px;display:block;-ms-touch-action:none;touch-action:none}.grid-stack-item.ui-resizable-autohide>.ui-resizable-handle,.grid-stack-item.ui-resizable-disabled>.ui-resizable-handle{display:none}.grid-stack-item>.ui-resizable-ne,.grid-stack-item>.ui-resizable-nw,.grid-stack-item>.ui-resizable-se,.grid-stack-item>.ui-resizable-sw{background-image:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"%23666\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 20 20\"><path d=\"m10 3 2 2H8l2-2v14l-2-2h4l-2 2\"/></svg>');background-repeat:no-repeat;background-position:center}.grid-stack-item>.ui-resizable-ne{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-sw{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-nw{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-se{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-nw{cursor:nw-resize;width:20px;height:20px;top:var(--gs-item-margin-top);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-n{cursor:n-resize;height:10px;top:var(--gs-item-margin-top);left:25px;right:25px}.grid-stack-item>.ui-resizable-ne{cursor:ne-resize;width:20px;height:20px;top:var(--gs-item-margin-top);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-e{cursor:e-resize;width:10px;top:15px;bottom:15px;right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-se{cursor:se-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-s{cursor:s-resize;height:10px;left:25px;bottom:var(--gs-item-margin-bottom);right:25px}.grid-stack-item>.ui-resizable-sw{cursor:sw-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-w{cursor:w-resize;width:10px;top:15px;bottom:15px;left:var(--gs-item-margin-left)}.grid-stack-item.ui-draggable-dragging>.ui-resizable-handle{display:none!important}.grid-stack-item.ui-draggable-dragging{will-change:left,top}.grid-stack-item.ui-resizable-resizing{will-change:width,height}.ui-draggable-dragging,.ui-resizable-resizing{z-index:10000}.ui-draggable-dragging>.grid-stack-item-content,.ui-resizable-resizing>.grid-stack-item-content{box-shadow:1px 4px 6px rgba(0,0,0,.2);opacity:.8}.grid-stack-animate,.grid-stack-animate .grid-stack-item{transition:left .3s,top .3s,height .3s,width .3s}.grid-stack-animate .grid-stack-item.grid-stack-placeholder,.grid-stack-animate .grid-stack-item.ui-draggable-dragging,.grid-stack-animate .grid-stack-item.ui-resizable-resizing{transition:left 0s,top 0s,height 0s,width 0s}.grid-stack>.grid-stack-item[gs-y=\"0\"]{top:0}.grid-stack>.grid-stack-item[gs-x=\"0\"]{left:0}";
 
+const DEFAULT_SIZE = {
+    w: 5,
+    h: 3,
+};
 const AtDashboard = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.changedItem = index.createEvent(this, "changedItem", 7);
         this.removedItem = index.createEvent(this, "removedItem", 7);
-        this.resizeEvent = index.createEvent(this, "resizeEvent", 7);
+        this.resizeDragEvent = index.createEvent(this, "resizeDragEvent", 7);
     }
     get el() { return index.getElement(this); }
-    widget_templates = [];
-    // @Event() changedDashboard: EventEmitter<CustomGridStackItem[]>;
+    widget_items = [];
     changedItem;
     removedItem;
-    resizeEvent;
-    // @State() dashboard: CustomGridStackItem[] = [];
-    widgetTemplatesChanged() {
-        // this.updateDashboard();
-        this.needsLayout = true;
-    }
+    resizeDragEvent;
+    widgetItemsChanged() { }
     grid;
     gridContainerRef;
-    needsLayout = false;
-    componentWillLoad() {
-        this.injectStyle();
-        // this.updateDashboard();
-    }
     componentDidLoad() {
         if (!this.gridContainerRef)
             return;
@@ -6398,51 +6392,49 @@ const AtDashboard = class {
                     {
                         w: 768,
                         c: 1,
+                        layout: 'compact',
                     },
                 ],
             },
         }, this.gridContainerRef);
-        this.grid.on('change', (_event, items) => {
+        this.layoutWidgets();
+        this.grid.on('added change', (_event, items) => {
             items?.forEach((item) => {
-                const dashboardItem = this.widget_templates.find((d) => d.id === item.id);
+                const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
                 if (dashboardItem) {
                     Object.assign(dashboardItem, {
                         x: item.x,
                         y: item.y,
-                        w: item.w,
-                        h: item.h,
+                        w: item.w ?? DEFAULT_SIZE.w,
+                        h: item.h ?? DEFAULT_SIZE.h,
                     });
                     this.changedItem.emit(dashboardItem);
                 }
             });
         });
-        this.grid.on('resizestop', (_event, el) => {
+        this.grid.on('resizestop dragstop', (_event, el) => {
             const node = el.gridstackNode;
-            this.resizeEvent.emit(node);
+            const dashboardItem = {
+                id: el.id,
+                x: node.x,
+                y: node.y,
+                w: node.w ?? DEFAULT_SIZE.w,
+                h: node.h ?? DEFAULT_SIZE.h,
+            };
+            this.resizeDragEvent.emit(dashboardItem);
         });
     }
-    componentDidRender() {
-        if (!this.grid || !this.needsLayout)
-            return;
-        this.grid.removeAll(false);
+    componentDidUpdate() {
         this.layoutWidgets();
-        this.needsLayout = false;
     }
     disconnectedCallback() {
         this.grid?.destroy(false);
     }
-    // private updateDashboard() {
-    //     if (this.widget_templates?.length) {
-    //         this.dashboard = this.widget_templates.map((template) => ({
-    //             ...template,
-    //         }));
-    //         this.changedDashboard.emit(this.dashboard);
-    //     }
-    // }
     layoutWidgets() {
         if (!this.grid)
             return;
-        this.widget_templates.forEach((widget) => this.makeWidget(widget));
+        this.grid.removeAll(false);
+        this.widget_items.forEach((widget) => this.makeWidget(widget));
     }
     makeWidget(widget) {
         const elSelector = `#${widget.id}`;
@@ -6458,20 +6450,16 @@ const AtDashboard = class {
     removeWidget(widget) {
         this.removedItem.emit(widget);
     }
-    injectStyle() {
-        const style = document.createElement('style');
-        style.textContent = gridstackMinCss;
-        this.el.appendChild(style);
-    }
     render() {
-        return (index.h("div", { key: '2d9b8af743ee0fba8932dba5525322002303c23b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_templates.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: 'af4687fdfa9df194a2a6db684fc332dcfe0cc6a8', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), index.h("slot", { name: widget.id })))))));
     }
     static get watchers() { return {
-        "widget_templates": ["widgetTemplatesChanged"]
+        "widget_items": ["widgetItemsChanged"]
     }; }
 };
+AtDashboard.style = atDashboardCss;
 
 exports.at_dashboard = AtDashboard;
 //# sourceMappingURL=at-dashboard.entry.cjs.js.map

@@ -1,4 +1,4 @@
-import { A as AtTableComponent, d as defineCustomElement$1 } from './p-1rmOaC4L.js';
+import { A as AtTableComponent, d as defineCustomElement$1 } from './p-DHXMWLPH.js';
 
 const AtTable = AtTableComponent;
 const defineCustomElement = defineCustomElement$1;
