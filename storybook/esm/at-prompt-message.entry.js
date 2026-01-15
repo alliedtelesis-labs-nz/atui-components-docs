@@ -1,9 +1,9 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-DW9Wz0FM.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { P as PromptResponseScore } from './prompt-Btgx1mEX.js';
+import { PromptResponseScore } from './index.js';
 
-const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
+const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
 
 const messageVariantsConfig = {
     variants: {
@@ -214,14 +214,13 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'e8d2987e49c6a8e49593e34d4b8db12aa2757a14', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'd92a1c0465cce62d4560cc9ee13a8c1186aa7407', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ec1605220b7abc644bcad717d388cd9521ee0d49', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '7e17c2ffec642d11605c76794be35654f2379906', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'e4c3537ff68e891ae31543ae764422e08630a235', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'a3a1e49552aa6147a37209fed4b872dfbbac6601', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '2a3cb45dd5ec49c9bdb694759f7242a7a6255acf', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'ec98536f4231e3b34bf5e5c85acd64c48435d5ae', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
-        "content": [{
-                "watchContentChange": 0
-            }]
+        "content": ["watchContentChange"]
     }; }
 };
-AtPromptMessage.style = atPromptMessageCss();
+AtPromptMessage.style = atPromptMessageCss;
 
 export { AtPromptMessage as at_prompt_message };
+//# sourceMappingURL=at-prompt-message.entry.js.map

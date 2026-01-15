@@ -149,10 +149,10 @@ export class AtTimeRangeComponent {
         return output;
     }
     render() {
-        return (h(Host, { key: '6e119672a79f74a6d5bfe3a068af763ff1ad747d', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'ec6693b3c05deb0899286404bc81a8d4c99dcb8a', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+        return (h(Host, { key: '60366fcaca599804b630152d4acd43b010c696ad', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'aa8e37016433c11407b03e5be24f00b3ee209bc0', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
                 this.relativeTimeMenuEl.focus()) ||
                 (event.detail === 1 &&
-                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '3a33e400d0454c5a38526c9070ed6b8dfd29ab8b', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '0bfca16b8bad51674bea913110d357ee7a250056', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
@@ -160,13 +160,13 @@ export class AtTimeRangeComponent {
                     this.predefinedTimeRanges.length - 1) {
                     this.absoluteTimeMenuEl.focus();
                 }
-            } })), h("div", { key: '6e734d6ccb819df0b55bbd5641593da9bf90bdb1', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '0cb0936bfcf9e32e5fa2e7dfa234dbf5bac91439', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+            } })), h("div", { key: '0406c81b116c7027bf284659003cda50707d952b', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '717e7f3bdede477e7633db77ca5be5b6b1bf0c93', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
                 this.relativeTimeMenuEl.focus();
                 this.relativeTimeMenuEl.blur();
-            } })), h("div", { key: 'cb0c6e257f202d435834e134db6c18c18084e5df', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: '063e0cf81d077b0667f35a25a4ba3387df6e53fb', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+            } })), h("div", { key: 'd5c1966930e9ce8f37059c238a924259bbea2723', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: 'e2c3a58ebce59f4af43775f697b2a5336c45a5e2', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
                 this.absoluteTimeMenuEl.focus();
                 this.absoluteTimeMenuEl.blur();
             } }))));
@@ -184,8 +184,7 @@ export class AtTimeRangeComponent {
                         "SelectedTimeRangeExtended": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended",
-                            "referenceLocation": "SelectedTimeRangeExtended"
+                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended"
                         }
                     }
                 },
@@ -229,8 +228,7 @@ export class AtTimeRangeComponent {
                         "TimePresets": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::TimePresets",
-                            "referenceLocation": "TimePresets"
+                            "id": "src/models/at-time-range.models.ts::TimePresets"
                         }
                     }
                 },
@@ -353,8 +351,7 @@ export class AtTimeRangeComponent {
                         "SelectedTimeRangeExtended": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended",
-                            "referenceLocation": "SelectedTimeRangeExtended"
+                            "id": "src/models/at-time-range.models.ts::SelectedTimeRangeExtended"
                         }
                     }
                 }
@@ -362,3 +359,4 @@ export class AtTimeRangeComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-time-range.js.map

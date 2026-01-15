@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-HqquF7bU.js');
-var prompt = require('./prompt-BA0_qDnC.js');
+var index$1 = require('./index.cjs.js');
 
-const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
+const atPromptMessageCss = "@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}";
 
 const messageVariantsConfig = {
     variants: {
@@ -60,7 +60,7 @@ const AtPromptMessage = class {
     /**
      * The current vote score of the message
      */
-    score = prompt.PromptResponseScore.NONE;
+    score = index$1.PromptResponseScore.NONE;
     /**
      * Display voting actions for assistant messages
      */
@@ -175,14 +175,14 @@ const AtPromptMessage = class {
         this.atEdit.emit(this.content);
     };
     handleVote = (score) => {
-        const newScore = this.score === score ? prompt.PromptResponseScore.NONE : score;
+        const newScore = this.score === score ? index$1.PromptResponseScore.NONE : score;
         this.atVote.emit({ messageId: this.message_id, score: newScore });
     };
     renderActions() {
         if (this.loading)
             return null;
-        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === prompt.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
-            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === prompt.PromptResponseScore.DOWN ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#000000" }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "http://www.w3.org/2000/svg", height: "15px", fill: "#adb5bd" // token-border-dark
+        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.UP), "data-name": "vote-up-button" }, this.score === index$1.PromptResponseScore.UP ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#adb5bd" }, index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
+            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(index$1.PromptResponseScore.DOWN), "data-name": "vote-down-button" }, this.score === index$1.PromptResponseScore.DOWN ? (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "http://www.w3.org/2000/svg", width: "15px", fill: "#000000" }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (index.h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "http://www.w3.org/2000/svg", height: "15px", fill: "#adb5bd" // token-border-dark
         }, index.h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
@@ -216,14 +216,13 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'e8d2987e49c6a8e49593e34d4b8db12aa2757a14', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'd92a1c0465cce62d4560cc9ee13a8c1186aa7407', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'ec1605220b7abc644bcad717d388cd9521ee0d49', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '7e17c2ffec642d11605c76794be35654f2379906', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: 'e4c3537ff68e891ae31543ae764422e08630a235', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'a3a1e49552aa6147a37209fed4b872dfbbac6601', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '2a3cb45dd5ec49c9bdb694759f7242a7a6255acf', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: 'ec98536f4231e3b34bf5e5c85acd64c48435d5ae', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
-        "content": [{
-                "watchContentChange": 0
-            }]
+        "content": ["watchContentChange"]
     }; }
 };
-AtPromptMessage.style = atPromptMessageCss();
+AtPromptMessage.style = atPromptMessageCss;
 
 exports.at_prompt_message = AtPromptMessage;
+//# sourceMappingURL=at-prompt-message.entry.cjs.js.map

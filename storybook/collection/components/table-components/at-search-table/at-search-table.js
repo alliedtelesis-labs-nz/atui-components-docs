@@ -303,7 +303,7 @@ export class AtSearchTable {
         this.updateActiveFilters();
     }
     render() {
-        return (h(Host, { key: 'da781fb48591b843d0b29654ec8e3eda6a8cab71' }, h("at-table-actions", { key: '6f435379882d6273c165f29db4c43738178dbf0d', ag_grid: this.agGrid }, h("div", { key: 'd26e4b8069d3e4544ef849c51f86600488548ef5', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '4521462d11c7df5ae0469d5cfcd297f9c4ec0af3', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'b4221000f4d688e70adb91c1a9cc7518e28b88cb', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'a142421ef333fd3c29d0f7a3ce1a633f9bd2e541', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'e8439ab1cdd497763ff2dc9b3770a989af617e94', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'b4dee3ab96499652d8f2f20f21434f271ca0b1c7', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '584d7ea87bf7ce555a5a07c393c5deb4fbfcc423', slot: "actions" }, h("slot", { key: '77093a4a44364a0b93f7a5bb16ad34112beead92', name: "actions" }))), h("slot", { key: '27396bdc990998d452adfa3df6ff30acddff1421', name: "multi-select-actions" }), h("at-table", { key: 'ad100a0a0d349c59f294ed967510217c1ed1dbbe', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: '8373064df451e6ac665f9a244725d5f984082ee1' }, h("at-table-actions", { key: 'd9c0bbf2bc12214f2a0f6d2f02c17800afe41233', ag_grid: this.agGrid }, h("div", { key: '178a8e1ffd63f24a41640d9fdea5fe3b59ac29d8', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '749f33df1c82f19bf84c67754c93d7a5a0f30c78', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '8ce219e315c770fb498df7ef9bfff5fb5bcff810', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '465990e9b12c16fe5c871fd822c95e8a42c35963', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'a55428cfdcb4a3b820a10ead99be29e08c0d154a', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '09e5e7fbc9a1ef20ecb47f05470075b9aad4eff6', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'eabe86535774458f9e6fb3e79756de92fe4a0ba7', slot: "actions" }, h("slot", { key: 'f15c3b58ce3f8cca945ba60872568f7ced6ab9bb', name: "actions" }))), h("slot", { key: '3d6fd5c4f3c191c1c9d6ad866d2c930360ab8599', name: "multi-select-actions" }), h("at-table", { key: '2615605914da8e6efc04444d0c95ebc30df0b533', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
     }
     static get is() { return "at-search-table"; }
     static get properties() {
@@ -411,8 +411,7 @@ export class AtSearchTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -622,8 +621,7 @@ export class AtSearchTable {
                         "IRowNode": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode",
-                            "referenceLocation": "IRowNode"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode"
                         },
                         "T": {
                             "location": "global",
@@ -653,3 +651,4 @@ export class AtSearchTable {
             }];
     }
 }
+//# sourceMappingURL=at-search-table.js.map

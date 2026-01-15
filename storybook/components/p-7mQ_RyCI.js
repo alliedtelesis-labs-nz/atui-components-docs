@@ -1,25 +1,13487 @@
-import{h as t}from"./p-BMuAbjcg.js";
+import { h as hooks } from './p-BMuAbjcg.js';
+
 /*!
  * @kurkle/color v0.3.4
  * https://github.com/kurkle/color#readme
  * (c) 2024 Jukka Kurkela
  * Released under the MIT License
- */function e(t){return t+.5|0}const i=(t,e,i)=>Math.max(Math.min(t,i),e);function s(t){return i(e(2.55*t),0,255)}function n(t){return i(e(255*t),0,255)}function r(t){return i(e(t/2.55)/100,0,1)}function o(t){return i(e(100*t),0,100)}const h={0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,A:10,B:11,C:12,D:13,E:14,F:15,a:10,b:11,c:12,d:13,e:14,f:15},a=[..."0123456789ABCDEF"],c=t=>a[15&t],u=t=>a[(240&t)>>4]+a[15&t],l=t=>(240&t)>>4==(15&t);const f=/^(hsla?|hwb|hsv)\(\s*([-+.e\d]+)(?:deg)?[\s,]+([-+.e\d]+)%[\s,]+([-+.e\d]+)%(?:[\s,]+([-+.e\d]+)(%)?)?\s*\)$/;function d(t,e,i){const s=e*Math.min(i,1-i),n=(e,n=(e+t/30)%12)=>i-s*Math.max(Math.min(n-3,9-n,1),-1);return[n(0),n(8),n(4)]}function p(t,e,i){const s=(s,n=(s+t/60)%6)=>i-i*e*Math.max(Math.min(n,4-n,1),0);return[s(5),s(3),s(1)]}function b(t,e,i){const s=d(t,1,.5);let n;for(e+i>1&&(n=1/(e+i),e*=n,i*=n),n=0;n<3;n++)s[n]*=1-e-i,s[n]+=e;return s}function g(t){const e=t.r/255,i=t.g/255,s=t.b/255,n=Math.max(e,i,s),r=Math.min(e,i,s),o=(n+r)/2;let h,a,c;return n!==r&&(c=n-r,a=o>.5?c/(2-n-r):c/(n+r),h=function(t,e,i,s,n){return t===n?(e-i)/s+(e<i?6:0):e===n?(i-t)/s+2:(t-e)/s+4}(e,i,s,c,n),h=60*h+.5),[0|h,a||0,o]}function m(t,e,i,s){return(Array.isArray(e)?t(e[0],e[1],e[2]):t(e,i,s)).map(n)}function x(t,e,i){return m(d,t,e,i)}function v(t){return(t%360+360)%360}const y={x:"dark",Z:"light",Y:"re",X:"blu",W:"gr",V:"medium",U:"slate",A:"ee",T:"ol",S:"or",B:"ra",C:"lateg",D:"ights",R:"in",Q:"turquois",E:"hi",P:"ro",O:"al",N:"le",M:"de",L:"yello",F:"en",K:"ch",G:"arks",H:"ea",I:"ightg",J:"wh"},M={OiceXe:"f0f8ff",antiquewEte:"faebd7",aqua:"ffff",aquamarRe:"7fffd4",azuY:"f0ffff",beige:"f5f5dc",bisque:"ffe4c4",black:"0",blanKedOmond:"ffebcd",Xe:"ff",XeviTet:"8a2be2",bPwn:"a52a2a",burlywood:"deb887",caMtXe:"5f9ea0",KartYuse:"7fff00",KocTate:"d2691e",cSO:"ff7f50",cSnflowerXe:"6495ed",cSnsilk:"fff8dc",crimson:"dc143c",cyan:"ffff",xXe:"8b",xcyan:"8b8b",xgTMnPd:"b8860b",xWay:"a9a9a9",xgYF:"6400",xgYy:"a9a9a9",xkhaki:"bdb76b",xmagFta:"8b008b",xTivegYF:"556b2f",xSange:"ff8c00",xScEd:"9932cc",xYd:"8b0000",xsOmon:"e9967a",xsHgYF:"8fbc8f",xUXe:"483d8b",xUWay:"2f4f4f",xUgYy:"2f4f4f",xQe:"ced1",xviTet:"9400d3",dAppRk:"ff1493",dApskyXe:"bfff",dimWay:"696969",dimgYy:"696969",dodgerXe:"1e90ff",fiYbrick:"b22222",flSOwEte:"fffaf0",foYstWAn:"228b22",fuKsia:"ff00ff",gaRsbSo:"dcdcdc",ghostwEte:"f8f8ff",gTd:"ffd700",gTMnPd:"daa520",Way:"808080",gYF:"8000",gYFLw:"adff2f",gYy:"808080",honeyMw:"f0fff0",hotpRk:"ff69b4",RdianYd:"cd5c5c",Rdigo:"4b0082",ivSy:"fffff0",khaki:"f0e68c",lavFMr:"e6e6fa",lavFMrXsh:"fff0f5",lawngYF:"7cfc00",NmoncEffon:"fffacd",ZXe:"add8e6",ZcSO:"f08080",Zcyan:"e0ffff",ZgTMnPdLw:"fafad2",ZWay:"d3d3d3",ZgYF:"90ee90",ZgYy:"d3d3d3",ZpRk:"ffb6c1",ZsOmon:"ffa07a",ZsHgYF:"20b2aa",ZskyXe:"87cefa",ZUWay:"778899",ZUgYy:"778899",ZstAlXe:"b0c4de",ZLw:"ffffe0",lime:"ff00",limegYF:"32cd32",lRF:"faf0e6",magFta:"ff00ff",maPon:"800000",VaquamarRe:"66cdaa",VXe:"cd",VScEd:"ba55d3",VpurpN:"9370db",VsHgYF:"3cb371",VUXe:"7b68ee",VsprRggYF:"fa9a",VQe:"48d1cc",VviTetYd:"c71585",midnightXe:"191970",mRtcYam:"f5fffa",mistyPse:"ffe4e1",moccasR:"ffe4b5",navajowEte:"ffdead",navy:"80",Tdlace:"fdf5e6",Tive:"808000",TivedBb:"6b8e23",Sange:"ffa500",SangeYd:"ff4500",ScEd:"da70d6",pOegTMnPd:"eee8aa",pOegYF:"98fb98",pOeQe:"afeeee",pOeviTetYd:"db7093",papayawEp:"ffefd5",pHKpuff:"ffdab9",peru:"cd853f",pRk:"ffc0cb",plum:"dda0dd",powMrXe:"b0e0e6",purpN:"800080",YbeccapurpN:"663399",Yd:"ff0000",Psybrown:"bc8f8f",PyOXe:"4169e1",saddNbPwn:"8b4513",sOmon:"fa8072",sandybPwn:"f4a460",sHgYF:"2e8b57",sHshell:"fff5ee",siFna:"a0522d",silver:"c0c0c0",skyXe:"87ceeb",UXe:"6a5acd",UWay:"708090",UgYy:"708090",snow:"fffafa",sprRggYF:"ff7f",stAlXe:"4682b4",tan:"d2b48c",teO:"8080",tEstN:"d8bfd8",tomato:"ff6347",Qe:"40e0d0",viTet:"ee82ee",JHt:"f5deb3",wEte:"ffffff",wEtesmoke:"f5f5f5",Lw:"ffff00",LwgYF:"9acd32"};let w;const _=/^rgba?\(\s*([-+.\d]+)(%)?[\s,]+([-+.e\d]+)(%)?[\s,]+([-+.e\d]+)(%)?(?:[\s,/]+([-+.e\d]+)(%)?)?\s*\)$/,k=t=>t<=.0031308?12.92*t:1.055*Math.pow(t,1/2.4)-.055,O=t=>t<=.04045?t/12.92:Math.pow((t+.055)/1.055,2.4);function S(t,e,i){if(t){let s=g(t);s[e]=Math.max(0,Math.min(s[e]+s[e]*i,0===e?360:1)),s=x(s),t.r=s[0],t.g=s[1],t.b=s[2]}}function A(t,e){return t?Object.assign(e||{},t):t}function D(t){var e={r:0,g:0,b:0,a:255};return Array.isArray(t)?t.length>=3&&(e={r:t[0],g:t[1],b:t[2],a:255},t.length>3&&(e.a=n(t[3]))):(e=A(t,{r:0,g:0,b:0,a:1})).a=n(e.a),e}function C(t){return"r"===t.charAt(0)?function(t){const e=_.exec(t);let n,r,o,h=255;if(e){if(e[7]!==n){const t=+e[7];h=e[8]?s(t):i(255*t,0,255)}return n=+e[1],r=+e[3],o=+e[5],n=255&(e[2]?s(n):i(n,0,255)),r=255&(e[4]?s(r):i(r,0,255)),o=255&(e[6]?s(o):i(o,0,255)),{r:n,g:r,b:o,a:h}}}(t):function(t){const e=f.exec(t);let i,r=255;if(!e)return;e[5]!==i&&(r=e[6]?s(+e[5]):n(+e[5]));const o=v(+e[2]),h=+e[3]/100,a=+e[4]/100;return i="hwb"===e[1]?function(t,e,i){return m(b,t,e,i)}(o,h,a):"hsv"===e[1]?function(t,e,i){return m(p,t,e,i)}(o,h,a):x(o,h,a),{r:i[0],g:i[1],b:i[2],a:r}}(t)}class R{constructor(t){if(t instanceof R)return t;const e=typeof t;let i;var s,n,r;"object"===e?i=D(t):"string"===e&&(r=(s=t).length,"#"===s[0]&&(4===r||5===r?n={r:255&17*h[s[1]],g:255&17*h[s[2]],b:255&17*h[s[3]],a:5===r?17*h[s[4]]:255}:7!==r&&9!==r||(n={r:h[s[1]]<<4|h[s[2]],g:h[s[3]]<<4|h[s[4]],b:h[s[5]]<<4|h[s[6]],a:9===r?h[s[7]]<<4|h[s[8]]:255})),i=n||function(t){w||(w=function(){const t={},e=Object.keys(M),i=Object.keys(y);let s,n,r,o,h;for(s=0;s<e.length;s++){for(o=h=e[s],n=0;n<i.length;n++)r=i[n],h=h.replace(r,y[r]);r=parseInt(M[o],16),t[h]=[r>>16&255,r>>8&255,255&r]}return t}(),w.transparent=[0,0,0,0]);const e=w[t.toLowerCase()];return e&&{r:e[0],g:e[1],b:e[2],a:4===e.length?e[3]:255}}(t)||C(t)),this._rgb=i,this._valid=!!i}get valid(){return this._valid}get rgb(){var t=A(this._rgb);return t&&(t.a=r(t.a)),t}set rgb(t){this._rgb=D(t)}rgbString(){return this._valid?(t=this._rgb)&&(t.a<255?`rgba(${t.r}, ${t.g}, ${t.b}, ${r(t.a)})`:`rgb(${t.r}, ${t.g}, ${t.b})`):void 0;var t}hexString(){return this._valid?(e=(t=>l(t.r)&&l(t.g)&&l(t.b)&&l(t.a))(t=this._rgb)?c:u,t?"#"+e(t.r)+e(t.g)+e(t.b)+((t,e)=>t<255?e(t):"")(t.a,e):void 0):void 0;var t,e}hslString(){return this._valid?function(t){if(!t)return;const e=g(t),i=e[0],s=o(e[1]),n=o(e[2]);return t.a<255?`hsla(${i}, ${s}%, ${n}%, ${r(t.a)})`:`hsl(${i}, ${s}%, ${n}%)`}(this._rgb):void 0}mix(t,e){if(t){const i=this.rgb,s=t.rgb;let n;const r=e===n?.5:e,o=2*r-1,h=i.a-s.a,a=((o*h==-1?o:(o+h)/(1+o*h))+1)/2;n=1-a,i.r=255&a*i.r+n*s.r+.5,i.g=255&a*i.g+n*s.g+.5,i.b=255&a*i.b+n*s.b+.5,i.a=r*i.a+(1-r)*s.a,this.rgb=i}return this}interpolate(t,e){return t&&(this._rgb=function(t,e,i){const s=O(r(t.r)),o=O(r(t.g)),h=O(r(t.b));return{r:n(k(s+i*(O(r(e.r))-s))),g:n(k(o+i*(O(r(e.g))-o))),b:n(k(h+i*(O(r(e.b))-h))),a:t.a+i*(e.a-t.a)}}(this._rgb,t._rgb,e)),this}clone(){return new R(this.rgb)}alpha(t){return this._rgb.a=n(t),this}clearer(t){return this._rgb.a*=1-t,this}greyscale(){const t=this._rgb,i=e(.3*t.r+.59*t.g+.11*t.b);return t.r=t.g=t.b=i,this}opaquer(t){return this._rgb.a*=1+t,this}negate(){const t=this._rgb;return t.r=255-t.r,t.g=255-t.g,t.b=255-t.b,this}lighten(t){return S(this._rgb,2,t),this}darken(t){return S(this._rgb,2,-t),this}saturate(t){return S(this._rgb,1,t),this}desaturate(t){return S(this._rgb,1,-t),this}rotate(t){return function(t,e){var i=g(t);i[0]=v(i[0]+e),i=x(i),t.r=i[0],t.g=i[1],t.b=i[2]}(this._rgb,t),this}}
+ */
+function round(v) {
+  return v + 0.5 | 0;
+}
+const lim = (v, l, h) => Math.max(Math.min(v, h), l);
+function p2b(v) {
+  return lim(round(v * 2.55), 0, 255);
+}
+function n2b(v) {
+  return lim(round(v * 255), 0, 255);
+}
+function b2n(v) {
+  return lim(round(v / 2.55) / 100, 0, 1);
+}
+function n2p(v) {
+  return lim(round(v * 100), 0, 100);
+}
+
+const map$1 = {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, A: 10, B: 11, C: 12, D: 13, E: 14, F: 15, a: 10, b: 11, c: 12, d: 13, e: 14, f: 15};
+const hex = [...'0123456789ABCDEF'];
+const h1 = b => hex[b & 0xF];
+const h2 = b => hex[(b & 0xF0) >> 4] + hex[b & 0xF];
+const eq = b => ((b & 0xF0) >> 4) === (b & 0xF);
+const isShort = v => eq(v.r) && eq(v.g) && eq(v.b) && eq(v.a);
+function hexParse(str) {
+  var len = str.length;
+  var ret;
+  if (str[0] === '#') {
+    if (len === 4 || len === 5) {
+      ret = {
+        r: 255 & map$1[str[1]] * 17,
+        g: 255 & map$1[str[2]] * 17,
+        b: 255 & map$1[str[3]] * 17,
+        a: len === 5 ? map$1[str[4]] * 17 : 255
+      };
+    } else if (len === 7 || len === 9) {
+      ret = {
+        r: map$1[str[1]] << 4 | map$1[str[2]],
+        g: map$1[str[3]] << 4 | map$1[str[4]],
+        b: map$1[str[5]] << 4 | map$1[str[6]],
+        a: len === 9 ? (map$1[str[7]] << 4 | map$1[str[8]]) : 255
+      };
+    }
+  }
+  return ret;
+}
+const alpha = (a, f) => a < 255 ? f(a) : '';
+function hexString(v) {
+  var f = isShort(v) ? h1 : h2;
+  return v
+    ? '#' + f(v.r) + f(v.g) + f(v.b) + alpha(v.a, f)
+    : undefined;
+}
+
+const HUE_RE = /^(hsla?|hwb|hsv)\(\s*([-+.e\d]+)(?:deg)?[\s,]+([-+.e\d]+)%[\s,]+([-+.e\d]+)%(?:[\s,]+([-+.e\d]+)(%)?)?\s*\)$/;
+function hsl2rgbn(h, s, l) {
+  const a = s * Math.min(l, 1 - l);
+  const f = (n, k = (n + h / 30) % 12) => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  return [f(0), f(8), f(4)];
+}
+function hsv2rgbn(h, s, v) {
+  const f = (n, k = (n + h / 60) % 6) => v - v * s * Math.max(Math.min(k, 4 - k, 1), 0);
+  return [f(5), f(3), f(1)];
+}
+function hwb2rgbn(h, w, b) {
+  const rgb = hsl2rgbn(h, 1, 0.5);
+  let i;
+  if (w + b > 1) {
+    i = 1 / (w + b);
+    w *= i;
+    b *= i;
+  }
+  for (i = 0; i < 3; i++) {
+    rgb[i] *= 1 - w - b;
+    rgb[i] += w;
+  }
+  return rgb;
+}
+function hueValue(r, g, b, d, max) {
+  if (r === max) {
+    return ((g - b) / d) + (g < b ? 6 : 0);
+  }
+  if (g === max) {
+    return (b - r) / d + 2;
+  }
+  return (r - g) / d + 4;
+}
+function rgb2hsl(v) {
+  const range = 255;
+  const r = v.r / range;
+  const g = v.g / range;
+  const b = v.b / range;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  let h, s, d;
+  if (max !== min) {
+    d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    h = hueValue(r, g, b, d, max);
+    h = h * 60 + 0.5;
+  }
+  return [h | 0, s || 0, l];
+}
+function calln(f, a, b, c) {
+  return (
+    Array.isArray(a)
+      ? f(a[0], a[1], a[2])
+      : f(a, b, c)
+  ).map(n2b);
+}
+function hsl2rgb(h, s, l) {
+  return calln(hsl2rgbn, h, s, l);
+}
+function hwb2rgb(h, w, b) {
+  return calln(hwb2rgbn, h, w, b);
+}
+function hsv2rgb(h, s, v) {
+  return calln(hsv2rgbn, h, s, v);
+}
+function hue(h) {
+  return (h % 360 + 360) % 360;
+}
+function hueParse(str) {
+  const m = HUE_RE.exec(str);
+  let a = 255;
+  let v;
+  if (!m) {
+    return;
+  }
+  if (m[5] !== v) {
+    a = m[6] ? p2b(+m[5]) : n2b(+m[5]);
+  }
+  const h = hue(+m[2]);
+  const p1 = +m[3] / 100;
+  const p2 = +m[4] / 100;
+  if (m[1] === 'hwb') {
+    v = hwb2rgb(h, p1, p2);
+  } else if (m[1] === 'hsv') {
+    v = hsv2rgb(h, p1, p2);
+  } else {
+    v = hsl2rgb(h, p1, p2);
+  }
+  return {
+    r: v[0],
+    g: v[1],
+    b: v[2],
+    a: a
+  };
+}
+function rotate(v, deg) {
+  var h = rgb2hsl(v);
+  h[0] = hue(h[0] + deg);
+  h = hsl2rgb(h);
+  v.r = h[0];
+  v.g = h[1];
+  v.b = h[2];
+}
+function hslString(v) {
+  if (!v) {
+    return;
+  }
+  const a = rgb2hsl(v);
+  const h = a[0];
+  const s = n2p(a[1]);
+  const l = n2p(a[2]);
+  return v.a < 255
+    ? `hsla(${h}, ${s}%, ${l}%, ${b2n(v.a)})`
+    : `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+const map = {
+	x: 'dark',
+	Z: 'light',
+	Y: 're',
+	X: 'blu',
+	W: 'gr',
+	V: 'medium',
+	U: 'slate',
+	A: 'ee',
+	T: 'ol',
+	S: 'or',
+	B: 'ra',
+	C: 'lateg',
+	D: 'ights',
+	R: 'in',
+	Q: 'turquois',
+	E: 'hi',
+	P: 'ro',
+	O: 'al',
+	N: 'le',
+	M: 'de',
+	L: 'yello',
+	F: 'en',
+	K: 'ch',
+	G: 'arks',
+	H: 'ea',
+	I: 'ightg',
+	J: 'wh'
+};
+const names$1 = {
+	OiceXe: 'f0f8ff',
+	antiquewEte: 'faebd7',
+	aqua: 'ffff',
+	aquamarRe: '7fffd4',
+	azuY: 'f0ffff',
+	beige: 'f5f5dc',
+	bisque: 'ffe4c4',
+	black: '0',
+	blanKedOmond: 'ffebcd',
+	Xe: 'ff',
+	XeviTet: '8a2be2',
+	bPwn: 'a52a2a',
+	burlywood: 'deb887',
+	caMtXe: '5f9ea0',
+	KartYuse: '7fff00',
+	KocTate: 'd2691e',
+	cSO: 'ff7f50',
+	cSnflowerXe: '6495ed',
+	cSnsilk: 'fff8dc',
+	crimson: 'dc143c',
+	cyan: 'ffff',
+	xXe: '8b',
+	xcyan: '8b8b',
+	xgTMnPd: 'b8860b',
+	xWay: 'a9a9a9',
+	xgYF: '6400',
+	xgYy: 'a9a9a9',
+	xkhaki: 'bdb76b',
+	xmagFta: '8b008b',
+	xTivegYF: '556b2f',
+	xSange: 'ff8c00',
+	xScEd: '9932cc',
+	xYd: '8b0000',
+	xsOmon: 'e9967a',
+	xsHgYF: '8fbc8f',
+	xUXe: '483d8b',
+	xUWay: '2f4f4f',
+	xUgYy: '2f4f4f',
+	xQe: 'ced1',
+	xviTet: '9400d3',
+	dAppRk: 'ff1493',
+	dApskyXe: 'bfff',
+	dimWay: '696969',
+	dimgYy: '696969',
+	dodgerXe: '1e90ff',
+	fiYbrick: 'b22222',
+	flSOwEte: 'fffaf0',
+	foYstWAn: '228b22',
+	fuKsia: 'ff00ff',
+	gaRsbSo: 'dcdcdc',
+	ghostwEte: 'f8f8ff',
+	gTd: 'ffd700',
+	gTMnPd: 'daa520',
+	Way: '808080',
+	gYF: '8000',
+	gYFLw: 'adff2f',
+	gYy: '808080',
+	honeyMw: 'f0fff0',
+	hotpRk: 'ff69b4',
+	RdianYd: 'cd5c5c',
+	Rdigo: '4b0082',
+	ivSy: 'fffff0',
+	khaki: 'f0e68c',
+	lavFMr: 'e6e6fa',
+	lavFMrXsh: 'fff0f5',
+	lawngYF: '7cfc00',
+	NmoncEffon: 'fffacd',
+	ZXe: 'add8e6',
+	ZcSO: 'f08080',
+	Zcyan: 'e0ffff',
+	ZgTMnPdLw: 'fafad2',
+	ZWay: 'd3d3d3',
+	ZgYF: '90ee90',
+	ZgYy: 'd3d3d3',
+	ZpRk: 'ffb6c1',
+	ZsOmon: 'ffa07a',
+	ZsHgYF: '20b2aa',
+	ZskyXe: '87cefa',
+	ZUWay: '778899',
+	ZUgYy: '778899',
+	ZstAlXe: 'b0c4de',
+	ZLw: 'ffffe0',
+	lime: 'ff00',
+	limegYF: '32cd32',
+	lRF: 'faf0e6',
+	magFta: 'ff00ff',
+	maPon: '800000',
+	VaquamarRe: '66cdaa',
+	VXe: 'cd',
+	VScEd: 'ba55d3',
+	VpurpN: '9370db',
+	VsHgYF: '3cb371',
+	VUXe: '7b68ee',
+	VsprRggYF: 'fa9a',
+	VQe: '48d1cc',
+	VviTetYd: 'c71585',
+	midnightXe: '191970',
+	mRtcYam: 'f5fffa',
+	mistyPse: 'ffe4e1',
+	moccasR: 'ffe4b5',
+	navajowEte: 'ffdead',
+	navy: '80',
+	Tdlace: 'fdf5e6',
+	Tive: '808000',
+	TivedBb: '6b8e23',
+	Sange: 'ffa500',
+	SangeYd: 'ff4500',
+	ScEd: 'da70d6',
+	pOegTMnPd: 'eee8aa',
+	pOegYF: '98fb98',
+	pOeQe: 'afeeee',
+	pOeviTetYd: 'db7093',
+	papayawEp: 'ffefd5',
+	pHKpuff: 'ffdab9',
+	peru: 'cd853f',
+	pRk: 'ffc0cb',
+	plum: 'dda0dd',
+	powMrXe: 'b0e0e6',
+	purpN: '800080',
+	YbeccapurpN: '663399',
+	Yd: 'ff0000',
+	Psybrown: 'bc8f8f',
+	PyOXe: '4169e1',
+	saddNbPwn: '8b4513',
+	sOmon: 'fa8072',
+	sandybPwn: 'f4a460',
+	sHgYF: '2e8b57',
+	sHshell: 'fff5ee',
+	siFna: 'a0522d',
+	silver: 'c0c0c0',
+	skyXe: '87ceeb',
+	UXe: '6a5acd',
+	UWay: '708090',
+	UgYy: '708090',
+	snow: 'fffafa',
+	sprRggYF: 'ff7f',
+	stAlXe: '4682b4',
+	tan: 'd2b48c',
+	teO: '8080',
+	tEstN: 'd8bfd8',
+	tomato: 'ff6347',
+	Qe: '40e0d0',
+	viTet: 'ee82ee',
+	JHt: 'f5deb3',
+	wEte: 'ffffff',
+	wEtesmoke: 'f5f5f5',
+	Lw: 'ffff00',
+	LwgYF: '9acd32'
+};
+function unpack() {
+  const unpacked = {};
+  const keys = Object.keys(names$1);
+  const tkeys = Object.keys(map);
+  let i, j, k, ok, nk;
+  for (i = 0; i < keys.length; i++) {
+    ok = nk = keys[i];
+    for (j = 0; j < tkeys.length; j++) {
+      k = tkeys[j];
+      nk = nk.replace(k, map[k]);
+    }
+    k = parseInt(names$1[ok], 16);
+    unpacked[nk] = [k >> 16 & 0xFF, k >> 8 & 0xFF, k & 0xFF];
+  }
+  return unpacked;
+}
+
+let names;
+function nameParse(str) {
+  if (!names) {
+    names = unpack();
+    names.transparent = [0, 0, 0, 0];
+  }
+  const a = names[str.toLowerCase()];
+  return a && {
+    r: a[0],
+    g: a[1],
+    b: a[2],
+    a: a.length === 4 ? a[3] : 255
+  };
+}
+
+const RGB_RE = /^rgba?\(\s*([-+.\d]+)(%)?[\s,]+([-+.e\d]+)(%)?[\s,]+([-+.e\d]+)(%)?(?:[\s,/]+([-+.e\d]+)(%)?)?\s*\)$/;
+function rgbParse(str) {
+  const m = RGB_RE.exec(str);
+  let a = 255;
+  let r, g, b;
+  if (!m) {
+    return;
+  }
+  if (m[7] !== r) {
+    const v = +m[7];
+    a = m[8] ? p2b(v) : lim(v * 255, 0, 255);
+  }
+  r = +m[1];
+  g = +m[3];
+  b = +m[5];
+  r = 255 & (m[2] ? p2b(r) : lim(r, 0, 255));
+  g = 255 & (m[4] ? p2b(g) : lim(g, 0, 255));
+  b = 255 & (m[6] ? p2b(b) : lim(b, 0, 255));
+  return {
+    r: r,
+    g: g,
+    b: b,
+    a: a
+  };
+}
+function rgbString(v) {
+  return v && (
+    v.a < 255
+      ? `rgba(${v.r}, ${v.g}, ${v.b}, ${b2n(v.a)})`
+      : `rgb(${v.r}, ${v.g}, ${v.b})`
+  );
+}
+
+const to = v => v <= 0.0031308 ? v * 12.92 : Math.pow(v, 1.0 / 2.4) * 1.055 - 0.055;
+const from = v => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+function interpolate(rgb1, rgb2, t) {
+  const r = from(b2n(rgb1.r));
+  const g = from(b2n(rgb1.g));
+  const b = from(b2n(rgb1.b));
+  return {
+    r: n2b(to(r + t * (from(b2n(rgb2.r)) - r))),
+    g: n2b(to(g + t * (from(b2n(rgb2.g)) - g))),
+    b: n2b(to(b + t * (from(b2n(rgb2.b)) - b))),
+    a: rgb1.a + t * (rgb2.a - rgb1.a)
+  };
+}
+
+function modHSL(v, i, ratio) {
+  if (v) {
+    let tmp = rgb2hsl(v);
+    tmp[i] = Math.max(0, Math.min(tmp[i] + tmp[i] * ratio, i === 0 ? 360 : 1));
+    tmp = hsl2rgb(tmp);
+    v.r = tmp[0];
+    v.g = tmp[1];
+    v.b = tmp[2];
+  }
+}
+function clone$1(v, proto) {
+  return v ? Object.assign(proto || {}, v) : v;
+}
+function fromObject(input) {
+  var v = {r: 0, g: 0, b: 0, a: 255};
+  if (Array.isArray(input)) {
+    if (input.length >= 3) {
+      v = {r: input[0], g: input[1], b: input[2], a: 255};
+      if (input.length > 3) {
+        v.a = n2b(input[3]);
+      }
+    }
+  } else {
+    v = clone$1(input, {r: 0, g: 0, b: 0, a: 1});
+    v.a = n2b(v.a);
+  }
+  return v;
+}
+function functionParse(str) {
+  if (str.charAt(0) === 'r') {
+    return rgbParse(str);
+  }
+  return hueParse(str);
+}
+class Color {
+  constructor(input) {
+    if (input instanceof Color) {
+      return input;
+    }
+    const type = typeof input;
+    let v;
+    if (type === 'object') {
+      v = fromObject(input);
+    } else if (type === 'string') {
+      v = hexParse(input) || nameParse(input) || functionParse(input);
+    }
+    this._rgb = v;
+    this._valid = !!v;
+  }
+  get valid() {
+    return this._valid;
+  }
+  get rgb() {
+    var v = clone$1(this._rgb);
+    if (v) {
+      v.a = b2n(v.a);
+    }
+    return v;
+  }
+  set rgb(obj) {
+    this._rgb = fromObject(obj);
+  }
+  rgbString() {
+    return this._valid ? rgbString(this._rgb) : undefined;
+  }
+  hexString() {
+    return this._valid ? hexString(this._rgb) : undefined;
+  }
+  hslString() {
+    return this._valid ? hslString(this._rgb) : undefined;
+  }
+  mix(color, weight) {
+    if (color) {
+      const c1 = this.rgb;
+      const c2 = color.rgb;
+      let w2;
+      const p = weight === w2 ? 0.5 : weight;
+      const w = 2 * p - 1;
+      const a = c1.a - c2.a;
+      const w1 = ((w * a === -1 ? w : (w + a) / (1 + w * a)) + 1) / 2.0;
+      w2 = 1 - w1;
+      c1.r = 0xFF & w1 * c1.r + w2 * c2.r + 0.5;
+      c1.g = 0xFF & w1 * c1.g + w2 * c2.g + 0.5;
+      c1.b = 0xFF & w1 * c1.b + w2 * c2.b + 0.5;
+      c1.a = p * c1.a + (1 - p) * c2.a;
+      this.rgb = c1;
+    }
+    return this;
+  }
+  interpolate(color, t) {
+    if (color) {
+      this._rgb = interpolate(this._rgb, color._rgb, t);
+    }
+    return this;
+  }
+  clone() {
+    return new Color(this.rgb);
+  }
+  alpha(a) {
+    this._rgb.a = n2b(a);
+    return this;
+  }
+  clearer(ratio) {
+    const rgb = this._rgb;
+    rgb.a *= 1 - ratio;
+    return this;
+  }
+  greyscale() {
+    const rgb = this._rgb;
+    const val = round(rgb.r * 0.3 + rgb.g * 0.59 + rgb.b * 0.11);
+    rgb.r = rgb.g = rgb.b = val;
+    return this;
+  }
+  opaquer(ratio) {
+    const rgb = this._rgb;
+    rgb.a *= 1 + ratio;
+    return this;
+  }
+  negate() {
+    const v = this._rgb;
+    v.r = 255 - v.r;
+    v.g = 255 - v.g;
+    v.b = 255 - v.b;
+    return this;
+  }
+  lighten(ratio) {
+    modHSL(this._rgb, 2, ratio);
+    return this;
+  }
+  darken(ratio) {
+    modHSL(this._rgb, 2, -ratio);
+    return this;
+  }
+  saturate(ratio) {
+    modHSL(this._rgb, 1, ratio);
+    return this;
+  }
+  desaturate(ratio) {
+    modHSL(this._rgb, 1, -ratio);
+    return this;
+  }
+  rotate(deg) {
+    rotate(this._rgb, deg);
+    return this;
+  }
+}
+
 /*!
  * Chart.js v4.5.1
  * https://www.chartjs.org
  * (c) 2025 Chart.js Contributors
  * Released under the MIT License
- */function E(){}const j=(()=>{let t=0;return()=>t++})();function F(t){return null==t}function L(t){if(Array.isArray&&Array.isArray(t))return!0;const e=Object.prototype.toString.call(t);return"[object"===e.slice(0,7)&&"Array]"===e.slice(-6)}function P(t){return null!==t&&"[object Object]"===Object.prototype.toString.call(t)}function N(t){return("number"==typeof t||t instanceof Number)&&isFinite(+t)}function T(t,e){return N(t)?t:e}function I(t,e){return void 0===t?e:t}const B=(t,e)=>"string"==typeof t&&t.endsWith("%")?parseFloat(t)/100*e:+t;function z(t,e,i){if(t&&"function"==typeof t.call)return t.apply(i,e)}function W(t,e,i){let s,n,r;if(L(t))for(n=t.length,s=0;s<n;s++)e.call(i,t[s],s);else if(P(t))for(r=Object.keys(t),n=r.length,s=0;s<n;s++)e.call(i,t[r[s]],r[s])}function Y(t,e){let i,s,n,r;if(!t||!e||t.length!==e.length)return!1;for(i=0,s=t.length;i<s;++i)if(n=t[i],r=e[i],n.datasetIndex!==r.datasetIndex||n.index!==r.index)return!1;return!0}function $(t){if(L(t))return t.map($);if(P(t)){const e=Object.create(null),i=Object.keys(t),s=i.length;let n=0;for(;n<s;++n)e[i[n]]=$(t[i[n]]);return e}return t}function H(t){return-1===["__proto__","prototype","constructor"].indexOf(t)}function V(t,e,i,s){if(!H(t))return;const n=e[t],r=i[t];P(n)&&P(r)?X(n,r,s):e[t]=$(r)}function X(t,e,i){const s=L(e)?e:[e],n=s.length;if(!P(t))return t;const r=(i=i||{}).merger||V;let o;for(let e=0;e<n;++e){if(o=s[e],!P(o))continue;const n=Object.keys(o);for(let e=0,s=n.length;e<s;++e)r(n[e],t,o,i)}return t}function U(t,e){return X(t,e,{merger:Z})}function Z(t,e,i){if(!H(t))return;const s=e[t],n=i[t];P(s)&&P(n)?U(s,n):Object.prototype.hasOwnProperty.call(e,t)||(e[t]=$(n))}const K={"":t=>t,x:t=>t.x,y:t=>t.y};function Q(t,e){const i=K[e]||(K[e]=function(t){const e=function(t){const e=t.split("."),i=[];let s="";for(const t of e)s+=t,s.endsWith("\\")?s=s.slice(0,-1)+".":(i.push(s),s="");return i}(t);return t=>{for(const i of e){if(""===i)break;t=t&&t[i]}return t}}(e));return i(t)}function q(t){return t.charAt(0).toUpperCase()+t.slice(1)}const J=t=>void 0!==t,G=t=>"function"==typeof t,tt=(t,e)=>{if(t.size!==e.size)return!1;for(const i of t)if(!e.has(i))return!1;return!0},et=Math.PI,it=2*et,st=it+et,nt=Number.POSITIVE_INFINITY,rt=et/180,ot=et/2,ht=et/4,at=2*et/3,ct=Math.log10,ut=Math.sign;function lt(t,e,i){return Math.abs(t-e)<i}function ft(t){const e=Math.round(t);t=lt(t,e,t/1e3)?e:t;const i=Math.pow(10,Math.floor(ct(t))),s=t/i;return(s<=1?1:s<=2?2:s<=5?5:10)*i}function dt(t){return!function(t){return"symbol"==typeof t||"object"==typeof t&&null!==t&&!(Symbol.toPrimitive in t||"toString"in t||"valueOf"in t)}(t)&&!isNaN(parseFloat(t))&&isFinite(t)}function pt(t){return t*(et/180)}function bt(t){if(!N(t))return;let e=1,i=0;for(;Math.round(t*e)/e!==t;)e*=10,i++;return i}function gt(t,e){const i=e.x-t.x,s=e.y-t.y,n=Math.sqrt(i*i+s*s);let r=Math.atan2(s,i);return r<-.5*et&&(r+=it),{angle:r,distance:n}}function mt(t,e){return Math.sqrt(Math.pow(e.x-t.x,2)+Math.pow(e.y-t.y,2))}function xt(t,e){return(t-e+st)%it-et}function vt(t){return(t%it+it)%it}function yt(t,e,i,s){const n=vt(t),r=vt(e),o=vt(i),h=vt(r-n),a=vt(o-n),c=vt(n-r),u=vt(n-o);return n===r||n===o||s&&r===o||h>a&&c<u}function Mt(t,e,i){return Math.max(e,Math.min(i,t))}function wt(t,e,i,s=1e-6){return t>=Math.min(e,i)-s&&t<=Math.max(e,i)+s}function _t(t,e,i){i=i||(i=>t[i]<e);let s,n=t.length-1,r=0;for(;n-r>1;)s=r+n>>1,i(s)?r=s:n=s;return{lo:r,hi:n}}const kt=(t,e,i,s)=>_t(t,i,s?s=>{const n=t[s][e];return n<i||n===i&&t[s+1][e]===i}:s=>t[s][e]<i),Ot=(t,e,i)=>_t(t,i,(s=>t[s][e]>=i)),St=["push","pop","shift","splice","unshift"];function At(t,e){const i=t._chartjs;if(!i)return;const s=i.listeners,n=s.indexOf(e);-1!==n&&s.splice(n,1),s.length>0||(St.forEach((e=>{delete t[e]})),delete t._chartjs)}function Dt(t){const e=new Set(t);return e.size===t.length?t:Array.from(e)}const Ct="undefined"==typeof window?function(t){return t()}:window.requestAnimationFrame;function Rt(t,e){let i=[],s=!1;return function(...n){i=n,s||(s=!0,Ct.call(window,(()=>{s=!1,t.apply(e,i)})))}}const Et=t=>"start"===t?"left":"end"===t?"right":"center",jt=(t,e,i)=>"start"===t?e:"end"===t?i:(e+i)/2,Ft=t=>0===t||1===t,Lt=(t,e,i)=>-Math.pow(2,10*(t-=1))*Math.sin((t-e)*it/i),Pt=(t,e,i)=>Math.pow(2,-10*t)*Math.sin((t-e)*it/i)+1,Nt={linear:t=>t,easeInQuad:t=>t*t,easeOutQuad:t=>-t*(t-2),easeInOutQuad:t=>(t/=.5)<1?.5*t*t:-.5*(--t*(t-2)-1),easeInCubic:t=>t*t*t,easeOutCubic:t=>(t-=1)*t*t+1,easeInOutCubic:t=>(t/=.5)<1?.5*t*t*t:.5*((t-=2)*t*t+2),easeInQuart:t=>t*t*t*t,easeOutQuart:t=>-((t-=1)*t*t*t-1),easeInOutQuart:t=>(t/=.5)<1?.5*t*t*t*t:-.5*((t-=2)*t*t*t-2),easeInQuint:t=>t*t*t*t*t,easeOutQuint:t=>(t-=1)*t*t*t*t+1,easeInOutQuint:t=>(t/=.5)<1?.5*t*t*t*t*t:.5*((t-=2)*t*t*t*t+2),easeInSine:t=>1-Math.cos(t*ot),easeOutSine:t=>Math.sin(t*ot),easeInOutSine:t=>-.5*(Math.cos(et*t)-1),easeInExpo:t=>0===t?0:Math.pow(2,10*(t-1)),easeOutExpo:t=>1===t?1:1-Math.pow(2,-10*t),easeInOutExpo:t=>Ft(t)?t:t<.5?.5*Math.pow(2,10*(2*t-1)):.5*(2-Math.pow(2,-10*(2*t-1))),easeInCirc:t=>t>=1?t:-(Math.sqrt(1-t*t)-1),easeOutCirc:t=>Math.sqrt(1-(t-=1)*t),easeInOutCirc:t=>(t/=.5)<1?-.5*(Math.sqrt(1-t*t)-1):.5*(Math.sqrt(1-(t-=2)*t)+1),easeInElastic:t=>Ft(t)?t:Lt(t,.075,.3),easeOutElastic:t=>Ft(t)?t:Pt(t,.075,.3),easeInOutElastic(t){const e=.1125;return Ft(t)?t:t<.5?.5*Lt(2*t,e,.45):.5+.5*Pt(2*t-1,e,.45)},easeInBack(t){const e=1.70158;return t*t*((e+1)*t-e)},easeOutBack(t){const e=1.70158;return(t-=1)*t*((e+1)*t+e)+1},easeInOutBack(t){let e=1.70158;return(t/=.5)<1?t*t*((1+(e*=1.525))*t-e)*.5:.5*((t-=2)*t*((1+(e*=1.525))*t+e)+2)},easeInBounce:t=>1-Nt.easeOutBounce(1-t),easeOutBounce(t){const e=7.5625,i=2.75;return t<1/i?e*t*t:t<2/i?e*(t-=1.5/i)*t+.75:t<2.5/i?e*(t-=2.25/i)*t+.9375:e*(t-=2.625/i)*t+.984375},easeInOutBounce:t=>t<.5?.5*Nt.easeInBounce(2*t):.5*Nt.easeOutBounce(2*t-1)+.5};function Tt(t){if(t&&"object"==typeof t){const e=t.toString();return"[object CanvasPattern]"===e||"[object CanvasGradient]"===e}return!1}function It(t){return Tt(t)?t:new R(t)}function Bt(t){return Tt(t)?t:new R(t).saturate(.5).darken(.1).hexString()}const zt=["x","y","borderWidth","radius","tension"],Wt=["color","borderColor","backgroundColor"],Yt=new Map;function $t(t,e,i){return function(t,e){e=e||{};const i=t+JSON.stringify(e);let s=Yt.get(i);return s||(s=new Intl.NumberFormat(t,e),Yt.set(i,s)),s}(e,i).format(t)}var Ht={formatters:{values:t=>L(t)?t:""+t,numeric(t,e,i){if(0===t)return"0";const s=this.chart.options.locale;let n,r=t;if(i.length>1){const e=Math.max(Math.abs(i[0].value),Math.abs(i[i.length-1].value));(e<1e-4||e>1e15)&&(n="scientific"),r=function(t,e){let i=e.length>3?e[2].value-e[1].value:e[1].value-e[0].value;return Math.abs(i)>=1&&t!==Math.floor(t)&&(i=t-Math.floor(t)),i}(t,i)}const o=ct(Math.abs(r)),h=isNaN(o)?1:Math.max(Math.min(-1*Math.floor(o),20),0),a={notation:n,minimumFractionDigits:h,maximumFractionDigits:h};return Object.assign(a,this.options.ticks.format),$t(t,s,a)}}};const Vt=Object.create(null),Xt=Object.create(null);function Ut(t,e){if(!e)return t;const i=e.split(".");for(let e=0,s=i.length;e<s;++e){const s=i[e];t=t[s]||(t[s]=Object.create(null))}return t}function Zt(t,e,i){return"string"==typeof e?X(Ut(t,e),i):X(Ut(t,""),e)}class Kt{constructor(t,e){this.animation=void 0,this.backgroundColor="rgba(0,0,0,0.1)",this.borderColor="rgba(0,0,0,0.1)",this.color="#666",this.datasets={},this.devicePixelRatio=t=>t.chart.platform.getDevicePixelRatio(),this.elements={},this.events=["mousemove","mouseout","click","touchstart","touchmove"],this.font={family:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",size:12,style:"normal",lineHeight:1.2,weight:null},this.hover={},this.hoverBackgroundColor=(t,e)=>Bt(e.backgroundColor),this.hoverBorderColor=(t,e)=>Bt(e.borderColor),this.hoverColor=(t,e)=>Bt(e.color),this.indexAxis="x",this.interaction={mode:"nearest",intersect:!0,includeInvisible:!1},this.maintainAspectRatio=!0,this.onHover=null,this.onClick=null,this.parsing=!0,this.plugins={},this.responsive=!0,this.scale=void 0,this.scales={},this.showLine=!0,this.drawActiveElementsOnTop=!0,this.describe(t),this.apply(e)}set(t,e){return Zt(this,t,e)}get(t){return Ut(this,t)}describe(t,e){return Zt(Xt,t,e)}override(t,e){return Zt(Vt,t,e)}route(t,e,i,s){const n=Ut(this,t),r=Ut(this,i),o="_"+e;Object.defineProperties(n,{[o]:{value:n[e],writable:!0},[e]:{enumerable:!0,get(){const t=this[o],e=r[s];return P(t)?Object.assign({},e,t):I(t,e)},set(t){this[o]=t}}})}apply(t){t.forEach((t=>t(this)))}}var Qt=new Kt({_scriptable:t=>!t.startsWith("on"),_indexable:t=>"events"!==t,hover:{_fallback:"interaction"},interaction:{_scriptable:!1,_indexable:!1}},[function(t){t.set("animation",{delay:void 0,duration:1e3,easing:"easeOutQuart",fn:void 0,from:void 0,loop:void 0,to:void 0,type:void 0}),t.describe("animation",{_fallback:!1,_indexable:!1,_scriptable:t=>"onProgress"!==t&&"onComplete"!==t&&"fn"!==t}),t.set("animations",{colors:{type:"color",properties:Wt},numbers:{type:"number",properties:zt}}),t.describe("animations",{_fallback:"animation"}),t.set("transitions",{active:{animation:{duration:400}},resize:{animation:{duration:0}},show:{animations:{colors:{from:"transparent"},visible:{type:"boolean",duration:0}}},hide:{animations:{colors:{to:"transparent"},visible:{type:"boolean",easing:"linear",fn:t=>0|t}}}})},function(t){t.set("layout",{autoPadding:!0,padding:{top:0,right:0,bottom:0,left:0}})},function(t){t.set("scale",{display:!0,offset:!1,reverse:!1,beginAtZero:!1,bounds:"ticks",clip:!0,grace:0,grid:{display:!0,lineWidth:1,drawOnChartArea:!0,drawTicks:!0,tickLength:8,tickWidth:(t,e)=>e.lineWidth,tickColor:(t,e)=>e.color,offset:!1},border:{display:!0,dash:[],dashOffset:0,width:1},title:{display:!1,text:"",padding:{top:4,bottom:4}},ticks:{minRotation:0,maxRotation:50,mirror:!1,textStrokeWidth:0,textStrokeColor:"",padding:3,display:!0,autoSkip:!0,autoSkipPadding:3,labelOffset:0,callback:Ht.formatters.values,minor:{},major:{},align:"center",crossAlign:"near",showLabelBackdrop:!1,backdropColor:"rgba(255, 255, 255, 0.75)",backdropPadding:2}}),t.route("scale.ticks","color","","color"),t.route("scale.grid","color","","borderColor"),t.route("scale.border","color","","borderColor"),t.route("scale.title","color","","color"),t.describe("scale",{_fallback:!1,_scriptable:t=>!t.startsWith("before")&&!t.startsWith("after")&&"callback"!==t&&"parser"!==t,_indexable:t=>"borderDash"!==t&&"tickBorderDash"!==t&&"dash"!==t}),t.describe("scales",{_fallback:"scale"}),t.describe("scale.ticks",{_scriptable:t=>"backdropPadding"!==t&&"callback"!==t,_indexable:t=>"backdropPadding"!==t})}]);function qt(t,e,i,s,n){let r=e[n];return r||(r=e[n]=t.measureText(n).width,i.push(n)),r>s&&(s=r),s}function Jt(t,e,i){const s=t.currentDevicePixelRatio,n=0!==i?Math.max(i/2,.5):0;return Math.round((e-n)*s)/s+n}function Gt(t,e){(e||t)&&((e=e||t.getContext("2d")).save(),e.resetTransform(),e.clearRect(0,0,t.width,t.height),e.restore())}function te(t,e,i,s){ee(t,e,i,s,null)}function ee(t,e,i,s,n){let r,o,h,a,c,u,l,f;const d=e.pointStyle,p=e.rotation,b=e.radius;let g=(p||0)*rt;if(d&&"object"==typeof d&&(r=d.toString(),"[object HTMLImageElement]"===r||"[object HTMLCanvasElement]"===r))return t.save(),t.translate(i,s),t.rotate(g),t.drawImage(d,-d.width/2,-d.height/2,d.width,d.height),void t.restore();if(!(isNaN(b)||b<=0)){switch(t.beginPath(),d){default:n?t.ellipse(i,s,n/2,b,0,0,it):t.arc(i,s,b,0,it),t.closePath();break;case"triangle":u=n?n/2:b,t.moveTo(i+Math.sin(g)*u,s-Math.cos(g)*b),g+=at,t.lineTo(i+Math.sin(g)*u,s-Math.cos(g)*b),g+=at,t.lineTo(i+Math.sin(g)*u,s-Math.cos(g)*b),t.closePath();break;case"rectRounded":c=.516*b,a=b-c,o=Math.cos(g+ht)*a,l=Math.cos(g+ht)*(n?n/2-c:a),h=Math.sin(g+ht)*a,f=Math.sin(g+ht)*(n?n/2-c:a),t.arc(i-l,s-h,c,g-et,g-ot),t.arc(i+f,s-o,c,g-ot,g),t.arc(i+l,s+h,c,g,g+ot),t.arc(i-f,s+o,c,g+ot,g+et),t.closePath();break;case"rect":if(!p){a=Math.SQRT1_2*b,u=n?n/2:a,t.rect(i-u,s-a,2*u,2*a);break}g+=ht;case"rectRot":l=Math.cos(g)*(n?n/2:b),o=Math.cos(g)*b,h=Math.sin(g)*b,f=Math.sin(g)*(n?n/2:b),t.moveTo(i-l,s-h),t.lineTo(i+f,s-o),t.lineTo(i+l,s+h),t.lineTo(i-f,s+o),t.closePath();break;case"crossRot":g+=ht;case"cross":l=Math.cos(g)*(n?n/2:b),o=Math.cos(g)*b,h=Math.sin(g)*b,f=Math.sin(g)*(n?n/2:b),t.moveTo(i-l,s-h),t.lineTo(i+l,s+h),t.moveTo(i+f,s-o),t.lineTo(i-f,s+o);break;case"star":l=Math.cos(g)*(n?n/2:b),o=Math.cos(g)*b,h=Math.sin(g)*b,f=Math.sin(g)*(n?n/2:b),t.moveTo(i-l,s-h),t.lineTo(i+l,s+h),t.moveTo(i+f,s-o),t.lineTo(i-f,s+o),g+=ht,l=Math.cos(g)*(n?n/2:b),o=Math.cos(g)*b,h=Math.sin(g)*b,f=Math.sin(g)*(n?n/2:b),t.moveTo(i-l,s-h),t.lineTo(i+l,s+h),t.moveTo(i+f,s-o),t.lineTo(i-f,s+o);break;case"line":o=n?n/2:Math.cos(g)*b,h=Math.sin(g)*b,t.moveTo(i-o,s-h),t.lineTo(i+o,s+h);break;case"dash":t.moveTo(i,s),t.lineTo(i+Math.cos(g)*(n?n/2:b),s+Math.sin(g)*b);break;case!1:t.closePath()}t.fill(),e.borderWidth>0&&t.stroke()}}function ie(t,e,i){return i=i||.5,!e||t&&t.x>e.left-i&&t.x<e.right+i&&t.y>e.top-i&&t.y<e.bottom+i}function se(t,e){t.save(),t.beginPath(),t.rect(e.left,e.top,e.right-e.left,e.bottom-e.top),t.clip()}function ne(t){t.restore()}function re(t,e,i,s,n){if(!e)return t.lineTo(i.x,i.y);if("middle"===n){const s=(e.x+i.x)/2;t.lineTo(s,e.y),t.lineTo(s,i.y)}else"after"===n!=!!s?t.lineTo(e.x,i.y):t.lineTo(i.x,e.y);t.lineTo(i.x,i.y)}function oe(t,e,i,s){if(!e)return t.lineTo(i.x,i.y);t.bezierCurveTo(s?e.cp1x:e.cp2x,s?e.cp1y:e.cp2y,s?i.cp2x:i.cp1x,s?i.cp2y:i.cp1y,i.x,i.y)}function he(t,e,i,s,n){if(n.strikethrough||n.underline){const r=t.measureText(s),o=e-r.actualBoundingBoxLeft,h=e+r.actualBoundingBoxRight,a=i+r.actualBoundingBoxDescent,c=n.strikethrough?(i-r.actualBoundingBoxAscent+a)/2:a;t.strokeStyle=t.fillStyle,t.beginPath(),t.lineWidth=n.decorationWidth||2,t.moveTo(o,c),t.lineTo(h,c),t.stroke()}}function ae(t,e){const i=t.fillStyle;t.fillStyle=e.color,t.fillRect(e.left,e.top,e.width,e.height),t.fillStyle=i}function ce(t,e,i,s,n,r={}){const o=L(e)?e:[e],h=r.strokeWidth>0&&""!==r.strokeColor;let a,c;for(t.save(),t.font=n.string,function(t,e){e.translation&&t.translate(e.translation[0],e.translation[1]),F(e.rotation)||t.rotate(e.rotation),e.color&&(t.fillStyle=e.color),e.textAlign&&(t.textAlign=e.textAlign),e.textBaseline&&(t.textBaseline=e.textBaseline)}(t,r),a=0;a<o.length;++a)c=o[a],r.backdrop&&ae(t,r.backdrop),h&&(r.strokeColor&&(t.strokeStyle=r.strokeColor),F(r.strokeWidth)||(t.lineWidth=r.strokeWidth),t.strokeText(c,i,s,r.maxWidth)),t.fillText(c,i,s,r.maxWidth),he(t,i,s,c,r),s+=Number(n.lineHeight);t.restore()}function ue(t,e){const{x:i,y:s,w:n,h:r,radius:o}=e;t.arc(i+o.topLeft,s+o.topLeft,o.topLeft,1.5*et,et,!0),t.lineTo(i,s+r-o.bottomLeft),t.arc(i+o.bottomLeft,s+r-o.bottomLeft,o.bottomLeft,et,ot,!0),t.lineTo(i+n-o.bottomRight,s+r),t.arc(i+n-o.bottomRight,s+r-o.bottomRight,o.bottomRight,ot,0,!0),t.lineTo(i+n,s+o.topRight),t.arc(i+n-o.topRight,s+o.topRight,o.topRight,0,-ot,!0),t.lineTo(i+o.topLeft,s)}const le=/^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/,fe=/^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/;function de(t,e){const i=(""+t).match(le);if(!i||"normal"===i[1])return 1.2*e;switch(t=+i[2],i[3]){case"px":return t;case"%":t/=100}return e*t}function pe(t,e){const i={},s=P(e),n=s?Object.keys(e):e,r=P(t)?s?i=>I(t[i],t[e[i]]):e=>t[e]:()=>t;for(const t of n)i[t]=+r(t)||0;return i}function be(t){return pe(t,{top:"y",right:"x",bottom:"y",left:"x"})}function ge(t){return pe(t,["topLeft","topRight","bottomLeft","bottomRight"])}function me(t){const e=be(t);return e.width=e.left+e.right,e.height=e.top+e.bottom,e}function xe(t,e){let i=I((t=t||{}).size,(e=e||Qt.font).size);"string"==typeof i&&(i=parseInt(i,10));let s=I(t.style,e.style);s&&!(""+s).match(fe)&&(console.warn('Invalid font style specified: "'+s+'"'),s=void 0);const n={family:I(t.family,e.family),lineHeight:de(I(t.lineHeight,e.lineHeight),i),size:i,style:s,weight:I(t.weight,e.weight),string:""};return n.string=function(t){return!t||F(t.size)||F(t.family)?null:(t.style?t.style+" ":"")+(t.weight?t.weight+" ":"")+t.size+"px "+t.family}(n),n}function ve(t){let e,i,s;for(e=0,i=t.length;e<i;++e)if(s=t[e],void 0!==s&&void 0!==s)return s}function ye(t,e){return Object.assign(Object.create(t),e)}function Me(t,e=[""],i,s,n=()=>t[0]){const r=i||t;void 0===s&&(s=je("_fallback",t));const o={[Symbol.toStringTag]:"Object",_cacheable:!0,_scopes:t,_rootScopes:r,_fallback:s,_getTarget:n,override:i=>Me([i,...t],e,r,s)};return new Proxy(o,{deleteProperty:(e,i)=>(delete e[i],delete e._keys,delete t[0][i],!0),get:(i,s)=>Se(i,s,(()=>function(t,e,i,s){let n;for(const r of e)if(n=je(ke(r,t),i),void 0!==n)return Oe(t,n)?Re(i,s,t,n):n}(s,e,t,i))),getOwnPropertyDescriptor:(t,e)=>Reflect.getOwnPropertyDescriptor(t._scopes[0],e),getPrototypeOf:()=>Reflect.getPrototypeOf(t[0]),has:(t,e)=>Fe(t).includes(e),ownKeys:t=>Fe(t),set(t,e,i){const s=t._storage||(t._storage=n());return t[e]=s[e]=i,delete t._keys,!0}})}function we(t,e,i,s){const n={_cacheable:!1,_proxy:t,_context:e,_subProxy:i,_stack:new Set,_descriptors:_e(t,s),setContext:e=>we(t,e,i,s),override:n=>we(t.override(n),e,i,s)};return new Proxy(n,{deleteProperty:(e,i)=>(delete e[i],delete t[i],!0),get:(t,e,i)=>Se(t,e,(()=>function(t,e,i){const{_proxy:s,_context:n,_subProxy:r,_descriptors:o}=t;let h=s[e];return G(h)&&o.isScriptable(e)&&(h=function(t,e,i,s){const{_proxy:n,_context:r,_subProxy:o,_stack:h}=i;if(h.has(t))throw new Error("Recursion detected: "+Array.from(h).join("->")+"->"+t);h.add(t);let a=e(r,o||s);return h.delete(t),Oe(t,a)&&(a=Re(n._scopes,n,t,a)),a}(e,h,t,i)),L(h)&&h.length&&(h=function(t,e,i,s){const{_proxy:n,_context:r,_subProxy:o,_descriptors:h}=i;if(void 0!==r.index&&s(t))return e[r.index%e.length];if(P(e[0])){const i=e,s=n._scopes.filter((t=>t!==i));e=[];for(const a of i){const i=Re(s,n,t,a);e.push(we(i,r,o&&o[t],h))}}return e}(e,h,t,o.isIndexable)),Oe(e,h)&&(h=we(h,n,r&&r[e],o)),h}(t,e,i))),getOwnPropertyDescriptor:(e,i)=>e._descriptors.allKeys?Reflect.has(t,i)?{enumerable:!0,configurable:!0}:void 0:Reflect.getOwnPropertyDescriptor(t,i),getPrototypeOf:()=>Reflect.getPrototypeOf(t),has:(e,i)=>Reflect.has(t,i),ownKeys:()=>Reflect.ownKeys(t),set:(e,i,s)=>(t[i]=s,delete e[i],!0)})}function _e(t,e={scriptable:!0,indexable:!0}){const{_scriptable:i=e.scriptable,_indexable:s=e.indexable,_allKeys:n=e.allKeys}=t;return{allKeys:n,scriptable:i,indexable:s,isScriptable:G(i)?i:()=>i,isIndexable:G(s)?s:()=>s}}const ke=(t,e)=>t?t+q(e):e,Oe=(t,e)=>P(e)&&"adapters"!==t&&(null===Object.getPrototypeOf(e)||e.constructor===Object);function Se(t,e,i){if(Object.prototype.hasOwnProperty.call(t,e)||"constructor"===e)return t[e];const s=i();return t[e]=s,s}function Ae(t,e,i){return G(t)?t(e,i):t}const De=(t,e)=>!0===t?e:"string"==typeof t?Q(e,t):void 0;function Ce(t,e,i,s,n){for(const r of e){const e=De(i,r);if(e){t.add(e);const r=Ae(e._fallback,i,n);if(void 0!==r&&r!==i&&r!==s)return r}else if(!1===e&&void 0!==s&&i!==s)return null}return!1}function Re(t,e,i,s){const n=e._rootScopes,r=Ae(e._fallback,i,s),o=[...t,...n],h=new Set;h.add(s);let a=Ee(h,o,i,r||i,s);return null!==a&&(void 0===r||r===i||(a=Ee(h,o,r,a,s),null!==a))&&Me(Array.from(h),[""],n,r,(()=>function(t,e,i){const s=t._getTarget();e in s||(s[e]={});const n=s[e];return L(n)&&P(i)?i:n||{}}(e,i,s)))}function Ee(t,e,i,s,n){for(;i;)i=Ce(t,e,i,s,n);return i}function je(t,e){for(const i of e){if(!i)continue;const e=i[t];if(void 0!==e)return e}}function Fe(t){let e=t._keys;return e||(e=t._keys=function(t){const e=new Set;for(const i of t)for(const t of Object.keys(i).filter((t=>!t.startsWith("_"))))e.add(t);return Array.from(e)}(t._scopes)),e}function Le(t,e,i,s){const{iScale:n}=t,{key:r="r"}=this._parsing,o=new Array(s);let h,a,c,u;for(h=0,a=s;h<a;++h)c=h+i,u=e[c],o[h]={r:n.parse(Q(u,r),c)};return o}const Pe=Number.EPSILON||1e-14,Ne=(t,e)=>e<t.length&&!t[e].skip&&t[e],Te=t=>"x"===t?"y":"x";function Ie(t,e,i,s){const n=t.skip?e:t,r=e,o=i.skip?e:i,h=mt(r,n),a=mt(o,r);let c=h/(h+a),u=a/(h+a);c=isNaN(c)?0:c,u=isNaN(u)?0:u;const l=s*c,f=s*u;return{previous:{x:r.x-l*(o.x-n.x),y:r.y-l*(o.y-n.y)},next:{x:r.x+f*(o.x-n.x),y:r.y+f*(o.y-n.y)}}}function Be(t,e,i){return Math.max(Math.min(t,i),e)}function ze(t,e,i,s,n){let r,o,h,a;if(e.spanGaps&&(t=t.filter((t=>!t.skip))),"monotone"===e.cubicInterpolationMode)!function(t,e="x"){const i=Te(e),s=t.length,n=Array(s).fill(0),r=Array(s);let o,h,a,c=Ne(t,0);for(o=0;o<s;++o)if(h=a,a=c,c=Ne(t,o+1),a){if(c){const t=c[e]-a[e];n[o]=0!==t?(c[i]-a[i])/t:0}r[o]=h?c?ut(n[o-1])!==ut(n[o])?0:(n[o-1]+n[o])/2:n[o-1]:n[o]}!function(t,e,i){const s=t.length;let n,r,o,h,a,c=Ne(t,0);for(let u=0;u<s-1;++u)a=c,c=Ne(t,u+1),a&&c&&(lt(e[u],0,Pe)?i[u]=i[u+1]=0:(n=i[u]/e[u],r=i[u+1]/e[u],h=Math.pow(n,2)+Math.pow(r,2),h<=9||(o=3/Math.sqrt(h),i[u]=n*o*e[u],i[u+1]=r*o*e[u])))}(t,n,r),function(t,e,i="x"){const s=Te(i),n=t.length;let r,o,h,a=Ne(t,0);for(let c=0;c<n;++c){if(o=h,h=a,a=Ne(t,c+1),!h)continue;const n=h[i],u=h[s];o&&(r=(n-o[i])/3,h[`cp1${i}`]=n-r,h[`cp1${s}`]=u-r*e[c]),a&&(r=(a[i]-n)/3,h[`cp2${i}`]=n+r,h[`cp2${s}`]=u+r*e[c])}}(t,r,e)}(t,n);else{let i=s?t[t.length-1]:t[0];for(r=0,o=t.length;r<o;++r)h=t[r],a=Ie(i,h,t[Math.min(r+1,o-(s?0:1))%o],e.tension),h.cp1x=a.previous.x,h.cp1y=a.previous.y,h.cp2x=a.next.x,h.cp2y=a.next.y,i=h}e.capBezierPoints&&function(t,e){let i,s,n,r,o,h=ie(t[0],e);for(i=0,s=t.length;i<s;++i)o=r,r=h,h=i<s-1&&ie(t[i+1],e),r&&(n=t[i],o&&(n.cp1x=Be(n.cp1x,e.left,e.right),n.cp1y=Be(n.cp1y,e.top,e.bottom)),h&&(n.cp2x=Be(n.cp2x,e.left,e.right),n.cp2y=Be(n.cp2y,e.top,e.bottom)))}(t,i)}function We(){return"undefined"!=typeof window&&"undefined"!=typeof document}function Ye(t){let e=t.parentNode;return e&&"[object ShadowRoot]"===e.toString()&&(e=e.host),e}function $e(t,e,i){let s;return"string"==typeof t?(s=parseInt(t,10),-1!==t.indexOf("%")&&(s=s/100*e.parentNode[i])):s=t,s}const He=t=>t.ownerDocument.defaultView.getComputedStyle(t,null),Ve=["top","right","bottom","left"];function Xe(t,e,i){const s={};i=i?"-"+i:"";for(let n=0;n<4;n++){const r=Ve[n];s[r]=parseFloat(t[e+"-"+r+i])||0}return s.width=s.left+s.right,s.height=s.top+s.bottom,s}function Ue(t,e){if("native"in t)return t;const{canvas:i,currentDevicePixelRatio:s}=e,n=He(i),r="border-box"===n.boxSizing,o=Xe(n,"padding"),h=Xe(n,"border","width"),{x:a,y:c,box:u}=function(t,e){const i=t.touches,s=i&&i.length?i[0]:t,{offsetX:n,offsetY:r}=s;let o,h,a=!1;if(((t,e,i)=>(t>0||e>0)&&(!i||!i.shadowRoot))(n,r,t.target))o=n,h=r;else{const t=e.getBoundingClientRect();o=s.clientX-t.left,h=s.clientY-t.top,a=!0}return{x:o,y:h,box:a}}(t,i),l=o.left+(u&&h.left),f=o.top+(u&&h.top);let{width:d,height:p}=e;return r&&(d-=o.width+h.width,p-=o.height+h.height),{x:Math.round((a-l)/d*i.width/s),y:Math.round((c-f)/p*i.height/s)}}const Ze=t=>Math.round(10*t)/10;function Ke(t,e,i){const s=e||1,n=Ze(t.height*s),r=Ze(t.width*s);t.height=Ze(t.height),t.width=Ze(t.width);const o=t.canvas;return o.style&&(i||!o.style.height&&!o.style.width)&&(o.style.height=`${t.height}px`,o.style.width=`${t.width}px`),(t.currentDevicePixelRatio!==s||o.height!==n||o.width!==r)&&(t.currentDevicePixelRatio=s,o.height=n,o.width=r,t.ctx.setTransform(s,0,0,s,0,0),!0)}const Qe=function(){let t=!1;try{const e={get passive(){return t=!0,!1}};We()&&(window.addEventListener("test",null,e),window.removeEventListener("test",null,e))}catch(t){}return t}();function qe(t,e){const i=function(t,e){return He(t).getPropertyValue(e)}(t,e),s=i&&i.match(/^(\d+)(\.\d+)?px$/);return s?+s[1]:void 0}function Je(t,e,i){return{x:t.x+i*(e.x-t.x),y:t.y+i*(e.y-t.y)}}function Ge(t,e,i,s){return{x:t.x+i*(e.x-t.x),y:"middle"===s?i<.5?t.y:e.y:"after"===s?i<1?t.y:e.y:i>0?e.y:t.y}}function ti(t,e,i){const s={x:t.cp2x,y:t.cp2y},n={x:e.cp1x,y:e.cp1y},r=Je(t,s,i),o=Je(s,n,i),h=Je(n,e,i),a=Je(r,o,i),c=Je(o,h,i);return Je(a,c,i)}function ei(t,e,i){return t?function(t,e){return{x:i=>t+t+e-i,setWidth(t){e=t},textAlign:t=>"center"===t?t:"right"===t?"left":"right",xPlus:(t,e)=>t-e,leftForLtr:(t,e)=>t-e}}(e,i):{x:t=>t,setWidth(t){},textAlign:t=>t,xPlus:(t,e)=>t+e,leftForLtr:t=>t}}function ii(t,e){let i,s;"ltr"!==e&&"rtl"!==e||(i=t.canvas.style,s=[i.getPropertyValue("direction"),i.getPropertyPriority("direction")],i.setProperty("direction",e,"important"),t.prevTextDirection=s)}function si(t,e){void 0!==e&&(delete t.prevTextDirection,t.canvas.style.setProperty("direction",e[0],e[1]))}function ni(t){return"angle"===t?{between:yt,compare:xt,normalize:vt}:{between:wt,compare:(t,e)=>t-e,normalize:t=>t}}function ri({start:t,end:e,count:i,loop:s,style:n}){return{start:t%i,end:e%i,loop:s&&(e-t+1)%i==0,style:n}}function oi(t,e,i){if(!i)return[t];const{property:s,start:n,end:r}=i,o=e.length,{compare:h,between:a,normalize:c}=ni(s),{start:u,end:l,loop:f,style:d}=function(t,e,i){const{property:s,start:n,end:r}=i,{between:o,normalize:h}=ni(s),a=e.length;let c,u,{start:l,end:f,loop:d}=t;if(d){for(l+=a,f+=a,c=0,u=a;c<u&&o(h(e[l%a][s]),n,r);++c)l--,f--;l%=a,f%=a}return f<l&&(f+=a),{start:l,end:f,loop:d,style:t.style}}(t,e,i),p=[];let b,g,m,x=!1,v=null;for(let t=u,i=u;t<=l;++t)g=e[t%o],g.skip||(b=c(g[s]),b!==m&&(x=a(b,n,r),null===v&&(x||a(n,m,b)&&0!==h(n,m))&&(v=0===h(b,n)?t:i),null!==v&&(!x||0===h(r,b)||a(r,m,b))&&(p.push(ri({start:v,end:t,loop:f,count:o,style:d})),v=null),i=t,m=b));return null!==v&&p.push(ri({start:v,end:l,loop:f,count:o,style:d})),p}function hi(t,e){const i=[],s=t.segments;for(let n=0;n<s.length;n++){const r=oi(s[n],t.points,e);r.length&&i.push(...r)}return i}function ai(t){return{backgroundColor:t.backgroundColor,borderCapStyle:t.borderCapStyle,borderDash:t.borderDash,borderDashOffset:t.borderDashOffset,borderJoinStyle:t.borderJoinStyle,borderWidth:t.borderWidth,borderColor:t.borderColor}}function ci(t,e){if(!e)return!1;const i=[],s=function(t,e){return Tt(e)?(i.includes(e)||i.push(e),i.indexOf(e)):e};return JSON.stringify(t,s)!==JSON.stringify(e,s)}function ui(t,e,i){return t.options.clip?t[i]:e[i]}function li(t,e){const i=e._clip;if(i.disabled)return!1;const s=function(t,e){const{xScale:i,yScale:s}=t;return i&&s?{left:ui(i,e,"left"),right:ui(i,e,"right"),top:ui(s,e,"top"),bottom:ui(s,e,"bottom")}:e}(e,t.chartArea);return{left:!1===i.left?0:s.left-(!0===i.left?0:i.left),right:!1===i.right?t.width:s.right+(!0===i.right?0:i.right),top:!1===i.top?0:s.top-(!0===i.top?0:i.top),bottom:!1===i.bottom?t.height:s.bottom+(!0===i.bottom?0:i.bottom)}}
+ */
+
+/**
+ * @namespace Chart.helpers
+ */ /**
+ * An empty function that can be used, for example, for optional callback.
+ */ function noop() {
+/* noop */ }
+/**
+ * Returns a unique id, sequentially generated from a global variable.
+ */ const uid = (()=>{
+    let id = 0;
+    return ()=>id++;
+})();
+/**
+ * Returns true if `value` is neither null nor undefined, else returns false.
+ * @param value - The value to test.
+ * @since 2.7.0
+ */ function isNullOrUndef(value) {
+    return value === null || value === undefined;
+}
+/**
+ * Returns true if `value` is an array (including typed arrays), else returns false.
+ * @param value - The value to test.
+ * @function
+ */ function isArray(value) {
+    if (Array.isArray && Array.isArray(value)) {
+        return true;
+    }
+    const type = Object.prototype.toString.call(value);
+    if (type.slice(0, 7) === '[object' && type.slice(-6) === 'Array]') {
+        return true;
+    }
+    return false;
+}
+/**
+ * Returns true if `value` is an object (excluding null), else returns false.
+ * @param value - The value to test.
+ * @since 2.7.0
+ */ function isObject(value) {
+    return value !== null && Object.prototype.toString.call(value) === '[object Object]';
+}
+/**
+ * Returns true if `value` is a finite number, else returns false
+ * @param value  - The value to test.
+ */ function isNumberFinite(value) {
+    return (typeof value === 'number' || value instanceof Number) && isFinite(+value);
+}
+/**
+ * Returns `value` if finite, else returns `defaultValue`.
+ * @param value - The value to return if defined.
+ * @param defaultValue - The value to return if `value` is not finite.
+ */ function finiteOrDefault(value, defaultValue) {
+    return isNumberFinite(value) ? value : defaultValue;
+}
+/**
+ * Returns `value` if defined, else returns `defaultValue`.
+ * @param value - The value to return if defined.
+ * @param defaultValue - The value to return if `value` is undefined.
+ */ function valueOrDefault(value, defaultValue) {
+    return typeof value === 'undefined' ? defaultValue : value;
+}
+const toPercentage = (value, dimension)=>typeof value === 'string' && value.endsWith('%') ? parseFloat(value) / 100 : +value / dimension;
+const toDimension = (value, dimension)=>typeof value === 'string' && value.endsWith('%') ? parseFloat(value) / 100 * dimension : +value;
+/**
+ * Calls `fn` with the given `args` in the scope defined by `thisArg` and returns the
+ * value returned by `fn`. If `fn` is not a function, this method returns undefined.
+ * @param fn - The function to call.
+ * @param args - The arguments with which `fn` should be called.
+ * @param [thisArg] - The value of `this` provided for the call to `fn`.
+ */ function callback(fn, args, thisArg) {
+    if (fn && typeof fn.call === 'function') {
+        return fn.apply(thisArg, args);
+    }
+}
+function each(loopable, fn, thisArg, reverse) {
+    let i, len, keys;
+    if (isArray(loopable)) {
+        len = loopable.length;
+        {
+            for(i = 0; i < len; i++){
+                fn.call(thisArg, loopable[i], i);
+            }
+        }
+    } else if (isObject(loopable)) {
+        keys = Object.keys(loopable);
+        len = keys.length;
+        for(i = 0; i < len; i++){
+            fn.call(thisArg, loopable[keys[i]], keys[i]);
+        }
+    }
+}
+/**
+ * Returns true if the `a0` and `a1` arrays have the same content, else returns false.
+ * @param a0 - The array to compare
+ * @param a1 - The array to compare
+ * @private
+ */ function _elementsEqual(a0, a1) {
+    let i, ilen, v0, v1;
+    if (!a0 || !a1 || a0.length !== a1.length) {
+        return false;
+    }
+    for(i = 0, ilen = a0.length; i < ilen; ++i){
+        v0 = a0[i];
+        v1 = a1[i];
+        if (v0.datasetIndex !== v1.datasetIndex || v0.index !== v1.index) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Returns a deep copy of `source` without keeping references on objects and arrays.
+ * @param source - The value to clone.
+ */ function clone(source) {
+    if (isArray(source)) {
+        return source.map(clone);
+    }
+    if (isObject(source)) {
+        const target = Object.create(null);
+        const keys = Object.keys(source);
+        const klen = keys.length;
+        let k = 0;
+        for(; k < klen; ++k){
+            target[keys[k]] = clone(source[keys[k]]);
+        }
+        return target;
+    }
+    return source;
+}
+function isValidKey(key) {
+    return [
+        '__proto__',
+        'prototype',
+        'constructor'
+    ].indexOf(key) === -1;
+}
+/**
+ * The default merger when Chart.helpers.merge is called without merger option.
+ * Note(SB): also used by mergeConfig and mergeScaleConfig as fallback.
+ * @private
+ */ function _merger(key, target, source, options) {
+    if (!isValidKey(key)) {
+        return;
+    }
+    const tval = target[key];
+    const sval = source[key];
+    if (isObject(tval) && isObject(sval)) {
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        merge(tval, sval, options);
+    } else {
+        target[key] = clone(sval);
+    }
+}
+function merge(target, source, options) {
+    const sources = isArray(source) ? source : [
+        source
+    ];
+    const ilen = sources.length;
+    if (!isObject(target)) {
+        return target;
+    }
+    options = options || {};
+    const merger = options.merger || _merger;
+    let current;
+    for(let i = 0; i < ilen; ++i){
+        current = sources[i];
+        if (!isObject(current)) {
+            continue;
+        }
+        const keys = Object.keys(current);
+        for(let k = 0, klen = keys.length; k < klen; ++k){
+            merger(keys[k], target, current, options);
+        }
+    }
+    return target;
+}
+function mergeIf(target, source) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    return merge(target, source, {
+        merger: _mergerIf
+    });
+}
+/**
+ * Merges source[key] in target[key] only if target[key] is undefined.
+ * @private
+ */ function _mergerIf(key, target, source) {
+    if (!isValidKey(key)) {
+        return;
+    }
+    const tval = target[key];
+    const sval = source[key];
+    if (isObject(tval) && isObject(sval)) {
+        mergeIf(tval, sval);
+    } else if (!Object.prototype.hasOwnProperty.call(target, key)) {
+        target[key] = clone(sval);
+    }
+}
+// resolveObjectKey resolver cache
+const keyResolvers = {
+    // Chart.helpers.core resolveObjectKey should resolve empty key to root object
+    '': (v)=>v,
+    // default resolvers
+    x: (o)=>o.x,
+    y: (o)=>o.y
+};
+/**
+ * @private
+ */ function _splitKey(key) {
+    const parts = key.split('.');
+    const keys = [];
+    let tmp = '';
+    for (const part of parts){
+        tmp += part;
+        if (tmp.endsWith('\\')) {
+            tmp = tmp.slice(0, -1) + '.';
+        } else {
+            keys.push(tmp);
+            tmp = '';
+        }
+    }
+    return keys;
+}
+function _getKeyResolver(key) {
+    const keys = _splitKey(key);
+    return (obj)=>{
+        for (const k of keys){
+            if (k === '') {
+                break;
+            }
+            obj = obj && obj[k];
+        }
+        return obj;
+    };
+}
+function resolveObjectKey(obj, key) {
+    const resolver = keyResolvers[key] || (keyResolvers[key] = _getKeyResolver(key));
+    return resolver(obj);
+}
+/**
+ * @private
+ */ function _capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+const defined = (value)=>typeof value !== 'undefined';
+const isFunction = (value)=>typeof value === 'function';
+// Adapted from https://stackoverflow.com/questions/31128855/comparing-ecma6-sets-for-equality#31129384
+const setsEqual = (a, b)=>{
+    if (a.size !== b.size) {
+        return false;
+    }
+    for (const item of a){
+        if (!b.has(item)) {
+            return false;
+        }
+    }
+    return true;
+};
+/**
+ * @param e - The event
+ * @private
+ */ function _isClickEvent(e) {
+    return e.type === 'mouseup' || e.type === 'click' || e.type === 'contextmenu';
+}
+
+/**
+ * @alias Chart.helpers.math
+ * @namespace
+ */ const PI = Math.PI;
+const TAU = 2 * PI;
+const PITAU = TAU + PI;
+const INFINITY = Number.POSITIVE_INFINITY;
+const RAD_PER_DEG = PI / 180;
+const HALF_PI = PI / 2;
+const QUARTER_PI = PI / 4;
+const TWO_THIRDS_PI = PI * 2 / 3;
+const log10 = Math.log10;
+const sign = Math.sign;
+function almostEquals(x, y, epsilon) {
+    return Math.abs(x - y) < epsilon;
+}
+/**
+ * Implementation of the nice number algorithm used in determining where axis labels will go
+ */ function niceNum(range) {
+    const roundedRange = Math.round(range);
+    range = almostEquals(range, roundedRange, range / 1000) ? roundedRange : range;
+    const niceRange = Math.pow(10, Math.floor(log10(range)));
+    const fraction = range / niceRange;
+    const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+    return niceFraction * niceRange;
+}
+/**
+ * Returns an array of factors sorted from 1 to sqrt(value)
+ * @private
+ */ function _factorize(value) {
+    const result = [];
+    const sqrt = Math.sqrt(value);
+    let i;
+    for(i = 1; i < sqrt; i++){
+        if (value % i === 0) {
+            result.push(i);
+            result.push(value / i);
+        }
+    }
+    if (sqrt === (sqrt | 0)) {
+        result.push(sqrt);
+    }
+    result.sort((a, b)=>a - b).pop();
+    return result;
+}
+/**
+ * Verifies that attempting to coerce n to string or number won't throw a TypeError.
+ */ function isNonPrimitive(n) {
+    return typeof n === 'symbol' || typeof n === 'object' && n !== null && !(Symbol.toPrimitive in n || 'toString' in n || 'valueOf' in n);
+}
+function isNumber(n) {
+    return !isNonPrimitive(n) && !isNaN(parseFloat(n)) && isFinite(n);
+}
+function almostWhole(x, epsilon) {
+    const rounded = Math.round(x);
+    return rounded - epsilon <= x && rounded + epsilon >= x;
+}
+/**
+ * @private
+ */ function _setMinAndMaxByKey(array, target, property) {
+    let i, ilen, value;
+    for(i = 0, ilen = array.length; i < ilen; i++){
+        value = array[i][property];
+        if (!isNaN(value)) {
+            target.min = Math.min(target.min, value);
+            target.max = Math.max(target.max, value);
+        }
+    }
+}
+function toRadians(degrees) {
+    return degrees * (PI / 180);
+}
+function toDegrees(radians) {
+    return radians * (180 / PI);
+}
+/**
+ * Returns the number of decimal places
+ * i.e. the number of digits after the decimal point, of the value of this Number.
+ * @param x - A number.
+ * @returns The number of decimal places.
+ * @private
+ */ function _decimalPlaces(x) {
+    if (!isNumberFinite(x)) {
+        return;
+    }
+    let e = 1;
+    let p = 0;
+    while(Math.round(x * e) / e !== x){
+        e *= 10;
+        p++;
+    }
+    return p;
+}
+// Gets the angle from vertical upright to the point about a centre.
+function getAngleFromPoint(centrePoint, anglePoint) {
+    const distanceFromXCenter = anglePoint.x - centrePoint.x;
+    const distanceFromYCenter = anglePoint.y - centrePoint.y;
+    const radialDistanceFromCenter = Math.sqrt(distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+    let angle = Math.atan2(distanceFromYCenter, distanceFromXCenter);
+    if (angle < -0.5 * PI) {
+        angle += TAU; // make sure the returned angle is in the range of (-PI/2, 3PI/2]
+    }
+    return {
+        angle,
+        distance: radialDistanceFromCenter
+    };
+}
+function distanceBetweenPoints(pt1, pt2) {
+    return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
+}
+/**
+ * Shortest distance between angles, in either direction.
+ * @private
+ */ function _angleDiff(a, b) {
+    return (a - b + PITAU) % TAU - PI;
+}
+/**
+ * Normalize angle to be between 0 and 2*PI
+ * @private
+ */ function _normalizeAngle(a) {
+    return (a % TAU + TAU) % TAU;
+}
+/**
+ * @private
+ */ function _angleBetween(angle, start, end, sameAngleIsFullCircle) {
+    const a = _normalizeAngle(angle);
+    const s = _normalizeAngle(start);
+    const e = _normalizeAngle(end);
+    const angleToStart = _normalizeAngle(s - a);
+    const angleToEnd = _normalizeAngle(e - a);
+    const startToAngle = _normalizeAngle(a - s);
+    const endToAngle = _normalizeAngle(a - e);
+    return a === s || a === e || sameAngleIsFullCircle && s === e || angleToStart > angleToEnd && startToAngle < endToAngle;
+}
+/**
+ * Limit `value` between `min` and `max`
+ * @param value
+ * @param min
+ * @param max
+ * @private
+ */ function _limitValue(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+}
+/**
+ * @param {number} value
+ * @private
+ */ function _int16Range(value) {
+    return _limitValue(value, -32768, 32767);
+}
+/**
+ * @param value
+ * @param start
+ * @param end
+ * @param [epsilon]
+ * @private
+ */ function _isBetween(value, start, end, epsilon = 1e-6) {
+    return value >= Math.min(start, end) - epsilon && value <= Math.max(start, end) + epsilon;
+}
+
+function _lookup(table, value, cmp) {
+    cmp = cmp || ((index)=>table[index] < value);
+    let hi = table.length - 1;
+    let lo = 0;
+    let mid;
+    while(hi - lo > 1){
+        mid = lo + hi >> 1;
+        if (cmp(mid)) {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    return {
+        lo,
+        hi
+    };
+}
+/**
+ * Binary search
+ * @param table - the table search. must be sorted!
+ * @param key - property name for the value in each entry
+ * @param value - value to find
+ * @param last - lookup last index
+ * @private
+ */ const _lookupByKey = (table, key, value, last)=>_lookup(table, value, last ? (index)=>{
+        const ti = table[index][key];
+        return ti < value || ti === value && table[index + 1][key] === value;
+    } : (index)=>table[index][key] < value);
+/**
+ * Reverse binary search
+ * @param table - the table search. must be sorted!
+ * @param key - property name for the value in each entry
+ * @param value - value to find
+ * @private
+ */ const _rlookupByKey = (table, key, value)=>_lookup(table, value, (index)=>table[index][key] >= value);
+/**
+ * Return subset of `values` between `min` and `max` inclusive.
+ * Values are assumed to be in sorted order.
+ * @param values - sorted array of values
+ * @param min - min value
+ * @param max - max value
+ */ function _filterBetween(values, min, max) {
+    let start = 0;
+    let end = values.length;
+    while(start < end && values[start] < min){
+        start++;
+    }
+    while(end > start && values[end - 1] > max){
+        end--;
+    }
+    return start > 0 || end < values.length ? values.slice(start, end) : values;
+}
+const arrayEvents = [
+    'push',
+    'pop',
+    'shift',
+    'splice',
+    'unshift'
+];
+function listenArrayEvents(array, listener) {
+    if (array._chartjs) {
+        array._chartjs.listeners.push(listener);
+        return;
+    }
+    Object.defineProperty(array, '_chartjs', {
+        configurable: true,
+        enumerable: false,
+        value: {
+            listeners: [
+                listener
+            ]
+        }
+    });
+    arrayEvents.forEach((key)=>{
+        const method = '_onData' + _capitalize(key);
+        const base = array[key];
+        Object.defineProperty(array, key, {
+            configurable: true,
+            enumerable: false,
+            value (...args) {
+                const res = base.apply(this, args);
+                array._chartjs.listeners.forEach((object)=>{
+                    if (typeof object[method] === 'function') {
+                        object[method](...args);
+                    }
+                });
+                return res;
+            }
+        });
+    });
+}
+function unlistenArrayEvents(array, listener) {
+    const stub = array._chartjs;
+    if (!stub) {
+        return;
+    }
+    const listeners = stub.listeners;
+    const index = listeners.indexOf(listener);
+    if (index !== -1) {
+        listeners.splice(index, 1);
+    }
+    if (listeners.length > 0) {
+        return;
+    }
+    arrayEvents.forEach((key)=>{
+        delete array[key];
+    });
+    delete array._chartjs;
+}
+/**
+ * @param items
+ */ function _arrayUnique(items) {
+    const set = new Set(items);
+    if (set.size === items.length) {
+        return items;
+    }
+    return Array.from(set);
+}
+/**
+* Request animation polyfill
+*/ const requestAnimFrame = function() {
+    if (typeof window === 'undefined') {
+        return function(callback) {
+            return callback();
+        };
+    }
+    return window.requestAnimationFrame;
+}();
+/**
+ * Throttles calling `fn` once per animation frame
+ * Latest arguments are used on the actual call
+ */ function throttled(fn, thisArg) {
+    let argsToUse = [];
+    let ticking = false;
+    return function(...args) {
+        // Save the args for use later
+        argsToUse = args;
+        if (!ticking) {
+            ticking = true;
+            requestAnimFrame.call(window, ()=>{
+                ticking = false;
+                fn.apply(thisArg, argsToUse);
+            });
+        }
+    };
+}
+/**
+ * Debounces calling `fn` for `delay` ms
+ */ function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+        if (delay) {
+            clearTimeout(timeout);
+            timeout = setTimeout(fn, delay, args);
+        } else {
+            fn.apply(this, args);
+        }
+        return delay;
+    };
+}
+/**
+ * Converts 'start' to 'left', 'end' to 'right' and others to 'center'
+ * @private
+ */ const _toLeftRightCenter = (align)=>align === 'start' ? 'left' : align === 'end' ? 'right' : 'center';
+/**
+ * Returns `start`, `end` or `(start + end) / 2` depending on `align`. Defaults to `center`
+ * @private
+ */ const _alignStartEnd = (align, start, end)=>align === 'start' ? start : align === 'end' ? end : (start + end) / 2;
+/**
+ * Returns `left`, `right` or `(left + right) / 2` depending on `align`. Defaults to `left`
+ * @private
+ */ const _textX = (align, left, right, rtl)=>{
+    const check = rtl ? 'left' : 'right';
+    return align === check ? right : align === 'center' ? (left + right) / 2 : left;
+};
+/**
+ * Return start and count of visible points.
+ * @private
+ */ function _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled) {
+    const pointCount = points.length;
+    let start = 0;
+    let count = pointCount;
+    if (meta._sorted) {
+        const { iScale , vScale , _parsed  } = meta;
+        const spanGaps = meta.dataset ? meta.dataset.options ? meta.dataset.options.spanGaps : null : null;
+        const axis = iScale.axis;
+        const { min , max , minDefined , maxDefined  } = iScale.getUserBounds();
+        if (minDefined) {
+            start = Math.min(// @ts-expect-error Need to type _parsed
+            _lookupByKey(_parsed, axis, min).lo, // @ts-expect-error Need to fix types on _lookupByKey
+            animationsDisabled ? pointCount : _lookupByKey(points, axis, iScale.getPixelForValue(min)).lo);
+            if (spanGaps) {
+                const distanceToDefinedLo = _parsed.slice(0, start + 1).reverse().findIndex((point)=>!isNullOrUndef(point[vScale.axis]));
+                start -= Math.max(0, distanceToDefinedLo);
+            }
+            start = _limitValue(start, 0, pointCount - 1);
+        }
+        if (maxDefined) {
+            let end = Math.max(// @ts-expect-error Need to type _parsed
+            _lookupByKey(_parsed, iScale.axis, max, true).hi + 1, // @ts-expect-error Need to fix types on _lookupByKey
+            animationsDisabled ? 0 : _lookupByKey(points, axis, iScale.getPixelForValue(max), true).hi + 1);
+            if (spanGaps) {
+                const distanceToDefinedHi = _parsed.slice(end - 1).findIndex((point)=>!isNullOrUndef(point[vScale.axis]));
+                end += Math.max(0, distanceToDefinedHi);
+            }
+            count = _limitValue(end, start, pointCount) - start;
+        } else {
+            count = pointCount - start;
+        }
+    }
+    return {
+        start,
+        count
+    };
+}
+/**
+ * Checks if the scale ranges have changed.
+ * @param {object} meta - dataset meta.
+ * @returns {boolean}
+ * @private
+ */ function _scaleRangesChanged(meta) {
+    const { xScale , yScale , _scaleRanges  } = meta;
+    const newRanges = {
+        xmin: xScale.min,
+        xmax: xScale.max,
+        ymin: yScale.min,
+        ymax: yScale.max
+    };
+    if (!_scaleRanges) {
+        meta._scaleRanges = newRanges;
+        return true;
+    }
+    const changed = _scaleRanges.xmin !== xScale.min || _scaleRanges.xmax !== xScale.max || _scaleRanges.ymin !== yScale.min || _scaleRanges.ymax !== yScale.max;
+    Object.assign(_scaleRanges, newRanges);
+    return changed;
+}
+
+const atEdge = (t)=>t === 0 || t === 1;
+const elasticIn = (t, s, p)=>-(Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * TAU / p));
+const elasticOut = (t, s, p)=>Math.pow(2, -10 * t) * Math.sin((t - s) * TAU / p) + 1;
+/**
+ * Easing functions adapted from Robert Penner's easing equations.
+ * @namespace Chart.helpers.easing.effects
+ * @see http://www.robertpenner.com/easing/
+ */ const effects = {
+    linear: (t)=>t,
+    easeInQuad: (t)=>t * t,
+    easeOutQuad: (t)=>-t * (t - 2),
+    easeInOutQuad: (t)=>(t /= 0.5) < 1 ? 0.5 * t * t : -0.5 * (--t * (t - 2) - 1),
+    easeInCubic: (t)=>t * t * t,
+    easeOutCubic: (t)=>(t -= 1) * t * t + 1,
+    easeInOutCubic: (t)=>(t /= 0.5) < 1 ? 0.5 * t * t * t : 0.5 * ((t -= 2) * t * t + 2),
+    easeInQuart: (t)=>t * t * t * t,
+    easeOutQuart: (t)=>-((t -= 1) * t * t * t - 1),
+    easeInOutQuart: (t)=>(t /= 0.5) < 1 ? 0.5 * t * t * t * t : -0.5 * ((t -= 2) * t * t * t - 2),
+    easeInQuint: (t)=>t * t * t * t * t,
+    easeOutQuint: (t)=>(t -= 1) * t * t * t * t + 1,
+    easeInOutQuint: (t)=>(t /= 0.5) < 1 ? 0.5 * t * t * t * t * t : 0.5 * ((t -= 2) * t * t * t * t + 2),
+    easeInSine: (t)=>-Math.cos(t * HALF_PI) + 1,
+    easeOutSine: (t)=>Math.sin(t * HALF_PI),
+    easeInOutSine: (t)=>-0.5 * (Math.cos(PI * t) - 1),
+    easeInExpo: (t)=>t === 0 ? 0 : Math.pow(2, 10 * (t - 1)),
+    easeOutExpo: (t)=>t === 1 ? 1 : -Math.pow(2, -10 * t) + 1,
+    easeInOutExpo: (t)=>atEdge(t) ? t : t < 0.5 ? 0.5 * Math.pow(2, 10 * (t * 2 - 1)) : 0.5 * (-Math.pow(2, -10 * (t * 2 - 1)) + 2),
+    easeInCirc: (t)=>t >= 1 ? t : -(Math.sqrt(1 - t * t) - 1),
+    easeOutCirc: (t)=>Math.sqrt(1 - (t -= 1) * t),
+    easeInOutCirc: (t)=>(t /= 0.5) < 1 ? -0.5 * (Math.sqrt(1 - t * t) - 1) : 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1),
+    easeInElastic: (t)=>atEdge(t) ? t : elasticIn(t, 0.075, 0.3),
+    easeOutElastic: (t)=>atEdge(t) ? t : elasticOut(t, 0.075, 0.3),
+    easeInOutElastic (t) {
+        const s = 0.1125;
+        const p = 0.45;
+        return atEdge(t) ? t : t < 0.5 ? 0.5 * elasticIn(t * 2, s, p) : 0.5 + 0.5 * elasticOut(t * 2 - 1, s, p);
+    },
+    easeInBack (t) {
+        const s = 1.70158;
+        return t * t * ((s + 1) * t - s);
+    },
+    easeOutBack (t) {
+        const s = 1.70158;
+        return (t -= 1) * t * ((s + 1) * t + s) + 1;
+    },
+    easeInOutBack (t) {
+        let s = 1.70158;
+        if ((t /= 0.5) < 1) {
+            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
+        }
+        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
+    },
+    easeInBounce: (t)=>1 - effects.easeOutBounce(1 - t),
+    easeOutBounce (t) {
+        const m = 7.5625;
+        const d = 2.75;
+        if (t < 1 / d) {
+            return m * t * t;
+        }
+        if (t < 2 / d) {
+            return m * (t -= 1.5 / d) * t + 0.75;
+        }
+        if (t < 2.5 / d) {
+            return m * (t -= 2.25 / d) * t + 0.9375;
+        }
+        return m * (t -= 2.625 / d) * t + 0.984375;
+    },
+    easeInOutBounce: (t)=>t < 0.5 ? effects.easeInBounce(t * 2) * 0.5 : effects.easeOutBounce(t * 2 - 1) * 0.5 + 0.5
+};
+
+function isPatternOrGradient(value) {
+    if (value && typeof value === 'object') {
+        const type = value.toString();
+        return type === '[object CanvasPattern]' || type === '[object CanvasGradient]';
+    }
+    return false;
+}
+function color(value) {
+    return isPatternOrGradient(value) ? value : new Color(value);
+}
+function getHoverColor(value) {
+    return isPatternOrGradient(value) ? value : new Color(value).saturate(0.5).darken(0.1).hexString();
+}
+
+const numbers = [
+    'x',
+    'y',
+    'borderWidth',
+    'radius',
+    'tension'
+];
+const colors = [
+    'color',
+    'borderColor',
+    'backgroundColor'
+];
+function applyAnimationsDefaults(defaults) {
+    defaults.set('animation', {
+        delay: undefined,
+        duration: 1000,
+        easing: 'easeOutQuart',
+        fn: undefined,
+        from: undefined,
+        loop: undefined,
+        to: undefined,
+        type: undefined
+    });
+    defaults.describe('animation', {
+        _fallback: false,
+        _indexable: false,
+        _scriptable: (name)=>name !== 'onProgress' && name !== 'onComplete' && name !== 'fn'
+    });
+    defaults.set('animations', {
+        colors: {
+            type: 'color',
+            properties: colors
+        },
+        numbers: {
+            type: 'number',
+            properties: numbers
+        }
+    });
+    defaults.describe('animations', {
+        _fallback: 'animation'
+    });
+    defaults.set('transitions', {
+        active: {
+            animation: {
+                duration: 400
+            }
+        },
+        resize: {
+            animation: {
+                duration: 0
+            }
+        },
+        show: {
+            animations: {
+                colors: {
+                    from: 'transparent'
+                },
+                visible: {
+                    type: 'boolean',
+                    duration: 0
+                }
+            }
+        },
+        hide: {
+            animations: {
+                colors: {
+                    to: 'transparent'
+                },
+                visible: {
+                    type: 'boolean',
+                    easing: 'linear',
+                    fn: (v)=>v | 0
+                }
+            }
+        }
+    });
+}
+
+function applyLayoutsDefaults(defaults) {
+    defaults.set('layout', {
+        autoPadding: true,
+        padding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+        }
+    });
+}
+
+const intlCache = new Map();
+function getNumberFormat(locale, options) {
+    options = options || {};
+    const cacheKey = locale + JSON.stringify(options);
+    let formatter = intlCache.get(cacheKey);
+    if (!formatter) {
+        formatter = new Intl.NumberFormat(locale, options);
+        intlCache.set(cacheKey, formatter);
+    }
+    return formatter;
+}
+function formatNumber(num, locale, options) {
+    return getNumberFormat(locale, options).format(num);
+}
+
+const formatters = {
+ values (value) {
+        return isArray(value) ?  value : '' + value;
+    },
+ numeric (tickValue, index, ticks) {
+        if (tickValue === 0) {
+            return '0';
+        }
+        const locale = this.chart.options.locale;
+        let notation;
+        let delta = tickValue;
+        if (ticks.length > 1) {
+            const maxTick = Math.max(Math.abs(ticks[0].value), Math.abs(ticks[ticks.length - 1].value));
+            if (maxTick < 1e-4 || maxTick > 1e+15) {
+                notation = 'scientific';
+            }
+            delta = calculateDelta(tickValue, ticks);
+        }
+        const logDelta = log10(Math.abs(delta));
+        const numDecimal = isNaN(logDelta) ? 1 : Math.max(Math.min(-1 * Math.floor(logDelta), 20), 0);
+        const options = {
+            notation,
+            minimumFractionDigits: numDecimal,
+            maximumFractionDigits: numDecimal
+        };
+        Object.assign(options, this.options.ticks.format);
+        return formatNumber(tickValue, locale, options);
+    }};
+function calculateDelta(tickValue, ticks) {
+    let delta = ticks.length > 3 ? ticks[2].value - ticks[1].value : ticks[1].value - ticks[0].value;
+    if (Math.abs(delta) >= 1 && tickValue !== Math.floor(tickValue)) {
+        delta = tickValue - Math.floor(tickValue);
+    }
+    return delta;
+}
+ var Ticks = {
+    formatters
+};
+
+function applyScaleDefaults(defaults) {
+    defaults.set('scale', {
+        display: true,
+        offset: false,
+        reverse: false,
+        beginAtZero: false,
+ bounds: 'ticks',
+        clip: true,
+ grace: 0,
+        grid: {
+            display: true,
+            lineWidth: 1,
+            drawOnChartArea: true,
+            drawTicks: true,
+            tickLength: 8,
+            tickWidth: (_ctx, options)=>options.lineWidth,
+            tickColor: (_ctx, options)=>options.color,
+            offset: false
+        },
+        border: {
+            display: true,
+            dash: [],
+            dashOffset: 0.0,
+            width: 1
+        },
+        title: {
+            display: false,
+            text: '',
+            padding: {
+                top: 4,
+                bottom: 4
+            }
+        },
+        ticks: {
+            minRotation: 0,
+            maxRotation: 50,
+            mirror: false,
+            textStrokeWidth: 0,
+            textStrokeColor: '',
+            padding: 3,
+            display: true,
+            autoSkip: true,
+            autoSkipPadding: 3,
+            labelOffset: 0,
+            callback: Ticks.formatters.values,
+            minor: {},
+            major: {},
+            align: 'center',
+            crossAlign: 'near',
+            showLabelBackdrop: false,
+            backdropColor: 'rgba(255, 255, 255, 0.75)',
+            backdropPadding: 2
+        }
+    });
+    defaults.route('scale.ticks', 'color', '', 'color');
+    defaults.route('scale.grid', 'color', '', 'borderColor');
+    defaults.route('scale.border', 'color', '', 'borderColor');
+    defaults.route('scale.title', 'color', '', 'color');
+    defaults.describe('scale', {
+        _fallback: false,
+        _scriptable: (name)=>!name.startsWith('before') && !name.startsWith('after') && name !== 'callback' && name !== 'parser',
+        _indexable: (name)=>name !== 'borderDash' && name !== 'tickBorderDash' && name !== 'dash'
+    });
+    defaults.describe('scales', {
+        _fallback: 'scale'
+    });
+    defaults.describe('scale.ticks', {
+        _scriptable: (name)=>name !== 'backdropPadding' && name !== 'callback',
+        _indexable: (name)=>name !== 'backdropPadding'
+    });
+}
+
+const overrides = Object.create(null);
+const descriptors = Object.create(null);
+ function getScope$1(node, key) {
+    if (!key) {
+        return node;
+    }
+    const keys = key.split('.');
+    for(let i = 0, n = keys.length; i < n; ++i){
+        const k = keys[i];
+        node = node[k] || (node[k] = Object.create(null));
+    }
+    return node;
+}
+function set(root, scope, values) {
+    if (typeof scope === 'string') {
+        return merge(getScope$1(root, scope), values);
+    }
+    return merge(getScope$1(root, ''), scope);
+}
+ class Defaults {
+    constructor(_descriptors, _appliers){
+        this.animation = undefined;
+        this.backgroundColor = 'rgba(0,0,0,0.1)';
+        this.borderColor = 'rgba(0,0,0,0.1)';
+        this.color = '#666';
+        this.datasets = {};
+        this.devicePixelRatio = (context)=>context.chart.platform.getDevicePixelRatio();
+        this.elements = {};
+        this.events = [
+            'mousemove',
+            'mouseout',
+            'click',
+            'touchstart',
+            'touchmove'
+        ];
+        this.font = {
+            family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+            size: 12,
+            style: 'normal',
+            lineHeight: 1.2,
+            weight: null
+        };
+        this.hover = {};
+        this.hoverBackgroundColor = (ctx, options)=>getHoverColor(options.backgroundColor);
+        this.hoverBorderColor = (ctx, options)=>getHoverColor(options.borderColor);
+        this.hoverColor = (ctx, options)=>getHoverColor(options.color);
+        this.indexAxis = 'x';
+        this.interaction = {
+            mode: 'nearest',
+            intersect: true,
+            includeInvisible: false
+        };
+        this.maintainAspectRatio = true;
+        this.onHover = null;
+        this.onClick = null;
+        this.parsing = true;
+        this.plugins = {};
+        this.responsive = true;
+        this.scale = undefined;
+        this.scales = {};
+        this.showLine = true;
+        this.drawActiveElementsOnTop = true;
+        this.describe(_descriptors);
+        this.apply(_appliers);
+    }
+ set(scope, values) {
+        return set(this, scope, values);
+    }
+ get(scope) {
+        return getScope$1(this, scope);
+    }
+ describe(scope, values) {
+        return set(descriptors, scope, values);
+    }
+    override(scope, values) {
+        return set(overrides, scope, values);
+    }
+ route(scope, name, targetScope, targetName) {
+        const scopeObject = getScope$1(this, scope);
+        const targetScopeObject = getScope$1(this, targetScope);
+        const privateName = '_' + name;
+        Object.defineProperties(scopeObject, {
+            [privateName]: {
+                value: scopeObject[name],
+                writable: true
+            },
+            [name]: {
+                enumerable: true,
+                get () {
+                    const local = this[privateName];
+                    const target = targetScopeObject[targetName];
+                    if (isObject(local)) {
+                        return Object.assign({}, target, local);
+                    }
+                    return valueOrDefault(local, target);
+                },
+                set (value) {
+                    this[privateName] = value;
+                }
+            }
+        });
+    }
+    apply(appliers) {
+        appliers.forEach((apply)=>apply(this));
+    }
+}
+var defaults = /* #__PURE__ */ new Defaults({
+    _scriptable: (name)=>!name.startsWith('on'),
+    _indexable: (name)=>name !== 'events',
+    hover: {
+        _fallback: 'interaction'
+    },
+    interaction: {
+        _scriptable: false,
+        _indexable: false
+    }
+}, [
+    applyAnimationsDefaults,
+    applyLayoutsDefaults,
+    applyScaleDefaults
+]);
+
+/**
+ * Converts the given font object into a CSS font string.
+ * @param font - A font object.
+ * @return The CSS font string. See https://developer.mozilla.org/en-US/docs/Web/CSS/font
+ * @private
+ */ function toFontString(font) {
+    if (!font || isNullOrUndef(font.size) || isNullOrUndef(font.family)) {
+        return null;
+    }
+    return (font.style ? font.style + ' ' : '') + (font.weight ? font.weight + ' ' : '') + font.size + 'px ' + font.family;
+}
+/**
+ * @private
+ */ function _measureText(ctx, data, gc, longest, string) {
+    let textWidth = data[string];
+    if (!textWidth) {
+        textWidth = data[string] = ctx.measureText(string).width;
+        gc.push(string);
+    }
+    if (textWidth > longest) {
+        longest = textWidth;
+    }
+    return longest;
+}
+/**
+ * Returns the aligned pixel value to avoid anti-aliasing blur
+ * @param chart - The chart instance.
+ * @param pixel - A pixel value.
+ * @param width - The width of the element.
+ * @returns The aligned pixel value.
+ * @private
+ */ function _alignPixel(chart, pixel, width) {
+    const devicePixelRatio = chart.currentDevicePixelRatio;
+    const halfWidth = width !== 0 ? Math.max(width / 2, 0.5) : 0;
+    return Math.round((pixel - halfWidth) * devicePixelRatio) / devicePixelRatio + halfWidth;
+}
+/**
+ * Clears the entire canvas.
+ */ function clearCanvas(canvas, ctx) {
+    if (!ctx && !canvas) {
+        return;
+    }
+    ctx = ctx || canvas.getContext('2d');
+    ctx.save();
+    // canvas.width and canvas.height do not consider the canvas transform,
+    // while clearRect does
+    ctx.resetTransform();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+}
+function drawPoint(ctx, options, x, y) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    drawPointLegend(ctx, options, x, y, null);
+}
+// eslint-disable-next-line complexity
+function drawPointLegend(ctx, options, x, y, w) {
+    let type, xOffset, yOffset, size, cornerRadius, width, xOffsetW, yOffsetW;
+    const style = options.pointStyle;
+    const rotation = options.rotation;
+    const radius = options.radius;
+    let rad = (rotation || 0) * RAD_PER_DEG;
+    if (style && typeof style === 'object') {
+        type = style.toString();
+        if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rad);
+            ctx.drawImage(style, -style.width / 2, -style.height / 2, style.width, style.height);
+            ctx.restore();
+            return;
+        }
+    }
+    if (isNaN(radius) || radius <= 0) {
+        return;
+    }
+    ctx.beginPath();
+    switch(style){
+        // Default includes circle
+        default:
+            if (w) {
+                ctx.ellipse(x, y, w / 2, radius, 0, 0, TAU);
+            } else {
+                ctx.arc(x, y, radius, 0, TAU);
+            }
+            ctx.closePath();
+            break;
+        case 'triangle':
+            width = w ? w / 2 : radius;
+            ctx.moveTo(x + Math.sin(rad) * width, y - Math.cos(rad) * radius);
+            rad += TWO_THIRDS_PI;
+            ctx.lineTo(x + Math.sin(rad) * width, y - Math.cos(rad) * radius);
+            rad += TWO_THIRDS_PI;
+            ctx.lineTo(x + Math.sin(rad) * width, y - Math.cos(rad) * radius);
+            ctx.closePath();
+            break;
+        case 'rectRounded':
+            // NOTE: the rounded rect implementation changed to use `arc` instead of
+            // `quadraticCurveTo` since it generates better results when rect is
+            // almost a circle. 0.516 (instead of 0.5) produces results with visually
+            // closer proportion to the previous impl and it is inscribed in the
+            // circle with `radius`. For more details, see the following PRs:
+            // https://github.com/chartjs/Chart.js/issues/5597
+            // https://github.com/chartjs/Chart.js/issues/5858
+            cornerRadius = radius * 0.516;
+            size = radius - cornerRadius;
+            xOffset = Math.cos(rad + QUARTER_PI) * size;
+            xOffsetW = Math.cos(rad + QUARTER_PI) * (w ? w / 2 - cornerRadius : size);
+            yOffset = Math.sin(rad + QUARTER_PI) * size;
+            yOffsetW = Math.sin(rad + QUARTER_PI) * (w ? w / 2 - cornerRadius : size);
+            ctx.arc(x - xOffsetW, y - yOffset, cornerRadius, rad - PI, rad - HALF_PI);
+            ctx.arc(x + yOffsetW, y - xOffset, cornerRadius, rad - HALF_PI, rad);
+            ctx.arc(x + xOffsetW, y + yOffset, cornerRadius, rad, rad + HALF_PI);
+            ctx.arc(x - yOffsetW, y + xOffset, cornerRadius, rad + HALF_PI, rad + PI);
+            ctx.closePath();
+            break;
+        case 'rect':
+            if (!rotation) {
+                size = Math.SQRT1_2 * radius;
+                width = w ? w / 2 : size;
+                ctx.rect(x - width, y - size, 2 * width, 2 * size);
+                break;
+            }
+            rad += QUARTER_PI;
+        /* falls through */ case 'rectRot':
+            xOffsetW = Math.cos(rad) * (w ? w / 2 : radius);
+            xOffset = Math.cos(rad) * radius;
+            yOffset = Math.sin(rad) * radius;
+            yOffsetW = Math.sin(rad) * (w ? w / 2 : radius);
+            ctx.moveTo(x - xOffsetW, y - yOffset);
+            ctx.lineTo(x + yOffsetW, y - xOffset);
+            ctx.lineTo(x + xOffsetW, y + yOffset);
+            ctx.lineTo(x - yOffsetW, y + xOffset);
+            ctx.closePath();
+            break;
+        case 'crossRot':
+            rad += QUARTER_PI;
+        /* falls through */ case 'cross':
+            xOffsetW = Math.cos(rad) * (w ? w / 2 : radius);
+            xOffset = Math.cos(rad) * radius;
+            yOffset = Math.sin(rad) * radius;
+            yOffsetW = Math.sin(rad) * (w ? w / 2 : radius);
+            ctx.moveTo(x - xOffsetW, y - yOffset);
+            ctx.lineTo(x + xOffsetW, y + yOffset);
+            ctx.moveTo(x + yOffsetW, y - xOffset);
+            ctx.lineTo(x - yOffsetW, y + xOffset);
+            break;
+        case 'star':
+            xOffsetW = Math.cos(rad) * (w ? w / 2 : radius);
+            xOffset = Math.cos(rad) * radius;
+            yOffset = Math.sin(rad) * radius;
+            yOffsetW = Math.sin(rad) * (w ? w / 2 : radius);
+            ctx.moveTo(x - xOffsetW, y - yOffset);
+            ctx.lineTo(x + xOffsetW, y + yOffset);
+            ctx.moveTo(x + yOffsetW, y - xOffset);
+            ctx.lineTo(x - yOffsetW, y + xOffset);
+            rad += QUARTER_PI;
+            xOffsetW = Math.cos(rad) * (w ? w / 2 : radius);
+            xOffset = Math.cos(rad) * radius;
+            yOffset = Math.sin(rad) * radius;
+            yOffsetW = Math.sin(rad) * (w ? w / 2 : radius);
+            ctx.moveTo(x - xOffsetW, y - yOffset);
+            ctx.lineTo(x + xOffsetW, y + yOffset);
+            ctx.moveTo(x + yOffsetW, y - xOffset);
+            ctx.lineTo(x - yOffsetW, y + xOffset);
+            break;
+        case 'line':
+            xOffset = w ? w / 2 : Math.cos(rad) * radius;
+            yOffset = Math.sin(rad) * radius;
+            ctx.moveTo(x - xOffset, y - yOffset);
+            ctx.lineTo(x + xOffset, y + yOffset);
+            break;
+        case 'dash':
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + Math.cos(rad) * (w ? w / 2 : radius), y + Math.sin(rad) * radius);
+            break;
+        case false:
+            ctx.closePath();
+            break;
+    }
+    ctx.fill();
+    if (options.borderWidth > 0) {
+        ctx.stroke();
+    }
+}
+/**
+ * Returns true if the point is inside the rectangle
+ * @param point - The point to test
+ * @param area - The rectangle
+ * @param margin - allowed margin
+ * @private
+ */ function _isPointInArea(point, area, margin) {
+    margin = margin || 0.5; // margin - default is to match rounded decimals
+    return !area || point && point.x > area.left - margin && point.x < area.right + margin && point.y > area.top - margin && point.y < area.bottom + margin;
+}
+function clipArea(ctx, area) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(area.left, area.top, area.right - area.left, area.bottom - area.top);
+    ctx.clip();
+}
+function unclipArea(ctx) {
+    ctx.restore();
+}
+/**
+ * @private
+ */ function _steppedLineTo(ctx, previous, target, flip, mode) {
+    if (!previous) {
+        return ctx.lineTo(target.x, target.y);
+    }
+    if (mode === 'middle') {
+        const midpoint = (previous.x + target.x) / 2.0;
+        ctx.lineTo(midpoint, previous.y);
+        ctx.lineTo(midpoint, target.y);
+    } else if (mode === 'after' !== !!flip) {
+        ctx.lineTo(previous.x, target.y);
+    } else {
+        ctx.lineTo(target.x, previous.y);
+    }
+    ctx.lineTo(target.x, target.y);
+}
+/**
+ * @private
+ */ function _bezierCurveTo(ctx, previous, target, flip) {
+    if (!previous) {
+        return ctx.lineTo(target.x, target.y);
+    }
+    ctx.bezierCurveTo(flip ? previous.cp1x : previous.cp2x, flip ? previous.cp1y : previous.cp2y, flip ? target.cp2x : target.cp1x, flip ? target.cp2y : target.cp1y, target.x, target.y);
+}
+function setRenderOpts(ctx, opts) {
+    if (opts.translation) {
+        ctx.translate(opts.translation[0], opts.translation[1]);
+    }
+    if (!isNullOrUndef(opts.rotation)) {
+        ctx.rotate(opts.rotation);
+    }
+    if (opts.color) {
+        ctx.fillStyle = opts.color;
+    }
+    if (opts.textAlign) {
+        ctx.textAlign = opts.textAlign;
+    }
+    if (opts.textBaseline) {
+        ctx.textBaseline = opts.textBaseline;
+    }
+}
+function decorateText(ctx, x, y, line, opts) {
+    if (opts.strikethrough || opts.underline) {
+        /**
+     * Now that IE11 support has been dropped, we can use more
+     * of the TextMetrics object. The actual bounding boxes
+     * are unflagged in Chrome, Firefox, Edge, and Safari so they
+     * can be safely used.
+     * See https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics#Browser_compatibility
+     */ const metrics = ctx.measureText(line);
+        const left = x - metrics.actualBoundingBoxLeft;
+        const right = x + metrics.actualBoundingBoxRight;
+        const top = y - metrics.actualBoundingBoxAscent;
+        const bottom = y + metrics.actualBoundingBoxDescent;
+        const yDecoration = opts.strikethrough ? (top + bottom) / 2 : bottom;
+        ctx.strokeStyle = ctx.fillStyle;
+        ctx.beginPath();
+        ctx.lineWidth = opts.decorationWidth || 2;
+        ctx.moveTo(left, yDecoration);
+        ctx.lineTo(right, yDecoration);
+        ctx.stroke();
+    }
+}
+function drawBackdrop(ctx, opts) {
+    const oldColor = ctx.fillStyle;
+    ctx.fillStyle = opts.color;
+    ctx.fillRect(opts.left, opts.top, opts.width, opts.height);
+    ctx.fillStyle = oldColor;
+}
+/**
+ * Render text onto the canvas
+ */ function renderText(ctx, text, x, y, font, opts = {}) {
+    const lines = isArray(text) ? text : [
+        text
+    ];
+    const stroke = opts.strokeWidth > 0 && opts.strokeColor !== '';
+    let i, line;
+    ctx.save();
+    ctx.font = font.string;
+    setRenderOpts(ctx, opts);
+    for(i = 0; i < lines.length; ++i){
+        line = lines[i];
+        if (opts.backdrop) {
+            drawBackdrop(ctx, opts.backdrop);
+        }
+        if (stroke) {
+            if (opts.strokeColor) {
+                ctx.strokeStyle = opts.strokeColor;
+            }
+            if (!isNullOrUndef(opts.strokeWidth)) {
+                ctx.lineWidth = opts.strokeWidth;
+            }
+            ctx.strokeText(line, x, y, opts.maxWidth);
+        }
+        ctx.fillText(line, x, y, opts.maxWidth);
+        decorateText(ctx, x, y, line, opts);
+        y += Number(font.lineHeight);
+    }
+    ctx.restore();
+}
+/**
+ * Add a path of a rectangle with rounded corners to the current sub-path
+ * @param ctx - Context
+ * @param rect - Bounding rect
+ */ function addRoundedRectPath(ctx, rect) {
+    const { x , y , w , h , radius  } = rect;
+    // top left arc
+    ctx.arc(x + radius.topLeft, y + radius.topLeft, radius.topLeft, 1.5 * PI, PI, true);
+    // line from top left to bottom left
+    ctx.lineTo(x, y + h - radius.bottomLeft);
+    // bottom left arc
+    ctx.arc(x + radius.bottomLeft, y + h - radius.bottomLeft, radius.bottomLeft, PI, HALF_PI, true);
+    // line from bottom left to bottom right
+    ctx.lineTo(x + w - radius.bottomRight, y + h);
+    // bottom right arc
+    ctx.arc(x + w - radius.bottomRight, y + h - radius.bottomRight, radius.bottomRight, HALF_PI, 0, true);
+    // line from bottom right to top right
+    ctx.lineTo(x + w, y + radius.topRight);
+    // top right arc
+    ctx.arc(x + w - radius.topRight, y + radius.topRight, radius.topRight, 0, -HALF_PI, true);
+    // line from top right to top left
+    ctx.lineTo(x + radius.topLeft, y);
+}
+
+const LINE_HEIGHT = /^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/;
+const FONT_STYLE = /^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/;
+/**
+ * @alias Chart.helpers.options
+ * @namespace
+ */ /**
+ * Converts the given line height `value` in pixels for a specific font `size`.
+ * @param value - The lineHeight to parse (eg. 1.6, '14px', '75%', '1.6em').
+ * @param size - The font size (in pixels) used to resolve relative `value`.
+ * @returns The effective line height in pixels (size * 1.2 if value is invalid).
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+ * @since 2.7.0
+ */ function toLineHeight(value, size) {
+    const matches = ('' + value).match(LINE_HEIGHT);
+    if (!matches || matches[1] === 'normal') {
+        return size * 1.2;
+    }
+    value = +matches[2];
+    switch(matches[3]){
+        case 'px':
+            return value;
+        case '%':
+            value /= 100;
+            break;
+    }
+    return size * value;
+}
+const numberOrZero = (v)=>+v || 0;
+function _readValueToProps(value, props) {
+    const ret = {};
+    const objProps = isObject(props);
+    const keys = objProps ? Object.keys(props) : props;
+    const read = isObject(value) ? objProps ? (prop)=>valueOrDefault(value[prop], value[props[prop]]) : (prop)=>value[prop] : ()=>value;
+    for (const prop of keys){
+        ret[prop] = numberOrZero(read(prop));
+    }
+    return ret;
+}
+/**
+ * Converts the given value into a TRBL object.
+ * @param value - If a number, set the value to all TRBL component,
+ *  else, if an object, use defined properties and sets undefined ones to 0.
+ *  x / y are shorthands for same value for left/right and top/bottom.
+ * @returns The padding values (top, right, bottom, left)
+ * @since 3.0.0
+ */ function toTRBL(value) {
+    return _readValueToProps(value, {
+        top: 'y',
+        right: 'x',
+        bottom: 'y',
+        left: 'x'
+    });
+}
+/**
+ * Converts the given value into a TRBL corners object (similar with css border-radius).
+ * @param value - If a number, set the value to all TRBL corner components,
+ *  else, if an object, use defined properties and sets undefined ones to 0.
+ * @returns The TRBL corner values (topLeft, topRight, bottomLeft, bottomRight)
+ * @since 3.0.0
+ */ function toTRBLCorners(value) {
+    return _readValueToProps(value, [
+        'topLeft',
+        'topRight',
+        'bottomLeft',
+        'bottomRight'
+    ]);
+}
+/**
+ * Converts the given value into a padding object with pre-computed width/height.
+ * @param value - If a number, set the value to all TRBL component,
+ *  else, if an object, use defined properties and sets undefined ones to 0.
+ *  x / y are shorthands for same value for left/right and top/bottom.
+ * @returns The padding values (top, right, bottom, left, width, height)
+ * @since 2.7.0
+ */ function toPadding(value) {
+    const obj = toTRBL(value);
+    obj.width = obj.left + obj.right;
+    obj.height = obj.top + obj.bottom;
+    return obj;
+}
+/**
+ * Parses font options and returns the font object.
+ * @param options - A object that contains font options to be parsed.
+ * @param fallback - A object that contains fallback font options.
+ * @return The font object.
+ * @private
+ */ function toFont(options, fallback) {
+    options = options || {};
+    fallback = fallback || defaults.font;
+    let size = valueOrDefault(options.size, fallback.size);
+    if (typeof size === 'string') {
+        size = parseInt(size, 10);
+    }
+    let style = valueOrDefault(options.style, fallback.style);
+    if (style && !('' + style).match(FONT_STYLE)) {
+        console.warn('Invalid font style specified: "' + style + '"');
+        style = undefined;
+    }
+    const font = {
+        family: valueOrDefault(options.family, fallback.family),
+        lineHeight: toLineHeight(valueOrDefault(options.lineHeight, fallback.lineHeight), size),
+        size,
+        style,
+        weight: valueOrDefault(options.weight, fallback.weight),
+        string: ''
+    };
+    font.string = toFontString(font);
+    return font;
+}
+/**
+ * Evaluates the given `inputs` sequentially and returns the first defined value.
+ * @param inputs - An array of values, falling back to the last value.
+ * @param context - If defined and the current value is a function, the value
+ * is called with `context` as first argument and the result becomes the new input.
+ * @param index - If defined and the current value is an array, the value
+ * at `index` become the new input.
+ * @param info - object to return information about resolution in
+ * @param info.cacheable - Will be set to `false` if option is not cacheable.
+ * @since 2.7.0
+ */ function resolve(inputs, context, index, info) {
+    let i, ilen, value;
+    for(i = 0, ilen = inputs.length; i < ilen; ++i){
+        value = inputs[i];
+        if (value === undefined) {
+            continue;
+        }
+        if (value !== undefined) {
+            return value;
+        }
+    }
+}
+/**
+ * @param minmax
+ * @param grace
+ * @param beginAtZero
+ * @private
+ */ function _addGrace(minmax, grace, beginAtZero) {
+    const { min , max  } = minmax;
+    const change = toDimension(grace, (max - min) / 2);
+    const keepZero = (value, add)=>beginAtZero && value === 0 ? 0 : value + add;
+    return {
+        min: keepZero(min, -Math.abs(change)),
+        max: keepZero(max, change)
+    };
+}
+function createContext(parentContext, context) {
+    return Object.assign(Object.create(parentContext), context);
+}
+
+/**
+ * Creates a Proxy for resolving raw values for options.
+ * @param scopes - The option scopes to look for values, in resolution order
+ * @param prefixes - The prefixes for values, in resolution order.
+ * @param rootScopes - The root option scopes
+ * @param fallback - Parent scopes fallback
+ * @param getTarget - callback for getting the target for changed values
+ * @returns Proxy
+ * @private
+ */ function _createResolver(scopes, prefixes = [
+    ''
+], rootScopes, fallback, getTarget = ()=>scopes[0]) {
+    const finalRootScopes = rootScopes || scopes;
+    if (typeof fallback === 'undefined') {
+        fallback = _resolve('_fallback', scopes);
+    }
+    const cache = {
+        [Symbol.toStringTag]: 'Object',
+        _cacheable: true,
+        _scopes: scopes,
+        _rootScopes: finalRootScopes,
+        _fallback: fallback,
+        _getTarget: getTarget,
+        override: (scope)=>_createResolver([
+                scope,
+                ...scopes
+            ], prefixes, finalRootScopes, fallback)
+    };
+    return new Proxy(cache, {
+        /**
+     * A trap for the delete operator.
+     */ deleteProperty (target, prop) {
+            delete target[prop]; // remove from cache
+            delete target._keys; // remove cached keys
+            delete scopes[0][prop]; // remove from top level scope
+            return true;
+        },
+        /**
+     * A trap for getting property values.
+     */ get (target, prop) {
+            return _cached(target, prop, ()=>_resolveWithPrefixes(prop, prefixes, scopes, target));
+        },
+        /**
+     * A trap for Object.getOwnPropertyDescriptor.
+     * Also used by Object.hasOwnProperty.
+     */ getOwnPropertyDescriptor (target, prop) {
+            return Reflect.getOwnPropertyDescriptor(target._scopes[0], prop);
+        },
+        /**
+     * A trap for Object.getPrototypeOf.
+     */ getPrototypeOf () {
+            return Reflect.getPrototypeOf(scopes[0]);
+        },
+        /**
+     * A trap for the in operator.
+     */ has (target, prop) {
+            return getKeysFromAllScopes(target).includes(prop);
+        },
+        /**
+     * A trap for Object.getOwnPropertyNames and Object.getOwnPropertySymbols.
+     */ ownKeys (target) {
+            return getKeysFromAllScopes(target);
+        },
+        /**
+     * A trap for setting property values.
+     */ set (target, prop, value) {
+            const storage = target._storage || (target._storage = getTarget());
+            target[prop] = storage[prop] = value; // set to top level scope + cache
+            delete target._keys; // remove cached keys
+            return true;
+        }
+    });
+}
+/**
+ * Returns an Proxy for resolving option values with context.
+ * @param proxy - The Proxy returned by `_createResolver`
+ * @param context - Context object for scriptable/indexable options
+ * @param subProxy - The proxy provided for scriptable options
+ * @param descriptorDefaults - Defaults for descriptors
+ * @private
+ */ function _attachContext(proxy, context, subProxy, descriptorDefaults) {
+    const cache = {
+        _cacheable: false,
+        _proxy: proxy,
+        _context: context,
+        _subProxy: subProxy,
+        _stack: new Set(),
+        _descriptors: _descriptors(proxy, descriptorDefaults),
+        setContext: (ctx)=>_attachContext(proxy, ctx, subProxy, descriptorDefaults),
+        override: (scope)=>_attachContext(proxy.override(scope), context, subProxy, descriptorDefaults)
+    };
+    return new Proxy(cache, {
+        /**
+     * A trap for the delete operator.
+     */ deleteProperty (target, prop) {
+            delete target[prop]; // remove from cache
+            delete proxy[prop]; // remove from proxy
+            return true;
+        },
+        /**
+     * A trap for getting property values.
+     */ get (target, prop, receiver) {
+            return _cached(target, prop, ()=>_resolveWithContext(target, prop, receiver));
+        },
+        /**
+     * A trap for Object.getOwnPropertyDescriptor.
+     * Also used by Object.hasOwnProperty.
+     */ getOwnPropertyDescriptor (target, prop) {
+            return target._descriptors.allKeys ? Reflect.has(proxy, prop) ? {
+                enumerable: true,
+                configurable: true
+            } : undefined : Reflect.getOwnPropertyDescriptor(proxy, prop);
+        },
+        /**
+     * A trap for Object.getPrototypeOf.
+     */ getPrototypeOf () {
+            return Reflect.getPrototypeOf(proxy);
+        },
+        /**
+     * A trap for the in operator.
+     */ has (target, prop) {
+            return Reflect.has(proxy, prop);
+        },
+        /**
+     * A trap for Object.getOwnPropertyNames and Object.getOwnPropertySymbols.
+     */ ownKeys () {
+            return Reflect.ownKeys(proxy);
+        },
+        /**
+     * A trap for setting property values.
+     */ set (target, prop, value) {
+            proxy[prop] = value; // set to proxy
+            delete target[prop]; // remove from cache
+            return true;
+        }
+    });
+}
+/**
+ * @private
+ */ function _descriptors(proxy, defaults = {
+    scriptable: true,
+    indexable: true
+}) {
+    const { _scriptable =defaults.scriptable , _indexable =defaults.indexable , _allKeys =defaults.allKeys  } = proxy;
+    return {
+        allKeys: _allKeys,
+        scriptable: _scriptable,
+        indexable: _indexable,
+        isScriptable: isFunction(_scriptable) ? _scriptable : ()=>_scriptable,
+        isIndexable: isFunction(_indexable) ? _indexable : ()=>_indexable
+    };
+}
+const readKey = (prefix, name)=>prefix ? prefix + _capitalize(name) : name;
+const needsSubResolver = (prop, value)=>isObject(value) && prop !== 'adapters' && (Object.getPrototypeOf(value) === null || value.constructor === Object);
+function _cached(target, prop, resolve) {
+    if (Object.prototype.hasOwnProperty.call(target, prop) || prop === 'constructor') {
+        return target[prop];
+    }
+    const value = resolve();
+    // cache the resolved value
+    target[prop] = value;
+    return value;
+}
+function _resolveWithContext(target, prop, receiver) {
+    const { _proxy , _context , _subProxy , _descriptors: descriptors  } = target;
+    let value = _proxy[prop]; // resolve from proxy
+    // resolve with context
+    if (isFunction(value) && descriptors.isScriptable(prop)) {
+        value = _resolveScriptable(prop, value, target, receiver);
+    }
+    if (isArray(value) && value.length) {
+        value = _resolveArray(prop, value, target, descriptors.isIndexable);
+    }
+    if (needsSubResolver(prop, value)) {
+        // if the resolved value is an object, create a sub resolver for it
+        value = _attachContext(value, _context, _subProxy && _subProxy[prop], descriptors);
+    }
+    return value;
+}
+function _resolveScriptable(prop, getValue, target, receiver) {
+    const { _proxy , _context , _subProxy , _stack  } = target;
+    if (_stack.has(prop)) {
+        throw new Error('Recursion detected: ' + Array.from(_stack).join('->') + '->' + prop);
+    }
+    _stack.add(prop);
+    let value = getValue(_context, _subProxy || receiver);
+    _stack.delete(prop);
+    if (needsSubResolver(prop, value)) {
+        // When scriptable option returns an object, create a resolver on that.
+        value = createSubResolver(_proxy._scopes, _proxy, prop, value);
+    }
+    return value;
+}
+function _resolveArray(prop, value, target, isIndexable) {
+    const { _proxy , _context , _subProxy , _descriptors: descriptors  } = target;
+    if (typeof _context.index !== 'undefined' && isIndexable(prop)) {
+        return value[_context.index % value.length];
+    } else if (isObject(value[0])) {
+        // Array of objects, return array or resolvers
+        const arr = value;
+        const scopes = _proxy._scopes.filter((s)=>s !== arr);
+        value = [];
+        for (const item of arr){
+            const resolver = createSubResolver(scopes, _proxy, prop, item);
+            value.push(_attachContext(resolver, _context, _subProxy && _subProxy[prop], descriptors));
+        }
+    }
+    return value;
+}
+function resolveFallback(fallback, prop, value) {
+    return isFunction(fallback) ? fallback(prop, value) : fallback;
+}
+const getScope = (key, parent)=>key === true ? parent : typeof key === 'string' ? resolveObjectKey(parent, key) : undefined;
+function addScopes(set, parentScopes, key, parentFallback, value) {
+    for (const parent of parentScopes){
+        const scope = getScope(key, parent);
+        if (scope) {
+            set.add(scope);
+            const fallback = resolveFallback(scope._fallback, key, value);
+            if (typeof fallback !== 'undefined' && fallback !== key && fallback !== parentFallback) {
+                // When we reach the descriptor that defines a new _fallback, return that.
+                // The fallback will resume to that new scope.
+                return fallback;
+            }
+        } else if (scope === false && typeof parentFallback !== 'undefined' && key !== parentFallback) {
+            // Fallback to `false` results to `false`, when falling back to different key.
+            // For example `interaction` from `hover` or `plugins.tooltip` and `animation` from `animations`
+            return null;
+        }
+    }
+    return false;
+}
+function createSubResolver(parentScopes, resolver, prop, value) {
+    const rootScopes = resolver._rootScopes;
+    const fallback = resolveFallback(resolver._fallback, prop, value);
+    const allScopes = [
+        ...parentScopes,
+        ...rootScopes
+    ];
+    const set = new Set();
+    set.add(value);
+    let key = addScopesFromKey(set, allScopes, prop, fallback || prop, value);
+    if (key === null) {
+        return false;
+    }
+    if (typeof fallback !== 'undefined' && fallback !== prop) {
+        key = addScopesFromKey(set, allScopes, fallback, key, value);
+        if (key === null) {
+            return false;
+        }
+    }
+    return _createResolver(Array.from(set), [
+        ''
+    ], rootScopes, fallback, ()=>subGetTarget(resolver, prop, value));
+}
+function addScopesFromKey(set, allScopes, key, fallback, item) {
+    while(key){
+        key = addScopes(set, allScopes, key, fallback, item);
+    }
+    return key;
+}
+function subGetTarget(resolver, prop, value) {
+    const parent = resolver._getTarget();
+    if (!(prop in parent)) {
+        parent[prop] = {};
+    }
+    const target = parent[prop];
+    if (isArray(target) && isObject(value)) {
+        // For array of objects, the object is used to store updated values
+        return value;
+    }
+    return target || {};
+}
+function _resolveWithPrefixes(prop, prefixes, scopes, proxy) {
+    let value;
+    for (const prefix of prefixes){
+        value = _resolve(readKey(prefix, prop), scopes);
+        if (typeof value !== 'undefined') {
+            return needsSubResolver(prop, value) ? createSubResolver(scopes, proxy, prop, value) : value;
+        }
+    }
+}
+function _resolve(key, scopes) {
+    for (const scope of scopes){
+        if (!scope) {
+            continue;
+        }
+        const value = scope[key];
+        if (typeof value !== 'undefined') {
+            return value;
+        }
+    }
+}
+function getKeysFromAllScopes(target) {
+    let keys = target._keys;
+    if (!keys) {
+        keys = target._keys = resolveKeysFromAllScopes(target._scopes);
+    }
+    return keys;
+}
+function resolveKeysFromAllScopes(scopes) {
+    const set = new Set();
+    for (const scope of scopes){
+        for (const key of Object.keys(scope).filter((k)=>!k.startsWith('_'))){
+            set.add(key);
+        }
+    }
+    return Array.from(set);
+}
+function _parseObjectDataRadialScale(meta, data, start, count) {
+    const { iScale  } = meta;
+    const { key ='r'  } = this._parsing;
+    const parsed = new Array(count);
+    let i, ilen, index, item;
+    for(i = 0, ilen = count; i < ilen; ++i){
+        index = i + start;
+        item = data[index];
+        parsed[i] = {
+            r: iScale.parse(resolveObjectKey(item, key), index)
+        };
+    }
+    return parsed;
+}
+
+const EPSILON = Number.EPSILON || 1e-14;
+const getPoint = (points, i)=>i < points.length && !points[i].skip && points[i];
+const getValueAxis = (indexAxis)=>indexAxis === 'x' ? 'y' : 'x';
+function splineCurve(firstPoint, middlePoint, afterPoint, t) {
+    // Props to Rob Spencer at scaled innovation for his post on splining between points
+    // http://scaledinnovation.com/analytics/splines/aboutSplines.html
+    // This function must also respect "skipped" points
+    const previous = firstPoint.skip ? middlePoint : firstPoint;
+    const current = middlePoint;
+    const next = afterPoint.skip ? middlePoint : afterPoint;
+    const d01 = distanceBetweenPoints(current, previous);
+    const d12 = distanceBetweenPoints(next, current);
+    let s01 = d01 / (d01 + d12);
+    let s12 = d12 / (d01 + d12);
+    // If all points are the same, s01 & s02 will be inf
+    s01 = isNaN(s01) ? 0 : s01;
+    s12 = isNaN(s12) ? 0 : s12;
+    const fa = t * s01; // scaling factor for triangle Ta
+    const fb = t * s12;
+    return {
+        previous: {
+            x: current.x - fa * (next.x - previous.x),
+            y: current.y - fa * (next.y - previous.y)
+        },
+        next: {
+            x: current.x + fb * (next.x - previous.x),
+            y: current.y + fb * (next.y - previous.y)
+        }
+    };
+}
+/**
+ * Adjust tangents to ensure monotonic properties
+ */ function monotoneAdjust(points, deltaK, mK) {
+    const pointsLen = points.length;
+    let alphaK, betaK, tauK, squaredMagnitude, pointCurrent;
+    let pointAfter = getPoint(points, 0);
+    for(let i = 0; i < pointsLen - 1; ++i){
+        pointCurrent = pointAfter;
+        pointAfter = getPoint(points, i + 1);
+        if (!pointCurrent || !pointAfter) {
+            continue;
+        }
+        if (almostEquals(deltaK[i], 0, EPSILON)) {
+            mK[i] = mK[i + 1] = 0;
+            continue;
+        }
+        alphaK = mK[i] / deltaK[i];
+        betaK = mK[i + 1] / deltaK[i];
+        squaredMagnitude = Math.pow(alphaK, 2) + Math.pow(betaK, 2);
+        if (squaredMagnitude <= 9) {
+            continue;
+        }
+        tauK = 3 / Math.sqrt(squaredMagnitude);
+        mK[i] = alphaK * tauK * deltaK[i];
+        mK[i + 1] = betaK * tauK * deltaK[i];
+    }
+}
+function monotoneCompute(points, mK, indexAxis = 'x') {
+    const valueAxis = getValueAxis(indexAxis);
+    const pointsLen = points.length;
+    let delta, pointBefore, pointCurrent;
+    let pointAfter = getPoint(points, 0);
+    for(let i = 0; i < pointsLen; ++i){
+        pointBefore = pointCurrent;
+        pointCurrent = pointAfter;
+        pointAfter = getPoint(points, i + 1);
+        if (!pointCurrent) {
+            continue;
+        }
+        const iPixel = pointCurrent[indexAxis];
+        const vPixel = pointCurrent[valueAxis];
+        if (pointBefore) {
+            delta = (iPixel - pointBefore[indexAxis]) / 3;
+            pointCurrent[`cp1${indexAxis}`] = iPixel - delta;
+            pointCurrent[`cp1${valueAxis}`] = vPixel - delta * mK[i];
+        }
+        if (pointAfter) {
+            delta = (pointAfter[indexAxis] - iPixel) / 3;
+            pointCurrent[`cp2${indexAxis}`] = iPixel + delta;
+            pointCurrent[`cp2${valueAxis}`] = vPixel + delta * mK[i];
+        }
+    }
+}
+/**
+ * This function calculates Bézier control points in a similar way than |splineCurve|,
+ * but preserves monotonicity of the provided data and ensures no local extremums are added
+ * between the dataset discrete points due to the interpolation.
+ * See : https://en.wikipedia.org/wiki/Monotone_cubic_interpolation
+ */ function splineCurveMonotone(points, indexAxis = 'x') {
+    const valueAxis = getValueAxis(indexAxis);
+    const pointsLen = points.length;
+    const deltaK = Array(pointsLen).fill(0);
+    const mK = Array(pointsLen);
+    // Calculate slopes (deltaK) and initialize tangents (mK)
+    let i, pointBefore, pointCurrent;
+    let pointAfter = getPoint(points, 0);
+    for(i = 0; i < pointsLen; ++i){
+        pointBefore = pointCurrent;
+        pointCurrent = pointAfter;
+        pointAfter = getPoint(points, i + 1);
+        if (!pointCurrent) {
+            continue;
+        }
+        if (pointAfter) {
+            const slopeDelta = pointAfter[indexAxis] - pointCurrent[indexAxis];
+            // In the case of two points that appear at the same x pixel, slopeDeltaX is 0
+            deltaK[i] = slopeDelta !== 0 ? (pointAfter[valueAxis] - pointCurrent[valueAxis]) / slopeDelta : 0;
+        }
+        mK[i] = !pointBefore ? deltaK[i] : !pointAfter ? deltaK[i - 1] : sign(deltaK[i - 1]) !== sign(deltaK[i]) ? 0 : (deltaK[i - 1] + deltaK[i]) / 2;
+    }
+    monotoneAdjust(points, deltaK, mK);
+    monotoneCompute(points, mK, indexAxis);
+}
+function capControlPoint(pt, min, max) {
+    return Math.max(Math.min(pt, max), min);
+}
+function capBezierPoints(points, area) {
+    let i, ilen, point, inArea, inAreaPrev;
+    let inAreaNext = _isPointInArea(points[0], area);
+    for(i = 0, ilen = points.length; i < ilen; ++i){
+        inAreaPrev = inArea;
+        inArea = inAreaNext;
+        inAreaNext = i < ilen - 1 && _isPointInArea(points[i + 1], area);
+        if (!inArea) {
+            continue;
+        }
+        point = points[i];
+        if (inAreaPrev) {
+            point.cp1x = capControlPoint(point.cp1x, area.left, area.right);
+            point.cp1y = capControlPoint(point.cp1y, area.top, area.bottom);
+        }
+        if (inAreaNext) {
+            point.cp2x = capControlPoint(point.cp2x, area.left, area.right);
+            point.cp2y = capControlPoint(point.cp2y, area.top, area.bottom);
+        }
+    }
+}
+/**
+ * @private
+ */ function _updateBezierControlPoints(points, options, area, loop, indexAxis) {
+    let i, ilen, point, controlPoints;
+    // Only consider points that are drawn in case the spanGaps option is used
+    if (options.spanGaps) {
+        points = points.filter((pt)=>!pt.skip);
+    }
+    if (options.cubicInterpolationMode === 'monotone') {
+        splineCurveMonotone(points, indexAxis);
+    } else {
+        let prev = loop ? points[points.length - 1] : points[0];
+        for(i = 0, ilen = points.length; i < ilen; ++i){
+            point = points[i];
+            controlPoints = splineCurve(prev, point, points[Math.min(i + 1, ilen - (loop ? 0 : 1)) % ilen], options.tension);
+            point.cp1x = controlPoints.previous.x;
+            point.cp1y = controlPoints.previous.y;
+            point.cp2x = controlPoints.next.x;
+            point.cp2y = controlPoints.next.y;
+            prev = point;
+        }
+    }
+    if (options.capBezierPoints) {
+        capBezierPoints(points, area);
+    }
+}
+
+/**
+ * @private
+ */ function _isDomSupported() {
+    return typeof window !== 'undefined' && typeof document !== 'undefined';
+}
+/**
+ * @private
+ */ function _getParentNode(domNode) {
+    let parent = domNode.parentNode;
+    if (parent && parent.toString() === '[object ShadowRoot]') {
+        parent = parent.host;
+    }
+    return parent;
+}
+/**
+ * convert max-width/max-height values that may be percentages into a number
+ * @private
+ */ function parseMaxStyle(styleValue, node, parentProperty) {
+    let valueInPixels;
+    if (typeof styleValue === 'string') {
+        valueInPixels = parseInt(styleValue, 10);
+        if (styleValue.indexOf('%') !== -1) {
+            // percentage * size in dimension
+            valueInPixels = valueInPixels / 100 * node.parentNode[parentProperty];
+        }
+    } else {
+        valueInPixels = styleValue;
+    }
+    return valueInPixels;
+}
+const getComputedStyle = (element)=>element.ownerDocument.defaultView.getComputedStyle(element, null);
+function getStyle(el, property) {
+    return getComputedStyle(el).getPropertyValue(property);
+}
+const positions = [
+    'top',
+    'right',
+    'bottom',
+    'left'
+];
+function getPositionedStyle(styles, style, suffix) {
+    const result = {};
+    suffix = suffix ? '-' + suffix : '';
+    for(let i = 0; i < 4; i++){
+        const pos = positions[i];
+        result[pos] = parseFloat(styles[style + '-' + pos + suffix]) || 0;
+    }
+    result.width = result.left + result.right;
+    result.height = result.top + result.bottom;
+    return result;
+}
+const useOffsetPos = (x, y, target)=>(x > 0 || y > 0) && (!target || !target.shadowRoot);
+/**
+ * @param e
+ * @param canvas
+ * @returns Canvas position
+ */ function getCanvasPosition(e, canvas) {
+    const touches = e.touches;
+    const source = touches && touches.length ? touches[0] : e;
+    const { offsetX , offsetY  } = source;
+    let box = false;
+    let x, y;
+    if (useOffsetPos(offsetX, offsetY, e.target)) {
+        x = offsetX;
+        y = offsetY;
+    } else {
+        const rect = canvas.getBoundingClientRect();
+        x = source.clientX - rect.left;
+        y = source.clientY - rect.top;
+        box = true;
+    }
+    return {
+        x,
+        y,
+        box
+    };
+}
+/**
+ * Gets an event's x, y coordinates, relative to the chart area
+ * @param event
+ * @param chart
+ * @returns x and y coordinates of the event
+ */ function getRelativePosition(event, chart) {
+    if ('native' in event) {
+        return event;
+    }
+    const { canvas , currentDevicePixelRatio  } = chart;
+    const style = getComputedStyle(canvas);
+    const borderBox = style.boxSizing === 'border-box';
+    const paddings = getPositionedStyle(style, 'padding');
+    const borders = getPositionedStyle(style, 'border', 'width');
+    const { x , y , box  } = getCanvasPosition(event, canvas);
+    const xOffset = paddings.left + (box && borders.left);
+    const yOffset = paddings.top + (box && borders.top);
+    let { width , height  } = chart;
+    if (borderBox) {
+        width -= paddings.width + borders.width;
+        height -= paddings.height + borders.height;
+    }
+    return {
+        x: Math.round((x - xOffset) / width * canvas.width / currentDevicePixelRatio),
+        y: Math.round((y - yOffset) / height * canvas.height / currentDevicePixelRatio)
+    };
+}
+function getContainerSize(canvas, width, height) {
+    let maxWidth, maxHeight;
+    if (width === undefined || height === undefined) {
+        const container = canvas && _getParentNode(canvas);
+        if (!container) {
+            width = canvas.clientWidth;
+            height = canvas.clientHeight;
+        } else {
+            const rect = container.getBoundingClientRect(); // this is the border box of the container
+            const containerStyle = getComputedStyle(container);
+            const containerBorder = getPositionedStyle(containerStyle, 'border', 'width');
+            const containerPadding = getPositionedStyle(containerStyle, 'padding');
+            width = rect.width - containerPadding.width - containerBorder.width;
+            height = rect.height - containerPadding.height - containerBorder.height;
+            maxWidth = parseMaxStyle(containerStyle.maxWidth, container, 'clientWidth');
+            maxHeight = parseMaxStyle(containerStyle.maxHeight, container, 'clientHeight');
+        }
+    }
+    return {
+        width,
+        height,
+        maxWidth: maxWidth || INFINITY,
+        maxHeight: maxHeight || INFINITY
+    };
+}
+const round1 = (v)=>Math.round(v * 10) / 10;
+// eslint-disable-next-line complexity
+function getMaximumSize(canvas, bbWidth, bbHeight, aspectRatio) {
+    const style = getComputedStyle(canvas);
+    const margins = getPositionedStyle(style, 'margin');
+    const maxWidth = parseMaxStyle(style.maxWidth, canvas, 'clientWidth') || INFINITY;
+    const maxHeight = parseMaxStyle(style.maxHeight, canvas, 'clientHeight') || INFINITY;
+    const containerSize = getContainerSize(canvas, bbWidth, bbHeight);
+    let { width , height  } = containerSize;
+    if (style.boxSizing === 'content-box') {
+        const borders = getPositionedStyle(style, 'border', 'width');
+        const paddings = getPositionedStyle(style, 'padding');
+        width -= paddings.width + borders.width;
+        height -= paddings.height + borders.height;
+    }
+    width = Math.max(0, width - margins.width);
+    height = Math.max(0, aspectRatio ? width / aspectRatio : height - margins.height);
+    width = round1(Math.min(width, maxWidth, containerSize.maxWidth));
+    height = round1(Math.min(height, maxHeight, containerSize.maxHeight));
+    if (width && !height) {
+        // https://github.com/chartjs/Chart.js/issues/4659
+        // If the canvas has width, but no height, default to aspectRatio of 2 (canvas default)
+        height = round1(width / 2);
+    }
+    const maintainHeight = bbWidth !== undefined || bbHeight !== undefined;
+    if (maintainHeight && aspectRatio && containerSize.height && height > containerSize.height) {
+        height = containerSize.height;
+        width = round1(Math.floor(height * aspectRatio));
+    }
+    return {
+        width,
+        height
+    };
+}
+/**
+ * @param chart
+ * @param forceRatio
+ * @param forceStyle
+ * @returns True if the canvas context size or transformation has changed.
+ */ function retinaScale(chart, forceRatio, forceStyle) {
+    const pixelRatio = forceRatio || 1;
+    const deviceHeight = round1(chart.height * pixelRatio);
+    const deviceWidth = round1(chart.width * pixelRatio);
+    chart.height = round1(chart.height);
+    chart.width = round1(chart.width);
+    const canvas = chart.canvas;
+    // If no style has been set on the canvas, the render size is used as display size,
+    // making the chart visually bigger, so let's enforce it to the "correct" values.
+    // See https://github.com/chartjs/Chart.js/issues/3575
+    if (canvas.style && (forceStyle || !canvas.style.height && !canvas.style.width)) {
+        canvas.style.height = `${chart.height}px`;
+        canvas.style.width = `${chart.width}px`;
+    }
+    if (chart.currentDevicePixelRatio !== pixelRatio || canvas.height !== deviceHeight || canvas.width !== deviceWidth) {
+        chart.currentDevicePixelRatio = pixelRatio;
+        canvas.height = deviceHeight;
+        canvas.width = deviceWidth;
+        chart.ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        return true;
+    }
+    return false;
+}
+/**
+ * Detects support for options object argument in addEventListener.
+ * https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Safely_detecting_option_support
+ * @private
+ */ const supportsEventListenerOptions = function() {
+    let passiveSupported = false;
+    try {
+        const options = {
+            get passive () {
+                passiveSupported = true;
+                return false;
+            }
+        };
+        if (_isDomSupported()) {
+            window.addEventListener('test', null, options);
+            window.removeEventListener('test', null, options);
+        }
+    } catch (e) {
+    // continue regardless of error
+    }
+    return passiveSupported;
+}();
+/**
+ * The "used" size is the final value of a dimension property after all calculations have
+ * been performed. This method uses the computed style of `element` but returns undefined
+ * if the computed style is not expressed in pixels. That can happen in some cases where
+ * `element` has a size relative to its parent and this last one is not yet displayed,
+ * for example because of `display: none` on a parent node.
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
+ * @returns Size in pixels or undefined if unknown.
+ */ function readUsedSize(element, property) {
+    const value = getStyle(element, property);
+    const matches = value && value.match(/^(\d+)(\.\d+)?px$/);
+    return matches ? +matches[1] : undefined;
+}
+
+/**
+ * @private
+ */ function _pointInLine(p1, p2, t, mode) {
+    return {
+        x: p1.x + t * (p2.x - p1.x),
+        y: p1.y + t * (p2.y - p1.y)
+    };
+}
+/**
+ * @private
+ */ function _steppedInterpolation(p1, p2, t, mode) {
+    return {
+        x: p1.x + t * (p2.x - p1.x),
+        y: mode === 'middle' ? t < 0.5 ? p1.y : p2.y : mode === 'after' ? t < 1 ? p1.y : p2.y : t > 0 ? p2.y : p1.y
+    };
+}
+/**
+ * @private
+ */ function _bezierInterpolation(p1, p2, t, mode) {
+    const cp1 = {
+        x: p1.cp2x,
+        y: p1.cp2y
+    };
+    const cp2 = {
+        x: p2.cp1x,
+        y: p2.cp1y
+    };
+    const a = _pointInLine(p1, cp1, t);
+    const b = _pointInLine(cp1, cp2, t);
+    const c = _pointInLine(cp2, p2, t);
+    const d = _pointInLine(a, b, t);
+    const e = _pointInLine(b, c, t);
+    return _pointInLine(d, e, t);
+}
+
+const getRightToLeftAdapter = function(rectX, width) {
+    return {
+        x (x) {
+            return rectX + rectX + width - x;
+        },
+        setWidth (w) {
+            width = w;
+        },
+        textAlign (align) {
+            if (align === 'center') {
+                return align;
+            }
+            return align === 'right' ? 'left' : 'right';
+        },
+        xPlus (x, value) {
+            return x - value;
+        },
+        leftForLtr (x, itemWidth) {
+            return x - itemWidth;
+        }
+    };
+};
+const getLeftToRightAdapter = function() {
+    return {
+        x (x) {
+            return x;
+        },
+        setWidth (w) {},
+        textAlign (align) {
+            return align;
+        },
+        xPlus (x, value) {
+            return x + value;
+        },
+        leftForLtr (x, _itemWidth) {
+            return x;
+        }
+    };
+};
+function getRtlAdapter(rtl, rectX, width) {
+    return rtl ? getRightToLeftAdapter(rectX, width) : getLeftToRightAdapter();
+}
+function overrideTextDirection(ctx, direction) {
+    let style, original;
+    if (direction === 'ltr' || direction === 'rtl') {
+        style = ctx.canvas.style;
+        original = [
+            style.getPropertyValue('direction'),
+            style.getPropertyPriority('direction')
+        ];
+        style.setProperty('direction', direction, 'important');
+        ctx.prevTextDirection = original;
+    }
+}
+function restoreTextDirection(ctx, original) {
+    if (original !== undefined) {
+        delete ctx.prevTextDirection;
+        ctx.canvas.style.setProperty('direction', original[0], original[1]);
+    }
+}
+
+function propertyFn(property) {
+    if (property === 'angle') {
+        return {
+            between: _angleBetween,
+            compare: _angleDiff,
+            normalize: _normalizeAngle
+        };
+    }
+    return {
+        between: _isBetween,
+        compare: (a, b)=>a - b,
+        normalize: (x)=>x
+    };
+}
+function normalizeSegment({ start , end , count , loop , style  }) {
+    return {
+        start: start % count,
+        end: end % count,
+        loop: loop && (end - start + 1) % count === 0,
+        style
+    };
+}
+function getSegment(segment, points, bounds) {
+    const { property , start: startBound , end: endBound  } = bounds;
+    const { between , normalize  } = propertyFn(property);
+    const count = points.length;
+    let { start , end , loop  } = segment;
+    let i, ilen;
+    if (loop) {
+        start += count;
+        end += count;
+        for(i = 0, ilen = count; i < ilen; ++i){
+            if (!between(normalize(points[start % count][property]), startBound, endBound)) {
+                break;
+            }
+            start--;
+            end--;
+        }
+        start %= count;
+        end %= count;
+    }
+    if (end < start) {
+        end += count;
+    }
+    return {
+        start,
+        end,
+        loop,
+        style: segment.style
+    };
+}
+ function _boundSegment(segment, points, bounds) {
+    if (!bounds) {
+        return [
+            segment
+        ];
+    }
+    const { property , start: startBound , end: endBound  } = bounds;
+    const count = points.length;
+    const { compare , between , normalize  } = propertyFn(property);
+    const { start , end , loop , style  } = getSegment(segment, points, bounds);
+    const result = [];
+    let inside = false;
+    let subStart = null;
+    let value, point, prevValue;
+    const startIsBefore = ()=>between(startBound, prevValue, value) && compare(startBound, prevValue) !== 0;
+    const endIsBefore = ()=>compare(endBound, value) === 0 || between(endBound, prevValue, value);
+    const shouldStart = ()=>inside || startIsBefore();
+    const shouldStop = ()=>!inside || endIsBefore();
+    for(let i = start, prev = start; i <= end; ++i){
+        point = points[i % count];
+        if (point.skip) {
+            continue;
+        }
+        value = normalize(point[property]);
+        if (value === prevValue) {
+            continue;
+        }
+        inside = between(value, startBound, endBound);
+        if (subStart === null && shouldStart()) {
+            subStart = compare(value, startBound) === 0 ? i : prev;
+        }
+        if (subStart !== null && shouldStop()) {
+            result.push(normalizeSegment({
+                start: subStart,
+                end: i,
+                loop,
+                count,
+                style
+            }));
+            subStart = null;
+        }
+        prev = i;
+        prevValue = value;
+    }
+    if (subStart !== null) {
+        result.push(normalizeSegment({
+            start: subStart,
+            end,
+            loop,
+            count,
+            style
+        }));
+    }
+    return result;
+}
+ function _boundSegments(line, bounds) {
+    const result = [];
+    const segments = line.segments;
+    for(let i = 0; i < segments.length; i++){
+        const sub = _boundSegment(segments[i], line.points, bounds);
+        if (sub.length) {
+            result.push(...sub);
+        }
+    }
+    return result;
+}
+ function findStartAndEnd(points, count, loop, spanGaps) {
+    let start = 0;
+    let end = count - 1;
+    if (loop && !spanGaps) {
+        while(start < count && !points[start].skip){
+            start++;
+        }
+    }
+    while(start < count && points[start].skip){
+        start++;
+    }
+    start %= count;
+    if (loop) {
+        end += start;
+    }
+    while(end > start && points[end % count].skip){
+        end--;
+    }
+    end %= count;
+    return {
+        start,
+        end
+    };
+}
+ function solidSegments(points, start, max, loop) {
+    const count = points.length;
+    const result = [];
+    let last = start;
+    let prev = points[start];
+    let end;
+    for(end = start + 1; end <= max; ++end){
+        const cur = points[end % count];
+        if (cur.skip || cur.stop) {
+            if (!prev.skip) {
+                loop = false;
+                result.push({
+                    start: start % count,
+                    end: (end - 1) % count,
+                    loop
+                });
+                start = last = cur.stop ? end : null;
+            }
+        } else {
+            last = end;
+            if (prev.skip) {
+                start = end;
+            }
+        }
+        prev = cur;
+    }
+    if (last !== null) {
+        result.push({
+            start: start % count,
+            end: last % count,
+            loop
+        });
+    }
+    return result;
+}
+ function _computeSegments(line, segmentOptions) {
+    const points = line.points;
+    const spanGaps = line.options.spanGaps;
+    const count = points.length;
+    if (!count) {
+        return [];
+    }
+    const loop = !!line._loop;
+    const { start , end  } = findStartAndEnd(points, count, loop, spanGaps);
+    if (spanGaps === true) {
+        return splitByStyles(line, [
+            {
+                start,
+                end,
+                loop
+            }
+        ], points, segmentOptions);
+    }
+    const max = end < start ? end + count : end;
+    const completeLoop = !!line._fullLoop && start === 0 && end === count - 1;
+    return splitByStyles(line, solidSegments(points, start, max, completeLoop), points, segmentOptions);
+}
+ function splitByStyles(line, segments, points, segmentOptions) {
+    if (!segmentOptions || !segmentOptions.setContext || !points) {
+        return segments;
+    }
+    return doSplitByStyles(line, segments, points, segmentOptions);
+}
+ function doSplitByStyles(line, segments, points, segmentOptions) {
+    const chartContext = line._chart.getContext();
+    const baseStyle = readStyle(line.options);
+    const { _datasetIndex: datasetIndex , options: { spanGaps  }  } = line;
+    const count = points.length;
+    const result = [];
+    let prevStyle = baseStyle;
+    let start = segments[0].start;
+    let i = start;
+    function addStyle(s, e, l, st) {
+        const dir = spanGaps ? -1 : 1;
+        if (s === e) {
+            return;
+        }
+        s += count;
+        while(points[s % count].skip){
+            s -= dir;
+        }
+        while(points[e % count].skip){
+            e += dir;
+        }
+        if (s % count !== e % count) {
+            result.push({
+                start: s % count,
+                end: e % count,
+                loop: l,
+                style: st
+            });
+            prevStyle = st;
+            start = e % count;
+        }
+    }
+    for (const segment of segments){
+        start = spanGaps ? start : segment.start;
+        let prev = points[start % count];
+        let style;
+        for(i = start + 1; i <= segment.end; i++){
+            const pt = points[i % count];
+            style = readStyle(segmentOptions.setContext(createContext(chartContext, {
+                type: 'segment',
+                p0: prev,
+                p1: pt,
+                p0DataIndex: (i - 1) % count,
+                p1DataIndex: i % count,
+                datasetIndex
+            })));
+            if (styleChanged(style, prevStyle)) {
+                addStyle(start, i - 1, segment.loop, prevStyle);
+            }
+            prev = pt;
+            prevStyle = style;
+        }
+        if (start < i - 1) {
+            addStyle(start, i - 1, segment.loop, prevStyle);
+        }
+    }
+    return result;
+}
+function readStyle(options) {
+    return {
+        backgroundColor: options.backgroundColor,
+        borderCapStyle: options.borderCapStyle,
+        borderDash: options.borderDash,
+        borderDashOffset: options.borderDashOffset,
+        borderJoinStyle: options.borderJoinStyle,
+        borderWidth: options.borderWidth,
+        borderColor: options.borderColor
+    };
+}
+function styleChanged(style, prevStyle) {
+    if (!prevStyle) {
+        return false;
+    }
+    const cache = [];
+    const replacer = function(key, value) {
+        if (!isPatternOrGradient(value)) {
+            return value;
+        }
+        if (!cache.includes(value)) {
+            cache.push(value);
+        }
+        return cache.indexOf(value);
+    };
+    return JSON.stringify(style, replacer) !== JSON.stringify(prevStyle, replacer);
+}
+
+function getSizeForArea(scale, chartArea, field) {
+    return scale.options.clip ? scale[field] : chartArea[field];
+}
+function getDatasetArea(meta, chartArea) {
+    const { xScale , yScale  } = meta;
+    if (xScale && yScale) {
+        return {
+            left: getSizeForArea(xScale, chartArea, 'left'),
+            right: getSizeForArea(xScale, chartArea, 'right'),
+            top: getSizeForArea(yScale, chartArea, 'top'),
+            bottom: getSizeForArea(yScale, chartArea, 'bottom')
+        };
+    }
+    return chartArea;
+}
+function getDatasetClipArea(chart, meta) {
+    const clip = meta._clip;
+    if (clip.disabled) {
+        return false;
+    }
+    const area = getDatasetArea(meta, chart.chartArea);
+    return {
+        left: clip.left === false ? 0 : area.left - (clip.left === true ? 0 : clip.left),
+        right: clip.right === false ? chart.width : area.right + (clip.right === true ? 0 : clip.right),
+        top: clip.top === false ? 0 : area.top - (clip.top === true ? 0 : clip.top),
+        bottom: clip.bottom === false ? chart.height : area.bottom + (clip.bottom === true ? 0 : clip.bottom)
+    };
+}
+
 /*!
  * Chart.js v4.5.1
  * https://www.chartjs.org
  * (c) 2025 Chart.js Contributors
  * Released under the MIT License
- */class fi{constructor(){this._request=null,this._charts=new Map,this._running=!1,this._lastDate=void 0}_notify(t,e,i,s){const n=e.duration;e.listeners[s].forEach((s=>s({chart:t,initial:e.initial,numSteps:n,currentStep:Math.min(i-e.start,n)})))}_refresh(){this._request||(this._running=!0,this._request=Ct.call(window,(()=>{this._update(),this._request=null,this._running&&this._refresh()})))}_update(t=Date.now()){let e=0;this._charts.forEach(((i,s)=>{if(!i.running||!i.items.length)return;const n=i.items;let r,o=n.length-1,h=!1;for(;o>=0;--o)r=n[o],r._active?(r._total>i.duration&&(i.duration=r._total),r.tick(t),h=!0):(n[o]=n[n.length-1],n.pop());h&&(s.draw(),this._notify(s,i,t,"progress")),n.length||(i.running=!1,this._notify(s,i,t,"complete"),i.initial=!1),e+=n.length})),this._lastDate=t,0===e&&(this._running=!1)}_getAnims(t){const e=this._charts;let i=e.get(t);return i||(i={running:!1,initial:!0,items:[],listeners:{complete:[],progress:[]}},e.set(t,i)),i}listen(t,e,i){this._getAnims(t).listeners[e].push(i)}add(t,e){e&&e.length&&this._getAnims(t).items.push(...e)}has(t){return this._getAnims(t).items.length>0}start(t){const e=this._charts.get(t);e&&(e.running=!0,e.start=Date.now(),e.duration=e.items.reduce(((t,e)=>Math.max(t,e._duration)),0),this._refresh())}running(t){if(!this._running)return!1;const e=this._charts.get(t);return!!(e&&e.running&&e.items.length)}stop(t){const e=this._charts.get(t);if(!e||!e.items.length)return;const i=e.items;let s=i.length-1;for(;s>=0;--s)i[s].cancel();e.items=[],this._notify(t,e,Date.now(),"complete")}remove(t){return this._charts.delete(t)}}var di=new fi;const pi="transparent",bi={boolean:(t,e,i)=>i>.5?e:t,color(t,e,i){const s=It(t||pi),n=s.valid&&It(e||pi);return n&&n.valid?n.mix(s,i).hexString():e},number:(t,e,i)=>t+(e-t)*i};class gi{constructor(t,e,i,s){const n=e[i];s=ve([t.to,s,n,t.from]);const r=ve([t.from,n,s]);this._active=!0,this._fn=t.fn||bi[t.type||typeof r],this._easing=Nt[t.easing]||Nt.linear,this._start=Math.floor(Date.now()+(t.delay||0)),this._duration=this._total=Math.floor(t.duration),this._loop=!!t.loop,this._target=e,this._prop=i,this._from=r,this._to=s,this._promises=void 0}active(){return this._active}update(t,e,i){if(this._active){this._notify(!1);const s=this._target[this._prop],n=i-this._start,r=this._duration-n;this._start=i,this._duration=Math.floor(Math.max(r,t.duration)),this._total+=n,this._loop=!!t.loop,this._to=ve([t.to,e,s,t.from]),this._from=ve([t.from,s,e])}}cancel(){this._active&&(this.tick(Date.now()),this._active=!1,this._notify(!1))}tick(t){const e=t-this._start,i=this._duration,s=this._prop,n=this._from,r=this._loop,o=this._to;let h;if(this._active=n!==o&&(r||e<i),!this._active)return this._target[s]=o,void this._notify(!0);e<0?this._target[s]=n:(h=e/i%2,h=r&&h>1?2-h:h,h=this._easing(Math.min(1,Math.max(0,h))),this._target[s]=this._fn(n,o,h))}wait(){const t=this._promises||(this._promises=[]);return new Promise(((e,i)=>{t.push({res:e,rej:i})}))}_notify(t){const e=t?"res":"rej",i=this._promises||[];for(let t=0;t<i.length;t++)i[t][e]()}}class mi{constructor(t,e){this._chart=t,this._properties=new Map,this.configure(e)}configure(t){if(!P(t))return;const e=Object.keys(Qt.animation),i=this._properties;Object.getOwnPropertyNames(t).forEach((s=>{const n=t[s];if(!P(n))return;const r={};for(const t of e)r[t]=n[t];(L(n.properties)&&n.properties||[s]).forEach((t=>{t!==s&&i.has(t)||i.set(t,r)}))}))}_animateOptions(t,e){const i=e.options,s=function(t,e){if(!e)return;let i=t.options;if(i)return i.$shared&&(t.options=i=Object.assign({},i,{$shared:!1,$animations:{}})),i;t.options=e}(t,i);if(!s)return[];const n=this._createAnimations(s,i);return i.$shared&&function(t,e){const i=[],s=Object.keys(e);for(let e=0;e<s.length;e++){const n=t[s[e]];n&&n.active()&&i.push(n.wait())}return Promise.all(i)}(t.options.$animations,i).then((()=>{t.options=i}),(()=>{})),n}_createAnimations(t,e){const i=this._properties,s=[],n=t.$animations||(t.$animations={}),r=Object.keys(e),o=Date.now();let h;for(h=r.length-1;h>=0;--h){const a=r[h];if("$"===a.charAt(0))continue;if("options"===a){s.push(...this._animateOptions(t,e));continue}const c=e[a];let u=n[a];const l=i.get(a);if(u){if(l&&u.active()){u.update(l,c,o);continue}u.cancel()}l&&l.duration?(n[a]=u=new gi(l,t,a,c),s.push(u)):t[a]=c}return s}update(t,e){if(0===this._properties.size)return void Object.assign(t,e);const i=this._createAnimations(t,e);return i.length?(di.add(this._chart,i),!0):void 0}}function xi(t,e){const i=t&&t.options||{},s=i.reverse,n=void 0===i.min?e:0,r=void 0===i.max?e:0;return{start:s?r:n,end:s?n:r}}function vi(t,e){const i=[],s=t._getSortedDatasetMetas(e);let n,r;for(n=0,r=s.length;n<r;++n)i.push(s[n].index);return i}function yi(t,e,i,s={}){const n=t.keys,r="single"===s.mode;let o,h,a,c;if(null===e)return;let u=!1;for(o=0,h=n.length;o<h;++o){if(a=+n[o],a===i){if(u=!0,s.all)continue;break}c=t.values[a],N(c)&&(r||0===e||ut(e)===ut(c))&&(e+=c)}return u||s.all?e:0}function Mi(t,e){const i=t&&t.options.stacked;return i||void 0===i&&void 0!==e.stack}function wi(t,e,i){const s=t[e]||(t[e]={});return s[i]||(s[i]={})}function _i(t,e,i,s){for(const n of e.getMatchingVisibleMetas(s).reverse()){const e=t[n.index];if(i&&e>0||!i&&e<0)return n.index}return null}function ki(t,e){const{chart:i,_cachedMeta:s}=t,n=i._stacks||(i._stacks={}),{iScale:r,vScale:o,index:h}=s,a=r.axis,c=o.axis,u=function(t,e,i){return`${t.id}.${e.id}.${i.stack||i.type}`}(r,o,s),l=e.length;let f;for(let t=0;t<l;++t){const i=e[t],{[a]:r,[c]:l}=i;f=(i._stacks||(i._stacks={}))[c]=wi(n,u,r),f[h]=l,f._top=_i(f,o,!0,s.type),f._bottom=_i(f,o,!1,s.type),(f._visualValues||(f._visualValues={}))[h]=l}}function Oi(t,e){const i=t.scales;return Object.keys(i).filter((t=>i[t].axis===e)).shift()}function Si(t,e){const i=t.controller.index,s=t.vScale&&t.vScale.axis;if(s){e=e||t._parsed;for(const t of e){const e=t._stacks;if(!e||void 0===e[s]||void 0===e[s][i])return;delete e[s][i],void 0!==e[s]._visualValues&&void 0!==e[s]._visualValues[i]&&delete e[s]._visualValues[i]}}}const Ai=t=>"reset"===t||"none"===t,Di=(t,e)=>e?t:Object.assign({},t);class Ci{static defaults={};static datasetElementType=null;static dataElementType=null;constructor(t,e){this.chart=t,this._ctx=t.ctx,this.index=e,this._cachedDataOpts={},this._cachedMeta=this.getMeta(),this._type=this._cachedMeta.type,this.options=void 0,this._parsing=!1,this._data=void 0,this._objectData=void 0,this._sharedOptions=void 0,this._drawStart=void 0,this._drawCount=void 0,this.enableOptionSharing=!1,this.supportsDecimation=!1,this.$context=void 0,this._syncList=[],this.datasetElementType=new.target.datasetElementType,this.dataElementType=new.target.dataElementType,this.initialize()}initialize(){const t=this._cachedMeta;this.configure(),this.linkScales(),t._stacked=Mi(t.vScale,t),this.addElements(),this.options.fill&&!this.chart.isPluginEnabled("filler")&&console.warn("Tried to use the 'fill' option without the 'Filler' plugin enabled. Please import and register the 'Filler' plugin and make sure it is not disabled in the options")}updateIndex(t){this.index!==t&&Si(this._cachedMeta),this.index=t}linkScales(){const t=this.chart,e=this._cachedMeta,i=this.getDataset(),s=(t,e,i,s)=>"x"===t?e:"r"===t?s:i,n=e.xAxisID=I(i.xAxisID,Oi(t,"x")),r=e.yAxisID=I(i.yAxisID,Oi(t,"y")),o=e.rAxisID=I(i.rAxisID,Oi(t,"r")),h=e.indexAxis,a=e.iAxisID=s(h,n,r,o),c=e.vAxisID=s(h,r,n,o);e.xScale=this.getScaleForId(n),e.yScale=this.getScaleForId(r),e.rScale=this.getScaleForId(o),e.iScale=this.getScaleForId(a),e.vScale=this.getScaleForId(c)}getDataset(){return this.chart.data.datasets[this.index]}getMeta(){return this.chart.getDatasetMeta(this.index)}getScaleForId(t){return this.chart.scales[t]}_getOtherScale(t){const e=this._cachedMeta;return t===e.iScale?e.vScale:e.iScale}reset(){this._update("reset")}_destroy(){const t=this._cachedMeta;this._data&&At(this._data,this),t._stacked&&Si(t)}_dataCheck(){const t=this.getDataset(),e=t.data||(t.data=[]),i=this._data;if(P(e))this._data=function(t,e){const{iScale:i,vScale:s}=e,n="x"===i.axis?"x":"y",r="x"===s.axis?"x":"y",o=Object.keys(t),h=new Array(o.length);let a,c,u;for(a=0,c=o.length;a<c;++a)u=o[a],h[a]={[n]:u,[r]:t[u]};return h}(e,this._cachedMeta);else if(i!==e){if(i){At(i,this);const t=this._cachedMeta;Si(t),t._parsed=[]}e&&Object.isExtensible(e)&&((s=e)._chartjs?s._chartjs.listeners.push(this):(Object.defineProperty(s,"_chartjs",{configurable:!0,enumerable:!1,value:{listeners:[this]}}),St.forEach((t=>{const e="_onData"+q(t),i=s[t];Object.defineProperty(s,t,{configurable:!0,enumerable:!1,value(...t){const n=i.apply(this,t);return s._chartjs.listeners.forEach((i=>{"function"==typeof i[e]&&i[e](...t)})),n}})})))),this._syncList=[],this._data=e}var s}addElements(){const t=this._cachedMeta;this._dataCheck(),this.datasetElementType&&(t.dataset=new this.datasetElementType)}buildOrUpdateElements(t){const e=this._cachedMeta,i=this.getDataset();let s=!1;this._dataCheck();const n=e._stacked;e._stacked=Mi(e.vScale,e),e.stack!==i.stack&&(s=!0,Si(e),e.stack=i.stack),this._resyncElements(t),(s||n!==e._stacked)&&(ki(this,e._parsed),e._stacked=Mi(e.vScale,e))}configure(){const t=this.chart.config,e=t.datasetScopeKeys(this._type),i=t.getOptionScopes(this.getDataset(),e,!0);this.options=t.createResolver(i,this.getContext()),this._parsing=this.options.parsing,this._cachedDataOpts={}}parse(t,e){const{_cachedMeta:i,_data:s}=this,{iScale:n,_stacked:r}=i,o=n.axis;let h,a,c,u=0===t&&e===s.length||i._sorted,l=t>0&&i._parsed[t-1];if(!1===this._parsing)i._parsed=s,i._sorted=!0,c=s;else{c=L(s[t])?this.parseArrayData(i,s,t,e):P(s[t])?this.parseObjectData(i,s,t,e):this.parsePrimitiveData(i,s,t,e);const n=()=>null===a[o]||l&&a[o]<l[o];for(h=0;h<e;++h)i._parsed[h+t]=a=c[h],u&&(n()&&(u=!1),l=a);i._sorted=u}r&&ki(this,c)}parsePrimitiveData(t,e,i,s){const{iScale:n,vScale:r}=t,o=n.axis,h=r.axis,a=n.getLabels(),c=n===r,u=new Array(s);let l,f,d;for(l=0,f=s;l<f;++l)d=l+i,u[l]={[o]:c||n.parse(a[d],d),[h]:r.parse(e[d],d)};return u}parseArrayData(t,e,i,s){const{xScale:n,yScale:r}=t,o=new Array(s);let h,a,c,u;for(h=0,a=s;h<a;++h)c=h+i,u=e[c],o[h]={x:n.parse(u[0],c),y:r.parse(u[1],c)};return o}parseObjectData(t,e,i,s){const{xScale:n,yScale:r}=t,{xAxisKey:o="x",yAxisKey:h="y"}=this._parsing,a=new Array(s);let c,u,l,f;for(c=0,u=s;c<u;++c)l=c+i,f=e[l],a[c]={x:n.parse(Q(f,o),l),y:r.parse(Q(f,h),l)};return a}getParsed(t){return this._cachedMeta._parsed[t]}getDataElement(t){return this._cachedMeta.data[t]}applyStack(t,e,i){const s=this._cachedMeta,n=e[t.axis];return yi({keys:vi(this.chart,!0),values:e._stacks[t.axis]._visualValues},n,s.index,{mode:i})}updateRangeFromParsed(t,e,i,s){const n=i[e.axis];let r=null===n?NaN:n;const o=s&&i._stacks[e.axis];s&&o&&(s.values=o,r=yi(s,n,this._cachedMeta.index)),t.min=Math.min(t.min,r),t.max=Math.max(t.max,r)}getMinMax(t,e){const i=this._cachedMeta,s=i._parsed,n=i._sorted&&t===i.iScale,r=s.length,o=this._getOtherScale(t),h=((t,e)=>t&&!e.hidden&&e._stacked&&{keys:vi(this.chart,!0),values:null})(e,i),a={min:Number.POSITIVE_INFINITY,max:Number.NEGATIVE_INFINITY},{min:c,max:u}=function(t){const{min:e,max:i,minDefined:s,maxDefined:n}=t.getUserBounds();return{min:s?e:Number.NEGATIVE_INFINITY,max:n?i:Number.POSITIVE_INFINITY}}(o);let l,f;function d(){f=s[l];const e=f[o.axis];return!N(f[t.axis])||c>e||u<e}for(l=0;l<r&&(d()||(this.updateRangeFromParsed(a,t,f,h),!n));++l);if(n)for(l=r-1;l>=0;--l)if(!d()){this.updateRangeFromParsed(a,t,f,h);break}return a}getAllParsedValues(t){const e=this._cachedMeta._parsed,i=[];let s,n,r;for(s=0,n=e.length;s<n;++s)r=e[s][t.axis],N(r)&&i.push(r);return i}getMaxOverflow(){return!1}getLabelAndValue(t){const e=this._cachedMeta,i=e.iScale,s=e.vScale,n=this.getParsed(t);return{label:i?""+i.getLabelForValue(n[i.axis]):"",value:s?""+s.getLabelForValue(n[s.axis]):""}}_update(t){const e=this._cachedMeta;this.update(t||"default"),e._clip=function(t){let e,i,s,n;return P(t)?(e=t.top,i=t.right,s=t.bottom,n=t.left):e=i=s=n=t,{top:e,right:i,bottom:s,left:n,disabled:!1===t}}(I(this.options.clip,function(t,e,i){if(!1===i)return!1;const s=xi(t,i),n=xi(e,i);return{top:n.end,right:s.end,bottom:n.start,left:s.start}}(e.xScale,e.yScale,this.getMaxOverflow())))}update(t){}draw(){const t=this._ctx,e=this._cachedMeta,i=e.data||[],s=this.chart.chartArea,n=[],r=this._drawStart||0,o=this._drawCount||i.length-r,h=this.options.drawActiveElementsOnTop;let a;for(e.dataset&&e.dataset.draw(t,s,r,o),a=r;a<r+o;++a){const e=i[a];e.hidden||(e.active&&h?n.push(e):e.draw(t,s))}for(a=0;a<n.length;++a)n[a].draw(t,s)}getStyle(t,e){const i=e?"active":"default";return void 0===t&&this._cachedMeta.dataset?this.resolveDatasetElementOptions(i):this.resolveDataElementOptions(t||0,i)}getContext(t,e,i){const s=this.getDataset();let n;if(t>=0&&t<this._cachedMeta.data.length){const e=this._cachedMeta.data[t];n=e.$context||(e.$context=function(t,e,i){return ye(t,{active:!1,dataIndex:e,parsed:void 0,raw:void 0,element:i,index:e,mode:"default",type:"data"})}(this.getContext(),t,e)),n.parsed=this.getParsed(t),n.raw=s.data[t],n.index=n.dataIndex=t}else n=this.$context||(this.$context=function(t,e){return ye(t,{active:!1,dataset:void 0,datasetIndex:e,index:e,mode:"default",type:"dataset"})}(this.chart.getContext(),this.index)),n.dataset=s,n.index=n.datasetIndex=this.index;return n.active=!!e,n.mode=i,n}resolveDatasetElementOptions(t){return this._resolveElementOptions(this.datasetElementType.id,t)}resolveDataElementOptions(t,e){return this._resolveElementOptions(this.dataElementType.id,e,t)}_resolveElementOptions(t,e="default",i){const s="active"===e,n=this._cachedDataOpts,r=t+"-"+e,o=n[r],h=this.enableOptionSharing&&J(i);if(o)return Di(o,h);const a=this.chart.config,c=a.datasetElementScopeKeys(this._type,t),u=s?[`${t}Hover`,"hover",t,""]:[t,""],l=a.getOptionScopes(this.getDataset(),c),f=Object.keys(Qt.elements[t]),d=a.resolveNamedOptions(l,f,(()=>this.getContext(i,s,e)),u);return d.$shared&&(d.$shared=h,n[r]=Object.freeze(Di(d,h))),d}_resolveAnimations(t,e,i){const s=this.chart,n=this._cachedDataOpts,r=`animation-${e}`,o=n[r];if(o)return o;let h;if(!1!==s.options.animation){const s=this.chart.config,n=s.datasetAnimationScopeKeys(this._type,e),r=s.getOptionScopes(this.getDataset(),n);h=s.createResolver(r,this.getContext(t,i,e))}const a=new mi(s,h&&h.animations);return h&&h._cacheable&&(n[r]=Object.freeze(a)),a}getSharedOptions(t){if(t.$shared)return this._sharedOptions||(this._sharedOptions=Object.assign({},t))}includeOptions(t,e){return!e||Ai(t)||this.chart._animationsDisabled}_getSharedOptions(t,e){const i=this.resolveDataElementOptions(t,e),s=this._sharedOptions,n=this.getSharedOptions(i),r=this.includeOptions(e,n)||n!==s;return this.updateSharedOptions(n,e,i),{sharedOptions:n,includeOptions:r}}updateElement(t,e,i,s){Ai(s)?Object.assign(t,i):this._resolveAnimations(e,s).update(t,i)}updateSharedOptions(t,e,i){t&&!Ai(e)&&this._resolveAnimations(void 0,e).update(t,i)}_setStyle(t,e,i,s){t.active=s;const n=this.getStyle(e,s);this._resolveAnimations(e,i,s).update(t,{options:!s&&this.getSharedOptions(n)||n})}removeHoverStyle(t,e,i){this._setStyle(t,i,"active",!1)}setHoverStyle(t,e,i){this._setStyle(t,i,"active",!0)}_removeDatasetHoverStyle(){const t=this._cachedMeta.dataset;t&&this._setStyle(t,void 0,"active",!1)}_setDatasetHoverStyle(){const t=this._cachedMeta.dataset;t&&this._setStyle(t,void 0,"active",!0)}_resyncElements(t){const e=this._data,i=this._cachedMeta.data;for(const[t,e,i]of this._syncList)this[t](e,i);this._syncList=[];const s=i.length,n=e.length,r=Math.min(n,s);r&&this.parse(0,r),n>s?this._insertElements(s,n-s,t):n<s&&this._removeElements(n,s-n)}_insertElements(t,e,i=!0){const s=this._cachedMeta,n=s.data,r=t+e;let o;const h=t=>{for(t.length+=e,o=t.length-1;o>=r;o--)t[o]=t[o-e]};for(h(n),o=t;o<r;++o)n[o]=new this.dataElementType;this._parsing&&h(s._parsed),this.parse(t,e),i&&this.updateElements(n,t,e,"reset")}updateElements(t,e,i,s){}_removeElements(t,e){const i=this._cachedMeta;if(this._parsing){const s=i._parsed.splice(t,e);i._stacked&&Si(i,s)}i.data.splice(t,e)}_sync(t){if(this._parsing)this._syncList.push(t);else{const[e,i,s]=t;this[e](i,s)}this.chart._dataChanges.push([this.index,...t])}_onDataPush(){const t=arguments.length;this._sync(["_insertElements",this.getDataset().data.length-t,t])}_onDataPop(){this._sync(["_removeElements",this._cachedMeta.data.length-1,1])}_onDataShift(){this._sync(["_removeElements",0,1])}_onDataSplice(t,e){e&&this._sync(["_removeElements",t,e]);const i=arguments.length-2;i&&this._sync(["_insertElements",t,i])}_onDataUnshift(){this._sync(["_insertElements",0,arguments.length])}}function Ri(t){const e=t.iScale,i=function(t,e){if(!t._cache.$bar){const i=t.getMatchingVisibleMetas(e);let s=[];for(let e=0,n=i.length;e<n;e++)s=s.concat(i[e].controller.getAllParsedValues(t));t._cache.$bar=Dt(s.sort(((t,e)=>t-e)))}return t._cache.$bar}(e,t.type);let s,n,r,o,h=e._length;const a=()=>{32767!==r&&-32768!==r&&(J(o)&&(h=Math.min(h,Math.abs(r-o)||h)),o=r)};for(s=0,n=i.length;s<n;++s)r=e.getPixelForValue(i[s]),a();for(o=void 0,s=0,n=e.ticks.length;s<n;++s)r=e.getPixelForTick(s),a();return h}function Ei(t,e,i,s){return L(t)?function(t,e,i,s){const n=i.parse(t[0],s),r=i.parse(t[1],s),o=Math.min(n,r),h=Math.max(n,r);let a=o,c=h;Math.abs(o)>Math.abs(h)&&(a=h,c=o),e[i.axis]=c,e._custom={barStart:a,barEnd:c,start:n,end:r,min:o,max:h}}(t,e,i,s):e[i.axis]=i.parse(t,s),e}function ji(t,e,i,s){const n=t.iScale,r=t.vScale,o=n.getLabels(),h=n===r,a=[];let c,u,l,f;for(c=i,u=i+s;c<u;++c)f=e[c],l={},l[n.axis]=h||n.parse(o[c],c),a.push(Ei(f,l,r,c));return a}function Fi(t){return t&&void 0!==t.barStart&&void 0!==t.barEnd}function Li(t,e,i,s){let n=e.borderSkipped;const r={};if(!n)return void(t.borderSkipped=r);if(!0===n)return void(t.borderSkipped={top:!0,right:!0,bottom:!0,left:!0});const{start:o,end:h,reverse:a,top:c,bottom:u}=function(t){let e,i,s,n,r;return t.horizontal?(e=t.base>t.x,i="left",s="right"):(e=t.base<t.y,i="bottom",s="top"),e?(n="end",r="start"):(n="start",r="end"),{start:i,end:s,reverse:e,top:n,bottom:r}}(t);"middle"===n&&i&&(t.enableBorderRadius=!0,(i._top||0)===s?n=c:(i._bottom||0)===s?n=u:(r[Pi(u,o,h,a)]=!0,n=c)),r[Pi(n,o,h,a)]=!0,t.borderSkipped=r}function Pi(t,e,i,s){var n,r,o;return s?(o=i,t=Ni(t=(n=t)===(r=e)?o:n===o?r:n,i,e)):t=Ni(t,e,i),t}function Ni(t,e,i){return"start"===t?e:"end"===t?i:t}function Ti(t,{inflateAmount:e},i){t.inflateAmount="auto"===e?1===i?.33:0:e}class Ii extends Ci{static id="bar";static defaults={datasetElementType:!1,dataElementType:"bar",categoryPercentage:.8,barPercentage:.9,grouped:!0,animations:{numbers:{type:"number",properties:["x","y","base","width","height"]}}};static overrides={scales:{_index_:{type:"category",offset:!0,grid:{offset:!0}},_value_:{type:"linear",beginAtZero:!0}}};parsePrimitiveData(t,e,i,s){return ji(t,e,i,s)}parseArrayData(t,e,i,s){return ji(t,e,i,s)}parseObjectData(t,e,i,s){const{iScale:n,vScale:r}=t,{xAxisKey:o="x",yAxisKey:h="y"}=this._parsing,a="x"===n.axis?o:h,c="x"===r.axis?o:h,u=[];let l,f,d,p;for(l=i,f=i+s;l<f;++l)p=e[l],d={},d[n.axis]=n.parse(Q(p,a),l),u.push(Ei(Q(p,c),d,r,l));return u}updateRangeFromParsed(t,e,i,s){super.updateRangeFromParsed(t,e,i,s);const n=i._custom;n&&e===this._cachedMeta.vScale&&(t.min=Math.min(t.min,n.min),t.max=Math.max(t.max,n.max))}getMaxOverflow(){return 0}getLabelAndValue(t){const e=this._cachedMeta,{iScale:i,vScale:s}=e,n=this.getParsed(t),r=n._custom,o=Fi(r)?"["+r.start+", "+r.end+"]":""+s.getLabelForValue(n[s.axis]);return{label:""+i.getLabelForValue(n[i.axis]),value:o}}initialize(){this.enableOptionSharing=!0,super.initialize(),this._cachedMeta.stack=this.getDataset().stack}update(t){const e=this._cachedMeta;this.updateElements(e.data,0,e.data.length,t)}updateElements(t,e,i,s){const n="reset"===s,{index:r,_cachedMeta:{vScale:o}}=this,h=o.getBasePixel(),a=o.isHorizontal(),c=this._getRuler(),{sharedOptions:u,includeOptions:l}=this._getSharedOptions(e,s);for(let f=e;f<e+i;f++){const e=this.getParsed(f),i=n||F(e[o.axis])?{base:h,head:h}:this._calculateBarValuePixels(f),d=this._calculateBarIndexPixels(f,c),p=(e._stacks||{})[o.axis],b={horizontal:a,base:i.base,enableBorderRadius:!p||Fi(e._custom)||r===p._top||r===p._bottom,x:a?i.head:d.center,y:a?d.center:i.head,height:a?d.size:Math.abs(i.size),width:a?Math.abs(i.size):d.size};l&&(b.options=u||this.resolveDataElementOptions(f,t[f].active?"active":s));const g=b.options||t[f].options;Li(b,g,p,r),Ti(b,g,c.ratio),this.updateElement(t[f],f,b,s)}}_getStacks(t,e){const{iScale:i}=this._cachedMeta,s=i.getMatchingVisibleMetas(this._type).filter((t=>t.controller.options.grouped)),n=i.options.stacked,r=[],o=this._cachedMeta.controller.getParsed(e),h=o&&o[i.axis],a=t=>{const e=t._parsed.find((t=>t[i.axis]===h)),s=e&&e[t.vScale.axis];if(F(s)||isNaN(s))return!0};for(const i of s)if((void 0===e||!a(i))&&((!1===n||-1===r.indexOf(i.stack)||void 0===n&&void 0===i.stack)&&r.push(i.stack),i.index===t))break;return r.length||r.push(void 0),r}_getStackCount(t){return this._getStacks(void 0,t).length}_getAxisCount(){return this._getAxis().length}getFirstScaleIdForIndexAxis(){const t=this.chart.scales,e=this.chart.options.indexAxis;return Object.keys(t).filter((i=>t[i].axis===e)).shift()}_getAxis(){const t={},e=this.getFirstScaleIdForIndexAxis();for(const i of this.chart.data.datasets)t[I("x"===this.chart.options.indexAxis?i.xAxisID:i.yAxisID,e)]=!0;return Object.keys(t)}_getStackIndex(t,e,i){const s=this._getStacks(t,i),n=void 0!==e?s.indexOf(e):-1;return-1===n?s.length-1:n}_getRuler(){const t=this.options,e=this._cachedMeta,i=e.iScale,s=[];let n,r;for(n=0,r=e.data.length;n<r;++n)s.push(i.getPixelForValue(this.getParsed(n)[i.axis],n));const o=t.barThickness;return{min:o||Ri(e),pixels:s,start:i._startPixel,end:i._endPixel,stackCount:this._getStackCount(),scale:i,grouped:t.grouped,ratio:o?1:t.categoryPercentage*t.barPercentage}}_calculateBarValuePixels(t){const{_cachedMeta:{vScale:e,_stacked:i,index:s},options:{base:n,minBarLength:r}}=this,o=n||0,h=this.getParsed(t),a=h._custom,c=Fi(a);let u,l,f=h[e.axis],d=0,p=i?this.applyStack(e,h,i):f;p!==f&&(d=p-f,p=f),c&&(f=a.barStart,p=a.barEnd-a.barStart,0!==f&&ut(f)!==ut(a.barEnd)&&(d=0),d+=f);const b=F(n)||c?d:n;let g=e.getPixelForValue(b);if(u=this.chart.getDataVisibility(t)?e.getPixelForValue(d+p):g,l=u-g,Math.abs(l)<r){l=function(t,e,i){return 0!==t?ut(t):(e.isHorizontal()?1:-1)*(e.min>=i?1:-1)}(l,e,o)*r,f===o&&(g-=l/2);const t=e.getPixelForDecimal(0),n=e.getPixelForDecimal(1),a=Math.min(t,n),d=Math.max(t,n);g=Math.max(Math.min(g,d),a),u=g+l,i&&!c&&(h._stacks[e.axis]._visualValues[s]=e.getValueForPixel(u)-e.getValueForPixel(g))}if(g===e.getPixelForValue(o)){const t=ut(l)*e.getLineWidthForValue(o)/2;g+=t,l-=t}return{size:l,base:g,head:u,center:u+l/2}}_calculateBarIndexPixels(t,e){const i=e.scale,s=this.options,n=s.skipNull,r=I(s.maxBarThickness,1/0);let o,h;const a=this._getAxisCount();if(e.grouped){const i=n?this._getStackCount(t):e.stackCount,c="flex"===s.barThickness?function(t,e,i,s){const n=e.pixels,r=n[t];let o=t>0?n[t-1]:null,h=t<n.length-1?n[t+1]:null;const a=i.categoryPercentage;null===o&&(o=r-(null===h?e.end-e.start:h-r)),null===h&&(h=r+r-o);const c=r-(r-Math.min(o,h))/2*a;return{chunk:Math.abs(h-o)/2*a/s,ratio:i.barPercentage,start:c}}(t,e,s,i*a):function(t,e,i,s){const n=i.barThickness;let r,o;return F(n)?(r=e.min*i.categoryPercentage,o=i.barPercentage):(r=n*s,o=1),{chunk:r/s,ratio:o,start:e.pixels[t]-r/2}}(t,e,s,i*a),u="x"===this.chart.options.indexAxis?this.getDataset().xAxisID:this.getDataset().yAxisID,l=this._getAxis().indexOf(I(u,this.getFirstScaleIdForIndexAxis())),f=this._getStackIndex(this.index,this._cachedMeta.stack,n?t:void 0)+l;o=c.start+c.chunk*f+c.chunk/2,h=Math.min(r,c.chunk*c.ratio)}else o=i.getPixelForValue(this.getParsed(t)[i.axis],t),h=Math.min(r,e.min*e.ratio);return{base:o-h/2,head:o+h/2,center:o,size:h}}draw(){const t=this._cachedMeta,e=t.vScale,i=t.data,s=i.length;let n=0;for(;n<s;++n)null===this.getParsed(n)[e.axis]||i[n].hidden||i[n].draw(this._ctx)}}class Bi extends Ci{static id="doughnut";static defaults={datasetElementType:!1,dataElementType:"arc",animation:{animateRotate:!0,animateScale:!1},animations:{numbers:{type:"number",properties:["circumference","endAngle","innerRadius","outerRadius","startAngle","x","y","offset","borderWidth","spacing"]}},cutout:"50%",rotation:0,circumference:360,radius:"100%",spacing:0,indexAxis:"r"};static descriptors={_scriptable:t=>"spacing"!==t,_indexable:t=>"spacing"!==t&&!t.startsWith("borderDash")&&!t.startsWith("hoverBorderDash")};static overrides={aspectRatio:1,plugins:{legend:{labels:{generateLabels(t){const e=t.data,{labels:{pointStyle:i,textAlign:s,color:n,useBorderRadius:r,borderRadius:o}}=t.legend.options;return e.labels.length&&e.datasets.length?e.labels.map(((e,h)=>{const a=t.getDatasetMeta(0).controller.getStyle(h);return{text:e,fillStyle:a.backgroundColor,fontColor:n,hidden:!t.getDataVisibility(h),lineDash:a.borderDash,lineDashOffset:a.borderDashOffset,lineJoin:a.borderJoinStyle,lineWidth:a.borderWidth,strokeStyle:a.borderColor,textAlign:s,pointStyle:i,borderRadius:r&&(o||a.borderRadius),index:h}})):[]}},onClick(t,e,i){i.chart.toggleDataVisibility(e.index),i.chart.update()}}}};constructor(t,e){super(t,e),this.enableOptionSharing=!0,this.innerRadius=void 0,this.outerRadius=void 0,this.offsetX=void 0,this.offsetY=void 0}linkScales(){}parse(t,e){const i=this.getDataset().data,s=this._cachedMeta;if(!1===this._parsing)s._parsed=i;else{let n,r,o=t=>+i[t];if(P(i[t])){const{key:t="value"}=this._parsing;o=e=>+Q(i[e],t)}for(n=t,r=t+e;n<r;++n)s._parsed[n]=o(n)}}_getRotation(){return pt(this.options.rotation-90)}_getCircumference(){return pt(this.options.circumference)}_getRotationExtents(){let t=it,e=-it;for(let i=0;i<this.chart.data.datasets.length;++i)if(this.chart.isDatasetVisible(i)&&this.chart.getDatasetMeta(i).type===this._type){const s=this.chart.getDatasetMeta(i).controller,n=s._getRotation(),r=s._getCircumference();t=Math.min(t,n),e=Math.max(e,n+r)}return{rotation:t,circumference:e-t}}update(t){const e=this.chart,{chartArea:i}=e,s=this._cachedMeta,n=s.data,r=this.getMaxBorderWidth()+this.getMaxOffset(n)+this.options.spacing,o=Math.max((Math.min(i.width,i.height)-r)/2,0),h=Math.min((c=o,"string"==typeof(a=this.options.cutout)&&a.endsWith("%")?parseFloat(a)/100:+a/c),1);var a,c;const u=this._getRingWeight(this.index),{circumference:l,rotation:f}=this._getRotationExtents(),{ratioX:d,ratioY:p,offsetX:b,offsetY:g}=function(t,e,i){let s=1,n=1,r=0,o=0;if(e<it){const h=t,a=h+e,c=Math.cos(h),u=Math.sin(h),l=Math.cos(a),f=Math.sin(a),d=(t,e,s)=>yt(t,h,a,!0)?1:Math.max(e,e*i,s,s*i),p=(t,e,s)=>yt(t,h,a,!0)?-1:Math.min(e,e*i,s,s*i),b=d(0,c,l),g=d(ot,u,f),m=p(et,c,l),x=p(et+ot,u,f);s=(b-m)/2,n=(g-x)/2,r=-(b+m)/2,o=-(g+x)/2}return{ratioX:s,ratioY:n,offsetX:r,offsetY:o}}(f,l,h),m=Math.max(Math.min((i.width-r)/d,(i.height-r)/p)/2,0),x=B(this.options.radius,m),v=(x-Math.max(x*h,0))/this._getVisibleDatasetWeightTotal();this.offsetX=b*x,this.offsetY=g*x,s.total=this.calculateTotal(),this.outerRadius=x-v*this._getRingWeightOffset(this.index),this.innerRadius=Math.max(this.outerRadius-v*u,0),this.updateElements(n,0,n.length,t)}_circumference(t,e){const i=this.options,s=this._cachedMeta,n=this._getCircumference();return e&&i.animation.animateRotate||!this.chart.getDataVisibility(t)||null===s._parsed[t]||s.data[t].hidden?0:this.calculateCircumference(s._parsed[t]*n/it)}updateElements(t,e,i,s){const n="reset"===s,r=this.chart,o=r.chartArea,h=(o.left+o.right)/2,a=(o.top+o.bottom)/2,c=n&&r.options.animation.animateScale,u=c?0:this.innerRadius,l=c?0:this.outerRadius,{sharedOptions:f,includeOptions:d}=this._getSharedOptions(e,s);let p,b=this._getRotation();for(p=0;p<e;++p)b+=this._circumference(p,n);for(p=e;p<e+i;++p){const e=this._circumference(p,n),i=t[p],r={x:h+this.offsetX,y:a+this.offsetY,startAngle:b,endAngle:b+e,circumference:e,outerRadius:l,innerRadius:u};d&&(r.options=f||this.resolveDataElementOptions(p,i.active?"active":s)),b+=e,this.updateElement(i,p,r,s)}}calculateTotal(){const t=this._cachedMeta,e=t.data;let i,s=0;for(i=0;i<e.length;i++){const n=t._parsed[i];null===n||isNaN(n)||!this.chart.getDataVisibility(i)||e[i].hidden||(s+=Math.abs(n))}return s}calculateCircumference(t){const e=this._cachedMeta.total;return e>0&&!isNaN(t)?it*(Math.abs(t)/e):0}getLabelAndValue(t){const e=this.chart,i=e.data.labels||[],s=$t(this._cachedMeta._parsed[t],e.options.locale);return{label:i[t]||"",value:s}}getMaxBorderWidth(t){let e=0;const i=this.chart;let s,n,r,o,h;if(!t)for(s=0,n=i.data.datasets.length;s<n;++s)if(i.isDatasetVisible(s)){r=i.getDatasetMeta(s),t=r.data,o=r.controller;break}if(!t)return 0;for(s=0,n=t.length;s<n;++s)h=o.resolveDataElementOptions(s),"inner"!==h.borderAlign&&(e=Math.max(e,h.borderWidth||0,h.hoverBorderWidth||0));return e}getMaxOffset(t){let e=0;for(let i=0,s=t.length;i<s;++i){const t=this.resolveDataElementOptions(i);e=Math.max(e,t.offset||0,t.hoverOffset||0)}return e}_getRingWeightOffset(t){let e=0;for(let i=0;i<t;++i)this.chart.isDatasetVisible(i)&&(e+=this._getRingWeight(i));return e}_getRingWeight(t){return Math.max(I(this.chart.data.datasets[t].weight,1),0)}_getVisibleDatasetWeightTotal(){return this._getRingWeightOffset(this.chart.data.datasets.length)||1}}class zi extends Ci{static id="line";static defaults={datasetElementType:"line",dataElementType:"point",showLine:!0,spanGaps:!1};static overrides={scales:{_index_:{type:"category"},_value_:{type:"linear"}}};initialize(){this.enableOptionSharing=!0,this.supportsDecimation=!0,super.initialize()}update(t){const e=this._cachedMeta,{dataset:i,data:s=[],_dataset:n}=e,r=this.chart._animationsDisabled;let{start:o,count:h}=function(t,e,i){const s=e.length;let n=0,r=s;if(t._sorted){const{iScale:o,vScale:h,_parsed:a}=t,c=t.dataset&&t.dataset.options?t.dataset.options.spanGaps:null,u=o.axis,{min:l,max:f,minDefined:d,maxDefined:p}=o.getUserBounds();if(d){if(n=Math.min(kt(a,u,l).lo,i?s:kt(e,u,o.getPixelForValue(l)).lo),c){const t=a.slice(0,n+1).reverse().findIndex((t=>!F(t[h.axis])));n-=Math.max(0,t)}n=Mt(n,0,s-1)}if(p){let t=Math.max(kt(a,o.axis,f,!0).hi+1,i?0:kt(e,u,o.getPixelForValue(f),!0).hi+1);if(c){const e=a.slice(t-1).findIndex((t=>!F(t[h.axis])));t+=Math.max(0,e)}r=Mt(t,n,s)-n}else r=s-n}return{start:n,count:r}}(e,s,r);this._drawStart=o,this._drawCount=h,function(t){const{xScale:e,yScale:i,_scaleRanges:s}=t,n={xmin:e.min,xmax:e.max,ymin:i.min,ymax:i.max};if(!s)return t._scaleRanges=n,!0;const r=s.xmin!==e.min||s.xmax!==e.max||s.ymin!==i.min||s.ymax!==i.max;return Object.assign(s,n),r}(e)&&(o=0,h=s.length),i._chart=this.chart,i._datasetIndex=this.index,i._decimated=!!n._decimated,i.points=s;const a=this.resolveDatasetElementOptions(t);this.options.showLine||(a.borderWidth=0),a.segment=this.options.segment,this.updateElement(i,void 0,{animated:!r,options:a},t),this.updateElements(s,o,h,t)}updateElements(t,e,i,s){const n="reset"===s,{iScale:r,vScale:o,_stacked:h,_dataset:a}=this._cachedMeta,{sharedOptions:c,includeOptions:u}=this._getSharedOptions(e,s),l=r.axis,f=o.axis,{spanGaps:d,segment:p}=this.options,b=dt(d)?d:Number.POSITIVE_INFINITY,g=this.chart._animationsDisabled||n||"none"===s,m=e+i,x=t.length;let v=e>0&&this.getParsed(e-1);for(let i=0;i<x;++i){const d=t[i],x=g?d:{};if(i<e||i>=m){x.skip=!0;continue}const y=this.getParsed(i),M=F(y[f]),w=x[l]=r.getPixelForValue(y[l],i),_=x[f]=n||M?o.getBasePixel():o.getPixelForValue(h?this.applyStack(o,y,h):y[f],i);x.skip=isNaN(w)||isNaN(_)||M,x.stop=i>0&&Math.abs(y[l]-v[l])>b,p&&(x.parsed=y,x.raw=a.data[i]),u&&(x.options=c||this.resolveDataElementOptions(i,d.active?"active":s)),g||this.updateElement(d,i,x,s),v=y}}getMaxOverflow(){const t=this._cachedMeta,e=t.dataset,i=e.options&&e.options.borderWidth||0,s=t.data||[];if(!s.length)return i;const n=s[0].size(this.resolveDataElementOptions(0)),r=s[s.length-1].size(this.resolveDataElementOptions(s.length-1));return Math.max(i,n,r)/2}draw(){const t=this._cachedMeta;t.dataset.updateControlPoints(this.chart.chartArea,t.iScale.axis),super.draw()}}class Wi extends Ci{static id="polarArea";static defaults={dataElementType:"arc",animation:{animateRotate:!0,animateScale:!0},animations:{numbers:{type:"number",properties:["x","y","startAngle","endAngle","innerRadius","outerRadius"]}},indexAxis:"r",startAngle:0};static overrides={aspectRatio:1,plugins:{legend:{labels:{generateLabels(t){const e=t.data;if(e.labels.length&&e.datasets.length){const{labels:{pointStyle:i,color:s}}=t.legend.options;return e.labels.map(((e,n)=>{const r=t.getDatasetMeta(0).controller.getStyle(n);return{text:e,fillStyle:r.backgroundColor,strokeStyle:r.borderColor,fontColor:s,lineWidth:r.borderWidth,pointStyle:i,hidden:!t.getDataVisibility(n),index:n}}))}return[]}},onClick(t,e,i){i.chart.toggleDataVisibility(e.index),i.chart.update()}}},scales:{r:{type:"radialLinear",angleLines:{display:!1},beginAtZero:!0,grid:{circular:!0},pointLabels:{display:!1},startAngle:0}}};constructor(t,e){super(t,e),this.innerRadius=void 0,this.outerRadius=void 0}getLabelAndValue(t){const e=this.chart,i=e.data.labels||[],s=$t(this._cachedMeta._parsed[t].r,e.options.locale);return{label:i[t]||"",value:s}}parseObjectData(t,e,i,s){return Le.bind(this)(t,e,i,s)}update(t){const e=this._cachedMeta.data;this._updateRadius(),this.updateElements(e,0,e.length,t)}getMinMax(){const t={min:Number.POSITIVE_INFINITY,max:Number.NEGATIVE_INFINITY};return this._cachedMeta.data.forEach(((e,i)=>{const s=this.getParsed(i).r;!isNaN(s)&&this.chart.getDataVisibility(i)&&(s<t.min&&(t.min=s),s>t.max&&(t.max=s))})),t}_updateRadius(){const t=this.chart,e=t.chartArea,i=t.options,s=Math.min(e.right-e.left,e.bottom-e.top),n=Math.max(s/2,0),r=(n-Math.max(i.cutoutPercentage?n/100*i.cutoutPercentage:1,0))/t.getVisibleDatasetCount();this.outerRadius=n-r*this.index,this.innerRadius=this.outerRadius-r}updateElements(t,e,i,s){const n="reset"===s,r=this.chart,o=r.options.animation,h=this._cachedMeta.rScale,a=h.xCenter,c=h.yCenter,u=h.getIndexAngle(0)-.5*et;let l,f=u;const d=360/this.countVisibleElements();for(l=0;l<e;++l)f+=this._computeAngle(l,s,d);for(l=e;l<e+i;l++){const e=t[l];let i=f,p=f+this._computeAngle(l,s,d),b=r.getDataVisibility(l)?h.getDistanceFromCenterForValue(this.getParsed(l).r):0;f=p,n&&(o.animateScale&&(b=0),o.animateRotate&&(i=p=u));const g={x:a,y:c,innerRadius:0,outerRadius:b,startAngle:i,endAngle:p,options:this.resolveDataElementOptions(l,e.active?"active":s)};this.updateElement(e,l,g,s)}}countVisibleElements(){let t=0;return this._cachedMeta.data.forEach(((e,i)=>{!isNaN(this.getParsed(i).r)&&this.chart.getDataVisibility(i)&&t++})),t}_computeAngle(t,e,i){return this.chart.getDataVisibility(t)?pt(this.resolveDataElementOptions(t,e).angle||i):0}}function Yi(){throw new Error("This method is not implemented: Check that a complete date adapter is provided.")}class $i{static override(t){Object.assign($i.prototype,t)}options;constructor(t){this.options=t||{}}init(){}formats(){return Yi()}parse(){return Yi()}format(){return Yi()}add(){return Yi()}diff(){return Yi()}startOf(){return Yi()}endOf(){return Yi()}}var Hi={_date:$i};function Vi(t,e,i,s){const{controller:n,data:r,_sorted:o}=t,h=n._cachedMeta.iScale,a=t.dataset&&t.dataset.options?t.dataset.options.spanGaps:null;if(h&&e===h.axis&&"r"!==e&&o&&r.length){const o=h._reversePixels?Ot:kt;if(!s){const s=o(r,e,i);if(a){const{vScale:e}=n._cachedMeta,{_parsed:i}=t,r=i.slice(0,s.lo+1).reverse().findIndex((t=>!F(t[e.axis])));s.lo-=Math.max(0,r);const o=i.slice(s.hi).findIndex((t=>!F(t[e.axis])));s.hi+=Math.max(0,o)}return s}if(n._sharedOptions){const t=r[0],s="function"==typeof t.getRange&&t.getRange(e);if(s){const t=o(r,e,i-s),n=o(r,e,i+s);return{lo:t.lo,hi:n.hi}}}}return{lo:0,hi:r.length-1}}function Xi(t,e,i,s,n){const r=t.getSortedVisibleDatasetMetas(),o=i[e];for(let t=0,i=r.length;t<i;++t){const{index:i,data:h}=r[t],{lo:a,hi:c}=Vi(r[t],e,o,n);for(let t=a;t<=c;++t){const e=h[t];e.skip||s(e,i,t)}}}function Ui(t,e,i,s,n){const r=[];return n||t.isPointInArea(e)?(Xi(t,i,e,(function(i,o,h){(n||ie(i,t.chartArea,0))&&i.inRange(e.x,e.y,s)&&r.push({element:i,datasetIndex:o,index:h})}),!0),r):r}function Zi(t,e,i,s,n,r){return r||t.isPointInArea(e)?"r"!==i||s?function(t,e,i,s,n,r){let o=[];const h=function(t){const e=-1!==t.indexOf("x"),i=-1!==t.indexOf("y");return function(t,s){const n=e?Math.abs(t.x-s.x):0,r=i?Math.abs(t.y-s.y):0;return Math.sqrt(Math.pow(n,2)+Math.pow(r,2))}}(i);let a=Number.POSITIVE_INFINITY;return Xi(t,i,e,(function(i,c,u){const l=i.inRange(e.x,e.y,n);if(s&&!l)return;const f=i.getCenterPoint(n);if(!r&&!t.isPointInArea(f)&&!l)return;const d=h(e,f);d<a?(o=[{element:i,datasetIndex:c,index:u}],a=d):d===a&&o.push({element:i,datasetIndex:c,index:u})})),o}(t,e,i,s,n,r):function(t,e,i,s){let n=[];return Xi(t,i,e,(function(t,i,r){const{startAngle:o,endAngle:h}=t.getProps(["startAngle","endAngle"],s),{angle:a}=gt(t,{x:e.x,y:e.y});yt(a,o,h)&&n.push({element:t,datasetIndex:i,index:r})})),n}(t,e,i,n):[]}function Ki(t,e,i,s,n){const r=[],o="x"===i?"inXRange":"inYRange";let h=!1;return Xi(t,i,e,((t,s,a)=>{t[o]&&t[o](e[i],n)&&(r.push({element:t,datasetIndex:s,index:a}),h=h||t.inRange(e.x,e.y,n))})),s&&!h?[]:r}var Qi={modes:{index(t,e,i,s){const n=Ue(e,t),r=i.axis||"x",o=i.includeInvisible||!1,h=i.intersect?Ui(t,n,r,s,o):Zi(t,n,r,!1,s,o),a=[];return h.length?(t.getSortedVisibleDatasetMetas().forEach((t=>{const e=h[0].index,i=t.data[e];i&&!i.skip&&a.push({element:i,datasetIndex:t.index,index:e})})),a):[]},dataset(t,e,i,s){const n=Ue(e,t),r=i.axis||"xy",o=i.includeInvisible||!1;let h=i.intersect?Ui(t,n,r,s,o):Zi(t,n,r,!1,s,o);if(h.length>0){const e=h[0].datasetIndex,i=t.getDatasetMeta(e).data;h=[];for(let t=0;t<i.length;++t)h.push({element:i[t],datasetIndex:e,index:t})}return h},point:(t,e,i,s)=>Ui(t,Ue(e,t),i.axis||"xy",s,i.includeInvisible||!1),nearest:(t,e,i,s)=>Zi(t,Ue(e,t),i.axis||"xy",i.intersect,s,i.includeInvisible||!1),x:(t,e,i,s)=>Ki(t,Ue(e,t),"x",i.intersect,s),y:(t,e,i,s)=>Ki(t,Ue(e,t),"y",i.intersect,s)}};const qi=["left","top","right","bottom"];function Ji(t,e){return t.filter((t=>t.pos===e))}function Gi(t,e){return t.filter((t=>-1===qi.indexOf(t.pos)&&t.box.axis===e))}function ts(t,e){return t.sort(((t,i)=>{const s=e?i:t,n=e?t:i;return s.weight===n.weight?s.index-n.index:s.weight-n.weight}))}function es(t,e,i,s){return Math.max(t[i],e[i])+Math.max(t[s],e[s])}function is(t,e){t.top=Math.max(t.top,e.top),t.left=Math.max(t.left,e.left),t.bottom=Math.max(t.bottom,e.bottom),t.right=Math.max(t.right,e.right)}function ss(t,e,i,s){const{pos:n,box:r}=i,o=t.maxPadding;if(!P(n)){i.size&&(t[n]-=i.size);const e=s[i.stack]||{size:0,count:1};e.size=Math.max(e.size,i.horizontal?r.height:r.width),i.size=e.size/e.count,t[n]+=i.size}r.getPadding&&is(o,r.getPadding());const h=Math.max(0,e.outerWidth-es(o,t,"left","right")),a=Math.max(0,e.outerHeight-es(o,t,"top","bottom")),c=h!==t.w,u=a!==t.h;return t.w=h,t.h=a,i.horizontal?{same:c,other:u}:{same:u,other:c}}function ns(t,e){const i=e.maxPadding;return function(t){const s={left:0,top:0,right:0,bottom:0};return t.forEach((t=>{s[t]=Math.max(e[t],i[t])})),s}(t?["left","right"]:["top","bottom"])}function rs(t,e,i,s){const n=[];let r,o,h,a,c,u;for(r=0,o=t.length,c=0;r<o;++r){h=t[r],a=h.box,a.update(h.width||e.w,h.height||e.h,ns(h.horizontal,e));const{same:o,other:l}=ss(e,i,h,s);c|=o&&n.length,u=u||l,a.fullSize||n.push(h)}return c&&rs(n,e,i,s)||u}function os(t,e,i,s,n){t.top=i,t.left=e,t.right=e+s,t.bottom=i+n,t.width=s,t.height=n}function hs(t,e,i,s){const n=i.padding;let{x:r,y:o}=e;for(const h of t){const t=h.box,a=s[h.stack]||{placed:0,weight:1},c=h.stackWeight/a.weight||1;if(h.horizontal){const s=e.w*c,r=a.size||t.height;J(a.start)&&(o=a.start),t.fullSize?os(t,n.left,o,i.outerWidth-n.right-n.left,r):os(t,e.left+a.placed,o,s,r),a.start=o,a.placed+=s,o=t.bottom}else{const s=e.h*c,o=a.size||t.width;J(a.start)&&(r=a.start),t.fullSize?os(t,r,n.top,o,i.outerHeight-n.bottom-n.top):os(t,r,e.top+a.placed,o,s),a.start=r,a.placed+=s,r=t.right}}e.x=r,e.y=o}var as={addBox(t,e){t.boxes||(t.boxes=[]),e.fullSize=e.fullSize||!1,e.position=e.position||"top",e.weight=e.weight||0,e._layers=e._layers||function(){return[{z:0,draw(t){e.draw(t)}}]},t.boxes.push(e)},removeBox(t,e){const i=t.boxes?t.boxes.indexOf(e):-1;-1!==i&&t.boxes.splice(i,1)},configure(t,e,i){e.fullSize=i.fullSize,e.position=i.position,e.weight=i.weight},update(t,e,i,s){if(!t)return;const n=me(t.options.layout.padding),r=Math.max(e-n.width,0),o=Math.max(i-n.height,0),h=function(t){const e=function(t){const e=[];let i,s,n,r,o,h;for(i=0,s=(t||[]).length;i<s;++i)n=t[i],({position:r,options:{stack:o,stackWeight:h=1}}=n),e.push({index:i,box:n,pos:r,horizontal:n.isHorizontal(),weight:n.weight,stack:o&&r+o,stackWeight:h});return e}(t),i=ts(e.filter((t=>t.box.fullSize)),!0),s=ts(Ji(e,"left"),!0),n=ts(Ji(e,"right")),r=ts(Ji(e,"top"),!0),o=ts(Ji(e,"bottom")),h=Gi(e,"x"),a=Gi(e,"y");return{fullSize:i,leftAndTop:s.concat(r),rightAndBottom:n.concat(a).concat(o).concat(h),chartArea:Ji(e,"chartArea"),vertical:s.concat(n).concat(a),horizontal:r.concat(o).concat(h)}}(t.boxes),a=h.vertical,c=h.horizontal;W(t.boxes,(t=>{"function"==typeof t.beforeLayout&&t.beforeLayout()}));const u=a.reduce(((t,e)=>e.box.options&&!1===e.box.options.display?t:t+1),0)||1,l=Object.freeze({outerWidth:e,outerHeight:i,padding:n,availableWidth:r,availableHeight:o,vBoxMaxWidth:r/2/u,hBoxMaxHeight:o/2}),f=Object.assign({},n);is(f,me(s));const d=Object.assign({maxPadding:f,w:r,h:o,x:n.left,y:n.top},n),p=function(t,e){const i=function(t){const e={};for(const i of t){const{stack:t,pos:s,stackWeight:n}=i;if(!t||!qi.includes(s))continue;const r=e[t]||(e[t]={count:0,placed:0,weight:0,size:0});r.count++,r.weight+=n}return e}(t),{vBoxMaxWidth:s,hBoxMaxHeight:n}=e;let r,o,h;for(r=0,o=t.length;r<o;++r){h=t[r];const{fullSize:o}=h.box,a=i[h.stack],c=a&&h.stackWeight/a.weight;h.horizontal?(h.width=c?c*s:o&&e.availableWidth,h.height=n):(h.width=s,h.height=c?c*n:o&&e.availableHeight)}return i}(a.concat(c),l);rs(h.fullSize,d,l,p),rs(a,d,l,p),rs(c,d,l,p)&&rs(a,d,l,p),function(t){const e=t.maxPadding;function i(i){const s=Math.max(e[i]-t[i],0);return t[i]+=s,s}t.y+=i("top"),t.x+=i("left"),i("right"),i("bottom")}(d),hs(h.leftAndTop,d,l,p),d.x+=d.w,d.y+=d.h,hs(h.rightAndBottom,d,l,p),t.chartArea={left:d.left,top:d.top,right:d.left+d.w,bottom:d.top+d.h,height:d.h,width:d.w},W(h.chartArea,(e=>{const i=e.box;Object.assign(i,t.chartArea),i.update(d.w,d.h,{left:0,top:0,right:0,bottom:0})}))}};class cs{acquireContext(t,e){}releaseContext(t){return!1}addEventListener(t,e,i){}removeEventListener(t,e,i){}getDevicePixelRatio(){return 1}getMaximumSize(t,e,i,s){return e=Math.max(0,e||t.width),i=i||t.height,{width:e,height:Math.max(0,s?Math.floor(e/s):i)}}isAttached(t){return!0}updateConfig(t){}}class us extends cs{acquireContext(t){return t&&t.getContext&&t.getContext("2d")||null}updateConfig(t){t.options.animation=!1}}const ls="$chartjs",fs={touchstart:"mousedown",touchmove:"mousemove",touchend:"mouseup",pointerenter:"mouseenter",pointerdown:"mousedown",pointermove:"mousemove",pointerup:"mouseup",pointerleave:"mouseout",pointerout:"mouseout"},ds=t=>null===t||""===t,ps=!!Qe&&{passive:!0};function bs(t,e,i){t&&t.canvas&&t.canvas.removeEventListener(e,i,ps)}function gs(t,e){for(const i of t)if(i===e||i.contains(e))return!0}function ms(t,e,i){const s=t.canvas,n=new MutationObserver((t=>{let e=!1;for(const i of t)e=e||gs(i.addedNodes,s),e=e&&!gs(i.removedNodes,s);e&&i()}));return n.observe(document,{childList:!0,subtree:!0}),n}function xs(t,e,i){const s=t.canvas,n=new MutationObserver((t=>{let e=!1;for(const i of t)e=e||gs(i.removedNodes,s),e=e&&!gs(i.addedNodes,s);e&&i()}));return n.observe(document,{childList:!0,subtree:!0}),n}const vs=new Map;let ys=0;function Ms(){const t=window.devicePixelRatio;t!==ys&&(ys=t,vs.forEach(((e,i)=>{i.currentDevicePixelRatio!==t&&e()})))}function ws(t,e,i){const s=t.canvas,n=s&&Ye(s);if(!n)return;const r=Rt(((t,e)=>{const s=n.clientWidth;i(t,e),s<n.clientWidth&&i()}),window),o=new ResizeObserver((t=>{const e=t[0],i=e.contentRect.width,s=e.contentRect.height;0===i&&0===s||r(i,s)}));return o.observe(n),function(t,e){vs.size||window.addEventListener("resize",Ms),vs.set(t,e)}(t,r),o}function _s(t,e,i){i&&i.disconnect(),"resize"===e&&function(t){vs.delete(t),vs.size||window.removeEventListener("resize",Ms)}(t)}function ks(t,e,i){const s=t.canvas,n=Rt((e=>{null!==t.ctx&&i(function(t,e){const i=fs[t.type]||t.type,{x:s,y:n}=Ue(t,e);return{type:i,chart:e,native:t,x:void 0!==s?s:null,y:void 0!==n?n:null}}(e,t))}),t);return function(t,e,i){t&&t.addEventListener(e,i,ps)}(s,e,n),n}class Os extends cs{acquireContext(t,e){const i=t&&t.getContext&&t.getContext("2d");return i&&i.canvas===t?(function(t,e){const i=t.style,s=t.getAttribute("height"),n=t.getAttribute("width");if(t[ls]={initial:{height:s,width:n,style:{display:i.display,height:i.height,width:i.width}}},i.display=i.display||"block",i.boxSizing=i.boxSizing||"border-box",ds(n)){const e=qe(t,"width");void 0!==e&&(t.width=e)}if(ds(s))if(""===t.style.height)t.height=t.width/(e||2);else{const e=qe(t,"height");void 0!==e&&(t.height=e)}}(t,e),i):null}releaseContext(t){const e=t.canvas;if(!e[ls])return!1;const i=e[ls].initial;["height","width"].forEach((t=>{const s=i[t];F(s)?e.removeAttribute(t):e.setAttribute(t,s)}));const s=i.style||{};return Object.keys(s).forEach((t=>{e.style[t]=s[t]})),e.width=e.width,delete e[ls],!0}addEventListener(t,e,i){this.removeEventListener(t,e),(t.$proxies||(t.$proxies={}))[e]=({attach:ms,detach:xs,resize:ws}[e]||ks)(t,e,i)}removeEventListener(t,e){const i=t.$proxies||(t.$proxies={}),s=i[e];s&&(({attach:_s,detach:_s,resize:_s}[e]||bs)(t,e,s),i[e]=void 0)}getDevicePixelRatio(){return window.devicePixelRatio}getMaximumSize(t,e,i,s){return function(t,e,i,s){const n=He(t),r=Xe(n,"margin"),o=$e(n.maxWidth,t,"clientWidth")||nt,h=$e(n.maxHeight,t,"clientHeight")||nt,a=function(t,e,i){let s,n;if(void 0===e||void 0===i){const r=t&&Ye(t);if(r){const t=r.getBoundingClientRect(),o=He(r),h=Xe(o,"border","width"),a=Xe(o,"padding");e=t.width-a.width-h.width,i=t.height-a.height-h.height,s=$e(o.maxWidth,r,"clientWidth"),n=$e(o.maxHeight,r,"clientHeight")}else e=t.clientWidth,i=t.clientHeight}return{width:e,height:i,maxWidth:s||nt,maxHeight:n||nt}}(t,e,i);let{width:c,height:u}=a;if("content-box"===n.boxSizing){const t=Xe(n,"border","width"),e=Xe(n,"padding");c-=e.width+t.width,u-=e.height+t.height}return c=Math.max(0,c-r.width),u=Math.max(0,s?c/s:u-r.height),c=Ze(Math.min(c,o,a.maxWidth)),u=Ze(Math.min(u,h,a.maxHeight)),c&&!u&&(u=Ze(c/2)),(void 0!==e||void 0!==i)&&s&&a.height&&u>a.height&&(u=a.height,c=Ze(Math.floor(u*s))),{width:c,height:u}}(t,e,i,s)}isAttached(t){const e=t&&Ye(t);return!(!e||!e.isConnected)}}class Ss{static defaults={};static defaultRoutes=void 0;x;y;active=!1;options;$animations;tooltipPosition(t){const{x:e,y:i}=this.getProps(["x","y"],t);return{x:e,y:i}}hasValue(){return dt(this.x)&&dt(this.y)}getProps(t,e){const i=this.$animations;if(!e||!i)return this;const s={};return t.forEach((t=>{s[t]=i[t]&&i[t].active()?i[t]._to:this[t]})),s}}function As(t,e,i,s,n){const r=I(s,0),o=Math.min(I(n,t.length),t.length);let h,a,c,u=0;for(i=Math.ceil(i),n&&(h=n-s,i=h/Math.floor(h/i)),c=r;c<0;)u++,c=Math.round(r+u*i);for(a=Math.max(r,0);a<o;a++)a===c&&(e.push(t[a]),u++,c=Math.round(r+u*i))}const Ds=(t,e,i)=>"top"===e||"left"===e?t[e]+i:t[e]-i,Cs=(t,e)=>Math.min(e||t,t);function Rs(t,e){const i=[],s=t.length/e,n=t.length;let r=0;for(;r<n;r+=s)i.push(t[Math.floor(r)]);return i}function Es(t,e,i){const s=t.ticks.length,n=Math.min(e,s-1),r=t._startPixel,o=t._endPixel,h=1e-6;let a,c=t.getPixelForTick(n);if(!(i&&(a=1===s?Math.max(c-r,o-c):0===e?(t.getPixelForTick(1)-c)/2:(c-t.getPixelForTick(n-1))/2,c+=n<e?a:-a,c<r-h||c>o+h)))return c}function js(t){return t.drawTicks?t.tickLength:0}function Fs(t,e){if(!t.display)return 0;const i=xe(t.font,e),s=me(t.padding);return(L(t.text)?t.text.length:1)*i.lineHeight+s.height}function Ls(t,e,i){let s=Et(t);return(i&&"right"!==e||!i&&"right"===e)&&(s=(t=>"left"===t?"right":"right"===t?"left":t)(s)),s}class Ps extends Ss{constructor(t){super(),this.id=t.id,this.type=t.type,this.options=void 0,this.ctx=t.ctx,this.chart=t.chart,this.top=void 0,this.bottom=void 0,this.left=void 0,this.right=void 0,this.width=void 0,this.height=void 0,this._margins={left:0,right:0,top:0,bottom:0},this.maxWidth=void 0,this.maxHeight=void 0,this.paddingTop=void 0,this.paddingBottom=void 0,this.paddingLeft=void 0,this.paddingRight=void 0,this.axis=void 0,this.labelRotation=void 0,this.min=void 0,this.max=void 0,this._range=void 0,this.ticks=[],this._gridLineItems=null,this._labelItems=null,this._labelSizes=null,this._length=0,this._maxLength=0,this._longestTextCache={},this._startPixel=void 0,this._endPixel=void 0,this._reversePixels=!1,this._userMax=void 0,this._userMin=void 0,this._suggestedMax=void 0,this._suggestedMin=void 0,this._ticksLength=0,this._borderValue=0,this._cache={},this._dataLimitsCached=!1,this.$context=void 0}init(t){this.options=t.setContext(this.getContext()),this.axis=t.axis,this._userMin=this.parse(t.min),this._userMax=this.parse(t.max),this._suggestedMin=this.parse(t.suggestedMin),this._suggestedMax=this.parse(t.suggestedMax)}parse(t,e){return t}getUserBounds(){let{_userMin:t,_userMax:e,_suggestedMin:i,_suggestedMax:s}=this;return t=T(t,Number.POSITIVE_INFINITY),e=T(e,Number.NEGATIVE_INFINITY),i=T(i,Number.POSITIVE_INFINITY),s=T(s,Number.NEGATIVE_INFINITY),{min:T(t,i),max:T(e,s),minDefined:N(t),maxDefined:N(e)}}getMinMax(t){let e,{min:i,max:s,minDefined:n,maxDefined:r}=this.getUserBounds();if(n&&r)return{min:i,max:s};const o=this.getMatchingVisibleMetas();for(let h=0,a=o.length;h<a;++h)e=o[h].controller.getMinMax(this,t),n||(i=Math.min(i,e.min)),r||(s=Math.max(s,e.max));return i=r&&i>s?s:i,s=n&&i>s?i:s,{min:T(i,T(s,i)),max:T(s,T(i,s))}}getPadding(){return{left:this.paddingLeft||0,top:this.paddingTop||0,right:this.paddingRight||0,bottom:this.paddingBottom||0}}getTicks(){return this.ticks}getLabels(){const t=this.chart.data;return this.options.labels||(this.isHorizontal()?t.xLabels:t.yLabels)||t.labels||[]}getLabelItems(t=this.chart.chartArea){return this._labelItems||(this._labelItems=this._computeLabelItems(t))}beforeLayout(){this._cache={},this._dataLimitsCached=!1}beforeUpdate(){z(this.options.beforeUpdate,[this])}update(t,e,i){const{beginAtZero:s,grace:n,ticks:r}=this.options,o=r.sampleSize;this.beforeUpdate(),this.maxWidth=t,this.maxHeight=e,this._margins=i=Object.assign({left:0,right:0,top:0,bottom:0},i),this.ticks=null,this._labelSizes=null,this._gridLineItems=null,this._labelItems=null,this.beforeSetDimensions(),this.setDimensions(),this.afterSetDimensions(),this._maxLength=this.isHorizontal()?this.width+i.left+i.right:this.height+i.top+i.bottom,this._dataLimitsCached||(this.beforeDataLimits(),this.determineDataLimits(),this.afterDataLimits(),this._range=function(t,e,i){const{min:s,max:n}=t,r=B(e,(n-s)/2),o=(t,e)=>i&&0===t?0:t+e;return{min:o(s,-Math.abs(r)),max:o(n,r)}}(this,n,s),this._dataLimitsCached=!0),this.beforeBuildTicks(),this.ticks=this.buildTicks()||[],this.afterBuildTicks();const h=o<this.ticks.length;this._convertTicksToLabels(h?Rs(this.ticks,o):this.ticks),this.configure(),this.beforeCalculateLabelRotation(),this.calculateLabelRotation(),this.afterCalculateLabelRotation(),r.display&&(r.autoSkip||"auto"===r.source)&&(this.ticks=function(t,e){const i=t.options.ticks,s=function(t){const e=t.options.offset,i=t._tickSize();return Math.floor(Math.min(t._length/i+(e?0:1),t._maxLength/i))}(t),n=Math.min(i.maxTicksLimit||s,s),r=i.major.enabled?function(t){const e=[];let i,s;for(i=0,s=t.length;i<s;i++)t[i].major&&e.push(i);return e}(e):[],o=r.length,h=r[0],a=r[o-1],c=[];if(o>n)return function(t,e,i,s){let n,r=0,o=i[0];for(s=Math.ceil(s),n=0;n<t.length;n++)n===o&&(e.push(t[n]),r++,o=i[r*s])}(e,c,r,o/n),c;const u=function(t,e,i){const s=function(t){const e=t.length;let i,s;if(e<2)return!1;for(s=t[0],i=1;i<e;++i)if(t[i]-t[i-1]!==s)return!1;return s}(t),n=e.length/i;if(!s)return Math.max(n,1);const r=function(t){const e=[],i=Math.sqrt(t);let s;for(s=1;s<i;s++)t%s==0&&(e.push(s),e.push(t/s));return i===(0|i)&&e.push(i),e.sort(((t,e)=>t-e)).pop(),e}(s);for(let t=0,e=r.length-1;t<e;t++){const e=r[t];if(e>n)return e}return Math.max(n,1)}(r,e,n);if(o>0){let t,i;const s=o>1?Math.round((a-h)/(o-1)):null;for(As(e,c,u,F(s)?0:h-s,h),t=0,i=o-1;t<i;t++)As(e,c,u,r[t],r[t+1]);return As(e,c,u,a,F(s)?e.length:a+s),c}return As(e,c,u),c}(this,this.ticks),this._labelSizes=null,this.afterAutoSkip()),h&&this._convertTicksToLabels(this.ticks),this.beforeFit(),this.fit(),this.afterFit(),this.afterUpdate()}configure(){let t,e,i=this.options.reverse;this.isHorizontal()?(t=this.left,e=this.right):(t=this.top,e=this.bottom,i=!i),this._startPixel=t,this._endPixel=e,this._reversePixels=i,this._length=e-t,this._alignToPixels=this.options.alignToPixels}afterUpdate(){z(this.options.afterUpdate,[this])}beforeSetDimensions(){z(this.options.beforeSetDimensions,[this])}setDimensions(){this.isHorizontal()?(this.width=this.maxWidth,this.left=0,this.right=this.width):(this.height=this.maxHeight,this.top=0,this.bottom=this.height),this.paddingLeft=0,this.paddingTop=0,this.paddingRight=0,this.paddingBottom=0}afterSetDimensions(){z(this.options.afterSetDimensions,[this])}_callHooks(t){this.chart.notifyPlugins(t,this.getContext()),z(this.options[t],[this])}beforeDataLimits(){this._callHooks("beforeDataLimits")}determineDataLimits(){}afterDataLimits(){this._callHooks("afterDataLimits")}beforeBuildTicks(){this._callHooks("beforeBuildTicks")}buildTicks(){return[]}afterBuildTicks(){this._callHooks("afterBuildTicks")}beforeTickToLabelConversion(){z(this.options.beforeTickToLabelConversion,[this])}generateTickLabels(t){const e=this.options.ticks;let i,s,n;for(i=0,s=t.length;i<s;i++)n=t[i],n.label=z(e.callback,[n.value,i,t],this)}afterTickToLabelConversion(){z(this.options.afterTickToLabelConversion,[this])}beforeCalculateLabelRotation(){z(this.options.beforeCalculateLabelRotation,[this])}calculateLabelRotation(){const t=this.options,e=t.ticks,i=Cs(this.ticks.length,t.ticks.maxTicksLimit),s=e.minRotation||0,n=e.maxRotation;let r,o,h,a=s;if(!this._isVisible()||!e.display||s>=n||i<=1||!this.isHorizontal())return void(this.labelRotation=s);const c=this._getLabelSizes(),u=c.widest.width,l=c.highest.height,f=Mt(this.chart.width-u,0,this.maxWidth);r=t.offset?this.maxWidth/i:f/(i-1),u+6>r&&(r=f/(i-(t.offset?.5:1)),o=this.maxHeight-js(t.grid)-e.padding-Fs(t.title,this.chart.options.font),h=Math.sqrt(u*u+l*l),a=Math.min(Math.asin(Mt((c.highest.height+6)/r,-1,1)),Math.asin(Mt(o/h,-1,1))-Math.asin(Mt(l/h,-1,1)))*(180/et),a=Math.max(s,Math.min(n,a))),this.labelRotation=a}afterCalculateLabelRotation(){z(this.options.afterCalculateLabelRotation,[this])}afterAutoSkip(){}beforeFit(){z(this.options.beforeFit,[this])}fit(){const t={width:0,height:0},{chart:e,options:{ticks:i,title:s,grid:n}}=this,r=this._isVisible(),o=this.isHorizontal();if(r){const r=Fs(s,e.options.font);if(o?(t.width=this.maxWidth,t.height=js(n)+r):(t.height=this.maxHeight,t.width=js(n)+r),i.display&&this.ticks.length){const{first:e,last:s,widest:n,highest:r}=this._getLabelSizes(),h=2*i.padding,a=pt(this.labelRotation),c=Math.cos(a),u=Math.sin(a);o?t.height=Math.min(this.maxHeight,t.height+(i.mirror?0:u*n.width+c*r.height)+h):t.width=Math.min(this.maxWidth,t.width+(i.mirror?0:c*n.width+u*r.height)+h),this._calculatePadding(e,s,u,c)}}this._handleMargins(),o?(this.width=this._length=e.width-this._margins.left-this._margins.right,this.height=t.height):(this.width=t.width,this.height=this._length=e.height-this._margins.top-this._margins.bottom)}_calculatePadding(t,e,i,s){const{ticks:{align:n,padding:r},position:o}=this.options,h=0!==this.labelRotation,a="top"!==o&&"x"===this.axis;if(this.isHorizontal()){const o=this.getPixelForTick(0)-this.left,c=this.right-this.getPixelForTick(this.ticks.length-1);let u=0,l=0;h?a?(u=s*t.width,l=i*e.height):(u=i*t.height,l=s*e.width):"start"===n?l=e.width:"end"===n?u=t.width:"inner"!==n&&(u=t.width/2,l=e.width/2),this.paddingLeft=Math.max((u-o+r)*this.width/(this.width-o),0),this.paddingRight=Math.max((l-c+r)*this.width/(this.width-c),0)}else{let i=e.height/2,s=t.height/2;"start"===n?(i=0,s=t.height):"end"===n&&(i=e.height,s=0),this.paddingTop=i+r,this.paddingBottom=s+r}}_handleMargins(){this._margins&&(this._margins.left=Math.max(this.paddingLeft,this._margins.left),this._margins.top=Math.max(this.paddingTop,this._margins.top),this._margins.right=Math.max(this.paddingRight,this._margins.right),this._margins.bottom=Math.max(this.paddingBottom,this._margins.bottom))}afterFit(){z(this.options.afterFit,[this])}isHorizontal(){const{axis:t,position:e}=this.options;return"top"===e||"bottom"===e||"x"===t}isFullSize(){return this.options.fullSize}_convertTicksToLabels(t){let e,i;for(this.beforeTickToLabelConversion(),this.generateTickLabels(t),e=0,i=t.length;e<i;e++)F(t[e].label)&&(t.splice(e,1),i--,e--);this.afterTickToLabelConversion()}_getLabelSizes(){let t=this._labelSizes;if(!t){const e=this.options.ticks.sampleSize;let i=this.ticks;e<i.length&&(i=Rs(i,e)),this._labelSizes=t=this._computeLabelSizes(i,i.length,this.options.ticks.maxTicksLimit)}return t}_computeLabelSizes(t,e,i){const{ctx:s,_longestTextCache:n}=this,r=[],o=[],h=Math.floor(e/Cs(e,i));let a,c,u,l,f,d,p,b,g,m,x,v=0,y=0;for(a=0;a<e;a+=h){if(l=t[a].label,f=this._resolveTickFontOptions(a),s.font=d=f.string,p=n[d]=n[d]||{data:{},gc:[]},b=f.lineHeight,g=m=0,F(l)||L(l)){if(L(l))for(c=0,u=l.length;c<u;++c)x=l[c],F(x)||L(x)||(g=qt(s,p.data,p.gc,g,x),m+=b)}else g=qt(s,p.data,p.gc,g,l),m=b;r.push(g),o.push(m),v=Math.max(g,v),y=Math.max(m,y)}!function(t,e){W(t,(t=>{const i=t.gc,s=i.length/2;let n;if(s>e){for(n=0;n<s;++n)delete t.data[i[n]];i.splice(0,s)}}))}(n,e);const M=r.indexOf(v),w=o.indexOf(y),_=t=>({width:r[t]||0,height:o[t]||0});return{first:_(0),last:_(e-1),widest:_(M),highest:_(w),widths:r,heights:o}}getLabelForValue(t){return t}getPixelForValue(t,e){return NaN}getValueForPixel(t){}getPixelForTick(t){const e=this.ticks;return t<0||t>e.length-1?null:this.getPixelForValue(e[t].value)}getPixelForDecimal(t){this._reversePixels&&(t=1-t);const e=this._startPixel+t*this._length;return Mt(this._alignToPixels?Jt(this.chart,e,0):e,-32768,32767)}getDecimalForPixel(t){const e=(t-this._startPixel)/this._length;return this._reversePixels?1-e:e}getBasePixel(){return this.getPixelForValue(this.getBaseValue())}getBaseValue(){const{min:t,max:e}=this;return t<0&&e<0?e:t>0&&e>0?t:0}getContext(t){const e=this.ticks||[];if(t>=0&&t<e.length){const i=e[t];return i.$context||(i.$context=function(t,e,i){return ye(t,{tick:i,index:e,type:"tick"})}(this.getContext(),t,i))}return this.$context||(this.$context=ye(this.chart.getContext(),{scale:this,type:"scale"}))}_tickSize(){const t=this.options.ticks,e=pt(this.labelRotation),i=Math.abs(Math.cos(e)),s=Math.abs(Math.sin(e)),n=this._getLabelSizes(),r=t.autoSkipPadding||0,o=n?n.widest.width+r:0,h=n?n.highest.height+r:0;return this.isHorizontal()?h*i>o*s?o/i:h/s:h*s<o*i?h/i:o/s}_isVisible(){const t=this.options.display;return"auto"!==t?!!t:this.getMatchingVisibleMetas().length>0}_computeGridLineItems(t){const e=this.axis,i=this.chart,s=this.options,{grid:n,position:r,border:o}=s,h=n.offset,a=this.isHorizontal(),c=this.ticks.length+(h?1:0),u=js(n),l=[],f=o.setContext(this.getContext()),d=f.display?f.width:0,p=d/2,b=function(t){return Jt(i,t,d)};let g,m,x,v,y,M,w,_,k,O,S,A;if("top"===r)g=b(this.bottom),M=this.bottom-u,_=g-p,O=b(t.top)+p,A=t.bottom;else if("bottom"===r)g=b(this.top),O=t.top,A=b(t.bottom)-p,M=g+p,_=this.top+u;else if("left"===r)g=b(this.right),y=this.right-u,w=g-p,k=b(t.left)+p,S=t.right;else if("right"===r)g=b(this.left),k=t.left,S=b(t.right)-p,y=g+p,w=this.left+u;else if("x"===e){if("center"===r)g=b((t.top+t.bottom)/2+.5);else if(P(r)){const t=Object.keys(r)[0];g=b(this.chart.scales[t].getPixelForValue(r[t]))}O=t.top,A=t.bottom,M=g+p,_=M+u}else if("y"===e){if("center"===r)g=b((t.left+t.right)/2);else if(P(r)){const t=Object.keys(r)[0];g=b(this.chart.scales[t].getPixelForValue(r[t]))}y=g-p,w=y-u,k=t.left,S=t.right}const D=I(s.ticks.maxTicksLimit,c),C=Math.max(1,Math.ceil(c/D));for(m=0;m<c;m+=C){const t=this.getContext(m),e=n.setContext(t),s=o.setContext(t),r=e.lineWidth,c=e.color,u=s.dash||[],f=s.dashOffset,d=e.tickWidth,p=e.tickColor,b=e.tickBorderDash||[],g=e.tickBorderDashOffset;x=Es(this,m,h),void 0!==x&&(v=Jt(i,x,r),a?y=w=k=S=v:M=_=O=A=v,l.push({tx1:y,ty1:M,tx2:w,ty2:_,x1:k,y1:O,x2:S,y2:A,width:r,color:c,borderDash:u,borderDashOffset:f,tickWidth:d,tickColor:p,tickBorderDash:b,tickBorderDashOffset:g}))}return this._ticksLength=c,this._borderValue=g,l}_computeLabelItems(t){const e=this.axis,i=this.options,{position:s,ticks:n}=i,r=this.isHorizontal(),o=this.ticks,{align:h,crossAlign:a,padding:c,mirror:u}=n,l=js(i.grid),f=l+c,d=u?-c:f,p=-pt(this.labelRotation),b=[];let g,m,x,v,y,M,w,_,k,O,S,A,D="middle";if("top"===s)M=this.bottom-d,w=this._getXAxisLabelAlignment();else if("bottom"===s)M=this.top+d,w=this._getXAxisLabelAlignment();else if("left"===s){const t=this._getYAxisLabelAlignment(l);w=t.textAlign,y=t.x}else if("right"===s){const t=this._getYAxisLabelAlignment(l);w=t.textAlign,y=t.x}else if("x"===e){if("center"===s)M=(t.top+t.bottom)/2+f;else if(P(s)){const t=Object.keys(s)[0];M=this.chart.scales[t].getPixelForValue(s[t])+f}w=this._getXAxisLabelAlignment()}else if("y"===e){if("center"===s)y=(t.left+t.right)/2-f;else if(P(s)){const t=Object.keys(s)[0];y=this.chart.scales[t].getPixelForValue(s[t])}w=this._getYAxisLabelAlignment(l).textAlign}"y"===e&&("start"===h?D="top":"end"===h&&(D="bottom"));const C=this._getLabelSizes();for(g=0,m=o.length;g<m;++g){x=o[g],v=x.label;const t=n.setContext(this.getContext(g));_=this.getPixelForTick(g)+n.labelOffset,k=this._resolveTickFontOptions(g),O=k.lineHeight,S=L(v)?v.length:1;const e=S/2,i=t.color,h=t.textStrokeColor,c=t.textStrokeWidth;let l,f=w;if(r?(y=_,"inner"===w&&(f=g===m-1?this.options.reverse?"left":"right":0===g?this.options.reverse?"right":"left":"center"),A="top"===s?"near"===a||0!==p?-S*O+O/2:"center"===a?-C.highest.height/2-e*O+O:O/2-C.highest.height:"near"===a||0!==p?O/2:"center"===a?C.highest.height/2-e*O:C.highest.height-S*O,u&&(A*=-1),0===p||t.showLabelBackdrop||(y+=O/2*Math.sin(p))):(M=_,A=(1-S)*O/2),t.showLabelBackdrop){const e=me(t.backdropPadding),i=C.heights[g],s=C.widths[g];let n=A-e.top,r=0-e.left;switch(D){case"middle":n-=i/2;break;case"bottom":n-=i}switch(w){case"center":r-=s/2;break;case"right":r-=s;break;case"inner":g===m-1?r-=s:g>0&&(r-=s/2)}l={left:r,top:n,width:s+e.width,height:i+e.height,color:t.backdropColor}}b.push({label:v,font:k,textOffset:A,options:{rotation:p,color:i,strokeColor:h,strokeWidth:c,textAlign:f,textBaseline:D,translation:[y,M],backdrop:l}})}return b}_getXAxisLabelAlignment(){const{position:t,ticks:e}=this.options;if(-pt(this.labelRotation))return"top"===t?"left":"right";let i="center";return"start"===e.align?i="left":"end"===e.align?i="right":"inner"===e.align&&(i="inner"),i}_getYAxisLabelAlignment(t){const{position:e,ticks:{crossAlign:i,mirror:s,padding:n}}=this.options,r=t+n,o=this._getLabelSizes().widest.width;let h,a;return"left"===e?s?(a=this.right+n,"near"===i?h="left":"center"===i?(h="center",a+=o/2):(h="right",a+=o)):(a=this.right-r,"near"===i?h="right":"center"===i?(h="center",a-=o/2):(h="left",a=this.left)):"right"===e?s?(a=this.left+n,"near"===i?h="right":"center"===i?(h="center",a-=o/2):(h="left",a-=o)):(a=this.left+r,"near"===i?h="left":"center"===i?(h="center",a+=o/2):(h="right",a=this.right)):h="right",{textAlign:h,x:a}}_computeLabelArea(){if(this.options.ticks.mirror)return;const t=this.chart,e=this.options.position;return"left"===e||"right"===e?{top:0,left:this.left,bottom:t.height,right:this.right}:"top"===e||"bottom"===e?{top:this.top,left:0,bottom:this.bottom,right:t.width}:void 0}drawBackground(){const{ctx:t,options:{backgroundColor:e},left:i,top:s,width:n,height:r}=this;e&&(t.save(),t.fillStyle=e,t.fillRect(i,s,n,r),t.restore())}getLineWidthForValue(t){const e=this.options.grid;if(!this._isVisible()||!e.display)return 0;const i=this.ticks.findIndex((e=>e.value===t));return i>=0?e.setContext(this.getContext(i)).lineWidth:0}drawGrid(t){const e=this.options.grid,i=this.ctx,s=this._gridLineItems||(this._gridLineItems=this._computeGridLineItems(t));let n,r;const o=(t,e,s)=>{s.width&&s.color&&(i.save(),i.lineWidth=s.width,i.strokeStyle=s.color,i.setLineDash(s.borderDash||[]),i.lineDashOffset=s.borderDashOffset,i.beginPath(),i.moveTo(t.x,t.y),i.lineTo(e.x,e.y),i.stroke(),i.restore())};if(e.display)for(n=0,r=s.length;n<r;++n){const t=s[n];e.drawOnChartArea&&o({x:t.x1,y:t.y1},{x:t.x2,y:t.y2},t),e.drawTicks&&o({x:t.tx1,y:t.ty1},{x:t.tx2,y:t.ty2},{color:t.tickColor,width:t.tickWidth,borderDash:t.tickBorderDash,borderDashOffset:t.tickBorderDashOffset})}}drawBorder(){const{chart:t,ctx:e,options:{border:i,grid:s}}=this,n=i.setContext(this.getContext()),r=i.display?n.width:0;if(!r)return;const o=s.setContext(this.getContext(0)).lineWidth,h=this._borderValue;let a,c,u,l;this.isHorizontal()?(a=Jt(t,this.left,r)-r/2,c=Jt(t,this.right,o)+o/2,u=l=h):(u=Jt(t,this.top,r)-r/2,l=Jt(t,this.bottom,o)+o/2,a=c=h),e.save(),e.lineWidth=n.width,e.strokeStyle=n.color,e.beginPath(),e.moveTo(a,u),e.lineTo(c,l),e.stroke(),e.restore()}drawLabels(t){if(!this.options.ticks.display)return;const e=this.ctx,i=this._computeLabelArea();i&&se(e,i);const s=this.getLabelItems(t);for(const t of s)ce(e,t.label,0,t.textOffset,t.font,t.options);i&&ne(e)}drawTitle(){const{ctx:t,options:{position:e,title:i,reverse:s}}=this;if(!i.display)return;const n=xe(i.font),r=me(i.padding),o=i.align;let h=n.lineHeight/2;"bottom"===e||"center"===e||P(e)?(h+=r.bottom,L(i.text)&&(h+=n.lineHeight*(i.text.length-1))):h+=r.top;const{titleX:a,titleY:c,maxWidth:u,rotation:l}=function(t,e,i,s){const{top:n,left:r,bottom:o,right:h,chart:a}=t,{chartArea:c,scales:u}=a;let l,f,d,p=0;const b=o-n,g=h-r;if(t.isHorizontal()){if(f=jt(s,r,h),P(i)){const t=Object.keys(i)[0];d=u[t].getPixelForValue(i[t])+b-e}else d="center"===i?(c.bottom+c.top)/2+b-e:Ds(t,i,e);l=h-r}else{if(P(i)){const t=Object.keys(i)[0];f=u[t].getPixelForValue(i[t])-g+e}else f="center"===i?(c.left+c.right)/2-g+e:Ds(t,i,e);d=jt(s,o,n),p="left"===i?-ot:ot}return{titleX:f,titleY:d,maxWidth:l,rotation:p}}(this,h,e,o);ce(t,i.text,0,0,n,{color:i.color,maxWidth:u,rotation:l,textAlign:Ls(o,e,s),textBaseline:"middle",translation:[a,c]})}draw(t){this._isVisible()&&(this.drawBackground(),this.drawGrid(t),this.drawBorder(),this.drawTitle(),this.drawLabels(t))}_layers(){const t=this.options,e=t.ticks&&t.ticks.z||0,i=I(t.grid&&t.grid.z,-1),s=I(t.border&&t.border.z,0);return this._isVisible()&&this.draw===Ps.prototype.draw?[{z:i,draw:t=>{this.drawBackground(),this.drawGrid(t),this.drawTitle()}},{z:s,draw:()=>{this.drawBorder()}},{z:e,draw:t=>{this.drawLabels(t)}}]:[{z:e,draw:t=>{this.draw(t)}}]}getMatchingVisibleMetas(t){const e=this.chart.getSortedVisibleDatasetMetas(),i=this.axis+"AxisID",s=[];let n,r;for(n=0,r=e.length;n<r;++n){const r=e[n];r[i]!==this.id||t&&r.type!==t||s.push(r)}return s}_resolveTickFontOptions(t){return xe(this.options.ticks.setContext(this.getContext(t)).font)}_maxDigits(){const t=this._resolveTickFontOptions(0).lineHeight;return(this.isHorizontal()?this.width:this.height)/t}}class Ns{constructor(t,e,i){this.type=t,this.scope=e,this.override=i,this.items=Object.create(null)}isForType(t){return Object.prototype.isPrototypeOf.call(this.type.prototype,t.prototype)}register(t){const e=Object.getPrototypeOf(t);let i;(function(t){return"id"in t&&"defaults"in t})(e)&&(i=this.register(e));const s=this.items,n=t.id,r=this.scope+"."+n;if(!n)throw new Error("class does not have id: "+t);return n in s||(s[n]=t,function(t,e,i){const s=X(Object.create(null),[i?Qt.get(i):{},Qt.get(e),t.defaults]);Qt.set(e,s),t.defaultRoutes&&function(t,e){Object.keys(e).forEach((i=>{const s=i.split("."),n=s.pop(),r=[t].concat(s).join("."),o=e[i].split("."),h=o.pop(),a=o.join(".");Qt.route(r,n,a,h)}))}(e,t.defaultRoutes),t.descriptors&&Qt.describe(e,t.descriptors)}(t,r,i),this.override&&Qt.override(t.id,t.overrides)),r}get(t){return this.items[t]}unregister(t){const e=this.items,i=t.id,s=this.scope;i in e&&delete e[i],s&&i in Qt[s]&&(delete Qt[s][i],this.override&&delete Vt[i])}}class Ts{constructor(){this.controllers=new Ns(Ci,"datasets",!0),this.elements=new Ns(Ss,"elements"),this.plugins=new Ns(Object,"plugins"),this.scales=new Ns(Ps,"scales"),this._typedRegistries=[this.controllers,this.scales,this.elements]}add(...t){this._each("register",t)}remove(...t){this._each("unregister",t)}addControllers(...t){this._each("register",t,this.controllers)}addElements(...t){this._each("register",t,this.elements)}addPlugins(...t){this._each("register",t,this.plugins)}addScales(...t){this._each("register",t,this.scales)}getController(t){return this._get(t,this.controllers,"controller")}getElement(t){return this._get(t,this.elements,"element")}getPlugin(t){return this._get(t,this.plugins,"plugin")}getScale(t){return this._get(t,this.scales,"scale")}removeControllers(...t){this._each("unregister",t,this.controllers)}removeElements(...t){this._each("unregister",t,this.elements)}removePlugins(...t){this._each("unregister",t,this.plugins)}removeScales(...t){this._each("unregister",t,this.scales)}_each(t,e,i){[...e].forEach((e=>{const s=i||this._getRegistryForType(e);i||s.isForType(e)||s===this.plugins&&e.id?this._exec(t,s,e):W(e,(e=>{const s=i||this._getRegistryForType(e);this._exec(t,s,e)}))}))}_exec(t,e,i){const s=q(t);z(i["before"+s],[],i),e[t](i),z(i["after"+s],[],i)}_getRegistryForType(t){for(let e=0;e<this._typedRegistries.length;e++){const i=this._typedRegistries[e];if(i.isForType(t))return i}return this.plugins}_get(t,e,i){const s=e.get(t);if(void 0===s)throw new Error('"'+t+'" is not a registered '+i+".");return s}}var Is=new Ts;class Bs{constructor(){this._init=void 0}notify(t,e,i,s){if("beforeInit"===e&&(this._init=this._createDescriptors(t,!0),this._notify(this._init,t,"install")),void 0===this._init)return;const n=s?this._descriptors(t).filter(s):this._descriptors(t),r=this._notify(n,t,e,i);return"afterDestroy"===e&&(this._notify(n,t,"stop"),this._notify(this._init,t,"uninstall"),this._init=void 0),r}_notify(t,e,i,s){s=s||{};for(const n of t){const t=n.plugin;if(!1===z(t[i],[e,s,n.options],t)&&s.cancelable)return!1}return!0}invalidate(){F(this._cache)||(this._oldCache=this._cache,this._cache=void 0)}_descriptors(t){if(this._cache)return this._cache;const e=this._cache=this._createDescriptors(t);return this._notifyStateChanges(t),e}_createDescriptors(t,e){const i=t&&t.config,s=I(i.options&&i.options.plugins,{}),n=function(t){const e={},i=[],s=Object.keys(Is.plugins.items);for(let t=0;t<s.length;t++)i.push(Is.getPlugin(s[t]));const n=t.plugins||[];for(let t=0;t<n.length;t++){const s=n[t];-1===i.indexOf(s)&&(i.push(s),e[s.id]=!0)}return{plugins:i,localIds:e}}(i);return!1!==s||e?function(t,{plugins:e,localIds:i},s,n){const r=[],o=t.getContext();for(const h of e){const e=h.id,a=zs(s[e],n);null!==a&&r.push({plugin:h,options:Ws(t.config,{plugin:h,local:i[e]},a,o)})}return r}(t,n,s,e):[]}_notifyStateChanges(t){const e=this._oldCache||[],i=this._cache,s=(t,e)=>t.filter((t=>!e.some((e=>t.plugin.id===e.plugin.id))));this._notify(s(e,i),t,"stop"),this._notify(s(i,e),t,"start")}}function zs(t,e){return e||!1!==t?!0===t?{}:t:null}function Ws(t,{plugin:e,local:i},s,n){const r=t.pluginScopeKeys(e),o=t.getOptionScopes(s,r);return i&&e.defaults&&o.push(e.defaults),t.createResolver(o,n,[""],{scriptable:!1,indexable:!1,allKeys:!0})}function Ys(t,e){return((e.datasets||{})[t]||{}).indexAxis||e.indexAxis||(Qt.datasets[t]||{}).indexAxis||"x"}function $s(t){if("x"===t||"y"===t||"r"===t)return t}function Hs(t,...e){if($s(t))return t;for(const s of e){const e=s.axis||("top"===(i=s.position)||"bottom"===i?"x":"left"===i||"right"===i?"y":void 0)||t.length>1&&$s(t[0].toLowerCase());if(e)return e}var i;throw new Error(`Cannot determine type of '${t}' axis. Please provide 'axis' or 'position' option.`)}function Vs(t,e,i){if(i[e+"AxisID"]===t)return{axis:e}}function Xs(t){const e=t.options||(t.options={});e.plugins=I(e.plugins,{}),e.scales=function(t,e){const i=Vt[t.type]||{scales:{}},s=e.scales||{},n=Ys(t.type,e),r=Object.create(null);return Object.keys(s).forEach((e=>{const o=s[e];if(!P(o))return console.error(`Invalid scale configuration for scale: ${e}`);if(o._proxy)return console.warn(`Ignoring resolver passed as options for scale: ${e}`);const h=Hs(e,o,function(t,e){if(e.data&&e.data.datasets){const i=e.data.datasets.filter((e=>e.xAxisID===t||e.yAxisID===t));if(i.length)return Vs(t,"x",i[0])||Vs(t,"y",i[0])}return{}}(e,t),Qt.scales[o.type]),a=function(t,e){return t===e?"_index_":"_value_"}(h,n),c=i.scales||{};r[e]=U(Object.create(null),[{axis:h},o,c[h],c[a]])})),t.data.datasets.forEach((i=>{const n=i.type||t.type,o=i.indexAxis||Ys(n,e),h=(Vt[n]||{}).scales||{};Object.keys(h).forEach((t=>{const e=function(t,e){let i=t;return"_index_"===t?i=e:"_value_"===t&&(i="x"===e?"y":"x"),i}(t,o),n=i[e+"AxisID"]||e;r[n]=r[n]||Object.create(null),U(r[n],[{axis:e},s[n],h[t]])}))})),Object.keys(r).forEach((t=>{const e=r[t];U(e,[Qt.scales[e.type],Qt.scale])})),r}(t,e)}function Us(t){return(t=t||{}).datasets=t.datasets||[],t.labels=t.labels||[],t}const Zs=new Map,Ks=new Set;function Qs(t,e){let i=Zs.get(t);return i||(i=e(),Zs.set(t,i),Ks.add(i)),i}const qs=(t,e,i)=>{const s=Q(e,i);void 0!==s&&t.add(s)};class Js{constructor(t){this._config=function(t){return(t=t||{}).data=Us(t.data),Xs(t),t}(t),this._scopeCache=new Map,this._resolverCache=new Map}get platform(){return this._config.platform}get type(){return this._config.type}set type(t){this._config.type=t}get data(){return this._config.data}set data(t){this._config.data=Us(t)}get options(){return this._config.options}set options(t){this._config.options=t}get plugins(){return this._config.plugins}update(){const t=this._config;this.clearCache(),Xs(t)}clearCache(){this._scopeCache.clear(),this._resolverCache.clear()}datasetScopeKeys(t){return Qs(t,(()=>[[`datasets.${t}`,""]]))}datasetAnimationScopeKeys(t,e){return Qs(`${t}.transition.${e}`,(()=>[[`datasets.${t}.transitions.${e}`,`transitions.${e}`],[`datasets.${t}`,""]]))}datasetElementScopeKeys(t,e){return Qs(`${t}-${e}`,(()=>[[`datasets.${t}.elements.${e}`,`datasets.${t}`,`elements.${e}`,""]]))}pluginScopeKeys(t){const e=t.id;return Qs(`${this.type}-plugin-${e}`,(()=>[[`plugins.${e}`,...t.additionalOptionScopes||[]]]))}_cachedScopes(t,e){const i=this._scopeCache;let s=i.get(t);return s&&!e||(s=new Map,i.set(t,s)),s}getOptionScopes(t,e,i){const{options:s,type:n}=this,r=this._cachedScopes(t,i),o=r.get(e);if(o)return o;const h=new Set;e.forEach((e=>{t&&(h.add(t),e.forEach((e=>qs(h,t,e)))),e.forEach((t=>qs(h,s,t))),e.forEach((t=>qs(h,Vt[n]||{},t))),e.forEach((t=>qs(h,Qt,t))),e.forEach((t=>qs(h,Xt,t)))}));const a=Array.from(h);return 0===a.length&&a.push(Object.create(null)),Ks.has(e)&&r.set(e,a),a}chartOptionScopes(){const{options:t,type:e}=this;return[t,Vt[e]||{},Qt.datasets[e]||{},{type:e},Qt,Xt]}resolveNamedOptions(t,e,i,s=[""]){const n={$shared:!0},{resolver:r,subPrefixes:o}=Gs(this._resolverCache,t,s);let h=r;(function(t,e){const{isScriptable:i,isIndexable:s}=_e(t);for(const n of e){const e=i(n),r=s(n),o=(r||e)&&t[n];if(e&&(G(o)||tn(o))||r&&L(o))return!0}return!1})(r,e)&&(n.$shared=!1,h=we(r,i=G(i)?i():i,this.createResolver(t,i,o)));for(const t of e)n[t]=h[t];return n}createResolver(t,e,i=[""],s){const{resolver:n}=Gs(this._resolverCache,t,i);return P(e)?we(n,e,void 0,s):n}}function Gs(t,e,i){let s=t.get(e);s||(s=new Map,t.set(e,s));const n=i.join();let r=s.get(n);return r||(r={resolver:Me(e,i),subPrefixes:i.filter((t=>!t.toLowerCase().includes("hover")))},s.set(n,r)),r}const tn=t=>P(t)&&Object.getOwnPropertyNames(t).some((e=>G(t[e]))),en=["top","bottom","left","right","chartArea"];function sn(t,e){return"top"===t||"bottom"===t||-1===en.indexOf(t)&&"x"===e}function nn(t,e){return function(i,s){return i[t]===s[t]?i[e]-s[e]:i[t]-s[t]}}function rn(t){const e=t.chart,i=e.options.animation;e.notifyPlugins("afterRender"),z(i&&i.onComplete,[t],e)}function on(t){const e=t.chart,i=e.options.animation;z(i&&i.onProgress,[t],e)}function hn(t){return We()&&"string"==typeof t?t=document.getElementById(t):t&&t.length&&(t=t[0]),t&&t.canvas&&(t=t.canvas),t}const an={},cn=t=>{const e=hn(t);return Object.values(an).filter((t=>t.canvas===e)).pop()};function un(t,e,i){const s=Object.keys(t);for(const n of s){const s=+n;if(s>=e){const r=t[n];delete t[n],(i>0||s>e)&&(t[s+i]=r)}}}class ln{static defaults=Qt;static instances=an;static overrides=Vt;static registry=Is;static version="4.5.1";static getChart=cn;static register(...t){Is.add(...t),fn()}static unregister(...t){Is.remove(...t),fn()}constructor(t,e){const i=this.config=new Js(e),s=hn(t),n=cn(s);if(n)throw new Error("Canvas is already in use. Chart with ID '"+n.id+"' must be destroyed before the canvas with ID '"+n.canvas.id+"' can be reused.");const r=i.createResolver(i.chartOptionScopes(),this.getContext());this.platform=new(i.platform||function(t){return!We()||"undefined"!=typeof OffscreenCanvas&&t instanceof OffscreenCanvas?us:Os}(s)),this.platform.updateConfig(i);const o=this.platform.acquireContext(s,r.aspectRatio),h=o&&o.canvas,a=h&&h.height,c=h&&h.width;this.id=j(),this.ctx=o,this.canvas=h,this.width=c,this.height=a,this._options=r,this._aspectRatio=this.aspectRatio,this._layers=[],this._metasets=[],this._stacks=void 0,this.boxes=[],this.currentDevicePixelRatio=void 0,this.chartArea=void 0,this._active=[],this._lastEvent=void 0,this._listeners={},this._responsiveListeners=void 0,this._sortedMetasets=[],this.scales={},this._plugins=new Bs,this.$proxies={},this._hiddenIndices={},this.attached=!1,this._animationsDisabled=void 0,this.$context=void 0,this._doResize=function(t,e){let i;return function(...s){return e?(clearTimeout(i),i=setTimeout(t,e,s)):t.apply(this,s),e}}((t=>this.update(t)),r.resizeDelay||0),this._dataChanges=[],an[this.id]=this,o&&h?(di.listen(this,"complete",rn),di.listen(this,"progress",on),this._initialize(),this.attached&&this.update()):console.error("Failed to create chart: can't acquire context from the given item")}get aspectRatio(){const{options:{aspectRatio:t,maintainAspectRatio:e},width:i,height:s,_aspectRatio:n}=this;return F(t)?e&&n?n:s?i/s:null:t}get data(){return this.config.data}set data(t){this.config.data=t}get options(){return this._options}set options(t){this.config.options=t}get registry(){return Is}_initialize(){return this.notifyPlugins("beforeInit"),this.options.responsive?this.resize():Ke(this,this.options.devicePixelRatio),this.bindEvents(),this.notifyPlugins("afterInit"),this}clear(){return Gt(this.canvas,this.ctx),this}stop(){return di.stop(this),this}resize(t,e){di.running(this)?this._resizeBeforeDraw={width:t,height:e}:this._resize(t,e)}_resize(t,e){const i=this.options,s=this.platform.getMaximumSize(this.canvas,t,e,i.maintainAspectRatio&&this.aspectRatio),n=i.devicePixelRatio||this.platform.getDevicePixelRatio(),r=this.width?"resize":"attach";this.width=s.width,this.height=s.height,this._aspectRatio=this.aspectRatio,Ke(this,n,!0)&&(this.notifyPlugins("resize",{size:s}),z(i.onResize,[this,s],this),this.attached&&this._doResize(r)&&this.render())}ensureScalesHaveIDs(){W(this.options.scales||{},((t,e)=>{t.id=e}))}buildOrUpdateScales(){const t=this.options,e=t.scales,i=this.scales,s=Object.keys(i).reduce(((t,e)=>(t[e]=!1,t)),{});let n=[];e&&(n=n.concat(Object.keys(e).map((t=>{const i=e[t],s=Hs(t,i),n="r"===s,r="x"===s;return{options:i,dposition:n?"chartArea":r?"bottom":"left",dtype:n?"radialLinear":r?"category":"linear"}})))),W(n,(e=>{const n=e.options,r=n.id,o=Hs(r,n),h=I(n.type,e.dtype);void 0!==n.position&&sn(n.position,o)===sn(e.dposition)||(n.position=e.dposition),s[r]=!0;let a=null;r in i&&i[r].type===h?a=i[r]:(a=new(Is.getScale(h))({id:r,type:h,ctx:this.ctx,chart:this}),i[a.id]=a),a.init(n,t)})),W(s,((t,e)=>{t||delete i[e]})),W(i,(t=>{as.configure(this,t,t.options),as.addBox(this,t)}))}_updateMetasets(){const t=this._metasets,e=this.data.datasets.length,i=t.length;if(t.sort(((t,e)=>t.index-e.index)),i>e){for(let t=e;t<i;++t)this._destroyDatasetMeta(t);t.splice(e,i-e)}this._sortedMetasets=t.slice(0).sort(nn("order","index"))}_removeUnreferencedMetasets(){const{_metasets:t,data:{datasets:e}}=this;t.length>e.length&&delete this._stacks,t.forEach(((t,i)=>{0===e.filter((e=>e===t._dataset)).length&&this._destroyDatasetMeta(i)}))}buildOrUpdateControllers(){const t=[],e=this.data.datasets;let i,s;for(this._removeUnreferencedMetasets(),i=0,s=e.length;i<s;i++){const s=e[i];let n=this.getDatasetMeta(i);const r=s.type||this.config.type;if(n.type&&n.type!==r&&(this._destroyDatasetMeta(i),n=this.getDatasetMeta(i)),n.type=r,n.indexAxis=s.indexAxis||Ys(r,this.options),n.order=s.order||0,n.index=i,n.label=""+s.label,n.visible=this.isDatasetVisible(i),n.controller)n.controller.updateIndex(i),n.controller.linkScales();else{const e=Is.getController(r),{datasetElementType:s,dataElementType:o}=Qt.datasets[r];Object.assign(e,{dataElementType:Is.getElement(o),datasetElementType:s&&Is.getElement(s)}),n.controller=new e(this,i),t.push(n.controller)}}return this._updateMetasets(),t}_resetElements(){W(this.data.datasets,((t,e)=>{this.getDatasetMeta(e).controller.reset()}),this)}reset(){this._resetElements(),this.notifyPlugins("reset")}update(t){const e=this.config;e.update();const i=this._options=e.createResolver(e.chartOptionScopes(),this.getContext()),s=this._animationsDisabled=!i.animation;if(this._updateScales(),this._checkEventBindings(),this._updateHiddenIndices(),this._plugins.invalidate(),!1===this.notifyPlugins("beforeUpdate",{mode:t,cancelable:!0}))return;const n=this.buildOrUpdateControllers();this.notifyPlugins("beforeElementsUpdate");let r=0;for(let t=0,e=this.data.datasets.length;t<e;t++){const{controller:e}=this.getDatasetMeta(t),i=!s&&-1===n.indexOf(e);e.buildOrUpdateElements(i),r=Math.max(+e.getMaxOverflow(),r)}r=this._minPadding=i.layout.autoPadding?r:0,this._updateLayout(r),s||W(n,(t=>{t.reset()})),this._updateDatasets(t),this.notifyPlugins("afterUpdate",{mode:t}),this._layers.sort(nn("z","_idx"));const{_active:o,_lastEvent:h}=this;h?this._eventHandler(h,!0):o.length&&this._updateHoverStyles(o,o,!0),this.render()}_updateScales(){W(this.scales,(t=>{as.removeBox(this,t)})),this.ensureScalesHaveIDs(),this.buildOrUpdateScales()}_checkEventBindings(){const t=this.options,e=new Set(Object.keys(this._listeners)),i=new Set(t.events);tt(e,i)&&!!this._responsiveListeners===t.responsive||(this.unbindEvents(),this.bindEvents())}_updateHiddenIndices(){const{_hiddenIndices:t}=this,e=this._getUniformDataChanges()||[];for(const{method:i,start:s,count:n}of e)un(t,s,"_removeElements"===i?-n:n)}_getUniformDataChanges(){const t=this._dataChanges;if(!t||!t.length)return;this._dataChanges=[];const e=this.data.datasets.length,i=e=>new Set(t.filter((t=>t[0]===e)).map(((t,e)=>e+","+t.splice(1).join(",")))),s=i(0);for(let t=1;t<e;t++)if(!tt(s,i(t)))return;return Array.from(s).map((t=>t.split(","))).map((t=>({method:t[1],start:+t[2],count:+t[3]})))}_updateLayout(t){if(!1===this.notifyPlugins("beforeLayout",{cancelable:!0}))return;as.update(this,this.width,this.height,t);const e=this.chartArea,i=e.width<=0||e.height<=0;this._layers=[],W(this.boxes,(t=>{i&&"chartArea"===t.position||(t.configure&&t.configure(),this._layers.push(...t._layers()))}),this),this._layers.forEach(((t,e)=>{t._idx=e})),this.notifyPlugins("afterLayout")}_updateDatasets(t){if(!1!==this.notifyPlugins("beforeDatasetsUpdate",{mode:t,cancelable:!0})){for(let t=0,e=this.data.datasets.length;t<e;++t)this.getDatasetMeta(t).controller.configure();for(let e=0,i=this.data.datasets.length;e<i;++e)this._updateDataset(e,G(t)?t({datasetIndex:e}):t);this.notifyPlugins("afterDatasetsUpdate",{mode:t})}}_updateDataset(t,e){const i=this.getDatasetMeta(t),s={meta:i,index:t,mode:e,cancelable:!0};!1!==this.notifyPlugins("beforeDatasetUpdate",s)&&(i.controller._update(e),s.cancelable=!1,this.notifyPlugins("afterDatasetUpdate",s))}render(){!1!==this.notifyPlugins("beforeRender",{cancelable:!0})&&(di.has(this)?this.attached&&!di.running(this)&&di.start(this):(this.draw(),rn({chart:this})))}draw(){let t;if(this._resizeBeforeDraw){const{width:t,height:e}=this._resizeBeforeDraw;this._resizeBeforeDraw=null,this._resize(t,e)}if(this.clear(),this.width<=0||this.height<=0)return;if(!1===this.notifyPlugins("beforeDraw",{cancelable:!0}))return;const e=this._layers;for(t=0;t<e.length&&e[t].z<=0;++t)e[t].draw(this.chartArea);for(this._drawDatasets();t<e.length;++t)e[t].draw(this.chartArea);this.notifyPlugins("afterDraw")}_getSortedDatasetMetas(t){const e=this._sortedMetasets,i=[];let s,n;for(s=0,n=e.length;s<n;++s){const n=e[s];t&&!n.visible||i.push(n)}return i}getSortedVisibleDatasetMetas(){return this._getSortedDatasetMetas(!0)}_drawDatasets(){if(!1===this.notifyPlugins("beforeDatasetsDraw",{cancelable:!0}))return;const t=this.getSortedVisibleDatasetMetas();for(let e=t.length-1;e>=0;--e)this._drawDataset(t[e]);this.notifyPlugins("afterDatasetsDraw")}_drawDataset(t){const e=this.ctx,i={meta:t,index:t.index,cancelable:!0},s=li(this,t);!1!==this.notifyPlugins("beforeDatasetDraw",i)&&(s&&se(e,s),t.controller.draw(),s&&ne(e),i.cancelable=!1,this.notifyPlugins("afterDatasetDraw",i))}isPointInArea(t){return ie(t,this.chartArea,this._minPadding)}getElementsAtEventForMode(t,e,i,s){const n=Qi.modes[e];return"function"==typeof n?n(this,t,i,s):[]}getDatasetMeta(t){const e=this.data.datasets[t],i=this._metasets;let s=i.filter((t=>t&&t._dataset===e)).pop();return s||(s={type:null,data:[],dataset:null,controller:null,hidden:null,xAxisID:null,yAxisID:null,order:e&&e.order||0,index:t,_dataset:e,_parsed:[],_sorted:!1},i.push(s)),s}getContext(){return this.$context||(this.$context=ye(null,{chart:this,type:"chart"}))}getVisibleDatasetCount(){return this.getSortedVisibleDatasetMetas().length}isDatasetVisible(t){const e=this.data.datasets[t];if(!e)return!1;const i=this.getDatasetMeta(t);return"boolean"==typeof i.hidden?!i.hidden:!e.hidden}setDatasetVisibility(t,e){this.getDatasetMeta(t).hidden=!e}toggleDataVisibility(t){this._hiddenIndices[t]=!this._hiddenIndices[t]}getDataVisibility(t){return!this._hiddenIndices[t]}_updateVisibility(t,e,i){const s=i?"show":"hide",n=this.getDatasetMeta(t),r=n.controller._resolveAnimations(void 0,s);J(e)?(n.data[e].hidden=!i,this.update()):(this.setDatasetVisibility(t,i),r.update(n,{visible:i}),this.update((e=>e.datasetIndex===t?s:void 0)))}hide(t,e){this._updateVisibility(t,e,!1)}show(t,e){this._updateVisibility(t,e,!0)}_destroyDatasetMeta(t){const e=this._metasets[t];e&&e.controller&&e.controller._destroy(),delete this._metasets[t]}_stop(){let t,e;for(this.stop(),di.remove(this),t=0,e=this.data.datasets.length;t<e;++t)this._destroyDatasetMeta(t)}destroy(){this.notifyPlugins("beforeDestroy");const{canvas:t,ctx:e}=this;this._stop(),this.config.clearCache(),t&&(this.unbindEvents(),Gt(t,e),this.platform.releaseContext(e),this.canvas=null,this.ctx=null),delete an[this.id],this.notifyPlugins("afterDestroy")}toBase64Image(...t){return this.canvas.toDataURL(...t)}bindEvents(){this.bindUserEvents(),this.options.responsive?this.bindResponsiveEvents():this.attached=!0}bindUserEvents(){const t=this._listeners,e=this.platform,i=(i,s)=>{e.addEventListener(this,i,s),t[i]=s},s=(t,e,i)=>{t.offsetX=e,t.offsetY=i,this._eventHandler(t)};W(this.options.events,(t=>i(t,s)))}bindResponsiveEvents(){this._responsiveListeners||(this._responsiveListeners={});const t=this._responsiveListeners,e=this.platform,i=(i,s)=>{e.addEventListener(this,i,s),t[i]=s},s=(i,s)=>{t[i]&&(e.removeEventListener(this,i,s),delete t[i])},n=(t,e)=>{this.canvas&&this.resize(t,e)};let r;const o=()=>{s("attach",o),this.attached=!0,this.resize(),i("resize",n),i("detach",r)};r=()=>{this.attached=!1,s("resize",n),this._stop(),this._resize(0,0),i("attach",o)},e.isAttached(this.canvas)?o():r()}unbindEvents(){W(this._listeners,((t,e)=>{this.platform.removeEventListener(this,e,t)})),this._listeners={},W(this._responsiveListeners,((t,e)=>{this.platform.removeEventListener(this,e,t)})),this._responsiveListeners=void 0}updateHoverStyle(t,e,i){const s=i?"set":"remove";let n,r,o,h;for("dataset"===e&&(n=this.getDatasetMeta(t[0].datasetIndex),n.controller["_"+s+"DatasetHoverStyle"]()),o=0,h=t.length;o<h;++o){r=t[o];const e=r&&this.getDatasetMeta(r.datasetIndex).controller;e&&e[s+"HoverStyle"](r.element,r.datasetIndex,r.index)}}getActiveElements(){return this._active||[]}setActiveElements(t){const e=this._active||[],i=t.map((({datasetIndex:t,index:e})=>{const i=this.getDatasetMeta(t);if(!i)throw new Error("No dataset found at index "+t);return{datasetIndex:t,element:i.data[e],index:e}}));!Y(i,e)&&(this._active=i,this._lastEvent=null,this._updateHoverStyles(i,e))}notifyPlugins(t,e,i){return this._plugins.notify(this,t,e,i)}isPluginEnabled(t){return 1===this._plugins._cache.filter((e=>e.plugin.id===t)).length}_updateHoverStyles(t,e,i){const s=this.options.hover,n=(t,e)=>t.filter((t=>!e.some((e=>t.datasetIndex===e.datasetIndex&&t.index===e.index)))),r=n(e,t),o=i?t:n(t,e);r.length&&this.updateHoverStyle(r,s.mode,!1),o.length&&s.mode&&this.updateHoverStyle(o,s.mode,!0)}_eventHandler(t,e){const i={event:t,replay:e,cancelable:!0,inChartArea:this.isPointInArea(t)},s=e=>(e.options.events||this.options.events).includes(t.native.type);if(!1===this.notifyPlugins("beforeEvent",i,s))return;const n=this._handleEvent(t,e,i.inChartArea);return i.cancelable=!1,this.notifyPlugins("afterEvent",i,s),(n||i.changed)&&this.render(),this}_handleEvent(t,e,i){const{_active:s=[],options:n}=this,r=this._getActiveElements(t,s,i,e),o=function(t){return"mouseup"===t.type||"click"===t.type||"contextmenu"===t.type}(t),h=function(t,e,i,s){return i&&"mouseout"!==t.type?s?e:t:null}(t,this._lastEvent,i,o);i&&(this._lastEvent=null,z(n.onHover,[t,r,this],this),o&&z(n.onClick,[t,r,this],this));const a=!Y(r,s);return(a||e)&&(this._active=r,this._updateHoverStyles(r,s,e)),this._lastEvent=h,a}_getActiveElements(t,e,i,s){if("mouseout"===t.type)return[];if(!i)return e;const n=this.options.hover;return this.getElementsAtEventForMode(t,n.mode,n,s)}}function fn(){return W(ln.instances,(t=>t._plugins.invalidate()))}function dn(t,e,i,s){return{x:i+t*Math.cos(e),y:s+t*Math.sin(e)}}function pn(t,e,i,s,n,r){const{x:o,y:h,startAngle:a,pixelMargin:c,innerRadius:u}=e,l=Math.max(e.outerRadius+s+i-c,0),f=u>0?u+s+i+c:0;let d=0;const p=n-a;if(s){const t=((u>0?u-s:0)+(l>0?l-s:0))/2;d=(p-(0!==t?p*t/(t+s):p))/2}const b=(p-Math.max(.001,p*l-i/et)/l)/2,g=a+b+d,m=n-b-d,{outerStart:x,outerEnd:v,innerStart:y,innerEnd:M}=function(t,e,i,s){const n=pe(t.options.borderRadius,["outerStart","outerEnd","innerStart","innerEnd"]),r=(i-e)/2,o=Math.min(r,s*e/2),h=t=>{const e=(i-Math.min(r,t))*s/2;return Mt(t,0,Math.min(r,e))};return{outerStart:h(n.outerStart),outerEnd:h(n.outerEnd),innerStart:Mt(n.innerStart,0,o),innerEnd:Mt(n.innerEnd,0,o)}}(e,f,l,m-g),w=l-x,_=l-v,k=g+x/w,O=m-v/_,S=f+y,A=f+M,D=g+y/S,C=m-M/A;if(t.beginPath(),r){const e=(k+O)/2;if(t.arc(o,h,l,k,e),t.arc(o,h,l,e,O),v>0){const e=dn(_,O,o,h);t.arc(e.x,e.y,v,O,m+ot)}const i=dn(A,m,o,h);if(t.lineTo(i.x,i.y),M>0){const e=dn(A,C,o,h);t.arc(e.x,e.y,M,m+ot,C+Math.PI)}const s=(m-M/f+(g+y/f))/2;if(t.arc(o,h,f,m-M/f,s,!0),t.arc(o,h,f,s,g+y/f,!0),y>0){const e=dn(S,D,o,h);t.arc(e.x,e.y,y,D+Math.PI,g-ot)}const n=dn(w,g,o,h);if(t.lineTo(n.x,n.y),x>0){const e=dn(w,k,o,h);t.arc(e.x,e.y,x,g-ot,k)}}else{t.moveTo(o,h);const e=Math.cos(k)*l+o,i=Math.sin(k)*l+h;t.lineTo(e,i);const s=Math.cos(O)*l+o,n=Math.sin(O)*l+h;t.lineTo(s,n)}t.closePath()}class bn extends Ss{static id="arc";static defaults={borderAlign:"center",borderColor:"#fff",borderDash:[],borderDashOffset:0,borderJoinStyle:void 0,borderRadius:0,borderWidth:2,offset:0,spacing:0,angle:void 0,circular:!0,selfJoin:!1};static defaultRoutes={backgroundColor:"backgroundColor"};static descriptors={_scriptable:!0,_indexable:t=>"borderDash"!==t};circumference;endAngle;fullCircles;innerRadius;outerRadius;pixelMargin;startAngle;constructor(t){super(),this.options=void 0,this.circumference=void 0,this.startAngle=void 0,this.endAngle=void 0,this.innerRadius=void 0,this.outerRadius=void 0,this.pixelMargin=0,this.fullCircles=0,t&&Object.assign(this,t)}inRange(t,e,i){const s=this.getProps(["x","y"],i),{angle:n,distance:r}=gt(s,{x:t,y:e}),{startAngle:o,endAngle:h,innerRadius:a,outerRadius:c,circumference:u}=this.getProps(["startAngle","endAngle","innerRadius","outerRadius","circumference"],i),l=(this.options.spacing+this.options.borderWidth)/2,f=I(u,h-o),d=yt(n,o,h)&&o!==h,p=f>=it||d,b=wt(r,a+l,c+l);return p&&b}getCenterPoint(t){const{x:e,y:i,startAngle:s,endAngle:n,innerRadius:r,outerRadius:o}=this.getProps(["x","y","startAngle","endAngle","innerRadius","outerRadius"],t),{offset:h,spacing:a}=this.options,c=(s+n)/2,u=(r+o+a+h)/2;return{x:e+Math.cos(c)*u,y:i+Math.sin(c)*u}}tooltipPosition(t){return this.getCenterPoint(t)}draw(t){const{options:e,circumference:i}=this,s=(e.offset||0)/4,n=(e.spacing||0)/2,r=e.circular;if(this.pixelMargin="inner"===e.borderAlign?.33:0,this.fullCircles=i>it?Math.floor(i/it):0,0===i||this.innerRadius<0||this.outerRadius<0)return;t.save();const o=(this.startAngle+this.endAngle)/2;t.translate(Math.cos(o)*s,Math.sin(o)*s);const h=s*(1-Math.sin(Math.min(et,i||0)));t.fillStyle=e.backgroundColor,t.strokeStyle=e.borderColor,function(t,e,i,s,n){const{fullCircles:r,startAngle:o,circumference:h}=e;let a=e.endAngle;if(r){pn(t,e,i,s,a,n);for(let e=0;e<r;++e)t.fill();isNaN(h)||(a=o+(h%it||it))}pn(t,e,i,s,a,n),t.fill()}(t,this,h,n,r),function(t,e,i,s,n){const{fullCircles:r,startAngle:o,circumference:h,options:a}=e,{borderWidth:c,borderJoinStyle:u,borderDash:l,borderDashOffset:f,borderRadius:d}=a,p="inner"===a.borderAlign;if(!c)return;t.setLineDash(l||[]),t.lineDashOffset=f,p?(t.lineWidth=2*c,t.lineJoin=u||"round"):(t.lineWidth=c,t.lineJoin=u||"bevel");let b=e.endAngle;if(r){pn(t,e,i,s,b,n);for(let e=0;e<r;++e)t.stroke();isNaN(h)||(b=o+(h%it||it))}p&&function(t,e,i){const{startAngle:s,pixelMargin:n,x:r,y:o,outerRadius:h,innerRadius:a}=e;let c=n/h;t.beginPath(),t.arc(r,o,h,s-c,i+c),a>n?(c=n/a,t.arc(r,o,a,i+c,s-c,!0)):t.arc(r,o,n,i+ot,s-ot),t.closePath(),t.clip()}(t,e,b),a.selfJoin&&b-o>=et&&0===d&&"miter"!==u&&function(t,e,i){const{startAngle:s,x:n,y:r,outerRadius:o,innerRadius:h,options:a}=e,{borderWidth:c,borderJoinStyle:u}=a,l=Math.min(c/o,vt(s-i));if(t.beginPath(),t.arc(n,r,o-c/2,s+l/2,i-l/2),h>0){const e=Math.min(c/h,vt(s-i));t.arc(n,r,h+c/2,i-e/2,s+e/2,!0)}else{const e=Math.min(c/2,o*vt(s-i));if("round"===u)t.arc(n,r,e,i-et/2,s+et/2,!0);else if("bevel"===u){const o=2*e*e,h=-o*Math.cos(i+et/2)+n,a=-o*Math.sin(i+et/2)+r,c=o*Math.cos(s+et/2)+n,u=o*Math.sin(s+et/2)+r;t.lineTo(h,a),t.lineTo(c,u)}}t.closePath(),t.moveTo(0,0),t.rect(0,0,t.canvas.width,t.canvas.height),t.clip("evenodd")}(t,e,b),r||(pn(t,e,i,s,b,n),t.stroke())}(t,this,h,n,r),t.restore()}}function gn(t,e,i=e){t.lineCap=I(i.borderCapStyle,e.borderCapStyle),t.setLineDash(I(i.borderDash,e.borderDash)),t.lineDashOffset=I(i.borderDashOffset,e.borderDashOffset),t.lineJoin=I(i.borderJoinStyle,e.borderJoinStyle),t.lineWidth=I(i.borderWidth,e.borderWidth),t.strokeStyle=I(i.borderColor,e.borderColor)}function mn(t,e,i){t.lineTo(i.x,i.y)}function xn(t,e,i={}){const s=t.length,{start:n=0,end:r=s-1}=i,{start:o,end:h}=e,a=Math.max(n,o),c=Math.min(r,h);return{count:s,start:a,loop:e.loop,ilen:c<a&&!(n<o&&r<o||n>h&&r>h)?s+c-a:c-a}}function vn(t,e,i,s){const{points:n,options:r}=e,{count:o,start:h,loop:a,ilen:c}=xn(n,i,s),u=function(t){return t.stepped?re:t.tension||"monotone"===t.cubicInterpolationMode?oe:mn}(r);let l,f,d,{move:p=!0,reverse:b}=s||{};for(l=0;l<=c;++l)f=n[(h+(b?c-l:l))%o],f.skip||(p?(t.moveTo(f.x,f.y),p=!1):u(t,d,f,b,r.stepped),d=f);return a&&(f=n[(h+(b?c:0))%o],u(t,d,f,b,r.stepped)),!!a}function yn(t,e,i,s){const n=e.points,{count:r,start:o,ilen:h}=xn(n,i,s),{move:a=!0,reverse:c}=s||{};let u,l,f,d,p,b,g=0,m=0;const x=t=>(o+(c?h-t:t))%r,v=()=>{d!==p&&(t.lineTo(g,p),t.lineTo(g,d),t.lineTo(g,b))};for(a&&(l=n[x(0)],t.moveTo(l.x,l.y)),u=0;u<=h;++u){if(l=n[x(u)],l.skip)continue;const e=l.x,i=l.y,s=0|e;s===f?(i<d?d=i:i>p&&(p=i),g=(m*g+e)/++m):(v(),t.lineTo(e,i),f=s,m=0,d=p=i),b=i}v()}function Mn(t){const e=t.options;return t._decimated||t._loop||e.tension||"monotone"===e.cubicInterpolationMode||e.stepped||e.borderDash&&e.borderDash.length?vn:yn}const wn="function"==typeof Path2D;class _n extends Ss{static id="line";static defaults={borderCapStyle:"butt",borderDash:[],borderDashOffset:0,borderJoinStyle:"miter",borderWidth:3,capBezierPoints:!0,cubicInterpolationMode:"default",fill:!1,spanGaps:!1,stepped:!1,tension:0};static defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"};static descriptors={_scriptable:!0,_indexable:t=>"borderDash"!==t&&"fill"!==t};constructor(t){super(),this.animated=!0,this.options=void 0,this._chart=void 0,this._loop=void 0,this._fullLoop=void 0,this._path=void 0,this._points=void 0,this._segments=void 0,this._decimated=!1,this._pointsUpdated=!1,this._datasetIndex=void 0,t&&Object.assign(this,t)}updateControlPoints(t,e){const i=this.options;!i.tension&&"monotone"!==i.cubicInterpolationMode||i.stepped||this._pointsUpdated||(ze(this._points,i,t,i.spanGaps?this._loop:this._fullLoop,e),this._pointsUpdated=!0)}set points(t){this._points=t,delete this._segments,delete this._path,this._pointsUpdated=!1}get points(){return this._points}get segments(){return this._segments||(this._segments=function(t,e){const i=t.points,s=t.options.spanGaps,n=i.length;if(!n)return[];const r=!!t._loop,{start:o,end:h}=function(t,e,i,s){let n=0,r=e-1;if(i&&!s)for(;n<e&&!t[n].skip;)n++;for(;n<e&&t[n].skip;)n++;for(n%=e,i&&(r+=n);r>n&&t[r%e].skip;)r--;return r%=e,{start:n,end:r}}(i,n,r,s);return function(t,e,i,s){return s&&s.setContext&&i?function(t,e,i,s){const n=t._chart.getContext(),r=ai(t.options),{_datasetIndex:o,options:{spanGaps:h}}=t,a=i.length,c=[];let u=r,l=e[0].start,f=l;function d(t,e,s,n){const r=h?-1:1;if(t!==e){for(t+=a;i[t%a].skip;)t-=r;for(;i[e%a].skip;)e+=r;t%a!=e%a&&(c.push({start:t%a,end:e%a,loop:s,style:n}),u=n,l=e%a)}}for(const t of e){l=h?l:t.start;let e,r=i[l%a];for(f=l+1;f<=t.end;f++){const h=i[f%a];e=ai(s.setContext(ye(n,{type:"segment",p0:r,p1:h,p0DataIndex:(f-1)%a,p1DataIndex:f%a,datasetIndex:o}))),ci(e,u)&&d(l,f-1,t.loop,u),r=h,u=e}l<f-1&&d(l,f-1,t.loop,u)}return c}(t,e,i,s):e}(t,!0===s?[{start:o,end:h,loop:r}]:function(t,e,i,s){const n=t.length,r=[];let o,h=e,a=t[e];for(o=e+1;o<=i;++o){const i=t[o%n];i.skip||i.stop?a.skip||(r.push({start:e%n,end:(o-1)%n,loop:s=!1}),e=h=i.stop?o:null):(h=o,a.skip&&(e=o)),a=i}return null!==h&&r.push({start:e%n,end:h%n,loop:s}),r}(i,o,h<o?h+n:h,!!t._fullLoop&&0===o&&h===n-1),i,e)}(this,this.options.segment))}first(){const t=this.segments;return t.length&&this.points[t[0].start]}last(){const t=this.segments,e=t.length;return e&&this.points[t[e-1].end]}interpolate(t,e){const i=this.options,s=t[e],n=this.points,r=hi(this,{property:e,start:s,end:s});if(!r.length)return;const o=[],h=function(t){return t.stepped?Ge:t.tension||"monotone"===t.cubicInterpolationMode?ti:Je}(i);let a,c;for(a=0,c=r.length;a<c;++a){const{start:c,end:u}=r[a],l=n[c],f=n[u];if(l===f){o.push(l);continue}const d=h(l,f,Math.abs((s-l[e])/(f[e]-l[e])),i.stepped);d[e]=t[e],o.push(d)}return 1===o.length?o[0]:o}pathSegment(t,e,i){return Mn(this)(t,this,e,i)}path(t,e,i){const s=this.segments,n=Mn(this);let r=this._loop;e=e||0,i=i||this.points.length-e;for(const o of s)r&=n(t,this,o,{start:e,end:e+i-1});return!!r}draw(t,e,i,s){(this.points||[]).length&&(this.options||{}).borderWidth&&(t.save(),function(t,e,i,s){wn&&!e.options.segment?function(t,e,i,s){let n=e._path;n||(n=e._path=new Path2D,e.path(n,i,s)&&n.closePath()),gn(t,e.options),t.stroke(n)}(t,e,i,s):function(t,e,i,s){const{segments:n,options:r}=e,o=Mn(e);for(const h of n)gn(t,r,h.style),t.beginPath(),o(t,e,h,{start:i,end:i+s-1})&&t.closePath(),t.stroke()}(t,e,i,s)}(t,this,i,s),t.restore()),this.animated&&(this._pointsUpdated=!1,this._path=void 0)}}function kn(t,e,i,s){const n=t.options,{[i]:r}=t.getProps([i],s);return Math.abs(e-r)<n.radius+n.hitRadius}class On extends Ss{static id="point";parsed;skip;stop;static defaults={borderWidth:1,hitRadius:1,hoverBorderWidth:1,hoverRadius:4,pointStyle:"circle",radius:3,rotation:0};static defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"};constructor(t){super(),this.options=void 0,this.parsed=void 0,this.skip=void 0,this.stop=void 0,t&&Object.assign(this,t)}inRange(t,e,i){const s=this.options,{x:n,y:r}=this.getProps(["x","y"],i);return Math.pow(t-n,2)+Math.pow(e-r,2)<Math.pow(s.hitRadius+s.radius,2)}inXRange(t,e){return kn(this,t,"x",e)}inYRange(t,e){return kn(this,t,"y",e)}getCenterPoint(t){const{x:e,y:i}=this.getProps(["x","y"],t);return{x:e,y:i}}size(t){let e=(t=t||this.options||{}).radius||0;return e=Math.max(e,e&&t.hoverRadius||0),2*(e+(e&&t.borderWidth||0))}draw(t,e){const i=this.options;this.skip||i.radius<.1||!ie(this,e,this.size(i)/2)||(t.strokeStyle=i.borderColor,t.lineWidth=i.borderWidth,t.fillStyle=i.backgroundColor,te(t,i,this.x,this.y))}getRange(){const t=this.options||{};return t.radius+t.hitRadius}}function Sn(t,e){const{x:i,y:s,base:n,width:r,height:o}=t.getProps(["x","y","base","width","height"],e);let h,a,c,u,l;return t.horizontal?(l=o/2,h=Math.min(i,n),a=Math.max(i,n),c=s-l,u=s+l):(l=r/2,h=i-l,a=i+l,c=Math.min(s,n),u=Math.max(s,n)),{left:h,top:c,right:a,bottom:u}}function An(t,e,i,s){return t?0:Mt(e,i,s)}function Dn(t,e,i,s){const n=null===e,r=null===i,o=t&&!(n&&r)&&Sn(t,s);return o&&(n||wt(e,o.left,o.right))&&(r||wt(i,o.top,o.bottom))}function Cn(t,e){t.rect(e.x,e.y,e.w,e.h)}function Rn(t,e,i={}){const s=t.x!==i.x?-e:0,n=t.y!==i.y?-e:0;return{x:t.x+s,y:t.y+n,w:t.w+((t.x+t.w!==i.x+i.w?e:0)-s),h:t.h+((t.y+t.h!==i.y+i.h?e:0)-n),radius:t.radius}}class En extends Ss{static id="bar";static defaults={borderSkipped:"start",borderWidth:0,borderRadius:0,inflateAmount:"auto",pointStyle:void 0};static defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"};constructor(t){super(),this.options=void 0,this.horizontal=void 0,this.base=void 0,this.width=void 0,this.height=void 0,this.inflateAmount=void 0,t&&Object.assign(this,t)}draw(t){const{inflateAmount:e,options:{borderColor:i,backgroundColor:s}}=this,{inner:n,outer:r}=function(t){const e=Sn(t),i=e.right-e.left,s=e.bottom-e.top,n=function(t,e,i){const s=t.borderSkipped,n=be(t.options.borderWidth);return{t:An(s.top,n.top,0,i),r:An(s.right,n.right,0,e),b:An(s.bottom,n.bottom,0,i),l:An(s.left,n.left,0,e)}}(t,i/2,s/2),r=function(t,e,i){const{enableBorderRadius:s}=t.getProps(["enableBorderRadius"]),n=t.options.borderRadius,r=ge(n),o=Math.min(e,i),h=t.borderSkipped,a=s||P(n);return{topLeft:An(!a||h.top||h.left,r.topLeft,0,o),topRight:An(!a||h.top||h.right,r.topRight,0,o),bottomLeft:An(!a||h.bottom||h.left,r.bottomLeft,0,o),bottomRight:An(!a||h.bottom||h.right,r.bottomRight,0,o)}}(t,i/2,s/2);return{outer:{x:e.left,y:e.top,w:i,h:s,radius:r},inner:{x:e.left+n.l,y:e.top+n.t,w:i-n.l-n.r,h:s-n.t-n.b,radius:{topLeft:Math.max(0,r.topLeft-Math.max(n.t,n.l)),topRight:Math.max(0,r.topRight-Math.max(n.t,n.r)),bottomLeft:Math.max(0,r.bottomLeft-Math.max(n.b,n.l)),bottomRight:Math.max(0,r.bottomRight-Math.max(n.b,n.r))}}}}(this),o=(h=r.radius).topLeft||h.topRight||h.bottomLeft||h.bottomRight?ue:Cn;var h;t.save(),r.w===n.w&&r.h===n.h||(t.beginPath(),o(t,Rn(r,e,n)),t.clip(),o(t,Rn(n,-e,r)),t.fillStyle=i,t.fill("evenodd")),t.beginPath(),o(t,Rn(n,e)),t.fillStyle=s,t.fill(),t.restore()}inRange(t,e,i){return Dn(this,t,e,i)}inXRange(t,e){return Dn(this,t,null,e)}inYRange(t,e){return Dn(this,null,t,e)}getCenterPoint(t){const{x:e,y:i,base:s,horizontal:n}=this.getProps(["x","y","base","horizontal"],t);return{x:n?(e+s)/2:e,y:n?i:(i+s)/2}}getRange(t){return"x"===t?this.width/2:this.height/2}}const jn=["rgb(54, 162, 235)","rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(153, 102, 255)","rgb(201, 203, 207)"],Fn=jn.map((t=>t.replace("rgb(","rgba(").replace(")",", 0.5)")));function Ln(t){return jn[t%jn.length]}function Pn(t){return Fn[t%Fn.length]}function Nn(t){let e;for(e in t)if(t[e].borderColor||t[e].backgroundColor)return!0;return!1}var Tn={id:"colors",defaults:{enabled:!0,forceOverride:!1},beforeLayout(t,e,i){if(!i.enabled)return;const{data:{datasets:s},options:n}=t.config,{elements:r}=n,o=Nn(s)||(h=n)&&(h.borderColor||h.backgroundColor)||r&&Nn(r)||"rgba(0,0,0,0.1)"!==Qt.borderColor||"rgba(0,0,0,0.1)"!==Qt.backgroundColor;var h;if(!i.forceOverride&&o)return;const a=function(t){let e=0;return(i,s)=>{const n=t.getDatasetMeta(s).controller;n instanceof Bi?e=function(t,e){return t.backgroundColor=t.data.map((()=>Ln(e++))),e}(i,e):n instanceof Wi?e=function(t,e){return t.backgroundColor=t.data.map((()=>Pn(e++))),e}(i,e):n&&(e=function(t,e){return t.borderColor=Ln(e),t.backgroundColor=Pn(e),++e}(i,e))}}(t);s.forEach(a)}};function In(t,e,i,s){if(s)return;let n=e[t],r=i[t];return"angle"===t&&(n=vt(n),r=vt(r)),{property:t,start:n,end:r}}function Bn(t,e,i){for(;e>t;e--){const t=i[e];if(!isNaN(t.x)&&!isNaN(t.y))break}return e}function zn(t,e,i,s){return t&&e?s(t[i],e[i]):t?t[i]:e?e[i]:0}function Wn(t,e){let i=[],s=!1;return L(t)?(s=!0,i=t):i=function(t,e){const{x:i=null,y:s=null}=t||{},n=e.points,r=[];return e.segments.forEach((({start:t,end:e})=>{e=Bn(t,e,n);const o=n[t],h=n[e];null!==s?(r.push({x:o.x,y:s}),r.push({x:h.x,y:s})):null!==i&&(r.push({x:i,y:o.y}),r.push({x:i,y:h.y}))})),r}(t,e),i.length?new _n({points:i,options:{tension:0},_loop:s,_fullLoop:s}):null}function Yn(t){return t&&!1!==t.fill}function $n(t,e,i){let s=t[e].fill;const n=[e];let r;if(!i)return s;for(;!1!==s&&-1===n.indexOf(s);){if(!N(s))return s;if(r=t[s],!r)return!1;if(r.visible)return s;n.push(s),s=r.fill}return!1}function Hn(t,e,i){const s=function(t){const e=t.options,i=e.fill;let s=I(i&&i.target,i);return void 0===s&&(s=!!e.backgroundColor),!1!==s&&null!==s&&(!0===s?"origin":s)}(t);if(P(s))return!isNaN(s.value)&&s;let n=parseFloat(s);return N(n)&&Math.floor(n)===n?function(t,e,i,s){return"-"!==t&&"+"!==t||(i=e+i),!(i===e||i<0||i>=s)&&i}(s[0],e,n,i):["origin","start","end","stack","shape"].indexOf(s)>=0&&s}function Vn(t,e,i){const s=[];for(let n=0;n<i.length;n++){const r=i[n],{first:o,last:h,point:a}=Xn(r,e,"x");if(!(!a||o&&h))if(o)s.unshift(a);else if(t.push(a),!h)break}t.push(...s)}function Xn(t,e,i){const s=t.interpolate(e,i);if(!s)return{};const n=s[i],r=t.segments,o=t.points;let h=!1,a=!1;for(let t=0;t<r.length;t++){const e=r[t],s=o[e.start][i],c=o[e.end][i];if(wt(n,s,c)){h=n===s,a=n===c;break}}return{first:h,last:a,point:s}}class Un{constructor(t){this.x=t.x,this.y=t.y,this.radius=t.radius}pathSegment(t,e,i){const{x:s,y:n,radius:r}=this;return t.arc(s,n,r,(e=e||{start:0,end:it}).end,e.start,!0),!i.bounds}interpolate(t){const{x:e,y:i,radius:s}=this,n=t.angle;return{x:e+Math.cos(n)*s,y:i+Math.sin(n)*s,angle:n}}}function Zn(t,e,i){const s=function(t){const{chart:e,fill:i,line:s}=t;if(N(i))return function(t,e){const i=t.getDatasetMeta(e);return i&&t.isDatasetVisible(e)?i.dataset:null}(e,i);if("stack"===i)return function(t){const{scale:e,index:i,line:s}=t,n=[],r=s.segments,o=s.points,h=function(t,e){const i=[],s=t.getMatchingVisibleMetas("line");for(let t=0;t<s.length;t++){const n=s[t];if(n.index===e)break;n.hidden||i.unshift(n.dataset)}return i}(e,i);h.push(Wn({x:null,y:e.bottom},s));for(let t=0;t<r.length;t++){const e=r[t];for(let t=e.start;t<=e.end;t++)Vn(n,o[t],h)}return new _n({points:n,options:{}})}(t);if("shape"===i)return!0;const n=function(t){return(t.scale||{}).getPointPositionForValue?function(t){const{scale:e,fill:i}=t,s=e.options,n=e.getLabels().length,r=s.reverse?e.max:e.min,o=function(t,e,i){let s;return s="start"===t?i:"end"===t?e.options.reverse?e.min:e.max:P(t)?t.value:e.getBaseValue(),s}(i,e,r),h=[];if(s.grid.circular){const t=e.getPointPositionForValue(0,r);return new Un({x:t.x,y:t.y,radius:e.getDistanceFromCenterForValue(o)})}for(let t=0;t<n;++t)h.push(e.getPointPositionForValue(t,o));return h}(t):function(t){const{scale:e={},fill:i}=t,s=function(t,e){let i=null;return"start"===t?i=e.bottom:"end"===t?i=e.top:P(t)?i=e.getPixelForValue(t.value):e.getBasePixel&&(i=e.getBasePixel()),i}(i,e);if(N(s)){const t=e.isHorizontal();return{x:t?s:null,y:t?null:s}}return null}(t)}(t);return n instanceof Un?n:Wn(n,s)}(e),{chart:n,index:r,line:o,scale:h,axis:a}=e,c=o.options,u=c.fill,l=c.backgroundColor,{above:f=l,below:d=l}=u||{},p=n.getDatasetMeta(r),b=li(n,p);s&&o.points.length&&(se(t,i),function(t,e){const{line:i,target:s,above:n,below:r,area:o,scale:h,clip:a}=e,c=i._loop?"angle":e.axis;t.save();let u=r;r!==n&&("x"===c?(Kn(t,s,o.top),qn(t,{line:i,target:s,color:n,scale:h,property:c,clip:a}),t.restore(),t.save(),Kn(t,s,o.bottom)):"y"===c&&(Qn(t,s,o.left),qn(t,{line:i,target:s,color:r,scale:h,property:c,clip:a}),t.restore(),t.save(),Qn(t,s,o.right),u=n)),qn(t,{line:i,target:s,color:u,scale:h,property:c,clip:a}),t.restore()}(t,{line:o,target:s,above:f,below:d,area:i,scale:h,axis:a,clip:b}),ne(t))}function Kn(t,e,i){const{segments:s,points:n}=e;let r=!0,o=!1;t.beginPath();for(const h of s){const{start:s,end:a}=h,c=n[s],u=n[Bn(s,a,n)];r?(t.moveTo(c.x,c.y),r=!1):(t.lineTo(c.x,i),t.lineTo(c.x,c.y)),o=!!e.pathSegment(t,h,{move:o}),o?t.closePath():t.lineTo(u.x,i)}t.lineTo(e.first().x,i),t.closePath(),t.clip()}function Qn(t,e,i){const{segments:s,points:n}=e;let r=!0,o=!1;t.beginPath();for(const h of s){const{start:s,end:a}=h,c=n[s],u=n[Bn(s,a,n)];r?(t.moveTo(c.x,c.y),r=!1):(t.lineTo(i,c.y),t.lineTo(c.x,c.y)),o=!!e.pathSegment(t,h,{move:o}),o?t.closePath():t.lineTo(i,u.y)}t.lineTo(i,e.first().y),t.closePath(),t.clip()}function qn(t,e){const{line:i,target:s,property:n,color:r,scale:o,clip:h}=e,a=function(t,e,i){const s=t.segments,n=t.points,r=e.points,o=[];for(const t of s){let{start:s,end:h}=t;h=Bn(s,h,n);const a=In(i,n[s],n[h],t.loop);if(!e.segments){o.push({source:t,target:a,start:n[s],end:n[h]});continue}const c=hi(e,a);for(const e of c){const s=In(i,r[e.start],r[e.end],e.loop),h=oi(t,n,s);for(const t of h)o.push({source:t,target:e,start:{[i]:zn(a,s,"start",Math.max)},end:{[i]:zn(a,s,"end",Math.min)}})}}return o}(i,s,n);for(const{source:e,target:c,start:u,end:l}of a){const{style:{backgroundColor:a=r}={}}=e,f=!0!==s;t.save(),t.fillStyle=a,Jn(t,o,h,f&&In(n,u,l)),t.beginPath();const d=!!i.pathSegment(t,e);let p;if(f){d?t.closePath():Gn(t,s,l,n);const e=!!s.pathSegment(t,c,{move:d,reverse:!0});p=d&&e,p||Gn(t,s,u,n)}t.closePath(),t.fill(p?"evenodd":"nonzero"),t.restore()}}function Jn(t,e,i,s){const n=e.chart.chartArea,{property:r,start:o,end:h}=s||{};if("x"===r||"y"===r){let e,s,a,c;"x"===r?(e=o,s=n.top,a=h,c=n.bottom):(e=n.left,s=o,a=n.right,c=h),t.beginPath(),i&&(e=Math.max(e,i.left),a=Math.min(a,i.right),s=Math.max(s,i.top),c=Math.min(c,i.bottom)),t.rect(e,s,a-e,c-s),t.clip()}}function Gn(t,e,i,s){const n=e.interpolate(i,s);n&&t.lineTo(n.x,n.y)}var tr={id:"filler",afterDatasetsUpdate(t,e,i){const s=(t.data.datasets||[]).length,n=[];let r,o,h,a;for(o=0;o<s;++o)r=t.getDatasetMeta(o),h=r.dataset,a=null,h&&h.options&&h instanceof _n&&(a={visible:t.isDatasetVisible(o),index:o,fill:Hn(h,o,s),chart:t,axis:r.controller.options.indexAxis,scale:r.vScale,line:h}),r.$filler=a,n.push(a);for(o=0;o<s;++o)a=n[o],a&&!1!==a.fill&&(a.fill=$n(n,o,i.propagate))},beforeDraw(t,e,i){const s="beforeDraw"===i.drawTime,n=t.getSortedVisibleDatasetMetas(),r=t.chartArea;for(let e=n.length-1;e>=0;--e){const i=n[e].$filler;i&&(i.line.updateControlPoints(r,i.axis),s&&i.fill&&Zn(t.ctx,i,r))}},beforeDatasetsDraw(t,e,i){if("beforeDatasetsDraw"!==i.drawTime)return;const s=t.getSortedVisibleDatasetMetas();for(let e=s.length-1;e>=0;--e){const i=s[e].$filler;Yn(i)&&Zn(t.ctx,i,t.chartArea)}},beforeDatasetDraw(t,e,i){const s=e.meta.$filler;Yn(s)&&"beforeDatasetDraw"===i.drawTime&&Zn(t.ctx,s,t.chartArea)},defaults:{propagate:!0,drawTime:"beforeDatasetDraw"}};const er=(t,e)=>{let{boxHeight:i=e,boxWidth:s=e}=t;return t.usePointStyle&&(i=Math.min(i,e),s=t.pointStyleWidth||Math.min(s,e)),{boxWidth:s,boxHeight:i,itemHeight:Math.max(e,i)}};class ir extends Ss{constructor(t){super(),this._added=!1,this.legendHitBoxes=[],this._hoveredItem=null,this.doughnutMode=!1,this.chart=t.chart,this.options=t.options,this.ctx=t.ctx,this.legendItems=void 0,this.columnSizes=void 0,this.lineWidths=void 0,this.maxHeight=void 0,this.maxWidth=void 0,this.top=void 0,this.bottom=void 0,this.left=void 0,this.right=void 0,this.height=void 0,this.width=void 0,this._margins=void 0,this.position=void 0,this.weight=void 0,this.fullSize=void 0}update(t,e,i){this.maxWidth=t,this.maxHeight=e,this._margins=i,this.setDimensions(),this.buildLabels(),this.fit()}setDimensions(){this.isHorizontal()?(this.width=this.maxWidth,this.left=this._margins.left,this.right=this.width):(this.height=this.maxHeight,this.top=this._margins.top,this.bottom=this.height)}buildLabels(){const t=this.options.labels||{};let e=z(t.generateLabels,[this.chart],this)||[];t.filter&&(e=e.filter((e=>t.filter(e,this.chart.data)))),t.sort&&(e=e.sort(((e,i)=>t.sort(e,i,this.chart.data)))),this.options.reverse&&e.reverse(),this.legendItems=e}fit(){const{options:t,ctx:e}=this;if(!t.display)return void(this.width=this.height=0);const i=t.labels,s=xe(i.font),n=s.size,r=this._computeTitleHeight(),{boxWidth:o,itemHeight:h}=er(i,n);let a,c;e.font=s.string,this.isHorizontal()?(a=this.maxWidth,c=this._fitRows(r,n,o,h)+10):(c=this.maxHeight,a=this._fitCols(r,s,o,h)+10),this.width=Math.min(a,t.maxWidth||this.maxWidth),this.height=Math.min(c,t.maxHeight||this.maxHeight)}_fitRows(t,e,i,s){const{ctx:n,maxWidth:r,options:{labels:{padding:o}}}=this,h=this.legendHitBoxes=[],a=this.lineWidths=[0],c=s+o;let u=t;n.textAlign="left",n.textBaseline="middle";let l=-1,f=-c;return this.legendItems.forEach(((t,d)=>{const p=i+e/2+n.measureText(t.text).width;(0===d||a[a.length-1]+p+2*o>r)&&(u+=c,a[a.length-(d>0?0:1)]=0,f+=c,l++),h[d]={left:0,top:f,row:l,width:p,height:s},a[a.length-1]+=p+o})),u}_fitCols(t,e,i,s){const{ctx:n,maxHeight:r,options:{labels:{padding:o}}}=this,h=this.legendHitBoxes=[],a=this.columnSizes=[],c=r-t;let u=o,l=0,f=0,d=0,p=0;return this.legendItems.forEach(((t,r)=>{const{itemWidth:b,itemHeight:g}=function(t,e,i,s,n){const r=function(t,e,i,s){let n=t.text;return n&&"string"!=typeof n&&(n=n.reduce(((t,e)=>t.length>e.length?t:e))),e+i.size/2+s.measureText(n).width}(s,t,e,i),o=function(t,e,i){let s=t;return"string"!=typeof e.text&&(s=sr(e,i)),s}(n,s,e.lineHeight);return{itemWidth:r,itemHeight:o}}(i,e,n,t,s);r>0&&f+g+2*o>c&&(u+=l+o,a.push({width:l,height:f}),d+=l+o,p++,l=f=0),h[r]={left:d,top:f,col:p,width:b,height:g},l=Math.max(l,b),f+=g+o})),u+=l,a.push({width:l,height:f}),u}adjustHitBoxes(){if(!this.options.display)return;const t=this._computeTitleHeight(),{legendHitBoxes:e,options:{align:i,labels:{padding:s},rtl:n}}=this,r=ei(n,this.left,this.width);if(this.isHorizontal()){let n=0,o=jt(i,this.left+s,this.right-this.lineWidths[n]);for(const h of e)n!==h.row&&(n=h.row,o=jt(i,this.left+s,this.right-this.lineWidths[n])),h.top+=this.top+t+s,h.left=r.leftForLtr(r.x(o),h.width),o+=h.width+s}else{let n=0,o=jt(i,this.top+t+s,this.bottom-this.columnSizes[n].height);for(const h of e)h.col!==n&&(n=h.col,o=jt(i,this.top+t+s,this.bottom-this.columnSizes[n].height)),h.top=o,h.left+=this.left+s,h.left=r.leftForLtr(r.x(h.left),h.width),o+=h.height+s}}isHorizontal(){return"top"===this.options.position||"bottom"===this.options.position}draw(){if(this.options.display){const t=this.ctx;se(t,this),this._draw(),ne(t)}}_draw(){const{options:t,columnSizes:e,lineWidths:i,ctx:s}=this,{align:n,labels:r}=t,o=Qt.color,h=ei(t.rtl,this.left,this.width),a=xe(r.font),{padding:c}=r,u=a.size,l=u/2;let f;this.drawTitle(),s.textAlign=h.textAlign("left"),s.textBaseline="middle",s.lineWidth=.5,s.font=a.string;const{boxWidth:d,boxHeight:p,itemHeight:b}=er(r,u),g=this.isHorizontal(),m=this._computeTitleHeight();f=g?{x:jt(n,this.left+c,this.right-i[0]),y:this.top+c+m,line:0}:{x:this.left+c,y:jt(n,this.top+m+c,this.bottom-e[0].height),line:0},ii(this.ctx,t.textDirection);const x=b+c;this.legendItems.forEach(((v,y)=>{s.strokeStyle=v.fontColor,s.fillStyle=v.fontColor;const M=s.measureText(v.text).width,w=h.textAlign(v.textAlign||(v.textAlign=r.textAlign)),_=d+l+M;let k=f.x,O=f.y;h.setWidth(this.width),g?y>0&&k+_+c>this.right&&(O=f.y+=x,f.line++,k=f.x=jt(n,this.left+c,this.right-i[f.line])):y>0&&O+x>this.bottom&&(k=f.x=k+e[f.line].width+c,f.line++,O=f.y=jt(n,this.top+m+c,this.bottom-e[f.line].height)),function(t,e,i){if(isNaN(d)||d<=0||isNaN(p)||p<0)return;s.save();const n=I(i.lineWidth,1);if(s.fillStyle=I(i.fillStyle,o),s.lineCap=I(i.lineCap,"butt"),s.lineDashOffset=I(i.lineDashOffset,0),s.lineJoin=I(i.lineJoin,"miter"),s.lineWidth=n,s.strokeStyle=I(i.strokeStyle,o),s.setLineDash(I(i.lineDash,[])),r.usePointStyle){const o={radius:p*Math.SQRT2/2,pointStyle:i.pointStyle,rotation:i.rotation,borderWidth:n},a=h.xPlus(t,d/2);ee(s,o,a,e+l,r.pointStyleWidth&&d)}else{const r=e+Math.max((u-p)/2,0),o=h.leftForLtr(t,d),a=ge(i.borderRadius);s.beginPath(),Object.values(a).some((t=>0!==t))?ue(s,{x:o,y:r,w:d,h:p,radius:a}):s.rect(o,r,d,p),s.fill(),0!==n&&s.stroke()}s.restore()}(h.x(k),O,v),k=((t,e,i,s)=>t===(s?"left":"right")?i:"center"===t?(e+i)/2:e)(w,k+d+l,g?k+_:this.right,t.rtl),function(t,e,i){ce(s,i.text,t,e+b/2,a,{strikethrough:i.hidden,textAlign:h.textAlign(i.textAlign)})}(h.x(k),O,v),g?f.x+=_+c:f.y+="string"!=typeof v.text?sr(v,a.lineHeight)+c:x})),si(this.ctx,t.textDirection)}drawTitle(){const t=this.options,e=t.title,i=xe(e.font),s=me(e.padding);if(!e.display)return;const n=ei(t.rtl,this.left,this.width),r=this.ctx,o=e.position,h=s.top+i.size/2;let a,c=this.left,u=this.width;if(this.isHorizontal())u=Math.max(...this.lineWidths),a=this.top+h,c=jt(t.align,c,this.right-u);else{const e=this.columnSizes.reduce(((t,e)=>Math.max(t,e.height)),0);a=h+jt(t.align,this.top,this.bottom-e-t.labels.padding-this._computeTitleHeight())}const l=jt(o,c,c+u);r.textAlign=n.textAlign(Et(o)),r.textBaseline="middle",r.strokeStyle=e.color,r.fillStyle=e.color,r.font=i.string,ce(r,e.text,l,a,i)}_computeTitleHeight(){const t=this.options.title,e=xe(t.font),i=me(t.padding);return t.display?e.lineHeight+i.height:0}_getLegendItemAt(t,e){let i,s,n;if(wt(t,this.left,this.right)&&wt(e,this.top,this.bottom))for(n=this.legendHitBoxes,i=0;i<n.length;++i)if(s=n[i],wt(t,s.left,s.left+s.width)&&wt(e,s.top,s.top+s.height))return this.legendItems[i];return null}handleEvent(t){const e=this.options;if(!function(t,e){return!("mousemove"!==t&&"mouseout"!==t||!e.onHover&&!e.onLeave)||!(!e.onClick||"click"!==t&&"mouseup"!==t)}(t.type,e))return;const i=this._getLegendItemAt(t.x,t.y);if("mousemove"===t.type||"mouseout"===t.type){const r=this._hoveredItem,o=(n=i,null!==(s=r)&&null!==n&&s.datasetIndex===n.datasetIndex&&s.index===n.index);r&&!o&&z(e.onLeave,[t,r,this],this),this._hoveredItem=i,i&&!o&&z(e.onHover,[t,i,this],this)}else i&&z(e.onClick,[t,i,this],this);var s,n}}function sr(t,e){return e*(t.text?t.text.length:0)}var nr={id:"legend",_element:ir,start(t,e,i){const s=t.legend=new ir({ctx:t.ctx,options:i,chart:t});as.configure(t,s,i),as.addBox(t,s)},stop(t){as.removeBox(t,t.legend),delete t.legend},beforeUpdate(t,e,i){const s=t.legend;as.configure(t,s,i),s.options=i},afterUpdate(t){const e=t.legend;e.buildLabels(),e.adjustHitBoxes()},afterEvent(t,e){e.replay||t.legend.handleEvent(e.event)},defaults:{display:!0,position:"top",align:"center",fullSize:!0,reverse:!1,weight:1e3,onClick(t,e,i){const s=e.datasetIndex,n=i.chart;n.isDatasetVisible(s)?(n.hide(s),e.hidden=!0):(n.show(s),e.hidden=!1)},onHover:null,onLeave:null,labels:{color:t=>t.chart.options.color,boxWidth:40,padding:10,generateLabels(t){const e=t.data.datasets,{labels:{usePointStyle:i,pointStyle:s,textAlign:n,color:r,useBorderRadius:o,borderRadius:h}}=t.legend.options;return t._getSortedDatasetMetas().map((t=>{const a=t.controller.getStyle(i?0:void 0),c=me(a.borderWidth);return{text:e[t.index].label,fillStyle:a.backgroundColor,fontColor:r,hidden:!t.visible,lineCap:a.borderCapStyle,lineDash:a.borderDash,lineDashOffset:a.borderDashOffset,lineJoin:a.borderJoinStyle,lineWidth:(c.width+c.height)/4,strokeStyle:a.borderColor,pointStyle:s||a.pointStyle,rotation:a.rotation,textAlign:n||a.textAlign,borderRadius:o&&(h||a.borderRadius),datasetIndex:t.index}}),this)}},title:{color:t=>t.chart.options.color,display:!1,position:"center",text:""}},descriptors:{_scriptable:t=>!t.startsWith("on"),labels:{_scriptable:t=>!["generateLabels","filter","sort"].includes(t)}}};const rr={average(t){if(!t.length)return!1;let e,i,s=new Set,n=0,r=0;for(e=0,i=t.length;e<i;++e){const i=t[e].element;if(i&&i.hasValue()){const t=i.tooltipPosition();s.add(t.x),n+=t.y,++r}}return 0!==r&&0!==s.size&&{x:[...s].reduce(((t,e)=>t+e))/s.size,y:n/r}},nearest(t,e){if(!t.length)return!1;let i,s,n,r=e.x,o=e.y,h=Number.POSITIVE_INFINITY;for(i=0,s=t.length;i<s;++i){const s=t[i].element;if(s&&s.hasValue()){const t=mt(e,s.getCenterPoint());t<h&&(h=t,n=s)}}if(n){const t=n.tooltipPosition();r=t.x,o=t.y}return{x:r,y:o}}};function or(t,e){return e&&(L(e)?Array.prototype.push.apply(t,e):t.push(e)),t}function hr(t){return("string"==typeof t||t instanceof String)&&t.indexOf("\n")>-1?t.split("\n"):t}function ar(t,e){const{element:i,datasetIndex:s,index:n}=e,r=t.getDatasetMeta(s).controller,{label:o,value:h}=r.getLabelAndValue(n);return{chart:t,label:o,parsed:r.getParsed(n),raw:t.data.datasets[s].data[n],formattedValue:h,dataset:r.getDataset(),dataIndex:n,datasetIndex:s,element:i}}function cr(t,e){const i=t.chart.ctx,{body:s,footer:n,title:r}=t,{boxWidth:o,boxHeight:h}=e,a=xe(e.bodyFont),c=xe(e.titleFont),u=xe(e.footerFont),l=r.length,f=n.length,d=s.length,p=me(e.padding);let b=p.height,g=0,m=s.reduce(((t,e)=>t+e.before.length+e.lines.length+e.after.length),0);m+=t.beforeBody.length+t.afterBody.length,l&&(b+=l*c.lineHeight+(l-1)*e.titleSpacing+e.titleMarginBottom),m&&(b+=d*(e.displayColors?Math.max(h,a.lineHeight):a.lineHeight)+(m-d)*a.lineHeight+(m-1)*e.bodySpacing),f&&(b+=e.footerMarginTop+f*u.lineHeight+(f-1)*e.footerSpacing);let x=0;const v=function(t){g=Math.max(g,i.measureText(t).width+x)};return i.save(),i.font=c.string,W(t.title,v),i.font=a.string,W(t.beforeBody.concat(t.afterBody),v),x=e.displayColors?o+2+e.boxPadding:0,W(s,(t=>{W(t.before,v),W(t.lines,v),W(t.after,v)})),x=0,i.font=u.string,W(t.footer,v),i.restore(),g+=p.width,{width:g,height:b}}function ur(t,e,i,s){const{x:n,width:r}=i,{width:o,chartArea:{left:h,right:a}}=t;let c="center";return"center"===s?c=n<=(h+a)/2?"left":"right":n<=r/2?c="left":n>=o-r/2&&(c="right"),function(t,e,i,s){const{x:n,width:r}=s,o=i.caretSize+i.caretPadding;return"left"===t&&n+r+o>e.width||"right"===t&&n-r-o<0||void 0}(c,t,e,i)&&(c="center"),c}function lr(t,e,i){const s=i.yAlign||e.yAlign||function(t,e){const{y:i,height:s}=e;return i<s/2?"top":i>t.height-s/2?"bottom":"center"}(t,i);return{xAlign:i.xAlign||e.xAlign||ur(t,e,i,s),yAlign:s}}function fr(t,e,i,s){const{caretSize:n,caretPadding:r,cornerRadius:o}=t,{xAlign:h,yAlign:a}=i,c=n+r,{topLeft:u,topRight:l,bottomLeft:f,bottomRight:d}=ge(o);let p=function(t,e){let{x:i,width:s}=t;return"right"===e?i-=s:"center"===e&&(i-=s/2),i}(e,h);const b=function(t,e,i){let{y:s,height:n}=t;return"top"===e?s+=i:s-="bottom"===e?n+i:n/2,s}(e,a,c);return"center"===a?"left"===h?p+=c:"right"===h&&(p-=c):"left"===h?p-=Math.max(u,f)+n:"right"===h&&(p+=Math.max(l,d)+n),{x:Mt(p,0,s.width-e.width),y:Mt(b,0,s.height-e.height)}}function dr(t,e,i){const s=me(i.padding);return"center"===e?t.x+t.width/2:"right"===e?t.x+t.width-s.right:t.x+s.left}function pr(t){return or([],hr(t))}function br(t,e){const i=e&&e.dataset&&e.dataset.tooltip&&e.dataset.tooltip.callbacks;return i?t.override(i):t}const gr={beforeTitle:E,title(t){if(t.length>0){const e=t[0],i=e.chart.data.labels,s=i?i.length:0;if(this&&this.options&&"dataset"===this.options.mode)return e.dataset.label||"";if(e.label)return e.label;if(s>0&&e.dataIndex<s)return i[e.dataIndex]}return""},afterTitle:E,beforeBody:E,beforeLabel:E,label(t){if(this&&this.options&&"dataset"===this.options.mode)return t.label+": "+t.formattedValue||t.formattedValue;let e=t.dataset.label||"";e&&(e+=": ");const i=t.formattedValue;return F(i)||(e+=i),e},labelColor(t){const e=t.chart.getDatasetMeta(t.datasetIndex).controller.getStyle(t.dataIndex);return{borderColor:e.borderColor,backgroundColor:e.backgroundColor,borderWidth:e.borderWidth,borderDash:e.borderDash,borderDashOffset:e.borderDashOffset,borderRadius:0}},labelTextColor(){return this.options.bodyColor},labelPointStyle(t){const e=t.chart.getDatasetMeta(t.datasetIndex).controller.getStyle(t.dataIndex);return{pointStyle:e.pointStyle,rotation:e.rotation}},afterLabel:E,afterBody:E,beforeFooter:E,footer:E,afterFooter:E};function mr(t,e,i,s){const n=t[e].call(i,s);return void 0===n?gr[e].call(i,s):n}class xr extends Ss{static positioners=rr;constructor(t){super(),this.opacity=0,this._active=[],this._eventPosition=void 0,this._size=void 0,this._cachedAnimations=void 0,this._tooltipItems=[],this.$animations=void 0,this.$context=void 0,this.chart=t.chart,this.options=t.options,this.dataPoints=void 0,this.title=void 0,this.beforeBody=void 0,this.body=void 0,this.afterBody=void 0,this.footer=void 0,this.xAlign=void 0,this.yAlign=void 0,this.x=void 0,this.y=void 0,this.height=void 0,this.width=void 0,this.caretX=void 0,this.caretY=void 0,this.labelColors=void 0,this.labelPointStyles=void 0,this.labelTextColors=void 0}initialize(t){this.options=t,this._cachedAnimations=void 0,this.$context=void 0}_resolveAnimations(){const t=this._cachedAnimations;if(t)return t;const e=this.chart,i=this.options.setContext(this.getContext()),s=i.enabled&&e.options.animation&&i.animations,n=new mi(this.chart,s);return s._cacheable&&(this._cachedAnimations=Object.freeze(n)),n}getContext(){return this.$context||(this.$context=ye(this.chart.getContext(),{tooltip:this,tooltipItems:this._tooltipItems,type:"tooltip"}))}getTitle(t,e){const{callbacks:i}=e,s=mr(i,"beforeTitle",this,t),n=mr(i,"title",this,t),r=mr(i,"afterTitle",this,t);let o=[];return o=or(o,hr(s)),o=or(o,hr(n)),o=or(o,hr(r)),o}getBeforeBody(t,e){return pr(mr(e.callbacks,"beforeBody",this,t))}getBody(t,e){const{callbacks:i}=e,s=[];return W(t,(t=>{const e={before:[],lines:[],after:[]},n=br(i,t);or(e.before,hr(mr(n,"beforeLabel",this,t))),or(e.lines,mr(n,"label",this,t)),or(e.after,hr(mr(n,"afterLabel",this,t))),s.push(e)})),s}getAfterBody(t,e){return pr(mr(e.callbacks,"afterBody",this,t))}getFooter(t,e){const{callbacks:i}=e,s=mr(i,"beforeFooter",this,t),n=mr(i,"footer",this,t),r=mr(i,"afterFooter",this,t);let o=[];return o=or(o,hr(s)),o=or(o,hr(n)),o=or(o,hr(r)),o}_createItems(t){const e=this._active,i=this.chart.data,s=[],n=[],r=[];let o,h,a=[];for(o=0,h=e.length;o<h;++o)a.push(ar(this.chart,e[o]));return t.filter&&(a=a.filter(((e,s,n)=>t.filter(e,s,n,i)))),t.itemSort&&(a=a.sort(((e,s)=>t.itemSort(e,s,i)))),W(a,(e=>{const i=br(t.callbacks,e);s.push(mr(i,"labelColor",this,e)),n.push(mr(i,"labelPointStyle",this,e)),r.push(mr(i,"labelTextColor",this,e))})),this.labelColors=s,this.labelPointStyles=n,this.labelTextColors=r,this.dataPoints=a,a}update(t,e){const i=this.options.setContext(this.getContext()),s=this._active;let n,r=[];if(s.length){const t=rr[i.position].call(this,s,this._eventPosition);r=this._createItems(i),this.title=this.getTitle(r,i),this.beforeBody=this.getBeforeBody(r,i),this.body=this.getBody(r,i),this.afterBody=this.getAfterBody(r,i),this.footer=this.getFooter(r,i);const e=this._size=cr(this,i),o=Object.assign({},t,e),h=lr(this.chart,i,o),a=fr(i,o,h,this.chart);this.xAlign=h.xAlign,this.yAlign=h.yAlign,n={opacity:1,x:a.x,y:a.y,width:e.width,height:e.height,caretX:t.x,caretY:t.y}}else 0!==this.opacity&&(n={opacity:0});this._tooltipItems=r,this.$context=void 0,n&&this._resolveAnimations().update(this,n),t&&i.external&&i.external.call(this,{chart:this.chart,tooltip:this,replay:e})}drawCaret(t,e,i,s){const n=this.getCaretPosition(t,i,s);e.lineTo(n.x1,n.y1),e.lineTo(n.x2,n.y2),e.lineTo(n.x3,n.y3)}getCaretPosition(t,e,i){const{xAlign:s,yAlign:n}=this,{caretSize:r,cornerRadius:o}=i,{topLeft:h,topRight:a,bottomLeft:c,bottomRight:u}=ge(o),{x:l,y:f}=t,{width:d,height:p}=e;let b,g,m,x,v,y;return"center"===n?(v=f+p/2,"left"===s?(b=l,g=b-r,x=v+r,y=v-r):(b=l+d,g=b+r,x=v-r,y=v+r),m=b):(g="left"===s?l+Math.max(h,c)+r:"right"===s?l+d-Math.max(a,u)-r:this.caretX,"top"===n?(x=f,v=x-r,b=g-r,m=g+r):(x=f+p,v=x+r,b=g+r,m=g-r),y=x),{x1:b,x2:g,x3:m,y1:x,y2:v,y3:y}}drawTitle(t,e,i){const s=this.title,n=s.length;let r,o,h;if(n){const a=ei(i.rtl,this.x,this.width);for(t.x=dr(this,i.titleAlign,i),e.textAlign=a.textAlign(i.titleAlign),e.textBaseline="middle",r=xe(i.titleFont),o=i.titleSpacing,e.fillStyle=i.titleColor,e.font=r.string,h=0;h<n;++h)e.fillText(s[h],a.x(t.x),t.y+r.lineHeight/2),t.y+=r.lineHeight+o,h+1===n&&(t.y+=i.titleMarginBottom-o)}}_drawColorBox(t,e,i,s,n){const r=this.labelColors[i],o=this.labelPointStyles[i],{boxHeight:h,boxWidth:a}=n,c=xe(n.bodyFont),u=dr(this,"left",n),l=s.x(u),f=e.y+(h<c.lineHeight?(c.lineHeight-h)/2:0);if(n.usePointStyle){const e={radius:Math.min(a,h)/2,pointStyle:o.pointStyle,rotation:o.rotation,borderWidth:1},i=s.leftForLtr(l,a)+a/2,c=f+h/2;t.strokeStyle=n.multiKeyBackground,t.fillStyle=n.multiKeyBackground,te(t,e,i,c),t.strokeStyle=r.borderColor,t.fillStyle=r.backgroundColor,te(t,e,i,c)}else{t.lineWidth=P(r.borderWidth)?Math.max(...Object.values(r.borderWidth)):r.borderWidth||1,t.strokeStyle=r.borderColor,t.setLineDash(r.borderDash||[]),t.lineDashOffset=r.borderDashOffset||0;const e=s.leftForLtr(l,a),i=s.leftForLtr(s.xPlus(l,1),a-2),o=ge(r.borderRadius);Object.values(o).some((t=>0!==t))?(t.beginPath(),t.fillStyle=n.multiKeyBackground,ue(t,{x:e,y:f,w:a,h,radius:o}),t.fill(),t.stroke(),t.fillStyle=r.backgroundColor,t.beginPath(),ue(t,{x:i,y:f+1,w:a-2,h:h-2,radius:o}),t.fill()):(t.fillStyle=n.multiKeyBackground,t.fillRect(e,f,a,h),t.strokeRect(e,f,a,h),t.fillStyle=r.backgroundColor,t.fillRect(i,f+1,a-2,h-2))}t.fillStyle=this.labelTextColors[i]}drawBody(t,e,i){const{body:s}=this,{bodySpacing:n,bodyAlign:r,displayColors:o,boxHeight:h,boxWidth:a,boxPadding:c}=i,u=xe(i.bodyFont);let l=u.lineHeight,f=0;const d=ei(i.rtl,this.x,this.width),p=function(i){e.fillText(i,d.x(t.x+f),t.y+l/2),t.y+=l+n},b=d.textAlign(r);let g,m,x,v,y,M,w;for(e.textAlign=r,e.textBaseline="middle",e.font=u.string,t.x=dr(this,b,i),e.fillStyle=i.bodyColor,W(this.beforeBody,p),f=o&&"right"!==b?"center"===r?a/2+c:a+2+c:0,v=0,M=s.length;v<M;++v){for(g=s[v],m=this.labelTextColors[v],e.fillStyle=m,W(g.before,p),x=g.lines,o&&x.length&&(this._drawColorBox(e,t,v,d,i),l=Math.max(u.lineHeight,h)),y=0,w=x.length;y<w;++y)p(x[y]),l=u.lineHeight;W(g.after,p)}f=0,l=u.lineHeight,W(this.afterBody,p),t.y-=n}drawFooter(t,e,i){const s=this.footer,n=s.length;let r,o;if(n){const h=ei(i.rtl,this.x,this.width);for(t.x=dr(this,i.footerAlign,i),t.y+=i.footerMarginTop,e.textAlign=h.textAlign(i.footerAlign),e.textBaseline="middle",r=xe(i.footerFont),e.fillStyle=i.footerColor,e.font=r.string,o=0;o<n;++o)e.fillText(s[o],h.x(t.x),t.y+r.lineHeight/2),t.y+=r.lineHeight+i.footerSpacing}}drawBackground(t,e,i,s){const{xAlign:n,yAlign:r}=this,{x:o,y:h}=t,{width:a,height:c}=i,{topLeft:u,topRight:l,bottomLeft:f,bottomRight:d}=ge(s.cornerRadius);e.fillStyle=s.backgroundColor,e.strokeStyle=s.borderColor,e.lineWidth=s.borderWidth,e.beginPath(),e.moveTo(o+u,h),"top"===r&&this.drawCaret(t,e,i,s),e.lineTo(o+a-l,h),e.quadraticCurveTo(o+a,h,o+a,h+l),"center"===r&&"right"===n&&this.drawCaret(t,e,i,s),e.lineTo(o+a,h+c-d),e.quadraticCurveTo(o+a,h+c,o+a-d,h+c),"bottom"===r&&this.drawCaret(t,e,i,s),e.lineTo(o+f,h+c),e.quadraticCurveTo(o,h+c,o,h+c-f),"center"===r&&"left"===n&&this.drawCaret(t,e,i,s),e.lineTo(o,h+u),e.quadraticCurveTo(o,h,o+u,h),e.closePath(),e.fill(),s.borderWidth>0&&e.stroke()}_updateAnimationTarget(t){const e=this.chart,i=this.$animations,s=i&&i.x,n=i&&i.y;if(s||n){const i=rr[t.position].call(this,this._active,this._eventPosition);if(!i)return;const r=this._size=cr(this,t),o=Object.assign({},i,this._size),h=lr(e,t,o),a=fr(t,o,h,e);s._to===a.x&&n._to===a.y||(this.xAlign=h.xAlign,this.yAlign=h.yAlign,this.width=r.width,this.height=r.height,this.caretX=i.x,this.caretY=i.y,this._resolveAnimations().update(this,a))}}_willRender(){return!!this.opacity}draw(t){const e=this.options.setContext(this.getContext());let i=this.opacity;if(!i)return;this._updateAnimationTarget(e);const s={width:this.width,height:this.height},n={x:this.x,y:this.y};i=Math.abs(i)<.001?0:i;const r=me(e.padding);e.enabled&&(this.title.length||this.beforeBody.length||this.body.length||this.afterBody.length||this.footer.length)&&(t.save(),t.globalAlpha=i,this.drawBackground(n,t,s,e),ii(t,e.textDirection),n.y+=r.top,this.drawTitle(n,t,e),this.drawBody(n,t,e),this.drawFooter(n,t,e),si(t,e.textDirection),t.restore())}getActiveElements(){return this._active||[]}setActiveElements(t,e){const i=this._active,s=t.map((({datasetIndex:t,index:e})=>{const i=this.chart.getDatasetMeta(t);if(!i)throw new Error("Cannot find a dataset at index "+t);return{datasetIndex:t,element:i.data[e],index:e}})),n=!Y(i,s),r=this._positionChanged(s,e);(n||r)&&(this._active=s,this._eventPosition=e,this._ignoreReplayEvents=!0,this.update(!0))}handleEvent(t,e,i=!0){if(e&&this._ignoreReplayEvents)return!1;this._ignoreReplayEvents=!1;const s=this.options,n=this._active||[],r=this._getActiveElements(t,n,e,i),o=this._positionChanged(r,t),h=e||!Y(r,n)||o;return h&&(this._active=r,(s.enabled||s.external)&&(this._eventPosition={x:t.x,y:t.y},this.update(!0,e))),h}_getActiveElements(t,e,i,s){const n=this.options;if("mouseout"===t.type)return[];if(!s)return e.filter((t=>this.chart.data.datasets[t.datasetIndex]&&void 0!==this.chart.getDatasetMeta(t.datasetIndex).controller.getParsed(t.index)));const r=this.chart.getElementsAtEventForMode(t,n.mode,n,i);return n.reverse&&r.reverse(),r}_positionChanged(t,e){const{caretX:i,caretY:s,options:n}=this,r=rr[n.position].call(this,t,e);return!1!==r&&(i!==r.x||s!==r.y)}}var vr={id:"tooltip",_element:xr,positioners:rr,afterInit(t,e,i){i&&(t.tooltip=new xr({chart:t,options:i}))},beforeUpdate(t,e,i){t.tooltip&&t.tooltip.initialize(i)},reset(t,e,i){t.tooltip&&t.tooltip.initialize(i)},afterDraw(t){const e=t.tooltip;if(e&&e._willRender()){const i={tooltip:e};if(!1===t.notifyPlugins("beforeTooltipDraw",{...i,cancelable:!0}))return;e.draw(t.ctx),t.notifyPlugins("afterTooltipDraw",i)}},afterEvent(t,e){t.tooltip&&t.tooltip.handleEvent(e.event,e.replay,e.inChartArea)&&(e.changed=!0)},defaults:{enabled:!0,external:null,position:"average",backgroundColor:"rgba(0,0,0,0.8)",titleColor:"#fff",titleFont:{weight:"bold"},titleSpacing:2,titleMarginBottom:6,titleAlign:"left",bodyColor:"#fff",bodySpacing:2,bodyFont:{},bodyAlign:"left",footerColor:"#fff",footerSpacing:2,footerMarginTop:6,footerFont:{weight:"bold"},footerAlign:"left",padding:6,caretPadding:2,caretSize:5,cornerRadius:6,boxHeight:(t,e)=>e.bodyFont.size,boxWidth:(t,e)=>e.bodyFont.size,multiKeyBackground:"#fff",displayColors:!0,boxPadding:0,borderColor:"rgba(0,0,0,0)",borderWidth:0,animation:{duration:400,easing:"easeOutQuart"},animations:{numbers:{type:"number",properties:["x","y","width","height","caretX","caretY"]},opacity:{easing:"linear",duration:200}},callbacks:gr},defaultRoutes:{bodyFont:"font",footerFont:"font",titleFont:"font"},descriptors:{_scriptable:t=>"filter"!==t&&"itemSort"!==t&&"external"!==t,_indexable:!1,callbacks:{_scriptable:!1,_indexable:!1},animation:{_fallback:!1},animations:{_fallback:"animation"}},additionalOptionScopes:["interaction"]};function yr(t){const e=this.getLabels();return t>=0&&t<e.length?e[t]:t}class Mr extends Ps{static id="category";static defaults={ticks:{callback:yr}};constructor(t){super(t),this._startValue=void 0,this._valueRange=0,this._addedLabels=[]}init(t){const e=this._addedLabels;if(e.length){const t=this.getLabels();for(const{index:i,label:s}of e)t[i]===s&&t.splice(i,1);this._addedLabels=[]}super.init(t)}parse(t,e){if(F(t))return null;const i=this.getLabels();return((t,e)=>null===t?null:Mt(Math.round(t),0,e))(e=isFinite(e)&&i[e]===t?e:function(t,e,i,s){const n=t.indexOf(e);return-1===n?((t,e,i,s)=>("string"==typeof e?(i=t.push(e)-1,s.unshift({index:i,label:e})):isNaN(e)&&(i=null),i))(t,e,i,s):n!==t.lastIndexOf(e)?i:n}(i,t,I(e,t),this._addedLabels),i.length-1)}determineDataLimits(){const{minDefined:t,maxDefined:e}=this.getUserBounds();let{min:i,max:s}=this.getMinMax(!0);"ticks"===this.options.bounds&&(t||(i=0),e||(s=this.getLabels().length-1)),this.min=i,this.max=s}buildTicks(){const t=this.min,e=this.max,i=this.options.offset,s=[];let n=this.getLabels();n=0===t&&e===n.length-1?n:n.slice(t,e+1),this._valueRange=Math.max(n.length-(i?0:1),1),this._startValue=this.min-(i?.5:0);for(let i=t;i<=e;i++)s.push({value:i});return s}getLabelForValue(t){return yr.call(this,t)}configure(){super.configure(),this.isHorizontal()||(this._reversePixels=!this._reversePixels)}getPixelForValue(t){return"number"!=typeof t&&(t=this.parse(t)),null===t?NaN:this.getPixelForDecimal((t-this._startValue)/this._valueRange)}getPixelForTick(t){const e=this.ticks;return t<0||t>e.length-1?null:this.getPixelForValue(e[t].value)}getValueForPixel(t){return Math.round(this._startValue+this.getDecimalForPixel(t)*this._valueRange)}getBasePixel(){return this.bottom}}function wr(t,e,{horizontal:i,minRotation:s}){const n=pt(s),r=(i?Math.sin(n):Math.cos(n))||.001;return Math.min(e/r,.75*e*(""+t).length)}class _r extends Ps{constructor(t){super(t),this.start=void 0,this.end=void 0,this._startValue=void 0,this._endValue=void 0,this._valueRange=0}parse(t,e){return F(t)||("number"==typeof t||t instanceof Number)&&!isFinite(+t)?null:+t}handleTickRangeOptions(){const{beginAtZero:t}=this.options,{minDefined:e,maxDefined:i}=this.getUserBounds();let{min:s,max:n}=this;const r=t=>s=e?s:t,o=t=>n=i?n:t;if(t){const t=ut(s),e=ut(n);t<0&&e<0?o(0):t>0&&e>0&&r(0)}if(s===n){let e=0===n?1:Math.abs(.05*n);o(n+e),t||r(s-e)}this.min=s,this.max=n}getTickLimit(){const t=this.options.ticks;let e,{maxTicksLimit:i,stepSize:s}=t;return s?(e=Math.ceil(this.max/s)-Math.floor(this.min/s)+1,e>1e3&&(console.warn(`scales.${this.id}.ticks.stepSize: ${s} would result generating up to ${e} ticks. Limiting to 1000.`),e=1e3)):(e=this.computeTickLimit(),i=i||11),i&&(e=Math.min(i,e)),e}computeTickLimit(){return Number.POSITIVE_INFINITY}buildTicks(){const t=this.options,e=t.ticks;let i=this.getTickLimit();i=Math.max(2,i);const s=function(t,e){const i=[],{bounds:s,step:n,min:r,max:o,precision:h,count:a,maxTicks:c,maxDigits:u,includeBounds:l}=t,f=n||1,d=c-1,{min:p,max:b}=e,g=!F(r),m=!F(o),x=!F(a),v=(b-p)/(u+1);let y,M,w,_,k=ft((b-p)/d/f)*f;if(k<1e-14&&!g&&!m)return[{value:p},{value:b}];_=Math.ceil(b/k)-Math.floor(p/k),_>d&&(k=ft(_*k/d/f)*f),F(h)||(y=Math.pow(10,h),k=Math.ceil(k*y)/y),"ticks"===s?(M=Math.floor(p/k)*k,w=Math.ceil(b/k)*k):(M=p,w=b),g&&m&&n&&function(t,e){const i=Math.round(t);return i-e<=t&&i+e>=t}((o-r)/n,k/1e3)?(_=Math.round(Math.min((o-r)/k,c)),k=(o-r)/_,M=r,w=o):x?(M=g?r:M,w=m?o:w,_=a-1,k=(w-M)/_):(_=(w-M)/k,_=lt(_,Math.round(_),k/1e3)?Math.round(_):Math.ceil(_));const O=Math.max(bt(k),bt(M));y=Math.pow(10,F(h)?O:h),M=Math.round(M*y)/y,w=Math.round(w*y)/y;let S=0;for(g&&(l&&M!==r?(i.push({value:r}),M<r&&S++,lt(Math.round((M+S*k)*y)/y,r,wr(r,v,t))&&S++):M<r&&S++);S<_;++S){const t=Math.round((M+S*k)*y)/y;if(m&&t>o)break;i.push({value:t})}return m&&l&&w!==o?i.length&&lt(i[i.length-1].value,o,wr(o,v,t))?i[i.length-1].value=o:i.push({value:o}):m&&w!==o||i.push({value:w}),i}({maxTicks:i,bounds:t.bounds,min:t.min,max:t.max,precision:e.precision,step:e.stepSize,count:e.count,maxDigits:this._maxDigits(),horizontal:this.isHorizontal(),minRotation:e.minRotation||0,includeBounds:!1!==e.includeBounds},this._range||this);return"ticks"===t.bounds&&function(t,e){let i,s,n;for(i=0,s=t.length;i<s;i++)n=t[i].value,isNaN(n)||(e.min=Math.min(e.min,n),e.max=Math.max(e.max,n))}(s,this),t.reverse?(s.reverse(),this.start=this.max,this.end=this.min):(this.start=this.min,this.end=this.max),s}configure(){const t=this.ticks;let e=this.min,i=this.max;if(super.configure(),this.options.offset&&t.length){const s=(i-e)/Math.max(t.length-1,1)/2;e-=s,i+=s}this._startValue=e,this._endValue=i,this._valueRange=i-e}getLabelForValue(t){return $t(t,this.chart.options.locale,this.options.ticks.format)}}class kr extends _r{static id="linear";static defaults={ticks:{callback:Ht.formatters.numeric}};determineDataLimits(){const{min:t,max:e}=this.getMinMax(!0);this.min=N(t)?t:0,this.max=N(e)?e:1,this.handleTickRangeOptions()}computeTickLimit(){const t=this.isHorizontal(),e=t?this.width:this.height,i=pt(this.options.ticks.minRotation),s=(t?Math.sin(i):Math.cos(i))||.001,n=this._resolveTickFontOptions(0);return Math.ceil(e/Math.min(40,n.lineHeight/s))}getPixelForValue(t){return null===t?NaN:this.getPixelForDecimal((t-this._startValue)/this._valueRange)}getValueForPixel(t){return this._startValue+this.getDecimalForPixel(t)*this._valueRange}}const Or={millisecond:{common:!0,size:1,steps:1e3},second:{common:!0,size:1e3,steps:60},minute:{common:!0,size:6e4,steps:60},hour:{common:!0,size:36e5,steps:24},day:{common:!0,size:864e5,steps:30},week:{common:!1,size:6048e5,steps:4},month:{common:!0,size:2628e6,steps:12},quarter:{common:!1,size:7884e6,steps:4},year:{common:!0,size:3154e7}},Sr=Object.keys(Or);function Ar(t,e){return t-e}function Dr(t,e){if(F(e))return null;const i=t._adapter,{parser:s,round:n,isoWeekday:r}=t._parseOpts;let o=e;return"function"==typeof s&&(o=s(o)),N(o)||(o="string"==typeof s?i.parse(o,s):i.parse(o)),null===o?null:(n&&(o="week"!==n||!dt(r)&&!0!==r?i.startOf(o,n):i.startOf(o,"isoWeek",r)),+o)}function Cr(t,e,i,s){const n=Sr.length;for(let r=Sr.indexOf(t);r<n-1;++r){const t=Or[Sr[r]];if(t.common&&Math.ceil((i-e)/((t.steps?t.steps:Number.MAX_SAFE_INTEGER)*t.size))<=s)return Sr[r]}return Sr[n-1]}function Rr(t,e,i){if(i){if(i.length){const{lo:s,hi:n}=_t(i,e);t[i[s]>=e?i[s]:i[n]]=!0}}else t[e]=!0}function Er(t,e,i){const s=[],n={},r=e.length;let o,h;for(o=0;o<r;++o)h=e[o],n[h]=o,s.push({value:h,major:!1});return 0!==r&&i?function(t,e,i,s){const n=t._adapter,r=+n.startOf(e[0].value,s),o=e[e.length-1].value;let h,a;for(h=r;h<=o;h=+n.add(h,1,s))a=i[h],a>=0&&(e[a].major=!0);return e}(t,s,n,i):s}class jr extends Ps{static id="time";static defaults={bounds:"data",adapters:{},time:{parser:!1,unit:!1,round:!1,isoWeekday:!1,minUnit:"millisecond",displayFormats:{}},ticks:{source:"auto",callback:!1,major:{enabled:!1}}};constructor(t){super(t),this._cache={data:[],labels:[],all:[]},this._unit="day",this._majorUnit=void 0,this._offsets={},this._normalized=!1,this._parseOpts=void 0}init(t,e={}){const i=t.time||(t.time={}),s=this._adapter=new Hi._date(t.adapters.date);s.init(e),U(i.displayFormats,s.formats()),this._parseOpts={parser:i.parser,round:i.round,isoWeekday:i.isoWeekday},super.init(t),this._normalized=e.normalized}parse(t,e){return void 0===t?null:Dr(this,t)}beforeLayout(){super.beforeLayout(),this._cache={data:[],labels:[],all:[]}}determineDataLimits(){const t=this.options,e=this._adapter,i=t.time.unit||"day";let{min:s,max:n,minDefined:r,maxDefined:o}=this.getUserBounds();function h(t){r||isNaN(t.min)||(s=Math.min(s,t.min)),o||isNaN(t.max)||(n=Math.max(n,t.max))}r&&o||(h(this._getLabelBounds()),"ticks"===t.bounds&&"labels"===t.ticks.source||h(this.getMinMax(!1))),s=N(s)&&!isNaN(s)?s:+e.startOf(Date.now(),i),n=N(n)&&!isNaN(n)?n:+e.endOf(Date.now(),i)+1,this.min=Math.min(s,n-1),this.max=Math.max(s+1,n)}_getLabelBounds(){const t=this.getLabelTimestamps();let e=Number.POSITIVE_INFINITY,i=Number.NEGATIVE_INFINITY;return t.length&&(e=t[0],i=t[t.length-1]),{min:e,max:i}}buildTicks(){const t=this.options,e=t.time,i=t.ticks,s="labels"===i.source?this.getLabelTimestamps():this._generate();"ticks"===t.bounds&&s.length&&(this.min=this._userMin||s[0],this.max=this._userMax||s[s.length-1]);const n=this.min,r=function(t,e,i){let s=0,n=t.length;for(;s<n&&t[s]<e;)s++;for(;n>s&&t[n-1]>i;)n--;return s>0||n<t.length?t.slice(s,n):t}(s,n,this.max);return this._unit=e.unit||(i.autoSkip?Cr(e.minUnit,this.min,this.max,this._getLabelCapacity(n)):function(t,e,i,s,n){for(let r=Sr.length-1;r>=Sr.indexOf(i);r--){const i=Sr[r];if(Or[i].common&&t._adapter.diff(n,s,i)>=e-1)return i}return Sr[i?Sr.indexOf(i):0]}(this,r.length,e.minUnit,this.min,this.max)),this._majorUnit=i.major.enabled&&"year"!==this._unit?function(t){for(let e=Sr.indexOf(t)+1,i=Sr.length;e<i;++e)if(Or[Sr[e]].common)return Sr[e]}(this._unit):void 0,this.initOffsets(s),t.reverse&&r.reverse(),Er(this,r,this._majorUnit)}afterAutoSkip(){this.options.offsetAfterAutoskip&&this.initOffsets(this.ticks.map((t=>+t.value)))}initOffsets(t=[]){let e,i,s=0,n=0;this.options.offset&&t.length&&(e=this.getDecimalForValue(t[0]),s=1===t.length?1-e:(this.getDecimalForValue(t[1])-e)/2,i=this.getDecimalForValue(t[t.length-1]),n=1===t.length?i:(i-this.getDecimalForValue(t[t.length-2]))/2);const r=t.length<3?.5:.25;s=Mt(s,0,r),n=Mt(n,0,r),this._offsets={start:s,end:n,factor:1/(s+1+n)}}_generate(){const t=this._adapter,e=this.min,i=this.max,s=this.options,n=s.time,r=n.unit||Cr(n.minUnit,e,i,this._getLabelCapacity(e)),o=I(s.ticks.stepSize,1),h="week"===r&&n.isoWeekday,a=dt(h)||!0===h,c={};let u,l,f=e;if(a&&(f=+t.startOf(f,"isoWeek",h)),f=+t.startOf(f,a?"day":r),t.diff(i,e,r)>1e5*o)throw new Error(e+" and "+i+" are too far apart with stepSize of "+o+" "+r);const d="data"===s.ticks.source&&this.getDataTimestamps();for(u=f,l=0;u<i;u=+t.add(u,o,r),l++)Rr(c,u,d);return u!==i&&"ticks"!==s.bounds&&1!==l||Rr(c,u,d),Object.keys(c).sort(Ar).map((t=>+t))}getLabelForValue(t){const e=this.options.time;return this._adapter.format(t,e.tooltipFormat?e.tooltipFormat:e.displayFormats.datetime)}format(t,e){return this._adapter.format(t,e||this.options.time.displayFormats[this._unit])}_tickFormatFunction(t,e,i,s){const n=this.options,r=n.ticks.callback;if(r)return z(r,[t,e,i],this);const o=n.time.displayFormats,h=this._unit,a=this._majorUnit,c=a&&o[a],u=i[e];return this._adapter.format(t,s||(a&&c&&u&&u.major?c:h&&o[h]))}generateTickLabels(t){let e,i,s;for(e=0,i=t.length;e<i;++e)s=t[e],s.label=this._tickFormatFunction(s.value,e,t)}getDecimalForValue(t){return null===t?NaN:(t-this.min)/(this.max-this.min)}getPixelForValue(t){const e=this._offsets,i=this.getDecimalForValue(t);return this.getPixelForDecimal((e.start+i)*e.factor)}getValueForPixel(t){const e=this._offsets,i=this.getDecimalForPixel(t)/e.factor-e.end;return this.min+i*(this.max-this.min)}_getLabelSize(t){const e=this.options.ticks,i=this.ctx.measureText(t).width,s=pt(this.isHorizontal()?e.maxRotation:e.minRotation),n=Math.cos(s),r=Math.sin(s),o=this._resolveTickFontOptions(0).size;return{w:i*n+o*r,h:i*r+o*n}}_getLabelCapacity(t){const e=this.options.time,i=e.displayFormats,s=i[e.unit]||i.millisecond,n=this._tickFormatFunction(t,0,Er(this,[t],this._majorUnit),s),r=this._getLabelSize(n),o=Math.floor(this.isHorizontal()?this.width/r.w:this.height/r.h)-1;return o>0?o:1}getDataTimestamps(){let t,e,i=this._cache.data||[];if(i.length)return i;const s=this.getMatchingVisibleMetas();if(this._normalized&&s.length)return this._cache.data=s[0].controller.getAllParsedValues(this);for(t=0,e=s.length;t<e;++t)i=i.concat(s[t].controller.getAllParsedValues(this));return this._cache.data=this.normalize(i)}getLabelTimestamps(){const t=this._cache.labels||[];let e,i;if(t.length)return t;const s=this.getLabels();for(e=0,i=s.length;e<i;++e)t.push(Dr(this,s[e]));return this._cache.labels=this._normalized?t:this.normalize(t)}normalize(t){return Dt(t.sort(Ar))}}
+ */
+
+class Animator {
+    constructor(){
+        this._request = null;
+        this._charts = new Map();
+        this._running = false;
+        this._lastDate = undefined;
+    }
+ _notify(chart, anims, date, type) {
+        const callbacks = anims.listeners[type];
+        const numSteps = anims.duration;
+        callbacks.forEach((fn)=>fn({
+                chart,
+                initial: anims.initial,
+                numSteps,
+                currentStep: Math.min(date - anims.start, numSteps)
+            }));
+    }
+ _refresh() {
+        if (this._request) {
+            return;
+        }
+        this._running = true;
+        this._request = requestAnimFrame.call(window, ()=>{
+            this._update();
+            this._request = null;
+            if (this._running) {
+                this._refresh();
+            }
+        });
+    }
+ _update(date = Date.now()) {
+        let remaining = 0;
+        this._charts.forEach((anims, chart)=>{
+            if (!anims.running || !anims.items.length) {
+                return;
+            }
+            const items = anims.items;
+            let i = items.length - 1;
+            let draw = false;
+            let item;
+            for(; i >= 0; --i){
+                item = items[i];
+                if (item._active) {
+                    if (item._total > anims.duration) {
+                        anims.duration = item._total;
+                    }
+                    item.tick(date);
+                    draw = true;
+                } else {
+                    items[i] = items[items.length - 1];
+                    items.pop();
+                }
+            }
+            if (draw) {
+                chart.draw();
+                this._notify(chart, anims, date, 'progress');
+            }
+            if (!items.length) {
+                anims.running = false;
+                this._notify(chart, anims, date, 'complete');
+                anims.initial = false;
+            }
+            remaining += items.length;
+        });
+        this._lastDate = date;
+        if (remaining === 0) {
+            this._running = false;
+        }
+    }
+ _getAnims(chart) {
+        const charts = this._charts;
+        let anims = charts.get(chart);
+        if (!anims) {
+            anims = {
+                running: false,
+                initial: true,
+                items: [],
+                listeners: {
+                    complete: [],
+                    progress: []
+                }
+            };
+            charts.set(chart, anims);
+        }
+        return anims;
+    }
+ listen(chart, event, cb) {
+        this._getAnims(chart).listeners[event].push(cb);
+    }
+ add(chart, items) {
+        if (!items || !items.length) {
+            return;
+        }
+        this._getAnims(chart).items.push(...items);
+    }
+ has(chart) {
+        return this._getAnims(chart).items.length > 0;
+    }
+ start(chart) {
+        const anims = this._charts.get(chart);
+        if (!anims) {
+            return;
+        }
+        anims.running = true;
+        anims.start = Date.now();
+        anims.duration = anims.items.reduce((acc, cur)=>Math.max(acc, cur._duration), 0);
+        this._refresh();
+    }
+    running(chart) {
+        if (!this._running) {
+            return false;
+        }
+        const anims = this._charts.get(chart);
+        if (!anims || !anims.running || !anims.items.length) {
+            return false;
+        }
+        return true;
+    }
+ stop(chart) {
+        const anims = this._charts.get(chart);
+        if (!anims || !anims.items.length) {
+            return;
+        }
+        const items = anims.items;
+        let i = items.length - 1;
+        for(; i >= 0; --i){
+            items[i].cancel();
+        }
+        anims.items = [];
+        this._notify(chart, anims, Date.now(), 'complete');
+    }
+ remove(chart) {
+        return this._charts.delete(chart);
+    }
+}
+var animator = /* #__PURE__ */ new Animator();
+
+const transparent = 'transparent';
+const interpolators = {
+    boolean (from, to, factor) {
+        return factor > 0.5 ? to : from;
+    },
+ color (from, to, factor) {
+        const c0 = color(from || transparent);
+        const c1 = c0.valid && color(to || transparent);
+        return c1 && c1.valid ? c1.mix(c0, factor).hexString() : to;
+    },
+    number (from, to, factor) {
+        return from + (to - from) * factor;
+    }
+};
+class Animation {
+    constructor(cfg, target, prop, to){
+        const currentValue = target[prop];
+        to = resolve([
+            cfg.to,
+            to,
+            currentValue,
+            cfg.from
+        ]);
+        const from = resolve([
+            cfg.from,
+            currentValue,
+            to
+        ]);
+        this._active = true;
+        this._fn = cfg.fn || interpolators[cfg.type || typeof from];
+        this._easing = effects[cfg.easing] || effects.linear;
+        this._start = Math.floor(Date.now() + (cfg.delay || 0));
+        this._duration = this._total = Math.floor(cfg.duration);
+        this._loop = !!cfg.loop;
+        this._target = target;
+        this._prop = prop;
+        this._from = from;
+        this._to = to;
+        this._promises = undefined;
+    }
+    active() {
+        return this._active;
+    }
+    update(cfg, to, date) {
+        if (this._active) {
+            this._notify(false);
+            const currentValue = this._target[this._prop];
+            const elapsed = date - this._start;
+            const remain = this._duration - elapsed;
+            this._start = date;
+            this._duration = Math.floor(Math.max(remain, cfg.duration));
+            this._total += elapsed;
+            this._loop = !!cfg.loop;
+            this._to = resolve([
+                cfg.to,
+                to,
+                currentValue,
+                cfg.from
+            ]);
+            this._from = resolve([
+                cfg.from,
+                currentValue,
+                to
+            ]);
+        }
+    }
+    cancel() {
+        if (this._active) {
+            this.tick(Date.now());
+            this._active = false;
+            this._notify(false);
+        }
+    }
+    tick(date) {
+        const elapsed = date - this._start;
+        const duration = this._duration;
+        const prop = this._prop;
+        const from = this._from;
+        const loop = this._loop;
+        const to = this._to;
+        let factor;
+        this._active = from !== to && (loop || elapsed < duration);
+        if (!this._active) {
+            this._target[prop] = to;
+            this._notify(true);
+            return;
+        }
+        if (elapsed < 0) {
+            this._target[prop] = from;
+            return;
+        }
+        factor = elapsed / duration % 2;
+        factor = loop && factor > 1 ? 2 - factor : factor;
+        factor = this._easing(Math.min(1, Math.max(0, factor)));
+        this._target[prop] = this._fn(from, to, factor);
+    }
+    wait() {
+        const promises = this._promises || (this._promises = []);
+        return new Promise((res, rej)=>{
+            promises.push({
+                res,
+                rej
+            });
+        });
+    }
+    _notify(resolved) {
+        const method = resolved ? 'res' : 'rej';
+        const promises = this._promises || [];
+        for(let i = 0; i < promises.length; i++){
+            promises[i][method]();
+        }
+    }
+}
+
+class Animations {
+    constructor(chart, config){
+        this._chart = chart;
+        this._properties = new Map();
+        this.configure(config);
+    }
+    configure(config) {
+        if (!isObject(config)) {
+            return;
+        }
+        const animationOptions = Object.keys(defaults.animation);
+        const animatedProps = this._properties;
+        Object.getOwnPropertyNames(config).forEach((key)=>{
+            const cfg = config[key];
+            if (!isObject(cfg)) {
+                return;
+            }
+            const resolved = {};
+            for (const option of animationOptions){
+                resolved[option] = cfg[option];
+            }
+            (isArray(cfg.properties) && cfg.properties || [
+                key
+            ]).forEach((prop)=>{
+                if (prop === key || !animatedProps.has(prop)) {
+                    animatedProps.set(prop, resolved);
+                }
+            });
+        });
+    }
+ _animateOptions(target, values) {
+        const newOptions = values.options;
+        const options = resolveTargetOptions(target, newOptions);
+        if (!options) {
+            return [];
+        }
+        const animations = this._createAnimations(options, newOptions);
+        if (newOptions.$shared) {
+            awaitAll(target.options.$animations, newOptions).then(()=>{
+                target.options = newOptions;
+            }, ()=>{
+            });
+        }
+        return animations;
+    }
+ _createAnimations(target, values) {
+        const animatedProps = this._properties;
+        const animations = [];
+        const running = target.$animations || (target.$animations = {});
+        const props = Object.keys(values);
+        const date = Date.now();
+        let i;
+        for(i = props.length - 1; i >= 0; --i){
+            const prop = props[i];
+            if (prop.charAt(0) === '$') {
+                continue;
+            }
+            if (prop === 'options') {
+                animations.push(...this._animateOptions(target, values));
+                continue;
+            }
+            const value = values[prop];
+            let animation = running[prop];
+            const cfg = animatedProps.get(prop);
+            if (animation) {
+                if (cfg && animation.active()) {
+                    animation.update(cfg, value, date);
+                    continue;
+                } else {
+                    animation.cancel();
+                }
+            }
+            if (!cfg || !cfg.duration) {
+                target[prop] = value;
+                continue;
+            }
+            running[prop] = animation = new Animation(cfg, target, prop, value);
+            animations.push(animation);
+        }
+        return animations;
+    }
+ update(target, values) {
+        if (this._properties.size === 0) {
+            Object.assign(target, values);
+            return;
+        }
+        const animations = this._createAnimations(target, values);
+        if (animations.length) {
+            animator.add(this._chart, animations);
+            return true;
+        }
+    }
+}
+function awaitAll(animations, properties) {
+    const running = [];
+    const keys = Object.keys(properties);
+    for(let i = 0; i < keys.length; i++){
+        const anim = animations[keys[i]];
+        if (anim && anim.active()) {
+            running.push(anim.wait());
+        }
+    }
+    return Promise.all(running);
+}
+function resolveTargetOptions(target, newOptions) {
+    if (!newOptions) {
+        return;
+    }
+    let options = target.options;
+    if (!options) {
+        target.options = newOptions;
+        return;
+    }
+    if (options.$shared) {
+        target.options = options = Object.assign({}, options, {
+            $shared: false,
+            $animations: {}
+        });
+    }
+    return options;
+}
+
+function scaleClip(scale, allowedOverflow) {
+    const opts = scale && scale.options || {};
+    const reverse = opts.reverse;
+    const min = opts.min === undefined ? allowedOverflow : 0;
+    const max = opts.max === undefined ? allowedOverflow : 0;
+    return {
+        start: reverse ? max : min,
+        end: reverse ? min : max
+    };
+}
+function defaultClip(xScale, yScale, allowedOverflow) {
+    if (allowedOverflow === false) {
+        return false;
+    }
+    const x = scaleClip(xScale, allowedOverflow);
+    const y = scaleClip(yScale, allowedOverflow);
+    return {
+        top: y.end,
+        right: x.end,
+        bottom: y.start,
+        left: x.start
+    };
+}
+function toClip(value) {
+    let t, r, b, l;
+    if (isObject(value)) {
+        t = value.top;
+        r = value.right;
+        b = value.bottom;
+        l = value.left;
+    } else {
+        t = r = b = l = value;
+    }
+    return {
+        top: t,
+        right: r,
+        bottom: b,
+        left: l,
+        disabled: value === false
+    };
+}
+function getSortedDatasetIndices(chart, filterVisible) {
+    const keys = [];
+    const metasets = chart._getSortedDatasetMetas(filterVisible);
+    let i, ilen;
+    for(i = 0, ilen = metasets.length; i < ilen; ++i){
+        keys.push(metasets[i].index);
+    }
+    return keys;
+}
+function applyStack(stack, value, dsIndex, options = {}) {
+    const keys = stack.keys;
+    const singleMode = options.mode === 'single';
+    let i, ilen, datasetIndex, otherValue;
+    if (value === null) {
+        return;
+    }
+    let found = false;
+    for(i = 0, ilen = keys.length; i < ilen; ++i){
+        datasetIndex = +keys[i];
+        if (datasetIndex === dsIndex) {
+            found = true;
+            if (options.all) {
+                continue;
+            }
+            break;
+        }
+        otherValue = stack.values[datasetIndex];
+        if (isNumberFinite(otherValue) && (singleMode || value === 0 || sign(value) === sign(otherValue))) {
+            value += otherValue;
+        }
+    }
+    if (!found && !options.all) {
+        return 0;
+    }
+    return value;
+}
+function convertObjectDataToArray(data, meta) {
+    const { iScale , vScale  } = meta;
+    const iAxisKey = iScale.axis === 'x' ? 'x' : 'y';
+    const vAxisKey = vScale.axis === 'x' ? 'x' : 'y';
+    const keys = Object.keys(data);
+    const adata = new Array(keys.length);
+    let i, ilen, key;
+    for(i = 0, ilen = keys.length; i < ilen; ++i){
+        key = keys[i];
+        adata[i] = {
+            [iAxisKey]: key,
+            [vAxisKey]: data[key]
+        };
+    }
+    return adata;
+}
+function isStacked(scale, meta) {
+    const stacked = scale && scale.options.stacked;
+    return stacked || stacked === undefined && meta.stack !== undefined;
+}
+function getStackKey(indexScale, valueScale, meta) {
+    return `${indexScale.id}.${valueScale.id}.${meta.stack || meta.type}`;
+}
+function getUserBounds(scale) {
+    const { min , max , minDefined , maxDefined  } = scale.getUserBounds();
+    return {
+        min: minDefined ? min : Number.NEGATIVE_INFINITY,
+        max: maxDefined ? max : Number.POSITIVE_INFINITY
+    };
+}
+function getOrCreateStack(stacks, stackKey, indexValue) {
+    const subStack = stacks[stackKey] || (stacks[stackKey] = {});
+    return subStack[indexValue] || (subStack[indexValue] = {});
+}
+function getLastIndexInStack(stack, vScale, positive, type) {
+    for (const meta of vScale.getMatchingVisibleMetas(type).reverse()){
+        const value = stack[meta.index];
+        if (positive && value > 0 || !positive && value < 0) {
+            return meta.index;
+        }
+    }
+    return null;
+}
+function updateStacks(controller, parsed) {
+    const { chart , _cachedMeta: meta  } = controller;
+    const stacks = chart._stacks || (chart._stacks = {});
+    const { iScale , vScale , index: datasetIndex  } = meta;
+    const iAxis = iScale.axis;
+    const vAxis = vScale.axis;
+    const key = getStackKey(iScale, vScale, meta);
+    const ilen = parsed.length;
+    let stack;
+    for(let i = 0; i < ilen; ++i){
+        const item = parsed[i];
+        const { [iAxis]: index , [vAxis]: value  } = item;
+        const itemStacks = item._stacks || (item._stacks = {});
+        stack = itemStacks[vAxis] = getOrCreateStack(stacks, key, index);
+        stack[datasetIndex] = value;
+        stack._top = getLastIndexInStack(stack, vScale, true, meta.type);
+        stack._bottom = getLastIndexInStack(stack, vScale, false, meta.type);
+        const visualValues = stack._visualValues || (stack._visualValues = {});
+        visualValues[datasetIndex] = value;
+    }
+}
+function getFirstScaleId(chart, axis) {
+    const scales = chart.scales;
+    return Object.keys(scales).filter((key)=>scales[key].axis === axis).shift();
+}
+function createDatasetContext(parent, index) {
+    return createContext(parent, {
+        active: false,
+        dataset: undefined,
+        datasetIndex: index,
+        index,
+        mode: 'default',
+        type: 'dataset'
+    });
+}
+function createDataContext(parent, index, element) {
+    return createContext(parent, {
+        active: false,
+        dataIndex: index,
+        parsed: undefined,
+        raw: undefined,
+        element,
+        index,
+        mode: 'default',
+        type: 'data'
+    });
+}
+function clearStacks(meta, items) {
+    const datasetIndex = meta.controller.index;
+    const axis = meta.vScale && meta.vScale.axis;
+    if (!axis) {
+        return;
+    }
+    items = items || meta._parsed;
+    for (const parsed of items){
+        const stacks = parsed._stacks;
+        if (!stacks || stacks[axis] === undefined || stacks[axis][datasetIndex] === undefined) {
+            return;
+        }
+        delete stacks[axis][datasetIndex];
+        if (stacks[axis]._visualValues !== undefined && stacks[axis]._visualValues[datasetIndex] !== undefined) {
+            delete stacks[axis]._visualValues[datasetIndex];
+        }
+    }
+}
+const isDirectUpdateMode = (mode)=>mode === 'reset' || mode === 'none';
+const cloneIfNotShared = (cached, shared)=>shared ? cached : Object.assign({}, cached);
+const createStack = (canStack, meta, chart)=>canStack && !meta.hidden && meta._stacked && {
+        keys: getSortedDatasetIndices(chart, true),
+        values: null
+    };
+class DatasetController {
+ static defaults = {};
+ static datasetElementType = null;
+ static dataElementType = null;
+ constructor(chart, datasetIndex){
+        this.chart = chart;
+        this._ctx = chart.ctx;
+        this.index = datasetIndex;
+        this._cachedDataOpts = {};
+        this._cachedMeta = this.getMeta();
+        this._type = this._cachedMeta.type;
+        this.options = undefined;
+         this._parsing = false;
+        this._data = undefined;
+        this._objectData = undefined;
+        this._sharedOptions = undefined;
+        this._drawStart = undefined;
+        this._drawCount = undefined;
+        this.enableOptionSharing = false;
+        this.supportsDecimation = false;
+        this.$context = undefined;
+        this._syncList = [];
+        this.datasetElementType = new.target.datasetElementType;
+        this.dataElementType = new.target.dataElementType;
+        this.initialize();
+    }
+    initialize() {
+        const meta = this._cachedMeta;
+        this.configure();
+        this.linkScales();
+        meta._stacked = isStacked(meta.vScale, meta);
+        this.addElements();
+        if (this.options.fill && !this.chart.isPluginEnabled('filler')) {
+            console.warn("Tried to use the 'fill' option without the 'Filler' plugin enabled. Please import and register the 'Filler' plugin and make sure it is not disabled in the options");
+        }
+    }
+    updateIndex(datasetIndex) {
+        if (this.index !== datasetIndex) {
+            clearStacks(this._cachedMeta);
+        }
+        this.index = datasetIndex;
+    }
+    linkScales() {
+        const chart = this.chart;
+        const meta = this._cachedMeta;
+        const dataset = this.getDataset();
+        const chooseId = (axis, x, y, r)=>axis === 'x' ? x : axis === 'r' ? r : y;
+        const xid = meta.xAxisID = valueOrDefault(dataset.xAxisID, getFirstScaleId(chart, 'x'));
+        const yid = meta.yAxisID = valueOrDefault(dataset.yAxisID, getFirstScaleId(chart, 'y'));
+        const rid = meta.rAxisID = valueOrDefault(dataset.rAxisID, getFirstScaleId(chart, 'r'));
+        const indexAxis = meta.indexAxis;
+        const iid = meta.iAxisID = chooseId(indexAxis, xid, yid, rid);
+        const vid = meta.vAxisID = chooseId(indexAxis, yid, xid, rid);
+        meta.xScale = this.getScaleForId(xid);
+        meta.yScale = this.getScaleForId(yid);
+        meta.rScale = this.getScaleForId(rid);
+        meta.iScale = this.getScaleForId(iid);
+        meta.vScale = this.getScaleForId(vid);
+    }
+    getDataset() {
+        return this.chart.data.datasets[this.index];
+    }
+    getMeta() {
+        return this.chart.getDatasetMeta(this.index);
+    }
+ getScaleForId(scaleID) {
+        return this.chart.scales[scaleID];
+    }
+ _getOtherScale(scale) {
+        const meta = this._cachedMeta;
+        return scale === meta.iScale ? meta.vScale : meta.iScale;
+    }
+    reset() {
+        this._update('reset');
+    }
+ _destroy() {
+        const meta = this._cachedMeta;
+        if (this._data) {
+            unlistenArrayEvents(this._data, this);
+        }
+        if (meta._stacked) {
+            clearStacks(meta);
+        }
+    }
+ _dataCheck() {
+        const dataset = this.getDataset();
+        const data = dataset.data || (dataset.data = []);
+        const _data = this._data;
+        if (isObject(data)) {
+            const meta = this._cachedMeta;
+            this._data = convertObjectDataToArray(data, meta);
+        } else if (_data !== data) {
+            if (_data) {
+                unlistenArrayEvents(_data, this);
+                const meta = this._cachedMeta;
+                clearStacks(meta);
+                meta._parsed = [];
+            }
+            if (data && Object.isExtensible(data)) {
+                listenArrayEvents(data, this);
+            }
+            this._syncList = [];
+            this._data = data;
+        }
+    }
+    addElements() {
+        const meta = this._cachedMeta;
+        this._dataCheck();
+        if (this.datasetElementType) {
+            meta.dataset = new this.datasetElementType();
+        }
+    }
+    buildOrUpdateElements(resetNewElements) {
+        const meta = this._cachedMeta;
+        const dataset = this.getDataset();
+        let stackChanged = false;
+        this._dataCheck();
+        const oldStacked = meta._stacked;
+        meta._stacked = isStacked(meta.vScale, meta);
+        if (meta.stack !== dataset.stack) {
+            stackChanged = true;
+            clearStacks(meta);
+            meta.stack = dataset.stack;
+        }
+        this._resyncElements(resetNewElements);
+        if (stackChanged || oldStacked !== meta._stacked) {
+            updateStacks(this, meta._parsed);
+            meta._stacked = isStacked(meta.vScale, meta);
+        }
+    }
+ configure() {
+        const config = this.chart.config;
+        const scopeKeys = config.datasetScopeKeys(this._type);
+        const scopes = config.getOptionScopes(this.getDataset(), scopeKeys, true);
+        this.options = config.createResolver(scopes, this.getContext());
+        this._parsing = this.options.parsing;
+        this._cachedDataOpts = {};
+    }
+ parse(start, count) {
+        const { _cachedMeta: meta , _data: data  } = this;
+        const { iScale , _stacked  } = meta;
+        const iAxis = iScale.axis;
+        let sorted = start === 0 && count === data.length ? true : meta._sorted;
+        let prev = start > 0 && meta._parsed[start - 1];
+        let i, cur, parsed;
+        if (this._parsing === false) {
+            meta._parsed = data;
+            meta._sorted = true;
+            parsed = data;
+        } else {
+            if (isArray(data[start])) {
+                parsed = this.parseArrayData(meta, data, start, count);
+            } else if (isObject(data[start])) {
+                parsed = this.parseObjectData(meta, data, start, count);
+            } else {
+                parsed = this.parsePrimitiveData(meta, data, start, count);
+            }
+            const isNotInOrderComparedToPrev = ()=>cur[iAxis] === null || prev && cur[iAxis] < prev[iAxis];
+            for(i = 0; i < count; ++i){
+                meta._parsed[i + start] = cur = parsed[i];
+                if (sorted) {
+                    if (isNotInOrderComparedToPrev()) {
+                        sorted = false;
+                    }
+                    prev = cur;
+                }
+            }
+            meta._sorted = sorted;
+        }
+        if (_stacked) {
+            updateStacks(this, parsed);
+        }
+    }
+ parsePrimitiveData(meta, data, start, count) {
+        const { iScale , vScale  } = meta;
+        const iAxis = iScale.axis;
+        const vAxis = vScale.axis;
+        const labels = iScale.getLabels();
+        const singleScale = iScale === vScale;
+        const parsed = new Array(count);
+        let i, ilen, index;
+        for(i = 0, ilen = count; i < ilen; ++i){
+            index = i + start;
+            parsed[i] = {
+                [iAxis]: singleScale || iScale.parse(labels[index], index),
+                [vAxis]: vScale.parse(data[index], index)
+            };
+        }
+        return parsed;
+    }
+ parseArrayData(meta, data, start, count) {
+        const { xScale , yScale  } = meta;
+        const parsed = new Array(count);
+        let i, ilen, index, item;
+        for(i = 0, ilen = count; i < ilen; ++i){
+            index = i + start;
+            item = data[index];
+            parsed[i] = {
+                x: xScale.parse(item[0], index),
+                y: yScale.parse(item[1], index)
+            };
+        }
+        return parsed;
+    }
+ parseObjectData(meta, data, start, count) {
+        const { xScale , yScale  } = meta;
+        const { xAxisKey ='x' , yAxisKey ='y'  } = this._parsing;
+        const parsed = new Array(count);
+        let i, ilen, index, item;
+        for(i = 0, ilen = count; i < ilen; ++i){
+            index = i + start;
+            item = data[index];
+            parsed[i] = {
+                x: xScale.parse(resolveObjectKey(item, xAxisKey), index),
+                y: yScale.parse(resolveObjectKey(item, yAxisKey), index)
+            };
+        }
+        return parsed;
+    }
+ getParsed(index) {
+        return this._cachedMeta._parsed[index];
+    }
+ getDataElement(index) {
+        return this._cachedMeta.data[index];
+    }
+ applyStack(scale, parsed, mode) {
+        const chart = this.chart;
+        const meta = this._cachedMeta;
+        const value = parsed[scale.axis];
+        const stack = {
+            keys: getSortedDatasetIndices(chart, true),
+            values: parsed._stacks[scale.axis]._visualValues
+        };
+        return applyStack(stack, value, meta.index, {
+            mode
+        });
+    }
+ updateRangeFromParsed(range, scale, parsed, stack) {
+        const parsedValue = parsed[scale.axis];
+        let value = parsedValue === null ? NaN : parsedValue;
+        const values = stack && parsed._stacks[scale.axis];
+        if (stack && values) {
+            stack.values = values;
+            value = applyStack(stack, parsedValue, this._cachedMeta.index);
+        }
+        range.min = Math.min(range.min, value);
+        range.max = Math.max(range.max, value);
+    }
+ getMinMax(scale, canStack) {
+        const meta = this._cachedMeta;
+        const _parsed = meta._parsed;
+        const sorted = meta._sorted && scale === meta.iScale;
+        const ilen = _parsed.length;
+        const otherScale = this._getOtherScale(scale);
+        const stack = createStack(canStack, meta, this.chart);
+        const range = {
+            min: Number.POSITIVE_INFINITY,
+            max: Number.NEGATIVE_INFINITY
+        };
+        const { min: otherMin , max: otherMax  } = getUserBounds(otherScale);
+        let i, parsed;
+        function _skip() {
+            parsed = _parsed[i];
+            const otherValue = parsed[otherScale.axis];
+            return !isNumberFinite(parsed[scale.axis]) || otherMin > otherValue || otherMax < otherValue;
+        }
+        for(i = 0; i < ilen; ++i){
+            if (_skip()) {
+                continue;
+            }
+            this.updateRangeFromParsed(range, scale, parsed, stack);
+            if (sorted) {
+                break;
+            }
+        }
+        if (sorted) {
+            for(i = ilen - 1; i >= 0; --i){
+                if (_skip()) {
+                    continue;
+                }
+                this.updateRangeFromParsed(range, scale, parsed, stack);
+                break;
+            }
+        }
+        return range;
+    }
+    getAllParsedValues(scale) {
+        const parsed = this._cachedMeta._parsed;
+        const values = [];
+        let i, ilen, value;
+        for(i = 0, ilen = parsed.length; i < ilen; ++i){
+            value = parsed[i][scale.axis];
+            if (isNumberFinite(value)) {
+                values.push(value);
+            }
+        }
+        return values;
+    }
+ getMaxOverflow() {
+        return false;
+    }
+ getLabelAndValue(index) {
+        const meta = this._cachedMeta;
+        const iScale = meta.iScale;
+        const vScale = meta.vScale;
+        const parsed = this.getParsed(index);
+        return {
+            label: iScale ? '' + iScale.getLabelForValue(parsed[iScale.axis]) : '',
+            value: vScale ? '' + vScale.getLabelForValue(parsed[vScale.axis]) : ''
+        };
+    }
+ _update(mode) {
+        const meta = this._cachedMeta;
+        this.update(mode || 'default');
+        meta._clip = toClip(valueOrDefault(this.options.clip, defaultClip(meta.xScale, meta.yScale, this.getMaxOverflow())));
+    }
+ update(mode) {}
+    draw() {
+        const ctx = this._ctx;
+        const chart = this.chart;
+        const meta = this._cachedMeta;
+        const elements = meta.data || [];
+        const area = chart.chartArea;
+        const active = [];
+        const start = this._drawStart || 0;
+        const count = this._drawCount || elements.length - start;
+        const drawActiveElementsOnTop = this.options.drawActiveElementsOnTop;
+        let i;
+        if (meta.dataset) {
+            meta.dataset.draw(ctx, area, start, count);
+        }
+        for(i = start; i < start + count; ++i){
+            const element = elements[i];
+            if (element.hidden) {
+                continue;
+            }
+            if (element.active && drawActiveElementsOnTop) {
+                active.push(element);
+            } else {
+                element.draw(ctx, area);
+            }
+        }
+        for(i = 0; i < active.length; ++i){
+            active[i].draw(ctx, area);
+        }
+    }
+ getStyle(index, active) {
+        const mode = active ? 'active' : 'default';
+        return index === undefined && this._cachedMeta.dataset ? this.resolveDatasetElementOptions(mode) : this.resolveDataElementOptions(index || 0, mode);
+    }
+ getContext(index, active, mode) {
+        const dataset = this.getDataset();
+        let context;
+        if (index >= 0 && index < this._cachedMeta.data.length) {
+            const element = this._cachedMeta.data[index];
+            context = element.$context || (element.$context = createDataContext(this.getContext(), index, element));
+            context.parsed = this.getParsed(index);
+            context.raw = dataset.data[index];
+            context.index = context.dataIndex = index;
+        } else {
+            context = this.$context || (this.$context = createDatasetContext(this.chart.getContext(), this.index));
+            context.dataset = dataset;
+            context.index = context.datasetIndex = this.index;
+        }
+        context.active = !!active;
+        context.mode = mode;
+        return context;
+    }
+ resolveDatasetElementOptions(mode) {
+        return this._resolveElementOptions(this.datasetElementType.id, mode);
+    }
+ resolveDataElementOptions(index, mode) {
+        return this._resolveElementOptions(this.dataElementType.id, mode, index);
+    }
+ _resolveElementOptions(elementType, mode = 'default', index) {
+        const active = mode === 'active';
+        const cache = this._cachedDataOpts;
+        const cacheKey = elementType + '-' + mode;
+        const cached = cache[cacheKey];
+        const sharing = this.enableOptionSharing && defined(index);
+        if (cached) {
+            return cloneIfNotShared(cached, sharing);
+        }
+        const config = this.chart.config;
+        const scopeKeys = config.datasetElementScopeKeys(this._type, elementType);
+        const prefixes = active ? [
+            `${elementType}Hover`,
+            'hover',
+            elementType,
+            ''
+        ] : [
+            elementType,
+            ''
+        ];
+        const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
+        const names = Object.keys(defaults.elements[elementType]);
+        const context = ()=>this.getContext(index, active, mode);
+        const values = config.resolveNamedOptions(scopes, names, context, prefixes);
+        if (values.$shared) {
+            values.$shared = sharing;
+            cache[cacheKey] = Object.freeze(cloneIfNotShared(values, sharing));
+        }
+        return values;
+    }
+ _resolveAnimations(index, transition, active) {
+        const chart = this.chart;
+        const cache = this._cachedDataOpts;
+        const cacheKey = `animation-${transition}`;
+        const cached = cache[cacheKey];
+        if (cached) {
+            return cached;
+        }
+        let options;
+        if (chart.options.animation !== false) {
+            const config = this.chart.config;
+            const scopeKeys = config.datasetAnimationScopeKeys(this._type, transition);
+            const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
+            options = config.createResolver(scopes, this.getContext(index, active, transition));
+        }
+        const animations = new Animations(chart, options && options.animations);
+        if (options && options._cacheable) {
+            cache[cacheKey] = Object.freeze(animations);
+        }
+        return animations;
+    }
+ getSharedOptions(options) {
+        if (!options.$shared) {
+            return;
+        }
+        return this._sharedOptions || (this._sharedOptions = Object.assign({}, options));
+    }
+ includeOptions(mode, sharedOptions) {
+        return !sharedOptions || isDirectUpdateMode(mode) || this.chart._animationsDisabled;
+    }
+ _getSharedOptions(start, mode) {
+        const firstOpts = this.resolveDataElementOptions(start, mode);
+        const previouslySharedOptions = this._sharedOptions;
+        const sharedOptions = this.getSharedOptions(firstOpts);
+        const includeOptions = this.includeOptions(mode, sharedOptions) || sharedOptions !== previouslySharedOptions;
+        this.updateSharedOptions(sharedOptions, mode, firstOpts);
+        return {
+            sharedOptions,
+            includeOptions
+        };
+    }
+ updateElement(element, index, properties, mode) {
+        if (isDirectUpdateMode(mode)) {
+            Object.assign(element, properties);
+        } else {
+            this._resolveAnimations(index, mode).update(element, properties);
+        }
+    }
+ updateSharedOptions(sharedOptions, mode, newOptions) {
+        if (sharedOptions && !isDirectUpdateMode(mode)) {
+            this._resolveAnimations(undefined, mode).update(sharedOptions, newOptions);
+        }
+    }
+ _setStyle(element, index, mode, active) {
+        element.active = active;
+        const options = this.getStyle(index, active);
+        this._resolveAnimations(index, mode, active).update(element, {
+            options: !active && this.getSharedOptions(options) || options
+        });
+    }
+    removeHoverStyle(element, datasetIndex, index) {
+        this._setStyle(element, index, 'active', false);
+    }
+    setHoverStyle(element, datasetIndex, index) {
+        this._setStyle(element, index, 'active', true);
+    }
+ _removeDatasetHoverStyle() {
+        const element = this._cachedMeta.dataset;
+        if (element) {
+            this._setStyle(element, undefined, 'active', false);
+        }
+    }
+ _setDatasetHoverStyle() {
+        const element = this._cachedMeta.dataset;
+        if (element) {
+            this._setStyle(element, undefined, 'active', true);
+        }
+    }
+ _resyncElements(resetNewElements) {
+        const data = this._data;
+        const elements = this._cachedMeta.data;
+        for (const [method, arg1, arg2] of this._syncList){
+            this[method](arg1, arg2);
+        }
+        this._syncList = [];
+        const numMeta = elements.length;
+        const numData = data.length;
+        const count = Math.min(numData, numMeta);
+        if (count) {
+            this.parse(0, count);
+        }
+        if (numData > numMeta) {
+            this._insertElements(numMeta, numData - numMeta, resetNewElements);
+        } else if (numData < numMeta) {
+            this._removeElements(numData, numMeta - numData);
+        }
+    }
+ _insertElements(start, count, resetNewElements = true) {
+        const meta = this._cachedMeta;
+        const data = meta.data;
+        const end = start + count;
+        let i;
+        const move = (arr)=>{
+            arr.length += count;
+            for(i = arr.length - 1; i >= end; i--){
+                arr[i] = arr[i - count];
+            }
+        };
+        move(data);
+        for(i = start; i < end; ++i){
+            data[i] = new this.dataElementType();
+        }
+        if (this._parsing) {
+            move(meta._parsed);
+        }
+        this.parse(start, count);
+        if (resetNewElements) {
+            this.updateElements(data, start, count, 'reset');
+        }
+    }
+    updateElements(element, start, count, mode) {}
+ _removeElements(start, count) {
+        const meta = this._cachedMeta;
+        if (this._parsing) {
+            const removed = meta._parsed.splice(start, count);
+            if (meta._stacked) {
+                clearStacks(meta, removed);
+            }
+        }
+        meta.data.splice(start, count);
+    }
+ _sync(args) {
+        if (this._parsing) {
+            this._syncList.push(args);
+        } else {
+            const [method, arg1, arg2] = args;
+            this[method](arg1, arg2);
+        }
+        this.chart._dataChanges.push([
+            this.index,
+            ...args
+        ]);
+    }
+    _onDataPush() {
+        const count = arguments.length;
+        this._sync([
+            '_insertElements',
+            this.getDataset().data.length - count,
+            count
+        ]);
+    }
+    _onDataPop() {
+        this._sync([
+            '_removeElements',
+            this._cachedMeta.data.length - 1,
+            1
+        ]);
+    }
+    _onDataShift() {
+        this._sync([
+            '_removeElements',
+            0,
+            1
+        ]);
+    }
+    _onDataSplice(start, count) {
+        if (count) {
+            this._sync([
+                '_removeElements',
+                start,
+                count
+            ]);
+        }
+        const newCount = arguments.length - 2;
+        if (newCount) {
+            this._sync([
+                '_insertElements',
+                start,
+                newCount
+            ]);
+        }
+    }
+    _onDataUnshift() {
+        this._sync([
+            '_insertElements',
+            0,
+            arguments.length
+        ]);
+    }
+}
+
+function getAllScaleValues(scale, type) {
+    if (!scale._cache.$bar) {
+        const visibleMetas = scale.getMatchingVisibleMetas(type);
+        let values = [];
+        for(let i = 0, ilen = visibleMetas.length; i < ilen; i++){
+            values = values.concat(visibleMetas[i].controller.getAllParsedValues(scale));
+        }
+        scale._cache.$bar = _arrayUnique(values.sort((a, b)=>a - b));
+    }
+    return scale._cache.$bar;
+}
+ function computeMinSampleSize(meta) {
+    const scale = meta.iScale;
+    const values = getAllScaleValues(scale, meta.type);
+    let min = scale._length;
+    let i, ilen, curr, prev;
+    const updateMinAndPrev = ()=>{
+        if (curr === 32767 || curr === -32768) {
+            return;
+        }
+        if (defined(prev)) {
+            min = Math.min(min, Math.abs(curr - prev) || min);
+        }
+        prev = curr;
+    };
+    for(i = 0, ilen = values.length; i < ilen; ++i){
+        curr = scale.getPixelForValue(values[i]);
+        updateMinAndPrev();
+    }
+    prev = undefined;
+    for(i = 0, ilen = scale.ticks.length; i < ilen; ++i){
+        curr = scale.getPixelForTick(i);
+        updateMinAndPrev();
+    }
+    return min;
+}
+ function computeFitCategoryTraits(index, ruler, options, stackCount) {
+    const thickness = options.barThickness;
+    let size, ratio;
+    if (isNullOrUndef(thickness)) {
+        size = ruler.min * options.categoryPercentage;
+        ratio = options.barPercentage;
+    } else {
+        size = thickness * stackCount;
+        ratio = 1;
+    }
+    return {
+        chunk: size / stackCount,
+        ratio,
+        start: ruler.pixels[index] - size / 2
+    };
+}
+ function computeFlexCategoryTraits(index, ruler, options, stackCount) {
+    const pixels = ruler.pixels;
+    const curr = pixels[index];
+    let prev = index > 0 ? pixels[index - 1] : null;
+    let next = index < pixels.length - 1 ? pixels[index + 1] : null;
+    const percent = options.categoryPercentage;
+    if (prev === null) {
+        prev = curr - (next === null ? ruler.end - ruler.start : next - curr);
+    }
+    if (next === null) {
+        next = curr + curr - prev;
+    }
+    const start = curr - (curr - Math.min(prev, next)) / 2 * percent;
+    const size = Math.abs(next - prev) / 2 * percent;
+    return {
+        chunk: size / stackCount,
+        ratio: options.barPercentage,
+        start
+    };
+}
+function parseFloatBar(entry, item, vScale, i) {
+    const startValue = vScale.parse(entry[0], i);
+    const endValue = vScale.parse(entry[1], i);
+    const min = Math.min(startValue, endValue);
+    const max = Math.max(startValue, endValue);
+    let barStart = min;
+    let barEnd = max;
+    if (Math.abs(min) > Math.abs(max)) {
+        barStart = max;
+        barEnd = min;
+    }
+    item[vScale.axis] = barEnd;
+    item._custom = {
+        barStart,
+        barEnd,
+        start: startValue,
+        end: endValue,
+        min,
+        max
+    };
+}
+function parseValue(entry, item, vScale, i) {
+    if (isArray(entry)) {
+        parseFloatBar(entry, item, vScale, i);
+    } else {
+        item[vScale.axis] = vScale.parse(entry, i);
+    }
+    return item;
+}
+function parseArrayOrPrimitive(meta, data, start, count) {
+    const iScale = meta.iScale;
+    const vScale = meta.vScale;
+    const labels = iScale.getLabels();
+    const singleScale = iScale === vScale;
+    const parsed = [];
+    let i, ilen, item, entry;
+    for(i = start, ilen = start + count; i < ilen; ++i){
+        entry = data[i];
+        item = {};
+        item[iScale.axis] = singleScale || iScale.parse(labels[i], i);
+        parsed.push(parseValue(entry, item, vScale, i));
+    }
+    return parsed;
+}
+function isFloatBar(custom) {
+    return custom && custom.barStart !== undefined && custom.barEnd !== undefined;
+}
+function barSign(size, vScale, actualBase) {
+    if (size !== 0) {
+        return sign(size);
+    }
+    return (vScale.isHorizontal() ? 1 : -1) * (vScale.min >= actualBase ? 1 : -1);
+}
+function borderProps(properties) {
+    let reverse, start, end, top, bottom;
+    if (properties.horizontal) {
+        reverse = properties.base > properties.x;
+        start = 'left';
+        end = 'right';
+    } else {
+        reverse = properties.base < properties.y;
+        start = 'bottom';
+        end = 'top';
+    }
+    if (reverse) {
+        top = 'end';
+        bottom = 'start';
+    } else {
+        top = 'start';
+        bottom = 'end';
+    }
+    return {
+        start,
+        end,
+        reverse,
+        top,
+        bottom
+    };
+}
+function setBorderSkipped(properties, options, stack, index) {
+    let edge = options.borderSkipped;
+    const res = {};
+    if (!edge) {
+        properties.borderSkipped = res;
+        return;
+    }
+    if (edge === true) {
+        properties.borderSkipped = {
+            top: true,
+            right: true,
+            bottom: true,
+            left: true
+        };
+        return;
+    }
+    const { start , end , reverse , top , bottom  } = borderProps(properties);
+    if (edge === 'middle' && stack) {
+        properties.enableBorderRadius = true;
+        if ((stack._top || 0) === index) {
+            edge = top;
+        } else if ((stack._bottom || 0) === index) {
+            edge = bottom;
+        } else {
+            res[parseEdge(bottom, start, end, reverse)] = true;
+            edge = top;
+        }
+    }
+    res[parseEdge(edge, start, end, reverse)] = true;
+    properties.borderSkipped = res;
+}
+function parseEdge(edge, a, b, reverse) {
+    if (reverse) {
+        edge = swap(edge, a, b);
+        edge = startEnd(edge, b, a);
+    } else {
+        edge = startEnd(edge, a, b);
+    }
+    return edge;
+}
+function swap(orig, v1, v2) {
+    return orig === v1 ? v2 : orig === v2 ? v1 : orig;
+}
+function startEnd(v, start, end) {
+    return v === 'start' ? start : v === 'end' ? end : v;
+}
+function setInflateAmount(properties, { inflateAmount  }, ratio) {
+    properties.inflateAmount = inflateAmount === 'auto' ? ratio === 1 ? 0.33 : 0 : inflateAmount;
+}
+class BarController extends DatasetController {
+    static id = 'bar';
+ static defaults = {
+        datasetElementType: false,
+        dataElementType: 'bar',
+        categoryPercentage: 0.8,
+        barPercentage: 0.9,
+        grouped: true,
+        animations: {
+            numbers: {
+                type: 'number',
+                properties: [
+                    'x',
+                    'y',
+                    'base',
+                    'width',
+                    'height'
+                ]
+            }
+        }
+    };
+ static overrides = {
+        scales: {
+            _index_: {
+                type: 'category',
+                offset: true,
+                grid: {
+                    offset: true
+                }
+            },
+            _value_: {
+                type: 'linear',
+                beginAtZero: true
+            }
+        }
+    };
+ parsePrimitiveData(meta, data, start, count) {
+        return parseArrayOrPrimitive(meta, data, start, count);
+    }
+ parseArrayData(meta, data, start, count) {
+        return parseArrayOrPrimitive(meta, data, start, count);
+    }
+ parseObjectData(meta, data, start, count) {
+        const { iScale , vScale  } = meta;
+        const { xAxisKey ='x' , yAxisKey ='y'  } = this._parsing;
+        const iAxisKey = iScale.axis === 'x' ? xAxisKey : yAxisKey;
+        const vAxisKey = vScale.axis === 'x' ? xAxisKey : yAxisKey;
+        const parsed = [];
+        let i, ilen, item, obj;
+        for(i = start, ilen = start + count; i < ilen; ++i){
+            obj = data[i];
+            item = {};
+            item[iScale.axis] = iScale.parse(resolveObjectKey(obj, iAxisKey), i);
+            parsed.push(parseValue(resolveObjectKey(obj, vAxisKey), item, vScale, i));
+        }
+        return parsed;
+    }
+ updateRangeFromParsed(range, scale, parsed, stack) {
+        super.updateRangeFromParsed(range, scale, parsed, stack);
+        const custom = parsed._custom;
+        if (custom && scale === this._cachedMeta.vScale) {
+            range.min = Math.min(range.min, custom.min);
+            range.max = Math.max(range.max, custom.max);
+        }
+    }
+ getMaxOverflow() {
+        return 0;
+    }
+ getLabelAndValue(index) {
+        const meta = this._cachedMeta;
+        const { iScale , vScale  } = meta;
+        const parsed = this.getParsed(index);
+        const custom = parsed._custom;
+        const value = isFloatBar(custom) ? '[' + custom.start + ', ' + custom.end + ']' : '' + vScale.getLabelForValue(parsed[vScale.axis]);
+        return {
+            label: '' + iScale.getLabelForValue(parsed[iScale.axis]),
+            value
+        };
+    }
+    initialize() {
+        this.enableOptionSharing = true;
+        super.initialize();
+        const meta = this._cachedMeta;
+        meta.stack = this.getDataset().stack;
+    }
+    update(mode) {
+        const meta = this._cachedMeta;
+        this.updateElements(meta.data, 0, meta.data.length, mode);
+    }
+    updateElements(bars, start, count, mode) {
+        const reset = mode === 'reset';
+        const { index , _cachedMeta: { vScale  }  } = this;
+        const base = vScale.getBasePixel();
+        const horizontal = vScale.isHorizontal();
+        const ruler = this._getRuler();
+        const { sharedOptions , includeOptions  } = this._getSharedOptions(start, mode);
+        for(let i = start; i < start + count; i++){
+            const parsed = this.getParsed(i);
+            const vpixels = reset || isNullOrUndef(parsed[vScale.axis]) ? {
+                base,
+                head: base
+            } : this._calculateBarValuePixels(i);
+            const ipixels = this._calculateBarIndexPixels(i, ruler);
+            const stack = (parsed._stacks || {})[vScale.axis];
+            const properties = {
+                horizontal,
+                base: vpixels.base,
+                enableBorderRadius: !stack || isFloatBar(parsed._custom) || index === stack._top || index === stack._bottom,
+                x: horizontal ? vpixels.head : ipixels.center,
+                y: horizontal ? ipixels.center : vpixels.head,
+                height: horizontal ? ipixels.size : Math.abs(vpixels.size),
+                width: horizontal ? Math.abs(vpixels.size) : ipixels.size
+            };
+            if (includeOptions) {
+                properties.options = sharedOptions || this.resolveDataElementOptions(i, bars[i].active ? 'active' : mode);
+            }
+            const options = properties.options || bars[i].options;
+            setBorderSkipped(properties, options, stack, index);
+            setInflateAmount(properties, options, ruler.ratio);
+            this.updateElement(bars[i], i, properties, mode);
+        }
+    }
+ _getStacks(last, dataIndex) {
+        const { iScale  } = this._cachedMeta;
+        const metasets = iScale.getMatchingVisibleMetas(this._type).filter((meta)=>meta.controller.options.grouped);
+        const stacked = iScale.options.stacked;
+        const stacks = [];
+        const currentParsed = this._cachedMeta.controller.getParsed(dataIndex);
+        const iScaleValue = currentParsed && currentParsed[iScale.axis];
+        const skipNull = (meta)=>{
+            const parsed = meta._parsed.find((item)=>item[iScale.axis] === iScaleValue);
+            const val = parsed && parsed[meta.vScale.axis];
+            if (isNullOrUndef(val) || isNaN(val)) {
+                return true;
+            }
+        };
+        for (const meta of metasets){
+            if (dataIndex !== undefined && skipNull(meta)) {
+                continue;
+            }
+            if (stacked === false || stacks.indexOf(meta.stack) === -1 || stacked === undefined && meta.stack === undefined) {
+                stacks.push(meta.stack);
+            }
+            if (meta.index === last) {
+                break;
+            }
+        }
+        if (!stacks.length) {
+            stacks.push(undefined);
+        }
+        return stacks;
+    }
+ _getStackCount(index) {
+        return this._getStacks(undefined, index).length;
+    }
+    _getAxisCount() {
+        return this._getAxis().length;
+    }
+    getFirstScaleIdForIndexAxis() {
+        const scales = this.chart.scales;
+        const indexScaleId = this.chart.options.indexAxis;
+        return Object.keys(scales).filter((key)=>scales[key].axis === indexScaleId).shift();
+    }
+    _getAxis() {
+        const axis = {};
+        const firstScaleAxisId = this.getFirstScaleIdForIndexAxis();
+        for (const dataset of this.chart.data.datasets){
+            axis[valueOrDefault(this.chart.options.indexAxis === 'x' ? dataset.xAxisID : dataset.yAxisID, firstScaleAxisId)] = true;
+        }
+        return Object.keys(axis);
+    }
+ _getStackIndex(datasetIndex, name, dataIndex) {
+        const stacks = this._getStacks(datasetIndex, dataIndex);
+        const index = name !== undefined ? stacks.indexOf(name) : -1;
+        return index === -1 ? stacks.length - 1 : index;
+    }
+ _getRuler() {
+        const opts = this.options;
+        const meta = this._cachedMeta;
+        const iScale = meta.iScale;
+        const pixels = [];
+        let i, ilen;
+        for(i = 0, ilen = meta.data.length; i < ilen; ++i){
+            pixels.push(iScale.getPixelForValue(this.getParsed(i)[iScale.axis], i));
+        }
+        const barThickness = opts.barThickness;
+        const min = barThickness || computeMinSampleSize(meta);
+        return {
+            min,
+            pixels,
+            start: iScale._startPixel,
+            end: iScale._endPixel,
+            stackCount: this._getStackCount(),
+            scale: iScale,
+            grouped: opts.grouped,
+            ratio: barThickness ? 1 : opts.categoryPercentage * opts.barPercentage
+        };
+    }
+ _calculateBarValuePixels(index) {
+        const { _cachedMeta: { vScale , _stacked , index: datasetIndex  } , options: { base: baseValue , minBarLength  }  } = this;
+        const actualBase = baseValue || 0;
+        const parsed = this.getParsed(index);
+        const custom = parsed._custom;
+        const floating = isFloatBar(custom);
+        let value = parsed[vScale.axis];
+        let start = 0;
+        let length = _stacked ? this.applyStack(vScale, parsed, _stacked) : value;
+        let head, size;
+        if (length !== value) {
+            start = length - value;
+            length = value;
+        }
+        if (floating) {
+            value = custom.barStart;
+            length = custom.barEnd - custom.barStart;
+            if (value !== 0 && sign(value) !== sign(custom.barEnd)) {
+                start = 0;
+            }
+            start += value;
+        }
+        const startValue = !isNullOrUndef(baseValue) && !floating ? baseValue : start;
+        let base = vScale.getPixelForValue(startValue);
+        if (this.chart.getDataVisibility(index)) {
+            head = vScale.getPixelForValue(start + length);
+        } else {
+            head = base;
+        }
+        size = head - base;
+        if (Math.abs(size) < minBarLength) {
+            size = barSign(size, vScale, actualBase) * minBarLength;
+            if (value === actualBase) {
+                base -= size / 2;
+            }
+            const startPixel = vScale.getPixelForDecimal(0);
+            const endPixel = vScale.getPixelForDecimal(1);
+            const min = Math.min(startPixel, endPixel);
+            const max = Math.max(startPixel, endPixel);
+            base = Math.max(Math.min(base, max), min);
+            head = base + size;
+            if (_stacked && !floating) {
+                parsed._stacks[vScale.axis]._visualValues[datasetIndex] = vScale.getValueForPixel(head) - vScale.getValueForPixel(base);
+            }
+        }
+        if (base === vScale.getPixelForValue(actualBase)) {
+            const halfGrid = sign(size) * vScale.getLineWidthForValue(actualBase) / 2;
+            base += halfGrid;
+            size -= halfGrid;
+        }
+        return {
+            size,
+            base,
+            head,
+            center: head + size / 2
+        };
+    }
+ _calculateBarIndexPixels(index, ruler) {
+        const scale = ruler.scale;
+        const options = this.options;
+        const skipNull = options.skipNull;
+        const maxBarThickness = valueOrDefault(options.maxBarThickness, Infinity);
+        let center, size;
+        const axisCount = this._getAxisCount();
+        if (ruler.grouped) {
+            const stackCount = skipNull ? this._getStackCount(index) : ruler.stackCount;
+            const range = options.barThickness === 'flex' ? computeFlexCategoryTraits(index, ruler, options, stackCount * axisCount) : computeFitCategoryTraits(index, ruler, options, stackCount * axisCount);
+            const axisID = this.chart.options.indexAxis === 'x' ? this.getDataset().xAxisID : this.getDataset().yAxisID;
+            const axisNumber = this._getAxis().indexOf(valueOrDefault(axisID, this.getFirstScaleIdForIndexAxis()));
+            const stackIndex = this._getStackIndex(this.index, this._cachedMeta.stack, skipNull ? index : undefined) + axisNumber;
+            center = range.start + range.chunk * stackIndex + range.chunk / 2;
+            size = Math.min(maxBarThickness, range.chunk * range.ratio);
+        } else {
+            center = scale.getPixelForValue(this.getParsed(index)[scale.axis], index);
+            size = Math.min(maxBarThickness, ruler.min * ruler.ratio);
+        }
+        return {
+            base: center - size / 2,
+            head: center + size / 2,
+            center,
+            size
+        };
+    }
+    draw() {
+        const meta = this._cachedMeta;
+        const vScale = meta.vScale;
+        const rects = meta.data;
+        const ilen = rects.length;
+        let i = 0;
+        for(; i < ilen; ++i){
+            if (this.getParsed(i)[vScale.axis] !== null && !rects[i].hidden) {
+                rects[i].draw(this._ctx);
+            }
+        }
+    }
+}
+
+function getRatioAndOffset(rotation, circumference, cutout) {
+    let ratioX = 1;
+    let ratioY = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    if (circumference < TAU) {
+        const startAngle = rotation;
+        const endAngle = startAngle + circumference;
+        const startX = Math.cos(startAngle);
+        const startY = Math.sin(startAngle);
+        const endX = Math.cos(endAngle);
+        const endY = Math.sin(endAngle);
+        const calcMax = (angle, a, b)=>_angleBetween(angle, startAngle, endAngle, true) ? 1 : Math.max(a, a * cutout, b, b * cutout);
+        const calcMin = (angle, a, b)=>_angleBetween(angle, startAngle, endAngle, true) ? -1 : Math.min(a, a * cutout, b, b * cutout);
+        const maxX = calcMax(0, startX, endX);
+        const maxY = calcMax(HALF_PI, startY, endY);
+        const minX = calcMin(PI, startX, endX);
+        const minY = calcMin(PI + HALF_PI, startY, endY);
+        ratioX = (maxX - minX) / 2;
+        ratioY = (maxY - minY) / 2;
+        offsetX = -(maxX + minX) / 2;
+        offsetY = -(maxY + minY) / 2;
+    }
+    return {
+        ratioX,
+        ratioY,
+        offsetX,
+        offsetY
+    };
+}
+class DoughnutController extends DatasetController {
+    static id = 'doughnut';
+ static defaults = {
+        datasetElementType: false,
+        dataElementType: 'arc',
+        animation: {
+            animateRotate: true,
+            animateScale: false
+        },
+        animations: {
+            numbers: {
+                type: 'number',
+                properties: [
+                    'circumference',
+                    'endAngle',
+                    'innerRadius',
+                    'outerRadius',
+                    'startAngle',
+                    'x',
+                    'y',
+                    'offset',
+                    'borderWidth',
+                    'spacing'
+                ]
+            }
+        },
+        cutout: '50%',
+        rotation: 0,
+        circumference: 360,
+        radius: '100%',
+        spacing: 0,
+        indexAxis: 'r'
+    };
+    static descriptors = {
+        _scriptable: (name)=>name !== 'spacing',
+        _indexable: (name)=>name !== 'spacing' && !name.startsWith('borderDash') && !name.startsWith('hoverBorderDash')
+    };
+ static overrides = {
+        aspectRatio: 1,
+        plugins: {
+            legend: {
+                labels: {
+                    generateLabels (chart) {
+                        const data = chart.data;
+                        const { labels: { pointStyle , textAlign , color , useBorderRadius , borderRadius  }  } = chart.legend.options;
+                        if (data.labels.length && data.datasets.length) {
+                            return data.labels.map((label, i)=>{
+                                const meta = chart.getDatasetMeta(0);
+                                const style = meta.controller.getStyle(i);
+                                return {
+                                    text: label,
+                                    fillStyle: style.backgroundColor,
+                                    fontColor: color,
+                                    hidden: !chart.getDataVisibility(i),
+                                    lineDash: style.borderDash,
+                                    lineDashOffset: style.borderDashOffset,
+                                    lineJoin: style.borderJoinStyle,
+                                    lineWidth: style.borderWidth,
+                                    strokeStyle: style.borderColor,
+                                    textAlign: textAlign,
+                                    pointStyle: pointStyle,
+                                    borderRadius: useBorderRadius && (borderRadius || style.borderRadius),
+                                    index: i
+                                };
+                            });
+                        }
+                        return [];
+                    }
+                },
+                onClick (e, legendItem, legend) {
+                    legend.chart.toggleDataVisibility(legendItem.index);
+                    legend.chart.update();
+                }
+            }
+        }
+    };
+    constructor(chart, datasetIndex){
+        super(chart, datasetIndex);
+        this.enableOptionSharing = true;
+        this.innerRadius = undefined;
+        this.outerRadius = undefined;
+        this.offsetX = undefined;
+        this.offsetY = undefined;
+    }
+    linkScales() {}
+ parse(start, count) {
+        const data = this.getDataset().data;
+        const meta = this._cachedMeta;
+        if (this._parsing === false) {
+            meta._parsed = data;
+        } else {
+            let getter = (i)=>+data[i];
+            if (isObject(data[start])) {
+                const { key ='value'  } = this._parsing;
+                getter = (i)=>+resolveObjectKey(data[i], key);
+            }
+            let i, ilen;
+            for(i = start, ilen = start + count; i < ilen; ++i){
+                meta._parsed[i] = getter(i);
+            }
+        }
+    }
+ _getRotation() {
+        return toRadians(this.options.rotation - 90);
+    }
+ _getCircumference() {
+        return toRadians(this.options.circumference);
+    }
+ _getRotationExtents() {
+        let min = TAU;
+        let max = -TAU;
+        for(let i = 0; i < this.chart.data.datasets.length; ++i){
+            if (this.chart.isDatasetVisible(i) && this.chart.getDatasetMeta(i).type === this._type) {
+                const controller = this.chart.getDatasetMeta(i).controller;
+                const rotation = controller._getRotation();
+                const circumference = controller._getCircumference();
+                min = Math.min(min, rotation);
+                max = Math.max(max, rotation + circumference);
+            }
+        }
+        return {
+            rotation: min,
+            circumference: max - min
+        };
+    }
+ update(mode) {
+        const chart = this.chart;
+        const { chartArea  } = chart;
+        const meta = this._cachedMeta;
+        const arcs = meta.data;
+        const spacing = this.getMaxBorderWidth() + this.getMaxOffset(arcs) + this.options.spacing;
+        const maxSize = Math.max((Math.min(chartArea.width, chartArea.height) - spacing) / 2, 0);
+        const cutout = Math.min(toPercentage(this.options.cutout, maxSize), 1);
+        const chartWeight = this._getRingWeight(this.index);
+        const { circumference , rotation  } = this._getRotationExtents();
+        const { ratioX , ratioY , offsetX , offsetY  } = getRatioAndOffset(rotation, circumference, cutout);
+        const maxWidth = (chartArea.width - spacing) / ratioX;
+        const maxHeight = (chartArea.height - spacing) / ratioY;
+        const maxRadius = Math.max(Math.min(maxWidth, maxHeight) / 2, 0);
+        const outerRadius = toDimension(this.options.radius, maxRadius);
+        const innerRadius = Math.max(outerRadius * cutout, 0);
+        const radiusLength = (outerRadius - innerRadius) / this._getVisibleDatasetWeightTotal();
+        this.offsetX = offsetX * outerRadius;
+        this.offsetY = offsetY * outerRadius;
+        meta.total = this.calculateTotal();
+        this.outerRadius = outerRadius - radiusLength * this._getRingWeightOffset(this.index);
+        this.innerRadius = Math.max(this.outerRadius - radiusLength * chartWeight, 0);
+        this.updateElements(arcs, 0, arcs.length, mode);
+    }
+ _circumference(i, reset) {
+        const opts = this.options;
+        const meta = this._cachedMeta;
+        const circumference = this._getCircumference();
+        if (reset && opts.animation.animateRotate || !this.chart.getDataVisibility(i) || meta._parsed[i] === null || meta.data[i].hidden) {
+            return 0;
+        }
+        return this.calculateCircumference(meta._parsed[i] * circumference / TAU);
+    }
+    updateElements(arcs, start, count, mode) {
+        const reset = mode === 'reset';
+        const chart = this.chart;
+        const chartArea = chart.chartArea;
+        const opts = chart.options;
+        const animationOpts = opts.animation;
+        const centerX = (chartArea.left + chartArea.right) / 2;
+        const centerY = (chartArea.top + chartArea.bottom) / 2;
+        const animateScale = reset && animationOpts.animateScale;
+        const innerRadius = animateScale ? 0 : this.innerRadius;
+        const outerRadius = animateScale ? 0 : this.outerRadius;
+        const { sharedOptions , includeOptions  } = this._getSharedOptions(start, mode);
+        let startAngle = this._getRotation();
+        let i;
+        for(i = 0; i < start; ++i){
+            startAngle += this._circumference(i, reset);
+        }
+        for(i = start; i < start + count; ++i){
+            const circumference = this._circumference(i, reset);
+            const arc = arcs[i];
+            const properties = {
+                x: centerX + this.offsetX,
+                y: centerY + this.offsetY,
+                startAngle,
+                endAngle: startAngle + circumference,
+                circumference,
+                outerRadius,
+                innerRadius
+            };
+            if (includeOptions) {
+                properties.options = sharedOptions || this.resolveDataElementOptions(i, arc.active ? 'active' : mode);
+            }
+            startAngle += circumference;
+            this.updateElement(arc, i, properties, mode);
+        }
+    }
+    calculateTotal() {
+        const meta = this._cachedMeta;
+        const metaData = meta.data;
+        let total = 0;
+        let i;
+        for(i = 0; i < metaData.length; i++){
+            const value = meta._parsed[i];
+            if (value !== null && !isNaN(value) && this.chart.getDataVisibility(i) && !metaData[i].hidden) {
+                total += Math.abs(value);
+            }
+        }
+        return total;
+    }
+    calculateCircumference(value) {
+        const total = this._cachedMeta.total;
+        if (total > 0 && !isNaN(value)) {
+            return TAU * (Math.abs(value) / total);
+        }
+        return 0;
+    }
+    getLabelAndValue(index) {
+        const meta = this._cachedMeta;
+        const chart = this.chart;
+        const labels = chart.data.labels || [];
+        const value = formatNumber(meta._parsed[index], chart.options.locale);
+        return {
+            label: labels[index] || '',
+            value
+        };
+    }
+    getMaxBorderWidth(arcs) {
+        let max = 0;
+        const chart = this.chart;
+        let i, ilen, meta, controller, options;
+        if (!arcs) {
+            for(i = 0, ilen = chart.data.datasets.length; i < ilen; ++i){
+                if (chart.isDatasetVisible(i)) {
+                    meta = chart.getDatasetMeta(i);
+                    arcs = meta.data;
+                    controller = meta.controller;
+                    break;
+                }
+            }
+        }
+        if (!arcs) {
+            return 0;
+        }
+        for(i = 0, ilen = arcs.length; i < ilen; ++i){
+            options = controller.resolveDataElementOptions(i);
+            if (options.borderAlign !== 'inner') {
+                max = Math.max(max, options.borderWidth || 0, options.hoverBorderWidth || 0);
+            }
+        }
+        return max;
+    }
+    getMaxOffset(arcs) {
+        let max = 0;
+        for(let i = 0, ilen = arcs.length; i < ilen; ++i){
+            const options = this.resolveDataElementOptions(i);
+            max = Math.max(max, options.offset || 0, options.hoverOffset || 0);
+        }
+        return max;
+    }
+ _getRingWeightOffset(datasetIndex) {
+        let ringWeightOffset = 0;
+        for(let i = 0; i < datasetIndex; ++i){
+            if (this.chart.isDatasetVisible(i)) {
+                ringWeightOffset += this._getRingWeight(i);
+            }
+        }
+        return ringWeightOffset;
+    }
+ _getRingWeight(datasetIndex) {
+        return Math.max(valueOrDefault(this.chart.data.datasets[datasetIndex].weight, 1), 0);
+    }
+ _getVisibleDatasetWeightTotal() {
+        return this._getRingWeightOffset(this.chart.data.datasets.length) || 1;
+    }
+}
+
+class LineController extends DatasetController {
+    static id = 'line';
+ static defaults = {
+        datasetElementType: 'line',
+        dataElementType: 'point',
+        showLine: true,
+        spanGaps: false
+    };
+ static overrides = {
+        scales: {
+            _index_: {
+                type: 'category'
+            },
+            _value_: {
+                type: 'linear'
+            }
+        }
+    };
+    initialize() {
+        this.enableOptionSharing = true;
+        this.supportsDecimation = true;
+        super.initialize();
+    }
+    update(mode) {
+        const meta = this._cachedMeta;
+        const { dataset: line , data: points = [] , _dataset  } = meta;
+        const animationsDisabled = this.chart._animationsDisabled;
+        let { start , count  } = _getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
+        this._drawStart = start;
+        this._drawCount = count;
+        if (_scaleRangesChanged(meta)) {
+            start = 0;
+            count = points.length;
+        }
+        line._chart = this.chart;
+        line._datasetIndex = this.index;
+        line._decimated = !!_dataset._decimated;
+        line.points = points;
+        const options = this.resolveDatasetElementOptions(mode);
+        if (!this.options.showLine) {
+            options.borderWidth = 0;
+        }
+        options.segment = this.options.segment;
+        this.updateElement(line, undefined, {
+            animated: !animationsDisabled,
+            options
+        }, mode);
+        this.updateElements(points, start, count, mode);
+    }
+    updateElements(points, start, count, mode) {
+        const reset = mode === 'reset';
+        const { iScale , vScale , _stacked , _dataset  } = this._cachedMeta;
+        const { sharedOptions , includeOptions  } = this._getSharedOptions(start, mode);
+        const iAxis = iScale.axis;
+        const vAxis = vScale.axis;
+        const { spanGaps , segment  } = this.options;
+        const maxGapLength = isNumber(spanGaps) ? spanGaps : Number.POSITIVE_INFINITY;
+        const directUpdate = this.chart._animationsDisabled || reset || mode === 'none';
+        const end = start + count;
+        const pointsCount = points.length;
+        let prevParsed = start > 0 && this.getParsed(start - 1);
+        for(let i = 0; i < pointsCount; ++i){
+            const point = points[i];
+            const properties = directUpdate ? point : {};
+            if (i < start || i >= end) {
+                properties.skip = true;
+                continue;
+            }
+            const parsed = this.getParsed(i);
+            const nullData = isNullOrUndef(parsed[vAxis]);
+            const iPixel = properties[iAxis] = iScale.getPixelForValue(parsed[iAxis], i);
+            const vPixel = properties[vAxis] = reset || nullData ? vScale.getBasePixel() : vScale.getPixelForValue(_stacked ? this.applyStack(vScale, parsed, _stacked) : parsed[vAxis], i);
+            properties.skip = isNaN(iPixel) || isNaN(vPixel) || nullData;
+            properties.stop = i > 0 && Math.abs(parsed[iAxis] - prevParsed[iAxis]) > maxGapLength;
+            if (segment) {
+                properties.parsed = parsed;
+                properties.raw = _dataset.data[i];
+            }
+            if (includeOptions) {
+                properties.options = sharedOptions || this.resolveDataElementOptions(i, point.active ? 'active' : mode);
+            }
+            if (!directUpdate) {
+                this.updateElement(point, i, properties, mode);
+            }
+            prevParsed = parsed;
+        }
+    }
+ getMaxOverflow() {
+        const meta = this._cachedMeta;
+        const dataset = meta.dataset;
+        const border = dataset.options && dataset.options.borderWidth || 0;
+        const data = meta.data || [];
+        if (!data.length) {
+            return border;
+        }
+        const firstPoint = data[0].size(this.resolveDataElementOptions(0));
+        const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+        return Math.max(border, firstPoint, lastPoint) / 2;
+    }
+    draw() {
+        const meta = this._cachedMeta;
+        meta.dataset.updateControlPoints(this.chart.chartArea, meta.iScale.axis);
+        super.draw();
+    }
+}
+
+class PolarAreaController extends DatasetController {
+    static id = 'polarArea';
+ static defaults = {
+        dataElementType: 'arc',
+        animation: {
+            animateRotate: true,
+            animateScale: true
+        },
+        animations: {
+            numbers: {
+                type: 'number',
+                properties: [
+                    'x',
+                    'y',
+                    'startAngle',
+                    'endAngle',
+                    'innerRadius',
+                    'outerRadius'
+                ]
+            }
+        },
+        indexAxis: 'r',
+        startAngle: 0
+    };
+ static overrides = {
+        aspectRatio: 1,
+        plugins: {
+            legend: {
+                labels: {
+                    generateLabels (chart) {
+                        const data = chart.data;
+                        if (data.labels.length && data.datasets.length) {
+                            const { labels: { pointStyle , color  }  } = chart.legend.options;
+                            return data.labels.map((label, i)=>{
+                                const meta = chart.getDatasetMeta(0);
+                                const style = meta.controller.getStyle(i);
+                                return {
+                                    text: label,
+                                    fillStyle: style.backgroundColor,
+                                    strokeStyle: style.borderColor,
+                                    fontColor: color,
+                                    lineWidth: style.borderWidth,
+                                    pointStyle: pointStyle,
+                                    hidden: !chart.getDataVisibility(i),
+                                    index: i
+                                };
+                            });
+                        }
+                        return [];
+                    }
+                },
+                onClick (e, legendItem, legend) {
+                    legend.chart.toggleDataVisibility(legendItem.index);
+                    legend.chart.update();
+                }
+            }
+        },
+        scales: {
+            r: {
+                type: 'radialLinear',
+                angleLines: {
+                    display: false
+                },
+                beginAtZero: true,
+                grid: {
+                    circular: true
+                },
+                pointLabels: {
+                    display: false
+                },
+                startAngle: 0
+            }
+        }
+    };
+    constructor(chart, datasetIndex){
+        super(chart, datasetIndex);
+        this.innerRadius = undefined;
+        this.outerRadius = undefined;
+    }
+    getLabelAndValue(index) {
+        const meta = this._cachedMeta;
+        const chart = this.chart;
+        const labels = chart.data.labels || [];
+        const value = formatNumber(meta._parsed[index].r, chart.options.locale);
+        return {
+            label: labels[index] || '',
+            value
+        };
+    }
+    parseObjectData(meta, data, start, count) {
+        return _parseObjectDataRadialScale.bind(this)(meta, data, start, count);
+    }
+    update(mode) {
+        const arcs = this._cachedMeta.data;
+        this._updateRadius();
+        this.updateElements(arcs, 0, arcs.length, mode);
+    }
+ getMinMax() {
+        const meta = this._cachedMeta;
+        const range = {
+            min: Number.POSITIVE_INFINITY,
+            max: Number.NEGATIVE_INFINITY
+        };
+        meta.data.forEach((element, index)=>{
+            const parsed = this.getParsed(index).r;
+            if (!isNaN(parsed) && this.chart.getDataVisibility(index)) {
+                if (parsed < range.min) {
+                    range.min = parsed;
+                }
+                if (parsed > range.max) {
+                    range.max = parsed;
+                }
+            }
+        });
+        return range;
+    }
+ _updateRadius() {
+        const chart = this.chart;
+        const chartArea = chart.chartArea;
+        const opts = chart.options;
+        const minSize = Math.min(chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+        const outerRadius = Math.max(minSize / 2, 0);
+        const innerRadius = Math.max(opts.cutoutPercentage ? outerRadius / 100 * opts.cutoutPercentage : 1, 0);
+        const radiusLength = (outerRadius - innerRadius) / chart.getVisibleDatasetCount();
+        this.outerRadius = outerRadius - radiusLength * this.index;
+        this.innerRadius = this.outerRadius - radiusLength;
+    }
+    updateElements(arcs, start, count, mode) {
+        const reset = mode === 'reset';
+        const chart = this.chart;
+        const opts = chart.options;
+        const animationOpts = opts.animation;
+        const scale = this._cachedMeta.rScale;
+        const centerX = scale.xCenter;
+        const centerY = scale.yCenter;
+        const datasetStartAngle = scale.getIndexAngle(0) - 0.5 * PI;
+        let angle = datasetStartAngle;
+        let i;
+        const defaultAngle = 360 / this.countVisibleElements();
+        for(i = 0; i < start; ++i){
+            angle += this._computeAngle(i, mode, defaultAngle);
+        }
+        for(i = start; i < start + count; i++){
+            const arc = arcs[i];
+            let startAngle = angle;
+            let endAngle = angle + this._computeAngle(i, mode, defaultAngle);
+            let outerRadius = chart.getDataVisibility(i) ? scale.getDistanceFromCenterForValue(this.getParsed(i).r) : 0;
+            angle = endAngle;
+            if (reset) {
+                if (animationOpts.animateScale) {
+                    outerRadius = 0;
+                }
+                if (animationOpts.animateRotate) {
+                    startAngle = endAngle = datasetStartAngle;
+                }
+            }
+            const properties = {
+                x: centerX,
+                y: centerY,
+                innerRadius: 0,
+                outerRadius,
+                startAngle,
+                endAngle,
+                options: this.resolveDataElementOptions(i, arc.active ? 'active' : mode)
+            };
+            this.updateElement(arc, i, properties, mode);
+        }
+    }
+    countVisibleElements() {
+        const meta = this._cachedMeta;
+        let count = 0;
+        meta.data.forEach((element, index)=>{
+            if (!isNaN(this.getParsed(index).r) && this.chart.getDataVisibility(index)) {
+                count++;
+            }
+        });
+        return count;
+    }
+ _computeAngle(index, mode, defaultAngle) {
+        return this.chart.getDataVisibility(index) ? toRadians(this.resolveDataElementOptions(index, mode).angle || defaultAngle) : 0;
+    }
+}
+
+/**
+ * @namespace Chart._adapters
+ * @since 2.8.0
+ * @private
+ */ function abstract() {
+    throw new Error('This method is not implemented: Check that a complete date adapter is provided.');
+}
+/**
+ * Date adapter (current used by the time scale)
+ * @namespace Chart._adapters._date
+ * @memberof Chart._adapters
+ * @private
+ */ class DateAdapterBase {
+    /**
+   * Override default date adapter methods.
+   * Accepts type parameter to define options type.
+   * @example
+   * Chart._adapters._date.override<{myAdapterOption: string}>({
+   *   init() {
+   *     console.log(this.options.myAdapterOption);
+   *   }
+   * })
+   */ static override(members) {
+        Object.assign(DateAdapterBase.prototype, members);
+    }
+    options;
+    constructor(options){
+        this.options = options || {};
+    }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    init() {}
+    formats() {
+        return abstract();
+    }
+    parse() {
+        return abstract();
+    }
+    format() {
+        return abstract();
+    }
+    add() {
+        return abstract();
+    }
+    diff() {
+        return abstract();
+    }
+    startOf() {
+        return abstract();
+    }
+    endOf() {
+        return abstract();
+    }
+}
+var adapters = {
+    _date: DateAdapterBase
+};
+
+function binarySearch(metaset, axis, value, intersect) {
+    const { controller , data , _sorted  } = metaset;
+    const iScale = controller._cachedMeta.iScale;
+    const spanGaps = metaset.dataset ? metaset.dataset.options ? metaset.dataset.options.spanGaps : null : null;
+    if (iScale && axis === iScale.axis && axis !== 'r' && _sorted && data.length) {
+        const lookupMethod = iScale._reversePixels ? _rlookupByKey : _lookupByKey;
+        if (!intersect) {
+            const result = lookupMethod(data, axis, value);
+            if (spanGaps) {
+                const { vScale  } = controller._cachedMeta;
+                const { _parsed  } = metaset;
+                const distanceToDefinedLo = _parsed.slice(0, result.lo + 1).reverse().findIndex((point)=>!isNullOrUndef(point[vScale.axis]));
+                result.lo -= Math.max(0, distanceToDefinedLo);
+                const distanceToDefinedHi = _parsed.slice(result.hi).findIndex((point)=>!isNullOrUndef(point[vScale.axis]));
+                result.hi += Math.max(0, distanceToDefinedHi);
+            }
+            return result;
+        } else if (controller._sharedOptions) {
+            const el = data[0];
+            const range = typeof el.getRange === 'function' && el.getRange(axis);
+            if (range) {
+                const start = lookupMethod(data, axis, value - range);
+                const end = lookupMethod(data, axis, value + range);
+                return {
+                    lo: start.lo,
+                    hi: end.hi
+                };
+            }
+        }
+    }
+    return {
+        lo: 0,
+        hi: data.length - 1
+    };
+}
+ function evaluateInteractionItems(chart, axis, position, handler, intersect) {
+    const metasets = chart.getSortedVisibleDatasetMetas();
+    const value = position[axis];
+    for(let i = 0, ilen = metasets.length; i < ilen; ++i){
+        const { index , data  } = metasets[i];
+        const { lo , hi  } = binarySearch(metasets[i], axis, value, intersect);
+        for(let j = lo; j <= hi; ++j){
+            const element = data[j];
+            if (!element.skip) {
+                handler(element, index, j);
+            }
+        }
+    }
+}
+ function getDistanceMetricForAxis(axis) {
+    const useX = axis.indexOf('x') !== -1;
+    const useY = axis.indexOf('y') !== -1;
+    return function(pt1, pt2) {
+        const deltaX = useX ? Math.abs(pt1.x - pt2.x) : 0;
+        const deltaY = useY ? Math.abs(pt1.y - pt2.y) : 0;
+        return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+    };
+}
+ function getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) {
+    const items = [];
+    if (!includeInvisible && !chart.isPointInArea(position)) {
+        return items;
+    }
+    const evaluationFunc = function(element, datasetIndex, index) {
+        if (!includeInvisible && !_isPointInArea(element, chart.chartArea, 0)) {
+            return;
+        }
+        if (element.inRange(position.x, position.y, useFinalPosition)) {
+            items.push({
+                element,
+                datasetIndex,
+                index
+            });
+        }
+    };
+    evaluateInteractionItems(chart, axis, position, evaluationFunc, true);
+    return items;
+}
+ function getNearestRadialItems(chart, position, axis, useFinalPosition) {
+    let items = [];
+    function evaluationFunc(element, datasetIndex, index) {
+        const { startAngle , endAngle  } = element.getProps([
+            'startAngle',
+            'endAngle'
+        ], useFinalPosition);
+        const { angle  } = getAngleFromPoint(element, {
+            x: position.x,
+            y: position.y
+        });
+        if (_angleBetween(angle, startAngle, endAngle)) {
+            items.push({
+                element,
+                datasetIndex,
+                index
+            });
+        }
+    }
+    evaluateInteractionItems(chart, axis, position, evaluationFunc);
+    return items;
+}
+ function getNearestCartesianItems(chart, position, axis, intersect, useFinalPosition, includeInvisible) {
+    let items = [];
+    const distanceMetric = getDistanceMetricForAxis(axis);
+    let minDistance = Number.POSITIVE_INFINITY;
+    function evaluationFunc(element, datasetIndex, index) {
+        const inRange = element.inRange(position.x, position.y, useFinalPosition);
+        if (intersect && !inRange) {
+            return;
+        }
+        const center = element.getCenterPoint(useFinalPosition);
+        const pointInArea = !!includeInvisible || chart.isPointInArea(center);
+        if (!pointInArea && !inRange) {
+            return;
+        }
+        const distance = distanceMetric(position, center);
+        if (distance < minDistance) {
+            items = [
+                {
+                    element,
+                    datasetIndex,
+                    index
+                }
+            ];
+            minDistance = distance;
+        } else if (distance === minDistance) {
+            items.push({
+                element,
+                datasetIndex,
+                index
+            });
+        }
+    }
+    evaluateInteractionItems(chart, axis, position, evaluationFunc);
+    return items;
+}
+ function getNearestItems(chart, position, axis, intersect, useFinalPosition, includeInvisible) {
+    if (!includeInvisible && !chart.isPointInArea(position)) {
+        return [];
+    }
+    return axis === 'r' && !intersect ? getNearestRadialItems(chart, position, axis, useFinalPosition) : getNearestCartesianItems(chart, position, axis, intersect, useFinalPosition, includeInvisible);
+}
+ function getAxisItems(chart, position, axis, intersect, useFinalPosition) {
+    const items = [];
+    const rangeMethod = axis === 'x' ? 'inXRange' : 'inYRange';
+    let intersectsItem = false;
+    evaluateInteractionItems(chart, axis, position, (element, datasetIndex, index)=>{
+        if (element[rangeMethod] && element[rangeMethod](position[axis], useFinalPosition)) {
+            items.push({
+                element,
+                datasetIndex,
+                index
+            });
+            intersectsItem = intersectsItem || element.inRange(position.x, position.y, useFinalPosition);
+        }
+    });
+    if (intersect && !intersectsItem) {
+        return [];
+    }
+    return items;
+}
+ var Interaction = {
+    modes: {
+ index (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            const axis = options.axis || 'x';
+            const includeInvisible = options.includeInvisible || false;
+            const items = options.intersect ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
+            const elements = [];
+            if (!items.length) {
+                return [];
+            }
+            chart.getSortedVisibleDatasetMetas().forEach((meta)=>{
+                const index = items[0].index;
+                const element = meta.data[index];
+                if (element && !element.skip) {
+                    elements.push({
+                        element,
+                        datasetIndex: meta.index,
+                        index
+                    });
+                }
+            });
+            return elements;
+        },
+ dataset (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            const axis = options.axis || 'xy';
+            const includeInvisible = options.includeInvisible || false;
+            let items = options.intersect ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
+            if (items.length > 0) {
+                const datasetIndex = items[0].datasetIndex;
+                const data = chart.getDatasetMeta(datasetIndex).data;
+                items = [];
+                for(let i = 0; i < data.length; ++i){
+                    items.push({
+                        element: data[i],
+                        datasetIndex,
+                        index: i
+                    });
+                }
+            }
+            return items;
+        },
+ point (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            const axis = options.axis || 'xy';
+            const includeInvisible = options.includeInvisible || false;
+            return getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible);
+        },
+ nearest (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            const axis = options.axis || 'xy';
+            const includeInvisible = options.includeInvisible || false;
+            return getNearestItems(chart, position, axis, options.intersect, useFinalPosition, includeInvisible);
+        },
+ x (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            return getAxisItems(chart, position, 'x', options.intersect, useFinalPosition);
+        },
+ y (chart, e, options, useFinalPosition) {
+            const position = getRelativePosition(e, chart);
+            return getAxisItems(chart, position, 'y', options.intersect, useFinalPosition);
+        }
+    }
+};
+
+const STATIC_POSITIONS = [
+    'left',
+    'top',
+    'right',
+    'bottom'
+];
+function filterByPosition(array, position) {
+    return array.filter((v)=>v.pos === position);
+}
+function filterDynamicPositionByAxis(array, axis) {
+    return array.filter((v)=>STATIC_POSITIONS.indexOf(v.pos) === -1 && v.box.axis === axis);
+}
+function sortByWeight(array, reverse) {
+    return array.sort((a, b)=>{
+        const v0 = reverse ? b : a;
+        const v1 = reverse ? a : b;
+        return v0.weight === v1.weight ? v0.index - v1.index : v0.weight - v1.weight;
+    });
+}
+function wrapBoxes(boxes) {
+    const layoutBoxes = [];
+    let i, ilen, box, pos, stack, stackWeight;
+    for(i = 0, ilen = (boxes || []).length; i < ilen; ++i){
+        box = boxes[i];
+        ({ position: pos , options: { stack , stackWeight =1  }  } = box);
+        layoutBoxes.push({
+            index: i,
+            box,
+            pos,
+            horizontal: box.isHorizontal(),
+            weight: box.weight,
+            stack: stack && pos + stack,
+            stackWeight
+        });
+    }
+    return layoutBoxes;
+}
+function buildStacks(layouts) {
+    const stacks = {};
+    for (const wrap of layouts){
+        const { stack , pos , stackWeight  } = wrap;
+        if (!stack || !STATIC_POSITIONS.includes(pos)) {
+            continue;
+        }
+        const _stack = stacks[stack] || (stacks[stack] = {
+            count: 0,
+            placed: 0,
+            weight: 0,
+            size: 0
+        });
+        _stack.count++;
+        _stack.weight += stackWeight;
+    }
+    return stacks;
+}
+ function setLayoutDims(layouts, params) {
+    const stacks = buildStacks(layouts);
+    const { vBoxMaxWidth , hBoxMaxHeight  } = params;
+    let i, ilen, layout;
+    for(i = 0, ilen = layouts.length; i < ilen; ++i){
+        layout = layouts[i];
+        const { fullSize  } = layout.box;
+        const stack = stacks[layout.stack];
+        const factor = stack && layout.stackWeight / stack.weight;
+        if (layout.horizontal) {
+            layout.width = factor ? factor * vBoxMaxWidth : fullSize && params.availableWidth;
+            layout.height = hBoxMaxHeight;
+        } else {
+            layout.width = vBoxMaxWidth;
+            layout.height = factor ? factor * hBoxMaxHeight : fullSize && params.availableHeight;
+        }
+    }
+    return stacks;
+}
+function buildLayoutBoxes(boxes) {
+    const layoutBoxes = wrapBoxes(boxes);
+    const fullSize = sortByWeight(layoutBoxes.filter((wrap)=>wrap.box.fullSize), true);
+    const left = sortByWeight(filterByPosition(layoutBoxes, 'left'), true);
+    const right = sortByWeight(filterByPosition(layoutBoxes, 'right'));
+    const top = sortByWeight(filterByPosition(layoutBoxes, 'top'), true);
+    const bottom = sortByWeight(filterByPosition(layoutBoxes, 'bottom'));
+    const centerHorizontal = filterDynamicPositionByAxis(layoutBoxes, 'x');
+    const centerVertical = filterDynamicPositionByAxis(layoutBoxes, 'y');
+    return {
+        fullSize,
+        leftAndTop: left.concat(top),
+        rightAndBottom: right.concat(centerVertical).concat(bottom).concat(centerHorizontal),
+        chartArea: filterByPosition(layoutBoxes, 'chartArea'),
+        vertical: left.concat(right).concat(centerVertical),
+        horizontal: top.concat(bottom).concat(centerHorizontal)
+    };
+}
+function getCombinedMax(maxPadding, chartArea, a, b) {
+    return Math.max(maxPadding[a], chartArea[a]) + Math.max(maxPadding[b], chartArea[b]);
+}
+function updateMaxPadding(maxPadding, boxPadding) {
+    maxPadding.top = Math.max(maxPadding.top, boxPadding.top);
+    maxPadding.left = Math.max(maxPadding.left, boxPadding.left);
+    maxPadding.bottom = Math.max(maxPadding.bottom, boxPadding.bottom);
+    maxPadding.right = Math.max(maxPadding.right, boxPadding.right);
+}
+function updateDims(chartArea, params, layout, stacks) {
+    const { pos , box  } = layout;
+    const maxPadding = chartArea.maxPadding;
+    if (!isObject(pos)) {
+        if (layout.size) {
+            chartArea[pos] -= layout.size;
+        }
+        const stack = stacks[layout.stack] || {
+            size: 0,
+            count: 1
+        };
+        stack.size = Math.max(stack.size, layout.horizontal ? box.height : box.width);
+        layout.size = stack.size / stack.count;
+        chartArea[pos] += layout.size;
+    }
+    if (box.getPadding) {
+        updateMaxPadding(maxPadding, box.getPadding());
+    }
+    const newWidth = Math.max(0, params.outerWidth - getCombinedMax(maxPadding, chartArea, 'left', 'right'));
+    const newHeight = Math.max(0, params.outerHeight - getCombinedMax(maxPadding, chartArea, 'top', 'bottom'));
+    const widthChanged = newWidth !== chartArea.w;
+    const heightChanged = newHeight !== chartArea.h;
+    chartArea.w = newWidth;
+    chartArea.h = newHeight;
+    return layout.horizontal ? {
+        same: widthChanged,
+        other: heightChanged
+    } : {
+        same: heightChanged,
+        other: widthChanged
+    };
+}
+function handleMaxPadding(chartArea) {
+    const maxPadding = chartArea.maxPadding;
+    function updatePos(pos) {
+        const change = Math.max(maxPadding[pos] - chartArea[pos], 0);
+        chartArea[pos] += change;
+        return change;
+    }
+    chartArea.y += updatePos('top');
+    chartArea.x += updatePos('left');
+    updatePos('right');
+    updatePos('bottom');
+}
+function getMargins(horizontal, chartArea) {
+    const maxPadding = chartArea.maxPadding;
+    function marginForPositions(positions) {
+        const margin = {
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0
+        };
+        positions.forEach((pos)=>{
+            margin[pos] = Math.max(chartArea[pos], maxPadding[pos]);
+        });
+        return margin;
+    }
+    return horizontal ? marginForPositions([
+        'left',
+        'right'
+    ]) : marginForPositions([
+        'top',
+        'bottom'
+    ]);
+}
+function fitBoxes(boxes, chartArea, params, stacks) {
+    const refitBoxes = [];
+    let i, ilen, layout, box, refit, changed;
+    for(i = 0, ilen = boxes.length, refit = 0; i < ilen; ++i){
+        layout = boxes[i];
+        box = layout.box;
+        box.update(layout.width || chartArea.w, layout.height || chartArea.h, getMargins(layout.horizontal, chartArea));
+        const { same , other  } = updateDims(chartArea, params, layout, stacks);
+        refit |= same && refitBoxes.length;
+        changed = changed || other;
+        if (!box.fullSize) {
+            refitBoxes.push(layout);
+        }
+    }
+    return refit && fitBoxes(refitBoxes, chartArea, params, stacks) || changed;
+}
+function setBoxDims(box, left, top, width, height) {
+    box.top = top;
+    box.left = left;
+    box.right = left + width;
+    box.bottom = top + height;
+    box.width = width;
+    box.height = height;
+}
+function placeBoxes(boxes, chartArea, params, stacks) {
+    const userPadding = params.padding;
+    let { x , y  } = chartArea;
+    for (const layout of boxes){
+        const box = layout.box;
+        const stack = stacks[layout.stack] || {
+            placed: 0,
+            weight: 1
+        };
+        const weight = layout.stackWeight / stack.weight || 1;
+        if (layout.horizontal) {
+            const width = chartArea.w * weight;
+            const height = stack.size || box.height;
+            if (defined(stack.start)) {
+                y = stack.start;
+            }
+            if (box.fullSize) {
+                setBoxDims(box, userPadding.left, y, params.outerWidth - userPadding.right - userPadding.left, height);
+            } else {
+                setBoxDims(box, chartArea.left + stack.placed, y, width, height);
+            }
+            stack.start = y;
+            stack.placed += width;
+            y = box.bottom;
+        } else {
+            const height = chartArea.h * weight;
+            const width = stack.size || box.width;
+            if (defined(stack.start)) {
+                x = stack.start;
+            }
+            if (box.fullSize) {
+                setBoxDims(box, x, userPadding.top, width, params.outerHeight - userPadding.bottom - userPadding.top);
+            } else {
+                setBoxDims(box, x, chartArea.top + stack.placed, width, height);
+            }
+            stack.start = x;
+            stack.placed += height;
+            x = box.right;
+        }
+    }
+    chartArea.x = x;
+    chartArea.y = y;
+}
+var layouts = {
+ addBox (chart, item) {
+        if (!chart.boxes) {
+            chart.boxes = [];
+        }
+        item.fullSize = item.fullSize || false;
+        item.position = item.position || 'top';
+        item.weight = item.weight || 0;
+        item._layers = item._layers || function() {
+            return [
+                {
+                    z: 0,
+                    draw (chartArea) {
+                        item.draw(chartArea);
+                    }
+                }
+            ];
+        };
+        chart.boxes.push(item);
+    },
+ removeBox (chart, layoutItem) {
+        const index = chart.boxes ? chart.boxes.indexOf(layoutItem) : -1;
+        if (index !== -1) {
+            chart.boxes.splice(index, 1);
+        }
+    },
+ configure (chart, item, options) {
+        item.fullSize = options.fullSize;
+        item.position = options.position;
+        item.weight = options.weight;
+    },
+ update (chart, width, height, minPadding) {
+        if (!chart) {
+            return;
+        }
+        const padding = toPadding(chart.options.layout.padding);
+        const availableWidth = Math.max(width - padding.width, 0);
+        const availableHeight = Math.max(height - padding.height, 0);
+        const boxes = buildLayoutBoxes(chart.boxes);
+        const verticalBoxes = boxes.vertical;
+        const horizontalBoxes = boxes.horizontal;
+        each(chart.boxes, (box)=>{
+            if (typeof box.beforeLayout === 'function') {
+                box.beforeLayout();
+            }
+        });
+        const visibleVerticalBoxCount = verticalBoxes.reduce((total, wrap)=>wrap.box.options && wrap.box.options.display === false ? total : total + 1, 0) || 1;
+        const params = Object.freeze({
+            outerWidth: width,
+            outerHeight: height,
+            padding,
+            availableWidth,
+            availableHeight,
+            vBoxMaxWidth: availableWidth / 2 / visibleVerticalBoxCount,
+            hBoxMaxHeight: availableHeight / 2
+        });
+        const maxPadding = Object.assign({}, padding);
+        updateMaxPadding(maxPadding, toPadding(minPadding));
+        const chartArea = Object.assign({
+            maxPadding,
+            w: availableWidth,
+            h: availableHeight,
+            x: padding.left,
+            y: padding.top
+        }, padding);
+        const stacks = setLayoutDims(verticalBoxes.concat(horizontalBoxes), params);
+        fitBoxes(boxes.fullSize, chartArea, params, stacks);
+        fitBoxes(verticalBoxes, chartArea, params, stacks);
+        if (fitBoxes(horizontalBoxes, chartArea, params, stacks)) {
+            fitBoxes(verticalBoxes, chartArea, params, stacks);
+        }
+        handleMaxPadding(chartArea);
+        placeBoxes(boxes.leftAndTop, chartArea, params, stacks);
+        chartArea.x += chartArea.w;
+        chartArea.y += chartArea.h;
+        placeBoxes(boxes.rightAndBottom, chartArea, params, stacks);
+        chart.chartArea = {
+            left: chartArea.left,
+            top: chartArea.top,
+            right: chartArea.left + chartArea.w,
+            bottom: chartArea.top + chartArea.h,
+            height: chartArea.h,
+            width: chartArea.w
+        };
+        each(boxes.chartArea, (layout)=>{
+            const box = layout.box;
+            Object.assign(box, chart.chartArea);
+            box.update(chartArea.w, chartArea.h, {
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0
+            });
+        });
+    }
+};
+
+class BasePlatform {
+ acquireContext(canvas, aspectRatio) {}
+ releaseContext(context) {
+        return false;
+    }
+ addEventListener(chart, type, listener) {}
+ removeEventListener(chart, type, listener) {}
+ getDevicePixelRatio() {
+        return 1;
+    }
+ getMaximumSize(element, width, height, aspectRatio) {
+        width = Math.max(0, width || element.width);
+        height = height || element.height;
+        return {
+            width,
+            height: Math.max(0, aspectRatio ? Math.floor(width / aspectRatio) : height)
+        };
+    }
+ isAttached(canvas) {
+        return true;
+    }
+ updateConfig(config) {
+    }
+}
+
+class BasicPlatform extends BasePlatform {
+    acquireContext(item) {
+        return item && item.getContext && item.getContext('2d') || null;
+    }
+    updateConfig(config) {
+        config.options.animation = false;
+    }
+}
+
+const EXPANDO_KEY = '$chartjs';
+ const EVENT_TYPES = {
+    touchstart: 'mousedown',
+    touchmove: 'mousemove',
+    touchend: 'mouseup',
+    pointerenter: 'mouseenter',
+    pointerdown: 'mousedown',
+    pointermove: 'mousemove',
+    pointerup: 'mouseup',
+    pointerleave: 'mouseout',
+    pointerout: 'mouseout'
+};
+const isNullOrEmpty = (value)=>value === null || value === '';
+ function initCanvas(canvas, aspectRatio) {
+    const style = canvas.style;
+    const renderHeight = canvas.getAttribute('height');
+    const renderWidth = canvas.getAttribute('width');
+    canvas[EXPANDO_KEY] = {
+        initial: {
+            height: renderHeight,
+            width: renderWidth,
+            style: {
+                display: style.display,
+                height: style.height,
+                width: style.width
+            }
+        }
+    };
+    style.display = style.display || 'block';
+    style.boxSizing = style.boxSizing || 'border-box';
+    if (isNullOrEmpty(renderWidth)) {
+        const displayWidth = readUsedSize(canvas, 'width');
+        if (displayWidth !== undefined) {
+            canvas.width = displayWidth;
+        }
+    }
+    if (isNullOrEmpty(renderHeight)) {
+        if (canvas.style.height === '') {
+            canvas.height = canvas.width / (aspectRatio || 2);
+        } else {
+            const displayHeight = readUsedSize(canvas, 'height');
+            if (displayHeight !== undefined) {
+                canvas.height = displayHeight;
+            }
+        }
+    }
+    return canvas;
+}
+const eventListenerOptions = supportsEventListenerOptions ? {
+    passive: true
+} : false;
+function addListener(node, type, listener) {
+    if (node) {
+        node.addEventListener(type, listener, eventListenerOptions);
+    }
+}
+function removeListener(chart, type, listener) {
+    if (chart && chart.canvas) {
+        chart.canvas.removeEventListener(type, listener, eventListenerOptions);
+    }
+}
+function fromNativeEvent(event, chart) {
+    const type = EVENT_TYPES[event.type] || event.type;
+    const { x , y  } = getRelativePosition(event, chart);
+    return {
+        type,
+        chart,
+        native: event,
+        x: x !== undefined ? x : null,
+        y: y !== undefined ? y : null
+    };
+}
+function nodeListContains(nodeList, canvas) {
+    for (const node of nodeList){
+        if (node === canvas || node.contains(canvas)) {
+            return true;
+        }
+    }
+}
+function createAttachObserver(chart, type, listener) {
+    const canvas = chart.canvas;
+    const observer = new MutationObserver((entries)=>{
+        let trigger = false;
+        for (const entry of entries){
+            trigger = trigger || nodeListContains(entry.addedNodes, canvas);
+            trigger = trigger && !nodeListContains(entry.removedNodes, canvas);
+        }
+        if (trigger) {
+            listener();
+        }
+    });
+    observer.observe(document, {
+        childList: true,
+        subtree: true
+    });
+    return observer;
+}
+function createDetachObserver(chart, type, listener) {
+    const canvas = chart.canvas;
+    const observer = new MutationObserver((entries)=>{
+        let trigger = false;
+        for (const entry of entries){
+            trigger = trigger || nodeListContains(entry.removedNodes, canvas);
+            trigger = trigger && !nodeListContains(entry.addedNodes, canvas);
+        }
+        if (trigger) {
+            listener();
+        }
+    });
+    observer.observe(document, {
+        childList: true,
+        subtree: true
+    });
+    return observer;
+}
+const drpListeningCharts = new Map();
+let oldDevicePixelRatio = 0;
+function onWindowResize() {
+    const dpr = window.devicePixelRatio;
+    if (dpr === oldDevicePixelRatio) {
+        return;
+    }
+    oldDevicePixelRatio = dpr;
+    drpListeningCharts.forEach((resize, chart)=>{
+        if (chart.currentDevicePixelRatio !== dpr) {
+            resize();
+        }
+    });
+}
+function listenDevicePixelRatioChanges(chart, resize) {
+    if (!drpListeningCharts.size) {
+        window.addEventListener('resize', onWindowResize);
+    }
+    drpListeningCharts.set(chart, resize);
+}
+function unlistenDevicePixelRatioChanges(chart) {
+    drpListeningCharts.delete(chart);
+    if (!drpListeningCharts.size) {
+        window.removeEventListener('resize', onWindowResize);
+    }
+}
+function createResizeObserver(chart, type, listener) {
+    const canvas = chart.canvas;
+    const container = canvas && _getParentNode(canvas);
+    if (!container) {
+        return;
+    }
+    const resize = throttled((width, height)=>{
+        const w = container.clientWidth;
+        listener(width, height);
+        if (w < container.clientWidth) {
+            listener();
+        }
+    }, window);
+    const observer = new ResizeObserver((entries)=>{
+        const entry = entries[0];
+        const width = entry.contentRect.width;
+        const height = entry.contentRect.height;
+        if (width === 0 && height === 0) {
+            return;
+        }
+        resize(width, height);
+    });
+    observer.observe(container);
+    listenDevicePixelRatioChanges(chart, resize);
+    return observer;
+}
+function releaseObserver(chart, type, observer) {
+    if (observer) {
+        observer.disconnect();
+    }
+    if (type === 'resize') {
+        unlistenDevicePixelRatioChanges(chart);
+    }
+}
+function createProxyAndListen(chart, type, listener) {
+    const canvas = chart.canvas;
+    const proxy = throttled((event)=>{
+        if (chart.ctx !== null) {
+            listener(fromNativeEvent(event, chart));
+        }
+    }, chart);
+    addListener(canvas, type, proxy);
+    return proxy;
+}
+ class DomPlatform extends BasePlatform {
+ acquireContext(canvas, aspectRatio) {
+        const context = canvas && canvas.getContext && canvas.getContext('2d');
+        if (context && context.canvas === canvas) {
+            initCanvas(canvas, aspectRatio);
+            return context;
+        }
+        return null;
+    }
+ releaseContext(context) {
+        const canvas = context.canvas;
+        if (!canvas[EXPANDO_KEY]) {
+            return false;
+        }
+        const initial = canvas[EXPANDO_KEY].initial;
+        [
+            'height',
+            'width'
+        ].forEach((prop)=>{
+            const value = initial[prop];
+            if (isNullOrUndef(value)) {
+                canvas.removeAttribute(prop);
+            } else {
+                canvas.setAttribute(prop, value);
+            }
+        });
+        const style = initial.style || {};
+        Object.keys(style).forEach((key)=>{
+            canvas.style[key] = style[key];
+        });
+        canvas.width = canvas.width;
+        delete canvas[EXPANDO_KEY];
+        return true;
+    }
+ addEventListener(chart, type, listener) {
+        this.removeEventListener(chart, type);
+        const proxies = chart.$proxies || (chart.$proxies = {});
+        const handlers = {
+            attach: createAttachObserver,
+            detach: createDetachObserver,
+            resize: createResizeObserver
+        };
+        const handler = handlers[type] || createProxyAndListen;
+        proxies[type] = handler(chart, type, listener);
+    }
+ removeEventListener(chart, type) {
+        const proxies = chart.$proxies || (chart.$proxies = {});
+        const proxy = proxies[type];
+        if (!proxy) {
+            return;
+        }
+        const handlers = {
+            attach: releaseObserver,
+            detach: releaseObserver,
+            resize: releaseObserver
+        };
+        const handler = handlers[type] || removeListener;
+        handler(chart, type, proxy);
+        proxies[type] = undefined;
+    }
+    getDevicePixelRatio() {
+        return window.devicePixelRatio;
+    }
+ getMaximumSize(canvas, width, height, aspectRatio) {
+        return getMaximumSize(canvas, width, height, aspectRatio);
+    }
+ isAttached(canvas) {
+        const container = canvas && _getParentNode(canvas);
+        return !!(container && container.isConnected);
+    }
+}
+
+function _detectPlatform(canvas) {
+    if (!_isDomSupported() || typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas) {
+        return BasicPlatform;
+    }
+    return DomPlatform;
+}
+
+class Element {
+    static defaults = {};
+    static defaultRoutes = undefined;
+    x;
+    y;
+    active = false;
+    options;
+    $animations;
+    tooltipPosition(useFinalPosition) {
+        const { x , y  } = this.getProps([
+            'x',
+            'y'
+        ], useFinalPosition);
+        return {
+            x,
+            y
+        };
+    }
+    hasValue() {
+        return isNumber(this.x) && isNumber(this.y);
+    }
+    getProps(props, final) {
+        const anims = this.$animations;
+        if (!final || !anims) {
+            // let's not create an object, if not needed
+            return this;
+        }
+        const ret = {};
+        props.forEach((prop)=>{
+            ret[prop] = anims[prop] && anims[prop].active() ? anims[prop]._to : this[prop];
+        });
+        return ret;
+    }
+}
+
+function autoSkip(scale, ticks) {
+    const tickOpts = scale.options.ticks;
+    const determinedMaxTicks = determineMaxTicks(scale);
+    const ticksLimit = Math.min(tickOpts.maxTicksLimit || determinedMaxTicks, determinedMaxTicks);
+    const majorIndices = tickOpts.major.enabled ? getMajorIndices(ticks) : [];
+    const numMajorIndices = majorIndices.length;
+    const first = majorIndices[0];
+    const last = majorIndices[numMajorIndices - 1];
+    const newTicks = [];
+    if (numMajorIndices > ticksLimit) {
+        skipMajors(ticks, newTicks, majorIndices, numMajorIndices / ticksLimit);
+        return newTicks;
+    }
+    const spacing = calculateSpacing(majorIndices, ticks, ticksLimit);
+    if (numMajorIndices > 0) {
+        let i, ilen;
+        const avgMajorSpacing = numMajorIndices > 1 ? Math.round((last - first) / (numMajorIndices - 1)) : null;
+        skip(ticks, newTicks, spacing, isNullOrUndef(avgMajorSpacing) ? 0 : first - avgMajorSpacing, first);
+        for(i = 0, ilen = numMajorIndices - 1; i < ilen; i++){
+            skip(ticks, newTicks, spacing, majorIndices[i], majorIndices[i + 1]);
+        }
+        skip(ticks, newTicks, spacing, last, isNullOrUndef(avgMajorSpacing) ? ticks.length : last + avgMajorSpacing);
+        return newTicks;
+    }
+    skip(ticks, newTicks, spacing);
+    return newTicks;
+}
+function determineMaxTicks(scale) {
+    const offset = scale.options.offset;
+    const tickLength = scale._tickSize();
+    const maxScale = scale._length / tickLength + (offset ? 0 : 1);
+    const maxChart = scale._maxLength / tickLength;
+    return Math.floor(Math.min(maxScale, maxChart));
+}
+ function calculateSpacing(majorIndices, ticks, ticksLimit) {
+    const evenMajorSpacing = getEvenSpacing(majorIndices);
+    const spacing = ticks.length / ticksLimit;
+    if (!evenMajorSpacing) {
+        return Math.max(spacing, 1);
+    }
+    const factors = _factorize(evenMajorSpacing);
+    for(let i = 0, ilen = factors.length - 1; i < ilen; i++){
+        const factor = factors[i];
+        if (factor > spacing) {
+            return factor;
+        }
+    }
+    return Math.max(spacing, 1);
+}
+ function getMajorIndices(ticks) {
+    const result = [];
+    let i, ilen;
+    for(i = 0, ilen = ticks.length; i < ilen; i++){
+        if (ticks[i].major) {
+            result.push(i);
+        }
+    }
+    return result;
+}
+ function skipMajors(ticks, newTicks, majorIndices, spacing) {
+    let count = 0;
+    let next = majorIndices[0];
+    let i;
+    spacing = Math.ceil(spacing);
+    for(i = 0; i < ticks.length; i++){
+        if (i === next) {
+            newTicks.push(ticks[i]);
+            count++;
+            next = majorIndices[count * spacing];
+        }
+    }
+}
+ function skip(ticks, newTicks, spacing, majorStart, majorEnd) {
+    const start = valueOrDefault(majorStart, 0);
+    const end = Math.min(valueOrDefault(majorEnd, ticks.length), ticks.length);
+    let count = 0;
+    let length, i, next;
+    spacing = Math.ceil(spacing);
+    if (majorEnd) {
+        length = majorEnd - majorStart;
+        spacing = length / Math.floor(length / spacing);
+    }
+    next = start;
+    while(next < 0){
+        count++;
+        next = Math.round(start + count * spacing);
+    }
+    for(i = Math.max(start, 0); i < end; i++){
+        if (i === next) {
+            newTicks.push(ticks[i]);
+            count++;
+            next = Math.round(start + count * spacing);
+        }
+    }
+}
+ function getEvenSpacing(arr) {
+    const len = arr.length;
+    let i, diff;
+    if (len < 2) {
+        return false;
+    }
+    for(diff = arr[0], i = 1; i < len; ++i){
+        if (arr[i] - arr[i - 1] !== diff) {
+            return false;
+        }
+    }
+    return diff;
+}
+
+const reverseAlign = (align)=>align === 'left' ? 'right' : align === 'right' ? 'left' : align;
+const offsetFromEdge = (scale, edge, offset)=>edge === 'top' || edge === 'left' ? scale[edge] + offset : scale[edge] - offset;
+const getTicksLimit = (ticksLength, maxTicksLimit)=>Math.min(maxTicksLimit || ticksLength, ticksLength);
+ function sample(arr, numItems) {
+    const result = [];
+    const increment = arr.length / numItems;
+    const len = arr.length;
+    let i = 0;
+    for(; i < len; i += increment){
+        result.push(arr[Math.floor(i)]);
+    }
+    return result;
+}
+ function getPixelForGridLine(scale, index, offsetGridLines) {
+    const length = scale.ticks.length;
+    const validIndex = Math.min(index, length - 1);
+    const start = scale._startPixel;
+    const end = scale._endPixel;
+    const epsilon = 1e-6;
+    let lineValue = scale.getPixelForTick(validIndex);
+    let offset;
+    if (offsetGridLines) {
+        if (length === 1) {
+            offset = Math.max(lineValue - start, end - lineValue);
+        } else if (index === 0) {
+            offset = (scale.getPixelForTick(1) - lineValue) / 2;
+        } else {
+            offset = (lineValue - scale.getPixelForTick(validIndex - 1)) / 2;
+        }
+        lineValue += validIndex < index ? offset : -offset;
+        if (lineValue < start - epsilon || lineValue > end + epsilon) {
+            return;
+        }
+    }
+    return lineValue;
+}
+ function garbageCollect(caches, length) {
+    each(caches, (cache)=>{
+        const gc = cache.gc;
+        const gcLen = gc.length / 2;
+        let i;
+        if (gcLen > length) {
+            for(i = 0; i < gcLen; ++i){
+                delete cache.data[gc[i]];
+            }
+            gc.splice(0, gcLen);
+        }
+    });
+}
+ function getTickMarkLength(options) {
+    return options.drawTicks ? options.tickLength : 0;
+}
+ function getTitleHeight(options, fallback) {
+    if (!options.display) {
+        return 0;
+    }
+    const font = toFont(options.font, fallback);
+    const padding = toPadding(options.padding);
+    const lines = isArray(options.text) ? options.text.length : 1;
+    return lines * font.lineHeight + padding.height;
+}
+function createScaleContext(parent, scale) {
+    return createContext(parent, {
+        scale,
+        type: 'scale'
+    });
+}
+function createTickContext(parent, index, tick) {
+    return createContext(parent, {
+        tick,
+        index,
+        type: 'tick'
+    });
+}
+function titleAlign(align, position, reverse) {
+     let ret = _toLeftRightCenter(align);
+    if (reverse && position !== 'right' || !reverse && position === 'right') {
+        ret = reverseAlign(ret);
+    }
+    return ret;
+}
+function titleArgs(scale, offset, position, align) {
+    const { top , left , bottom , right , chart  } = scale;
+    const { chartArea , scales  } = chart;
+    let rotation = 0;
+    let maxWidth, titleX, titleY;
+    const height = bottom - top;
+    const width = right - left;
+    if (scale.isHorizontal()) {
+        titleX = _alignStartEnd(align, left, right);
+        if (isObject(position)) {
+            const positionAxisID = Object.keys(position)[0];
+            const value = position[positionAxisID];
+            titleY = scales[positionAxisID].getPixelForValue(value) + height - offset;
+        } else if (position === 'center') {
+            titleY = (chartArea.bottom + chartArea.top) / 2 + height - offset;
+        } else {
+            titleY = offsetFromEdge(scale, position, offset);
+        }
+        maxWidth = right - left;
+    } else {
+        if (isObject(position)) {
+            const positionAxisID = Object.keys(position)[0];
+            const value = position[positionAxisID];
+            titleX = scales[positionAxisID].getPixelForValue(value) - width + offset;
+        } else if (position === 'center') {
+            titleX = (chartArea.left + chartArea.right) / 2 - width + offset;
+        } else {
+            titleX = offsetFromEdge(scale, position, offset);
+        }
+        titleY = _alignStartEnd(align, bottom, top);
+        rotation = position === 'left' ? -HALF_PI : HALF_PI;
+    }
+    return {
+        titleX,
+        titleY,
+        maxWidth,
+        rotation
+    };
+}
+class Scale extends Element {
+    constructor(cfg){
+        super();
+         this.id = cfg.id;
+         this.type = cfg.type;
+         this.options = undefined;
+         this.ctx = cfg.ctx;
+         this.chart = cfg.chart;
+         this.top = undefined;
+         this.bottom = undefined;
+         this.left = undefined;
+         this.right = undefined;
+         this.width = undefined;
+         this.height = undefined;
+        this._margins = {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        };
+         this.maxWidth = undefined;
+         this.maxHeight = undefined;
+         this.paddingTop = undefined;
+         this.paddingBottom = undefined;
+         this.paddingLeft = undefined;
+         this.paddingRight = undefined;
+         this.axis = undefined;
+         this.labelRotation = undefined;
+        this.min = undefined;
+        this.max = undefined;
+        this._range = undefined;
+         this.ticks = [];
+         this._gridLineItems = null;
+         this._labelItems = null;
+         this._labelSizes = null;
+        this._length = 0;
+        this._maxLength = 0;
+        this._longestTextCache = {};
+         this._startPixel = undefined;
+         this._endPixel = undefined;
+        this._reversePixels = false;
+        this._userMax = undefined;
+        this._userMin = undefined;
+        this._suggestedMax = undefined;
+        this._suggestedMin = undefined;
+        this._ticksLength = 0;
+        this._borderValue = 0;
+        this._cache = {};
+        this._dataLimitsCached = false;
+        this.$context = undefined;
+    }
+ init(options) {
+        this.options = options.setContext(this.getContext());
+        this.axis = options.axis;
+        this._userMin = this.parse(options.min);
+        this._userMax = this.parse(options.max);
+        this._suggestedMin = this.parse(options.suggestedMin);
+        this._suggestedMax = this.parse(options.suggestedMax);
+    }
+ parse(raw, index) {
+        return raw;
+    }
+ getUserBounds() {
+        let { _userMin , _userMax , _suggestedMin , _suggestedMax  } = this;
+        _userMin = finiteOrDefault(_userMin, Number.POSITIVE_INFINITY);
+        _userMax = finiteOrDefault(_userMax, Number.NEGATIVE_INFINITY);
+        _suggestedMin = finiteOrDefault(_suggestedMin, Number.POSITIVE_INFINITY);
+        _suggestedMax = finiteOrDefault(_suggestedMax, Number.NEGATIVE_INFINITY);
+        return {
+            min: finiteOrDefault(_userMin, _suggestedMin),
+            max: finiteOrDefault(_userMax, _suggestedMax),
+            minDefined: isNumberFinite(_userMin),
+            maxDefined: isNumberFinite(_userMax)
+        };
+    }
+ getMinMax(canStack) {
+        let { min , max , minDefined , maxDefined  } = this.getUserBounds();
+        let range;
+        if (minDefined && maxDefined) {
+            return {
+                min,
+                max
+            };
+        }
+        const metas = this.getMatchingVisibleMetas();
+        for(let i = 0, ilen = metas.length; i < ilen; ++i){
+            range = metas[i].controller.getMinMax(this, canStack);
+            if (!minDefined) {
+                min = Math.min(min, range.min);
+            }
+            if (!maxDefined) {
+                max = Math.max(max, range.max);
+            }
+        }
+        min = maxDefined && min > max ? max : min;
+        max = minDefined && min > max ? min : max;
+        return {
+            min: finiteOrDefault(min, finiteOrDefault(max, min)),
+            max: finiteOrDefault(max, finiteOrDefault(min, max))
+        };
+    }
+ getPadding() {
+        return {
+            left: this.paddingLeft || 0,
+            top: this.paddingTop || 0,
+            right: this.paddingRight || 0,
+            bottom: this.paddingBottom || 0
+        };
+    }
+ getTicks() {
+        return this.ticks;
+    }
+ getLabels() {
+        const data = this.chart.data;
+        return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+    }
+ getLabelItems(chartArea = this.chart.chartArea) {
+        const items = this._labelItems || (this._labelItems = this._computeLabelItems(chartArea));
+        return items;
+    }
+    beforeLayout() {
+        this._cache = {};
+        this._dataLimitsCached = false;
+    }
+    beforeUpdate() {
+        callback(this.options.beforeUpdate, [
+            this
+        ]);
+    }
+ update(maxWidth, maxHeight, margins) {
+        const { beginAtZero , grace , ticks: tickOpts  } = this.options;
+        const sampleSize = tickOpts.sampleSize;
+        this.beforeUpdate();
+        this.maxWidth = maxWidth;
+        this.maxHeight = maxHeight;
+        this._margins = margins = Object.assign({
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        }, margins);
+        this.ticks = null;
+        this._labelSizes = null;
+        this._gridLineItems = null;
+        this._labelItems = null;
+        this.beforeSetDimensions();
+        this.setDimensions();
+        this.afterSetDimensions();
+        this._maxLength = this.isHorizontal() ? this.width + margins.left + margins.right : this.height + margins.top + margins.bottom;
+        if (!this._dataLimitsCached) {
+            this.beforeDataLimits();
+            this.determineDataLimits();
+            this.afterDataLimits();
+            this._range = _addGrace(this, grace, beginAtZero);
+            this._dataLimitsCached = true;
+        }
+        this.beforeBuildTicks();
+        this.ticks = this.buildTicks() || [];
+        this.afterBuildTicks();
+        const samplingEnabled = sampleSize < this.ticks.length;
+        this._convertTicksToLabels(samplingEnabled ? sample(this.ticks, sampleSize) : this.ticks);
+        this.configure();
+        this.beforeCalculateLabelRotation();
+        this.calculateLabelRotation();
+        this.afterCalculateLabelRotation();
+        if (tickOpts.display && (tickOpts.autoSkip || tickOpts.source === 'auto')) {
+            this.ticks = autoSkip(this, this.ticks);
+            this._labelSizes = null;
+            this.afterAutoSkip();
+        }
+        if (samplingEnabled) {
+            this._convertTicksToLabels(this.ticks);
+        }
+        this.beforeFit();
+        this.fit();
+        this.afterFit();
+        this.afterUpdate();
+    }
+ configure() {
+        let reversePixels = this.options.reverse;
+        let startPixel, endPixel;
+        if (this.isHorizontal()) {
+            startPixel = this.left;
+            endPixel = this.right;
+        } else {
+            startPixel = this.top;
+            endPixel = this.bottom;
+            reversePixels = !reversePixels;
+        }
+        this._startPixel = startPixel;
+        this._endPixel = endPixel;
+        this._reversePixels = reversePixels;
+        this._length = endPixel - startPixel;
+        this._alignToPixels = this.options.alignToPixels;
+    }
+    afterUpdate() {
+        callback(this.options.afterUpdate, [
+            this
+        ]);
+    }
+    beforeSetDimensions() {
+        callback(this.options.beforeSetDimensions, [
+            this
+        ]);
+    }
+    setDimensions() {
+        if (this.isHorizontal()) {
+            this.width = this.maxWidth;
+            this.left = 0;
+            this.right = this.width;
+        } else {
+            this.height = this.maxHeight;
+            this.top = 0;
+            this.bottom = this.height;
+        }
+        this.paddingLeft = 0;
+        this.paddingTop = 0;
+        this.paddingRight = 0;
+        this.paddingBottom = 0;
+    }
+    afterSetDimensions() {
+        callback(this.options.afterSetDimensions, [
+            this
+        ]);
+    }
+    _callHooks(name) {
+        this.chart.notifyPlugins(name, this.getContext());
+        callback(this.options[name], [
+            this
+        ]);
+    }
+    beforeDataLimits() {
+        this._callHooks('beforeDataLimits');
+    }
+    determineDataLimits() {}
+    afterDataLimits() {
+        this._callHooks('afterDataLimits');
+    }
+    beforeBuildTicks() {
+        this._callHooks('beforeBuildTicks');
+    }
+ buildTicks() {
+        return [];
+    }
+    afterBuildTicks() {
+        this._callHooks('afterBuildTicks');
+    }
+    beforeTickToLabelConversion() {
+        callback(this.options.beforeTickToLabelConversion, [
+            this
+        ]);
+    }
+ generateTickLabels(ticks) {
+        const tickOpts = this.options.ticks;
+        let i, ilen, tick;
+        for(i = 0, ilen = ticks.length; i < ilen; i++){
+            tick = ticks[i];
+            tick.label = callback(tickOpts.callback, [
+                tick.value,
+                i,
+                ticks
+            ], this);
+        }
+    }
+    afterTickToLabelConversion() {
+        callback(this.options.afterTickToLabelConversion, [
+            this
+        ]);
+    }
+    beforeCalculateLabelRotation() {
+        callback(this.options.beforeCalculateLabelRotation, [
+            this
+        ]);
+    }
+    calculateLabelRotation() {
+        const options = this.options;
+        const tickOpts = options.ticks;
+        const numTicks = getTicksLimit(this.ticks.length, options.ticks.maxTicksLimit);
+        const minRotation = tickOpts.minRotation || 0;
+        const maxRotation = tickOpts.maxRotation;
+        let labelRotation = minRotation;
+        let tickWidth, maxHeight, maxLabelDiagonal;
+        if (!this._isVisible() || !tickOpts.display || minRotation >= maxRotation || numTicks <= 1 || !this.isHorizontal()) {
+            this.labelRotation = minRotation;
+            return;
+        }
+        const labelSizes = this._getLabelSizes();
+        const maxLabelWidth = labelSizes.widest.width;
+        const maxLabelHeight = labelSizes.highest.height;
+        const maxWidth = _limitValue(this.chart.width - maxLabelWidth, 0, this.maxWidth);
+        tickWidth = options.offset ? this.maxWidth / numTicks : maxWidth / (numTicks - 1);
+        if (maxLabelWidth + 6 > tickWidth) {
+            tickWidth = maxWidth / (numTicks - (options.offset ? 0.5 : 1));
+            maxHeight = this.maxHeight - getTickMarkLength(options.grid) - tickOpts.padding - getTitleHeight(options.title, this.chart.options.font);
+            maxLabelDiagonal = Math.sqrt(maxLabelWidth * maxLabelWidth + maxLabelHeight * maxLabelHeight);
+            labelRotation = toDegrees(Math.min(Math.asin(_limitValue((labelSizes.highest.height + 6) / tickWidth, -1, 1)), Math.asin(_limitValue(maxHeight / maxLabelDiagonal, -1, 1)) - Math.asin(_limitValue(maxLabelHeight / maxLabelDiagonal, -1, 1))));
+            labelRotation = Math.max(minRotation, Math.min(maxRotation, labelRotation));
+        }
+        this.labelRotation = labelRotation;
+    }
+    afterCalculateLabelRotation() {
+        callback(this.options.afterCalculateLabelRotation, [
+            this
+        ]);
+    }
+    afterAutoSkip() {}
+    beforeFit() {
+        callback(this.options.beforeFit, [
+            this
+        ]);
+    }
+    fit() {
+        const minSize = {
+            width: 0,
+            height: 0
+        };
+        const { chart , options: { ticks: tickOpts , title: titleOpts , grid: gridOpts  }  } = this;
+        const display = this._isVisible();
+        const isHorizontal = this.isHorizontal();
+        if (display) {
+            const titleHeight = getTitleHeight(titleOpts, chart.options.font);
+            if (isHorizontal) {
+                minSize.width = this.maxWidth;
+                minSize.height = getTickMarkLength(gridOpts) + titleHeight;
+            } else {
+                minSize.height = this.maxHeight;
+                minSize.width = getTickMarkLength(gridOpts) + titleHeight;
+            }
+            if (tickOpts.display && this.ticks.length) {
+                const { first , last , widest , highest  } = this._getLabelSizes();
+                const tickPadding = tickOpts.padding * 2;
+                const angleRadians = toRadians(this.labelRotation);
+                const cos = Math.cos(angleRadians);
+                const sin = Math.sin(angleRadians);
+                if (isHorizontal) {
+                    const labelHeight = tickOpts.mirror ? 0 : sin * widest.width + cos * highest.height;
+                    minSize.height = Math.min(this.maxHeight, minSize.height + labelHeight + tickPadding);
+                } else {
+                    const labelWidth = tickOpts.mirror ? 0 : cos * widest.width + sin * highest.height;
+                    minSize.width = Math.min(this.maxWidth, minSize.width + labelWidth + tickPadding);
+                }
+                this._calculatePadding(first, last, sin, cos);
+            }
+        }
+        this._handleMargins();
+        if (isHorizontal) {
+            this.width = this._length = chart.width - this._margins.left - this._margins.right;
+            this.height = minSize.height;
+        } else {
+            this.width = minSize.width;
+            this.height = this._length = chart.height - this._margins.top - this._margins.bottom;
+        }
+    }
+    _calculatePadding(first, last, sin, cos) {
+        const { ticks: { align , padding  } , position  } = this.options;
+        const isRotated = this.labelRotation !== 0;
+        const labelsBelowTicks = position !== 'top' && this.axis === 'x';
+        if (this.isHorizontal()) {
+            const offsetLeft = this.getPixelForTick(0) - this.left;
+            const offsetRight = this.right - this.getPixelForTick(this.ticks.length - 1);
+            let paddingLeft = 0;
+            let paddingRight = 0;
+            if (isRotated) {
+                if (labelsBelowTicks) {
+                    paddingLeft = cos * first.width;
+                    paddingRight = sin * last.height;
+                } else {
+                    paddingLeft = sin * first.height;
+                    paddingRight = cos * last.width;
+                }
+            } else if (align === 'start') {
+                paddingRight = last.width;
+            } else if (align === 'end') {
+                paddingLeft = first.width;
+            } else if (align !== 'inner') {
+                paddingLeft = first.width / 2;
+                paddingRight = last.width / 2;
+            }
+            this.paddingLeft = Math.max((paddingLeft - offsetLeft + padding) * this.width / (this.width - offsetLeft), 0);
+            this.paddingRight = Math.max((paddingRight - offsetRight + padding) * this.width / (this.width - offsetRight), 0);
+        } else {
+            let paddingTop = last.height / 2;
+            let paddingBottom = first.height / 2;
+            if (align === 'start') {
+                paddingTop = 0;
+                paddingBottom = first.height;
+            } else if (align === 'end') {
+                paddingTop = last.height;
+                paddingBottom = 0;
+            }
+            this.paddingTop = paddingTop + padding;
+            this.paddingBottom = paddingBottom + padding;
+        }
+    }
+ _handleMargins() {
+        if (this._margins) {
+            this._margins.left = Math.max(this.paddingLeft, this._margins.left);
+            this._margins.top = Math.max(this.paddingTop, this._margins.top);
+            this._margins.right = Math.max(this.paddingRight, this._margins.right);
+            this._margins.bottom = Math.max(this.paddingBottom, this._margins.bottom);
+        }
+    }
+    afterFit() {
+        callback(this.options.afterFit, [
+            this
+        ]);
+    }
+ isHorizontal() {
+        const { axis , position  } = this.options;
+        return position === 'top' || position === 'bottom' || axis === 'x';
+    }
+ isFullSize() {
+        return this.options.fullSize;
+    }
+ _convertTicksToLabels(ticks) {
+        this.beforeTickToLabelConversion();
+        this.generateTickLabels(ticks);
+        let i, ilen;
+        for(i = 0, ilen = ticks.length; i < ilen; i++){
+            if (isNullOrUndef(ticks[i].label)) {
+                ticks.splice(i, 1);
+                ilen--;
+                i--;
+            }
+        }
+        this.afterTickToLabelConversion();
+    }
+ _getLabelSizes() {
+        let labelSizes = this._labelSizes;
+        if (!labelSizes) {
+            const sampleSize = this.options.ticks.sampleSize;
+            let ticks = this.ticks;
+            if (sampleSize < ticks.length) {
+                ticks = sample(ticks, sampleSize);
+            }
+            this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length, this.options.ticks.maxTicksLimit);
+        }
+        return labelSizes;
+    }
+ _computeLabelSizes(ticks, length, maxTicksLimit) {
+        const { ctx , _longestTextCache: caches  } = this;
+        const widths = [];
+        const heights = [];
+        const increment = Math.floor(length / getTicksLimit(length, maxTicksLimit));
+        let widestLabelSize = 0;
+        let highestLabelSize = 0;
+        let i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel;
+        for(i = 0; i < length; i += increment){
+            label = ticks[i].label;
+            tickFont = this._resolveTickFontOptions(i);
+            ctx.font = fontString = tickFont.string;
+            cache = caches[fontString] = caches[fontString] || {
+                data: {},
+                gc: []
+            };
+            lineHeight = tickFont.lineHeight;
+            width = height = 0;
+            if (!isNullOrUndef(label) && !isArray(label)) {
+                width = _measureText(ctx, cache.data, cache.gc, width, label);
+                height = lineHeight;
+            } else if (isArray(label)) {
+                for(j = 0, jlen = label.length; j < jlen; ++j){
+                    nestedLabel =  label[j];
+                    if (!isNullOrUndef(nestedLabel) && !isArray(nestedLabel)) {
+                        width = _measureText(ctx, cache.data, cache.gc, width, nestedLabel);
+                        height += lineHeight;
+                    }
+                }
+            }
+            widths.push(width);
+            heights.push(height);
+            widestLabelSize = Math.max(width, widestLabelSize);
+            highestLabelSize = Math.max(height, highestLabelSize);
+        }
+        garbageCollect(caches, length);
+        const widest = widths.indexOf(widestLabelSize);
+        const highest = heights.indexOf(highestLabelSize);
+        const valueAt = (idx)=>({
+                width: widths[idx] || 0,
+                height: heights[idx] || 0
+            });
+        return {
+            first: valueAt(0),
+            last: valueAt(length - 1),
+            widest: valueAt(widest),
+            highest: valueAt(highest),
+            widths,
+            heights
+        };
+    }
+ getLabelForValue(value) {
+        return value;
+    }
+ getPixelForValue(value, index) {
+        return NaN;
+    }
+ getValueForPixel(pixel) {}
+ getPixelForTick(index) {
+        const ticks = this.ticks;
+        if (index < 0 || index > ticks.length - 1) {
+            return null;
+        }
+        return this.getPixelForValue(ticks[index].value);
+    }
+ getPixelForDecimal(decimal) {
+        if (this._reversePixels) {
+            decimal = 1 - decimal;
+        }
+        const pixel = this._startPixel + decimal * this._length;
+        return _int16Range(this._alignToPixels ? _alignPixel(this.chart, pixel, 0) : pixel);
+    }
+ getDecimalForPixel(pixel) {
+        const decimal = (pixel - this._startPixel) / this._length;
+        return this._reversePixels ? 1 - decimal : decimal;
+    }
+ getBasePixel() {
+        return this.getPixelForValue(this.getBaseValue());
+    }
+ getBaseValue() {
+        const { min , max  } = this;
+        return min < 0 && max < 0 ? max : min > 0 && max > 0 ? min : 0;
+    }
+ getContext(index) {
+        const ticks = this.ticks || [];
+        if (index >= 0 && index < ticks.length) {
+            const tick = ticks[index];
+            return tick.$context || (tick.$context = createTickContext(this.getContext(), index, tick));
+        }
+        return this.$context || (this.$context = createScaleContext(this.chart.getContext(), this));
+    }
+ _tickSize() {
+        const optionTicks = this.options.ticks;
+        const rot = toRadians(this.labelRotation);
+        const cos = Math.abs(Math.cos(rot));
+        const sin = Math.abs(Math.sin(rot));
+        const labelSizes = this._getLabelSizes();
+        const padding = optionTicks.autoSkipPadding || 0;
+        const w = labelSizes ? labelSizes.widest.width + padding : 0;
+        const h = labelSizes ? labelSizes.highest.height + padding : 0;
+        return this.isHorizontal() ? h * cos > w * sin ? w / cos : h / sin : h * sin < w * cos ? h / cos : w / sin;
+    }
+ _isVisible() {
+        const display = this.options.display;
+        if (display !== 'auto') {
+            return !!display;
+        }
+        return this.getMatchingVisibleMetas().length > 0;
+    }
+ _computeGridLineItems(chartArea) {
+        const axis = this.axis;
+        const chart = this.chart;
+        const options = this.options;
+        const { grid , position , border  } = options;
+        const offset = grid.offset;
+        const isHorizontal = this.isHorizontal();
+        const ticks = this.ticks;
+        const ticksLength = ticks.length + (offset ? 1 : 0);
+        const tl = getTickMarkLength(grid);
+        const items = [];
+        const borderOpts = border.setContext(this.getContext());
+        const axisWidth = borderOpts.display ? borderOpts.width : 0;
+        const axisHalfWidth = axisWidth / 2;
+        const alignBorderValue = function(pixel) {
+            return _alignPixel(chart, pixel, axisWidth);
+        };
+        let borderValue, i, lineValue, alignedLineValue;
+        let tx1, ty1, tx2, ty2, x1, y1, x2, y2;
+        if (position === 'top') {
+            borderValue = alignBorderValue(this.bottom);
+            ty1 = this.bottom - tl;
+            ty2 = borderValue - axisHalfWidth;
+            y1 = alignBorderValue(chartArea.top) + axisHalfWidth;
+            y2 = chartArea.bottom;
+        } else if (position === 'bottom') {
+            borderValue = alignBorderValue(this.top);
+            y1 = chartArea.top;
+            y2 = alignBorderValue(chartArea.bottom) - axisHalfWidth;
+            ty1 = borderValue + axisHalfWidth;
+            ty2 = this.top + tl;
+        } else if (position === 'left') {
+            borderValue = alignBorderValue(this.right);
+            tx1 = this.right - tl;
+            tx2 = borderValue - axisHalfWidth;
+            x1 = alignBorderValue(chartArea.left) + axisHalfWidth;
+            x2 = chartArea.right;
+        } else if (position === 'right') {
+            borderValue = alignBorderValue(this.left);
+            x1 = chartArea.left;
+            x2 = alignBorderValue(chartArea.right) - axisHalfWidth;
+            tx1 = borderValue + axisHalfWidth;
+            tx2 = this.left + tl;
+        } else if (axis === 'x') {
+            if (position === 'center') {
+                borderValue = alignBorderValue((chartArea.top + chartArea.bottom) / 2 + 0.5);
+            } else if (isObject(position)) {
+                const positionAxisID = Object.keys(position)[0];
+                const value = position[positionAxisID];
+                borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
+            }
+            y1 = chartArea.top;
+            y2 = chartArea.bottom;
+            ty1 = borderValue + axisHalfWidth;
+            ty2 = ty1 + tl;
+        } else if (axis === 'y') {
+            if (position === 'center') {
+                borderValue = alignBorderValue((chartArea.left + chartArea.right) / 2);
+            } else if (isObject(position)) {
+                const positionAxisID = Object.keys(position)[0];
+                const value = position[positionAxisID];
+                borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
+            }
+            tx1 = borderValue - axisHalfWidth;
+            tx2 = tx1 - tl;
+            x1 = chartArea.left;
+            x2 = chartArea.right;
+        }
+        const limit = valueOrDefault(options.ticks.maxTicksLimit, ticksLength);
+        const step = Math.max(1, Math.ceil(ticksLength / limit));
+        for(i = 0; i < ticksLength; i += step){
+            const context = this.getContext(i);
+            const optsAtIndex = grid.setContext(context);
+            const optsAtIndexBorder = border.setContext(context);
+            const lineWidth = optsAtIndex.lineWidth;
+            const lineColor = optsAtIndex.color;
+            const borderDash = optsAtIndexBorder.dash || [];
+            const borderDashOffset = optsAtIndexBorder.dashOffset;
+            const tickWidth = optsAtIndex.tickWidth;
+            const tickColor = optsAtIndex.tickColor;
+            const tickBorderDash = optsAtIndex.tickBorderDash || [];
+            const tickBorderDashOffset = optsAtIndex.tickBorderDashOffset;
+            lineValue = getPixelForGridLine(this, i, offset);
+            if (lineValue === undefined) {
+                continue;
+            }
+            alignedLineValue = _alignPixel(chart, lineValue, lineWidth);
+            if (isHorizontal) {
+                tx1 = tx2 = x1 = x2 = alignedLineValue;
+            } else {
+                ty1 = ty2 = y1 = y2 = alignedLineValue;
+            }
+            items.push({
+                tx1,
+                ty1,
+                tx2,
+                ty2,
+                x1,
+                y1,
+                x2,
+                y2,
+                width: lineWidth,
+                color: lineColor,
+                borderDash,
+                borderDashOffset,
+                tickWidth,
+                tickColor,
+                tickBorderDash,
+                tickBorderDashOffset
+            });
+        }
+        this._ticksLength = ticksLength;
+        this._borderValue = borderValue;
+        return items;
+    }
+ _computeLabelItems(chartArea) {
+        const axis = this.axis;
+        const options = this.options;
+        const { position , ticks: optionTicks  } = options;
+        const isHorizontal = this.isHorizontal();
+        const ticks = this.ticks;
+        const { align , crossAlign , padding , mirror  } = optionTicks;
+        const tl = getTickMarkLength(options.grid);
+        const tickAndPadding = tl + padding;
+        const hTickAndPadding = mirror ? -padding : tickAndPadding;
+        const rotation = -toRadians(this.labelRotation);
+        const items = [];
+        let i, ilen, tick, label, x, y, textAlign, pixel, font, lineHeight, lineCount, textOffset;
+        let textBaseline = 'middle';
+        if (position === 'top') {
+            y = this.bottom - hTickAndPadding;
+            textAlign = this._getXAxisLabelAlignment();
+        } else if (position === 'bottom') {
+            y = this.top + hTickAndPadding;
+            textAlign = this._getXAxisLabelAlignment();
+        } else if (position === 'left') {
+            const ret = this._getYAxisLabelAlignment(tl);
+            textAlign = ret.textAlign;
+            x = ret.x;
+        } else if (position === 'right') {
+            const ret = this._getYAxisLabelAlignment(tl);
+            textAlign = ret.textAlign;
+            x = ret.x;
+        } else if (axis === 'x') {
+            if (position === 'center') {
+                y = (chartArea.top + chartArea.bottom) / 2 + tickAndPadding;
+            } else if (isObject(position)) {
+                const positionAxisID = Object.keys(position)[0];
+                const value = position[positionAxisID];
+                y = this.chart.scales[positionAxisID].getPixelForValue(value) + tickAndPadding;
+            }
+            textAlign = this._getXAxisLabelAlignment();
+        } else if (axis === 'y') {
+            if (position === 'center') {
+                x = (chartArea.left + chartArea.right) / 2 - tickAndPadding;
+            } else if (isObject(position)) {
+                const positionAxisID = Object.keys(position)[0];
+                const value = position[positionAxisID];
+                x = this.chart.scales[positionAxisID].getPixelForValue(value);
+            }
+            textAlign = this._getYAxisLabelAlignment(tl).textAlign;
+        }
+        if (axis === 'y') {
+            if (align === 'start') {
+                textBaseline = 'top';
+            } else if (align === 'end') {
+                textBaseline = 'bottom';
+            }
+        }
+        const labelSizes = this._getLabelSizes();
+        for(i = 0, ilen = ticks.length; i < ilen; ++i){
+            tick = ticks[i];
+            label = tick.label;
+            const optsAtIndex = optionTicks.setContext(this.getContext(i));
+            pixel = this.getPixelForTick(i) + optionTicks.labelOffset;
+            font = this._resolveTickFontOptions(i);
+            lineHeight = font.lineHeight;
+            lineCount = isArray(label) ? label.length : 1;
+            const halfCount = lineCount / 2;
+            const color = optsAtIndex.color;
+            const strokeColor = optsAtIndex.textStrokeColor;
+            const strokeWidth = optsAtIndex.textStrokeWidth;
+            let tickTextAlign = textAlign;
+            if (isHorizontal) {
+                x = pixel;
+                if (textAlign === 'inner') {
+                    if (i === ilen - 1) {
+                        tickTextAlign = !this.options.reverse ? 'right' : 'left';
+                    } else if (i === 0) {
+                        tickTextAlign = !this.options.reverse ? 'left' : 'right';
+                    } else {
+                        tickTextAlign = 'center';
+                    }
+                }
+                if (position === 'top') {
+                    if (crossAlign === 'near' || rotation !== 0) {
+                        textOffset = -lineCount * lineHeight + lineHeight / 2;
+                    } else if (crossAlign === 'center') {
+                        textOffset = -labelSizes.highest.height / 2 - halfCount * lineHeight + lineHeight;
+                    } else {
+                        textOffset = -labelSizes.highest.height + lineHeight / 2;
+                    }
+                } else {
+                    if (crossAlign === 'near' || rotation !== 0) {
+                        textOffset = lineHeight / 2;
+                    } else if (crossAlign === 'center') {
+                        textOffset = labelSizes.highest.height / 2 - halfCount * lineHeight;
+                    } else {
+                        textOffset = labelSizes.highest.height - lineCount * lineHeight;
+                    }
+                }
+                if (mirror) {
+                    textOffset *= -1;
+                }
+                if (rotation !== 0 && !optsAtIndex.showLabelBackdrop) {
+                    x += lineHeight / 2 * Math.sin(rotation);
+                }
+            } else {
+                y = pixel;
+                textOffset = (1 - lineCount) * lineHeight / 2;
+            }
+            let backdrop;
+            if (optsAtIndex.showLabelBackdrop) {
+                const labelPadding = toPadding(optsAtIndex.backdropPadding);
+                const height = labelSizes.heights[i];
+                const width = labelSizes.widths[i];
+                let top = textOffset - labelPadding.top;
+                let left = 0 - labelPadding.left;
+                switch(textBaseline){
+                    case 'middle':
+                        top -= height / 2;
+                        break;
+                    case 'bottom':
+                        top -= height;
+                        break;
+                }
+                switch(textAlign){
+                    case 'center':
+                        left -= width / 2;
+                        break;
+                    case 'right':
+                        left -= width;
+                        break;
+                    case 'inner':
+                        if (i === ilen - 1) {
+                            left -= width;
+                        } else if (i > 0) {
+                            left -= width / 2;
+                        }
+                        break;
+                }
+                backdrop = {
+                    left,
+                    top,
+                    width: width + labelPadding.width,
+                    height: height + labelPadding.height,
+                    color: optsAtIndex.backdropColor
+                };
+            }
+            items.push({
+                label,
+                font,
+                textOffset,
+                options: {
+                    rotation,
+                    color,
+                    strokeColor,
+                    strokeWidth,
+                    textAlign: tickTextAlign,
+                    textBaseline,
+                    translation: [
+                        x,
+                        y
+                    ],
+                    backdrop
+                }
+            });
+        }
+        return items;
+    }
+    _getXAxisLabelAlignment() {
+        const { position , ticks  } = this.options;
+        const rotation = -toRadians(this.labelRotation);
+        if (rotation) {
+            return position === 'top' ? 'left' : 'right';
+        }
+        let align = 'center';
+        if (ticks.align === 'start') {
+            align = 'left';
+        } else if (ticks.align === 'end') {
+            align = 'right';
+        } else if (ticks.align === 'inner') {
+            align = 'inner';
+        }
+        return align;
+    }
+    _getYAxisLabelAlignment(tl) {
+        const { position , ticks: { crossAlign , mirror , padding  }  } = this.options;
+        const labelSizes = this._getLabelSizes();
+        const tickAndPadding = tl + padding;
+        const widest = labelSizes.widest.width;
+        let textAlign;
+        let x;
+        if (position === 'left') {
+            if (mirror) {
+                x = this.right + padding;
+                if (crossAlign === 'near') {
+                    textAlign = 'left';
+                } else if (crossAlign === 'center') {
+                    textAlign = 'center';
+                    x += widest / 2;
+                } else {
+                    textAlign = 'right';
+                    x += widest;
+                }
+            } else {
+                x = this.right - tickAndPadding;
+                if (crossAlign === 'near') {
+                    textAlign = 'right';
+                } else if (crossAlign === 'center') {
+                    textAlign = 'center';
+                    x -= widest / 2;
+                } else {
+                    textAlign = 'left';
+                    x = this.left;
+                }
+            }
+        } else if (position === 'right') {
+            if (mirror) {
+                x = this.left + padding;
+                if (crossAlign === 'near') {
+                    textAlign = 'right';
+                } else if (crossAlign === 'center') {
+                    textAlign = 'center';
+                    x -= widest / 2;
+                } else {
+                    textAlign = 'left';
+                    x -= widest;
+                }
+            } else {
+                x = this.left + tickAndPadding;
+                if (crossAlign === 'near') {
+                    textAlign = 'left';
+                } else if (crossAlign === 'center') {
+                    textAlign = 'center';
+                    x += widest / 2;
+                } else {
+                    textAlign = 'right';
+                    x = this.right;
+                }
+            }
+        } else {
+            textAlign = 'right';
+        }
+        return {
+            textAlign,
+            x
+        };
+    }
+ _computeLabelArea() {
+        if (this.options.ticks.mirror) {
+            return;
+        }
+        const chart = this.chart;
+        const position = this.options.position;
+        if (position === 'left' || position === 'right') {
+            return {
+                top: 0,
+                left: this.left,
+                bottom: chart.height,
+                right: this.right
+            };
+        }
+        if (position === 'top' || position === 'bottom') {
+            return {
+                top: this.top,
+                left: 0,
+                bottom: this.bottom,
+                right: chart.width
+            };
+        }
+    }
+ drawBackground() {
+        const { ctx , options: { backgroundColor  } , left , top , width , height  } = this;
+        if (backgroundColor) {
+            ctx.save();
+            ctx.fillStyle = backgroundColor;
+            ctx.fillRect(left, top, width, height);
+            ctx.restore();
+        }
+    }
+    getLineWidthForValue(value) {
+        const grid = this.options.grid;
+        if (!this._isVisible() || !grid.display) {
+            return 0;
+        }
+        const ticks = this.ticks;
+        const index = ticks.findIndex((t)=>t.value === value);
+        if (index >= 0) {
+            const opts = grid.setContext(this.getContext(index));
+            return opts.lineWidth;
+        }
+        return 0;
+    }
+ drawGrid(chartArea) {
+        const grid = this.options.grid;
+        const ctx = this.ctx;
+        const items = this._gridLineItems || (this._gridLineItems = this._computeGridLineItems(chartArea));
+        let i, ilen;
+        const drawLine = (p1, p2, style)=>{
+            if (!style.width || !style.color) {
+                return;
+            }
+            ctx.save();
+            ctx.lineWidth = style.width;
+            ctx.strokeStyle = style.color;
+            ctx.setLineDash(style.borderDash || []);
+            ctx.lineDashOffset = style.borderDashOffset;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+            ctx.restore();
+        };
+        if (grid.display) {
+            for(i = 0, ilen = items.length; i < ilen; ++i){
+                const item = items[i];
+                if (grid.drawOnChartArea) {
+                    drawLine({
+                        x: item.x1,
+                        y: item.y1
+                    }, {
+                        x: item.x2,
+                        y: item.y2
+                    }, item);
+                }
+                if (grid.drawTicks) {
+                    drawLine({
+                        x: item.tx1,
+                        y: item.ty1
+                    }, {
+                        x: item.tx2,
+                        y: item.ty2
+                    }, {
+                        color: item.tickColor,
+                        width: item.tickWidth,
+                        borderDash: item.tickBorderDash,
+                        borderDashOffset: item.tickBorderDashOffset
+                    });
+                }
+            }
+        }
+    }
+ drawBorder() {
+        const { chart , ctx , options: { border , grid  }  } = this;
+        const borderOpts = border.setContext(this.getContext());
+        const axisWidth = border.display ? borderOpts.width : 0;
+        if (!axisWidth) {
+            return;
+        }
+        const lastLineWidth = grid.setContext(this.getContext(0)).lineWidth;
+        const borderValue = this._borderValue;
+        let x1, x2, y1, y2;
+        if (this.isHorizontal()) {
+            x1 = _alignPixel(chart, this.left, axisWidth) - axisWidth / 2;
+            x2 = _alignPixel(chart, this.right, lastLineWidth) + lastLineWidth / 2;
+            y1 = y2 = borderValue;
+        } else {
+            y1 = _alignPixel(chart, this.top, axisWidth) - axisWidth / 2;
+            y2 = _alignPixel(chart, this.bottom, lastLineWidth) + lastLineWidth / 2;
+            x1 = x2 = borderValue;
+        }
+        ctx.save();
+        ctx.lineWidth = borderOpts.width;
+        ctx.strokeStyle = borderOpts.color;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        ctx.restore();
+    }
+ drawLabels(chartArea) {
+        const optionTicks = this.options.ticks;
+        if (!optionTicks.display) {
+            return;
+        }
+        const ctx = this.ctx;
+        const area = this._computeLabelArea();
+        if (area) {
+            clipArea(ctx, area);
+        }
+        const items = this.getLabelItems(chartArea);
+        for (const item of items){
+            const renderTextOptions = item.options;
+            const tickFont = item.font;
+            const label = item.label;
+            const y = item.textOffset;
+            renderText(ctx, label, 0, y, tickFont, renderTextOptions);
+        }
+        if (area) {
+            unclipArea(ctx);
+        }
+    }
+ drawTitle() {
+        const { ctx , options: { position , title , reverse  }  } = this;
+        if (!title.display) {
+            return;
+        }
+        const font = toFont(title.font);
+        const padding = toPadding(title.padding);
+        const align = title.align;
+        let offset = font.lineHeight / 2;
+        if (position === 'bottom' || position === 'center' || isObject(position)) {
+            offset += padding.bottom;
+            if (isArray(title.text)) {
+                offset += font.lineHeight * (title.text.length - 1);
+            }
+        } else {
+            offset += padding.top;
+        }
+        const { titleX , titleY , maxWidth , rotation  } = titleArgs(this, offset, position, align);
+        renderText(ctx, title.text, 0, 0, font, {
+            color: title.color,
+            maxWidth,
+            rotation,
+            textAlign: titleAlign(align, position, reverse),
+            textBaseline: 'middle',
+            translation: [
+                titleX,
+                titleY
+            ]
+        });
+    }
+    draw(chartArea) {
+        if (!this._isVisible()) {
+            return;
+        }
+        this.drawBackground();
+        this.drawGrid(chartArea);
+        this.drawBorder();
+        this.drawTitle();
+        this.drawLabels(chartArea);
+    }
+ _layers() {
+        const opts = this.options;
+        const tz = opts.ticks && opts.ticks.z || 0;
+        const gz = valueOrDefault(opts.grid && opts.grid.z, -1);
+        const bz = valueOrDefault(opts.border && opts.border.z, 0);
+        if (!this._isVisible() || this.draw !== Scale.prototype.draw) {
+            return [
+                {
+                    z: tz,
+                    draw: (chartArea)=>{
+                        this.draw(chartArea);
+                    }
+                }
+            ];
+        }
+        return [
+            {
+                z: gz,
+                draw: (chartArea)=>{
+                    this.drawBackground();
+                    this.drawGrid(chartArea);
+                    this.drawTitle();
+                }
+            },
+            {
+                z: bz,
+                draw: ()=>{
+                    this.drawBorder();
+                }
+            },
+            {
+                z: tz,
+                draw: (chartArea)=>{
+                    this.drawLabels(chartArea);
+                }
+            }
+        ];
+    }
+ getMatchingVisibleMetas(type) {
+        const metas = this.chart.getSortedVisibleDatasetMetas();
+        const axisID = this.axis + 'AxisID';
+        const result = [];
+        let i, ilen;
+        for(i = 0, ilen = metas.length; i < ilen; ++i){
+            const meta = metas[i];
+            if (meta[axisID] === this.id && (!type || meta.type === type)) {
+                result.push(meta);
+            }
+        }
+        return result;
+    }
+ _resolveTickFontOptions(index) {
+        const opts = this.options.ticks.setContext(this.getContext(index));
+        return toFont(opts.font);
+    }
+ _maxDigits() {
+        const fontSize = this._resolveTickFontOptions(0).lineHeight;
+        return (this.isHorizontal() ? this.width : this.height) / fontSize;
+    }
+}
+
+class TypedRegistry {
+    constructor(type, scope, override){
+        this.type = type;
+        this.scope = scope;
+        this.override = override;
+        this.items = Object.create(null);
+    }
+    isForType(type) {
+        return Object.prototype.isPrototypeOf.call(this.type.prototype, type.prototype);
+    }
+ register(item) {
+        const proto = Object.getPrototypeOf(item);
+        let parentScope;
+        if (isIChartComponent(proto)) {
+            parentScope = this.register(proto);
+        }
+        const items = this.items;
+        const id = item.id;
+        const scope = this.scope + '.' + id;
+        if (!id) {
+            throw new Error('class does not have id: ' + item);
+        }
+        if (id in items) {
+            return scope;
+        }
+        items[id] = item;
+        registerDefaults(item, scope, parentScope);
+        if (this.override) {
+            defaults.override(item.id, item.overrides);
+        }
+        return scope;
+    }
+ get(id) {
+        return this.items[id];
+    }
+ unregister(item) {
+        const items = this.items;
+        const id = item.id;
+        const scope = this.scope;
+        if (id in items) {
+            delete items[id];
+        }
+        if (scope && id in defaults[scope]) {
+            delete defaults[scope][id];
+            if (this.override) {
+                delete overrides[id];
+            }
+        }
+    }
+}
+function registerDefaults(item, scope, parentScope) {
+    const itemDefaults = merge(Object.create(null), [
+        parentScope ? defaults.get(parentScope) : {},
+        defaults.get(scope),
+        item.defaults
+    ]);
+    defaults.set(scope, itemDefaults);
+    if (item.defaultRoutes) {
+        routeDefaults(scope, item.defaultRoutes);
+    }
+    if (item.descriptors) {
+        defaults.describe(scope, item.descriptors);
+    }
+}
+function routeDefaults(scope, routes) {
+    Object.keys(routes).forEach((property)=>{
+        const propertyParts = property.split('.');
+        const sourceName = propertyParts.pop();
+        const sourceScope = [
+            scope
+        ].concat(propertyParts).join('.');
+        const parts = routes[property].split('.');
+        const targetName = parts.pop();
+        const targetScope = parts.join('.');
+        defaults.route(sourceScope, sourceName, targetScope, targetName);
+    });
+}
+function isIChartComponent(proto) {
+    return 'id' in proto && 'defaults' in proto;
+}
+
+class Registry {
+    constructor(){
+        this.controllers = new TypedRegistry(DatasetController, 'datasets', true);
+        this.elements = new TypedRegistry(Element, 'elements');
+        this.plugins = new TypedRegistry(Object, 'plugins');
+        this.scales = new TypedRegistry(Scale, 'scales');
+        this._typedRegistries = [
+            this.controllers,
+            this.scales,
+            this.elements
+        ];
+    }
+ add(...args) {
+        this._each('register', args);
+    }
+    remove(...args) {
+        this._each('unregister', args);
+    }
+ addControllers(...args) {
+        this._each('register', args, this.controllers);
+    }
+ addElements(...args) {
+        this._each('register', args, this.elements);
+    }
+ addPlugins(...args) {
+        this._each('register', args, this.plugins);
+    }
+ addScales(...args) {
+        this._each('register', args, this.scales);
+    }
+ getController(id) {
+        return this._get(id, this.controllers, 'controller');
+    }
+ getElement(id) {
+        return this._get(id, this.elements, 'element');
+    }
+ getPlugin(id) {
+        return this._get(id, this.plugins, 'plugin');
+    }
+ getScale(id) {
+        return this._get(id, this.scales, 'scale');
+    }
+ removeControllers(...args) {
+        this._each('unregister', args, this.controllers);
+    }
+ removeElements(...args) {
+        this._each('unregister', args, this.elements);
+    }
+ removePlugins(...args) {
+        this._each('unregister', args, this.plugins);
+    }
+ removeScales(...args) {
+        this._each('unregister', args, this.scales);
+    }
+ _each(method, args, typedRegistry) {
+        [
+            ...args
+        ].forEach((arg)=>{
+            const reg = typedRegistry || this._getRegistryForType(arg);
+            if (typedRegistry || reg.isForType(arg) || reg === this.plugins && arg.id) {
+                this._exec(method, reg, arg);
+            } else {
+                each(arg, (item)=>{
+                    const itemReg = typedRegistry || this._getRegistryForType(item);
+                    this._exec(method, itemReg, item);
+                });
+            }
+        });
+    }
+ _exec(method, registry, component) {
+        const camelMethod = _capitalize(method);
+        callback(component['before' + camelMethod], [], component);
+        registry[method](component);
+        callback(component['after' + camelMethod], [], component);
+    }
+ _getRegistryForType(type) {
+        for(let i = 0; i < this._typedRegistries.length; i++){
+            const reg = this._typedRegistries[i];
+            if (reg.isForType(type)) {
+                return reg;
+            }
+        }
+        return this.plugins;
+    }
+ _get(id, typedRegistry, type) {
+        const item = typedRegistry.get(id);
+        if (item === undefined) {
+            throw new Error('"' + id + '" is not a registered ' + type + '.');
+        }
+        return item;
+    }
+}
+var registry = /* #__PURE__ */ new Registry();
+
+class PluginService {
+    constructor(){
+        this._init = undefined;
+    }
+ notify(chart, hook, args, filter) {
+        if (hook === 'beforeInit') {
+            this._init = this._createDescriptors(chart, true);
+            this._notify(this._init, chart, 'install');
+        }
+        if (this._init === undefined) {
+            return;
+        }
+        const descriptors = filter ? this._descriptors(chart).filter(filter) : this._descriptors(chart);
+        const result = this._notify(descriptors, chart, hook, args);
+        if (hook === 'afterDestroy') {
+            this._notify(descriptors, chart, 'stop');
+            this._notify(this._init, chart, 'uninstall');
+            this._init = undefined;
+        }
+        return result;
+    }
+ _notify(descriptors, chart, hook, args) {
+        args = args || {};
+        for (const descriptor of descriptors){
+            const plugin = descriptor.plugin;
+            const method = plugin[hook];
+            const params = [
+                chart,
+                args,
+                descriptor.options
+            ];
+            if (callback(method, params, plugin) === false && args.cancelable) {
+                return false;
+            }
+        }
+        return true;
+    }
+    invalidate() {
+        if (!isNullOrUndef(this._cache)) {
+            this._oldCache = this._cache;
+            this._cache = undefined;
+        }
+    }
+ _descriptors(chart) {
+        if (this._cache) {
+            return this._cache;
+        }
+        const descriptors = this._cache = this._createDescriptors(chart);
+        this._notifyStateChanges(chart);
+        return descriptors;
+    }
+    _createDescriptors(chart, all) {
+        const config = chart && chart.config;
+        const options = valueOrDefault(config.options && config.options.plugins, {});
+        const plugins = allPlugins(config);
+        return options === false && !all ? [] : createDescriptors(chart, plugins, options, all);
+    }
+ _notifyStateChanges(chart) {
+        const previousDescriptors = this._oldCache || [];
+        const descriptors = this._cache;
+        const diff = (a, b)=>a.filter((x)=>!b.some((y)=>x.plugin.id === y.plugin.id));
+        this._notify(diff(previousDescriptors, descriptors), chart, 'stop');
+        this._notify(diff(descriptors, previousDescriptors), chart, 'start');
+    }
+}
+ function allPlugins(config) {
+    const localIds = {};
+    const plugins = [];
+    const keys = Object.keys(registry.plugins.items);
+    for(let i = 0; i < keys.length; i++){
+        plugins.push(registry.getPlugin(keys[i]));
+    }
+    const local = config.plugins || [];
+    for(let i = 0; i < local.length; i++){
+        const plugin = local[i];
+        if (plugins.indexOf(plugin) === -1) {
+            plugins.push(plugin);
+            localIds[plugin.id] = true;
+        }
+    }
+    return {
+        plugins,
+        localIds
+    };
+}
+function getOpts(options, all) {
+    if (!all && options === false) {
+        return null;
+    }
+    if (options === true) {
+        return {};
+    }
+    return options;
+}
+function createDescriptors(chart, { plugins , localIds  }, options, all) {
+    const result = [];
+    const context = chart.getContext();
+    for (const plugin of plugins){
+        const id = plugin.id;
+        const opts = getOpts(options[id], all);
+        if (opts === null) {
+            continue;
+        }
+        result.push({
+            plugin,
+            options: pluginOpts(chart.config, {
+                plugin,
+                local: localIds[id]
+            }, opts, context)
+        });
+    }
+    return result;
+}
+function pluginOpts(config, { plugin , local  }, opts, context) {
+    const keys = config.pluginScopeKeys(plugin);
+    const scopes = config.getOptionScopes(opts, keys);
+    if (local && plugin.defaults) {
+        scopes.push(plugin.defaults);
+    }
+    return config.createResolver(scopes, context, [
+        ''
+    ], {
+        scriptable: false,
+        indexable: false,
+        allKeys: true
+    });
+}
+
+function getIndexAxis(type, options) {
+    const datasetDefaults = defaults.datasets[type] || {};
+    const datasetOptions = (options.datasets || {})[type] || {};
+    return datasetOptions.indexAxis || options.indexAxis || datasetDefaults.indexAxis || 'x';
+}
+function getAxisFromDefaultScaleID(id, indexAxis) {
+    let axis = id;
+    if (id === '_index_') {
+        axis = indexAxis;
+    } else if (id === '_value_') {
+        axis = indexAxis === 'x' ? 'y' : 'x';
+    }
+    return axis;
+}
+function getDefaultScaleIDFromAxis(axis, indexAxis) {
+    return axis === indexAxis ? '_index_' : '_value_';
+}
+function idMatchesAxis(id) {
+    if (id === 'x' || id === 'y' || id === 'r') {
+        return id;
+    }
+}
+function axisFromPosition(position) {
+    if (position === 'top' || position === 'bottom') {
+        return 'x';
+    }
+    if (position === 'left' || position === 'right') {
+        return 'y';
+    }
+}
+function determineAxis(id, ...scaleOptions) {
+    if (idMatchesAxis(id)) {
+        return id;
+    }
+    for (const opts of scaleOptions){
+        const axis = opts.axis || axisFromPosition(opts.position) || id.length > 1 && idMatchesAxis(id[0].toLowerCase());
+        if (axis) {
+            return axis;
+        }
+    }
+    throw new Error(`Cannot determine type of '${id}' axis. Please provide 'axis' or 'position' option.`);
+}
+function getAxisFromDataset(id, axis, dataset) {
+    if (dataset[axis + 'AxisID'] === id) {
+        return {
+            axis
+        };
+    }
+}
+function retrieveAxisFromDatasets(id, config) {
+    if (config.data && config.data.datasets) {
+        const boundDs = config.data.datasets.filter((d)=>d.xAxisID === id || d.yAxisID === id);
+        if (boundDs.length) {
+            return getAxisFromDataset(id, 'x', boundDs[0]) || getAxisFromDataset(id, 'y', boundDs[0]);
+        }
+    }
+    return {};
+}
+function mergeScaleConfig(config, options) {
+    const chartDefaults = overrides[config.type] || {
+        scales: {}
+    };
+    const configScales = options.scales || {};
+    const chartIndexAxis = getIndexAxis(config.type, options);
+    const scales = Object.create(null);
+    Object.keys(configScales).forEach((id)=>{
+        const scaleConf = configScales[id];
+        if (!isObject(scaleConf)) {
+            return console.error(`Invalid scale configuration for scale: ${id}`);
+        }
+        if (scaleConf._proxy) {
+            return console.warn(`Ignoring resolver passed as options for scale: ${id}`);
+        }
+        const axis = determineAxis(id, scaleConf, retrieveAxisFromDatasets(id, config), defaults.scales[scaleConf.type]);
+        const defaultId = getDefaultScaleIDFromAxis(axis, chartIndexAxis);
+        const defaultScaleOptions = chartDefaults.scales || {};
+        scales[id] = mergeIf(Object.create(null), [
+            {
+                axis
+            },
+            scaleConf,
+            defaultScaleOptions[axis],
+            defaultScaleOptions[defaultId]
+        ]);
+    });
+    config.data.datasets.forEach((dataset)=>{
+        const type = dataset.type || config.type;
+        const indexAxis = dataset.indexAxis || getIndexAxis(type, options);
+        const datasetDefaults = overrides[type] || {};
+        const defaultScaleOptions = datasetDefaults.scales || {};
+        Object.keys(defaultScaleOptions).forEach((defaultID)=>{
+            const axis = getAxisFromDefaultScaleID(defaultID, indexAxis);
+            const id = dataset[axis + 'AxisID'] || axis;
+            scales[id] = scales[id] || Object.create(null);
+            mergeIf(scales[id], [
+                {
+                    axis
+                },
+                configScales[id],
+                defaultScaleOptions[defaultID]
+            ]);
+        });
+    });
+    Object.keys(scales).forEach((key)=>{
+        const scale = scales[key];
+        mergeIf(scale, [
+            defaults.scales[scale.type],
+            defaults.scale
+        ]);
+    });
+    return scales;
+}
+function initOptions(config) {
+    const options = config.options || (config.options = {});
+    options.plugins = valueOrDefault(options.plugins, {});
+    options.scales = mergeScaleConfig(config, options);
+}
+function initData(data) {
+    data = data || {};
+    data.datasets = data.datasets || [];
+    data.labels = data.labels || [];
+    return data;
+}
+function initConfig(config) {
+    config = config || {};
+    config.data = initData(config.data);
+    initOptions(config);
+    return config;
+}
+const keyCache = new Map();
+const keysCached = new Set();
+function cachedKeys(cacheKey, generate) {
+    let keys = keyCache.get(cacheKey);
+    if (!keys) {
+        keys = generate();
+        keyCache.set(cacheKey, keys);
+        keysCached.add(keys);
+    }
+    return keys;
+}
+const addIfFound = (set, obj, key)=>{
+    const opts = resolveObjectKey(obj, key);
+    if (opts !== undefined) {
+        set.add(opts);
+    }
+};
+class Config {
+    constructor(config){
+        this._config = initConfig(config);
+        this._scopeCache = new Map();
+        this._resolverCache = new Map();
+    }
+    get platform() {
+        return this._config.platform;
+    }
+    get type() {
+        return this._config.type;
+    }
+    set type(type) {
+        this._config.type = type;
+    }
+    get data() {
+        return this._config.data;
+    }
+    set data(data) {
+        this._config.data = initData(data);
+    }
+    get options() {
+        return this._config.options;
+    }
+    set options(options) {
+        this._config.options = options;
+    }
+    get plugins() {
+        return this._config.plugins;
+    }
+    update() {
+        const config = this._config;
+        this.clearCache();
+        initOptions(config);
+    }
+    clearCache() {
+        this._scopeCache.clear();
+        this._resolverCache.clear();
+    }
+ datasetScopeKeys(datasetType) {
+        return cachedKeys(datasetType, ()=>[
+                [
+                    `datasets.${datasetType}`,
+                    ''
+                ]
+            ]);
+    }
+ datasetAnimationScopeKeys(datasetType, transition) {
+        return cachedKeys(`${datasetType}.transition.${transition}`, ()=>[
+                [
+                    `datasets.${datasetType}.transitions.${transition}`,
+                    `transitions.${transition}`
+                ],
+                [
+                    `datasets.${datasetType}`,
+                    ''
+                ]
+            ]);
+    }
+ datasetElementScopeKeys(datasetType, elementType) {
+        return cachedKeys(`${datasetType}-${elementType}`, ()=>[
+                [
+                    `datasets.${datasetType}.elements.${elementType}`,
+                    `datasets.${datasetType}`,
+                    `elements.${elementType}`,
+                    ''
+                ]
+            ]);
+    }
+ pluginScopeKeys(plugin) {
+        const id = plugin.id;
+        const type = this.type;
+        return cachedKeys(`${type}-plugin-${id}`, ()=>[
+                [
+                    `plugins.${id}`,
+                    ...plugin.additionalOptionScopes || []
+                ]
+            ]);
+    }
+ _cachedScopes(mainScope, resetCache) {
+        const _scopeCache = this._scopeCache;
+        let cache = _scopeCache.get(mainScope);
+        if (!cache || resetCache) {
+            cache = new Map();
+            _scopeCache.set(mainScope, cache);
+        }
+        return cache;
+    }
+ getOptionScopes(mainScope, keyLists, resetCache) {
+        const { options , type  } = this;
+        const cache = this._cachedScopes(mainScope, resetCache);
+        const cached = cache.get(keyLists);
+        if (cached) {
+            return cached;
+        }
+        const scopes = new Set();
+        keyLists.forEach((keys)=>{
+            if (mainScope) {
+                scopes.add(mainScope);
+                keys.forEach((key)=>addIfFound(scopes, mainScope, key));
+            }
+            keys.forEach((key)=>addIfFound(scopes, options, key));
+            keys.forEach((key)=>addIfFound(scopes, overrides[type] || {}, key));
+            keys.forEach((key)=>addIfFound(scopes, defaults, key));
+            keys.forEach((key)=>addIfFound(scopes, descriptors, key));
+        });
+        const array = Array.from(scopes);
+        if (array.length === 0) {
+            array.push(Object.create(null));
+        }
+        if (keysCached.has(keyLists)) {
+            cache.set(keyLists, array);
+        }
+        return array;
+    }
+ chartOptionScopes() {
+        const { options , type  } = this;
+        return [
+            options,
+            overrides[type] || {},
+            defaults.datasets[type] || {},
+            {
+                type
+            },
+            defaults,
+            descriptors
+        ];
+    }
+ resolveNamedOptions(scopes, names, context, prefixes = [
+        ''
+    ]) {
+        const result = {
+            $shared: true
+        };
+        const { resolver , subPrefixes  } = getResolver(this._resolverCache, scopes, prefixes);
+        let options = resolver;
+        if (needContext(resolver, names)) {
+            result.$shared = false;
+            context = isFunction(context) ? context() : context;
+            const subResolver = this.createResolver(scopes, context, subPrefixes);
+            options = _attachContext(resolver, context, subResolver);
+        }
+        for (const prop of names){
+            result[prop] = options[prop];
+        }
+        return result;
+    }
+ createResolver(scopes, context, prefixes = [
+        ''
+    ], descriptorDefaults) {
+        const { resolver  } = getResolver(this._resolverCache, scopes, prefixes);
+        return isObject(context) ? _attachContext(resolver, context, undefined, descriptorDefaults) : resolver;
+    }
+}
+function getResolver(resolverCache, scopes, prefixes) {
+    let cache = resolverCache.get(scopes);
+    if (!cache) {
+        cache = new Map();
+        resolverCache.set(scopes, cache);
+    }
+    const cacheKey = prefixes.join();
+    let cached = cache.get(cacheKey);
+    if (!cached) {
+        const resolver = _createResolver(scopes, prefixes);
+        cached = {
+            resolver,
+            subPrefixes: prefixes.filter((p)=>!p.toLowerCase().includes('hover'))
+        };
+        cache.set(cacheKey, cached);
+    }
+    return cached;
+}
+const hasFunction = (value)=>isObject(value) && Object.getOwnPropertyNames(value).some((key)=>isFunction(value[key]));
+function needContext(proxy, names) {
+    const { isScriptable , isIndexable  } = _descriptors(proxy);
+    for (const prop of names){
+        const scriptable = isScriptable(prop);
+        const indexable = isIndexable(prop);
+        const value = (indexable || scriptable) && proxy[prop];
+        if (scriptable && (isFunction(value) || hasFunction(value)) || indexable && isArray(value)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+var version = "4.5.1";
+
+const KNOWN_POSITIONS = [
+    'top',
+    'bottom',
+    'left',
+    'right',
+    'chartArea'
+];
+function positionIsHorizontal(position, axis) {
+    return position === 'top' || position === 'bottom' || KNOWN_POSITIONS.indexOf(position) === -1 && axis === 'x';
+}
+function compare2Level(l1, l2) {
+    return function(a, b) {
+        return a[l1] === b[l1] ? a[l2] - b[l2] : a[l1] - b[l1];
+    };
+}
+function onAnimationsComplete(context) {
+    const chart = context.chart;
+    const animationOptions = chart.options.animation;
+    chart.notifyPlugins('afterRender');
+    callback(animationOptions && animationOptions.onComplete, [
+        context
+    ], chart);
+}
+function onAnimationProgress(context) {
+    const chart = context.chart;
+    const animationOptions = chart.options.animation;
+    callback(animationOptions && animationOptions.onProgress, [
+        context
+    ], chart);
+}
+ function getCanvas(item) {
+    if (_isDomSupported() && typeof item === 'string') {
+        item = document.getElementById(item);
+    } else if (item && item.length) {
+        item = item[0];
+    }
+    if (item && item.canvas) {
+        item = item.canvas;
+    }
+    return item;
+}
+const instances = {};
+const getChart = (key)=>{
+    const canvas = getCanvas(key);
+    return Object.values(instances).filter((c)=>c.canvas === canvas).pop();
+};
+function moveNumericKeys(obj, start, move) {
+    const keys = Object.keys(obj);
+    for (const key of keys){
+        const intKey = +key;
+        if (intKey >= start) {
+            const value = obj[key];
+            delete obj[key];
+            if (move > 0 || intKey > start) {
+                obj[intKey + move] = value;
+            }
+        }
+    }
+}
+ function determineLastEvent(e, lastEvent, inChartArea, isClick) {
+    if (!inChartArea || e.type === 'mouseout') {
+        return null;
+    }
+    if (isClick) {
+        return lastEvent;
+    }
+    return e;
+}
+class Chart {
+    static defaults = defaults;
+    static instances = instances;
+    static overrides = overrides;
+    static registry = registry;
+    static version = version;
+    static getChart = getChart;
+    static register(...items) {
+        registry.add(...items);
+        invalidatePlugins();
+    }
+    static unregister(...items) {
+        registry.remove(...items);
+        invalidatePlugins();
+    }
+    constructor(item, userConfig){
+        const config = this.config = new Config(userConfig);
+        const initialCanvas = getCanvas(item);
+        const existingChart = getChart(initialCanvas);
+        if (existingChart) {
+            throw new Error('Canvas is already in use. Chart with ID \'' + existingChart.id + '\'' + ' must be destroyed before the canvas with ID \'' + existingChart.canvas.id + '\' can be reused.');
+        }
+        const options = config.createResolver(config.chartOptionScopes(), this.getContext());
+        this.platform = new (config.platform || _detectPlatform(initialCanvas))();
+        this.platform.updateConfig(config);
+        const context = this.platform.acquireContext(initialCanvas, options.aspectRatio);
+        const canvas = context && context.canvas;
+        const height = canvas && canvas.height;
+        const width = canvas && canvas.width;
+        this.id = uid();
+        this.ctx = context;
+        this.canvas = canvas;
+        this.width = width;
+        this.height = height;
+        this._options = options;
+        this._aspectRatio = this.aspectRatio;
+        this._layers = [];
+        this._metasets = [];
+        this._stacks = undefined;
+        this.boxes = [];
+        this.currentDevicePixelRatio = undefined;
+        this.chartArea = undefined;
+        this._active = [];
+        this._lastEvent = undefined;
+        this._listeners = {};
+         this._responsiveListeners = undefined;
+        this._sortedMetasets = [];
+        this.scales = {};
+        this._plugins = new PluginService();
+        this.$proxies = {};
+        this._hiddenIndices = {};
+        this.attached = false;
+        this._animationsDisabled = undefined;
+        this.$context = undefined;
+        this._doResize = debounce((mode)=>this.update(mode), options.resizeDelay || 0);
+        this._dataChanges = [];
+        instances[this.id] = this;
+        if (!context || !canvas) {
+            console.error("Failed to create chart: can't acquire context from the given item");
+            return;
+        }
+        animator.listen(this, 'complete', onAnimationsComplete);
+        animator.listen(this, 'progress', onAnimationProgress);
+        this._initialize();
+        if (this.attached) {
+            this.update();
+        }
+    }
+    get aspectRatio() {
+        const { options: { aspectRatio , maintainAspectRatio  } , width , height , _aspectRatio  } = this;
+        if (!isNullOrUndef(aspectRatio)) {
+            return aspectRatio;
+        }
+        if (maintainAspectRatio && _aspectRatio) {
+            return _aspectRatio;
+        }
+        return height ? width / height : null;
+    }
+    get data() {
+        return this.config.data;
+    }
+    set data(data) {
+        this.config.data = data;
+    }
+    get options() {
+        return this._options;
+    }
+    set options(options) {
+        this.config.options = options;
+    }
+    get registry() {
+        return registry;
+    }
+ _initialize() {
+        this.notifyPlugins('beforeInit');
+        if (this.options.responsive) {
+            this.resize();
+        } else {
+            retinaScale(this, this.options.devicePixelRatio);
+        }
+        this.bindEvents();
+        this.notifyPlugins('afterInit');
+        return this;
+    }
+    clear() {
+        clearCanvas(this.canvas, this.ctx);
+        return this;
+    }
+    stop() {
+        animator.stop(this);
+        return this;
+    }
+ resize(width, height) {
+        if (!animator.running(this)) {
+            this._resize(width, height);
+        } else {
+            this._resizeBeforeDraw = {
+                width,
+                height
+            };
+        }
+    }
+    _resize(width, height) {
+        const options = this.options;
+        const canvas = this.canvas;
+        const aspectRatio = options.maintainAspectRatio && this.aspectRatio;
+        const newSize = this.platform.getMaximumSize(canvas, width, height, aspectRatio);
+        const newRatio = options.devicePixelRatio || this.platform.getDevicePixelRatio();
+        const mode = this.width ? 'resize' : 'attach';
+        this.width = newSize.width;
+        this.height = newSize.height;
+        this._aspectRatio = this.aspectRatio;
+        if (!retinaScale(this, newRatio, true)) {
+            return;
+        }
+        this.notifyPlugins('resize', {
+            size: newSize
+        });
+        callback(options.onResize, [
+            this,
+            newSize
+        ], this);
+        if (this.attached) {
+            if (this._doResize(mode)) {
+                this.render();
+            }
+        }
+    }
+    ensureScalesHaveIDs() {
+        const options = this.options;
+        const scalesOptions = options.scales || {};
+        each(scalesOptions, (axisOptions, axisID)=>{
+            axisOptions.id = axisID;
+        });
+    }
+ buildOrUpdateScales() {
+        const options = this.options;
+        const scaleOpts = options.scales;
+        const scales = this.scales;
+        const updated = Object.keys(scales).reduce((obj, id)=>{
+            obj[id] = false;
+            return obj;
+        }, {});
+        let items = [];
+        if (scaleOpts) {
+            items = items.concat(Object.keys(scaleOpts).map((id)=>{
+                const scaleOptions = scaleOpts[id];
+                const axis = determineAxis(id, scaleOptions);
+                const isRadial = axis === 'r';
+                const isHorizontal = axis === 'x';
+                return {
+                    options: scaleOptions,
+                    dposition: isRadial ? 'chartArea' : isHorizontal ? 'bottom' : 'left',
+                    dtype: isRadial ? 'radialLinear' : isHorizontal ? 'category' : 'linear'
+                };
+            }));
+        }
+        each(items, (item)=>{
+            const scaleOptions = item.options;
+            const id = scaleOptions.id;
+            const axis = determineAxis(id, scaleOptions);
+            const scaleType = valueOrDefault(scaleOptions.type, item.dtype);
+            if (scaleOptions.position === undefined || positionIsHorizontal(scaleOptions.position, axis) !== positionIsHorizontal(item.dposition)) {
+                scaleOptions.position = item.dposition;
+            }
+            updated[id] = true;
+            let scale = null;
+            if (id in scales && scales[id].type === scaleType) {
+                scale = scales[id];
+            } else {
+                const scaleClass = registry.getScale(scaleType);
+                scale = new scaleClass({
+                    id,
+                    type: scaleType,
+                    ctx: this.ctx,
+                    chart: this
+                });
+                scales[scale.id] = scale;
+            }
+            scale.init(scaleOptions, options);
+        });
+        each(updated, (hasUpdated, id)=>{
+            if (!hasUpdated) {
+                delete scales[id];
+            }
+        });
+        each(scales, (scale)=>{
+            layouts.configure(this, scale, scale.options);
+            layouts.addBox(this, scale);
+        });
+    }
+ _updateMetasets() {
+        const metasets = this._metasets;
+        const numData = this.data.datasets.length;
+        const numMeta = metasets.length;
+        metasets.sort((a, b)=>a.index - b.index);
+        if (numMeta > numData) {
+            for(let i = numData; i < numMeta; ++i){
+                this._destroyDatasetMeta(i);
+            }
+            metasets.splice(numData, numMeta - numData);
+        }
+        this._sortedMetasets = metasets.slice(0).sort(compare2Level('order', 'index'));
+    }
+ _removeUnreferencedMetasets() {
+        const { _metasets: metasets , data: { datasets  }  } = this;
+        if (metasets.length > datasets.length) {
+            delete this._stacks;
+        }
+        metasets.forEach((meta, index)=>{
+            if (datasets.filter((x)=>x === meta._dataset).length === 0) {
+                this._destroyDatasetMeta(index);
+            }
+        });
+    }
+    buildOrUpdateControllers() {
+        const newControllers = [];
+        const datasets = this.data.datasets;
+        let i, ilen;
+        this._removeUnreferencedMetasets();
+        for(i = 0, ilen = datasets.length; i < ilen; i++){
+            const dataset = datasets[i];
+            let meta = this.getDatasetMeta(i);
+            const type = dataset.type || this.config.type;
+            if (meta.type && meta.type !== type) {
+                this._destroyDatasetMeta(i);
+                meta = this.getDatasetMeta(i);
+            }
+            meta.type = type;
+            meta.indexAxis = dataset.indexAxis || getIndexAxis(type, this.options);
+            meta.order = dataset.order || 0;
+            meta.index = i;
+            meta.label = '' + dataset.label;
+            meta.visible = this.isDatasetVisible(i);
+            if (meta.controller) {
+                meta.controller.updateIndex(i);
+                meta.controller.linkScales();
+            } else {
+                const ControllerClass = registry.getController(type);
+                const { datasetElementType , dataElementType  } = defaults.datasets[type];
+                Object.assign(ControllerClass, {
+                    dataElementType: registry.getElement(dataElementType),
+                    datasetElementType: datasetElementType && registry.getElement(datasetElementType)
+                });
+                meta.controller = new ControllerClass(this, i);
+                newControllers.push(meta.controller);
+            }
+        }
+        this._updateMetasets();
+        return newControllers;
+    }
+ _resetElements() {
+        each(this.data.datasets, (dataset, datasetIndex)=>{
+            this.getDatasetMeta(datasetIndex).controller.reset();
+        }, this);
+    }
+ reset() {
+        this._resetElements();
+        this.notifyPlugins('reset');
+    }
+    update(mode) {
+        const config = this.config;
+        config.update();
+        const options = this._options = config.createResolver(config.chartOptionScopes(), this.getContext());
+        const animsDisabled = this._animationsDisabled = !options.animation;
+        this._updateScales();
+        this._checkEventBindings();
+        this._updateHiddenIndices();
+        this._plugins.invalidate();
+        if (this.notifyPlugins('beforeUpdate', {
+            mode,
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        const newControllers = this.buildOrUpdateControllers();
+        this.notifyPlugins('beforeElementsUpdate');
+        let minPadding = 0;
+        for(let i = 0, ilen = this.data.datasets.length; i < ilen; i++){
+            const { controller  } = this.getDatasetMeta(i);
+            const reset = !animsDisabled && newControllers.indexOf(controller) === -1;
+            controller.buildOrUpdateElements(reset);
+            minPadding = Math.max(+controller.getMaxOverflow(), minPadding);
+        }
+        minPadding = this._minPadding = options.layout.autoPadding ? minPadding : 0;
+        this._updateLayout(minPadding);
+        if (!animsDisabled) {
+            each(newControllers, (controller)=>{
+                controller.reset();
+            });
+        }
+        this._updateDatasets(mode);
+        this.notifyPlugins('afterUpdate', {
+            mode
+        });
+        this._layers.sort(compare2Level('z', '_idx'));
+        const { _active , _lastEvent  } = this;
+        if (_lastEvent) {
+            this._eventHandler(_lastEvent, true);
+        } else if (_active.length) {
+            this._updateHoverStyles(_active, _active, true);
+        }
+        this.render();
+    }
+ _updateScales() {
+        each(this.scales, (scale)=>{
+            layouts.removeBox(this, scale);
+        });
+        this.ensureScalesHaveIDs();
+        this.buildOrUpdateScales();
+    }
+ _checkEventBindings() {
+        const options = this.options;
+        const existingEvents = new Set(Object.keys(this._listeners));
+        const newEvents = new Set(options.events);
+        if (!setsEqual(existingEvents, newEvents) || !!this._responsiveListeners !== options.responsive) {
+            this.unbindEvents();
+            this.bindEvents();
+        }
+    }
+ _updateHiddenIndices() {
+        const { _hiddenIndices  } = this;
+        const changes = this._getUniformDataChanges() || [];
+        for (const { method , start , count  } of changes){
+            const move = method === '_removeElements' ? -count : count;
+            moveNumericKeys(_hiddenIndices, start, move);
+        }
+    }
+ _getUniformDataChanges() {
+        const _dataChanges = this._dataChanges;
+        if (!_dataChanges || !_dataChanges.length) {
+            return;
+        }
+        this._dataChanges = [];
+        const datasetCount = this.data.datasets.length;
+        const makeSet = (idx)=>new Set(_dataChanges.filter((c)=>c[0] === idx).map((c, i)=>i + ',' + c.splice(1).join(',')));
+        const changeSet = makeSet(0);
+        for(let i = 1; i < datasetCount; i++){
+            if (!setsEqual(changeSet, makeSet(i))) {
+                return;
+            }
+        }
+        return Array.from(changeSet).map((c)=>c.split(',')).map((a)=>({
+                method: a[1],
+                start: +a[2],
+                count: +a[3]
+            }));
+    }
+ _updateLayout(minPadding) {
+        if (this.notifyPlugins('beforeLayout', {
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        layouts.update(this, this.width, this.height, minPadding);
+        const area = this.chartArea;
+        const noArea = area.width <= 0 || area.height <= 0;
+        this._layers = [];
+        each(this.boxes, (box)=>{
+            if (noArea && box.position === 'chartArea') {
+                return;
+            }
+            if (box.configure) {
+                box.configure();
+            }
+            this._layers.push(...box._layers());
+        }, this);
+        this._layers.forEach((item, index)=>{
+            item._idx = index;
+        });
+        this.notifyPlugins('afterLayout');
+    }
+ _updateDatasets(mode) {
+        if (this.notifyPlugins('beforeDatasetsUpdate', {
+            mode,
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        for(let i = 0, ilen = this.data.datasets.length; i < ilen; ++i){
+            this.getDatasetMeta(i).controller.configure();
+        }
+        for(let i = 0, ilen = this.data.datasets.length; i < ilen; ++i){
+            this._updateDataset(i, isFunction(mode) ? mode({
+                datasetIndex: i
+            }) : mode);
+        }
+        this.notifyPlugins('afterDatasetsUpdate', {
+            mode
+        });
+    }
+ _updateDataset(index, mode) {
+        const meta = this.getDatasetMeta(index);
+        const args = {
+            meta,
+            index,
+            mode,
+            cancelable: true
+        };
+        if (this.notifyPlugins('beforeDatasetUpdate', args) === false) {
+            return;
+        }
+        meta.controller._update(mode);
+        args.cancelable = false;
+        this.notifyPlugins('afterDatasetUpdate', args);
+    }
+    render() {
+        if (this.notifyPlugins('beforeRender', {
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        if (animator.has(this)) {
+            if (this.attached && !animator.running(this)) {
+                animator.start(this);
+            }
+        } else {
+            this.draw();
+            onAnimationsComplete({
+                chart: this
+            });
+        }
+    }
+    draw() {
+        let i;
+        if (this._resizeBeforeDraw) {
+            const { width , height  } = this._resizeBeforeDraw;
+            this._resizeBeforeDraw = null;
+            this._resize(width, height);
+        }
+        this.clear();
+        if (this.width <= 0 || this.height <= 0) {
+            return;
+        }
+        if (this.notifyPlugins('beforeDraw', {
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        const layers = this._layers;
+        for(i = 0; i < layers.length && layers[i].z <= 0; ++i){
+            layers[i].draw(this.chartArea);
+        }
+        this._drawDatasets();
+        for(; i < layers.length; ++i){
+            layers[i].draw(this.chartArea);
+        }
+        this.notifyPlugins('afterDraw');
+    }
+ _getSortedDatasetMetas(filterVisible) {
+        const metasets = this._sortedMetasets;
+        const result = [];
+        let i, ilen;
+        for(i = 0, ilen = metasets.length; i < ilen; ++i){
+            const meta = metasets[i];
+            if (!filterVisible || meta.visible) {
+                result.push(meta);
+            }
+        }
+        return result;
+    }
+ getSortedVisibleDatasetMetas() {
+        return this._getSortedDatasetMetas(true);
+    }
+ _drawDatasets() {
+        if (this.notifyPlugins('beforeDatasetsDraw', {
+            cancelable: true
+        }) === false) {
+            return;
+        }
+        const metasets = this.getSortedVisibleDatasetMetas();
+        for(let i = metasets.length - 1; i >= 0; --i){
+            this._drawDataset(metasets[i]);
+        }
+        this.notifyPlugins('afterDatasetsDraw');
+    }
+ _drawDataset(meta) {
+        const ctx = this.ctx;
+        const args = {
+            meta,
+            index: meta.index,
+            cancelable: true
+        };
+        const clip = getDatasetClipArea(this, meta);
+        if (this.notifyPlugins('beforeDatasetDraw', args) === false) {
+            return;
+        }
+        if (clip) {
+            clipArea(ctx, clip);
+        }
+        meta.controller.draw();
+        if (clip) {
+            unclipArea(ctx);
+        }
+        args.cancelable = false;
+        this.notifyPlugins('afterDatasetDraw', args);
+    }
+ isPointInArea(point) {
+        return _isPointInArea(point, this.chartArea, this._minPadding);
+    }
+    getElementsAtEventForMode(e, mode, options, useFinalPosition) {
+        const method = Interaction.modes[mode];
+        if (typeof method === 'function') {
+            return method(this, e, options, useFinalPosition);
+        }
+        return [];
+    }
+    getDatasetMeta(datasetIndex) {
+        const dataset = this.data.datasets[datasetIndex];
+        const metasets = this._metasets;
+        let meta = metasets.filter((x)=>x && x._dataset === dataset).pop();
+        if (!meta) {
+            meta = {
+                type: null,
+                data: [],
+                dataset: null,
+                controller: null,
+                hidden: null,
+                xAxisID: null,
+                yAxisID: null,
+                order: dataset && dataset.order || 0,
+                index: datasetIndex,
+                _dataset: dataset,
+                _parsed: [],
+                _sorted: false
+            };
+            metasets.push(meta);
+        }
+        return meta;
+    }
+    getContext() {
+        return this.$context || (this.$context = createContext(null, {
+            chart: this,
+            type: 'chart'
+        }));
+    }
+    getVisibleDatasetCount() {
+        return this.getSortedVisibleDatasetMetas().length;
+    }
+    isDatasetVisible(datasetIndex) {
+        const dataset = this.data.datasets[datasetIndex];
+        if (!dataset) {
+            return false;
+        }
+        const meta = this.getDatasetMeta(datasetIndex);
+        return typeof meta.hidden === 'boolean' ? !meta.hidden : !dataset.hidden;
+    }
+    setDatasetVisibility(datasetIndex, visible) {
+        const meta = this.getDatasetMeta(datasetIndex);
+        meta.hidden = !visible;
+    }
+    toggleDataVisibility(index) {
+        this._hiddenIndices[index] = !this._hiddenIndices[index];
+    }
+    getDataVisibility(index) {
+        return !this._hiddenIndices[index];
+    }
+ _updateVisibility(datasetIndex, dataIndex, visible) {
+        const mode = visible ? 'show' : 'hide';
+        const meta = this.getDatasetMeta(datasetIndex);
+        const anims = meta.controller._resolveAnimations(undefined, mode);
+        if (defined(dataIndex)) {
+            meta.data[dataIndex].hidden = !visible;
+            this.update();
+        } else {
+            this.setDatasetVisibility(datasetIndex, visible);
+            anims.update(meta, {
+                visible
+            });
+            this.update((ctx)=>ctx.datasetIndex === datasetIndex ? mode : undefined);
+        }
+    }
+    hide(datasetIndex, dataIndex) {
+        this._updateVisibility(datasetIndex, dataIndex, false);
+    }
+    show(datasetIndex, dataIndex) {
+        this._updateVisibility(datasetIndex, dataIndex, true);
+    }
+ _destroyDatasetMeta(datasetIndex) {
+        const meta = this._metasets[datasetIndex];
+        if (meta && meta.controller) {
+            meta.controller._destroy();
+        }
+        delete this._metasets[datasetIndex];
+    }
+    _stop() {
+        let i, ilen;
+        this.stop();
+        animator.remove(this);
+        for(i = 0, ilen = this.data.datasets.length; i < ilen; ++i){
+            this._destroyDatasetMeta(i);
+        }
+    }
+    destroy() {
+        this.notifyPlugins('beforeDestroy');
+        const { canvas , ctx  } = this;
+        this._stop();
+        this.config.clearCache();
+        if (canvas) {
+            this.unbindEvents();
+            clearCanvas(canvas, ctx);
+            this.platform.releaseContext(ctx);
+            this.canvas = null;
+            this.ctx = null;
+        }
+        delete instances[this.id];
+        this.notifyPlugins('afterDestroy');
+    }
+    toBase64Image(...args) {
+        return this.canvas.toDataURL(...args);
+    }
+ bindEvents() {
+        this.bindUserEvents();
+        if (this.options.responsive) {
+            this.bindResponsiveEvents();
+        } else {
+            this.attached = true;
+        }
+    }
+ bindUserEvents() {
+        const listeners = this._listeners;
+        const platform = this.platform;
+        const _add = (type, listener)=>{
+            platform.addEventListener(this, type, listener);
+            listeners[type] = listener;
+        };
+        const listener = (e, x, y)=>{
+            e.offsetX = x;
+            e.offsetY = y;
+            this._eventHandler(e);
+        };
+        each(this.options.events, (type)=>_add(type, listener));
+    }
+ bindResponsiveEvents() {
+        if (!this._responsiveListeners) {
+            this._responsiveListeners = {};
+        }
+        const listeners = this._responsiveListeners;
+        const platform = this.platform;
+        const _add = (type, listener)=>{
+            platform.addEventListener(this, type, listener);
+            listeners[type] = listener;
+        };
+        const _remove = (type, listener)=>{
+            if (listeners[type]) {
+                platform.removeEventListener(this, type, listener);
+                delete listeners[type];
+            }
+        };
+        const listener = (width, height)=>{
+            if (this.canvas) {
+                this.resize(width, height);
+            }
+        };
+        let detached;
+        const attached = ()=>{
+            _remove('attach', attached);
+            this.attached = true;
+            this.resize();
+            _add('resize', listener);
+            _add('detach', detached);
+        };
+        detached = ()=>{
+            this.attached = false;
+            _remove('resize', listener);
+            this._stop();
+            this._resize(0, 0);
+            _add('attach', attached);
+        };
+        if (platform.isAttached(this.canvas)) {
+            attached();
+        } else {
+            detached();
+        }
+    }
+ unbindEvents() {
+        each(this._listeners, (listener, type)=>{
+            this.platform.removeEventListener(this, type, listener);
+        });
+        this._listeners = {};
+        each(this._responsiveListeners, (listener, type)=>{
+            this.platform.removeEventListener(this, type, listener);
+        });
+        this._responsiveListeners = undefined;
+    }
+    updateHoverStyle(items, mode, enabled) {
+        const prefix = enabled ? 'set' : 'remove';
+        let meta, item, i, ilen;
+        if (mode === 'dataset') {
+            meta = this.getDatasetMeta(items[0].datasetIndex);
+            meta.controller['_' + prefix + 'DatasetHoverStyle']();
+        }
+        for(i = 0, ilen = items.length; i < ilen; ++i){
+            item = items[i];
+            const controller = item && this.getDatasetMeta(item.datasetIndex).controller;
+            if (controller) {
+                controller[prefix + 'HoverStyle'](item.element, item.datasetIndex, item.index);
+            }
+        }
+    }
+ getActiveElements() {
+        return this._active || [];
+    }
+ setActiveElements(activeElements) {
+        const lastActive = this._active || [];
+        const active = activeElements.map(({ datasetIndex , index  })=>{
+            const meta = this.getDatasetMeta(datasetIndex);
+            if (!meta) {
+                throw new Error('No dataset found at index ' + datasetIndex);
+            }
+            return {
+                datasetIndex,
+                element: meta.data[index],
+                index
+            };
+        });
+        const changed = !_elementsEqual(active, lastActive);
+        if (changed) {
+            this._active = active;
+            this._lastEvent = null;
+            this._updateHoverStyles(active, lastActive);
+        }
+    }
+ notifyPlugins(hook, args, filter) {
+        return this._plugins.notify(this, hook, args, filter);
+    }
+ isPluginEnabled(pluginId) {
+        return this._plugins._cache.filter((p)=>p.plugin.id === pluginId).length === 1;
+    }
+ _updateHoverStyles(active, lastActive, replay) {
+        const hoverOptions = this.options.hover;
+        const diff = (a, b)=>a.filter((x)=>!b.some((y)=>x.datasetIndex === y.datasetIndex && x.index === y.index));
+        const deactivated = diff(lastActive, active);
+        const activated = replay ? active : diff(active, lastActive);
+        if (deactivated.length) {
+            this.updateHoverStyle(deactivated, hoverOptions.mode, false);
+        }
+        if (activated.length && hoverOptions.mode) {
+            this.updateHoverStyle(activated, hoverOptions.mode, true);
+        }
+    }
+ _eventHandler(e, replay) {
+        const args = {
+            event: e,
+            replay,
+            cancelable: true,
+            inChartArea: this.isPointInArea(e)
+        };
+        const eventFilter = (plugin)=>(plugin.options.events || this.options.events).includes(e.native.type);
+        if (this.notifyPlugins('beforeEvent', args, eventFilter) === false) {
+            return;
+        }
+        const changed = this._handleEvent(e, replay, args.inChartArea);
+        args.cancelable = false;
+        this.notifyPlugins('afterEvent', args, eventFilter);
+        if (changed || args.changed) {
+            this.render();
+        }
+        return this;
+    }
+ _handleEvent(e, replay, inChartArea) {
+        const { _active: lastActive = [] , options  } = this;
+        const useFinalPosition = replay;
+        const active = this._getActiveElements(e, lastActive, inChartArea, useFinalPosition);
+        const isClick = _isClickEvent(e);
+        const lastEvent = determineLastEvent(e, this._lastEvent, inChartArea, isClick);
+        if (inChartArea) {
+            this._lastEvent = null;
+            callback(options.onHover, [
+                e,
+                active,
+                this
+            ], this);
+            if (isClick) {
+                callback(options.onClick, [
+                    e,
+                    active,
+                    this
+                ], this);
+            }
+        }
+        const changed = !_elementsEqual(active, lastActive);
+        if (changed || replay) {
+            this._active = active;
+            this._updateHoverStyles(active, lastActive, replay);
+        }
+        this._lastEvent = lastEvent;
+        return changed;
+    }
+ _getActiveElements(e, lastActive, inChartArea, useFinalPosition) {
+        if (e.type === 'mouseout') {
+            return [];
+        }
+        if (!inChartArea) {
+            return lastActive;
+        }
+        const hoverOptions = this.options.hover;
+        return this.getElementsAtEventForMode(e, hoverOptions.mode, hoverOptions, useFinalPosition);
+    }
+}
+function invalidatePlugins() {
+    return each(Chart.instances, (chart)=>chart._plugins.invalidate());
+}
+
+function clipSelf(ctx, element, endAngle) {
+    const { startAngle , x , y , outerRadius , innerRadius , options  } = element;
+    const { borderWidth , borderJoinStyle  } = options;
+    const outerAngleClip = Math.min(borderWidth / outerRadius, _normalizeAngle(startAngle - endAngle));
+    ctx.beginPath();
+    ctx.arc(x, y, outerRadius - borderWidth / 2, startAngle + outerAngleClip / 2, endAngle - outerAngleClip / 2);
+    if (innerRadius > 0) {
+        const innerAngleClip = Math.min(borderWidth / innerRadius, _normalizeAngle(startAngle - endAngle));
+        ctx.arc(x, y, innerRadius + borderWidth / 2, endAngle - innerAngleClip / 2, startAngle + innerAngleClip / 2, true);
+    } else {
+        const clipWidth = Math.min(borderWidth / 2, outerRadius * _normalizeAngle(startAngle - endAngle));
+        if (borderJoinStyle === 'round') {
+            ctx.arc(x, y, clipWidth, endAngle - PI / 2, startAngle + PI / 2, true);
+        } else if (borderJoinStyle === 'bevel') {
+            const r = 2 * clipWidth * clipWidth;
+            const endX = -r * Math.cos(endAngle + PI / 2) + x;
+            const endY = -r * Math.sin(endAngle + PI / 2) + y;
+            const startX = r * Math.cos(startAngle + PI / 2) + x;
+            const startY = r * Math.sin(startAngle + PI / 2) + y;
+            ctx.lineTo(endX, endY);
+            ctx.lineTo(startX, startY);
+        }
+    }
+    ctx.closePath();
+    ctx.moveTo(0, 0);
+    ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.clip('evenodd');
+}
+function clipArc(ctx, element, endAngle) {
+    const { startAngle , pixelMargin , x , y , outerRadius , innerRadius  } = element;
+    let angleMargin = pixelMargin / outerRadius;
+    // Draw an inner border by clipping the arc and drawing a double-width border
+    // Enlarge the clipping arc by 0.33 pixels to eliminate glitches between borders
+    ctx.beginPath();
+    ctx.arc(x, y, outerRadius, startAngle - angleMargin, endAngle + angleMargin);
+    if (innerRadius > pixelMargin) {
+        angleMargin = pixelMargin / innerRadius;
+        ctx.arc(x, y, innerRadius, endAngle + angleMargin, startAngle - angleMargin, true);
+    } else {
+        ctx.arc(x, y, pixelMargin, endAngle + HALF_PI, startAngle - HALF_PI);
+    }
+    ctx.closePath();
+    ctx.clip();
+}
+function toRadiusCorners(value) {
+    return _readValueToProps(value, [
+        'outerStart',
+        'outerEnd',
+        'innerStart',
+        'innerEnd'
+    ]);
+}
+/**
+ * Parse border radius from the provided options
+ */ function parseBorderRadius$1(arc, innerRadius, outerRadius, angleDelta) {
+    const o = toRadiusCorners(arc.options.borderRadius);
+    const halfThickness = (outerRadius - innerRadius) / 2;
+    const innerLimit = Math.min(halfThickness, angleDelta * innerRadius / 2);
+    // Outer limits are complicated. We want to compute the available angular distance at
+    // a radius of outerRadius - borderRadius because for small angular distances, this term limits.
+    // We compute at r = outerRadius - borderRadius because this circle defines the center of the border corners.
+    //
+    // If the borderRadius is large, that value can become negative.
+    // This causes the outer borders to lose their radius entirely, which is rather unexpected. To solve that, if borderRadius > outerRadius
+    // we know that the thickness term will dominate and compute the limits at that point
+    const computeOuterLimit = (val)=>{
+        const outerArcLimit = (outerRadius - Math.min(halfThickness, val)) * angleDelta / 2;
+        return _limitValue(val, 0, Math.min(halfThickness, outerArcLimit));
+    };
+    return {
+        outerStart: computeOuterLimit(o.outerStart),
+        outerEnd: computeOuterLimit(o.outerEnd),
+        innerStart: _limitValue(o.innerStart, 0, innerLimit),
+        innerEnd: _limitValue(o.innerEnd, 0, innerLimit)
+    };
+}
+/**
+ * Convert (r, 𝜃) to (x, y)
+ */ function rThetaToXY(r, theta, x, y) {
+    return {
+        x: x + r * Math.cos(theta),
+        y: y + r * Math.sin(theta)
+    };
+}
+/**
+ * Path the arc, respecting border radius by separating into left and right halves.
+ *
+ *   Start      End
+ *
+ *    1--->a--->2    Outer
+ *   /           \
+ *   8           3
+ *   |           |
+ *   |           |
+ *   7           4
+ *   \           /
+ *    6<---b<---5    Inner
+ */ function pathArc(ctx, element, offset, spacing, end, circular) {
+    const { x , y , startAngle: start , pixelMargin , innerRadius: innerR  } = element;
+    const outerRadius = Math.max(element.outerRadius + spacing + offset - pixelMargin, 0);
+    const innerRadius = innerR > 0 ? innerR + spacing + offset + pixelMargin : 0;
+    let spacingOffset = 0;
+    const alpha = end - start;
+    if (spacing) {
+        // When spacing is present, it is the same for all items
+        // So we adjust the start and end angle of the arc such that
+        // the distance is the same as it would be without the spacing
+        const noSpacingInnerRadius = innerR > 0 ? innerR - spacing : 0;
+        const noSpacingOuterRadius = outerRadius > 0 ? outerRadius - spacing : 0;
+        const avNogSpacingRadius = (noSpacingInnerRadius + noSpacingOuterRadius) / 2;
+        const adjustedAngle = avNogSpacingRadius !== 0 ? alpha * avNogSpacingRadius / (avNogSpacingRadius + spacing) : alpha;
+        spacingOffset = (alpha - adjustedAngle) / 2;
+    }
+    const beta = Math.max(0.001, alpha * outerRadius - offset / PI) / outerRadius;
+    const angleOffset = (alpha - beta) / 2;
+    const startAngle = start + angleOffset + spacingOffset;
+    const endAngle = end - angleOffset - spacingOffset;
+    const { outerStart , outerEnd , innerStart , innerEnd  } = parseBorderRadius$1(element, innerRadius, outerRadius, endAngle - startAngle);
+    const outerStartAdjustedRadius = outerRadius - outerStart;
+    const outerEndAdjustedRadius = outerRadius - outerEnd;
+    const outerStartAdjustedAngle = startAngle + outerStart / outerStartAdjustedRadius;
+    const outerEndAdjustedAngle = endAngle - outerEnd / outerEndAdjustedRadius;
+    const innerStartAdjustedRadius = innerRadius + innerStart;
+    const innerEndAdjustedRadius = innerRadius + innerEnd;
+    const innerStartAdjustedAngle = startAngle + innerStart / innerStartAdjustedRadius;
+    const innerEndAdjustedAngle = endAngle - innerEnd / innerEndAdjustedRadius;
+    ctx.beginPath();
+    if (circular) {
+        // The first arc segments from point 1 to point a to point 2
+        const outerMidAdjustedAngle = (outerStartAdjustedAngle + outerEndAdjustedAngle) / 2;
+        ctx.arc(x, y, outerRadius, outerStartAdjustedAngle, outerMidAdjustedAngle);
+        ctx.arc(x, y, outerRadius, outerMidAdjustedAngle, outerEndAdjustedAngle);
+        // The corner segment from point 2 to point 3
+        if (outerEnd > 0) {
+            const pCenter = rThetaToXY(outerEndAdjustedRadius, outerEndAdjustedAngle, x, y);
+            ctx.arc(pCenter.x, pCenter.y, outerEnd, outerEndAdjustedAngle, endAngle + HALF_PI);
+        }
+        // The line from point 3 to point 4
+        const p4 = rThetaToXY(innerEndAdjustedRadius, endAngle, x, y);
+        ctx.lineTo(p4.x, p4.y);
+        // The corner segment from point 4 to point 5
+        if (innerEnd > 0) {
+            const pCenter = rThetaToXY(innerEndAdjustedRadius, innerEndAdjustedAngle, x, y);
+            ctx.arc(pCenter.x, pCenter.y, innerEnd, endAngle + HALF_PI, innerEndAdjustedAngle + Math.PI);
+        }
+        // The inner arc from point 5 to point b to point 6
+        const innerMidAdjustedAngle = (endAngle - innerEnd / innerRadius + (startAngle + innerStart / innerRadius)) / 2;
+        ctx.arc(x, y, innerRadius, endAngle - innerEnd / innerRadius, innerMidAdjustedAngle, true);
+        ctx.arc(x, y, innerRadius, innerMidAdjustedAngle, startAngle + innerStart / innerRadius, true);
+        // The corner segment from point 6 to point 7
+        if (innerStart > 0) {
+            const pCenter = rThetaToXY(innerStartAdjustedRadius, innerStartAdjustedAngle, x, y);
+            ctx.arc(pCenter.x, pCenter.y, innerStart, innerStartAdjustedAngle + Math.PI, startAngle - HALF_PI);
+        }
+        // The line from point 7 to point 8
+        const p8 = rThetaToXY(outerStartAdjustedRadius, startAngle, x, y);
+        ctx.lineTo(p8.x, p8.y);
+        // The corner segment from point 8 to point 1
+        if (outerStart > 0) {
+            const pCenter = rThetaToXY(outerStartAdjustedRadius, outerStartAdjustedAngle, x, y);
+            ctx.arc(pCenter.x, pCenter.y, outerStart, startAngle - HALF_PI, outerStartAdjustedAngle);
+        }
+    } else {
+        ctx.moveTo(x, y);
+        const outerStartX = Math.cos(outerStartAdjustedAngle) * outerRadius + x;
+        const outerStartY = Math.sin(outerStartAdjustedAngle) * outerRadius + y;
+        ctx.lineTo(outerStartX, outerStartY);
+        const outerEndX = Math.cos(outerEndAdjustedAngle) * outerRadius + x;
+        const outerEndY = Math.sin(outerEndAdjustedAngle) * outerRadius + y;
+        ctx.lineTo(outerEndX, outerEndY);
+    }
+    ctx.closePath();
+}
+function drawArc(ctx, element, offset, spacing, circular) {
+    const { fullCircles , startAngle , circumference  } = element;
+    let endAngle = element.endAngle;
+    if (fullCircles) {
+        pathArc(ctx, element, offset, spacing, endAngle, circular);
+        for(let i = 0; i < fullCircles; ++i){
+            ctx.fill();
+        }
+        if (!isNaN(circumference)) {
+            endAngle = startAngle + (circumference % TAU || TAU);
+        }
+    }
+    pathArc(ctx, element, offset, spacing, endAngle, circular);
+    ctx.fill();
+    return endAngle;
+}
+function drawBorder(ctx, element, offset, spacing, circular) {
+    const { fullCircles , startAngle , circumference , options  } = element;
+    const { borderWidth , borderJoinStyle , borderDash , borderDashOffset , borderRadius  } = options;
+    const inner = options.borderAlign === 'inner';
+    if (!borderWidth) {
+        return;
+    }
+    ctx.setLineDash(borderDash || []);
+    ctx.lineDashOffset = borderDashOffset;
+    if (inner) {
+        ctx.lineWidth = borderWidth * 2;
+        ctx.lineJoin = borderJoinStyle || 'round';
+    } else {
+        ctx.lineWidth = borderWidth;
+        ctx.lineJoin = borderJoinStyle || 'bevel';
+    }
+    let endAngle = element.endAngle;
+    if (fullCircles) {
+        pathArc(ctx, element, offset, spacing, endAngle, circular);
+        for(let i = 0; i < fullCircles; ++i){
+            ctx.stroke();
+        }
+        if (!isNaN(circumference)) {
+            endAngle = startAngle + (circumference % TAU || TAU);
+        }
+    }
+    if (inner) {
+        clipArc(ctx, element, endAngle);
+    }
+    if (options.selfJoin && endAngle - startAngle >= PI && borderRadius === 0 && borderJoinStyle !== 'miter') {
+        clipSelf(ctx, element, endAngle);
+    }
+    if (!fullCircles) {
+        pathArc(ctx, element, offset, spacing, endAngle, circular);
+        ctx.stroke();
+    }
+}
+class ArcElement extends Element {
+    static id = 'arc';
+    static defaults = {
+        borderAlign: 'center',
+        borderColor: '#fff',
+        borderDash: [],
+        borderDashOffset: 0,
+        borderJoinStyle: undefined,
+        borderRadius: 0,
+        borderWidth: 2,
+        offset: 0,
+        spacing: 0,
+        angle: undefined,
+        circular: true,
+        selfJoin: false
+    };
+    static defaultRoutes = {
+        backgroundColor: 'backgroundColor'
+    };
+    static descriptors = {
+        _scriptable: true,
+        _indexable: (name)=>name !== 'borderDash'
+    };
+    circumference;
+    endAngle;
+    fullCircles;
+    innerRadius;
+    outerRadius;
+    pixelMargin;
+    startAngle;
+    constructor(cfg){
+        super();
+        this.options = undefined;
+        this.circumference = undefined;
+        this.startAngle = undefined;
+        this.endAngle = undefined;
+        this.innerRadius = undefined;
+        this.outerRadius = undefined;
+        this.pixelMargin = 0;
+        this.fullCircles = 0;
+        if (cfg) {
+            Object.assign(this, cfg);
+        }
+    }
+    inRange(chartX, chartY, useFinalPosition) {
+        const point = this.getProps([
+            'x',
+            'y'
+        ], useFinalPosition);
+        const { angle , distance  } = getAngleFromPoint(point, {
+            x: chartX,
+            y: chartY
+        });
+        const { startAngle , endAngle , innerRadius , outerRadius , circumference  } = this.getProps([
+            'startAngle',
+            'endAngle',
+            'innerRadius',
+            'outerRadius',
+            'circumference'
+        ], useFinalPosition);
+        const rAdjust = (this.options.spacing + this.options.borderWidth) / 2;
+        const _circumference = valueOrDefault(circumference, endAngle - startAngle);
+        const nonZeroBetween = _angleBetween(angle, startAngle, endAngle) && startAngle !== endAngle;
+        const betweenAngles = _circumference >= TAU || nonZeroBetween;
+        const withinRadius = _isBetween(distance, innerRadius + rAdjust, outerRadius + rAdjust);
+        return betweenAngles && withinRadius;
+    }
+    getCenterPoint(useFinalPosition) {
+        const { x , y , startAngle , endAngle , innerRadius , outerRadius  } = this.getProps([
+            'x',
+            'y',
+            'startAngle',
+            'endAngle',
+            'innerRadius',
+            'outerRadius'
+        ], useFinalPosition);
+        const { offset , spacing  } = this.options;
+        const halfAngle = (startAngle + endAngle) / 2;
+        const halfRadius = (innerRadius + outerRadius + spacing + offset) / 2;
+        return {
+            x: x + Math.cos(halfAngle) * halfRadius,
+            y: y + Math.sin(halfAngle) * halfRadius
+        };
+    }
+    tooltipPosition(useFinalPosition) {
+        return this.getCenterPoint(useFinalPosition);
+    }
+    draw(ctx) {
+        const { options , circumference  } = this;
+        const offset = (options.offset || 0) / 4;
+        const spacing = (options.spacing || 0) / 2;
+        const circular = options.circular;
+        this.pixelMargin = options.borderAlign === 'inner' ? 0.33 : 0;
+        this.fullCircles = circumference > TAU ? Math.floor(circumference / TAU) : 0;
+        if (circumference === 0 || this.innerRadius < 0 || this.outerRadius < 0) {
+            return;
+        }
+        ctx.save();
+        const halfAngle = (this.startAngle + this.endAngle) / 2;
+        ctx.translate(Math.cos(halfAngle) * offset, Math.sin(halfAngle) * offset);
+        const fix = 1 - Math.sin(Math.min(PI, circumference || 0));
+        const radiusOffset = offset * fix;
+        ctx.fillStyle = options.backgroundColor;
+        ctx.strokeStyle = options.borderColor;
+        drawArc(ctx, this, radiusOffset, spacing, circular);
+        drawBorder(ctx, this, radiusOffset, spacing, circular);
+        ctx.restore();
+    }
+}
+
+function setStyle(ctx, options, style = options) {
+    ctx.lineCap = valueOrDefault(style.borderCapStyle, options.borderCapStyle);
+    ctx.setLineDash(valueOrDefault(style.borderDash, options.borderDash));
+    ctx.lineDashOffset = valueOrDefault(style.borderDashOffset, options.borderDashOffset);
+    ctx.lineJoin = valueOrDefault(style.borderJoinStyle, options.borderJoinStyle);
+    ctx.lineWidth = valueOrDefault(style.borderWidth, options.borderWidth);
+    ctx.strokeStyle = valueOrDefault(style.borderColor, options.borderColor);
+}
+function lineTo(ctx, previous, target) {
+    ctx.lineTo(target.x, target.y);
+}
+ function getLineMethod(options) {
+    if (options.stepped) {
+        return _steppedLineTo;
+    }
+    if (options.tension || options.cubicInterpolationMode === 'monotone') {
+        return _bezierCurveTo;
+    }
+    return lineTo;
+}
+function pathVars(points, segment, params = {}) {
+    const count = points.length;
+    const { start: paramsStart = 0 , end: paramsEnd = count - 1  } = params;
+    const { start: segmentStart , end: segmentEnd  } = segment;
+    const start = Math.max(paramsStart, segmentStart);
+    const end = Math.min(paramsEnd, segmentEnd);
+    const outside = paramsStart < segmentStart && paramsEnd < segmentStart || paramsStart > segmentEnd && paramsEnd > segmentEnd;
+    return {
+        count,
+        start,
+        loop: segment.loop,
+        ilen: end < start && !outside ? count + end - start : end - start
+    };
+}
+ function pathSegment(ctx, line, segment, params) {
+    const { points , options  } = line;
+    const { count , start , loop , ilen  } = pathVars(points, segment, params);
+    const lineMethod = getLineMethod(options);
+    let { move =true , reverse  } = params || {};
+    let i, point, prev;
+    for(i = 0; i <= ilen; ++i){
+        point = points[(start + (reverse ? ilen - i : i)) % count];
+        if (point.skip) {
+            continue;
+        } else if (move) {
+            ctx.moveTo(point.x, point.y);
+            move = false;
+        } else {
+            lineMethod(ctx, prev, point, reverse, options.stepped);
+        }
+        prev = point;
+    }
+    if (loop) {
+        point = points[(start + (reverse ? ilen : 0)) % count];
+        lineMethod(ctx, prev, point, reverse, options.stepped);
+    }
+    return !!loop;
+}
+ function fastPathSegment(ctx, line, segment, params) {
+    const points = line.points;
+    const { count , start , ilen  } = pathVars(points, segment, params);
+    const { move =true , reverse  } = params || {};
+    let avgX = 0;
+    let countX = 0;
+    let i, point, prevX, minY, maxY, lastY;
+    const pointIndex = (index)=>(start + (reverse ? ilen - index : index)) % count;
+    const drawX = ()=>{
+        if (minY !== maxY) {
+            ctx.lineTo(avgX, maxY);
+            ctx.lineTo(avgX, minY);
+            ctx.lineTo(avgX, lastY);
+        }
+    };
+    if (move) {
+        point = points[pointIndex(0)];
+        ctx.moveTo(point.x, point.y);
+    }
+    for(i = 0; i <= ilen; ++i){
+        point = points[pointIndex(i)];
+        if (point.skip) {
+            continue;
+        }
+        const x = point.x;
+        const y = point.y;
+        const truncX = x | 0;
+        if (truncX === prevX) {
+            if (y < minY) {
+                minY = y;
+            } else if (y > maxY) {
+                maxY = y;
+            }
+            avgX = (countX * avgX + x) / ++countX;
+        } else {
+            drawX();
+            ctx.lineTo(x, y);
+            prevX = truncX;
+            countX = 0;
+            minY = maxY = y;
+        }
+        lastY = y;
+    }
+    drawX();
+}
+ function _getSegmentMethod(line) {
+    const opts = line.options;
+    const borderDash = opts.borderDash && opts.borderDash.length;
+    const useFastPath = !line._decimated && !line._loop && !opts.tension && opts.cubicInterpolationMode !== 'monotone' && !opts.stepped && !borderDash;
+    return useFastPath ? fastPathSegment : pathSegment;
+}
+ function _getInterpolationMethod(options) {
+    if (options.stepped) {
+        return _steppedInterpolation;
+    }
+    if (options.tension || options.cubicInterpolationMode === 'monotone') {
+        return _bezierInterpolation;
+    }
+    return _pointInLine;
+}
+function strokePathWithCache(ctx, line, start, count) {
+    let path = line._path;
+    if (!path) {
+        path = line._path = new Path2D();
+        if (line.path(path, start, count)) {
+            path.closePath();
+        }
+    }
+    setStyle(ctx, line.options);
+    ctx.stroke(path);
+}
+function strokePathDirect(ctx, line, start, count) {
+    const { segments , options  } = line;
+    const segmentMethod = _getSegmentMethod(line);
+    for (const segment of segments){
+        setStyle(ctx, options, segment.style);
+        ctx.beginPath();
+        if (segmentMethod(ctx, line, segment, {
+            start,
+            end: start + count - 1
+        })) {
+            ctx.closePath();
+        }
+        ctx.stroke();
+    }
+}
+const usePath2D = typeof Path2D === 'function';
+function draw(ctx, line, start, count) {
+    if (usePath2D && !line.options.segment) {
+        strokePathWithCache(ctx, line, start, count);
+    } else {
+        strokePathDirect(ctx, line, start, count);
+    }
+}
+class LineElement extends Element {
+    static id = 'line';
+ static defaults = {
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0,
+        borderJoinStyle: 'miter',
+        borderWidth: 3,
+        capBezierPoints: true,
+        cubicInterpolationMode: 'default',
+        fill: false,
+        spanGaps: false,
+        stepped: false,
+        tension: 0
+    };
+ static defaultRoutes = {
+        backgroundColor: 'backgroundColor',
+        borderColor: 'borderColor'
+    };
+    static descriptors = {
+        _scriptable: true,
+        _indexable: (name)=>name !== 'borderDash' && name !== 'fill'
+    };
+    constructor(cfg){
+        super();
+        this.animated = true;
+        this.options = undefined;
+        this._chart = undefined;
+        this._loop = undefined;
+        this._fullLoop = undefined;
+        this._path = undefined;
+        this._points = undefined;
+        this._segments = undefined;
+        this._decimated = false;
+        this._pointsUpdated = false;
+        this._datasetIndex = undefined;
+        if (cfg) {
+            Object.assign(this, cfg);
+        }
+    }
+    updateControlPoints(chartArea, indexAxis) {
+        const options = this.options;
+        if ((options.tension || options.cubicInterpolationMode === 'monotone') && !options.stepped && !this._pointsUpdated) {
+            const loop = options.spanGaps ? this._loop : this._fullLoop;
+            _updateBezierControlPoints(this._points, options, chartArea, loop, indexAxis);
+            this._pointsUpdated = true;
+        }
+    }
+    set points(points) {
+        this._points = points;
+        delete this._segments;
+        delete this._path;
+        this._pointsUpdated = false;
+    }
+    get points() {
+        return this._points;
+    }
+    get segments() {
+        return this._segments || (this._segments = _computeSegments(this, this.options.segment));
+    }
+ first() {
+        const segments = this.segments;
+        const points = this.points;
+        return segments.length && points[segments[0].start];
+    }
+ last() {
+        const segments = this.segments;
+        const points = this.points;
+        const count = segments.length;
+        return count && points[segments[count - 1].end];
+    }
+ interpolate(point, property) {
+        const options = this.options;
+        const value = point[property];
+        const points = this.points;
+        const segments = _boundSegments(this, {
+            property,
+            start: value,
+            end: value
+        });
+        if (!segments.length) {
+            return;
+        }
+        const result = [];
+        const _interpolate = _getInterpolationMethod(options);
+        let i, ilen;
+        for(i = 0, ilen = segments.length; i < ilen; ++i){
+            const { start , end  } = segments[i];
+            const p1 = points[start];
+            const p2 = points[end];
+            if (p1 === p2) {
+                result.push(p1);
+                continue;
+            }
+            const t = Math.abs((value - p1[property]) / (p2[property] - p1[property]));
+            const interpolated = _interpolate(p1, p2, t, options.stepped);
+            interpolated[property] = point[property];
+            result.push(interpolated);
+        }
+        return result.length === 1 ? result[0] : result;
+    }
+ pathSegment(ctx, segment, params) {
+        const segmentMethod = _getSegmentMethod(this);
+        return segmentMethod(ctx, this, segment, params);
+    }
+ path(ctx, start, count) {
+        const segments = this.segments;
+        const segmentMethod = _getSegmentMethod(this);
+        let loop = this._loop;
+        start = start || 0;
+        count = count || this.points.length - start;
+        for (const segment of segments){
+            loop &= segmentMethod(ctx, this, segment, {
+                start,
+                end: start + count - 1
+            });
+        }
+        return !!loop;
+    }
+ draw(ctx, chartArea, start, count) {
+        const options = this.options || {};
+        const points = this.points || [];
+        if (points.length && options.borderWidth) {
+            ctx.save();
+            draw(ctx, this, start, count);
+            ctx.restore();
+        }
+        if (this.animated) {
+            this._pointsUpdated = false;
+            this._path = undefined;
+        }
+    }
+}
+
+function inRange$1(el, pos, axis, useFinalPosition) {
+    const options = el.options;
+    const { [axis]: value  } = el.getProps([
+        axis
+    ], useFinalPosition);
+    return Math.abs(pos - value) < options.radius + options.hitRadius;
+}
+class PointElement extends Element {
+    static id = 'point';
+    parsed;
+    skip;
+    stop;
+    /**
+   * @type {any}
+   */ static defaults = {
+        borderWidth: 1,
+        hitRadius: 1,
+        hoverBorderWidth: 1,
+        hoverRadius: 4,
+        pointStyle: 'circle',
+        radius: 3,
+        rotation: 0
+    };
+    /**
+   * @type {any}
+   */ static defaultRoutes = {
+        backgroundColor: 'backgroundColor',
+        borderColor: 'borderColor'
+    };
+    constructor(cfg){
+        super();
+        this.options = undefined;
+        this.parsed = undefined;
+        this.skip = undefined;
+        this.stop = undefined;
+        if (cfg) {
+            Object.assign(this, cfg);
+        }
+    }
+    inRange(mouseX, mouseY, useFinalPosition) {
+        const options = this.options;
+        const { x , y  } = this.getProps([
+            'x',
+            'y'
+        ], useFinalPosition);
+        return Math.pow(mouseX - x, 2) + Math.pow(mouseY - y, 2) < Math.pow(options.hitRadius + options.radius, 2);
+    }
+    inXRange(mouseX, useFinalPosition) {
+        return inRange$1(this, mouseX, 'x', useFinalPosition);
+    }
+    inYRange(mouseY, useFinalPosition) {
+        return inRange$1(this, mouseY, 'y', useFinalPosition);
+    }
+    getCenterPoint(useFinalPosition) {
+        const { x , y  } = this.getProps([
+            'x',
+            'y'
+        ], useFinalPosition);
+        return {
+            x,
+            y
+        };
+    }
+    size(options) {
+        options = options || this.options || {};
+        let radius = options.radius || 0;
+        radius = Math.max(radius, radius && options.hoverRadius || 0);
+        const borderWidth = radius && options.borderWidth || 0;
+        return (radius + borderWidth) * 2;
+    }
+    draw(ctx, area) {
+        const options = this.options;
+        if (this.skip || options.radius < 0.1 || !_isPointInArea(this, area, this.size(options) / 2)) {
+            return;
+        }
+        ctx.strokeStyle = options.borderColor;
+        ctx.lineWidth = options.borderWidth;
+        ctx.fillStyle = options.backgroundColor;
+        drawPoint(ctx, options, this.x, this.y);
+    }
+    getRange() {
+        const options = this.options || {};
+        // @ts-expect-error Fallbacks should never be hit in practice
+        return options.radius + options.hitRadius;
+    }
+}
+
+function getBarBounds(bar, useFinalPosition) {
+    const { x , y , base , width , height  } =  bar.getProps([
+        'x',
+        'y',
+        'base',
+        'width',
+        'height'
+    ], useFinalPosition);
+    let left, right, top, bottom, half;
+    if (bar.horizontal) {
+        half = height / 2;
+        left = Math.min(x, base);
+        right = Math.max(x, base);
+        top = y - half;
+        bottom = y + half;
+    } else {
+        half = width / 2;
+        left = x - half;
+        right = x + half;
+        top = Math.min(y, base);
+        bottom = Math.max(y, base);
+    }
+    return {
+        left,
+        top,
+        right,
+        bottom
+    };
+}
+function skipOrLimit(skip, value, min, max) {
+    return skip ? 0 : _limitValue(value, min, max);
+}
+function parseBorderWidth(bar, maxW, maxH) {
+    const value = bar.options.borderWidth;
+    const skip = bar.borderSkipped;
+    const o = toTRBL(value);
+    return {
+        t: skipOrLimit(skip.top, o.top, 0, maxH),
+        r: skipOrLimit(skip.right, o.right, 0, maxW),
+        b: skipOrLimit(skip.bottom, o.bottom, 0, maxH),
+        l: skipOrLimit(skip.left, o.left, 0, maxW)
+    };
+}
+function parseBorderRadius(bar, maxW, maxH) {
+    const { enableBorderRadius  } = bar.getProps([
+        'enableBorderRadius'
+    ]);
+    const value = bar.options.borderRadius;
+    const o = toTRBLCorners(value);
+    const maxR = Math.min(maxW, maxH);
+    const skip = bar.borderSkipped;
+    const enableBorder = enableBorderRadius || isObject(value);
+    return {
+        topLeft: skipOrLimit(!enableBorder || skip.top || skip.left, o.topLeft, 0, maxR),
+        topRight: skipOrLimit(!enableBorder || skip.top || skip.right, o.topRight, 0, maxR),
+        bottomLeft: skipOrLimit(!enableBorder || skip.bottom || skip.left, o.bottomLeft, 0, maxR),
+        bottomRight: skipOrLimit(!enableBorder || skip.bottom || skip.right, o.bottomRight, 0, maxR)
+    };
+}
+function boundingRects(bar) {
+    const bounds = getBarBounds(bar);
+    const width = bounds.right - bounds.left;
+    const height = bounds.bottom - bounds.top;
+    const border = parseBorderWidth(bar, width / 2, height / 2);
+    const radius = parseBorderRadius(bar, width / 2, height / 2);
+    return {
+        outer: {
+            x: bounds.left,
+            y: bounds.top,
+            w: width,
+            h: height,
+            radius
+        },
+        inner: {
+            x: bounds.left + border.l,
+            y: bounds.top + border.t,
+            w: width - border.l - border.r,
+            h: height - border.t - border.b,
+            radius: {
+                topLeft: Math.max(0, radius.topLeft - Math.max(border.t, border.l)),
+                topRight: Math.max(0, radius.topRight - Math.max(border.t, border.r)),
+                bottomLeft: Math.max(0, radius.bottomLeft - Math.max(border.b, border.l)),
+                bottomRight: Math.max(0, radius.bottomRight - Math.max(border.b, border.r))
+            }
+        }
+    };
+}
+function inRange(bar, x, y, useFinalPosition) {
+    const skipX = x === null;
+    const skipY = y === null;
+    const skipBoth = skipX && skipY;
+    const bounds = bar && !skipBoth && getBarBounds(bar, useFinalPosition);
+    return bounds && (skipX || _isBetween(x, bounds.left, bounds.right)) && (skipY || _isBetween(y, bounds.top, bounds.bottom));
+}
+function hasRadius(radius) {
+    return radius.topLeft || radius.topRight || radius.bottomLeft || radius.bottomRight;
+}
+ function addNormalRectPath(ctx, rect) {
+    ctx.rect(rect.x, rect.y, rect.w, rect.h);
+}
+function inflateRect(rect, amount, refRect = {}) {
+    const x = rect.x !== refRect.x ? -amount : 0;
+    const y = rect.y !== refRect.y ? -amount : 0;
+    const w = (rect.x + rect.w !== refRect.x + refRect.w ? amount : 0) - x;
+    const h = (rect.y + rect.h !== refRect.y + refRect.h ? amount : 0) - y;
+    return {
+        x: rect.x + x,
+        y: rect.y + y,
+        w: rect.w + w,
+        h: rect.h + h,
+        radius: rect.radius
+    };
+}
+class BarElement extends Element {
+    static id = 'bar';
+ static defaults = {
+        borderSkipped: 'start',
+        borderWidth: 0,
+        borderRadius: 0,
+        inflateAmount: 'auto',
+        pointStyle: undefined
+    };
+ static defaultRoutes = {
+        backgroundColor: 'backgroundColor',
+        borderColor: 'borderColor'
+    };
+    constructor(cfg){
+        super();
+        this.options = undefined;
+        this.horizontal = undefined;
+        this.base = undefined;
+        this.width = undefined;
+        this.height = undefined;
+        this.inflateAmount = undefined;
+        if (cfg) {
+            Object.assign(this, cfg);
+        }
+    }
+    draw(ctx) {
+        const { inflateAmount , options: { borderColor , backgroundColor  }  } = this;
+        const { inner , outer  } = boundingRects(this);
+        const addRectPath = hasRadius(outer.radius) ? addRoundedRectPath : addNormalRectPath;
+        ctx.save();
+        if (outer.w !== inner.w || outer.h !== inner.h) {
+            ctx.beginPath();
+            addRectPath(ctx, inflateRect(outer, inflateAmount, inner));
+            ctx.clip();
+            addRectPath(ctx, inflateRect(inner, -inflateAmount, outer));
+            ctx.fillStyle = borderColor;
+            ctx.fill('evenodd');
+        }
+        ctx.beginPath();
+        addRectPath(ctx, inflateRect(inner, inflateAmount));
+        ctx.fillStyle = backgroundColor;
+        ctx.fill();
+        ctx.restore();
+    }
+    inRange(mouseX, mouseY, useFinalPosition) {
+        return inRange(this, mouseX, mouseY, useFinalPosition);
+    }
+    inXRange(mouseX, useFinalPosition) {
+        return inRange(this, mouseX, null, useFinalPosition);
+    }
+    inYRange(mouseY, useFinalPosition) {
+        return inRange(this, null, mouseY, useFinalPosition);
+    }
+    getCenterPoint(useFinalPosition) {
+        const { x , y , base , horizontal  } =  this.getProps([
+            'x',
+            'y',
+            'base',
+            'horizontal'
+        ], useFinalPosition);
+        return {
+            x: horizontal ? (x + base) / 2 : x,
+            y: horizontal ? y : (y + base) / 2
+        };
+    }
+    getRange(axis) {
+        return axis === 'x' ? this.width / 2 : this.height / 2;
+    }
+}
+
+const BORDER_COLORS = [
+    'rgb(54, 162, 235)',
+    'rgb(255, 99, 132)',
+    'rgb(255, 159, 64)',
+    'rgb(255, 205, 86)',
+    'rgb(75, 192, 192)',
+    'rgb(153, 102, 255)',
+    'rgb(201, 203, 207)' // grey
+];
+// Border colors with 50% transparency
+const BACKGROUND_COLORS = /* #__PURE__ */ BORDER_COLORS.map((color)=>color.replace('rgb(', 'rgba(').replace(')', ', 0.5)'));
+function getBorderColor(i) {
+    return BORDER_COLORS[i % BORDER_COLORS.length];
+}
+function getBackgroundColor(i) {
+    return BACKGROUND_COLORS[i % BACKGROUND_COLORS.length];
+}
+function colorizeDefaultDataset(dataset, i) {
+    dataset.borderColor = getBorderColor(i);
+    dataset.backgroundColor = getBackgroundColor(i);
+    return ++i;
+}
+function colorizeDoughnutDataset(dataset, i) {
+    dataset.backgroundColor = dataset.data.map(()=>getBorderColor(i++));
+    return i;
+}
+function colorizePolarAreaDataset(dataset, i) {
+    dataset.backgroundColor = dataset.data.map(()=>getBackgroundColor(i++));
+    return i;
+}
+function getColorizer(chart) {
+    let i = 0;
+    return (dataset, datasetIndex)=>{
+        const controller = chart.getDatasetMeta(datasetIndex).controller;
+        if (controller instanceof DoughnutController) {
+            i = colorizeDoughnutDataset(dataset, i);
+        } else if (controller instanceof PolarAreaController) {
+            i = colorizePolarAreaDataset(dataset, i);
+        } else if (controller) {
+            i = colorizeDefaultDataset(dataset, i);
+        }
+    };
+}
+function containsColorsDefinitions(descriptors) {
+    let k;
+    for(k in descriptors){
+        if (descriptors[k].borderColor || descriptors[k].backgroundColor) {
+            return true;
+        }
+    }
+    return false;
+}
+function containsColorsDefinition(descriptor) {
+    return descriptor && (descriptor.borderColor || descriptor.backgroundColor);
+}
+function containsDefaultColorsDefenitions() {
+    return defaults.borderColor !== 'rgba(0,0,0,0.1)' || defaults.backgroundColor !== 'rgba(0,0,0,0.1)';
+}
+var plugin_colors = {
+    id: 'colors',
+    defaults: {
+        enabled: true,
+        forceOverride: false
+    },
+    beforeLayout (chart, _args, options) {
+        if (!options.enabled) {
+            return;
+        }
+        const { data: { datasets  } , options: chartOptions  } = chart.config;
+        const { elements  } = chartOptions;
+        const containsColorDefenition = containsColorsDefinitions(datasets) || containsColorsDefinition(chartOptions) || elements && containsColorsDefinitions(elements) || containsDefaultColorsDefenitions();
+        if (!options.forceOverride && containsColorDefenition) {
+            return;
+        }
+        const colorizer = getColorizer(chart);
+        datasets.forEach(colorizer);
+    }
+};
+
+function _segments(line, target, property) {
+    const segments = line.segments;
+    const points = line.points;
+    const tpoints = target.points;
+    const parts = [];
+    for (const segment of segments){
+        let { start , end  } = segment;
+        end = _findSegmentEnd(start, end, points);
+        const bounds = _getBounds(property, points[start], points[end], segment.loop);
+        if (!target.segments) {
+            parts.push({
+                source: segment,
+                target: bounds,
+                start: points[start],
+                end: points[end]
+            });
+            continue;
+        }
+        const targetSegments = _boundSegments(target, bounds);
+        for (const tgt of targetSegments){
+            const subBounds = _getBounds(property, tpoints[tgt.start], tpoints[tgt.end], tgt.loop);
+            const fillSources = _boundSegment(segment, points, subBounds);
+            for (const fillSource of fillSources){
+                parts.push({
+                    source: fillSource,
+                    target: tgt,
+                    start: {
+                        [property]: _getEdge(bounds, subBounds, 'start', Math.max)
+                    },
+                    end: {
+                        [property]: _getEdge(bounds, subBounds, 'end', Math.min)
+                    }
+                });
+            }
+        }
+    }
+    return parts;
+}
+function _getBounds(property, first, last, loop) {
+    if (loop) {
+        return;
+    }
+    let start = first[property];
+    let end = last[property];
+    if (property === 'angle') {
+        start = _normalizeAngle(start);
+        end = _normalizeAngle(end);
+    }
+    return {
+        property,
+        start,
+        end
+    };
+}
+function _pointsFromSegments(boundary, line) {
+    const { x =null , y =null  } = boundary || {};
+    const linePoints = line.points;
+    const points = [];
+    line.segments.forEach(({ start , end  })=>{
+        end = _findSegmentEnd(start, end, linePoints);
+        const first = linePoints[start];
+        const last = linePoints[end];
+        if (y !== null) {
+            points.push({
+                x: first.x,
+                y
+            });
+            points.push({
+                x: last.x,
+                y
+            });
+        } else if (x !== null) {
+            points.push({
+                x,
+                y: first.y
+            });
+            points.push({
+                x,
+                y: last.y
+            });
+        }
+    });
+    return points;
+}
+function _findSegmentEnd(start, end, points) {
+    for(; end > start; end--){
+        const point = points[end];
+        if (!isNaN(point.x) && !isNaN(point.y)) {
+            break;
+        }
+    }
+    return end;
+}
+function _getEdge(a, b, prop, fn) {
+    if (a && b) {
+        return fn(a[prop], b[prop]);
+    }
+    return a ? a[prop] : b ? b[prop] : 0;
+}
+
+function _createBoundaryLine(boundary, line) {
+    let points = [];
+    let _loop = false;
+    if (isArray(boundary)) {
+        _loop = true;
+        points = boundary;
+    } else {
+        points = _pointsFromSegments(boundary, line);
+    }
+    return points.length ? new LineElement({
+        points,
+        options: {
+            tension: 0
+        },
+        _loop,
+        _fullLoop: _loop
+    }) : null;
+}
+function _shouldApplyFill(source) {
+    return source && source.fill !== false;
+}
+
+function _resolveTarget(sources, index, propagate) {
+    const source = sources[index];
+    let fill = source.fill;
+    const visited = [
+        index
+    ];
+    let target;
+    if (!propagate) {
+        return fill;
+    }
+    while(fill !== false && visited.indexOf(fill) === -1){
+        if (!isNumberFinite(fill)) {
+            return fill;
+        }
+        target = sources[fill];
+        if (!target) {
+            return false;
+        }
+        if (target.visible) {
+            return fill;
+        }
+        visited.push(fill);
+        fill = target.fill;
+    }
+    return false;
+}
+ function _decodeFill(line, index, count) {
+     const fill = parseFillOption(line);
+    if (isObject(fill)) {
+        return isNaN(fill.value) ? false : fill;
+    }
+    let target = parseFloat(fill);
+    if (isNumberFinite(target) && Math.floor(target) === target) {
+        return decodeTargetIndex(fill[0], index, target, count);
+    }
+    return [
+        'origin',
+        'start',
+        'end',
+        'stack',
+        'shape'
+    ].indexOf(fill) >= 0 && fill;
+}
+function decodeTargetIndex(firstCh, index, target, count) {
+    if (firstCh === '-' || firstCh === '+') {
+        target = index + target;
+    }
+    if (target === index || target < 0 || target >= count) {
+        return false;
+    }
+    return target;
+}
+ function _getTargetPixel(fill, scale) {
+    let pixel = null;
+    if (fill === 'start') {
+        pixel = scale.bottom;
+    } else if (fill === 'end') {
+        pixel = scale.top;
+    } else if (isObject(fill)) {
+        pixel = scale.getPixelForValue(fill.value);
+    } else if (scale.getBasePixel) {
+        pixel = scale.getBasePixel();
+    }
+    return pixel;
+}
+ function _getTargetValue(fill, scale, startValue) {
+    let value;
+    if (fill === 'start') {
+        value = startValue;
+    } else if (fill === 'end') {
+        value = scale.options.reverse ? scale.min : scale.max;
+    } else if (isObject(fill)) {
+        value = fill.value;
+    } else {
+        value = scale.getBaseValue();
+    }
+    return value;
+}
+ function parseFillOption(line) {
+    const options = line.options;
+    const fillOption = options.fill;
+    let fill = valueOrDefault(fillOption && fillOption.target, fillOption);
+    if (fill === undefined) {
+        fill = !!options.backgroundColor;
+    }
+    if (fill === false || fill === null) {
+        return false;
+    }
+    if (fill === true) {
+        return 'origin';
+    }
+    return fill;
+}
+
+function _buildStackLine(source) {
+    const { scale , index , line  } = source;
+    const points = [];
+    const segments = line.segments;
+    const sourcePoints = line.points;
+    const linesBelow = getLinesBelow(scale, index);
+    linesBelow.push(_createBoundaryLine({
+        x: null,
+        y: scale.bottom
+    }, line));
+    for(let i = 0; i < segments.length; i++){
+        const segment = segments[i];
+        for(let j = segment.start; j <= segment.end; j++){
+            addPointsBelow(points, sourcePoints[j], linesBelow);
+        }
+    }
+    return new LineElement({
+        points,
+        options: {}
+    });
+}
+ function getLinesBelow(scale, index) {
+    const below = [];
+    const metas = scale.getMatchingVisibleMetas('line');
+    for(let i = 0; i < metas.length; i++){
+        const meta = metas[i];
+        if (meta.index === index) {
+            break;
+        }
+        if (!meta.hidden) {
+            below.unshift(meta.dataset);
+        }
+    }
+    return below;
+}
+ function addPointsBelow(points, sourcePoint, linesBelow) {
+    const postponed = [];
+    for(let j = 0; j < linesBelow.length; j++){
+        const line = linesBelow[j];
+        const { first , last , point  } = findPoint(line, sourcePoint, 'x');
+        if (!point || first && last) {
+            continue;
+        }
+        if (first) {
+            postponed.unshift(point);
+        } else {
+            points.push(point);
+            if (!last) {
+                break;
+            }
+        }
+    }
+    points.push(...postponed);
+}
+ function findPoint(line, sourcePoint, property) {
+    const point = line.interpolate(sourcePoint, property);
+    if (!point) {
+        return {};
+    }
+    const pointValue = point[property];
+    const segments = line.segments;
+    const linePoints = line.points;
+    let first = false;
+    let last = false;
+    for(let i = 0; i < segments.length; i++){
+        const segment = segments[i];
+        const firstValue = linePoints[segment.start][property];
+        const lastValue = linePoints[segment.end][property];
+        if (_isBetween(pointValue, firstValue, lastValue)) {
+            first = pointValue === firstValue;
+            last = pointValue === lastValue;
+            break;
+        }
+    }
+    return {
+        first,
+        last,
+        point
+    };
+}
+
+class simpleArc {
+    constructor(opts){
+        this.x = opts.x;
+        this.y = opts.y;
+        this.radius = opts.radius;
+    }
+    pathSegment(ctx, bounds, opts) {
+        const { x , y , radius  } = this;
+        bounds = bounds || {
+            start: 0,
+            end: TAU
+        };
+        ctx.arc(x, y, radius, bounds.end, bounds.start, true);
+        return !opts.bounds;
+    }
+    interpolate(point) {
+        const { x , y , radius  } = this;
+        const angle = point.angle;
+        return {
+            x: x + Math.cos(angle) * radius,
+            y: y + Math.sin(angle) * radius,
+            angle
+        };
+    }
+}
+
+function _getTarget(source) {
+    const { chart , fill , line  } = source;
+    if (isNumberFinite(fill)) {
+        return getLineByIndex(chart, fill);
+    }
+    if (fill === 'stack') {
+        return _buildStackLine(source);
+    }
+    if (fill === 'shape') {
+        return true;
+    }
+    const boundary = computeBoundary(source);
+    if (boundary instanceof simpleArc) {
+        return boundary;
+    }
+    return _createBoundaryLine(boundary, line);
+}
+ function getLineByIndex(chart, index) {
+    const meta = chart.getDatasetMeta(index);
+    const visible = meta && chart.isDatasetVisible(index);
+    return visible ? meta.dataset : null;
+}
+function computeBoundary(source) {
+    const scale = source.scale || {};
+    if (scale.getPointPositionForValue) {
+        return computeCircularBoundary(source);
+    }
+    return computeLinearBoundary(source);
+}
+function computeLinearBoundary(source) {
+    const { scale ={} , fill  } = source;
+    const pixel = _getTargetPixel(fill, scale);
+    if (isNumberFinite(pixel)) {
+        const horizontal = scale.isHorizontal();
+        return {
+            x: horizontal ? pixel : null,
+            y: horizontal ? null : pixel
+        };
+    }
+    return null;
+}
+function computeCircularBoundary(source) {
+    const { scale , fill  } = source;
+    const options = scale.options;
+    const length = scale.getLabels().length;
+    const start = options.reverse ? scale.max : scale.min;
+    const value = _getTargetValue(fill, scale, start);
+    const target = [];
+    if (options.grid.circular) {
+        const center = scale.getPointPositionForValue(0, start);
+        return new simpleArc({
+            x: center.x,
+            y: center.y,
+            radius: scale.getDistanceFromCenterForValue(value)
+        });
+    }
+    for(let i = 0; i < length; ++i){
+        target.push(scale.getPointPositionForValue(i, value));
+    }
+    return target;
+}
+
+function _drawfill(ctx, source, area) {
+    const target = _getTarget(source);
+    const { chart , index , line , scale , axis  } = source;
+    const lineOpts = line.options;
+    const fillOption = lineOpts.fill;
+    const color = lineOpts.backgroundColor;
+    const { above =color , below =color  } = fillOption || {};
+    const meta = chart.getDatasetMeta(index);
+    const clip = getDatasetClipArea(chart, meta);
+    if (target && line.points.length) {
+        clipArea(ctx, area);
+        doFill(ctx, {
+            line,
+            target,
+            above,
+            below,
+            area,
+            scale,
+            axis,
+            clip
+        });
+        unclipArea(ctx);
+    }
+}
+function doFill(ctx, cfg) {
+    const { line , target , above , below , area , scale , clip  } = cfg;
+    const property = line._loop ? 'angle' : cfg.axis;
+    ctx.save();
+    let fillColor = below;
+    if (below !== above) {
+        if (property === 'x') {
+            clipVertical(ctx, target, area.top);
+            fill(ctx, {
+                line,
+                target,
+                color: above,
+                scale,
+                property,
+                clip
+            });
+            ctx.restore();
+            ctx.save();
+            clipVertical(ctx, target, area.bottom);
+        } else if (property === 'y') {
+            clipHorizontal(ctx, target, area.left);
+            fill(ctx, {
+                line,
+                target,
+                color: below,
+                scale,
+                property,
+                clip
+            });
+            ctx.restore();
+            ctx.save();
+            clipHorizontal(ctx, target, area.right);
+            fillColor = above;
+        }
+    }
+    fill(ctx, {
+        line,
+        target,
+        color: fillColor,
+        scale,
+        property,
+        clip
+    });
+    ctx.restore();
+}
+function clipVertical(ctx, target, clipY) {
+    const { segments , points  } = target;
+    let first = true;
+    let lineLoop = false;
+    ctx.beginPath();
+    for (const segment of segments){
+        const { start , end  } = segment;
+        const firstPoint = points[start];
+        const lastPoint = points[_findSegmentEnd(start, end, points)];
+        if (first) {
+            ctx.moveTo(firstPoint.x, firstPoint.y);
+            first = false;
+        } else {
+            ctx.lineTo(firstPoint.x, clipY);
+            ctx.lineTo(firstPoint.x, firstPoint.y);
+        }
+        lineLoop = !!target.pathSegment(ctx, segment, {
+            move: lineLoop
+        });
+        if (lineLoop) {
+            ctx.closePath();
+        } else {
+            ctx.lineTo(lastPoint.x, clipY);
+        }
+    }
+    ctx.lineTo(target.first().x, clipY);
+    ctx.closePath();
+    ctx.clip();
+}
+function clipHorizontal(ctx, target, clipX) {
+    const { segments , points  } = target;
+    let first = true;
+    let lineLoop = false;
+    ctx.beginPath();
+    for (const segment of segments){
+        const { start , end  } = segment;
+        const firstPoint = points[start];
+        const lastPoint = points[_findSegmentEnd(start, end, points)];
+        if (first) {
+            ctx.moveTo(firstPoint.x, firstPoint.y);
+            first = false;
+        } else {
+            ctx.lineTo(clipX, firstPoint.y);
+            ctx.lineTo(firstPoint.x, firstPoint.y);
+        }
+        lineLoop = !!target.pathSegment(ctx, segment, {
+            move: lineLoop
+        });
+        if (lineLoop) {
+            ctx.closePath();
+        } else {
+            ctx.lineTo(clipX, lastPoint.y);
+        }
+    }
+    ctx.lineTo(clipX, target.first().y);
+    ctx.closePath();
+    ctx.clip();
+}
+function fill(ctx, cfg) {
+    const { line , target , property , color , scale , clip  } = cfg;
+    const segments = _segments(line, target, property);
+    for (const { source: src , target: tgt , start , end  } of segments){
+        const { style: { backgroundColor =color  } = {}  } = src;
+        const notShape = target !== true;
+        ctx.save();
+        ctx.fillStyle = backgroundColor;
+        clipBounds(ctx, scale, clip, notShape && _getBounds(property, start, end));
+        ctx.beginPath();
+        const lineLoop = !!line.pathSegment(ctx, src);
+        let loop;
+        if (notShape) {
+            if (lineLoop) {
+                ctx.closePath();
+            } else {
+                interpolatedLineTo(ctx, target, end, property);
+            }
+            const targetLoop = !!target.pathSegment(ctx, tgt, {
+                move: lineLoop,
+                reverse: true
+            });
+            loop = lineLoop && targetLoop;
+            if (!loop) {
+                interpolatedLineTo(ctx, target, start, property);
+            }
+        }
+        ctx.closePath();
+        ctx.fill(loop ? 'evenodd' : 'nonzero');
+        ctx.restore();
+    }
+}
+function clipBounds(ctx, scale, clip, bounds) {
+    const chartArea = scale.chart.chartArea;
+    const { property , start , end  } = bounds || {};
+    if (property === 'x' || property === 'y') {
+        let left, top, right, bottom;
+        if (property === 'x') {
+            left = start;
+            top = chartArea.top;
+            right = end;
+            bottom = chartArea.bottom;
+        } else {
+            left = chartArea.left;
+            top = start;
+            right = chartArea.right;
+            bottom = end;
+        }
+        ctx.beginPath();
+        if (clip) {
+            left = Math.max(left, clip.left);
+            right = Math.min(right, clip.right);
+            top = Math.max(top, clip.top);
+            bottom = Math.min(bottom, clip.bottom);
+        }
+        ctx.rect(left, top, right - left, bottom - top);
+        ctx.clip();
+    }
+}
+function interpolatedLineTo(ctx, target, point, property) {
+    const interpolatedPoint = target.interpolate(point, property);
+    if (interpolatedPoint) {
+        ctx.lineTo(interpolatedPoint.x, interpolatedPoint.y);
+    }
+}
+
+var index = {
+    id: 'filler',
+    afterDatasetsUpdate (chart, _args, options) {
+        const count = (chart.data.datasets || []).length;
+        const sources = [];
+        let meta, i, line, source;
+        for(i = 0; i < count; ++i){
+            meta = chart.getDatasetMeta(i);
+            line = meta.dataset;
+            source = null;
+            if (line && line.options && line instanceof LineElement) {
+                source = {
+                    visible: chart.isDatasetVisible(i),
+                    index: i,
+                    fill: _decodeFill(line, i, count),
+                    chart,
+                    axis: meta.controller.options.indexAxis,
+                    scale: meta.vScale,
+                    line
+                };
+            }
+            meta.$filler = source;
+            sources.push(source);
+        }
+        for(i = 0; i < count; ++i){
+            source = sources[i];
+            if (!source || source.fill === false) {
+                continue;
+            }
+            source.fill = _resolveTarget(sources, i, options.propagate);
+        }
+    },
+    beforeDraw (chart, _args, options) {
+        const draw = options.drawTime === 'beforeDraw';
+        const metasets = chart.getSortedVisibleDatasetMetas();
+        const area = chart.chartArea;
+        for(let i = metasets.length - 1; i >= 0; --i){
+            const source = metasets[i].$filler;
+            if (!source) {
+                continue;
+            }
+            source.line.updateControlPoints(area, source.axis);
+            if (draw && source.fill) {
+                _drawfill(chart.ctx, source, area);
+            }
+        }
+    },
+    beforeDatasetsDraw (chart, _args, options) {
+        if (options.drawTime !== 'beforeDatasetsDraw') {
+            return;
+        }
+        const metasets = chart.getSortedVisibleDatasetMetas();
+        for(let i = metasets.length - 1; i >= 0; --i){
+            const source = metasets[i].$filler;
+            if (_shouldApplyFill(source)) {
+                _drawfill(chart.ctx, source, chart.chartArea);
+            }
+        }
+    },
+    beforeDatasetDraw (chart, args, options) {
+        const source = args.meta.$filler;
+        if (!_shouldApplyFill(source) || options.drawTime !== 'beforeDatasetDraw') {
+            return;
+        }
+        _drawfill(chart.ctx, source, chart.chartArea);
+    },
+    defaults: {
+        propagate: true,
+        drawTime: 'beforeDatasetDraw'
+    }
+};
+
+const getBoxSize = (labelOpts, fontSize)=>{
+    let { boxHeight =fontSize , boxWidth =fontSize  } = labelOpts;
+    if (labelOpts.usePointStyle) {
+        boxHeight = Math.min(boxHeight, fontSize);
+        boxWidth = labelOpts.pointStyleWidth || Math.min(boxWidth, fontSize);
+    }
+    return {
+        boxWidth,
+        boxHeight,
+        itemHeight: Math.max(fontSize, boxHeight)
+    };
+};
+const itemsEqual = (a, b)=>a !== null && b !== null && a.datasetIndex === b.datasetIndex && a.index === b.index;
+class Legend extends Element {
+ constructor(config){
+        super();
+        this._added = false;
+        this.legendHitBoxes = [];
+ this._hoveredItem = null;
+        this.doughnutMode = false;
+        this.chart = config.chart;
+        this.options = config.options;
+        this.ctx = config.ctx;
+        this.legendItems = undefined;
+        this.columnSizes = undefined;
+        this.lineWidths = undefined;
+        this.maxHeight = undefined;
+        this.maxWidth = undefined;
+        this.top = undefined;
+        this.bottom = undefined;
+        this.left = undefined;
+        this.right = undefined;
+        this.height = undefined;
+        this.width = undefined;
+        this._margins = undefined;
+        this.position = undefined;
+        this.weight = undefined;
+        this.fullSize = undefined;
+    }
+    update(maxWidth, maxHeight, margins) {
+        this.maxWidth = maxWidth;
+        this.maxHeight = maxHeight;
+        this._margins = margins;
+        this.setDimensions();
+        this.buildLabels();
+        this.fit();
+    }
+    setDimensions() {
+        if (this.isHorizontal()) {
+            this.width = this.maxWidth;
+            this.left = this._margins.left;
+            this.right = this.width;
+        } else {
+            this.height = this.maxHeight;
+            this.top = this._margins.top;
+            this.bottom = this.height;
+        }
+    }
+    buildLabels() {
+        const labelOpts = this.options.labels || {};
+        let legendItems = callback(labelOpts.generateLabels, [
+            this.chart
+        ], this) || [];
+        if (labelOpts.filter) {
+            legendItems = legendItems.filter((item)=>labelOpts.filter(item, this.chart.data));
+        }
+        if (labelOpts.sort) {
+            legendItems = legendItems.sort((a, b)=>labelOpts.sort(a, b, this.chart.data));
+        }
+        if (this.options.reverse) {
+            legendItems.reverse();
+        }
+        this.legendItems = legendItems;
+    }
+    fit() {
+        const { options , ctx  } = this;
+        if (!options.display) {
+            this.width = this.height = 0;
+            return;
+        }
+        const labelOpts = options.labels;
+        const labelFont = toFont(labelOpts.font);
+        const fontSize = labelFont.size;
+        const titleHeight = this._computeTitleHeight();
+        const { boxWidth , itemHeight  } = getBoxSize(labelOpts, fontSize);
+        let width, height;
+        ctx.font = labelFont.string;
+        if (this.isHorizontal()) {
+            width = this.maxWidth;
+            height = this._fitRows(titleHeight, fontSize, boxWidth, itemHeight) + 10;
+        } else {
+            height = this.maxHeight;
+            width = this._fitCols(titleHeight, labelFont, boxWidth, itemHeight) + 10;
+        }
+        this.width = Math.min(width, options.maxWidth || this.maxWidth);
+        this.height = Math.min(height, options.maxHeight || this.maxHeight);
+    }
+ _fitRows(titleHeight, fontSize, boxWidth, itemHeight) {
+        const { ctx , maxWidth , options: { labels: { padding  }  }  } = this;
+        const hitboxes = this.legendHitBoxes = [];
+        const lineWidths = this.lineWidths = [
+            0
+        ];
+        const lineHeight = itemHeight + padding;
+        let totalHeight = titleHeight;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        let row = -1;
+        let top = -lineHeight;
+        this.legendItems.forEach((legendItem, i)=>{
+            const itemWidth = boxWidth + fontSize / 2 + ctx.measureText(legendItem.text).width;
+            if (i === 0 || lineWidths[lineWidths.length - 1] + itemWidth + 2 * padding > maxWidth) {
+                totalHeight += lineHeight;
+                lineWidths[lineWidths.length - (i > 0 ? 0 : 1)] = 0;
+                top += lineHeight;
+                row++;
+            }
+            hitboxes[i] = {
+                left: 0,
+                top,
+                row,
+                width: itemWidth,
+                height: itemHeight
+            };
+            lineWidths[lineWidths.length - 1] += itemWidth + padding;
+        });
+        return totalHeight;
+    }
+    _fitCols(titleHeight, labelFont, boxWidth, _itemHeight) {
+        const { ctx , maxHeight , options: { labels: { padding  }  }  } = this;
+        const hitboxes = this.legendHitBoxes = [];
+        const columnSizes = this.columnSizes = [];
+        const heightLimit = maxHeight - titleHeight;
+        let totalWidth = padding;
+        let currentColWidth = 0;
+        let currentColHeight = 0;
+        let left = 0;
+        let col = 0;
+        this.legendItems.forEach((legendItem, i)=>{
+            const { itemWidth , itemHeight  } = calculateItemSize(boxWidth, labelFont, ctx, legendItem, _itemHeight);
+            if (i > 0 && currentColHeight + itemHeight + 2 * padding > heightLimit) {
+                totalWidth += currentColWidth + padding;
+                columnSizes.push({
+                    width: currentColWidth,
+                    height: currentColHeight
+                });
+                left += currentColWidth + padding;
+                col++;
+                currentColWidth = currentColHeight = 0;
+            }
+            hitboxes[i] = {
+                left,
+                top: currentColHeight,
+                col,
+                width: itemWidth,
+                height: itemHeight
+            };
+            currentColWidth = Math.max(currentColWidth, itemWidth);
+            currentColHeight += itemHeight + padding;
+        });
+        totalWidth += currentColWidth;
+        columnSizes.push({
+            width: currentColWidth,
+            height: currentColHeight
+        });
+        return totalWidth;
+    }
+    adjustHitBoxes() {
+        if (!this.options.display) {
+            return;
+        }
+        const titleHeight = this._computeTitleHeight();
+        const { legendHitBoxes: hitboxes , options: { align , labels: { padding  } , rtl  }  } = this;
+        const rtlHelper = getRtlAdapter(rtl, this.left, this.width);
+        if (this.isHorizontal()) {
+            let row = 0;
+            let left = _alignStartEnd(align, this.left + padding, this.right - this.lineWidths[row]);
+            for (const hitbox of hitboxes){
+                if (row !== hitbox.row) {
+                    row = hitbox.row;
+                    left = _alignStartEnd(align, this.left + padding, this.right - this.lineWidths[row]);
+                }
+                hitbox.top += this.top + titleHeight + padding;
+                hitbox.left = rtlHelper.leftForLtr(rtlHelper.x(left), hitbox.width);
+                left += hitbox.width + padding;
+            }
+        } else {
+            let col = 0;
+            let top = _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
+            for (const hitbox of hitboxes){
+                if (hitbox.col !== col) {
+                    col = hitbox.col;
+                    top = _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
+                }
+                hitbox.top = top;
+                hitbox.left += this.left + padding;
+                hitbox.left = rtlHelper.leftForLtr(rtlHelper.x(hitbox.left), hitbox.width);
+                top += hitbox.height + padding;
+            }
+        }
+    }
+    isHorizontal() {
+        return this.options.position === 'top' || this.options.position === 'bottom';
+    }
+    draw() {
+        if (this.options.display) {
+            const ctx = this.ctx;
+            clipArea(ctx, this);
+            this._draw();
+            unclipArea(ctx);
+        }
+    }
+ _draw() {
+        const { options: opts , columnSizes , lineWidths , ctx  } = this;
+        const { align , labels: labelOpts  } = opts;
+        const defaultColor = defaults.color;
+        const rtlHelper = getRtlAdapter(opts.rtl, this.left, this.width);
+        const labelFont = toFont(labelOpts.font);
+        const { padding  } = labelOpts;
+        const fontSize = labelFont.size;
+        const halfFontSize = fontSize / 2;
+        let cursor;
+        this.drawTitle();
+        ctx.textAlign = rtlHelper.textAlign('left');
+        ctx.textBaseline = 'middle';
+        ctx.lineWidth = 0.5;
+        ctx.font = labelFont.string;
+        const { boxWidth , boxHeight , itemHeight  } = getBoxSize(labelOpts, fontSize);
+        const drawLegendBox = function(x, y, legendItem) {
+            if (isNaN(boxWidth) || boxWidth <= 0 || isNaN(boxHeight) || boxHeight < 0) {
+                return;
+            }
+            ctx.save();
+            const lineWidth = valueOrDefault(legendItem.lineWidth, 1);
+            ctx.fillStyle = valueOrDefault(legendItem.fillStyle, defaultColor);
+            ctx.lineCap = valueOrDefault(legendItem.lineCap, 'butt');
+            ctx.lineDashOffset = valueOrDefault(legendItem.lineDashOffset, 0);
+            ctx.lineJoin = valueOrDefault(legendItem.lineJoin, 'miter');
+            ctx.lineWidth = lineWidth;
+            ctx.strokeStyle = valueOrDefault(legendItem.strokeStyle, defaultColor);
+            ctx.setLineDash(valueOrDefault(legendItem.lineDash, []));
+            if (labelOpts.usePointStyle) {
+                const drawOptions = {
+                    radius: boxHeight * Math.SQRT2 / 2,
+                    pointStyle: legendItem.pointStyle,
+                    rotation: legendItem.rotation,
+                    borderWidth: lineWidth
+                };
+                const centerX = rtlHelper.xPlus(x, boxWidth / 2);
+                const centerY = y + halfFontSize;
+                drawPointLegend(ctx, drawOptions, centerX, centerY, labelOpts.pointStyleWidth && boxWidth);
+            } else {
+                const yBoxTop = y + Math.max((fontSize - boxHeight) / 2, 0);
+                const xBoxLeft = rtlHelper.leftForLtr(x, boxWidth);
+                const borderRadius = toTRBLCorners(legendItem.borderRadius);
+                ctx.beginPath();
+                if (Object.values(borderRadius).some((v)=>v !== 0)) {
+                    addRoundedRectPath(ctx, {
+                        x: xBoxLeft,
+                        y: yBoxTop,
+                        w: boxWidth,
+                        h: boxHeight,
+                        radius: borderRadius
+                    });
+                } else {
+                    ctx.rect(xBoxLeft, yBoxTop, boxWidth, boxHeight);
+                }
+                ctx.fill();
+                if (lineWidth !== 0) {
+                    ctx.stroke();
+                }
+            }
+            ctx.restore();
+        };
+        const fillText = function(x, y, legendItem) {
+            renderText(ctx, legendItem.text, x, y + itemHeight / 2, labelFont, {
+                strikethrough: legendItem.hidden,
+                textAlign: rtlHelper.textAlign(legendItem.textAlign)
+            });
+        };
+        const isHorizontal = this.isHorizontal();
+        const titleHeight = this._computeTitleHeight();
+        if (isHorizontal) {
+            cursor = {
+                x: _alignStartEnd(align, this.left + padding, this.right - lineWidths[0]),
+                y: this.top + padding + titleHeight,
+                line: 0
+            };
+        } else {
+            cursor = {
+                x: this.left + padding,
+                y: _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - columnSizes[0].height),
+                line: 0
+            };
+        }
+        overrideTextDirection(this.ctx, opts.textDirection);
+        const lineHeight = itemHeight + padding;
+        this.legendItems.forEach((legendItem, i)=>{
+            ctx.strokeStyle = legendItem.fontColor;
+            ctx.fillStyle = legendItem.fontColor;
+            const textWidth = ctx.measureText(legendItem.text).width;
+            const textAlign = rtlHelper.textAlign(legendItem.textAlign || (legendItem.textAlign = labelOpts.textAlign));
+            const width = boxWidth + halfFontSize + textWidth;
+            let x = cursor.x;
+            let y = cursor.y;
+            rtlHelper.setWidth(this.width);
+            if (isHorizontal) {
+                if (i > 0 && x + width + padding > this.right) {
+                    y = cursor.y += lineHeight;
+                    cursor.line++;
+                    x = cursor.x = _alignStartEnd(align, this.left + padding, this.right - lineWidths[cursor.line]);
+                }
+            } else if (i > 0 && y + lineHeight > this.bottom) {
+                x = cursor.x = x + columnSizes[cursor.line].width + padding;
+                cursor.line++;
+                y = cursor.y = _alignStartEnd(align, this.top + titleHeight + padding, this.bottom - columnSizes[cursor.line].height);
+            }
+            const realX = rtlHelper.x(x);
+            drawLegendBox(realX, y, legendItem);
+            x = _textX(textAlign, x + boxWidth + halfFontSize, isHorizontal ? x + width : this.right, opts.rtl);
+            fillText(rtlHelper.x(x), y, legendItem);
+            if (isHorizontal) {
+                cursor.x += width + padding;
+            } else if (typeof legendItem.text !== 'string') {
+                const fontLineHeight = labelFont.lineHeight;
+                cursor.y += calculateLegendItemHeight(legendItem, fontLineHeight) + padding;
+            } else {
+                cursor.y += lineHeight;
+            }
+        });
+        restoreTextDirection(this.ctx, opts.textDirection);
+    }
+ drawTitle() {
+        const opts = this.options;
+        const titleOpts = opts.title;
+        const titleFont = toFont(titleOpts.font);
+        const titlePadding = toPadding(titleOpts.padding);
+        if (!titleOpts.display) {
+            return;
+        }
+        const rtlHelper = getRtlAdapter(opts.rtl, this.left, this.width);
+        const ctx = this.ctx;
+        const position = titleOpts.position;
+        const halfFontSize = titleFont.size / 2;
+        const topPaddingPlusHalfFontSize = titlePadding.top + halfFontSize;
+        let y;
+        let left = this.left;
+        let maxWidth = this.width;
+        if (this.isHorizontal()) {
+            maxWidth = Math.max(...this.lineWidths);
+            y = this.top + topPaddingPlusHalfFontSize;
+            left = _alignStartEnd(opts.align, left, this.right - maxWidth);
+        } else {
+            const maxHeight = this.columnSizes.reduce((acc, size)=>Math.max(acc, size.height), 0);
+            y = topPaddingPlusHalfFontSize + _alignStartEnd(opts.align, this.top, this.bottom - maxHeight - opts.labels.padding - this._computeTitleHeight());
+        }
+        const x = _alignStartEnd(position, left, left + maxWidth);
+        ctx.textAlign = rtlHelper.textAlign(_toLeftRightCenter(position));
+        ctx.textBaseline = 'middle';
+        ctx.strokeStyle = titleOpts.color;
+        ctx.fillStyle = titleOpts.color;
+        ctx.font = titleFont.string;
+        renderText(ctx, titleOpts.text, x, y, titleFont);
+    }
+ _computeTitleHeight() {
+        const titleOpts = this.options.title;
+        const titleFont = toFont(titleOpts.font);
+        const titlePadding = toPadding(titleOpts.padding);
+        return titleOpts.display ? titleFont.lineHeight + titlePadding.height : 0;
+    }
+ _getLegendItemAt(x, y) {
+        let i, hitBox, lh;
+        if (_isBetween(x, this.left, this.right) && _isBetween(y, this.top, this.bottom)) {
+            lh = this.legendHitBoxes;
+            for(i = 0; i < lh.length; ++i){
+                hitBox = lh[i];
+                if (_isBetween(x, hitBox.left, hitBox.left + hitBox.width) && _isBetween(y, hitBox.top, hitBox.top + hitBox.height)) {
+                    return this.legendItems[i];
+                }
+            }
+        }
+        return null;
+    }
+ handleEvent(e) {
+        const opts = this.options;
+        if (!isListened(e.type, opts)) {
+            return;
+        }
+        const hoveredItem = this._getLegendItemAt(e.x, e.y);
+        if (e.type === 'mousemove' || e.type === 'mouseout') {
+            const previous = this._hoveredItem;
+            const sameItem = itemsEqual(previous, hoveredItem);
+            if (previous && !sameItem) {
+                callback(opts.onLeave, [
+                    e,
+                    previous,
+                    this
+                ], this);
+            }
+            this._hoveredItem = hoveredItem;
+            if (hoveredItem && !sameItem) {
+                callback(opts.onHover, [
+                    e,
+                    hoveredItem,
+                    this
+                ], this);
+            }
+        } else if (hoveredItem) {
+            callback(opts.onClick, [
+                e,
+                hoveredItem,
+                this
+            ], this);
+        }
+    }
+}
+function calculateItemSize(boxWidth, labelFont, ctx, legendItem, _itemHeight) {
+    const itemWidth = calculateItemWidth(legendItem, boxWidth, labelFont, ctx);
+    const itemHeight = calculateItemHeight(_itemHeight, legendItem, labelFont.lineHeight);
+    return {
+        itemWidth,
+        itemHeight
+    };
+}
+function calculateItemWidth(legendItem, boxWidth, labelFont, ctx) {
+    let legendItemText = legendItem.text;
+    if (legendItemText && typeof legendItemText !== 'string') {
+        legendItemText = legendItemText.reduce((a, b)=>a.length > b.length ? a : b);
+    }
+    return boxWidth + labelFont.size / 2 + ctx.measureText(legendItemText).width;
+}
+function calculateItemHeight(_itemHeight, legendItem, fontLineHeight) {
+    let itemHeight = _itemHeight;
+    if (typeof legendItem.text !== 'string') {
+        itemHeight = calculateLegendItemHeight(legendItem, fontLineHeight);
+    }
+    return itemHeight;
+}
+function calculateLegendItemHeight(legendItem, fontLineHeight) {
+    const labelHeight = legendItem.text ? legendItem.text.length : 0;
+    return fontLineHeight * labelHeight;
+}
+function isListened(type, opts) {
+    if ((type === 'mousemove' || type === 'mouseout') && (opts.onHover || opts.onLeave)) {
+        return true;
+    }
+    if (opts.onClick && (type === 'click' || type === 'mouseup')) {
+        return true;
+    }
+    return false;
+}
+var plugin_legend = {
+    id: 'legend',
+ _element: Legend,
+    start (chart, _args, options) {
+        const legend = chart.legend = new Legend({
+            ctx: chart.ctx,
+            options,
+            chart
+        });
+        layouts.configure(chart, legend, options);
+        layouts.addBox(chart, legend);
+    },
+    stop (chart) {
+        layouts.removeBox(chart, chart.legend);
+        delete chart.legend;
+    },
+    beforeUpdate (chart, _args, options) {
+        const legend = chart.legend;
+        layouts.configure(chart, legend, options);
+        legend.options = options;
+    },
+    afterUpdate (chart) {
+        const legend = chart.legend;
+        legend.buildLabels();
+        legend.adjustHitBoxes();
+    },
+    afterEvent (chart, args) {
+        if (!args.replay) {
+            chart.legend.handleEvent(args.event);
+        }
+    },
+    defaults: {
+        display: true,
+        position: 'top',
+        align: 'center',
+        fullSize: true,
+        reverse: false,
+        weight: 1000,
+        onClick (e, legendItem, legend) {
+            const index = legendItem.datasetIndex;
+            const ci = legend.chart;
+            if (ci.isDatasetVisible(index)) {
+                ci.hide(index);
+                legendItem.hidden = true;
+            } else {
+                ci.show(index);
+                legendItem.hidden = false;
+            }
+        },
+        onHover: null,
+        onLeave: null,
+        labels: {
+            color: (ctx)=>ctx.chart.options.color,
+            boxWidth: 40,
+            padding: 10,
+            generateLabels (chart) {
+                const datasets = chart.data.datasets;
+                const { labels: { usePointStyle , pointStyle , textAlign , color , useBorderRadius , borderRadius  }  } = chart.legend.options;
+                return chart._getSortedDatasetMetas().map((meta)=>{
+                    const style = meta.controller.getStyle(usePointStyle ? 0 : undefined);
+                    const borderWidth = toPadding(style.borderWidth);
+                    return {
+                        text: datasets[meta.index].label,
+                        fillStyle: style.backgroundColor,
+                        fontColor: color,
+                        hidden: !meta.visible,
+                        lineCap: style.borderCapStyle,
+                        lineDash: style.borderDash,
+                        lineDashOffset: style.borderDashOffset,
+                        lineJoin: style.borderJoinStyle,
+                        lineWidth: (borderWidth.width + borderWidth.height) / 4,
+                        strokeStyle: style.borderColor,
+                        pointStyle: pointStyle || style.pointStyle,
+                        rotation: style.rotation,
+                        textAlign: textAlign || style.textAlign,
+                        borderRadius: useBorderRadius && (borderRadius || style.borderRadius),
+                        datasetIndex: meta.index
+                    };
+                }, this);
+            }
+        },
+        title: {
+            color: (ctx)=>ctx.chart.options.color,
+            display: false,
+            position: 'center',
+            text: ''
+        }
+    },
+    descriptors: {
+        _scriptable: (name)=>!name.startsWith('on'),
+        labels: {
+            _scriptable: (name)=>![
+                    'generateLabels',
+                    'filter',
+                    'sort'
+                ].includes(name)
+        }
+    }
+};
+
+const positioners = {
+ average (items) {
+        if (!items.length) {
+            return false;
+        }
+        let i, len;
+        let xSet = new Set();
+        let y = 0;
+        let count = 0;
+        for(i = 0, len = items.length; i < len; ++i){
+            const el = items[i].element;
+            if (el && el.hasValue()) {
+                const pos = el.tooltipPosition();
+                xSet.add(pos.x);
+                y += pos.y;
+                ++count;
+            }
+        }
+        if (count === 0 || xSet.size === 0) {
+            return false;
+        }
+        const xAverage = [
+            ...xSet
+        ].reduce((a, b)=>a + b) / xSet.size;
+        return {
+            x: xAverage,
+            y: y / count
+        };
+    },
+ nearest (items, eventPosition) {
+        if (!items.length) {
+            return false;
+        }
+        let x = eventPosition.x;
+        let y = eventPosition.y;
+        let minDistance = Number.POSITIVE_INFINITY;
+        let i, len, nearestElement;
+        for(i = 0, len = items.length; i < len; ++i){
+            const el = items[i].element;
+            if (el && el.hasValue()) {
+                const center = el.getCenterPoint();
+                const d = distanceBetweenPoints(eventPosition, center);
+                if (d < minDistance) {
+                    minDistance = d;
+                    nearestElement = el;
+                }
+            }
+        }
+        if (nearestElement) {
+            const tp = nearestElement.tooltipPosition();
+            x = tp.x;
+            y = tp.y;
+        }
+        return {
+            x,
+            y
+        };
+    }
+};
+function pushOrConcat(base, toPush) {
+    if (toPush) {
+        if (isArray(toPush)) {
+            Array.prototype.push.apply(base, toPush);
+        } else {
+            base.push(toPush);
+        }
+    }
+    return base;
+}
+ function splitNewlines(str) {
+    if ((typeof str === 'string' || str instanceof String) && str.indexOf('\n') > -1) {
+        return str.split('\n');
+    }
+    return str;
+}
+ function createTooltipItem(chart, item) {
+    const { element , datasetIndex , index  } = item;
+    const controller = chart.getDatasetMeta(datasetIndex).controller;
+    const { label , value  } = controller.getLabelAndValue(index);
+    return {
+        chart,
+        label,
+        parsed: controller.getParsed(index),
+        raw: chart.data.datasets[datasetIndex].data[index],
+        formattedValue: value,
+        dataset: controller.getDataset(),
+        dataIndex: index,
+        datasetIndex,
+        element
+    };
+}
+ function getTooltipSize(tooltip, options) {
+    const ctx = tooltip.chart.ctx;
+    const { body , footer , title  } = tooltip;
+    const { boxWidth , boxHeight  } = options;
+    const bodyFont = toFont(options.bodyFont);
+    const titleFont = toFont(options.titleFont);
+    const footerFont = toFont(options.footerFont);
+    const titleLineCount = title.length;
+    const footerLineCount = footer.length;
+    const bodyLineItemCount = body.length;
+    const padding = toPadding(options.padding);
+    let height = padding.height;
+    let width = 0;
+    let combinedBodyLength = body.reduce((count, bodyItem)=>count + bodyItem.before.length + bodyItem.lines.length + bodyItem.after.length, 0);
+    combinedBodyLength += tooltip.beforeBody.length + tooltip.afterBody.length;
+    if (titleLineCount) {
+        height += titleLineCount * titleFont.lineHeight + (titleLineCount - 1) * options.titleSpacing + options.titleMarginBottom;
+    }
+    if (combinedBodyLength) {
+        const bodyLineHeight = options.displayColors ? Math.max(boxHeight, bodyFont.lineHeight) : bodyFont.lineHeight;
+        height += bodyLineItemCount * bodyLineHeight + (combinedBodyLength - bodyLineItemCount) * bodyFont.lineHeight + (combinedBodyLength - 1) * options.bodySpacing;
+    }
+    if (footerLineCount) {
+        height += options.footerMarginTop + footerLineCount * footerFont.lineHeight + (footerLineCount - 1) * options.footerSpacing;
+    }
+    let widthPadding = 0;
+    const maxLineWidth = function(line) {
+        width = Math.max(width, ctx.measureText(line).width + widthPadding);
+    };
+    ctx.save();
+    ctx.font = titleFont.string;
+    each(tooltip.title, maxLineWidth);
+    ctx.font = bodyFont.string;
+    each(tooltip.beforeBody.concat(tooltip.afterBody), maxLineWidth);
+    widthPadding = options.displayColors ? boxWidth + 2 + options.boxPadding : 0;
+    each(body, (bodyItem)=>{
+        each(bodyItem.before, maxLineWidth);
+        each(bodyItem.lines, maxLineWidth);
+        each(bodyItem.after, maxLineWidth);
+    });
+    widthPadding = 0;
+    ctx.font = footerFont.string;
+    each(tooltip.footer, maxLineWidth);
+    ctx.restore();
+    width += padding.width;
+    return {
+        width,
+        height
+    };
+}
+function determineYAlign(chart, size) {
+    const { y , height  } = size;
+    if (y < height / 2) {
+        return 'top';
+    } else if (y > chart.height - height / 2) {
+        return 'bottom';
+    }
+    return 'center';
+}
+function doesNotFitWithAlign(xAlign, chart, options, size) {
+    const { x , width  } = size;
+    const caret = options.caretSize + options.caretPadding;
+    if (xAlign === 'left' && x + width + caret > chart.width) {
+        return true;
+    }
+    if (xAlign === 'right' && x - width - caret < 0) {
+        return true;
+    }
+}
+function determineXAlign(chart, options, size, yAlign) {
+    const { x , width  } = size;
+    const { width: chartWidth , chartArea: { left , right  }  } = chart;
+    let xAlign = 'center';
+    if (yAlign === 'center') {
+        xAlign = x <= (left + right) / 2 ? 'left' : 'right';
+    } else if (x <= width / 2) {
+        xAlign = 'left';
+    } else if (x >= chartWidth - width / 2) {
+        xAlign = 'right';
+    }
+    if (doesNotFitWithAlign(xAlign, chart, options, size)) {
+        xAlign = 'center';
+    }
+    return xAlign;
+}
+ function determineAlignment(chart, options, size) {
+    const yAlign = size.yAlign || options.yAlign || determineYAlign(chart, size);
+    return {
+        xAlign: size.xAlign || options.xAlign || determineXAlign(chart, options, size, yAlign),
+        yAlign
+    };
+}
+function alignX(size, xAlign) {
+    let { x , width  } = size;
+    if (xAlign === 'right') {
+        x -= width;
+    } else if (xAlign === 'center') {
+        x -= width / 2;
+    }
+    return x;
+}
+function alignY(size, yAlign, paddingAndSize) {
+    let { y , height  } = size;
+    if (yAlign === 'top') {
+        y += paddingAndSize;
+    } else if (yAlign === 'bottom') {
+        y -= height + paddingAndSize;
+    } else {
+        y -= height / 2;
+    }
+    return y;
+}
+ function getBackgroundPoint(options, size, alignment, chart) {
+    const { caretSize , caretPadding , cornerRadius  } = options;
+    const { xAlign , yAlign  } = alignment;
+    const paddingAndSize = caretSize + caretPadding;
+    const { topLeft , topRight , bottomLeft , bottomRight  } = toTRBLCorners(cornerRadius);
+    let x = alignX(size, xAlign);
+    const y = alignY(size, yAlign, paddingAndSize);
+    if (yAlign === 'center') {
+        if (xAlign === 'left') {
+            x += paddingAndSize;
+        } else if (xAlign === 'right') {
+            x -= paddingAndSize;
+        }
+    } else if (xAlign === 'left') {
+        x -= Math.max(topLeft, bottomLeft) + caretSize;
+    } else if (xAlign === 'right') {
+        x += Math.max(topRight, bottomRight) + caretSize;
+    }
+    return {
+        x: _limitValue(x, 0, chart.width - size.width),
+        y: _limitValue(y, 0, chart.height - size.height)
+    };
+}
+function getAlignedX(tooltip, align, options) {
+    const padding = toPadding(options.padding);
+    return align === 'center' ? tooltip.x + tooltip.width / 2 : align === 'right' ? tooltip.x + tooltip.width - padding.right : tooltip.x + padding.left;
+}
+ function getBeforeAfterBodyLines(callback) {
+    return pushOrConcat([], splitNewlines(callback));
+}
+function createTooltipContext(parent, tooltip, tooltipItems) {
+    return createContext(parent, {
+        tooltip,
+        tooltipItems,
+        type: 'tooltip'
+    });
+}
+function overrideCallbacks(callbacks, context) {
+    const override = context && context.dataset && context.dataset.tooltip && context.dataset.tooltip.callbacks;
+    return override ? callbacks.override(override) : callbacks;
+}
+const defaultCallbacks = {
+    beforeTitle: noop,
+    title (tooltipItems) {
+        if (tooltipItems.length > 0) {
+            const item = tooltipItems[0];
+            const labels = item.chart.data.labels;
+            const labelCount = labels ? labels.length : 0;
+            if (this && this.options && this.options.mode === 'dataset') {
+                return item.dataset.label || '';
+            } else if (item.label) {
+                return item.label;
+            } else if (labelCount > 0 && item.dataIndex < labelCount) {
+                return labels[item.dataIndex];
+            }
+        }
+        return '';
+    },
+    afterTitle: noop,
+    beforeBody: noop,
+    beforeLabel: noop,
+    label (tooltipItem) {
+        if (this && this.options && this.options.mode === 'dataset') {
+            return tooltipItem.label + ': ' + tooltipItem.formattedValue || tooltipItem.formattedValue;
+        }
+        let label = tooltipItem.dataset.label || '';
+        if (label) {
+            label += ': ';
+        }
+        const value = tooltipItem.formattedValue;
+        if (!isNullOrUndef(value)) {
+            label += value;
+        }
+        return label;
+    },
+    labelColor (tooltipItem) {
+        const meta = tooltipItem.chart.getDatasetMeta(tooltipItem.datasetIndex);
+        const options = meta.controller.getStyle(tooltipItem.dataIndex);
+        return {
+            borderColor: options.borderColor,
+            backgroundColor: options.backgroundColor,
+            borderWidth: options.borderWidth,
+            borderDash: options.borderDash,
+            borderDashOffset: options.borderDashOffset,
+            borderRadius: 0
+        };
+    },
+    labelTextColor () {
+        return this.options.bodyColor;
+    },
+    labelPointStyle (tooltipItem) {
+        const meta = tooltipItem.chart.getDatasetMeta(tooltipItem.datasetIndex);
+        const options = meta.controller.getStyle(tooltipItem.dataIndex);
+        return {
+            pointStyle: options.pointStyle,
+            rotation: options.rotation
+        };
+    },
+    afterLabel: noop,
+    afterBody: noop,
+    beforeFooter: noop,
+    footer: noop,
+    afterFooter: noop
+};
+ function invokeCallbackWithFallback(callbacks, name, ctx, arg) {
+    const result = callbacks[name].call(ctx, arg);
+    if (typeof result === 'undefined') {
+        return defaultCallbacks[name].call(ctx, arg);
+    }
+    return result;
+}
+class Tooltip extends Element {
+ static positioners = positioners;
+    constructor(config){
+        super();
+        this.opacity = 0;
+        this._active = [];
+        this._eventPosition = undefined;
+        this._size = undefined;
+        this._cachedAnimations = undefined;
+        this._tooltipItems = [];
+        this.$animations = undefined;
+        this.$context = undefined;
+        this.chart = config.chart;
+        this.options = config.options;
+        this.dataPoints = undefined;
+        this.title = undefined;
+        this.beforeBody = undefined;
+        this.body = undefined;
+        this.afterBody = undefined;
+        this.footer = undefined;
+        this.xAlign = undefined;
+        this.yAlign = undefined;
+        this.x = undefined;
+        this.y = undefined;
+        this.height = undefined;
+        this.width = undefined;
+        this.caretX = undefined;
+        this.caretY = undefined;
+        this.labelColors = undefined;
+        this.labelPointStyles = undefined;
+        this.labelTextColors = undefined;
+    }
+    initialize(options) {
+        this.options = options;
+        this._cachedAnimations = undefined;
+        this.$context = undefined;
+    }
+ _resolveAnimations() {
+        const cached = this._cachedAnimations;
+        if (cached) {
+            return cached;
+        }
+        const chart = this.chart;
+        const options = this.options.setContext(this.getContext());
+        const opts = options.enabled && chart.options.animation && options.animations;
+        const animations = new Animations(this.chart, opts);
+        if (opts._cacheable) {
+            this._cachedAnimations = Object.freeze(animations);
+        }
+        return animations;
+    }
+ getContext() {
+        return this.$context || (this.$context = createTooltipContext(this.chart.getContext(), this, this._tooltipItems));
+    }
+    getTitle(context, options) {
+        const { callbacks  } = options;
+        const beforeTitle = invokeCallbackWithFallback(callbacks, 'beforeTitle', this, context);
+        const title = invokeCallbackWithFallback(callbacks, 'title', this, context);
+        const afterTitle = invokeCallbackWithFallback(callbacks, 'afterTitle', this, context);
+        let lines = [];
+        lines = pushOrConcat(lines, splitNewlines(beforeTitle));
+        lines = pushOrConcat(lines, splitNewlines(title));
+        lines = pushOrConcat(lines, splitNewlines(afterTitle));
+        return lines;
+    }
+    getBeforeBody(tooltipItems, options) {
+        return getBeforeAfterBodyLines(invokeCallbackWithFallback(options.callbacks, 'beforeBody', this, tooltipItems));
+    }
+    getBody(tooltipItems, options) {
+        const { callbacks  } = options;
+        const bodyItems = [];
+        each(tooltipItems, (context)=>{
+            const bodyItem = {
+                before: [],
+                lines: [],
+                after: []
+            };
+            const scoped = overrideCallbacks(callbacks, context);
+            pushOrConcat(bodyItem.before, splitNewlines(invokeCallbackWithFallback(scoped, 'beforeLabel', this, context)));
+            pushOrConcat(bodyItem.lines, invokeCallbackWithFallback(scoped, 'label', this, context));
+            pushOrConcat(bodyItem.after, splitNewlines(invokeCallbackWithFallback(scoped, 'afterLabel', this, context)));
+            bodyItems.push(bodyItem);
+        });
+        return bodyItems;
+    }
+    getAfterBody(tooltipItems, options) {
+        return getBeforeAfterBodyLines(invokeCallbackWithFallback(options.callbacks, 'afterBody', this, tooltipItems));
+    }
+    getFooter(tooltipItems, options) {
+        const { callbacks  } = options;
+        const beforeFooter = invokeCallbackWithFallback(callbacks, 'beforeFooter', this, tooltipItems);
+        const footer = invokeCallbackWithFallback(callbacks, 'footer', this, tooltipItems);
+        const afterFooter = invokeCallbackWithFallback(callbacks, 'afterFooter', this, tooltipItems);
+        let lines = [];
+        lines = pushOrConcat(lines, splitNewlines(beforeFooter));
+        lines = pushOrConcat(lines, splitNewlines(footer));
+        lines = pushOrConcat(lines, splitNewlines(afterFooter));
+        return lines;
+    }
+ _createItems(options) {
+        const active = this._active;
+        const data = this.chart.data;
+        const labelColors = [];
+        const labelPointStyles = [];
+        const labelTextColors = [];
+        let tooltipItems = [];
+        let i, len;
+        for(i = 0, len = active.length; i < len; ++i){
+            tooltipItems.push(createTooltipItem(this.chart, active[i]));
+        }
+        if (options.filter) {
+            tooltipItems = tooltipItems.filter((element, index, array)=>options.filter(element, index, array, data));
+        }
+        if (options.itemSort) {
+            tooltipItems = tooltipItems.sort((a, b)=>options.itemSort(a, b, data));
+        }
+        each(tooltipItems, (context)=>{
+            const scoped = overrideCallbacks(options.callbacks, context);
+            labelColors.push(invokeCallbackWithFallback(scoped, 'labelColor', this, context));
+            labelPointStyles.push(invokeCallbackWithFallback(scoped, 'labelPointStyle', this, context));
+            labelTextColors.push(invokeCallbackWithFallback(scoped, 'labelTextColor', this, context));
+        });
+        this.labelColors = labelColors;
+        this.labelPointStyles = labelPointStyles;
+        this.labelTextColors = labelTextColors;
+        this.dataPoints = tooltipItems;
+        return tooltipItems;
+    }
+    update(changed, replay) {
+        const options = this.options.setContext(this.getContext());
+        const active = this._active;
+        let properties;
+        let tooltipItems = [];
+        if (!active.length) {
+            if (this.opacity !== 0) {
+                properties = {
+                    opacity: 0
+                };
+            }
+        } else {
+            const position = positioners[options.position].call(this, active, this._eventPosition);
+            tooltipItems = this._createItems(options);
+            this.title = this.getTitle(tooltipItems, options);
+            this.beforeBody = this.getBeforeBody(tooltipItems, options);
+            this.body = this.getBody(tooltipItems, options);
+            this.afterBody = this.getAfterBody(tooltipItems, options);
+            this.footer = this.getFooter(tooltipItems, options);
+            const size = this._size = getTooltipSize(this, options);
+            const positionAndSize = Object.assign({}, position, size);
+            const alignment = determineAlignment(this.chart, options, positionAndSize);
+            const backgroundPoint = getBackgroundPoint(options, positionAndSize, alignment, this.chart);
+            this.xAlign = alignment.xAlign;
+            this.yAlign = alignment.yAlign;
+            properties = {
+                opacity: 1,
+                x: backgroundPoint.x,
+                y: backgroundPoint.y,
+                width: size.width,
+                height: size.height,
+                caretX: position.x,
+                caretY: position.y
+            };
+        }
+        this._tooltipItems = tooltipItems;
+        this.$context = undefined;
+        if (properties) {
+            this._resolveAnimations().update(this, properties);
+        }
+        if (changed && options.external) {
+            options.external.call(this, {
+                chart: this.chart,
+                tooltip: this,
+                replay
+            });
+        }
+    }
+    drawCaret(tooltipPoint, ctx, size, options) {
+        const caretPosition = this.getCaretPosition(tooltipPoint, size, options);
+        ctx.lineTo(caretPosition.x1, caretPosition.y1);
+        ctx.lineTo(caretPosition.x2, caretPosition.y2);
+        ctx.lineTo(caretPosition.x3, caretPosition.y3);
+    }
+    getCaretPosition(tooltipPoint, size, options) {
+        const { xAlign , yAlign  } = this;
+        const { caretSize , cornerRadius  } = options;
+        const { topLeft , topRight , bottomLeft , bottomRight  } = toTRBLCorners(cornerRadius);
+        const { x: ptX , y: ptY  } = tooltipPoint;
+        const { width , height  } = size;
+        let x1, x2, x3, y1, y2, y3;
+        if (yAlign === 'center') {
+            y2 = ptY + height / 2;
+            if (xAlign === 'left') {
+                x1 = ptX;
+                x2 = x1 - caretSize;
+                y1 = y2 + caretSize;
+                y3 = y2 - caretSize;
+            } else {
+                x1 = ptX + width;
+                x2 = x1 + caretSize;
+                y1 = y2 - caretSize;
+                y3 = y2 + caretSize;
+            }
+            x3 = x1;
+        } else {
+            if (xAlign === 'left') {
+                x2 = ptX + Math.max(topLeft, bottomLeft) + caretSize;
+            } else if (xAlign === 'right') {
+                x2 = ptX + width - Math.max(topRight, bottomRight) - caretSize;
+            } else {
+                x2 = this.caretX;
+            }
+            if (yAlign === 'top') {
+                y1 = ptY;
+                y2 = y1 - caretSize;
+                x1 = x2 - caretSize;
+                x3 = x2 + caretSize;
+            } else {
+                y1 = ptY + height;
+                y2 = y1 + caretSize;
+                x1 = x2 + caretSize;
+                x3 = x2 - caretSize;
+            }
+            y3 = y1;
+        }
+        return {
+            x1,
+            x2,
+            x3,
+            y1,
+            y2,
+            y3
+        };
+    }
+    drawTitle(pt, ctx, options) {
+        const title = this.title;
+        const length = title.length;
+        let titleFont, titleSpacing, i;
+        if (length) {
+            const rtlHelper = getRtlAdapter(options.rtl, this.x, this.width);
+            pt.x = getAlignedX(this, options.titleAlign, options);
+            ctx.textAlign = rtlHelper.textAlign(options.titleAlign);
+            ctx.textBaseline = 'middle';
+            titleFont = toFont(options.titleFont);
+            titleSpacing = options.titleSpacing;
+            ctx.fillStyle = options.titleColor;
+            ctx.font = titleFont.string;
+            for(i = 0; i < length; ++i){
+                ctx.fillText(title[i], rtlHelper.x(pt.x), pt.y + titleFont.lineHeight / 2);
+                pt.y += titleFont.lineHeight + titleSpacing;
+                if (i + 1 === length) {
+                    pt.y += options.titleMarginBottom - titleSpacing;
+                }
+            }
+        }
+    }
+ _drawColorBox(ctx, pt, i, rtlHelper, options) {
+        const labelColor = this.labelColors[i];
+        const labelPointStyle = this.labelPointStyles[i];
+        const { boxHeight , boxWidth  } = options;
+        const bodyFont = toFont(options.bodyFont);
+        const colorX = getAlignedX(this, 'left', options);
+        const rtlColorX = rtlHelper.x(colorX);
+        const yOffSet = boxHeight < bodyFont.lineHeight ? (bodyFont.lineHeight - boxHeight) / 2 : 0;
+        const colorY = pt.y + yOffSet;
+        if (options.usePointStyle) {
+            const drawOptions = {
+                radius: Math.min(boxWidth, boxHeight) / 2,
+                pointStyle: labelPointStyle.pointStyle,
+                rotation: labelPointStyle.rotation,
+                borderWidth: 1
+            };
+            const centerX = rtlHelper.leftForLtr(rtlColorX, boxWidth) + boxWidth / 2;
+            const centerY = colorY + boxHeight / 2;
+            ctx.strokeStyle = options.multiKeyBackground;
+            ctx.fillStyle = options.multiKeyBackground;
+            drawPoint(ctx, drawOptions, centerX, centerY);
+            ctx.strokeStyle = labelColor.borderColor;
+            ctx.fillStyle = labelColor.backgroundColor;
+            drawPoint(ctx, drawOptions, centerX, centerY);
+        } else {
+            ctx.lineWidth = isObject(labelColor.borderWidth) ? Math.max(...Object.values(labelColor.borderWidth)) : labelColor.borderWidth || 1;
+            ctx.strokeStyle = labelColor.borderColor;
+            ctx.setLineDash(labelColor.borderDash || []);
+            ctx.lineDashOffset = labelColor.borderDashOffset || 0;
+            const outerX = rtlHelper.leftForLtr(rtlColorX, boxWidth);
+            const innerX = rtlHelper.leftForLtr(rtlHelper.xPlus(rtlColorX, 1), boxWidth - 2);
+            const borderRadius = toTRBLCorners(labelColor.borderRadius);
+            if (Object.values(borderRadius).some((v)=>v !== 0)) {
+                ctx.beginPath();
+                ctx.fillStyle = options.multiKeyBackground;
+                addRoundedRectPath(ctx, {
+                    x: outerX,
+                    y: colorY,
+                    w: boxWidth,
+                    h: boxHeight,
+                    radius: borderRadius
+                });
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = labelColor.backgroundColor;
+                ctx.beginPath();
+                addRoundedRectPath(ctx, {
+                    x: innerX,
+                    y: colorY + 1,
+                    w: boxWidth - 2,
+                    h: boxHeight - 2,
+                    radius: borderRadius
+                });
+                ctx.fill();
+            } else {
+                ctx.fillStyle = options.multiKeyBackground;
+                ctx.fillRect(outerX, colorY, boxWidth, boxHeight);
+                ctx.strokeRect(outerX, colorY, boxWidth, boxHeight);
+                ctx.fillStyle = labelColor.backgroundColor;
+                ctx.fillRect(innerX, colorY + 1, boxWidth - 2, boxHeight - 2);
+            }
+        }
+        ctx.fillStyle = this.labelTextColors[i];
+    }
+    drawBody(pt, ctx, options) {
+        const { body  } = this;
+        const { bodySpacing , bodyAlign , displayColors , boxHeight , boxWidth , boxPadding  } = options;
+        const bodyFont = toFont(options.bodyFont);
+        let bodyLineHeight = bodyFont.lineHeight;
+        let xLinePadding = 0;
+        const rtlHelper = getRtlAdapter(options.rtl, this.x, this.width);
+        const fillLineOfText = function(line) {
+            ctx.fillText(line, rtlHelper.x(pt.x + xLinePadding), pt.y + bodyLineHeight / 2);
+            pt.y += bodyLineHeight + bodySpacing;
+        };
+        const bodyAlignForCalculation = rtlHelper.textAlign(bodyAlign);
+        let bodyItem, textColor, lines, i, j, ilen, jlen;
+        ctx.textAlign = bodyAlign;
+        ctx.textBaseline = 'middle';
+        ctx.font = bodyFont.string;
+        pt.x = getAlignedX(this, bodyAlignForCalculation, options);
+        ctx.fillStyle = options.bodyColor;
+        each(this.beforeBody, fillLineOfText);
+        xLinePadding = displayColors && bodyAlignForCalculation !== 'right' ? bodyAlign === 'center' ? boxWidth / 2 + boxPadding : boxWidth + 2 + boxPadding : 0;
+        for(i = 0, ilen = body.length; i < ilen; ++i){
+            bodyItem = body[i];
+            textColor = this.labelTextColors[i];
+            ctx.fillStyle = textColor;
+            each(bodyItem.before, fillLineOfText);
+            lines = bodyItem.lines;
+            if (displayColors && lines.length) {
+                this._drawColorBox(ctx, pt, i, rtlHelper, options);
+                bodyLineHeight = Math.max(bodyFont.lineHeight, boxHeight);
+            }
+            for(j = 0, jlen = lines.length; j < jlen; ++j){
+                fillLineOfText(lines[j]);
+                bodyLineHeight = bodyFont.lineHeight;
+            }
+            each(bodyItem.after, fillLineOfText);
+        }
+        xLinePadding = 0;
+        bodyLineHeight = bodyFont.lineHeight;
+        each(this.afterBody, fillLineOfText);
+        pt.y -= bodySpacing;
+    }
+    drawFooter(pt, ctx, options) {
+        const footer = this.footer;
+        const length = footer.length;
+        let footerFont, i;
+        if (length) {
+            const rtlHelper = getRtlAdapter(options.rtl, this.x, this.width);
+            pt.x = getAlignedX(this, options.footerAlign, options);
+            pt.y += options.footerMarginTop;
+            ctx.textAlign = rtlHelper.textAlign(options.footerAlign);
+            ctx.textBaseline = 'middle';
+            footerFont = toFont(options.footerFont);
+            ctx.fillStyle = options.footerColor;
+            ctx.font = footerFont.string;
+            for(i = 0; i < length; ++i){
+                ctx.fillText(footer[i], rtlHelper.x(pt.x), pt.y + footerFont.lineHeight / 2);
+                pt.y += footerFont.lineHeight + options.footerSpacing;
+            }
+        }
+    }
+    drawBackground(pt, ctx, tooltipSize, options) {
+        const { xAlign , yAlign  } = this;
+        const { x , y  } = pt;
+        const { width , height  } = tooltipSize;
+        const { topLeft , topRight , bottomLeft , bottomRight  } = toTRBLCorners(options.cornerRadius);
+        ctx.fillStyle = options.backgroundColor;
+        ctx.strokeStyle = options.borderColor;
+        ctx.lineWidth = options.borderWidth;
+        ctx.beginPath();
+        ctx.moveTo(x + topLeft, y);
+        if (yAlign === 'top') {
+            this.drawCaret(pt, ctx, tooltipSize, options);
+        }
+        ctx.lineTo(x + width - topRight, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + topRight);
+        if (yAlign === 'center' && xAlign === 'right') {
+            this.drawCaret(pt, ctx, tooltipSize, options);
+        }
+        ctx.lineTo(x + width, y + height - bottomRight);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - bottomRight, y + height);
+        if (yAlign === 'bottom') {
+            this.drawCaret(pt, ctx, tooltipSize, options);
+        }
+        ctx.lineTo(x + bottomLeft, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - bottomLeft);
+        if (yAlign === 'center' && xAlign === 'left') {
+            this.drawCaret(pt, ctx, tooltipSize, options);
+        }
+        ctx.lineTo(x, y + topLeft);
+        ctx.quadraticCurveTo(x, y, x + topLeft, y);
+        ctx.closePath();
+        ctx.fill();
+        if (options.borderWidth > 0) {
+            ctx.stroke();
+        }
+    }
+ _updateAnimationTarget(options) {
+        const chart = this.chart;
+        const anims = this.$animations;
+        const animX = anims && anims.x;
+        const animY = anims && anims.y;
+        if (animX || animY) {
+            const position = positioners[options.position].call(this, this._active, this._eventPosition);
+            if (!position) {
+                return;
+            }
+            const size = this._size = getTooltipSize(this, options);
+            const positionAndSize = Object.assign({}, position, this._size);
+            const alignment = determineAlignment(chart, options, positionAndSize);
+            const point = getBackgroundPoint(options, positionAndSize, alignment, chart);
+            if (animX._to !== point.x || animY._to !== point.y) {
+                this.xAlign = alignment.xAlign;
+                this.yAlign = alignment.yAlign;
+                this.width = size.width;
+                this.height = size.height;
+                this.caretX = position.x;
+                this.caretY = position.y;
+                this._resolveAnimations().update(this, point);
+            }
+        }
+    }
+ _willRender() {
+        return !!this.opacity;
+    }
+    draw(ctx) {
+        const options = this.options.setContext(this.getContext());
+        let opacity = this.opacity;
+        if (!opacity) {
+            return;
+        }
+        this._updateAnimationTarget(options);
+        const tooltipSize = {
+            width: this.width,
+            height: this.height
+        };
+        const pt = {
+            x: this.x,
+            y: this.y
+        };
+        opacity = Math.abs(opacity) < 1e-3 ? 0 : opacity;
+        const padding = toPadding(options.padding);
+        const hasTooltipContent = this.title.length || this.beforeBody.length || this.body.length || this.afterBody.length || this.footer.length;
+        if (options.enabled && hasTooltipContent) {
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            this.drawBackground(pt, ctx, tooltipSize, options);
+            overrideTextDirection(ctx, options.textDirection);
+            pt.y += padding.top;
+            this.drawTitle(pt, ctx, options);
+            this.drawBody(pt, ctx, options);
+            this.drawFooter(pt, ctx, options);
+            restoreTextDirection(ctx, options.textDirection);
+            ctx.restore();
+        }
+    }
+ getActiveElements() {
+        return this._active || [];
+    }
+ setActiveElements(activeElements, eventPosition) {
+        const lastActive = this._active;
+        const active = activeElements.map(({ datasetIndex , index  })=>{
+            const meta = this.chart.getDatasetMeta(datasetIndex);
+            if (!meta) {
+                throw new Error('Cannot find a dataset at index ' + datasetIndex);
+            }
+            return {
+                datasetIndex,
+                element: meta.data[index],
+                index
+            };
+        });
+        const changed = !_elementsEqual(lastActive, active);
+        const positionChanged = this._positionChanged(active, eventPosition);
+        if (changed || positionChanged) {
+            this._active = active;
+            this._eventPosition = eventPosition;
+            this._ignoreReplayEvents = true;
+            this.update(true);
+        }
+    }
+ handleEvent(e, replay, inChartArea = true) {
+        if (replay && this._ignoreReplayEvents) {
+            return false;
+        }
+        this._ignoreReplayEvents = false;
+        const options = this.options;
+        const lastActive = this._active || [];
+        const active = this._getActiveElements(e, lastActive, replay, inChartArea);
+        const positionChanged = this._positionChanged(active, e);
+        const changed = replay || !_elementsEqual(active, lastActive) || positionChanged;
+        if (changed) {
+            this._active = active;
+            if (options.enabled || options.external) {
+                this._eventPosition = {
+                    x: e.x,
+                    y: e.y
+                };
+                this.update(true, replay);
+            }
+        }
+        return changed;
+    }
+ _getActiveElements(e, lastActive, replay, inChartArea) {
+        const options = this.options;
+        if (e.type === 'mouseout') {
+            return [];
+        }
+        if (!inChartArea) {
+            return lastActive.filter((i)=>this.chart.data.datasets[i.datasetIndex] && this.chart.getDatasetMeta(i.datasetIndex).controller.getParsed(i.index) !== undefined);
+        }
+        const active = this.chart.getElementsAtEventForMode(e, options.mode, options, replay);
+        if (options.reverse) {
+            active.reverse();
+        }
+        return active;
+    }
+ _positionChanged(active, e) {
+        const { caretX , caretY , options  } = this;
+        const position = positioners[options.position].call(this, active, e);
+        return position !== false && (caretX !== position.x || caretY !== position.y);
+    }
+}
+var plugin_tooltip = {
+    id: 'tooltip',
+    _element: Tooltip,
+    positioners,
+    afterInit (chart, _args, options) {
+        if (options) {
+            chart.tooltip = new Tooltip({
+                chart,
+                options
+            });
+        }
+    },
+    beforeUpdate (chart, _args, options) {
+        if (chart.tooltip) {
+            chart.tooltip.initialize(options);
+        }
+    },
+    reset (chart, _args, options) {
+        if (chart.tooltip) {
+            chart.tooltip.initialize(options);
+        }
+    },
+    afterDraw (chart) {
+        const tooltip = chart.tooltip;
+        if (tooltip && tooltip._willRender()) {
+            const args = {
+                tooltip
+            };
+            if (chart.notifyPlugins('beforeTooltipDraw', {
+                ...args,
+                cancelable: true
+            }) === false) {
+                return;
+            }
+            tooltip.draw(chart.ctx);
+            chart.notifyPlugins('afterTooltipDraw', args);
+        }
+    },
+    afterEvent (chart, args) {
+        if (chart.tooltip) {
+            const useFinalPosition = args.replay;
+            if (chart.tooltip.handleEvent(args.event, useFinalPosition, args.inChartArea)) {
+                args.changed = true;
+            }
+        }
+    },
+    defaults: {
+        enabled: true,
+        external: null,
+        position: 'average',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        titleColor: '#fff',
+        titleFont: {
+            weight: 'bold'
+        },
+        titleSpacing: 2,
+        titleMarginBottom: 6,
+        titleAlign: 'left',
+        bodyColor: '#fff',
+        bodySpacing: 2,
+        bodyFont: {},
+        bodyAlign: 'left',
+        footerColor: '#fff',
+        footerSpacing: 2,
+        footerMarginTop: 6,
+        footerFont: {
+            weight: 'bold'
+        },
+        footerAlign: 'left',
+        padding: 6,
+        caretPadding: 2,
+        caretSize: 5,
+        cornerRadius: 6,
+        boxHeight: (ctx, opts)=>opts.bodyFont.size,
+        boxWidth: (ctx, opts)=>opts.bodyFont.size,
+        multiKeyBackground: '#fff',
+        displayColors: true,
+        boxPadding: 0,
+        borderColor: 'rgba(0,0,0,0)',
+        borderWidth: 0,
+        animation: {
+            duration: 400,
+            easing: 'easeOutQuart'
+        },
+        animations: {
+            numbers: {
+                type: 'number',
+                properties: [
+                    'x',
+                    'y',
+                    'width',
+                    'height',
+                    'caretX',
+                    'caretY'
+                ]
+            },
+            opacity: {
+                easing: 'linear',
+                duration: 200
+            }
+        },
+        callbacks: defaultCallbacks
+    },
+    defaultRoutes: {
+        bodyFont: 'font',
+        footerFont: 'font',
+        titleFont: 'font'
+    },
+    descriptors: {
+        _scriptable: (name)=>name !== 'filter' && name !== 'itemSort' && name !== 'external',
+        _indexable: false,
+        callbacks: {
+            _scriptable: false,
+            _indexable: false
+        },
+        animation: {
+            _fallback: false
+        },
+        animations: {
+            _fallback: 'animation'
+        }
+    },
+    additionalOptionScopes: [
+        'interaction'
+    ]
+};
+
+const addIfString = (labels, raw, index, addedLabels)=>{
+    if (typeof raw === 'string') {
+        index = labels.push(raw) - 1;
+        addedLabels.unshift({
+            index,
+            label: raw
+        });
+    } else if (isNaN(raw)) {
+        index = null;
+    }
+    return index;
+};
+function findOrAddLabel(labels, raw, index, addedLabels) {
+    const first = labels.indexOf(raw);
+    if (first === -1) {
+        return addIfString(labels, raw, index, addedLabels);
+    }
+    const last = labels.lastIndexOf(raw);
+    return first !== last ? index : first;
+}
+const validIndex = (index, max)=>index === null ? null : _limitValue(Math.round(index), 0, max);
+function _getLabelForValue(value) {
+    const labels = this.getLabels();
+    if (value >= 0 && value < labels.length) {
+        return labels[value];
+    }
+    return value;
+}
+class CategoryScale extends Scale {
+    static id = 'category';
+ static defaults = {
+        ticks: {
+            callback: _getLabelForValue
+        }
+    };
+    constructor(cfg){
+        super(cfg);
+         this._startValue = undefined;
+        this._valueRange = 0;
+        this._addedLabels = [];
+    }
+    init(scaleOptions) {
+        const added = this._addedLabels;
+        if (added.length) {
+            const labels = this.getLabels();
+            for (const { index , label  } of added){
+                if (labels[index] === label) {
+                    labels.splice(index, 1);
+                }
+            }
+            this._addedLabels = [];
+        }
+        super.init(scaleOptions);
+    }
+    parse(raw, index) {
+        if (isNullOrUndef(raw)) {
+            return null;
+        }
+        const labels = this.getLabels();
+        index = isFinite(index) && labels[index] === raw ? index : findOrAddLabel(labels, raw, valueOrDefault(index, raw), this._addedLabels);
+        return validIndex(index, labels.length - 1);
+    }
+    determineDataLimits() {
+        const { minDefined , maxDefined  } = this.getUserBounds();
+        let { min , max  } = this.getMinMax(true);
+        if (this.options.bounds === 'ticks') {
+            if (!minDefined) {
+                min = 0;
+            }
+            if (!maxDefined) {
+                max = this.getLabels().length - 1;
+            }
+        }
+        this.min = min;
+        this.max = max;
+    }
+    buildTicks() {
+        const min = this.min;
+        const max = this.max;
+        const offset = this.options.offset;
+        const ticks = [];
+        let labels = this.getLabels();
+        labels = min === 0 && max === labels.length - 1 ? labels : labels.slice(min, max + 1);
+        this._valueRange = Math.max(labels.length - (offset ? 0 : 1), 1);
+        this._startValue = this.min - (offset ? 0.5 : 0);
+        for(let value = min; value <= max; value++){
+            ticks.push({
+                value
+            });
+        }
+        return ticks;
+    }
+    getLabelForValue(value) {
+        return _getLabelForValue.call(this, value);
+    }
+ configure() {
+        super.configure();
+        if (!this.isHorizontal()) {
+            this._reversePixels = !this._reversePixels;
+        }
+    }
+    getPixelForValue(value) {
+        if (typeof value !== 'number') {
+            value = this.parse(value);
+        }
+        return value === null ? NaN : this.getPixelForDecimal((value - this._startValue) / this._valueRange);
+    }
+    getPixelForTick(index) {
+        const ticks = this.ticks;
+        if (index < 0 || index > ticks.length - 1) {
+            return null;
+        }
+        return this.getPixelForValue(ticks[index].value);
+    }
+    getValueForPixel(pixel) {
+        return Math.round(this._startValue + this.getDecimalForPixel(pixel) * this._valueRange);
+    }
+    getBasePixel() {
+        return this.bottom;
+    }
+}
+
+function generateTicks$1(generationOptions, dataRange) {
+    const ticks = [];
+    const MIN_SPACING = 1e-14;
+    const { bounds , step , min , max , precision , count , maxTicks , maxDigits , includeBounds  } = generationOptions;
+    const unit = step || 1;
+    const maxSpaces = maxTicks - 1;
+    const { min: rmin , max: rmax  } = dataRange;
+    const minDefined = !isNullOrUndef(min);
+    const maxDefined = !isNullOrUndef(max);
+    const countDefined = !isNullOrUndef(count);
+    const minSpacing = (rmax - rmin) / (maxDigits + 1);
+    let spacing = niceNum((rmax - rmin) / maxSpaces / unit) * unit;
+    let factor, niceMin, niceMax, numSpaces;
+    if (spacing < MIN_SPACING && !minDefined && !maxDefined) {
+        return [
+            {
+                value: rmin
+            },
+            {
+                value: rmax
+            }
+        ];
+    }
+    numSpaces = Math.ceil(rmax / spacing) - Math.floor(rmin / spacing);
+    if (numSpaces > maxSpaces) {
+        spacing = niceNum(numSpaces * spacing / maxSpaces / unit) * unit;
+    }
+    if (!isNullOrUndef(precision)) {
+        factor = Math.pow(10, precision);
+        spacing = Math.ceil(spacing * factor) / factor;
+    }
+    if (bounds === 'ticks') {
+        niceMin = Math.floor(rmin / spacing) * spacing;
+        niceMax = Math.ceil(rmax / spacing) * spacing;
+    } else {
+        niceMin = rmin;
+        niceMax = rmax;
+    }
+    if (minDefined && maxDefined && step && almostWhole((max - min) / step, spacing / 1000)) {
+        numSpaces = Math.round(Math.min((max - min) / spacing, maxTicks));
+        spacing = (max - min) / numSpaces;
+        niceMin = min;
+        niceMax = max;
+    } else if (countDefined) {
+        niceMin = minDefined ? min : niceMin;
+        niceMax = maxDefined ? max : niceMax;
+        numSpaces = count - 1;
+        spacing = (niceMax - niceMin) / numSpaces;
+    } else {
+        numSpaces = (niceMax - niceMin) / spacing;
+        if (almostEquals(numSpaces, Math.round(numSpaces), spacing / 1000)) {
+            numSpaces = Math.round(numSpaces);
+        } else {
+            numSpaces = Math.ceil(numSpaces);
+        }
+    }
+    const decimalPlaces = Math.max(_decimalPlaces(spacing), _decimalPlaces(niceMin));
+    factor = Math.pow(10, isNullOrUndef(precision) ? decimalPlaces : precision);
+    niceMin = Math.round(niceMin * factor) / factor;
+    niceMax = Math.round(niceMax * factor) / factor;
+    let j = 0;
+    if (minDefined) {
+        if (includeBounds && niceMin !== min) {
+            ticks.push({
+                value: min
+            });
+            if (niceMin < min) {
+                j++;
+            }
+            if (almostEquals(Math.round((niceMin + j * spacing) * factor) / factor, min, relativeLabelSize(min, minSpacing, generationOptions))) {
+                j++;
+            }
+        } else if (niceMin < min) {
+            j++;
+        }
+    }
+    for(; j < numSpaces; ++j){
+        const tickValue = Math.round((niceMin + j * spacing) * factor) / factor;
+        if (maxDefined && tickValue > max) {
+            break;
+        }
+        ticks.push({
+            value: tickValue
+        });
+    }
+    if (maxDefined && includeBounds && niceMax !== max) {
+        if (ticks.length && almostEquals(ticks[ticks.length - 1].value, max, relativeLabelSize(max, minSpacing, generationOptions))) {
+            ticks[ticks.length - 1].value = max;
+        } else {
+            ticks.push({
+                value: max
+            });
+        }
+    } else if (!maxDefined || niceMax === max) {
+        ticks.push({
+            value: niceMax
+        });
+    }
+    return ticks;
+}
+function relativeLabelSize(value, minSpacing, { horizontal , minRotation  }) {
+    const rad = toRadians(minRotation);
+    const ratio = (horizontal ? Math.sin(rad) : Math.cos(rad)) || 0.001;
+    const length = 0.75 * minSpacing * ('' + value).length;
+    return Math.min(minSpacing / ratio, length);
+}
+class LinearScaleBase extends Scale {
+    constructor(cfg){
+        super(cfg);
+         this.start = undefined;
+         this.end = undefined;
+         this._startValue = undefined;
+         this._endValue = undefined;
+        this._valueRange = 0;
+    }
+    parse(raw, index) {
+        if (isNullOrUndef(raw)) {
+            return null;
+        }
+        if ((typeof raw === 'number' || raw instanceof Number) && !isFinite(+raw)) {
+            return null;
+        }
+        return +raw;
+    }
+    handleTickRangeOptions() {
+        const { beginAtZero  } = this.options;
+        const { minDefined , maxDefined  } = this.getUserBounds();
+        let { min , max  } = this;
+        const setMin = (v)=>min = minDefined ? min : v;
+        const setMax = (v)=>max = maxDefined ? max : v;
+        if (beginAtZero) {
+            const minSign = sign(min);
+            const maxSign = sign(max);
+            if (minSign < 0 && maxSign < 0) {
+                setMax(0);
+            } else if (minSign > 0 && maxSign > 0) {
+                setMin(0);
+            }
+        }
+        if (min === max) {
+            let offset = max === 0 ? 1 : Math.abs(max * 0.05);
+            setMax(max + offset);
+            if (!beginAtZero) {
+                setMin(min - offset);
+            }
+        }
+        this.min = min;
+        this.max = max;
+    }
+    getTickLimit() {
+        const tickOpts = this.options.ticks;
+        let { maxTicksLimit , stepSize  } = tickOpts;
+        let maxTicks;
+        if (stepSize) {
+            maxTicks = Math.ceil(this.max / stepSize) - Math.floor(this.min / stepSize) + 1;
+            if (maxTicks > 1000) {
+                console.warn(`scales.${this.id}.ticks.stepSize: ${stepSize} would result generating up to ${maxTicks} ticks. Limiting to 1000.`);
+                maxTicks = 1000;
+            }
+        } else {
+            maxTicks = this.computeTickLimit();
+            maxTicksLimit = maxTicksLimit || 11;
+        }
+        if (maxTicksLimit) {
+            maxTicks = Math.min(maxTicksLimit, maxTicks);
+        }
+        return maxTicks;
+    }
+ computeTickLimit() {
+        return Number.POSITIVE_INFINITY;
+    }
+    buildTicks() {
+        const opts = this.options;
+        const tickOpts = opts.ticks;
+        let maxTicks = this.getTickLimit();
+        maxTicks = Math.max(2, maxTicks);
+        const numericGeneratorOptions = {
+            maxTicks,
+            bounds: opts.bounds,
+            min: opts.min,
+            max: opts.max,
+            precision: tickOpts.precision,
+            step: tickOpts.stepSize,
+            count: tickOpts.count,
+            maxDigits: this._maxDigits(),
+            horizontal: this.isHorizontal(),
+            minRotation: tickOpts.minRotation || 0,
+            includeBounds: tickOpts.includeBounds !== false
+        };
+        const dataRange = this._range || this;
+        const ticks = generateTicks$1(numericGeneratorOptions, dataRange);
+        if (opts.bounds === 'ticks') {
+            _setMinAndMaxByKey(ticks, this, 'value');
+        }
+        if (opts.reverse) {
+            ticks.reverse();
+            this.start = this.max;
+            this.end = this.min;
+        } else {
+            this.start = this.min;
+            this.end = this.max;
+        }
+        return ticks;
+    }
+ configure() {
+        const ticks = this.ticks;
+        let start = this.min;
+        let end = this.max;
+        super.configure();
+        if (this.options.offset && ticks.length) {
+            const offset = (end - start) / Math.max(ticks.length - 1, 1) / 2;
+            start -= offset;
+            end += offset;
+        }
+        this._startValue = start;
+        this._endValue = end;
+        this._valueRange = end - start;
+    }
+    getLabelForValue(value) {
+        return formatNumber(value, this.chart.options.locale, this.options.ticks.format);
+    }
+}
+
+class LinearScale extends LinearScaleBase {
+    static id = 'linear';
+ static defaults = {
+        ticks: {
+            callback: Ticks.formatters.numeric
+        }
+    };
+    determineDataLimits() {
+        const { min , max  } = this.getMinMax(true);
+        this.min = isNumberFinite(min) ? min : 0;
+        this.max = isNumberFinite(max) ? max : 1;
+        this.handleTickRangeOptions();
+    }
+ computeTickLimit() {
+        const horizontal = this.isHorizontal();
+        const length = horizontal ? this.width : this.height;
+        const minRotation = toRadians(this.options.ticks.minRotation);
+        const ratio = (horizontal ? Math.sin(minRotation) : Math.cos(minRotation)) || 0.001;
+        const tickFont = this._resolveTickFontOptions(0);
+        return Math.ceil(length / Math.min(40, tickFont.lineHeight / ratio));
+    }
+    getPixelForValue(value) {
+        return value === null ? NaN : this.getPixelForDecimal((value - this._startValue) / this._valueRange);
+    }
+    getValueForPixel(pixel) {
+        return this._startValue + this.getDecimalForPixel(pixel) * this._valueRange;
+    }
+}
+
+const INTERVALS = {
+    millisecond: {
+        common: true,
+        size: 1,
+        steps: 1000
+    },
+    second: {
+        common: true,
+        size: 1000,
+        steps: 60
+    },
+    minute: {
+        common: true,
+        size: 60000,
+        steps: 60
+    },
+    hour: {
+        common: true,
+        size: 3600000,
+        steps: 24
+    },
+    day: {
+        common: true,
+        size: 86400000,
+        steps: 30
+    },
+    week: {
+        common: false,
+        size: 604800000,
+        steps: 4
+    },
+    month: {
+        common: true,
+        size: 2.628e9,
+        steps: 12
+    },
+    quarter: {
+        common: false,
+        size: 7.884e9,
+        steps: 4
+    },
+    year: {
+        common: true,
+        size: 3.154e10
+    }
+};
+ const UNITS =  /* #__PURE__ */ Object.keys(INTERVALS);
+ function sorter(a, b) {
+    return a - b;
+}
+ function parse(scale, input) {
+    if (isNullOrUndef(input)) {
+        return null;
+    }
+    const adapter = scale._adapter;
+    const { parser , round , isoWeekday  } = scale._parseOpts;
+    let value = input;
+    if (typeof parser === 'function') {
+        value = parser(value);
+    }
+    if (!isNumberFinite(value)) {
+        value = typeof parser === 'string' ? adapter.parse(value, parser) : adapter.parse(value);
+    }
+    if (value === null) {
+        return null;
+    }
+    if (round) {
+        value = round === 'week' && (isNumber(isoWeekday) || isoWeekday === true) ? adapter.startOf(value, 'isoWeek', isoWeekday) : adapter.startOf(value, round);
+    }
+    return +value;
+}
+ function determineUnitForAutoTicks(minUnit, min, max, capacity) {
+    const ilen = UNITS.length;
+    for(let i = UNITS.indexOf(minUnit); i < ilen - 1; ++i){
+        const interval = INTERVALS[UNITS[i]];
+        const factor = interval.steps ? interval.steps : Number.MAX_SAFE_INTEGER;
+        if (interval.common && Math.ceil((max - min) / (factor * interval.size)) <= capacity) {
+            return UNITS[i];
+        }
+    }
+    return UNITS[ilen - 1];
+}
+ function determineUnitForFormatting(scale, numTicks, minUnit, min, max) {
+    for(let i = UNITS.length - 1; i >= UNITS.indexOf(minUnit); i--){
+        const unit = UNITS[i];
+        if (INTERVALS[unit].common && scale._adapter.diff(max, min, unit) >= numTicks - 1) {
+            return unit;
+        }
+    }
+    return UNITS[minUnit ? UNITS.indexOf(minUnit) : 0];
+}
+ function determineMajorUnit(unit) {
+    for(let i = UNITS.indexOf(unit) + 1, ilen = UNITS.length; i < ilen; ++i){
+        if (INTERVALS[UNITS[i]].common) {
+            return UNITS[i];
+        }
+    }
+}
+ function addTick(ticks, time, timestamps) {
+    if (!timestamps) {
+        ticks[time] = true;
+    } else if (timestamps.length) {
+        const { lo , hi  } = _lookup(timestamps, time);
+        const timestamp = timestamps[lo] >= time ? timestamps[lo] : timestamps[hi];
+        ticks[timestamp] = true;
+    }
+}
+ function setMajorTicks(scale, ticks, map, majorUnit) {
+    const adapter = scale._adapter;
+    const first = +adapter.startOf(ticks[0].value, majorUnit);
+    const last = ticks[ticks.length - 1].value;
+    let major, index;
+    for(major = first; major <= last; major = +adapter.add(major, 1, majorUnit)){
+        index = map[major];
+        if (index >= 0) {
+            ticks[index].major = true;
+        }
+    }
+    return ticks;
+}
+ function ticksFromTimestamps(scale, values, majorUnit) {
+    const ticks = [];
+     const map = {};
+    const ilen = values.length;
+    let i, value;
+    for(i = 0; i < ilen; ++i){
+        value = values[i];
+        map[value] = i;
+        ticks.push({
+            value,
+            major: false
+        });
+    }
+    return ilen === 0 || !majorUnit ? ticks : setMajorTicks(scale, ticks, map, majorUnit);
+}
+class TimeScale extends Scale {
+    static id = 'time';
+ static defaults = {
+ bounds: 'data',
+        adapters: {},
+        time: {
+            parser: false,
+            unit: false,
+            round: false,
+            isoWeekday: false,
+            minUnit: 'millisecond',
+            displayFormats: {}
+        },
+        ticks: {
+ source: 'auto',
+            callback: false,
+            major: {
+                enabled: false
+            }
+        }
+    };
+ constructor(props){
+        super(props);
+         this._cache = {
+            data: [],
+            labels: [],
+            all: []
+        };
+         this._unit = 'day';
+         this._majorUnit = undefined;
+        this._offsets = {};
+        this._normalized = false;
+        this._parseOpts = undefined;
+    }
+    init(scaleOpts, opts = {}) {
+        const time = scaleOpts.time || (scaleOpts.time = {});
+         const adapter = this._adapter = new adapters._date(scaleOpts.adapters.date);
+        adapter.init(opts);
+        mergeIf(time.displayFormats, adapter.formats());
+        this._parseOpts = {
+            parser: time.parser,
+            round: time.round,
+            isoWeekday: time.isoWeekday
+        };
+        super.init(scaleOpts);
+        this._normalized = opts.normalized;
+    }
+ parse(raw, index) {
+        if (raw === undefined) {
+            return null;
+        }
+        return parse(this, raw);
+    }
+    beforeLayout() {
+        super.beforeLayout();
+        this._cache = {
+            data: [],
+            labels: [],
+            all: []
+        };
+    }
+    determineDataLimits() {
+        const options = this.options;
+        const adapter = this._adapter;
+        const unit = options.time.unit || 'day';
+        let { min , max , minDefined , maxDefined  } = this.getUserBounds();
+ function _applyBounds(bounds) {
+            if (!minDefined && !isNaN(bounds.min)) {
+                min = Math.min(min, bounds.min);
+            }
+            if (!maxDefined && !isNaN(bounds.max)) {
+                max = Math.max(max, bounds.max);
+            }
+        }
+        if (!minDefined || !maxDefined) {
+            _applyBounds(this._getLabelBounds());
+            if (options.bounds !== 'ticks' || options.ticks.source !== 'labels') {
+                _applyBounds(this.getMinMax(false));
+            }
+        }
+        min = isNumberFinite(min) && !isNaN(min) ? min : +adapter.startOf(Date.now(), unit);
+        max = isNumberFinite(max) && !isNaN(max) ? max : +adapter.endOf(Date.now(), unit) + 1;
+        this.min = Math.min(min, max - 1);
+        this.max = Math.max(min + 1, max);
+    }
+ _getLabelBounds() {
+        const arr = this.getLabelTimestamps();
+        let min = Number.POSITIVE_INFINITY;
+        let max = Number.NEGATIVE_INFINITY;
+        if (arr.length) {
+            min = arr[0];
+            max = arr[arr.length - 1];
+        }
+        return {
+            min,
+            max
+        };
+    }
+ buildTicks() {
+        const options = this.options;
+        const timeOpts = options.time;
+        const tickOpts = options.ticks;
+        const timestamps = tickOpts.source === 'labels' ? this.getLabelTimestamps() : this._generate();
+        if (options.bounds === 'ticks' && timestamps.length) {
+            this.min = this._userMin || timestamps[0];
+            this.max = this._userMax || timestamps[timestamps.length - 1];
+        }
+        const min = this.min;
+        const max = this.max;
+        const ticks = _filterBetween(timestamps, min, max);
+        this._unit = timeOpts.unit || (tickOpts.autoSkip ? determineUnitForAutoTicks(timeOpts.minUnit, this.min, this.max, this._getLabelCapacity(min)) : determineUnitForFormatting(this, ticks.length, timeOpts.minUnit, this.min, this.max));
+        this._majorUnit = !tickOpts.major.enabled || this._unit === 'year' ? undefined : determineMajorUnit(this._unit);
+        this.initOffsets(timestamps);
+        if (options.reverse) {
+            ticks.reverse();
+        }
+        return ticksFromTimestamps(this, ticks, this._majorUnit);
+    }
+    afterAutoSkip() {
+        if (this.options.offsetAfterAutoskip) {
+            this.initOffsets(this.ticks.map((tick)=>+tick.value));
+        }
+    }
+ initOffsets(timestamps = []) {
+        let start = 0;
+        let end = 0;
+        let first, last;
+        if (this.options.offset && timestamps.length) {
+            first = this.getDecimalForValue(timestamps[0]);
+            if (timestamps.length === 1) {
+                start = 1 - first;
+            } else {
+                start = (this.getDecimalForValue(timestamps[1]) - first) / 2;
+            }
+            last = this.getDecimalForValue(timestamps[timestamps.length - 1]);
+            if (timestamps.length === 1) {
+                end = last;
+            } else {
+                end = (last - this.getDecimalForValue(timestamps[timestamps.length - 2])) / 2;
+            }
+        }
+        const limit = timestamps.length < 3 ? 0.5 : 0.25;
+        start = _limitValue(start, 0, limit);
+        end = _limitValue(end, 0, limit);
+        this._offsets = {
+            start,
+            end,
+            factor: 1 / (start + 1 + end)
+        };
+    }
+ _generate() {
+        const adapter = this._adapter;
+        const min = this.min;
+        const max = this.max;
+        const options = this.options;
+        const timeOpts = options.time;
+        const minor = timeOpts.unit || determineUnitForAutoTicks(timeOpts.minUnit, min, max, this._getLabelCapacity(min));
+        const stepSize = valueOrDefault(options.ticks.stepSize, 1);
+        const weekday = minor === 'week' ? timeOpts.isoWeekday : false;
+        const hasWeekday = isNumber(weekday) || weekday === true;
+        const ticks = {};
+        let first = min;
+        let time, count;
+        if (hasWeekday) {
+            first = +adapter.startOf(first, 'isoWeek', weekday);
+        }
+        first = +adapter.startOf(first, hasWeekday ? 'day' : minor);
+        if (adapter.diff(max, min, minor) > 100000 * stepSize) {
+            throw new Error(min + ' and ' + max + ' are too far apart with stepSize of ' + stepSize + ' ' + minor);
+        }
+        const timestamps = options.ticks.source === 'data' && this.getDataTimestamps();
+        for(time = first, count = 0; time < max; time = +adapter.add(time, stepSize, minor), count++){
+            addTick(ticks, time, timestamps);
+        }
+        if (time === max || options.bounds === 'ticks' || count === 1) {
+            addTick(ticks, time, timestamps);
+        }
+        return Object.keys(ticks).sort(sorter).map((x)=>+x);
+    }
+ getLabelForValue(value) {
+        const adapter = this._adapter;
+        const timeOpts = this.options.time;
+        if (timeOpts.tooltipFormat) {
+            return adapter.format(value, timeOpts.tooltipFormat);
+        }
+        return adapter.format(value, timeOpts.displayFormats.datetime);
+    }
+ format(value, format) {
+        const options = this.options;
+        const formats = options.time.displayFormats;
+        const unit = this._unit;
+        const fmt = format || formats[unit];
+        return this._adapter.format(value, fmt);
+    }
+ _tickFormatFunction(time, index, ticks, format) {
+        const options = this.options;
+        const formatter = options.ticks.callback;
+        if (formatter) {
+            return callback(formatter, [
+                time,
+                index,
+                ticks
+            ], this);
+        }
+        const formats = options.time.displayFormats;
+        const unit = this._unit;
+        const majorUnit = this._majorUnit;
+        const minorFormat = unit && formats[unit];
+        const majorFormat = majorUnit && formats[majorUnit];
+        const tick = ticks[index];
+        const major = majorUnit && majorFormat && tick && tick.major;
+        return this._adapter.format(time, format || (major ? majorFormat : minorFormat));
+    }
+ generateTickLabels(ticks) {
+        let i, ilen, tick;
+        for(i = 0, ilen = ticks.length; i < ilen; ++i){
+            tick = ticks[i];
+            tick.label = this._tickFormatFunction(tick.value, i, ticks);
+        }
+    }
+ getDecimalForValue(value) {
+        return value === null ? NaN : (value - this.min) / (this.max - this.min);
+    }
+ getPixelForValue(value) {
+        const offsets = this._offsets;
+        const pos = this.getDecimalForValue(value);
+        return this.getPixelForDecimal((offsets.start + pos) * offsets.factor);
+    }
+ getValueForPixel(pixel) {
+        const offsets = this._offsets;
+        const pos = this.getDecimalForPixel(pixel) / offsets.factor - offsets.end;
+        return this.min + pos * (this.max - this.min);
+    }
+ _getLabelSize(label) {
+        const ticksOpts = this.options.ticks;
+        const tickLabelWidth = this.ctx.measureText(label).width;
+        const angle = toRadians(this.isHorizontal() ? ticksOpts.maxRotation : ticksOpts.minRotation);
+        const cosRotation = Math.cos(angle);
+        const sinRotation = Math.sin(angle);
+        const tickFontSize = this._resolveTickFontOptions(0).size;
+        return {
+            w: tickLabelWidth * cosRotation + tickFontSize * sinRotation,
+            h: tickLabelWidth * sinRotation + tickFontSize * cosRotation
+        };
+    }
+ _getLabelCapacity(exampleTime) {
+        const timeOpts = this.options.time;
+        const displayFormats = timeOpts.displayFormats;
+        const format = displayFormats[timeOpts.unit] || displayFormats.millisecond;
+        const exampleLabel = this._tickFormatFunction(exampleTime, 0, ticksFromTimestamps(this, [
+            exampleTime
+        ], this._majorUnit), format);
+        const size = this._getLabelSize(exampleLabel);
+        const capacity = Math.floor(this.isHorizontal() ? this.width / size.w : this.height / size.h) - 1;
+        return capacity > 0 ? capacity : 1;
+    }
+ getDataTimestamps() {
+        let timestamps = this._cache.data || [];
+        let i, ilen;
+        if (timestamps.length) {
+            return timestamps;
+        }
+        const metas = this.getMatchingVisibleMetas();
+        if (this._normalized && metas.length) {
+            return this._cache.data = metas[0].controller.getAllParsedValues(this);
+        }
+        for(i = 0, ilen = metas.length; i < ilen; ++i){
+            timestamps = timestamps.concat(metas[i].controller.getAllParsedValues(this));
+        }
+        return this._cache.data = this.normalize(timestamps);
+    }
+ getLabelTimestamps() {
+        const timestamps = this._cache.labels || [];
+        let i, ilen;
+        if (timestamps.length) {
+            return timestamps;
+        }
+        const labels = this.getLabels();
+        for(i = 0, ilen = labels.length; i < ilen; ++i){
+            timestamps.push(parse(this, labels[i]));
+        }
+        return this._cache.labels = this._normalized ? timestamps : this.normalize(timestamps);
+    }
+ normalize(values) {
+        return _arrayUnique(values.sort(sorter));
+    }
+}
+
 /*!
   * chartjs-adapter-moment v1.0.1
   * https://www.chartjs.org
   * (c) 2022 chartjs-adapter-moment Contributors
   * Released under the MIT license
-  */const Fr={datetime:"MMM D, YYYY, h:mm:ss a",millisecond:"h:mm:ss.SSS a",second:"h:mm:ss a",minute:"h:mm a",hour:"hA",day:"MMM D",week:"ll",month:"MMM YYYY",quarter:"[Q]Q - YYYY",year:"YYYY"};var Lr;Hi._date.override("function"==typeof t?{_id:"moment",formats:function(){return Fr},parse:function(e,i){return"string"==typeof e&&"string"==typeof i?e=t(e,i):e instanceof t||(e=t(e)),e.isValid()?e.valueOf():null},format:function(e,i){return t(e).format(i)},add:function(e,i,s){return t(e).add(i,s).valueOf()},diff:function(e,i,s){return t(e).diff(t(i),s)},startOf:function(e,i,s){return e=t(e),"isoWeek"===i?(s=Math.trunc(Math.min(Math.max(0,s),6)),e.isoWeekday(s).startOf("day").valueOf()):e.startOf(i).valueOf()},endOf:function(e,i){return t(e).endOf(i).valueOf()}}:{}),function(t){t.CATEGORICAL="categorical",t.SEQUENTIAL="sequential",t.ALERT="alert",t.CUSTOM="custom"}(Lr||(Lr={}));const Pr={categorical:["#7E57C2","#26A69A","#42A5F5","#FFCA28","#66BB6A","#26C6DA","#D4E157","#FF7043","#5E35B1","#00897B","#1E88E5","#FFB300","#43A047","#00ACC1","#C0CA33","#F4511E","#B39DDB","#80CBC4","#90CAF9","#FFE082","#A5D6A7","#80DEEA","#E6EE9C","#FFAB91","#4527A0","#00695C","#1565C0","#FF8F00","#2E7D32","#00838F","#9E9D24","#D84315"],sequential:["#BBDEFB","#90CAF9","#64B5F6","#42A5F5","#2196F3","#1E88E5","#1976D2","#1565C0","#0D47A1"],alert:["#4CAF50","#FFC107","#F44336","#9E9E9E","#4CAF50","#F44336","#f8f9fa","#2196F3","#1976D2"]};function Nr(t){return Array.isArray(t)?t:t&&Pr[t]?Pr[t]:null}export{bn as A,Ii as B,Lr as C,Bi as D,kr as L,On as P,jr as T,ln as a,Mr as b,En as c,zi as d,_n as e,nr as f,vr as g,Nr as h,tr as i,Tn as p}
+  */
+
+const FORMATS = {
+  datetime: 'MMM D, YYYY, h:mm:ss a',
+  millisecond: 'h:mm:ss.SSS a',
+  second: 'h:mm:ss a',
+  minute: 'h:mm a',
+  hour: 'hA',
+  day: 'MMM D',
+  week: 'll',
+  month: 'MMM YYYY',
+  quarter: '[Q]Q - YYYY',
+  year: 'YYYY'
+};
+
+adapters._date.override(typeof hooks === 'function' ? {
+  _id: 'moment', // DEBUG ONLY
+
+  formats: function() {
+    return FORMATS;
+  },
+
+  parse: function(value, format) {
+    if (typeof value === 'string' && typeof format === 'string') {
+      value = hooks(value, format);
+    } else if (!(value instanceof hooks)) {
+      value = hooks(value);
+    }
+    return value.isValid() ? value.valueOf() : null;
+  },
+
+  format: function(time, format) {
+    return hooks(time).format(format);
+  },
+
+  add: function(time, amount, unit) {
+    return hooks(time).add(amount, unit).valueOf();
+  },
+
+  diff: function(max, min, unit) {
+    return hooks(max).diff(hooks(min), unit);
+  },
+
+  startOf: function(time, unit, weekday) {
+    time = hooks(time);
+    if (unit === 'isoWeek') {
+      weekday = Math.trunc(Math.min(Math.max(0, weekday), 6));
+      return time.isoWeekday(weekday).startOf('day').valueOf();
+    }
+    return time.startOf(unit).valueOf();
+  },
+
+  endOf: function(time, unit) {
+    return hooks(time).endOf(unit).valueOf();
+  }
+} : {});
+
+// TODO: VCOMPLIB-1153 Support dark theme chart paette.
+var ChartColorPalette;
+(function (ChartColorPalette) {
+    ChartColorPalette["CATEGORICAL"] = "categorical";
+    ChartColorPalette["SEQUENTIAL"] = "sequential";
+    ChartColorPalette["ALERT"] = "alert";
+    ChartColorPalette["CUSTOM"] = "custom";
+})(ChartColorPalette || (ChartColorPalette = {}));
+const categorical = [
+    '#7E57C2', // TOKEN_COLOR_BASE_PURPLE_400
+    '#26A69A', // TOKEN_COLOR_BASE_TEAL_400
+    '#42A5F5', // TOKEN_COLOR_BASE_BLUE_400
+    '#FFCA28', // TOKEN_COLOR_BASE_AMBER_400
+    '#66BB6A', // TOKEN_COLOR_BASE_GREEN_400
+    '#26C6DA', // TOKEN_COLOR_BASE_CYAN_400
+    '#D4E157', // TOKEN_COLOR_BASE_LIME_400
+    '#FF7043', // TOKEN_COLOR_BASE_ORANGE_400
+    '#5E35B1', // TOKEN_COLOR_BASE_PURPLE_600
+    '#00897B', // TOKEN_COLOR_BASE_TEAL_600
+    '#1E88E5', // TOKEN_COLOR_BASE_BLUE_600
+    '#FFB300', // TOKEN_COLOR_BASE_AMBER_600
+    '#43A047', // TOKEN_COLOR_BASE_GREEN_600
+    '#00ACC1', // TOKEN_COLOR_BASE_CYAN_600
+    '#C0CA33', // TOKEN_COLOR_BASE_LIME_600
+    '#F4511E', // TOKEN_COLOR_BASE_ORANGE_600
+    '#B39DDB', // TOKEN_COLOR_BASE_PURPLE_200
+    '#80CBC4', // TOKEN_COLOR_BASE_TEAL_200
+    '#90CAF9', // TOKEN_COLOR_BASE_BLUE_200
+    '#FFE082', // TOKEN_COLOR_BASE_AMBER_200
+    '#A5D6A7', // TOKEN_COLOR_BASE_GREEN_200
+    '#80DEEA', // TOKEN_COLOR_BASE_CYAN_200
+    '#E6EE9C', // TOKEN_COLOR_BASE_LIME_200
+    '#FFAB91', // TOKEN_COLOR_BASE_ORANGE_200
+    '#4527A0', // TOKEN_COLOR_BASE_PURPLE_800
+    '#00695C', // TOKEN_COLOR_BASE_TEAL_800
+    '#1565C0', // TOKEN_COLOR_BASE_BLUE_800
+    '#FF8F00', // TOKEN_COLOR_BASE_AMBER_800
+    '#2E7D32', // TOKEN_COLOR_BASE_GREEN_800
+    '#00838F', // TOKEN_COLOR_BASE_CYAN_800
+    '#9E9D24', // TOKEN_COLOR_BASE_LIME_800
+    '#D84315', // TOKEN_COLOR_BASE_ORANGE_800
+];
+const sequential = [
+    '#BBDEFB', // TOKEN_COLOR_BASE_BLUE_100
+    '#90CAF9', // TOKEN_COLOR_BASE_BLUE_200
+    '#64B5F6', // TOKEN_COLOR_BASE_BLUE_300
+    '#42A5F5', // TOKEN_COLOR_BASE_BLUE_400
+    '#2196F3', // TOKEN_COLOR_BASE_BLUE_500
+    '#1E88E5', // TOKEN_COLOR_BASE_BLUE_600
+    '#1976D2', // TOKEN_COLOR_BASE_BLUE_700
+    '#1565C0', // TOKEN_COLOR_BASE_BLUE_800
+    '#0D47A1', // TOKEN_COLOR_BASE_BLUE_900
+];
+const alert = [
+    '#4CAF50', // TOKEN_STATE_SUCCESS_BASE
+    '#FFC107', // TOKEN_STATE_WARNING_BASE
+    '#F44336', // TOKEN_STATE_ERROR_BASE
+    '#9E9E9E', // TOKEN_STATE_DISABLED_BASE
+    '#4CAF50', // TOKEN_STATE_SUCCESS_BASE
+    '#F44336', // TOKEN_STATE_ERROR_BASE
+    '#f8f9fa', // TOKEN_COLOR_GRAY_100
+    '#2196F3', // TOKEN_STATE_INFO_BASE
+    '#1976D2', // TOKEN_STATE_INFO_DARK
+];
+const palettes = {
+    categorical: categorical,
+    sequential: sequential,
+    alert: alert,
+};
+
+function getChartColors(palette) {
+    if (Array.isArray(palette)) {
+        return palette;
+    }
+    if (palette && palettes[palette]) {
+        return palettes[palette];
+    }
+    return null;
+}
+
+export { ArcElement as A, BarController as B, ChartColorPalette as C, DoughnutController as D, LinearScale as L, PointElement as P, TimeScale as T, Chart as a, CategoryScale as b, BarElement as c, LineController as d, LineElement as e, plugin_legend as f, plugin_tooltip as g, getChartColors as h, index as i, plugin_colors as p };
+//# sourceMappingURL=p-7mQ_RyCI.js.map
+
+//# sourceMappingURL=p-7mQ_RyCI.js.map

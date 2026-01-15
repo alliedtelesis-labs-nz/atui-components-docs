@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var translation = require('./translation-HqquF7bU.js');
 
 const AtPromptContainer = class {
@@ -210,8 +210,9 @@ const AtPromptContainer = class {
         return (index.h("div", { class: "p-4" }, index.h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (index.h(index.Host, { key: 'a74e99cf4dcda766ecac8c18ba800a25af8b18ea', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '616c627d4a93365081fd2a48419b50eb1845695c', name: "prompt-container-header" }), index.h("div", { key: '544fb08e755b723b8aaba737d248117dbb806c04', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: '90af2ae9b5c361ee7f9e10e7be322878154eb909', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: '2314d9c0c2f5a0e9347f47da54075c0e8cb35b2d', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: 'e9c8baeb5569f7a4bc1ebb0d7071301437033074', name: "prompt-container-footer" }))));
+        return (index.h(index.Host, { key: 'a491f8a772f9484d9f821e53a78b472366297cb5', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '8a97bd1594105e1a190f7f4283917f6684dad02a', name: "prompt-container-header" }), index.h("div", { key: 'd397231cbf98bc71e51e5e6a4f6d41e112f72264', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: 'ed83521064b7e367936e5d8066d0a7163b70114f', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: 'b9811b57b3a5e0356bf79b2d0404abf01facf206', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '4017cf6d1298c573ede01cb67236d04a22476fe3', name: "prompt-container-footer" }))));
     }
 };
 
 exports.at_prompt_container = AtPromptContainer;
+//# sourceMappingURL=at-prompt-container.entry.cjs.js.map

@@ -16,3 +16,4 @@ Default.args = {
     info_text: 'Info text',
     required: true,
 };
+//# sourceMappingURL=at-form-label.stories.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {
@@ -162,14 +162,13 @@ const AtRadioGroup = class {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (index.h(index.Host, { key: '67798de283b5d57d6f640aa708dc3feeffa7c62e', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, index.h("div", { key: '3d012c0466b739c086f8d2979c1857ee0fff286d', class: "flex flex-col" }, index.h("slot", { key: '88b765e74b0dd7afa512f39c80b2754b9cdd31c8', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '9a48f32e70f1cdfea927f272ffc2072b56e4e577', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '7b91d15170d87bbdf794bc452a247d008e87f337', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), index.h("ul", { key: 'f505795524b7fef6081c621fca862c5668ad4673', class: classname, "data-name": "radio-group-options" }, index.h("slot", { key: 'e3e46451a38278f57d26402500a16c9a598fbeae' }), this.getRadios &&
-            this.getRadios.map((radio) => (index.h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (index.h("span", { key: 'e31e4c148f3fcbec888a4ce1615cf9bef23a2308', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (index.h(index.Host, { key: '18d92c74555b267d32881a220058639285651625', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, index.h("div", { key: '3f165bfa70ffedde7c2f5a3ca77b03a4cc41586b', class: "flex flex-col" }, index.h("slot", { key: '386ed7f86257c78f422a18dc8eeed428d83ccc12', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'b2bc42a1854484ce0b4ed07aa3f92dcd9fd59b5d', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '2d728767975e89584f53aecdafc429b784f0139c', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), index.h("ul", { key: '2112df42f2efc3d7d63072dd5f7044fb0e27aac5', class: classname, "data-name": "radio-group-options" }, index.h("slot", { key: '9bcbbe788bacb7227eebde1a930bb36070d69c0c' }), this.getRadios &&
+            this.getRadios.map((radio) => (index.h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (index.h("span", { key: '68f2d473b1e65775bce24af23d5f19671fcc13d5', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "value": [{
-                "watchValue": 0
-            }]
+        "value": ["watchValue"]
     }; }
 };
 
 exports.at_radio_group = AtRadioGroup;
+//# sourceMappingURL=at-radio-group.entry.cjs.js.map

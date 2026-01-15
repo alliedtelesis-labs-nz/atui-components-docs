@@ -4,3 +4,4 @@ export var PromptResponseScore;
     PromptResponseScore[PromptResponseScore["UP"] = 1] = "UP";
     PromptResponseScore[PromptResponseScore["DOWN"] = -1] = "DOWN";
 })(PromptResponseScore || (PromptResponseScore = {}));
+//# sourceMappingURL=prompt.js.map

@@ -23,3 +23,4 @@ Default.args = {
     is_active: false,
     fill_parent_width: false,
 };
+//# sourceMappingURL=at-tab-trigger.stories.js.map

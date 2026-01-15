@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-DW9Wz0FM.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const containerVariantsConfig = {
@@ -83,7 +83,7 @@ const AtCardComponent = class {
         const headerClassname = getHeaderClassname({
             sticky: this.sticky_header,
         });
-        const getContentClassname = classlist('relative flex flex-auto flex-col min-h-0', contentVariantsConfig);
+        const getContentClassname = classlist('relative flex flex-auto flex-col', contentVariantsConfig);
         const contentClassname = getContentClassname({
             padding: this.padding,
             overflow: this.overflow_content,
@@ -92,8 +92,9 @@ const AtCardComponent = class {
         const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (h(Host, { key: 'e1fa474bd6b99632280b97e380787fba6be2eee7', class: containerClassname }, h("div", { key: 'd79a8aa4034b35aaa9229ee6f598b048c00d1558', class: headerClassname }, h("slot", { key: '73dfd447390122c60c68041bc404df3cdf3630d5', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '4ead7cf75db6cbdc83286a3dd544b0d8eaed88a5', class: "flex flex-col" }, this.card_title && (h("h4", { key: '283768233cfac4eac381a666e4c59e47517c186d', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '921d914b4fc998d27c0f3569ec98fcbb8b35f4d7', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '66af9407d2f44a53bd6f2b6a2edc17bca88daa04', name: "card-header-actions" })), h("div", { key: '752915ba49f6d3836c5ebc689192b2dfd88e2a60', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: 'c97c51638551cfca052e325bfba7f006890ae258' })), h("div", { key: '193ccc881ab96ae6e5cbbc18ad8685d075b37cd2', class: footerClassname }, h("slot", { key: '9ccebb136468e611c9166a63ea2ce7b249279400', name: "card-footer" }))));
+        return (h(Host, { key: 'f932a166a7e7576f06617dbc2a935e51a1592058', class: containerClassname }, h("div", { key: 'd9da4e8b6aabd35212be8ab94d3d59afb5199399', class: headerClassname }, h("slot", { key: '4ea67dae790b3622264c5e48f8a778bdebb6f1bf', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '6e8635321bb2e79d1f099e10de29ebccab7d00d3', class: "flex flex-col" }, this.card_title && (h("h4", { key: '63df00dc6049f253d8a2a0cdec1340af92f4fa48', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: 'e2d2945d204cf285ff930d963b4afe3f9c5bb625', class: "text-light text-sm", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '18a2733aeb03e8af91fdf95bb7d7b56b7adca105', name: "card-header-actions" })), h("div", { key: 'c2d0d02df0df86c057ee4feb0ead5d69380e6309', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: 'f3b29ef30a1b0fc9362f6b4ad3168bebd102f7d0' })), h("div", { key: 'b43fd2ba59096711609b2b43d4402e3b8fe26431', class: footerClassname }, h("slot", { key: '59a9c0889151e9da77a70ef827fb40aaa80f00ac', name: "card-footer" }))));
     }
 };
 
 export { AtCardComponent as at_card };
+//# sourceMappingURL=at-card.entry.js.map

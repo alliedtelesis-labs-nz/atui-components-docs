@@ -1,5 +1,5 @@
 import moment from "moment";
-import { floor, isEmpty, round, clone } from "lodash-es";
+import { clone, floor, isEmpty, round } from "lodash";
 import { Duration, TimeUnit, } from "../types/time";
 export class TimeDateUtil {
     /**
@@ -165,3 +165,4 @@ export class TimeDateUtil {
         }
     }
 }
+//# sourceMappingURL=time-date.util.js.map

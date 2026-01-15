@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtFormLabelComponent = class {
@@ -24,9 +24,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (index.h("div", { key: '44637372c2205f4e3b5567dab2540c1b8693132c', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (index.h("label", { key: 'f0888dd9af9d08d5bbd31aac09b9159957346027', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'e1def040d93e2f603c9bf847171914c9542e5ed1', class: "text-error" }, "*"))),
-            this.info_text && (index.h("at-tooltip", { key: 'fbaec73e6422bc6eeb3b2e2e8620b2b153aeaf77', position: "right" }, index.h("span", { key: '70fbc0692dc65e18350fd58a493b2dc48e2d50f7', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), index.h("span", { key: 'e2b4165726a85b87b2987f16fd1f662d4ef00e66' }, this.info_text))),
+        return (index.h("div", { key: '46f2ac984700e680d451d1ca7ce3c9b6e6864917', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (index.h("label", { key: 'd1e9b91ac550ab6575f33ab03e8b516eea827359', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '144e57b74ee8ae87ad75ae9769ac0d2b39d6bd5c', class: "text-error" }, "*"))),
+            this.info_text && (index.h("at-tooltip", { key: 'f6da4f3d873f24247216d9595c859d29252d7e62', position: "right" }, index.h("span", { key: 'd905beaab6ff77e016984466717ee650e6face1d', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), index.h("span", { key: '7ca8889b2be5849c4ee7021f54750c3b20f8bb6f' }, this.info_text))),
         ]));
     }
 };
@@ -319,14 +319,13 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: 'a6dbd57bd2e5a20335a9c93524d408ef990d2565', class: "relative" }, !this.trigger_id && (index.h("div", { key: 'a09d0c5b98ced0956019c3b88102501b227f91c2', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: 'd7af1ba9821f333ce50904f9fee9da4e6169d45d', name: "tooltip-trigger" }))), index.h("div", { key: 'd23d9dcdf5766501deba1b4f1bdfa56d0a5d05e6', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'fe31ca67fa572f34581b7290d58afd77c8417553' }))));
+        return (index.h(index.Host, { key: '6c3ab5ae000440286e747cdf5533ec0f68a8f305', class: "relative" }, !this.trigger_id && (index.h("div", { key: '69f7ba3efc40f452afcfcaeeaf8f5fcab112cff6', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: 'fc26441d449f78ef8218c9bd0aa9c978f249e4f4', name: "tooltip-trigger" }))), index.h("div", { key: 'fcfe81d67b6444f402f0443469a3afc733bfc9c0', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'd025a0ebce2d397434d3528a2beaf783a9563eb1' }))));
     }
     static get watchers() { return {
-        "disabled": [{
-                "disabledChanged": 0
-            }]
+        "disabled": ["disabledChanged"]
     }; }
 };
 
 exports.at_form_label = AtFormLabelComponent;
 exports.at_tooltip = AtTooltip;
+//# sourceMappingURL=at-form-label.at-tooltip.entry.cjs.js.map

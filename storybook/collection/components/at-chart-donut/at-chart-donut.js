@@ -212,7 +212,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '8c9f28902414ab8d81a34963cba1a59ee6fc867e', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '5f8adcbc14fe77068b9dcb0082edf4b00b357ff4', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: '03fcf954da659ba3abe87a42a72918cc140a5236', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '95331aeb19fbed9b529facf375d66fc79480e9e8', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
@@ -234,8 +234,7 @@ export class AtChartDonut {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
-                            "referenceLocation": "ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
                         }
                     }
                 },
@@ -342,8 +341,7 @@ export class AtChartDonut {
                         "Plugin": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin",
-                            "referenceLocation": "Plugin"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin"
                         }
                     }
                 },
@@ -383,8 +381,7 @@ export class AtChartDonut {
                         "ChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette",
-                            "referenceLocation": "ChartColorPalette"
+                            "id": "src/types/chart-color.ts::ChartColorPalette"
                         }
                     }
                 },
@@ -485,3 +482,4 @@ export class AtChartDonut {
         };
     }
 }
+//# sourceMappingURL=at-chart-donut.js.map

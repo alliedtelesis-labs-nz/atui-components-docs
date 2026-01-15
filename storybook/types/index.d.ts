@@ -22,5 +22,3 @@ export { TextImageCellData } from './components/table-components/cell-components
 export { ChipCellData } from './components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell';
 export { CheckboxCellData } from './components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';
 export { type PromptMessage, type PromptUserRole, type PromptResponseAnimation, PromptResponseScore, } from './types/prompt';
-export { ToasterService } from './utils/toaster.service';
-export { Toast, ToastOptions, ToastPosition, ToastType } from './types/toast';

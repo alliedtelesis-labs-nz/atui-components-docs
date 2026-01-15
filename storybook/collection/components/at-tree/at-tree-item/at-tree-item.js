@@ -72,9 +72,9 @@ export class AtTreeItemComponent {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: '5f0cac0b73afdafb6a4b0d9297cea891ced00d66', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'da85a960c2bdbd92be352f379eedc3b2deaf9295', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '9eb4f97b79259f9b421597abb5bcf288b570c31e', class: "flex gap-4" }, this.has_children && (h("span", { key: '09fc73c273e0805313f9cb4a80cb27d5e657e317', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (h(Host, { key: '4b75be5b14fd73766efbd5a9cc6b54d2a253008f', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '85d2098bcf04f255b79bd66afab2771e9c1a1fa0', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'f9d0e90d4907ea764985fb25503221b7350d9d65', class: "flex gap-4" }, this.has_children && (h("span", { key: '12a17ee51ae26435b5c65ec58e90aa8c7a8df61f', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (h("span", { key: 'c39f4d8c79092c85572d53cbfb18e7fb5280655a', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: 'cb0f256ee37cdad1bce1f5fcab1a618e7f7d324e', name: "label" })), h("slot", { key: '410bdc60b0e9664752bcf8d75e48bc6cd891b8fb' })), h("div", { key: '940ecd3b261b3b239d56017e17f9a5f8d36481c6', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (h("span", { key: 'ce9f710f28b91e6969165040a4ab320c01941f5c', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '897fa7d3d8951561c5a9fe1aca7654fe9130d689', name: "label" })), h("slot", { key: '7f410529cbce3a735248575f78a29ebd6badf41b' })), h("div", { key: '4159f389b26a929f6e63da803b699825ec771d48', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
     static get is() { return "at-tree-item"; }
     static get properties() {
@@ -223,8 +223,7 @@ export class AtTreeItemComponent {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -232,3 +231,4 @@ export class AtTreeItemComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-tree-item.js.map

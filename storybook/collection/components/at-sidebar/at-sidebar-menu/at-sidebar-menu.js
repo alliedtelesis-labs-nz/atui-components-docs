@@ -7,7 +7,7 @@ import { h, Host } from "@stencil/core";
  */
 export class AtSidebarMenuComponent {
     render() {
-        return (h(Host, { key: 'a9abfcabb7bd3282182e9939b664ea5b6e7a8ee2', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'b0b21be1df7fd3a207c951c6ea0319aac6a21af4' })));
+        return (h(Host, { key: '5f8235992ce3914e5c4e12ec49a1dd723836c9ec', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '2b46a1ecfe6e0642919dadd9b0e219717beeb61e' })));
     }
     static get is() { return "at-sidebar-menu"; }
     static get encapsulation() { return "scoped"; }
@@ -22,3 +22,4 @@ export class AtSidebarMenuComponent {
         };
     }
 }
+//# sourceMappingURL=at-sidebar-menu.js.map

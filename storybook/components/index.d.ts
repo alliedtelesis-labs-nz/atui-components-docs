@@ -165,8 +165,6 @@ export { AtTitleSubtitleCell as AtTitleSubtitleCell } from '../types/components/
 export { defineCustomElement as defineCustomElementAtTitleSubtitleCell } from './at-title-subtitle-cell';
 export { AtTitleSubtitleDateCell as AtTitleSubtitleDateCell } from '../types/components/table-components/cell-components/at-title-subtitle-date-cell/at-title-subtitle-date-cell';
 export { defineCustomElement as defineCustomElementAtTitleSubtitleDateCell } from './at-title-subtitle-date-cell';
-export { AtToasterComponent as AtToaster } from '../types/components/at-toaster/at-toaster';
-export { defineCustomElement as defineCustomElementAtToaster } from './at-toaster';
 export { AtToggleCell as AtToggleCell } from '../types/components/table-components/cell-components/at-toggle-cell/at-toggle-cell';
 export { defineCustomElement as defineCustomElementAtToggleCell } from './at-toggle-cell';
 export { AtToggleSwitchComponent as AtToggleSwitch } from '../types/components/at-toggle-switch/at-toggle-switch';
@@ -211,5 +209,4 @@ export interface SetPlatformOptions {
   rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;
 }
 export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;
-
 export * from '../types';

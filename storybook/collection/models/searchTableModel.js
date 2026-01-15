@@ -26,3 +26,4 @@ export const defaultGridOptions = {
         last: '<i class="material-icons icon--large">last_page</i>',
     },
 };
+//# sourceMappingURL=searchTableModel.js.map

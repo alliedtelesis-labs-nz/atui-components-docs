@@ -36,7 +36,7 @@ export class AtTableFilters {
         this.atChange.emit(this.selected.length ? this.selected : []);
     };
     render() {
-        return (this.col_defs && (h(Host, { key: '1a4b9730ac0d31a022defa22f065b434222fa229', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '1d759b566771a790218edec6c8cf94925f111e4c', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), h("at-button", { key: 'fa6ac72cf55404beca780a38cd55bd027415bdfc', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '7e6ec317a5643bb945da15b57123e0d4a6c901fc', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '6355d188effe188f5e612fead5e1d2dd155ec195', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), h("at-button", { key: '2149df20b20a06549469dd80f354059ba0db0066', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "at-table-filters"; }
     static get properties() {
@@ -51,8 +51,7 @@ export class AtTableFilters {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -116,3 +115,4 @@ export class AtTableFilters {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-table-filters.js.map

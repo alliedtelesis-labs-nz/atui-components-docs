@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const buttonVariantsConfig = {
@@ -204,11 +204,11 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: '6db0876e0a88567aa8ca9b34df56859e39c66dc3', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '9c19a767935c8a86a17d232a72b116164df9607b', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: 'b44464d297733adec997a5cfeabadcc2f0cfdc14', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: 'd0a34a3bd483bd2a66ed8e9e25fa78bc38245761', name: "icon" }), this.icon && (index.h("span", { key: '562e565f966901eba3636f01e07f8a14850179ef', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: 'b378a226eadab0624ecc40f97a0fea51dcec22bb', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'f163e9cb5675047f995f473d7b639315fa586c60' }), index.h("slot", { key: '0e8d834179c28913ada3d6ef5cdb7c617dbedfff', name: "icon_after" }), this.icon_after && (index.h("span", { key: 'd6ea831d7be23761714486246c713909378dabcd', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: 'cfac581bb289ba64e40409a08fb8f205e6560403', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '70e8a42c1d4073188539dd0407499773b13e1d17', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '1c7aed35819f336823e7c33edb51b2336e945957', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '69c87ea6e1823d67bc43366d18c5386c786dffde', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: '5fee351987af56df8f640e5dbad35e3cb0fd4268', name: "icon" }), this.icon && (index.h("span", { key: 'b3ff09e7eeed91508f0d642c89c11d09e09c9f5a', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: 'a8a8b42c2291c1308132f822ebd0ccbb25c5c368', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '4aaf95b09f041123d01290edf76c82236e7a824c' }), index.h("slot", { key: '9781bced8c87f581c994f8feaf5b8f3a2330d5e9', name: "icon_after" }), this.icon_after && (index.h("span", { key: '3c130a689f3a549d18457fd31e25a4d7ea737f27', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: '2deeded568e8d71326440838b989336a1cce4626', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 
-const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
+const atLoadingCss = "@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}";
 
 const loadingVariants = {
     type: {
@@ -277,7 +277,8 @@ const AtLoadingComponent = class {
         }
     }
 };
-AtLoadingComponent.style = atLoadingCss();
+AtLoadingComponent.style = atLoadingCss;
 
 exports.at_button = AtButtonComponent;
 exports.at_loading = AtLoadingComponent;
+//# sourceMappingURL=at-button.at-loading.entry.cjs.js.map

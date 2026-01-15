@@ -13482,3 +13482,6 @@ function getChartColors(palette) {
 }
 
 export { ArcElement as A, BarController as B, ChartColorPalette as C, DoughnutController as D, LinearScale as L, PointElement as P, TimeScale as T, Chart as a, CategoryScale as b, BarElement as c, LineController as d, LineElement as e, plugin_legend as f, plugin_tooltip as g, getChartColors as h, index as i, plugin_colors as p };
+//# sourceMappingURL=chart-color-CdyBNAVl.js.map
+
+//# sourceMappingURL=chart-color-CdyBNAVl.js.map

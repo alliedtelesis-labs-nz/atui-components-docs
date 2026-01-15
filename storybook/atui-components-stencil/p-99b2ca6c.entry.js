@@ -1,0 +1,2 @@
+import{r as e,h as a,H as r}from"./p-EP34iaAr.js";const s=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px}";const c=class{constructor(a){e(this,a)}render(){return a(r,{key:"5f8235992ce3914e5c4e12ec49a1dd723836c9ec",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"2b46a1ecfe6e0642919dadd9b0e219717beeb61e"}))}};c.style=s;export{c as at_sidebar_menu};
+//# sourceMappingURL=p-99b2ca6c.entry.js.map

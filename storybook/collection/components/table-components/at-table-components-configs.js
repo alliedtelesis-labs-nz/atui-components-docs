@@ -87,3 +87,4 @@ export class AtTableComponentsConfigs {
         this.cellComponentsLoaded = false;
     }
 }
+//# sourceMappingURL=at-table-components-configs.js.map

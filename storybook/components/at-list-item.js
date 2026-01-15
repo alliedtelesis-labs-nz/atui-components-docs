@@ -1,1 +1,79 @@
-import{p as e,H as t,h as s,c as a,t as c}from"./p-CtWJ4BTZ.js";const i={sm:"py-4 text-sm",md:"py-8 text-body",lg:"py-[12px] text-body"},d=e(class extends t{constructor(e){super(),!1!==e&&this.__registerHost()}icon;item_prefix;item_title;subtitle;content;size="sm";border=!0;get sizeClasses(){return i[this.size]}render(){return s(a,{key:"ddefc57042851ffd6592f7e7470862169558bebf",role:"listitem",tabIndex:0,class:`flex items-center gap-3 px-4 ${this.sizeClasses} ${this.border?"border-border border-b border-solid":""}`},s("div",{key:"a2ba3758b3fd12a0ef504a4649b97efec69eb1b7",class:"flex flex-grow flex-col"},s("div",{key:"9f67502e84f396d811dd62900c200d742264650d",class:"flex items-center justify-start gap-8 whitespace-nowrap"},this.icon&&s("span",{key:"10130f3945015bcec8b3ac46a5d572daec26b0ba",class:"material-icons text-light items-center text-sm"},this.icon),this.item_prefix&&s("span",{key:"4599c30687b29cfaeee343409ddb940e13896feb",class:"text-med mr-[4px] font-normal"},this.item_prefix),s("span",{key:"edcf69be2cb32cdbd802db238a6e8f7b68acb6a3",class:"flex flex-grow truncate pr-8 font-medium "+(this.item_prefix&&this.subtitle?"flex flex-col":"")},s("span",{key:"c2c3f766d9408838043eb4cbb6136d929ae3bd32",class:"flex flex-row font-normal"},s("span",{key:"bfebf4c664a6090183466ff570d2702c2015f3ea",class:"mr-4"},this.item_title),s("slot",{key:"9909c964442a9efa3610b7216f7ccc3d600d1744",name:"title"})),this.subtitle&&s("span",{key:"e032ad975c6b78ede9acb603a908b42f053c7e32",class:"text-med inline text-sm font-normal","data-name":"subtitle"},this.subtitle)))),s("div",{key:"c53235dc05e082df7ae1ee2a7572e3742a776788",class:"flex flex-wrap items-end justify-end gap-8"},s("slot",{key:"4ecc13cb83b27a9c914cd295b726317828c6dc0e"}),this.content&&s("span",{key:"fd3a82d0fffd1cec1a77e42074b828fc91037654","data-name":"content"},this.content)))}},[772,"at-list-item",{icon:[1],item_prefix:[1],item_title:[1],subtitle:[1],content:[1],size:[1],border:[4]}]),f=d,l=function(){"undefined"!=typeof customElements&&["at-list-item"].forEach((e=>{"at-list-item"===e&&(customElements.get(c(e))||customElements.define(c(e),d))}))};export{f as AtListItem,l as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+
+const listItemVariants = {
+    xs: 'min-h-16 text-sm',
+    sm: 'min-h-[32px] text-sm',
+    md: 'min-h-[40px] text-body',
+    lg: 'min-h-[48px] text-body',
+};
+const AtListItem$1 = /*@__PURE__*/ proxyCustomElement(class AtListItem extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+    }
+    /**
+     * Optional icon shown to the left of the list item - use mat-icon name.
+     */
+    icon;
+    /**
+     * Optional prefix.
+     */
+    item_prefix;
+    /**
+     * Title of the list item.
+     */
+    item_title;
+    /**
+     * Optional subtitle of the list item.
+     */
+    subtitle;
+    /**
+     * Content of the list item placed at the right of the item.
+     */
+    content;
+    /**
+     * Size of the list item.
+     */
+    size = 'sm';
+    /**
+     * Border below the list item.
+     */
+    border = true;
+    get sizeClasses() {
+        return listItemVariants[this.size];
+    }
+    render() {
+        return (h(Host, { key: 'ca59a07938b4a8752f465e959772d81cc800746f', role: "listitem", tabIndex: 0, class: "hover:bg-surface-1 flex items-center gap-3 px-4 py-3" }, h("div", { key: '5c089b9bbfed407a80186e2047b2e7f1e339d4ef', class: "flex flex-grow flex-col" }, h("div", { key: 'a031c1ce4ee474fb5c489c6133a7244fa62f03e8', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, this.icon && (h("span", { key: '113d2377945f9b479c7a6cfe7aea650f7963dc3a', class: "material-icons text-light items-center text-sm" }, this.icon)), this.item_prefix && (h("span", { key: '7dc54ac345e06309e9a133f95018d9ef2a94b618', class: "text-med mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: '63a7ffb23649624461e759f616e3529f40278bf6', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '25d5cfba857f254e9dd1604ef2eac95016e4c97e', class: "flex flex-row font-normal" }, h("span", { key: 'ef25f0905faf1ca4cc80615a7cb807525710ebfb', class: "mr-4" }, this.item_title), h("slot", { key: '4a0d329490d652a7bd98bd79b13a7768153b3e1e', name: "title" })), this.subtitle && (h("span", { key: 'aaa71e6f81ce7289e6780a191701596a088afb63', class: "text-med inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '1e2d2115e1e9bce6edea9c2343052e74c3bff20e', class: "flex flex-wrap items-end justify-end gap-8" }, h("slot", { key: '782bfd10d37e1c29fa4b61e0a8a0954ae3c8c200' }), this.content && (h("span", { key: '05991aaeaa7bc2bbe9255097be41ed3fbfb02cd6', "data-name": "content" }, this.content)))));
+    }
+}, [260, "at-list-item", {
+        "icon": [1],
+        "item_prefix": [1],
+        "item_title": [1],
+        "subtitle": [1],
+        "content": [1],
+        "size": [1],
+        "border": [4]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-list-item"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-list-item":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtListItem$1);
+            }
+            break;
+    } });
+}
+
+const AtListItem = AtListItem$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtListItem, defineCustomElement };
+//# sourceMappingURL=at-list-item.js.map
+
+//# sourceMappingURL=at-list-item.js.map

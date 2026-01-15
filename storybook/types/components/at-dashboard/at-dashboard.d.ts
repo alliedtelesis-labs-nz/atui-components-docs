@@ -10,18 +10,21 @@ export interface CustomGridStackItem extends GridStackNode {
 }
 export declare class AtDashboard {
     el: HTMLElement;
-    widget_items: CustomGridStackItem[];
+    widget_templates: CustomGridStackItem[];
     changedItem: EventEmitter<CustomGridStackItem>;
     removedItem: EventEmitter<CustomGridStackItem>;
-    resizeDragEvent: EventEmitter<CustomGridStackItem>;
+    resizeEvent: EventEmitter<GridStackNode>;
     widgetTemplatesChanged(): void;
     private grid?;
     private gridContainerRef?;
+    private needsLayout;
+    componentWillLoad(): void;
     componentDidLoad(): void;
-    componentDidUpdate(): void;
+    componentDidRender(): void;
     disconnectedCallback(): void;
     private layoutWidgets;
     private makeWidget;
     private removeWidget;
+    private injectStyle;
     render(): any;
 }

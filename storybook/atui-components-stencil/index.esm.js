@@ -1,1 +1,2 @@
-export{P as PromptResponseScore}from"./p-Btgx1mEX.js";const t={position:"bottom-right",timeout:5e3,dismissible:!0,closeButton:!1};class s{static id=0;static containers=new Map;static async show(s,o,i={}){const e=this.id++,n={...t,...i},c={id:e,type:s,message:o,...n};this.getToaster(n.position).addToast(c)}static getToaster(t){if(this.containers.has(t))return this.containers.get(t);const s=document.createElement("at-toaster");s.setAttribute("position",t),document.body.appendChild(s);const o=s;return this.containers.set(t,o),o}}export{s as ToasterService}
+var N;(function(N){N[N["NONE"]=0]="NONE";N[N["UP"]=1]="UP";N[N["DOWN"]=-1]="DOWN"})(N||(N={}));export{N as PromptResponseScore};
+//# sourceMappingURL=index.esm.js.map

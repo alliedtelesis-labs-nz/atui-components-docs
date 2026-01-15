@@ -117,8 +117,8 @@ export class AtCheckboxGroup {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: '641bd679b182a36a118555d91e3e15e3793f0680', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '9c404c49199cd0df7c6ef8453032c85af2690575', class: "flex flex-col" }, h("slot", { key: 'b5b7bd23b57394cd3acf2f5191c453c6bef23360', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '545fa5ab12c3c0389639e928eb85f32d7e7f1df0', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '109a22a3569a8f18a2c74e73601ae39de169d5a2', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'd280c0e5c2481309a031069f2806895e1f16ca17', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: 'f115454c2c606f70a7ec3c1b1df78e9aa6ef1eec' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'faa72737884600863daa9053be5fb5afbcbd9b0c', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'ed88b6f072aec6c01ef7e5fb8539f098c87e3408', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '7f61a0b695afe235c48280fd74225178c6347570', class: "flex flex-col" }, h("slot", { key: '87d68c047b57cec5e3ae32a02b7a7a07cf05b97a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'cfe2eb6018f7d038502af89326008c2aa769850a', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '067375a557231a921a543ac82204a793061ad076', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '1e7f7359a68463c38103bed2d8c8e49a7cf26a4f', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '56afad537f7418a10e034c8888e424ba4c007e01' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'a3d197e63b5a075c11668948a54ba369a571dfba', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-checkbox-group"; }
     static get properties() {
@@ -357,3 +357,4 @@ export class AtCheckboxGroup {
  *
  * @slot - Used to place checkboxes manually when 'options' property is not set.
  */
+//# sourceMappingURL=at-checkbox-group.js.map

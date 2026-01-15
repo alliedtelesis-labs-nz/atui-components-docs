@@ -15,7 +15,6 @@
     "components/table-components/cell-components/at-text-image-cell/at-text-image-cell.js",
     "components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell.js",
     "components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell.js",
-    "components/at-toaster/at-toaster.js",
     "components/at-accordion/at-accordion.js",
     "components/at-accordion/at-accordion-item/at-accordion-item.js",
     "components/at-accordion/at-accordion-item/at-accordion-trigger/at-accordion-trigger.js",
@@ -92,8 +91,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.41.1",
-    "typescriptVersion": "5.8.3"
+    "version": "4.38.1",
+    "typescriptVersion": "5.9.3"
   },
   "collections": [],
   "bundles": []

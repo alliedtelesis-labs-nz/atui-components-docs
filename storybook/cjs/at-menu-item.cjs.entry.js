@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -46,7 +46,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'a02ef12ebee8a9edb0926b69f6b18a41b5d8010b', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: '8680fe7fc2756a5e2d3c835d33ef1945f787824c', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -54,8 +54,9 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, this.icon && (index.h("span", { key: '5e1bf149ad6a3de3a26e0f9092d5d620546aab26', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: '6c388e70ad49b7c635773d4e436505167fefc40b', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'f26ba93ff7221eb7c8ad43d4d6f87b06539c3da0' })));
+            } }, this.icon && (index.h("span", { key: '96d7da3d496c097a6039671a4a977b03ba0f6b66', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: '647342151cf52fcfea1f085c22c717da59009a3d', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '40f4b30b111e4ab354d708e731084de6739e6bb3' })));
     }
 };
 
 exports.at_menu_item = AtMenuitemComponent;
+//# sourceMappingURL=at-menu-item.entry.cjs.js.map

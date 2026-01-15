@@ -35,7 +35,7 @@ export class AtSelectOptionComponent {
         const classname = getOptionClassname({
             active: this.is_active,
         });
-        return (h("li", { key: '63ecf52c67f66dd6b14c982f9a640f761ce60e12', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '12affec6b4b47f2ee9b63e0a886571c31e103464' }), this.value));
+        return (h("li", { key: '6aa45203daf511ac469d42f04143c7982cf03f1c', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: 'ca827240ef69e8550ef67e988c5731f4d614e68e' }), this.value));
     }
     static get is() { return "at-select-option"; }
     static get properties() {
@@ -100,3 +100,4 @@ export class AtSelectOptionComponent {
             }];
     }
 }
+//# sourceMappingURL=at-select-option.js.map

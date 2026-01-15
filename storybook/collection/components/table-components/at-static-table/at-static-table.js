@@ -41,7 +41,7 @@ export class AtStaticTable {
         }
     }
     render() {
-        return (h(Host, { key: 'ddca6d9d99351ae45bb540769354426b284531e1' }, !this.hide_column_manager && (h("at-table-actions", { key: 'dcfc9b5b39b435996f05a84ff541663848c6646f', ag_grid: this.agGrid }, h("at-column-manager", { key: '5378e8caa81351e3547a660128897f8c5196d3aa', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: 'b0f364b1e9ea2899bf631301aad18b70583fe7b6', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: 'e6de3339ed6a2d655aa79e8aae33a43d17ff30d3' }, !this.hide_column_manager && (h("at-table-actions", { key: 'd68bac7013b9ddc31e8baddab2ce8ce11d5118c7', ag_grid: this.agGrid }, h("at-column-manager", { key: '3203ffe944494c907502ca6a3062125f69f011fa', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '7a1cf5893b740b1cee25071ffa7247c044079219', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
     static get is() { return "at-static-table"; }
     static get properties() {
@@ -73,8 +73,7 @@ export class AtStaticTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -155,3 +154,4 @@ export class AtStaticTable {
         };
     }
 }
+//# sourceMappingURL=at-static-table.js.map

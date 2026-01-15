@@ -1,1 +1,66 @@
-import{p as t,H as s,h as e,c as a,t as l}from"./p-CtWJ4BTZ.js";import{d as o}from"./p-C8GUnuah.js";const i=t(class extends s{constructor(t){super(),!1!==t&&this.__registerHost()}status_bar=[];size="sm";disable_tooltip;get statusBarClass(){return("lg"===this.size?"h-[16px]":"h-8")+" flex items-stretch rounded-[2px]"}get segments(){return this.status_bar.map((t=>e("at-tooltip",{position:"bottom",class:"flex flex-grow items-stretch justify-center",disabled:this.disable_tooltip,style:{flexBasis:t.percentage+"%"}},e("div",{class:"absolute inset-0 h-full w-full",slot:"tooltip-trigger",style:{background:t.backgroundColor}}),e("span",null,t.tooltip))))}render(){return e(a,{key:"1094907e29d7a8f2bd25e24538b06d9682bd32df",class:this.statusBarClass},e("div",{key:"104e89e704205caddef194145c7a0e1a7cd21726",class:"flex flex-1 items-stretch justify-start overflow-visible"},this.segments))}},[512,"at-status-bar",{status_bar:[16],size:[1],disable_tooltip:[4]}]),r=i,u=function(){"undefined"!=typeof customElements&&["at-status-bar","at-tooltip"].forEach((t=>{switch(t){case"at-status-bar":customElements.get(l(t))||customElements.define(l(t),i);break;case"at-tooltip":customElements.get(l(t))||o()}}))};export{r as AtStatusBar,u as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+
+const AtStatusBar$1 = /*@__PURE__*/ proxyCustomElement(class AtStatusBar extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+    }
+    /**
+     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     */
+    status_bar = [];
+    /**
+     * Height of the status bar
+     */
+    size = 'sm';
+    /**
+     * Disables the tooltip when hovered
+     */
+    disable_tooltip;
+    get statusBarClass() {
+        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-[2px]`;
+    }
+    get segments() {
+        return this.status_bar.map((segment) => (h("at-tooltip", { position: "bottom", class: "flex flex-grow items-stretch justify-center", disabled: this.disable_tooltip, style: {
+                flexBasis: segment.percentage.toString() + '%',
+            } }, h("div", { class: "absolute inset-0 h-full w-full", slot: "tooltip-trigger", style: {
+                background: segment.backgroundColor,
+            } }), h("span", null, segment.tooltip))));
+    }
+    render() {
+        return (h(Host, { key: '9dfb184e704936792b6159d3a44e73ebfa6936b5', class: this.statusBarClass }, h("div", { key: '536cf0b12a8ab98dd1230d3f3e415a8c06466923', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+    }
+}, [256, "at-status-bar", {
+        "status_bar": [16],
+        "size": [1],
+        "disable_tooltip": [4]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-status-bar", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-status-bar":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtStatusBar$1);
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtStatusBar = AtStatusBar$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtStatusBar, defineCustomElement };
+//# sourceMappingURL=at-status-bar.js.map
+
+//# sourceMappingURL=at-status-bar.js.map

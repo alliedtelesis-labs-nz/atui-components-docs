@@ -18,3 +18,4 @@ Prefix.args = {
     get_prefix: (idx) => `id: ${idx + 1}`,
     prefix_delimiter: ' - ',
 };
+//# sourceMappingURL=at-breadcrumb.stories.js.map

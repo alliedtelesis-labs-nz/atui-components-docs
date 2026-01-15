@@ -1,8 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
-
-const atMessageCss = () => `[slot=actions]{align-self:start}`;
+var index = require('./index-COiLLAKF.js');
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -70,9 +68,9 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (index.h("div", { key: '5da3c769c31bf2b626804e0cc8b8f85f727f7bd2', class: this.hostClasses, "data-name": "message-container" }, index.h("i", { key: '706e2c485b73f9f49edaa398d2308330e04b4bd9', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), index.h("div", { key: 'c3e9e242ca09e3ea62342a56fcebdb05008dfa2c', class: "flex w-full flex-row gap-4" }, index.h("div", { key: '73e334fe663d9eee6dea26e7cf066326fa163fa7' }, this.message_title && (index.h("div", { key: 'be1251032cbba4a617e02558426066237b24b592', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: '0d8921cb9d0c42cd43eca3b69fb29f5f88d9fa80', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: 'efd6e2b17f0694824e6fa444bcf382648cb52e5a' })), index.h("slot", { key: '5cae7ad9c52d628ccb903b497b6e52bcb570706d', name: "actions" }))));
+        return (index.h("div", { key: '1a33004118e3d7d2d4468adad4c854db53bae79b', class: this.hostClasses, "data-name": "message-container" }, index.h("i", { key: '2554118c7fdae2edc6175436220ee82b7bf1d915', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), index.h("div", { key: 'e5b4e58675413c4d7dc30108817373048b1039fd', class: "w-full" }, this.message_title && (index.h("div", { key: 'eb0cd77c661c939a7637ef4479b9843f9bf0d4ee', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: '5fba52f609fbe2e61d6cb63ae34a5945d93da908', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: 'b3e481859c98f62448ccb4e849b0d9711a137df5' }))));
     }
 };
-AtMessage.style = atMessageCss();
 
 exports.at_message = AtMessage;
+//# sourceMappingURL=at-message.entry.cjs.js.map

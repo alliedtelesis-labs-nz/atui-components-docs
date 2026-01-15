@@ -1,1 +1,276 @@
-import{p as t,H as s,h as i,c as e,t as o}from"./p-CtWJ4BTZ.js";import{C as a,a as n,L as r,B as h,b as l,c as p,T as d,d as m,e as c,P as f,p as b,f as u,g as y,i as g,h as x}from"./p-7mQ_RyCI.js";import{T as _}from"./p-DqF-mRjp.js";const C={xs:"h-[70px]",sm:"h-[160px]",md:"h-[235px]",lg:"h-[330px]",xl:"h-[440px]",auto:"h-full"},D=t(class extends s{constructor(t){super(),!1!==t&&this.__registerHost()}type;data;x_axis_format;y_axis_format;options;tooltip_options;legend_format;thresholds;point_styles;time_range;height="md";canvasEl;config;color_palette=a.CATEGORICAL;async getConfig(){return this.config}initChart(){n.register(r,h,l,p,d,m,c,f,b,u,y,g);const t=x(this.color_palette);if(t&&this.applyPresetPalette(t),this.point_styles&&this.pointStylesSetup(),this.config={type:this.type,data:{labels:this.data.labels,datasets:[...this.data.datasets,...this.formatThresholds()]},options:{devicePixelRatio:2,maintainAspectRatio:!1,scales:{y:this.y_axis_format||{beginAtZero:!0,type:"linear",min:0},x:this.x_axis_format||{type:"time",time:{displayFormats:{day:"ddd",minute:"MMM D H:mm",hour:"MMM D H:mm"}},ticks:{font:{size:11},autoSkip:!0,align:"center",maxRotation:0,minRotation:0}}},...this.options,plugins:{tooltip:this.tooltip_options||{mode:"index",intersect:!1,position:"nearest",animation:{duration:150}},legend:this.legend_format||{labels:{boxWidth:8,boxHeight:8,fontSize:10,borderRadius:2},onHover:t=>{t.native&&(t.native.target.style.cursor="pointer")},display:!0}},clip:!1,elements:{line:{tension:0,borderWidth:2}}}},this.time_range){const t=this.getMinMaxDateStrings(this.time_range);this.config.options.scales.x.min=t.min,this.config.options.scales.x.max=t.max}new n(this.canvasEl,this.config),this.canvasEl.style.width="",this.canvasEl.style.height=""}componentDidUpdate(){this.data&&this.data.datasets.length&&this.initChart()}componentDidLoad(){this.data&&this.data.datasets.length&&this.initChart()}pointStylesSetup(){this.data.datasets=this.data.datasets.map((t=>({...t,...this.point_styles})))}applyPresetPalette(t){this.color_palette!==a.CUSTOM&&(this.data.datasets=this.data.datasets.map(((s,i)=>{const e=t[i%t.length];return{...s,backgroundColor:e,borderColor:e}})))}getMinMaxDateStrings(t){const s=t.selected,i=t.custom?_.getAbsoluteDateRange(t.custom):null,{startDate:e,endDate:o}=_.getDateRange(i,s,null);return{min:""+e,max:""+o}}formatThresholds=()=>{if(!this.thresholds)return[];const t=[];return this.thresholds.forEach((s=>{t.push({type:"line",label:s.label,borderColor:s.color,borderCapStyle:"butt",backgroundColor:"white",fill:!1,data:s.data,pointRadius:0,borderDash:s.dashLine?[6,3]:void 0,tension:0,stepped:s.stepped,order:1})})),t};render(){return i(e,{key:"358b305a734dae5cfb93c795c5f9c19ef8050ffd",style:{height:"100%",width:"100%"}},i("section",{key:"461a3374b720921668154255bb790867958bc3fe",class:"min-w-100 "+C[this.height]},i("canvas",{key:"780496e99a45bc176808ccb6869ed083b2e399fd",ref:t=>this.canvasEl=t})))}},[512,"at-chart-bar-line",{type:[1],data:[1040],x_axis_format:[16],y_axis_format:[16],options:[16],tooltip_options:[16],legend_format:[16],thresholds:[16],point_styles:[16],time_range:[8],height:[1],color_palette:[1],getConfig:[64]}]),M=D,R=function(){"undefined"!=typeof customElements&&["at-chart-bar-line"].forEach((t=>{"at-chart-bar-line"===t&&(customElements.get(o(t))||customElements.define(o(t),D))}))};export{M as AtChartBarLine,R as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './p-7mQ_RyCI.js';
+import { T as TimeDateUtil } from './p-BI7XO4bL.js';
+
+const heightVariants = {
+    xs: 'h-[70px]',
+    sm: 'h-[160px]',
+    md: 'h-[235px]',
+    lg: 'h-[330px]',
+    xl: 'h-[440px]',
+    auto: 'h-full',
+};
+const AtChartBarLine$1 = /*@__PURE__*/ proxyCustomElement(class AtChartBarLine extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+    }
+    /**
+     * Type of the chart
+     */
+    type;
+    /**
+     * Data to go in the chart. ChartDataset properties found
+     * [here for line](https://www.chartjs.org/docs/latest/charts/line.html),
+     * and [here for bar](https://www.chartjs.org/docs/latest/charts/bar.html)
+     */
+    data;
+    /**
+     * X axis formatting to be applied to the chart.
+     * If you would like the default formatting provided by chart.js, set this to an empty object.
+     */
+    x_axis_format;
+    /**
+     * Y axis formatting to be applied to the chart.
+     */
+    y_axis_format;
+    /**
+     * Additional options to go into the 'options' seciont of the chart configuration
+     */
+    options;
+    /**
+     * Options for the tooltips on the chart
+     */
+    tooltip_options;
+    /**
+     * Options for the legend
+     */
+    legend_format;
+    /**
+     * Thresholds to be displayed in the chart
+     */
+    thresholds;
+    /**
+     * Styles for the points in the chart
+     */
+    point_styles;
+    /**
+     * The time range that the chart is displayed in.
+     */
+    time_range;
+    /**
+     * Height of the chart.
+     */
+    height = 'md';
+    canvasEl;
+    config;
+    /**
+     * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
+     * 'categorical' : For charts with data that have distinct labels and no natural order
+     * 'sequential' : For charts with data that is numeric or is naturally ordered.
+     * 'alert' : For charts that relate to health state. Note that data requires a specific order.
+     * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+     */
+    color_palette = ChartColorPalette.CATEGORICAL;
+    /**
+     * Getter method for the chart's configuration object
+     * @returns Configuration of the chart
+     */
+    async getConfig() {
+        return this.config;
+    }
+    initChart() {
+        Chart.register(LinearScale, BarController, CategoryScale, BarElement, TimeScale, LineController, LineElement, PointElement, plugin_colors, plugin_legend, plugin_tooltip, index);
+        const colors = getChartColors(this.color_palette);
+        if (colors) {
+            this.applyPresetPalette(colors);
+        }
+        if (this.point_styles) {
+            this.pointStylesSetup();
+        }
+        this.config = {
+            type: this.type,
+            data: {
+                labels: this.data.labels,
+                datasets: [...this.data.datasets, ...this.formatThresholds()],
+            },
+            options: {
+                devicePixelRatio: 2,
+                maintainAspectRatio: false,
+                scales: {
+                    y: this.y_axis_format || {
+                        beginAtZero: true,
+                        type: 'linear',
+                        min: 0,
+                    },
+                    x: this.x_axis_format || {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                day: 'ddd',
+                                minute: 'MMM D H:mm',
+                                hour: 'MMM D H:mm',
+                            },
+                        },
+                        ticks: {
+                            font: {
+                                size: 11,
+                            },
+                            autoSkip: true,
+                            align: 'center',
+                            maxRotation: 0,
+                            minRotation: 0,
+                        },
+                    },
+                },
+                ...this.options,
+                plugins: {
+                    tooltip: this.tooltip_options || {
+                        mode: 'index',
+                        intersect: false,
+                        position: 'nearest',
+                        animation: {
+                            duration: 150,
+                        },
+                    },
+                    legend: this.legend_format || {
+                        labels: {
+                            boxWidth: 8,
+                            boxHeight: 8,
+                            fontSize: 10,
+                            borderRadius: 2,
+                        },
+                        onHover: (event) => {
+                            if (event.native) {
+                                event.native.target.style.cursor = 'pointer';
+                            }
+                        },
+                        display: true,
+                    },
+                },
+                clip: false,
+                elements: {
+                    line: {
+                        tension: 0,
+                        borderWidth: 2,
+                    },
+                },
+            },
+        };
+        if (this.time_range) {
+            const dates = this.getMinMaxDateStrings(this.time_range);
+            this.config.options.scales.x['min'] = dates.min;
+            this.config.options.scales.x['max'] = dates.max;
+        }
+        new Chart(this.canvasEl, this.config);
+        this.canvasEl.style.width = '';
+        this.canvasEl.style.height = '';
+    }
+    componentDidUpdate() {
+        if (this.data && this.data.datasets.length) {
+            this.initChart();
+        }
+    }
+    /**
+     * componentDidLoad will be run, but if the props haven't been passed to it yet,
+     * it will throw an error. So we catch this, and wait for the props to be passed
+     * to the component where it will run componentDidUpdtae.
+     */
+    componentDidLoad() {
+        if (this.data && this.data.datasets.length) {
+            this.initChart();
+        }
+    }
+    pointStylesSetup() {
+        this.data.datasets = this.data.datasets.map((dataset) => {
+            return {
+                ...dataset,
+                ...this.point_styles,
+            };
+        });
+    }
+    applyPresetPalette(colors) {
+        if (this.color_palette === ChartColorPalette.CUSTOM) {
+            return;
+        }
+        this.data.datasets = this.data.datasets.map((dataset, index) => {
+            const color = colors[index % colors.length];
+            return {
+                ...dataset,
+                backgroundColor: color,
+                borderColor: color,
+            };
+        });
+    }
+    getMinMaxDateStrings(timeRange) {
+        const timeWithUnit = timeRange.selected;
+        const custom = timeRange.custom
+            ? TimeDateUtil.getAbsoluteDateRange(timeRange.custom)
+            : null;
+        const { startDate, endDate } = TimeDateUtil.getDateRange(custom, timeWithUnit, null);
+        return { min: startDate.toString(), max: endDate.toString() };
+    }
+    formatThresholds = () => {
+        if (!this.thresholds) {
+            return [];
+        }
+        const datasets = [];
+        this.thresholds.forEach((threshold) => {
+            datasets.push({
+                type: 'line',
+                label: threshold.label,
+                borderColor: threshold.color,
+                borderCapStyle: 'butt',
+                backgroundColor: 'white',
+                fill: false,
+                data: threshold.data,
+                pointRadius: 0,
+                borderDash: threshold.dashLine ? [6, 3] : undefined,
+                tension: 0,
+                stepped: threshold.stepped,
+                order: 1,
+            });
+        });
+        return datasets;
+    };
+    render() {
+        return (h(Host, { key: 'c450198523993fc66fd45a31a700486a7dcd18e9', style: { height: '100%', width: '100%' } }, h("section", { key: '032879f18bdb57da366aa9c89727874e68a83196', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '4a313fe8c1350edace27cc17d4def27a2b49f2ff', ref: (el) => (this.canvasEl = el) }))));
+    }
+}, [256, "at-chart-bar-line", {
+        "type": [1],
+        "data": [1040],
+        "x_axis_format": [16],
+        "y_axis_format": [16],
+        "options": [16],
+        "tooltip_options": [16],
+        "legend_format": [16],
+        "thresholds": [16],
+        "point_styles": [16],
+        "time_range": [8],
+        "height": [1],
+        "color_palette": [1],
+        "getConfig": [64]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-chart-bar-line"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-chart-bar-line":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtChartBarLine$1);
+            }
+            break;
+    } });
+}
+
+const AtChartBarLine = AtChartBarLine$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtChartBarLine, defineCustomElement };
+//# sourceMappingURL=at-chart-bar-line.js.map
+
+//# sourceMappingURL=at-chart-bar-line.js.map

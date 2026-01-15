@@ -1,18 +1,25 @@
 import { h, } from "@stencil/core";
 import { GridStack, } from "gridstack";
-const DEFAULT_SIZE = {
-    w: 5,
-    h: 3,
-};
+import gridstackCss from "gridstack/dist/gridstack.min.css";
 export class AtDashboard {
     el;
-    widget_items = [];
+    widget_templates = [];
+    // @Event() changedDashboard: EventEmitter<CustomGridStackItem[]>;
     changedItem;
     removedItem;
-    resizeDragEvent;
-    widgetTemplatesChanged() { }
+    resizeEvent;
+    // @State() dashboard: CustomGridStackItem[] = [];
+    widgetTemplatesChanged() {
+        // this.updateDashboard();
+        this.needsLayout = true;
+    }
     grid;
     gridContainerRef;
+    needsLayout = false;
+    componentWillLoad() {
+        this.injectStyle();
+        // this.updateDashboard();
+    }
     componentDidLoad() {
         if (!this.gridContainerRef)
             return;
@@ -27,49 +34,51 @@ export class AtDashboard {
                     {
                         w: 768,
                         c: 1,
-                        layout: 'compact',
                     },
                 ],
             },
         }, this.gridContainerRef);
-        this.layoutWidgets();
-        this.grid.on('added change', (_event, items) => {
+        this.grid.on('change', (_event, items) => {
             items?.forEach((item) => {
-                const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
+                const dashboardItem = this.widget_templates.find((d) => d.id === item.id);
                 if (dashboardItem) {
                     Object.assign(dashboardItem, {
                         x: item.x,
                         y: item.y,
-                        w: item.w ?? DEFAULT_SIZE.w,
-                        h: item.h ?? DEFAULT_SIZE.h,
+                        w: item.w,
+                        h: item.h,
                     });
                     this.changedItem.emit(dashboardItem);
                 }
             });
         });
-        this.grid.on('resizestop dragstop', (_event, el) => {
+        this.grid.on('resizestop', (_event, el) => {
             const node = el.gridstackNode;
-            const dashboardItem = {
-                id: el.id,
-                x: node.x,
-                y: node.y,
-                w: node.w ?? DEFAULT_SIZE.w,
-                h: node.h ?? DEFAULT_SIZE.h,
-            };
-            this.resizeDragEvent.emit(dashboardItem);
+            this.resizeEvent.emit(node);
         });
     }
-    componentDidUpdate() {
+    componentDidRender() {
+        if (!this.grid || !this.needsLayout)
+            return;
+        this.grid.removeAll(false);
         this.layoutWidgets();
+        this.needsLayout = false;
     }
     disconnectedCallback() {
         this.grid?.destroy(false);
     }
+    // private updateDashboard() {
+    //     if (this.widget_templates?.length) {
+    //         this.dashboard = this.widget_templates.map((template) => ({
+    //             ...template,
+    //         }));
+    //         this.changedDashboard.emit(this.dashboard);
+    //     }
+    // }
     layoutWidgets() {
         if (!this.grid)
             return;
-        this.grid.removeAll(false);
-        this.widget_items.forEach((widget) => this.makeWidget(widget));
+        this.widget_templates.forEach((widget) => this.makeWidget(widget));
     }
     makeWidget(widget) {
         const elSelector = `#${widget.id}`;
@@ -85,25 +94,20 @@ export class AtDashboard {
     removeWidget(widget) {
         this.removedItem.emit(widget);
     }
+    injectStyle() {
+        const style = document.createElement('style');
+        style.textContent = gridstackCss;
+        this.el.appendChild(style);
+    }
     render() {
-        return (h("div", { key: '7a2c2b8b814731f325fcbc016213537bc4e55d2f', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '2d9b8af743ee0fba8932dba5525322002303c23b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_templates.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }
     static get is() { return "at-dashboard"; }
-    static get originalStyleUrls() {
-        return {
-            "$": ["at-dashboard.scss"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["at-dashboard.css"]
-        };
-    }
     static get properties() {
         return {
-            "widget_items": {
+            "widget_templates": {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
@@ -173,8 +177,8 @@ export class AtDashboard {
                     }
                 }
             }, {
-                "method": "resizeDragEvent",
-                "name": "resizeDragEvent",
+                "method": "resizeEvent",
+                "name": "resizeEvent",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -183,13 +187,13 @@ export class AtDashboard {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "CustomGridStackItem",
-                    "resolved": "CustomGridStackItem",
+                    "original": "GridStackNode",
+                    "resolved": "GridStackNode",
                     "references": {
-                        "CustomGridStackItem": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
-                            "id": "src/components/at-dashboard/at-dashboard.tsx::CustomGridStackItem"
+                        "GridStackNode": {
+                            "location": "import",
+                            "path": "gridstack",
+                            "id": "../node_modules/gridstack/dist/gridstack.d.ts::GridStackNode"
                         }
                     }
                 }
@@ -203,3 +207,4 @@ export class AtDashboard {
             }];
     }
 }
+//# sourceMappingURL=at-dashboard.js.map

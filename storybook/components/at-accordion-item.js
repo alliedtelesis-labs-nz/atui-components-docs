@@ -1,1 +1,9 @@
-import{A as o,d as s}from"./p-MS8EevDD.js";const p=o,r=s;export{p as AtAccordionItem,r as defineCustomElement}
+import { A as AtAccordionItemComponent, d as defineCustomElement$1 } from './p-kHqi1FxQ.js';
+
+const AtAccordionItem = AtAccordionItemComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtAccordionItem, defineCustomElement };
+//# sourceMappingURL=at-accordion-item.js.map
+
+//# sourceMappingURL=at-accordion-item.js.map

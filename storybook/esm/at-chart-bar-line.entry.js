@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host } from './index-DW9Wz0FM.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-CdyBNAVl.js';
-import { T as TimeDateUtil } from './time-date.util-h594ms27.js';
+import { T as TimeDateUtil } from './time-date.util-DLaek6ce.js';
 import './moment-BMuAbjcg.js';
 
 const heightVariants = {
@@ -234,8 +234,9 @@ const AtChartBarLine = class {
         return datasets;
     };
     render() {
-        return (h(Host, { key: '358b305a734dae5cfb93c795c5f9c19ef8050ffd', style: { height: '100%', width: '100%' } }, h("section", { key: '461a3374b720921668154255bb790867958bc3fe', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '780496e99a45bc176808ccb6869ed083b2e399fd', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: 'c450198523993fc66fd45a31a700486a7dcd18e9', style: { height: '100%', width: '100%' } }, h("section", { key: '032879f18bdb57da366aa9c89727874e68a83196', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '4a313fe8c1350edace27cc17d4def27a2b49f2ff', ref: (el) => (this.canvasEl = el) }))));
     }
 };
 
 export { AtChartBarLine as at_chart_bar_line };
+//# sourceMappingURL=at-chart-bar-line.entry.js.map

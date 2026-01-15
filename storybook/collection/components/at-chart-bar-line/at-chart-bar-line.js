@@ -260,7 +260,7 @@ export class AtChartBarLine {
         return datasets;
     };
     render() {
-        return (h(Host, { key: '358b305a734dae5cfb93c795c5f9c19ef8050ffd', style: { height: '100%', width: '100%' } }, h("section", { key: '461a3374b720921668154255bb790867958bc3fe', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '780496e99a45bc176808ccb6869ed083b2e399fd', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: 'c450198523993fc66fd45a31a700486a7dcd18e9', style: { height: '100%', width: '100%' } }, h("section", { key: '032879f18bdb57da366aa9c89727874e68a83196', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '4a313fe8c1350edace27cc17d4def27a2b49f2ff', ref: (el) => (this.canvasEl = el) }))));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
@@ -294,8 +294,7 @@ export class AtChartBarLine {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
-                            "referenceLocation": "ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
                         }
                     }
                 },
@@ -473,8 +472,7 @@ export class AtChartBarLine {
                         "Height": {
                             "location": "import",
                             "path": "../at-chart-donut/at-chart-donut",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height",
-                            "referenceLocation": "Height"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height"
                         }
                     }
                 },
@@ -500,8 +498,7 @@ export class AtChartBarLine {
                         "ChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette",
-                            "referenceLocation": "ChartColorPalette"
+                            "id": "src/types/chart-color.ts::ChartColorPalette"
                         }
                     }
                 },
@@ -544,3 +541,4 @@ export class AtChartBarLine {
         };
     }
 }
+//# sourceMappingURL=at-chart-bar-line.js.map

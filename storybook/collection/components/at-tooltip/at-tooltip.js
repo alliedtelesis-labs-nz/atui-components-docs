@@ -292,7 +292,7 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'a6dbd57bd2e5a20335a9c93524d408ef990d2565', class: "relative" }, !this.trigger_id && (h("div", { key: 'a09d0c5b98ced0956019c3b88102501b227f91c2', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'd7af1ba9821f333ce50904f9fee9da4e6169d45d', name: "tooltip-trigger" }))), h("div", { key: 'd23d9dcdf5766501deba1b4f1bdfa56d0a5d05e6', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'fe31ca67fa572f34581b7290d58afd77c8417553' }))));
+        return (h(Host, { key: '6c3ab5ae000440286e747cdf5533ec0f68a8f305', class: "relative" }, !this.trigger_id && (h("div", { key: '69f7ba3efc40f452afcfcaeeaf8f5fcab112cff6', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'fc26441d449f78ef8218c9bd0aa9c978f249e4f4', name: "tooltip-trigger" }))), h("div", { key: 'fcfe81d67b6444f402f0443469a3afc733bfc9c0', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'd025a0ebce2d397434d3528a2beaf783a9563eb1' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
@@ -501,3 +501,4 @@ export class AtTooltip {
             }];
     }
 }
+//# sourceMappingURL=at-tooltip.js.map

@@ -1,7 +1,7 @@
 import moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
 import { TimeDateUtil } from "./time-date.util";
-import { isEmpty, replace } from "lodash-es";
+import { isEmpty, replace } from "lodash";
 import { DateFormat, Duration, TimeRangeDisplay, TimeRangesInHours, } from "../types";
 momentDurationFormatSetup(moment);
 export class TimeDatePresentationUtil {
@@ -200,3 +200,4 @@ export class FlooredDateRange {
         return TimeDateUtil.floorDateByTimeUnit(time, this.unit);
     }
 }
+//# sourceMappingURL=time-date-presentation.util.js.map

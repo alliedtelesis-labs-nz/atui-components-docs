@@ -209,7 +209,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'e8d2987e49c6a8e49593e34d4b8db12aa2757a14', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'd92a1c0465cce62d4560cc9ee13a8c1186aa7407', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ec1605220b7abc644bcad717d388cd9521ee0d49', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '7e17c2ffec642d11605c76794be35654f2379906', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'e4c3537ff68e891ae31543ae764422e08630a235', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'a3a1e49552aa6147a37209fed4b872dfbbac6601', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '2a3cb45dd5ec49c9bdb694759f7242a7a6255acf', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'ec98536f4231e3b34bf5e5c85acd64c48435d5ae', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {
@@ -234,8 +234,7 @@ export class AtPromptMessage {
                         "PromptUserRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptUserRole",
-                            "referenceLocation": "PromptUserRole"
+                            "id": "src/types/index.ts::PromptUserRole"
                         }
                     }
                 },
@@ -359,8 +358,7 @@ export class AtPromptMessage {
                         "PromptResponseScore": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseScore",
-                            "referenceLocation": "PromptResponseScore"
+                            "id": "src/types/index.ts::PromptResponseScore"
                         }
                     }
                 },
@@ -465,8 +463,7 @@ export class AtPromptMessage {
                         "PromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::PromptResponseAnimation"
                         }
                     }
                 },
@@ -563,3 +560,4 @@ export class AtPromptMessage {
             }];
     }
 }
+//# sourceMappingURL=at-prompt-message.js.map

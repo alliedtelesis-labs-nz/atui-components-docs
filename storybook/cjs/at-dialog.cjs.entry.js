@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 
-const atDialogCss = () => `@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}dialog.backdrop.sc-at-dialog::backdrop{margin:0;inset:0;background:rgba(0, 0, 0, 0.2);animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop.sc-at-dialog::backdrop{z-index:var(--z-backdrop, 1000)}.sc-at-dialog-h{display:contents}.sc-at-dialog-h dialog.sc-at-dialog{position:fixed;inset:0;margin:0;display:flex;align-items:center;justify-content:center;min-width:100vw;min-height:100vh;overflow:hidden;border:0;padding:0;background:transparent;z-index:var(--token-z-index-modal);transform-origin:center;opacity:0;box-shadow:var(--token-shadow-3);visibility:hidden;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s}.sc-at-dialog-h dialog.backdrop.sc-at-dialog{display:flex;width:100vw;height:100vh}.sc-at-dialog-h dialog[open].sc-at-dialog{translate:0 0;scale:1;opacity:1;visibility:visible;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear}@starting-style{.sc-at-dialog-h dialog[open]{opacity:0}}.sc-at-dialog-h dialog.sc-at-dialog:not([open]){opacity:0;visibility:hidden}`;
+const atDialogCss = "@keyframes fadeIn {\n  from {\n    background-color: rgba(0, 0, 0, 0);\n  }\n  to {\n    background-color: rgba(0, 0, 0, 0.2);\n  }\n}\ndialog.backdrop.sc-at-dialog::backdrop {\n  margin: 0;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.2);\n  animation: fadeIn 0.3s ease forwards;\n  transition: opacity var(--token-transition-time) ease-in-out allow-discrete;\n}\n\ndialog.backdrop.sc-at-dialog::backdrop {\n  z-index: var(--z-backdrop, 1000);\n}\n\n.sc-at-dialog-h {\n  display: contents;\n}\n.sc-at-dialog-h dialog.sc-at-dialog {\n  position: fixed;\n  inset: 0;\n  margin: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-width: 100vw;\n  min-height: 100vh;\n  overflow: hidden;\n  border: 0;\n  padding: 0;\n  background: transparent;\n  z-index: var(--token-z-index-modal);\n  transform-origin: center;\n  opacity: 0;\n  box-shadow: var(--token-shadow-3);\n  visibility: hidden;\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;\n}\n.sc-at-dialog-h dialog.backdrop.sc-at-dialog {\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n}\n.sc-at-dialog-h dialog[open].sc-at-dialog {\n  translate: 0 0;\n  scale: 1;\n  opacity: 1;\n  visibility: visible;\n  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;\n}\n@starting-style {\n  .sc-at-dialog-h dialog[open] {\n    opacity: 0;\n  }\n}\n.sc-at-dialog-h dialog.sc-at-dialog:not([open]) {\n  opacity: 0;\n  visibility: hidden;\n}";
 
 const AtDialogComponent = class {
     constructor(hostRef) {
@@ -146,9 +146,10 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'bb27be5a224808736c7ca9d3509ac90f47f0b362', "data-open": this.isOpen }, index.h("dialog", { key: '9dfd6ecfefb678c772cca52742f7b6029eee89f2', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '4f390864ebefb7299eb0d849b1395a0a43d70fee', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: '34ddea9dc3864929ba33a2650dfe73ae7626ec99' })))));
+        return (index.h(index.Host, { key: '908154c53ad6a53c3a5c5cce2bdba0321d4a3a88', "data-open": this.isOpen }, index.h("dialog", { key: '8eb6b6d5fb134a3f51200bbd9e3dc00c31fccd3d', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '03263674ac19c8b2923715c0bf7da0ffbf3e98e0', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: 'cf336e40b34bae5e01ec9475b0d424a51a90e5ce' })))));
     }
 };
-AtDialogComponent.style = atDialogCss();
+AtDialogComponent.style = atDialogCss;
 
 exports.at_dialog = AtDialogComponent;
+//# sourceMappingURL=at-dialog.entry.cjs.js.map

@@ -1,1 +1,109 @@
-import{p as e,H as t,h as s,c as r,t as a}from"./p-CtWJ4BTZ.js";const i={success:"bg-success-base",warning:"bg-warning-base",error:"bg-destructive-foreground",info:"bg-info-foreground"},n="bg-surface-2 rounded-[2px] overflow-hidden",l=e(class extends t{constructor(e){super(),!1!==e&&this.__registerHost()}percentage=0;mode="determinate";type="info";size="sm";clamped=0;onPercentageChange(){this.clampPercentage()}componentWillLoad(){this.clampPercentage()}clampPercentage(){const e=Number(this.percentage);Number.isFinite(e)?(this.clamped=Math.min(100,Math.max(0,e)),console.log("Clamped percentage:",this.clamped)):this.clamped=0}get statusBarClass(){return("lg"===this.size?"h-[16px]":"h-8")+" flex items-stretch rounded-[2px] overflow-hidden"}get segments(){return"flex flex-grow items-stretch justify-center transition-all duration-500"}renderIndeterminate(){return s(r,{role:"progressbar","aria-busy":"true","aria-valuemin":"0","aria-valuemax":"100",class:this.statusBarClass+" overflow-hidden"},s("slot",{name:"label-before"}),s("div",{class:"relative h-full w-full "+n},s("div",{class:i[this.type]+" motion-safe:animate-progress-left absolute top-0 h-full",style:{width:"30%",left:"-30%",willChange:"left"},"aria-hidden":"true"})),s("slot",{name:"label-after"}))}renderDeterminate(){const e=100-this.clamped,t=this.clamped;return s(r,{role:"progressbar","aria-busy":"true","aria-valuemin":"0","aria-valuemax":"100",class:this.statusBarClass},s("slot",{name:"label-before"}),s("div",{class:"flex w-full flex-1 items-stretch justify-start overflow-visible"},s("div",{class:`${this.segments} ${i[this.type]}`,style:{flexBasis:t+"%"},"aria-hidden":"true"}),s("div",{class:` ${this.segments} ${n}`,style:{flexBasis:e+"%"},"aria-hidden":"true"})),s("slot",{name:"label-after"}))}render(){return"indeterminate"===this.mode?this.renderIndeterminate():this.renderDeterminate()}static get watchers(){return{percentage:[{onPercentageChange:0}]}}},[772,"at-progress-bar",{percentage:[2],mode:[1],type:[1],size:[1],clamped:[32]},void 0,{percentage:[{onPercentageChange:0}]}]),o=l,c=function(){"undefined"!=typeof customElements&&["at-progress-bar"].forEach((e=>{"at-progress-bar"===e&&(customElements.get(a(e))||customElements.define(a(e),l))}))};export{o as AtProgressBar,c as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+
+const progressBarVariants = {
+    success: 'bg-success-base',
+    warning: 'bg-warning-base',
+    error: 'bg-destructive-foreground',
+    info: 'bg-info-foreground',
+};
+const trackClass = 'bg-surface-2 rounded-[2px] overflow-hidden';
+const AtProgressBar$1 = /*@__PURE__*/ proxyCustomElement(class AtProgressBar extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+    }
+    /**
+     * Percentage value of the progress bar.
+     */
+    percentage = 0;
+    /**
+     * Mode of the progress bar, either determinate or indeterminate (loading).
+     */
+    mode = 'determinate';
+    /**
+     * Type of the progress bar, which determines its color.
+     */
+    type = 'info';
+    /**
+     * Height of the progress bar
+     */
+    size = 'sm';
+    clamped = 0;
+    onPercentageChange() {
+        this.clampPercentage();
+    }
+    componentWillLoad() {
+        this.clampPercentage();
+    }
+    clampPercentage() {
+        const n = Number(this.percentage);
+        if (Number.isFinite(n)) {
+            this.clamped = Math.min(100, Math.max(0, n));
+            console.log('Clamped percentage:', this.clamped);
+        }
+        else {
+            this.clamped = 0;
+        }
+    }
+    get statusBarClass() {
+        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-[2px] overflow-hidden`;
+    }
+    get segments() {
+        return `flex flex-grow items-stretch justify-center transition-all duration-500`;
+    }
+    renderIndeterminate() {
+        return (h(Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: `${this.statusBarClass} overflow-hidden` }, h("slot", { name: "label-before" }), h("div", { class: `relative h-full w-full ${trackClass}` }, h("div", { class: `${progressBarVariants[this.type]} motion-safe:animate-progress-left absolute top-0 h-full`, style: {
+                width: '30%',
+                left: '-30%',
+                willChange: 'left',
+            }, "aria-hidden": "true" })), h("slot", { name: "label-after" })));
+    }
+    renderDeterminate() {
+        const background = 100 - this.clamped;
+        const fill = this.clamped;
+        return (h(Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, h("slot", { name: "label-before" }), h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-visible" }, h("div", { class: `${this.segments} ${progressBarVariants[this.type]}`, style: {
+                flexBasis: fill.toString() + '%',
+            }, "aria-hidden": "true" }), h("div", { class: ` ${this.segments} ${trackClass}`, style: {
+                flexBasis: background.toString() + '%',
+            }, "aria-hidden": "true" })), h("slot", { name: "label-after" })));
+    }
+    render() {
+        return this.mode === 'indeterminate'
+            ? this.renderIndeterminate()
+            : this.renderDeterminate();
+    }
+    static get watchers() { return {
+        "percentage": ["onPercentageChange"]
+    }; }
+}, [260, "at-progress-bar", {
+        "percentage": [2],
+        "mode": [1],
+        "type": [1],
+        "size": [1],
+        "clamped": [32]
+    }, undefined, {
+        "percentage": ["onPercentageChange"]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-progress-bar"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-progress-bar":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtProgressBar$1);
+            }
+            break;
+    } });
+}
+
+const AtProgressBar = AtProgressBar$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtProgressBar, defineCustomElement };
+//# sourceMappingURL=at-progress-bar.js.map
+
+//# sourceMappingURL=at-progress-bar.js.map

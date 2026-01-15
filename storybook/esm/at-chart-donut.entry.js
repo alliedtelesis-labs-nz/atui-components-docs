@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-DW9Wz0FM.js';
+import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
 import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-CdyBNAVl.js';
 import './moment-BMuAbjcg.js';
 
@@ -210,7 +210,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '8c9f28902414ab8d81a34963cba1a59ee6fc867e', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '5f8adcbc14fe77068b9dcb0082edf4b00b357ff4', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: '03fcf954da659ba3abe87a42a72918cc140a5236', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '95331aeb19fbed9b529facf375d66fc79480e9e8', ref: (el) => (this.canvasEl = el), style: {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
@@ -222,3 +222,4 @@ const AtChartDonut = class {
 };
 
 export { AtChartDonut as at_chart_donut };
+//# sourceMappingURL=at-chart-donut.entry.js.map

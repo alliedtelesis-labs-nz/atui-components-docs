@@ -1,1 +1,9 @@
-import{A as o,d as s}from"./p-DBRL6uhO.js";const p=o,r=s;export{p as AtSidebarMenuitem,r as defineCustomElement}
+import { A as AtSidebarMenuitemComponent, d as defineCustomElement$1 } from './p-1Jak87bp.js';
+
+const AtSidebarMenuitem = AtSidebarMenuitemComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtSidebarMenuitem, defineCustomElement };
+//# sourceMappingURL=at-sidebar-menuitem.js.map
+
+//# sourceMappingURL=at-sidebar-menuitem.js.map

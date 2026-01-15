@@ -1,1 +1,70 @@
-import{p as e,H as t,h as s,c as a,t as d}from"./p-CtWJ4BTZ.js";const c=e(class extends t{constructor(e){super(),!1!==e&&this.__registerHost()}src_title;src_text;src_subtitle;dest_title;dest_text;dest_subtitle;align="left";render(){return s(a,{key:"22cab637ff5ac91d3162c36f3089b930c3137d10",class:"flex flex-wrap items-center gap-16 "+("center"===this.align?"justify-center":"justify-start")},this.src_title&&s("h4",{key:"cdbd4204c09ce6871a55ca3bb2361c95d2ed3376",class:"h4","data-name":"src-title"},this.src_title),(this.src_text||this.src_subtitle)&&s("div",{key:"5af9a2c4b28e545ea844c6ef9520f95968e7eb62"},this.src_text&&s("p",{key:"c3d403d4dfb9fafcd1903a2345064dbbd66ccdde",class:"text-dark font-medium","data-name":"src-text"},this.src_text),this.src_subtitle&&s("p",{key:"811dbe26e12bea02f270ca3e44e979aab8606671",class:"text-med","data-name":"src-subtitle"},this.src_subtitle)),s("div",{key:"5ade42dd28f2a4544c2704ff60de286b2be2edfb",class:"icon-lg text-light flex-row items-center gap-4"},s("span",{key:"0791b7bfa50efc50ce0c4d6c1edf0e1febb703bd",class:"material-icons"},"arrow_back"),s("span",{key:"85b2e6bdf3d3bbb80cdf06c551b10f35f9654f62",class:"material-icons"},"arrow_forward")),(this.dest_text||this.dest_subtitle)&&s("div",{key:"ea7e60b1c1ac4d1e50e4fe58740eb0bc68dbd044",class:"text-right"},this.dest_text&&s("p",{key:"2ffd7fd94e11570da6199f829711a3129587548f",class:"text-dark font-medium","data-name":"dest-text"},this.dest_text),this.dest_subtitle&&s("p",{key:"f83badf763d9f58f852b4287cbd0a101252d834c",class:"text-med","data-name":"dest-subtitle"},this.dest_subtitle)),this.dest_title&&s("h4",{key:"57deadcd7b94aacfeb10ec46691f1d6ede180515",class:"h4","data-name":"dest-title"},this.dest_title))}},[512,"at-src-dest",{src_title:[1],src_text:[1],src_subtitle:[1],dest_title:[1],dest_text:[1],dest_subtitle:[1],align:[1]}]),i=c,f=function(){"undefined"!=typeof customElements&&["at-src-dest"].forEach((e=>{"at-src-dest"===e&&(customElements.get(d(e))||customElements.define(d(e),c))}))};export{i as AtSrcDest,f as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+
+const AtSrcDestComponent = /*@__PURE__*/ proxyCustomElement(class AtSrcDestComponent extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+    }
+    /**
+     * Title displayed on the left
+     */
+    src_title;
+    /**
+     * Text displayed on the left
+     */
+    src_text;
+    /**
+     * Subtitle displayed on the left
+     */
+    src_subtitle;
+    /**
+     * Title displayed on the right
+     */
+    dest_title;
+    /**
+     * Text displayed on the right
+     */
+    dest_text;
+    /**
+     * Subtitle displayed on the right
+     */
+    dest_subtitle;
+    /**
+     * Aligns the content to the left or center of the container
+     */
+    align = 'left';
+    render() {
+        return (h(Host, { key: '86c83d1f5e71e1dce6582d0db4f742dfab3bd462', class: `flex flex-wrap items-center gap-16 ${this.align === 'center' ? 'justify-center' : 'justify-start'}` }, this.src_title && (h("h4", { key: '5bce03a0ff0018679e8a61d2260ba20865863be1', class: "h4", "data-name": "src-title" }, this.src_title)), (this.src_text || this.src_subtitle) && (h("div", { key: '9ee2f42dadbfb64dcab76e2652bfa5e3c5d5ef12' }, this.src_text && (h("p", { key: 'e701847839459a0fd620526ac9a59b88605d6f64', class: "text-dark font-medium", "data-name": "src-text" }, this.src_text)), this.src_subtitle && (h("p", { key: '1a99a5e12d360fce59223cc7cd42ea9c111b984e', class: "text-med", "data-name": "src-subtitle" }, this.src_subtitle)))), h("div", { key: '2144884c200398b415e2c832266485d0cdb93c13', class: "icon-lg text-light flex-row items-center gap-4" }, h("span", { key: 'e349d624429c8a991276a5e66bd29dbe406b4c20', class: "material-icons" }, "arrow_back"), h("span", { key: 'ff9cd717ee7b4f7f0845a47577457ab536f94813', class: "material-icons" }, "arrow_forward")), (this.dest_text || this.dest_subtitle) && (h("div", { key: 'c4979d70c51924a3676f2f69760e644683f43220', class: "text-right" }, this.dest_text && (h("p", { key: 'aa143890169bd47e5ad973058bd674617ea949c5', class: "text-dark font-medium", "data-name": "dest-text" }, this.dest_text)), this.dest_subtitle && (h("p", { key: 'f87920797ffaf47a04391cbb75c177d562cc172a', class: "text-med", "data-name": "dest-subtitle" }, this.dest_subtitle)))), this.dest_title && (h("h4", { key: '500abf3fea9da8b8800b706ce37710ea0fd59209', class: "h4", "data-name": "dest-title" }, this.dest_title))));
+    }
+}, [256, "at-src-dest", {
+        "src_title": [1],
+        "src_text": [1],
+        "src_subtitle": [1],
+        "dest_title": [1],
+        "dest_text": [1],
+        "dest_subtitle": [1],
+        "align": [1]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-src-dest"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-src-dest":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtSrcDestComponent);
+            }
+            break;
+    } });
+}
+
+const AtSrcDest = AtSrcDestComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtSrcDest, defineCustomElement };
+//# sourceMappingURL=at-src-dest.js.map
+
+//# sourceMappingURL=at-src-dest.js.map

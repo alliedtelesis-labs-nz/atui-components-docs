@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 
 const progressBarVariants = {
     success: 'bg-success-base',
@@ -74,10 +74,9 @@ const AtProgressBar = class {
             : this.renderDeterminate();
     }
     static get watchers() { return {
-        "percentage": [{
-                "onPercentageChange": 0
-            }]
+        "percentage": ["onPercentageChange"]
     }; }
 };
 
 exports.at_progress_bar = AtProgressBar;
+//# sourceMappingURL=at-progress-bar.entry.cjs.js.map

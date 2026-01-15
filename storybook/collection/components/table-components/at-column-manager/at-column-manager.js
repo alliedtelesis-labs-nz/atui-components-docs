@@ -51,7 +51,7 @@ export class AtColumnManagerComponent {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '704b45499b86d0105baa5e8c91e060d60a155702', autoclose: false, width: "fit-content", align: "start" }, h("div", { key: '54c3417628c2fcda446d4789c3e252f565258884', slot: "menu-trigger" }, h("at-tooltip", { key: '5cdc8cc12b0105483f9d6cd59f741f1a894f956e', position: "top" }, h("at-button", { key: '2d3bc60abe51fed03a884e47cff622fd0ef87433', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '8b67ac086af3de8e2b5f9ccb003e951e46b3b482' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'c8fb5b4b02ae4a911f92821816042521e35f4531', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: '340a9a3e0f90b7f6ab11bb35db550e0c21dc73fe', autoclose: false, width: "fit-content", align: "start" }, h("div", { key: 'a8b4561a11930544ea22d98ec70f2880b45bc275', slot: "menu-trigger" }, h("at-tooltip", { key: '3ffaa2ba8d43e3814373e84309f4026c1b11e609', position: "top" }, h("at-button", { key: '6e5180bfeeaf99d1c08dc7212acddba82c595b95', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: 'ca880c41c09363bceef583733ae14cf9736b07a2' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'ff86ee18d80cfcd5a901b219b3dfd21d44e43def', class: "w-fit", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
@@ -73,8 +73,7 @@ export class AtColumnManagerComponent {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -127,3 +126,4 @@ export class AtColumnManagerComponent {
             }];
     }
 }
+//# sourceMappingURL=at-column-manager.js.map

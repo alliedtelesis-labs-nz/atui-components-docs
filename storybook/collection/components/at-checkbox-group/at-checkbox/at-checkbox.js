@@ -71,8 +71,8 @@ export class AtCheckbox {
             checked: this.value,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '788571a19d929559779edd99494cfcbe51e41235', role: "checkbox", "aria-checked": this.value, "aria-labelledby": `${this.option_id}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: 'b1eeb68db7c9810b5b83e7a06da016d5277b5fcf', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.value, onChange: (event) => this.handleChange(event), id: this.option_id, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: '9bf7dc5ade4bb3791a7272a8424c42bc9f9ce42f', class: "pointer-events-none flex flex-col" }, h("slot", { key: 'bd1c03440a217ca14165b79a54b7d21e840bd892', name: "label" }), this.label && (h("label", { key: '7a4b0fe1c4e6e87f3f382d6b02d93f7d500735c2', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '468fcb85c5f4da75c040253de8279d832db0e71c', class: "text-light mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '463faffebb5f28fd6b9c057e06a242f44dedc66b' })));
+        return (h(Host, { key: '062bf4870e656cfad81ba535a30b0d1de617a1ed', role: "checkbox", "aria-checked": this.value, "aria-labelledby": `${this.option_id}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: '546dc609dd18a0244e46876c64cfbaa928f74bc7', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.value, onChange: (event) => this.handleChange(event), id: this.option_id, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: '1cc6a6966d3a4657cec62f5f6ebfe674d9237a5d', class: "pointer-events-none flex flex-col" }, h("slot", { key: '116fe322c3441218957101aebe682ed0ac9caef4', name: "label" }), this.label && (h("label", { key: '23240101a98c21718d34727bda9c990c08c2d985', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '6c4dfe2d36b2f12a93cb6162927e81100106f448', class: "text-light mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '82b6d9ef6e534f180f617150dbf6cd6dc2cd2a66' })));
     }
     static get is() { return "at-checkbox"; }
     static get properties() {
@@ -194,3 +194,4 @@ export class AtCheckbox {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-checkbox.js.map

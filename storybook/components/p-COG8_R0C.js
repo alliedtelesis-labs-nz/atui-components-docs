@@ -1,1 +1,61 @@
-function t(n){var r,e,o="";if("string"==typeof n||"number"==typeof n)o+=n;else if("object"==typeof n)if(Array.isArray(n)){var i=n.length;for(r=0;r<i;r++)n[r]&&(e=t(n[r]))&&(o&&(o+=" "),o+=e)}else for(e in n)n[e]&&(o&&(o+=" "),o+=e);return o}function n(n,r){return function(e){const{variants:o={},defaultVariants:i={},compoundVariants:c=[]}=r||{},f=[];return e&&o&&Object.entries(e).forEach((([t,n])=>{const r=String(n);o[t]?.[r]&&f.push(o[t][r]||"")})),i&&o&&Object.entries(i).forEach((([t,n])=>{if(e&&void 0!==e[t])return;const r=String(n);o[t]?.[r]&&f.push(o[t][r]||"")})),c&&c.forEach((t=>{const{class:n,className:r,...o}=t;if(Object.entries(o).every((([t,n])=>e&&String(e[t])===String(n)))){const t=n||r||"";t&&f.push(t)}})),function(...n){return function(){for(var n,r,e=0,o="",i=arguments.length;e<i;e++)(n=arguments[e])&&(r=t(n))&&(o&&(o+=" "),o+=r);return o}(n)}(n,...f)}}export{n as c}
+function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e)){var o=e.length;for(t=0;t<o;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);}else for(f in e)e[f]&&(n&&(n+=" "),n+=f);return n}function clsx(){for(var e,t,f=0,n="",o=arguments.length;f<o;f++)(e=arguments[f])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}
+
+/**
+ * A utility function for creating conditional class names similar to class-variance-authority
+ * but implemented locally to avoid dependency issues.
+ */
+function classlist(base, config) {
+    return function (props) {
+        const { variants = {}, defaultVariants = {}, compoundVariants = [], } = config || {};
+        const variantClassNames = [];
+        // Process variants
+        if (props && variants) {
+            Object.entries(props).forEach(([propName, propValue]) => {
+                const stringPropValue = String(propValue);
+                if (variants[propName]?.[stringPropValue]) {
+                    variantClassNames.push(variants[propName][stringPropValue] || '');
+                }
+            });
+        }
+        // Process default variants
+        if (defaultVariants && variants) {
+            Object.entries(defaultVariants).forEach(([variantName, variantValue]) => {
+                if (props && typeof props[variantName] !== 'undefined') {
+                    return; // Skip if variant is specified in props
+                }
+                const stringVariantValue = String(variantValue);
+                if (variants[variantName]?.[stringVariantValue]) {
+                    variantClassNames.push(variants[variantName][stringVariantValue] || '');
+                }
+            });
+        }
+        // Process compound variants
+        if (compoundVariants) {
+            compoundVariants.forEach((compoundVariant) => {
+                const { class: compoundClass, className: compoundClassName, ...conditions } = compoundVariant;
+                const allConditionsMet = Object.entries(conditions).every(([condName, condValue]) => {
+                    return (props &&
+                        String(props[condName]) === String(condValue));
+                });
+                if (allConditionsMet) {
+                    const compoundClassToUse = compoundClass || compoundClassName || '';
+                    if (compoundClassToUse) {
+                        variantClassNames.push(compoundClassToUse);
+                    }
+                }
+            });
+        }
+        return cn(base, ...variantClassNames);
+    };
+}
+/**
+ * Combines class names with clsx
+ */
+function cn(...inputs) {
+    return clsx(inputs);
+}
+
+export { classlist as c };
+//# sourceMappingURL=p-COG8_R0C.js.map
+
+//# sourceMappingURL=p-COG8_R0C.js.map

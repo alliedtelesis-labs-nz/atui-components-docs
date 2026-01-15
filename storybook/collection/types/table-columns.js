@@ -18,3 +18,4 @@ export var ColumnField;
     ColumnField["DELETE"] = "delete";
     ColumnField["ACTION"] = "action";
 })(ColumnField || (ColumnField = {}));
+//# sourceMappingURL=table-columns.js.map

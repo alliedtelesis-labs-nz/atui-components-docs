@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChzPazsa.js');
+var index = require('./index-COiLLAKF.js');
 var translation = require('./translation-HqquF7bU.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -187,7 +187,7 @@ const AtSelectComponent = class {
             : true;
     }
     render() {
-        return (index.h(index.Host, { key: 'd1ca1c69cd6d72cbcdcaaa36db326b3756126dfd', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '299400c61fdca025ea092b63897269896966423d', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -195,9 +195,9 @@ const AtSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '095285141726ff09579b3945e4d0cb923b0a872b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '230fd795c4d4cbcf19c774b0f0f9af3532a67719', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '9f9ac97a124666ce0383d86b4fd1f3e2c976eb9f' }, this.error_text && this.invalid && (index.h("span", { key: 'f1d6971dd905b5f2cc7554a461c7bf343d0db53c', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '75960b5def5dc4ed8fa9c4c0998e976fdcc0d64c' }, this.error_text && this.invalid && (index.h("span", { key: '28ef3bc4e1d1a178e4f0d999c2c2885ff7463c3a', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -235,12 +235,8 @@ const AtSelectComponent = class {
         return (index.h("at-select-option", { value: option.value, is_active: this.value === option.value, onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get watchers() { return {
-        "value": [{
-                "watchValue": 0
-            }],
-        "searchText": [{
-                "watchSearchText": 0
-            }]
+        "value": ["watchValue"],
+        "searchText": ["watchSearchText"]
     }; }
 };
 
@@ -277,9 +273,10 @@ const AtSelectOptionComponent = class {
         const classname = getOptionClassname({
             active: this.is_active,
         });
-        return (index.h("li", { key: '63ecf52c67f66dd6b14c982f9a640f761ce60e12', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, index.h("slot", { key: '12affec6b4b47f2ee9b63e0a886571c31e103464' }), this.value));
+        return (index.h("li", { key: '6aa45203daf511ac469d42f04143c7982cf03f1c', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, index.h("slot", { key: 'ca827240ef69e8550ef67e988c5731f4d614e68e' }), this.value));
     }
 };
 
 exports.at_select = AtSelectComponent;
 exports.at_select_option = AtSelectOptionComponent;
+//# sourceMappingURL=at-select.at-select-option.entry.cjs.js.map

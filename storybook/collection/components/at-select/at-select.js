@@ -185,7 +185,7 @@ export class AtSelectComponent {
             : true;
     }
     render() {
-        return (h(Host, { key: 'd1ca1c69cd6d72cbcdcaaa36db326b3756126dfd', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '299400c61fdca025ea092b63897269896966423d', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -193,9 +193,9 @@ export class AtSelectComponent {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '095285141726ff09579b3945e4d0cb923b0a872b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '230fd795c4d4cbcf19c774b0f0f9af3532a67719', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '9f9ac97a124666ce0383d86b4fd1f3e2c976eb9f' }, this.error_text && this.invalid && (h("span", { key: 'f1d6971dd905b5f2cc7554a461c7bf343d0db53c', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '75960b5def5dc4ed8fa9c4c0998e976fdcc0d64c' }, this.error_text && this.invalid && (h("span", { key: '28ef3bc4e1d1a178e4f0d999c2c2885ff7463c3a', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -264,8 +264,7 @@ export class AtSelectComponent {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption",
-                            "referenceLocation": "SelectOption"
+                            "id": "src/types/select.ts::SelectOption"
                         }
                     }
                 },
@@ -549,3 +548,4 @@ export class AtSelectComponent {
             }];
     }
 }
+//# sourceMappingURL=at-select.js.map

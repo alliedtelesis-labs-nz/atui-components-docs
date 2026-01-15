@@ -73,7 +73,7 @@ export class AtTreeComponent {
         }
     }
     render() {
-        return (h("div", { key: '05574efa3531a14721dc4cd8807f7e413d673fc4', class: "w-full" }, h("slot", { key: 'e48b1f342cacb7d4c8aa29f203a18ea5c09c90ba' }), this.flattenedItemList &&
+        return (h("div", { key: 'f4443a6e9ca39983c4e3a1bfdacc7bfa76952fa0', class: "w-full" }, h("slot", { key: '44256a95ffabe2ec5ca8b57184a8301fd4e47fd8' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index] +
@@ -94,8 +94,7 @@ export class AtTreeComponent {
                         "TreeNode": {
                             "location": "import",
                             "path": "../../types/tree",
-                            "id": "src/types/tree.ts::TreeNode",
-                            "referenceLocation": "TreeNode"
+                            "id": "src/types/tree.ts::TreeNode"
                         }
                     }
                 },
@@ -118,8 +117,7 @@ export class AtTreeComponent {
                         "ButtonSize": {
                             "location": "import",
                             "path": "../at-button/at-button",
-                            "id": "src/components/at-button/at-button.tsx::ButtonSize",
-                            "referenceLocation": "ButtonSize"
+                            "id": "src/components/at-button/at-button.tsx::ButtonSize"
                         }
                     }
                 },
@@ -161,11 +159,11 @@ export class AtTreeComponent {
                         "TreeNode": {
                             "location": "import",
                             "path": "../../types/tree",
-                            "id": "src/types/tree.ts::TreeNode",
-                            "referenceLocation": "TreeNode"
+                            "id": "src/types/tree.ts::TreeNode"
                         }
                     }
                 }
             }];
     }
 }
+//# sourceMappingURL=at-tree.js.map

@@ -44,7 +44,7 @@ export class AtSidebarMenuitemComponent {
         }
     };
     render() {
-        return (h(Host, { key: '680f4b45ac7b6d34b6505a36b99aa8f37808e7d1', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '1cc3d452c74e09a657a0d54b2d76e75183c3a745', class: "content", "data-name": "content" }, h("slot", { key: '0620594748a42abc01c1bf4e6b00c9c8248c7140', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: '78c6d5aa40a1137886c41f87b5198dd1dc69c8bb', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && h("i", { key: 'bbf3137d2281035141f7141f0dd1af58fa300254', class: "icon" }, this.icon), this.label && (h("span", { key: '69a1f704716f0a2cbaad4165cfdf8d29af9c80b9', "data-name": "sidebar-menu-item-label", class: "label" }, this.label))), h("slot", { key: 'ef2df9094f302c698829ed38086e338a2552405f', name: "sidebar-menu-item-actions" }), h("div", { key: '9ebe443ded47f54358f959aefe1f19949fbeff8f', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: 'f78f60c8bbd1765de07049a345440b44b66f7dd1', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'c9bd8832bdda3a4dc7b8a871dc9f433be5adc248', class: "content", "data-name": "content" }, h("slot", { key: '53fe529452fba9a7ab27cdb027ca0b148e47c626', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: '498c19938c8f8b5dcfb5f385cc9b9350ee76e112', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && h("i", { key: '510920b68d4f60bc5d66fe8a08c195d4848ef3fd', class: "icon" }, this.icon), this.label && (h("span", { key: 'a9143b49dce8ddd6c0a29f1a4e296d59a0c0d5d9', "data-name": "sidebar-menu-item-label", class: "label" }, this.label))), h("slot", { key: '80e4980be3c8b4dd656723c914e04c955d2c7757', name: "sidebar-menu-item-actions" }), h("div", { key: '54436909d70f0a00a99b4271c75d11d00e0a7e32', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get encapsulation() { return "scoped"; }
@@ -156,8 +156,7 @@ export class AtSidebarMenuitemComponent {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -165,3 +164,4 @@ export class AtSidebarMenuitemComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-sidebar-menuitem.js.map

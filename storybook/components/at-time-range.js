@@ -1,1 +1,311 @@
-import{p as t,H as e,d as s,h as a,c as i,t as o}from"./p-CtWJ4BTZ.js";import{a as n,T as r,D as m}from"./p-DqF-mRjp.js";import{h as l}from"./p-BMuAbjcg.js";import{f as c}from"./p-DuLooPsr.js";import{d as u}from"./p-DqJr9-9r.js";import{d as h}from"./p-BaLbL6lW.js";import{d}from"./p-CTmr--Xt.js";import{d as f}from"./p-D5cC4Q1v.js";import{d as p}from"./p-CXmegLoN.js";import{d as b}from"./p-BhUvE1ar.js";import{d as g}from"./p-CNTmSmCI.js";import{d as _}from"./p-C2gAZBxO.js";import{d as v}from"./p-CzYFZi3n.js";import{d as w}from"./p-Db3PhyTB.js";import{d as E}from"./p-DezNcZ8a.js";import{d as k}from"./p-DTVY_LLE.js";import{d as x}from"./p-C8GUnuah.js";import{M as C,T as j}from"./p-C3LwY5aR.js";var D,y;!function(t){t.SECONDS="s",t.MINUTES="min",t.HOURS="hr",t.DAYS="d",t.WEEKS="w",t.MONTHS="m",t.YEARS="yr"}(D||(D={})),function(t){t.SECONDS="SECONDS",t.MINUTES="MINUTES",t.HOURS="HOURS",t.DAYS="DAYS",t.WEEKS="WEEKS",t.MONTHS="MONTHS",t.YEARS="YEARS"}(y||(y={}));const T=t(class extends e{constructor(t){super(),!1!==t&&this.__registerHost(),this.atuiChange=s(this,"atuiChange",7)}selected_time_range={selected:{unit:n.HOURS,value:1}};range_limit=7;presets;enable_relative_time=!0;custom_error_message=null;show_all_time=!1;enable_range_limit=!0;today;lowerLimit;defaultFromDate;translations;relativeTimeMenuEl;absoluteTimeMenuEl;get el(){return this}units=[n.MINUTES,n.HOURS,n.DAYS,n.WEEKS,n.MONTHS,n.YEARS];minSeconds=300;async componentWillLoad(){this.translations=await c(this.el),this.today=new Date}componentWillRender(){this.lowerLimit=this.enable_range_limit?l().subtract(this.range_limit,"day").toDate():r.floorDateByTimeUnit(C,m.HOURS),this.defaultFromDate=l(this.today).subtract(1,"hours").toDate()}getLongUnitDisplay(t){if(!t.custom&&t.selected)return y[t.selected.unit]}getRelativeDate(t){if(!t.custom&&t.selected)return r.getRelativeDateRange(t.selected)}getCustomStartAndEndDate(t){if(!t.custom)return;const{from:e,to:s}=t.custom;return{fromDate:l(e).toDate(),toDate:l(s).toDate()}}getShortUnitDisplay(t){return D[t.unit]}atuiChange;onChangeCustomTime(t){this.selected_time_range={selected:j.CUSTOM,custom:t},this.atuiChange.emit({...this.selected_time_range})}onChangeRelativeTime(t){this.selected_time_range={selected:t},this.atuiChange.emit({...this.selected_time_range})}get buttonGroupOptions(){const t=[];return t.push(this.selected_time_range.selected===j.ALL?{value:a("div",{class:"text-dark flex items-center gap-4 font-normal"},a("span",{class:"font-medium"},this.translations.ATUI.TIME.ALL_TIME_LABEL))}:this.selected_time_range.custom?{value:[a("div",{class:"text-dark flex items-center gap-4 font-normal"},a("span",null,this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate.toLocaleString()),a("span",{class:"icon-md material-icons text-light"},"arrow_forward"),a("span",null,this.selected_time_range.custom.lockEndDateToNow?"NOW":this.getCustomStartAndEndDate(this.selected_time_range)?.toDate.toLocaleString()))]}:{value:a("div",{class:"text-dark flex items-center gap-4 font-normal"},a("span",{class:"font-medium"},this.translations.ATUI.TIME.LAST," ",this.selected_time_range.selected.value," ",this.translations.ATUI.TIME[this.getLongUnitDisplay(this.selected_time_range)]," ",":"),a("span",null,this.getRelativeDate(this.selected_time_range).startDate.toLocaleString()),a("span",{class:"icon-md material-icons text-light"},"arrow_forward"),a("span",null,"NOW"))}),t.push({value:a("div",{class:"flex items-center"},a("span",{class:"icon-md material-icons text-light"},"date_range"))}),t}get predefinedTimeRanges(){const t=[];return this.presets.forEach((e=>{t.push({value:a("span",null,e.value,this.getShortUnitDisplay(e))})})),t.push({value:a("div",{class:"flex items-center"},a("span",{class:"material-icons text-body text-light"},"date_range"))}),t}render(){return a(i,{key:"6e119672a79f74a6d5bfe3a068af763ff1ad747d",class:"relative flex justify-center gap-8"},this.enable_relative_time&&a("at-button-group",{key:"ec6693b3c05deb0899286404bc81a8d4c99dcb8a",options:this.buttonGroupOptions,onAtuiIndexChange:t=>0===t.detail&&this.relativeTimeMenuEl.focus()||1===t.detail&&this.absoluteTimeMenuEl.focus()}),!this.enable_relative_time&&a("at-button-group",{key:"3a33e400d0454c5a38526c9070ed6b8dfd29ab8b",options:this.predefinedTimeRanges,onAtuiIndexChange:t=>{t.detail<this.presets.length?this.onChangeRelativeTime(this.presets[t.detail]):t.detail===this.predefinedTimeRanges.length-1&&this.absoluteTimeMenuEl.focus()}}),a("div",{key:"6e734d6ccb819df0b55bbd5641593da9bf90bdb1",ref:t=>this.relativeTimeMenuEl=t,class:"absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit",tabindex:0,onChange:t=>t.stopPropagation()},a("at-time-with-unit",{key:"0cb0936bfcf9e32e5fa2e7dfa234dbf5bac91439",units:this.units,common_options:this.presets,min_date:this.lowerLimit,min_seconds:this.minSeconds,initial_selected_time:this.selected_time_range.selected===j.CUSTOM?j.ALL:this.selected_time_range.selected,custom_error_message:this.custom_error_message,show_all_time:this.show_all_time,onAtuiSubmit:t=>this.onChangeRelativeTime(t.detail),onAtuiCancel:()=>{this.relativeTimeMenuEl.focus(),this.relativeTimeMenuEl.blur()}})),a("div",{key:"cb0c6e257f202d435834e134db6c18c18084e5df",ref:t=>this.absoluteTimeMenuEl=t,class:"absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit",tabindex:0,onChange:t=>t.stopPropagation()},a("at-custom-time-range",{key:"063e0cf81d077b0667f35a25a4ba3387df6e53fb",min_date:this.lowerLimit,default_to_date:this.today,default_from_date:this.defaultFromDate,from_date_value:this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate,to_date_value:this.getCustomStartAndEndDate(this.selected_time_range)?.toDate,lock_end_date_to_now:this.selected_time_range.custom?.lockEndDateToNow,onAtuiSubmit:t=>this.onChangeCustomTime(t.detail),onAtuiCancel:()=>{this.absoluteTimeMenuEl.focus(),this.absoluteTimeMenuEl.blur()}})))}},[512,"at-time-range",{selected_time_range:[16],range_limit:[2],presets:[16],enable_relative_time:[4],custom_error_message:[8],show_all_time:[4],enable_range_limit:[4],today:[32],lowerLimit:[32],defaultFromDate:[32],translations:[32],relativeTimeMenuEl:[32],absoluteTimeMenuEl:[32]}]),S=T,A=function(){"undefined"!=typeof customElements&&["at-time-range","at-button","at-button-group","at-button-group-option","at-custom-time-range","at-form-label","at-input-numeric","at-loading","at-menu","at-select","at-select-option","at-time-with-unit","at-toggle-switch","at-tooltip"].forEach((t=>{switch(t){case"at-time-range":customElements.get(o(t))||customElements.define(o(t),T);break;case"at-button":customElements.get(o(t))||u();break;case"at-button-group":customElements.get(o(t))||h();break;case"at-button-group-option":customElements.get(o(t))||d();break;case"at-custom-time-range":customElements.get(o(t))||f();break;case"at-form-label":customElements.get(o(t))||p();break;case"at-input-numeric":customElements.get(o(t))||b();break;case"at-loading":customElements.get(o(t))||g();break;case"at-menu":customElements.get(o(t))||_();break;case"at-select":customElements.get(o(t))||v();break;case"at-select-option":customElements.get(o(t))||w();break;case"at-time-with-unit":customElements.get(o(t))||E();break;case"at-toggle-switch":customElements.get(o(t))||k();break;case"at-tooltip":customElements.get(o(t))||x()}}))};export{S as AtTimeRange,A as defineCustomElement}
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
+import { b as TimeUnit, T as TimeDateUtil, D as Duration } from './p-BI7XO4bL.js';
+import { h as hooks } from './p-BMuAbjcg.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { d as defineCustomElement$e } from './p-Dx91wqSp.js';
+import { d as defineCustomElement$d } from './p-DQenFiCV.js';
+import { d as defineCustomElement$c } from './p-D0rx_oNk.js';
+import { d as defineCustomElement$b } from './p-opyJle8L.js';
+import { d as defineCustomElement$a } from './p-0L3Bm0n5.js';
+import { d as defineCustomElement$9 } from './p-Bf6QQo89.js';
+import { d as defineCustomElement$8 } from './p-bn76tgB4.js';
+import { d as defineCustomElement$7 } from './p-CSzxFmVR.js';
+import { d as defineCustomElement$6 } from './p-CLGugxhO.js';
+import { d as defineCustomElement$5 } from './p-QnyidAJz.js';
+import { d as defineCustomElement$4 } from './p-CNiFBuc8.js';
+import { d as defineCustomElement$3 } from './p-UzOkv0aB.js';
+import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+import { M as MIN_DATE, T as TimeRangeDisplay } from './p-C3LwY5aR.js';
+
+var AbreviatedTimeUnits;
+(function (AbreviatedTimeUnits) {
+    AbreviatedTimeUnits["SECONDS"] = "s";
+    AbreviatedTimeUnits["MINUTES"] = "min";
+    AbreviatedTimeUnits["HOURS"] = "hr";
+    AbreviatedTimeUnits["DAYS"] = "d";
+    AbreviatedTimeUnits["WEEKS"] = "w";
+    AbreviatedTimeUnits["MONTHS"] = "m";
+    AbreviatedTimeUnits["YEARS"] = "yr";
+})(AbreviatedTimeUnits || (AbreviatedTimeUnits = {}));
+var FullTimeUnits;
+(function (FullTimeUnits) {
+    FullTimeUnits["SECONDS"] = "SECONDS";
+    FullTimeUnits["MINUTES"] = "MINUTES";
+    FullTimeUnits["HOURS"] = "HOURS";
+    FullTimeUnits["DAYS"] = "DAYS";
+    FullTimeUnits["WEEKS"] = "WEEKS";
+    FullTimeUnits["MONTHS"] = "MONTHS";
+    FullTimeUnits["YEARS"] = "YEARS";
+})(FullTimeUnits || (FullTimeUnits = {}));
+
+const AtTimeRangeComponent = /*@__PURE__*/ proxyCustomElement(class AtTimeRangeComponent extends H {
+    constructor(registerHost) {
+        super();
+        if (registerHost !== false) {
+            this.__registerHost();
+        }
+        this.atuiChange = createEvent(this, "atuiChange", 7);
+    }
+    /**
+     * Selected time range.
+     */
+    selected_time_range = {
+        selected: {
+            unit: TimeUnit.HOURS,
+            value: 1,
+        },
+    };
+    /**
+     * Lower limit of the time range.
+     */
+    range_limit = 7;
+    /**
+     * Define the presets for the relative time ranges.
+     */
+    presets;
+    /**
+     * Enable relative time selection.
+     */
+    enable_relative_time = true;
+    /**
+     * Custom error message to show when an invalid time is inputted.
+     */
+    custom_error_message = null;
+    /**
+     * Enable all time selection.
+     */
+    show_all_time = false;
+    /**
+     * Enable range limit setting. If set to false, use Jan 1, 1985 as the lower limit of time range, ignoring
+     * the value of range limit.
+     */
+    enable_range_limit = true;
+    today;
+    lowerLimit;
+    defaultFromDate;
+    translations;
+    relativeTimeMenuEl;
+    absoluteTimeMenuEl;
+    get el() { return this; }
+    units = [
+        TimeUnit.MINUTES,
+        TimeUnit.HOURS,
+        TimeUnit.DAYS,
+        TimeUnit.WEEKS,
+        TimeUnit.MONTHS,
+        TimeUnit.YEARS,
+    ];
+    minSeconds = 300;
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+        this.today = new Date();
+    }
+    componentWillRender() {
+        this.lowerLimit = this.enable_range_limit
+            ? hooks().subtract(this.range_limit, 'day').toDate()
+            : TimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
+        this.defaultFromDate = hooks(this.today).subtract(1, 'hours').toDate();
+    }
+    getLongUnitDisplay(time) {
+        if (time.custom || !time.selected) {
+            return;
+        }
+        return FullTimeUnits[time.selected['unit']];
+    }
+    getRelativeDate(time) {
+        if (time.custom || !time.selected) {
+            return;
+        }
+        return TimeDateUtil.getRelativeDateRange(time.selected);
+    }
+    getCustomStartAndEndDate(selectedTime) {
+        if (!selectedTime.custom) {
+            return;
+        }
+        const { from, to } = selectedTime.custom;
+        const fromDate = hooks(from).toDate();
+        const toDate = hooks(to).toDate();
+        return { fromDate, toDate };
+    }
+    getShortUnitDisplay(time) {
+        return AbreviatedTimeUnits[time.unit];
+    }
+    /**
+     * Emits an event containing the selected time range when it changes
+     */
+    atuiChange;
+    onChangeCustomTime(customTime) {
+        this.selected_time_range = {
+            selected: TimeRangeDisplay.CUSTOM,
+            custom: customTime,
+        };
+        this.atuiChange.emit({ ...this.selected_time_range });
+    }
+    onChangeRelativeTime(time) {
+        this.selected_time_range = {
+            selected: time,
+        };
+        this.atuiChange.emit({ ...this.selected_time_range });
+    }
+    get buttonGroupOptions() {
+        const output = [];
+        if (this.selected_time_range.selected === TimeRangeDisplay.ALL) {
+            output.push({
+                value: (h("div", { class: "text-dark flex items-center gap-4 font-normal" }, h("span", { class: "font-medium" }, this.translations.ATUI.TIME.ALL_TIME_LABEL))),
+            });
+        }
+        else if (this.selected_time_range.custom) {
+            output.push({
+                value: [
+                    h("div", { class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate.toLocaleString()), h("span", { class: "icon-md material-icons text-light" }, "arrow_forward"), h("span", null, this.selected_time_range.custom.lockEndDateToNow
+                        ? 'NOW'
+                        : this.getCustomStartAndEndDate(this.selected_time_range)?.toDate.toLocaleString())),
+                ],
+            });
+        }
+        else {
+            output.push({
+                value: (h("div", { class: "text-dark flex items-center gap-4 font-normal" }, h("span", { class: "font-medium" }, this.translations.ATUI.TIME.LAST, ` `, this.selected_time_range.selected['value'], ` `, this.translations.ATUI.TIME[this.getLongUnitDisplay(this.selected_time_range)], ' ', ":"), h("span", null, this.getRelativeDate(this.selected_time_range).startDate.toLocaleString()), h("span", { class: "icon-md material-icons text-light" }, "arrow_forward"), h("span", null, "NOW"))),
+            });
+        }
+        output.push({
+            value: (h("div", { class: "flex items-center" }, h("span", { class: "icon-md material-icons text-light" }, "date_range"))),
+        });
+        return output;
+    }
+    get predefinedTimeRanges() {
+        const output = [];
+        this.presets.forEach((timerange) => {
+            output.push({
+                value: (h("span", null, timerange.value, this.getShortUnitDisplay(timerange))),
+            });
+        });
+        output.push({
+            value: (h("div", { class: "flex items-center" }, h("span", { class: "material-icons text-body text-light" }, "date_range"))),
+        });
+        return output;
+    }
+    render() {
+        return (h(Host, { key: '60366fcaca599804b630152d4acd43b010c696ad', class: "relative flex justify-center gap-8" }, this.enable_relative_time && (h("at-button-group", { key: 'aa8e37016433c11407b03e5be24f00b3ee209bc0', options: this.buttonGroupOptions, onAtuiIndexChange: (event) => (event.detail === 0 &&
+                this.relativeTimeMenuEl.focus()) ||
+                (event.detail === 1 &&
+                    this.absoluteTimeMenuEl.focus()) })), !this.enable_relative_time && (h("at-button-group", { key: '0bfca16b8bad51674bea913110d357ee7a250056', options: this.predefinedTimeRanges, onAtuiIndexChange: (event) => {
+                if (event.detail < this.presets.length) {
+                    this.onChangeRelativeTime(this.presets[event.detail]);
+                }
+                else if (event.detail ===
+                    this.predefinedTimeRanges.length - 1) {
+                    this.absoluteTimeMenuEl.focus();
+                }
+            } })), h("div", { key: '0406c81b116c7027bf284659003cda50707d952b', ref: (el) => (this.relativeTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-time-with-unit", { key: '717e7f3bdede477e7633db77ca5be5b6b1bf0c93', units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range.selected ===
+                TimeRangeDisplay.CUSTOM
+                ? TimeRangeDisplay.ALL
+                : this.selected_time_range.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => this.onChangeRelativeTime(event.detail), onAtuiCancel: () => {
+                this.relativeTimeMenuEl.focus();
+                this.relativeTimeMenuEl.blur();
+            } })), h("div", { key: 'd5c1966930e9ce8f37059c238a924259bbea2723', ref: (el) => (this.absoluteTimeMenuEl = el), class: "absolute top-[42px] z-10 h-0 overflow-hidden bg-white focus-within:h-fit focus-within:overflow-visible focus:h-fit", tabindex: 0, onChange: (event) => event.stopPropagation() }, h("at-custom-time-range", { key: 'e2c3a58ebce59f4af43775f697b2a5336c45a5e2', min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)?.toDate, lock_end_date_to_now: this.selected_time_range.custom?.lockEndDateToNow, onAtuiSubmit: (event) => this.onChangeCustomTime(event.detail), onAtuiCancel: () => {
+                this.absoluteTimeMenuEl.focus();
+                this.absoluteTimeMenuEl.blur();
+            } }))));
+    }
+}, [256, "at-time-range", {
+        "selected_time_range": [16],
+        "range_limit": [2],
+        "presets": [16],
+        "enable_relative_time": [4],
+        "custom_error_message": [8],
+        "show_all_time": [4],
+        "enable_range_limit": [4],
+        "today": [32],
+        "lowerLimit": [32],
+        "defaultFromDate": [32],
+        "translations": [32],
+        "relativeTimeMenuEl": [32],
+        "absoluteTimeMenuEl": [32]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-time-range", "at-button", "at-button-group", "at-button-group-option", "at-custom-time-range", "at-form-label", "at-input-numeric", "at-loading", "at-menu", "at-select", "at-select-option", "at-time-with-unit", "at-toggle-switch", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-time-range":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtTimeRangeComponent);
+            }
+            break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$e();
+            }
+            break;
+        case "at-button-group":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$d();
+            }
+            break;
+        case "at-button-group-option":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$c();
+            }
+            break;
+        case "at-custom-time-range":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$b();
+            }
+            break;
+        case "at-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$a();
+            }
+            break;
+        case "at-input-numeric":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$9();
+            }
+            break;
+        case "at-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$8();
+            }
+            break;
+        case "at-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "at-select":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "at-select-option":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "at-time-with-unit":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "at-toggle-switch":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtTimeRange = AtTimeRangeComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtTimeRange, defineCustomElement };
+//# sourceMappingURL=at-time-range.js.map
+
+//# sourceMappingURL=at-time-range.js.map
