@@ -1,4 +1,6 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
+import { ISearchTableParams } from '../../../types';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -67,6 +69,21 @@ export declare class AtSearchTable {
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns: boolean;
+    /**
+     * If true, enables server-side data loading mode where filtering,
+     * searching, and pagination are handled externally
+     */
+    server_side_mode?: boolean;
+    /**
+     * If true, displays a loading placeholder and hides table content.
+     * Used for server-side data fetching to indicate loading state.
+     */
+    loading: boolean;
+    /**
+     * Event emitted when search params change in server-side mode.
+     * Contains filters, search text, pagination info
+     */
+    atSearchParamsChange: EventEmitter<ISearchTableParams>;
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;
@@ -135,6 +152,7 @@ export declare class AtSearchTable {
     private handleFilterListChange;
     private updateActiveFilters;
     handleSearchChange(event: CustomEvent): void;
+    emitSearchParamsChange(): void;
     render(): any;
 }
 export {};

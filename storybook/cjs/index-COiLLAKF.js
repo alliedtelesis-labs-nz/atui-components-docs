@@ -185,10 +185,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-multi-select.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-placeholder.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-placeholder.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-progress-bar.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -201,10 +197,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-radio-group.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-search-table.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-search-table.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-src-dest.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -297,6 +289,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-input-range.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-search-table.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-search-table.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-side-panel.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -361,10 +357,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-button_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-search_4.cjs':
+                case 'at-placeholder_5.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './at-search_4.cjs.entry.js')); }).then(processMod, consoleError);
+                        './at-placeholder_5.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-column-manager_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

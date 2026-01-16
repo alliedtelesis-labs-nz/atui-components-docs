@@ -63,19 +63,19 @@ export class AtTableComponent {
             }
         }
     }
+    handleColDefsChange(newColDefs) {
+        if (this.agGrid && this.tableCreated) {
+            this.agGrid.setGridOption('columnDefs', newColDefs);
+            if (this.auto_size_columns) {
+                setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
+            }
+        }
+    }
     async componentDidLoad() {
         if (this.disable_auto_init) {
             this.tableCreated = true;
         }
         await this.initGrid();
-        if (this.auto_size_columns) {
-            this.resizeListener = () => {
-                if (this.agGrid) {
-                    this.agGrid.sizeColumnsToFit();
-                }
-            };
-            window.addEventListener('resize', this.resizeListener);
-        }
     }
     async componentDidUpdate() {
         await this.initGrid();
@@ -103,20 +103,9 @@ export class AtTableComponent {
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
-            autoSizeStrategy: {
-                type: 'fitGridWidth',
-            },
+            enableBrowserTooltips: true,
+            animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
-            onGridSizeChanged: (params) => {
-                if (this.auto_size_columns) {
-                    params.api.sizeColumnsToFit();
-                }
-            },
-            onGridReady: (params) => {
-                if (this.auto_size_columns) {
-                    params.api.sizeColumnsToFit();
-                }
-            },
             onSortChanged: (event) => {
                 const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
                 this.atSortChange.emit({
@@ -142,10 +131,6 @@ export class AtTableComponent {
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
-        // Initial column sizing
-        if (this.auto_size_columns) {
-            setTimeout(() => gridApi.sizeColumnsToFit(), 0);
-        }
         return gridApi;
     }
     /**
@@ -163,7 +148,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: 'd4fa14f21914480c8ea60c42f141f3a3abc36161', class: "ag-theme-material" });
+        return h(Host, { key: '6123c666dda4b22c4c1ccb82cdc138c3f3dd6601', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -436,6 +421,9 @@ export class AtTableComponent {
         return [{
                 "propName": "table_data",
                 "methodName": "handleTableDataChange"
+            }, {
+                "propName": "col_defs",
+                "methodName": "handleColDefsChange"
             }];
     }
 }

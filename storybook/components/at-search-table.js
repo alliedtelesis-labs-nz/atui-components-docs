@@ -1,21 +1,28 @@
-import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
-import { d as defineCustomElement$h } from './p-Dx91wqSp.js';
-import { d as defineCustomElement$g } from './p-CS_tFK1i.js';
-import { d as defineCustomElement$f } from './p-D9BVLp-6.js';
-import { d as defineCustomElement$e } from './p-CpkIDyxE.js';
-import { d as defineCustomElement$d } from './p-0L3Bm0n5.js';
-import { d as defineCustomElement$c } from './p-BIDRuww7.js';
-import { d as defineCustomElement$b } from './p-bn76tgB4.js';
-import { d as defineCustomElement$a } from './p-CSzxFmVR.js';
-import { d as defineCustomElement$9 } from './p-DPKxJNLQ.js';
+import { d as defineCustomElement$i } from './p-Dx91wqSp.js';
+import { d as defineCustomElement$h } from './p-CS_tFK1i.js';
+import { d as defineCustomElement$g } from './p-D9BVLp-6.js';
+import { d as defineCustomElement$f } from './p-BKUSovs8.js';
+import { d as defineCustomElement$e } from './p-0L3Bm0n5.js';
+import { d as defineCustomElement$d } from './p-BIDRuww7.js';
+import { d as defineCustomElement$c } from './p-bn76tgB4.js';
+import { d as defineCustomElement$b } from './p-CSzxFmVR.js';
+import { d as defineCustomElement$a } from './p-DPKxJNLQ.js';
+import { d as defineCustomElement$9 } from './p-Drp6nc-F.js';
 import { d as defineCustomElement$8 } from './p-DmTSeJU2.js';
-import { d as defineCustomElement$7 } from './p-C5D6h6EN.js';
-import { d as defineCustomElement$6 } from './p-C8ZEtt7h.js';
-import { d as defineCustomElement$5 } from './p-Dh5iHdr_.js';
-import { d as defineCustomElement$4 } from './p-DBpFjCOI.js';
-import { d as defineCustomElement$3 } from './p-LVdyZgif.js';
+import { d as defineCustomElement$7 } from './p-DDiy6HIY.js';
+import { d as defineCustomElement$6 } from './p-BEJag_Jh.js';
+import { d as defineCustomElement$5 } from './p-DMqtMFVW.js';
+import { d as defineCustomElement$4 } from './p-BYBjRTcG.js';
+import { d as defineCustomElement$3 } from './p-CzX1a0l4.js';
 import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+
+var SortDirection;
+(function (SortDirection) {
+    SortDirection[SortDirection["ASC"] = 1] = "ASC";
+    SortDirection[SortDirection["DESC"] = -1] = "DESC";
+})(SortDirection || (SortDirection = {}));
 
 const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable extends H {
     constructor(registerHost) {
@@ -23,6 +30,7 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         if (registerHost !== false) {
             this.__registerHost();
         }
+        this.atSearchParamsChange = createEvent(this, "atSearchParamsChange", 7);
     }
     /**
      * Table data passed to at-table component.
@@ -74,6 +82,21 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns = true;
+    /**
+     * If true, enables server-side data loading mode where filtering,
+     * searching, and pagination are handled externally
+     */
+    server_side_mode = false;
+    /**
+     * If true, displays a loading placeholder and hides table content.
+     * Used for server-side data fetching to indicate loading state.
+     */
+    loading = false;
+    /**
+     * Event emitted when search params change in server-side mode.
+     * Contains filters, search text, pagination info
+     */
+    atSearchParamsChange;
     get el() { return this; }
     translations;
     agGrid;
@@ -95,16 +118,20 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
-        this.updateActiveFilters();
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
     async componentDidLoad() {
         await this.initGrid();
+        if (this.server_side_mode && this.agGrid) {
+            this.emitSearchParamsChange();
+        }
     }
     async componentDidUpdate() {
-        await this.initGrid();
+        if (!this.tableCreated) {
+            await this.initGrid();
+        }
     }
     /**
      * Updates the data of rows in the AG Grid based on their displayed row index.
@@ -173,6 +200,9 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
     setupExternalFilters() {
         if (!this.agGrid)
             return;
+        if (this.server_side_mode) {
+            return;
+        }
         this.agGrid.setGridOption('isExternalFilterPresent', () => {
             return Object.keys(this.activeFilters).length > 0;
         });
@@ -301,12 +331,17 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         if (this.searchValue) {
             this.activeFilters['__search__'] = this.searchValue;
         }
-        if (this.agGrid) {
-            this.setupExternalFilters();
-            this.agGrid.onFilterChanged();
+        if (this.server_side_mode) {
+            this.emitSearchParamsChange();
         }
         else {
-            console.log('agGrid not available, cannot apply filter');
+            if (this.agGrid) {
+                this.setupExternalFilters();
+                this.agGrid.onFilterChanged();
+            }
+            else {
+                console.log('agGrid not available, cannot apply filter');
+            }
         }
     }
     handleSearchChange(event) {
@@ -319,8 +354,28 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         }
         this.updateActiveFilters();
     }
+    emitSearchParamsChange() {
+        if (!this.agGrid)
+            return;
+        const paginationModel = this.agGrid.paginationGetCurrentPage();
+        const pageSize = this.agGrid.paginationGetPageSize();
+        const startRow = paginationModel * pageSize;
+        const endRow = (paginationModel + 1) * pageSize;
+        const columnState = this.agGrid.getColumnState();
+        const sortedColumn = columnState.find((col) => col.sort !== null && col.sort !== undefined);
+        const searchParams = {
+            fieldFilters: this.activeFilters,
+            startRow: startRow,
+            endRow: endRow,
+            sort: sortedColumn?.colId,
+            direction: sortedColumn?.sort === 'asc'
+                ? SortDirection.ASC
+                : SortDirection.DESC,
+        };
+        this.atSearchParamsChange.emit(searchParams);
+    }
     render() {
-        return (h(Host, { key: '8373064df451e6ac665f9a244725d5f984082ee1' }, h("at-table-actions", { key: 'd9c0bbf2bc12214f2a0f6d2f02c17800afe41233', ag_grid: this.agGrid }, h("div", { key: '178a8e1ffd63f24a41640d9fdea5fe3b59ac29d8', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '749f33df1c82f19bf84c67754c93d7a5a0f30c78', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '8ce219e315c770fb498df7ef9bfff5fb5bcff810', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '465990e9b12c16fe5c871fd822c95e8a42c35963', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'a55428cfdcb4a3b820a10ead99be29e08c0d154a', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '09e5e7fbc9a1ef20ecb47f05470075b9aad4eff6', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'eabe86535774458f9e6fb3e79756de92fe4a0ba7', slot: "actions" }, h("slot", { key: 'f15c3b58ce3f8cca945ba60872568f7ced6ab9bb', name: "actions" }))), h("slot", { key: '3d6fd5c4f3c191c1c9d6ad866d2c930360ab8599', name: "multi-select-actions" }), h("at-table", { key: '2615605914da8e6efc04444d0c95ebc30df0b533', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: 'a23ea96b6d7141093e30e2ea86c571316ae4a3af' }, h("at-table-actions", { key: 'ac1500d6150bc90ef924b6540aa396b8c71f0a35', ag_grid: this.agGrid }, h("div", { key: '69630aeb5095784629efbdbd3df4d67a34eb0972', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '006553e1e2af6666e83db4eccd022d42d43aceb7', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'b0128804a10ca2988acd2b583ade30fbbd589faa', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '7f33c1fadaf4e52237bc27993b2a2a3d3e7ea3d4', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '41c9204a8a39b516206886abf04dc48ddf06b0a8', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6eaa981f3191c040eedffc8b25837e7b179fa5bd', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'f5404c844691767e9ad0e1f479c34c2552a5fa4c', slot: "actions" }, h("slot", { key: '5f9e94d5005c8fd7da61d2bd12ad4f35b59da150', name: "actions" }))), h("slot", { key: '46c1a7c4957cf00c7414e8c3d67ba2eaf8d9e5ca', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }))));
     }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]
@@ -338,6 +393,8 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         "hide_export_menu": [4],
         "use_custom_pagination": [4],
         "auto_size_columns": [4],
+        "server_side_mode": [4],
+        "loading": [4],
         "translations": [32],
         "agGrid": [32],
         "tableCreated": [32],
@@ -354,7 +411,7 @@ function defineCustomElement$1() {
     if (typeof customElements === "undefined") {
         return;
     }
-    const components = ["at-search-table", "at-button", "at-checkbox", "at-checkbox-group", "at-column-manager", "at-form-label", "at-input", "at-loading", "at-menu", "at-menu-item", "at-search", "at-table", "at-table-actions", "at-table-export-menu", "at-table-filter-menu", "at-table-filters", "at-tooltip"];
+    const components = ["at-search-table", "at-button", "at-checkbox", "at-checkbox-group", "at-column-manager", "at-form-label", "at-input", "at-loading", "at-menu", "at-menu-item", "at-placeholder", "at-search", "at-table", "at-table-actions", "at-table-export-menu", "at-table-filter-menu", "at-table-filters", "at-tooltip"];
     components.forEach(tagName => { switch (tagName) {
         case "at-search-table":
             if (!customElements.get(tagName)) {
@@ -363,45 +420,50 @@ function defineCustomElement$1() {
             break;
         case "at-button":
             if (!customElements.get(tagName)) {
-                defineCustomElement$h();
+                defineCustomElement$i();
             }
             break;
         case "at-checkbox":
             if (!customElements.get(tagName)) {
-                defineCustomElement$g();
+                defineCustomElement$h();
             }
             break;
         case "at-checkbox-group":
             if (!customElements.get(tagName)) {
-                defineCustomElement$f();
+                defineCustomElement$g();
             }
             break;
         case "at-column-manager":
             if (!customElements.get(tagName)) {
-                defineCustomElement$e();
+                defineCustomElement$f();
             }
             break;
         case "at-form-label":
             if (!customElements.get(tagName)) {
-                defineCustomElement$d();
+                defineCustomElement$e();
             }
             break;
         case "at-input":
             if (!customElements.get(tagName)) {
-                defineCustomElement$c();
+                defineCustomElement$d();
             }
             break;
         case "at-loading":
             if (!customElements.get(tagName)) {
-                defineCustomElement$b();
+                defineCustomElement$c();
             }
             break;
         case "at-menu":
             if (!customElements.get(tagName)) {
-                defineCustomElement$a();
+                defineCustomElement$b();
             }
             break;
         case "at-menu-item":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$a();
+            }
+            break;
+        case "at-placeholder":
             if (!customElements.get(tagName)) {
                 defineCustomElement$9();
             }

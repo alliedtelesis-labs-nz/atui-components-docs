@@ -20,7 +20,7 @@ import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-import { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+import { DateRangeStrings, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 import { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { HeaderSizes } from "./components/at-header/at-header";
 import { InputType } from "./components/at-input/at-input";
@@ -63,7 +63,7 @@ export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-export { DateRangeStrings, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+export { DateRangeStrings, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 export { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { HeaderSizes } from "./components/at-header/at-header";
 export { InputType } from "./components/at-input/at-input";
@@ -1971,6 +1971,11 @@ export namespace Components {
          */
         "label": string;
         /**
+          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
+          * @default false
+         */
+        "loading": boolean;
+        /**
           * Default page size of the table
           * @default 10
          */
@@ -1987,6 +1992,11 @@ export namespace Components {
           * Label for the search input.
          */
         "search_label": string;
+        /**
+          * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
+          * @default false
+         */
+        "server_side_mode"?: boolean;
         /**
           * Table data passed to at-table component.
          */
@@ -2998,6 +3008,10 @@ export interface AtSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSearchElement;
 }
+export interface AtSearchTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtSearchTableElement;
+}
 export interface AtSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSelectElement;
@@ -3949,11 +3963,22 @@ declare global {
         prototype: HTMLAtSearchElement;
         new (): HTMLAtSearchElement;
     };
+    interface HTMLAtSearchTableElementEventMap {
+        "atSearchParamsChange": ISearchTableParams;
+    }
     /**
      * @category Data Tables
      * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
      */
     interface HTMLAtSearchTableElement extends Components.AtSearchTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSearchTableElementEventMap>(type: K, listener: (this: HTMLAtSearchTableElement, ev: AtSearchTableCustomEvent<HTMLAtSearchTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSearchTableElementEventMap>(type: K, listener: (this: HTMLAtSearchTableElement, ev: AtSearchTableCustomEvent<HTMLAtSearchTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtSearchTableElement: {
         prototype: HTMLAtSearchTableElement;
@@ -6589,6 +6614,15 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Event emitted when search params change in server-side mode. Contains filters, search text, pagination info
+         */
+        "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<ISearchTableParams>) => void;
+        /**
           * Default page size of the table
           * @default 10
          */
@@ -6605,6 +6639,11 @@ declare namespace LocalJSX {
           * Label for the search input.
          */
         "search_label"?: string;
+        /**
+          * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
+          * @default false
+         */
+        "server_side_mode"?: boolean;
         /**
           * Table data passed to at-table component.
          */

@@ -1,9 +1,16 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
+
+var SortDirection;
+(function (SortDirection) {
+    SortDirection[SortDirection["ASC"] = 1] = "ASC";
+    SortDirection[SortDirection["DESC"] = -1] = "DESC";
+})(SortDirection || (SortDirection = {}));
 
 const AtSearchTable = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.atSearchParamsChange = createEvent(this, "atSearchParamsChange", 7);
     }
     /**
      * Table data passed to at-table component.
@@ -55,6 +62,21 @@ const AtSearchTable = class {
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns = true;
+    /**
+     * If true, enables server-side data loading mode where filtering,
+     * searching, and pagination are handled externally
+     */
+    server_side_mode = false;
+    /**
+     * If true, displays a loading placeholder and hides table content.
+     * Used for server-side data fetching to indicate loading state.
+     */
+    loading = false;
+    /**
+     * Event emitted when search params change in server-side mode.
+     * Contains filters, search text, pagination info
+     */
+    atSearchParamsChange;
     get el() { return getElement(this); }
     translations;
     agGrid;
@@ -76,16 +98,20 @@ const AtSearchTable = class {
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
-        this.updateActiveFilters();
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
     async componentDidLoad() {
         await this.initGrid();
+        if (this.server_side_mode && this.agGrid) {
+            this.emitSearchParamsChange();
+        }
     }
     async componentDidUpdate() {
-        await this.initGrid();
+        if (!this.tableCreated) {
+            await this.initGrid();
+        }
     }
     /**
      * Updates the data of rows in the AG Grid based on their displayed row index.
@@ -154,6 +180,9 @@ const AtSearchTable = class {
     setupExternalFilters() {
         if (!this.agGrid)
             return;
+        if (this.server_side_mode) {
+            return;
+        }
         this.agGrid.setGridOption('isExternalFilterPresent', () => {
             return Object.keys(this.activeFilters).length > 0;
         });
@@ -282,12 +311,17 @@ const AtSearchTable = class {
         if (this.searchValue) {
             this.activeFilters['__search__'] = this.searchValue;
         }
-        if (this.agGrid) {
-            this.setupExternalFilters();
-            this.agGrid.onFilterChanged();
+        if (this.server_side_mode) {
+            this.emitSearchParamsChange();
         }
         else {
-            console.log('agGrid not available, cannot apply filter');
+            if (this.agGrid) {
+                this.setupExternalFilters();
+                this.agGrid.onFilterChanged();
+            }
+            else {
+                console.log('agGrid not available, cannot apply filter');
+            }
         }
     }
     handleSearchChange(event) {
@@ -300,8 +334,28 @@ const AtSearchTable = class {
         }
         this.updateActiveFilters();
     }
+    emitSearchParamsChange() {
+        if (!this.agGrid)
+            return;
+        const paginationModel = this.agGrid.paginationGetCurrentPage();
+        const pageSize = this.agGrid.paginationGetPageSize();
+        const startRow = paginationModel * pageSize;
+        const endRow = (paginationModel + 1) * pageSize;
+        const columnState = this.agGrid.getColumnState();
+        const sortedColumn = columnState.find((col) => col.sort !== null && col.sort !== undefined);
+        const searchParams = {
+            fieldFilters: this.activeFilters,
+            startRow: startRow,
+            endRow: endRow,
+            sort: sortedColumn?.colId,
+            direction: sortedColumn?.sort === 'asc'
+                ? SortDirection.ASC
+                : SortDirection.DESC,
+        };
+        this.atSearchParamsChange.emit(searchParams);
+    }
     render() {
-        return (h(Host, { key: '8373064df451e6ac665f9a244725d5f984082ee1' }, h("at-table-actions", { key: 'd9c0bbf2bc12214f2a0f6d2f02c17800afe41233', ag_grid: this.agGrid }, h("div", { key: '178a8e1ffd63f24a41640d9fdea5fe3b59ac29d8', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '749f33df1c82f19bf84c67754c93d7a5a0f30c78', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '8ce219e315c770fb498df7ef9bfff5fb5bcff810', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '465990e9b12c16fe5c871fd822c95e8a42c35963', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'a55428cfdcb4a3b820a10ead99be29e08c0d154a', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '09e5e7fbc9a1ef20ecb47f05470075b9aad4eff6', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'eabe86535774458f9e6fb3e79756de92fe4a0ba7', slot: "actions" }, h("slot", { key: 'f15c3b58ce3f8cca945ba60872568f7ced6ab9bb', name: "actions" }))), h("slot", { key: '3d6fd5c4f3c191c1c9d6ad866d2c930360ab8599', name: "multi-select-actions" }), h("at-table", { key: '2615605914da8e6efc04444d0c95ebc30df0b533', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: 'a23ea96b6d7141093e30e2ea86c571316ae4a3af' }, h("at-table-actions", { key: 'ac1500d6150bc90ef924b6540aa396b8c71f0a35', ag_grid: this.agGrid }, h("div", { key: '69630aeb5095784629efbdbd3df4d67a34eb0972', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '006553e1e2af6666e83db4eccd022d42d43aceb7', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'b0128804a10ca2988acd2b583ade30fbbd589faa', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '7f33c1fadaf4e52237bc27993b2a2a3d3e7ea3d4', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '41c9204a8a39b516206886abf04dc48ddf06b0a8', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6eaa981f3191c040eedffc8b25837e7b179fa5bd', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'f5404c844691767e9ad0e1f479c34c2552a5fa4c', slot: "actions" }, h("slot", { key: '5f9e94d5005c8fd7da61d2bd12ad4f35b59da150', name: "actions" }))), h("slot", { key: '46c1a7c4957cf00c7414e8c3d67ba2eaf8d9e5ca', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }))));
     }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]
