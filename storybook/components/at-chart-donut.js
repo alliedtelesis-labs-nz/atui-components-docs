@@ -31,6 +31,10 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
      */
     height = 'md';
     /**
+     * Position of the legend
+     */
+    legend_position = 'top';
+    /**
      * Additional options for formatting the legend
      */
     legend_format = {
@@ -44,14 +48,25 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
                 event.native.target.style.cursor = 'pointer';
             }
         },
+        // Toggle slice visibility on click and disable tooltips if none visible
+        onClick: (_evt, legendItem, legend) => {
+            const chart = legend.chart;
+            const idx = legendItem.index;
+            chart.toggleDataVisibility(idx);
+            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
+            if (chart.options.plugins?.tooltip) {
+                chart.options.plugins.tooltip.enabled = !!anyVisible;
+            }
+            chart.update();
+        },
         display: true,
     };
     /**
      * Additional options for the tooltip
      */
     tooltip_options = {
-        mode: 'index',
-        intersect: false,
+        mode: 'nearest',
+        intersect: true,
         position: 'nearest',
     };
     /**
@@ -86,6 +101,7 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
     cutout = 70;
     canvasEl;
     config;
+    chart;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -94,7 +110,7 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
         return this.config;
     }
     defaultPieTooltipOptions = {
-        mode: 'index',
+        mode: 'nearest',
         intersect: true,
         position: 'nearest',
         animation: {
@@ -113,8 +129,8 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
                 }
                 ctx.restore();
                 const height = chart.chartArea.bottom - chart.chartArea.top;
-                const textFontSize = (height / 250).toFixed(2) + 'em sans-serif';
-                const valueFontSize = (height / 180).toFixed(2) + 'em sans-serif';
+                const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
+                const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
                 ctx.fillStyle = TOKEN_TEXT_DARK;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -145,6 +161,7 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
     }
     initChart() {
         Chart.register(DoughnutController, ArcElement, plugin_legend, plugin_tooltip, index);
+        const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
         if (colors) {
             this.applyPresetPalette(colors);
@@ -163,23 +180,33 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
                 })),
             },
             options: {
+                devicePixelRatio: dpr,
                 animation: this.animations,
-                ...this.options,
                 maintainAspectRatio: true,
                 aspectRatio: 1,
-                layout: {
-                    padding: 16,
-                },
+                layout: { padding: 16 },
+                interaction: { mode: 'nearest', intersect: true },
                 plugins: {
-                    legend: this.legend_format,
-                    tooltip: this.tooltip_options || this.defaultPieTooltipOptions,
+                    legend: {
+                        ...(this.legend_format || {}),
+                        position: this.legend_position,
+                        fullSize: true,
+                    },
+                    tooltip: {
+                        ...(this.tooltip_options ||
+                            this.defaultPieTooltipOptions),
+                        filter: (ctx) => ctx.chart.getDataVisibility(ctx.dataIndex),
+                        enabled: true,
+                    },
                 },
+                ...(this.options || {}),
             },
-            plugins: plugins,
+            plugins,
         };
-        new Chart(this.canvasEl, this.config);
-        this.canvasEl.style.width = '100%';
-        this.canvasEl.style.height = '100%';
+        if (this.chart) {
+            this.chart.destroy();
+        }
+        this.chart = new Chart(this.canvasEl, this.config);
     }
     applyPresetPalette(colors) {
         if (this.color_palette === ChartColorPalette.CUSTOM) {
@@ -212,19 +239,18 @@ const AtChartDonut$1 = /*@__PURE__*/ proxyCustomElement(class AtChartDonut exten
         }
     }
     render() {
-        return (h(Host, { key: '03fcf954da659ba3abe87a42a72918cc140a5236', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '95331aeb19fbed9b529facf375d66fc79480e9e8', ref: (el) => (this.canvasEl = el), style: {
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '100%',
-                maxHeight: '100%',
+        return (h(Host, { key: '48c0b84fb5c86d641a15576f47b0889cc8317046', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '7f36a7a5270eb52cf358a324cb7f08e2ad15f516', ref: (el) => (this.canvasEl = el), style: {
+                position: 'static',
+                display: 'block',
+                width: '100%',
+                height: '100%',
             } })));
     }
 }, [256, "at-chart-donut", {
         "data": [16],
         "options": [16],
         "height": [1],
+        "legend_position": [1],
         "legend_format": [16],
         "tooltip_options": [16],
         "plugins": [16],

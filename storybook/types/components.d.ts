@@ -15,7 +15,7 @@ import { ChartDataset, Plugin } from "chart.js";
 import { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 import { Height } from "./components/at-chart-donut/at-chart-donut";
 import { ChartColorPalette } from "./types/chart-color";
-import { Height as Height1 } from "./components/at-chart-donut/at-chart-donut";
+import { Height as Height1, LegendPosition } from "./components/at-chart-donut/at-chart-donut";
 import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
 import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -58,7 +58,7 @@ export { ChartDataset, Plugin } from "chart.js";
 export { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 export { Height } from "./components/at-chart-donut/at-chart-donut";
 export { ChartColorPalette } from "./types/chart-color";
-export { Height as Height1 } from "./components/at-chart-donut/at-chart-donut";
+export { Height as Height1, LegendPosition } from "./components/at-chart-donut/at-chart-donut";
 export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
 export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -556,9 +556,14 @@ export namespace Components {
         "height"?: Height1;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         display: true,     }
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
+        /**
+          * Position of the legend
+          * @default 'top'
+         */
+        "legend_position": LegendPosition;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -569,7 +574,7 @@ export namespace Components {
         "plugins"?: Plugin[];
         /**
           * Additional options for the tooltip
-          * @default {         mode: 'index',         intersect: false,         position: 'nearest',     }
+          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
          */
         "tooltip_options"?: object;
     }
@@ -5092,9 +5097,14 @@ declare namespace LocalJSX {
         "height"?: Height1;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         display: true,     }
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
+        /**
+          * Position of the legend
+          * @default 'top'
+         */
+        "legend_position"?: LegendPosition;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -5105,7 +5115,7 @@ declare namespace LocalJSX {
         "plugins"?: Plugin[];
         /**
           * Additional options for the tooltip
-          * @default {         mode: 'index',         intersect: false,         position: 'nearest',     }
+          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
          */
         "tooltip_options"?: object;
     }

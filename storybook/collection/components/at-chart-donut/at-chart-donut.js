@@ -31,6 +31,10 @@ export class AtChartDonut {
      */
     height = 'md';
     /**
+     * Position of the legend
+     */
+    legend_position = 'top';
+    /**
      * Additional options for formatting the legend
      */
     legend_format = {
@@ -44,14 +48,25 @@ export class AtChartDonut {
                 event.native.target.style.cursor = 'pointer';
             }
         },
+        // Toggle slice visibility on click and disable tooltips if none visible
+        onClick: (_evt, legendItem, legend) => {
+            const chart = legend.chart;
+            const idx = legendItem.index;
+            chart.toggleDataVisibility(idx);
+            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
+            if (chart.options.plugins?.tooltip) {
+                chart.options.plugins.tooltip.enabled = !!anyVisible;
+            }
+            chart.update();
+        },
         display: true,
     };
     /**
      * Additional options for the tooltip
      */
     tooltip_options = {
-        mode: 'index',
-        intersect: false,
+        mode: 'nearest',
+        intersect: true,
         position: 'nearest',
     };
     /**
@@ -86,6 +101,7 @@ export class AtChartDonut {
     cutout = 70;
     canvasEl;
     config;
+    chart;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -94,7 +110,7 @@ export class AtChartDonut {
         return this.config;
     }
     defaultPieTooltipOptions = {
-        mode: 'index',
+        mode: 'nearest',
         intersect: true,
         position: 'nearest',
         animation: {
@@ -113,8 +129,8 @@ export class AtChartDonut {
                 }
                 ctx.restore();
                 const height = chart.chartArea.bottom - chart.chartArea.top;
-                const textFontSize = (height / 250).toFixed(2) + 'em sans-serif';
-                const valueFontSize = (height / 180).toFixed(2) + 'em sans-serif';
+                const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
+                const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
                 ctx.fillStyle = TOKEN_TEXT_DARK;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -145,6 +161,7 @@ export class AtChartDonut {
     }
     initChart() {
         Chart.register(DoughnutController, ArcElement, Legend, Tooltip, Filler);
+        const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
         if (colors) {
             this.applyPresetPalette(colors);
@@ -163,23 +180,33 @@ export class AtChartDonut {
                 })),
             },
             options: {
+                devicePixelRatio: dpr,
                 animation: this.animations,
-                ...this.options,
                 maintainAspectRatio: true,
                 aspectRatio: 1,
-                layout: {
-                    padding: 16,
-                },
+                layout: { padding: 16 },
+                interaction: { mode: 'nearest', intersect: true },
                 plugins: {
-                    legend: this.legend_format,
-                    tooltip: this.tooltip_options || this.defaultPieTooltipOptions,
+                    legend: {
+                        ...(this.legend_format || {}),
+                        position: this.legend_position,
+                        fullSize: true,
+                    },
+                    tooltip: {
+                        ...(this.tooltip_options ||
+                            this.defaultPieTooltipOptions),
+                        filter: (ctx) => ctx.chart.getDataVisibility(ctx.dataIndex),
+                        enabled: true,
+                    },
                 },
+                ...(this.options || {}),
             },
-            plugins: plugins,
+            plugins,
         };
-        new Chart(this.canvasEl, this.config);
-        this.canvasEl.style.width = '100%';
-        this.canvasEl.style.height = '100%';
+        if (this.chart) {
+            this.chart.destroy();
+        }
+        this.chart = new Chart(this.canvasEl, this.config);
     }
     applyPresetPalette(colors) {
         if (this.color_palette === ChartColorPalette.CUSTOM) {
@@ -212,13 +239,11 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '03fcf954da659ba3abe87a42a72918cc140a5236', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '95331aeb19fbed9b529facf375d66fc79480e9e8', ref: (el) => (this.canvasEl = el), style: {
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '100%',
-                maxHeight: '100%',
+        return (h(Host, { key: '48c0b84fb5c86d641a15576f47b0889cc8317046', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '7f36a7a5270eb52cf358a324cb7f08e2ad15f516', ref: (el) => (this.canvasEl = el), style: {
+                position: 'static',
+                display: 'block',
+                width: '100%',
+                height: '100%',
             } })));
     }
     static get is() { return "at-chart-donut"; }
@@ -290,6 +315,32 @@ export class AtChartDonut {
                 "attribute": "height",
                 "defaultValue": "'md'"
             },
+            "legend_position": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "LegendPosition",
+                    "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
+                    "references": {
+                        "LegendPosition": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::LegendPosition"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Position of the legend"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "legend_position",
+                "defaultValue": "'top'"
+            },
             "legend_format": {
                 "type": "unknown",
                 "mutable": false,
@@ -311,7 +362,7 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n        display: true,\n    }"
+                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n        // Toggle slice visibility on click and disable tooltips if none visible\n        onClick: (_evt, legendItem, legend) => {\n            const chart = legend.chart;\n            const idx = legendItem.index;\n            chart.toggleDataVisibility(idx);\n            const anyVisible = chart.data.labels?.some((_, i) =>\n                chart.getDataVisibility(i),\n            );\n            if (chart.options.plugins?.tooltip) {\n                chart.options.plugins.tooltip.enabled = !!anyVisible;\n            }\n            chart.update();\n        },\n        display: true,\n    }"
             },
             "tooltip_options": {
                 "type": "unknown",
@@ -329,7 +380,7 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "defaultValue": "{\n        mode: 'index',\n        intersect: false,\n        position: 'nearest',\n    }"
+                "defaultValue": "{\n        mode: 'nearest',\n        intersect: true,\n        position: 'nearest',\n    }"
             },
             "plugins": {
                 "type": "unknown",

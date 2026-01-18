@@ -1,4 +1,4 @@
-import { ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
+import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import 'chartjs-adapter-moment';
 import { ChartColorPalette } from '../../types/chart-color';
 export type Height = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
@@ -24,6 +24,10 @@ export declare class AtChartDonut {
      * Height of the chart
      */
     height?: Height;
+    /**
+     * Position of the legend
+     */
+    legend_position: LegendPosition;
     /**
      * Additional options for formatting the legend
      */
@@ -64,6 +68,7 @@ export declare class AtChartDonut {
     cutout?: number;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
+    chart: Chart;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
