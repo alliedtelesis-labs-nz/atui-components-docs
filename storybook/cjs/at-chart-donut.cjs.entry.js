@@ -105,6 +105,14 @@ const AtChartDonut = class {
     async getConfig() {
         return this.config;
     }
+    /**
+     * Manually trigger a chart resize to fit container dimensions
+     */
+    async resize() {
+        if (this.chart) {
+            this.chart.resize();
+        }
+    }
     defaultPieTooltipOptions = {
         mode: 'nearest',
         intersect: true,
@@ -177,7 +185,7 @@ const AtChartDonut = class {
             },
             options: {
                 devicePixelRatio: dpr,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
                 aspectRatio: 1,
                 layout: { padding: 16 },
                 interaction: { mode: 'nearest', intersect: true },
@@ -234,12 +242,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '84dfb3161b3a548f8df26a815c395dbfa66d454a', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, index.h("canvas", { key: 'bd209ee48fb3b8ecdacf8fbccbeae9ff23141522', ref: (el) => (this.canvasEl = el), style: {
-                position: 'static',
-                display: 'block',
-                width: '100%',
-                height: '100%',
-            } })));
+        return (index.h(index.Host, { key: 'd4ef298003a26142fe541a88dd418a12880c39d5', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'f79cb2c1ec79e70902c7af2045178d358bdf01c5', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

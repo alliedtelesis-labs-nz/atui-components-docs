@@ -1,4 +1,4 @@
-import { A as AtPlaceholderComponent, d as defineCustomElement$1 } from './p-Drp6nc-F.js';
+import { A as AtPlaceholderComponent, d as defineCustomElement$1 } from './p-DpquBy5C.js';
 
 const AtPlaceholder = AtPlaceholderComponent;
 const defineCustomElement = defineCustomElement$1;

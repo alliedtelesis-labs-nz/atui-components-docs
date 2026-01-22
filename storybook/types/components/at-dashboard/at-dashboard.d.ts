@@ -23,5 +23,6 @@ export declare class AtDashboard {
     private layoutWidgets;
     private makeWidget;
     private removeWidget;
+    private resizeChartComponents;
     render(): any;
 }

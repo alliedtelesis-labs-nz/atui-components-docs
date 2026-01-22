@@ -1,4 +1,4 @@
-import { A as AtTabTrigger$1, d as defineCustomElement$1 } from './p-DMrOnQfN.js';
+import { A as AtTabTrigger$1, d as defineCustomElement$1 } from './p-CqzcetB0.js';
 
 const AtTabTrigger = AtTabTrigger$1;
 const defineCustomElement = defineCustomElement$1;

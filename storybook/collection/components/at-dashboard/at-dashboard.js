@@ -1,7 +1,7 @@
 import { h, } from "@stencil/core";
 import { GridStack, } from "gridstack";
 const DEFAULT_SIZE = {
-    w: 5,
+    w: 4,
     h: 3,
 };
 export class AtDashboard {
@@ -56,6 +56,7 @@ export class AtDashboard {
                 w: node.w ?? DEFAULT_SIZE.w,
                 h: node.h ?? DEFAULT_SIZE.h,
             };
+            this.resizeChartComponents(el);
             this.resizeDragEvent.emit(dashboardItem);
         });
     }
@@ -85,8 +86,23 @@ export class AtDashboard {
     removeWidget(widget) {
         this.removedItem.emit(widget);
     }
+    resizeChartComponents(element) {
+        const chartSelectors = [
+            'at-chart-donut',
+            'at-chart-bar',
+            'at-chart-line',
+        ];
+        chartSelectors.forEach((selector) => {
+            const charts = element.querySelectorAll(selector);
+            charts.forEach((chart) => {
+                if (typeof chart.resize === 'function') {
+                    chart.resize();
+                }
+            });
+        });
+    }
     render() {
-        return (h("div", { key: 'af4687fdfa9df194a2a6db684fc332dcfe0cc6a8', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '77a040c729ac619ddc32346010fbece5ea2ca1b5', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }

@@ -1,4 +1,4 @@
-import { ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
+import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
 import 'chartjs-adapter-moment';
 import { SelectedTimeRangeExtended } from '../../components';
 import { Height } from '../at-chart-donut/at-chart-donut';
@@ -104,6 +104,7 @@ export declare class AtChartBarLine {
     height?: Height;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
+    chart: Chart;
     /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
@@ -132,5 +133,9 @@ export declare class AtChartBarLine {
         max: string;
     };
     formatThresholds: () => ChartDataset[];
+    /**
+     * Manually trigger a chart resize to fit container dimensions.
+     */
+    resize(): Promise<void>;
     render(): any;
 }

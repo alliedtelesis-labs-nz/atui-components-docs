@@ -2,8 +2,8 @@ import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { T as TimeDatePresentationUtil } from './p-BV5FKNhG.js';
 import { c as classlist } from './p-COG8_R0C.js';
-import { d as defineCustomElement$3 } from './p-0L3Bm0n5.js';
-import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+import { d as defineCustomElement$3 } from './p-C267TtKm.js';
+import { d as defineCustomElement$2 } from './p-DOs9EXMS.js';
 import { M as MIN_DATE, a as MAX_DATE } from './p-C3LwY5aR.js';
 
 const inputVariantsConfig = {
@@ -106,7 +106,7 @@ const AtInputDate$1 = /*@__PURE__*/ proxyCustomElement(class AtInputDate extends
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'b16cfbdd4b8907628096ecc437a48f14536a54b4' }, h("style", { key: '47033bdf463d18809abb1e649b783b84ab5a7bb3' }, `
+        return (h(Host, { key: '079dcd8fbedc82d7bb1d0d020d6fa91fe524e0f6' }, h("style", { key: 'f3eac1ae2af80ebd0cd354424bb6a60c5c2d68bc' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -119,9 +119,9 @@ const AtInputDate$1 = /*@__PURE__*/ proxyCustomElement(class AtInputDate extends
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '58708dce6f9ca6eddc46f390f394fa23cddf78a5', class: "flex flex-row" }, h("div", { key: '2cb47bea29c518086c3fb0016cac515a0a7a75bb', class: "flex-fill flex flex-col" }, h("div", { key: 'c309501815b4a9ac4d16badc093deefd0bc409b1', class: "flex flex-col" }, (this.label ||
+                `), h("div", { key: '38c68256aefae7d89692e18cc3c0e5b57956de3d', class: "flex flex-row" }, h("div", { key: '88770f4517eec156aa86340b1d452d543fe14373', class: "flex-fill flex flex-col" }, h("div", { key: 'a14f30ec5058db1124752c32542afe6ef01ac6df', class: "flex flex-col" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: 'd1666aab6fba8813de2aed44675a384710cb19f7', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '5a32e86ac3e7fdc7472cfafec5044f4e1e98a74c', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text)), h("div", { key: 'aaed98d0cd0cdd707617c2fc53ce86207d84835e', class: classname }, h("input", { key: 'd1ec68f8190d675b018a303e5ec777ef46b315c5', type: "date", id: this.inputId, name: "datePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: '9cb27b30f8948341983d6dfa23204f1ee1e38c30', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'f7b5cd51bf51c72edf283e32623c5d2a60575a84', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text)), h("div", { key: 'e1961002036cc8cba19941dc75428e6c5975b507', class: classname }, h("input", { key: '3331c60d625a9bfb404bd3b0ce4b69ec657ac055', type: "date", id: this.inputId, name: "datePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -136,7 +136,7 @@ const AtInputDate$1 = /*@__PURE__*/ proxyCustomElement(class AtInputDate extends
                 this.invalid = !input.validity.valid;
                 this.value = new Date(dateString);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '7cba384b138c337d8ec87c70f2fea7b0832ed394', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text))))));
+            } }))), this.error_text && this.invalid && (h("span", { key: '146fd4c1d3dbf996384ed10029595c1e18c70240', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text))))));
     }
 }, [256, "at-input-date", {
         "min_date": [1040],

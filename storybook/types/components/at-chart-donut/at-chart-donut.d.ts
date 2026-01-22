@@ -70,6 +70,10 @@ export declare class AtChartDonut {
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
+    /**
+     * Manually trigger a chart resize to fit container dimensions
+     */
+    resize(): Promise<void>;
     defaultPieTooltipOptions: {
         mode: string;
         intersect: boolean;

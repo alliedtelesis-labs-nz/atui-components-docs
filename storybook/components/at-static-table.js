@@ -1,14 +1,14 @@
 import { p as proxyCustomElement, H, h, c as Host } from './p-89eupKrN.js';
 import { d as defineCustomElement$b } from './p-Dx91wqSp.js';
-import { d as defineCustomElement$a } from './p-CS_tFK1i.js';
-import { d as defineCustomElement$9 } from './p-D9BVLp-6.js';
-import { d as defineCustomElement$8 } from './p-BKUSovs8.js';
-import { d as defineCustomElement$7 } from './p-0L3Bm0n5.js';
+import { d as defineCustomElement$a } from './p-ibOkPumg.js';
+import { d as defineCustomElement$9 } from './p-Bgi27HrQ.js';
+import { d as defineCustomElement$8 } from './p-B-wBBJCP.js';
+import { d as defineCustomElement$7 } from './p-C267TtKm.js';
 import { d as defineCustomElement$6 } from './p-bn76tgB4.js';
-import { d as defineCustomElement$5 } from './p-CSzxFmVR.js';
-import { d as defineCustomElement$4 } from './p-DDiy6HIY.js';
-import { d as defineCustomElement$3 } from './p-BEJag_Jh.js';
-import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+import { d as defineCustomElement$5 } from './p-DHT6iuTT.js';
+import { d as defineCustomElement$4 } from './p-CcUo9ZEA.js';
+import { d as defineCustomElement$3 } from './p-DiuRyXnX.js';
+import { d as defineCustomElement$2 } from './p-DOs9EXMS.js';
 
 const AtStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtStaticTable extends H {
     constructor(registerHost) {
@@ -54,7 +54,7 @@ const AtStaticTable$1 = /*@__PURE__*/ proxyCustomElement(class AtStaticTable ext
         }
     }
     render() {
-        return (h(Host, { key: '1a16ace1064a2ac39fe70613b3ba901c30663981' }, !this.hide_column_manager && (h("at-table-actions", { key: '2f15ab5fcd8535a14781fab358bb23399a369f06', ag_grid: this.agGrid }, h("at-column-manager", { key: '0641852855e75194804e2192d92af68a9e7ef165', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '00e0a56b19b1b66847dae3f65235be7e595a6e38', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '73c4ecdaee4d3f7967965b2ae092fae6b29f9ec3' }, !this.hide_column_manager && (h("at-table-actions", { key: 'e286993f043ddb6a0e1727ccd036494773478e66', ag_grid: this.agGrid }, h("at-column-manager", { key: 'b1a42741b8b5c50ab565532430e0f941f2d2e02c', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: 'b0a46044be01ab42a202705303b9425216c21d77', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
 }, [256, "at-static-table", {
         "table_data": [16],

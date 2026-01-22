@@ -64,6 +64,7 @@ const AtChartBarLine = class {
     height = 'auto';
     canvasEl;
     config;
+    chart;
     /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
@@ -233,8 +234,16 @@ const AtChartBarLine = class {
         });
         return datasets;
     };
+    /**
+     * Manually trigger a chart resize to fit container dimensions.
+     */
+    async resize() {
+        if (this.chart) {
+            this.chart.resize();
+        }
+    }
     render() {
-        return (h(Host, { key: '704cf53e1417f91847206675b64285a6ffde70f8', style: { height: '100%', width: '100%' } }, h("section", { key: '3d1d4cfa255586d44af355d3124e4c37336d8fb9', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '07731fee5029ff523675b1fa510bb28c24331934', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: '78f14e69947076c3eef5e892a655bf0c213f410c', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'd30a5b70718116072e48831fee3b1fa95edee7bf', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

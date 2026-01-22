@@ -105,6 +105,14 @@ export class AtChartDonut {
     async getConfig() {
         return this.config;
     }
+    /**
+     * Manually trigger a chart resize to fit container dimensions
+     */
+    async resize() {
+        if (this.chart) {
+            this.chart.resize();
+        }
+    }
     defaultPieTooltipOptions = {
         mode: 'nearest',
         intersect: true,
@@ -177,7 +185,7 @@ export class AtChartDonut {
             },
             options: {
                 devicePixelRatio: dpr,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
                 aspectRatio: 1,
                 layout: { padding: 16 },
                 interaction: { mode: 'nearest', intersect: true },
@@ -234,12 +242,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '84dfb3161b3a548f8df26a815c395dbfa66d454a', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: 'bd209ee48fb3b8ecdacf8fbccbeae9ff23141522', ref: (el) => (this.canvasEl = el), style: {
-                position: 'static',
-                display: 'block',
-                width: '100%',
-                height: '100%',
-            } })));
+        return (h(Host, { key: 'd4ef298003a26142fe541a88dd418a12880c39d5', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'f79cb2c1ec79e70902c7af2045178d358bdf01c5', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -506,6 +509,23 @@ export class AtChartDonut {
                             "name": "returns",
                             "text": "Configuration of the chart"
                         }]
+                }
+            },
+            "resize": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Manually trigger a chart resize to fit container dimensions",
+                    "tags": []
                 }
             }
         };

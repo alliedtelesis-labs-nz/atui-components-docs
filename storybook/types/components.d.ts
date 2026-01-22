@@ -486,6 +486,10 @@ export namespace Components {
          */
         "point_styles"?: PointStyles;
         /**
+          * Manually trigger a chart resize to fit container dimensions.
+         */
+        "resize": () => Promise<void>;
+        /**
           * Thresholds to be displayed in the chart
          */
         "thresholds"?: Threshold[];
@@ -568,6 +572,10 @@ export namespace Components {
           * Additional plugin options
          */
         "plugins"?: Plugin[];
+        /**
+          * Manually trigger a chart resize to fit container dimensions
+         */
+        "resize": () => Promise<void>;
         /**
           * Additional options for the tooltip
           * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }

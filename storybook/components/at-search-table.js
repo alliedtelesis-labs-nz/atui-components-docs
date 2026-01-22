@@ -1,22 +1,22 @@
 import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
 import { f as fetchTranslations } from './p-DuLooPsr.js';
 import { d as defineCustomElement$i } from './p-Dx91wqSp.js';
-import { d as defineCustomElement$h } from './p-CS_tFK1i.js';
-import { d as defineCustomElement$g } from './p-D9BVLp-6.js';
-import { d as defineCustomElement$f } from './p-BKUSovs8.js';
-import { d as defineCustomElement$e } from './p-0L3Bm0n5.js';
-import { d as defineCustomElement$d } from './p-BIDRuww7.js';
+import { d as defineCustomElement$h } from './p-ibOkPumg.js';
+import { d as defineCustomElement$g } from './p-Bgi27HrQ.js';
+import { d as defineCustomElement$f } from './p-B-wBBJCP.js';
+import { d as defineCustomElement$e } from './p-C267TtKm.js';
+import { d as defineCustomElement$d } from './p-DsrYZctu.js';
 import { d as defineCustomElement$c } from './p-bn76tgB4.js';
-import { d as defineCustomElement$b } from './p-CSzxFmVR.js';
-import { d as defineCustomElement$a } from './p-DPKxJNLQ.js';
-import { d as defineCustomElement$9 } from './p-Drp6nc-F.js';
-import { d as defineCustomElement$8 } from './p-DmTSeJU2.js';
-import { d as defineCustomElement$7 } from './p-DDiy6HIY.js';
-import { d as defineCustomElement$6 } from './p-BEJag_Jh.js';
-import { d as defineCustomElement$5 } from './p-DMqtMFVW.js';
-import { d as defineCustomElement$4 } from './p-BYBjRTcG.js';
-import { d as defineCustomElement$3 } from './p-CzX1a0l4.js';
-import { d as defineCustomElement$2 } from './p-BlmpD1px.js';
+import { d as defineCustomElement$b } from './p-DHT6iuTT.js';
+import { d as defineCustomElement$a } from './p-Bze1hNPA.js';
+import { d as defineCustomElement$9 } from './p-DpquBy5C.js';
+import { d as defineCustomElement$8 } from './p-Do3rqfsy.js';
+import { d as defineCustomElement$7 } from './p-CcUo9ZEA.js';
+import { d as defineCustomElement$6 } from './p-DiuRyXnX.js';
+import { d as defineCustomElement$5 } from './p-Cz35rHOX.js';
+import { d as defineCustomElement$4 } from './p-V-XJIqpq.js';
+import { d as defineCustomElement$3 } from './p-mu1QUaAl.js';
+import { d as defineCustomElement$2 } from './p-DOs9EXMS.js';
 
 var SortDirection;
 (function (SortDirection) {
@@ -375,7 +375,7 @@ const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable ext
         this.atSearchParamsChange.emit(searchParams);
     }
     render() {
-        return (h(Host, { key: 'a23ea96b6d7141093e30e2ea86c571316ae4a3af' }, h("at-table-actions", { key: 'ac1500d6150bc90ef924b6540aa396b8c71f0a35', ag_grid: this.agGrid }, h("div", { key: '69630aeb5095784629efbdbd3df4d67a34eb0972', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '006553e1e2af6666e83db4eccd022d42d43aceb7', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'b0128804a10ca2988acd2b583ade30fbbd589faa', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '7f33c1fadaf4e52237bc27993b2a2a3d3e7ea3d4', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '41c9204a8a39b516206886abf04dc48ddf06b0a8', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6eaa981f3191c040eedffc8b25837e7b179fa5bd', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'f5404c844691767e9ad0e1f479c34c2552a5fa4c', slot: "actions" }, h("slot", { key: '5f9e94d5005c8fd7da61d2bd12ad4f35b59da150', name: "actions" }))), h("slot", { key: '46c1a7c4957cf00c7414e8c3d67ba2eaf8d9e5ca', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }))));
+        return (h(Host, { key: '3a8e26ffa1175c106983090e2abd0682d00317df' }, h("at-table-actions", { key: '254ecfb7125ba28136a5dd11ae1fe12bc87df91a', ag_grid: this.agGrid }, h("div", { key: 'eb770c7a77f5dccc1d97852b9b6b5b5f03a60e14', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'e16555f6b4bee03712d4329faf3653e92f235668', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '61a5b8256407cf1e1f5267b68600b2107f4ce25b', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '1b1b5f6775ff4e4323d3d6d3327969a031b2b667', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '5f043e23b89a8b065311eff673aa6bc95a53cceb', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '7cb5ede479177a61927ba9986824ff5e800d069e', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'f0e0019c561a1f7ca6901660852995614080073f', slot: "actions" }, h("slot", { key: '8d3b490c98b55a82b1e8a726ef90277f0fe1a166', name: "actions" }))), h("slot", { key: '8500ba1a68b8a7d79331b7a87f3d6ca0d5157842', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }))));
     }
     static get watchers() { return {
         "selectedFilters": ["handleSelectedFiltersChange"]
