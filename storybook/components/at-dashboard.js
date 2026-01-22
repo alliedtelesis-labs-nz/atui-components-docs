@@ -6391,7 +6391,7 @@ const AtDashboard$1 = /*@__PURE__*/ proxyCustomElement(class AtDashboard extends
             maxRow: 100,
             float: true,
             columnOpts: {
-                columnMax: 16,
+                columnMax: 12,
                 breakpoints: [
                     {
                         w: 768,

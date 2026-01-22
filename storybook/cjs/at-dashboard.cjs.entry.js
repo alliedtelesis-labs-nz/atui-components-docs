@@ -6387,7 +6387,7 @@ const AtDashboard = class {
             maxRow: 100,
             float: true,
             columnOpts: {
-                columnMax: 16,
+                columnMax: 12,
                 breakpoints: [
                     {
                         w: 768,
