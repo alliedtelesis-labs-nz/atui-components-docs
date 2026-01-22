@@ -470,7 +470,7 @@ export namespace Components {
         "getConfig": () => Promise<object>;
         /**
           * Height of the chart.
-          * @default 'md'
+          * @default 'auto'
          */
         "height"?: Height;
         /**
@@ -547,7 +547,7 @@ export namespace Components {
         "getConfig": () => Promise<object>;
         /**
           * Height of the chart
-          * @default 'md'
+          * @default 'auto'
          */
         "height"?: Height1;
         /**
@@ -5012,7 +5012,7 @@ declare namespace LocalJSX {
     };
         /**
           * Height of the chart.
-          * @default 'md'
+          * @default 'auto'
          */
         "height"?: Height;
         /**
@@ -5084,7 +5084,7 @@ declare namespace LocalJSX {
     };
         /**
           * Height of the chart
-          * @default 'md'
+          * @default 'auto'
          */
         "height"?: Height1;
         /**

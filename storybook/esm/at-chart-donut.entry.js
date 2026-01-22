@@ -27,7 +27,7 @@ const AtChartDonut = class {
     /**
      * Height of the chart
      */
-    height = 'md';
+    height = 'auto';
     /**
      * Position of the legend
      */
@@ -232,7 +232,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: 'cafa2f208d919fa23eeb3c3a9df89dfb20b28d9a', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '0c2a041466a97ae227cddeaa64b56ddf96a1b48e', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: '84dfb3161b3a548f8df26a815c395dbfa66d454a', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: 'bd209ee48fb3b8ecdacf8fbccbeae9ff23141522', ref: (el) => (this.canvasEl = el), style: {
                 position: 'static',
                 display: 'block',
                 width: '100%',

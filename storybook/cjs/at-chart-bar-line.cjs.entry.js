@@ -63,7 +63,7 @@ const AtChartBarLine = class {
     /**
      * Height of the chart.
      */
-    height = 'md';
+    height = 'auto';
     canvasEl;
     config;
     /**
@@ -236,7 +236,7 @@ const AtChartBarLine = class {
         return datasets;
     };
     render() {
-        return (index.h(index.Host, { key: 'c450198523993fc66fd45a31a700486a7dcd18e9', style: { height: '100%', width: '100%' } }, index.h("section", { key: '032879f18bdb57da366aa9c89727874e68a83196', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '4a313fe8c1350edace27cc17d4def27a2b49f2ff', ref: (el) => (this.canvasEl = el) }))));
+        return (index.h(index.Host, { key: '704cf53e1417f91847206675b64285a6ffde70f8', style: { height: '100%', width: '100%' } }, index.h("section", { key: '3d1d4cfa255586d44af355d3124e4c37336d8fb9', class: `min-w-100 ${heightVariants[this.height]}` }, index.h("canvas", { key: '07731fee5029ff523675b1fa510bb28c24331934', ref: (el) => (this.canvasEl = el) }))));
     }
 };
 
