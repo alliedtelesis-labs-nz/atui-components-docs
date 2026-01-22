@@ -74,10 +74,6 @@ export class AtChartDonut {
      */
     plugins;
     /**
-     * Animations added to the chart configuration
-     */
-    animations;
-    /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
      * 'sequential' : For charts with data that is numeric or is naturally ordered.
@@ -181,7 +177,6 @@ export class AtChartDonut {
             },
             options: {
                 devicePixelRatio: dpr,
-                animation: this.animations,
                 maintainAspectRatio: true,
                 aspectRatio: 1,
                 layout: { padding: 16 },
@@ -239,7 +234,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '48c0b84fb5c86d641a15576f47b0889cc8317046', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '7f36a7a5270eb52cf358a324cb7f08e2ad15f516', ref: (el) => (this.canvasEl = el), style: {
+        return (h(Host, { key: 'cafa2f208d919fa23eeb3c3a9df89dfb20b28d9a', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: '0c2a041466a97ae227cddeaa64b56ddf96a1b48e', ref: (el) => (this.canvasEl = el), style: {
                 position: 'static',
                 display: 'block',
                 width: '100%',
@@ -401,23 +396,6 @@ export class AtChartDonut {
                 "docs": {
                     "tags": [],
                     "text": "Additional plugin options"
-                },
-                "getter": false,
-                "setter": false
-            },
-            "animations": {
-                "type": "unknown",
-                "mutable": false,
-                "complexType": {
-                    "original": "object",
-                    "resolved": "object",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Animations added to the chart configuration"
                 },
                 "getter": false,
                 "setter": false

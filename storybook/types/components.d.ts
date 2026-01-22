@@ -516,10 +516,6 @@ export namespace Components {
      */
     interface AtChartDonut {
         /**
-          * Animations added to the chart configuration
-         */
-        "animations": object;
-        /**
           * Optional heading text to display in the center of the donut chart
          */
         "center_text"?: string;
@@ -5061,10 +5057,6 @@ declare namespace LocalJSX {
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
     interface AtChartDonut {
-        /**
-          * Animations added to the chart configuration
-         */
-        "animations"?: object;
         /**
           * Optional heading text to display in the center of the donut chart
          */

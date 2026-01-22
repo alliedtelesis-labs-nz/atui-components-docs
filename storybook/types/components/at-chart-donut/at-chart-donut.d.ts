@@ -41,10 +41,6 @@ export declare class AtChartDonut {
      */
     plugins?: Plugin[];
     /**
-     * Animations added to the chart configuration
-     */
-    animations: object;
-    /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
      * 'sequential' : For charts with data that is numeric or is naturally ordered.
