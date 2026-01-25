@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const buttonVariantsConfig = {
@@ -208,7 +208,7 @@ const AtButtonComponent = class {
     }
 };
 
-const atLoadingCss = "@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}";
+const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
 
 const loadingVariants = {
     type: {
@@ -277,8 +277,7 @@ const AtLoadingComponent = class {
         }
     }
 };
-AtLoadingComponent.style = atLoadingCss;
+AtLoadingComponent.style = atLoadingCss();
 
 exports.at_button = AtButtonComponent;
 exports.at_loading = AtLoadingComponent;
-//# sourceMappingURL=at-button.at-loading.entry.cjs.js.map

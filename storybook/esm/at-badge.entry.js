@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
 
 const badgeVariants = {
     base: 'inline-block rounded-[4px] font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
@@ -69,4 +69,3 @@ const AtBadgeComponent = class {
 };
 
 export { AtBadgeComponent as at_badge };
-//# sourceMappingURL=at-badge.entry.js.map

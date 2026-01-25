@@ -53,4 +53,3 @@ Default.args = {
     page_size: 10,
     hide_column_manager: false,
 };
-//# sourceMappingURL=at-static-table.stories.js.map

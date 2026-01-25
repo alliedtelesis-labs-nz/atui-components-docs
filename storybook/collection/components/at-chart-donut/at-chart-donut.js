@@ -257,7 +257,8 @@ export class AtChartDonut {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
+                            "referenceLocation": "ChartDataset"
                         }
                     }
                 },
@@ -390,7 +391,8 @@ export class AtChartDonut {
                         "Plugin": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin",
+                            "referenceLocation": "Plugin"
                         }
                     }
                 },
@@ -413,7 +415,8 @@ export class AtChartDonut {
                         "ChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette"
+                            "id": "src/types/chart-color.ts::ChartColorPalette",
+                            "referenceLocation": "ChartColorPalette"
                         }
                     }
                 },
@@ -531,4 +534,3 @@ export class AtChartDonut {
         };
     }
 }
-//# sourceMappingURL=at-chart-donut.js.map

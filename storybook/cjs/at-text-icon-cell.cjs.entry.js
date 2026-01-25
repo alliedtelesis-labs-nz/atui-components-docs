@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -38,4 +38,3 @@ const AtTextIconCell = class {
 };
 
 exports.at_text_icon_cell = AtTextIconCell;
-//# sourceMappingURL=at-text-icon-cell.entry.cjs.js.map

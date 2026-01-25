@@ -58,7 +58,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'a9b81687205b89db1aee3948ce134ddeca038375', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '87251f375b59f0d25d02712061663f737cf111a7', class: "flex justify-between" }, h("div", { key: '911b956d540ae7a18f4f810e3f012591afba778a', class: "flex" }, h("slot", { key: '749133e2015797e64409e0293b6fa88c7b5bb241', name: "search" })), h("div", { key: '695328f6f791f9958e1af02cef76c3323b97cbbe', class: "flex" }, h("slot", { key: '48836e23c84811feaf1ba8e89ca8ec31f0f846dd', name: "export-menu" }), h("slot", { key: '3095f7ba7336ba93be092796f1513ece700ac708', name: "column-manager" }), h("slot", { key: 'b0b9b4f1b10eaecb462f57663673e05d68f9af3d', name: "actions" }))), h("slot", { key: '8fe079212503099fa2af5718bfa245d81bc2aa84', name: "filters" })));
+        return (h(Host, { key: '033e1f4d9be9dcc2018c89d0b9147090a9495750', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '0b0161241afdde2bdccfb232551180cb0975e4d1', class: "flex justify-between" }, h("div", { key: '3314daa2b3c8f0d3f3e1af1cfc591057ed5509f5', class: "flex" }, h("slot", { key: '607d0f05f0d705ad48976e9280af83f41d618562', name: "search" })), h("div", { key: '3ba60d931265769bf4f411670b9b5637a8f905ff', class: "flex" }, h("slot", { key: 'ebb239bc293ae775177a6d92e345d9f3b9ff88d4', name: "export-menu" }), h("slot", { key: 'db0e08248be6c08a42489e01a9efaf9531aaf48a', name: "column-manager" }), h("slot", { key: '996f13773d6507308d824de79bc2a26af16e5df4', name: "actions" }))), h("slot", { key: 'c2deb3408aa9c45c56b326a5711576429c79c2b8', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {
@@ -73,7 +73,8 @@ export class AtTableActionsComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
                         }
                     }
                 },
@@ -146,4 +147,3 @@ export class AtTableActionsComponent {
             }];
     }
 }
-//# sourceMappingURL=at-table-actions.js.map

@@ -6,6 +6,10 @@ const optionVariantsConfig = {
             true: 'bg-active-light text-active',
             false: 'hover:bg-disabled-light bg-white',
         },
+        group_option: {
+            true: 'px-16 ',
+            false: null,
+        },
     },
 };
 /**
@@ -19,6 +23,10 @@ export class AtSelectOptionComponent {
      * Value of the select option
      */
     value;
+    /**
+     * Indicates if the option is part of an option group
+     */
+    option_group = false;
     /**
      * Will apply the active styling to the select option
      */
@@ -34,8 +42,9 @@ export class AtSelectOptionComponent {
         const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
         const classname = getOptionClassname({
             active: this.is_active,
+            group_option: this.option_group,
         });
-        return (h("li", { key: 'dc0cf999a27ed157e1a44cec94f6f5a7eb95323b', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '85073e92690461b617b30960f6df6adfcfa90006' }), this.value));
+        return (h("li", { key: 'effd548d2f9ab7d7796ecd73ecabbc69053cacce', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '0f77cc5b5f7f1d374230355879ffd472056214df' }), this.value));
     }
     static get is() { return "at-select-option"; }
     static get properties() {
@@ -58,6 +67,26 @@ export class AtSelectOptionComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "value"
+            },
+            "option_group": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Indicates if the option is part of an option group"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "option_group",
+                "defaultValue": "false"
             },
             "is_active": {
                 "type": "boolean",
@@ -100,4 +129,3 @@ export class AtSelectOptionComponent {
             }];
     }
 }
-//# sourceMappingURL=at-select-option.js.map

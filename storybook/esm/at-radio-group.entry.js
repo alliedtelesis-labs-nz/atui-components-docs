@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const layoutVariantsConfig = {
@@ -164,9 +164,10 @@ const AtRadioGroup = class {
             this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '8f21287e94a9017945bacee6243d6992fdc52586', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
-        "value": ["watchValue"]
+        "value": [{
+                "watchValue": 0
+            }]
     }; }
 };
 
 export { AtRadioGroup as at_radio_group };
-//# sourceMappingURL=at-radio-group.entry.js.map

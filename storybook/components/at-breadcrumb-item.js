@@ -1,9 +1,1 @@
-import { A as AtBreadcrumbItem$1, d as defineCustomElement$1 } from './p-BaBfz5nl.js';
-
-const AtBreadcrumbItem = AtBreadcrumbItem$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtBreadcrumbItem, defineCustomElement };
-//# sourceMappingURL=at-breadcrumb-item.js.map
-
-//# sourceMappingURL=at-breadcrumb-item.js.map
+import{A as o,d as s}from"./p-CWjYnMlo.js";const p=o,r=s;export{p as AtBreadcrumbItem,r as defineCustomElement}

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const AtToggleCell = class {
     constructor(hostRef) {
@@ -53,4 +53,3 @@ const AtToggleCell = class {
 };
 
 exports.at_toggle_cell = AtToggleCell;
-//# sourceMappingURL=at-toggle-cell.entry.cjs.js.map

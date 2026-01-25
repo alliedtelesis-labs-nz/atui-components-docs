@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -152,12 +152,13 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '6c162919abcd6d7a242588f0f32dbd7465117cf1' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'bd32f635e98e16dad751e49edbaca9192d0b4819' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
-        "active_tab": ["handleActiveTabChange"]
+        "active_tab": [{
+                "handleActiveTabChange": 0
+            }]
     }; }
 };
 
 exports.at_tabs = AtTabs;
-//# sourceMappingURL=at-tabs.entry.cjs.js.map

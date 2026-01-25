@@ -1,9 +1,1 @@
-import { A as AtChipList$1, d as defineCustomElement$1 } from './p-TeTyuz4W.js';
-
-const AtChipList = AtChipList$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtChipList, defineCustomElement };
-//# sourceMappingURL=at-chip-list.js.map
-
-//# sourceMappingURL=at-chip-list.js.map
+import{A as p,d as o}from"./p-xGprp4WT.js";const r=p,s=o;export{r as AtChipList,s as defineCustomElement}

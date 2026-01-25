@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const avatarVariantsConfig = {
@@ -61,4 +61,3 @@ const AtAvatar = class {
 };
 
 export { AtAvatar as at_avatar };
-//# sourceMappingURL=at-avatar.entry.js.map

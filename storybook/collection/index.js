@@ -9,4 +9,3 @@
  */
 export * from './components';
 export { PromptResponseScore, } from './types/prompt';
-//# sourceMappingURL=index.js.map

@@ -11,6 +11,10 @@ export declare class AtSelectOptionComponent {
      */
     value: string;
     /**
+     * Indicates if the option is part of an option group
+     */
+    option_group?: boolean;
+    /**
      * Will apply the active styling to the select option
      */
     is_active?: boolean;

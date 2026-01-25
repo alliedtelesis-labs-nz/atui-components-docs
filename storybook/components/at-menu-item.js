@@ -1,9 +1,1 @@
-import { A as AtMenuitemComponent, d as defineCustomElement$1 } from './p-Bze1hNPA.js';
-
-const AtMenuItem = AtMenuitemComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtMenuItem, defineCustomElement };
-//# sourceMappingURL=at-menu-item.js.map
-
-//# sourceMappingURL=at-menu-item.js.map
+import{A as s,d as o}from"./p-snekq8Vj.js";const p=s,r=o;export{p as AtMenuItem,r as defineCustomElement}

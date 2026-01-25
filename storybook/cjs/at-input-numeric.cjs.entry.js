@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
-const atInputNumericCss = "input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}";
+const atInputNumericCss = () => `input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}`;
 
 const containerVariantsConfig = {
     variants: {
@@ -157,7 +157,6 @@ const AtInputNumericComponent = class {
         return (index.h(index.Host, { key: '0cb8f66a94073ea0986acce6513f491211933481', class: "w-full" }, index.h("div", { key: '9976e3d1e9c17071650f1c3aea3536d9473ab6a5', class: "flex flex-col" }, index.h("slot", { key: 'd93b69f4e09986ceb78e23451daa3eb67f3b8e6a', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'f15fa21e20cb9e8258f98942dd0989e6f2c34dea', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '51fa8859f83565eb3454c9908320056da8ca19e7', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '32d3cba07f73993d5b315c43d9f8cdb2b40c043b', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '8d396deb0b9059fce4f211edc2735235d165e8a0', class: "border-med rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", icon: "remove", onClick: this.handleDecrease, disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" })), index.h("input", { key: '008c8d66806707efdff07714eafe87ad2daeb050', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", placeholder: `${this.placeholder}`, onInput: (event) => (this.value = Number(event.target.value)), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '36fb8f2a7b56167770148162bd79270d29ab30d7', class: "border-med rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", icon: "add", onClick: this.handleIncrease, disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }))), this.error_text && this.invalid && (index.h("span", { key: '28984ff98d15dc231dfc624551c4a25625e81086', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
-AtInputNumericComponent.style = atInputNumericCss;
+AtInputNumericComponent.style = atInputNumericCss();
 
 exports.at_input_numeric = AtInputNumericComponent;
-//# sourceMappingURL=at-input-numeric.entry.cjs.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {
@@ -108,13 +108,12 @@ const AtTextareaComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h(index.Host, { key: '583721e78dd5c8fdaf32a0de5d1cb3cc590dcdac' }, index.h("div", { key: 'fd881f28efa7b481620a9d41c1759eb77f3fec4a', class: "flex flex-col" }, index.h("slot", { key: '73e8487363b7730b8e980992f808c78a35700ac4', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '9601d94719baedc7b9916a26d30b5c149bafc790', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '9b32f4a87c57cd13e44f638a2a7f157737c6ba68', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), index.h("div", { key: '78e903fd4906cf750223a3722e7b6febb6509dbd', class: "grid" }, index.h("textarea", { key: 'f9429ed11fdd2efe4f25307257d34b8d8ff47485', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), index.h("div", { key: 'bf8a08f381e4c7d1f4f8e4f9596100a9bec347fb', "data-name": "textarea-resize-container", style: {
+        return (index.h(index.Host, { key: '84f05a5fb06adf6059100d3510fa3f6fdbaff7b9' }, index.h("div", { key: 'b56ca5390c6c96b3afc48e5049130ffc6be1f5c1', class: "flex flex-col" }, index.h("slot", { key: '251ac433d7decef9096e711899dff9476207b25a', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '119bb15654b80e60b51bfc6207f248bb20fddcb0', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '110e6a6b525d204950e6c855ceeca562d29d1bff', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), index.h("div", { key: 'd4f9497e48b8933e51d4ec54d56ee2f56bde708b', class: "grid" }, index.h("textarea", { key: '46cc196f7bf815aec57a760d1e5588cc11ffe7a0', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), index.h("div", { key: 'bb1be3531698a05bb309d461846255d11e78590e', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (index.h("span", { key: '32201082bac56a1280a68cac55dbdccfffb98f57', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (index.h("span", { key: '60b37e9a368c61e2a3f4fd10074a99540a6ff03e', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
 };
 
 exports.at_textarea = AtTextareaComponent;
-//# sourceMappingURL=at-textarea.entry.cjs.js.map

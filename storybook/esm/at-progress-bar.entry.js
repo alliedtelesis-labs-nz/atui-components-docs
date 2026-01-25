@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
 
 const progressBarVariants = {
     success: 'bg-success-base',
@@ -72,9 +72,10 @@ const AtProgressBar = class {
             : this.renderDeterminate();
     }
     static get watchers() { return {
-        "percentage": ["onPercentageChange"]
+        "percentage": [{
+                "onPercentageChange": 0
+            }]
     }; }
 };
 
 export { AtProgressBar as at_progress_bar };
-//# sourceMappingURL=at-progress-bar.entry.js.map

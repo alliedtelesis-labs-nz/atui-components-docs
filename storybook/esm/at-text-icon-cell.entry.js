@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, F as Fragment, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, g as getElement, h, F as Fragment, H as Host } from './index-jvbUuQtg.js';
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -36,4 +36,3 @@ const AtTextIconCell = class {
 };
 
 export { AtTextIconCell as at_text_icon_cell };
-//# sourceMappingURL=at-text-icon-cell.entry.js.map

@@ -1620,6 +1620,3 @@ exports.flip = flip;
 exports.offset = offset;
 exports.shift = shift;
 exports.size = size;
-//# sourceMappingURL=floating-ui.dom-Ca6tS7ef.js.map
-
-//# sourceMappingURL=floating-ui.dom-Ca6tS7ef.js.map

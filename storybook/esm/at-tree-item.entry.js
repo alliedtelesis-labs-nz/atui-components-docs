@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -74,11 +74,10 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: 'a63d9aea740844232f99ddc66d2eca8779b9ef6e', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '9df489615d31c43aba9d62d128388209678c01d5', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '498021d592775c5887dfb879d6933e76ed197b18', class: "flex gap-4" }, this.has_children && (h("span", { key: '7039672873a9448a6689ad34acfd69306fa48235', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (h(Host, { key: '5f0cac0b73afdafb6a4b0d9297cea891ced00d66', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'da85a960c2bdbd92be352f379eedc3b2deaf9295', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '9eb4f97b79259f9b421597abb5bcf288b570c31e', class: "flex gap-4" }, this.has_children && (h("span", { key: '09fc73c273e0805313f9cb4a80cb27d5e657e317', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (h("span", { key: '4c266ec1b9deaedf1c7043e87f546ee657f7fd4e', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '444f1ad9aede965a0552b83975852dd7277a77a2', name: "label" })), h("slot", { key: 'ea65c873ef7ea2e9ab5ba9afcf6a231201a85418' })), h("div", { key: 'ec469235b6f35571b79042118282346083573eff', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (h("span", { key: 'c39f4d8c79092c85572d53cbfb18e7fb5280655a', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: 'cb0f256ee37cdad1bce1f5fcab1a618e7f7d324e', name: "label" })), h("slot", { key: '410bdc60b0e9664752bcf8d75e48bc6cd891b8fb' })), h("div", { key: '940ecd3b261b3b239d56017e17f9a5f8d36481c6', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
 };
 
 export { AtTreeItemComponent as at_tree_item };
-//# sourceMappingURL=at-tree-item.entry.js.map

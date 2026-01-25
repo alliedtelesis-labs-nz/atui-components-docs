@@ -57,4 +57,3 @@ export class TableStyles {
         cursor: 'pointer',
     };
 }
-//# sourceMappingURL=table-styles.js.map

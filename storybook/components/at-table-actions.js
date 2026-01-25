@@ -1,9 +1,1 @@
-import { A as AtTableActionsComponent, d as defineCustomElement$1 } from './p-DiuRyXnX.js';
-
-const AtTableActions = AtTableActionsComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtTableActions, defineCustomElement };
-//# sourceMappingURL=at-table-actions.js.map
-
-//# sourceMappingURL=at-table-actions.js.map
+import{A as o,d as s}from"./p-UEHW1Glk.js";const p=o,r=s;export{p as AtTableActions,r as defineCustomElement}

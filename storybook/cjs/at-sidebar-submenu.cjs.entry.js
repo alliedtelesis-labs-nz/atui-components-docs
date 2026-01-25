@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
-const atSidebarSubmenuCss = ":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}";
+const atSidebarSubmenuCss = () => `:host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}`;
 
 const AtSidebarSubmenuComponent = class {
     /**
@@ -65,10 +65,9 @@ const AtSidebarSubmenuComponent = class {
         return this.is_active;
     }
     render() {
-        return (index.h(index.Host, { key: '7be8aac59fea26e3ec9aec005634666e338b5b64' }, index.h("at-accordion-item", { key: '22a97b47815cd29f8309d6fdb534bce935bc1404', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (index.h("at-sidebar-menuitem", { key: 'b06282d23c855aab6059acec751f2ff805b01831', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (index.h("i", { key: '5aaf892cbf2b5f94a7fe1e03e6b3a7571457ca56', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), index.h("div", { key: '7af5305e6209df7e312e3978e7f0a2077c68e1a6', class: "content" }, index.h("slot", { key: '154228ee2364140385fbf0e9bbde50717dfdd0f7', name: "submenu-content" }))), index.h("at-menu", { key: 'a24c0d54f99565fadadb130e16eead004be4f849', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, index.h("at-sidebar-menuitem", { key: '37f663473dc5d349cd136800d8b8e88ede5d1013', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), index.h("div", { key: 'f17ee2b6b35b8fd21d47a13487ac3281c163d049', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, index.h("slot", { key: 'ed7bb974dc9db2884e28c09904dbdb925c8b6d9c', name: "submenu-hover-content" })))));
+        return (index.h(index.Host, { key: '0d1ddf13969e86e97da33081d3897b3f53140312' }, index.h("at-accordion-item", { key: 'ea48dfb4cd7606f4e6e815578149c03522880c67', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (index.h("at-sidebar-menuitem", { key: 'fe6b59eb7c2f5f163cfdd08c4446854c482d991c', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (index.h("i", { key: 'b359f46c45c4a2ce8489797388f01ddb015bd61b', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons" }, "keyboard_arrow_down")))), index.h("div", { key: '6bea514e3119eb2bb2cff2b3773cbc366e2bdf7e', class: "content" }, index.h("slot", { key: 'e8350ee8e2fce0677f30259997e43f5a56cf61d4', name: "submenu-content" }))), index.h("at-menu", { key: '9e8da6dfa7ad7bd689d87aa18cc07f014b517747', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, index.h("at-sidebar-menuitem", { key: 'f947c6b63565e064f09bc7ced24d7541d6fc3f6a', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), index.h("div", { key: '98a3e6f157f09b667418784679670e7782d931f4', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, index.h("slot", { key: '6a7a8613842aecd107acc99c19f38cb95bf54527', name: "submenu-hover-content" })))));
     }
 };
-AtSidebarSubmenuComponent.style = atSidebarSubmenuCss;
+AtSidebarSubmenuComponent.style = atSidebarSubmenuCss();
 
 exports.at_sidebar_submenu = AtSidebarSubmenuComponent;
-//# sourceMappingURL=at-sidebar-submenu.entry.cjs.js.map

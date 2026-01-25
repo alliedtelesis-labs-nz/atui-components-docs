@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const AtEditTextCell = class {
     constructor(hostRef) {
@@ -25,7 +25,7 @@ const AtEditTextCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '753c10600d6423bc44bd6754dd374fcdda093bcb', class: "flex h-full items-center leading-[100%]" }, index.h("at-input", { key: '275107ebccf57937fbec93a6da0ac727d5f37205', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (index.h(index.Host, { key: '8a5cc82069fe525cf0e1437a5e703df3c4f6b24d', class: "flex h-full items-center leading-[100%]" }, index.h("at-input", { key: '09c2cef7447730d24a4fd3ef3a95e48b1fda0b87', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
@@ -33,4 +33,3 @@ const AtEditTextCell = class {
 };
 
 exports.at_edit_text_cell = AtEditTextCell;
-//# sourceMappingURL=at-edit-text-cell.entry.cjs.js.map

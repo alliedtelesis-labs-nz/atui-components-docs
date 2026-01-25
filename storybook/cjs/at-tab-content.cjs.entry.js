@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -41,9 +41,8 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (index.h("div", { key: 'f9110088dbbaf22e8e4606a755e99e8ef1133827', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '2e4a43a7d7c39c06d2c9d199eaf5cf4f8f4461db' })));
+        return (index.h("div", { key: '489221fceb3423e5bfd93c6e4ec0b3d64146cfc9', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '6a34a0ea3fbae9e8bbe5f10d3896847f1f1647b6' })));
     }
 };
 
 exports.at_tab_content = AtTabContent;
-//# sourceMappingURL=at-tab-content.entry.cjs.js.map

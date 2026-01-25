@@ -24,4 +24,3 @@ Default.args = {
     size: 'md',
     show_loading_spinner: false,
 };
-//# sourceMappingURL=at-placeholder.stories.js.map

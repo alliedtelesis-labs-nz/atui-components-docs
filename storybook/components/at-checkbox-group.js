@@ -1,9 +1,1 @@
-import { A as AtCheckboxGroup$1, d as defineCustomElement$1 } from './p-Bgi27HrQ.js';
-
-const AtCheckboxGroup = AtCheckboxGroup$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtCheckboxGroup, defineCustomElement };
-//# sourceMappingURL=at-checkbox-group.js.map
-
-//# sourceMappingURL=at-checkbox-group.js.map
+import{A as o,d as s}from"./p-xRDYq2-7.js";const p=o,r=s;export{p as AtCheckboxGroup,r as defineCustomElement}

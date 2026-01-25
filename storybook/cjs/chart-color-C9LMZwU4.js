@@ -13503,6 +13503,3 @@ exports.index = index;
 exports.plugin_colors = plugin_colors;
 exports.plugin_legend = plugin_legend;
 exports.plugin_tooltip = plugin_tooltip;
-//# sourceMappingURL=chart-color-C9LMZwU4.js.map
-
-//# sourceMappingURL=chart-color-C9LMZwU4.js.map

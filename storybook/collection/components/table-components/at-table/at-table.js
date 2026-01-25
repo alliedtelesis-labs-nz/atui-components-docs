@@ -148,7 +148,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: 'bf3e874526418e0df843fea25dccc870069c0573', class: "ag-theme-material" });
+        return h(Host, { key: '7d1f030cb57efc1dc146f27d34f3b3fbf0211446', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -190,7 +190,8 @@ export class AtTableComponent {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
+                            "referenceLocation": "ColDef"
                         }
                     }
                 },
@@ -313,7 +314,8 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
                         }
                     }
                 },
@@ -367,12 +369,14 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
                         },
                         "GridOptions": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions",
+                            "referenceLocation": "GridOptions"
                         },
                         "HTMLElement": {
                             "location": "global",
@@ -401,7 +405,8 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
                         }
                     },
                     "return": "Promise<GridApi<any>>"
@@ -427,4 +432,3 @@ export class AtTableComponent {
             }];
     }
 }
-//# sourceMappingURL=at-table.js.map

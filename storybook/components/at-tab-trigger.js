@@ -1,9 +1,1 @@
-import { A as AtTabTrigger$1, d as defineCustomElement$1 } from './p-CqzcetB0.js';
-
-const AtTabTrigger = AtTabTrigger$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtTabTrigger, defineCustomElement };
-//# sourceMappingURL=at-tab-trigger.js.map
-
-//# sourceMappingURL=at-tab-trigger.js.map
+import{A as o,d as s}from"./p-BnWJb968.js";const p=o,r=s;export{p as AtTabTrigger,r as defineCustomElement}

@@ -107,6 +107,8 @@ export { AtSearchTable as AtSearchTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtSearchTable } from './at-search-table';
 export { AtSelectComponent as AtSelect } from '../types/components/at-select/at-select';
 export { defineCustomElement as defineCustomElementAtSelect } from './at-select';
+export { AtSelectGroupComponent as AtSelectGroup } from '../types/components/at-select/at-select-option-group/at-select-option-group';
+export { defineCustomElement as defineCustomElementAtSelectGroup } from './at-select-group';
 export { AtSelectOptionComponent as AtSelectOption } from '../types/components/at-select/at-select-option/at-select-option';
 export { defineCustomElement as defineCustomElementAtSelectOption } from './at-select-option';
 export { AtSidePanelComponent as AtSidePanel } from '../types/components/at-side-panel/at-side-panel';
@@ -209,4 +211,5 @@ export interface SetPlatformOptions {
   rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;
 }
 export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;
+
 export * from '../types';

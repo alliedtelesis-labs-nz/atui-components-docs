@@ -1,9 +1,1 @@
-import { A as AtButtonComponent, d as defineCustomElement$1 } from './p-Dx91wqSp.js';
-
-const AtButton = AtButtonComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtButton, defineCustomElement };
-//# sourceMappingURL=at-button.js.map
-
-//# sourceMappingURL=at-button.js.map
+import{A as o,d as s}from"./p-DLlWJE6U.js";const p=o,r=s;export{p as AtButton,r as defineCustomElement}

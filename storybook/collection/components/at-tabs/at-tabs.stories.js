@@ -26,4 +26,3 @@ Default.args = {
     active_tab: 'one',
     layout: 'horizontal',
 };
-//# sourceMappingURL=at-tabs.stories.js.map

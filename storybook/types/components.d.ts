@@ -2094,6 +2094,16 @@ export namespace Components {
     }
     /**
      * @category Form Controls
+     * @description A wrapper component for grouping select options with proper ARIA semantics.
+     */
+    interface AtSelectGroup {
+        /**
+          * Label for the group displayed as the group title
+         */
+        "label": string;
+    }
+    /**
+     * @category Form Controls
      * @description A select option component used within the AtSelect component.
      * @Slot - Use this slot to add custom content inside the select option before the text.
      */
@@ -2103,6 +2113,11 @@ export namespace Components {
           * @default false
          */
         "is_active"?: boolean;
+        /**
+          * Indicates if the option is part of an option group
+          * @default false
+         */
+        "option_group"?: boolean;
         /**
           * Value of the select option
          */
@@ -4014,6 +4029,16 @@ declare global {
         prototype: HTMLAtSelectElement;
         new (): HTMLAtSelectElement;
     };
+    /**
+     * @category Form Controls
+     * @description A wrapper component for grouping select options with proper ARIA semantics.
+     */
+    interface HTMLAtSelectGroupElement extends Components.AtSelectGroup, HTMLStencilElement {
+    }
+    var HTMLAtSelectGroupElement: {
+        prototype: HTMLAtSelectGroupElement;
+        new (): HTMLAtSelectGroupElement;
+    };
     interface HTMLAtSelectOptionElementEventMap {
         "atuiClick": string;
     }
@@ -4615,6 +4640,7 @@ declare global {
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
+        "at-select-group": HTMLAtSelectGroupElement;
         "at-select-option": HTMLAtSelectOptionElement;
         "at-side-panel": HTMLAtSidePanelElement;
         "at-sidebar": HTMLAtSidebarElement;
@@ -6737,6 +6763,16 @@ declare namespace LocalJSX {
     }
     /**
      * @category Form Controls
+     * @description A wrapper component for grouping select options with proper ARIA semantics.
+     */
+    interface AtSelectGroup {
+        /**
+          * Label for the group displayed as the group title
+         */
+        "label"?: string;
+    }
+    /**
+     * @category Form Controls
      * @description A select option component used within the AtSelect component.
      * @Slot - Use this slot to add custom content inside the select option before the text.
      */
@@ -6750,6 +6786,11 @@ declare namespace LocalJSX {
           * Emitted when the select option is clicked
          */
         "onAtuiClick"?: (event: AtSelectOptionCustomEvent<string>) => void;
+        /**
+          * Indicates if the option is part of an option group
+          * @default false
+         */
+        "option_group"?: boolean;
         /**
           * Value of the select option
          */
@@ -7632,6 +7673,7 @@ declare namespace LocalJSX {
         "at-search": AtSearch;
         "at-search-table": AtSearchTable;
         "at-select": AtSelect;
+        "at-select-group": AtSelectGroup;
         "at-select-option": AtSelectOption;
         "at-side-panel": AtSidePanel;
         "at-sidebar": AtSidebar;
@@ -7949,6 +7991,11 @@ declare module "@stencil/core" {
              * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
             "at-select": LocalJSX.AtSelect & JSXBase.HTMLAttributes<HTMLAtSelectElement>;
+            /**
+             * @category Form Controls
+             * @description A wrapper component for grouping select options with proper ARIA semantics.
+             */
+            "at-select-group": LocalJSX.AtSelectGroup & JSXBase.HTMLAttributes<HTMLAtSelectGroupElement>;
             /**
              * @category Form Controls
              * @description A select option component used within the AtSelect component.

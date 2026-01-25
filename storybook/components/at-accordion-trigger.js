@@ -1,9 +1,1 @@
-import { A as AtAccordionTriggerComponent, d as defineCustomElement$1 } from './p-Bos8rqAS.js';
-
-const AtAccordionTrigger = AtAccordionTriggerComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtAccordionTrigger, defineCustomElement };
-//# sourceMappingURL=at-accordion-trigger.js.map
-
-//# sourceMappingURL=at-accordion-trigger.js.map
+import{A as o,d as s}from"./p-CVniHwM9.js";const p=o,r=s;export{p as AtAccordionTrigger,r as defineCustomElement}

@@ -55,6 +55,7 @@
     "components/at-search/at-search.js",
     "components/at-select/at-select.js",
     "components/at-select/at-select-option/at-select-option.js",
+    "components/at-select/at-select-option-group/at-select-option-group.js",
     "components/at-side-panel/at-side-panel.js",
     "components/at-sidebar/at-sidebar.js",
     "components/at-sidebar/at-sidebar-menu/at-sidebar-menu.js",
@@ -91,8 +92,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.38.1",
-    "typescriptVersion": "5.9.3"
+    "version": "4.41.3",
+    "typescriptVersion": "5.8.3"
   },
   "collections": [],
   "bundles": []

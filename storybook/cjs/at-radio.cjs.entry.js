@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -83,4 +83,3 @@ const AtRadio = class {
 };
 
 exports.at_radio = AtRadio;
-//# sourceMappingURL=at-radio.entry.cjs.js.map

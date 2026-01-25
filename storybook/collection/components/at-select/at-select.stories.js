@@ -6,7 +6,6 @@ const Template = (args) => `
     error_text="${args.error_text ?? ''}"
     placeholder="${args.placeholder ?? ''}"
     value="${args.value ?? ''}"
-    group_by="${args.group_by ?? ''}"
     ${args.grouped ? 'grouped' : ''}
     ${args.required ? 'required' : ''}
     ${args.readonly ? 'readonly' : ''}
@@ -14,9 +13,11 @@ const Template = (args) => `
     ${args.disabled ? 'disabled' : ''}
     ${args.clearable ? 'clearable' : ''}
     ${args.typeahead ? 'typeahead' : ''}
+
 />
 <script>
-document.querySelector('at-select').options = ${JSON.stringify(args.options, null, 4)};
+document.querySelector('at-select').options = ${JSON.stringify(args.options ?? [], null, 4)};
+document.querySelector('at-select').option_groups = ${JSON.stringify(args.option_groups ?? [], null, 4)};
 </script>
     `;
 export default {
@@ -24,7 +25,12 @@ export default {
 };
 export const Primary = Template.bind({});
 Primary.args = {
-    options: ['one', 'two', 'three', 'four'],
+    options: [
+        { key: 'one', value: 'one' },
+        { key: 'two', value: 'two' },
+        { key: 'three', value: 'three' },
+        { key: 'four', value: 'four' },
+    ],
     label: 'Input Label',
     hint_text: 'Hint Text',
     info_text: 'Info Text',
@@ -42,9 +48,21 @@ Primary.args = {
 };
 export const Grouped = Template.bind({});
 Grouped.args = {
-    options: [
-        { title: 'group 1', subgroup: ['one', 'two'] },
-        { title: 'group 2', subgroup: ['three', 'four'] },
+    option_groups: [
+        {
+            title: 'group 1',
+            subgroup: [
+                { key: 'one', value: 'one' },
+                { key: 'two', value: 'two' },
+            ],
+        },
+        {
+            title: 'group 2',
+            subgroup: [
+                { key: 'three', value: 'three' },
+                { key: 'four', value: 'four' },
+            ],
+        },
     ],
     label: 'Input Label',
     hint_text: 'Hint Text',
@@ -52,8 +70,6 @@ Grouped.args = {
     error_text: 'Error text',
     placeholder: 'Placeholder',
     value: '',
-    group_by: 'subgroup',
-    grouped: true,
     invalid: false,
     required: true,
     clearable: true,
@@ -61,4 +77,3 @@ Grouped.args = {
     readonly: false,
     typeahead: true,
 };
-//# sourceMappingURL=at-select.stories.js.map

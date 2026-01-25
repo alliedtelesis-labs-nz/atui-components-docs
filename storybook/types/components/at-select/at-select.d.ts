@@ -66,9 +66,9 @@ export declare class AtSelectComponent {
     searchText: string;
     isOpen: boolean;
     translations: any;
-    hasMatchingOptions: boolean;
     hasMatchingElOptions: boolean;
     parentWidth: string;
+    filteredOptions: SelectOption[];
     el: HTMLElement;
     private menuId;
     private menuRef;
@@ -76,6 +76,7 @@ export declare class AtSelectComponent {
     private searchInputEl;
     watchValue(newValue: string): void;
     watchSearchText(newSearch: string): void;
+    watchFilterInputs(): void;
     /**
      * Emits an event containing the selected value when changed.
      */
@@ -83,15 +84,21 @@ export declare class AtSelectComponent {
     componentWillLoad(): void;
     componentDidLoad(): void;
     private setupOptionElements;
+    private filterOptions;
+    private filterSlottedOptions;
+    private filterSlottedGroups;
     private updateIsOpenState;
     private handleChange;
     private handleClear;
     private handleKeyDownMenu;
-    private hasMatchingItems;
     private handleSearchInput;
+    private isGroup;
+    get hasMatchingOptions(): boolean;
     render(): any;
     renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
-    renderOption(option: SelectOption): any;
+    private renderOption;
+    private renderGroupedOption;
+    renderTitle(title: string): any;
 }

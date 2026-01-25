@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-CzDB71Wy.js');
 
 const messageVariants = {
     base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
@@ -73,4 +73,3 @@ const AtMessage = class {
 };
 
 exports.at_message = AtMessage;
-//# sourceMappingURL=at-message.entry.cjs.js.map

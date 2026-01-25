@@ -1,9 +1,1 @@
-import { A as AtCheckboxHeaderComponent, d as defineCustomElement$1 } from './p-BCLTjKcs.js';
-
-const AtCheckboxHeader = AtCheckboxHeaderComponent;
-const defineCustomElement = defineCustomElement$1;
-
-export { AtCheckboxHeader, defineCustomElement };
-//# sourceMappingURL=at-checkbox-header.js.map
-
-//# sourceMappingURL=at-checkbox-header.js.map
+import{A as s,d as o}from"./p-CHqYhs5X.js";const p=s,r=o;export{p as AtCheckboxHeader,r as defineCustomElement}

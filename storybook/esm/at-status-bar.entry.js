@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -27,9 +27,8 @@ const AtStatusBar = class {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'dacbc2be2addc1b10610eb3f55f75efd01436640', class: this.statusBarClass }, h("div", { key: 'ea1fc3e0c7bb3729de21f8e282eeef9bad09fe81', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '1094907e29d7a8f2bd25e24538b06d9682bd32df', class: this.statusBarClass }, h("div", { key: '104e89e704205caddef194145c7a0e1a7cd21726', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 
 export { AtStatusBar as at_status_bar };
-//# sourceMappingURL=at-status-bar.entry.js.map

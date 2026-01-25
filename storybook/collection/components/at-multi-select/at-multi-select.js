@@ -89,7 +89,8 @@ export class AtMultiSelectComponent {
     isOpen = false;
     translations;
     parentWidth = '';
-    hasMatchingOptions = false;
+    hasMatchingElOptions = false;
+    filteredOptions = [];
     el;
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     menuRef;
@@ -107,15 +108,16 @@ export class AtMultiSelectComponent {
     watchSearchText(newSearch) {
         const trimmedSearch = newSearch.trim().toLowerCase();
         if (this.options && this.options.length > 0) {
-            this.hasMatchingOptions = this.hasMatchingItems(this.options, newSearch);
+            this.filteredOptions = this.filterOptions(this.options);
+            this.hasMatchingElOptions = this.filteredOptions.length > 0;
             return;
         }
-        this.optionEls.forEach((optionEl) => {
-            const matches = !trimmedSearch ||
-                optionEl.value.toLowerCase().includes(trimmedSearch);
-            optionEl.style.display = matches ? '' : 'none';
-        });
-        this.hasMatchingOptions = Array.from(this.optionEls).some((el) => el.style.display !== 'none');
+        this.filterSlottedOptions(trimmedSearch);
+        this.filterSlottedGroups();
+        this.hasMatchingElOptions = Array.from(this.optionEls).some((el) => el.style.display !== 'none');
+    }
+    watchFilterInputs() {
+        this.filteredOptions = this.filterOptions(this.options || []);
     }
     /**
      * Emits an event containing a list of the selected items when the selection changes.
@@ -128,8 +130,43 @@ export class AtMultiSelectComponent {
     }
     componentDidLoad() {
         this.setupOptionElements();
+        if (this.options && this.options.length > 0) {
+            this.filteredOptions = this.options;
+        }
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
+    }
+    filterOptions(options) {
+        const trimmedSearch = this.searchText.trim().toLowerCase();
+        if (!trimmedSearch)
+            return options;
+        return options
+            .map((option) => {
+            if (this.isGroup(option)) {
+                const filteredChildren = this.filterOptions(option.children);
+                if (filteredChildren.length > 0) {
+                    return { ...option, children: filteredChildren };
+                }
+                return null;
+            }
+            return option.value.toLowerCase().includes(trimmedSearch)
+                ? option
+                : null;
+        })
+            .filter(Boolean);
+    }
+    filterSlottedOptions(trimmedSearch) {
+        this.optionEls.forEach((optionEl) => {
+            const matches = !trimmedSearch ||
+                optionEl.value.toLowerCase().includes(trimmedSearch);
+            optionEl.style.display = matches ? '' : 'none';
+        });
+    }
+    filterSlottedGroups() {
+        this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
+            const visibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
+            groupEl.style.display = visibleChild ? '' : 'none';
+        });
     }
     setupOptionElements() {
         this.optionEls = [];
@@ -143,7 +180,6 @@ export class AtMultiSelectComponent {
                 this.optionEls.push(optionEl);
             });
         }
-        this.hasMatchingOptions = this.hasMatchingItems(this.optionEls, this.searchText);
     }
     updateIsOpenState(event) {
         this.isOpen = event.detail;
@@ -161,7 +197,7 @@ export class AtMultiSelectComponent {
             : [...this.value, option];
         this.atuiChange.emit(this.value);
     }
-    handleClear() {
+    async handleClear() {
         this.searchText = '';
     }
     async handleKeyDownMenu(event) {
@@ -178,18 +214,19 @@ export class AtMultiSelectComponent {
         handleArrowNavigation(event, menuContainer);
         handleHomeEndNavigation(event, menuContainer);
     }
-    hasMatchingItems(items, searchText) {
-        const trimmedSearch = searchText.trim().toLowerCase();
-        return trimmedSearch
-            ? (items?.some((item) => item.value.toLowerCase().includes(trimmedSearch)) ?? false)
-            : true;
-    }
     handleSearchInput(event) {
         const inputEl = event.target;
         this.searchText = inputEl.value;
     }
+    isGroup(option) {
+        return !!(option.children && option.children.length > 0);
+    }
+    getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', inputVariantsConfig);
+    get hasMatchingOptions() {
+        return this.filteredOptions.length > 0;
+    }
     render() {
-        return (h(Host, { key: '396c49dc97ec0113ca0b1db5026336d89e2e1a95', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '139e92b15fdf04368cb516329d15c8ce7690254e', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     this.handleClear();
@@ -197,9 +234,9 @@ export class AtMultiSelectComponent {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '838fae93a7a9b98247ea245b0e9cf52853dd2278', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'd0160ea2b64d873db65035778058efcd8d8cdf10', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'ac81007f349dc20675ae15d9eb56e0da9768aba9' }, this.error_text && this.invalid && (h("span", { key: '2ad42e1ca5ad199c255c5f24d8af6331e942fdc3', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: 'c6b9bd028301ec3eb3346f240e7c215634ad3911' }, this.error_text && this.invalid && (h("span", { key: 'b69985608f2f85b9982647ac1193dc478501df5f', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -229,15 +266,29 @@ export class AtMultiSelectComponent {
                 event.stopPropagation();
                 this.searchText = '';
                 this.searchInputEl.value = '';
-            }, "data-name": "multi-select-search-clear" }))))), this.options
-            ?.filter((option) => !this.searchText ||
-            option.value
-                .toLowerCase()
-                .includes(this.searchText.toLowerCase()))
-            .map((option) => this.renderOption(option)), h("slot", null), this.typeahead &&
+            }, "data-name": "multi-select-search-clear" }))))), this.filteredOptions
+            .map((option) => {
+            if (this.isGroup(option)) {
+                return this.renderGroupedOption(option);
+            }
+            return this.renderOption(option);
+        })
+            .filter(Boolean), h("slot", null), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            !(this.options && this.options.length > 0
+                ? this.hasMatchingOptions
+                : this.hasMatchingElOptions) && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
             'No results found'))));
+    }
+    renderGroupedOption(option) {
+        if (!this.isGroup(option) ||
+            !option.children ||
+            option.children.length === 0) {
+            return null;
+        }
+        return (h("at-select-group", { label: option.value }, option.children.map((child) => (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(child.key), tabIndex: 0, class: this.getOptionClassname({
+                active: this.value.includes(child.key),
+            }), onClick: () => this.handleChange(child.key) }, child.value)))));
     }
     renderOption(option) {
         return (h("at-select-option", { value: option.value, is_active: this.value.includes(option.value), "data-name": "multi-select-option", onAtuiClick: () => this.handleChange(option.value) }));
@@ -255,7 +306,8 @@ export class AtMultiSelectComponent {
                         "SelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption"
+                            "id": "src/types/select.ts::SelectOption",
+                            "referenceLocation": "SelectOption"
                         }
                     }
                 },
@@ -508,7 +560,8 @@ export class AtMultiSelectComponent {
             "isOpen": {},
             "translations": {},
             "parentWidth": {},
-            "hasMatchingOptions": {}
+            "hasMatchingElOptions": {},
+            "filteredOptions": {}
         };
     }
     static get events() {
@@ -537,7 +590,12 @@ export class AtMultiSelectComponent {
             }, {
                 "propName": "searchText",
                 "methodName": "watchSearchText"
+            }, {
+                "propName": "searchText",
+                "methodName": "watchFilterInputs"
+            }, {
+                "propName": "options",
+                "methodName": "watchFilterInputs"
             }];
     }
 }
-//# sourceMappingURL=at-multi-select.js.map

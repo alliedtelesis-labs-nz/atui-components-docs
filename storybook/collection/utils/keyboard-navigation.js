@@ -120,4 +120,3 @@ export function focusFirstElement(container, delay = 50) {
         }
     }, delay);
 }
-//# sourceMappingURL=keyboard-navigation.js.map

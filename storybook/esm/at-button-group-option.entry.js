@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, g as getElement, h } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -73,4 +73,3 @@ const AtButtonGroupOption = class {
 };
 
 export { AtButtonGroupOption as at_button_group_option };
-//# sourceMappingURL=at-button-group-option.entry.js.map

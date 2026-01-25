@@ -48,7 +48,7 @@ export class AtSearch {
                 ? 'pr-4 opacity-100'
                 : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: 'a1ca853fc966207ecfb0417400111998f5fd41c7', size: "sm", type: "secondaryText", icon: "backspace", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }))), h("span", { key: 'cb8377944410ec6904aa4f57c10230c1bd5a7baa', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
+                : '-1' }))), h("span", { key: 'bc14fa0113b2f12ab014e7436713eb2493a54b59', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
     }
     static get is() { return "at-search"; }
     static get properties() {
@@ -174,4 +174,3 @@ export class AtSearch {
             }];
     }
 }
-//# sourceMappingURL=at-search.js.map

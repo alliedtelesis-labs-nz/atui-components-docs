@@ -61,7 +61,8 @@ export declare class AtMultiSelectComponent {
     isOpen: boolean;
     translations: any;
     parentWidth: string;
-    hasMatchingOptions: boolean;
+    hasMatchingElOptions: boolean;
+    filteredOptions: SelectOption[];
     el: HTMLElement;
     private menuId;
     private menuRef;
@@ -69,22 +70,29 @@ export declare class AtMultiSelectComponent {
     private searchInputEl;
     watchValue(newValue: string[]): void;
     watchSearchText(newSearch: string): void;
+    watchFilterInputs(): void;
     /**
      * Emits an event containing a list of the selected items when the selection changes.
      */
     atuiChange: EventEmitter<string[]>;
     componentWillLoad(): void;
     componentDidLoad(): void;
+    private filterOptions;
+    private filterSlottedOptions;
+    private filterSlottedGroups;
     private setupOptionElements;
     private updateIsOpenState;
     private handleChange;
-    handleClear(): void;
+    private handleClear;
     private handleKeyDownMenu;
-    private hasMatchingItems;
     private handleSearchInput;
+    private isGroup;
+    private getOptionClassname;
+    get hasMatchingOptions(): boolean;
     render(): any;
     renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
+    private renderGroupedOption;
     renderOption(option: SelectOption): any;
 }
