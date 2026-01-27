@@ -53,11 +53,15 @@ export declare class AtSelectComponent {
     /**
      * Set the select input to be clearable. Only enabled on typeahead selects.
      */
-    clearable?: boolean;
+    clearable_search?: boolean;
     /**
      * Set the select to appear as a typeahead input.
      */
     typeahead?: boolean;
+    /**
+     * Set the select to allow clearing the selected value.
+     */
+    clearable?: boolean;
     /**
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
@@ -84,6 +88,7 @@ export declare class AtSelectComponent {
     componentWillLoad(): void;
     componentDidLoad(): void;
     private setupOptionElements;
+    addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
     private filterOptions;
     private filterSlottedOptions;
     private filterSlottedGroups;

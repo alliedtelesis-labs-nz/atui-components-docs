@@ -2039,9 +2039,14 @@ export namespace Components {
          */
         "autoclose"?: boolean;
         /**
-          * Set the select input to be clearable. Only enabled on typeahead selects.
+          * Set the select to allow clearing the selected value.
+          * @default false
          */
         "clearable"?: boolean;
+        /**
+          * Set the select input to be clearable. Only enabled on typeahead selects.
+         */
+        "clearable_search"?: boolean;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -2108,6 +2113,11 @@ export namespace Components {
      * @Slot - Use this slot to add custom content inside the select option before the text.
      */
     interface AtSelectOption {
+        /**
+          * Will disable interaction if set
+          * @default false
+         */
+        "disabled"?: boolean;
         /**
           * Will apply the active styling to the select option
           * @default false
@@ -6708,9 +6718,14 @@ declare namespace LocalJSX {
          */
         "autoclose"?: boolean;
         /**
-          * Set the select input to be clearable. Only enabled on typeahead selects.
+          * Set the select to allow clearing the selected value.
+          * @default false
          */
         "clearable"?: boolean;
+        /**
+          * Set the select input to be clearable. Only enabled on typeahead selects.
+         */
+        "clearable_search"?: boolean;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -6781,6 +6796,11 @@ declare namespace LocalJSX {
      * @Slot - Use this slot to add custom content inside the select option before the text.
      */
     interface AtSelectOption {
+        /**
+          * Will disable interaction if set
+          * @default false
+         */
+        "disabled"?: boolean;
         /**
           * Will apply the active styling to the select option
           * @default false

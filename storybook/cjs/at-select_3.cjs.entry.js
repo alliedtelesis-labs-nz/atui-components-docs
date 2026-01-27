@@ -82,11 +82,15 @@ const AtSelectComponent = class {
     /**
      * Set the select input to be clearable. Only enabled on typeahead selects.
      */
-    clearable;
+    clearable_search;
     /**
      * Set the select to appear as a typeahead input.
      */
     typeahead = false;
+    /**
+     * Set the select to allow clearing the selected value.
+     */
+    clearable = false;
     /**
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
@@ -143,10 +147,18 @@ const AtSelectComponent = class {
         this.el.querySelectorAll('at-select-option').forEach((option) => {
             const optionEl = option;
             optionEl.is_active = this.value === optionEl.value;
-            optionEl.addEventListener('atuiClick', (event) => {
-                this.handleChange(event.detail);
-            });
+            this.addListenerToOptionElements(optionEl);
             this.optionEls.push(optionEl);
+        });
+    }
+    addListenerToOptionElements(optionEl) {
+        optionEl.addEventListener('atuiClick', (event) => {
+            this.handleChange(event.detail);
+        });
+        optionEl.addEventListener('mousedown', () => {
+            if (!optionEl.disabled) {
+                this.handleChange(optionEl.value);
+            }
         });
     }
     filterOptions(options) {
@@ -206,6 +218,9 @@ const AtSelectComponent = class {
     }
     async handleClear() {
         this.searchText = '';
+        if (this.searchInputEl) {
+            this.searchInputEl.focus();
+        }
     }
     async handleKeyDownMenu(event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -232,7 +247,7 @@ const AtSelectComponent = class {
         return this.filteredOptions.length > 0;
     }
     render() {
-        return (index.h(index.Host, { key: 'b07fd1c45510cdefd5473e98c43dbc9026da5dda', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'c748e5577b4efe8e118734de85b9f86ec0dfe05a', class: "group/select", onFocusout: async (event) => {
                 await this.handleClear();
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
@@ -240,9 +255,9 @@ const AtSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '7965cd3ca2046de326f4febd1a3bf2b64335a54b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '2516a3dc2d44abd97fecf81081023c1b4f2aa6d7', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'b30d1208fd4eb2c7a68e26d0d7380c10de9062c2' }, this.error_text && this.invalid && (index.h("span", { key: '7c5ba11cd01bf5d1af2bcc21824b8fc31ffb758f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'dd86c6c4b5bbb37826bb8cd6799a46e4f514fc4e' }, this.error_text && this.invalid && (index.h("span", { key: '05dd30bd462ca53c5d209b33593fde271cfdbb54', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -254,15 +269,25 @@ const AtSelectComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, index.h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
+        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, index.h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+            this.value &&
+            !this.readonly &&
+            !this.disabled && (index.h("div", { class: "absolute top-[7px] right-4 mr-[17px]" }, index.h("at-button", { size: "sm", class: "pr-8", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+                event.stopPropagation();
+                this.value = '';
+                this.atuiChange.emit(this.value);
+                if (this.inputEl) {
+                    this.inputEl.focus();
+                }
+            }, "data-name": "select-clear-main" }))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
     }
     renderOptions() {
         return (index.h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable_search ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable_search && this.searchText !== '' && (index.h("div", { class: "absolute top-[7px] right-4" }, index.h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
                 event.stopPropagation();
                 await this.handleClear();
             }, "data-name": "select-clear" }))))), this.filteredOptions
@@ -279,7 +304,10 @@ const AtSelectComponent = class {
             'No results found'))));
     }
     renderOption(option) {
-        return (index.h("at-select-option", { value: option.value, is_active: this.value === option.key, onAtuiClick: () => this.handleChange(option.key) }));
+        return (index.h("at-select-option", { key: option.key || option.value, value: option.value, is_active: this.value === option.key, onAtuiClick: () => this.handleChange(option.key), onMouseDown: () => {
+                if (!option.disabled)
+                    this.handleChange(option.value);
+            } }));
     }
     renderGroupedOption(option) {
         if (!this.isGroup(option) ||
@@ -348,6 +376,10 @@ const AtSelectOptionComponent = class {
      */
     is_active = false;
     /**
+     *  Will disable interaction if set
+     */
+    disabled = false;
+    /**
      * Emitted when the select option is clicked
      */
     atuiClick;
@@ -355,12 +387,15 @@ const AtSelectOptionComponent = class {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
-        const classname = getOptionClassname({
+        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const disabledClass = this.disabled
+            ? 'pointer-events-none opacity-50 bg-gray-100 text-gray-400'
+            : 'cursor-pointer';
+        const classname = `${getOptionClassname({
             active: this.is_active,
             group_option: this.option_group,
-        });
-        return (index.h("li", { key: 'effd548d2f9ab7d7796ecd73ecabbc69053cacce', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, index.h("slot", { key: '0f77cc5b5f7f1d374230355879ffd472056214df' }), this.value));
+        })} ${disabledClass}`;
+        return (index.h("li", { key: 'a9d6373d1648e3756f2174463b772b6c77498cca', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'ed3ea18eece131309c6cc59e50a0fd43fb611693' }), this.value));
     }
 };
 

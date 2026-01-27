@@ -32,6 +32,10 @@ export class AtSelectOptionComponent {
      */
     is_active = false;
     /**
+     *  Will disable interaction if set
+     */
+    disabled = false;
+    /**
      * Emitted when the select option is clicked
      */
     atuiClick;
@@ -39,12 +43,15 @@ export class AtSelectOptionComponent {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
-        const classname = getOptionClassname({
+        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const disabledClass = this.disabled
+            ? 'pointer-events-none opacity-50 bg-gray-100 text-gray-400'
+            : 'cursor-pointer';
+        const classname = `${getOptionClassname({
             active: this.is_active,
             group_option: this.option_group,
-        });
-        return (h("li", { key: 'effd548d2f9ab7d7796ecd73ecabbc69053cacce', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', tabIndex: 0, class: classname, onClick: () => this.handleClick() }, h("slot", { key: '0f77cc5b5f7f1d374230355879ffd472056214df' }), this.value));
+        })} ${disabledClass}`;
+        return (h("li", { key: 'a9d6373d1648e3756f2174463b772b6c77498cca', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'ed3ea18eece131309c6cc59e50a0fd43fb611693' }), this.value));
     }
     static get is() { return "at-select-option"; }
     static get properties() {
@@ -106,6 +113,26 @@ export class AtSelectOptionComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "is_active",
+                "defaultValue": "false"
+            },
+            "disabled": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Will disable interaction if set"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };

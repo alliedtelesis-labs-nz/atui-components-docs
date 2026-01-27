@@ -19,6 +19,10 @@ export declare class AtSelectOptionComponent {
      */
     is_active?: boolean;
     /**
+     *  Will disable interaction if set
+     */
+    disabled?: boolean;
+    /**
      * Emitted when the select option is clicked
      */
     atuiClick: EventEmitter<string>;
