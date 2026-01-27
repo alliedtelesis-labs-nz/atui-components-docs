@@ -207,10 +207,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-tab-content.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-table-pagination.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-table-pagination.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-tabs.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -351,10 +347,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-button_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-placeholder_5.cjs':
+                case 'at-placeholder_6.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './at-placeholder_5.cjs.entry.js')); }).then(processMod, consoleError);
+                        './at-placeholder_6.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-column-manager_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

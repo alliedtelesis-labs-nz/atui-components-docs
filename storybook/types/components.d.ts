@@ -2023,7 +2023,7 @@ export namespace Components {
          */
         "updateRowByIndex": <T>(rowUpdates: RowUpdate<T>[], options?: RowUpdateOptions) => Promise<void>;
         /**
-          * If true, disables pagination on the table and shows all data at once. Useful for server-side pagination where you want to control pagination externally.
+          * If true, disables pagination on the table and shows all data at once.  This only applies for client-side filtering mode. When `server_side_mode` is enabled, the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
           * @default false
          */
         "use_custom_pagination"?: boolean;
@@ -2542,6 +2542,10 @@ export namespace Components {
           * @default 1
          */
         "num_pages": number;
+        /**
+          * @default 10
+         */
+        "page_size": number;
         /**
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
@@ -6688,7 +6692,7 @@ declare namespace LocalJSX {
         total: number;
     };
         /**
-          * If true, disables pagination on the table and shows all data at once. Useful for server-side pagination where you want to control pagination externally.
+          * If true, disables pagination on the table and shows all data at once.  This only applies for client-side filtering mode. When `server_side_mode` is enabled, the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
           * @default false
          */
         "use_custom_pagination"?: boolean;
@@ -7227,6 +7231,10 @@ declare namespace LocalJSX {
           * Emits event with ```event.detail``` as the new page size
          */
         "onAtPageSizeChange"?: (event: AtTablePaginationCustomEvent<number>) => void;
+        /**
+          * @default 10
+         */
+        "page_size"?: number;
         /**
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]

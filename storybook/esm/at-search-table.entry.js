@@ -54,7 +54,9 @@ const AtSearchTable = class {
     hide_export_menu;
     /**
      * If true, disables pagination on the table and shows all data at once.
-     * Useful for server-side pagination where you want to control pagination externally.
+     *
+     * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
+     * the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
      */
     use_custom_pagination = false;
     /**
@@ -85,6 +87,8 @@ const AtSearchTable = class {
     selectedFilters = [];
     menuSelectedIds = [];
     searchValue = '';
+    currentPage = 1;
+    pageSize = this.page_size || 10;
     tableEl;
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
@@ -95,6 +99,9 @@ const AtSearchTable = class {
         return (!this.hide_column_manager &&
             this.col_defs &&
             this.col_defs.length > 0);
+    }
+    get totalPages() {
+        return Math.max(1, Math.ceil((this.table_data?.total || 0) / this.pageSize));
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
@@ -334,20 +341,32 @@ const AtSearchTable = class {
         }
         this.updateActiveFilters();
     }
+    handlePageChange(event) {
+        this.currentPage = event.detail;
+        this.emitSearchParamsChange();
+    }
+    handlePageSizeChange(event) {
+        this.pageSize = event.detail;
+        this.currentPage = 1;
+        this.emitSearchParamsChange();
+    }
     emitSearchParamsChange() {
         if (!this.agGrid)
             return;
-        const paginationModel = this.agGrid.paginationGetCurrentPage();
-        const pageSize = this.agGrid.paginationGetPageSize();
-        const startRow = paginationModel * pageSize;
-        const endRow = (paginationModel + 1) * pageSize;
+        const startRow = (this.currentPage - 1) * this.pageSize;
+        const endRow = this.currentPage * this.pageSize;
         const columnState = this.agGrid.getColumnState();
         const sortedColumn = columnState.find((col) => col.sort !== null && col.sort !== undefined);
+        const visibleColumns = columnState
+            .filter((col) => !col.hide)
+            .map((col) => col.colId);
         const searchParams = {
+            columns: visibleColumns,
+            globalFilter: this.searchValue,
             fieldFilters: this.activeFilters,
             startRow: startRow,
             endRow: endRow,
-            sort: sortedColumn?.colId,
+            sort: sortedColumn?.colId ?? '',
             direction: sortedColumn?.sort === 'asc'
                 ? SortDirection.ASC
                 : SortDirection.DESC,
@@ -355,7 +374,9 @@ const AtSearchTable = class {
         this.atSearchParamsChange.emit(searchParams);
     }
     render() {
-        return (h(Host, { key: 'f6c9f97b34fd66623d6243ca47b09484a9082bc4' }, h("at-table-actions", { key: '5ee5f0081e0d6602be9b41e99880d846d9048a12', ag_grid: this.agGrid }, h("div", { key: '7070e461798b4fa95bec2ee916332bb905be358a', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '8af6fef97ea9ce28dd65b68374771484e0c5bd7a', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'ced4b9d4b764d5f5f3a6cca7d474cd7a08c1994c', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '24c6df40d1cab769ee6a54ec65c96a59bf02de05', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '4f52111936c7d280af820611d8c05161de7bc4f3', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '089417e81d8d7c22824d3659b4a43ceb0f9259ed', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '0ac4162eac861ca679e04e86f262247ec25a9bb9', slot: "actions" }, h("slot", { key: 'd48d5b61bf5f6730edd84ee402c9354aa98f14be', name: "actions" }))), h("slot", { key: 'd9b7f6eb73f254641a5e4c277585ea0130b5e37d', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }))));
+        return (h(Host, { key: '2a49266188e5058bdaeb7cc1b4c5fca18371e957' }, h("at-table-actions", { key: '4ab665252db6ee37cbcfe28ea25d0040adcfc711', ag_grid: this.agGrid }, h("div", { key: '363d7c6067471cfe93d0a6426ed1ae2bba93969f', class: "flex items-center gap-8 px-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'd4c92a521f347b7afa180b9e3c4e64b1001e2675', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '05919fa4cf3099a3a21de3539d5f81a867a1bcba', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'f99175b72900ba72add31666307e75c75fb0f58c', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '829addedfe56e739c5471f7785260d4c4bbb98a1', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '2b90862c3554d162624a70267d40238c3b16f09b', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'ca471f2afe4de66a2f7c797f078dc4d17c620918', slot: "actions" }, h("slot", { key: '46b1d8871b690e1fc796e327f6a0e193153c5656', name: "actions" }))), h("slot", { key: 'f14cd73b9f349b6a433f3369be707388b416e8eb', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+                ? this.pageSize
+                : this.page_size, use_custom_pagination: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode })), this.server_side_mode && (h("at-table-pagination", { key: '99482600be932f532cfbb713f89c5370291c2ff7', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "selectedFilters": [{

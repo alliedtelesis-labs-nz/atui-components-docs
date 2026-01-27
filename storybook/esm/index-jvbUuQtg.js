@@ -187,10 +187,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-tab-content.entry.js').then(processMod, consoleError);
-                case 'at-table-pagination':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-table-pagination.entry.js').then(processMod, consoleError);
                 case 'at-tabs':
                     return import(
                       /* webpackMode: "lazy" */
@@ -331,10 +327,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-button_2.entry.js').then(processMod, consoleError);
-                case 'at-placeholder_5':
+                case 'at-placeholder_6':
                     return import(
                       /* webpackMode: "lazy" */
-                      './at-placeholder_5.entry.js').then(processMod, consoleError);
+                      './at-placeholder_6.entry.js').then(processMod, consoleError);
                 case 'at-column-manager_3':
                     return import(
                       /* webpackMode: "lazy" */

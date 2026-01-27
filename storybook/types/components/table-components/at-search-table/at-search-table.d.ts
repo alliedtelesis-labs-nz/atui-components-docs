@@ -61,7 +61,9 @@ export declare class AtSearchTable {
     hide_export_menu?: boolean;
     /**
      * If true, disables pagination on the table and shows all data at once.
-     * Useful for server-side pagination where you want to control pagination externally.
+     *
+     * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
+     * the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
      */
     use_custom_pagination?: boolean;
     /**
@@ -97,9 +99,12 @@ export declare class AtSearchTable {
     }[];
     menuSelectedIds: string[];
     searchValue: string;
+    currentPage: number;
+    pageSize: number;
     tableEl: HTMLAtTableElement;
     get shouldShowDropdownFilters(): boolean;
     get shouldShowColumnManager(): boolean;
+    get totalPages(): number;
     handleSelectedFiltersChange(newValue: {
         id: string;
         value: string;
@@ -152,6 +157,8 @@ export declare class AtSearchTable {
     private handleFilterListChange;
     private updateActiveFilters;
     handleSearchChange(event: CustomEvent): void;
+    handlePageChange(event: CustomEvent<number>): void;
+    handlePageSizeChange(event: CustomEvent<number>): void;
     emitSearchParamsChange(): void;
     render(): any;
 }

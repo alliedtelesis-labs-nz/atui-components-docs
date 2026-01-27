@@ -24,6 +24,7 @@ export class AtTablePagination {
         { value: '50' },
         { value: '100' },
     ];
+    page_size = 10;
     /**
      * Emits event with ```event.detail``` as the new page number
      */
@@ -33,7 +34,7 @@ export class AtTablePagination {
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: '802bef6b9aab790da31ec268552b8ccec8c3096a', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '1b73ac13040e0dd7c866959afb99983aaef5a846' }, "Page Size: "), h("at-select", { key: '99ba6a024247cd673d93daf43cdd25abf5ad1ccc', options: this.page_size_options, value: `${this.page_size_options[0].value}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '1fe499b606f33411dd4bc5e33a9a9d3620d19c3b', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '8939d3bbe0d48811ce59200807e10cd486f5e160', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: '0c80089ce6261a888a3a674fbd94b9413a4df41f' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '4ff51314000dc65ebb20e4981ce63cfc19acc69b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '27a6751d090a3cfe5e1191265caa4550bc04f130', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: 'f12297b29b9c9f2806a177378a47574deead1808', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '1b004a2b7026936af5e5cf7a2bb01c2c2a719d2d' }, "Page Size: "), h("at-select", { key: '9d295eea66703025ba4fca31ed2e71277f1d2337', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: 'e58ed503cbb9c9d9d8373f6db4a896bb2de4774d', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '010a732eeb5615778a835e20d4d1503dcb1565b5', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'd4e8d3ad39de62e25c7cd48cbbfed32a35db22d7' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '39a6d34ce782b9e2d15f3a859b7ab9cd9b53231b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '2df61153213862155e1dc1b2b6b2a298a5f0e44b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
     static get is() { return "at-table-pagination"; }
     static get properties() {
@@ -102,6 +103,26 @@ export class AtTablePagination {
                 "getter": false,
                 "setter": false,
                 "defaultValue": "[\n        { value: '5' },\n        { value: '10' },\n        { value: '20' },\n        { value: '50' },\n        { value: '100' },\n    ]"
+            },
+            "page_size": {
+                "type": "number",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "page_size",
+                "defaultValue": "10"
             }
         };
     }
