@@ -48036,6 +48036,9 @@ const AtTableComponent = class {
      * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
      */
     async createGrid() {
+        if (this.agGrid) {
+            this.agGrid.destroy();
+        }
         const gridOptions = {
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
@@ -48085,7 +48088,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '7d1f030cb57efc1dc146f27d34f3b3fbf0211446', class: "ag-theme-material" });
+        return index.h(index.Host, { key: '0ede40b90dbd8aab686f6bf8532e26d4e3f7ba62', class: "ag-theme-material" });
     }
     static get watchers() { return {
         "table_data": [{
