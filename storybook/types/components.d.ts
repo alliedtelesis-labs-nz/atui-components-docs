@@ -766,6 +766,7 @@ export namespace Components {
     }
     interface AtDashboard {
         /**
+          * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
         "widget_items": CustomGridStackItem[];
@@ -1450,6 +1451,7 @@ export namespace Components {
         "message_title": string;
         /**
           * Type of the message.
+          * @default 'default'
          */
         "type": 'error' | 'warning' | 'success' | 'info' | 'default';
     }
@@ -2553,6 +2555,7 @@ export namespace Components {
          */
         "num_pages": number;
         /**
+          * The number of table rows displayed per page
           * @default 10
          */
         "page_size": number;
@@ -5366,10 +5369,20 @@ declare namespace LocalJSX {
         "to_date_value"?: Date;
     }
     interface AtDashboard {
+        /**
+          * Emitted when a widget's position or size changes in the grid.
+         */
         "onChangedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        /**
+          * Emitted when a widget is removed from the dashboard.
+         */
         "onRemovedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        /**
+          * Emitted when a widget finishes resizing or dragging.
+         */
         "onResizeDragEvent"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
         /**
+          * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
         "widget_items"?: CustomGridStackItem[];
@@ -6058,6 +6071,7 @@ declare namespace LocalJSX {
         "message_title"?: string;
         /**
           * Type of the message.
+          * @default 'default'
          */
         "type"?: 'error' | 'warning' | 'success' | 'info' | 'default';
     }
@@ -7252,6 +7266,7 @@ declare namespace LocalJSX {
          */
         "onAtPageSizeChange"?: (event: AtTablePaginationCustomEvent<number>) => void;
         /**
+          * The number of table rows displayed per page
           * @default 10
          */
         "page_size"?: number;

@@ -24,6 +24,9 @@ export class AtTablePagination {
         { value: '50' },
         { value: '100' },
     ];
+    /**
+     * The number of table rows displayed per page
+     */
     page_size = 10;
     /**
      * Emits event with ```event.detail``` as the new page number
@@ -34,7 +37,7 @@ export class AtTablePagination {
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: 'f12297b29b9c9f2806a177378a47574deead1808', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '1b004a2b7026936af5e5cf7a2bb01c2c2a719d2d' }, "Page Size: "), h("at-select", { key: '9d295eea66703025ba4fca31ed2e71277f1d2337', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: 'e58ed503cbb9c9d9d8373f6db4a896bb2de4774d', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '010a732eeb5615778a835e20d4d1503dcb1565b5', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'd4e8d3ad39de62e25c7cd48cbbfed32a35db22d7' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '39a6d34ce782b9e2d15f3a859b7ab9cd9b53231b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '2df61153213862155e1dc1b2b6b2a298a5f0e44b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: '2fa760f9e10aaf7a00f825fdb644b18091f88f43', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '4985e859b7e13b8b464a3b3e21d2b25968d963c0' }, "Page Size: "), h("at-select", { key: '3f8ea394b17f66bf24943788b312385db67a698c', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '64e884d42b2a22fb28191478479e7fe9b1979494', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '2273e61aa5626c04ef865d5b924569422e1c774b', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'e4db658bf92392cd43cdc5d1a257b8acacc02bbf' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '90c4273f32575c8d73487e1f39e6e1983ebcbb0b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: 'df2129cad0bdc3244755c263f2ec2aeced214db7', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
     static get is() { return "at-table-pagination"; }
     static get properties() {
@@ -116,7 +119,7 @@ export class AtTablePagination {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": ""
+                    "text": "The number of table rows displayed per page"
                 },
                 "getter": false,
                 "setter": false,

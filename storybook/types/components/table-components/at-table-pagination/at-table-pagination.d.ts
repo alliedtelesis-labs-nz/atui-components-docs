@@ -19,6 +19,9 @@ export declare class AtTablePagination {
      * Options provided in dropdown for page sizes.
      */
     page_size_options: SelectOption[];
+    /**
+     * The number of table rows displayed per page
+     */
     page_size: number;
     /**
      * Emits event with ```event.detail``` as the new page number

@@ -6369,9 +6369,21 @@ const AtDashboard = class {
         this.resizeDragEvent = createEvent(this, "resizeDragEvent", 7);
     }
     get el() { return getElement(this); }
+    /**
+     * Array of dashboard widget items to display in the grid layout.
+     */
     widget_items = [];
+    /**
+     * Emitted when a widget's position or size changes in the grid.
+     */
     changedItem;
+    /**
+     * Emitted when a widget is removed from the dashboard.
+     */
     removedItem;
+    /**
+     * Emitted when a widget finishes resizing or dragging.
+     */
     resizeDragEvent;
     widgetItemsChanged() { }
     grid;
@@ -6465,7 +6477,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: '77a040c729ac619ddc32346010fbece5ea2ca1b5', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '20d585dee04981fb51a630f9535c838958e06db3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }

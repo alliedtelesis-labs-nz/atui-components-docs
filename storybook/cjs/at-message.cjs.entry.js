@@ -36,7 +36,7 @@ const AtMessage = class {
     /**
      * Type of the message.
      */
-    type;
+    type = 'default';
     /**
      * Theme of the message, either "light" or "default".
      */
@@ -68,7 +68,7 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (index.h("div", { key: 'a3b327972a1a1c6080ab6f479a56ee8c6cf010f7', class: this.hostClasses, "data-name": "message-container" }, index.h("i", { key: '3ffd345e85dee2fb5e6981302995a82f87daf84a', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), index.h("div", { key: 'eb5ab93a237c85adf5b2ea973767e898f6fef069', class: "w-full" }, this.message_title && (index.h("div", { key: '83ad40f54527ef6cbb81cef99cf4282e03b20df1', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: '5dc49a4a5e6a8f523a70c2f9da975ca001393e65', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: '0334eee2d80dc12c0936e3efe08b33c65cab827d' }))));
+        return (index.h("div", { key: 'b24d2df119b12cf94c5e590a03d375af90d09afe', class: this.hostClasses, "data-name": "message-container" }, index.h("i", { key: '40864bbcf37de867aff6f31060c75d7a8e978772', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), index.h("div", { key: 'b413412f4b47a49a1193f71956342deacfa7f294', class: "w-full" }, this.message_title && (index.h("div", { key: '28a9c8117b4316133e6c7d864ff4ea1c00fb8187', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: 'f495256c3e15da3710d0a2b3d732faf33fee6091', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: '45b7e02e2c2d16a7b2cb8260cd85eaffe4b63e45' }))));
     }
 };
 

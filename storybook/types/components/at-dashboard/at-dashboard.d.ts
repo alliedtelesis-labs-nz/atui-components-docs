@@ -10,9 +10,21 @@ export interface CustomGridStackItem extends GridStackNode {
 }
 export declare class AtDashboard {
     el: HTMLElement;
+    /**
+     * Array of dashboard widget items to display in the grid layout.
+     */
     widget_items: CustomGridStackItem[];
+    /**
+     * Emitted when a widget's position or size changes in the grid.
+     */
     changedItem: EventEmitter<CustomGridStackItem>;
+    /**
+     * Emitted when a widget is removed from the dashboard.
+     */
     removedItem: EventEmitter<CustomGridStackItem>;
+    /**
+     * Emitted when a widget finishes resizing or dragging.
+     */
     resizeDragEvent: EventEmitter<CustomGridStackItem>;
     widgetItemsChanged(): void;
     private grid?;
