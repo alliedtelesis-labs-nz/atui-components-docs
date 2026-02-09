@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
-import { ISearchTableParams } from '../../../types';
+import { ColumnDetails, IPaginationParams, ISearchTableParams } from '../../../types';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -60,6 +60,14 @@ export declare class AtSearchTable {
      */
     hide_export_menu?: boolean;
     /**
+     * If true, hides CSV export option from export menu
+     */
+    hide_csv_export?: boolean;
+    /**
+     * If true, hides PDF export option from export menu
+     */
+    hide_pdf_export?: boolean;
+    /**
      * If true, disables pagination on the table and shows all data at once.
      *
      * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
@@ -86,6 +94,14 @@ export declare class AtSearchTable {
      * Contains filters, search text, pagination info
      */
     atSearchParamsChange: EventEmitter<ISearchTableParams>;
+    /**
+     * Event emitted when CSV export is requested
+     */
+    atExportCsv: EventEmitter<IPaginationParams>;
+    /**
+     * Event emitted when PDF export is requested
+     */
+    atExportPdf: EventEmitter<ColumnDetails[]>;
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;
@@ -160,6 +176,7 @@ export declare class AtSearchTable {
     handlePageChange(event: CustomEvent<number>): void;
     handlePageSizeChange(event: CustomEvent<number>): void;
     emitSearchParamsChange(): void;
+    handleExport(event: CustomEvent<string>): void;
     render(): any;
 }
 export {};

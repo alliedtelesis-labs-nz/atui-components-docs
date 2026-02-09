@@ -49,6 +49,14 @@ export class AtSearchTable {
      */
     hide_export_menu;
     /**
+     * If true, hides CSV export option from export menu
+     */
+    hide_csv_export = false;
+    /**
+     * If true, hides PDF export option from export menu
+     */
+    hide_pdf_export = false;
+    /**
      * If true, disables pagination on the table and shows all data at once.
      *
      * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
@@ -75,6 +83,14 @@ export class AtSearchTable {
      * Contains filters, search text, pagination info
      */
     atSearchParamsChange;
+    /**
+     * Event emitted when CSV export is requested
+     */
+    atExportCsv;
+    /**
+     * Event emitted when PDF export is requested
+     */
+    atExportPdf;
     el;
     translations;
     agGrid;
@@ -373,10 +389,29 @@ export class AtSearchTable {
         };
         this.atSearchParamsChange.emit(searchParams);
     }
+    handleExport(event) {
+        const exportType = event.detail;
+        if (exportType === 'CSV') {
+            this.atExportCsv.emit({
+                start: (this.currentPage - 1) * this.pageSize,
+                end: this.currentPage * this.pageSize,
+            });
+        }
+        else if (exportType === 'PDF') {
+            const columnDetails = this.col_defs
+                .filter((col) => !col.hide)
+                .map((col) => ({
+                field: col.field,
+                displayName: col.headerName || col.field,
+                actualWidth: col.width,
+            }));
+            this.atExportPdf.emit(columnDetails);
+        }
+    }
     render() {
-        return (h(Host, { key: '46a182bc9ae5442193464faf6120280a93700d41' }, h("at-table-actions", { key: '6aca243838c9eed4aee631acf8f51db74f5e9f19', ag_grid: this.agGrid }, h("div", { key: '801c0ae07628252020da59545ca131a08422c52a', class: "flex items-center gap-8 px-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '4912e3c08ec33fed3d7acdb0b0c033d19ff6707e', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'e254b662588c8fc3479950b0e332c42a164d994e', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'd449dcbf3bbf63b8cd6f92a4774e05fc17f34acd', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'c4f4d67d9de5dbc389d606dc6c56724cf3cd853d', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: '388f1e73baeb92e2d306e3aa7ef5373983546ddf', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '92cebc44111fa4fb8f3e1dddc65879282a8d8726', slot: "actions" }, h("slot", { key: '45e51e297558301c038d5c130041056189595e63', name: "actions" }))), h("slot", { key: '107c0cf32b751801efc6a62f582b3c6082a0814e', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+        return (h(Host, { key: 'd8c6166a0ced66e3e26df9c032aab48781170275' }, h("at-table-actions", { key: '81e044c27dd929d902a52668f4a6fccc905b1cd6', ag_grid: this.agGrid }, h("div", { key: 'fa0130cf85c6afb25706bcdec4b42fc91a22927d', class: "flex items-center gap-8 px-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'd2486b6c6da0e49ae2193469789ac6b7c010a041', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '94b0c9801a7b0c651104f88a8534c2550d7712a4', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '232d5a90c77a0e70a22cc89e8c1522fca84d261b', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '0e99599741f822007fe3200975adced108670ca3', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '42d4914da24968673f92008cf44b71dfb98ba34d', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '94002012ef2c39a75bf798938ab0aae5fb238fc0', slot: "actions" }, h("slot", { key: '2fee71cd70d15a7981915c5d1bd0bf97227d9df4', name: "actions" }))), h("slot", { key: '6d100336357ec29eec62f4816a9259ce48ec3ad9', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode })), this.server_side_mode && (h("at-table-pagination", { key: 'ad8e11bc960f377d0a1c68031fe4430185e4c4f4', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                : this.page_size, use_custom_pagination: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode })), this.server_side_mode && (h("at-table-pagination", { key: '9b04724f2fc479349103529d0063dbbdd3770f24', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get properties() {
@@ -576,6 +611,46 @@ export class AtSearchTable {
                 "reflect": false,
                 "attribute": "hide_export_menu"
             },
+            "hide_csv_export": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, hides CSV export option from export menu"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "hide_csv_export",
+                "defaultValue": "false"
+            },
+            "hide_pdf_export": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, hides PDF export option from export menu"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "hide_pdf_export",
+                "defaultValue": "false"
+            },
             "use_custom_pagination": {
                 "type": "boolean",
                 "mutable": false,
@@ -691,6 +766,50 @@ export class AtSearchTable {
                             "path": "../../../types",
                             "id": "src/types/index.ts::ISearchTableParams",
                             "referenceLocation": "ISearchTableParams"
+                        }
+                    }
+                }
+            }, {
+                "method": "atExportCsv",
+                "name": "atExportCsv",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Event emitted when CSV export is requested"
+                },
+                "complexType": {
+                    "original": "IPaginationParams",
+                    "resolved": "IPaginationParams",
+                    "references": {
+                        "IPaginationParams": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::IPaginationParams",
+                            "referenceLocation": "IPaginationParams"
+                        }
+                    }
+                }
+            }, {
+                "method": "atExportPdf",
+                "name": "atExportPdf",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Event emitted when PDF export is requested"
+                },
+                "complexType": {
+                    "original": "ColumnDetails[]",
+                    "resolved": "ColumnDetails[]",
+                    "references": {
+                        "ColumnDetails": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::ColumnDetails",
+                            "referenceLocation": "ColumnDetails"
                         }
                     }
                 }

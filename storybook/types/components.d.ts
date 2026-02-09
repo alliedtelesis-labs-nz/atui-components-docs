@@ -20,7 +20,7 @@ import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-import { DateRangeStrings, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+import { ColumnDetails, DateRangeStrings, IPaginationParams, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 import { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { HeaderSizes } from "./components/at-header/at-header";
 import { InputType } from "./components/at-input/at-input";
@@ -64,7 +64,7 @@ export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/
 export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-export { DateRangeStrings, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
+export { ColumnDetails, DateRangeStrings, IPaginationParams, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
 export { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { HeaderSizes } from "./components/at-header/at-header";
 export { InputType } from "./components/at-input/at-input";
@@ -1972,6 +1972,11 @@ export namespace Components {
          */
         "hide_column_manager"?: boolean;
         /**
+          * If true, hides CSV export option from export menu
+          * @default false
+         */
+        "hide_csv_export"?: boolean;
+        /**
           * If true the table dropdown filters will not be added
          */
         "hide_dropdown_filters"?: boolean;
@@ -1979,6 +1984,11 @@ export namespace Components {
           * If true the table export menu will not be added
          */
         "hide_export_menu"?: boolean;
+        /**
+          * If true, hides PDF export option from export menu
+          * @default false
+         */
+        "hide_pdf_export"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
@@ -2512,6 +2522,16 @@ export namespace Components {
      * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
      */
     interface AtTableExportMenu {
+        /**
+          * If true, hides the CSV export option in the export menu.
+          * @default false
+         */
+        "hide_csv"?: boolean;
+        /**
+          * If true, hides the PDF export option in the export menu.
+          * @default false
+         */
+        "hide_pdf"?: boolean;
     }
     /**
      * @category Data Tables
@@ -4029,6 +4049,8 @@ declare global {
     };
     interface HTMLAtSearchTableElementEventMap {
         "atSearchParamsChange": ISearchTableParams;
+        "atExportCsv": IPaginationParams;
+        "atExportPdf": ColumnDetails[];
     }
     /**
      * @category Data Tables
@@ -6700,6 +6722,11 @@ declare namespace LocalJSX {
          */
         "hide_column_manager"?: boolean;
         /**
+          * If true, hides CSV export option from export menu
+          * @default false
+         */
+        "hide_csv_export"?: boolean;
+        /**
           * If true the table dropdown filters will not be added
          */
         "hide_dropdown_filters"?: boolean;
@@ -6707,6 +6734,11 @@ declare namespace LocalJSX {
           * If true the table export menu will not be added
          */
         "hide_export_menu"?: boolean;
+        /**
+          * If true, hides PDF export option from export menu
+          * @default false
+         */
+        "hide_pdf_export"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
@@ -6716,6 +6748,14 @@ declare namespace LocalJSX {
           * @default false
          */
         "loading"?: boolean;
+        /**
+          * Event emitted when CSV export is requested
+         */
+        "onAtExportCsv"?: (event: AtSearchTableCustomEvent<IPaginationParams>) => void;
+        /**
+          * Event emitted when PDF export is requested
+         */
+        "onAtExportPdf"?: (event: AtSearchTableCustomEvent<ColumnDetails[]>) => void;
         /**
           * Event emitted when search params change in server-side mode. Contains filters, search text, pagination info
          */
@@ -7235,6 +7275,16 @@ declare namespace LocalJSX {
      * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
      */
     interface AtTableExportMenu {
+        /**
+          * If true, hides the CSV export option in the export menu.
+          * @default false
+         */
+        "hide_csv"?: boolean;
+        /**
+          * If true, hides the PDF export option in the export menu.
+          * @default false
+         */
+        "hide_pdf"?: boolean;
         /**
           * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
          */

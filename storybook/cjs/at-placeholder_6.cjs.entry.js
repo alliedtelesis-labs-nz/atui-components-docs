@@ -110,6 +110,14 @@ const AtTableExportMenu = class {
         index.registerInstance(this, hostRef);
         this.atChange = index.createEvent(this, "atChange", 7);
     }
+    /**
+     * If true, hides the CSV export option in the export menu.
+     */
+    hide_csv = false;
+    /**
+     * If true, hides the PDF export option in the export menu.
+     */
+    hide_pdf = false;
     get el() { return index.getElement(this); }
     translations;
     async componentWillLoad() {
@@ -120,7 +128,10 @@ const AtTableExportMenu = class {
      */
     atChange;
     render() {
-        return (index.h("at-menu", { key: '26535c39456af8c1082e4a8721cb16e3e78e3029', width: "fit-content", align: "end" }, index.h("at-tooltip", { key: 'f7a7a96222e11968b1dc8e0548bf21b5b198e830', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: 'c4ae48a99d36fe9f74a2705bcf20b9c4a6fa2f5d', slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), index.h("span", { key: '1520ab41a99143ba212f9d7c0064467e12c43eef' }, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), index.h("div", { key: 'eb96eb5bfed4ae6b1cf24eb598d32107dfc8f4d3' }, index.h("at-menu-item", { key: 'e5e2d5c3edd515b7a2fc22cbce95252d545e3aa6', label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') }), index.h("at-menu-item", { key: '81df49b898b2d0d721866e679fe0db9b721344f1', label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') }))));
+        if (this.hide_csv && this.hide_pdf) {
+            return null;
+        }
+        return (index.h("at-menu", { width: "fit-content", position: "left", align: "end" }, index.h("at-tooltip", { slot: "menu-trigger", position: "top" }, index.h("at-button", { slot: "tooltip-trigger", icon: "save_alt", type: "secondaryText" }), index.h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), index.h("div", null, !this.hide_csv && (index.h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), !this.hide_pdf && (index.h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
     }
 };
 
@@ -163,7 +174,7 @@ const AtTableFilterMenu = class {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (index.h(index.Host, { key: '3fd558467ad1d9c3b35e05c018e5c8e051ed9dcc' }, index.h("at-menu", { key: '5631deb6a9e2656fbe1fa4cf6b466432cb5b1b5d', autoclose: false, width: "fit-content", class: "self-start" }, index.h("at-tooltip", { key: '82e60ee09d7aa7399065bdf4aa225ef05f29980c', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: 'f8175ff7db76cdbf4aa4ae97f3a48e5e94f83b78', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: '9fd9a4b0f81f0b1d4f3a7d0eec88b21128cdd4bb' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: 'e787dc38656a3e0d26a078d6c0e2aaf7943ecfa1', class: "flex flex-col" }, index.h("at-checkbox-group", { key: 'bf2aa34c726618276114fcd0bfb98b4319bdc0ab', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (index.h(index.Host, { key: '2cd1b800a5e751452738ceb9e1ff23014df6c9d8' }, index.h("at-menu", { key: '703a022b60374c431a284ea5a494e8cf8dbaab42', autoclose: false, width: "fit-content", class: "self-start", align: "end" }, index.h("at-tooltip", { key: '85023a5d04004afa7cf72bc52833498192b295d5', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: 'a634754d0d79a0239155ccc1eea0cf03be85fafa', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), index.h("span", { key: '3dfc75c08b65799e39a2664a340e5b54b93c38c8' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '4e33f810d9552a69e48c4aeb242bbfcb1d4fe6c8', class: "flex flex-col" }, index.h("at-checkbox-group", { key: '509d7ac495ba9a6203653d45c27eb75a2401ab47', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
         "selected": [{
@@ -212,7 +223,7 @@ const AtTableFilters = class {
         this.atChange.emit(this.selected.length ? this.selected : []);
     };
     render() {
-        return (this.col_defs && (index.h(index.Host, { key: '4c97d938aa58960d0ad0cee69c62fa70104de8c6', class: "flex items-start gap-8" }, this.selected.length > 0 && (index.h("div", { key: '8c49f3f9436ebaad16e1f5826705b4936ef1977b', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (index.h("div", { class: "flex items-center gap-2" }, index.h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, index.h("div", { slot: "input-actions" }, index.h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), index.h("at-button", { key: '497a92a8b5fb0b6cdd7c81d63fb56c29ef0e7bc2', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (index.h(index.Host, { key: '5b2362f4081ff9c0e334865cdae478abf13f603e', class: "flex items-start gap-8" }, this.selected.length > 0 && (index.h("div", { key: '1bc4b9ccb803eb863555659aa23bf0872b0e1e6e', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (index.h("div", { class: "flex items-center gap-2" }, index.h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, index.h("div", { slot: "input-actions" }, index.h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), index.h("at-button", { key: '5733728ace2f2039f38895ed01d4591196d2a79f', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
 };
 
@@ -253,7 +264,7 @@ const AtTablePagination = class {
      */
     atPageSizeChange;
     render() {
-        return (index.h(index.Host, { key: '89ddbc7d1c4a21fdddde863a1c292c9734555163', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: 'ce0efdabef7776f02911c5042551e371b2d67aa3' }, "Page Size: "), index.h("at-select", { key: '35a7b73d1e085517b7564d8353bf614b8efcd9c4', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: 'c5e8de8c48254497b9d5f9ed20f6a64ff247ac63', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), index.h("at-button", { key: '261c703bc3c0b7d2a7f2a4970bc8df09b42bcf44', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), index.h("span", { key: 'f0dcf3b0341c97b743142db018e5f0243c5f1227' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: '5c7e247e6323f0c9ecc7da9733f76478bf478c7b', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), index.h("at-button", { key: 'f50c7bdd6eeb839f995d9b88f3583378702d97a2', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (index.h(index.Host, { key: 'befd193afd921ab4ae02633ed5c53a6f32e6d149', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: '7dc74ded865d6ee7c4eab52922f366fbbf14236d' }, "Page Size: "), index.h("at-select", { key: 'cfdb6e6d7c9274e50c1317974652dd6dc58d2409', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: 'e6e87d619dabb606aa22c11e1d37e297d8f65d2f', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), index.h("at-button", { key: 'e3b9382ec385d763246946db57be373d9e03dbe9', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), index.h("span", { key: 'deab00869e735a44ae73f8fd5ea1008b83d51b29' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: '057eba23af4cb111c9dbf8aca8cca258360208e2', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), index.h("at-button", { key: '9af14fea7ff5f4aa0de6576f2ef537223a3727ab', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
 };
 
