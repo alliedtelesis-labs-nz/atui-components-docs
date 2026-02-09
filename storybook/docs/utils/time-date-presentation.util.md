@@ -6,7 +6,7 @@
 
 ### FlooredDateRange
 
-Defined in: [time-date-presentation.util.ts:270](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L270)
+Defined in: [time-date-presentation.util.ts:270](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L270)
 
 #### Implements
 
@@ -18,7 +18,7 @@ Defined in: [time-date-presentation.util.ts:270](https://github.com/alliedtelesi
 
 > **new FlooredDateRange**(`startDate`, `endDate`, `unit`): [`FlooredDateRange`](#flooreddaterange)
 
-Defined in: [time-date-presentation.util.ts:271](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L271)
+Defined in: [time-date-presentation.util.ts:271](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L271)
 
 ###### Parameters
 
@@ -44,7 +44,7 @@ Defined in: [time-date-presentation.util.ts:271](https://github.com/alliedtelesi
 
 > `readonly` **endDate**: `Date`
 
-Defined in: [time-date-presentation.util.ts:273](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L273)
+Defined in: [time-date-presentation.util.ts:273](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L273)
 
 ###### Implementation of
 
@@ -54,7 +54,7 @@ Defined in: [time-date-presentation.util.ts:273](https://github.com/alliedtelesi
 
 > `readonly` **startDate**: `Date`
 
-Defined in: [time-date-presentation.util.ts:272](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L272)
+Defined in: [time-date-presentation.util.ts:272](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L272)
 
 ###### Implementation of
 
@@ -66,7 +66,7 @@ Defined in: [time-date-presentation.util.ts:272](https://github.com/alliedtelesi
 
 > `static` **create**(`timeRange`, `unit`): [`FlooredDateRange`](#flooreddaterange)
 
-Defined in: [time-date-presentation.util.ts:280](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L280)
+Defined in: [time-date-presentation.util.ts:280](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L280)
 
 ###### Parameters
 
@@ -92,7 +92,7 @@ Defined in: [time-date-presentation.util.ts:280](https://github.com/alliedtelesi
 
 ### TimeDatePresentationUtil
 
-Defined in: [time-date-presentation.util.ts:18](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L18)
+Defined in: [time-date-presentation.util.ts:18](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L18)
 
 #### Constructors
 
@@ -110,7 +110,7 @@ Defined in: [time-date-presentation.util.ts:18](https://github.com/alliedtelesis
 
 > `static` **buildDateFromStrings**(`fromDate`, `fromTime`): `Date`
 
-Defined in: [time-date-presentation.util.ts:35](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L35)
+Defined in: [time-date-presentation.util.ts:35](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L35)
 
 ###### Parameters
 
@@ -130,7 +130,7 @@ Defined in: [time-date-presentation.util.ts:35](https://github.com/alliedtelesis
 
 > `static` **convertTimeRange**(`timeRange`): `object`
 
-Defined in: [time-date-presentation.util.ts:125](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L125)
+Defined in: [time-date-presentation.util.ts:125](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L125)
 
 ###### Parameters
 
@@ -154,7 +154,7 @@ Defined in: [time-date-presentation.util.ts:125](https://github.com/alliedtelesi
 
 > `static` **convertTimeRangeInNumber**(`timeRange`): `object`
 
-Defined in: [time-date-presentation.util.ts:144](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L144)
+Defined in: [time-date-presentation.util.ts:144](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L144)
 
 ###### Parameters
 
@@ -178,7 +178,7 @@ Defined in: [time-date-presentation.util.ts:144](https://github.com/alliedtelesi
 
 > `static` **getCustomFromAndToDate**(`timeRange`): `object`
 
-Defined in: [time-date-presentation.util.ts:71](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L71)
+Defined in: [time-date-presentation.util.ts:71](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L71)
 
 ###### Parameters
 
@@ -202,7 +202,7 @@ Defined in: [time-date-presentation.util.ts:71](https://github.com/alliedtelesis
 
 > `static` **getDateLabelMessage**(`selectedTime`, `format`): `string`
 
-Defined in: [time-date-presentation.util.ts:52](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L52)
+Defined in: [time-date-presentation.util.ts:52](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L52)
 
 ###### Parameters
 
@@ -222,7 +222,7 @@ Defined in: [time-date-presentation.util.ts:52](https://github.com/alliedtelesis
 
 > `static` **getDayCountFromDateFilter**(`dateFilter`): `number`
 
-Defined in: [time-date-presentation.util.ts:238](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L238)
+Defined in: [time-date-presentation.util.ts:238](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L238)
 
 ###### Parameters
 
@@ -238,7 +238,7 @@ Defined in: [time-date-presentation.util.ts:238](https://github.com/alliedtelesi
 
 > `static` **getFormattedDate**(`date`, `dateFormat`): `string`
 
-Defined in: [time-date-presentation.util.ts:160](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L160)
+Defined in: [time-date-presentation.util.ts:160](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L160)
 
 ###### Parameters
 
@@ -258,7 +258,7 @@ Defined in: [time-date-presentation.util.ts:160](https://github.com/alliedtelesi
 
 > `static` **getHourCountFromTimeRange**(`timeRange`): `number`
 
-Defined in: [time-date-presentation.util.ts:245](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L245)
+Defined in: [time-date-presentation.util.ts:245](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L245)
 
 ###### Parameters
 
@@ -274,7 +274,7 @@ Defined in: [time-date-presentation.util.ts:245](https://github.com/alliedtelesi
 
 > `static` **getIntervalFor30sPollerFromTimeRange**(`timeRange`): `number`
 
-Defined in: [time-date-presentation.util.ts:152](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L152)
+Defined in: [time-date-presentation.util.ts:152](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L152)
 
 ###### Parameters
 
@@ -290,7 +290,7 @@ Defined in: [time-date-presentation.util.ts:152](https://github.com/alliedtelesi
 
 > `static` **getIntervalString**(`start`, `end`, `translations`): `string`
 
-Defined in: [time-date-presentation.util.ts:221](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L221)
+Defined in: [time-date-presentation.util.ts:221](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L221)
 
 ###### Parameters
 
@@ -314,7 +314,7 @@ Defined in: [time-date-presentation.util.ts:221](https://github.com/alliedtelesi
 
 > `static` **getTimeOptions**(`startTime`, `endTime`): `SelectOption`[]
 
-Defined in: [time-date-presentation.util.ts:89](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L89)
+Defined in: [time-date-presentation.util.ts:89](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L89)
 
 ###### Parameters
 
@@ -334,7 +334,7 @@ Defined in: [time-date-presentation.util.ts:89](https://github.com/alliedtelesis
 
 > `static` **isCustomRange**(`timeRange`): `boolean`
 
-Defined in: [time-date-presentation.util.ts:261](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L261)
+Defined in: [time-date-presentation.util.ts:261](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L261)
 
 ###### Parameters
 
@@ -350,7 +350,7 @@ Defined in: [time-date-presentation.util.ts:261](https://github.com/alliedtelesi
 
 > `static` **translateDurationString**(`duration`, `translations`): `string`
 
-Defined in: [time-date-presentation.util.ts:195](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date-presentation.util.ts#L195)
+Defined in: [time-date-presentation.util.ts:195](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date-presentation.util.ts#L195)
 
 ###### Parameters
 

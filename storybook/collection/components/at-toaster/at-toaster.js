@@ -4,14 +4,15 @@ import { h } from "@stencil/core";
  * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
  */
 export class AtToasterComponent {
+    el;
     /**
      * Position of the toaster on the screen
      */
-    position;
+    position = 'bottom-right';
     toasts = [];
     /**
      * Adds a new toast to the toaster container
-     * This method is called from the ToasterUtil when a new toast is created.
+     * This method is called from the ToasterService when a new toast is created.
      *
      * @param toast The toast to add
      */
@@ -28,7 +29,7 @@ export class AtToasterComponent {
      * @param id The ID of the toast to remove
      */
     async removeToast(id) {
-        const toastEl = document.querySelector(`.at-toast[data-id="${id}"]`);
+        const toastEl = this.el.querySelector(`.at-toast[data-id="${id}"]`);
         toastEl.classList.add('close');
         toastEl.addEventListener('animationend', () => {
             this.toasts = this.toasts.filter((toast) => toast.id !== id);
@@ -60,7 +61,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '58fa94d1de3b68eae9d962ebb65ee669f56723cc', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
+        return (h("div", { key: '1c8c37be2016ac3d96f88a0781a0626282aabd10', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }))))))));
@@ -103,7 +104,8 @@ export class AtToasterComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "position"
+                "attribute": "position",
+                "defaultValue": "'bottom-right'"
             }
         };
     }
@@ -137,7 +139,7 @@ export class AtToasterComponent {
                     "return": "Promise<void>"
                 },
                 "docs": {
-                    "text": "Adds a new toast to the toaster container\nThis method is called from the ToasterUtil when a new toast is created.",
+                    "text": "Adds a new toast to the toaster container\nThis method is called from the ToasterService when a new toast is created.",
                     "tags": [{
                             "name": "param",
                             "text": "toast The toast to add"
@@ -170,4 +172,5 @@ export class AtToasterComponent {
             }
         };
     }
+    static get elementRef() { return "el"; }
 }

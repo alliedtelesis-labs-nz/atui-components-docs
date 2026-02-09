@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { PromptResponseScore } from './index.js';
+import { P as PromptResponseScore } from './prompt-Btgx1mEX.js';
 
 const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
 
@@ -214,7 +214,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'e8d2987e49c6a8e49593e34d4b8db12aa2757a14', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'd92a1c0465cce62d4560cc9ee13a8c1186aa7407', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ec1605220b7abc644bcad717d388cd9521ee0d49', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '7e17c2ffec642d11605c76794be35654f2379906', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'a4243e70e300578f682069b70b75ff6d06d9f896', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'efc1153209e32e58af81d386604af471c8ba0b88', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '4a0cd9e842840c6c6b827a36fa10122cb3a58811', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '2f7b225962bdbdd932e3f0829a6dc98ab64f0cee', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

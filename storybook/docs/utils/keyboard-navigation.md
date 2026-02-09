@@ -6,7 +6,7 @@
 
 ### KeyboardNavigationOptions
 
-Defined in: [keyboard-navigation.ts:4](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L4)
+Defined in: [keyboard-navigation.ts:4](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L4)
 
 #### Properties
 
@@ -14,19 +14,19 @@ Defined in: [keyboard-navigation.ts:4](https://github.com/alliedtelesis-labs-nz/
 
 > **container**: `HTMLElement`
 
-Defined in: [keyboard-navigation.ts:5](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L5)
+Defined in: [keyboard-navigation.ts:5](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L5)
 
 ##### focusOnOpen?
 
 > `optional` **focusOnOpen**: `boolean`
 
-Defined in: [keyboard-navigation.ts:9](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L9)
+Defined in: [keyboard-navigation.ts:9](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L9)
 
 ##### onEnter()?
 
 > `optional` **onEnter**: (`target`) => `void`
 
-Defined in: [keyboard-navigation.ts:7](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L7)
+Defined in: [keyboard-navigation.ts:7](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L7)
 
 ###### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [keyboard-navigation.ts:7](https://github.com/alliedtelesis-labs-nz/
 
 > `optional` **onEscape**: () => `void`
 
-Defined in: [keyboard-navigation.ts:6](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L6)
+Defined in: [keyboard-navigation.ts:6](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L6)
 
 ###### Returns
 
@@ -52,7 +52,7 @@ Defined in: [keyboard-navigation.ts:6](https://github.com/alliedtelesis-labs-nz/
 
 > `optional` **onSpace**: (`target`) => `void`
 
-Defined in: [keyboard-navigation.ts:8](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L8)
+Defined in: [keyboard-navigation.ts:8](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L8)
 
 ###### Parameters
 
@@ -70,7 +70,7 @@ Defined in: [keyboard-navigation.ts:8](https://github.com/alliedtelesis-labs-nz/
 
 > `const` **FOCUSABLE\_SELECTOR**: "button, \[href\], input, select, textarea, \[tabindex\]:not(\[tabindex=\"-1\"\])" = `'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'`
 
-Defined in: [keyboard-navigation.ts:1](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L1)
+Defined in: [keyboard-navigation.ts:1](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L1)
 
 ## Functions
 
@@ -78,7 +78,7 @@ Defined in: [keyboard-navigation.ts:1](https://github.com/alliedtelesis-labs-nz/
 
 > **createMenuKeydownHandler**(`options`): (`event`) => `void`
 
-Defined in: [keyboard-navigation.ts:127](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L127)
+Defined in: [keyboard-navigation.ts:127](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L127)
 
 #### Parameters
 
@@ -106,7 +106,7 @@ Defined in: [keyboard-navigation.ts:127](https://github.com/alliedtelesis-labs-n
 
 > **focusElementAtIndex**(`elements`, `index`): `void`
 
-Defined in: [keyboard-navigation.ts:18](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L18)
+Defined in: [keyboard-navigation.ts:18](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L18)
 
 #### Parameters
 
@@ -128,7 +128,7 @@ Defined in: [keyboard-navigation.ts:18](https://github.com/alliedtelesis-labs-nz
 
 > **focusFirstElement**(`container`, `delay`): `void`
 
-Defined in: [keyboard-navigation.ts:159](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L159)
+Defined in: [keyboard-navigation.ts:159](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L159)
 
 #### Parameters
 
@@ -150,7 +150,7 @@ Defined in: [keyboard-navigation.ts:159](https://github.com/alliedtelesis-labs-n
 
 > **getCurrentFocusIndex**(`elements`): `number`
 
-Defined in: [keyboard-navigation.ts:28](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L28)
+Defined in: [keyboard-navigation.ts:28](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L28)
 
 #### Parameters
 
@@ -168,7 +168,7 @@ Defined in: [keyboard-navigation.ts:28](https://github.com/alliedtelesis-labs-nz
 
 > **getFocusableElements**(`container`): `HTMLElement`[]
 
-Defined in: [keyboard-navigation.ts:12](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L12)
+Defined in: [keyboard-navigation.ts:12](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L12)
 
 #### Parameters
 
@@ -186,7 +186,7 @@ Defined in: [keyboard-navigation.ts:12](https://github.com/alliedtelesis-labs-nz
 
 > **handleArrowNavigation**(`event`, `container`): `void`
 
-Defined in: [keyboard-navigation.ts:32](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L32)
+Defined in: [keyboard-navigation.ts:32](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L32)
 
 #### Parameters
 
@@ -208,7 +208,7 @@ Defined in: [keyboard-navigation.ts:32](https://github.com/alliedtelesis-labs-nz
 
 > **handleHomeEndNavigation**(`event`, `container`): `void`
 
-Defined in: [keyboard-navigation.ts:66](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L66)
+Defined in: [keyboard-navigation.ts:66](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L66)
 
 #### Parameters
 
@@ -230,7 +230,7 @@ Defined in: [keyboard-navigation.ts:66](https://github.com/alliedtelesis-labs-nz
 
 > **handleTabFocusTrap**(`event`, `container`): `void`
 
-Defined in: [keyboard-navigation.ts:86](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/keyboard-navigation.ts#L86)
+Defined in: [keyboard-navigation.ts:86](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/keyboard-navigation.ts#L86)
 
 #### Parameters
 

@@ -151,10 +151,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-list-selector.entry.js').then(processMod, consoleError);
-                case 'at-message':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-message.entry.js').then(processMod, consoleError);
                 case 'at-multi-select':
                     return import(
                       /* webpackMode: "lazy" */
@@ -287,10 +283,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-time-range.entry.js').then(processMod, consoleError);
+                case 'at-toaster':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-toaster.entry.js').then(processMod, consoleError);
                 case 'at-layout_2':
                     return import(
                       /* webpackMode: "lazy" */
                       './at-layout_2.entry.js').then(processMod, consoleError);
+                case 'at-message':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-message.entry.js').then(processMod, consoleError);
                 case 'at-prompt-input_2':
                     return import(
                       /* webpackMode: "lazy" */

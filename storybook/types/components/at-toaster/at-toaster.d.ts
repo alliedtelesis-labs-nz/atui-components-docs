@@ -4,6 +4,7 @@ import { Toast, ToastPosition } from '../../types/toast';
  * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
  */
 export declare class AtToasterComponent {
+    el: HTMLElement;
     /**
      * Position of the toaster on the screen
      */
@@ -11,7 +12,7 @@ export declare class AtToasterComponent {
     toasts: Toast[];
     /**
      * Adds a new toast to the toaster container
-     * This method is called from the ToasterUtil when a new toast is created.
+     * This method is called from the ToasterService when a new toast is created.
      *
      * @param toast The toast to add
      */

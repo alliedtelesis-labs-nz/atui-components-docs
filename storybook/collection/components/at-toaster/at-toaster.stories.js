@@ -34,7 +34,7 @@ const Template = (args) => `
   </at-toaster>
   <script>
     document.querySelector("at-button").onclick = () => {
-      ToasterUtil.show("${args.type}", "${args.message}", {
+      ToasterService.show("${args.type}", "${args.message}", {
         title: "${args.title}",
         position: "${args.position}",
         timeout: ${args.timeout},

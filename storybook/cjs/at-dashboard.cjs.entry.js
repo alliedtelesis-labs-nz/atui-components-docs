@@ -6479,7 +6479,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: '20d585dee04981fb51a630f9535c838958e06db3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: '30f043996827201da0de123a73a59d223abc28f3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), index.h("slot", { name: widget.id })))))));
     }

@@ -43,6 +43,7 @@ import { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
 import { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 import { TimeUnit, TimeWithUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
+import { Toast, ToastPosition } from "./types/toast";
 import { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
 import { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 import { TreeNode } from "./types/tree";
@@ -86,6 +87,7 @@ export { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
 export { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 export { TimeUnit, TimeWithUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
+export { Toast, ToastPosition } from "./types/toast";
 export { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
 export { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
 export { TreeNode } from "./types/tree";
@@ -2799,6 +2801,27 @@ export namespace Components {
     interface AtTitleSubtitleDateCell {
     }
     /**
+     * @category Overlays
+     * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
+     */
+    interface AtToaster {
+        /**
+          * Adds a new toast to the toaster container This method is called from the ToasterService when a new toast is created.
+          * @param toast The toast to add
+         */
+        "addToast": (toast: Toast) => Promise<void>;
+        /**
+          * Position of the toaster on the screen
+          * @default 'bottom-right'
+         */
+        "position": ToastPosition;
+        /**
+          * Removes a toast from the toaster container by its ID This method is called by tapToast.
+          * @param id The ID of the toast to remove
+         */
+        "removeToast": (id: number) => Promise<void>;
+    }
+    /**
      * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
@@ -4518,6 +4541,16 @@ declare global {
         new (): HTMLAtTitleSubtitleDateCellElement;
     };
     /**
+     * @category Overlays
+     * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
+     */
+    interface HTMLAtToasterElement extends Components.AtToaster, HTMLStencilElement {
+    }
+    var HTMLAtToasterElement: {
+        prototype: HTMLAtToasterElement;
+        new (): HTMLAtToasterElement;
+    };
+    /**
      * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
@@ -4687,6 +4720,7 @@ declare global {
         "at-time-with-unit": HTMLAtTimeWithUnitElement;
         "at-title-subtitle-cell": HTMLAtTitleSubtitleCellElement;
         "at-title-subtitle-date-cell": HTMLAtTitleSubtitleDateCellElement;
+        "at-toaster": HTMLAtToasterElement;
         "at-toggle-cell": HTMLAtToggleCellElement;
         "at-toggle-switch": HTMLAtToggleSwitchElement;
         "at-tooltip": HTMLAtTooltipElement;
@@ -7520,6 +7554,17 @@ declare namespace LocalJSX {
     interface AtTitleSubtitleDateCell {
     }
     /**
+     * @category Overlays
+     * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
+     */
+    interface AtToaster {
+        /**
+          * Position of the toaster on the screen
+          * @default 'bottom-right'
+         */
+        "position"?: ToastPosition;
+    }
+    /**
      * @category Data Tables
      * @description A cell component for displaying a toggle.
      */
@@ -7746,6 +7791,7 @@ declare namespace LocalJSX {
         "at-time-with-unit": AtTimeWithUnit;
         "at-title-subtitle-cell": AtTitleSubtitleCell;
         "at-title-subtitle-date-cell": AtTitleSubtitleDateCell;
+        "at-toaster": AtToaster;
         "at-toggle-cell": AtToggleCell;
         "at-toggle-switch": AtToggleSwitch;
         "at-tooltip": AtTooltip;
@@ -8194,6 +8240,11 @@ declare module "@stencil/core" {
              * @description A cell component for displaying a title and subtitle with a date.
              */
             "at-title-subtitle-date-cell": LocalJSX.AtTitleSubtitleDateCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleDateCellElement>;
+            /**
+             * @category Overlays
+             * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
+             */
+            "at-toaster": LocalJSX.AtToaster & JSXBase.HTMLAttributes<HTMLAtToasterElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a toggle.

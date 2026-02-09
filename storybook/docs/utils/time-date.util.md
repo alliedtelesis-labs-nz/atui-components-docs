@@ -6,7 +6,7 @@
 
 ### TimeDateUtil
 
-Defined in: [time-date.util.ts:12](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L12)
+Defined in: [time-date.util.ts:12](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L12)
 
 #### Constructors
 
@@ -24,7 +24,7 @@ Defined in: [time-date.util.ts:12](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **ceilingDateByTimeUnit**(`date`, `unit`): `Date`
 
-Defined in: [time-date.util.ts:192](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L192)
+Defined in: [time-date.util.ts:192](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L192)
 
 ceilingDateByTimeUnit: returns a new date with units added or subtracted
 
@@ -46,7 +46,7 @@ ceilingDateByTimeUnit: returns a new date with units added or subtracted
 
 > `static` **convertSecondsToUnit**(`seconds`, `unit`, `decimalPlaces?`, `roundUp?`): `number`
 
-Defined in: [time-date.util.ts:21](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L21)
+Defined in: [time-date.util.ts:21](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L21)
 
 convertSecondsToUnit: Convert time value from seconds to the specified unit.
 
@@ -76,7 +76,7 @@ convertSecondsToUnit: Convert time value from seconds to the specified unit.
 
 > `static` **convertToSeconds**(`time`): `number`
 
-Defined in: [time-date.util.ts:60](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L60)
+Defined in: [time-date.util.ts:60](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L60)
 
 ###### Parameters
 
@@ -92,7 +92,7 @@ Defined in: [time-date.util.ts:60](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **floorDateByTimeUnit**(`date`, `unit`): `Date`
 
-Defined in: [time-date.util.ts:182](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L182)
+Defined in: [time-date.util.ts:182](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L182)
 
 floorDateByTimeUnit: returns a new date with units added or subtracted
 
@@ -114,7 +114,7 @@ floorDateByTimeUnit: returns a new date with units added or subtracted
 
 > `static` **getAbsoluteDateRange**(`time`): `DateRange`
 
-Defined in: [time-date.util.ts:90](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L90)
+Defined in: [time-date.util.ts:90](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L90)
 
 ###### Parameters
 
@@ -130,7 +130,7 @@ Defined in: [time-date.util.ts:90](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **getCurrentDateFilterInDateRangeFormat**(`timeDateFilters`): `DateRange`
 
-Defined in: [time-date.util.ts:215](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L215)
+Defined in: [time-date.util.ts:215](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L215)
 
 ###### Parameters
 
@@ -146,7 +146,7 @@ Defined in: [time-date.util.ts:215](https://github.com/alliedtelesis-labs-nz/atu
 
 > `static` **getCurrentDatePlusHours**(`hours`): `Date`
 
-Defined in: [time-date.util.ts:111](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L111)
+Defined in: [time-date.util.ts:111](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L111)
 
 ###### Parameters
 
@@ -162,7 +162,7 @@ Defined in: [time-date.util.ts:111](https://github.com/alliedtelesis-labs-nz/atu
 
 > `static` **getCurrentOrDefaultUnit**(`currentUnit`, `units`): `TimeUnit` \| `TimeExtraOptions`
 
-Defined in: [time-date.util.ts:129](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L129)
+Defined in: [time-date.util.ts:129](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L129)
 
 ###### Parameters
 
@@ -182,7 +182,7 @@ Defined in: [time-date.util.ts:129](https://github.com/alliedtelesis-labs-nz/atu
 
 > `static` **getDataPointIntervalFor30SecPoller**(`startDate`, `endDate`): `number`
 
-Defined in: [time-date.util.ts:147](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L147)
+Defined in: [time-date.util.ts:147](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L147)
 
 getDataPointIntervalFor30SecPoller: return an interval
 that provides up to 120 data points between the start and end date.
@@ -207,7 +207,7 @@ which avoids creating empty buckets, except if the device or Vista is down.
 
 > `static` **getDateFromRelativeTime**(`time`): `Date`
 
-Defined in: [time-date.util.ts:69](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L69)
+Defined in: [time-date.util.ts:69](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L69)
 
 ###### Parameters
 
@@ -223,7 +223,7 @@ Defined in: [time-date.util.ts:69](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **getDateMonthsAgo**(`months`, `originalDate`): `Date`
 
-Defined in: [time-date.util.ts:123](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L123)
+Defined in: [time-date.util.ts:123](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L123)
 
 ###### Parameters
 
@@ -243,7 +243,7 @@ Defined in: [time-date.util.ts:123](https://github.com/alliedtelesis-labs-nz/atu
 
 > `static` **getDateRange**(`customDateRange`, `relativeTime`, `defaultDates`): `DateRange`
 
-Defined in: [time-date.util.ts:97](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L97)
+Defined in: [time-date.util.ts:97](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L97)
 
 ###### Parameters
 
@@ -267,7 +267,7 @@ Defined in: [time-date.util.ts:97](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **getDateYearsAgo**(`years`, `originalDate`): `Date`
 
-Defined in: [time-date.util.ts:117](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L117)
+Defined in: [time-date.util.ts:117](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L117)
 
 ###### Parameters
 
@@ -287,7 +287,7 @@ Defined in: [time-date.util.ts:117](https://github.com/alliedtelesis-labs-nz/atu
 
 > `static` **getRelativeDateRange**(`time`): `DateRange`
 
-Defined in: [time-date.util.ts:81](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L81)
+Defined in: [time-date.util.ts:81](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L81)
 
 getRelativeDateRange: convert relative date (e.g. 1 year ago) into absolute dates.
 Round the these to the nearest minute because we don't care about the seconds
@@ -309,7 +309,7 @@ Round the these to the nearest minute because we don't care about the seconds
 
 > `static` **getSecondsAgoFromDate**(`date`): `number`
 
-Defined in: [time-date.util.ts:65](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L65)
+Defined in: [time-date.util.ts:65](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L65)
 
 ###### Parameters
 
@@ -325,7 +325,7 @@ Defined in: [time-date.util.ts:65](https://github.com/alliedtelesis-labs-nz/atui
 
 > `static` **isSameDateByUnit**(`date1`, `date2`, `unit`): `boolean`
 
-Defined in: [time-date.util.ts:207](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L207)
+Defined in: [time-date.util.ts:207](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L207)
 
 isSameDateByUnit: returns true if the dates are the same to the specified unit granularity
 
@@ -351,7 +351,7 @@ isSameDateByUnit: returns true if the dates are the same to the specified unit g
 
 > `static` **shiftDateByUnit**(`date`, `amount`, `unit`): `Date`
 
-Defined in: [time-date.util.ts:168](https://github.com/alliedtelesis-labs-nz/atui-components/blob/990f7f01fc6387c1eec7eb1391b96e19db5111a1/atui-components-stencil/src/utils/time-date.util.ts#L168)
+Defined in: [time-date.util.ts:168](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/time-date.util.ts#L168)
 
 shiftDateByUnit: returns a new date with units added or subtracted
 
