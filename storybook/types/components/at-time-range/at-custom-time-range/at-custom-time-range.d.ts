@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { DateRangeStrings } from '../../../types';
-import { SelectOption } from '../../../types/select';
+import { AtSelectOptionI } from '../../../types/select';
 export declare class AtCustomTimeRangeComponent {
     /**
      * Whether time selection is enabled in addition to date selection
@@ -67,8 +67,8 @@ export declare class AtCustomTimeRangeComponent {
     protected setDateNow(): void;
     private setToDateAndTime;
     private setFromDateAndTime;
-    get getFromTimes(): SelectOption[];
-    get getToTimes(): SelectOption[];
+    get getFromTimes(): AtSelectOptionI[];
+    get getToTimes(): AtSelectOptionI[];
     /**
      * Emitted when the user cancels the time range selection
      */

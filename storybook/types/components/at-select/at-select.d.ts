@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { SelectOption } from '../../types/select';
+import { AtSelectOptionI } from '../../types/select';
 /**
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
@@ -13,7 +13,7 @@ export declare class AtSelectComponent {
     /**
      * Sets the options in the dropdown
      */
-    options: SelectOption[];
+    options: AtSelectOptionI[];
     /**
      * Label of the input.
      */
@@ -51,10 +51,6 @@ export declare class AtSelectComponent {
      */
     readonly?: boolean;
     /**
-     * Set the select input to be clearable. Only enabled on typeahead selects.
-     */
-    clearable_search?: boolean;
-    /**
      * Set the select to appear as a typeahead input.
      */
     typeahead?: boolean;
@@ -72,12 +68,15 @@ export declare class AtSelectComponent {
     translations: any;
     hasMatchingElOptions: boolean;
     parentWidth: string;
-    filteredOptions: SelectOption[];
+    filteredOptions: AtSelectOptionI[];
+    selectedLabel: string;
+    selectedLabel: string;
     el: HTMLElement;
     private menuId;
     private menuRef;
     private optionEls;
     private searchInputEl;
+    private slottedOptionLabels;
     watchValue(newValue: string): void;
     watchSearchText(newSearch: string): void;
     watchFilterInputs(): void;
@@ -90,20 +89,22 @@ export declare class AtSelectComponent {
     private setupOptionElements;
     addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
     private filterOptions;
-    private filterSlottedOptions;
-    private filterSlottedGroups;
+    private filterSlottedContent;
     private updateIsOpenState;
     private handleChange;
     private handleClear;
     private handleKeyDownMenu;
     private handleSearchInput;
     private isGroup;
+    private findOptionByValue;
+    private findLabelByValue;
     get hasMatchingOptions(): boolean;
+    get hasAnyMatchingOptions(): boolean;
+    get hasAnyOptions(): boolean;
     render(): any;
     renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
     private renderOption;
     private renderGroupedOption;
-    renderTitle(title: string): any;
 }

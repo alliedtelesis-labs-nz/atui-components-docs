@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { SelectOption } from '../../../types/select';
+import { AtSelectOptionI } from '../../../types/select';
 /**
  * @category Data Tables
  * @description Optional component for use with ```<at-table>```.
@@ -18,7 +18,7 @@ export declare class AtTablePagination {
     /**
      * Options provided in dropdown for page sizes.
      */
-    page_size_options: SelectOption[];
+    page_size_options: AtSelectOptionI[];
     /**
      * The number of table rows displayed per page
      */

@@ -1,5 +1,5 @@
 import { DateFormat, DateRange, Duration, ISelectedTimeRange } from '../types';
-import { SelectOption } from '../types/select';
+import { AtSelectOptionI } from '../types/select';
 export declare class TimeDatePresentationUtil {
     private static times;
     private static timeMode;
@@ -10,7 +10,7 @@ export declare class TimeDatePresentationUtil {
         fromDate: Date;
         toDate: Date;
     } | undefined;
-    static getTimeOptions(startTime?: string, endTime?: string): SelectOption[];
+    static getTimeOptions(startTime?: string, endTime?: string): AtSelectOptionI[];
     private static createTimeList;
     private static createTimeIndex;
     private static getTimeIndex;

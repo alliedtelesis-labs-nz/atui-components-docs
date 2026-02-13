@@ -99,6 +99,7 @@ const AtMultiSelectComponent = class {
     menuRef;
     optionEls = [];
     searchInputEl;
+    slottedOptionLabels = new Map();
     watchValue(newValue) {
         const values = newValue ?? [];
         this.optionEls.forEach((optionEl) => {
@@ -108,6 +109,9 @@ const AtMultiSelectComponent = class {
             }
         });
     }
+    watchOptions() {
+        this.filteredOptions = this.filterOptions(this.options || []);
+    }
     watchSearchText(newSearch) {
         const trimmedSearch = newSearch.trim().toLowerCase();
         if (this.options && this.options.length > 0) {
@@ -115,12 +119,8 @@ const AtMultiSelectComponent = class {
             this.hasMatchingElOptions = this.filteredOptions.length > 0;
             return;
         }
-        this.filterSlottedOptions(trimmedSearch);
-        this.filterSlottedGroups();
+        this.filterSlottedContent(trimmedSearch);
         this.hasMatchingElOptions = Array.from(this.optionEls).some((el) => el.style.display !== 'none');
-    }
-    watchFilterInputs() {
-        this.filteredOptions = this.filterOptions(this.options || []);
     }
     /**
      * Emits an event containing a list of the selected items when the selection changes.
@@ -146,43 +146,80 @@ const AtMultiSelectComponent = class {
         return options
             .map((option) => {
             if (this.isGroup(option)) {
-                const filteredChildren = this.filterOptions(option.children);
+                const filteredChildren = option.children.filter((child) => {
+                    const searchableText = (child.label || child.value).toLowerCase();
+                    return (searchableText.includes(trimmedSearch) ||
+                        child.value.toLowerCase().includes(trimmedSearch));
+                });
                 if (filteredChildren.length > 0) {
                     return { ...option, children: filteredChildren };
                 }
                 return null;
             }
-            return option.value.toLowerCase().includes(trimmedSearch)
+            const searchableText = (option.label || option.value).toLowerCase();
+            return searchableText.includes(trimmedSearch) ||
+                option.value.toLowerCase().includes(trimmedSearch)
                 ? option
                 : null;
         })
             .filter(Boolean);
     }
-    filterSlottedOptions(trimmedSearch) {
+    filterSlottedContent(trimmedSearch) {
         this.optionEls.forEach((optionEl) => {
+            const label = optionEl.label || optionEl.value;
             const matches = !trimmedSearch ||
+                label.toLowerCase().includes(trimmedSearch) ||
                 optionEl.value.toLowerCase().includes(trimmedSearch);
             optionEl.style.display = matches ? '' : 'none';
         });
-    }
-    filterSlottedGroups() {
         this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
-            const visibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
-            groupEl.style.display = visibleChild ? '' : 'none';
+            const hasVisibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
+            groupEl.style.display = hasVisibleChild ? '' : 'none';
         });
     }
     setupOptionElements() {
+        this.slottedOptionLabels.clear();
         this.optionEls = [];
-        if (!this.options || this.options.length === 0) {
-            this.el.querySelectorAll('at-select-option').forEach((option) => {
-                const optionEl = option;
-                optionEl.is_active = (this.value ?? []).includes(optionEl.value);
-                optionEl.addEventListener('atuiClick', (event) => {
-                    this.handleChange(event.detail);
-                });
-                this.optionEls.push(optionEl);
-            });
+        this.el.querySelectorAll('at-select-option').forEach((option) => {
+            const optionEl = option;
+            const label = optionEl.label;
+            if (label) {
+                this.slottedOptionLabels.set(optionEl.value, label);
+            }
+            optionEl.is_active = (this.value ?? []).includes(optionEl.value);
+            this.addListenerToOptionElements(optionEl);
+            this.optionEls.push(optionEl);
+        });
+    }
+    addListenerToOptionElements(optionEl) {
+        optionEl.addEventListener('atuiClick', (event) => {
+            this.handleChange(event.detail);
+        });
+    }
+    findOptionByValue(value) {
+        if (!value || !this.options || this.options.length === 0) {
+            return undefined;
         }
+        const allOptions = this.options.flatMap((opt) => opt.children ? [opt, ...opt.children] : [opt]);
+        return allOptions.find((opt) => opt.value === value);
+    }
+    findLabelByValue(value) {
+        if (!value)
+            return '';
+        if (this.options && this.options.length > 0) {
+            const option = this.findOptionByValue(value);
+            return option?.label || value;
+        }
+        if (this.slottedOptionLabels.has(value)) {
+            return this.slottedOptionLabels.get(value);
+        }
+        return value;
+    }
+    getSelectedLabels() {
+        if (!this.value || !Array.isArray(this.value)) {
+            return [];
+        }
+        return this.value.map((val) => this.findLabelByValue(val));
     }
     updateIsOpenState(event) {
         this.isOpen = event.detail;
@@ -193,6 +230,9 @@ const AtMultiSelectComponent = class {
                 }
             });
         }
+        else if (!this.isOpen) {
+            this.searchText = '';
+        }
     }
     handleChange(option) {
         this.value = this.value.includes(option)
@@ -200,8 +240,12 @@ const AtMultiSelectComponent = class {
             : [...this.value, option];
         this.atuiChange.emit(this.value);
     }
-    async handleClear() {
+    handleClear() {
         this.searchText = '';
+        if (this.searchInputEl) {
+            this.searchInputEl.value = '';
+            this.searchInputEl.focus();
+        }
     }
     async handleKeyDownMenu(event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -221,25 +265,46 @@ const AtMultiSelectComponent = class {
         const inputEl = event.target;
         this.searchText = inputEl.value;
     }
+    handleRemoveChip(event) {
+        const removedLabels = event.detail;
+        const selectedLabels = this.getSelectedLabels();
+        const valuesToRemove = removedLabels
+            .map((label) => {
+            const idx = selectedLabels.indexOf(label);
+            return idx >= 0 ? this.value[idx] : null;
+        })
+            .filter(Boolean);
+        this.value = this.value.filter((v) => !valuesToRemove.includes(v));
+        this.atuiChange.emit(this.value);
+    }
     isGroup(option) {
         return !!(option.children && option.children.length > 0);
     }
-    getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', inputVariantsConfig);
     get hasMatchingOptions() {
         return this.filteredOptions.length > 0;
     }
+    get hasAnyMatchingOptions() {
+        if (this.options && this.options.length > 0) {
+            return this.hasMatchingOptions;
+        }
+        return this.hasMatchingElOptions;
+    }
+    get hasAnyOptions() {
+        const result = (this.options && this.options.length > 0) ||
+            this.optionEls.length > 0;
+        return result;
+    }
     render() {
-        return (index.h(index.Host, { key: 'd7c3052bba17f1715bdc8bc32de2816a5355bc1c', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'f1ecaf11533b5fe716119f9c56432e8a0296ce97', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
-                    this.handleClear();
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '7d2e021a3627662e4a83d9b78d0435c230444cb0', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'dab43126a5b0f50448fd4f7f8679bde909f71e72', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'f405b5d8feb40f8e359eedf5d0503aaf73f5d36e' }, this.error_text && this.invalid && (index.h("span", { key: 'c6df545636313cba8516b45465ed0bf7e964e880', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '3ee569519e481d4ee74b821945277bbf4dedc02a' }, this.error_text && this.invalid && (index.h("span", { key: '9a02dc2b6ed09af672af6e62a0750408dc876541', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -252,25 +317,33 @@ const AtMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        return (index.h("div", { class: classname, slot: "menu-trigger", tabindex: 0 }, index.h("div", null, index.h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => {
-                this.value = this.value.filter((item) => !event.detail.includes(item));
-                this.atuiChange.emit(this.value);
-            }, chips: this.value, "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder)))), !this.readonly && !this.disabled && (index.h("div", { class: "absolute right-4 flex items-center" }, index.h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
+        return (index.h("div", { class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0 }, index.h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (index.h("div", { class: "absolute right-4 flex items-center" }, index.h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, index.h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
             ? 'arrow_drop_up'
             : 'arrow_drop_down'))))));
     }
     renderOptions() {
         return (index.h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
-                this.searchText = '';
-                this.searchInputEl.value = '';
+                this.handleClear();
+            }, onKeyDown: (e) => {
+                if (e.key === 'Escape') {
+                    return;
+                }
+                if (e.key === 'Enter' ||
+                    e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.handleClear();
+                    return;
+                }
+                e.stopPropagation();
             }, "data-name": "multi-select-search-clear" }))))), this.filteredOptions
-            .map((option) => {
+            ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);
             }
@@ -278,10 +351,10 @@ const AtMultiSelectComponent = class {
         })
             .filter(Boolean), index.h("slot", null), this.typeahead &&
             this.searchText &&
-            !(this.options && this.options.length > 0
-                ? this.hasMatchingOptions
-                : this.hasMatchingElOptions) && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
-            'No results found'))));
+            this.hasAnyOptions &&
+            !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && (index.h("div", { "data-name": "no-options-available", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            'No options available'))));
     }
     renderGroupedOption(option) {
         if (!this.isGroup(option) ||
@@ -289,24 +362,20 @@ const AtMultiSelectComponent = class {
             option.children.length === 0) {
             return null;
         }
-        return (index.h("at-select-group", { label: option.value }, option.children.map((child) => (index.h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(child.key), tabIndex: 0, class: this.getOptionClassname({
-                active: this.value.includes(child.key),
-            }), onClick: () => this.handleChange(child.key) }, child.value)))));
+        return (index.h("at-select-group", { key: option.value, label: option.label || option.value }, option.children.map((child) => (index.h("at-select-option", { key: child.value, value: child.value, label: child.label || child.value, disabled: child.disabled, is_active: this.value.includes(child.value), "data-name": "multi-select-option", option_group: true, onAtuiClick: () => this.handleChange(child.value) })))));
     }
     renderOption(option) {
-        return (index.h("at-select-option", { value: option.value, is_active: this.value.includes(option.value), "data-name": "multi-select-option", onAtuiClick: () => this.handleChange(option.value) }));
+        return (index.h("at-select-option", { key: option.value, value: option.value, label: option.label || option.value, disabled: option.disabled, is_active: this.value.includes(option.value), "data-name": "multi-select-option", onAtuiClick: () => this.handleChange(option.value) }));
     }
     static get watchers() { return {
         "value": [{
                 "watchValue": 0
             }],
+        "options": [{
+                "watchOptions": 0
+            }],
         "searchText": [{
                 "watchSearchText": 0
-            }, {
-                "watchFilterInputs": 0
-            }],
-        "options": [{
-                "watchFilterInputs": 0
             }]
     }; }
 };

@@ -78,10 +78,6 @@ export class AtSelectComponent {
      */
     readonly;
     /**
-     * Set the select input to be clearable. Only enabled on typeahead selects.
-     */
-    clearable_search;
-    /**
      * Set the select to appear as a typeahead input.
      */
     typeahead = false;
@@ -100,12 +96,16 @@ export class AtSelectComponent {
     hasMatchingElOptions = false;
     parentWidth;
     filteredOptions = [];
+    selectedLabel = '';
+    selectedLabel = '';
     el;
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     menuRef;
     optionEls = [];
     searchInputEl;
+    slottedOptionLabels = new Map();
     watchValue(newValue) {
+        this.selectedLabel = this.findLabelByValue(newValue);
         this.optionEls.forEach((optionEl) => {
             optionEl.is_active = newValue === optionEl.value;
         });
@@ -117,12 +117,14 @@ export class AtSelectComponent {
             this.hasMatchingElOptions = this.filteredOptions.length > 0;
             return;
         }
-        this.filterSlottedOptions(trimmedSearch);
-        this.filterSlottedGroups();
+        this.filterSlottedContent(trimmedSearch);
         this.hasMatchingElOptions = Array.from(this.optionEls).some((el) => el.style.display !== 'none');
     }
     watchFilterInputs() {
         this.filteredOptions = this.filterOptions(this.options || []);
+        if (this.value) {
+            this.selectedLabel = this.findLabelByValue(this.value);
+        }
     }
     /**
      * Emits an event containing the selected value when changed.
@@ -142,8 +144,13 @@ export class AtSelectComponent {
         this.parentWidth = `${parentRect.width}px`;
     }
     setupOptionElements() {
+        this.slottedOptionLabels.clear();
         this.el.querySelectorAll('at-select-option').forEach((option) => {
             const optionEl = option;
+            const label = optionEl.label;
+            if (label) {
+                this.slottedOptionLabels.set(optionEl.value, label);
+            }
             optionEl.is_active = this.value === optionEl.value;
             this.addListenerToOptionElements(optionEl);
             this.optionEls.push(optionEl);
@@ -166,29 +173,35 @@ export class AtSelectComponent {
         return options
             .map((option) => {
             if (this.isGroup(option)) {
-                const filteredChildren = option.children.filter((child) => child.value.toLowerCase().includes(trimmedSearch));
+                const filteredChildren = option.children.filter((child) => {
+                    const searchableText = (child.label || child.value).toLowerCase();
+                    return (searchableText.includes(trimmedSearch) ||
+                        child.value.toLowerCase().includes(trimmedSearch));
+                });
                 if (filteredChildren.length > 0) {
                     return { ...option, children: filteredChildren };
                 }
                 return null;
             }
-            return option.value.toLowerCase().includes(trimmedSearch)
+            const searchableText = (option.label || option.value).toLowerCase();
+            return searchableText.includes(trimmedSearch) ||
+                option.value.toLowerCase().includes(trimmedSearch)
                 ? option
                 : null;
         })
             .filter(Boolean);
     }
-    filterSlottedOptions(trimmedSearch) {
+    filterSlottedContent(trimmedSearch) {
         this.optionEls.forEach((optionEl) => {
+            const label = optionEl.label || optionEl.value;
             const matches = !trimmedSearch ||
+                label.toLowerCase().includes(trimmedSearch) ||
                 optionEl.value.toLowerCase().includes(trimmedSearch);
             optionEl.style.display = matches ? '' : 'none';
         });
-    }
-    filterSlottedGroups() {
         this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
-            const visibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
-            groupEl.style.display = visibleChild ? '' : 'none';
+            const hasVisibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
+            groupEl.style.display = hasVisibleChild ? '' : 'none';
         });
     }
     updateIsOpenState(event) {
@@ -205,20 +218,22 @@ export class AtSelectComponent {
                 }
             });
         }
+        else if (!this.isOpen) {
+            this.searchText = '';
+        }
     }
     async handleChange(option) {
         if (this.autoclose) {
             await this.menuRef?.closeMenu();
         }
         this.value = option;
+        this.selectedLabel = this.findLabelByValue(option);
         this.inputEl.focus();
         this.atuiChange.emit(this.value);
     }
-    async handleClear() {
+    handleClear() {
         this.searchText = '';
-        if (this.searchInputEl) {
-            this.searchInputEl.focus();
-        }
+        this.searchInputEl.focus();
     }
     async handleKeyDownMenu(event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -241,21 +256,49 @@ export class AtSelectComponent {
     isGroup(option) {
         return !!(option.children && option.children.length > 0);
     }
+    findOptionByValue(value) {
+        if (!value || !this.options || this.options.length === 0) {
+            return undefined;
+        }
+        const allOptions = this.options.flatMap((opt) => opt.children ? [opt, ...opt.children] : [opt]);
+        return allOptions.find((opt) => opt.value === value);
+    }
+    findLabelByValue(value) {
+        if (!value)
+            return '';
+        if (this.options && this.options.length > 0) {
+            const option = this.findOptionByValue(value);
+            return option?.label || value;
+        }
+        if (this.slottedOptionLabels.has(value)) {
+            return this.slottedOptionLabels.get(value);
+        }
+        return value;
+    }
     get hasMatchingOptions() {
         return this.filteredOptions.length > 0;
     }
+    get hasAnyMatchingOptions() {
+        if (this.options && this.options.length > 0) {
+            return this.hasMatchingOptions;
+        }
+        return this.hasMatchingElOptions;
+    }
+    get hasAnyOptions() {
+        return ((this.options && this.options.length > 0) ||
+            this.optionEls.length > 0);
+    }
     render() {
-        return (h(Host, { key: 'dffcf45f63c6d699bee7f5b96bfcdf762573be07', class: "group/select", onFocusout: async (event) => {
-                await this.handleClear();
+        return (h(Host, { key: '9a25aeed30ea7ba8cb5ac5476948ffc9b03fea2a', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '537094ca8ae0fd879c0a62698731cc1de905a60c', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '11126cc683424c8ceca818433cafd0afb39267e3', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'e0e789b246ac07012354f78b3a4258a463a7ad7c' }, this.error_text && this.invalid && (h("span", { key: '9352de8c9ad33c1a9e70a4db0d92569c58f71aca', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '98f84479bcc7f3aa7254dede720447bf5f35fd26' }, this.error_text && this.invalid && (h("span", { key: '17bd3d618151593601e3579b9f55a1b802ae2e87', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -267,10 +310,10 @@ export class AtSelectComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger" }, h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.selectedLabel || this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (h("div", { class: "absolute top-[7px] right-4 mr-[17px]" }, h("at-button", { size: "sm", class: "pr-8", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+            !this.disabled && (h("div", { class: "absolute top-4 right-24" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
                 this.atuiChange.emit(this.value);
@@ -282,12 +325,24 @@ export class AtSelectComponent {
     renderOptions() {
         return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable_search ? 'pr-24' : ''} `, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable_search && this.searchText !== '' && (h("div", { class: "absolute top-[7px] right-4" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
-                await this.handleClear();
+                this.handleClear();
+            }, onKeyDown: (e) => {
+                if (e.key === 'Escape') {
+                    return;
+                }
+                if (e.key === 'Enter' ||
+                    e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.handleClear();
+                    return;
+                }
+                e.stopPropagation();
             }, "data-name": "select-clear" }))))), this.filteredOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
@@ -297,12 +352,13 @@ export class AtSelectComponent {
         })
             .filter(Boolean), h("slot", null), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions &&
-            !this.hasMatchingElOptions && (h("div", { class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
-            'No results found'))));
+            this.hasAnyOptions &&
+            !this.hasAnyMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && (h("div", { "data-name": "no-options-available", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            'No options available'))));
     }
     renderOption(option) {
-        return (h("at-select-option", { key: option.key || option.value, value: option.value, is_active: this.value === option.key, onAtuiClick: () => this.handleChange(option.key), onMouseDown: () => {
+        return (h("at-select-option", { key: option.value, value: option.value, label: option.label || option.value, is_active: this.value === option.value, disabled: option.disabled, onAtuiClick: () => this.handleChange(option.value), onMouseDown: () => {
                 if (!option.disabled)
                     this.handleChange(option.value);
             } }));
@@ -313,10 +369,7 @@ export class AtSelectComponent {
             option.children.length === 0) {
             return null;
         }
-        return (h("at-select-group", { label: option.value }, option.children.map((child) => (h("at-select-option", { value: child.value, is_active: this.value === child.key, option_group: true, onAtuiClick: () => this.handleChange(child.key) })))));
-    }
-    renderTitle(title) {
-        return (h("li", { class: "text-light border-light border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, title));
+        return (h("at-select-group", { key: option.value, label: option.label || option.value }, option.children.map((child) => (h("at-select-option", { value: child.value, label: child.label || child.value, is_active: this.value === child.value, disabled: child.disabled, option_group: true, onAtuiClick: () => this.handleChange(child.value) })))));
     }
     static get is() { return "at-select"; }
     static get properties() {
@@ -344,14 +397,14 @@ export class AtSelectComponent {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "SelectOption[]",
-                    "resolved": "SelectOption[]",
+                    "original": "AtSelectOptionI[]",
+                    "resolved": "AtSelectOptionI[]",
                     "references": {
-                        "SelectOption": {
+                        "AtSelectOptionI": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::SelectOption",
-                            "referenceLocation": "SelectOption"
+                            "id": "src/types/select.ts::AtSelectOptionI",
+                            "referenceLocation": "AtSelectOptionI"
                         }
                     }
                 },
@@ -535,25 +588,6 @@ export class AtSelectComponent {
                 "reflect": false,
                 "attribute": "readonly"
             },
-            "clearable_search": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Set the select input to be clearable. Only enabled on typeahead selects."
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "clearable_search"
-            },
             "typeahead": {
                 "type": "boolean",
                 "mutable": false,
@@ -623,7 +657,9 @@ export class AtSelectComponent {
             "translations": {},
             "hasMatchingElOptions": {},
             "parentWidth": {},
-            "filteredOptions": {}
+            "filteredOptions": {},
+            "selectedLabel": {},
+            "selectedLabel": {}
         };
     }
     static get events() {

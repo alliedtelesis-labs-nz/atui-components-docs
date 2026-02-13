@@ -29,7 +29,7 @@ import { Template } from "./components/at-layout/at-layout";
 import { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
 import { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
 import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
-import { SelectOption } from "./types/select";
+import { AtSelectOptionI } from "./types/select";
 import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
@@ -73,7 +73,7 @@ export { Template } from "./components/at-layout/at-layout";
 export { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
 export { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
 export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
-export { SelectOption } from "./types/select";
+export { AtSelectOptionI } from "./types/select";
 export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
@@ -1503,7 +1503,7 @@ export namespace Components {
         /**
           * Options displayed in the dropdown menu.
          */
-        "options": SelectOption[];
+        "options": AtSelectOptionI[];
         /**
           * Placeholder text for the select.
           * @default ''
@@ -2058,10 +2058,6 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Set the select input to be clearable. Only enabled on typeahead selects.
-         */
-        "clearable_search"?: boolean;
-        /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
         "disabled"?: boolean;
@@ -2088,7 +2084,7 @@ export namespace Components {
         /**
           * Sets the options in the dropdown
          */
-        "options": SelectOption[];
+        "options": AtSelectOptionI[];
         /**
           * Placeholder for the select.
          */
@@ -2124,7 +2120,8 @@ export namespace Components {
     /**
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
-     * @Slot - Use this slot to add custom content inside the select option before the text.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface AtSelectOption {
         /**
@@ -2138,6 +2135,10 @@ export namespace Components {
          */
         "is_active"?: boolean;
         /**
+          * Displayed text value (optional) if not provided the value will be used as a fallback
+         */
+        "label"?: string;
+        /**
           * Indicates if the option is part of an option group
           * @default false
          */
@@ -2145,7 +2146,7 @@ export namespace Components {
         /**
           * Value of the select option
          */
-        "value": string;
+        "value": any;
     }
     /**
      * @category Overlays
@@ -2585,7 +2586,7 @@ export namespace Components {
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
-        "page_size_options": SelectOption[];
+        "page_size_options": AtSelectOptionI[];
     }
     /**
      * ### interface Tab
@@ -4107,7 +4108,8 @@ declare global {
     /**
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
-     * @Slot - Use this slot to add custom content inside the select option before the text.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface HTMLAtSelectOptionElement extends Components.AtSelectOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtSelectOptionElementEventMap>(type: K, listener: (this: HTMLAtSelectOptionElement, ev: AtSelectOptionCustomEvent<HTMLAtSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6181,7 +6183,7 @@ declare namespace LocalJSX {
         /**
           * Options displayed in the dropdown menu.
          */
-        "options"?: SelectOption[];
+        "options"?: AtSelectOptionI[];
         /**
           * Placeholder text for the select.
           * @default ''
@@ -6811,10 +6813,6 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Set the select input to be clearable. Only enabled on typeahead selects.
-         */
-        "clearable_search"?: boolean;
-        /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
         "disabled"?: boolean;
@@ -6845,7 +6843,7 @@ declare namespace LocalJSX {
         /**
           * Sets the options in the dropdown
          */
-        "options"?: SelectOption[];
+        "options"?: AtSelectOptionI[];
         /**
           * Placeholder for the select.
          */
@@ -6881,7 +6879,8 @@ declare namespace LocalJSX {
     /**
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
-     * @Slot - Use this slot to add custom content inside the select option before the text.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface AtSelectOption {
         /**
@@ -6895,6 +6894,10 @@ declare namespace LocalJSX {
          */
         "is_active"?: boolean;
         /**
+          * Displayed text value (optional) if not provided the value will be used as a fallback
+         */
+        "label"?: string;
+        /**
           * Emitted when the select option is clicked
          */
         "onAtuiClick"?: (event: AtSelectOptionCustomEvent<string>) => void;
@@ -6906,7 +6909,7 @@ declare namespace LocalJSX {
         /**
           * Value of the select option
          */
-        "value"?: string;
+        "value"?: any;
     }
     /**
      * @category Overlays
@@ -7358,7 +7361,7 @@ declare namespace LocalJSX {
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
-        "page_size_options"?: SelectOption[];
+        "page_size_options"?: AtSelectOptionI[];
     }
     /**
      * ### interface Tab
@@ -8138,7 +8141,8 @@ declare module "@stencil/core" {
             /**
              * @category Form Controls
              * @description A select option component used within the AtSelect component.
-             * @Slot - Use this slot to add custom content inside the select option before the text.
+             * @Slot - Places content before the label.
+             * @After - Places content after the label.
              */
             "at-select-option": LocalJSX.AtSelectOption & JSXBase.HTMLAttributes<HTMLAtSelectOptionElement>;
             /**

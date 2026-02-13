@@ -58,7 +58,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'be17c9d2604faae1a15656fc8e8d8a588e1c32ee', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'fea423098f8d5afa5897580f1012703f2f924e84', class: "flex justify-between" }, h("div", { key: 'fd5ab7fb2c15a22cc95eccd1a5748a4c5c05a6bb', class: "flex" }, h("slot", { key: '2d762687305936e64d0a46bb8f6f685de026ce63', name: "search" })), h("div", { key: '0e77a3ef98a10553aef16192c3b5a4cf76f88747', class: "flex" }, h("slot", { key: 'f4e91f9a2246035de45e6e50c567f3390daf8162', name: "export-menu" }), h("slot", { key: '63a3d9d2c045ff1d80c796eaa64b2872ea2ec770', name: "column-manager" }), h("slot", { key: '9570edeccf23d34597ab5242b8077c1f55302e66', name: "actions" }))), h("slot", { key: 'b5fad3ecfcf85c90c6e93fb610d5196e2b254d14', name: "filters" })));
+        return (h(Host, { key: '5a3f8f36417e8077dcf3c32a5690412ab9dac053', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '5f394c529f653e139c3e5b9c01cb329b5385a7ec', class: "flex justify-between" }, h("div", { key: '90ad089ce0cf8a646cbb200f8cbb4e390ff7ab33', class: "flex" }, h("slot", { key: 'b37ea8e743577f7e722b82618d835379fe65e382', name: "search" })), h("div", { key: '9a309bb855a9ed890bc732acfbaa54ee4d1d430a', class: "flex" }, h("slot", { key: '1f67c2e807777adadb48ff0f1108967a530c8f32', name: "export-menu" }), h("slot", { key: 'd5357ddf87963e1a1961f45ad7268573e6bc5d7b', name: "column-manager" }), h("slot", { key: 'e3bd2d3c24145850da0619fd1184bb564b2402f5', name: "actions" }))), h("slot", { key: '37f6fccb041b1a0d2cc05afdbb4ed107aea99315', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {

@@ -3,13 +3,18 @@ import { EventEmitter } from '../../../stencil-public-runtime';
  * @category Form Controls
  * @description A select option component used within the AtSelect component.
  *
- * @Slot - Use this slot to add custom content inside the select option before the text.
+ * @Slot - Places content before the label.
+ * @After - Places content after the label.
  */
 export declare class AtSelectOptionComponent {
     /**
      * Value of the select option
      */
-    value: string;
+    value: any;
+    /**
+     * Displayed text value (optional) if not provided the value will be used as a fallback
+     */
+    label?: string;
     /**
      * Indicates if the option is part of an option group
      */

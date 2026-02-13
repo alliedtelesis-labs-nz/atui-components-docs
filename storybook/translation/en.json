@@ -12,6 +12,7 @@
         "SEARCH": "Search",
         "NO_ITEMS_FOUND": "No Items Found",
         "NO_RESULTS_FOUND": "No Results Found",
+        "NO_OPTIONS_AVAILABLE": "No Options Available",
         "NO_PERMISSION_EDIT_SETTING": "You must be an administrator to change the settings",
         "TABLE": {
             "LOADING_DATA": "Loading data...",

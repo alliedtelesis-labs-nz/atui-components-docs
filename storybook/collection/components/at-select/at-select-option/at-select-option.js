@@ -16,13 +16,18 @@ const optionVariantsConfig = {
  * @category Form Controls
  * @description A select option component used within the AtSelect component.
  *
- * @Slot - Use this slot to add custom content inside the select option before the text.
+ * @Slot - Places content before the label.
+ * @After - Places content after the label.
  */
 export class AtSelectOptionComponent {
     /**
      * Value of the select option
      */
     value;
+    /**
+     * Displayed text value (optional) if not provided the value will be used as a fallback
+     */
+    label;
     /**
      * Indicates if the option is part of an option group
      */
@@ -43,7 +48,7 @@ export class AtSelectOptionComponent {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
+        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
             ? 'pointer-events-none opacity-50 bg-gray-100 text-gray-400'
             : 'cursor-pointer';
@@ -51,17 +56,17 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '2f543bcaad87091ac48a9fe3509fc6595b905b25', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'c96ab4abaf305d274b51b7c4a87978dd68d1246b' }), this.value));
+        return (h("li", { key: '1da1562e44fd187bc4f0955d4a39d09c3669f038', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '7a346ccf383859c844cc89511b157be624014d97' }), this.label || this.value, h("slot", { key: 'bcdceaac9c09598789e64fc5431acfb4e619c0d3', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {
         return {
             "value": {
-                "type": "string",
+                "type": "any",
                 "mutable": false,
                 "complexType": {
-                    "original": "string",
-                    "resolved": "string",
+                    "original": "any",
+                    "resolved": "any",
                     "references": {}
                 },
                 "required": false,
@@ -74,6 +79,25 @@ export class AtSelectOptionComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "value"
+            },
+            "label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Displayed text value (optional) if not provided the value will be used as a fallback"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "label"
             },
             "option_group": {
                 "type": "boolean",
