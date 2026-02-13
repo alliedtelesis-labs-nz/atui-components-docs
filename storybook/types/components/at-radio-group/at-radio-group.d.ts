@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export interface RadioOption {
-    option_id: string;
+    value: string;
     label?: string;
     hint_text?: string;
     disabled?: boolean;

@@ -101,10 +101,10 @@ export class AtRadioGroup {
     }
     get getRadios() {
         if (this.options && this.options.length > 0) {
-            return this.options.map((option) => (h("at-radio", { label: option.label, hint_text: option.hint_text, option_id: option.option_id, readonly: this.readonly || option.readonly, disabled: this.disabled || option.disabled, value: this.value === option.option_id, onAtuiChange: (event) => {
+            return this.options.map((option) => (h("at-radio", { label: option.label, hint_text: option.hint_text, value: option.value, readonly: this.readonly || option.readonly, disabled: this.disabled || option.disabled, checked: this.value === option.value, onAtuiChange: (event) => {
                     event.stopPropagation();
                     if (!this.disabled && !this.readonly) {
-                        this.handleChange(option.option_id);
+                        this.handleChange(option.value);
                     }
                 }, group: this.label || this.radioGroupId, ref: (el) => this.radioEls.push(el) })));
         }
@@ -123,9 +123,9 @@ export class AtRadioGroup {
             if (!radio.getAttribute('group')) {
                 radio.setAttribute('group', groupName);
             }
-            if (!radio.getAttribute('option_id')) {
-                const optionId = `radio-${Math.random().toString(36).substring(2, 11)}`;
-                radio.setAttribute('option_id', optionId);
+            if (!radio.getAttribute('value')) {
+                const value = `radio-${Math.random().toString(36).substring(2, 11)}`;
+                radio.setAttribute('value', value);
             }
             if (this.disabled !== undefined) {
                 radio.disabled = this.disabled;
@@ -153,16 +153,16 @@ export class AtRadioGroup {
     updateSlottedRadiosState(selectedOptionId) {
         const slottedRadios = this.getSlottedRadios();
         slottedRadios.forEach((radio) => {
-            const radioOptionId = radio.getAttribute('option_id');
-            radio.value = radioOptionId === selectedOptionId;
+            const radioOptionId = radio.getAttribute('value');
+            radio.checked = radioOptionId === selectedOptionId;
         });
     }
     render() {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: 'd8d5762192fdd8f1a4cf1315383608b518a878a7', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '8db6035764da81d25e532d93ae4cc606782a319f', class: "flex flex-col" }, h("slot", { key: '9f0de9d636ab4adfaa7c8d474c56b05167c6699f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '8743dfcf4db8679c26a3baa13b160c5b29c64c92', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'cd37e52aa78bf2ea7f78e8cc0a98a319a4638e39', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: 'bfd50e96f12e41a2dceeb3d14af326d3c9a798c0', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '5633addb83a577298cc8f022f1a6e2bfe703d6aa' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '5dfd482c5af05d430f468eee015eaf0347c5c8d0', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'b549193ddda3a0309fd0aa23cfebce22c7b5c2f4', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'e6171641d7d258223fce8d0942223beed27c7abc', class: "flex flex-col" }, h("slot", { key: 'cea9dd8feb0ffb668803c4d2f3a08031604ebd0a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'daaf169fdd08dddee5d4a9c0b392f5ee5e15a2c5', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '41deb499cfc4099753950928dec8b90b6ee06c43', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '96e84d0f4c3455a416b6d279284697f2cf7695fd', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'd0e1c6b5dac4a307abae63904f76086e0b55ddb6' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '54b1bcac03ce1d52cc40fc5ae4523c0eec6bef54', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-radio-group"; }
     static get properties() {

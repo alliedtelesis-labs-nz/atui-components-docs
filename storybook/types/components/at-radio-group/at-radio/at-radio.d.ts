@@ -18,11 +18,11 @@ export declare class AtRadio {
     /**
      * Sets the value of the checkbox
      */
-    value?: boolean;
+    checked?: boolean;
     /**
      * ID of the radio button element and its option
      */
-    option_id?: string;
+    value?: string;
     /**
      * Name of radio group.
      * Buttons sharing a name are associated with the same radio group.

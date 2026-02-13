@@ -1840,6 +1840,10 @@ export namespace Components {
      */
     interface AtRadio {
         /**
+          * Sets the value of the checkbox
+         */
+        "checked"?: boolean;
+        /**
           * Disables interaction with the radio
          */
         "disabled"?: boolean;
@@ -1856,18 +1860,14 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * ID of the radio button element and its option
-         */
-        "option_id"?: string;
-        /**
           * Disables the radio option but keeps the text readable. Used for global readonly form state.
           * @default false
          */
         "readonly": boolean;
         /**
-          * Sets the value of the checkbox
+          * ID of the radio button element and its option
          */
-        "value"?: boolean;
+        "value"?: string;
     }
     /**
      * @category Form Controls
@@ -6584,6 +6584,10 @@ declare namespace LocalJSX {
      */
     interface AtRadio {
         /**
+          * Sets the value of the checkbox
+         */
+        "checked"?: boolean;
+        /**
           * Disables interaction with the radio
          */
         "disabled"?: boolean;
@@ -6604,18 +6608,14 @@ declare namespace LocalJSX {
          */
         "onAtuiChange"?: (event: AtRadioCustomEvent<string>) => void;
         /**
-          * ID of the radio button element and its option
-         */
-        "option_id"?: string;
-        /**
           * Disables the radio option but keeps the text readable. Used for global readonly form state.
           * @default false
          */
         "readonly"?: boolean;
         /**
-          * Sets the value of the checkbox
+          * ID of the radio button element and its option
          */
-        "value"?: boolean;
+        "value"?: string;
     }
     /**
      * @category Form Controls
