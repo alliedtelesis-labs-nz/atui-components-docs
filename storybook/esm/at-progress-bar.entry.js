@@ -38,7 +38,6 @@ const AtProgressBar = class {
         const n = Number(this.percentage);
         if (Number.isFinite(n)) {
             this.clamped = Math.min(100, Math.max(0, n));
-            console.log('Clamped percentage:', this.clamped);
         }
         else {
             this.clamped = 0;
