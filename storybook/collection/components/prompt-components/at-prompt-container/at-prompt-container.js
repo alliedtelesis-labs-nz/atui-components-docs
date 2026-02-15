@@ -203,7 +203,7 @@ export class AtPromptContainer {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '81187126f73f3f313e7be86cf9873b27180a957f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '7541fd10195f2bda3190d120d49a7356a5605855', name: "prompt-container-header" }), h("div", { key: '86caf93a785b6bd9996a8b633a5d692dad181375', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '8d14df22d7e80ee55a45da5cd1a92328f800dea4', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: 'bf8d22bb11c0a892833faa3cf780e0b02c998afa', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '094bc0981ac51a97a00cbf0abe9680f03d24eb38', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '888cd7a1634ee219ba630dab7bbd83365e338668', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '012212380641f603b9351fef70d5e3748c08d459', name: "prompt-container-header" }), h("div", { key: '5c000086b524d7c6ac83aa18c161af3c51e7daf0', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '9e883bd9940a6b7c70de3e1e45302b8c286b3d6e', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '94f2d7b5ccb00890da905046e390e57a8b70acd5', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '74238c53f7e713e5d9fedb1499936432548d2fd4', name: "prompt-container-footer" }))));
     }
     static get is() { return "at-prompt-container"; }
     static get properties() {
@@ -699,25 +699,25 @@ export class AtPromptContainer {
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atMessageCopy",
+                "name": "atThreadMessageCopy",
                 "method": "handleMessageCopy",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atMessageRetry",
+                "name": "atThreadMessageRetry",
                 "method": "handleMessageRetry",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atMessageEdit",
+                "name": "atThreadMessageEdit",
                 "method": "handleMessageEdit",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atMessageVote",
+                "name": "atThreadMessageVote",
                 "method": "handleMessageVote",
                 "target": undefined,
                 "capture": false,

@@ -705,18 +705,18 @@ export const AtPromptMessage: StencilReactComponent<AtPromptMessageElement, AtPr
 });
 
 type AtPromptThreadEvents = {
-    onAtMessageCopy: EventName<CustomEvent<{
+    onAtThreadMessageCopy: EventName<CustomEvent<{
         messageId: string;
         content: string;
     }>>,
-    onAtMessageRetry: EventName<CustomEvent<{
+    onAtThreadMessageRetry: EventName<CustomEvent<{
         messageId: string;
     }>>,
-    onAtMessageEdit: EventName<CustomEvent<{
+    onAtThreadMessageEdit: EventName<CustomEvent<{
         messageId: string;
         content: string;
     }>>,
-    onAtMessageVote: EventName<CustomEvent<{
+    onAtThreadMessageVote: EventName<CustomEvent<{
         messageId: string;
         score: number;
     }>>
@@ -728,10 +728,10 @@ export const AtPromptThread: StencilReactComponent<AtPromptThreadElement, AtProm
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
     events: {
-        onAtMessageCopy: 'atMessageCopy',
-        onAtMessageRetry: 'atMessageRetry',
-        onAtMessageEdit: 'atMessageEdit',
-        onAtMessageVote: 'atMessageVote'
+        onAtThreadMessageCopy: 'atThreadMessageCopy',
+        onAtThreadMessageRetry: 'atThreadMessageRetry',
+        onAtThreadMessageEdit: 'atThreadMessageEdit',
+        onAtThreadMessageVote: 'atThreadMessageVote'
     } as AtPromptThreadEvents,
     defineCustomElement: defineAtPromptThread
 });

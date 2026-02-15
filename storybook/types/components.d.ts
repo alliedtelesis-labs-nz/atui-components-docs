@@ -4012,18 +4012,18 @@ declare global {
         new (): HTMLAtPromptMessageElement;
     };
     interface HTMLAtPromptThreadElementEventMap {
-        "atMessageCopy": {
+        "atThreadMessageCopy": {
         messageId: string;
         content: string;
     };
-        "atMessageRetry": {
+        "atThreadMessageRetry": {
         messageId: string;
     };
-        "atMessageEdit": {
+        "atThreadMessageEdit": {
         messageId: string;
         content: string;
     };
-        "atMessageVote": {
+        "atThreadMessageVote": {
         messageId: string;
         score: number;
     };
@@ -6650,27 +6650,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when a message copy action is requested
          */
-        "onAtMessageCopy"?: (event: AtPromptThreadCustomEvent<{
+        "onAtThreadMessageCopy"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message edit action is requested
          */
-        "onAtMessageEdit"?: (event: AtPromptThreadCustomEvent<{
+        "onAtThreadMessageEdit"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         content: string;
     }>) => void;
         /**
           * Emitted when a message retry action is requested
          */
-        "onAtMessageRetry"?: (event: AtPromptThreadCustomEvent<{
+        "onAtThreadMessageRetry"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
     }>) => void;
         /**
           * Emitted when a message vote action is requested
          */
-        "onAtMessageVote"?: (event: AtPromptThreadCustomEvent<{
+        "onAtThreadMessageVote"?: (event: AtPromptThreadCustomEvent<{
         messageId: string;
         score: number;
     }>) => void;

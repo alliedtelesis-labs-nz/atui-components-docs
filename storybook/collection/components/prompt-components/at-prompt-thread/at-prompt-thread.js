@@ -45,19 +45,19 @@ export class AtPromptThread {
     /**
      * Emitted when a message copy action is requested
      */
-    atMessageCopy;
+    atThreadMessageCopy;
     /**
      * Emitted when a message retry action is requested
      */
-    atMessageRetry;
+    atThreadMessageRetry;
     /**
      * Emitted when a message edit action is requested
      */
-    atMessageEdit;
+    atThreadMessageEdit;
     /**
      * Emitted when a message vote action is requested
      */
-    atMessageVote;
+    atThreadMessageVote;
     /**
      * @slot messages - Custom message content (alternative to using the messages prop)
      */
@@ -116,13 +116,13 @@ export class AtPromptThread {
                 score: event.detail.score,
             };
             this.messages = updatedMessages;
-            this.atMessageVote.emit(event.detail);
+            this.atThreadMessageVote.emit(event.detail);
         }
     }
     handleMessageCopy(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageCopy.emit({
+            this.atThreadMessageCopy.emit({
                 messageId: this.messages[messageIndex].id,
                 content: event.detail,
             });
@@ -131,7 +131,7 @@ export class AtPromptThread {
     handleMessageRetry(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageRetry.emit({
+            this.atThreadMessageRetry.emit({
                 messageId: this.messages[messageIndex].id,
             });
         }
@@ -139,7 +139,7 @@ export class AtPromptThread {
     handleMessageEdit(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageEdit.emit({
+            this.atThreadMessageEdit.emit({
                 messageId: this.messages[messageIndex].id,
                 content: event.detail,
             });
@@ -170,7 +170,7 @@ export class AtPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '6664e246258eded19e785cdc39621f7724396246', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'd316370a9d896cf77033fb8a5c4af320a798d7ff', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '2c596a810e00cc2ad6614b76385ed099ca3ec4ee', name: "thread-messages" }))));
+        return (h(Host, { key: '3bfeef903a6134cfed5e1edb430568dd81449c80', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '0dab7989cfd362ae5032e05cb9d08cbf4c8c869c', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'e3f77bb568ce5394ade0b52feae0adef4db3cb33', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
@@ -351,8 +351,8 @@ export class AtPromptThread {
     }
     static get events() {
         return [{
-                "method": "atMessageCopy",
-                "name": "atMessageCopy",
+                "method": "atThreadMessageCopy",
+                "name": "atThreadMessageCopy",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -366,8 +366,8 @@ export class AtPromptThread {
                     "references": {}
                 }
             }, {
-                "method": "atMessageRetry",
-                "name": "atMessageRetry",
+                "method": "atThreadMessageRetry",
+                "name": "atThreadMessageRetry",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -381,8 +381,8 @@ export class AtPromptThread {
                     "references": {}
                 }
             }, {
-                "method": "atMessageEdit",
-                "name": "atMessageEdit",
+                "method": "atThreadMessageEdit",
+                "name": "atThreadMessageEdit",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,
@@ -396,8 +396,8 @@ export class AtPromptThread {
                     "references": {}
                 }
             }, {
-                "method": "atMessageVote",
-                "name": "atMessageVote",
+                "method": "atThreadMessageVote",
+                "name": "atThreadMessageVote",
                 "bubbles": true,
                 "cancelable": true,
                 "composed": true,

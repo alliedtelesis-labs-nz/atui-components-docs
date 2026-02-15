@@ -45,27 +45,27 @@ export declare class AtPromptThread {
     /**
      * Emitted when a message copy action is requested
      */
-    atMessageCopy: EventEmitter<{
+    atThreadMessageCopy: EventEmitter<{
         messageId: string;
         content: string;
     }>;
     /**
      * Emitted when a message retry action is requested
      */
-    atMessageRetry: EventEmitter<{
+    atThreadMessageRetry: EventEmitter<{
         messageId: string;
     }>;
     /**
      * Emitted when a message edit action is requested
      */
-    atMessageEdit: EventEmitter<{
+    atThreadMessageEdit: EventEmitter<{
         messageId: string;
         content: string;
     }>;
     /**
      * Emitted when a message vote action is requested
      */
-    atMessageVote: EventEmitter<{
+    atThreadMessageVote: EventEmitter<{
         messageId: string;
         score: number;
     }>;
