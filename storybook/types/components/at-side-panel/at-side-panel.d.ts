@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type SidePanelDirection = 'left' | 'right';
-export type SidePanelSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export type SidePanelPosition = 'absolute' | 'fixed';
+export type AtSidePanelDirection = 'left' | 'right';
+export type AtSidePanelSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type AtSidePanelPosition = 'absolute' | 'fixed';
 /**
  * @category Overlays
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
@@ -15,7 +15,7 @@ export declare class AtSidePanelComponent {
     /**
      * Size of the size panel
      */
-    size: SidePanelSize;
+    size: AtSidePanelSize;
     /**
      * Title displayed in the side panel
      */
@@ -27,7 +27,7 @@ export declare class AtSidePanelComponent {
     /**
      *  Position of the side panel
      */
-    origin: SidePanelDirection;
+    origin: AtSidePanelDirection;
     /**
      * Enables scroll overflow on the sidepanel container
      */
@@ -39,7 +39,7 @@ export declare class AtSidePanelComponent {
     /**
      * If sidepanel should use fixed positioning (will fallback to absolute)
      */
-    position: SidePanelPosition;
+    position: AtSidePanelPosition;
     /**
      * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
      */

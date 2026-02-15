@@ -1,4 +1,4 @@
-export type GetTableColor = (value: any) => TableColor;
+export type AtGetTableColor = (value: any) => TableColor;
 export declare enum TableColor {
     GREEN = "GREEN",
     ORANGE = "ORANGE",

@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export interface RadioOption {
+export interface AtIRadioOption {
     value: string;
     label?: string;
     hint_text?: string;
@@ -7,7 +7,7 @@ export interface RadioOption {
     readonly?: boolean;
     group?: string;
 }
-export type RadioLayout = 'column' | 'row' | 'grid';
+export type AtRadioLayout = 'column' | 'row' | 'grid';
 /**
  * @category Form Controls
  * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
@@ -27,7 +27,7 @@ export declare class AtRadioGroup {
     /**
      * Direction that the radio elements are placed
      */
-    layout?: RadioLayout;
+    layout?: AtRadioLayout;
     /**
      * Disables the radio options but keeps the text readable. Use for global readonly form state.
      */
@@ -55,7 +55,7 @@ export declare class AtRadioGroup {
     /**
      * Options displayed in the radio group.
      */
-    options: RadioOption[];
+    options: AtIRadioOption[];
     /**
      * A string containing the Id of the currently selected radio
      */

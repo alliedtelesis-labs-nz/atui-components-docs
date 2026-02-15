@@ -1,5 +1,5 @@
 import { h, Fragment, } from "@stencil/core";
-import { TimeExtraOptions } from "../../../types/time";
+import { TimeExtraOptions, } from "../../../types/time";
 import { TimeRangeDisplay } from "../../../types/date";
 import { fetchTranslations } from "../../../utils/translation";
 import { TimeDateUtil } from "../../../utils/time-date.util";
@@ -161,17 +161,17 @@ export class AtTimeWithUnitComponent {
             : newValue);
     }
     render() {
-        return (h("div", { key: 'e59fe7c01a4a6d0c1b2b31213290be2a3862c7b5', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.handleSubmit(), tabindex: 0 }, h("div", { key: '67cbcec34e8fcf5f13d3292591e52f42b5724cb4', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '398fbf44f5c55c0f77d40d94f2b404a47d055452', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '453eac0afc8101a1e8299f1c1e3f28cf87a19ca2', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: 'de42bc4e32e6b27e3764d690e962fff36a176445', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: '83309fd94ed0cf478bcbf6e3b48524cfb417126d', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
+        return (h("div", { key: '6c791a959ed758cd92bb18d32c57db44365a6ea8', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.handleSubmit(), tabindex: 0 }, h("div", { key: 'c10f324559eecd5c96406004ad6c3a8704432211', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '4aa677bf9025ab3c8da0d282ce3955d2bd7d03f9', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: 'ab25d2d52f15c5fd994e11f763841b0fd6544275', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '9038044bf14e409422a49c658caa428f64fe0493', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: '46cfb5729173af6155a4d0e46cff58e7f70f24e7', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => this.translations.ATUI.TIME[option])
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
-            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '414728be64b74a18e3489d4c5a8d392a8908b9d9', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '5550a4097def29bf4b5b065e94462d92b6654e6c', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '03980735b9f1c16523674af1b9e5883d9f5a905c', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
+            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '208569b3d1f9c45b16bce13f49b97069cdf8f920', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '40d9b843d6c64d7c55916e67efc82ba837e17e2d', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '0743a7bba91e7a3d2f6dda8ba56cf6d013d05a4b', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
             this.common_options.map((timerange) => (h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
                     event.stopPropagation();
                     if (event.key === 'Enter' ||
                         event.key === ' ')
                         this.updateSelectedRange(timerange);
-                }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: 'c35a6b21c5204992d1a24616504213cb52977de9', class: "flex justify-between p-8" }, h("at-button", { key: '6299fae84a896d211c803b140f001bbadc6db083', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '505e7abd62c317b213be76f13df4cdcfaa5a2367', class: "flex gap-8" }, h("at-button", { key: '3adc136c5fd151360571187818750d0e40bbb94f', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'a072ba756953ed5bd26c0c8fbd78c6bb46e8eff7', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
+                }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '26510e79ced8510fd5d678d915ab62c07e1b6a18', class: "flex justify-between p-8" }, h("at-button", { key: 'a4d83881ac29e9b6397d4b2a6f06af82e20f5634', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: 'ee6f576023a60bf05d8c966b2873803b0e44e6d7', class: "flex gap-8" }, h("at-button", { key: '89d2db9c1224a181276819e4e27620cfd57700db', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'bf237393e64e7b5d311559516e1746b0bfee511e', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-time-with-unit"; }
     static get properties() {
@@ -291,14 +291,14 @@ export class AtTimeWithUnitComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "TimeWithUnit | TimeRangeDisplay.ALL",
-                    "resolved": "TimeRangeDisplay.ALL | TimeWithUnit",
+                    "original": "AtITimeWithUnit | TimeRangeDisplay.ALL",
+                    "resolved": "AtITimeWithUnit | TimeRangeDisplay.ALL",
                     "references": {
-                        "TimeWithUnit": {
+                        "AtITimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit",
-                            "referenceLocation": "TimeWithUnit"
+                            "id": "src/types/time.ts::AtITimeWithUnit",
+                            "referenceLocation": "AtITimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",
@@ -400,14 +400,14 @@ export class AtTimeWithUnitComponent {
                     "text": "Emitted when the user submits the time selection"
                 },
                 "complexType": {
-                    "original": "TimeWithUnit | TimeRangeDisplay.ALL",
-                    "resolved": "TimeRangeDisplay.ALL | TimeWithUnit",
+                    "original": "AtITimeWithUnit | TimeRangeDisplay.ALL",
+                    "resolved": "AtITimeWithUnit | TimeRangeDisplay.ALL",
                     "references": {
-                        "TimeWithUnit": {
+                        "AtITimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit",
-                            "referenceLocation": "TimeWithUnit"
+                            "id": "src/types/time.ts::AtITimeWithUnit",
+                            "referenceLocation": "AtITimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",

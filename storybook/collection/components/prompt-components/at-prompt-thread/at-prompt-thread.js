@@ -170,7 +170,7 @@ export class AtPromptThread {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '04ebb402c4ea1cb816789058d74244d2ca6774a5', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '3e8c6842d78ed43b52ed8e17f733e397961b28e6', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '926d0412ad2342547b5c1a1da25193df9ff2feae', name: "thread-messages" }))));
+        return (h(Host, { key: '6664e246258eded19e785cdc39621f7724396246', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'd316370a9d896cf77033fb8a5c4af320a798d7ff', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '2c596a810e00cc2ad6614b76385ed099ca3ec4ee', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {
@@ -179,14 +179,14 @@ export class AtPromptThread {
                 "type": "unknown",
                 "mutable": true,
                 "complexType": {
-                    "original": "PromptMessage[]",
-                    "resolved": "PromptMessage[]",
+                    "original": "AtIPromptMessage[]",
+                    "resolved": "AtIPromptMessage[]",
                     "references": {
-                        "PromptMessage": {
+                        "AtIPromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::AtIPromptMessage",
+                            "referenceLocation": "AtIPromptMessage"
                         }
                     }
                 },
@@ -324,14 +324,14 @@ export class AtPromptThread {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "PromptResponseAnimation",
+                    "original": "AtPromptResponseAnimation",
                     "resolved": "\"fade\" | \"none\" | \"words\"",
                     "references": {
-                        "PromptResponseAnimation": {
+                        "AtPromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::AtPromptResponseAnimation",
+                            "referenceLocation": "AtPromptResponseAnimation"
                         }
                     }
                 },

@@ -13,6 +13,6 @@ export declare enum ColumnField {
     DELETE = "delete",
     ACTION = "action"
 }
-export interface ColumnCreatorProperties extends ITableColumnDef {
+export interface AtIColumnCreatorProperties extends ITableColumnDef {
     headerKey: string;
 }

@@ -1,11 +1,10 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export interface ButtonGroupOption {
-    option_id: string;
+export interface AtIButtonGroupOption {
+    value: any;
     label?: string;
     icon?: string;
-    is_active?: string;
+    is_active?: boolean;
     disabled?: boolean;
-    readonly?: boolean;
 }
 /**
  * @category Form Controls
@@ -35,7 +34,7 @@ export declare class AtButtonGroup {
     /**
      * List of options to be displayed on the button group.
      */
-    options: ButtonGroupOption[];
+    options: AtIButtonGroupOption[];
     /**
      * Sets the current active button
      */
@@ -44,6 +43,10 @@ export declare class AtButtonGroup {
      * Disables the button group and prevents interaction
      */
     disabled?: boolean;
+    /**
+     * Defines the emit type defaults to string. Boolean shoudl be used when you are
+     */
+    type?: 'string' | 'bool';
     el: HTMLAtButtonGroupElement;
     private buttonGroupId;
     /**
@@ -55,14 +58,14 @@ export declare class AtButtonGroup {
      */
     atuiChange: EventEmitter<string>;
     buttonEls: HTMLAtButtonGroupOptionElement[];
-    handleValueChange(newValue: string): void;
+    handleValueChange(newValue: any): void;
     componentDidLoad(): void;
     getButtonElements(): HTMLAtButtonGroupOptionElement[];
     initializeButtons(): void;
     attachEventListenersToButtons(): void;
     activateOptionButton(): void;
     get getButtonGroupOptions(): any;
-    handleChange(event: CustomEvent, optionId: string, index: number): void;
+    handleChange(event: CustomEvent, optionValue: any, index: number): void;
     /**
      * Handles keyboard navigation for all button options.
      */

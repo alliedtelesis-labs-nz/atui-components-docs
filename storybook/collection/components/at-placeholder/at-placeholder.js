@@ -47,7 +47,7 @@ export class AtPlaceholderComponent {
         return placeholderVariants.iconSizes[this.size];
     }
     render() {
-        return (h("div", { key: 'dda712223f09d4ce1451428d74788b67c07f70f3', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '6544ed3fd83a67468c24bb2c7bdeeb0706b4aee7', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: 'f3a5fe9d2ed8cfc049a16ddbe0cb725cf3a96e9d', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '9b8df30bbdf456d5a4b51918139d5bfde51398ea', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'dc3c3e4e5a92858a82ac6cf730d634a3688b413c', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: 'a400dffcdde207cd0de1208eb9e43e5ea6ec287a', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '28977e483d8d8519af8b5a9f43227ddb02bc6b88', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: 'b04c602ec4cc3f46ba69b30f285051fa8b1daf2a' }))));
+        return (h("div", { key: '90a67c314a0d7ffb6307feea84209bea409749dd', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '281bcddbe01dccb07048768afbcabea38cd0f820', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: '5b6020b3b5ea54669a5bb3945b6d463839f6b136', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '12c91cdca0dbf83105d64e27b49d30d28a7d4d47', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'd7b15adf57dd9cd253dc3b8bdde91440bda233f9', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '78dc20517285bf31e6140390e7198ebad43538ce', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '396c7105d0f094ada7905269105f3ef89a2c1858', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '2f1418a5204ae82dc7c54a112a4e9267a9e868f1' }))));
     }
     static get is() { return "at-placeholder"; }
     static get properties() {
@@ -56,13 +56,13 @@ export class AtPlaceholderComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "PlaceholderSize",
+                    "original": "AtPlaceholderSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\" | \"xs\"",
                     "references": {
-                        "PlaceholderSize": {
+                        "AtPlaceholderSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-placeholder/at-placeholder.tsx",
-                            "id": "src/components/at-placeholder/at-placeholder.tsx::PlaceholderSize"
+                            "id": "src/components/at-placeholder/at-placeholder.tsx::AtPlaceholderSize"
                         }
                     }
                 },

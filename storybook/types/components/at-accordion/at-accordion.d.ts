@@ -1,4 +1,4 @@
-export interface AccordionItem {
+export interface AtIAccordionItem {
     item_id: string;
     label?: string;
     content?: string;
@@ -26,7 +26,7 @@ export declare class AtAccordionComponent {
     /**
      * Used to create accordion items.
      */
-    items: AccordionItem[];
+    items: AtIAccordionItem[];
     /**
      * If set, all child accordions will be open by default.
      */

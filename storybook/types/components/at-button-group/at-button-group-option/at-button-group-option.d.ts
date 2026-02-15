@@ -3,20 +3,23 @@ import { AtEvent } from '../../../types/events';
 /**
  * @category Form Controls
  * @description A button group option component for the button group.
+ *
+ * @Slot - Places content before the label.
+ * @After - Places content after the label.
  */
 export declare class AtButtonGroupOption {
     /**
-     * ID of the button element and its option
+     * Value of the select option
      */
-    option_id?: string;
+    value: any;
     /**
-     * String to be displayed in the button
+     * Displayed text value (optional) if not provided the value will be used as a fallback
      */
-    label: string;
+    label?: string;
     /**
      * Icon to be displayed in the button
      */
-    icon: string;
+    icon?: string;
     /**
      * Will disable interaction if set
      */

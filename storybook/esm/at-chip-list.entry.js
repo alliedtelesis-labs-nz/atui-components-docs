@@ -53,12 +53,12 @@ const AtChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (h("div", { key: 'e79e8aeed2f9bdf35bdf0aa5605c30d1e7a0c7ba', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (h("div", { key: 'cfdaf011d3063fb55ac727bf452ce14c5434bc64', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: '45ce89f2d81caa18afb362d0cf68ad9dd1d09451', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: '80a25163de4b96a2c60eb47cc65f91836d7db73a', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), h("slot", { key: 'f3914a81bce09dcf0b76f3211a1f4ff2f8cc483a' })));
+            } })), h("slot", { key: 'fe90573a97ea700567e1dfa7c077f47da663399f' })));
     }
 };
 

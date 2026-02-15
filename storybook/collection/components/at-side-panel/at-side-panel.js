@@ -179,7 +179,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '1aab6f98209a9ac2da5823e4fa9863297b4a0149', "data-open": this.isOpen }, h("dialog", { key: '16a1e340e21fdbaf21945f293d57e5bf4479268b', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'dedc471e10ccb005384ac239088f198e4fe57899', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: 'c5aef3a216cf2c243ba698857a5c17551c2450a6', class: "header", "data-name": "header" }, h("div", { key: 'ba45b06ead2ae6540b150b95915e50e3e363ede7' }, this.panel_title && (h("h3", { key: '4b8d692a9b685279f91802e8bce0e0e9468dde24', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: '6fc928839efc3edede82e925ca8e36413e60a5b3', class: "subtitle" }, this.panel_subtitle))), this.has_close_button && (h("at-button", { key: '1dc3736822ae4cbddb0954555971137b40d363de', size: "md", icon: "close", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }))), h("div", { key: '96378a33891e11493b85c4619dc4dc98482d140f', "data-name": "content", class: "content" }, h("slot", { key: '69c08b638d4615a66e6a4868af52575a4bae1a5a' }))))));
+        return (h(Host, { key: '02a1fa6e3d0dd429f38f2ed298d13f29a6a5b942', "data-open": this.isOpen }, h("dialog", { key: '0cceb693a52a1e64d0e3bd60e81d8fb07f051995', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '91f4c0eb06082f0d7c25abf35e52bd9214cd7793', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '5f7ef315c9806ba520c63b0a996d799317280553', class: "header", "data-name": "header" }, h("div", { key: 'b5f2013fff755b42791db20665dedd98141b935d' }, this.panel_title && (h("h3", { key: '38c4f096a3a2f5cd52cc11f5ae2a7820b5f1e16e', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: '7b49b58a71d6a39b64329b7fcbb9e2162aba5540', class: "subtitle" }, this.panel_subtitle))), this.has_close_button && (h("at-button", { key: '5ed6bdc3b5efb119c29ca3c7f9f19574bfa39e40', size: "md", icon: "close", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }))), h("div", { key: 'e536983fbd7a8d66653dfe995192f7b7f596660b', "data-name": "content", class: "content" }, h("slot", { key: '671fdcb71682292c82eb86ac4263b5d8f8862dfe' }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
@@ -199,13 +199,13 @@ export class AtSidePanelComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "SidePanelSize",
+                    "original": "AtSidePanelSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "SidePanelSize": {
+                        "AtSidePanelSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::SidePanelSize"
+                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelSize"
                         }
                     }
                 },
@@ -263,13 +263,13 @@ export class AtSidePanelComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "SidePanelDirection",
+                    "original": "AtSidePanelDirection",
                     "resolved": "\"left\" | \"right\"",
                     "references": {
-                        "SidePanelDirection": {
+                        "AtSidePanelDirection": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::SidePanelDirection"
+                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelDirection"
                         }
                     }
                 },
@@ -329,13 +329,13 @@ export class AtSidePanelComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "SidePanelPosition",
+                    "original": "AtSidePanelPosition",
                     "resolved": "\"absolute\" | \"fixed\"",
                     "references": {
-                        "SidePanelPosition": {
+                        "AtSidePanelPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::SidePanelPosition"
+                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelPosition"
                         }
                     }
                 },

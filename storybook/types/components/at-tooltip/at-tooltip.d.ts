@@ -1,5 +1,5 @@
-export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
-export type TooltipAlign = 'start' | 'end' | 'center';
+export type AtTooltipPosition = 'top' | 'bottom' | 'left' | 'right';
+export type AtTooltipAlign = 'start' | 'end' | 'center';
 /**
  * @category **Overlays**
  * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
@@ -11,11 +11,11 @@ export declare class AtTooltip {
     /**
      * Position of opened tooltip element relative to the trigger element.
      */
-    position: TooltipPosition;
+    position: AtTooltipPosition;
     /**
      * Alignment of opened tooltip element relative to trigger element.
      */
-    align: TooltipAlign;
+    align: AtTooltipAlign;
     /**
      * Prevent opening tooltip
      */

@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { AtEvent } from '../../../types/events';
-export type TreeItemSize = 'sm' | 'md' | 'lg';
+export type AtTreeItemSize = 'sm' | 'md' | 'lg';
 /**
  * @slot - Placed after the label, content is positioned at far right.
  */
@@ -8,7 +8,7 @@ export declare class AtTreeItemComponent {
     /**
      * Size of the button
      */
-    size: TreeItemSize;
+    size: AtTreeItemSize;
     /**
      * Label to be displayed within the button
      */

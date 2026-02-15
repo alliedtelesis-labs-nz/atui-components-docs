@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type ColumnDetails, type ColumnManagerChangeEvent, type CustomGridStackItem, type DateRangeStrings, type FilterEvent, type IPaginationParams, type ISearchTableParams, type ListSelectorItem, type SelectedTimeRangeExtended, type TimeRangeDisplay, type TimeWithUnit, type TreeNode } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilterEvent, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -17,6 +17,7 @@ import { AtBreadcrumbItem as AtBreadcrumbItemElement, defineCustomElement as def
 import { AtBreadcrumb as AtBreadcrumbElement, defineCustomElement as defineAtBreadcrumb } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-breadcrumb.js";
 import { AtButtonGroupOption as AtButtonGroupOptionElement, defineCustomElement as defineAtButtonGroupOption } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-button-group-option.js";
 import { AtButtonGroup as AtButtonGroupElement, defineCustomElement as defineAtButtonGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-button-group.js";
+import { AtButtonSwitch as AtButtonSwitchElement, defineCustomElement as defineAtButtonSwitch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-button-switch.js";
 import { AtButton as AtButtonElement, defineCustomElement as defineAtButton } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-button.js";
 import { AtCard as AtCardElement, defineCustomElement as defineAtCard } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-card.js";
 import { AtChartBarLine as AtChartBarLineElement, defineCustomElement as defineAtChartBarLine } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-bar-line.js";
@@ -217,6 +218,17 @@ export const AtButtonGroupOption: StencilReactComponent<AtButtonGroupOptionEleme
     defineCustomElement: defineAtButtonGroupOption
 });
 
+type AtButtonSwitchEvents = { onAtuiChange: EventName<CustomEvent<boolean>> };
+
+export const AtButtonSwitch: StencilReactComponent<AtButtonSwitchElement, AtButtonSwitchEvents> = /*@__PURE__*/ createComponent<AtButtonSwitchElement, AtButtonSwitchEvents>({
+    tagName: 'at-button-switch',
+    elementClass: AtButtonSwitchElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiChange: 'atuiChange' } as AtButtonSwitchEvents,
+    defineCustomElement: defineAtButtonSwitch
+});
+
 type AtCardEvents = NonNullable<unknown>;
 
 export const AtCard: StencilReactComponent<AtCardElement, AtCardEvents> = /*@__PURE__*/ createComponent<AtCardElement, AtCardEvents>({
@@ -327,7 +339,7 @@ export const AtColorStatusCell: StencilReactComponent<AtColorStatusCellElement, 
     defineCustomElement: defineAtColorStatusCell
 });
 
-type AtColumnManagerEvents = { onAtChange: EventName<AtColumnManagerCustomEvent<ColumnManagerChangeEvent>> };
+type AtColumnManagerEvents = { onAtChange: EventName<AtColumnManagerCustomEvent<AtIColumnManagerChangeEvent>> };
 
 export const AtColumnManager: StencilReactComponent<AtColumnManagerElement, AtColumnManagerEvents> = /*@__PURE__*/ createComponent<AtColumnManagerElement, AtColumnManagerEvents>({
     tagName: 'at-column-manager',
@@ -340,7 +352,7 @@ export const AtColumnManager: StencilReactComponent<AtColumnManagerElement, AtCo
 
 type AtCustomTimeRangeEvents = {
     onAtuiCancel: EventName<CustomEvent<null>>,
-    onAtuiSubmit: EventName<AtCustomTimeRangeCustomEvent<DateRangeStrings>>
+    onAtuiSubmit: EventName<AtCustomTimeRangeCustomEvent<AtIDateRangeStrings>>
 };
 
 export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, AtCustomTimeRangeEvents> = /*@__PURE__*/ createComponent<AtCustomTimeRangeElement, AtCustomTimeRangeEvents>({
@@ -356,9 +368,9 @@ export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, 
 });
 
 type AtDashboardEvents = {
-    onChangedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
-    onRemovedItem: EventName<AtDashboardCustomEvent<CustomGridStackItem>>,
-    onResizeDragEvent: EventName<AtDashboardCustomEvent<CustomGridStackItem>>
+    onChangedItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
+    onRemovedItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
+    onResizeDragEvent: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>
 };
 
 export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardEvents> = /*@__PURE__*/ createComponent<AtDashboardElement, AtDashboardEvents>({
@@ -496,7 +508,7 @@ export const AtListItem: StencilReactComponent<AtListItemElement, AtListItemEven
 });
 
 type AtListSelectorEvents = {
-    onAtuiChange: EventName<AtListSelectorCustomEvent<ListSelectorItem>>,
+    onAtuiChange: EventName<AtListSelectorCustomEvent<AtIListSelectorItem>>,
     onAtuiInfoButtonClick: EventName<AtListSelectorCustomEvent<AtEvent>>
 };
 
@@ -758,9 +770,9 @@ export const AtSearch: StencilReactComponent<AtSearchElement, AtSearchEvents> = 
 });
 
 type AtSearchTableEvents = {
-    onAtSearchParamsChange: EventName<AtSearchTableCustomEvent<ISearchTableParams>>,
-    onAtExportCsv: EventName<AtSearchTableCustomEvent<IPaginationParams>>,
-    onAtExportPdf: EventName<AtSearchTableCustomEvent<ColumnDetails[]>>
+    onAtSearchParamsChange: EventName<AtSearchTableCustomEvent<AtISearchTableParams>>,
+    onAtExportCsv: EventName<AtSearchTableCustomEvent<AtIPaginationParams>>,
+    onAtExportPdf: EventName<AtSearchTableCustomEvent<AtIColumnDetails[]>>
 };
 
 export const AtSearchTable: StencilReactComponent<AtSearchTableElement, AtSearchTableEvents> = /*@__PURE__*/ createComponent<AtSearchTableElement, AtSearchTableEvents>({
@@ -987,7 +999,7 @@ export const AtTableFilterMenu: StencilReactComponent<AtTableFilterMenuElement, 
     defineCustomElement: defineAtTableFilterMenu
 });
 
-type AtTableFiltersEvents = { onAtChange: EventName<AtTableFiltersCustomEvent<FilterEvent[]>> };
+type AtTableFiltersEvents = { onAtChange: EventName<AtTableFiltersCustomEvent<AtIFilterEvent[]>> };
 
 export const AtTableFilters: StencilReactComponent<AtTableFiltersElement, AtTableFiltersEvents> = /*@__PURE__*/ createComponent<AtTableFiltersElement, AtTableFiltersEvents>({
     tagName: 'at-table-filters',
@@ -1092,7 +1104,7 @@ export const AtTextarea: StencilReactComponent<AtTextareaElement, AtTextareaEven
     defineCustomElement: defineAtTextarea
 });
 
-type AtTimeRangeEvents = { onAtuiChange: EventName<AtTimeRangeCustomEvent<SelectedTimeRangeExtended>> };
+type AtTimeRangeEvents = { onAtuiChange: EventName<AtTimeRangeCustomEvent<AtSelectedTimeRangeExtended>> };
 
 export const AtTimeRange: StencilReactComponent<AtTimeRangeElement, AtTimeRangeEvents> = /*@__PURE__*/ createComponent<AtTimeRangeElement, AtTimeRangeEvents>({
     tagName: 'at-time-range',
@@ -1105,7 +1117,7 @@ export const AtTimeRange: StencilReactComponent<AtTimeRangeElement, AtTimeRangeE
 
 type AtTimeWithUnitEvents = {
     onAtuiCancel: EventName<CustomEvent<null>>,
-    onAtuiSubmit: EventName<AtTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>>
+    onAtuiSubmit: EventName<AtTimeWithUnitCustomEvent<AtITimeWithUnit | TimeRangeDisplay.ALL>>
 };
 
 export const AtTimeWithUnit: StencilReactComponent<AtTimeWithUnitElement, AtTimeWithUnitEvents> = /*@__PURE__*/ createComponent<AtTimeWithUnitElement, AtTimeWithUnitEvents>({
@@ -1186,7 +1198,7 @@ export const AtTooltip: StencilReactComponent<AtTooltipElement, AtTooltipEvents>
     defineCustomElement: defineAtTooltip
 });
 
-type AtTreeEvents = { onAtuiClick: EventName<AtTreeCustomEvent<TreeNode>> };
+type AtTreeEvents = { onAtuiClick: EventName<AtTreeCustomEvent<AtITreeNode>> };
 
 export const AtTree: StencilReactComponent<AtTreeElement, AtTreeEvents> = /*@__PURE__*/ createComponent<AtTreeElement, AtTreeEvents>({
     tagName: 'at-tree',

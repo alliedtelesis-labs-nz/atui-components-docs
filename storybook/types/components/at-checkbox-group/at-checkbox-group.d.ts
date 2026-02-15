@@ -1,11 +1,11 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export interface CheckboxOptions {
+export interface AtICheckboxOptions {
     option_id: string;
     label?: string;
     hint_text?: string;
     value?: boolean;
 }
-export type CheckboxLayout = 'column' | 'row' | 'grid';
+export type AtCheckboxLayout = 'column' | 'row' | 'grid';
 /**
  * ### ```interface CheckboxOptions```
  * ```
@@ -51,12 +51,12 @@ export declare class AtCheckboxGroup {
     /**
      * Options displayed in the checkbox group.
      */
-    options: CheckboxOptions[];
+    options: AtICheckboxOptions[];
     updateSelected(): void;
     /**
      * Sets the layout of the checkbox-group
      */
-    layout?: CheckboxLayout;
+    layout?: AtCheckboxLayout;
     /**
      * A list of strings, containing the Id's of the currently selected checkboxes
      */

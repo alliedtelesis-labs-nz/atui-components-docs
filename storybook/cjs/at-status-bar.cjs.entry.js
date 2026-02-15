@@ -7,7 +7,7 @@ const AtStatusBar = class {
         index.registerInstance(this, hostRef);
     }
     /**
-     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     * List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface.
      */
     status_bar = [];
     /**
@@ -29,7 +29,7 @@ const AtStatusBar = class {
             } }), index.h("span", null, segment.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: 'a7bb472d71b5d3cf515e94d44d402542091d6cdf', class: this.statusBarClass }, index.h("div", { key: '52ef9608350c7a1acdbe9bee143c9e88a755e880', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (index.h(index.Host, { key: 'b77d90dfa5f6fe158f3d8ec242cacfa3c2e295cc', class: this.statusBarClass }, index.h("div", { key: '6cb44316f9148afc40bab554a04afc5b0b830806', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

@@ -19,6 +19,8 @@ export { AtButtonGroup as AtButtonGroup } from '../types/components/at-button-gr
 export { defineCustomElement as defineCustomElementAtButtonGroup } from './at-button-group';
 export { AtButtonGroupOption as AtButtonGroupOption } from '../types/components/at-button-group/at-button-group-option/at-button-group-option';
 export { defineCustomElement as defineCustomElementAtButtonGroupOption } from './at-button-group-option';
+export { AtButtonSwitchComponent as AtButtonSwitch } from '../types/components/at-button-switch/at-button-switch';
+export { defineCustomElement as defineCustomElementAtButtonSwitch } from './at-button-switch';
 export { AtCardComponent as AtCard } from '../types/components/at-card/at-card';
 export { defineCustomElement as defineCustomElementAtCard } from './at-card';
 export { AtChartBarLine as AtChartBarLine } from '../types/components/at-chart-bar-line/at-chart-bar-line';

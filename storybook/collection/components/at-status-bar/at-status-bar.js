@@ -5,7 +5,7 @@ import { h, Host } from "@stencil/core";
  */
 export class AtStatusBar {
     /**
-     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     * List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface.
      */
     status_bar = [];
     /**
@@ -27,7 +27,7 @@ export class AtStatusBar {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'a7bb472d71b5d3cf515e94d44d402542091d6cdf', class: this.statusBarClass }, h("div", { key: '52ef9608350c7a1acdbe9bee143c9e88a755e880', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: 'b77d90dfa5f6fe158f3d8ec242cacfa3c2e295cc', class: this.statusBarClass }, h("div", { key: '6cb44316f9148afc40bab554a04afc5b0b830806', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
     static get is() { return "at-status-bar"; }
     static get properties() {
@@ -36,13 +36,13 @@ export class AtStatusBar {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "StatusBar[]",
-                    "resolved": "StatusBar[]",
+                    "original": "AtIStatusBarSegment[]",
+                    "resolved": "AtIStatusBarSegment[]",
                     "references": {
-                        "StatusBar": {
+                        "AtIStatusBarSegment": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-status-bar/at-status-bar.tsx",
-                            "id": "src/components/at-status-bar/at-status-bar.tsx::StatusBar"
+                            "id": "src/components/at-status-bar/at-status-bar.tsx::AtIStatusBarSegment"
                         }
                     }
                 },
@@ -50,7 +50,7 @@ export class AtStatusBar {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "List of segments that make up the status bar. Each segment implements the StatusBar interface."
+                    "text": "List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface."
                 },
                 "getter": false,
                 "setter": false,

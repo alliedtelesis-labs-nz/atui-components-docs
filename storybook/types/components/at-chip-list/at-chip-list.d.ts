@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type BadgeSize = 'lg' | 'sm';
+export type AtBadgeSize = 'lg' | 'sm';
 /**
  * @category Utilities
  * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
@@ -26,7 +26,7 @@ export declare class AtChipList {
     /**
      * Size of the chips. Determines padding and font-size. For use in input chip lists.
      */
-    size: BadgeSize;
+    size: AtBadgeSize;
     /**
      * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
      */

@@ -1,4 +1,4 @@
-import { ToastOptions, ToastType } from '../types/toast';
+import { AtIToastOptions, AtIToastType } from '../types/toast';
 export declare class ToasterService {
     private static id;
     private static containers;
@@ -9,7 +9,7 @@ export declare class ToasterService {
      * @param message The message to display in the toast
      * @param options Additional options for the toast (title, position, timeout, dismissible)
      */
-    static show(type: ToastType, message: string, options?: ToastOptions): Promise<void>;
+    static show(type: AtIToastType, message: string, options?: AtIToastOptions): Promise<void>;
     /**
      * Get or create at-toaster component
      * Stores the toaster container with position in the Map

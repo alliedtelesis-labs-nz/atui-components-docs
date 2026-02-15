@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type LabelPosition = 'before' | 'after';
+export type AtLabelPosition = 'before' | 'after';
 /**
  * @category Form Controls
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
@@ -17,7 +17,7 @@ export declare class AtToggleSwitchComponent {
     /**
      * Position of the label, left or right of the toggle.
      */
-    label_position: LabelPosition;
+    label_position: AtLabelPosition;
     /**
      * Show the toggle label.
      */

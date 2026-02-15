@@ -61,7 +61,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '1c8c37be2016ac3d96f88a0781a0626282aabd10', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
+        return (h("div", { key: '60bad218f81a1d5b3483fb079c1add3a8cc5d588', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", icon: "close", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }))))))));
@@ -84,14 +84,14 @@ export class AtToasterComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "ToastPosition",
+                    "original": "AtIToastPosition",
                     "resolved": "\"bottom-center\" | \"bottom-left\" | \"bottom-right\" | \"top-center\" | \"top-left\" | \"top-right\"",
                     "references": {
-                        "ToastPosition": {
+                        "AtIToastPosition": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::ToastPosition",
-                            "referenceLocation": "ToastPosition"
+                            "id": "src/types/toast.ts::AtIToastPosition",
+                            "referenceLocation": "AtIToastPosition"
                         }
                     }
                 },
@@ -118,10 +118,10 @@ export class AtToasterComponent {
         return {
             "addToast": {
                 "complexType": {
-                    "signature": "(toast: Toast) => Promise<void>",
+                    "signature": "(toast: AtIToast) => Promise<void>",
                     "parameters": [{
                             "name": "toast",
-                            "type": "Toast",
+                            "type": "AtIToast",
                             "docs": "The toast to add"
                         }],
                     "references": {
@@ -129,11 +129,11 @@ export class AtToasterComponent {
                             "location": "global",
                             "id": "global::Promise"
                         },
-                        "Toast": {
+                        "AtIToast": {
                             "location": "import",
                             "path": "../../types/toast",
-                            "id": "src/types/toast.ts::Toast",
-                            "referenceLocation": "Toast"
+                            "id": "src/types/toast.ts::AtIToast",
+                            "referenceLocation": "AtIToast"
                         }
                     },
                     "return": "Promise<void>"

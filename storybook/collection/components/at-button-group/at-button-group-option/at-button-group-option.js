@@ -20,14 +20,17 @@ const getButtonClasses = classlist('focus-visible:border-active-foreground focus
 /**
  * @category Form Controls
  * @description A button group option component for the button group.
+ *
+ * @Slot - Places content before the label.
+ * @After - Places content after the label.
  */
 export class AtButtonGroupOption {
     /**
-     * ID of the button element and its option
+     * Value of the select option
      */
-    option_id;
+    value;
     /**
-     * String to be displayed in the button
+     * Displayed text value (optional) if not provided the value will be used as a fallback
      */
     label;
     /**
@@ -67,12 +70,31 @@ export class AtButtonGroupOption {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: 'c43b13e3406f8acdf1492307cd0beea5b1f3ec24', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '002da095895a32efc83eeeec21efacb65872efa9', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'bbd3785e38a054044d3cb6f192643707a55c4781', name: "icon" }), this.label));
+        return (h("button", { key: '802a33f6e6747fe87eaa8f24f56eae9646ed8c2a', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: 'b5a7d03e981b623b479dcd88ac4217cc4112d4f1', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: '240454f3f67097d4bf0e4e3bf29d5e8a84a8e18c', name: "icon" }), this.label ? this.label : this.icon ? '' : this.value));
     }
     static get is() { return "at-button-group-option"; }
     static get properties() {
         return {
-            "option_id": {
+            "value": {
+                "type": "any",
+                "mutable": false,
+                "complexType": {
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Value of the select option"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "value"
+            },
+            "label": {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
@@ -84,26 +106,7 @@ export class AtButtonGroupOption {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "ID of the button element and its option"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "option_id"
-            },
-            "label": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "String to be displayed in the button"
+                    "text": "Displayed text value (optional) if not provided the value will be used as a fallback"
                 },
                 "getter": false,
                 "setter": false,
@@ -119,7 +122,7 @@ export class AtButtonGroupOption {
                     "references": {}
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
                     "text": "Icon to be displayed in the button"

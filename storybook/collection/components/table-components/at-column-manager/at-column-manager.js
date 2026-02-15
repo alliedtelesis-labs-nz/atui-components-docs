@@ -51,7 +51,7 @@ export class AtColumnManagerComponent {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '35917236242c96a14cd23dff45bf00d11b152915', autoclose: false, width: "fit-content", position: "left", align: "end" }, h("div", { key: 'e7413fa0d9fc4e5038fc390ad74fb5fbfafe6f7f', slot: "menu-trigger" }, h("at-tooltip", { key: '5667dc15fb5aa99c9397eefea75859b3f3fb7be7', position: "top" }, h("at-button", { key: '96781bfe5101efce186f1585b580280bcb0d83a5', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '2df182dbcdf55552f582d748aa78f5dd96643f4e' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '179cf95ed1fc11e2e5790fd5345d33b93d096750', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: 'be2b814a8b618f0bfa2bcf48a250df0e599cb412', autoclose: false, width: "fit-content", position: "left", align: "end" }, h("div", { key: '8ec2b1ed436e62b4b5f57d6f8d7723dfecd6a4b0', slot: "menu-trigger" }, h("at-tooltip", { key: '479b4c6d3b739212fc38f8e95be717f77d8024b6', position: "top" }, h("at-button", { key: '447230d502b01a677b6a16c4344fb2021d5c1824', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: 'cc2aee9ccb9b63b97eb10f3567b04e316c446ef8' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '89cecd7d87af4df283dd2ec5d4a586d8e6b47860', class: "w-fit", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
@@ -107,13 +107,13 @@ export class AtColumnManagerComponent {
                     "text": "Custom event used by at-table-actions to perform ag-grid logic\n\nEmitted when checkbox is clicked"
                 },
                 "complexType": {
-                    "original": "ColumnManagerChangeEvent",
-                    "resolved": "ColumnManagerChangeEvent",
+                    "original": "AtIColumnManagerChangeEvent",
+                    "resolved": "AtIColumnManagerChangeEvent",
                     "references": {
-                        "ColumnManagerChangeEvent": {
+                        "AtIColumnManagerChangeEvent": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/at-column-manager/at-column-manager.tsx",
-                            "id": "src/components/table-components/at-column-manager/at-column-manager.tsx::ColumnManagerChangeEvent"
+                            "id": "src/components/table-components/at-column-manager/at-column-manager.tsx::AtIColumnManagerChangeEvent"
                         }
                     }
                 }

@@ -161,8 +161,8 @@ export class AtRadioGroup {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: 'b549193ddda3a0309fd0aa23cfebce22c7b5c2f4', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'e6171641d7d258223fce8d0942223beed27c7abc', class: "flex flex-col" }, h("slot", { key: 'cea9dd8feb0ffb668803c4d2f3a08031604ebd0a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'daaf169fdd08dddee5d4a9c0b392f5ee5e15a2c5', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '41deb499cfc4099753950928dec8b90b6ee06c43', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '96e84d0f4c3455a416b6d279284697f2cf7695fd', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'd0e1c6b5dac4a307abae63904f76086e0b55ddb6' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '54b1bcac03ce1d52cc40fc5ae4523c0eec6bef54', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'cc679e9bd8e1fb4a2e48b7c4024ada3a42b766f3', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '41321b746296e9f8c2e20d35812857a8b1aa4cc3', class: "flex flex-col" }, h("slot", { key: 'bb1497909fbfe11ec645ea700d126fcb60b5ec56', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '4682cee3d2825f3efc7edde25a355f3dd24728a5', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '4c44c60879fb4d477286e5cb36b213b26a22c325', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: 'a2f931221d38fabc970ab4005b81f8c98b75c5d1', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'ed0dfa23ed80641a110a1dfdf126680aa684685e' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '64277f6e45280221b6ff87f958c69cc32bec08b1', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-radio-group"; }
     static get properties() {
@@ -209,13 +209,13 @@ export class AtRadioGroup {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "RadioLayout",
+                    "original": "AtRadioLayout",
                     "resolved": "\"column\" | \"grid\" | \"row\"",
                     "references": {
-                        "RadioLayout": {
+                        "AtRadioLayout": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-radio-group/at-radio-group.tsx",
-                            "id": "src/components/at-radio-group/at-radio-group.tsx::RadioLayout"
+                            "id": "src/components/at-radio-group/at-radio-group.tsx::AtRadioLayout"
                         }
                     }
                 },
@@ -349,13 +349,13 @@ export class AtRadioGroup {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "RadioOption[]",
-                    "resolved": "RadioOption[]",
+                    "original": "AtIRadioOption[]",
+                    "resolved": "AtIRadioOption[]",
                     "references": {
-                        "RadioOption": {
+                        "AtIRadioOption": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-radio-group/at-radio-group.tsx",
-                            "id": "src/components/at-radio-group/at-radio-group.tsx::RadioOption"
+                            "id": "src/components/at-radio-group/at-radio-group.tsx::AtIRadioOption"
                         }
                     }
                 },

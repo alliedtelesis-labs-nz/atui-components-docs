@@ -1,11 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { ITooltipCell } from '../../../../types';
-export interface TitleSubtitleData {
+export interface AtITitleSubtitleData {
     title: string;
     subtitle: string;
     tooltip?: string;
 }
-export interface ITitleSubtitleCellParams extends ICellRendererParams, ITooltipCell {
+export interface AtITitleSubtitleCellParams extends ICellRendererParams, ITooltipCell {
     title?: (data: any) => string;
     subtitle?: (data: any) => string;
 }
@@ -15,11 +15,11 @@ export interface ITitleSubtitleCellParams extends ICellRendererParams, ITooltipC
  */
 export declare class AtTitleSubtitleCell implements ICellRendererComp {
     el: HTMLElement;
-    params: ITitleSubtitleCellParams;
+    params: AtITitleSubtitleCellParams;
     title: string;
     subtitle: string;
-    init(params: ITitleSubtitleCellParams): void;
-    refresh(params: ITitleSubtitleCellParams): boolean;
+    init(params: AtITitleSubtitleCellParams): void;
+    refresh(params: AtITitleSubtitleCellParams): boolean;
     getGui(): HTMLElement;
     private setParams;
     render(): any;

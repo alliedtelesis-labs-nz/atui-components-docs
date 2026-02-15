@@ -203,7 +203,7 @@ export class AtPromptContainer {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '8e1cb446498e7a165f87b61bf1c4b8e386957289', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '415ca91f0816a54af2a9a52003337805e8650ccd', name: "prompt-container-header" }), h("div", { key: '6747648430fa162a38e3925350bf91bfdda4e68e', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '08ea7e8df13295b6b89bba83d7dec0fd6550d478', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '6443efb64a1c83fdab4b323eeedcb294f4bd2b7a', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '3e5b9f30d1e0a7fc802ca64896b75873a28de42c', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '81187126f73f3f313e7be86cf9873b27180a957f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '7541fd10195f2bda3190d120d49a7356a5605855', name: "prompt-container-header" }), h("div", { key: '86caf93a785b6bd9996a8b633a5d692dad181375', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '8d14df22d7e80ee55a45da5cd1a92328f800dea4', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: 'bf8d22bb11c0a892833faa3cf780e0b02c998afa', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '094bc0981ac51a97a00cbf0abe9680f03d24eb38', name: "prompt-container-footer" }))));
     }
     static get is() { return "at-prompt-container"; }
     static get properties() {
@@ -212,14 +212,14 @@ export class AtPromptContainer {
                 "type": "unknown",
                 "mutable": true,
                 "complexType": {
-                    "original": "PromptMessage[]",
-                    "resolved": "PromptMessage[]",
+                    "original": "AtIPromptMessage[]",
+                    "resolved": "AtIPromptMessage[]",
                     "references": {
-                        "PromptMessage": {
+                        "AtIPromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::AtIPromptMessage",
+                            "referenceLocation": "AtIPromptMessage"
                         }
                     }
                 },
@@ -416,14 +416,14 @@ export class AtPromptContainer {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "PromptResponseAnimation",
+                    "original": "AtPromptResponseAnimation",
                     "resolved": "\"fade\" | \"none\" | \"words\"",
                     "references": {
-                        "PromptResponseAnimation": {
+                        "AtPromptResponseAnimation": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptResponseAnimation",
-                            "referenceLocation": "PromptResponseAnimation"
+                            "id": "src/types/index.ts::AtPromptResponseAnimation",
+                            "referenceLocation": "AtPromptResponseAnimation"
                         }
                     }
                 },
@@ -562,7 +562,7 @@ export class AtPromptContainer {
         return {
             "addMessage": {
                 "complexType": {
-                    "signature": "(role: PromptUserRole, content: string) => Promise<void>",
+                    "signature": "(role: AtPromptUserRole, content: string) => Promise<void>",
                     "parameters": [{
                             "name": "role",
                             "type": "\"user\" | \"assistant\"",
@@ -577,17 +577,17 @@ export class AtPromptContainer {
                             "location": "global",
                             "id": "global::Promise"
                         },
-                        "PromptUserRole": {
+                        "AtPromptUserRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptUserRole",
-                            "referenceLocation": "PromptUserRole"
+                            "id": "src/types/index.ts::AtPromptUserRole",
+                            "referenceLocation": "AtPromptUserRole"
                         },
-                        "PromptMessage": {
+                        "AtIPromptMessage": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::PromptMessage",
-                            "referenceLocation": "PromptMessage"
+                            "id": "src/types/index.ts::AtIPromptMessage",
+                            "referenceLocation": "AtIPromptMessage"
                         }
                     },
                     "return": "Promise<void>"

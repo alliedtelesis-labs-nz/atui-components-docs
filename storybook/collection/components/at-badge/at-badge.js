@@ -66,7 +66,7 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: 'a2c58da60ba433f545ffcf37ef20b2317cce0ec3', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'a70fb88f9272b2f1dd0341a6314940c808446a39', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: 'c0801e6eeac6ada1b208715563b674ab9d5dda7a', "data-name": "badge-label" }, this.label), h("slot", { key: '9f9731447b5f5c6d5a267e2bc8efa7c676500f1d' })));
+        return (h(Host, { key: '3f7fe562fcb6badf1c40c901c1429c7c491f72ce', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'b4edcc725754e77f8a59d27c2ab5fc6a8d7e7066', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: '39554eeabe86ea585f254db2539313cfd6ba74cb', "data-name": "badge-label" }, this.label), h("slot", { key: 'ee7c81470d2037e59138073d1c15d5478cf25567' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {
@@ -113,13 +113,13 @@ export class AtBadgeComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "BadgeType",
+                    "original": "AtBadgeType",
                     "resolved": "\"default\" | \"disabled\" | \"error\" | \"info\" | \"success\" | \"warning\"",
                     "references": {
-                        "BadgeType": {
+                        "AtBadgeType": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::BadgeType"
+                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeType"
                         }
                     }
                 },
@@ -139,13 +139,13 @@ export class AtBadgeComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "BadgeSize",
+                    "original": "AtBadgeSize",
                     "resolved": "\"lg\" | \"sm\"",
                     "references": {
-                        "BadgeSize": {
+                        "AtBadgeSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::BadgeSize"
+                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeSize"
                         }
                     }
                 },
@@ -165,13 +165,13 @@ export class AtBadgeComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "BadgeContrast",
+                    "original": "AtBadgeContrast",
                     "resolved": "\"high\" | \"low\"",
                     "references": {
-                        "BadgeContrast": {
+                        "AtBadgeContrast": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::BadgeContrast"
+                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeContrast"
                         }
                     }
                 },

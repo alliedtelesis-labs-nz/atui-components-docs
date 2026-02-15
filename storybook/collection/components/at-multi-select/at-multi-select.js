@@ -262,6 +262,9 @@ export class AtMultiSelectComponent {
         const inputEl = event.target;
         this.searchText = inputEl.value;
     }
+    isGroup(option) {
+        return !!(option.children && option.children.length > 0);
+    }
     handleRemoveChip(event) {
         const removedLabels = event.detail;
         const selectedLabels = this.getSelectedLabels();
@@ -273,9 +276,6 @@ export class AtMultiSelectComponent {
             .filter(Boolean);
         this.value = this.value.filter((v) => !valuesToRemove.includes(v));
         this.atuiChange.emit(this.value);
-    }
-    isGroup(option) {
-        return !!(option.children && option.children.length > 0);
     }
     get hasMatchingOptions() {
         return this.filteredOptions.length > 0;
@@ -292,16 +292,16 @@ export class AtMultiSelectComponent {
         return result;
     }
     render() {
-        return (h(Host, { key: 'f1ecaf11533b5fe716119f9c56432e8a0296ce97', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '8df58c286cba36fe021e7cf5c4a7706afa81e3cc', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: 'dab43126a5b0f50448fd4f7f8679bde909f71e72', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'f420b15fa72c20ef914e38360d9a67970c36d53f', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '3ee569519e481d4ee74b821945277bbf4dedc02a' }, this.error_text && this.invalid && (h("span", { key: '9a02dc2b6ed09af672af6e62a0750408dc876541', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '645c05ed5b8cfc92db12ba37ce470a827de24e6c' }, this.error_text && this.invalid && (h("span", { key: 'b3146506f30eb821f3968d96aaab497483398f96', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -369,16 +369,16 @@ export class AtMultiSelectComponent {
         return {
             "options": {
                 "type": "unknown",
-                "mutable": true,
+                "mutable": false,
                 "complexType": {
-                    "original": "AtSelectOptionI[]",
-                    "resolved": "AtSelectOptionI[]",
+                    "original": "AtISelectOption[]",
+                    "resolved": "AtISelectOption[]",
                     "references": {
-                        "AtSelectOptionI": {
+                        "AtISelectOption": {
                             "location": "import",
                             "path": "../../types/select",
-                            "id": "src/types/select.ts::AtSelectOptionI",
-                            "referenceLocation": "AtSelectOptionI"
+                            "id": "src/types/select.ts::AtISelectOption",
+                            "referenceLocation": "AtISelectOption"
                         }
                     }
                 },

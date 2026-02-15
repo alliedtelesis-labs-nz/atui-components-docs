@@ -58,7 +58,7 @@ export class AtTabTrigger {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '5fb62d11b31bc4965c71837fcc54b0d91007c3da', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, h("a", { key: 'fce8b0d4035d5ae377ae2a57b0f7569a255d9e02', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '5ac549f481461fd2d9a72befcfde794ed8df0c77' }))));
+        return (h(Host, { key: '4cbe8d0de326b767e0ec6fa5bf9e90c36f57eb3f', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, h("a", { key: 'c03b46c707c6dd3e8154b8a3829e686a1544b616', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'b1502ca61cbacf330c86360925db38f950443fd5' }))));
     }
     static get is() { return "at-tab-trigger"; }
     static get properties() {
@@ -105,13 +105,13 @@ export class AtTabTrigger {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Layout",
+                    "original": "AtTabTriggerLayout",
                     "resolved": "\"horizontal\" | \"vertical\"",
                     "references": {
-                        "Layout": {
+                        "AtTabTriggerLayout": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tabs/at-tab-trigger/at-tab-trigger.tsx",
-                            "id": "src/components/at-tabs/at-tab-trigger/at-tab-trigger.tsx::Layout"
+                            "id": "src/components/at-tabs/at-tab-trigger/at-tab-trigger.tsx::AtTabTriggerLayout"
                         }
                     }
                 },

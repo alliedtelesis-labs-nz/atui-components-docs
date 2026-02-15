@@ -114,7 +114,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '30f043996827201da0de123a73a59d223abc28f3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '38bf02f0bfe5b9acbdeb744da8a1da52c6df42e2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }
@@ -135,13 +135,13 @@ export class AtDashboard {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "CustomGridStackItem[]",
-                    "resolved": "CustomGridStackItem[]",
+                    "original": "AtICustomGridStackItem[]",
+                    "resolved": "AtICustomGridStackItem[]",
                     "references": {
-                        "CustomGridStackItem": {
+                        "AtICustomGridStackItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
-                            "id": "src/components/at-dashboard/at-dashboard.tsx::CustomGridStackItem"
+                            "id": "src/components/at-dashboard/at-dashboard.tsx::AtICustomGridStackItem"
                         }
                     }
                 },
@@ -169,13 +169,13 @@ export class AtDashboard {
                     "text": "Emitted when a widget's position or size changes in the grid."
                 },
                 "complexType": {
-                    "original": "CustomGridStackItem",
-                    "resolved": "CustomGridStackItem",
+                    "original": "AtICustomGridStackItem",
+                    "resolved": "AtICustomGridStackItem",
                     "references": {
-                        "CustomGridStackItem": {
+                        "AtICustomGridStackItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
-                            "id": "src/components/at-dashboard/at-dashboard.tsx::CustomGridStackItem"
+                            "id": "src/components/at-dashboard/at-dashboard.tsx::AtICustomGridStackItem"
                         }
                     }
                 }
@@ -190,13 +190,13 @@ export class AtDashboard {
                     "text": "Emitted when a widget is removed from the dashboard."
                 },
                 "complexType": {
-                    "original": "CustomGridStackItem",
-                    "resolved": "CustomGridStackItem",
+                    "original": "AtICustomGridStackItem",
+                    "resolved": "AtICustomGridStackItem",
                     "references": {
-                        "CustomGridStackItem": {
+                        "AtICustomGridStackItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
-                            "id": "src/components/at-dashboard/at-dashboard.tsx::CustomGridStackItem"
+                            "id": "src/components/at-dashboard/at-dashboard.tsx::AtICustomGridStackItem"
                         }
                     }
                 }
@@ -211,13 +211,13 @@ export class AtDashboard {
                     "text": "Emitted when a widget finishes resizing or dragging."
                 },
                 "complexType": {
-                    "original": "CustomGridStackItem",
-                    "resolved": "CustomGridStackItem",
+                    "original": "AtICustomGridStackItem",
+                    "resolved": "AtICustomGridStackItem",
                     "references": {
-                        "CustomGridStackItem": {
+                        "AtICustomGridStackItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
-                            "id": "src/components/at-dashboard/at-dashboard.tsx::CustomGridStackItem"
+                            "id": "src/components/at-dashboard/at-dashboard.tsx::AtICustomGridStackItem"
                         }
                     }
                 }

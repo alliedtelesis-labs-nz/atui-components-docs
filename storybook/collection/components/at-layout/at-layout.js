@@ -29,7 +29,7 @@ export class AtLayout {
         }
     }
     render() {
-        return h(Host, { key: '16d6d4067babaad2371dd5e6d38f25bfae7d7961' }, this.layoutElement);
+        return h(Host, { key: '3ac56628f05d3be0217c183397e62a0d3f9bd8a8' }, this.layoutElement);
     }
     static get is() { return "at-layout"; }
     static get properties() {
@@ -38,13 +38,13 @@ export class AtLayout {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Template",
+                    "original": "AtTemplate",
                     "resolved": "\"content-container\" | \"master-detail\" | \"tabset\"",
                     "references": {
-                        "Template": {
+                        "AtTemplate": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-layout/at-layout.tsx",
-                            "id": "src/components/at-layout/at-layout.tsx::Template"
+                            "id": "src/components/at-layout/at-layout.tsx::AtTemplate"
                         }
                     }
                 },

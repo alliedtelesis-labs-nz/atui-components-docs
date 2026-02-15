@@ -83,13 +83,13 @@ export class AtLoadingComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "LoadingVariant",
+                    "original": "AtLoadingVariant",
                     "resolved": "\"dots\" | \"spinner\" | \"typing\" | \"wave\"",
                     "references": {
-                        "LoadingVariant": {
+                        "AtLoadingVariant": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::LoadingVariant"
+                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingVariant"
                         }
                     }
                 },
@@ -109,13 +109,13 @@ export class AtLoadingComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "LoadingType",
+                    "original": "AtLoadingType",
                     "resolved": "\"default\" | \"error\" | \"secondary\"",
                     "references": {
-                        "LoadingType": {
+                        "AtLoadingType": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::LoadingType"
+                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingType"
                         }
                     }
                 },
@@ -135,13 +135,13 @@ export class AtLoadingComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "LoadingSize",
+                    "original": "AtLoadingSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\"",
                     "references": {
-                        "LoadingSize": {
+                        "AtLoadingSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::LoadingSize"
+                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingSize"
                         }
                     }
                 },

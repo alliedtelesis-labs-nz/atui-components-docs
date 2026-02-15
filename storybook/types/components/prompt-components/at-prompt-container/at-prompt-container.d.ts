@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { type PromptMessage, PromptUserRole, PromptResponseAnimation } from '../../../types';
+import { type AtIPromptMessage, AtPromptUserRole, AtPromptResponseAnimation } from '../../../types';
 /**
  * @category Prompt
  * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
@@ -11,7 +11,7 @@ export declare class AtPromptContainer {
     /**
      * Array of messages to display in the conversation thread
      */
-    messages: PromptMessage[];
+    messages: AtIPromptMessage[];
     /**
      * Placeholder text for the input field
      */
@@ -54,7 +54,7 @@ export declare class AtPromptContainer {
      * - 'fade': Fade in the entire message
      * - 'words': Animate words appearing sequentially like ChatGPT
      */
-    response_animation: PromptResponseAnimation;
+    response_animation: AtPromptResponseAnimation;
     currentInput: string;
     inputInvalid: boolean;
     inputError: string;
@@ -122,7 +122,7 @@ export declare class AtPromptContainer {
      * @param role - The message role
      * @param content - The message content
      */
-    addMessage(role: PromptUserRole, content: string): Promise<void>;
+    addMessage(role: AtPromptUserRole, content: string): Promise<void>;
     /**
      * Append content to the last message in the thread (useful for streaming responses)
      * @param content - The content to append

@@ -216,7 +216,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'c235608bb747f692a03b9c79d37212a0fed35991', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'a86313366af5b9f573ff035e8686a3d702a57c65', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '7d2a805e77b4abcfd5cca59fb6d46191b1fc6f54', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '19df8315f664feb332150c3077c2c50297ea42fc', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '0ccf4b04f19660cd2cc2c83455fd1142bc8c7ad3', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '50b0a5f6e7bf3027577cdb2f326aa7f062ecbcf3', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'd437f253e95994df712771e22ccab66aa8d11e05', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '10d3c4b61e364a8b0ddc2a143c936fc0b0047612', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

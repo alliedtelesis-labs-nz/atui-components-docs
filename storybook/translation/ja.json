@@ -10,6 +10,8 @@
         "ENABLED": "有効",
         "DISABLED": "無効",
         "SEARCH": "検索",
+        "ON": "オン",
+        "OFF": "オフ",
         "NO_ITEMS_FOUND": "項目がありません。",
         "NO_RESULTS_FOUND": "結果がありません。",
         "NO_PERMISSION_EDIT_SETTING": "管理者アカウントでのみ設定を変更できます。",

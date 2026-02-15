@@ -160,7 +160,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: '7f8f2daef41b30e459712f4397d984d1143fe8cc' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'bb933bf2644555008727d8ff54563c2e1fb8f83d' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {
@@ -169,13 +169,13 @@ export class AtTabs {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "Tab[]",
-                    "resolved": "Tab[]",
+                    "original": "AtITab[]",
+                    "resolved": "AtITab[]",
                     "references": {
-                        "Tab": {
+                        "AtITab": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tabs/at-tabs.tsx",
-                            "id": "src/components/at-tabs/at-tabs.tsx::Tab"
+                            "id": "src/components/at-tabs/at-tabs.tsx::AtITab"
                         }
                     }
                 },
@@ -193,13 +193,13 @@ export class AtTabs {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Layout",
+                    "original": "AtTabsLayout",
                     "resolved": "\"horizontal\" | \"vertical\"",
                     "references": {
-                        "Layout": {
+                        "AtTabsLayout": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tabs/at-tabs.tsx",
-                            "id": "src/components/at-tabs/at-tabs.tsx::Layout"
+                            "id": "src/components/at-tabs/at-tabs.tsx::AtTabsLayout"
                         }
                     }
                 },

@@ -151,7 +151,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '9f1fec713603203c5ce4188ea2cb95b487ead145', class: "ag-theme-material" });
+        return h(Host, { key: '8786b5b6e4ab4e879372b1239be15b80a552886f', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {

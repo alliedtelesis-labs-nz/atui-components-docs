@@ -1,9 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export interface Tab {
+export interface AtITab {
     id: string;
     title: string;
 }
-export type Layout = 'vertical' | 'horizontal';
+export type AtTabsLayout = 'vertical' | 'horizontal';
 /**
  * ### interface Tab
  * ```
@@ -24,11 +24,11 @@ export declare class AtTabs {
     /**
      * List of tabs the selector will have
      */
-    tabs: Tab[];
+    tabs: AtITab[];
     /**
      * Layout of the tabs
      */
-    layout: Layout;
+    layout: AtTabsLayout;
     /**
      * hide navigation when you want to provide custom controls
      */

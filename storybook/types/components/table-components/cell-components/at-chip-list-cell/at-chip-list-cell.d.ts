@@ -1,8 +1,8 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface ChipCellData {
+export interface AtIChipCellData {
     chips: string[];
 }
-export interface IChipCellParams extends ICellRendererParams {
+export interface AtIChipCellParams extends ICellRendererParams {
     chips: (data: any) => string[];
 }
 /**
@@ -11,10 +11,10 @@ export interface IChipCellParams extends ICellRendererParams {
  */
 export declare class AtChipListCell implements ICellRendererComp {
     el: HTMLElement;
-    params: IChipCellParams;
+    params: AtIChipCellParams;
     chips: string[];
-    init(params: IChipCellParams): void;
+    init(params: AtIChipCellParams): void;
     getGui(): HTMLElement;
-    refresh(params: IChipCellParams): boolean;
+    refresh(params: AtIChipCellParams): boolean;
     render(): any;
 }

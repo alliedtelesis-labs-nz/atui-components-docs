@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { SelectedTimeRangeExtended, TimePresets } from '../../models/at-time-range.models';
-import { DateRange, DateRangeStrings, TimeRangeDisplay, TimeUnit, TimeWithUnit } from '../../types';
+import { AtSelectedTimeRangeExtended, TimePresets } from '../../models/at-time-range.models';
+import { AtIDateRange, AtIDateRangeStrings, TimeRangeDisplay, TimeUnit, AtITimeWithUnit } from '../../types';
 /**
  * @category Form Controls
  * @description A time range component for selecting time periods.
@@ -9,7 +9,7 @@ export declare class AtTimeRangeComponent {
     /**
      * Selected time range.
      */
-    selected_time_range: SelectedTimeRangeExtended;
+    selected_time_range: AtSelectedTimeRangeExtended;
     /**
      * Lower limit of the time range.
      */
@@ -46,19 +46,19 @@ export declare class AtTimeRangeComponent {
     minSeconds: number;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
-    getLongUnitDisplay(time: SelectedTimeRangeExtended): string;
-    getRelativeDate(time: SelectedTimeRangeExtended): DateRange;
-    getCustomStartAndEndDate(selectedTime: SelectedTimeRangeExtended): {
+    getLongUnitDisplay(time: AtSelectedTimeRangeExtended): string;
+    getRelativeDate(time: AtSelectedTimeRangeExtended): AtIDateRange;
+    getCustomStartAndEndDate(selectedTime: AtSelectedTimeRangeExtended): {
         fromDate: Date;
         toDate: Date;
     };
-    getShortUnitDisplay(time: TimeWithUnit): string;
+    getShortUnitDisplay(time: AtITimeWithUnit): string;
     /**
      * Emits an event containing the selected time range when it changes
      */
-    atuiChange: EventEmitter<SelectedTimeRangeExtended>;
-    onChangeCustomTime(customTime: DateRangeStrings): void;
-    onChangeRelativeTime(time: TimeWithUnit | TimeRangeDisplay.ALL): void;
+    atuiChange: EventEmitter<AtSelectedTimeRangeExtended>;
+    onChangeCustomTime(customTime: AtIDateRangeStrings): void;
+    onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
     get buttonGroupOptions(): any[];
     get predefinedTimeRanges(): any[];
     render(): any;

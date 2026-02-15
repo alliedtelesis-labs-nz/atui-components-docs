@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtSelectOptionI } from '../../types/select';
+import { AtISelectOption } from '../../types/select';
 /**
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
@@ -13,7 +13,7 @@ export declare class AtSelectComponent {
     /**
      * Sets the options in the dropdown
      */
-    options: AtSelectOptionI[];
+    options: AtISelectOption[];
     /**
      * Label of the input.
      */
@@ -68,8 +68,7 @@ export declare class AtSelectComponent {
     translations: any;
     hasMatchingElOptions: boolean;
     parentWidth: string;
-    filteredOptions: AtSelectOptionI[];
-    selectedLabel: string;
+    filteredOptions: AtISelectOption[];
     selectedLabel: string;
     el: HTMLElement;
     private menuId;

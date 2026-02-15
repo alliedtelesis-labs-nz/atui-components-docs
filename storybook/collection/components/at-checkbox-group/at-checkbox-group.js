@@ -117,8 +117,8 @@ export class AtCheckboxGroup {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: 'ed88b6f072aec6c01ef7e5fb8539f098c87e3408', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '7f61a0b695afe235c48280fd74225178c6347570', class: "flex flex-col" }, h("slot", { key: '87d68c047b57cec5e3ae32a02b7a7a07cf05b97a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'cfe2eb6018f7d038502af89326008c2aa769850a', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '067375a557231a921a543ac82204a793061ad076', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '1e7f7359a68463c38103bed2d8c8e49a7cf26a4f', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '56afad537f7418a10e034c8888e424ba4c007e01' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'a3d197e63b5a075c11668948a54ba369a571dfba', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'd9cb898f5ea405d2b33f5a8c4415cd7d5f857677', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: 'a300875732a3557722fb5ffbcd5b45a65f8f82e9', class: "flex flex-col" }, h("slot", { key: '234e165d32bf2854a84041a4ed61e661b3cfc55a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '482a2a1c2d0ba7dd81c0d8eb5033d42078102183', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '68a03cae5552dba3f183355d2c09de401fe28f4b', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '48af1396abc2e0037d3df812ff50d172657dffe9', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '1df222e76b098edd76602b3edb6aed12bdca4591' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'dc220aff9a023e5f7f846b99bc05640141014be3', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-checkbox-group"; }
     static get properties() {
@@ -260,13 +260,13 @@ export class AtCheckboxGroup {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "CheckboxOptions[]",
-                    "resolved": "CheckboxOptions[]",
+                    "original": "AtICheckboxOptions[]",
+                    "resolved": "AtICheckboxOptions[]",
                     "references": {
-                        "CheckboxOptions": {
+                        "AtICheckboxOptions": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-checkbox-group/at-checkbox-group.tsx",
-                            "id": "src/components/at-checkbox-group/at-checkbox-group.tsx::CheckboxOptions"
+                            "id": "src/components/at-checkbox-group/at-checkbox-group.tsx::AtICheckboxOptions"
                         }
                     }
                 },
@@ -283,13 +283,13 @@ export class AtCheckboxGroup {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "CheckboxLayout",
+                    "original": "AtCheckboxLayout",
                     "resolved": "\"column\" | \"grid\" | \"row\"",
                     "references": {
-                        "CheckboxLayout": {
+                        "AtCheckboxLayout": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-checkbox-group/at-checkbox-group.tsx",
-                            "id": "src/components/at-checkbox-group/at-checkbox-group.tsx::CheckboxLayout"
+                            "id": "src/components/at-checkbox-group/at-checkbox-group.tsx::AtCheckboxLayout"
                         }
                     }
                 },

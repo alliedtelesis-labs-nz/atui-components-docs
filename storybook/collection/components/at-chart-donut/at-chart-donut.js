@@ -242,7 +242,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '4bef032fd45baaabd73075cc64d41b7d61366c23', style: { height: '100%', width: '100%' } }, h("canvas", { key: '32fa0c5cb1eaede8a06a1633a2b36e90474da74e', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '6f8f067b0eaf17cc59012ae0781fbd513d7648db', style: { height: '100%', width: '100%' } }, h("canvas", { key: '27ecf890f9c8df57a7e7966b312931d0331d580d', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -292,13 +292,13 @@ export class AtChartDonut {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Height",
+                    "original": "AtChartHeight",
                     "resolved": "\"auto\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "Height": {
+                        "AtChartHeight": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight"
                         }
                     }
                 },
@@ -318,13 +318,13 @@ export class AtChartDonut {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "LegendPosition",
+                    "original": "AtLegendPosition",
                     "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
                     "references": {
-                        "LegendPosition": {
+                        "AtLegendPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::LegendPosition"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtLegendPosition"
                         }
                     }
                 },

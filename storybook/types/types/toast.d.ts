@@ -1,15 +1,15 @@
-export interface Toast extends ToastOptions {
+export interface AtIToast extends AtIToastOptions {
     id: number;
-    type: ToastType;
+    type: AtIToastType;
     message: string;
 }
-export interface ToastOptions {
+export interface AtIToastOptions {
     title?: string;
-    position?: ToastPosition;
+    position?: AtIToastPosition;
     timeout?: number;
     dismissible?: boolean;
     closeButton?: boolean;
 }
-export type ToastType = 'success' | 'error' | 'info' | 'warning' | 'default';
-export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export declare const DEFAULT_TOAST_OPTIONS: ToastOptions;
+export type AtIToastType = 'success' | 'error' | 'info' | 'warning' | 'default';
+export type AtIToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export declare const DEFAULT_TOAST_OPTIONS: AtIToastOptions;

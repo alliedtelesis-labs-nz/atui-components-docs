@@ -1,5 +1,5 @@
-type Size = 'sm' | 'lg';
-export type ProgressBarType = 'info' | 'success' | 'warning' | 'error';
+type AtProgressBarSize = 'sm' | 'lg';
+export type AtProgressBarType = 'info' | 'success' | 'warning' | 'error';
 /**
  * @category Data Visualization
  * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
@@ -18,11 +18,11 @@ export declare class AtProgressBar {
     /**
      * Type of the progress bar, which determines its color.
      */
-    type?: ProgressBarType;
+    type?: AtProgressBarType;
     /**
      * Height of the progress bar
      */
-    size?: Size;
+    size?: AtProgressBarSize;
     private clamped;
     onPercentageChange(): void;
     componentWillLoad(): void;

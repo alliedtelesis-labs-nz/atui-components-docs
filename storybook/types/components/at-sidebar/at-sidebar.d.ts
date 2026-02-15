@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type Width = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
+export type AtSideBarWidth = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
 /**
  * @category Navigation
  * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
@@ -16,7 +16,7 @@ export declare class AtSidebarComponent {
     /**
      * Width of the sidebar
      */
-    width: Width;
+    width: AtSideBarWidth;
     /**
      * Size of the sidebar when collapsed.
      */

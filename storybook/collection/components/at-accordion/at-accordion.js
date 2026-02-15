@@ -90,7 +90,7 @@ export class AtAccordionComponent {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: '4913c309f9a431713bb9cbd0dea7e9e3f528ea99', class: "flex flex-col gap-2" }, h("slot", { key: '1e054c3edab80d711198d1b6920e3ac516d24dea' }), this.items &&
+        return (h(Host, { key: '3b443c708af08eb8240ed36e08c4cd7d07474cce', class: "flex flex-col gap-2" }, h("slot", { key: '964806372bae0018d510ed5ca7ef92e6b5da3b3f' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));
@@ -102,13 +102,13 @@ export class AtAccordionComponent {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "AccordionItem[]",
-                    "resolved": "AccordionItem[]",
+                    "original": "AtIAccordionItem[]",
+                    "resolved": "AtIAccordionItem[]",
                     "references": {
-                        "AccordionItem": {
+                        "AtIAccordionItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-accordion/at-accordion.tsx",
-                            "id": "src/components/at-accordion/at-accordion.tsx::AccordionItem"
+                            "id": "src/components/at-accordion/at-accordion.tsx::AtIAccordionItem"
                         }
                     }
                 },

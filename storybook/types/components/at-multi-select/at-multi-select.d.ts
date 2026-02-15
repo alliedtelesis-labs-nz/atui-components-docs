@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtSelectOptionI } from '../../types/select';
+import { AtISelectOption } from '../../types/select';
 /**
  * @category Form Controls
  * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
@@ -8,7 +8,7 @@ export declare class AtMultiSelectComponent {
     /**
      * Options displayed in the dropdown menu.
      */
-    options: AtSelectOptionI[];
+    options: AtISelectOption[];
     /**
      * Label of the select.
      */
@@ -62,7 +62,7 @@ export declare class AtMultiSelectComponent {
     translations: any;
     parentWidth: string;
     hasMatchingElOptions: boolean;
-    filteredOptions: AtSelectOptionI[];
+    filteredOptions: AtISelectOption[];
     el: HTMLElement;
     private menuId;
     private menuRef;
@@ -90,8 +90,8 @@ export declare class AtMultiSelectComponent {
     private handleClear;
     private handleKeyDownMenu;
     private handleSearchInput;
-    private handleRemoveChip;
     private isGroup;
+    private handleRemoveChip;
     get hasMatchingOptions(): boolean;
     get hasAnyMatchingOptions(): boolean;
     get hasAnyOptions(): boolean;
@@ -100,5 +100,5 @@ export declare class AtMultiSelectComponent {
     renderInput(): any;
     renderOptions(): any;
     private renderGroupedOption;
-    renderOption(option: AtSelectOptionI): any;
+    renderOption(option: AtISelectOption): any;
 }

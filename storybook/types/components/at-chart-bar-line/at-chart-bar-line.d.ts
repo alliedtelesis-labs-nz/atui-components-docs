@@ -1,9 +1,9 @@
 import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
 import 'chartjs-adapter-moment';
 import { SelectedTimeRangeExtended } from '../../components';
-import { Height } from '../at-chart-donut/at-chart-donut';
+import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
 import { ChartColorPalette } from '../../types/chart-color';
-export interface PointStyles {
+export interface AtIPointStyles {
     pointBackgroundColor: Color;
     pointBorderColor: Color;
     pointBorderWidth: number;
@@ -16,7 +16,7 @@ export interface PointStyles {
     pointRotaion: number;
     pointStyle: PointStyle;
 }
-export interface Threshold {
+export interface AtIThreshold {
     label: string;
     data: (number | Point | [number, number] | BubbleDataPoint)[];
     color?: string;
@@ -89,11 +89,11 @@ export declare class AtChartBarLine {
     /**
      * Thresholds to be displayed in the chart
      */
-    thresholds?: Threshold[];
+    thresholds?: AtIThreshold[];
     /**
      * Styles for the points in the chart
      */
-    point_styles?: PointStyles;
+    point_styles?: AtIPointStyles;
     /**
      * The time range that the chart is displayed in.
      */
@@ -101,7 +101,7 @@ export declare class AtChartBarLine {
     /**
      * Height of the chart.
      */
-    height?: Height;
+    height?: AtChartHeight;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;

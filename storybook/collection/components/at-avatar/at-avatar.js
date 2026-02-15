@@ -57,7 +57,7 @@ export class AtAvatar {
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: 'c22efad4d2b48a40238700966a61eb1b69a303a9', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'c6c480c8de16a1793631c9d30adcf5349599cf84', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '26e0c69f0ae0806947e3a0027762934b989bf1e0', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '0cebd5c3ccd2495850b14b8a62630c74c72d4408' })));
+        return (h(Host, { key: '991a10f4687d9e1b72902a963080fb5f21bee0de', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'b4e2c7d86718a3069bdfec9983419def02be7dab', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '7c96e5cd053c0f0672363f95730201234ff41611', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '928158927864ab1696e391b26bd71b97c1dd3c00' })));
     }
     static get is() { return "at-avatar"; }
     static get properties() {
@@ -123,13 +123,13 @@ export class AtAvatar {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "AvatarSize",
+                    "original": "AtAvatarSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\"",
                     "references": {
-                        "AvatarSize": {
+                        "AtAvatarSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-avatar/at-avatar.tsx",
-                            "id": "src/components/at-avatar/at-avatar.tsx::AvatarSize"
+                            "id": "src/components/at-avatar/at-avatar.tsx::AtAvatarSize"
                         }
                     }
                 },
@@ -149,13 +149,13 @@ export class AtAvatar {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "AvatarVariant",
+                    "original": "AtAvatarVariant",
                     "resolved": "\"muted\" | \"primary\" | \"secondary\"",
                     "references": {
-                        "AvatarVariant": {
+                        "AtAvatarVariant": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-avatar/at-avatar.tsx",
-                            "id": "src/components/at-avatar/at-avatar.tsx::AvatarVariant"
+                            "id": "src/components/at-avatar/at-avatar.tsx::AtAvatarVariant"
                         }
                     }
                 },

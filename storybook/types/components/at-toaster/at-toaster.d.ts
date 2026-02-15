@@ -1,4 +1,4 @@
-import { Toast, ToastPosition } from '../../types/toast';
+import { AtIToast, AtIToastPosition } from '../../types/toast';
 /**
  * @category Overlays
  * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
@@ -8,15 +8,15 @@ export declare class AtToasterComponent {
     /**
      * Position of the toaster on the screen
      */
-    position: ToastPosition;
-    toasts: Toast[];
+    position: AtIToastPosition;
+    toasts: AtIToast[];
     /**
      * Adds a new toast to the toaster container
      * This method is called from the ToasterService when a new toast is created.
      *
      * @param toast The toast to add
      */
-    addToast(toast: Toast): Promise<void>;
+    addToast(toast: AtIToast): Promise<void>;
     /**
      * Removes a toast from the toaster container by its ID
      * This method is called by tapToast.

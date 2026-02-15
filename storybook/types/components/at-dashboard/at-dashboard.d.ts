@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { GridStackNode } from 'gridstack';
-export interface CustomGridStackItem extends GridStackNode {
+export interface AtICustomGridStackItem extends GridStackNode {
     id: string;
     x?: number;
     y?: number;
@@ -13,19 +13,19 @@ export declare class AtDashboard {
     /**
      * Array of dashboard widget items to display in the grid layout.
      */
-    widget_items: CustomGridStackItem[];
+    widget_items: AtICustomGridStackItem[];
     /**
      * Emitted when a widget's position or size changes in the grid.
      */
-    changedItem: EventEmitter<CustomGridStackItem>;
+    changedItem: EventEmitter<AtICustomGridStackItem>;
     /**
      * Emitted when a widget is removed from the dashboard.
      */
-    removedItem: EventEmitter<CustomGridStackItem>;
+    removedItem: EventEmitter<AtICustomGridStackItem>;
     /**
      * Emitted when a widget finishes resizing or dragging.
      */
-    resizeDragEvent: EventEmitter<CustomGridStackItem>;
+    resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
     private grid?;
     private gridContainerRef?;

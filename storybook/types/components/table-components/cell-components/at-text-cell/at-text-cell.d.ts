@@ -1,12 +1,12 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { InitTextCellParams, ITooltipCell } from '../../../../types';
-import { CSSProperties } from '../../../../types/styles';
-export interface TextCellData {
+import { AtICSSProperties } from '../../../../types/styles';
+export interface AtITextCellData {
     text: string;
     tooltip?: string;
 }
-export interface ITextCellParams extends ICellRendererParams, ITooltipCell {
-    text?: (data: TextCellData) => string;
+export interface AtITextCellParams extends ICellRendererParams, ITooltipCell {
+    text?: (data: AtITextCellData) => string;
     color?: string;
     textStyles?: any | ((params: ICellRendererParams) => any);
     textClass?: string;
@@ -18,8 +18,8 @@ export interface ITextCellParams extends ICellRendererParams, ITooltipCell {
  */
 export declare class AtTextCellComponent implements ICellRendererComp {
     el: HTMLElement;
-    containerStyles: CSSProperties;
-    textStyles: CSSProperties;
+    containerStyles: AtICSSProperties;
+    textStyles: AtICSSProperties;
     textClass: string;
     textValue: string;
     params: InitTextCellParams;

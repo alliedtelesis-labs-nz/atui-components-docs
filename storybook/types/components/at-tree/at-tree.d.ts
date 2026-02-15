@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { ButtonSize } from '../at-button/at-button';
-import { TreeNode } from '../../types/tree';
+import { AtButtonSize } from '../at-button/at-button';
+import { AtITreeNode } from '../../types/tree';
 /**
  * @category Navigation
  * @description A tree component for displaying hierarchical data.
@@ -21,19 +21,19 @@ export declare class AtTreeComponent {
     /**
      * List of items to be displayed in the tree
      */
-    item_list: TreeNode[];
+    item_list: AtITreeNode[];
     /**
      * Set the size of the tree button, default sm
      */
-    size: ButtonSize;
+    size: AtButtonSize;
     /**
      * Emits when the button is clicked
      */
-    atuiClick: EventEmitter<TreeNode>;
-    flattenedItemList: Array<TreeNode>;
+    atuiClick: EventEmitter<AtITreeNode>;
+    flattenedItemList: Array<AtITreeNode>;
     flattenedItemStyles: any[];
     handleClick: (id: string) => void;
-    flattenItemList: (itemList: TreeNode[]) => void;
+    flattenItemList: (itemList: AtITreeNode[]) => void;
     componentWillRender(): void;
     render(): any;
 }

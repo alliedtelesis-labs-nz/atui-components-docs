@@ -269,7 +269,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'd2b491a90fcba3257e72f1e4c766b233acb719eb', style: { height: '100%', width: '100%' } }, h("canvas", { key: '4583368f7d4eafb755393cd8fc6101f4d47f77d4', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'b51f907904521291948137f06ad146779746d1cf', style: { height: '100%', width: '100%' } }, h("canvas", { key: '4fc348e69cf70ac520ea200d269f66b87254aa91', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
@@ -406,13 +406,13 @@ export class AtChartBarLine {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "Threshold[]",
-                    "resolved": "Threshold[]",
+                    "original": "AtIThreshold[]",
+                    "resolved": "AtIThreshold[]",
                     "references": {
-                        "Threshold": {
+                        "AtIThreshold": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-bar-line/at-chart-bar-line.tsx",
-                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::Threshold"
+                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::AtIThreshold"
                         }
                     }
                 },
@@ -429,13 +429,13 @@ export class AtChartBarLine {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "PointStyles",
-                    "resolved": "PointStyles",
+                    "original": "AtIPointStyles",
+                    "resolved": "AtIPointStyles",
                     "references": {
-                        "PointStyles": {
+                        "AtIPointStyles": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-bar-line/at-chart-bar-line.tsx",
-                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::PointStyles"
+                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::AtIPointStyles"
                         }
                     }
                 },
@@ -476,14 +476,14 @@ export class AtChartBarLine {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Height",
+                    "original": "AtChartHeight",
                     "resolved": "\"auto\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "Height": {
+                        "AtChartHeight": {
                             "location": "import",
                             "path": "../at-chart-donut/at-chart-donut",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height",
-                            "referenceLocation": "Height"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight",
+                            "referenceLocation": "AtChartHeight"
                         }
                     }
                 },

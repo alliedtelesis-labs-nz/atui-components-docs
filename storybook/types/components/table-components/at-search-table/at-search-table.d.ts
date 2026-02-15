@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
-import { ColumnDetails, IPaginationParams, ISearchTableParams } from '../../../types';
+import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams } from '../../../types';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -93,15 +93,15 @@ export declare class AtSearchTable {
      * Event emitted when search params change in server-side mode.
      * Contains filters, search text, pagination info
      */
-    atSearchParamsChange: EventEmitter<ISearchTableParams>;
+    atSearchParamsChange: EventEmitter<AtISearchTableParams>;
     /**
      * Event emitted when CSV export is requested
      */
-    atExportCsv: EventEmitter<IPaginationParams>;
+    atExportCsv: EventEmitter<AtIPaginationParams>;
     /**
      * Event emitted when PDF export is requested
      */
-    atExportPdf: EventEmitter<ColumnDetails[]>;
+    atExportPdf: EventEmitter<AtIColumnDetails[]>;
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;

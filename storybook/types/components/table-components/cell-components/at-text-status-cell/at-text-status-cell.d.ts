@@ -1,11 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { ITooltipCell } from '../../../../types';
-import { BadgeType } from '../../../at-badge/at-badge';
-export interface TextStatusCellData {
+import { AtBadgeType } from '../../../at-badge/at-badge';
+export interface AtITextStatusCellData {
     value: 'active' | 'warning' | 'error' | 'default' | string;
     tooltip?: string;
 }
-export interface ITextStatusCellParams extends ITooltipCell {
+export interface AtITextStatusCellParams extends ITooltipCell {
     mapValueToText?: (value: any) => string;
     mapValueToStatus?: (value: any) => string | 'default';
     showSimpleText?: boolean;
@@ -13,10 +13,10 @@ export interface ITextStatusCellParams extends ITooltipCell {
     textTransform?: (params: ICellRendererParams, value: string) => string;
     useIconHeaderTooltip?: boolean;
 }
-export interface TextStatusValueParam {
+export interface AtITextStatusValueParam {
     status: string;
 }
-interface InitParams extends ITextStatusCellParams, ICellRendererParams {
+interface AtInitParams extends AtITextStatusCellParams, ICellRendererParams {
 }
 /**
  * @category Data Tables
@@ -24,13 +24,13 @@ interface InitParams extends ITextStatusCellParams, ICellRendererParams {
  */
 export declare class AtTextStatusCellComponent implements ICellRendererComp {
     el: any;
-    params: InitParams;
+    params: AtInitParams;
     text: string;
-    type: BadgeType;
+    type: AtBadgeType;
     showSimpleText: boolean;
-    init(params: InitParams): void;
+    init(params: AtInitParams): void;
     getGui(): HTMLElement;
-    refresh(_: InitParams): boolean;
+    refresh(_: AtInitParams): boolean;
     private setCellData;
     private mapValueToBadgeType;
     render(): any;

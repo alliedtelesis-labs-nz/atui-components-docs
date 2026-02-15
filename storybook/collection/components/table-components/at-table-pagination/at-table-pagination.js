@@ -37,7 +37,7 @@ export class AtTablePagination {
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: 'c466df596fad0a96b61b9bb9d2b54bb34450fd5f', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '547a6740d90584c73d45afd1bd4c2f26599886cd' }, "Page Size: "), h("at-select", { key: 'a21d7276813103bd52ce81cac6eea82c8259434d', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '083313e1f3e9ae47cd454a5d4de8eeab7532095e', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '7ccb91269878a874f9c46b093cbabdb0ef6d2655', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: '84e782ed13420937d62d7bf2a6865935c8dc96e5' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: 'fe8edeab14e5c43e2468160bcac1e87fb62ef9ad', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '3d38bfa3dfb8149c3f37ead19e3bdc5cc94967f9', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: '80c45c3b9ff0543512223bb273419a86235d94e0', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'b4dc358e91ce088db0c3b9e8b1904db441d224a2' }, "Page Size: "), h("at-select", { key: '8475f722ea5069fa3dd588211c47ecda2922f45b', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '677bc485780210cdf3abe730dfeedfb747cc312a', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: '783c94d6f313b09b3543e4a0d6c14870cf857a54', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: 'af8c2df635b4c59041b306d8544b57063bdbee15' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '9c9e80ca79250b10c448872109992d2e79c9ba61', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '0eeff0c7a61d908c691637598d8e87908c062008', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
     static get is() { return "at-table-pagination"; }
     static get properties() {
@@ -86,14 +86,14 @@ export class AtTablePagination {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtSelectOptionI[]",
-                    "resolved": "AtSelectOptionI[]",
+                    "original": "AtISelectOption[]",
+                    "resolved": "AtISelectOption[]",
                     "references": {
-                        "AtSelectOptionI": {
+                        "AtISelectOption": {
                             "location": "import",
                             "path": "../../../types/select",
-                            "id": "src/types/select.ts::AtSelectOptionI",
-                            "referenceLocation": "AtSelectOptionI"
+                            "id": "src/types/select.ts::AtISelectOption",
+                            "referenceLocation": "AtISelectOption"
                         }
                     }
                 },

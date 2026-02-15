@@ -1,13 +1,13 @@
-export type PromptUserRole = 'user' | 'assistant';
-export type PromptResponseAnimation = 'none' | 'fade' | 'words';
+export type AtPromptUserRole = 'user' | 'assistant';
+export type AtPromptResponseAnimation = 'none' | 'fade' | 'words';
 export declare enum PromptResponseScore {
     NONE = 0,
     UP = 1,
     DOWN = -1
 }
-export interface PromptMessage {
+export interface AtIPromptMessage {
     id: string;
-    role: PromptUserRole;
+    role: AtPromptUserRole;
     content: string;
     timestamp?: string;
     name?: string;

@@ -26,11 +26,11 @@ const AtButtonGroupOption = class {
         this.atuiClick = index.createEvent(this, "atuiClick", 7);
     }
     /**
-     * ID of the button element and its option
+     * Value of the select option
      */
-    option_id;
+    value;
     /**
-     * String to be displayed in the button
+     * Displayed text value (optional) if not provided the value will be used as a fallback
      */
     label;
     /**
@@ -70,7 +70,7 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: 'c43b13e3406f8acdf1492307cd0beea5b1f3ec24', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (index.h("span", { key: '002da095895a32efc83eeeec21efacb65872efa9', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), index.h("slot", { key: 'bbd3785e38a054044d3cb6f192643707a55c4781', name: "icon" }), this.label));
+        return (index.h("button", { key: '802a33f6e6747fe87eaa8f24f56eae9646ed8c2a', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (index.h("span", { key: 'b5a7d03e981b623b479dcd88ac4217cc4112d4f1', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), index.h("slot", { key: '240454f3f67097d4bf0e4e3bf29d5e8a84a8e18c', name: "icon" }), this.label ? this.label : this.icon ? '' : this.value));
     }
 };
 

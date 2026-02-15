@@ -1,10 +1,10 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export type StatusType = 'disabled' | 'success' | 'warning' | 'error';
-export interface ColorStatusCellData {
-    status: StatusType;
+export type AtStatusType = 'disabled' | 'success' | 'warning' | 'error';
+export interface AtIColorStatusCellData {
+    status: AtStatusType;
 }
-export interface ColorStatusCellParams extends ICellRendererParams<ColorStatusCellData> {
-    mapValueToStatus: (data: any) => StatusType;
+export interface AtIColorStatusCellParams extends ICellRendererParams<AtIColorStatusCellData> {
+    mapValueToStatus: (data: any) => AtStatusType;
 }
 /**
  * @category Data Tables
@@ -12,9 +12,9 @@ export interface ColorStatusCellParams extends ICellRendererParams<ColorStatusCe
  */
 export declare class AtColorStatusCell implements ICellRendererComp {
     el: HTMLElement;
-    type: StatusType;
-    init(params: ColorStatusCellParams): void;
+    type: AtStatusType;
+    init(params: AtIColorStatusCellParams): void;
     getGui(): HTMLElement;
-    refresh(params: ColorStatusCellParams): boolean;
+    refresh(params: AtIColorStatusCellParams): boolean;
     render(): any;
 }

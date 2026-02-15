@@ -119,6 +119,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-breadcrumb.entry.js').then(processMod, consoleError);
+                case 'at-button-switch':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-button-switch.entry.js').then(processMod, consoleError);
                 case 'at-card':
                     return import(
                       /* webpackMode: "lazy" */

@@ -1,8 +1,8 @@
-export interface DateRange {
+export interface AtIDateRange {
     startDate: Date;
     endDate: Date;
 }
-export interface DateRangeStrings {
+export interface AtIDateRangeStrings {
     from: string;
     to: string;
     lockEndDateToNow?: boolean;

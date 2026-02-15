@@ -5,94 +5,94 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionItem } from "./components/at-accordion/at-accordion";
-import { AvatarSize, AvatarVariant } from "./components/at-avatar/at-avatar";
-import { BadgeContrast, BadgeSize, BadgeType } from "./components/at-badge/at-badge";
-import { ButtonSize, ButtonType } from "./components/at-button/at-button";
+import { AtIAccordionItem } from "./components/at-accordion/at-accordion";
+import { AtAvatarSize, AtAvatarVariant } from "./components/at-avatar/at-avatar";
+import { AtBadgeContrast, AtBadgeSize, AtBadgeType } from "./components/at-badge/at-badge";
+import { AtButtonSize, AtButtonType } from "./components/at-button/at-button";
 import { AtEvent } from "./types/events";
-import { ButtonGroupOption } from "./components/at-button-group/at-button-group";
+import { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 import { ChartDataset, Plugin } from "chart.js";
-import { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
-import { Height } from "./components/at-chart-donut/at-chart-donut";
+import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { ChartColorPalette } from "./types/chart-color";
-import { Height as Height1, LegendPosition } from "./components/at-chart-donut/at-chart-donut";
-import { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
-import { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
+import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
+import { AtCheckboxLayout, AtICheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-import { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-import { ColumnDetails, DateRangeStrings, IPaginationParams, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
-import { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
-import { HeaderSizes } from "./components/at-header/at-header";
-import { InputType } from "./components/at-input/at-input";
+import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
+import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptUserRole, PromptResponseScore } from "./types";
+import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
+import { AtHeaderSizes } from "./components/at-header/at-header";
+import { AtInputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
-import { Template } from "./components/at-layout/at-layout";
-import { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
-import { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
-import { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
-import { AtSelectOptionI } from "./types/select";
-import { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
-import { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
-import { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
-import { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-import { Width } from "./components/at-sidebar/at-sidebar";
-import { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
-import { StatusBar } from "./components/at-status-bar/at-status-bar";
-import { Layout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
-import { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
-import { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
-import { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
-import { TimeUnit, TimeWithUnit } from "./types/time";
+import { AtTemplate } from "./components/at-layout/at-layout";
+import { AtIListSelectorItem } from "./components/at-list-selector/at-list-selector";
+import { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-loading/at-loading";
+import { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
+import { AtISelectOption } from "./types/select";
+import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
+import { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
+import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
+import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
+import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
+import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
+import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
+import { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
+import { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
+import { AtITimeWithUnit, TimeUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
-import { Toast, ToastPosition } from "./types/toast";
-import { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
-import { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
-import { TreeNode } from "./types/tree";
-import { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
-import { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
-export { AccordionItem } from "./components/at-accordion/at-accordion";
-export { AvatarSize, AvatarVariant } from "./components/at-avatar/at-avatar";
-export { BadgeContrast, BadgeSize, BadgeType } from "./components/at-badge/at-badge";
-export { ButtonSize, ButtonType } from "./components/at-button/at-button";
+import { AtIToast, AtIToastPosition } from "./types/toast";
+import { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
+import { AtTooltipAlign, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
+import { AtITreeNode } from "./types/tree";
+import { AtButtonSize as AtButtonSize1 } from "./components/at-button/at-button";
+import { AtTreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
+export { AtIAccordionItem } from "./components/at-accordion/at-accordion";
+export { AtAvatarSize, AtAvatarVariant } from "./components/at-avatar/at-avatar";
+export { AtBadgeContrast, AtBadgeSize, AtBadgeType } from "./components/at-badge/at-badge";
+export { AtButtonSize, AtButtonType } from "./components/at-button/at-button";
 export { AtEvent } from "./types/events";
-export { ButtonGroupOption } from "./components/at-button-group/at-button-group";
+export { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 export { ChartDataset, Plugin } from "chart.js";
-export { PointStyles, Threshold } from "./components/at-chart-bar-line/at-chart-bar-line";
-export { Height } from "./components/at-chart-donut/at-chart-donut";
+export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { ChartColorPalette } from "./types/chart-color";
-export { Height as Height1, LegendPosition } from "./components/at-chart-donut/at-chart-donut";
-export { CheckboxLayout, CheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
-export { BadgeSize as BadgeSize1 } from "./components/at-chip-list/at-chip-list";
+export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
+export { AtCheckboxLayout, AtICheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
-export { ColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-export { ColumnDetails, DateRangeStrings, IPaginationParams, ISearchTableParams, PromptMessage, PromptResponseAnimation, PromptResponseScore, PromptUserRole } from "./types";
-export { CustomGridStackItem } from "./components/at-dashboard/at-dashboard";
-export { HeaderSizes } from "./components/at-header/at-header";
-export { InputType } from "./components/at-input/at-input";
+export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
+export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptUserRole, PromptResponseScore } from "./types";
+export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
+export { AtHeaderSizes } from "./components/at-header/at-header";
+export { AtInputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
-export { Template } from "./components/at-layout/at-layout";
-export { ListSelectorItem } from "./components/at-list-selector/at-list-selector";
-export { LoadingSize, LoadingType, LoadingVariant } from "./components/at-loading/at-loading";
-export { Align, AriaRole, OpenOn, Position } from "./components/at-menu/at-menu";
-export { AtSelectOptionI } from "./types/select";
-export { PlaceholderSize } from "./components/at-placeholder/at-placeholder";
-export { ProgressBarType } from "./components/at-progress-bar/at-progress-bar";
-export { RadioLayout, RadioOption } from "./components/at-radio-group/at-radio-group";
-export { SidePanelDirection, SidePanelPosition, SidePanelSize } from "./components/at-side-panel/at-side-panel";
-export { Width } from "./components/at-sidebar/at-sidebar";
-export { SrcDestAlign } from "./components/at-src-dest/at-src-dest";
-export { StatusBar } from "./components/at-status-bar/at-status-bar";
-export { Layout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
-export { FilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
-export { Layout as Layout1, Tab } from "./components/at-tabs/at-tabs";
-export { SelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
-export { TimeUnit, TimeWithUnit } from "./types/time";
+export { AtTemplate } from "./components/at-layout/at-layout";
+export { AtIListSelectorItem } from "./components/at-list-selector/at-list-selector";
+export { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-loading/at-loading";
+export { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
+export { AtISelectOption } from "./types/select";
+export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
+export { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
+export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
+export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
+export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
+export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
+export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
+export { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
+export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
+export { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
+export { AtITimeWithUnit, TimeUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
-export { Toast, ToastPosition } from "./types/toast";
-export { LabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
-export { TooltipAlign, TooltipPosition } from "./components/at-tooltip/at-tooltip";
-export { TreeNode } from "./types/tree";
-export { ButtonSize as ButtonSize1 } from "./components/at-button/at-button";
-export { TreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
+export { AtIToast, AtIToastPosition } from "./types/toast";
+export { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
+export { AtTooltipAlign, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
+export { AtITreeNode } from "./types/tree";
+export { AtButtonSize as AtButtonSize1 } from "./components/at-button/at-button";
+export { AtTreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
 export namespace Components {
     /**
      * ### ```interface AccordionItem```
@@ -118,7 +118,7 @@ export namespace Components {
           * Used to create accordion items.
           * @default []
          */
-        "items": AccordionItem[];
+        "items": AtIAccordionItem[];
         /**
           * Opens all accordion items
          */
@@ -196,7 +196,7 @@ export namespace Components {
           * Size of the avatar
           * @default 'md'
          */
-        "size": AvatarSize;
+        "size": AtAvatarSize;
         /**
           * URL for the avatar image  Recommended cropped image sizes for optimal display: - sm:24x24px - md:32x32px - lg:40x40px  Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
          */
@@ -205,7 +205,7 @@ export namespace Components {
           * Visual variant of the avatar
           * @default 'secondary'
          */
-        "variant": AvatarVariant;
+        "variant": AtAvatarVariant;
     }
     /**
      * @category Feedback
@@ -220,7 +220,7 @@ export namespace Components {
           * Impact of the badge, changes the colours.
           * @default 'low'
          */
-        "impact": BadgeContrast;
+        "impact": AtBadgeContrast;
         /**
           * Title shown on the badge.
          */
@@ -234,12 +234,12 @@ export namespace Components {
           * Size of the badge. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
-        "size": BadgeSize;
+        "size": AtBadgeSize;
         /**
           * Type of the badge. Determines colour theming.
           * @default 'default'
          */
-        "type": BadgeType;
+        "type": AtBadgeType;
     }
     /**
      * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
@@ -307,7 +307,7 @@ export namespace Components {
           * Size of the button
           * @default 'lg'
          */
-        "size": ButtonSize;
+        "size": AtButtonSize;
         /**
           * Delay period on spinner
           * @default 1000
@@ -322,7 +322,7 @@ export namespace Components {
           * Theme of the button. Default primary
           * @default 'primary'
          */
-        "type": ButtonType;
+        "type": AtButtonType;
     }
     /**
      * @category Form Controls
@@ -353,7 +353,12 @@ export namespace Components {
           * List of options to be displayed on the button group.
           * @default []
          */
-        "options": ButtonGroupOption[];
+        "options": AtIButtonGroupOption[];
+        /**
+          * Defines the emit type defaults to string. Boolean shoudl be used when you are
+          * @default 'string'
+         */
+        "type"?: 'string' | 'bool';
         /**
           * Sets the current active button
          */
@@ -362,6 +367,8 @@ export namespace Components {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface AtButtonGroupOption {
         /**
@@ -371,19 +378,46 @@ export namespace Components {
         /**
           * Icon to be displayed in the button
          */
-        "icon": string;
+        "icon"?: string;
         /**
           * Will apply active styling to the button
          */
         "is_active": boolean;
         /**
-          * String to be displayed in the button
+          * Displayed text value (optional) if not provided the value will be used as a fallback
          */
-        "label": string;
+        "label"?: string;
         /**
-          * ID of the button element and its option
+          * Value of the select option
          */
-        "option_id"?: string;
+        "value": any;
+    }
+    /**
+     * @category Form Controls
+     * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+     */
+    interface AtButtonSwitch {
+        /**
+          * Disable interaction with the toggle.
+         */
+        "disabled"?: boolean;
+        /**
+          * Short description or validation hint if required.
+         */
+        "hint_text"?: string;
+        /**
+          * Optional info icon with detailed tooltip description.  Displayed at right of label.
+         */
+        "info_text"?: string;
+        /**
+          * Label displayed alongside the toggle.
+         */
+        "label"?: string;
+        /**
+          * Set the toggles state.
+          * @default false
+         */
+        "value": boolean;
     }
     /**
      * @category Layout
@@ -474,7 +508,7 @@ export namespace Components {
           * Height of the chart.
           * @default 'auto'
          */
-        "height"?: Height;
+        "height"?: AtChartHeight;
         /**
           * Options for the legend
          */
@@ -486,7 +520,7 @@ export namespace Components {
         /**
           * Styles for the points in the chart
          */
-        "point_styles"?: PointStyles;
+        "point_styles"?: AtIPointStyles;
         /**
           * Manually trigger a chart resize to fit container dimensions.
          */
@@ -494,7 +528,7 @@ export namespace Components {
         /**
           * Thresholds to be displayed in the chart
          */
-        "thresholds"?: Threshold[];
+        "thresholds"?: AtIThreshold[];
         /**
           * The time range that the chart is displayed in.
          */
@@ -555,7 +589,7 @@ export namespace Components {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: Height1;
+        "height"?: AtChartHeight1;
         /**
           * Additional options for formatting the legend
           * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
@@ -565,7 +599,7 @@ export namespace Components {
           * Position of the legend
           * @default 'top'
          */
-        "legend_position": LegendPosition;
+        "legend_position": AtLegendPosition;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -656,11 +690,11 @@ export namespace Components {
           * Sets the layout of the checkbox-group
           * @default 'column'
          */
-        "layout"?: CheckboxLayout;
+        "layout"?: AtCheckboxLayout;
         /**
           * Options displayed in the checkbox group.
          */
-        "options": CheckboxOptions[];
+        "options": AtICheckboxOptions[];
         /**
           * Adds a required * to the label
          */
@@ -703,7 +737,7 @@ export namespace Components {
           * Size of the chips. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
-        "size": BadgeSize1;
+        "size": AtBadgeSize1;
     }
     /**
      * @category Data Tables
@@ -771,7 +805,7 @@ export namespace Components {
           * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
-        "widget_items": CustomGridStackItem[];
+        "widget_items": AtICustomGridStackItem[];
     }
     /**
      * @category Overlays
@@ -873,7 +907,7 @@ export namespace Components {
           * Size of the header.
           * @default 'h1'
          */
-        "size": HeaderSizes;
+        "size": AtHeaderSizes;
         /**
           * Subtitle of the header.
          */
@@ -935,7 +969,7 @@ export namespace Components {
           * Type of the input
           * @default 'text'
          */
-        "type": InputType;
+        "type": AtInputType;
         /**
           * The value of the input
          */
@@ -1214,7 +1248,7 @@ export namespace Components {
           * Template used to display content
           * @default 'master-detail'
          */
-        "template": Template;
+        "template": AtTemplate;
     }
     /**
      * @category Layout
@@ -1265,7 +1299,7 @@ export namespace Components {
           * List of items.
           * @default []
          */
-        "options": ListSelectorItem[];
+        "options": AtIListSelectorItem[];
         /**
           * The selected item.
          */
@@ -1315,7 +1349,7 @@ export namespace Components {
           * Size of the loading indicator
           * @default 'md'
          */
-        "size": LoadingSize;
+        "size": AtLoadingSize;
         /**
           * Custom text to display with text-based animations
           * @default 'Loading'
@@ -1325,19 +1359,19 @@ export namespace Components {
           * Visual type/color of the loading indicator
           * @default 'default'
          */
-        "type": LoadingType;
+        "type": AtLoadingType;
         /**
           * Type of loading animation to display
           * @default 'spinner'
          */
-        "variant": LoadingVariant;
+        "variant": AtLoadingVariant;
     }
     interface AtMenu {
         /**
           * Alignment of opened menu element relative to trigger element.
           * @default 'start'
          */
-        "align": Align;
+        "align": AtAlign;
         /**
           * Prevent closing of menu when options are selected. Used for multi-selection controls.
           * @default true
@@ -1374,12 +1408,12 @@ export namespace Components {
           * Position of opened menu element relative to the trigger element.
           * @default 'bottom'
          */
-        "position": Position;
+        "position": AtPosition;
         /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default 'menu'
          */
-        "role": AriaRole;
+        "role": AtAriaRole;
         /**
           * Toggles the dropdown menu's open state.
          */
@@ -1388,7 +1422,7 @@ export namespace Components {
           * Event type that triggers the menu open state. Click or Hover.
           * @default 'click'
          */
-        "trigger": OpenOn;
+        "trigger": AtOpenOn;
         /**
           * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.
          */
@@ -1503,7 +1537,7 @@ export namespace Components {
         /**
           * Options displayed in the dropdown menu.
          */
-        "options": AtSelectOptionI[];
+        "options": AtISelectOption[];
         /**
           * Placeholder text for the select.
           * @default ''
@@ -1552,7 +1586,7 @@ export namespace Components {
           * Size of the placeholder
           * @default 'md'
          */
-        "size": PlaceholderSize;
+        "size": AtPlaceholderSize;
     }
     /**
      * @category Data Visualization
@@ -1573,12 +1607,12 @@ export namespace Components {
           * Height of the progress bar
           * @default 'sm'
          */
-        "size"?: Size;
+        "size"?: AtProgressBarSize;
         /**
           * Type of the progress bar, which determines its color.
           * @default 'info'
          */
-        "type"?: ProgressBarType;
+        "type"?: AtProgressBarType;
     }
     /**
      * @category Prompt
@@ -1590,7 +1624,7 @@ export namespace Components {
           * @param role - The message role
           * @param content - The message content
          */
-        "addMessage": (role: PromptUserRole, content: string) => Promise<void>;
+        "addMessage": (role: AtPromptUserRole, content: string) => Promise<void>;
         /**
           * Append content to the last message in the thread (useful for streaming responses)
           * @param content - The content to append
@@ -1639,7 +1673,7 @@ export namespace Components {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages": PromptMessage[];
+        "messages": AtIPromptMessage[];
         /**
           * Start a new conversation thread by clearing all messages and resetting state
          */
@@ -1653,7 +1687,7 @@ export namespace Components {
           * Enable streaming text animations for system/assistant messages - 'none': No animation - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
           * @default 'words'
          */
-        "response_animation": PromptResponseAnimation;
+        "response_animation": AtPromptResponseAnimation;
         /**
           * Control the send button state programmatically
           * @param enabled - Whether the send functionality should be enabled
@@ -1768,12 +1802,12 @@ export namespace Components {
           * Animation type for text streaming effect - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially
           * @default 'words'
          */
-        "response_animation": PromptResponseAnimation;
+        "response_animation": AtPromptResponseAnimation;
         /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role": PromptUserRole;
+        "role": AtPromptUserRole;
         /**
           * The current vote score of the message
           * @default PromptResponseScore.NONE
@@ -1819,12 +1853,12 @@ export namespace Components {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages": PromptMessage[];
+        "messages": AtIPromptMessage[];
         /**
           * Enable streaming text animations for system/assistant messages - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
           * @default 'words'
          */
-        "response_animation": PromptResponseAnimation;
+        "response_animation": AtPromptResponseAnimation;
         /**
           * Scrolls the last user message to the top of the viewport
          */
@@ -1902,11 +1936,11 @@ export namespace Components {
           * Direction that the radio elements are placed
           * @default 'column'
          */
-        "layout"?: RadioLayout;
+        "layout"?: AtRadioLayout;
         /**
           * Options displayed in the radio group.
          */
-        "options": RadioOption[];
+        "options": AtIRadioOption[];
         /**
           * Disables interaction with atui-radio elements when set
          */
@@ -2084,7 +2118,7 @@ export namespace Components {
         /**
           * Sets the options in the dropdown
          */
-        "options": AtSelectOptionI[];
+        "options": AtISelectOption[];
         /**
           * Placeholder for the select.
          */
@@ -2193,7 +2227,7 @@ export namespace Components {
           * Position of the side panel
           * @default 'right'
          */
-        "origin": SidePanelDirection;
+        "origin": AtSidePanelDirection;
         /**
           * Subtitle displayed in the side panel
          */
@@ -2206,12 +2240,12 @@ export namespace Components {
           * If sidepanel should use fixed positioning (will fallback to absolute)
           * @default 'fixed'
          */
-        "position": SidePanelPosition;
+        "position": AtSidePanelPosition;
         /**
           * Size of the size panel
           * @default 'xs'
          */
-        "size": SidePanelSize;
+        "size": AtSidePanelSize;
         /**
           * Toggles the side panel between open and closed states
           * @returns Promise that resolves when the panel state is toggled
@@ -2262,7 +2296,7 @@ export namespace Components {
           * Width of the sidebar
           * @default 'menu'
          */
-        "width": Width;
+        "width": AtSideBarWidth;
     }
     /**
      * @category Navigation
@@ -2332,7 +2366,7 @@ export namespace Components {
           * Aligns the content to the left or center of the container
           * @default 'left'
          */
-        "align": SrcDestAlign;
+        "align": AtSrcDestAlign;
         /**
           * Subtitle displayed on the right
          */
@@ -2404,10 +2438,10 @@ export namespace Components {
          */
         "size"?: Size;
         /**
-          * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+          * List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface.
           * @default []
          */
-        "status_bar": StatusBar[];
+        "status_bar": AtIStatusBarSegment[];
     }
     /**
      * @category Navigation
@@ -2442,7 +2476,7 @@ export namespace Components {
           * Styling based on the layout of the tabs
           * @default 'horizontal'
          */
-        "layout": Layout;
+        "layout": AtTabTriggerLayout;
         /**
           * ID of the tab
          */
@@ -2586,7 +2620,7 @@ export namespace Components {
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
-        "page_size_options": AtSelectOptionI[];
+        "page_size_options": AtISelectOption[];
     }
     /**
      * ### interface Tab
@@ -2623,7 +2657,7 @@ export namespace Components {
           * Layout of the tabs
           * @default 'horizontal'
          */
-        "layout": Layout1;
+        "layout": AtTabsLayout;
         /**
           * Sets the current active tab
           * @param value - The tab id to set as active
@@ -2633,7 +2667,7 @@ export namespace Components {
           * List of tabs the selector will have
           * @default []
          */
-        "tabs": Tab[];
+        "tabs": AtITab[];
     }
     /**
      * @category Data Tables
@@ -2759,7 +2793,7 @@ export namespace Components {
           * Selected time range.
           * @default {         selected: {             unit: TimeUnit.HOURS,             value: 1,         },     }
          */
-        "selected_time_range": SelectedTimeRangeExtended;
+        "selected_time_range": AtSelectedTimeRangeExtended;
         /**
           * Enable all time selection.
           * @default false
@@ -2783,7 +2817,7 @@ export namespace Components {
         /**
           * Initial time selection value
          */
-        "initial_selected_time": TimeWithUnit | TimeRangeDisplay.ALL;
+        "initial_selected_time": AtITimeWithUnit | TimeRangeDisplay.ALL;
         /**
           * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
@@ -2830,12 +2864,12 @@ export namespace Components {
           * Adds a new toast to the toaster container This method is called from the ToasterService when a new toast is created.
           * @param toast The toast to add
          */
-        "addToast": (toast: Toast) => Promise<void>;
+        "addToast": (toast: AtIToast) => Promise<void>;
         /**
           * Position of the toaster on the screen
           * @default 'bottom-right'
          */
-        "position": ToastPosition;
+        "position": AtIToastPosition;
         /**
           * Removes a toast from the toaster container by its ID This method is called by tapToast.
           * @param id The ID of the toast to remove
@@ -2869,7 +2903,7 @@ export namespace Components {
           * Position of the label, left or right of the toggle.
           * @default 'before'
          */
-        "label_position": LabelPosition;
+        "label_position": AtLabelPosition;
         /**
           * Show the toggle label.
           * @default true
@@ -2890,7 +2924,7 @@ export namespace Components {
           * Alignment of opened tooltip element relative to trigger element.
           * @default 'center'
          */
-        "align": TooltipAlign;
+        "align": AtTooltipAlign;
         /**
           * Closes the tooltip.
          */
@@ -2918,7 +2952,7 @@ export namespace Components {
           * Position of opened tooltip element relative to the trigger element.
           * @default 'top'
          */
-        "position": TooltipPosition;
+        "position": AtTooltipPosition;
         /**
           * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
          */
@@ -2943,12 +2977,12 @@ export namespace Components {
         /**
           * List of items to be displayed in the tree
          */
-        "item_list": TreeNode[];
+        "item_list": AtITreeNode[];
         /**
           * Set the size of the tree button, default sm
           * @default 'sm'
          */
-        "size": ButtonSize1;
+        "size": AtButtonSize1;
     }
     interface AtTreeItem {
         /**
@@ -2978,7 +3012,7 @@ export namespace Components {
           * Size of the button
           * @default 'lg'
          */
-        "size": TreeItemSize;
+        "size": AtTreeItemSize;
     }
 }
 export interface AtAccordionItemCustomEvent<T> extends CustomEvent<T> {
@@ -3000,6 +3034,10 @@ export interface AtButtonGroupCustomEvent<T> extends CustomEvent<T> {
 export interface AtButtonGroupOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtButtonGroupOptionElement;
+}
+export interface AtButtonSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtButtonSwitchElement;
 }
 export interface AtCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3314,6 +3352,8 @@ declare global {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface HTMLAtButtonGroupOptionElement extends Components.AtButtonGroupOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupOptionElement, ev: AtButtonGroupOptionCustomEvent<HTMLAtButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3328,6 +3368,27 @@ declare global {
     var HTMLAtButtonGroupOptionElement: {
         prototype: HTMLAtButtonGroupOptionElement;
         new (): HTMLAtButtonGroupOptionElement;
+    };
+    interface HTMLAtButtonSwitchElementEventMap {
+        "atuiChange": boolean;
+    }
+    /**
+     * @category Form Controls
+     * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+     */
+    interface HTMLAtButtonSwitchElement extends Components.AtButtonSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtButtonSwitchElementEventMap>(type: K, listener: (this: HTMLAtButtonSwitchElement, ev: AtButtonSwitchCustomEvent<HTMLAtButtonSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtButtonSwitchElementEventMap>(type: K, listener: (this: HTMLAtButtonSwitchElement, ev: AtButtonSwitchCustomEvent<HTMLAtButtonSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtButtonSwitchElement: {
+        prototype: HTMLAtButtonSwitchElement;
+        new (): HTMLAtButtonSwitchElement;
     };
     /**
      * @category Layout
@@ -3490,7 +3551,7 @@ declare global {
         new (): HTMLAtColorStatusCellElement;
     };
     interface HTMLAtColumnManagerElementEventMap {
-        "atChange": ColumnManagerChangeEvent;
+        "atChange": AtIColumnManagerChangeEvent;
     }
     interface HTMLAtColumnManagerElement extends Components.AtColumnManager, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtColumnManagerElementEventMap>(type: K, listener: (this: HTMLAtColumnManagerElement, ev: AtColumnManagerCustomEvent<HTMLAtColumnManagerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3508,7 +3569,7 @@ declare global {
     };
     interface HTMLAtCustomTimeRangeElementEventMap {
         "atuiCancel": null;
-        "atuiSubmit": DateRangeStrings;
+        "atuiSubmit": AtIDateRangeStrings;
     }
     interface HTMLAtCustomTimeRangeElement extends Components.AtCustomTimeRange, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtCustomTimeRangeElementEventMap>(type: K, listener: (this: HTMLAtCustomTimeRangeElement, ev: AtCustomTimeRangeCustomEvent<HTMLAtCustomTimeRangeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3525,9 +3586,9 @@ declare global {
         new (): HTMLAtCustomTimeRangeElement;
     };
     interface HTMLAtDashboardElementEventMap {
-        "changedItem": CustomGridStackItem;
-        "removedItem": CustomGridStackItem;
-        "resizeDragEvent": CustomGridStackItem;
+        "changedItem": AtICustomGridStackItem;
+        "removedItem": AtICustomGridStackItem;
+        "resizeDragEvent": AtICustomGridStackItem;
     }
     interface HTMLAtDashboardElement extends Components.AtDashboard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDashboardElementEventMap>(type: K, listener: (this: HTMLAtDashboardElement, ev: AtDashboardCustomEvent<HTMLAtDashboardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3713,7 +3774,7 @@ declare global {
         new (): HTMLAtListItemElement;
     };
     interface HTMLAtListSelectorElementEventMap {
-        "atuiChange": ListSelectorItem;
+        "atuiChange": AtIListSelectorItem;
         "atuiInfoButtonClick": AtEvent;
     }
     /**
@@ -4049,9 +4110,9 @@ declare global {
         new (): HTMLAtSearchElement;
     };
     interface HTMLAtSearchTableElementEventMap {
-        "atSearchParamsChange": ISearchTableParams;
-        "atExportCsv": IPaginationParams;
-        "atExportPdf": ColumnDetails[];
+        "atSearchParamsChange": AtISearchTableParams;
+        "atExportCsv": AtIPaginationParams;
+        "atExportPdf": AtIColumnDetails[];
     }
     /**
      * @category Data Tables
@@ -4362,7 +4423,7 @@ declare global {
         new (): HTMLAtTableFilterMenuElement;
     };
     interface HTMLAtTableFiltersElementEventMap {
-        "atChange": FilterEvent[];
+        "atChange": AtIFilterEvent[];
     }
     interface HTMLAtTableFiltersElement extends Components.AtTableFilters, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtTableFiltersElement, ev: AtTableFiltersCustomEvent<HTMLAtTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4502,7 +4563,7 @@ declare global {
         new (): HTMLAtTextareaElement;
     };
     interface HTMLAtTimeRangeElementEventMap {
-        "atuiChange": SelectedTimeRangeExtended;
+        "atuiChange": AtSelectedTimeRangeExtended;
     }
     /**
      * @category Form Controls
@@ -4524,7 +4585,7 @@ declare global {
     };
     interface HTMLAtTimeWithUnitElementEventMap {
         "atuiCancel": null;
-        "atuiSubmit": TimeWithUnit | TimeRangeDisplay.ALL;
+        "atuiSubmit": AtITimeWithUnit | TimeRangeDisplay.ALL;
     }
     /**
      * @category Form Controls
@@ -4616,7 +4677,7 @@ declare global {
         new (): HTMLAtTooltipElement;
     };
     interface HTMLAtTreeElementEventMap {
-        "atuiClick": TreeNode;
+        "atuiClick": AtITreeNode;
     }
     /**
      * ### ```interface ItemNode```
@@ -4670,6 +4731,7 @@ declare global {
         "at-button": HTMLAtButtonElement;
         "at-button-group": HTMLAtButtonGroupElement;
         "at-button-group-option": HTMLAtButtonGroupOptionElement;
+        "at-button-switch": HTMLAtButtonSwitchElement;
         "at-card": HTMLAtCardElement;
         "at-chart-bar-line": HTMLAtChartBarLineElement;
         "at-chart-donut": HTMLAtChartDonutElement;
@@ -4773,7 +4835,7 @@ declare namespace LocalJSX {
           * Used to create accordion items.
           * @default []
          */
-        "items"?: AccordionItem[];
+        "items"?: AtIAccordionItem[];
     }
     /**
      * @category Layout
@@ -4830,7 +4892,7 @@ declare namespace LocalJSX {
           * Size of the avatar
           * @default 'md'
          */
-        "size"?: AvatarSize;
+        "size"?: AtAvatarSize;
         /**
           * URL for the avatar image  Recommended cropped image sizes for optimal display: - sm:24x24px - md:32x32px - lg:40x40px  Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
          */
@@ -4839,7 +4901,7 @@ declare namespace LocalJSX {
           * Visual variant of the avatar
           * @default 'secondary'
          */
-        "variant"?: AvatarVariant;
+        "variant"?: AtAvatarVariant;
     }
     /**
      * @category Feedback
@@ -4854,7 +4916,7 @@ declare namespace LocalJSX {
           * Impact of the badge, changes the colours.
           * @default 'low'
          */
-        "impact"?: BadgeContrast;
+        "impact"?: AtBadgeContrast;
         /**
           * Title shown on the badge.
          */
@@ -4868,12 +4930,12 @@ declare namespace LocalJSX {
           * Size of the badge. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
-        "size"?: BadgeSize;
+        "size"?: AtBadgeSize;
         /**
           * Type of the badge. Determines colour theming.
           * @default 'default'
          */
-        "type"?: BadgeType;
+        "type"?: AtBadgeType;
     }
     /**
      * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
@@ -4949,7 +5011,7 @@ declare namespace LocalJSX {
           * Size of the button
           * @default 'lg'
          */
-        "size"?: ButtonSize;
+        "size"?: AtButtonSize;
         /**
           * Delay period on spinner
           * @default 1000
@@ -4964,7 +5026,7 @@ declare namespace LocalJSX {
           * Theme of the button. Default primary
           * @default 'primary'
          */
-        "type"?: ButtonType;
+        "type"?: AtButtonType;
     }
     /**
      * @category Form Controls
@@ -5003,7 +5065,12 @@ declare namespace LocalJSX {
           * List of options to be displayed on the button group.
           * @default []
          */
-        "options"?: ButtonGroupOption[];
+        "options"?: AtIButtonGroupOption[];
+        /**
+          * Defines the emit type defaults to string. Boolean shoudl be used when you are
+          * @default 'string'
+         */
+        "type"?: 'string' | 'bool';
         /**
           * Sets the current active button
          */
@@ -5012,6 +5079,8 @@ declare namespace LocalJSX {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
+     * @Slot - Places content before the label.
+     * @After - Places content after the label.
      */
     interface AtButtonGroupOption {
         /**
@@ -5027,7 +5096,7 @@ declare namespace LocalJSX {
          */
         "is_active"?: boolean;
         /**
-          * String to be displayed in the button
+          * Displayed text value (optional) if not provided the value will be used as a fallback
          */
         "label"?: string;
         /**
@@ -5035,9 +5104,40 @@ declare namespace LocalJSX {
          */
         "onAtuiClick"?: (event: AtButtonGroupOptionCustomEvent<AtEvent>) => void;
         /**
-          * ID of the button element and its option
+          * Value of the select option
          */
-        "option_id"?: string;
+        "value"?: any;
+    }
+    /**
+     * @category Form Controls
+     * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+     */
+    interface AtButtonSwitch {
+        /**
+          * Disable interaction with the toggle.
+         */
+        "disabled"?: boolean;
+        /**
+          * Short description or validation hint if required.
+         */
+        "hint_text"?: string;
+        /**
+          * Optional info icon with detailed tooltip description.  Displayed at right of label.
+         */
+        "info_text"?: string;
+        /**
+          * Label displayed alongside the toggle.
+         */
+        "label"?: string;
+        /**
+          * Emits an event when toggled with `event.detail` being true if the switch is enabled
+         */
+        "onAtuiChange"?: (event: AtButtonSwitchCustomEvent<boolean>) => void;
+        /**
+          * Set the toggles state.
+          * @default false
+         */
+        "value"?: boolean;
     }
     /**
      * @category Layout
@@ -5123,7 +5223,7 @@ declare namespace LocalJSX {
           * Height of the chart.
           * @default 'auto'
          */
-        "height"?: Height;
+        "height"?: AtChartHeight;
         /**
           * Options for the legend
          */
@@ -5135,11 +5235,11 @@ declare namespace LocalJSX {
         /**
           * Styles for the points in the chart
          */
-        "point_styles"?: PointStyles;
+        "point_styles"?: AtIPointStyles;
         /**
           * Thresholds to be displayed in the chart
          */
-        "thresholds"?: Threshold[];
+        "thresholds"?: AtIThreshold[];
         /**
           * The time range that the chart is displayed in.
          */
@@ -5195,7 +5295,7 @@ declare namespace LocalJSX {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: Height1;
+        "height"?: AtChartHeight1;
         /**
           * Additional options for formatting the legend
           * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
@@ -5205,7 +5305,7 @@ declare namespace LocalJSX {
           * Position of the legend
           * @default 'top'
          */
-        "legend_position"?: LegendPosition;
+        "legend_position"?: AtLegendPosition;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -5296,7 +5396,7 @@ declare namespace LocalJSX {
           * Sets the layout of the checkbox-group
           * @default 'column'
          */
-        "layout"?: CheckboxLayout;
+        "layout"?: AtCheckboxLayout;
         /**
           * Emits an event containing the 'selected' prop when changed
          */
@@ -5304,7 +5404,7 @@ declare namespace LocalJSX {
         /**
           * Options displayed in the checkbox group.
          */
-        "options"?: CheckboxOptions[];
+        "options"?: AtICheckboxOptions[];
         /**
           * Adds a required * to the label
          */
@@ -5351,7 +5451,7 @@ declare namespace LocalJSX {
           * Size of the chips. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
-        "size"?: BadgeSize1;
+        "size"?: AtBadgeSize1;
     }
     /**
      * @category Data Tables
@@ -5373,7 +5473,7 @@ declare namespace LocalJSX {
         /**
           * Custom event used by at-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
          */
-        "onAtChange"?: (event: AtColumnManagerCustomEvent<ColumnManagerChangeEvent>) => void;
+        "onAtChange"?: (event: AtColumnManagerCustomEvent<AtIColumnManagerChangeEvent>) => void;
     }
     interface AtCustomTimeRange {
         /**
@@ -5420,7 +5520,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the user submits the time range selection
          */
-        "onAtuiSubmit"?: (event: AtCustomTimeRangeCustomEvent<DateRangeStrings>) => void;
+        "onAtuiSubmit"?: (event: AtCustomTimeRangeCustomEvent<AtIDateRangeStrings>) => void;
         /**
           * Current value of the to date
          */
@@ -5430,20 +5530,20 @@ declare namespace LocalJSX {
         /**
           * Emitted when a widget's position or size changes in the grid.
          */
-        "onChangedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
           * Emitted when a widget is removed from the dashboard.
          */
-        "onRemovedItem"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        "onRemovedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
           * Emitted when a widget finishes resizing or dragging.
          */
-        "onResizeDragEvent"?: (event: AtDashboardCustomEvent<CustomGridStackItem>) => void;
+        "onResizeDragEvent"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
           * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
-        "widget_items"?: CustomGridStackItem[];
+        "widget_items"?: AtICustomGridStackItem[];
     }
     /**
      * @category Overlays
@@ -5529,7 +5629,7 @@ declare namespace LocalJSX {
           * Size of the header.
           * @default 'h1'
          */
-        "size"?: HeaderSizes;
+        "size"?: AtHeaderSizes;
         /**
           * Subtitle of the header.
          */
@@ -5595,7 +5695,7 @@ declare namespace LocalJSX {
           * Type of the input
           * @default 'text'
          */
-        "type"?: InputType;
+        "type"?: AtInputType;
         /**
           * The value of the input
          */
@@ -5890,7 +5990,7 @@ declare namespace LocalJSX {
           * Template used to display content
           * @default 'master-detail'
          */
-        "template"?: Template;
+        "template"?: AtTemplate;
     }
     /**
      * @category Layout
@@ -5940,7 +6040,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
          */
-        "onAtuiChange"?: (event: AtListSelectorCustomEvent<ListSelectorItem>) => void;
+        "onAtuiChange"?: (event: AtListSelectorCustomEvent<AtIListSelectorItem>) => void;
         /**
           * Emits when event when the info button of an item is clicked
          */
@@ -5949,7 +6049,7 @@ declare namespace LocalJSX {
           * List of items.
           * @default []
          */
-        "options"?: ListSelectorItem[];
+        "options"?: AtIListSelectorItem[];
         /**
           * The selected item.
          */
@@ -5999,7 +6099,7 @@ declare namespace LocalJSX {
           * Size of the loading indicator
           * @default 'md'
          */
-        "size"?: LoadingSize;
+        "size"?: AtLoadingSize;
         /**
           * Custom text to display with text-based animations
           * @default 'Loading'
@@ -6009,19 +6109,19 @@ declare namespace LocalJSX {
           * Visual type/color of the loading indicator
           * @default 'default'
          */
-        "type"?: LoadingType;
+        "type"?: AtLoadingType;
         /**
           * Type of loading animation to display
           * @default 'spinner'
          */
-        "variant"?: LoadingVariant;
+        "variant"?: AtLoadingVariant;
     }
     interface AtMenu {
         /**
           * Alignment of opened menu element relative to trigger element.
           * @default 'start'
          */
-        "align"?: Align;
+        "align"?: AtAlign;
         /**
           * Prevent closing of menu when options are selected. Used for multi-selection controls.
           * @default true
@@ -6050,17 +6150,17 @@ declare namespace LocalJSX {
           * Position of opened menu element relative to the trigger element.
           * @default 'bottom'
          */
-        "position"?: Position;
+        "position"?: AtPosition;
         /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default 'menu'
          */
-        "role"?: AriaRole;
+        "role"?: AtAriaRole;
         /**
           * Event type that triggers the menu open state. Click or Hover.
           * @default 'click'
          */
-        "trigger"?: OpenOn;
+        "trigger"?: AtOpenOn;
         /**
           * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.
          */
@@ -6183,7 +6283,7 @@ declare namespace LocalJSX {
         /**
           * Options displayed in the dropdown menu.
          */
-        "options"?: AtSelectOptionI[];
+        "options"?: AtISelectOption[];
         /**
           * Placeholder text for the select.
           * @default ''
@@ -6232,7 +6332,7 @@ declare namespace LocalJSX {
           * Size of the placeholder
           * @default 'md'
          */
-        "size"?: PlaceholderSize;
+        "size"?: AtPlaceholderSize;
     }
     /**
      * @category Data Visualization
@@ -6253,12 +6353,12 @@ declare namespace LocalJSX {
           * Height of the progress bar
           * @default 'sm'
          */
-        "size"?: Size;
+        "size"?: AtProgressBarSize;
         /**
           * Type of the progress bar, which determines its color.
           * @default 'info'
          */
-        "type"?: ProgressBarType;
+        "type"?: AtProgressBarType;
     }
     /**
      * @category Prompt
@@ -6303,7 +6403,7 @@ declare namespace LocalJSX {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages"?: PromptMessage[];
+        "messages"?: AtIPromptMessage[];
         /**
           * Emitted when a message copy action is requested
          */
@@ -6350,7 +6450,7 @@ declare namespace LocalJSX {
           * Enable streaming text animations for system/assistant messages - 'none': No animation - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
           * @default 'words'
          */
-        "response_animation"?: PromptResponseAnimation;
+        "response_animation"?: AtPromptResponseAnimation;
         /**
           * Controls visibility of the "New Thread" button in the header
           * @default true
@@ -6495,12 +6595,12 @@ declare namespace LocalJSX {
           * Animation type for text streaming effect - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially
           * @default 'words'
          */
-        "response_animation"?: PromptResponseAnimation;
+        "response_animation"?: AtPromptResponseAnimation;
         /**
           * The role/type of the message sender (only 'user' and 'assistant' are supported)
           * @default 'user'
          */
-        "role"?: PromptUserRole;
+        "role"?: AtPromptUserRole;
         /**
           * The current vote score of the message
           * @default PromptResponseScore.NONE
@@ -6546,7 +6646,7 @@ declare namespace LocalJSX {
           * Array of messages to display in the conversation thread
           * @default []
          */
-        "messages"?: PromptMessage[];
+        "messages"?: AtIPromptMessage[];
         /**
           * Emitted when a message copy action is requested
          */
@@ -6578,7 +6678,7 @@ declare namespace LocalJSX {
           * Enable streaming text animations for system/assistant messages - 'none': No animation (default) - 'fade': Fade in the entire message - 'words': Animate words appearing sequentially like ChatGPT
           * @default 'words'
          */
-        "response_animation"?: PromptResponseAnimation;
+        "response_animation"?: AtPromptResponseAnimation;
     }
     /**
      * @category Form Controls
@@ -6652,7 +6752,7 @@ declare namespace LocalJSX {
           * Direction that the radio elements are placed
           * @default 'column'
          */
-        "layout"?: RadioLayout;
+        "layout"?: AtRadioLayout;
         /**
           * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
          */
@@ -6660,7 +6760,7 @@ declare namespace LocalJSX {
         /**
           * Options displayed in the radio group.
          */
-        "options"?: RadioOption[];
+        "options"?: AtIRadioOption[];
         /**
           * Disables interaction with atui-radio elements when set
          */
@@ -6753,15 +6853,15 @@ declare namespace LocalJSX {
         /**
           * Event emitted when CSV export is requested
          */
-        "onAtExportCsv"?: (event: AtSearchTableCustomEvent<IPaginationParams>) => void;
+        "onAtExportCsv"?: (event: AtSearchTableCustomEvent<AtIPaginationParams>) => void;
         /**
           * Event emitted when PDF export is requested
          */
-        "onAtExportPdf"?: (event: AtSearchTableCustomEvent<ColumnDetails[]>) => void;
+        "onAtExportPdf"?: (event: AtSearchTableCustomEvent<AtIColumnDetails[]>) => void;
         /**
           * Event emitted when search params change in server-side mode. Contains filters, search text, pagination info
          */
-        "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<ISearchTableParams>) => void;
+        "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<AtISearchTableParams>) => void;
         /**
           * Default page size of the table
           * @default 10
@@ -6843,7 +6943,7 @@ declare namespace LocalJSX {
         /**
           * Sets the options in the dropdown
          */
-        "options"?: AtSelectOptionI[];
+        "options"?: AtISelectOption[];
         /**
           * Placeholder for the select.
          */
@@ -6945,7 +7045,7 @@ declare namespace LocalJSX {
           * Position of the side panel
           * @default 'right'
          */
-        "origin"?: SidePanelDirection;
+        "origin"?: AtSidePanelDirection;
         /**
           * Subtitle displayed in the side panel
          */
@@ -6958,12 +7058,12 @@ declare namespace LocalJSX {
           * If sidepanel should use fixed positioning (will fallback to absolute)
           * @default 'fixed'
          */
-        "position"?: SidePanelPosition;
+        "position"?: AtSidePanelPosition;
         /**
           * Size of the size panel
           * @default 'xs'
          */
-        "size"?: SidePanelSize;
+        "size"?: AtSidePanelSize;
         /**
           * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
          */
@@ -7004,7 +7104,7 @@ declare namespace LocalJSX {
           * Width of the sidebar
           * @default 'menu'
          */
-        "width"?: Width;
+        "width"?: AtSideBarWidth;
     }
     /**
      * @category Navigation
@@ -7078,7 +7178,7 @@ declare namespace LocalJSX {
           * Aligns the content to the left or center of the container
           * @default 'left'
          */
-        "align"?: SrcDestAlign;
+        "align"?: AtSrcDestAlign;
         /**
           * Subtitle displayed on the right
          */
@@ -7150,10 +7250,10 @@ declare namespace LocalJSX {
          */
         "size"?: Size;
         /**
-          * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+          * List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface.
           * @default []
          */
-        "status_bar"?: StatusBar[];
+        "status_bar"?: AtIStatusBarSegment[];
     }
     /**
      * @category Navigation
@@ -7188,7 +7288,7 @@ declare namespace LocalJSX {
           * Styling based on the layout of the tabs
           * @default 'horizontal'
          */
-        "layout"?: Layout;
+        "layout"?: AtTabTriggerLayout;
         /**
           * ID of the tab
          */
@@ -7320,7 +7420,7 @@ declare namespace LocalJSX {
         /**
           * Emits id of column and filter value on change.
          */
-        "onAtChange"?: (event: AtTableFiltersCustomEvent<FilterEvent[]>) => void;
+        "onAtChange"?: (event: AtTableFiltersCustomEvent<AtIFilterEvent[]>) => void;
         /**
           * Currently selected columns and filter values
           * @default []
@@ -7361,7 +7461,7 @@ declare namespace LocalJSX {
           * Options provided in dropdown for page sizes.
           * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
          */
-        "page_size_options"?: AtSelectOptionI[];
+        "page_size_options"?: AtISelectOption[];
     }
     /**
      * ### interface Tab
@@ -7393,7 +7493,7 @@ declare namespace LocalJSX {
           * Layout of the tabs
           * @default 'horizontal'
          */
-        "layout"?: Layout1;
+        "layout"?: AtTabsLayout;
         /**
           * Emits the id of the tab when a new active_tab is set
          */
@@ -7402,7 +7502,7 @@ declare namespace LocalJSX {
           * List of tabs the selector will have
           * @default []
          */
-        "tabs"?: Tab[];
+        "tabs"?: AtITab[];
     }
     /**
      * @category Data Tables
@@ -7522,7 +7622,7 @@ declare namespace LocalJSX {
         /**
           * Emits an event containing the selected time range when it changes
          */
-        "onAtuiChange"?: (event: AtTimeRangeCustomEvent<SelectedTimeRangeExtended>) => void;
+        "onAtuiChange"?: (event: AtTimeRangeCustomEvent<AtSelectedTimeRangeExtended>) => void;
         /**
           * Define the presets for the relative time ranges.
          */
@@ -7536,7 +7636,7 @@ declare namespace LocalJSX {
           * Selected time range.
           * @default {         selected: {             unit: TimeUnit.HOURS,             value: 1,         },     }
          */
-        "selected_time_range"?: SelectedTimeRangeExtended;
+        "selected_time_range"?: AtSelectedTimeRangeExtended;
         /**
           * Enable all time selection.
           * @default false
@@ -7560,7 +7660,7 @@ declare namespace LocalJSX {
         /**
           * Initial time selection value
          */
-        "initial_selected_time"?: TimeWithUnit | TimeRangeDisplay.ALL;
+        "initial_selected_time"?: AtITimeWithUnit | TimeRangeDisplay.ALL;
         /**
           * Maximum number of seconds allowed for time selection
           * @default Number.MAX_SAFE_INTEGER
@@ -7583,7 +7683,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the user submits the time selection
          */
-        "onAtuiSubmit"?: (event: AtTimeWithUnitCustomEvent<TimeWithUnit | TimeRangeDisplay.ALL>) => void;
+        "onAtuiSubmit"?: (event: AtTimeWithUnitCustomEvent<AtITimeWithUnit | TimeRangeDisplay.ALL>) => void;
         /**
           * Whether to show the 'All Time' option
           * @default false
@@ -7615,7 +7715,7 @@ declare namespace LocalJSX {
           * Position of the toaster on the screen
           * @default 'bottom-right'
          */
-        "position"?: ToastPosition;
+        "position"?: AtIToastPosition;
     }
     /**
      * @category Data Tables
@@ -7644,7 +7744,7 @@ declare namespace LocalJSX {
           * Position of the label, left or right of the toggle.
           * @default 'before'
          */
-        "label_position"?: LabelPosition;
+        "label_position"?: AtLabelPosition;
         /**
           * Emits an event when toggled with `event.detail` being true if the switch is enabled
          */
@@ -7669,7 +7769,7 @@ declare namespace LocalJSX {
           * Alignment of opened tooltip element relative to trigger element.
           * @default 'center'
          */
-        "align"?: TooltipAlign;
+        "align"?: AtTooltipAlign;
         /**
           * Delay before showing and hiding the tooltip when interacting with the trigger element.
           * @default 150
@@ -7689,7 +7789,7 @@ declare namespace LocalJSX {
           * Position of opened tooltip element relative to the trigger element.
           * @default 'top'
          */
-        "position"?: TooltipPosition;
+        "position"?: AtTooltipPosition;
         /**
           * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
          */
@@ -7714,16 +7814,16 @@ declare namespace LocalJSX {
         /**
           * List of items to be displayed in the tree
          */
-        "item_list"?: TreeNode[];
+        "item_list"?: AtITreeNode[];
         /**
           * Emits when the button is clicked
          */
-        "onAtuiClick"?: (event: AtTreeCustomEvent<TreeNode>) => void;
+        "onAtuiClick"?: (event: AtTreeCustomEvent<AtITreeNode>) => void;
         /**
           * Set the size of the tree button, default sm
           * @default 'sm'
          */
-        "size"?: ButtonSize1;
+        "size"?: AtButtonSize1;
     }
     interface AtTreeItem {
         /**
@@ -7757,7 +7857,7 @@ declare namespace LocalJSX {
           * Size of the button
           * @default 'lg'
          */
-        "size"?: TreeItemSize;
+        "size"?: AtTreeItemSize;
     }
     interface IntrinsicElements {
         "at-accordion": AtAccordion;
@@ -7770,6 +7870,7 @@ declare namespace LocalJSX {
         "at-button": AtButton;
         "at-button-group": AtButtonGroup;
         "at-button-group-option": AtButtonGroupOption;
+        "at-button-switch": AtButtonSwitch;
         "at-card": AtCard;
         "at-chart-bar-line": AtChartBarLine;
         "at-chart-donut": AtChartDonut;
@@ -7907,8 +8008,15 @@ declare module "@stencil/core" {
             /**
              * @category Form Controls
              * @description A button group option component for the button group.
+             * @Slot - Places content before the label.
+             * @After - Places content after the label.
              */
             "at-button-group-option": LocalJSX.AtButtonGroupOption & JSXBase.HTMLAttributes<HTMLAtButtonGroupOptionElement>;
+            /**
+             * @category Form Controls
+             * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
+             */
+            "at-button-switch": LocalJSX.AtButtonSwitch & JSXBase.HTMLAttributes<HTMLAtButtonSwitchElement>;
             /**
              * @category Layout
              * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.

@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { PromptResponseAnimation, PromptResponseScore, PromptUserRole } from '../../../types';
+import { AtPromptResponseAnimation, PromptResponseScore, AtPromptUserRole } from '../../../types';
 /**
  * @category Prompt
  * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
@@ -9,7 +9,7 @@ export declare class AtPromptMessage {
     /**
      * The role/type of the message sender (only 'user' and 'assistant' are supported)
      */
-    role: PromptUserRole;
+    role: AtPromptUserRole;
     /**
      * The message content text
      */
@@ -56,7 +56,7 @@ export declare class AtPromptMessage {
      * - 'fade': Fade in the entire message
      * - 'words': Animate words appearing sequentially
      */
-    response_animation: PromptResponseAnimation;
+    response_animation: AtPromptResponseAnimation;
     /**
      * Emitted when the copy action is triggered
      */

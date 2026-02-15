@@ -10,6 +10,8 @@
         "ENABLED": "Enabled",
         "DISABLED": "Disabled",
         "SEARCH": "Search",
+        "ON": "On",
+        "OFF": "Off",
         "NO_ITEMS_FOUND": "No Items Found",
         "NO_RESULTS_FOUND": "No Results Found",
         "NO_OPTIONS_AVAILABLE": "No Options Available",

@@ -1,5 +1,5 @@
-import { Duration, ITimeDateFilter, TimeExtraOptions, TimeUnit, TimeWithUnit } from '../types/time';
-import { DateRange, DateRangeStrings } from '../types/date';
+import { Duration, ITimeDateFilter, TimeExtraOptions, TimeUnit, AtITimeWithUnit } from '../types/time';
+import { AtIDateRange, AtIDateRangeStrings } from '../types/date';
 export declare class TimeDateUtil {
     /**
      * convertSecondsToUnit: Convert time value from seconds to the specified unit.
@@ -10,9 +10,9 @@ export declare class TimeDateUtil {
      * @param decimalPlaces: if specified, rounds to these, otherwise rounds to the nearest whole number/integer
      **/
     static convertSecondsToUnit(seconds: number, unit: TimeUnit | TimeExtraOptions, decimalPlaces?: number, roundUp?: boolean): number;
-    static convertToSeconds(time: TimeWithUnit): number;
+    static convertToSeconds(time: AtITimeWithUnit): number;
     static getSecondsAgoFromDate(date: Date): number;
-    static getDateFromRelativeTime(time: TimeWithUnit): Date;
+    static getDateFromRelativeTime(time: AtITimeWithUnit): Date;
     /**
      * getRelativeDateRange: convert relative date (e.g. 1 year ago) into absolute dates.
      * Round the these to the nearest minute because we don't care about the seconds
@@ -20,9 +20,9 @@ export declare class TimeDateUtil {
      *    endDate is not set as technically there is no absolute end date - this will be set
      *    to the current date on the back-end (in time-date util -  getDateRangeWithEndDate)
      */
-    static getRelativeDateRange(time: TimeWithUnit): DateRange;
-    static getAbsoluteDateRange(time: DateRangeStrings): DateRange;
-    static getDateRange(customDateRange: DateRange, relativeTime: TimeWithUnit, defaultDates: DateRange): DateRange;
+    static getRelativeDateRange(time: AtITimeWithUnit): AtIDateRange;
+    static getAbsoluteDateRange(time: AtIDateRangeStrings): AtIDateRange;
+    static getDateRange(customDateRange: AtIDateRange, relativeTime: AtITimeWithUnit, defaultDates: AtIDateRange): AtIDateRange;
     static getCurrentDatePlusHours(hours: number): Date;
     static getDateYearsAgo(years: number, originalDate: Date): Date;
     static getDateMonthsAgo(months: number, originalDate: Date): Date;
@@ -64,5 +64,5 @@ export declare class TimeDateUtil {
      * @param unit: granularity of check in by unit (e.g. days, weeks, etc.)
      **/
     static isSameDateByUnit(date1: Date | string, date2: Date | string, unit: Duration): boolean;
-    static getCurrentDateFilterInDateRangeFormat(timeDateFilters: ITimeDateFilter): DateRange | undefined;
+    static getCurrentDateFilterInDateRangeFormat(timeDateFilters: ITimeDateFilter): AtIDateRange | undefined;
 }

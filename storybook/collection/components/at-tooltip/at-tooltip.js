@@ -292,7 +292,7 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '55759b9653f05e9b43fdab561140e0f8d08c1f53', class: "relative" }, !this.trigger_id && (h("div", { key: '71ece6b2952ff22b391708428ca77ffcb3f417f1', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'dc184007184bbfc7b1b2e69f92c0b4149979e0c9', name: "tooltip-trigger" }))), h("div", { key: 'a93994e14424f84ae7e9c60607b89451df6b7ce0', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '344374059a0bebdf1949898059eba14f9827dfcd' }))));
+        return (h(Host, { key: 'd3258c05f09f46ac8ca708dd72c99e4e40f70f8a', class: "relative" }, !this.trigger_id && (h("div", { key: 'cd08425ee3b3c016c1025619f9a79d7dbf9f1777', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '4355d9f9bfac60e4b1ff45946bbc154261e48e97', name: "tooltip-trigger" }))), h("div", { key: 'cddcc270c4c44badd64d01fce02aeed74cab2c0e', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'a2c96c9dfb1227a5fc3addfab8cc75797c19260f' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
@@ -301,13 +301,13 @@ export class AtTooltip {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "TooltipPosition",
+                    "original": "AtTooltipPosition",
                     "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
                     "references": {
-                        "TooltipPosition": {
+                        "AtTooltipPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tooltip/at-tooltip.tsx",
-                            "id": "src/components/at-tooltip/at-tooltip.tsx::TooltipPosition"
+                            "id": "src/components/at-tooltip/at-tooltip.tsx::AtTooltipPosition"
                         }
                     }
                 },
@@ -327,13 +327,13 @@ export class AtTooltip {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "TooltipAlign",
+                    "original": "AtTooltipAlign",
                     "resolved": "\"center\" | \"end\" | \"start\"",
                     "references": {
-                        "TooltipAlign": {
+                        "AtTooltipAlign": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tooltip/at-tooltip.tsx",
-                            "id": "src/components/at-tooltip/at-tooltip.tsx::TooltipAlign"
+                            "id": "src/components/at-tooltip/at-tooltip.tsx::AtTooltipAlign"
                         }
                     }
                 },

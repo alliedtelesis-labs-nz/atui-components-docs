@@ -1,16 +1,16 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-import { LabelPosition } from '../../../at-toggle-switch/at-toggle-switch';
+import { AtLabelPosition } from '../../../at-toggle-switch/at-toggle-switch';
 import { ITooltipCell } from '../../../../types/table-cells';
-export interface ToggleCellData {
+export interface AtIToggleCellData {
     value: boolean;
     label?: string;
     labelPosition?: 'before' | 'after';
     disabled?: boolean;
 }
-export interface IToggleCellParams extends ICellRendererParams, ITooltipCell {
+export interface AtIToggleCellParams extends ICellRendererParams, ITooltipCell {
     toggleValue?: (data: any) => boolean;
     label?: (data: any) => string;
-    labelPosition?: (data: any) => LabelPosition;
+    labelPosition?: (data: any) => AtLabelPosition;
     onTrigger?: (params: ICellRendererParams) => void;
     disabled?: (data: any) => boolean;
 }
@@ -20,9 +20,9 @@ export interface IToggleCellParams extends ICellRendererParams, ITooltipCell {
  */
 export declare class AtToggleCell implements ICellRendererComp {
     el: HTMLElement;
-    params: IToggleCellParams;
+    params: AtIToggleCellParams;
     label: string;
-    labelPosition: LabelPosition;
+    labelPosition: AtLabelPosition;
     disabled: boolean;
     value: boolean;
     timer: any;

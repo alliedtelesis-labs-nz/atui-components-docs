@@ -8,7 +8,7 @@ var atTextCell_entry = require('./at-text-cell.cjs.entry.js');
 var atTextStatusCell_entry = require('./at-text-status-cell.cjs.entry.js');
 var atCheckboxHeader_entry = require('./at-checkbox-header.cjs.entry.js');
 var atTextIconCell_entry = require('./at-text-icon-cell.cjs.entry.js');
-var atTitleSubtitleDateCell = require('./at-title-subtitle-date-cell-DYE4lgZz.js');
+var atTitleSubtitleDateCell = require('./at-title-subtitle-date-cell-DiphRYUS.js');
 var atTitleSubtitleCell_entry = require('./at-title-subtitle-cell.cjs.entry.js');
 var atEditTextCell_entry = require('./at-edit-text-cell.cjs.entry.js');
 var atChipListCell_entry = require('./at-chip-list-cell.cjs.entry.js');
@@ -23,7 +23,7 @@ require('./time-date.util-6pY7cZX6.js');
 require('./date-DDRmOnS1.js');
 
 /**
- * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * NEW AtAvailableCells also need to be added to getFrameworkComponents()
  * so that ag-grid can import and render the cell components
  */
 var AvailableCells;
@@ -104,7 +104,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("at-menu", { key: '35917236242c96a14cd23dff45bf00d11b152915', autoclose: false, width: "fit-content", position: "left", align: "end" }, index.h("div", { key: 'e7413fa0d9fc4e5038fc390ad74fb5fbfafe6f7f', slot: "menu-trigger" }, index.h("at-tooltip", { key: '5667dc15fb5aa99c9397eefea75859b3f3fb7be7', position: "top" }, index.h("at-button", { key: '96781bfe5101efce186f1585b580280bcb0d83a5', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: '2df182dbcdf55552f582d748aa78f5dd96643f4e' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '179cf95ed1fc11e2e5790fd5345d33b93d096750', class: "w-fit", options: this.col_defs
+        return (index.h("at-menu", { key: 'be2b814a8b618f0bfa2bcf48a250df0e599cb412', autoclose: false, width: "fit-content", position: "left", align: "end" }, index.h("div", { key: '8ec2b1ed436e62b4b5f57d6f8d7723dfecd6a4b0', slot: "menu-trigger" }, index.h("at-tooltip", { key: '479b4c6d3b739212fc38f8e95be717f77d8024b6', position: "top" }, index.h("at-button", { key: '447230d502b01a677b6a16c4344fb2021d5c1824', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: 'cc2aee9ccb9b63b97eb10f3567b04e316c446ef8' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '89cecd7d87af4df283dd2ec5d4a586d8e6b47860', class: "w-fit", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
                         option_id: colDef.field,
@@ -48088,7 +48088,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '9f1fec713603203c5ce4188ea2cb95b487ead145', class: "ag-theme-material" });
+        return index.h(index.Host, { key: '8786b5b6e4ab4e879372b1239be15b80a552886f', class: "ag-theme-material" });
     }
     static get watchers() { return {
         "table_data": [{
@@ -48155,7 +48155,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '5a3f8f36417e8077dcf3c32a5690412ab9dac053', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '5f394c529f653e139c3e5b9c01cb329b5385a7ec', class: "flex justify-between" }, index.h("div", { key: '90ad089ce0cf8a646cbb200f8cbb4e390ff7ab33', class: "flex" }, index.h("slot", { key: 'b37ea8e743577f7e722b82618d835379fe65e382', name: "search" })), index.h("div", { key: '9a309bb855a9ed890bc732acfbaa54ee4d1d430a', class: "flex" }, index.h("slot", { key: '1f67c2e807777adadb48ff0f1108967a530c8f32', name: "export-menu" }), index.h("slot", { key: 'd5357ddf87963e1a1961f45ad7268573e6bc5d7b', name: "column-manager" }), index.h("slot", { key: 'e3bd2d3c24145850da0619fd1184bb564b2402f5', name: "actions" }))), index.h("slot", { key: '37f6fccb041b1a0d2cc05afdbb4ed107aea99315', name: "filters" })));
+        return (index.h(index.Host, { key: '4e52cf5d73114e309926e55080bca52ce479c291', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '5d0f26bbdb6422303fef61838319a212c539bf2a', class: "flex justify-between" }, index.h("div", { key: '3afb3a93d4acd6d207c9220b996096875493a1a4', class: "flex" }, index.h("slot", { key: 'ba3608c8b0e4253c04dd29a1fa7d75b0f60f5642', name: "search" })), index.h("div", { key: 'f542c23bde000038730d84a640ff62535113314e', class: "flex" }, index.h("slot", { key: 'da369c894cdc8e2d2a51600b38a56799213d6e34', name: "export-menu" }), index.h("slot", { key: 'a39043d94ce1bbf4d80ad7b0906d5e10600ccca7', name: "column-manager" }), index.h("slot", { key: '9e8d8bc09d9a8d8daea7ef5e5958209c2f89f3e6', name: "actions" }))), index.h("slot", { key: 'beb0f463104257f1f3619785bb175b1f65430d1b', name: "filters" })));
     }
 };
 

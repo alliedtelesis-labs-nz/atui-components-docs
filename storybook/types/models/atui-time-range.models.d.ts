@@ -1,5 +1,5 @@
-import { TimeUnit, TimeWithUnit } from '../types/time';
-import { DateRangeStrings, TimeRangeDisplay } from '../types/date';
+import { TimeUnit, AtITimeWithUnit } from '../types/time';
+import { AtIDateRangeStrings, TimeRangeDisplay } from '../types/date';
 export type TimePresets = {
     unit: TimeUnit.MINUTES;
     value: 5;
@@ -56,8 +56,8 @@ export declare enum FullTimeUnits {
  * @deprecated please use onChange to receive SelectedTimeRangeExtended event
  */
 export interface SelectedTimeRange {
-    selected: TimeWithUnit | TimeRangeDisplay.CUSTOM;
-    custom?: DateRangeStrings;
+    selected: AtITimeWithUnit | TimeRangeDisplay.CUSTOM;
+    custom?: AtIDateRangeStrings;
 }
 type SelectedAllTimeRange = {
     selected: TimeRangeDisplay.ALL;

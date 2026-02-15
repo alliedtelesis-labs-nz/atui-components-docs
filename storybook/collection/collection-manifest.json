@@ -26,6 +26,7 @@
     "components/at-button/at-button.js",
     "components/at-button-group/at-button-group.js",
     "components/at-button-group/at-button-group-option/at-button-group-option.js",
+    "components/at-button-switch/at-button-switch.js",
     "components/at-card/at-card.js",
     "components/at-chart-donut/at-chart-donut.js",
     "components/at-chart-bar-line/at-chart-bar-line.js",

@@ -1,5 +1,5 @@
 /**
- * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * NEW AtAvailableCells also need to be added to getFrameworkComponents()
  * so that ag-grid can import and render the cell components
  */
 export var AvailableCells;

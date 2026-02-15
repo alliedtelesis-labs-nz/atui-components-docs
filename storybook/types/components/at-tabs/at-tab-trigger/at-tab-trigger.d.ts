@@ -1,4 +1,4 @@
-export type Layout = 'vertical' | 'horizontal';
+export type AtTabTriggerLayout = 'vertical' | 'horizontal';
 /**
  * @category Navigation
  * @description A tab trigger component for the tab selector.
@@ -16,7 +16,7 @@ export declare class AtTabTrigger {
     /**
      * Styling based on the layout of the tabs
      */
-    layout: Layout;
+    layout: AtTabTriggerLayout;
     /**
      * Applies styling when active
      */

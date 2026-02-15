@@ -1,4 +1,4 @@
-export type HeaderSizes = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type AtHeaderSizes = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 /**
  * @category Layout
  * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
@@ -12,7 +12,7 @@ export declare class AtHeader {
     /**
      * Size of the header.
      */
-    size: HeaderSizes;
+    size: AtHeaderSizes;
     /**
      * Icon of header. Must use mat-icon name.
      */

@@ -119,13 +119,13 @@ export class AtProgressBar {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "ProgressBarType",
+                    "original": "AtProgressBarType",
                     "resolved": "\"error\" | \"info\" | \"success\" | \"warning\"",
                     "references": {
-                        "ProgressBarType": {
+                        "AtProgressBarType": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-progress-bar/at-progress-bar.tsx",
-                            "id": "src/components/at-progress-bar/at-progress-bar.tsx::ProgressBarType"
+                            "id": "src/components/at-progress-bar/at-progress-bar.tsx::AtProgressBarType"
                         }
                     }
                 },
@@ -145,12 +145,12 @@ export class AtProgressBar {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "Size",
+                    "original": "AtProgressBarSize",
                     "resolved": "\"lg\" | \"sm\"",
                     "references": {
-                        "Size": {
+                        "AtProgressBarSize": {
                             "location": "global",
-                            "id": "global::Size"
+                            "id": "global::AtProgressBarSize"
                         }
                     }
                 },

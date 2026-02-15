@@ -33,7 +33,7 @@ export class AtSrcDestComponent {
      */
     align = 'left';
     render() {
-        return (h(Host, { key: '5ddbe8b59902df5ec3d8e97d907a0fcc75e15fb3', class: `flex flex-wrap items-center gap-16 ${this.align === 'center' ? 'justify-center' : 'justify-start'}` }, this.src_title && (h("h4", { key: 'c4fe0937fbd5f1cb961968fa8528117835258ca9', class: "h4", "data-name": "src-title" }, this.src_title)), (this.src_text || this.src_subtitle) && (h("div", { key: 'ae50b2a3796922b6ac2ee43cfe61a4e89aa6dadf' }, this.src_text && (h("p", { key: 'f6551735e8a5174a7e37b82331ef5eb5e416f774', class: "text-dark font-medium", "data-name": "src-text" }, this.src_text)), this.src_subtitle && (h("p", { key: '58fbd3565e84bc40277fa13856e146eeb40a3f6c', class: "text-med", "data-name": "src-subtitle" }, this.src_subtitle)))), h("div", { key: '9d439b2d43cdc0972032d9c2bd1678dc04a8d871', class: "icon-lg text-light flex-row items-center gap-4" }, h("span", { key: '9e7ac1dce0113856c27ad8cf6c88115722847029', class: "material-icons" }, "arrow_back"), h("span", { key: '6572e943ff1a5f4f4c5236ed81cbf107e1a8ff4b', class: "material-icons" }, "arrow_forward")), (this.dest_text || this.dest_subtitle) && (h("div", { key: '0b73415923fd3b0dc057cdb8d6707c02ec45960f', class: "text-right" }, this.dest_text && (h("p", { key: 'f09d613f72baf499d2b435ee72ebc47abc520009', class: "text-dark font-medium", "data-name": "dest-text" }, this.dest_text)), this.dest_subtitle && (h("p", { key: '74d8e92cffb267f8772620b1807d8ff64651a4a3', class: "text-med", "data-name": "dest-subtitle" }, this.dest_subtitle)))), this.dest_title && (h("h4", { key: '55631720bfd8afe3e6e4c20de1a86d4726635cbd', class: "h4", "data-name": "dest-title" }, this.dest_title))));
+        return (h(Host, { key: '06f0ed3e60f6a75c20f98edc684e8ab51096bb1c', class: `flex flex-wrap items-center gap-16 ${this.align === 'center' ? 'justify-center' : 'justify-start'}` }, this.src_title && (h("h4", { key: 'd364cce44937ddd5aad655ae42254f82f39becfa', class: "h4", "data-name": "src-title" }, this.src_title)), (this.src_text || this.src_subtitle) && (h("div", { key: 'c8301b48fabd76cb310586cc7c42a73bc24afed3' }, this.src_text && (h("p", { key: '6cd4baabda354bc44981f44f4f970fa87302c797', class: "text-dark font-medium", "data-name": "src-text" }, this.src_text)), this.src_subtitle && (h("p", { key: '6f88df4efe889741fc1b6a01ab5217f83a7cc9b5', class: "text-med", "data-name": "src-subtitle" }, this.src_subtitle)))), h("div", { key: 'd86a38ade4a44d0a6e7b52153abbac5dc31a34d7', class: "icon-lg text-light flex-row items-center gap-4" }, h("span", { key: '1df44905c0e33db26afa632dff92a5c514eb205c', class: "material-icons" }, "arrow_back"), h("span", { key: '0e65374eecea4407fd2178a0db27a23d1966edd3', class: "material-icons" }, "arrow_forward")), (this.dest_text || this.dest_subtitle) && (h("div", { key: '975628cbf9e2c22af88d60e25d7044aba9a06681', class: "text-right" }, this.dest_text && (h("p", { key: '5729c1a2b25c27d5f41b5a8d6e20af82859bc888', class: "text-dark font-medium", "data-name": "dest-text" }, this.dest_text)), this.dest_subtitle && (h("p", { key: 'c4787945cb29ca3229aedb90f4c8567d7c7d572b', class: "text-med", "data-name": "dest-subtitle" }, this.dest_subtitle)))), this.dest_title && (h("h4", { key: '57a7a71566634b728d810abe5bcc53fa502f2720', class: "h4", "data-name": "dest-title" }, this.dest_title))));
     }
     static get is() { return "at-src-dest"; }
     static get properties() {
@@ -156,13 +156,13 @@ export class AtSrcDestComponent {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "SrcDestAlign",
+                    "original": "AtSrcDestAlign",
                     "resolved": "\"center\" | \"left\"",
                     "references": {
-                        "SrcDestAlign": {
+                        "AtSrcDestAlign": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-src-dest/at-src-dest.tsx",
-                            "id": "src/components/at-src-dest/at-src-dest.tsx::SrcDestAlign"
+                            "id": "src/components/at-src-dest/at-src-dest.tsx::AtSrcDestAlign"
                         }
                     }
                 },

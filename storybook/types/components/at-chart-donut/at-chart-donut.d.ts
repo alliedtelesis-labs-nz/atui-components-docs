@@ -1,8 +1,8 @@
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import 'chartjs-adapter-moment';
 import { ChartColorPalette } from '../../types/chart-color';
-export type Height = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
-export type LegendPosition = 'top' | 'bottom' | 'left' | 'right';
+export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
+export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization
  * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
@@ -23,11 +23,11 @@ export declare class AtChartDonut {
     /**
      * Height of the chart
      */
-    height?: Height;
+    height?: AtChartHeight;
     /**
      * Position of the legend
      */
-    legend_position: LegendPosition;
+    legend_position: AtLegendPosition;
     /**
      * Additional options for formatting the legend
      */
