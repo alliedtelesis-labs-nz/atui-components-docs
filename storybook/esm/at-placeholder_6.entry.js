@@ -156,7 +156,7 @@ const AtTableFilterMenu = class {
         return this.col_defs
             .filter((colDef) => colDef.field !== 'Checkbox')
             .map((colDef) => ({
-            option_id: colDef.field,
+            value: colDef.field,
             label: colDef.field,
         }));
     }
@@ -172,7 +172,7 @@ const AtTableFilterMenu = class {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (h(Host, { key: 'dd245788957e05095a136093212ba57e5aec0e10' }, h("at-menu", { key: '7b4b6c5ce7174f79078df2a8571bb46ee3c59ad6', autoclose: false, width: "fit-content", class: "self-start", align: "end" }, h("at-tooltip", { key: '87a5adef3c2c21fe5dbfcd2bc4955b2fa1988415', slot: "menu-trigger", position: "top" }, h("at-button", { key: 'e6fd4760fabcfd04aa53bc2831919bffa85c8717', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: '09f9ea58bd1c1b4306d4c3b26deb65b55538c797' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '0b3e4397f976ca5df2078d04ff7bbf7107f5fc6b', class: "flex flex-col" }, h("at-checkbox-group", { key: 'ac98e3ba3d1a038714602d0295a941c592968200', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: '67cdfa0f7d2de2ca28a5d9187304a9d81006509d' }, h("at-menu", { key: '029793cec086cbf73fedb387d586ed5c7e5a899a', autoclose: false, width: "fit-content", class: "self-start", align: "end" }, h("at-tooltip", { key: '1ff72df45e23922e4a70f0b8ce66ee1f81ce8173', slot: "menu-trigger", position: "top" }, h("at-button", { key: '63697676f32964aad0d00a0d9fddadce50a6b6d8', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: 'd223d9ac541542e492f4c8f7f11f412ddd18b188' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: 'e40f0e6c78509f6bf8839cae2377ec58d76b25e9', class: "flex flex-col" }, h("at-checkbox-group", { key: '7e2f90262bb866fffdfef0196121a5e1cfbbaa8c', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
         "selected": [{

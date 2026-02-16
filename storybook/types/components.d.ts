@@ -16,7 +16,7 @@ import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { ChartColorPalette } from "./types/chart-color";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
-import { AtCheckboxLayout, AtICheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
@@ -60,7 +60,7 @@ export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { ChartColorPalette } from "./types/chart-color";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
-export { AtCheckboxLayout, AtICheckboxOptions } from "./components/at-checkbox-group/at-checkbox-group";
+export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
@@ -624,6 +624,10 @@ export namespace Components {
      */
     interface AtCheckbox {
         /**
+          * State of the checkbox
+         */
+        "checked"?: boolean;
+        /**
           * Disables interaction with the checkbox
          */
         "disabled": boolean;
@@ -638,11 +642,7 @@ export namespace Components {
         /**
           * Id of the checkbox.
          */
-        "option_id"?: string;
-        /**
-          * State of the checkbox
-         */
-        "value"?: boolean;
+        "value"?: string;
     }
     /**
      * @category Data Tables
@@ -694,7 +694,7 @@ export namespace Components {
         /**
           * Options displayed in the checkbox group.
          */
-        "options": AtICheckboxOptions[];
+        "options": AtICheckboxOption[];
         /**
           * Adds a required * to the label
          */
@@ -5326,6 +5326,10 @@ declare namespace LocalJSX {
      */
     interface AtCheckbox {
         /**
+          * State of the checkbox
+         */
+        "checked"?: boolean;
+        /**
           * Disables interaction with the checkbox
          */
         "disabled"?: boolean;
@@ -5344,11 +5348,7 @@ declare namespace LocalJSX {
         /**
           * Id of the checkbox.
          */
-        "option_id"?: string;
-        /**
-          * State of the checkbox
-         */
-        "value"?: boolean;
+        "value"?: string;
     }
     /**
      * @category Data Tables
@@ -5404,7 +5404,7 @@ declare namespace LocalJSX {
         /**
           * Options displayed in the checkbox group.
          */
-        "options"?: AtICheckboxOptions[];
+        "options"?: AtICheckboxOption[];
         /**
           * Adds a required * to the label
          */

@@ -1,10 +1,10 @@
 const Template = (args) => `
 <at-radio-group 
     label="${args.label}"
-    info_text="${args.info_text}"
-    error_text="${args.error_text}"
-    hint_text="${args.hint_text}"
-    direction="${args.layout}"
+    info_text="${args.info_text ?? ''}"
+    error_text="${args.error_text ?? ''}"
+    hint_text="${args.hint_text ?? ''}"
+    layout="${args.layout ?? 'column'}"
     ${args.invalid ? 'invalid' : ''}
     ${args.disabled ? 'disabled' : ''}
     ${args.required ? 'required' : ''}
@@ -19,61 +19,75 @@ document.querySelector('at-radio-group').options = ${JSON.stringify(args.options
 const SlotTemplate = (args) => `
 <at-radio-group 
     label="${args.label}"
-    info_text="${args.info_text}"
-    error_text="${args.error_text}"
-    hint_text="${args.hint_text}"
-    direction="${args.layout}"
+    info_text="${args.info_text ?? ''}"
+    error_text="${args.error_text ?? ''}"
+    hint_text="${args.hint_text ?? ''}"
+    layout="${args.layout ?? 'column'}"
     ${args.invalid ? 'invalid' : ''}
     ${args.required ? 'required' : ''}
 >
-    <li>
-        <at-radio label="One" subtitle="Subtitle" />
-    </li>
-    </li>
-        <at-radio label="Two" subtitle="Subtitle" />
-    </li>
+    <at-radio value="one" label="One label" hint_text="First option"></at-radio>
+    <at-radio value="two" label="Two label" hint_text="Second option"></at-radio>
+    <at-radio value="three" label="Three label"></at-radio>
 </at-radio-group>
 `;
 export default {
     title: 'Components/Radio Group',
 };
-export const Primary = Template.bind({});
-Primary.args = {
-    label: 'Title',
+export const PropOptions = Template.bind({});
+PropOptions.args = {
+    label: 'Prop Options Example',
     options: [
-        { id: 'one', label: 'One', subtitle: 'Subtitle' },
-        { id: 'two', label: 'Two', subtitle: 'Subtitle' },
+        { value: 'one', label: 'One label', hint_text: 'First option' },
+        { value: 'two', label: 'Two label', hint_text: 'Second option' },
+        { value: 'three', label: 'Three label' },
     ],
-    info_text: 'info text',
+    info_text: 'Select one option',
     hint_text: 'hint text',
-    error_text: 'error text',
-    layout: 'vertical',
-    required: false,
-    invalid: false,
-    disabled: false,
+    layout: 'column',
 };
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-    label: 'Title',
+export const PropOptionsColumn = Template.bind({});
+PropOptionsColumn.args = {
+    label: 'Prop Options Column',
     options: [
-        { id: 'one', label: 'One', subtitle: 'Subtitle' },
-        { id: 'two', label: 'Two', subtitle: 'Subtitle' },
+        { value: 'one', label: 'One label', hint_text: 'First option' },
+        { value: 'two', label: 'Two label', hint_text: 'Second option' },
+        { value: 'three', label: 'Three label' },
     ],
-    info_text: 'info text',
-    hint_text: 'hint text',
-    error_text: 'error text',
-    direction: 'horizontal',
-    required: false,
-    invalid: false,
-    disabled: false,
+    layout: 'column',
 };
-export const Slot = SlotTemplate.bind({});
-Slot.args = {
-    label: 'Title',
-    checkbox_id: 'checkbox',
-    info_text: 'info text',
-    hint_text: 'hint text',
-    error_text: 'error text',
-    layout: 'vertical',
-    invalid: false,
+export const PropOptionsRow = Template.bind({});
+PropOptionsRow.args = {
+    label: 'Prop Options Row',
+    options: [
+        { value: 'one', label: 'One label', hint_text: 'First option' },
+        { value: 'two', label: 'Two label', hint_text: 'Second option' },
+        { value: 'three', label: 'Three label' },
+    ],
+    layout: 'row',
+};
+export const PropOptionsGrid = Template.bind({});
+PropOptionsGrid.args = {
+    label: 'Prop Options Grid',
+    options: [
+        { value: 'one', label: 'One label', hint_text: 'First option' },
+        { value: 'two', label: 'Two label', hint_text: 'Second option' },
+        { value: 'three', label: 'Three label' },
+    ],
+    layout: 'grid',
+};
+export const SlottedOptionsColumn = SlotTemplate.bind({});
+SlottedOptionsColumn.args = {
+    label: 'Slotted Options Column',
+    layout: 'column',
+};
+export const SlottedOptionsRow = SlotTemplate.bind({});
+SlottedOptionsRow.args = {
+    label: 'Slotted Options Row',
+    layout: 'row',
+};
+export const SlottedOptionsGrid = SlotTemplate.bind({});
+SlottedOptionsGrid.args = {
+    label: 'Slotted Options Grid',
+    layout: 'grid',
 };

@@ -49,13 +49,12 @@ const AtCheckboxGroup = class {
     options;
     updateSelected() {
         this.options.forEach((option) => {
-            if (option.value === true &&
-                !this.value.includes(option.option_id)) {
-                this.value.push(option.option_id);
+            if (option.checked === true && !this.value.includes(option.value)) {
+                this.value.push(option.value);
             }
-            else if (option.value === false &&
-                this.value.includes(option.option_id)) {
-                this.value = this.value.filter((selection) => selection !== option.option_id);
+            else if (option.checked === false &&
+                this.value.includes(option.value)) {
+                this.value = this.value.filter((selection) => selection !== option.value);
             }
         });
     }
@@ -69,21 +68,25 @@ const AtCheckboxGroup = class {
     value = [];
     get el() { return getElement(this); }
     checkboxEls = [];
+    onValueChange() {
+        if (!this.options) {
+            this.el
+                .querySelectorAll('at-checkbox')
+                .forEach((checkboxEl) => {
+                checkboxEl.checked =
+                    this.value?.includes(checkboxEl.value) ?? false;
+            });
+        }
+    }
     /**
      * Emits an event containing the 'selected' prop when changed
      */
     atuiChange;
     formControlSelected = null;
     componentDidLoad() {
-        if (!this.getCheckBoxes) {
-            this.el
-                .querySelectorAll('at-checkbox')
-                .forEach((checkboxEl, index) => {
-                checkboxEl.option_id = `${index}`;
-                checkboxEl.disabled = this.disabled;
-                checkboxEl.value = this.value.includes(`${index}`);
-                checkboxEl.addEventListener('atuiChange', (event) => this.handleChange(event, `${index}`));
-                this.checkboxEls.push(checkboxEl);
+        if (!this.options) {
+            requestAnimationFrame(() => {
+                this.setupOptionElements();
             });
         }
     }
@@ -93,15 +96,29 @@ const AtCheckboxGroup = class {
                 this.value = this.formControlSelected;
                 this.formControlSelected = null;
             }
-            return this.options.map((option) => (h("at-checkbox", { option_id: option.option_id, label: option.label, hint_text: option.hint_text, value: this.value.includes(option.option_id), disabled: this.disabled, onAtuiChange: (event) => this.handleChange(event, option.option_id) })));
+            return this.options.map((option) => (h("at-checkbox", { value: option.value, label: option.label, hint_text: option.hint_text, checked: this.value.includes(option.value), disabled: this.disabled, onAtuiChange: (event) => this.handleChange(event, option.value) })));
         }
         return '';
     }
-    handleChange(event, checkboxId) {
+    setupOptionElements() {
+        this.el
+            .querySelectorAll('at-checkbox')
+            .forEach((checkboxEl) => {
+            checkboxEl.disabled = this.disabled;
+            checkboxEl.checked =
+                this.value?.includes(checkboxEl.value) ?? false;
+            checkboxEl.addEventListener('atuiChange', (event) => this.handleChange(event, checkboxEl.value));
+        });
+    }
+    handleChange(event, checkboxValue) {
         event.stopPropagation();
-        this.value = this.value.includes(checkboxId)
-            ? this.value.filter((option) => option !== checkboxId)
-            : [...this.value, checkboxId];
+        const isChecked = event.detail;
+        if (isChecked && !this.value.includes(checkboxValue)) {
+            this.value = [...this.value, checkboxValue];
+        }
+        else if (!isChecked) {
+            this.value = this.value.filter((v) => v !== checkboxValue);
+        }
         this.atuiChange.emit(this.value);
     }
     render() {
@@ -109,12 +126,15 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: 'd9cb898f5ea405d2b33f5a8c4415cd7d5f857677', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: 'a300875732a3557722fb5ffbcd5b45a65f8f82e9', class: "flex flex-col" }, h("slot", { key: '234e165d32bf2854a84041a4ed61e661b3cfc55a', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '482a2a1c2d0ba7dd81c0d8eb5033d42078102183', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '68a03cae5552dba3f183355d2c09de401fe28f4b', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '48af1396abc2e0037d3df812ff50d172657dffe9', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '1df222e76b098edd76602b3edb6aed12bdca4591' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'dc220aff9a023e5f7f846b99bc05640141014be3', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '5d40d130baf61e7e302a635163bc1393c1f71048', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '802da8af31c6a42d74a9d5e583e74e2476ef9e75', class: "flex flex-col" }, h("slot", { key: 'e8599d83e372f1848a5a7412f2bdb0992afd7940', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '5cff6bae2b4218c03b579ee3c449f5195796ec01', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'ada5ef45ac6d52efabdd238005fb517a4cd30dce', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'cd2cc260b7a125ba533b826385a1e3bda5ac1ee2', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '557911f649b37c3adfe6b575be6971e694eb231b' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '238633ee95c612048fa49c455b9e3b6c9000d177', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
                 "updateSelected": 0
+            }],
+        "value": [{
+                "onValueChange": 0
             }]
     }; }
 };

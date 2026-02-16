@@ -13,7 +13,7 @@ const variants = classlist('group/checkbox transition-[color,background-color, b
         },
     },
 });
-const checkboxVariants = classlist('material-icons shadow-inset-xs accent-active-foreground pointer-events-none z-10 !h-16 !w-16 cursor-pointer rounded-sm border border-solid ' +
+const checkboxVariants = classlist('material-icons shadow-inset-xs accent-active-foreground pointer-events-none z-10 !min-h-16 !min-w-16 cursor-pointer rounded-sm border border-solid ' +
     'transition-all duration-300 ease-in-out', {
     variants: {
         checked: {
@@ -43,11 +43,11 @@ const AtCheckbox = class {
     /**
      * Id of the checkbox.
      */
-    option_id;
+    value;
     /**
      * State of the checkbox
      */
-    value;
+    checked;
     /**
      * Disables interaction with the checkbox
      */
@@ -58,20 +58,20 @@ const AtCheckbox = class {
      */
     atuiChange;
     handleChange(value) {
-        this.value = value.target.checked;
-        this.atuiChange.emit(this.value);
+        this.checked = value.target.checked;
+        this.atuiChange.emit(this.checked);
     }
     render() {
         const classname = variants({
             disabled: this.disabled,
-            checked: this.value,
+            checked: this.checked,
         });
         const checkboxClassname = checkboxVariants({
-            checked: this.value,
+            checked: this.checked,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '9bb8f2d2f6ff273faeb04ef4c7b07b0d2f950050', role: "checkbox", "aria-checked": this.value, "aria-labelledby": `${this.option_id}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: '8dd986573cccfc96646239ea6249a4d9404e461d', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.value, onChange: (event) => this.handleChange(event), id: this.option_id, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: '23fd7ce56f874d3b6d5a795f80128e63a6529710', class: "pointer-events-none flex flex-col" }, h("slot", { key: 'fce9d9e7d21eff1f332907a39908f099a98cd122', name: "label" }), this.label && (h("label", { key: '1e3edd5e209cd81786fd1c1802f307a0875d0139', class: "mt-0 pl-4 text-xs font-medium", id: `${this.option_id}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '4b741ab82ec39017ba0e05bbcccbdd1c780a6e5f', class: "text-light mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '417d5be8de21295b44539a20274e5e249209049a' })));
+        return (h(Host, { key: 'd3b00cc9f033fd19a134146e361a6f2cfc9b48a6', role: "checkbox", "aria-checked": this.checked, "aria-labelledby": `${this.value}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: '2d5c4ed04ea83a920d998cafd4ff15e34fc0fe98', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.checked, onChange: (event) => this.handleChange(event), id: this.value, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: '921d84c6aea152814536f245e2030e2b9b420d12', class: "pointer-events-none flex flex-col" }, h("slot", { key: '6f82a6e24aa858bdf563183fb4300fda29ef8d4a', name: "label" }), this.label && (h("label", { key: '87547106ed9be920d30fa993393e711f6257dec5', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '10d08e106f8637b711bd33549df52b5026fb8164', class: "text-light mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '67a44078ff15d379665c018514dd1ab210206d31' })));
     }
 };
 

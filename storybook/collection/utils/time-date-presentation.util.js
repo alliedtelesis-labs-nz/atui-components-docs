@@ -1,7 +1,7 @@
 import moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
 import { TimeDateUtil } from "./time-date.util";
-import { isEmpty, replace } from "lodash";
+import { isEmpty, replace } from "lodash-es";
 import { DateFormat, Duration, TimeRangeDisplay, TimeRangesInHours, } from "../types";
 momentDurationFormatSetup(moment);
 export class TimeDatePresentationUtil {

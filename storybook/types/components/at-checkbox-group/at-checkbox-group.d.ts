@@ -1,9 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export interface AtICheckboxOptions {
-    option_id: string;
+export interface AtICheckboxOption {
+    value: string;
     label?: string;
     hint_text?: string;
-    value?: boolean;
+    checked?: boolean;
 }
 export type AtCheckboxLayout = 'column' | 'row' | 'grid';
 /**
@@ -51,7 +51,7 @@ export declare class AtCheckboxGroup {
     /**
      * Options displayed in the checkbox group.
      */
-    options: AtICheckboxOptions[];
+    options: AtICheckboxOption[];
     updateSelected(): void;
     /**
      * Sets the layout of the checkbox-group
@@ -63,6 +63,7 @@ export declare class AtCheckboxGroup {
     value: string[];
     el: HTMLAtCheckboxGroupElement;
     checkboxEls: HTMLAtCheckboxElement[];
+    onValueChange(): void;
     /**
      * Emits an event containing the 'selected' prop when changed
      */
@@ -70,7 +71,8 @@ export declare class AtCheckboxGroup {
     private formControlSelected;
     componentDidLoad(): void;
     get getCheckBoxes(): any;
-    handleChange(event: CustomEvent, checkboxId: string): void;
+    private setupOptionElements;
+    handleChange(event: CustomEvent, checkboxValue: string): void;
     render(): any;
 }
 /**

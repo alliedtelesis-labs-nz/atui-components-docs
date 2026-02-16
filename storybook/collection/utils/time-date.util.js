@@ -1,5 +1,8 @@
 import moment from "moment";
-import { clone, floor, isEmpty, round } from "lodash";
+import clone from "lodash/clone.js";
+import floor from "lodash/floor.js";
+import isEmpty from "lodash/isEmpty.js";
+import round from "lodash/round.js";
 import { Duration, TimeUnit, } from "../types/time";
 export class TimeDateUtil {
     /**

@@ -8,7 +8,7 @@ var atTextCell_entry = require('./at-text-cell.cjs.entry.js');
 var atTextStatusCell_entry = require('./at-text-status-cell.cjs.entry.js');
 var atCheckboxHeader_entry = require('./at-checkbox-header.cjs.entry.js');
 var atTextIconCell_entry = require('./at-text-icon-cell.cjs.entry.js');
-var atTitleSubtitleDateCell = require('./at-title-subtitle-date-cell-DiphRYUS.js');
+var atTitleSubtitleDateCell = require('./at-title-subtitle-date-cell-6Nr-73vT.js');
 var atTitleSubtitleCell_entry = require('./at-title-subtitle-cell.cjs.entry.js');
 var atEditTextCell_entry = require('./at-edit-text-cell.cjs.entry.js');
 var atChipListCell_entry = require('./at-chip-list-cell.cjs.entry.js');
@@ -17,9 +17,9 @@ var atMultiBtnCell_entry = require('./at-multi-btn-cell.cjs.entry.js');
 var atColorStatusCell_entry = require('./at-color-status-cell.cjs.entry.js');
 var atTextImageCell_entry = require('./at-text-image-cell.cjs.entry.js');
 var atMenuCell_entry = require('./at-menu-cell.cjs.entry.js');
-require('./time-date-presentation.util-DEyLiy6n.js');
+require('./time-date-presentation.util-D1DRhr0h.js');
 require('moment');
-require('./time-date.util-6pY7cZX6.js');
+require('./time-date.util-Y1RHGLUD.js');
 require('./date-DDRmOnS1.js');
 
 /**
@@ -104,10 +104,10 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("at-menu", { key: 'be2b814a8b618f0bfa2bcf48a250df0e599cb412', autoclose: false, width: "fit-content", position: "left", align: "end" }, index.h("div", { key: '8ec2b1ed436e62b4b5f57d6f8d7723dfecd6a4b0', slot: "menu-trigger" }, index.h("at-tooltip", { key: '479b4c6d3b739212fc38f8e95be717f77d8024b6', position: "top" }, index.h("at-button", { key: '447230d502b01a677b6a16c4344fb2021d5c1824', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: 'cc2aee9ccb9b63b97eb10f3567b04e316c446ef8' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '89cecd7d87af4df283dd2ec5d4a586d8e6b47860', class: "w-fit", options: this.col_defs
+        return (index.h("at-menu", { key: 'be2b814a8b618f0bfa2bcf48a250df0e599cb412', autoclose: false, width: "fit-content", position: "left", align: "end" }, index.h("div", { key: '8ec2b1ed436e62b4b5f57d6f8d7723dfecd6a4b0', slot: "menu-trigger" }, index.h("at-tooltip", { key: '479b4c6d3b739212fc38f8e95be717f77d8024b6', position: "top" }, index.h("at-button", { key: '447230d502b01a677b6a16c4344fb2021d5c1824', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: 'cc2aee9ccb9b63b97eb10f3567b04e316c446ef8' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: 'aac8d10783aecb47c708b18eda2ee7d3c21b0a9c', class: "w-fit", options: this.col_defs
                 ? this.col_defs.map((colDef) => {
                     return {
-                        option_id: colDef.field,
+                        value: colDef.field,
                         label: colDef.field,
                     };
                 })
