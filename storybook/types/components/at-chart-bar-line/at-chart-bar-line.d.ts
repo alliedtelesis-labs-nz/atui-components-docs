@@ -2,7 +2,7 @@ import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataP
 import 'chartjs-adapter-moment';
 import { SelectedTimeRangeExtended } from '../../components';
 import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
-import { ChartColorPalette } from '../../types/chart-color';
+import { AtChartColorPalette } from '../../types/chart-color';
 export interface AtIPointStyles {
     pointBackgroundColor: Color;
     pointBorderColor: Color;
@@ -112,7 +112,7 @@ export declare class AtChartBarLine {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette: ChartColorPalette;
+    color_palette: AtChartColorPalette;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart

@@ -14,13 +14,13 @@ import { AtIButtonGroupOption } from "./components/at-button-group/at-button-gro
 import { ChartDataset, Plugin } from "chart.js";
 import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
-import { ChartColorPalette } from "./types/chart-color";
+import { AtChartColorPalette } from "./types/chart-color";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptUserRole, PromptResponseScore } from "./types";
+import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtHeaderSizes } from "./components/at-header/at-header";
 import { AtInputType } from "./components/at-input/at-input";
@@ -58,13 +58,13 @@ export { AtIButtonGroupOption } from "./components/at-button-group/at-button-gro
 export { ChartDataset, Plugin } from "chart.js";
 export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
-export { ChartColorPalette } from "./types/chart-color";
+export { AtChartColorPalette } from "./types/chart-color";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
-export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptUserRole, PromptResponseScore } from "./types";
+export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtHeaderSizes } from "./components/at-header/at-header";
 export { AtInputType } from "./components/at-input/at-input";
@@ -489,9 +489,9 @@ export namespace Components {
     interface AtChartBarLine {
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-          * @default ChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.CATEGORICAL
          */
-        "color_palette": ChartColorPalette;
+        "color_palette": AtChartColorPalette;
         /**
           * Data to go in the chart. ChartDataset properties found [here for line](https://www.chartjs.org/docs/latest/charts/line.html), and [here for bar](https://www.chartjs.org/docs/latest/charts/bar.html)
          */
@@ -565,9 +565,9 @@ export namespace Components {
         "center_value"?: string;
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-          * @default ChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.CATEGORICAL
          */
-        "color_palette": ChartColorPalette;
+        "color_palette": AtChartColorPalette;
         /**
           * Controls the thickness of the donut ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
           * @default 70
@@ -1810,9 +1810,9 @@ export namespace Components {
         "role": AtPromptUserRole;
         /**
           * The current vote score of the message
-          * @default PromptResponseScore.NONE
+          * @default AtPromptResponseScore.NONE
          */
-        "score": PromptResponseScore;
+        "score": AtPromptResponseScore;
     }
     /**
      * @category Prompt
@@ -5209,9 +5209,9 @@ declare namespace LocalJSX {
     interface AtChartBarLine {
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-          * @default ChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.CATEGORICAL
          */
-        "color_palette"?: ChartColorPalette;
+        "color_palette"?: AtChartColorPalette;
         /**
           * Data to go in the chart. ChartDataset properties found [here for line](https://www.chartjs.org/docs/latest/charts/line.html), and [here for bar](https://www.chartjs.org/docs/latest/charts/bar.html)
          */
@@ -5276,9 +5276,9 @@ declare namespace LocalJSX {
         "center_value"?: string;
         /**
           * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-          * @default ChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.CATEGORICAL
          */
-        "color_palette"?: ChartColorPalette;
+        "color_palette"?: AtChartColorPalette;
         /**
           * Controls the thickness of the donut ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
           * @default 70
@@ -6603,9 +6603,9 @@ declare namespace LocalJSX {
         "role"?: AtPromptUserRole;
         /**
           * The current vote score of the message
-          * @default PromptResponseScore.NONE
+          * @default AtPromptResponseScore.NONE
          */
-        "score"?: PromptResponseScore;
+        "score"?: AtPromptResponseScore;
     }
     /**
      * @category Prompt

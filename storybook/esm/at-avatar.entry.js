@@ -56,7 +56,7 @@ const AtAvatar = class {
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: '991a10f4687d9e1b72902a963080fb5f21bee0de', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'b4e2c7d86718a3069bdfec9983419def02be7dab', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '7c96e5cd053c0f0672363f95730201234ff41611', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '928158927864ab1696e391b26bd71b97c1dd3c00' })));
+        return (h(Host, { key: 'b06dbf0996ab1a5dab398e35545b7e39ecf724d4', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'af2b5cc2ad9348943b166ab4417c0e3a50412ac7', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '85845fda5d29f842f959a1877c09fb89df3388d2', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: 'dcae77ff245a7d378018416cea21fb304100b341' })));
     }
 };
 

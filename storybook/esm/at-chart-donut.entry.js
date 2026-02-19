@@ -1,5 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
-import { C as ChartColorPalette, a as Chart, D as DoughnutController, A as ArcElement, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-BFIVuvTv.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, e as plugin_legend, f as plugin_tooltip, i as index, g as getChartColors } from './chart-color-B3zvoZX1.js';
+import { A as AtChartColorPalette } from './chart-color-Ckr-udZ5.js';
 import 'moment';
 
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -78,7 +79,7 @@ const AtChartDonut = class {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette = ChartColorPalette.CATEGORICAL;
+    color_palette = AtChartColorPalette.CATEGORICAL;
     /**
      * Optional value text to display in the center of the donut chart
      */
@@ -210,7 +211,7 @@ const AtChartDonut = class {
         this.chart = new Chart(this.canvasEl, this.config);
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === ChartColorPalette.CUSTOM) {
+        if (this.color_palette === AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
@@ -240,7 +241,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '6f8f067b0eaf17cc59012ae0781fbd513d7648db', style: { height: '100%', width: '100%' } }, h("canvas", { key: '27ecf890f9c8df57a7e7966b312931d0331d580d', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'ccacfac03f8806fbde2823d433748985608577c9', style: { height: '100%', width: '100%' } }, h("canvas", { key: '44d3bdc962ab5b7e1862010a1c4029d34f5454dc', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

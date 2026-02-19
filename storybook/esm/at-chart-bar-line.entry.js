@@ -1,6 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-jvbUuQtg.js';
-import { C as ChartColorPalette, a as Chart, L as LinearScale, B as BarController, b as CategoryScale, c as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, p as plugin_colors, f as plugin_legend, g as plugin_tooltip, i as index, h as getChartColors } from './chart-color-BFIVuvTv.js';
+import { C as Chart, L as LinearScale, B as BarController, a as CategoryScale, b as BarElement, T as TimeScale, c as LineController, d as LineElement, P as PointElement, p as plugin_colors, e as plugin_legend, f as plugin_tooltip, i as index, g as getChartColors } from './chart-color-B3zvoZX1.js';
 import { T as TimeDateUtil } from './time-date.util-BKAgTbms.js';
+import { A as AtChartColorPalette } from './chart-color-Ckr-udZ5.js';
 import 'moment';
 
 const heightVariants = {
@@ -72,7 +73,7 @@ const AtChartBarLine = class {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette = ChartColorPalette.CATEGORICAL;
+    color_palette = AtChartColorPalette.CATEGORICAL;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -191,7 +192,7 @@ const AtChartBarLine = class {
         });
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === ChartColorPalette.CUSTOM) {
+        if (this.color_palette === AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset, index) => {
@@ -243,7 +244,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: 'b51f907904521291948137f06ad146779746d1cf', style: { height: '100%', width: '100%' } }, h("canvas", { key: '4fc348e69cf70ac520ea200d269f66b87254aa91', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'bd2e6db5b7d6635b417d69f4c6e2f7d743187414', style: { height: '100%', width: '100%' } }, h("canvas", { key: '488a8471b9ad5599bbb2ca76b2ddbb2b6bd00488', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

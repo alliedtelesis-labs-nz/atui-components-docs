@@ -8,5 +8,6 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 export * from './components';
-export { PromptResponseScore, } from './types/prompt';
+export { AtPromptResponseScore, } from './types/prompt';
 export { ToasterService } from './utils/toaster.service';
+export { AtChartColorPalette } from './types/chart-color';

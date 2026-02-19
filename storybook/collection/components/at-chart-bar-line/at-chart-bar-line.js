@@ -2,7 +2,7 @@ import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
 import "chartjs-adapter-moment";
 import { TimeDateUtil } from "../../utils/time-date.util";
-import { ChartColorPalette } from "../../types/chart-color";
+import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const heightVariants = {
     xs: 'h-[70px]',
@@ -98,7 +98,7 @@ export class AtChartBarLine {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette = ChartColorPalette.CATEGORICAL;
+    color_palette = AtChartColorPalette.CATEGORICAL;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -217,7 +217,7 @@ export class AtChartBarLine {
         });
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === ChartColorPalette.CUSTOM) {
+        if (this.color_palette === AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset, index) => {
@@ -269,7 +269,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'b51f907904521291948137f06ad146779746d1cf', style: { height: '100%', width: '100%' } }, h("canvas", { key: '4fc348e69cf70ac520ea200d269f66b87254aa91', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'bd2e6db5b7d6635b417d69f4c6e2f7d743187414', style: { height: '100%', width: '100%' } }, h("canvas", { key: '488a8471b9ad5599bbb2ca76b2ddbb2b6bd00488', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
@@ -503,14 +503,14 @@ export class AtChartBarLine {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "ChartColorPalette",
-                    "resolved": "ChartColorPalette.ALERT | ChartColorPalette.CATEGORICAL | ChartColorPalette.CUSTOM | ChartColorPalette.SEQUENTIAL",
+                    "original": "AtChartColorPalette",
+                    "resolved": "AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL | AtChartColorPalette.CUSTOM | AtChartColorPalette.SEQUENTIAL",
                     "references": {
-                        "ChartColorPalette": {
+                        "AtChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette",
-                            "referenceLocation": "ChartColorPalette"
+                            "id": "src/types/chart-color.ts::AtChartColorPalette",
+                            "referenceLocation": "AtChartColorPalette"
                         }
                     }
                 },
@@ -524,7 +524,7 @@ export class AtChartBarLine {
                 "setter": false,
                 "reflect": false,
                 "attribute": "color_palette",
-                "defaultValue": "ChartColorPalette.CATEGORICAL"
+                "defaultValue": "AtChartColorPalette.CATEGORICAL"
             }
         };
     }

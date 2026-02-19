@@ -1,6 +1,7 @@
 'use strict';
 
-var prompt = require('./prompt-BA0_qDnC.js');
+var prompt = require('./prompt-DoMXcdvl.js');
+var chartColor = require('./chart-color-CMk9r_na.js');
 
 const DEFAULT_TOAST_OPTIONS = {
     position: 'bottom-right',
@@ -45,8 +46,12 @@ class ToasterService {
     }
 }
 
-Object.defineProperty(exports, "PromptResponseScore", {
+Object.defineProperty(exports, "AtPromptResponseScore", {
     enumerable: true,
-    get: function () { return prompt.PromptResponseScore; }
+    get: function () { return prompt.AtPromptResponseScore; }
+});
+Object.defineProperty(exports, "AtChartColorPalette", {
+    enumerable: true,
+    get: function () { return chartColor.AtChartColorPalette; }
 });
 exports.ToasterService = ToasterService;

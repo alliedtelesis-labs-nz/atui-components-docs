@@ -1,5 +1,5 @@
 import { Host, h, } from "@stencil/core";
-import { PromptResponseScore, } from "../../../types";
+import { AtPromptResponseScore, } from "../../../types";
 /**
  * @category Prompt
  * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
@@ -163,14 +163,14 @@ export class AtPromptThread {
             ? message.name
             : message.name || this.chatbot_title;
         const animate = message.role === 'assistant' ? this.response_animation : 'fade';
-        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || PromptResponseScore.NONE, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: animate, "data-name": `message-${index}`, "data-message-index": index }));
+        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || AtPromptResponseScore.NONE, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: animate, "data-name": `message-${index}`, "data-message-index": index }));
     }
     renderMessages() {
         return this.messages.map((message, index) => this.renderMessage(message, index));
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '3bfeef903a6134cfed5e1edb430568dd81449c80', class: "block h-full", "data-name": "thread-container" }, h("div", { key: '0dab7989cfd362ae5032e05cb9d08cbf4c8c869c', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: 'e3f77bb568ce5394ade0b52feae0adef4db3cb33', name: "thread-messages" }))));
+        return (h(Host, { key: 'd85c53e7a6447f6408f70c78a5a2ca3f97d91aab', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'dcdb5e13fbc0fb3f2ea084d2beb5dc790990f31c', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '5e87b75947a036484e3ba075880537afd3bf62a2', name: "thread-messages" }))));
     }
     static get is() { return "at-prompt-thread"; }
     static get properties() {

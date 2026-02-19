@@ -1,6 +1,6 @@
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import 'chartjs-adapter-moment';
-import { ChartColorPalette } from '../../types/chart-color';
+import { AtChartColorPalette } from '../../types/chart-color';
 export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
@@ -47,7 +47,7 @@ export declare class AtChartDonut {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette: ChartColorPalette;
+    color_palette: AtChartColorPalette;
     /**
      * Optional value text to display in the center of the donut chart
      */

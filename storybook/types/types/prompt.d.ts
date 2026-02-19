@@ -1,6 +1,6 @@
 export type AtPromptUserRole = 'user' | 'assistant';
 export type AtPromptResponseAnimation = 'none' | 'fade' | 'words';
-export declare enum PromptResponseScore {
+export declare enum AtPromptResponseScore {
     NONE = 0,
     UP = 1,
     DOWN = -1

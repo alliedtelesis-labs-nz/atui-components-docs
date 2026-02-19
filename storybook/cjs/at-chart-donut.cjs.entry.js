@@ -1,7 +1,8 @@
 'use strict';
 
 var index = require('./index-CzDB71Wy.js');
-var chartColor = require('./chart-color-C9LMZwU4.js');
+var chartColor$1 = require('./chart-color-CnTIq9PY.js');
+var chartColor = require('./chart-color-CMk9r_na.js');
 require('moment');
 
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -80,7 +81,7 @@ const AtChartDonut = class {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette = chartColor.ChartColorPalette.CATEGORICAL;
+    color_palette = chartColor.AtChartColorPalette.CATEGORICAL;
     /**
      * Optional value text to display in the center of the donut chart
      */
@@ -164,9 +165,9 @@ const AtChartDonut = class {
         };
     }
     initChart() {
-        chartColor.Chart.register(chartColor.DoughnutController, chartColor.ArcElement, chartColor.plugin_legend, chartColor.plugin_tooltip, chartColor.index);
+        chartColor$1.Chart.register(chartColor$1.DoughnutController, chartColor$1.ArcElement, chartColor$1.plugin_legend, chartColor$1.plugin_tooltip, chartColor$1.index);
         const dpr = window.devicePixelRatio || 1;
-        const colors = chartColor.getChartColors(this.color_palette);
+        const colors = chartColor$1.getChartColors(this.color_palette);
         if (colors) {
             this.applyPresetPalette(colors);
         }
@@ -209,10 +210,10 @@ const AtChartDonut = class {
         if (this.chart) {
             this.chart.destroy();
         }
-        this.chart = new chartColor.Chart(this.canvasEl, this.config);
+        this.chart = new chartColor$1.Chart(this.canvasEl, this.config);
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === chartColor.ChartColorPalette.CUSTOM) {
+        if (this.color_palette === chartColor.AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
@@ -242,7 +243,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '6f8f067b0eaf17cc59012ae0781fbd513d7648db', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '27ecf890f9c8df57a7e7966b312931d0331d580d', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'ccacfac03f8806fbde2823d433748985608577c9', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '44d3bdc962ab5b7e1862010a1c4029d34f5454dc', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

@@ -114,7 +114,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '38bf02f0bfe5b9acbdeb744da8a1da52c6df42e2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '2496243e822540431c134853a78a435f9a7b3656', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }

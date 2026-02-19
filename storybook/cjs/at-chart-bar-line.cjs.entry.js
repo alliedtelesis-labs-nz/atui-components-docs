@@ -1,8 +1,9 @@
 'use strict';
 
 var index = require('./index-CzDB71Wy.js');
-var chartColor = require('./chart-color-C9LMZwU4.js');
+var chartColor$1 = require('./chart-color-CnTIq9PY.js');
 var timeDate_util = require('./time-date.util-Y1RHGLUD.js');
+var chartColor = require('./chart-color-CMk9r_na.js');
 require('moment');
 
 const heightVariants = {
@@ -74,7 +75,7 @@ const AtChartBarLine = class {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette = chartColor.ChartColorPalette.CATEGORICAL;
+    color_palette = chartColor.AtChartColorPalette.CATEGORICAL;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -83,8 +84,8 @@ const AtChartBarLine = class {
         return this.config;
     }
     initChart() {
-        chartColor.Chart.register(chartColor.LinearScale, chartColor.BarController, chartColor.CategoryScale, chartColor.BarElement, chartColor.TimeScale, chartColor.LineController, chartColor.LineElement, chartColor.PointElement, chartColor.plugin_colors, chartColor.plugin_legend, chartColor.plugin_tooltip, chartColor.index);
-        const colors = chartColor.getChartColors(this.color_palette);
+        chartColor$1.Chart.register(chartColor$1.LinearScale, chartColor$1.BarController, chartColor$1.CategoryScale, chartColor$1.BarElement, chartColor$1.TimeScale, chartColor$1.LineController, chartColor$1.LineElement, chartColor$1.PointElement, chartColor$1.plugin_colors, chartColor$1.plugin_legend, chartColor$1.plugin_tooltip, chartColor$1.index);
+        const colors = chartColor$1.getChartColors(this.color_palette);
         if (colors) {
             this.applyPresetPalette(colors);
         }
@@ -165,7 +166,7 @@ const AtChartBarLine = class {
             this.config.options.scales.x['min'] = dates.min;
             this.config.options.scales.x['max'] = dates.max;
         }
-        new chartColor.Chart(this.canvasEl, this.config);
+        new chartColor$1.Chart(this.canvasEl, this.config);
         this.canvasEl.style.width = '';
         this.canvasEl.style.height = '';
     }
@@ -193,7 +194,7 @@ const AtChartBarLine = class {
         });
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === chartColor.ChartColorPalette.CUSTOM) {
+        if (this.color_palette === chartColor.AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset, index) => {
@@ -245,7 +246,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'b51f907904521291948137f06ad146779746d1cf', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '4fc348e69cf70ac520ea200d269f66b87254aa91', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'bd2e6db5b7d6635b417d69f4c6e2f7d743187414', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '488a8471b9ad5599bbb2ca76b2ddbb2b6bd00488', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

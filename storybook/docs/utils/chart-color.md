@@ -32,7 +32,7 @@ Defined in: [chart-color.ts:3](https://github.com/alliedtelesis-labs-nz/atui-com
 
 ##### palette
 
-`string`[] | `ChartColorPalette`
+`string`[] | `AtChartColorPalette`
 
 #### Returns
 

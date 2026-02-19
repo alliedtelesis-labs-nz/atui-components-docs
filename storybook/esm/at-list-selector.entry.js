@@ -63,7 +63,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'c539cbb8c0469a1852bc018d72b6b2ab92a3508a', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '723aac51341669efdb5c540aa0a1fd3f3660178d', name: "header" }), !!this.options.length && (h("nav", { key: 'e2651c5d403659fa6608a14f225aa3f2f47206c1', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '45f4ff96ce3ff51ea3d4935fb250e1ef073ba6bc', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'c0b7005b93a19e8f89b5cd0106681227ad614037' })));
+        return (h(Host, { key: '23027af17c56d4be957ebfdd628118333cb81492', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '192f9e49533360b396a60334e3e1e78f8d0c567c', name: "header" }), !!this.options.length && (h("nav", { key: '27ac3075f686b6bda17d3cae4cd1bc15966c96e3', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '81319232865f839ede07a4be1e60dc555c986316', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'dc210d601606d56a2766bdda4525e90f9778fed6' })));
     }
 };
 

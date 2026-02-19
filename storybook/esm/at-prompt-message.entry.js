@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, F as Fragment, H as Host } from './index-jvbUuQtg.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { P as PromptResponseScore } from './prompt-Btgx1mEX.js';
+import { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
 
 const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
 
@@ -58,7 +58,7 @@ const AtPromptMessage = class {
     /**
      * The current vote score of the message
      */
-    score = PromptResponseScore.NONE;
+    score = AtPromptResponseScore.NONE;
     /**
      * Display voting actions for assistant messages
      */
@@ -173,18 +173,20 @@ const AtPromptMessage = class {
         this.atEdit.emit(this.content);
     };
     handleVote = (score) => {
-        const newScore = this.score === score ? PromptResponseScore.NONE : score;
+        const newScore = this.score === score ? AtPromptResponseScore.NONE : score;
         this.atVote.emit({ messageId: this.message_id, score: newScore });
     };
     renderActions() {
         if (this.loading)
             return null;
-        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(PromptResponseScore.UP), "data-name": "vote-up-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score === PromptResponseScore.UP
+        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(AtPromptResponseScore.UP), "data-name": "vote-up-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score === AtPromptResponseScore.UP
                 ? '#000000'
-                : '#adb5bd' }, this.score === PromptResponseScore.UP ? (h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" })) : (h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
-            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(PromptResponseScore.DOWN), "data-name": "vote-down-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score === PromptResponseScore.DOWN
+                : '#adb5bd' }, this.score === AtPromptResponseScore.UP ? (h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" })) : (h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
+            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(AtPromptResponseScore.DOWN), "data-name": "vote-down-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score ===
+                AtPromptResponseScore.DOWN
                 ? '#000000'
-                : '#adb5bd' }, this.score === PromptResponseScore.DOWN ? (h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" })) : (h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
+                : '#adb5bd' }, this.score ===
+            AtPromptResponseScore.DOWN ? (h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" })) : (h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
                 : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), h("span", null, this.copyFeedbackVisible
@@ -217,7 +219,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '183d87855e6a6963b6899da1120f968d59632554', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '90b0e9496565c34dfb62ca54d1e7a8ab22aba252', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'a1a665afdf87c342d21fa85dc3a77149cd704544', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'c29d1d2777f390a429ca9acf3603683136deb779', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '6ad2de7eac0e5687e80ede8225e7593954a7451a', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'c71f0f72822bd5dbcb0fe53460368083cff85cd1', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'e9ebf97989a831f1b1f0dbed19637c6f16b3378a', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '77f132f066c225b42c6890725979537d86103c0b', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

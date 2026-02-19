@@ -21,6 +21,12 @@ export { AtIColorStatusCellData } from './components/table-components/cell-compo
 export { AtITextImageCellData } from './components/table-components/cell-components/at-text-image-cell/at-text-image-cell';
 export { AtIChipCellData } from './components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell';
 export { AtICheckboxCellData } from './components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';
-export { type AtIPromptMessage, type AtPromptUserRole, type AtPromptResponseAnimation, PromptResponseScore, } from './types/prompt';
+export { type AtIPromptMessage, type AtPromptUserRole, type AtPromptResponseAnimation, AtPromptResponseScore, } from './types/prompt';
 export { ToasterService } from './utils/toaster.service';
 export { AtIToast, AtIToastOptions, AtIToastPosition, AtIToastType, } from './types/toast';
+export { AtChartColorPalette } from './types/chart-color';
+export { AtITableColumnDef } from './models/searchTableModel';
+export { AtITab } from './components/at-tabs/at-tabs';
+export { AtISearchTableParams, AtISearchData, } from './types/generic-table/index';
+export { AtBadgeType } from './components/at-badge/at-badge';
+export { AtIRadioOption } from './components/at-radio-group/at-radio-group';
