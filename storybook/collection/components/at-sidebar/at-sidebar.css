@@ -50,9 +50,9 @@ at-sidebar .backdrop {
 at-sidebar .sidebar {
   position: relative;
   width: var(--token-width-sidebar);
-  display: flex;
+  flex-direction: column;
   flex: 0 0 auto;
-  height: 100%;
+  align-self: stretch;
   background-color: var(--token-sidebar-background);
   color: var(--token-sidebar-foreground);
   z-index: var(--token-z-index-nav);
