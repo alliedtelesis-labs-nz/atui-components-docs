@@ -70,3 +70,8 @@
 :host[data-state=active] {
   background-color: var(--token-state-active-foreground);
 }
+:host ::slotted([slot=icon]) {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}

@@ -3,7 +3,8 @@ import { h, Host, } from "@stencil/core";
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
  *
- * @slot sidebar-menu-item-label: Content displayed at the left of the menu item.
+ * @slot icon: svg image displayed as the icon at the left of the menu item.
+ * @slot label: Content displayed at the left of the menu item.
  * @slot sidebar-menu-item-actions: Content displayed at the right of the menu item.
  */
 export class AtSidebarMenuitemComponent {
@@ -12,7 +13,7 @@ export class AtSidebarMenuitemComponent {
      */
     label;
     /**
-     * Icon to be displayed with the label
+     * Icon or svg to be displayed with the label
      */
     icon;
     /**
@@ -43,8 +44,16 @@ export class AtSidebarMenuitemComponent {
             });
         }
     };
+    renderIcon() {
+        if (this.icon.endsWith('.svg')) {
+            return (h("img", { src: this.icon, alt: this.label || '', class: "h-[24px] w-[24px] cursor-pointer" }));
+        }
+        else {
+            return h("i", { class: "icon" }, this.icon);
+        }
+    }
     render() {
-        return (h(Host, { key: 'ff7e9305cf8e61a4b2d853e82635cc8748355a0b', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'b488920d35d0ca61e2dded9df145a70e1db7cc58', class: "content", "data-name": "content" }, h("slot", { key: '82cde885917788d695a0f95f931eb6ded9eef46e', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: '40aafb7ceb901ae15c17a160ca3d11d5f6db59d2', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && h("i", { key: 'e22188d99e6c67c47651afe49aaadae25561549c', class: "icon" }, this.icon), this.label && (h("span", { key: '70d0db184ecf56e64d2847662393c36d92116073', "data-name": "sidebar-menu-item-label", class: "label" }, this.label))), h("slot", { key: '3436db5531588f925f7160544d449f727957a782', name: "sidebar-menu-item-actions" }), h("div", { key: '355135658c7a43ac41db1bc1083b70f5e7632ece', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: '62d5fb13cd7187a7e52db3aeb388284d9a8ccd35', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '70fb3f7f82cd34cbc846c505bfa5ce4352021f01', class: "content", "data-name": "content" }, h("slot", { key: '7d8030c130a114f6bedf97b489d50f69aa512334', name: "icon", "data-name": "icon" }), h("slot", { key: 'e1685096612b490fc81c3f4b5e3cfd076dab7c18', name: "label", "data-name": "label" }), this.badge && (h("at-badge", { key: '81f8ecbd8034936cff0989993f62a939ec374425', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && this.renderIcon(), this.label && (h("span", { key: 'ecb9c06ec9cea3f2cf8399b1c82e2ebe3f314482', "data-name": "sidebar-menu-item-label", class: "label" }, this.label))), h("slot", { key: 'd9986302eb835157affdcc33362d27f29010e931', name: "sidebar-menu-item-actions" }), h("div", { key: '74c87d06a1408a74ace9ce8dc3b6387ed2bb8fb6', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get encapsulation() { return "scoped"; }
@@ -91,7 +100,7 @@ export class AtSidebarMenuitemComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Icon to be displayed with the label"
+                    "text": "Icon or svg to be displayed with the label"
                 },
                 "getter": false,
                 "setter": false,

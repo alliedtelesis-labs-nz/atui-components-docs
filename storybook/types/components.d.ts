@@ -2314,7 +2314,7 @@ export namespace Components {
          */
         "badge"?: string;
         /**
-          * Icon to be displayed with the label
+          * Icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**
@@ -7122,7 +7122,7 @@ declare namespace LocalJSX {
          */
         "badge"?: string;
         /**
-          * Icon to be displayed with the label
+          * Icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**
