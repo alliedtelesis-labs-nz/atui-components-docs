@@ -1256,11 +1256,6 @@ export namespace Components {
      */
     interface AtListItem {
         /**
-          * Border below the list item.
-          * @default true
-         */
-        "border"?: boolean;
-        /**
           * Content of the list item placed at the right of the item.
          */
         "content"?: string;
@@ -1276,6 +1271,11 @@ export namespace Components {
           * Title of the list item.
          */
         "item_title": string;
+        /**
+          * Applied styling for hover background color and cursor.
+          * @default false
+         */
+        "selectable"?: boolean;
         /**
           * Size of the list item.
           * @default 'sm'
@@ -5998,11 +5998,6 @@ declare namespace LocalJSX {
      */
     interface AtListItem {
         /**
-          * Border below the list item.
-          * @default true
-         */
-        "border"?: boolean;
-        /**
           * Content of the list item placed at the right of the item.
          */
         "content"?: string;
@@ -6018,6 +6013,11 @@ declare namespace LocalJSX {
           * Title of the list item.
          */
         "item_title"?: string;
+        /**
+          * Applied styling for hover background color and cursor.
+          * @default false
+         */
+        "selectable"?: boolean;
         /**
           * Size of the list item.
           * @default 'sm'

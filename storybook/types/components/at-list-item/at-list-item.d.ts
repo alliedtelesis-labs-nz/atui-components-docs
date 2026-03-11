@@ -32,9 +32,9 @@ export declare class AtListItem {
      */
     size?: Size;
     /**
-     * Border below the list item.
+     * Applied styling for hover background color and cursor.
      */
-    border?: boolean;
+    selectable?: boolean;
     get sizeClasses(): string;
     render(): any;
 }

@@ -1,9 +1,9 @@
 import { h, Host } from "@stencil/core";
 const listItemVariants = {
-    xs: 'min-h-16 text-sm',
-    sm: 'min-h-[32px] text-sm',
-    md: 'min-h-[40px] text-body',
-    lg: 'min-h-[48px] text-body',
+    xs: 'min-h-16 text-sm p-4',
+    sm: 'min-h-[32px] text-sm p-4',
+    md: 'min-h-[40px] text-body p-4',
+    lg: 'min-h-[48px] text-body p-4',
 };
 /**
  * @category Layout
@@ -38,14 +38,14 @@ export class AtListItem {
      */
     size = 'sm';
     /**
-     * Border below the list item.
+     * Applied styling for hover background color and cursor.
      */
-    border = true;
+    selectable = false;
     get sizeClasses() {
         return listItemVariants[this.size];
     }
     render() {
-        return (h(Host, { key: '5bda91fdfc391dd93081dc85f3a65904fe0043d5', role: "listitem", tabIndex: 0, class: "hover:bg-surface-1 flex items-center gap-3 px-4 py-3" }, h("div", { key: 'caa64527899b0924e8d124bb4f32a8b48fae95df', class: "flex flex-grow flex-col" }, h("div", { key: 'bc74431c6d3c89f285cd4335d6d61a6b59f3f447', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, this.icon && (h("span", { key: '746dbe75c00bda1ea5d1ad02650a998e508afab5', class: "material-icons text-light items-center text-sm" }, this.icon)), this.item_prefix && (h("span", { key: '749ea9f3a84f569d5bd725f3edfa36a65d1b8076', class: "text-med mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: '3259b5ace4699bc75dd457ce083135b2d330c748', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: 'b5dfd990b470400eae2b029c86da9fb29fbd718c', class: "flex flex-row font-normal" }, h("span", { key: 'd21f83a37f13aa4b0dfb18e6583367f39eebe39f', class: "mr-4" }, this.item_title), h("slot", { key: 'cd99542687dec091fb7d7ed2797337e426c8dbb3', name: "title" })), this.subtitle && (h("span", { key: '0b35d911c8814bb64f93b035ea135dc5e36c5ed7', class: "text-med inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '21e9ff229d8d8e2dbd0c48c7d9c22cd52657d1d0', class: "flex flex-wrap items-end justify-end gap-8" }, h("slot", { key: '6bc5b9132e7f45adef015a33b99124d1fce914f9' }), this.content && (h("span", { key: 'eed6a07fa0da25d5c553cf865ee2833ed8288f4d', "data-name": "content" }, this.content)))));
+        return (h(Host, { key: 'f63f987cf065462da9c10eefe983897c8f5672aa', role: "listitem", tabIndex: 0, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-light flex items-center gap-3 border-b` }, h("div", { key: '6c0ef19eb0481d5bb9d98183e72f8bf6572caf53', class: "flex flex-grow flex-col" }, h("div", { key: 'af461ee9e8001a37a801034e057af34576840169', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, this.icon && (h("span", { key: '67e6d102e5286ba8ac3ab8506e579b3717cc2271', class: "material-icons text-light items-center text-sm" }, this.icon)), this.item_prefix && (h("span", { key: '0cd41527a1bf97283e14c81b84764c234c46e900', class: "text-med mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: '81441d29b4f21cf3a4a2006be05ef843b3de3559', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '7d01d88c509643dddf2294b2bd457a489fe96700', class: "flex flex-row font-normal" }, h("span", { key: '6cf39bf58cda10c8aae6699c27aabd613a377447', class: "mr-4" }, this.item_title), h("slot", { key: 'c91773167650358150376982c4146a9dd0dde06d', name: "title" })), this.subtitle && (h("span", { key: '462cbbf5649831b06dfaff89bff1dde9bbfd0b42', class: "text-med inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '2427dbc01a3b01cf6603f7b959050e92f8c0eaee', class: "flex flex-wrap items-end justify-end gap-8 text-right" }, h("slot", { key: '75d889c130e1bf5d9e1d8c4295985c12f0044f47' }), this.content && (h("span", { key: '32e1d5b3400b67e0e4dab84424bdcccd5844a77e', "data-name": "content" }, this.content)))));
     }
     static get is() { return "at-list-item"; }
     static get properties() {
@@ -170,7 +170,7 @@ export class AtListItem {
                 "attribute": "size",
                 "defaultValue": "'sm'"
             },
-            "border": {
+            "selectable": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -182,13 +182,13 @@ export class AtListItem {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Border below the list item."
+                    "text": "Applied styling for hover background color and cursor."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "border",
-                "defaultValue": "true"
+                "attribute": "selectable",
+                "defaultValue": "false"
             }
         };
     }
