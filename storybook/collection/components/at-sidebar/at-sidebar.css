@@ -58,7 +58,7 @@ at-sidebar .sidebar {
   z-index: var(--token-z-index-nav);
   will-change: width;
   transition: width var(--token-transition-time);
-  overflow: visible;
+  overflow: auto;
 }
 at-sidebar .sidebar at-sidebar-trigger {
   display: flex;
