@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
 import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-BKAgTbms.js';
 import moment from 'moment';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
+import { f as fetchTranslations } from './translation-BEQMH4Lc.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
 var AbreviatedTimeUnits;

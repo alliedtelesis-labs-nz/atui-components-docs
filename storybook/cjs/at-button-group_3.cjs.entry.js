@@ -2,7 +2,7 @@
 
 var index = require('./index-CzDB71Wy.js');
 var timeDate_util = require('./time-date.util-Y1RHGLUD.js');
-var translation = require('./translation-HqquF7bU.js');
+var translation = require('./translation-B-kubNyM.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-D1DRhr0h.js');
 var moment = require('moment');
 var date = require('./date-DDRmOnS1.js');

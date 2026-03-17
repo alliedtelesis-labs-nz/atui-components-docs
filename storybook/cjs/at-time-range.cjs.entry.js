@@ -3,7 +3,7 @@
 var index = require('./index-CzDB71Wy.js');
 var timeDate_util = require('./time-date.util-Y1RHGLUD.js');
 var moment = require('moment');
-var translation = require('./translation-HqquF7bU.js');
+var translation = require('./translation-B-kubNyM.js');
 var date = require('./date-DDRmOnS1.js');
 
 function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }

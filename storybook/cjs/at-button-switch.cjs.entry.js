@@ -2,7 +2,7 @@
 
 var index = require('./index-CzDB71Wy.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-HqquF7bU.js');
+var translation = require('./translation-B-kubNyM.js');
 
 const variantsConfig = {
     variants: {

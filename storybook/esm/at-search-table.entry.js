@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
+import { f as fetchTranslations } from './translation-BEQMH4Lc.js';
 
 var SortDirection;
 (function (SortDirection) {

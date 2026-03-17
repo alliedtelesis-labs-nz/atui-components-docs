@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
+import { f as fetchTranslations } from './translation-BEQMH4Lc.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
 import { at_text_badge_cell as AtTextBadgeCell } from './at-text-badge-cell.entry.js';
 import { at_text_cell as AtTextCellComponent } from './at-text-cell.entry.js';
