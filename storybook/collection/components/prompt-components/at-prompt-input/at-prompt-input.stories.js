@@ -106,7 +106,8 @@ export const WithError = Template.bind({});
 WithError.args = {
     label: 'Message',
     placeholder: 'Enter your message...',
-    error_text: 'This field is required',
+    max_length: 1,
+    error_text: 'This entry text exceeds the max characters limit and automatically triggers the invalid state and displays any error test configured.',
     invalid: true,
     required: true,
 };
