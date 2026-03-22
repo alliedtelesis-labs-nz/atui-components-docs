@@ -2931,7 +2931,7 @@ export namespace Components {
         "closeTooltip": () => Promise<void>;
         /**
           * Delay before showing and hiding the tooltip when interacting with the trigger element.
-          * @default 150
+          * @default 0
          */
         "delay"?: number;
         /**
@@ -7772,7 +7772,7 @@ declare namespace LocalJSX {
         "align"?: AtTooltipAlign;
         /**
           * Delay before showing and hiding the tooltip when interacting with the trigger element.
-          * @default 150
+          * @default 0
          */
         "delay"?: number;
         /**

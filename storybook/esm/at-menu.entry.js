@@ -137,6 +137,65 @@ const AtMenu = class {
         if (this.trigger_id && this.triggerEls.length) {
             this.setupExternalTriggerListeners();
         }
+        if (this.trigger === 'click') {
+            this.addOutsideListeners();
+        }
+        if (this.trigger === 'hover') {
+            this.addFocusinListener();
+        }
+    }
+    outsideClickHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        const target = event.target;
+        const isInsideMenu = this.menuEl?.contains(target);
+        const isInsideTrigger = this.triggerEl?.contains(target) ||
+            this.triggerEls.some((el) => el.contains(target));
+        if (!isInsideMenu && !isInsideTrigger) {
+            this.closeMenu();
+        }
+    };
+    outsideKeydownHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        if (event.key === 'Escape') {
+            this.closeMenu();
+            return;
+        }
+        if (event.key === 'Enter' || event.key === ' ') {
+            const target = event.target;
+            const isInsideMenu = this.menuEl?.contains(target);
+            const isInsideTrigger = this.triggerEl?.contains(target) ||
+                this.triggerEls.some((el) => el.contains(target));
+            if (!isInsideMenu && !isInsideTrigger) {
+                this.closeMenu();
+            }
+        }
+    };
+    outsideFocusinHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        const target = event.target;
+        const isInsideMenu = this.menuEl?.contains(target);
+        const isInsideTrigger = this.triggerEl?.contains(target) ||
+            this.triggerEls.some((el) => el.contains(target));
+        if (!isInsideMenu && !isInsideTrigger) {
+            this.closeMenu();
+        }
+    };
+    addOutsideListeners() {
+        document.addEventListener('click', this.outsideClickHandler, true);
+        document.addEventListener('keydown', this.outsideKeydownHandler, true);
+    }
+    removeOutsideListeners() {
+        document.removeEventListener('click', this.outsideClickHandler, true);
+        document.removeEventListener('keydown', this.outsideKeydownHandler, true);
+    }
+    addFocusinListener() {
+        document.addEventListener('focusin', this.outsideFocusinHandler, true);
+    }
+    removeFocusinListener() {
+        document.removeEventListener('focusin', this.outsideFocusinHandler, true);
     }
     setupPopoverEventListeners() {
         if (this.menuEl) {
@@ -217,6 +276,12 @@ const AtMenu = class {
     disconnectedCallback() {
         this.cleanupFloatingUI();
         this.cleanupExternalTriggerListeners();
+        if (this.trigger === 'click') {
+            this.removeOutsideListeners();
+        }
+        if (this.trigger === 'hover') {
+            this.removeFocusinListener();
+        }
     }
     externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
@@ -333,9 +398,14 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'fa34212f9069baa1310bb90922f6d8ad8210bd86', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
-                ? this.mouseLeaveHandler()
-                : null }, !this.trigger_id && (h("div", { key: '63922d7c0d452b9f2dd1929c00d561203e1c0157', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+        return (h(Host, { key: 'da3f092843e336438288fb00bc4d7f5fcc0d28df', class: "relative", onBlur: (e) => {
+                if (this.disabled || !this.isOpen)
+                    return;
+                const related = e.relatedTarget;
+                if (!this.menuEl?.contains(related)) {
+                    this.closeMenu();
+                }
+            } }, !this.trigger_id && (h("div", { key: '6708258ea8c17c7efbe5e5e500a8ee1266163275', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -361,7 +431,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '3cdcd84c477e2184e1511f064b4095081307a205', name: "menu-trigger" }))), h("div", { key: '88caa2f92ca53de45e50b9085258b26e6e0a91a5', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '8048a60f80901a727bafc514cc2ae5f877532cf3', name: "menu-trigger" }))), h("div", { key: '3e90e7c4b672e17b2471af2360ade1c634083a92', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -373,7 +443,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '570ac202c32b2cc48c2668b646dacf924a9290b5' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: 'b75380c82854c5818fe2ce2b9ad9bd9db88b2ade' }))));
     }
     static get watchers() { return {
         "disabled": [{

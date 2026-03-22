@@ -83,6 +83,13 @@ export declare class AtMenu {
     atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
     componentDidLoad(): Promise<void>;
+    private outsideClickHandler;
+    private outsideKeydownHandler;
+    private outsideFocusinHandler;
+    private addOutsideListeners;
+    private removeOutsideListeners;
+    private addFocusinListener;
+    private removeFocusinListener;
     private setupPopoverEventListeners;
     private setupExternalTriggerListeners;
     disconnectedCallback(): void;
