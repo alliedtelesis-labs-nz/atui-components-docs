@@ -390,7 +390,7 @@ export namespace Components {
         /**
           * Value of the select option
          */
-        "value": any;
+        "value": string;
     }
     /**
      * @category Form Controls
@@ -592,7 +592,7 @@ export namespace Components {
         "height"?: AtChartHeight1;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
         /**
@@ -5106,7 +5106,7 @@ declare namespace LocalJSX {
         /**
           * Value of the select option
          */
-        "value"?: any;
+        "value"?: string;
     }
     /**
      * @category Form Controls
@@ -5298,7 +5298,7 @@ declare namespace LocalJSX {
         "height"?: AtChartHeight1;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },         // Toggle slice visibility on click and disable tooltips if none visible         onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
         /**

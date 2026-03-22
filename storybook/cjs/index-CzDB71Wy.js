@@ -123,10 +123,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           }
           switch(bundleId) {
               
-                case 'at-title-subtitle-date-cell.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-title-subtitle-date-cell.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-accordion.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -419,6 +415,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-title-subtitle-cell.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-title-subtitle-date-cell.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-title-subtitle-date-cell.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-toggle-cell.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

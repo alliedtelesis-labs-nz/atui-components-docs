@@ -1,9 +1,9 @@
-import moment from "moment";
-import momentDurationFormatSetup from "moment-duration-format";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { TimeDateUtil } from "./time-date.util";
 import { isEmpty, replace } from "lodash-es";
-import { DateFormat, Duration, TimeRangeDisplay, TimeRangesInHours, } from "../types";
-momentDurationFormatSetup(moment);
+import { DateFormat, TimeRangeDisplay, TimeRangesInHours, } from "../types";
+dayjs.extend(customParseFormat);
 export class TimeDatePresentationUtil {
     static times = [
         '12:00',
@@ -21,15 +21,7 @@ export class TimeDatePresentationUtil {
     ];
     static timeMode = ['am', 'pm'];
     static buildDateFromStrings(fromDate, fromTime) {
-        const formattedDate = this.dateBuilder(fromDate);
-        return moment(`${formattedDate} ${fromTime}`, 'M/D/YYYY hh:mm a').toDate();
-    }
-    static dateBuilder(dateString) {
-        const date = new Date(dateString);
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        const year = date.getFullYear();
-        return `${month}/${day}/${year}`;
+        return dayjs(`${fromDate} ${fromTime}`, 'YYYY-MM-DD hh:mm a').toDate();
     }
     static getDateLabelMessage(selectedTime, format) {
         if (!selectedTime) {
@@ -41,10 +33,8 @@ export class TimeDatePresentationUtil {
         }
         else {
             const time = TimeRangesInHours[selectedTime.selected];
-            const todayDate = moment().format(format);
-            const previousDate = moment()
-                .subtract(time, Duration.HOURS)
-                .format(format);
+            const todayDate = dayjs().format(format);
+            const previousDate = dayjs().subtract(time, 'hours').format(format);
             return `${previousDate} - ${todayDate}`;
         }
     }
@@ -54,9 +44,7 @@ export class TimeDatePresentationUtil {
         }
         if (TimeDatePresentationUtil.isCustomRange(timeRange)) {
             const { from, to } = timeRange.custom;
-            const fromDate = moment(from).toDate();
-            const toDate = moment(to).toDate();
-            return { fromDate, toDate };
+            return { fromDate: new Date(from), toDate: new Date(to) };
         }
     }
     static getTimeOptions(startTime = '12:00 am', endTime = '11:00 pm') {
@@ -90,16 +78,16 @@ export class TimeDatePresentationUtil {
     static convertTimeRange(timeRange) {
         if (TimeDatePresentationUtil.isCustomRange(timeRange)) {
             return {
-                start: moment(timeRange.custom.from).toDate(),
-                end: moment(timeRange.custom.to).toDate(),
+                start: new Date(timeRange.custom.from),
+                end: new Date(timeRange.custom.to),
             };
         }
         else if (timeRange.selected) {
             return {
-                start: moment()
-                    .subtract(TimeRangesInHours[timeRange.selected], 'hour')
+                start: dayjs()
+                    .subtract(TimeRangesInHours[timeRange.selected], 'hours')
                     .toDate(),
-                end: moment().toDate(),
+                end: dayjs().toDate(),
             };
         }
     }
@@ -112,7 +100,12 @@ export class TimeDatePresentationUtil {
         return TimeDateUtil.getDataPointIntervalFor30SecPoller(start, end);
     }
     static getFormattedDate(date, dateFormat = DateFormat.STANDARD) {
-        return date ? moment(date).format(dateFormat) : '';
+        if (!date)
+            return '';
+        const d = dayjs(date);
+        if (!d.isValid())
+            return '';
+        return d.format(dateFormat);
     }
     static getDurationTranslations(translations) {
         const dayString = translations.ATUI.TIME.DURATION_SHORT.DAY;
@@ -124,16 +117,10 @@ export class TimeDatePresentationUtil {
         return [
             { unit: 'day', translation: dayString },
             { unit: 'days', translation: daysString },
-            {
-                unit: 'hr',
-                translation: hourString,
-            },
+            { unit: 'hr', translation: hourString },
             { unit: 'hrs', translation: hoursString },
             { unit: 'min', translation: minuteString },
-            {
-                unit: 'mins',
-                translation: minutesString,
-            },
+            { unit: 'mins', translation: minutesString },
         ];
     }
     static translateDurationString(duration, translations) {
@@ -152,14 +139,23 @@ export class TimeDatePresentationUtil {
         return translatedDurations.join(',');
     }
     static getIntervalString(start, end, translations) {
-        const msDifference = moment(end).diff(moment(start));
-        const durationString = (moment.duration(msDifference, 'milliseconds')).format('d [days], h [hrs], m [min]');
-        return TimeDatePresentationUtil.translateDurationString(durationString, translations);
+        const ms = end.getTime() - start.getTime();
+        const totalSeconds = Math.floor(Math.abs(ms) / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const parts = [];
+        if (days > 0)
+            parts.push(`${days} days`);
+        if (hours > 0)
+            parts.push(`${hours} hrs`);
+        if (minutes > 0 || parts.length === 0)
+            parts.push(`${minutes} min`);
+        return TimeDatePresentationUtil.translateDurationString(parts.join(', '), translations);
     }
     static getDayCountFromDateFilter(dateFilter) {
-        const timeRangeFromDateFilter = dateFilter.endDate.getTime() - dateFilter.startDate.getTime();
-        const timeDiff = moment.duration(timeRangeFromDateFilter);
-        return timeDiff.asDays();
+        const ms = dateFilter.endDate.getTime() - dateFilter.startDate.getTime();
+        return ms / (1000 * 60 * 60 * 24);
     }
     static getHourCountFromTimeRange(timeRange) {
         if (timeRange.selected == TimeRangeDisplay.CUSTOM) {

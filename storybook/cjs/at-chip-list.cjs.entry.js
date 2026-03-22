@@ -55,12 +55,12 @@ const AtChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (index.h("div", { key: '4ebefe583eccf99d332739999611d546d35dc0ae', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (index.h("div", { key: 'ccf3f636e256968cfc2f3c349dfb67b3620b2ffb', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (index.h("at-button", { key: '86cda32e7bd0863a1e512073e736407214b2d190', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (index.h("at-button", { key: '65a7ec14f0b34c2663f4eb8d7795a5ff3a288ec3', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), index.h("slot", { key: '535c811252410fe6689002dd30172cdc76c3907e' })));
+            } })), index.h("slot", { key: '8d5b803dd6e18d5f69d17028c1554407aae14bd5' })));
     }
 };
 

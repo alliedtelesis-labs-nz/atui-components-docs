@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
-import "chartjs-adapter-moment";
+import "chartjs-adapter-dayjs-4";
 import { TimeDateUtil } from "../../utils/time-date.util";
 import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
@@ -269,7 +269,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'bd2e6db5b7d6635b417d69f4c6e2f7d743187414', style: { height: '100%', width: '100%' } }, h("canvas", { key: '488a8471b9ad5599bbb2ca76b2ddbb2b6bd00488', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '3aa6e74f3995e9c8bc97e7e1d981d4461b62f776', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b7aa505127be114c76964db029f65b1d7a48c65f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

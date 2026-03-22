@@ -38,19 +38,19 @@ export declare class TimeDateUtil {
      * shiftDateByUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
-     * @param amount integer amount to shift date by .// can be negative for subtraction
-     * @param unit: unit to shift by seconds to (e.g. days, weeks, etc.)
+     * @param amount integer amount to shift date by. Can be negative for subtraction
+     * @param unit: unit to shift by (e.g. days, weeks, etc.)
      **/
     static shiftDateByUnit(date: Date | string, amount: number, unit: Duration): Date;
     /**
-     * floorDateByTimeUnit: returns a new date with units added or subtracted
+     * floorDateByTimeUnit: returns a new date floored to the start of the given unit
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
      **/
     static floorDateByTimeUnit(date: Date, unit: Duration): Date;
     /**
-     * ceilingDateByTimeUnit: returns a new date with units added or subtracted
+     * ceilingDateByTimeUnit: returns a new date ceiled to the end of the given unit
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
@@ -61,7 +61,7 @@ export declare class TimeDateUtil {
      *
      * @param date1: original date 1
      * @param date2: original date 2
-     * @param unit: granularity of check in by unit (e.g. days, weeks, etc.)
+     * @param unit: granularity of check by unit (e.g. days, weeks, etc.)
      **/
     static isSameDateByUnit(date1: Date | string, date2: Date | string, unit: Duration): boolean;
     static getCurrentDateFilterInDateRangeFormat(timeDateFilters: ITimeDateFilter): AtIDateRange | undefined;

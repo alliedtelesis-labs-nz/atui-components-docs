@@ -1,10 +1,9 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
 import { f as fetchTranslations } from './translation-BEQMH4Lc.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-BctYjI_Z.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-DwT6pFP7.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { M as MIN_DATE, a as MAX_DATE } from './date-C3LwY5aR.js';
-import 'moment';
-import './time-date.util-BKAgTbms.js';
+import './time-date.util-BVcKLUhw.js';
 
 const inputVariantsConfig = {
     variants: {
@@ -103,7 +102,7 @@ const AtInputDate = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'e8c12ead3ab015809f21b52fb3cc0a765e697809' }, h("style", { key: '73acfce6a94a775e54ead02d79e5094253fa4717' }, `
+        return (h(Host, { key: 'ef4b3f9f44bbc9be8bfff7d315c6cf6525ba9e98' }, h("style", { key: 'b9921e833778d89676958c86953b47218ac20978' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -116,9 +115,9 @@ const AtInputDate = class {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '0bba05d1e0eb173c2fbb476527d2e9d5e9c1b2df', class: "flex flex-row" }, h("div", { key: '5699cebd8d825be8d2e24e14202d254bb159f63b', class: "flex-fill flex flex-col" }, h("div", { key: '725d6b539f991fe93024e9f277e7955276592e14', class: "flex flex-col" }, (this.label ||
+                `), h("div", { key: '1043496c56447896d43d196362f7910c14688d85', class: "flex flex-row" }, h("div", { key: '65a679034b06847c78f007e352ef38bc87248aa2', class: "flex-fill flex flex-col" }, h("div", { key: '1d5a9212e479db0f4be0c929ba789a844430b2bc', class: "flex flex-col" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '3d6e21ef8098da38b9f89ea439ae9667896ed5d4', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'b5242afd6c751fa31896e3d0173790f00bf516b0', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text)), h("div", { key: '5dd182d1d43da29703292528f6b1ff225f3e1baa', class: classname }, h("input", { key: '9ac22acd21e875f82f67498bdda1cc97f9918f41', type: "date", id: this.inputId, name: "datePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: 'f163fee349e6c0af13a1103d9b579b0ea67c1ca1', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'f3425e03b9ffb7d0651d864816cb429fb445dd5a', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text)), h("div", { key: 'e95ff8abc3c07fdc313cc97720a3823cd1344a61', class: classname }, h("input", { key: 'e0ea3b671765c9e5ba3c661838841e15cdc3ed79', type: "date", id: this.inputId, name: "datePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -133,7 +132,7 @@ const AtInputDate = class {
                 this.invalid = !input.validity.valid;
                 this.value = new Date(dateString);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '39c66ff5fd402f70fe6ba6076009c1bbb72dd9f7', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text))))));
+            } }))), this.error_text && this.invalid && (h("span", { key: '97bf38bfb749ce40f70d5bef0fed094427ab1b1c', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text))))));
     }
 };
 

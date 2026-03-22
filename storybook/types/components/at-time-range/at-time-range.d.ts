@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AtSelectedTimeRangeExtended, TimePresets } from '../../models/at-time-range.models';
-import { AtIDateRange, AtIDateRangeStrings, TimeRangeDisplay, TimeUnit, AtITimeWithUnit } from '../../types';
+import { AtIDateRangeStrings, TimeRangeDisplay, TimeUnit, AtITimeWithUnit } from '../../types';
 /**
  * @category Form Controls
  * @description A time range component for selecting time periods.
@@ -36,30 +36,31 @@ export declare class AtTimeRangeComponent {
      */
     enable_range_limit: boolean;
     today: Date;
-    lowerLimit: any;
-    defaultFromDate: any;
     translations: any;
-    relativeTimeMenuEl: any;
-    absoluteTimeMenuEl: any;
+    displayedTimeRange: AtSelectedTimeRangeExtended;
+    private lowerLimit;
+    private defaultFromDate;
+    private relativeTimeMenuEl;
+    private absoluteTimeMenuEl;
     el: any;
+    private instanceId;
     units: TimeUnit[];
     minSeconds: number;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
-    getLongUnitDisplay(time: AtSelectedTimeRangeExtended): string;
-    getRelativeDate(time: AtSelectedTimeRangeExtended): AtIDateRange;
-    getCustomStartAndEndDate(selectedTime: AtSelectedTimeRangeExtended): {
-        fromDate: Date;
-        toDate: Date;
-    };
-    getShortUnitDisplay(time: AtITimeWithUnit): string;
+    private getCustomStartAndEndDate;
+    private getShortUnitDisplay;
     /**
      * Emits an event containing the selected time range when it changes
      */
     atuiChange: EventEmitter<AtSelectedTimeRangeExtended>;
     onChangeCustomTime(customTime: AtIDateRangeStrings): void;
     onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
-    get buttonGroupOptions(): any[];
-    get predefinedTimeRanges(): any[];
+    private formatDate;
+    private renderSelectedTimeDisplay;
     render(): any;
+    private renderRelativeTimeButtonGroup;
+    private renderPredefinedTimeButtonGroup;
+    private renderRelativeTimeMenu;
+    private renderAbsoluteTimeMenu;
 }

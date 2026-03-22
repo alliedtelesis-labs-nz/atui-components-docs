@@ -1,5 +1,5 @@
 import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
-import 'chartjs-adapter-moment';
+import 'chartjs-adapter-dayjs-4';
 import { SelectedTimeRangeExtended } from '../../components';
 import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
 import { AtChartColorPalette } from '../../types/chart-color';

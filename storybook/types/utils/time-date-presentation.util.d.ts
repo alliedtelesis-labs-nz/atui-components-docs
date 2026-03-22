@@ -4,7 +4,6 @@ export declare class TimeDatePresentationUtil {
     private static times;
     private static timeMode;
     static buildDateFromStrings(fromDate: string, fromTime: string): Date;
-    private static dateBuilder;
     static getDateLabelMessage(selectedTime: ISelectedTimeRange, format: DateFormat): string;
     static getCustomFromAndToDate(timeRange: ISelectedTimeRange): {
         fromDate: Date;

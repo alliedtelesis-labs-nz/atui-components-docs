@@ -1,5 +1,5 @@
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
-import 'chartjs-adapter-moment';
+import 'chartjs-adapter-dayjs-4';
 import { AtChartColorPalette } from '../../types/chart-color';
 export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';

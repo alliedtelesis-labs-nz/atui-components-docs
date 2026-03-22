@@ -11,7 +11,7 @@ export declare class AtButtonGroupOption {
     /**
      * Value of the select option
      */
-    value: any;
+    value: string;
     /**
      * Displayed text value (optional) if not provided the value will be used as a fallback
      */

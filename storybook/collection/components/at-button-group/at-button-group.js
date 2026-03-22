@@ -76,7 +76,9 @@ export class AtButtonGroup {
                 ? buttonEl.label
                 : buttonEl.icon
                     ? ''
-                    : buttonEl.value;
+                    : typeof buttonEl.value === 'string'
+                        ? buttonEl.value
+                        : undefined;
             if (this.value !== undefined && this.value !== null) {
                 buttonEl.is_active = this.value === buttonEl.value;
             }
@@ -142,8 +144,8 @@ export class AtButtonGroup {
         this.el.removeEventListener('keydown', this.handleKeyDown);
     }
     render() {
-        return (h(Host, { key: '4206ef1efc912241b1d5cb852138e0d8e48eceff', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '3022aa7fe0d0576e588e71352600c296e49f798a', class: "mb-4 flex flex-col" }, h("slot", { key: '1f61bfe9e6d28cfbd36363c47ad5897885c7ddfd', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'a7dca6d50c5443a9c3ac07ac3464e284cbfafac4', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '9ac627bf03844173191ee917e6e6f9bbf6507046', class: "text-light inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '035856a20e1bd40961aea6da55940dd181b2b838', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: '93f8e03f321539af715bfe56659ffd4e93353602', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: '37e74457eda64bef78e957859bc02519affd4633' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: '2aeb9e1d5dcafac363de80e6df55f1ddec3f8c9e', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '72d392277157fc61e552a5886dd43a7eade97b3d', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: 'b5266fe52d33bd0986260299faafcd45f6b708aa', class: "mb-4 flex flex-col" }, h("slot", { key: 'b6156be207448f9577fccd0c41970556c80a40ce', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '65d19b571a7bdc0a3079cbc162c8e3a51c3e6469', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '94728e5953b37117d32c44083be3a19b155df68f', class: "text-light inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: 'bf9f4b99c542118740f60186cbd22613adfd4346', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: '26678c961f20c3dd49a14e5e3f17142f466a6dce', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: '4237f4cc301f4cead14d222b127f223eaf00b498' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: 'a685486085e61b9eda88db59a8a39fa038a46887', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {

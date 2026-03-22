@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
-import "chartjs-adapter-moment";
+import "chartjs-adapter-dayjs-4";
 import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -48,7 +48,6 @@ export class AtChartDonut {
                 event.native.target.style.cursor = 'pointer';
             }
         },
-        // Toggle slice visibility on click and disable tooltips if none visible
         onClick: (_evt, legendItem, legend) => {
             const chart = legend.chart;
             const idx = legendItem.index;
@@ -242,7 +241,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: 'ccacfac03f8806fbde2823d433748985608577c9', style: { height: '100%', width: '100%' } }, h("canvas", { key: '44d3bdc962ab5b7e1862010a1c4029d34f5454dc', ref: (el) => (this.canvasEl = el), class: `w-full min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '03bd26d9335df3cb77418d815aa8d88ed9254f74', style: { height: '100%', width: '100%' } }, h("canvas", { key: '08d56d51ee3040749be9f40c791fc747011544fb', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -361,7 +360,7 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n        // Toggle slice visibility on click and disable tooltips if none visible\n        onClick: (_evt, legendItem, legend) => {\n            const chart = legend.chart;\n            const idx = legendItem.index;\n            chart.toggleDataVisibility(idx);\n            const anyVisible = chart.data.labels?.some((_, i) =>\n                chart.getDataVisibility(i),\n            );\n            if (chart.options.plugins?.tooltip) {\n                chart.options.plugins.tooltip.enabled = !!anyVisible;\n            }\n            chart.update();\n        },\n        display: true,\n    }"
+                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n\n        onClick: (_evt, legendItem, legend) => {\n            const chart = legend.chart;\n            const idx = legendItem.index;\n            chart.toggleDataVisibility(idx);\n            const anyVisible = chart.data.labels?.some((_, i) =>\n                chart.getDataVisibility(i),\n            );\n            if (chart.options.plugins?.tooltip) {\n                chart.options.plugins.tooltip.enabled = !!anyVisible;\n            }\n            chart.update();\n        },\n        display: true,\n    }"
             },
             "tooltip_options": {
                 "type": "unknown",

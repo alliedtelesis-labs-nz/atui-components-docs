@@ -1,10 +1,10 @@
 'use strict';
 
 var index = require('./index-CzDB71Wy.js');
-var chartColor$1 = require('./chart-color-CnTIq9PY.js');
-var timeDate_util = require('./time-date.util-Y1RHGLUD.js');
+var chartColor$1 = require('./chart-color-DBiWMtXr.js');
+require('chartjs-adapter-dayjs-4');
+var timeDate_util = require('./time-date.util-MIIqV63j.js');
 var chartColor = require('./chart-color-CMk9r_na.js');
-require('moment');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -246,7 +246,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'bd2e6db5b7d6635b417d69f4c6e2f7d743187414', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '488a8471b9ad5599bbb2ca76b2ddbb2b6bd00488', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: '3aa6e74f3995e9c8bc97e7e1d981d4461b62f776', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'b7aa505127be114c76964db029f65b1d7a48c65f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 
