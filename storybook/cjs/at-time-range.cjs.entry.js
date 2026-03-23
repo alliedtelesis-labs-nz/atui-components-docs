@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-CzDB71Wy.js');
-var timeDate_util = require('./time-date.util-MIIqV63j.js');
-var translation = require('./translation-B-kubNyM.js');
+var index = require('./index-CdUivN1V.js');
+var timeDate_util = require('./time-date.util-CvDG1n3R.js');
+var translation = require('./translation-C7aG_Jvq.js');
 var date = require('./date-DDRmOnS1.js');
 
 var AbreviatedTimeUnits;
@@ -149,11 +149,11 @@ const AtTimeRangeComponent = class {
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = timeDate_util.TimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (index.h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", { class: "font-medium" }, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), index.h("span", null, "NOW")));
+            return (index.h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), index.h("span", null, "NOW")));
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'd75047752eeb857ef1b8dd74b7efd8808743b1b4', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: '4a6341ff8d52eca9cbdbd011c2f85bcc122e0f54', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

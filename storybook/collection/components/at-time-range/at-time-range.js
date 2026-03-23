@@ -126,11 +126,11 @@ export class AtTimeRangeComponent {
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = TimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, h("span", { class: "font-medium" }, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, "NOW")));
+            return (h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, "NOW")));
         }
     }
     render() {
-        return (h(Host, { key: 'd75047752eeb857ef1b8dd74b7efd8808743b1b4', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '4a6341ff8d52eca9cbdbd011c2f85bcc122e0f54', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

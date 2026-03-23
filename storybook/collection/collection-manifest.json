@@ -92,9 +92,10 @@
     "components/table-components/at-table-filters/at-table-filters.js",
     "components/table-components/at-table-pagination/at-table-pagination.js"
   ],
+  "mixins": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.41.3",
+    "version": "4.43.3",
     "typescriptVersion": "5.8.3"
   },
   "collections": [],

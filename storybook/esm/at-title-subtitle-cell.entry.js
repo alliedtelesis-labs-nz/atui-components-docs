@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-jvbUuQtg.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
 
 const AtTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -34,7 +34,7 @@ const AtTitleSubtitleCell = class {
         }
     }
     render() {
-        return (h(Host, { key: 'b1ef7cd7bb54affdc4b412046fbd46ef040366a1', class: "flex h-full items-center" }, h("at-tooltip", { key: '4f0332c4b2a2ae0e7f056c36577edaba4c7f4a08', position: "right", disabled: !this.params?.generateTooltip }, h("div", { key: '76f2876c71f2c4863d131f885f7952070f19d915', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'cc9d8cfa14c454be99c6828d9bc9a379883ca1ab', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '40401acd1073e7a52c4a95346b7076f97bddb4ee', class: "text-med truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: '0417e348d819b148ebaae6383fb80a5660acb32e', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: 'f51059478b7fce2bda28043c0827377add59ea80', class: "flex h-full items-center" }, h("at-tooltip", { key: '3675be8cb4cf71c698ec9c58668b05824e4d85e5', position: "right", disabled: !this.params?.generateTooltip }, h("div", { key: 'e43b498a1cc6e7535b474c11d03514022e22c6f3', class: "flex h-full flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'a9626eca38853efc9a3d229a2bf366b676a2d2f2', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '15980e44821bd68931f6365a9cca079639b92518', class: "text-med truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: '014fa54090e31b7c25f372155075e58383e7aa66', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

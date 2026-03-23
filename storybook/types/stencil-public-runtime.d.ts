@@ -125,8 +125,27 @@ export interface EventOptions {
      */
     composed?: boolean;
 }
+export interface AttachInternalsOptions {
+    /**
+     * Initial custom states to set on the ElementInternals.states CustomStateSet.
+     * Each key is the state name and the value is the initial boolean state.
+     *
+     * These states can be targeted with the CSS `:state()` pseudo-class.
+     *
+     * @example
+     * ```tsx
+     * @AttachInternals({ states: { open: true, active: false } })
+     * internals: ElementInternals;
+     * ```
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
+     */
+    states?: {
+        [stateName: string]: boolean;
+    };
+}
 export interface AttachInternalsDecorator {
-    (): PropertyDecorator;
+    (opts?: AttachInternalsOptions): PropertyDecorator;
 }
 export interface ListenDecorator {
     (eventName: string, opts?: ListenOptions): CustomMethodDecorator<any>;
@@ -660,6 +679,7 @@ export declare namespace h {
     function h(sel: any, data: VNodeData | null, text: string): VNode;
     function h(sel: any, data: VNodeData | null, children: Array<VNode | undefined | null>): VNode;
     function h(sel: any, data: VNodeData | null, children: VNode): VNode;
+    function h(sel: any, data: VNodeData | null, ...children: (VNode | string | number)[]): VNode;
     namespace JSX {
         interface IntrinsicElements extends LocalJSX.IntrinsicElements, JSXBase.IntrinsicElements {
             [tagName: string]: any;
@@ -673,6 +693,8 @@ export declare function h(sel: any, text: string): VNode;
 export declare function h(sel: any, children: Array<VNode | undefined | null>): VNode;
 export declare function h(sel: any, data: VNodeData | null, text: string): VNode;
 export declare function h(sel: any, data: VNodeData | null, children: Array<VNode | undefined | null>): VNode;
+export declare function h(sel: any, data: VNodeData | null, children: VNode): VNode;
+export declare function h(sel: any, data: VNodeData | null, ...children: (VNode | string | number)[]): VNode;
 /**
  * Automatic JSX runtime functions for TypeScript's react-jsx mode.
  * These functions are called automatically by TypeScript when using "jsx": "react-jsx".
@@ -702,7 +724,6 @@ export declare function jsxs(type: any, props: any, key?: string): VNode;
  * @returns a jsx vnode
  */
 export declare function jsxDEV(type: any, props: any, key?: string | number, isStaticChildren?: boolean, source?: any, self?: any): VNode;
-export declare function h(sel: any, data: VNodeData | null, children: VNode): VNode;
 /**
  * A virtual DOM node
  */

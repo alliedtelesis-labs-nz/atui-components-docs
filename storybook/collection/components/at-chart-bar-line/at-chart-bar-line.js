@@ -1,6 +1,5 @@
 import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
-import "chartjs-adapter-dayjs-4";
 import { TimeDateUtil } from "../../utils/time-date.util";
 import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
@@ -269,7 +268,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '3aa6e74f3995e9c8bc97e7e1d981d4461b62f776', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b7aa505127be114c76964db029f65b1d7a48c65f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'ac09719f220b3dd4fda2956b82101a24e326a79f', style: { height: '100%', width: '100%' } }, h("canvas", { key: '13f60f8936ac288030f59233b2e72474cc39a52f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
@@ -449,15 +448,17 @@ export class AtChartBarLine {
                 "setter": false
             },
             "time_range": {
-                "type": "any",
+                "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "SelectedTimeRangeExtended",
-                    "resolved": "SelectedTimeRangeExtended",
+                    "original": "AtSelectedTimeRangeExtended",
+                    "resolved": "AtISelectedTimeRange | { selected: TimeRangeDisplay.ALL; custom?: undefined; }",
                     "references": {
-                        "SelectedTimeRangeExtended": {
-                            "location": "global",
-                            "id": "global::SelectedTimeRangeExtended"
+                        "AtSelectedTimeRangeExtended": {
+                            "location": "import",
+                            "path": "../../models/at-time-range.models",
+                            "id": "src/models/at-time-range.models.ts::AtSelectedTimeRangeExtended",
+                            "referenceLocation": "AtSelectedTimeRangeExtended"
                         }
                     }
                 },
@@ -468,9 +469,7 @@ export class AtChartBarLine {
                     "text": "The time range that the chart is displayed in."
                 },
                 "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "time_range"
+                "setter": false
             },
             "height": {
                 "type": "string",

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CzDB71Wy.js');
+var index = require('./index-CdUivN1V.js');
 
 const progressBarVariants = {
     success: 'bg-success-base',

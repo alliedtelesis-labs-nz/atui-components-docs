@@ -53,6 +53,7 @@ export declare class AtInputDate {
      */
     atuiChange: EventEmitter<Date>;
     componentWillLoad(): Promise<void>;
+    watchValue(newValue: Date): void;
     componentWillRender(): void;
     render(): any;
 }

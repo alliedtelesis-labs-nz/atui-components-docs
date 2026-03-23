@@ -1,4 +1,5 @@
 const Template = (args) => `
+<div   style="width:300px;">
 <at-input-date
     label="${args.label ?? ''}"
     hint_text="${args.hint_text ?? ''}"
@@ -12,6 +13,7 @@ const Template = (args) => `
     ${args.readonly ? 'readonly' : ''}
     ${args.disabled ? 'disabled' : ''}
 />
+</div>
 `;
 export default {
     title: 'Components/Date Input',

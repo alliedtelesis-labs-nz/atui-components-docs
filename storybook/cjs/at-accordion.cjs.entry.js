@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CzDB71Wy.js');
+var index = require('./index-CdUivN1V.js');
 
 const AtAccordionComponent = class {
     constructor(hostRef) {
@@ -78,7 +78,7 @@ const AtAccordionComponent = class {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (index.h(index.Host, { key: '36762338bccf1916d1e8f994666226b00a438dfd', class: "flex flex-col gap-2" }, index.h("slot", { key: '28c7db21634265eaf1cdc6e85062fb2675760b81' }), this.items &&
+        return (index.h(index.Host, { key: 'ffefe5b585234f34863436703ad35bbe3a1c668d', class: "flex flex-col gap-2" }, index.h("slot", { key: '0e33071ed37d10d93ae63bd62b962e44cdbf6387' }), this.items &&
             this.items.map((item) => {
                 return (index.h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

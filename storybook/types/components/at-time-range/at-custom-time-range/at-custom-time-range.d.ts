@@ -68,6 +68,8 @@ export declare class AtCustomTimeRangeComponent {
     private setToDateAndTime;
     private setFromDateAndTime;
     get getFromTimes(): AtISelectOption[];
+    get isFromDateAfterToDate(): boolean;
+    get isRangeInvalid(): boolean;
     get getToTimes(): AtISelectOption[];
     /**
      * Emitted when the user cancels the time range selection

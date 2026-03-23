@@ -21,6 +21,6 @@ export async function fetchTranslations(element) {
             console.warn(`Translation for locale "${locale}" not found. Falling back to English.`);
             return bundledTranslations['en'];
         }
-        return;
+        return translation;
     }
 }

@@ -1,6 +1,5 @@
 import { h, Host } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
-import "chartjs-adapter-dayjs-4";
 import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const TOKEN_TEXT_DARK = '#0f172a';
@@ -241,7 +240,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '03bd26d9335df3cb77418d815aa8d88ed9254f74', style: { height: '100%', width: '100%' } }, h("canvas", { key: '08d56d51ee3040749be9f40c791fc747011544fb', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '8a163cb10b177595dabf04bdac48e4b4bdc5b001', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'e1855796a4c783a75a9d23850e7a743315da3bb4', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h } from './index-jvbUuQtg.js';
+import { r as registerInstance, c as createEvent, g as getElement, h } from './index-CkS36Ijo.js';
 
 /**
  * utils.ts 12.4.1
@@ -6477,7 +6477,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: 'b692e7b54c600e4f9a406aedaac39f7bfc4f91e3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: 'd5c4cf50a8fa45345c7e311ea7c219d75c5a5d5c', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }

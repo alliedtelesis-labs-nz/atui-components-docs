@@ -74,7 +74,8 @@
                 "DATE_REQUIRED": "Date is required",
                 "TIME_REQUIRED": "Time is required",
                 "PLEASE_ENTER_TIME": "Please select a time period",
-                "INTEGER_ONLY_ERROR": "Please enter integer only"
+                "INTEGER_ONLY_ERROR": "Please enter integer only",
+                "FROM_MUST_BE_BEFORE_TO": "From date must be earlier than to date"
             },
             "ALL": "All Time",
             "ALL_TIME_LABEL": "All Time (No filter applied)"

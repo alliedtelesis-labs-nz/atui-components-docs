@@ -1,5 +1,5 @@
-import { r as registerInstance, h, g as getElement, H as Host } from './index-jvbUuQtg.js';
-import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-BO6p966C.js';
+import { r as registerInstance, h, g as getElement, H as Host } from './index-CkS36Ijo.js';
+import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-DDtwbwIl.js';
 
 const AtFormLabelComponent = class {
     constructor(hostRef) {
@@ -22,9 +22,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (h("div", { key: '54eb632cee2bced805369262b01a08830ea4f4fc', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (h("label", { key: '0fc23b605adcdc2b6c13970a4d950a0203ff6d72', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: '9f30ba37d76ebda9427526004483d815e067f813', class: "text-error" }, "*"))),
-            this.info_text && (h("at-tooltip", { key: 'dd4a8a46311944c2730bfa3a1945d7c2eece25b9', position: "right" }, h("span", { key: '408f6e53a4503b1dbbd9e72fef5a5c0a1f433125', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: '666adcd514bb82162d5ab5182f590c9c6e0e5f53' }, this.info_text))),
+        return (h("div", { key: 'd5c4a128845f61d1da58c184f7efc983296c13c3', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (h("label", { key: '861a55cfafd271cdaeb844edcb322ef176d61dd1', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: '2af1c73ab1b958ea63e4e4f7406a58db7a2b1299', class: "text-error" }, "*"))),
+            this.info_text && (h("at-tooltip", { key: 'f92e3c141df790f6048777d3f67c11e5c876621b', position: "right" }, h("span", { key: '4a5b367e3fd6104b6de447a75958e9cca9c4a3ee', slot: "tooltip-trigger", class: "material-icons !text-icon-sm text-light cursor-pointer" }, "info_outline"), h("span", { key: 'de649adf8cb7f976c69ec6a7145ee3ba6b7c5fa1' }, this.info_text))),
         ]));
     }
 };
@@ -317,7 +317,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '5e3609b1adb11df3083ec89f15301f83d56a5621', class: "relative" }, !this.trigger_id && (h("div", { key: '62cf41d160ca74de017ed6abcfffc9d8ae39ab50', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '56cbc647e4efb0e158ef7f12c9d2cd803ad18f1a', name: "tooltip-trigger" }))), h("div", { key: 'a01d92c2fd287397da243faa518b430dac32686e', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '13f4e7255c1e450863345fc2b9de12fff45e33bc' }))));
+        return (h(Host, { key: 'bd4ac8a0e7b4900e1b32a26eb25655b997bfc59f', class: "relative" }, !this.trigger_id && (h("div", { key: '2e74060ffd3650f7b318d7fc308a2b52d097cda8', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'da81257350168ffa588e528cebbbc0560f6dd86a', name: "tooltip-trigger" }))), h("div", { key: '17d7f3fe6804db0f13eea726cca56449f1213df9', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '9e07f3e863b58ac78af6bf2f950129c87556a7fb' }))));
     }
     static get watchers() { return {
         "disabled": [{

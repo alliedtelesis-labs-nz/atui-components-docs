@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
+import customParseFormat from "dayjs/plugin/customParseFormat.js";
 import { TimeDateUtil } from "./time-date.util";
 import { isEmpty, replace } from "lodash-es";
 import { DateFormat, TimeRangeDisplay, TimeRangesInHours, } from "../types";

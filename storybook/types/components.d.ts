@@ -13,6 +13,7 @@ import { AtEvent } from "./types/events";
 import { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 import { ChartDataset, Plugin } from "chart.js";
 import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+import { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartColorPalette } from "./types/chart-color";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
@@ -40,7 +41,6 @@ import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 import { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
-import { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 import { AtITimeWithUnit, TimeUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
 import { AtIToast, AtIToastPosition } from "./types/toast";
@@ -57,6 +57,7 @@ export { AtEvent } from "./types/events";
 export { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 export { ChartDataset, Plugin } from "chart.js";
 export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
+export { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartColorPalette } from "./types/chart-color";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
@@ -84,7 +85,6 @@ export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 export { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
-export { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
 export { AtITimeWithUnit, TimeUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
 export { AtIToast, AtIToastPosition } from "./types/toast";
@@ -532,7 +532,7 @@ export namespace Components {
         /**
           * The time range that the chart is displayed in.
          */
-        "time_range"?: SelectedTimeRangeExtended;
+        "time_range"?: AtSelectedTimeRangeExtended;
         /**
           * Options for the tooltips on the chart
          */
@@ -4815,6 +4815,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}` | `prop:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K | `prop:${K}`]?: never } | { [P in `prop:${K}`]: PropT } & { [P in K | `attr:${K}`]?: never };
+
     /**
      * ### ```interface AccordionItem```
      * ```
@@ -5243,7 +5245,7 @@ declare namespace LocalJSX {
         /**
           * The time range that the chart is displayed in.
          */
-        "time_range"?: SelectedTimeRangeExtended;
+        "time_range"?: AtSelectedTimeRangeExtended;
         /**
           * Options for the tooltips on the chart
          */
@@ -7859,98 +7861,658 @@ declare namespace LocalJSX {
          */
         "size"?: AtTreeItemSize;
     }
+
+    interface AtAccordionAttributes {
+        "default_open": boolean;
+    }
+    interface AtAccordionItemAttributes {
+        "item_id": string;
+        "label": string;
+        "border": boolean;
+        "content": string;
+        "open": boolean;
+    }
+    interface AtAccordionTriggerAttributes {
+        "label": string;
+    }
+    interface AtAvatarAttributes {
+        "src": string;
+        "alt": string;
+        "initials": string;
+        "size": AtAvatarSize;
+        "variant": AtAvatarVariant;
+    }
+    interface AtBadgeAttributes {
+        "icon": string;
+        "label": string;
+        "type": AtBadgeType;
+        "size": AtBadgeSize;
+        "impact": AtBadgeContrast;
+        "rounded": boolean;
+    }
+    interface AtBreadcrumbAttributes {
+        "prefix_delimiter": string;
+    }
+    interface AtBreadcrumbItemAttributes {
+        "is_active": boolean;
+        "label": string;
+    }
+    interface AtButtonAttributes {
+        "submit": boolean;
+        "type": AtButtonType;
+        "size": AtButtonSize;
+        "label": string;
+        "disabled": boolean;
+        "icon": string;
+        "icon_after": string;
+        "in_progress": boolean;
+        "spinner_delay_ms": number;
+    }
+    interface AtButtonGroupAttributes {
+        "label": string;
+        "info_text": string;
+        "hint_text": string;
+        "error_text": string;
+        "value": string;
+        "disabled": boolean;
+        "type": 'string' | 'bool';
+    }
+    interface AtButtonGroupOptionAttributes {
+        "value": string;
+        "label": string;
+        "icon": string;
+        "disabled": boolean;
+        "is_active": boolean;
+    }
+    interface AtButtonSwitchAttributes {
+        "label": string;
+        "info_text": string;
+        "hint_text": string;
+        "disabled": boolean;
+        "value": boolean;
+    }
+    interface AtCardAttributes {
+        "card_title": string;
+        "subtitle": string;
+        "content": string;
+        "overflow_content": boolean;
+        "sticky_header": boolean;
+        "sticky_footer": boolean;
+        "padding": boolean;
+        "shadow": 'none' | 'sm' | 'lg';
+    }
+    interface AtChartBarLineAttributes {
+        "type": 'bar' | 'line';
+        "height": AtChartHeight;
+        "color_palette": AtChartColorPalette;
+    }
+    interface AtChartDonutAttributes {
+        "height": AtChartHeight;
+        "legend_position": AtLegendPosition;
+        "color_palette": AtChartColorPalette;
+        "center_value": string;
+        "center_text": string;
+        "cutout": number;
+    }
+    interface AtCheckboxAttributes {
+        "label": string;
+        "hint_text": string;
+        "value": string;
+        "checked": boolean;
+        "disabled": boolean;
+    }
+    interface AtCheckboxGroupAttributes {
+        "label": string;
+        "info_text": string;
+        "hint_text": string;
+        "error_text": string;
+        "disabled": boolean;
+        "invalid": boolean;
+        "required": boolean;
+        "layout": AtCheckboxLayout;
+    }
+    interface AtChipListAttributes {
+        "disabled": boolean;
+        "readonly": boolean;
+        "show_clear_all": boolean;
+        "size": AtBadgeSize;
+    }
+    interface AtCustomTimeRangeAttributes {
+        "can_set_time": boolean;
+        "min_seconds": number;
+        "lock_end_date_to_now": boolean;
+    }
+    interface AtDialogAttributes {
+        "role": 'dialog' | 'alertdialog';
+        "backdrop": boolean;
+        "close_backdrop": boolean;
+        "trigger_id": string;
+    }
+    interface AtFormLabelAttributes {
+        "label": string;
+        "required": boolean;
+        "info_text": string;
+        "for": string;
+    }
+    interface AtHeaderAttributes {
+        "size": AtHeaderSizes;
+        "icon": string;
+        "header_title": string;
+        "subtitle": string;
+        "border": boolean;
+        "padding": boolean;
+    }
+    interface AtInputAttributes {
+        "label": string;
+        "type": AtInputType;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "placeholder": string;
+        "required": boolean;
+        "invalid": boolean;
+        "autocomplete": string;
+        "readonly": boolean;
+        "disabled": boolean;
+        "clearable": boolean;
+        "value": string;
+    }
+    interface AtInputDateAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "required": boolean;
+        "invalid": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+    }
+    interface AtInputNumericAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "placeholder": string;
+        "required": boolean;
+        "invalid": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "min": number;
+        "max": number;
+        "step": number;
+        "show_buttons": boolean;
+        "value": number;
+    }
+    interface AtInputRangeAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "suffix": string;
+        "warning_text": string;
+        "error_text": string;
+        "invalid": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "required": boolean;
+        "value": number;
+        "min": number;
+        "max": number;
+        "step": number;
+        "show_minmax": boolean;
+        "show_ticks": boolean;
+        "show_value": boolean;
+        "show_input": boolean;
+        "label_position": InputPosition;
+    }
+    interface AtInputTimeAttributes {
+        "value": string;
+        "min": string;
+        "max": string;
+        "required": boolean;
+        "step": number;
+        "disabled": boolean;
+        "readonly": boolean;
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "invalid": boolean;
+    }
+    interface AtLayoutAttributes {
+        "template": AtTemplate;
+        "overflow": boolean;
+    }
+    interface AtListItemAttributes {
+        "icon": string;
+        "item_prefix": string;
+        "item_title": string;
+        "subtitle": string;
+        "content": string;
+        "size": Size;
+        "selectable": boolean;
+    }
+    interface AtListSelectorAttributes {
+        "selected_item_id": string;
+        "has_border": boolean;
+    }
+    interface AtListSelectorItemAttributes {
+        "item_id": string;
+        "item_title": string;
+        "subtitle": string;
+        "icon": string;
+        "item_prefix": string;
+        "has_border": boolean;
+        "is_selected": boolean;
+    }
+    interface AtLoadingAttributes {
+        "variant": AtLoadingVariant;
+        "type": AtLoadingType;
+        "size": AtLoadingSize;
+        "text": string;
+    }
+    interface AtMenuAttributes {
+        "offset_x": number;
+        "offset_y": number;
+        "position": AtPosition;
+        "align": AtAlign;
+        "width": string;
+        "autoclose": boolean;
+        "trigger": AtOpenOn;
+        "role": AtAriaRole;
+        "disabled": boolean;
+        "trigger_id": string;
+    }
+    interface AtMenuItemAttributes {
+        "label": string;
+        "icon": string;
+        "is_active": boolean;
+        "disabled": boolean;
+    }
+    interface AtMessageAttributes {
+        "type": 'error' | 'warning' | 'success' | 'info' | 'default';
+        "impact": 'low' | 'high';
+        "message_title": string;
+        "icon": string;
+        "content": string;
+    }
+    interface AtMultiSelectAttributes {
+        "label": string;
+        "hint_text": string;
+        "error_text": string;
+        "info_text": string;
+        "placeholder": string;
+        "required": boolean;
+        "invalid": boolean;
+        "clearable": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "typeahead": boolean;
+    }
+    interface AtPlaceholderAttributes {
+        "size": AtPlaceholderSize;
+        "icon": string;
+        "placeholder_title": string;
+        "content": string;
+        "show_loading_spinner": boolean;
+    }
+    interface AtProgressBarAttributes {
+        "percentage": number;
+        "mode": 'determinate' | 'indeterminate';
+        "type": AtProgressBarType;
+        "size": AtProgressBarSize;
+    }
+    interface AtPromptContainerAttributes {
+        "placeholder": string;
+        "error_text": string;
+        "loading": boolean;
+        "disabled": boolean;
+        "show_new_thread_button": boolean;
+        "max_message_length": number;
+        "enable_vote": boolean;
+        "enable_copy": boolean;
+        "enable_edit": boolean;
+        "response_animation": AtPromptResponseAnimation;
+    }
+    interface AtPromptInputAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "placeholder": string;
+        "max_height": number;
+        "max_length": number;
+        "in_progress": boolean;
+        "value": string;
+        "disabled": boolean;
+    }
+    interface AtPromptMessageAttributes {
+        "role": AtPromptUserRole;
+        "content": string;
+        "name": string;
+        "loading": boolean;
+        "error": boolean;
+        "error_message": string;
+        "score": AtPromptResponseScore;
+        "enable_vote": boolean;
+        "enable_copy": boolean;
+        "enable_edit": boolean;
+        "message_id": string;
+        "response_animation": AtPromptResponseAnimation;
+    }
+    interface AtPromptThreadAttributes {
+        "loading": boolean;
+        "auto_scroll": boolean;
+        "chatbot_title": string;
+        "enable_vote": boolean;
+        "enable_copy": boolean;
+        "enable_edit": boolean;
+        "response_animation": AtPromptResponseAnimation;
+    }
+    interface AtRadioAttributes {
+        "label": string;
+        "hint_text": string;
+        "checked": boolean;
+        "value": string;
+        "group": string;
+        "disabled": boolean;
+        "readonly": boolean;
+    }
+    interface AtRadioGroupAttributes {
+        "label": string;
+        "info_text": string;
+        "layout": AtRadioLayout;
+        "disabled": boolean;
+        "readonly": boolean;
+        "required": boolean;
+        "hint_text": string;
+        "error_text": string;
+        "invalid": boolean;
+        "value": string;
+    }
+    interface AtSearchAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "placeholder": string;
+        "model": string;
+    }
+    interface AtSearchTableAttributes {
+        "label": string;
+        "search_label": string;
+        "search_hint": string;
+        "search_info_tooltip": string;
+        "page_size": number;
+        "hide_dropdown_filters": boolean;
+        "hide_column_manager": boolean;
+        "hide_export_menu": boolean;
+        "hide_csv_export": boolean;
+        "hide_pdf_export": boolean;
+        "use_custom_pagination": boolean;
+        "auto_size_columns": boolean;
+        "server_side_mode": boolean;
+        "loading": boolean;
+    }
+    interface AtSelectAttributes {
+        "value": string;
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "placeholder": string;
+        "error_text": string;
+        "required": boolean;
+        "invalid": boolean;
+        "disabled": boolean;
+        "readonly": boolean;
+        "typeahead": boolean;
+        "clearable": boolean;
+        "autoclose": boolean;
+    }
+    interface AtSelectGroupAttributes {
+        "label": string;
+    }
+    interface AtSelectOptionAttributes {
+        "value": string;
+        "label": string;
+        "option_group": boolean;
+        "is_active": boolean;
+        "disabled": boolean;
+    }
+    interface AtSidePanelAttributes {
+        "size": AtSidePanelSize;
+        "panel_title": string;
+        "panel_subtitle": string;
+        "origin": AtSidePanelDirection;
+        "has_scrollbar": boolean;
+        "has_close_button": boolean;
+        "position": AtSidePanelPosition;
+        "backdrop": boolean;
+        "close_backdrop": boolean;
+        "trigger_id": string;
+    }
+    interface AtSidebarAttributes {
+        "side": 'left' | 'right';
+        "width": AtSideBarWidth;
+        "collapsible": 'offcanvas' | 'icon' | 'none';
+        "mode": 'over' | 'push';
+        "backdrop": boolean;
+        "default_open": boolean;
+    }
+    interface AtSidebarMenuitemAttributes {
+        "label": string;
+        "icon": string;
+        "badge": string;
+        "is_active": boolean;
+    }
+    interface AtSidebarSubmenuAttributes {
+        "label": string;
+        "icon": string;
+        "badge": string;
+        "is_active": boolean;
+    }
+    interface AtSrcDestAttributes {
+        "src_title": string;
+        "src_text": string;
+        "src_subtitle": string;
+        "dest_title": string;
+        "dest_text": string;
+        "dest_subtitle": string;
+        "align": AtSrcDestAlign;
+    }
+    interface AtStaticTableAttributes {
+        "page_size": number;
+        "hide_column_manager": boolean;
+        "use_custom_pagination": boolean;
+    }
+    interface AtStatusBarAttributes {
+        "size": Size;
+        "disable_tooltip": boolean;
+    }
+    interface AtTabContentAttributes {
+        "tab_id": string;
+        "is_active": boolean;
+    }
+    interface AtTabTriggerAttributes {
+        "tab_id": string;
+        "tab_title": string;
+        "layout": AtTabTriggerLayout;
+        "is_active": boolean;
+        "fill": boolean;
+    }
+    interface AtTableAttributes {
+        "page_size": number;
+        "use_custom_sorting": boolean;
+        "use_custom_pagination": boolean;
+        "disable_auto_init": boolean;
+        "auto_size_columns": boolean;
+    }
+    interface AtTableExportMenuAttributes {
+        "hide_csv": boolean;
+        "hide_pdf": boolean;
+    }
+    interface AtTablePaginationAttributes {
+        "current_page": number;
+        "num_pages": number;
+        "page_size": number;
+    }
+    interface AtTabsAttributes {
+        "layout": AtTabsLayout;
+        "hide_nav": boolean;
+        "active_tab": string;
+        "fill": boolean;
+    }
+    interface AtTextareaAttributes {
+        "label": string;
+        "hint_text": string;
+        "info_text": string;
+        "error_text": string;
+        "placeholder": string;
+        "required": boolean;
+        "invalid": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "min_rows": number;
+        "max_rows": number;
+        "autocomplete": string;
+        "value": string;
+    }
+    interface AtTimeRangeAttributes {
+        "range_limit": number;
+        "enable_relative_time": boolean;
+        "custom_error_message": string;
+        "show_all_time": boolean;
+        "enable_range_limit": boolean;
+    }
+    interface AtTimeWithUnitAttributes {
+        "min_seconds": number;
+        "max_seconds": number;
+        "initial_selected_time": AtITimeWithUnit | TimeRangeDisplay.ALL;
+        "custom_error_message": string;
+        "show_all_time": boolean;
+    }
+    interface AtToasterAttributes {
+        "position": AtIToastPosition;
+    }
+    interface AtToggleSwitchAttributes {
+        "label": string;
+        "hint_text": string;
+        "label_position": AtLabelPosition;
+        "show_label": boolean;
+        "disabled": boolean;
+        "value": boolean;
+    }
+    interface AtTooltipAttributes {
+        "position": AtTooltipPosition;
+        "align": AtTooltipAlign;
+        "disabled": boolean;
+        "width": string;
+        "offset": number;
+        "delay": number;
+        "trigger_id": string;
+    }
+    interface AtTreeAttributes {
+        "size": AtButtonSize;
+    }
+    interface AtTreeItemAttributes {
+        "size": AtTreeItemSize;
+        "label": string;
+        "depth": number;
+        "has_children": boolean;
+        "selected": boolean;
+        "disabled": boolean;
+    }
+
     interface IntrinsicElements {
-        "at-accordion": AtAccordion;
-        "at-accordion-item": AtAccordionItem;
-        "at-accordion-trigger": AtAccordionTrigger;
-        "at-avatar": AtAvatar;
-        "at-badge": AtBadge;
-        "at-breadcrumb": AtBreadcrumb;
-        "at-breadcrumb-item": AtBreadcrumbItem;
-        "at-button": AtButton;
-        "at-button-group": AtButtonGroup;
-        "at-button-group-option": AtButtonGroupOption;
-        "at-button-switch": AtButtonSwitch;
-        "at-card": AtCard;
-        "at-chart-bar-line": AtChartBarLine;
-        "at-chart-donut": AtChartDonut;
-        "at-checkbox": AtCheckbox;
+        "at-accordion": Omit<AtAccordion, keyof AtAccordionAttributes> & { [K in keyof AtAccordion & keyof AtAccordionAttributes]?: AtAccordion[K] } & { [K in keyof AtAccordion & keyof AtAccordionAttributes as `attr:${K}`]?: AtAccordionAttributes[K] } & { [K in keyof AtAccordion & keyof AtAccordionAttributes as `prop:${K}`]?: AtAccordion[K] };
+        "at-accordion-item": Omit<AtAccordionItem, keyof AtAccordionItemAttributes> & { [K in keyof AtAccordionItem & keyof AtAccordionItemAttributes]?: AtAccordionItem[K] } & { [K in keyof AtAccordionItem & keyof AtAccordionItemAttributes as `attr:${K}`]?: AtAccordionItemAttributes[K] } & { [K in keyof AtAccordionItem & keyof AtAccordionItemAttributes as `prop:${K}`]?: AtAccordionItem[K] } & OneOf<"item_id", AtAccordionItem["item_id"], AtAccordionItemAttributes["item_id"]>;
+        "at-accordion-trigger": Omit<AtAccordionTrigger, keyof AtAccordionTriggerAttributes> & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes]?: AtAccordionTrigger[K] } & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes as `attr:${K}`]?: AtAccordionTriggerAttributes[K] } & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes as `prop:${K}`]?: AtAccordionTrigger[K] };
+        "at-avatar": Omit<AtAvatar, keyof AtAvatarAttributes> & { [K in keyof AtAvatar & keyof AtAvatarAttributes]?: AtAvatar[K] } & { [K in keyof AtAvatar & keyof AtAvatarAttributes as `attr:${K}`]?: AtAvatarAttributes[K] } & { [K in keyof AtAvatar & keyof AtAvatarAttributes as `prop:${K}`]?: AtAvatar[K] };
+        "at-badge": Omit<AtBadge, keyof AtBadgeAttributes> & { [K in keyof AtBadge & keyof AtBadgeAttributes]?: AtBadge[K] } & { [K in keyof AtBadge & keyof AtBadgeAttributes as `attr:${K}`]?: AtBadgeAttributes[K] } & { [K in keyof AtBadge & keyof AtBadgeAttributes as `prop:${K}`]?: AtBadge[K] };
+        "at-breadcrumb": Omit<AtBreadcrumb, keyof AtBreadcrumbAttributes> & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes]?: AtBreadcrumb[K] } & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes as `attr:${K}`]?: AtBreadcrumbAttributes[K] } & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes as `prop:${K}`]?: AtBreadcrumb[K] };
+        "at-breadcrumb-item": Omit<AtBreadcrumbItem, keyof AtBreadcrumbItemAttributes> & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes]?: AtBreadcrumbItem[K] } & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes as `attr:${K}`]?: AtBreadcrumbItemAttributes[K] } & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes as `prop:${K}`]?: AtBreadcrumbItem[K] } & OneOf<"label", AtBreadcrumbItem["label"], AtBreadcrumbItemAttributes["label"]>;
+        "at-button": Omit<AtButton, keyof AtButtonAttributes> & { [K in keyof AtButton & keyof AtButtonAttributes]?: AtButton[K] } & { [K in keyof AtButton & keyof AtButtonAttributes as `attr:${K}`]?: AtButtonAttributes[K] } & { [K in keyof AtButton & keyof AtButtonAttributes as `prop:${K}`]?: AtButton[K] };
+        "at-button-group": Omit<AtButtonGroup, keyof AtButtonGroupAttributes> & { [K in keyof AtButtonGroup & keyof AtButtonGroupAttributes]?: AtButtonGroup[K] } & { [K in keyof AtButtonGroup & keyof AtButtonGroupAttributes as `attr:${K}`]?: AtButtonGroupAttributes[K] } & { [K in keyof AtButtonGroup & keyof AtButtonGroupAttributes as `prop:${K}`]?: AtButtonGroup[K] };
+        "at-button-group-option": Omit<AtButtonGroupOption, keyof AtButtonGroupOptionAttributes> & { [K in keyof AtButtonGroupOption & keyof AtButtonGroupOptionAttributes]?: AtButtonGroupOption[K] } & { [K in keyof AtButtonGroupOption & keyof AtButtonGroupOptionAttributes as `attr:${K}`]?: AtButtonGroupOptionAttributes[K] } & { [K in keyof AtButtonGroupOption & keyof AtButtonGroupOptionAttributes as `prop:${K}`]?: AtButtonGroupOption[K] };
+        "at-button-switch": Omit<AtButtonSwitch, keyof AtButtonSwitchAttributes> & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes]?: AtButtonSwitch[K] } & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes as `attr:${K}`]?: AtButtonSwitchAttributes[K] } & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes as `prop:${K}`]?: AtButtonSwitch[K] };
+        "at-card": Omit<AtCard, keyof AtCardAttributes> & { [K in keyof AtCard & keyof AtCardAttributes]?: AtCard[K] } & { [K in keyof AtCard & keyof AtCardAttributes as `attr:${K}`]?: AtCardAttributes[K] } & { [K in keyof AtCard & keyof AtCardAttributes as `prop:${K}`]?: AtCard[K] };
+        "at-chart-bar-line": Omit<AtChartBarLine, keyof AtChartBarLineAttributes> & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes]?: AtChartBarLine[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `attr:${K}`]?: AtChartBarLineAttributes[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `prop:${K}`]?: AtChartBarLine[K] };
+        "at-chart-donut": Omit<AtChartDonut, keyof AtChartDonutAttributes> & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes]?: AtChartDonut[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `attr:${K}`]?: AtChartDonutAttributes[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `prop:${K}`]?: AtChartDonut[K] };
+        "at-checkbox": Omit<AtCheckbox, keyof AtCheckboxAttributes> & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes]?: AtCheckbox[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `attr:${K}`]?: AtCheckboxAttributes[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `prop:${K}`]?: AtCheckbox[K] };
         "at-checkbox-cell": AtCheckboxCell;
-        "at-checkbox-group": AtCheckboxGroup;
+        "at-checkbox-group": Omit<AtCheckboxGroup, keyof AtCheckboxGroupAttributes> & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes]?: AtCheckboxGroup[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `attr:${K}`]?: AtCheckboxGroupAttributes[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `prop:${K}`]?: AtCheckboxGroup[K] };
         "at-checkbox-header": AtCheckboxHeader;
-        "at-chip-list": AtChipList;
+        "at-chip-list": Omit<AtChipList, keyof AtChipListAttributes> & { [K in keyof AtChipList & keyof AtChipListAttributes]?: AtChipList[K] } & { [K in keyof AtChipList & keyof AtChipListAttributes as `attr:${K}`]?: AtChipListAttributes[K] } & { [K in keyof AtChipList & keyof AtChipListAttributes as `prop:${K}`]?: AtChipList[K] };
         "at-chip-list-cell": AtChipListCell;
         "at-color-status-cell": AtColorStatusCell;
         "at-column-manager": AtColumnManager;
-        "at-custom-time-range": AtCustomTimeRange;
+        "at-custom-time-range": Omit<AtCustomTimeRange, keyof AtCustomTimeRangeAttributes> & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes]?: AtCustomTimeRange[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `attr:${K}`]?: AtCustomTimeRangeAttributes[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `prop:${K}`]?: AtCustomTimeRange[K] };
         "at-dashboard": AtDashboard;
-        "at-dialog": AtDialog;
+        "at-dialog": Omit<AtDialog, keyof AtDialogAttributes> & { [K in keyof AtDialog & keyof AtDialogAttributes]?: AtDialog[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `attr:${K}`]?: AtDialogAttributes[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `prop:${K}`]?: AtDialog[K] };
         "at-edit-text-cell": AtEditTextCell;
-        "at-form-label": AtFormLabel;
-        "at-header": AtHeader;
-        "at-input": AtInput;
-        "at-input-date": AtInputDate;
-        "at-input-numeric": AtInputNumeric;
-        "at-input-range": AtInputRange;
-        "at-input-time": AtInputTime;
-        "at-layout": AtLayout;
-        "at-list-item": AtListItem;
-        "at-list-selector": AtListSelector;
-        "at-list-selector-item": AtListSelectorItem;
-        "at-loading": AtLoading;
-        "at-menu": AtMenu;
+        "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };
+        "at-header": Omit<AtHeader, keyof AtHeaderAttributes> & { [K in keyof AtHeader & keyof AtHeaderAttributes]?: AtHeader[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `attr:${K}`]?: AtHeaderAttributes[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `prop:${K}`]?: AtHeader[K] };
+        "at-input": Omit<AtInput, keyof AtInputAttributes> & { [K in keyof AtInput & keyof AtInputAttributes]?: AtInput[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `attr:${K}`]?: AtInputAttributes[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `prop:${K}`]?: AtInput[K] };
+        "at-input-date": Omit<AtInputDate, keyof AtInputDateAttributes> & { [K in keyof AtInputDate & keyof AtInputDateAttributes]?: AtInputDate[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `attr:${K}`]?: AtInputDateAttributes[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `prop:${K}`]?: AtInputDate[K] };
+        "at-input-numeric": Omit<AtInputNumeric, keyof AtInputNumericAttributes> & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes]?: AtInputNumeric[K] } & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes as `attr:${K}`]?: AtInputNumericAttributes[K] } & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes as `prop:${K}`]?: AtInputNumeric[K] };
+        "at-input-range": Omit<AtInputRange, keyof AtInputRangeAttributes> & { [K in keyof AtInputRange & keyof AtInputRangeAttributes]?: AtInputRange[K] } & { [K in keyof AtInputRange & keyof AtInputRangeAttributes as `attr:${K}`]?: AtInputRangeAttributes[K] } & { [K in keyof AtInputRange & keyof AtInputRangeAttributes as `prop:${K}`]?: AtInputRange[K] };
+        "at-input-time": Omit<AtInputTime, keyof AtInputTimeAttributes> & { [K in keyof AtInputTime & keyof AtInputTimeAttributes]?: AtInputTime[K] } & { [K in keyof AtInputTime & keyof AtInputTimeAttributes as `attr:${K}`]?: AtInputTimeAttributes[K] } & { [K in keyof AtInputTime & keyof AtInputTimeAttributes as `prop:${K}`]?: AtInputTime[K] };
+        "at-layout": Omit<AtLayout, keyof AtLayoutAttributes> & { [K in keyof AtLayout & keyof AtLayoutAttributes]?: AtLayout[K] } & { [K in keyof AtLayout & keyof AtLayoutAttributes as `attr:${K}`]?: AtLayoutAttributes[K] } & { [K in keyof AtLayout & keyof AtLayoutAttributes as `prop:${K}`]?: AtLayout[K] };
+        "at-list-item": Omit<AtListItem, keyof AtListItemAttributes> & { [K in keyof AtListItem & keyof AtListItemAttributes]?: AtListItem[K] } & { [K in keyof AtListItem & keyof AtListItemAttributes as `attr:${K}`]?: AtListItemAttributes[K] } & { [K in keyof AtListItem & keyof AtListItemAttributes as `prop:${K}`]?: AtListItem[K] };
+        "at-list-selector": Omit<AtListSelector, keyof AtListSelectorAttributes> & { [K in keyof AtListSelector & keyof AtListSelectorAttributes]?: AtListSelector[K] } & { [K in keyof AtListSelector & keyof AtListSelectorAttributes as `attr:${K}`]?: AtListSelectorAttributes[K] } & { [K in keyof AtListSelector & keyof AtListSelectorAttributes as `prop:${K}`]?: AtListSelector[K] };
+        "at-list-selector-item": Omit<AtListSelectorItem, keyof AtListSelectorItemAttributes> & { [K in keyof AtListSelectorItem & keyof AtListSelectorItemAttributes]?: AtListSelectorItem[K] } & { [K in keyof AtListSelectorItem & keyof AtListSelectorItemAttributes as `attr:${K}`]?: AtListSelectorItemAttributes[K] } & { [K in keyof AtListSelectorItem & keyof AtListSelectorItemAttributes as `prop:${K}`]?: AtListSelectorItem[K] };
+        "at-loading": Omit<AtLoading, keyof AtLoadingAttributes> & { [K in keyof AtLoading & keyof AtLoadingAttributes]?: AtLoading[K] } & { [K in keyof AtLoading & keyof AtLoadingAttributes as `attr:${K}`]?: AtLoadingAttributes[K] } & { [K in keyof AtLoading & keyof AtLoadingAttributes as `prop:${K}`]?: AtLoading[K] };
+        "at-menu": Omit<AtMenu, keyof AtMenuAttributes> & { [K in keyof AtMenu & keyof AtMenuAttributes]?: AtMenu[K] } & { [K in keyof AtMenu & keyof AtMenuAttributes as `attr:${K}`]?: AtMenuAttributes[K] } & { [K in keyof AtMenu & keyof AtMenuAttributes as `prop:${K}`]?: AtMenu[K] };
         "at-menu-cell": AtMenuCell;
-        "at-menu-item": AtMenuItem;
-        "at-message": AtMessage;
+        "at-menu-item": Omit<AtMenuItem, keyof AtMenuItemAttributes> & { [K in keyof AtMenuItem & keyof AtMenuItemAttributes]?: AtMenuItem[K] } & { [K in keyof AtMenuItem & keyof AtMenuItemAttributes as `attr:${K}`]?: AtMenuItemAttributes[K] } & { [K in keyof AtMenuItem & keyof AtMenuItemAttributes as `prop:${K}`]?: AtMenuItem[K] };
+        "at-message": Omit<AtMessage, keyof AtMessageAttributes> & { [K in keyof AtMessage & keyof AtMessageAttributes]?: AtMessage[K] } & { [K in keyof AtMessage & keyof AtMessageAttributes as `attr:${K}`]?: AtMessageAttributes[K] } & { [K in keyof AtMessage & keyof AtMessageAttributes as `prop:${K}`]?: AtMessage[K] };
         "at-multi-btn-cell": AtMultiBtnCell;
-        "at-multi-select": AtMultiSelect;
-        "at-placeholder": AtPlaceholder;
-        "at-progress-bar": AtProgressBar;
-        "at-prompt-container": AtPromptContainer;
-        "at-prompt-input": AtPromptInput;
-        "at-prompt-message": AtPromptMessage;
-        "at-prompt-thread": AtPromptThread;
-        "at-radio": AtRadio;
-        "at-radio-group": AtRadioGroup;
-        "at-search": AtSearch;
-        "at-search-table": AtSearchTable;
-        "at-select": AtSelect;
-        "at-select-group": AtSelectGroup;
-        "at-select-option": AtSelectOption;
-        "at-side-panel": AtSidePanel;
-        "at-sidebar": AtSidebar;
+        "at-multi-select": Omit<AtMultiSelect, keyof AtMultiSelectAttributes> & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes]?: AtMultiSelect[K] } & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes as `attr:${K}`]?: AtMultiSelectAttributes[K] } & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes as `prop:${K}`]?: AtMultiSelect[K] };
+        "at-placeholder": Omit<AtPlaceholder, keyof AtPlaceholderAttributes> & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes]?: AtPlaceholder[K] } & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes as `attr:${K}`]?: AtPlaceholderAttributes[K] } & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes as `prop:${K}`]?: AtPlaceholder[K] };
+        "at-progress-bar": Omit<AtProgressBar, keyof AtProgressBarAttributes> & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes]?: AtProgressBar[K] } & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes as `attr:${K}`]?: AtProgressBarAttributes[K] } & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes as `prop:${K}`]?: AtProgressBar[K] };
+        "at-prompt-container": Omit<AtPromptContainer, keyof AtPromptContainerAttributes> & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes]?: AtPromptContainer[K] } & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes as `attr:${K}`]?: AtPromptContainerAttributes[K] } & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes as `prop:${K}`]?: AtPromptContainer[K] };
+        "at-prompt-input": Omit<AtPromptInput, keyof AtPromptInputAttributes> & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes]?: AtPromptInput[K] } & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes as `attr:${K}`]?: AtPromptInputAttributes[K] } & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes as `prop:${K}`]?: AtPromptInput[K] };
+        "at-prompt-message": Omit<AtPromptMessage, keyof AtPromptMessageAttributes> & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes]?: AtPromptMessage[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `attr:${K}`]?: AtPromptMessageAttributes[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `prop:${K}`]?: AtPromptMessage[K] };
+        "at-prompt-thread": Omit<AtPromptThread, keyof AtPromptThreadAttributes> & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes]?: AtPromptThread[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `attr:${K}`]?: AtPromptThreadAttributes[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `prop:${K}`]?: AtPromptThread[K] };
+        "at-radio": Omit<AtRadio, keyof AtRadioAttributes> & { [K in keyof AtRadio & keyof AtRadioAttributes]?: AtRadio[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `attr:${K}`]?: AtRadioAttributes[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `prop:${K}`]?: AtRadio[K] };
+        "at-radio-group": Omit<AtRadioGroup, keyof AtRadioGroupAttributes> & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes]?: AtRadioGroup[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `attr:${K}`]?: AtRadioGroupAttributes[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `prop:${K}`]?: AtRadioGroup[K] };
+        "at-search": Omit<AtSearch, keyof AtSearchAttributes> & { [K in keyof AtSearch & keyof AtSearchAttributes]?: AtSearch[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `attr:${K}`]?: AtSearchAttributes[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `prop:${K}`]?: AtSearch[K] };
+        "at-search-table": Omit<AtSearchTable, keyof AtSearchTableAttributes> & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes]?: AtSearchTable[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `attr:${K}`]?: AtSearchTableAttributes[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `prop:${K}`]?: AtSearchTable[K] };
+        "at-select": Omit<AtSelect, keyof AtSelectAttributes> & { [K in keyof AtSelect & keyof AtSelectAttributes]?: AtSelect[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `attr:${K}`]?: AtSelectAttributes[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `prop:${K}`]?: AtSelect[K] };
+        "at-select-group": Omit<AtSelectGroup, keyof AtSelectGroupAttributes> & { [K in keyof AtSelectGroup & keyof AtSelectGroupAttributes]?: AtSelectGroup[K] } & { [K in keyof AtSelectGroup & keyof AtSelectGroupAttributes as `attr:${K}`]?: AtSelectGroupAttributes[K] } & { [K in keyof AtSelectGroup & keyof AtSelectGroupAttributes as `prop:${K}`]?: AtSelectGroup[K] };
+        "at-select-option": Omit<AtSelectOption, keyof AtSelectOptionAttributes> & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes]?: AtSelectOption[K] } & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes as `attr:${K}`]?: AtSelectOptionAttributes[K] } & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes as `prop:${K}`]?: AtSelectOption[K] };
+        "at-side-panel": Omit<AtSidePanel, keyof AtSidePanelAttributes> & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes]?: AtSidePanel[K] } & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes as `attr:${K}`]?: AtSidePanelAttributes[K] } & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes as `prop:${K}`]?: AtSidePanel[K] };
+        "at-sidebar": Omit<AtSidebar, keyof AtSidebarAttributes> & { [K in keyof AtSidebar & keyof AtSidebarAttributes]?: AtSidebar[K] } & { [K in keyof AtSidebar & keyof AtSidebarAttributes as `attr:${K}`]?: AtSidebarAttributes[K] } & { [K in keyof AtSidebar & keyof AtSidebarAttributes as `prop:${K}`]?: AtSidebar[K] };
         "at-sidebar-menu": AtSidebarMenu;
-        "at-sidebar-menuitem": AtSidebarMenuitem;
-        "at-sidebar-submenu": AtSidebarSubmenu;
+        "at-sidebar-menuitem": Omit<AtSidebarMenuitem, keyof AtSidebarMenuitemAttributes> & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes]?: AtSidebarMenuitem[K] } & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes as `attr:${K}`]?: AtSidebarMenuitemAttributes[K] } & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes as `prop:${K}`]?: AtSidebarMenuitem[K] };
+        "at-sidebar-submenu": Omit<AtSidebarSubmenu, keyof AtSidebarSubmenuAttributes> & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes]?: AtSidebarSubmenu[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `attr:${K}`]?: AtSidebarSubmenuAttributes[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `prop:${K}`]?: AtSidebarSubmenu[K] } & OneOf<"label", AtSidebarSubmenu["label"], AtSidebarSubmenuAttributes["label"]>;
         "at-sidebar-trigger": AtSidebarTrigger;
-        "at-src-dest": AtSrcDest;
-        "at-static-table": AtStaticTable;
-        "at-status-bar": AtStatusBar;
-        "at-tab-content": AtTabContent;
-        "at-tab-trigger": AtTabTrigger;
-        "at-table": AtTable;
+        "at-src-dest": Omit<AtSrcDest, keyof AtSrcDestAttributes> & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes]?: AtSrcDest[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `attr:${K}`]?: AtSrcDestAttributes[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `prop:${K}`]?: AtSrcDest[K] };
+        "at-static-table": Omit<AtStaticTable, keyof AtStaticTableAttributes> & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes]?: AtStaticTable[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `attr:${K}`]?: AtStaticTableAttributes[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `prop:${K}`]?: AtStaticTable[K] };
+        "at-status-bar": Omit<AtStatusBar, keyof AtStatusBarAttributes> & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes]?: AtStatusBar[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `attr:${K}`]?: AtStatusBarAttributes[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `prop:${K}`]?: AtStatusBar[K] };
+        "at-tab-content": Omit<AtTabContent, keyof AtTabContentAttributes> & { [K in keyof AtTabContent & keyof AtTabContentAttributes]?: AtTabContent[K] } & { [K in keyof AtTabContent & keyof AtTabContentAttributes as `attr:${K}`]?: AtTabContentAttributes[K] } & { [K in keyof AtTabContent & keyof AtTabContentAttributes as `prop:${K}`]?: AtTabContent[K] };
+        "at-tab-trigger": Omit<AtTabTrigger, keyof AtTabTriggerAttributes> & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes]?: AtTabTrigger[K] } & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes as `attr:${K}`]?: AtTabTriggerAttributes[K] } & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes as `prop:${K}`]?: AtTabTrigger[K] };
+        "at-table": Omit<AtTable, keyof AtTableAttributes> & { [K in keyof AtTable & keyof AtTableAttributes]?: AtTable[K] } & { [K in keyof AtTable & keyof AtTableAttributes as `attr:${K}`]?: AtTableAttributes[K] } & { [K in keyof AtTable & keyof AtTableAttributes as `prop:${K}`]?: AtTable[K] };
         "at-table-actions": AtTableActions;
-        "at-table-export-menu": AtTableExportMenu;
+        "at-table-export-menu": Omit<AtTableExportMenu, keyof AtTableExportMenuAttributes> & { [K in keyof AtTableExportMenu & keyof AtTableExportMenuAttributes]?: AtTableExportMenu[K] } & { [K in keyof AtTableExportMenu & keyof AtTableExportMenuAttributes as `attr:${K}`]?: AtTableExportMenuAttributes[K] } & { [K in keyof AtTableExportMenu & keyof AtTableExportMenuAttributes as `prop:${K}`]?: AtTableExportMenu[K] };
         "at-table-filter-menu": AtTableFilterMenu;
         "at-table-filters": AtTableFilters;
-        "at-table-pagination": AtTablePagination;
-        "at-tabs": AtTabs;
+        "at-table-pagination": Omit<AtTablePagination, keyof AtTablePaginationAttributes> & { [K in keyof AtTablePagination & keyof AtTablePaginationAttributes]?: AtTablePagination[K] } & { [K in keyof AtTablePagination & keyof AtTablePaginationAttributes as `attr:${K}`]?: AtTablePaginationAttributes[K] } & { [K in keyof AtTablePagination & keyof AtTablePaginationAttributes as `prop:${K}`]?: AtTablePagination[K] };
+        "at-tabs": Omit<AtTabs, keyof AtTabsAttributes> & { [K in keyof AtTabs & keyof AtTabsAttributes]?: AtTabs[K] } & { [K in keyof AtTabs & keyof AtTabsAttributes as `attr:${K}`]?: AtTabsAttributes[K] } & { [K in keyof AtTabs & keyof AtTabsAttributes as `prop:${K}`]?: AtTabs[K] };
         "at-text-badge-cell": AtTextBadgeCell;
         "at-text-cell": AtTextCell;
         "at-text-icon-cell": AtTextIconCell;
         "at-text-image-cell": AtTextImageCell;
         "at-text-status-cell": AtTextStatusCell;
-        "at-textarea": AtTextarea;
-        "at-time-range": AtTimeRange;
-        "at-time-with-unit": AtTimeWithUnit;
+        "at-textarea": Omit<AtTextarea, keyof AtTextareaAttributes> & { [K in keyof AtTextarea & keyof AtTextareaAttributes]?: AtTextarea[K] } & { [K in keyof AtTextarea & keyof AtTextareaAttributes as `attr:${K}`]?: AtTextareaAttributes[K] } & { [K in keyof AtTextarea & keyof AtTextareaAttributes as `prop:${K}`]?: AtTextarea[K] };
+        "at-time-range": Omit<AtTimeRange, keyof AtTimeRangeAttributes> & { [K in keyof AtTimeRange & keyof AtTimeRangeAttributes]?: AtTimeRange[K] } & { [K in keyof AtTimeRange & keyof AtTimeRangeAttributes as `attr:${K}`]?: AtTimeRangeAttributes[K] } & { [K in keyof AtTimeRange & keyof AtTimeRangeAttributes as `prop:${K}`]?: AtTimeRange[K] };
+        "at-time-with-unit": Omit<AtTimeWithUnit, keyof AtTimeWithUnitAttributes> & { [K in keyof AtTimeWithUnit & keyof AtTimeWithUnitAttributes]?: AtTimeWithUnit[K] } & { [K in keyof AtTimeWithUnit & keyof AtTimeWithUnitAttributes as `attr:${K}`]?: AtTimeWithUnitAttributes[K] } & { [K in keyof AtTimeWithUnit & keyof AtTimeWithUnitAttributes as `prop:${K}`]?: AtTimeWithUnit[K] };
         "at-title-subtitle-cell": AtTitleSubtitleCell;
         "at-title-subtitle-date-cell": AtTitleSubtitleDateCell;
-        "at-toaster": AtToaster;
+        "at-toaster": Omit<AtToaster, keyof AtToasterAttributes> & { [K in keyof AtToaster & keyof AtToasterAttributes]?: AtToaster[K] } & { [K in keyof AtToaster & keyof AtToasterAttributes as `attr:${K}`]?: AtToasterAttributes[K] } & { [K in keyof AtToaster & keyof AtToasterAttributes as `prop:${K}`]?: AtToaster[K] };
         "at-toggle-cell": AtToggleCell;
-        "at-toggle-switch": AtToggleSwitch;
-        "at-tooltip": AtTooltip;
-        "at-tree": AtTree;
-        "at-tree-item": AtTreeItem;
+        "at-toggle-switch": Omit<AtToggleSwitch, keyof AtToggleSwitchAttributes> & { [K in keyof AtToggleSwitch & keyof AtToggleSwitchAttributes]?: AtToggleSwitch[K] } & { [K in keyof AtToggleSwitch & keyof AtToggleSwitchAttributes as `attr:${K}`]?: AtToggleSwitchAttributes[K] } & { [K in keyof AtToggleSwitch & keyof AtToggleSwitchAttributes as `prop:${K}`]?: AtToggleSwitch[K] };
+        "at-tooltip": Omit<AtTooltip, keyof AtTooltipAttributes> & { [K in keyof AtTooltip & keyof AtTooltipAttributes]?: AtTooltip[K] } & { [K in keyof AtTooltip & keyof AtTooltipAttributes as `attr:${K}`]?: AtTooltipAttributes[K] } & { [K in keyof AtTooltip & keyof AtTooltipAttributes as `prop:${K}`]?: AtTooltip[K] };
+        "at-tree": Omit<AtTree, keyof AtTreeAttributes> & { [K in keyof AtTree & keyof AtTreeAttributes]?: AtTree[K] } & { [K in keyof AtTree & keyof AtTreeAttributes as `attr:${K}`]?: AtTreeAttributes[K] } & { [K in keyof AtTree & keyof AtTreeAttributes as `prop:${K}`]?: AtTree[K] };
+        "at-tree-item": Omit<AtTreeItem, keyof AtTreeItemAttributes> & { [K in keyof AtTreeItem & keyof AtTreeItemAttributes]?: AtTreeItem[K] } & { [K in keyof AtTreeItem & keyof AtTreeItemAttributes as `attr:${K}`]?: AtTreeItemAttributes[K] } & { [K in keyof AtTreeItem & keyof AtTreeItemAttributes as `prop:${K}`]?: AtTreeItem[K] } & OneOf<"label", AtTreeItem["label"], AtTreeItemAttributes["label"]>;
     }
 }
 export { LocalJSX as JSX };
@@ -7967,61 +8529,61 @@ declare module "@stencil/core" {
              * @category Layout
              * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
              */
-            "at-accordion": LocalJSX.AtAccordion & JSXBase.HTMLAttributes<HTMLAtAccordionElement>;
+            "at-accordion": LocalJSX.IntrinsicElements["at-accordion"] & JSXBase.HTMLAttributes<HTMLAtAccordionElement>;
             /**
              * @category Layout
              * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
              */
-            "at-accordion-item": LocalJSX.AtAccordionItem & JSXBase.HTMLAttributes<HTMLAtAccordionItemElement>;
-            "at-accordion-trigger": LocalJSX.AtAccordionTrigger & JSXBase.HTMLAttributes<HTMLAtAccordionTriggerElement>;
+            "at-accordion-item": LocalJSX.IntrinsicElements["at-accordion-item"] & JSXBase.HTMLAttributes<HTMLAtAccordionItemElement>;
+            "at-accordion-trigger": LocalJSX.IntrinsicElements["at-accordion-trigger"] & JSXBase.HTMLAttributes<HTMLAtAccordionTriggerElement>;
             /**
              * @category Decoration
              * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
              */
-            "at-avatar": LocalJSX.AtAvatar & JSXBase.HTMLAttributes<HTMLAtAvatarElement>;
+            "at-avatar": LocalJSX.IntrinsicElements["at-avatar"] & JSXBase.HTMLAttributes<HTMLAtAvatarElement>;
             /**
              * @category Feedback
              * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
              */
-            "at-badge": LocalJSX.AtBadge & JSXBase.HTMLAttributes<HTMLAtBadgeElement>;
+            "at-badge": LocalJSX.IntrinsicElements["at-badge"] & JSXBase.HTMLAttributes<HTMLAtBadgeElement>;
             /**
              * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
              * Provides clickable path navigation with customizable separators and accessibility features.
              * @category Navigation
              */
-            "at-breadcrumb": LocalJSX.AtBreadcrumb & JSXBase.HTMLAttributes<HTMLAtBreadcrumbElement>;
+            "at-breadcrumb": LocalJSX.IntrinsicElements["at-breadcrumb"] & JSXBase.HTMLAttributes<HTMLAtBreadcrumbElement>;
             /**
              * @category Navigation
              * @description A breadcrumb item component for the breadcrumb.
              */
-            "at-breadcrumb-item": LocalJSX.AtBreadcrumbItem & JSXBase.HTMLAttributes<HTMLAtBreadcrumbItemElement>;
+            "at-breadcrumb-item": LocalJSX.IntrinsicElements["at-breadcrumb-item"] & JSXBase.HTMLAttributes<HTMLAtBreadcrumbItemElement>;
             /**
              * @category Actions
              * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
              */
-            "at-button": LocalJSX.AtButton & JSXBase.HTMLAttributes<HTMLAtButtonElement>;
+            "at-button": LocalJSX.IntrinsicElements["at-button"] & JSXBase.HTMLAttributes<HTMLAtButtonElement>;
             /**
              * @category Form Controls
              * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
              */
-            "at-button-group": LocalJSX.AtButtonGroup & JSXBase.HTMLAttributes<HTMLAtButtonGroupElement>;
+            "at-button-group": LocalJSX.IntrinsicElements["at-button-group"] & JSXBase.HTMLAttributes<HTMLAtButtonGroupElement>;
             /**
              * @category Form Controls
              * @description A button group option component for the button group.
              * @Slot - Places content before the label.
              * @After - Places content after the label.
              */
-            "at-button-group-option": LocalJSX.AtButtonGroupOption & JSXBase.HTMLAttributes<HTMLAtButtonGroupOptionElement>;
+            "at-button-group-option": LocalJSX.IntrinsicElements["at-button-group-option"] & JSXBase.HTMLAttributes<HTMLAtButtonGroupOptionElement>;
             /**
              * @category Form Controls
              * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
              */
-            "at-button-switch": LocalJSX.AtButtonSwitch & JSXBase.HTMLAttributes<HTMLAtButtonSwitchElement>;
+            "at-button-switch": LocalJSX.IntrinsicElements["at-button-switch"] & JSXBase.HTMLAttributes<HTMLAtButtonSwitchElement>;
             /**
              * @category Layout
              * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
              */
-            "at-card": LocalJSX.AtCard & JSXBase.HTMLAttributes<HTMLAtCardElement>;
+            "at-card": LocalJSX.IntrinsicElements["at-card"] & JSXBase.HTMLAttributes<HTMLAtCardElement>;
             /**
              * ### ```interface PointStyles```
              * ```
@@ -8046,22 +8608,22 @@ declare module "@stencil/core" {
              *  stepped?: boolean;
              * ```
              */
-            "at-chart-bar-line": LocalJSX.AtChartBarLine & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
+            "at-chart-bar-line": LocalJSX.IntrinsicElements["at-chart-bar-line"] & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
             /**
              * @category Data Visualization
              * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
              */
-            "at-chart-donut": LocalJSX.AtChartDonut & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
+            "at-chart-donut": LocalJSX.IntrinsicElements["at-chart-donut"] & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
             /**
              * @category Form Controls
              * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.
              */
-            "at-checkbox": LocalJSX.AtCheckbox & JSXBase.HTMLAttributes<HTMLAtCheckboxElement>;
+            "at-checkbox": LocalJSX.IntrinsicElements["at-checkbox"] & JSXBase.HTMLAttributes<HTMLAtCheckboxElement>;
             /**
              * @category Data Tables
              * @description A checkbox cell component for table row selection and boolean data display. Provides accessible selection controls within data tables.
              */
-            "at-checkbox-cell": LocalJSX.AtCheckboxCell & JSXBase.HTMLAttributes<HTMLAtCheckboxCellElement>;
+            "at-checkbox-cell": LocalJSX.IntrinsicElements["at-checkbox-cell"] & JSXBase.HTMLAttributes<HTMLAtCheckboxCellElement>;
             /**
              * ### ```interface CheckboxOptions```
              * ```
@@ -8073,207 +8635,207 @@ declare module "@stencil/core" {
              * @category Form Controls
              * @description A checkbox group component for selecting multiple options from a predefined list. Provides grouped validation, labeling, and accessibility features for checkbox collections.
              */
-            "at-checkbox-group": LocalJSX.AtCheckboxGroup & JSXBase.HTMLAttributes<HTMLAtCheckboxGroupElement>;
+            "at-checkbox-group": LocalJSX.IntrinsicElements["at-checkbox-group"] & JSXBase.HTMLAttributes<HTMLAtCheckboxGroupElement>;
             /**
              * @category Data Tables
              * @description A header component for displaying a checkbox.
              */
-            "at-checkbox-header": LocalJSX.AtCheckboxHeader & JSXBase.HTMLAttributes<HTMLAtCheckboxHeaderElement>;
+            "at-checkbox-header": LocalJSX.IntrinsicElements["at-checkbox-header"] & JSXBase.HTMLAttributes<HTMLAtCheckboxHeaderElement>;
             /**
              * @category Utilities
              * @description A chip list component for displaying collections of tags, filters, or selectable items. Supports removal, selection, and interactive chip management.
              */
-            "at-chip-list": LocalJSX.AtChipList & JSXBase.HTMLAttributes<HTMLAtChipListElement>;
+            "at-chip-list": LocalJSX.IntrinsicElements["at-chip-list"] & JSXBase.HTMLAttributes<HTMLAtChipListElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a list of chips.
              */
-            "at-chip-list-cell": LocalJSX.AtChipListCell & JSXBase.HTMLAttributes<HTMLAtChipListCellElement>;
+            "at-chip-list-cell": LocalJSX.IntrinsicElements["at-chip-list-cell"] & JSXBase.HTMLAttributes<HTMLAtChipListCellElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a color status indicator based on predefined types
              */
-            "at-color-status-cell": LocalJSX.AtColorStatusCell & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
-            "at-column-manager": LocalJSX.AtColumnManager & JSXBase.HTMLAttributes<HTMLAtColumnManagerElement>;
-            "at-custom-time-range": LocalJSX.AtCustomTimeRange & JSXBase.HTMLAttributes<HTMLAtCustomTimeRangeElement>;
-            "at-dashboard": LocalJSX.AtDashboard & JSXBase.HTMLAttributes<HTMLAtDashboardElement>;
+            "at-color-status-cell": LocalJSX.IntrinsicElements["at-color-status-cell"] & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
+            "at-column-manager": LocalJSX.IntrinsicElements["at-column-manager"] & JSXBase.HTMLAttributes<HTMLAtColumnManagerElement>;
+            "at-custom-time-range": LocalJSX.IntrinsicElements["at-custom-time-range"] & JSXBase.HTMLAttributes<HTMLAtCustomTimeRangeElement>;
+            "at-dashboard": LocalJSX.IntrinsicElements["at-dashboard"] & JSXBase.HTMLAttributes<HTMLAtDashboardElement>;
             /**
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
              * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
              */
-            "at-dialog": LocalJSX.AtDialog & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
+            "at-dialog": LocalJSX.IntrinsicElements["at-dialog"] & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying and editing text.
              */
-            "at-edit-text-cell": LocalJSX.AtEditTextCell & JSXBase.HTMLAttributes<HTMLAtEditTextCellElement>;
+            "at-edit-text-cell": LocalJSX.IntrinsicElements["at-edit-text-cell"] & JSXBase.HTMLAttributes<HTMLAtEditTextCellElement>;
             /**
              * @category Form Controls
              * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
              */
-            "at-form-label": LocalJSX.AtFormLabel & JSXBase.HTMLAttributes<HTMLAtFormLabelElement>;
+            "at-form-label": LocalJSX.IntrinsicElements["at-form-label"] & JSXBase.HTMLAttributes<HTMLAtFormLabelElement>;
             /**
              * @category Layout
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
-            "at-header": LocalJSX.AtHeader & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
+            "at-header": LocalJSX.IntrinsicElements["at-header"] & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
             /**
              * @category Form Controls
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
              */
-            "at-input": LocalJSX.AtInput & JSXBase.HTMLAttributes<HTMLAtInputElement>;
-            "at-input-date": LocalJSX.AtInputDate & JSXBase.HTMLAttributes<HTMLAtInputDateElement>;
+            "at-input": LocalJSX.IntrinsicElements["at-input"] & JSXBase.HTMLAttributes<HTMLAtInputElement>;
+            "at-input-date": LocalJSX.IntrinsicElements["at-input-date"] & JSXBase.HTMLAttributes<HTMLAtInputDateElement>;
             /**
              * @category Form Controls
              * @description A numeric input component for entering numerical values.
              */
-            "at-input-numeric": LocalJSX.AtInputNumeric & JSXBase.HTMLAttributes<HTMLAtInputNumericElement>;
+            "at-input-numeric": LocalJSX.IntrinsicElements["at-input-numeric"] & JSXBase.HTMLAttributes<HTMLAtInputNumericElement>;
             /**
              * @category Form Controls
              * @description A range input component for selecting a value within a specified range.
              */
-            "at-input-range": LocalJSX.AtInputRange & JSXBase.HTMLAttributes<HTMLAtInputRangeElement>;
-            "at-input-time": LocalJSX.AtInputTime & JSXBase.HTMLAttributes<HTMLAtInputTimeElement>;
+            "at-input-range": LocalJSX.IntrinsicElements["at-input-range"] & JSXBase.HTMLAttributes<HTMLAtInputRangeElement>;
+            "at-input-time": LocalJSX.IntrinsicElements["at-input-time"] & JSXBase.HTMLAttributes<HTMLAtInputTimeElement>;
             /**
              * @category Layout
              * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
              */
-            "at-layout": LocalJSX.AtLayout & JSXBase.HTMLAttributes<HTMLAtLayoutElement>;
+            "at-layout": LocalJSX.IntrinsicElements["at-layout"] & JSXBase.HTMLAttributes<HTMLAtLayoutElement>;
             /**
              * @category Layout
              * @description A list item component for data in key:value format.
              */
-            "at-list-item": LocalJSX.AtListItem & JSXBase.HTMLAttributes<HTMLAtListItemElement>;
+            "at-list-item": LocalJSX.IntrinsicElements["at-list-item"] & JSXBase.HTMLAttributes<HTMLAtListItemElement>;
             /**
              * @category Navigation
              * @description A list selector component for selecting an item from a list.
              */
-            "at-list-selector": LocalJSX.AtListSelector & JSXBase.HTMLAttributes<HTMLAtListSelectorElement>;
+            "at-list-selector": LocalJSX.IntrinsicElements["at-list-selector"] & JSXBase.HTMLAttributes<HTMLAtListSelectorElement>;
             /**
              * @category Navigation
              * @description A list selector item component for the list selector.
              */
-            "at-list-selector-item": LocalJSX.AtListSelectorItem & JSXBase.HTMLAttributes<HTMLAtListSelectorItemElement>;
+            "at-list-selector-item": LocalJSX.IntrinsicElements["at-list-selector-item"] & JSXBase.HTMLAttributes<HTMLAtListSelectorItemElement>;
             /**
              * @category Feedback
              * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
              */
-            "at-loading": LocalJSX.AtLoading & JSXBase.HTMLAttributes<HTMLAtLoadingElement>;
-            "at-menu": LocalJSX.AtMenu & JSXBase.HTMLAttributes<HTMLAtMenuElement>;
+            "at-loading": LocalJSX.IntrinsicElements["at-loading"] & JSXBase.HTMLAttributes<HTMLAtLoadingElement>;
+            "at-menu": LocalJSX.IntrinsicElements["at-menu"] & JSXBase.HTMLAttributes<HTMLAtMenuElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a menu.
              */
-            "at-menu-cell": LocalJSX.AtMenuCell & JSXBase.HTMLAttributes<HTMLAtMenuCellElement>;
+            "at-menu-cell": LocalJSX.IntrinsicElements["at-menu-cell"] & JSXBase.HTMLAttributes<HTMLAtMenuCellElement>;
             /**
              * @category Form Controls
              * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
              */
-            "at-menu-item": LocalJSX.AtMenuItem & JSXBase.HTMLAttributes<HTMLAtMenuItemElement>;
+            "at-menu-item": LocalJSX.IntrinsicElements["at-menu-item"] & JSXBase.HTMLAttributes<HTMLAtMenuItemElement>;
             /**
              * @category Feedback
              * @description A message component for displaying notifications, alerts, or informational messages.
              */
-            "at-message": LocalJSX.AtMessage & JSXBase.HTMLAttributes<HTMLAtMessageElement>;
+            "at-message": LocalJSX.IntrinsicElements["at-message"] & JSXBase.HTMLAttributes<HTMLAtMessageElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying multiple buttons.
              */
-            "at-multi-btn-cell": LocalJSX.AtMultiBtnCell & JSXBase.HTMLAttributes<HTMLAtMultiBtnCellElement>;
+            "at-multi-btn-cell": LocalJSX.IntrinsicElements["at-multi-btn-cell"] & JSXBase.HTMLAttributes<HTMLAtMultiBtnCellElement>;
             /**
              * @category Form Controls
              * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
-            "at-multi-select": LocalJSX.AtMultiSelect & JSXBase.HTMLAttributes<HTMLAtMultiSelectElement>;
+            "at-multi-select": LocalJSX.IntrinsicElements["at-multi-select"] & JSXBase.HTMLAttributes<HTMLAtMultiSelectElement>;
             /**
              * @category Feedback
              * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
              */
-            "at-placeholder": LocalJSX.AtPlaceholder & JSXBase.HTMLAttributes<HTMLAtPlaceholderElement>;
+            "at-placeholder": LocalJSX.IntrinsicElements["at-placeholder"] & JSXBase.HTMLAttributes<HTMLAtPlaceholderElement>;
             /**
              * @category Data Visualization
              * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
              */
-            "at-progress-bar": LocalJSX.AtProgressBar & JSXBase.HTMLAttributes<HTMLAtProgressBarElement>;
+            "at-progress-bar": LocalJSX.IntrinsicElements["at-progress-bar"] & JSXBase.HTMLAttributes<HTMLAtProgressBarElement>;
             /**
              * @category Prompt
              * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
              */
-            "at-prompt-container": LocalJSX.AtPromptContainer & JSXBase.HTMLAttributes<HTMLAtPromptContainerElement>;
+            "at-prompt-container": LocalJSX.IntrinsicElements["at-prompt-container"] & JSXBase.HTMLAttributes<HTMLAtPromptContainerElement>;
             /**
              * @category Prompt
              * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
              */
-            "at-prompt-input": LocalJSX.AtPromptInput & JSXBase.HTMLAttributes<HTMLAtPromptInputElement>;
+            "at-prompt-input": LocalJSX.IntrinsicElements["at-prompt-input"] & JSXBase.HTMLAttributes<HTMLAtPromptInputElement>;
             /**
              * @category Prompt
              * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
              */
-            "at-prompt-message": LocalJSX.AtPromptMessage & JSXBase.HTMLAttributes<HTMLAtPromptMessageElement>;
+            "at-prompt-message": LocalJSX.IntrinsicElements["at-prompt-message"] & JSXBase.HTMLAttributes<HTMLAtPromptMessageElement>;
             /**
              * @category Prompt
              * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
              */
-            "at-prompt-thread": LocalJSX.AtPromptThread & JSXBase.HTMLAttributes<HTMLAtPromptThreadElement>;
+            "at-prompt-thread": LocalJSX.IntrinsicElements["at-prompt-thread"] & JSXBase.HTMLAttributes<HTMLAtPromptThreadElement>;
             /**
              * @category Form Controls
              * @description A radio button component for selecting a single option from a predefined list.
              */
-            "at-radio": LocalJSX.AtRadio & JSXBase.HTMLAttributes<HTMLAtRadioElement>;
+            "at-radio": LocalJSX.IntrinsicElements["at-radio"] & JSXBase.HTMLAttributes<HTMLAtRadioElement>;
             /**
              * @category Form Controls
              * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
              */
-            "at-radio-group": LocalJSX.AtRadioGroup & JSXBase.HTMLAttributes<HTMLAtRadioGroupElement>;
+            "at-radio-group": LocalJSX.IntrinsicElements["at-radio-group"] & JSXBase.HTMLAttributes<HTMLAtRadioGroupElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.
              */
-            "at-search": LocalJSX.AtSearch & JSXBase.HTMLAttributes<HTMLAtSearchElement>;
+            "at-search": LocalJSX.IntrinsicElements["at-search"] & JSXBase.HTMLAttributes<HTMLAtSearchElement>;
             /**
              * @category Data Tables
              * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
              */
-            "at-search-table": LocalJSX.AtSearchTable & JSXBase.HTMLAttributes<HTMLAtSearchTableElement>;
+            "at-search-table": LocalJSX.IntrinsicElements["at-search-table"] & JSXBase.HTMLAttributes<HTMLAtSearchTableElement>;
             /**
              * @category Form Controls
              * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
              */
-            "at-select": LocalJSX.AtSelect & JSXBase.HTMLAttributes<HTMLAtSelectElement>;
+            "at-select": LocalJSX.IntrinsicElements["at-select"] & JSXBase.HTMLAttributes<HTMLAtSelectElement>;
             /**
              * @category Form Controls
              * @description A wrapper component for grouping select options with proper ARIA semantics.
              */
-            "at-select-group": LocalJSX.AtSelectGroup & JSXBase.HTMLAttributes<HTMLAtSelectGroupElement>;
+            "at-select-group": LocalJSX.IntrinsicElements["at-select-group"] & JSXBase.HTMLAttributes<HTMLAtSelectGroupElement>;
             /**
              * @category Form Controls
              * @description A select option component used within the AtSelect component.
              * @Slot - Places content before the label.
              * @After - Places content after the label.
              */
-            "at-select-option": LocalJSX.AtSelectOption & JSXBase.HTMLAttributes<HTMLAtSelectOptionElement>;
+            "at-select-option": LocalJSX.IntrinsicElements["at-select-option"] & JSXBase.HTMLAttributes<HTMLAtSelectOptionElement>;
             /**
              * @category Overlays
              * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
              * @dependency at-button
              */
-            "at-side-panel": LocalJSX.AtSidePanel & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;
+            "at-side-panel": LocalJSX.IntrinsicElements["at-side-panel"] & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;
             /**
              * @category Navigation
              * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
              */
-            "at-sidebar": LocalJSX.AtSidebar & JSXBase.HTMLAttributes<HTMLAtSidebarElement>;
+            "at-sidebar": LocalJSX.IntrinsicElements["at-sidebar"] & JSXBase.HTMLAttributes<HTMLAtSidebarElement>;
             /**
              * @category Navigation
              * @description 
              */
-            "at-sidebar-menu": LocalJSX.AtSidebarMenu & JSXBase.HTMLAttributes<HTMLAtSidebarMenuElement>;
+            "at-sidebar-menu": LocalJSX.IntrinsicElements["at-sidebar-menu"] & JSXBase.HTMLAttributes<HTMLAtSidebarMenuElement>;
             /**
              * @category Navigation
              * @description A sidebar menu item component for the sidebar.
              */
-            "at-sidebar-menuitem": LocalJSX.AtSidebarMenuitem & JSXBase.HTMLAttributes<HTMLAtSidebarMenuitemElement>;
+            "at-sidebar-menuitem": LocalJSX.IntrinsicElements["at-sidebar-menuitem"] & JSXBase.HTMLAttributes<HTMLAtSidebarMenuitemElement>;
             /**
              * @category Navigation
              * @description Display nested sub-menus in the atui-sidebar.
@@ -8281,65 +8843,65 @@ declare module "@stencil/core" {
              * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
              * Menu indent styling is supported up to 3 levels.
              */
-            "at-sidebar-submenu": LocalJSX.AtSidebarSubmenu & JSXBase.HTMLAttributes<HTMLAtSidebarSubmenuElement>;
+            "at-sidebar-submenu": LocalJSX.IntrinsicElements["at-sidebar-submenu"] & JSXBase.HTMLAttributes<HTMLAtSidebarSubmenuElement>;
             /**
              * @category Navigation
              * @description A sidebar trigger component for the sidebar.
              */
-            "at-sidebar-trigger": LocalJSX.AtSidebarTrigger & JSXBase.HTMLAttributes<HTMLAtSidebarTriggerElement>;
+            "at-sidebar-trigger": LocalJSX.IntrinsicElements["at-sidebar-trigger"] & JSXBase.HTMLAttributes<HTMLAtSidebarTriggerElement>;
             /**
              * @category Utilities
              * @description A src-dest component for displaying source and destination information.
              */
-            "at-src-dest": LocalJSX.AtSrcDest & JSXBase.HTMLAttributes<HTMLAtSrcDestElement>;
+            "at-src-dest": LocalJSX.IntrinsicElements["at-src-dest"] & JSXBase.HTMLAttributes<HTMLAtSrcDestElement>;
             /**
              * @category Data Tables
              * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
              */
-            "at-static-table": LocalJSX.AtStaticTable & JSXBase.HTMLAttributes<HTMLAtStaticTableElement>;
+            "at-static-table": LocalJSX.IntrinsicElements["at-static-table"] & JSXBase.HTMLAttributes<HTMLAtStaticTableElement>;
             /**
              * @category Data Visualization
              * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
              */
-            "at-status-bar": LocalJSX.AtStatusBar & JSXBase.HTMLAttributes<HTMLAtStatusBarElement>;
+            "at-status-bar": LocalJSX.IntrinsicElements["at-status-bar"] & JSXBase.HTMLAttributes<HTMLAtStatusBarElement>;
             /**
              * @category Navigation
              * @description A tab content component for the tab selector.
              */
-            "at-tab-content": LocalJSX.AtTabContent & JSXBase.HTMLAttributes<HTMLAtTabContentElement>;
+            "at-tab-content": LocalJSX.IntrinsicElements["at-tab-content"] & JSXBase.HTMLAttributes<HTMLAtTabContentElement>;
             /**
              * @category Navigation
              * @description A tab trigger component for the tab selector.
              */
-            "at-tab-trigger": LocalJSX.AtTabTrigger & JSXBase.HTMLAttributes<HTMLAtTabTriggerElement>;
+            "at-tab-trigger": LocalJSX.IntrinsicElements["at-tab-trigger"] & JSXBase.HTMLAttributes<HTMLAtTabTriggerElement>;
             /**
              * @category Data Tables
              * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
              */
-            "at-table": LocalJSX.AtTable & JSXBase.HTMLAttributes<HTMLAtTableElement>;
+            "at-table": LocalJSX.IntrinsicElements["at-table"] & JSXBase.HTMLAttributes<HTMLAtTableElement>;
             /**
              * @category Data Tables
              * @description A container component for table actions, including search, export, and column management. Provides a unified interface for managing table interactions and data export.
              */
-            "at-table-actions": LocalJSX.AtTableActions & JSXBase.HTMLAttributes<HTMLAtTableActionsElement>;
+            "at-table-actions": LocalJSX.IntrinsicElements["at-table-actions"] & JSXBase.HTMLAttributes<HTMLAtTableActionsElement>;
             /**
              * @category Data Tables
              * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
              */
-            "at-table-export-menu": LocalJSX.AtTableExportMenu & JSXBase.HTMLAttributes<HTMLAtTableExportMenuElement>;
+            "at-table-export-menu": LocalJSX.IntrinsicElements["at-table-export-menu"] & JSXBase.HTMLAttributes<HTMLAtTableExportMenuElement>;
             /**
              * @category Data Tables
              * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
              */
-            "at-table-filter-menu": LocalJSX.AtTableFilterMenu & JSXBase.HTMLAttributes<HTMLAtTableFilterMenuElement>;
-            "at-table-filters": LocalJSX.AtTableFilters & JSXBase.HTMLAttributes<HTMLAtTableFiltersElement>;
+            "at-table-filter-menu": LocalJSX.IntrinsicElements["at-table-filter-menu"] & JSXBase.HTMLAttributes<HTMLAtTableFilterMenuElement>;
+            "at-table-filters": LocalJSX.IntrinsicElements["at-table-filters"] & JSXBase.HTMLAttributes<HTMLAtTableFiltersElement>;
             /**
              * @category Data Tables
              * @description Optional component for use with ```<at-table>```.
              * Provides controls for pagination if you would like to
              * have control of the table's pagination.
              */
-            "at-table-pagination": LocalJSX.AtTablePagination & JSXBase.HTMLAttributes<HTMLAtTablePaginationElement>;
+            "at-table-pagination": LocalJSX.IntrinsicElements["at-table-pagination"] & JSXBase.HTMLAttributes<HTMLAtTablePaginationElement>;
             /**
              * ### interface Tab
              * ```
@@ -8351,77 +8913,77 @@ declare module "@stencil/core" {
              * @category Navigation
              * @description A tabs component for switching between different content sections. Provides keyboard navigation and accessible tab panel management. It acts as a controller.
              */
-            "at-tabs": LocalJSX.AtTabs & JSXBase.HTMLAttributes<HTMLAtTabsElement>;
+            "at-tabs": LocalJSX.IntrinsicElements["at-tabs"] & JSXBase.HTMLAttributes<HTMLAtTabsElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a text with a badge.
              */
-            "at-text-badge-cell": LocalJSX.AtTextBadgeCell & JSXBase.HTMLAttributes<HTMLAtTextBadgeCellElement>;
+            "at-text-badge-cell": LocalJSX.IntrinsicElements["at-text-badge-cell"] & JSXBase.HTMLAttributes<HTMLAtTextBadgeCellElement>;
             /**
              * @category Data Tables
              * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
              */
-            "at-text-cell": LocalJSX.AtTextCell & JSXBase.HTMLAttributes<HTMLAtTextCellElement>;
+            "at-text-cell": LocalJSX.IntrinsicElements["at-text-cell"] & JSXBase.HTMLAttributes<HTMLAtTextCellElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
              */
-            "at-text-icon-cell": LocalJSX.AtTextIconCell & JSXBase.HTMLAttributes<HTMLAtTextIconCellElement>;
+            "at-text-icon-cell": LocalJSX.IntrinsicElements["at-text-icon-cell"] & JSXBase.HTMLAttributes<HTMLAtTextIconCellElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a text with an image.
              */
-            "at-text-image-cell": LocalJSX.AtTextImageCell & JSXBase.HTMLAttributes<HTMLAtTextImageCellElement>;
+            "at-text-image-cell": LocalJSX.IntrinsicElements["at-text-image-cell"] & JSXBase.HTMLAttributes<HTMLAtTextImageCellElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a text with a status.
              */
-            "at-text-status-cell": LocalJSX.AtTextStatusCell & JSXBase.HTMLAttributes<HTMLAtTextStatusCellElement>;
+            "at-text-status-cell": LocalJSX.IntrinsicElements["at-text-status-cell"] & JSXBase.HTMLAttributes<HTMLAtTextStatusCellElement>;
             /**
              * @category Form Controls
              * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
              */
-            "at-textarea": LocalJSX.AtTextarea & JSXBase.HTMLAttributes<HTMLAtTextareaElement>;
+            "at-textarea": LocalJSX.IntrinsicElements["at-textarea"] & JSXBase.HTMLAttributes<HTMLAtTextareaElement>;
             /**
              * @category Form Controls
              * @description A time range component for selecting time periods.
              */
-            "at-time-range": LocalJSX.AtTimeRange & JSXBase.HTMLAttributes<HTMLAtTimeRangeElement>;
+            "at-time-range": LocalJSX.IntrinsicElements["at-time-range"] & JSXBase.HTMLAttributes<HTMLAtTimeRangeElement>;
             /**
              * @category Form Controls
              * @description A time with unit component for selecting a time period.
              */
-            "at-time-with-unit": LocalJSX.AtTimeWithUnit & JSXBase.HTMLAttributes<HTMLAtTimeWithUnitElement>;
+            "at-time-with-unit": LocalJSX.IntrinsicElements["at-time-with-unit"] & JSXBase.HTMLAttributes<HTMLAtTimeWithUnitElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a title and subtitle.
              */
-            "at-title-subtitle-cell": LocalJSX.AtTitleSubtitleCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleCellElement>;
+            "at-title-subtitle-cell": LocalJSX.IntrinsicElements["at-title-subtitle-cell"] & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleCellElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a title and subtitle with a date.
              */
-            "at-title-subtitle-date-cell": LocalJSX.AtTitleSubtitleDateCell & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleDateCellElement>;
+            "at-title-subtitle-date-cell": LocalJSX.IntrinsicElements["at-title-subtitle-date-cell"] & JSXBase.HTMLAttributes<HTMLAtTitleSubtitleDateCellElement>;
             /**
              * @category Overlays
              * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
              */
-            "at-toaster": LocalJSX.AtToaster & JSXBase.HTMLAttributes<HTMLAtToasterElement>;
+            "at-toaster": LocalJSX.IntrinsicElements["at-toaster"] & JSXBase.HTMLAttributes<HTMLAtToasterElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a toggle.
              */
-            "at-toggle-cell": LocalJSX.AtToggleCell & JSXBase.HTMLAttributes<HTMLAtToggleCellElement>;
+            "at-toggle-cell": LocalJSX.IntrinsicElements["at-toggle-cell"] & JSXBase.HTMLAttributes<HTMLAtToggleCellElement>;
             /**
              * @category Form Controls
              * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
              */
-            "at-toggle-switch": LocalJSX.AtToggleSwitch & JSXBase.HTMLAttributes<HTMLAtToggleSwitchElement>;
+            "at-toggle-switch": LocalJSX.IntrinsicElements["at-toggle-switch"] & JSXBase.HTMLAttributes<HTMLAtToggleSwitchElement>;
             /**
              * @category **Overlays**
              * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
              */
-            "at-tooltip": LocalJSX.AtTooltip & JSXBase.HTMLAttributes<HTMLAtTooltipElement>;
+            "at-tooltip": LocalJSX.IntrinsicElements["at-tooltip"] & JSXBase.HTMLAttributes<HTMLAtTooltipElement>;
             /**
              * ### ```interface ItemNode```
              * ```
@@ -8432,8 +8994,8 @@ declare module "@stencil/core" {
              *  tooltip?: string;
              * ```
              */
-            "at-tree": LocalJSX.AtTree & JSXBase.HTMLAttributes<HTMLAtTreeElement>;
-            "at-tree-item": LocalJSX.AtTreeItem & JSXBase.HTMLAttributes<HTMLAtTreeItemElement>;
+            "at-tree": LocalJSX.IntrinsicElements["at-tree"] & JSXBase.HTMLAttributes<HTMLAtTreeElement>;
+            "at-tree-item": LocalJSX.IntrinsicElements["at-tree-item"] & JSXBase.HTMLAttributes<HTMLAtTreeItemElement>;
         }
     }
 }

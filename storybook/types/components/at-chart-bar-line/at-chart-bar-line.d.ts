@@ -1,6 +1,5 @@
 import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
-import 'chartjs-adapter-dayjs-4';
-import { SelectedTimeRangeExtended } from '../../components';
+import { AtSelectedTimeRangeExtended } from '../../models/at-time-range.models';
 import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
 import { AtChartColorPalette } from '../../types/chart-color';
 export interface AtIPointStyles {
@@ -97,7 +96,7 @@ export declare class AtChartBarLine {
     /**
      * The time range that the chart is displayed in.
      */
-    time_range?: SelectedTimeRangeExtended;
+    time_range?: AtSelectedTimeRangeExtended;
     /**
      * Height of the chart.
      */
@@ -128,7 +127,7 @@ export declare class AtChartBarLine {
     componentDidLoad(): void;
     pointStylesSetup(): void;
     applyPresetPalette(colors: string[]): void;
-    getMinMaxDateStrings(timeRange: SelectedTimeRangeExtended): {
+    getMinMaxDateStrings(timeRange: AtSelectedTimeRangeExtended): {
         min: string;
         max: string;
     };

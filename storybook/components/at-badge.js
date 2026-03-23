@@ -1,1 +1,1 @@
-import{A as r,d as o}from"./p-D2r7yrir.js";const s=r,p=o;export{s as AtBadge,p as defineCustomElement}
+import{A as o,d as s}from"./p-BF-dG6Ah.js";const p=o,r=s;export{p as AtBadge,r as defineCustomElement}

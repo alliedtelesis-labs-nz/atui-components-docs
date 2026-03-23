@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-CzDB71Wy.js');
-var translation = require('./translation-B-kubNyM.js');
+var index = require('./index-CdUivN1V.js');
+var translation = require('./translation-C7aG_Jvq.js');
 
 const AtPromptContainer = class {
     constructor(hostRef) {
@@ -210,7 +210,7 @@ const AtPromptContainer = class {
         return (index.h("div", { class: "p-4" }, index.h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (index.h(index.Host, { key: '75bf4e1868017628fc9a6e581f68ac43c69a94ba', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: 'adb9395dc3d252fab9af3d1108a197c166c7d4be', name: "prompt-container-header" }), index.h("div", { key: 'd1d58221bc99da21884387cb1ee35f30be2d239f', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: 'c3276f5d2ca7bd1ab73855b58b17af010575153d', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: 'bdbdd585ddd0f41ef07e13614ff1693faac58f4a', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '1074e57cf400cb5455c8982bc499daac12e9c4c6', name: "prompt-container-footer" }))));
+        return (index.h(index.Host, { key: '1f5ca320b8bf845de224e6b609e5d58bb2bcd9d5', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '778925aff73037f76f3050f6a3d70dfe78c7c977', name: "prompt-container-header" }), index.h("div", { key: '5498b1874cf8335bfa6df4bca16feadaf08ee573', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: 'c4e2a23a9d56c8604f9312b9e561ca473be221c6', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: '982484d03a364cd2336d7b5daac664f990e92275', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: 'b8e8ea64a9aa273e50c1c2e1a420ad022e17943a', name: "prompt-container-footer" }))));
     }
 };
 
