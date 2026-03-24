@@ -2,15 +2,15 @@ import dayjs from "dayjs";
 import floor from "lodash/floor.js";
 import isEmpty from "lodash/isEmpty.js";
 import round from "lodash/round.js";
-import { Duration, TimeExtraOptions, TimeUnit, } from "../types/time";
+import { Duration, TimeExtraOptions, AtTimeUnit, } from "../types/time";
 const SECONDS_PER_UNIT = {
-    [TimeUnit.SECONDS]: 1,
-    [TimeUnit.MINUTES]: 60,
-    [TimeUnit.HOURS]: 3600,
-    [TimeUnit.DAYS]: 86400,
-    [TimeUnit.WEEKS]: 604800,
-    [TimeUnit.MONTHS]: 2629746, // 365.2425 * 86400 / 12
-    [TimeUnit.YEARS]: 31557600, // 365.2425 * 86400
+    [AtTimeUnit.SECONDS]: 1,
+    [AtTimeUnit.MINUTES]: 60,
+    [AtTimeUnit.HOURS]: 3600,
+    [AtTimeUnit.DAYS]: 86400,
+    [AtTimeUnit.WEEKS]: 604800,
+    [AtTimeUnit.MONTHS]: 2629746, // 365.2425 * 86400 / 12
+    [AtTimeUnit.YEARS]: 31557600, // 365.2425 * 86400
 };
 export class AtTimeDateUtil {
     /**
@@ -22,7 +22,7 @@ export class AtTimeDateUtil {
      * @param decimalPlaces: if specified, rounds to these, otherwise rounds to the nearest whole number/integer
      **/
     static convertSecondsToUnit(seconds, unit, decimalPlaces, roundUp = true) {
-        if (unit === TimeUnit.SECONDS || unit === TimeExtraOptions.ALL) {
+        if (unit === AtTimeUnit.SECONDS || unit === TimeExtraOptions.ALL) {
             return seconds;
         }
         const inUnit = seconds / SECONDS_PER_UNIT[unit];
@@ -127,7 +127,7 @@ export class AtTimeDateUtil {
         return dayjs(date).startOf(unit).toDate();
     }
     /**
-     * ceilingDateByTimeUnit: returns a new date ceiled to the end of the given unit
+     * ceilingDateByAtTimeUnit: returns a new date ceiled to the end of the given unit
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)

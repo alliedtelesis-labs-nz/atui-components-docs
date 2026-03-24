@@ -1,8 +1,8 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host, F as Fragment } from './index-CkS36Ijo.js';
-import { A as AtTimeDateUtil, D as Duration, a as TimeExtraOptions } from './at-time-date.util-q62dAL8L.js';
+import { A as AtTimeDateUtil, D as Duration, d as dayjs, T as TimeExtraOptions } from './at-time-date.util-DLDlk6Fx.js';
 import { f as fetchTranslations } from './translation-C11vpe5m.js';
-import { T as TimeDatePresentationUtil } from './time-date-presentation.util-FzoJb3wk.js';
-import { M as MIN_DATE, D as DateFormat, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
+import { T as TimeDatePresentationUtil } from './time-date-presentation.util-CZMVvhsm.js';
+import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
 const AtButtonGroup = class {
     constructor(hostRef) {
@@ -72,7 +72,7 @@ const AtButtonGroup = class {
         this.el.addEventListener('keydown', this.handleKeyDown);
     }
     getButtonElements() {
-        return Array.from(this.el.querySelectorAll('at-button-group-option'));
+        return Array.from(this.el.querySelectorAll('at-button-group-option:not([data-ignore-selection])'));
     }
     initializeButtons() {
         this.buttonEls.forEach((buttonEl) => {
@@ -148,8 +148,8 @@ const AtButtonGroup = class {
         this.el.removeEventListener('keydown', this.handleKeyDown);
     }
     render() {
-        return (h(Host, { key: '55c9970736b2d65787600c2300121b5557ab8f78', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: 'ad3ebd7ebf2031482f5d51b85bc6c8105792e0e5', class: "mb-4 flex flex-col" }, h("slot", { key: 'badcf4b43e19f114f78c7c64fedd6325044722bc', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '9522de749769c81dcac664ea931285143ed76176', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: 'b0559787b753fefca5ded313d346815cd73b928d', class: "text-light inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '5b8a2633aa14c310689fa011277bd24906ae7de7', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: '198640b98fa962e25292b487cf72d35409b6ac85', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: '58de2536f7cdaeee76008f89920d7c33e86067bf' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: '027cc0fdb2388eea6aa1aa76b25ba2ff97628bd1', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'f7878e557c8eecb7b791939f4b7f2d5835eb66d6', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '0dfed468b863e8c3dfee735029902f5f49e15469', class: "mb-4 flex flex-col" }, h("slot", { key: '03087beb7b62ba1f714e7e7096d5833c884112d4', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '4257ef11df71fe7889a5c06a4049b8d3b953b00f', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: 'ba08c45e9eba4228d2438fce4e660a89aa94632f', class: "text-light inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '5dd5420c5dd1c2d784c7f80f03a5194456e95d8b', class: "border-med relative rounded-lg border bg-white inset-shadow-xs" }, h("ul", { key: '0e0c9488ce7532842dfab33173bdc85fc1088960', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: 'f423482ef43a65e77f3f255569f6dead25323049' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: 'b2b2e0c865c4279eaf94d26dba1c7dc3d3548c52', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "value": [{
@@ -258,7 +258,6 @@ const AtCustomTimeRangeComponent = class {
     fromTime;
     translations;
     setDateNowSwitch;
-    toTimePickerEl;
     get el() { return getElement(this); }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
@@ -284,16 +283,16 @@ const AtCustomTimeRangeComponent = class {
             : this.max_date;
     }
     ceilingMaxDate(date) {
-        return AtTimeDateUtil.ceilingDateByTimeUnit(date, Duration.HOURS);
+        return AtTimeDateUtil.ceilingDateByTimeUnit(date, Duration.MINUTES);
     }
     floorMinDate(date) {
-        return AtTimeDateUtil.floorDateByTimeUnit(date, Duration.HOURS);
+        return AtTimeDateUtil.floorDateByTimeUnit(date, Duration.MINUTES);
     }
     getCustomToDateTime() {
-        return TimeDatePresentationUtil.buildDateFromStrings(this.toDate, this.toTime);
+        return dayjs(`${this.toDate} ${this.toTime}`, 'YYYY-MM-DD HH:mm').toDate();
     }
     getCustomFromDateTime() {
-        return TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, this.fromTime);
+        return dayjs(`${this.fromDate} ${this.fromTime}`, 'YYYY-MM-DD HH:mm').toDate();
     }
     updateMinMaxFlags() {
         const to = this.getCustomToDateTime();
@@ -316,24 +315,23 @@ const AtCustomTimeRangeComponent = class {
     }
     setToDateAndTime(toDate) {
         this.toDate = TimeDatePresentationUtil.getFormattedDate(toDate, 'YYYY-MM-DD');
-        this.toTime = TimeDatePresentationUtil.getFormattedDate(toDate, 'hh:mm a');
+        this.toTime = dayjs(toDate).format('HH:mm');
     }
     setFromDateAndTime(fromDate) {
         this.fromDate = TimeDatePresentationUtil.getFormattedDate(fromDate, 'YYYY-MM-DD');
-        this.fromTime = TimeDatePresentationUtil.getFormattedDate(fromDate, 'hh:mm a');
+        this.fromTime = dayjs(fromDate).format('HH:mm');
     }
-    get getFromTimes() {
+    get fromTimeMin() {
         this.updateMinMaxFlags();
-        if (this.isFromMinDay) {
-            return TimeDatePresentationUtil.getTimeOptions(TimeDatePresentationUtil.getFormattedDate(this.min_date, DateFormat.HOURS_ONLY));
-        }
-        else if (this.isFromMaxDay) {
-            const fromMaxTime = TimeDatePresentationUtil.getFormattedDate(AtTimeDateUtil.shiftDateByUnit(this.max_date, -1, Duration.HOURS), DateFormat.HOURS_ONLY);
-            return TimeDatePresentationUtil.getTimeOptions(undefined, fromMaxTime);
-        }
-        else {
-            return TimeDatePresentationUtil.getTimeOptions();
-        }
+        return this.isFromMinDay
+            ? dayjs(this.min_date).format('HH:mm')
+            : undefined;
+    }
+    get fromTimeMax() {
+        this.updateMinMaxFlags();
+        return this.isFromMaxDay
+            ? dayjs(AtTimeDateUtil.shiftDateByUnit(this.max_date, -1, Duration.HOURS)).format('HH:mm')
+            : undefined;
     }
     get isFromDateAfterToDate() {
         const from = this.getCustomFromDateTime();
@@ -345,18 +343,17 @@ const AtCustomTimeRangeComponent = class {
     get isRangeInvalid() {
         return this.isFromDateAfterToDate;
     }
-    get getToTimes() {
+    get toTimeMin() {
         this.updateMinMaxFlags();
-        if (this.isToMinDay) {
-            const toMaxTime = TimeDatePresentationUtil.getFormattedDate(AtTimeDateUtil.shiftDateByUnit(this.min_date, 1, Duration.HOURS), DateFormat.HOURS_ONLY);
-            return TimeDatePresentationUtil.getTimeOptions(toMaxTime);
-        }
-        else if (this.isToMaxDay) {
-            return TimeDatePresentationUtil.getTimeOptions(undefined, TimeDatePresentationUtil.getFormattedDate(this.max_date, DateFormat.HOURS_ONLY));
-        }
-        else {
-            return TimeDatePresentationUtil.getTimeOptions();
-        }
+        return this.isToMinDay
+            ? dayjs(AtTimeDateUtil.shiftDateByUnit(this.min_date, 1, Duration.HOURS)).format('HH:mm')
+            : undefined;
+    }
+    get toTimeMax() {
+        this.updateMinMaxFlags();
+        return this.isToMaxDay
+            ? dayjs(this.max_date).format('HH:mm')
+            : undefined;
     }
     /**
      * Emitted when the user cancels the time range selection
@@ -371,26 +368,32 @@ const AtCustomTimeRangeComponent = class {
     }
     handleSubmit() {
         this.atuiSubmit.emit({
-            from: TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, this.fromTime).toISOString(),
-            to: TimeDatePresentationUtil.buildDateFromStrings(this.toDate, this.toTime).toISOString(),
+            from: dayjs(`${this.fromDate} ${this.fromTime}`, 'YYYY-MM-DD HH:mm')
+                .toDate()
+                .toISOString(),
+            to: dayjs(`${this.toDate} ${this.toTime}`, 'YYYY-MM-DD HH:mm')
+                .toDate()
+                .toISOString(),
             lockEndDateToNow: this.lock_end_date_to_now,
         });
     }
     render() {
-        return (h("div", { key: 'd265384457e76f0e7333297db3263266520c218b', class: "flex w-fit flex-col gap-8" }, h("h5", { key: '4d4676da8152080a98e0cb9ae2c3441b4e6ee93a', class: "text-h5 text-dark p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '15260c543201ae6050158962d1d7ed738bdef1b6', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: '0b96c011245f6be19c9c534cac531d954432ce9e', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'ed5aa5c61536e2e1c6cf04740ab735cfaaaed733', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
+        return (h("div", { key: '60c618d0204eb3dcb755b959af3101d33490fb0d', class: "flex w-fit flex-col gap-8" }, h("h5", { key: 'c30d924a04c9671ed3654a9468159751202904e2', class: "text-h5 text-dark p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '4abbc38c1ad17c286233941a7ecacc5cafa9353d', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: '1417a043c9f69befac3044a9bac41d470141c84a', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'f5c2cf7e9077bcff820faacb74962b39a16b728d', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
                 this.from_date_value = event.detail;
-            } }), this.can_set_time && (h("at-select", { key: '7283eac0d5537acea0ffd6cac044835043afb273', label: this.translations.ATUI.TIME.FROM_TIME, options: this.getFromTimes, value: this.fromTime, onAtuiChange: (event) => {
-                this.from_date_value =
-                    TimeDatePresentationUtil.buildDateFromStrings(this.fromDate, event.detail);
-            } }))), h("div", { key: 'cdcf582875abb647c530e0e360f9ee132f325245', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'edc78d2d86356fc9c23fb51c4258f81aa3e4c1e5', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+            } }), this.can_set_time && (h("at-input-time", { key: '1fb843e532d9c71a534d4a91b7b419e93d91093d', class: "w-full", label: this.translations.ATUI.TIME.FROM_TIME, value: this.fromTime, min: this.fromTimeMin, max: this.fromTimeMax, onAtuiChange: (event) => {
+                if (event.detail) {
+                    this.from_date_value = dayjs(`${this.fromDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
+                }
+            } }))), h("div", { key: 'cb0c5d28715fe1c3c36cfe3fea45288fe99234cb', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'b532a4d7f5d972851d29435e61af452a066b2c11', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
                 this.to_date_value = event.detail;
-            } }), this.can_set_time && (h("at-select", { key: 'd7a45914a9df761abcaa5bfcf426708c6a978583', label: this.translations.ATUI.TIME.TO_TIME, options: this.getToTimes, value: this.toTime, disabled: this.lock_end_date_to_now, ref: (el) => (this.toTimePickerEl = el), onAtuiChange: (event) => {
-                this.to_date_value =
-                    TimeDatePresentationUtil.buildDateFromStrings(this.toDate, event.detail);
-            } })))), h("div", { key: 'f60c69775c82db6228a8dbaf1d01bcf26392c46d', class: "align-center my-8 flex flex-row justify-between gap-8 rounded-md px-12" }, h("div", { key: '90598d0e136eb25fc4b9315e19e6ea24cd4c2da1', class: "flex flex-col" }, h("label", { key: 'f4c07c95e898aaa2c43b1cec87b76145426b07e8', class: "c-form__label" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '4cbf2ac55f7b5f1c608615e584b4e81a7906292f', class: "text-med text-xs" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: '3092e0b4fae9dd32d77a058c489353cc76d43393', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: 'c91877727b94fd95ff41210f3c3283a2e20f118e', class: "flex flex-col gap-4 px-12" }, h("span", { key: '275a9efe68d63d34bddd92b20cb051024ce9403e', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
-            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: 'a4e3cc33ac249e5f754bf9b8c4f17ecca40d7d9f', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '6327cbc593cd11d0e52220e8d1bb1562a046b1ad', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: 'd5ab2914f93d8c76de2653e5ad5401f233088be2', class: "flex flex-row gap-8" }, h("at-button", { key: '12fd5024a3d6fb5492f2229f7970b52170964a22', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '6191ff4c3dc5b7874e100040689a6a4890840433', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
+            } }), this.can_set_time && (h("at-input-time", { key: 'fc7de9e17823702c5108b2a9736a0040431ba7e3', class: "w-full", label: this.translations.ATUI.TIME.TO_TIME, value: this.toTime, min: this.toTimeMin, max: this.toTimeMax, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+                if (event.detail) {
+                    this.to_date_value = dayjs(`${this.toDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
+                }
+            } })))), h("div", { key: '525283d1810cc2c554b4a65a424330c535a40744', class: "align-center my-8 flex flex-row justify-between gap-8 rounded-md px-12" }, h("div", { key: '63fe6ab30c26f93527d13b70da39b8a699b2a359', class: "flex flex-col" }, h("label", { key: 'afc789a24b63ff6e1a62ca365969f627fae3b8fe', class: "c-form__label" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '6995bfc16c6b80eb3dcd732a1b157937494ebf76', class: "text-med text-xs" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: 'ff944ad0fda9a59c8ab555091b2684550022489f', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: 'edf02968d3149e952018b102b2832fbcdd247259', class: "flex flex-col gap-4 px-12" }, h("span", { key: '8527ab6d2b85edf244d7983ffbe78090ed3a3539', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
+            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: 'f68d623b74fd3eeda8d451226d09ef0c5d7a89bc', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '53cf48ff2fb21631483d967dd425888a3ee46b53', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: 'e799fdfd6bb44dffe8873d90e369bb2d82713caa', class: "flex flex-row gap-8" }, h("at-button", { key: 'f928f6c42abb5c4dc8a1beae44a7597606f7e272', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'bd6cd0503ac7c6caea1c1978bf6f7e2f0e9eaba6', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
         "min_date": [{
@@ -461,7 +464,7 @@ const AtTimeWithUnitComponent = class {
         this.updateSelectedTime(this.timeValue);
     }
     timeUnit;
-    watchTimeUnit() {
+    watchAtTimeUnit() {
         this.updateSelectedTime(this.timeValue);
     }
     selectedTime;
@@ -507,6 +510,16 @@ const AtTimeWithUnitComponent = class {
         this.validateInput();
         this.startDate = this.getRelativeDate()?.startDate;
     }
+    formatDuration(seconds) {
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        if (days > 0)
+            return hours > 0 ? `${days}d ${hours}hr` : `${days}d`;
+        if (hours > 0)
+            return mins > 0 ? `${hours}hr ${mins}min` : `${hours}hr`;
+        return `${mins}min`;
+    }
     validateInput() {
         if (this.selectedTime !== TimeRangeDisplay.ALL) {
             const maxSeconds = this.min_date
@@ -516,12 +529,12 @@ const AtTimeWithUnitComponent = class {
             const minTimeValue = AtTimeDateUtil.convertSecondsToUnit(this.min_seconds, this.timeUnit, 0, false);
             if (this.timeValue > maxTimeValue)
                 this.errorText = this.translations
-                    ? this.translations.ATUI.TIME.VALIDATION.MAX_NUMBER.replace('{lowerThanValue}', `${maxTimeValue + 1} ${this.timeUnit}`)
-                    : `Please enter a value lower than ${maxTimeValue} ${this.timeUnit}`;
+                    ? this.translations.ATUI.TIME.VALIDATION.MAX_NUMBER.replace('{lowerThanValue}', this.formatDuration(maxSeconds))
+                    : `Please enter a value lower than ${this.formatDuration(maxSeconds)}`;
             else if (this.timeValue < minTimeValue)
                 this.errorText = this.translations
-                    ? this.translations.ATUI.TIME.VALIDATION.MIN_NUMBER.replace('{min}', `${maxTimeValue} ${this.timeUnit}`)
-                    : `Please enter a value larger than ${minTimeValue} ${this.timeUnit}`;
+                    ? this.translations.ATUI.TIME.VALIDATION.MIN_NUMBER.replace('{min}', this.formatDuration(this.min_seconds))
+                    : `Please enter a value larger than ${this.formatDuration(this.min_seconds)}`;
             else
                 this.errorText = '';
             if (this.errorText && this.custom_error_message) {
@@ -569,29 +582,29 @@ const AtTimeWithUnitComponent = class {
         this.timeUnit = event.detail;
     }
     render() {
-        return (h("div", { key: 'd50314289420208336b03ef594a37cec7e0bd6a9', class: "w-panel-sm flex flex-col gap-16", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.handleSubmit(), tabindex: 0 }, h("div", { key: '96589f182ac06a391069254e96f696c88c4a6be9', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '357a1b13063db5e61f282afbd5c87ecc5b76552a', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '5f5ab6f03aa8059637fd2598fe0ceee4232b1961', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: 'b27b40d8b2bfda85890a15c64819499f2deb883a', value: this.timeValue, onAtuiChange: (event) => {
+        return (h("div", { key: '8217041ab14579c38f5107444e3ff73c0769b129', class: "w-panel-sm flex flex-col gap-16", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.handleSubmit(), tabindex: 0 }, h("div", { key: 'd87f5a199a4db24ae7985ce6c34c3d1fb14cab85', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '54673388cee0b5690484fff82939c474e46d9cec', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '3055512f4b7382fa5b37404021f3a103cd014ebc', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: 'f63d230de1f224b8e130391af11c01a53b4c97f3', value: this.timeValue, onAtuiChange: (event) => {
                 this.timeValue = event.detail;
-            } }), h("at-select", { key: 'd89cfecfb838c87b52e2d32596d7796b73301220', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
+            } }), h("at-select", { key: 'eac39811feec4ed83bd6d1132a282da5c1b443ed', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => ({
                     value: option,
                     label: this.translations.ATUI.TIME[option],
                 }))
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
-            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '554a7cef8c797ad2083cbe083429521b4f1e9838', class: "flex flex-col gap-8 px-12" }, h("h5", { key: '2c7af46295392be404d0f853161cd7390d6a579f', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '67aef573c2bd667d87798737342593a528171feb', class: "grid grid-cols-2 content-stretch", "data-name": "time-with-unit-common-options" }, this.common_options &&
+            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '3aa602b2feb8fc34ac8720d330d970ecc8024671', class: "flex flex-col gap-8 px-12" }, h("h5", { key: 'c704916c172cd7cd2f973ea957ea7e5b6d006b64', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '60d4f722e58148aa3d62bbd9fdce537066d1163a', class: "grid grid-cols-2 content-stretch", "data-name": "time-with-unit-common-options" }, this.common_options &&
             this.common_options.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
                     event.stopPropagation();
                     if (event.key === 'Enter' ||
                         event.key === ' ')
                         this.updateSelectedRange(timerange);
-                }, tabindex: 0, class: `hover:bg-surface-1 rounded-sm px-[6px] py-2 text-left ${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light hover:bg-active-light' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '8f0e7419ffe69a915eb3d4e6fb2a8db269e5ee9f', class: "flex justify-between p-8" }, h("at-button", { key: '81c5fd56a6f9ae2497d95c9b757b928179a00a98', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '36ef78b8ca2c354ed33393d95fb8a2a41fae7f27', class: "flex gap-8" }, h("at-button", { key: '4b3b18809fea6cbe943c5d83527f7f1252825ab6', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '058f9bb57117924ce6060643d87276036f8c3174', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
+                }, tabindex: 0, class: `hover:bg-surface-1 rounded-sm px-[6px] py-2 text-left ${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light hover:bg-active-light' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '9c4bc5d63ff6b59306e1baa43476c0a8cb05c35d', class: "flex justify-between p-8" }, h("at-button", { key: 'fe770dba7179e32389e77f1cf76485ae188a6a92', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: 'bd596bc6d8c94bc14ee91e7d6e007954f99b9db7', class: "flex gap-8" }, h("at-button", { key: 'c4cedab2d79add75014bf8e83cd24619b30e689e', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '3f168751d57ffe68e3996b360123f5944b4268c9', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
         "timeValue": [{
                 "watchTimeValue": 0
             }],
         "timeUnit": [{
-                "watchTimeUnit": 0
+                "watchAtTimeUnit": 0
             }]
     }; }
 };

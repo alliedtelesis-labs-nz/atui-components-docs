@@ -1,14 +1,14 @@
 import { TimeRangeDisplay } from "./date";
-export var TimeUnit;
-(function (TimeUnit) {
-    TimeUnit["SECONDS"] = "SECONDS";
-    TimeUnit["MINUTES"] = "MINUTES";
-    TimeUnit["HOURS"] = "HOURS";
-    TimeUnit["DAYS"] = "DAYS";
-    TimeUnit["WEEKS"] = "WEEKS";
-    TimeUnit["MONTHS"] = "MONTHS";
-    TimeUnit["YEARS"] = "YEARS";
-})(TimeUnit || (TimeUnit = {}));
+export var AtTimeUnit;
+(function (AtTimeUnit) {
+    AtTimeUnit["SECONDS"] = "SECONDS";
+    AtTimeUnit["MINUTES"] = "MINUTES";
+    AtTimeUnit["HOURS"] = "HOURS";
+    AtTimeUnit["DAYS"] = "DAYS";
+    AtTimeUnit["WEEKS"] = "WEEKS";
+    AtTimeUnit["MONTHS"] = "MONTHS";
+    AtTimeUnit["YEARS"] = "YEARS";
+})(AtTimeUnit || (AtTimeUnit = {}));
 export var TimeExtraOptions;
 (function (TimeExtraOptions) {
     TimeExtraOptions["ALL"] = "ALL";

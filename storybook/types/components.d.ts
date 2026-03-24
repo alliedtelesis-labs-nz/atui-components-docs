@@ -41,7 +41,7 @@ import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 import { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
-import { AtITimeWithUnit, TimeUnit } from "./types/time";
+import { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
 import { AtIToast, AtIToastPosition } from "./types/toast";
 import { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
@@ -85,7 +85,7 @@ export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 export { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
-export { AtITimeWithUnit, TimeUnit } from "./types/time";
+export { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
 export { AtIToast, AtIToastPosition } from "./types/toast";
 export { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
@@ -2791,7 +2791,7 @@ export namespace Components {
         "range_limit": number;
         /**
           * Selected time range.
-          * @default {         selected: {             unit: TimeUnit.HOURS,             value: 1,         },     }
+          * @default {         selected: {             unit: AtTimeUnit.HOURS,             value: 1,         },     }
          */
         "selected_time_range": AtSelectedTimeRangeExtended;
         /**
@@ -2841,7 +2841,7 @@ export namespace Components {
         /**
           * Available time units for selection
          */
-        "units": TimeUnit[];
+        "units": AtTimeUnit[];
     }
     /**
      * @category Data Tables
@@ -7636,7 +7636,7 @@ declare namespace LocalJSX {
         "range_limit"?: number;
         /**
           * Selected time range.
-          * @default {         selected: {             unit: TimeUnit.HOURS,             value: 1,         },     }
+          * @default {         selected: {             unit: AtTimeUnit.HOURS,             value: 1,         },     }
          */
         "selected_time_range"?: AtSelectedTimeRangeExtended;
         /**
@@ -7694,7 +7694,7 @@ declare namespace LocalJSX {
         /**
           * Available time units for selection
          */
-        "units"?: TimeUnit[];
+        "units"?: AtTimeUnit[];
     }
     /**
      * @category Data Tables

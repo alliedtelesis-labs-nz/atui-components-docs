@@ -353,7 +353,7 @@ export class AtTableComponent {
                 },
                 "complexType": {
                     "original": "{\n        colId: string;\n        sortDirection: 'asc' | 'desc' | null;\n    }",
-                    "resolved": "{ colId: string; sortDirection: \"asc\" | \"desc\"; }",
+                    "resolved": "{ colId: string; sortDirection: \"desc\" | \"asc\"; }",
                     "references": {}
                 }
             }];

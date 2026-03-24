@@ -1,4 +1,4 @@
-import { Duration, ITimeDateFilter, TimeExtraOptions, TimeUnit, AtITimeWithUnit } from '../types/time';
+import { Duration, ITimeDateFilter, TimeExtraOptions, AtTimeUnit, AtITimeWithUnit } from '../types/time';
 import { AtIDateRange, AtIDateRangeStrings } from '../types/date';
 export declare class AtTimeDateUtil {
     /**
@@ -9,7 +9,7 @@ export declare class AtTimeDateUtil {
      * @param roundUp: if true, rounds up. if false, rounds down.
      * @param decimalPlaces: if specified, rounds to these, otherwise rounds to the nearest whole number/integer
      **/
-    static convertSecondsToUnit(seconds: number, unit: TimeUnit | TimeExtraOptions, decimalPlaces?: number, roundUp?: boolean): number;
+    static convertSecondsToUnit(seconds: number, unit: AtTimeUnit | TimeExtraOptions, decimalPlaces?: number, roundUp?: boolean): number;
     static convertToSeconds(time: AtITimeWithUnit): number;
     static getSecondsAgoFromDate(date: Date): number;
     static getDateFromRelativeTime(time: AtITimeWithUnit): Date;
@@ -26,7 +26,7 @@ export declare class AtTimeDateUtil {
     static getCurrentDatePlusHours(hours: number): Date;
     static getDateYearsAgo(years: number, originalDate: Date): Date;
     static getDateMonthsAgo(months: number, originalDate: Date): Date;
-    static getCurrentOrDefaultUnit(currentUnit: TimeUnit | TimeExtraOptions, units: (TimeUnit | TimeExtraOptions)[]): TimeUnit | TimeExtraOptions | undefined;
+    static getCurrentOrDefaultUnit(currentUnit: AtTimeUnit | TimeExtraOptions, units: (AtTimeUnit | TimeExtraOptions)[]): AtTimeUnit | TimeExtraOptions | undefined;
     /**
      * getDataPointIntervalFor30SecPoller: return an interval
      * that provides up to 120 data points between the start and end date.
@@ -50,7 +50,7 @@ export declare class AtTimeDateUtil {
      **/
     static floorDateByTimeUnit(date: Date, unit: Duration): Date;
     /**
-     * ceilingDateByTimeUnit: returns a new date ceiled to the end of the given unit
+     * ceilingDateByAtTimeUnit: returns a new date ceiled to the end of the given unit
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)

@@ -33,3 +33,4 @@ export { AtIRadioOption } from './components/at-radio-group/at-radio-group';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
 export { type AtSelectedTimeRangeExtended, AtTimePresets, } from './models/at-time-range.models';
 export { type AtIDateRange, type AtIDateRangeStrings } from './types/date';
+export { AtTimeUnit, type AtITimeWithUnit } from './types/time';

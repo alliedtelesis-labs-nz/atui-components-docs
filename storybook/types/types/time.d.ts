@@ -1,9 +1,9 @@
 import { AtIDateRange, AtIDateRangeStrings, TimeRangeDisplay } from './date';
 export interface AtITimeWithUnit {
-    unit: TimeUnit;
+    unit: AtTimeUnit;
     value: number;
 }
-export declare enum TimeUnit {
+export declare enum AtTimeUnit {
     SECONDS = "SECONDS",
     MINUTES = "MINUTES",
     HOURS = "HOURS",

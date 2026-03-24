@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
-import { T as TimeUnit, A as AtTimeDateUtil, D as Duration } from './at-time-date.util-q62dAL8L.js';
+import { a as AtTimeUnit, A as AtTimeDateUtil, D as Duration, d as dayjs } from './at-time-date.util-DLDlk6Fx.js';
 import { f as fetchTranslations } from './translation-C11vpe5m.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
@@ -34,7 +34,7 @@ const AtTimeRangeComponent = class {
      */
     selected_time_range = {
         selected: {
-            unit: TimeUnit.HOURS,
+            unit: AtTimeUnit.HOURS,
             value: 1,
         },
     };
@@ -73,12 +73,12 @@ const AtTimeRangeComponent = class {
     get el() { return getElement(this); }
     instanceId = `atr-${Math.random().toString(36).slice(2, 8)}`;
     units = [
-        TimeUnit.MINUTES,
-        TimeUnit.HOURS,
-        TimeUnit.DAYS,
-        TimeUnit.WEEKS,
-        TimeUnit.MONTHS,
-        TimeUnit.YEARS,
+        AtTimeUnit.MINUTES,
+        AtTimeUnit.HOURS,
+        AtTimeUnit.DAYS,
+        AtTimeUnit.WEEKS,
+        AtTimeUnit.MONTHS,
+        AtTimeUnit.YEARS,
     ];
     minSeconds = 300;
     async componentWillLoad() {
@@ -102,7 +102,7 @@ const AtTimeRangeComponent = class {
         return { fromDate, toDate };
     }
     getShortUnitDisplay(time) {
-        return FullTimeUnits[time.unit];
+        return AbreviatedTimeUnits[time.unit];
     }
     /**
      * Emits an event containing the selected time range when it changes
@@ -120,14 +120,7 @@ const AtTimeRangeComponent = class {
         this.atuiChange.emit({ ...this.displayedTimeRange });
     }
     formatDate(date) {
-        return new Date(date).toLocaleString(undefined, {
-            year: '2-digit',
-            month: 'numeric',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            hour12: true,
-        });
+        return dayjs(date).format('D/M/YY, h:mm A');
     }
     renderSelectedTimeDisplay() {
         const time = this.displayedTimeRange;
@@ -139,7 +132,7 @@ const AtTimeRangeComponent = class {
                 'All Time'));
         }
         if (time.custom) {
-            return (h("div", { id: "custom", class: "text-dark flex items-center gap-4 font-normal" }, h("span", { class: "font-medium" }, this.formatDate(time.custom.from)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, time.custom.lockEndDateToNow
+            return (h("div", { id: "custom", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, time.custom.lockEndDateToNow
                 ? 'NOW'
                 : this.formatDate(time.custom.to))));
         }
@@ -151,19 +144,22 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'a0e8f45095b370c51692bf6b4d5ece4e2628be9c', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '124d1b5dcc461c6374d9e88be10614b3d6381634', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
     renderRelativeTimeButtonGroup() {
-        return (h("at-button-group", { key: "relative-time-group" }, h("at-button-group-option", { value: this.renderSelectedTimeDisplay(), "data-menu": `${this.instanceId}-rel` }), h("at-button-group-option", { "data-menu": `${this.instanceId}-abs` }, h("div", { class: "flex items-center" }, h("span", { class: "icon-md material-icons" }, "date_range")))));
+        return (h("at-button-group", { key: "relative-time-group" }, h("at-button-group-option", { is_active: !this.displayedTimeRange?.custom, "data-ignore-selection": true, value: this.renderSelectedTimeDisplay(), "data-menu": `${this.instanceId}-rel` }), h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs`, icon: "date_range" })));
     }
     renderPredefinedTimeButtonGroup() {
-        return (h("at-button-group", { key: "predefined-time-group", onAtuiIndexChange: (event) => {
+        const selectedKey = typeof this.displayedTimeRange?.selected === 'object'
+            ? `${this.displayedTimeRange.selected.unit}-${this.displayedTimeRange.selected.value}`
+            : null;
+        return (h("at-button-group", { key: "predefined-time-group", value: selectedKey, onAtuiIndexChange: (event) => {
                 if (event.detail < this.presets.length) {
                     this.onChangeRelativeTime(this.presets[event.detail]);
                 }
-            } }, this.presets.map((preset, idx) => (h("at-button-group-option", { key: idx }, h("span", null, preset.value, this.getShortUnitDisplay(preset))))), h("at-button-group-option", { value: h("div", { class: "flex items-center" }, h("span", { class: "material-icons text-body text-light" }, "date_range")), "data-menu": `${this.instanceId}-abs` })));
+            } }, this.presets.map((preset, idx) => (h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}` }, h("span", null, preset.value, this.getShortUnitDisplay(preset))))), h("at-button-group-option", { icon: "date_range", is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` })));
     }
     renderRelativeTimeMenu() {
         return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===

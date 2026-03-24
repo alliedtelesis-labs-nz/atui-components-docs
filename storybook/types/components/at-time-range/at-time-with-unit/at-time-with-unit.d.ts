@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { TimeExtraOptions, TimeUnit, AtITimeWithUnit } from '../../../types/time';
+import { TimeExtraOptions, AtTimeUnit, AtITimeWithUnit } from '../../../types/time';
 import { AtTimePresets } from '../../../models/at-time-range.models';
 import { AtIDateRange, TimeRangeDisplay } from '../../../types/date';
 /**
@@ -10,7 +10,7 @@ export declare class AtTimeWithUnitComponent {
     /**
      * Available time units for selection
      */
-    units: TimeUnit[];
+    units: AtTimeUnit[];
     /**
      * Common time preset options to display
      */
@@ -42,11 +42,11 @@ export declare class AtTimeWithUnitComponent {
     errorText: string;
     secondaryErrorText: string;
     translations: any;
-    dropdownOptions: (TimeUnit | TimeExtraOptions)[];
+    dropdownOptions: (AtTimeUnit | TimeExtraOptions)[];
     timeValue: number;
     watchTimeValue(): void;
-    timeUnit: TimeUnit | TimeExtraOptions;
-    watchTimeUnit(): void;
+    timeUnit: AtTimeUnit | TimeExtraOptions;
+    watchAtTimeUnit(): void;
     selectedTime: AtITimeWithUnit | TimeRangeDisplay.ALL;
     startDate: any;
     el: any;
@@ -55,6 +55,7 @@ export declare class AtTimeWithUnitComponent {
     private initDropdownOptions;
     private initSelectedTime;
     updateSelectedTime(value: number): void;
+    private formatDuration;
     validateInput(): void;
     updateSelectedRange(value: AtITimeWithUnit): void;
     getRelativeDate(): AtIDateRange;

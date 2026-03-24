@@ -144,10 +144,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-header.entry.js').then(processMod, consoleError);
-                case 'at-input-time':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-input-time.entry.js').then(processMod, consoleError);
                 case 'at-list-item':
                     return import(
                       /* webpackMode: "lazy" */
@@ -304,10 +300,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-sidebar-menuitem.entry.js').then(processMod, consoleError);
-                case 'at-input-date_2':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-input-date_2.entry.js').then(processMod, consoleError);
                 case 'at-prompt-message':
                     return import(
                       /* webpackMode: "lazy" */
@@ -328,6 +320,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-accordion-item_2.entry.js').then(processMod, consoleError);
+                case 'at-input-date_3':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-input-date_3.entry.js').then(processMod, consoleError);
                 case 'at-select_3':
                     return import(
                       /* webpackMode: "lazy" */

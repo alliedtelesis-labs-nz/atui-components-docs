@@ -1,37 +1,37 @@
-import { TimeUnit, AtITimeWithUnit } from '../types/time';
+import { AtTimeUnit, AtITimeWithUnit } from '../types/time';
 import { AtIDateRangeStrings, TimeRangeDisplay } from '../types/date';
 export type TimePresets = {
-    unit: TimeUnit.MINUTES;
+    unit: AtTimeUnit.MINUTES;
     value: 5;
 } | {
-    unit: TimeUnit.MINUTES;
+    unit: AtTimeUnit.MINUTES;
     value: 30;
 } | {
-    unit: TimeUnit.HOURS;
+    unit: AtTimeUnit.HOURS;
     value: 1;
 } | {
-    unit: TimeUnit.HOURS;
+    unit: AtTimeUnit.HOURS;
     value: 6;
 } | {
-    unit: TimeUnit.HOURS;
+    unit: AtTimeUnit.HOURS;
     value: 12;
 } | {
-    unit: TimeUnit.HOURS;
+    unit: AtTimeUnit.HOURS;
     value: 24;
 } | {
-    unit: TimeUnit.DAYS;
+    unit: AtTimeUnit.DAYS;
     value: 7;
 } | {
-    unit: TimeUnit.MONTHS;
+    unit: AtTimeUnit.MONTHS;
     value: 1;
 } | {
-    unit: TimeUnit.MONTHS;
+    unit: AtTimeUnit.MONTHS;
     value: 6;
 } | {
-    unit: TimeUnit.YEARS;
+    unit: AtTimeUnit.YEARS;
     value: 1;
 } | {
-    unit: TimeUnit.YEARS;
+    unit: AtTimeUnit.YEARS;
     value: 5;
 };
 export declare enum AbreviatedTimeUnits {

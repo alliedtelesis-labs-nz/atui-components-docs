@@ -55,7 +55,9 @@ const AtButtonGroupOption = class {
         this.host_disabled = this.provider?.disabled;
     }
     handleClick(event) {
-        this.is_active = true;
+        if (!this.el.hasAttribute('data-ignore-selection')) {
+            this.is_active = true;
+        }
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-button-group-option',
@@ -68,7 +70,7 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: '9b97a0256967156c0fdddc1a51059ac0849d5495', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '3cb38e7c4be7935c0c1e35d550f83443a0cda5ab', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'a224b2b1481a9ea404d0678725e511fc7932a31d', name: "icon" }), h("slot", { key: '16a8562aeb56d9435316ca81aca75eddb7963af7' }, this.label ? this.label : this.icon ? '' : this.value)));
+        return (h("button", { key: '289d37270d9c232b1e476ccdc6bd4e7ba559c92c', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '74d72649e0686f3f1227b3400dc6fe15e3fbe211', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'c8650fefb20e6e16b60e8c735b97c40a9c91a1bd', name: "icon" }), h("slot", { key: '2c389eee9b1cce45dfa27f69451ef346a91e0e3b' }, this.label ? this.label : this.icon ? '' : this.value)));
     }
 };
 

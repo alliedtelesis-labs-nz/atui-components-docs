@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AtSelectedTimeRangeExtended, AtTimePresets } from '../../models/at-time-range.models';
-import { AtIDateRangeStrings, TimeRangeDisplay, TimeUnit, AtITimeWithUnit } from '../../types';
+import { AtIDateRangeStrings, TimeRangeDisplay, AtTimeUnit, AtITimeWithUnit } from '../../types';
 /**
  * @category Form Controls
  * @description A time range component for selecting time periods.
@@ -44,7 +44,7 @@ export declare class AtTimeRangeComponent {
     private absoluteTimeMenuEl;
     el: any;
     private instanceId;
-    units: TimeUnit[];
+    units: AtTimeUnit[];
     minSeconds: number;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
