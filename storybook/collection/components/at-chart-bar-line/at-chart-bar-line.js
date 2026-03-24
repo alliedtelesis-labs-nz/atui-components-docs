@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
-import { TimeDateUtil } from "../../utils/time-date.util";
+import { AtTimeDateUtil } from "../../utils/at-time-date.util";
 import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const heightVariants = {
@@ -231,9 +231,9 @@ export class AtChartBarLine {
     getMinMaxDateStrings(timeRange) {
         const timeWithUnit = timeRange.selected;
         const custom = timeRange.custom
-            ? TimeDateUtil.getAbsoluteDateRange(timeRange.custom)
+            ? AtTimeDateUtil.getAbsoluteDateRange(timeRange.custom)
             : null;
-        const { startDate, endDate } = TimeDateUtil.getDateRange(custom, timeWithUnit, null);
+        const { startDate, endDate } = AtTimeDateUtil.getDateRange(custom, timeWithUnit, null);
         return { min: startDate.toString(), max: endDate.toString() };
     }
     formatThresholds = () => {
@@ -268,7 +268,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'ac09719f220b3dd4fda2956b82101a24e326a79f', style: { height: '100%', width: '100%' } }, h("canvas", { key: '13f60f8936ac288030f59233b2e72474cc39a52f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '7bdfca4b374d0115c02fa78e10b2641d01f7d05d', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b76ec2594fc79767d1423b371f489de70f9d8298', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

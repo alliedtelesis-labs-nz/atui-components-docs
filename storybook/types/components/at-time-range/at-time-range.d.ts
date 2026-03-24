@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtSelectedTimeRangeExtended, TimePresets } from '../../models/at-time-range.models';
+import { AtSelectedTimeRangeExtended, AtTimePresets } from '../../models/at-time-range.models';
 import { AtIDateRangeStrings, TimeRangeDisplay, TimeUnit, AtITimeWithUnit } from '../../types';
 /**
  * @category Form Controls
@@ -17,7 +17,7 @@ export declare class AtTimeRangeComponent {
     /**
      * Define the presets for the relative time ranges.
      */
-    presets: TimePresets[];
+    presets: AtTimePresets[];
     /**
      * Enable relative time selection.
      */

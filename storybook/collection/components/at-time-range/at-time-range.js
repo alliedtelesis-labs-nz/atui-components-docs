@@ -1,7 +1,7 @@
 import { h, Host, } from "@stencil/core";
 import { FullTimeUnits, } from "../../models/at-time-range.models";
 import { Duration, MIN_DATE, TimeRangeDisplay, TimeUnit, } from "../../types";
-import { TimeDateUtil } from "../../utils/time-date.util";
+import { AtTimeDateUtil } from "../../utils/at-time-date.util";
 import { fetchTranslations } from "../../utils/translation";
 /**
  * @category Form Controls
@@ -68,7 +68,7 @@ export class AtTimeRangeComponent {
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
             ? new Date(Date.now() - this.range_limit * 86400 * 1000)
-            : TimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
+            : AtTimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
         this.defaultFromDate = new Date(this.today.getTime() - 3600 * 1000);
     }
     getCustomStartAndEndDate(selectedTime) {
@@ -125,12 +125,12 @@ export class AtTimeRangeComponent {
         const selected = time.selected;
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
-            const startDate = TimeDateUtil.getRelativeDateRange(selected)?.startDate;
+            const startDate = AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
             return (h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, "NOW")));
         }
     }
     render() {
-        return (h(Host, { key: '4a6341ff8d52eca9cbdbd011c2f85bcc122e0f54', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: 'a0e8f45095b370c51692bf6b4d5ece4e2628be9c', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -213,14 +213,14 @@ export class AtTimeRangeComponent {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "TimePresets[]",
-                    "resolved": "TimePresets[]",
+                    "original": "AtTimePresets[]",
+                    "resolved": "AtTimePresets[]",
                     "references": {
-                        "TimePresets": {
+                        "AtTimePresets": {
                             "location": "import",
                             "path": "../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::TimePresets",
-                            "referenceLocation": "TimePresets"
+                            "id": "src/models/at-time-range.models.ts::AtTimePresets",
+                            "referenceLocation": "AtTimePresets"
                         }
                     }
                 },

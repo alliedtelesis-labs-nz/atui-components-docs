@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
-import { a as TimeUnit, T as TimeDateUtil, D as Duration } from './time-date.util-CFVNcAIG.js';
+import { T as TimeUnit, A as AtTimeDateUtil, D as Duration } from './at-time-date.util-q62dAL8L.js';
 import { f as fetchTranslations } from './translation-C11vpe5m.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
@@ -89,7 +89,7 @@ const AtTimeRangeComponent = class {
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
             ? new Date(Date.now() - this.range_limit * 86400 * 1000)
-            : TimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
+            : AtTimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
         this.defaultFromDate = new Date(this.today.getTime() - 3600 * 1000);
     }
     getCustomStartAndEndDate(selectedTime) {
@@ -146,12 +146,12 @@ const AtTimeRangeComponent = class {
         const selected = time.selected;
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
-            const startDate = TimeDateUtil.getRelativeDateRange(selected)?.startDate;
+            const startDate = AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
             return (h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), h("span", null, "NOW")));
         }
     }
     render() {
-        return (h(Host, { key: '4a6341ff8d52eca9cbdbd011c2f85bcc122e0f54', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: 'a0e8f45095b370c51692bf6b4d5ece4e2628be9c', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

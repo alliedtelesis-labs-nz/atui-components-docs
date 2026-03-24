@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { TimeExtraOptions, TimeUnit, AtITimeWithUnit } from '../../../types/time';
-import { TimePresets } from '../../../models/at-time-range.models';
+import { AtTimePresets } from '../../../models/at-time-range.models';
 import { AtIDateRange, TimeRangeDisplay } from '../../../types/date';
 /**
  * @category Form Controls
@@ -14,7 +14,7 @@ export declare class AtTimeWithUnitComponent {
     /**
      * Common time preset options to display
      */
-    common_options: TimePresets[];
+    common_options: AtTimePresets[];
     /**
      * Minimum date constraint for time selection
      */

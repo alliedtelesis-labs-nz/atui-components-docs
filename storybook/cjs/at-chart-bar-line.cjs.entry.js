@@ -2,7 +2,7 @@
 
 var index = require('./index-CdUivN1V.js');
 var chartColor$1 = require('./chart-color-DBiWMtXr.js');
-var timeDate_util = require('./time-date.util-CvDG1n3R.js');
+var atTimeDate_util = require('./at-time-date.util-Bw12yr56.js');
 var chartColor = require('./chart-color-CMk9r_na.js');
 
 const heightVariants = {
@@ -208,9 +208,9 @@ const AtChartBarLine = class {
     getMinMaxDateStrings(timeRange) {
         const timeWithUnit = timeRange.selected;
         const custom = timeRange.custom
-            ? timeDate_util.TimeDateUtil.getAbsoluteDateRange(timeRange.custom)
+            ? atTimeDate_util.AtTimeDateUtil.getAbsoluteDateRange(timeRange.custom)
             : null;
-        const { startDate, endDate } = timeDate_util.TimeDateUtil.getDateRange(custom, timeWithUnit, null);
+        const { startDate, endDate } = atTimeDate_util.AtTimeDateUtil.getDateRange(custom, timeWithUnit, null);
         return { min: startDate.toString(), max: endDate.toString() };
     }
     formatThresholds = () => {
@@ -245,7 +245,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'ac09719f220b3dd4fda2956b82101a24e326a79f', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '13f60f8936ac288030f59233b2e72474cc39a52f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: '7bdfca4b374d0115c02fa78e10b2641d01f7d05d', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'b76ec2594fc79767d1423b371f489de70f9d8298', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

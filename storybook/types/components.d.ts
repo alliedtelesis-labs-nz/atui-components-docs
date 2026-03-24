@@ -13,7 +13,7 @@ import { AtEvent } from "./types/events";
 import { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 import { ChartDataset, Plugin } from "chart.js";
 import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
-import { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
+import { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartColorPalette } from "./types/chart-color";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
@@ -57,7 +57,7 @@ export { AtEvent } from "./types/events";
 export { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
 export { ChartDataset, Plugin } from "chart.js";
 export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
-export { AtSelectedTimeRangeExtended, TimePresets } from "./models/at-time-range.models";
+export { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartColorPalette } from "./types/chart-color";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
@@ -2783,7 +2783,7 @@ export namespace Components {
         /**
           * Define the presets for the relative time ranges.
          */
-        "presets": TimePresets[];
+        "presets": AtTimePresets[];
         /**
           * Lower limit of the time range.
           * @default 7
@@ -2808,7 +2808,7 @@ export namespace Components {
         /**
           * Common time preset options to display
          */
-        "common_options": TimePresets[];
+        "common_options": AtTimePresets[];
         /**
           * Custom error message to display when validation fails
           * @default null
@@ -7628,7 +7628,7 @@ declare namespace LocalJSX {
         /**
           * Define the presets for the relative time ranges.
          */
-        "presets"?: TimePresets[];
+        "presets"?: AtTimePresets[];
         /**
           * Lower limit of the time range.
           * @default 7
@@ -7653,7 +7653,7 @@ declare namespace LocalJSX {
         /**
           * Common time preset options to display
          */
-        "common_options"?: TimePresets[];
+        "common_options"?: AtTimePresets[];
         /**
           * Custom error message to display when validation fails
           * @default null

@@ -1,6 +1,6 @@
 import { TimeUnit, AtITimeWithUnit } from '../types/time';
 import { AtIDateRangeStrings, TimeRangeDisplay } from '../types/date';
-export type TimePresets = {
+export type AtTimePresets = {
     unit: TimeUnit.MINUTES;
     value: 5;
 } | {

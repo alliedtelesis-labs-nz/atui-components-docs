@@ -2,6 +2,7 @@
 
 var prompt = require('./prompt-DoMXcdvl.js');
 var chartColor = require('./chart-color-CMk9r_na.js');
+var atTimeDate_util = require('./at-time-date.util-Bw12yr56.js');
 
 const DEFAULT_TOAST_OPTIONS = {
     position: 'bottom-right',
@@ -54,4 +55,5 @@ Object.defineProperty(exports, "AtChartColorPalette", {
     enumerable: true,
     get: function () { return chartColor.AtChartColorPalette; }
 });
+exports.AtTimeDateUtil = atTimeDate_util.AtTimeDateUtil;
 exports.ToasterService = ToasterService;

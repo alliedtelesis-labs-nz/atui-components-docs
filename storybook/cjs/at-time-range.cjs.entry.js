@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-CdUivN1V.js');
-var timeDate_util = require('./time-date.util-CvDG1n3R.js');
+var atTimeDate_util = require('./at-time-date.util-Bw12yr56.js');
 var translation = require('./translation-C7aG_Jvq.js');
 var date = require('./date-DDRmOnS1.js');
 
@@ -36,7 +36,7 @@ const AtTimeRangeComponent = class {
      */
     selected_time_range = {
         selected: {
-            unit: timeDate_util.TimeUnit.HOURS,
+            unit: atTimeDate_util.TimeUnit.HOURS,
             value: 1,
         },
     };
@@ -75,12 +75,12 @@ const AtTimeRangeComponent = class {
     get el() { return index.getElement(this); }
     instanceId = `atr-${Math.random().toString(36).slice(2, 8)}`;
     units = [
-        timeDate_util.TimeUnit.MINUTES,
-        timeDate_util.TimeUnit.HOURS,
-        timeDate_util.TimeUnit.DAYS,
-        timeDate_util.TimeUnit.WEEKS,
-        timeDate_util.TimeUnit.MONTHS,
-        timeDate_util.TimeUnit.YEARS,
+        atTimeDate_util.TimeUnit.MINUTES,
+        atTimeDate_util.TimeUnit.HOURS,
+        atTimeDate_util.TimeUnit.DAYS,
+        atTimeDate_util.TimeUnit.WEEKS,
+        atTimeDate_util.TimeUnit.MONTHS,
+        atTimeDate_util.TimeUnit.YEARS,
     ];
     minSeconds = 300;
     async componentWillLoad() {
@@ -91,7 +91,7 @@ const AtTimeRangeComponent = class {
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
             ? new Date(Date.now() - this.range_limit * 86400 * 1000)
-            : timeDate_util.TimeDateUtil.floorDateByTimeUnit(date.MIN_DATE, timeDate_util.Duration.HOURS);
+            : atTimeDate_util.AtTimeDateUtil.floorDateByTimeUnit(date.MIN_DATE, atTimeDate_util.Duration.HOURS);
         this.defaultFromDate = new Date(this.today.getTime() - 3600 * 1000);
     }
     getCustomStartAndEndDate(selectedTime) {
@@ -148,12 +148,12 @@ const AtTimeRangeComponent = class {
         const selected = time.selected;
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
-            const startDate = timeDate_util.TimeDateUtil.getRelativeDateRange(selected)?.startDate;
+            const startDate = atTimeDate_util.AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
             return (index.h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), index.h("span", null, "NOW")));
         }
     }
     render() {
-        return (index.h(index.Host, { key: '4a6341ff8d52eca9cbdbd011c2f85bcc122e0f54', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'a0e8f45095b370c51692bf6b4d5ece4e2628be9c', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

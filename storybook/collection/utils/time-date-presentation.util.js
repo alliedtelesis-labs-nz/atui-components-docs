@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat.js";
-import { TimeDateUtil } from "./time-date.util";
+import { AtTimeDateUtil } from "./at-time-date.util";
 import { isEmpty, replace } from "lodash-es";
 import { DateFormat, TimeRangeDisplay, TimeRangesInHours, } from "../types";
 dayjs.extend(customParseFormat);
@@ -97,7 +97,7 @@ export class TimeDatePresentationUtil {
     }
     static getIntervalFor30sPollerFromTimeRange(timeRange) {
         const { start, end } = TimeDatePresentationUtil.convertTimeRange(timeRange);
-        return TimeDateUtil.getDataPointIntervalFor30SecPoller(start, end);
+        return AtTimeDateUtil.getDataPointIntervalFor30SecPoller(start, end);
     }
     static getFormattedDate(date, dateFormat = DateFormat.STANDARD) {
         if (!date)
@@ -193,6 +193,6 @@ export class FlooredDateRange {
         return new FlooredDateRange(timeRange.start, timeRange.end, unit);
     }
     floorByMinutes(time) {
-        return TimeDateUtil.floorDateByTimeUnit(time, this.unit);
+        return AtTimeDateUtil.floorDateByTimeUnit(time, this.unit);
     }
 }
