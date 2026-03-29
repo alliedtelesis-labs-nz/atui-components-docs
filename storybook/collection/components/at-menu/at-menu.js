@@ -328,12 +328,11 @@ export class AtMenu {
                                 crossAxis: true,
                             }),
                             size({
-                                apply({ availableWidth, availableHeight, rects, elements, }) {
+                                apply({ availableWidth, availableHeight, elements, }) {
                                     Object.assign(elements.floating.style, {
-                                        width: `${rects.reference.width}px`,
-                                        maxWidth: `${availableWidth}px`,
                                         maxHeight: `${availableHeight}px`,
-                                        minWidth: 0,
+                                        maxWidth: `${availableWidth}px`,
+                                        minWidth: '0',
                                     });
                                 },
                             }),
@@ -393,14 +392,14 @@ export class AtMenu {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '995b5cec6bb6fbb01447bbb9ab017e7e93653ecc', class: "relative", onBlur: (e) => {
+        return (h(Host, { key: 'f6496533b5cd7b9da70d92b108838ecf1e8f3396', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (h("div", { key: 'd830d6f2439a83f0eed5da3a4ab35900bca9eae4', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (h("div", { key: 'b7681c58b6b3de266473bb543bc19b1a58364089', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -426,7 +425,7 @@ export class AtMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'c34b04f174594a151bc241c1b70ee283999c0494', name: "menu-trigger" }))), h("div", { key: '0de7503fc827d7f888ecd8057c3d625374d735b5', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '7f15cb6552891a36742a6ddcffbb787991ce62f2', name: "menu-trigger" }))), h("div", { key: 'ee48e49d4e27a153b31b96eed7a12a45d986f3f6', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -438,7 +437,7 @@ export class AtMenu {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '35637a8b80d5bf1828fd8a697e13b0247db9ef41' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '1949867bc18c373c724185fd4bc541ff466d8068' }))));
     }
     static get is() { return "at-menu"; }
     static get properties() {

@@ -154,10 +154,11 @@ const AtTableFilterMenu = class {
     atChange;
     get filteredColumns() {
         return this.col_defs
-            .filter((colDef) => colDef.field !== 'Checkbox')
+            .filter((colDef) => !(colDef.filterOptions &&
+            colDef.filterOptions.exclude === true))
             .map((colDef) => ({
             value: colDef.field,
-            label: colDef.field,
+            label: colDef.headerName,
         }));
     }
     async componentWillLoad() {
@@ -172,7 +173,7 @@ const AtTableFilterMenu = class {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (h(Host, { key: '3c4449a21b3cf1def0b8643cf5d00035384747ec' }, h("at-menu", { key: '20f028bcf05bfe63eb0039616e2a81ba7600222f', autoclose: false, width: "fit-content", class: "self-start", align: "end" }, h("at-tooltip", { key: '2a078907a34d87bbfbd2694341cb3c41655796b8', slot: "menu-trigger", position: "top" }, h("at-button", { key: '09c48d86b8a25bbab1a1c308eba4722cf2e9441f', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: '6ab9f32c3cb0a9af403c44645b0508248e236b89' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '2b906ad59672140cb58fb49762a7ea6b8ae1bac7', class: "flex flex-col" }, h("at-checkbox-group", { key: 'ddef8be861827ada658c4e1ac57ea939a380d65c', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: '35f2e412599e2d2dd3eb3f997004757e39aac6e6' }, h("at-menu", { key: 'eb8f5f8fb679f71f75972c0397e9df71748f7e2e', autoclose: false, width: "fit-content", class: "self-start", align: "start" }, h("at-tooltip", { key: 'bb3f9fa290f43a7ce7d212a668cf8019c8381946', slot: "menu-trigger", position: "top" }, h("at-button", { key: '6557f2d6fd983e5c978dc6cc61ab1768f895b9af', slot: "tooltip-trigger", type: "secondaryOutline", icon: "filter_list" }), h("span", { key: 'd75adff61e33ebf6e4aac0a5ae4932d9f13c0260' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '720f81d6ebfb3681c1604c30b41080f4401a9b62', class: "flex flex-col" }, h("at-checkbox-group", { key: 'd104091738ce9b453dfa760fca6849010bac9301', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
         "selected": [{

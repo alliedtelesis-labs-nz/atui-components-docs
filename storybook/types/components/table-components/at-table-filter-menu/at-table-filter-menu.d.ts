@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { ColDef } from 'ag-grid-community';
+import { AtITableColumnDef } from '../../../models/searchTableModel';
 /**
  * @category Data Tables
  * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
@@ -8,7 +8,7 @@ export declare class AtTableFilterMenu {
     /**
      * Column definitions used in your at-table
      */
-    col_defs: ColDef[];
+    col_defs: AtITableColumnDef[];
     /**
      * Currently selected filter columns
      */

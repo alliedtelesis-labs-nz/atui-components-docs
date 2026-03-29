@@ -39,6 +39,7 @@ import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
+import { AtITableColumnDef } from "./models/searchTableModel";
 import { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 import { AtITimeWithUnit, AtTimeUnit } from "./types/time";
@@ -83,6 +84,7 @@ export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
+export { AtITableColumnDef } from "./models/searchTableModel";
 export { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 export { AtITimeWithUnit, AtTimeUnit } from "./types/time";
@@ -2576,7 +2578,7 @@ export namespace Components {
         /**
           * Column definitions used in your at-table
          */
-        "col_defs": ColDef[];
+        "col_defs": AtITableColumnDef[];
         /**
           * Currently selected filter columns
           * @default []
@@ -7403,7 +7405,7 @@ declare namespace LocalJSX {
         /**
           * Column definitions used in your at-table
          */
-        "col_defs"?: ColDef[];
+        "col_defs"?: AtITableColumnDef[];
         /**
           * Emits selected columns when checkbox selection changes
          */

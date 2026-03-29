@@ -103,11 +103,14 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("at-menu", { key: '511edcb366a99fb0b2a6b5e4cba911c4533a4d78', autoclose: false, width: "fit-content", position: "left", align: "end" }, index.h("div", { key: 'fda241162150c3b9572c22253cfa90bc43744e4a', slot: "menu-trigger" }, index.h("at-tooltip", { key: '59deb9ede1153d11ea037fec17fa0fe24fb5bcd7', position: "top" }, index.h("at-button", { key: 'cfdf4602eb91b754e9180797eef23eae4499a99f', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: '668e9f84ee36e1cf4390a142c6650a8edab53d24' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: 'bb541fd5afd124209de932a478efde1c3d623035', class: "w-fit", options: this.col_defs
-                ? this.col_defs.map((colDef) => {
+        return (index.h("at-menu", { key: '04e9641b8387acbf5fc2a581b05e4ed4237a30e6', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, index.h("div", { key: 'bcfe0674d6ad2c613d4cd2eb064ac6d21b19e667', slot: "menu-trigger" }, index.h("at-tooltip", { key: '109f7fdc73d387a8db8e0be4f40430038aaecc3c', position: "top" }, index.h("at-button", { key: 'ce0585b094d75d6ff5df381fb8b51518cccc0e62', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), index.h("span", { key: '7fc900b488c5f5dea247a9f05ba0c6ad02c29a7d' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '875deab63fae2c6fd4c211c5956f6fcb04c00134', class: "w-fit", options: this.col_defs
+                ? this.col_defs
+                    .filter((colDef) => colDef.headerName &&
+                    colDef.headerName.trim() !== '')
+                    .map((colDef) => {
                     return {
                         value: colDef.field,
-                        label: colDef.field,
+                        label: colDef.headerName,
                     };
                 })
                 : [], value: this.checkedColumns, onAtuiChange: (event) => this.changeHandler(event) })));
