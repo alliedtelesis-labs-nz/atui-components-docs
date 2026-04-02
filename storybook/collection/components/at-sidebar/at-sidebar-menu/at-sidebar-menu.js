@@ -7,18 +7,8 @@ import { h, Host } from "@stencil/core";
  */
 export class AtSidebarMenuComponent {
     render() {
-        return (h(Host, { key: '50978e0ec34c4b5cc3ed42bc958143e65a7bf73c', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '5e5687fd2994b585af0d853a8703e172e2b30db2' })));
+        return (h(Host, { key: '6d49e371a3b880d91501733c83d9a8e41e2528b8', class: "flex min-w-0 flex-1 flex-col gap-2", role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '6c4728dc21a3690c4e5fb7307050e003254c5c66' })));
     }
     static get is() { return "at-sidebar-menu"; }
-    static get encapsulation() { return "scoped"; }
-    static get originalStyleUrls() {
-        return {
-            "$": ["at-sidebar-menu.scss"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["at-sidebar-menu.css"]
-        };
-    }
 }
+//# sourceMappingURL=at-sidebar-menu.js.map

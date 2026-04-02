@@ -18,16 +18,18 @@ import { h, Host } from "@stencil/core";
  * @slot - Content is placed within the accordion wrapper. Used for placing atui-accordion-items if not using items prop.
  */
 export class AtAccordionComponent {
-    el;
-    /**
-     * Used to create accordion items.
-     */
-    items = [];
-    /**
-     * If set, all child accordions will be open by default.
-     */
-    default_open = false;
-    accordionItems = [];
+    constructor() {
+        /**
+         * Used to create accordion items.
+         */
+        this.items = [];
+        /**
+         * If set, all child accordions will be open by default.
+         */
+        this.default_open = false;
+        this.accordionItems = [];
+        this.accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
+    }
     async componentDidLoad() {
         // Wait for child components to be ready
         await new Promise((resolve) => setTimeout(resolve, 0));
@@ -88,9 +90,8 @@ export class AtAccordionComponent {
     refreshAccordionItems() {
         this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
     }
-    accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: 'ffefe5b585234f34863436703ad35bbe3a1c668d', class: "flex flex-col gap-2" }, h("slot", { key: '0e33071ed37d10d93ae63bd62b962e44cdbf6387' }), this.items &&
+        return (h(Host, { key: '6b2195a25f6dd26a68baafd11b6748e79fbcf6ff', class: "flex flex-col gap-2" }, h("slot", { key: '93ff2fb04b308503cd077f2f35834a46ed0d9038' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));
@@ -100,15 +101,16 @@ export class AtAccordionComponent {
         return {
             "items": {
                 "type": "unknown",
+                "attribute": "items",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtIAccordionItem[]",
-                    "resolved": "AtIAccordionItem[]",
+                    "original": "AccordionItem[]",
+                    "resolved": "AccordionItem[]",
                     "references": {
-                        "AtIAccordionItem": {
+                        "AccordionItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-accordion/at-accordion.tsx",
-                            "id": "src/components/at-accordion/at-accordion.tsx::AtIAccordionItem"
+                            "id": "src/components/at-accordion/at-accordion.tsx::AccordionItem"
                         }
                     }
                 },
@@ -124,6 +126,7 @@ export class AtAccordionComponent {
             },
             "default_open": {
                 "type": "boolean",
+                "attribute": "default_open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -139,7 +142,6 @@ export class AtAccordionComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "default_open",
                 "defaultValue": "false"
             }
         };
@@ -225,3 +227,4 @@ export class AtAccordionComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-accordion.js.map

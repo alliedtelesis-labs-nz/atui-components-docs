@@ -1,5 +1,5 @@
-export type AtTooltipPosition = 'top' | 'bottom' | 'left' | 'right';
-export type AtTooltipAlign = 'start' | 'end' | 'center';
+export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
+export type TooltipAlign = 'start' | 'end' | 'center';
 /**
  * @category **Overlays**
  * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
@@ -11,11 +11,11 @@ export declare class AtTooltip {
     /**
      * Position of opened tooltip element relative to the trigger element.
      */
-    position: AtTooltipPosition;
+    position: TooltipPosition;
     /**
      * Alignment of opened tooltip element relative to trigger element.
      */
-    align: AtTooltipAlign;
+    align: TooltipAlign;
     /**
      * Prevent opening tooltip
      */
@@ -33,8 +33,8 @@ export declare class AtTooltip {
      */
     delay?: number;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
-     * */
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
     trigger_id?: string;
     disabledChanged(newValue: boolean): Promise<void>;
     isOpen: boolean;

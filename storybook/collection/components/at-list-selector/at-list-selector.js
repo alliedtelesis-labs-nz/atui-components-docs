@@ -6,28 +6,13 @@ import { h, Host, } from "@stencil/core";
  * @slot - Placed after the list items
  */
 export class AtListSelector {
-    /**
-     * List of items.
-     */
-    options = [];
-    /**
-     * The selected item.
-     */
-    selected_item_id;
-    /**
-     * Whether each item has a bottom border.
-     */
-    has_border;
-    /**
-     * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
-     */
-    atuiChange;
-    /**
-     * Emits when event when the info button of an item is clicked
-     */
-    atuiInfoButtonClick;
-    el;
-    listItemEls = [];
+    constructor() {
+        /**
+         * List of items.
+         */
+        this.options = [];
+        this.listItemEls = [];
+    }
     onSelect(item) {
         this.selected_item_id = item.id;
         this.atuiChange.emit(item);
@@ -63,22 +48,23 @@ export class AtListSelector {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("button", { slot: "info", class: "sm", color: "primary", onClick: (event) => this.onClickInfoButton(event) }, h("i", { class: "material-icons" }, "help_outline"))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '64510fc888e999cac2a91804b06d2cb5e2cd8ab6', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'c3fd6ddbe8f3541f6d6bdbe56189aa8c5a7fea82', name: "header" }), !!this.options.length && (h("nav", { key: '2a7f0cce6dedae66c9a42fc5c0b89265165b163e', class: "flex-fill overflow-visible pb-16" }, h("div", { key: 'd04bcf65ac5166f8fe998c14791d4b44c4f1d0a7', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'b60e8a2ab30f075c584cffe5fdde6afa921b2843' })));
+        return (h(Host, { key: '6be26c2389224e0f47a7272510f479afc4b538f1', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'b0fa93694a3a2d57b815f53c0e2d624f76d3bbac', name: "header" }), !!this.options.length && (h("nav", { key: 'a7c32df5e626cba32a2039e5ff510f86083ac47b', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '2e68019db31babb42f4e039527a07c83ebf1ff27', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '2f3d544695b91fef1c6cd2b6d0e51305178ae61a' })));
     }
     static get is() { return "at-list-selector"; }
     static get properties() {
         return {
             "options": {
                 "type": "unknown",
+                "attribute": "options",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtIListSelectorItem[]",
-                    "resolved": "AtIListSelectorItem[]",
+                    "original": "ListSelectorItem[]",
+                    "resolved": "ListSelectorItem[]",
                     "references": {
-                        "AtIListSelectorItem": {
+                        "ListSelectorItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-list-selector/at-list-selector.tsx",
-                            "id": "src/components/at-list-selector/at-list-selector.tsx::AtIListSelectorItem"
+                            "id": "src/components/at-list-selector/at-list-selector.tsx::ListSelectorItem"
                         }
                     }
                 },
@@ -94,6 +80,7 @@ export class AtListSelector {
             },
             "selected_item_id": {
                 "type": "string",
+                "attribute": "selected_item_id",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -108,11 +95,11 @@ export class AtListSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "selected_item_id"
+                "reflect": false
             },
             "has_border": {
                 "type": "boolean",
+                "attribute": "has_border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -127,8 +114,7 @@ export class AtListSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "has_border"
+                "reflect": false
             }
         };
     }
@@ -144,13 +130,13 @@ export class AtListSelector {
                     "text": "Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem"
                 },
                 "complexType": {
-                    "original": "AtIListSelectorItem",
-                    "resolved": "AtIListSelectorItem",
+                    "original": "ListSelectorItem",
+                    "resolved": "ListSelectorItem",
                     "references": {
-                        "AtIListSelectorItem": {
+                        "ListSelectorItem": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-list-selector/at-list-selector.tsx",
-                            "id": "src/components/at-list-selector/at-list-selector.tsx::AtIListSelectorItem"
+                            "id": "src/components/at-list-selector/at-list-selector.tsx::ListSelectorItem"
                         }
                     }
                 }
@@ -171,8 +157,7 @@ export class AtListSelector {
                         "AtEvent": {
                             "location": "import",
                             "path": "../../types/events",
-                            "id": "src/types/events.ts::AtEvent",
-                            "referenceLocation": "AtEvent"
+                            "id": "src/types/events.ts::AtEvent"
                         }
                     }
                 }
@@ -180,3 +165,4 @@ export class AtListSelector {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-list-selector.js.map

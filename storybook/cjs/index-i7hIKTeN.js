@@ -191,10 +191,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-breadcrumb-item.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-header.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-header.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-list-selector-item.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -207,6 +203,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-radio.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-sidebar-menuitem.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-sidebar-menuitem.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-tree-item.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -219,6 +219,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-chip-list.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-header.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-header.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-input.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -275,18 +279,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-prompt-input_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-sidebar-menuitem.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-sidebar-menuitem.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-accordion-item_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-accordion-item_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-prompt-message.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-prompt-message.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-input-numeric.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -371,6 +367,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-toggle-cell.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-prompt-message.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-prompt-message.cjs.entry.js')); }).then(processMod, consoleError);
           }
       }
   return (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })(

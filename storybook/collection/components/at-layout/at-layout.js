@@ -10,14 +10,16 @@ import { h, Host } from "@stencil/core";
  * @slot - Content when template is content-container
  */
 export class AtLayout {
-    /**
-     * Template used to display content
-     */
-    template = 'master-detail';
-    /**
-     * If overflow is allowed on the detail in master-detail
-     */
-    overflow = true;
+    constructor() {
+        /**
+         * Template used to display content
+         */
+        this.template = 'master-detail';
+        /**
+         * If overflow is allowed on the detail in master-detail
+         */
+        this.overflow = true;
+    }
     get layoutElement() {
         switch (this.template) {
             case 'master-detail':
@@ -29,22 +31,23 @@ export class AtLayout {
         }
     }
     render() {
-        return h(Host, { key: '8fa9799f6421564e1317e6c9f1dc1fc53787a130' }, this.layoutElement);
+        return h(Host, { key: 'a833b473fc3cfda88b7bb46125fdfdc4bb56dea9' }, this.layoutElement);
     }
     static get is() { return "at-layout"; }
     static get properties() {
         return {
             "template": {
                 "type": "string",
+                "attribute": "template",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtTemplate",
+                    "original": "Template",
                     "resolved": "\"content-container\" | \"master-detail\" | \"tabset\"",
                     "references": {
-                        "AtTemplate": {
+                        "Template": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-layout/at-layout.tsx",
-                            "id": "src/components/at-layout/at-layout.tsx::AtTemplate"
+                            "id": "src/components/at-layout/at-layout.tsx::Template"
                         }
                     }
                 },
@@ -57,11 +60,11 @@ export class AtLayout {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "template",
                 "defaultValue": "'master-detail'"
             },
             "overflow": {
                 "type": "boolean",
+                "attribute": "overflow",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -77,9 +80,9 @@ export class AtLayout {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "overflow",
                 "defaultValue": "true"
             }
         };
     }
 }
+//# sourceMappingURL=at-layout.js.map

@@ -4,30 +4,18 @@ import { h, Host } from "@stencil/core";
  * @description A static data table component for displaying read-only tabular data without interactive features. Ideal for simple data presentation and reports.
  */
 export class AtStaticTable {
-    /**
-     * Data to go into the table
-     */
-    table_data;
-    /**
-     * Column definitions for the table
-     */
-    col_defs;
-    /**
-     * Max number of items per page
-     */
-    page_size = 10;
-    /**
-     * If true the column manager will not be added
-     */
-    hide_column_manager;
-    /**
-     * If true, disables pagination on the table and shows all data at once.
-     * Useful for server-side pagination where you want to control pagination externally.
-     */
-    use_custom_pagination = false;
-    agGrid;
-    tableEl;
-    tableCreated = false;
+    constructor() {
+        /**
+         * Max number of items per page
+         */
+        this.page_size = 10;
+        /**
+         * If true, disables pagination on the table and shows all data at once.
+         * Useful for server-side pagination where you want to control pagination externally.
+         */
+        this.use_custom_pagination = false;
+        this.tableCreated = false;
+    }
     async componentDidLoad() {
         if (this.col_defs && !this.tableCreated) {
             this.agGrid = await this.tableEl.createGrid();
@@ -41,13 +29,14 @@ export class AtStaticTable {
         }
     }
     render() {
-        return (h(Host, { key: '3d04ff8b164ba3108532efa41ddbea1ce55923a3' }, !this.hide_column_manager && (h("at-table-actions", { key: '2a13e76238409fe1c16f40a2957caec6ba91aa49', ag_grid: this.agGrid }, h("at-column-manager", { key: '8f77ff256045a9420cd4229e4c080aa91b72257f', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: 'a6efc14c427376ca80ed4f9a3a0a304f055a30bf', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '5a5f73c0dd4defc992a3f47fc820794c225b41b2' }, !this.hide_column_manager && (h("at-table-actions", { key: 'e67add839c8f722239236c4fba62db1148d4e8d6', ag_grid: this.agGrid }, h("at-column-manager", { key: 'd87ad63ecd2ccd5a9c690baceec7b6c403e9accb', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '21cc6ae3d4f21a875baed41eaab8a6193a7f7007', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
     static get is() { return "at-static-table"; }
     static get properties() {
         return {
             "table_data": {
                 "type": "unknown",
+                "attribute": "table_data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        items: any[];\n        total: number;\n    }",
@@ -65,6 +54,7 @@ export class AtStaticTable {
             },
             "col_defs": {
                 "type": "unknown",
+                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -73,8 +63,7 @@ export class AtStaticTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -89,6 +78,7 @@ export class AtStaticTable {
             },
             "page_size": {
                 "type": "number",
+                "attribute": "page_size",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -104,11 +94,11 @@ export class AtStaticTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "page_size",
                 "defaultValue": "10"
             },
             "hide_column_manager": {
                 "type": "boolean",
+                "attribute": "hide_column_manager",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -123,11 +113,11 @@ export class AtStaticTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "hide_column_manager"
+                "reflect": false
             },
             "use_custom_pagination": {
                 "type": "boolean",
+                "attribute": "use_custom_pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -143,7 +133,6 @@ export class AtStaticTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             }
         };
@@ -155,3 +144,4 @@ export class AtStaticTable {
         };
     }
 }
+//# sourceMappingURL=at-static-table.js.map

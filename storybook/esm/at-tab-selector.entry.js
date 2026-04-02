@@ -1,31 +1,23 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-EP34iaAr.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
 
 const AtTabSelector = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
+        /**
+         * List of tabs the selector will have
+         */
+        this.tabs = [];
+        /**
+         * Layout of the tabs
+         */
+        this.layout = 'horizontal';
+        /**
+         * hide navigation when you want to provide custom controls
+         */
+        this.hide_nav = false;
+        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     }
-    get el() { return getElement(this); }
-    /**
-     * List of tabs the selector will have
-     */
-    tabs = [];
-    /**
-     * Layout of the tabs
-     */
-    layout = 'horizontal';
-    /**
-     * hide navigation when you want to provide custom controls
-     */
-    hide_nav = false;
-    /**
-     * Sets the current active tab
-     */
-    active_tab;
-    /**
-     * Emits the id of the tab when a new active_tab is set
-     */
-    atuiChange;
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -41,7 +33,6 @@ const AtTabSelector = class {
             });
         }
     }
-    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }
@@ -94,12 +85,15 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return h(Host, { key: '9d90e08dc90cbb2b5c96f30f0ec8a1e6d861e405' }, this.checkLayoutAndRender());
+        return h(Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
     }
+    get el() { return getElement(this); }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]
     }; }
 };
 
 export { AtTabSelector as at_tab_selector };
+//# sourceMappingURL=at-tab-selector.entry.js.map
+
 //# sourceMappingURL=at-tab-selector.entry.js.map

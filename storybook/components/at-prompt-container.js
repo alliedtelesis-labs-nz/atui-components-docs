@@ -1,1 +1,272 @@
-import{p as t,H as e,d as s,h as a,c as i,t as n}from"./p-CRwLX_Tp.js";import{f as o}from"./p-C11vpe5m.js";import{d as r}from"./p-CpXGbmUU.js";import{d as h}from"./p-BfbqUs4x.js";import{d}from"./p-CHhD-sII.js";import{d as p}from"./p-CyiiAjIX.js";import{d as l}from"./p-cGThiFaT.js";import{d as m}from"./p-C-iiFnE9.js";import{d as c}from"./p-M5HLNqyy.js";const u=t(class extends e{constructor(t){super(),!1!==t&&this.__registerHost(),this.atSubmit=s(this,"atSubmit",7),this.atStop=s(this,"atStop",7),this.atNewThread=s(this,"atNewThread",7),this.atMessageCopy=s(this,"atMessageCopy",7),this.atMessageRetry=s(this,"atMessageRetry",7),this.atMessageEdit=s(this,"atMessageEdit",7),this.atMessageVote=s(this,"atMessageVote",7)}get el(){return this}messages=[];placeholder="Type your message here...";error_text;loading=!1;disabled=!1;show_new_thread_button=!0;max_message_length=2e3;enable_vote=!0;enable_copy=!0;enable_edit=!1;response_animation="words";currentInput="";inputInvalid=!1;inputError="";isSendEnabled=!0;translations={};atSubmit;atStop;atNewThread;atMessageCopy;atMessageRetry;atMessageEdit;atMessageVote;inputComponent;async componentWillLoad(){this.translations=await o(this.el)}handleInputSubmit(t){const e=t.detail.trim();e&&this.isSendEnabled&&!this.disabled&&!this.loading&&this.handleSubmit(e)}handleMessageCopy(t){this.atMessageCopy.emit(t.detail)}handleMessageRetry(t){this.atMessageRetry.emit(t.detail)}async handleMessageEdit(t){this.atMessageEdit.emit(t.detail),this.inputComponent&&(this.inputComponent.value=t.detail.content,await this.focusInput())}handleMessageVote(t){const e=this.messages.findIndex((e=>e.id===t.detail.messageId));if(-1!==e){const s=[...this.messages];s[e]={...s[e],score:t.detail.score},this.messages=s,this.atMessageVote.emit(t.detail)}this.atMessageVote.emit(t.detail)}async addMessage(t,e){const s={id:""+Date.now(),role:t,content:e};this.messages=[...this.messages,s]}async appendToLastMessage(t){if(0===this.messages.length)return!1;const e=this.messages[this.messages.length-1];return"assistant"===e.role&&(e.content+=t,this.messages=[...this.messages],!0)}async newThread(){this.messages=[],this.currentInput="",this.isSendEnabled=!0,this.atNewThread.emit(),setTimeout((()=>this.focusInput()),100)}async setSendEnabled(t){this.isSendEnabled=t}async focusInput(){this.inputComponent&&setTimeout((()=>{this.inputComponent.focus()}),0)}handleSubmit=async t=>{t&&!this.disabled&&!this.loading&&this.isSendEnabled&&(this.isSendEnabled=!1,await this.addMessage("user",t),this.atSubmit.emit(t))};handleStop=()=>{this.atStop.emit()};handleNewThread=async()=>{await this.newThread()};renderHeader(){return this.show_new_thread_button?a("div",{class:"flex justify-end pb-16"},a("at-button",{slot:"actions",size:"md",type:"primaryOutline",onClick:this.handleNewThread,disabled:this.loading,"data-name":"new-thread-button"},this.translations?.ATUI?.PROMPT?.NEW_THREAD||"New Thread")):null}renderFooter(){return a("div",{class:"p-4"},a("at-prompt-input",{ref:t=>this.inputComponent=t,placeholder:this.placeholder,in_progress:this.loading,max_length:this.max_message_length,error_text:this.error_text,"data-name":"prompt-container-input",onAtSubmit:t=>this.handleSubmit(t.detail),onAtStop:()=>this.handleStop()}))}render(){return a(i,{key:"1f5ca320b8bf845de224e6b609e5d58bb2bcd9d5",class:"flex h-full w-full flex-col overflow-hidden","data-name":"prompt-container"},this.renderHeader(),a("slot",{key:"778925aff73037f76f3050f6a3d70dfe78c7c977",name:"prompt-container-header"}),a("div",{key:"5498b1874cf8335bfa6df4bca16feadaf08ee573",class:"min-h-0 flex-1","data-name":"thread-wrapper"},a("at-prompt-thread",{key:"c4e2a23a9d56c8604f9312b9e561ca473be221c6",messages:this.messages,loading:this.loading,auto_scroll:!0,enable_vote:this.enable_vote,enable_copy:this.enable_copy,enable_edit:this.enable_edit,response_animation:this.response_animation,"data-name":"container-thread"})),a("div",{key:"982484d03a364cd2336d7b5daac664f990e92275",class:"flex flex-col gap-4"},this.renderFooter(),a("slot",{key:"b8e8ea64a9aa273e50c1c2e1a420ad022e17943a",name:"prompt-container-footer"})))}},[772,"at-prompt-container",{messages:[1040],placeholder:[1],error_text:[1],loading:[4],disabled:[4],show_new_thread_button:[4],max_message_length:[2],enable_vote:[4],enable_copy:[4],enable_edit:[4],response_animation:[1],currentInput:[32],inputInvalid:[32],inputError:[32],isSendEnabled:[32],translations:[32],addMessage:[64],appendToLastMessage:[64],newThread:[64],setSendEnabled:[64],focusInput:[64]},[[0,"atSubmit","handleInputSubmit"],[0,"atThreadMessageCopy","handleMessageCopy"],[0,"atThreadMessageRetry","handleMessageRetry"],[0,"atThreadMessageEdit","handleMessageEdit"],[0,"atThreadMessageVote","handleMessageVote"]]]),b=u,f=function(){"undefined"!=typeof customElements&&["at-prompt-container","at-button","at-form-label","at-loading","at-prompt-input","at-prompt-message","at-prompt-thread","at-tooltip"].forEach((t=>{switch(t){case"at-prompt-container":customElements.get(n(t))||customElements.define(n(t),u);break;case"at-button":customElements.get(n(t))||r();break;case"at-form-label":customElements.get(n(t))||h();break;case"at-loading":customElements.get(n(t))||d();break;case"at-prompt-input":customElements.get(n(t))||p();break;case"at-prompt-message":customElements.get(n(t))||l();break;case"at-prompt-thread":customElements.get(n(t))||m();break;case"at-tooltip":customElements.get(n(t))||c()}}))};export{b as AtPromptContainer,f as defineCustomElement}
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { d as defineCustomElement$9 } from './p-CAIgKcTX.js';
+import { d as defineCustomElement$8 } from './p-BaOP2SR_.js';
+import { d as defineCustomElement$7 } from './p-ZP8fFsoE.js';
+import { d as defineCustomElement$6 } from './p-pDYyfeah.js';
+import { d as defineCustomElement$5 } from './p-tzNOGSqt.js';
+import { d as defineCustomElement$4 } from './p-Bw7tDqos.js';
+import { d as defineCustomElement$3 } from './p-DOMTgal9.js';
+import { d as defineCustomElement$2 } from './p-BUjvE2eq.js';
+
+const AtPromptContainer$1 = /*@__PURE__*/ proxyCustomElement(class AtPromptContainer extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.atSubmit = createEvent(this, "atSubmit", 7);
+        this.atStop = createEvent(this, "atStop", 7);
+        this.atNewThread = createEvent(this, "atNewThread", 7);
+        this.atMessageCopy = createEvent(this, "atMessageCopy", 7);
+        this.atMessageRetry = createEvent(this, "atMessageRetry", 7);
+        this.atMessageEdit = createEvent(this, "atMessageEdit", 7);
+        this.atMessageVote = createEvent(this, "atMessageVote", 7);
+        /**
+         * Array of messages to display in the conversation thread
+         */
+        this.messages = [];
+        /**
+         * Title displayed in the header section
+         */
+        this.header_title = 'AI Assistant';
+        /**
+         * Placeholder text for the input field
+         */
+        this.placeholder = 'Type your message here...';
+        /**
+         * Shows loading state and disables input
+         */
+        this.loading = false;
+        /**
+         * Disables all interactions with the container
+         */
+        this.disabled = false;
+        /**
+         * Controls visibility of the header section
+         */
+        this.show_header = true;
+        /**
+         * Controls visibility of the "New Thread" button in the header
+         */
+        this.show_new_thread_button = true;
+        /**
+         * Maximum character length for input messages
+         */
+        this.max_message_length = 2000;
+        /**
+         * Display voting actions for assistant messages
+         */
+        this.enable_vote = true;
+        /**
+         * Display copy action for assistant messages
+         */
+        this.enable_copy = true;
+        /**
+         * Display edit action for user messages
+         */
+        this.enable_edit = false;
+        this.currentInput = '';
+        this.inputInvalid = false;
+        this.inputError = '';
+        this.isSendEnabled = true;
+        this.translations = {};
+        this.handleSubmit = async (content) => {
+            if (!content || this.disabled || this.loading || !this.isSendEnabled) {
+                return;
+            }
+            this.isSendEnabled = false;
+            await this.addMessage('user', content);
+            this.atSubmit.emit(content);
+        };
+        this.handleStop = () => {
+            this.atStop.emit();
+        };
+        this.handleNewThread = async () => {
+            await this.newThread();
+        };
+    }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
+    handleInputSubmit(event) {
+        const content = event.detail.trim();
+        if (content && this.isSendEnabled && !this.disabled && !this.loading) {
+            this.handleSubmit(content);
+        }
+    }
+    handleMessageCopy(event) {
+        this.atMessageCopy.emit(event.detail);
+    }
+    handleMessageRetry(event) {
+        this.atMessageRetry.emit(event.detail);
+    }
+    async handleMessageEdit(event) {
+        this.atMessageEdit.emit(event.detail);
+        if (this.inputComponent) {
+            this.inputComponent.value = event.detail.content;
+            await this.focusInput();
+        }
+    }
+    handleMessageVote(event) {
+        event.stopPropagation();
+        const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
+        if (messageIndex !== -1) {
+            const updatedMessages = [...this.messages];
+            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { vote_status: event.detail.score });
+            this.messages = updatedMessages;
+        }
+    }
+    /**
+     * Programmatically add a message to the conversation thread
+     * @param role - The message role
+     * @param content - The message content
+     */
+    async addMessage(role, content) {
+        const message = {
+            id: Date.now().toString(),
+            role,
+            content,
+        };
+        this.messages = [...this.messages, message];
+    }
+    /**
+     * Append content to the last message in the thread (useful for streaming responses)
+     * @param content - The content to append
+     * @returns Promise<boolean> - Returns true if successful, false if no messages exist or last message is not from assistant
+     */
+    async appendToLastMessage(content) {
+        if (this.messages.length === 0)
+            return false;
+        const lastMessage = this.messages[this.messages.length - 1];
+        if (lastMessage.role !== 'assistant')
+            return false;
+        lastMessage.content += content;
+        this.messages = [...this.messages];
+        return true;
+    }
+    /**
+     * Start a new conversation thread by clearing all messages and resetting state
+     */
+    async newThread() {
+        this.messages = [];
+        this.currentInput = '';
+        this.isSendEnabled = true;
+        this.atNewThread.emit();
+        setTimeout(() => this.focusInput(), 100);
+    }
+    /**
+     * Control the send button state programmatically
+     * @param enabled - Whether the send functionality should be enabled
+     */
+    async setSendEnabled(enabled) {
+        this.isSendEnabled = enabled;
+    }
+    /**
+     * Programmatically focus the input field
+     */
+    async focusInput() {
+        if (this.inputComponent) {
+            setTimeout(() => {
+                this.inputComponent.focus();
+            }, 0);
+        }
+    }
+    renderHeader() {
+        var _a, _b, _c;
+        if (!this.show_header)
+            return null;
+        const newThreadText = ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.NEW_THREAD) || 'New Thread';
+        return (h("at-header", { size: "h3", header_title: this.header_title, subtitle: this.subtitle, border: true, "data-name": "prompt-container-header" }, this.show_new_thread_button && (h("at-button", { slot: "actions", size: "sm", type: "secondaryText", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText))));
+    }
+    renderFooter() {
+        return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
+    }
+    render() {
+        return (h(Host, { key: '3901dc5b26e561b776855a1bb408414dddfb257f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'c8a36a4f584581bf8487257a0f80bbeef5252842', name: "prompt-container-header" }), h("div", { key: '135e7e62c498fe00357c3529a5a115784c399b06', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '9bf80c9694fd575ed8cd168010ddf01a29ef7223', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '48327d43d3a871eedcc5949ae28bcd0ec6792235', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '9cf7058f2f32878d10cab95e3379b49c474c9190', name: "prompt-container-footer" }))));
+    }
+    get el() { return this; }
+}, [260, "at-prompt-container", {
+        "messages": [1040],
+        "header_title": [1],
+        "subtitle": [1],
+        "placeholder": [1],
+        "error_text": [1],
+        "loading": [4],
+        "disabled": [4],
+        "show_header": [4],
+        "show_new_thread_button": [4],
+        "max_message_length": [2],
+        "enable_vote": [4],
+        "enable_copy": [4],
+        "enable_edit": [4],
+        "currentInput": [32],
+        "inputInvalid": [32],
+        "inputError": [32],
+        "isSendEnabled": [32],
+        "translations": [32],
+        "addMessage": [64],
+        "appendToLastMessage": [64],
+        "newThread": [64],
+        "setSendEnabled": [64],
+        "focusInput": [64]
+    }, [[0, "atuiSubmit", "handleInputSubmit"], [0, "atuiMessageCopy", "handleMessageCopy"], [0, "atuiMessageRetry", "handleMessageRetry"], [0, "atuiMessageEdit", "handleMessageEdit"], [0, "atuiMessageVote", "handleMessageVote"]]]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-prompt-container", "at-button", "at-form-label", "at-header", "at-loading", "at-prompt-input", "at-prompt-message", "at-prompt-thread", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-prompt-container":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtPromptContainer$1);
+            }
+            break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$9();
+            }
+            break;
+        case "at-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$8();
+            }
+            break;
+        case "at-header":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "at-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "at-prompt-input":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "at-prompt-message":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "at-prompt-thread":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtPromptContainer = AtPromptContainer$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtPromptContainer, defineCustomElement };
+//# sourceMappingURL=at-prompt-container.js.map
+
+//# sourceMappingURL=at-prompt-container.js.map

@@ -1,25 +1,25 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { InitTextCellParams, ITooltipCell } from '../../../../types';
-import { AtICSSProperties } from '../../../../types/styles';
-export interface AtITextCellData {
+import { CSSProperties } from '../../../../types/styles';
+export interface TextCellData {
     text: string;
     tooltip?: string;
 }
-export interface AtITextCellParams extends ICellRendererParams, ITooltipCell {
-    text?: (data: AtITextCellData) => string;
+export interface ITextCellParams extends ICellRendererParams, ITooltipCell {
+    text?: (data: TextCellData) => string;
     color?: string;
     textStyles?: any | ((params: ICellRendererParams) => any);
     textClass?: string;
     textTransform?: (data: any, value: any) => string;
 }
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
  */
 export declare class AtTextCellComponent implements ICellRendererComp {
     el: HTMLElement;
-    containerStyles: AtICSSProperties;
-    textStyles: AtICSSProperties;
+    containerStyles: CSSProperties;
+    textStyles: CSSProperties;
     textClass: string;
     textValue: string;
     params: InitTextCellParams;

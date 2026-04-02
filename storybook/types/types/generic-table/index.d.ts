@@ -1,43 +1,43 @@
 import { SortDirection } from '../sort';
-import { AtITimeWithUnit } from '../time';
+import { TimeWithUnit } from '../time';
 import { ColumnState } from 'ag-grid-community';
 interface DateRange {
     startDate: Date;
     endDate: Date;
 }
-export interface AtISearchData<T> {
+export interface ISearchData<T> {
     items: T[];
     total: number;
 }
-export type AtTableFilterContent = string | string[] | number | {
+export type TableFilterContent = string | string[] | number | {
     [key: string]: any;
 };
-export interface AtIFieldFilters {
-    [key: string]: AtTableFilterContent;
+export interface IFieldFilters {
+    [key: string]: TableFilterContent;
 }
-export interface AtISearchTableParams {
+export interface ISearchTableParams {
     sort?: string;
     startRow?: number;
     endRow?: number;
     direction?: SortDirection.ASC | SortDirection.DESC;
     globalFilter?: string;
-    fieldFilters?: AtIFieldFilters;
+    fieldFilters?: IFieldFilters;
     columns?: string[];
     customDateFilter?: DateRange;
-    relativeTime?: AtITimeWithUnit;
+    relativeTime?: TimeWithUnit;
 }
-export interface AtIPaging {
+export interface IPaging {
     num?: number;
     page?: number;
 }
-export interface AtIMultiSelectFieldFilters {
-    [key: string]: AtTableFilterContent[];
+export interface IMultiSelectFieldFilters {
+    [key: string]: TableFilterContent[];
 }
-export interface AtISortParams {
+export interface ISortParams {
     type?: string;
     direction?: SortDirection;
 }
-export interface AtIPaginationParams {
+export interface IPaginationParams {
     start?: number;
     end?: number;
 }
@@ -45,40 +45,40 @@ export interface AgGridSortModel {
     colId: string;
     sort: 'asc' | 'desc';
 }
-export interface AtIDropdownKey {
+export interface DropdownKey {
     translationKey: string;
-    content: AtIFilter['content'];
+    content: IFilter['content'];
 }
-export interface AtIFilter {
+export interface IFilter {
     columnName: string;
     columnField: string;
-    content: AtTableFilterContent;
+    content: TableFilterContent;
     isVisible: boolean;
-    dropdownKeys?: AtIDropdownKey[];
+    dropdownKeys?: DropdownKey[];
     type?: 'number';
 }
-export interface AtTablePaginationValues {
+export interface TablePaginationValues {
     page: string;
     more: string;
     to: string;
     of: string;
 }
-export declare const paginationText: AtTablePaginationValues;
-export interface AtITableState {
-    stateDict: AtITableDict;
+export declare const paginationText: TablePaginationValues;
+export interface ITableState {
+    stateDict: ITableDict;
 }
-export interface AtITableDict {
-    [tableType: string]: AtITableData;
+export interface ITableDict {
+    [tableType: string]: ITableData;
 }
-export interface AtITableData extends AtITableUserSettings {
-    searchData: AtISearchData<any>;
+export interface ITableData extends ITableUserSettings {
+    searchData: ISearchData<any>;
 }
-export interface AtITableUserSettings {
-    searchParams: AtISearchTableParams;
+export interface ITableUserSettings {
+    searchParams: ISearchTableParams;
     columnState: ColumnState[];
 }
-export type AtTableId = string;
-export interface AtIColumnDetails {
+export type TableId = string;
+export interface ColumnDetails {
     actualWidth?: number;
     field: string;
     displayName: string;

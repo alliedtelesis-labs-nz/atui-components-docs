@@ -1,10 +1,13 @@
-const Template = (args) => `
-<at-search-table page_size=${args.page_size ?? 10} />
+const Template = (args) => {
+    var _a;
+    return `
+<at-search-table page_size=${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10} />
 <script>
 document.querySelector('at-search-table').table_data = ${JSON.stringify(args.table_data, null, 4)}
 document.querySelector('at-search-table').col_defs = ${JSON.stringify(args.col_defs, null, 4)}
 </script>
 `;
+};
 export default {
     title: 'Components/Search Table',
 };
@@ -49,3 +52,4 @@ Default.args = {
     },
     page_size: 10,
 };
+//# sourceMappingURL=at-search-table.stories.js.map

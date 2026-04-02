@@ -1,33 +1,25 @@
 'use strict';
 
-var index = require('./index-COiLLAKF.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtTabSelector = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
+        /**
+         * List of tabs the selector will have
+         */
+        this.tabs = [];
+        /**
+         * Layout of the tabs
+         */
+        this.layout = 'horizontal';
+        /**
+         * hide navigation when you want to provide custom controls
+         */
+        this.hide_nav = false;
+        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     }
-    get el() { return index.getElement(this); }
-    /**
-     * List of tabs the selector will have
-     */
-    tabs = [];
-    /**
-     * Layout of the tabs
-     */
-    layout = 'horizontal';
-    /**
-     * hide navigation when you want to provide custom controls
-     */
-    hide_nav = false;
-    /**
-     * Sets the current active tab
-     */
-    active_tab;
-    /**
-     * Emits the id of the tab when a new active_tab is set
-     */
-    atuiChange;
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -43,7 +35,6 @@ const AtTabSelector = class {
             });
         }
     }
-    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }
@@ -96,8 +87,9 @@ const AtTabSelector = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '9d90e08dc90cbb2b5c96f30f0ec8a1e6d861e405' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
     }
+    get el() { return index.getElement(this); }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]
     }; }
@@ -105,3 +97,5 @@ const AtTabSelector = class {
 
 exports.at_tab_selector = AtTabSelector;
 //# sourceMappingURL=at-tab-selector.entry.cjs.js.map
+
+//# sourceMappingURL=at-tab-selector.cjs.entry.js.map

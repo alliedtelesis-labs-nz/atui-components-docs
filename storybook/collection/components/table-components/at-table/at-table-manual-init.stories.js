@@ -1,4 +1,6 @@
-const ManualInitTemplate = (args) => `
+const ManualInitTemplate = (args) => {
+    var _a;
+    return `
 <div>
   <at-button id="init-btn" label="Initialize Table" type="primary" style="margin-bottom: 20px;"></at-button>
   <p id="status" style="margin-bottom: 20px; color: #666;">
@@ -6,7 +8,7 @@ const ManualInitTemplate = (args) => `
   </p>
   <at-table 
     id="manual-table"
-    page_size="${args.page_size ?? 10}" 
+    page_size="${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10}" 
     disable_auto_init="true"
   />
 </div>
@@ -47,14 +49,17 @@ const ManualInitTemplate = (args) => `
 })();
 </script>
 `;
-const DelayedInitTemplate = (args) => `
+};
+const DelayedInitTemplate = (args) => {
+    var _a;
+    return `
 <div>
   <p id="countdown" style="margin-bottom: 20px; color: #666; font-weight: bold;">
     Auto-initializing in <span id="seconds">5</span> seconds...
   </p>
   <at-table 
     id="delayed-table"
-    page_size="${args.page_size ?? 10}" 
+    page_size="${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10}" 
     disable_auto_init="true"
   />
 </div>
@@ -93,7 +98,10 @@ const DelayedInitTemplate = (args) => `
 })();
 </script>
 `;
-const ConditionalInitTemplate = (args) => `
+};
+const ConditionalInitTemplate = (args) => {
+    var _a;
+    return `
 <div>
   <div style="margin-bottom: 20px;">
     <label style="margin-right: 10px;">
@@ -112,7 +120,7 @@ const ConditionalInitTemplate = (args) => `
   </p>
   <at-table 
     id="conditional-table"
-    page_size="${args.page_size ?? 10}" 
+    page_size="${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10}" 
     disable_auto_init="true"
   />
 </div>
@@ -171,7 +179,10 @@ const ConditionalInitTemplate = (args) => `
 })();
 </script>
 `;
-const ExternalGridApiTemplate = (args) => `
+};
+const ExternalGridApiTemplate = (args) => {
+    var _a;
+    return `
 <div>
   <div style="margin-bottom: 20px;">
     <at-button id="create-external-grid" label="Create External Grid API" type="secondary" style="margin-right: 10px;"></at-button>
@@ -183,7 +194,7 @@ const ExternalGridApiTemplate = (args) => `
   <div id="external-grid-container" style="margin-bottom: 20px; height: 0; overflow: hidden;"></div>
   <at-table 
     id="external-table"
-    page_size="${args.page_size ?? 10}" 
+    page_size="${(_a = args.page_size) !== null && _a !== void 0 ? _a : 10}" 
     disable_auto_init="true"
   />
 </div>
@@ -246,6 +257,7 @@ const ExternalGridApiTemplate = (args) => `
 })();
 </script>
 `;
+};
 export default {
     title: 'Components/Table Components/Table/Manual Initialization',
     parameters: {
@@ -350,10 +362,7 @@ const sampleData = {
     },
 };
 export const ManualInitialization = {
-    args: {
-        ...sampleData,
-        page_size: 5,
-    },
+    args: Object.assign(Object.assign({}, sampleData), { page_size: 5 }),
     render: ManualInitTemplate,
     parameters: {
         docs: {
@@ -364,10 +373,7 @@ export const ManualInitialization = {
     },
 };
 export const DelayedInitialization = {
-    args: {
-        ...sampleData,
-        page_size: 5,
-    },
+    args: Object.assign(Object.assign({}, sampleData), { page_size: 5 }),
     render: DelayedInitTemplate,
     parameters: {
         docs: {
@@ -378,10 +384,7 @@ export const DelayedInitialization = {
     },
 };
 export const ConditionalInitialization = {
-    args: {
-        ...sampleData,
-        page_size: 5,
-    },
+    args: Object.assign(Object.assign({}, sampleData), { page_size: 5 }),
     render: ConditionalInitTemplate,
     parameters: {
         docs: {
@@ -392,10 +395,7 @@ export const ConditionalInitialization = {
     },
 };
 export const ExternalGridApiManagement = {
-    args: {
-        ...sampleData,
-        page_size: 5,
-    },
+    args: Object.assign(Object.assign({}, sampleData), { page_size: 5 }),
     render: ExternalGridApiTemplate,
     parameters: {
         docs: {
@@ -405,3 +405,4 @@ export const ExternalGridApiManagement = {
         },
     },
 };
+//# sourceMappingURL=at-table-manual-init.stories.js.map

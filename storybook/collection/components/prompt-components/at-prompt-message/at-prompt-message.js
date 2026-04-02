@@ -1,13 +1,18 @@
-import { Fragment, h, Host, } from "@stencil/core";
+import { Host, h, Fragment, } from "@stencil/core";
 import { classlist } from "../../../utils/classlist";
 import { fetchTranslations } from "../../../utils/translation";
-import { AtPromptResponseScore, } from "../../../types";
+// Add vote status enum to match Angular implementation
+export var VoteStatus;
+(function (VoteStatus) {
+    VoteStatus[VoteStatus["None"] = 0] = "None";
+    VoteStatus[VoteStatus["Up"] = 1] = "Up";
+    VoteStatus[VoteStatus["Down"] = -1] = "Down";
+})(VoteStatus || (VoteStatus = {}));
 const messageVariantsConfig = {
     variants: {
         role: {
             user: 'bg-surface-2 text-dark ml-auto inline-block p-8',
             assistant: 'text-dark mr-auto',
-            system: 'text-dark mr-auto',
         },
         loading: {
             true: 'animate-pulse',
@@ -26,221 +31,121 @@ const getMessageClasses = classlist('rounded-lg py-4 text-base', messageVariants
  * @slot - Custom message content (alternative to using the content prop)
  */
 export class AtPromptMessage {
-    /**
-     * The role/type of the message sender (only 'user' and 'assistant' are supported)
-     */
-    role = 'user';
-    /**
-     * The message content text
-     */
-    content = '';
-    /**
-     * Display name for the message sender
-     */
-    name;
-    /**
-     * Shows loading state with animated placeholder content
-     */
-    loading = false;
-    /**
-     * Shows error state styling and enables retry action
-     */
-    error = false;
-    /**
-     * Custom error message text (defaults to generic error message)
-     */
-    error_message;
-    /**
-     * The current vote score of the message
-     */
-    score = AtPromptResponseScore.NONE;
-    /**
-     * Display voting actions for assistant messages
-     */
-    enable_vote = false;
-    /**
-     * Display copy action for assistant messages - copies message content to clipboard
-     */
-    enable_copy = false;
-    /**
-     * Display edit action for user messages
-     */
-    enable_edit = false;
-    /**
-     * Unique identifier for the message
-     */
-    message_id;
-    /**
-     * Animation type for text streaming effect
-     * - 'none': No animation (default)
-     * - 'fade': Fade in the entire message
-     * - 'words': Animate words appearing sequentially
-     */
-    response_animation = 'words';
-    /**
-     * Emitted when the copy action is triggered
-     */
-    atCopy;
-    /**
-     * Emitted when a vote action is triggered
-     */
-    atVote;
-    /**
-     * Emitted when the retry action is triggered (for assistant messages with errors)
-     */
-    atRetry;
-    /**
-     * Emitted when the edit action is triggered (for user messages)
-     */
-    atEdit;
-    translations;
-    copyFeedbackVisible = false;
-    animatedContent = '';
-    isAnimating = false;
-    errorEl;
-    el;
-    async componentWillLoad() {
-        this.translations = await fetchTranslations(this.el);
-        this.initializeContent();
-    }
-    watchContentChange(newContent) {
-        if (newContent &&
-            this.response_animation === 'words' &&
-            this.role === 'assistant') {
-            this.startWordAnimation(newContent);
-        }
-        else {
-            this.animatedContent = newContent;
-        }
-    }
-    initializeContent() {
-        if (this.content &&
-            this.response_animation === 'words' &&
-            this.role === 'assistant') {
-            this.startWordAnimation(this.content);
-        }
-        else {
-            this.animatedContent = this.content;
-        }
-    }
-    startWordAnimation(content) {
-        if (this.isAnimating)
-            return;
-        this.isAnimating = true;
-        this.animatedContent = '';
-        const words = content.split(' ');
-        let currentWordIndex = 0;
-        const animateNextWord = () => {
-            if (currentWordIndex < words.length) {
-                if (currentWordIndex === 0) {
-                    this.animatedContent = words[currentWordIndex];
-                }
-                else {
-                    this.animatedContent += ' ' + words[currentWordIndex];
-                }
-                currentWordIndex++;
-                const delay = Math.random() * 30 + 30;
-                setTimeout(animateNextWord, delay);
+    constructor() {
+        /**
+         * The role/type of the message sender (only 'user' and 'assistant' are supported)
+         */
+        this.role = 'user';
+        /**
+         * The message content text
+         */
+        this.content = '';
+        /**
+         * Shows loading state with animated placeholder content
+         */
+        this.loading = false;
+        /**
+         * Shows error state styling and enables retry action
+         */
+        this.error = false;
+        /**
+         * The current vote status of the message
+         */
+        this.vote_status = VoteStatus.None;
+        /**
+         * Display voting actions for assistant messages
+         */
+        this.enable_vote = false;
+        /**
+         * Display copy action for assistant messages - copies message content to clipboard
+         */
+        this.enable_copy = false;
+        /**
+         * Display edit action for user messages
+         */
+        this.enable_edit = false;
+        this.copyFeedbackVisible = false;
+        this.handleCopy = async () => {
+            try {
+                await navigator.clipboard.writeText(this.content);
+                this.copyFeedbackVisible = true;
+                this.atCopy.emit(this.content);
+                setTimeout(() => {
+                    this.copyFeedbackVisible = false;
+                }, 2000);
             }
-            else {
-                this.isAnimating = false;
+            catch (err) {
+                console.error('Failed to copy text:', err);
             }
         };
-        setTimeout(animateNextWord, 30);
+        this.handleRetry = () => {
+            this.atRetry.emit();
+        };
+        this.handleEdit = () => {
+            this.atEdit.emit(this.content);
+        };
+        this.handleVote = (score) => {
+            const newScore = this.vote_status === score ? VoteStatus.None : score;
+            this.atVote.emit({ messageId: this.message_id, score: newScore });
+        };
     }
-    handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(this.content);
-            this.copyFeedbackVisible = true;
-            this.atCopy.emit(this.content);
-            setTimeout(() => {
-                this.copyFeedbackVisible = false;
-            }, 2000);
-        }
-        catch (err) {
-            console.error('Failed to copy text:', err);
-        }
-    };
-    handleRetry = () => {
-        this.atRetry.emit();
-    };
-    handleEdit = () => {
-        this.atEdit.emit(this.content);
-    };
-    handleVote = (score) => {
-        const newScore = this.score === score ? AtPromptResponseScore.NONE : score;
-        this.atVote.emit({ messageId: this.message_id, score: newScore });
-    };
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     renderActions() {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
         if (this.loading)
             return null;
-        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(AtPromptResponseScore.UP), "data-name": "vote-up-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score === AtPromptResponseScore.UP
-                ? '#000000'
-                : '#adb5bd' }, this.score === AtPromptResponseScore.UP ? (h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" })) : (h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
-            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(AtPromptResponseScore.DOWN), "data-name": "vote-down-button" }, h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score ===
-                AtPromptResponseScore.DOWN
-                ? '#000000'
-                : '#adb5bd' }, this.score ===
-            AtPromptResponseScore.DOWN ? (h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" })) : (h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
+        return (h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), h("span", null, ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.EDIT) || 'Edit'))), this.role === 'assistant' && this.enable_vote && (h(Fragment, null, h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Up), "data-name": "vote-up-button" }, this.vote_status === VoteStatus.Up ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#adb5bd" // token-border-dark
+        }, h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), h("span", null, ((_f = (_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.PROMPT) === null || _f === void 0 ? void 0 : _f.HELPFUL) ||
+            'Helpful')), h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(VoteStatus.Down), "data-name": "vote-down-button" }, this.vote_status === VoteStatus.Down ? (h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: "#000000" }, h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" }))) : (h("svg", { xmlns: "http://www.w3.org/2000/svg", width: "15px", viewBox: "0 -960 960 960", height: "15px", fill: "#adb5bd" // token-border-dark
+        }, h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), h("span", null, ((_j = (_h = (_g = this.translations) === null || _g === void 0 ? void 0 : _g.ATUI) === null || _h === void 0 ? void 0 : _h.PROMPT) === null || _j === void 0 ? void 0 : _j.NOT_HELPFUL) ||
             'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
                 ? 'check'
                 : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), h("span", null, this.copyFeedbackVisible
-            ? this.translations?.ATUI?.PROMPT?.COPIED ||
+            ? ((_m = (_l = (_k = this.translations) === null || _k === void 0 ? void 0 : _k.ATUI) === null || _l === void 0 ? void 0 : _l.PROMPT) === null || _m === void 0 ? void 0 : _m.COPIED) ||
                 'Copied'
-            : this.translations?.ATUI?.PROMPT?.COPY ||
-                'Copy'))), this.role === 'assistant' && this.error && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), h("span", null, this.translations?.ATUI?.PROMPT?.RETRY || 'Retry')))));
+            : ((_q = (_p = (_o = this.translations) === null || _o === void 0 ? void 0 : _o.ATUI) === null || _p === void 0 ? void 0 : _p.PROMPT) === null || _q === void 0 ? void 0 : _q.COPY) ||
+                'Copy'))), this.role === 'assistant' && this.error && (h("at-tooltip", { position: "top" }, h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), h("span", null, ((_t = (_s = (_r = this.translations) === null || _r === void 0 ? void 0 : _r.ATUI) === null || _s === void 0 ? void 0 : _s.PROMPT) === null || _t === void 0 ? void 0 : _t.RETRY) || 'Retry')))));
     }
     renderContent() {
+        var _a, _b, _c;
         if (this.loading) {
             return (h("div", { class: "py-8", "data-name": "loading-wrapper" }, h("at-loading", { class: "flex items-center gap-4 py-8", "data-name": "loading-content", variant: "typing", size: "sm" })));
         }
         if (this.error) {
             return (h("div", { class: "space-y-2", ref: (el) => (this.errorEl = el), "data-name": "error-content" }, h("p", { class: "text-destructive-foreground" }, this.error_message ||
-                this.translations?.ATUI?.PROMPT
-                    ?.ERROR_GENERATING_RESPONSE ||
+                ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.ERROR_GENERATING_RESPONSE) ||
                 'Error generating response')));
         }
-        const contentToDisplay = this.response_animation === 'words' && this.role === 'assistant'
-            ? this.animatedContent
-            : this.content;
-        const animationClass = this.response_animation === 'fade' ||
-            this.response_animation === 'words'
-            ? 'at-prompt-fade-in'
-            : '';
-        return (h("div", { class: `prose prose-sm preserve-newlines max-w-none ${animationClass}`, "data-name": "message-content" }, h("slot", null), contentToDisplay));
+        return (h("div", { class: "prose prose-sm preserve-newlines max-w-none", "data-name": "message-content" }, h("slot", null), this.content));
     }
     render() {
         const messageClasses = getMessageClasses({
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'd5cb865c537283fd1a8506cd78f3d48d18787a5e', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '1f82a92dfc459c854c0dd86686574278faecd21b', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'fec4b8ac6e94a5fbc2944f8967ffa8d4841b2c3b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '0a1551810668dac87a66b9fdb37f5467c8a62f3c', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'b2ac2b0548c3975282eed5f2f3b95bf5bdf2d5c1', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '9fad5bd48c6a8cd5d2451a485878ec4e4f6dfed3', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '4fe377808a604eab393172ec48f1942d9a5d151a', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '6fe967b72ad81d269aceb3b0bdd0269ac1255435', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
-    static get originalStyleUrls() {
-        return {
-            "$": ["at-prompt-message.scss"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["at-prompt-message.css"]
-        };
-    }
     static get properties() {
         return {
             "role": {
                 "type": "string",
+                "attribute": "role",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtPromptUserRole",
+                    "original": "Exclude<MessageRole, 'system'>",
                     "resolved": "\"assistant\" | \"user\"",
                     "references": {
-                        "AtPromptUserRole": {
+                        "Exclude": {
+                            "location": "global",
+                            "id": "global::Exclude"
+                        },
+                        "MessageRole": {
                             "location": "import",
                             "path": "../../../types",
-                            "id": "src/types/index.ts::AtPromptUserRole",
-                            "referenceLocation": "AtPromptUserRole"
+                            "id": "src/types/index.ts::MessageRole"
                         }
                     }
                 },
@@ -253,11 +158,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "role",
                 "defaultValue": "'user'"
             },
             "content": {
                 "type": "string",
+                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -273,11 +178,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "content",
                 "defaultValue": "''"
             },
             "name": {
                 "type": "string",
+                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -292,11 +197,11 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "name"
+                "reflect": false
             },
             "loading": {
                 "type": "boolean",
+                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -312,11 +217,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "loading",
                 "defaultValue": "false"
             },
             "error": {
                 "type": "boolean",
+                "attribute": "error",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -332,11 +237,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "error",
                 "defaultValue": "false"
             },
             "error_message": {
                 "type": "string",
+                "attribute": "error_message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -351,21 +256,20 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "error_message"
+                "reflect": false
             },
-            "score": {
+            "vote_status": {
                 "type": "number",
+                "attribute": "vote_status",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtPromptResponseScore",
-                    "resolved": "AtPromptResponseScore.DOWN | AtPromptResponseScore.NONE | AtPromptResponseScore.UP",
+                    "original": "VoteStatus",
+                    "resolved": "VoteStatus.Down | VoteStatus.None | VoteStatus.Up",
                     "references": {
-                        "AtPromptResponseScore": {
-                            "location": "import",
-                            "path": "../../../types",
-                            "id": "src/types/index.ts::AtPromptResponseScore",
-                            "referenceLocation": "AtPromptResponseScore"
+                        "VoteStatus": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/prompt-components/at-prompt-message/at-prompt-message.tsx",
+                            "id": "src/components/prompt-components/at-prompt-message/at-prompt-message.tsx::VoteStatus"
                         }
                     }
                 },
@@ -373,16 +277,16 @@ export class AtPromptMessage {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "The current vote score of the message"
+                    "text": "The current vote status of the message"
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "score",
-                "defaultValue": "AtPromptResponseScore.NONE"
+                "defaultValue": "VoteStatus.None"
             },
             "enable_vote": {
                 "type": "boolean",
+                "attribute": "enable_vote",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -398,11 +302,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "enable_vote",
                 "defaultValue": "false"
             },
             "enable_copy": {
                 "type": "boolean",
+                "attribute": "enable_copy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -418,11 +322,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "enable_copy",
                 "defaultValue": "false"
             },
             "enable_edit": {
                 "type": "boolean",
+                "attribute": "enable_edit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -438,11 +342,11 @@ export class AtPromptMessage {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "enable_edit",
                 "defaultValue": "false"
             },
             "message_id": {
                 "type": "string",
+                "attribute": "message_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -457,44 +361,14 @@ export class AtPromptMessage {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "message_id"
-            },
-            "response_animation": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "AtPromptResponseAnimation",
-                    "resolved": "\"fade\" | \"none\" | \"words\"",
-                    "references": {
-                        "AtPromptResponseAnimation": {
-                            "location": "import",
-                            "path": "../../../types",
-                            "id": "src/types/index.ts::AtPromptResponseAnimation",
-                            "referenceLocation": "AtPromptResponseAnimation"
-                        }
-                    }
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Animation type for text streaming effect\n- 'none': No animation (default)\n- 'fade': Fade in the entire message\n- 'words': Animate words appearing sequentially"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "response_animation",
-                "defaultValue": "'words'"
+                "reflect": false
             }
         };
     }
     static get states() {
         return {
             "translations": {},
-            "copyFeedbackVisible": {},
-            "animatedContent": {},
-            "isAnimating": {}
+            "copyFeedbackVisible": {}
         };
     }
     static get events() {
@@ -524,7 +398,7 @@ export class AtPromptMessage {
                     "text": "Emitted when a vote action is triggered"
                 },
                 "complexType": {
-                    "original": "{\n        messageId: string;\n        score: number;\n    }",
+                    "original": "{ messageId: string; score: number }",
                     "resolved": "{ messageId: string; score: number; }",
                     "references": {}
                 }
@@ -561,10 +435,5 @@ export class AtPromptMessage {
             }];
     }
     static get elementRef() { return "el"; }
-    static get watchers() {
-        return [{
-                "propName": "content",
-                "methodName": "watchContentChange"
-            }];
-    }
 }
+//# sourceMappingURL=at-prompt-message.js.map

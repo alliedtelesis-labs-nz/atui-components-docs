@@ -114,3 +114,6 @@ const fallback = {
 };
 
 exports.fetchTranslations = fetchTranslations;
+//# sourceMappingURL=translation-HqquF7bU.js.map
+
+//# sourceMappingURL=translation-HqquF7bU.js.map

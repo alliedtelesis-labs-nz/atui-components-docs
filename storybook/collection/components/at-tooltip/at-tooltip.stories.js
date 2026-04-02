@@ -1,12 +1,15 @@
-const Template = (args) => `
+const Template = (args) => {
+    var _a;
+    return `
 <at-tooltip
-    position="${args.position ?? 'right'}"
+    position="${(_a = args.position) !== null && _a !== void 0 ? _a : 'right'}"
     layout="${args.layout}"
 >
     <at-badge slot="tooltip-trigger" label="Hover over me"></at-badge>
     <span>Tooltip text</span>
 </at-tooltip>
 `;
+};
 const ExternalTriggerTemplate = (args) => `
 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px;">
     <div style="display: flex; gap: 16px; align-items: center;">
@@ -101,3 +104,4 @@ ExternalTrigger.args = {
 };
 export const TableRowExample = TableExampleTemplate.bind({});
 TableRowExample.args = {};
+//# sourceMappingURL=at-tooltip.stories.js.map

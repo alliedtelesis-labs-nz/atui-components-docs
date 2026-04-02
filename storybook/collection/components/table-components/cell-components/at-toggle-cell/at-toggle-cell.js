@@ -1,32 +1,26 @@
 import { h, Host } from "@stencil/core";
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a toggle.
  */
 export class AtToggleCell {
-    el;
-    params;
-    label;
-    labelPosition;
-    disabled;
-    value;
-    timer;
     init(params) {
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         this.params = params;
         if (this.params.toggleValue) {
             this.value = this.params.toggleValue(params.data);
         }
         else {
-            this.value = params.data?.toggleCell?.value || false;
+            this.value = ((_b = (_a = params.data) === null || _a === void 0 ? void 0 : _a.toggleCell) === null || _b === void 0 ? void 0 : _b.value) || false;
         }
         if (this.params.label) {
             this.label = this.params.label(params.data);
         }
         else {
-            this.label = params.data?.toggleCell?.label || '';
+            this.label = ((_d = (_c = params.data) === null || _c === void 0 ? void 0 : _c.toggleCell) === null || _d === void 0 ? void 0 : _d.label) || '';
         }
-        this.labelPosition = params.data?.toggleCell?.labelPosition || 'after';
-        this.disabled = params.data?.toggleCell?.disabled || false;
+        this.labelPosition = ((_f = (_e = params.data) === null || _e === void 0 ? void 0 : _e.toggleCell) === null || _f === void 0 ? void 0 : _f.labelPosition) || 'after';
+        this.disabled = ((_h = (_g = params.data) === null || _g === void 0 ? void 0 : _g.toggleCell) === null || _h === void 0 ? void 0 : _h.disabled) || false;
     }
     getGui() {
         return this.el;
@@ -46,7 +40,7 @@ export class AtToggleCell {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (h(Host, { key: '7dcd8810fea010843dbc43230d7a8b352ce9f1e5', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: 'd2ff05c0e59498cc383987a77355fee060c87924', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
+        return (h(Host, { key: '556d659445b02d15c119c164cbd6aa2259f08a0e', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: 'eaf5d2874adcd567fd00ebfad1fca9aa888485b5', label: this.label, onChange: () => { var _a, _b; return (_b = (_a = this.params).onTrigger) === null || _b === void 0 ? void 0 : _b.call(_a, this.params); }, label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
     }
     static get is() { return "at-toggle-cell"; }
     static get states() {
@@ -69,3 +63,4 @@ export class AtToggleCell {
             }];
     }
 }
+//# sourceMappingURL=at-toggle-cell.js.map

@@ -6,10 +6,10 @@ import { EventEmitter } from '../../stencil-public-runtime';
  * @slot menu-trigger - Trigger element for the menu (only used when trigger_id is not provided)
  * @slot default - Content to display inside the menu
  */
-export type AtPosition = 'top' | 'bottom' | 'left' | 'right';
-export type AtAlign = 'start' | 'end';
-export type AtOpenOn = 'hover' | 'click';
-export type AtAriaRole = 'menu' | 'listbox';
+export type Position = 'top' | 'bottom' | 'left' | 'right';
+export type Align = 'start' | 'end';
+export type OpenOn = 'hover' | 'click';
+export type AriaRole = 'menu' | 'listbox';
 export declare class AtMenu {
     /**
      * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
@@ -22,14 +22,14 @@ export declare class AtMenu {
     /**
      * Position of opened menu element relative to the trigger element.
      */
-    position: AtPosition;
+    position: Position;
     /**
      * Alignment of opened menu element relative to trigger element.
      */
-    align: AtAlign;
+    align: Align;
     /**
-     * String representing the 'width' style of the menu element ('NUMpx').
-     * To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
+     * String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width.
+     * To fit menu to content use width="fit-content" - Avoid width='auto' as this will result in 100% width.
      */
     width?: string;
     /**
@@ -39,17 +39,18 @@ export declare class AtMenu {
     /**
      * Event type that triggers the menu open state. Click or Hover.
      */
-    trigger: AtOpenOn;
+    trigger: OpenOn;
     /**
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
-    role: AtAriaRole;
+    role: AriaRole;
     /**
      * Prevent opening menu
      */
     disabled: boolean;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
+     * Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed.
+     */
     trigger_id?: string;
     disabledChanged(newValue: boolean): void;
     isOpen: boolean;
@@ -83,13 +84,6 @@ export declare class AtMenu {
     atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
     componentDidLoad(): Promise<void>;
-    private outsideClickHandler;
-    private outsideKeydownHandler;
-    private outsideFocusinHandler;
-    private addOutsideListeners;
-    private removeOutsideListeners;
-    private addFocusinListener;
-    private removeFocusinListener;
     private setupPopoverEventListeners;
     private setupExternalTriggerListeners;
     disconnectedCallback(): void;

@@ -1,52 +1,50 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-i7hIKTeN.js');
+var classlist = require('./classlist-BddvonaD.js');
 
-const atSidebarCss = () => `@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}at-sidebar{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar .backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeIn 300ms forwards}at-sidebar .sidebar{position:relative;width:var(--token-width-sidebar);flex-direction:column;flex:0 0 auto;min-height:100%;background-color:var(--token-sidebar-background);color:var(--token-sidebar-foreground);z-index:var(--token-z-index-nav);will-change:width;transition:width var(--token-transition-time);overflow:auto}at-sidebar .sidebar at-sidebar-trigger{display:flex;width:100%}at-sidebar .sidebar-content{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:8px;overflow-y:auto}at-sidebar .page-content{display:flex;flex-direction:column;flex-grow:1;overflow:auto}at-sidebar.side-right{flex-direction:row-reverse}at-sidebar.mode-over .sidebar{position:absolute}at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas{width:var(--token-width-sidebar-offscreen);overflow:hidden}at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas .sidebar-footer{display:none}at-sidebar[data-state=collapsed] .sidebar.collapse-icon{width:var(--token-width-sidebar-collapsed)}at-sidebar[data-state=collapsed] .sidebar.collapse-icon .sidebar-footer{display:none}at-sidebar[data-state=collapsed] .sidebar.collapse-none{width:var(--token-width-sidebar)}at-sidebar[data-state=collapsed] i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-sidebar-menuitem>[data-name=label]{opacity:0;transition:opacity 150ms ease 0s}at-sidebar[data-state=collapsed] at-menu{display:block}at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper]>at-sidebar-menuitem>[data-name=label]{opacity:1}at-sidebar .sidebar at-sidebar-trigger{width:100%;justify-content:flex-end}at-sidebar.collapse-icon.mode-over:not(.side-right) .at-sidebar__content{padding-left:var(--token-width-sidebar-collapsed)}at-sidebar.collapse-icon.mode-over.side-right .at-sidebar__content{padding-right:var(--token-width-sidebar-collapsed)}at-sidebar i[slot=menu-item-actions],at-sidebar at-sidebar-menuitem>[data-name=label]{opacity:1;transition:opacity 150ms ease 0.3s}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:40px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:50px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:60px}at-sidebar i[slot=menu-item-actions],at-sidebar *>at-sidebar-menuitem [data-name=label]{transition:opacity 150ms ease}at-sidebar .sc-at-sidebar-menuitem .label,at-sidebar at-accordion-item details summary at-sidebar-menuitem .label{font-weight:bold !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label,at-sidebar at-accordion-item [data-name=accordion-item-content] at-sidebar-menuitem .label{font-weight:var(--token-font-weight-normal) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label{color:var(--token-sidebar-foreground)}at-sidebar .sidebar-content at-sidebar-trigger{display:flex;justify-content:flex-end}at-sidebar .sidebar-content at-sidebar-trigger i{font-size:22px !important}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger{display:flex;justify-content:center}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i{min-width:24px}at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}at-sidebar .sidebar-content [data-name=accordion-item-content]{padding-bottom:16px}`;
+const atSidebarCss = "at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:36px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:50px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:64px}at-sidebar at-sidebar-submenu at-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}";
 
+const variantsConfig = {
+    variants: {
+        collapsible: {
+            none: null,
+            icon: 'group-data-[state=collapsed]/sidebar-wrapper:w-sidebar-collapsed',
+            offcanvas: 'group-data-[state=collapsed]/sidebar-wrapper:w-0',
+        },
+        side: {
+            left: null,
+            right: 'order-1',
+        },
+    },
+};
 const AtSidebarComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiSidebarChange = index.createEvent(this, "atuiSidebarChange", 7);
+        /**
+         * Position of the sidebar on the page
+         */
+        this.side = 'left';
+        /**
+         * Width of the sidebar
+         */
+        this.width = 'menu';
+        /**
+         * Size of the sidebar when collapsed.
+         */
+        this.collapsible = 'icon';
+        /**
+         * Opens the sidebar by default when set
+         */
+        this.default_open = true;
+        this.isOpen = false;
     }
-    /**
-     * Position of the sidebar on the page
-     */
-    side;
-    /**
-     * Width of the sidebar
-     */
-    width = 'menu';
-    /**
-     * Size of the sidebar when collapsed.
-     */
-    collapsible;
-    /**
-     * How the sidenav interacts with main content when open
-     */
-    mode;
-    /**
-     * Display a clickable backdrop when mode = over
-     */
-    backdrop = false;
-    /**
-     * Opens the sidebar by default when set
-     */
-    default_open = false;
-    isOpen = false;
-    /**
-     * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
-     */
-    atuiSidebarChange;
-    get el() { return index.getElement(this); }
     componentWillLoad() {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
         this.atuiSidebarChange.emit(this.isOpen);
-    }
-    componentDidLoad() {
-        this.el.addEventListener('atuiClick', this.handleMenuItemClick);
     }
     /**
      * Toggles the sidebar's open state.
@@ -62,30 +60,21 @@ const AtSidebarComponent = class {
     async getIsOpen() {
         return this.isOpen;
     }
-    handleBackdropClick = () => {
-        if (this.mode === 'over' && this.isOpen) {
-            this.toggleSidebar();
-        }
-    };
-    /**
-    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
-     */
-    handleMenuItemClick = (event) => {
-        const target = event.target;
-        if (target.getAttribute('slot') === 'accordion-trigger') {
-            return;
-        }
-        if (this.collapsible === 'offcanvas' && this.isOpen) {
-            this.toggleSidebar();
-        }
-    };
     render() {
-        const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (index.h(index.Host, { key: 'e7c03078caa6374d7c718d6181785b7c626841b4', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (index.h("div", { key: '1c8f658b79142cdb5be4db2322c5d5220c275c5f', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), index.h("nav", { key: 'd4174980b5687b0b98a8f34dfadb67874aee8136', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
-                ? 'true'
-                : 'false' }, index.h("div", { key: '651cac31d7229eb701c37e907b02666d4021efec', class: "sidebar-header", "data-name": "sidebar-header" }, index.h("slot", { key: '9ae8fc9ae6600373109f8c826efa9e73611bd0ff', name: "sidebar-header" })), index.h("div", { key: '000f78f5745dc8a5e2766e8d5899176e9c93d74c', class: "sidebar-content", "data-name": "sidebar-content" }, index.h("slot", { key: '337d5da9de6333d0fd8603083b92d4afcb7f6e47', name: "sidebar-content" })), index.h("div", { key: '676a37df86d57fe9f66c7b879f723b88e083c92c', class: `sidebar-footer`, "data-name": "sidebar-footer" }, index.h("slot", { key: '2a8cb6859a9c8f80dfe2dd5f2e853187b06cbab8', name: "sidebar-footer" }))), index.h("div", { key: 'c266a5a7dae40a4c6071f76023d6f8e6508b1c7f', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, index.h("slot", { key: '07e922c56b0bc77688bcb720549f2c93fc9f6adf', name: "page-content" }))));
+        const getClassname = classlist.classlist(`atui-sidebar group/sidebar bg-sidebar-background 
+                  text-sidebar-foreground relative z-20 flex h-screen w-full
+                  flex-col overflow-hidden border-r border-solid border-r-med 
+                  transition-[width] duration-300 ease-in-out`, variantsConfig);
+        const classname = getClassname({
+            collapsible: this.collapsible,
+            side: this.side,
+        });
+        return (index.h(index.Host, { key: '815d658bb4cd87051ff90d90b1dcf31e884d2d7e', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, index.h("nav", { key: '0c304e956fb67602bae6b8c47909c118b8425942', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, index.h("slot", { key: '1a452f31c8ab2cb7bd27beab30fb8eee89f188c2', name: "sidebar-header" }), index.h("div", { key: '19c073950f53198400a78ced14340818b45c3838', class: "align-items flex flex-1 flex-col p-8" }, index.h("slot", { key: '419d63010b0fc437a0e683abd2d0440ae7575607', name: "sidebar-content" })), index.h("div", { key: '5f0a7bf82aa010ee70930a6ac96bb27e2c029e5a', class: `${this.isOpen ? '' : 'hidden'}` }, index.h("slot", { key: 'd44723a74b0dd1ce43c5a6735f81e256353f8cd4', name: "sidebar-footer" }))), index.h("div", { key: '6f11a79f2bc58d10bb544df31857987201758622', class: "flex w-full overflow-auto" }, index.h("slot", { key: 'd9fcb0e87fbfe2b281d60d56b01c2ddf04e3c32a', name: "page-content" }))));
     }
 };
-AtSidebarComponent.style = atSidebarCss();
+AtSidebarComponent.style = atSidebarCss;
 
 exports.at_sidebar = AtSidebarComponent;
+//# sourceMappingURL=at-sidebar.entry.cjs.js.map
+
+//# sourceMappingURL=at-sidebar.cjs.entry.js.map

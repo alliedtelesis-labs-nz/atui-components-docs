@@ -1,36 +1,26 @@
-import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-89eupKrN.js';
-import { d as defineCustomElement$3 } from './p-C2Xc8lF0.js';
-import { d as defineCustomElement$2 } from './p--alrkzRc.js';
+import { p as proxyCustomElement, H, d as createEvent, h, c as Host } from './p-Cv5ME95Z.js';
+import { d as defineCustomElement$3 } from './p-DYG46fqd.js';
+import { d as defineCustomElement$2 } from './p-BWrOrXMj.js';
 
 const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector extends H {
-    constructor(registerHost) {
+    constructor() {
         super();
-        if (registerHost !== false) {
-            this.__registerHost();
-        }
+        this.__registerHost();
         this.atuiChange = createEvent(this, "atuiChange", 7);
+        /**
+         * List of tabs the selector will have
+         */
+        this.tabs = [];
+        /**
+         * Layout of the tabs
+         */
+        this.layout = 'horizontal';
+        /**
+         * hide navigation when you want to provide custom controls
+         */
+        this.hide_nav = false;
+        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     }
-    get el() { return this; }
-    /**
-     * List of tabs the selector will have
-     */
-    tabs = [];
-    /**
-     * Layout of the tabs
-     */
-    layout = 'horizontal';
-    /**
-     * hide navigation when you want to provide custom controls
-     */
-    hide_nav = false;
-    /**
-     * Sets the current active tab
-     */
-    active_tab;
-    /**
-     * Emits the id of the tab when a new active_tab is set
-     */
-    atuiChange;
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -46,7 +36,6 @@ const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector ext
             });
         }
     }
-    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }
@@ -99,8 +88,9 @@ const AtTabSelector$1 = /*@__PURE__*/ proxyCustomElement(class AtTabSelector ext
         }
     }
     render() {
-        return h(Host, { key: '9d90e08dc90cbb2b5c96f30f0ec8a1e6d861e405' }, this.checkLayoutAndRender());
+        return h(Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
     }
+    get el() { return this; }
     static get watchers() { return {
         "active_tab": ["handleActiveTabChange"]
     }; }

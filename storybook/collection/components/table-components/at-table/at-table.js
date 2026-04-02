@@ -6,66 +6,38 @@ import { AtTableComponentsConfigs } from "../at-table-components-configs";
  * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
  */
 export class AtTableComponent {
-    /**
-     * Data provided to the table
-     */
-    table_data;
-    /**
-     * Column definitions for the table
-     */
-    col_defs;
-    /**
-     * Default page size of the table if pagination is activated
-     */
-    page_size = 10;
-    /**
-     * Disables the default sorting provided by agGrid.
-     */
-    use_custom_sorting = false;
-    /**
-     * Disables the default pagination provided by agGrid.
-     * When using custom pagination, the default sorting
-     * provided by ag grid will not work correctly.
-     */
-    use_custom_pagination = false;
-    /**
-     * If true, disables automatic grid initialization.
-     * When disabled, you must manually call createGrid().
-     * Used when the table is controlled by a parent component.
-     */
-    disable_auto_init = false;
-    /**
-     * If true, enables automatic column resizing to fit available space.
-     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-     */
-    auto_size_columns = true;
-    /**
-     * The AG Grid API
-     */
-    ag_grid;
-    el;
-    resizeListener;
-    /**
-     * Emits an event when a column's sorting state changes.
-     * Used to perform sorting outside of agGrid, when use_custom_sorting is set.
-     * Data in the table should be updated using the agGrid api:
-     * ```agGrid.setGridOption("rowData", yourNewData)```
-     */
-    atSortChange;
-    activeFilters = {};
-    agGrid;
-    tableCreated = false;
+    constructor() {
+        /**
+         * Default page size of the table if pagination is activated
+         */
+        this.page_size = 10;
+        /**
+         * Disables the default sorting provided by agGrid.
+         */
+        this.use_custom_sorting = false;
+        /**
+         * Disables the default pagination provided by agGrid.
+         * When using custom pagination, the default sorting
+         * provided by ag grid will not work correctly.
+         */
+        this.use_custom_pagination = false;
+        /**
+         * If true, disables automatic grid initialization.
+         * When disabled, you must manually call createGrid().
+         * Used when the table is controlled by a parent component.
+         */
+        this.disable_auto_init = false;
+        /**
+         * If true, enables automatic column resizing to fit available space.
+         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+         */
+        this.auto_size_columns = true;
+        this.activeFilters = {};
+        this.tableCreated = false;
+    }
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('rowData', newData?.items || []);
-            if (this.auto_size_columns) {
-                setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
-            }
-        }
-    }
-    handleColDefsChange(newColDefs) {
-        if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', newColDefs);
+            this.agGrid.setGridOption('rowData', (newData === null || newData === void 0 ? void 0 : newData.items) || []);
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -76,6 +48,14 @@ export class AtTableComponent {
             this.tableCreated = true;
         }
         await this.initGrid();
+        if (this.auto_size_columns) {
+            this.resizeListener = () => {
+                if (this.agGrid) {
+                    this.agGrid.sizeColumnsToFit();
+                }
+            };
+            window.addEventListener('resize', this.resizeListener);
+        }
     }
     async componentDidUpdate() {
         await this.initGrid();
@@ -99,16 +79,21 @@ export class AtTableComponent {
      * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
      */
     async createGrid() {
-        if (this.agGrid) {
-            this.agGrid.destroy();
-        }
         const gridOptions = {
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
-            enableBrowserTooltips: true,
-            animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
+            onGridSizeChanged: (params) => {
+                if (this.auto_size_columns) {
+                    params.api.sizeColumnsToFit();
+                }
+            },
+            onGridReady: (params) => {
+                if (this.auto_size_columns) {
+                    params.api.sizeColumnsToFit();
+                }
+            },
             onSortChanged: (event) => {
                 const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
                 this.atSortChange.emit({
@@ -118,10 +103,7 @@ export class AtTableComponent {
             },
         };
         if (this.use_custom_sorting) {
-            gridOptions.columnDefs = this.col_defs.map((colDef) => ({
-                ...colDef,
-                comparator: () => 0,
-            }));
+            gridOptions.columnDefs = this.col_defs.map((colDef) => (Object.assign(Object.assign({}, colDef), { comparator: () => 0 })));
         }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;
@@ -134,6 +116,10 @@ export class AtTableComponent {
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
+        // Initial column sizing
+        if (this.auto_size_columns) {
+            setTimeout(() => gridApi.sizeColumnsToFit(), 0);
+        }
         return gridApi;
     }
     /**
@@ -151,7 +137,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: 'c710bcf5d4ef8e55167dfa19c4e53dc218ac2742', class: "ag-theme-material" });
+        return h(Host, { key: '26991c7429992112198c0ee790056d7afe4c766f', class: "ag-theme-material" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -168,6 +154,7 @@ export class AtTableComponent {
         return {
             "table_data": {
                 "type": "unknown",
+                "attribute": "table_data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        items: any[];\n        total: number;\n    }",
@@ -185,6 +172,7 @@ export class AtTableComponent {
             },
             "col_defs": {
                 "type": "unknown",
+                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -193,8 +181,7 @@ export class AtTableComponent {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -209,6 +196,7 @@ export class AtTableComponent {
             },
             "page_size": {
                 "type": "number",
+                "attribute": "page_size",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -224,11 +212,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "page_size",
                 "defaultValue": "10"
             },
             "use_custom_sorting": {
                 "type": "boolean",
+                "attribute": "use_custom_sorting",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -244,11 +232,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "use_custom_sorting",
                 "defaultValue": "false"
             },
             "use_custom_pagination": {
                 "type": "boolean",
+                "attribute": "use_custom_pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -264,11 +252,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             },
             "disable_auto_init": {
                 "type": "boolean",
+                "attribute": "disable_auto_init",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -284,11 +272,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "disable_auto_init",
                 "defaultValue": "false"
             },
             "auto_size_columns": {
                 "type": "boolean",
+                "attribute": "auto_size_columns",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -304,11 +292,11 @@ export class AtTableComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "auto_size_columns",
                 "defaultValue": "true"
             },
             "ag_grid": {
                 "type": "unknown",
+                "attribute": "ag_grid",
                 "mutable": false,
                 "complexType": {
                     "original": "GridApi",
@@ -317,8 +305,7 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         }
                     }
                 },
@@ -353,7 +340,7 @@ export class AtTableComponent {
                 },
                 "complexType": {
                     "original": "{\n        colId: string;\n        sortDirection: 'asc' | 'desc' | null;\n    }",
-                    "resolved": "{ colId: string; sortDirection: \"desc\" | \"asc\"; }",
+                    "resolved": "{ colId: string; sortDirection: \"asc\" | \"desc\"; }",
                     "references": {}
                 }
             }];
@@ -372,18 +359,12 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         },
                         "GridOptions": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions",
-                            "referenceLocation": "GridOptions"
-                        },
-                        "HTMLElement": {
-                            "location": "global",
-                            "id": "global::HTMLElement"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridOptions"
                         }
                     },
                     "return": "Promise<GridApi<any>>"
@@ -408,8 +389,7 @@ export class AtTableComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
-                            "referenceLocation": "GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
                         }
                     },
                     "return": "Promise<GridApi<any>>"
@@ -429,9 +409,7 @@ export class AtTableComponent {
         return [{
                 "propName": "table_data",
                 "methodName": "handleTableDataChange"
-            }, {
-                "propName": "col_defs",
-                "methodName": "handleColDefsChange"
             }];
     }
 }
+//# sourceMappingURL=at-table.js.map

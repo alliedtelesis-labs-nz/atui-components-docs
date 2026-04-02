@@ -32,30 +32,24 @@ const badgeVariants = {
  * @slot - Content placed after the label
  */
 export class AtBadgeComponent {
-    /**
-     * Icon appearing to the left of the badge title. MUST use mat-icon name.
-     */
-    icon;
-    /**
-     * Title shown on the badge.
-     */
-    label;
-    /**
-     * Type of the badge. Determines colour theming.
-     */
-    type = 'default';
-    /**
-     * Size of the badge. Determines padding and font-size. For use in input chip lists.
-     */
-    size = 'lg';
-    /**
-     * Impact of the badge, changes the colours.
-     */
-    impact = 'low';
-    /**
-     * Boolean value to round the edges of the badge.
-     */
-    rounded = false;
+    constructor() {
+        /**
+         * Type of the badge. Determines colour theming.
+         */
+        this.type = 'default';
+        /**
+         * Size of the badge. Determines padding and font-size. For use in input chip lists.
+         */
+        this.size = 'lg';
+        /**
+         * Impact of the badge, changes the colours.
+         */
+        this.impact = 'low';
+        /**
+         * Boolean value to round the edges of the badge.
+         */
+        this.rounded = false;
+    }
     get baseClasses() {
         return `${badgeVariants.base} ${this.rounded ? badgeVariants.rounded : ''}`;
     }
@@ -66,13 +60,14 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '1f61405b88a08cd90e8301c7738d3bd8bb1ae5b5', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'dfdd1a4bdbf6d69717438dac917ab5cd4ea918dd', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: '5e98850a7da250437097388a8cf92d4f5eb43ef9', "data-name": "badge-label" }, this.label), h("slot", { key: 'eec5131e5d17caf3bf5b9ae78ce11134f5f1835a' })));
+        return (h(Host, { key: 'a2c58da60ba433f545ffcf37ef20b2317cce0ec3', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: 'a70fb88f9272b2f1dd0341a6314940c808446a39', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: 'c0801e6eeac6ada1b208715563b674ab9d5dda7a', "data-name": "badge-label" }, this.label), h("slot", { key: '9f9731447b5f5c6d5a267e2bc8efa7c676500f1d' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {
         return {
             "icon": {
                 "type": "string",
+                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -87,11 +82,11 @@ export class AtBadgeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "icon"
+                "reflect": false
             },
             "label": {
                 "type": "string",
+                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -106,20 +101,20 @@ export class AtBadgeComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "label"
+                "reflect": false
             },
             "type": {
                 "type": "string",
+                "attribute": "type",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtBadgeType",
+                    "original": "BadgeType",
                     "resolved": "\"default\" | \"disabled\" | \"error\" | \"info\" | \"success\" | \"warning\"",
                     "references": {
-                        "AtBadgeType": {
+                        "BadgeType": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeType"
+                            "id": "src/components/at-badge/at-badge.tsx::BadgeType"
                         }
                     }
                 },
@@ -132,20 +127,20 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "type",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
+                "attribute": "size",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtBadgeSize",
+                    "original": "BadgeSize",
                     "resolved": "\"lg\" | \"sm\"",
                     "references": {
-                        "AtBadgeSize": {
+                        "BadgeSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeSize"
+                            "id": "src/components/at-badge/at-badge.tsx::BadgeSize"
                         }
                     }
                 },
@@ -158,20 +153,20 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "size",
                 "defaultValue": "'lg'"
             },
             "impact": {
                 "type": "string",
+                "attribute": "impact",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtBadgeContrast",
+                    "original": "BadgeContrast",
                     "resolved": "\"high\" | \"low\"",
                     "references": {
-                        "AtBadgeContrast": {
+                        "BadgeContrast": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-badge/at-badge.tsx",
-                            "id": "src/components/at-badge/at-badge.tsx::AtBadgeContrast"
+                            "id": "src/components/at-badge/at-badge.tsx::BadgeContrast"
                         }
                     }
                 },
@@ -184,11 +179,11 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "impact",
                 "defaultValue": "'low'"
             },
             "rounded": {
                 "type": "boolean",
+                "attribute": "rounded",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -204,9 +199,9 @@ export class AtBadgeComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "rounded",
                 "defaultValue": "false"
             }
         };
     }
 }
+//# sourceMappingURL=at-badge.js.map

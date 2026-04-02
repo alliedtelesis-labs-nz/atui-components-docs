@@ -1,6 +1,4 @@
-import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
-import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams } from '../../../types';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -60,18 +58,8 @@ export declare class AtSearchTable {
      */
     hide_export_menu?: boolean;
     /**
-     * If true, hides CSV export option from export menu
-     */
-    hide_csv_export?: boolean;
-    /**
-     * If true, hides PDF export option from export menu
-     */
-    hide_pdf_export?: boolean;
-    /**
      * If true, disables pagination on the table and shows all data at once.
-     *
-     * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
-     * the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
+     * Useful for server-side pagination where you want to control pagination externally.
      */
     use_custom_pagination?: boolean;
     /**
@@ -79,33 +67,11 @@ export declare class AtSearchTable {
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns: boolean;
-    /**
-     * If true, enables server-side data loading mode where filtering,
-     * searching, and pagination are handled externally
-     */
-    server_side_mode?: boolean;
-    /**
-     * If true, displays a loading placeholder and hides table content.
-     * Used for server-side data fetching to indicate loading state.
-     */
-    loading: boolean;
-    /**
-     * Event emitted when search params change in server-side mode.
-     * Contains filters, search text, pagination info
-     */
-    atSearchParamsChange: EventEmitter<AtISearchTableParams>;
-    /**
-     * Event emitted when CSV export is requested
-     */
-    atExportCsv: EventEmitter<AtIPaginationParams>;
-    /**
-     * Event emitted when PDF export is requested
-     */
-    atExportPdf: EventEmitter<AtIColumnDetails[]>;
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;
     tableCreated: boolean;
+    isInitialized: boolean;
     activeFilters: {
         [key: string]: string;
     };
@@ -115,12 +81,9 @@ export declare class AtSearchTable {
     }[];
     menuSelectedIds: string[];
     searchValue: string;
-    currentPage: number;
-    pageSize: number;
     tableEl: HTMLAtTableElement;
     get shouldShowDropdownFilters(): boolean;
     get shouldShowColumnManager(): boolean;
-    get totalPages(): number;
     handleSelectedFiltersChange(newValue: {
         id: string;
         value: string;
@@ -173,10 +136,6 @@ export declare class AtSearchTable {
     private handleFilterListChange;
     private updateActiveFilters;
     handleSearchChange(event: CustomEvent): void;
-    handlePageChange(event: CustomEvent<number>): void;
-    handlePageSizeChange(event: CustomEvent<number>): void;
-    emitSearchParamsChange(): void;
-    handleExport(event: CustomEvent<string>): void;
     render(): any;
 }
 export {};

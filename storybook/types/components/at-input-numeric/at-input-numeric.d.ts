@@ -2,7 +2,6 @@ import { EventEmitter } from '../../stencil-public-runtime';
 /**
  * @category Form Controls
  * @description A numeric input component for entering numerical values.
- * @slot label -  place before "form label" to add custom label content.
  */
 export declare class AtInputNumericComponent {
     /**

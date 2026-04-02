@@ -1,20 +1,20 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 export class AtTableFilters {
-    /**
-     * Column definitions used in your at-table
-     */
-    col_defs;
-    /**
-     * Currently selected columns and filter values
-     */
-    selected = [];
-    translations;
-    el;
-    /**
-     * Emits id of column and filter value on change.
-     */
-    atChange;
+    constructor() {
+        /**
+         * Currently selected columns and filter values
+         */
+        this.selected = [];
+        this.clearFilters = () => {
+            this.selected = [];
+            this.atChange.emit([]);
+        };
+        this.clearSingleFilter = (columnId) => {
+            this.selected = this.selected.filter((column) => column.id !== columnId);
+            this.atChange.emit(this.selected.length ? this.selected : []);
+        };
+    }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -27,22 +27,15 @@ export class AtTableFilters {
         });
         this.atChange.emit(this.selected);
     }
-    clearFilters = () => {
-        this.selected = [];
-        this.atChange.emit([]);
-    };
-    clearSingleFilter = (columnId) => {
-        this.selected = this.selected.filter((column) => column.id !== columnId);
-        this.atChange.emit(this.selected.length ? this.selected : []);
-    };
     render() {
-        return (this.col_defs && (h(Host, { key: '0e9cf78308796683db85f6cd33f7894f2f257531', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '95361f14a6f95e10e561681e834c6d36d5657eb4', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), h("at-button", { key: 'f8bb46c2dc4f69ebc0f24b0e1ce3074fa31bf56e', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: 'bbb23bf9ade8b3063c8bd4594189c59606823ee1', class: "flex items-start gap-8" }, h("div", { key: 'c1dbe24320f2963c8c5c1416342c7907f1632d8f', class: "bg-surface-0 flex min-h-[36px] flex-wrap items-end gap-8 rounded-md p-8" }, !this.selected.length && (h("p", { key: '239828e9906b7084bed1a18c6ceea3ba35daa578', class: "text-light" }, "0 Filters")), this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { icon: "cancel_outline", type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` })))))), this.selected.length > 0 && (h("at-button", { key: 'c9e7cfb958c06aae3dadcab41fa639050e21ce08', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "at-table-filters"; }
     static get properties() {
         return {
             "col_defs": {
                 "type": "unknown",
+                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -51,8 +44,7 @@ export class AtTableFilters {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
                         }
                     }
                 },
@@ -67,6 +59,7 @@ export class AtTableFilters {
             },
             "selected": {
                 "type": "unknown",
+                "attribute": "selected",
                 "mutable": true,
                 "complexType": {
                     "original": "{ id: string; value: string }[]",
@@ -102,13 +95,13 @@ export class AtTableFilters {
                     "text": "Emits id of column and filter value on change."
                 },
                 "complexType": {
-                    "original": "AtIFilterEvent[]",
-                    "resolved": "AtIFilterEvent[]",
+                    "original": "FilterEvent[]",
+                    "resolved": "FilterEvent[]",
                     "references": {
-                        "AtIFilterEvent": {
+                        "FilterEvent": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/at-table-filters/at-table-filters.tsx",
-                            "id": "src/components/table-components/at-table-filters/at-table-filters.tsx::AtIFilterEvent"
+                            "id": "src/components/table-components/at-table-filters/at-table-filters.tsx::FilterEvent"
                         }
                     }
                 }
@@ -116,3 +109,4 @@ export class AtTableFilters {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-table-filters.js.map

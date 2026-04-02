@@ -1,11 +1,12 @@
 import { h, Host } from "@stencil/core";
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a color status indicator based on predefined types
  */
 export class AtColorStatusCell {
-    el;
-    type = 'disabled';
+    constructor() {
+        this.type = 'disabled';
+    }
     init(params) {
         this.type = params.mapValueToStatus(params.data);
     }
@@ -23,7 +24,7 @@ export class AtColorStatusCell {
             success: 'bg-success-base',
             disabled: 'bg-disabled-light',
         };
-        return (h(Host, { key: '98690d8cdc009dae2bc33eab96bfd04cc8e45014', class: "flex h-full items-center" }, h("div", { key: '01e449e61e11ecde10f700f3eaa86f2705df57f4', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (h(Host, { key: 'f8049a4c2216fb59d99f7759543be67fb029f40c', class: "flex h-full items-center" }, h("div", { key: '58fc5148e5aee3b49f9b27a55d80d98d59784ad1', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
     static get is() { return "at-color-status-cell"; }
     static get states() {
@@ -33,3 +34,4 @@ export class AtColorStatusCell {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-color-status-cell.js.map

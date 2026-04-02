@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AtEvent } from '../../types/events';
-export interface AtIListSelectorItem {
+export interface ListSelectorItem {
     id: string;
     title: string;
     subtitle?: string;
@@ -21,7 +21,7 @@ export declare class AtListSelector {
     /**
      * List of items.
      */
-    options: AtIListSelectorItem[];
+    options: ListSelectorItem[];
     /**
      * The selected item.
      */
@@ -33,14 +33,14 @@ export declare class AtListSelector {
     /**
      * Emits an event when the selected item is changed, the `event.detail` is the ListSelectorItem
      */
-    atuiChange: EventEmitter<AtIListSelectorItem>;
+    atuiChange: EventEmitter<ListSelectorItem>;
     /**
      * Emits when event when the info button of an item is clicked
      */
     atuiInfoButtonClick: EventEmitter<AtEvent>;
     el: HTMLAtListSelectorElement;
     listItemEls: HTMLAtListSelectorItemElement[];
-    onSelect(item: AtIListSelectorItem): void;
+    onSelect(item: ListSelectorItem): void;
     onClickInfoButton(event: Event): void;
     focusAndClickRelativeItem(relativePosition: number): void;
     handleKeyDown(event: KeyboardEvent): void;

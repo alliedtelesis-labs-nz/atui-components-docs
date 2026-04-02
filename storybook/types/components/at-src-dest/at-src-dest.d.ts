@@ -1,4 +1,4 @@
-export type AtSrcDestAlign = 'left' | 'center';
+export type SrcDestAlign = 'left' | 'center';
 /**
  * @category Utilities
  * @description A src-dest component for displaying source and destination information.
@@ -31,6 +31,6 @@ export declare class AtSrcDestComponent {
     /**
      * Aligns the content to the left or center of the container
      */
-    align: AtSrcDestAlign;
+    align: SrcDestAlign;
     render(): any;
 }

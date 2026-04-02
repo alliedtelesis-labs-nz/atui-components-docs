@@ -1,6 +1,4 @@
-export interface AtISelectOption {
+export interface SelectOption {
+    key?: string;
     value: string;
-    label?: string;
-    disabled?: boolean;
-    children?: AtISelectOption[];
 }

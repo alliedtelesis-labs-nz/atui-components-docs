@@ -1,9 +1,9 @@
-import { AtIDateRange, AtIDateRangeStrings, TimeRangeDisplay } from './date';
-export interface AtITimeWithUnit {
-    unit: AtTimeUnit;
+import { DateRange, DateRangeStrings, TimeRangeDisplay } from './date';
+export interface TimeWithUnit {
+    unit: TimeUnit;
     value: number;
 }
-export declare enum AtTimeUnit {
+export declare enum TimeUnit {
     SECONDS = "SECONDS",
     MINUTES = "MINUTES",
     HOURS = "HOURS",
@@ -29,15 +29,15 @@ export interface ITimeRange {
 }
 export interface ISelectedTimeRange {
     selected: TimeRangeDisplay;
-    custom?: AtIDateRangeStrings;
+    custom?: DateRangeStrings;
 }
 export interface ITimeDateFilter {
-    dateFilter: AtIDateRange;
-    relativeTimeFilter?: AtITimeWithUnit;
+    dateFilter: DateRange;
+    relativeTimeFilter?: TimeWithUnit;
 }
 export declare class SelectedTimeRange {
     custom: any;
-    selected: AtITimeWithUnit;
+    selected: TimeWithUnit;
     /**
      * Generate a unique key when you need ISelectedTimeRange as an argument key of a function call caching.
      * Please see https://lodash.com/docs/4.17.15#memoize

@@ -1,70 +1,58 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
-var floatingUi_dom = require('./floating-ui.dom-BZk7Blsu.js');
+var index = require('./index-i7hIKTeN.js');
+var floatingUi_dom = require('./floating-ui.dom-Ca6tS7ef.js');
 
 const AtMenu = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiMenuStateChange = index.createEvent(this, "atuiMenuStateChange", 7);
+        /**
+         * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
+         */
+        this.offset_x = 0;
+        /**
+         * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
+         */
+        this.offset_y = 0;
+        /**
+         * Position of opened menu element relative to the trigger element.
+         */
+        this.position = 'bottom';
+        /**
+         * Alignment of opened menu element relative to trigger element.
+         */
+        this.align = 'start';
+        /**
+         * Prevent closing of menu when options are selected. Used for multi-selection controls.
+         */
+        this.autoclose = true;
+        /**
+         * Event type that triggers the menu open state. Click or Hover.
+         */
+        this.trigger = 'click';
+        /**
+         * Close the menu when the user clicks within the menu panel. Default for single selection menus.
+         */
+        this.role = 'menu';
+        /**
+         * Prevent opening menu
+         */
+        this.disabled = false;
+        this.isOpen = false;
+        this.triggerEls = [];
+        this.updatePosition = async () => {
+            if (this.triggerEl && this.menuEl && this.isOpen) {
+                await this.updateFloatingPosition();
+            }
+        };
+        this.externalTriggerListeners = [];
     }
-    /**
-     * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
-     */
-    offset_x = 0;
-    /**
-     * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
-     */
-    offset_y = 0;
-    /**
-     * Position of opened menu element relative to the trigger element.
-     */
-    position = 'bottom';
-    /**
-     * Alignment of opened menu element relative to trigger element.
-     */
-    align = 'start';
-    /**
-     * String representing the 'width' style of the menu element ('NUMpx').
-     * To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
-     */
-    width = 'fit-content';
-    /**
-     * Prevent closing of menu when options are selected. Used for multi-selection controls.
-     */
-    autoclose = true;
-    /**
-     * Event type that triggers the menu open state. Click or Hover.
-     */
-    trigger = 'click';
-    /**
-     * Close the menu when the user clicks within the menu panel. Default for single selection menus.
-     */
-    role = 'menu';
-    /**
-     * Prevent opening menu
-     */
-    disabled = false;
-    /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
-    trigger_id;
     disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             this.closeMenu();
         }
     }
-    isOpen = false;
-    triggerEl;
-    menuEl;
-    triggerEls = [];
-    popoverId;
-    cleanupAutoUpdate;
-    updatePosition = async () => {
-        if (this.triggerEl && this.menuEl && this.isOpen) {
-            await this.updateFloatingPosition();
-        }
-    };
-    get el() { return index.getElement(this); }
     /**
      * Toggles the dropdown menu's open state.
      */
@@ -117,17 +105,12 @@ const AtMenu = class {
     async getIsOpen() {
         return this.isOpen;
     }
-    /**
-     * Emits an event containing the open menu state.
-     */
-    atuiMenuStateChange;
-    timedOutCloser;
     async componentDidLoad() {
         this.popoverId = `atui-menu-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-menu="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-menu: No elements found with data-menu="${this.trigger_id}"`);
+                console.warn(`atui-menu: No elements found with data-id="${this.trigger_id}"`);
                 return;
             }
         }
@@ -139,65 +122,6 @@ const AtMenu = class {
         if (this.trigger_id && this.triggerEls.length) {
             this.setupExternalTriggerListeners();
         }
-        if (this.trigger === 'click') {
-            this.addOutsideListeners();
-        }
-        if (this.trigger === 'hover') {
-            this.addFocusinListener();
-        }
-    }
-    outsideClickHandler = (event) => {
-        if (!this.isOpen)
-            return;
-        const target = event.target;
-        const isInsideMenu = this.menuEl?.contains(target);
-        const isInsideTrigger = this.triggerEl?.contains(target) ||
-            this.triggerEls.some((el) => el.contains(target));
-        if (!isInsideMenu && !isInsideTrigger) {
-            this.closeMenu();
-        }
-    };
-    outsideKeydownHandler = (event) => {
-        if (!this.isOpen)
-            return;
-        if (event.key === 'Escape') {
-            this.closeMenu();
-            return;
-        }
-        if (event.key === 'Enter' || event.key === ' ') {
-            const target = event.target;
-            const isInsideMenu = this.menuEl?.contains(target);
-            const isInsideTrigger = this.triggerEl?.contains(target) ||
-                this.triggerEls.some((el) => el.contains(target));
-            if (!isInsideMenu && !isInsideTrigger) {
-                this.closeMenu();
-            }
-        }
-    };
-    outsideFocusinHandler = (event) => {
-        if (!this.isOpen)
-            return;
-        const target = event.target;
-        const isInsideMenu = this.menuEl?.contains(target);
-        const isInsideTrigger = this.triggerEl?.contains(target) ||
-            this.triggerEls.some((el) => el.contains(target));
-        if (!isInsideMenu && !isInsideTrigger) {
-            this.closeMenu();
-        }
-    };
-    addOutsideListeners() {
-        document.addEventListener('click', this.outsideClickHandler, true);
-        document.addEventListener('keydown', this.outsideKeydownHandler, true);
-    }
-    removeOutsideListeners() {
-        document.removeEventListener('click', this.outsideClickHandler, true);
-        document.removeEventListener('keydown', this.outsideKeydownHandler, true);
-    }
-    addFocusinListener() {
-        document.addEventListener('focusin', this.outsideFocusinHandler, true);
-    }
-    removeFocusinListener() {
-        document.removeEventListener('focusin', this.outsideFocusinHandler, true);
     }
     setupPopoverEventListeners() {
         if (this.menuEl) {
@@ -278,14 +202,7 @@ const AtMenu = class {
     disconnectedCallback() {
         this.cleanupFloatingUI();
         this.cleanupExternalTriggerListeners();
-        if (this.trigger === 'click') {
-            this.removeOutsideListeners();
-        }
-        if (this.trigger === 'hover') {
-            this.removeFocusinListener();
-        }
     }
-    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -337,9 +254,8 @@ const AtMenu = class {
                             floatingUi_dom.size({
                                 apply({ availableWidth, availableHeight, elements, }) {
                                     Object.assign(elements.floating.style, {
-                                        maxHeight: `${availableHeight}px`,
                                         maxWidth: `${availableWidth}px`,
-                                        minWidth: '0',
+                                        maxHeight: `${availableHeight}px`,
                                     });
                                 },
                             }),
@@ -399,14 +315,9 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: 'f6496533b5cd7b9da70d92b108838ecf1e8f3396', class: "relative", onBlur: (e) => {
-                if (this.disabled || !this.isOpen)
-                    return;
-                const related = e.relatedTarget;
-                if (!this.menuEl?.contains(related)) {
-                    this.closeMenu();
-                }
-            } }, !this.trigger_id && (index.h("div", { key: 'b7681c58b6b3de266473bb543bc19b1a58364089', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+        return (index.h(index.Host, { key: 'c47c090565a470043561debd90ddb954e46554e0', class: "z-modal relative" }, index.h("div", { key: '2e08fa573fd88726d4442bc2d90fc3ad61d55667', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
+                ? this.mouseLeaveHandler()
+                : null }, !this.trigger_id && (index.h("div", { key: '2c0398211b3a8be5243ee53fae8794c689e1a543', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -422,7 +333,8 @@ const AtMenu = class {
             }, onMouseLeave: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseLeaveHandler()
                 : null, onClick: async (event) => {
-                if (this.trigger === 'click' && !this.disabled) {
+                if (this.trigger === 'click' &&
+                    !this.disabled) {
                     event.preventDefault();
                     event.stopPropagation();
                     if (this.isOpen) {
@@ -432,7 +344,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: '7f15cb6552891a36742a6ddcffbb787991ce62f2', name: "menu-trigger" }))), index.h("div", { key: 'ee48e49d4e27a153b31b96eed7a12a45d986f3f6', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: '1d74ec807498cdb2b452b69aaaa0d938fc461951', name: "menu-trigger" }))), index.h("div", { key: '8e6c1e827d69e070450cfb1af767633d488f429d', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -444,13 +356,15 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '1949867bc18c373c724185fd4bc541ff466d8068' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, index.h("slot", { key: '4b33af13b7f07e39a23d171118aa6ef8ad913440' })))));
     }
+    get el() { return index.getElement(this); }
     static get watchers() { return {
-        "disabled": [{
-                "disabledChanged": 0
-            }]
+        "disabled": ["disabledChanged"]
     }; }
 };
 
 exports.at_menu = AtMenu;
+//# sourceMappingURL=at-menu.entry.cjs.js.map
+
+//# sourceMappingURL=at-menu.cjs.entry.js.map

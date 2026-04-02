@@ -1,10 +1,13 @@
-const Template = (args) => `
+const Template = (args) => {
+    var _a, _b;
+    return `
 <at-radio 
-    label="${args.label ?? ''}" 
-    subtitle="${args.subtitle ?? ''}"
+    label="${(_a = args.label) !== null && _a !== void 0 ? _a : ''}" 
+    subtitle="${(_b = args.subtitle) !== null && _b !== void 0 ? _b : ''}"
     ${args.checked ? 'checked' : ''}
     ${args.disabled ? 'disabled' : ''}
 />`;
+};
 export default {
     title: 'Components/Radio',
 };
@@ -19,3 +22,4 @@ Subtitle.args = {
 };
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Title', subtitle: '', checked: true, disabled: true };
+//# sourceMappingURL=at-radio.stories.js.map

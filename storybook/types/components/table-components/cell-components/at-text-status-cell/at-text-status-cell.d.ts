@@ -1,11 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { ITooltipCell } from '../../../../types';
-import { AtBadgeType } from '../../../at-badge/at-badge';
-export interface AtITextStatusCellData {
+import { BadgeType } from '../../../at-badge/at-badge';
+export interface TextStatusCellData {
     value: 'active' | 'warning' | 'error' | 'default' | string;
     tooltip?: string;
 }
-export interface AtITextStatusCellParams extends ITooltipCell {
+export interface ITextStatusCellParams extends ITooltipCell {
     mapValueToText?: (value: any) => string;
     mapValueToStatus?: (value: any) => string | 'default';
     showSimpleText?: boolean;
@@ -13,24 +13,24 @@ export interface AtITextStatusCellParams extends ITooltipCell {
     textTransform?: (params: ICellRendererParams, value: string) => string;
     useIconHeaderTooltip?: boolean;
 }
-export interface AtITextStatusValueParam {
+export interface TextStatusValueParam {
     status: string;
 }
-interface AtInitParams extends AtITextStatusCellParams, ICellRendererParams {
+interface InitParams extends ITextStatusCellParams, ICellRendererParams {
 }
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a text with a status.
  */
 export declare class AtTextStatusCellComponent implements ICellRendererComp {
     el: any;
-    params: AtInitParams;
+    params: InitParams;
     text: string;
-    type: AtBadgeType;
+    type: BadgeType;
     showSimpleText: boolean;
-    init(params: AtInitParams): void;
+    init(params: InitParams): void;
     getGui(): HTMLElement;
-    refresh(_: AtInitParams): boolean;
+    refresh(_: InitParams): boolean;
     private setCellData;
     private mapValueToBadgeType;
     render(): any;

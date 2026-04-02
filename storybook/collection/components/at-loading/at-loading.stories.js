@@ -1,10 +1,13 @@
-const Template = (args) => `
+const Template = (args) => {
+    var _a, _b, _c, _d;
+    return `
 <at-loading 
-    size="${args.size ?? 'md'}"
-    type="${args.type ?? 'default'}"
-    variant="${args.variant ?? 'spinner'}"
-    text="${args.text ?? 'Loading'}"
+    size="${(_a = args.size) !== null && _a !== void 0 ? _a : 'md'}"
+    type="${(_b = args.type) !== null && _b !== void 0 ? _b : 'default'}"
+    variant="${(_c = args.variant) !== null && _c !== void 0 ? _c : 'spinner'}"
+    text="${(_d = args.text) !== null && _d !== void 0 ? _d : 'Loading'}"
 />`;
+};
 export default {
     title: 'Components/Loading',
     argTypes: {
@@ -98,3 +101,4 @@ export const AllVariants = () => `
     </div>
 </div>
 `;
+//# sourceMappingURL=at-loading.stories.js.map

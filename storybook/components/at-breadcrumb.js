@@ -1,1 +1,58 @@
-import{p as e,H as t,d as a,h as i,F as s,t as r}from"./p-CRwLX_Tp.js";import{d as c}from"./p-DssBgPFQ.js";const l=e(class extends t{constructor(e){super(),!1!==e&&this.__registerHost(),this.atuiClick=a(this,"atuiClick",7)}get_prefix=()=>"";prefix_delimiter="";values;get el(){return this}atuiClick;handleClick(e){const t=Array.prototype.indexOf.call(this.el.querySelectorAll("at-breadcrumb-item > a"),e.target);t>=0&&this.atuiClick.emit(t)}render(){return i("nav",{key:"a4b0103aa627bc03f79d770d8a8aabb1164f52c9",role:"navigation","aria-label":"breadcrumb",class:"inline-flex items-center",onClick:e=>this.handleClick(e)},this.values&&this.values.map(((e,t)=>i(s,null,i("at-breadcrumb-item",{label:`${this.get_prefix(t)}${this.prefix_delimiter}${e}`,is_active:t===this.values.length-1}),t<this.values.length-1&&i("i",{class:"material-icons text-icon-md text-light","aria-hidden":"true",role:"presentation"},"chevron_right")))),i("slot",{key:"4b46c7ea018d75c791752291f6319ec4b58f51c6"}))}},[772,"at-breadcrumb",{get_prefix:[16],prefix_delimiter:[1],values:[16]}]),n=l,m=function(){"undefined"!=typeof customElements&&["at-breadcrumb","at-breadcrumb-item"].forEach((e=>{switch(e){case"at-breadcrumb":customElements.get(r(e))||customElements.define(r(e),l);break;case"at-breadcrumb-item":customElements.get(r(e))||c()}}))};export{n as AtBreadcrumb,m as defineCustomElement}
+import { p as proxyCustomElement, H, d as createEvent, h, F as Fragment } from './p-Cv5ME95Z.js';
+import { d as defineCustomElement$2 } from './p-BmMSxK_W.js';
+
+const AtBreadcrumbComponent = /*@__PURE__*/ proxyCustomElement(class AtBreadcrumbComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.atuiClick = createEvent(this, "atuiClick", 7);
+        /**
+         * Function to get the prefix for breadcrumbs.
+         */
+        this.get_prefix = () => '';
+        /**
+         * Delimiter between the prefix and the prefix.
+         */
+        this.prefix_delimiter = '';
+    }
+    handleClick(event) {
+        const idOfEventTarget = Array.prototype.indexOf.call(this.el.querySelectorAll('at-breadcrumb-item > a'), event.target);
+        if (idOfEventTarget >= 0)
+            this.atuiClick.emit(idOfEventTarget);
+    }
+    render() {
+        return (h("nav", { key: '583326fa338ea9e21197d317cc3108070ff83b58', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
+            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), h("slot", { key: '6471373aa832e5c0314c8c4d6d1c5913be20c91f' })));
+    }
+    get el() { return this; }
+}, [260, "at-breadcrumb", {
+        "get_prefix": [16],
+        "prefix_delimiter": [1],
+        "values": [16]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-breadcrumb", "at-breadcrumb-item"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-breadcrumb":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtBreadcrumbComponent);
+            }
+            break;
+        case "at-breadcrumb-item":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtBreadcrumb = AtBreadcrumbComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtBreadcrumb, defineCustomElement };
+//# sourceMappingURL=at-breadcrumb.js.map
+
+//# sourceMappingURL=at-breadcrumb.js.map

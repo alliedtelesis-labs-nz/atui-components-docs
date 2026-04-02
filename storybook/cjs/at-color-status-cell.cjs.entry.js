@@ -1,13 +1,12 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
+        this.type = 'disabled';
     }
-    get el() { return index.getElement(this); }
-    type = 'disabled';
     init(params) {
         this.type = params.mapValueToStatus(params.data);
     }
@@ -25,8 +24,12 @@ const AtColorStatusCell = class {
             success: 'bg-success-base',
             disabled: 'bg-disabled-light',
         };
-        return (index.h(index.Host, { key: '98690d8cdc009dae2bc33eab96bfd04cc8e45014', class: "flex h-full items-center" }, index.h("div", { key: '01e449e61e11ecde10f700f3eaa86f2705df57f4', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (index.h(index.Host, { key: 'f8049a4c2216fb59d99f7759543be67fb029f40c', class: "flex h-full items-center" }, index.h("div", { key: '58fc5148e5aee3b49f9b27a55d80d98d59784ad1', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
+    get el() { return index.getElement(this); }
 };
 
 exports.at_color_status_cell = AtColorStatusCell;
+//# sourceMappingURL=at-color-status-cell.entry.cjs.js.map
+
+//# sourceMappingURL=at-color-status-cell.cjs.entry.js.map

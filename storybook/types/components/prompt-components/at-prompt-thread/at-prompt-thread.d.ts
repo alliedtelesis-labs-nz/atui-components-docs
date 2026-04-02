@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { AtPromptResponseAnimation, AtIPromptMessage } from '../../../types';
+import type { PromptMessage } from '../../../types';
 /**
  * @category Prompt
  * @description A message thread component for displaying user and chatbot messages in a conversation format. Supports auto-scrolling, empty states, loading indicators, and message interaction events.
@@ -10,7 +10,7 @@ export declare class AtPromptThread {
     /**
      * Array of messages to display in the conversation thread
      */
-    messages: AtIPromptMessage[];
+    messages: PromptMessage[];
     /**
      * Shows a loading indicator for incoming messages
      */
@@ -36,36 +36,29 @@ export declare class AtPromptThread {
      */
     enable_edit: boolean;
     /**
-     * Enable streaming text animations for system/assistant messages
-     * - 'none': No animation (default)
-     * - 'fade': Fade in the entire message
-     * - 'words': Animate words appearing sequentially like ChatGPT
-     */
-    response_animation: AtPromptResponseAnimation;
-    /**
      * Emitted when a message copy action is requested
      */
-    atThreadMessageCopy: EventEmitter<{
+    atMessageCopy: EventEmitter<{
         messageId: string;
         content: string;
     }>;
     /**
      * Emitted when a message retry action is requested
      */
-    atThreadMessageRetry: EventEmitter<{
+    atMessageRetry: EventEmitter<{
         messageId: string;
     }>;
     /**
      * Emitted when a message edit action is requested
      */
-    atThreadMessageEdit: EventEmitter<{
+    atMessageEdit: EventEmitter<{
         messageId: string;
         content: string;
     }>;
     /**
      * Emitted when a message vote action is requested
      */
-    atThreadMessageVote: EventEmitter<{
+    atMessageVote: EventEmitter<{
         messageId: string;
         score: number;
     }>;

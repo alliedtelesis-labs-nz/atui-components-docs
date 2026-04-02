@@ -1,1 +1,125 @@
-import{p as t,t as e,H as s,h as o,c}from"./p-CRwLX_Tp.js";import{d as a}from"./p-Dx2rLUrv.js";import{d as i}from"./p-DZRKv3xV.js";const r=t(class extends s{constructor(t){super(),!1!==t&&this.__registerHost()}get el(){return this}items=[];default_open=!1;accordionItems=[];async componentDidLoad(){await new Promise((t=>setTimeout(t,0))),this.accordionItems=Array.from(this.el.querySelectorAll("at-accordion-item")),this.default_open&&await this.openAll()}async toggleById(t){this.refreshAccordionItems(),this.accordionItems.forEach((e=>{e.item_id===t&&(e.open?e.closeAccordion():e.openAccordion())}))}async openAll(){this.refreshAccordionItems(),this.accordionItems.forEach((t=>{t.openAccordion()}))}async closeAll(){this.refreshAccordionItems(),this.accordionItems.forEach((t=>{t.closeAccordion()}))}async toggleAll(){this.refreshAccordionItems(),this.accordionItems.forEach((t=>{t.open?t.closeAccordion():t.openAccordion()}))}refreshAccordionItems(){this.accordionItems=Array.from(this.el.querySelectorAll("at-accordion-item"))}accordionId="accordion-"+Math.random().toString(36).substring(2,11);render(){return o(c,{key:"ffefe5b585234f34863436703ad35bbe3a1c668d",class:"flex flex-col gap-2"},o("slot",{key:"0e33071ed37d10d93ae63bd62b962e44cdbf6387"}),this.items&&this.items.map((t=>o("at-accordion-item",{item_id:`${this.accordionId}-${t.item_id}`,label:t.label,content:t.content}))))}},[772,"at-accordion",{items:[16],default_open:[4],toggleById:[64],openAll:[64],closeAll:[64],toggleAll:[64]}]),n=r,d=function(){"undefined"!=typeof customElements&&["at-accordion","at-accordion-item","at-accordion-trigger"].forEach((t=>{switch(t){case"at-accordion":customElements.get(e(t))||customElements.define(e(t),r);break;case"at-accordion-item":customElements.get(e(t))||a();break;case"at-accordion-trigger":customElements.get(e(t))||i()}}))};export{n as AtAccordion,d as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { d as defineCustomElement$3 } from './p-2_xEzlfW.js';
+import { d as defineCustomElement$2 } from './p-Jpa-oIRC.js';
+
+const AtAccordionComponent = /*@__PURE__*/ proxyCustomElement(class AtAccordionComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        /**
+         * Used to create accordion items.
+         */
+        this.items = [];
+        /**
+         * If set, all child accordions will be open by default.
+         */
+        this.default_open = false;
+        this.accordionItems = [];
+        this.accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
+    }
+    async componentDidLoad() {
+        // Wait for child components to be ready
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
+        if (this.default_open) {
+            await this.openAll();
+        }
+    }
+    /**
+     * Toggles the open state of a specific accordion item
+     * @param value Id of element to be toggled
+     */
+    async toggleById(value) {
+        this.refreshAccordionItems();
+        this.accordionItems.forEach((item) => {
+            if (item.item_id === value) {
+                if (item.open) {
+                    item.closeAccordion();
+                }
+                else {
+                    item.openAccordion();
+                }
+            }
+        });
+    }
+    /**
+     * Opens all accordion items
+     */
+    async openAll() {
+        this.refreshAccordionItems();
+        this.accordionItems.forEach((item) => {
+            item.openAccordion();
+        });
+    }
+    /**
+     * Closes all accordion items.
+     */
+    async closeAll() {
+        this.refreshAccordionItems();
+        this.accordionItems.forEach((item) => {
+            item.closeAccordion();
+        });
+    }
+    /**
+     * Toggles all accordion item's open state.
+     */
+    async toggleAll() {
+        this.refreshAccordionItems();
+        this.accordionItems.forEach((item) => {
+            if (item.open) {
+                item.closeAccordion();
+            }
+            else {
+                item.openAccordion();
+            }
+        });
+    }
+    refreshAccordionItems() {
+        this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
+    }
+    render() {
+        return (h(Host, { key: '6b2195a25f6dd26a68baafd11b6748e79fbcf6ff', class: "flex flex-col gap-2" }, h("slot", { key: '93ff2fb04b308503cd077f2f35834a46ed0d9038' }), this.items &&
+            this.items.map((item) => {
+                return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
+            })));
+    }
+    get el() { return this; }
+}, [260, "at-accordion", {
+        "items": [16],
+        "default_open": [4],
+        "toggleById": [64],
+        "openAll": [64],
+        "closeAll": [64],
+        "toggleAll": [64]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-accordion", "at-accordion-item", "at-accordion-trigger"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-accordion":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtAccordionComponent);
+            }
+            break;
+        case "at-accordion-item":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-accordion-trigger":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtAccordion = AtAccordionComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtAccordion, defineCustomElement };
+//# sourceMappingURL=at-accordion.js.map
+
+//# sourceMappingURL=at-accordion.js.map

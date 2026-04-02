@@ -21,22 +21,24 @@ const loadingVariants = {
  * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
  */
 export class AtLoadingComponent {
-    /**
-     * Type of loading animation to display
-     */
-    variant = 'spinner';
-    /**
-     * Visual type/color of the loading indicator
-     */
-    type = 'default';
-    /**
-     * Size of the loading indicator
-     */
-    size = 'md';
-    /**
-     * Custom text to display with text-based animations
-     */
-    text = 'Loading';
+    constructor() {
+        /**
+         * Type of loading animation to display
+         */
+        this.variant = 'spinner';
+        /**
+         * Visual type/color of the loading indicator
+         */
+        this.type = 'default';
+        /**
+         * Size of the loading indicator
+         */
+        this.size = 'md';
+        /**
+         * Custom text to display with text-based animations
+         */
+        this.text = 'Loading';
+    }
     get typeClasses() {
         return loadingVariants.type[this.type];
     }
@@ -81,15 +83,16 @@ export class AtLoadingComponent {
         return {
             "variant": {
                 "type": "string",
+                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtLoadingVariant",
+                    "original": "LoadingVariant",
                     "resolved": "\"dots\" | \"spinner\" | \"typing\" | \"wave\"",
                     "references": {
-                        "AtLoadingVariant": {
+                        "LoadingVariant": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingVariant"
+                            "id": "src/components/at-loading/at-loading.tsx::LoadingVariant"
                         }
                     }
                 },
@@ -102,20 +105,20 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "variant",
                 "defaultValue": "'spinner'"
             },
             "type": {
                 "type": "string",
+                "attribute": "type",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtLoadingType",
+                    "original": "LoadingType",
                     "resolved": "\"default\" | \"error\" | \"secondary\"",
                     "references": {
-                        "AtLoadingType": {
+                        "LoadingType": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingType"
+                            "id": "src/components/at-loading/at-loading.tsx::LoadingType"
                         }
                     }
                 },
@@ -128,20 +131,20 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "type",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
+                "attribute": "size",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtLoadingSize",
+                    "original": "LoadingSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\"",
                     "references": {
-                        "AtLoadingSize": {
+                        "LoadingSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-loading/at-loading.tsx",
-                            "id": "src/components/at-loading/at-loading.tsx::AtLoadingSize"
+                            "id": "src/components/at-loading/at-loading.tsx::LoadingSize"
                         }
                     }
                 },
@@ -154,11 +157,11 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "size",
                 "defaultValue": "'md'"
             },
             "text": {
                 "type": "string",
+                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -174,9 +177,9 @@ export class AtLoadingComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "text",
                 "defaultValue": "'Loading'"
             }
         };
     }
 }
+//# sourceMappingURL=at-loading.js.map

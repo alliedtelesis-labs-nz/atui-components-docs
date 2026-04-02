@@ -2,20 +2,19 @@ import { h } from "@stencil/core";
 /**
  * @category Navigation
  * @description A tab content component for the tab selector.
- * @slot - Use this slot to add custom elements within the tab content area.
  */
 export class AtTabContent {
-    el;
-    /**
-     * ID of the tab
-     */
-    tab_id;
-    /**
-     * Determines if the tab content is active
-     */
-    is_active = false;
-    isActive = false;
-    tabSelector;
+    constructor() {
+        /**
+         * Determines if the tab content is active
+         */
+        this.is_active = false;
+        this.isActive = false;
+        this.updateActiveState = (event) => {
+            const selectedTabId = event.detail;
+            this.isActive = selectedTabId === this.tab_id;
+        };
+    }
     componentWillLoad() {
         this.isActive = this.is_active;
     }
@@ -35,18 +34,15 @@ export class AtTabContent {
     setIsActive(id) {
         this.isActive = id === this.tab_id;
     }
-    updateActiveState = (event) => {
-        const selectedTabId = event.detail;
-        this.isActive = selectedTabId === this.tab_id;
-    };
     render() {
-        return (h("div", { key: 'b8afcc447397a4902aba5ed35dc3c5de86ad9f6e', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '99a9e4bc0f3e6bce10c3508575d2dfa8b156d2bb' })));
+        return (h("div", { key: '0f160b2cdd781ead00a0100bacba851920b1de7c', class: `${this.isActive ? 'flex flex-col' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '1bd3b2ab556a19fbc116274b5d38a14bf16e3cb4' })));
     }
     static get is() { return "at-tab-content"; }
     static get properties() {
         return {
             "tab_id": {
                 "type": "string",
+                "attribute": "tab_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -61,11 +57,11 @@ export class AtTabContent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "tab_id"
+                "reflect": false
             },
             "is_active": {
                 "type": "boolean",
+                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -81,7 +77,6 @@ export class AtTabContent {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
-                "attribute": "is_active",
                 "defaultValue": "false"
             }
         };

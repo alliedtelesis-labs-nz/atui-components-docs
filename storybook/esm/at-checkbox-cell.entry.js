@@ -1,11 +1,9 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
-    get el() { return getElement(this); }
-    params;
     init(params) {
         this.params = params;
         this.params.api.refreshHeader();
@@ -18,7 +16,8 @@ const AtCheckboxCellComponent = class {
         return true;
     }
     setValue(checked) {
-        if (checked !== undefined && this.params?.setValue) {
+        var _a;
+        if (checked !== undefined && ((_a = this.params) === null || _a === void 0 ? void 0 : _a.setValue)) {
             this.params.setValue(checked);
             this.params.api.refreshHeader();
         }
@@ -30,8 +29,12 @@ const AtCheckboxCellComponent = class {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (h(Host, { key: '2cf003ee0d3fc346aea2c0e6a0deb314109dcb75', class: "flex h-full items-center" }, h("at-checkbox", { key: '50c4ccbe9cf98b32c6309dc925a0fee443786c03', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
+        return (h(Host, { key: '7f969b7856e46f1bd06d7b1da8bf04edd6efee96', class: "flex h-full items-center" }, h("at-checkbox", { key: '049f6caf21a62932e4f2d1802e27babac8c6c423', class: "w-auto self-center", disabled: isDisabled, value: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
+    get el() { return getElement(this); }
 };
 
 export { AtCheckboxCellComponent as at_checkbox_cell };
+//# sourceMappingURL=at-checkbox-cell.entry.js.map
+
+//# sourceMappingURL=at-checkbox-cell.entry.js.map

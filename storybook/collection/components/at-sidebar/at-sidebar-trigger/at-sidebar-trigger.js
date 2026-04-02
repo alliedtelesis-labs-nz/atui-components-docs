@@ -1,12 +1,16 @@
-import { h, Host } from "@stencil/core";
+import { h } from "@stencil/core";
 /**
  * @category Navigation
  * @description A sidebar trigger component for the sidebar.
  */
 export class AtSidebarTriggerComponent {
-    el;
-    isOpen = false;
-    provider;
+    constructor() {
+        this.isOpen = false;
+        /**
+         * Size of the button
+         */
+        this.size = 'lg';
+    }
     async updateIsOpen() {
         if (this.provider && typeof this.provider.getIsOpen === 'function') {
             this.isOpen = await this.provider.getIsOpen();
@@ -19,40 +23,42 @@ export class AtSidebarTriggerComponent {
             await this.updateIsOpen();
         }
     }
-    handleKeyDown = (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            this.el.click();
-        }
-    };
     async componentDidLoad() {
         this.provider = this.el.closest('at-sidebar');
         await this.updateIsOpen();
-        if (this.provider) {
-            this.provider.addEventListener('atuiSidebarChange', this.handleSidebarChange);
-        }
     }
-    disconnectedCallback() {
-        if (this.provider) {
-            this.provider.removeEventListener('atuiSidebarChange', this.handleSidebarChange);
-        }
-    }
-    handleSidebarChange = (event) => {
-        this.isOpen = event.detail;
-    };
     render() {
-        return (h(Host, { key: '34e1b0cf6283e8f1eabafcb6adb92945d18abdc1', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("i", { key: '0bc2a92b5165545445c18d51c131216f32da2425', class: "material-icons" }, this.isOpen ? 'menu_open' : 'menu')), h("div", { key: 'a50c8c3f57b1db596cd4947b17ac71ff69bc2c15', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h("at-button", { key: 'd6ceb638cd355e7c996b88e959d949473617bfae', type: "secondary", size: this.size, "data-name": "sidebar-trigger", icon: this.isOpen ? 'menu_open' : 'menu', onClick: () => this.toggleSidebar() }));
     }
     static get is() { return "at-sidebar-trigger"; }
-    static get encapsulation() { return "scoped"; }
-    static get originalStyleUrls() {
+    static get properties() {
         return {
-            "$": ["./at-sidebar-trigger.scss"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["at-sidebar-trigger.css"]
+            "size": {
+                "type": "string",
+                "attribute": "size",
+                "mutable": false,
+                "complexType": {
+                    "original": "ButtonSize",
+                    "resolved": "\"lg\" | \"md\" | \"sm\"",
+                    "references": {
+                        "ButtonSize": {
+                            "location": "import",
+                            "path": "../../at-button/at-button",
+                            "id": "src/components/at-button/at-button.tsx::ButtonSize"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Size of the button"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'lg'"
+            }
         };
     }
     static get states() {
@@ -62,3 +68,4 @@ export class AtSidebarTriggerComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-sidebar-trigger.js.map

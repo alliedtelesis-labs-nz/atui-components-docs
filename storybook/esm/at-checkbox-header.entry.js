@@ -1,13 +1,9 @@
-import { r as registerInstance, g as getElement, h } from './index-CkS36Ijo.js';
+import { r as registerInstance, h, g as getElement } from './index-C8uvvL0O.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
-    params;
-    disabled;
-    isChecked;
-    get el() { return getElement(this); }
     init(params) {
         this.params = params;
         this.params.width = 60;
@@ -37,7 +33,8 @@ const AtCheckboxHeaderComponent = class {
         }
     }
     setDisabled() {
-        if (!this.params?.api)
+        var _a;
+        if (!((_a = this.params) === null || _a === void 0 ? void 0 : _a.api))
             return;
         const renderedNodes = this.params.api.getRenderedNodes();
         const data = renderedNodes.map((node) => node.data);
@@ -46,8 +43,12 @@ const AtCheckboxHeaderComponent = class {
         }
     }
     render() {
-        return (h("at-checkbox", { key: 'ed87bcdb308f05ca0546c2273c6ac3874c702d1f', disabled: this.disabled, checked: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: 'd42e032330e3d1c19fe04a9c70fd4eac9b962863', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
+    get el() { return getElement(this); }
 };
 
 export { AtCheckboxHeaderComponent as at_checkbox_header };
+//# sourceMappingURL=at-checkbox-header.entry.js.map
+
+//# sourceMappingURL=at-checkbox-header.entry.js.map

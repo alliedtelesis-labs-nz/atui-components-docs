@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-jvbUuQtg.js';
-import { c as classlist } from './classlist-COG8_R0C.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-C8uvvL0O.js';
+import { c as classlist } from './classlist-Bfa-pAao.js';
 
 const variantsConfig = {
     variants: {
@@ -41,37 +41,20 @@ const AtToggleSwitchComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
+        /**
+         * Position of the label, left or right of the toggle.
+         */
+        this.label_position = 'before';
+        /**
+         * Show the toggle label.
+         */
+        this.show_label = true;
+        /**
+         * Set the toggles state.
+         */
+        this.value = false;
+        this.toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
     }
-    /**
-     * Label displayed alongside the toggle.
-     */
-    label;
-    /**
-     * Short description or validation hint if required.
-     */
-    hint_text;
-    /**
-     * Position of the label, left or right of the toggle.
-     */
-    label_position = 'before';
-    /**
-     * Show the toggle label.
-     */
-    show_label = true;
-    /**
-     * Disable interaction with the toggle.
-     */
-    disabled;
-    /**
-     * Set the toggles state.
-     */
-    value = false;
-    inputEl;
-    toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
-    /**
-     * Emits an event when toggled with `event.detail` being true if the switch is enabled
-     */
-    atuiChange;
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);
@@ -92,13 +75,16 @@ const AtToggleSwitchComponent = class {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '3d0bc9865827b9519bd62ee3ea716f7fe847ad8f', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '2d9372275175988dc56799066a596f261bd7bc72', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: 'b99048c2a506f1db470efa85e09fc68cf65592fa', class: "flex flex-col" }, h("slot", { key: 'b75864cd0ecdee237598d73d211118ad6e69e061', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'df1bda9643845b979b39935a5a153296b053577b', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '4e777f72c3241c13e675972f9fe36b4babad6fba', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'b3497b83c34ea83ce17ab1562af3181d13d8b4fd', class: "relative flex h-20 w-40" }, h("input", { key: '784cbf6fb48d1a8e95ace6b35af3cc291aaaa226', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '0154eb48e1cdedef1afb12f32bc517c4be2b5773', class: trackClassname }, h("span", { key: '142c7c05222d50d5a521b9e00a75e25a0fadf808', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, h("div", { key: '8f00756c3154468c25143b19533b4e42f59bdf18', class: "flex flex-col" }, h("slot", { key: '9a0e0123f8a91b184be803889e75791aa83f4c0f', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '81b4db9f5be672a390842adf7084926cb296512e', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '18a5caea3ec7c586dd7a7ed9539b670ad02baa78', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'de0393cec1fa2f08bb1780d5538875cdb44267ec', class: "relative flex h-20 w-40" }, h("input", { key: '5b44fe94efcae79b3ff2088dcb23353f1154a5be', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '014b6d54914a2b8ff68e1fc8558c1dae87765b61', class: trackClassname }, h("span", { key: '39a5f122db885c00643ca61fd4a8b47b32cb48de', class: thumbClassname }, this.value ? 'check' : 'remove')))));
     }
 };
 
 export { AtToggleSwitchComponent as at_toggle_switch };
+//# sourceMappingURL=at-toggle-switch.entry.js.map
+
+//# sourceMappingURL=at-toggle-switch.entry.js.map

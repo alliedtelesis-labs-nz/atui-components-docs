@@ -10,8 +10,6 @@
         "ENABLED": "有効",
         "DISABLED": "無効",
         "SEARCH": "検索",
-        "ON": "オン",
-        "OFF": "オフ",
         "NO_ITEMS_FOUND": "項目がありません。",
         "NO_RESULTS_FOUND": "結果がありません。",
         "NO_PERMISSION_EDIT_SETTING": "管理者アカウントでのみ設定を変更できます。",
@@ -73,8 +71,7 @@
                 "DATE_REQUIRED": "日付を指定してください。",
                 "TIME_REQUIRED": "時刻を指定してください。",
                 "PLEASE_ENTER_TIME": "期間を選択してください。",
-                "INTEGER_ONLY_ERROR": "整数のみで指定できます。",
-                "FROM_MUST_BE_BEFORE_TO": "開始日は終了日より前の日付にしてください。"
+                "INTEGER_ONLY_ERROR": "整数のみで指定できます。"
             },
             "ALL": "全期間",
             "ALL_TIME_LABEL": "全期間（フィルターなし）"

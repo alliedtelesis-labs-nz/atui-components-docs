@@ -1,17 +1,6 @@
-import dayjs from "dayjs";
-import floor from "lodash/floor.js";
-import isEmpty from "lodash/isEmpty.js";
-import round from "lodash/round.js";
-import { Duration, TimeExtraOptions, TimeUnit, } from "../types/time";
-const SECONDS_PER_UNIT = {
-    [TimeUnit.SECONDS]: 1,
-    [TimeUnit.MINUTES]: 60,
-    [TimeUnit.HOURS]: 3600,
-    [TimeUnit.DAYS]: 86400,
-    [TimeUnit.WEEKS]: 604800,
-    [TimeUnit.MONTHS]: 2629746, // 365.2425 * 86400 / 12
-    [TimeUnit.YEARS]: 31557600, // 365.2425 * 86400
-};
+import moment from "moment";
+import { clone, floor, isEmpty, round } from "lodash";
+import { Duration, TimeUnit, } from "../types/time";
 export class TimeDateUtil {
     /**
      * convertSecondsToUnit: Convert time value from seconds to the specified unit.
@@ -22,26 +11,45 @@ export class TimeDateUtil {
      * @param decimalPlaces: if specified, rounds to these, otherwise rounds to the nearest whole number/integer
      **/
     static convertSecondsToUnit(seconds, unit, decimalPlaces, roundUp = true) {
-        if (unit === TimeUnit.SECONDS || unit === TimeExtraOptions.ALL) {
-            return seconds;
+        const momentSeconds = moment.duration(seconds, Duration[TimeUnit.SECONDS]);
+        let secondsInUnit = seconds;
+        switch (unit) {
+            case TimeUnit.SECONDS:
+                return secondsInUnit;
+            case TimeUnit.MINUTES:
+                secondsInUnit = momentSeconds.asMinutes();
+                break;
+            case TimeUnit.HOURS:
+                secondsInUnit = momentSeconds.asHours();
+                break;
+            case TimeUnit.DAYS:
+                secondsInUnit = momentSeconds.asDays();
+                break;
+            case TimeUnit.WEEKS:
+                secondsInUnit = momentSeconds.asWeeks();
+                break;
+            case TimeUnit.MONTHS:
+                secondsInUnit = momentSeconds.asMonths();
+                break;
+            case TimeUnit.YEARS:
+                secondsInUnit = momentSeconds.asYears();
+                break;
         }
-        const inUnit = seconds / SECONDS_PER_UNIT[unit];
         return roundUp
-            ? round(inUnit, decimalPlaces)
-            : floor(inUnit, decimalPlaces);
+            ? round(secondsInUnit, decimalPlaces) // Round up
+            : floor(secondsInUnit, decimalPlaces); // Round down
     }
     // convertToSeconds: Convert time value to seconds if it isn't already in this form
     static convertToSeconds(time) {
-        return time.value * (SECONDS_PER_UNIT[time.unit] ?? 1);
+        const valueInUnit = moment.duration(time.value, Duration[time.unit]);
+        return valueInUnit.asSeconds();
     }
     static getSecondsAgoFromDate(date) {
-        return dayjs().diff(date, 'seconds');
+        return moment(new Date()).diff(date, Duration.SECONDS);
     }
     static getDateFromRelativeTime(time) {
         // Return current date minus the specified unit and value (e.g. if value 1 and unit hour, returns date an hour ago)
-        return dayjs()
-            .subtract(time.value, Duration[time.unit])
-            .toDate();
+        return moment().subtract(time.value, Duration[time.unit]).toDate();
     }
     /**
      * getRelativeDateRange: convert relative date (e.g. 1 year ago) into absolute dates.
@@ -57,8 +65,8 @@ export class TimeDateUtil {
     }
     static getAbsoluteDateRange(time) {
         return {
-            startDate: new Date(time.from),
-            endDate: new Date(time.to),
+            startDate: moment(time.from).toDate(),
+            endDate: moment(time.to).toDate(),
         };
     }
     static getDateRange(customDateRange, relativeTime, defaultDates) {
@@ -73,17 +81,13 @@ export class TimeDateUtil {
         }
     }
     static getCurrentDatePlusHours(hours) {
-        return dayjs().add(hours, 'hours').startOf('hour').toDate();
+        return new Date(new Date().setHours(new Date().getHours() + hours, 0, 0));
     }
     static getDateYearsAgo(years, originalDate) {
-        return dayjs(originalDate)
-            .year(dayjs().year() - years)
-            .toDate();
+        return new Date(clone(originalDate).setFullYear(new Date().getFullYear() - years));
     }
     static getDateMonthsAgo(months, originalDate) {
-        return dayjs(originalDate)
-            .month(dayjs().month() - months)
-            .toDate();
+        return new Date(clone(originalDate).setMonth(new Date().getMonth() - months));
     }
     static getCurrentOrDefaultUnit(currentUnit, units) {
         // Return the first of an array of units if a current unit isn't specified
@@ -101,7 +105,7 @@ export class TimeDateUtil {
      * which avoids creating empty buckets, except if the device or Vista is down.
      */
     static getDataPointIntervalFor30SecPoller(startDate, endDate) {
-        const diffSeconds = dayjs(endDate).diff(startDate, 'seconds');
+        const diffSeconds = moment(endDate).diff(startDate, Duration.SECONDS);
         const interval = diffSeconds / 120; // in seconds
         // Ceiling interval to nearest one minute to avoid empty buckets
         const intervalToNearestMinute = Math.ceil(interval / 60) * 60;
@@ -111,30 +115,30 @@ export class TimeDateUtil {
      * shiftDateByUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
-     * @param amount integer amount to shift date by. Can be negative for subtraction
-     * @param unit: unit to shift by (e.g. days, weeks, etc.)
+     * @param amount integer amount to shift date by .// can be negative for subtraction
+     * @param unit: unit to shift by seconds to (e.g. days, weeks, etc.)
      **/
     static shiftDateByUnit(date, amount, unit) {
-        return dayjs(date).add(amount, unit).toDate();
+        return moment(date).add(amount, unit).toDate();
     }
     /**
-     * floorDateByTimeUnit: returns a new date floored to the start of the given unit
+     * floorDateByTimeUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
      **/
     static floorDateByTimeUnit(date, unit) {
-        return dayjs(date).startOf(unit).toDate();
+        return moment(date).startOf(unit).toDate();
     }
     /**
-     * ceilingDateByTimeUnit: returns a new date ceiled to the end of the given unit
+     * ceilingDateByTimeUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
      **/
     static ceilingDateByTimeUnit(date, unit) {
-        return dayjs(date)
-            .subtract(1, 'second')
+        return moment(date)
+            .subtract(1, Duration.SECONDS) // remove one second so square numbers are not rounded up
             .add(1, unit)
             .startOf(unit)
             .toDate();
@@ -144,10 +148,10 @@ export class TimeDateUtil {
      *
      * @param date1: original date 1
      * @param date2: original date 2
-     * @param unit: granularity of check by unit (e.g. days, weeks, etc.)
+     * @param unit: granularity of check in by unit (e.g. days, weeks, etc.)
      **/
     static isSameDateByUnit(date1, date2, unit) {
-        return dayjs(date1).isSame(date2, unit);
+        return moment(date1).isSame(date2, unit);
     }
     static getCurrentDateFilterInDateRangeFormat(timeDateFilters) {
         // This returns absolute start and end dates, even if a user chose 'Last 5 years' as their filter
@@ -161,3 +165,4 @@ export class TimeDateUtil {
         }
     }
 }
+//# sourceMappingURL=time-date.util.js.map

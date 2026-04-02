@@ -39,39 +39,23 @@ const thumbVariantsConfig = {
 /**
  * @category Form Controls
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
- * @slot label -  place before "form label" to add custom label content.
  */
 export class AtToggleSwitchComponent {
-    /**
-     * Label displayed alongside the toggle.
-     */
-    label;
-    /**
-     * Short description or validation hint if required.
-     */
-    hint_text;
-    /**
-     * Position of the label, left or right of the toggle.
-     */
-    label_position = 'before';
-    /**
-     * Show the toggle label.
-     */
-    show_label = true;
-    /**
-     * Disable interaction with the toggle.
-     */
-    disabled;
-    /**
-     * Set the toggles state.
-     */
-    value = false;
-    inputEl;
-    toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
-    /**
-     * Emits an event when toggled with `event.detail` being true if the switch is enabled
-     */
-    atuiChange;
+    constructor() {
+        /**
+         * Position of the label, left or right of the toggle.
+         */
+        this.label_position = 'before';
+        /**
+         * Show the toggle label.
+         */
+        this.show_label = true;
+        /**
+         * Set the toggles state.
+         */
+        this.value = false;
+        this.toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
+    }
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);
@@ -92,18 +76,19 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '685c95f5eb8d66cbf424fbc728f8b8d3f0faa170', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '2d9372275175988dc56799066a596f261bd7bc72', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: 'cbd82a2132638f18b14a90d689f56b7314045a0e', class: "flex flex-col" }, h("slot", { key: '333ddd1b2bd95a4efb232448bfdf396d1a22c1f5', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '64b86940b9169273a717b728796d498ee2b1098e', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '69d8525e05be1cabe44ab6f85edba174b2b9eb79', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'fc460c1ae714e9632024e825d3cdb69a4210e36e', class: "relative flex h-20 w-40" }, h("input", { key: '192b80cc948f10d7b94a36389538331113443a7b', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: 'dda1a80193ee4388bfd73dea84e46fbfad1d026b', class: trackClassname }, h("span", { key: '15c891b40a482ed1545aa0ee7940843838904fea', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, h("div", { key: '8f00756c3154468c25143b19533b4e42f59bdf18', class: "flex flex-col" }, h("slot", { key: '9a0e0123f8a91b184be803889e75791aa83f4c0f', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '81b4db9f5be672a390842adf7084926cb296512e', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '18a5caea3ec7c586dd7a7ed9539b670ad02baa78', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'de0393cec1fa2f08bb1780d5538875cdb44267ec', class: "relative flex h-20 w-40" }, h("input", { key: '5b44fe94efcae79b3ff2088dcb23353f1154a5be', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '014b6d54914a2b8ff68e1fc8558c1dae87765b61', class: trackClassname }, h("span", { key: '39a5f122db885c00643ca61fd4a8b47b32cb48de', class: thumbClassname }, this.value ? 'check' : 'remove')))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {
         return {
             "label": {
                 "type": "string",
+                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -118,11 +103,11 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "label"
+                "reflect": false
             },
             "hint_text": {
                 "type": "string",
+                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -137,20 +122,20 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "hint_text"
+                "reflect": false
             },
             "label_position": {
                 "type": "string",
+                "attribute": "label_position",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtLabelPosition",
+                    "original": "LabelPosition",
                     "resolved": "\"after\" | \"before\"",
                     "references": {
-                        "AtLabelPosition": {
+                        "LabelPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-toggle-switch/at-toggle-switch.tsx",
-                            "id": "src/components/at-toggle-switch/at-toggle-switch.tsx::AtLabelPosition"
+                            "id": "src/components/at-toggle-switch/at-toggle-switch.tsx::LabelPosition"
                         }
                     }
                 },
@@ -163,11 +148,11 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "label_position",
                 "defaultValue": "'before'"
             },
             "show_label": {
                 "type": "boolean",
+                "attribute": "show_label",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -183,11 +168,11 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "show_label",
                 "defaultValue": "true"
             },
             "disabled": {
                 "type": "boolean",
+                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -202,11 +187,11 @@ export class AtToggleSwitchComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "disabled"
+                "reflect": false
             },
             "value": {
                 "type": "boolean",
+                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -222,7 +207,6 @@ export class AtToggleSwitchComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "value",
                 "defaultValue": "false"
             }
         };
@@ -246,3 +230,4 @@ export class AtToggleSwitchComponent {
             }];
     }
 }
+//# sourceMappingURL=at-toggle-switch.js.map

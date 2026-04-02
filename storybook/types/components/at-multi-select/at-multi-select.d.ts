@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtISelectOption } from '../../types/select';
+import { SelectOption } from '../../types/select';
 /**
  * @category Form Controls
  * @description A multi-selection dropdown component for choosing multiple values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
@@ -8,7 +8,7 @@ export declare class AtMultiSelectComponent {
     /**
      * Options displayed in the dropdown menu.
      */
-    options: AtISelectOption[];
+    options: SelectOption[];
     /**
      * Label of the select.
      */
@@ -60,45 +60,26 @@ export declare class AtMultiSelectComponent {
     searchText: string;
     isOpen: boolean;
     translations: any;
+    hasMatchingOptions: boolean;
     parentWidth: string;
-    hasMatchingElOptions: boolean;
-    filteredOptions: AtISelectOption[];
     el: HTMLElement;
     private menuId;
     private menuRef;
-    private optionEls;
     private searchInputEl;
-    private slottedOptionLabels;
-    watchValue(newValue: string[]): void;
-    watchOptions(): void;
-    watchSearchText(newSearch: string): void;
     /**
      * Emits an event containing a list of the selected items when the selection changes.
      */
     atuiChange: EventEmitter<string[]>;
-    componentWillLoad(): void;
+    componentWillLoad(): Promise<void>;
     componentDidLoad(): void;
-    private filterOptions;
-    private filterSlottedContent;
-    private setupOptionElements;
-    addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
-    private findOptionByValue;
-    private findLabelByValue;
-    private getSelectedLabels;
     private updateIsOpenState;
     private handleChange;
-    private handleClear;
+    handleClear(): void;
     private handleKeyDownMenu;
     private handleSearchInput;
-    private isGroup;
-    private handleRemoveChip;
-    get hasMatchingOptions(): boolean;
-    get hasAnyMatchingOptions(): boolean;
-    get hasAnyOptions(): boolean;
     render(): any;
     renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
-    private renderGroupedOption;
-    renderOption(option: AtISelectOption): any;
+    renderOption(option: SelectOption): any;
 }

@@ -22,26 +22,14 @@ const variantsConfig = {
 /**
  * @category Navigation
  * @description A tab component for the tab selector.
- * @slot - Use this slot to add custom elements after the tab title.
  */
 export class AtTab {
-    /**
-     * ID of the tab
-     */
-    tab_id;
-    /**
-     * Title to be displayed in the tab
-     */
-    tab_title;
-    /**
-     * Styling based on the layout of the tabs
-     */
-    layout = 'horizontal';
-    /**
-     * Applies styling when active
-     */
-    is_active;
-    tabEl;
+    constructor() {
+        /**
+         * Styling based on the layout of the tabs
+         */
+        this.layout = 'horizontal';
+    }
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
             this.tabEl.click();
@@ -53,13 +41,14 @@ export class AtTab {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '74c002f1ba2c4b5d2265b74f87f2cfbf6342e8f1', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '0a8abdc07fed97c03430b52b86f64a09b998bd8e', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'efb7a678da989b5f5265e2b3d36cc873dddcab23' }))));
+        return (h(Host, { key: '8b23a39aadf7647b9c53ec5df3d1d15cd93affc3', role: "tab", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}` }, h("a", { key: '1cfe93744a35a96f97f0b7d1ea4bf6308d431d6c', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: '2ba439225f03786d6fc91b46b2a450bc319afa34' }))));
     }
     static get is() { return "at-tab"; }
     static get properties() {
         return {
             "tab_id": {
                 "type": "string",
+                "attribute": "tab_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -74,11 +63,11 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "tab_id"
+                "reflect": false
             },
             "tab_title": {
                 "type": "string",
+                "attribute": "tab_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -93,11 +82,11 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "tab_title"
+                "reflect": false
             },
             "layout": {
                 "type": "string",
+                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "Layout",
@@ -119,11 +108,11 @@ export class AtTab {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "layout",
                 "defaultValue": "'horizontal'"
             },
             "is_active": {
                 "type": "boolean",
+                "attribute": "is_active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -138,8 +127,7 @@ export class AtTab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "is_active"
+                "reflect": false
             }
         };
     }

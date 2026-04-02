@@ -1,5 +1,5 @@
-import { Duration, ITimeDateFilter, TimeExtraOptions, TimeUnit, AtITimeWithUnit } from '../types/time';
-import { AtIDateRange, AtIDateRangeStrings } from '../types/date';
+import { Duration, ITimeDateFilter, TimeExtraOptions, TimeUnit, TimeWithUnit } from '../types/time';
+import { DateRange, DateRangeStrings } from '../types/date';
 export declare class TimeDateUtil {
     /**
      * convertSecondsToUnit: Convert time value from seconds to the specified unit.
@@ -10,9 +10,9 @@ export declare class TimeDateUtil {
      * @param decimalPlaces: if specified, rounds to these, otherwise rounds to the nearest whole number/integer
      **/
     static convertSecondsToUnit(seconds: number, unit: TimeUnit | TimeExtraOptions, decimalPlaces?: number, roundUp?: boolean): number;
-    static convertToSeconds(time: AtITimeWithUnit): number;
+    static convertToSeconds(time: TimeWithUnit): number;
     static getSecondsAgoFromDate(date: Date): number;
-    static getDateFromRelativeTime(time: AtITimeWithUnit): Date;
+    static getDateFromRelativeTime(time: TimeWithUnit): Date;
     /**
      * getRelativeDateRange: convert relative date (e.g. 1 year ago) into absolute dates.
      * Round the these to the nearest minute because we don't care about the seconds
@@ -20,9 +20,9 @@ export declare class TimeDateUtil {
      *    endDate is not set as technically there is no absolute end date - this will be set
      *    to the current date on the back-end (in time-date util -  getDateRangeWithEndDate)
      */
-    static getRelativeDateRange(time: AtITimeWithUnit): AtIDateRange;
-    static getAbsoluteDateRange(time: AtIDateRangeStrings): AtIDateRange;
-    static getDateRange(customDateRange: AtIDateRange, relativeTime: AtITimeWithUnit, defaultDates: AtIDateRange): AtIDateRange;
+    static getRelativeDateRange(time: TimeWithUnit): DateRange;
+    static getAbsoluteDateRange(time: DateRangeStrings): DateRange;
+    static getDateRange(customDateRange: DateRange, relativeTime: TimeWithUnit, defaultDates: DateRange): DateRange;
     static getCurrentDatePlusHours(hours: number): Date;
     static getDateYearsAgo(years: number, originalDate: Date): Date;
     static getDateMonthsAgo(months: number, originalDate: Date): Date;
@@ -38,19 +38,19 @@ export declare class TimeDateUtil {
      * shiftDateByUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
-     * @param amount integer amount to shift date by. Can be negative for subtraction
-     * @param unit: unit to shift by (e.g. days, weeks, etc.)
+     * @param amount integer amount to shift date by .// can be negative for subtraction
+     * @param unit: unit to shift by seconds to (e.g. days, weeks, etc.)
      **/
     static shiftDateByUnit(date: Date | string, amount: number, unit: Duration): Date;
     /**
-     * floorDateByTimeUnit: returns a new date floored to the start of the given unit
+     * floorDateByTimeUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
      **/
     static floorDateByTimeUnit(date: Date, unit: Duration): Date;
     /**
-     * ceilingDateByTimeUnit: returns a new date ceiled to the end of the given unit
+     * ceilingDateByTimeUnit: returns a new date with units added or subtracted
      *
      * @param date: original date
      * @param unit: unit to round to (e.g. days, weeks, etc.)
@@ -61,8 +61,8 @@ export declare class TimeDateUtil {
      *
      * @param date1: original date 1
      * @param date2: original date 2
-     * @param unit: granularity of check by unit (e.g. days, weeks, etc.)
+     * @param unit: granularity of check in by unit (e.g. days, weeks, etc.)
      **/
     static isSameDateByUnit(date1: Date | string, date2: Date | string, unit: Duration): boolean;
-    static getCurrentDateFilterInDateRangeFormat(timeDateFilters: ITimeDateFilter): AtIDateRange | undefined;
+    static getCurrentDateFilterInDateRangeFormat(timeDateFilters: ITimeDateFilter): DateRange | undefined;
 }

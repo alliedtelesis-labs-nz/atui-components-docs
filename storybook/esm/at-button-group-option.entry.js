@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, g as getElement, h } from './index-CkS36Ijo.js';
-import { c as classlist } from './classlist-COG8_R0C.js';
+import { r as registerInstance, c as createEvent, h, g as getElement } from './index-C8uvvL0O.js';
+import { c as classlist } from './classlist-Bfa-pAao.js';
 
 const variantsConfig = {
     variants: {
@@ -23,41 +23,12 @@ const AtButtonGroupOption = class {
         registerInstance(this, hostRef);
         this.atuiClick = createEvent(this, "atuiClick", 7);
     }
-    /**
-     * Value of the select option
-     */
-    value;
-    /**
-     * Displayed text value (optional) if not provided the value will be used as a fallback
-     */
-    label;
-    /**
-     * Icon to be displayed in the button
-     */
-    icon;
-    /**
-     * Will disable interaction if set
-     */
-    disabled;
-    /**
-     * Will apply active styling to the button
-     */
-    is_active;
-    get el() { return getElement(this); }
-    /**
-     * Emits when the button is clicked
-     */
-    atuiClick;
-    host_disabled;
-    provider;
     async componentDidLoad() {
         this.provider = this.el.closest('at-button-group');
-        this.host_disabled = this.provider?.disabled;
+        this.host_disabled = this.provider.disabled;
     }
     handleClick(event) {
-        if (!this.el.hasAttribute('data-ignore-selection')) {
-            this.is_active = true;
-        }
+        this.is_active = true;
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-button-group-option',
@@ -70,8 +41,12 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: '289d37270d9c232b1e476ccdc6bd4e7ba559c92c', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '74d72649e0686f3f1227b3400dc6fe15e3fbe211', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'c8650fefb20e6e16b60e8c735b97c40a9c91a1bd', name: "icon" }), h("slot", { key: '2c389eee9b1cce45dfa27f69451ef346a91e0e3b' }, this.label ? this.label : this.icon ? '' : this.value)));
+        return (h("button", { key: '96906f6753e18011b80594a1d4acd3a8dae6eee9', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '173611a4c1c2d028b342c61a665443734d6cc187', name: "icon" }), this.label));
     }
+    get el() { return getElement(this); }
 };
 
 export { AtButtonGroupOption as at_button_group_option };
+//# sourceMappingURL=at-button-group-option.entry.js.map
+
+//# sourceMappingURL=at-button-group-option.entry.js.map

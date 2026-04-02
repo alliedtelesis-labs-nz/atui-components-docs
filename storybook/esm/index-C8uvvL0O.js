@@ -171,10 +171,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-breadcrumb-item.entry.js').then(processMod, consoleError);
-                case 'at-header':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-header.entry.js').then(processMod, consoleError);
                 case 'at-list-selector-item':
                     return import(
                       /* webpackMode: "lazy" */
@@ -187,6 +183,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-radio.entry.js').then(processMod, consoleError);
+                case 'at-sidebar-menuitem':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-sidebar-menuitem.entry.js').then(processMod, consoleError);
                 case 'at-tree-item':
                     return import(
                       /* webpackMode: "lazy" */
@@ -199,6 +199,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-chip-list.entry.js').then(processMod, consoleError);
+                case 'at-header':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-header.entry.js').then(processMod, consoleError);
                 case 'at-input':
                     return import(
                       /* webpackMode: "lazy" */
@@ -255,18 +259,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-prompt-input_2.entry.js').then(processMod, consoleError);
-                case 'at-sidebar-menuitem':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-sidebar-menuitem.entry.js').then(processMod, consoleError);
                 case 'at-accordion-item_2':
                     return import(
                       /* webpackMode: "lazy" */
                       './at-accordion-item_2.entry.js').then(processMod, consoleError);
-                case 'at-prompt-message':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-prompt-message.entry.js').then(processMod, consoleError);
                 case 'at-input-numeric':
                     return import(
                       /* webpackMode: "lazy" */
@@ -351,6 +347,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-toggle-cell.entry.js').then(processMod, consoleError);
+                case 'at-prompt-message':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-prompt-message.entry.js').then(processMod, consoleError);
           }
       }
   return import(

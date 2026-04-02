@@ -1,14 +1,13 @@
 import { h, Host } from "@stencil/core";
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a text with a status.
  */
 export class AtTextStatusCellComponent {
-    el;
-    params;
-    text;
-    type = 'default';
-    showSimpleText = false;
+    constructor() {
+        this.type = 'default';
+        this.showSimpleText = false;
+    }
     init(params) {
         const { value } = params;
         if (!value)
@@ -36,9 +35,10 @@ export class AtTextStatusCellComponent {
         return badgeType || 'default';
     }
     render() {
-        return (h(Host, { key: 'b2e0059719089048535c0f1d662f633ff89ce172', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'd1ba0db4dba6fee0dd54d4eccbbce3c4238b2d73', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        var _a;
+        return (h(Host, { key: 'c803d176badce0972ede8920cc059e5c9f02baf7', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '0db68d72f7e416b697a5704e580665d3ea4eac51', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
-            (this.params.generateTooltip ? (h("at-tooltip", { position: "right" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
+            (this.params.generateTooltip ? (h("at-tooltip", { position: "right" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${(_a = this.params.tooltipClass) !== null && _a !== void 0 ? _a : ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
     }
     static get is() { return "at-text-status-cell"; }
     static get states() {
@@ -51,3 +51,4 @@ export class AtTextStatusCellComponent {
     }
     static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-text-status-cell.js.map

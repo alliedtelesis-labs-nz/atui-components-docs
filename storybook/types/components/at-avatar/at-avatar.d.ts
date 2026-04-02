@@ -1,9 +1,8 @@
-export type AtAvatarSize = 'sm' | 'md' | 'lg';
-export type AtAvatarVariant = 'primary' | 'secondary' | 'muted';
+export type AvatarSize = 'sm' | 'md' | 'lg';
+export type AvatarVariant = 'primary' | 'secondary' | 'muted';
 /**
  * @category Decoration
  * @description Purely decorative avatar component that displays user profile images or initials. Accessibility attributes should be added to the parent element if needed.
- * @slot - Content place after the image and initials.
  */
 export declare class AtAvatar {
     /**
@@ -28,10 +27,10 @@ export declare class AtAvatar {
     /**
      * Size of the avatar
      */
-    size: AtAvatarSize;
+    size: AvatarSize;
     /**
      * Visual variant of the avatar
      */
-    variant: AtAvatarVariant;
+    variant: AvatarVariant;
     render(): any;
 }

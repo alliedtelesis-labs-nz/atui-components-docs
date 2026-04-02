@@ -1,20 +1,20 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface AtIChipCellData {
+export interface ChipCellData {
     chips: string[];
 }
-export interface AtIChipCellParams extends ICellRendererParams {
+export interface IChipCellParams extends ICellRendererParams {
     chips: (data: any) => string[];
 }
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a list of chips.
  */
 export declare class AtChipListCell implements ICellRendererComp {
     el: HTMLElement;
-    params: AtIChipCellParams;
+    params: IChipCellParams;
     chips: string[];
-    init(params: AtIChipCellParams): void;
+    init(params: IChipCellParams): void;
     getGui(): HTMLElement;
-    refresh(params: AtIChipCellParams): boolean;
+    refresh(params: IChipCellParams): boolean;
     render(): any;
 }

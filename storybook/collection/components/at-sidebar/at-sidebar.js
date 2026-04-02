@@ -1,4 +1,18 @@
 import { h, Host, } from "@stencil/core";
+import { classlist } from "../../utils/classlist";
+const variantsConfig = {
+    variants: {
+        collapsible: {
+            none: null,
+            icon: 'group-data-[state=collapsed]/sidebar-wrapper:w-sidebar-collapsed',
+            offcanvas: 'group-data-[state=collapsed]/sidebar-wrapper:w-0',
+        },
+        side: {
+            left: null,
+            right: 'order-1',
+        },
+    },
+};
 /**
  * @category Navigation
  * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
@@ -8,44 +22,30 @@ import { h, Host, } from "@stencil/core";
  * @slot page-content - Content of the page
  */
 export class AtSidebarComponent {
-    /**
-     * Position of the sidebar on the page
-     */
-    side;
-    /**
-     * Width of the sidebar
-     */
-    width = 'menu';
-    /**
-     * Size of the sidebar when collapsed.
-     */
-    collapsible;
-    /**
-     * How the sidenav interacts with main content when open
-     */
-    mode;
-    /**
-     * Display a clickable backdrop when mode = over
-     */
-    backdrop = false;
-    /**
-     * Opens the sidebar by default when set
-     */
-    default_open = false;
-    isOpen = false;
-    /**
-     * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
-     */
-    atuiSidebarChange;
-    el;
+    constructor() {
+        /**
+         * Position of the sidebar on the page
+         */
+        this.side = 'left';
+        /**
+         * Width of the sidebar
+         */
+        this.width = 'menu';
+        /**
+         * Size of the sidebar when collapsed.
+         */
+        this.collapsible = 'icon';
+        /**
+         * Opens the sidebar by default when set
+         */
+        this.default_open = true;
+        this.isOpen = false;
+    }
     componentWillLoad() {
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
         this.atuiSidebarChange.emit(this.isOpen);
-    }
-    componentDidLoad() {
-        this.el.addEventListener('atuiClick', this.handleMenuItemClick);
     }
     /**
      * Toggles the sidebar's open state.
@@ -61,28 +61,16 @@ export class AtSidebarComponent {
     async getIsOpen() {
         return this.isOpen;
     }
-    handleBackdropClick = () => {
-        if (this.mode === 'over' && this.isOpen) {
-            this.toggleSidebar();
-        }
-    };
-    /**
-    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
-     */
-    handleMenuItemClick = (event) => {
-        const target = event.target;
-        if (target.getAttribute('slot') === 'accordion-trigger') {
-            return;
-        }
-        if (this.collapsible === 'offcanvas' && this.isOpen) {
-            this.toggleSidebar();
-        }
-    };
     render() {
-        const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: 'e7c03078caa6374d7c718d6181785b7c626841b4', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: '1c8f658b79142cdb5be4db2322c5d5220c275c5f', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: 'd4174980b5687b0b98a8f34dfadb67874aee8136', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-expanded": this.isOpen ? 'true' : 'false', "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
-                ? 'true'
-                : 'false' }, h("div", { key: '651cac31d7229eb701c37e907b02666d4021efec', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: '9ae8fc9ae6600373109f8c826efa9e73611bd0ff', name: "sidebar-header" })), h("div", { key: '000f78f5745dc8a5e2766e8d5899176e9c93d74c', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '337d5da9de6333d0fd8603083b92d4afcb7f6e47', name: "sidebar-content" })), h("div", { key: '676a37df86d57fe9f66c7b879f723b88e083c92c', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: '2a8cb6859a9c8f80dfe2dd5f2e853187b06cbab8', name: "sidebar-footer" }))), h("div", { key: 'c266a5a7dae40a4c6071f76023d6f8e6508b1c7f', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '07e922c56b0bc77688bcb720549f2c93fc9f6adf', name: "page-content" }))));
+        const getClassname = classlist(`atui-sidebar group/sidebar bg-sidebar-background 
+                  text-sidebar-foreground relative z-20 flex h-screen w-full
+                  flex-col overflow-hidden border-r border-solid border-r-med 
+                  transition-[width] duration-300 ease-in-out`, variantsConfig);
+        const classname = getClassname({
+            collapsible: this.collapsible,
+            side: this.side,
+        });
+        return (h(Host, { key: '815d658bb4cd87051ff90d90b1dcf31e884d2d7e', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-collasable": this.collapsible, "data-side": this.side, class: "group/sidebar-wrapper flex h-screen w-full items-stretch overflow-x-hidden overflow-y-auto" }, h("nav", { key: '0c304e956fb67602bae6b8c47909c118b8425942', "data-name": "sidebar-nav", class: `w-${this.width} ` + classname }, h("slot", { key: '1a452f31c8ab2cb7bd27beab30fb8eee89f188c2', name: "sidebar-header" }), h("div", { key: '19c073950f53198400a78ced14340818b45c3838', class: "align-items flex flex-1 flex-col p-8" }, h("slot", { key: '419d63010b0fc437a0e683abd2d0440ae7575607', name: "sidebar-content" })), h("div", { key: '5f0a7bf82aa010ee70930a6ac96bb27e2c029e5a', class: `${this.isOpen ? '' : 'hidden'}` }, h("slot", { key: 'd44723a74b0dd1ce43c5a6735f81e256353f8cd4', name: "sidebar-footer" }))), h("div", { key: '6f11a79f2bc58d10bb544df31857987201758622', class: "flex w-full overflow-auto" }, h("slot", { key: 'd9fcb0e87fbfe2b281d60d56b01c2ddf04e3c32a', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
     static get originalStyleUrls() {
@@ -99,11 +87,18 @@ export class AtSidebarComponent {
         return {
             "side": {
                 "type": "string",
+                "attribute": "side",
                 "mutable": false,
                 "complexType": {
-                    "original": "'left' | 'right'",
+                    "original": "Side",
                     "resolved": "\"left\" | \"right\"",
-                    "references": {}
+                    "references": {
+                        "Side": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
+                            "id": "src/components/at-sidebar/at-sidebar.tsx::Side"
+                        }
+                    }
                 },
                 "required": false,
                 "optional": false,
@@ -114,19 +109,20 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "side"
+                "defaultValue": "'left'"
             },
             "width": {
                 "type": "string",
+                "attribute": "width",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtSideBarWidth",
+                    "original": "Width",
                     "resolved": "\"auto\" | \"menu\" | \"panel-lg\" | \"panel-md\" | \"panel-sm\" | \"panel-xl\" | \"panel-xs\"",
                     "references": {
-                        "AtSideBarWidth": {
+                        "Width": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
-                            "id": "src/components/at-sidebar/at-sidebar.tsx::AtSideBarWidth"
+                            "id": "src/components/at-sidebar/at-sidebar.tsx::Width"
                         }
                     }
                 },
@@ -139,16 +135,22 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "width",
                 "defaultValue": "'menu'"
             },
             "collapsible": {
                 "type": "string",
+                "attribute": "collapsible",
                 "mutable": false,
                 "complexType": {
-                    "original": "'offcanvas' | 'icon' | 'none'",
+                    "original": "Collapsible",
                     "resolved": "\"icon\" | \"none\" | \"offcanvas\"",
-                    "references": {}
+                    "references": {
+                        "Collapsible": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-sidebar/at-sidebar.tsx",
+                            "id": "src/components/at-sidebar/at-sidebar.tsx::Collapsible"
+                        }
+                    }
                 },
                 "required": false,
                 "optional": false,
@@ -159,49 +161,11 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "collapsible"
-            },
-            "mode": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "'over' | 'push'",
-                    "resolved": "\"over\" | \"push\"",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "How the sidenav interacts with main content when open"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "mode"
-            },
-            "backdrop": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Display a clickable backdrop when mode = over"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "backdrop",
-                "defaultValue": "false"
+                "defaultValue": "'icon'"
             },
             "default_open": {
                 "type": "boolean",
+                "attribute": "default_open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -217,8 +181,7 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "default_open",
-                "defaultValue": "false"
+                "defaultValue": "true"
             }
         };
     }
@@ -286,5 +249,5 @@ export class AtSidebarComponent {
             }
         };
     }
-    static get elementRef() { return "el"; }
 }
+//# sourceMappingURL=at-sidebar.js.map

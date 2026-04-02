@@ -1,12 +1,15 @@
-const Template = (args) => `
+const Template = (args) => {
+    var _a, _b, _c, _d;
+    return `
 <at-badge 
     ${args.count ? `count="${args.count}"` : ''}
-    icon="${args.icon ?? ''}"
-    label="${args.label ?? ''}"
+    icon="${(_a = args.icon) !== null && _a !== void 0 ? _a : ''}"
+    label="${(_b = args.label) !== null && _b !== void 0 ? _b : ''}"
     ${args.rounded ? 'rounded' : ''}
-    impact="${args.impact ?? 'low'}"
-    type="${args.type ?? 'default'}"
+    impact="${(_c = args.impact) !== null && _c !== void 0 ? _c : 'low'}"
+    type="${(_d = args.type) !== null && _d !== void 0 ? _d : 'default'}"
 />`;
+};
 export default {
     title: 'Components/Badge',
     argTypes: {
@@ -81,3 +84,4 @@ Disabled.args = {
     impact: 'low',
     type: 'disabled',
 };
+//# sourceMappingURL=at-badge.stories.js.map

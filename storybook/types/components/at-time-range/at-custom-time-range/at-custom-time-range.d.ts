@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { AtIDateRangeStrings } from '../../../types';
+import { DateRangeStrings } from '../../../types';
+import { SelectOption } from '../../../types/select';
 export declare class AtCustomTimeRangeComponent {
     /**
      * Whether time selection is enabled in addition to date selection
@@ -53,6 +54,8 @@ export declare class AtCustomTimeRangeComponent {
     fromTime: string;
     translations: any;
     setDateNowSwitch: HTMLAtToggleSwitchElement;
+    toDatePickerEl: HTMLInputElement;
+    toTimePickerEl: HTMLAtSelectElement;
     el: any;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
@@ -65,12 +68,8 @@ export declare class AtCustomTimeRangeComponent {
     protected setDateNow(): void;
     private setToDateAndTime;
     private setFromDateAndTime;
-    get fromTimeMin(): string | undefined;
-    get fromTimeMax(): string | undefined;
-    get isFromDateAfterToDate(): boolean;
-    get isRangeInvalid(): boolean;
-    get toTimeMin(): string | undefined;
-    get toTimeMax(): string | undefined;
+    get getFromTimes(): SelectOption[];
+    get getToTimes(): SelectOption[];
     /**
      * Emitted when the user cancels the time range selection
      */
@@ -78,7 +77,7 @@ export declare class AtCustomTimeRangeComponent {
     /**
      * Emitted when the user submits the time range selection
      */
-    atuiSubmit: EventEmitter<AtIDateRangeStrings>;
+    atuiSubmit: EventEmitter<DateRangeStrings>;
     handleCancel(): void;
     handleSubmit(): void;
     render(): any;

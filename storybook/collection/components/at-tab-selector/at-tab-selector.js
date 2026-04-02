@@ -13,27 +13,21 @@ import { h, Host, } from "@stencil/core";
  * @slot nav-content - Content to be placed after the tabs
  */
 export class AtTabSelector {
-    el;
-    /**
-     * List of tabs the selector will have
-     */
-    tabs = [];
-    /**
-     * Layout of the tabs
-     */
-    layout = 'horizontal';
-    /**
-     * hide navigation when you want to provide custom controls
-     */
-    hide_nav = false;
-    /**
-     * Sets the current active tab
-     */
-    active_tab;
-    /**
-     * Emits the id of the tab when a new active_tab is set
-     */
-    atuiChange;
+    constructor() {
+        /**
+         * List of tabs the selector will have
+         */
+        this.tabs = [];
+        /**
+         * Layout of the tabs
+         */
+        this.layout = 'horizontal';
+        /**
+         * hide navigation when you want to provide custom controls
+         */
+        this.hide_nav = false;
+        this.tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
+    }
     componentDidLoad() {
         this.updateIndicatorPosition();
     }
@@ -49,7 +43,6 @@ export class AtTabSelector {
             });
         }
     }
-    tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
         return this.el.querySelector(`#indicator-${this.tabsetId}`);
     }
@@ -102,13 +95,14 @@ export class AtTabSelector {
         }
     }
     render() {
-        return h(Host, { key: '9d90e08dc90cbb2b5c96f30f0ec8a1e6d861e405' }, this.checkLayoutAndRender());
+        return h(Host, { key: '95cfdac19bc0c062a1763acb5ce9405575b51e14' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tab-selector"; }
     static get properties() {
         return {
             "tabs": {
                 "type": "unknown",
+                "attribute": "tabs",
                 "mutable": false,
                 "complexType": {
                     "original": "Tab[]",
@@ -133,6 +127,7 @@ export class AtTabSelector {
             },
             "layout": {
                 "type": "string",
+                "attribute": "layout",
                 "mutable": false,
                 "complexType": {
                     "original": "Layout",
@@ -154,11 +149,11 @@ export class AtTabSelector {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "layout",
                 "defaultValue": "'horizontal'"
             },
             "hide_nav": {
                 "type": "boolean",
+                "attribute": "hide_nav",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -174,11 +169,11 @@ export class AtTabSelector {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_nav",
                 "defaultValue": "false"
             },
             "active_tab": {
                 "type": "string",
+                "attribute": "active_tab",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -193,8 +188,7 @@ export class AtTabSelector {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "active_tab"
+                "reflect": false
             }
         };
     }

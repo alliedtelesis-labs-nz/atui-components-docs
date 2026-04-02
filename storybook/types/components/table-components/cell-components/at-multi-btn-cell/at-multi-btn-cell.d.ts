@@ -1,37 +1,37 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { IClickCell } from '../../../../types';
-import { AtICSSProperties } from '../../../../types/styles';
-export interface AtMultiBtnCellData {
-    buttons: AtIBtnParams[];
+import { CSSProperties } from '../../../../types/styles';
+export interface MultiBtnCellData {
+    buttons: IBtnParams[];
 }
-export interface AtIMultiBtnCellParams extends ICellRendererParams, IClickCell {
-    containerStyles?: AtICSSProperties;
-    buttons?: AtIBtnParams[] | ((params: ICellRendererParams) => AtIBtnParams[]);
+export interface IMultiBtnCellParams extends ICellRendererParams, IClickCell {
+    containerStyles?: CSSProperties;
+    buttons?: IBtnParams[] | ((params: ICellRendererParams) => IBtnParams[]);
 }
-export interface AtIBtnParams {
+export interface IBtnParams {
     value: string;
-    containerStyles?: AtICSSProperties;
+    containerStyles?: CSSProperties;
     click?: (params: ICellRendererParams) => any;
     disabled: boolean;
     tooltip?: string;
     hidden?: boolean;
     dataNameValue?: string;
 }
-type InitParams = AtIMultiBtnCellParams;
+type InitParams = IMultiBtnCellParams;
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying multiple buttons.
  */
 export declare class AtMultiBtnCell implements ICellRendererComp {
     el: HTMLElement;
     params: InitParams;
-    buttons: AtIBtnParams[];
-    containerStyles: AtICSSProperties;
+    buttons: IBtnParams[];
+    containerStyles: CSSProperties;
     init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
     refresh(params: ICellRendererParams): boolean;
     private updateCell;
-    handleClick(btn: AtIBtnParams): any;
+    handleClick(btn: IBtnParams): any;
     get buttonsToRender(): any;
     render(): any;
 }

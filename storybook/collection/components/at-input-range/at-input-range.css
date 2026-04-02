@@ -44,7 +44,7 @@
   );
   --value-a: Clamp(var(--min), var(--value, 0), var(--max));
   --value-b: var(--value, 0);
-  --text-value-a: var(--text-value, '');
+  --text-value-a: var(--text-value, "");
   --completed-a: calc(
       (var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100
   );

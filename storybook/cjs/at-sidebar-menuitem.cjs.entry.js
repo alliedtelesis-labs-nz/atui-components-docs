@@ -1,62 +1,42 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-i7hIKTeN.js');
+var classlist = require('./classlist-BddvonaD.js');
 
-const atSidebarMenuitemCss = () => `.sc-at-sidebar-menuitem-h .content.sc-at-sidebar-menuitem,.sc-at-sidebar-menuitem-h .label.sc-at-sidebar-menuitem{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sc-at-sidebar-menuitem-h{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border-radius:var(--token-border-radius-md);padding:6px 8px;text-align:left;cursor:pointer;font-size:var(--token-font-size-button);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}.sc-at-sidebar-menuitem-h .content.sc-at-sidebar-menuitem{display:flex;align-items:center;flex-grow:1;gap:8px}.sc-at-sidebar-menuitem-h .badge.sc-at-sidebar-menuitem{position:absolute;top:-8px;left:22px;z-index:20;pointer-events:none;padding:2px 2px;font-size:10px}.sc-at-sidebar-menuitem-h .label.sc-at-sidebar-menuitem{z-index:10;font-weight:var(--token-font-weight-med)}.sc-at-sidebar-menuitem-h .icon.sc-at-sidebar-menuitem{font-family:"Material Icons";font-style:normal;display:flex;align-items:center;justify-content:center;line-height:1;font-size:22px;z-index:10;min-width:24px}.sc-at-sidebar-menuitem-h .focus-indicator.sc-at-sidebar-menuitem{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);border-radius:var(--token-border-radius-md);opacity:0;transition:background-color var(--token-transition-time-fast)}.sc-at-sidebar-menuitem-h:hover [data-name=focus-indicator].sc-at-sidebar-menuitem{opacity:0.1}.sc-at-sidebar-menuitem-h:focus-visible{outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 60%, transparent)}[data-state=active].sc-at-sidebar-menuitem-h{background-color:var(--token-state-active-foreground)}.sc-at-sidebar-menuitem-h.sc-at-sidebar-menuitem-s>[slot=icon],.sc-at-sidebar-menuitem-h .sc-at-sidebar-menuitem-s>[slot=icon]{height:24px;width:24px;cursor:pointer}`;
-
+const variantsConfig = {
+    variants: {
+        active: {
+            true: 'bg-sidebar-primary text-sidebar-primary-foreground',
+            false: 'text-sidebar-foreground',
+        },
+    },
+};
+const focusIndicatorVariantsConfig = {
+    variants: {
+        active: {
+            true: 'group-hover:bg-blue-900/30 group-active:bg-blue-900/70',
+            false: 'group-active:bg-surface-4/20 group-hover:bg-surface-4/10',
+        },
+    },
+};
 const AtSidebarMenuitemComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.atuiClick = index.createEvent(this, "atuiClick", 7);
-    }
-    /**
-     * Label to be displayed for the menu item
-     */
-    label;
-    /**
-     * Icon or svg to be displayed with the label
-     */
-    icon;
-    /**
-     * Alert badge for the menu item
-     */
-    badge;
-    /**
-     * Will change style to indicate menuitem is active when set
-     */
-    is_active;
-    /**
-     * Emits when the menu item is clicked
-     */
-    atuiClick;
-    get el() { return index.getElement(this); }
-    handleClick(event) {
-        this.atuiClick.emit({
-            originalEvent: event,
-            componentType: 'at-sidebar-menu-item',
-        });
-    }
-    handleKeyDown = (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            this.atuiClick.emit({
-                originalEvent: event,
-                componentType: 'at-sidebar-menu-item',
-            });
-        }
-    };
-    renderIcon() {
-        if (this.icon.endsWith('.svg')) {
-            return (index.h("img", { src: this.icon, alt: this.label || '', class: "h-[24px] w-[24px] cursor-pointer" }));
-        }
-        else {
-            return index.h("i", { class: "icon" }, this.icon);
-        }
     }
     render() {
-        return (index.h(index.Host, { key: '7bcef1bd7dc674fdfee360c57ca5d49019565038', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '41699175e93e67b669ad796628c2fc6ea70285ef', class: "content", "data-name": "content" }, index.h("slot", { key: 'e194d81d97d5d06ffb075599cc547271feec54db', name: "icon", "data-name": "icon" }), index.h("slot", { key: '3cf82dc24484ed8c720b97f76ab8bb0697ab46f6', name: "label", "data-name": "label" }), this.badge && (index.h("at-badge", { key: '4a07c25aacb977d18e2bc553b2f16153f83d65be', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && this.renderIcon(), this.label && (index.h("span", { key: 'db735725c1050d37aae37a63bc05c36c4e91a6b2', "data-name": "sidebar-menu-item-label", class: "label" }, this.label))), index.h("slot", { key: '72c8633127dc8ab0c25c676abcbf2fd4ac10b421', name: "sidebar-menu-item-actions" }), index.h("div", { key: 'be8f1ed52374ef60482c2e88401200e50657c4f0', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        const getClassname = classlist.classlist('group text-button focus-visible:ring-active-foreground/30 relative flex w-full cursor-pointer items-center justify-between gap-8 overflow-visible rounded-md p-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus-visible:ring-2 focus-visible:outline-none', variantsConfig);
+        const classname = getClassname({
+            active: this.is_active,
+        });
+        const getFocusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-0 h-full w-full rounded-md transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig);
+        const focusIndicatorClassname = getFocusIndicatorClassname({
+            active: this.is_active,
+        });
+        return (index.h(index.Host, { key: 'dfcdaa0f4dac1f49300324d53a4aa19cbde0b6bc', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', class: classname }, index.h("div", { key: 'e27686ec6c35b35b08bc30751975fb8fcb3e514f', class: "flex items-center gap-8 truncate" }, index.h("slot", { key: 'ca533ec09b00da17a677fbeba87262e8bc4ce051', name: "menu-item-label" }), this.badge && (index.h("at-badge", { key: '071b4190bcc92cc81b2683468ac73fce54960d4e', "data-name": "menu-badge", role: "presentation", class: "pointer-events-none absolute top-[-8px] left-[22px] z-20 !rounded-[4px] !px-[3px] !py-4 !text-[11px] !leading-[10px] !font-medium", type: "error", impact: "high", rounded: false, label: this.badge })), this.icon && (index.h("span", { key: '89e4b93c849215e5eb0bc27baef6f07d913b6dfe', class: "material-icons text-icon-xl z-10 flex items-center justify-center p-2" }, this.icon)), this.label && (index.h("span", { key: '43e7f1e1acdffea38e7811f5dd85520601cf4c87', "data-name": "sidebar-menu-item-label", class: "z-10 truncate whitespace-nowrap" }, this.label))), index.h("slot", { key: '7569fb35c16ef003ae505a514913116768a27e5a', name: "menu-item-actions" }), index.h("div", { key: '0ce4a8ab63d68170440253d397d9427e7d928d56', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
-AtSidebarMenuitemComponent.style = atSidebarMenuitemCss();
 
 exports.at_sidebar_menuitem = AtSidebarMenuitemComponent;
+//# sourceMappingURL=at-sidebar-menuitem.entry.cjs.js.map
+
+//# sourceMappingURL=at-sidebar-menuitem.cjs.entry.js.map

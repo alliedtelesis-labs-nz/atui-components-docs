@@ -1,6 +1,7 @@
 import { h, Host } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
-import { AtChartColorPalette } from "../../types/chart-color";
+import "chartjs-adapter-moment";
+import { ChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const TOKEN_TEXT_DARK = '#0f172a';
 const heightVariants = {
@@ -16,86 +17,58 @@ const heightVariants = {
  * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
  */
 export class AtChartDonut {
-    /**
-     * Data to be shown in the chart. ChartDataset properties can be found
-     * [here](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
-     */
-    data;
-    /**
-     * Additional options to be added to the chart configuration
-     */
-    options;
-    /**
-     * Height of the chart
-     */
-    height = 'auto';
-    /**
-     * Position of the legend
-     */
-    legend_position = 'top';
-    /**
-     * Additional options for formatting the legend
-     */
-    legend_format = {
-        labels: {
-            boxWidth: 10,
-            boxHeight: 10,
-            fontSize: 11,
-        },
-        onHover: (event) => {
-            if (event.native) {
-                event.native.target.style.cursor = 'pointer';
-            }
-        },
-        onClick: (_evt, legendItem, legend) => {
-            const chart = legend.chart;
-            const idx = legendItem.index;
-            chart.toggleDataVisibility(idx);
-            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
-            if (chart.options.plugins?.tooltip) {
-                chart.options.plugins.tooltip.enabled = !!anyVisible;
-            }
-            chart.update();
-        },
-        display: true,
-    };
-    /**
-     * Additional options for the tooltip
-     */
-    tooltip_options = {
-        mode: 'nearest',
-        intersect: true,
-        position: 'nearest',
-    };
-    /**
-     * Additional plugin options
-     */
-    plugins;
-    /**
-     * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
-     * 'categorical' : For charts with data that have distinct labels and no natural order
-     * 'sequential' : For charts with data that is numeric or is naturally ordered.
-     * 'alert' : For charts that relate to health state. Note that data requires a specific order.
-     * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-     */
-    color_palette = AtChartColorPalette.CATEGORICAL;
-    /**
-     * Optional value text to display in the center of the donut chart
-     */
-    center_value;
-    /**
-     * Optional heading text to display in the center of the donut chart
-     */
-    center_text;
-    /**
-     * Controls the thickness of the donut ring. Value between 0 and 100.
-     * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
-     * Default is 70.
-     */
-    cutout = 70;
-    canvasEl;
-    config;
-    chart;
+    constructor() {
+        /**
+         * Height of the chart
+         */
+        this.height = 'md';
+        /**
+         * Additional options for formatting the legend
+         */
+        this.legend_format = {
+            labels: {
+                boxWidth: 10,
+                boxHeight: 10,
+                fontSize: 11,
+            },
+            onHover: (event) => {
+                if (event.native) {
+                    event.native.target.style.cursor = 'pointer';
+                }
+            },
+            display: true,
+        };
+        /**
+         * Additional options for the tooltip
+         */
+        this.tooltip_options = {
+            mode: 'index',
+            intersect: false,
+            position: 'nearest',
+        };
+        /**
+         * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
+         * 'categorical' : For charts with data that have distinct labels and no natural order
+         * 'sequential' : For charts with data that is numeric or is naturally ordered.
+         * 'alert' : For charts that relate to health state. Note that data requires a specific order.
+         * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+         */
+        this.color_palette = ChartColorPalette.CATEGORICAL;
+        /**
+         * Controls the thickness of the donut ring. Value between 0 and 100.
+         * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
+         * Default is 70.
+         */
+        this.cutout = 70;
+        this.defaultPieTooltipOptions = {
+            mode: 'index',
+            intersect: true,
+            position: 'nearest',
+            animation: {
+                duration: 150,
+            },
+        };
+    }
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -103,22 +76,6 @@ export class AtChartDonut {
     async getConfig() {
         return this.config;
     }
-    /**
-     * Manually trigger a chart resize to fit container dimensions
-     */
-    async resize() {
-        if (this.chart) {
-            this.chart.resize();
-        }
-    }
-    defaultPieTooltipOptions = {
-        mode: 'nearest',
-        intersect: true,
-        position: 'nearest',
-        animation: {
-            duration: 150,
-        },
-    };
     getDrawCenterTextPlugin() {
         return {
             id: 'DrawCenterTextPlugin',
@@ -131,8 +88,8 @@ export class AtChartDonut {
                 }
                 ctx.restore();
                 const height = chart.chartArea.bottom - chart.chartArea.top;
-                const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
-                const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
+                const textFontSize = (height / 250).toFixed(2) + 'em sans-serif';
+                const valueFontSize = (height / 180).toFixed(2) + 'em sans-serif';
                 ctx.fillStyle = TOKEN_TEXT_DARK;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -163,7 +120,6 @@ export class AtChartDonut {
     }
     initChart() {
         Chart.register(DoughnutController, ArcElement, Legend, Tooltip, Filler);
-        const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
         if (colors) {
             this.applyPresetPalette(colors);
@@ -174,54 +130,26 @@ export class AtChartDonut {
         }
         this.config = {
             type: 'doughnut',
-            data: {
-                ...this.data,
-                datasets: this.data.datasets.map((dataset) => ({
-                    ...dataset,
-                    cutout: `${this.cutout}%`,
-                })),
-            },
-            options: {
-                devicePixelRatio: dpr,
-                maintainAspectRatio: false,
-                aspectRatio: 1,
-                layout: { padding: 16 },
-                interaction: { mode: 'nearest', intersect: true },
-                plugins: {
-                    legend: {
-                        ...(this.legend_format || {}),
-                        position: this.legend_position,
-                        fullSize: true,
-                    },
-                    tooltip: {
-                        ...(this.tooltip_options ||
-                            this.defaultPieTooltipOptions),
-                        filter: (ctx) => ctx.chart.getDataVisibility(ctx.dataIndex),
-                        enabled: true,
-                    },
-                },
-                ...(this.options || {}),
-            },
-            plugins,
+            data: Object.assign(Object.assign({}, this.data), { datasets: this.data.datasets.map((dataset) => (Object.assign(Object.assign({}, dataset), { cutout: `${this.cutout}%` }))) }),
+            options: Object.assign(Object.assign({ animation: this.animations }, this.options), { maintainAspectRatio: true, aspectRatio: 1, layout: {
+                    padding: 16,
+                }, plugins: {
+                    legend: this.legend_format,
+                    tooltip: this.tooltip_options || this.defaultPieTooltipOptions,
+                } }),
+            plugins: plugins,
         };
-        if (this.chart) {
-            this.chart.destroy();
-        }
-        this.chart = new Chart(this.canvasEl, this.config);
+        new Chart(this.canvasEl, this.config);
+        this.canvasEl.style.width = '100%';
+        this.canvasEl.style.height = '100%';
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === AtChartColorPalette.CUSTOM) {
+        if (this.color_palette === ChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
             const color = dataset.data.map((_, index) => colors[index % colors.length]);
-            return {
-                ...dataset,
-                backgroundColor: color,
-                hoverBackgroundColor: color,
-                borderColor: color,
-                hoverBorderColor: color,
-            };
+            return Object.assign(Object.assign({}, dataset), { backgroundColor: color, hoverBackgroundColor: color, borderColor: color, hoverBorderColor: color });
         });
     }
     componentDidUpdate() {
@@ -240,13 +168,21 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '8a163cb10b177595dabf04bdac48e4b4bdc5b001', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'e1855796a4c783a75a9d23850e7a743315da3bb4', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'cbe988a52d5dd19351ef22e9cee716d8fe624969', role: "region", class: `relative flex w-full flex-col items-center justify-center ${heightVariants[this.height]}` }, h("canvas", { key: 'f85a6a9f304f91c316d91e2f852828961fc06a86', ref: (el) => (this.canvasEl = el), style: {
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                maxWidth: '100%',
+                maxHeight: '100%',
+            } })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
         return {
             "data": {
                 "type": "unknown",
+                "attribute": "data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        labels: string[];\n        datasets: ChartDataset[];\n    }",
@@ -255,8 +191,7 @@ export class AtChartDonut {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
-                            "referenceLocation": "ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
                         }
                     }
                 },
@@ -271,6 +206,7 @@ export class AtChartDonut {
             },
             "options": {
                 "type": "unknown",
+                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -288,15 +224,16 @@ export class AtChartDonut {
             },
             "height": {
                 "type": "string",
+                "attribute": "height",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtChartHeight",
+                    "original": "Height",
                     "resolved": "\"auto\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "AtChartHeight": {
+                        "Height": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height"
                         }
                     }
                 },
@@ -309,37 +246,11 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "height",
-                "defaultValue": "'auto'"
-            },
-            "legend_position": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "AtLegendPosition",
-                    "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
-                    "references": {
-                        "AtLegendPosition": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtLegendPosition"
-                        }
-                    }
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Position of the legend"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "legend_position",
-                "defaultValue": "'top'"
+                "defaultValue": "'md'"
             },
             "legend_format": {
                 "type": "unknown",
+                "attribute": "legend_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -359,10 +270,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n\n        onClick: (_evt, legendItem, legend) => {\n            const chart = legend.chart;\n            const idx = legendItem.index;\n            chart.toggleDataVisibility(idx);\n            const anyVisible = chart.data.labels?.some((_, i) =>\n                chart.getDataVisibility(i),\n            );\n            if (chart.options.plugins?.tooltip) {\n                chart.options.plugins.tooltip.enabled = !!anyVisible;\n            }\n            chart.update();\n        },\n        display: true,\n    }"
+                "defaultValue": "{\n        labels: {\n            boxWidth: 10,\n            boxHeight: 10,\n            fontSize: 11,\n        },\n        onHover: (event): void => {\n            if (event.native) {\n                (event.native.target as HTMLElement).style.cursor = 'pointer';\n            }\n        },\n        display: true,\n    }"
             },
             "tooltip_options": {
                 "type": "unknown",
+                "attribute": "tooltip_options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -377,10 +289,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "defaultValue": "{\n        mode: 'nearest',\n        intersect: true,\n        position: 'nearest',\n    }"
+                "defaultValue": "{\n        mode: 'index',\n        intersect: false,\n        position: 'nearest',\n    }"
             },
             "plugins": {
                 "type": "unknown",
+                "attribute": "plugins",
                 "mutable": false,
                 "complexType": {
                     "original": "Plugin[]",
@@ -389,8 +302,7 @@ export class AtChartDonut {
                         "Plugin": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin",
-                            "referenceLocation": "Plugin"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::Plugin"
                         }
                     }
                 },
@@ -403,18 +315,36 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false
             },
-            "color_palette": {
-                "type": "string",
+            "animations": {
+                "type": "unknown",
+                "attribute": "animations",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtChartColorPalette",
-                    "resolved": "AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL | AtChartColorPalette.CUSTOM | AtChartColorPalette.SEQUENTIAL",
+                    "original": "object",
+                    "resolved": "object",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Animations added to the chart configuration"
+                },
+                "getter": false,
+                "setter": false
+            },
+            "color_palette": {
+                "type": "string",
+                "attribute": "color_palette",
+                "mutable": false,
+                "complexType": {
+                    "original": "ChartColorPalette",
+                    "resolved": "ChartColorPalette.ALERT | ChartColorPalette.CATEGORICAL | ChartColorPalette.CUSTOM | ChartColorPalette.SEQUENTIAL",
                     "references": {
-                        "AtChartColorPalette": {
+                        "ChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::AtChartColorPalette",
-                            "referenceLocation": "AtChartColorPalette"
+                            "id": "src/types/chart-color.ts::ChartColorPalette"
                         }
                     }
                 },
@@ -427,11 +357,11 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "color_palette",
-                "defaultValue": "AtChartColorPalette.CATEGORICAL"
+                "defaultValue": "ChartColorPalette.CATEGORICAL"
             },
             "center_value": {
                 "type": "string",
+                "attribute": "center_value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -446,11 +376,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "center_value"
+                "reflect": false
             },
             "center_text": {
                 "type": "string",
+                "attribute": "center_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -465,11 +395,11 @@ export class AtChartDonut {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "center_text"
+                "reflect": false
             },
             "cutout": {
                 "type": "number",
+                "attribute": "cutout",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -485,7 +415,6 @@ export class AtChartDonut {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "cutout",
                 "defaultValue": "70"
             }
         };
@@ -511,24 +440,8 @@ export class AtChartDonut {
                             "text": "Configuration of the chart"
                         }]
                 }
-            },
-            "resize": {
-                "complexType": {
-                    "signature": "() => Promise<void>",
-                    "parameters": [],
-                    "references": {
-                        "Promise": {
-                            "location": "global",
-                            "id": "global::Promise"
-                        }
-                    },
-                    "return": "Promise<void>"
-                },
-                "docs": {
-                    "text": "Manually trigger a chart resize to fit container dimensions",
-                    "tags": []
-                }
             }
         };
     }
 }
+//# sourceMappingURL=at-chart-donut.js.map

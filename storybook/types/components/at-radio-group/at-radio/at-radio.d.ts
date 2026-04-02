@@ -18,11 +18,11 @@ export declare class AtRadio {
     /**
      * Sets the value of the checkbox
      */
-    checked?: boolean;
+    value?: boolean;
     /**
      * ID of the radio button element and its option
      */
-    value?: string;
+    option_id?: string;
     /**
      * Name of radio group.
      * Buttons sharing a name are associated with the same radio group.
@@ -40,8 +40,8 @@ export declare class AtRadio {
     /**
      * Emits the current state of the radio when clicked.
      */
-    atuiChange: EventEmitter<string>;
+    atuiChange: EventEmitter<boolean>;
     handleChange(): void;
     handleKeyDown(event: KeyboardEvent): void;
-    render(): JSX.Element;
+    render(): any;
 }

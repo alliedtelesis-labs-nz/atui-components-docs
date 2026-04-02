@@ -1,10 +1,10 @@
 import { ColDef, Column, GridOptions } from 'ag-grid-community';
-import { AtIDropdownKey } from '../types/generic-table';
-export interface AtITableColumnDef extends ColDef {
+import { DropdownKey } from '../types/generic-table';
+export interface ITableColumnDef extends ColDef {
     excludeFromGlobalSearch?: boolean;
     filterOptions?: {
         exclude?: boolean;
-        dropdownKeys?: AtIDropdownKey[];
+        dropdownKeys?: DropdownKey[];
         character?: string;
     };
     sortable?: boolean;

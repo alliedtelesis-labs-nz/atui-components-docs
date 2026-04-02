@@ -1,1 +1,416 @@
-import{p as t,H as e,d as s,h as a,c as i,t as o}from"./p-CRwLX_Tp.js";import{f as r}from"./p-C11vpe5m.js";import{d as n}from"./p-CpXGbmUU.js";import{d as h}from"./p-DWXlqxHj.js";import{d as l}from"./p-DU7469VR.js";import{d as c}from"./p-xOjU5eeF.js";import{d}from"./p-BfbqUs4x.js";import{d as m}from"./p-DgVmn8eg.js";import{d as p}from"./p-CHhD-sII.js";import{d as u}from"./p-Dp0B4ohu.js";import{d as f}from"./p-Cd1zgoJC.js";import{d as b}from"./p-BdD3rDh2.js";import{d as g}from"./p-BCfkyfCJ.js";import{d as _}from"./p-B7WTaxKV.js";import{d as C}from"./p-BdCOJXPT.js";import{d as k}from"./p-wFQExpU3.js";import{d as x}from"./p-gYoAvVnC.js";import{d as E}from"./p-CRixunUC.js";import{d as y}from"./p-D84X998E.js";import{d as j}from"./p-BBuFEAtm.js";import{d as w}from"./p-BTIVUSIC.js";import{d as F}from"./p-lIynlMXu.js";import{d as v}from"./p-M5HLNqyy.js";var S;!function(t){t[t.ASC=1]="ASC",t[t.DESC=-1]="DESC"}(S||(S={}));const D=t(class extends e{constructor(t){super(),!1!==t&&this.__registerHost(),this.atSearchParamsChange=s(this,"atSearchParamsChange",7),this.atExportCsv=s(this,"atExportCsv",7),this.atExportPdf=s(this,"atExportPdf",7)}table_data;label;search_label;search_hint;search_info_tooltip;col_defs=[];page_size=10;hide_dropdown_filters;hide_column_manager;hide_export_menu;hide_csv_export=!1;hide_pdf_export=!1;use_custom_pagination=!1;auto_size_columns=!0;server_side_mode=!1;loading=!1;atSearchParamsChange;atExportCsv;atExportPdf;get el(){return this}translations;agGrid;tableCreated=!1;activeFilters={};selectedFilters=[];menuSelectedIds=[];searchValue="";currentPage=1;pageSize=this.page_size||10;tableEl;get shouldShowDropdownFilters(){return!this.hide_dropdown_filters&&this.col_defs&&this.col_defs.length>0}get shouldShowColumnManager(){return!this.hide_column_manager&&this.col_defs&&this.col_defs.length>0}get totalPages(){return Math.max(1,Math.ceil((this.table_data?.total||0)/this.pageSize))}handleSelectedFiltersChange(t){this.menuSelectedIds=t.map((t=>t.id))}async componentWillLoad(){this.translations=await r(this.el)}async componentDidLoad(){await this.initGrid(),this.server_side_mode&&this.agGrid&&this.emitSearchParamsChange()}async componentDidUpdate(){this.tableCreated||await this.initGrid()}async updateRowByIndex(t,e){const s=this.agGrid.getRenderedNodes();t.forEach((({index:t,update:a})=>{const i=s.find((e=>e.rowIndex===t));i&&(i.updateData(a),e?.flash&&this.agGrid.flashCells({rowNodes:[i]}),this.agGrid.refreshCells({rowNodes:[i],force:e?.forceRefresh||!1}))}))}async getDisplayedRows(){return this.agGrid.getRenderedNodes()}async initGrid(){this.col_defs&&!this.tableCreated&&this.tableEl&&(this.agGrid=await this.tableEl.createGrid(),this.tableCreated=!0,this.setupExternalFilters(),this.agGrid.addEventListener("sortChanged",(()=>{this.server_side_mode&&this.emitSearchParamsChange()})),this.table_data?.items&&this.agGrid.setGridOption("rowData",this.table_data.items))}setupExternalFilters(){this.agGrid&&(this.server_side_mode||(this.agGrid.setGridOption("isExternalFilterPresent",(()=>Object.keys(this.activeFilters).length>0)),this.agGrid.setGridOption("doesExternalFilterPass",(t=>{if(!t.data)return!0;const e=this.searchValue;if(e){const s=e.toLowerCase();if(!this.col_defs.some((e=>{let a;return e.valueGetter&&"function"==typeof e.valueGetter?a=e.valueGetter({data:t.data,node:t,colDef:e,api:this.agGrid,context:null,getValue:e=>t.data[e],column:null}):e.field&&(a=t.data[e.field]),a&&(a+"").toLowerCase().includes(s)})))return!1}return Object.entries(this.activeFilters).every((([e,s])=>{if("__search__"===e||!s)return!0;const a=this.col_defs.find((t=>t.field===e));let i;return i=a&&a.valueGetter&&"function"==typeof a.valueGetter?a.valueGetter({data:t.data,node:t,colDef:a,api:this.agGrid,context:null,getValue:e=>t.data[e],column:null}):t.data[e],i&&(i+"").toLowerCase().includes((s+"").toLowerCase())}))}))))}handleColumnChange(t){const{id:e,checked:s}=t.detail,a=this.col_defs.map((t=>t.field===e?{...t,hide:!s}:t));this.col_defs=a}handleFilterChange(t){if(!t.detail||Array.isArray(t.detail)&&0===t.detail.length)return this.selectedFilters=[],this.menuSelectedIds=[],void this.updateActiveFilters();Array.isArray(t.detail)&&("string"==typeof t.detail[0]?this.handleMenuFilterChange(t.detail):"object"==typeof t.detail[0]&&this.handleFilterListChange(t.detail)),this.updateActiveFilters()}handleMenuFilterChange(t){this.selectedFilters=t.map((t=>({id:t,value:""}))),this.menuSelectedIds=t}handleFilterListChange(t){!t.length||1===t.length&&""===t[0].id?(this.selectedFilters=[],this.menuSelectedIds=[]):(this.selectedFilters=t,this.menuSelectedIds=t.map((t=>t.id)))}updateActiveFilters(){this.activeFilters=this.col_defs.reduce(((t,e)=>(t[e.field]="",t)),{}),this.selectedFilters.forEach((t=>{t.value&&(this.activeFilters[t.id]=t.value)})),this.server_side_mode?this.emitSearchParamsChange():this.agGrid?(this.setupExternalFilters(),this.agGrid.onFilterChanged()):console.log("agGrid not available, cannot apply filter")}handleSearchChange(t){this.searchValue=t.detail||"",this.updateActiveFilters()}handlePageChange(t){this.currentPage=t.detail,this.emitSearchParamsChange()}handlePageSizeChange(t){this.pageSize=t.detail,this.currentPage=1,this.emitSearchParamsChange()}emitSearchParamsChange(){if(!this.agGrid)return;const t=(this.currentPage-1)*this.pageSize,e=this.currentPage*this.pageSize,s=this.agGrid.getColumnState(),a=s.find((t=>null!=t.sort)),i=s.filter((t=>!t.hide)).map((t=>t.colId)),o=Object.values(this.activeFilters).some((t=>""!==t));let r;r="asc"===a?.sort?S.ASC:"desc"===a?.sort?S.DESC:S.ASC;const n={columns:i,globalFilter:this.searchValue,...o?{fieldFilters:this.activeFilters}:{},startRow:t,endRow:e,sort:a?.colId??"",direction:r};this.atSearchParamsChange.emit(n)}handleExport(t){const e=t.detail;if("CSV"===e)this.atExportCsv.emit({start:(this.currentPage-1)*this.pageSize,end:this.currentPage*this.pageSize});else if("PDF"===e){const t=this.col_defs.filter((t=>!t.hide)).map((t=>({field:t.field,displayName:t.headerName||t.field,actualWidth:t.width})));this.atExportPdf.emit(t)}}render(){return a(i,{key:"d365d54836c5305fe434855dcb595cf00b516b0c"},a("at-table-actions",{key:"f9b044c074e60db6579406edbd1985c497536204",ag_grid:this.agGrid},a("div",{key:"fc8b83fae3f99fff5bac3553db56282e0acb1c99",class:"flex items-center gap-8 px-8",slot:"search"},this.shouldShowDropdownFilters&&a("at-table-filter-menu",{key:"6177b32830c84f285c6ee2c14b6e3271d0e318a4",slot:"filter-menu",col_defs:this.col_defs,selected:this.menuSelectedIds,onAtChange:t=>this.handleFilterChange(t)}),a("at-search",{key:"d03c3226f3e6add08fb8e9ad83e35799588e9d6d",class:"w-input-md",label:this.search_label,hint_text:this.search_hint,info_text:this.search_info_tooltip,placeholder:this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD,onAtChange:t=>this.handleSearchChange(t)})),this.shouldShowDropdownFilters&&a("at-table-filters",{key:"1b65fb9e449a1e553c3456a61be8b3e30d371dce",slot:"filters",col_defs:this.col_defs,selected:this.selectedFilters,onAtChange:t=>this.handleFilterChange(t)}),!this.hide_export_menu&&a("at-table-export-menu",{key:"ff13b17f769e6e3722b06261ea52f4d4490ea2f3",slot:"export-menu",hide_csv:this.hide_csv_export,hide_pdf:this.hide_pdf_export,onAtChange:t=>this.handleExport(t)}),this.shouldShowColumnManager&&a("at-column-manager",{key:"c710e684963175876bcf3ec24c179ca7ea9be905",slot:"column-manager",col_defs:this.col_defs,onAtChange:t=>this.handleColumnChange(t)}),a("div",{key:"02055bbba01b0b569c82aac880ffadf38b522687",slot:"actions"},a("slot",{key:"b2c0edf27364c9cefc016fa1a888bbcfb02e6a2d",name:"actions"}))),a("slot",{key:"1cee10d347a627c970a66bece8dc44453927522e",name:"multi-select-actions"}),this.loading&&this.server_side_mode?a("at-placeholder",{size:"lg",placeholder_title:this.translations?.ATUI?.TABLE?.LOADING_DATA,show_loading_spinner:!0}):a("at-table",{ref:t=>this.tableEl=t,table_data:this.table_data,col_defs:this.col_defs,page_size:this.server_side_mode?this.pageSize:this.page_size,use_custom_pagination:this.server_side_mode,auto_size_columns:this.auto_size_columns,disable_auto_init:!this.server_side_mode}),this.server_side_mode&&a("at-table-pagination",{key:"a417d7da0f87743a200c9182e0bf1df0be926546",current_page:this.currentPage,num_pages:this.totalPages,onAtChange:t=>this.handlePageChange(t),onAtPageSizeChange:t=>this.handlePageSizeChange(t)}))}static get watchers(){return{selectedFilters:[{handleSelectedFiltersChange:0}]}}},[772,"at-search-table",{table_data:[16],label:[1],search_label:[1],search_hint:[1],search_info_tooltip:[1],col_defs:[16],page_size:[2],hide_dropdown_filters:[4],hide_column_manager:[4],hide_export_menu:[4],hide_csv_export:[4],hide_pdf_export:[4],use_custom_pagination:[4],auto_size_columns:[4],server_side_mode:[4],loading:[4],translations:[32],agGrid:[32],tableCreated:[32],activeFilters:[32],selectedFilters:[32],menuSelectedIds:[32],searchValue:[32],currentPage:[32],pageSize:[32],updateRowByIndex:[64],getDisplayedRows:[64]},void 0,{selectedFilters:[{handleSelectedFiltersChange:0}]}]),P=D,A=function(){"undefined"!=typeof customElements&&["at-search-table","at-button","at-checkbox","at-checkbox-group","at-column-manager","at-form-label","at-input","at-loading","at-menu","at-menu-item","at-placeholder","at-search","at-select","at-select-group","at-select-option","at-table","at-table-actions","at-table-export-menu","at-table-filter-menu","at-table-filters","at-table-pagination","at-tooltip"].forEach((t=>{switch(t){case"at-search-table":customElements.get(o(t))||customElements.define(o(t),D);break;case"at-button":customElements.get(o(t))||n();break;case"at-checkbox":customElements.get(o(t))||h();break;case"at-checkbox-group":customElements.get(o(t))||l();break;case"at-column-manager":customElements.get(o(t))||c();break;case"at-form-label":customElements.get(o(t))||d();break;case"at-input":customElements.get(o(t))||m();break;case"at-loading":customElements.get(o(t))||p();break;case"at-menu":customElements.get(o(t))||u();break;case"at-menu-item":customElements.get(o(t))||f();break;case"at-placeholder":customElements.get(o(t))||b();break;case"at-search":customElements.get(o(t))||g();break;case"at-select":customElements.get(o(t))||_();break;case"at-select-group":customElements.get(o(t))||C();break;case"at-select-option":customElements.get(o(t))||k();break;case"at-table":customElements.get(o(t))||x();break;case"at-table-actions":customElements.get(o(t))||E();break;case"at-table-export-menu":customElements.get(o(t))||y();break;case"at-table-filter-menu":customElements.get(o(t))||j();break;case"at-table-filters":customElements.get(o(t))||w();break;case"at-table-pagination":customElements.get(o(t))||F();break;case"at-tooltip":customElements.get(o(t))||v()}}))};export{P as AtSearchTable,A as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { f as fetchTranslations } from './p-DuLooPsr.js';
+import { d as defineCustomElement$g } from './p-CAIgKcTX.js';
+import { d as defineCustomElement$f } from './p-Df2_temq.js';
+import { d as defineCustomElement$e } from './p-CkV0VkTP.js';
+import { d as defineCustomElement$d } from './p-DClFLQ22.js';
+import { d as defineCustomElement$c } from './p-BaOP2SR_.js';
+import { d as defineCustomElement$b } from './p-apNKW7Jz.js';
+import { d as defineCustomElement$a } from './p-pDYyfeah.js';
+import { d as defineCustomElement$9 } from './p-BvmILoSj.js';
+import { d as defineCustomElement$8 } from './p-CuLJyG4i.js';
+import { d as defineCustomElement$7 } from './p-CemKIeMc.js';
+import { d as defineCustomElement$6 } from './p-7iGlDkdU.js';
+import { d as defineCustomElement$5 } from './p-B2qbxU0e.js';
+import { d as defineCustomElement$4 } from './p-BXc3porp.js';
+import { d as defineCustomElement$3 } from './p-CM7Q9JeU.js';
+import { d as defineCustomElement$2 } from './p-BUjvE2eq.js';
+
+const AtSearchTable$1 = /*@__PURE__*/ proxyCustomElement(class AtSearchTable extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        /**
+         * Column definitions passed to at-table component.
+         */
+        this.col_defs = [];
+        /**
+         * Default page size of the table
+         */
+        this.page_size = 10;
+        /**
+         * If true, disables pagination on the table and shows all data at once.
+         * Useful for server-side pagination where you want to control pagination externally.
+         */
+        this.use_custom_pagination = false;
+        /**
+         * If true, enables automatic column resizing to fit available space.
+         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+         */
+        this.auto_size_columns = true;
+        this.tableCreated = false;
+        this.isInitialized = false;
+        this.activeFilters = {};
+        this.selectedFilters = [];
+        this.menuSelectedIds = [];
+        this.searchValue = '';
+    }
+    get shouldShowDropdownFilters() {
+        return (!this.hide_dropdown_filters &&
+            this.col_defs &&
+            this.col_defs.length > 0 &&
+            this.isInitialized);
+    }
+    get shouldShowColumnManager() {
+        return (!this.hide_column_manager &&
+            this.col_defs &&
+            this.col_defs.length > 0 &&
+            this.isInitialized);
+    }
+    handleSelectedFiltersChange(newValue) {
+        this.menuSelectedIds = newValue.map((f) => f.id);
+        this.updateActiveFilters();
+    }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+        this.isInitialized = true;
+    }
+    async componentDidLoad() {
+        await this.initGrid();
+    }
+    async componentDidUpdate() {
+        await this.initGrid();
+    }
+    /**
+     * Updates the data of rows in the AG Grid based on their displayed row index.
+     *
+     * Use this method when you need to programmatically update one or more specific rows in the grid,
+     * identified by their current displayed index. This is particularly useful when you want to perform
+     * partial updates (such as in-place cell editing, real-time updates, or upon receiving new data from a
+     * server), and want to reflect these changes immediately in the UI with optional visual feedback.
+     *
+     * @template T - The data type of the row's underlying data structure.
+     * @param {RowUpdate<T>[]} rowUpdates - An array of objects specifying the row indices and the data updates to apply.
+     *   - `index`: The displayed index of the row to update.
+     *   - `update`: An object containing the updated data for the row.
+     * @param {RowUpdateOptions} [options] - Optional settings for the update operation.
+     *   - `flash`: Whether to visually flash the updated rows after the data change (improves user visibility).
+     *   - `forceRefresh`: Whether to force refresh the row cells after updating (useful for advanced rendering scenarios).
+     *
+     * @example
+     * // Update row at displayed index 2 with new values and flash the change
+     * updateRowByIndex([{ index: 2, update: { status: 'Processed' }}], { flash: true });
+     *
+     * @remarks
+     * - This function works with currently rendered rows; if rows are virtualized or paged out, ensure
+     *   the specified indices match the grid's current rendering context.
+     * - Recommended for cases where quick, UI-driven row data mutations are required (such as action buttons,
+     *   websocket pushes, or UI triggers).
+     */
+    async updateRowByIndex(rowUpdates, options) {
+        const displayedRows = this.agGrid.getRenderedNodes();
+        rowUpdates.forEach(({ index, update }) => {
+            const displayedRow = displayedRows.find((row) => row.rowIndex === index);
+            if (displayedRow) {
+                displayedRow.updateData(update);
+                if (options === null || options === void 0 ? void 0 : options.flash) {
+                    this.agGrid.flashCells({ rowNodes: [displayedRow] });
+                }
+                this.agGrid.refreshCells({
+                    rowNodes: [displayedRow],
+                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                });
+            }
+        });
+    }
+    /**
+     * Returns the **currently displayed row nodes** from the ag-Grid instance.
+     *
+     * This asynchronous method retrieves an array of row nodes representing the rows currently visible
+     * (rendered) in the grid, after filtering, sorting, and other view-based operations.
+     *
+     * @template T The data type contained in each row node.
+     * @returns {Promise<IRowNode<T>[]>} Promise resolving to an array of displayed row nodes.
+     */
+    async getDisplayedRows() {
+        return this.agGrid.getRenderedNodes();
+    }
+    async initGrid() {
+        var _a;
+        if (this.col_defs && !this.tableCreated && this.tableEl) {
+            this.agGrid = await this.tableEl.createGrid();
+            this.tableCreated = true;
+            this.setupExternalFilters();
+            if ((_a = this.table_data) === null || _a === void 0 ? void 0 : _a.items) {
+                this.agGrid.setGridOption('rowData', this.table_data.items);
+            }
+        }
+    }
+    setupExternalFilters() {
+        if (!this.agGrid)
+            return;
+        this.agGrid.setGridOption('isExternalFilterPresent', () => {
+            return Object.keys(this.activeFilters).length > 0;
+        });
+        this.agGrid.setGridOption('doesExternalFilterPass', (node) => {
+            if (!node.data)
+                return true;
+            const searchValue = this.activeFilters['__search__'];
+            if (searchValue) {
+                const searchLower = searchValue.toLowerCase();
+                const matchesSearch = this.col_defs.some((colDef) => {
+                    let cellValue;
+                    if (colDef.valueGetter &&
+                        typeof colDef.valueGetter === 'function') {
+                        cellValue = colDef.valueGetter({
+                            data: node.data,
+                            node,
+                            colDef,
+                            api: this.agGrid,
+                            context: null,
+                            getValue: (field) => node.data[field],
+                            column: null,
+                        });
+                    }
+                    else if (colDef.field) {
+                        cellValue = node.data[colDef.field];
+                    }
+                    return (cellValue &&
+                        String(cellValue)
+                            .toLowerCase()
+                            .includes(searchLower));
+                });
+                if (!matchesSearch)
+                    return false;
+            }
+            const columnFilterResult = Object.entries(this.activeFilters).every(([colId, filterValue]) => {
+                if (colId === '__search__' || !filterValue)
+                    return true;
+                const colDef = this.col_defs.find((def) => def.field === colId);
+                let value;
+                if (colDef &&
+                    colDef.valueGetter &&
+                    typeof colDef.valueGetter === 'function') {
+                    value = colDef.valueGetter({
+                        data: node.data,
+                        node,
+                        colDef,
+                        api: this.agGrid,
+                        context: null,
+                        getValue: (field) => node.data[field],
+                        column: null,
+                    });
+                }
+                else {
+                    value = node.data[colId];
+                }
+                const matches = value &&
+                    String(value)
+                        .toLowerCase()
+                        .includes(String(filterValue).toLowerCase());
+                return matches;
+            });
+            return columnFilterResult;
+        });
+    }
+    handleColumnChange(event) {
+        const { id, checked } = event.detail;
+        const updatedColDefs = this.col_defs.map((colDef) => {
+            if (colDef.field === id) {
+                return Object.assign(Object.assign({}, colDef), { hide: !checked });
+            }
+            return colDef;
+        });
+        this.col_defs = updatedColDefs;
+    }
+    handleFilterChange(event) {
+        if (!event.detail ||
+            (Array.isArray(event.detail) && event.detail.length === 0)) {
+            // Handle clear all case
+            this.selectedFilters = [];
+            this.menuSelectedIds = [];
+            this.updateActiveFilters();
+            return;
+        }
+        if (Array.isArray(event.detail)) {
+            if (typeof event.detail[0] === 'string') {
+                this.handleMenuFilterChange(event.detail);
+            }
+            else if (typeof event.detail[0] === 'object') {
+                this.handleFilterListChange(event.detail);
+            }
+        }
+        this.updateActiveFilters();
+    }
+    handleMenuFilterChange(selectedIds) {
+        this.selectedFilters = selectedIds.map((id) => ({
+            id,
+            value: '',
+        }));
+        this.menuSelectedIds = selectedIds;
+    }
+    handleFilterListChange(filters) {
+        // If filters array is empty or contains a single empty filter, reset all states
+        if (!filters.length || (filters.length === 1 && filters[0].id === '')) {
+            this.selectedFilters = [];
+            this.menuSelectedIds = [];
+        }
+        else {
+            this.selectedFilters = filters;
+            // Set menuSelectedIds based on all filter IDs, regardless of their values
+            this.menuSelectedIds = filters.map((filter) => filter.id);
+        }
+    }
+    updateActiveFilters() {
+        // Keep existing search value in activeFilters - it's managed by handleSearchChange
+        const currentSearch = this.activeFilters['__search__'];
+        this.activeFilters = {};
+        // Restore search if it exists
+        if (currentSearch) {
+            this.activeFilters['__search__'] = currentSearch;
+        }
+        this.selectedFilters.forEach((filter) => {
+            if (filter.value) {
+                this.activeFilters[filter.id] = filter.value;
+            }
+        });
+        if (this.searchValue) {
+            this.activeFilters['__search__'] = this.searchValue;
+        }
+        if (this.agGrid) {
+            this.setupExternalFilters();
+            this.agGrid.onFilterChanged();
+        }
+        else {
+            console.log('agGrid not available, cannot apply filter');
+        }
+    }
+    handleSearchChange(event) {
+        this.searchValue = event.detail || '';
+        if (this.searchValue) {
+            this.activeFilters['__search__'] = this.searchValue;
+        }
+        else {
+            delete this.activeFilters['__search__'];
+        }
+        this.updateActiveFilters();
+    }
+    render() {
+        return (h(Host, { key: '2da4bf009f957131bf3ad99644c77a4933c6aea5' }, h("at-table-actions", { key: 'd38f422484109d09d468982ea80605d727b52e10', ag_grid: this.agGrid }, h("div", { key: '1d5cda16792cfb23e52e4663612197f3ea8ce6f7', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '92fc36c775ce20d172ff2429233db9d09c4c46f8', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd49135b66e09ad46861125b886a45adfd580aa04', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '4226babd78fe29223a5e13c0b4b649fcb9537611', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '189b7b41025e962ac264ae0cdc01e63195d72c11', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'eff0f8025a4d39e3792411321ef841e3729c28fb', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'fb7f2915ecd9c6751b5742a430eb50c46775045c', slot: "actions" }, h("slot", { key: '72f36b4ccec8ed1916b7a8e6428aa2b2d4e3f668', name: "actions" }))), h("slot", { key: '17f8b5d307fb812594eebea08b1ab858dcadb386', name: "multi-select-actions" }), h("at-table", { key: 'b44c107845f5e0058f6509c99cc18b81b61ffe84', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+    }
+    get el() { return this; }
+    static get watchers() { return {
+        "selectedFilters": ["handleSelectedFiltersChange"]
+    }; }
+}, [260, "at-search-table", {
+        "table_data": [16],
+        "label": [1],
+        "search_label": [1],
+        "search_hint": [1],
+        "search_info_tooltip": [1],
+        "col_defs": [16],
+        "page_size": [2],
+        "hide_dropdown_filters": [4],
+        "hide_column_manager": [4],
+        "hide_export_menu": [4],
+        "use_custom_pagination": [4],
+        "auto_size_columns": [4],
+        "translations": [32],
+        "agGrid": [32],
+        "tableCreated": [32],
+        "isInitialized": [32],
+        "activeFilters": [32],
+        "selectedFilters": [32],
+        "menuSelectedIds": [32],
+        "searchValue": [32],
+        "updateRowByIndex": [64],
+        "getDisplayedRows": [64]
+    }, undefined, {
+        "selectedFilters": ["handleSelectedFiltersChange"]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-search-table", "at-button", "at-checkbox", "at-checkbox-group", "at-column-manager", "at-form-label", "at-input", "at-loading", "at-menu", "at-search", "at-table", "at-table-actions", "at-table-export-menu", "at-table-filter-menu", "at-table-filters", "at-tooltip"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-search-table":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtSearchTable$1);
+            }
+            break;
+        case "at-button":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$g();
+            }
+            break;
+        case "at-checkbox":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$f();
+            }
+            break;
+        case "at-checkbox-group":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$e();
+            }
+            break;
+        case "at-column-manager":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$d();
+            }
+            break;
+        case "at-form-label":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$c();
+            }
+            break;
+        case "at-input":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$b();
+            }
+            break;
+        case "at-loading":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$a();
+            }
+            break;
+        case "at-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$9();
+            }
+            break;
+        case "at-search":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$8();
+            }
+            break;
+        case "at-table":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$7();
+            }
+            break;
+        case "at-table-actions":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "at-table-export-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "at-table-filter-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "at-table-filters":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-tooltip":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtSearchTable = AtSearchTable$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtSearchTable, defineCustomElement };
+//# sourceMappingURL=at-search-table.js.map
+
+//# sourceMappingURL=at-search-table.js.map

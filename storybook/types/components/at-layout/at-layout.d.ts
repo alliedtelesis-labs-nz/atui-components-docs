@@ -1,4 +1,4 @@
-export type AtTemplate = 'content-container' | 'master-detail' | 'tabset';
+export type Template = 'content-container' | 'master-detail' | 'tabset';
 /**
  * @category Layout
  * @description A base layout component for structuring page content with flexible sections and responsive behavior. Provides foundation for consistent page layouts.
@@ -13,7 +13,7 @@ export declare class AtLayout {
     /**
      * Template used to display content
      */
-    template: AtTemplate;
+    template: Template;
     /**
      * If overflow is allowed on the detail in master-detail
      */

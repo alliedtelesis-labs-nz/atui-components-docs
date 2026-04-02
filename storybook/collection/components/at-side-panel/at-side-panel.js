@@ -1,64 +1,82 @@
-import { h, Host, } from "@stencil/core";
+import { h, } from "@stencil/core";
+const panelVariants = {
+    base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
+    origin: {
+        left: 'left-0 top-0',
+        right: 'right-0 top-0',
+    },
+    isExpanded: 'border-l-med border-l-2 transition-transform duration-[300ms] ease-[cubic-bezier(0.455,0.03,0.515,0.955)]',
+    fixed: {
+        true: 'fixed h-full top-0',
+        false: 'absolute h-full',
+    },
+    noScrollbar: 'overflow-y-hidden',
+};
+const sizeVariants = {
+    base: 'overflow-x-hidden overflow-y-auto h-full flex flex-col',
+    size: {
+        xs: 'w-panel-xs',
+        sm: 'w-panel-sm',
+        md: 'w-panel-md',
+        lg: 'w-panel-lg',
+        xl: 'w-panel-xl',
+    },
+};
 /**
  * @category Overlays
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
  *
- * @slot - Display content within the dialog
- *
- * @dependency at-button
+ * @slot default - Used for placing the content of the side panel.
  */
 export class AtSidePanelComponent {
-    el;
-    /**
-     * Size of the size panel
-     */
-    size = 'xs';
-    /**
-     * Title displayed in the side panel
-     */
-    panel_title;
-    /**
-     * Subtitle displayed in the side panel
-     */
-    panel_subtitle;
-    /**
-     *  Position of the side panel
-     */
-    origin = 'right';
-    /**
-     * Enables scroll overflow on the sidepanel container
-     */
-    has_scrollbar = true;
-    /**
-     * Displays a close button if set
-     */
-    has_close_button = true;
-    /**
-     * If sidepanel should use fixed positioning (will fallback to absolute)
-     */
-    position = 'fixed';
-    /**
-     * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
-     */
-    backdrop = false;
-    /**
-     * Will close the sidepanel if clicked
-     */
-    close_backdrop = false;
-    /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
-     */
-    trigger_id;
-    isExpanded = false;
-    isOpen = false;
-    /**
-     * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
-     */
-    atuiSidepanelChange;
-    sidePanelWrapper;
-    panelDialog;
-    triggerEls = [];
-    externalTriggerListeners = [];
+    constructor() {
+        /**
+         * Size of the size panel
+         */
+        this.size = 'xs';
+        /**
+         *  Position of the side panel
+         */
+        this.origin = 'right';
+        /**
+         * Puts a scrollbar on the sidepanel if set
+         */
+        this.has_scrollbar = true;
+        /**
+         * Displays a close button if set
+         */
+        this.has_close_button = true;
+        /**
+         * Will close the sidepanel if clicked off when set
+         */
+        this.close_backdrop = false;
+        /**
+         * If sidepanel should used fixed positioning (otherwise absolute)
+         */
+        this.fixed = true;
+        /**
+         * Whether to show a backdrop behind the panel
+         */
+        this.backdrop = false;
+        this.isExpanded = false;
+        this.triggerEls = [];
+        this.externalTriggerListeners = [];
+        this.handleClose = () => {
+            this.closeSidePanel();
+        };
+        this.handleDialogClose = (event) => {
+            event.preventDefault();
+            if (this.isExpanded) {
+                this.closeSidePanel();
+            }
+        };
+        this.handleKeyDown = (event) => {
+            if (event.key === 'Escape' && this.isExpanded) {
+                event.preventDefault();
+                this.closeSidePanel();
+            }
+        };
+    }
     /**
      * Toggles the side panel between open and closed states
      * @returns Promise that resolves when the panel state is toggled
@@ -77,21 +95,11 @@ export class AtSidePanelComponent {
      */
     async openSidePanel() {
         if (this.panelDialog && !this.panelDialog.open) {
-            if (this.backdrop === true) {
-                this.panelDialog.showModal();
-            }
-            else {
-                this.panelDialog.show();
-            }
+            this.panelDialog.showModal();
+            this.isExpanded = true;
             if (this.backdrop) {
                 this.panelDialog.classList.add('backdrop');
             }
-            // Use requestAnimationFrame to delay the state change and apply css
-            requestAnimationFrame(() => {
-                this.isExpanded = true;
-                this.isOpen = true;
-                this.atuiSidepanelChange.emit(this.isOpen);
-            });
         }
     }
     /**
@@ -102,45 +110,22 @@ export class AtSidePanelComponent {
         if (this.panelDialog && this.panelDialog.open) {
             this.panelDialog.close();
             this.isExpanded = false;
-            this.isOpen = false;
-            this.atuiSidepanelChange.emit(this.isOpen);
             this.panelDialog.classList.remove('backdrop');
         }
     }
-    /**
-     * Getter method for the open state of the side panel
-     * @returns The current open state of the side panel
-     */
-    async getIsOpen() {
-        return this.isOpen;
-    }
-    handleClose = () => {
-        this.closeSidePanel();
-    };
-    handleDialogClose = (event) => {
-        event.preventDefault();
-        if (this.isExpanded) {
-            this.closeSidePanel();
-        }
-    };
-    handleKeyDown = (event) => {
-        if (event.key === 'Escape' && this.isExpanded) {
-            event.preventDefault();
-            this.closeSidePanel();
-        }
-    };
     offClickHandler(event) {
-        if (!this.close_backdrop || !this.panelDialog?.open)
+        var _a, _b;
+        if (!this.close_backdrop || !((_a = this.panelDialog) === null || _a === void 0 ? void 0 : _a.open))
             return;
-        if (!this.sidePanelWrapper?.contains(event.target)) {
+        if (!((_b = this.sidePanelWrapper) === null || _b === void 0 ? void 0 : _b.contains(event.target))) {
             this.handleClose();
         }
     }
     async componentDidLoad() {
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`at-side-panel: No elements found with data-sidepanel="${this.trigger_id}"`);
+                console.warn(`atui-side-panel: No elements found with data-id="${this.trigger_id}"`);
                 return;
             }
             this.setupExternalTriggerListeners();
@@ -179,10 +164,16 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'cef39b813abf5475b4e36eaf48b784be38d8126e', "data-open": this.isOpen }, h("dialog", { key: 'daa0e2c1cb2955775063b77f2691fdc0b40a014a', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'ce0e0f6442272dccddad1a74beb7335dbbe6fd4b', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '3e7c076f08dcf519c5c453c848b6995b8e406638', class: "header", "data-name": "header" }, h("div", { key: '516e7bb0ec6fbe8b1dc76221f0155b242b0a30ac' }, this.panel_title && (h("h3", { key: 'd7aafeed24f326151bbbdffa86e5c1cbe564afb9', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'dc9eb06629cc90f20f0fc40f762569b5d360b77a', class: "subtitle" }, this.panel_subtitle))), this.has_close_button && (h("at-button", { key: '26d28c59c614e5a39c5ae0dad19a646619292d33', size: "md", icon: "close", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }))), h("div", { key: '812a2a36778735c8945a19c02ed1aa0a61c4cc51', "data-name": "content", class: "content" }, h("slot", { key: 'dcab4c9f635e0f7894f779434a0c381fcdddb2a6' }))))));
+        return (h("div", { key: '687df249deff8291f845e8070b815fe85463fc66' }, h("dialog", { key: '5f372a70657c0d46eed541cc94215672b6e80b88', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '71022502f2f996cdda58ddbdde1f93621ff15613', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, h("div", { key: '9e486b8271d251fa19e904d531d3537068789597', class: 'z-nav sticky top-0' }, h("at-header", { key: '4c9ef307ef8bf48591546501d94a33afa71e7db8', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (h("span", { key: '42842b4c8207c304427827173b20e3e74a4628ed', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, h("i", { key: 'e964540700858aa56b989fa9fdd3d4d2c343a47d', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), h("div", { key: '1ab4e90aedbbb56745f789a8cc07168f0fc810b0', class: 'flex w-full flex-1 flex-col' }, h("slot", { key: '3c2189d7454a0a464f6e51232a0e2c55e73e4c6a' }))))));
+    }
+    get panelClasses() {
+        return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
+        ${this.fixed ? panelVariants.fixed.true : panelVariants.fixed.false} ${!this.has_scrollbar ? panelVariants.noScrollbar : ''}`;
+    }
+    get sizeClasses() {
+        return `${sizeVariants.base} ${sizeVariants.size[this.size]}`;
     }
     static get is() { return "at-side-panel"; }
-    static get encapsulation() { return "scoped"; }
     static get originalStyleUrls() {
         return {
             "$": ["at-side-panel.scss"]
@@ -197,15 +188,16 @@ export class AtSidePanelComponent {
         return {
             "size": {
                 "type": "string",
+                "attribute": "size",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtSidePanelSize",
+                    "original": "SidePanelSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "AtSidePanelSize": {
+                        "SidePanelSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelSize"
+                            "id": "src/components/at-side-panel/at-side-panel.tsx::SidePanelSize"
                         }
                     }
                 },
@@ -217,12 +209,31 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true,
-                "attribute": "size",
+                "reflect": false,
                 "defaultValue": "'xs'"
+            },
+            "panel_id": {
+                "type": "string",
+                "attribute": "panel_id",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "ID of the panel"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false
             },
             "panel_title": {
                 "type": "string",
+                "attribute": "panel_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -237,11 +248,11 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "panel_title"
+                "reflect": false
             },
             "panel_subtitle": {
                 "type": "string",
+                "attribute": "panel_subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -256,20 +267,20 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "panel_subtitle"
+                "reflect": false
             },
             "origin": {
                 "type": "string",
+                "attribute": "origin",
                 "mutable": false,
                 "complexType": {
-                    "original": "AtSidePanelDirection",
+                    "original": "SidePanelDirection",
                     "resolved": "\"left\" | \"right\"",
                     "references": {
-                        "AtSidePanelDirection": {
+                        "SidePanelDirection": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelDirection"
+                            "id": "src/components/at-side-panel/at-side-panel.tsx::SidePanelDirection"
                         }
                     }
                 },
@@ -281,12 +292,12 @@ export class AtSidePanelComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true,
-                "attribute": "origin",
+                "reflect": false,
                 "defaultValue": "'right'"
             },
             "has_scrollbar": {
                 "type": "boolean",
+                "attribute": "has_scrollbar",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -297,16 +308,16 @@ export class AtSidePanelComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Enables scroll overflow on the sidepanel container"
+                    "text": "Puts a scrollbar on the sidepanel if set"
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true,
-                "attribute": "has_scrollbar",
+                "reflect": false,
                 "defaultValue": "true"
             },
             "has_close_button": {
                 "type": "boolean",
+                "attribute": "has_close_button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -322,57 +333,11 @@ export class AtSidePanelComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "has_close_button",
                 "defaultValue": "true"
-            },
-            "position": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "AtSidePanelPosition",
-                    "resolved": "\"absolute\" | \"fixed\"",
-                    "references": {
-                        "AtSidePanelPosition": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-side-panel/at-side-panel.tsx",
-                            "id": "src/components/at-side-panel/at-side-panel.tsx::AtSidePanelPosition"
-                        }
-                    }
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "If sidepanel should use fixed positioning (will fallback to absolute)"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": true,
-                "attribute": "position",
-                "defaultValue": "'fixed'"
-            },
-            "backdrop": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Whether to show a backdrop behind the panel, prevents any interaction with background UI."
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": true,
-                "attribute": "backdrop",
-                "defaultValue": "false"
             },
             "close_backdrop": {
                 "type": "boolean",
+                "attribute": "close_backdrop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -383,16 +348,56 @@ export class AtSidePanelComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Will close the sidepanel if clicked"
+                    "text": "Will close the sidepanel if clicked off when set"
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true,
-                "attribute": "close_backdrop",
+                "reflect": false,
+                "defaultValue": "false"
+            },
+            "fixed": {
+                "type": "boolean",
+                "attribute": "fixed",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "If sidepanel should used fixed positioning (otherwise absolute)"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "true"
+            },
+            "backdrop": {
+                "type": "boolean",
+                "attribute": "backdrop",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Whether to show a backdrop behind the panel"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
                 "defaultValue": "false"
             },
             "trigger_id": {
                 "type": "string",
+                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -403,38 +408,18 @@ export class AtSidePanelComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel."
+                    "text": "Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the side panel."
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "attribute": "trigger_id"
+                "reflect": false
             }
         };
     }
     static get states() {
         return {
-            "isExpanded": {},
-            "isOpen": {}
+            "isExpanded": {}
         };
-    }
-    static get events() {
-        return [{
-                "method": "atuiSidepanelChange",
-                "name": "atuiSidepanelChange",
-                "bubbles": true,
-                "cancelable": true,
-                "composed": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open"
-                },
-                "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
-                }
-            }];
     }
     static get methods() {
         return {
@@ -497,26 +482,6 @@ export class AtSidePanelComponent {
                             "text": "Promise that resolves when the panel is closed"
                         }]
                 }
-            },
-            "getIsOpen": {
-                "complexType": {
-                    "signature": "() => Promise<boolean>",
-                    "parameters": [],
-                    "references": {
-                        "Promise": {
-                            "location": "global",
-                            "id": "global::Promise"
-                        }
-                    },
-                    "return": "Promise<boolean>"
-                },
-                "docs": {
-                    "text": "Getter method for the open state of the side panel",
-                    "tags": [{
-                            "name": "returns",
-                            "text": "The current open state of the side panel"
-                        }]
-                }
             }
         };
     }
@@ -531,3 +496,4 @@ export class AtSidePanelComponent {
             }];
     }
 }
+//# sourceMappingURL=at-side-panel.js.map

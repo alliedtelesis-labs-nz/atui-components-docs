@@ -1,9 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtISelectOption } from '../../types/select';
+import { SelectOption } from '../../types/select';
 /**
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
- * @slot - Use this slot to manually add <at-select-option> elements in your HTML. Options added via slot will appear in the dropdown alongside those provided via the 'options' prop. Both methods support search, selection, and display together (options being display before the manually added).
  */
 export declare class AtSelectComponent {
     /**
@@ -13,7 +12,7 @@ export declare class AtSelectComponent {
     /**
      * Sets the options in the dropdown
      */
-    options: AtISelectOption[];
+    options: SelectOption[];
     /**
      * Label of the input.
      */
@@ -51,13 +50,13 @@ export declare class AtSelectComponent {
      */
     readonly?: boolean;
     /**
+     * Set the select input to be clearable. Only enabled on typeahead selects.
+     */
+    clearable?: boolean;
+    /**
      * Set the select to appear as a typeahead input.
      */
     typeahead?: boolean;
-    /**
-     * Set the select to allow clearing the selected value.
-     */
-    clearable?: boolean;
     /**
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
@@ -66,44 +65,27 @@ export declare class AtSelectComponent {
     searchText: string;
     isOpen: boolean;
     translations: any;
-    hasMatchingElOptions: boolean;
+    hasMatchingOptions: boolean;
     parentWidth: string;
-    filteredOptions: AtISelectOption[];
-    selectedLabel: string;
     el: HTMLElement;
     private menuId;
     private menuRef;
     private optionEls;
     private searchInputEl;
-    private slottedOptionLabels;
-    watchValue(newValue: string): void;
-    watchSearchText(newSearch: string): void;
-    watchFilterInputs(): void;
     /**
      * Emits an event containing the selected value when changed.
      */
     atuiChange: EventEmitter<string>;
-    componentWillLoad(): void;
+    componentWillLoad(): Promise<void>;
     componentDidLoad(): void;
-    private setupOptionElements;
-    addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
-    private filterOptions;
-    private filterSlottedContent;
     private updateIsOpenState;
     private handleChange;
     private handleClear;
     private handleKeyDownMenu;
     private handleSearchInput;
-    private isGroup;
-    private findOptionByValue;
-    private findLabelByValue;
-    get hasMatchingOptions(): boolean;
-    get hasAnyMatchingOptions(): boolean;
-    get hasAnyOptions(): boolean;
     render(): any;
     renderLabel(): any;
     renderInput(): any;
     renderOptions(): any;
-    private renderOption;
-    private renderGroupedOption;
+    renderOption(option: SelectOption): any;
 }

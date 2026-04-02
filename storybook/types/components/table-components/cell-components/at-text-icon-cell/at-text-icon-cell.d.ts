@@ -1,22 +1,22 @@
 import { ICellRendererComp } from 'ag-grid-community';
 import type { IconTextCellParams, ITooltipCell } from '../../../../types';
-export interface AtIconConfig {
+export interface IconConfig {
     iconName: string;
     iconClass?: string;
     tooltip?: string;
 }
-export interface AtITextIconCellData {
+export interface TextIconCellData {
     text?: string;
-    icons: AtIconConfig[];
+    icons: IconConfig[];
 }
-export interface AtITextIconCellParams extends IconTextCellParams, ITooltipCell {
+export interface ITextIconCellParams extends IconTextCellParams, ITooltipCell {
     text?: (data: any) => string;
     iconPosition?: 'before' | 'after';
-    icons: () => AtIconConfig[];
+    icons: () => IconConfig[];
 }
-type InitParams = AtITextIconCellParams;
+type InitParams = ITextIconCellParams;
 /**
- * @category Data Tables
+ * @category Table Cell
  * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
  */
 export declare class AtTextIconCell implements ICellRendererComp {

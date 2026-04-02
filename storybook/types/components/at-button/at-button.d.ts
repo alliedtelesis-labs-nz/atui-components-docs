@@ -1,8 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtLoadingType } from '../at-loading/at-loading';
+import { LoadingType } from '../at-loading/at-loading';
 import { AtEvent } from '../../types/events';
-export type AtButtonType = 'primary' | 'primaryOutline' | 'primaryText' | 'secondary' | 'secondaryOutline' | 'secondaryText' | 'destructive' | 'destructiveOutline' | 'destructiveText';
-export type AtButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonType = 'primary' | 'primaryOutline' | 'primaryText' | 'secondary' | 'secondaryOutline' | 'secondaryText' | 'destructive' | 'destructiveOutline' | 'destructiveText';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 /**
  * @category Actions
  * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
@@ -15,13 +15,13 @@ export declare class AtButtonComponent {
      */
     submit: boolean;
     /**
-     * Theme of the button. Default primary
+     * Styling of the button
      */
-    type: AtButtonType;
+    type: ButtonType;
     /**
      * Size of the button
      */
-    size: AtButtonSize;
+    size: ButtonSize;
     /**
      * Label to be displayed within the button
      */
@@ -52,7 +52,7 @@ export declare class AtButtonComponent {
      */
     atuiClick: EventEmitter<AtEvent>;
     canHideSpinner: boolean;
-    get spinnerColour(): AtLoadingType;
+    get spinnerColour(): LoadingType;
     private hideSpinnerIfAfterMinimumDisplayPeriod;
     private setSpinner;
     handleClick(event: Event): void;

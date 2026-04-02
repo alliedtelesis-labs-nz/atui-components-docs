@@ -1,1 +1,109 @@
-import{p as e,H as t,h as a,c as i,t as s}from"./p-CRwLX_Tp.js";import{d as n}from"./p-Dx2rLUrv.js";import{d as o}from"./p-DZRKv3xV.js";import{d as c}from"./p-BF-dG6Ah.js";import{d}from"./p-Dp0B4ohu.js";import{d as r}from"./p-BTLfRkyM.js";const h=e(class extends t{label;icon;badge;is_active;isSidebarOpen=!1;isAccordionOpen=!1;atuiAccordionItem;get el(){return this}constructor(e){super(),!1!==e&&this.__registerHost(),this.handleAtuiChange=this.handleAtuiChange.bind(this)}async componentDidLoad(){await this.updateInitialStates()}async componentDidUpdate(){await this.updateInitialStates()}async updateInitialStates(){const e=this.el.querySelector("at-accordion-item");e&&(this.isAccordionOpen=await e.getIsOpen());const t=this.el.closest("at-sidebar");t&&(this.isSidebarOpen=await t.getIsOpen())}handleAtuiChange(e){e.target===this.el.closest("at-sidebar")&&(this.isSidebarOpen=e.detail,!this.isSidebarOpen&&this.atuiAccordionItem&&this.atuiAccordionItem.closeAccordion())}handleAtuiAccordionChange(e){this.isAccordionOpen=e.detail}getIsActive(){return this.isSidebarOpen?!this.isAccordionOpen&&this.is_active:this.is_active}render(){return a(i,{key:"1435ce2c7d4e2b3dd465357b978392c64421d077"},a("at-accordion-item",{key:"c7c5c4e333a580f8a6ce9d2490db257329beec74",class:this.isSidebarOpen?"":"hidden","aria-hidden":!this.isSidebarOpen,ref:e=>this.atuiAccordionItem=e,item_id:this.label},(this.label||this.icon)&&a("at-sidebar-menuitem",{key:"0d942de5cd2e7dc123996ffd8635eb5ffd6348d9",slot:"accordion-trigger",icon:this.icon,label:this.label,badge:this.badge,is_active:this.getIsActive()},this.isSidebarOpen&&a("i",{key:"2ae12071f6a838f0b35241b9a45aec84b4adb5ce",slot:"sidebar-menu-item-actions",role:"presentation","aria-hidden":"true",class:"material-icons"},"keyboard_arrow_down")),a("div",{key:"7e1ab17b364029d16f06401f488baf99f64d1f38",class:"content"},a("slot",{key:"09d68a3e1e36535e92d69e78ebb01926c22ae8f5",name:"submenu-content"}))),a("at-menu",{key:"769d14d1fc69f9356415bd3f4eb7e756828d26e0",class:"hover-menu","data-name":"hover-menu",hidden:this.isSidebarOpen,"aria-hidden":this.isSidebarOpen,trigger:"hover",position:"right",align:"start",width:"200px"},a("at-sidebar-menuitem",{key:"770c204fcbc16c18d86b23f582cd76542f26284c",slot:"menu-trigger",icon:this.icon,badge:this.badge,label:this.label,is_active:this.getIsActive()}),a("div",{key:"d6aceb9d89516f9c55faf0d97b3f4e033410f402",class:"submenu-hover-content","data-name":"submenu-hover-content"},a("slot",{key:"12d0f4d089b3e6969c2ed9de65b85bbbef7871c4",name:"submenu-hover-content"}))))}static get style(){return":host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}"}},[772,"at-sidebar-submenu",{label:[1],icon:[1],badge:[1],is_active:[4],isSidebarOpen:[32],isAccordionOpen:[32],atuiAccordionItem:[32]},[[8,"atuiSidebarChange","handleAtuiChange"],[8,"atuiAccordionChange","handleAtuiAccordionChange"]]]),m=h,b=function(){"undefined"!=typeof customElements&&["at-sidebar-submenu","at-accordion-item","at-accordion-trigger","at-badge","at-menu","at-sidebar-menuitem"].forEach((e=>{switch(e){case"at-sidebar-submenu":customElements.get(s(e))||customElements.define(s(e),h);break;case"at-accordion-item":customElements.get(s(e))||n();break;case"at-accordion-trigger":customElements.get(s(e))||o();break;case"at-badge":customElements.get(s(e))||c();break;case"at-menu":customElements.get(s(e))||d();break;case"at-sidebar-menuitem":customElements.get(s(e))||r()}}))};export{m as AtSidebarSubmenu,b as defineCustomElement}
+import { p as proxyCustomElement, H, h, c as Host } from './p-Cv5ME95Z.js';
+import { d as defineCustomElement$6 } from './p-2_xEzlfW.js';
+import { d as defineCustomElement$5 } from './p-Jpa-oIRC.js';
+import { d as defineCustomElement$4 } from './p-DgHX4Tx7.js';
+import { d as defineCustomElement$3 } from './p-BvmILoSj.js';
+import { d as defineCustomElement$2 } from './p-BzBQLbq3.js';
+
+const AtSidebarSubmenuComponent = /*@__PURE__*/ proxyCustomElement(class AtSidebarSubmenuComponent extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.isSidebarOpen = false;
+        this.isAccordionOpen = false;
+        this.handleAtuiChange = this.handleAtuiChange.bind(this);
+    }
+    async componentDidLoad() {
+        await this.updateInitialStates();
+    }
+    async componentDidUpdate() {
+        await this.updateInitialStates();
+    }
+    async updateInitialStates() {
+        const accordionItem = this.el.querySelector('at-accordion-item');
+        if (accordionItem) {
+            this.isAccordionOpen = await accordionItem.getIsOpen();
+        }
+        const parentSidebar = this.el.closest('at-sidebar');
+        if (parentSidebar) {
+            this.isSidebarOpen = await parentSidebar.getIsOpen();
+        }
+    }
+    handleAtuiChange(event) {
+        const target = event.target;
+        const parentSidebar = this.el.closest('at-sidebar');
+        if (target === parentSidebar) {
+            this.isSidebarOpen = event.detail;
+            if (!this.isSidebarOpen && this.atuiAccordionItem) {
+                this.atuiAccordionItem.closeAccordion();
+            }
+        }
+    }
+    handleAtuiAccordionChange(event) {
+        this.isAccordionOpen = event.detail;
+    }
+    getIsActive() {
+        if (this.isSidebarOpen) {
+            return !this.isAccordionOpen && this.is_active;
+        }
+        return this.is_active;
+    }
+    render() {
+        return (h(Host, { key: '24692a40e2afed6e9cc60389428d4b6595e52ca2' }, h("at-accordion-item", { key: '7a7b164c3a4058bd669eaf234b596cb0c63f82e9', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: "one" }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: '5a263c7abf79f59174c3463e2b3fc09e607e8f2f', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("i", { key: '82e976d363f935af8ab0a875946813dfcc3f348f', slot: "menu-item-actions", role: "presentation", "aria-hidden": "true", class: "material-icons text-icon-md group-data-[state=expanded]/accordion-item:rotate-180" }, "keyboard_arrow_down")))), h("div", { key: '2c04cb903a1105c08f61ce4317293688fa8bf02b' }, h("slot", { key: 'ba0e9f539e9fd25fc6d9f9248e6e6d85f03b7e29', name: "submenu-content" }))), h("at-menu", { key: '85134a3c298880011594c62353d71f58e0b1a7cf', class: this.isSidebarOpen ? 'hidden' : 'w-menu', "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: this.isSidebarOpen ? '0' : 'w-menu' }, h("at-sidebar-menuitem", { key: '56fadb7df3fcd32fc96d1adfb54aeb14f9e633fc', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("slot", { key: '358a0ce91ac6c958b78af757a48aaaf67200eb2e', name: "submenu-hover-content" }))));
+    }
+    get el() { return this; }
+}, [260, "at-sidebar-submenu", {
+        "label": [1],
+        "icon": [1],
+        "badge": [1],
+        "is_active": [4],
+        "isSidebarOpen": [32],
+        "isAccordionOpen": [32],
+        "atuiAccordionItem": [32]
+    }, [[8, "atuiSidebarChange", "handleAtuiChange"], [8, "atuiAccordionChange", "handleAtuiAccordionChange"]]]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["at-sidebar-submenu", "at-accordion-item", "at-accordion-trigger", "at-badge", "at-menu", "at-sidebar-menuitem"];
+    components.forEach(tagName => { switch (tagName) {
+        case "at-sidebar-submenu":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, AtSidebarSubmenuComponent);
+            }
+            break;
+        case "at-accordion-item":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$6();
+            }
+            break;
+        case "at-accordion-trigger":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$5();
+            }
+            break;
+        case "at-badge":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$4();
+            }
+            break;
+        case "at-menu":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$3();
+            }
+            break;
+        case "at-sidebar-menuitem":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const AtSidebarSubmenu = AtSidebarSubmenuComponent;
+const defineCustomElement = defineCustomElement$1;
+
+export { AtSidebarSubmenu, defineCustomElement };
+//# sourceMappingURL=at-sidebar-submenu.js.map
+
+//# sourceMappingURL=at-sidebar-submenu.js.map

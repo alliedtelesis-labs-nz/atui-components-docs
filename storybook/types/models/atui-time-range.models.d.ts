@@ -1,37 +1,37 @@
-import { AtTimeUnit, AtITimeWithUnit } from '../types/time';
-import { AtIDateRangeStrings, TimeRangeDisplay } from '../types/date';
+import { TimeUnit, TimeWithUnit } from '../types/time';
+import { DateRangeStrings, TimeRangeDisplay } from '../types/date';
 export type TimePresets = {
-    unit: AtTimeUnit.MINUTES;
+    unit: TimeUnit.MINUTES;
     value: 5;
 } | {
-    unit: AtTimeUnit.MINUTES;
+    unit: TimeUnit.MINUTES;
     value: 30;
 } | {
-    unit: AtTimeUnit.HOURS;
+    unit: TimeUnit.HOURS;
     value: 1;
 } | {
-    unit: AtTimeUnit.HOURS;
+    unit: TimeUnit.HOURS;
     value: 6;
 } | {
-    unit: AtTimeUnit.HOURS;
+    unit: TimeUnit.HOURS;
     value: 12;
 } | {
-    unit: AtTimeUnit.HOURS;
+    unit: TimeUnit.HOURS;
     value: 24;
 } | {
-    unit: AtTimeUnit.DAYS;
+    unit: TimeUnit.DAYS;
     value: 7;
 } | {
-    unit: AtTimeUnit.MONTHS;
+    unit: TimeUnit.MONTHS;
     value: 1;
 } | {
-    unit: AtTimeUnit.MONTHS;
+    unit: TimeUnit.MONTHS;
     value: 6;
 } | {
-    unit: AtTimeUnit.YEARS;
+    unit: TimeUnit.YEARS;
     value: 1;
 } | {
-    unit: AtTimeUnit.YEARS;
+    unit: TimeUnit.YEARS;
     value: 5;
 };
 export declare enum AbreviatedTimeUnits {
@@ -56,8 +56,8 @@ export declare enum FullTimeUnits {
  * @deprecated please use onChange to receive SelectedTimeRangeExtended event
  */
 export interface SelectedTimeRange {
-    selected: AtITimeWithUnit | TimeRangeDisplay.CUSTOM;
-    custom?: AtIDateRangeStrings;
+    selected: TimeWithUnit | TimeRangeDisplay.CUSTOM;
+    custom?: DateRangeStrings;
 }
 type SelectedAllTimeRange = {
     selected: TimeRangeDisplay.ALL;

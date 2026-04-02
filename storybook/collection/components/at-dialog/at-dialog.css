@@ -1,35 +1,6 @@
-@keyframes fadeIn {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-}
-@keyframes animInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes animOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
 dialog.backdrop::backdrop {
-  margin: 0;
-  inset: 0;
   background: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
   animation: fadeIn 0.3s ease forwards;
   transition: opacity var(--token-transition-time) ease-in-out allow-discrete;
 }
@@ -38,18 +9,22 @@ dialog.backdrop::backdrop {
   z-index: var(--z-backdrop, 1000);
 }
 
-:host {
-  display: contents;
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
-:host dialog {
+.c-atui-dialog {
   position: fixed;
   inset: 0;
-  margin: 0;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100vw;
-  min-height: 100vh;
+  max-height: calc(100dvh - 48px);
   overflow: hidden;
   border: 0;
   padding: 0;
@@ -57,16 +32,19 @@ dialog.backdrop::backdrop {
   z-index: var(--token-z-index-modal);
   transform-origin: center;
   opacity: 0;
+  scale: 0.95;
   box-shadow: var(--token-shadow-3);
-  visibility: hidden;
   transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+  visibility: hidden;
 }
-:host dialog.backdrop {
+.c-atui-dialog::backdrop {
+  background: none;
+}
+.c-atui-dialog .backdrop-content {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  max-height: calc(100dvh - 48px);
 }
-:host dialog[open] {
+.c-atui-dialog[open] {
   translate: 0 0;
   scale: 1;
   opacity: 1;
@@ -74,11 +52,13 @@ dialog.backdrop::backdrop {
   transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;
 }
 @starting-style {
-  :host dialog[open] {
+  .c-atui-dialog[open] {
     opacity: 0;
+    scale: 1.15;
   }
 }
-:host dialog:not([open]) {
+.c-atui-dialog:not([open]) {
+  scale: 0.95;
   opacity: 0;
   visibility: hidden;
 }

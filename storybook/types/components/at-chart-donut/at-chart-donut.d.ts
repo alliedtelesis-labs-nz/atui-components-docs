@@ -1,7 +1,8 @@
-import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
-import { AtChartColorPalette } from '../../types/chart-color';
-export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
-export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
+import { ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
+import 'chartjs-adapter-moment';
+import { ChartColorPalette } from '../../types/chart-color';
+export type Height = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
+export type LegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization
  * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
@@ -22,11 +23,7 @@ export declare class AtChartDonut {
     /**
      * Height of the chart
      */
-    height?: AtChartHeight;
-    /**
-     * Position of the legend
-     */
-    legend_position: AtLegendPosition;
+    height?: Height;
     /**
      * Additional options for formatting the legend
      */
@@ -40,13 +37,17 @@ export declare class AtChartDonut {
      */
     plugins?: Plugin[];
     /**
+     * Animations added to the chart configuration
+     */
+    animations: object;
+    /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
      * 'sequential' : For charts with data that is numeric or is naturally ordered.
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette: AtChartColorPalette;
+    color_palette: ChartColorPalette;
     /**
      * Optional value text to display in the center of the donut chart
      */
@@ -63,16 +64,11 @@ export declare class AtChartDonut {
     cutout?: number;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
-    chart: Chart;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
-    /**
-     * Manually trigger a chart resize to fit container dimensions
-     */
-    resize(): Promise<void>;
     defaultPieTooltipOptions: {
         mode: string;
         intersect: boolean;

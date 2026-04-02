@@ -1,5 +1,10 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from '../../../types';
+import type { MessageRole } from '../../../types';
+export declare enum VoteStatus {
+    None = 0,
+    Up = 1,
+    Down = -1
+}
 /**
  * @category Prompt
  * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
@@ -9,7 +14,7 @@ export declare class AtPromptMessage {
     /**
      * The role/type of the message sender (only 'user' and 'assistant' are supported)
      */
-    role: AtPromptUserRole;
+    role: Exclude<MessageRole, 'system'>;
     /**
      * The message content text
      */
@@ -31,9 +36,9 @@ export declare class AtPromptMessage {
      */
     error_message: string;
     /**
-     * The current vote score of the message
+     * The current vote status of the message
      */
-    score: AtPromptResponseScore;
+    vote_status: VoteStatus;
     /**
      * Display voting actions for assistant messages
      */
@@ -50,13 +55,6 @@ export declare class AtPromptMessage {
      * Unique identifier for the message
      */
     message_id: string;
-    /**
-     * Animation type for text streaming effect
-     * - 'none': No animation (default)
-     * - 'fade': Fade in the entire message
-     * - 'words': Animate words appearing sequentially
-     */
-    response_animation: AtPromptResponseAnimation;
     /**
      * Emitted when the copy action is triggered
      */
@@ -78,14 +76,9 @@ export declare class AtPromptMessage {
     atEdit: EventEmitter<string>;
     translations: any;
     copyFeedbackVisible: boolean;
-    animatedContent: string;
-    isAnimating: boolean;
     errorEl: HTMLDivElement;
     el: HTMLAtInputElement;
     componentWillLoad(): Promise<void>;
-    watchContentChange(newContent: string): void;
-    private initializeContent;
-    private startWordAnimation;
     private handleCopy;
     private handleRetry;
     private handleEdit;

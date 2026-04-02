@@ -1,36 +1,20 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-i7hIKTeN.js');
 
 const AtChipList = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiRemoveChip = index.createEvent(this, "atRemoveChip", 6);
+        /**
+         * Shows the 'Clear All' button
+         */
+        this.show_clear_all = true;
+        /**
+         * Size of the chips. Determines padding and font-size. For use in input chip lists.
+         */
+        this.size = 'lg';
     }
-    /**
-     * Items in the chip list.
-     */
-    chips;
-    /**
-     * Disables the list of chips. Prevents removing a chip.
-     */
-    disabled;
-    /**
-     * Disables the list of chips but keeps the text readable. Prevents removing a chip.
-     */
-    readonly;
-    /**
-     * Shows the 'Clear All' button
-     */
-    show_clear_all = true;
-    /**
-     * Size of the chips. Determines padding and font-size. For use in input chip lists.
-     */
-    size = 'lg';
-    /**
-     * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
-     */
-    atuiRemoveChip;
     keyDownHandler(event, chipsToRemove) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -55,13 +39,16 @@ const AtChipList = class {
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, "cancel")))));
     }
     render() {
-        return (index.h("div", { key: '8466b45d9a94043b2400627369b2b3f4f0e5c0bc', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (index.h("div", { key: '5639ef30e04a14aaab2dd1fcd96e567e1efcfc00', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (index.h("at-button", { key: '3c0ca94beaccf55b49e0114eda5d638132ddfcfa', size: "sm", type: "secondaryText", icon: "backspace", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (index.h("at-button", { key: 'a3096f635ca3a91eefe2fa47ce1aa5637a0d242a', size: "sm", type: "secondaryText", label: "Clear All", "data-name": "clear-all", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } })), index.h("slot", { key: '8449396199dba66c9a90e452d1f78cc69db52ae5' })));
+            } })), index.h("slot", { key: '7a3a666b3e775415235107d05a9804c4a653e095' })));
     }
 };
 
 exports.at_chip_list = AtChipList;
+//# sourceMappingURL=at-chip-list.entry.cjs.js.map
+
+//# sourceMappingURL=at-chip-list.cjs.entry.js.map

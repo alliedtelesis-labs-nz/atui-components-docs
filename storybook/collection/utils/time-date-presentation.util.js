@@ -1,27 +1,20 @@
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat.js";
-import { AtTimeDateUtil } from "./at-time-date.util";
-import { isEmpty, replace } from "lodash-es";
-import { DateFormat, TimeRangeDisplay, TimeRangesInHours, } from "../types";
-dayjs.extend(customParseFormat);
+import moment from "moment";
+import momentDurationFormatSetup from "moment-duration-format";
+import { TimeDateUtil } from "./time-date.util";
+import { isEmpty, replace } from "lodash";
+import { DateFormat, Duration, TimeRangeDisplay, TimeRangesInHours, } from "../types";
+momentDurationFormatSetup(moment);
 export class TimeDatePresentationUtil {
-    static times = [
-        '12:00',
-        '01:00',
-        '02:00',
-        '03:00',
-        '04:00',
-        '05:00',
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-    ];
-    static timeMode = ['am', 'pm'];
     static buildDateFromStrings(fromDate, fromTime) {
-        return dayjs(`${fromDate} ${fromTime}`, 'YYYY-MM-DD hh:mm a').toDate();
+        const formattedDate = this.dateBuilder(fromDate);
+        return moment(`${formattedDate} ${fromTime}`, 'M/D/YYYY hh:mm a').toDate();
+    }
+    static dateBuilder(dateString) {
+        const date = new Date(dateString);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month}/${day}/${year}`;
     }
     static getDateLabelMessage(selectedTime, format) {
         if (!selectedTime) {
@@ -33,8 +26,10 @@ export class TimeDatePresentationUtil {
         }
         else {
             const time = TimeRangesInHours[selectedTime.selected];
-            const todayDate = dayjs().format(format);
-            const previousDate = dayjs().subtract(time, 'hours').format(format);
+            const todayDate = moment().format(format);
+            const previousDate = moment()
+                .subtract(time, Duration.HOURS)
+                .format(format);
             return `${previousDate} - ${todayDate}`;
         }
     }
@@ -44,7 +39,9 @@ export class TimeDatePresentationUtil {
         }
         if (TimeDatePresentationUtil.isCustomRange(timeRange)) {
             const { from, to } = timeRange.custom;
-            return { fromDate: new Date(from), toDate: new Date(to) };
+            const fromDate = moment(from).toDate();
+            const toDate = moment(to).toDate();
+            return { fromDate, toDate };
         }
     }
     static getTimeOptions(startTime = '12:00 am', endTime = '11:00 pm') {
@@ -78,16 +75,16 @@ export class TimeDatePresentationUtil {
     static convertTimeRange(timeRange) {
         if (TimeDatePresentationUtil.isCustomRange(timeRange)) {
             return {
-                start: new Date(timeRange.custom.from),
-                end: new Date(timeRange.custom.to),
+                start: moment(timeRange.custom.from).toDate(),
+                end: moment(timeRange.custom.to).toDate(),
             };
         }
         else if (timeRange.selected) {
             return {
-                start: dayjs()
-                    .subtract(TimeRangesInHours[timeRange.selected], 'hours')
+                start: moment()
+                    .subtract(TimeRangesInHours[timeRange.selected], 'hour')
                     .toDate(),
-                end: dayjs().toDate(),
+                end: moment().toDate(),
             };
         }
     }
@@ -97,15 +94,10 @@ export class TimeDatePresentationUtil {
     }
     static getIntervalFor30sPollerFromTimeRange(timeRange) {
         const { start, end } = TimeDatePresentationUtil.convertTimeRange(timeRange);
-        return AtTimeDateUtil.getDataPointIntervalFor30SecPoller(start, end);
+        return TimeDateUtil.getDataPointIntervalFor30SecPoller(start, end);
     }
     static getFormattedDate(date, dateFormat = DateFormat.STANDARD) {
-        if (!date)
-            return '';
-        const d = dayjs(date);
-        if (!d.isValid())
-            return '';
-        return d.format(dateFormat);
+        return date ? moment(date).format(dateFormat) : '';
     }
     static getDurationTranslations(translations) {
         const dayString = translations.ATUI.TIME.DURATION_SHORT.DAY;
@@ -117,10 +109,16 @@ export class TimeDatePresentationUtil {
         return [
             { unit: 'day', translation: dayString },
             { unit: 'days', translation: daysString },
-            { unit: 'hr', translation: hourString },
+            {
+                unit: 'hr',
+                translation: hourString,
+            },
             { unit: 'hrs', translation: hoursString },
             { unit: 'min', translation: minuteString },
-            { unit: 'mins', translation: minutesString },
+            {
+                unit: 'mins',
+                translation: minutesString,
+            },
         ];
     }
     static translateDurationString(duration, translations) {
@@ -139,23 +137,14 @@ export class TimeDatePresentationUtil {
         return translatedDurations.join(',');
     }
     static getIntervalString(start, end, translations) {
-        const ms = end.getTime() - start.getTime();
-        const totalSeconds = Math.floor(Math.abs(ms) / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const parts = [];
-        if (days > 0)
-            parts.push(`${days} days`);
-        if (hours > 0)
-            parts.push(`${hours} hrs`);
-        if (minutes > 0 || parts.length === 0)
-            parts.push(`${minutes} min`);
-        return TimeDatePresentationUtil.translateDurationString(parts.join(', '), translations);
+        const msDifference = moment(end).diff(moment(start));
+        const durationString = (moment.duration(msDifference, 'milliseconds')).format('d [days], h [hrs], m [min]');
+        return TimeDatePresentationUtil.translateDurationString(durationString, translations);
     }
     static getDayCountFromDateFilter(dateFilter) {
-        const ms = dateFilter.endDate.getTime() - dateFilter.startDate.getTime();
-        return ms / (1000 * 60 * 60 * 24);
+        const timeRangeFromDateFilter = dateFilter.endDate.getTime() - dateFilter.startDate.getTime();
+        const timeDiff = moment.duration(timeRangeFromDateFilter);
+        return timeDiff.asDays();
     }
     static getHourCountFromTimeRange(timeRange) {
         if (timeRange.selected == TimeRangeDisplay.CUSTOM) {
@@ -178,10 +167,22 @@ export class TimeDatePresentationUtil {
         }
     }
 }
+TimeDatePresentationUtil.times = [
+    '12:00',
+    '01:00',
+    '02:00',
+    '03:00',
+    '04:00',
+    '05:00',
+    '06:00',
+    '07:00',
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+];
+TimeDatePresentationUtil.timeMode = ['am', 'pm'];
 export class FlooredDateRange {
-    startDate;
-    endDate;
-    unit;
     constructor(startDate, endDate, unit) {
         this.startDate = startDate;
         this.endDate = endDate;
@@ -193,6 +194,7 @@ export class FlooredDateRange {
         return new FlooredDateRange(timeRange.start, timeRange.end, unit);
     }
     floorByMinutes(time) {
-        return AtTimeDateUtil.floorDateByTimeUnit(time, this.unit);
+        return TimeDateUtil.floorDateByTimeUnit(time, this.unit);
     }
 }
+//# sourceMappingURL=time-date-presentation.util.js.map

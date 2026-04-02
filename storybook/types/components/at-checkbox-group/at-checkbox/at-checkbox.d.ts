@@ -18,11 +18,11 @@ export declare class AtCheckbox {
     /**
      * Id of the checkbox.
      */
-    value?: string;
+    option_id?: string;
     /**
      * State of the checkbox
      */
-    checked?: boolean;
+    value?: boolean;
     /**
      * Disables interaction with the checkbox
      */
