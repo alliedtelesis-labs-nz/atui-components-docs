@@ -1,82 +1,65 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-CdUivN1V.js');
 
-const atSidePanelCss = "dialog.backdrop::backdrop{background:rgba(0, 0, 0, 0.2);transition:opacity 0.3s ease;animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop::backdrop{z-index:var(--z-backdrop, 1000)}@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}";
+const atSidePanelCss = () => `@keyframes fadeIn{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}dialog.backdrop.sc-at-side-panel::backdrop{margin:0;inset:0;background:rgba(0, 0, 0, 0.2);animation:fadeIn 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop.sc-at-side-panel::backdrop{z-index:var(--z-backdrop, 1000)}.sc-at-side-panel-h{--token-color-white-rgb:255, 255, 255;display:contents}.sc-at-side-panel-h .container.sc-at-side-panel{position:fixed;display:flex;flex-direction:column;z-index:var(--token-z-index-nav);min-width:var(--token-width-panel-xs);background-color:var(--token-color-white);box-shadow:var(--token-shadow-md);overflow-x:hidden;overflow-y:auto;height:100%;opacity:0;transition:all 300ms ease;will-change:transform, opacity}.sc-at-side-panel-h .container.width-xs.sc-at-side-panel{width:var(--token-width-panel-xs)}.sc-at-side-panel-h .container.width-sm.sc-at-side-panel{width:var(--token-width-panel-sm)}.sc-at-side-panel-h .container.width-md.sc-at-side-panel{width:var(--token-width-panel-md)}.sc-at-side-panel-h .container.width-lg.sc-at-side-panel{width:var(--token-width-panel-lg)}.sc-at-side-panel-h .container.width-xl.sc-at-side-panel{width:var(--token-width-panel-xl)}.sc-at-side-panel-h .container.origin-left.sc-at-side-panel{left:0;top:0;transform:translateX(-100%)}.sc-at-side-panel-h .container.origin-right.sc-at-side-panel{right:0;top:0;transform:translateX(100%)}.sc-at-side-panel-h .container.position-absolute.sc-at-side-panel{position:absolute}.sc-at-side-panel-h .container.sc-at-side-panel:not([data-scrollable]){overflow-y:hidden}.sc-at-side-panel-h .container[data-open].sc-at-side-panel{opacity:1;visibility:visible;transform:translateX(0)}.sc-at-side-panel-h .header.sc-at-side-panel{z-index:var(--token-z-index-nav);position:sticky;top:0;padding:12px 8px 12px 16px;display:flex;justify-content:space-between;align-items:flex-start;background-color:rgba(var(--token-color-white-rgb), 0.8);backdrop-filter:blur(10px)}.sc-at-side-panel-h .header.sc-at-side-panel div.sc-at-side-panel{display:flex;flex-direction:column;gap:2px}.sc-at-side-panel-h .header.sc-at-side-panel div.sc-at-side-panel .title.sc-at-side-panel{font-size:var(--token-font-size-h4);font-weight:var(--token-font-weight-med);color:var(--token-text-dark);line-height:1}.sc-at-side-panel-h .header.sc-at-side-panel div.sc-at-side-panel .subtitle.sc-at-side-panel{font-size:var(--token-font-size-sm);color:var(--token-text-light);line-height:1}.sc-at-side-panel-h .content.sc-at-side-panel{display:flex;flex-direction:column;flex-grow:1;width:100%}`;
 
-const panelVariants = {
-    base: 'z-nav !fixed h-full min-w-panel-xs bg-white transition-transform shadow-md',
-    origin: {
-        left: 'left-0 top-0',
-        right: 'right-0 top-0',
-    },
-    isExpanded: 'border-l-med border-l-2 transition-transform duration-[300ms] ease-[cubic-bezier(0.455,0.03,0.515,0.955)]',
-    fixed: {
-        true: 'fixed h-full top-0',
-        false: 'absolute h-full',
-    },
-    noScrollbar: 'overflow-y-hidden',
-};
-const sizeVariants = {
-    base: 'overflow-x-hidden overflow-y-auto h-full flex flex-col',
-    size: {
-        xs: 'w-panel-xs',
-        sm: 'w-panel-sm',
-        md: 'w-panel-md',
-        lg: 'w-panel-lg',
-        xl: 'w-panel-xl',
-    },
-};
 const AtSidePanelComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Size of the size panel
-         */
-        this.size = 'xs';
-        /**
-         *  Position of the side panel
-         */
-        this.origin = 'right';
-        /**
-         * Puts a scrollbar on the sidepanel if set
-         */
-        this.has_scrollbar = true;
-        /**
-         * Displays a close button if set
-         */
-        this.has_close_button = true;
-        /**
-         * Will close the sidepanel if clicked off when set
-         */
-        this.close_backdrop = false;
-        /**
-         * If sidepanel should used fixed positioning (otherwise absolute)
-         */
-        this.fixed = true;
-        /**
-         * Whether to show a backdrop behind the panel
-         */
-        this.backdrop = false;
-        this.isExpanded = false;
-        this.triggerEls = [];
-        this.externalTriggerListeners = [];
-        this.handleClose = () => {
-            this.closeSidePanel();
-        };
-        this.handleDialogClose = (event) => {
-            event.preventDefault();
-            if (this.isExpanded) {
-                this.closeSidePanel();
-            }
-        };
-        this.handleKeyDown = (event) => {
-            if (event.key === 'Escape' && this.isExpanded) {
-                event.preventDefault();
-                this.closeSidePanel();
-            }
-        };
+        this.atuiSidepanelChange = index.createEvent(this, "atuiSidepanelChange", 7);
     }
+    get el() { return index.getElement(this); }
+    /**
+     * Size of the size panel
+     */
+    size = 'xs';
+    /**
+     * Title displayed in the side panel
+     */
+    panel_title;
+    /**
+     * Subtitle displayed in the side panel
+     */
+    panel_subtitle;
+    /**
+     *  Position of the side panel
+     */
+    origin = 'right';
+    /**
+     * Enables scroll overflow on the sidepanel container
+     */
+    has_scrollbar = true;
+    /**
+     * Displays a close button if set
+     */
+    has_close_button = true;
+    /**
+     * If sidepanel should use fixed positioning (will fallback to absolute)
+     */
+    position = 'fixed';
+    /**
+     * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
+     */
+    backdrop = false;
+    /**
+     * Will close the sidepanel if clicked
+     */
+    close_backdrop = false;
+    /**
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
+     */
+    trigger_id;
+    isExpanded = false;
+    isOpen = false;
+    /**
+     * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
+     */
+    atuiSidepanelChange;
+    sidePanelWrapper;
+    panelDialog;
+    triggerEls = [];
+    externalTriggerListeners = [];
     /**
      * Toggles the side panel between open and closed states
      * @returns Promise that resolves when the panel state is toggled
@@ -95,11 +78,21 @@ const AtSidePanelComponent = class {
      */
     async openSidePanel() {
         if (this.panelDialog && !this.panelDialog.open) {
-            this.panelDialog.showModal();
-            this.isExpanded = true;
+            if (this.backdrop === true) {
+                this.panelDialog.showModal();
+            }
+            else {
+                this.panelDialog.show();
+            }
             if (this.backdrop) {
                 this.panelDialog.classList.add('backdrop');
             }
+            // Use requestAnimationFrame to delay the state change and apply css
+            requestAnimationFrame(() => {
+                this.isExpanded = true;
+                this.isOpen = true;
+                this.atuiSidepanelChange.emit(this.isOpen);
+            });
         }
     }
     /**
@@ -110,22 +103,45 @@ const AtSidePanelComponent = class {
         if (this.panelDialog && this.panelDialog.open) {
             this.panelDialog.close();
             this.isExpanded = false;
+            this.isOpen = false;
+            this.atuiSidepanelChange.emit(this.isOpen);
             this.panelDialog.classList.remove('backdrop');
         }
     }
+    /**
+     * Getter method for the open state of the side panel
+     * @returns The current open state of the side panel
+     */
+    async getIsOpen() {
+        return this.isOpen;
+    }
+    handleClose = () => {
+        this.closeSidePanel();
+    };
+    handleDialogClose = (event) => {
+        event.preventDefault();
+        if (this.isExpanded) {
+            this.closeSidePanel();
+        }
+    };
+    handleKeyDown = (event) => {
+        if (event.key === 'Escape' && this.isExpanded) {
+            event.preventDefault();
+            this.closeSidePanel();
+        }
+    };
     offClickHandler(event) {
-        var _a, _b;
-        if (!this.close_backdrop || !((_a = this.panelDialog) === null || _a === void 0 ? void 0 : _a.open))
+        if (!this.close_backdrop || !this.panelDialog?.open)
             return;
-        if (!((_b = this.sidePanelWrapper) === null || _b === void 0 ? void 0 : _b.contains(event.target))) {
+        if (!this.sidePanelWrapper?.contains(event.target)) {
             this.handleClose();
         }
     }
     async componentDidLoad() {
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-side-panel: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`at-side-panel: No elements found with data-sidepanel="${this.trigger_id}"`);
                 return;
             }
             this.setupExternalTriggerListeners();
@@ -164,20 +180,9 @@ const AtSidePanelComponent = class {
         });
     }
     render() {
-        return (index.h("div", { key: '687df249deff8291f845e8070b815fe85463fc66' }, index.h("dialog", { key: '5f372a70657c0d46eed541cc94215672b6e80b88', id: this.panel_id, ref: (el) => (this.panelDialog = el), class: this.backdrop ? 'backdrop' : '', onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '71022502f2f996cdda58ddbdde1f93621ff15613', class: `${this.panelClasses} ${this.sizeClasses}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "panel-wrapper" }, index.h("div", { key: '9e486b8271d251fa19e904d531d3537068789597', class: 'z-nav sticky top-0' }, index.h("at-header", { key: '4c9ef307ef8bf48591546501d94a33afa71e7db8', header_title: this.panel_title, subtitle: this.panel_subtitle }, this.has_close_button && (index.h("span", { key: '42842b4c8207c304427827173b20e3e74a4628ed', class: 'rounded-full hover:bg-gray-100', slot: 'actions' }, index.h("i", { key: 'e964540700858aa56b989fa9fdd3d4d2c343a47d', class: "material-icons md-16 top-20 right-16 cursor-pointer p-8 !text-[18px]", onClick: this.handleClose, "data-name": "panel-close" }, "close"))))), index.h("div", { key: '1ab4e90aedbbb56745f789a8cc07168f0fc810b0', class: 'flex w-full flex-1 flex-col' }, index.h("slot", { key: '3c2189d7454a0a464f6e51232a0e2c55e73e4c6a' }))))));
+        return (index.h(index.Host, { key: 'cef39b813abf5475b4e36eaf48b784be38d8126e', "data-open": this.isOpen }, index.h("dialog", { key: 'daa0e2c1cb2955775063b77f2691fdc0b40a014a', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: 'ce0e0f6442272dccddad1a74beb7335dbbe6fd4b', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} size-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, index.h("header", { key: '3e7c076f08dcf519c5c453c848b6995b8e406638', class: "header", "data-name": "header" }, index.h("div", { key: '516e7bb0ec6fbe8b1dc76221f0155b242b0a30ac' }, this.panel_title && (index.h("h3", { key: 'd7aafeed24f326151bbbdffa86e5c1cbe564afb9', class: "title" }, this.panel_title)), this.panel_subtitle && (index.h("p", { key: 'dc9eb06629cc90f20f0fc40f762569b5d360b77a', class: "subtitle" }, this.panel_subtitle))), this.has_close_button && (index.h("at-button", { key: '26d28c59c614e5a39c5ae0dad19a646619292d33', size: "md", icon: "close", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }))), index.h("div", { key: '812a2a36778735c8945a19c02ed1aa0a61c4cc51', "data-name": "content", class: "content" }, index.h("slot", { key: 'dcab4c9f635e0f7894f779434a0c381fcdddb2a6' }))))));
     }
-    get panelClasses() {
-        return `${panelVariants.base} ${panelVariants.origin[this.origin]} ${this.isExpanded ? panelVariants.isExpanded : ''} 
-        ${this.fixed ? panelVariants.fixed.true : panelVariants.fixed.false} ${!this.has_scrollbar ? panelVariants.noScrollbar : ''}`;
-    }
-    get sizeClasses() {
-        return `${sizeVariants.base} ${sizeVariants.size[this.size]}`;
-    }
-    get el() { return index.getElement(this); }
 };
-AtSidePanelComponent.style = atSidePanelCss;
+AtSidePanelComponent.style = atSidePanelCss();
 
 exports.at_side_panel = AtSidePanelComponent;
-//# sourceMappingURL=at-side-panel.entry.cjs.js.map
-
-//# sourceMappingURL=at-side-panel.cjs.entry.js.map

@@ -1,9 +1,13 @@
 import { h, Host } from "@stencil/core";
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying multiple buttons.
  */
 export class AtMultiBtnCell {
+    el;
+    params;
+    buttons;
+    containerStyles;
     init(params) {
         this.params = params;
         const { containerStyles, buttons } = this.params;
@@ -30,7 +34,7 @@ export class AtMultiBtnCell {
         });
     }
     render() {
-        return (h(Host, { key: '5e869e148e5c3ee3bd8984a022a6b4cec97c2942', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (h(Host, { key: '37007b4e125fa8f71c6eff614b978c40730bb896', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     static get is() { return "at-multi-btn-cell"; }
     static get states() {
@@ -42,4 +46,3 @@ export class AtMultiBtnCell {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-multi-btn-cell.js.map

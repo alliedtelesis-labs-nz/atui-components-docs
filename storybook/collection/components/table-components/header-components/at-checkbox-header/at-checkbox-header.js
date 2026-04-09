@@ -1,9 +1,13 @@
 import { h } from "@stencil/core";
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A header component for displaying a checkbox.
  */
 export class AtCheckboxHeaderComponent {
+    params;
+    disabled;
+    isChecked;
+    el;
     init(params) {
         this.params = params;
         this.params.width = 60;
@@ -33,8 +37,7 @@ export class AtCheckboxHeaderComponent {
         }
     }
     setDisabled() {
-        var _a;
-        if (!((_a = this.params) === null || _a === void 0 ? void 0 : _a.api))
+        if (!this.params?.api)
             return;
         const renderedNodes = this.params.api.getRenderedNodes();
         const data = renderedNodes.map((node) => node.data);
@@ -43,7 +46,7 @@ export class AtCheckboxHeaderComponent {
         }
     }
     render() {
-        return (h("at-checkbox", { key: 'd42e032330e3d1c19fe04a9c70fd4eac9b962863', disabled: this.disabled, value: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: 'ed87bcdb308f05ca0546c2273c6ac3874c702d1f', disabled: this.disabled, checked: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
     static get is() { return "at-checkbox-header"; }
     static get states() {
@@ -55,4 +58,3 @@ export class AtCheckboxHeaderComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-checkbox-header.js.map

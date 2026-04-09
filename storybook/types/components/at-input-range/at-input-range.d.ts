@@ -3,6 +3,7 @@ export type InputPosition = 'before' | 'after';
 /**
  * @category Form Controls
  * @description A range input component for selecting a value within a specified range.
+ * @slot label - Use this slot to provide a custom label for the input range component.
  */
 export declare class AtInputRangeComponent {
     /**

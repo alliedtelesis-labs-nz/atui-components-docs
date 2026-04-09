@@ -1,8 +1,10 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type InputType = 'text' | 'url' | 'email' | 'password';
+export type AtInputType = 'text' | 'url' | 'email' | 'password';
 /**
  * @category Form Controls
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
+ * @slot label -  Place before "form label" to add custom label content.
+ * @slot input-actions - Place inside the input container to add custom action elements (e.g., icons, buttons) next to the input field.
  */
 export declare class AtInputComponent {
     /**
@@ -12,7 +14,7 @@ export declare class AtInputComponent {
     /**
      * Type of the input
      */
-    type: InputType;
+    type: AtInputType;
     /**
      * Short description or validation hint if required
      */

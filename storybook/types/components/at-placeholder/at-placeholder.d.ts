@@ -1,4 +1,4 @@
-export type PlaceholderSize = 'xs' | 'sm' | 'md' | 'lg';
+export type AtPlaceholderSize = 'xs' | 'sm' | 'md' | 'lg';
 /**
  * @category Feedback
  * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
@@ -9,7 +9,7 @@ export declare class AtPlaceholderComponent {
     /**
      * Size of the placeholder
      */
-    size: PlaceholderSize;
+    size: AtPlaceholderSize;
     /**
      * Material icon to be displayed in the center of the placeholder
      */

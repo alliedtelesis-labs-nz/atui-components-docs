@@ -46,4 +46,3 @@ export const Slot = {
     },
     render: TemplateSlot,
 };
-//# sourceMappingURL=at-accordion.stories.js.map

@@ -1,20 +1,20 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
+import { f as fetchTranslations } from './translation-C11vpe5m.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/30 bg-white',
+            false: 'focus-within:ring-active-foreground/40 bg-white',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/30',
+            false: 'focus-within:ring-active-foreground/40',
             true: '!bg-surface-1 !text-dark cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
+            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/40',
             true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
         },
         typeahead: {
@@ -29,54 +29,195 @@ const inputVariantsConfig = {
         typeahead: false,
     },
 };
-const optionVariantsConfig = {
-    variants: {
-        active: {
-            true: 'bg-active-light text-active',
-            false: 'hover:bg-disabled-light bg-white',
-        },
-    },
-};
 const AtMultiSelectComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiChange = createEvent(this, "atuiChange", 7);
-        /**
-         * Label of the select.
-         */
-        this.label = '';
-        /**
-         * Short description or validation hint if required.
-         */
-        this.hint_text = '';
-        /**
-         * Error text for the select.
-         */
-        this.error_text = '';
-        /**
-         * Optional info icon with detailed tooltip description. Displayed at right of label.
-         */
-        this.info_text = '';
-        /**
-         * Placeholder text for the select.
-         */
-        this.placeholder = '';
-        /**
-         * The selected items
-         */
-        this.value = [];
-        this.searchText = '';
-        this.isOpen = false;
-        this.hasMatchingOptions = false;
-        this.parentWidth = '';
-        this.menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
     }
-    async componentWillLoad() {
-        this.translations = await fetchTranslations(this.el);
+    /**
+     * Options displayed in the dropdown menu.
+     */
+    options;
+    /**
+     * Label of the select.
+     */
+    label = '';
+    /**
+     * Short description or validation hint if required.
+     */
+    hint_text = '';
+    /**
+     * Error text for the select.
+     */
+    error_text = '';
+    /**
+     * Optional info icon with detailed tooltip description. Displayed at right of label.
+     */
+    info_text = '';
+    /**
+     * Placeholder text for the select.
+     */
+    placeholder = '';
+    /**
+     * Indicated form field is required.
+     */
+    required;
+    /**
+     * Set the select to appear invalid.
+     */
+    invalid;
+    /**
+     * Set the select to be clearable.
+     */
+    clearable;
+    /**
+     * Disable user interaction. Disabled state should be applied via form control.
+     */
+    disabled;
+    /**
+     * Set input to readonly mode, allows users to select any active values.
+     */
+    readonly;
+    /**
+     * Set the select to enable typeahead search.
+     */
+    typeahead;
+    /**
+     * The selected items
+     */
+    value = [];
+    searchText = '';
+    isOpen = false;
+    translations;
+    parentWidth = '';
+    hasMatchingElOptions = false;
+    filteredOptions = [];
+    get el() { return getElement(this); }
+    menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    menuRef;
+    optionEls = [];
+    searchInputEl;
+    slottedOptionLabels = new Map();
+    watchValue(newValue) {
+        const values = newValue ?? [];
+        this.optionEls.forEach((optionEl) => {
+            const shouldBeActive = values.includes(optionEl.value);
+            if (optionEl.is_active !== shouldBeActive) {
+                optionEl.is_active = shouldBeActive;
+            }
+        });
+    }
+    watchOptions() {
+        this.filteredOptions = this.filterOptions(this.options || []);
+    }
+    watchSearchText(newSearch) {
+        const trimmedSearch = newSearch.trim().toLowerCase();
+        if (this.options && this.options.length > 0) {
+            this.filteredOptions = this.filterOptions(this.options);
+            this.hasMatchingElOptions = this.filteredOptions.length > 0;
+            return;
+        }
+        this.filterSlottedContent(trimmedSearch);
+        this.hasMatchingElOptions = Array.from(this.optionEls).some((el) => el.style.display !== 'none');
+    }
+    /**
+     * Emits an event containing a list of the selected items when the selection changes.
+     */
+    atuiChange;
+    componentWillLoad() {
+        fetchTranslations(this.el).then((translations) => {
+            this.translations = translations;
+        });
     }
     componentDidLoad() {
+        this.setupOptionElements();
+        if (this.options && this.options.length > 0) {
+            this.filteredOptions = this.options;
+        }
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
+    }
+    filterOptions(options) {
+        const trimmedSearch = this.searchText.trim().toLowerCase();
+        if (!trimmedSearch)
+            return options;
+        return options
+            .map((option) => {
+            if (this.isGroup(option)) {
+                const filteredChildren = option.children.filter((child) => {
+                    const searchableText = (child.label || child.value).toLowerCase();
+                    return (searchableText.includes(trimmedSearch) ||
+                        child.value.toLowerCase().includes(trimmedSearch));
+                });
+                if (filteredChildren.length > 0) {
+                    return { ...option, children: filteredChildren };
+                }
+                return null;
+            }
+            const searchableText = (option.label || option.value).toLowerCase();
+            return searchableText.includes(trimmedSearch) ||
+                option.value.toLowerCase().includes(trimmedSearch)
+                ? option
+                : null;
+        })
+            .filter(Boolean);
+    }
+    filterSlottedContent(trimmedSearch) {
+        this.optionEls.forEach((optionEl) => {
+            const label = optionEl.label || optionEl.value;
+            const matches = !trimmedSearch ||
+                label.toLowerCase().includes(trimmedSearch) ||
+                optionEl.value.toLowerCase().includes(trimmedSearch);
+            optionEl.style.display = matches ? '' : 'none';
+        });
+        this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
+            const hasVisibleChild = Array.from(groupEl.querySelectorAll('at-select-option')).some((optionEl) => optionEl.style.display !== 'none');
+            groupEl.style.display = hasVisibleChild ? '' : 'none';
+        });
+    }
+    setupOptionElements() {
+        this.slottedOptionLabels.clear();
+        this.optionEls = [];
+        this.el.querySelectorAll('at-select-option').forEach((option) => {
+            const optionEl = option;
+            const label = optionEl.label;
+            if (label) {
+                this.slottedOptionLabels.set(optionEl.value, label);
+            }
+            optionEl.is_active = (this.value ?? []).includes(optionEl.value);
+            this.addListenerToOptionElements(optionEl);
+            this.optionEls.push(optionEl);
+        });
+    }
+    addListenerToOptionElements(optionEl) {
+        optionEl.addEventListener('atuiClick', (event) => {
+            this.handleChange(event.detail);
+        });
+    }
+    findOptionByValue(value) {
+        if (!value || !this.options || this.options.length === 0) {
+            return undefined;
+        }
+        const allOptions = this.options.flatMap((opt) => opt.children ? [opt, ...opt.children] : [opt]);
+        return allOptions.find((opt) => opt.value === value);
+    }
+    findLabelByValue(value) {
+        if (!value)
+            return '';
+        if (this.options && this.options.length > 0) {
+            const option = this.findOptionByValue(value);
+            return option?.label || value;
+        }
+        if (this.slottedOptionLabels.has(value)) {
+            return this.slottedOptionLabels.get(value);
+        }
+        return value;
+    }
+    getSelectedLabels() {
+        if (!this.value || !Array.isArray(this.value)) {
+            return [];
+        }
+        return this.value.map((val) => this.findLabelByValue(val));
     }
     updateIsOpenState(event) {
         this.isOpen = event.detail;
@@ -87,6 +228,9 @@ const AtMultiSelectComponent = class {
                 }
             });
         }
+        else if (!this.isOpen) {
+            this.searchText = '';
+        }
     }
     handleChange(option) {
         this.value = this.value.includes(option)
@@ -96,6 +240,10 @@ const AtMultiSelectComponent = class {
     }
     handleClear() {
         this.searchText = '';
+        if (this.searchInputEl) {
+            this.searchInputEl.value = '';
+            this.searchInputEl.focus();
+        }
     }
     async handleKeyDownMenu(event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -112,27 +260,49 @@ const AtMultiSelectComponent = class {
         handleHomeEndNavigation(event, menuContainer);
     }
     handleSearchInput(event) {
-        var _a;
         const inputEl = event.target;
-        this.searchText = inputEl.value.toLowerCase();
-        const trimmedSearch = this.searchText.trim().toLowerCase();
-        this.hasMatchingOptions = trimmedSearch
-            ? (_a = this.options) === null || _a === void 0 ? void 0 : _a.some((option) => option.value.toLowerCase().includes(trimmedSearch))
-            : true;
+        this.searchText = inputEl.value;
+    }
+    isGroup(option) {
+        return !!(option.children && option.children.length > 0);
+    }
+    handleRemoveChip(event) {
+        const removedLabels = event.detail;
+        const selectedLabels = this.getSelectedLabels();
+        const valuesToRemove = removedLabels
+            .map((label) => {
+            const idx = selectedLabels.indexOf(label);
+            return idx >= 0 ? this.value[idx] : null;
+        })
+            .filter(Boolean);
+        this.value = this.value.filter((v) => !valuesToRemove.includes(v));
+        this.atuiChange.emit(this.value);
+    }
+    get hasMatchingOptions() {
+        return this.filteredOptions.length > 0;
+    }
+    get hasAnyMatchingOptions() {
+        if (this.options && this.options.length > 0) {
+            return this.hasMatchingOptions;
+        }
+        return this.hasMatchingElOptions;
+    }
+    get hasAnyOptions() {
+        const result = (this.options && this.options.length > 0) ||
+            this.optionEls.length > 0;
+        return result;
     }
     render() {
-        return (h(Host, { key: '76cacca2a1c67893add4544dfeca4944f9a80182', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'b7e320d55949d773e6ba4c46c3d42316e286a31e', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
-                    this.handleClear();
                     setTimeout(async () => {
-                        var _a;
-                        await ((_a = this.menuRef) === null || _a === void 0 ? void 0 : _a.closeMenu());
+                        await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '6b13a41a3090891e8e4312937ff7dc618d93358b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled || !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '91a735203bebaf274f03ed5ade597d340b40e671', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '4271907f3b133521d599167c0f164f540165ce8f' }, this.error_text && this.invalid && (h("span", { key: '601cf1a98d849e5b0892655653339258a7c1244b', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '18387ce7dd6f4534d3ab91ba8e07949ec096e58d' }, this.error_text && this.invalid && (h("span", { key: '08f5fc1468277adb0ef10cccea3fdefe4528ad83', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -145,44 +315,67 @@ const AtMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        return (h("div", { class: classname, slot: "menu-trigger", tabindex: 0 }, h("div", null, h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => {
-                this.value = this.value.filter((item) => !event.detail.includes(item));
-                this.atuiChange.emit(this.value);
-            }, chips: this.value, "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder)))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
+        return (h("div", { class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0 }, h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
             ? 'arrow_drop_up'
             : 'arrow_drop_down'))))));
     }
     renderOptions() {
-        var _a, _b, _c, _d, _e;
         return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-input", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 outline-0 duration-300 ease-in-out focus:ring-2 ${this.clearable ? 'pr-24' : ''} `, placeholder: ((_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.SEARCH) || 'Search', name: "", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.clearable && this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { size: "sm", icon: "cancel", type: "secondaryText", onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
-                this.searchText = '';
-                this.searchInputEl.value = '';
-            }, "data-name": "multi-select-search-clear" }))))), (_c = this.options) === null || _c === void 0 ? void 0 :
-            _c.filter((option) => !this.searchText ||
-                option.value
-                    .toLowerCase()
-                    .includes(this.searchText)).map((option) => this.renderOption(option)), this.typeahead &&
+                this.handleClear();
+            }, onKeyDown: (e) => {
+                if (e.key === 'Escape') {
+                    return;
+                }
+                if (e.key === 'Enter' ||
+                    e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.handleClear();
+                    return;
+                }
+                e.stopPropagation();
+            }, "data-name": "multi-select-search-clear" }))))), this.filteredOptions
+            ?.map((option) => {
+            if (this.isGroup(option)) {
+                return this.renderGroupedOption(option);
+            }
+            return this.renderOption(option);
+        })
+            .filter(Boolean), h("slot", null), this.typeahead &&
             this.searchText &&
-            !this.hasMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, ((_e = (_d = this.translations) === null || _d === void 0 ? void 0 : _d.ATUI) === null || _e === void 0 ? void 0 : _e.NO_RESULTS_FOUND) ||
-            'No results found'))));
+            this.hasAnyOptions &&
+            !this.hasAnyMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && (h("div", { "data-name": "no-options-available", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            'No options available'))));
+    }
+    renderGroupedOption(option) {
+        if (!this.isGroup(option) ||
+            !option.children ||
+            option.children.length === 0) {
+            return null;
+        }
+        return (h("at-select-group", { key: option.value, label: option.label || option.value }, option.children.map((child) => (h("at-select-option", { key: child.value, value: child.value, label: child.label || child.value, disabled: child.disabled, is_active: this.value.includes(child.value), "data-name": "multi-select-option", option_group: true, onAtuiClick: () => this.handleChange(child.value) })))));
     }
     renderOption(option) {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full cursor-pointer items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset', optionVariantsConfig);
-        const classname = getOptionClassname({
-            active: this.value.includes(option.value),
-        });
-        return (h("li", { role: "option", "data-name": "multi-select-option", "aria-selected": this.value.includes(option.value), tabIndex: 0, class: classname, onClick: () => this.handleChange(option.value) }, option.value));
+        return (h("at-select-option", { key: option.value, value: option.value, label: option.label || option.value, disabled: option.disabled, is_active: this.value.includes(option.value), "data-name": "multi-select-option", onAtuiClick: () => this.handleChange(option.value) }));
     }
-    get el() { return getElement(this); }
+    static get watchers() { return {
+        "value": [{
+                "watchValue": 0
+            }],
+        "options": [{
+                "watchOptions": 0
+            }],
+        "searchText": [{
+                "watchSearchText": 0
+            }]
+    }; }
 };
 
 export { AtMultiSelectComponent as at_multi_select };
-//# sourceMappingURL=at-multi-select.entry.js.map
-
-//# sourceMappingURL=at-multi-select.entry.js.map

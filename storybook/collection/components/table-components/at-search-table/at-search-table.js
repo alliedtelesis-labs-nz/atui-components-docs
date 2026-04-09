@@ -1,5 +1,6 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
+import { SortDirection } from "../../../types/sort";
 /**
  * @category Data Tables
  * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
@@ -7,57 +8,129 @@ import { fetchTranslations } from "../../../utils/translation";
  * @slot multi-select-actions - Used to place actions related to row selection
  */
 export class AtSearchTable {
-    constructor() {
-        /**
-         * Column definitions passed to at-table component.
-         */
-        this.col_defs = [];
-        /**
-         * Default page size of the table
-         */
-        this.page_size = 10;
-        /**
-         * If true, disables pagination on the table and shows all data at once.
-         * Useful for server-side pagination where you want to control pagination externally.
-         */
-        this.use_custom_pagination = false;
-        /**
-         * If true, enables automatic column resizing to fit available space.
-         * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
-         */
-        this.auto_size_columns = true;
-        this.tableCreated = false;
-        this.isInitialized = false;
-        this.activeFilters = {};
-        this.selectedFilters = [];
-        this.menuSelectedIds = [];
-        this.searchValue = '';
-    }
+    /**
+     * Table data passed to at-table component.
+     */
+    table_data;
+    /**
+     * Label for the table, appears above the search input.
+     */
+    label;
+    /**
+     * Label for the search input.
+     */
+    search_label;
+    /**
+     * Hint text displayed below the search label.
+     */
+    search_hint;
+    /**
+     * Info text displayed in the search info tooltip.
+     */
+    search_info_tooltip;
+    /**
+     * Column definitions passed to at-table component.
+     */
+    col_defs = [];
+    /**
+     * Default page size of the table
+     */
+    page_size = 10;
+    /**
+     * If true the table dropdown filters will not be added
+     */
+    hide_dropdown_filters;
+    /**
+     * If true the column manager will not be added
+     */
+    hide_column_manager;
+    /**
+     * If true the table export menu will not be added
+     */
+    hide_export_menu;
+    /**
+     * If true, hides CSV export option from export menu
+     */
+    hide_csv_export = false;
+    /**
+     * If true, hides PDF export option from export menu
+     */
+    hide_pdf_export = false;
+    /**
+     * If true, disables pagination on the table and shows all data at once.
+     *
+     * This only applies for client-side filtering mode. When `server_side_mode` is enabled,
+     * the component always loads the <at-table-pagination> UI for pagination, regardless of this setting.
+     */
+    use_custom_pagination = false;
+    /**
+     * If true, enables automatic column resizing to fit available space.
+     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     */
+    auto_size_columns = true;
+    /**
+     * If true, enables server-side data loading mode where filtering,
+     * searching, and pagination are handled externally
+     */
+    server_side_mode = false;
+    /**
+     * If true, displays a loading placeholder and hides table content.
+     * Used for server-side data fetching to indicate loading state.
+     */
+    loading = false;
+    /**
+     * Event emitted when search params change in server-side mode.
+     * Contains filters, search text, pagination info
+     */
+    atSearchParamsChange;
+    /**
+     * Event emitted when CSV export is requested
+     */
+    atExportCsv;
+    /**
+     * Event emitted when PDF export is requested
+     */
+    atExportPdf;
+    el;
+    translations;
+    agGrid;
+    tableCreated = false;
+    activeFilters = {};
+    selectedFilters = [];
+    menuSelectedIds = [];
+    searchValue = '';
+    currentPage = 1;
+    pageSize = this.page_size || 10;
+    tableEl;
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
             this.col_defs &&
-            this.col_defs.length > 0 &&
-            this.isInitialized);
+            this.col_defs.length > 0);
     }
     get shouldShowColumnManager() {
         return (!this.hide_column_manager &&
             this.col_defs &&
-            this.col_defs.length > 0 &&
-            this.isInitialized);
+            this.col_defs.length > 0);
+    }
+    get totalPages() {
+        return Math.max(1, Math.ceil((this.table_data?.total || 0) / this.pageSize));
     }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
-        this.updateActiveFilters();
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
-        this.isInitialized = true;
     }
     async componentDidLoad() {
         await this.initGrid();
+        if (this.server_side_mode && this.agGrid) {
+            this.emitSearchParamsChange();
+        }
     }
     async componentDidUpdate() {
-        await this.initGrid();
+        if (!this.tableCreated) {
+            await this.initGrid();
+        }
     }
     /**
      * Updates the data of rows in the AG Grid based on their displayed row index.
@@ -91,12 +164,12 @@ export class AtSearchTable {
             const displayedRow = displayedRows.find((row) => row.rowIndex === index);
             if (displayedRow) {
                 displayedRow.updateData(update);
-                if (options === null || options === void 0 ? void 0 : options.flash) {
+                if (options?.flash) {
                     this.agGrid.flashCells({ rowNodes: [displayedRow] });
                 }
                 this.agGrid.refreshCells({
                     rowNodes: [displayedRow],
-                    force: (options === null || options === void 0 ? void 0 : options.forceRefresh) || false,
+                    force: options?.forceRefresh || false,
                 });
             }
         });
@@ -114,12 +187,16 @@ export class AtSearchTable {
         return this.agGrid.getRenderedNodes();
     }
     async initGrid() {
-        var _a;
         if (this.col_defs && !this.tableCreated && this.tableEl) {
             this.agGrid = await this.tableEl.createGrid();
             this.tableCreated = true;
             this.setupExternalFilters();
-            if ((_a = this.table_data) === null || _a === void 0 ? void 0 : _a.items) {
+            this.agGrid.addEventListener('sortChanged', () => {
+                if (this.server_side_mode) {
+                    this.emitSearchParamsChange();
+                }
+            });
+            if (this.table_data?.items) {
                 this.agGrid.setGridOption('rowData', this.table_data.items);
             }
         }
@@ -127,13 +204,16 @@ export class AtSearchTable {
     setupExternalFilters() {
         if (!this.agGrid)
             return;
+        if (this.server_side_mode) {
+            return;
+        }
         this.agGrid.setGridOption('isExternalFilterPresent', () => {
             return Object.keys(this.activeFilters).length > 0;
         });
         this.agGrid.setGridOption('doesExternalFilterPass', (node) => {
             if (!node.data)
                 return true;
-            const searchValue = this.activeFilters['__search__'];
+            const searchValue = this.searchValue;
             if (searchValue) {
                 const searchLower = searchValue.toLowerCase();
                 const matchesSearch = this.col_defs.some((colDef) => {
@@ -195,7 +275,7 @@ export class AtSearchTable {
         const { id, checked } = event.detail;
         const updatedColDefs = this.col_defs.map((colDef) => {
             if (colDef.field === id) {
-                return Object.assign(Object.assign({}, colDef), { hide: !checked });
+                return { ...colDef, hide: !checked };
             }
             return colDef;
         });
@@ -240,48 +320,104 @@ export class AtSearchTable {
         }
     }
     updateActiveFilters() {
-        // Keep existing search value in activeFilters - it's managed by handleSearchChange
-        const currentSearch = this.activeFilters['__search__'];
-        this.activeFilters = {};
-        // Restore search if it exists
-        if (currentSearch) {
-            this.activeFilters['__search__'] = currentSearch;
-        }
+        this.activeFilters = this.col_defs.reduce((acc, col) => {
+            acc[col.field] = '';
+            return acc;
+        }, {});
         this.selectedFilters.forEach((filter) => {
             if (filter.value) {
                 this.activeFilters[filter.id] = filter.value;
             }
         });
-        if (this.searchValue) {
-            this.activeFilters['__search__'] = this.searchValue;
-        }
-        if (this.agGrid) {
-            this.setupExternalFilters();
-            this.agGrid.onFilterChanged();
+        if (this.server_side_mode) {
+            this.emitSearchParamsChange();
         }
         else {
-            console.log('agGrid not available, cannot apply filter');
+            if (this.agGrid) {
+                this.setupExternalFilters();
+                this.agGrid.onFilterChanged();
+            }
+            else {
+                console.log('agGrid not available, cannot apply filter');
+            }
         }
     }
     handleSearchChange(event) {
         this.searchValue = event.detail || '';
-        if (this.searchValue) {
-            this.activeFilters['__search__'] = this.searchValue;
-        }
-        else {
-            delete this.activeFilters['__search__'];
-        }
         this.updateActiveFilters();
     }
+    handlePageChange(event) {
+        this.currentPage = event.detail;
+        this.emitSearchParamsChange();
+    }
+    handlePageSizeChange(event) {
+        this.pageSize = event.detail;
+        this.currentPage = 1;
+        this.emitSearchParamsChange();
+    }
+    emitSearchParamsChange() {
+        if (!this.agGrid)
+            return;
+        const startRow = (this.currentPage - 1) * this.pageSize;
+        const endRow = this.currentPage * this.pageSize;
+        const columnState = this.agGrid.getColumnState();
+        const sortedColumn = columnState.find((col) => col.sort !== null && col.sort !== undefined);
+        const visibleColumns = columnState
+            .filter((col) => !col.hide)
+            .map((col) => col.colId);
+        const hasPopulatedFieldFilter = Object.values(this.activeFilters).some((v) => v !== '');
+        let direction;
+        if (sortedColumn?.sort === 'asc') {
+            direction = SortDirection.ASC;
+        }
+        else if (sortedColumn?.sort === 'desc') {
+            direction = SortDirection.DESC;
+        }
+        else {
+            direction = SortDirection.ASC;
+        }
+        const searchParams = {
+            columns: visibleColumns,
+            globalFilter: this.searchValue,
+            ...(hasPopulatedFieldFilter
+                ? { fieldFilters: this.activeFilters }
+                : {}),
+            startRow: startRow,
+            endRow: endRow,
+            sort: sortedColumn?.colId ?? '',
+            direction,
+        };
+        this.atSearchParamsChange.emit(searchParams);
+    }
+    handleExport(event) {
+        const exportType = event.detail;
+        if (exportType === 'CSV') {
+            this.atExportCsv.emit({
+                start: (this.currentPage - 1) * this.pageSize,
+                end: this.currentPage * this.pageSize,
+            });
+        }
+        else if (exportType === 'PDF') {
+            const columnDetails = this.col_defs
+                .filter((col) => !col.hide)
+                .map((col) => ({
+                field: col.field,
+                displayName: col.headerName || col.field,
+                actualWidth: col.width,
+            }));
+            this.atExportPdf.emit(columnDetails);
+        }
+    }
     render() {
-        return (h(Host, { key: '2da4bf009f957131bf3ad99644c77a4933c6aea5' }, h("at-table-actions", { key: 'd38f422484109d09d468982ea80605d727b52e10', ag_grid: this.agGrid }, h("div", { key: '1d5cda16792cfb23e52e4663612197f3ea8ce6f7', class: "flex items-center gap-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '92fc36c775ce20d172ff2429233db9d09c4c46f8', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd49135b66e09ad46861125b886a45adfd580aa04', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '4226babd78fe29223a5e13c0b4b649fcb9537611', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '189b7b41025e962ac264ae0cdc01e63195d72c11', slot: "export-menu" })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'eff0f8025a4d39e3792411321ef841e3729c28fb', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'fb7f2915ecd9c6751b5742a430eb50c46775045c', slot: "actions" }, h("slot", { key: '72f36b4ccec8ed1916b7a8e6428aa2b2d4e3f668', name: "actions" }))), h("slot", { key: '17f8b5d307fb812594eebea08b1ab858dcadb386', name: "multi-select-actions" }), h("at-table", { key: 'b44c107845f5e0058f6509c99cc18b81b61ffe84', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true, auto_size_columns: this.auto_size_columns })));
+        return (h(Host, { key: 'd365d54836c5305fe434855dcb595cf00b516b0c' }, h("at-table-actions", { key: 'f9b044c074e60db6579406edbd1985c497536204', ag_grid: this.agGrid }, h("div", { key: 'fc8b83fae3f99fff5bac3553db56282e0acb1c99', class: "flex items-center gap-8 px-8", slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '6177b32830c84f285c6ee2c14b6e3271d0e318a4', slot: "filter-menu", col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd03c3226f3e6add08fb8e9ad83e35799588e9d6d', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '1b65fb9e449a1e553c3456a61be8b3e30d371dce', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'ff13b17f769e6e3722b06261ea52f4d4490ea2f3', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'c710e684963175876bcf3ec24c179ca7ea9be905', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '02055bbba01b0b569c82aac880ffadf38b522687', slot: "actions" }, h("slot", { key: 'b2c0edf27364c9cefc016fa1a888bbcfb02e6a2d', name: "actions" }))), h("slot", { key: '1cee10d347a627c970a66bece8dc44453927522e', name: "multi-select-actions" }), this.loading && this.server_side_mode ? (h("at-placeholder", { size: "lg", placeholder_title: this.translations?.ATUI?.TABLE?.LOADING_DATA, show_loading_spinner: true })) : (h("at-table", { ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+                ? this.pageSize
+                : this.page_size, use_custom_pagination: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode })), this.server_side_mode && (h("at-table-pagination", { key: 'a417d7da0f87743a200c9182e0bf1df0be926546', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get properties() {
         return {
             "table_data": {
                 "type": "unknown",
-                "attribute": "table_data",
                 "mutable": false,
                 "complexType": {
                     "original": "{\n        items: any[];\n        total: number;\n    }",
@@ -299,7 +435,6 @@ export class AtSearchTable {
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -314,11 +449,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "search_label": {
                 "type": "string",
-                "attribute": "search_label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -333,11 +468,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_label"
             },
             "search_hint": {
                 "type": "string",
-                "attribute": "search_hint",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -352,11 +487,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_hint"
             },
             "search_info_tooltip": {
                 "type": "string",
-                "attribute": "search_info_tooltip",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -371,11 +506,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "search_info_tooltip"
             },
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -384,7 +519,8 @@ export class AtSearchTable {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
+                            "referenceLocation": "ColDef"
                         }
                     }
                 },
@@ -400,7 +536,6 @@ export class AtSearchTable {
             },
             "page_size": {
                 "type": "number",
-                "attribute": "page_size",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -416,11 +551,11 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "page_size",
                 "defaultValue": "10"
             },
             "hide_dropdown_filters": {
                 "type": "boolean",
-                "attribute": "hide_dropdown_filters",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -435,11 +570,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_dropdown_filters"
             },
             "hide_column_manager": {
                 "type": "boolean",
-                "attribute": "hide_column_manager",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -454,11 +589,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_column_manager"
             },
             "hide_export_menu": {
                 "type": "boolean",
-                "attribute": "hide_export_menu",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -473,11 +608,11 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide_export_menu"
             },
-            "use_custom_pagination": {
+            "hide_csv_export": {
                 "type": "boolean",
-                "attribute": "use_custom_pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -488,16 +623,56 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true, disables pagination on the table and shows all data at once.\nUseful for server-side pagination where you want to control pagination externally."
+                    "text": "If true, hides CSV export option from export menu"
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "hide_csv_export",
+                "defaultValue": "false"
+            },
+            "hide_pdf_export": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, hides PDF export option from export menu"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "hide_pdf_export",
+                "defaultValue": "false"
+            },
+            "use_custom_pagination": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, disables pagination on the table and shows all data at once.\n\nThis only applies for client-side filtering mode. When `server_side_mode` is enabled,\nthe component always loads the <at-table-pagination> UI for pagination, regardless of this setting."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             },
             "auto_size_columns": {
                 "type": "boolean",
-                "attribute": "auto_size_columns",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -513,7 +688,48 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto_size_columns",
                 "defaultValue": "true"
+            },
+            "server_side_mode": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, enables server-side data loading mode where filtering,\nsearching, and pagination are handled externally"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "server_side_mode",
+                "defaultValue": "false"
+            },
+            "loading": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "If true, displays a loading placeholder and hides table content.\nUsed for server-side data fetching to indicate loading state."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "loading",
+                "defaultValue": "false"
             }
         };
     }
@@ -522,12 +738,82 @@ export class AtSearchTable {
             "translations": {},
             "agGrid": {},
             "tableCreated": {},
-            "isInitialized": {},
             "activeFilters": {},
             "selectedFilters": {},
             "menuSelectedIds": {},
-            "searchValue": {}
+            "searchValue": {},
+            "currentPage": {},
+            "pageSize": {}
         };
+    }
+    static get events() {
+        return [{
+                "method": "atSearchParamsChange",
+                "name": "atSearchParamsChange",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Event emitted when search params change in server-side mode.\nContains filters, search text, pagination info"
+                },
+                "complexType": {
+                    "original": "AtISearchTableParams",
+                    "resolved": "AtISearchTableParams",
+                    "references": {
+                        "AtISearchTableParams": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtISearchTableParams",
+                            "referenceLocation": "AtISearchTableParams"
+                        }
+                    }
+                }
+            }, {
+                "method": "atExportCsv",
+                "name": "atExportCsv",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Event emitted when CSV export is requested"
+                },
+                "complexType": {
+                    "original": "AtIPaginationParams",
+                    "resolved": "AtIPaginationParams",
+                    "references": {
+                        "AtIPaginationParams": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIPaginationParams",
+                            "referenceLocation": "AtIPaginationParams"
+                        }
+                    }
+                }
+            }, {
+                "method": "atExportPdf",
+                "name": "atExportPdf",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Event emitted when PDF export is requested"
+                },
+                "complexType": {
+                    "original": "AtIColumnDetails[]",
+                    "resolved": "AtIColumnDetails[]",
+                    "references": {
+                        "AtIColumnDetails": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIColumnDetails",
+                            "referenceLocation": "AtIColumnDetails"
+                        }
+                    }
+                }
+            }];
     }
     static get methods() {
         return {
@@ -595,7 +881,8 @@ export class AtSearchTable {
                         "IRowNode": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::IRowNode",
+                            "referenceLocation": "IRowNode"
                         },
                         "T": {
                             "location": "global",
@@ -625,4 +912,3 @@ export class AtSearchTable {
             }];
     }
 }
-//# sourceMappingURL=at-search-table.js.map

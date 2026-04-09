@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, h, H as Host } from './index-CkS36Ijo.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const avatarVariantsConfig = {
     variants: {
@@ -22,26 +22,42 @@ const avatarVariantsConfig = {
 const AtAvatar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Size of the avatar
-         */
-        this.size = 'md';
-        /**
-         * Visual variant of the avatar
-         */
-        this.variant = 'secondary';
     }
+    /**
+     * URL for the avatar image
+     *
+     * Recommended cropped image sizes for optimal display:
+     * - sm:24x24px
+     * - md:32x32px
+     * - lg:40x40px
+     *
+     * Higher resolution images (2x display size) are recommended for crisp display on high-DPI screens.
+     */
+    src;
+    /**
+     * Alt text for the avatar image
+     */
+    alt;
+    /**
+     * Initials text to display when no image is provided
+     */
+    initials;
+    /**
+     * Size of the avatar
+     */
+    size = 'md';
+    /**
+     * Visual variant of the avatar
+     */
+    variant = 'secondary';
     render() {
         const getClasses = classlist('flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium select-none', avatarVariantsConfig);
         const classes = getClasses({
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: 'e7a1be2d60e1f7b2ea6c9d6f4fc6c2a222d7866e', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'f9660584c6cdd043d06add4fc330d72d5ff6fb9b', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '6b488220828172b9f7571c24428d58b3452830a5', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '2052d8989b1d6d4f1c4a71d1ece4cef83bc5276c' })));
+        return (h(Host, { key: '761d5dab75334d2a9e3703213f1c2637e4f12e72', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '8d41f242a96fa61ee18c8d926464d6192b1cae93', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '4711ef7769892c9a49f2c71599b8893a3848145b', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '8e8ec4de3a2b11e1181b64fbef3942459ec2582c' })));
     }
 };
 
 export { AtAvatar as at_avatar };
-//# sourceMappingURL=at-avatar.entry.js.map
-
-//# sourceMappingURL=at-avatar.entry.js.map

@@ -1,3 +1,3 @@
-export interface CSSProperties {
+export interface AtICSSProperties {
     [key: string]: string;
 }

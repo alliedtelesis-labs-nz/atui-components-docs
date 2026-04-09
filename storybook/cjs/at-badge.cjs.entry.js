@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
+var index = require('./index-CdUivN1V.js');
 
 const badgeVariants = {
     base: 'inline-block rounded-[4px] font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
@@ -31,23 +31,31 @@ const badgeVariants = {
 const AtBadgeComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        /**
-         * Type of the badge. Determines colour theming.
-         */
-        this.type = 'default';
-        /**
-         * Size of the badge. Determines padding and font-size. For use in input chip lists.
-         */
-        this.size = 'lg';
-        /**
-         * Impact of the badge, changes the colours.
-         */
-        this.impact = 'low';
-        /**
-         * Boolean value to round the edges of the badge.
-         */
-        this.rounded = false;
     }
+    /**
+     * Icon appearing to the left of the badge title. MUST use mat-icon name.
+     */
+    icon;
+    /**
+     * Title shown on the badge.
+     */
+    label;
+    /**
+     * Type of the badge. Determines colour theming.
+     */
+    type = 'default';
+    /**
+     * Size of the badge. Determines padding and font-size. For use in input chip lists.
+     */
+    size = 'lg';
+    /**
+     * Impact of the badge, changes the colours.
+     */
+    impact = 'low';
+    /**
+     * Boolean value to round the edges of the badge.
+     */
+    rounded = false;
     get baseClasses() {
         return `${badgeVariants.base} ${this.rounded ? badgeVariants.rounded : ''}`;
     }
@@ -58,11 +66,8 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: 'a2c58da60ba433f545ffcf37ef20b2317cce0ec3', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (index.h("i", { key: 'a70fb88f9272b2f1dd0341a6314940c808446a39', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), index.h("span", { key: 'c0801e6eeac6ada1b208715563b674ab9d5dda7a', "data-name": "badge-label" }, this.label), index.h("slot", { key: '9f9731447b5f5c6d5a267e2bc8efa7c676500f1d' })));
+        return (index.h(index.Host, { key: '1f61405b88a08cd90e8301c7738d3bd8bb1ae5b5', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (index.h("i", { key: 'dfdd1a4bdbf6d69717438dac917ab5cd4ea918dd', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), index.h("span", { key: '5e98850a7da250437097388a8cf92d4f5eb43ef9', "data-name": "badge-label" }, this.label), index.h("slot", { key: 'eec5131e5d17caf3bf5b9ae78ce11134f5f1835a' })));
     }
 };
 
 exports.at_badge = AtBadgeComponent;
-//# sourceMappingURL=at-badge.entry.cjs.js.map
-
-//# sourceMappingURL=at-badge.cjs.entry.js.map

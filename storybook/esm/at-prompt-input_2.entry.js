@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { f as fetchTranslations } from './translation-DuLooPsr.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
-import { V as VoteStatus } from './at-prompt-message-_HwDinsw.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
+import { f as fetchTranslations } from './translation-C11vpe5m.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
+import { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
 
 const promptInputContainerVariants = classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
@@ -48,36 +48,71 @@ const AtPromptInputComponent = class {
         this.atSubmit = createEvent(this, "atSubmit", 7);
         this.atStop = createEvent(this, "atStop", 7);
         this.atFocus = createEvent(this, "atFocus", 7);
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = 'Enter your message...';
-        /**
-         * Maximum height in pixels for auto-resize
-         */
-        this.max_height = 240;
-        /**
-         * Maximum character length with counter display
-         */
-        this.max_length = 2000;
-        /**
-         * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
-         */
-        this.in_progress = false;
-        /**
-         * The value of the input
-         */
-        this.value = '';
-        /**
-         * Disable input interactions and apply visual indication
-         */
-        this.disabled = false;
-        this.invalid = false;
-        /**
-         * @slot label - Custom label content (alternative to using the label prop)
-         */
-        this.inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = 'Enter your message...';
+    /**
+     * Maximum height in pixels for auto-resize
+     */
+    max_height = 240;
+    /**
+     * Maximum character length with counter display
+     */
+    max_length = 2000;
+    /**
+     * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
+     */
+    in_progress = false;
+    /**
+     * The value of the input
+     */
+    value = '';
+    /**
+     * Disable input interactions and apply visual indication
+     */
+    disabled = false;
+    textareaEl;
+    translations;
+    invalid = false;
+    get el() { return getElement(this); }
+    /**
+     * Emits when the value changes
+     */
+    atChange;
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emits when the input receives focus
+     */
+    atFocus;
+    /**
+     * @slot label - Custom label content (alternative to using the label prop)
+     */
+    inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -125,7 +160,7 @@ const AtPromptInputComponent = class {
         else if (this.value && this.value.trim() !== '' && !this.invalid) {
             this.atSubmit.emit(this.value.trim());
             this.value = '';
-            this.invalid = false; // Reset invalid state when message is sent
+            this.invalid = false;
             setTimeout(() => {
                 this.autoResize();
                 this.focusInput();
@@ -144,58 +179,84 @@ const AtPromptInputComponent = class {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '83ddc5b458b88f683b397c5e8ea1fbd45900ea56', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '8f959e58d77d01bf3d5435ad917a88587da77650', class: "flex flex-col" }, h("slot", { key: 'efbb4436d76b7a7cfba09b31a4738c08c52486c9', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '8165dd5235ec8fa8db1cffc42c67921d01e9e005', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '2e40e2a247fbb863f17c49e9436d1015d36445ec', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'aa1c90b8a0f85918872235286db1ddaf3e10b327', class: containerClass }, h("textarea", { key: '73086dc3c9daef8d4daf6b7938d35f0782b8f39a', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (h(Host, { key: 'f180b479713b2117bd46520d5a221c06899cf1e3', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '2195473e15bc788d617045e12d6d1dccf8a7b6d7', class: "flex flex-col" }, h("slot", { key: '60ae5ff402ebc849044e0c06cd47fc577fd4d7d5', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '6408e7503367f1ea1250f2297c333b2d1cccf91f', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '1ddc98f4cfa26604fc7813f4eecb4453be896d64', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: '71960b2b9a44cbb2a16addc1873d75f1d196cc01', class: containerClass }, h("textarea", { key: '9634103b285445561d98e20e05233b72664b11b3', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
-                overflow: 'hidden',
-            }, "data-name": "prompt-input" }), h("div", { key: '193fb252cd2dadcb982b88113e610a6c2128560f', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'd4e41c321954e527bb81bcc472d045538318f84d', class: "flex items-center gap-4" }, h("slot", { key: '5d8c5dbd5bedf4d9eb191242a8f9d38134b7cd83', name: "actions-left" })), h("div", { key: '33059fb3494abe8066f8bbe778df110c9d4e856a', class: "flex items-center gap-4 self-end" }, h("slot", { key: '9c03bfce1aa5e274a722257b18537f4f4ca349b7', name: "actions-right" }), h("at-button", { key: '5542d45d78720fbd79b21cdfcd5637c8fcdeac51', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+                overflow: 'auto',
+            }, "data-name": "prompt-input" }), h("div", { key: 'd9cfad91d2aab9ded2124803addeeea4a3d226dc', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: '85ce096fac63498567cf46ec7c5b460d0cfb5971', class: "flex items-center gap-4" }, h("slot", { key: '1d2157054370047f04061ae6536594fb3f222e09', name: "actions-left" })), h("div", { key: '8104b211e8a6276e9fa8544defe477fd8bf40517', class: "flex items-center gap-4 self-end" }, h("slot", { key: 'c00b876d358ec9d5e36bdec1fb21730d8c01aec3', name: "actions-right" }), h("at-button", { key: '2dc2a84030c5afbc3a67eb15e532192021399bb1', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), h("slot", { key: '62235cdf56406d7068ebd04c426ee61721178baf', name: "footer" }), this.invalid && (h("span", { key: 'c730faacb68703bdffb92969baedbd532a3afdce', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), h("slot", { key: '0a6c4e9c6babb669fa672df3df89a0a83fd025bb', name: "footer" }), this.invalid && (h("span", { key: '3373e4551eb431427590987110c39fe81d8e7920', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
-    get el() { return getElement(this); }
 };
 
 const AtPromptThread = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.atMessageCopy = createEvent(this, "atMessageCopy", 7);
-        this.atMessageRetry = createEvent(this, "atMessageRetry", 7);
-        this.atMessageEdit = createEvent(this, "atMessageEdit", 7);
-        this.atMessageVote = createEvent(this, "atMessageVote", 7);
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Shows a loading indicator for incoming messages
-         */
-        this.loading = false;
-        /**
-         * Automatically scroll to the bottom when new messages are added
-         */
-        this.auto_scroll = true;
-        /**
-         * Display name for chatbot/assistant messages
-         */
-        this.chatbot_title = 'Assistant';
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
+        this.atThreadMessageCopy = createEvent(this, "atThreadMessageCopy", 7);
+        this.atThreadMessageRetry = createEvent(this, "atThreadMessageRetry", 7);
+        this.atThreadMessageEdit = createEvent(this, "atThreadMessageEdit", 7);
+        this.atThreadMessageVote = createEvent(this, "atThreadMessageVote", 7);
     }
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Shows a loading indicator for incoming messages
+     */
+    loading = false;
+    /**
+     * Automatically scroll to the bottom when new messages are added
+     */
+    auto_scroll = true;
+    /**
+     * Display name for chatbot/assistant messages
+     */
+    chatbot_title = 'Assistant';
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation (default)
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atThreadMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atThreadMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atThreadMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atThreadMessageVote;
+    /**
+     * @slot messages - Custom message content (alternative to using the messages prop)
+     */
+    scrollContainer;
     componentDidUpdate() {
         if (this.auto_scroll && this.scrollContainer) {
             this.scrollToBottom();
@@ -242,19 +303,21 @@ const AtPromptThread = class {
         });
     }
     handleVote(event) {
-        event.stopPropagation();
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { vote_status: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
-            this.atMessageVote.emit(event.detail);
+            this.atThreadMessageVote.emit(event.detail);
         }
     }
     handleMessageCopy(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageCopy.emit({
+            this.atThreadMessageCopy.emit({
                 messageId: this.messages[messageIndex].id,
                 content: event.detail,
             });
@@ -263,7 +326,7 @@ const AtPromptThread = class {
     handleMessageRetry(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageRetry.emit({
+            this.atThreadMessageRetry.emit({
                 messageId: this.messages[messageIndex].id,
             });
         }
@@ -271,7 +334,7 @@ const AtPromptThread = class {
     handleMessageEdit(event) {
         const messageIndex = this.getMessageIndexFromEvent(event);
         if (messageIndex !== -1) {
-            this.atMessageEdit.emit({
+            this.atThreadMessageEdit.emit({
                 messageId: this.messages[messageIndex].id,
                 content: event.detail,
             });
@@ -287,25 +350,23 @@ const AtPromptThread = class {
     renderLoadingIndicator() {
         if (!this.loading)
             return null;
-        return (h("div", { class: "flex flex-col gap-16", "data-name": "loading-container" }, h("at-prompt-message", { role: "assistant", content: "Typing...", name: this.chatbot_title, loading: true, "data-name": "loading-message" })));
+        return (h("div", { class: "flex flex-col gap-16", "data-name": "loading-container" }, h("at-prompt-message", { role: 'assistant', content: "Typing...", name: this.chatbot_title, loading: true, "data-name": "loading-message" })));
     }
     renderMessage(message, index) {
-        const role = message.role === 'system' ? 'assistant' : message.role;
+        const role = message.role;
         const name = message.role === 'user'
             ? message.name
             : message.name || this.chatbot_title;
-        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, vote_status: message.vote_status || VoteStatus.None, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": `message-${index}`, "data-message-index": index }));
+        const animate = message.role === 'assistant' ? this.response_animation : 'fade';
+        return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || AtPromptResponseScore.NONE, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: animate, "data-name": `message-${index}`, "data-message-index": index }));
     }
     renderMessages() {
         return this.messages.map((message, index) => this.renderMessage(message, index));
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '12893c4c4c837592ce7a4a725559c77bcf6c9e68', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'a2db6eb7aae901e200331a20fab4b47aefe7bb50', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '55d0e60716732a5fa59840afb68a6db9e3b63d53', name: "thread-messages" }))));
+        return (h(Host, { key: '6bb35040e9f40d8dc572e71ce25a15aa0f85a7ea', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'a5f8cbcf9feafb069f481fe968be3ad3b2e11eb8', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '4a6da328e91613c81c760495c620816575ab86ce', name: "thread-messages" }))));
     }
 };
 
 export { AtPromptInputComponent as at_prompt_input, AtPromptThread as at_prompt_thread };
-//# sourceMappingURL=at-prompt-input.at-prompt-thread.entry.js.map
-
-//# sourceMappingURL=at-prompt-input_2.entry.js.map

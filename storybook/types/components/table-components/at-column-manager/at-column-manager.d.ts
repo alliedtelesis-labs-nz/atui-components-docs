@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef } from 'ag-grid-community';
-export interface ColumnManagerChangeEvent {
+export interface AtIColumnManagerChangeEvent {
     id: string;
     checked: boolean;
 }
@@ -20,7 +20,7 @@ export declare class AtColumnManagerComponent {
      *
      * Emitted when checkbox is clicked
      */
-    atChange: EventEmitter<ColumnManagerChangeEvent>;
+    atChange: EventEmitter<AtIColumnManagerChangeEvent>;
     changeHandler(event: CustomEvent<string[]>): void;
     render(): any;
 }

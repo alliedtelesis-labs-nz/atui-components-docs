@@ -1,9 +1,8 @@
-import { ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
-import 'chartjs-adapter-moment';
-import { SelectedTimeRangeExtended } from '../../components';
-import { Height } from '../at-chart-donut/at-chart-donut';
-import { ChartColorPalette } from '../../types/chart-color';
-export interface PointStyles {
+import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
+import { AtSelectedTimeRangeExtended } from '../../models/at-time-range.models';
+import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
+import { AtChartColorPalette } from '../../types/chart-color';
+export interface AtIPointStyles {
     pointBackgroundColor: Color;
     pointBorderColor: Color;
     pointBorderWidth: number;
@@ -16,7 +15,7 @@ export interface PointStyles {
     pointRotaion: number;
     pointStyle: PointStyle;
 }
-export interface Threshold {
+export interface AtIThreshold {
     label: string;
     data: (number | Point | [number, number] | BubbleDataPoint)[];
     color?: string;
@@ -89,21 +88,22 @@ export declare class AtChartBarLine {
     /**
      * Thresholds to be displayed in the chart
      */
-    thresholds?: Threshold[];
+    thresholds?: AtIThreshold[];
     /**
      * Styles for the points in the chart
      */
-    point_styles?: PointStyles;
+    point_styles?: AtIPointStyles;
     /**
      * The time range that the chart is displayed in.
      */
-    time_range?: SelectedTimeRangeExtended;
+    time_range?: AtSelectedTimeRangeExtended;
     /**
      * Height of the chart.
      */
-    height?: Height;
+    height?: AtChartHeight;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
+    chart: Chart;
     /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
@@ -111,7 +111,7 @@ export declare class AtChartBarLine {
      * 'alert' : For charts that relate to health state. Note that data requires a specific order.
      * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
      */
-    color_palette: ChartColorPalette;
+    color_palette: AtChartColorPalette;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -127,10 +127,14 @@ export declare class AtChartBarLine {
     componentDidLoad(): void;
     pointStylesSetup(): void;
     applyPresetPalette(colors: string[]): void;
-    getMinMaxDateStrings(timeRange: SelectedTimeRangeExtended): {
+    getMinMaxDateStrings(timeRange: AtSelectedTimeRangeExtended): {
         min: string;
         max: string;
     };
     formatThresholds: () => ChartDataset[];
+    /**
+     * Manually trigger a chart resize to fit container dimensions.
+     */
+    resize(): Promise<void>;
     render(): any;
 }

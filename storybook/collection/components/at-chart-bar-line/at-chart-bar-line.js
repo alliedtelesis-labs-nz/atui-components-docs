@@ -1,8 +1,7 @@
 import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
-import "chartjs-adapter-moment";
-import { TimeDateUtil } from "../../utils/time-date.util";
-import { ChartColorPalette } from "../../types/chart-color";
+import { AtTimeDateUtil } from "../../utils/at-time-date.util";
+import { AtChartColorPalette } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const heightVariants = {
     xs: 'h-[70px]',
@@ -41,43 +40,64 @@ const heightVariants = {
  * ```
  */
 export class AtChartBarLine {
-    constructor() {
-        /**
-         * Height of the chart.
-         */
-        this.height = 'md';
-        /**
-         * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
-         * 'categorical' : For charts with data that have distinct labels and no natural order
-         * 'sequential' : For charts with data that is numeric or is naturally ordered.
-         * 'alert' : For charts that relate to health state. Note that data requires a specific order.
-         * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
-         */
-        this.color_palette = ChartColorPalette.CATEGORICAL;
-        this.formatThresholds = () => {
-            if (!this.thresholds) {
-                return [];
-            }
-            const datasets = [];
-            this.thresholds.forEach((threshold) => {
-                datasets.push({
-                    type: 'line',
-                    label: threshold.label,
-                    borderColor: threshold.color,
-                    borderCapStyle: 'butt',
-                    backgroundColor: 'white',
-                    fill: false,
-                    data: threshold.data,
-                    pointRadius: 0,
-                    borderDash: threshold.dashLine ? [6, 3] : undefined,
-                    tension: 0,
-                    stepped: threshold.stepped,
-                    order: 1,
-                });
-            });
-            return datasets;
-        };
-    }
+    /**
+     * Type of the chart
+     */
+    type;
+    /**
+     * Data to go in the chart. ChartDataset properties found
+     * [here for line](https://www.chartjs.org/docs/latest/charts/line.html),
+     * and [here for bar](https://www.chartjs.org/docs/latest/charts/bar.html)
+     */
+    data;
+    /**
+     * X axis formatting to be applied to the chart.
+     * If you would like the default formatting provided by chart.js, set this to an empty object.
+     */
+    x_axis_format;
+    /**
+     * Y axis formatting to be applied to the chart.
+     */
+    y_axis_format;
+    /**
+     * Additional options to go into the 'options' seciont of the chart configuration
+     */
+    options;
+    /**
+     * Options for the tooltips on the chart
+     */
+    tooltip_options;
+    /**
+     * Options for the legend
+     */
+    legend_format;
+    /**
+     * Thresholds to be displayed in the chart
+     */
+    thresholds;
+    /**
+     * Styles for the points in the chart
+     */
+    point_styles;
+    /**
+     * The time range that the chart is displayed in.
+     */
+    time_range;
+    /**
+     * Height of the chart.
+     */
+    height = 'auto';
+    canvasEl;
+    config;
+    chart;
+    /**
+     * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
+     * 'categorical' : For charts with data that have distinct labels and no natural order
+     * 'sequential' : For charts with data that is numeric or is naturally ordered.
+     * 'alert' : For charts that relate to health state. Note that data requires a specific order.
+     * 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+     */
+    color_palette = AtChartColorPalette.CATEGORICAL;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -100,7 +120,10 @@ export class AtChartBarLine {
                 labels: this.data.labels,
                 datasets: [...this.data.datasets, ...this.formatThresholds()],
             },
-            options: Object.assign(Object.assign({ devicePixelRatio: 2, maintainAspectRatio: false, scales: {
+            options: {
+                devicePixelRatio: 2,
+                maintainAspectRatio: false,
+                scales: {
                     y: this.y_axis_format || {
                         beginAtZero: true,
                         type: 'linear',
@@ -125,7 +148,9 @@ export class AtChartBarLine {
                             minRotation: 0,
                         },
                     },
-                } }, this.options), { plugins: {
+                },
+                ...this.options,
+                plugins: {
                     tooltip: this.tooltip_options || {
                         mode: 'index',
                         intersect: false,
@@ -148,12 +173,15 @@ export class AtChartBarLine {
                         },
                         display: true,
                     },
-                }, clip: false, elements: {
+                },
+                clip: false,
+                elements: {
                     line: {
                         tension: 0,
                         borderWidth: 2,
                     },
-                } }),
+                },
+            },
         };
         if (this.time_range) {
             const dates = this.getMinMaxDateStrings(this.time_range);
@@ -181,35 +209,72 @@ export class AtChartBarLine {
     }
     pointStylesSetup() {
         this.data.datasets = this.data.datasets.map((dataset) => {
-            return Object.assign(Object.assign({}, dataset), this.point_styles);
+            return {
+                ...dataset,
+                ...this.point_styles,
+            };
         });
     }
     applyPresetPalette(colors) {
-        if (this.color_palette === ChartColorPalette.CUSTOM) {
+        if (this.color_palette === AtChartColorPalette.CUSTOM) {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset, index) => {
             const color = colors[index % colors.length];
-            return Object.assign(Object.assign({}, dataset), { backgroundColor: color, borderColor: color });
+            return {
+                ...dataset,
+                backgroundColor: color,
+                borderColor: color,
+            };
         });
     }
     getMinMaxDateStrings(timeRange) {
         const timeWithUnit = timeRange.selected;
         const custom = timeRange.custom
-            ? TimeDateUtil.getAbsoluteDateRange(timeRange.custom)
+            ? AtTimeDateUtil.getAbsoluteDateRange(timeRange.custom)
             : null;
-        const { startDate, endDate } = TimeDateUtil.getDateRange(custom, timeWithUnit, null);
+        const { startDate, endDate } = AtTimeDateUtil.getDateRange(custom, timeWithUnit, null);
         return { min: startDate.toString(), max: endDate.toString() };
     }
+    formatThresholds = () => {
+        if (!this.thresholds) {
+            return [];
+        }
+        const datasets = [];
+        this.thresholds.forEach((threshold) => {
+            datasets.push({
+                type: 'line',
+                label: threshold.label,
+                borderColor: threshold.color,
+                borderCapStyle: 'butt',
+                backgroundColor: 'white',
+                fill: false,
+                data: threshold.data,
+                pointRadius: 0,
+                borderDash: threshold.dashLine ? [6, 3] : undefined,
+                tension: 0,
+                stepped: threshold.stepped,
+                order: 1,
+            });
+        });
+        return datasets;
+    };
+    /**
+     * Manually trigger a chart resize to fit container dimensions.
+     */
+    async resize() {
+        if (this.chart) {
+            this.chart.resize();
+        }
+    }
     render() {
-        return (h(Host, { key: 'bb7bf7c9e71cee7f92f6f24a38546d66f9004415', style: { height: '100%', width: '100%' } }, h("section", { key: '1609d4caf4e79a64b594019849adb10c1a2c7e02', class: `min-w-100 ${heightVariants[this.height]}` }, h("canvas", { key: '1f172edcb98e0af504039af00d96255dea8b0534', ref: (el) => (this.canvasEl = el) }))));
+        return (h(Host, { key: '7bdfca4b374d0115c02fa78e10b2641d01f7d05d', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b76ec2594fc79767d1423b371f489de70f9d8298', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "'bar' | 'line'",
@@ -224,11 +289,11 @@ export class AtChartBarLine {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "type"
             },
             "data": {
                 "type": "unknown",
-                "attribute": "data",
                 "mutable": true,
                 "complexType": {
                     "original": "{\n        labels: string[];\n        datasets: ChartDataset[];\n    }",
@@ -237,7 +302,8 @@ export class AtChartBarLine {
                         "ChartDataset": {
                             "location": "import",
                             "path": "chart.js",
-                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset"
+                            "id": "../node_modules/chart.js/dist/types.d.ts::ChartDataset",
+                            "referenceLocation": "ChartDataset"
                         }
                     }
                 },
@@ -252,7 +318,6 @@ export class AtChartBarLine {
             },
             "x_axis_format": {
                 "type": "unknown",
-                "attribute": "x_axis_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -270,7 +335,6 @@ export class AtChartBarLine {
             },
             "y_axis_format": {
                 "type": "unknown",
-                "attribute": "y_axis_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -288,7 +352,6 @@ export class AtChartBarLine {
             },
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -306,7 +369,6 @@ export class AtChartBarLine {
             },
             "tooltip_options": {
                 "type": "unknown",
-                "attribute": "tooltip_options",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -324,7 +386,6 @@ export class AtChartBarLine {
             },
             "legend_format": {
                 "type": "unknown",
-                "attribute": "legend_format",
                 "mutable": false,
                 "complexType": {
                     "original": "object",
@@ -342,16 +403,15 @@ export class AtChartBarLine {
             },
             "thresholds": {
                 "type": "unknown",
-                "attribute": "thresholds",
                 "mutable": false,
                 "complexType": {
-                    "original": "Threshold[]",
-                    "resolved": "Threshold[]",
+                    "original": "AtIThreshold[]",
+                    "resolved": "AtIThreshold[]",
                     "references": {
-                        "Threshold": {
+                        "AtIThreshold": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-bar-line/at-chart-bar-line.tsx",
-                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::Threshold"
+                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::AtIThreshold"
                         }
                     }
                 },
@@ -366,16 +426,15 @@ export class AtChartBarLine {
             },
             "point_styles": {
                 "type": "unknown",
-                "attribute": "point_styles",
                 "mutable": false,
                 "complexType": {
-                    "original": "PointStyles",
-                    "resolved": "PointStyles",
+                    "original": "AtIPointStyles",
+                    "resolved": "AtIPointStyles",
                     "references": {
-                        "PointStyles": {
+                        "AtIPointStyles": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-bar-line/at-chart-bar-line.tsx",
-                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::PointStyles"
+                            "id": "src/components/at-chart-bar-line/at-chart-bar-line.tsx::AtIPointStyles"
                         }
                     }
                 },
@@ -389,16 +448,17 @@ export class AtChartBarLine {
                 "setter": false
             },
             "time_range": {
-                "type": "any",
-                "attribute": "time_range",
+                "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "SelectedTimeRangeExtended",
-                    "resolved": "SelectedTimeRangeExtended",
+                    "original": "AtSelectedTimeRangeExtended",
+                    "resolved": "AtISelectedTimeRange | { selected: TimeRangeDisplay.ALL; custom?: undefined; }",
                     "references": {
-                        "SelectedTimeRangeExtended": {
-                            "location": "global",
-                            "id": "global::SelectedTimeRangeExtended"
+                        "AtSelectedTimeRangeExtended": {
+                            "location": "import",
+                            "path": "../../models/at-time-range.models",
+                            "id": "src/models/at-time-range.models.ts::AtSelectedTimeRangeExtended",
+                            "referenceLocation": "AtSelectedTimeRangeExtended"
                         }
                     }
                 },
@@ -409,21 +469,20 @@ export class AtChartBarLine {
                     "text": "The time range that the chart is displayed in."
                 },
                 "getter": false,
-                "setter": false,
-                "reflect": false
+                "setter": false
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
-                    "original": "Height",
+                    "original": "AtChartHeight",
                     "resolved": "\"auto\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
-                        "Height": {
+                        "AtChartHeight": {
                             "location": "import",
                             "path": "../at-chart-donut/at-chart-donut",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::Height"
+                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight",
+                            "referenceLocation": "AtChartHeight"
                         }
                     }
                 },
@@ -436,20 +495,21 @@ export class AtChartBarLine {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "'md'"
+                "attribute": "height",
+                "defaultValue": "'auto'"
             },
             "color_palette": {
                 "type": "string",
-                "attribute": "color_palette",
                 "mutable": false,
                 "complexType": {
-                    "original": "ChartColorPalette",
-                    "resolved": "ChartColorPalette.ALERT | ChartColorPalette.CATEGORICAL | ChartColorPalette.CUSTOM | ChartColorPalette.SEQUENTIAL",
+                    "original": "AtChartColorPalette",
+                    "resolved": "AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL | AtChartColorPalette.CUSTOM | AtChartColorPalette.SEQUENTIAL",
                     "references": {
-                        "ChartColorPalette": {
+                        "AtChartColorPalette": {
                             "location": "import",
                             "path": "../../types/chart-color",
-                            "id": "src/types/chart-color.ts::ChartColorPalette"
+                            "id": "src/types/chart-color.ts::AtChartColorPalette",
+                            "referenceLocation": "AtChartColorPalette"
                         }
                     }
                 },
@@ -462,7 +522,8 @@ export class AtChartBarLine {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "ChartColorPalette.CATEGORICAL"
+                "attribute": "color_palette",
+                "defaultValue": "AtChartColorPalette.CATEGORICAL"
             }
         };
     }
@@ -487,8 +548,24 @@ export class AtChartBarLine {
                             "text": "Configuration of the chart"
                         }]
                 }
+            },
+            "resize": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Manually trigger a chart resize to fit container dimensions.",
+                    "tags": []
+                }
             }
         };
     }
 }
-//# sourceMappingURL=at-chart-bar-line.js.map

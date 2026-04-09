@@ -1,8 +1,8 @@
 import { ICellRendererParams } from 'ag-grid-community';
 import { TableColor } from '../table-styles';
-import { CSSProperties } from '../styles';
+import { AtICSSProperties } from '../styles';
 /**
- * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * NEW AtAvailableCells also need to be added to getFrameworkComponents()
  * so that ag-grid can import and render the cell components
  */
 export declare enum AvailableCells {
@@ -34,7 +34,7 @@ export interface IIconCellParams extends DefaultInitCellParams {
 }
 export interface IIconCell extends ITooltipCell, IClickCell {
     iconName: string;
-    iconStyles?: CSSProperties;
+    iconStyles?: AtICSSProperties;
     iconClass?: string;
     disabled?: boolean;
     tooltipText?: string;
@@ -42,7 +42,7 @@ export interface IIconCell extends ITooltipCell, IClickCell {
 /** Icon cell with text parameters */
 export interface IconTextCellParams extends DefaultInitCellParams {
     value: ITextWithIconCell;
-    containerStyles?: CSSProperties;
+    containerStyles?: AtICSSProperties;
 }
 export interface ITextWithIconCell extends IClickCell {
     icons: IIconCell[];
@@ -51,7 +51,7 @@ export interface ITextWithIconCell extends IClickCell {
 }
 export interface ITextCell {
     textValue: string;
-    textStyles?: CSSProperties;
+    textStyles?: AtICSSProperties;
     shouldNotTranslate?: boolean;
 }
 /**
@@ -80,8 +80,8 @@ export interface ITitleSubtitle {
 export interface ITextCellParams extends IClickCell {
     size?: string;
     color?: string;
-    textStyles?: CSSProperties | ((params: ICellRendererParams) => CSSProperties);
-    containerStyles?: CSSProperties;
+    textStyles?: AtICSSProperties | ((params: ICellRendererParams) => AtICSSProperties);
+    containerStyles?: AtICSSProperties;
     click?: (params: ICellRendererParams) => void;
     textClass?: string;
     rowIndex: any;

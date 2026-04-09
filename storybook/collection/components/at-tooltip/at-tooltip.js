@@ -9,45 +9,53 @@ const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
  * @slot default - Content to go inside the tooltip
  */
 export class AtTooltip {
-    constructor() {
-        /**
-         * Position of opened tooltip element relative to the trigger element.
-         */
-        this.position = 'top';
-        /**
-         * Alignment of opened tooltip element relative to trigger element.
-         */
-        this.align = 'center';
-        /**
-         * Prevent opening tooltip
-         */
-        this.disabled = false;
-        /**
-         * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
-         */
-        this.width = '200px';
-        /**
-         * Offset in pixels from the edge of the trigger element
-         */
-        this.offset = 8;
-        /**
-         * Delay before showing and hiding the tooltip when interacting with the trigger element.
-         */
-        this.delay = 150;
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.updatePosition = async () => {
-            if (this.triggerEl && this.tooltipEl && this.isOpen) {
-                await this.updateFloatingPosition();
-            }
-        };
-        this.externalTriggerListeners = [];
-    }
+    /**
+     * Position of opened tooltip element relative to the trigger element.
+     */
+    position = 'top';
+    /**
+     * Alignment of opened tooltip element relative to trigger element.
+     */
+    align = 'center';
+    /**
+     * Prevent opening tooltip
+     */
+    disabled = false;
+    /**
+     * Maximum width constraint for the tooltip in pixels. Defaults to 300px for readability.
+     */
+    width = '200px';
+    /**
+     * Offset in pixels from the edge of the trigger element
+     */
+    offset = 8;
+    /**
+     * Delay before showing and hiding the tooltip when interacting with the trigger element.
+     */
+    delay = 0;
+    /**
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+     * */
+    trigger_id;
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             await this.closeTooltip();
         }
     }
+    isOpen = false;
+    el;
+    triggerEl;
+    tooltipEl;
+    triggerEls = [];
+    cleanupAutoUpdate;
+    popoverId;
+    showTimeout;
+    hideTimeout;
+    updatePosition = async () => {
+        if (this.triggerEl && this.tooltipEl && this.isOpen) {
+            await this.updateFloatingPosition();
+        }
+    };
     /**
      * Opens the tooltip.
      */
@@ -79,9 +87,9 @@ export class AtTooltip {
     async componentDidLoad() {
         this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-tooltip="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-tooltip: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`atui-tooltip: No elements found with data-tooltip="${this.trigger_id}"`);
                 return;
             }
         }
@@ -106,6 +114,7 @@ export class AtTooltip {
             this.hideTimeout = undefined;
         }
     }
+    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -204,7 +213,6 @@ export class AtTooltip {
             }, { threshold: 0 });
             observer.observe(this.triggerEl);
             this.cleanupAutoUpdate = autoUpdate(this.triggerEl, this.tooltipEl, () => {
-                var _a;
                 if (this.isOpen) {
                     const placement = this.getFloatingUIPlacement();
                     const strategy = 'fixed';
@@ -212,7 +220,7 @@ export class AtTooltip {
                         placement,
                         strategy,
                         middleware: [
-                            offset((_a = this.offset) !== null && _a !== void 0 ? _a : 8),
+                            offset(this.offset ?? 8),
                             flip({
                                 fallbackStrategy: 'bestFit',
                                 padding: 8,
@@ -259,8 +267,7 @@ export class AtTooltip {
         }
     }
     cleanupFloatingUI() {
-        var _a;
-        (_a = this.cleanupAutoUpdate) === null || _a === void 0 ? void 0 : _a.call(this);
+        this.cleanupAutoUpdate?.();
         this.cleanupAutoUpdate = undefined;
     }
     async updateFloatingPosition() {
@@ -285,23 +292,22 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'd9c4852f273f61b008e3d860fa05f22acde8069c', class: "relative" }, !this.trigger_id && (h("div", { key: 'd5d74b266a4b292bf903041fbbb03933a29080e4', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '8b4fed86d8e5b33dc8750f03efac75b33748fbca', name: "tooltip-trigger" }))), h("div", { key: '7252d08175177699c85a36a9d20234963ca3b5d3', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'e5e13a0a9060b47052030a04987e133c913bf804' }))));
+        return (h(Host, { key: 'bd4ac8a0e7b4900e1b32a26eb25655b997bfc59f', class: "relative" }, !this.trigger_id && (h("div", { key: '2e74060ffd3650f7b318d7fc308a2b52d097cda8', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'da81257350168ffa588e528cebbbc0560f6dd86a', name: "tooltip-trigger" }))), h("div", { key: '17d7f3fe6804db0f13eea726cca56449f1213df9', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "pointer-events-none w-fit rounded-md bg-gray-950/80 px-[6px] py-2 text-sm text-white opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '9e07f3e863b58ac78af6bf2f950129c87556a7fb' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
         return {
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
-                    "original": "TooltipPosition",
+                    "original": "AtTooltipPosition",
                     "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
                     "references": {
-                        "TooltipPosition": {
+                        "AtTooltipPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tooltip/at-tooltip.tsx",
-                            "id": "src/components/at-tooltip/at-tooltip.tsx::TooltipPosition"
+                            "id": "src/components/at-tooltip/at-tooltip.tsx::AtTooltipPosition"
                         }
                     }
                 },
@@ -314,20 +320,20 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'top'"
             },
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
-                    "original": "TooltipAlign",
+                    "original": "AtTooltipAlign",
                     "resolved": "\"center\" | \"end\" | \"start\"",
                     "references": {
-                        "TooltipAlign": {
+                        "AtTooltipAlign": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-tooltip/at-tooltip.tsx",
-                            "id": "src/components/at-tooltip/at-tooltip.tsx::TooltipAlign"
+                            "id": "src/components/at-tooltip/at-tooltip.tsx::AtTooltipAlign"
                         }
                     }
                 },
@@ -340,11 +346,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'center'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -360,11 +366,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -380,11 +386,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "'200px'"
             },
             "offset": {
                 "type": "number",
-                "attribute": "offset",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -400,11 +406,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset",
                 "defaultValue": "8"
             },
             "delay": {
                 "type": "number",
-                "attribute": "delay",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -420,11 +426,11 @@ export class AtTooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "defaultValue": "150"
+                "attribute": "delay",
+                "defaultValue": "0"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -435,11 +441,12 @@ export class AtTooltip {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed."
+                    "text": "Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel."
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }
@@ -494,4 +501,3 @@ export class AtTooltip {
             }];
     }
 }
-//# sourceMappingURL=at-tooltip.js.map

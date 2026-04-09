@@ -5,7 +5,7 @@ import { ColDef } from 'ag-grid-community';
  * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
  * @internal
  */
-export interface FilterEvent {
+export interface AtIFilterEvent {
     id: string;
     value: string;
 }
@@ -26,7 +26,7 @@ export declare class AtTableFilters {
     /**
      * Emits id of column and filter value on change.
      */
-    atChange: EventEmitter<FilterEvent[]>;
+    atChange: EventEmitter<AtIFilterEvent[]>;
     componentWillLoad(): Promise<void>;
     filterChangeHandler(event: CustomEvent, columnId: string): void;
     clearFilters: () => void;

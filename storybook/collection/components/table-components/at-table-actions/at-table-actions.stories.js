@@ -57,4 +57,3 @@ export default {
     title: 'Components/Table Components/Table Actions',
 };
 export const Default = Template.bind({});
-//# sourceMappingURL=at-table-actions.stories.js.map

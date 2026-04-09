@@ -1,9 +1,11 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
 
 const AtEditTextCell = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
+    get el() { return getElement(this); }
+    params;
     init(params) {
         this.params = params;
     }
@@ -21,15 +23,11 @@ const AtEditTextCell = class {
         }
     }
     render() {
-        return (h(Host, { key: '401dc3423ea37f26619d1143c7eff942d5f98e83', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '2ecc3a6e2794ffb13bb61684077ad8fed0557218', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: 'e90fb575754bcc6a6a12e3a15da70df2ea27f543', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '227559bd910f25df7f43c1b4051d118b468b33c0', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
     }
-    get el() { return getElement(this); }
 };
 
 export { AtEditTextCell as at_edit_text_cell };
-//# sourceMappingURL=at-edit-text-cell.entry.js.map
-
-//# sourceMappingURL=at-edit-text-cell.entry.js.map

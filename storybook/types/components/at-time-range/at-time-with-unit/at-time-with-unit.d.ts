@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { TimeExtraOptions, TimeUnit, TimeWithUnit } from '../../../types/time';
-import { TimePresets } from '../../../models/at-time-range.models';
-import { DateRange, TimeRangeDisplay } from '../../../types/date';
+import { TimeExtraOptions, AtTimeUnit, AtITimeWithUnit } from '../../../types/time';
+import { AtTimePresets } from '../../../models/at-time-range.models';
+import { AtIDateRange, TimeRangeDisplay } from '../../../types/date';
 /**
  * @category Form Controls
  * @description A time with unit component for selecting a time period.
@@ -10,11 +10,11 @@ export declare class AtTimeWithUnitComponent {
     /**
      * Available time units for selection
      */
-    units: TimeUnit[];
+    units: AtTimeUnit[];
     /**
      * Common time preset options to display
      */
-    common_options: TimePresets[];
+    common_options: AtTimePresets[];
     /**
      * Minimum date constraint for time selection
      */
@@ -30,7 +30,7 @@ export declare class AtTimeWithUnitComponent {
     /**
      * Initial time selection value
      */
-    initial_selected_time: TimeWithUnit | TimeRangeDisplay.ALL;
+    initial_selected_time: AtITimeWithUnit | TimeRangeDisplay.ALL;
     /**
      * Custom error message to display when validation fails
      */
@@ -42,23 +42,15 @@ export declare class AtTimeWithUnitComponent {
     errorText: string;
     secondaryErrorText: string;
     translations: any;
-    dropdownOptions: (TimeUnit | TimeExtraOptions)[];
+    dropdownOptions: (AtTimeUnit | TimeExtraOptions)[];
     timeValue: number;
     watchTimeValue(): void;
-    timeUnit: TimeUnit | TimeExtraOptions;
-    watchTimeUnit(): void;
-    selectedTime: TimeWithUnit | TimeRangeDisplay.ALL;
+    timeUnit: AtTimeUnit | TimeExtraOptions;
+    watchAtTimeUnit(): void;
+    selectedTime: AtITimeWithUnit | TimeRangeDisplay.ALL;
     startDate: any;
+    disabledTimeValue: boolean;
     el: any;
-    componentWillLoad(): Promise<void>;
-    componentWillRender(): void;
-    private initDropdownOptions;
-    private initSelectedTime;
-    updateSelectedTime(value: number): void;
-    validateInput(): void;
-    updateSelectedRange(value: TimeWithUnit): void;
-    getRelativeDate(): DateRange;
-    clearSelection(): void;
     /**
      * Emitted when the user cancels the time selection
      */
@@ -66,7 +58,17 @@ export declare class AtTimeWithUnitComponent {
     /**
      * Emitted when the user submits the time selection
      */
-    atuiSubmit: EventEmitter<TimeWithUnit | TimeRangeDisplay.ALL>;
+    atuiSubmit: EventEmitter<AtITimeWithUnit | TimeRangeDisplay.ALL>;
+    componentWillLoad(): Promise<void>;
+    componentWillRender(): void;
+    private initDropdownOptions;
+    private initSelectedTime;
+    updateSelectedTime(): void;
+    private formatDuration;
+    validateInput(): void;
+    updateSelectedRange(value: AtITimeWithUnit): void;
+    getRelativeDate(): AtIDateRange;
+    clearSelection(): void;
     handleCancel(): void;
     handleSubmit(): void;
     handleSelectChange(event: CustomEvent): void;

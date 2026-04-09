@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { SelectedTimeRangeExtended, TimePresets } from '../../models/at-time-range.models';
-import { DateRange, DateRangeStrings, TimeRangeDisplay, TimeUnit, TimeWithUnit } from '../../types';
+import { AtSelectedTimeRangeExtended, AtTimePresets } from '../../models/at-time-range.models';
+import { AtIDateRangeStrings, TimeRangeDisplay, AtTimeUnit, AtITimeWithUnit } from '../../types';
 /**
  * @category Form Controls
  * @description A time range component for selecting time periods.
@@ -9,7 +9,7 @@ export declare class AtTimeRangeComponent {
     /**
      * Selected time range.
      */
-    selected_time_range: SelectedTimeRangeExtended;
+    selected_time_range: AtSelectedTimeRangeExtended;
     /**
      * Lower limit of the time range.
      */
@@ -17,7 +17,7 @@ export declare class AtTimeRangeComponent {
     /**
      * Define the presets for the relative time ranges.
      */
-    presets: TimePresets[];
+    presets: AtTimePresets[];
     /**
      * Enable relative time selection.
      */
@@ -36,30 +36,31 @@ export declare class AtTimeRangeComponent {
      */
     enable_range_limit: boolean;
     today: Date;
-    lowerLimit: any;
-    defaultFromDate: any;
     translations: any;
-    relativeTimeMenuEl: any;
-    absoluteTimeMenuEl: any;
+    displayedTimeRange: AtSelectedTimeRangeExtended;
+    private lowerLimit;
+    private defaultFromDate;
+    private relativeTimeMenuEl;
+    private absoluteTimeMenuEl;
     el: any;
-    units: TimeUnit[];
-    minSeconds: number;
-    componentWillLoad(): Promise<void>;
-    componentWillRender(): void;
-    getLongUnitDisplay(time: SelectedTimeRangeExtended): string;
-    getRelativeDate(time: SelectedTimeRangeExtended): DateRange;
-    getCustomStartAndEndDate(selectedTime: SelectedTimeRangeExtended): {
-        fromDate: Date;
-        toDate: Date;
-    };
-    getShortUnitDisplay(time: TimeWithUnit): string;
     /**
      * Emits an event containing the selected time range when it changes
      */
-    atuiChange: EventEmitter<SelectedTimeRangeExtended>;
-    onChangeCustomTime(customTime: DateRangeStrings): void;
-    onChangeRelativeTime(time: TimeWithUnit | TimeRangeDisplay.ALL): void;
-    get buttonGroupOptions(): any[];
-    get predefinedTimeRanges(): any[];
+    atuiTimeChange: EventEmitter<AtSelectedTimeRangeExtended>;
+    private instanceId;
+    units: AtTimeUnit[];
+    minSeconds: number;
+    componentWillLoad(): Promise<void>;
+    componentWillRender(): void;
+    private getCustomStartAndEndDate;
+    private getShortUnitDisplay;
+    onChangeCustomTime(customTime: AtIDateRangeStrings): void;
+    onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
+    private formatDate;
+    private renderSelectedTimeDisplay;
     render(): any;
+    private renderRelativeTimeButtonGroup;
+    private renderPredefinedTimeButtonGroup;
+    private renderRelativeTimeMenu;
+    private renderAbsoluteTimeMenu;
 }

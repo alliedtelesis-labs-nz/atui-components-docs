@@ -1,5 +1,5 @@
 /**
- * NEW AvailableCells also need to be added to getFrameworkComponents()
+ * NEW AtAvailableCells also need to be added to getFrameworkComponents()
  * so that ag-grid can import and render the cell components
  */
 export var AvailableCells;
@@ -24,4 +24,3 @@ export var AvailableHeaders;
     AvailableHeaders["CHECKBOX_HEADER"] = "checkboxHeader";
     AvailableHeaders["ICON_HEADER"] = "iconHeader";
 })(AvailableHeaders || (AvailableHeaders = {}));
-//# sourceMappingURL=index.js.map

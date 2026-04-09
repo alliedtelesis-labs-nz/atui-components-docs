@@ -18,4 +18,3 @@ export var FullTimeUnits;
     FullTimeUnits["MONTHS"] = "MONTHS";
     FullTimeUnits["YEARS"] = "YEARS";
 })(FullTimeUnits || (FullTimeUnits = {}));
-//# sourceMappingURL=atui-time-range.models.js.map

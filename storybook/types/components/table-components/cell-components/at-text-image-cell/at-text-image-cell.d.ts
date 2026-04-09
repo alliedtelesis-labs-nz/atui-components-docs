@@ -1,11 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { ITooltipCell } from '../../../../types';
-export interface TextImageCellData {
+export interface AtITextImageCellData {
     text: string;
     image: string;
     tooltip?: string;
 }
-export interface ITextImageCellParams extends ICellRendererParams, ITooltipCell {
+export interface AtITextImageCellParams extends ICellRendererParams, ITooltipCell {
     text?: (data: any) => string;
     imageSource: (data: any) => string;
     imageHeight?: number;
@@ -14,7 +14,7 @@ export interface ITextImageCellParams extends ICellRendererParams, ITooltipCell 
     imagePosition?: 'before' | 'after';
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying a text with an image.
  */
 export declare class AtTextImageCell implements ICellRendererComp {

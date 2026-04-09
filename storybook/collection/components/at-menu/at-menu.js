@@ -1,53 +1,63 @@
 import { h, Host, } from "@stencil/core";
 import { computePosition, flip, shift, offset, size, autoUpdate, } from "@floating-ui/dom";
 export class AtMenu {
-    constructor() {
-        /**
-         * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
-         */
-        this.offset_x = 0;
-        /**
-         * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
-         */
-        this.offset_y = 0;
-        /**
-         * Position of opened menu element relative to the trigger element.
-         */
-        this.position = 'bottom';
-        /**
-         * Alignment of opened menu element relative to trigger element.
-         */
-        this.align = 'start';
-        /**
-         * Prevent closing of menu when options are selected. Used for multi-selection controls.
-         */
-        this.autoclose = true;
-        /**
-         * Event type that triggers the menu open state. Click or Hover.
-         */
-        this.trigger = 'click';
-        /**
-         * Close the menu when the user clicks within the menu panel. Default for single selection menus.
-         */
-        this.role = 'menu';
-        /**
-         * Prevent opening menu
-         */
-        this.disabled = false;
-        this.isOpen = false;
-        this.triggerEls = [];
-        this.updatePosition = async () => {
-            if (this.triggerEl && this.menuEl && this.isOpen) {
-                await this.updateFloatingPosition();
-            }
-        };
-        this.externalTriggerListeners = [];
-    }
+    /**
+     * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
+     */
+    offset_x = 0;
+    /**
+     * Menu's y offset from edge in pixels. Only applied for origin_y = 'top' | 'bottom'
+     */
+    offset_y = 0;
+    /**
+     * Position of opened menu element relative to the trigger element.
+     */
+    position = 'bottom';
+    /**
+     * Alignment of opened menu element relative to trigger element.
+     */
+    align = 'start';
+    /**
+     * String representing the 'width' style of the menu element ('NUMpx').
+     * To fit menu to content use width="fit-content" - Avoid width='auto' or 'inherit' as this will result in 100% width.
+     */
+    width = 'fit-content';
+    /**
+     * Prevent closing of menu when options are selected. Used for multi-selection controls.
+     */
+    autoclose = true;
+    /**
+     * Event type that triggers the menu open state. Click or Hover.
+     */
+    trigger = 'click';
+    /**
+     * Close the menu when the user clicks within the menu panel. Default for single selection menus.
+     */
+    role = 'menu';
+    /**
+     * Prevent opening menu
+     */
+    disabled = false;
+    /**
+     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
+    trigger_id;
     disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             this.closeMenu();
         }
     }
+    isOpen = false;
+    triggerEl;
+    menuEl;
+    triggerEls = [];
+    popoverId;
+    cleanupAutoUpdate;
+    updatePosition = async () => {
+        if (this.triggerEl && this.menuEl && this.isOpen) {
+            await this.updateFloatingPosition();
+        }
+    };
+    el;
     /**
      * Toggles the dropdown menu's open state.
      */
@@ -100,12 +110,17 @@ export class AtMenu {
     async getIsOpen() {
         return this.isOpen;
     }
+    /**
+     * Emits an event containing the open menu state.
+     */
+    atuiMenuStateChange;
+    timedOutCloser;
     async componentDidLoad() {
         this.popoverId = `atui-menu-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
-            this.triggerEls = Array.from(document.querySelectorAll(`[data-id="${this.trigger_id}"]`));
+            this.triggerEls = Array.from(document.querySelectorAll(`[data-menu="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
-                console.warn(`atui-menu: No elements found with data-id="${this.trigger_id}"`);
+                console.warn(`atui-menu: No elements found with data-menu="${this.trigger_id}"`);
                 return;
             }
         }
@@ -117,6 +132,65 @@ export class AtMenu {
         if (this.trigger_id && this.triggerEls.length) {
             this.setupExternalTriggerListeners();
         }
+        if (this.trigger === 'click') {
+            this.addOutsideListeners();
+        }
+        if (this.trigger === 'hover') {
+            this.addFocusinListener();
+        }
+    }
+    outsideClickHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        const target = event.target;
+        const isInsideMenu = this.menuEl?.contains(target);
+        const isInsideTrigger = this.triggerEl?.contains(target) ||
+            this.triggerEls.some((el) => el.contains(target));
+        if (!isInsideMenu && !isInsideTrigger) {
+            this.closeMenu();
+        }
+    };
+    outsideKeydownHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        if (event.key === 'Escape') {
+            this.closeMenu();
+            return;
+        }
+        if (event.key === 'Enter' || event.key === ' ') {
+            const target = event.target;
+            const isInsideMenu = this.menuEl?.contains(target);
+            const isInsideTrigger = this.triggerEl?.contains(target) ||
+                this.triggerEls.some((el) => el.contains(target));
+            if (!isInsideMenu && !isInsideTrigger) {
+                this.closeMenu();
+            }
+        }
+    };
+    outsideFocusinHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        const target = event.target;
+        const isInsideMenu = this.menuEl?.contains(target);
+        const isInsideTrigger = this.triggerEl?.contains(target) ||
+            this.triggerEls.some((el) => el.contains(target));
+        if (!isInsideMenu && !isInsideTrigger) {
+            this.closeMenu();
+        }
+    };
+    addOutsideListeners() {
+        document.addEventListener('click', this.outsideClickHandler, true);
+        document.addEventListener('keydown', this.outsideKeydownHandler, true);
+    }
+    removeOutsideListeners() {
+        document.removeEventListener('click', this.outsideClickHandler, true);
+        document.removeEventListener('keydown', this.outsideKeydownHandler, true);
+    }
+    addFocusinListener() {
+        document.addEventListener('focusin', this.outsideFocusinHandler, true);
+    }
+    removeFocusinListener() {
+        document.removeEventListener('focusin', this.outsideFocusinHandler, true);
     }
     setupPopoverEventListeners() {
         if (this.menuEl) {
@@ -197,7 +271,14 @@ export class AtMenu {
     disconnectedCallback() {
         this.cleanupFloatingUI();
         this.cleanupExternalTriggerListeners();
+        if (this.trigger === 'click') {
+            this.removeOutsideListeners();
+        }
+        if (this.trigger === 'hover') {
+            this.removeFocusinListener();
+        }
     }
+    externalTriggerListeners = [];
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
             element.removeEventListener(event, handler);
@@ -249,8 +330,9 @@ export class AtMenu {
                             size({
                                 apply({ availableWidth, availableHeight, elements, }) {
                                     Object.assign(elements.floating.style, {
-                                        maxWidth: `${availableWidth}px`,
                                         maxHeight: `${availableHeight}px`,
+                                        maxWidth: `${availableWidth}px`,
+                                        minWidth: '0',
                                     });
                                 },
                             }),
@@ -310,9 +392,14 @@ export class AtMenu {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'c47c090565a470043561debd90ddb954e46554e0', class: "z-modal relative" }, h("div", { key: '2e08fa573fd88726d4442bc2d90fc3ad61d55667', class: "relative", onBlur: () => this.trigger === 'click' && !this.disabled
-                ? this.mouseLeaveHandler()
-                : null }, !this.trigger_id && (h("div", { key: '2c0398211b3a8be5243ee53fae8794c689e1a543', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+        return (h(Host, { key: 'f6496533b5cd7b9da70d92b108838ecf1e8f3396', class: "relative", onBlur: (e) => {
+                if (this.disabled || !this.isOpen)
+                    return;
+                const related = e.relatedTarget;
+                if (!this.menuEl?.contains(related)) {
+                    this.closeMenu();
+                }
+            } }, !this.trigger_id && (h("div", { key: 'b7681c58b6b3de266473bb543bc19b1a58364089', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -328,8 +415,7 @@ export class AtMenu {
             }, onMouseLeave: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseLeaveHandler()
                 : null, onClick: async (event) => {
-                if (this.trigger === 'click' &&
-                    !this.disabled) {
+                if (this.trigger === 'click' && !this.disabled) {
                     event.preventDefault();
                     event.stopPropagation();
                     if (this.isOpen) {
@@ -339,7 +425,7 @@ export class AtMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '1d74ec807498cdb2b452b69aaaa0d938fc461951', name: "menu-trigger" }))), h("div", { key: '8e6c1e827d69e070450cfb1af767633d488f429d', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "auto", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '7f15cb6552891a36742a6ddcffbb787991ce62f2', name: "menu-trigger" }))), h("div", { key: 'ee48e49d4e27a153b31b96eed7a12a45d986f3f6', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -351,14 +437,13 @@ export class AtMenu {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: "w-fit rounded-md bg-white p-4 shadow-md", "data-name": "menu-content-wrapper" }, h("slot", { key: '4b33af13b7f07e39a23d171118aa6ef8ad913440' })))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '1949867bc18c373c724185fd4bc541ff466d8068' }))));
     }
     static get is() { return "at-menu"; }
     static get properties() {
         return {
             "offset_x": {
                 "type": "number",
-                "attribute": "offset_x",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -374,11 +459,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset_x",
                 "defaultValue": "0"
             },
             "offset_y": {
                 "type": "number",
-                "attribute": "offset_y",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -394,20 +479,20 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "offset_y",
                 "defaultValue": "0"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
-                    "original": "Position",
+                    "original": "AtPosition",
                     "resolved": "\"bottom\" | \"left\" | \"right\" | \"top\"",
                     "references": {
-                        "Position": {
+                        "AtPosition": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-menu/at-menu.tsx",
-                            "id": "src/components/at-menu/at-menu.tsx::Position"
+                            "id": "src/components/at-menu/at-menu.tsx::AtPosition"
                         }
                     }
                 },
@@ -420,20 +505,20 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'bottom'"
             },
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
-                    "original": "Align",
+                    "original": "AtAlign",
                     "resolved": "\"end\" | \"start\"",
                     "references": {
-                        "Align": {
+                        "AtAlign": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-menu/at-menu.tsx",
-                            "id": "src/components/at-menu/at-menu.tsx::Align"
+                            "id": "src/components/at-menu/at-menu.tsx::AtAlign"
                         }
                     }
                 },
@@ -446,11 +531,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'start'"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -461,15 +546,16 @@ export class AtMenu {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "String representing the 'width' style of the menu element ('auto' or 'NUMpx'). When not specified, defaults to trigger element width.\nTo fit menu to content use width=\"fit-content\" - Avoid width='auto' as this will result in 100% width."
+                    "text": "String representing the 'width' style of the menu element ('NUMpx').\nTo fit menu to content use width=\"fit-content\" - Avoid width='auto' or 'inherit' as this will result in 100% width."
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "width",
+                "defaultValue": "'fit-content'"
             },
             "autoclose": {
                 "type": "boolean",
-                "attribute": "autoclose",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -485,20 +571,20 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoclose",
                 "defaultValue": "true"
             },
             "trigger": {
                 "type": "string",
-                "attribute": "trigger",
                 "mutable": false,
                 "complexType": {
-                    "original": "OpenOn",
+                    "original": "AtOpenOn",
                     "resolved": "\"click\" | \"hover\"",
                     "references": {
-                        "OpenOn": {
+                        "AtOpenOn": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-menu/at-menu.tsx",
-                            "id": "src/components/at-menu/at-menu.tsx::OpenOn"
+                            "id": "src/components/at-menu/at-menu.tsx::AtOpenOn"
                         }
                     }
                 },
@@ -511,20 +597,20 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "trigger",
                 "defaultValue": "'click'"
             },
             "role": {
                 "type": "string",
-                "attribute": "role",
                 "mutable": false,
                 "complexType": {
-                    "original": "AriaRole",
+                    "original": "AtAriaRole",
                     "resolved": "\"listbox\" | \"menu\"",
                     "references": {
-                        "AriaRole": {
+                        "AtAriaRole": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-menu/at-menu.tsx",
-                            "id": "src/components/at-menu/at-menu.tsx::AriaRole"
+                            "id": "src/components/at-menu/at-menu.tsx::AtAriaRole"
                         }
                     }
                 },
@@ -537,11 +623,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "role",
                 "defaultValue": "'menu'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -557,11 +643,11 @@ export class AtMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "trigger_id": {
                 "type": "string",
-                "attribute": "trigger_id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -572,11 +658,12 @@ export class AtMenu {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Data-id of an external element to use as the trigger. When provided, the trigger slot is not needed."
+                    "text": "Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel."
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "trigger_id"
             }
         };
     }
@@ -683,4 +770,3 @@ export class AtMenu {
             }];
     }
 }
-//# sourceMappingURL=at-menu.js.map

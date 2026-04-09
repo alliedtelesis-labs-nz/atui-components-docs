@@ -4,6 +4,31 @@ import { h } from "@stencil/core";
  * @description A search component for filtering data.
  */
 export class AtSearch {
+    /**
+     * Label text above the search bar.
+     */
+    label;
+    /**
+     * Hint text for the input, appears below the search bar.
+     */
+    hint_text;
+    /**
+     * Tooltip description.
+     */
+    info_text;
+    /**
+     * Placeholder text inside the search component.
+     */
+    placeholder;
+    /**
+     * String content of the search.
+     */
+    model;
+    searchEl;
+    /**
+     * Emits an event when the input is changed. Used by atui-table.
+     */
+    atuiChange;
     onChangeFn() {
         this.atuiChange.emit(this.searchEl.value);
         this.model = this.searchEl.value;
@@ -15,22 +40,21 @@ export class AtSearch {
         this.searchEl.focus();
     }
     render() {
-        return (h("div", { key: '4491d7d5af7ef1bfbb08cf0935c90a71218040ac' }, (this.label || this.info_text) && (h("at-form-label", { key: '631246df7551ddcb0264bb0eb605d93b44c25182', label: this.label, for: this.label
+        return (h("div", { key: '2d2a74d7aa3b72921b0fcb6e56f34573cc051b81' }, (this.label || this.info_text) && (h("at-form-label", { key: '68add527533ad1b5aa0c14f91655ac6cfab8a896', label: this.label, for: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, info_text: this.info_text })), h("div", { key: 'd36fd4f84c427eccf79a63f982a8f6c59591c416', class: "active-within:border-active-dark transition[background-color,color,box-shadow] border-med bg-surface-0 focus-within:border-active-dark focus-within:ring-active-foreground/30 relative flex h-[36px] flex-row items-center justify-center rounded-md border duration-300 ease-in-out focus-within:ring-2" }, h("span", { key: 'a25fe92511eabc949807f0e771cb0749106423f3', class: "px-8" }, h("i", { key: 'f4a7642de6da0577b526be010bcfdd026c13f4ac', class: "material-icons text-light !text-[16px] !leading-[30px]" }, "search")), h("input", { key: 'cd0dd55e8f9587bdf58aa65b52beb9d761c42be6', id: this.label
+                : undefined, info_text: this.info_text })), h("div", { key: '755f389501f1788b0c9f8036e0ca36f0e962792e', class: "active-within:border-active-dark transition[background-color,color,box-shadow] border-med bg-surface-0 focus-within:border-active-dark focus-within:ring-active-foreground/40 relative flex h-[36px] flex-row items-center justify-center rounded-md border duration-300 ease-in-out focus-within:ring-2" }, h("span", { key: '4abb13e03349deb492a6b0ad40a5102345b4f4af', class: "px-8" }, h("i", { key: '5615bfa0a3585055d06e770a130867caaf95aea5', class: "material-icons text-light !text-[16px] !leading-[30px]" }, "search")), h("input", { key: '2c4db6001cc45a61967357cc1fbd34b1b42e9692', id: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '2a88b0f82d3522aedc7694893dad57c56c735df8', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '6e915df562bfa73ac35497f1569a5c0727c3d803', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '2847b6d9f0a47f4fc29af10d0a9c66bf8af33412', size: "sm", type: "secondaryText", icon: "backspace", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '3f34dcf1dc346b26f307b67f82cdc1142a53a99d', size: "sm", type: "secondaryText", icon: "backspace", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }))), h("span", { key: '542dfe6e2475f7b92386587c2233d4a2cc3e255a', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
+                : '-1' }))), h("span", { key: 'b71e5e0c670f27f28035947057b9935e8ece4fd0', class: "text-med mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
     }
     static get is() { return "at-search"; }
     static get properties() {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -45,11 +69,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -64,11 +88,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -83,11 +107,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -102,11 +126,11 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "placeholder"
             },
             "model": {
                 "type": "string",
-                "attribute": "model",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -121,7 +145,8 @@ export class AtSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "model"
             }
         };
     }
@@ -149,4 +174,3 @@ export class AtSearch {
             }];
     }
 }
-//# sourceMappingURL=at-search.js.map

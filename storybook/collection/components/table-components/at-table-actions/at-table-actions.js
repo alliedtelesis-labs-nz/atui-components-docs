@@ -11,6 +11,22 @@ import { h, Host, } from "@stencil/core";
 
 */
 export class AtTableActionsComponent {
+    /**
+     * AG Grid Api (provided by at-table createGrid method)
+     */
+    ag_grid;
+    /**
+     * Emits an event when 'Export CSV' is pressed on provided at-table-export-menu
+     */
+    atExportCsv;
+    /**
+     * Emits an event when 'Export PDF' is pressed on provided at-table-export-menu
+     */
+    atExportPdf;
+    /**
+     * Emits an event when filters change
+     */
+    atChange;
     changeHandler(event) {
         const target = event.target;
         switch (target.slot) {
@@ -36,20 +52,19 @@ export class AtTableActionsComponent {
             const userProvidedColDef = column.getUserProvidedColDef();
             return {
                 actualWidth: column.getActualWidth(),
-                field: (userProvidedColDef === null || userProvidedColDef === void 0 ? void 0 : userProvidedColDef.field) || '',
+                field: userProvidedColDef?.field || '',
                 displayName: this.ag_grid.getDisplayNameForColumn(column, 'header'),
             };
         });
     }
     render() {
-        return (h(Host, { key: '3dc7ffcba5d31cbde49fce8daafebf17cfc3db38', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'd1ffa7fdec2ff3ed04c5d79ed43a450d4e49d0c5', class: "flex justify-between" }, h("div", { key: '1c4c9c8ef94d70dbe44ba794be69da52aef09abd', class: "flex" }, h("slot", { key: '387bc729f636ba9b8e31a424bb469ebfffae6e97', name: "search" })), h("div", { key: 'ad8c8d7a4e06e29eac2ff0ab2ddd26e072bf1ad6', class: "flex" }, h("slot", { key: 'b588ef013d6d4f15c3b248d9fcde3db02236566c', name: "export-menu" }), h("slot", { key: '34d75a1a980c67d42bf89418e8290240ca09c06e', name: "column-manager" }), h("slot", { key: 'a9d76952ca502c67cc67cf3ab5f7e53fd1a6a4d7', name: "actions" }))), h("slot", { key: 'e93ffb8d21685bfd008746c61ba4668edbaa0d94', name: "filters" })));
+        return (h(Host, { key: '0d2940939285479d03d603867d31624fe425292d', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '06e57d961f231a208ad46e3cb821183f70c20a62', class: "flex justify-between" }, h("div", { key: '4b919ddac1e695abcdebb21537007b5419bbb1ef', class: "flex" }, h("slot", { key: 'c8881dcefc1c5f3587e76a5608a00b596d6d3a8e', name: "search" })), h("div", { key: '1113426dc7969c0bbd5699d277ecc51683b8f307', class: "flex" }, h("slot", { key: '1fde0be48e3fcf7821e2beb9e3a602fab5808d2c', name: "export-menu" }), h("slot", { key: '3cde29c7b3cfa647d0d75fa237779a6f0a8d0a22', name: "column-manager" }), h("slot", { key: '915d08a3d1851d07c99cc2cc49b3abb6889cf17a', name: "actions" }))), h("slot", { key: '3c225b023bb185fd731fe2765ba709e2a20c540c', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {
         return {
             "ag_grid": {
                 "type": "unknown",
-                "attribute": "ag_grid",
                 "mutable": false,
                 "complexType": {
                     "original": "GridApi",
@@ -58,7 +73,8 @@ export class AtTableActionsComponent {
                         "GridApi": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
                         }
                     }
                 },
@@ -131,4 +147,3 @@ export class AtTableActionsComponent {
             }];
     }
 }
-//# sourceMappingURL=at-table-actions.js.map

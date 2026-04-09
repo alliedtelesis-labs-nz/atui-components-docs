@@ -1,9 +1,11 @@
 import { h, Host } from "@stencil/core";
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying and editing text.
  */
 export class AtEditTextCell {
+    el;
+    params;
     init(params) {
         this.params = params;
     }
@@ -21,7 +23,7 @@ export class AtEditTextCell {
         }
     }
     render() {
-        return (h(Host, { key: '401dc3423ea37f26619d1143c7eff942d5f98e83', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '2ecc3a6e2794ffb13bb61684077ad8fed0557218', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: 'e90fb575754bcc6a6a12e3a15da70df2ea27f543', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '227559bd910f25df7f43c1b4051d118b468b33c0', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));
@@ -34,4 +36,3 @@ export class AtEditTextCell {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-edit-text-cell.js.map

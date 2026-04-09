@@ -1,43 +1,69 @@
 import { h, Fragment, } from "@stencil/core";
-import { TimeExtraOptions } from "../../../types/time";
+import { TimeExtraOptions, } from "../../../types/time";
 import { TimeRangeDisplay } from "../../../types/date";
 import { fetchTranslations } from "../../../utils/translation";
-import { TimeDateUtil } from "../../../utils/time-date.util";
+import { AtTimeDateUtil } from "../../../utils/at-time-date.util";
 /**
  * @category Form Controls
  * @description A time with unit component for selecting a time period.
  */
 export class AtTimeWithUnitComponent {
-    constructor() {
-        /**
-         * Minimum date constraint for time selection
-         */
-        this.min_date = null;
-        /**
-         * Minimum number of seconds allowed for time selection
-         */
-        this.min_seconds = 60;
-        /**
-         * Maximum number of seconds allowed for time selection
-         */
-        this.max_seconds = Number.MAX_SAFE_INTEGER;
-        /**
-         * Custom error message to display when validation fails
-         */
-        this.custom_error_message = null;
-        /**
-         * Whether to show the 'All Time' option
-         */
-        this.show_all_time = false;
-        this.errorText = '';
-        this.secondaryErrorText = '';
-    }
+    /**
+     * Available time units for selection
+     */
+    units;
+    /**
+     * Common time preset options to display
+     */
+    common_options;
+    /**
+     * Minimum date constraint for time selection
+     */
+    min_date = null;
+    /**
+     * Minimum number of seconds allowed for time selection
+     */
+    min_seconds = 60;
+    /**
+     * Maximum number of seconds allowed for time selection
+     */
+    max_seconds = Number.MAX_SAFE_INTEGER;
+    /**
+     * Initial time selection value
+     */
+    initial_selected_time;
+    /**
+     * Custom error message to display when validation fails
+     */
+    custom_error_message = null;
+    /**
+     * Whether to show the 'All Time' option
+     */
+    show_all_time = false;
+    errorText = '';
+    secondaryErrorText = '';
+    translations;
+    dropdownOptions;
+    timeValue;
     watchTimeValue() {
-        this.updateSelectedTime(this.timeValue);
+        this.updateSelectedTime();
     }
-    watchTimeUnit() {
-        this.updateSelectedTime(this.timeValue);
+    timeUnit;
+    watchAtTimeUnit() {
+        this.updateSelectedTime();
     }
+    selectedTime;
+    startDate;
+    disabledTimeValue = false;
+    el;
+    /**
+     * Emitted when the user cancels the time selection
+     */
+    atuiCancel;
+    /**
+     * Emitted when the user submits the time selection
+     */
+    atuiSubmit;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -53,9 +79,8 @@ export class AtTimeWithUnitComponent {
             : this.units;
     }
     initSelectedTime(initialTimeRange) {
-        var _a;
         const unit = typeof initialTimeRange === 'object'
-            ? TimeDateUtil.getCurrentOrDefaultUnit(initialTimeRange.unit, this.units)
+            ? AtTimeDateUtil.getCurrentOrDefaultUnit(initialTimeRange.unit, this.units)
             : TimeExtraOptions.ALL;
         const value = typeof initialTimeRange === 'object'
             ? initialTimeRange.value
@@ -63,43 +88,59 @@ export class AtTimeWithUnitComponent {
         this.timeUnit = unit;
         this.timeValue = value;
         this.selectedTime = initialTimeRange;
-        this.startDate = (_a = this.getRelativeDate()) === null || _a === void 0 ? void 0 : _a.startDate;
+        this.startDate = this.getRelativeDate()?.startDate;
     }
-    updateSelectedTime(value) {
-        var _a;
+    updateSelectedTime() {
         const unit = this.timeUnit;
+        const value = this.timeValue;
         if (unit !== TimeExtraOptions.ALL) {
             this.selectedTime = { unit, value };
+            this.disabledTimeValue = false;
         }
         else {
             this.selectedTime = TimeRangeDisplay.ALL;
-            if (this.timeValue) {
-                this.timeValue = null;
-            }
+            this.timeValue = null;
+            this.disabledTimeValue = true;
         }
         this.validateInput();
-        this.startDate = (_a = this.getRelativeDate()) === null || _a === void 0 ? void 0 : _a.startDate;
+        this.startDate = this.getRelativeDate()?.startDate;
+    }
+    formatDuration(seconds) {
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        if (days > 0)
+            return hours > 0 ? `${days}d ${hours}hr` : `${days}d`;
+        if (hours > 0)
+            return mins > 0 ? `${hours}hr ${mins}min` : `${hours}hr`;
+        return `${mins}min`;
     }
     validateInput() {
         if (this.selectedTime !== TimeRangeDisplay.ALL) {
             const maxSeconds = this.min_date
-                ? TimeDateUtil.getSecondsAgoFromDate(this.min_date)
+                ? AtTimeDateUtil.getSecondsAgoFromDate(this.min_date)
                 : this.max_seconds;
-            const maxTimeValue = TimeDateUtil.convertSecondsToUnit(maxSeconds, this.timeUnit, 0, true);
-            const minTimeValue = TimeDateUtil.convertSecondsToUnit(this.min_seconds, this.timeUnit, 0, false);
-            if (this.timeValue > maxTimeValue)
+            const maxTimeValue = AtTimeDateUtil.convertSecondsToUnit(maxSeconds, this.timeUnit, 0, true);
+            const minTimeValue = AtTimeDateUtil.convertSecondsToUnit(this.min_seconds, this.timeUnit, 0, false);
+            if (this.timeValue > maxTimeValue) {
                 this.errorText = this.translations
-                    ? this.translations.ATUI.TIME.VALIDATION.MAX_NUMBER.replace('{lowerThanValue}', `${maxTimeValue + 1} ${this.timeUnit}`)
-                    : `Please enter a value lower than ${maxTimeValue} ${this.timeUnit}`;
-            else if (this.timeValue < minTimeValue)
+                    ? this.translations.ATUI.TIME.VALIDATION.MAX_NUMBER.replace('{lowerThanValue}', this.formatDuration(maxSeconds))
+                    : `Please enter a value lower than ${this.formatDuration(maxSeconds)}`;
+            }
+            else if (this.timeValue < minTimeValue) {
                 this.errorText = this.translations
-                    ? this.translations.ATUI.TIME.VALIDATION.MIN_NUMBER.replace('{min}', `${maxTimeValue} ${this.timeUnit}`)
-                    : `Please enter a value larger than ${minTimeValue} ${this.timeUnit}`;
-            else
+                    ? this.translations.ATUI.TIME.VALIDATION.MIN_NUMBER.replace('{min}', this.formatDuration(this.min_seconds))
+                    : `Please enter a value larger than ${this.formatDuration(this.min_seconds)}`;
+            }
+            else {
                 this.errorText = '';
+            }
             if (this.errorText && this.custom_error_message) {
                 this.secondaryErrorText = this.custom_error_message;
             }
+        }
+        else {
+            this.errorText = '';
         }
     }
     updateSelectedRange(value) {
@@ -109,20 +150,21 @@ export class AtTimeWithUnitComponent {
     }
     getRelativeDate() {
         if (typeof this.selectedTime === 'object') {
-            return TimeDateUtil.getRelativeDateRange(this.selectedTime);
+            return AtTimeDateUtil.getRelativeDateRange(this.selectedTime);
         }
     }
     clearSelection() {
         if (typeof this.initial_selected_time === 'object') {
-            this.timeValue = this.initial_selected_time.value;
             this.timeUnit = this.initial_selected_time.unit;
+            this.timeValue = this.initial_selected_time.value;
         }
         else {
-            this.timeValue = null;
             this.timeUnit = TimeExtraOptions.ALL;
+            this.timeValue = null;
         }
     }
     handleCancel() {
+        this.clearSelection();
         this.atuiCancel.emit();
     }
     handleSubmit() {
@@ -131,44 +173,41 @@ export class AtTimeWithUnitComponent {
         }
     }
     handleSelectChange(event) {
-        const timeTranslationObject = this.translations.ATUI.TIME;
-        const newValue = event.detail;
-        this.timeUnit = (this.translations
-            ? Object.keys(timeTranslationObject).find((key) => timeTranslationObject[key] === newValue)
-            : newValue);
+        this.timeUnit = event.detail;
     }
     render() {
-        var _a;
-        return (h("div", { key: '7273ce8ba78037269a35ac75caf7e3d92ba0c9fe', class: "w-panel-sm flex flex-col gap-16 border border-gray-300", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.handleSubmit(), tabindex: 0 }, h("div", { key: 'c84ef7a68dfa5208cabe4485ee3aee69b856913e', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'c347f54ba86c1394bbac2975167362ea7a501eab', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '06d21d308ae4281f59caec831b03241a307d72b2', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '89b59794025e18a6cb3541af46b4d2fd4e9ba9de', value: this.timeValue, onAtuiChange: (event) => (this.timeValue = event.detail) }), h("at-select", { key: 'f00ee751f5f36e10161ee79076f289ed8b0d8309', class: "flex-fill", value: this.translations.ATUI.TIME[this.timeUnit], options: this.dropdownOptions
-                ? this.dropdownOptions.map((option) => this.translations.ATUI.TIME[option])
+        return (h("div", { key: '436731b14f351fe82a23350b0f54176e1aadb404', class: "w-panel-sm flex flex-col gap-16", onKeyUp: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.handleSubmit(), tabindex: 0 }, h("div", { key: '1a5a109bd36ae0e6c3541df6303560e94f362420', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'a38c828ef332751984f7bcdf0102c23608259fe8', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '7e787e63213b3335bad293f94ec4deed0c19a301', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: 'b5c4b4834a17efff523b3ec15baee1edbb51754c', value: this.timeValue, disabled: this.disabledTimeValue, onAtuiChange: (event) => {
+                this.timeValue = event.detail;
+            } }), h("at-select", { key: '6229df7b2b243a9a408dd79fac74598b56c9ab0d', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
+                ? this.dropdownOptions.map((option) => ({
+                    value: option,
+                    label: this.translations.ATUI.TIME[option],
+                }))
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
-            ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.unit) && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: '68df0016fc3f758469df1f15bedfc3be8855a03a', class: "flex flex-col gap-8 px-12" }, h("h5", { key: 'a8acfb24bae62808ca8de42d56896e5715c88b91', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: 'eb551c01dc67516e3334902a6ef139113e8df30a', class: "columns-2", "data-name": "time-with-unit-common-options" }, this.common_options &&
-            this.common_options.map((timerange) => {
-                var _a, _b;
-                return (h("div", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
-                        event.stopPropagation();
-                        if (event.key === 'Enter' ||
-                            event.key === ' ')
-                            this.updateSelectedRange(timerange);
-                    }, tabindex: 0, class: `${this.selectedTime !== TimeRangeDisplay.ALL && ((_a = this.selectedTime) === null || _a === void 0 ? void 0 : _a.value) === timerange.value && ((_b = this.selectedTime) === null || _b === void 0 ? void 0 : _b.unit) === timerange.unit ? 'bg-active-light px-4' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit])));
-            })))), h("footer", { key: 'f10d64dd1f813316dfe87900f5fc6c8807681023', class: "flex justify-between p-8" }, h("at-button", { key: '260e4e4c103355804dba8e63e0d00a24b86ca52f', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '6e46fa094c7a9790520892e2a9ce102a195eb4f0', class: "flex gap-8" }, h("at-button", { key: '62601248e6e9e411ac77fcb4124d1dbb9f7575b8', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '7dfc53f63f333b415802f1be1933f3c7dd00015a', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
+            this.selectedTime?.unit && (h("span", { class: "text-med text-sm font-normal" }, this.startDate.toLocaleString(), " \u2060\u2014 NOW"))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-med text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), this.common_options && (h("div", { key: 'bf9715ee1dc5d87fb3f41e8ca29c80bbe6496ce3', class: "flex flex-col gap-8 px-12" }, h("h5", { key: 'c5055ac97622f12d0ef5f808e829c98ab188b586', class: "text-h5 text-dark font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '2be7ce155cad344e42b1081d6cf89cb92d847e5d', class: "grid grid-cols-2 content-stretch", "data-name": "time-with-unit-common-options" }, this.common_options &&
+            this.common_options.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
+                    event.stopPropagation();
+                    if (event.key === 'Enter' ||
+                        event.key === ' ')
+                        this.updateSelectedRange(timerange);
+                }, tabindex: 0, class: `hover:bg-surface-1 rounded-sm px-[6px] py-2 text-left ${this.selectedTime !== TimeRangeDisplay.ALL && this.selectedTime?.value === timerange.value && this.selectedTime?.unit === timerange.unit ? 'bg-active-light hover:bg-active-light' : ''} cursor-pointer` }, h("small", null, this.translations.ATUI.TIME.LAST, ' ', timerange.value, ' ', this.translations.ATUI.TIME[timerange.unit]))))))), h("footer", { key: '160ec3c30b6a3d259476adb7fb6ad2bf9b04be10', class: "flex justify-between p-8" }, h("at-button", { key: '739b0c5ceaee8a49b7cfa8cb7ba2b76cf267f2fc', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '50dce8c1928886e4b780f98c976462c707c95887', class: "flex gap-8" }, h("at-button", { key: 'a1d3918e6a979325cf905e0d774901ff8237684a', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '4f781a5f766f2f1dea5790c42852be7b11549786', "data-name": "apply", label: this.translations.ATUI.APPLY, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-time-with-unit"; }
     static get properties() {
         return {
             "units": {
                 "type": "unknown",
-                "attribute": "units",
                 "mutable": false,
                 "complexType": {
-                    "original": "TimeUnit[]",
-                    "resolved": "TimeUnit[]",
+                    "original": "AtTimeUnit[]",
+                    "resolved": "AtTimeUnit[]",
                     "references": {
-                        "TimeUnit": {
+                        "AtTimeUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeUnit"
+                            "id": "src/types/time.ts::AtTimeUnit",
+                            "referenceLocation": "AtTimeUnit"
                         }
                     }
                 },
@@ -183,16 +222,16 @@ export class AtTimeWithUnitComponent {
             },
             "common_options": {
                 "type": "unknown",
-                "attribute": "common_options",
                 "mutable": false,
                 "complexType": {
-                    "original": "TimePresets[]",
-                    "resolved": "TimePresets[]",
+                    "original": "AtTimePresets[]",
+                    "resolved": "AtTimePresets[]",
                     "references": {
-                        "TimePresets": {
+                        "AtTimePresets": {
                             "location": "import",
                             "path": "../../../models/at-time-range.models",
-                            "id": "src/models/at-time-range.models.ts::TimePresets"
+                            "id": "src/models/at-time-range.models.ts::AtTimePresets",
+                            "referenceLocation": "AtTimePresets"
                         }
                     }
                 },
@@ -207,7 +246,6 @@ export class AtTimeWithUnitComponent {
             },
             "min_date": {
                 "type": "unknown",
-                "attribute": "min_date",
                 "mutable": false,
                 "complexType": {
                     "original": "Date",
@@ -231,7 +269,6 @@ export class AtTimeWithUnitComponent {
             },
             "min_seconds": {
                 "type": "number",
-                "attribute": "min_seconds",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -247,11 +284,11 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min_seconds",
                 "defaultValue": "60"
             },
             "max_seconds": {
                 "type": "number",
-                "attribute": "max_seconds",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -267,25 +304,27 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_seconds",
                 "defaultValue": "Number.MAX_SAFE_INTEGER"
             },
             "initial_selected_time": {
                 "type": "string",
-                "attribute": "initial_selected_time",
                 "mutable": false,
                 "complexType": {
-                    "original": "TimeWithUnit | TimeRangeDisplay.ALL",
-                    "resolved": "TimeRangeDisplay.ALL | TimeWithUnit",
+                    "original": "AtITimeWithUnit | TimeRangeDisplay.ALL",
+                    "resolved": "AtITimeWithUnit | TimeRangeDisplay.ALL",
                     "references": {
-                        "TimeWithUnit": {
+                        "AtITimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit"
+                            "id": "src/types/time.ts::AtITimeWithUnit",
+                            "referenceLocation": "AtITimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",
                             "path": "../../../types/date",
-                            "id": "src/types/date.ts::TimeRangeDisplay"
+                            "id": "src/types/date.ts::TimeRangeDisplay",
+                            "referenceLocation": "TimeRangeDisplay"
                         }
                     }
                 },
@@ -297,11 +336,11 @@ export class AtTimeWithUnitComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "initial_selected_time"
             },
             "custom_error_message": {
                 "type": "any",
-                "attribute": "custom_error_message",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -317,11 +356,11 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "custom_error_message",
                 "defaultValue": "null"
             },
             "show_all_time": {
                 "type": "boolean",
-                "attribute": "show_all_time",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -337,6 +376,7 @@ export class AtTimeWithUnitComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_all_time",
                 "defaultValue": "false"
             }
         };
@@ -350,7 +390,8 @@ export class AtTimeWithUnitComponent {
             "timeValue": {},
             "timeUnit": {},
             "selectedTime": {},
-            "startDate": {}
+            "startDate": {},
+            "disabledTimeValue": {}
         };
     }
     static get events() {
@@ -380,18 +421,20 @@ export class AtTimeWithUnitComponent {
                     "text": "Emitted when the user submits the time selection"
                 },
                 "complexType": {
-                    "original": "TimeWithUnit | TimeRangeDisplay.ALL",
-                    "resolved": "TimeRangeDisplay.ALL | TimeWithUnit",
+                    "original": "AtITimeWithUnit | TimeRangeDisplay.ALL",
+                    "resolved": "AtITimeWithUnit | TimeRangeDisplay.ALL",
                     "references": {
-                        "TimeWithUnit": {
+                        "AtITimeWithUnit": {
                             "location": "import",
                             "path": "../../../types/time",
-                            "id": "src/types/time.ts::TimeWithUnit"
+                            "id": "src/types/time.ts::AtITimeWithUnit",
+                            "referenceLocation": "AtITimeWithUnit"
                         },
                         "TimeRangeDisplay": {
                             "location": "import",
                             "path": "../../../types/date",
-                            "id": "src/types/date.ts::TimeRangeDisplay"
+                            "id": "src/types/date.ts::TimeRangeDisplay",
+                            "referenceLocation": "TimeRangeDisplay"
                         }
                     }
                 }
@@ -404,8 +447,7 @@ export class AtTimeWithUnitComponent {
                 "methodName": "watchTimeValue"
             }, {
                 "propName": "timeUnit",
-                "methodName": "watchTimeUnit"
+                "methodName": "watchAtTimeUnit"
             }];
     }
 }
-//# sourceMappingURL=at-time-with-unit.js.map

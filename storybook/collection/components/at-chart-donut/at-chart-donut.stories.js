@@ -1,5 +1,6 @@
 const Template = (args) => `
 <at-chart-donut
+    height="${args.height}"
     canvas_id="${args.canvas_id}"
 />
 <script>
@@ -15,6 +16,7 @@ export default {
 export const Donut = {
     args: {
         canvas_id: '1',
+        height: 'md',
         data: {
             labels: ['One', 'Two', 'Three'],
             datasets: [
@@ -36,6 +38,7 @@ export const Donut = {
 export const CenterText = {
     args: {
         canvas_id: '1',
+        height: 'md',
         data: {
             labels: ['One', 'Two', 'Three'],
             datasets: [
@@ -56,4 +59,3 @@ export const CenterText = {
     },
     render: Template,
 };
-//# sourceMappingURL=at-chart-donut.stories.js.map

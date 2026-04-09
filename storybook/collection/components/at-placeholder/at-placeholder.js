@@ -1,10 +1,10 @@
 import { h } from "@stencil/core";
 const placeholderVariants = {
     iconSizes: {
-        xs: 'text-[24px] w-24 h-24',
-        sm: 'text-[48px] w-48 h-48',
-        md: 'text-[64px] w-64 h-64',
-        lg: 'text-[72px] w-72 h-72',
+        xs: '!text-[24px] w-24 h-24',
+        sm: '!text-[48px] w-48 h-48',
+        md: '!text-[64px] w-64 h-64',
+        lg: '!text-[72px] w-72 h-72',
     },
     sizes: {
         xs: 'p-16 flex-row gap-8',
@@ -20,12 +20,26 @@ const placeholderVariants = {
  * @slot - Placed below the content
  */
 export class AtPlaceholderComponent {
-    constructor() {
-        /**
-         * Size of the placeholder
-         */
-        this.size = 'md';
-    }
+    /**
+     * Size of the placeholder
+     */
+    size = 'md';
+    /**
+     * Material icon to be displayed in the center of the placeholder
+     */
+    icon;
+    /**
+     * Title to be displayed below the icon
+     */
+    placeholder_title;
+    /**
+     * Content to be displayed below the title
+     */
+    content;
+    /**
+     * Will show a loading spinner when set
+     */
+    show_loading_spinner;
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }
@@ -33,23 +47,22 @@ export class AtPlaceholderComponent {
         return placeholderVariants.iconSizes[this.size];
     }
     render() {
-        return (h("div", { key: '5253361dc572bb2cc9f3c4c4f6d4680b1450439c', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '1081e6b3c2c0a1c30f20a843713576716d14e654', class: `material-icons text-slate-300 !${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: '592395f255e4d2b34c5bf39f6b85cc9ca358766d', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: 'b528571a9c1ed2b22e6f820b7bb8a395a5e7176b', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'd023d2d801933e9726d52b137afdcd88e7b7adc6', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '1669b110907c996fbd432c56d82dccf8f4ff8366', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '563c755113b4739591a42a84f1254b94e30763fc', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '25dfc291f72b297d56bebeb3752ab11cc41b77f2' }))));
+        return (h("div", { key: '6e2ce1f0b330eec6476f3f5ad26814a9376d5742', class: `${this.placeholderSizeClass} bg-surface-0 text-med flex w-full items-center gap-16 rounded-sm text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: '3b8e537887b7ffeef5c9c615889c6abd7ee7f2d6', class: `material-icons text-slate-300 ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: 'fa3dc93a23729fcf758a21772baefa6b88931572', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '81dd2643d54dd148358d1af099857bfdb7837d4e', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'ad6aa65f327b0afc067120092e37282c1b6306e5', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '35a7df74b99b2d5207f2e2b23a2704092c27e221', class: "text-med text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: 'ae204cd24a57a49429431ef6138fb2b8e16144d0', class: "text-med text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '3a8f52024d811dc66115a5c5786f9f570ff00757' }))));
     }
     static get is() { return "at-placeholder"; }
     static get properties() {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
-                    "original": "PlaceholderSize",
+                    "original": "AtPlaceholderSize",
                     "resolved": "\"lg\" | \"md\" | \"sm\" | \"xs\"",
                     "references": {
-                        "PlaceholderSize": {
+                        "AtPlaceholderSize": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-placeholder/at-placeholder.tsx",
-                            "id": "src/components/at-placeholder/at-placeholder.tsx::PlaceholderSize"
+                            "id": "src/components/at-placeholder/at-placeholder.tsx::AtPlaceholderSize"
                         }
                     }
                 },
@@ -62,11 +75,11 @@ export class AtPlaceholderComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'md'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -81,11 +94,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "placeholder_title": {
                 "type": "string",
-                "attribute": "placeholder_title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -100,11 +113,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "placeholder_title"
             },
             "content": {
                 "type": "string",
-                "attribute": "content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -119,11 +132,11 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "content"
             },
             "show_loading_spinner": {
                 "type": "boolean",
-                "attribute": "show_loading_spinner",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -138,9 +151,9 @@ export class AtPlaceholderComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "show_loading_spinner"
             }
         };
     }
 }
-//# sourceMappingURL=at-placeholder.js.map

@@ -1,9 +1,13 @@
 import { h, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 export class AtColumnManagerComponent {
-    constructor() {
-        this.checkedColumns = [];
-    }
+    /**
+     * Column definitions used in your at-table
+     */
+    col_defs;
+    el;
+    translations;
+    checkedColumns = [];
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
         this.initializeCheckedColumns();
@@ -18,6 +22,12 @@ export class AtColumnManagerComponent {
                 .map((colDef) => colDef.field);
         }
     }
+    /**
+     * Custom event used by at-table-actions to perform ag-grid logic
+     *
+     * Emitted when checkbox is clicked
+     */
+    atChange;
     changeHandler(event) {
         const selectedColumns = event.detail || [];
         const previousColumns = new Set(this.checkedColumns);
@@ -41,11 +51,14 @@ export class AtColumnManagerComponent {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '1acd56886dfbd738d8581741369e21b29be892a4', autoclose: false, width: "fit-content", align: "start" }, h("div", { key: 'c8e87d8e39c32b43830b0c71934abc7b089710e9', slot: "menu-trigger" }, h("at-tooltip", { key: '65689e48ca0e7616c23343e69f17ea7d65c06df7', position: "top" }, h("at-button", { key: 'f0d225ef32c872f8d573925b2774f1ff8944c5d0', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '4167bf77459a1a314ffd197a221d13033a5a8758' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'c9a59fff706754d26d713bb56e32f7c4c3a8721f', class: "w-fit", options: this.col_defs
-                ? this.col_defs.map((colDef) => {
+        return (h("at-menu", { key: '04e9641b8387acbf5fc2a581b05e4ed4237a30e6', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: 'bcfe0674d6ad2c613d4cd2eb064ac6d21b19e667', slot: "menu-trigger" }, h("at-tooltip", { key: '109f7fdc73d387a8db8e0be4f40430038aaecc3c', position: "top" }, h("at-button", { key: 'ce0585b094d75d6ff5df381fb8b51518cccc0e62', slot: "tooltip-trigger", type: "secondaryText", icon: "graphic_eq" }), h("span", { key: '7fc900b488c5f5dea247a9f05ba0c6ad02c29a7d' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '875deab63fae2c6fd4c211c5956f6fcb04c00134', class: "w-fit", options: this.col_defs
+                ? this.col_defs
+                    .filter((colDef) => colDef.headerName &&
+                    colDef.headerName.trim() !== '')
+                    .map((colDef) => {
                     return {
-                        option_id: colDef.field,
-                        label: colDef.field,
+                        value: colDef.field,
+                        label: colDef.headerName,
                     };
                 })
                 : [], value: this.checkedColumns, onAtuiChange: (event) => this.changeHandler(event) })));
@@ -55,7 +68,6 @@ export class AtColumnManagerComponent {
         return {
             "col_defs": {
                 "type": "unknown",
-                "attribute": "col_defs",
                 "mutable": false,
                 "complexType": {
                     "original": "ColDef[]",
@@ -64,7 +76,8 @@ export class AtColumnManagerComponent {
                         "ColDef": {
                             "location": "import",
                             "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef"
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
+                            "referenceLocation": "ColDef"
                         }
                     }
                 },
@@ -97,13 +110,13 @@ export class AtColumnManagerComponent {
                     "text": "Custom event used by at-table-actions to perform ag-grid logic\n\nEmitted when checkbox is clicked"
                 },
                 "complexType": {
-                    "original": "ColumnManagerChangeEvent",
-                    "resolved": "ColumnManagerChangeEvent",
+                    "original": "AtIColumnManagerChangeEvent",
+                    "resolved": "AtIColumnManagerChangeEvent",
                     "references": {
-                        "ColumnManagerChangeEvent": {
+                        "AtIColumnManagerChangeEvent": {
                             "location": "local",
                             "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/at-column-manager/at-column-manager.tsx",
-                            "id": "src/components/table-components/at-column-manager/at-column-manager.tsx::ColumnManagerChangeEvent"
+                            "id": "src/components/table-components/at-column-manager/at-column-manager.tsx::AtIColumnManagerChangeEvent"
                         }
                     }
                 }
@@ -117,4 +130,3 @@ export class AtColumnManagerComponent {
             }];
     }
 }
-//# sourceMappingURL=at-column-manager.js.map

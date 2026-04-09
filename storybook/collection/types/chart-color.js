@@ -1,11 +1,11 @@
 // TODO: VCOMPLIB-1153 Support dark theme chart paette.
-export var ChartColorPalette;
-(function (ChartColorPalette) {
-    ChartColorPalette["CATEGORICAL"] = "categorical";
-    ChartColorPalette["SEQUENTIAL"] = "sequential";
-    ChartColorPalette["ALERT"] = "alert";
-    ChartColorPalette["CUSTOM"] = "custom";
-})(ChartColorPalette || (ChartColorPalette = {}));
+export var AtChartColorPalette;
+(function (AtChartColorPalette) {
+    AtChartColorPalette["CATEGORICAL"] = "categorical";
+    AtChartColorPalette["SEQUENTIAL"] = "sequential";
+    AtChartColorPalette["ALERT"] = "alert";
+    AtChartColorPalette["CUSTOM"] = "custom";
+})(AtChartColorPalette || (AtChartColorPalette = {}));
 const categorical = [
     '#7E57C2', // TOKEN_COLOR_BASE_PURPLE_400
     '#26A69A', // TOKEN_COLOR_BASE_TEAL_400
@@ -67,4 +67,3 @@ export const palettes = {
     sequential: sequential,
     alert: alert,
 };
-//# sourceMappingURL=chart-color.js.map

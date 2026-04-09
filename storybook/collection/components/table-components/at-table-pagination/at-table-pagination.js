@@ -6,35 +6,44 @@ import { h, Host } from "@stencil/core";
  * have control of the table's pagination.
  */
 export class AtTablePagination {
-    constructor() {
-        /**
-         * Current page number
-         */
-        this.current_page = 1;
-        /**
-         * Total number of pages
-         */
-        this.num_pages = 1;
-        /**
-         * Options provided in dropdown for page sizes.
-         */
-        this.page_size_options = [
-            { value: '5' },
-            { value: '10' },
-            { value: '20' },
-            { value: '50' },
-            { value: '100' },
-        ];
-    }
+    /**
+     * Current page number
+     */
+    current_page = 1;
+    /**
+     * Total number of pages
+     */
+    num_pages = 1;
+    /**
+     * Options provided in dropdown for page sizes.
+     */
+    page_size_options = [
+        { value: '5' },
+        { value: '10' },
+        { value: '20' },
+        { value: '50' },
+        { value: '100' },
+    ];
+    /**
+     * The number of table rows displayed per page
+     */
+    page_size = 10;
+    /**
+     * Emits event with ```event.detail``` as the new page number
+     */
+    atChange;
+    /**
+     * Emits event with ```event.detail``` as the new page size
+     */
+    atPageSizeChange;
     render() {
-        return (h(Host, { key: '4e942eaa9c40db76a68040218794eba5b292ca78', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '2b00ba9e8943e79753ba5fe5dc9fcde1003a7c06' }, "Page Size: "), h("at-select", { key: '3ec98c5f757492256b551f04c1f77312bd9820ed', options: this.page_size_options, value: `${this.page_size_options[0]}`, clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '43fa742a879adcf9c33cb44e32a91f84d69964ec', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: 'b787d8f98cd40618a3473b9c8b3cdfa853b423c9', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: '7074b656788dd0fe1736d6aba3598c372fe90558' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: 'cad8c13a30dec564ef905b78792f49f9964226fd', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '82d07bb30333966b1a6fea5fd1f3f7d8bf5ce623', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
+        return (h(Host, { key: 'a6b981abdda5117f553ab9269d6e3357948dac47', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'c5ecaecc57a8db1d25a46d81ed444de1a86f901d' }, "Page Size: "), h("at-select", { key: '55b1bdde88f989eb4aded0b44ed7264728c15628', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '7e9acd1b57bc3fda292e430c342ba309f02d68fc', disabled: this.current_page === 1, type: "secondaryText", icon: "first_page", onAtuiClick: () => this.atChange.emit(1) }), h("at-button", { key: 'bb2b577a3b54ea0b7e7811c871c94fdf98605a5d', disabled: this.current_page === 1, type: "secondaryText", icon: "chevron_left", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }), h("span", { key: '7e522ff3facf2d070988c655fa27fe80f5c1d90d' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '26e33a6ec035168ac578a880ed1b36cda0a22724', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "chevron_right", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }), h("at-button", { key: '4965556c2d1775477ebccf1a4205dc92538c60aa', disabled: this.current_page === this.num_pages, type: "secondaryText", icon: "last_page", onAtuiClick: () => this.atChange.emit(this.num_pages) })));
     }
     static get is() { return "at-table-pagination"; }
     static get properties() {
         return {
             "current_page": {
                 "type": "number",
-                "attribute": "current_page",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -50,11 +59,11 @@ export class AtTablePagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "current_page",
                 "defaultValue": "1"
             },
             "num_pages": {
                 "type": "number",
-                "attribute": "num_pages",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -70,20 +79,21 @@ export class AtTablePagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "num_pages",
                 "defaultValue": "1"
             },
             "page_size_options": {
                 "type": "unknown",
-                "attribute": "page_size_options",
                 "mutable": false,
                 "complexType": {
-                    "original": "SelectOption[]",
-                    "resolved": "SelectOption[]",
+                    "original": "AtISelectOption[]",
+                    "resolved": "AtISelectOption[]",
                     "references": {
-                        "SelectOption": {
+                        "AtISelectOption": {
                             "location": "import",
                             "path": "../../../types/select",
-                            "id": "src/types/select.ts::SelectOption"
+                            "id": "src/types/select.ts::AtISelectOption",
+                            "referenceLocation": "AtISelectOption"
                         }
                     }
                 },
@@ -96,6 +106,26 @@ export class AtTablePagination {
                 "getter": false,
                 "setter": false,
                 "defaultValue": "[\n        { value: '5' },\n        { value: '10' },\n        { value: '20' },\n        { value: '50' },\n        { value: '100' },\n    ]"
+            },
+            "page_size": {
+                "type": "number",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "The number of table rows displayed per page"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "page_size",
+                "defaultValue": "10"
             }
         };
     }
@@ -133,4 +163,3 @@ export class AtTablePagination {
             }];
     }
 }
-//# sourceMappingURL=at-table-pagination.js.map

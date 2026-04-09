@@ -48,37 +48,70 @@ const promptInputVariants = classlist('text-body text-dark w-full resize-none bo
  * @slot footer - Custom content displayed below input
  */
 export class AtPromptInputComponent {
-    constructor() {
-        /**
-         * Placeholder text to be shown when no input is passed
-         */
-        this.placeholder = 'Enter your message...';
-        /**
-         * Maximum height in pixels for auto-resize
-         */
-        this.max_height = 240;
-        /**
-         * Maximum character length with counter display
-         */
-        this.max_length = 2000;
-        /**
-         * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
-         */
-        this.in_progress = false;
-        /**
-         * The value of the input
-         */
-        this.value = '';
-        /**
-         * Disable input interactions and apply visual indication
-         */
-        this.disabled = false;
-        this.invalid = false;
-        /**
-         * @slot label - Custom label content (alternative to using the label prop)
-         */
-        this.inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
-    }
+    /**
+     * Label above the input container
+     */
+    label;
+    /**
+     * Short description or validation hint if required
+     */
+    hint_text;
+    /**
+     * Optional info icon with detailed tooltip description
+     */
+    info_text;
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Placeholder text to be shown when no input is passed
+     */
+    placeholder = 'Enter your message...';
+    /**
+     * Maximum height in pixels for auto-resize
+     */
+    max_height = 240;
+    /**
+     * Maximum character length with counter display
+     */
+    max_length = 2000;
+    /**
+     * Controls whether the component is in progress (shows stop button) or ready to send (shows send button)
+     */
+    in_progress = false;
+    /**
+     * The value of the input
+     */
+    value = '';
+    /**
+     * Disable input interactions and apply visual indication
+     */
+    disabled = false;
+    textareaEl;
+    translations;
+    invalid = false;
+    el;
+    /**
+     * Emits when the value changes
+     */
+    atChange;
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emits when the input receives focus
+     */
+    atFocus;
+    /**
+     * @slot label - Custom label content (alternative to using the label prop)
+     */
+    inputId = `prompt-input-${Math.random().toString(36).substring(2, 11)}`;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -126,7 +159,7 @@ export class AtPromptInputComponent {
         else if (this.value && this.value.trim() !== '' && !this.invalid) {
             this.atSubmit.emit(this.value.trim());
             this.value = '';
-            this.invalid = false; // Reset invalid state when message is sent
+            this.invalid = false;
             setTimeout(() => {
                 this.autoResize();
                 this.focusInput();
@@ -145,16 +178,16 @@ export class AtPromptInputComponent {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '83ddc5b458b88f683b397c5e8ea1fbd45900ea56', tabindex: "-1", id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '8f959e58d77d01bf3d5435ad917a88587da77650', class: "flex flex-col" }, h("slot", { key: 'efbb4436d76b7a7cfba09b31a4738c08c52486c9', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '8165dd5235ec8fa8db1cffc42c67921d01e9e005', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '2e40e2a247fbb863f17c49e9436d1015d36445ec', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'aa1c90b8a0f85918872235286db1ddaf3e10b327', class: containerClass }, h("textarea", { key: '73086dc3c9daef8d4daf6b7938d35f0782b8f39a', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (h(Host, { key: 'f180b479713b2117bd46520d5a221c06899cf1e3', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '2195473e15bc788d617045e12d6d1dccf8a7b6d7', class: "flex flex-col" }, h("slot", { key: '60ae5ff402ebc849044e0c06cd47fc577fd4d7d5', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '6408e7503367f1ea1250f2297c333b2d1cccf91f', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '1ddc98f4cfa26604fc7813f4eecb4453be896d64', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: '71960b2b9a44cbb2a16addc1873d75f1d196cc01', class: containerClass }, h("textarea", { key: '9634103b285445561d98e20e05233b72664b11b3', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
-                overflow: 'hidden',
-            }, "data-name": "prompt-input" }), h("div", { key: '193fb252cd2dadcb982b88113e610a6c2128560f', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'd4e41c321954e527bb81bcc472d045538318f84d', class: "flex items-center gap-4" }, h("slot", { key: '5d8c5dbd5bedf4d9eb191242a8f9d38134b7cd83', name: "actions-left" })), h("div", { key: '33059fb3494abe8066f8bbe778df110c9d4e856a', class: "flex items-center gap-4 self-end" }, h("slot", { key: '9c03bfce1aa5e274a722257b18537f4f4ca349b7', name: "actions-right" }), h("at-button", { key: '5542d45d78720fbd79b21cdfcd5637c8fcdeac51', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+                overflow: 'auto',
+            }, "data-name": "prompt-input" }), h("div", { key: 'd9cfad91d2aab9ded2124803addeeea4a3d226dc', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: '85ce096fac63498567cf46ec7c5b460d0cfb5971', class: "flex items-center gap-4" }, h("slot", { key: '1d2157054370047f04061ae6536594fb3f222e09', name: "actions-left" })), h("div", { key: '8104b211e8a6276e9fa8544defe477fd8bf40517', class: "flex items-center gap-4 self-end" }, h("slot", { key: 'c00b876d358ec9d5e36bdec1fb21730d8c01aec3', name: "actions-right" }), h("at-button", { key: '2dc2a84030c5afbc3a67eb15e532192021399bb1', class: "rounded-lg", size: "sm", type: "secondary", icon: this.in_progress ? 'stop' : 'arrow_upward', disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" })))), h("slot", { key: '62235cdf56406d7068ebd04c426ee61721178baf', name: "footer" }), this.invalid && (h("span", { key: 'c730faacb68703bdffb92969baedbd532a3afdce', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" })))), h("slot", { key: '0a6c4e9c6babb669fa672df3df89a0a83fd025bb', name: "footer" }), this.invalid && (h("span", { key: '3373e4551eb431427590987110c39fe81d8e7920', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }
@@ -163,7 +196,6 @@ export class AtPromptInputComponent {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -178,11 +210,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "hint_text": {
                 "type": "string",
-                "attribute": "hint_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -197,11 +229,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hint_text"
             },
             "info_text": {
                 "type": "string",
-                "attribute": "info_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -216,11 +248,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "info_text"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -235,11 +267,11 @@ export class AtPromptInputComponent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -255,11 +287,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "'Enter your message...'"
             },
             "max_height": {
                 "type": "number",
-                "attribute": "max_height",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -275,11 +307,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_height",
                 "defaultValue": "240"
             },
             "max_length": {
                 "type": "number",
-                "attribute": "max_length",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -295,11 +327,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_length",
                 "defaultValue": "2000"
             },
             "in_progress": {
                 "type": "boolean",
-                "attribute": "in_progress",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -315,11 +347,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "in_progress",
                 "defaultValue": "false"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -335,11 +367,11 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -355,6 +387,7 @@ export class AtPromptInputComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };
@@ -431,4 +464,3 @@ export class AtPromptInputComponent {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=at-prompt-input.js.map

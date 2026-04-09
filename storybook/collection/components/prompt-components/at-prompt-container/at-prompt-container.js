@@ -7,71 +7,88 @@ import { fetchTranslations } from "../../../utils/translation";
  * @slot prompt-container-footer - Custom content displayed below the message input
  */
 export class AtPromptContainer {
-    constructor() {
-        /**
-         * Array of messages to display in the conversation thread
-         */
-        this.messages = [];
-        /**
-         * Title displayed in the header section
-         */
-        this.header_title = 'AI Assistant';
-        /**
-         * Placeholder text for the input field
-         */
-        this.placeholder = 'Type your message here...';
-        /**
-         * Shows loading state and disables input
-         */
-        this.loading = false;
-        /**
-         * Disables all interactions with the container
-         */
-        this.disabled = false;
-        /**
-         * Controls visibility of the header section
-         */
-        this.show_header = true;
-        /**
-         * Controls visibility of the "New Thread" button in the header
-         */
-        this.show_new_thread_button = true;
-        /**
-         * Maximum character length for input messages
-         */
-        this.max_message_length = 2000;
-        /**
-         * Display voting actions for assistant messages
-         */
-        this.enable_vote = true;
-        /**
-         * Display copy action for assistant messages
-         */
-        this.enable_copy = true;
-        /**
-         * Display edit action for user messages
-         */
-        this.enable_edit = false;
-        this.currentInput = '';
-        this.inputInvalid = false;
-        this.inputError = '';
-        this.isSendEnabled = true;
-        this.translations = {};
-        this.handleSubmit = async (content) => {
-            if (!content || this.disabled || this.loading || !this.isSendEnabled) {
-                return;
-            }
-            this.isSendEnabled = false;
-            await this.addMessage('user', content);
-            this.atSubmit.emit(content);
-        };
-        this.handleStop = () => {
-            this.atStop.emit();
-        };
-        this.handleNewThread = async () => {
-            await this.newThread();
-        };
-    }
+    el;
+    /**
+     * Array of messages to display in the conversation thread
+     */
+    messages = [];
+    /**
+     * Placeholder text for the input field
+     */
+    placeholder = 'Type your message here...';
+    /**
+     * Error text displayed when invalid is set via max length
+     */
+    error_text;
+    /**
+     * Shows loading state and disables input
+     */
+    loading = false;
+    /**
+     * Disables all interactions with the container
+     */
+    disabled = false;
+    /**
+     * Controls visibility of the "New Thread" button in the header
+     */
+    show_new_thread_button = true;
+    /**
+     * Maximum character length for input messages
+     */
+    max_message_length = 2000;
+    /**
+     * Display voting actions for assistant messages
+     */
+    enable_vote = true;
+    /**
+     * Display copy action for assistant messages
+     */
+    enable_copy = true;
+    /**
+     * Display edit action for user messages
+     */
+    enable_edit = false;
+    /**
+     * Enable streaming text animations for system/assistant messages
+     * - 'none': No animation
+     * - 'fade': Fade in the entire message
+     * - 'words': Animate words appearing sequentially like ChatGPT
+     */
+    response_animation = 'words';
+    currentInput = '';
+    inputInvalid = false;
+    inputError = '';
+    isSendEnabled = true;
+    translations = {};
+    /**
+     * Emits when a message should be sent
+     */
+    atSubmit;
+    /**
+     * Emits when the stop button is clicked
+     */
+    atStop;
+    /**
+     * Emitted when the "New Thread" button is clicked
+     */
+    atNewThread;
+    /**
+     * Emitted when a message copy action is requested
+     */
+    atMessageCopy;
+    /**
+     * Emitted when a message retry action is requested
+     */
+    atMessageRetry;
+    /**
+     * Emitted when a message edit action is requested
+     */
+    atMessageEdit;
+    /**
+     * Emitted when a message vote action is requested
+     */
+    atMessageVote;
+    inputComponent;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -95,13 +112,17 @@ export class AtPromptContainer {
         }
     }
     handleMessageVote(event) {
-        event.stopPropagation();
         const messageIndex = this.messages.findIndex((msg) => msg.id === event.detail.messageId);
         if (messageIndex !== -1) {
             const updatedMessages = [...this.messages];
-            updatedMessages[messageIndex] = Object.assign(Object.assign({}, updatedMessages[messageIndex]), { vote_status: event.detail.score });
+            updatedMessages[messageIndex] = {
+                ...updatedMessages[messageIndex],
+                score: event.detail.score,
+            };
             this.messages = updatedMessages;
+            this.atMessageVote.emit(event.detail);
         }
+        this.atMessageVote.emit(event.detail);
     }
     /**
      * Programmatically add a message to the conversation thread
@@ -158,34 +179,47 @@ export class AtPromptContainer {
             }, 0);
         }
     }
+    handleSubmit = async (content) => {
+        if (!content || this.disabled || this.loading || !this.isSendEnabled) {
+            return;
+        }
+        this.isSendEnabled = false;
+        await this.addMessage('user', content);
+        this.atSubmit.emit(content);
+    };
+    handleStop = () => {
+        this.atStop.emit();
+    };
+    handleNewThread = async () => {
+        await this.newThread();
+    };
     renderHeader() {
-        var _a, _b, _c;
-        if (!this.show_header)
+        if (!this.show_new_thread_button)
             return null;
-        const newThreadText = ((_c = (_b = (_a = this.translations) === null || _a === void 0 ? void 0 : _a.ATUI) === null || _b === void 0 ? void 0 : _b.PROMPT) === null || _c === void 0 ? void 0 : _c.NEW_THREAD) || 'New Thread';
-        return (h("at-header", { size: "h3", header_title: this.header_title, subtitle: this.subtitle, border: true, "data-name": "prompt-container-header" }, this.show_new_thread_button && (h("at-button", { slot: "actions", size: "sm", type: "secondaryText", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText))));
+        const newThreadText = this.translations?.ATUI?.PROMPT?.NEW_THREAD || 'New Thread';
+        return (h("div", { class: "flex justify-end pb-16" }, h("at-button", { slot: "actions", size: "md", type: "primaryOutline", onClick: this.handleNewThread, disabled: this.loading, "data-name": "new-thread-button" }, newThreadText)));
     }
     renderFooter() {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: '3901dc5b26e561b776855a1bb408414dddfb257f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: 'c8a36a4f584581bf8487257a0f80bbeef5252842', name: "prompt-container-header" }), h("div", { key: '135e7e62c498fe00357c3529a5a115784c399b06', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '9bf80c9694fd575ed8cd168010ddf01a29ef7223', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, "data-name": "container-thread" })), h("div", { key: '48327d43d3a871eedcc5949ae28bcd0ec6792235', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '9cf7058f2f32878d10cab95e3379b49c474c9190', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '1f5ca320b8bf845de224e6b609e5d58bb2bcd9d5', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '778925aff73037f76f3050f6a3d70dfe78c7c977', name: "prompt-container-header" }), h("div", { key: '5498b1874cf8335bfa6df4bca16feadaf08ee573', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: 'c4e2a23a9d56c8604f9312b9e561ca473be221c6', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '982484d03a364cd2336d7b5daac664f990e92275', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: 'b8e8ea64a9aa273e50c1c2e1a420ad022e17943a', name: "prompt-container-footer" }))));
     }
     static get is() { return "at-prompt-container"; }
     static get properties() {
         return {
             "messages": {
                 "type": "unknown",
-                "attribute": "messages",
                 "mutable": true,
                 "complexType": {
-                    "original": "PromptMessage[]",
-                    "resolved": "PromptMessage[]",
+                    "original": "AtIPromptMessage[]",
+                    "resolved": "AtIPromptMessage[]",
                     "references": {
-                        "PromptMessage": {
+                        "AtIPromptMessage": {
                             "location": "import",
-                            "path": "../../../types/prompt",
-                            "id": "src/types/prompt.ts::PromptMessage"
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIPromptMessage",
+                            "referenceLocation": "AtIPromptMessage"
                         }
                     }
                 },
@@ -199,48 +233,8 @@ export class AtPromptContainer {
                 "setter": false,
                 "defaultValue": "[]"
             },
-            "header_title": {
-                "type": "string",
-                "attribute": "header_title",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Title displayed in the header section"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "defaultValue": "'AI Assistant'"
-            },
-            "subtitle": {
-                "type": "string",
-                "attribute": "subtitle",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Subtitle displayed below the title in the header"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false
-            },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -256,11 +250,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "'Type your message here...'"
             },
             "error_text": {
                 "type": "string",
-                "attribute": "error_text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -275,11 +269,11 @@ export class AtPromptContainer {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "error_text"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -295,11 +289,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -315,31 +309,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
-            },
-            "show_header": {
-                "type": "boolean",
-                "attribute": "show_header",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Controls visibility of the header section"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "defaultValue": "true"
             },
             "show_new_thread_button": {
                 "type": "boolean",
-                "attribute": "show_new_thread_button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -355,11 +329,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show_new_thread_button",
                 "defaultValue": "true"
             },
             "max_message_length": {
                 "type": "number",
-                "attribute": "max_message_length",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -375,11 +349,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max_message_length",
                 "defaultValue": "2000"
             },
             "enable_vote": {
                 "type": "boolean",
-                "attribute": "enable_vote",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -395,11 +369,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_vote",
                 "defaultValue": "true"
             },
             "enable_copy": {
                 "type": "boolean",
-                "attribute": "enable_copy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -415,11 +389,11 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_copy",
                 "defaultValue": "true"
             },
             "enable_edit": {
                 "type": "boolean",
-                "attribute": "enable_edit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -435,7 +409,35 @@ export class AtPromptContainer {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enable_edit",
                 "defaultValue": "false"
+            },
+            "response_animation": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "AtPromptResponseAnimation",
+                    "resolved": "\"fade\" | \"none\" | \"words\"",
+                    "references": {
+                        "AtPromptResponseAnimation": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtPromptResponseAnimation",
+                            "referenceLocation": "AtPromptResponseAnimation"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Enable streaming text animations for system/assistant messages\n- 'none': No animation\n- 'fade': Fade in the entire message\n- 'words': Animate words appearing sequentially like ChatGPT"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "response_animation",
+                "defaultValue": "'words'"
             }
         };
     }
@@ -560,10 +562,10 @@ export class AtPromptContainer {
         return {
             "addMessage": {
                 "complexType": {
-                    "signature": "(role: MessageRole, content: string) => Promise<void>",
+                    "signature": "(role: AtPromptUserRole, content: string) => Promise<void>",
                     "parameters": [{
                             "name": "role",
-                            "type": "\"user\" | \"assistant\" | \"system\"",
+                            "type": "\"user\" | \"assistant\"",
                             "docs": "- The message role"
                         }, {
                             "name": "content",
@@ -575,15 +577,17 @@ export class AtPromptContainer {
                             "location": "global",
                             "id": "global::Promise"
                         },
-                        "MessageRole": {
+                        "AtPromptUserRole": {
                             "location": "import",
-                            "path": "../../../types/prompt",
-                            "id": "src/types/prompt.ts::MessageRole"
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtPromptUserRole",
+                            "referenceLocation": "AtPromptUserRole"
                         },
-                        "PromptMessage": {
+                        "AtIPromptMessage": {
                             "location": "import",
-                            "path": "../../../types/prompt",
-                            "id": "src/types/prompt.ts::PromptMessage"
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIPromptMessage",
+                            "referenceLocation": "AtIPromptMessage"
                         }
                     },
                     "return": "Promise<void>"
@@ -689,31 +693,31 @@ export class AtPromptContainer {
     static get elementRef() { return "el"; }
     static get listeners() {
         return [{
-                "name": "atuiSubmit",
+                "name": "atSubmit",
                 "method": "handleInputSubmit",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiMessageCopy",
+                "name": "atThreadMessageCopy",
                 "method": "handleMessageCopy",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiMessageRetry",
+                "name": "atThreadMessageRetry",
                 "method": "handleMessageRetry",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiMessageEdit",
+                "name": "atThreadMessageEdit",
                 "method": "handleMessageEdit",
                 "target": undefined,
                 "capture": false,
                 "passive": false
             }, {
-                "name": "atuiMessageVote",
+                "name": "atThreadMessageVote",
                 "method": "handleMessageVote",
                 "target": undefined,
                 "capture": false,
@@ -721,4 +725,3 @@ export class AtPromptContainer {
             }];
     }
 }
-//# sourceMappingURL=at-prompt-container.js.map

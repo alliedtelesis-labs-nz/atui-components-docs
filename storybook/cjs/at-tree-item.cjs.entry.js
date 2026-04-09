@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-i7hIKTeN.js');
-var classlist = require('./classlist-BddvonaD.js');
+var index = require('./index-CdUivN1V.js');
+var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
     variants: {
@@ -21,23 +21,36 @@ const AtTreeItemComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiClick = index.createEvent(this, "atuiClick", 7);
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * Determines whether to add the arrow indicator icon
-         */
-        this.has_children = false;
-        /**
-         * Determines the direction of the indicator arrow
-         */
-        this.selected = false;
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
     }
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * Defines the indent of the tree item
+     */
+    depth;
+    /**
+     * Determines whether to add the arrow indicator icon
+     */
+    has_children = false;
+    /**
+     * Determines the direction of the indicator arrow
+     */
+    selected = false;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    get el() { return index.getElement(this); }
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
     handleClick(event) {
         this.atuiClick.emit({
             originalEvent: event,
@@ -56,22 +69,17 @@ const AtTreeItemComponent = class {
         }
     }
     render() {
-        var _a;
         const classname = getTreeItemClasses({
             disabled: this.disabled,
             size: this.size,
         });
-        const depth = (_a = this.depth) !== null && _a !== void 0 ? _a : 0;
+        const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (index.h(index.Host, { key: 'ace9e4fcb2d5fa866f64679b382397a69a35de92', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '6d9d5b6a60f89e085983969d087fc8ac14945c62', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: 'eeed906c0cf9001359a932f48992db676ee27d68', class: "flex gap-4" }, this.has_children && (index.h("span", { key: '59ca2a66eec4d3cc619a34d4fc3546a85f976354', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
+        return (index.h(index.Host, { key: '6975f9573f8b7afed3f6dd3fec92606d0b69fb32', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '088b310dcf1a2e6315d0bd999fabc385b626fbf5', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: 'fd18e63ce946631ce73c2a177ded82f071c8489f', class: "flex gap-4" }, this.has_children && (index.h("span", { key: 'aa0dc03db3b6187b141419860d0d44a7c5275748', class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "tree-item-indicator" }, this.selected
             ? 'keyboard_arrow_down'
-            : 'keyboard_arrow_right')), this.label && (index.h("span", { key: '8151f8d40374929cbd38ab5676df663147b94397', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: '8fd006573fc18288b1ce23681e916a89ad5bede1', name: "label" })), index.h("slot", { key: '47ee2d99392eb24e87442078602d519eb24cb7a0' })), index.h("div", { key: '8a4d0b9c69b7f6a3ea4450ec96ec3ab26d45a5ac', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+            : 'keyboard_arrow_right')), this.label && (index.h("span", { key: '5c256e96758c2270ef2441ca2a046686f5e88a14', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: '7693c1736ae0500a83b1edd76e195e4fe6eecf5e', name: "label" })), index.h("slot", { key: 'ec0b3baef7157a230c84a8e4a60ab48bf444cf8b' })), index.h("div", { key: '5290e415d750cb121b179db9050860a0dee9c4ac', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
-    get el() { return index.getElement(this); }
 };
 
 exports.at_tree_item = AtTreeItemComponent;
-//# sourceMappingURL=at-tree-item.entry.cjs.js.map
-
-//# sourceMappingURL=at-tree-item.cjs.entry.js.map

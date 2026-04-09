@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-C8uvvL0O.js';
-import { c as classlist } from './classlist-Bfa-pAao.js';
+import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-CkS36Ijo.js';
+import { c as classlist } from './classlist-COG8_R0C.js';
 
 const buttonVariantsConfig = {
     variants: {
@@ -13,13 +13,13 @@ const buttonVariantsConfig = {
             lg: 'py-8',
         },
         type: {
-            primary: 'bg-active-foreground text-impact focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/90 group-focus:bg-active-foreground/80 focus-visible:ring-2',
-            primaryOutline: 'border-primary-foreground text-active-foreground focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
-            primaryText: 'text-active-foreground focus-visible:ring-active-foreground/30 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 bg-transparent focus-visible:ring-2',
-            secondary: 'text-impact focus-visible:ring-active-foreground/30 bg-slate-600 group-hover:bg-slate-700 group-focus:bg-slate-800 focus-visible:ring-2',
-            secondaryOutline: 'border-dark text-foreground focus-visible:ring-active-foreground/30 border border-solid bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
-            secondaryText: 'text-foreground focus-visible:ring-active-foreground/30 bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
-            destructive: 'bg-destructive-foreground text-impact focus-visible:ring-active-foreground/30 group-hover:bg-destructive-foreground/90 group-focus:bg-destructive-foreground/80 focus-visible:ring-2',
+            primary: 'bg-active-foreground text-impact focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/90 group-focus:bg-active-foreground/80 focus-visible:ring-2',
+            primaryOutline: 'border-primary-foreground text-active-foreground focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
+            primaryText: 'text-active-foreground focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 bg-transparent focus-visible:ring-2',
+            secondary: 'text-foreground focus-visible:ring-active-foreground/40 bg-slate-100 focus-visible:ring-2',
+            secondaryOutline: 'border-dark text-foreground focus-visible:ring-active-foreground/40 border border-solid bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
+            secondaryText: 'text-foreground focus-visible:ring-active-foreground/40 bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
+            destructive: 'bg-destructive-foreground text-impact focus-visible:ring-active-foreground/40 group-hover:bg-destructive-foreground/90 group-focus:bg-destructive-foreground/80 focus-visible:ring-2',
             destructiveOutline: 'border-destructive-foreground text-destructive-foreground focus-visible:ring-destructive-foreground/30 group-hover:bg-destructive-foreground/10 group-focus:bg-destructive-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
             destructiveText: 'text-destructive-foreground focus-visible:ring-destructive-foreground/30 group-hover:bg-destructive-foreground/10 group-focus:bg-destructive-foreground/20 bg-transparent focus-visible:ring-2',
         },
@@ -98,32 +98,49 @@ const AtButtonComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiClick = createEvent(this, "atuiClick", 7);
-        /**
-         * If set, will request submit from the closest form element when clicked
-         */
-        this.submit = false;
-        /**
-         * Styling of the button
-         */
-        this.type = 'primary';
-        /**
-         * Size of the button
-         */
-        this.size = 'lg';
-        /**
-         * When set the button's styling will change and will no longer be interactive
-         */
-        this.disabled = false;
-        /**
-         * When set, will display a loading spinner inside the button and hide all labels & icons
-         */
-        this.in_progress = false;
-        /**
-         * Delay period on spinner
-         */
-        this.spinner_delay_ms = 1000;
-        this.canHideSpinner = true;
     }
+    /**
+     * If set, will request submit from the closest form element when clicked
+     */
+    submit = false;
+    /**
+     * Theme of the button. Default primary
+     */
+    type = 'primary';
+    /**
+     * Size of the button
+     */
+    size = 'lg';
+    /**
+     * Label to be displayed within the button
+     */
+    label;
+    /**
+     * When set the button's styling will change and will no longer be interactive
+     */
+    disabled = false;
+    /**
+     * Material icon to be displayed before the label within the button
+     */
+    icon;
+    /**
+     * Material icon to be displayed after the label within the button
+     */
+    icon_after;
+    /**
+     * When set, will display a loading spinner inside the button and hide all labels & icons
+     */
+    in_progress = false;
+    /**
+     * Delay period on spinner
+     */
+    spinner_delay_ms = 1000;
+    get el() { return getElement(this); }
+    /**
+     * Emits when the button is clicked
+     */
+    atuiClick;
+    canHideSpinner = true;
     get spinnerColour() {
         return spinnerColourPerType[this.type];
     }
@@ -145,6 +162,9 @@ const AtButtonComponent = class {
         }
     }
     handleClick(event) {
+        if (this.disabled) {
+            return;
+        }
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-button',
@@ -154,6 +174,9 @@ const AtButtonComponent = class {
         }
     }
     handleKeyDown(event) {
+        if (this.disabled) {
+            return;
+        }
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
             this.atuiClick.emit({
@@ -170,7 +193,7 @@ const AtButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = classlist('group text-button relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
+        const classname = classlist('at-button group text-button relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
@@ -179,12 +202,11 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: '0f22a11b5885b940c59163a3320e7ea788c38c5b', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'f21401deec889ed2bca3a068ee6d9f9ec19f4e55', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '515e92529f374a8b639e80ede94ccab1512c16b5', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: 'e1b5c4dd4fa56048edabde33760fc0cc3670e751', name: "icon" }), this.icon && (h("span", { key: 'b068f16aa0fd587e7b14eababa320489d0220953', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'fe56570743dd6d42895a94f197f52308caeaa157', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f0c5bf836c91d4dd8b9d2645996338324d6994a2' }), h("slot", { key: '0344d7795fa5e8af20ccd5a51ca3b8a1468e4ea3', name: "icon_after" }), this.icon_after && (h("span", { key: 'a9ab30f90aa7e1c403c22c23250f1ba45dd7bf67', class: `material-icons h-16 w-16 text-[16px] leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: 'c5a4598afaa80c6a802eacaee3572b42326461f2', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'f148131354c9fddadaf719961e12aec296183f4e', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '60879e64f7190678a4a146e01d2cac370b8218b0', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: 'd21fcd1798d63ea42f3cc184a47d371d841ae9a4', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: 'd2335f7faa4c2caaded33a2ce0231d6528d7d9d1', name: "icon" }), this.icon && (h("span", { key: '47072d80a1941587e0f35c3e58171e7dbf5ee647', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: 'eed4e7810ea0b0f232c5ab4d0eee00f809dabd05', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '643cdfbe870c2f16e341fc7a2bee481943e4a9f1' }), h("slot", { key: '4e87f97080c217c013725d29f49ffc35f46340e4', name: "icon_after" }), this.icon_after && (h("span", { key: 'd22ce0a9ca99826bf9ea43fd48b74b78f9ca1f68', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '0d93ee9d30e283bf76ffe4355b875985107fc60b', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
-    get el() { return getElement(this); }
 };
 
-const atLoadingCss = "@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}";
+const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
 
 const loadingVariants = {
     type: {
@@ -206,23 +228,23 @@ const loadingVariants = {
 const AtLoadingComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        /**
-         * Type of loading animation to display
-         */
-        this.variant = 'spinner';
-        /**
-         * Visual type/color of the loading indicator
-         */
-        this.type = 'default';
-        /**
-         * Size of the loading indicator
-         */
-        this.size = 'md';
-        /**
-         * Custom text to display with text-based animations
-         */
-        this.text = 'Loading';
     }
+    /**
+     * Type of loading animation to display
+     */
+    variant = 'spinner';
+    /**
+     * Visual type/color of the loading indicator
+     */
+    type = 'default';
+    /**
+     * Size of the loading indicator
+     */
+    size = 'md';
+    /**
+     * Custom text to display with text-based animations
+     */
+    text = 'Loading';
     get typeClasses() {
         return loadingVariants.type[this.type];
     }
@@ -253,9 +275,6 @@ const AtLoadingComponent = class {
         }
     }
 };
-AtLoadingComponent.style = atLoadingCss;
+AtLoadingComponent.style = atLoadingCss();
 
 export { AtButtonComponent as at_button, AtLoadingComponent as at_loading };
-//# sourceMappingURL=at-button.at-loading.entry.js.map
-
-//# sourceMappingURL=at-button_2.entry.js.map

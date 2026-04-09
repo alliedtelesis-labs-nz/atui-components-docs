@@ -1,7 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type Side = 'left' | 'right';
-export type Collapsible = 'offcanvas' | 'icon' | 'none';
-export type Width = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
+export type AtSideBarWidth = 'menu' | 'panel-xs' | 'panel-sm' | 'panel-md' | 'panel-lg' | 'panel-xl' | 'auto';
 /**
  * @category Navigation
  * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
@@ -14,15 +12,23 @@ export declare class AtSidebarComponent {
     /**
      * Position of the sidebar on the page
      */
-    side: Side;
+    side: 'left' | 'right';
     /**
      * Width of the sidebar
      */
-    width: Width;
+    width: AtSideBarWidth;
     /**
      * Size of the sidebar when collapsed.
      */
-    collapsible: Collapsible;
+    collapsible: 'offcanvas' | 'icon' | 'none';
+    /**
+     * How the sidenav interacts with main content when open
+     */
+    mode: 'over' | 'push';
+    /**
+     * Display a clickable backdrop when mode = over
+     */
+    backdrop: boolean;
     /**
      * Opens the sidebar by default when set
      */
@@ -32,7 +38,9 @@ export declare class AtSidebarComponent {
      * Emits an even when the sidebar is toggled, with `event.detail` being true if the sidebar is now open
      */
     atuiSidebarChange: EventEmitter;
+    el: HTMLAtSidebarElement;
     componentWillLoad(): void;
+    componentDidLoad(): void;
     /**
      * Toggles the sidebar's open state.
      */
@@ -42,5 +50,10 @@ export declare class AtSidebarComponent {
      * @returns The current open state of the sidebar
      */
     getIsOpen(): Promise<boolean>;
+    private handleBackdropClick;
+    /**
+    Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
+     */
+    private handleMenuItemClick;
     render(): any;
 }

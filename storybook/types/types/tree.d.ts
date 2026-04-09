@@ -1,7 +1,7 @@
-export interface TreeNode {
+export interface AtITreeNode {
     id: string;
     displayName: string;
-    children: TreeNode[];
+    children: AtITreeNode[];
     selected?: boolean;
     tooltip?: string;
     depth?: number;

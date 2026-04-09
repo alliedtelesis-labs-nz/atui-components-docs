@@ -1,22 +1,22 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
-export interface IEditTextCellParams {
+export interface AtIEditTextCellParams {
     writePermission?: boolean;
     validator?: (value: string) => boolean;
     maxLength?: string;
     onValueChange: (params: ICellRendererParams) => void;
 }
-interface InitParams extends IEditTextCellParams, ICellRendererParams {
+interface AtInitParams extends AtIEditTextCellParams, ICellRendererParams {
 }
 /**
- * @category Table Cell
+ * @category Data Tables
  * @description A cell component for displaying and editing text.
  */
 export declare class AtEditTextCell implements ICellRendererComp {
     el: HTMLElement;
-    params: InitParams;
-    init(params: InitParams): void;
+    params: AtInitParams;
+    init(params: AtInitParams): void;
     getGui(): HTMLElement;
-    refresh(params: InitParams): boolean;
+    refresh(params: AtInitParams): boolean;
     protected updateCell(newValue: any): void;
     render(): any;
 }

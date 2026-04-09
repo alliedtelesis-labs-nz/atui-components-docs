@@ -66,6 +66,7 @@ export declare class AtTableComponent {
         items: any[];
         total: number;
     }): Promise<void>;
+    handleColDefsChange(newColDefs: ColDef[]): void;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     private initGrid;

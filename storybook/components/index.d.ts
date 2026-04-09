@@ -19,6 +19,8 @@ export { AtButtonGroup as AtButtonGroup } from '../types/components/at-button-gr
 export { defineCustomElement as defineCustomElementAtButtonGroup } from './at-button-group';
 export { AtButtonGroupOption as AtButtonGroupOption } from '../types/components/at-button-group/at-button-group-option/at-button-group-option';
 export { defineCustomElement as defineCustomElementAtButtonGroupOption } from './at-button-group-option';
+export { AtButtonSwitchComponent as AtButtonSwitch } from '../types/components/at-button-switch/at-button-switch';
+export { defineCustomElement as defineCustomElementAtButtonSwitch } from './at-button-switch';
 export { AtCardComponent as AtCard } from '../types/components/at-card/at-card';
 export { defineCustomElement as defineCustomElementAtCard } from './at-card';
 export { AtChartBarLine as AtChartBarLine } from '../types/components/at-chart-bar-line/at-chart-bar-line';
@@ -43,6 +45,8 @@ export { AtColumnManagerComponent as AtColumnManager } from '../types/components
 export { defineCustomElement as defineCustomElementAtColumnManager } from './at-column-manager';
 export { AtCustomTimeRangeComponent as AtCustomTimeRange } from '../types/components/at-time-range/at-custom-time-range/at-custom-time-range';
 export { defineCustomElement as defineCustomElementAtCustomTimeRange } from './at-custom-time-range';
+export { AtDashboard as AtDashboard } from '../types/components/at-dashboard/at-dashboard';
+export { defineCustomElement as defineCustomElementAtDashboard } from './at-dashboard';
 export { AtDialogComponent as AtDialog } from '../types/components/at-dialog/at-dialog';
 export { defineCustomElement as defineCustomElementAtDialog } from './at-dialog';
 export { AtEditTextCell as AtEditTextCell } from '../types/components/table-components/cell-components/at-edit-text-cell/at-edit-text-cell';
@@ -53,10 +57,14 @@ export { AtHeader as AtHeader } from '../types/components/at-header/at-header';
 export { defineCustomElement as defineCustomElementAtHeader } from './at-header';
 export { AtInputComponent as AtInput } from '../types/components/at-input/at-input';
 export { defineCustomElement as defineCustomElementAtInput } from './at-input';
+export { AtInputDate as AtInputDate } from '../types/components/at-input-date/at-input-date';
+export { defineCustomElement as defineCustomElementAtInputDate } from './at-input-date';
 export { AtInputNumericComponent as AtInputNumeric } from '../types/components/at-input-numeric/at-input-numeric';
 export { defineCustomElement as defineCustomElementAtInputNumeric } from './at-input-numeric';
 export { AtInputRangeComponent as AtInputRange } from '../types/components/at-input-range/at-input-range';
 export { defineCustomElement as defineCustomElementAtInputRange } from './at-input-range';
+export { AtInputTime as AtInputTime } from '../types/components/at-input-time/at-input-time';
+export { defineCustomElement as defineCustomElementAtInputTime } from './at-input-time';
 export { AtLayout as AtLayout } from '../types/components/at-layout/at-layout';
 export { defineCustomElement as defineCustomElementAtLayout } from './at-layout';
 export { AtListItem as AtListItem } from '../types/components/at-list-item/at-list-item';
@@ -81,6 +89,8 @@ export { AtMultiSelectComponent as AtMultiSelect } from '../types/components/at-
 export { defineCustomElement as defineCustomElementAtMultiSelect } from './at-multi-select';
 export { AtPlaceholderComponent as AtPlaceholder } from '../types/components/at-placeholder/at-placeholder';
 export { defineCustomElement as defineCustomElementAtPlaceholder } from './at-placeholder';
+export { AtProgressBar as AtProgressBar } from '../types/components/at-progress-bar/at-progress-bar';
+export { defineCustomElement as defineCustomElementAtProgressBar } from './at-progress-bar';
 export { AtPromptContainer as AtPromptContainer } from '../types/components/prompt-components/at-prompt-container/at-prompt-container';
 export { defineCustomElement as defineCustomElementAtPromptContainer } from './at-prompt-container';
 export { AtPromptInputComponent as AtPromptInput } from '../types/components/prompt-components/at-prompt-input/at-prompt-input';
@@ -99,6 +109,10 @@ export { AtSearchTable as AtSearchTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtSearchTable } from './at-search-table';
 export { AtSelectComponent as AtSelect } from '../types/components/at-select/at-select';
 export { defineCustomElement as defineCustomElementAtSelect } from './at-select';
+export { AtSelectGroupComponent as AtSelectGroup } from '../types/components/at-select/at-select-option-group/at-select-option-group';
+export { defineCustomElement as defineCustomElementAtSelectGroup } from './at-select-group';
+export { AtSelectOptionComponent as AtSelectOption } from '../types/components/at-select/at-select-option/at-select-option';
+export { defineCustomElement as defineCustomElementAtSelectOption } from './at-select-option';
 export { AtSidePanelComponent as AtSidePanel } from '../types/components/at-side-panel/at-side-panel';
 export { defineCustomElement as defineCustomElementAtSidePanel } from './at-side-panel';
 export { AtSidebarComponent as AtSidebar } from '../types/components/at-sidebar/at-sidebar';
@@ -117,12 +131,10 @@ export { AtStaticTable as AtStaticTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtStaticTable } from './at-static-table';
 export { AtStatusBar as AtStatusBar } from '../types/components/at-status-bar/at-status-bar';
 export { defineCustomElement as defineCustomElementAtStatusBar } from './at-status-bar';
-export { AtTab as AtTab } from '../types/components/at-tab-selector/at-tab/at-tab';
-export { defineCustomElement as defineCustomElementAtTab } from './at-tab';
-export { AtTabContent as AtTabContent } from '../types/components/at-tab-selector/at-tab-content/at-tab-content';
+export { AtTabContent as AtTabContent } from '../types/components/at-tabs/at-tab-content/at-tab-content';
 export { defineCustomElement as defineCustomElementAtTabContent } from './at-tab-content';
-export { AtTabSelector as AtTabSelector } from '../types/components/at-tab-selector/at-tab-selector';
-export { defineCustomElement as defineCustomElementAtTabSelector } from './at-tab-selector';
+export { AtTabTrigger as AtTabTrigger } from '../types/components/at-tabs/at-tab-trigger/at-tab-trigger';
+export { defineCustomElement as defineCustomElementAtTabTrigger } from './at-tab-trigger';
 export { AtTableComponent as AtTable } from '../types/components/table-components/at-table/at-table';
 export { defineCustomElement as defineCustomElementAtTable } from './at-table';
 export { AtTableActionsComponent as AtTableActions } from '../types/components/table-components/at-table-actions/at-table-actions';
@@ -135,6 +147,8 @@ export { AtTableFilters as AtTableFilters } from '../types/components/table-comp
 export { defineCustomElement as defineCustomElementAtTableFilters } from './at-table-filters';
 export { AtTablePagination as AtTablePagination } from '../types/components/table-components/at-table-pagination/at-table-pagination';
 export { defineCustomElement as defineCustomElementAtTablePagination } from './at-table-pagination';
+export { AtTabs as AtTabs } from '../types/components/at-tabs/at-tabs';
+export { defineCustomElement as defineCustomElementAtTabs } from './at-tabs';
 export { AtTextBadgeCell as AtTextBadgeCell } from '../types/components/table-components/cell-components/at-text-badge-cell/at-text-badge-cell';
 export { defineCustomElement as defineCustomElementAtTextBadgeCell } from './at-text-badge-cell';
 export { AtTextCellComponent as AtTextCell } from '../types/components/table-components/cell-components/at-text-cell/at-text-cell';
@@ -155,6 +169,8 @@ export { AtTitleSubtitleCell as AtTitleSubtitleCell } from '../types/components/
 export { defineCustomElement as defineCustomElementAtTitleSubtitleCell } from './at-title-subtitle-cell';
 export { AtTitleSubtitleDateCell as AtTitleSubtitleDateCell } from '../types/components/table-components/cell-components/at-title-subtitle-date-cell/at-title-subtitle-date-cell';
 export { defineCustomElement as defineCustomElementAtTitleSubtitleDateCell } from './at-title-subtitle-date-cell';
+export { AtToasterComponent as AtToaster } from '../types/components/at-toaster/at-toaster';
+export { defineCustomElement as defineCustomElementAtToaster } from './at-toaster';
 export { AtToggleCell as AtToggleCell } from '../types/components/table-components/cell-components/at-toggle-cell/at-toggle-cell';
 export { defineCustomElement as defineCustomElementAtToggleCell } from './at-toggle-cell';
 export { AtToggleSwitchComponent as AtToggleSwitch } from '../types/components/at-toggle-switch/at-toggle-switch';
@@ -199,4 +215,5 @@ export interface SetPlatformOptions {
   rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;
 }
 export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;
+
 export * from '../types';

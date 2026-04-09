@@ -52,4 +52,3 @@ export default {
     title: 'Components/Table Components/Table Export Menu',
 };
 export const Default = Template.bind({});
-//# sourceMappingURL=at-table-export-menu.stories.js.map

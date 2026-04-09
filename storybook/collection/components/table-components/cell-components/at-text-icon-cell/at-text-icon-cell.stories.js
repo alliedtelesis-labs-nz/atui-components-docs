@@ -65,4 +65,3 @@ Default.args = {
     },
     page_size: 10,
 };
-//# sourceMappingURL=at-text-icon-cell.stories.js.map

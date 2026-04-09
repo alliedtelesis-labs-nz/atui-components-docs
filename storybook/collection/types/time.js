@@ -1,14 +1,14 @@
 import { TimeRangeDisplay } from "./date";
-export var TimeUnit;
-(function (TimeUnit) {
-    TimeUnit["SECONDS"] = "SECONDS";
-    TimeUnit["MINUTES"] = "MINUTES";
-    TimeUnit["HOURS"] = "HOURS";
-    TimeUnit["DAYS"] = "DAYS";
-    TimeUnit["WEEKS"] = "WEEKS";
-    TimeUnit["MONTHS"] = "MONTHS";
-    TimeUnit["YEARS"] = "YEARS";
-})(TimeUnit || (TimeUnit = {}));
+export var AtTimeUnit;
+(function (AtTimeUnit) {
+    AtTimeUnit["SECONDS"] = "SECONDS";
+    AtTimeUnit["MINUTES"] = "MINUTES";
+    AtTimeUnit["HOURS"] = "HOURS";
+    AtTimeUnit["DAYS"] = "DAYS";
+    AtTimeUnit["WEEKS"] = "WEEKS";
+    AtTimeUnit["MONTHS"] = "MONTHS";
+    AtTimeUnit["YEARS"] = "YEARS";
+})(AtTimeUnit || (AtTimeUnit = {}));
 export var TimeExtraOptions;
 (function (TimeExtraOptions) {
     TimeExtraOptions["ALL"] = "ALL";
@@ -24,6 +24,8 @@ export var Duration;
     Duration["YEARS"] = "years";
 })(Duration || (Duration = {}));
 export class SelectedTimeRange {
+    custom;
+    selected;
     /**
      * Generate a unique key when you need ISelectedTimeRange as an argument key of a function call caching.
      * Please see https://lodash.com/docs/4.17.15#memoize
@@ -36,4 +38,3 @@ export class SelectedTimeRange {
         return `${value.selected}`;
     }
 }
-//# sourceMappingURL=time.js.map

@@ -1,4 +1,4 @@
-export interface StatusBar {
+export interface AtIStatusBarSegment {
     tooltip?: string;
     percentage: number;
     backgroundColor: string;
@@ -10,9 +10,9 @@ type Size = 'sm' | 'lg';
  */
 export declare class AtStatusBar {
     /**
-     * List of segments that make up the status bar. Each segment implements the StatusBar interface.
+     * List of segments that make up the status bar. Each segment implements the AtIStatusBarSegment interface.
      */
-    status_bar: StatusBar[];
+    status_bar: AtIStatusBarSegment[];
     /**
      * Height of the status bar
      */

@@ -1,8 +1,8 @@
-export interface DateRange {
+export interface AtIDateRange {
     startDate: Date;
     endDate: Date;
 }
-export interface DateRangeStrings {
+export interface AtIDateRangeStrings {
     from: string;
     to: string;
     lockEndDateToNow?: boolean;
@@ -31,4 +31,5 @@ export declare enum TimeRangesInHours {
     '7d' = 168
 }
 export declare const MIN_DATE: Date;
+export declare const MAX_DATE: Date;
 export declare const DEFAULT_TIME_RANGE = TimeRangeDisplay.TWENTY_FOUR_HOURS;

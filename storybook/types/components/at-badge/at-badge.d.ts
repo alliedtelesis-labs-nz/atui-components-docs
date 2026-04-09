@@ -1,6 +1,6 @@
-export type BadgeType = 'default' | 'info' | 'success' | 'warning' | 'error' | 'disabled';
-export type BadgeContrast = 'high' | 'low';
-export type BadgeSize = 'lg' | 'sm';
+export type AtBadgeType = 'default' | 'info' | 'success' | 'warning' | 'error' | 'disabled';
+export type AtBadgeContrast = 'high' | 'low';
+export type AtBadgeSize = 'lg' | 'sm';
 /**
  * @category Feedback
  * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
@@ -19,15 +19,15 @@ export declare class AtBadgeComponent {
     /**
      * Type of the badge. Determines colour theming.
      */
-    type: BadgeType;
+    type: AtBadgeType;
     /**
      * Size of the badge. Determines padding and font-size. For use in input chip lists.
      */
-    size: BadgeSize;
+    size: AtBadgeSize;
     /**
      * Impact of the badge, changes the colours.
      */
-    impact: BadgeContrast;
+    impact: AtBadgeContrast;
     /**
      * Boolean value to round the edges of the badge.
      */
