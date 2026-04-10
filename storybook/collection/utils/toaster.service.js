@@ -16,16 +16,17 @@ export class ToasterService {
             ...options,
         };
         const toast = { id, type, message, ...toastOptions };
-        this.getToaster(toastOptions.position).addToast(toast);
+        (await this.getToaster(toastOptions.position)).addToast(toast);
     }
     /**
      * Get or create at-toaster component
      * Stores the toaster container with position in the Map
      */
-    static getToaster(position) {
+    static async getToaster(position) {
         if (this.containers.has(position)) {
             return this.containers.get(position);
         }
+        await customElements.whenDefined('at-toaster');
         const el = document.createElement('at-toaster');
         el.setAttribute('position', position);
         document.body.appendChild(el);
