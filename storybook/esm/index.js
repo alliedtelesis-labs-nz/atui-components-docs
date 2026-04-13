@@ -26,20 +26,31 @@ class ToasterService {
             ...options,
         };
         const toast = { id, type, message, ...toastOptions };
-        (await this.getToaster(toastOptions.position)).addToast(toast);
+        const toaster = await this.getToaster(toastOptions.position);
+        toaster.addToast(toast);
     }
     /**
      * Get or create at-toaster component
+     * Waits for the element to be upgraded and hydrated before returning.
      * Stores the toaster container with position in the Map
      */
     static async getToaster(position) {
         if (this.containers.has(position)) {
-            return this.containers.get(position);
+            const existing = this.containers.get(position);
+            if (existing &&
+                document.body.contains(existing)) {
+                return existing;
+            }
+            this.containers.delete(position);
         }
-        await customElements.whenDefined('at-toaster');
         const el = document.createElement('at-toaster');
         el.setAttribute('position', position);
         document.body.appendChild(el);
+        await customElements.whenDefined('at-toaster');
+        const stencilEl = el;
+        if (typeof stencilEl.componentOnReady === 'function') {
+            await stencilEl.componentOnReady();
+        }
         const toasterEl = el;
         this.containers.set(position, toasterEl);
         return toasterEl;

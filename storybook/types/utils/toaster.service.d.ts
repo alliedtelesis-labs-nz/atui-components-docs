@@ -12,6 +12,7 @@ export declare class ToasterService {
     static show(type: AtIToastType, message: string, options?: AtIToastOptions): Promise<void>;
     /**
      * Get or create at-toaster component
+     * Waits for the element to be upgraded and hydrated before returning.
      * Stores the toaster container with position in the Map
      */
     private static getToaster;
