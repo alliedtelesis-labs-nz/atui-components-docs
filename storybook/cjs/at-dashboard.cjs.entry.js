@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-BRms7T38.js');
 
 /**
  * utils.ts 12.4.1
@@ -6479,7 +6479,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: 'd5c4cf50a8fa45345c7e311ea7c219d75c5a5d5c', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", icon: "more_vert", type: "secondaryText" }), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: 'd5c4cf50a8fa45345c7e311ea7c219d75c5a5d5c', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow-menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), index.h("slot", { name: widget.id })))))));
     }

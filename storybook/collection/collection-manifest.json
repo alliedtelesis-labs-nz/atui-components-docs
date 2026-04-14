@@ -39,6 +39,7 @@
     "components/at-dialog/at-dialog.js",
     "components/at-form-label/at-form-label.js",
     "components/at-header/at-header.js",
+    "components/at-icon/at-icon.js",
     "components/at-input/at-input.js",
     "components/at-input-date/at-input-date.js",
     "components/at-input-numeric/at-input-numeric.js",

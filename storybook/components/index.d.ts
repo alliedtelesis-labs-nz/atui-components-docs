@@ -55,6 +55,8 @@ export { AtFormLabelComponent as AtFormLabel } from '../types/components/at-form
 export { defineCustomElement as defineCustomElementAtFormLabel } from './at-form-label';
 export { AtHeader as AtHeader } from '../types/components/at-header/at-header';
 export { defineCustomElement as defineCustomElementAtHeader } from './at-header';
+export { AtIcon as AtIcon } from '../types/components/at-icon/at-icon';
+export { defineCustomElement as defineCustomElementAtIcon } from './at-icon';
 export { AtInputComponent as AtInput } from '../types/components/at-input/at-input';
 export { defineCustomElement as defineCustomElementAtInput } from './at-input';
 export { AtInputDate as AtInputDate } from '../types/components/at-input-date/at-input-date';

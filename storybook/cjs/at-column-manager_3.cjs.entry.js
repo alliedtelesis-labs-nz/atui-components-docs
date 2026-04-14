@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CdUivN1V.js');
+var index = require('./index-BRms7T38.js');
 var translation = require('./translation-C7aG_Jvq.js');
 var atCheckboxCell_entry = require('./at-checkbox-cell.cjs.entry.js');
 var atTextBadgeCell_entry = require('./at-text-badge-cell.cjs.entry.js');

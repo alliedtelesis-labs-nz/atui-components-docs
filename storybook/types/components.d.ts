@@ -915,6 +915,17 @@ export namespace Components {
          */
         "subtitle"?: string;
     }
+    interface AtIcon {
+        /**
+          * The name of carbon icon to use
+         */
+        "name": string;
+        /**
+          * The size of the icon accepts number (in px), string with CSS units (e.g. "1.5rem"), or one of "xs", "sm", "md", or "lg".
+          * @default 16
+         */
+        "size": number | string;
+    }
     /**
      * @category Form Controls
      * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
@@ -3658,6 +3669,12 @@ declare global {
         prototype: HTMLAtHeaderElement;
         new (): HTMLAtHeaderElement;
     };
+    interface HTMLAtIconElement extends Components.AtIcon, HTMLStencilElement {
+    }
+    var HTMLAtIconElement: {
+        prototype: HTMLAtIconElement;
+        new (): HTMLAtIconElement;
+    };
     interface HTMLAtInputElementEventMap {
         "atuiChange": string | number;
     }
@@ -4751,6 +4768,7 @@ declare global {
         "at-edit-text-cell": HTMLAtEditTextCellElement;
         "at-form-label": HTMLAtFormLabelElement;
         "at-header": HTMLAtHeaderElement;
+        "at-icon": HTMLAtIconElement;
         "at-input": HTMLAtInputElement;
         "at-input-date": HTMLAtInputDateElement;
         "at-input-numeric": HTMLAtInputNumericElement;
@@ -5638,6 +5656,17 @@ declare namespace LocalJSX {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    interface AtIcon {
+        /**
+          * The name of carbon icon to use
+         */
+        "name"?: string;
+        /**
+          * The size of the icon accepts number (in px), string with CSS units (e.g. "1.5rem"), or one of "xs", "sm", "md", or "lg".
+          * @default 16
+         */
+        "size"?: number | string;
     }
     /**
      * @category Form Controls
@@ -8004,6 +8033,10 @@ declare namespace LocalJSX {
         "border": boolean;
         "padding": boolean;
     }
+    interface AtIconAttributes {
+        "name": string;
+        "size": string;
+    }
     interface AtInputAttributes {
         "label": string;
         "type": AtInputType;
@@ -8452,6 +8485,7 @@ declare namespace LocalJSX {
         "at-edit-text-cell": AtEditTextCell;
         "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };
         "at-header": Omit<AtHeader, keyof AtHeaderAttributes> & { [K in keyof AtHeader & keyof AtHeaderAttributes]?: AtHeader[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `attr:${K}`]?: AtHeaderAttributes[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `prop:${K}`]?: AtHeader[K] };
+        "at-icon": Omit<AtIcon, keyof AtIconAttributes> & { [K in keyof AtIcon & keyof AtIconAttributes]?: AtIcon[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `attr:${K}`]?: AtIconAttributes[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `prop:${K}`]?: AtIcon[K] };
         "at-input": Omit<AtInput, keyof AtInputAttributes> & { [K in keyof AtInput & keyof AtInputAttributes]?: AtInput[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `attr:${K}`]?: AtInputAttributes[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `prop:${K}`]?: AtInput[K] };
         "at-input-date": Omit<AtInputDate, keyof AtInputDateAttributes> & { [K in keyof AtInputDate & keyof AtInputDateAttributes]?: AtInputDate[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `attr:${K}`]?: AtInputDateAttributes[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `prop:${K}`]?: AtInputDate[K] };
         "at-input-numeric": Omit<AtInputNumeric, keyof AtInputNumericAttributes> & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes]?: AtInputNumeric[K] } & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes as `attr:${K}`]?: AtInputNumericAttributes[K] } & { [K in keyof AtInputNumeric & keyof AtInputNumericAttributes as `prop:${K}`]?: AtInputNumeric[K] };
@@ -8682,6 +8716,7 @@ declare module "@stencil/core" {
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
             "at-header": LocalJSX.IntrinsicElements["at-header"] & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
+            "at-icon": LocalJSX.IntrinsicElements["at-icon"] & JSXBase.HTMLAttributes<HTMLAtIconElement>;
             /**
              * @category Form Controls
              * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.

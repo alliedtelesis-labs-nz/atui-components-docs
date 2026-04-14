@@ -36,6 +36,7 @@ import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } fr
 import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineAtEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-edit-text-cell.js";
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
 import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-header.js";
+import { AtIcon as AtIconElement, defineCustomElement as defineAtIcon } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-icon.js";
 import { AtInputDate as AtInputDateElement, defineCustomElement as defineAtInputDate } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-date.js";
 import { AtInputNumeric as AtInputNumericElement, defineCustomElement as defineAtInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-numeric.js";
 import { AtInputRange as AtInputRangeElement, defineCustomElement as defineAtInputRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-range.js";
@@ -428,6 +429,17 @@ export const AtHeader: StencilReactComponent<AtHeaderElement, AtHeaderEvents> = 
     react: React,
     events: {} as AtHeaderEvents,
     defineCustomElement: defineAtHeader
+});
+
+type AtIconEvents = NonNullable<unknown>;
+
+export const AtIcon: StencilReactComponent<AtIconElement, AtIconEvents> = /*@__PURE__*/ createComponent<AtIconElement, AtIconEvents>({
+    tagName: 'at-icon',
+    elementClass: AtIconElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtIconEvents,
+    defineCustomElement: defineAtIcon
 });
 
 type AtInputEvents = { onAtuiChange: EventName<CustomEvent<string | number>> };
