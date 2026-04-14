@@ -72,7 +72,7 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (index.h("button", { key: '289d37270d9c232b1e476ccdc6bd4e7ba559c92c', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (index.h("span", { key: '74d72649e0686f3f1227b3400dc6fe15e3fbe211', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), index.h("slot", { key: 'c8650fefb20e6e16b60e8c735b97c40a9c91a1bd', name: "icon" }), index.h("slot", { key: '2c389eee9b1cce45dfa27f69451ef346a91e0e3b' }, this.label ? this.label : this.icon ? '' : this.value)));
+        return (index.h("button", { key: '47dd7074af4e10f1ffe02f7be107a6a51d3b2a03', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (index.h("span", { key: '8e9c9e60689a60222761f86a21aca7089b9975e8', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), index.h("slot", { key: '9beecd6346d249f25685f5c03cbf2ad4dfdfa5b7', name: "icon" }), index.h("slot", { key: 'b0a712e121da41176837bf1fb20dccf1ab28f9eb' }, this.label ? this.label : this.icon ? '' : this.value)));
     }
 };
 

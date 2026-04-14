@@ -30,8 +30,8 @@ const AtBreadcrumbComponent = class {
             this.atuiClick.emit(idOfEventTarget);
     }
     render() {
-        return (index.h("nav", { key: 'a4b0103aa627bc03f79d770d8a8aabb1164f52c9', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), index.h("slot", { key: '4b46c7ea018d75c791752291f6319ec4b58f51c6' })));
+        return (index.h("nav", { key: 'ebcb5629506d38e8562f23a2dd5e75842853caf3', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
+            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("i", { class: "material-icons text-icon-md text-light", "aria-hidden": "true", role: "presentation" }, "chevron_right"))))), index.h("slot", { key: '1de8e3ea587d44825c58afaff29690856d12305f' })));
     }
 };
 

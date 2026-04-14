@@ -55,6 +55,7 @@ at-sidebar .sidebar {
   min-height: 100%;
   background-color: var(--token-sidebar-background);
   color: var(--token-sidebar-foreground);
+  fill: var(--token-sidebar-foreground);
   z-index: var(--token-z-index-nav);
   will-change: width;
   transition: width var(--token-transition-time);

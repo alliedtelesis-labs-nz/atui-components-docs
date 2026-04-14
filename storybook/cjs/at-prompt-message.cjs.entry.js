@@ -181,21 +181,18 @@ const AtPromptMessage = class {
     renderActions() {
         if (this.loading)
             return null;
-        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "edit", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.AtPromptResponseScore.UP), "data-name": "vote-up-button" }, index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score === prompt.AtPromptResponseScore.UP
-                ? '#000000'
-                : '#adb5bd' }, this.score === prompt.AtPromptResponseScore.UP ? (index.h("path", { d: "M720-144H264v-480l288-288 32 22q18 13 26.5 33t3.5 41l-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L787-188q-9 20-27 32t-40 12Z" })) : (index.h("path", { d: "M720-144H264v-480l288-288 32 22q17 12 26 30.5t5 38.5l-1 5-38 192h264q30 0 51 21t21 51v57q0 8-1.5 14.5T906-467L786.93-187.8Q778-168 760-156t-40 12Zm-384-72h384l120-279v-57H488l49-243-201 201v378Zm0-378v378-378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
-            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.AtPromptResponseScore.DOWN), "data-name": "vote-down-button" }, index.h("svg", { xmlns: "http://www.w3.org/2000/svg", height: "15px", viewBox: "0 -960 960 960", width: "15px", fill: this.score ===
+        return (index.h("div", { class: "mt-2 flex items-center justify-end gap-2", "data-name": "message-actions" }, this.role === 'user' && this.enable_edit && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", class: "text-xs", onClick: this.handleEdit, "data-name": "edit-button" }, index.h("at-icon", { slot: "icon", name: "edit" })), index.h("span", null, this.translations?.ATUI?.PROMPT?.EDIT || 'Edit'))), this.role === 'assistant' && this.enable_vote && (index.h(index.Fragment, null, index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.AtPromptResponseScore.UP), "data-name": "vote-up-button" }, index.h("at-icon", { slot: "icon", name: this.score === prompt.AtPromptResponseScore.UP
+                ? 'thumbs_up_filled'
+                : 'thumbs_up' })), index.h("span", null, this.translations?.ATUI?.PROMPT?.HELPFUL ||
+            'Helpful')), index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: () => this.handleVote(prompt.AtPromptResponseScore.DOWN), "data-name": "vote-down-button" }, index.h("at-icon", { slot: "icon", name: this.score ===
                 prompt.AtPromptResponseScore.DOWN
-                ? '#000000'
-                : '#adb5bd' }, this.score ===
-            prompt.AtPromptResponseScore.DOWN ? (index.h("path", { d: "M240-816h456v480L408-48l-32-22q-18-13-26.5-33t-3.5-41l38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Z" })) : (index.h("path", { d: "M240-816h456v480L408-48l-32-22q-17-12-26-30.5t-5-38.5l1-5 38-192H120q-30 0-51-21t-21-51v-57q0-8 1.5-14.5T54-493l119-279q8-20 26.5-32t40.5-12Zm384 72H240L120-465v57h352l-49 243 201-201v-378Zm0 378v-378 378Z" })))), index.h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
-            'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", icon: this.copyFeedbackVisible
-                ? 'check'
-                : 'content_copy', type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }), index.h("span", null, this.copyFeedbackVisible
+                ? 'thumbs_down_filled'
+                : 'thumbs_down' })), index.h("span", null, this.translations?.ATUI?.PROMPT?.NOT_HELPFUL ||
+            'Not Helpful')))), this.role === 'assistant' && this.enable_copy && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: this.handleCopy, "data-name": "copy-button" }, index.h("at-icon", { slot: "icon", name: this.copyFeedbackVisible ? 'check' : 'copy' })), index.h("span", null, this.copyFeedbackVisible
             ? this.translations?.ATUI?.PROMPT?.COPIED ||
                 'Copied'
             : this.translations?.ATUI?.PROMPT?.COPY ||
-                'Copy'))), this.role === 'assistant' && this.error && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", icon: "refresh", onClick: this.handleRetry, "data-name": "retry-button" }), index.h("span", null, this.translations?.ATUI?.PROMPT?.RETRY || 'Retry')))));
+                'Copy'))), this.role === 'assistant' && this.error && (index.h("at-tooltip", { position: "top" }, index.h("at-button", { slot: "tooltip-trigger", size: "sm", type: "secondaryText", onClick: this.handleRetry, "data-name": "retry-button" }, index.h("at-icon", { slot: "icon", name: "retry" })), index.h("span", null, this.translations?.ATUI?.PROMPT?.RETRY || 'Retry')))));
     }
     renderContent() {
         if (this.loading) {
@@ -221,7 +218,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'd5cb865c537283fd1a8506cd78f3d48d18787a5e', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '1f82a92dfc459c854c0dd86686574278faecd21b', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'fec4b8ac6e94a5fbc2944f8967ffa8d4841b2c3b', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '0a1551810668dac87a66b9fdb37f5467c8a62f3c', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '81d2322a5b10b4f74c514d7d61a7a11d137b27a2', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '65c2747ec3201d4f3eeae76eb156042587353961', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '0069cb641137cc25edddcf7d11fee29283ea001d', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '52a6c73942b550429d7d7296655c60dcbaa5da9c', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

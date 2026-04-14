@@ -291,16 +291,16 @@ export class AtSelectComponent {
             this.optionEls.length > 0);
     }
     render() {
-        return (h(Host, { key: 'f1d7a9419ab44865e360dc32f067bab81602f69b', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '63a21fcc1e62e1dea55e7351c3e1e78c0b22a390', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '330653962559efbd71344db21f005935406aa4b2', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '04355c77c0d038ee744dfa363a58d4a4798f20c9', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '35982b07b1360e7a013223d933426a92c00aebda' }, this.error_text && this.invalid && (h("span", { key: 'e03d915e7904b6487a2518e5b0bc580d3690d696', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: 'cb78e99cfefc887cd7040759c69994716a6a77f1' }, this.error_text && this.invalid && (h("span", { key: 'b965963c479205ed88e942f41c57b7263e2f2747', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -315,14 +315,14 @@ export class AtSelectComponent {
         return (h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.selectedLabel || this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (h("div", { class: "absolute top-4 right-24" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onClick: async (event) => {
+            !this.disabled && (h("div", { class: "absolute top-4 right-24" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
                 this.atuiChange.emit(this.value);
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
+            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen ? 'arrow_drop_up' : 'arrow_drop_down')))));
     }
     renderOptions() {
         return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
@@ -330,7 +330,7 @@ export class AtSelectComponent {
             } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
             }, onKeyDown: (e) => {
@@ -345,7 +345,7 @@ export class AtSelectComponent {
                     return;
                 }
                 e.stopPropagation();
-            }, "data-name": "select-clear" }))))), this.filteredOptions
+            }, "data-name": "select-clear" }, h("at-icon", { slot: "icon", name: "cancel" })))))), this.filteredOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);

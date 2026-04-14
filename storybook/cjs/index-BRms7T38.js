@@ -304,10 +304,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-toaster.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-icon.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './at-icon.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-layout_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -352,10 +348,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-select_3.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'at-button_2.cjs':
+                case 'at-button_3.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './at-button_2.cjs.entry.js')); }).then(processMod, consoleError);
+                        './at-button_3.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-placeholder_6.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

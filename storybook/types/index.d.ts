@@ -34,3 +34,4 @@ export { AtTimeDateUtil } from './utils/at-time-date.util';
 export { type AtSelectedTimeRangeExtended, AtTimePresets, } from './models/at-time-range.models';
 export { type AtIDateRange, type AtIDateRangeStrings } from './types/date';
 export { AtTimeUnit, type AtITimeWithUnit } from './types/time';
+export { AtIconDescriptor } from './types/svg-icon';

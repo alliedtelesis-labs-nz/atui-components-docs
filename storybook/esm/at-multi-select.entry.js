@@ -293,16 +293,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (h(Host, { key: 'b7e320d55949d773e6ba4c46c3d42316e286a31e', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'c82ae1d354b1954757609139dd135a973b172a04', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '91a735203bebaf274f03ed5ade597d340b40e671', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '7fe4f6bd361ceec55e5bd1ee340d08ef10099025', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '18387ce7dd6f4534d3ab91ba8e07949ec096e58d' }, this.error_text && this.invalid && (h("span", { key: '08f5fc1468277adb0ef10cccea3fdefe4528ad83', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '76c3bff70f39fd96d2f1353a0cef3dcfb4dde3b7' }, this.error_text && this.invalid && (h("span", { key: 'c7c64db6493a6cdcdb1ddadd7b0cf074388bbc2f', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
@@ -325,7 +325,7 @@ const AtMultiSelectComponent = class {
             } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 bg-white p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", icon: "cancel", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
             }, onKeyDown: (e) => {
@@ -340,7 +340,7 @@ const AtMultiSelectComponent = class {
                     return;
                 }
                 e.stopPropagation();
-            }, "data-name": "multi-select-search-clear" }))))), this.filteredOptions
+            }, "data-name": "multi-select-search-clear" }, h("at-icon", { slot: "icon", name: "cancel" })))))), this.filteredOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);
