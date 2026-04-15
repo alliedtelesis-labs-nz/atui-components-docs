@@ -66,7 +66,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: '46349c89426c3ccf355a99ec7ef4e3340ddb0441', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (index.h("i", { key: '1c1d8cc1125a721c9fa55612063e02663584aecd', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), index.h("span", { key: '0b0bb0894a297e32f2b7a07ee2d8897e2108c712', "data-name": "badge-label" }, this.label), index.h("slot", { key: 'ccb5c9bca100248cf8e0ecbca8be3754b71399b7' })));
+        return (index.h(index.Host, { key: '55550c18bc2474fc5263fc82cd4fa4219cdd8f66', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (index.h("i", { key: '8dfe2af3df66ca3316513a209903a2fbe5efbe4e', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), index.h("span", { key: 'e2f4f7e9a8dfdb5d3b646dfd72e54037ce1821f0', "data-name": "badge-label" }, this.label), index.h("slot", { key: '402efc35b11f10b2008e0284b35a24c0b5e176d1' })));
     }
 };
 

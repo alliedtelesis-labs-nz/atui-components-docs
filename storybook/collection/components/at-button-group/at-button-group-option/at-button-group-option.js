@@ -72,7 +72,7 @@ export class AtButtonGroupOption {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: '47dd7074af4e10f1ffe02f7be107a6a51d3b2a03', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '8e9c9e60689a60222761f86a21aca7089b9975e8', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: '9beecd6346d249f25685f5c03cbf2ad4dfdfa5b7', name: "icon" }), h("slot", { key: 'b0a712e121da41176837bf1fb20dccf1ab28f9eb' }, this.label ? this.label : this.icon ? '' : this.value)));
+        return (h("button", { key: '67314e516038b530778e7ee1019416140de70a45', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: 'b3c71c169228ee6e574edff96a9bdb15d64c4513', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: '4ed5c0ef3bd3ffa5a38edc0930189005f6f291d4', name: "icon" }), h("slot", { key: '44e48ff86a7eee8bdde84d519827f94406271c59' }, this.label ? this.label : this.icon ? '' : this.value)));
     }
     static get is() { return "at-button-group-option"; }
     static get properties() {

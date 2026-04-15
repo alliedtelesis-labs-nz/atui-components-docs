@@ -392,14 +392,14 @@ export class AtMenu {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '44246457eaf0c8103269803c9fbbf4777a628b2d', class: "relative", onBlur: (e) => {
+        return (h(Host, { key: 'bf5949e95626314a20703acae6c69f65d8cd7a25', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (h("div", { key: 'ce9922193c6f0b05220ba8ac9abffd5b90febbd9', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (h("div", { key: '8553f86afcc4387238c1ff00fc6f5bb250872a7d', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -425,7 +425,7 @@ export class AtMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'bf525c2221f7f902487226fc070f085e22d485e1', name: "menu-trigger" }))), h("div", { key: 'b09c424bd8e01f67ec6f4175568bbca766c7f22a', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'ab3dd7f4d3a9ce91865dbeaca7c97f1c9152a6e1', name: "menu-trigger" }))), h("div", { key: 'c9e2f0bf7c83cb1118c3124cf10b6440d3c8a9d5', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -437,7 +437,7 @@ export class AtMenu {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: 'e7f1b8ecd83b1d9fc5ad05978fd0836c374f3092' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `w-max min-w-0 flex-none rounded-md bg-white p-4 shadow-md transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: 'eae3cb54b3d02c32a38c793c84793c9f397aeda9' }))));
     }
     static get is() { return "at-menu"; }
     static get properties() {

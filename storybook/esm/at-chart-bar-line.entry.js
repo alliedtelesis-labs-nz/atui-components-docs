@@ -243,7 +243,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: 'e92172b00b5c6e3306ba20d18c03ecd6d8ba226c', style: { height: '100%', width: '100%' } }, h("canvas", { key: '0a779a9cd7731aa12c888070aab4c51a51119327', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'd4ab5d9ddd6d15fe6f96e5b512c00efcce523faf', style: { height: '100%', width: '100%' } }, h("canvas", { key: '8420905ca0314509939c55090e30a555353e70a0', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

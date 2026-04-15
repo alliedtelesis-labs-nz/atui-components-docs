@@ -7,8 +7,8 @@ const messageVariants = {
     icon: {
         error: 'error',
         warning: 'warning',
-        success: 'check_circle',
-        info: 'info',
+        success: 'success',
+        info: 'info_filled',
         default: '',
     },
     iconColour: {
@@ -17,6 +17,13 @@ const messageVariants = {
         success: 'text-success-foreground',
         info: 'text-info-foreground',
         default: 'text-dark',
+    },
+    iconFill: {
+        error: 'fill-destructive-foreground',
+        warning: 'fill-warning-foreground',
+        success: 'fill-success-foreground',
+        info: 'fill-info-foreground',
+        default: 'fill-dark',
     },
     background: {
         high: {
@@ -68,7 +75,7 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (h("div", { key: '7a8e7a80f6d065ceaf0ef0e207545d462597d4e0', class: this.hostClasses, "data-name": "message-container" }, h("i", { key: 'fda061e2c75dd1e1a2e4e53a279751ae5679e905', class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName), h("div", { key: '2b3d51fdc7f0d11e1f7bd16dfff680f8d86d23f4', class: "flex w-full flex-row justify-between gap-4" }, h("div", { key: 'e7eec3d62e3126ad1319fcc394294c3400d8c75b' }, this.message_title && (h("div", { key: '26079753a16feb263504a8cf56fd309bb7c07030', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: '4d0d548da1a64ee37b9480434c5ccba3ee35f45a', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '3ad243d713eca0d202ea2c7abf3fbc501115a8f2' })), h("slot", { key: '312d4b2d4e140b437f8fc7375c7d405771bc9e57', name: "actions" }))));
+        return (h("div", { key: '74065bf2cb496956a9b5d8269e85b381d57a1a1b', class: this.hostClasses, "data-name": "message-container" }, this.icon ? (h("i", { class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName)) : (h("at-icon", { class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName })), h("div", { key: 'f8c1c942e8bb80ada037212896b23e3ba88bd686', class: "flex w-full flex-row justify-between gap-4" }, h("div", { key: '07cf813284ce17612c4f35c9f22c1baf71b83dbc' }, this.message_title && (h("div", { key: 'b1c5bfc11723f3405eb1cc744b1a024168f39371', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: 'c269545e04018a5ef67853332ea306c1dadb9f69', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '8a530a0907bbd85fa5394fcefe178971aaa3af2e' })), h("slot", { key: '38b441cff40c5b5d16293a4ca62f1b47b4f439e1', name: "actions" }))));
     }
 };
 AtMessage.style = atMessageCss();
