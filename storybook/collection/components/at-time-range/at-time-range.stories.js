@@ -23,8 +23,8 @@ const Template = (args) => `
     el.presets = ${JSON.stringify(args.presets ?? defaultPresets)};
     el.selected_time_range = ${JSON.stringify(args.selected_time_range ?? { selected: { unit: 'HOURS', value: 1 } })};
     debug.textContent = 'Initial: ' + JSON.stringify(el.selected_time_range, null, 2);
-    el.addEventListener('atuiChange', function(e) {
-        debug.textContent = 'atuiChange: ' + JSON.stringify(e.detail, null, 2);
+    el.addEventListener('atuiTimeChange', function(e) {
+        debug.textContent = 'atuiTimeChange: ' + JSON.stringify(e.detail, null, 2);
     });
 })();
 </script>
@@ -42,10 +42,10 @@ const setProps = async ({ canvasElement, args }) => {
             debug.textContent =
                 'Initial: ' + JSON.stringify(el.selected_time_range, null, 2);
         }
-        el.addEventListener('atuiChange', (e) => {
+        el.addEventListener('atuiTimeChange', (e) => {
             if (debug) {
                 debug.textContent =
-                    'atuiChange: ' + JSON.stringify(e.detail, null, 2);
+                    'atuiTimeChange: ' + JSON.stringify(e.detail, null, 2);
             }
         });
     }

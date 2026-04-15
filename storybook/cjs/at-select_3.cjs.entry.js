@@ -170,6 +170,20 @@ const AtSelectComponent = class {
             }
         });
     }
+    findLabelByValue(value) {
+        if (!value)
+            return '';
+        if (this.options && this.options.length > 0) {
+            const option = this.findOptionByValue(value);
+            if (option) {
+                return option.label || option.value;
+            }
+        }
+        if (this.slottedOptionLabels.has(value)) {
+            return this.slottedOptionLabels.get(value);
+        }
+        return '';
+    }
     filterOptions(options) {
         const trimmedSearch = this.searchText.trim().toLowerCase();
         if (!trimmedSearch)
@@ -267,18 +281,6 @@ const AtSelectComponent = class {
         const allOptions = this.options.flatMap((opt) => opt.children ? [opt, ...opt.children] : [opt]);
         return allOptions.find((opt) => opt.value === value);
     }
-    findLabelByValue(value) {
-        if (!value)
-            return '';
-        if (this.options && this.options.length > 0) {
-            const option = this.findOptionByValue(value);
-            return option?.label || value;
-        }
-        if (this.slottedOptionLabels.has(value)) {
-            return this.slottedOptionLabels.get(value);
-        }
-        return value;
-    }
     get hasMatchingOptions() {
         return this.filteredOptions.length > 0;
     }
@@ -292,17 +294,24 @@ const AtSelectComponent = class {
         return ((this.options && this.options.length > 0) ||
             this.optionEls.length > 0);
     }
+    get displayValue() {
+        if (!this.value) {
+            return '';
+        }
+        const computed = this.selectedLabel || this.findLabelByValue(this.value);
+        return computed;
+    }
     render() {
-        return (index.h(index.Host, { key: '63a21fcc1e62e1dea55e7351c3e1e78c0b22a390', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '9c65fac98a4c8c4ffb47e23c35cfa595807ddcb7', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '04355c77c0d038ee744dfa363a58d4a4798f20c9', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '7ef65f8ed31c4306709b8b028be0eec4f9ec95a5', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'cb78e99cfefc887cd7040759c69994716a6a77f1' }, this.error_text && this.invalid && (index.h("span", { key: 'b965963c479205ed88e942f41c57b7263e2f2747', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '9922cf15ac07c9f95c65d4e0f0e48dd8d1d39067' }, this.error_text && this.invalid && (index.h("span", { key: 'b7170bbfd7faa89870d6b83c0cfff235d4a152c4', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -314,7 +323,7 @@ const AtSelectComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.selectedLabel || this.value, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        return (index.h("div", { class: "relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
             !this.disabled && (index.h("div", { class: "absolute top-4 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onClick: async (event) => {

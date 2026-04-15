@@ -87,6 +87,7 @@ export declare class AtSelectComponent {
     componentDidLoad(): void;
     private setupOptionElements;
     addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
+    private findLabelByValue;
     private filterOptions;
     private filterSlottedContent;
     private updateIsOpenState;
@@ -96,10 +97,10 @@ export declare class AtSelectComponent {
     private handleSearchInput;
     private isGroup;
     private findOptionByValue;
-    private findLabelByValue;
     get hasMatchingOptions(): boolean;
     get hasAnyMatchingOptions(): boolean;
     get hasAnyOptions(): boolean;
+    private get displayValue();
     render(): any;
     renderLabel(): any;
     renderInput(): any;
