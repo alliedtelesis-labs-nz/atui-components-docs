@@ -315,9 +315,7 @@ const AtMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        return (h("div", { class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0 }, h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none text-foreground pointer-events-none flex h-full items-center bg-transparent p-4", role: "presentation", tabindex: -1 }, h("span", { class: "material-icons h-16 w-16 text-[16px] leading-[16px]", "data-name": "button-icon-right" }, this.isOpen
-            ? 'arrow_drop_up'
-            : 'arrow_drop_down'))))));
+        return (h("div", { class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0 }, h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (h("div", { class: "absolute right-4 flex items-center" }, h("div", { class: "user-select-none fill-foreground pointer-events-none bg-transparent p-4", role: "presentation", tabindex: -1 }, h("at-icon", { name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }))))));
     }
     renderOptions() {
         return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {

@@ -134,7 +134,7 @@ const AtTimeRangeComponent = class {
                 'All Time'));
         }
         if (time.custom) {
-            return (index.h("div", { id: "custom", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, this.formatDate(time.custom.from)), index.h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), index.h("span", null, time.custom.lockEndDateToNow
+            return (index.h("div", { id: "custom", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, this.formatDate(time.custom.from)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, time.custom.lockEndDateToNow
                 ? 'NOW'
                 : this.formatDate(time.custom.to))));
         }
@@ -142,11 +142,11 @@ const AtTimeRangeComponent = class {
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = atTimeDate_util.AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (index.h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("span", { class: "icon-md material-icons text-disabled" }, "arrow_forward"), index.h("span", null, "NOW")));
+            return (index.h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, "NOW")));
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'f6a4f509b46cb8d658f196b0c1fd29413ea15361', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'bdfc70c5f95fc7da1cb78a34bd4cc0bc56b8d8a6', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

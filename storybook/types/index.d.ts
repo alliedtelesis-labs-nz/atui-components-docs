@@ -8,6 +8,7 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 export * from './components';
+export * from './icons/atui-icons';
 export { AtITitleSubtitleData } from './components/table-components/cell-components/at-title-subtitle-cell/at-title-subtitle-cell';
 export { AtITitleSubtitleDateData } from './components/table-components/cell-components/at-title-subtitle-date-cell/at-title-subtitle-date-cell';
 export { AtITextStatusCellData } from './components/table-components/cell-components/at-text-status-cell/at-text-status-cell';

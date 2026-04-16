@@ -82,7 +82,7 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             labelPosition: this.label_position,
         });
-        const getThumbClassname = classlist('material-icons text-icon-md absolute relative m-2 flex h-[16px] w-[16px] scale-1 items-center justify-center rounded-full text-center text-white select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
+        const getThumbClassname = classlist('m-2 rounded-full fill-white select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
         const thumbClassname = getThumbClassname({
             active: this.value,
             disabled: this.disabled,
@@ -92,12 +92,12 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '5bef16e7f72511cdf5fcbf1e8e0e8e948844e16e', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '6e9e28a580295aaa67afda89627259a865fd3c28', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '71ed255fb7958e9ee1935bf7a338fe1de4ee2e28', class: "flex flex-col" }, h("slot", { key: '7ca8480b8e64d6d78646ec5e56ba117c4e83bd98', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'e2e065e302cd353f3472a8b46c6cbf711652e990', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '735f50fc7092d15aa52e1377463aceb69190651e', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '4f680b9d036a6833c250df879480b1b27c323df5', class: "relative flex h-20 w-40" }, h("input", { key: '5c6ae3d0171b16af7e632a9e90dff5bd2ca17b9b', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: 'acfc0be9e445e96dce820c7ca76e931354b66ff8', class: trackClassname }, h("span", { key: '3673135456cb6996cc3e34e272ddc77fd879a51c', class: thumbClassname }, this.value ? 'check' : 'remove')))));
+            } }, h("div", { key: '8e6c3c6c5f8dcff0a0df0188c7efc4eecba4ce3b', class: "flex flex-col" }, h("slot", { key: '02efa27305f395d29df192e44155b0fe6d01a49e', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '77d003ce4a0b2135c88765877a4944edf3fe66fa', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: 'ca7c4d2245107bc4b47b73bfeb1cdd6a87940ee9', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '8bd07acf7212dba210c8101d282e4349f992e60c', class: "relative flex h-20 w-40" }, h("input", { key: 'f2a42a388b4484f10241938ca15a5695d1394b06', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '5dd1859f227fa38dccbb2edd16f3ac89250f9eb3', class: trackClassname }, h("at-icon", { key: 'bd40ec76f9b07946f2a13599f7b77e8d2564c2bd', name: this.value ? 'check' : 'subtract', class: thumbClassname })))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {
