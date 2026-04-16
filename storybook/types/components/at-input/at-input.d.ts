@@ -1,5 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-export type AtInputType = 'text' | 'url' | 'email' | 'password';
+export type AtInputType = 'text' | 'url' | 'email' | 'password' | 'number';
 /**
  * @category Form Controls
  * @description A comprehensive text input component with label, validation, hints, and accessibility features. Supports multiple input types, clearable functionality, and integrates with form validation.
