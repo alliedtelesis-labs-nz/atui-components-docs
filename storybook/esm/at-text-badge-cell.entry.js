@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-Dm8LkzEZ.js';
+import { r as registerInstance, g as getElement, h, H as Host } from './index-BAAX2Der.js';
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
