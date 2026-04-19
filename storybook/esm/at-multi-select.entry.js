@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-Dm8LkzEZ.js';
-import { f as fetchTranslations } from './translation-C11vpe5m.js';
+import { f as fetchTranslations } from './translation-B5XBUsvV.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 

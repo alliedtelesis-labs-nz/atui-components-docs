@@ -1,5 +1,5 @@
 import { r as registerInstance, h, c as createEvent, g as getElement, H as Host } from './index-Dm8LkzEZ.js';
-import { f as fetchTranslations } from './translation-C11vpe5m.js';
+import { f as fetchTranslations } from './translation-B5XBUsvV.js';
 
 const placeholderVariants = {
     iconSizes: {
