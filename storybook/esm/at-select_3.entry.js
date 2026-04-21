@@ -331,7 +331,7 @@ const AtSelectComponent = class {
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" })))));
+            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" })))));
     }
     renderOptions() {
         return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
@@ -404,7 +404,7 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (h(Host, { key: '0b298a1fdfdba8f6bc859b9e99ea76aedb34c18e', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: '9bc4091b9f250c892a520ca9317727bdf6172414', role: "group", "aria-labelledby": this.label }, h("li", { key: '8ac23d048510b01995994371ad21864a16560f22', id: this.label, class: "text-muted border-subtle border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: 'cb62424bf5a41f9a20cf60c414fadfa68499a643' }))));
+        return (h(Host, { key: '0b298a1fdfdba8f6bc859b9e99ea76aedb34c18e', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: '9bc4091b9f250c892a520ca9317727bdf6172414', role: "group", "aria-labelledby": this.label }, h("li", { key: 'd7fe2eb2b2c07d60713f9b152bafcf8bded004a1', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: 'dd3c5fbddcc0d0f1a966c0709596817717932fec' }))));
     }
 };
 

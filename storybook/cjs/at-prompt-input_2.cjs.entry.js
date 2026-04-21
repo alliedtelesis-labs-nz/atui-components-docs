@@ -190,7 +190,7 @@ const AtPromptInputComponent = class {
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" }, index.h("at-icon", { key: '5982813195ccf0ce0491e4006ea83eb89dd39632', slot: "icon", name: this.in_progress ? 'stop' : 'allowUp' }))))), index.h("slot", { key: 'e39d0075232bb5f5dca54948d2c9889ff41ad76e', name: "footer" }), this.invalid && (index.h("span", { key: 'eea9d156bb79ce78b3d6f09d23b29b3c56fecc8d', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" }, index.h("at-icon", { key: '5982813195ccf0ce0491e4006ea83eb89dd39632', slot: "icon", name: this.in_progress ? 'stop' : 'allowUp' }))))), index.h("slot", { key: 'e39d0075232bb5f5dca54948d2c9889ff41ad76e', name: "footer" }), this.invalid && (index.h("span", { key: 'e2b3e16d6c95ae93857c2d08c880b168aeb034ea', class: "text-error-foreground text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }

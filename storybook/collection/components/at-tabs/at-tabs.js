@@ -150,7 +150,7 @@ export class AtTabs {
     }
     checkLayoutAndRender() {
         if (this.layout === 'horizontal') {
-            return (h("at-layout", { class: "flex flex-grow", template: "tabset", "data-name": "navigation-top" }, !this.hide_nav && (h("div", { slot: "tabset-navigation" }, h("nav", { role: "tablist", class: "border-subtle relative flex flex-wrap gap-2 border-b px-2 text-center text-sm font-medium", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }), h("div", { id: `indicator-${this.tabsetId}`, class: "bg-active-accent pointer-events-none absolute bottom-0 z-10 mx-8 h-2 rounded-sm transition-[left] duration-150 ease-in-out", style: {
+            return (h("at-layout", { class: "flex flex-grow", template: "tabset", "data-name": "navigation-top" }, !this.hide_nav && (h("div", { slot: "tabset-navigation" }, h("nav", { role: "tablist", class: "border-muted relative flex flex-wrap gap-2 border-b px-2 text-center text-sm font-medium", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }), h("div", { id: `indicator-${this.tabsetId}`, class: "bg-active-accent pointer-events-none absolute bottom-0 z-10 mx-8 h-2 rounded-sm transition-[left] duration-150 ease-in-out", style: {
                     left: '0',
                     opacity: '0',
                 }, "aria-hidden": "true", role: "presentation" })))), h("div", { role: "tabpanel", slot: "tabset-content" }, h("slot", { name: "tab-content" }))));
@@ -160,7 +160,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: '822f848d43f7cc05149521cb50f6064cfa1be86f' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'c5a3d946a881ebf4fe02d422ab708ebe293aa2b8' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {

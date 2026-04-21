@@ -486,7 +486,7 @@
   color-scheme: light;
   --root-color: #ffffff;
   --root-inv: #000000;
-  --mix-subtle: 50%;
+  --mix-muted: 50%;
   --mix-impact: 80%;
   /* Primitives
     Purpose: These represent raw design decisions like colors and spacing, with no usage context.
@@ -812,7 +812,7 @@
   --token-state-warning-foreground-inv: var(--token-color-base-amber-100);
   --token-state-warning-background-inv: var(--token-color-base-amber-850);
   --token-state-warning-accent: var(--token-color-base-amber-900);
-  --token-state-error-foreground: var(--token-color-base-red700);
+  --token-state-error-foreground: var(--token-color-base-red-700);
   --token-state-error-background: var(--token-color-base-red-100);
   --token-state-error-foreground-inv: var(--token-color-base-red-100);
   --token-state-error-background-inv: var(--token-color-base-red-700);
@@ -830,7 +830,7 @@
   /* Border */
   --token-border-default: var(--token-color-base-grey-500);
   --token-border-impact: var(--token-color-base-grey-600);
-  --token-border-subtle: var(--token-color-base-grey-300);
+  --token-border-muted: var(--token-color-base-grey-300);
   --token-border-input: var(--token-border-impact);
   --token-border-error: var(--token-state-error-accent);
   --token-border-active: var(--token-state-active-accent);
@@ -898,7 +898,7 @@
   --token-sidebar-active-background: var(--token-state-active-background);
   --token-sidebar-active-foreground: var(--token-state-active-foreground);
   --token-sidebar-active-accent: var(--token-state-active-accent);
-  --token-sidebar-border: var(--token-border-subtle);
+  --token-sidebar-border: var(--token-border-muted);
   --token-sidebar-item-padding: 8px;
   /* Input */
   --token-input-height: 36px;
@@ -911,7 +911,7 @@
   --token-input-radius: var(--token-border-radius-md);
   /* Card */
   --token-card-background: var(--token-surface-foreground);
-  --token-card-border: var(--token-border-subtle);
+  --token-card-border: var(--token-border-muted);
   --token-card-radius: var(--token-border-radius-lg);
   /* Menu */
   --token-menu-background: var(--token-surface-background);
@@ -931,7 +931,7 @@
   --token-feedback-success-foreground: var(--token-state-success-foreground);
   --token-feedback-success-background: color-mix(
         in srgb,
-        var(--token-state-success-background) var(--mix-subtle),
+        var(--token-state-success-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-success-foreground-inv: var(
@@ -944,7 +944,7 @@
   --token-feedback-warning-foreground: var(--token-state-warning-foreground);
   --token-feedback-warning-background: color-mix(
         in srgb,
-        var(--token-state-warning-background) var(--mix-subtle),
+        var(--token-state-warning-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-warning-foreground-inv: var(
@@ -957,7 +957,7 @@
   --token-feedback-error-foreground: var(--token-state-error-foreground);
   --token-feedback-error-background: color-mix(
         in srgb,
-        var(--token-state-error-background) var(--mix-subtle),
+        var(--token-state-error-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-error-foreground-inv: var(
@@ -970,7 +970,7 @@
   --token-feedback-info-foreground: var(--token-state-info-foreground);
   --token-feedback-info-background: color-mix(
         in srgb,
-        var(--token-state-info-background) var(--mix-subtle),
+        var(--token-state-info-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-info-foreground-inv: var(
@@ -1002,7 +1002,7 @@
     Source: ag-grid
     */
   --ag-foreground-color: var(--token-text-foreground);
-  --ag-secondary-foreground-color: var(--token-text-subtle);
+  --ag-secondary-foreground-color: var(--token-text-muted);
   --ag-disabled-foreground-color: var(--token-text-disabled);
   --ag-background-color: var(--token-surface-foreground);
   --ag-header-background-color: var(--token-surface-foreground);
@@ -1023,7 +1023,7 @@
     );
   --ag-borders: none;
   --ag-borders-critical: solid 1px;
-  --ag-border-color: var(--token-border-subtle);
+  --ag-border-color: var(--token-border-muted);
   --ag-grid-size: 8px;
   --ag-icon-size: 18px;
   --ag-header-height: calc(var(--ag-grid-size) * 6);
@@ -1036,55 +1036,12 @@
   --ag-font-family: var(--token-font-family-base);
   --ag-font-size: var(--token-font-size-base);
   --ag-invalid-color: var(--token-state-error-foreground);
-  /* Deprecated */
-  --token-color-primary-blue: #0069b3;
-  --token-color-secondary-blue: #003865;
-  --token-color-gray-lighter: #f8f9fa;
-  --token-color-gray-light: #e9ecef;
-  --token-color-surface-0: #fcfcfe;
-  --token-color-surface-1: #f6f8fb;
-  --token-color-surface-2: #ebeff7;
-  --token-color-surface-3: #dae2ef;
-  --token-color-white: #ffffff;
-  --token-color-black: #000000;
-  --token-color-gray-100: #f8f9fa;
-  --token-color-gray-200: #e9ecef;
-  --token-color-gray-300: #dee2e6;
-  --token-color-gray-400: #ced4da;
-  --token-color-gray-500: #adb5bd;
-  --token-color-gray-600: #6c757d;
-  --token-color-gray-700: #495057;
-  --token-color-gray-800: #343a40;
-  --token-color-gray-900: #212529;
-  --token-text-active-dark: #003865;
-  --token-text-dark: #24282a;
-  --token-text-med: #475569;
-  --token-text-light: #64748b;
-  --token-border-light: var(--token-color-base-grey-200);
-  --token-border-med: var(--token-color-base-grey-300);
-  --token-border-dark: var(--token-color-base-grey-400);
-  --token-state-success-base: #4caf50;
-  --token-state-success-default: #c8e6c9;
-  --token-state-warning-base: #ffc107;
-  --token-state-warning-default: #ffeaab;
-  --token-state-error-base: #ef5350;
-  --token-state-error-default: #ffcdd2;
-  --token-state-disabled-base: #dee2e6;
-  --token-state-disabled-light: #f8f9fa;
-  --token-state-disabled-dark: #495057;
-  --token-state-disabled-default: #f8f9fa;
-  --token-state-disabled-foreground: #495057;
-  --token-state-info-base: #7eb5ea;
-  --token-state-info-default: #e4f0fa;
-  --token-state-info-foreground: #0069b3;
-  --token-state-active-base: #7eb5ea;
-  --token-state-active-default: #7eb5ea;
 }
 
 [data-theme=dark] {
   color-scheme: dark;
   --root-color: #000000;
-  --mix-subtle: 50%;
+  --mix-muted: 50%;
   --mix-impact: 80%;
   /* Semantic
     These tokens convey meaning, defining where a token is used rather than what it is
@@ -1092,8 +1049,8 @@
     Use Case: Switch these for dark mode.
     */
   /* Text Color */
-  --token-text-foreground: var(--token-color-white);
-  --token-text-primary: var(--token-color-white);
+  --token-text-foreground: var(--token-color-base-white);
+  --token-text-primary: var(--token-color-base-white);
   --token-text-secondary: var(--token-color-base-grey-500);
   --token-text-tertiary: var(--token-color-base-zinc-500);
   --token-text-default: var(--token-color-white);
@@ -1114,7 +1071,7 @@
   --token-surface-2: var(--token-color-base-neutral-700);
   --token-surface-background: var(--token-color-base-neutral-900);
   --token-surface-foreground: var(--token-color-base-neutral-800);
-  --token-color-surface-inv: var(--token-color-base-base-slate-50);
+  --token-color-surface-inv: var(--token-color-base-slate-50);
   --token-surface-overlay: var(--token-color-base-neutral-300);
   --token-focus-indicator: var(--token-color-surface-inv);
   /*
@@ -1154,10 +1111,10 @@
   /* Border */
   --token-border-default: var(--token-color-base-zinc-500);
   --token-border-impact: var(--token-color-base-zinc-400);
-  --token-border-subtle: var(--token-color-base-zinc-600);
+  --token-border-muted: var(--token-color-base-zinc-600);
   --token-border-input: var(--token-color-base-white);
   --token-border-active: var(--token-state-active-accent);
-  --token-border-error: var(--token-state-active-accent);
+  --token-border-error: var(--token-state-error-accent);
   /* Component
     These tokens are specific to individual components and generally refer to semantic tokens.
     Keep component-specific tokens alongside their component CSS when they won't be reused elsewhere.
@@ -1168,7 +1125,7 @@
   --token-sidebar-active-background: var(--token-state-active-background);
   --token-sidebar-active-foreground: var(--token-state-active-foreground);
   --token-sidebar-active-accent: var(--token-state-active-accent);
-  --token-sidebar-border: var(--token-border-subtle);
+  --token-sidebar-border: var(--token-border-muted);
   --token-sidebar-item-padding: 8px;
   /* Input */
   --token-input-height: 36px;
@@ -1180,7 +1137,7 @@
   --token-input-focus-border-color: var(--token-state-active-accent);
   /* Card */
   --token-card-background: var(--token-surface-foreground);
-  --token-card-border: var(--token-border-subtle);
+  --token-card-border: var(--token-border-muted);
   /* Menu */
   --token-menu-background: var(--token-surface-background);
   /*  --token-menu-hover-background: var(--token-surface-background);*/
@@ -1195,7 +1152,7 @@
   --token-feedback-success-foreground: var(--token-state-success-foreground);
   --token-feedback-success-background: color-mix(
         in srgb,
-        var(--token-state-success-background) var(--mix-subtle),
+        var(--token-state-success-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-success-foreground-inv: var(
@@ -1204,13 +1161,13 @@
   --token-feedback-success-background-inv: var(
         --token-state-success-background-inv
     );
-  --token-feedback-success-backgroundaccent: var(
+  --token-feedback-success-background-accent: var(
         --token-state-success-accent
     );
   --token-feedback-warning-foreground: var(--token-state-warning-foreground);
   --token-feedback-warning-background: color-mix(
         in srgb,
-        var(--token-state-warning-background) var(--mix-subtle),
+        var(--token-state-warning-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-warning-foreground-inv: var(
@@ -1225,7 +1182,7 @@
   --token-feedback-error-foreground: var(--token-state-error-foreground);
   --token-feedback-error-background: color-mix(
         in srgb,
-        var(--token-state-error-background) var(--mix-subtle),
+        var(--token-state-error-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-error-foreground-inv: var(
@@ -1238,7 +1195,7 @@
   --token-feedback-info-foreground: var(--token-state-info-foreground);
   --token-feedback-info-background: color-mix(
         in srgb,
-        var(--token-state-info-background) var(--mix-subtle),
+        var(--token-state-info-background) var(--mix-muted),
         var(--root-color)
     );
   --token-feedback-info-foreground-inv: var(
@@ -1266,13 +1223,13 @@
     Source: ag-grid
     */
   --ag-foreground-color: var(--token-text-foreground);
-  --ag-secondary-foreground-color: var(--token-text-subtle);
+  --ag-secondary-foreground-color: var(--token-text-muted);
   --ag-disabled-foreground-color: var(--token-text-disabled);
   --ag-background-color: var(--token-surface-foreground);
   --ag-header-background-color: var(--token-surface-foreground);
   --ag-tooltip-background-color: var(--token-surface-2);
   --ag-subheader-background-color: var(--token-surface-2);
-  --ag-subheader-toolbar-background-color: rgba(238, 238, 238, 0.5);
+  --ag-subheader-toolbar-background-color: var(--token-surface-2);
   --ag-header-cell-hover-background-color: var(--token-surface-background);
   --ag-row-hover-color: var(--token-surface-background);
   --ag-column-hover-color: var(--token-surface-background);
@@ -1283,7 +1240,7 @@
     );
   --ag-borders: none;
   --ag-borders-critical: solid 1px;
-  --ag-border-color: var(--token-border-subtle);
+  --ag-border-color: var(--token-border-muted);
   --ag-grid-size: 8px;
   --ag-icon-size: 18px;
   --ag-header-height: calc(var(--ag-grid-size) * 6);
@@ -3240,7 +3197,7 @@ strong {
 .border-input {
   --tw-border-opacity:
       1;
-  border-color: color-mix(in srgb, var(--token-border-subtle) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+  border-color: color-mix(in srgb, var(--token-border-muted) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-med {
@@ -3249,16 +3206,16 @@ strong {
   border-color: color-mix(in srgb, var(--token-border-med) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
+.border-muted {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-border-muted) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .border-primary {
   --tw-border-opacity:
       1;
   border-color: color-mix(in srgb, var(--token-border-primary) calc(var(--tw-border-opacity, 1) * 100%), transparent);
-}
-
-.border-subtle {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-border-subtle) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-transparent {
@@ -3355,6 +3312,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-disabled-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-disabled-foreground\/40 {
+  background-color: color-mix(in srgb, var(--token-state-disabled-foreground) 40%, transparent);
+}
+
 .bg-feedback-background {
   --tw-bg-opacity:
       1;
@@ -3439,12 +3400,6 @@ strong {
   background-color: color-mix(in srgb, var(--token-menu-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
-.bg-surface-0 {
-  --tw-bg-opacity:
-      1;
-  background-color: color-mix(in srgb, var(--token-surface-0) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
-}
-
 .bg-surface-1 {
   --tw-bg-opacity:
       1;
@@ -3483,6 +3438,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-warning-default) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.fill-button-destructive {
+  fill: color-mix(in srgb, var(--token-button-destructive-background) 100%, transparent);
+}
+
 .fill-button-foreground-inv {
   fill: color-mix(in srgb, var(--token-button-foreground-inv) 100%, transparent);
 }
@@ -3491,28 +3450,28 @@ strong {
   fill: color-mix(in srgb, var(--token-button-primary-foreground) 100%, transparent);
 }
 
-.fill-destructive-foreground {
-  fill: color-mix(in srgb, var(--token-state-error-foreground) 100%, transparent);
-}
-
 .fill-disabled {
   fill: color-mix(in srgb, var(--token-state-disabled-default) 100%, transparent);
 }
 
+.fill-feedback-error-accent {
+  fill: color-mix(in srgb, var(--token-feedback-error-accent) 100%, transparent);
+}
+
+.fill-feedback-info-accent {
+  fill: color-mix(in srgb, var(--token-feedback-info-accent) 100%, transparent);
+}
+
+.fill-feedback-success-accent {
+  fill: color-mix(in srgb, var(--token-feedback-success-accent) 100%, transparent);
+}
+
+.fill-feedback-warning-accent {
+  fill: color-mix(in srgb, var(--token-feedback-warning-accent) 100%, transparent);
+}
+
 .fill-foreground {
   fill: color-mix(in srgb, var(--token-text-foreground) 100%, transparent);
-}
-
-.fill-info-foreground {
-  fill: color-mix(in srgb, var(--token-state-info-foreground) 100%, transparent);
-}
-
-.fill-success-foreground {
-  fill: color-mix(in srgb, var(--token-state-success-foreground) 100%, transparent);
-}
-
-.fill-warning-foreground {
-  fill: color-mix(in srgb, var(--token-state-warning-foreground) 100%, transparent);
 }
 
 .object-cover {
@@ -3833,6 +3792,12 @@ strong {
   color: color-mix(in srgb, var(--token-button-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
+.text-button-destructive {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-button-destructive-background) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
 .text-button-destructive-foreground {
   --tw-text-opacity:
       1;
@@ -3986,7 +3951,7 @@ strong {
 .text-foreground-inv {
   --tw-text-opacity:
       1;
-  color: color-mix(in srgb, var(--token-text-foreground-inv) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+  color: color-mix(in srgb, var(--token-text-inv) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-info-foreground {

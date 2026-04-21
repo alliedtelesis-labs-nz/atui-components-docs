@@ -19,7 +19,7 @@ const trackVariantsConfig = {
             true: 'shadow-inset-xs cursor-default',
         },
         active: {
-            false: 'border-input bg-input-background border border-solid',
+            false: 'border-input bg-disabled-background border border-solid',
             true: 'bg-active-accent/30 border-primary group-focus-within/switch:ring-active-glow-accent group-focus-within/switch:ring-1',
         },
     },
@@ -27,7 +27,7 @@ const trackVariantsConfig = {
 const thumbVariantsConfig = {
     variants: {
         active: {
-            false: 'bg-disabled-background text-foreground translate-x-[-10px]',
+            false: 'bg-disabled-foreground/40 text-foreground-inv translate-x-[-10px]',
             true: 'bg-active-accent text-foreground-inv group-focus-within/switch:ring-active-glow translate-x-[10px] group-focus-within/switch:ring-4',
         },
         disabled: {
@@ -92,12 +92,12 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: 'be4624649957f571ab39058b1b481a3fb66d0899', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '9a23e4a65ba9854e10c9921c2066ba934dab47b4', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: 'f672bb289bc11f523d2a69f69e390eceb08e034a', class: "flex flex-col" }, h("slot", { key: '1a3ffaa496109d4dbf49a5dbb391ae5a890a224b', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '48b1287066b0066133d1f24e370b94874b5c58fd', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '9a6a98a5a03a6ec6aa35a2ad496f167c64a77dc8', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ca14cdce9d307b49b772d13185bc463e1f39390a', class: "relative flex h-20 w-40" }, h("input", { key: 'be6eccc8b125cb8e3f822bba103850441e682621', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '8361a8f9ef76be9a4ecefaf5bd52822cbaf8c238', class: trackClassname }, h("at-icon", { key: 'c2bb9eccba7133df14f49045f024bcdddaf63f16', name: this.value ? 'check' : 'subtract', class: thumbClassname })))));
+            } }, h("div", { key: '68030348f59685fc13e7219c0ceaa4fec96fc047', class: "flex flex-col" }, h("slot", { key: '136a75d7f5c9172ac788cfc5864def3e043ba3b9', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '62dacbca873218a7d3c254d9c881b0926d8d6e25', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '2066e2c59659edd8ad21162667fcead9064ad7b6', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '363b7970f62f132f30191624d8335ecf203503d4', class: "relative flex h-20 w-40" }, h("input", { key: '1faf47782c97e55b552afc2cfa76f0f3d290e570', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '4eb1984180e30cd25dbff77212a9d375a5db0e68', class: trackClassname }, h("at-icon", { key: 'c5b190df26de00617bceb391eadf6f614b06db32', name: this.value ? 'check' : 'subtract', class: thumbClassname })))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {
