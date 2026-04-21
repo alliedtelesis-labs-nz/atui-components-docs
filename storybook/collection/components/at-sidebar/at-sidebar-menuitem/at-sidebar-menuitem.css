@@ -10,12 +10,14 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-radius: var(--token-border-radius-md);
-  padding: 6px 8px;
-  text-align: left;
   cursor: pointer;
+  text-align: left;
+  padding: var(--token-sidebar-item-padding);
+  border-radius: var(--token-menu-item-radius);
   font-size: var(--token-font-size-button);
-  transition: background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
+  color: var(--token-sidebar-foreground);
+  will-change: background-color, color, box-shadow;
+  transition: background-color var(--token-surface-foreground), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
 :host .content {
   display: flex;
@@ -23,55 +25,65 @@
   flex-grow: 1;
   gap: 8px;
 }
-:host .badge {
-  position: absolute;
-  top: -8px;
-  left: 22px;
-  z-index: 20;
-  pointer-events: none;
-  padding: 2px 2px;
-  font-size: 10px;
-}
 :host .label {
   z-index: 10;
   font-weight: var(--token-font-weight-med);
 }
 :host .icon {
-  font-family: "Material Icons";
-  font-style: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  font-size: 22px;
-  z-index: 10;
   min-width: 24px;
+  font-family: "Material Icons";
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 10;
+}
+:host .badge {
+  position: absolute;
+  top: -8px;
+  left: 22px;
+  z-index: 20;
+  padding: 2px 2px;
+  font-size: 10px;
+  pointer-events: none;
 }
 :host .focus-indicator {
-  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-color: var(--token-sidebar-foreground);
   border-radius: var(--token-border-radius-md);
+  background-color: var(--token-surface-overlay);
   opacity: 0;
-  transition: background-color var(--token-transition-time-fast);
-}
-:host:hover [data-name=focus-indicator] {
-  opacity: 0.1;
-}
-:host:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 60%, transparent);
-}
-:host[data-state=active] {
-  background-color: var(--token-state-active-foreground);
+  pointer-events: none;
+  transition: background-color 150ms ease-in-out, opacity 150ms ease-in-out;
 }
 :host ::slotted([slot=icon]) {
   height: 24px;
   width: 24px;
   cursor: pointer;
+}
+:host:hover [data-name=focus-indicator] {
+  opacity: 0.1;
+}
+:host:focus [data-name=focus-indicator], :host:focus-visible [data-name=focus-indicator] {
+  opacity: 0.15;
+}
+:host:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
+}
+:host[data-state=active] {
+  background-color: color-mix(in srgb, var(--token-sidebar-active-accent) 30%, transparent);
+  color: var(--token-sidebar-active-foreground);
+}
+:host[data-state=active] .focus-indicator {
+  background-color: var(--token-state-active-accent);
+}
+:host[data-state=active] ::slotted([slot=icon]) {
+  color: var(--token-sidebar-active-accent);
 }

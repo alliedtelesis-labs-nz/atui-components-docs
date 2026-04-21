@@ -8,16 +8,16 @@ var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/40 bg-white',
+            false: 'focus-within:ring-active-glow bg-input-background',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/40',
-            true: '!bg-surface-1 !text-dark cursor-text border-none',
+            false: 'focus-within:ring-active-glow',
+            true: '!bg-surface-1 !text-foreground cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/40',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
+            false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
+            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
         },
         typeahead: {
             false: 'cursor-pointer caret-transparent',
@@ -295,22 +295,22 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: '4752e16d47288ddbc2ecd4c852851be41f51fc68', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'a4c636a2aacd8c3ce649585fc3036fc8ccd88908', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '2ff61492a5d3ec70652994790d31236593d24bc2', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'cb86917b512f593e9a9fcfd44ac297912addcc11', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '16b41704820ed06b11aef78ba5201e46de3f6a87' }, this.error_text && this.invalid && (index.h("span", { key: '70028fab6bb54f6fcaf9baf119feafb192c0a429', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '2b51580e6ef89df1bf587bf424c053f416cf140d' }, this.error_text && this.invalid && (index.h("span", { key: '8c8464bc5407f088302b9fddf4eed5b302da9abb', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-med text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
+        return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist('placeholder-text-light transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-md border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const getClassname = classlist.classlist('placeholder-text-muted transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-input border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0', inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
@@ -322,7 +322,7 @@ const AtMultiSelectComponent = class {
     renderOptions() {
         return (index.h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/40 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "bg-menu relative z-10 p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-input-background ring-active rounded-input mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
@@ -350,8 +350,8 @@ const AtMultiSelectComponent = class {
             .filter(Boolean), index.h("slot", null), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
-            !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
-            'No results found')), !this.hasAnyOptions && (index.h("div", { "data-name": "no-options-available", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && (index.h("div", { "data-name": "no-options-available", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
             'No options available'))));
     }
     renderGroupedOption(option) {

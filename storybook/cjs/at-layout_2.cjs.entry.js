@@ -37,15 +37,15 @@ const variantsConfig = {
             vertical: 'flex justify-start',
         },
         active: {
-            true: 'z-index-20 text-active-foreground focus:outline-2 focusfocus-visible:ring-active-foreground/30',
-            false: 'text-light hover:bg-surface-1 focus-visible:ring-active-foreground/30',
+            true: 'z-index-20 text-active-foreground hover:bg-active-accent/10',
+            false: 'text-muted hover:bg-overlay/10',
         },
     },
     compoundVariants: [
         {
             layout: 'vertical',
             active: true,
-            class: 'bg-active-foreground/10',
+            class: 'bg-active-background/20',
         },
     ],
 };
@@ -81,12 +81,12 @@ const AtTabTrigger = class {
         }
     }
     render() {
-        const getClassname = classlist.classlist('group/tab text-button relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-md border border-solid border-transparent font-medium capitalize duration-150 ease-in-out p-8 outline-none focus-visible:ring-active-foreground/40 focus-visible:ring-2 focus-visible:z-20', variantsConfig);
+        const getClassname = classlist.classlist('group/tab text-button no-underline w-full relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-input border border-solid border-transparent !font-medium capitalize duration-150 ease-in-out p-8 outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-active-glow', variantsConfig);
         const classname = getClassname({
             layout: this.layout,
             active: this.is_active,
         });
-        return (index.h(index.Host, { key: '88d5d51817283b2d307ff02c9d0a5ccf3613329d', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, index.h("a", { key: '63384cdcce4317dfeea5fed5a0ab321367bf5c52', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: '48dfe7a8f336813eee0bfc27bed14c2f0e44b9b9' }))));
+        return (index.h(index.Host, { key: '87bcbf5f4b7f0b04839dc9b86443179f80f5c365', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, index.h("a", { key: '1d762ac84208b72b950972be472c400543b0dc30', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, index.h("slot", { key: 'cc001f8601d11b36c35b5fddd1c7b9c191ef7a1e' }))));
     }
 };
 

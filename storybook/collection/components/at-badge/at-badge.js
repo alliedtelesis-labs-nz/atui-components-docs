@@ -1,23 +1,23 @@
 import { Host, h } from "@stencil/core";
 const badgeVariants = {
-    base: 'inline-block rounded-[4px] font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
+    base: 'inline-block rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
     rounded: 'rounded-full',
     contrast: {
         low: {
-            default: 'text-light bg-surface-2',
-            success: 'text-success-foreground bg-success',
-            warning: 'text-warning-foreground bg-warning',
-            error: 'text-destructive-foreground bg-destructive',
-            info: 'text-info-foreground bg-info',
-            disabled: 'text-disabled bg-disabled',
+            default: 'text-feedback-foreground bg-feedback-background border text-feedback-foreground',
+            success: 'text-feedback-success-foreground bg-feedback-success-background border border-feedback-success-foreground/30',
+            warning: 'text-feedback-warning-foreground bg-feedback-warning-background border border-feedback-warning-foreground/30',
+            error: 'text-feedback-error-foreground bg-feedback-error-background border border-feedback-error-foreground/30',
+            info: 'text-feedback-info-foreground bg-feedback-info-background border border-feedback-info-foreground/30',
+            disabled: 'text-disabled-foreground bg-disabled-background',
         },
         high: {
-            default: 'text-impact bg-gray-600',
-            success: 'text-impact bg-success-foreground',
-            warning: 'text-impact bg-warning-foreground',
-            error: 'text-impact bg-destructive-foreground',
-            info: 'text-impact bg-info-foreground',
-            disabled: 'text-disabled bg-disabled',
+            default: 'text-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
+            success: 'text-feedback-success-foreground-inv bg-feedback-success-background-inv',
+            warning: 'text-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
+            error: 'text-feedback-error-foreground-inv bg-feedback-error-background-inv',
+            info: 'text-feedback-info-foreground-inv bg-feedback-info-background-inv',
+            disabled: 'text-disabled-foreground-inv bg-disabled-background-inv',
         },
     },
     size: {
@@ -66,7 +66,7 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '55550c18bc2474fc5263fc82cd4fa4219cdd8f66', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: '8dfe2af3df66ca3316513a209903a2fbe5efbe4e', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: 'e2f4f7e9a8dfdb5d3b646dfd72e54037ce1821f0', "data-name": "badge-label" }, this.label), h("slot", { key: '402efc35b11f10b2008e0284b35a24c0b5e176d1' })));
+        return (h(Host, { key: '83437258321e56364fe4f394331bac1ef49b4980', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: '353e86c676f90964dddb0f6accf735a5bad85873', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: 'ea8bdaa0be7706c288633b08d274d0707369e27d', "data-name": "badge-label" }, this.label), h("slot", { key: '3fb5f65ecc2b56fe0167d040104a9c47f2863e83' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {

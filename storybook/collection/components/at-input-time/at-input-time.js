@@ -3,16 +3,16 @@ import { classlist } from "../../utils/classlist";
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/30 bg-white',
+            false: 'focus-within:ring-active-glow bg-input-background',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/30',
-            true: '!bg-surface-1 !text-dark cursor-text border-none',
+            false: 'focus-within:ring-active-glow',
+            true: '!bg-surface-1 !text-foreground cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
+            false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
+            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -71,13 +71,13 @@ export class AtInputTime {
         this.atuiChange.emit(normalized);
     };
     render() {
-        const getClassname = classlist('placeholder-text-light relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-md border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const getClassname = classlist('placeholder-text-muted relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0', inputVariantsConfig);
         const classname = getClassname({
             invalid: !!this.invalid,
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: 'e23550b8cde5974f7dc2890594071831cc845cf4' }, h("style", { key: 'bd0508bde04014d38ed077f7614a1efe59d1d2b2' }, `
+        return (h(Host, { key: 'e2cf92cd2283bfca52189c3898203805b8ef0c8e' }, h("style", { key: '9b36ff4fe27769ab7fc161814f09d45921201b01' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -89,9 +89,9 @@ export class AtInputTime {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: 'e723f490107f8b64f56e2fd0a0817e81806ba077', class: "flex flex-row" }, h("div", { key: 'dde1c3cb1ca62ee207c311ebb3c8b14f063677f0', class: "flex-fill flex flex-col" }, h("div", { key: '237275a24440fbe10871bd88e8a0c3311775d2b5', class: "flex flex-col" }, (this.label ||
+                `), h("div", { key: 'db3a08370f93e2be80d3588d767cb87beb5d4c0e', class: "flex flex-row" }, h("div", { key: '8388b81b01234a734d6f545f76c20f0db88612bf', class: "flex-fill flex flex-col" }, h("div", { key: '3b2f3bf02acc3885621c8b68fb44cad6b6f7045a', class: "flex flex-col" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: 'aff7c46808ecd26695ba9d6f91d3bb4baae510e2', label: this.label, for: this.inputId, required: !!this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '74710bf95cb8473cf75eb35cfb180b957455cbc4', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text)), h("div", { key: 'f21c1492b5979997f50379743e069b0d7b01c4a5', class: classname }, h("input", { key: '1aa1e2fab7ac0d79cd5e02ac40ab763c4217973d', type: "time", id: this.inputId, name: "timePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput }))), this.error_text && this.invalid && (h("span", { key: 'da045d91fb5317f19760bd7cfc0231fc3b7d083d', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text))))));
+            this.info_text) && (h("at-form-label", { key: '23a93b958ea523e95868ecf1d0ea60667b8be693', label: this.label, for: this.inputId, required: !!this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '71e54f51c36d96c6c99d0f40b0a1df121316a222', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text)), h("div", { key: 'c8d3550b745bb930ee9c86785747b8c6d2ae8961', class: classname }, h("input", { key: '0c69428f319e2d698613fa1238e512391d46c18b', type: "time", id: this.inputId, name: "timePicker", class: "flex w-full cursor-pointer px-8 py-8 outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput }))), this.error_text && this.invalid && (h("span", { key: '4e3b43fb4d7038c97376192f48470745e545e38b', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text))))));
     }
     static get is() { return "at-input-time"; }
     static get properties() {

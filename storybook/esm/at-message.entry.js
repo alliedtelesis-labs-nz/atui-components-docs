@@ -3,7 +3,7 @@ import { r as registerInstance, h } from './index-BAAX2Der.js';
 const atMessageCss = () => `at-message [slot=actions]{align-self:start}`;
 
 const messageVariants = {
-    base: 'flex p-[14px] text-dark text-left rounded-[0.3rem]',
+    base: 'flex p-[14px] text-foreground text-left rounded-[0.3rem]',
     icon: {
         error: 'error',
         warning: 'warning',
@@ -12,11 +12,11 @@ const messageVariants = {
         default: '',
     },
     iconColour: {
-        error: 'text-destructive-foreground',
-        warning: 'text-warning-foreground',
-        success: 'text-success-foreground',
-        info: 'text-info-foreground',
-        default: 'text-dark',
+        error: 'text-feedback-error-accent',
+        warning: 'text-feedback-warning-accent',
+        success: 'text-feedback-success-accent',
+        info: 'text-feedback-info-accent',
+        default: 'text-feedback-foreground',
     },
     iconFill: {
         error: 'fill-destructive-foreground',
@@ -27,11 +27,11 @@ const messageVariants = {
     },
     background: {
         high: {
-            error: 'bg-destructive',
-            warning: 'bg-warning',
-            success: 'bg-success',
-            info: 'bg-info',
-            default: 'bg-surface-2',
+            error: 'bg-feedback-error-background',
+            warning: 'bg-feedback-warning-background',
+            success: 'bg-feedback-success-background',
+            info: 'bg-feedback-info-background',
+            default: 'bg-feedback-background',
         },
         low: '',
     },
@@ -75,7 +75,7 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (h("div", { key: '74065bf2cb496956a9b5d8269e85b381d57a1a1b', class: this.hostClasses, "data-name": "message-container" }, this.icon ? (h("i", { class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName)) : (h("at-icon", { class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName })), h("div", { key: 'f8c1c942e8bb80ada037212896b23e3ba88bd686', class: "flex w-full flex-row justify-between gap-4" }, h("div", { key: '07cf813284ce17612c4f35c9f22c1baf71b83dbc' }, this.message_title && (h("div", { key: 'b1c5bfc11723f3405eb1cc744b1a024168f39371', class: "text-h6 mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: 'c269545e04018a5ef67853332ea306c1dadb9f69', class: "!text-sm leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '8a530a0907bbd85fa5394fcefe178971aaa3af2e' })), h("slot", { key: '38b441cff40c5b5d16293a4ca62f1b47b4f439e1', name: "actions" }))));
+        return (h("div", { key: '8f7bdfbf7f332bbfab0261dd65ec98737bbc9263', class: this.hostClasses, "data-name": "message-container" }, this.icon ? (h("i", { class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName)) : (h("at-icon", { class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName })), h("div", { key: '15a5566d66e6c9aa1a83433e9c37dc18b1f387e0', class: "flex w-full flex-row justify-between gap-4 text-sm" }, h("div", { key: '6cd165cdc6599d353f72c0feb60c81d830829cf5' }, this.message_title && (h("div", { key: '0f828921d74b2fadcb9557ea09d1c6f5dc4eb12b', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: 'd1241423ec84b4ae52ddaa2b362ffd6a0bb2e94b', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '8ae979d297feced89d27266ae1588ac51294fbac' })), h("slot", { key: 'bd28e2c6f02b7ba3637c8c793567569da4fa5cd6', name: "actions" }))));
     }
 };
 AtMessage.style = atMessageCss();

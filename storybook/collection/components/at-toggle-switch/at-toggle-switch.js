@@ -19,16 +19,16 @@ const trackVariantsConfig = {
             true: 'shadow-inset-xs cursor-default',
         },
         active: {
-            false: 'border-med bg-surface-2 border border-solid',
-            true: 'bg-active-foreground/30 group-focus-within/switch:ring-active-foreground group-focus-within/switch:ring-1',
+            false: 'border-input bg-input-background border border-solid',
+            true: 'bg-active-accent/30 border-primary group-focus-within/switch:ring-active-glow-accent group-focus-within/switch:ring-1',
         },
     },
 };
 const thumbVariantsConfig = {
     variants: {
         active: {
-            false: 'bg-disabled-dark translate-x-[-10px]',
-            true: 'bg-active-foreground group-focus-within/switch:ring-active-foreground/30 translate-x-[10px] group-focus-within/switch:ring-[6px]',
+            false: 'bg-disabled-background text-foreground translate-x-[-10px]',
+            true: 'bg-active-accent text-foreground-inv group-focus-within/switch:ring-active-glow translate-x-[10px] group-focus-within/switch:ring-4',
         },
         disabled: {
             false: 'cursor-pointer',
@@ -77,12 +77,12 @@ export class AtToggleSwitchComponent {
         this.atuiChange.emit(change);
     }
     render() {
-        const getClassname = classlist('group/switch outline-active hover:bg-surface-1 focus:bg-surface-1 flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-md p-8 outline-0 outline-none', variantsConfig);
+        const getClassname = classlist('group/switch transition transition[background-color] ease-in-out duration-fast outline-active hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-input p-8 outline-0 outline-none', variantsConfig);
         const classname = getClassname({
             disabled: this.disabled,
             labelPosition: this.label_position,
         });
-        const getThumbClassname = classlist('m-2 rounded-full fill-white select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
+        const getThumbClassname = classlist('material-icons text-icon-md absolute relative m-2 flex h-[16px] w-[16px] scale-1 items-center justify-center rounded-full text-center select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
         const thumbClassname = getThumbClassname({
             active: this.value,
             disabled: this.disabled,
@@ -92,12 +92,12 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '6e9e28a580295aaa67afda89627259a865fd3c28', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: 'be4624649957f571ab39058b1b481a3fb66d0899', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '8e6c3c6c5f8dcff0a0df0188c7efc4eecba4ce3b', class: "flex flex-col" }, h("slot", { key: '02efa27305f395d29df192e44155b0fe6d01a49e', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '77d003ce4a0b2135c88765877a4944edf3fe66fa', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: 'ca7c4d2245107bc4b47b73bfeb1cdd6a87940ee9', class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '8bd07acf7212dba210c8101d282e4349f992e60c', class: "relative flex h-20 w-40" }, h("input", { key: 'f2a42a388b4484f10241938ca15a5695d1394b06', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '5dd1859f227fa38dccbb2edd16f3ac89250f9eb3', class: trackClassname }, h("at-icon", { key: 'bd40ec76f9b07946f2a13599f7b77e8d2564c2bd', name: this.value ? 'check' : 'subtract', class: thumbClassname })))));
+            } }, h("div", { key: 'f672bb289bc11f523d2a69f69e390eceb08e034a', class: "flex flex-col" }, h("slot", { key: '1a3ffaa496109d4dbf49a5dbb391ae5a890a224b', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '48b1287066b0066133d1f24e370b94874b5c58fd', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '9a6a98a5a03a6ec6aa35a2ad496f167c64a77dc8', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ca14cdce9d307b49b772d13185bc463e1f39390a', class: "relative flex h-20 w-40" }, h("input", { key: 'be6eccc8b125cb8e3f822bba103850441e682621', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '8361a8f9ef76be9a4ecefaf5bd52822cbaf8c238', class: trackClassname }, h("at-icon", { key: 'c2bb9eccba7133df14f49045f024bcdddaf63f16', name: this.value ? 'check' : 'subtract', class: thumbClassname })))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {

@@ -15,15 +15,15 @@ const buttonVariantsConfig = {
             lg: 'py-8',
         },
         type: {
-            primary: 'bg-active-foreground text-impact fill-impact focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/90 group-focus:bg-active-foreground/80 focus-visible:ring-2',
-            primaryOutline: 'border-primary-foreground text-active-foreground fill-active-foreground focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
-            primaryText: 'text-active-foreground fill-active-foreground focus-visible:ring-active-foreground/40 group-hover:bg-active-foreground/10 group-focus:bg-active-foreground/20 bg-transparent focus-visible:ring-2',
-            secondary: 'text-foreground fill-foreground focus-visible:ring-active-foreground/40 bg-slate-100 focus-visible:ring-2',
-            secondaryOutline: 'border-dark text-foreground fill-foreground focus-visible:ring-active-foreground/40 border border-solid bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
-            secondaryText: 'text-foreground fill-foreground focus-visible:ring-active-foreground/40 bg-transparent group-hover:bg-slate-100 group-focus:bg-slate-200 focus-visible:ring-2',
-            destructive: 'bg-destructive-foreground text-impact fill-impact focus-visible:ring-active-foreground/40 group-hover:bg-destructive-foreground/90 group-focus:bg-destructive-foreground/80 focus-visible:ring-2',
-            destructiveOutline: 'border-destructive-foreground text-destructive-foreground fill-destructive-foreground focus-visible:ring-destructive-foreground/30 group-hover:bg-destructive-foreground/10 group-focus:bg-destructive-foreground/20 border border-solid bg-transparent focus-visible:ring-2',
-            destructiveText: 'text-destructive-foreground fill-destructive-foreground focus-visible:ring-destructive-foreground/30 group-hover:bg-destructive-foreground/10 group-focus:bg-destructive-foreground/20 bg-transparent focus-visible:ring-2',
+            primary: 'bg-button-primary-background text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
+            primaryOutline: 'border-button-primary text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            primaryText: 'text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            secondary: 'bg-button-secondary-background text-button-secondary-foreground fill-foreground focus-visible:ring-active-glow focus-visible:ring',
+            secondaryOutline: 'border-button-foreground text-button-accent fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            secondaryText: 'text-button-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            destructive: 'bg-button-destructive text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
+            destructiveOutline: 'border-button-destructive text-button-destructive-foreground fill-button-foreground-inv focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
+            destructiveText: 'text-button-destructive-foreground fill-button-foreground-inv focus-visible:ring-destructive-foreground/30 bg-transparent focus-visible:ring-2',
         },
         hasLabel: {
             true: null,
@@ -72,15 +72,15 @@ const buttonVariantsConfig = {
 const focusIndicatorVariantsConfig = {
     variants: {
         type: {
-            primary: 'group-hover:bg-blue-900/30 group-active:bg-blue-900/70',
-            primaryOutline: 'group-hover:bg-active-foreground/10 group-active:bg-active-foreground/20',
-            primaryText: 'group-hover:bg-active-foreground/10 group-active:bg-active-foreground/20',
-            secondary: 'group-hover:bg-slate-900/10 group-active:bg-slate-900/20',
-            secondaryOutline: 'group-hover:bg-slate-500/10 group-active:bg-slate-500/20',
-            secondaryText: 'group-hover:bg-slate-500/10 group-active:bg-slate-500/20',
-            destructive: 'group-hover:bg-red-900/30 group-active:bg-red-900/70',
-            destructiveOutline: 'group-hover:bg-destructive-foreground/10 group-active:bg-destructive-foreground/20',
-            destructiveText: 'group-hover:bg-destructive-foreground/10 group-active:bg-destructive-foreground/20',
+            primary: 'group-hover:bg-surface-overlay/30 group-active:bg-button-primary-background/70',
+            primaryOutline: 'group-hover:bg-button-primary-background/10 group-active:bg-button-primary-background/20',
+            primaryText: 'group-hover:bg-button-primary-background/10 group-active:bg-button-primary-background/20',
+            secondary: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
+            secondaryOutline: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
+            secondaryText: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
+            destructive: 'group-hover:bg-surface-overlay/30 group-active:bg-button-destructive-background/70',
+            destructiveOutline: 'group-hover:bg-button-destructive-background/10 group-active:bg-button-destructive-background/20',
+            destructiveText: 'group-hover:bg-button-destructive-background/10 group-active:bg-button-destructive-background/20',
         },
     },
 };
@@ -195,7 +195,7 @@ const AtButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = classlist.classlist('at-button group text-button relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
+        const classname = classlist.classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
@@ -204,7 +204,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: '9936b2699c71dfc5dbfb836d270d6adf24155d97', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '532d6eb09cd7ddb663b7f4e1f36edeb2fc9c7eff', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '0413f6b7ee1efbe9a7988e91a9bda59cdb19d3b5', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: '2265ac4d49b46bc2fcefeb4c149490b6e0b854f4', name: "icon" }), this.icon && (index.h("span", { key: '6a8f6f902d386bb501fc468523212176389686d2', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: 'bb39b1dab2320cf8395198b02c4ad5e2ad0c0f2c', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '3ebb4a7548e06d9fd4f0896bd5e39c76e16afda1' }), index.h("slot", { key: '0420e7b1940f292c5ea58cf9899d9d0134110c9d', name: "icon_after" }), this.icon_after && (index.h("span", { key: '05bafd426f25d107d805e9f3332d9ec9ef90523a', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: '0312cbeb2142bfd4cc48ee425e29b19634cfd995', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: 'ebdf09867694038f1bfb5f44e50ce2d762f12316', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'de95bdca7ba629ef01c5f180f3756c3223083129', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '3c40757d81b722956812141d49428c7c44b25a77', class: "absolute", size: "sm", type: this.spinnerColour })), index.h("slot", { key: 'def42688c87d2c3fdfe1336ab667aabf32c0c04a', name: "icon" }), this.icon && (index.h("span", { key: '0c47cbc955fea0ea1ffafb80e60251da9a8d7de3', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (index.h("span", { key: 'ce2e6c10d7013d1966bb332335e678ef8322241a', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '7c44b68a23c06361a286ffec34464dfe16ca862e' }), index.h("slot", { key: 'ddb78df856b2b060464a785369df426fac50a319', name: "icon_after" }), this.icon_after && (index.h("span", { key: '16488a939980153342f7abfc409646164c72ca80', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), index.h("div", { key: '100ca08be98194d800797deb0b7b6a69d0832ff0', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 
@@ -212,9 +212,9 @@ const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0
 
 const loadingVariants = {
     type: {
-        default: 'text-primary',
+        default: 'text-foreground',
         error: 'text-destructive-foreground',
-        secondary: 'text-primary-foreground',
+        secondary: 'text-foreground',
     },
     size: {
         sm: 'text-sm',

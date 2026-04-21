@@ -41,12 +41,12 @@ const AtMenuitemComponent = class {
      */
     atuiClick;
     render() {
-        const getClassname = classlist.classlist('text-body focus-visible:ring-active-foreground/40 relative flex w-full cursor-pointer items-center gap-8 truncate overflow-hidden rounded-md p-8 text-left font-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring-2 focus-visible:ring-inset', variantsConfig);
+        const getClassname = classlist.classlist('text-body hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 focus-visible:ring-active-glow relative flex w-full cursor-pointer items-center gap-8 truncate overflow-hidden rounded-menu-item p-8 text-left font-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring focus-visible:ring-inset', variantsConfig);
         const classname = getClassname({
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'a62aafb055d2eaeb06d8630ef03aa930c76246ad', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: '88845b9164d1a09369bf4ffd5f6a06b7bd88464a', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -54,7 +54,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, this.icon && (index.h("span", { key: '349a3103a60bfcbad834e97bb964c0cd1f548fc9', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: '927e35512b5dca0145de26c82035e8ce1110a057', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'abeed4e9fb981723ce01ae303c44dffa5f49e3a1' })));
+            } }, this.icon && (index.h("span", { key: 'd4a9a95e4c2e7e8d5372bf12df8e7168b1eff5e0', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: 'e212acd1d4f898d984a0f4db1fa56d838679cf3c', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'a7f3cb959223d70730eb8d1f1d276a2be6b2c943' })));
     }
 };
 

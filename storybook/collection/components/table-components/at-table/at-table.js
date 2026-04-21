@@ -1,5 +1,7 @@
 import { h, Host, } from "@stencil/core";
 import { createGrid } from "ag-grid-community";
+import { themeQuartz } from "ag-grid-community";
+import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
 /**
  * @category Data Tables
@@ -102,7 +104,14 @@ export class AtTableComponent {
         if (this.agGrid) {
             this.agGrid.destroy();
         }
+        const agAtuiTheme = themeQuartz.withParams({
+            browserColorScheme: 'inherit',
+            fontFamily: TOKEN_FONT_FAMILY_BASE,
+            fontSize: TOKEN_FONT_SIZE_BASE,
+            accentColor: TOKEN_STATE_ACTIVE_BASE,
+        });
         const gridOptions = {
+            theme: agAtuiTheme,
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
@@ -151,7 +160,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '40e0822ff4ebb6c580385af22bd8669f6fe6a6fd', class: "ag-theme-material" });
+        return h(Host, { key: '6489acbedb61faf18791f026a944f35c345412e6', class: "ag-theme-atui" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {

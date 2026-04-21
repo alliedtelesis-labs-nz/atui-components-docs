@@ -4,16 +4,16 @@ import { c as classlist } from './classlist-COG8_R0C.js';
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'focus-within:ring-active-foreground/40 bg-white',
+            false: 'focus-within:ring-active-glow bg-input-background border-input',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/40',
-            true: '!bg-surface-1 !text-dark cursor-text border-none',
+            false: 'focus-within:ring-active-glow',
+            true: '!bg-surface-1 !text-foreground cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/40',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
+            false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
+            true: 'border-error focus-within:border-error focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -97,16 +97,16 @@ const AtInputComponent = class {
         this.atuiChange.emit('');
     }
     render() {
-        const getClassname = classlist('placeholder-text-light pr -24 relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-md border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring-2 focus-within:outline-0', inputVariantsConfig);
+        const getClassname = classlist('placeholder-text-muted pr -24 relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0', inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '3ae7f8a2984d83aca3bd4d5d5359776e0a867e82' }, h("div", { key: '722005e1bd1323844a5895fa3872c037c638ddb9', class: "flex flex-col" }, h("slot", { key: '22cb15b6dbe9b5f479e35bfa163a2b624abe58db', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '830da4f5f7a1f08649f0508217d88c2364e4cff2', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'a38dfedb2b12d08d810f1936012e9ebe62b3331b', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '8cc4947df22444af45f6335ae0345502cb672615', class: classname }, h("input", { key: '9bccbd212efd756d77ff0f8ac4de019d463c87b0', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '14b892af8c88f04652c784b3f473993cab99c0a4', class: "flex items-center py-4 pr-4" }, h("slot", { key: '45ebf144433b21099a1daf1d082c8c6955c3b782', name: "input-actions" }), this.clearable &&
+        return (h(Host, { key: 'a5969260bf69122fda3e999c124f1b4a27814003' }, h("div", { key: '22a313dbe6274fbdc4d9bce523845c1dcbc46f63', class: "flex flex-col" }, h("slot", { key: '912902ba80ea949ded0b7b20a766a8439f67d774', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '205a775c96795e8aa7ba1b4e8a439ac0de7bb8c8', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '9a072f3d04b2c3ce60c159db88668a90b95efcb0', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'e9188c5e0419c13661eacaafe69d957a4ebcbbab', class: classname }, h("input", { key: '3c1182454aefed9aa15dc5a9f681ab2063615205', class: "flex w-full py-8 pl-8 outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '0fa23814d4ec0ff52ceece48ec89f4cdc12029e5', class: "flex items-center py-4 pr-4" }, h("slot", { key: '3ac58fba8ef50ab14f39920af86aa39928137d07', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("at-button", { key: '11d1143a1ca35d0432fe17f5af1d4a81eade0069', class: `transition-all duration-300 ease-in-out ${this.clearable &&
+            this.value && (h("at-button", { key: 'b7bd5802ebf0a5c6b0ec96d9c426020d6fb1c31b', class: `transition-all duration-300 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -114,7 +114,7 @@ const AtInputComponent = class {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" }, h("at-icon", { key: '781c973e6263ea5c7393cad3daef4393f25d0332', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: 'f8e01b5fd4c8574376a1a5ddc1b57bc3c56454ba', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" }, h("at-icon", { key: '1f30dfa8387d5d657348757e4a46093b70f06812', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: '5d724c35c2dfec1c7b261d2266a8bfa58ee18f19', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
 

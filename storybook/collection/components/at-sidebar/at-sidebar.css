@@ -60,6 +60,7 @@ at-sidebar .sidebar {
   will-change: width;
   transition: width var(--token-transition-time);
   overflow: auto;
+  border-right: 1px solid var(--token-border-subtle);
 }
 at-sidebar .sidebar at-sidebar-trigger {
   display: flex;
@@ -81,6 +82,10 @@ at-sidebar .page-content {
 }
 at-sidebar.side-right {
   flex-direction: row-reverse;
+}
+at-sidebar.side-right .sidebar {
+  border-right: none;
+  border-left: 1px solid var(--token-border-subtle);
 }
 at-sidebar.mode-over .sidebar {
   position: absolute;

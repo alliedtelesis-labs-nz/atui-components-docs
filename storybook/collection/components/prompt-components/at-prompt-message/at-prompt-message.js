@@ -5,9 +5,9 @@ import { AtPromptResponseScore, } from "../../../types";
 const messageVariantsConfig = {
     variants: {
         role: {
-            user: 'bg-surface-2 text-dark ml-auto inline-block p-8',
-            assistant: 'text-dark mr-auto',
-            system: 'text-dark mr-auto',
+            user: 'bg-surface-2 text-foreground ml-auto inline-block p-8',
+            assistant: 'text-foreground mr-auto',
+            system: 'text-foreground mr-auto',
         },
         loading: {
             true: 'animate-pulse',
@@ -211,7 +211,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'b0fac486553237ac44647944ddd126f01ec0c447', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '8caca6f6b403089078dfed46bcb5fc1bdd0df1ea', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '3c7ac6da4a4d2ca00db76896960ef2ee09850a1d', class: "text-light self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'ff16dabfdfd1b066ad273a5e427bc457b43fcf3f', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '555f20d46e87203a551d515abda2493419d2a7fa', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '7191ef45fd3cedca7fc4633e4778a3ffb9a32ea1', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ca0b55d441bc32ddd81c975dfb50b81e5e8696b7', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '607fa8947d8a82987aa5ed84249e8e32d6e54100', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {

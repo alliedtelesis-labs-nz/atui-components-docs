@@ -108,11 +108,11 @@ export class AtTimeRangeComponent {
             return null;
         }
         if (time.selected === TimeRangeDisplay.ALL) {
-            return (h("div", { class: "text-dark flex items-center gap-4 font-normal" }, this.translations?.ATUI?.TIME?.ALL_TIME_LABEL ||
+            return (h("div", { class: "text-foreground flex items-center gap-4 font-normal" }, this.translations?.ATUI?.TIME?.ALL_TIME_LABEL ||
                 'All Time'));
         }
         if (time.custom) {
-            return (h("div", { id: "custom", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("at-icon", { name: "arrow_right", class: "fill-disabled" }), h("span", null, time.custom.lockEndDateToNow
+            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("at-icon", { name: "arrow_right", class: "fill-disabled" }), h("span", null, time.custom.lockEndDateToNow
                 ? 'NOW'
                 : this.formatDate(time.custom.to))));
         }
@@ -120,11 +120,11 @@ export class AtTimeRangeComponent {
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (h("div", { id: "relative", class: "text-dark flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("at-icon", { name: "arrow_right", class: "fill-disabled" }), h("span", null, "NOW")));
+            return (h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("at-icon", { name: "arrow_right", class: "fill-disabled" }), h("span", null, "NOW")));
         }
     }
     render() {
-        return (h(Host, { key: 'bdfc70c5f95fc7da1cb78a34bd4cc0bc56b8d8a6', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '998546ef47fbdbc6427e30ae3e0593395cbe9ff7', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

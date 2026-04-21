@@ -1,12 +1,13 @@
 .range-slider {
-  --primary-color: var(--token-state-active-foreground);
+  --primary-color: var(--token-state-active-accent);
+  --secondary-color: var(--token-state-active-accent);
   --value-offset-y: var(--ticks-gap);
-  --value-active-color: var(--token-color-white);
+  --value-active-color: var(--token-text-inv);
   --value-background: transparent;
   --value-background-hover: var(--primary-color);
   --value-font: 700 var(--token-font-size-xs) var(--token-font-family-base);
-  --fill-color: var(--primary-color);
-  --progress-background: #eee;
+  --fill-color: var(--secondary-color);
+  --progress-background: var(--token-input-background);
   --progress-radius: 20px;
   --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) inset;
   --track-height: calc(var(--thumb-size) / 2);
@@ -14,7 +15,7 @@
   --min-max-opacity: 0.5;
   --min-max-x-offset: 10%;
   --thumb-size: 20px;
-  --thumb-color: white;
+  --thumb-color: var(--token-state-active-accent);
   --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4),
       0 0 1px rgba(0, 0, 0, 0.5) inset, 0 0 0 99px var(--thumb-color) inset;
   --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset
@@ -150,8 +151,8 @@
   border-radius: var(--thumb-radius, 50%);
   background: var(--thumb-color);
   box-shadow: var(--thumb-shadow);
-  border: 1px solid var(--token-border-med);
-  border: none;
+  border: 1px solid var(--token-border-subtle);
+  /* border: none;*/
   pointer-events: auto;
   transition: 0.2s;
 }
@@ -163,8 +164,8 @@
   border-radius: var(--thumb-radius, 50%);
   background: var(--thumb-color);
   box-shadow: var(--thumb-shadow);
-  border: 1px solid var(--token-border-med);
-  border: none;
+  border: 1px solid var(--token-border-subtle);
+  /* border: none;*/
   pointer-events: auto;
   transition: 0.2s;
 }
@@ -176,8 +177,8 @@
   border-radius: var(--thumb-radius, 50%);
   background: var(--thumb-color);
   box-shadow: var(--thumb-shadow);
-  border: 1px solid var(--token-border-med);
-  border: none;
+  border: 1px solid var(--token-border-subtle);
+  /* border: none;*/
   pointer-events: auto;
   transition: 0.2s;
 }

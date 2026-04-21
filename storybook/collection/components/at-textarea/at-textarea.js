@@ -3,16 +3,16 @@ import { classlist } from "../../utils/classlist";
 const inputVariantsConfig = {
     variants: {
         disabled: {
-            false: 'bg-white',
+            false: 'bg-input-background',
             true: 'bg-surface-1 text-disabled border-none focus:ring-0',
         },
         readonly: {
-            false: 'bg-white',
-            true: 'text-dark border-none focus:ring-0',
+            false: 'bg-input-background',
+            true: 'text-foreground border-none focus:ring-0',
         },
         invalid: {
-            false: 'border-med focus:border-active-dark focus:ring-active-foreground/30 focus:ring-2',
-            true: 'border-error-base focus:ring-destructive-foreground/30 focus:ring-2',
+            false: 'border-input focus-within:border-active-accent focus:ring-active-glow focus:ring',
+            true: 'border-error-base focus:ring-error-glow focus:ring',
         },
     },
     compoundVariants: [
@@ -20,7 +20,7 @@ const inputVariantsConfig = {
             readonly: false,
             disabled: false,
             invalid: false,
-            class: 'border-med text-dark focus:border-active-foreground focus:ring-active-foreground/30 bg-white focus:ring-2',
+            class: 'border-input text-foreground focus-within:border-active-accent focus:ring-active-glow bg-input-background focus:ring',
         },
     ],
     defaultVariants: {
@@ -29,7 +29,7 @@ const inputVariantsConfig = {
         invalid: false,
     },
 };
-const getInputClasses = classlist('align-center transition[background-color,color,box-shadow] text-body relative flex h-full w-full resize-none rounded-md border border-solid px-8 py-[6px] duration-300 ease-in-out outline-none', inputVariantsConfig);
+const getInputClasses = classlist('align-center transition[background-color,color,box-shadow] text-body relative flex h-full w-full resize-none rounded-input border border-solid px-8 py-[6px] duration-300 ease-in-out outline-none', inputVariantsConfig);
 /**
  * @category Form Controls
  * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
@@ -106,11 +106,11 @@ export class AtTextareaComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'd7622d3418ff41bab1280f98b7acd202a01b00c6' }, h("div", { key: 'c25a2030ad714c3e08a6cb8759a710cd7ea89313', class: "flex flex-col" }, h("slot", { key: 'ffa22bf7b5d780de7bc50b7822c9d57fe140ff74', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'd41b2a97984f419b05e4f058e1d9de1f17f49bf8', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '3b7ebe04da47982c0000818570dacae45ec0ebd7', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '0f713430eb13db660807cabe140f1ca355dabea1', class: "grid" }, h("textarea", { key: 'a2aaedf6c8d079ace4b39f48ba5b993ee83847ab', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: 'd2e50f51f083616577f3d339c18dfed58d239f96', "data-name": "textarea-resize-container", style: {
+        return (h(Host, { key: '93d06f37a6b2aa582a87a758936b081bf8d178c6' }, h("div", { key: 'ecbc8b53e921edc8bc4bd446aeae2eeb75bf3a75', class: "flex flex-col" }, h("slot", { key: 'e31557c0f9a6727870f4d805df006d56ae3750e5', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '3e2b160409c5c399281b4399f49d6b27653150f7', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'df1d333c8876db2e042558aff12f82cc9731ae58', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '9dc95bf39d01de97f7feb0dbc2a30040df89e1fc', class: "grid" }, h("textarea", { key: 'ab5d2f319506dbacaa2fd025cea0c31852a5af28', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '2ba332a94d1e99a209d01ea583c922690db2de6c', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '268c86b2c8b47219728b05cdf45aee1390b4743a', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: 'bf46fca75f8f305256bd552fea2738013f56bd9a', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
     static get is() { return "at-textarea"; }
     static get properties() {

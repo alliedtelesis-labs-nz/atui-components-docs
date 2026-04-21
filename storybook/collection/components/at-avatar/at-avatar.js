@@ -8,7 +8,7 @@ const avatarVariantsConfig = {
             lg: 'h-40 w-40 text-base',
         },
         variant: {
-            primary: 'bg-primary text-primary-foreground',
+            primary: 'bg-primary text-foreground',
             secondary: 'bg-secondary text-secondary-foreground',
             muted: 'bg-muted text-muted-foreground',
         },
@@ -57,7 +57,7 @@ export class AtAvatar {
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: 'c537a0081f9c9511ed5d72b3912cee0ba4a2fe57', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: 'ef9f03a0bbef3173b77deada4faa1483f8bcfdbc', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '2dac6f307b455b292b913ca2d2ff2232154431f7', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: 'ee4c622011a2eddd42f8130e6456aca0676d5878' })));
+        return (h(Host, { key: '70072a5aa694c09380c546da31d93eef97e824fa', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '447e84922f707f542a9ad95860acd2abcbd3320b', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '9afc44feb1ef6fffb48cd182b1bbf3cd388b143c', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '237d0ebb5a80a8a467316ac782eeb56b9ab17e60' })));
     }
     static get is() { return "at-avatar"; }
     static get properties() {

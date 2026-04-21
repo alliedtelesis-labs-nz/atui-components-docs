@@ -6,12 +6,12 @@ import { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
 const promptInputContainerVariants = classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
     variants: {
         invalid: {
-            true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring-2',
-            false: 'border-med focus-within:border-active-foreground focus-within:ring-active-foreground/30 focus-within:ring-2',
+            true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring',
+            false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow focus-within:ring',
         },
         disabled: {
             true: 'bg-surface-1 pointer-events-none',
-            false: 'bg-white',
+            false: 'bg-input-background',
         },
     },
     compoundVariants: [
@@ -25,11 +25,11 @@ const promptInputContainerVariants = classlist('relative flex flex-col items-end
         disabled: false,
     },
 });
-const promptInputVariants = classlist('text-body text-dark w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
+const promptInputVariants = classlist('text-body text-foreground w-full resize-none border-none bg-transparent break-words whitespace-pre-wrap shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0', {
     variants: {
         invalid: {
             true: 'border-destructive-foreground',
-            false: 'border-med',
+            false: 'border-input',
         },
         disabled: {
             true: 'bg-surface-1 pointer-events-none',
@@ -179,16 +179,16 @@ const AtPromptInputComponent = class {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'c75d01d7b0f97889961f472bea12ea73765ea7d8', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: 'a696841efa340b9ca12a5028734cb98067b34d06', class: "flex flex-col" }, h("slot", { key: 'd374d1fcf3863dc5cf8b272fdbb4183330a6239f', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '45a3c1c64b71c81e248aa7b0986f9474770d2cc3', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '6f2bf113908ead1758fc293632292de89698d669', class: "text-light mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: 'ff4bcc42a9fcbfc2415b42fcd9d3906110edc3e2', class: containerClass }, h("textarea", { key: '7a9d1d988745eb9d7e6aab14fd65df7dbe53e0b2', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (h(Host, { key: 'e3ca880fcefd70d4f95c835676ddefb043c90f6c', id: this.inputId + '-container', class: "w-full px-16" }, h("div", { key: '2f62b4cfc8e404edbc983d3cfe501fa0d5e81c5e', class: "flex flex-col" }, h("slot", { key: 'd3b67f0f24a9c12d2f66bb19219ca8720c09be10', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '3bfda4e861ba36a78a3b066f4bdcdfbd992c0c05', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (h("span", { key: '7cf3290ba5d6195c553f005643120341630cd5c5', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), h("div", { key: '42c429bb95880530d4eff0870d311873e81f1c7f', class: containerClass }, h("textarea", { key: 'dec2f798484b080988694a104af82cdf479a001d', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'auto',
-            }, "data-name": "prompt-input" }), h("div", { key: '5fd03065c0b75c04127c66491047d1dc26d49f54', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: '5d21bb89d4176c8f3df7c01fd901e5525c95011d', class: "flex items-center gap-4" }, h("slot", { key: '4d68c53d8343b753bc261fc86c4ef91a4d58fb26', name: "actions-left" })), h("div", { key: '7993b6805978ac308cb8be22717a785ecd8e8dd1', class: "flex items-center gap-4 self-end" }, h("slot", { key: 'eb319086436fc9a5a01497462308b2db3c5d4c7e', name: "actions-right" }), h("at-button", { key: '092ffae26a64f728b15b267c89b0d362f24eb03f', class: "rounded-lg", size: "sm", type: "secondary", disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), h("div", { key: 'f4d664ded62488e5a4dea68d0881781dce53fc94', class: "flex w-full items-center justify-between gap-1" }, h("div", { key: 'a5e3a539f3c8f4a851b50ca7602dcf5c7f58b9d2', class: "flex items-center gap-4" }, h("slot", { key: 'b78e4ca93cd238feac189d8bc35d5477fe710ef4', name: "actions-left" })), h("div", { key: '475d51fbd1a7e0193cc28a88865c8b262712ebb6', class: "flex items-center gap-4 self-end" }, h("slot", { key: '1b9b1e0489228a2fae77f2d4f660cd3f97961ffa', name: "actions-right" }), h("at-button", { key: '42f66f229be56dad49793889b30d9e38ef091e6c', class: "rounded-lg", size: "sm", type: "secondary", disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" }, h("at-icon", { key: '005c840ee4c012fb87713cd946ead0a0402304a3', slot: "icon", name: this.in_progress ? 'stop' : 'allowUp' }))))), h("slot", { key: '5218ef5414848fa902608f22575f5365f717b20c', name: "footer" }), this.invalid && (h("span", { key: 'ead10c654f08e3c36c377292312c350b17279ade', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" }, h("at-icon", { key: '5982813195ccf0ce0491e4006ea83eb89dd39632', slot: "icon", name: this.in_progress ? 'stop' : 'allowUp' }))))), h("slot", { key: 'e39d0075232bb5f5dca54948d2c9889ff41ad76e', name: "footer" }), this.invalid && (h("span", { key: 'eea9d156bb79ce78b3d6f09d23b29b3c56fecc8d', class: "text-error-dark text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }

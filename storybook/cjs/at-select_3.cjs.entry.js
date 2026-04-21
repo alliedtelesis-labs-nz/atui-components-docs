@@ -8,20 +8,20 @@ var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 const inputVariantsConfig = {
     variants: {
         focused: {
-            false: 'ring-active-foreground/30',
+            false: 'ring-active',
             true: 'pointer-events-none',
         },
         disabled: {
-            false: 'focus-within:ring-active-foreground/30 cursor-pointer bg-white',
+            false: 'focus-within:ring-active-glow cursor-pointer bg-input-background',
             true: 'bg-surface-1 !text-disabled pointer-events-none border-none',
         },
         readonly: {
-            false: 'focus-within:ring-active-foreground/30',
-            true: '!bg-surface-1 !text-dark cursor-text border-none',
+            false: 'focus-within:ring-active-glow',
+            true: '!bg-surface-1 !text-foreground cursor-text border-none',
         },
         invalid: {
-            false: 'border-med focus-within:border-active-dark focus-within:ring-active-foreground/30',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-destructive-foreground/30',
+            false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
+            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -302,22 +302,22 @@ const AtSelectComponent = class {
         return computed;
     }
     render() {
-        return (index.h(index.Host, { key: 'b1b5a3f5dec140a386da5945f573518c765c7d71', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '3263c9b5c6ffeb4cfae56fed2d6510f70cb09b06', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '419873a0a85e42e6a02c8c4824dbd116c2f5a8ae', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '91cb21c3a68eac0d0bd5fc86291f39d09e07ae59', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '1e17855129e28afa13ff04a04bc50be59cd0ed69' }, this.error_text && this.invalid && (index.h("span", { key: '734bd264d3dc39d09b533ccbd85c35018424ea99', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '27f5d95eecff13c55676b8c64269bc76e1a59221' }, this.error_text && this.invalid && (index.h("span", { key: '75bcd17bfd633417e3948e1238a1104cd3435643', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-light inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
+        return (index.h("div", { class: "mb-4 flex flex-col" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist('height-[36px] transition[background-color,color,box-shadow] placeholder-text-light group/select:focus-within:ring-2 w-full cursor-pointer rounded-md border border-solid p-8 outline-0 duration-300 ease-in-out select-none focus:ring-2', inputVariantsConfig);
+        const getClassname = classlist.classlist('height-[36px] transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid p-8 outline-0 duration-300 ease-in-out select-none focus:ring', inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
@@ -333,12 +333,12 @@ const AtSelectComponent = class {
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }, index.h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 absolute right-4 flex h-full cursor-pointer items-center rounded-md p-4 select-none", role: "presentation", tabindex: -1 }, index.h("at-icon", { name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" })))));
+            }, "data-name": "select-clear-main" }, index.h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, index.h("at-icon", { name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" })))));
     }
     renderOptions() {
         return (index.h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 bg-white p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active-foreground/30 mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 rounded-md p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring-2`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "bg-input-background relative z-10 p-4" }, index.h("input", { type: "text", class: `transition[background-color,color] bg-surface-1 ring-active rounded-input mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
@@ -366,8 +366,8 @@ const AtSelectComponent = class {
             .filter(Boolean), index.h("slot", null), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
-            !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
-            'No results found')), !this.hasAnyOptions && (index.h("div", { "data-name": "no-options-available", class: "text-body text-light w-full bg-white px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && (index.h("div", { "data-name": "no-options-available", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
             'No options available'))));
     }
     renderOption(option) {
@@ -406,15 +406,15 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (index.h(index.Host, { key: '0b298a1fdfdba8f6bc859b9e99ea76aedb34c18e', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: '9bc4091b9f250c892a520ca9317727bdf6172414', role: "group", "aria-labelledby": this.label }, index.h("li", { key: 'd7fe2eb2b2c07d60713f9b152bafcf8bded004a1', id: this.label, class: "text-light border-light border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: 'dd3c5fbddcc0d0f1a966c0709596817717932fec' }))));
+        return (index.h(index.Host, { key: '0b298a1fdfdba8f6bc859b9e99ea76aedb34c18e', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: '9bc4091b9f250c892a520ca9317727bdf6172414', role: "group", "aria-labelledby": this.label }, index.h("li", { key: '8ac23d048510b01995994371ad21864a16560f22', id: this.label, class: "text-muted border-subtle border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: 'cb62424bf5a41f9a20cf60c414fadfa68499a643' }))));
     }
 };
 
 const optionVariantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-light text-active',
-            false: 'hover:bg-disabled-light bg-white',
+            true: 'bg-active-accent/30 hover:bg-active-accent/20 text-active-foreground',
+            false: 'hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         group_option: {
             true: 'px-16 ',
@@ -455,15 +455,15 @@ const AtSelectOptionComponent = class {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-foreground/40 flex w-full items-center truncate p-8 font-normal duration-300 ease-in-out focus:ring-2 focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
+        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full items-center truncate rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
-            ? 'pointer-events-none opacity-50 bg-gray-100 text-gray-400'
+            ? 'pointer-events-none opacity-50 text-disabled-foreground'
             : 'cursor-pointer';
         const classname = `${getOptionClassname({
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (index.h("li", { key: 'fa9419e0780b29d87542ff8094a187476e4a0c93', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'cb07a4a6313b1a4d122794a363d24c2a1067babb' }), this.label || this.value, index.h("slot", { key: '47f34f0d4b224fb43c666a894ffb6a67f1b9afb9', name: "after" })));
+        return (index.h("li", { key: '8f27ca2bf672752cdacb71fa9fa29193049099c8', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'cef7a42e2997389bd571d3b42ff2dbf4098c79ee' }), this.label || this.value, index.h("slot", { key: '82e3ffbd5d0c4261c4cfc0525e236758884fe137', name: "after" })));
     }
 };
 

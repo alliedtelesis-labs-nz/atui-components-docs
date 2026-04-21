@@ -48,7 +48,7 @@ dialog.backdrop::backdrop {
   flex-direction: column;
   z-index: var(--token-z-index-nav);
   min-width: var(--token-width-panel-xs);
-  background-color: var(--token-color-white);
+  background-color: var(--token-surface-background);
   box-shadow: var(--token-shadow-md);
   overflow-x: hidden;
   overflow-y: auto;
@@ -101,7 +101,7 @@ dialog.backdrop::backdrop {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: rgba(var(--token-color-white-rgb), 0.8);
+  background-color: rgba(var(--token-surface-background), 0.8);
   backdrop-filter: blur(10px);
 }
 :host .header div {
@@ -112,12 +112,12 @@ dialog.backdrop::backdrop {
 :host .header div .title {
   font-size: var(--token-font-size-h4);
   font-weight: var(--token-font-weight-med);
-  color: var(--token-text-dark);
+  color: var(--token-text-foreground);
   line-height: 1;
 }
 :host .header div .subtitle {
   font-size: var(--token-font-size-sm);
-  color: var(--token-text-light);
+  color: var(--token-text-foreground);
   line-height: 1;
 }
 :host .content {
