@@ -31,5 +31,6 @@ export declare class AtTableFilters {
     filterChangeHandler(event: CustomEvent, columnId: string): void;
     clearFilters: () => void;
     clearSingleFilter: (columnId: string) => void;
+    getHeaderName(columnId: string): string;
     render(): any;
 }

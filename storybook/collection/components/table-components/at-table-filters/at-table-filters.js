@@ -35,8 +35,12 @@ export class AtTableFilters {
         this.selected = this.selected.filter((column) => column.id !== columnId);
         this.atChange.emit(this.selected.length ? this.selected : []);
     };
+    getHeaderName(columnId) {
+        const col = this.col_defs?.find((c) => c.field === columnId || c.colId === columnId);
+        return col?.headerName ?? columnId;
+    }
     render() {
-        return (this.col_defs && (h(Host, { key: 'cc62d7c295a1dd5e41b37c75794cd0dca9710714', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: 'cebbd1a800accc9ccff8f9313c12487c7bfa5e8c', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: column.id, prefix: column.id + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, h("at-icon", { slot: "icon", name: "cancel" }))))))), h("at-button", { key: '0377d8218a893ca5e74a5cf86d18302b841c6367', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (h(Host, { key: '61d81f1bc23a5b470895a54178a87388da89b843', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: 'd2ecc44219a60b536d6ae7e3514baa34624285af', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: this.getHeaderName(column.id), prefix: this.getHeaderName(column.id) + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, h("at-icon", { slot: "icon", name: "cancel" }))))))), h("at-button", { key: '8b6a392bca19699c718b98bbdd990158b041ceb1', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
     static get is() { return "at-table-filters"; }
     static get properties() {
