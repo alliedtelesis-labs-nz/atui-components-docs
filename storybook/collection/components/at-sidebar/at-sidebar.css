@@ -75,6 +75,14 @@ at-sidebar .sidebar-content {
   padding: 8px;
   overflow-y: auto;
 }
+at-sidebar .sidebar-header,
+at-sidebar .sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: 8px;
+}
 at-sidebar .page-content {
   display: flex;
   flex-direction: column;
