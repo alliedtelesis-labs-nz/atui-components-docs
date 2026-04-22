@@ -48,11 +48,11 @@ at-sidebar .backdrop {
   animation: fadeIn 300ms forwards;
 }
 at-sidebar .sidebar {
+  display: flex;
   position: relative;
   width: var(--token-width-sidebar);
   flex-direction: column;
   flex: 0 0 auto;
-  min-height: 100%;
   background-color: var(--token-sidebar-background);
   color: var(--token-sidebar-foreground);
   fill: var(--token-sidebar-foreground);
@@ -60,7 +60,7 @@ at-sidebar .sidebar {
   will-change: width;
   transition: width var(--token-transition-time);
   overflow: auto;
-  border-right: 1px solid var(--token-border-muted);
+  border-right: 1px solid var(--token-sidebar-border);
 }
 at-sidebar .sidebar at-sidebar-trigger {
   display: flex;
@@ -68,6 +68,7 @@ at-sidebar .sidebar at-sidebar-trigger {
 }
 at-sidebar .sidebar-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
@@ -94,14 +95,8 @@ at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
 }
-at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas .sidebar-footer {
-  display: none;
-}
 at-sidebar[data-state=collapsed] .sidebar.collapse-icon {
   width: var(--token-width-sidebar-collapsed);
-}
-at-sidebar[data-state=collapsed] .sidebar.collapse-icon .sidebar-footer {
-  display: none;
 }
 at-sidebar[data-state=collapsed] .sidebar.collapse-none {
   width: var(--token-width-sidebar);
