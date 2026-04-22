@@ -4,7 +4,7 @@ import { c as classlist } from './classlist-COG8_R0C.js';
 const variantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-accent/20 text-active-foreground',
+            true: 'bg-active-accent/20 text-active-accent fill-active-accent',
             false: 'text-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         disabled: {
@@ -70,7 +70,7 @@ const AtButtonGroupOption = class {
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: '6ff5a02be5b62872b051920a618bf2dd19c17bd6', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: 'e0b92f137d5da98df39b1ee47dff18c28181d337', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'a3272cb4412937fcc6bbdfe533fae32f4e7e3362', name: "icon" }), h("slot", { key: '336d07462f9a58978cec89b2735e0fc5816d6da7' }, this.label ? this.label : this.icon ? '' : this.value)));
+        return (h("button", { key: '212c1e34d600fd3d105109ff07c26fd911ffcf71', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '9ebbaa3eb50c925a4a07c7da0e6c1eab25c4e525', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'ba0aea4b735c88033727cde2f2b324b95319defe', name: "icon" }), h("slot", { key: '50fa53637a7b1f31a6a057a5cd462bf25867ef8c' }, this.label ? this.label : this.icon ? '' : this.value)));
     }
 };
 

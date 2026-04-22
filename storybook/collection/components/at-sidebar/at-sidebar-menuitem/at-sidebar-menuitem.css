@@ -34,7 +34,6 @@
   align-items: center;
   justify-content: center;
   min-width: 24px;
-  font-family: "Material Icons";
   font-style: normal;
   font-size: 22px;
   line-height: 1;
@@ -75,11 +74,11 @@
 }
 :host:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 20%, transparent);
 }
 :host[data-state=active] {
-  background-color: color-mix(in srgb, var(--token-sidebar-active-accent) 30%, transparent);
-  color: var(--token-sidebar-active-foreground);
+  background-color: color-mix(in srgb, var(--token-sidebar-active-accent) 20%, transparent);
+  color: var(--token-sidebar-active-accent);
 }
 :host[data-state=active] .focus-indicator {
   background-color: var(--token-state-active-accent);

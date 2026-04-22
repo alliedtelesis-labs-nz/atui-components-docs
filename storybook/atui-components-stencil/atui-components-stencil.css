@@ -3438,6 +3438,18 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-warning-default) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.\!fill-button-foreground {
+  fill: color-mix(in srgb, var(--token-button-foreground) 100%, transparent) !important;
+}
+
+.\!fill-button-foreground-inv {
+  fill: color-mix(in srgb, var(--token-button-foreground-inv) 100%, transparent) !important;
+}
+
+.fill-active-accent {
+  fill: color-mix(in srgb, var(--token-state-active-accent) 100%, transparent);
+}
+
 .fill-button-destructive {
   fill: color-mix(in srgb, var(--token-button-destructive-background) 100%, transparent);
 }
@@ -3778,6 +3790,12 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-state-active-default) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-active-accent {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-active-foreground {
