@@ -3039,6 +3039,10 @@ strong {
   overflow-wrap: break-word;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .rounded {
   border-radius: var(--token-border-radius-md);
 }
