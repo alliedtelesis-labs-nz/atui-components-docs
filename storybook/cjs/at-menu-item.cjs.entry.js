@@ -25,10 +25,6 @@ const AtMenuitemComponent = class {
      */
     label;
     /**
-     * Icon to be displayed with the label
-     */
-    icon;
-    /**
      * Will change the styling of the menuitem when set
      */
     is_active = false;
@@ -46,7 +42,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'fc914b0b4af643b3f61c445a6ee326b0cf734030', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: 'be6caeee20c2fcd1160f28ccf42b7e0ca8286bf3', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -54,7 +50,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, this.icon && (index.h("span", { key: '42bc8b5131a87b9c7e315fb1e605cc6bb0b85fd1', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (index.h("span", { key: 'bce125526d5e06e47d2decb6d491f1897666da84', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '8bd6cca93ef087794331f37b904fafc04c2398d0' })));
+            } }, index.h("slot", { key: '5d0c6df62606b2680efb64755f41b258524f1327', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '3d612f696fb01b8287a48601811a05b7edbe1fae', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'a46cd5e6a8dcb93c1452abfed5291d0d2af802e7' })));
     }
 };
 

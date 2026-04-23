@@ -19,9 +19,7 @@ export declare class AtMessage {
     message_title: string;
     /**
      * An icon is provided for success, warning, error, or info types.
-     * You can provide a custom value to replace the default icon.
-     *
-     * Must use material icon name.
+     * Custom icon can be used by providing the carbon icon name.
      */
     icon?: string;
     /**

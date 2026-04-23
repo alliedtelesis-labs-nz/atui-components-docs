@@ -1,8 +1,6 @@
 const Template = (args) => `
 <at-button
     label="${args.label ?? ''}"
-    icon="${args.icon ?? ''}"
-    icon_right="${args.icon_right ?? ''}"
     size="${args.size ?? 'lg'}"
     type="${args.type ?? 'primary'}"
     spinner_minimum_display_period_ms=${args.spinner_minimum_display_period_ms ?? 1000}
@@ -11,7 +9,10 @@ const Template = (args) => `
     ${args.rounded ? 'rounded' : ''}
     ${args.disabled ? 'disabled' : ''}
     ${args.in_progress ? 'in_progress' : ''}
-/>
+>
+    <at-icon slot="icon" name="${args.icon ?? ''}" />
+    <at-icon slot="icon_after" name="${args.icon_after ?? ''}" />
+</at-button>
 `;
 export default {
     title: 'Components/Button',
@@ -41,7 +42,7 @@ Default.args = {
     label: 'Button',
     icon: 'home',
     disabled: false,
-    icon_right: '',
+    icon_after: '',
     in_progress: false,
     size: 'lg',
     spinner_minimum_display_period_ms: 1000,
@@ -53,7 +54,7 @@ Disabled.args = {
     label: 'Button',
     icon: 'home',
     disabled: true,
-    icon_right: '',
+    icon_after: '',
     in_progress: false,
     size: 'lg',
     spinner_minimum_display_period_ms: 1000,
@@ -65,7 +66,7 @@ Spinner.args = {
     label: 'Button',
     icon: 'home',
     disabled: false,
-    icon_right: '',
+    icon_after: '',
     in_progress: true,
     size: 'lg',
     spinner_minimum_display_period_ms: 1000,

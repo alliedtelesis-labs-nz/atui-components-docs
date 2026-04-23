@@ -10,9 +10,9 @@ const Template = (args) => `
 const ExternalTriggerTemplate = (args) => `
 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 20px;">
     <div style="display: flex; gap: 16px; align-items: center;">
-        <at-button data-id="${args.triggerId}" label="${args.triggerLabel}" type="secondary"></at-button>
-        <at-button data-id="${args.triggerId}" label="${args.triggerLabel} (Duplicate)" type="secondary"></at-button>
-        <i class="material-icons" data-id="${args.triggerId}">info</i>
+        <at-button data-tooltip="${args.triggerId}" label="${args.triggerLabel}" type="secondary"></at-button>
+        <at-button data-tooltip="${args.triggerId}" label="${args.triggerLabel} (Duplicate)" type="secondary"></at-button>
+        <at-icon slot="icon" name="info" data-tooltip="${args.triggerId}" />
     </div>
     <at-tooltip
         trigger_id="${args.triggerId}"
@@ -38,7 +38,9 @@ const TableExampleTemplate = () => `
                 <td style="border: 1px solid #ddd; padding: 8px;">John Doe</td>
                 <td style="border: 1px solid #ddd; padding: 8px;">john.doe@example.com</td>
                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                    <at-button data-id="user-info" icon="info" type="secondary" size="sm"></at-button>
+                    <at-button data-tooltip="user-info" type="secondary" size="sm">
+                        <at-icon slot="icon" name="info" />
+                    </at-button>
                     <at-tooltip trigger_id="user-info" position="top" width="200px">
                         <span>John is a senior developer with 5+ years experience</span>
                     </at-tooltip>
@@ -48,14 +50,18 @@ const TableExampleTemplate = () => `
                 <td style="border: 1px solid #ddd; padding: 8px;">Jane Smith</td>
                 <td style="border: 1px solid #ddd; padding: 8px;">jane.smith@example.com</td>
                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                    <at-button data-id="user-info" icon="info" type="secondary" size="sm"></at-button>
+                    <at-button data-tooltip="user-info" type="secondary" size="sm">
+                        <at-icon slot="icon" name="info" />
+                    </at-button>
                 </td>
             </tr>
             <tr>
                 <td style="border: 1px solid #ddd; padding: 8px;">Bob Johnson</td>
                 <td style="border: 1px solid #ddd; padding: 8px;">bob.johnson@example.com</td>
-                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
-                    <i class="material-icons" data-id="user-info">info</i>
+                <td style="border: 1px solid #ddd; padding: 8px;">
+                    <div style="display: flex; justify-content: center;">
+                        <at-icon name="info" data-tooltip="user-info" />
+                    </div>
                 </td>
             </tr>
         </tbody>

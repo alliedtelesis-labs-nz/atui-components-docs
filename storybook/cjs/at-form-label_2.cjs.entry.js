@@ -24,9 +24,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (index.h("div", { key: '47a97db9187a86543e2e14d456f697ab15273f97', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (index.h("label", { key: '728727bfbf6b85be8f59f93e0d26a57baacb0b5d', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '81c6d300948fa4cbde0c39ce5c2e35a9de6496b1', class: "text-error" }, "*"))),
-            this.info_text && (index.h("at-tooltip", { key: '5fb2448015d10c79580abe968fe5cb3db032714d', position: "right" }, index.h("at-icon", { key: 'cb31def9d368b121a39734b758d8608a76b4a992', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: '5c8616c6328d8793d922bb5ad4b0939e6b29ceb9' }, this.info_text))),
+        return (index.h("div", { key: '222a0c57c881c48358f43605c4748fb648f4b027', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (index.h("label", { key: 'dfc1e67267c5d69ac283473e45ee1867d8d35d0a', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '7ad102fa44320449ec75daeeb10721c139271c8d', class: "text-error" }, "*"))),
+            this.info_text && (index.h("at-tooltip", { key: '1da5284ef5b1bbe50f048fe444613ed74e9c8af7', position: "right" }, index.h("at-icon", { key: '357cd7aa0fbdc43133ed652a822fd45f861f35af', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: '917014392a606dc16412916b6cddecbc3a1bb8bc' }, this.info_text))),
         ]));
     }
 };
@@ -61,7 +61,7 @@ const AtTooltip = class {
      */
     delay = 0;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
      * */
     trigger_id;
     async disabledChanged(newValue) {
@@ -319,7 +319,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: '2448d1ebf16b568c7f9793c7333cb208e15f0bb1', class: "relative" }, !this.trigger_id && (index.h("div", { key: 'c1407ec708af078ad4175163a42ce511815dc048', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: 'dadca5ebb3e2134e4ab2fb59a4657ed031b6554e', name: "tooltip-trigger" }))), index.h("div", { key: '6333817c238e17dfcd9ef6ab547b51b0813c3a4d', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-2 text-sm opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'c4cae5fb8fd06867ebba6dd76a9889b5018a63f0' }))));
+        return (index.h(index.Host, { key: 'b20a1b171bb844221bdc72c505376d1fbd6b28b7', class: "relative" }, !this.trigger_id && (index.h("div", { key: '97d9b150f7281709171230709c53610b74b07a8c', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: 'c8a5b964c0dd949c4b735bcab520229f4c1843c7', name: "tooltip-trigger" }))), index.h("div", { key: 'cc8d7365651870eaeaacd86a16a2fc1c0f5e6b99', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-2 text-sm opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: 'a951c92694e6e38d8b55ed95f55e42c2d1288323' }))));
     }
     static get watchers() { return {
         "disabled": [{

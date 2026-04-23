@@ -4,14 +4,10 @@ export type AtBadgeSize = 'lg' | 'sm';
 /**
  * @category Feedback
  * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
- *
+ * @slot icon - Carbon icon placed before the label
  * @slot - Content placed after the label
  */
 export declare class AtBadgeComponent {
-    /**
-     * Icon appearing to the left of the badge title. MUST use mat-icon name.
-     */
-    icon?: string;
     /**
      * Title shown on the badge.
      */

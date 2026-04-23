@@ -22,7 +22,7 @@ Default.args = {
     options: [
         { option_id: 'IP', label: 'IP' },
         { option_id: 'ICMP', label: 'ICMP' },
-        { option_id: 'TCP', label: 'TCO' },
+        { option_id: 'TCP', label: 'TCP' },
         { option_id: 'UDP', label: 'UDP' },
     ],
     label: 'Button',

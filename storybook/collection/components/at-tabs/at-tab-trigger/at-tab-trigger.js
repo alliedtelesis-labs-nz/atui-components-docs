@@ -58,7 +58,7 @@ export class AtTabTrigger {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '87bcbf5f4b7f0b04839dc9b86443179f80f5c365', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, h("a", { key: '1d762ac84208b72b950972be472c400543b0dc30', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'cc001f8601d11b36c35b5fddd1c7b9c191ef7a1e' }))));
+        return (h(Host, { key: '0a3df873de3811588a7fcf001e3dbbbf0c936e89', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, h("a", { key: '4ec8fc2e04d7c62c84caac9c34c8a2bbf580aa93', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'c4af96b3ec6b99ae3983fff5a0996c50cfbb5dea' }))));
     }
     static get is() { return "at-tab-trigger"; }
     static get properties() {

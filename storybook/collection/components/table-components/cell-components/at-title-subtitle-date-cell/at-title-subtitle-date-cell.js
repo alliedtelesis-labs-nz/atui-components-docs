@@ -36,7 +36,7 @@ export class AtTitleSubtitleDateCell {
         return TimeDatePresentationUtil.getFormattedDate(this.value, DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (h(Host, { key: '02bd658202445e47f368a21814c74b47e9d42eca' }, h("div", { key: '0d4b15f934131ca5a9b3b0d29cbe1b466d42162b', class: "flex h-full flex-col justify-center" }, h("div", { key: 'a9cd15b5bc4d033de03c86311091130b5c18d29a', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: '9cfb527a86335a91760a9c784edee195e0b8846e', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
+        return (h(Host, { key: '5b0ba1b851878f1315bd92986e2d43ad93a29431' }, h("div", { key: 'b1ae21a6ae45362d556fa978da2c7b0ba334d2cc', class: "flex h-full flex-col justify-center" }, h("div", { key: 'e01fc7df929b5b5806828fe5ba60104bbdd419ca', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: 'b3f2b81cb97bd82b0694af090ae92ebe5fe59e7b', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
     }
     static get is() { return "at-title-subtitle-date-cell"; }
     static get states() {

@@ -15,6 +15,8 @@ const variantsConfig = {
 /**
  * @category Form Controls
  * @description A menu item component for use within dropdowns, context menus, or navigation lists. Supports icons, active/disabled states, and custom slot content. Emits an event when selected.
+ *
+ * @slot icon - Carbon icon displayed at the left of the menu item
  * @slot - Use this slot to add custom elements (e.g., icons, badges, actions) after the label section of the menu item. This allows for flexible extension of the menu item content.
  */
 export class AtMenuitemComponent {
@@ -22,10 +24,6 @@ export class AtMenuitemComponent {
      * Label to be displayed for the menu item
      */
     label;
-    /**
-     * Icon to be displayed with the label
-     */
-    icon;
     /**
      * Will change the styling of the menuitem when set
      */
@@ -44,7 +42,7 @@ export class AtMenuitemComponent {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'fc914b0b4af643b3f61c445a6ee326b0cf734030', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: 'be6caeee20c2fcd1160f28ccf42b7e0ca8286bf3', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -52,7 +50,7 @@ export class AtMenuitemComponent {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, this.icon && (h("span", { key: '42bc8b5131a87b9c7e315fb1e605cc6bb0b85fd1', "data-name": "menu-item-icon", class: "material-icons text-icon-lg flex items-center justify-center" }, this.icon)), this.label && (h("span", { key: 'bce125526d5e06e47d2decb6d491f1897666da84', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '8bd6cca93ef087794331f37b904fafc04c2398d0' })));
+            } }, h("slot", { key: '5d0c6df62606b2680efb64755f41b258524f1327', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '3d612f696fb01b8287a48601811a05b7edbe1fae', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: 'a46cd5e6a8dcb93c1452abfed5291d0d2af802e7' })));
     }
     static get is() { return "at-menu-item"; }
     static get properties() {
@@ -75,25 +73,6 @@ export class AtMenuitemComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "label"
-            },
-            "icon": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Icon to be displayed with the label"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "icon"
             },
             "is_active": {
                 "type": "boolean",

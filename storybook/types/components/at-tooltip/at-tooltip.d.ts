@@ -33,7 +33,7 @@ export declare class AtTooltip {
      */
     delay?: number;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
      * */
     trigger_id?: string;
     disabledChanged(newValue: boolean): Promise<void>;

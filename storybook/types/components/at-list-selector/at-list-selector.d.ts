@@ -15,6 +15,7 @@ export interface AtIListSelectorItem {
  * @category Navigation
  * @description A list selector component for selecting an item from a list.
  *
+ * @slot header - Placed at the top of the list, usually for the title of the list
  * @slot - Placed after the list items
  */
 export declare class AtListSelector {

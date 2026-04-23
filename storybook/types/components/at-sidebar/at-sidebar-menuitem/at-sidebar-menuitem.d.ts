@@ -4,9 +4,9 @@ import { AtEvent } from '../../../types/events';
  * @category Navigation
  * @description A sidebar menu item component for the sidebar.
  *
- * @slot icon: svg image displayed as the icon at the left of the menu item.
- * @slot label: Content displayed at the left of the menu item.
- * @slot sidebar-menu-item-actions: Content displayed at the right of the menu item.
+ * @slot icon - Carbon icon displayed at the left of the menu item.
+ * @slot label - Content displayed at the left of the menu item.
+ * @slot sidebar-menu-item-actions - Content displayed at the right of the menu item.
  */
 export declare class AtSidebarMenuitemComponent {
     /**
@@ -14,7 +14,7 @@ export declare class AtSidebarMenuitemComponent {
      */
     label?: string;
     /**
-     * Icon or svg to be displayed with the label
+     * Carbon icon or svg to be displayed with the label
      */
     icon?: string;
     /**

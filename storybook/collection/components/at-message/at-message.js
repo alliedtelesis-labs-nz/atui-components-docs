@@ -54,9 +54,7 @@ export class AtMessage {
     message_title;
     /**
      * An icon is provided for success, warning, error, or info types.
-     * You can provide a custom value to replace the default icon.
-     *
-     * Must use material icon name.
+     * Custom icon can be used by providing the carbon icon name.
      */
     icon;
     /**
@@ -75,7 +73,7 @@ export class AtMessage {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (h("div", { key: '68760b6b2fa30f247c9e8027bd76910b56451bdb', class: this.hostClasses, "data-name": "message-container" }, this.icon ? (h("i", { class: `material-icons mr-8 text-[16px] ${messageVariants.iconColour[this.type]}`, "data-name": "message-icon" }, this.iconName)) : (h("at-icon", { class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName })), h("div", { key: '8dcc8f888f50aa4f30ae7a5ee60b76c0924cb8fe', class: "flex w-full flex-row justify-between gap-4 text-sm" }, h("div", { key: 'c3f7f05356c0c9127af217ecf4ec648ef996c75f' }, this.message_title && (h("div", { key: 'e6680ae0d1ee047f13c1d23c2d964014d02f7610', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: 'f3869e55823cd69a6ef71f06a8ae2a6222e40eef', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '3aba182ff028120b049aecfe49e663124c90795d' })), h("slot", { key: 'bd89213004ebbf63161a71d009c3d46ae457606c', name: "actions" }))));
+        return (h("div", { key: '1204c55f2d08861faa4ed552b464a9f51c617827', class: this.hostClasses, "data-name": "message-container" }, h("at-icon", { key: '48bb2c8d2f939e8bba5d2a7a7821cff606aeb2c3', class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName }), h("div", { key: 'a14e7170a2eafca2a290f2a9d35d39779420a13c', class: "flex w-full flex-row justify-between gap-4 text-sm" }, h("div", { key: '0786d2124f1b926ce962d6e6c3073e63f8917de9' }, this.message_title && (h("div", { key: '745a91f6395a971d51b0521d2db3e910c8f5d13d', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: '0142c4ace0704aa87f646c32668c72aaed3bfc5c', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: 'f78521e513b110a4301685978b4d932480166f52' })), h("slot", { key: '65b08558dd5e67f601a9fed50b41e3e8a1d1227b', name: "actions" }))));
     }
     static get is() { return "at-message"; }
     static get originalStyleUrls() {
@@ -161,7 +159,7 @@ export class AtMessage {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "An icon is provided for success, warning, error, or info types.\nYou can provide a custom value to replace the default icon.\n\nMust use material icon name."
+                    "text": "An icon is provided for success, warning, error, or info types.\nCustom icon can be used by providing the carbon icon name."
                 },
                 "getter": false,
                 "setter": false,

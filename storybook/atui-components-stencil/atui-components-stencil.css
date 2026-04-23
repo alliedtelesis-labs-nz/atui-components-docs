@@ -2535,24 +2535,12 @@ strong {
   height: 40px;
 }
 
-.h-48 {
-  height: 48px;
-}
-
 .h-64 {
   height: 64px;
 }
 
-.h-72 {
-  height: 72px;
-}
-
 .h-8 {
   height: 8px;
-}
-
-.h-\[12px\] {
-  height: 12px;
 }
 
 .h-\[160px\] {
@@ -2567,12 +2555,12 @@ strong {
   height: 20px;
 }
 
-.h-\[235px\] {
-  height: 235px;
+.h-\[22px\] {
+  height: 22px;
 }
 
-.h-\[24px\] {
-  height: 24px;
+.h-\[235px\] {
+  height: 235px;
 }
 
 .h-\[28px\] {
@@ -2663,32 +2651,20 @@ strong {
   width: 40px;
 }
 
-.w-48 {
-  width: 48px;
-}
-
 .w-64 {
   width: 64px;
-}
-
-.w-72 {
-  width: 72px;
 }
 
 .w-80 {
   width: 80px;
 }
 
-.w-\[12px\] {
-  width: 12px;
-}
-
 .w-\[16px\] {
   width: 16px;
 }
 
-.w-\[24px\] {
-  width: 24px;
+.w-\[22px\] {
+  width: 22px;
 }
 
 .w-\[40px\] {
@@ -3176,6 +3152,10 @@ strong {
   border-color: color-mix(in srgb, var(--token-state-error-foreground) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
+.border-disabled-foreground\/30 {
+  border-color: color-mix(in srgb, var(--token-state-disabled-foreground) 30%, transparent);
+}
+
 .border-error {
   --tw-border-opacity:
       1;
@@ -3470,24 +3450,76 @@ strong {
   fill: color-mix(in srgb, var(--token-state-disabled-default) 100%, transparent);
 }
 
+.fill-disabled-foreground {
+  fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent);
+}
+
+.fill-disabled-foreground-inv {
+  fill: color-mix(in srgb, var(--token-state-disabled-foreground-inv) 100%, transparent);
+}
+
 .fill-feedback-error-accent {
   fill: color-mix(in srgb, var(--token-feedback-error-accent) 100%, transparent);
+}
+
+.fill-feedback-error-foreground {
+  fill: color-mix(in srgb, var(--token-feedback-error-foreground) 100%, transparent);
+}
+
+.fill-feedback-error-foreground-inv {
+  fill: color-mix(in srgb, var(--token-feedback-error-foreground-inv) 100%, transparent);
+}
+
+.fill-feedback-foreground {
+  fill: color-mix(in srgb, var(--token-feedback-foreground) 100%, transparent);
+}
+
+.fill-feedback-foreground-inv {
+  fill: color-mix(in srgb, var(--token-feedback-foreground-inv) 100%, transparent);
 }
 
 .fill-feedback-info-accent {
   fill: color-mix(in srgb, var(--token-feedback-info-accent) 100%, transparent);
 }
 
+.fill-feedback-info-foreground {
+  fill: color-mix(in srgb, var(--token-feedback-info-foreground) 100%, transparent);
+}
+
+.fill-feedback-info-foreground-inv {
+  fill: color-mix(in srgb, var(--token-feedback-info-foreground-inv) 100%, transparent);
+}
+
 .fill-feedback-success-accent {
   fill: color-mix(in srgb, var(--token-feedback-success-accent) 100%, transparent);
+}
+
+.fill-feedback-success-foreground {
+  fill: color-mix(in srgb, var(--token-feedback-success-foreground) 100%, transparent);
+}
+
+.fill-feedback-success-foreground-inv {
+  fill: color-mix(in srgb, var(--token-feedback-success-foreground-inv) 100%, transparent);
 }
 
 .fill-feedback-warning-accent {
   fill: color-mix(in srgb, var(--token-feedback-warning-accent) 100%, transparent);
 }
 
+.fill-feedback-warning-foreground {
+  fill: color-mix(in srgb, var(--token-feedback-warning-foreground) 100%, transparent);
+}
+
+.fill-feedback-warning-foreground-inv {
+  fill: color-mix(in srgb, var(--token-feedback-warning-foreground-inv) 100%, transparent);
+}
+
 .fill-foreground {
   fill: color-mix(in srgb, var(--token-text-foreground) 100%, transparent);
+}
+
+.fill-slate-300 {
+  fill: #cbd5e1;
 }
 
 .object-cover {
@@ -3664,34 +3696,6 @@ strong {
   vertical-align: -0.125em;
 }
 
-.\!text-\[24px\] {
-  font-size: 24px !important;
-}
-
-.\!text-\[48px\] {
-  font-size: 48px !important;
-}
-
-.\!text-\[64px\] {
-  font-size: 64px !important;
-}
-
-.\!text-\[72px\] {
-  font-size: 72px !important;
-}
-
-.\!text-icon-md {
-  font-size: var(--token-font-size-icon-md) !important;
-}
-
-.text-\[12px\] {
-  font-size: 12px;
-}
-
-.text-\[16px\] {
-  font-size: 16px;
-}
-
 .text-body {
   font-size: var(--token-font-size-body);
 }
@@ -3706,10 +3710,6 @@ strong {
 
 .text-h5 {
   font-size: var(--token-font-size-h5);
-}
-
-.text-icon-lg {
-  font-size: var(--token-font-size-icon-lg);
 }
 
 .text-icon-md {

@@ -20,7 +20,7 @@ export class AtMenuCell {
         const actions = typeof this.params.actions === 'function'
             ? this.params.actions(this.params)
             : this.params.actions;
-        return (h(Host, { key: '204082fe9c8bffe4467d2e58d2604ec44df0af33', class: "flex h-full items-center gap-4" }, h("at-menu", { key: '7bc007cd944027fba24bc0285036997019d0c168', width: "fit-content", position: "left" }, h("at-button", { key: 'be369a6182a814d8e8ecccdec64a447ca215f538', type: "secondaryText", icon: this.params.icon, slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: '60468304447e5c73e1967d5600c5fdd3505ddce6', slot: "icon", name: "overflow_menu" }))), h("div", { key: 'f51bfafdf6d3ce23d943361f38e9c0cb939ef789', class: "flex flex-col" }, actions &&
+        return (h(Host, { key: '77d33d22d1a18f752b44ed00d0053a27c7c5645f', class: "flex h-full items-center gap-4" }, h("at-menu", { key: '470cf21d1dabf15487cb15080f219ff4c730d23a', width: "fit-content", position: "left" }, h("at-button", { key: '469fb05b9eff0dd655a43256a14b9e84398ef29e', type: "secondaryText", slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: '151e9207d966609161a27bf8a798e9c65a6c68b5', slot: "icon", name: "overflow_menu" }))), h("div", { key: '145c7d4003026227e123177cd298bf4e4ec68380', class: "flex flex-col" }, actions &&
             actions.map((action) => typeof action === 'object' &&
                 (action.disabled &&
                     action.disabled(this.params.data) &&

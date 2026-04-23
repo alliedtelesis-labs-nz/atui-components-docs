@@ -8,11 +8,11 @@ const variantsConfig = {
             false: 'text-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         disabled: {
-            true: 'text-disabled-foreground hover:text-disabled-foreground pointer-events-none',
+            true: 'text-disabled-foreground fill-disabled-foreground hover:text-disabled-foreground pointer-events-none',
             false: null,
         },
         hostDisabled: {
-            true: 'text-disabled hover:text-disabled pointer-events-none',
+            true: 'text-disabled fill-disabled hover:text-disabled pointer-events-none',
             false: null,
         },
     },
@@ -31,10 +31,6 @@ const AtButtonGroupOption = class {
      * Displayed text value (optional) if not provided the value will be used as a fallback
      */
     label;
-    /**
-     * Icon to be displayed in the button
-     */
-    icon;
     /**
      * Will disable interaction if set
      */
@@ -64,13 +60,18 @@ const AtButtonGroupOption = class {
             element: this.el,
         });
     }
+    hasIcon() {
+        const iconEl = this.el.querySelector('[slot="icon"]');
+        return !!iconEl;
+    }
     render() {
         const classname = getButtonClasses({
             active: this.is_active,
             disabled: this.disabled,
             hostDisabled: this.host_disabled,
         });
-        return (h("button", { key: '212c1e34d600fd3d105109ff07c26fd911ffcf71', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, this.icon && (h("span", { key: '9ebbaa3eb50c925a4a07c7da0e6c1eab25c4e525', class: `material-icons h-16 w-16 text-[16px] leading-[16px]`, "data-name": "button-group-option-icon" }, this.icon)), h("slot", { key: 'ba0aea4b735c88033727cde2f2b324b95319defe', name: "icon" }), h("slot", { key: '50fa53637a7b1f31a6a057a5cd462bf25867ef8c' }, this.label ? this.label : this.icon ? '' : this.value)));
+        const hasIcon = this.hasIcon();
+        return (h("button", { key: '370f411bb0f1a3bd2cb96c65ea3d7ea3987cdd47', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '77a2e78d3ed4015eb59cb85606581cf8acbc88b3', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '5b3f84e9d0f4e8a58108df609af595afac2251b9' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '24ce0896d27d18d05980f1758da0b4791da3f868', name: "after" })));
     }
 };
 

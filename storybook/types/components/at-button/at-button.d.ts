@@ -6,8 +6,9 @@ export type AtButtonSize = 'sm' | 'md' | 'lg';
 /**
  * @category Actions
  * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
- *
- * @slot - Placed after the label, but before the icon_right. Can be used as a replacement for the label prop.
+ * @slot icon - Carbon icon placed before the label
+ * @slot icon_after - Carbon icon placed after the label
+ * @slot - Placed after the label, but before the icon_after. Can be used as a replacement for the label prop.
  */
 export declare class AtButtonComponent {
     /**
@@ -30,14 +31,6 @@ export declare class AtButtonComponent {
      * When set the button's styling will change and will no longer be interactive
      */
     disabled: boolean;
-    /**
-     * Material icon to be displayed before the label within the button
-     */
-    icon?: string;
-    /**
-     * Material icon to be displayed after the label within the button
-     */
-    icon_after?: string;
     /**
      * When set, will display a loading spinner inside the button and hide all labels & icons
      */

@@ -2,13 +2,15 @@ const Template = (args) => `
 <at-card
     card_title="${args.card_title ?? ''}"
     subtitle="${args.subtitle ?? ''}"
-    icon="${args.icon ?? ''}"
     content="${args.content ?? ''}"
     shadow="${args.shadow ?? 'sm'}"
     padding=${args.padding ? 'true' : 'false'}
     overflow=${args.overflow ? 'true' : 'false'}
     ${args.border ? 'border' : ''}
 >
+    <at-button slot="card-header-actions" type="secondaryText">
+        <at-icon slot="icon" name="${args.icon ?? ''}" />
+    </at-button>
     <div
         style="height:100px;width:100%;background-color:rgb(2, 156, 253, 0.7); border: 2px solid rgb(2, 156, 253); align-items:center; justify-content: center; display: flex; color: white;"
     >
@@ -28,7 +30,7 @@ export default {
 export const Default = Template.bind({});
 Default.args = {
     card_title: 'Title',
-    icon: 'home',
+    icon: 'overflow_menu',
     subtitle: 'Subtitle',
     content: 'Content',
     shadow: 'lg',

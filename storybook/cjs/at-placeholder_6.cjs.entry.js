@@ -4,12 +4,6 @@ var index = require('./index--r5sCsiV.js');
 var translation = require('./translation-D6fmqwsI.js');
 
 const placeholderVariants = {
-    iconSizes: {
-        xs: '!text-[24px] w-24 h-24',
-        sm: '!text-[48px] w-48 h-48',
-        md: '!text-[64px] w-64 h-64',
-        lg: '!text-[72px] w-72 h-72',
-    },
     sizes: {
         xs: 'p-16 flex-row gap-8',
         sm: 'p-[5vh] flex-col justify-center',
@@ -26,10 +20,6 @@ const AtPlaceholderComponent = class {
      */
     size = 'md';
     /**
-     * Material icon to be displayed in the center of the placeholder
-     */
-    icon;
-    /**
      * Title to be displayed below the icon
      */
     placeholder_title;
@@ -41,14 +31,18 @@ const AtPlaceholderComponent = class {
      * Will show a loading spinner when set
      */
     show_loading_spinner;
+    get el() { return index.getElement(this); }
+    componentDidLoad() {
+        const iconEl = this.el.querySelector('[slot="icon"]');
+        if (iconEl) {
+            iconEl.size = this.size;
+        }
+    }
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }
-    get iconSizeClass() {
-        return placeholderVariants.iconSizes[this.size];
-    }
     render() {
-        return (index.h("div", { key: '20e2a389eb34687b50765a2592b8115b694be555', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (index.h("span", { key: 'b9cf64604c623322ba379e90d7ad51040c478f53', class: `material-icons text-muted ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), index.h("div", { key: '7bc082993a91cb24ecb113edc7cca7e277f11e84', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: 'b43920966ee6cb8014a630b2dc9740f872d97e5d', class: "flex items-center" }, this.show_loading_spinner && (index.h("at-loading", { key: 'a79c1ef7c860a6defe58c236d71434ab8b593bf7', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: 'b238b55a7b2146c604d7314400e06e3508d4df65', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '80c85c36b2bdeea058421b5dd65c1682f1198c10', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: 'd25fb768d5a6d8661f02b24cf3778b9cd5b8b1e3' }))));
+        return (index.h("div", { key: '8b9530b4538fa71da8cc4ad2887a57573c78811f', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, index.h("span", { key: '2684c6c087ad81828431f10d5385842d4010202c', class: "fill-slate-300", "data-name": "placeholder-icon" }, index.h("slot", { key: '2b635f00dfea094a50c871c77ca4851916f8e331', name: "icon" })), index.h("div", { key: '31b444d58db7a3c6b3dc41c0a8de7d9bfa78b345', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: '3b0dda32af02d564f8074f9ad43422c90e02177c', class: "flex items-center" }, this.show_loading_spinner && (index.h("at-loading", { key: '6c5ba66fcd3dbd88262271faf568b62c86a29203', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: '3ad686681d47c32bf533a07bb135e67ab33910ff', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '27ae65abf76f2c04585fbb07b29f65c4048e5039', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: '98d74fdeb2fc07569ea40b168f1dbf7631ca3eec' }))));
     }
 };
 
@@ -93,15 +87,15 @@ const AtSearch = class {
         this.searchEl.focus();
     }
     render() {
-        return (index.h("div", { key: 'c07be93db801a2b885ab90b3e5675b26ac58e0ca' }, (this.label || this.info_text) && (index.h("at-form-label", { key: '7d1541e5f5144dd85fb97dae7e064b80a397a305', label: this.label, for: this.label
+        return (index.h("div", { key: 'bfeb9e2c62a572e23fd23dcb704f9774db453ebc' }, (this.label || this.info_text) && (index.h("at-form-label", { key: '33312d1ac50775d2f9645e96a1853ca5e77a3a34', label: this.label, for: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, info_text: this.info_text })), index.h("div", { key: 'abe0fc6fedd15395645f7fedbce1839f18059cf4', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input relative flex h-[36px] flex-row items-center justify-center border duration-300 ease-in-out focus-within:ring" }, index.h("span", { key: '5e81a2c2bc01b3d281e9143cd73967c74a1590a6', class: "px-8" }, index.h("at-icon", { key: '9f258ffcff83707b7ae3e7242075e309a131e1a4', class: "fill-foreground", name: "search" })), index.h("input", { key: '24cdb36a4bb0a2eb272acb67737fa084d537a079', id: this.label
+                : undefined, info_text: this.info_text })), index.h("div", { key: '9e5a2bf5c829fdb5e9dacb1bbcfcd45a1e2f963d', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input relative flex h-[36px] flex-row items-center justify-center border duration-300 ease-in-out focus-within:ring" }, index.h("span", { key: '898588f7aeee6a82b279e8119d2af56eb00abe51', class: "px-8" }, index.h("at-icon", { key: 'a2c0fa28564d13cfa8eb6364c2112f0378e48aa0', class: "fill-foreground", name: "search" })), index.h("input", { key: '67191fcca6200b976c45f04315fdf65672fa4a9f', id: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), index.h("div", { key: '1b15122729ddf8e3813b8b63d29f963184f655a0', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-30 w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), index.h("div", { key: '6f76401b205bf6ae1536c3f158442ef9ff95b635', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, index.h("at-button", { key: '14045bd83304ecd40fe58d8dd3be132d701bd4ab', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, index.h("at-button", { key: '0b1a82cf662bc5bedd46f0ac7bbed451359632a2', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }, index.h("at-icon", { key: '1d779c2d5f2434a6f54d15f985f476eb00e061f5', slot: "icon", name: "backspace" })))), index.h("span", { key: '9e3c955bc70659b863273dfca639bf6a4452f5b9', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
+                : '-1' }, index.h("at-icon", { key: '0dd1e57fcf76cb7fb2a64b31ce400afb661424f2', slot: "icon", name: "backspace" })))), index.h("span", { key: 'f155beadbef6d95ef0acbebc3f9b29c266d223fd', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal", "data-name": "search-hint" }, this.hint_text)));
     }
 };
 
@@ -175,7 +169,7 @@ const AtTableFilterMenu = class {
         this.atChange.emit(this.selected);
     }
     render() {
-        return (index.h(index.Host, { key: '63966bb33a35e1e62aee360d28896e8819899514' }, index.h("at-menu", { key: '42c2c69fdbcadc8a540385ad2e0cef6c03a70ea6', autoclose: false, width: "fit-content", class: "self-start", align: "start" }, index.h("at-tooltip", { key: 'af48331e9d3854b4e4f1a9e9f3fd7be30d89ba8e', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: '0cb534e7f4bb8dfe1a695739407ade095578a72b', slot: "tooltip-trigger", type: "secondaryOutline" }, index.h("at-icon", { key: '5b31850601a99aa7c7c8a735c39d7dacedc9dc5e', class: "rotate-180", slot: "icon", name: "filter_list" })), index.h("span", { key: '89935077ab4a06c7bf347823b9bf6747cb6f4d72' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: 'abe7d2c91388e9872f110517104b435988fca6b9', class: "flex flex-col" }, index.h("at-checkbox-group", { key: 'c1e698817073bea897e2738c05f70f95f8b71cf3', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (index.h(index.Host, { key: 'bf5a5849c76787d01039574b6c57cad02fdce49f' }, index.h("at-menu", { key: '69138bc57e1180dfedbdd74227e01ca379cc90cc', autoclose: false, width: "fit-content", class: "self-start", align: "start" }, index.h("at-tooltip", { key: '384a4af9a03ff84322cb4f7d4d979bc439498a54', slot: "menu-trigger", position: "top" }, index.h("at-button", { key: '9d93d2fb3a7117cdf59549c68aeedadd9bb19a44', slot: "tooltip-trigger", type: "secondaryOutline" }, index.h("at-icon", { key: 'ed775f88e1c7c9beae0e4a8139abb637244eaa68', class: "rotate-180", slot: "icon", name: "filter_list" })), index.h("span", { key: '3eb10959a6d9e4503e260dcf61354c40318d508b' }, this.translations.ATUI.TABLE.FILTER_DATA)), index.h("div", { key: '8331b8276cbc051e737458920ec7b80d72bb0e47', class: "flex flex-col" }, index.h("at-checkbox-group", { key: 'bad7b6cf6116a9c3ad22b4111c9883bc4d2205f6', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
     }
     static get watchers() { return {
         "selected": [{
@@ -228,7 +222,7 @@ const AtTableFilters = class {
         return col?.headerName ?? columnId;
     }
     render() {
-        return (this.col_defs && (index.h(index.Host, { key: '61d81f1bc23a5b470895a54178a87388da89b843', class: "flex items-start gap-8" }, this.selected.length > 0 && (index.h("div", { key: 'd2ecc44219a60b536d6ae7e3514baa34624285af', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (index.h("div", { class: "flex items-center gap-2" }, index.h("at-input", { class: "w-input-sm", label: this.getHeaderName(column.id), prefix: this.getHeaderName(column.id) + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, index.h("div", { slot: "input-actions" }, index.h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, index.h("at-icon", { slot: "icon", name: "cancel" }))))))), index.h("at-button", { key: '8b6a392bca19699c718b98bbdd990158b041ceb1', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        return (this.col_defs && (index.h(index.Host, { key: '37f262b277b59b79c27326fa7ed21a63e041e5cd', class: "flex items-start gap-8" }, this.selected.length > 0 && (index.h("div", { key: '2009edb8e4f99be819d50e242d8d456804ee2ab9', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (index.h("div", { class: "flex items-center gap-2" }, index.h("at-input", { class: "w-input-sm", label: this.getHeaderName(column.id), prefix: this.getHeaderName(column.id) + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, index.h("div", { slot: "input-actions" }, index.h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, index.h("at-icon", { slot: "icon", name: "cancel" }))))))), index.h("at-button", { key: '368439c9f7368de2a0b7e84d14d850cbca41ee56', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
     }
 };
 
@@ -269,7 +263,7 @@ const AtTablePagination = class {
      */
     atPageSizeChange;
     render() {
-        return (index.h(index.Host, { key: '0a238b10fbc8f35c5bd28c0b87ceeacd49e15a0c', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: '05a4b1f70813dd3f0f465d69193ac52f58895b8e' }, "Page Size: "), index.h("at-select", { key: 'e557ed71a6761b3bed59c752811966bc8374a147', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: 'd515dc854210bc1fd939cc520170458f9f0a45c0', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, index.h("at-icon", { key: 'a85e5d9ed22129c813c72fc0c1802ba6893b1845', slot: "icon", name: "first_page" })), index.h("at-button", { key: '8a529f89cfd407ec6087b570f410737aacc115ec', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, index.h("at-icon", { key: '991ce0197931f591a64cf327e552be6f561328a5', slot: "icon", name: "chevron_left" })), index.h("span", { key: '1d18556d98e40d41e14ea6a47f31d360de30e631' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: 'ece26cea4896354c7eceeb6b1aa868b6c5559004', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, index.h("at-icon", { key: '4840d98658c66c6a120f789019ab3c54f5213868', slot: "icon", name: "chevron_right" })), index.h("at-button", { key: 'a3a88829df2d2d75fdba64a6cd9f840100645da7', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, index.h("at-icon", { key: '13bded04e477ed8cba8bc80693cda7a24ee47e28', slot: "icon", name: "last_page" }))));
+        return (index.h(index.Host, { key: 'afbdce73c9efac6009d9e4e2a4b329c9a87ca19c', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: '45a53984b72bc25d1dd59da68ecb2180787cb50d' }, "Page Size: "), index.h("at-select", { key: '6f89d80ea0fda6883ccdfd3d25555caa83f630e0', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: '3d7b7b257dbf861a07ab685d2eae70a5ddd7f222', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, index.h("at-icon", { key: '94b64ef6d22e91764bfb91e6d053a1c8dbfd2351', slot: "icon", name: "first_page" })), index.h("at-button", { key: '792067cf6aa000f218b94f56e47c7cdf75d9b62a', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, index.h("at-icon", { key: '137802dc6bb804b811a176e16ca2d901d5d0b3cf', slot: "icon", name: "chevron_left" })), index.h("span", { key: 'b4b41f6290c752cebc9be1b62c4425fa990bb15c' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: '0e83448db385f2128120abd41c87dcf6b6298a6d', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, index.h("at-icon", { key: '5100efd9e9729320e49af55cb5a82b07fa372c0f', slot: "icon", name: "chevron_right" })), index.h("at-button", { key: '062cec558db0c2143ae6399726b0ab48838586d5', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, index.h("at-icon", { key: '560178e84c806cfb8a4382c0a554c07cb9061893', slot: "icon", name: "last_page" }))));
     }
 };
 

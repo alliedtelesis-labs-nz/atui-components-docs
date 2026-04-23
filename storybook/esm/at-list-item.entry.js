@@ -11,10 +11,6 @@ const AtListItem = class {
         registerInstance(this, hostRef);
     }
     /**
-     * Optional icon shown to the left of the list item - use mat-icon name.
-     */
-    icon;
-    /**
      * Optional prefix.
      */
     item_prefix;
@@ -42,7 +38,7 @@ const AtListItem = class {
         return listItemVariants[this.size];
     }
     render() {
-        return (h(Host, { key: '2cc4f164429c3f2a3a259619ac0515e5508dfef3', role: "listitem", tabIndex: 0, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b` }, h("div", { key: 'b2f70bad5ff916e1e93cd1ea4553e3bd75361c67', class: "flex flex-grow flex-col" }, h("div", { key: '1a5f43369e91a17f5ee7cc93597ab4ad0b755c83', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, this.icon && (h("span", { key: 'c23db3c296fef9a516e2cef185320ee8426c5312', class: "material-icons text-muted items-center text-sm" }, this.icon)), this.item_prefix && (h("span", { key: 'e7a7ee233d2e603944357f40887844fda7ecae50', class: "text-secondary mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: 'a15a97bbf8a6979642eca3eb5dc6f9ca93d48213', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '9be670a2b208a646a91666ee1618da0e7901444f', class: "flex flex-row font-normal" }, h("span", { key: 'f32b1e6b784c42d4b5b6369a0ecac827c71a0a47', class: "mr-4" }, this.item_title), h("slot", { key: '8d45200bf580a8f274e8bdc24cdaa0738622004a', name: "title" })), this.subtitle && (h("span", { key: '5cf2314f60fac54a562f478636b7ea61cd33bee7', class: "text-secondary inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '155f490f9ef07f69be85afec7ed88a6a6c73ba8c', class: "flex flex-wrap items-end justify-end gap-8 text-right" }, h("slot", { key: '521de178520c19e2bd9c8558f836e64ec5fd3456' }), this.content && (h("span", { key: '49e07107fb54a6baff25026c232c6ab0a8f5e815', "data-name": "content" }, this.content)))));
+        return (h(Host, { key: '371e3ec23b702317845d87b5d3e7d7cc56d35e1c', role: "listitem", tabIndex: 0, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b` }, h("div", { key: 'e2c455880776f8944ff6bfc2f51117fedae393e4', class: "flex flex-grow flex-col" }, h("div", { key: 'dab65e221b9607e52fa705fad5e921cf86e97c2d', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, h("span", { key: '3836f73dd121e82f43bde4b80b02ac5688197d4f', class: "fill-light" }, h("slot", { key: '7ba28b3cebf6f217d88d6747f06eb1247dcd1570', name: "icon" })), this.item_prefix && (h("span", { key: '180284674f6a94fa322dd6688d784c33647adde4', class: "text-secondary mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: '5c8acf7f470c8cd57af2b217114e448ae2d710bc', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '0561cce2ca6daa9e18cee3cd931192e1aaee628f', class: "flex flex-row font-normal" }, h("span", { key: 'cd408fa358c485d5d23105b612da349da1734af9', class: "mr-4" }, this.item_title), h("slot", { key: '77ad767b15a146d4164f5c30adbed9cda1018577', name: "title" })), this.subtitle && (h("span", { key: '7fa5f4f00881f9cd3fb09196825304e33d110c2a', class: "text-secondary inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: 'c0bfd81ee957639abcdffe34f6c4be489f03753a', class: "flex flex-wrap items-end justify-end gap-8 text-right" }, h("slot", { key: '9b7bc6a27e0fc1f29587859f5d1a190c7bf09518' }), this.content && (h("span", { key: '6fb104bc73d0afe2f21697aa90c5bfe307e445e5', "data-name": "content" }, this.content)))));
     }
 };
 

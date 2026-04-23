@@ -1,11 +1,5 @@
 import { h } from "@stencil/core";
 const placeholderVariants = {
-    iconSizes: {
-        xs: '!text-[24px] w-24 h-24',
-        sm: '!text-[48px] w-48 h-48',
-        md: '!text-[64px] w-64 h-64',
-        lg: '!text-[72px] w-72 h-72',
-    },
     sizes: {
         xs: 'p-16 flex-row gap-8',
         sm: 'p-[5vh] flex-col justify-center',
@@ -17,6 +11,7 @@ const placeholderVariants = {
  * @category Feedback
  * @description A placeholder component for displaying empty states, skeleton loading, or temporary content. Useful for indicating missing data or content that is still loading.
  *
+ * @slot icon - Carbon icon placed in the center of the placeholder
  * @slot - Placed below the content
  */
 export class AtPlaceholderComponent {
@@ -24,10 +19,6 @@ export class AtPlaceholderComponent {
      * Size of the placeholder
      */
     size = 'md';
-    /**
-     * Material icon to be displayed in the center of the placeholder
-     */
-    icon;
     /**
      * Title to be displayed below the icon
      */
@@ -40,14 +31,18 @@ export class AtPlaceholderComponent {
      * Will show a loading spinner when set
      */
     show_loading_spinner;
+    el;
+    componentDidLoad() {
+        const iconEl = this.el.querySelector('[slot="icon"]');
+        if (iconEl) {
+            iconEl.size = this.size;
+        }
+    }
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }
-    get iconSizeClass() {
-        return placeholderVariants.iconSizes[this.size];
-    }
     render() {
-        return (h("div", { key: '20e2a389eb34687b50765a2592b8115b694be555', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, this.icon && this.icon !== 'none' && (h("span", { key: 'b9cf64604c623322ba379e90d7ad51040c478f53', class: `material-icons text-muted ${this.iconSizeClass}`, "data-name": "placeholder-icon" }, this.icon)), h("div", { key: '7bc082993a91cb24ecb113edc7cca7e277f11e84', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: 'b43920966ee6cb8014a630b2dc9740f872d97e5d', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'a79c1ef7c860a6defe58c236d71434ab8b593bf7', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: 'b238b55a7b2146c604d7314400e06e3508d4df65', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '80c85c36b2bdeea058421b5dd65c1682f1198c10', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: 'd25fb768d5a6d8661f02b24cf3778b9cd5b8b1e3' }))));
+        return (h("div", { key: '8b9530b4538fa71da8cc4ad2887a57573c78811f', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, h("span", { key: '2684c6c087ad81828431f10d5385842d4010202c', class: "fill-slate-300", "data-name": "placeholder-icon" }, h("slot", { key: '2b635f00dfea094a50c871c77ca4851916f8e331', name: "icon" })), h("div", { key: '31b444d58db7a3c6b3dc41c0a8de7d9bfa78b345', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '3b0dda32af02d564f8074f9ad43422c90e02177c', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: '6c5ba66fcd3dbd88262271faf568b62c86a29203', class: "relative mr-8", size: "sm", type: "secondary", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '3ad686681d47c32bf533a07bb135e67ab33910ff', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '27ae65abf76f2c04585fbb07b29f65c4048e5039', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '98d74fdeb2fc07569ea40b168f1dbf7631ca3eec' }))));
     }
     static get is() { return "at-placeholder"; }
     static get properties() {
@@ -77,25 +72,6 @@ export class AtPlaceholderComponent {
                 "reflect": false,
                 "attribute": "size",
                 "defaultValue": "'md'"
-            },
-            "icon": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Material icon to be displayed in the center of the placeholder"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "icon"
             },
             "placeholder_title": {
                 "type": "string",
@@ -156,4 +132,5 @@ export class AtPlaceholderComponent {
             }
         };
     }
+    static get elementRef() { return "el"; }
 }

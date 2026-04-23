@@ -3,6 +3,7 @@
  * @description A list selector item component for the list selector.
  * @internal
  *
+ * @slot icon - Carbon icon placed at the left of the list item
  * @slot badge - Placed after the item-title
  * @slot info - Placed after the subtitle
  * @slot - Placed at the end the of the element
@@ -20,10 +21,6 @@ export declare class AtListSelectorItem {
      * Optional subtitle of the list item.
      */
     subtitle?: string;
-    /**
-     * Optional icon shown to the left of the list item - use mat-icon name.
-     */
-    icon?: string;
     /**
      * Optional prefix.
      */

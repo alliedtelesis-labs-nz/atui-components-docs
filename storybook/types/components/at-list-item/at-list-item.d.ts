@@ -3,14 +3,11 @@ type Size = 'xs' | 'sm' | 'md' | 'lg';
  * @category Layout
  * @description A list item component for data in key:value format.
  *
+ * @slot icon - Carbon icon placed at the left of the list item
  * @slot title - Placed in the title position
- * @slot - PLace custom content or items before the content
+ * @slot - Place custom content or items before the content
  */
 export declare class AtListItem {
-    /**
-     * Optional icon shown to the left of the list item - use mat-icon name.
-     */
-    icon?: string;
     /**
      * Optional prefix.
      */

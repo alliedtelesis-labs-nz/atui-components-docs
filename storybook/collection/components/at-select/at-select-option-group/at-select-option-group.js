@@ -10,7 +10,7 @@ export class AtSelectGroupComponent {
      */
     label;
     render() {
-        return (h(Host, { key: '0b298a1fdfdba8f6bc859b9e99ea76aedb34c18e', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: '9bc4091b9f250c892a520ca9317727bdf6172414', role: "group", "aria-labelledby": this.label }, h("li", { key: 'd7fe2eb2b2c07d60713f9b152bafcf8bded004a1', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: 'dd3c5fbddcc0d0f1a966c0709596817717932fec' }))));
+        return (h(Host, { key: 'd22f5da29e22753fa398d547a6da90d63faeefb2', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: 'a7f6ea61e29ebf859a4f92f00290fa133c6da69b', role: "group", "aria-labelledby": this.label }, h("li", { key: '03622a76bdbeef063eaf6f0495358431a34a3ffe', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: '2171b8dd1d6677ef9e97e7b2786590764111f180' }))));
     }
     static get is() { return "at-select-group"; }
     static get properties() {

@@ -1,12 +1,13 @@
 const Template = (args) => `
 <at-header  
     size="${args.size}"
-    icon="${args.icon}"
     header_title="${args.header_title}"
     subtitle="${args.subtitle}"
     padding=${args.padding}
     ${args.border ? 'border' : ''}
-/>
+>
+    <at-icon slot="icon" name="${args.icon}" />
+</at-header>
 `;
 export default {
     title: 'Components/Header',

@@ -34,7 +34,7 @@ export class AtTooltip {
      */
     delay = 0;
     /**
-     * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+     * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
      * */
     trigger_id;
     async disabledChanged(newValue) {
@@ -292,7 +292,7 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '2448d1ebf16b568c7f9793c7333cb208e15f0bb1', class: "relative" }, !this.trigger_id && (h("div", { key: 'c1407ec708af078ad4175163a42ce511815dc048', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'dadca5ebb3e2134e4ab2fb59a4657ed031b6554e', name: "tooltip-trigger" }))), h("div", { key: '6333817c238e17dfcd9ef6ab547b51b0813c3a4d', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-2 text-sm opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'c4cae5fb8fd06867ebba6dd76a9889b5018a63f0' }))));
+        return (h(Host, { key: 'b20a1b171bb844221bdc72c505376d1fbd6b28b7', class: "relative" }, !this.trigger_id && (h("div", { key: '97d9b150f7281709171230709c53610b74b07a8c', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: 'c8a5b964c0dd949c4b735bcab520229f4c1843c7', name: "tooltip-trigger" }))), h("div", { key: 'cc8d7365651870eaeaacd86a16a2fc1c0f5e6b99', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-2 text-sm opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'a951c92694e6e38d8b55ed95f55e42c2d1288323' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
@@ -441,7 +441,7 @@ export class AtTooltip {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel."
+                    "text": "Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel."
                 },
                 "getter": false,
                 "setter": false,

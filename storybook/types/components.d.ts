@@ -215,10 +215,6 @@ export namespace Components {
      */
     interface AtBadge {
         /**
-          * Icon appearing to the left of the badge title. MUST use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Impact of the badge, changes the colours.
           * @default 'low'
          */
@@ -288,14 +284,6 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
-        /**
-          * Material icon to be displayed before the label within the button
-         */
-        "icon"?: string;
-        /**
-          * Material icon to be displayed after the label within the button
-         */
-        "icon_after"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -369,18 +357,12 @@ export namespace Components {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
-     * @Slot - Places content before the label.
-     * @After - Places content after the label.
      */
     interface AtButtonGroupOption {
         /**
           * Will disable interaction if set
          */
         "disabled": boolean;
-        /**
-          * Icon to be displayed in the button
-         */
-        "icon"?: string;
         /**
           * Will apply active styling to the button
          */
@@ -897,10 +879,6 @@ export namespace Components {
          */
         "header_title"?: string;
         /**
-          * Icon of header. Must use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Adds 16 pixels of padding to the header element
           * @default true
          */
@@ -1273,10 +1251,6 @@ export namespace Components {
          */
         "content"?: string;
         /**
-          * Optional icon shown to the left of the list item - use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Optional prefix.
          */
         "item_prefix"?: string;
@@ -1328,10 +1302,6 @@ export namespace Components {
           * @default false
          */
         "has_border"?: boolean;
-        /**
-          * Optional icon shown to the left of the list item - use mat-icon name.
-         */
-        "icon"?: string;
         /**
           * Visual indication of the selected item.
          */
@@ -1463,10 +1433,6 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Icon to be displayed with the label
-         */
-        "icon"?: string;
-        /**
           * Will change the styling of the menuitem when set
           * @default false
          */
@@ -1486,7 +1452,7 @@ export namespace Components {
          */
         "content": string;
         /**
-          * An icon is provided for success, warning, error, or info types. You can provide a custom value to replace the default icon.  Must use material icon name.
+          * An icon is provided for success, warning, error, or info types. Custom icon can be used by providing the carbon icon name.
          */
         "icon"?: string;
         /**
@@ -1583,10 +1549,6 @@ export namespace Components {
           * Content to be displayed below the title
          */
         "content": string;
-        /**
-          * Material icon to be displayed in the center of the placeholder
-         */
-        "icon"?: string;
         /**
           * Title to be displayed below the icon
          */
@@ -2327,7 +2289,7 @@ export namespace Components {
          */
         "badge"?: string;
         /**
-          * Icon or svg to be displayed with the label
+          * Carbon icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**
@@ -2967,7 +2929,7 @@ export namespace Components {
          */
         "position": AtTooltipPosition;
         /**
-          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**
@@ -3365,8 +3327,6 @@ declare global {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
-     * @Slot - Places content before the label.
-     * @After - Places content after the label.
      */
     interface HTMLAtButtonGroupOptionElement extends Components.AtButtonGroupOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtButtonGroupOptionElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupOptionElement, ev: AtButtonGroupOptionCustomEvent<HTMLAtButtonGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4931,10 +4891,6 @@ declare namespace LocalJSX {
      */
     interface AtBadge {
         /**
-          * Icon appearing to the left of the badge title. MUST use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Impact of the badge, changes the colours.
           * @default 'low'
          */
@@ -5008,14 +4964,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
-        /**
-          * Material icon to be displayed before the label within the button
-         */
-        "icon"?: string;
-        /**
-          * Material icon to be displayed after the label within the button
-         */
-        "icon_after"?: string;
         /**
           * When set, will display a loading spinner inside the button and hide all labels & icons
           * @default false
@@ -5101,18 +5049,12 @@ declare namespace LocalJSX {
     /**
      * @category Form Controls
      * @description A button group option component for the button group.
-     * @Slot - Places content before the label.
-     * @After - Places content after the label.
      */
     interface AtButtonGroupOption {
         /**
           * Will disable interaction if set
          */
         "disabled"?: boolean;
-        /**
-          * Icon to be displayed in the button
-         */
-        "icon"?: string;
         /**
           * Will apply active styling to the button
          */
@@ -5639,10 +5581,6 @@ declare namespace LocalJSX {
          */
         "header_title"?: string;
         /**
-          * Icon of header. Must use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Adds 16 pixels of padding to the header element
           * @default true
          */
@@ -6035,10 +5973,6 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Optional icon shown to the left of the list item - use mat-icon name.
-         */
-        "icon"?: string;
-        /**
           * Optional prefix.
          */
         "item_prefix"?: string;
@@ -6098,10 +6032,6 @@ declare namespace LocalJSX {
           * @default false
          */
         "has_border"?: boolean;
-        /**
-          * Optional icon shown to the left of the list item - use mat-icon name.
-         */
-        "icon"?: string;
         /**
           * Visual indication of the selected item.
          */
@@ -6221,10 +6151,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Icon to be displayed with the label
-         */
-        "icon"?: string;
-        /**
           * Will change the styling of the menuitem when set
           * @default false
          */
@@ -6248,7 +6174,7 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * An icon is provided for success, warning, error, or info types. You can provide a custom value to replace the default icon.  Must use material icon name.
+          * An icon is provided for success, warning, error, or info types. Custom icon can be used by providing the carbon icon name.
          */
         "icon"?: string;
         /**
@@ -6349,10 +6275,6 @@ declare namespace LocalJSX {
           * Content to be displayed below the title
          */
         "content"?: string;
-        /**
-          * Material icon to be displayed in the center of the placeholder
-         */
-        "icon"?: string;
         /**
           * Title to be displayed below the icon
          */
@@ -7155,7 +7077,7 @@ declare namespace LocalJSX {
          */
         "badge"?: string;
         /**
-          * Icon or svg to be displayed with the label
+          * Carbon icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**
@@ -7824,7 +7746,7 @@ declare namespace LocalJSX {
          */
         "position"?: AtTooltipPosition;
         /**
-          * Target an external element to use as the trigger. When provided, clicking an element wia matching data-tooltip attribute value will toggle the side panel.
+          * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
          */
         "trigger_id"?: string;
         /**
@@ -7914,7 +7836,6 @@ declare namespace LocalJSX {
         "variant": AtAvatarVariant;
     }
     interface AtBadgeAttributes {
-        "icon": string;
         "label": string;
         "type": AtBadgeType;
         "size": AtBadgeSize;
@@ -7934,8 +7855,6 @@ declare namespace LocalJSX {
         "size": AtButtonSize;
         "label": string;
         "disabled": boolean;
-        "icon": string;
-        "icon_after": string;
         "in_progress": boolean;
         "spinner_delay_ms": number;
     }
@@ -7951,7 +7870,6 @@ declare namespace LocalJSX {
     interface AtButtonGroupOptionAttributes {
         "value": string;
         "label": string;
-        "icon": string;
         "disabled": boolean;
         "is_active": boolean;
     }
@@ -8027,7 +7945,6 @@ declare namespace LocalJSX {
     }
     interface AtHeaderAttributes {
         "size": AtHeaderSizes;
-        "icon": string;
         "header_title": string;
         "subtitle": string;
         "border": boolean;
@@ -8118,7 +8035,6 @@ declare namespace LocalJSX {
         "overflow": boolean;
     }
     interface AtListItemAttributes {
-        "icon": string;
         "item_prefix": string;
         "item_title": string;
         "subtitle": string;
@@ -8134,7 +8050,6 @@ declare namespace LocalJSX {
         "item_id": string;
         "item_title": string;
         "subtitle": string;
-        "icon": string;
         "item_prefix": string;
         "has_border": boolean;
         "is_selected": boolean;
@@ -8159,7 +8074,6 @@ declare namespace LocalJSX {
     }
     interface AtMenuItemAttributes {
         "label": string;
-        "icon": string;
         "is_active": boolean;
         "disabled": boolean;
     }
@@ -8185,7 +8099,6 @@ declare namespace LocalJSX {
     }
     interface AtPlaceholderAttributes {
         "size": AtPlaceholderSize;
-        "icon": string;
         "placeholder_title": string;
         "content": string;
         "show_loading_spinner": boolean;
@@ -8606,8 +8519,6 @@ declare module "@stencil/core" {
             /**
              * @category Form Controls
              * @description A button group option component for the button group.
-             * @Slot - Places content before the label.
-             * @After - Places content after the label.
              */
             "at-button-group-option": LocalJSX.IntrinsicElements["at-button-group-option"] & JSXBase.HTMLAttributes<HTMLAtButtonGroupOptionElement>;
             /**

@@ -4,8 +4,9 @@ import { AtEvent } from '../../../types/events';
  * @category Form Controls
  * @description A button group option component for the button group.
  *
- * @Slot - Places content before the label.
- * @After - Places content after the label.
+ * @slot icon - Carbon icon placed before the label.
+ * @slot - Places content before the label.
+ * @slot after - Places content after the label.
  */
 export declare class AtButtonGroupOption {
     /**
@@ -16,10 +17,6 @@ export declare class AtButtonGroupOption {
      * Displayed text value (optional) if not provided the value will be used as a fallback
      */
     label?: string;
-    /**
-     * Icon to be displayed in the button
-     */
-    icon?: string;
     /**
      * Will disable interaction if set
      */
@@ -37,5 +34,6 @@ export declare class AtButtonGroupOption {
     private provider;
     componentDidLoad(): Promise<void>;
     handleClick(event: Event): void;
+    private hasIcon;
     render(): any;
 }

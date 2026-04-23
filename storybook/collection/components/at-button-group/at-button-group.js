@@ -72,9 +72,10 @@ export class AtButtonGroup {
     }
     initializeButtons() {
         this.buttonEls.forEach((buttonEl) => {
+            const hasIcon = !!buttonEl.querySelector('[slot="icon"]');
             buttonEl.label = buttonEl.label
                 ? buttonEl.label
-                : buttonEl.icon
+                : hasIcon
                     ? ''
                     : typeof buttonEl.value === 'string'
                         ? buttonEl.value
@@ -104,7 +105,7 @@ export class AtButtonGroup {
                     ? option.label
                     : option.icon
                         ? ''
-                        : option.value, is_active: this.value === option.value, disabled: option.disabled, icon: option.icon, onAtuiClick: (event) => this.handleChange(event, option.value, index) })));
+                        : option.value, is_active: this.value === option.value, disabled: option.disabled, onAtuiClick: (event) => this.handleChange(event, option.value, index) }, option.icon && (h("at-icon", { slot: "icon", name: option.icon })))));
         }
         return null;
     }
@@ -144,8 +145,8 @@ export class AtButtonGroup {
         this.el.removeEventListener('keydown', this.handleKeyDown);
     }
     render() {
-        return (h(Host, { key: '2d97f76c32f210e995b6c1691d4397a7f85152b8', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '6fae469c8a088eccad9d13735e0647fbc2638946', class: "mb-4 flex flex-col" }, h("slot", { key: 'f2e672cd1002f1525b70124f1388290c8b133c7c', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '6c2dc5d2d3bea2a7129093994658656a35040311', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '1772de84738d983fd89408953bce39f2b57ff4ac', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '28123be9a2bec6ea9a4669eac16a7dc17d57a5f6', class: "border-input bg-surface-background relative rounded-lg border inset-shadow-xs" }, h("ul", { key: '8208d9fd128392bc769a6f561e2b3a43783e9ffb', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: '478bb5cb2f78ba274cbe36e9e44d554856201b84' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: '932b066fe82a8f97d7e91d5b360de73af2beee7c', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'b1a501ce343bfbe204d0410befa1ddf20f9f925d', role: "radiogroup", "aria-labelledby": this.buttonGroupId, class: 'flex flex-col items-start' }, h("div", { key: '08f2aa2f0d4d050bbee34c77d37d8fa0593b6373', class: "mb-4 flex flex-col" }, h("slot", { key: 'afa64d7abde341640a32d656a634cc8a91f69944', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'd3075f1f1b07ef5d0162b29f41af160ecd85f080', id: this.buttonGroupId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '2a91dd9b39fc1fdb9c67c64da7e3e472910b4117', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '44aed8095e843a9c929b646adbf97d95a289df6e', class: "border-input bg-surface-background relative rounded-lg border inset-shadow-xs" }, h("ul", { key: '37c9c514dbcf1f73f76c954c804b46dae12e2970', class: "relative z-20 m-[2px] flex flex-row", "data-name": "button-group-options" }, h("slot", { key: '52790f15fb64bb0dc402b3acfdb5d1309ca5dfdf' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px]" }, button))))), this.error_text && (h("span", { key: 'e94ac274e8e9859b8debd8f1c7a73668e3032bfc', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {

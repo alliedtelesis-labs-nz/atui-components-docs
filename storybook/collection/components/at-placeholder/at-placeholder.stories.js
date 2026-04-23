@@ -1,11 +1,12 @@
 const Template = (args) => `
 <at-placeholder
     placeholder_title="${args.message_title ?? ''}"
-    icon="${args.icon ?? ''}"
     content="${args.content ?? ''}"
     size="${args.size ?? ''}"
     ${args.show_loading_spinner ? 'show_loading_spinner' : ''}
-/>
+>
+    <at-icon slot="icon" name="${args.icon ?? ''}" />
+</at-placeholder>
 `;
 export default {
     title: 'Components/Placeholder',

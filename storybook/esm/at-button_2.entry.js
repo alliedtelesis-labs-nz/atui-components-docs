@@ -120,14 +120,6 @@ const AtButtonComponent = class {
      */
     disabled = false;
     /**
-     * Material icon to be displayed before the label within the button
-     */
-    icon;
-    /**
-     * Material icon to be displayed after the label within the button
-     */
-    icon_after;
-    /**
      * When set, will display a loading spinner inside the button and hide all labels & icons
      */
     in_progress = false;
@@ -202,7 +194,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: 'e99bccaa16fae73525fbbcd8d2684614a97dc0e4', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '0340166cae1cee86d048222cc72c97d49863b3b7', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: 'b4596bd664f41ab3adf1c8394a9e944014df6928', class: "absolute", size: "sm", type: this.spinnerColour })), h("slot", { key: '13e1edf28684a2641235df72033c1d88b59c587b', name: "icon" }), this.icon && (h("span", { key: '0aae629069384e133bd909ca3ebf9eb9f9c0c5bb', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-icon" }, this.icon)), this.label && (h("span", { key: '6ebc60af83a34d57be829b366903325c303f037a', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '12ec7cb6196b07d9f9e5bd5a022f9879d7c0b82f' }), h("slot", { key: '9006fd47d96e5c495357e1152e18366f20711719', name: "icon_after" }), this.icon_after && (h("span", { key: '37231bee8f317e22adeefc4fac6ead6cbf28789c', class: `material-icons !text-icon-md h-16 w-16 leading-[16px] ${this.in_progress ? 'invisible w-0' : 'visible'}`, "data-name": "button-icon-right" }, this.icon_after))), h("div", { key: '2f7f4a12ff4b2624c3b0e54936e480697702d426', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '010bf35053a8a2ab34cb9a50e51aff2ef2acb5cf', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '30617fd46cfbcfae435f186ac5c79fe684d23a12', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: 'e692f15072421bdd35d18e2c42dec98b048180c4', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: 'b2bbb41bbb9e2ff51ad00eda568e250d446090a0', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: '868bbf3539740abd597b7d212b524a8e91804537', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '73c88297909ed7717bfeea4f16672d5165a3a77c' }), !this.in_progress && (h("slot", { key: '826459f59fea227ec00c660546eb84057ee3bb9e', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: 'efb52f62a0973caeb74cab7097ed702fddf60368', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 

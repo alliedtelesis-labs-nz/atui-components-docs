@@ -4,20 +4,20 @@ const badgeVariants = {
     rounded: 'rounded-full',
     contrast: {
         low: {
-            default: 'text-feedback-foreground bg-feedback-background border text-feedback-foreground',
-            success: 'text-feedback-success-foreground bg-feedback-success-background border border-feedback-success-foreground/30',
-            warning: 'text-feedback-warning-foreground bg-feedback-warning-background border border-feedback-warning-foreground/30',
-            error: 'text-feedback-error-foreground bg-feedback-error-background border border-feedback-error-foreground/30',
-            info: 'text-feedback-info-foreground bg-feedback-info-background border border-feedback-info-foreground/30',
-            disabled: 'text-disabled-foreground bg-disabled-background',
+            default: 'text-feedback-foreground fill-feedback-foreground bg-feedback-background border text-feedback-foreground',
+            success: 'text-feedback-success-foreground fill-feedback-success-foreground bg-feedback-success-background border border-feedback-success-foreground/30',
+            warning: 'text-feedback-warning-foreground fill-feedback-warning-foreground bg-feedback-warning-background border border-feedback-warning-foreground/30',
+            error: 'text-feedback-error-foreground fill-feedback-error-foreground bg-feedback-error-background border border-feedback-error-foreground/30',
+            info: 'text-feedback-info-foreground fill-feedback-info-foreground bg-feedback-info-background border border-feedback-info-foreground/30',
+            disabled: 'text-disabled-foreground fill-disabled-foreground bg-disabled-background border border-disabled-foreground/30',
         },
         high: {
-            default: 'text-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
-            success: 'text-feedback-success-foreground-inv bg-feedback-success-background-inv',
-            warning: 'text-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
-            error: 'text-feedback-error-foreground-inv bg-feedback-error-background-inv',
-            info: 'text-feedback-info-foreground-inv bg-feedback-info-background-inv',
-            disabled: 'text-disabled-foreground-inv bg-disabled-background-inv',
+            default: 'text-feedback-foreground-inv fill-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
+            success: 'text-feedback-success-foreground-inv fill-feedback-success-foreground-inv bg-feedback-success-background-inv',
+            warning: 'text-feedback-warning-foreground-inv fill-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
+            error: 'text-feedback-error-foreground-inv fill-feedback-error-foreground-inv bg-feedback-error-background-inv',
+            info: 'text-feedback-info-foreground-inv fill-feedback-info-foreground-inv bg-feedback-info-background-inv',
+            disabled: 'text-disabled-foreground-inv fill-disabled-foreground-inv bg-disabled-background-inv',
         },
     },
     size: {
@@ -28,14 +28,10 @@ const badgeVariants = {
 /**
  * @category Feedback
  * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
- *
+ * @slot icon - Carbon icon placed before the label
  * @slot - Content placed after the label
  */
 export class AtBadgeComponent {
-    /**
-     * Icon appearing to the left of the badge title. MUST use mat-icon name.
-     */
-    icon;
     /**
      * Title shown on the badge.
      */
@@ -66,30 +62,11 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '83437258321e56364fe4f394331bac1ef49b4980', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, this.icon && (h("i", { key: '353e86c676f90964dddb0f6accf735a5bad85873', class: "material-icons icon-sm relative h-[12px] w-[12px] text-[12px]", "data-name": "badge-icon" }, this.icon)), h("span", { key: 'ea8bdaa0be7706c288633b08d274d0707369e27d', "data-name": "badge-label" }, this.label), h("slot", { key: '3fb5f65ecc2b56fe0167d040104a9c47f2863e83' })));
+        return (h(Host, { key: 'a32c4059ad6de96aaa1e58afe54dc21d980aeeb7', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: 'f5f34e61e11758034ee353fb53860bb4a6ea1383', name: "icon" }), h("span", { key: 'c9653934603b673b68d0adb624c2bb97156c1765', "data-name": "badge-label" }, this.label), h("slot", { key: 'a8047fd891036fcc8b9a547d5f85a621a5a5ba82' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {
         return {
-            "icon": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Icon appearing to the left of the badge title. MUST use mat-icon name."
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "icon"
-            },
             "label": {
                 "type": "string",
                 "mutable": false,

@@ -3,6 +3,7 @@ import { h, Host, } from "@stencil/core";
  * @category Navigation
  * @description A list selector component for selecting an item from a list.
  *
+ * @slot header - Placed at the top of the list, usually for the title of the list
  * @slot - Placed after the list items
  */
 export class AtListSelector {
@@ -59,11 +60,11 @@ export class AtListSelector {
         }
     }
     get getListItems() {
-        return this.options.map((item) => (h("at-tooltip", { position: "right", disabled: !item.tooltip }, h("div", { slot: "tooltip-trigger" }, h("at-list-selector-item", { item_id: item.id, item_title: item.title, subtitle: item.subtitle, icon: item.icon, item_prefix: item.prefix, has_border: this.has_border, is_selected: this.selected_item_id &&
-                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
+        return this.options.map((item) => (h("at-tooltip", { position: "right", disabled: !item.tooltip }, h("div", { slot: "tooltip-trigger" }, h("at-list-selector-item", { item_id: item.id, item_title: item.title, subtitle: item.subtitle, item_prefix: item.prefix, has_border: this.has_border, is_selected: this.selected_item_id &&
+                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'd2f4cef909632a38c408dc080daebd3a32b897c7', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'f0984dd95c0b943ac3857e109726590853c5c14b', name: "header" }), !!this.options.length && (h("nav", { key: '253d586d45b12df5bc8a81334631c727e2177d36', class: "flex-fill overflow-visible pb-16" }, h("div", { key: 'e0d39c7b1c802607c7593a7e13c47f22745e4987', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '97e2bed79fe4ef358f83285a4f084119fdb5e809' })));
+        return (h(Host, { key: '355c22b4f9691c90ffa01b0a8f814d2668529265', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '8bba0236ae62cbf514f5b50ad037c120b480aac8', name: "header" }), !!this.options.length && (h("nav", { key: 'b6fa29640205a63cdbfee4866ab65c87ce0a43f1', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '9046f9f9749e42f268625dbb12c91a8f15bb554d', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '1bd063bc05be20b93b9af76ca7c90106b14ca0bc' })));
     }
     static get is() { return "at-list-selector"; }
     static get properties() {

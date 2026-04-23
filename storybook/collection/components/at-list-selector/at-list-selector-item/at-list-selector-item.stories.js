@@ -4,11 +4,12 @@ const Template = (args) => `
     item_title="${args.item_title ?? ''}"
     item_prefix="${args.item_prefix ?? ''}"
     subtitle="${args.subtitle ?? ''}"
-    icon="${args.icon ?? ''}"
     tooltip="${args.tooltip ?? ''}"
     has_border=${args.has_border ? true : false}
     ${args.is_selected ? 'is_selected' : ''}
-/>`;
+>
+    <at-icon slot="icon" name="${args.icon ?? ''}" />
+</at-list-selector-item>`;
 export default {
     title: 'Components/List Selector Item',
 };

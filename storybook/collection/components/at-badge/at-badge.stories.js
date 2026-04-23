@@ -1,12 +1,13 @@
 const Template = (args) => `
 <at-badge 
     ${args.count ? `count="${args.count}"` : ''}
-    icon="${args.icon ?? ''}"
     label="${args.label ?? ''}"
     ${args.rounded ? 'rounded' : ''}
     impact="${args.impact ?? 'low'}"
     type="${args.type ?? 'default'}"
-/>`;
+>
+    <at-icon slot="icon" name="${args.icon ?? ''}"></at-icon>
+</at-badge>`;
 export default {
     title: 'Components/Badge',
     argTypes: {
