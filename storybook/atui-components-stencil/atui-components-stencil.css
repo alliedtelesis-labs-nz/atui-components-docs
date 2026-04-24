@@ -743,6 +743,11 @@
   --token-font-size-icon-md: 1.1429rem;
   --token-font-size-icon-lg: 1.2857rem;
   --token-font-size-icon-xl: 1.5714rem;
+  /* Font Weight: Legacy */
+  --token-font-weight-light: 400;
+  --token-font-weight-med: 500;
+  --token-font-weight-bold: 600;
+  /*  Line Height: Legacy */
   /* Type: OneConnect */
   /*
     TODO: Update type scale to match design
@@ -899,7 +904,7 @@
   --token-sidebar-active-foreground: var(--token-state-active-foreground);
   --token-sidebar-active-accent: var(--token-state-active-accent);
   --token-sidebar-border: var(--token-border-muted);
-  --token-sidebar-item-padding: 8px;
+  --token-sidebar-item-padding: 6px;
   /* Input */
   --token-input-height: 36px;
   --token-input-background: var(--token-surface-foreground);

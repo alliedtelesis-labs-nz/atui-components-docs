@@ -2,7 +2,7 @@
 
 var index = require('./index--r5sCsiV.js');
 
-const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column;gap:2px}`;
+const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}`;
 
 const AtSidebarMenuComponent = class {
     constructor(hostRef) {

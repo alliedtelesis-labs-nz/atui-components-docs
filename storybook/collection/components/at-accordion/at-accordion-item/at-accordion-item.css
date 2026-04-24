@@ -5,3 +5,22 @@ details > summary {
 details > summary::-webkit-details-marker {
   display: none;
 }
+
+details .accordion-item-content {
+  overflow: hidden;
+}
+
+details::details-content {
+  display: block;
+  block-size: 0;
+  overflow: hidden;
+  transition-property: block-size, content-visibility;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+  block-size: calc-size(auto, size);
+}

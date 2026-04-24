@@ -5,8 +5,9 @@
  * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
  * Menu indent styling is supported up to 3 levels.
  *
- * @slot submenu-content - To place the atui-sidebar-menuitem(s) in the sub menu
- * @slot submenu-hover-content - To place the atui-sidebar-menuitem(s) in the sub menu on collapsed mode
+ * @slot icon - Icon content to be shown in both expanded and collapsed menu items. Usually an `<at-icon>` element.
+ * @slot submenu-content - To place the atui-sidebar-menuitem(s) in the sub menu.
+ * @slot submenu-hover-content - To place the atui-sidebar-menuitem(s) in the sub menu on collapsed mode.
  */
 export declare class AtSidebarSubmenuComponent {
     /**
@@ -27,14 +28,12 @@ export declare class AtSidebarSubmenuComponent {
     is_active?: boolean;
     isSidebarOpen: boolean;
     isAccordionOpen: boolean;
-    atuiAccordionItem: HTMLAtAccordionItemElement;
     el: HTMLElement;
+    private atuiAccordionItem;
     constructor();
     componentDidLoad(): Promise<void>;
-    componentDidUpdate(): Promise<void>;
     private updateInitialStates;
     handleAtuiChange(event: CustomEvent<boolean>): void;
-    handleAtuiAccordionChange(event: CustomEvent<boolean>): void;
     private getIsActive;
     render(): any;
 }

@@ -38,10 +38,7 @@ export class AtSidebarMenuitemComponent {
     handleKeyDown = (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            this.atuiClick.emit({
-                originalEvent: event,
-                componentType: 'at-sidebar-menu-item',
-            });
+            this.el.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
         }
     };
     renderIcon() {
@@ -53,7 +50,7 @@ export class AtSidebarMenuitemComponent {
         }
     }
     render() {
-        return (h(Host, { key: '6e35b4972ba31eddfdf0afb381885e4ee82483f3', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '6412ef618b2ff602eed4bfe0f0b1ab11c0e61f2b', class: "content", "data-name": "content" }, h("slot", { key: 'd0dc43373d9d9f054220da8463973c997c980aab', name: "icon", "data-name": "icon" }), this.icon && this.renderIcon(), h("slot", { key: '6e14eab22fc77bdff39ae5a50c055a501808f9c9', name: "label", "data-name": "label" }), this.label && (h("span", { key: '83a79116cbdd0d65122aadd3f84535eb43a08d72', "data-name": "sidebar-menu-item-label", class: "label" }, this.label)), this.badge && (h("at-badge", { key: '66199781feb063a629cfe176dac8fc1041847121', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge }))), h("slot", { key: 'c890cf60e397778d45a94128a24e8a6e756e50ce', name: "sidebar-menu-item-actions" }), h("div", { key: 'f944d902eac8821d98edaf699152b73c4b0234c9', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: '78bbcdda8115c9e4ea9e542b9044ce027dcb3a97', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event), "aria-current": this.is_active ? 'page' : undefined }, h("div", { key: 'b0840d839d35da2ce16fed16d9342bfdbbfc6e44', class: "content", "data-name": "content" }, h("slot", { key: '485db317e516ce54ba7a09349b09d812023f635f', name: "icon", "data-name": "icon" }), this.icon && this.renderIcon(), h("slot", { key: 'cc27f899a80f71083ca719be6ab2b317d2aafcaa', name: "label", "data-name": "label" }), this.label && (h("span", { key: 'a7f5843fdabc12a4ed24a02e31972469278e0d93', "data-name": "sidebar-menu-item-label", class: "label" }, this.label)), this.badge && (h("at-badge", { key: '770291de588f2f53d8e0668e730654c20c6007b0', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge }))), h("slot", { key: '1f85cf2674d12de086997b8f714907b1335a00d0', name: "sidebar-menu-item-actions" }), h("div", { key: '57679d0d430a3c380adb08ff1a9bbed955561f82', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get encapsulation() { return "scoped"; }

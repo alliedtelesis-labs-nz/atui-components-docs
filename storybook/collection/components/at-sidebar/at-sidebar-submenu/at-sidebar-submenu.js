@@ -6,8 +6,9 @@ import { h, Host, } from "@stencil/core";
  * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
  * Menu indent styling is supported up to 3 levels.
  *
- * @slot submenu-content - To place the atui-sidebar-menuitem(s) in the sub menu
- * @slot submenu-hover-content - To place the atui-sidebar-menuitem(s) in the sub menu on collapsed mode
+ * @slot icon - Icon content to be shown in both expanded and collapsed menu items. Usually an `<at-icon>` element.
+ * @slot submenu-content - To place the atui-sidebar-menuitem(s) in the sub menu.
+ * @slot submenu-hover-content - To place the atui-sidebar-menuitem(s) in the sub menu on collapsed mode.
  */
 export class AtSidebarSubmenuComponent {
     /**
@@ -28,39 +29,36 @@ export class AtSidebarSubmenuComponent {
     is_active;
     isSidebarOpen = false;
     isAccordionOpen = false;
-    atuiAccordionItem;
     el;
+    atuiAccordionItem;
     constructor() {
         this.handleAtuiChange = this.handleAtuiChange.bind(this);
     }
     async componentDidLoad() {
         await this.updateInitialStates();
     }
-    async componentDidUpdate() {
-        await this.updateInitialStates();
-    }
     async updateInitialStates() {
-        const accordionItem = this.el.querySelector('at-accordion-item');
-        if (accordionItem) {
-            this.isAccordionOpen = await accordionItem.getIsOpen();
-        }
         const parentSidebar = this.el.closest('at-sidebar');
         if (parentSidebar) {
             this.isSidebarOpen = await parentSidebar.getIsOpen();
+            this.isAccordionOpen = this.isSidebarOpen;
         }
     }
     handleAtuiChange(event) {
-        const target = event.target;
         const parentSidebar = this.el.closest('at-sidebar');
-        if (target === parentSidebar) {
-            this.isSidebarOpen = event.detail;
-            if (!this.isSidebarOpen && this.atuiAccordionItem) {
+        if (event.target !== parentSidebar) {
+            return;
+        }
+        this.isSidebarOpen = event.detail;
+        this.isAccordionOpen = event.detail;
+        if (this.atuiAccordionItem) {
+            if (event.detail) {
+                this.atuiAccordionItem.openAccordion();
+            }
+            else {
                 this.atuiAccordionItem.closeAccordion();
             }
         }
-    }
-    handleAtuiAccordionChange(event) {
-        this.isAccordionOpen = event.detail;
     }
     getIsActive() {
         if (this.isSidebarOpen) {
@@ -69,7 +67,7 @@ export class AtSidebarSubmenuComponent {
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: '6320bc680e18c89dcc7f3b38829d808637f32fc9' }, h("at-accordion-item", { key: 'f0ea5e1feeb55b02c37e7637ca65bbc7af21b72e', class: !this.isSidebarOpen ? 'hidden' : '', "aria-hidden": !this.isSidebarOpen, ref: (el) => (this.atuiAccordionItem = el), item_id: this.label }, (this.label || this.icon) && (h("at-sidebar-menuitem", { key: 'e74bb5667cb42ffc3528e4418ec3b96783ff43ff', slot: "accordion-trigger", icon: this.icon, label: this.label, badge: this.badge, is_active: this.getIsActive() }, this.isSidebarOpen && (h("at-icon", { key: 'db754e43f26452613e7df1fccde395594c2e8ee8', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", name: "chevron_down" })))), h("div", { key: '79b507876e7cf8499cc13fa8c5715a01d71a2037', class: "content" }, h("slot", { key: '58fd652ad7000b06338e3db7e345ed5e4084ee0b', name: "submenu-content" }))), h("at-menu", { key: 'c5723b79f233c5c6efd69a1e04ae1248a7a44daf', class: "hover-menu", "data-name": "hover-menu", hidden: this.isSidebarOpen, "aria-hidden": this.isSidebarOpen, trigger: "hover", position: "right", align: "start", width: "200px" }, h("at-sidebar-menuitem", { key: 'e78c08f72232907e8cccabf308c50383695bbd9d', slot: "menu-trigger", icon: this.icon, badge: this.badge, label: this.label, is_active: this.getIsActive() }), h("div", { key: '298f511eb5fe7f0941d9ca4760858180d207d280', class: "submenu-hover-content", "data-name": "submenu-hover-content" }, h("slot", { key: 'd3678a4b0d5247ef24770884ae9ba96a7db19464', name: "submenu-hover-content" })))));
+        return (h(Host, { key: 'd8cff0af3589fa23483a5203ed45e0ffd0ba04f0' }, h("at-menu", { key: '0daa0d10fee783beace57dacff6488de07a28163', class: "hover-menu", "data-name": "hover-menu", trigger: "hover", position: "right", align: "start", width: "200px", disabled: this.isSidebarOpen }, h("at-accordion-item", { key: '016aecd54cfa44dbda932fd4e2f499ac540c4ac3', slot: "menu-trigger", ref: (el) => (this.atuiAccordionItem = el), item_id: this.label, open: this.isAccordionOpen }, h("at-sidebar-menuitem", { key: 'dd18c396bd500d917f64f8dbeaf5d8289a4673fa', slot: "accordion-trigger", label: this.label, is_active: this.getIsActive(), badge: this.badge }, h("slot", { key: '9beaed249cd4761b20d16a0bdbe048dd66a00161', name: "icon", slot: "icon" }), this.isSidebarOpen && (h("at-icon", { key: 'a60d1dd53a39f728d4180f85da9b780fc5fba591', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", name: "chevron_down" }))), h("div", { key: '65a2d9dd70d36666871a9a699d7a5a92543a4a43', class: "content", "data-name": "submenu-content" }, h("slot", { key: '082924f71ca83c304b0b3547688874c128523012', name: "submenu-content" }))), h("div", { key: '2feead444d2ecffc7fea43544d6cc4aea9e9cf21', class: "hover-content", "data-name": "hover-content" }, h("slot", { key: 'c5db3f068f76b96967d8f8e9106555d2996ed5ff', name: "submenu-hover-content" })))));
     }
     static get is() { return "at-sidebar-submenu"; }
     static get originalStyleUrls() {
@@ -165,8 +163,7 @@ export class AtSidebarSubmenuComponent {
     static get states() {
         return {
             "isSidebarOpen": {},
-            "isAccordionOpen": {},
-            "atuiAccordionItem": {}
+            "isAccordionOpen": {}
         };
     }
     static get elementRef() { return "el"; }
@@ -174,12 +171,6 @@ export class AtSidebarSubmenuComponent {
         return [{
                 "name": "atuiSidebarChange",
                 "method": "handleAtuiChange",
-                "target": "window",
-                "capture": false,
-                "passive": false
-            }, {
-                "name": "atuiAccordionChange",
-                "method": "handleAtuiAccordionChange",
                 "target": "window",
                 "capture": false,
                 "passive": false
