@@ -5,7 +5,7 @@ var index = require('./index--r5sCsiV.js');
 const AtTabs = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
-        this.atuiTabChange = index.createEvent(this, "atuiTabChange", 3);
+        this.atuiTabChange = index.createEvent(this, "atuiTabChange", 7);
     }
     get el() { return index.getElement(this); }
     /**
@@ -152,7 +152,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '7088744b4dbfc2e606732a0b67f5ceb81c876fb2' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '2219512fdf00ffa70085cf4619a9247be36c8ad6' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

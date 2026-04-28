@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BAAX2Der.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -24,7 +24,7 @@ const AtLayout = class {
         }
     }
     render() {
-        return h(Host, { key: '3abbdefde94f361e51e429c6e8c48f1843e8fe6a' }, this.layoutElement);
+        return h(Host, { key: 'c42a16a7392c136bd0261f92ecdc93ca49a26c7c' }, this.layoutElement);
     }
 };
 
@@ -35,8 +35,8 @@ const variantsConfig = {
             vertical: 'flex justify-start',
         },
         active: {
-            true: 'z-index-20 text-active-foreground hover:bg-active-accent/10',
-            false: 'text-muted hover:bg-overlay/10',
+            true: 'z-index-20 text-active-accent bg-active-accent/10 hover:bg-active-accent/15',
+            false: 'text-muted hover:bg-surface-overlay/5',
         },
     },
     compoundVariants: [
@@ -72,19 +72,19 @@ const AtTabTrigger = class {
      * Set by parent <at-tabs> to control layout.
      */
     fill = false;
-    tabEl;
+    get el() { return getElement(this); }
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
-            this.tabEl.click();
+            this.el.click();
         }
     }
     render() {
-        const getClassname = classlist('group/tab text-button no-underline w-full relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-input border border-solid border-transparent !font-medium capitalize duration-150 ease-in-out p-8 outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-active-glow', variantsConfig);
+        const getClassname = classlist('group/tab text-button no-underline relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-input border border-solid border-transparent !font-medium capitalize transition-colors duration-150 ease-in-out p-8 outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-active-glow', variantsConfig);
         const classname = getClassname({
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '0a3df873de3811588a7fcf001e3dbbbf0c936e89', role: "tab", tabfocs: 0, "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', onKeyDown: (event) => this.handleKeyDown(event), "data-name": `tab-${this.tab_id}`, class: this.fill ? 'flex-1' : undefined }, h("a", { key: '4ec8fc2e04d7c62c84caac9c34c8a2bbf580aa93', id: `tab-${this.tab_id}`, tabindex: "0", class: classname, ref: (el) => (this.tabEl = el) }, this.tab_title, h("slot", { key: 'c4af96b3ec6b99ae3983fff5a0996c50cfbb5dea' }))));
+        return (h(Host, { key: 'd6d30d20c4166802c5db3bde0f07bcf1cc9e33cf', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '4768b7ecb022bd0243ae1dccac9497173c1e6726' })));
     }
 };
 

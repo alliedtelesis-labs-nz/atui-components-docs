@@ -160,7 +160,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: '7088744b4dbfc2e606732a0b67f5ceb81c876fb2' }, this.checkLayoutAndRender());
+        return h(Host, { key: '2219512fdf00ffa70085cf4619a9247be36c8ad6' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {
@@ -283,7 +283,7 @@ export class AtTabs {
         return [{
                 "method": "atuiTabChange",
                 "name": "atuiTabChange",
-                "bubbles": false,
+                "bubbles": true,
                 "cancelable": true,
                 "composed": true,
                 "docs": {

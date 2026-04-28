@@ -3227,6 +3227,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-active-accent\/10 {
+  background-color: color-mix(in srgb, var(--token-state-active-accent) 10%, transparent);
+}
+
 .bg-active-accent\/20 {
   background-color: color-mix(in srgb, var(--token-state-active-accent) 20%, transparent);
 }
@@ -4307,8 +4311,8 @@ strong {
   cursor: pointer;
 }
 
-.hover\:bg-active-accent\/10:hover {
-  background-color: color-mix(in srgb, var(--token-state-active-accent) 10%, transparent);
+.hover\:bg-active-accent\/15:hover {
+  background-color: color-mix(in srgb, var(--token-state-active-accent) 15%, transparent);
 }
 
 .hover\:bg-active-accent\/20:hover {
@@ -4323,6 +4327,10 @@ strong {
 
 .hover\:bg-surface-overlay\/10:hover {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 10%, transparent);
+}
+
+.hover\:bg-surface-overlay\/5:hover {
+  background-color: color-mix(in srgb, var(--token-surface-overlay) 5%, transparent);
 }
 
 .hover\:text-disabled:hover {

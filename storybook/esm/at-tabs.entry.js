@@ -3,7 +3,7 @@ import { r as registerInstance, c as createEvent, g as getElement, h, H as Host 
 const AtTabs = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.atuiTabChange = createEvent(this, "atuiTabChange", 3);
+        this.atuiTabChange = createEvent(this, "atuiTabChange", 7);
     }
     get el() { return getElement(this); }
     /**
@@ -150,7 +150,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: '7088744b4dbfc2e606732a0b67f5ceb81c876fb2' }, this.checkLayoutAndRender());
+        return h(Host, { key: '2219512fdf00ffa70085cf4619a9247be36c8ad6' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

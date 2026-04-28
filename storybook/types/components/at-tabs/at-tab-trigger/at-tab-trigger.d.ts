@@ -26,7 +26,7 @@ export declare class AtTabTrigger {
      * Set by parent <at-tabs> to control layout.
      */
     fill: boolean;
-    tabEl: HTMLElement;
+    el: HTMLElement;
     handleKeyDown(event: KeyboardEvent): void;
     render(): any;
 }

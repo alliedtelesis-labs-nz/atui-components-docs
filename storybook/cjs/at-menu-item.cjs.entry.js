@@ -42,7 +42,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'be6caeee20c2fcd1160f28ccf42b7e0ca8286bf3', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: 'b6c4c26f24fd0158962571deb85ace1a1dbcb3ba', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -50,7 +50,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, index.h("slot", { key: '5d0c6df62606b2680efb64755f41b258524f1327', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '3d612f696fb01b8287a48601811a05b7edbe1fae', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'a46cd5e6a8dcb93c1452abfed5291d0d2af802e7' })));
+            } }, index.h("slot", { key: '3ba40b1c58eccbed81ffbfe08308ddef0fcb4767', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: 'a7ea3fde250328ce2e6b8079263d56eff80293e2', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '53f65e74a5657725b267f61a4ef45551b3a53413' })));
     }
 };
 
