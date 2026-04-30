@@ -6,21 +6,18 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-details .accordion-item-content {
+[data-name=accordion-item-content] {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 200ms ease-in-out, opacity 200ms ease;
+  opacity: 1;
+}
+[data-name=accordion-item-content][data-state=collapsed] {
+  grid-template-rows: 0fr;
   overflow: hidden;
+  opacity: 0;
 }
 
-details::details-content {
-  display: block;
-  block-size: 0;
+[data-name=accordion-item-content] > * {
   overflow: hidden;
-  transition-property: block-size, content-visibility;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-  transition-behavior: allow-discrete;
-}
-
-details[open]::details-content {
-  block-size: auto;
-  block-size: calc-size(auto, size);
 }

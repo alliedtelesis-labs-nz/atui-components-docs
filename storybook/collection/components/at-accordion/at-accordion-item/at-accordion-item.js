@@ -1,4 +1,14 @@
 import { h, Host, } from "@stencil/core";
+import { classlist } from "../../../utils/classlist";
+const variantsConfig = {
+    variants: {
+        disabled: {
+            true: 'text-disabled-foreground pointer-events-none',
+            false: null,
+        },
+    },
+};
+const getAccordionClasses = classlist('group/accordion-item focus-within:ring-active-glow flex rounded-sm outline-0 focus-within:ring', variantsConfig);
 /**
  * @category Layout
  * @description A collapsible content container component that allows users to show/hide sections of content. Supports multiple panels, animations, and programmatic control of expanded states.
@@ -29,13 +39,14 @@ export class AtAccordionItemComponent {
      */
     open = false;
     /**
+     * Will disable interaction if set
+     */
+    disabled;
+    /**
      * Emitted when the accordion item's open state changes
      */
     atuiAccordionChange;
-    accordionElement;
-    componentDidLoad() {
-        this.accordionElement = this.el.querySelector('details');
-    }
+    detailsEl;
     async handleSummaryInteraction(event) {
         if (event.type === 'click' || event.type === 'touchend') {
             event.preventDefault();
@@ -47,15 +58,29 @@ export class AtAccordionItemComponent {
             }
         }
     }
+    handleOpenChange(newValue) {
+        if (newValue) {
+            this.detailsEl.open = true;
+        }
+        else {
+            this.detailsEl.addEventListener('transitionend', () => {
+                if (!this.open) {
+                    this.detailsEl.open = false;
+                }
+            }, { once: true });
+        }
+    }
     /**
      * Opens this accordion item
      */
     async openAccordion() {
         if (this.open)
             return;
-        this.accordionElement.open = true;
-        this.open = true;
-        this.atuiAccordionChange.emit(this.open);
+        this.detailsEl.open = true;
+        requestAnimationFrame(() => {
+            this.open = true;
+            this.atuiAccordionChange.emit(true);
+        });
     }
     /**
      * Closes this accordion item
@@ -63,9 +88,8 @@ export class AtAccordionItemComponent {
     async closeAccordion() {
         if (!this.open)
             return;
-        this.accordionElement.open = false;
         this.open = false;
-        this.atuiAccordionChange.emit(this.open);
+        this.atuiAccordionChange.emit(false);
     }
     /**
      * Return the accordion items open state
@@ -74,7 +98,10 @@ export class AtAccordionItemComponent {
         return this.open;
     }
     render() {
-        return (h(Host, { key: '5727b763ace551d58b4171a35e5328d9638e1667', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: 'dc016406de8ee5f209e5b670efc7a9b3f6dbd035', class: `group/accordion-item'}`, ref: (el) => (this.accordionElement = el), role: "group", open: this.open }, h("summary", { key: '526727699a2d86e638bbda6fec1839e6aeb7ebaf', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: "group/accordion-item focus-within:ring-active-glow flex rounded-sm outline-0 focus-within:ring", onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: '06a1d41ccc0416fef546a172e860f2e4d0b97119', label: this.label })), h("slot", { key: 'c6daf83eeb8962e51c6a7e1fcb6650a0386e281c', name: "accordion-trigger" })), h("div", { key: '591636f99b1967742dd41c84663e862704bcd696', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, class: "accordion-item-content", "data-name": "accordion-item-content" }, this.content && (h("div", { key: '4805fed545394bb51dbf416853bba212f7113833', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: 'cbcc8bbf24611a2fde725bac8d038c131c377953' })))));
+        const classname = getAccordionClasses({
+            disabled: this.disabled,
+        });
+        return (h(Host, { key: 'bde5e72538ee8c70bc4012e26c541800ad5177d9', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: '6b1d1e119bb6a97089afa70b54679754934ad6f7', class: "group/accordion-item", role: "group", ref: (el) => (this.detailsEl = el) }, h("summary", { key: '23ac424a55a8fcdec4992347e9e73fa8a0d4d882', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: '2444228eb24ead32f1839bee69f4ffc7f2781348', label: this.label })), h("slot", { key: 'a3181646858a778c9557ddaaa8575591c08f7f4c', name: "accordion-trigger" })), h("div", { key: '6c3b7d26aefbd48ac7cb26182216401392470ace', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (h("div", { key: 'c7164a493e9c6941e6ec9adfe8ee2651a37a5478', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: '73dac0a533b0572f20309b0db9cc895784e44658' })))));
     }
     static get is() { return "at-accordion-item"; }
     static get originalStyleUrls() {
@@ -185,6 +212,25 @@ export class AtAccordionItemComponent {
                 "reflect": false,
                 "attribute": "open",
                 "defaultValue": "false"
+            },
+            "disabled": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Will disable interaction if set"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "disabled"
             }
         };
     }
@@ -262,4 +308,10 @@ export class AtAccordionItemComponent {
         };
     }
     static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "open",
+                "methodName": "handleOpenChange"
+            }];
+    }
 }

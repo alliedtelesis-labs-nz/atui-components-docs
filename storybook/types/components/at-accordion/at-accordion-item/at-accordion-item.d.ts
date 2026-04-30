@@ -29,12 +29,16 @@ export declare class AtAccordionItemComponent {
      */
     open: boolean;
     /**
+     * Will disable interaction if set
+     */
+    disabled: boolean;
+    /**
      * Emitted when the accordion item's open state changes
      */
     atuiAccordionChange: EventEmitter<boolean>;
-    private accordionElement;
-    componentDidLoad(): void;
+    private detailsEl;
     private handleSummaryInteraction;
+    handleOpenChange(newValue: boolean): void;
     /**
      * Opens this accordion item
      */

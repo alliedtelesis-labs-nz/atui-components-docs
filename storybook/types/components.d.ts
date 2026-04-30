@@ -154,6 +154,10 @@ export namespace Components {
          */
         "content": string;
         /**
+          * Will disable interaction if set
+         */
+        "disabled": boolean;
+        /**
           * Return the accordion items open state
          */
         "getIsOpen": () => Promise<boolean>;
@@ -4834,6 +4838,10 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
+          * Will disable interaction if set
+         */
+        "disabled"?: boolean;
+        /**
           * Used to identify the accordion item among the other accordion items
          */
         "item_id": string;
@@ -7824,6 +7832,7 @@ declare namespace LocalJSX {
         "border": boolean;
         "content": string;
         "open": boolean;
+        "disabled": boolean;
     }
     interface AtAccordionTriggerAttributes {
         "label": string;
