@@ -300,19 +300,19 @@ export class AtSelectComponent {
         return computed;
     }
     render() {
-        return (h(Host, { key: '92f0be41cca4cf3aee2b436c19b14d72bbbfc069', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '1f5331b5e7d06d49a9e65a2f571d6822682761b8', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '721effc7afe4c4e44a501a6e93cbd0bdee6eb716', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '4acc47ad3434664bc42806edbeeab14e8c1394e2', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '2969ebbbedb5f8d2309339b83fd6cd20dc2b4225' }, this.error_text && this.invalid && (h("span", { key: 'b500ab6afe3c4e9ea5c37c80f8b95fdf1612383d', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: 'f19845021501f49df560b9dd85cc542d899c4633' }, this.error_text && this.invalid && (h("span", { key: 'defa4b68094ce85c3dc57b2777b4b5d1dd9b1e6f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (h("div", { class: "mb-4 flex flex-col" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
+        return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
         const getClassname = classlist('height-[36px] transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid p-8 outline-0 duration-300 ease-in-out select-none focus:ring', inputVariantsConfig);

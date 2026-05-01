@@ -4253,6 +4253,10 @@ strong {
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
+.empty\:hidden:empty {
+  display: none;
+}
+
 .focus-within\:border-active-accent:focus-within {
   --tw-border-opacity:
       1;

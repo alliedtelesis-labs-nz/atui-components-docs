@@ -245,7 +245,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'd4ab5d9ddd6d15fe6f96e5b512c00efcce523faf', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '8420905ca0314509939c55090e30a555353e70a0', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: '6625cd2276aa2e6ebaff1211f23088d3aa4b0950', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '200c08761f53b0a09c7508760bbfcbcf5a745ecc', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

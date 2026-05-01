@@ -103,7 +103,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("at-menu", { key: 'd7da2d7ac25537052c3b94e6d3a1b5b7b6e369d9', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, index.h("div", { key: '0a2b8e7e28040ca39b9f381f57f0a1e80258783a', slot: "menu-trigger" }, index.h("at-tooltip", { key: 'f5a0411c56208968b43ed189026ae53b1ffc34a4', position: "top" }, index.h("at-button", { key: '06f25ddc80814de7a9da4aa4920727e53ff96d73', slot: "tooltip-trigger", type: "secondaryText" }, index.h("at-icon", { key: '112fcce6d7690491a6363d773884c0d54608a3d6', slot: "icon", name: "column" })), index.h("span", { key: '0391eb03cc5e0230ec6ffcbadcd14d8ca2673176' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '76677dad72c862e999e3d086f11f68f20ddeccb7', class: "w-fit", options: this.col_defs
+        return (index.h("at-menu", { key: '7db9a5a6175e747d434c30cbab01c34751d0de68', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, index.h("div", { key: '7ced76e364b96e41698b6d531873216eee22e220', slot: "menu-trigger" }, index.h("at-tooltip", { key: 'e4c61b2f22bc55a78e9932d423a7a89f12d572b2', position: "top" }, index.h("at-button", { key: '618ce63ce8abd56191215f2188e3e1527370c234', slot: "tooltip-trigger", type: "secondaryText" }, index.h("at-icon", { key: '7fcafcedb836e62e9e10cf2e88f698f5486ceb8b', slot: "icon", name: "column" })), index.h("span", { key: 'eb37fb36bf6d4850964e142cd2ec86d37fb0e075' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '90e09c31c42be509e514e121de5061f859bcbb55', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49105,7 +49105,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: 'c1cf9319a48b1c2e0948178d43b889eeee532c52', class: "ag-theme-atui" });
+        return index.h(index.Host, { key: '21abf7d7a5c79f5784c7fd806c5b68c0f409e876', class: "ag-theme-atui" });
     }
     static get watchers() { return {
         "table_data": [{
@@ -49172,7 +49172,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '5057eb4d8fcb8f6425c6a1ac1e961be238c90218', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: 'd9c343618e8c31c3eee3a5b78b0c4f78d90d4e6c', class: "flex justify-between" }, index.h("div", { key: '1c8b9f0cd8905333c6fd5e4751d7ebcec39637b2', class: "flex" }, index.h("slot", { key: '9b6be9874e4c827f91186df93f2d0e6be04c2ac3', name: "search" })), index.h("div", { key: 'd9c3d4cea57b1c82e55597cf8cdc0318ad307819', class: "flex" }, index.h("slot", { key: '1d967c27b2465a4f175f3c181c92a23fb011bce3', name: "export-menu" }), index.h("slot", { key: 'a06449ab7da9fe50f6ae293c6e72cfbb34218ffc', name: "column-manager" }), index.h("slot", { key: '037555f04433a4c7170ca2395b74c18baf11235b', name: "actions" }))), index.h("slot", { key: '4dde2a671155d3d7728d100b9c0bb3120dec724e', name: "filters" })));
+        return (index.h(index.Host, { key: '1b5f7f5de99f92bee1dfe29cb0314e463d3af376', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '85716bfe705fdb51cb3080431a598032121b1b81', class: "flex justify-between" }, index.h("div", { key: '82754b118c1734d152945b7ab561dd9cd29a91f1', class: "flex" }, index.h("slot", { key: 'b664e6cca9310d479dd73aded03c673ff1637ca1', name: "search" })), index.h("div", { key: '8d1cee338a967f59cceb90a9b2831af75cb3d24a', class: "flex" }, index.h("slot", { key: 'd8accedb734240a66c890afe22d87338a02c9a62', name: "export-menu" }), index.h("slot", { key: 'f0baa17e05c154808d523e637b8031c0912584a8', name: "column-manager" }), index.h("slot", { key: '37a35a75bd0602a18700474562570d5d9ef6e097', name: "actions" }))), index.h("slot", { key: 'fdf4a009d6f508a6d922a07b3db3daa8cf55d856', name: "filters" })));
     }
 };
 

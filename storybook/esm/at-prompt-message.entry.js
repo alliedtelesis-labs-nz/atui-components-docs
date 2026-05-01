@@ -216,7 +216,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'ca0470805c06f0cf3cf99770c2ce10f0e15cab75', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '3af30e9aeac06c30c2b3a58ff0d12df41264c7b4', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'ddb6f4f66b28d8308954c78a048837275b1711ad', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '7397f314acd6f9bf949e21d44671e6e98a2802f6', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '6a1d25da2002374779106ffb5b3b122ecbfc48ae', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'bbec9eee1ee5576339bf8978a7d0026cfb1f0d58', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '4faf772a2144d1883c495d7e1bc47c16f1e09662', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'fb6b8f190e244b563d757725eafeb6bb0190dad7', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

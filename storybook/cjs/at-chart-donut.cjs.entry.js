@@ -241,7 +241,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '859c4c8b0ad7dfc6a68c59e32e09980c8494a216', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '98130e41fe371caae9dc585b6e5c5c82790c1788', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'df7e144dd5916bda6a47075ba34b9d6775569c1e', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'a13b88cab2c34d160c5d7973ab0f8384c05b065d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 
