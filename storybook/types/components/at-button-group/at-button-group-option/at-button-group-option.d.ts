@@ -34,6 +34,7 @@ export declare class AtButtonGroupOption {
     private provider;
     componentDidLoad(): Promise<void>;
     handleClick(event: Event): void;
+    handleKeydown(event: KeyboardEvent): void;
     private hasIcon;
     render(): any;
 }

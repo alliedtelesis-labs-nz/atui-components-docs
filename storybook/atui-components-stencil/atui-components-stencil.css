@@ -3231,6 +3231,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-active-accent) 10%, transparent);
 }
 
+.bg-active-accent\/15 {
+  background-color: color-mix(in srgb, var(--token-state-active-accent) 15%, transparent);
+}
+
 .bg-active-accent\/20 {
   background-color: color-mix(in srgb, var(--token-state-active-accent) 20%, transparent);
 }
@@ -3437,6 +3441,10 @@ strong {
 
 .\!fill-button-foreground-inv {
   fill: color-mix(in srgb, var(--token-button-foreground-inv) 100%, transparent) !important;
+}
+
+.\!fill-disabled-foreground {
+  fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent) !important;
 }
 
 .fill-active-accent {
@@ -4341,12 +4349,6 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-disabled) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
-.hover\:text-disabled-foreground:hover {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-disabled-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .hover\:text-foreground:hover {

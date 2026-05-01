@@ -1,22 +1,22 @@
-import { h, } from "@stencil/core";
+import { h, Host, } from "@stencil/core";
 import { classlist } from "../../../utils/classlist";
 const variantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-accent/20 text-active-accent fill-active-accent',
-            false: 'text-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
+            true: 'bg-active-accent/15 text-active-accent fill-active-accent',
+            false: 'text-foreground fill-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         disabled: {
-            true: 'text-disabled-foreground fill-disabled-foreground hover:text-disabled-foreground pointer-events-none',
+            true: '!text-disabled !fill-disabled-foreground pointer-events-none',
             false: null,
         },
         hostDisabled: {
-            true: 'text-disabled fill-disabled hover:text-disabled pointer-events-none',
+            true: '!text-disabled !fill-disabled-foreground pointer-events-none',
             false: null,
         },
     },
 };
-const getButtonClasses = classlist('focus-visible:border-active-accent focus-visible:ring-active-glow relative flex h-[30px] items-center gap-4 rounded-input border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring focus-visible:ring-offset-0', variantsConfig);
+const getButtonClasses = classlist('focus-visible:border-active-accent focus-visible:ring-active-glow cursor-pointer relative flex items-center gap-4 rounded-input border border-solid border-transparent px-12 py-8 leading-none font-normal transition-colors duration-300 ease-in-out outline-none focus-visible:ring focus-visible:ring-offset-0', variantsConfig);
 /**
  * @category Form Controls
  * @description A button group option component for the button group.
@@ -54,6 +54,8 @@ export class AtButtonGroupOption {
         this.host_disabled = this.provider?.disabled;
     }
     handleClick(event) {
+        if (this.disabled || this.host_disabled)
+            return;
         if (!this.el.hasAttribute('data-ignore-selection')) {
             this.is_active = true;
         }
@@ -62,6 +64,14 @@ export class AtButtonGroupOption {
             componentType: 'at-button-group-option',
             element: this.el,
         });
+    }
+    handleKeydown(event) {
+        if (this.disabled || this.host_disabled)
+            return;
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.handleClick(event);
+        }
     }
     hasIcon() {
         const iconEl = this.el.querySelector('[slot="icon"]');
@@ -74,7 +84,7 @@ export class AtButtonGroupOption {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (h("button", { key: '370f411bb0f1a3bd2cb96c65ea3d7ea3987cdd47', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, disabled: this.disabled, onClick: (event) => this.handleClick(event), "data-name": "button-group-option", type: "button" }, h("slot", { key: '77a2e78d3ed4015eb59cb85606581cf8acbc88b3', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '5b3f84e9d0f4e8a58108df609af595afac2251b9' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '24ce0896d27d18d05980f1758da0b4791da3f868', name: "after" })));
+        return (h(Host, { key: '3fd7889149bfdea3fcce2c5538ec6f24e2ffa476', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '1c66c1f9fc65804aebad402a37c4a534cd4d3caf', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '4b37a993e3659fa25d9a0e8f91a76f37650d21dc' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '4f6a16b099ea9dee366a5f29324632381fffc197', name: "after" })));
     }
     static get is() { return "at-button-group-option"; }
     static get properties() {
