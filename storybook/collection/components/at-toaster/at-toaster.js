@@ -61,7 +61,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '94409eccef8d115f14ffb33777dc020f63899292', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+        return (h("div", { key: '378b652f29a4e3c16c3690b8fa184c9af56147b8', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))))))));

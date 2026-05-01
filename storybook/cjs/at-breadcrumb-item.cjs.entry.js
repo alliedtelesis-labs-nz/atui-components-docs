@@ -16,7 +16,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return index.getElement(this); }
     render() {
-        return (index.h(index.Host, { key: '8146843dd969b16ef29b281333787b1ca0b32a0e', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
+        return (index.h(index.Host, { key: '2482d43d9f93848e167e01db1963d7c854710f6a', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
     }
 };
 

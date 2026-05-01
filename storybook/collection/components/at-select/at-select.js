@@ -300,16 +300,16 @@ export class AtSelectComponent {
         return computed;
     }
     render() {
-        return (h(Host, { key: '1f5331b5e7d06d49a9e65a2f571d6822682761b8', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '0baa75d2c7c8c7d78b44964a7e4c0df6ef566f91', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '4acc47ad3434664bc42806edbeeab14e8c1394e2', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'fbb1e8772d5afb46a392406475b2f602b4af623b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'f19845021501f49df560b9dd85cc542d899c4633' }, this.error_text && this.invalid && (h("span", { key: 'defa4b68094ce85c3dc57b2777b4b5d1dd9b1e6f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '2008d08b92785a6f7d2e4e76de4b8a63478dea92' }, this.error_text && this.invalid && (h("span", { key: '37305e47da8b80df4721ad145215f5aa95cde37f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));

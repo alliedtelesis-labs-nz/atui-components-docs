@@ -160,7 +160,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '21abf7d7a5c79f5784c7fd806c5b68c0f409e876', class: "ag-theme-atui" });
+        return h(Host, { key: '27ee8c584eba32811e64780a55dad22be211c03d', class: "ag-theme-atui" });
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {

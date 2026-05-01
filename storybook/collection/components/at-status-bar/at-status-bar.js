@@ -27,7 +27,7 @@ export class AtStatusBar {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'a351cc477a2eeed9a90e73d91ac6290a50554dc2', class: this.statusBarClass }, h("div", { key: '072354d72f901a9b18fedc1a47641bb49bc5eaac', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '5d3ac51c9385d19940fe38fe7fdf62c1f34ebcfe', class: this.statusBarClass }, h("div", { key: 'c45151a105a9ebe578fb59334bf7f2e2212f7db6', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
     static get is() { return "at-status-bar"; }
     static get properties() {

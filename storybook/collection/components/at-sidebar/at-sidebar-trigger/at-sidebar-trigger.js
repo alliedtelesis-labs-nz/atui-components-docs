@@ -41,7 +41,7 @@ export class AtSidebarTriggerComponent {
         this.isOpen = event.detail;
     };
     render() {
-        return (h(Host, { key: '4d67de400de2e35b9f0b3b6df2516c7f0a13dacc', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("at-icon", { key: '721b95264532eb5840614d13930248034791ede1', class: "rotate-180", name: this.isOpen ? 'menu_close' : 'menu', size: "22" })), h("div", { key: '543f452281628801750538ab21161da2ab8d243c', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: 'dea3b7da8963a5bf66365fa70524eefa615f28cf', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("at-icon", { key: 'a4f09a2280921ea276bc54a76f65192091aeccdb', class: "rotate-180", name: this.isOpen ? 'menu_close' : 'menu', size: "22" })), h("div", { key: 'b9b124855927b89a6239a09142c0a6aadb1098eb', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
     static get is() { return "at-sidebar-trigger"; }
     static get encapsulation() { return "scoped"; }

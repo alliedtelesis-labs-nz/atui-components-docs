@@ -37,12 +37,12 @@ const AtMenuitemComponent = class {
      */
     atuiClick;
     render() {
-        const getClassname = classlist.classlist('text-body hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 focus-visible:ring-active-glow relative flex w-full cursor-pointer items-center gap-4 truncate overflow-hidden rounded-menu-item p-4 text-left font-normal leading-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring focus-visible:ring-inset', variantsConfig);
+        const getClassname = classlist.classlist('text-body hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 focus-visible:ring-active-glow relative flex w-full cursor-pointer items-center gap-4 truncate overflow-hidden rounded-menu-item pl-8 py-4 px-4 text-left font-normal leading-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring focus-visible:ring-inset', variantsConfig);
         const classname = getClassname({
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'b56617e569e188676948917d51310197cb86cd76', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: '88dc92fcb7aa8509afe59de9e383ce462d9dbf73', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -50,7 +50,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, index.h("slot", { key: '4097ecd741917b1d72840bab6aa87158fd2e0663', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '29960da71ccca1749b4a9f703c3be05a158b0fcd', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '6b0d91341fd89501d6cf44fa1582847afa47fad6' })));
+            } }, index.h("div", { key: '8669015d17ffed32493381203f6ebd700ef6b1ca', class: "flex flex-grow" }, index.h("slot", { key: 'd2296048d910c0c071be12f7f930d996d7932511', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: 'a31a4dba6cd433ac3d5f23b33084dd5a510f0c39', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'ac57965e25d6dc2f8597b3c99c4e7efb26da3d6f' })), index.h("slot", { key: 'ac732ac31c480b0d75ae53beff4ac8c7981f8021', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

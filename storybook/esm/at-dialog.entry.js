@@ -144,7 +144,7 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '823ba4629a51ec115c78d089a50a0bf41f23ff8a', "data-open": this.isOpen }, h("dialog", { key: '9999014373b654bfd9feba342b683921082502ea', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '2787ec8973f8311fa4f93c39ab4bb225168ad941', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'a59ba2de220591f58b7f030a9b20d39d768c7e2b' })))));
+        return (h(Host, { key: '22794b3c2a81ff66a43607d0b9e53cb5dc6b5bc3', "data-open": this.isOpen }, h("dialog", { key: 'adff6a8d0f425b794f9699ca4c12d4801ab8968e', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '552d8a9b606d5ebd6f5e445c955b9894cb89d899', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '540cf021d37bec203ac5346fea3f1018d3dfd530' })))));
     }
 };
 AtDialogComponent.style = atDialogCss();
