@@ -57,9 +57,11 @@ export class AtTableComponent {
     activeFilters = {};
     agGrid;
     tableCreated = false;
+    hasDisplayedRows = false;
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', newData?.items || []);
+            this.updateDisplayedRowsState(this.agGrid);
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -88,12 +90,16 @@ export class AtTableComponent {
         if (gridInitializedByHost) {
             this.agGrid = this.ag_grid;
             this.tableCreated = true;
+            this.updateDisplayedRowsState(this.agGrid);
             return;
         }
         if (gridReadyForCreation) {
             this.agGrid = await this.createGrid();
             this.tableCreated = true;
         }
+    }
+    updateDisplayedRowsState(api) {
+        this.hasDisplayedRows = api.getDisplayedRowCount() > 0;
     }
     /**
      * Method used to initialize the table.
@@ -118,6 +124,9 @@ export class AtTableComponent {
             enableBrowserTooltips: true,
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
+            onModelUpdated: (event) => {
+                this.updateDisplayedRowsState(event.api);
+            },
             onSortChanged: (event) => {
                 const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
                 this.atSortChange.emit({
@@ -143,6 +152,7 @@ export class AtTableComponent {
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
+        this.updateDisplayedRowsState(gridApi);
         return gridApi;
     }
     /**
@@ -160,7 +170,10 @@ export class AtTableComponent {
         }
     }
     render() {
-        return h(Host, { key: '9890cf25b459bcb290385de2110a2bef2e49de34', class: "ag-theme-atui" });
+        return (h(Host, { key: 'd05262c2c5d66376e5d2770fccf3ad1d76f37f7c', class: {
+                'ag-theme-atui': true,
+                'ag-theme-atui--has-rows': this.hasDisplayedRows,
+            } }));
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -346,7 +359,8 @@ export class AtTableComponent {
         return {
             "activeFilters": {},
             "agGrid": {},
-            "tableCreated": {}
+            "tableCreated": {},
+            "hasDisplayedRows": {}
         };
     }
     static get events() {

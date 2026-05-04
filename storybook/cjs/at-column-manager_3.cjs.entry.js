@@ -48954,7 +48954,7 @@ class AtTableComponentsConfigs {
     }
 }
 
-const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}`;
+const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}`;
 
 const AtTableComponent = class {
     constructor(hostRef) {
@@ -49010,9 +49010,11 @@ const AtTableComponent = class {
     activeFilters = {};
     agGrid;
     tableCreated = false;
+    hasDisplayedRows = false;
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', newData?.items || []);
+            this.updateDisplayedRowsState(this.agGrid);
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -49041,12 +49043,16 @@ const AtTableComponent = class {
         if (gridInitializedByHost) {
             this.agGrid = this.ag_grid;
             this.tableCreated = true;
+            this.updateDisplayedRowsState(this.agGrid);
             return;
         }
         if (gridReadyForCreation) {
             this.agGrid = await this.createGrid();
             this.tableCreated = true;
         }
+    }
+    updateDisplayedRowsState(api) {
+        this.hasDisplayedRows = api.getDisplayedRowCount() > 0;
     }
     /**
      * Method used to initialize the table.
@@ -49071,6 +49077,9 @@ const AtTableComponent = class {
             enableBrowserTooltips: true,
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
+            onModelUpdated: (event) => {
+                this.updateDisplayedRowsState(event.api);
+            },
             onSortChanged: (event) => {
                 const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
                 this.atSortChange.emit({
@@ -49096,6 +49105,7 @@ const AtTableComponent = class {
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
+        this.updateDisplayedRowsState(gridApi);
         return gridApi;
     }
     /**
@@ -49113,7 +49123,10 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '9890cf25b459bcb290385de2110a2bef2e49de34', class: "ag-theme-atui" });
+        return (index.h(index.Host, { key: 'd05262c2c5d66376e5d2770fccf3ad1d76f37f7c', class: {
+                'ag-theme-atui': true,
+                'ag-theme-atui--has-rows': this.hasDisplayedRows,
+            } }));
     }
     static get watchers() { return {
         "table_data": [{

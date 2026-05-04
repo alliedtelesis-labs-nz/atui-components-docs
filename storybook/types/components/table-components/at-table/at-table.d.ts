@@ -62,6 +62,7 @@ export declare class AtTableComponent {
     };
     private agGrid;
     tableCreated: boolean;
+    private hasDisplayedRows;
     handleTableDataChange(newData: {
         items: any[];
         total: number;
@@ -70,6 +71,7 @@ export declare class AtTableComponent {
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     private initGrid;
+    private updateDisplayedRowsState;
     /**
      * Method used to initialize the table.
      *

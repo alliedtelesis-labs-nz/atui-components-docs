@@ -21,3 +21,8 @@ atui-menu atui-checkbox[aria-checked] {
   width: var(--colorStatusColWidth) !important;
   border: none !important;
 }
+
+.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,
+.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport {
+  min-height: unset !important;
+}
