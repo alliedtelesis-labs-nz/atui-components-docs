@@ -33,6 +33,11 @@ export declare class AtMenu {
      */
     width?: string;
     /**
+     * Maximum CSS height for menu (e.g., '300px', '50vh').
+     * When provided, menu's max-height will be the minimum of the available viewport space and this value.
+     */
+    max_height?: string;
+    /**
      * Prevent closing of menu when options are selected. Used for multi-selection controls.
      */
     autoclose: boolean;

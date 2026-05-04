@@ -62,6 +62,11 @@ export declare class AtSelectComponent {
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
     autoclose?: boolean;
+    /**
+     * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
+     * Forwarded to the inner <at-menu> via max_height prop.
+     */
+    menu_max_height?: string;
     inputEl: HTMLInputElement;
     searchText: string;
     isOpen: boolean;

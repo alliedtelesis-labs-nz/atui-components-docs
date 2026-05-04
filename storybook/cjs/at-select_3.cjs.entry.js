@@ -91,6 +91,11 @@ const AtSelectComponent = class {
      * Close the menu when the user clicks within the menu panel. Default for single selection menus.
      */
     autoclose = true;
+    /**
+     * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
+     * Forwarded to the inner <at-menu> via max_height prop.
+     */
+    menu_max_height;
     inputEl;
     searchText = '';
     isOpen = false;
@@ -302,16 +307,16 @@ const AtSelectComponent = class {
         return computed;
     }
     render() {
-        return (index.h(index.Host, { key: 'a53f33c78cb771e1e40e9f4777c590de6ec1d208', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '86385586aaf1a144ffeba64a73c7b38d4d25aff7', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '10d5a4901003e69361a4327ed0ef63accdaedf51', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'fd02aa292362ac278a1122267bb6de72ed9fdb1b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '971f152f8e9f08cc0c5a1f1e82cb03106126d8ea' }, this.error_text && this.invalid && (index.h("span", { key: '4197910303532fb38d10d4c861e28390c76a22cf', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'a827d5359b732e6d42801bf76e9b1230fafa6552' }, this.error_text && this.invalid && (index.h("span", { key: '96729b9cba29bf57a715417099e69c6adadeffde', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));

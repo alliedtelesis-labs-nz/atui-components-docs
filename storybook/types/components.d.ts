@@ -1454,6 +1454,10 @@ export namespace Components {
          */
         "getIsOpen": () => Promise<boolean>;
         /**
+          * Maximum CSS height for menu (e.g., '300px', '50vh'). When provided, menu's max-height will be the minimum of the available viewport space and this value.
+         */
+        "max_height"?: string;
+        /**
           * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
           * @default 0
          */
@@ -1593,6 +1597,10 @@ export namespace Components {
           * @default ''
          */
         "label"?: string;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+         */
+        "menu_max_height"?: string;
         /**
           * Options displayed in the dropdown menu.
          */
@@ -2176,6 +2184,10 @@ export namespace Components {
           * Label of the input.
          */
         "label"?: string;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+         */
+        "menu_max_height"?: string;
         /**
           * Sets the options in the dropdown
          */
@@ -6284,6 +6296,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Maximum CSS height for menu (e.g., '300px', '50vh'). When provided, menu's max-height will be the minimum of the available viewport space and this value.
+         */
+        "max_height"?: string;
+        /**
           * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'
           * @default 0
          */
@@ -6423,6 +6439,10 @@ declare namespace LocalJSX {
           * @default ''
          */
         "label"?: string;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+         */
+        "menu_max_height"?: string;
         /**
           * Emits an event containing a list of the selected items when the selection changes.
          */
@@ -7085,6 +7105,10 @@ declare namespace LocalJSX {
           * Label of the input.
          */
         "label"?: string;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+         */
+        "menu_max_height"?: string;
         /**
           * Emits an event containing the selected value when changed.
          */
@@ -8269,6 +8293,7 @@ declare namespace LocalJSX {
         "position": AtPosition;
         "align": AtAlign;
         "width": string;
+        "max_height": string;
         "autoclose": boolean;
         "trigger": AtOpenOn;
         "role": AtAriaRole;
@@ -8299,6 +8324,7 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "readonly": boolean;
         "typeahead": boolean;
+        "menu_max_height": string;
     }
     interface AtPlaceholderAttributes {
         "size": AtPlaceholderSize;
@@ -8417,6 +8443,7 @@ declare namespace LocalJSX {
         "typeahead": boolean;
         "clearable": boolean;
         "autoclose": boolean;
+        "menu_max_height": string;
     }
     interface AtSelectGroupAttributes {
         "label": string;
