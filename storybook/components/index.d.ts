@@ -25,6 +25,8 @@ export { AtCardComponent as AtCard } from '../types/components/at-card/at-card';
 export { defineCustomElement as defineCustomElementAtCard } from './at-card';
 export { AtChartBarLine as AtChartBarLine } from '../types/components/at-chart-bar-line/at-chart-bar-line';
 export { defineCustomElement as defineCustomElementAtChartBarLine } from './at-chart-bar-line';
+export { AtChartBreakdown as AtChartBreakdown } from '../types/components/at-chart-breakdown/at-chart-breakdown';
+export { defineCustomElement as defineCustomElementAtChartBreakdown } from './at-chart-breakdown';
 export { AtChartDonut as AtChartDonut } from '../types/components/at-chart-donut/at-chart-donut';
 export { defineCustomElement as defineCustomElementAtChartDonut } from './at-chart-donut';
 export { AtCheckbox as AtCheckbox } from '../types/components/at-checkbox-group/at-checkbox/at-checkbox';
@@ -55,6 +57,8 @@ export { AtFormLabelComponent as AtFormLabel } from '../types/components/at-form
 export { defineCustomElement as defineCustomElementAtFormLabel } from './at-form-label';
 export { AtHeader as AtHeader } from '../types/components/at-header/at-header';
 export { defineCustomElement as defineCustomElementAtHeader } from './at-header';
+export { AtHealthDotCell as AtHealthDotCell } from '../types/components/table-components/cell-components/at-health-dot-cell/at-health-dot-cell';
+export { defineCustomElement as defineCustomElementAtHealthDotCell } from './at-health-dot-cell';
 export { AtIcon as AtIcon } from '../types/components/at-icon/at-icon';
 export { defineCustomElement as defineCustomElementAtIcon } from './at-icon';
 export { AtInputComponent as AtInput } from '../types/components/at-input/at-input';
@@ -105,6 +109,8 @@ export { AtRadio as AtRadio } from '../types/components/at-radio-group/at-radio/
 export { defineCustomElement as defineCustomElementAtRadio } from './at-radio';
 export { AtRadioGroup as AtRadioGroup } from '../types/components/at-radio-group/at-radio-group';
 export { defineCustomElement as defineCustomElementAtRadioGroup } from './at-radio-group';
+export { AtRelativeDateTimeCell as AtRelativeDatetimeCell } from '../types/components/table-components/cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
+export { defineCustomElement as defineCustomElementAtRelativeDatetimeCell } from './at-relative-datetime-cell';
 export { AtSearch as AtSearch } from '../types/components/at-search/at-search';
 export { defineCustomElement as defineCustomElementAtSearch } from './at-search';
 export { AtSearchTable as AtSearchTable } from '../types/components/table-components/at-search-table/at-search-table';

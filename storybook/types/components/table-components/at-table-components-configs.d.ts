@@ -1,5 +1,7 @@
 import { AtCheckboxCellComponent } from './cell-components/at-checkbox-cell/at-checkbox-cell';
 import { AtTextBadgeCell } from './cell-components/at-text-badge-cell/at-text-badge-cell';
+import { AtHealthDotCell } from './cell-components/at-health-dot-cell/at-health-dot-cell';
+import { AtRelativeDateTimeCell } from './cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
 import { AtTextCellComponent } from './cell-components/at-text-cell/at-text-cell';
 import { AtTextStatusCellComponent } from './cell-components/at-text-status-cell/at-text-status-cell';
 import { AtCheckboxHeaderComponent } from './header-components/at-checkbox-header/at-checkbox-header';
@@ -29,6 +31,8 @@ export declare class AtTableComponentsConfigs {
     static getFrameworkComponents(): {
         AtTextCell: typeof AtTextCellComponent;
         AtTextStatusCell: typeof AtTextStatusCellComponent;
+        AtHealthDotCell: typeof AtHealthDotCell;
+        AtRelativeDateTimeCell: typeof AtRelativeDateTimeCell;
         AtTextBadgeCell: typeof AtTextBadgeCell;
         AtTextIconCell: typeof AtTextIconCell;
         AtTitleSubtitleCell: typeof AtTitleSubtitleCell;

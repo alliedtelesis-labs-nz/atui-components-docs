@@ -9,6 +9,8 @@ export declare enum AvailableCells {
     CHECKBOX_CELL = "AtCheckboxCell",
     TEXT_CELL = "AtTextCell",
     TEXT_STATUS_CELL = "AtTextStatusCell",
+    HEALTH_DOT_CELL = "AtHealthDotCell",
+    RELATIVE_DATETIME_CELL = "AtRelativeDateTimeCell",
     TEXT_WITH_BADGE_CELL = "AtTextBadgeCell",
     TEXT_WITH_ICON_CELL = "AtTextIconCell",
     TITLE_SUBTITLE_CELL = "AtTitleSubtitleCell",

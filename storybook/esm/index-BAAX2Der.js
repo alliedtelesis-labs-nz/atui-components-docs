@@ -136,6 +136,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-chart-bar-line.entry.js').then(processMod, consoleError);
+                case 'at-chart-breakdown':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-chart-breakdown.entry.js').then(processMod, consoleError);
                 case 'at-chart-donut':
                     return import(
                       /* webpackMode: "lazy" */
@@ -368,6 +372,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-edit-text-cell.entry.js').then(processMod, consoleError);
+                case 'at-health-dot-cell':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-health-dot-cell.entry.js').then(processMod, consoleError);
                 case 'at-menu-cell':
                     return import(
                       /* webpackMode: "lazy" */
@@ -376,6 +384,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-multi-btn-cell.entry.js').then(processMod, consoleError);
+                case 'at-relative-datetime-cell':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-relative-datetime-cell.entry.js').then(processMod, consoleError);
                 case 'at-text-badge-cell':
                     return import(
                       /* webpackMode: "lazy" */

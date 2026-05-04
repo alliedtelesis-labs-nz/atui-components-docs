@@ -156,6 +156,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-chart-bar-line.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-chart-breakdown.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-chart-breakdown.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-chart-donut.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -388,6 +392,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-edit-text-cell.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-health-dot-cell.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-health-dot-cell.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-menu-cell.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -396,6 +404,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-multi-btn-cell.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-relative-datetime-cell.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-relative-datetime-cell.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-text-badge-cell.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -3713,6 +3713,10 @@ strong {
   vertical-align: -0.125em;
 }
 
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .text-body {
   font-size: var(--token-font-size-body);
 }

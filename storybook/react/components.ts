@@ -21,6 +21,7 @@ import { AtButtonSwitch as AtButtonSwitchElement, defineCustomElement as defineA
 import { AtButton as AtButtonElement, defineCustomElement as defineAtButton } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-button.js";
 import { AtCard as AtCardElement, defineCustomElement as defineAtCard } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-card.js";
 import { AtChartBarLine as AtChartBarLineElement, defineCustomElement as defineAtChartBarLine } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-bar-line.js";
+import { AtChartBreakdown as AtChartBreakdownElement, defineCustomElement as defineAtChartBreakdown } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-breakdown.js";
 import { AtChartDonut as AtChartDonutElement, defineCustomElement as defineAtChartDonut } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-donut.js";
 import { AtCheckboxCell as AtCheckboxCellElement, defineCustomElement as defineAtCheckboxCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-cell.js";
 import { AtCheckboxGroup as AtCheckboxGroupElement, defineCustomElement as defineAtCheckboxGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-group.js";
@@ -36,6 +37,7 @@ import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } fr
 import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineAtEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-edit-text-cell.js";
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
 import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-header.js";
+import { AtHealthDotCell as AtHealthDotCellElement, defineCustomElement as defineAtHealthDotCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-health-dot-cell.js";
 import { AtIcon as AtIconElement, defineCustomElement as defineAtIcon } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-icon.js";
 import { AtInputDate as AtInputDateElement, defineCustomElement as defineAtInputDate } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-date.js";
 import { AtInputNumeric as AtInputNumericElement, defineCustomElement as defineAtInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-numeric.js";
@@ -60,6 +62,7 @@ import { AtPromptMessage as AtPromptMessageElement, defineCustomElement as defin
 import { AtPromptThread as AtPromptThreadElement, defineCustomElement as defineAtPromptThread } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-thread.js";
 import { AtRadioGroup as AtRadioGroupElement, defineCustomElement as defineAtRadioGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio-group.js";
 import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio.js";
+import { AtRelativeDatetimeCell as AtRelativeDatetimeCellElement, defineCustomElement as defineAtRelativeDatetimeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-datetime-cell.js";
 import { AtSearchTable as AtSearchTableElement, defineCustomElement as defineAtSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search-table.js";
 import { AtSearch as AtSearchElement, defineCustomElement as defineAtSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search.js";
 import { AtSelectGroup as AtSelectGroupElement, defineCustomElement as defineAtSelectGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-group.js";
@@ -252,6 +255,17 @@ export const AtChartBarLine: StencilReactComponent<AtChartBarLineElement, AtChar
     defineCustomElement: defineAtChartBarLine
 });
 
+type AtChartBreakdownEvents = NonNullable<unknown>;
+
+export const AtChartBreakdown: StencilReactComponent<AtChartBreakdownElement, AtChartBreakdownEvents> = /*@__PURE__*/ createComponent<AtChartBreakdownElement, AtChartBreakdownEvents>({
+    tagName: 'at-chart-breakdown',
+    elementClass: AtChartBreakdownElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtChartBreakdownEvents,
+    defineCustomElement: defineAtChartBreakdown
+});
+
 type AtChartDonutEvents = NonNullable<unknown>;
 
 export const AtChartDonut: StencilReactComponent<AtChartDonutElement, AtChartDonutEvents> = /*@__PURE__*/ createComponent<AtChartDonutElement, AtChartDonutEvents>({
@@ -429,6 +443,17 @@ export const AtHeader: StencilReactComponent<AtHeaderElement, AtHeaderEvents> = 
     react: React,
     events: {} as AtHeaderEvents,
     defineCustomElement: defineAtHeader
+});
+
+type AtHealthDotCellEvents = NonNullable<unknown>;
+
+export const AtHealthDotCell: StencilReactComponent<AtHealthDotCellElement, AtHealthDotCellEvents> = /*@__PURE__*/ createComponent<AtHealthDotCellElement, AtHealthDotCellEvents>({
+    tagName: 'at-health-dot-cell',
+    elementClass: AtHealthDotCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtHealthDotCellEvents,
+    defineCustomElement: defineAtHealthDotCell
 });
 
 type AtIconEvents = NonNullable<unknown>;
@@ -768,6 +793,17 @@ export const AtRadioGroup: StencilReactComponent<AtRadioGroupElement, AtRadioGro
     react: React,
     events: { onAtuiChange: 'atuiChange' } as AtRadioGroupEvents,
     defineCustomElement: defineAtRadioGroup
+});
+
+type AtRelativeDatetimeCellEvents = NonNullable<unknown>;
+
+export const AtRelativeDatetimeCell: StencilReactComponent<AtRelativeDatetimeCellElement, AtRelativeDatetimeCellEvents> = /*@__PURE__*/ createComponent<AtRelativeDatetimeCellElement, AtRelativeDatetimeCellEvents>({
+    tagName: 'at-relative-datetime-cell',
+    elementClass: AtRelativeDatetimeCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtRelativeDatetimeCellEvents,
+    defineCustomElement: defineAtRelativeDatetimeCell
 });
 
 type AtSearchEvents = { onAtChange: EventName<CustomEvent<string>> };

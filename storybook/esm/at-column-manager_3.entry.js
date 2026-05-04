@@ -2,6 +2,8 @@ import { r as registerInstance, c as createEvent, g as getElement, h, H as Host 
 import { f as fetchTranslations } from './translation-B5XBUsvV.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
 import { at_text_badge_cell as AtTextBadgeCell } from './at-text-badge-cell.entry.js';
+import { at_health_dot_cell as AtHealthDotCell } from './at-health-dot-cell.entry.js';
+import { at_relative_datetime_cell as AtRelativeDateTimeCell } from './at-relative-datetime-cell.entry.js';
 import { at_text_cell as AtTextCellComponent } from './at-text-cell.entry.js';
 import { at_text_status_cell as AtTextStatusCellComponent } from './at-text-status-cell.entry.js';
 import { at_checkbox_header as AtCheckboxHeaderComponent } from './at-checkbox-header.entry.js';
@@ -28,6 +30,8 @@ var AvailableCells;
     AvailableCells["CHECKBOX_CELL"] = "AtCheckboxCell";
     AvailableCells["TEXT_CELL"] = "AtTextCell";
     AvailableCells["TEXT_STATUS_CELL"] = "AtTextStatusCell";
+    AvailableCells["HEALTH_DOT_CELL"] = "AtHealthDotCell";
+    AvailableCells["RELATIVE_DATETIME_CELL"] = "AtRelativeDateTimeCell";
     AvailableCells["TEXT_WITH_BADGE_CELL"] = "AtTextBadgeCell";
     AvailableCells["TEXT_WITH_ICON_CELL"] = "AtTextIconCell";
     AvailableCells["TITLE_SUBTITLE_CELL"] = "AtTitleSubtitleCell";
@@ -101,7 +105,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: 'be1a9d66cc9a6277f833c41e9bc9987987be3cda', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '325f51a32bd7e6bde90c9de0d23726d116abb296', slot: "menu-trigger" }, h("at-tooltip", { key: 'cc15d8a5e42204cfa3fa877a8e58e255febf8755', position: "top" }, h("at-button", { key: '6e8913d945e129f2310c10d7f51e8cb24bb2e4e5', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '6c92bdd7362337848bff76564969d2a082934756', slot: "icon", name: "column" })), h("span", { key: 'e611fd0875ca77e1379b6463f357f7b1fab0d711' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '6a3204f8743cff9213ecc4db6ca489c0824ea032', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: '118e3eb4c6289c4309cf956c73d950d43ca8c39d', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '7d1f1058e21e3b171164be46c6e96ecbcb794ef2', slot: "menu-trigger" }, h("at-tooltip", { key: '5c3b9186643bd9c6401810ea4901a1e38f750548', position: "top" }, h("at-button", { key: 'aff499ebd4a125bd58c0a9fe1e6ecca555f0199d', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '41735f7e92da0e2ed85ee9ebca38d9434943fe62', slot: "icon", name: "column" })), h("span", { key: '50c738039fea20368a0fe51ec5ddd28a4dd3c155' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'b0d4e3cc908b479ec45e747a3f94eeb945843545', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -48885,6 +48889,8 @@ class AtTableComponentsConfigs {
             // Prevent tree-shaking by referencing all components
             const cellComponents = [
                 AtCheckboxCellComponent,
+                AtHealthDotCell,
+                AtRelativeDateTimeCell,
                 AtTextCellComponent,
                 AtTextStatusCellComponent,
                 AtTextBadgeCell,
@@ -48921,6 +48927,8 @@ class AtTableComponentsConfigs {
         return {
             [AvailableCells.TEXT_CELL]: AtTextCellComponent,
             [AvailableCells.TEXT_STATUS_CELL]: AtTextStatusCellComponent,
+            [AvailableCells.HEALTH_DOT_CELL]: AtHealthDotCell,
+            [AvailableCells.RELATIVE_DATETIME_CELL]: AtRelativeDateTimeCell,
             [AvailableCells.TEXT_WITH_BADGE_CELL]: AtTextBadgeCell,
             [AvailableCells.TEXT_WITH_ICON_CELL]: AtTextIconCell,
             [AvailableCells.TITLE_SUBTITLE_CELL]: AtTitleSubtitleCell,
@@ -49103,7 +49111,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return h(Host, { key: '27ee8c584eba32811e64780a55dad22be211c03d', class: "ag-theme-atui" });
+        return h(Host, { key: '9890cf25b459bcb290385de2110a2bef2e49de34', class: "ag-theme-atui" });
     }
     static get watchers() { return {
         "table_data": [{
@@ -49170,7 +49178,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: 'd1836b9a455eb8b4f53c81e973705ef2f1e8dad4', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '477922315b981818e11d025b7c203bec6d030193', class: "flex justify-between" }, h("div", { key: '22dd74dfaf384120e9e59421bd9de3e933eab358', class: "flex" }, h("slot", { key: '5f99b057d686ebc343cf5178c0512eb8055fe2fb', name: "search" })), h("div", { key: '54a2db9c41f656f874bb4cfe5f9837b0d5e8e73e', class: "flex" }, h("slot", { key: 'd371d0cc1ad108c26adbabe0faf53c8195d336d8', name: "export-menu" }), h("slot", { key: '72ea6aa4a6e6c075e78ad147b8f2603d403be6df', name: "column-manager" }), h("slot", { key: '4249d2fe9b2d88ed398fdbf0c888e671b22cb6a8', name: "actions" }))), h("slot", { key: 'e8f2308bdf5e17ddc92dd4902c7bad50246dc649', name: "filters" })));
+        return (h(Host, { key: 'c46c6d13a869758deb358647e00b2d2d786e54b5', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '014e8b1720da4598fc6154f19dd15b8a8862497d', class: "flex justify-between" }, h("div", { key: 'a311ad9bd927ef4c9de9d6938cad772e0fc4b7a1', class: "flex" }, h("slot", { key: 'b86a1cd06a107219b65aa89da7a8d299de72b780', name: "search" })), h("div", { key: '731626ef24dfce5a51de22b20936cca0f3df91b7', class: "flex" }, h("slot", { key: 'aa7de418f5f28bf1e3efafc559078ed82d33ea1c', name: "export-menu" }), h("slot", { key: 'd6c9fc21f06e560722e0010957218572794daf86', name: "column-manager" }), h("slot", { key: 'eea591f62b4e17f59faf5f7eb9b3fbd695ef0cbe', name: "actions" }))), h("slot", { key: '396ba44204284b540ea91d4dfa1b0d8a6a227061', name: "filters" })));
     }
 };
 

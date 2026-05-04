@@ -1,6 +1,8 @@
 import { AvailableCells, AvailableHeaders } from "../../types/table-cells";
 import { AtCheckboxCellComponent } from "./cell-components/at-checkbox-cell/at-checkbox-cell";
 import { AtTextBadgeCell } from "./cell-components/at-text-badge-cell/at-text-badge-cell";
+import { AtHealthDotCell } from "./cell-components/at-health-dot-cell/at-health-dot-cell";
+import { AtRelativeDateTimeCell } from "./cell-components/at-relative-datetime-cell/at-relative-datetime-cell";
 import { AtTextCellComponent } from "./cell-components/at-text-cell/at-text-cell";
 import { AtTextStatusCellComponent } from "./cell-components/at-text-status-cell/at-text-status-cell";
 import { AtCheckboxHeaderComponent } from "./header-components/at-checkbox-header/at-checkbox-header";
@@ -29,6 +31,8 @@ export class AtTableComponentsConfigs {
             // Prevent tree-shaking by referencing all components
             const cellComponents = [
                 AtCheckboxCellComponent,
+                AtHealthDotCell,
+                AtRelativeDateTimeCell,
                 AtTextCellComponent,
                 AtTextStatusCellComponent,
                 AtTextBadgeCell,
@@ -65,6 +69,8 @@ export class AtTableComponentsConfigs {
         return {
             [AvailableCells.TEXT_CELL]: AtTextCellComponent,
             [AvailableCells.TEXT_STATUS_CELL]: AtTextStatusCellComponent,
+            [AvailableCells.HEALTH_DOT_CELL]: AtHealthDotCell,
+            [AvailableCells.RELATIVE_DATETIME_CELL]: AtRelativeDateTimeCell,
             [AvailableCells.TEXT_WITH_BADGE_CELL]: AtTextBadgeCell,
             [AvailableCells.TEXT_WITH_ICON_CELL]: AtTextIconCell,
             [AvailableCells.TITLE_SUBTITLE_CELL]: AtTitleSubtitleCell,

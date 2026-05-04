@@ -2,6 +2,8 @@ export * from './at-table/at-table';
 export * from './at-search-table/at-search-table';
 export * from './cell-components/at-text-cell/at-text-cell';
 export * from './cell-components/at-text-status-cell/at-text-status-cell';
+export * from './cell-components/at-health-dot-cell/at-health-dot-cell';
+export * from './cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
 export * from './cell-components/at-text-badge-cell/at-text-badge-cell';
 export * from './cell-components/at-text-icon-cell/at-text-icon-cell';
 export * from './cell-components/at-text-image-cell/at-text-image-cell';

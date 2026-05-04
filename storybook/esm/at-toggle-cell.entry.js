@@ -46,7 +46,7 @@ const AtToggleCell = class {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (h(Host, { key: '91a4c6efb6ec87a3c782bfad9c98b9f5d729e9cb', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: '9308446c306ba47978247d6bc57e354e027b0812', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
+        return (h(Host, { key: 'ff70bdc6360d3aced1443bb73667e147a25fd65e', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: 'd5252fa8563ee618892871fbbf8f9795764c7d36', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
     }
 };
 

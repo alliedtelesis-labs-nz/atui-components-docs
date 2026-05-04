@@ -16,7 +16,8 @@ import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 import { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartColorPalette } from "./types/chart-color";
-import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
+import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
+import { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -61,7 +62,8 @@ export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 export { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartColorPalette } from "./types/chart-color";
-export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-donut/at-chart-donut";
+export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
+export { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -540,6 +542,74 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     */
+    interface AtChartBreakdown {
+        /**
+          * Optional heading text to display in the center of the breakdown chart
+         */
+        "center_text"?: string;
+        /**
+          * Optional value text to display in the center of the breakdown chart
+         */
+        "center_value"?: string;
+        /**
+          * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette": AtChartColorPalette;
+        /**
+          * Controls the thickness of the ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
+          * @default 70
+         */
+        "cutout"?: number;
+        /**
+          * Data to be shown in the chart. ChartDataset properties can be found [here](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
+         */
+        "data": {
+        labels: string[];
+        datasets: ChartDataset[];
+    };
+        /**
+          * Getter method for the chart's configuration object
+          * @returns Configuration of the chart
+         */
+        "getConfig": () => Promise<object>;
+        /**
+          * Height of the chart
+          * @default 'auto'
+         */
+        "height"?: AtChartHeight1;
+        /**
+          * Additional options for formatting the legend
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+         */
+        "legend_format"?: object;
+        /**
+          * Position of the legend
+          * @default 'right'
+         */
+        "legend_position": AtLegendPosition;
+        /**
+          * Additional options to be added to the chart configuration
+         */
+        "options"?: object;
+        /**
+          * Additional plugin options
+         */
+        "plugins"?: Plugin[];
+        /**
+          * Manually trigger a chart resize to fit container dimensions
+         */
+        "resize": () => Promise<void>;
+        /**
+          * Additional options for the tooltip
+          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
+         */
+        "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
     interface AtChartDonut {
@@ -577,7 +647,7 @@ export namespace Components {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight1;
+        "height"?: AtChartHeight2;
         /**
           * Additional options for formatting the legend
           * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
@@ -587,7 +657,7 @@ export namespace Components {
           * Position of the legend
           * @default 'top'
          */
-        "legend_position": AtLegendPosition;
+        "legend_position": AtLegendPosition1;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -896,6 +966,12 @@ export namespace Components {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a compact health status dot.
+     */
+    interface AtHealthDotCell {
     }
     interface AtIcon {
         /**
@@ -1932,6 +2008,12 @@ export namespace Components {
           * A string containing the Id of the currently selected radio
          */
         "value": string;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
+     */
+    interface AtRelativeDatetimeCell {
     }
     /**
      * @category Form Controls
@@ -3409,6 +3491,16 @@ declare global {
     };
     /**
      * @category Data Visualization
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     */
+    interface HTMLAtChartBreakdownElement extends Components.AtChartBreakdown, HTMLStencilElement {
+    }
+    var HTMLAtChartBreakdownElement: {
+        prototype: HTMLAtChartBreakdownElement;
+        new (): HTMLAtChartBreakdownElement;
+    };
+    /**
+     * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
     interface HTMLAtChartDonutElement extends Components.AtChartDonut, HTMLStencilElement {
@@ -3632,6 +3724,16 @@ declare global {
     var HTMLAtHeaderElement: {
         prototype: HTMLAtHeaderElement;
         new (): HTMLAtHeaderElement;
+    };
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a compact health status dot.
+     */
+    interface HTMLAtHealthDotCellElement extends Components.AtHealthDotCell, HTMLStencilElement {
+    }
+    var HTMLAtHealthDotCellElement: {
+        prototype: HTMLAtHealthDotCellElement;
+        new (): HTMLAtHealthDotCellElement;
     };
     interface HTMLAtIconElement extends Components.AtIcon, HTMLStencilElement {
     }
@@ -4070,6 +4172,16 @@ declare global {
     var HTMLAtRadioGroupElement: {
         prototype: HTMLAtRadioGroupElement;
         new (): HTMLAtRadioGroupElement;
+    };
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
+     */
+    interface HTMLAtRelativeDatetimeCellElement extends Components.AtRelativeDatetimeCell, HTMLStencilElement {
+    }
+    var HTMLAtRelativeDatetimeCellElement: {
+        prototype: HTMLAtRelativeDatetimeCellElement;
+        new (): HTMLAtRelativeDatetimeCellElement;
     };
     interface HTMLAtSearchElementEventMap {
         "atChange": string;
@@ -4717,6 +4829,7 @@ declare global {
         "at-button-switch": HTMLAtButtonSwitchElement;
         "at-card": HTMLAtCardElement;
         "at-chart-bar-line": HTMLAtChartBarLineElement;
+        "at-chart-breakdown": HTMLAtChartBreakdownElement;
         "at-chart-donut": HTMLAtChartDonutElement;
         "at-checkbox": HTMLAtCheckboxElement;
         "at-checkbox-cell": HTMLAtCheckboxCellElement;
@@ -4732,6 +4845,7 @@ declare global {
         "at-edit-text-cell": HTMLAtEditTextCellElement;
         "at-form-label": HTMLAtFormLabelElement;
         "at-header": HTMLAtHeaderElement;
+        "at-health-dot-cell": HTMLAtHealthDotCellElement;
         "at-icon": HTMLAtIconElement;
         "at-input": HTMLAtInputElement;
         "at-input-date": HTMLAtInputDateElement;
@@ -4757,6 +4871,7 @@ declare global {
         "at-prompt-thread": HTMLAtPromptThreadElement;
         "at-radio": HTMLAtRadioElement;
         "at-radio-group": HTMLAtRadioGroupElement;
+        "at-relative-datetime-cell": HTMLAtRelativeDatetimeCellElement;
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
@@ -5235,6 +5350,65 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Visualization
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     */
+    interface AtChartBreakdown {
+        /**
+          * Optional heading text to display in the center of the breakdown chart
+         */
+        "center_text"?: string;
+        /**
+          * Optional value text to display in the center of the breakdown chart
+         */
+        "center_value"?: string;
+        /**
+          * Colour palette to use for the chart. Preset options are provided ChartColourPalette: 'categorical' : For charts with data that have distinct labels and no natural order 'sequential' : For charts with data that is numeric or is naturally ordered. 'alert' : For charts that relate to health state. Note that data requires a specific order. 'custom' : Use colors defined in data. If none are provided, the ChartJS default will be used.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette"?: AtChartColorPalette;
+        /**
+          * Controls the thickness of the ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
+          * @default 70
+         */
+        "cutout"?: number;
+        /**
+          * Data to be shown in the chart. ChartDataset properties can be found [here](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
+         */
+        "data"?: {
+        labels: string[];
+        datasets: ChartDataset[];
+    };
+        /**
+          * Height of the chart
+          * @default 'auto'
+         */
+        "height"?: AtChartHeight1;
+        /**
+          * Additional options for formatting the legend
+          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+         */
+        "legend_format"?: object;
+        /**
+          * Position of the legend
+          * @default 'right'
+         */
+        "legend_position"?: AtLegendPosition;
+        /**
+          * Additional options to be added to the chart configuration
+         */
+        "options"?: object;
+        /**
+          * Additional plugin options
+         */
+        "plugins"?: Plugin[];
+        /**
+          * Additional options for the tooltip
+          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
+         */
+        "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
      * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
     interface AtChartDonut {
@@ -5267,7 +5441,7 @@ declare namespace LocalJSX {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight1;
+        "height"?: AtChartHeight2;
         /**
           * Additional options for formatting the legend
           * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
@@ -5277,7 +5451,7 @@ declare namespace LocalJSX {
           * Position of the legend
           * @default 'top'
          */
-        "legend_position"?: AtLegendPosition;
+        "legend_position"?: AtLegendPosition1;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -5602,6 +5776,12 @@ declare namespace LocalJSX {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a compact health status dot.
+     */
+    interface AtHealthDotCell {
     }
     interface AtIcon {
         /**
@@ -6736,6 +6916,12 @@ declare namespace LocalJSX {
           * A string containing the Id of the currently selected radio
          */
         "value"?: string;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
+     */
+    interface AtRelativeDatetimeCell {
     }
     /**
      * @category Form Controls
@@ -7904,6 +8090,14 @@ declare namespace LocalJSX {
         "height": AtChartHeight;
         "color_palette": AtChartColorPalette;
     }
+    interface AtChartBreakdownAttributes {
+        "height": AtChartHeight;
+        "legend_position": AtLegendPosition;
+        "color_palette": AtChartColorPalette;
+        "center_value": string;
+        "center_text": string;
+        "cutout": number;
+    }
     interface AtChartDonutAttributes {
         "height": AtChartHeight;
         "legend_position": AtLegendPosition;
@@ -8392,6 +8586,7 @@ declare namespace LocalJSX {
         "at-button-switch": Omit<AtButtonSwitch, keyof AtButtonSwitchAttributes> & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes]?: AtButtonSwitch[K] } & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes as `attr:${K}`]?: AtButtonSwitchAttributes[K] } & { [K in keyof AtButtonSwitch & keyof AtButtonSwitchAttributes as `prop:${K}`]?: AtButtonSwitch[K] };
         "at-card": Omit<AtCard, keyof AtCardAttributes> & { [K in keyof AtCard & keyof AtCardAttributes]?: AtCard[K] } & { [K in keyof AtCard & keyof AtCardAttributes as `attr:${K}`]?: AtCardAttributes[K] } & { [K in keyof AtCard & keyof AtCardAttributes as `prop:${K}`]?: AtCard[K] };
         "at-chart-bar-line": Omit<AtChartBarLine, keyof AtChartBarLineAttributes> & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes]?: AtChartBarLine[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `attr:${K}`]?: AtChartBarLineAttributes[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `prop:${K}`]?: AtChartBarLine[K] };
+        "at-chart-breakdown": Omit<AtChartBreakdown, keyof AtChartBreakdownAttributes> & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes]?: AtChartBreakdown[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `attr:${K}`]?: AtChartBreakdownAttributes[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `prop:${K}`]?: AtChartBreakdown[K] };
         "at-chart-donut": Omit<AtChartDonut, keyof AtChartDonutAttributes> & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes]?: AtChartDonut[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `attr:${K}`]?: AtChartDonutAttributes[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `prop:${K}`]?: AtChartDonut[K] };
         "at-checkbox": Omit<AtCheckbox, keyof AtCheckboxAttributes> & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes]?: AtCheckbox[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `attr:${K}`]?: AtCheckboxAttributes[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `prop:${K}`]?: AtCheckbox[K] };
         "at-checkbox-cell": AtCheckboxCell;
@@ -8407,6 +8602,7 @@ declare namespace LocalJSX {
         "at-edit-text-cell": AtEditTextCell;
         "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };
         "at-header": Omit<AtHeader, keyof AtHeaderAttributes> & { [K in keyof AtHeader & keyof AtHeaderAttributes]?: AtHeader[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `attr:${K}`]?: AtHeaderAttributes[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `prop:${K}`]?: AtHeader[K] };
+        "at-health-dot-cell": AtHealthDotCell;
         "at-icon": Omit<AtIcon, keyof AtIconAttributes> & { [K in keyof AtIcon & keyof AtIconAttributes]?: AtIcon[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `attr:${K}`]?: AtIconAttributes[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `prop:${K}`]?: AtIcon[K] };
         "at-input": Omit<AtInput, keyof AtInputAttributes> & { [K in keyof AtInput & keyof AtInputAttributes]?: AtInput[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `attr:${K}`]?: AtInputAttributes[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `prop:${K}`]?: AtInput[K] };
         "at-input-date": Omit<AtInputDate, keyof AtInputDateAttributes> & { [K in keyof AtInputDate & keyof AtInputDateAttributes]?: AtInputDate[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `attr:${K}`]?: AtInputDateAttributes[K] } & { [K in keyof AtInputDate & keyof AtInputDateAttributes as `prop:${K}`]?: AtInputDate[K] };
@@ -8432,6 +8628,7 @@ declare namespace LocalJSX {
         "at-prompt-thread": Omit<AtPromptThread, keyof AtPromptThreadAttributes> & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes]?: AtPromptThread[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `attr:${K}`]?: AtPromptThreadAttributes[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `prop:${K}`]?: AtPromptThread[K] };
         "at-radio": Omit<AtRadio, keyof AtRadioAttributes> & { [K in keyof AtRadio & keyof AtRadioAttributes]?: AtRadio[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `attr:${K}`]?: AtRadioAttributes[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `prop:${K}`]?: AtRadio[K] };
         "at-radio-group": Omit<AtRadioGroup, keyof AtRadioGroupAttributes> & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes]?: AtRadioGroup[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `attr:${K}`]?: AtRadioGroupAttributes[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `prop:${K}`]?: AtRadioGroup[K] };
+        "at-relative-datetime-cell": AtRelativeDatetimeCell;
         "at-search": Omit<AtSearch, keyof AtSearchAttributes> & { [K in keyof AtSearch & keyof AtSearchAttributes]?: AtSearch[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `attr:${K}`]?: AtSearchAttributes[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `prop:${K}`]?: AtSearch[K] };
         "at-search-table": Omit<AtSearchTable, keyof AtSearchTableAttributes> & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes]?: AtSearchTable[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `attr:${K}`]?: AtSearchTableAttributes[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `prop:${K}`]?: AtSearchTable[K] };
         "at-select": Omit<AtSelect, keyof AtSelectAttributes> & { [K in keyof AtSelect & keyof AtSelectAttributes]?: AtSelect[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `attr:${K}`]?: AtSelectAttributes[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `prop:${K}`]?: AtSelect[K] };
@@ -8567,6 +8764,11 @@ declare module "@stencil/core" {
             "at-chart-bar-line": LocalJSX.IntrinsicElements["at-chart-bar-line"] & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
             /**
              * @category Data Visualization
+             * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+             */
+            "at-chart-breakdown": LocalJSX.IntrinsicElements["at-chart-breakdown"] & JSXBase.HTMLAttributes<HTMLAtChartBreakdownElement>;
+            /**
+             * @category Data Visualization
              * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
              */
             "at-chart-donut": LocalJSX.IntrinsicElements["at-chart-donut"] & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
@@ -8636,6 +8838,11 @@ declare module "@stencil/core" {
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
             "at-header": LocalJSX.IntrinsicElements["at-header"] & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
+            /**
+             * @category Data Tables
+             * @description A cell component for displaying a compact health status dot.
+             */
+            "at-health-dot-cell": LocalJSX.IntrinsicElements["at-health-dot-cell"] & JSXBase.HTMLAttributes<HTMLAtHealthDotCellElement>;
             "at-icon": LocalJSX.IntrinsicElements["at-icon"] & JSXBase.HTMLAttributes<HTMLAtIconElement>;
             /**
              * @category Form Controls
@@ -8745,6 +8952,11 @@ declare module "@stencil/core" {
              * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
              */
             "at-radio-group": LocalJSX.IntrinsicElements["at-radio-group"] & JSXBase.HTMLAttributes<HTMLAtRadioGroupElement>;
+            /**
+             * @category Data Tables
+             * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
+             */
+            "at-relative-datetime-cell": LocalJSX.IntrinsicElements["at-relative-datetime-cell"] & JSXBase.HTMLAttributes<HTMLAtRelativeDatetimeCellElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.

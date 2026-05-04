@@ -7,6 +7,8 @@ export var AvailableCells;
     AvailableCells["CHECKBOX_CELL"] = "AtCheckboxCell";
     AvailableCells["TEXT_CELL"] = "AtTextCell";
     AvailableCells["TEXT_STATUS_CELL"] = "AtTextStatusCell";
+    AvailableCells["HEALTH_DOT_CELL"] = "AtHealthDotCell";
+    AvailableCells["RELATIVE_DATETIME_CELL"] = "AtRelativeDateTimeCell";
     AvailableCells["TEXT_WITH_BADGE_CELL"] = "AtTextBadgeCell";
     AvailableCells["TEXT_WITH_ICON_CELL"] = "AtTextIconCell";
     AvailableCells["TITLE_SUBTITLE_CELL"] = "AtTitleSubtitleCell";

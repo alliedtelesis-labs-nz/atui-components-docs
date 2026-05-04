@@ -29,7 +29,7 @@ export class AtLayout {
         }
     }
     render() {
-        return h(Host, { key: '282726d2e55c07f8f77ff8d02d09f15a73d170d4' }, this.layoutElement);
+        return h(Host, { key: '972017eba4f45b478f804b1e76771cd99c670e12' }, this.layoutElement);
     }
     static get is() { return "at-layout"; }
     static get properties() {
