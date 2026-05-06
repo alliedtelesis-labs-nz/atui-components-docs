@@ -132,10 +132,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-card.entry.js').then(processMod, consoleError);
-                case 'at-chart-bar-line':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-chart-bar-line.entry.js').then(processMod, consoleError);
                 case 'at-chart-breakdown':
                     return import(
                       /* webpackMode: "lazy" */
@@ -352,6 +348,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-dashboard.entry.js').then(processMod, consoleError);
+                case 'at-chart-bar-line':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-chart-bar-line.entry.js').then(processMod, consoleError);
                 case 'at-checkbox-cell':
                     return import(
                       /* webpackMode: "lazy" */

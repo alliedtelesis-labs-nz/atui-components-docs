@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index--r5sCsiV.js');
-var chartColor$1 = require('./chart-color-DBiWMtXr.js');
+var chartColor$1 = require('./chart-color-Datz_OhD.js');
 var chartColor = require('./chart-color-CMk9r_na.js');
 
 const TOKEN_TEXT_DARK = '#0f172a';

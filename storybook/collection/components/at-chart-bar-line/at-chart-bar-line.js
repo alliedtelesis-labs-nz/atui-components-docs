@@ -1,3 +1,4 @@
+import "chartjs-adapter-date-fns";
 import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
 import { AtTimeDateUtil } from "../../utils/at-time-date.util";
@@ -268,7 +269,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '4eb30253d39c85dd89cb63b5522e0513e6f7f501', style: { height: '100%', width: '100%' } }, h("canvas", { key: '34c05d2a2ef5f2ff4d782c1d3ad427a2657901d1', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'ab8817173d9a81e8d005d65d18449e86953c4a33', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'a168dcea953eeb65614f68a4eaf35b2ca3e0d239', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
