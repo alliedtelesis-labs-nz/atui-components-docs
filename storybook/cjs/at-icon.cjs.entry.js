@@ -2,8 +2,6 @@
 
 var index = require('./index--r5sCsiV.js');
 
-const atIconCss = () => ``;
-
 const AtIcon = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -45,6 +43,5 @@ const AtIcon = class {
         return (index.h("svg", { width: size, height: size, viewBox: icon.attrs.viewBox }, icon.content.map(this.renderSvgNode)));
     }
 };
-AtIcon.style = atIconCss();
 
 exports.at_icon = AtIcon;

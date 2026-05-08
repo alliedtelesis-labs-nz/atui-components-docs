@@ -50,6 +50,6 @@ document.querySelector('at-table')
 </script>
 `;
 export default {
-    title: 'Components/Table Components/Table Dropdown Filters',
+    title: 'Components/Table Components/Table Filters',
 };
 export const Default = Template.bind({});

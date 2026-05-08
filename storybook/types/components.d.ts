@@ -973,6 +973,10 @@ export namespace Components {
      */
     interface AtHealthDotCell {
     }
+    /**
+     * @category Icon
+     * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
+     */
     interface AtIcon {
         /**
           * The name of carbon icon to use
@@ -3747,6 +3751,10 @@ declare global {
         prototype: HTMLAtHealthDotCellElement;
         new (): HTMLAtHealthDotCellElement;
     };
+    /**
+     * @category Icon
+     * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
+     */
     interface HTMLAtIconElement extends Components.AtIcon, HTMLStencilElement {
     }
     var HTMLAtIconElement: {
@@ -5795,6 +5803,10 @@ declare namespace LocalJSX {
      */
     interface AtHealthDotCell {
     }
+    /**
+     * @category Icon
+     * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
+     */
     interface AtIcon {
         /**
           * The name of carbon icon to use
@@ -8870,6 +8882,10 @@ declare module "@stencil/core" {
              * @description A cell component for displaying a compact health status dot.
              */
             "at-health-dot-cell": LocalJSX.IntrinsicElements["at-health-dot-cell"] & JSXBase.HTMLAttributes<HTMLAtHealthDotCellElement>;
+            /**
+             * @category Icon
+             * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
+             */
             "at-icon": LocalJSX.IntrinsicElements["at-icon"] & JSXBase.HTMLAttributes<HTMLAtIconElement>;
             /**
              * @category Form Controls

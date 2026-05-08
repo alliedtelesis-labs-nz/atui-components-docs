@@ -18,7 +18,7 @@ const Template = (args) => `
 />
 `;
 export default {
-    title: 'Components/Range Input',
+    title: 'Components/Input Range',
 };
 export const Default = Template.bind({});
 Default.args = {

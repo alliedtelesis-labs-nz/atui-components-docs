@@ -16,7 +16,7 @@ const Template = (args) => `
 </div>
 `;
 export default {
-    title: 'Components/Date Input',
+    title: 'Components/Input Date',
     argTypes: {
         value: { control: 'date' },
         min_date: { control: 'date' },

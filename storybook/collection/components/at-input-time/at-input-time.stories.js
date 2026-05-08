@@ -12,7 +12,7 @@ const Template = (args) => `
 />
 `;
 export default {
-    title: 'Components/Time Input',
+    title: 'Components/Input Time',
 };
 export const Default = Template.bind({});
 Default.args = {

@@ -1,4 +1,8 @@
 import { h } from "@stencil/core";
+/**
+ * @category Icon
+ * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
+ */
 export class AtIcon {
     /**
      * The name of carbon icon to use
@@ -37,16 +41,6 @@ export class AtIcon {
         return (h("svg", { width: size, height: size, viewBox: icon.attrs.viewBox }, icon.content.map(this.renderSvgNode)));
     }
     static get is() { return "at-icon"; }
-    static get originalStyleUrls() {
-        return {
-            "$": ["at-icon.scss"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["at-icon.css"]
-        };
-    }
     static get properties() {
         return {
             "name": {

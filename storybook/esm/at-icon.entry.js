@@ -1,7 +1,5 @@
 import { r as registerInstance, h } from './index-BAAX2Der.js';
 
-const atIconCss = () => ``;
-
 const AtIcon = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -43,6 +41,5 @@ const AtIcon = class {
         return (h("svg", { width: size, height: size, viewBox: icon.attrs.viewBox }, icon.content.map(this.renderSvgNode)));
     }
 };
-AtIcon.style = atIconCss();
 
 export { AtIcon as at_icon };
