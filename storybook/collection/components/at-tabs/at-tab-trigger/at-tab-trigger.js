@@ -7,15 +7,15 @@ const variantsConfig = {
             vertical: 'flex justify-start',
         },
         active: {
-            true: 'z-index-20 text-active-accent bg-active-accent/10 hover:bg-active-accent/15',
-            false: 'text-muted hover:bg-surface-overlay/5',
+            true: 'z-index-20 text-active-accent',
+            false: 'text-muted hover:text-foreground',
         },
     },
     compoundVariants: [
         {
             layout: 'vertical',
             active: true,
-            class: 'bg-active-background/20',
+            class: 'bg-active-accent/15',
         },
     ],
 };
@@ -58,7 +58,7 @@ export class AtTabTrigger {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '6e9c28413c0c96a935c508cbb53fdc91b6b128a6', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '24c1296cb5d7059f42f472f101077c4e8441b351' })));
+        return (h(Host, { key: 'fead79fafa82250253898cec6aa83f6705aa164e', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '8a8957ac5e430a441a2ab09a4388a7bea75323bb' })));
     }
     static get is() { return "at-tab-trigger"; }
     static get properties() {
