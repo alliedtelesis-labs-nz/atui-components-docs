@@ -56,6 +56,11 @@ export declare class AtChartDonut {
      */
     center_text?: string;
     /**
+     * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a).
+     * Override this on dark themes where the default text would be invisible.
+     */
+    center_text_color?: string;
+    /**
      * Controls the thickness of the donut ring. Value between 0 and 100.
      * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
      * Default is 70.

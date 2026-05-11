@@ -618,6 +618,11 @@ export namespace Components {
          */
         "center_text"?: string;
         /**
+          * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a). Override this on dark themes where the default text would be invisible.
+          * @default TOKEN_TEXT_FOREGROUND
+         */
+        "center_text_color"?: string;
+        /**
           * Optional value text to display in the center of the donut chart
          */
         "center_value"?: string;
@@ -5437,6 +5442,11 @@ declare namespace LocalJSX {
          */
         "center_text"?: string;
         /**
+          * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a). Override this on dark themes where the default text would be invisible.
+          * @default TOKEN_TEXT_FOREGROUND
+         */
+        "center_text_color"?: string;
+        /**
           * Optional value text to display in the center of the donut chart
          */
         "center_value"?: string;
@@ -8140,6 +8150,7 @@ declare namespace LocalJSX {
         "color_palette": AtChartColorPalette;
         "center_value": string;
         "center_text": string;
+        "center_text_color": string;
         "cutout": number;
     }
     interface AtCheckboxAttributes {

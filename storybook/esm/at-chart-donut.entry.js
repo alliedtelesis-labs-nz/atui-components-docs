@@ -2,7 +2,7 @@ import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-B8WQ6sRw.js';
 import { A as AtChartColorPalette } from './chart-color-Ckr-udZ5.js';
 
-const TOKEN_TEXT_DARK = '#0f172a';
+const TOKEN_TEXT_FOREGROUND = '#0f172a';
 const heightVariants = {
     xs: 'h-[70px]',
     sm: 'h-[160px]',
@@ -87,6 +87,11 @@ const AtChartDonut = class {
      */
     center_text;
     /**
+     * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a).
+     * Override this on dark themes where the default text would be invisible.
+     */
+    center_text_color = TOKEN_TEXT_FOREGROUND;
+    /**
      * Controls the thickness of the donut ring. Value between 0 and 100.
      * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
      * Default is 70.
@@ -132,7 +137,7 @@ const AtChartDonut = class {
                 const height = chart.chartArea.bottom - chart.chartArea.top;
                 const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
                 const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
-                ctx.fillStyle = TOKEN_TEXT_DARK;
+                ctx.fillStyle = this.center_text_color;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.font = '500 ' + valueFontSize;
@@ -239,7 +244,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '63a1d8288f029fffc1eeb297e05bef07a1077f4f', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b2cfcb761ada17c711a9b40e7beca5b07d4affd6', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '87538fb6829f005cde97f58b819821ab547ea907', style: { height: '100%', width: '100%' } }, h("canvas", { key: '82509d0fb1d84901c9bbe5498468c9e7bf498b4c', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 
