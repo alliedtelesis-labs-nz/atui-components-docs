@@ -92,6 +92,10 @@ export class AtDashboard {
             y: widget.y,
             w: widget.w,
             h: widget.h,
+            minW: widget.minW ?? DEFAULT_SIZE.w,
+            minH: widget.minH ?? DEFAULT_SIZE.h,
+            maxW: widget.maxW ?? 100,
+            maxH: widget.maxH ?? 100,
         };
         this.grid.makeWidget(elSelector, options);
     }
@@ -115,7 +119,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '371959c513ea8e842af084c9d699687a7d47d236', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '6897c5998965aba09fe4fc74247c8623e7468407', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }
