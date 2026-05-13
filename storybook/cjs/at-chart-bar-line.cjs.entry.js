@@ -21654,7 +21654,10 @@ const AtChartBarLine = class {
             this.config.options.scales.x['min'] = dates.min;
             this.config.options.scales.x['max'] = dates.max;
         }
-        new chartColor.Chart(this.canvasEl, this.config);
+        if (this.chart) {
+            this.chart.destroy();
+        }
+        this.chart = new chartColor.Chart(this.canvasEl, this.config);
         this.canvasEl.style.width = '';
         this.canvasEl.style.height = '';
     }
@@ -21734,7 +21737,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'ab8817173d9a81e8d005d65d18449e86953c4a33', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'a168dcea953eeb65614f68a4eaf35b2ca3e0d239', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'ed702c0fac383dcc1ca7c1252c7a9682c085b4ea', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'f0c89673fca1f21786c07644bbd10419b11df862', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 
