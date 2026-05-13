@@ -37,37 +37,11 @@ const AtChartDonut = class {
     /**
      * Additional options for formatting the legend
      */
-    legend_format = {
-        labels: {
-            boxWidth: 10,
-            boxHeight: 10,
-            fontSize: 11,
-        },
-        onHover: (event) => {
-            if (event.native) {
-                event.native.target.style.cursor = 'pointer';
-            }
-        },
-        onClick: (_evt, legendItem, legend) => {
-            const chart = legend.chart;
-            const idx = legendItem.index;
-            chart.toggleDataVisibility(idx);
-            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
-            if (chart.options.plugins?.tooltip) {
-                chart.options.plugins.tooltip.enabled = !!anyVisible;
-            }
-            chart.update();
-        },
-        display: true,
-    };
+    legend_format;
     /**
      * Additional options for the tooltip
      */
-    tooltip_options = {
-        mode: 'nearest',
-        intersect: true,
-        position: 'nearest',
-    };
+    tooltip_options;
     /**
      * Additional plugin options
      */
@@ -117,14 +91,6 @@ const AtChartDonut = class {
             this.chart.resize();
         }
     }
-    defaultPieTooltipOptions = {
-        mode: 'nearest',
-        intersect: true,
-        position: 'nearest',
-        animation: {
-            duration: 150,
-        },
-    };
     getDrawCenterTextPlugin() {
         return {
             id: 'DrawCenterTextPlugin',
@@ -195,13 +161,66 @@ const AtChartDonut = class {
                 interaction: { mode: 'nearest', intersect: true },
                 plugins: {
                     legend: {
+                        onHover: (event) => {
+                            if (event.native) {
+                                event.native.target.style.cursor = 'pointer';
+                            }
+                        },
+                        onClick: (_evt, legendItem, legend) => {
+                            const chart = legend.chart;
+                            const idx = legendItem.index;
+                            chart.toggleDataVisibility(idx);
+                            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
+                            if (chart.options.plugins?.tooltip) {
+                                chart.options.plugins.tooltip.enabled =
+                                    !!anyVisible;
+                            }
+                            chart.update();
+                        },
+                        display: true,
                         ...(this.legend_format || {}),
+                        labels: {
+                            boxWidth: 10,
+                            boxHeight: 10,
+                            fontSize: 11,
+                            useBorderRadius: true,
+                            borderRadius: 2,
+                            generateLabels: (chart) => {
+                                const original = chartColor$1.Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart);
+                                return original.map((label) => ({
+                                    ...label,
+                                    lineWidth: 0,
+                                }));
+                            },
+                            ...(this.legend_format?.labels || {}),
+                        },
                         position: this.legend_position,
                         fullSize: true,
                     },
                     tooltip: {
-                        ...(this.tooltip_options ||
-                            this.defaultPieTooltipOptions),
+                        mode: 'nearest',
+                        intersect: true,
+                        position: 'nearest',
+                        boxWidth: 10,
+                        boxHeight: 10,
+                        boxPadding: 4,
+                        padding: { x: 10, y: 4 },
+                        ...(this.tooltip_options || {}),
+                        callbacks: {
+                            labelColor: (ctx) => {
+                                const bg = ctx.dataset.backgroundColor;
+                                const color = Array.isArray(bg)
+                                    ? bg[ctx.dataIndex]
+                                    : bg;
+                                return {
+                                    borderColor: 'transparent',
+                                    backgroundColor: color,
+                                    borderWidth: 0,
+                                    borderRadius: 2,
+                                };
+                            },
+                            ...(this.tooltip_options?.callbacks || {}),
+                        },
                         filter: (ctx) => ctx.chart.getDataVisibility(ctx.dataIndex),
                         enabled: true,
                     },
@@ -246,7 +265,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '87538fb6829f005cde97f58b819821ab547ea907', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '82509d0fb1d84901c9bbe5498468c9e7bf498b4c', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'e56be6a5f0af7b13029cb5b8d0af7ef91bfe2e1b', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'de559aa339b8ce8df04a08e9ac1279e799b2588d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

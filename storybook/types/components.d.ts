@@ -655,7 +655,6 @@ export namespace Components {
         "height"?: AtChartHeight2;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
         /**
@@ -677,7 +676,6 @@ export namespace Components {
         "resize": () => Promise<void>;
         /**
           * Additional options for the tooltip
-          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
          */
         "tooltip_options"?: object;
     }
@@ -5474,7 +5472,6 @@ declare namespace LocalJSX {
         "height"?: AtChartHeight2;
         /**
           * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
          */
         "legend_format"?: object;
         /**
@@ -5492,7 +5489,6 @@ declare namespace LocalJSX {
         "plugins"?: Plugin[];
         /**
           * Additional options for the tooltip
-          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
          */
         "tooltip_options"?: object;
     }

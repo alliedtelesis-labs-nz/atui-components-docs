@@ -78,14 +78,6 @@ export declare class AtChartDonut {
      * Manually trigger a chart resize to fit container dimensions
      */
     resize(): Promise<void>;
-    defaultPieTooltipOptions: {
-        mode: string;
-        intersect: boolean;
-        position: string;
-        animation: {
-            duration: number;
-        };
-    };
     private getDrawCenterTextPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;
