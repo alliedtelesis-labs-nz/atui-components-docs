@@ -495,10 +495,18 @@ export namespace Components {
          */
         "getConfig": () => Promise<object>;
         /**
+          * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
+         */
+        "grid_color"?: string;
+        /**
           * Height of the chart.
           * @default 'auto'
          */
         "height"?: AtChartHeight;
+        /**
+          * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+         */
+        "label_color"?: string;
         /**
           * Options for the legend
          */
@@ -5330,10 +5338,18 @@ declare namespace LocalJSX {
         datasets: ChartDataset[];
     };
         /**
+          * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
+         */
+        "grid_color"?: string;
+        /**
           * Height of the chart.
           * @default 'auto'
          */
         "height"?: AtChartHeight;
+        /**
+          * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+         */
+        "label_color"?: string;
         /**
           * Options for the legend
          */
@@ -8130,6 +8146,8 @@ declare namespace LocalJSX {
     interface AtChartBarLineAttributes {
         "type": 'bar' | 'line';
         "height": AtChartHeight;
+        "label_color": string;
+        "grid_color": string;
         "color_palette": AtChartColorPalette;
     }
     interface AtChartBreakdownAttributes {

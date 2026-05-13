@@ -21551,6 +21551,14 @@ const AtChartBarLine = class {
      * Height of the chart.
      */
     height = 'auto';
+    /**
+     * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+     */
+    label_color;
+    /**
+     * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
+     */
+    grid_color;
     canvasEl;
     config;
     chart;
@@ -21588,54 +21596,137 @@ const AtChartBarLine = class {
                 devicePixelRatio: 2,
                 maintainAspectRatio: false,
                 scales: {
-                    y: this.y_axis_format || {
-                        beginAtZero: true,
-                        type: 'linear',
-                        min: 0,
-                    },
-                    x: this.x_axis_format || {
-                        type: 'time',
-                        time: {
-                            displayFormats: {
-                                day: 'ddd',
-                                minute: 'MMM D H:mm',
-                                hour: 'MMM D H:mm',
+                    y: this.y_axis_format !== undefined
+                        ? {
+                            ...(this.y_axis_format || {}),
+                            ticks: {
+                                ...this.y_axis_format?.ticks,
+                                ...(this.label_color
+                                    ? { color: this.label_color }
+                                    : {}),
                             },
-                        },
-                        ticks: {
-                            font: {
-                                size: 11,
+                            grid: {
+                                ...this.y_axis_format?.grid,
+                                ...(this.grid_color
+                                    ? { color: this.grid_color }
+                                    : {}),
                             },
-                            autoSkip: true,
-                            align: 'center',
-                            maxRotation: 0,
-                            minRotation: 0,
+                            border: {
+                                ...this.y_axis_format?.border,
+                                ...(this.grid_color
+                                    ? { color: this.grid_color }
+                                    : {}),
+                            },
+                        }
+                        : {
+                            beginAtZero: true,
+                            type: 'linear',
+                            min: 0,
+                            ...(this.label_color
+                                ? { ticks: { color: this.label_color } }
+                                : {}),
+                            ...(this.grid_color
+                                ? {
+                                    grid: { color: this.grid_color },
+                                    border: { color: this.grid_color },
+                                }
+                                : {}),
                         },
-                    },
+                    x: this.x_axis_format !== undefined
+                        ? {
+                            ...(this.x_axis_format || {}),
+                            ticks: {
+                                ...this.x_axis_format?.ticks,
+                                ...(this.label_color
+                                    ? { color: this.label_color }
+                                    : {}),
+                            },
+                            grid: {
+                                ...this.x_axis_format?.grid,
+                                ...(this.grid_color
+                                    ? { color: this.grid_color }
+                                    : {}),
+                            },
+                            border: {
+                                ...this.x_axis_format?.border,
+                                ...(this.grid_color
+                                    ? { color: this.grid_color }
+                                    : {}),
+                            },
+                        }
+                        : {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    day: 'ddd',
+                                    minute: 'MMM D H:mm',
+                                    hour: 'MMM D H:mm',
+                                },
+                            },
+                            ticks: {
+                                font: { size: 11 },
+                                autoSkip: true,
+                                align: 'center',
+                                maxRotation: 0,
+                                minRotation: 0,
+                                ...(this.label_color
+                                    ? { color: this.label_color }
+                                    : {}),
+                            },
+                            ...(this.grid_color
+                                ? {
+                                    grid: { color: this.grid_color },
+                                    border: { color: this.grid_color },
+                                }
+                                : {}),
+                        },
                 },
                 ...this.options,
                 plugins: {
-                    tooltip: this.tooltip_options || {
+                    tooltip: {
                         mode: 'index',
                         intersect: false,
                         position: 'nearest',
-                        animation: {
-                            duration: 150,
+                        animation: { duration: 150 },
+                        boxWidth: 10,
+                        boxHeight: 10,
+                        boxPadding: 4,
+                        padding: { x: 10, y: 4 },
+                        ...(this.tooltip_options || {}),
+                        callbacks: {
+                            labelColor: (ctx) => ({
+                                borderColor: 'transparent',
+                                backgroundColor: ctx.dataset
+                                    .borderColor,
+                                borderWidth: 0,
+                                borderRadius: 2,
+                            }),
+                            ...(this.tooltip_options?.callbacks || {}),
                         },
                     },
-                    legend: this.legend_format || {
-                        labels: {
-                            boxWidth: 8,
-                            boxHeight: 8,
-                            fontSize: 10,
-                            borderRadius: 2,
-                        },
+                    legend: {
                         onHover: (event) => {
                             if (event.native) {
                                 event.native.target.style.cursor = 'pointer';
                             }
                         },
                         display: true,
+                        ...(this.legend_format || {}),
+                        labels: {
+                            boxWidth: 10,
+                            boxHeight: 10,
+                            fontSize: 10,
+                            useBorderRadius: true,
+                            borderRadius: 2,
+                            generateLabels: (chart) => {
+                                const original = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                                return original.map((label) => ({
+                                    ...label,
+                                    lineWidth: 0,
+                                }));
+                            },
+                            ...(this.legend_format?.labels || {}),
+                        },
                     },
                 },
                 clip: false,
@@ -21735,7 +21826,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: 'ed702c0fac383dcc1ca7c1252c7a9682c085b4ea', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'f0c89673fca1f21786c07644bbd10419b11df862', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '85bbd4ff0d90396ab81376c7f990fdd89626c61e', style: { height: '100%', width: '100%' } }, h("canvas", { key: '396432bb31dacb0450b4b3aa48716304d84a2827', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

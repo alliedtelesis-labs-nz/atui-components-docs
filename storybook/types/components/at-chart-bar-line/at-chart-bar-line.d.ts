@@ -102,6 +102,14 @@ export declare class AtChartBarLine {
      * Height of the chart.
      */
     height?: AtChartHeight;
+    /**
+     * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+     */
+    label_color?: string;
+    /**
+     * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
+     */
+    grid_color?: string;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;
