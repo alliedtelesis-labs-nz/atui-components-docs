@@ -10,6 +10,9 @@ export interface AtChartTextColors {
     axisLine: string;
     label: string;
     title: string;
+    tooltipBg: string;
+    tooltipTitle: string;
+    tooltipBody: string;
 }
 export declare function readChartTextColors(): AtChartTextColors;
 export declare function readPaletteColors(palette: AtChartColorPalette): string[] | null;

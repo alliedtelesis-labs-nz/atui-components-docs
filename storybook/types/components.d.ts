@@ -658,7 +658,7 @@ export namespace Components {
         "legend_options"?: object;
         /**
           * Position of the legend
-          * @default 'top'
+          * @default 'right'
          */
         "legend_position": AtLegendPosition1;
         /**
@@ -5478,7 +5478,7 @@ declare namespace LocalJSX {
         "legend_options"?: object;
         /**
           * Position of the legend
-          * @default 'top'
+          * @default 'right'
          */
         "legend_position"?: AtLegendPosition1;
         /**

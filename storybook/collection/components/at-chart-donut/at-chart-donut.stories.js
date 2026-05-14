@@ -29,6 +29,10 @@ export default {
                 'custom',
             ],
         },
+        legend_position: {
+            control: { type: 'select' },
+            options: ['top', 'bottom', 'left', 'right'],
+        },
     },
 };
 export const Categorical = {
@@ -179,7 +183,7 @@ export const LegendOptions = {
     args: {
         height: 'md',
         color_palette: 'categorical',
-        legend_position: 'right',
+        legend_position: 'bottom',
         legend_options: {
             labels: { boxWidth: 12, boxHeight: 12, padding: 16 },
         },

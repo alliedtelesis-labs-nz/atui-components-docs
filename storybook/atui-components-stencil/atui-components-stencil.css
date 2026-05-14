@@ -1045,6 +1045,9 @@
   --chart-axis-line: var(--token-border-muted);
   --chart-label: var(--token-text-muted);
   --chart-title: var(--token-text-foreground);
+  --chart-tooltip-title: var(--token-text-inv);
+  --chart-tooltip-body: var(--token-text-inv);
+  --chart-tooltip-bg: var(--token-surface-overlay);
   --chart-categorical-1: #7e57c2;
   --chart-categorical-2: #26a69a;
   --chart-categorical-3: #42a5f5;
@@ -1299,6 +1302,9 @@
   --chart-axis-line: var(--token-border-muted);
   --chart-label: var(--token-text-muted);
   --chart-title: var(--token-text-foreground);
+  --chart-tooltip-bg: var(--token-surface-background);
+  --chart-tooltip-title: var(--token-text-foreground);
+  --chart-tooltip-body: var(--token-text-foreground);
   --chart-categorical-1: #6ecfb3;
   --chart-categorical-2: #7aafd4;
   --chart-categorical-3: #e87da0;

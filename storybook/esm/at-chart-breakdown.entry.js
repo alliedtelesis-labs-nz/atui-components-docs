@@ -1,6 +1,6 @@
 import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
-import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-yJ5squrI.js';
-import { A as AtChartColorPalette } from './chart-color-Cx7XClwN.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-zK76axlS.js';
+import { A as AtChartColorPalette } from './chart-color-DTlEjff-.js';
 
 const FALLBACK_TEXT_COLOR = '#0f172a';
 function getTextColor() {

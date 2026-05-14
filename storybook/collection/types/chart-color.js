@@ -14,6 +14,9 @@ export function readChartTextColors() {
         axisLine: get('--chart-axis-line'),
         label: get('--chart-label'),
         title: get('--chart-title'),
+        tooltipBg: get('--chart-tooltip-bg'),
+        tooltipTitle: get('--chart-tooltip-title'),
+        tooltipBody: get('--chart-tooltip-body'),
     };
 }
 export function readPaletteColors(palette) {

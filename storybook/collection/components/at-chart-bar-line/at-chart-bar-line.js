@@ -183,8 +183,10 @@ export class AtChartBarLine {
                         boxHeight: 10,
                         boxPadding: 4,
                         padding: { x: 10, y: 4 },
-                        titleColor: textColors.title,
-                        bodyColor: textColors.label,
+                        backgroundColor: textColors.tooltipBg,
+                        borderColor: textColors.tooltipBg,
+                        titleColor: textColors.tooltipTitle,
+                        bodyColor: textColors.tooltipBody,
                         ...(this.tooltip_options || {}),
                         callbacks: {
                             labelColor: (ctx) => ({
@@ -322,7 +324,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'b0cc76d64ea074c4a0cbc9fa661dbc225c11e975', style: { height: '100%', width: '100%' } }, h("canvas", { key: '581047bc169674e8eb8ca16c1b5fb09b5f40f1c4', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '0e24b45394e8c8d56171d0adfc9b72a23ab0e7aa', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'ee6b9e078a35ddb04dc8997782e337ec1537dca7', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

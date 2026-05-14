@@ -1,8 +1,8 @@
 'use strict';
 
 var index = require('./index--r5sCsiV.js');
-var chartColor$1 = require('./chart-color-Czswpkr9.js');
-var chartColor = require('./chart-color-CCrLEeKN.js');
+var chartColor$1 = require('./chart-color-Cg4GSvwC.js');
+var chartColor = require('./chart-color-ChPOocG1.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -32,7 +32,7 @@ const AtChartDonut = class {
     /**
      * Position of the legend
      */
-    legend_position = 'top';
+    legend_position = 'right';
     /**
      * Options merged into the legend plugin config. ATUI defaults are preserved unless
      * explicitly overridden.
@@ -217,8 +217,10 @@ const AtChartDonut = class {
                         boxHeight: 10,
                         boxPadding: 4,
                         padding: { x: 10, y: 4 },
-                        titleColor: textColors.title,
-                        bodyColor: textColors.label,
+                        backgroundColor: textColors.tooltipBg,
+                        borderColor: textColors.tooltipBg,
+                        titleColor: textColors.tooltipTitle,
+                        bodyColor: textColors.tooltipBody,
                         ...(this.tooltip_options || {}),
                         callbacks: {
                             labelColor: (ctx) => {
@@ -279,7 +281,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '71025e55dc4ef954c6eedffb9086f6c8496aac9c', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '0ae9356d566fcb3b165040f3d024de8538229aeb', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'e29d5458d9d1c0e73b695e2bb7d665e978cb2404', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '04b0299f377ad750d87f2276b50368dabb73e141', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

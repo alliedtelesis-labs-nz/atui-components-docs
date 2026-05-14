@@ -1,7 +1,7 @@
 'use strict';
 
 var prompt = require('./prompt-DoMXcdvl.js');
-var chartColor = require('./chart-color-CCrLEeKN.js');
+var chartColor = require('./chart-color-ChPOocG1.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 
 /**

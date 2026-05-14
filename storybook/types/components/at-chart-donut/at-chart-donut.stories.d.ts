@@ -8,6 +8,12 @@ declare const _default: {
             };
             options: string[];
         };
+        legend_position: {
+            control: {
+                type: string;
+            };
+            options: string[];
+        };
     };
 };
 export default _default;
