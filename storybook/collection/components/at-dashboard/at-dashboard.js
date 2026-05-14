@@ -1,7 +1,7 @@
 import { h, } from "@stencil/core";
 import { GridStack, } from "gridstack";
 const DEFAULT_SIZE = {
-    w: 2,
+    w: 4,
     h: 2,
 };
 export class AtDashboard {
