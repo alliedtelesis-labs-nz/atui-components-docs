@@ -129,6 +129,7 @@ export class AtChartBarLine {
         const textColors = readChartTextColors();
         const defaultAxisConfig = {
             ticks: { color: textColors.label },
+            title: { color: textColors.title },
             grid: { color: textColors.axisLine },
             border: { color: textColors.axisLine },
         };
@@ -150,6 +151,7 @@ export class AtChartBarLine {
                 minRotation: 0,
                 color: textColors.label,
             },
+            title: { color: textColors.title },
             grid: { color: textColors.axisLine },
             border: { color: textColors.axisLine },
         };
@@ -169,8 +171,46 @@ export class AtChartBarLine {
                 devicePixelRatio: 2,
                 maintainAspectRatio: false,
                 scales: {
-                    x: { ...defaultXConfig, ...(this.x_axis_format || {}) },
-                    y: { ...defaultYConfig, ...(this.y_axis_format || {}) },
+                    x: {
+                        ...defaultXConfig,
+                        ...(this.x_axis_format || {}),
+                        ticks: {
+                            ...defaultXConfig.ticks,
+                            ...(this.x_axis_format?.ticks || {}),
+                        },
+                        title: {
+                            ...defaultXConfig.title,
+                            ...(this.x_axis_format?.title || {}),
+                        },
+                        grid: {
+                            ...defaultXConfig.grid,
+                            ...(this.x_axis_format?.grid || {}),
+                        },
+                        border: {
+                            ...defaultXConfig.border,
+                            ...(this.x_axis_format?.border || {}),
+                        },
+                    },
+                    y: {
+                        ...defaultYConfig,
+                        ...(this.y_axis_format || {}),
+                        ticks: {
+                            ...defaultAxisConfig.ticks,
+                            ...(this.y_axis_format?.ticks || {}),
+                        },
+                        title: {
+                            ...defaultAxisConfig.title,
+                            ...(this.y_axis_format?.title || {}),
+                        },
+                        grid: {
+                            ...defaultAxisConfig.grid,
+                            ...(this.y_axis_format?.grid || {}),
+                        },
+                        border: {
+                            ...defaultAxisConfig.border,
+                            ...(this.y_axis_format?.border || {}),
+                        },
+                    },
                 },
                 ...(this.options || {}),
                 plugins: {
@@ -324,7 +364,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '0e24b45394e8c8d56171d0adfc9b72a23ab0e7aa', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'ee6b9e078a35ddb04dc8997782e337ec1537dca7', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '4afcdadac7b0c4ed61ed7f185dae631b4b6c174e', style: { height: '100%', width: '100%' } }, h("canvas", { key: '7088c472067aad27c3b4c7fd1c859b55d7f4f96b', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
