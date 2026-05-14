@@ -6401,11 +6401,9 @@ const AtDashboard = class {
             columnOpts: {
                 columnMax: 24,
                 breakpoints: [
-                    {
-                        w: 768,
-                        c: 1,
-                        layout: 'compact',
-                    },
+                    { w: 480, c: 4, layout: 'list' }, // mobile — full stack
+                    { w: 768, c: 8, layout: 'list' }, // small tablet — 3 charts still fit (2 cols each)
+                    { w: 1280, c: 16, layout: 'compact' }, // medium — proportional half-size
                 ],
             },
         }, this.gridContainerRef);
@@ -6484,7 +6482,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: '6897c5998965aba09fe4fc74247c8623e7468407', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: '780345bc319a33ca12e3ba6271209a6da3a2bf1d', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), index.h("slot", { name: widget.id })))))));
     }
