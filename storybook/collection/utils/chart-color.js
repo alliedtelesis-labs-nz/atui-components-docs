@@ -1,12 +1,9 @@
-import { palettes } from "../types/chart-color";
+import { readPaletteColors } from "../types/chart-color";
 export function getChartColors(palette) {
     if (Array.isArray(palette)) {
         return palette;
     }
-    if (palette && palettes[palette]) {
-        return palettes[palette];
-    }
-    return null;
+    return readPaletteColors(palette);
 }
 export function generateColourPalette(dataCount) {
     const startHue = 0;

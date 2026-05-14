@@ -66,26 +66,31 @@ export declare class AtChartBarLine {
         datasets: ChartDataset[];
     };
     /**
-     * X axis formatting to be applied to the chart.
-     * If you would like the default formatting provided by chart.js, set this to an empty object.
+     * X axis formatting merged over ATUI defaults. Use to configure time display formats,
+     * tick options, or switch axis type. Pass an empty object to keep all defaults.
      */
-    x_axis_format: object;
+    x_axis_format?: object;
     /**
-     * Y axis formatting to be applied to the chart.
+     * Y axis formatting merged over ATUI defaults. Use to configure tick format, labels,
+     * or stacking. Pass an empty object to keep all defaults.
      */
     y_axis_format?: object;
     /**
-     * Additional options to go into the 'options' seciont of the chart configuration
+     * Additional options merged into the Chart.js options object. Use to configure axes,
+     * time display, and other chart behaviour. User values are spread over ATUI defaults
+     * so defaults are preserved unless explicitly overridden.
      */
     options?: object;
     /**
-     * Options for the tooltips on the chart
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
     tooltip_options?: object;
     /**
-     * Options for the legend
+     * Options merged into the legend plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
-    legend_format?: object;
+    legend_options?: object;
     /**
      * Thresholds to be displayed in the chart
      */
@@ -103,17 +108,6 @@ export declare class AtChartBarLine {
      */
     height?: AtChartHeight;
     /**
-     * Color for axis tick labels on both axes. Useful for theme-reactive text color.
-     */
-    label_color?: string;
-    /**
-     * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
-     */
-    grid_color?: string;
-    canvasEl: HTMLCanvasElement;
-    config: ChartConfiguration;
-    chart: Chart;
-    /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
      * 'sequential' : For charts with data that is numeric or is naturally ordered.
@@ -122,10 +116,19 @@ export declare class AtChartBarLine {
      */
     color_palette: AtChartColorPalette;
     /**
+     * Pass the active theme value here to trigger a chart redraw when the theme changes.
+     * The value itself is not used — any change to this prop causes the chart to reinitialise
+     * so colors and text are re-read from the current CSS variables.
+     */
+    refresh_theme?: string;
+    /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
+    canvasEl: HTMLCanvasElement;
+    config: ChartConfiguration;
+    chart: Chart;
     initChart(): void;
     componentDidUpdate(): void;
     /**

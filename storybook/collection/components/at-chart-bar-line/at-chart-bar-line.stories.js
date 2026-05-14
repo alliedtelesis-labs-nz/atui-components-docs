@@ -1,25 +1,131 @@
+const MONTHS = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+];
 const Template = (args) => `
 <at-chart-bar-line
     type="${args.type}"
-    canvas_id="${args.canvas_id}"
+    ${args.height ? `height="${args.height}"` : ''}
+    ${args.color_palette ? `color_palette="${args.color_palette}"` : ''}
 />
 <script>
 ${args.data ? `document.querySelector('at-chart-bar-line').data = ${JSON.stringify(args.data, null, 4)}` : ''}
 ${args.x_axis_format ? `document.querySelector('at-chart-bar-line').x_axis_format = ${JSON.stringify(args.x_axis_format, null, 4)}` : ''}
+${args.y_axis_format ? `document.querySelector('at-chart-bar-line').y_axis_format = ${JSON.stringify(args.y_axis_format, null, 4)}` : ''}
 ${args.options ? `document.querySelector('at-chart-bar-line').options = ${JSON.stringify(args.options, null, 4).replace(/"\(/g, '(').replace(/`"/g, '`')}` : ''}
 ${args.time_range ? `document.querySelector('at-chart-bar-line').time_range = ${JSON.stringify(args.time_range, null, 4)}` : ''}
-${args.thresholds ? `document.querySelector('at-chart-bar-line').thresholds = ${JSON.stringify(args.thresholds, null, 4)}` : ''} 
+${args.thresholds ? `document.querySelector('at-chart-bar-line').thresholds = ${JSON.stringify(args.thresholds, null, 4)}` : ''}
 ${args.tooltip_options ? `document.querySelector('at-chart-bar-line').tooltip_options = ${JSON.stringify(args.tooltip_options, null, 4).replace(/"\(/g, '(').replace(/`"/g, '`')}` : ''}
+${args.legend_options ? `document.querySelector('at-chart-bar-line').legend_options = ${JSON.stringify(args.legend_options, null, 4)}` : ''}
 ${args.point_styles ? `document.querySelector('at-chart-bar-line').point_styles = ${JSON.stringify(args.point_styles, null, 4)}` : ''}
 </script>
 `;
 export default {
     title: 'Components/Chart Bar Line',
+    argTypes: {
+        color_palette: {
+            control: { type: 'select' },
+            options: [
+                'categorical',
+                'sequential',
+                'alert',
+                'device-status',
+                'onboarding-status',
+                'custom',
+            ],
+        },
+    },
 };
+// --- Palette stories ---
+export const Categorical = {
+    name: 'Categorical Palette (bar)',
+    args: {
+        type: 'bar',
+        color_palette: 'categorical',
+        x_axis_format: { type: 'category' },
+        data: {
+            labels: MONTHS,
+            datasets: [
+                {
+                    label: 'Auckland',
+                    data: [
+                        420, 380, 510, 490, 600, 570, 620, 580, 540, 490, 430,
+                        460,
+                    ],
+                },
+                {
+                    label: 'Wellington',
+                    data: [
+                        310, 290, 340, 360, 410, 390, 440, 420, 380, 350, 310,
+                        330,
+                    ],
+                },
+                {
+                    label: 'Christchurch',
+                    data: [
+                        180, 160, 210, 200, 250, 230, 270, 260, 230, 210, 190,
+                        200,
+                    ],
+                },
+            ],
+        },
+    },
+    render: Template,
+};
+export const Sequential = {
+    name: 'Sequential Palette (bar)',
+    args: {
+        type: 'bar',
+        color_palette: 'sequential',
+        x_axis_format: { type: 'category' },
+        data: {
+            labels: MONTHS,
+            datasets: MONTHS.map((m, i) => ({ label: m, data: [12 + i * 8] })),
+        },
+    },
+    render: Template,
+};
+export const AlertPalette = {
+    name: 'Alert Palette (line)',
+    args: {
+        type: 'line',
+        color_palette: 'alert',
+        x_axis_format: { type: 'category' },
+        data: {
+            labels: [
+                '06:00',
+                '07:00',
+                '08:00',
+                '09:00',
+                '10:00',
+                '11:00',
+                '12:00',
+                '13:00',
+            ],
+            datasets: [
+                { label: 'Critical', data: [3, 6, 12, 20, 26, 30, 34, 40] },
+                { label: 'Warning', data: [1, 1, 2, 4, 8, 7, 6, 5] },
+                { label: 'Normal', data: [0, 0, 0, 0, 0, 1, 1, 1] },
+                { label: 'Disabled', data: [2, 2, 3, 2, 1, 1, 2, 2] },
+            ],
+        },
+    },
+    render: Template,
+};
+// --- Existing stories ---
 export const Bar = {
     args: {
         type: 'bar',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [
@@ -45,7 +151,6 @@ export const Bar = {
 export const Line = {
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [
@@ -71,7 +176,6 @@ export const Line = {
 export const Time = {
     args: {
         type: 'line',
-        canvas_id: '1',
         data: {
             labels: [
                 '2025-01-21T08:52:07.316Z',
@@ -104,7 +208,6 @@ export const Date = {
     name: 'Custom X Axis Format',
     args: {
         type: 'line',
-        canvas_id: '1',
         data: {
             labels: [
                 '2025-01-21T08:52:07.316Z',
@@ -154,7 +257,6 @@ export const TimeRange = {
     name: 'Custom Time Range',
     args: {
         type: 'line',
-        canvas_id: '1',
         data: {
             labels: [
                 '2022-12-31T12:00:00.000Z',
@@ -191,7 +293,6 @@ export const CustomYLabel = {
     name: 'Custom Y Axis Format',
     args: {
         type: 'line',
-        canvas_id: '1',
         options: {
             maintainAspectRatio: false,
             elements: { line: { tension: 0, borderWidth: 2 } },
@@ -210,9 +311,7 @@ export const CustomYLabel = {
                     title: { display: true, text: 'Y label' },
                     beginAtZero: true,
                     min: 0,
-                    ticks: {
-                        callback: '(label) => `${label} bps`',
-                    },
+                    ticks: { callback: '(label) => `${label} bps`' },
                 },
                 x: {
                     grid: { offset: false },
@@ -265,7 +364,6 @@ export const MultipleDatasets = {
     name: 'Multiple Datasets',
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [
@@ -323,7 +421,6 @@ export const StackedMultipleDatasets = {
     name: 'Stacked Multiple Datasets',
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         options: {
             scales: {
@@ -406,7 +503,6 @@ export const Thresholds = {
     name: 'Line Chart with Thresholds',
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [
@@ -450,14 +546,14 @@ export const Thresholds = {
         thresholds: [
             {
                 label: 'Threshold One',
-                color: 'rgba(153,  102,  255)',
+                color: 'rgba(153, 102, 255)',
                 dashLine: true,
                 data: [25, 25, 25, 45, 45, 45, 45],
                 stepped: true,
             },
             {
                 label: 'Threshold Two',
-                color: 'rgba(255,  159,  64)',
+                color: 'rgba(255, 159, 64)',
                 dashLine: false,
                 data: [95, 95, 95, 95, 95, 95, 95],
             },
@@ -469,7 +565,6 @@ export const Tooltips = {
     name: 'Custom Tooltips',
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [
@@ -527,7 +622,6 @@ export const Area = {
     name: 'Area Chart',
     args: {
         type: 'line',
-        canvas_id: '1',
         x_axis_format: {},
         data: {
             labels: [

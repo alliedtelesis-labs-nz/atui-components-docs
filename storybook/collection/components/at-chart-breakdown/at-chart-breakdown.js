@@ -418,7 +418,7 @@ export class AtChartBreakdown {
                 "mutable": false,
                 "complexType": {
                     "original": "AtChartColorPalette",
-                    "resolved": "AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL | AtChartColorPalette.CUSTOM | AtChartColorPalette.SEQUENTIAL",
+                    "resolved": "AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL | AtChartColorPalette.CUSTOM | AtChartColorPalette.DEVICE_STATUS | AtChartColorPalette.ONBOARDING_STATUS | AtChartColorPalette.SEQUENTIAL",
                     "references": {
                         "AtChartColorPalette": {
                             "location": "import",

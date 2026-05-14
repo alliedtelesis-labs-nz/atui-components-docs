@@ -1,8 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
-import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-B8WQ6sRw.js';
-import { A as AtChartColorPalette } from './chart-color-Ckr-udZ5.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-yJ5squrI.js';
+import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-Cx7XClwN.js';
 
-const TOKEN_TEXT_FOREGROUND = '#0f172a';
 const heightVariants = {
     xs: 'h-[70px]',
     sm: 'h-[160px]',
@@ -33,11 +32,13 @@ const AtChartDonut = class {
      */
     legend_position = 'top';
     /**
-     * Additional options for formatting the legend
+     * Options merged into the legend plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
-    legend_format;
+    legend_options;
     /**
-     * Additional options for the tooltip
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
     tooltip_options;
     /**
@@ -61,16 +62,17 @@ const AtChartDonut = class {
      */
     center_text;
     /**
-     * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a).
-     * Override this on dark themes where the default text would be invisible.
-     */
-    center_text_color = TOKEN_TEXT_FOREGROUND;
-    /**
      * Controls the thickness of the donut ring. Value between 0 and 100.
      * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
      * Default is 70.
      */
     cutout = 70;
+    /**
+     * Pass the active theme value here to trigger a chart redraw when the theme changes.
+     * The value itself is not used — any change to this prop causes the chart to reinitialise
+     * so colors and text are re-read from the current CSS variables.
+     */
+    refresh_theme;
     canvasEl;
     config;
     chart;
@@ -103,7 +105,7 @@ const AtChartDonut = class {
                 const height = chart.chartArea.bottom - chart.chartArea.top;
                 const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
                 const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
-                ctx.fillStyle = this.center_text_color;
+                ctx.fillStyle = readChartTextColors().title;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.font = '500 ' + valueFontSize;
@@ -135,6 +137,7 @@ const AtChartDonut = class {
         Chart.register(DoughnutController, ArcElement, plugin_legend, plugin_tooltip, index);
         const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
+        const textColors = readChartTextColors();
         if (colors) {
             this.applyPresetPalette(colors);
         }
@@ -157,6 +160,13 @@ const AtChartDonut = class {
                 aspectRatio: 1,
                 layout: { padding: 16 },
                 interaction: { mode: 'nearest', intersect: true },
+                datasets: {
+                    doughnut: {
+                        borderWidth: 0,
+                        hoverBorderWidth: 0,
+                        hoverOffset: 4,
+                    },
+                },
                 plugins: {
                     legend: {
                         onHover: (event) => {
@@ -176,21 +186,23 @@ const AtChartDonut = class {
                             chart.update();
                         },
                         display: true,
-                        ...(this.legend_format || {}),
+                        ...(this.legend_options || {}),
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
                             fontSize: 11,
                             useBorderRadius: true,
                             borderRadius: 2,
+                            color: textColors.label,
                             generateLabels: (chart) => {
                                 const original = Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart);
                                 return original.map((label) => ({
                                     ...label,
                                     lineWidth: 0,
+                                    fontColor: textColors.label,
                                 }));
                             },
-                            ...(this.legend_format?.labels || {}),
+                            ...(this.legend_options?.labels || {}),
                         },
                         position: this.legend_position,
                         fullSize: true,
@@ -203,6 +215,8 @@ const AtChartDonut = class {
                         boxHeight: 10,
                         boxPadding: 4,
                         padding: { x: 10, y: 4 },
+                        titleColor: textColors.title,
+                        bodyColor: textColors.label,
                         ...(this.tooltip_options || {}),
                         callbacks: {
                             labelColor: (ctx) => {
@@ -263,7 +277,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: 'e56be6a5f0af7b13029cb5b8d0af7ef91bfe2e1b', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'de559aa339b8ce8df04a08e9ac1279e799b2588d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '71025e55dc4ef954c6eedffb9086f6c8496aac9c', style: { height: '100%', width: '100%' } }, h("canvas", { key: '0ae9356d566fcb3b165040f3d024de8538229aeb', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

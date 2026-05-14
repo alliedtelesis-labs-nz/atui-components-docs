@@ -28,11 +28,13 @@ export declare class AtChartDonut {
      */
     legend_position: AtLegendPosition;
     /**
-     * Additional options for formatting the legend
+     * Options merged into the legend plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
-    legend_format?: object;
+    legend_options?: object;
     /**
-     * Additional options for the tooltip
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
     tooltip_options?: object;
     /**
@@ -56,16 +58,17 @@ export declare class AtChartDonut {
      */
     center_text?: string;
     /**
-     * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a).
-     * Override this on dark themes where the default text would be invisible.
-     */
-    center_text_color?: string;
-    /**
      * Controls the thickness of the donut ring. Value between 0 and 100.
      * 0 means no cutout (solid circle), 100 means maximum cutout (thin ring).
      * Default is 70.
      */
     cutout?: number;
+    /**
+     * Pass the active theme value here to trigger a chart redraw when the theme changes.
+     * The value itself is not used — any change to this prop causes the chart to reinitialise
+     * so colors and text are re-read from the current CSS variables.
+     */
+    refresh_theme?: string;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;

@@ -495,30 +495,26 @@ export namespace Components {
          */
         "getConfig": () => Promise<object>;
         /**
-          * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
-         */
-        "grid_color"?: string;
-        /**
           * Height of the chart.
           * @default 'auto'
          */
         "height"?: AtChartHeight;
         /**
-          * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "label_color"?: string;
+        "legend_options"?: object;
         /**
-          * Options for the legend
-         */
-        "legend_format"?: object;
-        /**
-          * Additional options to go into the 'options' seciont of the chart configuration
+          * Additional options merged into the Chart.js options object. Use to configure axes, time display, and other chart behaviour. User values are spread over ATUI defaults so defaults are preserved unless explicitly overridden.
          */
         "options"?: object;
         /**
           * Styles for the points in the chart
          */
         "point_styles"?: AtIPointStyles;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
         /**
           * Manually trigger a chart resize to fit container dimensions.
          */
@@ -532,7 +528,7 @@ export namespace Components {
          */
         "time_range"?: AtSelectedTimeRangeExtended;
         /**
-          * Options for the tooltips on the chart
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
         /**
@@ -540,11 +536,11 @@ export namespace Components {
          */
         "type": 'bar' | 'line';
         /**
-          * X axis formatting to be applied to the chart. If you would like the default formatting provided by chart.js, set this to an empty object.
+          * X axis formatting merged over ATUI defaults. Use to configure time display formats, tick options, or switch axis type. Pass an empty object to keep all defaults.
          */
-        "x_axis_format": object;
+        "x_axis_format"?: object;
         /**
-          * Y axis formatting to be applied to the chart.
+          * Y axis formatting merged over ATUI defaults. Use to configure tick format, labels, or stacking. Pass an empty object to keep all defaults.
          */
         "y_axis_format"?: object;
     }
@@ -626,11 +622,6 @@ export namespace Components {
          */
         "center_text"?: string;
         /**
-          * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a). Override this on dark themes where the default text would be invisible.
-          * @default TOKEN_TEXT_FOREGROUND
-         */
-        "center_text_color"?: string;
-        /**
           * Optional value text to display in the center of the donut chart
          */
         "center_value"?: string;
@@ -662,9 +653,9 @@ export namespace Components {
          */
         "height"?: AtChartHeight2;
         /**
-          * Additional options for formatting the legend
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "legend_format"?: object;
+        "legend_options"?: object;
         /**
           * Position of the legend
           * @default 'top'
@@ -679,11 +670,15 @@ export namespace Components {
          */
         "plugins"?: Plugin[];
         /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
           * Manually trigger a chart resize to fit container dimensions
          */
         "resize": () => Promise<void>;
         /**
-          * Additional options for the tooltip
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
@@ -5338,30 +5333,26 @@ declare namespace LocalJSX {
         datasets: ChartDataset[];
     };
         /**
-          * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
-         */
-        "grid_color"?: string;
-        /**
           * Height of the chart.
           * @default 'auto'
          */
         "height"?: AtChartHeight;
         /**
-          * Color for axis tick labels on both axes. Useful for theme-reactive text color.
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "label_color"?: string;
+        "legend_options"?: object;
         /**
-          * Options for the legend
-         */
-        "legend_format"?: object;
-        /**
-          * Additional options to go into the 'options' seciont of the chart configuration
+          * Additional options merged into the Chart.js options object. Use to configure axes, time display, and other chart behaviour. User values are spread over ATUI defaults so defaults are preserved unless explicitly overridden.
          */
         "options"?: object;
         /**
           * Styles for the points in the chart
          */
         "point_styles"?: AtIPointStyles;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
         /**
           * Thresholds to be displayed in the chart
          */
@@ -5371,7 +5362,7 @@ declare namespace LocalJSX {
          */
         "time_range"?: AtSelectedTimeRangeExtended;
         /**
-          * Options for the tooltips on the chart
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
         /**
@@ -5379,11 +5370,11 @@ declare namespace LocalJSX {
          */
         "type"?: 'bar' | 'line';
         /**
-          * X axis formatting to be applied to the chart. If you would like the default formatting provided by chart.js, set this to an empty object.
+          * X axis formatting merged over ATUI defaults. Use to configure time display formats, tick options, or switch axis type. Pass an empty object to keep all defaults.
          */
         "x_axis_format"?: object;
         /**
-          * Y axis formatting to be applied to the chart.
+          * Y axis formatting merged over ATUI defaults. Use to configure tick format, labels, or stacking. Pass an empty object to keep all defaults.
          */
         "y_axis_format"?: object;
     }
@@ -5456,11 +5447,6 @@ declare namespace LocalJSX {
          */
         "center_text"?: string;
         /**
-          * Color of the center text. Defaults to TOKEN_TEXT_FOREGROUND (#0f172a). Override this on dark themes where the default text would be invisible.
-          * @default TOKEN_TEXT_FOREGROUND
-         */
-        "center_text_color"?: string;
-        /**
           * Optional value text to display in the center of the donut chart
          */
         "center_value"?: string;
@@ -5487,9 +5473,9 @@ declare namespace LocalJSX {
          */
         "height"?: AtChartHeight2;
         /**
-          * Additional options for formatting the legend
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "legend_format"?: object;
+        "legend_options"?: object;
         /**
           * Position of the legend
           * @default 'top'
@@ -5504,7 +5490,11 @@ declare namespace LocalJSX {
          */
         "plugins"?: Plugin[];
         /**
-          * Additional options for the tooltip
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
@@ -8146,9 +8136,8 @@ declare namespace LocalJSX {
     interface AtChartBarLineAttributes {
         "type": 'bar' | 'line';
         "height": AtChartHeight;
-        "label_color": string;
-        "grid_color": string;
         "color_palette": AtChartColorPalette;
+        "refresh_theme": string;
     }
     interface AtChartBreakdownAttributes {
         "height": AtChartHeight;
@@ -8164,8 +8153,8 @@ declare namespace LocalJSX {
         "color_palette": AtChartColorPalette;
         "center_value": string;
         "center_text": string;
-        "center_text_color": string;
         "cutout": number;
+        "refresh_theme": string;
     }
     interface AtCheckboxAttributes {
         "label": string;

@@ -1041,6 +1041,43 @@
   --ag-font-family: var(--token-font-family-base);
   --ag-font-size: var(--token-font-size-base);
   --ag-invalid-color: var(--token-state-error-foreground);
+  /* Chart */
+  --chart-axis-line: var(--token-border-muted);
+  --chart-label: var(--token-text-muted);
+  --chart-title: var(--token-text-foreground);
+  --chart-categorical-1: #7e57c2;
+  --chart-categorical-2: #26a69a;
+  --chart-categorical-3: #42a5f5;
+  --chart-categorical-4: #ffca28;
+  --chart-categorical-5: #66bb6a;
+  --chart-categorical-6: #26c6da;
+  --chart-categorical-7: #d4e157;
+  --chart-categorical-8: #ff7043;
+  --chart-categorical-9: #5e35b1;
+  --chart-categorical-10: #00897b;
+  --chart-sequential-1: #bbdefb;
+  --chart-sequential-2: #90caf9;
+  --chart-sequential-3: #64b5f6;
+  --chart-sequential-4: #42a5f5;
+  --chart-sequential-5: #2196f3;
+  --chart-sequential-6: #1e88e5;
+  --chart-sequential-7: #1976d2;
+  --chart-sequential-8: #1565c0;
+  --chart-sequential-9: #0d47a1;
+  --chart-alert-1: #4caf50;
+  --chart-alert-2: #ffc107;
+  --chart-alert-3: #f44336;
+  --chart-alert-4: #9e9e9e;
+  --chart-device-status-1: #a0de1e;
+  --chart-device-status-2: #fec514;
+  --chart-device-status-3: #f44336;
+  --chart-device-status-4: #dfdfdf;
+  --chart-device-status-5: #2196f3;
+  --chart-onboarding-status-1: #a0de1e;
+  --chart-onboarding-status-2: #2196f3;
+  --chart-onboarding-status-3: #fec514;
+  --chart-onboarding-status-4: #f44336;
+  --chart-onboarding-status-5: #dfdfdf;
 }
 
 [data-theme=dark] {
@@ -1258,6 +1295,43 @@
   --ag-font-family: var(--token-font-family-base);
   --ag-font-size: var(--token-font-size-base);
   --ag-invalid-color: var(--token-state-error-foreground);
+  /* Chart */
+  --chart-axis-line: var(--token-border-muted);
+  --chart-label: var(--token-text-muted);
+  --chart-title: var(--token-text-foreground);
+  --chart-categorical-1: #6ecfb3;
+  --chart-categorical-2: #7aafd4;
+  --chart-categorical-3: #e87da0;
+  --chart-categorical-4: #e8d265;
+  --chart-categorical-5: #81c784;
+  --chart-categorical-6: #4dd0e1;
+  --chart-categorical-7: #dce775;
+  --chart-categorical-8: #ff8a65;
+  --chart-categorical-9: #9575cd;
+  --chart-categorical-10: #26a69a;
+  --chart-sequential-1: #0d47a1;
+  --chart-sequential-2: #1565c0;
+  --chart-sequential-3: #1976d2;
+  --chart-sequential-4: #1e88e5;
+  --chart-sequential-5: #2196f3;
+  --chart-sequential-6: #42a5f5;
+  --chart-sequential-7: #64b5f6;
+  --chart-sequential-8: #90caf9;
+  --chart-sequential-9: #bbdefb;
+  --chart-alert-1: #81c784;
+  --chart-alert-2: #ffd740;
+  --chart-alert-3: #ff5252;
+  --chart-alert-4: #9e9e9e;
+  --chart-device-status-1: #b8f033;
+  --chart-device-status-2: #ffd740;
+  --chart-device-status-3: #ff5252;
+  --chart-device-status-4: #9e9e9e;
+  --chart-device-status-5: #64b5f6;
+  --chart-onboarding-status-1: #b8f033;
+  --chart-onboarding-status-2: #64b5f6;
+  --chart-onboarding-status-3: #ffd740;
+  --chart-onboarding-status-4: #ff5252;
+  --chart-onboarding-status-5: #9e9e9e;
 }
 
 *, ::before, ::after {

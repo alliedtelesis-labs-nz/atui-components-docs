@@ -1,8 +1,8 @@
 'use strict';
 
 var index = require('./index--r5sCsiV.js');
-var chartColor$1 = require('./chart-color-Datz_OhD.js');
-var chartColor = require('./chart-color-CMk9r_na.js');
+var chartColor$1 = require('./chart-color-Czswpkr9.js');
+var chartColor = require('./chart-color-CCrLEeKN.js');
 
 const FALLBACK_TEXT_COLOR = '#0f172a';
 function getTextColor() {

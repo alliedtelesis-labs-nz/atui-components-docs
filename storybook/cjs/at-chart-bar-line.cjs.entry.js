@@ -1,9 +1,9 @@
 'use strict';
 
 var index = require('./index--r5sCsiV.js');
-var chartColor = require('./chart-color-Datz_OhD.js');
+var chartColor = require('./chart-color-Czswpkr9.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var chartColor$1 = require('./chart-color-CMk9r_na.js');
+var chartColor$1 = require('./chart-color-CCrLEeKN.js');
 
 var dateFns = {};
 
@@ -21517,26 +21517,31 @@ const AtChartBarLine = class {
      */
     data;
     /**
-     * X axis formatting to be applied to the chart.
-     * If you would like the default formatting provided by chart.js, set this to an empty object.
+     * X axis formatting merged over ATUI defaults. Use to configure time display formats,
+     * tick options, or switch axis type. Pass an empty object to keep all defaults.
      */
     x_axis_format;
     /**
-     * Y axis formatting to be applied to the chart.
+     * Y axis formatting merged over ATUI defaults. Use to configure tick format, labels,
+     * or stacking. Pass an empty object to keep all defaults.
      */
     y_axis_format;
     /**
-     * Additional options to go into the 'options' seciont of the chart configuration
+     * Additional options merged into the Chart.js options object. Use to configure axes,
+     * time display, and other chart behaviour. User values are spread over ATUI defaults
+     * so defaults are preserved unless explicitly overridden.
      */
     options;
     /**
-     * Options for the tooltips on the chart
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
     tooltip_options;
     /**
-     * Options for the legend
+     * Options merged into the legend plugin config. ATUI defaults are preserved unless
+     * explicitly overridden.
      */
-    legend_format;
+    legend_options;
     /**
      * Thresholds to be displayed in the chart
      */
@@ -21554,17 +21559,6 @@ const AtChartBarLine = class {
      */
     height = 'auto';
     /**
-     * Color for axis tick labels on both axes. Useful for theme-reactive text color.
-     */
-    label_color;
-    /**
-     * Color for axis grid lines and borders on both axes. Useful for theme-reactive grid color.
-     */
-    grid_color;
-    canvasEl;
-    config;
-    chart;
-    /**
      * Colour palette to use for the chart. Preset options are provided ChartColourPalette:
      * 'categorical' : For charts with data that have distinct labels and no natural order
      * 'sequential' : For charts with data that is numeric or is naturally ordered.
@@ -21573,12 +21567,21 @@ const AtChartBarLine = class {
      */
     color_palette = chartColor$1.AtChartColorPalette.CATEGORICAL;
     /**
+     * Pass the active theme value here to trigger a chart redraw when the theme changes.
+     * The value itself is not used — any change to this prop causes the chart to reinitialise
+     * so colors and text are re-read from the current CSS variables.
+     */
+    refresh_theme;
+    /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
      */
     async getConfig() {
         return this.config;
     }
+    canvasEl;
+    config;
+    chart;
     initChart() {
         chartColor.Chart.register(chartColor.LinearScale, chartColor.BarController, chartColor.CategoryScale, chartColor.BarElement, chartColor.TimeScale, chartColor.LineController, chartColor.LineElement, chartColor.PointElement, chartColor.plugin_colors, chartColor.plugin_legend, chartColor.plugin_tooltip, chartColor.index);
         const colors = chartColor.getChartColors(this.color_palette);
@@ -21588,6 +21591,39 @@ const AtChartBarLine = class {
         if (this.point_styles) {
             this.pointStylesSetup();
         }
+        const textColors = chartColor$1.readChartTextColors();
+        const defaultAxisConfig = {
+            ticks: { color: textColors.label },
+            grid: { color: textColors.axisLine },
+            border: { color: textColors.axisLine },
+        };
+        const defaultXConfig = {
+            type: 'time',
+            time: {
+                displayFormats: {
+                    day: 'ddd',
+                    minute: 'MMM D H:mm',
+                    hour: 'MMM D H:mm',
+                },
+            },
+            ticks: {
+                font: { size: 11 },
+                autoSkip: true,
+                autoSkipPadding: 8,
+                align: 'center',
+                maxRotation: 0,
+                minRotation: 0,
+                color: textColors.label,
+            },
+            grid: { color: textColors.axisLine },
+            border: { color: textColors.axisLine },
+        };
+        const defaultYConfig = {
+            beginAtZero: true,
+            type: 'linear',
+            min: 0,
+            ...defaultAxisConfig,
+        };
         this.config = {
             type: this.type,
             data: {
@@ -21598,92 +21634,10 @@ const AtChartBarLine = class {
                 devicePixelRatio: 2,
                 maintainAspectRatio: false,
                 scales: {
-                    y: this.y_axis_format !== undefined
-                        ? {
-                            ...(this.y_axis_format || {}),
-                            ticks: {
-                                ...this.y_axis_format?.ticks,
-                                ...(this.label_color
-                                    ? { color: this.label_color }
-                                    : {}),
-                            },
-                            grid: {
-                                ...this.y_axis_format?.grid,
-                                ...(this.grid_color
-                                    ? { color: this.grid_color }
-                                    : {}),
-                            },
-                            border: {
-                                ...this.y_axis_format?.border,
-                                ...(this.grid_color
-                                    ? { color: this.grid_color }
-                                    : {}),
-                            },
-                        }
-                        : {
-                            beginAtZero: true,
-                            type: 'linear',
-                            min: 0,
-                            ...(this.label_color
-                                ? { ticks: { color: this.label_color } }
-                                : {}),
-                            ...(this.grid_color
-                                ? {
-                                    grid: { color: this.grid_color },
-                                    border: { color: this.grid_color },
-                                }
-                                : {}),
-                        },
-                    x: this.x_axis_format !== undefined
-                        ? {
-                            ...(this.x_axis_format || {}),
-                            ticks: {
-                                ...this.x_axis_format?.ticks,
-                                ...(this.label_color
-                                    ? { color: this.label_color }
-                                    : {}),
-                            },
-                            grid: {
-                                ...this.x_axis_format?.grid,
-                                ...(this.grid_color
-                                    ? { color: this.grid_color }
-                                    : {}),
-                            },
-                            border: {
-                                ...this.x_axis_format?.border,
-                                ...(this.grid_color
-                                    ? { color: this.grid_color }
-                                    : {}),
-                            },
-                        }
-                        : {
-                            type: 'time',
-                            time: {
-                                displayFormats: {
-                                    day: 'ddd',
-                                    minute: 'MMM D H:mm',
-                                    hour: 'MMM D H:mm',
-                                },
-                            },
-                            ticks: {
-                                font: { size: 11 },
-                                autoSkip: true,
-                                align: 'center',
-                                maxRotation: 0,
-                                minRotation: 0,
-                                ...(this.label_color
-                                    ? { color: this.label_color }
-                                    : {}),
-                            },
-                            ...(this.grid_color
-                                ? {
-                                    grid: { color: this.grid_color },
-                                    border: { color: this.grid_color },
-                                }
-                                : {}),
-                        },
+                    x: { ...defaultXConfig, ...(this.x_axis_format || {}) },
+                    y: { ...defaultYConfig, ...(this.y_axis_format || {}) },
                 },
-                ...this.options,
+                ...(this.options || {}),
                 plugins: {
                     tooltip: {
                         mode: 'index',
@@ -21694,6 +21648,8 @@ const AtChartBarLine = class {
                         boxHeight: 10,
                         boxPadding: 4,
                         padding: { x: 10, y: 4 },
+                        titleColor: textColors.title,
+                        bodyColor: textColors.label,
                         ...(this.tooltip_options || {}),
                         callbacks: {
                             labelColor: (ctx) => ({
@@ -21713,23 +21669,26 @@ const AtChartBarLine = class {
                             }
                         },
                         display: true,
-                        ...(this.legend_format || {}),
+                        ...(this.legend_options || {}),
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
                             fontSize: 10,
                             useBorderRadius: true,
                             borderRadius: 2,
+                            color: textColors.label,
                             generateLabels: (chart) => {
                                 const original = chartColor.Chart.defaults.plugins.legend.labels.generateLabels(chart);
                                 return original.map((label) => ({
                                     ...label,
                                     lineWidth: 0,
+                                    fontColor: textColors.label,
                                 }));
                             },
-                            ...(this.legend_format?.labels || {}),
+                            ...(this.legend_options?.labels || {}),
                         },
                     },
+                    ...(this.options?.plugins || {}),
                 },
                 clip: false,
                 elements: {
@@ -21828,7 +21787,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '85bbd4ff0d90396ab81376c7f990fdd89626c61e', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '396432bb31dacb0450b4b3aa48716304d84a2827', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'b0cc76d64ea074c4a0cbc9fa661dbc225c11e975', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '581047bc169674e8eb8ca16c1b5fb09b5f40f1c4', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

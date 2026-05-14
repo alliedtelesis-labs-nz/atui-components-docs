@@ -1,8 +1,19 @@
 import type { StoryObj } from '@storybook/web-components';
 declare const _default: {
     title: string;
+    argTypes: {
+        color_palette: {
+            control: {
+                type: string;
+            };
+            options: string[];
+        };
+    };
 };
 export default _default;
+export declare const Categorical: StoryObj;
+export declare const Sequential: StoryObj;
+export declare const AlertPalette: StoryObj;
 export declare const Bar: StoryObj;
 export declare const Line: StoryObj;
 export declare const Time: StoryObj;
