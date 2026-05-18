@@ -27,8 +27,8 @@ const trackVariantsConfig = {
 const thumbVariantsConfig = {
     variants: {
         active: {
-            false: 'bg-disabled-foreground/40 !fill-button-foreground translate-x-[-10px]',
-            true: 'bg-active-accent !fill-button-foreground-inv group-focus-within/switch:ring-active-glow translate-x-[10px] group-focus-within/switch:ring-4',
+            false: 'bg-disabled-foreground/40 !fill-button-foreground',
+            true: 'bg-active-accent !fill-button-foreground-inv group-focus-within/switch:ring-active-glow group-focus-within/switch:ring-4',
         },
         disabled: {
             false: 'cursor-pointer',
@@ -92,12 +92,14 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: 'b6acf349b127310f51a02cb543f78329a1f9a246', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '7168a04f19bd273c3420a21c5ae23414d1058102', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '314787d41c5c3fcc4ebd211f6b6bc97f3f53636a', class: "flex flex-col empty:hidden" }, h("slot", { key: '3608e00cf1efe90caa44b148bad108850f955d40', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '991a5c007f9730b6cbaba8d8825530c2ae1d12a7', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '2c5675d346edcc682b510ce01f405b7b303d1237', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ac6c06ab32936cffdfca9684ad1148485180a8c9', class: "relative flex h-20 w-40" }, h("input", { key: '6886a2724a1cf42771b8f2f26cb586652f01f822', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '2290e39edbb528ea3fc0eda13b010f991866403a', class: trackClassname }, h("at-icon", { key: '8b9f137e0019c1fbbe213b247c30aa261c107201', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname })))));
+            } }, h("div", { key: '44042993cf0710406def89c1fc0152d9dde4e000', class: "flex flex-col empty:hidden" }, h("slot", { key: '69cc4f57d95a48ae0d3f5b664bc5e9abe45edfa5', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'b5467f0794bec8844e886523f454c89a966dc694', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '7b31833d9fa09c9c307e2ad5343cead20c630fc6', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '7ba04a1052427401a51d9a5457690a589894cc62', class: "relative flex h-20 w-40" }, h("input", { key: 'fccfcb5b16a29f5d1924afbf1d6da8f9049ec455', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '5be12bedf76eae6907b4698a46e5577d79adc1a6', class: trackClassname }, h("at-icon", { key: 'b5222bd849ee5a33bfbd55bdd8dc43b4cf695f82', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+                transform: `translateX(${this.value ? '10px' : '-10px'})`,
+            } })))));
     }
     static get is() { return "at-toggle-switch"; }
     static get properties() {
