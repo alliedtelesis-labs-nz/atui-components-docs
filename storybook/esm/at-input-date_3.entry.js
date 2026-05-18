@@ -324,7 +324,7 @@ const AtToggleSwitchComponent = class {
             disabled: this.disabled,
             labelPosition: this.label_position,
         });
-        const getThumbClassname = classlist('text-icon-md absolute relative m-2 flex h-[16px] w-[16px] scale-1 items-center justify-center rounded-full text-center select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
+        const getThumbClassname = classlist('text-icon-md absolute m-2 flex h-[16px] w-[16px] items-center justify-center rounded-full text-center select-none transition-all duration-300 ease-in-out', thumbVariantsConfig);
         const thumbClassname = getThumbClassname({
             active: this.value,
             disabled: this.disabled,
@@ -334,12 +334,12 @@ const AtToggleSwitchComponent = class {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '54b5ca849c8204508943605107f17b721b3bf894', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: 'b6acf349b127310f51a02cb543f78329a1f9a246', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '63a75994b9ce15baceb27bb2030f88385caf2a4f', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '9d5379227512325c7fe0e98f654c3264ca088081', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '170b8b2352920d40972304b3674ce8faf55803bd', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '2962bdd33ca7880e6811862514abf53c367f8d68', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ee22cf4ba7d2fd82fd7d8380c0bc157f0c413c25', class: "relative flex h-20 w-40" }, h("input", { key: '64d9de4d42accf0a013b5f031321fd45c30d6a04', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '377376ed8983f719e2d118be0c7cffeb75df41f8', class: trackClassname }, h("at-icon", { key: 'dd4532fbf76e5eb1ae777d9174602ed323eac1b5', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname })))));
+            } }, h("div", { key: '314787d41c5c3fcc4ebd211f6b6bc97f3f53636a', class: "flex flex-col empty:hidden" }, h("slot", { key: '3608e00cf1efe90caa44b148bad108850f955d40', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '991a5c007f9730b6cbaba8d8825530c2ae1d12a7', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '2c5675d346edcc682b510ce01f405b7b303d1237', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ac6c06ab32936cffdfca9684ad1148485180a8c9', class: "relative flex h-20 w-40" }, h("input", { key: '6886a2724a1cf42771b8f2f26cb586652f01f822', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '2290e39edbb528ea3fc0eda13b010f991866403a', class: trackClassname }, h("at-icon", { key: '8b9f137e0019c1fbbe213b247c30aa261c107201', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname })))));
     }
 };
 
