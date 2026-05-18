@@ -37,7 +37,7 @@ const AtTextBadgeCell = class {
         this.textValue = this.params.value;
     }
     render() {
-        return (index.h(index.Host, { key: '0f5335e3e8831e428f2fc70b9285e243f292aa78', class: "flex h-full items-center" }, index.h("at-tooltip", { key: 'a9a356023d3aaecb03060fede150f18a37e0b652', position: "right", disabled: !this.params.generateTooltip }, index.h("div", { key: '6899d2195c491b5801652b73eec9c832671af48d', slot: "tooltip-trigger" }, index.h("span", { key: 'f6112b39b0455b2765392fe4d37afde0af3f09a9', class: "truncate" }, this.textValue), index.h("at-badge", { key: 'b1b71d5508377f426ecc5e500e72dbc9093e50a6', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (index.h("span", { key: '827ce34e51548547771e0f49e88c40cca7235921', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (index.h(index.Host, { key: 'd9c73e1b87c29c063a0db6d8f965f68cf37f0b6b', class: "flex h-full items-center" }, index.h("at-tooltip", { key: 'e443d59a1d523c047b305ae2e72f781143ef72f9', position: "right", disabled: !this.params.generateTooltip }, index.h("div", { key: '97cf15aa63abd961fcf0ba1d1693848fbc94a789', slot: "tooltip-trigger" }, index.h("span", { key: 'd841a42735157534bce56e7f8b4f72484daf49dd', class: "truncate" }, this.textValue), index.h("at-badge", { key: 'c84b899492cfab93504eb5c7ca2b2037c6a430dc', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (index.h("span", { key: '0fa9e86982d08c458c48242a72422a8614fcf881', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

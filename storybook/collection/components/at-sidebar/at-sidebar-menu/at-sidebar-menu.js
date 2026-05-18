@@ -7,7 +7,7 @@ import { h, Host } from "@stencil/core";
  */
 export class AtSidebarMenuComponent {
     render() {
-        return (h(Host, { key: 'dfc45d7859826696e956e90b21e9c54016bec2b0', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '04e5589b5251b8c36c42ed292251276bc9a7fc75' })));
+        return (h(Host, { key: 'b8fd4d9641c99fad6ea1d075bea5a44441beb477', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '9c6b1d2872c712a97ec223d3218507cdf71157c8' })));
     }
     static get is() { return "at-sidebar-menu"; }
     static get encapsulation() { return "scoped"; }

@@ -249,7 +249,7 @@ const AtChartBreakdown = class {
         }
     }
     render() {
-        return (h(Host, { key: 'a3ef4867cbb1ff7dff4f270eabb59a974e608515', style: { height: '100%', width: '100%' } }, h("canvas", { key: '1c6336c99bdc20b7ee764b05c7e3fcfe0430735b', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '4637229b9f04c8686a9898b2e95fe6b78177aa63', style: { height: '100%', width: '100%' } }, h("canvas", { key: '387a515fc42a85ee30eb4ca1708a26ae0c70d313', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 
