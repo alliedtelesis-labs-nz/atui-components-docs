@@ -29,7 +29,6 @@ export class AtAccordionComponent {
     default_open = false;
     accordionItems = [];
     async componentDidLoad() {
-        // Wait for child components to be ready
         await new Promise((resolve) => setTimeout(resolve, 0));
         this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
         if (this.default_open) {
@@ -90,7 +89,7 @@ export class AtAccordionComponent {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: 'cfbfa2b1c7e255e4545dd23b5e31889b8d02536e', class: "flex flex-col gap-2" }, h("slot", { key: '7011ecdc98c609e876ffebeeec4e06ece4c5a118' }), this.items &&
+        return (h(Host, { key: 'd151dc33f835f2e489059c5a868bfb7bbff26ae7', class: "flex flex-col gap-2" }, h("slot", { key: '9a4f615063ef14a0fa2cb7818b65dbe0403618c0' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

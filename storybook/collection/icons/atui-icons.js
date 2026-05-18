@@ -6,7 +6,7 @@ import Backspace from "@carbon/icons/es/delete/16";
 import Cancel from "@carbon/icons/es/close--filled/16";
 import CaretDown from "@carbon/icons/es/caret--down/16";
 import CaretUp from "@carbon/icons/es/caret--up/16";
-import Check from "@carbon/icons/es/checkmark/16";
+import Checkmark from "@carbon/icons/es/checkmark/16";
 import ChevronDown from "@carbon/icons/es/chevron--down/16";
 import ChevronLeft from "@carbon/icons/es/chevron--left/16";
 import ChevronRight from "@carbon/icons/es/chevron--right/16";
@@ -34,8 +34,8 @@ import ThumbsDownFilled from "@carbon/icons/es/thumbs-down--filled/16";
 import ThumbsUp from "@carbon/icons/es/thumbs-up/16";
 import ThumbsUpFilled from "@carbon/icons/es/thumbs-up--filled/16";
 import Warning from "@carbon/icons/es/warning--alt--filled/16";
-import SidePanelOpen from "@carbon/icons/es/side-panel--close/16";
-import SidePanelClose from "@carbon/icons/es/side-panel--open/16";
+import SidePanelOpen from "@carbon/icons/es/side-panel--open/16";
+import SidePanelClose from "@carbon/icons/es/side-panel--close/16";
 export const ATUI_ICONS = [
     { name: 'add', icon: Add },
     { name: 'arrow_left', icon: ArrowLeft },
@@ -45,7 +45,7 @@ export const ATUI_ICONS = [
     { name: 'cancel', icon: Cancel },
     { name: 'caret_down', icon: CaretDown },
     { name: 'caret_up', icon: CaretUp },
-    { name: 'check', icon: Check },
+    { name: 'checkmark', icon: Checkmark },
     { name: 'chevron_down', icon: ChevronDown },
     { name: 'chevron_left', icon: ChevronLeft },
     { name: 'chevron_right', icon: ChevronRight },
@@ -61,8 +61,8 @@ export const ATUI_ICONS = [
     { name: 'info', icon: Info },
     { name: 'info_filled', icon: InfoFilled },
     { name: 'last_page', icon: LastPage },
-    { name: 'menu', icon: SidePanelOpen },
-    { name: 'menu_close', icon: SidePanelClose },
+    { name: 'menu_expand', icon: SidePanelOpen },
+    { name: 'menu_collapse', icon: SidePanelClose },
     { name: 'overflow_menu', icon: OverflowMenu },
     { name: 'retry', icon: Retry },
     { name: 'schedule', icon: Schedule },
