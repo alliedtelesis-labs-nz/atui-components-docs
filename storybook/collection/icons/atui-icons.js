@@ -22,8 +22,6 @@ import Help from "@carbon/icons/es/help/16";
 import Info from "@carbon/icons/es/information/16";
 import InfoFilled from "@carbon/icons/es/information--filled/16";
 import LastPage from "@carbon/icons/es/page--last/16";
-import Menu from "@carbon/icons/es/menu/16";
-import MenuClose from "@carbon/icons/es/query-queue/16";
 import OverflowMenu from "@carbon/icons/es/overflow-menu--vertical/16";
 import Retry from "@carbon/icons/es/watson-health/rotate--360/16";
 import Schedule from "@carbon/icons/es/event--schedule/16";
@@ -36,6 +34,8 @@ import ThumbsDownFilled from "@carbon/icons/es/thumbs-down--filled/16";
 import ThumbsUp from "@carbon/icons/es/thumbs-up/16";
 import ThumbsUpFilled from "@carbon/icons/es/thumbs-up--filled/16";
 import Warning from "@carbon/icons/es/warning--alt--filled/16";
+import SidePanelOpen from "@carbon/icons/es/side-panel--close/16";
+import SidePanelClose from "@carbon/icons/es/side-panel--open/16";
 export const ATUI_ICONS = [
     { name: 'add', icon: Add },
     { name: 'arrow_left', icon: ArrowLeft },
@@ -61,8 +61,8 @@ export const ATUI_ICONS = [
     { name: 'info', icon: Info },
     { name: 'info_filled', icon: InfoFilled },
     { name: 'last_page', icon: LastPage },
-    { name: 'menu', icon: Menu },
-    { name: 'menu_close', icon: MenuClose },
+    { name: 'menu', icon: SidePanelOpen },
+    { name: 'menu_close', icon: SidePanelClose },
     { name: 'overflow_menu', icon: OverflowMenu },
     { name: 'retry', icon: Retry },
     { name: 'schedule', icon: Schedule },
