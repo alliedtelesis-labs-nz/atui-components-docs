@@ -1,8 +1,16 @@
 import { h, } from "@stencil/core";
 import { GridStack, } from "gridstack";
-const DEFAULT_SIZE = {
-    w: 2,
-    h: 2,
+const MIN_SIZE = { w: 2, h: 2 };
+const MAX_SIZE = { w: 100, h: 100 };
+const clampWidgetWidth = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.w), MAX_SIZE.w);
+const clampWidgetHeight = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.h), MAX_SIZE.h);
+const clampWidgetMaxWidth = (value) => {
+    const resolvedValue = value == null || value <= 0 ? MAX_SIZE.w : value;
+    return Math.min(Math.max(resolvedValue, MIN_SIZE.w), MAX_SIZE.w);
+};
+const clampWidgetMaxHeight = (value) => {
+    const resolvedValue = value == null || value <= 0 ? MAX_SIZE.h : value;
+    return Math.min(Math.max(resolvedValue, MIN_SIZE.h), MAX_SIZE.h);
 };
 export class AtDashboard {
     el;
@@ -50,8 +58,8 @@ export class AtDashboard {
                     Object.assign(dashboardItem, {
                         x: item.x,
                         y: item.y,
-                        w: item.w ?? DEFAULT_SIZE.w,
-                        h: item.h ?? DEFAULT_SIZE.h,
+                        w: clampWidgetWidth(item.w, MIN_SIZE.w),
+                        h: clampWidgetHeight(item.h, MIN_SIZE.h),
                     });
                     this.changedItem.emit(dashboardItem);
                 }
@@ -63,8 +71,8 @@ export class AtDashboard {
                 id: el.id,
                 x: node.x,
                 y: node.y,
-                w: node.w ?? DEFAULT_SIZE.w,
-                h: node.h ?? DEFAULT_SIZE.h,
+                w: clampWidgetWidth(node.w, MIN_SIZE.w),
+                h: clampWidgetHeight(node.h, MIN_SIZE.h),
             };
             this.resizeChartComponents(el);
             this.resizeDragEvent.emit(dashboardItem);
@@ -90,10 +98,10 @@ export class AtDashboard {
             y: widget.y,
             w: widget.w,
             h: widget.h,
-            minW: widget.minW ?? DEFAULT_SIZE.w,
-            minH: widget.minH ?? DEFAULT_SIZE.h,
-            maxW: widget.maxW ?? 100,
-            maxH: widget.maxH ?? 100,
+            minW: clampWidgetWidth(widget.minW, MIN_SIZE.w),
+            minH: clampWidgetHeight(widget.minH, MIN_SIZE.h),
+            maxW: clampWidgetMaxWidth(widget.maxW),
+            maxH: clampWidgetMaxHeight(widget.maxH),
         };
         this.grid.makeWidget(elSelector, options);
     }
@@ -117,7 +125,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '43f0386459cf172495c8fae401257d996f64dded', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '458d6ee7da6a34d916f623e9d83ab2f08214c1d4', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }
