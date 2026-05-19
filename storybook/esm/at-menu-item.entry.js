@@ -8,7 +8,7 @@ const variantsConfig = {
             false: null,
         },
         active: {
-            true: 'bg-active-foreground/15 text-active',
+            true: 'text-button-primary-foreground fill-button-primary-foreground bg-button-primary-background/10',
             false: 'hover:bg-surface-1',
         },
     },
@@ -40,7 +40,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '79db72ae8086a562884a1a8145ba9d436d34ab1c', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: '34b1dda1114775ea9f9b4068b012cbab33d58d7a', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -48,7 +48,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: '60df9fc250c249ccd6f86140aaafe87789af47fc', class: "flex flex-grow" }, h("slot", { key: 'ccb15d186a49c709ac4c43a8aa0d66463e485321', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '039de6249706c639f2a11d7f76bc7db825b73274', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '3a888ef9dfd68ca4217da44ad65d2efe67af4e11' })), h("slot", { key: '8f3c2e2aef2e38311d5120b7a9ef815971d12e74', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: 'b406a5db26fb8000aadce8f50c2c82be2b59a1e4', class: "flex flex-grow" }, h("slot", { key: '10b1edc5b6093cebaa2937bde741d8f04c6676e8', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'd55aa9159e9c9656da07d4239e443489f6004b6e', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '512ae95582274a78766900f266db74bfd900bb8d' })), h("slot", { key: '501f5f8e390c1665b4554d99dec25384ec9ea6d8', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

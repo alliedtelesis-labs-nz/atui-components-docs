@@ -32,11 +32,11 @@ const AtMultiBtnCell = class {
     }
     get buttonsToRender() {
         return this.buttons.map((button) => {
-            return (index.h("at-tooltip", { position: "right", disabled: !button.tooltip }, button && (index.h("at-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (index.h("span", { class: `leading-normal` }, button.tooltip))));
+            return (index.h("at-tooltip", { position: "top", disabled: !button.tooltip, class: "h-fit self-center" }, button && (index.h("at-button", { slot: "tooltip-trigger", type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (index.h("span", { class: `leading-normal` }, button.tooltip))));
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'ca79d38e2e6d88d79e09d8771722ac2de25e642a', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: 'f922f3fee1e24c275b88a2cb0702ae89a8451645', class: "flex h-full items-center" }, this.buttonsToRender));
     }
 };
 

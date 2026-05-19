@@ -2680,6 +2680,11 @@ strong {
   height: 100dvh;
 }
 
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .h-full {
   height: 100%;
 }
@@ -3076,6 +3081,10 @@ strong {
   text-overflow: ellipsis;
 }
 
+.whitespace-normal {
+  white-space: normal;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -3319,10 +3328,6 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
-.bg-active-foreground\/15 {
-  background-color: color-mix(in srgb, var(--token-state-active-foreground) 15%, transparent);
-}
-
 .bg-button-destructive {
   --tw-bg-opacity:
       1;
@@ -3333,6 +3338,10 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: color-mix(in srgb, var(--token-button-primary-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
+.bg-button-primary-background\/10 {
+  background-color: color-mix(in srgb, var(--token-button-primary-background) 10%, transparent);
 }
 
 .bg-button-secondary-background {
@@ -3708,6 +3717,11 @@ strong {
   padding-bottom: 8px;
 }
 
+.py-\[2px\] {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .py-\[6px\] {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -3869,12 +3883,6 @@ strong {
   --tw-text-opacity:
       1 !important;
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
-}
-
-.text-active {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-active-default) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-active-accent {

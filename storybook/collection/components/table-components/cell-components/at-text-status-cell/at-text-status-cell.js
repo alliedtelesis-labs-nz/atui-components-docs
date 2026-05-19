@@ -38,7 +38,7 @@ export class AtTextStatusCellComponent {
     render() {
         return (h(Host, { key: '30c5b4e98b7204d89f163036e27f9d5775b30fac', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'bf239681fd4a53644d7975c7fc24d1697eff3dde', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
-            (this.params.generateTooltip ? (h("at-tooltip", { position: "right" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
+            (this.params.generateTooltip ? (h("at-tooltip", { position: "top", class: "h-fit self-center" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
     }
     static get is() { return "at-text-status-cell"; }
     static get states() {

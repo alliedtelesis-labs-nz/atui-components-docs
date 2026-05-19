@@ -30,11 +30,11 @@ export class AtMultiBtnCell {
     }
     get buttonsToRender() {
         return this.buttons.map((button) => {
-            return (h("at-tooltip", { position: "right", disabled: !button.tooltip }, button && (h("at-button", { type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (h("span", { class: `leading-normal` }, button.tooltip))));
+            return (h("at-tooltip", { position: "top", disabled: !button.tooltip, class: "h-fit self-center" }, button && (h("at-button", { slot: "tooltip-trigger", type: "secondaryText", label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (h("span", { class: `leading-normal` }, button.tooltip))));
         });
     }
     render() {
-        return (h(Host, { key: 'ca79d38e2e6d88d79e09d8771722ac2de25e642a', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (h(Host, { key: 'f922f3fee1e24c275b88a2cb0702ae89a8451645', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     static get is() { return "at-multi-btn-cell"; }
     static get states() {
