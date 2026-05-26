@@ -336,10 +336,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-button_2.entry.js').then(processMod, consoleError);
-                case 'at-placeholder_6':
+                case 'at-control-group_7':
                     return import(
                       /* webpackMode: "lazy" */
-                      './at-placeholder_6.entry.js').then(processMod, consoleError);
+                      './at-control-group_7.entry.js').then(processMod, consoleError);
                 case 'at-column-manager_3':
                     return import(
                       /* webpackMode: "lazy" */

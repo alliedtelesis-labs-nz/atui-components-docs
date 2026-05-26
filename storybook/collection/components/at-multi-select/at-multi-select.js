@@ -297,22 +297,22 @@ export class AtMultiSelectComponent {
         return result;
     }
     render() {
-        return (h(Host, { key: '83d79ef484117e5bbb2280249beb9a8146c78e9a', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'd71bb9232911093bdcc4011bbd21744c623e4102', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '593b1ee352b44fac2399adf8328f226d3fbd12e5', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '539adca8008f32ce8eadcba5751fc7c8de5a9c21', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'd5405397ad8927c2880c59e11a51fe6e7b1d5ec7' }, this.error_text && this.invalid && (h("span", { key: '4d3806a578b869b4343bb34c74c01bd8482c961b', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '6262390e32cb88c991cf72e9c384511f3e9ae4be' }, this.error_text && this.invalid && (h("span", { key: '60167a4e0d0385323d1887a5351967eca2c2251d', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist('placeholder-text-muted transition[background-color,color,box-shadow] relative flex min-h-36 min-h-[36px] w-full flex-shrink flex-grow basis-0 gap-4 rounded-input border border-solid py-4 pr-24 pl-8 duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0', inputVariantsConfig);
+        const getClassname = classlist(`placeholder-text-muted transition[background-color,color,box-shadow] relative flex h-input min-h-input w-full gap-4 rounded-input border border-solid py-4 pr-24 pl-input-x duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
@@ -324,7 +324,7 @@ export class AtMultiSelectComponent {
     renderOptions() {
         return (h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "bg-menu relative z-10 p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: `transition[background-color,color] bg-input-background ring-active rounded-input mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring`, placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {

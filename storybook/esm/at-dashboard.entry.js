@@ -6412,8 +6412,15 @@ const AtDashboard = class {
                     { w: 1280, c: 16, layout: 'compact' }, // medium — proportional half-size
                 ],
             },
+            // Prevent drag from firing when the user clicks interactive
+            // elements inside a widget (selects, inputs, buttons, links).
+            draggable: {
+                cancel: 'select, input, textarea, button, a, [contenteditable], [role="button"], [role="listbox"], [role="option"]',
+            },
         }, this.gridContainerRef);
-        this.layoutWidgets();
+        // Register handlers BEFORE layoutWidgets() so the 'added' events that fire
+        // during makeWidget() are captured and resizeChartComponents runs for every
+        // widget on the initial load — not just after subsequent drag/resize actions.
         this.grid.on('added change', (_event, items) => {
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
@@ -6426,6 +6433,9 @@ const AtDashboard = class {
                     });
                     this.changedItem.emit(dashboardItem);
                 }
+                // Always notify chart components so compact mode is evaluated
+                // both on initial add and whenever a widget moves/resizes.
+                this.resizeChartComponents(item.el);
             });
         });
         this.grid.on('resizestop dragstop', (_event, el) => {
@@ -6440,6 +6450,7 @@ const AtDashboard = class {
             this.resizeChartComponents(el);
             this.resizeDragEvent.emit(dashboardItem);
         });
+        this.layoutWidgets();
     }
     componentDidUpdate() {
         this.layoutWidgets();
@@ -6478,17 +6489,28 @@ const AtDashboard = class {
             'at-chart-bar',
             'at-chart-line',
         ];
+        // Measure the actual constrained height GridStack has assigned to this widget.
+        const contentEl = element.querySelector('.grid-stack-item-content');
+        const contentHeight = contentEl?.getBoundingClientRect().height ?? 0;
+        const widgetId = element.id;
         chartSelectors.forEach((selector) => {
-            const charts = element.querySelectorAll(selector);
+            // Stencil's shadow:false slot polyfill leaves slot content as a direct
+            // child of at-dashboard, not relocated inside grid-stack-item.
+            // Search both the grid item subtree and the at-dashboard light DOM
+            // subtree that belongs to this widget (identified by slot="widgetId").
+            let charts = element.querySelectorAll(selector);
+            if (charts.length === 0 && widgetId) {
+                charts = this.el.querySelectorAll(`[slot="${widgetId}"] ${selector}`);
+            }
             charts.forEach((chart) => {
                 if (typeof chart.resize === 'function') {
-                    chart.resize();
+                    chart.resize(contentHeight);
                 }
             });
         });
     }
     render() {
-        return (h("div", { key: '458d6ee7da6a34d916f623e9d83ab2f08214c1d4', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '9126ce4e94281f5b47032826617b6c7252a66418', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }

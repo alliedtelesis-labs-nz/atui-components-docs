@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../stencil-public-runtime';
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import { AtChartColorPalette } from '../../types/chart-color';
 export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
@@ -22,19 +23,27 @@ export declare class AtChartBreakdown {
     /**
      * Height of the chart
      */
-    height?: AtChartHeight;
+    height: AtChartHeight;
     /**
      * Position of the legend
      */
     legend_position: AtLegendPosition;
     /**
-     * Additional options for formatting the legend
+     * Options merged into the legend plugin config. ATUI defaults are preserved
+     * unless explicitly overridden.
      */
-    legend_format?: object;
+    legend_options?: object;
     /**
-     * Additional options for the tooltip
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved
+     * unless explicitly overridden.
      */
     tooltip_options?: object;
+    /**
+     * Pass the active theme value here to trigger a chart redraw when the theme
+     * changes. The value itself is not used — any change to this prop causes the
+     * chart to reinitialise so colors and text are re-read from CSS variables.
+     */
+    refresh_theme?: string;
     /**
      * Additional plugin options
      */
@@ -61,6 +70,30 @@ export declare class AtChartBreakdown {
      * Default is 70.
      */
     cutout?: number;
+    /**
+     * Emitted when a legend item is toggled. The event detail contains the
+     * zero-based `index` of the toggled segment and `visible` — true if the
+     * segment is now visible, false if it was hidden.
+     */
+    atuiLegendToggle: EventEmitter<{
+        index: number;
+        visible: boolean;
+    }>;
+    el: HTMLElement;
+    /** Tracks whether the rendered height is below the compact threshold. */
+    isSmall: boolean;
+    /** Tracks the canvas height set by Chart.js so the side-text div can be positioned next to it. */
+    compactOffset: number;
+    private readonly SMALL_HEIGHT_THRESHOLD;
+    /**
+     * Prevents initChart() from being re-called when only compactOffset changed
+     * (i.e. the compact plugin updated the side-text position but the chart
+     * config itself doesn't need rebuilding).
+     */
+    private skipInitOnUpdate;
+    /** Mirrors isSmall at the point initChart() last ran, so componentDidUpdate
+     *  can tell whether isSmall actually changed versus just compactOffset. */
+    private lastIsSmall;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;
@@ -70,25 +103,55 @@ export declare class AtChartBreakdown {
      */
     getConfig(): Promise<object>;
     /**
-     * Manually trigger a chart resize to fit container dimensions
+     * Manually trigger a chart resize to fit container dimensions.
+     * @param containerHeight Optional pixel height of the widget container (e.g. from at-dashboard
+     * after a GridStack drag/resize). When provided, compact mode is evaluated against this height
+     * rather than the component's own (potentially feedback-inflated) height.
      */
-    resize(): Promise<void>;
-    defaultPieTooltipOptions: {
-        mode: string;
-        intersect: boolean;
-        position: string;
-        animation: {
-            duration: number;
-        };
-    };
+    resize(containerHeight?: number): Promise<void>;
+    private toggleItemVisibility;
+    /**
+     * When only center_value changes (e.g. because a legend item was toggled and
+     * Angular recomputed the visible sum), we don't need to tear down and recreate
+     * the whole chart — that would reset Chart.js's internal visibility state.
+     * Instead, skip the next componentDidUpdate re-init and just re-render the
+     * canvas so the DrawCenterTextPlugin picks up the new value.
+     */
+    onCenterValueChanged(): void;
     private getDrawCenterTextPlugin;
+    /**
+     * Custom plugin that positions the doughnut flush to the left edge of the
+     * canvas and draws the legend manually starting immediately to its right.
+     * This replaces the built-in legend (which just centers the donut in the
+     * remaining space and can leave large gaps).
+     *
+     * Supports the same toggle-visibility interaction as the built-in legend:
+     * clicking an item hides/shows the corresponding slice (with strikethrough
+     * and dimming), and hovering shows a pointer cursor.
+     */
+    private getLeftAlignPlugin;
+    /**
+     * Chart.js plugin that fires whenever Chart.js finishes resizing the canvas
+     * (both on initial construction via its internal ResizeObserver, and on
+     * explicit chart.resize() calls). Used to keep compactOffset in sync with
+     * the actual canvas height so the side-text div is positioned correctly.
+     * Also self-corrects isSmall if a premature measurement put the component
+     * into compact mode when it should be large.
+     */
+    private getCompactOffsetPlugin;
+    /**
+     * Plugin that hides the built-in Chart.js legend before layout whenever the
+     * canvas is too narrow or too short to display it in full. Runs on every
+     * layout cycle so it responds to resize automatically.
+     */
+    private getLegendOverflowPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,
      * it will throw an error. So we catch this, and wait for the props to be passed
-     * to the component where it will run componentDidUpdtae.
+     * to the component where it will run componentDidUpdate.
      */
     componentDidLoad(): void;
     render(): any;

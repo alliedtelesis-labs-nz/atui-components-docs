@@ -31,6 +31,7 @@ import { AtChipListCell as AtChipListCellElement, defineCustomElement as defineA
 import { AtChipList as AtChipListElement, defineCustomElement as defineAtChipList } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chip-list.js";
 import { AtColorStatusCell as AtColorStatusCellElement, defineCustomElement as defineAtColorStatusCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-color-status-cell.js";
 import { AtColumnManager as AtColumnManagerElement, defineCustomElement as defineAtColumnManager } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-column-manager.js";
+import { AtControlGroup as AtControlGroupElement, defineCustomElement as defineAtControlGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-control-group.js";
 import { AtCustomTimeRange as AtCustomTimeRangeElement, defineCustomElement as defineAtCustomTimeRange } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-custom-time-range.js";
 import { AtDashboard as AtDashboardElement, defineCustomElement as defineAtDashboard } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dashboard.js";
 import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dialog.js";
@@ -255,14 +256,19 @@ export const AtChartBarLine: StencilReactComponent<AtChartBarLineElement, AtChar
     defineCustomElement: defineAtChartBarLine
 });
 
-type AtChartBreakdownEvents = NonNullable<unknown>;
+type AtChartBreakdownEvents = {
+    onAtuiLegendToggle: EventName<CustomEvent<{
+        index: number;
+        visible: boolean;
+    }>>
+};
 
 export const AtChartBreakdown: StencilReactComponent<AtChartBreakdownElement, AtChartBreakdownEvents> = /*@__PURE__*/ createComponent<AtChartBreakdownElement, AtChartBreakdownEvents>({
     tagName: 'at-chart-breakdown',
     elementClass: AtChartBreakdownElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtChartBreakdownEvents,
+    events: { onAtuiLegendToggle: 'atuiLegendToggle' } as AtChartBreakdownEvents,
     defineCustomElement: defineAtChartBreakdown
 });
 
@@ -363,6 +369,17 @@ export const AtColumnManager: StencilReactComponent<AtColumnManagerElement, AtCo
     react: React,
     events: { onAtChange: 'atChange' } as AtColumnManagerEvents,
     defineCustomElement: defineAtColumnManager
+});
+
+type AtControlGroupEvents = NonNullable<unknown>;
+
+export const AtControlGroup: StencilReactComponent<AtControlGroupElement, AtControlGroupEvents> = /*@__PURE__*/ createComponent<AtControlGroupElement, AtControlGroupEvents>({
+    tagName: 'at-control-group',
+    elementClass: AtControlGroupElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtControlGroupEvents,
+    defineCustomElement: defineAtControlGroup
 });
 
 type AtCustomTimeRangeEvents = {

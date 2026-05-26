@@ -45,6 +45,8 @@ export { AtColorStatusCell as AtColorStatusCell } from '../types/components/tabl
 export { defineCustomElement as defineCustomElementAtColorStatusCell } from './at-color-status-cell';
 export { AtColumnManagerComponent as AtColumnManager } from '../types/components/table-components/at-column-manager/at-column-manager';
 export { defineCustomElement as defineCustomElementAtColumnManager } from './at-column-manager';
+export { AtControlGroup as AtControlGroup } from '../types/components/at-control-group/at-control-group';
+export { defineCustomElement as defineCustomElementAtControlGroup } from './at-control-group';
 export { AtCustomTimeRangeComponent as AtCustomTimeRange } from '../types/components/at-time-range/at-custom-time-range/at-custom-time-range';
 export { defineCustomElement as defineCustomElementAtCustomTimeRange } from './at-custom-time-range';
 export { AtDashboard as AtDashboard } from '../types/components/at-dashboard/at-dashboard';

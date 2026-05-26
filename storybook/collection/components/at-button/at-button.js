@@ -7,62 +7,25 @@ const buttonVariantsConfig = {
             true: 'pointer-events-none opacity-30 grayscale-[1]',
         },
         size: {
-            sm: 'py-4',
-            md: 'py-[6px]',
-            lg: 'py-8',
+            sm: 'h-button-sm py-button-sm px-button-sm',
+            md: 'h-button-md py-button-md px-button-md',
+            lg: 'h-button-lg py-button-lg px-button-lg',
         },
         type: {
             primary: 'bg-button-primary-background text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
             primaryOutline: 'border-button-primary text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
             primaryText: 'text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
-            secondary: 'bg-button-secondary-background text-button-secondary-foreground fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
+            secondary: 'bg-button-secondary-background text-button-secondary-foreground fill-button-secondary-foreground focus-visible:ring-active-glow focus-visible:ring',
             secondaryOutline: 'border-muted text-button-accent fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
             secondaryText: 'text-button-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
             destructive: 'bg-button-destructive text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
             destructiveOutline: 'border-button-destructive text-button-destructive fill-button-destructive focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
             destructiveText: 'text-button-destructive-foreground fill-button-destructive focus-visible:ring-destructive-foreground/30 bg-transparent focus-visible:ring-2',
         },
-        hasLabel: {
-            true: null,
-            false: null,
-        },
     },
-    compoundVariants: [
-        {
-            size: 'sm',
-            hasLabel: false,
-            class: 'px-4',
-        },
-        {
-            size: 'sm',
-            hasLabel: true,
-            class: 'px-8',
-        },
-        {
-            size: 'md',
-            hasLabel: false,
-            class: 'px-[6px]',
-        },
-        {
-            size: 'md',
-            hasLabel: true,
-            class: 'px-8',
-        },
-        {
-            size: 'lg',
-            hasLabel: false,
-            class: 'px-8',
-        },
-        {
-            size: 'lg',
-            hasLabel: true,
-            class: 'px-[12px]',
-        },
-    ],
     defaultVariants: {
         size: 'lg',
         type: 'primary',
-        hasLabel: true,
         disabled: false,
     },
 };
@@ -98,7 +61,7 @@ const spinnerColourPerType = {
  * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
  * @slot icon - Carbon icon placed before the label
  * @slot icon_after - Carbon icon placed after the label
- * @slot - Placed after the label, but before the icon_after. Can be used as a replacement for the label prop.
+ * @slot - Placed after the label, but before the icon_after. Can be used as a replacement for the label prop. Raw text should be wrapped in a `<span>` so CSS icon-only detection works correctly.
  */
 export class AtButtonComponent {
     /**
@@ -191,14 +154,23 @@ export class AtButtonComponent {
             disabled: this.disabled,
             size: this.size,
             type: this.type,
-            hasLabel: !!this.label,
         });
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: '8bc949b1dd09be4ae6c5b38b2e2408ff2d23ba68', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '8458dd3dee73eefb768130aa3b7dc653e85da409', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '21f9f419590f8fcca2cf27eaf8c9b71bf10d48a0', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '6acf6a80db237ff41ca61122701ddb43e2232176', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'a5acdec0dcb3641cf80d660e24eea9f3b6336926', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'c5c0f6e24a7786a11a7afabec9cd1ed16cdabdc1' }), !this.in_progress && (h("slot", { key: '708e40b3d529124ed3163ba8a7d301f0af072135', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '736624a3fec55d0b53322259490bc581b08e38d6', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '760cd511fa23bbabbeceeed6c471c93433ffccf1', class: classname, role: "button", tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '8c726df6f10f99042ab9820387800d758f3ba552', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '120844f7444937ffb2e4aca868ba966eafa3a3e7', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: 'dd70fd940b4632393c876c031f628e1a9d30e8cd', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'f8c9ee9eacfd3feec52e5a3ad0e52be5d34192c9', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '1e72502a0d0c751c506b84cee79321f76bb02550' }), !this.in_progress && (h("slot", { key: '281512339a4c132b5d5530df13b78e586e4ad796', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '0477c4a086775b30d0b7f9ef8ab4c0b6577df104', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get is() { return "at-button"; }
+    static get originalStyleUrls() {
+        return {
+            "$": ["at-button.scss"]
+        };
+    }
+    static get styleUrls() {
+        return {
+            "$": ["at-button.css"]
+        };
+    }
     static get properties() {
         return {
             "submit": {

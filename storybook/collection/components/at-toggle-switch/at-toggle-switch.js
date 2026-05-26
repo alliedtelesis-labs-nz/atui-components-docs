@@ -19,8 +19,8 @@ const trackVariantsConfig = {
             true: 'shadow-inset-xs cursor-default',
         },
         active: {
-            false: 'border-input bg-disabled-background border border-solid',
-            true: 'bg-active-accent/30 border-primary group-focus-within/switch:ring-active-glow-accent group-focus-within/switch:ring-1',
+            false: 'bg-disabled-background',
+            true: 'bg-active-accent/30',
         },
     },
 };
@@ -77,7 +77,7 @@ export class AtToggleSwitchComponent {
         this.atuiChange.emit(change);
     }
     render() {
-        const getClassname = classlist('group/switch transition transition[background-color] ease-in-out duration-fast outline-active flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-input p-8 outline-0 outline-none', variantsConfig);
+        const getClassname = classlist('group/switch transition transition[background-color,border] ease-in-out duration-fast outline-active flex w-fit cursor-pointer items-center gap-8 rounded-full rounded-input p-8 outline-0 outline-none', variantsConfig);
         const classname = getClassname({
             disabled: this.disabled,
             labelPosition: this.label_position,
@@ -87,17 +87,17 @@ export class AtToggleSwitchComponent {
             active: this.value,
             disabled: this.disabled,
         });
-        const getTrackClassname = classlist('absolute top-0 right-0 bottom-0 left-0 flex h-[20px] w-[40px] items-center justify-center rounded-full align-middle [transition:0.2s]', trackVariantsConfig);
+        const getTrackClassname = classlist('absolute border border-solid border-input top-0 right-0 bottom-0 left-0 flex h-[20px] w-[40px] items-center justify-center rounded-full align-middle transition-all duration-300 ease-in-out', trackVariantsConfig);
         const trackClassname = getTrackClassname({
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '7168a04f19bd273c3420a21c5ae23414d1058102', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '79aa88cde62e74474cca37bfd6e7e83fd56abcc0', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '44042993cf0710406def89c1fc0152d9dde4e000', class: "flex flex-col empty:hidden" }, h("slot", { key: '69cc4f57d95a48ae0d3f5b664bc5e9abe45edfa5', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'b5467f0794bec8844e886523f454c89a966dc694', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '7b31833d9fa09c9c307e2ad5343cead20c630fc6', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '7ba04a1052427401a51d9a5457690a589894cc62', class: "relative flex h-20 w-40" }, h("input", { key: 'fccfcb5b16a29f5d1924afbf1d6da8f9049ec455', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '5be12bedf76eae6907b4698a46e5577d79adc1a6', class: trackClassname }, h("at-icon", { key: 'b5222bd849ee5a33bfbd55bdd8dc43b4cf695f82', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+            } }, h("div", { key: '2bc007ee55df1220aed0b12a534bc797cd06c690', class: "flex flex-col empty:hidden" }, h("slot", { key: 'a346e10e0c613cb3796f94e8ababf507167652ae', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '2cdacfee2a50ae67ed090ec0790ac25ec2dc6601', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '899423ed4d81018d2aa56e2c6a5b37bc8b2001b9', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ce6d1bb7f0093e3cfe0c6f3ee13fd5c82fbea9ea', class: "relative flex h-20 w-40" }, h("input", { key: 'b24ed97b383c5729a44b978ebfa88d133997762c', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '93597700b1d3778a057d680084d8f4b522be74e2', class: trackClassname }, h("at-icon", { key: 'bb8471dc83eafc90cefeec2187654777735b0187', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
                 transform: `translateX(${this.value ? '10px' : '-10px'})`,
             } })))));
     }

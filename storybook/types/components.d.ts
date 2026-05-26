@@ -22,6 +22,7 @@ import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-gr
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
+import { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
 import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtHeaderSizes } from "./components/at-header/at-header";
@@ -68,6 +69,7 @@ export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-gr
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
+export { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
 export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtHeaderSizes } from "./components/at-header/at-header";
@@ -583,12 +585,11 @@ export namespace Components {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight1;
+        "height": AtChartHeight1;
         /**
-          * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "legend_format"?: object;
+        "legend_options"?: object;
         /**
           * Position of the legend
           * @default 'right'
@@ -603,12 +604,16 @@ export namespace Components {
          */
         "plugins"?: Plugin[];
         /**
-          * Manually trigger a chart resize to fit container dimensions
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from CSS variables.
          */
-        "resize": () => Promise<void>;
+        "refresh_theme"?: string;
         /**
-          * Additional options for the tooltip
-          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
+          * Manually trigger a chart resize to fit container dimensions.
+          * @param containerHeight Optional pixel height of the widget container (e.g. from at-dashboard after a GridStack drag/resize). When provided, compact mode is evaluated against this height rather than the component's own (potentially feedback-inflated) height.
+         */
+        "resize": (containerHeight?: number) => Promise<void>;
+        /**
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
@@ -820,6 +825,17 @@ export namespace Components {
           * Column definitions used in your at-table
          */
         "col_defs": ColDef[];
+    }
+    /**
+     * @category Layout
+     * @description A layout wrapper that merges adjacent buttons or inputs into a visually joined group by removing interior border-radius on touching edges.
+     */
+    interface AtControlGroup {
+        /**
+          * Layout direction of the grouped elements.
+          * @default 'horizontal'
+         */
+        "direction": AtControlGroupDirection;
     }
     interface AtCustomTimeRange {
         /**
@@ -3122,6 +3138,10 @@ export interface AtButtonSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtButtonSwitchElement;
 }
+export interface AtChartBreakdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtChartBreakdownElement;
+}
 export interface AtCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtCheckboxElement;
@@ -3511,11 +3531,25 @@ declare global {
         prototype: HTMLAtChartBarLineElement;
         new (): HTMLAtChartBarLineElement;
     };
+    interface HTMLAtChartBreakdownElementEventMap {
+        "atuiLegendToggle": {
+        index: number;
+        visible: boolean;
+    };
+    }
     /**
      * @category Data Visualization
      * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
      */
     interface HTMLAtChartBreakdownElement extends Components.AtChartBreakdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtChartBreakdownElementEventMap>(type: K, listener: (this: HTMLAtChartBreakdownElement, ev: AtChartBreakdownCustomEvent<HTMLAtChartBreakdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtChartBreakdownElementEventMap>(type: K, listener: (this: HTMLAtChartBreakdownElement, ev: AtChartBreakdownCustomEvent<HTMLAtChartBreakdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtChartBreakdownElement: {
         prototype: HTMLAtChartBreakdownElement;
@@ -3657,6 +3691,16 @@ declare global {
     var HTMLAtColumnManagerElement: {
         prototype: HTMLAtColumnManagerElement;
         new (): HTMLAtColumnManagerElement;
+    };
+    /**
+     * @category Layout
+     * @description A layout wrapper that merges adjacent buttons or inputs into a visually joined group by removing interior border-radius on touching edges.
+     */
+    interface HTMLAtControlGroupElement extends Components.AtControlGroup, HTMLStencilElement {
+    }
+    var HTMLAtControlGroupElement: {
+        prototype: HTMLAtControlGroupElement;
+        new (): HTMLAtControlGroupElement;
     };
     interface HTMLAtCustomTimeRangeElementEventMap {
         "atuiCancel": null;
@@ -4865,6 +4909,7 @@ declare global {
         "at-chip-list-cell": HTMLAtChipListCellElement;
         "at-color-status-cell": HTMLAtColorStatusCellElement;
         "at-column-manager": HTMLAtColumnManagerElement;
+        "at-control-group": HTMLAtControlGroupElement;
         "at-custom-time-range": HTMLAtCustomTimeRangeElement;
         "at-dashboard": HTMLAtDashboardElement;
         "at-dialog": HTMLAtDialogElement;
@@ -5404,7 +5449,7 @@ declare namespace LocalJSX {
         /**
           * Data to be shown in the chart. ChartDataset properties can be found [here](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
          */
-        "data"?: {
+        "data": {
         labels: string[];
         datasets: ChartDataset[];
     };
@@ -5414,15 +5459,21 @@ declare namespace LocalJSX {
          */
         "height"?: AtChartHeight1;
         /**
-          * Additional options for formatting the legend
-          * @default {         labels: {             boxWidth: 10,             boxHeight: 10,             fontSize: 11,         },         onHover: (event): void => {             if (event.native) {                 (event.native.target as HTMLElement).style.cursor = 'pointer';             }         },          onClick: (_evt, legendItem, legend) => {             const chart = legend.chart;             const idx = legendItem.index;             chart.toggleDataVisibility(idx);             const anyVisible = chart.data.labels?.some((_, i) =>                 chart.getDataVisibility(i),             );             if (chart.options.plugins?.tooltip) {                 chart.options.plugins.tooltip.enabled = !!anyVisible;             }             chart.update();         },         display: true,     }
+          * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
-        "legend_format"?: object;
+        "legend_options"?: object;
         /**
           * Position of the legend
           * @default 'right'
          */
         "legend_position"?: AtLegendPosition;
+        /**
+          * Emitted when a legend item is toggled. The event detail contains the zero-based `index` of the toggled segment and `visible` — true if the segment is now visible, false if it was hidden.
+         */
+        "onAtuiLegendToggle"?: (event: AtChartBreakdownCustomEvent<{
+        index: number;
+        visible: boolean;
+    }>) => void;
         /**
           * Additional options to be added to the chart configuration
          */
@@ -5432,8 +5483,11 @@ declare namespace LocalJSX {
          */
         "plugins"?: Plugin[];
         /**
-          * Additional options for the tooltip
-          * @default {         mode: 'nearest',         intersect: true,         position: 'nearest',     }
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colors and text are re-read from CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
@@ -5652,6 +5706,17 @@ declare namespace LocalJSX {
           * Custom event used by at-table-actions to perform ag-grid logic  Emitted when checkbox is clicked
          */
         "onAtChange"?: (event: AtColumnManagerCustomEvent<AtIColumnManagerChangeEvent>) => void;
+    }
+    /**
+     * @category Layout
+     * @description A layout wrapper that merges adjacent buttons or inputs into a visually joined group by removing interior border-radius on touching edges.
+     */
+    interface AtControlGroup {
+        /**
+          * Layout direction of the grouped elements.
+          * @default 'horizontal'
+         */
+        "direction"?: AtControlGroupDirection;
     }
     interface AtCustomTimeRange {
         /**
@@ -8142,6 +8207,7 @@ declare namespace LocalJSX {
     interface AtChartBreakdownAttributes {
         "height": AtChartHeight;
         "legend_position": AtLegendPosition;
+        "refresh_theme": string;
         "color_palette": AtChartColorPalette;
         "center_value": string;
         "center_text": string;
@@ -8178,6 +8244,9 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "show_clear_all": boolean;
         "size": AtBadgeSize;
+    }
+    interface AtControlGroupAttributes {
+        "direction": AtControlGroupDirection;
     }
     interface AtCustomTimeRangeAttributes {
         "can_set_time": boolean;
@@ -8649,6 +8718,7 @@ declare namespace LocalJSX {
         "at-chip-list-cell": AtChipListCell;
         "at-color-status-cell": AtColorStatusCell;
         "at-column-manager": AtColumnManager;
+        "at-control-group": Omit<AtControlGroup, keyof AtControlGroupAttributes> & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes]?: AtControlGroup[K] } & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes as `attr:${K}`]?: AtControlGroupAttributes[K] } & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes as `prop:${K}`]?: AtControlGroup[K] };
         "at-custom-time-range": Omit<AtCustomTimeRange, keyof AtCustomTimeRangeAttributes> & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes]?: AtCustomTimeRange[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `attr:${K}`]?: AtCustomTimeRangeAttributes[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `prop:${K}`]?: AtCustomTimeRange[K] };
         "at-dashboard": AtDashboard;
         "at-dialog": Omit<AtDialog, keyof AtDialogAttributes> & { [K in keyof AtDialog & keyof AtDialogAttributes]?: AtDialog[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `attr:${K}`]?: AtDialogAttributes[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `prop:${K}`]?: AtDialog[K] };
@@ -8868,6 +8938,11 @@ declare module "@stencil/core" {
              */
             "at-color-status-cell": LocalJSX.IntrinsicElements["at-color-status-cell"] & JSXBase.HTMLAttributes<HTMLAtColorStatusCellElement>;
             "at-column-manager": LocalJSX.IntrinsicElements["at-column-manager"] & JSXBase.HTMLAttributes<HTMLAtColumnManagerElement>;
+            /**
+             * @category Layout
+             * @description A layout wrapper that merges adjacent buttons or inputs into a visually joined group by removing interior border-radius on touching edges.
+             */
+            "at-control-group": LocalJSX.IntrinsicElements["at-control-group"] & JSXBase.HTMLAttributes<HTMLAtControlGroupElement>;
             "at-custom-time-range": LocalJSX.IntrinsicElements["at-custom-time-range"] & JSXBase.HTMLAttributes<HTMLAtCustomTimeRangeElement>;
             "at-dashboard": LocalJSX.IntrinsicElements["at-dashboard"] & JSXBase.HTMLAttributes<HTMLAtDashboardElement>;
             /**

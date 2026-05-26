@@ -8,7 +8,7 @@ export type AtButtonSize = 'sm' | 'md' | 'lg';
  * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
  * @slot icon - Carbon icon placed before the label
  * @slot icon_after - Carbon icon placed after the label
- * @slot - Placed after the label, but before the icon_after. Can be used as a replacement for the label prop.
+ * @slot - Placed after the label, but before the icon_after. Can be used as a replacement for the label prop. Raw text should be wrapped in a `<span>` so CSS icon-only detection works correctly.
  */
 export declare class AtButtonComponent {
     /**

@@ -83,7 +83,7 @@ const AtButtonGroupOption = class {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (index.h(index.Host, { key: '8803134bfeb6c87f21cd4d82c08d6571f223e365', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: 'd0d9f26b70d3e4056f2281249657be3752837eb0', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: '7284986582469e5976415837756a5aecdd2380a2' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: '5d1c9ba3ed695806d175259fb4a32470d66105f7', name: "after" })));
+        return (index.h(index.Host, { key: '90015417ea263fbe59278edbcd3a4ce916db0c72', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: '27d35799c72cf645a669c86814de8717a91e656f', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: '7c55fe982921aa6c6f6e161cd6ae3a7ebbdeb24a' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: '48f8f60777f828407c63d3588fc872734ae929ae', name: "after" })));
     }
 };
 

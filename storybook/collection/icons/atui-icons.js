@@ -25,8 +25,8 @@ import LastPage from "@carbon/icons/es/page--last/16";
 import OverflowMenu from "@carbon/icons/es/overflow-menu--vertical/16";
 import Retry from "@carbon/icons/es/watson-health/rotate--360/16";
 import Schedule from "@carbon/icons/es/event--schedule/16";
-import Search from "@carbon/icons/es/search/16";
 import Stop from "@carbon/icons/es/stop--filled--alt/16";
+import Send from "@carbon/icons/es/send/16";
 import Subtract from "@carbon/icons/es/subtract/16";
 import Success from "@carbon/icons/es/checkmark--filled/16";
 import ThumbsDown from "@carbon/icons/es/thumbs-down/16";
@@ -36,6 +36,8 @@ import ThumbsUpFilled from "@carbon/icons/es/thumbs-up--filled/16";
 import Warning from "@carbon/icons/es/warning--alt--filled/16";
 import SidePanelOpen from "@carbon/icons/es/side-panel--open/16";
 import SidePanelClose from "@carbon/icons/es/side-panel--close/16";
+import IbmWatsonDiscovery from "@carbon/icons/es/ibm-watson--discovery/16";
+import FilterEdit from "@carbon/icons/es/filter--edit/16";
 export const ATUI_ICONS = [
     { name: 'add', icon: Add },
     { name: 'arrow_left', icon: ArrowLeft },
@@ -66,7 +68,8 @@ export const ATUI_ICONS = [
     { name: 'overflow_menu', icon: OverflowMenu },
     { name: 'retry', icon: Retry },
     { name: 'schedule', icon: Schedule },
-    { name: 'search', icon: Search },
+    { name: 'search', icon: IbmWatsonDiscovery },
+    { name: 'send', icon: Send },
     { name: 'stop', icon: Stop },
     { name: 'subtract', icon: Subtract },
     { name: 'success', icon: Success },
@@ -75,4 +78,5 @@ export const ATUI_ICONS = [
     { name: 'thumbs_up', icon: ThumbsUp },
     { name: 'thumbs_up_filled', icon: ThumbsUpFilled },
     { name: 'warning', icon: Warning },
+    { name: 'edit_filters', icon: FilterEdit },
 ];

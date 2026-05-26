@@ -49,17 +49,18 @@ export class AtChipList {
         if (!this.chips) {
             return '';
         }
-        return this.chips.map((chip) => (h("at-badge", { class: `flex items-center gap-4 text-center`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip }, !this.disabled && !this.readonly && (h("at-icon", { class: "fill-light hover:fill-med cursor-pointer", name: "cancel", "data-name": "chip-remove", tabIndex: 0, onClick: () => {
+        return this.chips.map((chip) => (h("at-badge", { class: `flex items-center gap-4 text-center`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip }, !this.disabled && !this.readonly && (h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
+                event.stopPropagation();
                 this.removeChipHandler([chip]);
-            }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) })))));
+            }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, h("at-icon", { name: "cancel" }))))));
     }
     render() {
-        return (h("div", { key: '1c863f99800080fac3fd40f51b1b3a123fd2a2c9', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        return (h("div", { key: 'd4afbfb12f56befb8eece152f6e186b017c68d04', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: '6f4fe73e13692e75c0161e87730da0fe39452c9a', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: 'c0e911c66e84903a31445a253c7444be23e4d37f', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } }, h("at-icon", { key: '85625cae60572fcf34165eae297c56fecba066c2', slot: "icon", name: "backspace" }))), h("slot", { key: 'efcdbeecd16a9ab444dbe8e3271743005b4ad867' })));
+            } }, h("at-icon", { key: 'd6f554ef149db0d20a9e874a52f6390e43dae528', slot: "icon", name: "backspace" }))), h("slot", { key: '63175599dbdae3ee6b88fdac0f5679337e9e57f6' })));
     }
     static get is() { return "at-chip-list"; }
     static get properties() {
