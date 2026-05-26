@@ -23,7 +23,7 @@ export class AtEditTextCell {
         }
     }
     render() {
-        return (h(Host, { key: '2bad846e97eaebf49d683508c2638b07316bc690', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: 'bcb2a124440859aa18cd29df10b1be1d7b8b8056', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (h(Host, { key: 'a2402b5d6537de3a6d7aee63c003071c6526abd3', class: "flex h-full items-center leading-[100%]" }, h("at-input", { key: '53166018a6ccf3bac6bd7a40c99b0a6820b4f0a5', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));

@@ -152,7 +152,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: 'afceb23315fff3f0e13207765de1f5d67a37e962' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'a029a7b97b3aa0ab9a48cf77d3bd1c31a6f12652' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

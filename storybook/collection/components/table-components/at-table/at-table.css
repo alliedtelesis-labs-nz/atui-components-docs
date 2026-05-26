@@ -14,6 +14,11 @@ atui-menu atui-checkbox[aria-checked] {
   background-color: transparent;
 }
 
+.ag-header-cell-text {
+  font-size: var(--token-font-size-xs);
+  font-weight: var(--token-font-weight-med);
+}
+
 .ag-header-cell[col-id=colorStatusCell],
 .ag-cell[col-id=colorStatusCell] {
   padding-left: 0 !important;

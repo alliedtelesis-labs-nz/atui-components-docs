@@ -7,6 +7,8 @@ var SortDirection;
     SortDirection[SortDirection["DESC"] = -1] = "DESC";
 })(SortDirection || (SortDirection = {}));
 
+const atSearchTableCss = () => `.is-loading .ag-overlay-no-rows-wrapper{display:none}.loading-overlay{display:none;opacity:0;transition:opacity 0.2s ease, display 0.2s allow-discrete}.loading-overlay.is-visible{display:flex;opacity:1}@starting-style{.loading-overlay.is-visible{opacity:0}}`;
+
 const AtSearchTable = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -41,7 +43,7 @@ const AtSearchTable = class {
     /**
      * Default page size of the table
      */
-    page_size = 10;
+    page_size = 20;
     /**
      * If true the table dropdown filters will not be added
      */
@@ -107,6 +109,8 @@ const AtSearchTable = class {
     searchValue = '';
     currentPage = 1;
     pageSize = this.page_size || 10;
+    showLoadingOverlay = false;
+    loadingTimer = null;
     tableEl;
     get shouldShowDropdownFilters() {
         return (!this.hide_dropdown_filters &&
@@ -124,6 +128,20 @@ const AtSearchTable = class {
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = newValue.map((f) => f.id);
     }
+    handleLoadingChange(newValue) {
+        if (newValue) {
+            this.loadingTimer = setTimeout(() => {
+                this.showLoadingOverlay = true;
+            }, 1000);
+        }
+        else {
+            if (this.loadingTimer !== null) {
+                clearTimeout(this.loadingTimer);
+                this.loadingTimer = null;
+            }
+            this.showLoadingOverlay = false;
+        }
+    }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -132,6 +150,7 @@ const AtSearchTable = class {
         if (this.server_side_mode && this.agGrid) {
             this.emitSearchParamsChange();
         }
+        this.handleLoadingChange(this.loading);
     }
     async componentDidUpdate() {
         if (!this.tableCreated) {
@@ -416,13 +435,20 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (h(Host, { key: 'eb87a4fa2d2b108581b4e549c435a58ac0423949' }, h("at-table-actions", { key: '0c9e4826b11def8e5f5b69fad2a964598f7dced3', ag_grid: this.agGrid }, h("at-control-group", { key: 'a7b3884a2d16c7df0f2e36bf6239a19116f60aba', slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'ad4d9bff264975c5bfe7e7ccafdea5386477b84a', col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '3409653f88a5536d7b9bffcbbb655a0d06267c27', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'c1770912e359a6ab5bf7f480313de74228871898', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'ad1c66d52482c775eeb5f61b1167ab237c60c4b9', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '14423ea853bb837605c77abcbf242173742d58fd', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '5bb126be6edcfcfd60a7890f0c0c810c60679702', slot: "actions" }, h("slot", { key: '3d04b8a25d1eaa3bf5850caedacae39bdc840e18', name: "actions" }))), h("slot", { key: '2ffe8950178c527295eca00d3cab08a8f23d90e2', name: "multi-select-actions" }), h("at-table", { key: 'bce0b5300a5e82210a7be2a7cdd8623cfe38bbf1', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode ? this.pageSize : this.page_size, use_custom_pagination: this.server_side_mode, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("at-table-pagination", { key: '25765d15da36413382d83b29c89922b4db1d6323', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+        return (h(Host, { key: 'cd41c13171059879d4eb32285e678625c965eafb', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'dcf17f1739778e22dc85b43298710bbcb396e1db', ag_grid: this.agGrid }, h("at-control-group", { key: '7b5049928dd9bf5bc4025a6a09b7a91283a006eb', slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: 'e122a9bada4009394fd974664d71a2fc126d2cab', col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'b537ad75cdfdfe8d7c397405a67b82dcfa14e225', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: '9d698f2339cd84506e36a591d90aa89307e1abc7', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '4bf0c36a09429dc1b2977ed69d04fb2ee7ea8b6f', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '3d8f812afc921f2aceea03935e06612285a199d2', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '580580fb9ee80f448cd72ff7e8407d93f7568308', slot: "actions" }, h("slot", { key: 'dfb8dc16169ca3d602ee2a9bf6c6950c4464928a', name: "actions" }))), h("slot", { key: '932f82556c83a4099cf2f94d85c873ec3bafea40', name: "multi-select-actions" }), h("div", { key: '027ad776c1aa7ba22bea12bb1b90a4302e59340a', class: "relative" }, h("at-table", { key: '6a1d3ea0fec0740015275a820d37640d8593f021', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+                ? this.pageSize
+                : this.page_size, use_custom_pagination: this.server_side_mode, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: '1f57fc031065559d7dff117d495fd326246f9e6a', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 flex flex-col items-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '967ce307e783959cc127ea97719285006421bbf1', class: "flex items-center" }, h("at-loading", { key: '628f1bbecb971857062ca5eb741870c445875661', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '51bc07cb7f686030e886f02be32b36ddfa58dedc', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'a97adae1052a1c85d581e5c3e922879b0c164bac', current_page: this.currentPage, num_pages: this.totalPages, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "selectedFilters": [{
                 "handleSelectedFiltersChange": 0
+            }],
+        "loading": [{
+                "handleLoadingChange": 0
             }]
     }; }
 };
+AtSearchTable.style = atSearchTableCss();
 
 export { AtSearchTable as at_search_table };

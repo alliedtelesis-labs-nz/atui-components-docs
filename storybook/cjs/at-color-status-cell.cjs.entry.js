@@ -25,7 +25,7 @@ const AtColorStatusCell = class {
             success: 'bg-success-base',
             disabled: 'bg-disabled-light',
         };
-        return (index.h(index.Host, { key: '12c2c2ad99e23fc046e6521469bcbaadaf90f8e3', class: "flex h-full items-center" }, index.h("div", { key: '53477f97fe76df93cfb80963a22f38610747e1d3', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (index.h(index.Host, { key: 'fd971b63660148626e927ba6365596a0e95b68f1', class: "flex h-full items-center" }, index.h("div", { key: 'f3f54890bcb850b49e34e7ae7ae700e36a3268f0', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
 };
 

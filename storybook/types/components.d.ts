@@ -2129,7 +2129,7 @@ export namespace Components {
         "loading": boolean;
         /**
           * Default page size of the table
-          * @default 10
+          * @default 20
          */
         "page_size"?: number;
         /**
@@ -7122,7 +7122,7 @@ declare namespace LocalJSX {
         "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<AtISearchTableParams>) => void;
         /**
           * Default page size of the table
-          * @default 10
+          * @default 20
          */
         "page_size"?: number;
         /**

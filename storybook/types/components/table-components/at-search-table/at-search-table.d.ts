@@ -117,6 +117,8 @@ export declare class AtSearchTable {
     searchValue: string;
     currentPage: number;
     pageSize: number;
+    showLoadingOverlay: boolean;
+    private loadingTimer;
     tableEl: HTMLAtTableElement;
     get shouldShowDropdownFilters(): boolean;
     get shouldShowColumnManager(): boolean;
@@ -125,6 +127,7 @@ export declare class AtSearchTable {
         id: string;
         value: string;
     }[]): void;
+    handleLoadingChange(newValue: boolean): void;
     componentWillLoad(): Promise<void>;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;

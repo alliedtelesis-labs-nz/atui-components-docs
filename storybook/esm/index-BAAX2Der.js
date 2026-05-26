@@ -260,10 +260,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-input-range.entry.js').then(processMod, consoleError);
-                case 'at-search-table':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './at-search-table.entry.js').then(processMod, consoleError);
                 case 'at-side-panel':
                     return import(
                       /* webpackMode: "lazy" */
@@ -320,6 +316,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-form-label_2.entry.js').then(processMod, consoleError);
+                case 'at-search-table':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-search-table.entry.js').then(processMod, consoleError);
                 case 'at-button-group_3':
                     return import(
                       /* webpackMode: "lazy" */

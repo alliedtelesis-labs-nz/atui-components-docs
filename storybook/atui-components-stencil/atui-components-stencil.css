@@ -3608,6 +3608,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-surface-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-surface-foreground\/80 {
+  background-color: color-mix(in srgb, var(--token-surface-foreground) 80%, transparent);
+}
+
 .bg-surface-overlay\/90 {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 90%, transparent);
 }
@@ -3816,6 +3820,11 @@ strong {
 .px-\[6px\] {
   padding-left: 6px;
   padding-right: 6px;
+}
+
+.py-120 {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .py-2 {

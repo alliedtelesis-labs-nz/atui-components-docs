@@ -19,7 +19,7 @@ const AtChipListCell = class {
         return true;
     }
     render() {
-        return (h(Host, { key: '0c70317f8d831d1f86951aa0c159dc988dcda58a', class: "flex h-full items-center" }, h("at-chip-list", { key: 'b4a3440a4550fc0e113207bdcd9309bed6fef77b', chips: this.chips, show_clear_all: false, readonly: true })));
+        return (h(Host, { key: '7b1eef57e4db906c05bf924e229295e2c3ba3eab', class: "flex h-full items-center" }, h("at-chip-list", { key: 'a61332447c2bb546094c941aacdd7689e7e80295', chips: this.chips, show_clear_all: false, readonly: true })));
     }
 };
 

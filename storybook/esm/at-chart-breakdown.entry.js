@@ -595,7 +595,7 @@ const AtChartBreakdown = class {
     }
     render() {
         const showSideText = this.isSmall && (this.center_value || this.center_text);
-        return (h(Host, { key: '31f8bab163629c3d484669c7c2ce8c357da94ba3', style: {
+        return (h(Host, { key: '728f8811b663b9ef35b46c9df7486e77c9f93a99', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -603,7 +603,7 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'top',
-            } }, h("canvas", { key: '4003f5806591499d1b172b91c63676ef7dfd2be9', class: this.isSmall
+            } }, h("canvas", { key: '9ceb8e65958e2ca79183aa36bf134713f74d1196', class: this.isSmall
                 ? 'h-full'
                 : `w-full ${heightVariants[this.height ?? 'auto']}`, style: this.isSmall
                 ? {
@@ -614,15 +614,15 @@ const AtChartBreakdown = class {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: 'ffb82a1d819dd0d9cbd155e5c0b54809877f3c7f', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: 'f6ea31dad32d4f3228acf5aaf7cc2b091be029a4', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
-            } }, this.center_value && (h("span", { key: 'af5c601c9e813dafbdc8fc8e06b2f137cc1e7811', style: {
+            } }, this.center_value && (h("span", { key: 'ca883086945fdace33522a186c2f9124a08f19cc', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (h("span", { key: '12020bac7fa16fea8be361b4ac6477ee442dc5b8', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: '3827ddfa8855773c8ba34108755a979ec0126791', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));
