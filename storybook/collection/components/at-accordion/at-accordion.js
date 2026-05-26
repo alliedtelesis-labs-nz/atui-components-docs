@@ -89,7 +89,7 @@ export class AtAccordionComponent {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: 'fb642ef435e68942b3cf94878d76610e01a0df4f', class: "flex flex-col gap-2" }, h("slot", { key: '6fffb8e49b961f6f2995fcdeb5cf02e368bffa3f' }), this.items &&
+        return (h(Host, { key: '66fff977696f8a2c144a960a96850f004ac791d6', class: "flex flex-col gap-2" }, h("slot", { key: '2df583baf8ada52bf533b50db1d9c149107b126a' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

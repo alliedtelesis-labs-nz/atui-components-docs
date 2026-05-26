@@ -1086,8 +1086,8 @@
   --ag-borders-critical: solid 1px;
   --ag-border-color: var(--token-border-muted);
   --ag-grid-size: 8px;
-  --ag-icon-size: 18px;
-  --ag-header-height: calc(var(--ag-grid-size) * 6);
+  --ag-icon-size: 14px;
+  --ag-header-height: calc(var(--ag-grid-size) * 5);
   --ag-row-height: calc(var(--ag-grid-size) * 6);
   --ag-cell-horizontal-padding: calc(var(--ag-grid-size) * 3);
   --ag-list-item-height: calc(var(--ag-grid-size) * 4);

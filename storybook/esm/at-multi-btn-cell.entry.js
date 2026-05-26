@@ -34,7 +34,7 @@ const AtMultiBtnCell = class {
         });
     }
     render() {
-        return (h(Host, { key: '1525f9091d7df969f958c12985a51664aa72a893', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (h(Host, { key: '4cc95c9c10a0764d4389793a9a8f9d86e02590da', class: "flex h-full items-center" }, this.buttonsToRender));
     }
 };
 

@@ -129,11 +129,21 @@ export class AtTableComponent {
                 this.updateDisplayedRowsState(event.api);
             },
             onSortChanged: (event) => {
-                const sortColumn = event.columns.filter((col) => col.getSort() !== undefined)[0];
-                this.atSortChange.emit({
-                    colId: sortColumn.getColId(),
-                    sortDirection: sortColumn.getSort(),
-                });
+                const sortColumns = event.api
+                    .getColumnState()
+                    .filter((s) => s.sort != null);
+                if (sortColumns.length > 0) {
+                    this.atSortChange.emit({
+                        colId: sortColumns[0].colId,
+                        sortDirection: sortColumns[0].sort,
+                    });
+                }
+                else {
+                    this.atSortChange.emit({
+                        colId: null,
+                        sortDirection: null,
+                    });
+                }
             },
         };
         if (this.use_custom_sorting) {
@@ -171,7 +181,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'ab3ccf087d7569d86f4570645f5ab43b15a72746', class: {
+        return (h(Host, { key: '7787597e837faddfcaf958ec0515c0898a207d76', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

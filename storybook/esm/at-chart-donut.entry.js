@@ -279,7 +279,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: 'f50ce1178bd38eaa7b2326659f6e8ca2612cb405', style: { height: '100%', width: '100%' } }, h("canvas", { key: '99dfb6d84324e70a99d77216e8966a37a32cb452', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'ff7e542bef8dd496dd32d0783f756c48b448f592', style: { height: '100%', width: '100%' } }, h("canvas", { key: '911b6546892ef4285e35f4e2b6cc93307618bc4a', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 
