@@ -49075,6 +49075,7 @@ const AtTableComponent = class {
             rowData: this.table_data ? this.table_data.items : [],
             columnDefs: this.col_defs,
             enableBrowserTooltips: true,
+            enableCellTextSelection: true,
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
             onModelUpdated: (event) => {
@@ -49123,7 +49124,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'db6e91792d9dd804f2d893f895f6fd4130f9d778', class: {
+        return (index.h(index.Host, { key: 'ab3ccf087d7569d86f4570645f5ab43b15a72746', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

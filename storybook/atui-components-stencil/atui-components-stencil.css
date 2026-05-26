@@ -4480,6 +4480,11 @@ strong {
   outline: none;
 }
 
+.ag-cell,
+.ag-cell-wrapper {
+  display: inline-flex;
+}
+
 .placeholder\:text-disabled::-moz-placeholder {
   --tw-text-opacity:
       1;
