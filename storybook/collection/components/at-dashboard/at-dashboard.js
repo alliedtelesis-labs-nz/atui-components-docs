@@ -19,6 +19,13 @@ export class AtDashboard {
      */
     widget_items = [];
     /**
+     * Optional CSS selector that restricts where drag can be initiated.
+     * When set, users can only drag widgets by grabbing elements matching
+     * this selector (e.g. '[data-drag-handle]' for card headers).
+     * When not set, the entire widget surface is draggable (GridStack default).
+     */
+    drag_handle;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -49,11 +56,9 @@ export class AtDashboard {
                     { w: 1280, c: 16, layout: 'compact' }, // medium — proportional half-size
                 ],
             },
-            // Prevent drag from firing when the user clicks interactive
-            // elements inside a widget (selects, inputs, buttons, links).
-            draggable: {
-                cancel: 'select, input, textarea, button, a, [contenteditable], [role="button"], [role="listbox"], [role="option"]',
-            },
+            ...(this.drag_handle
+                ? { draggable: { handle: this.drag_handle } }
+                : {}),
         }, this.gridContainerRef);
         // Register handlers BEFORE layoutWidgets() so the 'added' events that fire
         // during makeWidget() are captured and resizeChartComponents runs for every
@@ -147,7 +152,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '41fea5dca125621362c5a4232adf267e9c2e0fa7', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '915eeb25fad854ad3b0c8adca5844614fa83058a', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), h("slot", { name: widget.id })))))));
     }
@@ -187,6 +192,25 @@ export class AtDashboard {
                 "getter": false,
                 "setter": false,
                 "defaultValue": "[]"
+            },
+            "drag_handle": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Optional CSS selector that restricts where drag can be initiated.\nWhen set, users can only drag widgets by grabbing elements matching\nthis selector (e.g. '[data-drag-handle]' for card headers).\nWhen not set, the entire widget surface is draggable (GridStack default)."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "drag_handle"
             }
         };
     }

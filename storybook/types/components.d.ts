@@ -882,6 +882,10 @@ export namespace Components {
     }
     interface AtDashboard {
         /**
+          * Optional CSS selector that restricts where drag can be initiated. When set, users can only drag widgets by grabbing elements matching this selector (e.g. '[data-drag-handle]' for card headers). When not set, the entire widget surface is draggable (GridStack default).
+         */
+        "drag_handle"?: string;
+        /**
           * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
@@ -5771,6 +5775,10 @@ declare namespace LocalJSX {
     }
     interface AtDashboard {
         /**
+          * Optional CSS selector that restricts where drag can be initiated. When set, users can only drag widgets by grabbing elements matching this selector (e.g. '[data-drag-handle]' for card headers). When not set, the entire widget surface is draggable (GridStack default).
+         */
+        "drag_handle"?: string;
+        /**
           * Emitted when a widget's position or size changes in the grid.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
@@ -8253,6 +8261,9 @@ declare namespace LocalJSX {
         "min_seconds": number;
         "lock_end_date_to_now": boolean;
     }
+    interface AtDashboardAttributes {
+        "drag_handle": string;
+    }
     interface AtDialogAttributes {
         "role": 'dialog' | 'alertdialog';
         "backdrop": boolean;
@@ -8720,7 +8731,7 @@ declare namespace LocalJSX {
         "at-column-manager": AtColumnManager;
         "at-control-group": Omit<AtControlGroup, keyof AtControlGroupAttributes> & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes]?: AtControlGroup[K] } & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes as `attr:${K}`]?: AtControlGroupAttributes[K] } & { [K in keyof AtControlGroup & keyof AtControlGroupAttributes as `prop:${K}`]?: AtControlGroup[K] };
         "at-custom-time-range": Omit<AtCustomTimeRange, keyof AtCustomTimeRangeAttributes> & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes]?: AtCustomTimeRange[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `attr:${K}`]?: AtCustomTimeRangeAttributes[K] } & { [K in keyof AtCustomTimeRange & keyof AtCustomTimeRangeAttributes as `prop:${K}`]?: AtCustomTimeRange[K] };
-        "at-dashboard": AtDashboard;
+        "at-dashboard": Omit<AtDashboard, keyof AtDashboardAttributes> & { [K in keyof AtDashboard & keyof AtDashboardAttributes]?: AtDashboard[K] } & { [K in keyof AtDashboard & keyof AtDashboardAttributes as `attr:${K}`]?: AtDashboardAttributes[K] } & { [K in keyof AtDashboard & keyof AtDashboardAttributes as `prop:${K}`]?: AtDashboard[K] };
         "at-dialog": Omit<AtDialog, keyof AtDialogAttributes> & { [K in keyof AtDialog & keyof AtDialogAttributes]?: AtDialog[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `attr:${K}`]?: AtDialogAttributes[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `prop:${K}`]?: AtDialog[K] };
         "at-edit-text-cell": AtEditTextCell;
         "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };

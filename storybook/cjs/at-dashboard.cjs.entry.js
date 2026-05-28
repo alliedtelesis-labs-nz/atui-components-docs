@@ -6384,6 +6384,13 @@ const AtDashboard = class {
      */
     widget_items = [];
     /**
+     * Optional CSS selector that restricts where drag can be initiated.
+     * When set, users can only drag widgets by grabbing elements matching
+     * this selector (e.g. '[data-drag-handle]' for card headers).
+     * When not set, the entire widget surface is draggable (GridStack default).
+     */
+    drag_handle;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -6414,11 +6421,9 @@ const AtDashboard = class {
                     { w: 1280, c: 16, layout: 'compact' }, // medium — proportional half-size
                 ],
             },
-            // Prevent drag from firing when the user clicks interactive
-            // elements inside a widget (selects, inputs, buttons, links).
-            draggable: {
-                cancel: 'select, input, textarea, button, a, [contenteditable], [role="button"], [role="listbox"], [role="option"]',
-            },
+            ...(this.drag_handle
+                ? { draggable: { handle: this.drag_handle } }
+                : {}),
         }, this.gridContainerRef);
         // Register handlers BEFORE layoutWidgets() so the 'added' events that fire
         // during makeWidget() are captured and resizeChartComponents runs for every
@@ -6512,7 +6517,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: '41fea5dca125621362c5a4232adf267e9c2e0fa7', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: '915eeb25fad854ad3b0c8adca5844614fa83058a', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))), index.h("slot", { name: widget.id })))))));
     }

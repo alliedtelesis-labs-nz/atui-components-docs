@@ -15,6 +15,13 @@ export declare class AtDashboard {
      */
     widget_items: AtICustomGridStackItem[];
     /**
+     * Optional CSS selector that restricts where drag can be initiated.
+     * When set, users can only drag widgets by grabbing elements matching
+     * this selector (e.g. '[data-drag-handle]' for card headers).
+     * When not set, the entire widget surface is draggable (GridStack default).
+     */
+    drag_handle?: string;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem: EventEmitter<AtICustomGridStackItem>;
