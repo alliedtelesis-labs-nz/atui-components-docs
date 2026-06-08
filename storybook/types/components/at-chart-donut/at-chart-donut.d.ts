@@ -1,5 +1,6 @@
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import { AtChartColorPalette } from '../../types/chart-color';
+import { TruncatedLegendItem } from '../../utils/chart-legend';
 export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
@@ -70,20 +71,31 @@ export declare class AtChartDonut {
      */
     refresh_theme?: string;
     canvasEl: HTMLCanvasElement;
+    legendTooltipEl: HTMLDivElement | null;
     config: ChartConfiguration;
-    chart: Chart;
+    chart: Chart | null;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
     /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    getLegendItems(): Promise<TruncatedLegendItem[]>;
+    /**
      * Manually trigger a chart resize to fit container dimensions
      */
     resize(): Promise<void>;
+    private generateLegendLabels;
+    private setLegendTooltip;
+    private ensureTooltipEl;
     private getDrawCenterTextPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;
+    disconnectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,

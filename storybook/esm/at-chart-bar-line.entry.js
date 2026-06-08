@@ -2,6 +2,7 @@ import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
 import { b as adapters, C as Chart, L as LinearScale, B as BarController, c as CategoryScale, d as BarElement, T as TimeScale, e as LineController, f as LineElement, P as PointElement, h as plugin_colors, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-zK76axlS.js';
 import { a as AtTimeDateUtil } from './at-time-date.util-Bfdzn_RG.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';
+import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels } from './chart-legend-C2vPEq4x.js';
 
 var dateFns = {};
 
@@ -21577,10 +21578,33 @@ const AtChartBarLine = class {
     async getConfig() {
         return this.config;
     }
+    /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    async getLegendItems() {
+        return this.chart?.legend?.legendItems ?? [];
+    }
     canvasEl;
+    legendTooltipEl = null;
     config;
     chart;
+    ensureTooltipEl() {
+        this.legendTooltipEl = ensureLegendTooltipEl(this.canvasEl, this.legendTooltipEl);
+    }
+    setLegendTooltip(visible, text, event) {
+        setLegendTooltip(this.legendTooltipEl, visible, text, event);
+    }
+    generateLegendLabels(chart, textColor, customGenerateLabels) {
+        const legendPosition = this.legend_options?.position ??
+            this.options?.plugins?.legend?.position ??
+            'top';
+        const isSideLegend = legendPosition === 'left' || legendPosition === 'right';
+        return generateLegendLabels(chart, textColor, isSideLegend, (c) => Chart.defaults.plugins.legend.labels.generateLabels(c), customGenerateLabels);
+    }
     initChart() {
+        this.setLegendTooltip(false);
         Chart.register(LinearScale, BarController, CategoryScale, BarElement, TimeScale, LineController, LineElement, PointElement, plugin_colors, plugin_legend, plugin_tooltip, index);
         const colors = getChartColors(this.color_palette);
         if (colors) {
@@ -21703,10 +21727,18 @@ const AtChartBarLine = class {
                         },
                     },
                     legend: {
-                        onHover: (event) => {
-                            if (event.native) {
-                                event.native.target.style.cursor = 'pointer';
+                        onHover: (event, legendItem) => {
+                            const nativeEvent = event.native;
+                            if (!nativeEvent) {
+                                return;
                             }
+                            nativeEvent.target.style.cursor =
+                                'pointer';
+                            const item = legendItem;
+                            this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
+                        },
+                        onLeave: () => {
+                            this.setLegendTooltip(false);
                         },
                         display: true,
                         ...(this.legend_options || {}),
@@ -21717,15 +21749,14 @@ const AtChartBarLine = class {
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
-                            generateLabels: (chart) => {
-                                const original = Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return original.map((label) => ({
-                                    ...label,
-                                    lineWidth: 0,
-                                    fontColor: textColors.label,
-                                }));
-                            },
-                            ...(this.legend_options?.labels || {}),
+                            ...(() => {
+                                const customGenerateLabels = this.legend_options?.labels?.generateLabels;
+                                const { generateLabels: _, ...restLabelOptions } = this.legend_options?.labels ?? {};
+                                return {
+                                    ...restLabelOptions,
+                                    generateLabels: (chart) => this.generateLegendLabels(chart, textColors.label, customGenerateLabels),
+                                };
+                            })(),
                         },
                     },
                     ...(this.options?.plugins || {}),
@@ -21751,7 +21782,14 @@ const AtChartBarLine = class {
         this.canvasEl.style.width = '';
         this.canvasEl.style.height = '';
     }
+    disconnectedCallback() {
+        this.legendTooltipEl?.remove();
+        this.legendTooltipEl = null;
+        this.chart?.destroy();
+        this.chart = null;
+    }
     componentDidUpdate() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -21762,6 +21800,7 @@ const AtChartBarLine = class {
      * to the component where it will run componentDidUpdtae.
      */
     componentDidLoad() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -21827,7 +21866,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: '2e21d22bfc482e132960350de4493a064c280b86', style: { height: '100%', width: '100%' } }, h("canvas", { key: '0e9ed59f3471a3f6564afc797372a69602352f94', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '63ca9dec5c7b6537f5bc42fb75c55279128c1c67', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b80fbfbcbc821463b735a587763e2cc38c577afc', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

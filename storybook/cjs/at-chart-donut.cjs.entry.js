@@ -3,6 +3,7 @@
 var index = require('./index--r5sCsiV.js');
 var chartColor$1 = require('./chart-color-Cg4GSvwC.js');
 var chartColor = require('./chart-color-ChPOocG1.js');
+var chartLegend = require('./chart-legend-DMxYFAOy.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -76,6 +77,7 @@ const AtChartDonut = class {
      */
     refresh_theme;
     canvasEl;
+    legendTooltipEl = null;
     config;
     chart;
     /**
@@ -86,12 +88,30 @@ const AtChartDonut = class {
         return this.config;
     }
     /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    async getLegendItems() {
+        return this.chart?.legend?.legendItems ?? [];
+    }
+    /**
      * Manually trigger a chart resize to fit container dimensions
      */
     async resize() {
         if (this.chart) {
             this.chart.resize();
         }
+    }
+    generateLegendLabels(chart, textColor, customGenerateLabels) {
+        const isSideLegend = this.legend_position === 'left' || this.legend_position === 'right';
+        return chartLegend.generateLegendLabels(chart, textColor, isSideLegend, (c) => chartColor$1.Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c), customGenerateLabels);
+    }
+    setLegendTooltip(visible, text, event) {
+        chartLegend.setLegendTooltip(this.legendTooltipEl, visible, text, event);
+    }
+    ensureTooltipEl() {
+        this.legendTooltipEl = chartLegend.ensureLegendTooltipEl(this.canvasEl, this.legendTooltipEl);
     }
     getDrawCenterTextPlugin() {
         return {
@@ -136,6 +156,7 @@ const AtChartDonut = class {
         };
     }
     initChart() {
+        this.setLegendTooltip(false);
         chartColor$1.Chart.register(chartColor$1.DoughnutController, chartColor$1.ArcElement, chartColor$1.plugin_legend, chartColor$1.plugin_tooltip, chartColor$1.index);
         const dpr = window.devicePixelRatio || 1;
         const colors = chartColor$1.getChartColors(this.color_palette);
@@ -171,10 +192,18 @@ const AtChartDonut = class {
                 },
                 plugins: {
                     legend: {
-                        onHover: (event) => {
-                            if (event.native) {
-                                event.native.target.style.cursor = 'pointer';
+                        onHover: (event, legendItem) => {
+                            const nativeEvent = event.native;
+                            if (!nativeEvent) {
+                                return;
                             }
+                            nativeEvent.target.style.cursor =
+                                'pointer';
+                            const item = legendItem;
+                            this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
+                        },
+                        onLeave: () => {
+                            this.setLegendTooltip(false);
                         },
                         onClick: (_evt, legendItem, legend) => {
                             const chart = legend.chart;
@@ -196,15 +225,14 @@ const AtChartDonut = class {
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
-                            generateLabels: (chart) => {
-                                const original = chartColor$1.Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart);
-                                return original.map((label) => ({
-                                    ...label,
-                                    lineWidth: 0,
-                                    fontColor: textColors.label,
-                                }));
-                            },
-                            ...(this.legend_options?.labels || {}),
+                            ...(() => {
+                                const customGenerateLabels = this.legend_options?.labels?.generateLabels;
+                                const { generateLabels: _, ...restLabelOptions } = this.legend_options?.labels ?? {};
+                                return {
+                                    ...restLabelOptions,
+                                    generateLabels: (chart) => this.generateLegendLabels(chart, textColors.label, customGenerateLabels),
+                                };
+                            })(),
                         },
                         position: this.legend_position,
                         fullSize: true,
@@ -265,7 +293,14 @@ const AtChartDonut = class {
             };
         });
     }
+    disconnectedCallback() {
+        this.legendTooltipEl?.remove();
+        this.legendTooltipEl = null;
+        this.chart?.destroy();
+        this.chart = null;
+    }
     componentDidUpdate() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -276,12 +311,13 @@ const AtChartDonut = class {
      * to the component where it will run componentDidUpdtae.
      */
     componentDidLoad() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
     }
     render() {
-        return (index.h(index.Host, { key: '7b77a323eee70b6121eb59aba30745553d584084', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '62885abba07d72db46977e34754917cb974b544f', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'acaf1358a26f489411c1f670d7f0b4a2f42922f2', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '863ff9ed6524c35debcf5bd948c5a90a6b566c16', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

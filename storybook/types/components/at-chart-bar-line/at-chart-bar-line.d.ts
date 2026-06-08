@@ -3,6 +3,7 @@ import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataP
 import { AtSelectedTimeRangeExtended } from '../../models/at-time-range.models';
 import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
 import { AtChartColorPalette } from '../../types/chart-color';
+import { TruncatedLegendItem } from '../../utils/chart-legend';
 export interface AtIPointStyles {
     pointBackgroundColor: Color;
     pointBorderColor: Color;
@@ -126,10 +127,21 @@ export declare class AtChartBarLine {
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
+    /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    getLegendItems(): Promise<TruncatedLegendItem[]>;
     canvasEl: HTMLCanvasElement;
+    legendTooltipEl: HTMLDivElement | null;
     config: ChartConfiguration;
-    chart: Chart;
+    chart: Chart | null;
+    private ensureTooltipEl;
+    private setLegendTooltip;
+    private generateLegendLabels;
     initChart(): void;
+    disconnectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,

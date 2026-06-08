@@ -2,6 +2,7 @@ import { h, Host } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
 import { AtChartColorPalette, readChartTextColors, } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
+import { ensureLegendTooltipEl, generateLegendLabels, setLegendTooltip, } from "../../utils/chart-legend";
 const heightVariants = {
     xs: 'h-[70px]',
     sm: 'h-[160px]',
@@ -75,6 +76,7 @@ export class AtChartDonut {
      */
     refresh_theme;
     canvasEl;
+    legendTooltipEl = null;
     config;
     chart;
     /**
@@ -85,12 +87,30 @@ export class AtChartDonut {
         return this.config;
     }
     /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    async getLegendItems() {
+        return this.chart?.legend?.legendItems ?? [];
+    }
+    /**
      * Manually trigger a chart resize to fit container dimensions
      */
     async resize() {
         if (this.chart) {
             this.chart.resize();
         }
+    }
+    generateLegendLabels(chart, textColor, customGenerateLabels) {
+        const isSideLegend = this.legend_position === 'left' || this.legend_position === 'right';
+        return generateLegendLabels(chart, textColor, isSideLegend, (c) => Chart.overrides.doughnut.plugins.legend.labels.generateLabels(c), customGenerateLabels);
+    }
+    setLegendTooltip(visible, text, event) {
+        setLegendTooltip(this.legendTooltipEl, visible, text, event);
+    }
+    ensureTooltipEl() {
+        this.legendTooltipEl = ensureLegendTooltipEl(this.canvasEl, this.legendTooltipEl);
     }
     getDrawCenterTextPlugin() {
         return {
@@ -135,6 +155,7 @@ export class AtChartDonut {
         };
     }
     initChart() {
+        this.setLegendTooltip(false);
         Chart.register(DoughnutController, ArcElement, Legend, Tooltip, Filler);
         const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
@@ -170,10 +191,18 @@ export class AtChartDonut {
                 },
                 plugins: {
                     legend: {
-                        onHover: (event) => {
-                            if (event.native) {
-                                event.native.target.style.cursor = 'pointer';
+                        onHover: (event, legendItem) => {
+                            const nativeEvent = event.native;
+                            if (!nativeEvent) {
+                                return;
                             }
+                            nativeEvent.target.style.cursor =
+                                'pointer';
+                            const item = legendItem;
+                            this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
+                        },
+                        onLeave: () => {
+                            this.setLegendTooltip(false);
                         },
                         onClick: (_evt, legendItem, legend) => {
                             const chart = legend.chart;
@@ -195,15 +224,14 @@ export class AtChartDonut {
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
-                            generateLabels: (chart) => {
-                                const original = Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart);
-                                return original.map((label) => ({
-                                    ...label,
-                                    lineWidth: 0,
-                                    fontColor: textColors.label,
-                                }));
-                            },
-                            ...(this.legend_options?.labels || {}),
+                            ...(() => {
+                                const customGenerateLabels = this.legend_options?.labels?.generateLabels;
+                                const { generateLabels: _, ...restLabelOptions } = this.legend_options?.labels ?? {};
+                                return {
+                                    ...restLabelOptions,
+                                    generateLabels: (chart) => this.generateLegendLabels(chart, textColors.label, customGenerateLabels),
+                                };
+                            })(),
                         },
                         position: this.legend_position,
                         fullSize: true,
@@ -264,7 +292,14 @@ export class AtChartDonut {
             };
         });
     }
+    disconnectedCallback() {
+        this.legendTooltipEl?.remove();
+        this.legendTooltipEl = null;
+        this.chart?.destroy();
+        this.chart = null;
+    }
     componentDidUpdate() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -275,12 +310,13 @@ export class AtChartDonut {
      * to the component where it will run componentDidUpdtae.
      */
     componentDidLoad() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
     }
     render() {
-        return (h(Host, { key: '7b77a323eee70b6121eb59aba30745553d584084', style: { height: '100%', width: '100%' } }, h("canvas", { key: '62885abba07d72db46977e34754917cb974b544f', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'acaf1358a26f489411c1f670d7f0b4a2f42922f2', style: { height: '100%', width: '100%' } }, h("canvas", { key: '863ff9ed6524c35debcf5bd948c5a90a6b566c16', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -561,6 +597,32 @@ export class AtChartDonut {
                     "tags": [{
                             "name": "returns",
                             "text": "Configuration of the chart"
+                        }]
+                }
+            },
+            "getLegendItems": {
+                "complexType": {
+                    "signature": "() => Promise<TruncatedLegendItem[]>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        },
+                        "TruncatedLegendItem": {
+                            "location": "import",
+                            "path": "../../utils/chart-legend",
+                            "id": "src/utils/chart-legend.ts::TruncatedLegendItem",
+                            "referenceLocation": "TruncatedLegendItem"
+                        }
+                    },
+                    "return": "Promise<TruncatedLegendItem[]>"
+                },
+                "docs": {
+                    "text": "Returns the legend items currently displayed by the chart.\nEach item reflects the truncated label text as rendered in the legend.",
+                    "tags": [{
+                            "name": "returns",
+                            "text": "Array of legend items"
                         }]
                 }
             },

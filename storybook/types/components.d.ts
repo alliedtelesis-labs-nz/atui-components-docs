@@ -16,6 +16,7 @@ import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 import { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartColorPalette } from "./types/chart-color";
+import { TruncatedLegendItem } from "./utils/chart-legend";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 import { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
@@ -63,6 +64,7 @@ export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-
 export { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
 export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartColorPalette } from "./types/chart-color";
+export { TruncatedLegendItem } from "./utils/chart-legend";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 export { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
@@ -497,6 +499,11 @@ export namespace Components {
          */
         "getConfig": () => Promise<object>;
         /**
+          * Returns the legend items currently displayed by the chart. Each item reflects the truncated label text as rendered in the legend.
+          * @returns Array of legend items
+         */
+        "getLegendItems": () => Promise<TruncatedLegendItem[]>;
+        /**
           * Height of the chart.
           * @default 'auto'
          */
@@ -652,6 +659,11 @@ export namespace Components {
           * @returns Configuration of the chart
          */
         "getConfig": () => Promise<object>;
+        /**
+          * Returns the legend items currently displayed by the chart. Each item reflects the truncated label text as rendered in the legend.
+          * @returns Array of legend items
+         */
+        "getLegendItems": () => Promise<TruncatedLegendItem[]>;
         /**
           * Height of the chart
           * @default 'auto'

@@ -4,6 +4,7 @@ var index = require('./index--r5sCsiV.js');
 var chartColor = require('./chart-color-Cg4GSvwC.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var chartColor$1 = require('./chart-color-ChPOocG1.js');
+var chartLegend = require('./chart-legend-DMxYFAOy.js');
 
 var dateFns = {};
 
@@ -21579,10 +21580,33 @@ const AtChartBarLine = class {
     async getConfig() {
         return this.config;
     }
+    /**
+     * Returns the legend items currently displayed by the chart.
+     * Each item reflects the truncated label text as rendered in the legend.
+     * @returns Array of legend items
+     */
+    async getLegendItems() {
+        return this.chart?.legend?.legendItems ?? [];
+    }
     canvasEl;
+    legendTooltipEl = null;
     config;
     chart;
+    ensureTooltipEl() {
+        this.legendTooltipEl = chartLegend.ensureLegendTooltipEl(this.canvasEl, this.legendTooltipEl);
+    }
+    setLegendTooltip(visible, text, event) {
+        chartLegend.setLegendTooltip(this.legendTooltipEl, visible, text, event);
+    }
+    generateLegendLabels(chart, textColor, customGenerateLabels) {
+        const legendPosition = this.legend_options?.position ??
+            this.options?.plugins?.legend?.position ??
+            'top';
+        const isSideLegend = legendPosition === 'left' || legendPosition === 'right';
+        return chartLegend.generateLegendLabels(chart, textColor, isSideLegend, (c) => chartColor.Chart.defaults.plugins.legend.labels.generateLabels(c), customGenerateLabels);
+    }
     initChart() {
+        this.setLegendTooltip(false);
         chartColor.Chart.register(chartColor.LinearScale, chartColor.BarController, chartColor.CategoryScale, chartColor.BarElement, chartColor.TimeScale, chartColor.LineController, chartColor.LineElement, chartColor.PointElement, chartColor.plugin_colors, chartColor.plugin_legend, chartColor.plugin_tooltip, chartColor.index);
         const colors = chartColor.getChartColors(this.color_palette);
         if (colors) {
@@ -21705,10 +21729,18 @@ const AtChartBarLine = class {
                         },
                     },
                     legend: {
-                        onHover: (event) => {
-                            if (event.native) {
-                                event.native.target.style.cursor = 'pointer';
+                        onHover: (event, legendItem) => {
+                            const nativeEvent = event.native;
+                            if (!nativeEvent) {
+                                return;
                             }
+                            nativeEvent.target.style.cursor =
+                                'pointer';
+                            const item = legendItem;
+                            this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
+                        },
+                        onLeave: () => {
+                            this.setLegendTooltip(false);
                         },
                         display: true,
                         ...(this.legend_options || {}),
@@ -21719,15 +21751,14 @@ const AtChartBarLine = class {
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
-                            generateLabels: (chart) => {
-                                const original = chartColor.Chart.defaults.plugins.legend.labels.generateLabels(chart);
-                                return original.map((label) => ({
-                                    ...label,
-                                    lineWidth: 0,
-                                    fontColor: textColors.label,
-                                }));
-                            },
-                            ...(this.legend_options?.labels || {}),
+                            ...(() => {
+                                const customGenerateLabels = this.legend_options?.labels?.generateLabels;
+                                const { generateLabels: _, ...restLabelOptions } = this.legend_options?.labels ?? {};
+                                return {
+                                    ...restLabelOptions,
+                                    generateLabels: (chart) => this.generateLegendLabels(chart, textColors.label, customGenerateLabels),
+                                };
+                            })(),
                         },
                     },
                     ...(this.options?.plugins || {}),
@@ -21753,7 +21784,14 @@ const AtChartBarLine = class {
         this.canvasEl.style.width = '';
         this.canvasEl.style.height = '';
     }
+    disconnectedCallback() {
+        this.legendTooltipEl?.remove();
+        this.legendTooltipEl = null;
+        this.chart?.destroy();
+        this.chart = null;
+    }
     componentDidUpdate() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -21764,6 +21802,7 @@ const AtChartBarLine = class {
      * to the component where it will run componentDidUpdtae.
      */
     componentDidLoad() {
+        this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -21829,7 +21868,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '2e21d22bfc482e132960350de4493a064c280b86', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '0e9ed59f3471a3f6564afc797372a69602352f94', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: '63ca9dec5c7b6537f5bc42fb75c55279128c1c67', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'b80fbfbcbc821463b735a587763e2cc38c577afc', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 
