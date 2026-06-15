@@ -1184,7 +1184,7 @@
   --token-surface-2: var(--token-color-base-neutral-700);
   --token-surface-background: var(--token-color-base-neutral-900);
   --token-surface-foreground: var(--token-color-base-neutral-800);
-  --token-color-surface-inv: var(--token-color-base-slate-50);
+  --token-surface-inv: var(--token-color-base-slate-50);
   --token-surface-overlay: var(--token-color-base-neutral-300);
   --token-focus-indicator: var(--token-color-surface-inv);
   /*

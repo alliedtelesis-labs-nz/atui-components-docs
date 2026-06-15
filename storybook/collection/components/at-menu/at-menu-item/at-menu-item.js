@@ -18,6 +18,7 @@ const variantsConfig = {
  *
  * @slot icon - Carbon icon displayed at the left of the menu item
  * @slot - Use this slot to add custom elements (e.g., icons, badges, actions) after the label section of the menu item. This allows for flexible extension of the menu item content.
+ * @slot actions - Use this slot to add custom elements (e.g., icons, badges, actions) at the far right of the menu item.
  */
 export class AtMenuitemComponent {
     /**
@@ -42,7 +43,7 @@ export class AtMenuitemComponent {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '25e12d675151cfb639893a9cdf10c154f6c29168', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: '31d8548eed717abf7941dcac6ccfaec154ba4bb0', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -50,7 +51,7 @@ export class AtMenuitemComponent {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: '802eee6fec725de0cd7ca89eb19c344371139ab8', class: "flex flex-grow" }, h("slot", { key: '802aaadaa155d8a406c8b16bb475b45eecd00f1c', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '6549f572b4892aa482f6ceebbf7a23bd0da78284', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: 'cacf8004d9780aca5f2f78745a5907867ead29dc' })), h("slot", { key: 'ed61652f6e4c15ea05f53b790d609c050605ebb3', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: '1c89f8bd5b2bf3caf76dad2fad86fc48242143a9', class: "flex flex-grow" }, h("slot", { key: '277c273a552ec33691d132b418cfa52a289daf5c', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'd99f67ba3be9f9c04577a7f90453849e8a5cb599', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '5e368054a39a6ca275ea8312b63b5de68e935d74' })), h("slot", { key: '934eee7a5d8a9e673763575a302fdf6bd8fbb415', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
     static get is() { return "at-menu-item"; }
     static get properties() {

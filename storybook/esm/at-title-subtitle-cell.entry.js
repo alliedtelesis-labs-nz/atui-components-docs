@@ -34,7 +34,7 @@ const AtTitleSubtitleCell = class {
         }
     }
     render() {
-        return (h(Host, { key: '40bb62acc5dcee79158f7e42f7932771d6cdc9f2', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '1c869dd971d3dc9d0205b49c7457b758cd65dafd', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '7d8ae495ca209f64c7af59e461ca8eaa80e16135', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: '48fa5337d62fc422fc21d351c721228a1640a9f1', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '1b2ec4d6563ffe08ab1cb9676c69f9ba3b679470', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: '63689191c6f93756f6bfdf545a581ed5fab424bc', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: '7b5ced1b2c276c17cf14003400ae9d30a3652c91', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'bca8d21edb8ccc34b42265c8c260624688bc54f4', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '1934482167ef95d88939645eff8f782d10d8734b', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'a0d5959c4d51e3162923666b7ba15a16f91139cf', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: 'a2bc2221ecbcf555fd7e30a58855943e00385764', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: 'b95aab50ac18465a1acb90f6c4c78e29078b772c', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

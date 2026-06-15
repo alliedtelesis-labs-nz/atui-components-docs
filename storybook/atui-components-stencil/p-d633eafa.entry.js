@@ -1,0 +1,1 @@
+import{r as e,h as a,H as r}from"./p-BAAX2Der.js";const s=class{constructor(a){e(this,a)}render(){return a(r,{key:"0bdd17e3dc5857db3e6cf40c53d19512ea7e1ff4",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"154aefc02e09c9a519c9e9400282fb98c060fa16"}))}};s.style=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}";export{s as at_sidebar_menu}

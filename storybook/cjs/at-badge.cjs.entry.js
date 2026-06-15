@@ -62,7 +62,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: '704a10cbed11fcf444345a06033c001ae3be188b', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: 'caa13821b8902bb4e10e714bce292804fb879946', name: "icon" }), index.h("span", { key: '5f77e1dc5361a981c2f49d262f595f286fd1f91e', "data-name": "badge-label" }, this.label), index.h("slot", { key: '30050d5382b584745edc9c0304424024f945aca0' })));
+        return (index.h(index.Host, { key: '195a0f9559fa90d76626368614e5dac4e2454728', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: '50102f88a9cc4afa1617c88f138e98a081a1e6b4', name: "icon" }), index.h("span", { key: '75c4d4d430a53c30b430db5a253a3e73b4b6ee96', "data-name": "badge-label" }, this.label), index.h("slot", { key: 'df5af8cf88b809fce5a527e5e2a67ec4b64f64c9' })));
     }
 };
 

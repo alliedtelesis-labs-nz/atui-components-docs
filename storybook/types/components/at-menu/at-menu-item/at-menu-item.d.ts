@@ -6,6 +6,7 @@ import { AtEvent } from '../../../types/events';
  *
  * @slot icon - Carbon icon displayed at the left of the menu item
  * @slot - Use this slot to add custom elements (e.g., icons, badges, actions) after the label section of the menu item. This allows for flexible extension of the menu item content.
+ * @slot actions - Use this slot to add custom elements (e.g., icons, badges, actions) at the far right of the menu item.
  */
 export declare class AtMenuitemComponent {
     /**
