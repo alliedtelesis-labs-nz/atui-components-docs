@@ -13,4 +13,5 @@ export { AtPromptResponseScore, } from './types/prompt';
 export { ToasterService } from './utils/toaster.service';
 export { AtChartColorPalette } from './types/chart-color';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
+export { atGetRelativeTime } from './utils/relative-time.util';
 export { AtTimeUnit } from './types/time';

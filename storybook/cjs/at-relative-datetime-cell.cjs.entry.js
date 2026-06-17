@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 
 const AtRelativeDateTimeCell = class {
     constructor(hostRef) {
@@ -86,7 +86,7 @@ const AtRelativeDateTimeCell = class {
         return `${value} ${unit}${value === 1 ? '' : 's'}`;
     }
     render() {
-        return (index.h(index.Host, { key: '233572af8e05197a279a43a22bafdf7c8417c5cc', class: "flex h-full items-center" }, index.h("div", { key: '63fc8437a1e503236b82f21bbe8fcb7dda1caf17', class: "flex h-full flex-col justify-center" }, index.h("div", { key: 'a522f40cacc8b0af9f24931d58526c738816bbc4', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (index.h("div", { key: '53903013623802698673bf223ae42a770f0b35dd', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (index.h(index.Host, { key: '8adf12f3c8b0908da53a7e94081795a892bf9426', class: "flex h-full items-center" }, index.h("div", { key: '815a0e95f755fcc02a20d3ed4744df252f85488b', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '11596bed043fc9ec4d64ca87b1e4c16d4a0bfc60', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (index.h("div", { key: '5c4e9795efb9c729389b7df86ccd2d3c48189250', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
 };
 

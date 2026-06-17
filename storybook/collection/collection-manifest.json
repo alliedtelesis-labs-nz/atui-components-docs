@@ -58,6 +58,7 @@
     "components/at-placeholder/at-placeholder.js",
     "components/at-progress-bar/at-progress-bar.js",
     "components/at-radio-group/at-radio/at-radio.js",
+    "components/at-relative-time/at-relative-time.js",
     "components/at-search/at-search.js",
     "components/at-select/at-select.js",
     "components/at-select/at-select-option/at-select-option.js",

@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CIk20EvT.js';
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
@@ -35,7 +35,7 @@ const AtTextBadgeCell = class {
         this.textValue = this.params.value;
     }
     render() {
-        return (h(Host, { key: '2349309c3fe4823ebd62379ae6897330682001b9', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'd7262b9f78cf26152d6cd7b5c1d4bb70c6e18c24', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '453edb43964427ab9510b81e566f2d93d3294556', slot: "tooltip-trigger" }, h("span", { key: '4d5aa7d169ec2d7bb64788a3c72f660c320b00ef', class: "truncate" }, this.textValue), h("at-badge", { key: 'ba6f48b233160f2963e4e014d5fd104cca2cdcfd', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (h("span", { key: '7a63c85fd5e3a17b57ea62cf17e01856f584c273', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: '1ab6c335961317c70023d1054e30804f2ed6075e', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '53ae67e90383e1d7642a23a3698a0b1f24d51604', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '6bc817e3a3e898854fb6ec222142aaf3141c175a', slot: "tooltip-trigger" }, h("span", { key: 'afc8cde71296a0cdbd5d751bdacfac8ff8333add', class: "truncate" }, this.textValue), h("at-badge", { key: 'dd6909c7bc55693ddad5fd68fbc981e0149d54f5', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (h("span", { key: '60262da511a73c2cf022999754301db087372ea5', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

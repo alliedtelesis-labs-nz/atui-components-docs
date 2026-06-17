@@ -1,4 +1,4 @@
-import { r as registerInstance, g as getElement, h, F as Fragment, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, a as getElement, h, F as Fragment, H as Host } from './index-CIk20EvT.js';
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -31,7 +31,7 @@ const AtTextIconCell = class {
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (h(Host, { key: '5089a3555a0e6367d52ec465a70b0ef88ba31f4b', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: '0846fe51516c68b75b41f3471e96ff9c27c606d1', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (h(Host, { key: '4422220ce7b0414a618306593f4f668ad928ef69', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: '53eb4c01d522666c5361a73e8658a560d7335d97', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 

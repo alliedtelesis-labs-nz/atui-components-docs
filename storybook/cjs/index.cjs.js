@@ -3,6 +3,7 @@
 var prompt = require('./prompt-DoMXcdvl.js');
 var chartColor = require('./chart-color-ChPOocG1.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
+var relativeTime_util = require('./relative-time.util-_FQbwGgQ.js');
 
 /**
  * Copyright IBM Corp. 2016, 2023
@@ -1311,5 +1312,6 @@ Object.defineProperty(exports, "AtTimeUnit", {
 	enumerable: true,
 	get: function () { return atTimeDate_util.AtTimeUnit; }
 });
+exports.atGetRelativeTime = relativeTime_util.atGetRelativeTime;
 exports.ATUI_ICONS = ATUI_ICONS;
 exports.ToasterService = ToasterService;

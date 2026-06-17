@@ -1,6 +1,7 @@
 export { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
 export { A as AtChartColorPalette } from './chart-color-DTlEjff-.js';
 export { a as AtTimeDateUtil, A as AtTimeUnit } from './at-time-date.util-Bfdzn_RG.js';
+export { b as atGetRelativeTime } from './relative-time.util-lJSYZp0N.js';
 
 /**
  * Copyright IBM Corp. 2016, 2023

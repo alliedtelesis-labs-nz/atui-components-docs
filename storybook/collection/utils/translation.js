@@ -7,5 +7,15 @@ function getLocale(element) {
 }
 export async function fetchTranslations(element) {
     const locale = getLocale(element);
-    return bundledTranslations[locale];
+    const base = (locale || 'en').split('-')[0];
+    return bundledTranslations[base] ?? bundledTranslations['en'];
+}
+/**
+ * Synchronous translation lookup by locale string. Normalizes region subtags
+ * (e.g. 'en-US' -> 'en') and falls back to English for unsupported locales.
+ * Use this when there is no host element to derive the locale from.
+ */
+export function getTranslations(locale) {
+    const base = (locale || 'en').split('-')[0];
+    return bundledTranslations[base] ?? bundledTranslations['en'];
 }

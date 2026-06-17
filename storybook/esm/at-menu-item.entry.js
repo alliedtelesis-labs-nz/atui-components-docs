@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-CIk20EvT.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -40,7 +40,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '31d8548eed717abf7941dcac6ccfaec154ba4bb0', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: 'ede9ec659974d8d340523da1757dee35dcadf572', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -48,7 +48,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: '1c89f8bd5b2bf3caf76dad2fad86fc48242143a9', class: "flex flex-grow" }, h("slot", { key: '277c273a552ec33691d132b418cfa52a289daf5c', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'd99f67ba3be9f9c04577a7f90453849e8a5cb599', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '5e368054a39a6ca275ea8312b63b5de68e935d74' })), h("slot", { key: '934eee7a5d8a9e673763575a302fdf6bd8fbb415', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: 'a54d078856db754800d439cf08858c5c01a5323e', class: "flex flex-grow" }, h("slot", { key: 'cc3e39f65323e839b6468629e808b4d1a916dceb', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'b56ebe18a5c2749b77509a7d5701f991d7c0e68d', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '14798eb11a23d158595b2a61dddf5b1d961cd2fc' })), h("slot", { key: 'eeec36b88524c64dd9b57a22e0bef6ab7b793211', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

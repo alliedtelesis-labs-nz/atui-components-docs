@@ -2066,6 +2066,24 @@ export namespace Components {
     interface AtRelativeDatetimeCell {
     }
     /**
+     * @category Feedback
+     * @description A component that converts a timestamp into a human-readable relative time string. Handles both past ("6 days ago", "yesterday") and future ("in 2 hours", "tomorrow") timestamps automatically based on the value, localized via the native Intl.RelativeTimeFormat API.
+     * The label refreshes automatically on a self-scheduling timer (more often for recent times, less often for older ones), so the display never goes stale.
+     * The underlying absolute date is exposed via the native `<time datetime>` attribute and shown as a styled tooltip on hover.
+     * @example <at-relative-time timestamp={new Date()} />
+     * <at-relative-time timestamp="2026-06-02T10:30:00Z" />
+     */
+    interface AtRelativeTime {
+        /**
+          * The timestamp to display as relative time. Prefer Date objects, ISO 8601 strings (e.g. `"2026-06-02T10:30:00Z"`) or epoch milliseconds. Non-ISO strings such as `"June 2, 2026"` fall back to the browser's native date parser, which is inconsistent across browsers and may log a deprecation warning — avoid them.
+         */
+        "timestamp": Date | string | number;
+        /**
+          * Optional fixed refresh interval in milliseconds. When unset (the default), the component picks an adaptive cadence based on how old the timestamp is. Set this to pin a specific update frequency (e.g. `60000` for once a minute).
+         */
+        "update_interval"?: number;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -4269,6 +4287,20 @@ declare global {
         prototype: HTMLAtRelativeDatetimeCellElement;
         new (): HTMLAtRelativeDatetimeCellElement;
     };
+    /**
+     * @category Feedback
+     * @description A component that converts a timestamp into a human-readable relative time string. Handles both past ("6 days ago", "yesterday") and future ("in 2 hours", "tomorrow") timestamps automatically based on the value, localized via the native Intl.RelativeTimeFormat API.
+     * The label refreshes automatically on a self-scheduling timer (more often for recent times, less often for older ones), so the display never goes stale.
+     * The underlying absolute date is exposed via the native `<time datetime>` attribute and shown as a styled tooltip on hover.
+     * @example <at-relative-time timestamp={new Date()} />
+     * <at-relative-time timestamp="2026-06-02T10:30:00Z" />
+     */
+    interface HTMLAtRelativeTimeElement extends Components.AtRelativeTime, HTMLStencilElement {
+    }
+    var HTMLAtRelativeTimeElement: {
+        prototype: HTMLAtRelativeTimeElement;
+        new (): HTMLAtRelativeTimeElement;
+    };
     interface HTMLAtSearchElementEventMap {
         "atChange": string;
     }
@@ -4959,6 +4991,7 @@ declare global {
         "at-radio": HTMLAtRadioElement;
         "at-radio-group": HTMLAtRadioGroupElement;
         "at-relative-datetime-cell": HTMLAtRelativeDatetimeCellElement;
+        "at-relative-time": HTMLAtRelativeTimeElement;
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
@@ -7053,6 +7086,24 @@ declare namespace LocalJSX {
     interface AtRelativeDatetimeCell {
     }
     /**
+     * @category Feedback
+     * @description A component that converts a timestamp into a human-readable relative time string. Handles both past ("6 days ago", "yesterday") and future ("in 2 hours", "tomorrow") timestamps automatically based on the value, localized via the native Intl.RelativeTimeFormat API.
+     * The label refreshes automatically on a self-scheduling timer (more often for recent times, less often for older ones), so the display never goes stale.
+     * The underlying absolute date is exposed via the native `<time datetime>` attribute and shown as a styled tooltip on hover.
+     * @example <at-relative-time timestamp={new Date()} />
+     * <at-relative-time timestamp="2026-06-02T10:30:00Z" />
+     */
+    interface AtRelativeTime {
+        /**
+          * The timestamp to display as relative time. Prefer Date objects, ISO 8601 strings (e.g. `"2026-06-02T10:30:00Z"`) or epoch milliseconds. Non-ISO strings such as `"June 2, 2026"` fall back to the browser's native date parser, which is inconsistent across browsers and may log a deprecation warning — avoid them.
+         */
+        "timestamp"?: Date | string | number;
+        /**
+          * Optional fixed refresh interval in milliseconds. When unset (the default), the component picks an adaptive cadence based on how old the timestamp is. Set this to pin a specific update frequency (e.g. `60000` for once a minute).
+         */
+        "update_interval"?: number;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -8524,6 +8575,10 @@ declare namespace LocalJSX {
         "invalid": boolean;
         "value": string;
     }
+    interface AtRelativeTimeAttributes {
+        "timestamp": string;
+        "update_interval": number;
+    }
     interface AtSearchAttributes {
         "label": string;
         "hint_text": string;
@@ -8775,6 +8830,7 @@ declare namespace LocalJSX {
         "at-radio": Omit<AtRadio, keyof AtRadioAttributes> & { [K in keyof AtRadio & keyof AtRadioAttributes]?: AtRadio[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `attr:${K}`]?: AtRadioAttributes[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `prop:${K}`]?: AtRadio[K] };
         "at-radio-group": Omit<AtRadioGroup, keyof AtRadioGroupAttributes> & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes]?: AtRadioGroup[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `attr:${K}`]?: AtRadioGroupAttributes[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `prop:${K}`]?: AtRadioGroup[K] };
         "at-relative-datetime-cell": AtRelativeDatetimeCell;
+        "at-relative-time": Omit<AtRelativeTime, keyof AtRelativeTimeAttributes> & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes]?: AtRelativeTime[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `attr:${K}`]?: AtRelativeTimeAttributes[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `prop:${K}`]?: AtRelativeTime[K] };
         "at-search": Omit<AtSearch, keyof AtSearchAttributes> & { [K in keyof AtSearch & keyof AtSearchAttributes]?: AtSearch[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `attr:${K}`]?: AtSearchAttributes[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `prop:${K}`]?: AtSearch[K] };
         "at-search-table": Omit<AtSearchTable, keyof AtSearchTableAttributes> & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes]?: AtSearchTable[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `attr:${K}`]?: AtSearchTableAttributes[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `prop:${K}`]?: AtSearchTable[K] };
         "at-select": Omit<AtSelect, keyof AtSelectAttributes> & { [K in keyof AtSelect & keyof AtSelectAttributes]?: AtSelect[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `attr:${K}`]?: AtSelectAttributes[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `prop:${K}`]?: AtSelect[K] };
@@ -9112,6 +9168,15 @@ declare module "@stencil/core" {
              * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
              */
             "at-relative-datetime-cell": LocalJSX.IntrinsicElements["at-relative-datetime-cell"] & JSXBase.HTMLAttributes<HTMLAtRelativeDatetimeCellElement>;
+            /**
+             * @category Feedback
+             * @description A component that converts a timestamp into a human-readable relative time string. Handles both past ("6 days ago", "yesterday") and future ("in 2 hours", "tomorrow") timestamps automatically based on the value, localized via the native Intl.RelativeTimeFormat API.
+             * The label refreshes automatically on a self-scheduling timer (more often for recent times, less often for older ones), so the display never goes stale.
+             * The underlying absolute date is exposed via the native `<time datetime>` attribute and shown as a styled tooltip on hover.
+             * @example <at-relative-time timestamp={new Date()} />
+             * <at-relative-time timestamp="2026-06-02T10:30:00Z" />
+             */
+            "at-relative-time": LocalJSX.IntrinsicElements["at-relative-time"] & JSXBase.HTMLAttributes<HTMLAtRelativeTimeElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.

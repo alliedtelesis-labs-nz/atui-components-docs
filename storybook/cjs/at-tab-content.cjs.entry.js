@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -41,7 +41,7 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (index.h("div", { key: '6b547d38280c078958cc81e6e3040ddd0a898ecd', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: 'd678ec16b3064bfa797adaeccdb40d5c2698ad6c' })));
+        return (index.h("div", { key: 'ce3c9956f21f7b1774c57ae10117c1fe0d461a43', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '581c557461a5a1c99a6cc4e153e2fec83e941439' })));
     }
 };
 

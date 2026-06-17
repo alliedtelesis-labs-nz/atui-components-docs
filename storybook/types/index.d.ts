@@ -33,6 +33,7 @@ export { AtBadgeType } from './components/at-badge/at-badge';
 export { AtIRadioOption } from './components/at-radio-group/at-radio-group';
 export { AtIButtonGroupOption } from './components/at-button-group/at-button-group';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
+export { atGetRelativeTime } from './utils/relative-time.util';
 export { type AtSelectedTimeRangeExtended, AtTimePresets, } from './models/at-time-range.models';
 export { type AtIDateRange, type AtIDateRangeStrings } from './types/date';
 export { AtTimeUnit, type AtITimeWithUnit } from './types/time';

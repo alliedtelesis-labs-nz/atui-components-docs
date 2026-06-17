@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -152,7 +152,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: 'ee5aa5347193ad2f74847b67443c89fa19c14fdc' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'c50d222d26da6468b4d966fda773d78c6d656c50' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

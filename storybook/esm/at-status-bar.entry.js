@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, h, H as Host } from './index-CIk20EvT.js';
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -27,7 +27,7 @@ const AtStatusBar = class {
             } }), h("span", null, segment.tooltip))));
     }
     render() {
-        return (h(Host, { key: '5a75669e93bd90445651f0fb0ec8305f8a2366ce', class: this.statusBarClass }, h("div", { key: 'a79256993e639f89b4b640556ec58199d413085b', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (h(Host, { key: '3d13b22e513ce264eda24f3c9d01e4efd0212592', class: this.statusBarClass }, h("div", { key: 'a259b00fac69fd922c920ce236326f6aa2822823', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

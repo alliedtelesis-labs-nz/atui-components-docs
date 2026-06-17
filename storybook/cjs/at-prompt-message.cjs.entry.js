@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-D6fmqwsI.js');
+var translation = require('./translation-I5fOWLYk.js');
 var prompt = require('./prompt-DoMXcdvl.js');
 
 const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
@@ -218,7 +218,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: '086b582446ca3dea6faa3e30fdd34256212aa006', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '2fd7769bf6fe2da5fef3577941c65ac18ecae3eb', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '62f5f180ffdd7cb5fa1897dc9731bed4b0fdbdab', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '539df43435c8919e6be67ae9aa92cd4758e93691', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '8b74bb8e2879f07c120b6881dbc38507a1a9dcfd', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '7a343808851e3c55966157abe0755d23a6fa5538', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: 'fae8325ca84a6972fdcb51fdd5e92574779cac15', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '208b126595442306c0bd2eafa56ff91e52a237ed', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

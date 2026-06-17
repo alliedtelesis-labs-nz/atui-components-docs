@@ -64,6 +64,7 @@ import { AtPromptThread as AtPromptThreadElement, defineCustomElement as defineA
 import { AtRadioGroup as AtRadioGroupElement, defineCustomElement as defineAtRadioGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio-group.js";
 import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio.js";
 import { AtRelativeDatetimeCell as AtRelativeDatetimeCellElement, defineCustomElement as defineAtRelativeDatetimeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-datetime-cell.js";
+import { AtRelativeTime as AtRelativeTimeElement, defineCustomElement as defineAtRelativeTime } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-time.js";
 import { AtSearchTable as AtSearchTableElement, defineCustomElement as defineAtSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search-table.js";
 import { AtSearch as AtSearchElement, defineCustomElement as defineAtSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search.js";
 import { AtSelectGroup as AtSelectGroupElement, defineCustomElement as defineAtSelectGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-group.js";
@@ -821,6 +822,17 @@ export const AtRelativeDatetimeCell: StencilReactComponent<AtRelativeDatetimeCel
     react: React,
     events: {} as AtRelativeDatetimeCellEvents,
     defineCustomElement: defineAtRelativeDatetimeCell
+});
+
+type AtRelativeTimeEvents = NonNullable<unknown>;
+
+export const AtRelativeTime: StencilReactComponent<AtRelativeTimeElement, AtRelativeTimeEvents> = /*@__PURE__*/ createComponent<AtRelativeTimeElement, AtRelativeTimeEvents>({
+    tagName: 'at-relative-time',
+    elementClass: AtRelativeTimeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtRelativeTimeEvents,
+    defineCustomElement: defineAtRelativeTime
 });
 
 type AtSearchEvents = { onAtChange: EventName<CustomEvent<string>> };

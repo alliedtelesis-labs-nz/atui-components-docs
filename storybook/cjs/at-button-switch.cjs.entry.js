@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-D6fmqwsI.js');
+var translation = require('./translation-I5fOWLYk.js');
 
 const variantsConfig = {
     variants: {
@@ -69,7 +69,7 @@ const AtButtonSwitchComponent = class {
             active: this.value === false,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'de074ae139f608d572f6516f501c7e5edc569424', id: `${this.toggleId}-host`, role: "radiogroup", "aria-labelledby": `${this.toggleId}-label` }, index.h("div", { key: '540d321a138b2d3e6bf2f7759d480518bb769d30', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: 'bb083fd054b60869a0d09f4dc2578c11f107c6e0', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: 'f83d32338a628431ac66487a445bdc01fb2a9021', id: this.toggleId, label: this.label, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '2ae9f5d4a89390187595529ff764e315758659d0', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-switch-hint" }, this.hint_text))), index.h("div", { key: '769b4293f30b521a04f45b107cda529f2ce45489', class: "border-input bg-input-background relative w-fit rounded-lg border inset-shadow-xs" }, index.h("div", { key: '04a84f450b8e9c517a9f28405ec67bbfbb907625', class: "relative z-20 m-[2px] flex flex-row", "data-name": "switch-options" }, index.h("button", { key: 'b2f0d1a4bd0f1d8d9d6695b858d9577304c89be1', class: offButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === false, disabled: this.disabled, onClick: () => this.onToggle(false), "data-name": "switch-off-button", "data-value": "false", type: "button" }, this.translations?.ATUI?.OFF || 'Off'), index.h("button", { key: '9754fa9072697f5900554d99a69c6f8977bbab23', class: onButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === true, disabled: this.disabled, onClick: () => this.onToggle(true), "data-name": "switch-on-button", "data-value": "true", type: "button" }, this.translations?.ATUI?.ON || 'On')))));
+        return (index.h(index.Host, { key: 'f21a2caa17a7e2ffa49a024f9386a5a1c1543b91', id: `${this.toggleId}-host`, role: "radiogroup", "aria-labelledby": `${this.toggleId}-label` }, index.h("div", { key: 'efceb781fcdf21e1b3d14e9ab01fd6f20622a830', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '81009353fcc33ae1de0beecddb26f43f22f50879', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: '146798c28aa93419c778bcf35e3d1f5aee4a2042', id: this.toggleId, label: this.label, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '8e08c7e769e34ecbf0f4fd073dfc209371aca802', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-switch-hint" }, this.hint_text))), index.h("div", { key: '7da9a0ad2c22e7d74da9ad698c98337fab283537', class: "border-input bg-input-background relative w-fit rounded-lg border inset-shadow-xs" }, index.h("div", { key: '5cbaed29d725f7f6c742258458364f223ef6541a', class: "relative z-20 m-[2px] flex flex-row", "data-name": "switch-options" }, index.h("button", { key: '66bbc619b1215215d532a7c1e385c4eb2957885a', class: offButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === false, disabled: this.disabled, onClick: () => this.onToggle(false), "data-name": "switch-off-button", "data-value": "false", type: "button" }, this.translations?.ATUI?.OFF || 'Off'), index.h("button", { key: '6b5c02f2afc59e2a7730691da6f7707c4f94e239', class: onButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === true, disabled: this.disabled, onClick: () => this.onToggle(true), "data-name": "switch-on-button", "data-value": "true", type: "button" }, this.translations?.ATUI?.ON || 'On')))));
     }
 };
 

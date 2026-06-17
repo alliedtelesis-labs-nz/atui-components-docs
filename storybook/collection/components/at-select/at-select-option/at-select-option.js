@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: 'f112f82d66b68c040a59c5c11801fa96a8bad11b', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'c056a423a5dad176f2561a39fa17b4fe84aad9a1' }), this.label || this.value, h("slot", { key: '6955c1bae2b4607bace6e8a2323a4b17e762f275', name: "after" })));
+        return (h("li", { key: 'fdf89f54933857d25a1300a11237a931afdadb4e', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'e63a5dd02b6116266fbcfae0966da3fe0b1394e4' }), this.label || this.value, h("slot", { key: '1758c60148e1c33bfc6640439cfde3cc4e7055f2', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

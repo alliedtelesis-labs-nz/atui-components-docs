@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CIk20EvT.js';
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -63,7 +63,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '6294d9924c44a153a7316f1d028a52dccc23c127', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'acef65294a32a57bbde6ff23e128b244dc863e6f', name: "header" }), !!this.options.length && (h("nav", { key: '709b74ab20a78392014683951d28544baddba5e8', class: "flex-fill overflow-visible pb-16" }, h("div", { key: 'ebcb55031ba246df5ad566bf6e98c7cf0aa2e6dd', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: 'ea0482019fccc9acbf215646cd65f9f36281603c' })));
+        return (h(Host, { key: '61bbc5de35328e3e3653a752ee32a2aa31b3373f', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '3bc012c980ad312d6ee9c04b4a5c8da5f929b03d', name: "header" }), !!this.options.length && (h("nav", { key: 'f1a4c7a40187a4d7e3cec6e1fa522c89a7c36d4d', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '5eaefb6e9938d4533e4c3f578f37733b3be75800', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '35774cae1b2675ba64469ce8afd7a03b83651da7' })));
     }
 };
 

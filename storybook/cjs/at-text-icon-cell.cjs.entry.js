@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index--r5sCsiV.js');
+var index = require('./index-D1oh76XY.js');
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -33,7 +33,7 @@ const AtTextIconCell = class {
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (index.h(index.Host, { key: '5089a3555a0e6367d52ec465a70b0ef88ba31f4b', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: '0846fe51516c68b75b41f3471e96ff9c27c606d1', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (index.h(index.Host, { key: '4422220ce7b0414a618306593f4f668ad928ef69', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: '53eb4c01d522666c5361a73e8658a560d7335d97', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 

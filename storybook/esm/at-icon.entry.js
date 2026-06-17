@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-BAAX2Der.js';
+import { r as registerInstance, h } from './index-CIk20EvT.js';
 
 const AtIcon = class {
     constructor(hostRef) {

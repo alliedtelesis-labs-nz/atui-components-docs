@@ -113,6 +113,8 @@ export { AtRadioGroup as AtRadioGroup } from '../types/components/at-radio-group
 export { defineCustomElement as defineCustomElementAtRadioGroup } from './at-radio-group';
 export { AtRelativeDateTimeCell as AtRelativeDatetimeCell } from '../types/components/table-components/cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
 export { defineCustomElement as defineCustomElementAtRelativeDatetimeCell } from './at-relative-datetime-cell';
+export { AtRelativeTimeComponent as AtRelativeTime } from '../types/components/at-relative-time/at-relative-time';
+export { defineCustomElement as defineCustomElementAtRelativeTime } from './at-relative-time';
 export { AtSearch as AtSearch } from '../types/components/at-search/at-search';
 export { defineCustomElement as defineCustomElementAtSearch } from './at-search';
 export { AtSearchTable as AtSearchTable } from '../types/components/table-components/at-search-table/at-search-table';

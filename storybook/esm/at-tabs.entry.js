@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement, h, H as Host } from './index-BAAX2Der.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CIk20EvT.js';
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -150,7 +150,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: 'ee5aa5347193ad2f74847b67443c89fa19c14fdc' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'c50d222d26da6468b4d966fda773d78c6d656c50' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
