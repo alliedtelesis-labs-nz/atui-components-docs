@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h } from './index-CIk20EvT.js';
+import { r as registerInstance, c as createEvent, a as getElement, h } from './index-PDMXpTaC.js';
 
 /**
  * utils.ts 12.4.1

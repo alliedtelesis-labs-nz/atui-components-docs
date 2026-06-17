@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-CIk20EvT.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-PDMXpTaC.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -35,12 +35,12 @@ const AtMenuitemComponent = class {
      */
     atuiClick;
     render() {
-        const getClassname = classlist('text-body hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 focus-visible:ring-active-glow relative flex w-full cursor-pointer items-center gap-4 truncate overflow-hidden rounded-menu-item pl-8 py-4 px-4 text-left font-normal leading-normal transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring focus-visible:ring-inset', variantsConfig);
+        const getClassname = classlist('hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10 focus-visible:ring-active-glow relative flex w-full cursor-pointer items-center gap-4 truncate overflow-hidden rounded-menu-item py-4 px-8 text-left transition-[background-color,color,box-shadow] duration-150 ease-in-out focus:outline-0 focus-visible:ring focus-visible:ring-inset', variantsConfig);
         const classname = getClassname({
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'ede9ec659974d8d340523da1757dee35dcadf572', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: '47a1b1081eec4aa6a5b3c80dd865acd82e9b35f4', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -48,7 +48,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: 'a54d078856db754800d439cf08858c5c01a5323e', class: "flex flex-grow" }, h("slot", { key: 'cc3e39f65323e839b6468629e808b4d1a916dceb', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'b56ebe18a5c2749b77509a7d5701f991d7c0e68d', "data-name": "menu-item-label", class: "truncate whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '14798eb11a23d158595b2a61dddf5b1d961cd2fc' })), h("slot", { key: 'eeec36b88524c64dd9b57a22e0bef6ab7b793211', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: '70145e21ac77badcd5790ac291e160bf5a32cca8', class: "flex flex-grow" }, h("slot", { key: '373ea0b9186e5d6b4a4587584bd33a301442e289', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'e90d6a7b2aab264a95933f56c42804a11a256cb5', "data-name": "menu-item-label", class: "text-body truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '67f6493909b02a261ca87e986d59bca7ffbd7a4e' })), h("slot", { key: '90d8bffb0c7a6184580384c5d535ead74bccd0b1', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

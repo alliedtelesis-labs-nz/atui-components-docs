@@ -1,5 +1,5 @@
-import { p as promiseResolve, g as globalScripts, b as bootstrapLazy } from './index-CIk20EvT.js';
-export { s as setNonce } from './index-CIk20EvT.js';
+import { p as promiseResolve, g as globalScripts, b as bootstrapLazy } from './index-PDMXpTaC.js';
+export { s as setNonce } from './index-PDMXpTaC.js';
 
 /*
  Stencil Client Patch Browser v4.43.4 | MIT Licensed | https://stenciljs.com

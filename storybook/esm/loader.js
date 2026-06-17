@@ -1,5 +1,5 @@
-import { g as globalScripts, b as bootstrapLazy } from './index-CIk20EvT.js';
-export { s as setNonce } from './index-CIk20EvT.js';
+import { g as globalScripts, b as bootstrapLazy } from './index-PDMXpTaC.js';
+export { s as setNonce } from './index-PDMXpTaC.js';
 
 const defineCustomElements = async (win, options) => {
   if (typeof window === 'undefined') return undefined;

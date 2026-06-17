@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D1oh76XY.js');
+var index = require('./index-D93m6lxs.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
