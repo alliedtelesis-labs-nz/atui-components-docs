@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D93m6lxs.js');
+var index = require('./index-C7y9_-Ob.js');
 
 /**
  * utils.ts 12.4.1
@@ -6391,6 +6391,12 @@ const AtDashboard = class {
      */
     drag_handle;
     /**
+     * When true the dashboard is read-only: widgets keep their positions and
+     * sizes but cannot be dragged, resized or deleted (the per-widget menu is
+     * hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
+     */
+    read_only = false;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -6403,6 +6409,9 @@ const AtDashboard = class {
      */
     resizeDragEvent;
     widgetItemsChanged() { }
+    readOnlyChanged() {
+        this.grid?.setStatic(!!this.read_only);
+    }
     grid;
     gridContainerRef;
     componentDidLoad() {
@@ -6413,6 +6422,7 @@ const AtDashboard = class {
             minRow: 1,
             maxRow: 100,
             float: true,
+            staticGrid: !!this.read_only,
             columnOpts: {
                 columnMax: 24,
                 breakpoints: [
@@ -6517,13 +6527,16 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: '8940b3b08c93a6fe50320fcc14b5477c9876c093', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: '8f943d6b441b992054617ffe2880afc0acf516e0', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
-            } }))), index.h("slot", { name: widget.id })))))));
+            } })))), index.h("slot", { name: widget.id })))))));
     }
     static get watchers() { return {
         "widget_items": [{
                 "widgetItemsChanged": 0
+            }],
+        "read_only": [{
+                "readOnlyChanged": 0
             }]
     }; }
 };

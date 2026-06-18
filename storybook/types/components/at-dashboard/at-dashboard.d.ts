@@ -22,6 +22,12 @@ export declare class AtDashboard {
      */
     drag_handle?: string;
     /**
+     * When true the dashboard is read-only: widgets keep their positions and
+     * sizes but cannot be dragged, resized or deleted (the per-widget menu is
+     * hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
+     */
+    read_only?: boolean;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem: EventEmitter<AtICustomGridStackItem>;
@@ -34,6 +40,7 @@ export declare class AtDashboard {
      */
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
+    readOnlyChanged(): void;
     private grid?;
     private gridContainerRef?;
     componentDidLoad(): void;

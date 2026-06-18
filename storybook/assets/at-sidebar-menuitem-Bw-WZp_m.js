@@ -1,0 +1,56 @@
+import{j as e,M as a}from"./index-BMTjd7bz.js";import{useMDXComponents as o}from"./index-tOf95Pme.js";import{at as s}from"./MermaidMarkdown-DLJo_grK.js";import"./iframe-CG0WIws6.js";import"./index-DGnb9v-d.js";import"./index-DrFu-skq.js";const r=`# at-sidebar-menuitem
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property    | Attribute   | Description                                               | Type      | Default     |
+| ----------- | ----------- | --------------------------------------------------------- | --------- | ----------- |
+| \`badge\`     | \`badge\`     | Alert badge for the menu item                             | \`string\`  | \`undefined\` |
+| \`icon\`      | \`icon\`      | Carbon icon or svg to be displayed with the label         | \`string\`  | \`undefined\` |
+| \`is_active\` | \`is_active\` | Will change style to indicate menuitem is active when set | \`boolean\` | \`undefined\` |
+| \`label\`     | \`label\`     | Label to be displayed for the menu item                   | \`string\`  | \`undefined\` |
+
+
+## Events
+
+| Event       | Description                         | Type                   |
+| ----------- | ----------------------------------- | ---------------------- |
+| \`atuiClick\` | Emits when the menu item is clicked | \`CustomEvent<AtEvent>\` |
+
+
+## Slots
+
+| Slot                          | Description                                         |
+| ----------------------------- | --------------------------------------------------- |
+| \`"icon"\`                      | Carbon icon displayed at the left of the menu item. |
+| \`"label"\`                     | Content displayed at the left of the menu item.     |
+| \`"sidebar-menu-item-actions"\` | Content displayed at the right of the menu item.    |
+
+
+## Dependencies
+
+### Used by
+
+ - [at-sidebar-submenu](../at-sidebar-submenu)
+
+### Depends on
+
+- [at-icon](../../at-icon)
+- [at-badge](../../at-badge)
+
+### Graph
+\`\`\`mermaid
+graph TD;
+  at-sidebar-menuitem --> at-icon
+  at-sidebar-menuitem --> at-badge
+  at-sidebar-submenu --> at-sidebar-menuitem
+  style at-sidebar-menuitem fill:#f9f,stroke:#333,stroke-width:4px
+\`\`\`
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
+`;function i(n){return e.jsxs(e.Fragment,{children:[e.jsx(a,{title:"Components/Sidebar/Sidebar Menuitem/Sidebar Menuitem"}),`
+`,e.jsx(s,{md:r})]})}function p(n={}){const{wrapper:t}={...o(),...n.components};return t?e.jsx(t,{...n,children:e.jsx(i,{...n})}):i()}export{p as default};

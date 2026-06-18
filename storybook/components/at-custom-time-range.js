@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-BJaiQ6vC.js";const a=o,p=s;export{a as AtCustomTimeRange,p as defineCustomElement}
+import{A as o,d as s}from"./p-D7qIwwmw.js";const m=o,p=s;export{m as AtCustomTimeRange,p as defineCustomElement}

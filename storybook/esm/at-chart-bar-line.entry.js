@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-PDMXpTaC.js';
+import { r as registerInstance, h, H as Host } from './index-BXUxu8jr.js';
 import { b as adapters, C as Chart, L as LinearScale, B as BarController, c as CategoryScale, d as BarElement, T as TimeScale, e as LineController, f as LineElement, P as PointElement, h as plugin_colors, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-zK76axlS.js';
 import { a as AtTimeDateUtil } from './at-time-date.util-Bfdzn_RG.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';

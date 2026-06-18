@@ -898,6 +898,11 @@ export namespace Components {
          */
         "drag_handle"?: string;
         /**
+          * When true the dashboard is read-only: widgets keep their positions and sizes but cannot be dragged, resized or deleted (the per-widget menu is hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
+          * @default false
+         */
+        "read_only"?: boolean;
+        /**
           * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
@@ -5836,6 +5841,11 @@ declare namespace LocalJSX {
          */
         "onResizeDragEvent"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
+          * When true the dashboard is read-only: widgets keep their positions and sizes but cannot be dragged, resized or deleted (the per-widget menu is hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
+          * @default false
+         */
+        "read_only"?: boolean;
+        /**
           * Array of dashboard widget items to display in the grid layout.
           * @default []
          */
@@ -8326,6 +8336,7 @@ declare namespace LocalJSX {
     }
     interface AtDashboardAttributes {
         "drag_handle": string;
+        "read_only": boolean;
     }
     interface AtDialogAttributes {
         "role": 'dialog' | 'alertdialog';

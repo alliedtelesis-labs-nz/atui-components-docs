@@ -26,6 +26,12 @@ export class AtDashboard {
      */
     drag_handle;
     /**
+     * When true the dashboard is read-only: widgets keep their positions and
+     * sizes but cannot be dragged, resized or deleted (the per-widget menu is
+     * hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
+     */
+    read_only = false;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -38,6 +44,9 @@ export class AtDashboard {
      */
     resizeDragEvent;
     widgetItemsChanged() { }
+    readOnlyChanged() {
+        this.grid?.setStatic(!!this.read_only);
+    }
     grid;
     gridContainerRef;
     componentDidLoad() {
@@ -48,6 +57,7 @@ export class AtDashboard {
             minRow: 1,
             maxRow: 100,
             float: true,
+            staticGrid: !!this.read_only,
             columnOpts: {
                 columnMax: 24,
                 breakpoints: [
@@ -152,9 +162,9 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '8940b3b08c93a6fe50320fcc14b5477c9876c093', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: '8f943d6b441b992054617ffe2880afc0acf516e0', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
-            } }))), h("slot", { name: widget.id })))))));
+            } })))), h("slot", { name: widget.id })))))));
     }
     static get is() { return "at-dashboard"; }
     static get originalStyleUrls() {
@@ -211,6 +221,26 @@ export class AtDashboard {
                 "setter": false,
                 "reflect": false,
                 "attribute": "drag_handle"
+            },
+            "read_only": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "When true the dashboard is read-only: widgets keep their positions and\nsizes but cannot be dragged, resized or deleted (the per-widget menu is\nhidden). Use for fixed/system dashboards whose layout is owned elsewhere."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "read_only",
+                "defaultValue": "false"
             }
         };
     }
@@ -285,6 +315,9 @@ export class AtDashboard {
         return [{
                 "propName": "widget_items",
                 "methodName": "widgetItemsChanged"
+            }, {
+                "propName": "read_only",
+                "methodName": "readOnlyChanged"
             }];
     }
 }
