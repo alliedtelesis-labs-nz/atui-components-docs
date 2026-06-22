@@ -29,6 +29,8 @@ export { AtChartBreakdown as AtChartBreakdown } from '../types/components/at-cha
 export { defineCustomElement as defineCustomElementAtChartBreakdown } from './at-chart-breakdown';
 export { AtChartDonut as AtChartDonut } from '../types/components/at-chart-donut/at-chart-donut';
 export { defineCustomElement as defineCustomElementAtChartDonut } from './at-chart-donut';
+export { AtChartSparkline as AtChartSparkline } from '../types/components/at-chart-sparkline/at-chart-sparkline';
+export { defineCustomElement as defineCustomElementAtChartSparkline } from './at-chart-sparkline';
 export { AtCheckbox as AtCheckbox } from '../types/components/at-checkbox-group/at-checkbox/at-checkbox';
 export { defineCustomElement as defineCustomElementAtCheckbox } from './at-checkbox';
 export { AtCheckboxCellComponent as AtCheckboxCell } from '../types/components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';

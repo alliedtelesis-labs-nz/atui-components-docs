@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-C7y9_-Ob.js');
+var index = require('./index-BYFFxEOi.js');
 var relativeTime_util = require('./relative-time.util-_FQbwGgQ.js');
 
 const AtRelativeTimeComponent = class {
@@ -86,7 +86,7 @@ const AtRelativeTimeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '3ea1dd3a7a783deea4a3ccf739794ace0b0cd9b5', class: "inline-flex" }, index.h("at-tooltip", { key: '81c4f4c4871d2a86aa3e0aee2678442137599d0b', position: "top", disabled: !this.titleText }, index.h("time", { key: '67ecea91719b9a7b66a516fdbb3302bbf629d782', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
+        return (index.h(index.Host, { key: '17353241f289431776641d1946e4fc3d234fe82d', class: "inline-flex" }, index.h("at-tooltip", { key: 'bda906612a6f6369b3974d3e8231a4e53c2d5876', position: "top", disabled: !this.titleText }, index.h("time", { key: '533ac00cc18d44cdc3baeef369fdaaa20b12aa74', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
     }
     static get watchers() { return {
         "timestamp": [{

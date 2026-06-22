@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BXUxu8jr.js';
+import { r as registerInstance, h, H as Host } from './index-B-1zT4Ec.js';
 
 const progressBarVariants = {
     success: 'bg-success-base',

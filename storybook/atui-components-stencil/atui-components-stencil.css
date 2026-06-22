@@ -2730,12 +2730,20 @@ strong {
   height: 8px;
 }
 
+.h-\[120px\] {
+  height: 120px;
+}
+
 .h-\[160px\] {
   height: 160px;
 }
 
 .h-\[16px\] {
   height: 16px;
+}
+
+.h-\[180px\] {
+  height: 180px;
 }
 
 .h-\[20px\] {
@@ -2748,6 +2756,10 @@ strong {
 
 .h-\[235px\] {
   height: 235px;
+}
+
+.h-\[240px\] {
+  height: 240px;
 }
 
 .h-\[28px\] {
@@ -2764,6 +2776,10 @@ strong {
 
 .h-\[400px\] {
   height: 400px;
+}
+
+.h-\[40px\] {
+  height: 40px;
 }
 
 .h-\[440px\] {

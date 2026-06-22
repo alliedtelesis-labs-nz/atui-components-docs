@@ -19,6 +19,7 @@ import { AtChartColorPalette } from "./types/chart-color";
 import { TruncatedLegendItem } from "./utils/chart-legend";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 import { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+import { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -67,6 +68,7 @@ export { AtChartColorPalette } from "./types/chart-color";
 export { TruncatedLegendItem } from "./utils/chart-legend";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 export { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+export { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -698,6 +700,45 @@ export namespace Components {
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
+     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     */
+    interface AtChartSparkline {
+        /**
+          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette": AtChartColorPalette;
+        /**
+          * The sparkline is a compact graph for the shape of one trend. It accepts a single, pre-summarized series of numeric values to plot, and renders no axes, legend or tooltip. For multi-series, labelled or time-based data, use `at-chart-bar-line`.
+          * @default []
+         */
+        "data": number[];
+        /**
+          * Getter method for the chart's configuration object.
+          * @returns Configuration of the chart
+         */
+        "getConfig": () => Promise<object>;
+        /**
+          * Height of the sparkline.
+          * @default 'xs'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * Display treatment: a glowing `line`, or an `area` with a gradient fill.
+          * @default 'line'
+         */
+        "mode": AtChartSparklineMode;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so the colour is re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Health colour mode. When set, the line colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). Takes precedence over `color_palette`.
+         */
+        "status"?: AtChartSparklineStatus;
     }
     /**
      * @category Form Controls
@@ -3604,6 +3645,16 @@ declare global {
         prototype: HTMLAtChartDonutElement;
         new (): HTMLAtChartDonutElement;
     };
+    /**
+     * @category Data Visualization
+     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     */
+    interface HTMLAtChartSparklineElement extends Components.AtChartSparkline, HTMLStencilElement {
+    }
+    var HTMLAtChartSparklineElement: {
+        prototype: HTMLAtChartSparklineElement;
+        new (): HTMLAtChartSparklineElement;
+    };
     interface HTMLAtCheckboxElementEventMap {
         "atuiChange": boolean;
     }
@@ -4954,6 +5005,7 @@ declare global {
         "at-chart-bar-line": HTMLAtChartBarLineElement;
         "at-chart-breakdown": HTMLAtChartBreakdownElement;
         "at-chart-donut": HTMLAtChartDonutElement;
+        "at-chart-sparkline": HTMLAtChartSparklineElement;
         "at-checkbox": HTMLAtCheckboxElement;
         "at-checkbox-cell": HTMLAtCheckboxCellElement;
         "at-checkbox-group": HTMLAtCheckboxGroupElement;
@@ -5605,6 +5657,40 @@ declare namespace LocalJSX {
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
+     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     */
+    interface AtChartSparkline {
+        /**
+          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette"?: AtChartColorPalette;
+        /**
+          * The sparkline is a compact graph for the shape of one trend. It accepts a single, pre-summarized series of numeric values to plot, and renders no axes, legend or tooltip. For multi-series, labelled or time-based data, use `at-chart-bar-line`.
+          * @default []
+         */
+        "data"?: number[];
+        /**
+          * Height of the sparkline.
+          * @default 'xs'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * Display treatment: a glowing `line`, or an `area` with a gradient fill.
+          * @default 'line'
+         */
+        "mode"?: AtChartSparklineMode;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so the colour is re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Health colour mode. When set, the line colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). Takes precedence over `color_palette`.
+         */
+        "status"?: AtChartSparklineStatus;
     }
     /**
      * @category Form Controls
@@ -8303,6 +8389,13 @@ declare namespace LocalJSX {
         "cutout": number;
         "refresh_theme": string;
     }
+    interface AtChartSparklineAttributes {
+        "mode": AtChartSparklineMode;
+        "status": AtChartSparklineStatus;
+        "height": AtChartHeight;
+        "color_palette": AtChartColorPalette;
+        "refresh_theme": string;
+    }
     interface AtCheckboxAttributes {
         "label": string;
         "hint_text": string;
@@ -8799,6 +8892,7 @@ declare namespace LocalJSX {
         "at-chart-bar-line": Omit<AtChartBarLine, keyof AtChartBarLineAttributes> & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes]?: AtChartBarLine[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `attr:${K}`]?: AtChartBarLineAttributes[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `prop:${K}`]?: AtChartBarLine[K] };
         "at-chart-breakdown": Omit<AtChartBreakdown, keyof AtChartBreakdownAttributes> & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes]?: AtChartBreakdown[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `attr:${K}`]?: AtChartBreakdownAttributes[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `prop:${K}`]?: AtChartBreakdown[K] };
         "at-chart-donut": Omit<AtChartDonut, keyof AtChartDonutAttributes> & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes]?: AtChartDonut[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `attr:${K}`]?: AtChartDonutAttributes[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `prop:${K}`]?: AtChartDonut[K] };
+        "at-chart-sparkline": Omit<AtChartSparkline, keyof AtChartSparklineAttributes> & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes]?: AtChartSparkline[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `attr:${K}`]?: AtChartSparklineAttributes[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `prop:${K}`]?: AtChartSparkline[K] };
         "at-checkbox": Omit<AtCheckbox, keyof AtCheckboxAttributes> & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes]?: AtCheckbox[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `attr:${K}`]?: AtCheckboxAttributes[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `prop:${K}`]?: AtCheckbox[K] };
         "at-checkbox-cell": AtCheckboxCell;
         "at-checkbox-group": Omit<AtCheckboxGroup, keyof AtCheckboxGroupAttributes> & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes]?: AtCheckboxGroup[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `attr:${K}`]?: AtCheckboxGroupAttributes[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `prop:${K}`]?: AtCheckboxGroup[K] };
@@ -8985,6 +9079,11 @@ declare module "@stencil/core" {
              * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
              */
             "at-chart-donut": LocalJSX.IntrinsicElements["at-chart-donut"] & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
+            /**
+             * @category Data Visualization
+             * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+             */
+            "at-chart-sparkline": LocalJSX.IntrinsicElements["at-chart-sparkline"] & JSXBase.HTMLAttributes<HTMLAtChartSparklineElement>;
             /**
              * @category Form Controls
              * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.

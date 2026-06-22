@@ -26,6 +26,7 @@ export { type AtIPromptMessage, type AtPromptUserRole, type AtPromptResponseAnim
 export { ToasterService } from './utils/toaster.service';
 export { AtIToast, AtIToastOptions, AtIToastPosition, AtIToastType, } from './types/toast';
 export { AtChartColorPalette } from './types/chart-color';
+export { AtChartSparklineMode, AtChartSparklineStatus, } from './components/at-chart-sparkline/at-chart-sparkline';
 export { AtITableColumnDef } from './models/searchTableModel';
 export { AtITab } from './components/at-tabs/at-tabs';
 export { AtISearchTableParams, AtISearchData, } from './types/generic-table/index';

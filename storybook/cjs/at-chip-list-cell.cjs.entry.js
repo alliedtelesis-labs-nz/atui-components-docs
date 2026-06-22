@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-C7y9_-Ob.js');
+var index = require('./index-BYFFxEOi.js');
 
 const AtChipListCell = class {
     constructor(hostRef) {
@@ -21,7 +21,7 @@ const AtChipListCell = class {
         return true;
     }
     render() {
-        return (index.h(index.Host, { key: '415637f34cac0fb0b586f25d53ac81b424eb3aea', class: "flex h-full items-center" }, index.h("at-chip-list", { key: 'ea739011da94ccea18258cbf918a83dab2e71525', chips: this.chips, show_clear_all: false, readonly: true })));
+        return (index.h(index.Host, { key: '7403d4c65039f9d380cbb2f02830518c509d7096', class: "flex h-full items-center" }, index.h("at-chip-list", { key: '64f00c08cb5229c70b7922d9e16e3bb80561db36', chips: this.chips, show_clear_all: false, readonly: true })));
     }
 };
 

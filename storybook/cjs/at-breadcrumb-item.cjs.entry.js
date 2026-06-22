@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-C7y9_-Ob.js');
+var index = require('./index-BYFFxEOi.js');
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {
@@ -16,7 +16,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return index.getElement(this); }
     render() {
-        return (index.h(index.Host, { key: 'af2cd2ac936ac8c754ef664bd0417e72d8a6fec1', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
+        return (index.h(index.Host, { key: 'a37aa2797ad88963556616bf23df21043524ea4f', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
     }
 };
 

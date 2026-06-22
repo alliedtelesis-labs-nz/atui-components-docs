@@ -23,6 +23,7 @@ import { AtCard as AtCardElement, defineCustomElement as defineAtCard } from "@a
 import { AtChartBarLine as AtChartBarLineElement, defineCustomElement as defineAtChartBarLine } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-bar-line.js";
 import { AtChartBreakdown as AtChartBreakdownElement, defineCustomElement as defineAtChartBreakdown } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-breakdown.js";
 import { AtChartDonut as AtChartDonutElement, defineCustomElement as defineAtChartDonut } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-donut.js";
+import { AtChartSparkline as AtChartSparklineElement, defineCustomElement as defineAtChartSparkline } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-sparkline.js";
 import { AtCheckboxCell as AtCheckboxCellElement, defineCustomElement as defineAtCheckboxCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-cell.js";
 import { AtCheckboxGroup as AtCheckboxGroupElement, defineCustomElement as defineAtCheckboxGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-group.js";
 import { AtCheckboxHeader as AtCheckboxHeaderElement, defineCustomElement as defineAtCheckboxHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-header.js";
@@ -282,6 +283,17 @@ export const AtChartDonut: StencilReactComponent<AtChartDonutElement, AtChartDon
     react: React,
     events: {} as AtChartDonutEvents,
     defineCustomElement: defineAtChartDonut
+});
+
+type AtChartSparklineEvents = NonNullable<unknown>;
+
+export const AtChartSparkline: StencilReactComponent<AtChartSparklineElement, AtChartSparklineEvents> = /*@__PURE__*/ createComponent<AtChartSparklineElement, AtChartSparklineEvents>({
+    tagName: 'at-chart-sparkline',
+    elementClass: AtChartSparklineElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtChartSparklineEvents,
+    defineCustomElement: defineAtChartSparkline
 });
 
 type AtCheckboxEvents = { onAtuiChange: EventName<CustomEvent<boolean>> };

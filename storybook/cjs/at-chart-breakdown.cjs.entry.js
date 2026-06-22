@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-C7y9_-Ob.js');
-var chartColor$1 = require('./chart-color-Cg4GSvwC.js');
+var index = require('./index-BYFFxEOi.js');
+var chartColor$1 = require('./chart-color-CxOzTTyI.js');
 var chartColor = require('./chart-color-ChPOocG1.js');
 
 const heightVariants = {
@@ -597,7 +597,7 @@ const AtChartBreakdown = class {
     }
     render() {
         const showSideText = this.isSmall && (this.center_value || this.center_text);
-        return (index.h(index.Host, { key: 'e610a0f3f3be479b79fb22620edfefa07a12755a', style: {
+        return (index.h(index.Host, { key: '0b514ebd08ec9bc85ce4da26dcd6b1a40709db68', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -605,7 +605,7 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'top',
-            } }, index.h("canvas", { key: 'd829ac6ae7c21ea0277d4b15350281b0fc309928', class: this.isSmall
+            } }, index.h("canvas", { key: '0e6f1b89761de128ddf1108219855b50d8287404', class: this.isSmall
                 ? 'h-full'
                 : `w-full ${heightVariants[this.height ?? 'auto']}`, style: this.isSmall
                 ? {
@@ -616,15 +616,15 @@ const AtChartBreakdown = class {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: '8b65105d64dd1224d50cc34ee2784eea7cbe70b4', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: 'fac87f66dc81b98186488a28d128ed8292802153', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
-            } }, this.center_value && (index.h("span", { key: '5a7cad4e27dff5cd278c91e650edd5bd721b3d69', style: {
+            } }, this.center_value && (index.h("span", { key: 'dc06c5374d37cfa9a4fb5234bd61ce6255d2362e', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: '8e8888732c219b4f377e93ddaff9f909d028c189', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: 'cfb635b098b502cc2cc170edfb33f54492f2ad23', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));

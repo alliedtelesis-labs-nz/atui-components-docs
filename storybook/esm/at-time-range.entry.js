@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BXUxu8jr.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B-1zT4Ec.js';
 import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration, d as dayjs } from './at-time-date.util-Bfdzn_RG.js';
 import { f as fetchTranslations } from './translation-DU7QdhZu.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
@@ -144,7 +144,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '7e4d5f5e6329918d3dd6ca9c142843ff765992dc', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '6fa214ae9c4e71a2ba871398d52d929e2f7f81f1', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
