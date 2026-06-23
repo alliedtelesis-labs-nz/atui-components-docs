@@ -1,9 +1,12 @@
-import { Chart } from "chart.js";
-import { readChartTextColors } from "../types/chart-color";
-export const SIDE_LEGEND_CHAR_RATIO = 0.046;
-export const HORIZONTAL_LEGEND_CHAR_RATIO = 0.032;
-export const MIN_LEGEND_CHAR_COUNT = 8;
-export function generateLegendLabels(chart, textColor, isSideLegend, defaultGenerateLabels, customGenerateLabels) {
+'use strict';
+
+var chartColor$1 = require('./chart-color-CxOzTTyI.js');
+var chartColor = require('./chart-color-ChPOocG1.js');
+
+const SIDE_LEGEND_CHAR_RATIO = 0.046;
+const HORIZONTAL_LEGEND_CHAR_RATIO = 0.032;
+const MIN_LEGEND_CHAR_COUNT = 8;
+function generateLegendLabels(chart, textColor, isSideLegend, defaultGenerateLabels, customGenerateLabels) {
     const maxChars = getLegendLabelMaxChars(chart, isSideLegend);
     const baseLabels = customGenerateLabels
         ? customGenerateLabels(chart)
@@ -35,14 +38,14 @@ export function generateLegendLabels(chart, textColor, isSideLegend, defaultGene
  * The underlying chart still renders every data series; only the legend list is
  * trimmed. Resizing the widget reveals more items.
  */
-export function applyLegendOverflow(chart, labels, isSideLegend, textColor) {
+function applyLegendOverflow(chart, labels, isSideLegend, textColor) {
     if (labels.length <= 1) {
         return labels;
     }
     const legendLabels = (chart.options?.plugins?.legend?.labels ??
         {});
-    const fontSize = legendLabels.font?.size ?? Chart.defaults.font.size;
-    const fontFamily = legendLabels.font?.family ?? Chart.defaults.font.family;
+    const fontSize = legendLabels.font?.size ?? chartColor$1.Chart.defaults.font.size;
+    const fontFamily = legendLabels.font?.family ?? chartColor$1.Chart.defaults.font.family;
     const boxWidth = legendLabels.boxWidth ?? fontSize;
     const boxHeight = legendLabels.boxHeight ?? fontSize;
     const padding = legendLabels.padding ?? 10;
@@ -89,16 +92,16 @@ export function applyLegendOverflow(chart, labels, isSideLegend, textColor) {
     ctx.restore();
     return allFit ? labels : withOverflow(keep);
 }
-export function truncateLegendText(text, maxChars) {
+function truncateLegendText(text, maxChars) {
     return text.length > maxChars ? `${text.slice(0, maxChars - 1)}…` : text;
 }
-export function getLegendLabelMaxChars(chart, isSideLegend) {
+function getLegendLabelMaxChars(chart, isSideLegend) {
     const charRatio = isSideLegend
         ? SIDE_LEGEND_CHAR_RATIO
         : HORIZONTAL_LEGEND_CHAR_RATIO;
     return Math.max(Math.floor(chart.width * charRatio), MIN_LEGEND_CHAR_COUNT);
 }
-export function ensureLegendTooltipEl(canvasEl, current) {
+function ensureLegendTooltipEl(canvasEl, current) {
     if (current) {
         return current;
     }
@@ -111,7 +114,7 @@ export function ensureLegendTooltipEl(canvasEl, current) {
     doc.body.appendChild(el);
     return el;
 }
-export function setLegendTooltip(tooltipEl, visible, text, event) {
+function setLegendTooltip(tooltipEl, visible, text, event) {
     if (!tooltipEl) {
         return;
     }
@@ -119,7 +122,7 @@ export function setLegendTooltip(tooltipEl, visible, text, event) {
         tooltipEl.style.display = 'none';
         return;
     }
-    const colors = readChartTextColors();
+    const colors = chartColor.readChartTextColors();
     tooltipEl.textContent = text;
     Object.assign(tooltipEl.style, {
         display: 'block',
@@ -130,3 +133,7 @@ export function setLegendTooltip(tooltipEl, visible, text, event) {
         padding: '2px 4px',
     });
 }
+
+exports.ensureLegendTooltipEl = ensureLegendTooltipEl;
+exports.generateLegendLabels = generateLegendLabels;
+exports.setLegendTooltip = setLegendTooltip;

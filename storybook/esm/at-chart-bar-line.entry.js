@@ -2,7 +2,7 @@ import { r as registerInstance, h, H as Host } from './index-B-1zT4Ec.js';
 import { f as adapters, C as Chart, L as LinearScale, B as BarController, b as CategoryScale, h as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, j as plugin_colors, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-Dxo-bU-I.js';
 import { a as AtTimeDateUtil } from './at-time-date.util-Bfdzn_RG.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';
-import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels } from './chart-legend-C2vPEq4x.js';
+import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels } from './chart-legend-B_h8W2l2.js';
 
 var dateFns = {};
 
@@ -21732,13 +21732,19 @@ const AtChartBarLine = class {
                             if (!nativeEvent) {
                                 return;
                             }
-                            nativeEvent.target.style.cursor =
-                                'pointer';
                             const item = legendItem;
+                            nativeEvent.target.style.cursor =
+                                item.isOverflow ? 'default' : 'pointer';
                             this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
                         },
                         onLeave: () => {
                             this.setLegendTooltip(false);
+                        },
+                        onClick: (evt, legendItem, legend) => {
+                            if (legendItem.isOverflow) {
+                                return;
+                            }
+                            Chart.defaults.plugins.legend.onClick.call(legend, evt, legendItem, legend);
                         },
                         display: true,
                         ...(this.legend_options || {}),
@@ -21866,7 +21872,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: '538ba712390c715047b54b629c3e43f0a42c0abd', style: { height: '100%', width: '100%' } }, h("canvas", { key: '93fdde6bc4d3eccabd0d0bcf85be4d7a1d12b225', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '0a27476dca83c5cc327c161456473caeb44dc6f0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '5ca4d13002d729f931efe466bde12b213f112116', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

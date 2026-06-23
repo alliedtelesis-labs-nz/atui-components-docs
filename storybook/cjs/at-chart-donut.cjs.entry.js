@@ -3,7 +3,7 @@
 var index = require('./index-BYFFxEOi.js');
 var chartColor$1 = require('./chart-color-CxOzTTyI.js');
 var chartColor = require('./chart-color-ChPOocG1.js');
-var chartLegend = require('./chart-legend-DMxYFAOy.js');
+var chartLegend = require('./chart-legend-BoaMJaDS.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -197,17 +197,22 @@ const AtChartDonut = class {
                             if (!nativeEvent) {
                                 return;
                             }
-                            nativeEvent.target.style.cursor =
-                                'pointer';
                             const item = legendItem;
+                            nativeEvent.target.style.cursor =
+                                item.isOverflow ? 'default' : 'pointer';
                             this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
                         },
                         onLeave: () => {
                             this.setLegendTooltip(false);
                         },
                         onClick: (_evt, legendItem, legend) => {
-                            const chart = legend.chart;
                             const idx = legendItem.index;
+                            if (legendItem
+                                .isOverflow ||
+                                idx === undefined) {
+                                return;
+                            }
+                            const chart = legend.chart;
                             chart.toggleDataVisibility(idx);
                             const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
                             if (chart.options.plugins?.tooltip) {
@@ -317,7 +322,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'ddff1dbcd6c725402721e6fb4f7c6af267751e16', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '353531b82f494476ed6ab85fc51369c0af910e92', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: '6dde414179c8b693a0489ac3aff75951753fedee', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '13f658e20ecef4cd0711d329d10752e153846d57', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

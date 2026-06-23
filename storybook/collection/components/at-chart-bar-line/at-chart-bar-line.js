@@ -269,13 +269,19 @@ export class AtChartBarLine {
                             if (!nativeEvent) {
                                 return;
                             }
-                            nativeEvent.target.style.cursor =
-                                'pointer';
                             const item = legendItem;
+                            nativeEvent.target.style.cursor =
+                                item.isOverflow ? 'default' : 'pointer';
                             this.setLegendTooltip(!!item.isTruncated, item.originalText, nativeEvent);
                         },
                         onLeave: () => {
                             this.setLegendTooltip(false);
+                        },
+                        onClick: (evt, legendItem, legend) => {
+                            if (legendItem.isOverflow) {
+                                return;
+                            }
+                            Chart.defaults.plugins.legend.onClick.call(legend, evt, legendItem, legend);
                         },
                         display: true,
                         ...(this.legend_options || {}),
@@ -403,7 +409,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '538ba712390c715047b54b629c3e43f0a42c0abd', style: { height: '100%', width: '100%' } }, h("canvas", { key: '93fdde6bc4d3eccabd0d0bcf85be4d7a1d12b225', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '0a27476dca83c5cc327c161456473caeb44dc6f0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '5ca4d13002d729f931efe466bde12b213f112116', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
