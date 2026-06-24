@@ -6442,13 +6442,13 @@ const AtDashboard = class {
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
                 if (dashboardItem) {
-                    Object.assign(dashboardItem, {
+                    this.changedItem.emit({
+                        ...dashboardItem,
                         x: item.x,
                         y: item.y,
                         w: clampWidgetWidth(item.w, MIN_SIZE.w),
                         h: clampWidgetHeight(item.h, MIN_SIZE.h),
                     });
-                    this.changedItem.emit(dashboardItem);
                 }
                 // Always notify chart components so compact mode is evaluated
                 // both on initial add and whenever a widget moves/resizes.
@@ -6527,7 +6527,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: '4b2ad630801179b2b89e848b54f13c54b0ebcdf2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: 'aceee0141fa66de7af85780af8617abed66f0541', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } })))), index.h("slot", { name: widget.id })))))));
     }
