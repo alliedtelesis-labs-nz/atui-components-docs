@@ -63,11 +63,11 @@ const AtChartBreakdown = class {
      */
     color_palette = chartColor.AtChartColorPalette.CATEGORICAL;
     /**
-     * Optional value text to display in the center of the breakdown chart
+     * Optional value text to display alongside the breakdown chart
      */
     center_value;
     /**
-     * Optional heading text to display in the center of the breakdown chart
+     * Optional heading text to display alongside the breakdown chart
      */
     center_text;
     /**
@@ -83,20 +83,17 @@ const AtChartBreakdown = class {
      */
     atuiLegendToggle;
     get el() { return index.getElement(this); }
-    /** Tracks whether the rendered height is below the compact threshold. */
-    isSmall = false;
     /** Tracks the canvas height set by Chart.js so the side-text div can be positioned next to it. */
     compactOffset = 0;
-    SMALL_HEIGHT_THRESHOLD = 300;
     /**
      * Prevents initChart() from being re-called when only compactOffset changed
      * (i.e. the compact plugin updated the side-text position but the chart
      * config itself doesn't need rebuilding).
      */
     skipInitOnUpdate = false;
-    /** Mirrors isSmall at the point initChart() last ran, so componentDidUpdate
-     *  can tell whether isSmall actually changed versus just compactOffset. */
-    lastIsSmall = false;
+    /** Reference to the side-text div (center_value / center_text), used to
+     *  detect overlap with the legend. */
+    sideTextEl;
     canvasEl;
     config;
     chart;
@@ -109,17 +106,22 @@ const AtChartBreakdown = class {
     }
     /**
      * Manually trigger a chart resize to fit container dimensions.
-     * @param containerHeight Optional pixel height of the widget container (e.g. from at-dashboard
-     * after a GridStack drag/resize). When provided, compact mode is evaluated against this height
-     * rather than the component's own (potentially feedback-inflated) height.
+     * The optional containerHeight parameter is accepted for API compatibility
+     * but is no longer used — the chart self-sizes via its ResizeObserver.
      */
     async resize(containerHeight) {
-        if (containerHeight !== undefined && containerHeight > 0) {
-            const nowSmall = containerHeight < this.SMALL_HEIGHT_THRESHOLD;
-            this.isSmall = nowSmall;
-        }
         if (this.chart) {
             this.chart.resize();
+        }
+    }
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * mirroring a click on the corresponding legend item. Emits
+     * `atuiLegendToggle` with the new visibility state.
+     */
+    async toggleLegendItem(index) {
+        if (this.chart) {
+            this.toggleItemVisibility(this.chart, index);
         }
     }
     toggleItemVisibility(chart, idx) {
@@ -139,63 +141,13 @@ const AtChartBreakdown = class {
      * Angular recomputed the visible sum), we don't need to tear down and recreate
      * the whole chart — that would reset Chart.js's internal visibility state.
      * Instead, skip the next componentDidUpdate re-init and just re-render the
-     * canvas so the DrawCenterTextPlugin picks up the new value.
+     * canvas so the side-text div picks up the new value.
      */
     onCenterValueChanged() {
         if (this.chart) {
             this.skipInitOnUpdate = true;
             this.chart.render();
         }
-    }
-    getDrawCenterTextPlugin() {
-        return {
-            id: 'DrawCenterTextPlugin',
-            afterDatasetDraw: (chart) => {
-                // In compact mode the text is rendered as HTML outside the canvas
-                if (this.isSmall) {
-                    return;
-                }
-                const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-                const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-                const ctx = chart.ctx;
-                if (!ctx) {
-                    return;
-                }
-                ctx.restore();
-                const height = chart.chartArea.bottom - chart.chartArea.top;
-                const fontFamily = this.legend_options?.labels?.font?.family ??
-                    'sans-serif';
-                const textFontSize = (height / 200).toFixed(2) + `em ${fontFamily}`;
-                const valueFontSize = (height / 100).toFixed(2) + `em ${fontFamily}`;
-                ctx.fillStyle = chartColor.readChartTextColors().title;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.font = '700 ' + valueFontSize;
-                const addText = (fontSize, text, x, y, position) => {
-                    ctx.font = '500 ' + fontSize;
-                    const textMetrics = ctx.measureText(text);
-                    const textHeight = textMetrics.actualBoundingBoxAscent +
-                        textMetrics.actualBoundingBoxDescent;
-                    if (position != 'middle') {
-                        y =
-                            position === 'top'
-                                ? y - textHeight
-                                : y + textHeight;
-                    }
-                    ctx.fillText(text, x, y);
-                };
-                if (this.center_value) {
-                    addText(valueFontSize, this.center_value, centerX, centerY, 'top');
-                    if (this.center_text) {
-                        addText(textFontSize, this.center_text, centerX, centerY, 'bottom');
-                    }
-                }
-                else if (this.center_text) {
-                    addText(textFontSize, this.center_text, centerX, centerY, 'middle');
-                }
-                ctx.save();
-            },
-        };
     }
     /**
      * Custom plugin that positions the doughnut flush to the left edge of the
@@ -280,37 +232,44 @@ const AtChartBreakdown = class {
                 ctx.textBaseline = 'middle';
                 const widestLabel = Math.max(...(data.labels?.map((label) => ctx.measureText(String(label)).width) ?? [0]));
                 const legendWidth = swatchSize + swatchGap + widestLabel;
+                // The legend is drawn immediately to the right of the donut,
+                // using whatever space remains on the canvas.
                 const availableLegendWidth = Math.max(chart.width - chartArea.right, 0);
                 const legendX = chartArea.right +
                     Math.max((availableLegendWidth - legendWidth) / 1.25, 0);
-                // Hide the entire legend if it cannot be fully contained within
-                // the available space to the right of the donut, or if it is
-                // taller than the chart area.
-                const requiredLegendHeight = (data.labels?.length ?? 0) * lineHeight;
-                const availableLegendHeight = chartArea.bottom - chartArea.top;
-                if (legendWidth > availableLegendWidth ||
-                    requiredLegendHeight > availableLegendHeight) {
+                const legendRight = legendX + legendWidth;
+                // Hide entirely if the legend is too wide to fit.
+                if (legendWidth > availableLegendWidth) {
                     hitRegions.length = 0;
                     ctx.restore();
                     return;
                 }
-                // Hide the legend if it would overlap the side-text HTML div
-                // (center_value / center_text). That div is absolutely positioned
-                // at left: compactOffset px. When the canvas transitions into
-                // compact mode the aspectRatio: 1/1 constraint may not yet be
-                // applied, so the canvas can be temporarily wider than tall —
-                // legendX + legendWidth then extends past compactOffset. Fall
-                // back to chart.height when compactOffset hasn't been measured.
-                if (this.center_value || this.center_text) {
-                    const sideTextX = this.compactOffset > 0
-                        ? this.compactOffset
-                        : chart.height;
-                    if (availableLegendWidth - sideTextX < legendWidth) {
+                // Only hide the legend for overlapping the side-text div
+                // (center_value / center_text) if it actually overlaps it,
+                // measured against the div's real rendered position.
+                if (this.sideTextEl) {
+                    const canvasRect = chart.canvas.getBoundingClientRect();
+                    const textRect = this.sideTextEl.getBoundingClientRect();
+                    const textLeft = textRect.left - canvasRect.left;
+                    const textRight = textRect.right - canvasRect.left;
+                    const overlaps = legendX < textRight && legendRight > textLeft;
+                    if (overlaps) {
+                        hitRegions.length = 0;
                         ctx.restore();
                         return;
                     }
                 }
-                data.labels?.forEach((label, i) => {
+                // Collapse items that don't fit vertically into "and N more",
+                // matching the overflow behaviour of applyLegendOverflow.
+                const availableLegendHeight = chartArea.bottom - chartArea.top;
+                const totalItems = data.labels?.length ?? 0;
+                const maxItems = Math.max(1, Math.floor(availableLegendHeight / lineHeight));
+                const hasOverflow = totalItems > maxItems;
+                const itemsToShow = hasOverflow ? maxItems - 1 : totalItems;
+                const overflowCount = totalItems - itemsToShow;
+                (data.labels ?? [])
+                    .slice(0, itemsToShow)
+                    .forEach((label, i) => {
                     const dataset = data.datasets[0];
                     const bgColors = dataset.backgroundColor;
                     const color = bgColors?.[i] ?? '#ccc';
@@ -339,6 +298,24 @@ const AtChartBreakdown = class {
                     }
                     ctx.globalAlpha = 1;
                 });
+                // "and N more" overflow indicator — no swatch, not clickable.
+                if (hasOverflow) {
+                    const overflowText = `and ${overflowCount} more`;
+                    // Guard: the overflow text may be wider than any data label,
+                    // so check its width against the available column before drawing.
+                    const overflowTextWidth = swatchSize +
+                        swatchGap +
+                        ctx.measureText(overflowText).width;
+                    if (overflowTextWidth > availableLegendWidth) {
+                        hitRegions.length = 0;
+                        ctx.restore();
+                        return;
+                    }
+                    const overflowY = legendY + itemsToShow * lineHeight + lineHeight / 2;
+                    ctx.globalAlpha = 1;
+                    ctx.fillStyle = chartColor.readChartTextColors().label;
+                    ctx.fillText(overflowText, legendX + swatchSize + swatchGap, overflowY);
+                }
                 ctx.restore();
             },
         };
@@ -348,8 +325,6 @@ const AtChartBreakdown = class {
      * (both on initial construction via its internal ResizeObserver, and on
      * explicit chart.resize() calls). Used to keep compactOffset in sync with
      * the actual canvas height so the side-text div is positioned correctly.
-     * Also self-corrects isSmall if a premature measurement put the component
-     * into compact mode when it should be large.
      */
     getCompactOffsetPlugin() {
         return {
@@ -359,12 +334,6 @@ const AtChartBreakdown = class {
                     chart.canvas.getBoundingClientRect().height;
                 if (h <= 0)
                     return;
-                // Self-correct if measurement was premature and height is now above threshold.
-                if (h >= this.SMALL_HEIGHT_THRESHOLD) {
-                    this.compactOffset = 0;
-                    this.isSmall = false;
-                    return;
-                }
                 if (h !== this.compactOffset) {
                     this.skipInitOnUpdate = true;
                     this.compactOffset = h;
@@ -383,7 +352,7 @@ const AtChartBreakdown = class {
             beforeLayout: (chart) => {
                 // Skip when the left-align plugin is active (built-in legend
                 // is already disabled in that mode).
-                const isLeftAlignMode = this.legend_position === 'right' && this.isSmall;
+                const isLeftAlignMode = this.legend_position === 'right';
                 if (isLeftAlignMode) {
                     return;
                 }
@@ -434,20 +403,15 @@ const AtChartBreakdown = class {
         if (colors) {
             this.applyPresetPalette(colors);
         }
-        // Only use the custom left-align layout in compact mode when the
-        // legend sits on the right. Larger layouts can keep the built-in
-        // legend behavior.
-        const useLeftAlign = this.legend_position === 'right' && this.isSmall;
+        // The breakdown chart always renders in its compact layout: the donut
+        // is pushed to the left edge and, when the legend sits on the right,
+        // a custom legend is drawn alongside it.
+        const useLeftAlign = this.legend_position === 'right';
         const plugins = this.plugins ? [...this.plugins] : [];
-        if (this.center_text || this.center_value) {
-            plugins.push(this.getDrawCenterTextPlugin());
-        }
         if (useLeftAlign) {
             plugins.push(this.getLeftAlignPlugin());
         }
-        if (this.isSmall) {
-            plugins.push(this.getCompactOffsetPlugin());
-        }
+        plugins.push(this.getCompactOffsetPlugin());
         plugins.push(this.getLegendOverflowPlugin());
         this.config = {
             type: 'doughnut',
@@ -462,7 +426,7 @@ const AtChartBreakdown = class {
                 devicePixelRatio: dpr,
                 maintainAspectRatio: false,
                 aspectRatio: 1,
-                layout: { padding: this.isSmall ? 5 : 16 },
+                layout: { padding: 5 },
                 interaction: { mode: 'nearest', intersect: true },
                 datasets: {
                     doughnut: {
@@ -550,9 +514,7 @@ const AtChartBreakdown = class {
             this.chart.destroy();
         }
         // Chart.js leaves inline width/height styles on the canvas when it is
-        // destroyed. Inline styles beat CSS classes, so if the canvas previously
-        // had e.g. height: 89px from compact mode, that would override the
-        // large-mode CSS classes on the next render. Clear them so the CSS
+        // destroyed. Inline styles beat CSS classes, so clear them so the CSS
         // classes (managed by Stencil) determine the initial size for the new chart.
         this.canvasEl.style.width = '';
         this.canvasEl.style.height = '';
@@ -574,13 +536,14 @@ const AtChartBreakdown = class {
         });
     }
     componentDidUpdate() {
-        const isSmallChanged = this.lastIsSmall !== this.isSmall;
-        if (this.skipInitOnUpdate && !isSmallChanged) {
+        if (this.skipInitOnUpdate) {
             this.skipInitOnUpdate = false;
+            // Re-render so the custom legend picks up any DOM position changes
+            // (e.g. sideTextEl shift after a compactOffset update) without
+            // tearing down and rebuilding the Chart.js instance.
+            this.chart?.render();
             return;
         }
-        this.skipInitOnUpdate = false;
-        this.lastIsSmall = this.isSmall;
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -596,35 +559,33 @@ const AtChartBreakdown = class {
         }
     }
     render() {
-        const showSideText = this.isSmall && (this.center_value || this.center_text);
-        return (index.h(index.Host, { key: '0b514ebd08ec9bc85ce4da26dcd6b1a40709db68', style: {
+        const showSideText = this.center_value || this.center_text;
+        return (index.h(index.Host, { key: '4d5eb6084ba05b3c996f42cf44c49d4d006dae23', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
                 position: 'relative',
                 display: 'flex',
                 flexDirection: 'row',
-                alignItems: 'top',
-            } }, index.h("canvas", { key: '0e6f1b89761de128ddf1108219855b50d8287404', class: this.isSmall
-                ? 'h-full'
-                : `w-full ${heightVariants[this.height ?? 'auto']}`, style: this.isSmall
-                ? {
-                    aspectRatio: '1 / 1',
-                    flexShrink: '0',
-                }
-                : {}, ref: (el) => {
+                alignItems: 'flex-start',
+            } }, index.h("canvas", { key: '1958ace619009b2339233669d6c173091314742b', class: heightVariants[this.height], style: {
+                aspectRatio: '1 / 1',
+                flexShrink: '0',
+            }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: 'fac87f66dc81b98186488a28d128ed8292802153', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: '79d77fffe571831db06f568f17b3551a6f28dd92', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
-            } }, this.center_value && (index.h("span", { key: 'dc06c5374d37cfa9a4fb5234bd61ce6255d2362e', style: {
+            }, ref: (el) => {
+                this.sideTextEl = el ?? undefined;
+            } }, this.center_value && (index.h("span", { key: '9e6a4ae44dcc5ca4914df751fd56f47a9a2963c0', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: 'cfb635b098b502cc2cc170edfb33f54492f2ad23', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: '797f7e189cdc95e4c804b622249c61671b6ff829', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));

@@ -21796,6 +21796,23 @@ const AtChartBarLine = class {
         this.chart?.destroy();
         this.chart = null;
     }
+    connectedCallback() {
+        // Fires on every DOM reconnection (e.g. after a GridStack widget move).
+        // disconnectedCallback() already destroyed this.chart; this.data is
+        // preserved on the element. Re-init via rAF so the grid layout has
+        // settled before Chart.js reads the canvas dimensions.
+        // On the very first connection Angular has not yet bound the data prop,
+        // so this.data will be falsy — the condition guards that case.
+        if (this.data?.datasets?.length && !this.chart) {
+            requestAnimationFrame(() => {
+                if (!this.canvasEl?.isConnected)
+                    return;
+                if (!this.chart && this.data?.datasets?.length) {
+                    this.initChart();
+                }
+            });
+        }
+    }
     componentDidUpdate() {
         this.ensureTooltipEl();
         if (this.data && this.data.datasets.length) {
@@ -21874,7 +21891,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '0a27476dca83c5cc327c161456473caeb44dc6f0', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '5ca4d13002d729f931efe466bde12b213f112116', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: '963a88ba90dfc6404541d97b41937c87678f02ff', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'e932eb01aecca36d98410b989bc3e1325883ea9f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

@@ -51,7 +51,10 @@ export declare class AtChartDonut {
      */
     color_palette: AtChartColorPalette;
     /**
-     * Optional value text to display in the center of the donut chart
+     * Optional value text to display in the center of the donut chart.
+     * If set to 'auto', the value will be the sum of the currently visible
+     * dataset values, and will update automatically when a legend item is
+     * toggled.
      */
     center_value?: string;
     /**
@@ -70,6 +73,14 @@ export declare class AtChartDonut {
      * so colors and text are re-read from the current CSS variables.
      */
     refresh_theme?: string;
+    /** Computed sum of currently-visible values when center_value is 'auto'. */
+    private computedCenterValue;
+    /**
+     * Prevents componentDidUpdate from re-initialising the chart when only
+     * computedCenterValue changed (e.g. after a legend item was toggled) —
+     * a full reinit would reset Chart.js's internal visibility state.
+     */
+    private skipInitOnUpdate;
     canvasEl: HTMLCanvasElement;
     legendTooltipEl: HTMLDivElement | null;
     config: ChartConfiguration;
@@ -92,10 +103,33 @@ export declare class AtChartDonut {
     private generateLegendLabels;
     private setLegendTooltip;
     private ensureTooltipEl;
+    /**
+     * Returns the value currently displayed in the center of the donut.
+     * When center_value is 'auto' this is the computed sum of currently
+     * visible dataset values; otherwise it mirrors the center_value prop.
+     */
+    getCenterValue(): Promise<string>;
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * mirroring a click on the corresponding legend item.
+     */
+    toggleLegendItem(index: number): Promise<void>;
+    /**
+     * Returns a formatted sum of currently-visible dataset values.
+     * Used when center_value is 'auto'.
+     */
+    private computeAutoSum;
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * recomputing the 'auto' center value if needed. Shared by the legend's
+     * onClick handler and the toggleLegendItem() method.
+     */
+    private toggleDatasetVisibility;
     private getDrawCenterTextPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;
     disconnectedCallback(): void;
+    connectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,

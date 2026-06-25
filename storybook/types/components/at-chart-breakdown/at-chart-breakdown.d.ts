@@ -5,7 +5,7 @@ export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization
- * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+ * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
  */
 export declare class AtChartBreakdown {
     /**
@@ -57,11 +57,11 @@ export declare class AtChartBreakdown {
      */
     color_palette: AtChartColorPalette;
     /**
-     * Optional value text to display in the center of the breakdown chart
+     * Optional value text to display alongside the breakdown chart
      */
     center_value?: string;
     /**
-     * Optional heading text to display in the center of the breakdown chart
+     * Optional heading text to display alongside the breakdown chart
      */
     center_text?: string;
     /**
@@ -80,20 +80,17 @@ export declare class AtChartBreakdown {
         visible: boolean;
     }>;
     el: HTMLElement;
-    /** Tracks whether the rendered height is below the compact threshold. */
-    isSmall: boolean;
     /** Tracks the canvas height set by Chart.js so the side-text div can be positioned next to it. */
     compactOffset: number;
-    private readonly SMALL_HEIGHT_THRESHOLD;
     /**
      * Prevents initChart() from being re-called when only compactOffset changed
      * (i.e. the compact plugin updated the side-text position but the chart
      * config itself doesn't need rebuilding).
      */
     private skipInitOnUpdate;
-    /** Mirrors isSmall at the point initChart() last ran, so componentDidUpdate
-     *  can tell whether isSmall actually changed versus just compactOffset. */
-    private lastIsSmall;
+    /** Reference to the side-text div (center_value / center_text), used to
+     *  detect overlap with the legend. */
+    private sideTextEl?;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;
@@ -104,21 +101,25 @@ export declare class AtChartBreakdown {
     getConfig(): Promise<object>;
     /**
      * Manually trigger a chart resize to fit container dimensions.
-     * @param containerHeight Optional pixel height of the widget container (e.g. from at-dashboard
-     * after a GridStack drag/resize). When provided, compact mode is evaluated against this height
-     * rather than the component's own (potentially feedback-inflated) height.
+     * The optional containerHeight parameter is accepted for API compatibility
+     * but is no longer used — the chart self-sizes via its ResizeObserver.
      */
     resize(containerHeight?: number): Promise<void>;
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * mirroring a click on the corresponding legend item. Emits
+     * `atuiLegendToggle` with the new visibility state.
+     */
+    toggleLegendItem(index: number): Promise<void>;
     private toggleItemVisibility;
     /**
      * When only center_value changes (e.g. because a legend item was toggled and
      * Angular recomputed the visible sum), we don't need to tear down and recreate
      * the whole chart — that would reset Chart.js's internal visibility state.
      * Instead, skip the next componentDidUpdate re-init and just re-render the
-     * canvas so the DrawCenterTextPlugin picks up the new value.
+     * canvas so the side-text div picks up the new value.
      */
     onCenterValueChanged(): void;
-    private getDrawCenterTextPlugin;
     /**
      * Custom plugin that positions the doughnut flush to the left edge of the
      * canvas and draws the legend manually starting immediately to its right.
@@ -135,8 +136,6 @@ export declare class AtChartBreakdown {
      * (both on initial construction via its internal ResizeObserver, and on
      * explicit chart.resize() calls). Used to keep compactOffset in sync with
      * the actual canvas height so the side-text div is positioned correctly.
-     * Also self-corrects isSmall if a premature measurement put the component
-     * into compact mode when it should be large.
      */
     private getCompactOffsetPlugin;
     /**

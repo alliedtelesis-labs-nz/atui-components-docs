@@ -557,15 +557,15 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
      */
     interface AtChartBreakdown {
         /**
-          * Optional heading text to display in the center of the breakdown chart
+          * Optional heading text to display alongside the breakdown chart
          */
         "center_text"?: string;
         /**
-          * Optional value text to display in the center of the breakdown chart
+          * Optional value text to display alongside the breakdown chart
          */
         "center_value"?: string;
         /**
@@ -617,10 +617,13 @@ export namespace Components {
          */
         "refresh_theme"?: string;
         /**
-          * Manually trigger a chart resize to fit container dimensions.
-          * @param containerHeight Optional pixel height of the widget container (e.g. from at-dashboard after a GridStack drag/resize). When provided, compact mode is evaluated against this height rather than the component's own (potentially feedback-inflated) height.
+          * Manually trigger a chart resize to fit container dimensions. The optional containerHeight parameter is accepted for API compatibility but is no longer used — the chart self-sizes via its ResizeObserver.
          */
         "resize": (containerHeight?: number) => Promise<void>;
+        /**
+          * Toggles the visibility of the dataset segment at the given index, mirroring a click on the corresponding legend item. Emits `atuiLegendToggle` with the new visibility state.
+         */
+        "toggleLegendItem": (index: number) => Promise<void>;
         /**
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -636,7 +639,7 @@ export namespace Components {
          */
         "center_text"?: string;
         /**
-          * Optional value text to display in the center of the donut chart
+          * Optional value text to display in the center of the donut chart. If set to 'auto', the value will be the sum of the currently visible dataset values, and will update automatically when a legend item is toggled.
          */
         "center_value"?: string;
         /**
@@ -656,6 +659,10 @@ export namespace Components {
         labels: string[];
         datasets: ChartDataset[];
     };
+        /**
+          * Returns the value currently displayed in the center of the donut. When center_value is 'auto' this is the computed sum of currently visible dataset values; otherwise it mirrors the center_value prop.
+         */
+        "getCenterValue": () => Promise<string>;
         /**
           * Getter method for the chart's configuration object
           * @returns Configuration of the chart
@@ -696,6 +703,10 @@ export namespace Components {
           * Manually trigger a chart resize to fit container dimensions
          */
         "resize": () => Promise<void>;
+        /**
+          * Toggles the visibility of the dataset segment at the given index, mirroring a click on the corresponding legend item.
+         */
+        "toggleLegendItem": (index: number) => Promise<void>;
         /**
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -3619,7 +3630,7 @@ declare global {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
      */
     interface HTMLAtChartBreakdownElement extends Components.AtChartBreakdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtChartBreakdownElementEventMap>(type: K, listener: (this: HTMLAtChartBreakdownElement, ev: AtChartBreakdownCustomEvent<HTMLAtChartBreakdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5531,15 +5542,15 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
      */
     interface AtChartBreakdown {
         /**
-          * Optional heading text to display in the center of the breakdown chart
+          * Optional heading text to display alongside the breakdown chart
          */
         "center_text"?: string;
         /**
-          * Optional value text to display in the center of the breakdown chart
+          * Optional value text to display alongside the breakdown chart
          */
         "center_value"?: string;
         /**
@@ -5607,7 +5618,7 @@ declare namespace LocalJSX {
          */
         "center_text"?: string;
         /**
-          * Optional value text to display in the center of the donut chart
+          * Optional value text to display in the center of the donut chart. If set to 'auto', the value will be the sum of the currently visible dataset values, and will update automatically when a legend item is toggled.
          */
         "center_value"?: string;
         /**
@@ -9071,7 +9082,7 @@ declare module "@stencil/core" {
             "at-chart-bar-line": LocalJSX.IntrinsicElements["at-chart-bar-line"] & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
             /**
              * @category Data Visualization
-             * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+             * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
              */
             "at-chart-breakdown": LocalJSX.IntrinsicElements["at-chart-breakdown"] & JSXBase.HTMLAttributes<HTMLAtChartBreakdownElement>;
             /**

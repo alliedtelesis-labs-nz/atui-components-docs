@@ -142,6 +142,7 @@ export declare class AtChartBarLine {
     private generateLegendLabels;
     initChart(): void;
     disconnectedCallback(): void;
+    connectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,

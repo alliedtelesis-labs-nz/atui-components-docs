@@ -56,7 +56,10 @@ export class AtChartDonut {
      */
     color_palette = AtChartColorPalette.CATEGORICAL;
     /**
-     * Optional value text to display in the center of the donut chart
+     * Optional value text to display in the center of the donut chart.
+     * If set to 'auto', the value will be the sum of the currently visible
+     * dataset values, and will update automatically when a legend item is
+     * toggled.
      */
     center_value;
     /**
@@ -75,6 +78,14 @@ export class AtChartDonut {
      * so colors and text are re-read from the current CSS variables.
      */
     refresh_theme;
+    /** Computed sum of currently-visible values when center_value is 'auto'. */
+    computedCenterValue = '';
+    /**
+     * Prevents componentDidUpdate from re-initialising the chart when only
+     * computedCenterValue changed (e.g. after a legend item was toggled) —
+     * a full reinit would reset Chart.js's internal visibility state.
+     */
+    skipInitOnUpdate = false;
     canvasEl;
     legendTooltipEl = null;
     config;
@@ -112,6 +123,68 @@ export class AtChartDonut {
     ensureTooltipEl() {
         this.legendTooltipEl = ensureLegendTooltipEl(this.canvasEl, this.legendTooltipEl);
     }
+    /**
+     * Returns the value currently displayed in the center of the donut.
+     * When center_value is 'auto' this is the computed sum of currently
+     * visible dataset values; otherwise it mirrors the center_value prop.
+     */
+    async getCenterValue() {
+        return this.center_value === 'auto'
+            ? this.computedCenterValue
+            : (this.center_value ?? '');
+    }
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * mirroring a click on the corresponding legend item.
+     */
+    async toggleLegendItem(index) {
+        this.toggleDatasetVisibility(index);
+    }
+    /**
+     * Returns a formatted sum of currently-visible dataset values.
+     * Used when center_value is 'auto'.
+     */
+    computeAutoSum() {
+        if (!this.data?.datasets?.[0]?.data || !this.chart)
+            return '';
+        const chart = this.chart;
+        const values = this.data.datasets[0].data;
+        const sum = values.reduce((acc, val, i) => acc +
+            (chart.getDataVisibility(i)
+                ? Number.isFinite(val)
+                    ? val
+                    : 0
+                : 0), 0);
+        return Number.isInteger(sum) ? String(sum) : sum.toFixed(2);
+    }
+    /**
+     * Toggles the visibility of the dataset segment at the given index,
+     * recomputing the 'auto' center value if needed. Shared by the legend's
+     * onClick handler and the toggleLegendItem() method.
+     */
+    toggleDatasetVisibility(idx) {
+        if (!this.chart)
+            return;
+        const chart = this.chart;
+        chart.toggleDataVisibility(idx);
+        const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
+        if (chart.options.plugins?.tooltip) {
+            chart.options.plugins.tooltip.enabled = !!anyVisible;
+        }
+        chart.update();
+        if (this.center_value === 'auto') {
+            const newSum = this.computeAutoSum();
+            if (newSum !== this.computedCenterValue) {
+                // Only set the flag when the value genuinely changes so Stencil
+                // triggers an update and componentDidUpdate() can clear it.
+                // If the sum is unchanged (e.g. toggling a zero-valued slice),
+                // no state update fires and the flag would otherwise get stuck.
+                this.skipInitOnUpdate = true;
+                this.computedCenterValue = newSum;
+            }
+            chart.render();
+        }
+    }
     getDrawCenterTextPlugin() {
         return {
             id: 'DrawCenterTextPlugin',
@@ -143,9 +216,14 @@ export class AtChartDonut {
                     }
                     ctx.fillText(text, x, y);
                 };
-                if (this.center_value) {
-                    addText(valueFontSize, this.center_value, centerX, centerY, 'top');
-                    addText(textFontSize, this.center_text, centerX, centerY, 'bottom');
+                const displayValue = this.center_value === 'auto'
+                    ? this.computedCenterValue
+                    : this.center_value;
+                if (displayValue) {
+                    addText(valueFontSize, displayValue, centerX, centerY, 'top');
+                    if (this.center_text) {
+                        addText(textFontSize, this.center_text, centerX, centerY, 'bottom');
+                    }
                 }
                 else if (this.center_text) {
                     addText(textFontSize, this.center_text, centerX, centerY, 'middle');
@@ -204,21 +282,14 @@ export class AtChartDonut {
                         onLeave: () => {
                             this.setLegendTooltip(false);
                         },
-                        onClick: (_evt, legendItem, legend) => {
+                        onClick: (_evt, legendItem) => {
                             const idx = legendItem.index;
                             if (legendItem
                                 .isOverflow ||
                                 idx === undefined) {
                                 return;
                             }
-                            const chart = legend.chart;
-                            chart.toggleDataVisibility(idx);
-                            const anyVisible = chart.data.labels?.some((_, i) => chart.getDataVisibility(i));
-                            if (chart.options.plugins?.tooltip) {
-                                chart.options.plugins.tooltip.enabled =
-                                    !!anyVisible;
-                            }
-                            chart.update();
+                            this.toggleDatasetVisibility(idx);
                         },
                         display: true,
                         ...(this.legend_options || {}),
@@ -281,6 +352,14 @@ export class AtChartDonut {
             this.chart.destroy();
         }
         this.chart = new Chart(this.canvasEl, this.config);
+        if (this.center_value === 'auto') {
+            const newSum = this.computeAutoSum();
+            if (newSum !== this.computedCenterValue) {
+                this.skipInitOnUpdate = true;
+                this.computedCenterValue = newSum;
+            }
+            this.chart.render();
+        }
     }
     applyPresetPalette(colors) {
         if (this.color_palette === AtChartColorPalette.CUSTOM) {
@@ -303,8 +382,29 @@ export class AtChartDonut {
         this.chart?.destroy();
         this.chart = null;
     }
+    connectedCallback() {
+        // Fires on every DOM reconnection (e.g. after a GridStack widget move).
+        // disconnectedCallback() already destroyed this.chart; this.data is
+        // preserved on the element. Re-init via rAF so the grid layout has
+        // settled before Chart.js reads the canvas dimensions.
+        // On the very first connection Angular has not yet bound the data prop,
+        // so this.data will be falsy — the condition guards that case.
+        if (this.data?.datasets?.length && !this.chart) {
+            requestAnimationFrame(() => {
+                if (!this.canvasEl?.isConnected)
+                    return;
+                if (!this.chart && this.data?.datasets?.length) {
+                    this.initChart();
+                }
+            });
+        }
+    }
     componentDidUpdate() {
         this.ensureTooltipEl();
+        if (this.skipInitOnUpdate) {
+            this.skipInitOnUpdate = false;
+            return;
+        }
         if (this.data && this.data.datasets.length) {
             this.initChart();
         }
@@ -321,7 +421,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '6dde414179c8b693a0489ac3aff75951753fedee', style: { height: '100%', width: '100%' } }, h("canvas", { key: '13f658e20ecef4cd0711d329d10752e153846d57', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '619a1a6ee68a1de1b7cda922b6752bf276e58d56', style: { height: '100%', width: '100%' } }, h("canvas", { key: '9ccbb877dbc9eaed5fbabff59019a39230b65bd5', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -516,7 +616,7 @@ export class AtChartDonut {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Optional value text to display in the center of the donut chart"
+                    "text": "Optional value text to display in the center of the donut chart.\nIf set to 'auto', the value will be the sum of the currently visible\ndataset values, and will update automatically when a legend item is\ntoggled."
                 },
                 "getter": false,
                 "setter": false,
@@ -583,6 +683,11 @@ export class AtChartDonut {
             }
         };
     }
+    static get states() {
+        return {
+            "computedCenterValue": {}
+        };
+    }
     static get methods() {
         return {
             "getConfig": {
@@ -645,6 +750,44 @@ export class AtChartDonut {
                 },
                 "docs": {
                     "text": "Manually trigger a chart resize to fit container dimensions",
+                    "tags": []
+                }
+            },
+            "getCenterValue": {
+                "complexType": {
+                    "signature": "() => Promise<string>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<string>"
+                },
+                "docs": {
+                    "text": "Returns the value currently displayed in the center of the donut.\nWhen center_value is 'auto' this is the computed sum of currently\nvisible dataset values; otherwise it mirrors the center_value prop.",
+                    "tags": []
+                }
+            },
+            "toggleLegendItem": {
+                "complexType": {
+                    "signature": "(index: number) => Promise<void>",
+                    "parameters": [{
+                            "name": "index",
+                            "type": "number",
+                            "docs": ""
+                        }],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Toggles the visibility of the dataset segment at the given index,\nmirroring a click on the corresponding legend item.",
                     "tags": []
                 }
             }
