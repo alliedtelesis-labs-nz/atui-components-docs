@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B-1zT4Ec.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CBaYZWr2.js';
 import { g as getRelativeTimeString, a as getRefreshDelay } from './relative-time.util-lJSYZp0N.js';
 
 const AtRelativeTimeComponent = class {
@@ -84,7 +84,7 @@ const AtRelativeTimeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '17353241f289431776641d1946e4fc3d234fe82d', class: "inline-flex" }, h("at-tooltip", { key: 'bda906612a6f6369b3974d3e8231a4e53c2d5876', position: "top", disabled: !this.titleText }, h("time", { key: '533ac00cc18d44cdc3baeef369fdaaa20b12aa74', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
+        return (h(Host, { key: '1e23d8360ebf002c33e95e9f48e5bf1ba74b00d5', class: "inline-flex" }, h("at-tooltip", { key: '68ad74018bccbe97c034ebb3c67b03a67ce73669', position: "top", disabled: !this.titleText }, h("time", { key: 'fedae3eedbe12a8c7f9767ca2e9085279a626589', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
     }
     static get watchers() { return {
         "timestamp": [{

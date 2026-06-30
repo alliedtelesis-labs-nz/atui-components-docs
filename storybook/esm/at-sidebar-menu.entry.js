@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-B-1zT4Ec.js';
+import { r as registerInstance, h, H as Host } from './index-CBaYZWr2.js';
 
 const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}`;
 
@@ -7,7 +7,7 @@ const AtSidebarMenuComponent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '97e9a7f4c986ed76019f881ab27b2b04b21ae434', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: 'd070246e6808fade1d306b251a326e39d7ba731f' })));
+        return (h(Host, { key: '7a07ca2993533474e7e5dc4f91522140e42c8ce1', role: "menu", "data-name": "sidebar-menu" }, h("slot", { key: '4524a4d0fd85d078a67b228166c1bf606127b070' })));
     }
 };
 AtSidebarMenuComponent.style = atSidebarMenuCss();

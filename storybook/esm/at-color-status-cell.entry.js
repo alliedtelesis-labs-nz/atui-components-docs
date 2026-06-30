@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B-1zT4Ec.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CBaYZWr2.js';
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
@@ -23,7 +23,7 @@ const AtColorStatusCell = class {
             success: 'bg-success-base',
             disabled: 'bg-disabled-light',
         };
-        return (h(Host, { key: 'd95c4e7b0611fd74405e9f04111d7d99662342c1', class: "flex h-full items-center" }, h("div", { key: 'ff784e7e1f8981f3fee7c82a6e14d9061679a345', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (h(Host, { key: '951c0aaaa4c52252f19973470cdcbadf886aba7a', class: "flex h-full items-center" }, h("div", { key: 'd3f57d6376953a39e9a9c5e092fa9c6567901670', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
 };
 

@@ -146,7 +146,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '9a1ec71bd73830acd8905c2995c7e743bcbe7241', "data-open": this.isOpen }, h("dialog", { key: '304b507eb2e971d45579a02172929042667c96e4', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '7df15fa78fde3eb19a817af452d1ca8f6ad49c8d', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '233afc974d0b8691979c385a0918667035baa334' })))));
+        return (h(Host, { key: '88a20ba71f364964005165367b7bdf639d03ba0a', "data-open": this.isOpen }, h("dialog", { key: '7104652e5752cf031eede5c93b1146ce55d16133', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'a539343af74b30b0627081b53d7e5f5475ca0136', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'c486e74109d3a24fdb20bf431667952d8e651461' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }

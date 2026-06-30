@@ -1,4 +1,4 @@
-import { r as registerInstance, h, a as getElement, H as Host } from './index-B-1zT4Ec.js';
+import { r as registerInstance, h, a as getElement, H as Host } from './index-CBaYZWr2.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-DDtwbwIl.js';
 
 const AtFormLabelComponent = class {
@@ -22,9 +22,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (h("div", { key: '462c7a3296a51579d511163801fd3902cb2fef25', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (h("label", { key: '54b645c23ef3d750c43cb9422d2375a4d4f07285', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'b4e4fef609d8991f32f0ca37f1d92a353d299b6a', class: "text-error" }, "*"))),
-            this.info_text && (h("at-tooltip", { key: 'a1a2650e21f85611d2c968aea484d2a3ccbbac4e', position: "right" }, h("at-icon", { key: '6c45dc3543254b04c3bfed6f64ef79f3cc430b07', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), h("span", { key: '5496fa22237b2d49738daa438dd50980791a434d' }, this.info_text))),
+        return (h("div", { key: '873126171ae1a6f74e4cbcc0d4ed401fccb575fa', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (h("label", { key: '027640d0cdd4470a0c0621e7b096218c07ac4c99', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && h("span", { key: 'ae8308dfd16b9059fb97c17ea444ec886a810147', class: "text-error" }, "*"))),
+            this.info_text && (h("at-tooltip", { key: 'eaf5ea3986f2be38347a813efb2723f21ca2f168', position: "right" }, h("at-icon", { key: 'b1ede37d561e899d9d900b1d36ad25fad29ee779', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), h("span", { key: 'b3f7dfc4e42b31287b65026f8c423f1af40d29ed' }, this.info_text))),
         ]));
     }
 };
@@ -317,7 +317,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '99ea064def96a16cfb8cdc16f024d5b808ed16ea', class: "relative" }, !this.trigger_id && (h("div", { key: '592e7f7403e761321d2012a94e5180cfb204d0ec', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '1cd53a644db285e2e86d83ad48ea4bd1f2ee00ac', name: "tooltip-trigger" }))), h("div", { key: 'aa3ba7a28dd69f6f892d837b45aca4d2d183cb96', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '66cb1fc3a3b152c7bcb833f7dc304404d310c498' }))));
+        return (h(Host, { key: 'f34d7ee12b5d5b88e69d0554522db26b673a23aa', class: "relative" }, !this.trigger_id && (h("div", { key: '533715f2e5ca56ec38aa8f8cfb3c573a68e1c076', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '66034fb455896f3e2c0d26710d72fdfd05d008bf', name: "tooltip-trigger" }))), h("div", { key: '62dc2e5af2beb4485d55cd305d1e59927da2aa2e', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '56b41ecbf4ed5781e85d053d0b4fc18c16371fca' }))));
     }
     static get watchers() { return {
         "disabled": [{

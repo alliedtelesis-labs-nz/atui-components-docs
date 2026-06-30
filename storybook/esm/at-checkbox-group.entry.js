@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B-1zT4Ec.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CBaYZWr2.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const layoutVariantsConfig = {
@@ -126,8 +126,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: '259f35e3aab5764b99e6a91f5a8d072aa425ebcd', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '4e513e37ae9691125bf23679524ae0d4e400c5c5', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '415ee7ca6a6e31c0c331dfee063dcd3a489fd75e', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '1e18e067a9ac8257d7ab45ba52019493936ed9e0', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '73ef91747a92d3f0ebb3784946d2395c97589f89', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'cd62dec7fffa5a61a419318d16b6b91a323b04a0', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '0d5f7ab251471ec9e508f40a745cc88b9adf4248' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'faf508146d5dcee00ea02bb2fc3eac5a7b822074', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '73c8acd9c3f3c1db50574056b6a2284d1d464370', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '4920d44e3e78f041b291220f6b6743cc2df06edd', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '5cddc22471e306126edc9c70f3954c9281ec90b1', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'ceaadc5e808eec48eaa9d70b63a44a71b79aa3d7', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'bb66fcd38604f66a71598abad34b613483e2c843', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '5c930142625883a0d09d9358f1939d2ae9eae7c0', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '62a2b760676b8f09cf8e4d514febf3831a72776b' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '1bc3e4225b3d502d880318bf4d565d0cd36cad9b', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{

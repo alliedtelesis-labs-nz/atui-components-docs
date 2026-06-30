@@ -29,6 +29,8 @@ export { AtChartBreakdown as AtChartBreakdown } from '../types/components/at-cha
 export { defineCustomElement as defineCustomElementAtChartBreakdown } from './at-chart-breakdown';
 export { AtChartDonut as AtChartDonut } from '../types/components/at-chart-donut/at-chart-donut';
 export { defineCustomElement as defineCustomElementAtChartDonut } from './at-chart-donut';
+export { AtChartGauge as AtChartGauge } from '../types/components/at-chart-gauge/at-chart-gauge';
+export { defineCustomElement as defineCustomElementAtChartGauge } from './at-chart-gauge';
 export { AtChartSparkline as AtChartSparkline } from '../types/components/at-chart-sparkline/at-chart-sparkline';
 export { defineCustomElement as defineCustomElementAtChartSparkline } from './at-chart-sparkline';
 export { AtCheckbox as AtCheckbox } from '../types/components/at-checkbox-group/at-checkbox/at-checkbox';

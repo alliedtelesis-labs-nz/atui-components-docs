@@ -23,6 +23,7 @@ import { AtCard as AtCardElement, defineCustomElement as defineAtCard } from "@a
 import { AtChartBarLine as AtChartBarLineElement, defineCustomElement as defineAtChartBarLine } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-bar-line.js";
 import { AtChartBreakdown as AtChartBreakdownElement, defineCustomElement as defineAtChartBreakdown } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-breakdown.js";
 import { AtChartDonut as AtChartDonutElement, defineCustomElement as defineAtChartDonut } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-donut.js";
+import { AtChartGauge as AtChartGaugeElement, defineCustomElement as defineAtChartGauge } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-gauge.js";
 import { AtChartSparkline as AtChartSparklineElement, defineCustomElement as defineAtChartSparkline } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-sparkline.js";
 import { AtCheckboxCell as AtCheckboxCellElement, defineCustomElement as defineAtCheckboxCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-cell.js";
 import { AtCheckboxGroup as AtCheckboxGroupElement, defineCustomElement as defineAtCheckboxGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-group.js";
@@ -283,6 +284,17 @@ export const AtChartDonut: StencilReactComponent<AtChartDonutElement, AtChartDon
     react: React,
     events: {} as AtChartDonutEvents,
     defineCustomElement: defineAtChartDonut
+});
+
+type AtChartGaugeEvents = NonNullable<unknown>;
+
+export const AtChartGauge: StencilReactComponent<AtChartGaugeElement, AtChartGaugeEvents> = /*@__PURE__*/ createComponent<AtChartGaugeElement, AtChartGaugeEvents>({
+    tagName: 'at-chart-gauge',
+    elementClass: AtChartGaugeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtChartGaugeEvents,
+    defineCustomElement: defineAtChartGauge
 });
 
 type AtChartSparklineEvents = NonNullable<unknown>;

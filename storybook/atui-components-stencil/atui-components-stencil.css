@@ -2750,6 +2750,10 @@ strong {
   height: 20px;
 }
 
+.h-\[220px\] {
+  height: 220px;
+}
+
 .h-\[22px\] {
   height: 22px;
 }
@@ -2764,6 +2768,10 @@ strong {
 
 .h-\[28px\] {
   height: 28px;
+}
+
+.h-\[300px\] {
+  height: 300px;
 }
 
 .h-\[30px\] {
@@ -2788,6 +2796,10 @@ strong {
 
 .h-\[70px\] {
   height: 70px;
+}
+
+.h-\[80px\] {
+  height: 80px;
 }
 
 .h-button-lg {

@@ -18,6 +18,7 @@
     "components/at-toaster/at-toaster.js",
     "components/at-chart-donut/at-chart-donut.js",
     "components/at-chart-sparkline/at-chart-sparkline.js",
+    "components/at-chart-gauge/at-chart-gauge.js",
     "components/at-tabs/at-tabs.js",
     "components/at-radio-group/at-radio-group.js",
     "components/at-button-group/at-button-group.js",

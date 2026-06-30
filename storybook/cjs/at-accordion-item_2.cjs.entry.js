@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BYFFxEOi.js');
+var index = require('./index-l94cJki_.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atAccordionItemCss = () => `details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}[data-name=accordion-item-content]{display:grid;grid-template-rows:1fr;transition:grid-template-rows 200ms ease-in-out, opacity 200ms ease;opacity:1}[data-name=accordion-item-content][data-state=collapsed]{grid-template-rows:0fr;overflow:hidden;opacity:0}[data-name=accordion-item-content]>*{overflow:hidden}`;
@@ -103,7 +103,7 @@ const AtAccordionItemComponent = class {
         const classname = getAccordionClasses({
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'e6cdfc0ecb98a51272ca5267eaeadcd52a6e8611', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: 'fe5df5acab458772e6992b91d0276b40711558d7', class: "group/accordion-item", role: "group", ref: (el) => (this.detailsEl = el) }, index.h("summary", { key: 'c515b826ce85532639a228ef5260a2b27953055a', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (index.h("at-accordion-trigger", { key: '7da435c05ac9c371f5bdb8f90a30620753f078e5', label: this.label })), index.h("slot", { key: '96369e6c779845a74699918f0293305892b48324', name: "accordion-trigger" })), index.h("div", { key: 'e7c96eee2f73b7416283bcf574d6be47f86c5905', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: '631beda8da6fd29243f6d45eda94f0c3ff9ed065', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: '5eb244b79efab516859a0877d7e5e1f3f96b4168' })))));
+        return (index.h(index.Host, { key: '269671504ae8f702e158577ff6323155e51acb8c', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: '323585195903053ce67e16653ae390210281e619', class: "group/accordion-item", role: "group", ref: (el) => (this.detailsEl = el) }, index.h("summary", { key: 'a358934383de84492f99a0d5534a60271f58eabc', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), "aria-controls": `content-${this.item_id}` }, this.label && (index.h("at-accordion-trigger", { key: 'a01a6a3e1e57579b8925d318322b7ad98cb560ac', label: this.label })), index.h("slot", { key: '36663cde32589db13a5cccc256a57a34da26897b', name: "accordion-trigger" })), index.h("div", { key: 'd3adbd2eb6bee0c3933ca89aff03ea60841a50fb', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: '2c7a2b48a5722cdcc635f56d347094cda9cedd3d', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: '6993747968a6a73e71256e122bd924e22bfb90a4' })))));
     }
     static get watchers() { return {
         "open": [{
@@ -122,7 +122,7 @@ const AtAccordionTriggerComponent = class {
      */
     label;
     render() {
-        return (index.h(index.Host, { key: 'bd07ae1646ee0c4533698c33e3b3ae05720959fa', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (index.h("span", { key: '5203f62539c36fe310156beea5383acba745c604', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), index.h("slot", { key: 'b80751fbc31f2fcdafeb580ef4555e0f4625bd69' }), index.h("at-icon", { key: '3b8edbfc1de81e0a02f1babe220cd2b7f1f0283d', role: "presentation", "aria-hidden": "true", class: "fill-light group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
+        return (index.h(index.Host, { key: 'f89ea19be52eda5e9948778415a32954bba5a358', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (index.h("span", { key: '7a7f142e88b3044a6bc18a70697c723a78ed9fc4', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), index.h("slot", { key: '9c57796d8f1b1cf3a29ce4dcec8f67d1ebf09494' }), index.h("at-icon", { key: '51bb082fdeecf3314d2ee43abbbd326257b5628c', role: "presentation", "aria-hidden": "true", class: "fill-light group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
     }
 };
 

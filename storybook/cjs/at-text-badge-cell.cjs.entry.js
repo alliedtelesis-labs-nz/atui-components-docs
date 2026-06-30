@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BYFFxEOi.js');
+var index = require('./index-l94cJki_.js');
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
@@ -37,7 +37,7 @@ const AtTextBadgeCell = class {
         this.textValue = this.params.value;
     }
     render() {
-        return (index.h(index.Host, { key: '4afd9872a720a6d074130a8b7cf127a315682876', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'efc0d5aaabdbc6569e55db5c19b381d23fc421de', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: 'd1b8855068d09d596250b16c43155046d7779052', slot: "tooltip-trigger" }, index.h("span", { key: 'cc7060e2a34b264264b51ccd3882ca05fb4efd2e', class: "truncate" }, this.textValue), index.h("at-badge", { key: '8707551e8ac9937fd10f2faa25d202edca20b14f', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (index.h("span", { key: '15f10fe890017fda99b5943000a274e602043843', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (index.h(index.Host, { key: '92617395eb833f0dd3b4b46c56803f12af3b4d65', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'e10c1be6d76e117cbdd0faa9c9111968f66f0132', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: '37fd1da19ddd1d14433c29e47cb874fded344838', slot: "tooltip-trigger" }, index.h("span", { key: 'e6fbd15bf6693636dc5bfd171f1426ccdf665043', class: "truncate" }, this.textValue), index.h("at-badge", { key: '9a03b28781f36cad8d2b86797f948804d386b206', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (index.h("span", { key: 'b6ddfe46fd9f8f4000817d1a71bd6fb1d42e879a', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

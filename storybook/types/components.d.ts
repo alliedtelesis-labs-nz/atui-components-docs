@@ -19,6 +19,7 @@ import { AtChartColorPalette } from "./types/chart-color";
 import { TruncatedLegendItem } from "./utils/chart-legend";
 import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 import { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+import { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 import { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
@@ -68,6 +69,7 @@ export { AtChartColorPalette } from "./types/chart-color";
 export { TruncatedLegendItem } from "./utils/chart-legend";
 export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
 export { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+export { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 export { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
@@ -711,6 +713,75 @@ export namespace Components {
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
+     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     */
+    interface AtChartGauge {
+        /**
+          * Optional label shown beneath the centre value.
+         */
+        "center_text"?: string;
+        /**
+          * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+         */
+        "center_value"?: string;
+        /**
+          * Palette for the gauge — one of two roles: - `ALERT` (default): use when the gauge has `thresholds`. The threshold   zones always use the alert palette, and the value arc falls back to the   alert palette's first colour when no `status` is set. - `CATEGORICAL`: use when the gauge has no `thresholds`. The value arc   falls back to the categorical palette's first colour when no `status` is   set.  `status`, when set, always colours the value arc from the device-status palette and takes precedence over this palette. Colours resolve from theme CSS variables.
+          * @default AtChartColorPalette.ALERT
+         */
+        "color_palette": AtChartGaugePalette;
+        /**
+          * Controls the thickness of the donut ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
+          * @default 70
+         */
+        "cutout"?: number;
+        /**
+          * Getter method for the chart's configuration object.
+          * @returns Configuration of the chart
+         */
+        "getConfig": () => Promise<object>;
+        /**
+          * Height of the gauge.
+          * @default 'md'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * End of the gauge scale.
+          * @default 100
+         */
+        "max": number;
+        /**
+          * Start of the gauge scale.
+          * @default 0
+         */
+        "min": number;
+        /**
+          * Additional options merged into the chart configuration.
+         */
+        "options"?: object;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colours and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Manually trigger a chart resize to fit container dimensions.
+         */
+        "resize": () => Promise<void>;
+        /**
+          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). When unset, the first colour of `color_palette` is used.
+         */
+        "status"?: AtChartGaugeStatus;
+        /**
+          * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
+         */
+        "thresholds"?: number[];
+        /**
+          * The metric value to display, plotted against `min` and `max`. Values outside the range are clamped.
+          * @default 0
+         */
+        "value": number;
     }
     /**
      * @category Data Visualization
@@ -3658,6 +3729,16 @@ declare global {
     };
     /**
      * @category Data Visualization
+     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     */
+    interface HTMLAtChartGaugeElement extends Components.AtChartGauge, HTMLStencilElement {
+    }
+    var HTMLAtChartGaugeElement: {
+        prototype: HTMLAtChartGaugeElement;
+        new (): HTMLAtChartGaugeElement;
+    };
+    /**
+     * @category Data Visualization
      * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
      */
     interface HTMLAtChartSparklineElement extends Components.AtChartSparkline, HTMLStencilElement {
@@ -5016,6 +5097,7 @@ declare global {
         "at-chart-bar-line": HTMLAtChartBarLineElement;
         "at-chart-breakdown": HTMLAtChartBreakdownElement;
         "at-chart-donut": HTMLAtChartDonutElement;
+        "at-chart-gauge": HTMLAtChartGaugeElement;
         "at-chart-sparkline": HTMLAtChartSparklineElement;
         "at-checkbox": HTMLAtCheckboxElement;
         "at-checkbox-cell": HTMLAtCheckboxCellElement;
@@ -5668,6 +5750,66 @@ declare namespace LocalJSX {
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
+    }
+    /**
+     * @category Data Visualization
+     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     */
+    interface AtChartGauge {
+        /**
+          * Optional label shown beneath the centre value.
+         */
+        "center_text"?: string;
+        /**
+          * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+         */
+        "center_value"?: string;
+        /**
+          * Palette for the gauge — one of two roles: - `ALERT` (default): use when the gauge has `thresholds`. The threshold   zones always use the alert palette, and the value arc falls back to the   alert palette's first colour when no `status` is set. - `CATEGORICAL`: use when the gauge has no `thresholds`. The value arc   falls back to the categorical palette's first colour when no `status` is   set.  `status`, when set, always colours the value arc from the device-status palette and takes precedence over this palette. Colours resolve from theme CSS variables.
+          * @default AtChartColorPalette.ALERT
+         */
+        "color_palette"?: AtChartGaugePalette;
+        /**
+          * Controls the thickness of the donut ring. Value between 0 and 100. 0 means no cutout (solid circle), 100 means maximum cutout (thin ring). Default is 70.
+          * @default 70
+         */
+        "cutout"?: number;
+        /**
+          * Height of the gauge.
+          * @default 'md'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * End of the gauge scale.
+          * @default 100
+         */
+        "max"?: number;
+        /**
+          * Start of the gauge scale.
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * Additional options merged into the chart configuration.
+         */
+        "options"?: object;
+        /**
+          * Pass the active theme value here to trigger a chart redraw when the theme changes. The value itself is not used — any change to this prop causes the chart to reinitialise so colours and text are re-read from the current CSS variables.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). When unset, the first colour of `color_palette` is used.
+         */
+        "status"?: AtChartGaugeStatus;
+        /**
+          * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
+         */
+        "thresholds"?: number[];
+        /**
+          * The metric value to display, plotted against `min` and `max`. Values outside the range are clamped.
+          * @default 0
+         */
+        "value"?: number;
     }
     /**
      * @category Data Visualization
@@ -8400,6 +8542,18 @@ declare namespace LocalJSX {
         "cutout": number;
         "refresh_theme": string;
     }
+    interface AtChartGaugeAttributes {
+        "value": number;
+        "min": number;
+        "max": number;
+        "status": AtChartGaugeStatus;
+        "center_value": string;
+        "center_text": string;
+        "cutout": number;
+        "color_palette": AtChartGaugePalette;
+        "height": AtChartHeight;
+        "refresh_theme": string;
+    }
     interface AtChartSparklineAttributes {
         "mode": AtChartSparklineMode;
         "status": AtChartSparklineStatus;
@@ -8903,6 +9057,7 @@ declare namespace LocalJSX {
         "at-chart-bar-line": Omit<AtChartBarLine, keyof AtChartBarLineAttributes> & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes]?: AtChartBarLine[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `attr:${K}`]?: AtChartBarLineAttributes[K] } & { [K in keyof AtChartBarLine & keyof AtChartBarLineAttributes as `prop:${K}`]?: AtChartBarLine[K] };
         "at-chart-breakdown": Omit<AtChartBreakdown, keyof AtChartBreakdownAttributes> & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes]?: AtChartBreakdown[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `attr:${K}`]?: AtChartBreakdownAttributes[K] } & { [K in keyof AtChartBreakdown & keyof AtChartBreakdownAttributes as `prop:${K}`]?: AtChartBreakdown[K] };
         "at-chart-donut": Omit<AtChartDonut, keyof AtChartDonutAttributes> & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes]?: AtChartDonut[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `attr:${K}`]?: AtChartDonutAttributes[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `prop:${K}`]?: AtChartDonut[K] };
+        "at-chart-gauge": Omit<AtChartGauge, keyof AtChartGaugeAttributes> & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes]?: AtChartGauge[K] } & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes as `attr:${K}`]?: AtChartGaugeAttributes[K] } & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes as `prop:${K}`]?: AtChartGauge[K] };
         "at-chart-sparkline": Omit<AtChartSparkline, keyof AtChartSparklineAttributes> & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes]?: AtChartSparkline[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `attr:${K}`]?: AtChartSparklineAttributes[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `prop:${K}`]?: AtChartSparkline[K] };
         "at-checkbox": Omit<AtCheckbox, keyof AtCheckboxAttributes> & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes]?: AtCheckbox[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `attr:${K}`]?: AtCheckboxAttributes[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `prop:${K}`]?: AtCheckbox[K] };
         "at-checkbox-cell": AtCheckboxCell;
@@ -9090,6 +9245,11 @@ declare module "@stencil/core" {
              * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
              */
             "at-chart-donut": LocalJSX.IntrinsicElements["at-chart-donut"] & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
+            /**
+             * @category Data Visualization
+             * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+             */
+            "at-chart-gauge": LocalJSX.IntrinsicElements["at-chart-gauge"] & JSXBase.HTMLAttributes<HTMLAtChartGaugeElement>;
             /**
              * @category Data Visualization
              * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.

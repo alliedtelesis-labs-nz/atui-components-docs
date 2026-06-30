@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BYFFxEOi.js');
+var index = require('./index-l94cJki_.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const avatarVariantsConfig = {
@@ -58,7 +58,7 @@ const AtAvatar = class {
             size: this.size,
             variant: this.variant,
         });
-        return (index.h(index.Host, { key: '0b6bb897b0ac39c187ead058bd522c89b1f55b58', class: classes, "data-name": "avatar-container" }, this.src && (index.h("img", { key: '8d533b9f514a62c7e87bf454e74ad5bedb0880fb', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (index.h("span", { key: '042627e8f9046aa9a5f4ea1f75a929cb14c766d2', "data-name": "avatar-initials" }, this.initials)), index.h("slot", { key: '21258870e2389c516dda84fd22040a2f57cbd66a' })));
+        return (index.h(index.Host, { key: 'bad0f1ff9cf8c6cead5efe396afb1ec19fdeb655', class: classes, "data-name": "avatar-container" }, this.src && (index.h("img", { key: '1bdbe027e0a93a3ccf28bccabfd2da168e47872f', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (index.h("span", { key: 'ee6f094e059f22a0439490943ad5d3aab6f19caf', "data-name": "avatar-initials" }, this.initials)), index.h("slot", { key: '3f5949d8c64cee43a8e49676c27123202335af6b' })));
     }
 };
 
