@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-DXVL22ya.js";const a=o,p=s;export{a as AtCheckbox,p as defineCustomElement}
+import{A as o,d as p}from"./p-pBoaCHdo.js";const s=o,a=p;export{s as AtCheckbox,a as defineCustomElement}

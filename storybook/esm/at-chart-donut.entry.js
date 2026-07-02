@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CBaYZWr2.js';
+import { r as registerInstance, h, H as Host } from './index-D_TsKqPT.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-Dxo-bU-I.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';
 import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl } from './chart-legend-B_h8W2l2.js';
@@ -188,44 +188,78 @@ const AtChartDonut = class {
         return {
             id: 'DrawCenterTextPlugin',
             afterDatasetDraw: (chart) => {
-                const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-                const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
                 const ctx = chart.ctx;
                 if (!ctx) {
                     return;
                 }
-                ctx.restore();
+                const centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+                const centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
                 const height = chart.chartArea.bottom - chart.chartArea.top;
-                const textFontSize = (height / 200).toFixed(2) + 'em sans-serif';
-                const valueFontSize = (height / 140).toFixed(2) + 'em sans-serif';
+                ctx.restore();
+                // Radius of the donut hole — the real space the text must fit in.
+                const arc = chart.getDatasetMeta(0)?.data?.[0];
+                const innerRadius = arc?.innerRadius ?? height / 2;
+                // Usable width inside the hole, leaving a margin off the ring.
+                const maxWidth = innerRadius * 2 * 0.82;
+                const setFont = (px) => {
+                    const baseFontPx = parseFloat(getComputedStyle(chart.canvas).fontSize) ||
+                        16;
+                    return (ctx.font = `500 ${(px / baseFontPx).toFixed(2)}em sans-serif`);
+                };
+                // Largest size up to `base` that keeps `text` within maxWidth.
+                const fit = (text, base) => {
+                    setFont(base);
+                    const w = ctx.measureText(text).width;
+                    return w > maxWidth && w > 0 ? base * (maxWidth / w) : base;
+                };
+                // Label lines: keep as one line, else split words across two
+                // balanced lines, else shrink a single long word to fit.
+                const wrapLabel = (text, base) => {
+                    setFont(base);
+                    const words = text.trim().split(/\s+/);
+                    if (ctx.measureText(text).width <= maxWidth) {
+                        return [{ text, px: base }];
+                    }
+                    if (words.length < 2) {
+                        return [{ text, px: fit(text, base) }];
+                    }
+                    const mid = Math.ceil(words.length / 2);
+                    const l1 = words.slice(0, mid).join(' ');
+                    const l2 = words.slice(mid).join(' ');
+                    const px = Math.min(fit(l1, base), fit(l2, base));
+                    return [
+                        { text: l1, px },
+                        { text: l2, px },
+                    ];
+                };
+                // Scale with height, but cap to the hole so it can't overflow.
+                const valuePx = Math.min((height / 140) * 16, innerRadius * 0.6);
+                const labelPx = Math.min((height / 200) * 16, innerRadius * 0.36);
+                const value = this.center_value === 'auto'
+                    ? this.computedCenterValue
+                    : this.center_value;
+                // Build the lines to render: value first, then the label.
+                const lines = [
+                    ...(value
+                        ? [{ text: value, px: fit(value, valuePx) }]
+                        : []),
+                    ...(this.center_text
+                        ? wrapLabel(this.center_text, labelPx)
+                        : []),
+                ];
+                // Stack the lines, vertically centered on the donut center.
                 ctx.fillStyle = readChartTextColors().title;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.font = '500 ' + valueFontSize;
-                const addText = (fontSize, text, x, y, position) => {
-                    ctx.font = '500 ' + fontSize;
-                    const textMetrics = ctx.measureText(text);
-                    const textHeight = textMetrics.actualBoundingBoxAscent +
-                        textMetrics.actualBoundingBoxDescent;
-                    if (position != 'middle') {
-                        y =
-                            position === 'top'
-                                ? y - textHeight
-                                : y + textHeight;
-                    }
-                    ctx.fillText(text, x, y);
-                };
-                const displayValue = this.center_value === 'auto'
-                    ? this.computedCenterValue
-                    : this.center_value;
-                if (displayValue) {
-                    addText(valueFontSize, displayValue, centerX, centerY, 'top');
-                    if (this.center_text) {
-                        addText(textFontSize, this.center_text, centerX, centerY, 'bottom');
-                    }
-                }
-                else if (this.center_text) {
-                    addText(textFontSize, this.center_text, centerX, centerY, 'middle');
+                const gap = (lines[0]?.px ?? 0) * 0.2;
+                const totalHeight = lines.reduce((sum, line) => sum + line.px, 0) +
+                    gap * Math.max(0, lines.length - 1);
+                let y = centerY - totalHeight / 2;
+                for (const line of lines) {
+                    y += line.px / 2;
+                    setFont(line.px);
+                    ctx.fillText(line.text, centerX, y);
+                    y += line.px / 2 + gap;
                 }
                 ctx.save();
             },
@@ -420,7 +454,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '5511cdfc944dcea3e9beb511f3fbfe7808efef61', style: { height: '100%', width: '100%' } }, h("canvas", { key: '24edb2df375e7c9302081c27da2d9e447b3f3c76', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'ac62f2b77475d1c68f296b74df7eaf80b63aceec', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'd7be9b8c743694673919765daf3ecc9271f03817', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 
