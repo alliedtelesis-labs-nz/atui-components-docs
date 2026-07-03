@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-RH-Tud8I.js');
+var index = require('./index-Dos-V-Qv.js');
 var floatingUi_dom = require('./floating-ui.dom-BZk7Blsu.js');
 
 const AtMenu = class {
@@ -151,14 +151,32 @@ const AtMenu = class {
             this.addFocusinListener();
         }
     }
+    pointerDownInside = false;
+    /**
+     * True when the target sits within this menu's panel or one of its
+     * triggers. A nested menu (e.g. an at-select dropdown) renders its popover
+     * inside this menu's panel, so its content is covered by menuEl.contains.
+     */
+    isInsideMenuOrTrigger(target) {
+        if (!target)
+            return false;
+        const isInsideMenu = !!this.menuEl?.contains(target);
+        const isInsideTrigger = !!this.triggerEl?.contains(target) ||
+            this.triggerEls.some((el) => el.contains(target));
+        return isInsideMenu || isInsideTrigger;
+    }
+    pointerDownHandler = (event) => {
+        if (!this.isOpen)
+            return;
+        this.pointerDownInside = this.isInsideMenuOrTrigger(event.target);
+    };
     outsideClickHandler = (event) => {
         if (!this.isOpen)
             return;
-        const target = event.target;
-        const isInsideMenu = this.menuEl?.contains(target);
-        const isInsideTrigger = this.triggerEl?.contains(target) ||
-            this.triggerEls.some((el) => el.contains(target));
-        if (!isInsideMenu && !isInsideTrigger) {
+        const isInside = this.isInsideMenuOrTrigger(event.target);
+        const startedInside = this.pointerDownInside;
+        this.pointerDownInside = false;
+        if (!isInside && !startedInside) {
             this.closeMenu();
         }
     };
@@ -166,15 +184,18 @@ const AtMenu = class {
         if (!this.isOpen)
             return;
         if (event.key === 'Escape') {
+            if (this.menuEl?.querySelector('[data-name="menu-content-wrapper"]:popover-open')) {
+                return;
+            }
+            const escapeEvent = event;
+            if (escapeEvent.atMenuEscapeHandled)
+                return;
+            escapeEvent.atMenuEscapeHandled = true;
             this.closeMenu();
             return;
         }
         if (event.key === 'Enter' || event.key === ' ') {
-            const target = event.target;
-            const isInsideMenu = this.menuEl?.contains(target);
-            const isInsideTrigger = this.triggerEl?.contains(target) ||
-                this.triggerEls.some((el) => el.contains(target));
-            if (!isInsideMenu && !isInsideTrigger) {
+            if (!this.isInsideMenuOrTrigger(event.target)) {
                 this.closeMenu();
             }
         }
@@ -182,19 +203,17 @@ const AtMenu = class {
     outsideFocusinHandler = (event) => {
         if (!this.isOpen)
             return;
-        const target = event.target;
-        const isInsideMenu = this.menuEl?.contains(target);
-        const isInsideTrigger = this.triggerEl?.contains(target) ||
-            this.triggerEls.some((el) => el.contains(target));
-        if (!isInsideMenu && !isInsideTrigger) {
+        if (!this.isInsideMenuOrTrigger(event.target)) {
             this.closeMenu();
         }
     };
     addOutsideListeners() {
+        document.addEventListener('pointerdown', this.pointerDownHandler, true);
         document.addEventListener('click', this.outsideClickHandler, true);
         document.addEventListener('keydown', this.outsideKeydownHandler, true);
     }
     removeOutsideListeners() {
+        document.removeEventListener('pointerdown', this.pointerDownHandler, true);
         document.removeEventListener('click', this.outsideClickHandler, true);
         document.removeEventListener('keydown', this.outsideKeydownHandler, true);
     }
@@ -262,6 +281,8 @@ const AtMenu = class {
                         case 'Enter':
                         case ' ':
                             event.preventDefault();
+                            if (event.repeat)
+                                break;
                             await this.toggleMenu();
                             break;
                     }
@@ -409,14 +430,14 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: 'a506491c288ef710393ae1271e3f2b4d1b7d6e15', class: "relative", onBlur: (e) => {
+        return (index.h(index.Host, { key: 'c6db7a35716666789d6f60041fd4081ea66756ad', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (index.h("div", { key: '8986cc56f32b607fee071477c28d787d8bc0c2cd', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (index.h("div", { key: '3f7e22b83f57821da59dfd97599a4be4149c580b', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -426,6 +447,8 @@ const AtMenu = class {
                     case 'Enter':
                     case ' ':
                         event.preventDefault();
+                        if (event.repeat)
+                            break;
                         await this.toggleMenu();
                         break;
                 }
@@ -442,7 +465,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: 'e519f2b1aa5873606bad282cd56848fe64a32704', name: "menu-trigger" }))), index.h("div", { key: '54617484e4903a4696f4ed14398a7a43c6c81980', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: 'a1ea180c8b43978ff853a40a0262d14a52f444fb', name: "menu-trigger" }))), index.h("div", { key: '90530df1e4c0c232331f4b1a03531b2adc71b4e7', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -454,7 +477,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: 'e6ccd66f09c74fbbcad469e10d4db38284b8fba5' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: 'ca09943fa2592a001f60a6dec10f15ad4ffc46d0' }))));
     }
     static get watchers() { return {
         "disabled": [{

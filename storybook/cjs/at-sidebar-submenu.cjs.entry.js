@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-RH-Tud8I.js');
+var index = require('./index-Dos-V-Qv.js');
 
 const atSidebarSubmenuCss = () => `:host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}`;
 

@@ -88,6 +88,13 @@ export class AtTimeRangeComponent {
     getShortUnitDisplay(time) {
         return AbreviatedTimeUnits[time.unit];
     }
+    getVisiblePresetsWithinRangeLimit() {
+        if (!this.presets) {
+            return [];
+        }
+        const maxSeconds = AtTimeDateUtil.getSecondsAgoFromDate(this.lowerLimit);
+        return this.presets.filter((preset) => AtTimeDateUtil.convertToSeconds(preset) <= maxSeconds);
+    }
     onChangeCustomTime(customTime) {
         this.displayedTimeRange = {
             selected: TimeRangeDisplay.CUSTOM,
@@ -112,7 +119,7 @@ export class AtTimeRangeComponent {
                 'All Time'));
         }
         if (time.custom) {
-            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("at-icon", { name: "arrow_right", class: "fill-disabled" }), h("span", null, time.custom.lockEndDateToNow
+            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("at-icon", { name: "arrow_right", class: "text-muted" }), h("span", null, time.custom.lockEndDateToNow
                 ? 'NOW'
                 : this.formatDate(time.custom.to))));
         }
@@ -124,7 +131,7 @@ export class AtTimeRangeComponent {
         }
     }
     render() {
-        return (h(Host, { key: '9a5ccc5d98dd846f5dbfc0d45f11a8fcab60b229', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: 'd09194ddf80b41378b1802e99ab6d6d3690c0383', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -135,11 +142,12 @@ export class AtTimeRangeComponent {
         const selectedKey = typeof this.displayedTimeRange?.selected === 'object'
             ? `${this.displayedTimeRange.selected.unit}-${this.displayedTimeRange.selected.value}`
             : null;
+        const presets = this.getVisiblePresetsWithinRangeLimit();
         return (h("at-button-group", { key: "predefined-time-group", value: selectedKey, onAtuiIndexChange: (event) => {
-                if (event.detail < this.presets.length) {
-                    this.onChangeRelativeTime(this.presets[event.detail]);
+                if (event.detail < presets.length) {
+                    this.onChangeRelativeTime(presets[event.detail]);
                 }
-            } }, this.presets.map((preset, idx) => (h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}` }, h("span", null, preset.value, this.getShortUnitDisplay(preset))))), h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, h("at-icon", { slot: "icon", name: "schedule" }))));
+            } }, presets.map((preset, idx) => (h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}`, label: `${preset.value}${this.getShortUnitDisplay(preset)}` }))), h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, h("at-icon", { slot: "icon", name: "schedule" }))));
     }
     renderRelativeTimeMenu() {
         return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===

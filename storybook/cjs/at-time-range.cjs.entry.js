@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-RH-Tud8I.js');
+var index = require('./index-Dos-V-Qv.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-I5fOWLYk.js');
 var date = require('./date-DDRmOnS1.js');
@@ -110,6 +110,13 @@ const AtTimeRangeComponent = class {
     getShortUnitDisplay(time) {
         return AbreviatedTimeUnits[time.unit];
     }
+    getVisiblePresetsWithinRangeLimit() {
+        if (!this.presets) {
+            return [];
+        }
+        const maxSeconds = atTimeDate_util.AtTimeDateUtil.getSecondsAgoFromDate(this.lowerLimit);
+        return this.presets.filter((preset) => atTimeDate_util.AtTimeDateUtil.convertToSeconds(preset) <= maxSeconds);
+    }
     onChangeCustomTime(customTime) {
         this.displayedTimeRange = {
             selected: date.TimeRangeDisplay.CUSTOM,
@@ -134,7 +141,7 @@ const AtTimeRangeComponent = class {
                 'All Time'));
         }
         if (time.custom) {
-            return (index.h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, this.formatDate(time.custom.from)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, time.custom.lockEndDateToNow
+            return (index.h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, this.formatDate(time.custom.from)), index.h("at-icon", { name: "arrow_right", class: "text-muted" }), index.h("span", null, time.custom.lockEndDateToNow
                 ? 'NOW'
                 : this.formatDate(time.custom.to))));
         }
@@ -146,7 +153,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '9a5ccc5d98dd846f5dbfc0d45f11a8fcab60b229', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'd09194ddf80b41378b1802e99ab6d6d3690c0383', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -157,11 +164,12 @@ const AtTimeRangeComponent = class {
         const selectedKey = typeof this.displayedTimeRange?.selected === 'object'
             ? `${this.displayedTimeRange.selected.unit}-${this.displayedTimeRange.selected.value}`
             : null;
+        const presets = this.getVisiblePresetsWithinRangeLimit();
         return (index.h("at-button-group", { key: "predefined-time-group", value: selectedKey, onAtuiIndexChange: (event) => {
-                if (event.detail < this.presets.length) {
-                    this.onChangeRelativeTime(this.presets[event.detail]);
+                if (event.detail < presets.length) {
+                    this.onChangeRelativeTime(presets[event.detail]);
                 }
-            } }, this.presets.map((preset, idx) => (index.h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}` }, index.h("span", null, preset.value, this.getShortUnitDisplay(preset))))), index.h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, index.h("at-icon", { slot: "icon", name: "schedule" }))));
+            } }, presets.map((preset, idx) => (index.h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}`, label: `${preset.value}${this.getShortUnitDisplay(preset)}` }))), index.h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, index.h("at-icon", { slot: "icon", name: "schedule" }))));
     }
     renderRelativeTimeMenu() {
         return (index.h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, index.h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===

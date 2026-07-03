@@ -88,6 +88,14 @@ export declare class AtMenu {
     atuiMenuStateChange: EventEmitter<boolean>;
     private timedOutCloser;
     componentDidLoad(): Promise<void>;
+    private pointerDownInside;
+    /**
+     * True when the target sits within this menu's panel or one of its
+     * triggers. A nested menu (e.g. an at-select dropdown) renders its popover
+     * inside this menu's panel, so its content is covered by menuEl.contains.
+     */
+    private isInsideMenuOrTrigger;
+    private pointerDownHandler;
     private outsideClickHandler;
     private outsideKeydownHandler;
     private outsideFocusinHandler;

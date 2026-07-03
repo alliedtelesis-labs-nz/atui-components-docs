@@ -4638,6 +4638,12 @@ strong {
   background-color: color-mix(in srgb, var(--token-surface-1) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.hover\:bg-surface-2:hover {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-surface-2) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
 .hover\:bg-surface-overlay\/10:hover {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 10%, transparent);
 }

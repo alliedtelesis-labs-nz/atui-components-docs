@@ -71,5 +71,6 @@ export declare class AtInputNumericComponent {
     handleChange(event: Event): void;
     handleDecrease: () => void;
     handleIncrease: () => void;
+    private handleStepKeyDown;
     render(): any;
 }

@@ -54,6 +54,7 @@ export declare class AtTimeRangeComponent {
     componentWillRender(): void;
     private getCustomStartAndEndDate;
     private getShortUnitDisplay;
+    private getVisiblePresetsWithinRangeLimit;
     onChangeCustomTime(customTime: AtIDateRangeStrings): void;
     onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
     private formatDate;

@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { TimeExtraOptions, AtTimeUnit, AtITimeWithUnit } from '../../../types/time';
 import { AtTimePresets } from '../../../models/at-time-range.models';
-import { AtIDateRange, TimeRangeDisplay } from '../../../types/date';
+import { TimeRangeDisplay } from '../../../types/date';
 /**
  * @category Form Controls
  * @description A time with unit component for selecting a time period.
@@ -62,12 +62,15 @@ export declare class AtTimeWithUnitComponent {
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
     private initDropdownOptions;
+    private getVisibleUnitsWithinRangeLimit;
     private initSelectedTime;
     updateSelectedTime(): void;
     private formatDuration;
-    validateInput(): void;
-    updateSelectedRange(value: AtITimeWithUnit): void;
-    getRelativeDate(): AtIDateRange;
+    private validateInput;
+    private updateSelectedRange;
+    private isSelectedOption;
+    private getRelativeDate;
+    private getVisibleCommonOptionsWithinRangeLimit;
     clearSelection(): void;
     handleCancel(): void;
     handleSubmit(): void;
