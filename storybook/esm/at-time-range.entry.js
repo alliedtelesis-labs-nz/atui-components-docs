@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BMlRrrhK.js';
 import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration, d as dayjs } from './at-time-date.util-Bfdzn_RG.js';
-import { f as fetchTranslations } from './translation-DU7QdhZu.js';
+import { f as fetchTranslations } from './translation-BUD9BvUo.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 
 var AbreviatedTimeUnits;

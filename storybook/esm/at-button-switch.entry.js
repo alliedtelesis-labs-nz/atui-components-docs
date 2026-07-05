@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BMlRrrhK.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
-import { f as fetchTranslations } from './translation-DU7QdhZu.js';
+import { f as fetchTranslations } from './translation-BUD9BvUo.js';
 
 const variantsConfig = {
     variants: {

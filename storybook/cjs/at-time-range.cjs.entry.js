@@ -2,7 +2,7 @@
 
 var index = require('./index-Dos-V-Qv.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var translation = require('./translation-I5fOWLYk.js');
+var translation = require('./translation-0BO9JpEs.js');
 var date = require('./date-DDRmOnS1.js');
 
 var AbreviatedTimeUnits;

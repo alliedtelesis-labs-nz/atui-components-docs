@@ -2,7 +2,7 @@
 
 var index = require('./index-Dos-V-Qv.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-I5fOWLYk.js');
+var translation = require('./translation-0BO9JpEs.js');
 var prompt = require('./prompt-DoMXcdvl.js');
 
 const atPromptMessageCss = () => `@keyframes atPromptFadeIn{from{opacity:0}to{opacity:1}}@keyframes atPromptTypingCursorBlink{0%,50%{opacity:1}51%,100%{opacity:0}}.at-prompt-fade-in{animation:atPromptFadeIn 0.6s ease-out}`;
