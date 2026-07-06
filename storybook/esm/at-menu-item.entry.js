@@ -48,7 +48,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: 'c0e87c1362c0dedd3680473f21a98445a971df69', class: "flex flex-grow" }, h("slot", { key: 'b772a779489c86beea95fd1ec733a509a924e33a', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '54ab573064ae9b6dfb3f27eccf48909e01b3bd2a', "data-name": "menu-item-label", class: "text-body truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '2a7e2ebd1292351a15b28695a5487f475ea33076' })), h("slot", { key: '548a66cc726c56c1c31accf0b3da2d585ac2c6cc', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: '60f51374d67b59641c56096a2eae2f6ed3c1997f', class: "flex min-w-0 flex-1" }, h("slot", { key: '5436fd9a423890139a722f8865a31051bce27e3d', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '5d352eddf9aedf7945a2e2c792499468e11fd911', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: 'a2ed68a9eea32be9d1ab6eb20988124bd6d1d082' })), h("slot", { key: '7554cf2146534fe04dcd6060c7532f7ed96467b6', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 
