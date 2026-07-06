@@ -1,4 +1,4 @@
-import { a as getElement, r as registerInstance, h, H as Host } from './index-H8lgnoYZ.js';
+import { a as getElement, r as registerInstance, h, H as Host } from './index-BEGRcYEc.js';
 
 const atSidebarSubmenuCss = () => `:host .content{margin-bottom:16px}:host .hover-content{font-weight:var(--token-font-weight-normal)}:host .hover-menu[data-open]{display:none}at-sidebar-submenu at-accordion-item summary{box-shadow:none !important}at-sidebar-submenu at-accordion-item summary:focus-visible at-sidebar-menuitem{box-shadow:inset 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent)}`;
 

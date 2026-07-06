@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-H8lgnoYZ.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-BEGRcYEc.js';
 
 const AtToggleCell = class {
     constructor(hostRef) {

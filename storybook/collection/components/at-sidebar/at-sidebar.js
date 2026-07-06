@@ -11,7 +11,7 @@ export class AtSidebarComponent {
     /**
      * Position of the sidebar on the page
      */
-    side;
+    side = 'left';
     /**
      * Width of the sidebar
      */
@@ -80,9 +80,9 @@ export class AtSidebarComponent {
     };
     render() {
         const isModalOverlay = this.mode === 'over' && this.backdrop && this.isOpen;
-        return (h(Host, { key: '158517d0819794dd018d09ca8406808ee29be15c', "data-state": this.isOpen ? 'expanded' : 'collapsed', class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: 'ddc5dee88851b1361e595b339fa2778702a8c7e3', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '1a4cdc7d562a5a8151e0bdc64709476d10b8a034', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible}`, "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
+        return (h(Host, { key: '384ea2177565dffeaa5fe38618669b9b51f4ac47', "data-state": this.isOpen ? 'expanded' : 'collapsed', "data-side": this.side, class: `mode-${this.mode} side-${this.side} collapse-${this.collapsible}` }, isModalOverlay && (h("div", { key: 'ac9a023f5bd5a96b783b2d25eea5d5f8ef278210', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("nav", { key: '114da5dfc99e426f5b606b5a38caf97e9064029f', "data-name": "sidebar", "data-open": this.isOpen, class: `sidebar collapse-${this.collapsible} w-${this.width}`, "aria-hidden": !this.isOpen && this.collapsible === 'offcanvas'
                 ? 'true'
-                : 'false', role: "navigation", "aria-label": "Sidebar navigation" }, h("div", { key: '6f9305730773e59dc2732b0b0fa2881cb48bf653', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: '15aa07b95099df5fcda2373d69f9b4670aab4c57', name: "sidebar-header" })), h("div", { key: 'ac4fe38b6be4f3e52399c5f0e216fdd238caddc2', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: 'edabdd68f78c9b33186efab79d4baf309f9b4d69', name: "sidebar-content" })), h("div", { key: 'fb58b66e7dd1657507091e5e2d6cc2921a632d22', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: 'cf8a6f79b0322436989f2cc833fecb48de47cbed', name: "sidebar-footer" }))), h("div", { key: '5e43d2c388aea874d7b6920c53f507a957580317', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '79a7e566ffe00fd3386c5acb6a65aeb4bfc561e0', name: "page-content" }))));
+                : 'false', role: "navigation", "aria-label": "Sidebar navigation" }, h("div", { key: '7cbc10d461279415b600dcd9d7c3060d261d601d', class: "sidebar-header", "data-name": "sidebar-header" }, h("slot", { key: 'ac1019f15116722c9be7bbd2c6c6565686d3bd39', name: "sidebar-header" })), h("div", { key: 'f8f1bc1e4990d7d1c016904ce67843b08a93e611', class: "sidebar-content", "data-name": "sidebar-content" }, h("slot", { key: '44201f9dd078fcccb9925946ff78355dd11acc2d', name: "sidebar-content" })), h("div", { key: 'cf3626c3d046392bddb364d11e3eedac68a61c30', class: `sidebar-footer`, "data-name": "sidebar-footer" }, h("slot", { key: '7e45f08a703010fa21c3d91b2b5a0721ae4e98de', name: "sidebar-footer" }))), h("div", { key: '8d5d3282f9a748613731d7a3c14b77042449b60e', class: "page-content", "data-name": "page-content", "aria-hidden": isModalOverlay ? 'true' : 'false', inert: isModalOverlay }, h("slot", { key: '8d82b96195a9d9163388a6e5beefeb2bdf345267', name: "page-content" }))));
     }
     static get is() { return "at-sidebar"; }
     static get originalStyleUrls() {
@@ -114,7 +114,8 @@ export class AtSidebarComponent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "side"
+                "attribute": "side",
+                "defaultValue": "'left'"
             },
             "width": {
                 "type": "string",

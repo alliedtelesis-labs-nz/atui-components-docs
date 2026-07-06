@@ -37,6 +37,7 @@ export declare class AtAccordionItemComponent {
      */
     atuiAccordionChange: EventEmitter<boolean>;
     private detailsEl;
+    componentDidLoad(): void;
     private handleSummaryInteraction;
     handleOpenChange(newValue: boolean): void;
     /**

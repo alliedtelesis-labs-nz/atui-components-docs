@@ -138,15 +138,20 @@ at-sidebar[data-state=collapsed] .sidebar.collapse-none {
   width: var(--token-width-sidebar);
 }
 at-sidebar[data-state=collapsed] i[slot=menu-item-actions],
-at-sidebar[data-state=collapsed] at-sidebar-menuitem > [data-name=label] {
+at-sidebar[data-state=collapsed] at-sidebar-menuitem [data-name=sidebar-menu-item-label] {
   opacity: 0;
-  transition: opacity 150ms ease 0s;
+  visibility: hidden;
+  transition: opacity 150ms ease 0s, visibility 0s linear 150ms;
+}
+at-sidebar[data-state=collapsed] at-sidebar-submenu [data-name=submenu-content] {
+  display: none;
 }
 at-sidebar[data-state=collapsed] at-menu {
   display: block;
 }
 at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
-at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] > at-sidebar-menuitem > [data-name=label] {
+at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] at-sidebar-menuitem [data-name=sidebar-menu-item-label] {
+  visibility: visible;
   opacity: 1;
 }
 at-sidebar .sidebar at-sidebar-trigger {
@@ -160,9 +165,10 @@ at-sidebar.collapse-icon.mode-over.side-right .at-sidebar__content {
   padding-right: var(--token-width-sidebar-collapsed);
 }
 at-sidebar i[slot=menu-item-actions],
-at-sidebar at-sidebar-menuitem > [data-name=label] {
+at-sidebar at-sidebar-menuitem [data-name=sidebar-menu-item-label] {
   opacity: 1;
-  transition: opacity 150ms ease 0.3s;
+  visibility: visible;
+  transition: opacity 150ms ease 150ms, visibility 0s;
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
   padding-left: 40px;
@@ -172,10 +178,6 @@ at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-
 }
 at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem {
   padding-left: 60px;
-}
-at-sidebar i[slot=menu-item-actions],
-at-sidebar * > at-sidebar-menuitem [data-name=label] {
-  transition: opacity 150ms ease;
 }
 
 at-sidebar .sc-at-sidebar-menuitem .label,

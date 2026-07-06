@@ -2547,6 +2547,7 @@ export namespace Components {
         "mode": 'over' | 'push';
         /**
           * Position of the sidebar on the page
+          * @default 'left'
          */
         "side": 'left' | 'right';
         /**
@@ -7685,6 +7686,7 @@ declare namespace LocalJSX {
         "onAtuiSidebarChange"?: (event: AtSidebarCustomEvent<any>) => void;
         /**
           * Position of the sidebar on the page
+          * @default 'left'
          */
         "side"?: 'left' | 'right';
         /**

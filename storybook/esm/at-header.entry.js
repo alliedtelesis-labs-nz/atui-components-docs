@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-H8lgnoYZ.js';
+import { r as registerInstance, h, H as Host } from './index-BEGRcYEc.js';
 
 const AtHeader = class {
     constructor(hostRef) {
