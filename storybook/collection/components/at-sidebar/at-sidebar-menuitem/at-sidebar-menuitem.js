@@ -25,6 +25,13 @@ export class AtSidebarMenuitemComponent {
      */
     is_active;
     /**
+     * Set when the menu item is used purely as the trigger content of an
+     * atui-sidebar-submenu accordion. The enclosing accordion summary is the
+     * interactive control, so the item renders as presentational: it is not a
+     * separate tab stop and does not handle its own keyboard activation.
+     */
+    is_trigger = false;
+    /**
      * Emits when the menu item is clicked
      */
     atuiClick;
@@ -50,7 +57,9 @@ export class AtSidebarMenuitemComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'd2b6881dd4cded6eede6206ce0e3049edd93c9d1', role: "menuitem", "data-state": this.is_active ? 'active' : 'inactive', tabIndex: 0, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event), "aria-current": this.is_active ? 'page' : undefined }, h("div", { key: '9bb8791ff01e5c79135a0ebdf772d5d3f6c5a74d', class: "content", "data-name": "content" }, h("slot", { key: 'ed808916ef360ea361da14c177077dc2805bd569', name: "icon", "data-name": "icon" }), this.icon && this.renderIcon(), h("slot", { key: '829058a3f83698d87e743fc3b33098db91a60f7e', name: "label", "data-name": "label" }), this.label && (h("span", { key: '2ba7dbd45c4bd7335761fce8c9d23f6a486dc232', "data-name": "sidebar-menu-item-label", class: "label" }, this.label)), this.badge && (h("at-badge", { key: 'e1d62ca9c34242b94187a788283d4ac03bd5bad2', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge }))), h("slot", { key: '0c68466c4fa3af7cf726ff269df462dfaf1ac751', name: "sidebar-menu-item-actions" })));
+        return (h(Host, { key: '9fd475254ba889ec8b8aa86067388bf33aed9f30', role: this.is_trigger ? 'presentation' : 'menuitem', "data-state": this.is_active ? 'active' : 'inactive', tabIndex: this.is_trigger ? undefined : 0, onKeyDown: this.is_trigger
+                ? undefined
+                : (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event), "aria-current": this.is_active ? 'page' : undefined }, h("div", { key: 'a8d7c965fe4d98d17665e5f167ed9a3c66fc8e0a', class: "content", "data-name": "content" }, h("slot", { key: '623a5fa2f0171783c9668feff9fa2065e68e90c8', name: "icon", "data-name": "icon" }), this.icon && this.renderIcon(), h("slot", { key: '777bb5aa268dfbc742fc333ba3b912addc03917e', name: "label", "data-name": "label" }), this.label && (h("span", { key: 'f940077cfdfd300319c10a10e21d773f33188a5a', "data-name": "sidebar-menu-item-label", class: "label" }, this.label)), this.badge && (h("at-badge", { key: 'e4326353cfd754d3d803dee61d24c0fbb4aaf44e', class: "badge", "data-name": "sidebar-menu-item-badge", role: "presentation", type: "error", impact: "high", rounded: false, label: this.badge }))), h("slot", { key: '3e66c3a8779b68f8fbc9c6dd9ae50798f6fc16e2', name: "sidebar-menu-item-actions" })));
     }
     static get is() { return "at-sidebar-menuitem"; }
     static get encapsulation() { return "scoped"; }
@@ -141,6 +150,26 @@ export class AtSidebarMenuitemComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "is_active"
+            },
+            "is_trigger": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Set when the menu item is used purely as the trigger content of an\natui-sidebar-submenu accordion. The enclosing accordion summary is the\ninteractive control, so the item renders as presentational: it is not a\nseparate tab stop and does not handle its own keyboard activation."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "is_trigger",
+                "defaultValue": "false"
             }
         };
     }

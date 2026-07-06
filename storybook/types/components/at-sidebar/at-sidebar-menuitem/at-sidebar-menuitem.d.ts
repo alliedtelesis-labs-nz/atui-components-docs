@@ -26,6 +26,13 @@ export declare class AtSidebarMenuitemComponent {
      */
     is_active?: boolean;
     /**
+     * Set when the menu item is used purely as the trigger content of an
+     * atui-sidebar-submenu accordion. The enclosing accordion summary is the
+     * interactive control, so the item renders as presentational: it is not a
+     * separate tab stop and does not handle its own keyboard activation.
+     */
+    is_trigger?: boolean;
+    /**
      * Emits when the menu item is clicked
      */
     atuiClick: EventEmitter<AtEvent>;

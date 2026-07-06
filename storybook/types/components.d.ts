@@ -2583,6 +2583,11 @@ export namespace Components {
          */
         "is_active"?: boolean;
         /**
+          * Set when the menu item is used purely as the trigger content of an atui-sidebar-submenu accordion. The enclosing accordion summary is the interactive control, so the item renders as presentational: it is not a separate tab stop and does not handle its own keyboard activation.
+          * @default false
+         */
+        "is_trigger"?: boolean;
+        /**
           * Label to be displayed for the menu item
          */
         "label"?: string;
@@ -7712,6 +7717,11 @@ declare namespace LocalJSX {
          */
         "is_active"?: boolean;
         /**
+          * Set when the menu item is used purely as the trigger content of an atui-sidebar-submenu accordion. The enclosing accordion summary is the interactive control, so the item renders as presentational: it is not a separate tab stop and does not handle its own keyboard activation.
+          * @default false
+         */
+        "is_trigger"?: boolean;
+        /**
           * Label to be displayed for the menu item
          */
         "label"?: string;
@@ -8922,6 +8932,7 @@ declare namespace LocalJSX {
         "icon": string;
         "badge": string;
         "is_active": boolean;
+        "is_trigger": boolean;
     }
     interface AtSidebarSubmenuAttributes {
         "label": string;

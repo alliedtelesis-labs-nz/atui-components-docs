@@ -50,7 +50,7 @@
 }
 :host:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
 }
 :host[data-state=active] {
   background-color: var(--token-sidebar-active-background);
