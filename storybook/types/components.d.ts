@@ -14,11 +14,11 @@ import { AtIButtonGroupOption } from "./components/at-button-group/at-button-gro
 import { ChartDataset, Plugin } from "chart.js";
 import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 import { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
-import { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
+import { AtChartHeight } from "./types/chart";
 import { AtChartColorPalette } from "./types/chart-color";
 import { TruncatedLegendItem } from "./utils/chart-legend";
-import { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
-import { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+import { AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
+import { AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 import { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
@@ -64,11 +64,11 @@ export { AtIButtonGroupOption } from "./components/at-button-group/at-button-gro
 export { ChartDataset, Plugin } from "chart.js";
 export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 export { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
-export { AtChartHeight } from "./components/at-chart-donut/at-chart-donut";
+export { AtChartHeight } from "./types/chart";
 export { AtChartColorPalette } from "./types/chart-color";
 export { TruncatedLegendItem } from "./utils/chart-legend";
-export { AtChartHeight as AtChartHeight1, AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
-export { AtChartHeight as AtChartHeight2, AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
+export { AtLegendPosition } from "./components/at-chart-breakdown/at-chart-breakdown";
+export { AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 export { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
@@ -596,7 +596,7 @@ export namespace Components {
           * Height of the chart
           * @default 'auto'
          */
-        "height": AtChartHeight1;
+        "height": AtChartHeight;
         /**
           * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -679,7 +679,7 @@ export namespace Components {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight2;
+        "height"?: AtChartHeight;
         /**
           * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -790,7 +790,7 @@ export namespace Components {
     interface AtChartSparkline {
         /**
           * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
-          * @default AtChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.SEQUENTIAL
          */
         "color_palette": AtChartColorPalette;
         /**
@@ -5662,7 +5662,7 @@ declare namespace LocalJSX {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight1;
+        "height"?: AtChartHeight;
         /**
           * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -5730,7 +5730,7 @@ declare namespace LocalJSX {
           * Height of the chart
           * @default 'auto'
          */
-        "height"?: AtChartHeight2;
+        "height"?: AtChartHeight;
         /**
           * Options merged into the legend plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
@@ -5824,7 +5824,7 @@ declare namespace LocalJSX {
     interface AtChartSparkline {
         /**
           * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
-          * @default AtChartColorPalette.CATEGORICAL
+          * @default AtChartColorPalette.SEQUENTIAL
          */
         "color_palette"?: AtChartColorPalette;
         /**

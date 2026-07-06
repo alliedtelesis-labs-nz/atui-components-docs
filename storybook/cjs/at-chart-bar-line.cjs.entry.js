@@ -21658,6 +21658,7 @@ const AtChartBarLine = class {
             },
             options: {
                 devicePixelRatio: 2,
+                responsive: true,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
@@ -21891,7 +21892,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'a19a6715f66545506df7a5137eff938410f71fb2', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'be7d2cbfdbe3e6f787b3b4f771c2ff17a20fc6b2', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'c3f11a10c8bb2c2ddf409ee26b27d22ca9c9d9f1', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '49afa5da1b6302d5b6422188000cad2e37568aa4', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

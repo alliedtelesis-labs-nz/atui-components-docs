@@ -1,16 +1,12 @@
 import { Chart, ChartConfiguration } from 'chart.js';
 import { AtChartColorPalette } from '../../types/chart-color';
-import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
+import { AtChartHeight } from '../../types/chart';
 /**
  * Display treatment for the sparkline.
  * - `line`: a solid line with a thicker, semi-transparent glow line behind it.
  * - `area`: a solid line with a gradient fill fading to transparent.
  */
 export type AtChartSparklineMode = 'line' | 'area';
-/**
- * Health colour mode. Each status maps to a slot of the device-status palette
- * (good → 1, warning → 2, bad → 3, unreachable → 4).
- */
 export type AtChartSparklineStatus = 'good' | 'warning' | 'bad' | 'unreachable';
 /**
  * @category Data Visualization
@@ -75,6 +71,7 @@ export declare class AtChartSparkline {
     private glowDataset;
     initChart(): void;
     disconnectedCallback(): void;
+    connectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad runs once the element is in the DOM. If the data prop

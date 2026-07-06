@@ -1,6 +1,6 @@
 import { Chart, ChartConfiguration } from 'chart.js';
 import { AtChartColorPalette } from '../../types/chart-color';
-import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
+import { AtChartHeight } from '../../types/chart';
 /**
  * Health colour mode for the value arc. Each status maps to an index of the
  * device-status palette array (good → 0, warning → 1, bad → 2, unreachable → 3).

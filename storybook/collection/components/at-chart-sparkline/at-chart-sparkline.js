@@ -19,7 +19,7 @@ const statusPaletteIndex = {
 };
 const LINE_WIDTH = 2;
 const GLOW_WIDTH = 8;
-const GLOW_ALPHA = 0.25;
+const GLOW_ALPHA = 0.2;
 const FILL_TOP_ALPHA = 0.35;
 /**
  * @category Data Visualization
@@ -51,7 +51,7 @@ export class AtChartSparkline {
      * a single series, so it uses the first colour of the chosen palette. Values
      * resolve from theme CSS variables so the line stays theme-aware.
      */
-    color_palette = AtChartColorPalette.CATEGORICAL;
+    color_palette = AtChartColorPalette.SEQUENTIAL;
     /**
      * Pass the active theme value here to trigger a chart redraw when the theme
      * changes. The value itself is not used — any change to this prop causes the
@@ -79,7 +79,7 @@ export class AtChartSparkline {
             return colors[statusPaletteIndex[this.status]];
         }
         const colors = getChartColors(this.color_palette);
-        return colors && colors.length ? colors[0] : undefined;
+        return colors && colors.length ? colors[3] : undefined;
     }
     /**
      * The solid foreground line, shared by both display modes. In `area` mode it
@@ -93,7 +93,7 @@ export class AtChartSparkline {
             borderWidth: LINE_WIDTH,
             borderCapStyle: 'round',
             borderJoinStyle: 'round',
-            tension: 0.3,
+            tension: 0.2,
             fill: isArea ? 'origin' : false,
             backgroundColor: isArea && base
                 ? (context) => {
@@ -123,7 +123,7 @@ export class AtChartSparkline {
             borderWidth: GLOW_WIDTH,
             borderCapStyle: 'round',
             borderJoinStyle: 'round',
-            tension: 0.3,
+            tension: 0.2,
             fill: false,
             pointRadius: 0,
             pointHitRadius: 0,
@@ -134,7 +134,6 @@ export class AtChartSparkline {
         Chart.register(LinearScale, CategoryScale, LineController, LineElement, PointElement, Filler);
         const base = this.resolveColor();
         const isArea = this.mode === 'area';
-        // Glow first so it sits behind the solid foreground line.
         const datasets = !isArea && base
             ? [this.glowDataset(base), this.lineDataset(base)]
             : [this.lineDataset(base)];
@@ -148,8 +147,6 @@ export class AtChartSparkline {
                 devicePixelRatio: 2,
                 responsive: true,
                 maintainAspectRatio: false,
-                // Inset the plot so round end caps and the thick glow aren't
-                // clipped against the canvas edges.
                 layout: { padding: GLOW_WIDTH / 2 + 2 },
                 scales: {
                     x: { display: false },
@@ -160,7 +157,7 @@ export class AtChartSparkline {
                     tooltip: { enabled: false },
                 },
                 elements: {
-                    line: { tension: 0.3 },
+                    line: { tension: 0.2 },
                 },
                 clip: false,
             },
@@ -175,6 +172,18 @@ export class AtChartSparkline {
     disconnectedCallback() {
         this.chart?.destroy();
         this.chart = null;
+    }
+    connectedCallback() {
+        if (this.data?.length && !this.chart) {
+            requestAnimationFrame(() => {
+                if (!this.canvasEl?.isConnected) {
+                    return;
+                }
+                if (!this.chart && this.data?.length) {
+                    this.initChart();
+                }
+            });
+        }
     }
     componentDidUpdate() {
         if (this.data && this.data.length) {
@@ -191,7 +200,7 @@ export class AtChartSparkline {
         }
     }
     render() {
-        return (h(Host, { key: '6db632ed63167402cfe61b75923cf3199db6a1b0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '7440a2c69798610d904481734b16949ffc52f35f', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (h(Host, { key: '83731d2fa26a58da02f9a2e439da245feb0c4ad4', style: { height: '100%', width: '100%' } }, h("canvas", { key: '62617b741507d2c71479607f63a5b590b8cadd39', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
     static get is() { return "at-chart-sparkline"; }
     static get properties() {
@@ -274,8 +283,8 @@ export class AtChartSparkline {
                     "references": {
                         "AtChartHeight": {
                             "location": "import",
-                            "path": "../at-chart-donut/at-chart-donut",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight",
+                            "path": "../../types/chart",
+                            "id": "src/types/chart.ts::AtChartHeight",
                             "referenceLocation": "AtChartHeight"
                         }
                     }
@@ -317,7 +326,7 @@ export class AtChartSparkline {
                 "setter": false,
                 "reflect": false,
                 "attribute": "color_palette",
-                "defaultValue": "AtChartColorPalette.CATEGORICAL"
+                "defaultValue": "AtChartColorPalette.SEQUENTIAL"
             },
             "refresh_theme": {
                 "type": "string",

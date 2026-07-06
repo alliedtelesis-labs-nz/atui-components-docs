@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { Chart, ChartConfiguration, ChartDataset, Plugin } from 'chart.js';
 import { AtChartColorPalette } from '../../types/chart-color';
-export type AtChartHeight = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'auto';
+import { AtChartHeight } from '../../types/chart';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization

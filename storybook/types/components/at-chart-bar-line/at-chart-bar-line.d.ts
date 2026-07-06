@@ -1,7 +1,7 @@
 import 'chartjs-adapter-date-fns';
 import { Chart, ChartConfiguration, PointStyle, ChartDataset, Point, BubbleDataPoint, Color } from 'chart.js';
 import { AtSelectedTimeRangeExtended } from '../../models/at-time-range.models';
-import { AtChartHeight } from '../at-chart-donut/at-chart-donut';
+import { AtChartHeight } from '../../types/chart';
 import { AtChartColorPalette } from '../../types/chart-color';
 import { TruncatedLegendItem } from '../../utils/chart-legend';
 export interface AtIPointStyles {

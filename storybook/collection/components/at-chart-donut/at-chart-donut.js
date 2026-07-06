@@ -455,7 +455,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '0e386af68b378a4e6388fed8e22a0b0c84aa85d9', style: { height: '100%', width: '100%' } }, h("canvas", { key: '5e8fafc5302487c59ffd123e02c1def12e2d058f', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '693d4669f7584ce44eeb4e9c92c8df1781bb0f18', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'ba15b8611b8d901bb12c5cbe5b92dd7acf90c531', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {
@@ -509,9 +509,10 @@ export class AtChartDonut {
                     "resolved": "\"auto\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
                     "references": {
                         "AtChartHeight": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-chart-donut/at-chart-donut.tsx",
-                            "id": "src/components/at-chart-donut/at-chart-donut.tsx::AtChartHeight"
+                            "location": "import",
+                            "path": "../../types/chart",
+                            "id": "src/types/chart.ts::AtChartHeight",
+                            "referenceLocation": "AtChartHeight"
                         }
                     }
                 },
