@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BMlRrrhK.js';
+import { r as registerInstance, h, H as Host } from './index-H8lgnoYZ.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const avatarVariantsConfig = {
@@ -56,7 +56,7 @@ const AtAvatar = class {
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: 'bad0f1ff9cf8c6cead5efe396afb1ec19fdeb655', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '1bdbe027e0a93a3ccf28bccabfd2da168e47872f', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: 'ee6f094e059f22a0439490943ad5d3aab6f19caf', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '3f5949d8c64cee43a8e49676c27123202335af6b' })));
+        return (h(Host, { key: 'd383c91d4992d76f50f0fcd32f3503674bd0e838', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '67f3dc2210d46b1e21e197ca600c0825fe8a8dc8', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: 'a51ae790788beac5785e384716f68fc3530104be', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '53ac422de0654db8018d91080e3e1d18d8459ba2' })));
     }
 };
 

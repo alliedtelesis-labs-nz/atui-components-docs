@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Dos-V-Qv.js');
+var index = require('./index-BVOcg3sk.js');
 
 const AtTextCellComponent = class {
     constructor(hostRef) {
@@ -64,10 +64,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (index.h(index.Host, { key: 'f19c731ca32366d24fe981ad4fe67dd67d7288a0', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'c5663226d68709212cf59ade26c6b55c789b6601', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '879c8181158c5ac6373a21756371249bc5df30b7', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (index.h(index.Host, { key: 'a956d036abce53b419014c1a7bcad9bb1b0773e1', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '63fe8e9252ced67819cd3d4ecf61c7612266a215', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: 'f3dced02505dc433ebbb15de63f538875b9ee1e1', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'd7f533544c3ce3320099cad1a8b41cb4a19ab87d', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'd4148794a66c26518eb444ec1aba90c91e89296f', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

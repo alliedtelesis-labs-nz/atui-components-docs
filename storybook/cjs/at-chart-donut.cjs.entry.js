@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Dos-V-Qv.js');
+var index = require('./index-BVOcg3sk.js');
 var chartColor$1 = require('./chart-color-CxOzTTyI.js');
 var chartColor = require('./chart-color-ChPOocG1.js');
 var chartLegend = require('./chart-legend-BoaMJaDS.js');
@@ -456,7 +456,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'ac62f2b77475d1c68f296b74df7eaf80b63aceec', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'd7be9b8c743694673919765daf3ecc9271f03817', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: '0e386af68b378a4e6388fed8e22a0b0c84aa85d9', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '5e8fafc5302487c59ffd123e02c1def12e2d058f', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

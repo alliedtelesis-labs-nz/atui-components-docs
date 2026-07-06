@@ -52,6 +52,7 @@
             "SELECT_TIME_PERIOD": "期間を選択",
             "UPDATE_RESULTS": "結果を更新",
             "AGO": "前",
+            "NOW": "現在",
             "LAST": "直近",
             "DURATION_SHORT": {
                 "DAY": "日",

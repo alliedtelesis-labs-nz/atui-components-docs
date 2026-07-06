@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-Dos-V-Qv.js');
-var translation = require('./translation-0BO9JpEs.js');
+var index = require('./index-BVOcg3sk.js');
+var translation = require('./translation-D3uILiF8.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
@@ -300,16 +300,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: '87cdef47114476975081adcf15b80be41232a956', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '5068aeb8304d7ba2ec5960d4d66fe95ef8a438be', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'f875350054e6e9dc99bd83a5cc5479afab289f89', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'c47d33f7a5c7a6efab31fa095aee26a87e1c0089', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '8fec05c22451ae1b4c21f337241c24806d9350df' }, this.error_text && this.invalid && (index.h("span", { key: 'b6dd9f6502ab877bc00348ed7fed47ebc1f4aaae', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '31268be8d495d0f787e10a310607978aad50813e' }, this.error_text && this.invalid && (index.h("span", { key: '14d94b41acebfcc2935fce2fe42904309c46b571', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-BMlRrrhK.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-H8lgnoYZ.js';
 
 const AtRelativeDateTimeCell = class {
     constructor(hostRef) {
@@ -84,7 +84,7 @@ const AtRelativeDateTimeCell = class {
         return `${value} ${unit}${value === 1 ? '' : 's'}`;
     }
     render() {
-        return (h(Host, { key: 'ee05371dbc5f1dc4ca32aefe96ec197f2f1f0dd0', class: "flex h-full items-center" }, h("div", { key: '06132d9b3a147a5679cc40b191e75b09042e14ba', class: "flex h-full flex-col justify-center" }, h("div", { key: 'aeeb9d5956271b791d86aec296d116209b00cf1e', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: '6019c12b5bf99b9c408834e7342b75497c4349dd', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (h(Host, { key: 'aaea4fb4653aee067d8f6b7ea8d42f0da7f9e031', class: "flex h-full items-center" }, h("div", { key: '7938cc5ed8a7b7c8bc33d794da0637875265e3ff', class: "flex h-full flex-col justify-center" }, h("div", { key: 'a8497bcc06f384992bd36d414be6d27ab0a75430', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: '12b610bca8cd43a8fda7ad232686505f13e932fc', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
 };
 

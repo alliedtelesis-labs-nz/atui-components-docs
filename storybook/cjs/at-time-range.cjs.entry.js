@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-Dos-V-Qv.js');
+var index = require('./index-BVOcg3sk.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var translation = require('./translation-0BO9JpEs.js');
+var translation = require('./translation-D3uILiF8.js');
 var date = require('./date-DDRmOnS1.js');
 
 var AbreviatedTimeUnits;
@@ -142,18 +142,18 @@ const AtTimeRangeComponent = class {
         }
         if (time.custom) {
             return (index.h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, this.formatDate(time.custom.from)), index.h("at-icon", { name: "arrow_right", class: "text-muted" }), index.h("span", null, time.custom.lockEndDateToNow
-                ? 'NOW'
+                ? this.translations?.ATUI?.TIME?.NOW || 'Now'
                 : this.formatDate(time.custom.to))));
         }
         const selected = time.selected;
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = atTimeDate_util.AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (index.h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, "NOW")));
+            return (index.h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, this.translations?.ATUI?.TIME?.NOW || 'Now')));
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'd09194ddf80b41378b1802e99ab6d6d3690c0383', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'dcd363c4e00f7d0195fb8b752178f6a6de22f6fc', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h } from './index-BMlRrrhK.js';
+import { r as registerInstance, a as getElement, h } from './index-H8lgnoYZ.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -39,7 +39,7 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: '5e276f79170aaa66d57c9d2ecdcd82865552407a', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'e2b3056a5308c846884df06c520844ab61cd2d58' })));
+        return (h("div", { key: '6a8f928b4e291aed7f6ba0462476c2f1d850f5d4', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '98178a7735d10a3d1d4689ffa27107e801aa5dec' })));
     }
 };
 

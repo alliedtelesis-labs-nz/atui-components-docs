@@ -3,7 +3,7 @@ import { classlist } from "../../../utils/classlist";
 const optionVariantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-accent/30 hover:bg-active-accent/20 text-active-foreground',
+            true: 'bg-active-background hover:bg-active-background text-active-foreground',
             false: 'hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         group_option: {
@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '018999914f9fbb8d5aefc8f26e080898d1387dba', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'c4c2d7c31b010918eb10ddd47414e9fca1ceb0c3' }), this.label || this.value, h("slot", { key: '6c7b1107ddbeabb52f56f4d7dc18f66cfe5d0719', name: "after" })));
+        return (h("li", { key: 'cb0842badb50013d3dc9a81972abb9bb15a30334', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '983eabe4fcff4c29562cceb41156df79cd45bab8' }), this.label || this.value, h("slot", { key: '8d0041737bccd919dfc8d99167aa8549ef8136b6', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

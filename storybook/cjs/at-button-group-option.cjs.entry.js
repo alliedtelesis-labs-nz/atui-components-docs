@@ -1,12 +1,12 @@
 'use strict';
 
-var index = require('./index-Dos-V-Qv.js');
+var index = require('./index-BVOcg3sk.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-accent/15 text-active-accent fill-active-accent',
+            true: 'bg-active-background text-active-foreground fill-active-foreground',
             false: 'text-foreground fill-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         disabled: {
@@ -83,7 +83,7 @@ const AtButtonGroupOption = class {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (index.h(index.Host, { key: 'fff0cad6d873a9fdfcd4985aff9deefc70614dc2', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: '0b802c50c71ab1b3c84f78df0bcf9d38bcb76414', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: 'e9c09b66716fa9f39c2b5352271973dd954c39f1' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: 'a7e273422e3cdacd80c1eb6c5d8b2068519209f1', name: "after" })));
+        return (index.h(index.Host, { key: '85102f0bdbad2a0187efa7a68b870c9013056bee', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: '57c5f9452f3a6888d2d235f5bc9ac40715e96712', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: '0103f4e6d089baa0d3df9e5713496853793cbb46' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: '6e2af1c7f8bfafe19aee597cd73eb1773a1c8e54', name: "after" })));
     }
 };
 

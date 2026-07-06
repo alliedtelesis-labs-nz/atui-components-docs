@@ -19,8 +19,8 @@ const trackVariantsConfig = {
             true: 'shadow-inset-xs cursor-default',
         },
         active: {
-            false: 'bg-disabled-background',
-            true: 'bg-active-accent/30',
+            false: 'bg-surface-foreground',
+            true: 'bg-active-background',
         },
     },
 };
@@ -28,7 +28,7 @@ const thumbVariantsConfig = {
     variants: {
         active: {
             false: 'bg-disabled-foreground/40 !fill-button-foreground',
-            true: 'bg-active-accent !fill-button-foreground-inv group-focus-within/switch:ring-active-glow group-focus-within/switch:ring-4',
+            true: 'bg-active-foreground !fill-button-foreground-inv group-focus-within/switch:ring-active-glow group-focus-within/switch:ring-4',
         },
         disabled: {
             false: 'cursor-pointer',
@@ -92,12 +92,12 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: '57632bdaabee728aabef31fca258b0e5a192ade1', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: 'bd3f224383c6040b3b07e68e173be17f0468be47', id: `${this.toggleId}-host`, role: "switch", "aria-labelledby": `${this.toggleId}-label`, class: classname, tabIndex: 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '38e6901018d52f3c0ad41a63f8b8fad0dd5c90ec', class: "flex flex-col empty:hidden" }, h("slot", { key: 'ec6fefbe128e9a7d36da73bf4c674b051923a345', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'f4d03a41277e9fcf7472d5427a9d597be947dac6', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '3caf44f8acae20ea5f63bbce567e96f573b04782', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'ec6d275eea883890992f43476e557cffcbfff07f', class: "relative flex h-20 w-40" }, h("input", { key: '15822f39c025e1fd502378724a8afa780cfac534', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: 'f9a1f4607a8151345b5ee7b572f2a246a25dccb7', class: trackClassname }, h("at-icon", { key: '609744c48611269a79b138aae930aa022c710893', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+            } }, h("div", { key: 'ed8030056530556e33cca91463e9675751ecff10', class: "flex flex-col empty:hidden" }, h("slot", { key: '3d4a4d0878cd42e64da2ba283135398f0c598001', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'b3c6f8d8904cb350122b3e6fa4eaa67240556cfa', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: 'e419f14c2cce68b7b2b20de17ffa383bcf219e78', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '48ddb698c59e0649016ab1e9c846fe6b3d0089d8', class: "relative flex h-20 w-40" }, h("input", { key: '2ebd2d27077f5b0b8cf3db8655587b02c4427f68', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '970a7c45f4522e635766ae49d7d239d03ced9c04', class: trackClassname }, h("at-icon", { key: '4802ea97f731005052152610a4d017eb057caa96', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
                 transform: `translateX(${this.value ? '10px' : '-10px'})`,
             } })))));
     }

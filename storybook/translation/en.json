@@ -52,6 +52,7 @@
             "SELECT_TIME_PERIOD": "Select time period",
             "UPDATE_RESULTS": "Update results",
             "AGO": "ago",
+            "NOW": "Now",
             "LAST": "Last",
             "DURATION_SHORT": {
                 "DAY": "day",

@@ -789,8 +789,8 @@
   --token-surface-0: var(--token-color-base-neutral-200);
   --token-surface-1: var(--token-color-base-neutral-100);
   --token-surface-2: var(--token-color-base-neutral-50);
-  --token-surface-background: var(--token-color-base-neutral-100);
-  --token-surface-foreground: var(--token-color-base-neutral-50);
+  --token-surface-background: var(--token-color-base-neutral-50);
+  --token-surface-foreground: var(--token-color-base-white);
   --token-surface-inv: var(--token-color-base-neutral-800);
   --token-surface-overlay: var(
         --token-surface-inv
@@ -822,12 +822,12 @@
   --token-state-error-foreground-inv: var(--token-color-base-red-100);
   --token-state-error-background-inv: var(--token-color-base-red-700);
   --token-state-error-accent: var(--token-color-base-red-500);
-  --token-state-active-foreground: var(--token-color-base-blue-900);
+  --token-state-active-foreground: var(--token-color-base-blue-a400);
   --token-state-active-background: var(--token-color-base-sky-100);
   --token-state-active-foreground-inv: var(--token-color-base-sky-100);
   --token-state-active-background-inv: var(--token-color-base-blue-900);
-  --token-state-active-accent: var(--token-color-base-blue-500);
-  --token-state-info-foreground: var(--token-color-base-blue-900);
+  --token-state-active-accent: var(--token-color-base-blue-a400);
+  --token-state-info-foreground: var(--token-color-base-blue-a400);
   --token-state-info-background: var(--token-color-base-blue-100);
   --token-state-info-foreground-inv: var(--token-color-base-blue-100);
   --token-state-info-background-inv: var(--token-color-base-blue-900);
@@ -901,8 +901,7 @@
   --token-sidebar-background: var(--token-surface-background);
   --token-sidebar-foreground: var(--token-text-foreground);
   --token-sidebar-active-background: var(--token-state-active-background);
-  --token-sidebar-active-foreground: var(--token-state-active-foreground);
-  --token-sidebar-active-accent: var(--token-state-active-accent);
+  --token-sidebar-active-foreground: var(--token-color-base-blue-a400);
   --token-sidebar-border: var(--token-border-muted);
   --token-sidebar-item-padding: 6px;
   /* Input sizing */
@@ -1172,7 +1171,7 @@
   --token-text-warning: var(--token-color-base-amber-500);
   --token-text-error: var(--token-color-base-red-400);
   --token-text-success: var(--token-color-base-green-400);
-  --token-text-active: var(--token-color-base-blue-500);
+  --token-text-active: var(--token-color-base-blue-a100);
   --token-text-inv: var(--token-color-base-slate-900);
   /*
     Surface Color
@@ -1212,10 +1211,10 @@
   --token-state-error-background-inv: var(--token-color-base-red-100);
   --token-state-error-accent: var(--token-color-base-red-500);
   --token-state-active-foreground: var(--token-color-base-blue-50);
-  --token-state-active-background: var(--token-color-base-sky-700);
-  --token-state-active-background-inv: var(--token-color-brand-primary);
+  --token-state-active-background: var(--token-color-base-blue-900);
+  --token-state-active-background-inv: var(--token-color-base-blue-a400);
   --token-state-active-foreground-inv: var(--token-color-base-sky-100);
-  --token-state-active-accent: var(--token-color-base-blue-500);
+  --token-state-active-accent: var(--token-color-base-blue-a400);
   --token-state-info-foreground: var(--token-color-base-blue-100);
   --token-state-info-background: var(--token-color-base-blue-900);
   --token-state-info-foreground-inv: var(--token-color-base-blue-900);
@@ -1236,8 +1235,7 @@
   --token-sidebar-background: var(--token-surface-background);
   --token-sidebar-foreground: var(--token-text-foreground);
   --token-sidebar-active-background: var(--token-state-active-background);
-  --token-sidebar-active-foreground: var(--token-state-active-foreground);
-  --token-sidebar-active-accent: var(--token-state-active-accent);
+  --token-sidebar-active-foreground: var(--token-text-active);
   --token-sidebar-border: var(--token-border-muted);
   /* Input */
   --token-input-background: var(--token-surface-foreground);
@@ -3470,18 +3468,6 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
-.bg-active-accent\/15 {
-  background-color: color-mix(in srgb, var(--token-state-active-accent) 15%, transparent);
-}
-
-.bg-active-accent\/20 {
-  background-color: color-mix(in srgb, var(--token-state-active-accent) 20%, transparent);
-}
-
-.bg-active-accent\/30 {
-  background-color: color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
-}
-
 .bg-active-background {
   --tw-bg-opacity:
       1;
@@ -3686,8 +3672,8 @@ strong {
   fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent) !important;
 }
 
-.fill-active-accent {
-  fill: color-mix(in srgb, var(--token-state-active-accent) 100%, transparent);
+.fill-active-foreground {
+  fill: color-mix(in srgb, var(--token-state-active-foreground) 100%, transparent);
 }
 
 .fill-button-destructive {
@@ -4063,12 +4049,6 @@ strong {
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
 }
 
-.text-active-accent {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
 .text-active-foreground {
   --tw-text-opacity:
       1;
@@ -4275,8 +4255,8 @@ strong {
   caret-color: transparent;
 }
 
-.accent-active-accent {
-  accent-color: color-mix(in srgb, var(--token-state-active-accent) 100%, transparent);
+.accent-active-foreground {
+  accent-color: color-mix(in srgb, var(--token-state-active-foreground) 100%, transparent);
 }
 
 .opacity-0 {
@@ -4628,8 +4608,10 @@ strong {
   cursor: pointer;
 }
 
-.hover\:bg-active-accent\/20:hover {
-  background-color: color-mix(in srgb, var(--token-state-active-accent) 20%, transparent);
+.hover\:bg-active-background:hover {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-state-active-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .hover\:bg-surface-1:hover {

@@ -16,8 +16,8 @@
   border-radius: var(--token-menu-item-radius);
   font-size: var(--token-font-size-button);
   color: var(--token-sidebar-foreground);
-  will-change: background-color, color, box-shadow;
-  transition: background-color var(--token-surface-foreground), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
+  will-change: color, box-shadow;
+  transition: color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast);
 }
 :host .content {
   display: flex;
@@ -41,40 +41,23 @@
   font-size: 10px;
   pointer-events: none;
 }
-:host .focus-indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  border-radius: var(--token-border-radius-md);
-  background-color: var(--token-surface-overlay);
-  opacity: 0;
-  pointer-events: none;
-  transition: background-color 150ms ease-in-out, opacity 150ms ease-in-out;
-}
 :host ::slotted([slot=icon]) {
   cursor: pointer;
+  z-index: 10;
 }
-:host:hover [data-name=focus-indicator] {
-  opacity: 0.07;
-}
-:host:focus [data-name=focus-indicator], :host:focus-visible [data-name=focus-indicator] {
-  opacity: 0.15;
+:host:hover:not([data-state=active]) {
+  background-color: color-mix(in srgb, var(--token-surface-overlay) 7%, transparent);
 }
 :host:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 50%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--token-state-active-accent) 30%, transparent);
 }
 :host[data-state=active] {
-  background-color: color-mix(in srgb, var(--token-sidebar-active-accent) 20%, transparent);
-  color: var(--token-sidebar-active-accent);
-}
-:host[data-state=active] .focus-indicator {
-  background-color: var(--token-state-active-accent);
+  background-color: var(--token-sidebar-active-background);
+  color: var(--token-sidebar-active-foreground);
+  transition-duration: 0ms;
 }
 :host[data-state=active] ::slotted([slot=icon]) {
-  color: var(--token-sidebar-active-accent);
-  fill: var(--token-sidebar-active-accent);
+  color: var(--token-sidebar-active-foreground);
+  fill: var(--token-sidebar-active-foreground);
 }
