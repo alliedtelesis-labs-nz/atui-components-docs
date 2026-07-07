@@ -7,6 +7,10 @@ import { AtChartHeight } from '../../types/chart';
  * - `area`: a solid line with a gradient fill fading to transparent.
  */
 export type AtChartSparklineMode = 'line' | 'area';
+/**
+ * Health colour mode. Each status maps to a slot of the device-status palette
+ * (good → 1, warning → 2, bad → 3, unreachable → 4).
+ */
 export type AtChartSparklineStatus = 'good' | 'warning' | 'bad' | 'unreachable';
 /**
  * @category Data Visualization
