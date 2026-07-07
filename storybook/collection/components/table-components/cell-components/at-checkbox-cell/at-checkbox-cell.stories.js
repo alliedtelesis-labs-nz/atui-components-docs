@@ -2,8 +2,8 @@ const Template = (args) => `
 <at-table page_size=${args.page_size}></at-table>
 <script type="module">
 import { defineCustomElement as defineTable } from './components/at-table.js';
-import { AtCheckboxCell, defineCustomElement as defineCheckboxCell } from './components/at-checkbox-cell.js';
-import { AtCheckboxHeader, defineCustomElement as defineCheckboxHeader } from './components/at-checkbox-header.js';
+import { defineCustomElement as defineCheckboxCell } from './components/at-checkbox-cell.js';
+import { defineCustomElement as defineCheckboxHeader } from './components/at-checkbox-header.js';
 defineTable();
 defineCheckboxCell();
 defineCheckboxHeader();
@@ -24,8 +24,11 @@ Default.args = {
             field: 'col_one',
             sortable: false,
             headerName: 'Checkbox Cell',
-            cellRenderer: '***AtCheckboxCell***',
-            headerComponent: '***AtCheckboxHeader***',
+            cellRenderer: 'AtCheckboxCell',
+            headerComponent: 'checkboxHeader',
+            cellRendererParams: {
+                checked: '***(data) => data.col_one***',
+            },
         },
     ],
     table_data: {
