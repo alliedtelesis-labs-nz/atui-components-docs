@@ -41,6 +41,7 @@ import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineA
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
 import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-header.js";
 import { AtHealthDotCell as AtHealthDotCellElement, defineCustomElement as defineAtHealthDotCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-health-dot-cell.js";
+import { AtHealthDot as AtHealthDotElement, defineCustomElement as defineAtHealthDot } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-health-dot.js";
 import { AtIcon as AtIconElement, defineCustomElement as defineAtIcon } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-icon.js";
 import { AtInputDate as AtInputDateElement, defineCustomElement as defineAtInputDate } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-date.js";
 import { AtInputNumeric as AtInputNumericElement, defineCustomElement as defineAtInputNumeric } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-input-numeric.js";
@@ -485,6 +486,17 @@ export const AtHeader: StencilReactComponent<AtHeaderElement, AtHeaderEvents> = 
     react: React,
     events: {} as AtHeaderEvents,
     defineCustomElement: defineAtHeader
+});
+
+type AtHealthDotEvents = NonNullable<unknown>;
+
+export const AtHealthDot: StencilReactComponent<AtHealthDotElement, AtHealthDotEvents> = /*@__PURE__*/ createComponent<AtHealthDotElement, AtHealthDotEvents>({
+    tagName: 'at-health-dot',
+    elementClass: AtHealthDotElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtHealthDotEvents,
+    defineCustomElement: defineAtHealthDot
 });
 
 type AtHealthDotCellEvents = NonNullable<unknown>;

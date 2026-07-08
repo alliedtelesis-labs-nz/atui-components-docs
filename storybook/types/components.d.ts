@@ -29,6 +29,7 @@ import { AtControlGroupDirection } from "./components/at-control-group/at-contro
 import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtHeaderSizes } from "./components/at-header/at-header";
+import { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 import { AtInputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
 import { AtTemplate } from "./components/at-layout/at-layout";
@@ -79,6 +80,7 @@ export { AtControlGroupDirection } from "./components/at-control-group/at-contro
 export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtHeaderSizes } from "./components/at-header/at-header";
+export { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 export { AtInputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
 export { AtTemplate } from "./components/at-layout/at-layout";
@@ -1132,6 +1134,22 @@ export namespace Components {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Feedback
+     * @description A compact health status indicator dot. Renders a circle, triangle, or diamond glyph coloured from the theme-aware alert palette to convey good, warning, or bad states.
+     */
+    interface AtHealthDot {
+        /**
+          * Size of the dot glyph.
+          * @default 'md'
+         */
+        "size": AtHealthDotSize;
+        /**
+          * Health state to display.
+          * @default 'good'
+         */
+        "status": AtHealthDotStatus;
     }
     /**
      * @category Data Tables
@@ -3980,6 +3998,16 @@ declare global {
         new (): HTMLAtHeaderElement;
     };
     /**
+     * @category Feedback
+     * @description A compact health status indicator dot. Renders a circle, triangle, or diamond glyph coloured from the theme-aware alert palette to convey good, warning, or bad states.
+     */
+    interface HTMLAtHealthDotElement extends Components.AtHealthDot, HTMLStencilElement {
+    }
+    var HTMLAtHealthDotElement: {
+        prototype: HTMLAtHealthDotElement;
+        new (): HTMLAtHealthDotElement;
+    };
+    /**
      * @category Data Tables
      * @description A cell component for displaying a compact health status dot.
      */
@@ -5120,6 +5148,7 @@ declare global {
         "at-edit-text-cell": HTMLAtEditTextCellElement;
         "at-form-label": HTMLAtFormLabelElement;
         "at-header": HTMLAtHeaderElement;
+        "at-health-dot": HTMLAtHealthDotElement;
         "at-health-dot-cell": HTMLAtHealthDotCellElement;
         "at-icon": HTMLAtIconElement;
         "at-input": HTMLAtInputElement;
@@ -6181,6 +6210,22 @@ declare namespace LocalJSX {
           * Subtitle of the header.
          */
         "subtitle"?: string;
+    }
+    /**
+     * @category Feedback
+     * @description A compact health status indicator dot. Renders a circle, triangle, or diamond glyph coloured from the theme-aware alert palette to convey good, warning, or bad states.
+     */
+    interface AtHealthDot {
+        /**
+          * Size of the dot glyph.
+          * @default 'md'
+         */
+        "size"?: AtHealthDotSize;
+        /**
+          * Health state to display.
+          * @default 'good'
+         */
+        "status"?: AtHealthDotStatus;
     }
     /**
      * @category Data Tables
@@ -8627,6 +8672,10 @@ declare namespace LocalJSX {
         "border": boolean;
         "padding": boolean;
     }
+    interface AtHealthDotAttributes {
+        "status": AtHealthDotStatus;
+        "size": AtHealthDotSize;
+    }
     interface AtIconAttributes {
         "name": string;
         "size": string;
@@ -9087,6 +9136,7 @@ declare namespace LocalJSX {
         "at-edit-text-cell": AtEditTextCell;
         "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };
         "at-header": Omit<AtHeader, keyof AtHeaderAttributes> & { [K in keyof AtHeader & keyof AtHeaderAttributes]?: AtHeader[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `attr:${K}`]?: AtHeaderAttributes[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `prop:${K}`]?: AtHeader[K] };
+        "at-health-dot": Omit<AtHealthDot, keyof AtHealthDotAttributes> & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes]?: AtHealthDot[K] } & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes as `attr:${K}`]?: AtHealthDotAttributes[K] } & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes as `prop:${K}`]?: AtHealthDot[K] };
         "at-health-dot-cell": AtHealthDotCell;
         "at-icon": Omit<AtIcon, keyof AtIconAttributes> & { [K in keyof AtIcon & keyof AtIconAttributes]?: AtIcon[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `attr:${K}`]?: AtIconAttributes[K] } & { [K in keyof AtIcon & keyof AtIconAttributes as `prop:${K}`]?: AtIcon[K] };
         "at-input": Omit<AtInput, keyof AtInputAttributes> & { [K in keyof AtInput & keyof AtInputAttributes]?: AtInput[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `attr:${K}`]?: AtInputAttributes[K] } & { [K in keyof AtInput & keyof AtInputAttributes as `prop:${K}`]?: AtInput[K] };
@@ -9339,6 +9389,11 @@ declare module "@stencil/core" {
              * @description A header component for page and section titles with optional subtitle support. Provides consistent typography and spacing for content headers.
              */
             "at-header": LocalJSX.IntrinsicElements["at-header"] & JSXBase.HTMLAttributes<HTMLAtHeaderElement>;
+            /**
+             * @category Feedback
+             * @description A compact health status indicator dot. Renders a circle, triangle, or diamond glyph coloured from the theme-aware alert palette to convey good, warning, or bad states.
+             */
+            "at-health-dot": LocalJSX.IntrinsicElements["at-health-dot"] & JSXBase.HTMLAttributes<HTMLAtHealthDotElement>;
             /**
              * @category Data Tables
              * @description A cell component for displaying a compact health status dot.

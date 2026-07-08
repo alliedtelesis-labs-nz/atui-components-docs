@@ -304,7 +304,7 @@ const AtChartGauge = class {
         }
     }
     render() {
-        return (h(Host, { key: '9e21b9b472047c08ca666f6e8204f360392d0ea6', style: { height: '100%', width: '100%' } }, h("canvas", { key: '1c0079fc7a612ddec647307a72c6c170f93e11ae', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: 'ef9101fb6a23943a9c484dc2bfc44cec9207d489', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b423ce0c6d06c82d442238eed101bcf2babb5b51', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

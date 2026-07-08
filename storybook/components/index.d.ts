@@ -63,6 +63,8 @@ export { AtFormLabelComponent as AtFormLabel } from '../types/components/at-form
 export { defineCustomElement as defineCustomElementAtFormLabel } from './at-form-label';
 export { AtHeader as AtHeader } from '../types/components/at-header/at-header';
 export { defineCustomElement as defineCustomElementAtHeader } from './at-header';
+export { AtHealthDot as AtHealthDot } from '../types/components/at-health-dot/at-health-dot';
+export { defineCustomElement as defineCustomElementAtHealthDot } from './at-health-dot';
 export { AtHealthDotCell as AtHealthDotCell } from '../types/components/table-components/cell-components/at-health-dot-cell/at-health-dot-cell';
 export { defineCustomElement as defineCustomElementAtHealthDotCell } from './at-health-dot-cell';
 export { AtIcon as AtIcon } from '../types/components/at-icon/at-icon';

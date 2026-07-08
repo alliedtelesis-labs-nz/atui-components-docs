@@ -239,6 +239,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-breadcrumb-item.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-health-dot.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-health-dot.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-list-selector-item.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

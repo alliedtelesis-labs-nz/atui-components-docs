@@ -559,7 +559,7 @@ export class AtChartBreakdown {
     }
     render() {
         const showSideText = this.center_value || this.center_text;
-        return (h(Host, { key: 'ce55bd7ea4b4c5e843e06153c7fc305cd9bfd677', style: {
+        return (h(Host, { key: 'fcefc95bd4d0734d5a50d89fefe41c80ddfc7956', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -567,24 +567,24 @@ export class AtChartBreakdown {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '617cbf9d41eda988e3a402e967d6fc79704b4c53', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: 'a3efdd6ddaabf827376e32d8efd2e019f81147af', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: 'f4458f26faa272e96b4703200ced58fe2f6ab400', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: '09bd301e88b61de31a6677e02b6d0f9551d43fee', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '1e9530efd98b012236d03eb72b8d8bfd794613e9', style: {
+            } }, this.center_value && (h("span", { key: '546a6b411aa9bec932efe2b76e6870e2dd9ebb93', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (h("span", { key: 'e6286b4caa374841fa8dd0de3443c69384e89d64', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: '6eb2f0c9744cf840c8bf4155888f1abc6d237d45', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));

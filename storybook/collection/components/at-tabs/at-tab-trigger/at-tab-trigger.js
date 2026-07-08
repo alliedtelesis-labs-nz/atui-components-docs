@@ -58,7 +58,7 @@ export class AtTabTrigger {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'b0232f98426c5150db16d3feac917fc21b872ffc', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '6841b145b9bea94266571e05f69ab9b5fee1a091' })));
+        return (h(Host, { key: '1c23d20247e47ea30b61352674282cf2349e6a92', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: 'e141d251468391082bb9a18cbdf3528b7fd87047' })));
     }
     static get is() { return "at-tab-trigger"; }
     static get properties() {

@@ -1,0 +1,1 @@
+import{A as o,d as r}from"./p-CcaMUxrY.js";const s=o,a=r;export{s as AtHealthDot,a as defineCustomElement}
