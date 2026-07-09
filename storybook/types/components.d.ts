@@ -1883,6 +1883,10 @@ export namespace Components {
          */
         "appendToLastMessage": (content: string) => Promise<boolean>;
         /**
+          * Display name for chatbot/assistant messages
+         */
+        "chatbot_title": string | undefined;
+        /**
           * Disables all interactions with the container
           * @default false
          */
@@ -2004,7 +2008,7 @@ export namespace Components {
     }
     /**
      * @category Prompt
-     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
      */
     interface AtPromptMessage {
         /**
@@ -4366,7 +4370,7 @@ declare global {
     }
     /**
      * @category Prompt
-     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
      */
     interface HTMLAtPromptMessageElement extends Components.AtPromptMessage, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtPromptMessageElementEventMap>(type: K, listener: (this: HTMLAtPromptMessageElement, ev: AtPromptMessageCustomEvent<HTMLAtPromptMessageElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6971,6 +6975,10 @@ declare namespace LocalJSX {
      */
     interface AtPromptContainer {
         /**
+          * Display name for chatbot/assistant messages
+         */
+        "chatbot_title"?: string | undefined;
+        /**
           * Disables all interactions with the container
           * @default false
          */
@@ -7132,7 +7140,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Prompt
-     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+     * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
      */
     interface AtPromptMessage {
         /**
@@ -8839,6 +8847,7 @@ declare namespace LocalJSX {
     }
     interface AtPromptContainerAttributes {
         "placeholder": string;
+        "chatbot_title": string | undefined;
         "error_text": string;
         "loading": boolean;
         "disabled": boolean;
@@ -9494,7 +9503,7 @@ declare module "@stencil/core" {
             "at-prompt-input": LocalJSX.IntrinsicElements["at-prompt-input"] & JSXBase.HTMLAttributes<HTMLAtPromptInputElement>;
             /**
              * @category Prompt
-             * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+             * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
              */
             "at-prompt-message": LocalJSX.IntrinsicElements["at-prompt-message"] & JSXBase.HTMLAttributes<HTMLAtPromptMessageElement>;
             /**

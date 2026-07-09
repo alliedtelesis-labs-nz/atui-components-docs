@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h } from './index-BEGRcYEc.js';
+import { r as registerInstance, c as createEvent, a as getElement, h } from './index-8e2OpwTu.js';
 
 /**
  * utils.ts 12.4.1

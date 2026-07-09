@@ -31,7 +31,6 @@ const sampleMessages = [
 const Template = (args) => `
 <div style="height: 400px; border: 1px solid #e2e8f0; border-radius: 8px;">
     <at-prompt-thread
-        messages='${JSON.stringify(args.messages ?? [])}'
         chatbot_title="${args.chatbot_title ?? 'Assistant'}"
         response_animation="${args.response_animation ?? 'none'}"
         ${args.loading ? 'loading' : ''}
@@ -41,6 +40,9 @@ const Template = (args) => `
         ${args.enable_edit ? 'enable_edit' : ''}
     ></at-prompt-thread>
 </div>
+<script>
+document.querySelector('at-prompt-thread').messages = ${JSON.stringify(args.messages ?? [])}
+</script>
 `;
 export default {
     title: 'Components/Prompt/Thread',

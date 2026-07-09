@@ -17,6 +17,10 @@ export declare class AtPromptContainer {
      */
     placeholder: string;
     /**
+     * Display name for chatbot/assistant messages
+     */
+    chatbot_title: string | undefined;
+    /**
      * Error text displayed when invalid is set via max length
      */
     error_text: string;

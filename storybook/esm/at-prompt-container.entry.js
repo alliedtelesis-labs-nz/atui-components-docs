@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BEGRcYEc.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-8e2OpwTu.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 
 const AtPromptContainer = class {
@@ -21,6 +21,10 @@ const AtPromptContainer = class {
      * Placeholder text for the input field
      */
     placeholder = 'Type your message here...';
+    /**
+     * Display name for chatbot/assistant messages
+     */
+    chatbot_title;
     /**
      * Error text displayed when invalid is set via max length
      */
@@ -208,7 +212,7 @@ const AtPromptContainer = class {
         return (h("div", { class: "p-4" }, h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (h(Host, { key: 'a6df19e98c2864b51d0c97bc3d62ac75e44bd107', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '4aa51f757e86c071a672ce168b3ae42be727257c', name: "prompt-container-header" }), h("div", { key: '39fe14f3cfbc72c53fdcb8df8e7df56c67d3ee5a', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: 'd20dd9e325c21d611e31a0ed6cc76a183430c72f', messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '11b6991f2241e7f464a5faa93b21ef86afc20981', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '9731d54d230fae30af2f2274c0dd820150282e47', name: "prompt-container-footer" }))));
+        return (h(Host, { key: '13af9fb7c5dd7435a7c9823d183c5d71eff717ba', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), h("slot", { key: '78903d0969fa371d9272fc5d1cfc3e79105f024f', name: "prompt-container-header" }), h("div", { key: '0c80ab7aab6016955407ad69156d755211d90ae2', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, h("at-prompt-thread", { key: '19133d40439d3ad59f6b01edaa6bc0db8136b6ad', chatbot_title: this.chatbot_title, messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), h("div", { key: '389b1edf974ad8ca815790b51be2d03843f5f166', class: "flex flex-col gap-4" }, this.renderFooter(), h("slot", { key: '79d16ed565cec899ddc466d2613238f4541c870b', name: "prompt-container-footer" }))));
     }
 };
 

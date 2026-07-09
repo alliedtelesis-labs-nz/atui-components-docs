@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-BEGRcYEc.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-8e2OpwTu.js';
 
 const placeholderVariants = {
     sizes: {

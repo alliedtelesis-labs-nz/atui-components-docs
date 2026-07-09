@@ -1,4 +1,6 @@
 import { Fragment, h, Host, } from "@stencil/core";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 import { classlist } from "../../../utils/classlist";
 import { fetchTranslations } from "../../../utils/translation";
 import { AtPromptResponseScore, } from "../../../types";
@@ -22,7 +24,7 @@ const messageVariantsConfig = {
 const getMessageClasses = classlist('rounded-lg py-4 text-base', messageVariantsConfig);
 /**
  * @category Prompt
- * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+ * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
  * @slot - Custom message content (alternative to using the content prop)
  */
 export class AtPromptMessage {
@@ -204,14 +206,24 @@ export class AtPromptMessage {
             this.response_animation === 'words'
             ? 'at-prompt-fade-in'
             : '';
-        return (h("div", { class: `prose prose-sm preserve-newlines max-w-none ${animationClass}`, "data-name": "message-content" }, h("slot", null), contentToDisplay));
+        return (h("div", { class: `prose prose-sm preserve-newlines max-w-none ${animationClass}`, "data-name": "message-content" }, h("slot", null), this.renderSafeContent(contentToDisplay)));
+    }
+    renderSafeContent(content) {
+        if (this.role === 'assistant') {
+            const html = marked.parse(content);
+            const safeHtml = DOMPurify.sanitize(html);
+            return h("span", { innerHTML: safeHtml });
+        }
+        else {
+            return h("span", null, content);
+        }
     }
     render() {
         const messageClasses = getMessageClasses({
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '6277d41d968e81a7355f8ffb8d1a5c5a846913e9', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'ad5dbe20eaf82c913e1a56112b0a4f08ebb34433', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '05face14631e92b2ca322aede9cef7b54e8d34e2', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'd18c8152a83268335efc356fce4ade3a67d8175f', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '9ab19cdcbbb5fdaedfa11e39636a822d89168dec', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '52d01e007a102cf3d2559e4ef3b91eb0826c1114', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '368c6e47c5ca476b966156945a3440cc319b7433', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'ca2c4f095b7b851edd8eabe4520910c9f39bc7b6', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {

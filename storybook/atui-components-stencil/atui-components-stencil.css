@@ -3999,6 +3999,10 @@ strong {
   text-transform: capitalize;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .\!leading-normal {
   line-height: var(--token-line-height-base) !important;
 }

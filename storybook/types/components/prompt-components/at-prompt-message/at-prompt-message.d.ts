@@ -2,7 +2,7 @@ import { EventEmitter } from '../../../stencil-public-runtime';
 import { AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from '../../../types';
 /**
  * @category Prompt
- * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry.
+ * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
  * @slot - Custom message content (alternative to using the content prop)
  */
 export declare class AtPromptMessage {
@@ -92,5 +92,6 @@ export declare class AtPromptMessage {
     private handleVote;
     private renderActions;
     private renderContent;
+    private renderSafeContent;
     render(): any;
 }

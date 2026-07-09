@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BEGRcYEc.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-8e2OpwTu.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 
 var SortDirection;

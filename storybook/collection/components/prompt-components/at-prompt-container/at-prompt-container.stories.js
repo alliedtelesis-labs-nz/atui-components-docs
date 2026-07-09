@@ -1,7 +1,6 @@
 const Template = (args) => `
 <div style="width: 100%; max-width: 800px; margin: 0 auto;">
     <at-prompt-container
-        messages='${JSON.stringify(args.messages ?? [])}'
         placeholder="${args.placeholder ?? ''}"
         error_text="${args.error_text ?? ''}"
         max_message_length="${args.max_message_length ?? 2000}"
@@ -14,6 +13,9 @@ const Template = (args) => `
         ${args.enable_edit ? 'enable_edit' : ''}
     ></at-prompt-container>
 </div>
+<script>
+document.querySelector('at-prompt-container').messages = ${JSON.stringify(args.messages ?? [])}
+</script>
 `;
 export default {
     title: 'Components/Prompt/Container',

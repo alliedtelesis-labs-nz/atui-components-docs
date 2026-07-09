@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BEGRcYEc.js';
+import { r as registerInstance, h, H as Host } from './index-8e2OpwTu.js';
 import { g as getChartColors, c as color, C as Chart, D as DoughnutController, A as ArcElement, i as index } from './chart-color-Dxo-bU-I.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';
 
