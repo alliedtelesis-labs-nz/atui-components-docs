@@ -34,7 +34,7 @@ export class AtHealthDot {
         }
     }
     render() {
-        return (h(Host, { key: '4f31860cf2d50455d443d4f09a0743c391c68b6e', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
+        return (h(Host, { key: '06dce4c291d7e53455454b8abb4383c5220d4897', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
     }
     static get is() { return "at-health-dot"; }
     static get properties() {

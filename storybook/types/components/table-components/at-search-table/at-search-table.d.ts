@@ -90,6 +90,11 @@ export declare class AtSearchTable {
      */
     loading: boolean;
     /**
+     * Message shown in place of the rows when there is no data to display.
+     * Defaults to a translated "No Data" message.
+     */
+    no_data_message?: string;
+    /**
      * Event emitted when search params change in server-side mode.
      * Contains filters, search text, pagination info
      */
@@ -123,6 +128,8 @@ export declare class AtSearchTable {
     get shouldShowDropdownFilters(): boolean;
     get shouldShowColumnManager(): boolean;
     get totalPages(): number;
+    get hasNoData(): boolean;
+    get hasActiveSearch(): boolean;
     handleSelectedFiltersChange(newValue: {
         id: string;
         value: string;

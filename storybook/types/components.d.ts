@@ -2312,6 +2312,10 @@ export namespace Components {
          */
         "loading": boolean;
         /**
+          * Message shown in place of the rows when there is no data to display. Defaults to a translated "No Data" message.
+         */
+        "no_data_message"?: string;
+        /**
           * Default page size of the table
           * @default 20
          */
@@ -7488,6 +7492,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * Message shown in place of the rows when there is no data to display. Defaults to a translated "No Data" message.
+         */
+        "no_data_message"?: string;
+        /**
           * Event emitted when CSV export is requested
          */
         "onAtExportCsv"?: (event: AtSearchTableCustomEvent<AtIPaginationParams>) => void;
@@ -8940,6 +8948,7 @@ declare namespace LocalJSX {
         "auto_size_columns": boolean;
         "server_side_mode": boolean;
         "loading": boolean;
+        "no_data_message": string;
     }
     interface AtSelectAttributes {
         "value": string;

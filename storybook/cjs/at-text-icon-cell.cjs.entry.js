@@ -33,7 +33,7 @@ const AtTextIconCell = class {
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (index.h(index.Host, { key: 'eb0e8dd162bfe324bae9bc54f196b6cc05260d86', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: 'a269fcda8281ad15dfbb950f11225851885db0d2', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (index.h(index.Host, { key: 'ce0b9377cecc4b2284239e4253735d49c8c42ace', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: 'b8426d94353d44b25c7de2b5a0804ecf26d01649', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 

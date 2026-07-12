@@ -105,7 +105,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: 'ab0489775324aa0c9b22b52f0c8c44e05f1f8479', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '2be0e2a94967fd669c9aea0c32ff26f9ceef0b0a', slot: "menu-trigger" }, h("at-tooltip", { key: 'b07f8a27f817009902b9fe73d02e039e9f1c090b', position: "top" }, h("at-button", { key: 'ad16076c6fdb0d4c539ef2b6074c2ee90bf8c65f', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '5d344681bd648b60fc06a75240f35511fa78c7ce', slot: "icon", name: "column" })), h("span", { key: '1c2daab8ee75fd0807dc60ce2e6b2a9e8e71199f' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '2035f9aa6ffb1339bf09a3c0e8ab0c9342d3a67e', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: 'e6db03a766a134a35ec48b163225bc4994dac39b', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: 'd7e64b91b8c4e8ea1034233da10f7ff1fa984cb0', slot: "menu-trigger" }, h("at-tooltip", { key: 'd8198f3c6b1240c599f2d66d68c883485914944c', position: "top" }, h("at-button", { key: 'c5e2981e9c5ad1107b6c2317b24fa02c67c7272b', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: 'd398659320797bb5c18a7e9371d9d114ebb00dfd', slot: "icon", name: "column" })), h("span", { key: 'e7f5e11361ec66a07cde71422aacbe7a94baecc3' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '048ba98d21d5cf70e7eb2254b36cd41c4fee4e46', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49132,7 +49132,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '49fc4f54583f76e937d8afa6ab21cc6fc4be4d09', class: {
+        return (h(Host, { key: '7ec8fbfb5eda9e61f8402ff6cb0430bd11808e2e', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49202,7 +49202,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: 'b0282794171f3e8bcdfd962883c7aedef0d6f3d7', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '95f2db67eab851a23a5718ac2ed33ef03fc872f1', class: "flex justify-between" }, h("div", { key: '626d7ea59ab8a922e328569d69eaa815abde094e', class: "flex" }, h("slot", { key: '0829bc6ee31d73079b72098f2548b2c953273535', name: "search" })), h("div", { key: 'ab5ecef8b88c6eed7f419b92628c4d41286fe384', class: "flex" }, h("slot", { key: '2562e2c6c6387ba2de480bfdbb3b57174e3385bb', name: "export-menu" }), h("slot", { key: 'd7015800d99058ac2fc3bfd16487b3f1267150ee', name: "column-manager" }), h("slot", { key: 'd43318b924cf822b786d7373d0f88f26b394df53', name: "actions" }))), h("slot", { key: '3f48b4baf4d0519b2b710af7fa04b38c002fda2e', name: "filters" })));
+        return (h(Host, { key: 'cea0a2b0dc025b3d37beb44ef0f2f7c89fddc828', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '923b49f890c0d476c71a652685dc537befc7a917', class: "flex justify-between" }, h("div", { key: 'e0bbd8f8c7adfc0fee76d035d440dabffa9f0673', class: "flex" }, h("slot", { key: '08040f73ff0153a3c196f50ba5f8339e4c51e32f', name: "search" })), h("div", { key: '48ad8e0bc75d0db2bdbc0e7354410a3fde0a6b6b', class: "flex" }, h("slot", { key: '833a82ee467993f209c4e19db52b9f2e91c0e6cd', name: "export-menu" }), h("slot", { key: '0a315028c91873d3e49aef2a87bf995c7aad3867', name: "column-manager" }), h("slot", { key: 'e6f49c22b5a574232785c45aed627943b71c06f7', name: "actions" }))), h("slot", { key: '8a85e6a7782e1a849a08e87773b0bb165994bf56', name: "filters" })));
     }
 };
 

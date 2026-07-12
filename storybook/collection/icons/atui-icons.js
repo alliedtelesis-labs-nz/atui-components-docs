@@ -38,6 +38,7 @@ import SidePanelOpen from "@carbon/icons/es/side-panel--open/16";
 import SidePanelClose from "@carbon/icons/es/side-panel--close/16";
 import IbmWatsonDiscovery from "@carbon/icons/es/ibm-watson--discovery/16";
 import FilterEdit from "@carbon/icons/es/filter--edit/16";
+import DataTable from "@carbon/icons/es/data-table/16";
 export const ATUI_ICONS = [
     { name: 'add', icon: Add },
     { name: 'arrow_left', icon: ArrowLeft },
@@ -79,4 +80,5 @@ export const ATUI_ICONS = [
     { name: 'thumbs_up_filled', icon: ThumbsUpFilled },
     { name: 'warning', icon: Warning },
     { name: 'edit_filters', icon: FilterEdit },
+    { name: 'data_table', icon: DataTable },
 ];

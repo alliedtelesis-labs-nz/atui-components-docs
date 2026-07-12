@@ -24,9 +24,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (index.h("div", { key: '462c7a3296a51579d511163801fd3902cb2fef25', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (index.h("label", { key: '54b645c23ef3d750c43cb9422d2375a4d4f07285', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'b4e4fef609d8991f32f0ca37f1d92a353d299b6a', class: "text-error" }, "*"))),
-            this.info_text && (index.h("at-tooltip", { key: 'a1a2650e21f85611d2c968aea484d2a3ccbbac4e', position: "right" }, index.h("at-icon", { key: '6c45dc3543254b04c3bfed6f64ef79f3cc430b07', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: '5496fa22237b2d49738daa438dd50980791a434d' }, this.info_text))),
+        return (index.h("div", { key: '32272ed841e52dc89c65759258451075658fc8c8', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (index.h("label", { key: '0a5880c31a1fba5605f29bf69c2de1040a4956be', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'f8b7fd2b6ffe3c394926c499b5a6c1d460057401', class: "text-error" }, "*"))),
+            this.info_text && (index.h("at-tooltip", { key: '5630ec406c7693f6b71677a4f3f0aa23c04a0941', position: "right" }, index.h("at-icon", { key: '97835dff3e2a4f5ed22e913cf123310e4a63ce18', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: '0a719417509db6d59ed90c62c66092138a61a3ae' }, this.info_text))),
         ]));
     }
 };
@@ -319,7 +319,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: '99ea064def96a16cfb8cdc16f024d5b808ed16ea', class: "relative" }, !this.trigger_id && (index.h("div", { key: '592e7f7403e761321d2012a94e5180cfb204d0ec', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '1cd53a644db285e2e86d83ad48ea4bd1f2ee00ac', name: "tooltip-trigger" }))), index.h("div", { key: 'aa3ba7a28dd69f6f892d837b45aca4d2d183cb96', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '66cb1fc3a3b152c7bcb833f7dc304404d310c498' }))));
+        return (index.h(index.Host, { key: '44317587852dbe2fc2df4ced438573d1c843abd2', class: "relative" }, !this.trigger_id && (index.h("div", { key: 'bb49785ce0a60bb69673b823ea0ae307ab083fa4', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, index.h("slot", { key: '6910f68297a2bea93dce585b2f965c40fa7f71fa', name: "tooltip-trigger" }))), index.h("div", { key: 'b2d3927084a8a14165df522236aa62bc0979eff6', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '57aacb0231379bd9602a6fc01ee90867f283d607' }))));
     }
     static get watchers() { return {
         "disabled": [{

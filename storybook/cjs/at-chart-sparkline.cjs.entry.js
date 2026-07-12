@@ -200,7 +200,7 @@ const AtChartSparkline = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '630467d26bd5a324be8b69e6623420de255b1455', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '51b7ddcff02d0dbd3c40cc0590cf7528ea8da933', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (index.h(index.Host, { key: 'f18608a43649acf170a92a68a72ecce691be3f4c', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'a516174ba3633d50878752e57d47d74e4d4fcc0f', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
 };
 
