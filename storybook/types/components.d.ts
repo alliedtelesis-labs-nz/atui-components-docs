@@ -21,6 +21,8 @@ import { AtLegendPosition } from "./components/at-chart-breakdown/at-chart-break
 import { AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 import { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 import { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
+import { AtChartTrendDeltaDirection } from "./components/at-chart-trend/at-chart-trend";
+import { AtChartSparklineMode as AtChartSparklineMode1, AtChartSparklineStatus as AtChartSparklineStatus1 } from "./components/at-chart-sparkline/at-chart-sparkline";
 import { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -72,6 +74,8 @@ export { AtLegendPosition } from "./components/at-chart-breakdown/at-chart-break
 export { AtLegendPosition as AtLegendPosition1 } from "./components/at-chart-donut/at-chart-donut";
 export { AtChartGaugePalette, AtChartGaugeStatus } from "./components/at-chart-gauge/at-chart-gauge";
 export { AtChartSparklineMode, AtChartSparklineStatus } from "./components/at-chart-sparkline/at-chart-sparkline";
+export { AtChartTrendDeltaDirection } from "./components/at-chart-trend/at-chart-trend";
+export { AtChartSparklineMode as AtChartSparklineMode1, AtChartSparklineStatus as AtChartSparklineStatus1 } from "./components/at-chart-sparkline/at-chart-sparkline";
 export { AtCheckboxLayout, AtICheckboxOption } from "./components/at-checkbox-group/at-checkbox-group";
 export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-list";
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
@@ -823,6 +827,57 @@ export namespace Components {
           * Health colour mode. When set, the line colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). Takes precedence over `color_palette`.
          */
         "status"?: AtChartSparklineStatus;
+    }
+    /**
+     * @category Data Visualization
+     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     */
+    interface AtChartTrend {
+        /**
+          * Colour palette forwarded to the sparkline when `status` is not set.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette": AtChartColorPalette;
+        /**
+          * The numeric series plotted as the underlying sparkline. For multi-series, labelled or time-based data use `at-chart-bar-line` instead.
+          * @default []
+         */
+        "data": number[];
+        /**
+          * Net change over the displayed period, shown as a signed delta with an up/down trend arrow. When omitted, it is derived from the series as `last − first`. A delta of 0 hides the indicator.
+         */
+        "delta"?: number;
+        /**
+          * How the delta indicator is coloured relative to its sign. Defaults to `up-is-bad` (an increase reads as a regression).
+          * @default 'up-is-bad'
+         */
+        "delta_direction": AtChartTrendDeltaDirection;
+        /**
+          * Height of the tile. `auto` fills the host (the value/delta header sits on top and the sparkline flexes to fill the remaining space).
+          * @default 'auto'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * Sparkline display treatment forwarded to `at-chart-sparkline`: a glowing `line`, or an `area` with a gradient fill.
+          * @default 'line'
+         */
+        "mode": AtChartSparklineMode1;
+        /**
+          * Pass the active theme value here to trigger a redraw of the underlying sparkline when the theme changes. Forwarded to `at-chart-sparkline`.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Optional device-status colour mode forwarded to the sparkline. When set, the line colour comes from the device-status palette and takes precedence over `color_palette`.
+         */
+        "status"?: AtChartSparklineStatus1;
+        /**
+          * Unit appended to the delta label (e.g. `%`, `ms`). Not appended to `value` — include any unit in `value` directly if required.
+         */
+        "unit"?: string;
+        /**
+          * Large current value shown above the line. Displayed as-is, so pre-format it upstream (rounding, thousands separators, unit suffix if desired).
+         */
+        "value": string;
     }
     /**
      * @category Form Controls
@@ -3779,6 +3834,16 @@ declare global {
         prototype: HTMLAtChartSparklineElement;
         new (): HTMLAtChartSparklineElement;
     };
+    /**
+     * @category Data Visualization
+     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     */
+    interface HTMLAtChartTrendElement extends Components.AtChartTrend, HTMLStencilElement {
+    }
+    var HTMLAtChartTrendElement: {
+        prototype: HTMLAtChartTrendElement;
+        new (): HTMLAtChartTrendElement;
+    };
     interface HTMLAtCheckboxElementEventMap {
         "atuiChange": boolean;
     }
@@ -5141,6 +5206,7 @@ declare global {
         "at-chart-donut": HTMLAtChartDonutElement;
         "at-chart-gauge": HTMLAtChartGaugeElement;
         "at-chart-sparkline": HTMLAtChartSparklineElement;
+        "at-chart-trend": HTMLAtChartTrendElement;
         "at-checkbox": HTMLAtCheckboxElement;
         "at-checkbox-cell": HTMLAtCheckboxCellElement;
         "at-checkbox-group": HTMLAtCheckboxGroupElement;
@@ -5887,6 +5953,57 @@ declare namespace LocalJSX {
           * Health colour mode. When set, the line colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). Takes precedence over `color_palette`.
          */
         "status"?: AtChartSparklineStatus;
+    }
+    /**
+     * @category Data Visualization
+     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     */
+    interface AtChartTrend {
+        /**
+          * Colour palette forwarded to the sparkline when `status` is not set.
+          * @default AtChartColorPalette.CATEGORICAL
+         */
+        "color_palette"?: AtChartColorPalette;
+        /**
+          * The numeric series plotted as the underlying sparkline. For multi-series, labelled or time-based data use `at-chart-bar-line` instead.
+          * @default []
+         */
+        "data"?: number[];
+        /**
+          * Net change over the displayed period, shown as a signed delta with an up/down trend arrow. When omitted, it is derived from the series as `last − first`. A delta of 0 hides the indicator.
+         */
+        "delta"?: number;
+        /**
+          * How the delta indicator is coloured relative to its sign. Defaults to `up-is-bad` (an increase reads as a regression).
+          * @default 'up-is-bad'
+         */
+        "delta_direction"?: AtChartTrendDeltaDirection;
+        /**
+          * Height of the tile. `auto` fills the host (the value/delta header sits on top and the sparkline flexes to fill the remaining space).
+          * @default 'auto'
+         */
+        "height"?: AtChartHeight;
+        /**
+          * Sparkline display treatment forwarded to `at-chart-sparkline`: a glowing `line`, or an `area` with a gradient fill.
+          * @default 'line'
+         */
+        "mode"?: AtChartSparklineMode1;
+        /**
+          * Pass the active theme value here to trigger a redraw of the underlying sparkline when the theme changes. Forwarded to `at-chart-sparkline`.
+         */
+        "refresh_theme"?: string;
+        /**
+          * Optional device-status colour mode forwarded to the sparkline. When set, the line colour comes from the device-status palette and takes precedence over `color_palette`.
+         */
+        "status"?: AtChartSparklineStatus1;
+        /**
+          * Unit appended to the delta label (e.g. `%`, `ms`). Not appended to `value` — include any unit in `value` directly if required.
+         */
+        "unit"?: string;
+        /**
+          * Large current value shown above the line. Displayed as-is, so pre-format it upstream (rounding, thousands separators, unit suffix if desired).
+         */
+        "value"?: string;
     }
     /**
      * @category Form Controls
@@ -8634,6 +8751,17 @@ declare namespace LocalJSX {
         "color_palette": AtChartColorPalette;
         "refresh_theme": string;
     }
+    interface AtChartTrendAttributes {
+        "value": string;
+        "unit": string;
+        "delta": number;
+        "delta_direction": AtChartTrendDeltaDirection;
+        "mode": AtChartSparklineMode;
+        "status": AtChartSparklineStatus;
+        "color_palette": AtChartColorPalette;
+        "height": AtChartHeight;
+        "refresh_theme": string;
+    }
     interface AtCheckboxAttributes {
         "label": string;
         "hint_text": string;
@@ -9139,6 +9267,7 @@ declare namespace LocalJSX {
         "at-chart-donut": Omit<AtChartDonut, keyof AtChartDonutAttributes> & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes]?: AtChartDonut[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `attr:${K}`]?: AtChartDonutAttributes[K] } & { [K in keyof AtChartDonut & keyof AtChartDonutAttributes as `prop:${K}`]?: AtChartDonut[K] };
         "at-chart-gauge": Omit<AtChartGauge, keyof AtChartGaugeAttributes> & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes]?: AtChartGauge[K] } & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes as `attr:${K}`]?: AtChartGaugeAttributes[K] } & { [K in keyof AtChartGauge & keyof AtChartGaugeAttributes as `prop:${K}`]?: AtChartGauge[K] };
         "at-chart-sparkline": Omit<AtChartSparkline, keyof AtChartSparklineAttributes> & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes]?: AtChartSparkline[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `attr:${K}`]?: AtChartSparklineAttributes[K] } & { [K in keyof AtChartSparkline & keyof AtChartSparklineAttributes as `prop:${K}`]?: AtChartSparkline[K] };
+        "at-chart-trend": Omit<AtChartTrend, keyof AtChartTrendAttributes> & { [K in keyof AtChartTrend & keyof AtChartTrendAttributes]?: AtChartTrend[K] } & { [K in keyof AtChartTrend & keyof AtChartTrendAttributes as `attr:${K}`]?: AtChartTrendAttributes[K] } & { [K in keyof AtChartTrend & keyof AtChartTrendAttributes as `prop:${K}`]?: AtChartTrend[K] };
         "at-checkbox": Omit<AtCheckbox, keyof AtCheckboxAttributes> & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes]?: AtCheckbox[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `attr:${K}`]?: AtCheckboxAttributes[K] } & { [K in keyof AtCheckbox & keyof AtCheckboxAttributes as `prop:${K}`]?: AtCheckbox[K] };
         "at-checkbox-cell": AtCheckboxCell;
         "at-checkbox-group": Omit<AtCheckboxGroup, keyof AtCheckboxGroupAttributes> & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes]?: AtCheckboxGroup[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `attr:${K}`]?: AtCheckboxGroupAttributes[K] } & { [K in keyof AtCheckboxGroup & keyof AtCheckboxGroupAttributes as `prop:${K}`]?: AtCheckboxGroup[K] };
@@ -9336,6 +9465,11 @@ declare module "@stencil/core" {
              * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
              */
             "at-chart-sparkline": LocalJSX.IntrinsicElements["at-chart-sparkline"] & JSXBase.HTMLAttributes<HTMLAtChartSparklineElement>;
+            /**
+             * @category Data Visualization
+             * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+             */
+            "at-chart-trend": LocalJSX.IntrinsicElements["at-chart-trend"] & JSXBase.HTMLAttributes<HTMLAtChartTrendElement>;
             /**
              * @category Form Controls
              * @description A checkbox component for selecting a single option from a predefined list. Provides validation, labeling, and accessibility features for checkbox collections.

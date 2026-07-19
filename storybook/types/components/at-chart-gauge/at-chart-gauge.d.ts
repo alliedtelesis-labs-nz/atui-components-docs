@@ -120,8 +120,10 @@ export declare class AtChartGauge {
     private spacerDataset;
     /**
      * Draws the centre value and label stacked at the base of the dial (the
-     * semicircle's diameter). The value and description share one colour and
-     * font size. Mirrors at-chart-donut's text-styling approach.
+     * semicircle's diameter), growing upward. Sizing, weight, font family and
+     * line-height match at-chart-donut's center text exactly — only the
+     * bottom-anchored (rather than vertically centered) stacking differs,
+     * since a semicircle's usable space sits above its flat base.
      */
     private getDrawCenterTextPlugin;
     initChart(): void;

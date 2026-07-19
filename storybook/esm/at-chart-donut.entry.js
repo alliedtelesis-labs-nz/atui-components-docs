@@ -1,7 +1,7 @@
-import { r as registerInstance, h, H as Host } from './index-8e2OpwTu.js';
-import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-Dxo-bU-I.js';
-import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-DTlEjff-.js';
-import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl } from './chart-legend-B_h8W2l2.js';
+import { r as registerInstance, h, H as Host } from './index-jCYcKtgi.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-BukeUrGZ.js';
+import { A as AtChartColorPalette, a as readChartFontFamily, r as readChartTextColors } from './chart-color-D288RS7J.js';
+import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl } from './chart-legend-DSh4kDRJ.js';
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -201,14 +201,17 @@ const AtChartDonut = class {
                 const innerRadius = arc?.innerRadius ?? height / 2;
                 // Usable width inside the hole, leaving a margin off the ring.
                 const maxWidth = innerRadius * 2 * 0.82;
-                const setFont = (px) => {
-                    const baseFontPx = parseFloat(getComputedStyle(chart.canvas).fontSize) ||
-                        16;
-                    return (ctx.font = `500 ${(px / baseFontPx).toFixed(2)}em sans-serif`);
+                const fontFamily = readChartFontFamily();
+                // 1rem in this app's design tokens — not necessarily the
+                // browser default of 16px — so `em` sizing below tracks the
+                // same rem scale at-chart-breakdown's CSS uses.
+                const remPx = parseFloat(getComputedStyle(chart.canvas).fontSize) || 16;
+                const setFont = (px, weight = 300) => {
+                    return (ctx.font = `${weight} ${(px / remPx).toFixed(2)}em ${fontFamily}`);
                 };
                 // Largest size up to `base` that keeps `text` within maxWidth.
-                const fit = (text, base) => {
-                    setFont(base);
+                const fit = (text, base, weight = 300) => {
+                    setFont(base, weight);
                     const w = ctx.measureText(text).width;
                     return w > maxWidth && w > 0 ? base * (maxWidth / w) : base;
                 };
@@ -232,19 +235,32 @@ const AtChartDonut = class {
                         { text: l2, px },
                     ];
                 };
-                // Scale with height, but cap to the hole so it can't overflow.
-                const valuePx = Math.min((height / 140) * 16, innerRadius * 0.6);
-                const labelPx = Math.min((height / 200) * 16, innerRadius * 0.36);
+                // Match at-chart-breakdown's 3rem/1rem sizes by default, but
+                // cap to the hole so text can't overflow on smaller donuts.
+                const valuePx = Math.min(remPx * 3, innerRadius * 0.6);
+                const labelPx = Math.min(remPx, innerRadius * 0.36);
                 const value = this.center_value === 'auto'
                     ? this.computedCenterValue
                     : this.center_value;
                 // Build the lines to render: value first, then the label.
+                // lineHeight mirrors at-chart-breakdown's center_value line-height (1.1).
                 const lines = [
                     ...(value
-                        ? [{ text: value, px: fit(value, valuePx) }]
+                        ? [
+                            {
+                                text: value,
+                                px: fit(value, valuePx, 700),
+                                weight: 700,
+                                lineHeight: 0.75,
+                            },
+                        ]
                         : []),
                     ...(this.center_text
-                        ? wrapLabel(this.center_text, labelPx)
+                        ? wrapLabel(this.center_text, labelPx).map((l) => ({
+                            ...l,
+                            weight: 300,
+                            lineHeight: 1,
+                        }))
                         : []),
                 ];
                 // Stack the lines, vertically centered on the donut center.
@@ -252,14 +268,16 @@ const AtChartDonut = class {
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 const gap = (lines[0]?.px ?? 0) * 0.2;
-                const totalHeight = lines.reduce((sum, line) => sum + line.px, 0) +
+                const lineBoxHeight = (line) => line.px * line.lineHeight;
+                const totalHeight = lines.reduce((sum, line) => sum + lineBoxHeight(line), 0) +
                     gap * Math.max(0, lines.length - 1);
                 let y = centerY - totalHeight / 2;
                 for (const line of lines) {
-                    y += line.px / 2;
-                    setFont(line.px);
+                    const boxHeight = lineBoxHeight(line);
+                    y += boxHeight / 2;
+                    setFont(line.px, line.weight);
                     ctx.fillText(line.text, centerX, y);
-                    y += line.px / 2 + gap;
+                    y += boxHeight / 2 + gap;
                 }
                 ctx.save();
             },
@@ -291,7 +309,7 @@ const AtChartDonut = class {
                 devicePixelRatio: dpr,
                 maintainAspectRatio: false,
                 aspectRatio: 1,
-                layout: { padding: 16 },
+                layout: { padding: 5 },
                 interaction: { mode: 'nearest', intersect: true },
                 datasets: {
                     doughnut: {
@@ -454,7 +472,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: 'c65c0104487e577021cc8343f2b073d71e62f330', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'c3b892ba63767ef9ad0a2e5e5a79fef99f38c75d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'b15fac0a8f3624bb1f681d35e580d10d08ec8740', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b4bf9d5ff1defe56627557f249c3cd871f9c8882', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

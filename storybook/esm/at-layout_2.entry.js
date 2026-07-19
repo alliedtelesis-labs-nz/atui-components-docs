@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-8e2OpwTu.js';
+import { r as registerInstance, h, H as Host, a as getElement } from './index-jCYcKtgi.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -24,7 +24,7 @@ const AtLayout = class {
         }
     }
     render() {
-        return h(Host, { key: '4a1d31748fa49f0d5c5366bdc50237afd7479d39' }, this.layoutElement);
+        return h(Host, { key: '529d2e4b4920ad25057a9b6c22b347935979ffa4' }, this.layoutElement);
     }
 };
 
@@ -84,7 +84,7 @@ const AtTabTrigger = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'b0232f98426c5150db16d3feac917fc21b872ffc', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '6841b145b9bea94266571e05f69ab9b5fee1a091' })));
+        return (h(Host, { key: 'f40da0e526bb2a29a4b72f83beefaca906e17173', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: 'e6e7aaa18d485bde947e08596edb89b980528167' })));
     }
 };
 

@@ -35,6 +35,7 @@
     "components/at-chart-bar-line/at-chart-bar-line.js",
     "components/at-chart-breakdown/at-chart-breakdown.js",
     "components/at-chart-donut/at-chart-donut.js",
+    "components/at-chart-trend/at-chart-trend.js",
     "components/at-checkbox-group/at-checkbox-group.js",
     "components/at-checkbox-group/at-checkbox/at-checkbox.js",
     "components/at-chip-list/at-chip-list.js",

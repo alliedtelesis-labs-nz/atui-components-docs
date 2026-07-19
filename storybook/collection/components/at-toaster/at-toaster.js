@@ -30,6 +30,13 @@ export class AtToasterComponent {
      */
     async removeToast(id) {
         const toastEl = this.el.querySelector(`.at-toast[data-id="${id}"]`);
+        // The toast's auto-dismiss timeout (see addToast) can fire after the
+        // toast was already removed (e.g. tapped/closed manually, or the
+        // toaster itself torn down), in which case the element no longer
+        // exists in the DOM.
+        if (!toastEl) {
+            return;
+        }
         toastEl.classList.add('close');
         toastEl.addEventListener('animationend', () => {
             this.toasts = this.toasts.filter((toast) => toast.id !== id);
@@ -61,7 +68,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: 'd458cbf6f23e1da5a61beb66fe54ce6346f4a5b8', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+        return (h("div", { key: '078e535a38d122eabc44a7100c542a09d6f33863', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))))))));

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, F as Fragment, H as Host } from './index-8e2OpwTu.js';
+import { r as registerInstance, a as getElement, h, F as Fragment, H as Host } from './index-jCYcKtgi.js';
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -31,7 +31,7 @@ const AtTextIconCell = class {
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (h(Host, { key: 'ce0b9377cecc4b2284239e4253735d49c8c42ace', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: 'b8426d94353d44b25c7de2b5a0804ecf26d01649', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (h(Host, { key: '2726d1842e2ff33e9ddb988f6d205bc4bde8c9ce', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: 'deabfbed47946751fb13e39c83195189e2c7a65a', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 

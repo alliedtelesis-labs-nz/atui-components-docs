@@ -33,6 +33,8 @@ export { AtChartGauge as AtChartGauge } from '../types/components/at-chart-gauge
 export { defineCustomElement as defineCustomElementAtChartGauge } from './at-chart-gauge';
 export { AtChartSparkline as AtChartSparkline } from '../types/components/at-chart-sparkline/at-chart-sparkline';
 export { defineCustomElement as defineCustomElementAtChartSparkline } from './at-chart-sparkline';
+export { AtChartTrend as AtChartTrend } from '../types/components/at-chart-trend/at-chart-trend';
+export { defineCustomElement as defineCustomElementAtChartTrend } from './at-chart-trend';
 export { AtCheckbox as AtCheckbox } from '../types/components/at-checkbox-group/at-checkbox/at-checkbox';
 export { defineCustomElement as defineCustomElementAtCheckbox } from './at-checkbox';
 export { AtCheckboxCellComponent as AtCheckboxCell } from '../types/components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';

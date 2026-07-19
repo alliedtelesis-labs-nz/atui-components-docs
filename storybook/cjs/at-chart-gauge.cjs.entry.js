@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DRsFs1GW.js');
-var chartColor$1 = require('./chart-color-CxOzTTyI.js');
-var chartColor = require('./chart-color-ChPOocG1.js');
+var index = require('./index-DE68Mlxo.js');
+var chartColor$1 = require('./chart-color-NSoH-i0C.js');
+var chartColor = require('./chart-color-D8HPmi5o.js');
 
 const heightVariants = {
     xs: 'h-[80px]',
@@ -192,8 +192,10 @@ const AtChartGauge = class {
     }
     /**
      * Draws the centre value and label stacked at the base of the dial (the
-     * semicircle's diameter). The value and description share one colour and
-     * font size. Mirrors at-chart-donut's text-styling approach.
+     * semicircle's diameter), growing upward. Sizing, weight, font family and
+     * line-height match at-chart-donut's center text exactly — only the
+     * bottom-anchored (rather than vertically centered) stacking differs,
+     * since a semicircle's usable space sits above its flat base.
      */
     getDrawCenterTextPlugin() {
         return {
@@ -206,34 +208,61 @@ const AtChartGauge = class {
                     return;
                 }
                 ctx.restore();
-                const height = chart.chartArea.bottom - chart.chartArea.top;
-                const fontSize = (height / 140).toFixed(2) + 'em sans-serif';
-                const textColor = chartColor.readChartTextColors().title;
-                const lineGap = 2;
+                const innerRadius = arc.innerRadius;
+                const fontFamily = chartColor.readChartFontFamily();
+                // 1rem in this app's design tokens — not necessarily the
+                // browser default of 16px — so `em` sizing below tracks the
+                // same rem scale at-chart-breakdown's CSS uses.
+                const remPx = parseFloat(getComputedStyle(chart.canvas).fontSize) || 16;
+                const setFont = (px, weight = 300) => {
+                    return (ctx.font = `${weight} ${(px / remPx).toFixed(2)}em ${fontFamily}`);
+                };
+                // Width of the horizontal chord `offset` px above the dial's
+                // flat base (arc.y). Unlike a full donut, the gauge is only
+                // the top half of a circle, so the space available to text
+                // narrows the further it sits above the base — using a
+                // single diameter-wide maxWidth for every line let text
+                // overflow the dial once it climbed high enough to be
+                // clipped by the curve.
+                const chordWidth = (offset) => {
+                    const clamped = Math.min(Math.abs(offset), innerRadius);
+                    return (Math.sqrt(innerRadius ** 2 - clamped ** 2) * 2 * 0.82);
+                };
+                // Largest size up to `base` that keeps `text` within maxWidth.
+                const fit = (text, base, maxWidth, weight = 300) => {
+                    setFont(base, weight);
+                    const w = ctx.measureText(text).width;
+                    return w > maxWidth && w > 0 ? base * (maxWidth / w) : base;
+                };
+                // Match at-chart-donut's 3rem/1rem sizes by default, but cap
+                // to the dial so text can't overflow vertically on smaller
+                // gauges.
+                const baseLabelPx = Math.min(remPx, innerRadius * 0.36);
+                const baseValuePx = Math.min(remPx * 3, innerRadius * 0.6);
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
-                ctx.font = '500 ' + fontSize;
-                ctx.fillStyle = textColor;
-                // Draw one line bottom-aligned at `bottomY` and return its
-                // height so the next line can stack above it.
-                const addText = (text, bottomY) => {
-                    ctx.font = '500 ' + fontSize;
-                    ctx.fillStyle = textColor;
-                    const textMetrics = ctx.measureText(text);
-                    const textHeight = textMetrics.actualBoundingBoxAscent +
-                        textMetrics.actualBoundingBoxDescent;
-                    ctx.fillText(text, arc.x, bottomY);
-                    return textHeight;
+                ctx.fillStyle = chartColor.readChartTextColors().title;
+                // Stack upward from the dial's flat base: label first (where
+                // the chord is widest), then the value above it. Each line is
+                // width-fit against the chord at its own vertical offset —
+                // estimated from its un-fit size, so a line that ends up
+                // shrinking only ever sits within a *wider* chord than assumed.
+                let offset = 0;
+                let prevPx = 0;
+                const draw = (text, basePx, weight, lineHeight) => {
+                    const gap = prevPx * 0.1;
+                    const baselineOffset = offset + gap;
+                    const px = fit(text, basePx, chordWidth(baselineOffset + basePx * lineHeight), weight);
+                    setFont(px, weight);
+                    ctx.fillText(text, arc.x, arc.y - baselineOffset);
+                    offset = baselineOffset + px * lineHeight;
+                    prevPx = px;
                 };
-                // Stack upward from the dial's base: description at the bottom,
-                // value above it.
-                let bottomY = arc.y;
                 if (this.center_text) {
-                    const textHeight = addText(this.center_text, bottomY);
-                    bottomY -= textHeight + lineGap;
+                    draw(this.center_text, baseLabelPx, 300, 1);
                 }
                 if (this.center_value) {
-                    addText(this.center_value, bottomY);
+                    draw(this.center_value, baseValuePx, 700, 0.85);
                 }
                 ctx.save();
             },
@@ -306,7 +335,7 @@ const AtChartGauge = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '3f2009eb1564ca2a84be432db23c0592eeae8c5c', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '89a3e0b022d544e133b806fd9cbf7a5f00cad4c1', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (index.h(index.Host, { key: '722b4452d5803281c7940276cb5187c439c7bf95', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '51e0cf57ee30dc47f4246fee07ba1100701fd306', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

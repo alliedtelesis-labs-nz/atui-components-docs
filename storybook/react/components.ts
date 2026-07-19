@@ -25,6 +25,7 @@ import { AtChartBreakdown as AtChartBreakdownElement, defineCustomElement as def
 import { AtChartDonut as AtChartDonutElement, defineCustomElement as defineAtChartDonut } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-donut.js";
 import { AtChartGauge as AtChartGaugeElement, defineCustomElement as defineAtChartGauge } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-gauge.js";
 import { AtChartSparkline as AtChartSparklineElement, defineCustomElement as defineAtChartSparkline } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-sparkline.js";
+import { AtChartTrend as AtChartTrendElement, defineCustomElement as defineAtChartTrend } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-chart-trend.js";
 import { AtCheckboxCell as AtCheckboxCellElement, defineCustomElement as defineAtCheckboxCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-cell.js";
 import { AtCheckboxGroup as AtCheckboxGroupElement, defineCustomElement as defineAtCheckboxGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-group.js";
 import { AtCheckboxHeader as AtCheckboxHeaderElement, defineCustomElement as defineAtCheckboxHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-checkbox-header.js";
@@ -307,6 +308,17 @@ export const AtChartSparkline: StencilReactComponent<AtChartSparklineElement, At
     react: React,
     events: {} as AtChartSparklineEvents,
     defineCustomElement: defineAtChartSparkline
+});
+
+type AtChartTrendEvents = NonNullable<unknown>;
+
+export const AtChartTrend: StencilReactComponent<AtChartTrendElement, AtChartTrendEvents> = /*@__PURE__*/ createComponent<AtChartTrendElement, AtChartTrendEvents>({
+    tagName: 'at-chart-trend',
+    elementClass: AtChartTrendElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtChartTrendEvents,
+    defineCustomElement: defineAtChartTrend
 });
 
 type AtCheckboxEvents = { onAtuiChange: EventName<CustomEvent<boolean>> };

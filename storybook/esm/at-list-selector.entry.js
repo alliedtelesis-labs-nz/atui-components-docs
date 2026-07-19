@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-8e2OpwTu.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-jCYcKtgi.js';
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -63,7 +63,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '05cfdd81687d4016e295ebbc59cfbc2f38bfbfcc', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '81619a409a1b87e27c5fd5c760642d9cee7a6722', name: "header" }), !!this.options.length && (h("nav", { key: '716c1b316ffcc2ddcb565982153dbc6a7e6144ec', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '6370d80d15b13aa0392fba20f4b14553b068bb93', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '836b9bfbe2d0f7be5448e49df462fb0b75036831' })));
+        return (h(Host, { key: '2883c4141aea13e5a1e52d8aab161e7bafc49f4a', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '376ad95c0c8baf07ca19ec413d693e6c850c0eb0', name: "header" }), !!this.options.length && (h("nav", { key: '90da06e88cf42347e74df6ac17e3157867427621', class: "flex-fill overflow-visible pb-16" }, h("div", { key: 'ceeb50d2fb1f162ed0c31562e28aba807e7aa718', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '5abb26d49e9277f59d911f54d47831964bdb948c' })));
     }
 };
 

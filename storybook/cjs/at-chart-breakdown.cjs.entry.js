@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DRsFs1GW.js');
-var chartColor$1 = require('./chart-color-CxOzTTyI.js');
-var chartColor = require('./chart-color-ChPOocG1.js');
+var index = require('./index-DE68Mlxo.js');
+var chartColor$1 = require('./chart-color-NSoH-i0C.js');
+var chartColor = require('./chart-color-D8HPmi5o.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -560,7 +560,7 @@ const AtChartBreakdown = class {
     }
     render() {
         const showSideText = this.center_value || this.center_text;
-        return (index.h(index.Host, { key: 'bab61db34af404295978a9d2325e49071b3b1aa8', style: {
+        return (index.h(index.Host, { key: '0bd5343c8fa1592061188b179eae430e44a5a6b7', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -568,24 +568,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: 'f955020b9e7f20032064473df81340dc8e87cc4b', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: '3abf4d6a7b24230bc388d4876cbbdcf773a481de', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: 'ec8615a0093d7ee4e56ebd58caa20521a786e0bc', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: 'c2f8a047a81311f32f3684a80f7f37392ad21c6e', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: '61444fd07774015b1586da074ce5553d9c189f53', style: {
+            } }, this.center_value && (index.h("span", { key: '66874222ae03217acf5467ae984a567b0da88013', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: 'a7e706ba32b25a980049b1c74f595eb80dd7509e', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: 'd68c5ab2f520107a2a9b08c7271a7de475906603', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));

@@ -2,6 +2,8 @@ import Add from "@carbon/icons/es/add/16";
 import ArrowLeft from "@carbon/icons/es/arrow--left/16";
 import ArrowRight from "@carbon/icons/es/arrow--right/16";
 import ArrowUp from "@carbon/icons/es/arrow--up/16";
+import TrendUp from "@carbon/icons/es/arrow--up-right/16";
+import TrendDown from "@carbon/icons/es/arrow--down-right/16";
 import Backspace from "@carbon/icons/es/delete/16";
 import Cancel from "@carbon/icons/es/close--filled/16";
 import CaretDown from "@carbon/icons/es/caret--down/16";
@@ -44,6 +46,8 @@ export const ATUI_ICONS = [
     { name: 'arrow_left', icon: ArrowLeft },
     { name: 'arrow_right', icon: ArrowRight },
     { name: 'arrow_up', icon: ArrowUp },
+    { name: 'trend_up', icon: TrendUp },
+    { name: 'trend_down', icon: TrendDown },
     { name: 'backspace', icon: Backspace },
     { name: 'cancel', icon: Cancel },
     { name: 'caret_down', icon: CaretDown },

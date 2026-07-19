@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-8e2OpwTu.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-jCYcKtgi.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -81,7 +81,7 @@ const AtButtonGroupOption = class {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (h(Host, { key: '85102f0bdbad2a0187efa7a68b870c9013056bee', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '57c5f9452f3a6888d2d235f5bc9ac40715e96712', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '0103f4e6d089baa0d3df9e5713496853793cbb46' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '6e2af1c7f8bfafe19aee597cd73eb1773a1c8e54', name: "after" })));
+        return (h(Host, { key: '7c60ac996a2095474d47515f502262081c1e9bd5', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '15bd2e5f9ef40e6e6e5c0c06bfe6ea4f554151c1', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: 'a1a76b68ce23e17de8ea16b4b0cf811c7baa0e49' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: 'cb5f91ae1c5ccbc2576ef3b8bb0530000c8fed9f', name: "after" })));
     }
 };
 

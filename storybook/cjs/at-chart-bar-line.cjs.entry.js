@@ -1,10 +1,10 @@
 'use strict';
 
-var index = require('./index-DRsFs1GW.js');
-var chartColor = require('./chart-color-CxOzTTyI.js');
+var index = require('./index-DE68Mlxo.js');
+var chartColor = require('./chart-color-NSoH-i0C.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var chartColor$1 = require('./chart-color-ChPOocG1.js');
-var chartLegend = require('./chart-legend-BoaMJaDS.js');
+var chartColor$1 = require('./chart-color-D8HPmi5o.js');
+var chartLegend = require('./chart-legend-JzUfJQgF.js');
 
 var dateFns = {};
 
@@ -21871,7 +21871,7 @@ const AtChartBarLine = class {
                 label: threshold.label,
                 borderColor: threshold.color,
                 borderCapStyle: 'butt',
-                backgroundColor: 'white',
+                backgroundColor: threshold.color,
                 fill: false,
                 data: threshold.data,
                 pointRadius: 0,
@@ -21892,7 +21892,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '859f53706d1083bb0ddbf14cc6b280d396654af2', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '68109eb4d9572b3effeeea1f0d0d5820294b9f4f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'cd5d38b45564728a24e09fd4181414baeceed635', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '546fc638c9acdb798d530c1b13b3020bcc8039fb', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

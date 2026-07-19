@@ -3149,6 +3149,10 @@ strong {
   align-items: center;
 }
 
+.items-baseline {
+  align-items: baseline;
+}
+
 .items-stretch {
   align-items: stretch;
 }
@@ -3987,6 +3991,10 @@ strong {
   font-weight: var(--token-font-weight-med) !important;
 }
 
+.font-bold {
+  font-weight: var(--token-font-weight-bold);
+}
+
 .font-medium {
   font-weight: var(--token-font-weight-med);
 }
@@ -4001,6 +4009,12 @@ strong {
 
 .italic {
   font-style: italic;
+}
+
+.tabular-nums {
+  --tw-numeric-spacing:
+      tabular-nums;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
 }
 
 .\!leading-normal {
@@ -4243,6 +4257,12 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-secondary) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-success {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-success-default) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-warning-foreground {

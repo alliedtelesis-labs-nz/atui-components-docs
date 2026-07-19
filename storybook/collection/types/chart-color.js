@@ -7,6 +7,12 @@ export var AtChartColorPalette;
     AtChartColorPalette["ONBOARDING_STATUS"] = "onboarding-status";
     AtChartColorPalette["CUSTOM"] = "custom";
 })(AtChartColorPalette || (AtChartColorPalette = {}));
+export function readChartFontFamily() {
+    const raw = getComputedStyle(document.documentElement)
+        .getPropertyValue('--token-font-family-base')
+        .trim();
+    return raw ? `${raw}` : 'sans-serif';
+}
 export function readChartTextColors() {
     const style = getComputedStyle(document.documentElement);
     const get = (name) => style.getPropertyValue(name).trim();

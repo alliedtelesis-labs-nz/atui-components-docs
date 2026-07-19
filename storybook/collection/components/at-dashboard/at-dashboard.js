@@ -140,6 +140,7 @@ export class AtDashboard {
             'at-chart-breakdown',
             'at-chart-bar',
             'at-chart-line',
+            'at-chart-gauge',
         ];
         // Measure the actual constrained height GridStack has assigned to this widget.
         const contentEl = element.querySelector('.grid-stack-item-content');
@@ -162,7 +163,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: '98bf6fce532ef07f90738515d47766ea0182d0bb', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: 'c95d232c88a5e8de5a3d9b7491616746699d68b2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
                 this.removeWidget(widget);
             } })))), h("slot", { name: widget.id })))))));
     }

@@ -14,5 +14,6 @@ export interface AtChartTextColors {
     tooltipTitle: string;
     tooltipBody: string;
 }
+export declare function readChartFontFamily(): string;
 export declare function readChartTextColors(): AtChartTextColors;
 export declare function readPaletteColors(palette: AtChartColorPalette): string[] | null;

@@ -406,7 +406,7 @@ export class AtChartBarLine {
                 label: threshold.label,
                 borderColor: threshold.color,
                 borderCapStyle: 'butt',
-                backgroundColor: 'white',
+                backgroundColor: threshold.color,
                 fill: false,
                 data: threshold.data,
                 pointRadius: 0,
@@ -427,7 +427,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '859f53706d1083bb0ddbf14cc6b280d396654af2', style: { height: '100%', width: '100%' } }, h("canvas", { key: '68109eb4d9572b3effeeea1f0d0d5820294b9f4f', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'cd5d38b45564728a24e09fd4181414baeceed635', style: { height: '100%', width: '100%' } }, h("canvas", { key: '546fc638c9acdb798d530c1b13b3020bcc8039fb', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
