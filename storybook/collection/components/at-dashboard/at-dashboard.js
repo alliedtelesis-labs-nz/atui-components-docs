@@ -40,6 +40,10 @@ export class AtDashboard {
      */
     removedItem;
     /**
+     * Emitted when a widget's Edit action is triggered from the dashboard.
+     */
+    editItem;
+    /**
      * Emitted when a widget finishes resizing or dragging.
      */
     resizeDragEvent;
@@ -163,9 +167,11 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: 'c95d232c88a5e8de5a3d9b7491616746699d68b2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (h("div", { key: 'e94db554f4fcf32eb326971605fcb9721e59e98b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+                this.editItem.emit(widget);
+            } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
-            } })))), h("slot", { name: widget.id })))))));
+            } }))))), h("slot", { name: widget.id })))))));
     }
     static get is() { return "at-dashboard"; }
     static get originalStyleUrls() {
@@ -276,6 +282,27 @@ export class AtDashboard {
                 "docs": {
                     "tags": [],
                     "text": "Emitted when a widget is removed from the dashboard."
+                },
+                "complexType": {
+                    "original": "AtICustomGridStackItem",
+                    "resolved": "AtICustomGridStackItem",
+                    "references": {
+                        "AtICustomGridStackItem": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-dashboard/at-dashboard.tsx",
+                            "id": "src/components/at-dashboard/at-dashboard.tsx::AtICustomGridStackItem"
+                        }
+                    }
+                }
+            }, {
+                "method": "editItem",
+                "name": "editItem",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emitted when a widget's Edit action is triggered from the dashboard."
                 },
                 "complexType": {
                     "original": "AtICustomGridStackItem",

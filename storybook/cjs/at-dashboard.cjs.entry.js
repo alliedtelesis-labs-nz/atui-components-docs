@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DE68Mlxo.js');
+var index = require('./index-e0g5edej.js');
 
 /**
  * utils.ts 12.4.1
@@ -6376,6 +6376,7 @@ const AtDashboard = class {
         index.registerInstance(this, hostRef);
         this.changedItem = index.createEvent(this, "changedItem", 7);
         this.removedItem = index.createEvent(this, "removedItem", 7);
+        this.editItem = index.createEvent(this, "editItem", 7);
         this.resizeDragEvent = index.createEvent(this, "resizeDragEvent", 7);
     }
     get el() { return index.getElement(this); }
@@ -6404,6 +6405,10 @@ const AtDashboard = class {
      * Emitted when a widget is removed from the dashboard.
      */
     removedItem;
+    /**
+     * Emitted when a widget's Edit action is triggered from the dashboard.
+     */
+    editItem;
     /**
      * Emitted when a widget finishes resizing or dragging.
      */
@@ -6528,9 +6533,11 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: 'c95d232c88a5e8de5a3d9b7491616746699d68b2', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("at-button", { label: "Delete", type: "secondaryText", onAtuiClick: () => {
+        return (index.h("div", { key: 'e94db554f4fcf32eb326971605fcb9721e59e98b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText" }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("div", { class: "flex min-w-[140px] flex-col py-1" }, index.h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+                this.editItem.emit(widget);
+            } }), index.h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
-            } })))), index.h("slot", { name: widget.id })))))));
+            } }))))), index.h("slot", { name: widget.id })))))));
     }
     static get watchers() { return {
         "widget_items": [{

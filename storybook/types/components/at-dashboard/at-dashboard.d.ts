@@ -36,6 +36,10 @@ export declare class AtDashboard {
      */
     removedItem: EventEmitter<AtICustomGridStackItem>;
     /**
+     * Emitted when a widget's Edit action is triggered from the dashboard.
+     */
+    editItem: EventEmitter<AtICustomGridStackItem>;
+    /**
      * Emitted when a widget finishes resizing or dragging.
      */
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;

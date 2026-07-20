@@ -1,1 +1,1 @@
-import{A as o,d as p}from"./p-CpUatlwZ.js";const s=o,t=p;export{s as AtBreadcrumbItem,t as defineCustomElement}
+import{A as o,d as s}from"./p-DL_Ywj7d.js";const p=o,r=s;export{p as AtBreadcrumbItem,r as defineCustomElement}

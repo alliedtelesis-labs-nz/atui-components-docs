@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DE68Mlxo.js');
+var index = require('./index-e0g5edej.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atInputNumericCss = () => `input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}`;

@@ -4002,6 +4002,7 @@ declare global {
     interface HTMLAtDashboardElementEventMap {
         "changedItem": AtICustomGridStackItem;
         "removedItem": AtICustomGridStackItem;
+        "editItem": AtICustomGridStackItem;
         "resizeDragEvent": AtICustomGridStackItem;
     }
     interface HTMLAtDashboardElement extends Components.AtDashboard, HTMLStencilElement {
@@ -6231,6 +6232,10 @@ declare namespace LocalJSX {
           * Emitted when a widget's position or size changes in the grid.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
+        /**
+          * Emitted when a widget's Edit action is triggered from the dashboard.
+         */
+        "onEditItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
           * Emitted when a widget is removed from the dashboard.
          */

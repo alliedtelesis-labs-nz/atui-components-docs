@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DE68Mlxo.js');
+var index = require('./index-e0g5edej.js');
 var floatingUi_dom = require('./floating-ui.dom-BZk7Blsu.js');
 
 const AtFormLabelComponent = class {

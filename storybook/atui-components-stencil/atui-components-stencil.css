@@ -2959,6 +2959,10 @@ strong {
   min-width: 100px;
 }
 
+.min-w-\[140px\] {
+  min-width: 140px;
+}
+
 .max-w-3xl {
   max-width: 48rem;
 }

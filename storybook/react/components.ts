@@ -440,6 +440,7 @@ export const AtCustomTimeRange: StencilReactComponent<AtCustomTimeRangeElement, 
 type AtDashboardEvents = {
     onChangedItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
     onRemovedItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
+    onEditItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
     onResizeDragEvent: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>
 };
 
@@ -451,6 +452,7 @@ export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardE
     events: {
         onChangedItem: 'changedItem',
         onRemovedItem: 'removedItem',
+        onEditItem: 'editItem',
         onResizeDragEvent: 'resizeDragEvent'
     } as AtDashboardEvents,
     defineCustomElement: defineAtDashboard
