@@ -8,6 +8,17 @@
   padding-right: 13px !important;
 }
 
+.ag-cell-wrapper,
+.ag-cell-value {
+  min-width: 0;
+}
+
+.ag-cell:has(at-checkbox-cell),
+.ag-header-cell:has(at-checkbox-header) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .ag-header-cell atui-checkbox[aria-checked],
 .ag-cell atui-checkbox[aria-checked],
 atui-menu atui-checkbox[aria-checked] {
