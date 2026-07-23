@@ -2140,6 +2140,10 @@ export namespace Components {
          */
         "chatbot_title": string;
         /**
+          * Identifies the current conversation. Change this when the consumer switches to a different saved conversation while this thread stays mounted (e.g. picking another chat from a history sidebar) so its messages are treated as history rather than live/new — otherwise every message in that conversation's history would incorrectly replay the intro animation on load, same as the very first mount.
+         */
+        "conversation_id"?: string;
+        /**
           * Display copy action for assistant messages
           * @default true
          */
@@ -7362,6 +7366,10 @@ declare namespace LocalJSX {
          */
         "chatbot_title"?: string;
         /**
+          * Identifies the current conversation. Change this when the consumer switches to a different saved conversation while this thread stays mounted (e.g. picking another chat from a history sidebar) so its messages are treated as history rather than live/new — otherwise every message in that conversation's history would incorrectly replay the intro animation on load, same as the very first mount.
+         */
+        "conversation_id"?: string;
+        /**
           * Display copy action for assistant messages
           * @default true
          */
@@ -9033,6 +9041,7 @@ declare namespace LocalJSX {
         "enable_copy": boolean;
         "enable_edit": boolean;
         "response_animation": AtPromptResponseAnimation;
+        "conversation_id": string;
     }
     interface AtRadioAttributes {
         "label": string;

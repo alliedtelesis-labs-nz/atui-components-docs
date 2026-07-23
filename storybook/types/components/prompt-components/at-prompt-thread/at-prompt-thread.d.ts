@@ -43,6 +43,15 @@ export declare class AtPromptThread {
      */
     response_animation: AtPromptResponseAnimation;
     /**
+     * Identifies the current conversation. Change this when the consumer
+     * switches to a different saved conversation while this thread stays
+     * mounted (e.g. picking another chat from a history sidebar) so its
+     * messages are treated as history rather than live/new — otherwise
+     * every message in that conversation's history would incorrectly
+     * replay the intro animation on load, same as the very first mount.
+     */
+    conversation_id?: string;
+    /**
      * Emitted when a message copy action is requested
      */
     atThreadMessageCopy: EventEmitter<{
@@ -73,6 +82,32 @@ export declare class AtPromptThread {
      * @slot messages - Custom message content (alternative to using the messages prop)
      */
     private scrollContainer;
+    /** IDs present when the current conversation's history was loaded — these never animate. */
+    private initialMessageIds;
+    /**
+     * IDs that are allowed to play the intro animation, sticky for the
+     * component's lifetime once granted. A message keeps streaming in
+     * across several `messages` updates (same id, growing content) — if
+     * "new" were re-evaluated as "not in initialMessageIds" on every
+     * update instead of recorded once, only the first chunk would animate
+     * and every later chunk of the same message would flip back to 'fade'.
+     */
+    private animatableMessageIds;
+    /**
+     * Starts `true`: the first `messages` this component ever sees should
+     * be treated as history, not just whatever `componentWillLoad` finds.
+     * In practice `messages` is populated via a property set *after* mount
+     * (an Angular binding, a $eval in tests, etc.), not as an HTML
+     * attribute present before the component upgrades — so by the time
+     * componentWillLoad runs, `this.messages` is almost always still the
+     * default `[]`. Consumed by the first `handleMessagesChange` firing;
+     * re-armed by handleConversationIdChange when the consumer switches to
+     * a different saved conversation while this thread stays mounted.
+     */
+    private pendingHistoryReset;
+    componentWillLoad(): void;
+    handleConversationIdChange(): void;
+    handleMessagesChange(newMessages: AtIPromptMessage[]): void;
     componentDidUpdate(): void;
     /**
      * Scrolls the thread to the bottom with smooth animation

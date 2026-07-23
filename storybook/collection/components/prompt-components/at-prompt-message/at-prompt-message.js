@@ -99,57 +99,95 @@ export class AtPromptMessage {
     copyFeedbackVisible = false;
     animatedContent = '';
     isAnimating = false;
+    /** Full content already queued/animated, so a later update can tell
+     *  whether it's just streamed-in more text or is a different message. */
+    animationTargetContent = '';
+    pendingWords = [];
+    animationTimer;
     errorEl;
     el;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
         this.initializeContent();
     }
+    disconnectedCallback() {
+        clearTimeout(this.animationTimer);
+    }
     watchContentChange(newContent) {
         if (newContent &&
             this.response_animation === 'words' &&
             this.role === 'assistant') {
-            this.startWordAnimation(newContent);
+            this.queueWordAnimation(newContent);
         }
         else {
-            this.animatedContent = newContent;
+            this.resetAnimationState(newContent ?? '');
         }
     }
     initializeContent() {
         if (this.content &&
             this.response_animation === 'words' &&
             this.role === 'assistant') {
-            this.startWordAnimation(this.content);
+            this.queueWordAnimation(this.content);
         }
         else {
-            this.animatedContent = this.content;
+            this.resetAnimationState(this.content ?? '');
         }
     }
-    startWordAnimation(content) {
-        if (this.isAnimating)
-            return;
-        this.isAnimating = true;
-        this.animatedContent = '';
-        const words = content.split(' ');
-        let currentWordIndex = 0;
-        const animateNextWord = () => {
-            if (currentWordIndex < words.length) {
-                if (currentWordIndex === 0) {
-                    this.animatedContent = words[currentWordIndex];
-                }
-                else {
-                    this.animatedContent += ' ' + words[currentWordIndex];
-                }
-                currentWordIndex++;
-                const delay = Math.random() * 30 + 30;
-                setTimeout(animateNextWord, delay);
-            }
-            else {
-                this.isAnimating = false;
-            }
-        };
-        setTimeout(animateNextWord, 30);
+    resetAnimationState(content) {
+        clearTimeout(this.animationTimer);
+        this.isAnimating = false;
+        this.pendingWords = [];
+        this.animationTargetContent = content;
+        this.animatedContent = content;
     }
+    /**
+     * Queue `content`'s words for the word-by-word reveal. Streaming content
+     * grows by appending to what's already shown (see
+     * `ChatbotConversationStore.handleCompletionChunk`), so when `content`
+     * extends `animationTargetContent`, only the newly arrived words are
+     * queued onto the existing animation instead of restarting it from
+     * scratch. This also fixes a dropped-update bug: previously a content
+     * change that arrived while `isAnimating` was still settling from the
+     * prior word was silently ignored (`startWordAnimation` returned early),
+     * permanently freezing the display. Queuing onto shared, instance-level
+     * state instead of a per-call closure means a fresh token always gets
+     * picked up, whether or not a word is already mid-animation.
+     */
+    queueWordAnimation(content) {
+        const isExtension = content.startsWith(this.animationTargetContent);
+        const newSuffix = isExtension
+            ? content.slice(this.animationTargetContent.length)
+            : content;
+        if (!isExtension) {
+            this.animatedContent = '';
+            this.pendingWords = [];
+        }
+        this.animationTargetContent = content;
+        if (newSuffix !== '') {
+            this.pendingWords.push(...newSuffix.split(' ').filter((word) => word !== ''));
+        }
+        if (!this.isAnimating && this.pendingWords.length > 0) {
+            this.isAnimating = true;
+            this.animationTimer = setTimeout(this.animateNextWord, 30);
+        }
+    }
+    animateNextWord = () => {
+        const nextWord = this.pendingWords.shift();
+        if (nextWord === undefined) {
+            this.isAnimating = false;
+            return;
+        }
+        this.animatedContent = this.animatedContent
+            ? `${this.animatedContent} ${nextWord}`
+            : nextWord;
+        if (this.pendingWords.length > 0) {
+            const delay = Math.random() * 30 + 30;
+            this.animationTimer = setTimeout(this.animateNextWord, delay);
+        }
+        else {
+            this.isAnimating = false;
+        }
+    };
     handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(this.content);
@@ -223,7 +261,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'e31a9d66097e52fb7359c109d4ceeabb63daf530', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '8dc70dc72725dc8443479161ab02dbc093089940', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '629a5e13bdc45c4acda42736ab3fb5087257448a', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '5dc190ff7ea604d334f4e7e9ea6f190d8c692330', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '915869d59a90ff397e07d53689696e3adfd783c7', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'b50b187bfe164986c5b912834aabb869adbcdf3b', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'c0fee9657e94a2634640326dd710a6f90dc276d1', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'b2b11f47dca6e17de4fe763cde6aa8ce505f9c91', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {

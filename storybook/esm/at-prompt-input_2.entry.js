@@ -238,6 +238,15 @@ const AtPromptThread = class {
      */
     response_animation = 'words';
     /**
+     * Identifies the current conversation. Change this when the consumer
+     * switches to a different saved conversation while this thread stays
+     * mounted (e.g. picking another chat from a history sidebar) so its
+     * messages are treated as history rather than live/new — otherwise
+     * every message in that conversation's history would incorrectly
+     * replay the intro animation on load, same as the very first mount.
+     */
+    conversation_id;
+    /**
      * Emitted when a message copy action is requested
      */
     atThreadMessageCopy;
@@ -257,6 +266,56 @@ const AtPromptThread = class {
      * @slot messages - Custom message content (alternative to using the messages prop)
      */
     scrollContainer;
+    /** IDs present when the current conversation's history was loaded — these never animate. */
+    initialMessageIds = new Set();
+    /**
+     * IDs that are allowed to play the intro animation, sticky for the
+     * component's lifetime once granted. A message keeps streaming in
+     * across several `messages` updates (same id, growing content) — if
+     * "new" were re-evaluated as "not in initialMessageIds" on every
+     * update instead of recorded once, only the first chunk would animate
+     * and every later chunk of the same message would flip back to 'fade'.
+     */
+    animatableMessageIds = new Set();
+    /**
+     * Starts `true`: the first `messages` this component ever sees should
+     * be treated as history, not just whatever `componentWillLoad` finds.
+     * In practice `messages` is populated via a property set *after* mount
+     * (an Angular binding, a $eval in tests, etc.), not as an HTML
+     * attribute present before the component upgrades — so by the time
+     * componentWillLoad runs, `this.messages` is almost always still the
+     * default `[]`. Consumed by the first `handleMessagesChange` firing;
+     * re-armed by handleConversationIdChange when the consumer switches to
+     * a different saved conversation while this thread stays mounted.
+     */
+    pendingHistoryReset = true;
+    componentWillLoad() {
+        // Covers the less common case where `messages` is already populated
+        // by the time this runs (e.g. set synchronously before the element
+        // connects). If it's still empty here (the common case), leave
+        // pendingHistoryReset armed for handleMessagesChange to consume
+        // whenever the real history actually arrives.
+        if (this.messages.length > 0) {
+            this.pendingHistoryReset = false;
+            this.initialMessageIds = new Set(this.messages.map((m) => m.id));
+        }
+    }
+    handleConversationIdChange() {
+        this.pendingHistoryReset = true;
+    }
+    handleMessagesChange(newMessages) {
+        if (this.pendingHistoryReset) {
+            this.pendingHistoryReset = false;
+            this.animatableMessageIds.clear();
+            this.initialMessageIds = new Set(newMessages.map((m) => m.id));
+            return;
+        }
+        newMessages.forEach((message) => {
+            if (!this.initialMessageIds.has(message.id)) {
+                this.animatableMessageIds.add(message.id);
+            }
+        });
+    }
     componentDidUpdate() {
         if (this.auto_scroll && this.scrollContainer) {
             this.scrollToBottom();
@@ -357,7 +416,13 @@ const AtPromptThread = class {
         const name = message.role === 'user'
             ? message.name
             : message.name || this.chatbot_title;
-        const animate = message.role === 'assistant' ? this.response_animation : 'fade';
+        // Only messages that arrived after the conversation's history was
+        // loaded (see handleMessagesChange) get the intro animation — a
+        // history load should render in immediately, not replay word-by-word.
+        const animate = message.role === 'assistant' &&
+            this.animatableMessageIds.has(message.id)
+            ? this.response_animation
+            : 'fade';
         return (h("at-prompt-message", { role: role, content: message.content, name: name, loading: message.loading, error: message.error, error_message: message.error_message, score: message.score || AtPromptResponseScore.NONE, message_id: message.id, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: animate, "data-name": `message-${index}`, "data-message-index": index }));
     }
     renderMessages() {
@@ -365,8 +430,16 @@ const AtPromptThread = class {
     }
     render() {
         const hasMessages = this.messages && this.messages.length > 0;
-        return (h(Host, { key: '81e470ab7e84f1e8f52edd669a69d6c0b186ccfe', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'e27dffe5778fc48296fd05c75c20941078891da2', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '52cd50b6cfc6c830d0338e61ca46bc90d65d4a17', name: "thread-messages" }))));
+        return (h(Host, { key: '7b47a2c564b3952f261c060be33e6d00e2a855da', class: "block h-full", "data-name": "thread-container" }, h("div", { key: 'fb3f6e1dd6b9e60e361782c5e83ff6b8b69344f4', class: "flex h-full flex-col gap-16 overflow-y-auto scroll-smooth", ref: (el) => (this.scrollContainer = el), "data-name": "scroll-container" }, !hasMessages ? (h("slot", { name: "thread-empty-state" })) : (h("div", { "data-name": "thread-messages-container", class: "flex flex-col gap-16" }, this.renderMessages(), this.renderLoadingIndicator())), h("slot", { key: '22a2103aa616fa8fa42146955cefeb99da0563c4', name: "thread-messages" }))));
     }
+    static get watchers() { return {
+        "conversation_id": [{
+                "handleConversationIdChange": 0
+            }],
+        "messages": [{
+                "handleMessagesChange": 0
+            }]
+    }; }
 };
 
 export { AtPromptInputComponent as at_prompt_input, AtPromptThread as at_prompt_thread };

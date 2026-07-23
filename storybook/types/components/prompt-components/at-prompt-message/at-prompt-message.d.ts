@@ -80,12 +80,33 @@ export declare class AtPromptMessage {
     copyFeedbackVisible: boolean;
     animatedContent: string;
     isAnimating: boolean;
+    /** Full content already queued/animated, so a later update can tell
+     *  whether it's just streamed-in more text or is a different message. */
+    private animationTargetContent;
+    private pendingWords;
+    private animationTimer?;
     errorEl: HTMLDivElement;
     el: HTMLAtInputElement;
     componentWillLoad(): Promise<void>;
+    disconnectedCallback(): void;
     watchContentChange(newContent: string): void;
     private initializeContent;
-    private startWordAnimation;
+    private resetAnimationState;
+    /**
+     * Queue `content`'s words for the word-by-word reveal. Streaming content
+     * grows by appending to what's already shown (see
+     * `ChatbotConversationStore.handleCompletionChunk`), so when `content`
+     * extends `animationTargetContent`, only the newly arrived words are
+     * queued onto the existing animation instead of restarting it from
+     * scratch. This also fixes a dropped-update bug: previously a content
+     * change that arrived while `isAnimating` was still settling from the
+     * prior word was silently ignored (`startWordAnimation` returned early),
+     * permanently freezing the display. Queuing onto shared, instance-level
+     * state instead of a per-call closure means a fresh token always gets
+     * picked up, whether or not a word is already mid-animation.
+     */
+    private queueWordAnimation;
+    private animateNextWord;
     private handleCopy;
     private handleRetry;
     private handleEdit;
