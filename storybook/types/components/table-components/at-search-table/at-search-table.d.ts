@@ -124,6 +124,11 @@ export declare class AtSearchTable {
     pageSize: number;
     showLoadingOverlay: boolean;
     private loadingTimer;
+    /**
+     * Guards the initial server-side `atSearchParamsChange` emit so it fires
+     * exactly once, whichever lifecycle first sees the grid and columns ready.
+     */
+    private hasEmittedInitialServerParams;
     tableEl: HTMLAtTableElement;
     get shouldShowDropdownFilters(): boolean;
     get shouldShowColumnManager(): boolean;
@@ -138,6 +143,21 @@ export declare class AtSearchTable {
     componentWillLoad(): Promise<void>;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
+    /**
+     * Emits the initial server-side search params exactly once, as soon as both
+     * the ag-grid instance exists and column defs are available.
+     *
+     * This emit is what triggers the consumer's first data fetch. It previously
+     * lived inline in `componentDidLoad` and only fired if the grid happened to
+     * be built by that point. When `col_defs` (or `server_side_mode`) is applied
+     * a tick late - e.g. a consumer binding them from async or zoneless change
+     * detection - the grid is instead created in a later `componentDidUpdate`,
+     * which never emitted, so the initial fetch never ran and the table stayed
+     * empty until the user searched or sorted. Driving the emit from both
+     * lifecycles (guarded by `hasEmittedInitialServerParams`) makes it robust to
+     * whichever tick the grid and columns become ready.
+     */
+    private emitInitialServerParamsIfReady;
     /**
      * Updates the data of rows in the AG Grid based on their displayed row index.
      *
