@@ -16,13 +16,21 @@ export declare class AtTablePagination {
      */
     num_pages: number;
     /**
-     * Options provided in dropdown for page sizes.
+     * Options provided in dropdown for page sizes. When omitted a standard set
+     * is used.
      */
-    page_size_options: AtISelectOption[];
+    page_size_options?: AtISelectOption[];
     /**
      * The number of table rows displayed per page
      */
     page_size: number;
+    /**
+     * The options actually rendered in the selector: the provided (or default)
+     * options, with the active `page_size` guaranteed to be present so the
+     * selected value always matches the number of rows loaded — even when it
+     * isn't one of the listed steps.
+     */
+    private get resolvedPageSizeOptions();
     /**
      * Emits event with ```event.detail``` as the new page number
      */

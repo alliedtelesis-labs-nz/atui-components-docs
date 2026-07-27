@@ -2380,6 +2380,10 @@ export namespace Components {
          */
         "page_size"?: number;
         /**
+          * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
+         */
+        "page_size_options"?: AtISelectOption[];
+        /**
           * Hint text displayed below the search label.
          */
         "search_hint": string;
@@ -2965,14 +2969,13 @@ export namespace Components {
         "num_pages": number;
         /**
           * The number of table rows displayed per page
-          * @default 10
+          * @default 20
          */
         "page_size": number;
         /**
-          * Options provided in dropdown for page sizes.
-          * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
+          * Options provided in dropdown for page sizes. When omitted a standard set is used.
          */
-        "page_size_options": AtISelectOption[];
+        "page_size_options"?: AtISelectOption[];
     }
     /**
      * ### interface Tab
@@ -7643,6 +7646,10 @@ declare namespace LocalJSX {
          */
         "page_size"?: number;
         /**
+          * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
+         */
+        "page_size_options"?: AtISelectOption[];
+        /**
           * Hint text displayed below the search label.
          */
         "search_hint"?: string;
@@ -8239,12 +8246,11 @@ declare namespace LocalJSX {
         "onAtPageSizeChange"?: (event: AtTablePaginationCustomEvent<number>) => void;
         /**
           * The number of table rows displayed per page
-          * @default 10
+          * @default 20
          */
         "page_size"?: number;
         /**
-          * Options provided in dropdown for page sizes.
-          * @default [         { value: '5' },         { value: '10' },         { value: '20' },         { value: '50' },         { value: '100' },     ]
+          * Options provided in dropdown for page sizes. When omitted a standard set is used.
          */
         "page_size_options"?: AtISelectOption[];
     }

@@ -197,6 +197,13 @@ const AtTableFilters = class {
     }
 };
 
+const DEFAULT_PAGE_SIZE_OPTIONS = [
+    { value: '5' },
+    { value: '10' },
+    { value: '20' },
+    { value: '50' },
+    { value: '100' },
+];
 const AtTablePagination = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -212,19 +219,28 @@ const AtTablePagination = class {
      */
     num_pages = 1;
     /**
-     * Options provided in dropdown for page sizes.
+     * Options provided in dropdown for page sizes. When omitted a standard set
+     * is used.
      */
-    page_size_options = [
-        { value: '5' },
-        { value: '10' },
-        { value: '20' },
-        { value: '50' },
-        { value: '100' },
-    ];
+    page_size_options;
     /**
      * The number of table rows displayed per page
      */
-    page_size = 10;
+    page_size = 20;
+    /**
+     * The options actually rendered in the selector: the provided (or default)
+     * options, with the active `page_size` guaranteed to be present so the
+     * selected value always matches the number of rows loaded — even when it
+     * isn't one of the listed steps.
+     */
+    get resolvedPageSizeOptions() {
+        const base = this.page_size_options && this.page_size_options.length > 0
+            ? this.page_size_options
+            : DEFAULT_PAGE_SIZE_OPTIONS;
+        return base.some((option) => Number(option.value) === this.page_size)
+            ? base
+            : [...base, { value: String(this.page_size) }].sort((a, b) => Number(a.value) - Number(b.value));
+    }
     /**
      * Emits event with ```event.detail``` as the new page number
      */
@@ -234,7 +250,7 @@ const AtTablePagination = class {
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: '41d201a141a341e98804b69e63623707287cf3b4', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '3123ed776da6315b7e85a2066bc9715ac59eff8b' }, "Page Size: "), h("at-select", { key: '61dd69481cb536a304cf0daefeba72c451241f6f', options: this.page_size_options, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '8b8347cbfa23ff1a49044b64a479205471bbdc12', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '7b422e56394e16803d7202f9a261763ac9aa4dee', slot: "icon", name: "first_page" })), h("at-button", { key: '17dfce184136463c53d82c0c69ee7547c4ed14de', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: '8ef7077b577bdf778880f8537afc2adcfa82bf25', slot: "icon", name: "chevron_left" })), h("span", { key: '963869642e7677ae793127a3afbfbd7ac41854bf' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '827e08c46959b6d67181b1b5833d6ac70d8fce0b', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: 'd3adfb182eb090fdafe30da0bcc4a58bc73a9237', slot: "icon", name: "chevron_right" })), h("at-button", { key: '5f68b8a2ee1a667aa81408190a76ec73b5d11c04', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: '800d4d91abd574cfe20384acc9de43fae8808092', slot: "icon", name: "last_page" }))));
+        return (h(Host, { key: 'c1a81114b95efa15bd7dc3cf786b859aee32d74b', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '6e6aa929f5ce38980d8057b8185e0b9a78df36cd' }, "Page Size: "), h("at-select", { key: '0c771d68632ecbe4b5b49298e88ffeff59b88142', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '769511251120d4f490acdb9070175b3569da8bec', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '0062696bdbf087cf9b151869af9a83b747259391', slot: "icon", name: "first_page" })), h("at-button", { key: 'dcdfc42b5097221796310c085b71328aa5e3b49f', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: '05e35f08b2b7c76a6e26812007c750eaefed8bd4', slot: "icon", name: "chevron_left" })), h("span", { key: '83d382580f3fa22afb27b28723db6c7bec80b565' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: 'c97368d2b28cf6c78726a57d6996fa021b365eca', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: 'a596e4694a6cd4b4e0856cbaba6a18a0dc62e138', slot: "icon", name: "chevron_right" })), h("at-button", { key: '51afe062d6b73a52aea68dce7e2ecd95a5d9da58', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: 'ea321022a8255fe131d9db3ddc374df1d0934c29', slot: "icon", name: "last_page" }))));
     }
 };
 

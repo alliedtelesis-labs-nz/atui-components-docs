@@ -1,6 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
 import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams } from '../../../types';
+import { AtISelectOption } from '../../../types/select';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -47,6 +48,12 @@ export declare class AtSearchTable {
      * Default page size of the table
      */
     page_size?: number;
+    /**
+     * Options offered in the pagination page-size selector. When omitted a
+     * standard set is used. The currently active page size is always included
+     * so the selector reflects the number of rows actually being loaded.
+     */
+    page_size_options?: AtISelectOption[];
     /**
      * If true the table dropdown filters will not be added
      */
@@ -135,6 +142,7 @@ export declare class AtSearchTable {
     get totalPages(): number;
     get hasNoData(): boolean;
     get hasActiveSearch(): boolean;
+    handlePageSizeProp(newValue?: number): void;
     handleSelectedFiltersChange(newValue: {
         id: string;
         value: string;
