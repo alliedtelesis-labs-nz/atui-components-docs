@@ -290,7 +290,7 @@ export namespace Components {
          */
         "is_active"?: boolean;
         /**
-          * Label for the breadcrumb item
+          * Label for the breadcrumb item. Rendered verbatim — no casing transform is applied, so identifiers such as `AT-x550-hq-01` keep their exact casing.
          */
         "label": string;
     }
@@ -5457,7 +5457,7 @@ declare namespace LocalJSX {
          */
         "is_active"?: boolean;
         /**
-          * Label for the breadcrumb item
+          * Label for the breadcrumb item. Rendered verbatim — no casing transform is applied, so identifiers such as `AT-x550-hq-01` keep their exact casing.
          */
         "label": string;
     }

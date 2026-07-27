@@ -11,12 +11,12 @@ const AtBreadcrumbItem = class {
      */
     is_active;
     /**
-     * Label for the breadcrumb item
+     * Label for the breadcrumb item. Rendered verbatim — no casing transform is applied, so identifiers such as `AT-x550-hq-01` keep their exact casing.
      */
     label;
     get el() { return index.getElement(this); }
     render() {
-        return (index.h(index.Host, { key: '5208a90163efb39f4f091b78168136528df0aed3', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2 capitalize" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 capitalize transition-colors hover:underline" }, this.label))));
+        return (index.h(index.Host, { key: '266f09e955b64064fd2f61b70b65b4ad9412489f', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2" }, this.label)) : (index.h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 transition-colors hover:underline" }, this.label))));
     }
 };
 
