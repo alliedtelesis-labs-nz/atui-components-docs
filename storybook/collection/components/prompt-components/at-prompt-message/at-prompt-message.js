@@ -21,7 +21,7 @@ const messageVariantsConfig = {
         loading: false,
     },
 };
-const getMessageClasses = classlist('rounded-lg py-4 text-base', messageVariantsConfig);
+const getMessageClasses = classlist('rounded-lg py-4 text-base richtext', messageVariantsConfig);
 /**
  * @category Prompt
  * @description A message component for displaying individual chat messages with different roles (user, assistant). Supports optional avatars, loading states, error states, and interactive actions like copy, edit, and retry. Assistant messages support markdown rendering and word-by-word animation.
@@ -261,7 +261,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '915869d59a90ff397e07d53689696e3adfd783c7', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'b50b187bfe164986c5b912834aabb869adbcdf3b', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'c0fee9657e94a2634640326dd710a6f90dc276d1', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'b2b11f47dca6e17de4fe763cde6aa8ce505f9c91', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '3e406624bdcc5d5bc7fb28950e8472110ae66bc8', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '107cfad9cc6b1392c0cf417b1951c160b85d0108', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '293e2e3c71ecb64661f386bc62d34689664bb1f5', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'ae516f0682bf3c8fd60df539c80a9813817cd299', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {
