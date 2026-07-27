@@ -17,7 +17,10 @@ export declare class AtBadgeComponent {
      */
     type: AtBadgeType;
     /**
-     * Size of the badge. Determines padding and font-size. For use in input chip lists.
+     * Size of the badge. Determines padding and font-size. `sm` is the default and suits
+     * dense product UI — page/entity headers, summary and list rows, table status cells.
+     * Use `lg` for input chip lists, where the badge is an interactive control rather than
+     * a status marker.
      */
     size: AtBadgeSize;
     /**

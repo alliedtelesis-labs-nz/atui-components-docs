@@ -5,12 +5,17 @@ const Template = (args) => `
     ${args.rounded ? 'rounded' : ''}
     impact="${args.impact ?? 'low'}"
     type="${args.type ?? 'default'}"
+    size="${args.size ?? 'sm'}"
 >
     <at-icon slot="icon" name="${args.icon ?? ''}"></at-icon>
 </at-badge>`;
 export default {
     title: 'Components/Badge',
     argTypes: {
+        size: {
+            options: ['sm', 'lg'],
+            control: { type: 'radio' },
+        },
         impact: {
             options: ['low', 'high'],
             control: { type: 'radio' },
@@ -36,6 +41,7 @@ Default.args = {
     rounded: false,
     impact: 'low',
     type: 'default',
+    size: 'sm',
 };
 export const Info = Template.bind({});
 Info.args = {

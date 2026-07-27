@@ -39,9 +39,12 @@ const AtBadgeComponent = class {
      */
     type = 'default';
     /**
-     * Size of the badge. Determines padding and font-size. For use in input chip lists.
+     * Size of the badge. Determines padding and font-size. `sm` is the default and suits
+     * dense product UI — page/entity headers, summary and list rows, table status cells.
+     * Use `lg` for input chip lists, where the badge is an interactive control rather than
+     * a status marker.
      */
-    size = 'lg';
+    size = 'sm';
     /**
      * Impact of the badge, changes the colours.
      */
@@ -60,7 +63,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '4d983c0ee1187ba2ff4d5e13c852ee4231120316', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: 'e47a45b3e9adbfcbc10059aabb50a778f4c381bf', name: "icon" }), h("span", { key: 'e851f2a27f98a158f0da4ee90ab688598cd6d26f', "data-name": "badge-label" }, this.label), h("slot", { key: 'b632b87f1063751b233f97482bb6ed1ffc1f6bae' })));
+        return (h(Host, { key: '52e86e8280e01e6fadc6b3ce0213e6d14e7b2b4a', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: 'c13636beffbde21ba7f6f9b1ae84ce77e1b7dbdb', name: "icon" }), h("span", { key: 'bd034cdff9f6a098732ebacb3c04cfd43f0d30f2', "data-name": "badge-label" }, this.label), h("slot", { key: 'e1d4a1c572dc6a3b538e44c62d12c2e3e07803f8' })));
     }
 };
 
