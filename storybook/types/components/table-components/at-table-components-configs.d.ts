@@ -15,6 +15,7 @@ import { AtMultiBtnCell } from './cell-components/at-multi-btn-cell/at-multi-btn
 import { AtColorStatusCell } from './cell-components/at-color-status-cell/at-color-status-cell';
 import { AtTextImageCell } from './cell-components/at-text-image-cell/at-text-image-cell';
 import { AtMenuCell } from './cell-components/at-menu-cell/at-menu-cell';
+import { AtProgressBarCell } from './cell-components/at-progress-bar-cell/at-progress-bar-cell';
 export declare class AtTableComponentsConfigs {
     static readonly defaultPageSize = 10;
     private static cellComponentsLoaded;
@@ -46,6 +47,7 @@ export declare class AtTableComponentsConfigs {
         AtColorStatusCell: typeof AtColorStatusCell;
         AtTextImageCell: typeof AtTextImageCell;
         AtMenuCell: typeof AtMenuCell;
+        AtProgressBarCell: typeof AtProgressBarCell;
     };
     /**
      * Force reset the loading state (useful for testing)

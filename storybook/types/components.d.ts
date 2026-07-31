@@ -1921,6 +1921,12 @@ export namespace Components {
         "type"?: AtProgressBarType;
     }
     /**
+     * @category Data Tables
+     * @description A cell component for displaying capacity usage as a progress bar with a percentage label. Derives its colour from usage thresholds, so a full or over-subscribed row reads as at-risk without the user comparing numbers.
+     */
+    interface AtProgressBarCell {
+    }
+    /**
      * @category Prompt
      * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.
      */
@@ -4376,6 +4382,16 @@ declare global {
         prototype: HTMLAtProgressBarElement;
         new (): HTMLAtProgressBarElement;
     };
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying capacity usage as a progress bar with a percentage label. Derives its colour from usage thresholds, so a full or over-subscribed row reads as at-risk without the user comparing numbers.
+     */
+    interface HTMLAtProgressBarCellElement extends Components.AtProgressBarCell, HTMLStencilElement {
+    }
+    var HTMLAtProgressBarCellElement: {
+        prototype: HTMLAtProgressBarCellElement;
+        new (): HTMLAtProgressBarCellElement;
+    };
     interface HTMLAtPromptContainerElementEventMap {
         "atSubmit": string;
         "atStop": void;
@@ -5251,6 +5267,7 @@ declare global {
         "at-multi-select": HTMLAtMultiSelectElement;
         "at-placeholder": HTMLAtPlaceholderElement;
         "at-progress-bar": HTMLAtProgressBarElement;
+        "at-progress-bar-cell": HTMLAtProgressBarCellElement;
         "at-prompt-container": HTMLAtPromptContainerElement;
         "at-prompt-input": HTMLAtPromptInputElement;
         "at-prompt-message": HTMLAtPromptMessageElement;
@@ -7101,6 +7118,12 @@ declare namespace LocalJSX {
           * @default 'info'
          */
         "type"?: AtProgressBarType;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying capacity usage as a progress bar with a percentage label. Derives its colour from usage thresholds, so a full or over-subscribed row reads as at-risk without the user comparing numbers.
+     */
+    interface AtProgressBarCell {
     }
     /**
      * @category Prompt
@@ -9324,6 +9347,7 @@ declare namespace LocalJSX {
         "at-multi-select": Omit<AtMultiSelect, keyof AtMultiSelectAttributes> & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes]?: AtMultiSelect[K] } & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes as `attr:${K}`]?: AtMultiSelectAttributes[K] } & { [K in keyof AtMultiSelect & keyof AtMultiSelectAttributes as `prop:${K}`]?: AtMultiSelect[K] };
         "at-placeholder": Omit<AtPlaceholder, keyof AtPlaceholderAttributes> & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes]?: AtPlaceholder[K] } & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes as `attr:${K}`]?: AtPlaceholderAttributes[K] } & { [K in keyof AtPlaceholder & keyof AtPlaceholderAttributes as `prop:${K}`]?: AtPlaceholder[K] };
         "at-progress-bar": Omit<AtProgressBar, keyof AtProgressBarAttributes> & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes]?: AtProgressBar[K] } & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes as `attr:${K}`]?: AtProgressBarAttributes[K] } & { [K in keyof AtProgressBar & keyof AtProgressBarAttributes as `prop:${K}`]?: AtProgressBar[K] };
+        "at-progress-bar-cell": AtProgressBarCell;
         "at-prompt-container": Omit<AtPromptContainer, keyof AtPromptContainerAttributes> & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes]?: AtPromptContainer[K] } & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes as `attr:${K}`]?: AtPromptContainerAttributes[K] } & { [K in keyof AtPromptContainer & keyof AtPromptContainerAttributes as `prop:${K}`]?: AtPromptContainer[K] };
         "at-prompt-input": Omit<AtPromptInput, keyof AtPromptInputAttributes> & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes]?: AtPromptInput[K] } & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes as `attr:${K}`]?: AtPromptInputAttributes[K] } & { [K in keyof AtPromptInput & keyof AtPromptInputAttributes as `prop:${K}`]?: AtPromptInput[K] };
         "at-prompt-message": Omit<AtPromptMessage, keyof AtPromptMessageAttributes> & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes]?: AtPromptMessage[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `attr:${K}`]?: AtPromptMessageAttributes[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `prop:${K}`]?: AtPromptMessage[K] };
@@ -9654,6 +9678,11 @@ declare module "@stencil/core" {
              * @description A progress bar component for displaying percentage values or progress loading, with customizable colors and sizes.
              */
             "at-progress-bar": LocalJSX.IntrinsicElements["at-progress-bar"] & JSXBase.HTMLAttributes<HTMLAtProgressBarElement>;
+            /**
+             * @category Data Tables
+             * @description A cell component for displaying capacity usage as a progress bar with a percentage label. Derives its colour from usage thresholds, so a full or over-subscribed row reads as at-risk without the user comparing numbers.
+             */
+            "at-progress-bar-cell": LocalJSX.IntrinsicElements["at-progress-bar-cell"] & JSXBase.HTMLAttributes<HTMLAtProgressBarCellElement>;
             /**
              * @category Prompt
              * @description A complete conversational interface container that combines a message thread, input field, and header. Provides a full-featured chat experience with message management, threading, and customizable UI elements.

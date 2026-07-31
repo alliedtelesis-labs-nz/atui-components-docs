@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-e0g5edej.js');
+var index = require('./index-COV7xI6A.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {
@@ -108,11 +108,11 @@ const AtTextareaComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h(index.Host, { key: '5b75bf1cd36c49ff7a2f19487a30238eb32d0171' }, index.h("div", { key: 'fb2a43a930d3e1f3b5778cffc2606577ec137c34', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: 'f0661140dab18621c99cbd8b068458e60bdbfb36', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '4ac3954be8ecbd6dedb700ab25fd3221d8299c5d', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '88bac5fead109c38c2779f1e26e779ea44193a2a', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), index.h("div", { key: 'f71aadf1063855717a86ee7372bca842970263a6', class: "grid" }, index.h("textarea", { key: 'cda003ba448688bfabcdceb11d263996067c3f82', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), index.h("div", { key: 'd1f69cd6d9ae784764c7cbd02fbc5b7b06c6d523', "data-name": "textarea-resize-container", style: {
+        return (index.h(index.Host, { key: '1464fcc4c8e06dd3cf9bf34e29e44c70df134af8' }, index.h("div", { key: '07ba8b33a442c7055c6df4e66bed41ca7640f369', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '54e4a9005f4bbd7e146dbc70dc03d7802e1813c3', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'df3c0a7313b284b370ec463db24897f60310437a', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '2ebc8683bd0d54a6e09aba4907f9f9a0e315e8ee', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), index.h("div", { key: 'ebabd0f4beb93c1cdb5f65e4c74178ee601ce912', class: "grid" }, index.h("textarea", { key: '89aab2fcf4473bf23cb6056b72771d862c968e5e', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), index.h("div", { key: '92af81efa1598af7afd6e2657d6e62099a96e4a2', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] break-all whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (index.h("span", { key: 'f3ad40c1a21fb3e06c79408960bfa8c23e0ac10f', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] break-all whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (index.h("span", { key: '2481d9a513475382c4a8c105ffd643b6375fd4d8', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
 };
 

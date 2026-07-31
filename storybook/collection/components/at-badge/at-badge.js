@@ -65,7 +65,7 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '52e86e8280e01e6fadc6b3ce0213e6d14e7b2b4a', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: 'c13636beffbde21ba7f6f9b1ae84ce77e1b7dbdb', name: "icon" }), h("span", { key: 'bd034cdff9f6a098732ebacb3c04cfd43f0d30f2', "data-name": "badge-label" }, this.label), h("slot", { key: 'e1d4a1c572dc6a3b538e44c62d12c2e3e07803f8' })));
+        return (h(Host, { key: 'cfec8c29679f8bb3be483223911022a1e4d01d87', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: 'c6d91a733fd15dd366ce16a8ea2af6a675c9b231', name: "icon" }), h("span", { key: '8d336511ddb70a82e7d2eb33c40e1b4d36221d2e', "data-name": "badge-label" }, this.label), h("slot", { key: '3e93a11f3a088c3daef66ff580b001c19d1c8ba3' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {

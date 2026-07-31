@@ -20,6 +20,7 @@ export var AvailableCells;
     AvailableCells["COLOR_STATUS_CELL"] = "AtColorStatusCell";
     AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtTextImageCell";
     AvailableCells["MENU_CELL"] = "AtMenuCell";
+    AvailableCells["PROGRESS_BAR_CELL"] = "AtProgressBarCell";
 })(AvailableCells || (AvailableCells = {}));
 export var AvailableHeaders;
 (function (AvailableHeaders) {

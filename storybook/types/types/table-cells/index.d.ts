@@ -21,7 +21,8 @@ export declare enum AvailableCells {
     MULTI_BTN_CELL = "AtMultiBtnCell",
     COLOR_STATUS_CELL = "AtColorStatusCell",
     TEXT_WITH_IMAGE_CELL = "AtTextImageCell",
-    MENU_CELL = "AtMenuCell"
+    MENU_CELL = "AtMenuCell",
+    PROGRESS_BAR_CELL = "AtProgressBarCell"
 }
 export declare enum AvailableHeaders {
     CHECKBOX_HEADER = "checkboxHeader",

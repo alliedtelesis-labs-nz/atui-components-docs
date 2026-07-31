@@ -16,6 +16,7 @@ import { AtMultiBtnCell } from "./cell-components/at-multi-btn-cell/at-multi-btn
 import { AtColorStatusCell } from "./cell-components/at-color-status-cell/at-color-status-cell";
 import { AtTextImageCell } from "./cell-components/at-text-image-cell/at-text-image-cell";
 import { AtMenuCell } from "./cell-components/at-menu-cell/at-menu-cell";
+import { AtProgressBarCell } from "./cell-components/at-progress-bar-cell/at-progress-bar-cell";
 export class AtTableComponentsConfigs {
     static defaultPageSize = 10;
     static cellComponentsLoaded = false;
@@ -46,6 +47,7 @@ export class AtTableComponentsConfigs {
                 AtColorStatusCell,
                 AtTextImageCell,
                 AtMenuCell,
+                AtProgressBarCell,
                 AtCheckboxHeaderComponent,
             ];
             // Force reference to prevent tree-shaking
@@ -84,6 +86,7 @@ export class AtTableComponentsConfigs {
             [AvailableCells.COLOR_STATUS_CELL]: AtColorStatusCell,
             [AvailableCells.TEXT_WITH_IMAGE_CELL]: AtTextImageCell,
             [AvailableCells.MENU_CELL]: AtMenuCell,
+            [AvailableCells.PROGRESS_BAR_CELL]: AtProgressBarCell,
         };
     }
     /**

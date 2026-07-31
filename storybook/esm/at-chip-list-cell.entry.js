@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-CFoMekA-.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-m1WDiP3i.js';
 
 const AtChipListCell = class {
     constructor(hostRef) {
@@ -19,7 +19,7 @@ const AtChipListCell = class {
         return true;
     }
     render() {
-        return (h(Host, { key: '7aaf073d27063158f4739ee3f433dd8d6ad09970', class: "flex h-full items-center" }, h("at-chip-list", { key: '257df956d3a792001b6a04c015c4c05f0c6d23bb', chips: this.chips, show_clear_all: false, readonly: true })));
+        return (h(Host, { key: 'ba10f6b2e584f270c50f8baa8b279da3553403b8', class: "flex h-full items-center" }, h("at-chip-list", { key: '13edceb3d8e73d4a109059167c1aa7d5374ef918', chips: this.chips, show_clear_all: false, readonly: true })));
     }
 };
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CFoMekA-.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-m1WDiP3i.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -76,7 +76,7 @@ const AtRadio = class {
             checked: this.checked,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '3c830e6216c8c35abf968645cead3c01ff837c50', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: 'e536308249cb640ad7a6418366fb7aced6da7ad2', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.value, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: '2daafd3dcd8b7cc58491eb6a361cfb4b5f3e5d87', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: '51dc39fb1d5a40c52981187117748a43d06d0734', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: 'db2213a0177e5578f2368a14950a27d576cc7706', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: '232dfdc906385892d608747b4ca61d90efd9b80c' }))));
+        return (h(Host, { key: '4bd3884725b9a52a8118646a05d9d67d6733e1ce', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: '43811b0ccd053a255a2290348859b60176a1ee6f', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.value, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: '2ae882bc45c39d54c72d2c14f1be249b29759fb6', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: '00dc3aa0319b90ff3b33aafe296ca84d9e3d385f', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: '72e74f19ea4e839541f40938ba3f5be128e951c0', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: '070add5496cb329c1285cd2bd73e2e8658853980' }))));
     }
 };
 

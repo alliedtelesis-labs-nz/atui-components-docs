@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CFoMekA-.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-m1WDiP3i.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-BukeUrGZ.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-D288RS7J.js';
 
@@ -558,7 +558,7 @@ const AtChartBreakdown = class {
     }
     render() {
         const showSideText = this.center_value || this.center_text;
-        return (h(Host, { key: '0bd5343c8fa1592061188b179eae430e44a5a6b7', style: {
+        return (h(Host, { key: '4d41121c69b244c99cab9f1db3e1fe31c6fc8423', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -566,24 +566,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '3abf4d6a7b24230bc388d4876cbbdcf773a481de', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '78fca756443ad97af2bd95fe33f29ff3764f942b', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: 'c2f8a047a81311f32f3684a80f7f37392ad21c6e', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: '350a87fb63a3368a438119e12336e264a17ae966', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '66874222ae03217acf5467ae984a567b0da88013', style: {
+            } }, this.center_value && (h("span", { key: '841e255e319440f8dbd4efc55a5e04f15ed51771', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
                 color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (h("span", { key: 'd68c5ab2f520107a2a9b08c7271a7de475906603', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: 'c7dd6cc1461fc90963b02713b6c79c75a5671da1', style: {
                 fontSize: '1rem',
                 color: 'var(--token-text-secondary)',
             } }, this.center_text))))));

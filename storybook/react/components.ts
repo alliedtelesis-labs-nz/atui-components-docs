@@ -60,6 +60,7 @@ import { AtMessage as AtMessageElement, defineCustomElement as defineAtMessage }
 import { AtMultiBtnCell as AtMultiBtnCellElement, defineCustomElement as defineAtMultiBtnCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-multi-btn-cell.js";
 import { AtMultiSelect as AtMultiSelectElement, defineCustomElement as defineAtMultiSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-multi-select.js";
 import { AtPlaceholder as AtPlaceholderElement, defineCustomElement as defineAtPlaceholder } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-placeholder.js";
+import { AtProgressBarCell as AtProgressBarCellElement, defineCustomElement as defineAtProgressBarCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-progress-bar-cell.js";
 import { AtProgressBar as AtProgressBarElement, defineCustomElement as defineAtProgressBar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-progress-bar.js";
 import { AtPromptContainer as AtPromptContainerElement, defineCustomElement as defineAtPromptContainer } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-container.js";
 import { AtPromptInput as AtPromptInputElement, defineCustomElement as defineAtPromptInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-input.js";
@@ -726,6 +727,17 @@ export const AtProgressBar: StencilReactComponent<AtProgressBarElement, AtProgre
     react: React,
     events: {} as AtProgressBarEvents,
     defineCustomElement: defineAtProgressBar
+});
+
+type AtProgressBarCellEvents = NonNullable<unknown>;
+
+export const AtProgressBarCell: StencilReactComponent<AtProgressBarCellElement, AtProgressBarCellEvents> = /*@__PURE__*/ createComponent<AtProgressBarCellElement, AtProgressBarCellEvents>({
+    tagName: 'at-progress-bar-cell',
+    elementClass: AtProgressBarCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtProgressBarCellEvents,
+    defineCustomElement: defineAtProgressBarCell
 });
 
 type AtPromptContainerEvents = {

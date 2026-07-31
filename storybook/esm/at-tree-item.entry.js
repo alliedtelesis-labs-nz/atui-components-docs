@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CFoMekA-.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-m1WDiP3i.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -74,9 +74,9 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: 'b63b6f9b558a75723e33dbd920bc3eefa7122e79', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '6387d2b2a04f15d59c83a04e4ac060570b78631e', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'abc6f11a6d2787b16b99b4e8d2cee4f6a456615b', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: 'da9fb1303194f47d43f0d8df28c0b55df8585117', "data-name": "tree-item-indicator", name: this.selected
+        return (h(Host, { key: '66b142b31ba6129aed919ed0bff35386b8454a7d', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '1bdcb618c350d55bf707401f8b163eb74210ee1d', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '5e2de33c3f331eed9b194ff87ce3fbb92da4143c', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: '3ae8593403c590a7423cfe1ac453febc816f81f5', "data-name": "tree-item-indicator", name: this.selected
                 ? 'chevron_down'
-                : 'chevron_right' })), this.label && (h("span", { key: '6d6eef21627c7c3c089c22d19e65004693c0b153', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '2851e216eea2a6ee952c1c1f95d6518596de1bc7', name: "label" })), h("slot", { key: '31290440abe4b46e145b469a47e7ee7a02a541ba' })), h("div", { key: '1052976c5fa9f7928b82ab9ee4be8ef0b728e5ca', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+                : 'chevron_right' })), this.label && (h("span", { key: 'e4dad2f6dae6a8f7e7a91c09c8d39dc13fda1b44', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: 'c651bac86153dc68cf1141c0512bec167476ab25', name: "label" })), h("slot", { key: 'd8e5d6bc7872c368facd23ce9a5e8c54fc0d00ce' })), h("div", { key: 'eee18cfaac468bbdb95f8a020a715564e2c01226', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
 };
 

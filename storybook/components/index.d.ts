@@ -107,6 +107,8 @@ export { AtPlaceholderComponent as AtPlaceholder } from '../types/components/at-
 export { defineCustomElement as defineCustomElementAtPlaceholder } from './at-placeholder';
 export { AtProgressBar as AtProgressBar } from '../types/components/at-progress-bar/at-progress-bar';
 export { defineCustomElement as defineCustomElementAtProgressBar } from './at-progress-bar';
+export { AtProgressBarCell as AtProgressBarCell } from '../types/components/table-components/cell-components/at-progress-bar-cell/at-progress-bar-cell';
+export { defineCustomElement as defineCustomElementAtProgressBarCell } from './at-progress-bar-cell';
 export { AtPromptContainer as AtPromptContainer } from '../types/components/prompt-components/at-prompt-container/at-prompt-container';
 export { defineCustomElement as defineCustomElementAtPromptContainer } from './at-prompt-container';
 export { AtPromptInputComponent as AtPromptInput } from '../types/components/prompt-components/at-prompt-input/at-prompt-input';

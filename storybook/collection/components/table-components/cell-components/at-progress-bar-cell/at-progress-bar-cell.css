@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/**
+ * ag-grid gives `.ag-cell-wrapper` and `.ag-cell-value` `flex: 0 1 auto`, so they
+ * shrink-wrap their content instead of filling `.ag-cell`. Text renderers do not
+ * notice, but a percentage-width bar resolves to zero width against a collapsed
+ * parent — the bar simply never draws.
+ *
+ * Stretch those two wrappers, but only for cells that actually hold this
+ * renderer, so no other cell type's layout changes.
+ */
+.ag-cell-wrapper:has(at-progress-bar-cell),
+.ag-cell-value:has(at-progress-bar-cell) {
+  width: 100%;
+  min-width: 0;
+}
