@@ -67,6 +67,16 @@ export class AtTableComponent {
             }
         }
     }
+    /**
+     * `paginationPageSize` is only read when the grid is constructed, so without
+     * this a `page_size` change after creation was silently ignored — the grid
+     * kept whatever value was current at construction time.
+     */
+    handlePageSizeChange(newPageSize) {
+        if (this.agGrid && this.tableCreated && newPageSize > 0) {
+            this.agGrid.setGridOption('paginationPageSize', newPageSize);
+        }
+    }
     handleColDefsChange(newColDefs) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('columnDefs', newColDefs);
@@ -181,7 +191,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: '03f258f1286f37606981fa5e98a5230d49876137', class: {
+        return (h(Host, { key: 'd5d33243e819486d4c2b30b69d8f96b040d0c9d8', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -463,6 +473,9 @@ export class AtTableComponent {
         return [{
                 "propName": "table_data",
                 "methodName": "handleTableDataChange"
+            }, {
+                "propName": "page_size",
+                "methodName": "handlePageSizeChange"
             }, {
                 "propName": "col_defs",
                 "methodName": "handleColDefsChange"

@@ -67,6 +67,12 @@ export declare class AtTableComponent {
         items: any[];
         total: number;
     }): Promise<void>;
+    /**
+     * `paginationPageSize` is only read when the grid is constructed, so without
+     * this a `page_size` change after creation was silently ignored — the grid
+     * kept whatever value was current at construction time.
+     */
+    handlePageSizeChange(newPageSize: number): void;
     handleColDefsChange(newColDefs: ColDef[]): void;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
