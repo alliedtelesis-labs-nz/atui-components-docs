@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-COV7xI6A.js');
+var index = require('./index-EXiXggWw.js');
 var translation = require('./translation-D3uILiF8.js');
 var atCheckboxCell_entry = require('./at-checkbox-cell.cjs.entry.js');
 var atTextBadgeCell_entry = require('./at-text-badge-cell.cjs.entry.js');
@@ -49191,27 +49191,42 @@ const AtTableActionsComponent = class {
      */
     atChange;
     /**
-     * Column visibility arrives on `atChange`, not `atuiChange`.
+     * Every component slotted into this toolbar emits `atChange`, not
+     * `atuiChange`:
      *
-     * `at-column-manager` emits its `{ id, checked }` payload as `atChange`. The
-     * `atuiChange` that bubbles out of it belongs to the inner
-     * `at-checkbox-group` and carries a `string[]` of still-checked columns, so
-     * reading `.id` / `.checked` off it yielded `undefined` and the call below
-     * was `setColumnsVisible([undefined], undefined)` — meaning no column was
-     * ever actually hidden.
+     * - `at-table-filters`     — `@Event() atChange`
+     * - `at-table-export-menu` — `@Event() atChange`
+     * - `at-column-manager`    — `@Event({ eventName: 'atChange' })`
+     * - `at-search`            — `@Event({ eventName: 'atChange' })`; the class
+     *   property is named `atuiChange`, but the event emitted is `atChange`
+     *
+     * Listening for `atuiChange` meant this switch never ran, so a toolbar
+     * composed directly from these parts had inert search, filters and export.
+     * (`at-search-table` is unaffected — it binds `onAtChange` on its own
+     * children rather than relying on this handler.) The only `atuiChange` that
+     * reaches here bubbles out of `at-column-manager`'s inner
+     * `at-checkbox-group`, whose `string[]` payload does not match what the
+     * `column-manager` branch reads.
+     *
+     * These event names break the repo's `atui*` convention, which is what made
+     * the mismatch easy to miss. Renaming them is a breaking public API change,
+     * so this aligns the listener with what is emitted today.
+     *
+     * The host re-emits `atChange` for the `filters` case. That re-enters this
+     * handler with `event.target` as the host, whose `slot` is empty, so no case
+     * matches and it terminates.
+     *
+     * `ag_grid` is optional-chained because the toolbar can be interacted with
+     * before a host has handed it a grid.
      */
-    columnVisibilityHandler(event) {
-        const target = event.target;
-        if (target.slot !== 'column-manager' || !this.ag_grid) {
-            return;
-        }
-        this.ag_grid.setColumnsVisible([event.detail.id], event.detail.checked);
-    }
     changeHandler(event) {
         const target = event.target;
         switch (target.slot) {
+            case 'column-manager':
+                this.ag_grid?.setColumnsVisible([event.detail.id], event.detail.checked);
+                break;
             case 'search':
-                this.ag_grid.setGridOption('quickFilterText', event.detail);
+                this.ag_grid?.setGridOption('quickFilterText', event.detail);
                 break;
             case 'export-menu':
                 if (event.detail === 'CSV')
@@ -49219,7 +49234,10 @@ const AtTableActionsComponent = class {
                 if (event.detail === 'PDF')
                     this.atExportPdf.emit(this.getVisibleColumns());
                 break;
-            case 'dropdown-filters':
+            // The rendered slot is `filters`, which is the name `at-search-table`
+            // uses. This case said `dropdown-filters` — a name only the stories
+            // and the e2e fixture ever used — so it never matched either.
+            case 'filters':
                 this.atChange.emit(event.detail);
                 break;
         }
@@ -49235,7 +49253,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'f0ac0bb5762c1a075e64a388483a2aaef386d52e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '121191e79a28703548b860384eb0f95eb6002bc6', class: "flex justify-between" }, index.h("div", { key: '3673b1f450073dc7602ec2300715064327f224c2', class: "flex" }, index.h("slot", { key: '3705b15a6c26d0bd1f47f87d3e9d4f2203bc165f', name: "search" })), index.h("div", { key: '215cbe0acbcac28caf125b821565344ee001fa0d', class: "flex" }, index.h("slot", { key: 'a8080683f98b89e6e69fe86859ce86b40a97691d', name: "export-menu" }), index.h("slot", { key: '64f9f1e501a3b5899b9ca1996b36a8936c09665e', name: "column-manager" }), index.h("slot", { key: '6b0c7550dfa17e18788925381520c8a571e4325d', name: "actions" }))), index.h("slot", { key: '6c7d0bb842647dc74e97dac5a032751ee882da89', name: "filters" })));
+        return (index.h(index.Host, { key: '1677e8635fbf8a14abd88e84442317d820163dd2', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '47ef9e3dcdb433853dc63138e1ea2b37338f3fca', class: "flex justify-between" }, index.h("div", { key: 'f7c8fce7d1053e3e821053d7d48a0340b0a6e8db', class: "flex" }, index.h("slot", { key: '4844b1fe43bd965c2c0330b1906dbe87fdf9214e', name: "search" })), index.h("div", { key: '867631f9f47306fe271aeeeff72d02cc5c03e380', class: "flex" }, index.h("slot", { key: '0325409b48a9ddea34dda4f41ca813a23518638e', name: "export-menu" }), index.h("slot", { key: '74d263687d2cc30ac07c8c00224f7621f0b97262', name: "column-manager" }), index.h("slot", { key: '4456d927c9c2ae0dea1969b9ad8132eca4eaed70', name: "actions" }))), index.h("slot", { key: 'bbb64bd74422487057614e44772fab7e3aca1729', name: "filters" })));
     }
 };
 

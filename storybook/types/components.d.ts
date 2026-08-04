@@ -730,7 +730,7 @@ export namespace Components {
          */
         "center_text"?: string;
         /**
-          * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+          * Optional value text shown in the centre of the gauge, e.g. `"72"`.
          */
         "center_value"?: string;
         /**
@@ -783,6 +783,10 @@ export namespace Components {
           * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
          */
         "thresholds"?: number[];
+        /**
+          * Unit appended to `center_value`, rendered at a smaller size (e.g. `%`). Not appended to `center_value` directly — include it via this prop to get the smaller styling; otherwise bake it into `center_value` for equal-size rendering.
+         */
+        "unit"?: string;
         /**
           * The metric value to display, plotted against `min` and `max`. Values outside the range are clamped.
           * @default 0
@@ -5895,7 +5899,7 @@ declare namespace LocalJSX {
          */
         "center_text"?: string;
         /**
-          * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+          * Optional value text shown in the centre of the gauge, e.g. `"72"`.
          */
         "center_value"?: string;
         /**
@@ -5939,6 +5943,10 @@ declare namespace LocalJSX {
           * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
          */
         "thresholds"?: number[];
+        /**
+          * Unit appended to `center_value`, rendered at a smaller size (e.g. `%`). Not appended to `center_value` directly — include it via this prop to get the smaller styling; otherwise bake it into `center_value` for equal-size rendering.
+         */
+        "unit"?: string;
         /**
           * The metric value to display, plotted against `min` and `max`. Values outside the range are clamped.
           * @default 0
@@ -8780,6 +8788,7 @@ declare namespace LocalJSX {
         "max": number;
         "status": AtChartGaugeStatus;
         "center_value": string;
+        "unit": string;
         "center_text": string;
         "cutout": number;
         "color_palette": AtChartGaugePalette;

@@ -736,8 +736,8 @@
   --token-font-size-h6: 1rem;
   --token-font-size-body: 1rem;
   --token-font-size-sm: 0.9286rem;
-  --token-font-size-xs: 0.8571rem;
-  --token-font-size-xl: 3.5rem;
+  --token-font-size-xs: 0.8462rem;
+  --token-font-size-xl: 3rem;
   --token-font-size-button: 1rem;
   --token-font-size-icon-sm: 1rem;
   --token-font-size-icon-md: 1.1429rem;
@@ -746,7 +746,7 @@
   /* Font Weight: Legacy */
   --token-font-weight-light: 300;
   --token-font-weight-med: 400;
-  --token-font-weight-bold: 600;
+  --token-font-weight-bold: 700;
   /*  Line Height: Legacy */
   /* Type: OneConnect */
   /*

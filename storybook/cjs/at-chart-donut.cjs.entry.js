@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-COV7xI6A.js');
-var chartColor$1 = require('./chart-color-NSoH-i0C.js');
-var chartColor = require('./chart-color-D8HPmi5o.js');
-var chartLegend = require('./chart-legend-JzUfJQgF.js');
+var index = require('./index-EXiXggWw.js');
+var chartColor$1 = require('./chart-color-Cv9FvM3G.js');
+var chartColor = require('./chart-color-CQfnk_Ov.js');
+var chartLegend = require('./chart-legend-BzHYfZeM.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -186,7 +186,7 @@ const AtChartDonut = class {
             chart.render();
         }
     }
-    getDrawCenterTextPlugin() {
+    getDrawCenterTextPlugin(typography) {
         return {
             id: 'DrawCenterTextPlugin',
             afterDatasetDraw: (chart) => {
@@ -204,15 +204,12 @@ const AtChartDonut = class {
                 // Usable width inside the hole, leaving a margin off the ring.
                 const maxWidth = innerRadius * 2 * 0.82;
                 const fontFamily = chartColor.readChartFontFamily();
-                // 1rem in this app's design tokens — not necessarily the
-                // browser default of 16px — so `em` sizing below tracks the
-                // same rem scale at-chart-breakdown's CSS uses.
-                const remPx = parseFloat(getComputedStyle(chart.canvas).fontSize) || 16;
-                const setFont = (px, weight = 300) => {
+                const { remPx } = typography;
+                const setFont = (px, weight = typography.weightLight) => {
                     return (ctx.font = `${weight} ${(px / remPx).toFixed(2)}em ${fontFamily}`);
                 };
                 // Largest size up to `base` that keeps `text` within maxWidth.
-                const fit = (text, base, weight = 300) => {
+                const fit = (text, base, weight = typography.weightLight) => {
                     setFont(base, weight);
                     const w = ctx.measureText(text).width;
                     return w > maxWidth && w > 0 ? base * (maxWidth / w) : base;
@@ -237,10 +234,10 @@ const AtChartDonut = class {
                         { text: l2, px },
                     ];
                 };
-                // Match at-chart-breakdown's 3rem/1rem sizes by default, but
-                // cap to the hole so text can't overflow on smaller donuts.
-                const valuePx = Math.min(remPx * 3, innerRadius * 0.6);
-                const labelPx = Math.min(remPx, innerRadius * 0.36);
+                // Sized from --token-font-size-xl/-base, capped to the hole
+                // so text can't overflow on smaller donuts.
+                const valuePx = Math.min(remPx * typography.valueRem, innerRadius * 0.6);
+                const labelPx = Math.min(remPx * typography.textRem, innerRadius * 0.36);
                 const value = this.center_value === 'auto'
                     ? this.computedCenterValue
                     : this.center_value;
@@ -251,8 +248,8 @@ const AtChartDonut = class {
                         ? [
                             {
                                 text: value,
-                                px: fit(value, valuePx, 700),
-                                weight: 700,
+                                px: fit(value, valuePx, typography.weightBold),
+                                weight: typography.weightBold,
                                 lineHeight: 0.75,
                             },
                         ]
@@ -260,7 +257,7 @@ const AtChartDonut = class {
                     ...(this.center_text
                         ? wrapLabel(this.center_text, labelPx).map((l) => ({
                             ...l,
-                            weight: 300,
+                            weight: typography.weightLight,
                             lineHeight: 1,
                         }))
                         : []),
@@ -291,12 +288,13 @@ const AtChartDonut = class {
         const dpr = window.devicePixelRatio || 1;
         const colors = chartColor$1.getChartColors(this.color_palette);
         const textColors = chartColor.readChartTextColors();
+        const typography = chartColor.readChartTypography(this.canvasEl);
         if (colors) {
             this.applyPresetPalette(colors);
         }
         const plugins = this.plugins ? [...this.plugins] : [];
         if (this.center_text || this.center_value) {
-            plugins.push(this.getDrawCenterTextPlugin());
+            plugins.push(this.getDrawCenterTextPlugin(typography));
         }
         this.config = {
             type: 'doughnut',
@@ -349,7 +347,9 @@ const AtChartDonut = class {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
-                            fontSize: 11,
+                            font: {
+                                size: Math.round(typography.remPx * typography.legendRem),
+                            },
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
@@ -474,7 +474,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'ee970326df33ebd7fa653de07105cf3bf0fcc175', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '737bd49f41a08ffa256f28a881fb00ca21493cb9', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'd429f5db3a7251381535351f8f589b16b1cd2681', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'ab9b83c34ae6d44d5c461de4457df8f891945e45', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

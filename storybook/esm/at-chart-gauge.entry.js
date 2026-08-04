@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host } from './index-m1WDiP3i.js';
-import { g as getChartColors, c as color, C as Chart, D as DoughnutController, A as ArcElement, i as index } from './chart-color-BukeUrGZ.js';
-import { A as AtChartColorPalette, a as readChartFontFamily, r as readChartTextColors } from './chart-color-D288RS7J.js';
+import { r as registerInstance, h, H as Host } from './index-CYntefTQ.js';
+import { g as getChartColors, c as color, C as Chart, D as DoughnutController, A as ArcElement, i as index } from './chart-color-BSsHS4sa.js';
+import { A as AtChartColorPalette, b as readChartFontFamily, r as readChartTextColors, a as readChartTypography } from './chart-color-BeJCqIOU.js';
 
 const heightVariants = {
     xs: 'h-[80px]',
@@ -30,6 +30,10 @@ const RING_GAP = 0.6;
 // Weight of a transparent spacer ring inserted between the value and threshold
 // rings, creating a clean uniform radial gap (relative to the ring weights).
 const GAP_WEIGHT = 0.5;
+// Sizing for the `unit` suffix next to the centre value — mirrors
+// at-chart-trend's inline value/unit split (0.65em, weight 500).
+const CENTER_UNIT_SCALE = 0.65;
+const CENTER_UNIT_WEIGHT = 500;
 const AtChartGauge = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -61,9 +65,16 @@ const AtChartGauge = class {
      */
     status;
     /**
-     * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+     * Optional value text shown in the centre of the gauge, e.g. `"72"`.
      */
     center_value;
+    /**
+     * Unit appended to `center_value`, rendered at a smaller size (e.g.
+     * `%`). Not appended to `center_value` directly — include it via this
+     * prop to get the smaller styling; otherwise bake it into `center_value`
+     * for equal-size rendering.
+     */
+    unit;
     /**
      * Optional label shown beneath the centre value.
      */
@@ -195,7 +206,7 @@ const AtChartGauge = class {
      * bottom-anchored (rather than vertically centered) stacking differs,
      * since a semicircle's usable space sits above its flat base.
      */
-    getDrawCenterTextPlugin() {
+    getDrawCenterTextPlugin(typography) {
         return {
             id: 'DrawGaugeCenterTextPlugin',
             afterDatasetsDraw: (chart) => {
@@ -208,11 +219,8 @@ const AtChartGauge = class {
                 ctx.restore();
                 const innerRadius = arc.innerRadius;
                 const fontFamily = readChartFontFamily();
-                // 1rem in this app's design tokens — not necessarily the
-                // browser default of 16px — so `em` sizing below tracks the
-                // same rem scale at-chart-breakdown's CSS uses.
-                const remPx = parseFloat(getComputedStyle(chart.canvas).fontSize) || 16;
-                const setFont = (px, weight = 300) => {
+                const { remPx } = typography;
+                const setFont = (px, weight = typography.weightLight) => {
                     return (ctx.font = `${weight} ${(px / remPx).toFixed(2)}em ${fontFamily}`);
                 };
                 // Width of the horizontal chord `offset` px above the dial's
@@ -227,16 +235,15 @@ const AtChartGauge = class {
                     return (Math.sqrt(innerRadius ** 2 - clamped ** 2) * 2 * 0.82);
                 };
                 // Largest size up to `base` that keeps `text` within maxWidth.
-                const fit = (text, base, maxWidth, weight = 300) => {
+                const fit = (text, base, maxWidth, weight = typography.weightLight) => {
                     setFont(base, weight);
                     const w = ctx.measureText(text).width;
                     return w > maxWidth && w > 0 ? base * (maxWidth / w) : base;
                 };
-                // Match at-chart-donut's 3rem/1rem sizes by default, but cap
-                // to the dial so text can't overflow vertically on smaller
-                // gauges.
-                const baseLabelPx = Math.min(remPx, innerRadius * 0.36);
-                const baseValuePx = Math.min(remPx * 3, innerRadius * 0.6);
+                // Sized from --token-font-size-base/-xl, capped to the dial
+                // so text can't overflow vertically on smaller gauges.
+                const baseLabelPx = Math.min(remPx * typography.textRem, innerRadius * 0.36);
+                const baseValuePx = Math.min(remPx * typography.valueRem, innerRadius * 0.6);
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
                 ctx.fillStyle = readChartTextColors().title;
@@ -247,8 +254,11 @@ const AtChartGauge = class {
                 // shrinking only ever sits within a *wider* chord than assumed.
                 let offset = 0;
                 let prevPx = 0;
+                // Gap between stacked lines — a fraction of the value line's
+                // font size, matching at-chart-donut's line gap exactly.
+                const lineGap = () => prevPx > 0 ? baseValuePx * 0.2 : 0;
                 const draw = (text, basePx, weight, lineHeight) => {
-                    const gap = prevPx * 0.1;
+                    const gap = lineGap();
                     const baselineOffset = offset + gap;
                     const px = fit(text, basePx, chordWidth(baselineOffset + basePx * lineHeight), weight);
                     setFont(px, weight);
@@ -256,11 +266,49 @@ const AtChartGauge = class {
                     offset = baselineOffset + px * lineHeight;
                     prevPx = px;
                 };
+                // As `draw`, but appends `unitText` immediately after `text`
+                // at CENTER_UNIT_SCALE of the (possibly shrunk) value size,
+                // both centred together on the chord.
+                const drawValueWithUnit = (text, unitText, basePx, weight, lineHeight) => {
+                    const gap = lineGap();
+                    const baselineOffset = offset + gap;
+                    const maxWidth = chordWidth(baselineOffset + basePx * lineHeight);
+                    setFont(basePx, weight);
+                    const valueWidth = ctx.measureText(text).width;
+                    setFont(basePx * CENTER_UNIT_SCALE, CENTER_UNIT_WEIGHT);
+                    const unitWidth = ctx.measureText(unitText).width;
+                    const totalWidth = valueWidth + unitWidth;
+                    const px = totalWidth > maxWidth && totalWidth > 0
+                        ? basePx * (maxWidth / totalWidth)
+                        : basePx;
+                    const scale = px / basePx;
+                    // Draw on the shared alphabetic baseline rather than
+                    // `bottom` — with `bottom`, the smaller unit's shallower
+                    // descender space would sit its glyphs lower than the
+                    // value's, so the two would look misaligned.
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'alphabetic';
+                    const startX = arc.x - (valueWidth + unitWidth) * scale * 0.5;
+                    const baselineY = arc.y - baselineOffset;
+                    setFont(px, weight);
+                    ctx.fillText(text, startX, baselineY);
+                    setFont(px * CENTER_UNIT_SCALE, CENTER_UNIT_WEIGHT);
+                    ctx.fillText(unitText, startX + valueWidth * scale, baselineY);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    offset = baselineOffset + px * lineHeight;
+                    prevPx = px;
+                };
                 if (this.center_text) {
-                    draw(this.center_text, baseLabelPx, 300, 1);
+                    draw(this.center_text, baseLabelPx, typography.weightLight, 1);
                 }
                 if (this.center_value) {
-                    draw(this.center_value, baseValuePx, 700, 0.85);
+                    if (this.unit) {
+                        drawValueWithUnit(this.center_value, this.unit, baseValuePx, typography.weightBold, 0.85);
+                    }
+                    else {
+                        draw(this.center_value, baseValuePx, typography.weightBold, 0.85);
+                    }
                 }
                 ctx.save();
             },
@@ -284,7 +332,7 @@ const AtChartGauge = class {
         datasets.push(this.valueDataset(span, total));
         const plugins = [];
         if (this.center_value || this.center_text) {
-            plugins.push(this.getDrawCenterTextPlugin());
+            plugins.push(this.getDrawCenterTextPlugin(readChartTypography(this.canvasEl)));
         }
         // `rotation`/`circumference` are doughnut-only options; cast through
         // `unknown` so the generic ChartConfiguration literal accepts them.
@@ -333,7 +381,7 @@ const AtChartGauge = class {
         }
     }
     render() {
-        return (h(Host, { key: '8494885f8729621d1dfd2afc88d5e588f41c1902', style: { height: '100%', width: '100%' } }, h("canvas", { key: '7e946b6f02124217fca0cec1b0412cc9a1d56bf4', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: 'fc231798aa28a4e1320f2c70e074ba271eef9d79', style: { height: '100%', width: '100%' } }, h("canvas", { key: '5ac705615980602312e830fa34e6e595c8f09a31', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

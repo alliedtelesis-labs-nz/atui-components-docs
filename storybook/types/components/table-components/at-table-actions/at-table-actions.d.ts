@@ -29,16 +29,34 @@ export declare class AtTableActionsComponent {
      */
     atChange: EventEmitter<any>;
     /**
-     * Column visibility arrives on `atChange`, not `atuiChange`.
+     * Every component slotted into this toolbar emits `atChange`, not
+     * `atuiChange`:
      *
-     * `at-column-manager` emits its `{ id, checked }` payload as `atChange`. The
-     * `atuiChange` that bubbles out of it belongs to the inner
-     * `at-checkbox-group` and carries a `string[]` of still-checked columns, so
-     * reading `.id` / `.checked` off it yielded `undefined` and the call below
-     * was `setColumnsVisible([undefined], undefined)` — meaning no column was
-     * ever actually hidden.
+     * - `at-table-filters`     — `@Event() atChange`
+     * - `at-table-export-menu` — `@Event() atChange`
+     * - `at-column-manager`    — `@Event({ eventName: 'atChange' })`
+     * - `at-search`            — `@Event({ eventName: 'atChange' })`; the class
+     *   property is named `atuiChange`, but the event emitted is `atChange`
+     *
+     * Listening for `atuiChange` meant this switch never ran, so a toolbar
+     * composed directly from these parts had inert search, filters and export.
+     * (`at-search-table` is unaffected — it binds `onAtChange` on its own
+     * children rather than relying on this handler.) The only `atuiChange` that
+     * reaches here bubbles out of `at-column-manager`'s inner
+     * `at-checkbox-group`, whose `string[]` payload does not match what the
+     * `column-manager` branch reads.
+     *
+     * These event names break the repo's `atui*` convention, which is what made
+     * the mismatch easy to miss. Renaming them is a breaking public API change,
+     * so this aligns the listener with what is emitted today.
+     *
+     * The host re-emits `atChange` for the `filters` case. That re-enters this
+     * handler with `event.target` as the host, whose `slot` is empty, so no case
+     * matches and it terminates.
+     *
+     * `ag_grid` is optional-chained because the toolbar can be interacted with
+     * before a host has handed it a grid.
      */
-    columnVisibilityHandler(event: CustomEvent): void;
     changeHandler(event: CustomEvent): void;
     getVisibleColumns(): any[];
     render(): any;

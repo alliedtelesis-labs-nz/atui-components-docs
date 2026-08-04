@@ -91,6 +91,12 @@ export declare class AtChartBreakdown {
     /** Reference to the side-text div (center_value / center_text), used to
      *  detect overlap with the legend. */
     private sideTextEl?;
+    /**
+     * Legend font size (px), derived from --token-font-size-xs. Set in
+     * initChart() and shared by the built-in legend, the custom left-align
+     * legend, and the overflow guard, so all three stay in sync.
+     */
+    private legendFontPx;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart;

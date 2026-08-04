@@ -44,9 +44,16 @@ export declare class AtChartGauge {
      */
     status?: AtChartGaugeStatus;
     /**
-     * Optional value text shown in the centre of the gauge, e.g. `"72%"`.
+     * Optional value text shown in the centre of the gauge, e.g. `"72"`.
      */
     center_value?: string;
+    /**
+     * Unit appended to `center_value`, rendered at a smaller size (e.g.
+     * `%`). Not appended to `center_value` directly — include it via this
+     * prop to get the smaller styling; otherwise bake it into `center_value`
+     * for equal-size rendering.
+     */
+    unit?: string;
     /**
      * Optional label shown beneath the centre value.
      */

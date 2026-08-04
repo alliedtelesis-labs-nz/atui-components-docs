@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-COV7xI6A.js');
-var chartColor = require('./chart-color-D8HPmi5o.js');
+var index = require('./index-EXiXggWw.js');
+var chartColor = require('./chart-color-CQfnk_Ov.js');
 
 const AtChartTrend = class {
     constructor(hostRef) {

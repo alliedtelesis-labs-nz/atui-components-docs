@@ -1,6 +1,6 @@
 import { h, Host, } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
-import { AtChartColorPalette, readChartTextColors, } from "../../types/chart-color";
+import { AtChartColorPalette, readChartTextColors, readChartTypography, } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
 const heightVariants = {
     xs: 'h-[70px]',
@@ -92,6 +92,12 @@ export class AtChartBreakdown {
     /** Reference to the side-text div (center_value / center_text), used to
      *  detect overlap with the legend. */
     sideTextEl;
+    /**
+     * Legend font size (px), derived from --token-font-size-xs. Set in
+     * initChart() and shared by the built-in legend, the custom left-align
+     * legend, and the overflow guard, so all three stay in sync.
+     */
+    legendFontPx = 11;
     canvasEl;
     config;
     chart;
@@ -223,7 +229,8 @@ export class AtChartBreakdown {
                 // Rebuild hit regions each draw so they stay in sync with layout.
                 hitRegions.length = 0;
                 ctx.save();
-                const legendFontPx = this.legend_options?.labels?.font?.size ?? 12;
+                const legendFontPx = this.legend_options?.labels?.font?.size ??
+                    this.legendFontPx;
                 const legendFontFamily = this.legend_options?.labels?.font?.family ??
                     'sans-serif';
                 ctx.font = `${legendFontPx}px ${legendFontFamily}`;
@@ -360,7 +367,8 @@ export class AtChartBreakdown {
                 if (!userDisplay || labelCount === 0) {
                     return;
                 }
-                const legendFontPx = this.legend_options?.labels?.font?.size ?? 12;
+                const legendFontPx = this.legend_options?.labels?.font?.size ??
+                    this.legendFontPx;
                 const legendFontFamily = this.legend_options?.labels?.font?.family ??
                     'sans-serif';
                 const itemHeight = legendFontPx + 8;
@@ -399,6 +407,8 @@ export class AtChartBreakdown {
         const dpr = window.devicePixelRatio || 1;
         const colors = getChartColors(this.color_palette);
         const textColors = readChartTextColors();
+        const typography = readChartTypography(this.canvasEl);
+        this.legendFontPx = Math.round(typography.remPx * typography.legendRem);
         if (colors) {
             this.applyPresetPalette(colors);
         }
@@ -445,7 +455,7 @@ export class AtChartBreakdown {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
-                            fontSize: 11,
+                            font: { size: this.legendFontPx },
                             useBorderRadius: true,
                             borderRadius: 2,
                             color: textColors.label,
@@ -559,7 +569,10 @@ export class AtChartBreakdown {
     }
     render() {
         const showSideText = this.center_value || this.center_text;
-        return (h(Host, { key: '4d41121c69b244c99cab9f1db3e1fe31c6fc8423', style: {
+        const typography = showSideText
+            ? readChartTypography(this.el)
+            : undefined;
+        return (h(Host, { key: '2ae5ee4ef8bbe78ae5756289cd03e4df3a8634e2', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -567,26 +580,27 @@ export class AtChartBreakdown {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '78fca756443ad97af2bd95fe33f29ff3764f942b', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '53bf1c4f9e83b6ba384d2f43c3a3f91bb9b38aed', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: '350a87fb63a3368a438119e12336e264a17ae966', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: '3dcd62bee897925239a54d572605a02dbf1563f8', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '841e255e319440f8dbd4efc55a5e04f15ed51771', style: {
-                fontSize: '3rem',
-                fontWeight: '700',
+            } }, this.center_value && (h("span", { key: '68e7e22c660c8fa7cb2341d919546084e0bebbf6', style: {
+                fontSize: `${typography.valueRem}rem`,
+                fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
-                color: 'var(--token-text-primary)',
-            } }, this.center_value)), this.center_text && (h("span", { key: 'c7dd6cc1461fc90963b02713b6c79c75a5671da1', style: {
-                fontSize: '1rem',
-                color: 'var(--token-text-secondary)',
+                color: 'var(--chart-title)',
+            } }, this.center_value)), this.center_text && (h("span", { key: 'd12fc888cbe830867c8f17bba1153ce8cbcdf8d7', style: {
+                fontSize: `${typography.textRem}rem`,
+                fontWeight: String(typography.weightLight),
+                color: 'var(--chart-title)',
             } }, this.center_text))))));
     }
     static get is() { return "at-chart-breakdown"; }

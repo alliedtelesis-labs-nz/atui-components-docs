@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-m1WDiP3i.js';
-import { A as AtChartColorPalette } from './chart-color-D288RS7J.js';
+import { r as registerInstance, h, H as Host } from './index-CYntefTQ.js';
+import { A as AtChartColorPalette } from './chart-color-BeJCqIOU.js';
 
 const AtChartTrend = class {
     constructor(hostRef) {
