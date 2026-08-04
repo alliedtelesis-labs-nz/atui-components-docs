@@ -27,12 +27,26 @@ export class AtTableActionsComponent {
      * Emits an event when filters change
      */
     atChange;
+    /**
+     * Column visibility arrives on `atChange`, not `atuiChange`.
+     *
+     * `at-column-manager` emits its `{ id, checked }` payload as `atChange`. The
+     * `atuiChange` that bubbles out of it belongs to the inner
+     * `at-checkbox-group` and carries a `string[]` of still-checked columns, so
+     * reading `.id` / `.checked` off it yielded `undefined` and the call below
+     * was `setColumnsVisible([undefined], undefined)` — meaning no column was
+     * ever actually hidden.
+     */
+    columnVisibilityHandler(event) {
+        const target = event.target;
+        if (target.slot !== 'column-manager' || !this.ag_grid) {
+            return;
+        }
+        this.ag_grid.setColumnsVisible([event.detail.id], event.detail.checked);
+    }
     changeHandler(event) {
         const target = event.target;
         switch (target.slot) {
-            case 'column-manager':
-                this.ag_grid.setColumnsVisible([event.detail.id], event.detail.checked);
-                break;
             case 'search':
                 this.ag_grid.setGridOption('quickFilterText', event.detail);
                 break;
@@ -58,7 +72,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'e8a10a7a95e79c2a671445d3b01084d87d89be3e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '1ce08ba59c8950083b663baefe6fdf86fffeeab4', class: "flex justify-between" }, h("div", { key: '4404e6c6f63ebfd5040e2b1509660618c8ede1dd', class: "flex" }, h("slot", { key: '04603e986191893ee6e993efb94f31e6d3614ffa', name: "search" })), h("div", { key: '238a4e37a6a1c73b327a92ea42049d9c3c0814fc', class: "flex" }, h("slot", { key: '22b0aa0bc609796667f62ae0acc5824602cf4610', name: "export-menu" }), h("slot", { key: '27725ad30db7f99468fe21a44d7370a5ca629919', name: "column-manager" }), h("slot", { key: 'a3b8a87e43431aaee5035ac1019c667f66a83174', name: "actions" }))), h("slot", { key: 'c7c358bcd25af78442e71ce3c58ac89a591d6885', name: "filters" })));
+        return (h(Host, { key: 'f0ac0bb5762c1a075e64a388483a2aaef386d52e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '121191e79a28703548b860384eb0f95eb6002bc6', class: "flex justify-between" }, h("div", { key: '3673b1f450073dc7602ec2300715064327f224c2', class: "flex" }, h("slot", { key: '3705b15a6c26d0bd1f47f87d3e9d4f2203bc165f', name: "search" })), h("div", { key: '215cbe0acbcac28caf125b821565344ee001fa0d', class: "flex" }, h("slot", { key: 'a8080683f98b89e6e69fe86859ce86b40a97691d', name: "export-menu" }), h("slot", { key: '64f9f1e501a3b5899b9ca1996b36a8936c09665e', name: "column-manager" }), h("slot", { key: '6b0c7550dfa17e18788925381520c8a571e4325d', name: "actions" }))), h("slot", { key: '6c7d0bb842647dc74e97dac5a032751ee882da89', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {
@@ -139,6 +153,12 @@ export class AtTableActionsComponent {
     }
     static get listeners() {
         return [{
+                "name": "atChange",
+                "method": "columnVisibilityHandler",
+                "target": undefined,
+                "capture": false,
+                "passive": false
+            }, {
                 "name": "atuiChange",
                 "method": "changeHandler",
                 "target": undefined,

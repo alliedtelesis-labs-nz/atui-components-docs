@@ -28,6 +28,17 @@ export declare class AtTableActionsComponent {
      * Emits an event when filters change
      */
     atChange: EventEmitter<any>;
+    /**
+     * Column visibility arrives on `atChange`, not `atuiChange`.
+     *
+     * `at-column-manager` emits its `{ id, checked }` payload as `atChange`. The
+     * `atuiChange` that bubbles out of it belongs to the inner
+     * `at-checkbox-group` and carries a `string[]` of still-checked columns, so
+     * reading `.id` / `.checked` off it yielded `undefined` and the call below
+     * was `setColumnsVisible([undefined], undefined)` — meaning no column was
+     * ever actually hidden.
+     */
+    columnVisibilityHandler(event: CustomEvent): void;
     changeHandler(event: CustomEvent): void;
     getVisibleColumns(): any[];
     render(): any;
