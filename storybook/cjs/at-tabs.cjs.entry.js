@@ -47,11 +47,11 @@ const AtTabs = class {
         });
     }
     initializeTabs() {
+        this.tabManualAdded = this.tabEls.map((tabEl) => ({
+            id: tabEl.tab_id,
+            title: tabEl.tab_title,
+        }));
         this.tabEls.forEach((tabEl) => {
-            this.tabManualAdded.push({
-                id: tabEl.tab_id,
-                title: tabEl.tab_title,
-            });
             tabEl.layout = this.layout;
             if (!this.active_tab && tabEl.is_active) {
                 this.active_tab = tabEl.tab_id;
@@ -156,7 +156,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '52c9386815d4df81c13cdd8e76ebccc3836ceeba' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'df2d1e21733b7498f67e1919e08b29da9556b580' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
