@@ -3071,7 +3071,7 @@ export namespace Components {
     }
     /**
      * @category Data Tables
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with icons. Text is optional and multiple icons are supported. Icons are resolved from the global icon registry via `at-icon`, and the `icons` accessor receives the row's data so a cell can show an icon only when that row warrants one.
      */
     interface AtTextIconCell {
     }
@@ -5062,7 +5062,7 @@ declare global {
     };
     /**
      * @category Data Tables
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with icons. Text is optional and multiple icons are supported. Icons are resolved from the global icon registry via `at-icon`, and the `icons` accessor receives the row's data so a cell can show an icon only when that row warrants one.
      */
     interface HTMLAtTextIconCellElement extends Components.AtTextIconCell, HTMLStencilElement {
     }
@@ -8427,7 +8427,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+     * @description A cell component for displaying a text with icons. Text is optional and multiple icons are supported. Icons are resolved from the global icon registry via `at-icon`, and the `icons` accessor receives the row's data so a cell can show an icon only when that row warrants one.
      */
     interface AtTextIconCell {
     }
@@ -9971,7 +9971,7 @@ declare module "@stencil/core" {
             "at-text-cell": LocalJSX.IntrinsicElements["at-text-cell"] & JSXBase.HTMLAttributes<HTMLAtTextCellElement>;
             /**
              * @category Data Tables
-             * @description A cell component for displaying a text with icons, Text is optional and multiple icons are supported.
+             * @description A cell component for displaying a text with icons. Text is optional and multiple icons are supported. Icons are resolved from the global icon registry via `at-icon`, and the `icons` accessor receives the row's data so a cell can show an icon only when that row warrants one.
              */
             "at-text-icon-cell": LocalJSX.IntrinsicElements["at-text-icon-cell"] & JSXBase.HTMLAttributes<HTMLAtTextIconCellElement>;
             /**

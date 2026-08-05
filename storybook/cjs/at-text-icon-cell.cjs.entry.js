@@ -29,11 +29,11 @@ const AtTextIconCell = class {
         return true;
     }
     renderIcons() {
-        return (index.h(index.Fragment, null, this.params.icons().map((icon) => (index.h("at-tooltip", { position: "right", disabled: !icon.tooltip }, index.h("div", { slot: "tooltip-trigger" }, index.h("i", { class: `material-icons text-icon-md mt-4 cursor-pointer ${icon.iconClass || ''}` }, icon.iconName)), icon.tooltip && (index.h("span", { class: "leading-normal" }, icon.tooltip)))))));
+        return (index.h(index.Fragment, null, this.params.icons(this.params.data).map((icon) => (index.h("at-tooltip", { position: "right", disabled: !icon.tooltip }, index.h("div", { slot: "tooltip-trigger" }, index.h("at-icon", { name: icon.iconName, size: "16px", class: icon.iconClass })), icon.tooltip && (index.h("span", { class: "leading-normal" }, icon.tooltip)))))));
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (index.h(index.Host, { key: '79d39a3780dc99b9ab214926e459e9611b448be4', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: '2fe8f4528085c2cc36506467f83d553bd6e22931', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (index.h(index.Host, { key: '39eb3d12c742b2f4164d6dc2c20e10428f7dde2d', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), index.h("span", { key: 'bb5333fc3a55a6d5060051bc59e6cd1e513b8b53', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 
