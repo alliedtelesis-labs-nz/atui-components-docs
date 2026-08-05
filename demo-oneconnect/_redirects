@@ -1,0 +1,6 @@
+# Cloudflare Pages SPA fallback. The prototype routes client-side and uses
+# Angular matrix params for the workflow outlet (e.g.
+# /licensing;(workflow:redeem)), so any path that is not a real file must be
+# served index.html rather than a 404 — otherwise a deep link or a refresh
+# inside a dialog 404s. Real assets still win; this only catches the rest.
+/*  /index.html  200
