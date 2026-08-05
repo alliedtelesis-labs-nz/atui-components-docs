@@ -3,6 +3,7 @@ import { createGrid } from "ag-grid-community";
 import { themeQuartz } from "ag-grid-community";
 import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
+const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
 /**
  * @category Data Tables
  * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
@@ -79,11 +80,63 @@ export class AtTableComponent {
     }
     handleColDefsChange(newColDefs) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', newColDefs);
+            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(newColDefs));
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
         }
+    }
+    /**
+     * Re-applies the column defs so ag-grid's own sorting is neutralised, or
+     * restored, when the prop arrives after the grid has been created - the
+     * same late-binding case as `use_custom_pagination`. Without this a
+     * server-driven table sorts its current page client-side while the
+     * consumer also re-sorts server-side.
+     */
+    handleUseCustomSortingChange() {
+        if (this.agGrid && this.tableCreated) {
+            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(this.col_defs));
+        }
+    }
+    /**
+     * Stubs out each column's comparator when the consumer sorts externally,
+     * leaving the defs untouched otherwise.
+     */
+    resolveColumnDefs(colDefs) {
+        if (!this.use_custom_sorting) {
+            return colDefs;
+        }
+        return (colDefs ?? []).map((colDef) => ({
+            ...colDef,
+            comparator: () => 0,
+        }));
+    }
+    /**
+     * Keeps ag-grid's built-in paging panel in sync with the prop.
+     *
+     * The prop can arrive after the grid has already been created - e.g. a
+     * consumer binding it a tick late, or `at-search-table` forwarding
+     * `server_side_mode` that Angular applies after the element's first render.
+     * `createGrid` reads the prop once, so without this the grid keeps the
+     * paging panel it was built with and the consumer's own pagination footer
+     * renders alongside it, giving two footers.
+     */
+    handleUseCustomPaginationChange() {
+        if (this.agGrid && this.tableCreated) {
+            this.applyPaginationOptions(this.agGrid);
+        }
+    }
+    /**
+     * `paginationPageSizeSelector` is an initial-only ag-grid option, so it is
+     * set once in `createGrid` rather than here.
+     */
+    applyPaginationOptions(api) {
+        if (this.use_custom_pagination) {
+            api.setGridOption('pagination', false);
+            return;
+        }
+        api.setGridOption('pagination', true);
+        api.setGridOption('paginationPageSize', this.page_size);
     }
     async componentDidLoad() {
         if (this.disable_auto_init) {
@@ -130,7 +183,7 @@ export class AtTableComponent {
             theme: agAtuiTheme,
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
-            columnDefs: this.col_defs,
+            columnDefs: this.resolveColumnDefs(this.col_defs),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
             animateRows: true,
@@ -156,16 +209,11 @@ export class AtTableComponent {
                 }
             },
         };
-        if (this.use_custom_sorting) {
-            gridOptions.columnDefs = this.col_defs.map((colDef) => ({
-                ...colDef,
-                comparator: () => 0,
-            }));
-        }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;
             gridOptions.paginationPageSize = this.page_size;
-            gridOptions.paginationPageSizeSelector = [5, 10, 20, 50, 100];
+            gridOptions.paginationPageSizeSelector =
+                PAGINATION_PAGE_SIZE_SELECTOR;
         }
         else {
             gridOptions.pagination = false;
@@ -191,7 +239,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'd5d33243e819486d4c2b30b69d8f96b040d0c9d8', class: {
+        return (h(Host, { key: '596b3373e7f6afe319ec10c433d5e637c80e4388', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -479,6 +527,12 @@ export class AtTableComponent {
             }, {
                 "propName": "col_defs",
                 "methodName": "handleColDefsChange"
+            }, {
+                "propName": "use_custom_sorting",
+                "methodName": "handleUseCustomSortingChange"
+            }, {
+                "propName": "use_custom_pagination",
+                "methodName": "handleUseCustomPaginationChange"
             }];
     }
 }

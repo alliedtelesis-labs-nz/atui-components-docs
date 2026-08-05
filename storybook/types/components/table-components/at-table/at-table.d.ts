@@ -74,6 +74,35 @@ export declare class AtTableComponent {
      */
     handlePageSizeChange(newPageSize: number): void;
     handleColDefsChange(newColDefs: ColDef[]): void;
+    /**
+     * Re-applies the column defs so ag-grid's own sorting is neutralised, or
+     * restored, when the prop arrives after the grid has been created - the
+     * same late-binding case as `use_custom_pagination`. Without this a
+     * server-driven table sorts its current page client-side while the
+     * consumer also re-sorts server-side.
+     */
+    handleUseCustomSortingChange(): void;
+    /**
+     * Stubs out each column's comparator when the consumer sorts externally,
+     * leaving the defs untouched otherwise.
+     */
+    private resolveColumnDefs;
+    /**
+     * Keeps ag-grid's built-in paging panel in sync with the prop.
+     *
+     * The prop can arrive after the grid has already been created - e.g. a
+     * consumer binding it a tick late, or `at-search-table` forwarding
+     * `server_side_mode` that Angular applies after the element's first render.
+     * `createGrid` reads the prop once, so without this the grid keeps the
+     * paging panel it was built with and the consumer's own pagination footer
+     * renders alongside it, giving two footers.
+     */
+    handleUseCustomPaginationChange(): void;
+    /**
+     * `paginationPageSizeSelector` is an initial-only ag-grid option, so it is
+     * set once in `createGrid` rather than here.
+     */
+    private applyPaginationOptions;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     private initGrid;
