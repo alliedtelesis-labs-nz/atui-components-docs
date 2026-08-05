@@ -12,15 +12,24 @@ const AtMenuCell = class {
     getGui() {
         return this.el;
     }
+    /**
+     * Returning `true` tells AG-Grid the cell handled the refresh itself, so the
+     * component is reused rather than destroyed and recreated. That matters here
+     * because the cell hosts an `at-menu` popover: on recreation the menu panel
+     * briefly renders and measures before it is positioned and hidden, which
+     * shows up as a flash/artifact in the column (most visible when the actions
+     * column is pinned). `params` is `@State`, so reassigning it re-renders the
+     * existing cell with the new data.
+     */
     refresh(params) {
         this.init(params);
-        return false;
+        return true;
     }
     render() {
         const actions = typeof this.params.actions === 'function'
             ? this.params.actions(this.params)
             : this.params.actions;
-        return (h(Host, { key: '475aec51a46cdb814d77723c2e28336d5de020a7', class: "flex h-full items-center gap-4" }, h("at-menu", { key: '7b8f8bda5489bbde93bae0295a8c192874b84198', width: "fit-content", position: "left" }, h("at-button", { key: '970953dfac04062d15282ddc8ddd59f1620d4530', type: "secondaryText", slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: '3d3ed9bc3d616447ce63f3f4e048506f9c901fce', slot: "icon", name: "overflow_menu" }))), h("div", { key: '221a526e32c3221a3135634f7dc0638063d52396', class: "flex flex-col" }, actions &&
+        return (h(Host, { key: 'c0817121b010334f227548d4921e753eb0006b2c', class: "flex h-full items-center gap-4" }, h("at-menu", { key: 'a05b385894a7f06b66f3f91ad78fa8945118a619', width: "fit-content", position: "left" }, h("at-button", { key: 'cc4027157a3e8f7ff42e3ba8b85d9fe6c887b9ff', type: "secondaryText", slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: 'c61147d2921b5515a3ed2a8d7ee51094837ef4e1', slot: "icon", name: "overflow_menu" }))), h("div", { key: '244a852445aaf4d7fb6ecc509f677b325f4ebb30', class: "flex flex-col" }, actions &&
             actions.map((action) => typeof action === 'object' &&
                 (action.disabled &&
                     action.disabled(this.params.data) &&

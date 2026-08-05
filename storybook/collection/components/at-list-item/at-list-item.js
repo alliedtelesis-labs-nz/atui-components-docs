@@ -1,9 +1,12 @@
 import { h, Host } from "@stencil/core";
+// Vertical padding only — the container (e.g. `at-card`, which already applies
+// 16px of content padding) owns the horizontal inset, so rows sit flush with the
+// container's title and other content instead of being double-indented.
 const listItemVariants = {
-    xs: 'min-h-16 text-sm p-4',
-    sm: 'min-h-[32px] text-sm p-4',
-    md: 'min-h-[40px] text-body p-4',
-    lg: 'min-h-[48px] text-body p-4',
+    xs: 'min-h-16 text-sm py-4',
+    sm: 'min-h-[32px] text-sm py-4',
+    md: 'min-h-[40px] text-body py-4',
+    lg: 'min-h-[48px] text-body py-4',
 };
 /**
  * @category Layout
@@ -42,7 +45,7 @@ export class AtListItem {
         return listItemVariants[this.size];
     }
     render() {
-        return (h(Host, { key: '06e79035db1d6555d0a197ade232fc59bffcf931', role: "listitem", tabIndex: 0, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b` }, h("div", { key: '51dfcccd7c64de2f2c93f150303abeeec5ec64de', class: "flex flex-grow flex-col" }, h("div", { key: '5ba492e0de5a883f836daf13f5171ddfac9be1bb', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, h("span", { key: '6f019c184dc2e9071f0d66ac3a37b8b991174cc1', class: "fill-light" }, h("slot", { key: 'ffb52903d5925aafed75527079456278a2d60af8', name: "icon" })), this.item_prefix && (h("span", { key: 'dfc889cbcd1277783e8452dc0f03030943fbd94d', class: "text-secondary mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: '9a600729160d9dd23227581248a8a1f8e712a62e', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '1d5206ca2b8f4b793a436760160211920dee26b8', class: "flex flex-row font-normal" }, h("span", { key: 'ada4ae2fb81c553a3da8e916b66898ccf84ce100', class: "mr-4" }, this.item_title), h("slot", { key: 'c48a0cb6d0c3b6c3c2c74441ca2f8c04faa6998e', name: "title" })), this.subtitle && (h("span", { key: '03894cc06e8e0e9c5b7bd1f5ab2f1e8d7455bc18', class: "text-secondary inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '81b103f77bf997e7f1ba323c3fce3947d0768397', class: "flex flex-wrap items-end justify-end gap-8 text-right" }, h("slot", { key: '3393cfde35fd4525b4fcb354224ae31bbe034874' }), this.content && (h("span", { key: 'bc83a9e3bb0605a26c4e2e36f1a41036e12143bd', "data-name": "content" }, this.content)))));
+        return (h(Host, { key: 'ce3404f53278acbc294a5e3137a96417e4d3aeae', role: "listitem", tabIndex: 0, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b` }, h("div", { key: '79b31caec98c0a1740dca69ada679b1bc94f4010', class: "flex flex-grow flex-col" }, h("div", { key: '4017f5b7f9536ce5e48ddd73918b55e86fd3f148', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, h("span", { key: '84446f72e689ccda7f9fb4a9e236cbb6e8699eb5', class: "fill-light" }, h("slot", { key: '238f262ec607e2ddb6604bd52eaf301033db5a78', name: "icon" })), this.item_prefix && (h("span", { key: '5c6b96832958651925058d9a9325ef2b7be3dd83', class: "text-secondary mr-[4px] font-normal" }, this.item_prefix)), h("span", { key: 'da5fa5142d89f2f1a41fc6a854dd35072538f9d8', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '67ce2261b4b0986e38d27c44315400e83f80443c', class: "flex flex-row font-normal" }, h("span", { key: 'eb081f4e6a5d8e0582827801df0dc0963eb7944a', class: "mr-4" }, this.item_title), h("slot", { key: '495f0dc672b51812f2a504a9f9725af5763cbc21', name: "title" })), this.subtitle && (h("span", { key: '910d8e0a90ee518fcb34d7bfbeae77b8aa241074', class: "text-secondary inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '5853addd8f2eacd90e29007461fdf65a1586e94d', class: "flex flex-wrap items-end justify-end gap-8 text-right" }, h("slot", { key: '352a67fbecf412f3e29ff52c55e9d6780a445afb' }), this.content && (h("span", { key: '9b164de4438ab7c6d373e36aa80ae21344e09d10', "data-name": "content" }, this.content)))));
     }
     static get is() { return "at-list-item"; }
     static get properties() {

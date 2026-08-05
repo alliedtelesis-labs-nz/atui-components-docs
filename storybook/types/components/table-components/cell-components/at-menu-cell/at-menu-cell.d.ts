@@ -23,6 +23,15 @@ export declare class AtMenuCell implements ICellRendererComp {
     params: AtIMenuCellParams;
     init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
+    /**
+     * Returning `true` tells AG-Grid the cell handled the refresh itself, so the
+     * component is reused rather than destroyed and recreated. That matters here
+     * because the cell hosts an `at-menu` popover: on recreation the menu panel
+     * briefly renders and measures before it is positioned and hidden, which
+     * shows up as a flash/artifact in the column (most visible when the actions
+     * column is pinned). `params` is `@State`, so reassigning it re-renders the
+     * existing cell with the new data.
+     */
     refresh(params: ICellRendererParams): boolean;
     render(): any;
 }
