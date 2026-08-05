@@ -35,6 +35,7 @@ const AtTabs = class {
     atuiTabChange;
     tabEls = [];
     tabManualAdded = [];
+    boundTabEls = new WeakSet();
     componentDidRender() {
         this.tabEls = this.getTabsElements();
         requestAnimationFrame(() => {
@@ -62,6 +63,9 @@ const AtTabs = class {
     }
     addEventListenersToTabs() {
         this.tabEls.forEach((tabEl) => {
+            if (this.boundTabEls.has(tabEl))
+                return;
+            this.boundTabEls.add(tabEl);
             tabEl.addEventListener('click', () => {
                 this.handleTabChange(tabEl.tab_id);
             });
@@ -125,7 +129,7 @@ const AtTabs = class {
     }
     get tabOptions() {
         if (this.tabs) {
-            return this.tabs.map((tab) => (index.h("at-tab-trigger", { tab_id: tab.id, tab_title: tab.title, layout: this.layout, is_active: this.active_tab === tab.id, fill: this.fill, onClick: () => this.handleTabChange(tab.id) })));
+            return this.tabs.map((tab) => (index.h("at-tab-trigger", { tab_id: tab.id, tab_title: tab.title, layout: this.layout, is_active: this.active_tab === tab.id, fill: this.fill })));
         }
     }
     updateIndicatorPosition() {
@@ -152,7 +156,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: 'a2b42fde8a1aa37079fa3e3ab6c7deabac1b1a93' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: '52c9386815d4df81c13cdd8e76ebccc3836ceeba' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
