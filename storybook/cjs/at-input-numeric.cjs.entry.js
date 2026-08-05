@@ -127,8 +127,21 @@ const AtInputNumericComponent = class {
     inputId = `input-${Math.random().toString(36).substring(2, 11)}`;
     handleChange(event) {
         event.stopPropagation();
-        this.value = Number(event.target.value);
+        const input = event.target;
+        const parsed = Number(input.value);
+        this.value = this.clampToRange(isNaN(parsed) ? this.min : parsed);
+        input.value = String(this.value);
         this.atuiChange.emit(this.value);
+    }
+    handleInput(event) {
+        const raw = event.target.value;
+        const parsed = Number(raw);
+        if (String(parsed) === raw) {
+            this.value = parsed;
+        }
+    }
+    clampToRange(value) {
+        return Math.min(Math.max(value, this.min), this.max);
     }
     handleDecrease = () => {
         if (this.value > this.min) {
@@ -160,7 +173,7 @@ const AtInputNumericComponent = class {
             readonly: this.readonly,
             showButtons: this.show_buttons,
         });
-        return (index.h(index.Host, { key: 'd1b82e52a61be9d9ca822459f8b3e8b2321e6def', class: "w-full" }, index.h("div", { key: 'abf4f21211e879cf21b4996db8bb8d908847eb4d', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '474177ff10b1c5a976e09c412e573d92f1f34d69', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'cf3e8ed6fd05709a6e89c77e020369dcdd9a6eb8', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'a708c7808e73aeb72959454f86a1204e767b8ae4', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '67df76f2bc56866bfb6ecae272904cbca2fe31e1', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: 'cee6cffaa4a1c403c1ad3039b8c95a1987d6a4bf', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, index.h("at-icon", { key: '1c0bcd7cd36bf6ffc9d75bf4f1355149399a5ca5', slot: "icon", name: "subtract" }))), index.h("input", { key: 'd5b8aed2840958469fbd3786f88cfb0ddd9c700f', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", placeholder: `${this.placeholder}`, onInput: (event) => (this.value = Number(event.target.value)), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: 'd9b81c54aef280769d9cf0e4618fd6f998008e93', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, index.h("at-icon", { key: '27298a7ed1bc3a0c3348f70ec79f4b5c80891d01', slot: "icon", name: "add" })))), this.error_text && this.invalid && (index.h("span", { key: '7bed62a9efedeea0f4fdd5246ad128ad7df10540', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+        return (index.h(index.Host, { key: 'c237a76fee98cffc833f2df2029034e1ef11cabe', class: "w-full" }, index.h("div", { key: '4c6f4aa7d0c444992ee58b9062dec65b186d07df', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: 'caabedbdd789aede2c6a3ae53f429d7f885b6769', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '7145ac1bc8a00f9d138629da0412ef4c70bad89c', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '15247f344293bc5b3dad2f4e068da01709ac5c28', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '08cd871c608eb8d1b320bd8b42c8e2ac4839ec1b', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '7ffd881d70094c5d0c32e43125dfecdfdf29a931', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, index.h("at-icon", { key: 'f0282c3a3082e41143913716996488a9048093af', slot: "icon", name: "subtract" }))), index.h("input", { key: '16279ffcd61b946005462b4699b1bd89d7f916a5', id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '900b9fec7875420eca1ffd346c7821e73df80c21', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, index.h("at-icon", { key: '31989d1bdaa1404384a09e615099cfc8d44c1603', slot: "icon", name: "add" })))), this.error_text && this.invalid && (index.h("span", { key: '2da4df93d00aa4ba4ac018520320a25bf1dbb2a0', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
 AtInputNumericComponent.style = atInputNumericCss();

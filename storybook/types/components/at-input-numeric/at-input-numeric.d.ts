@@ -69,6 +69,8 @@ export declare class AtInputNumericComponent {
     atuiChange: EventEmitter<string | number>;
     private inputId;
     handleChange(event: Event): void;
+    handleInput(event: Event): void;
+    private clampToRange;
     handleDecrease: () => void;
     handleIncrease: () => void;
     private handleStepKeyDown;
