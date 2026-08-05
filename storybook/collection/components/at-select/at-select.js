@@ -31,6 +31,7 @@ const inputVariantsConfig = {
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
  * @slot - Use this slot to manually add <at-select-option> elements in your HTML. Options added via slot will appear in the dropdown alongside those provided via the 'options' prop. Both methods support search, selection, and display together (options being display before the manually added).
+ * @slot input-actions - Place inside the input container to add custom action elements (e.g., icons, buttons) next to the input field.
  */
 export class AtSelectComponent {
     /**
@@ -135,6 +136,7 @@ export class AtSelectComponent {
      */
     atuiChange;
     componentWillLoad() {
+        this.selectedLabel = this.findLabelByValue(this.value);
         fetchTranslations(this.el).then((translations) => {
             this.translations = translations;
         });
@@ -305,16 +307,16 @@ export class AtSelectComponent {
         return computed;
     }
     render() {
-        return (h(Host, { key: '2bbe6f6303f8a79a2f49c807bc0f3ebd79da3989', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'de13c48bbaa512144d2934ef3066191a00aa62d0', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: 'f7a812fd7ecfb1adf3927f9b52357e53d4a6e224', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '56c2ccd20601f389916bb2eb11c90c1e12182f38', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '4d9f0776aaa0137fb741379f7606d2946df427a4' }, this.error_text && this.invalid && (h("span", { key: '55b44661adb1fef26a399a0f989af50ac1026fb4', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '02e799b3da2c30003981291e86520bf7242d98bc' }, this.error_text && this.invalid && (h("span", { key: '5b148708ed0623f91f925f702d8b3c2d3051892a', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -336,7 +338,7 @@ export class AtSelectComponent {
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" })))));
+            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), h("slot", { name: "input-actions" })))));
     }
     renderOptions() {
         return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {

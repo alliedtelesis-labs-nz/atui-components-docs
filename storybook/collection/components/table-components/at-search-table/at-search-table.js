@@ -1,6 +1,7 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
 import { SortDirection } from "../../../types/sort";
+import { countFilterConditions, rowMatchesFilterGroup, flattenFilterConditions, } from "../../../utils/filter-tree.util";
 /**
  * @category Data Tables
  * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
@@ -32,6 +33,10 @@ export class AtSearchTable {
      * Column definitions passed to at-table component.
      */
     col_defs = [];
+    /**
+     * External search filters applied to the table data.
+     */
+    search_filters;
     /**
      * Default page size of the table
      */
@@ -107,7 +112,12 @@ export class AtSearchTable {
     agGrid;
     tableCreated = false;
     activeFilters = {};
-    selectedFilters = [];
+    activeFilterTree;
+    selectedFilters = {
+        id: 'root',
+        logical_operator: 'And',
+        children: [],
+    };
     menuSelectedIds = [];
     searchValue = '';
     currentPage = 1;
@@ -144,7 +154,10 @@ export class AtSearchTable {
         this.pageSize = newValue || 10;
     }
     handleSelectedFiltersChange(newValue) {
-        this.menuSelectedIds = newValue.map((f) => f.id);
+        this.menuSelectedIds = flattenFilterConditions(newValue).map((f) => f.id);
+    }
+    handleSearchFiltersChange() {
+        this.updateActiveFilters();
     }
     handleLoadingChange(newValue) {
         if (newValue) {
@@ -340,7 +353,28 @@ export class AtSearchTable {
                         .includes(String(filterValue).toLowerCase());
                 return matches;
             });
-            return columnFilterResult;
+            const getCellValue = (colId) => {
+                const colDef = this.col_defs.find((def) => def.field === colId);
+                if (colDef &&
+                    colDef.valueGetter &&
+                    typeof colDef.valueGetter === 'function') {
+                    return colDef.valueGetter({
+                        data: node.data,
+                        node,
+                        colDef,
+                        api: this.agGrid,
+                        context: null,
+                        getValue: (field) => node.data[field],
+                        column: null,
+                    });
+                }
+                return node.data[colId];
+            };
+            const useOperatorFilters = !!this.activeFilterTree &&
+                countFilterConditions(this.activeFilterTree) > 0;
+            return useOperatorFilters
+                ? rowMatchesFilterGroup(this.activeFilterTree, getCellValue)
+                : columnFilterResult;
         });
     }
     handleColumnChange(event) {
@@ -354,41 +388,53 @@ export class AtSearchTable {
         this.col_defs = updatedColDefs;
     }
     handleFilterChange(event) {
-        if (!event.detail ||
-            (Array.isArray(event.detail) && event.detail.length === 0)) {
+        const tree = event.detail;
+        if (!tree || countFilterConditions(tree) === 0) {
             // Handle clear all case
-            this.selectedFilters = [];
+            this.selectedFilters = {
+                id: 'root',
+                logical_operator: 'And',
+                children: [],
+            };
             this.menuSelectedIds = [];
             this.updateActiveFilters();
             return;
         }
-        if (Array.isArray(event.detail)) {
-            if (typeof event.detail[0] === 'string') {
-                this.handleMenuFilterChange(event.detail);
-            }
-            else if (typeof event.detail[0] === 'object') {
-                this.handleFilterListChange(event.detail);
-            }
-        }
+        this.handleFilterTreeChange(tree);
         this.updateActiveFilters();
     }
-    handleMenuFilterChange(selectedIds) {
-        this.selectedFilters = selectedIds.map((id) => ({
-            id,
-            value: '',
-        }));
-        this.menuSelectedIds = selectedIds;
+    relabelFilterNode(node) {
+        if ('children' in node) {
+            return {
+                ...node,
+                children: node.children.map((child) => this.relabelFilterNode(child)),
+            };
+        }
+        const column = this.col_defs.find((col) => col.field === node.id);
+        const filterOptions = this.convertDropdownKeysToSelectOptions(column);
+        return {
+            id: node.id,
+            value: node.value,
+            operator: node.operator ?? 'contains',
+            label: column?.headerName || node.id,
+            ...(filterOptions && { filter_options: filterOptions }),
+        };
     }
-    handleFilterListChange(filters) {
-        // If filters array is empty or contains a single empty filter, reset all states
-        if (!filters.length || (filters.length === 1 && filters[0].id === '')) {
-            this.selectedFilters = [];
+    handleFilterTreeChange(tree) {
+        // If the tree is empty or contains a single empty filter, reset all states
+        const leaves = flattenFilterConditions(tree);
+        if (!leaves.length || (leaves.length === 1 && leaves[0].id === '')) {
+            this.selectedFilters = {
+                id: 'root',
+                logical_operator: 'And',
+                children: [],
+            };
             this.menuSelectedIds = [];
         }
         else {
-            this.selectedFilters = filters;
+            this.selectedFilters = this.relabelFilterNode(tree);
             // Set menuSelectedIds based on all filter IDs, regardless of their values
-            this.menuSelectedIds = filters.map((filter) => filter.id);
+            this.menuSelectedIds = leaves.map((filter) => filter.id);
         }
     }
     updateActiveFilters() {
@@ -396,7 +442,8 @@ export class AtSearchTable {
             acc[col.field] = '';
             return acc;
         }, {});
-        this.selectedFilters.forEach((filter) => {
+        this.activeFilterTree = this.search_filters ?? this.selectedFilters;
+        flattenFilterConditions(this.selectedFilters).forEach((filter) => {
             if (filter.value) {
                 this.activeFilters[filter.id] = filter.value;
             }
@@ -480,16 +527,27 @@ export class AtSearchTable {
             this.atExportPdf.emit(columnDetails);
         }
     }
+    convertDropdownKeysToSelectOptions(column) {
+        if (column?.filterOptions?.dropdownKeys) {
+            return column.filterOptions.dropdownKeys.map((key) => ({
+                value: key.content,
+                label: key.translationKey,
+            }));
+        }
+    }
     render() {
-        return (h(Host, { key: 'fa70b020fe94fbbfdb048ae24b559740cb88ed1b', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'd913951a0895980f8f815deddc039f880b43ed63', ag_grid: this.agGrid }, h("at-control-group", { key: '5177500b47fa09f7fb38a073989978f66052c3af', slot: "search" }, this.shouldShowDropdownFilters && (h("at-table-filter-menu", { key: '7702819b3ad1d80678a8c24b7856c815a228e2d3', col_defs: this.col_defs, selected: this.menuSelectedIds, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd15e7331798a141a9a3a5264782be985c7b920b6', class: "w-input-md", label: this.search_label, hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'ac02058503bb32819c18e06842c4a77778eddc31', slot: "filters", col_defs: this.col_defs, selected: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '3e99e7fa54e14e4d492ccbcac93f86bc83c36c54', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '856ec2e4644f05e7b8c337951cc8c88a6ad687bf', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '3cd64983f2dc47620fcb805f2204925b9f7da7ad', slot: "actions" }, h("slot", { key: '9109ce4681e1ee2adad2e8746b8a9a86dcc6d9d6', name: "actions" }))), h("slot", { key: '6d61b1e6c516568db50b42413521f7c5ba3b2730', name: "multi-select-actions" }), h("div", { key: '99a2d5ef8d7f1c668ace6bdc83152e100ec5a81b', class: "relative" }, h("at-table", { key: 'ccb381110e4727fd37337bb87153b209da47eb09', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+        return (h(Host, { key: '9b8c43cc37119f38f58898e7d73c40a1bbfcc378', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '8fa77cf7c38c6688428268a3a2e52c8e628ed48b', ag_grid: this.agGrid }, h("at-control-group", { key: '89027962817720dd2dde49c9dc77f72652e7620f', slot: "search" }, this.shouldShowDropdownFilters &&
+            !this.search_filters && (h("at-table-filter-menu", { key: '6297c9cfec0a4e8706d9bed55184b9693df237c5', col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '8090a8ca20af61b5d8c626048dc2231744e638af', class: "w-input-md",
+            // label={this.search_label}
+            hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (h("at-table-filters", { key: 'e2c202e3963576bc455adb9939371982bccfb15f', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: '32be9c8265ef1192d6cd3fd8e1648ac17ef2e604', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'b3a3ea4b7d1ada1348e519cb234bb3f98a0a8fd5', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'b3200a02fa5aa76ba84a87fd812054dcb0af47d9', slot: "actions" }, h("slot", { key: '214a096aaa59b0fb7cf72f102815897431be7a2a', name: "actions" }))), h("slot", { key: '92a2acb97cdbd2bd2d4cf9af38b91986aba7ba0d', name: "multi-select-actions" }), h("div", { key: 'b066a9eb59033891701f4e955e78815e2d2e74fe', class: "relative" }, h("at-table", { key: 'dd2b5be9ac573264862478fbd82be8ef76314cec', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: 'c4cb6f421ff060ba08c35418087ea77f780e3b4e', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '369667f13d1f6555fed2c63e061fc7dbe2c6edb2', class: "flex items-center" }, h("at-loading", { key: '5bc096da53d361b9003a49d550313dd76fe5ca9f', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '84c1ba9be9980862995ecec83eda158b53056abf', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '101d549ba5f921fb50771edd761e5aa97a7aab98', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'e96526968f77e937be2921348e9f6661d7c7c4f1', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: '91b813ff110e2b2cfff79fae57bc7cd9cbecce37', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '7d26d80e1f868d94f1fc34042c1502ed47a95ba9', class: "flex items-center" }, h("at-loading", { key: '96ee9697d91fe3892d9b83ec40281ca4f26721c7', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'b556d9c329744d62af2efd6056ae3b8b25fcb864', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '2b0aa2da1307c8732b533b17d5f89820e64b5f9a', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'e707972c294f0fc5bc05565f4e9e0a87c1451216', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: 'c29b405272dd9220065899068a03618f78994c39', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '618c0c2a8196ac6dafe91594d090fe40e4da7635', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '59cf23f295d9e4753fabf29f4223602db2a70b3c', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'c7d7a9fca091c42f344070681cb8f974667274ce', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -601,14 +659,14 @@ export class AtSearchTable {
                 "type": "unknown",
                 "mutable": false,
                 "complexType": {
-                    "original": "ColDef[]",
-                    "resolved": "ColDef<any, any>[]",
+                    "original": "AtITableColumnDef[]",
+                    "resolved": "AtITableColumnDef[]",
                     "references": {
-                        "ColDef": {
+                        "AtITableColumnDef": {
                             "location": "import",
-                            "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "path": "../../../models/searchTableModel",
+                            "id": "src/models/searchTableModel.ts::AtITableColumnDef",
+                            "referenceLocation": "AtITableColumnDef"
                         }
                     }
                 },
@@ -621,6 +679,30 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "defaultValue": "[]"
+            },
+            "search_filters": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "AtIFilterGroup",
+                    "resolved": "AtIFilterGroup",
+                    "references": {
+                        "AtIFilterGroup": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilterGroup",
+                            "referenceLocation": "AtIFilterGroup"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "External search filters applied to the table data."
+                },
+                "getter": false,
+                "setter": false
             },
             "page_size": {
                 "type": "number",
@@ -651,8 +733,8 @@ export class AtSearchTable {
                     "references": {
                         "AtISelectOption": {
                             "location": "import",
-                            "path": "../../../types/select",
-                            "id": "src/types/select.ts::AtISelectOption",
+                            "path": "../../../components",
+                            "id": "src/components.d.ts::AtISelectOption",
                             "referenceLocation": "AtISelectOption"
                         }
                     }
@@ -870,6 +952,7 @@ export class AtSearchTable {
             "agGrid": {},
             "tableCreated": {},
             "activeFilters": {},
+            "activeFilterTree": {},
             "selectedFilters": {},
             "menuSelectedIds": {},
             "searchValue": {},
@@ -1044,6 +1127,9 @@ export class AtSearchTable {
             }, {
                 "propName": "selectedFilters",
                 "methodName": "handleSelectedFiltersChange"
+            }, {
+                "propName": "search_filters",
+                "methodName": "handleSearchFiltersChange"
             }, {
                 "propName": "loading",
                 "methodName": "handleLoadingChange"

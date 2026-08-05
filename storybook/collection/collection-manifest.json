@@ -96,6 +96,7 @@
     "components/table-components/at-table/at-table.js",
     "components/table-components/at-search-table/at-search-table.js",
     "components/table-components/at-column-manager/at-column-manager.js",
+    "components/table-components/at-filter-form/at-filter-form.js",
     "components/table-components/at-static-table/at-static-table.js",
     "components/table-components/at-table-actions/at-table-actions.js",
     "components/table-components/at-table-export-menu/at-table-export-menu.js",

@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilterEvent, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -39,6 +39,7 @@ import { AtCustomTimeRange as AtCustomTimeRangeElement, defineCustomElement as d
 import { AtDashboard as AtDashboardElement, defineCustomElement as defineAtDashboard } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dashboard.js";
 import { AtDialog as AtDialogElement, defineCustomElement as defineAtDialog } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-dialog.js";
 import { AtEditTextCell as AtEditTextCellElement, defineCustomElement as defineAtEditTextCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-edit-text-cell.js";
+import { AtFilterForm as AtFilterFormElement, defineCustomElement as defineAtFilterForm } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-filter-form.js";
 import { AtFormLabel as AtFormLabelElement, defineCustomElement as defineAtFormLabel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-form-label.js";
 import { AtHeader as AtHeaderElement, defineCustomElement as defineAtHeader } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-header.js";
 import { AtHealthDotCell as AtHealthDotCellElement, defineCustomElement as defineAtHealthDotCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-health-dot-cell.js";
@@ -479,6 +480,23 @@ export const AtEditTextCell: StencilReactComponent<AtEditTextCellElement, AtEdit
     react: React,
     events: {} as AtEditTextCellEvents,
     defineCustomElement: defineAtEditTextCell
+});
+
+type AtFilterFormEvents = {
+    onAtCancel: EventName<CustomEvent<null>>,
+    onAtSearch: EventName<AtFilterFormCustomEvent<AtIFilterGroup>>
+};
+
+export const AtFilterForm: StencilReactComponent<AtFilterFormElement, AtFilterFormEvents> = /*@__PURE__*/ createComponent<AtFilterFormElement, AtFilterFormEvents>({
+    tagName: 'at-filter-form',
+    elementClass: AtFilterFormElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtCancel: 'atCancel',
+        onAtSearch: 'atSearch'
+    } as AtFilterFormEvents,
+    defineCustomElement: defineAtFilterForm
 });
 
 type AtFormLabelEvents = NonNullable<unknown>;
@@ -1127,7 +1145,7 @@ export const AtTableExportMenu: StencilReactComponent<AtTableExportMenuElement, 
     defineCustomElement: defineAtTableExportMenu
 });
 
-type AtTableFilterMenuEvents = { onAtChange: EventName<CustomEvent<string[]>> };
+type AtTableFilterMenuEvents = { onAtChange: EventName<AtTableFilterMenuCustomEvent<AtIFilterGroup>> };
 
 export const AtTableFilterMenu: StencilReactComponent<AtTableFilterMenuElement, AtTableFilterMenuEvents> = /*@__PURE__*/ createComponent<AtTableFilterMenuElement, AtTableFilterMenuEvents>({
     tagName: 'at-table-filter-menu',
@@ -1138,7 +1156,7 @@ export const AtTableFilterMenu: StencilReactComponent<AtTableFilterMenuElement, 
     defineCustomElement: defineAtTableFilterMenu
 });
 
-type AtTableFiltersEvents = { onAtChange: EventName<AtTableFiltersCustomEvent<AtIFilterEvent[]>> };
+type AtTableFiltersEvents = { onAtChange: EventName<AtTableFiltersCustomEvent<AtIFilterGroup>> };
 
 export const AtTableFilters: StencilReactComponent<AtTableFiltersElement, AtTableFiltersEvents> = /*@__PURE__*/ createComponent<AtTableFiltersElement, AtTableFiltersEvents>({
     tagName: 'at-table-filters',

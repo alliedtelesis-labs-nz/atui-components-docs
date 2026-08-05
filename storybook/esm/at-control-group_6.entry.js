@@ -1,5 +1,6 @@
-import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-DNWYfDmW.js';
+import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-DVWT6VvQ.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
+import { c as countFilterConditions, i as isFilterGroup, d as removeFilterCondition, b as flattenFilterConditions } from './filter-tree.util-CYRBwQ7z.js';
 
 const atControlGroupCss = () => `at-control-group{display:inline-flex;justify-content:center}at-control-group.at-control-group--horizontal{flex-direction:row;align-items:stretch}at-control-group.at-control-group--horizontal>at-button:not(:first-child):not(:last-child){border-radius:0 !important}at-control-group.at-control-group--horizontal>at-button:not(:last-child){border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-button:not(:first-child){border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:first-child):not(:last-child)>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:last-child)>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:first-child)>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:first-child):not(:last-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:first-child):not(:last-child) [data-name=multi-select-input-container]{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:last-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:last-child) [data-name=multi-select-input-container]{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:first-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:first-child) [data-name=multi-select-input-container]{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:first-child):not(:last-child)>div{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:last-child)>div{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:first-child)>div{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:first-child):not(:last-child)>div>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:last-child)>div>div>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:first-child)>div>div>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:first-child):not(:last-child)>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:last-child)>div>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:first-child)>div>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:first-child):not(:last-child) at-button[slot=menu-trigger]{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:last-child) at-button[slot=menu-trigger]{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:first-child) at-button[slot=menu-trigger]{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>*:not(:first-child){margin-left:-1px}at-control-group.at-control-group--vertical{flex-direction:column}at-control-group.at-control-group--vertical>at-button:not(:first-child):not(:last-child){border-radius:0 !important}at-control-group.at-control-group--vertical>at-button:not(:last-child){border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-button:not(:first-child){border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:first-child):not(:last-child)>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:last-child)>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:first-child)>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:first-child):not(:last-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:first-child):not(:last-child) [data-name=multi-select-input-container]{border-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:last-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:last-child) [data-name=multi-select-input-container]{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:first-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:first-child) [data-name=multi-select-input-container]{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:first-child):not(:last-child)>div{border-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:last-child)>div{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:first-child)>div{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:first-child):not(:last-child)>div>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:last-child)>div>div>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:first-child)>div>div>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:first-child):not(:last-child)>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:last-child)>div>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:first-child)>div>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:first-child):not(:last-child) at-button[slot=menu-trigger]{border-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:last-child) at-button[slot=menu-trigger]{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:first-child) at-button[slot=menu-trigger]{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>*:not(:first-child){margin-top:-1px}`;
 
@@ -12,7 +13,7 @@ const AtControlGroup = class {
      */
     direction = 'horizontal';
     render() {
-        return (h(Host, { key: '2cad52c4cabb5f603994c3986ef0e2040c67406e', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: 'ab2412b9b66b004ce136fc96c997d995cadd6651' })));
+        return (h(Host, { key: 'f9acf8ce8756b53570b91205806ba66f5d148bc9', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: 'e314e677ee0a7aa4f5f2579bf16bbe2026be3468' })));
     }
 };
 AtControlGroup.style = atControlGroupCss();
@@ -58,15 +59,15 @@ const AtSearch = class {
         this.searchEl.focus();
     }
     render() {
-        return (h(Host, { key: '5a92e26c3d0ee5b0f913d4f6019ee6612100e01d' }, (this.label || this.info_text) && (h("at-form-label", { key: 'af6ce6fc0eda56804452141d8c565e1f1abb9154', label: this.label, for: this.label
+        return (h(Host, { key: '86e695a0204bdbf052398a46ec17bd63b05e82ea' }, (this.label || this.info_text) && (h("at-form-label", { key: 'f4271c0d36f5cb23751ab2aa7b89c6b61acf375d', label: this.label, for: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, info_text: this.info_text })), h("div", { key: '8fb209cfe082f7e67e5225e9a2d729c979d065d8', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, h("at-icon", { key: 'bb690888437073cfb0e15970846b7d870da644f0', class: "fill-foreground px-8", name: "search" }), h("input", { key: '4ab9da04eb3670c4f434d8f90b7b0f0aa5130af2', id: this.label
+                : undefined, info_text: this.info_text })), h("div", { key: '8ca7f1c1abae4c030c18da5500e3b814afb1f26c', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, h("at-icon", { key: '495fa46281bd677691db11439ae282e8c50f73e9', class: "fill-foreground px-8", name: "search" }), h("input", { key: '4c0e7626c5264181462baaef249f95cbea1e635d', id: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '0cc14b855cd8d6f0a75c4c4ccde543cf2839cdae', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '173541b7da731273bafda0b482c18304fd6dbe30', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '85b00d21b0241481829ddcbcb086a97cb479dedc', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '1b833bc510672e4c9c992c95984b3e22308bebc7', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }, h("at-icon", { key: 'cc0e9192b0c3c286e9e47b68a21e632c7d2661b3', slot: "icon", name: "backspace" })))), this.hint_text && (h("span", { key: 'e7569bc7fa9319294b8737d267f094f4c3331d4b', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
+                : '-1' }, h("at-icon", { key: 'd1eda5d553b61bd13f5a5843d751466f336f27a9', slot: "icon", name: "backspace" })))), this.hint_text && (h("span", { key: 'b4d46ad6d1a6e8f128c09db9e66f8beef738d819', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
     }
 };
 
@@ -110,43 +111,52 @@ const AtTableFilterMenu = class {
      */
     col_defs;
     /**
-     * Currently selected filter columns
+     * Currently active filters, used to seed the form when the menu is opened
      */
-    selected = [];
+    filters;
     translations;
     get el() { return getElement(this); }
+    menuEl;
     /**
-     * Emits selected columns when checkbox selection changes
+     * Emits the active filters when the user applies a search
      */
     atChange;
-    get filteredColumns() {
-        return this.col_defs
+    get filterConfig() {
+        return (this.col_defs || [])
             .filter((colDef) => !(colDef.filterOptions &&
             colDef.filterOptions.exclude === true))
-            .map((colDef) => ({
-            value: colDef.field,
-            label: colDef.headerName,
-        }));
+            .map((colDef) => {
+            const filterOptions = this.convertDropdownKeysToSelectOptions(colDef);
+            return {
+                id: colDef.field ?? '',
+                label: colDef.headerName ?? colDef.field ?? '',
+                value: '',
+                ...(filterOptions && { filter_options: filterOptions }),
+            };
+        });
+    }
+    convertDropdownKeysToSelectOptions(column) {
+        if (column?.filterOptions?.dropdownKeys) {
+            return column.filterOptions.dropdownKeys.map((key) => ({
+                value: key.content,
+                label: key.translationKey,
+            }));
+        }
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
-    handleSelectedChange(newValue) {
-        this.selected = newValue || [];
-    }
-    handleColumnSelect(event) {
-        const newValue = event.detail || [];
-        this.selected = newValue;
-        this.atChange.emit(this.selected);
-    }
+    handleSearch = async (event) => {
+        this.atChange.emit(event.detail);
+        await this.menuEl?.closeMenu();
+    };
+    handleCancel = async () => {
+        await this.menuEl?.closeMenu();
+    };
     render() {
-        return (h(Host, { key: '4697ec9e9a7ad0287e45bab6631b43a5306f4d97' }, h("at-menu", { key: '52b8b749e072c1210fcafe4e8e0dba0f334ce046', autoclose: false, width: "fit-content", class: "self-start", align: "start" }, h("at-tooltip", { key: 'ac3551892c6ff5e493644e13d091122a68de3281', slot: "menu-trigger", position: "top" }, h("at-button", { key: '7a216ccc0e9c1cdf21dc6a743d04b76af8be1162', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, h("at-icon", { key: '3bbcc1b3269a881883a346f481861efc46dd5ced', slot: "icon", name: "edit_filters" })), h("span", { key: 'f2ce8a254d137b2daac1c41d796a55f5e8dc4c50' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '1166e7895cc2f172e29a0581f1fbdcd81b493509', class: "flex flex-col" }, h("at-checkbox-group", { key: '403f5f4ed397ad04d021d0c297dafdf1780daaf2', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: '67050294b72428cf32aa32327bca3323ecb62365' }, h("at-menu", { key: 'fd8b2253ff28e71fc13b2695bcfa5306d87521a5', ref: (el) => (this.menuEl = el), autoclose: false, width: "fit-content", class: "self-start", align: "start" }, h("div", { key: 'a06452e0e31b1490003a44d8d13ae41bd9bdadf6', class: "relative", slot: "menu-trigger", "data-tooltip": "table-filter-menu" }, this.filters &&
+            countFilterConditions(this.filters) > 0 && (h("at-badge", { key: '1271fc6f42e7887f8b3c9495ffc30698a2e3eec1', class: "absolute top-[-8px] left-[-6px] z-10", type: "info", size: "sm", label: countFilterConditions(this.filters).toString() })), h("at-button", { key: '5da21e70fb5bc62864c0c358bedac0d0d2059435', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, h("at-icon", { key: 'c7f4c360e131973e268bbe98734ccad58e809a1a', slot: "icon", name: "edit_filters" }))), h("at-tooltip", { key: '6bf8799c61870f7f68d15faec41c6a3e5b7edc1d', "trigger-id": "table-filter-menu", position: "top" }, this.translations.ATUI.TABLE.FILTER_DATA), h("at-filter-form", { key: 'b66d403111fa8497d4b4762c8485bda27a865847', filter_config: this.filterConfig, active_filters: this.filters, onAtSearch: this.handleSearch, onAtCancel: this.handleCancel }))));
     }
-    static get watchers() { return {
-        "selected": [{
-                "handleSelectedChange": 0
-            }]
-    }; }
 };
 
 const AtTableFilters = class {
@@ -155,45 +165,65 @@ const AtTableFilters = class {
         this.atChange = createEvent(this, "atChange", 7);
     }
     /**
-     * Column definitions used in your at-table
+     * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
      */
-    col_defs;
+    filters;
     /**
-     * Currently selected columns and filter values
-     */
-    selected = [];
-    translations;
-    get el() { return getElement(this); }
-    /**
-     * Emits id of column and filter value on change.
+     * Emits the remaining filters whenever a chip is removed or all are cleared.
      */
     atChange;
-    async componentWillLoad() {
-        this.translations = await fetchTranslations(this.el);
+    chipLabel(filter) {
+        return `${filter.label ?? filter.id} ${filter.operator ?? ''} ${filter.value}`
+            .replace(/\s+/g, ' ')
+            .trim();
     }
-    filterChangeHandler(event, columnId) {
-        event.stopPropagation();
-        this.selected = this.selected.map((column) => {
-            if (column.id === columnId)
-                return { id: column.id, value: event.detail };
-            return column;
+    groupBackground(depth) {
+        return depth % 2 === 0 ? 'bg-surface-0' : 'bg-surface-1';
+    }
+    hasValidCondition(node) {
+        return isFilterGroup(node)
+            ? node.children.some((child) => this.hasValidCondition(child))
+            : !!(node.id && node.value);
+    }
+    removeCondition(condition) {
+        const filters = this.filters;
+        removeFilterCondition(filters, condition);
+        this.filters = { ...filters };
+        this.atChange.emit(this.filters);
+    }
+    clearAll = () => {
+        const filters = this.filters;
+        flattenFilterConditions(filters)
+            .filter((condition) => condition.id && condition.value)
+            .forEach((condition) => removeFilterCondition(filters, condition));
+        this.filters = { ...filters };
+        this.atChange.emit(this.filters);
+    };
+    renderConditionChip(filter) {
+        const label = this.chipLabel(filter);
+        return (h("at-badge", { class: "flex items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label }, h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
+                event.stopPropagation();
+                this.removeCondition(filter);
+            } }, h("at-icon", { name: "cancel" }))));
+    }
+    renderGroupChips(group, depth = 0) {
+        const children = group.children.filter((child) => this.hasValidCondition(child));
+        const bgClass = this.groupBackground(depth);
+        return children.flatMap((child, index) => {
+            const items = [];
+            if (index > 0) {
+                items.push(h("span", { class: "text-muted text-xs font-semibold", "data-name": "filter-chip-operator" }, group.logical_operator));
+            }
+            items.push(isFilterGroup(child) ? (h("span", { class: `flex items-center gap-4 rounded-full p-2 ${bgClass}`, "data-name": "filter-chip-group" }, this.renderGroupChips(child, depth + 1))) : (this.renderConditionChip(child)));
+            return items;
         });
-        this.atChange.emit(this.selected);
-    }
-    clearFilters = () => {
-        this.selected = [];
-        this.atChange.emit([]);
-    };
-    clearSingleFilter = (columnId) => {
-        this.selected = this.selected.filter((column) => column.id !== columnId);
-        this.atChange.emit(this.selected.length ? this.selected : []);
-    };
-    getHeaderName(columnId) {
-        const col = this.col_defs?.find((c) => c.field === columnId || c.colId === columnId);
-        return col?.headerName ?? columnId;
     }
     render() {
-        return (this.col_defs && (h(Host, { key: 'd739c8fff86b1b2e66a919b4a1bcb0f444d7c87d', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '3fd2aef3f7a429455ecbad0002025374c25b75a5', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: this.getHeaderName(column.id), prefix: this.getHeaderName(column.id) + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, h("at-icon", { slot: "icon", name: "cancel" }))))))), h("at-button", { key: '69953fcb49f64909427f7b55ff00ff259013c0d0', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        if (!this.filters || !this.hasValidCondition(this.filters)) {
+            return h(Host, null);
+        }
+        const conditionCount = flattenFilterConditions(this.filters).filter((condition) => condition.id && condition.value).length;
+        return (h(Host, { class: "flex items-start gap-8" }, h("div", { class: "flex h-full flex-wrap items-center gap-4", "data-name": "filter-chip-list" }, this.renderGroupChips(this.filters), conditionCount > 1 && (h("at-button", { size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => this.clearAll() }, h("at-icon", { slot: "icon", name: "backspace" }))))));
     }
 };
 
@@ -250,7 +280,7 @@ const AtTablePagination = class {
      */
     atPageSizeChange;
     render() {
-        return (h(Host, { key: '12aec4dce5f32ad96496609c67257c3baba59520', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '5ae693d51371da2c1ff592cf7df512fbb2eccb2d' }, "Page Size: "), h("at-select", { key: '7c70ec586678135a282710c00033cf5d89dd1cfe', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '13c7c8de385a8799a43e90ccef313a2a3c85fa80', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '32b78fba449f8b2792eae97ad96027d8b49c927b', slot: "icon", name: "first_page" })), h("at-button", { key: 'd0e4de2afb93b41e3f0d56d9581f17d939ad7366', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: '677ecb1724e042b1e26c4d3819f797432f1436b3', slot: "icon", name: "chevron_left" })), h("span", { key: 'c291d6347b70aa71d4ef24897f137d83685837ab' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: 'f29bca42079a31b4e1de0249ef3016b3267fec82', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: '2bb4e133ddb96639425eb84610b2bbd9b06cff42', slot: "icon", name: "chevron_right" })), h("at-button", { key: '5052cbfca81b50bfba4986710ccde3658437e25e', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: '10de325705b793f1544efb65095f729ad1a31331', slot: "icon", name: "last_page" }))));
+        return (h(Host, { key: '465a4b29a0c995046ab765a0b0ee677afc1b66a5', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'd1021326e73c9eb7958e7cb2291e985617d6f7de' }, "Page Size: "), h("at-select", { key: '9e7bbc11a32fe76b329939d45c15dc8f981b2f9b', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '3d90f28feebbbe2771c510128f53a2ad0634b979', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '65d81273f96dd7b77a7faad757fc159d65150159', slot: "icon", name: "first_page" })), h("at-button", { key: 'b04453971099c51550230d9ac7e046f37b90147c', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: 'd8d65ec09f70e1301ddaa0a1d78ee0072f076e38', slot: "icon", name: "chevron_left" })), h("span", { key: 'ab561f0829ec5d162edd811496836b7eeb23e780' }, "Page ", this.current_page, " of ", this.num_pages), h("at-button", { key: '9eb12fe12c316edb4db624415c576ddb747fe931', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: 'bd029397d2c4c838973c7c27be12ca23a0de6e79', slot: "icon", name: "chevron_right" })), h("at-button", { key: '6705d6d80542563fec77daf07d4e106771955ea0', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: '96df74b4bf9da03f30f6c4ec9d12b5d990defc81', slot: "icon", name: "last_page" }))));
     }
 };
 

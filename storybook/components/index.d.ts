@@ -61,6 +61,8 @@ export { AtDialogComponent as AtDialog } from '../types/components/at-dialog/at-
 export { defineCustomElement as defineCustomElementAtDialog } from './at-dialog';
 export { AtEditTextCell as AtEditTextCell } from '../types/components/table-components/cell-components/at-edit-text-cell/at-edit-text-cell';
 export { defineCustomElement as defineCustomElementAtEditTextCell } from './at-edit-text-cell';
+export { AtFilterForm as AtFilterForm } from '../types/components/table-components/at-filter-form/at-filter-form';
+export { defineCustomElement as defineCustomElementAtFilterForm } from './at-filter-form';
 export { AtFormLabelComponent as AtFormLabel } from '../types/components/at-form-label/at-form-label';
 export { defineCustomElement as defineCustomElementAtFormLabel } from './at-form-label';
 export { AtHeader as AtHeader } from '../types/components/at-header/at-header';

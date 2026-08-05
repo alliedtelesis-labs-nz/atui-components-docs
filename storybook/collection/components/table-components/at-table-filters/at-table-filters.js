@@ -1,97 +1,99 @@
-import { h, Host, } from "@stencil/core";
-import { fetchTranslations } from "../../../utils/translation";
+import { h, Host } from "@stencil/core";
+import { flattenFilterConditions, isFilterGroup, removeFilterCondition, } from "../../../utils/filter-tree.util";
+/**
+ * @category Data Tables
+ * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+ * @dependency at-badge
+ */
 export class AtTableFilters {
     /**
-     * Column definitions used in your at-table
+     * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
      */
-    col_defs;
+    filters;
     /**
-     * Currently selected columns and filter values
-     */
-    selected = [];
-    translations;
-    el;
-    /**
-     * Emits id of column and filter value on change.
+     * Emits the remaining filters whenever a chip is removed or all are cleared.
      */
     atChange;
-    async componentWillLoad() {
-        this.translations = await fetchTranslations(this.el);
+    chipLabel(filter) {
+        return `${filter.label ?? filter.id} ${filter.operator ?? ''} ${filter.value}`
+            .replace(/\s+/g, ' ')
+            .trim();
     }
-    filterChangeHandler(event, columnId) {
-        event.stopPropagation();
-        this.selected = this.selected.map((column) => {
-            if (column.id === columnId)
-                return { id: column.id, value: event.detail };
-            return column;
+    groupBackground(depth) {
+        return depth % 2 === 0 ? 'bg-surface-0' : 'bg-surface-1';
+    }
+    hasValidCondition(node) {
+        return isFilterGroup(node)
+            ? node.children.some((child) => this.hasValidCondition(child))
+            : !!(node.id && node.value);
+    }
+    removeCondition(condition) {
+        const filters = this.filters;
+        removeFilterCondition(filters, condition);
+        this.filters = { ...filters };
+        this.atChange.emit(this.filters);
+    }
+    clearAll = () => {
+        const filters = this.filters;
+        flattenFilterConditions(filters)
+            .filter((condition) => condition.id && condition.value)
+            .forEach((condition) => removeFilterCondition(filters, condition));
+        this.filters = { ...filters };
+        this.atChange.emit(this.filters);
+    };
+    renderConditionChip(filter) {
+        const label = this.chipLabel(filter);
+        return (h("at-badge", { class: "flex items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label }, h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
+                event.stopPropagation();
+                this.removeCondition(filter);
+            } }, h("at-icon", { name: "cancel" }))));
+    }
+    renderGroupChips(group, depth = 0) {
+        const children = group.children.filter((child) => this.hasValidCondition(child));
+        const bgClass = this.groupBackground(depth);
+        return children.flatMap((child, index) => {
+            const items = [];
+            if (index > 0) {
+                items.push(h("span", { class: "text-muted text-xs font-semibold", "data-name": "filter-chip-operator" }, group.logical_operator));
+            }
+            items.push(isFilterGroup(child) ? (h("span", { class: `flex items-center gap-4 rounded-full p-2 ${bgClass}`, "data-name": "filter-chip-group" }, this.renderGroupChips(child, depth + 1))) : (this.renderConditionChip(child)));
+            return items;
         });
-        this.atChange.emit(this.selected);
-    }
-    clearFilters = () => {
-        this.selected = [];
-        this.atChange.emit([]);
-    };
-    clearSingleFilter = (columnId) => {
-        this.selected = this.selected.filter((column) => column.id !== columnId);
-        this.atChange.emit(this.selected.length ? this.selected : []);
-    };
-    getHeaderName(columnId) {
-        const col = this.col_defs?.find((c) => c.field === columnId || c.colId === columnId);
-        return col?.headerName ?? columnId;
     }
     render() {
-        return (this.col_defs && (h(Host, { key: 'd739c8fff86b1b2e66a919b4a1bcb0f444d7c87d', class: "flex items-start gap-8" }, this.selected.length > 0 && (h("div", { key: '3fd2aef3f7a429455ecbad0002025374c25b75a5', class: "bg-surface-foreground rounded-input flex min-h-[36px] flex-wrap items-end gap-8 p-8" }, this.selected.map((column) => (h("div", { class: "flex items-center gap-2" }, h("at-input", { class: "w-input-sm", label: this.getHeaderName(column.id), prefix: this.getHeaderName(column.id) + ': ', value: column.value, onAtuiChange: (event) => this.filterChangeHandler(event, column.id) }, h("div", { slot: "input-actions" }, h("at-button", { type: "secondaryText", size: "sm", onClick: () => this.clearSingleFilter(column.id), "data-name": `filter-clear-${column.id}` }, h("at-icon", { slot: "icon", name: "cancel" }))))))), h("at-button", { key: '69953fcb49f64909427f7b55ff00ff259013c0d0', type: "secondaryText", label: "Clear All", onClick: this.clearFilters, "data-name": "filter-clear-all" }))))));
+        if (!this.filters || !this.hasValidCondition(this.filters)) {
+            return h(Host, null);
+        }
+        const conditionCount = flattenFilterConditions(this.filters).filter((condition) => condition.id && condition.value).length;
+        return (h(Host, { class: "flex items-start gap-8" }, h("div", { class: "flex h-full flex-wrap items-center gap-4", "data-name": "filter-chip-list" }, this.renderGroupChips(this.filters), conditionCount > 1 && (h("at-button", { size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => this.clearAll() }, h("at-icon", { slot: "icon", name: "backspace" }))))));
     }
     static get is() { return "at-table-filters"; }
     static get properties() {
         return {
-            "col_defs": {
+            "filters": {
                 "type": "unknown",
-                "mutable": false,
+                "mutable": true,
                 "complexType": {
-                    "original": "ColDef[]",
-                    "resolved": "ColDef<any, any>[]",
+                    "original": "AtIFilterGroup",
+                    "resolved": "AtIFilterGroup",
                     "references": {
-                        "ColDef": {
+                        "AtIFilterGroup": {
                             "location": "import",
-                            "path": "ag-grid-community",
-                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::ColDef",
-                            "referenceLocation": "ColDef"
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilterGroup",
+                            "referenceLocation": "AtIFilterGroup"
                         }
                     }
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Column definitions used in your at-table"
+                    "text": "The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses."
                 },
                 "getter": false,
                 "setter": false
-            },
-            "selected": {
-                "type": "unknown",
-                "mutable": true,
-                "complexType": {
-                    "original": "{ id: string; value: string }[]",
-                    "resolved": "{ id: string; value: string; }[]",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Currently selected columns and filter values"
-                },
-                "getter": false,
-                "setter": false,
-                "defaultValue": "[]"
             }
-        };
-    }
-    static get states() {
-        return {
-            "translations": {}
         };
     }
     static get events() {
@@ -103,20 +105,20 @@ export class AtTableFilters {
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emits id of column and filter value on change."
+                    "text": "Emits the remaining filters whenever a chip is removed or all are cleared."
                 },
                 "complexType": {
-                    "original": "AtIFilterEvent[]",
-                    "resolved": "AtIFilterEvent[]",
+                    "original": "AtIFilterGroup",
+                    "resolved": "AtIFilterGroup",
                     "references": {
-                        "AtIFilterEvent": {
-                            "location": "local",
-                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/table-components/at-table-filters/at-table-filters.tsx",
-                            "id": "src/components/table-components/at-table-filters/at-table-filters.tsx::AtIFilterEvent"
+                        "AtIFilterGroup": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilterGroup",
+                            "referenceLocation": "AtIFilterGroup"
                         }
                     }
                 }
             }];
     }
-    static get elementRef() { return "el"; }
 }

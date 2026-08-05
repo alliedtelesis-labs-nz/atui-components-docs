@@ -1,8 +1,10 @@
 import { h, Host, } from "@stencil/core";
 import { fetchTranslations } from "../../../utils/translation";
+import { countFilterConditions } from "../../../utils/filter-tree.util";
 /**
  * @category Data Tables
- * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+ * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+ * @dependency at-filter-form
  */
 export class AtTableFilterMenu {
     /**
@@ -10,37 +12,51 @@ export class AtTableFilterMenu {
      */
     col_defs;
     /**
-     * Currently selected filter columns
+     * Currently active filters, used to seed the form when the menu is opened
      */
-    selected = [];
+    filters;
     translations;
     el;
+    menuEl;
     /**
-     * Emits selected columns when checkbox selection changes
+     * Emits the active filters when the user applies a search
      */
     atChange;
-    get filteredColumns() {
-        return this.col_defs
+    get filterConfig() {
+        return (this.col_defs || [])
             .filter((colDef) => !(colDef.filterOptions &&
             colDef.filterOptions.exclude === true))
-            .map((colDef) => ({
-            value: colDef.field,
-            label: colDef.headerName,
-        }));
+            .map((colDef) => {
+            const filterOptions = this.convertDropdownKeysToSelectOptions(colDef);
+            return {
+                id: colDef.field ?? '',
+                label: colDef.headerName ?? colDef.field ?? '',
+                value: '',
+                ...(filterOptions && { filter_options: filterOptions }),
+            };
+        });
+    }
+    convertDropdownKeysToSelectOptions(column) {
+        if (column?.filterOptions?.dropdownKeys) {
+            return column.filterOptions.dropdownKeys.map((key) => ({
+                value: key.content,
+                label: key.translationKey,
+            }));
+        }
     }
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
-    handleSelectedChange(newValue) {
-        this.selected = newValue || [];
-    }
-    handleColumnSelect(event) {
-        const newValue = event.detail || [];
-        this.selected = newValue;
-        this.atChange.emit(this.selected);
-    }
+    handleSearch = async (event) => {
+        this.atChange.emit(event.detail);
+        await this.menuEl?.closeMenu();
+    };
+    handleCancel = async () => {
+        await this.menuEl?.closeMenu();
+    };
     render() {
-        return (h(Host, { key: '4697ec9e9a7ad0287e45bab6631b43a5306f4d97' }, h("at-menu", { key: '52b8b749e072c1210fcafe4e8e0dba0f334ce046', autoclose: false, width: "fit-content", class: "self-start", align: "start" }, h("at-tooltip", { key: 'ac3551892c6ff5e493644e13d091122a68de3281', slot: "menu-trigger", position: "top" }, h("at-button", { key: '7a216ccc0e9c1cdf21dc6a743d04b76af8be1162', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, h("at-icon", { key: '3bbcc1b3269a881883a346f481861efc46dd5ced', slot: "icon", name: "edit_filters" })), h("span", { key: 'f2ce8a254d137b2daac1c41d796a55f5e8dc4c50' }, this.translations.ATUI.TABLE.FILTER_DATA)), h("div", { key: '1166e7895cc2f172e29a0581f1fbdcd81b493509', class: "flex flex-col" }, h("at-checkbox-group", { key: '403f5f4ed397ad04d021d0c297dafdf1780daaf2', class: "w-fit", options: this.filteredColumns, value: this.selected, onAtuiChange: (event) => this.handleColumnSelect(event) })))));
+        return (h(Host, { key: '67050294b72428cf32aa32327bca3323ecb62365' }, h("at-menu", { key: 'fd8b2253ff28e71fc13b2695bcfa5306d87521a5', ref: (el) => (this.menuEl = el), autoclose: false, width: "fit-content", class: "self-start", align: "start" }, h("div", { key: 'a06452e0e31b1490003a44d8d13ae41bd9bdadf6', class: "relative", slot: "menu-trigger", "data-tooltip": "table-filter-menu" }, this.filters &&
+            countFilterConditions(this.filters) > 0 && (h("at-badge", { key: '1271fc6f42e7887f8b3c9495ffc30698a2e3eec1', class: "absolute top-[-8px] left-[-6px] z-10", type: "info", size: "sm", label: countFilterConditions(this.filters).toString() })), h("at-button", { key: '5da21e70fb5bc62864c0c358bedac0d0d2059435', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, h("at-icon", { key: 'c7f4c360e131973e268bbe98734ccad58e809a1a', slot: "icon", name: "edit_filters" }))), h("at-tooltip", { key: '6bf8799c61870f7f68d15faec41c6a3e5b7edc1d', "trigger-id": "table-filter-menu", position: "top" }, this.translations.ATUI.TABLE.FILTER_DATA), h("at-filter-form", { key: 'b66d403111fa8497d4b4762c8485bda27a865847', filter_config: this.filterConfig, active_filters: this.filters, onAtSearch: this.handleSearch, onAtCancel: this.handleCancel }))));
     }
     static get is() { return "at-table-filter-menu"; }
     static get properties() {
@@ -69,23 +85,29 @@ export class AtTableFilterMenu {
                 "getter": false,
                 "setter": false
             },
-            "selected": {
+            "filters": {
                 "type": "unknown",
-                "mutable": true,
+                "mutable": false,
                 "complexType": {
-                    "original": "string[]",
-                    "resolved": "string[]",
-                    "references": {}
+                    "original": "AtIFilterGroup",
+                    "resolved": "AtIFilterGroup",
+                    "references": {
+                        "AtIFilterGroup": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilterGroup",
+                            "referenceLocation": "AtIFilterGroup"
+                        }
+                    }
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Currently selected filter columns"
+                    "text": "Currently active filters, used to seed the form when the menu is opened"
                 },
                 "getter": false,
-                "setter": false,
-                "defaultValue": "[]"
+                "setter": false
             }
         };
     }
@@ -103,20 +125,21 @@ export class AtTableFilterMenu {
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emits selected columns when checkbox selection changes"
+                    "text": "Emits the active filters when the user applies a search"
                 },
                 "complexType": {
-                    "original": "string[]",
-                    "resolved": "string[]",
-                    "references": {}
+                    "original": "AtIFilterGroup",
+                    "resolved": "AtIFilterGroup",
+                    "references": {
+                        "AtIFilterGroup": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilterGroup",
+                            "referenceLocation": "AtIFilterGroup"
+                        }
+                    }
                 }
             }];
     }
     static get elementRef() { return "el"; }
-    static get watchers() {
-        return [{
-                "propName": "selected",
-                "methodName": "handleSelectedChange"
-            }];
-    }
 }

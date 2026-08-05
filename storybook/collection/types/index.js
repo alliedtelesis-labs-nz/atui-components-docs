@@ -5,3 +5,4 @@ export * from './styles';
 export * from './table-cells';
 export * from './table-styles';
 export * from './generic-table';
+export * from './filter';

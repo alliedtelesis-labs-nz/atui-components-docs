@@ -14,7 +14,7 @@ export class AtBreadcrumbItem {
     label;
     el;
     render() {
-        return (h(Host, { key: '2b2717f0fdf5c126bae8e83c05f5d726c6725f13', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 transition-colors hover:underline" }, this.label))));
+        return (h(Host, { key: 'f6c09f549bd4425ef801b92926d4127ea532568b', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-foreground cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 transition-colors hover:underline" }, this.label))));
     }
     static get is() { return "at-breadcrumb-item"; }
     static get properties() {

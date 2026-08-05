@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DNWYfDmW.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DVWT6VvQ.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variants = classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-glow relative flex w-full cursor-pointer items-start gap-8 rounded-input p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring', {
@@ -70,8 +70,8 @@ const AtCheckbox = class {
             checked: this.checked,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '3f8b20cabee7334602863eb577432537bd773711', role: "checkbox", "aria-checked": this.checked, "aria-labelledby": `${this.value}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: 'a38738ddd8e24a42e2e48c13cb37aaf15a03d3de', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.checked, onChange: (event) => this.handleChange(event), id: this.value, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: 'c9bda48e840f5496aa097d330861d12056cd2187', class: "pointer-events-none flex flex-col" }, h("slot", { key: 'f24b8f1e579a9882d45a508fd9cdbd5428faa7d1', name: "label" }), this.label && (h("label", { key: '2660932692d8e94bc3f53e62a759d7f86efc08af', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '8dd85b5f2ced5e4f1d43b88e78abcd8e4a747327', class: "text-muted mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '0af9c636b1e2b04bda1f25fe993e2905a60b7b52' })));
+        return (h(Host, { key: '9f2e7971990044dedbb88ecf52fccbe15ee3bf29', role: "checkbox", "aria-checked": this.checked, "aria-labelledby": `${this.value}-label`, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, h("input", { key: 'f71ecb985d6a52e485b4ea4d6a38731dc8a6b757', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.checked, onChange: (event) => this.handleChange(event), id: this.value, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (h("div", { key: 'b0abbe7c3a9eae3f5856ca7a2c99e217256ca26b', class: "pointer-events-none flex flex-col" }, h("slot", { key: 'fdbf60861edc0bdc30120279cfadbd4fd6c5246b', name: "label" }), this.label && (h("label", { key: '52fb7ca3602516a5ee960f26df7d6e9881383376', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}-label`, "data-name": "checkbox-label" }, this.label)), this.hint_text && (h("span", { key: '5452ceba9d2291c72e7c26110e7396acee52fb01', class: "text-muted mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), h("slot", { key: '94ba05e193abac931ebe133c698cad475f78c079' })));
     }
 };
 

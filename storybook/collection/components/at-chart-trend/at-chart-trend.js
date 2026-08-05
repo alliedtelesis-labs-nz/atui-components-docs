@@ -92,14 +92,14 @@ export class AtChartTrend {
     }
     render() {
         const delta = this.resolveDelta();
-        return (h(Host, { key: 'd2b76a72cd388bba0e30bae7c9175adc6aeb9ba0', style: { display: 'block', height: '100%', width: '100%' } }, h("div", { key: 'd2d03bd32a8ee45126c02f6ef3071049af6dc8e3', class: "flex h-full flex-col justify-between gap-4" }, h("div", { key: '6541f02e64e2165698c77aa2b1fdc17f77a33b6d', class: "flex items-baseline justify-between gap-8" }, h("span", { key: '153f3e74352b524f07d9c8f59666ffca84216319', style: {
+        return (h(Host, { key: '15de2838713ee12a479d1199df83344e40167b33', style: { display: 'block', height: '100%', width: '100%' } }, h("div", { key: 'ef314cb1150f19fc23a7e0a8bbd640368a007f6c', class: "flex h-full flex-col justify-between gap-4" }, h("div", { key: '6fc75a0b6f2905ead5ae21172536de04e30d429d', class: "flex items-baseline justify-between gap-8" }, h("span", { key: 'cf9c27240f7b829484e6834e1379566129ef541e', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
-            }, "data-name": "value" }, this.value, h("span", { key: '1ae984f2c59b98b1ba705ca52b471231049072bb', style: {
+            }, "data-name": "value" }, this.value, h("span", { key: 'a8bca2b22713ea35f231b9b4c04476ac483d7a04', style: {
                 fontSize: '0.65em',
                 fontWeight: '500',
-            } }, this.unit ?? ''))), h("div", { key: '3d6507853f72a449d47ddcf79ec4042e2754ed8c', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, h("at-chart-sparkline", { key: 'f68998d94571b2e69d54fd88a1c963cb732eb118', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
+            } }, this.unit ?? ''))), h("div", { key: '2ecdb3cebf3e8031d74f959759c3f7a881ccf82b', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, h("at-chart-sparkline", { key: '38cff795a0bb61f66a3a3a23403986acbc92c1a3', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
     }
     static get is() { return "at-chart-trend"; }
     static get properties() {

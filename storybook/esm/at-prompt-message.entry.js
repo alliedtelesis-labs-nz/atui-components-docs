@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment, H as Host } from './index-DNWYfDmW.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment, H as Host } from './index-DVWT6VvQ.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 import { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
@@ -2576,7 +2576,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '33438b41f44d1758b144500f709ab7660c4248a8', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '98e4fd1c01bd44e3548b99e8dae07e94869c9cc0', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'f13d79fdd58cf7e5784ab9fb91e3e3f692b1635d', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '4e4975ecd110843cfa0b53b20674b52121240abf', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '7c1b2e5b83d1794e66f978bda563c2a7c810105f', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '29a6cb14f7d695d86952c2b0cddecfdabe578d21', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '8d0b4b2391dda11f88478d7b0f54dca71f889824', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'e4b4cdec772e134d3846e076970e2688fc00a904', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

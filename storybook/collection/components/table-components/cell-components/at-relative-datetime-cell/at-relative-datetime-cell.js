@@ -84,7 +84,7 @@ export class AtRelativeDateTimeCell {
         return `${value} ${unit}${value === 1 ? '' : 's'}`;
     }
     render() {
-        return (h(Host, { key: '9b980892df5e89de9a3d27eca331a9acc3a50a58', class: "flex h-full items-center" }, h("div", { key: '2f48e1ee19f543b08688dc6cbfbf2e4cd259d130', class: "flex h-full flex-col justify-center" }, h("div", { key: '58f89b688d5dfa7ecdf5be850310f2a09198a994', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: 'e7b5ea51c584db5228baf28f0d943784551c10da', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (h(Host, { key: '9a64d465e2384b7a6aabf3390773a907a2219984', class: "flex h-full items-center" }, h("div", { key: 'c533f230f7a5e48fbe28a1facf33a73acb164218', class: "flex h-full flex-col justify-center" }, h("div", { key: '47e6c4c578b8e363b14527f6e09fbc173267c9e6', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: 'decee34e39a3e716cc237d904d63ef8364ad2439', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
     static get is() { return "at-relative-datetime-cell"; }
     static get states() {

@@ -131,7 +131,7 @@ export class AtTimeRangeComponent {
         }
     }
     render() {
-        return (h(Host, { key: '665acfc63de0d5b2de440e9698a7669a03790aeb', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '9cbd956c3819f910dfda8fb9f763b26097fe006f', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

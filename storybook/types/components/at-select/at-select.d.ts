@@ -4,6 +4,7 @@ import { AtISelectOption } from '../../types/select';
  * @category Form Controls
  * @description A dropdown selection component for choosing single values from a list of options. Features search functionality, keyboard navigation, and accessibility support.
  * @slot - Use this slot to manually add <at-select-option> elements in your HTML. Options added via slot will appear in the dropdown alongside those provided via the 'options' prop. Both methods support search, selection, and display together (options being display before the manually added).
+ * @slot input-actions - Place inside the input container to add custom action elements (e.g., icons, buttons) next to the input field.
  */
 export declare class AtSelectComponent {
     /**

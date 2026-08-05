@@ -47,9 +47,9 @@ export interface AgGridSortModel {
 }
 export interface AtIDropdownKey {
     translationKey: string;
-    content: AtIFilter['content'];
+    content: AtITableFilter['content'];
 }
-export interface AtIFilter {
+export interface AtITableFilter {
     columnName: string;
     columnField: string;
     content: AtTableFilterContent;

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-hahhWKrj.js');
+var index = require('./index-CZHE0nPQ.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-D3uILiF8.js');
 var date = require('./date-DDRmOnS1.js');
@@ -153,7 +153,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '665acfc63de0d5b2de440e9698a7669a03790aeb', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: '9cbd956c3819f910dfda8fb9f763b26097fe006f', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

@@ -1,8 +1,10 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { AtITableColumnDef } from '../../../models/searchTableModel';
+import { AtIFilterGroup } from '../../../types';
 /**
  * @category Data Tables
- * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+ * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+ * @dependency at-filter-form
  */
 export declare class AtTableFilterMenu {
     /**
@@ -10,18 +12,20 @@ export declare class AtTableFilterMenu {
      */
     col_defs: AtITableColumnDef[];
     /**
-     * Currently selected filter columns
+     * Currently active filters, used to seed the form when the menu is opened
      */
-    selected: string[];
+    filters?: AtIFilterGroup;
     translations: any;
     el: HTMLAtTableFilterMenuElement;
+    private menuEl?;
     /**
-     * Emits selected columns when checkbox selection changes
+     * Emits the active filters when the user applies a search
      */
-    atChange: EventEmitter<string[]>;
-    private get filteredColumns();
+    atChange: EventEmitter<AtIFilterGroup>;
+    private get filterConfig();
+    private convertDropdownKeysToSelectOptions;
     componentWillLoad(): Promise<void>;
-    handleSelectedChange(newValue: string[]): void;
-    private handleColumnSelect;
+    private handleSearch;
+    private handleCancel;
     render(): any;
 }

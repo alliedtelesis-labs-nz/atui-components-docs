@@ -40,6 +40,7 @@ import SidePanelOpen from "@carbon/icons/es/side-panel--open/16";
 import SidePanelClose from "@carbon/icons/es/side-panel--close/16";
 import IbmWatsonDiscovery from "@carbon/icons/es/ibm-watson--discovery/16";
 import FilterEdit from "@carbon/icons/es/filter--edit/16";
+import TrashCan from "@carbon/icons/es/trash-can/16";
 import DataTable from "@carbon/icons/es/data-table/16";
 export const ATUI_ICONS = [
     { name: 'add', icon: Add },
@@ -49,6 +50,7 @@ export const ATUI_ICONS = [
     { name: 'trend_up', icon: TrendUp },
     { name: 'trend_down', icon: TrendDown },
     { name: 'backspace', icon: Backspace },
+    { name: 'delete', icon: TrashCan },
     { name: 'cancel', icon: Cancel },
     { name: 'caret_down', icon: CaretDown },
     { name: 'caret_up', icon: CaretUp },

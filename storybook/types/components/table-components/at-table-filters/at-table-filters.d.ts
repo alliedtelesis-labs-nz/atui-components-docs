@@ -1,36 +1,25 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { ColDef } from 'ag-grid-community';
+import { AtIFilterGroup } from '../../../types';
 /**
  * @category Data Tables
- * @description A component for filtering table data. Provides a user-friendly interface for filtering data from tables.
- * @internal
+ * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+ * @dependency at-badge
  */
-export interface AtIFilterEvent {
-    id: string;
-    value: string;
-}
 export declare class AtTableFilters {
     /**
-     * Column definitions used in your at-table
+     * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
      */
-    col_defs: ColDef[];
+    filters?: AtIFilterGroup;
     /**
-     * Currently selected columns and filter values
+     * Emits the remaining filters whenever a chip is removed or all are cleared.
      */
-    selected: {
-        id: string;
-        value: string;
-    }[];
-    translations: any;
-    el: HTMLAtTableFiltersElement;
-    /**
-     * Emits id of column and filter value on change.
-     */
-    atChange: EventEmitter<AtIFilterEvent[]>;
-    componentWillLoad(): Promise<void>;
-    filterChangeHandler(event: CustomEvent, columnId: string): void;
-    clearFilters: () => void;
-    clearSingleFilter: (columnId: string) => void;
-    getHeaderName(columnId: string): string;
+    atChange: EventEmitter<AtIFilterGroup>;
+    private chipLabel;
+    private groupBackground;
+    private hasValidCondition;
+    private removeCondition;
+    private clearAll;
+    private renderConditionChip;
+    private renderGroupChips;
     render(): any;
 }

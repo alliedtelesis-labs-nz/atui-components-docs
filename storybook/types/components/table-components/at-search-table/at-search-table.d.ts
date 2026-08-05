@@ -1,7 +1,8 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
-import { ColDef, GridApi, IRowNode } from 'ag-grid-community';
-import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams } from '../../../types';
-import { AtISelectOption } from '../../../types/select';
+import { GridApi, IRowNode } from 'ag-grid-community';
+import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams, AtIFilterGroup } from '../../../types';
+import { AtITableColumnDef } from '../../../models/searchTableModel';
+import { AtISelectOption } from '../../../components';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -43,7 +44,11 @@ export declare class AtSearchTable {
     /**
      * Column definitions passed to at-table component.
      */
-    col_defs: ColDef[];
+    col_defs: AtITableColumnDef[];
+    /**
+     * External search filters applied to the table data.
+     */
+    search_filters?: AtIFilterGroup;
     /**
      * Default page size of the table
      */
@@ -121,10 +126,8 @@ export declare class AtSearchTable {
     activeFilters: {
         [key: string]: string;
     };
-    selectedFilters: {
-        id: string;
-        value: string;
-    }[];
+    activeFilterTree?: AtIFilterGroup;
+    selectedFilters: AtIFilterGroup;
     menuSelectedIds: string[];
     searchValue: string;
     currentPage: number;
@@ -143,10 +146,8 @@ export declare class AtSearchTable {
     get hasNoData(): boolean;
     get hasActiveSearch(): boolean;
     handlePageSizeProp(newValue?: number): void;
-    handleSelectedFiltersChange(newValue: {
-        id: string;
-        value: string;
-    }[]): void;
+    handleSelectedFiltersChange(newValue: AtIFilterGroup): void;
+    handleSearchFiltersChange(): void;
     handleLoadingChange(newValue: boolean): void;
     componentWillLoad(): Promise<void>;
     componentDidLoad(): Promise<void>;
@@ -206,15 +207,16 @@ export declare class AtSearchTable {
     private initGrid;
     private setupExternalFilters;
     handleColumnChange(event: CustomEvent): void;
-    handleFilterChange(event: CustomEvent): void;
-    private handleMenuFilterChange;
-    private handleFilterListChange;
+    handleFilterChange(event: CustomEvent<AtIFilterGroup>): void;
+    private relabelFilterNode;
+    private handleFilterTreeChange;
     private updateActiveFilters;
     handleSearchChange(event: CustomEvent): void;
     handlePageChange(event: CustomEvent<number>): void;
     handlePageSizeChange(event: CustomEvent<number>): void;
     emitSearchParamsChange(): void;
     handleExport(event: CustomEvent<string>): void;
+    private convertDropdownKeysToSelectOptions;
     render(): any;
 }
 export {};

@@ -28,7 +28,7 @@ import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-import { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtHeaderSizes } from "./components/at-header/at-header";
 import { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
@@ -42,13 +42,13 @@ import { AtISelectOption } from "./types/select";
 import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+import { AtITableColumnDef } from "./models/searchTableModel";
+import { AtISelectOption as AtISelectOption1 } from "./components";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
-import { AtITableColumnDef } from "./models/searchTableModel";
-import { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 import { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
@@ -81,7 +81,7 @@ export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-export { AtIColumnDetails, AtIDateRangeStrings, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtHeaderSizes } from "./components/at-header/at-header";
 export { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
@@ -95,13 +95,13 @@ export { AtISelectOption } from "./types/select";
 export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+export { AtITableColumnDef } from "./models/searchTableModel";
+export { AtISelectOption as AtISelectOption1 } from "./components";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
-export { AtITableColumnDef } from "./models/searchTableModel";
-export { AtIFilterEvent } from "./components/table-components/at-table-filters/at-table-filters";
 export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 export { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
@@ -1143,6 +1143,17 @@ export namespace Components {
      * @description A cell component for displaying and editing text.
      */
     interface AtEditTextCell {
+    }
+    interface AtFilterForm {
+        /**
+          * Currently active filters to initialize the form with
+         */
+        "active_filters"?: AtIFilterGroup;
+        /**
+          * Configuration for the available filters
+          * @default []
+         */
+        "filter_config": AtIFilter[];
     }
     /**
      * @category Form Controls
@@ -2342,7 +2353,7 @@ export namespace Components {
           * Column definitions passed to at-table component.
           * @default []
          */
-        "col_defs": ColDef[];
+        "col_defs": AtITableColumnDef[];
         /**
           * Returns the **currently displayed row nodes** from the ag-Grid instance.  This asynchronous method retrieves an array of row nodes representing the rows currently visible (rendered) in the grid, after filtering, sorting, and other view-based operations.
           * @template T The data type contained in each row node.
@@ -2392,7 +2403,11 @@ export namespace Components {
         /**
           * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
          */
-        "page_size_options"?: AtISelectOption[];
+        "page_size_options"?: AtISelectOption1[];
+        /**
+          * External search filters applied to the table data.
+         */
+        "search_filters"?: AtIFilterGroup;
         /**
           * Hint text displayed below the search label.
          */
@@ -2936,7 +2951,8 @@ export namespace Components {
     }
     /**
      * @category Data Tables
-     * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+     * @dependency at-filter-form
      */
     interface AtTableFilterMenu {
         /**
@@ -2944,21 +2960,20 @@ export namespace Components {
          */
         "col_defs": AtITableColumnDef[];
         /**
-          * Currently selected filter columns
-          * @default []
+          * Currently active filters, used to seed the form when the menu is opened
          */
-        "selected": string[];
+        "filters"?: AtIFilterGroup;
     }
+    /**
+     * @category Data Tables
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @dependency at-badge
+     */
     interface AtTableFilters {
         /**
-          * Column definitions used in your at-table
+          * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
          */
-        "col_defs": ColDef[];
-        /**
-          * Currently selected columns and filter values
-          * @default []
-         */
-        "selected": { id: string; value: string }[];
+        "filters"?: AtIFilterGroup;
     }
     /**
      * @category Data Tables
@@ -3435,6 +3450,10 @@ export interface AtDashboardCustomEvent<T> extends CustomEvent<T> {
 export interface AtDialogCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtDialogElement;
+}
+export interface AtFilterFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtFilterFormElement;
 }
 export interface AtInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4067,6 +4086,24 @@ declare global {
     var HTMLAtEditTextCellElement: {
         prototype: HTMLAtEditTextCellElement;
         new (): HTMLAtEditTextCellElement;
+    };
+    interface HTMLAtFilterFormElementEventMap {
+        "atCancel": null;
+        "atSearch": AtIFilterGroup;
+    }
+    interface HTMLAtFilterFormElement extends Components.AtFilterForm, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtFilterFormElementEventMap>(type: K, listener: (this: HTMLAtFilterFormElement, ev: AtFilterFormCustomEvent<HTMLAtFilterFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtFilterFormElementEventMap>(type: K, listener: (this: HTMLAtFilterFormElement, ev: AtFilterFormCustomEvent<HTMLAtFilterFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtFilterFormElement: {
+        prototype: HTMLAtFilterFormElement;
+        new (): HTMLAtFilterFormElement;
     };
     /**
      * @category Form Controls
@@ -4898,11 +4935,12 @@ declare global {
         new (): HTMLAtTableExportMenuElement;
     };
     interface HTMLAtTableFilterMenuElementEventMap {
-        "atChange": string[];
+        "atChange": AtIFilterGroup;
     }
     /**
      * @category Data Tables
-     * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+     * @dependency at-filter-form
      */
     interface HTMLAtTableFilterMenuElement extends Components.AtTableFilterMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtTableFilterMenuElementEventMap>(type: K, listener: (this: HTMLAtTableFilterMenuElement, ev: AtTableFilterMenuCustomEvent<HTMLAtTableFilterMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4919,8 +4957,13 @@ declare global {
         new (): HTMLAtTableFilterMenuElement;
     };
     interface HTMLAtTableFiltersElementEventMap {
-        "atChange": AtIFilterEvent[];
+        "atChange": AtIFilterGroup;
     }
+    /**
+     * @category Data Tables
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @dependency at-badge
+     */
     interface HTMLAtTableFiltersElement extends Components.AtTableFilters, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtTableFiltersElementEventMap>(type: K, listener: (this: HTMLAtTableFiltersElement, ev: AtTableFiltersCustomEvent<HTMLAtTableFiltersElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5248,6 +5291,7 @@ declare global {
         "at-dashboard": HTMLAtDashboardElement;
         "at-dialog": HTMLAtDialogElement;
         "at-edit-text-cell": HTMLAtEditTextCellElement;
+        "at-filter-form": HTMLAtFilterFormElement;
         "at-form-label": HTMLAtFormLabelElement;
         "at-header": HTMLAtHeaderElement;
         "at-health-dot": HTMLAtHealthDotElement;
@@ -6322,6 +6366,25 @@ declare namespace LocalJSX {
      * @description A cell component for displaying and editing text.
      */
     interface AtEditTextCell {
+    }
+    interface AtFilterForm {
+        /**
+          * Currently active filters to initialize the form with
+         */
+        "active_filters"?: AtIFilterGroup;
+        /**
+          * Configuration for the available filters
+          * @default []
+         */
+        "filter_config"?: AtIFilter[];
+        /**
+          * Event emitted when the user cancels a filter search
+         */
+        "onAtCancel"?: (event: AtFilterFormCustomEvent<null>) => void;
+        /**
+          * Event emitted with the current filters when the user initiates a filter search
+         */
+        "onAtSearch"?: (event: AtFilterFormCustomEvent<AtIFilterGroup>) => void;
     }
     /**
      * @category Form Controls
@@ -7623,7 +7686,7 @@ declare namespace LocalJSX {
           * Column definitions passed to at-table component.
           * @default []
          */
-        "col_defs"?: ColDef[];
+        "col_defs"?: AtITableColumnDef[];
         /**
           * If true the column manager will not be added
          */
@@ -7679,7 +7742,11 @@ declare namespace LocalJSX {
         /**
           * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
          */
-        "page_size_options"?: AtISelectOption[];
+        "page_size_options"?: AtISelectOption1[];
+        /**
+          * External search filters applied to the table data.
+         */
+        "search_filters"?: AtIFilterGroup;
         /**
           * Hint text displayed below the search label.
          */
@@ -8218,7 +8285,8 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+     * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+     * @dependency at-filter-form
      */
     interface AtTableFilterMenu {
         /**
@@ -8226,29 +8294,28 @@ declare namespace LocalJSX {
          */
         "col_defs"?: AtITableColumnDef[];
         /**
-          * Emits selected columns when checkbox selection changes
+          * Currently active filters, used to seed the form when the menu is opened
          */
-        "onAtChange"?: (event: AtTableFilterMenuCustomEvent<string[]>) => void;
+        "filters"?: AtIFilterGroup;
         /**
-          * Currently selected filter columns
-          * @default []
+          * Emits the active filters when the user applies a search
          */
-        "selected"?: string[];
+        "onAtChange"?: (event: AtTableFilterMenuCustomEvent<AtIFilterGroup>) => void;
     }
+    /**
+     * @category Data Tables
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @dependency at-badge
+     */
     interface AtTableFilters {
         /**
-          * Column definitions used in your at-table
+          * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
          */
-        "col_defs"?: ColDef[];
+        "filters"?: AtIFilterGroup;
         /**
-          * Emits id of column and filter value on change.
+          * Emits the remaining filters whenever a chip is removed or all are cleared.
          */
-        "onAtChange"?: (event: AtTableFiltersCustomEvent<AtIFilterEvent[]>) => void;
-        /**
-          * Currently selected columns and filter values
-          * @default []
-         */
-        "selected"?: { id: string; value: string }[];
+        "onAtChange"?: (event: AtTableFiltersCustomEvent<AtIFilterGroup>) => void;
     }
     /**
      * @category Data Tables
@@ -9333,6 +9400,7 @@ declare namespace LocalJSX {
         "at-dashboard": Omit<AtDashboard, keyof AtDashboardAttributes> & { [K in keyof AtDashboard & keyof AtDashboardAttributes]?: AtDashboard[K] } & { [K in keyof AtDashboard & keyof AtDashboardAttributes as `attr:${K}`]?: AtDashboardAttributes[K] } & { [K in keyof AtDashboard & keyof AtDashboardAttributes as `prop:${K}`]?: AtDashboard[K] };
         "at-dialog": Omit<AtDialog, keyof AtDialogAttributes> & { [K in keyof AtDialog & keyof AtDialogAttributes]?: AtDialog[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `attr:${K}`]?: AtDialogAttributes[K] } & { [K in keyof AtDialog & keyof AtDialogAttributes as `prop:${K}`]?: AtDialog[K] };
         "at-edit-text-cell": AtEditTextCell;
+        "at-filter-form": AtFilterForm;
         "at-form-label": Omit<AtFormLabel, keyof AtFormLabelAttributes> & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes]?: AtFormLabel[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `attr:${K}`]?: AtFormLabelAttributes[K] } & { [K in keyof AtFormLabel & keyof AtFormLabelAttributes as `prop:${K}`]?: AtFormLabel[K] };
         "at-header": Omit<AtHeader, keyof AtHeaderAttributes> & { [K in keyof AtHeader & keyof AtHeaderAttributes]?: AtHeader[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `attr:${K}`]?: AtHeaderAttributes[K] } & { [K in keyof AtHeader & keyof AtHeaderAttributes as `prop:${K}`]?: AtHeader[K] };
         "at-health-dot": Omit<AtHealthDot, keyof AtHealthDotAttributes> & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes]?: AtHealthDot[K] } & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes as `attr:${K}`]?: AtHealthDotAttributes[K] } & { [K in keyof AtHealthDot & keyof AtHealthDotAttributes as `prop:${K}`]?: AtHealthDot[K] };
@@ -9584,6 +9652,7 @@ declare module "@stencil/core" {
              * @description A cell component for displaying and editing text.
              */
             "at-edit-text-cell": LocalJSX.IntrinsicElements["at-edit-text-cell"] & JSXBase.HTMLAttributes<HTMLAtEditTextCellElement>;
+            "at-filter-form": LocalJSX.IntrinsicElements["at-filter-form"] & JSXBase.HTMLAttributes<HTMLAtFilterFormElement>;
             /**
              * @category Form Controls
              * @description A form label component that provides accessible labeling with optional required indicators and info tooltips. Designed for use with form inputs.
@@ -9839,9 +9908,15 @@ declare module "@stencil/core" {
             "at-table-export-menu": LocalJSX.IntrinsicElements["at-table-export-menu"] & JSXBase.HTMLAttributes<HTMLAtTableExportMenuElement>;
             /**
              * @category Data Tables
-             * @description A menu component for filtering table data. Provides a user-friendly interface for filtering data from tables.
+             * @description A menu component for filtering table data. Opens the at-filter-form builder so users can add field/operator/value conditions.
+             * @dependency at-filter-form
              */
             "at-table-filter-menu": LocalJSX.IntrinsicElements["at-table-filter-menu"] & JSXBase.HTMLAttributes<HTMLAtTableFilterMenuElement>;
+            /**
+             * @category Data Tables
+             * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+             * @dependency at-badge
+             */
             "at-table-filters": LocalJSX.IntrinsicElements["at-table-filters"] & JSXBase.HTMLAttributes<HTMLAtTableFiltersElement>;
             /**
              * @category Data Tables

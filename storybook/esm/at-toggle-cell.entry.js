@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-DNWYfDmW.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DVWT6VvQ.js';
 
 const AtToggleCell = class {
     constructor(hostRef) {
@@ -46,7 +46,7 @@ const AtToggleCell = class {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (h(Host, { key: '79433282ec9e1e61e3ef74cc5805d1f37938e575', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: 'b9496d66b5b46bbd8d0cfe66425e0ef18632881a', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
+        return (h(Host, { key: '873899f9264274383adbc32ee2daa48025767c6f', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: 'd61a7963a10472d6f8a6c9fa6508820fd7c082e0', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
     }
 };
 

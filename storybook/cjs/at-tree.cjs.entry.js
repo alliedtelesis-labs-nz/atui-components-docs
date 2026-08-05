@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-hahhWKrj.js');
+var index = require('./index-CZHE0nPQ.js');
 
 const AtTreeComponent = class {
     constructor(hostRef) {
@@ -64,7 +64,7 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (index.h("div", { key: 'e1bdbb8e0a010e728f45efd07e59a6cea83ba9fd', class: "w-full" }, index.h("slot", { key: '15212496374f5a9793ef0b3a59589b0aea863219' }), this.flattenedItemList &&
+        return (index.h("div", { key: 'c86962dda422b30d73a9fd67e6ca7333d88649b6', class: "w-full" }, index.h("slot", { key: 'adfa8eb405001b15263929485fa12f41fc239040' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index$1) => (index.h("div", { key: index$1, class: `flex w-full` }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, index.h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, index.h("slot", { name: "item-content" })), index.h("span", null, item.tooltip))) : (index.h("at-tree-item", { depth: item.depth, style: {
                     paddingLeft: this.flattenedItemStyles[index$1] +

@@ -1178,9 +1178,9 @@
     Use Case: Surface colors define UI elevation
     Use for element background when you need to separate from background
     */
-  --token-surface-0: var(--token-color-base-neutral-900);
+  --token-surface-0: var(--token-color-base-neutral-700);
   --token-surface-1: var(--token-color-base-neutral-800);
-  --token-surface-2: var(--token-color-base-neutral-700);
+  --token-surface-2: var(--token-color-base-neutral-900);
   --token-surface-background: var(--token-color-base-neutral-900);
   --token-surface-foreground: var(--token-color-base-neutral-800);
   --token-surface-inv: var(--token-color-base-slate-50);
@@ -2522,6 +2522,10 @@ strong {
   left: 0;
 }
 
+.left-\[-6px\] {
+  left: -6px;
+}
+
 .right-0 {
   right: 0;
 }
@@ -2548,6 +2552,10 @@ strong {
 
 .top-4 {
   top: 4px;
+}
+
+.top-\[-8px\] {
+  top: -8px;
 }
 
 .z-10 {
@@ -2578,6 +2586,10 @@ strong {
 .my-8 {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 2px;
 }
 
 .mb-4 {
@@ -2853,10 +2865,6 @@ strong {
   min-height: 32px;
 }
 
-.min-h-\[36px\] {
-  min-height: 36px;
-}
-
 .min-h-\[40px\] {
   min-height: 40px;
 }
@@ -2899,6 +2907,10 @@ strong {
 
 .w-80 {
   width: 80px;
+}
+
+.w-\[100px\] {
+  width: 100px;
 }
 
 .w-\[16px\] {
@@ -3642,6 +3654,12 @@ strong {
   background-color: color-mix(in srgb, var(--token-state-success-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-surface-0 {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-surface-0) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
 .bg-surface-1 {
   --tw-bg-opacity:
       1;
@@ -3817,6 +3835,10 @@ strong {
 
 .p-16 {
   padding: 16px;
+}
+
+.p-2 {
+  padding: 2px;
 }
 
 .p-4 {
@@ -4027,6 +4049,10 @@ strong {
 
 .font-normal {
   font-weight: var(--token-font-weight-light);
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .capitalize {
@@ -4407,6 +4433,10 @@ strong {
   --tw-grayscale:
       grayscale(1);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.\!filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
 }
 
 .filter {

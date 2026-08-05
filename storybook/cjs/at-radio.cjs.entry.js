@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-hahhWKrj.js');
+var index = require('./index-CZHE0nPQ.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -78,7 +78,7 @@ const AtRadio = class {
             checked: this.checked,
             readonly: this.readonly,
         });
-        return (index.h(index.Host, { key: '4bd3884725b9a52a8118646a05d9d67d6733e1ce', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (index.h("input", { key: '43811b0ccd053a255a2290348859b60176a1ee6f', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.value, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), index.h("div", { key: '2ae882bc45c39d54c72d2c14f1be249b29759fb6', class: "pointer-events-none flex flex-col" }, this.label && (index.h("span", { key: '00dc3aa0319b90ff3b33aafe296ca84d9e3d385f', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (index.h("span", { key: '72e74f19ea4e839541f40938ba3f5be128e951c0', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), index.h("slot", { key: '070add5496cb329c1285cd2bd73e2e8658853980' }))));
+        return (index.h(index.Host, { key: 'eb639c60f6fa7dd0344858078b31a27624bfd9e5', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (index.h("input", { key: '7a8b7ad9d9586d8ab6036e93006600625c85ab59', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.value, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), index.h("div", { key: '8945aae65c91ce83112f13f0f126a7dc3699bda2', class: "pointer-events-none flex flex-col" }, this.label && (index.h("span", { key: 'dee2458e723cc92a267b9e959b8e2f51410075de', class: "mt-0 pl-4 text-xs font-medium", id: `${this.value}_label`, "data-name": "radio-label" }, this.label)), this.hint_text && (index.h("span", { key: 'a1a0fb80a9b36dc84d7ba2509d2d01227a85aa6e', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), index.h("slot", { key: 'da77165aaf2fea06aea85806117f8d3e33f24bfc' }))));
     }
 };
 
