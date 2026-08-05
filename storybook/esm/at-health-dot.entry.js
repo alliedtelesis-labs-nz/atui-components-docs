@@ -34,7 +34,7 @@ const AtHealthDot = class {
         }
     }
     render() {
-        return (h(Host, { key: 'd11e7b5a4e21b80f9ea549a494558a6110d3029c', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
+        return (h(Host, { key: '8d5ea294ec922edc760ecbaa037b0d9c7a127c55', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
     }
 };
 

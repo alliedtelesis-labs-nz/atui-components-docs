@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -460,14 +460,20 @@ export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardE
     defineCustomElement: defineAtDashboard
 });
 
-type AtDialogEvents = { onAtuiDialogChange: EventName<CustomEvent<any>> };
+type AtDialogEvents = {
+    onAtuiDialogChange: EventName<CustomEvent<boolean>>,
+    onAtuiDialogClose: EventName<AtDialogCustomEvent<{ reason: AtDialogCloseReason }>>
+};
 
 export const AtDialog: StencilReactComponent<AtDialogElement, AtDialogEvents> = /*@__PURE__*/ createComponent<AtDialogElement, AtDialogEvents>({
     tagName: 'at-dialog',
     elementClass: AtDialogElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiDialogChange: 'atuiDialogChange' } as AtDialogEvents,
+    events: {
+        onAtuiDialogChange: 'atuiDialogChange',
+        onAtuiDialogClose: 'atuiDialogClose'
+    } as AtDialogEvents,
     defineCustomElement: defineAtDialog
 });
 

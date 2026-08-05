@@ -30,6 +30,7 @@ import { AtIColumnManagerChangeEvent } from "./components/table-components/at-co
 import { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
 import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
+import { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 import { AtHeaderSizes } from "./components/at-header/at-header";
 import { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 import { AtInputType } from "./components/at-input/at-input";
@@ -83,6 +84,7 @@ export { AtIColumnManagerChangeEvent } from "./components/table-components/at-co
 export { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
 export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
+export { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 export { AtHeaderSizes } from "./components/at-header/at-header";
 export { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 export { AtInputType } from "./components/at-input/at-input";
@@ -1096,6 +1098,7 @@ export namespace Components {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
     interface AtDialog {
         /**
@@ -1113,6 +1116,11 @@ export namespace Components {
           * @default false
          */
         "close_backdrop": boolean;
+        /**
+          * Whether pressing Escape dismisses the dialog. Set to `false` alongside `close_backdrop={false}` for a flow that must confirm before closing, such as an unsaved-changes guard — the host then closes it via `closeDialog()`.
+          * @default true
+         */
+        "close_esc": boolean;
         /**
           * Getter method for the open state of the dialog
           * @returns The current open state of the dialog
@@ -4056,12 +4064,14 @@ declare global {
         new (): HTMLAtDashboardElement;
     };
     interface HTMLAtDialogElementEventMap {
-        "atuiDialogChange": any;
+        "atuiDialogChange": boolean;
+        "atuiDialogClose": { reason: AtDialogCloseReason };
     }
     /**
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
     interface HTMLAtDialogElement extends Components.AtDialog, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDialogElementEventMap>(type: K, listener: (this: HTMLAtDialogElement, ev: AtDialogCustomEvent<HTMLAtDialogElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6335,6 +6345,7 @@ declare namespace LocalJSX {
      * @category Overlays
      * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+     * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
     interface AtDialog {
         /**
@@ -6348,9 +6359,18 @@ declare namespace LocalJSX {
          */
         "close_backdrop"?: boolean;
         /**
-          * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open
+          * Whether pressing Escape dismisses the dialog. Set to `false` alongside `close_backdrop={false}` for a flow that must confirm before closing, such as an unsaved-changes guard — the host then closes it via `closeDialog()`.
+          * @default true
          */
-        "onAtuiDialogChange"?: (event: AtDialogCustomEvent<any>) => void;
+        "close_esc"?: boolean;
+        /**
+          * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open. Emitted exactly once per open and once per close, whichever path caused it.
+         */
+        "onAtuiDialogChange"?: (event: AtDialogCustomEvent<boolean>) => void;
+        /**
+          * Emits once each time the dialog closes, with `event.detail.reason` describing which path closed it. Always accompanies an `atuiDialogChange(false)`.
+         */
+        "onAtuiDialogClose"?: (event: AtDialogCustomEvent<{ reason: AtDialogCloseReason }>) => void;
         /**
           * Role of the dialog element. Can be either 'dialog' or 'alertdialog'
           * @default 'dialog'
@@ -8919,6 +8939,7 @@ declare namespace LocalJSX {
         "role": 'dialog' | 'alertdialog';
         "backdrop": boolean;
         "close_backdrop": boolean;
+        "close_esc": boolean;
         "trigger_id": string;
     }
     interface AtFormLabelAttributes {
@@ -9645,6 +9666,7 @@ declare module "@stencil/core" {
              * @category Overlays
              * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
              * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
+             * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
              */
             "at-dialog": LocalJSX.IntrinsicElements["at-dialog"] & JSXBase.HTMLAttributes<HTMLAtDialogElement>;
             /**

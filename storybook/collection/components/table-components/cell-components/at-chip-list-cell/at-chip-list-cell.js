@@ -19,7 +19,7 @@ export class AtChipListCell {
         return true;
     }
     render() {
-        return (h(Host, { key: 'd5b0b37028451d313015326dd9e5ebba74c53427', class: "flex h-full items-center" }, h("at-chip-list", { key: '6ce38d6452d3e3a068feac15468146d54988e302', chips: this.chips, show_clear_all: false, readonly: true })));
+        return (h(Host, { key: 'c4ab5bcf740ff1b12df203e782d48308de004c62', class: "flex h-full items-center" }, h("at-chip-list", { key: 'f14f8392120ab9b612f14e1a2fc8cbc3e1d0e7de', chips: this.chips, show_clear_all: false, readonly: true })));
     }
     static get is() { return "at-chip-list-cell"; }
     static get states() {

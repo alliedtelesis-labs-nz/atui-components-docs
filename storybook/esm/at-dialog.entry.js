@@ -6,6 +6,7 @@ const AtDialogComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.atuiDialogChange = createEvent(this, "atuiDialogChange", 7);
+        this.atuiDialogClose = createEvent(this, "atuiDialogClose", 7);
     }
     get el() { return getElement(this); }
     /**
@@ -21,6 +22,12 @@ const AtDialogComponent = class {
      */
     close_backdrop = false;
     /**
+     * Whether pressing Escape dismisses the dialog. Set to `false` alongside
+     * `close_backdrop={false}` for a flow that must confirm before closing, such
+     * as an unsaved-changes guard — the host then closes it via `closeDialog()`.
+     */
+    close_esc = true;
+    /**
      * Data-id of an external element to use as the trigger. When provided, clicking the trigger will toggle the dialog.
      */
     trigger_id;
@@ -29,9 +36,15 @@ const AtDialogComponent = class {
      */
     isOpen = false;
     /**
-     * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open
+     * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open.
+     * Emitted exactly once per open and once per close, whichever path caused it.
      */
     atuiDialogChange;
+    /**
+     * Emits once each time the dialog closes, with `event.detail.reason` describing
+     * which path closed it. Always accompanies an `atuiDialogChange(false)`.
+     */
+    atuiDialogClose;
     dialog;
     dialogWrapper;
     triggerEls = [];
@@ -69,12 +82,27 @@ const AtDialogComponent = class {
      * @returns Promise that resolves when the dialog is closed
      */
     async closeDialog() {
-        if (this.dialog && this.isOpen) {
-            this.dialog.close();
-            this.isOpen = false;
-            this.atuiDialogChange.emit(this.isOpen);
-            this.dialog.removeAttribute('open');
+        this.dismiss('programmatic');
+    }
+    /**
+     * The single path through which the dialog closes.
+     *
+     * Every caller routes through here, and `isOpen` is cleared *before*
+     * `dialog.close()` runs, so the native `close` event — which the browser
+     * queues as a task rather than dispatching synchronously — finds the dialog
+     * already closed and returns without emitting again. That ordering is what
+     * makes the exactly-once guarantee hold rather than depending on the event
+     * being asynchronous.
+     */
+    dismiss(reason) {
+        if (!this.dialog || !this.isOpen) {
+            return;
         }
+        this.isOpen = false;
+        this.dialog.close();
+        this.dialog.removeAttribute('open');
+        this.atuiDialogChange.emit(false);
+        this.atuiDialogClose.emit({ reason });
     }
     /**
      * Getter method for the open state of the dialog
@@ -83,22 +111,46 @@ const AtDialogComponent = class {
     async getIsOpen() {
         return this.isOpen;
     }
+    /**
+     * The native `close` event. Reached only when something closed the `<dialog>`
+     * without going through `dismiss()` — a `<form method="dialog">` submit in the
+     * slot, say. Anything this component initiated has already cleared `isOpen`,
+     * so `dismiss()` returns immediately and nothing is emitted twice.
+     */
     handleDialogClose = () => {
-        if (this.isOpen) {
-            this.closeDialog();
+        this.dismiss('close');
+    };
+    /**
+     * Escape is handled here rather than left to the browser so the close carries
+     * a reason and can be suppressed. `preventDefault()` runs on both branches:
+     * without it the browser would close the dialog itself, which would either
+     * bypass `close_esc={false}` or report the close as `'close'`.
+     */
+    handleKeyDown = (event) => {
+        if (event.key !== 'Escape' || !this.isOpen) {
+            return;
+        }
+        event.preventDefault();
+        if (this.close_esc) {
+            this.dismiss('esc');
         }
     };
-    handleKeyDown = (event) => {
-        if (event.key === 'Escape' && this.isOpen) {
-            event.preventDefault();
-            this.closeDialog();
+    /**
+     * The browser's own Escape handling surfaces as `cancel` and can reach the
+     * dialog without a keydown this component sees. Suppress it too, so
+     * `close_esc={false}` holds however Escape arrives.
+     */
+    handleCancel = (event) => {
+        event.preventDefault();
+        if (this.close_esc) {
+            this.dismiss('esc');
         }
     };
     offClickHandler(event) {
         if (!this.close_backdrop || !this.dialog?.open)
             return;
         if (!this.dialogWrapper?.contains(event.target)) {
-            this.handleDialogClose();
+            this.dismiss('backdrop');
         }
     }
     async componentDidLoad() {
@@ -144,7 +196,7 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: 'aec3fb97dbef7f0f731cd8d97ba74d8d9808b4a1', "data-open": this.isOpen }, h("dialog", { key: '1da403152f8845018bd49af75f8b5f49568e182f', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '5a0def2522f6ff8845a86c853b57664a23fb40a2', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'df70a4be9252f7b798e852ada6ce29b813413f36' })))));
+        return (h(Host, { key: 'e927398ce819215eeca39f6c0544a59a9c3e2bc8', "data-open": this.isOpen }, h("dialog", { key: 'ee579134a3c7ce586bd5481cee68e857a197f168', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '6f4729a969a8ff2d144093c25ee6518ed05e9871', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '6b24094f71e26188a50c0452928ecdf2d6665835' })))));
     }
 };
 AtDialogComponent.style = atDialogCss();
