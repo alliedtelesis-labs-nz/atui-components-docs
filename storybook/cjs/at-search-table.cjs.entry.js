@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-EXiXggWw.js');
+var index = require('./index-hahhWKrj.js');
 var translation = require('./translation-D3uILiF8.js');
 
 var SortDirection;

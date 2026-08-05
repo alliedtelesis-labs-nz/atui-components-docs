@@ -1,7 +1,14 @@
 import { h, Host } from "@stencil/core";
+/**
+ * State colours have DEFAULT / foreground / background / *-inv variants — there is
+ * no `-base` on any of them (the only `*-base` in the theme is `surface-base`).
+ * `bg-success-base` and `bg-warning-base` therefore matched no rule at all and those
+ * two fills rendered UNPAINTED rather than merely pale, which hid the at-risk state
+ * in every consumer. See issue #285.
+ */
 const progressBarVariants = {
-    success: 'bg-success-base',
-    warning: 'bg-warning-base',
+    success: 'bg-success-foreground',
+    warning: 'bg-warning-foreground',
     error: 'bg-destructive-foreground',
     info: 'bg-info-foreground',
 };

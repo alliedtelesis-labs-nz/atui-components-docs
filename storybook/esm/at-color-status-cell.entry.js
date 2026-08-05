@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-CYntefTQ.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DNWYfDmW.js';
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
@@ -18,12 +18,15 @@ const AtColorStatusCell = class {
     }
     render() {
         const statusClasses = {
-            error: 'bg-error-base',
-            warning: 'bg-warning-base',
-            success: 'bg-success-base',
-            disabled: 'bg-disabled-light',
+            // `-base` does not exist on any state colour, and neither does
+            // `disabled-light`; all four matched no rule, so every state of this cell
+            // rendered unpainted. Issue #285.
+            error: 'bg-error-foreground',
+            warning: 'bg-warning-foreground',
+            success: 'bg-success-foreground',
+            disabled: 'bg-disabled-background',
         };
-        return (h(Host, { key: '522c5046149a33e26d151c755fd21a4e82ee61e2', class: "flex h-full items-center" }, h("div", { key: 'eac5c9852f11da235be89352513934b98f8d5863', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (h(Host, { key: '37a42f3770687ff0106bb68a98cb5918f40d67b7', class: "flex h-full items-center" }, h("div", { key: 'cffec596f215318960fb2b1af47b02ccb499a3e8', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
 };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-EXiXggWw.js');
+var index = require('./index-hahhWKrj.js');
 
 const AtStaticTable = class {
     constructor(hostRef) {

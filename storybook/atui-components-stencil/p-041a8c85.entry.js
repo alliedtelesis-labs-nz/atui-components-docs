@@ -1,0 +1,1 @@
+import{r as e,h as a,H as d}from"./p-DNWYfDmW.js";const r=class{constructor(a){e(this,a)}render(){return a(d,{key:"9ea99ecc4a37c45cfd297bd20bed2aab293e0d73",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"da1d22d8b68ef07ef485ebfe3387ff99f392b2f3"}))}};r.style=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}";export{r as at_sidebar_menu}
