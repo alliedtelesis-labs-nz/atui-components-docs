@@ -3069,8 +3069,16 @@ strong {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.animate-\[bounce-dots_1s_infinite\] {
+  animation: bounce-dots 1s infinite;
+}
+
 .animate-\[typing_1s_infinite\] {
   animation: typing 1s infinite;
+}
+
+.animate-\[wave_1s_infinite\] {
+  animation: wave 1s infinite;
 }
 
 @keyframes progress-left {

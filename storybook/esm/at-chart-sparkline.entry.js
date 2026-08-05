@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-DVWT6VvQ.js';
+import { r as registerInstance, h, H as Host } from './index-BQWIFs0G.js';
 import { g as getChartColors, c as color, C as Chart, L as LinearScale, b as CategoryScale, d as LineController, e as LineElement, P as PointElement, i as index } from './chart-color-BSsHS4sa.js';
 import { A as AtChartColorPalette } from './chart-color-BeJCqIOU.js';
 

@@ -26,6 +26,8 @@ export declare class AtLoadingComponent {
     get sizeClasses(): string;
     get spinnerSizeClasses(): string;
     private renderSpinner;
+    private renderDots;
+    private renderWave;
     private renderTyping;
     render(): any;
 }

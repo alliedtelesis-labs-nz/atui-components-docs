@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CZHE0nPQ.js');
+var index = require('./index-D7uTOurQ.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -165,7 +165,7 @@ const AtButtonComponent = class {
 };
 AtButtonComponent.style = atButtonCss();
 
-const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
+const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0);opacity:0.5}40%{transform:scale(1);opacity:1}}@keyframes wave{0%,100%{transform:scaleY(0.4);opacity:0.5}50%{transform:scaleY(1);opacity:1}}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-10px);opacity:1}}`;
 
 const loadingVariants = {
     type: {
@@ -221,6 +221,12 @@ const AtLoadingComponent = class {
                 : 'border-primary-foreground';
         return (index.h(index.Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
     }
+    renderDots() {
+        return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 250, 500].map((delay) => (index.h("span", { class: "inline-block h-4 w-4 animate-[bounce-dots_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    }
+    renderWave() {
+        return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 100, 200, 300, 400].map((delay) => (index.h("span", { class: "inline-block h-16 w-4 animate-[wave_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    }
     renderTyping() {
         return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Typing" }, index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '0ms' } }), index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '250ms' } }), index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '500ms' } })));
     }
@@ -228,6 +234,10 @@ const AtLoadingComponent = class {
         switch (this.variant) {
             case 'typing':
                 return this.renderTyping();
+            case 'dots':
+                return this.renderDots();
+            case 'wave':
+                return this.renderWave();
             case 'spinner':
             default:
                 return this.renderSpinner();

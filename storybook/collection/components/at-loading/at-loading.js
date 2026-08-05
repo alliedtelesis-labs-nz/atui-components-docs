@@ -54,6 +54,12 @@ export class AtLoadingComponent {
                 : 'border-primary-foreground';
         return (h(Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
     }
+    renderDots() {
+        return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 250, 500].map((delay) => (h("span", { class: "inline-block h-4 w-4 animate-[bounce-dots_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    }
+    renderWave() {
+        return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 100, 200, 300, 400].map((delay) => (h("span", { class: "inline-block h-16 w-4 animate-[wave_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    }
     renderTyping() {
         return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Typing" }, h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '0ms' } }), h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '250ms' } }), h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '500ms' } })));
     }
@@ -61,6 +67,10 @@ export class AtLoadingComponent {
         switch (this.variant) {
             case 'typing':
                 return this.renderTyping();
+            case 'dots':
+                return this.renderDots();
+            case 'wave':
+                return this.renderWave();
             case 'spinner':
             default:
                 return this.renderSpinner();

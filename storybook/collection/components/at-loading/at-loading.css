@@ -8,6 +8,16 @@
     opacity: 1;
   }
 }
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
 @keyframes typing {
   0%, 60%, 100% {
     transform: translateY(0);
