@@ -10,6 +10,7 @@ export declare class AtToasterComponent {
      */
     position: AtIToastPosition;
     toasts: AtIToast[];
+    private dismissTimers;
     /**
      * Adds a new toast to the toaster container
      * This method is called from the ToasterService when a new toast is created.
@@ -17,6 +18,7 @@ export declare class AtToasterComponent {
      * @param toast The toast to add
      */
     addToast(toast: AtIToast): Promise<void>;
+    disconnectedCallback(): void;
     /**
      * Removes a toast from the toaster container by its ID
      * This method is called by tapToast.

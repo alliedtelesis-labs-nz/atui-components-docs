@@ -12,6 +12,7 @@ const AtToasterComponent = class {
      */
     position = 'bottom-right';
     toasts = [];
+    dismissTimers = new Set();
     /**
      * Adds a new toast to the toaster container
      * This method is called from the ToasterService when a new toast is created.
@@ -21,8 +22,16 @@ const AtToasterComponent = class {
     async addToast(toast) {
         this.toasts = [...this.toasts, toast];
         if (toast.dismissible && toast.timeout > 0) {
-            setTimeout(() => this.removeToast(toast.id), toast.timeout);
+            const timer = setTimeout(() => {
+                this.dismissTimers.delete(timer);
+                this.removeToast(toast.id);
+            }, toast.timeout);
+            this.dismissTimers.add(timer);
         }
+    }
+    disconnectedCallback() {
+        this.dismissTimers.forEach((timer) => clearTimeout(timer));
+        this.dismissTimers.clear();
     }
     /**
      * Removes a toast from the toaster container by its ID
@@ -70,7 +79,7 @@ const AtToasterComponent = class {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '3791a8040dba2b02683d2c30e951a1ec9f31579d', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+        return (h("div", { key: '20881530c1b9b3e22f67d382fd1baebb922008e3', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))))))));
