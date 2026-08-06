@@ -1,6 +1,7 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-ChWFprTL.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
+import { A as AvailableCells, a as AvailableHeaders, r as resolveCellSearchText } from './cell-search-text-DdEbMlp-.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
 import { at_text_badge_cell as AtTextBadgeCell } from './at-text-badge-cell.entry.js';
 import { at_health_dot_cell as AtHealthDotCell } from './at-health-dot-cell.entry.js';
@@ -22,36 +23,7 @@ import { at_progress_bar_cell as AtProgressBarCell } from './at-progress-bar-cel
 import './time-date-presentation.util-H5gcGi8Y.js';
 import './at-time-date.util-Bfdzn_RG.js';
 import './date-C3LwY5aR.js';
-
-/**
- * NEW AtAvailableCells also need to be added to getFrameworkComponents()
- * so that ag-grid can import and render the cell components
- */
-var AvailableCells;
-(function (AvailableCells) {
-    AvailableCells["CHECKBOX_CELL"] = "AtCheckboxCell";
-    AvailableCells["TEXT_CELL"] = "AtTextCell";
-    AvailableCells["TEXT_STATUS_CELL"] = "AtTextStatusCell";
-    AvailableCells["HEALTH_DOT_CELL"] = "AtHealthDotCell";
-    AvailableCells["RELATIVE_DATETIME_CELL"] = "AtRelativeDateTimeCell";
-    AvailableCells["TEXT_WITH_BADGE_CELL"] = "AtTextBadgeCell";
-    AvailableCells["TEXT_WITH_ICON_CELL"] = "AtTextIconCell";
-    AvailableCells["TITLE_SUBTITLE_CELL"] = "AtTitleSubtitleCell";
-    AvailableCells["TITLE_SUBTITLE_DATE_CELL"] = "AtTitleSubtitleDateCell";
-    AvailableCells["EDIT_TEXT_CELL"] = "AtEditTextCell";
-    AvailableCells["CHIP_LIST_CELL"] = "AtChipListCell";
-    AvailableCells["TOGGLE_CELL"] = "AtToggleCell";
-    AvailableCells["MULTI_BTN_CELL"] = "AtMultiBtnCell";
-    AvailableCells["COLOR_STATUS_CELL"] = "AtColorStatusCell";
-    AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtTextImageCell";
-    AvailableCells["MENU_CELL"] = "AtMenuCell";
-    AvailableCells["PROGRESS_BAR_CELL"] = "AtProgressBarCell";
-})(AvailableCells || (AvailableCells = {}));
-var AvailableHeaders;
-(function (AvailableHeaders) {
-    AvailableHeaders["CHECKBOX_HEADER"] = "checkboxHeader";
-    AvailableHeaders["ICON_HEADER"] = "iconHeader";
-})(AvailableHeaders || (AvailableHeaders = {}));
+import './relative-time-label-CLVJlEqK.js';
 
 const layoutVariantsConfig = {
     variants: {
@@ -49172,9 +49144,24 @@ const AtTableComponent = class {
             this.agGrid.setGridOption('paginationPageSize', newPageSize);
         }
     }
+    /**
+     * Makes each column searchable by the text its cell renderer displays rather than by the
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     */
+    withSearchText(colDefs) {
+        return (colDefs ?? []).map((colDef) => {
+            if (colDef.getQuickFilterText) {
+                return colDef;
+            }
+            return {
+                ...colDef,
+                getQuickFilterText: (params) => resolveCellSearchText(colDef, params.value, params.data),
+            };
+        });
+    }
     handleColDefsChange(newColDefs) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(newColDefs));
+            this.agGrid.setGridOption('columnDefs', this.withSearchText(newColDefs));
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -49277,7 +49264,7 @@ const AtTableComponent = class {
             theme: agAtuiTheme,
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
-            columnDefs: this.resolveColumnDefs(this.col_defs),
+            columnDefs: this.withSearchText(this.col_defs),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
             animateRows: true,
@@ -49303,6 +49290,12 @@ const AtTableComponent = class {
                 }
             },
         };
+        if (this.use_custom_sorting) {
+            gridOptions.columnDefs = this.withSearchText(this.col_defs).map((colDef) => ({
+                ...colDef,
+                comparator: () => 0,
+            }));
+        }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;
             gridOptions.paginationPageSize = this.page_size;
@@ -49333,7 +49326,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'd08117a04a4d0a9ebd0bb6bd1aff33c4e56c1762', class: {
+        return (h(Host, { key: '119361bfcbcb9dcd721a1d622d647c90b8a52c93', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49393,11 +49386,9 @@ const AtTableActionsComponent = class {
      *
      * Listening for `atuiChange` meant this switch never ran, so a toolbar
      * composed directly from these parts had inert search, filters and export.
-     * (`at-search-table` is unaffected — it binds `onAtChange` on its own
-     * children rather than relying on this handler.) The only `atuiChange` that
-     * reaches here bubbles out of `at-column-manager`'s inner
-     * `at-checkbox-group`, whose `string[]` payload does not match what the
-     * `column-manager` branch reads.
+     * The only `atuiChange` that reaches here bubbles out of
+     * `at-column-manager`'s inner `at-checkbox-group`, whose `string[]` payload
+     * does not match what the `column-manager` branch reads.
      *
      * These event names break the repo's `atui*` convention, which is what made
      * the mismatch easy to miss. Renaming them is a breaking public API change,
@@ -49412,6 +49403,16 @@ const AtTableActionsComponent = class {
      */
     changeHandler(event) {
         const target = event.target;
+        // at-search-table nests an at-table-actions purely for layout and wires its own
+        // handler to every child, so without this each child's atChange is handled twice:
+        // its export menu emits atExportCsv/atExportPdf from both components.
+        //
+        // Its search box is not double-handled, but only because at-search-table wraps it
+        // in an at-control-group that carries slot="search" while the event's target is
+        // the at-search itself, whose slot is empty.
+        if (target.closest('at-search-table')) {
+            return;
+        }
         switch (target.slot) {
             case 'column-manager':
                 this.ag_grid?.setColumnsVisible([event.detail.id], event.detail.checked);
@@ -49434,6 +49435,9 @@ const AtTableActionsComponent = class {
         }
     }
     getVisibleColumns() {
+        if (!this.ag_grid) {
+            return [];
+        }
         return this.ag_grid.getAllDisplayedColumns().map((column) => {
             const userProvidedColDef = column.getUserProvidedColDef();
             return {
@@ -49444,7 +49448,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '8b3534806c4b4ed009a929ec11310fbb8e4d611a', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '8c9fd0907cc53e3a87cf2685ea6ff03b5e8285f1', class: "flex justify-between" }, h("div", { key: '5d4fec2435994c22da82734c09b9284ca38ebfba', class: "flex" }, h("slot", { key: 'f7e1125b8919011113c35bd2cceb4e7c33f85794', name: "search" })), h("div", { key: '127b52cc2200fd4d56eb175a5f02946513a9c81c', class: "flex" }, h("slot", { key: 'ebb055ac5176db05292899cdc9e08a56da4099fb', name: "export-menu" }), h("slot", { key: '29a39a7431004a2f07d23df6ef9ba80ec65b3f89', name: "column-manager" }), h("slot", { key: '4a1bb05e15d0a5421e60322c33c547fbf2253fb5', name: "actions" }))), h("slot", { key: '391d3d2de5670309b4da10e8ab2a5ca5b33ce0d1', name: "filters" })));
+        return (h(Host, { key: '7d18158ec58183b26fa35a47647e73b46a38cc49', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'a703cbcebb09ef54d6d3bdd8e2808b8c7da3303d', class: "flex justify-between" }, h("div", { key: '8a49fac6b3d343b172811d92486ced677edd0c77', class: "flex" }, h("slot", { key: 'fea29bb2e803189a2d6d7ecaa25daf3cbf15c11c', name: "search" })), h("div", { key: 'f375d081d9dc82e89e0f5e4b69a96d8b86421129', class: "flex" }, h("slot", { key: '56167cfccd83ebb7cd59d3f05f1fd8b40535e944', name: "export-menu" }), h("slot", { key: '7214d66b375b7015af45403692fc19701eee8daf', name: "column-manager" }), h("slot", { key: '2d6aa0369865daa111bc4fbc0948230ab7d801a8', name: "actions" }))), h("slot", { key: '30e5493ade66e386cd7fe4bc5a4592efed65a168', name: "filters" })));
     }
 };
 

@@ -2,7 +2,7 @@ import { EventEmitter } from '../../../stencil-public-runtime';
 import { GridApi, IRowNode } from 'ag-grid-community';
 import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams, AtIFilterGroup } from '../../../types';
 import { AtITableColumnDef } from '../../../models/searchTableModel';
-import { AtISelectOption } from '../../../components';
+import { AtISelectOption } from '../../../types/select';
 type RowUpdateOptions = {
     flash: boolean;
     forceRefresh: boolean;
@@ -60,9 +60,9 @@ export declare class AtSearchTable {
      */
     page_size_options?: AtISelectOption[];
     /**
-     * If true the table dropdown filters will not be added
+     * If true the table filters will not be added
      */
-    hide_dropdown_filters?: boolean;
+    hide_table_filters?: boolean;
     /**
      * If true the column manager will not be added
      */
@@ -91,6 +91,13 @@ export declare class AtSearchTable {
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns: boolean;
+    /**
+     * If true, columns hidden by the column manager are still matched by the search box.
+     * Off by default, so hiding a column also stops its content matching, which is what AG
+     * Grid's quick filter does on the at-table + at-table-actions path. Enable it to keep a
+     * deliberately hidden column searchable.
+     */
+    search_hidden_columns?: boolean;
     /**
      * If true, enables server-side data loading mode where filtering,
      * searching, and pagination are handled externally
@@ -140,7 +147,7 @@ export declare class AtSearchTable {
      */
     private hasEmittedInitialServerParams;
     tableEl: HTMLAtTableElement;
-    get shouldShowDropdownFilters(): boolean;
+    get shouldShowTableFilters(): boolean;
     get shouldShowColumnManager(): boolean;
     get totalPages(): number;
     get hasNoData(): boolean;
@@ -205,6 +212,15 @@ export declare class AtSearchTable {
      */
     getDisplayedRows<T>(): Promise<IRowNode<T>[]>;
     private initGrid;
+    /**
+     * Matches AG Grid's quick filter, which `at-table` uses on the
+     * at-table + at-table-actions path: the term is split on whitespace and every part must
+     * appear in some column, so the parts may land in different columns and their order does
+     * not matter. Dropping empty parts is what stops stray leading, trailing or repeated
+     * spaces from filtering everything out.
+     */
+    private splitSearchTerms;
+    private getColumnSearchText;
     private setupExternalFilters;
     handleColumnChange(event: CustomEvent): void;
     handleFilterChange(event: CustomEvent<AtIFilterGroup>): void;

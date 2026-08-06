@@ -73,6 +73,11 @@ export declare class AtTableComponent {
      * kept whatever value was current at construction time.
      */
     handlePageSizeChange(newPageSize: number): void;
+    /**
+     * Makes each column searchable by the text its cell renderer displays rather than by the
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     */
+    private withSearchText;
     handleColDefsChange(newColDefs: ColDef[]): void;
     /**
      * Re-applies the column defs so ag-grid's own sorting is neutralised, or

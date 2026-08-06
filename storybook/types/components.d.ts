@@ -44,7 +44,6 @@ import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 import { AtITableColumnDef } from "./models/searchTableModel";
-import { AtISelectOption as AtISelectOption1 } from "./components";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
@@ -98,7 +97,6 @@ export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 export { AtITableColumnDef } from "./models/searchTableModel";
-export { AtISelectOption as AtISelectOption1 } from "./components";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
@@ -2386,10 +2384,6 @@ export namespace Components {
          */
         "hide_csv_export"?: boolean;
         /**
-          * If true the table dropdown filters will not be added
-         */
-        "hide_dropdown_filters"?: boolean;
-        /**
           * If true the table export menu will not be added
          */
         "hide_export_menu"?: boolean;
@@ -2398,6 +2392,10 @@ export namespace Components {
           * @default false
          */
         "hide_pdf_export"?: boolean;
+        /**
+          * If true the table filters will not be added
+         */
+        "hide_table_filters"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
@@ -2419,11 +2417,16 @@ export namespace Components {
         /**
           * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
          */
-        "page_size_options"?: AtISelectOption1[];
+        "page_size_options"?: AtISelectOption[];
         /**
           * External search filters applied to the table data.
          */
         "search_filters"?: AtIFilterGroup;
+        /**
+          * If true, columns hidden by the column manager are still matched by the search box. Off by default, so hiding a column also stops its content matching, which is what AG Grid's quick filter does on the at-table + at-table-actions path. Enable it to keep a deliberately hidden column searchable.
+          * @default false
+         */
+        "search_hidden_columns"?: boolean;
         /**
           * Hint text displayed below the search label.
          */
@@ -7733,10 +7736,6 @@ declare namespace LocalJSX {
          */
         "hide_csv_export"?: boolean;
         /**
-          * If true the table dropdown filters will not be added
-         */
-        "hide_dropdown_filters"?: boolean;
-        /**
           * If true the table export menu will not be added
          */
         "hide_export_menu"?: boolean;
@@ -7745,6 +7744,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "hide_pdf_export"?: boolean;
+        /**
+          * If true the table filters will not be added
+         */
+        "hide_table_filters"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
@@ -7778,11 +7781,16 @@ declare namespace LocalJSX {
         /**
           * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
          */
-        "page_size_options"?: AtISelectOption1[];
+        "page_size_options"?: AtISelectOption[];
         /**
           * External search filters applied to the table data.
          */
         "search_filters"?: AtIFilterGroup;
+        /**
+          * If true, columns hidden by the column manager are still matched by the search box. Off by default, so hiding a column also stops its content matching, which is what AG Grid's quick filter does on the at-table + at-table-actions path. Enable it to keep a deliberately hidden column searchable.
+          * @default false
+         */
+        "search_hidden_columns"?: boolean;
         /**
           * Hint text displayed below the search label.
          */
@@ -9224,13 +9232,14 @@ declare namespace LocalJSX {
         "search_hint": string;
         "search_info_tooltip": string;
         "page_size": number;
-        "hide_dropdown_filters": boolean;
+        "hide_table_filters": boolean;
         "hide_column_manager": boolean;
         "hide_export_menu": boolean;
         "hide_csv_export": boolean;
         "hide_pdf_export": boolean;
         "use_custom_pagination": boolean;
         "auto_size_columns": boolean;
+        "search_hidden_columns": boolean;
         "server_side_mode": boolean;
         "loading": boolean;
         "no_data_message": string;

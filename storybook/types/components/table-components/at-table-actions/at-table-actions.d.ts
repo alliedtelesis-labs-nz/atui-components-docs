@@ -6,7 +6,7 @@ import { GridApi } from 'ag-grid-community';
  *
  * @slot column-manager - Used to place an at-column-manager
  * @slot search - Used to place an at-search
- * @slot dropdown-filters - Used to place an at-table-filters
+ * @slot filters - Used to place an at-table-filters
  * @slot export-menu - Used to place an at-export-menu
  * @slot actions - Used to place actions related to table content
 
@@ -40,11 +40,9 @@ export declare class AtTableActionsComponent {
      *
      * Listening for `atuiChange` meant this switch never ran, so a toolbar
      * composed directly from these parts had inert search, filters and export.
-     * (`at-search-table` is unaffected — it binds `onAtChange` on its own
-     * children rather than relying on this handler.) The only `atuiChange` that
-     * reaches here bubbles out of `at-column-manager`'s inner
-     * `at-checkbox-group`, whose `string[]` payload does not match what the
-     * `column-manager` branch reads.
+     * The only `atuiChange` that reaches here bubbles out of
+     * `at-column-manager`'s inner `at-checkbox-group`, whose `string[]` payload
+     * does not match what the `column-manager` branch reads.
      *
      * These event names break the repo's `atui*` convention, which is what made
      * the mismatch easy to miss. Renaming them is a breaking public API change,

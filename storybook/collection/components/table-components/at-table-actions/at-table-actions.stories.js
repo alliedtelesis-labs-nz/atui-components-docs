@@ -2,7 +2,7 @@ const Template = () => `
 <at-table-actions>
     <at-column-manager slot="column-manager"></at-column-manager>
     <at-search slot="search" label="Search table"></at-search>
-    <at-table-dropdown-filters slot="dropdown-filters"></at-table-dropdown-filters>
+    <at-table-filters slot="filters"></at-table-filters>
     <at-table-export-menu slot="export-menu"></at-table-export-menu>
 </at-table-actions>
 <at-table></at-table>
@@ -47,7 +47,7 @@ const table_data = {
 document.querySelector('at-table').table_data = table_data
 document.querySelector('at-table').col_defs = col_defs
 document.querySelector('at-column-manager').col_defs = col_defs
-document.querySelector('at-table-dropdown-filters').col_defs = col_defs
+document.querySelector('at-table-filters').col_defs = col_defs
 document.querySelector('at-table')
     .createGrid()
     .then((api) => document.querySelector('at-table-actions').ag_grid = api)

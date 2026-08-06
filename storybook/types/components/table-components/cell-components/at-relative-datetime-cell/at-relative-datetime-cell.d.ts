@@ -14,9 +14,5 @@ export declare class AtRelativeDateTimeCell implements ICellRendererComp {
     refresh(params: AtIRelativeDateTimeCellParams): boolean;
     getGui(): HTMLElement;
     private setValues;
-    private parseDateTime;
-    private getRelativeLabel;
-    private formatSingleUnit;
-    private formatUnit;
     render(): any;
 }

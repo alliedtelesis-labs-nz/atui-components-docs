@@ -1,5 +1,6 @@
 import { h, Host, } from "@stencil/core";
 import { createGrid } from "ag-grid-community";
+import { resolveCellSearchText } from "../utils/cell-search-text";
 import { themeQuartz } from "ag-grid-community";
 import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
@@ -78,9 +79,24 @@ export class AtTableComponent {
             this.agGrid.setGridOption('paginationPageSize', newPageSize);
         }
     }
+    /**
+     * Makes each column searchable by the text its cell renderer displays rather than by the
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     */
+    withSearchText(colDefs) {
+        return (colDefs ?? []).map((colDef) => {
+            if (colDef.getQuickFilterText) {
+                return colDef;
+            }
+            return {
+                ...colDef,
+                getQuickFilterText: (params) => resolveCellSearchText(colDef, params.value, params.data),
+            };
+        });
+    }
     handleColDefsChange(newColDefs) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(newColDefs));
+            this.agGrid.setGridOption('columnDefs', this.withSearchText(newColDefs));
             if (this.auto_size_columns) {
                 setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
             }
@@ -183,7 +199,7 @@ export class AtTableComponent {
             theme: agAtuiTheme,
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
-            columnDefs: this.resolveColumnDefs(this.col_defs),
+            columnDefs: this.withSearchText(this.col_defs),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
             animateRows: true,
@@ -209,6 +225,12 @@ export class AtTableComponent {
                 }
             },
         };
+        if (this.use_custom_sorting) {
+            gridOptions.columnDefs = this.withSearchText(this.col_defs).map((colDef) => ({
+                ...colDef,
+                comparator: () => 0,
+            }));
+        }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;
             gridOptions.paginationPageSize = this.page_size;
@@ -239,7 +261,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'd08117a04a4d0a9ebd0bb6bd1aff33c4e56c1762', class: {
+        return (h(Host, { key: '119361bfcbcb9dcd721a1d622d647c90b8a52c93', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

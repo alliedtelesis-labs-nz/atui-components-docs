@@ -5,7 +5,7 @@ import { h, Host, } from "@stencil/core";
  *
  * @slot column-manager - Used to place an at-column-manager
  * @slot search - Used to place an at-search
- * @slot dropdown-filters - Used to place an at-table-filters
+ * @slot filters - Used to place an at-table-filters
  * @slot export-menu - Used to place an at-export-menu
  * @slot actions - Used to place actions related to table content
 
@@ -39,11 +39,9 @@ export class AtTableActionsComponent {
      *
      * Listening for `atuiChange` meant this switch never ran, so a toolbar
      * composed directly from these parts had inert search, filters and export.
-     * (`at-search-table` is unaffected — it binds `onAtChange` on its own
-     * children rather than relying on this handler.) The only `atuiChange` that
-     * reaches here bubbles out of `at-column-manager`'s inner
-     * `at-checkbox-group`, whose `string[]` payload does not match what the
-     * `column-manager` branch reads.
+     * The only `atuiChange` that reaches here bubbles out of
+     * `at-column-manager`'s inner `at-checkbox-group`, whose `string[]` payload
+     * does not match what the `column-manager` branch reads.
      *
      * These event names break the repo's `atui*` convention, which is what made
      * the mismatch easy to miss. Renaming them is a breaking public API change,
@@ -58,6 +56,16 @@ export class AtTableActionsComponent {
      */
     changeHandler(event) {
         const target = event.target;
+        // at-search-table nests an at-table-actions purely for layout and wires its own
+        // handler to every child, so without this each child's atChange is handled twice:
+        // its export menu emits atExportCsv/atExportPdf from both components.
+        //
+        // Its search box is not double-handled, but only because at-search-table wraps it
+        // in an at-control-group that carries slot="search" while the event's target is
+        // the at-search itself, whose slot is empty.
+        if (target.closest('at-search-table')) {
+            return;
+        }
         switch (target.slot) {
             case 'column-manager':
                 this.ag_grid?.setColumnsVisible([event.detail.id], event.detail.checked);
@@ -80,6 +88,9 @@ export class AtTableActionsComponent {
         }
     }
     getVisibleColumns() {
+        if (!this.ag_grid) {
+            return [];
+        }
         return this.ag_grid.getAllDisplayedColumns().map((column) => {
             const userProvidedColDef = column.getUserProvidedColDef();
             return {
@@ -90,7 +101,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: '8b3534806c4b4ed009a929ec11310fbb8e4d611a', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '8c9fd0907cc53e3a87cf2685ea6ff03b5e8285f1', class: "flex justify-between" }, h("div", { key: '5d4fec2435994c22da82734c09b9284ca38ebfba', class: "flex" }, h("slot", { key: 'f7e1125b8919011113c35bd2cceb4e7c33f85794', name: "search" })), h("div", { key: '127b52cc2200fd4d56eb175a5f02946513a9c81c', class: "flex" }, h("slot", { key: 'ebb055ac5176db05292899cdc9e08a56da4099fb', name: "export-menu" }), h("slot", { key: '29a39a7431004a2f07d23df6ef9ba80ec65b3f89', name: "column-manager" }), h("slot", { key: '4a1bb05e15d0a5421e60322c33c547fbf2253fb5', name: "actions" }))), h("slot", { key: '391d3d2de5670309b4da10e8ab2a5ca5b33ce0d1', name: "filters" })));
+        return (h(Host, { key: '7d18158ec58183b26fa35a47647e73b46a38cc49', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'a703cbcebb09ef54d6d3bdd8e2808b8c7da3303d', class: "flex justify-between" }, h("div", { key: '8a49fac6b3d343b172811d92486ced677edd0c77', class: "flex" }, h("slot", { key: 'fea29bb2e803189a2d6d7ecaa25daf3cbf15c11c', name: "search" })), h("div", { key: 'f375d081d9dc82e89e0f5e4b69a96d8b86421129', class: "flex" }, h("slot", { key: '56167cfccd83ebb7cd59d3f05f1fd8b40535e944', name: "export-menu" }), h("slot", { key: '7214d66b375b7015af45403692fc19701eee8daf', name: "column-manager" }), h("slot", { key: '2d6aa0369865daa111bc4fbc0948230ab7d801a8', name: "actions" }))), h("slot", { key: '30e5493ade66e386cd7fe4bc5a4592efed65a168', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {

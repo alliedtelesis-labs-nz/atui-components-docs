@@ -3,6 +3,11 @@
 var index = require('./index-C0zY2e5N.js');
 var translation = require('./translation-D3uILiF8.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
+var cellSearchText = require('./cell-search-text-CuE5-uNb.js');
+require('./time-date-presentation.util-CBDuvYdu.js');
+require('./at-time-date.util-6Fmc04Ie.js');
+require('./date-DDRmOnS1.js');
+require('./relative-time-label-Cl44YHvZ.js');
 
 var SortDirection;
 (function (SortDirection) {
@@ -58,9 +63,9 @@ const AtSearchTable = class {
      */
     page_size_options;
     /**
-     * If true the table dropdown filters will not be added
+     * If true the table filters will not be added
      */
-    hide_dropdown_filters;
+    hide_table_filters;
     /**
      * If true the column manager will not be added
      */
@@ -89,6 +94,13 @@ const AtSearchTable = class {
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
      */
     auto_size_columns = true;
+    /**
+     * If true, columns hidden by the column manager are still matched by the search box.
+     * Off by default, so hiding a column also stops its content matching, which is what AG
+     * Grid's quick filter does on the at-table + at-table-actions path. Enable it to keep a
+     * deliberately hidden column searchable.
+     */
+    search_hidden_columns = false;
     /**
      * If true, enables server-side data loading mode where filtering,
      * searching, and pagination are handled externally
@@ -140,8 +152,8 @@ const AtSearchTable = class {
      */
     hasEmittedInitialServerParams = false;
     tableEl;
-    get shouldShowDropdownFilters() {
-        return (!this.hide_dropdown_filters &&
+    get shouldShowTableFilters() {
+        return (!this.hide_table_filters &&
             this.col_defs &&
             this.col_defs.length > 0);
     }
@@ -296,6 +308,47 @@ const AtSearchTable = class {
             }
         }
     }
+    /**
+     * Matches AG Grid's quick filter, which `at-table` uses on the
+     * at-table + at-table-actions path: the term is split on whitespace and every part must
+     * appear in some column, so the parts may land in different columns and their order does
+     * not matter. Dropping empty parts is what stops stray leading, trailing or repeated
+     * spaces from filtering everything out.
+     */
+    splitSearchTerms(searchValue) {
+        return (searchValue ?? '')
+            .toLowerCase()
+            .split(/\s+/)
+            .filter((term) => term.length > 0);
+    }
+    getColumnSearchText(colDef, node) {
+        let cellValue;
+        if (colDef.valueGetter && typeof colDef.valueGetter === 'function') {
+            cellValue = colDef.valueGetter({
+                data: node.data,
+                node,
+                colDef,
+                api: this.agGrid,
+                context: null,
+                getValue: (field) => node.data[field],
+                column: null,
+            });
+        }
+        else if (colDef.field) {
+            cellValue = node.data[colDef.field];
+        }
+        return colDef.getQuickFilterText
+            ? colDef.getQuickFilterText({
+                value: cellValue,
+                node,
+                data: node.data,
+                column: null,
+                colDef,
+                api: this.agGrid,
+                context: null,
+            })
+            : cellSearchText.resolveCellSearchText(colDef, cellValue, node.data);
+    }
     setupExternalFilters() {
         if (!this.agGrid)
             return;
@@ -308,31 +361,17 @@ const AtSearchTable = class {
         this.agGrid.setGridOption('doesExternalFilterPass', (node) => {
             if (!node.data)
                 return true;
-            const searchValue = this.searchValue;
-            if (searchValue) {
-                const searchLower = searchValue.toLowerCase();
-                const matchesSearch = this.col_defs.some((colDef) => {
-                    let cellValue;
-                    if (colDef.valueGetter &&
-                        typeof colDef.valueGetter === 'function') {
-                        cellValue = colDef.valueGetter({
-                            data: node.data,
-                            node,
-                            colDef,
-                            api: this.agGrid,
-                            context: null,
-                            getValue: (field) => node.data[field],
-                            column: null,
-                        });
-                    }
-                    else if (colDef.field) {
-                        cellValue = node.data[colDef.field];
-                    }
-                    return (cellValue &&
-                        String(cellValue)
-                            .toLowerCase()
-                            .includes(searchLower));
-                });
+            const searchTerms = this.splitSearchTerms(this.searchValue);
+            if (searchTerms.length) {
+                // hide is undefined for a column the manager has never toggled, so this
+                // tests against true rather than falsiness.
+                const columnTexts = this.col_defs
+                    .filter((colDef) => this.search_hidden_columns ||
+                    colDef.hide !== true)
+                    .map((colDef) => this.getColumnSearchText(colDef, node))
+                    .filter((text) => !!text)
+                    .map((text) => text.toLowerCase());
+                const matchesSearch = searchTerms.every((term) => columnTexts.some((text) => text.includes(term)));
                 if (!matchesSearch)
                     return false;
             }
@@ -546,18 +585,18 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '9b8c43cc37119f38f58898e7d73c40a1bbfcc378', class: this.server_side_mode ? 'is-loading' : '' }, index.h("at-table-actions", { key: '8fa77cf7c38c6688428268a3a2e52c8e628ed48b', ag_grid: this.agGrid }, index.h("at-control-group", { key: '89027962817720dd2dde49c9dc77f72652e7620f', slot: "search" }, this.shouldShowDropdownFilters &&
-            !this.search_filters && (index.h("at-table-filter-menu", { key: '6297c9cfec0a4e8706d9bed55184b9693df237c5', col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: '8090a8ca20af61b5d8c626048dc2231744e638af', class: "w-input-md",
+        return (index.h(index.Host, { key: '201f61f5f2d2e75a89ba3474df1b7dfae3ce9a0e', class: this.server_side_mode ? 'is-loading' : '' }, index.h("at-table-actions", { key: 'f88e0ec85c341b10d6c47e691ecdc5e8c38cfde1', ag_grid: this.agGrid }, index.h("at-control-group", { key: '44839ee1a0ec1404e2a4971193c58e97e24d0d93', slot: "search" }, this.shouldShowTableFilters &&
+            !this.search_filters && (index.h("at-table-filter-menu", { key: 'c594aa030a7389cb6e0aba6dad78f47ffd9b59fc', col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: '2d24ab1676af222e9d401fe634304081290e459e', class: "w-input-md",
             // label={this.search_label}
-            hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowDropdownFilters && (index.h("at-table-filters", { key: 'e2c202e3963576bc455adb9939371982bccfb15f', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '32be9c8265ef1192d6cd3fd8e1648ac17ef2e604', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: 'b3a3ea4b7d1ada1348e519cb234bb3f98a0a8fd5', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: 'b3200a02fa5aa76ba84a87fd812054dcb0af47d9', slot: "actions" }, index.h("slot", { key: '214a096aaa59b0fb7cf72f102815897431be7a2a', name: "actions" }))), index.h("slot", { key: '92a2acb97cdbd2bd2d4cf9af38b91986aba7ba0d', name: "multi-select-actions" }), index.h("div", { key: 'b066a9eb59033891701f4e955e78815e2d2e74fe', class: "relative" }, index.h("at-table", { key: 'dd2b5be9ac573264862478fbd82be8ef76314cec', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+            hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (index.h("at-table-filters", { key: 'e39e95aa9c3d4ee22181b2e3d781f715a3953534', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '27f442a970cb4e9f2aa6cd0e0f6c48d7d2f999b2', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: '469f57bf60e7042984f7d5592c32f912b3531f2e', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '0a5ebf8e6bc39b142b89774321e7d971427faab5', slot: "actions" }, index.h("slot", { key: '1ed8aa69e17f6048bdb4c7254864e4a79c1818b2', name: "actions" }))), index.h("slot", { key: '18b3b2aaa64c7827fed58a3dc6784172cd0455a0', name: "multi-select-actions" }), index.h("div", { key: '30f344ea4f1ba2f2ee3f318aa18f45c9756abe8d', class: "relative" }, index.h("at-table", { key: '702eefcfffe2e5ba6bcdf3af9bc4a30ab1b85e44', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (index.h("div", { key: '91b813ff110e2b2cfff79fae57bc7cd9cbecce37', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, index.h("div", { key: '7d26d80e1f868d94f1fc34042c1502ed47a95ba9', class: "flex items-center" }, index.h("at-loading", { key: '96ee9697d91fe3892d9b83ec40281ca4f26721c7', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), index.h("span", { key: 'b556d9c329744d62af2efd6056ae3b8b25fcb864', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (index.h("div", { key: '2b0aa2da1307c8732b533b17d5f89820e64b5f9a', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, index.h("at-icon", { key: 'e707972c294f0fc5bc05565f4e9e0a87c1451216', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (index.h("div", { key: '47b83eb9d546565a693b77e8cecb8ff1647d0f03', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, index.h("div", { key: 'ab13d06f6e0918a5bca53288ec51182781b422c1', class: "flex items-center" }, index.h("at-loading", { key: '3662177a4d0c39070616955c7b5e6ba6c044af42', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), index.h("span", { key: '203b06b028e342bf1e1e716034c68a0c2241236e', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (index.h("div", { key: 'b6b77cddad8ac7695e5ed4851e415a7815d3c436', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, index.h("at-icon", { key: '841a30b9a36ad664ee8036c9f9980d141531d91f', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), index.h("span", { key: '618c0c2a8196ac6dafe91594d090fe40e4da7635', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), index.h("span", { key: '5e79ff42b6f0f1592207feafb4c057ecc60d8d1c', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (index.h("at-table-pagination", { key: 'c7d7a9fca091c42f344070681cb8f974667274ce', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (index.h("at-table-pagination", { key: '438727a8cf9c24ce3d9e0eebdabb0f1eda270780', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "page_size": [{

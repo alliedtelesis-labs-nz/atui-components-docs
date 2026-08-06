@@ -1,4 +1,5 @@
 import { h, Host } from "@stencil/core";
+import { getRelativeTimeLabel, parseCellDateTime, } from "../../utils/relative-time-label";
 /**
  * @category Data Tables
  * @description A cell component for displaying relative time since a datetime with the source datetime shown below.
@@ -26,65 +27,17 @@ export class AtRelativeDateTimeCell {
             this.dateTimeLabel = '';
             return;
         }
-        const parsedDate = this.parseDateTime(sourceDateTime);
+        const parsedDate = parseCellDateTime(sourceDateTime);
         if (!parsedDate) {
             this.relativeLabel = '-';
             this.dateTimeLabel = '';
             return;
         }
-        this.relativeLabel = this.getRelativeLabel(parsedDate);
+        this.relativeLabel = getRelativeTimeLabel(parsedDate);
         this.dateTimeLabel = sourceDateTime;
     }
-    parseDateTime(value) {
-        const normalizedValue = value.replace(' ', 'T');
-        const parsedDate = new Date(normalizedValue);
-        if (Number.isNaN(parsedDate.getTime())) {
-            return null;
-        }
-        return parsedDate;
-    }
-    getRelativeLabel(date) {
-        const now = Date.now();
-        const then = date.getTime();
-        const diffSeconds = Math.max(0, Math.floor((now - then) / 1000));
-        if (diffSeconds < 60) {
-            return this.formatSingleUnit(diffSeconds, 'second');
-        }
-        const minutes = Math.floor(diffSeconds / 60);
-        if (minutes < 60) {
-            return this.formatSingleUnit(minutes, 'minute');
-        }
-        const hours = Math.floor(minutes / 60);
-        if (hours < 24) {
-            return this.formatSingleUnit(hours, 'hour');
-        }
-        const days = Math.floor(hours / 24);
-        if (days < 30) {
-            return this.formatSingleUnit(days, 'day');
-        }
-        const months = Math.floor(days / 30);
-        if (months < 12) {
-            const monthRemainderDays = days % 30;
-            if (monthRemainderDays > 0) {
-                return `${this.formatUnit(months, 'month')}, ${this.formatUnit(monthRemainderDays, 'day')} ago`;
-            }
-            return this.formatSingleUnit(months, 'month');
-        }
-        const years = Math.floor(months / 12);
-        const yearRemainderMonths = months % 12;
-        if (yearRemainderMonths > 0) {
-            return `${this.formatUnit(years, 'year')}, ${this.formatUnit(yearRemainderMonths, 'month')} ago`;
-        }
-        return this.formatSingleUnit(years, 'year');
-    }
-    formatSingleUnit(value, unit) {
-        return `${this.formatUnit(value, unit)} ago`;
-    }
-    formatUnit(value, unit) {
-        return `${value} ${unit}${value === 1 ? '' : 's'}`;
-    }
     render() {
-        return (h(Host, { key: '9a64d465e2384b7a6aabf3390773a907a2219984', class: "flex h-full items-center" }, h("div", { key: 'c533f230f7a5e48fbe28a1facf33a73acb164218', class: "flex h-full flex-col justify-center" }, h("div", { key: '47e6c4c578b8e363b14527f6e09fbc173267c9e6', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: 'decee34e39a3e716cc237d904d63ef8364ad2439', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (h(Host, { key: '7e2c7efdb2c4656d2f9d7ed3189cf1f9503d578c', class: "flex h-full items-center" }, h("div", { key: 'cd8285842cc4c61e0c1a21803b2371626fa28d4a', class: "flex h-full flex-col justify-center" }, h("div", { key: '1635d9d9324f204144b69b94db9683d57c6f7e22', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: 'c21742ad4962082cdff12040df62f33907af9874', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
     static get is() { return "at-relative-datetime-cell"; }
     static get states() {
