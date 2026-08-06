@@ -29,4 +29,5 @@ export declare const StatusGood: StoryObj;
 export declare const StatusWarning: StoryObj;
 export declare const StatusBad: StoryObj;
 export declare const CustomRange: StoryObj;
+export declare const WithTooltipLabel: StoryObj;
 export declare const ValueOnly: StoryObj;

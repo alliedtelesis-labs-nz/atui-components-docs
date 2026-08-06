@@ -778,13 +778,21 @@ export namespace Components {
          */
         "resize": () => Promise<void>;
         /**
-          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). When unset, the first colour of `color_palette` is used.
+          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable), and the state is shown as the hover tooltip's title. When unset, the first colour of `color_palette` is used and the tooltip has no title.
          */
         "status"?: AtChartGaugeStatus;
         /**
           * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
          */
         "thresholds"?: number[];
+        /**
+          * Label shown in the hover tooltip, before the value — typically the title of the widget the gauge sits in, e.g. `"CPU Usage"` renders `CPU Usage: 72%`. Falls back to `center_text` when unset; when neither is set, only the value (and `unit`) is shown. The tooltip's title line is the `status`, when one is set.
+         */
+        "tooltip_label"?: string;
+        /**
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
+         */
+        "tooltip_options"?: object;
         /**
           * Unit appended to `center_value`, rendered at a smaller size (e.g. `%`). Not appended to `center_value` directly — include it via this prop to get the smaller styling; otherwise bake it into `center_value` for equal-size rendering.
          */
@@ -5990,13 +5998,21 @@ declare namespace LocalJSX {
          */
         "refresh_theme"?: string;
         /**
-          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable). When unset, the first colour of `color_palette` is used.
+          * Health colour mode for the value arc. When set, the arc colour is taken from the device-status palette for the given state (good / warning / bad / unreachable), and the state is shown as the hover tooltip's title. When unset, the first colour of `color_palette` is used and the tooltip has no title.
          */
         "status"?: AtChartGaugeStatus;
         /**
           * Threshold boundary stops within the scale, e.g. `[60, 85]` splits the range into three zones (min–60, 60–85, 85–max). Zones are drawn as a thin outer ring and coloured from the alert palette by index. When omitted, no threshold ring is drawn.
          */
         "thresholds"?: number[];
+        /**
+          * Label shown in the hover tooltip, before the value — typically the title of the widget the gauge sits in, e.g. `"CPU Usage"` renders `CPU Usage: 72%`. Falls back to `center_text` when unset; when neither is set, only the value (and `unit`) is shown. The tooltip's title line is the `status`, when one is set.
+         */
+        "tooltip_label"?: string;
+        /**
+          * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
+         */
+        "tooltip_options"?: object;
         /**
           * Unit appended to `center_value`, rendered at a smaller size (e.g. `%`). Not appended to `center_value` directly — include it via this prop to get the smaller styling; otherwise bake it into `center_value` for equal-size rendering.
          */
@@ -8880,6 +8896,7 @@ declare namespace LocalJSX {
         "cutout": number;
         "color_palette": AtChartGaugePalette;
         "height": AtChartHeight;
+        "tooltip_label": string;
         "refresh_theme": string;
     }
     interface AtChartSparklineAttributes {

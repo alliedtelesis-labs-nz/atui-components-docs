@@ -7,6 +7,8 @@ const Template = (args) => `
         ${args.status ? `status="${args.status}"` : ''}
         ${args.center_value ? `center_value="${args.center_value}"` : ''}
         ${args.center_text ? `center_text="${args.center_text}"` : ''}
+        ${args.unit ? `unit="${args.unit}"` : ''}
+        ${args.tooltip_label ? `tooltip_label="${args.tooltip_label}"` : ''}
         ${args.color_palette ? `color_palette="${args.color_palette}"` : ''}
         ${args.height ? `height="${args.height}"` : ''}
     />
@@ -96,6 +98,21 @@ export const CustomRange = {
         status: 'warning',
         center_value: '420',
         center_text: 'Mbps',
+    },
+    render: Template,
+};
+export const WithTooltipLabel = {
+    name: 'Tooltip Label',
+    args: {
+        value: 72,
+        thresholds: [60, 85],
+        status: 'warning',
+        center_value: '72',
+        unit: '%',
+        center_text: 'Utilisation',
+        // Usually the title of the widget the gauge sits in. Hovering the
+        // filled arc shows "Warning" (from status) above "CPU Usage: 72%".
+        tooltip_label: 'CPU Usage',
     },
     render: Template,
 };

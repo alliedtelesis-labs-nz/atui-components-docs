@@ -40,7 +40,9 @@ export declare class AtChartGauge {
     /**
      * Health colour mode for the value arc. When set, the arc colour is taken
      * from the device-status palette for the given state (good / warning / bad /
-     * unreachable). When unset, the first colour of `color_palette` is used.
+     * unreachable), and the state is shown as the hover tooltip's title. When
+     * unset, the first colour of `color_palette` is used and the tooltip has no
+     * title.
      */
     status?: AtChartGaugeStatus;
     /**
@@ -82,6 +84,19 @@ export declare class AtChartGauge {
      * Height of the gauge.
      */
     height?: AtChartHeight;
+    /**
+     * Label shown in the hover tooltip, before the value — typically the title
+     * of the widget the gauge sits in, e.g. `"CPU Usage"` renders
+     * `CPU Usage: 72%`. Falls back to `center_text` when unset; when neither is
+     * set, only the value (and `unit`) is shown. The tooltip's title line is
+     * the `status`, when one is set.
+     */
+    tooltip_label?: string;
+    /**
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved
+     * unless explicitly overridden.
+     */
+    tooltip_options?: object;
     /**
      * Additional options merged into the chart configuration.
      */
@@ -133,6 +148,39 @@ export declare class AtChartGauge {
      * since a semicircle's usable space sits above its flat base.
      */
     private getDrawCenterTextPlugin;
+    /**
+     * The value the arc actually renders, after clamping `value` to
+     * [min, max]. Shared by `initChart` (arc span) and `tooltipText` (fallback
+     * label) so the tooltip never shows a raw value the dial can't display.
+     */
+    private clampedValue;
+    /**
+     * The tooltip's title line: the health status of the value arc, e.g.
+     * `Warning`. Empty when no `status` is set, in which case Chart.js draws
+     * the tooltip with the value line alone.
+     */
+    private tooltipTitle;
+    /**
+     * The tooltip's body line: the widget/metric label, then the value and its
+     * unit — e.g. `CPU Usage: 72%`. Mirrors Chart.js's doughnut label format
+     * (`label: value`) so the gauge reads the same as at-chart-donut and
+     * at-chart-breakdown. `center_value` is preferred over the raw `value` prop
+     * so the tooltip shows exactly what the dial shows.
+     */
+    private tooltipText;
+    /**
+     * Chart.js decides whether to show the tooltip from the hovered elements,
+     * not from the items that survive `filter`. Hovering the track, the spacer
+     * or a threshold zone therefore still opened a tooltip, with every body
+     * line filtered away and only the status title left.
+     *
+     * Dropping those elements from the tooltip's active set (rather than
+     * cancelling the draw) leaves Chart.js in its normal "nothing hovered"
+     * state, so the opacity animation fades the box out instead of clipping
+     * it. The draw guard remains as a backstop for the first frames, before
+     * any content has ever been built.
+     */
+    private getTooltipGuardPlugin;
     initChart(): void;
     disconnectedCallback(): void;
     componentDidUpdate(): void;

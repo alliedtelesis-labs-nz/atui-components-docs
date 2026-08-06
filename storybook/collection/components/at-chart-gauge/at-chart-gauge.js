@@ -1,5 +1,5 @@
 import { h, Host } from "@stencil/core";
-import { ArcElement, Chart, DoughnutController, Filler, } from "chart.js";
+import { ArcElement, Chart, DoughnutController, Filler, Tooltip, } from "chart.js";
 import { color } from "chart.js/helpers";
 import { AtChartColorPalette, readChartFontFamily, readChartTextColors, readChartTypography, } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
@@ -16,6 +16,14 @@ const statusPaletteIndex = {
     warning: 1,
     bad: 2,
     unreachable: 3,
+};
+// Display text for each status, used as the tooltip's title line. The prop
+// values are lowercase identifiers; these are the user-facing equivalents.
+const statusLabels = {
+    good: 'Good',
+    warning: 'Warning',
+    bad: 'Bad',
+    unreachable: 'Unreachable',
 };
 // Relative ring thicknesses: the value arc is the thick inner ring, the
 // threshold arc a thin band (half the value ring's width) on the outer rim.
@@ -63,7 +71,9 @@ export class AtChartGauge {
     /**
      * Health colour mode for the value arc. When set, the arc colour is taken
      * from the device-status palette for the given state (good / warning / bad /
-     * unreachable). When unset, the first colour of `color_palette` is used.
+     * unreachable), and the state is shown as the hover tooltip's title. When
+     * unset, the first colour of `color_palette` is used and the tooltip has no
+     * title.
      */
     status;
     /**
@@ -105,6 +115,19 @@ export class AtChartGauge {
      * Height of the gauge.
      */
     height = 'md';
+    /**
+     * Label shown in the hover tooltip, before the value — typically the title
+     * of the widget the gauge sits in, e.g. `"CPU Usage"` renders
+     * `CPU Usage: 72%`. Falls back to `center_text` when unset; when neither is
+     * set, only the value (and `unit`) is shown. The tooltip's title line is
+     * the `status`, when one is set.
+     */
+    tooltip_label;
+    /**
+     * Options merged into the tooltip plugin config. ATUI defaults are preserved
+     * unless explicitly overridden.
+     */
+    tooltip_options;
     /**
      * Additional options merged into the chart configuration.
      */
@@ -155,12 +178,20 @@ export class AtChartGauge {
         const track = base !== undefined
             ? color(base).alpha(TRACK_ALPHA).rgbString()
             : 'transparent';
+        const fills = [base ?? 'transparent', track];
         return {
             data: [span, Math.max(total - span, 0)],
-            backgroundColor: [base ?? 'transparent', track],
+            backgroundColor: fills,
+            // Hover colours mirror the base colours so the arc doesn't shift
+            // tone when the tooltip is triggered — the tooltip is the only
+            // hover affordance.
+            hoverBackgroundColor: fills,
             // Transparent border opens up the gap to the outer threshold ring.
             borderColor: 'transparent',
+            hoverBorderColor: 'transparent',
             borderWidth: RING_GAP,
+            hoverBorderWidth: RING_GAP,
+            hoverOffset: 0,
             weight: VALUE_WEIGHT,
         };
     }
@@ -180,12 +211,18 @@ export class AtChartGauge {
         // Threshold zones are always the alert palette (health bands).
         const colors = getChartColors(AtChartColorPalette.ALERT) || [];
         const tint = (c) => c ? color(c).alpha(THRESHOLD_ALPHA).rgbString() : 'transparent';
+        const fills = spans.map((_, i) => tint(colors[i % (colors.length || 1)]));
         return {
             data: spans,
-            backgroundColor: spans.map((_, i) => tint(colors[i % (colors.length || 1)])),
+            backgroundColor: fills,
+            // The threshold ring is passive — no tooltip, no hover restyling.
+            hoverBackgroundColor: fills,
             // Hairline between adjacent zone segments.
             borderColor: 'transparent',
+            hoverBorderColor: 'transparent',
             borderWidth: RING_GAP,
+            hoverBorderWidth: RING_GAP,
+            hoverOffset: 0,
             weight: THRESHOLD_WEIGHT,
         };
     }
@@ -197,7 +234,10 @@ export class AtChartGauge {
         return {
             data: [total],
             backgroundColor: ['transparent'],
+            hoverBackgroundColor: ['transparent'],
             borderWidth: 0,
+            hoverBorderWidth: 0,
+            hoverOffset: 0,
             weight: GAP_WEIGHT,
         };
     }
@@ -316,11 +356,68 @@ export class AtChartGauge {
             },
         };
     }
+    /**
+     * The value the arc actually renders, after clamping `value` to
+     * [min, max]. Shared by `initChart` (arc span) and `tooltipText` (fallback
+     * label) so the tooltip never shows a raw value the dial can't display.
+     */
+    clampedValue() {
+        return Math.min(Math.max(this.value, this.min), this.max);
+    }
+    /**
+     * The tooltip's title line: the health status of the value arc, e.g.
+     * `Warning`. Empty when no `status` is set, in which case Chart.js draws
+     * the tooltip with the value line alone.
+     */
+    tooltipTitle() {
+        return this.status ? statusLabels[this.status] : '';
+    }
+    /**
+     * The tooltip's body line: the widget/metric label, then the value and its
+     * unit — e.g. `CPU Usage: 72%`. Mirrors Chart.js's doughnut label format
+     * (`label: value`) so the gauge reads the same as at-chart-donut and
+     * at-chart-breakdown. `center_value` is preferred over the raw `value` prop
+     * so the tooltip shows exactly what the dial shows.
+     */
+    tooltipText() {
+        const label = this.tooltip_label ?? this.center_text;
+        const value = `${this.center_value ?? this.clampedValue()}${this.unit ?? ''}`;
+        return label ? `${label}: ${value}` : value;
+    }
+    /**
+     * Chart.js decides whether to show the tooltip from the hovered elements,
+     * not from the items that survive `filter`. Hovering the track, the spacer
+     * or a threshold zone therefore still opened a tooltip, with every body
+     * line filtered away and only the status title left.
+     *
+     * Dropping those elements from the tooltip's active set (rather than
+     * cancelling the draw) leaves Chart.js in its normal "nothing hovered"
+     * state, so the opacity animation fades the box out instead of clipping
+     * it. The draw guard remains as a backstop for the first frames, before
+     * any content has ever been built.
+     */
+    getTooltipGuardPlugin(valueDatasetIndex) {
+        const isValueArc = (el) => el.datasetIndex === valueDatasetIndex && el.index === 0;
+        return {
+            id: 'atuiGaugeTooltipGuard',
+            afterEvent: (chart, args) => {
+                const tooltip = chart.tooltip;
+                if (!tooltip) {
+                    return;
+                }
+                const active = tooltip.getActiveElements();
+                if (active.length && !active.some(isValueArc)) {
+                    tooltip.setActiveElements([], { x: 0, y: 0 });
+                    args.changed = true;
+                }
+            },
+            beforeTooltipDraw: (_chart, args) => args.tooltip.dataPoints.length > 0,
+        };
+    }
     initChart() {
-        Chart.register(DoughnutController, ArcElement, Filler);
+        Chart.register(DoughnutController, ArcElement, Tooltip, Filler);
         const total = Math.max(this.max - this.min, 0);
-        const clamped = Math.min(Math.max(this.value, this.min), this.max);
-        const span = clamped - this.min;
+        const span = this.clampedValue() - this.min;
         // Chart.js draws the first doughnut dataset as the outermost ring and
         // the last as the innermost. The thin threshold ring goes first (outer
         // rim), then a transparent spacer for the gap, then the thick value
@@ -332,7 +429,12 @@ export class AtChartGauge {
             datasets.push(this.spacerDataset(total));
         }
         datasets.push(this.valueDataset(span, total));
-        const plugins = [];
+        // The value ring is pushed last, so it is always the final dataset.
+        const valueDatasetIndex = datasets.length - 1;
+        const textColors = readChartTextColors();
+        const plugins = [
+            this.getTooltipGuardPlugin(valueDatasetIndex),
+        ];
         if (this.center_value || this.center_text) {
             plugins.push(this.getDrawCenterTextPlugin(readChartTypography(this.canvasEl)));
         }
@@ -345,15 +447,53 @@ export class AtChartGauge {
                 devicePixelRatio: window.devicePixelRatio || 1,
                 responsive: true,
                 maintainAspectRatio: false,
-                // Animation off by default; override via `options` if desired.
-                animation: false,
+                // Arcs draw instantly, but the animation config stays an object
+                // rather than `false`: Chart.js resolves tooltip animations to
+                // nothing when `options.animation` is falsy, which would kill
+                // the tooltip fade below. Override via `options` if desired.
+                animation: { duration: 0 },
                 rotation: -90,
                 circumference: 180,
                 cutout: `${this.cutout}%`,
                 layout: { padding: 8 },
+                // Only trigger on the arc actually under the pointer, so the
+                // filter below can keep the tooltip to the value segment.
+                interaction: { mode: 'nearest', intersect: true },
                 plugins: {
                     legend: { display: false },
-                    tooltip: { enabled: false },
+                    // Styling matches at-chart-donut / at-chart-breakdown so the
+                    // tooltip is identical across the chart set.
+                    tooltip: {
+                        mode: 'nearest',
+                        intersect: true,
+                        position: 'nearest',
+                        boxWidth: 10,
+                        boxHeight: 10,
+                        boxPadding: 4,
+                        padding: { x: 10, y: 4 },
+                        backgroundColor: textColors.tooltipBg,
+                        borderColor: textColors.tooltipBg,
+                        titleColor: textColors.tooltipTitle,
+                        bodyColor: textColors.tooltipBody,
+                        ...(this.tooltip_options || {}),
+                        callbacks: {
+                            title: () => this.tooltipTitle(),
+                            label: () => this.tooltipText(),
+                            labelColor: () => ({
+                                borderColor: 'transparent',
+                                backgroundColor: this.resolveValueColor() ?? 'transparent',
+                                borderWidth: 0,
+                                borderRadius: 2,
+                            }),
+                            ...(this.tooltip_options?.callbacks || {}),
+                        },
+                        // Only the filled portion of the value ring is
+                        // interactive — the unfilled track, the transparent
+                        // spacer and the threshold zones stay silent.
+                        filter: (ctx) => ctx.datasetIndex === valueDatasetIndex &&
+                            ctx.dataIndex === 0,
+                        enabled: true,
+                    },
                 },
                 ...(this.options || {}),
             },
@@ -383,7 +523,7 @@ export class AtChartGauge {
         }
     }
     render() {
-        return (h(Host, { key: '44d058506617bbaaa02ce3c5b407a3ca77400740', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'ddb88ac42e30264b4d07d68fbad413c09e0b1eb9', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: 'da0a450924d8a1c0a3079e390de2c397713cb9b2', style: { height: '100%', width: '100%' } }, h("canvas", { key: '3b8d300c2fe425b89b68526888e5b2a1e09295c7', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
     static get is() { return "at-chart-gauge"; }
     static get properties() {
@@ -483,7 +623,7 @@ export class AtChartGauge {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Health colour mode for the value arc. When set, the arc colour is taken\nfrom the device-status palette for the given state (good / warning / bad /\nunreachable). When unset, the first colour of `color_palette` is used."
+                    "text": "Health colour mode for the value arc. When set, the arc colour is taken\nfrom the device-status palette for the given state (good / warning / bad /\nunreachable), and the state is shown as the hover tooltip's title. When\nunset, the first colour of `color_palette` is used and the tooltip has no\ntitle."
                 },
                 "getter": false,
                 "setter": false,
@@ -619,6 +759,42 @@ export class AtChartGauge {
                 "reflect": false,
                 "attribute": "height",
                 "defaultValue": "'md'"
+            },
+            "tooltip_label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Label shown in the hover tooltip, before the value \u2014 typically the title\nof the widget the gauge sits in, e.g. `\"CPU Usage\"` renders\n`CPU Usage: 72%`. Falls back to `center_text` when unset; when neither is\nset, only the value (and `unit`) is shown. The tooltip's title line is\nthe `status`, when one is set."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "tooltip_label"
+            },
+            "tooltip_options": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "object",
+                    "resolved": "object",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Options merged into the tooltip plugin config. ATUI defaults are preserved\nunless explicitly overridden."
+                },
+                "getter": false,
+                "setter": false
             },
             "options": {
                 "type": "unknown",
