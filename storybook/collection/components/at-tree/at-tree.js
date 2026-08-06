@@ -29,7 +29,6 @@ export class AtTreeComponent {
      */
     atuiClick;
     flattenedItemList = [];
-    flattenedItemStyles = [];
     handleClick = (id) => {
         let clickedItem = null;
         const updateIsSelected = (items) => {
@@ -73,12 +72,9 @@ export class AtTreeComponent {
         }
     }
     render() {
-        return (h("div", { key: 'c86962dda422b30d73a9fd67e6ca7333d88649b6', class: "w-full" }, h("slot", { key: 'adfa8eb405001b15263929485fa12f41fc239040' }), this.flattenedItemList &&
-            this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
-                    item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, style: {
-                    paddingLeft: this.flattenedItemStyles[index] +
-                        'px',
-                }, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
+        return (h("div", { key: '2dafdb03f882745f513343ab02c5c0ad8f8df1c2', class: "w-full" }, h("slot", { key: 'b513f774e5f49ac81d9e94feaef744163d07271e' }), this.flattenedItemList &&
+            this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "block w-full" }, h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
+                    item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));
     }
     static get is() { return "at-tree"; }
@@ -139,8 +135,7 @@ export class AtTreeComponent {
     }
     static get states() {
         return {
-            "flattenedItemList": {},
-            "flattenedItemStyles": {}
+            "flattenedItemList": {}
         };
     }
     static get events() {

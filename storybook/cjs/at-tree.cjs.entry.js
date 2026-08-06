@@ -20,7 +20,6 @@ const AtTreeComponent = class {
      */
     atuiClick;
     flattenedItemList = [];
-    flattenedItemStyles = [];
     handleClick = (id) => {
         let clickedItem = null;
         const updateIsSelected = (items) => {
@@ -64,12 +63,9 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (index.h("div", { key: 'c86962dda422b30d73a9fd67e6ca7333d88649b6', class: "w-full" }, index.h("slot", { key: 'adfa8eb405001b15263929485fa12f41fc239040' }), this.flattenedItemList &&
-            this.flattenedItemList.map((item, index$1) => (index.h("div", { key: index$1, class: `flex w-full` }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "flex flex-grow items-start" }, index.h("at-tree-item", { class: "flex-grow", depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
-                    item.children.length > 0, selected: item.selected }, index.h("slot", { name: "item-content" })), index.h("span", null, item.tooltip))) : (index.h("at-tree-item", { depth: item.depth, style: {
-                    paddingLeft: this.flattenedItemStyles[index$1] +
-                        'px',
-                }, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
+        return (index.h("div", { key: '2dafdb03f882745f513343ab02c5c0ad8f8df1c2', class: "w-full" }, index.h("slot", { key: 'b513f774e5f49ac81d9e94feaef744163d07271e' }), this.flattenedItemList &&
+            this.flattenedItemList.map((item, index$1) => (index.h("div", { key: index$1, class: `flex w-full` }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "block w-full" }, index.h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
+                    item.children.length > 0, selected: item.selected }, index.h("slot", { name: "item-content" })), index.h("span", null, item.tooltip))) : (index.h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, index.h("slot", { name: "item-content" }))))))));
     }
 };

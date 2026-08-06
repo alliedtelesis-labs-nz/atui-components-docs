@@ -31,7 +31,6 @@ export declare class AtTreeComponent {
      */
     atuiClick: EventEmitter<AtITreeNode>;
     flattenedItemList: Array<AtITreeNode>;
-    flattenedItemStyles: any[];
     handleClick: (id: string) => void;
     flattenItemList: (itemList: AtITreeNode[]) => void;
     componentWillRender(): void;
