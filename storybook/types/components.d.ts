@@ -1400,12 +1400,12 @@ export namespace Components {
          */
         "label": string;
         /**
-          * Max selectable value of the input.
+          * Max selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
           * @default 100
          */
         "max": number;
         /**
-          * Min selectable value of the input.
+          * Min selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
           * @default 0
          */
         "min": number;
@@ -6659,12 +6659,12 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Max selectable value of the input.
+          * Max selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
           * @default 100
          */
         "max"?: number;
         /**
-          * Min selectable value of the input.
+          * Min selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
           * @default 0
          */
         "min"?: number;

@@ -42,11 +42,11 @@ export declare class AtInputNumericComponent {
      */
     disabled: boolean;
     /**
-     * Min selectable value of the input.
+     * Min selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
      */
     min: number;
     /**
-     * Max selectable value of the input.
+     * Max selectable value of the input. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is.
      */
     max: number;
     /**
