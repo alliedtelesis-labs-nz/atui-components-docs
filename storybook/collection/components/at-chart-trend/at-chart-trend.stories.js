@@ -50,7 +50,7 @@ export default {
 export const Default = {
     name: 'Rising — up-is-bad (regression)',
     args: {
-        value: '68ms',
+        value: '68',
         unit: 'ms',
         mode: 'area',
         data: RISING,
@@ -61,7 +61,7 @@ export const Default = {
 export const Improvement = {
     name: 'Falling — up-is-bad (improvement)',
     args: {
-        value: '38ms',
+        value: '38',
         unit: 'ms',
         mode: 'area',
         data: FALLING,
@@ -72,7 +72,7 @@ export const Improvement = {
 export const UpIsGood = {
     name: 'Rising — up-is-good (explicit delta)',
     args: {
-        value: '1.4 Gbps',
+        value: '1.4',
         unit: ' Gbps',
         delta: 0.6,
         mode: 'line',
@@ -85,7 +85,7 @@ export const UpIsGood = {
 export const NoDelta = {
     name: 'Flat series (delta hidden)',
     args: {
-        value: '50%',
+        value: '50',
         unit: '%',
         mode: 'line',
         data: [50, 50, 50, 50, 50, 50],

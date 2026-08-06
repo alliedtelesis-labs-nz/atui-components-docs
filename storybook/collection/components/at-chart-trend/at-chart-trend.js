@@ -11,13 +11,16 @@ export class AtChartTrend {
      */
     data = [];
     /**
-     * Large current value shown above the line. Displayed as-is, so pre-format
-     * it upstream (rounding, thousands separators, unit suffix if desired).
+     * Large current value shown above the line, displayed as-is — pre-format
+     * the number upstream (rounding, thousands separators). Pass the unit
+     * separately via `unit` for the smaller suffix styling; including a unit
+     * in `value` directly also works when that styling isn't wanted, as long
+     * as `unit` is then left unset so it isn't shown twice.
      */
     value;
     /**
-     * Unit appended to the delta label (e.g. `%`, `ms`). Not appended to
-     * `value` — include any unit in `value` directly if required.
+     * Unit of the metric (e.g. `%`, `ms`). Rendered as a smaller suffix after
+     * `value` and appended to the delta label.
      */
     unit;
     /**
@@ -92,14 +95,14 @@ export class AtChartTrend {
     }
     render() {
         const delta = this.resolveDelta();
-        return (h(Host, { key: 'b28097689d2e8727b36ff5d4fe1394b58fe01a13', style: { display: 'block', height: '100%', width: '100%' } }, h("div", { key: 'bacba461d69b0793503549ab31b33190761cbcd4', class: "flex h-full flex-col justify-between gap-4" }, h("div", { key: '874c66a090fd6866112b193525e3e1de3faa4f15', class: "flex items-baseline justify-between gap-8" }, h("span", { key: 'a402866a5c796ffc2bb9c4a2deae393e103f1371', style: {
+        return (h(Host, { key: '5cde30e00d89284b6511d2eb071e872d90b07c3b', style: { display: 'block', height: '100%', width: '100%' } }, h("div", { key: '41869e6549b35c40af0c51cb28f238a7a384f9d2', class: "flex h-full flex-col justify-between gap-4" }, h("div", { key: '77d7d8628d1cfdb21b8bb2dc4861f5da5b07f1d5', class: "flex items-baseline justify-between gap-8" }, h("span", { key: '6a357a2757ce2ea9f550c1a317d38877ce441ea7', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
-            }, "data-name": "value" }, this.value, h("span", { key: '71e702bfdd58c87b1c8c59d783348080e41085ff', style: {
+            }, "data-name": "value" }, this.value, this.unit && (h("span", { key: 'fa6a15cbdcc12b83c3963c888cd01d82884309d8', style: {
                 fontSize: '0.65em',
                 fontWeight: '500',
-            } }, this.unit ?? ''))), h("div", { key: '603374129209fbebeb95407219c41bf3c9d4544e', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, h("at-chart-sparkline", { key: '77de66587c3d6fec207b539f2cd90b1e026b59ce', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
+            }, "data-name": "value-unit" }, this.unit)))), h("div", { key: 'a335df7eff27a70a13ae4bcfa0456d891ff54467', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, h("at-chart-sparkline", { key: '80fe0ef8f24ac0d435c8542827dcfb0e43c3b093', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
     }
     static get is() { return "at-chart-trend"; }
     static get properties() {
@@ -134,7 +137,7 @@ export class AtChartTrend {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Large current value shown above the line. Displayed as-is, so pre-format\nit upstream (rounding, thousands separators, unit suffix if desired)."
+                    "text": "Large current value shown above the line, displayed as-is \u2014 pre-format\nthe number upstream (rounding, thousands separators). Pass the unit\nseparately via `unit` for the smaller suffix styling; including a unit\nin `value` directly also works when that styling isn't wanted, as long\nas `unit` is then left unset so it isn't shown twice."
                 },
                 "getter": false,
                 "setter": false,
@@ -153,7 +156,7 @@ export class AtChartTrend {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Unit appended to the delta label (e.g. `%`, `ms`). Not appended to\n`value` \u2014 include any unit in `value` directly if required."
+                    "text": "Unit of the metric (e.g. `%`, `ms`). Rendered as a smaller suffix after\n`value` and appended to the delta label."
                 },
                 "getter": false,
                 "setter": false,

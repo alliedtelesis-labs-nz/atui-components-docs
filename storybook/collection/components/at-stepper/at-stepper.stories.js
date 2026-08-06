@@ -18,6 +18,17 @@ const Template = (args) => `
     (() => {
         const stepper = document.getElementById('story-stepper');
         stepper.steps = ${JSON.stringify(STEPS)};
+        // The stepper never moves itself — the host owns current so it can
+        // validate before advancing. The story is the host here.
+        stepper.addEventListener('atuiStepChange', (event) => {
+            stepper.current = event.detail;
+        });
+        stepper.addEventListener('atuiNext', (event) => {
+            stepper.current = Math.min(event.detail + 1, ${STEPS.length - 1});
+        });
+        stepper.addEventListener('atuiPrev', (event) => {
+            stepper.current = Math.max(event.detail - 1, 0);
+        });
     })();
 </script>`;
 export default {
@@ -53,12 +64,13 @@ WithNavigation.args = {
 };
 const StateTemplate = () => `
 <div style="width: 640px">
-    <at-stepper id="state-stepper" current="2"></at-stepper>
+    <at-stepper id="state-stepper" current="3"></at-stepper>
 </div>
 <script>
     (() => {
         const stepper = document.getElementById('state-stepper');
         stepper.steps = ${JSON.stringify([
+    { label: 'Success', state: 'success' },
     { label: 'Completed' },
     { label: 'Skipped', state: 'skipped', optional: true },
     { label: 'Current' },
@@ -67,6 +79,6 @@ const StateTemplate = () => `
 ])};
     })();
 </script>`;
-/** All five step states side by side. */
+/** All six step states side by side. */
 export const AllStates = StateTemplate.bind({});
 AllStates.args = {};

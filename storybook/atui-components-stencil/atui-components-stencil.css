@@ -3518,12 +3518,6 @@ strong {
   border-color: color-mix(in srgb, var(--token-border-muted) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
-.border-med {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-border-med) calc(var(--tw-border-opacity, 1) * 100%), transparent);
-}
-
 .border-muted {
   --tw-border-opacity:
       1;

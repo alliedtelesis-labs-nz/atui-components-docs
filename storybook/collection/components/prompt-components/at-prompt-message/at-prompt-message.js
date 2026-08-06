@@ -189,10 +189,14 @@ export class AtPromptMessage {
         }
     };
     handleCopy = async () => {
+        // The event reports the user's action, synchronously — the clipboard
+        // write can stall indefinitely in an unfocused document, and a host
+        // may handle the copy itself even where the clipboard is unavailable.
+        // Only the "Copied" feedback is tied to the write being verified.
+        this.atCopy.emit(this.content);
         try {
-            await navigator.clipboard.writeText(this.content);
+            await this.writeToClipboard(this.content);
             this.copyFeedbackVisible = true;
-            this.atCopy.emit(this.content);
             setTimeout(() => {
                 this.copyFeedbackVisible = false;
             }, 2000);
@@ -201,6 +205,30 @@ export class AtPromptMessage {
             console.error('Failed to copy text:', err);
         }
     };
+    async writeToClipboard(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        }
+        catch {
+            // The async clipboard API needs a focused, permissioned document,
+            // which embedded and headless contexts don't always provide; the
+            // legacy path still copies there.
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                if (!document.execCommand('copy')) {
+                    throw new Error('execCommand copy failed');
+                }
+            }
+            finally {
+                textarea.remove();
+            }
+        }
+    }
     handleRetry = () => {
         this.atRetry.emit();
     };
@@ -261,7 +289,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'aa52c74c3e21b8d562dae47690b02a787256cb07', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'dff3a50aac694badd4f93a4f893303d828ccaca1', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'aa5570c053f06b6275eb27ddd5c474c1b04fb945', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '5fafe4544396b6b53432f5c4fe0785485421a14f', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: '2c3091f7cc69fcec826618dca178250dc297f817', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: '18f6c5f9c1b0b0a13794394314d62298cd8cd808', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '09fe8ab58b18cf326a6044c1af7c06eed53e58ef', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '4defec9d688e511d49edfd0fffabf7aa8a344390', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {

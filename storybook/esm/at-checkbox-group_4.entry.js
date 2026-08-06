@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DTnhfVT-.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-HD-uhvb8.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 import { A as AvailableCells, a as AvailableHeaders, r as resolveCellSearchText } from './cell-search-text-DdEbMlp-.js';

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BunRc-jd.js');
+var index = require('./index-DK-3iCCu.js');
 var translation = require('./translation-D3uILiF8.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
 

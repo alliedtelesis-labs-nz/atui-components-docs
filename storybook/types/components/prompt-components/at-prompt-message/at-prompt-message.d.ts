@@ -108,6 +108,7 @@ export declare class AtPromptMessage {
     private queueWordAnimation;
     private animateNextWord;
     private handleCopy;
+    private writeToClipboard;
     private handleRetry;
     private handleEdit;
     private handleVote;

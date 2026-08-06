@@ -16,5 +16,5 @@ export declare const Default: any;
 export declare const Vertical: any;
 /** With the built-in Back / Next control row. */
 export declare const WithNavigation: any;
-/** All five step states side by side. */
+/** All six step states side by side. */
 export declare const AllStates: any;

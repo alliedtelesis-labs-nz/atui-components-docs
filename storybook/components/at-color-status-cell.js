@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-B987-auQ.js";const a=o,p=s;export{a as AtColorStatusCell,p as defineCustomElement}
+import{A as o,d as s}from"./p-Cma1SW9y.js";const a=o,m=s;export{a as AtColorStatusCell,m as defineCustomElement}

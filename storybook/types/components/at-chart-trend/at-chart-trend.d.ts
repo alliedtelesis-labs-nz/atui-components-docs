@@ -20,13 +20,16 @@ export declare class AtChartTrend {
      */
     data: number[];
     /**
-     * Large current value shown above the line. Displayed as-is, so pre-format
-     * it upstream (rounding, thousands separators, unit suffix if desired).
+     * Large current value shown above the line, displayed as-is — pre-format
+     * the number upstream (rounding, thousands separators). Pass the unit
+     * separately via `unit` for the smaller suffix styling; including a unit
+     * in `value` directly also works when that styling isn't wanted, as long
+     * as `unit` is then left unset so it isn't shown twice.
      */
     value: string;
     /**
-     * Unit appended to the delta label (e.g. `%`, `ms`). Not appended to
-     * `value` — include any unit in `value` directly if required.
+     * Unit of the metric (e.g. `%`, `ms`). Rendered as a smaller suffix after
+     * `value` and appended to the delta label.
      */
     unit?: string;
     /**
