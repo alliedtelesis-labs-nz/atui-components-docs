@@ -21,7 +21,9 @@ export declare class AtCardComponent {
      */
     content?: string;
     /**
-     * Enables overflow on the content area. If false overflow will be applied on the host.
+     * When true the content area scrolls its own overflow (overflow-y auto),
+     * keeping sticky headers/footers visible. When false, content that
+     * exceeds the card is clipped by the card container.
      */
     overflow_content?: boolean;
     /**

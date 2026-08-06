@@ -439,7 +439,7 @@ export namespace Components {
          */
         "content"?: string;
         /**
-          * Enables overflow on the content area. If false overflow will be applied on the host.
+          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped by the card container.
           * @default false
          */
         "overflow_content"?: boolean;
@@ -5702,7 +5702,7 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Enables overflow on the content area. If false overflow will be applied on the host.
+          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped by the card container.
           * @default false
          */
         "overflow_content"?: boolean;

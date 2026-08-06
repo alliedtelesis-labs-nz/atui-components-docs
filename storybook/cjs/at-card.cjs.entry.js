@@ -57,7 +57,9 @@ const AtCardComponent = class {
      */
     content;
     /**
-     * Enables overflow on the content area. If false overflow will be applied on the host.
+     * When true the content area scrolls its own overflow (overflow-y auto),
+     * keeping sticky headers/footers visible. When false, content that
+     * exceeds the card is clipped by the card container.
      */
     overflow_content = false;
     /**
@@ -94,7 +96,7 @@ const AtCardComponent = class {
         const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (index.h(index.Host, { key: '09f83b2d46e3ba7612da5b70ace9102d985d8bba', class: containerClassname }, index.h("div", { key: '8b48a2968d4871d6a646dc074ff1c7a2bbad941f', class: `${headerClassname}` }, index.h("slot", { key: '7f3a465ee23bc009b1d4d82dcbc207760ae221e0', name: "card-header" }), (this.card_title || this.subtitle) && (index.h("div", { key: 'c8f7254d94d4234b1e6cb01819cc59fff2ef2d0d', class: "flex flex-col" }, this.card_title && (index.h("h4", { key: 'bce33b77b9a42d569133d7e631913c8fb4d069de', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (index.h("h5", { key: '008144b3679a460525ff981a527ed83445d4bdc2', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), index.h("slot", { key: 'cd1a6631b60d0fecfc1d251d908f44708c538591', name: "card-header-actions" })), index.h("div", { key: 'bf0911317330e5b3c0a5d56fba4f6478d1dedf3e', class: contentClassname, "data-name": "card-content" }, this.content, index.h("slot", { key: '6d907087ad1ebbd7e09bf87f68d121859dd8c6df' })), index.h("div", { key: '719ff2ffbe99c254f3af0761df6b8a8534d1f3d9', class: footerClassname }, index.h("slot", { key: 'fbda516113acf9c16d3b34021bd3e09d485f3315', name: "card-footer" }))));
+        return (index.h(index.Host, { key: '192bdbca240ac17a967270fa6a64527357e2ed43', class: containerClassname }, index.h("div", { key: '2d6b312f31635691ec3dad8597eaa31f1a9ba86e', class: `${headerClassname}` }, index.h("slot", { key: 'ab6272f08c8a451afd33d4a7fd835d93e0244548', name: "card-header" }), (this.card_title || this.subtitle) && (index.h("div", { key: '9eccbbabb348bcc01684b137efd9d58522520537', class: "flex flex-col" }, this.card_title && (index.h("h4", { key: '064e58a8ca3f7fdc75166978d72f5f8362bd1363', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (index.h("h5", { key: 'f9c7b33d8831b51b9e2650a61fdb52a28d5c0be3', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), index.h("slot", { key: 'd6e2f3455fa569da76479839befe99944b790ec5', name: "card-header-actions" })), index.h("div", { key: 'bada8cdc2386ee2d5237747b44119892e6a77ec8', class: contentClassname, "data-name": "card-content" }, this.content, index.h("slot", { key: '97052f13f60765bb07143080d186243010d3cf2d' })), index.h("div", { key: '7d4abd0ca29a479f9d0e2a1a44ff576d3cb6c82e', class: footerClassname }, index.h("slot", { key: 'fe1b1e7869199889ee68ee8b1eca31df5a59dff6', name: "card-footer" }))));
     }
 };
 
