@@ -135,7 +135,7 @@ const AtTabs = class {
     updateIndicatorPosition() {
         if (!this.indicatorRef || !this.containerRef)
             return;
-        const activeTab = this.el.querySelector('at-tab-trigger[data-active="true"]');
+        const activeTab = this.containerRef.querySelector('at-tab-trigger[data-active="true"]');
         if (activeTab) {
             const containerRect = this.containerRef.getBoundingClientRect();
             const buttonRect = activeTab.getBoundingClientRect();
@@ -156,7 +156,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '2d2bad1300696f924e8e086a62c0cfd23a13e6c1' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'dc369bb480c7bde89f3b393cd40073aa61dcb8c3' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
