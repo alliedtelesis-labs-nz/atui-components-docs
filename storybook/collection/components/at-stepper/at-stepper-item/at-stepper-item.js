@@ -1,0 +1,280 @@
+import { Host, h } from "@stencil/core";
+const dotVariants = {
+    pending: 'bg-disabled-foreground/40 h-8 w-8',
+    // The glow marks "you are here" without relying on colour alone — the same
+    // ring the design system uses for focus.
+    current: 'bg-active-accent ring-active-glow h-12 w-12 ring',
+    // Completed means "behind you", not "validated" — the stepper cannot know
+    // whether a step's form passed, so it stays on the active accent and leaves
+    // success/error semantics to the explicit host-set states.
+    completed: 'bg-active-accent h-12 w-12',
+    success: 'bg-feedback-success-accent h-12 w-12',
+    error: 'bg-feedback-error-accent h-12 w-12',
+    // Dashed and hollow is the affordance that reads as "passed over" rather
+    // than "not reached", which a plain hollow dot would not distinguish.
+    skipped: 'border-muted h-12 w-12 border border-dashed bg-transparent',
+};
+// The connector takes the state of the step behind it, so the rail itself shows
+// where the flow succeeded, failed or was passed over.
+const connectorVariants = {
+    pending: 'border-muted',
+    current: 'border-muted',
+    completed: 'border-active-accent',
+    success: 'border-feedback-success-accent',
+    error: 'border-feedback-error-accent',
+    skipped: 'border-muted',
+};
+const labelVariants = {
+    pending: 'text-secondary',
+    current: 'text-primary font-medium',
+    completed: 'text-primary',
+    success: 'text-primary',
+    error: 'text-error font-medium',
+    skipped: 'text-secondary',
+};
+/**
+ * @category Navigation
+ * @description A single step within an `at-stepper`. Renders a state dot and the connector running to the next step, with a label and optional description. Its `state`, `index` and `is_last` are normally assigned by the parent `at-stepper`; set them directly only when driving the stepper entirely from markup.
+ *
+ * @slot - Additional content beneath the label, such as a description or inline form.
+ */
+export class AtStepperItem {
+    el;
+    /**
+     * Label for the step.
+     */
+    label;
+    /**
+     * Supporting line beneath the label.
+     */
+    description;
+    /**
+     * State of the step. Assigned by the parent `at-stepper` from its `current`
+     * index unless set explicitly — an explicit value always wins, which is how a
+     * step reports `error` or `skipped`.
+     */
+    state = 'pending';
+    /**
+     * Zero-based position of the step, assigned by the parent.
+     */
+    index = 0;
+    /**
+     * Whether this is the final step, assigned by the parent. The last step draws
+     * no connector, since there is nothing after it to connect to.
+     */
+    is_last = false;
+    /**
+     * Marks the step as optional, which allows it to be skipped in linear mode.
+     */
+    optional = false;
+    /**
+     * Layout of the parent stepper, assigned by it.
+     */
+    orientation = 'horizontal';
+    /**
+     * Whether the step can be navigated to directly. Assigned by the parent from
+     * its linear/non-linear mode.
+     */
+    navigable = false;
+    renderMarker() {
+        return (h("span", { class: "flex h-24 w-24 shrink-0 items-center justify-center rounded-full", "data-name": "stepper-marker", "aria-hidden": "true" }, h("span", { class: `rounded-full ${dotVariants[this.state]}`, "data-name": "stepper-dot" })));
+    }
+    renderConnector() {
+        if (this.is_last) {
+            return null;
+        }
+        return (h("span", { "aria-hidden": "true", "data-name": "stepper-connector",
+            // The negative margin pulls the line into the transparent
+            // padding of the marker box either side of it, so the rail meets
+            // the dots rather than stopping short of them.
+            class: `${this.orientation === 'vertical'
+                ? '-my-4 w-0 flex-1 border-l-2'
+                : '-mx-4 h-0 min-w-16 flex-1 border-t-2'} ${connectorVariants[this.state]}` }));
+    }
+    render() {
+        const isVertical = this.orientation === 'vertical';
+        return (h(Host, { key: '18b3c05814c199c78d850c5d870e79640f0186cd', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
+                ? 'flex-row items-stretch gap-8'
+                : `flex-col gap-4 ${this.is_last ? '' : 'flex-1'}`} ${this.navigable
+                ? 'focus-visible:ring-active-glow cursor-pointer rounded-sm outline-0 focus-visible:ring'
+                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: '4901cb7ead2a11d9d5ff1f5d09504b1ff9fae608', class: `flex shrink-0 ${isVertical
+                ? 'w-24 flex-col items-center'
+                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: '69644720e4be4b334e3d09d818bbc7923283e070', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: '2f953728d0ca1c5f18f6ec07a7ab4d5950ac9208', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: 'f488365d2247283cd37bdcab32839a422c580181', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: '46417780d43ba7c446bd0cf46902a269e291dbbe', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: '61de9e10c29e9b7bab0e30bef02fc4d339e7fd57', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: 'b1df6511017ef6b55584b107ab5f19908e2b61e4' }))));
+    }
+    static get is() { return "at-stepper-item"; }
+    static get properties() {
+        return {
+            "label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Label for the step."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "label"
+            },
+            "description": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Supporting line beneath the label."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "description"
+            },
+            "state": {
+                "type": "string",
+                "mutable": true,
+                "complexType": {
+                    "original": "AtStepperItemState",
+                    "resolved": "\"completed\" | \"current\" | \"error\" | \"pending\" | \"skipped\" | \"success\"",
+                    "references": {
+                        "AtStepperItemState": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-stepper/at-stepper-item/at-stepper-item.tsx",
+                            "id": "src/components/at-stepper/at-stepper-item/at-stepper-item.tsx::AtStepperItemState"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "State of the step. Assigned by the parent `at-stepper` from its `current`\nindex unless set explicitly \u2014 an explicit value always wins, which is how a\nstep reports `error` or `skipped`."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": true,
+                "attribute": "state",
+                "defaultValue": "'pending'"
+            },
+            "index": {
+                "type": "number",
+                "mutable": true,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Zero-based position of the step, assigned by the parent."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "index",
+                "defaultValue": "0"
+            },
+            "is_last": {
+                "type": "boolean",
+                "mutable": true,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Whether this is the final step, assigned by the parent. The last step draws\nno connector, since there is nothing after it to connect to."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "is_last",
+                "defaultValue": "false"
+            },
+            "optional": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Marks the step as optional, which allows it to be skipped in linear mode."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "optional",
+                "defaultValue": "false"
+            },
+            "orientation": {
+                "type": "string",
+                "mutable": true,
+                "complexType": {
+                    "original": "AtStepperOrientation",
+                    "resolved": "\"horizontal\" | \"vertical\"",
+                    "references": {
+                        "AtStepperOrientation": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-stepper/at-stepper-item/at-stepper-item.tsx",
+                            "id": "src/components/at-stepper/at-stepper-item/at-stepper-item.tsx::AtStepperOrientation"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Layout of the parent stepper, assigned by it."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "orientation",
+                "defaultValue": "'horizontal'"
+            },
+            "navigable": {
+                "type": "boolean",
+                "mutable": true,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Whether the step can be navigated to directly. Assigned by the parent from\nits linear/non-linear mode."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "navigable",
+                "defaultValue": "false"
+            }
+        };
+    }
+    static get elementRef() { return "el"; }
+}

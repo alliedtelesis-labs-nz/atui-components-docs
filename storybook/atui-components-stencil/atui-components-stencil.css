@@ -2578,6 +2578,16 @@ strong {
   margin: 2px;
 }
 
+.-mx-4 {
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+.-my-4 {
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+
 .mx-8 {
   margin-left: 8px;
   margin-right: 8px;
@@ -2702,6 +2712,10 @@ strong {
 
 .h-0 {
   height: 0;
+}
+
+.h-12 {
+  height: 12px;
 }
 
 .h-16 {
@@ -2881,6 +2895,10 @@ strong {
   width: 0;
 }
 
+.w-12 {
+  width: 12px;
+}
+
 .w-16 {
   width: 16px;
 }
@@ -2903,6 +2921,10 @@ strong {
 
 .w-64 {
   width: 64px;
+}
+
+.w-8 {
+  width: 8px;
 }
 
 .w-80 {
@@ -2969,6 +2991,10 @@ strong {
 
 .min-w-100 {
   min-width: 100px;
+}
+
+.min-w-16 {
+  min-width: 16px;
 }
 
 .min-w-\[140px\] {
@@ -3394,16 +3420,34 @@ strong {
   border-left-width: 1px;
 }
 
+.border-l-2 {
+  border-left-width: 2px;
+}
+
 .border-r {
   border-right-width: 1px;
+}
+
+.border-t-2 {
+  border-top-width: 2px;
 }
 
 .border-solid {
   border-style: solid;
 }
 
+.border-dashed {
+  border-style: dashed;
+}
+
 .border-none {
   border-style: none;
+}
+
+.border-active-accent {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-button-destructive {
@@ -3440,12 +3484,24 @@ strong {
   border-color: color-mix(in srgb, var(--token-border-error) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
+.border-feedback-error-accent {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-feedback-error-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .border-feedback-error-foreground\/30 {
   border-color: color-mix(in srgb, var(--token-feedback-error-foreground) 30%, transparent);
 }
 
 .border-feedback-info-foreground\/30 {
   border-color: color-mix(in srgb, var(--token-feedback-info-foreground) 30%, transparent);
+}
+
+.border-feedback-success-accent {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-feedback-success-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-feedback-success-foreground\/30 {
@@ -3584,6 +3640,12 @@ strong {
   background-color: color-mix(in srgb, var(--token-feedback-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-feedback-error-accent {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-feedback-error-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
 .bg-feedback-error-background {
   --tw-bg-opacity:
       1;
@@ -3606,6 +3668,12 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: color-mix(in srgb, var(--token-feedback-info-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
+.bg-feedback-success-accent {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-feedback-success-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .bg-feedback-success-background {
@@ -3971,6 +4039,10 @@ strong {
   padding-right: 0;
 }
 
+.pr-16 {
+  padding-right: 16px;
+}
+
 .pr-24 {
   padding-right: 24px;
 }
@@ -4317,6 +4389,12 @@ strong {
   color: color-mix(in srgb, var(--token-text-muted) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
+.text-primary {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-text-primary) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
 .text-secondary {
   --tw-text-opacity:
       1;
@@ -4433,6 +4511,13 @@ strong {
       1;
   --tw-ring-color:
       color-mix(in srgb, var(--token-state-active-default) calc(var(--tw-ring-opacity, 1) * 100%), transparent);
+}
+
+.ring-active-glow {
+  --tw-ring-opacity:
+      1;
+  --tw-ring-color:
+      color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-ring-opacity, 1) * 50%), transparent);
 }
 
 .blur {

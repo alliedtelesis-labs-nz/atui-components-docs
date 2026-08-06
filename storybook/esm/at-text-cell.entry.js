@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-ChWFprTL.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DTnhfVT-.js';
 
 const AtTextCellComponent = class {
     constructor(hostRef) {
@@ -62,10 +62,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (h(Host, { key: '32de3f0ed3044dc71be76cb68a5087966e49e386', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'a4b4be84d5927225a012f82e4f000d721f2b0f99', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '370576c435c063d5124a98c04d1429bb30f7485e', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (h(Host, { key: 'fcb061b2074d4af858f91dc6c59eb6912a936840', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '7cf48344281ee30d2b8926ad9e0ffe6e13fdd9af', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '89c2cafb083082e87d85a0c544aa5393c7e4b5bb', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'c41316f086d23a11e2a340e00f47379fdfbae2b7', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '975cb1f8fb3a38ff3c0b2eb364b3805844ae9ab5', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

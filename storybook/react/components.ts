@@ -85,6 +85,8 @@ import { AtSidebar as AtSidebarElement, defineCustomElement as defineAtSidebar }
 import { AtSrcDest as AtSrcDestElement, defineCustomElement as defineAtSrcDest } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-src-dest.js";
 import { AtStaticTable as AtStaticTableElement, defineCustomElement as defineAtStaticTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-static-table.js";
 import { AtStatusBar as AtStatusBarElement, defineCustomElement as defineAtStatusBar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-status-bar.js";
+import { AtStepperItem as AtStepperItemElement, defineCustomElement as defineAtStepperItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-stepper-item.js";
+import { AtStepper as AtStepperElement, defineCustomElement as defineAtStepper } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-stepper.js";
 import { AtTabContent as AtTabContentElement, defineCustomElement as defineAtTabContent } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab-content.js";
 import { AtTabTrigger as AtTabTriggerElement, defineCustomElement as defineAtTabTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-tab-trigger.js";
 import { AtTableActions as AtTableActionsElement, defineCustomElement as defineAtTableActions } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-table-actions.js";
@@ -1081,6 +1083,38 @@ export const AtStatusBar: StencilReactComponent<AtStatusBarElement, AtStatusBarE
     react: React,
     events: {} as AtStatusBarEvents,
     defineCustomElement: defineAtStatusBar
+});
+
+type AtStepperEvents = {
+    onAtuiStepChange: EventName<CustomEvent<number>>,
+    onAtuiPrev: EventName<CustomEvent<number>>,
+    onAtuiNext: EventName<CustomEvent<number>>,
+    onAtuiSubmit: EventName<CustomEvent<void>>
+};
+
+export const AtStepper: StencilReactComponent<AtStepperElement, AtStepperEvents> = /*@__PURE__*/ createComponent<AtStepperElement, AtStepperEvents>({
+    tagName: 'at-stepper',
+    elementClass: AtStepperElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiStepChange: 'atuiStepChange',
+        onAtuiPrev: 'atuiPrev',
+        onAtuiNext: 'atuiNext',
+        onAtuiSubmit: 'atuiSubmit'
+    } as AtStepperEvents,
+    defineCustomElement: defineAtStepper
+});
+
+type AtStepperItemEvents = NonNullable<unknown>;
+
+export const AtStepperItem: StencilReactComponent<AtStepperItemElement, AtStepperItemEvents> = /*@__PURE__*/ createComponent<AtStepperItemElement, AtStepperItemEvents>({
+    tagName: 'at-stepper-item',
+    elementClass: AtStepperItemElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtStepperItemEvents,
+    defineCustomElement: defineAtStepperItem
 });
 
 type AtTabContentEvents = NonNullable<unknown>;

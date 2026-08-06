@@ -48,6 +48,9 @@ import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./co
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
+import { AtStepperStep } from "./components/at-stepper/at-stepper";
+import { AtStepperOrientation } from "./components/at-stepper/at-stepper-item/at-stepper-item";
+import { AtStepperItemState, AtStepperOrientation as AtStepperOrientation1 } from "./components/at-stepper/at-stepper-item/at-stepper-item";
 import { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 import { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 import { AtITimeWithUnit, AtTimeUnit } from "./types/time";
@@ -101,6 +104,9 @@ export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./co
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
+export { AtStepperStep } from "./components/at-stepper/at-stepper";
+export { AtStepperOrientation } from "./components/at-stepper/at-stepper-item/at-stepper-item";
+export { AtStepperItemState, AtStepperOrientation as AtStepperOrientation1 } from "./components/at-stepper/at-stepper-item/at-stepper-item";
 export { AtTabTriggerLayout } from "./components/at-tabs/at-tab-trigger/at-tab-trigger";
 export { AtITab, AtTabsLayout } from "./components/at-tabs/at-tabs";
 export { AtITimeWithUnit, AtTimeUnit } from "./types/time";
@@ -2845,6 +2851,117 @@ export namespace Components {
     }
     /**
      * @category Navigation
+     * @description A stepper for multi-step and wizard flows. Shows where the user is in a sequence, which steps are done, and which failed. Use when a task is split across several screens that must be completed in order; prefer `at-tabs` when the sections are independent and can be visited in any order, and `at-timeline` when the entries are historical and there is no current position.
+     * Steps can be slotted as `at-stepper-item` children for full control, or passed
+     * as a `steps` array for the common case of plain labels. The stepper assigns
+     * each child its index, state and orientation, so children never have to be kept
+     * in sync by hand.
+     */
+    interface AtStepper {
+        /**
+          * Zero-based index of the current step. Steps before it are `completed`, after it `pending`, unless a step sets its own state.
+          * @default 0
+         */
+        "current": number;
+        /**
+          * Returns the zero-based index of the current step.
+         */
+        "getCurrentStep": () => Promise<number>;
+        /**
+          * Returns true when every non-optional step is `completed`, `success` or `skipped`, so a host can gate its Submit without tracking step state itself.
+         */
+        "getIsComplete": () => Promise<boolean>;
+        /**
+          * Whether the sequence is enforced.  - `true` (linear) — steps cannot be jumped to; only visited steps   (completed, success, skipped or errored) can be returned to, so the user   cannot skip ahead past validation. - `false` (non-linear) — any step can be selected directly.
+          * @default true
+         */
+        "linear": boolean;
+        /**
+          * Disables Next and Submit. This is how a linear flow gates advancing on the current step's validation: the stepper cannot know whether a step's form is valid, so the host owns that judgement and reports it here.
+          * @default false
+         */
+        "next_disabled": boolean;
+        /**
+          * Label of the forward control, on every step but the last.
+          * @default 'Next'
+         */
+        "next_label": string;
+        /**
+          * Layout of the stepper.
+          * @default 'horizontal'
+         */
+        "orientation": AtStepperOrientation;
+        /**
+          * Label of the back control.
+          * @default 'Back'
+         */
+        "prev_label": string;
+        /**
+          * Renders a Back / Next / Submit control row beneath the steps. Off by default — a flow that already has its own footer keeps using it.
+          * @default false
+         */
+        "show_navigation": boolean;
+        /**
+          * Accessible label for the stepper, announced before the step list.
+          * @default 'Progress'
+         */
+        "stepper_label": string;
+        /**
+          * Steps described declaratively. When set, `at-stepper-item` children are not needed — the stepper renders the steps itself.
+         */
+        "steps"?: AtStepperStep[];
+        /**
+          * Label of the forward control on the last step.
+          * @default 'Submit'
+         */
+        "submit_label": string;
+    }
+    /**
+     * @category Navigation
+     * @description A single step within an `at-stepper`. Renders a state dot and the connector running to the next step, with a label and optional description. Its `state`, `index` and `is_last` are normally assigned by the parent `at-stepper`; set them directly only when driving the stepper entirely from markup.
+     */
+    interface AtStepperItem {
+        /**
+          * Supporting line beneath the label.
+         */
+        "description"?: string;
+        /**
+          * Zero-based position of the step, assigned by the parent.
+          * @default 0
+         */
+        "index": number;
+        /**
+          * Whether this is the final step, assigned by the parent. The last step draws no connector, since there is nothing after it to connect to.
+          * @default false
+         */
+        "is_last": boolean;
+        /**
+          * Label for the step.
+         */
+        "label"?: string;
+        /**
+          * Whether the step can be navigated to directly. Assigned by the parent from its linear/non-linear mode.
+          * @default false
+         */
+        "navigable": boolean;
+        /**
+          * Marks the step as optional, which allows it to be skipped in linear mode.
+          * @default false
+         */
+        "optional"?: boolean;
+        /**
+          * Layout of the parent stepper, assigned by it.
+          * @default 'horizontal'
+         */
+        "orientation": AtStepperOrientation1;
+        /**
+          * State of the step. Assigned by the parent `at-stepper` from its `current` index unless set explicitly — an explicit value always wins, which is how a step reports `error` or `skipped`.
+          * @default 'pending'
+         */
+        "state": AtStepperItemState;
+    }
+    /**
+     * @category Navigation
      * @description A tab content component for the tab selector.
      */
     interface AtTabContent {
@@ -3561,6 +3678,10 @@ export interface AtSidebarCustomEvent<T> extends CustomEvent<T> {
 export interface AtSidebarMenuitemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSidebarMenuitemElement;
+}
+export interface AtStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtStepperElement;
 }
 export interface AtTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4867,6 +4988,44 @@ declare global {
         prototype: HTMLAtStatusBarElement;
         new (): HTMLAtStatusBarElement;
     };
+    interface HTMLAtStepperElementEventMap {
+        "atuiStepChange": number;
+        "atuiPrev": number;
+        "atuiNext": number;
+        "atuiSubmit": void;
+    }
+    /**
+     * @category Navigation
+     * @description A stepper for multi-step and wizard flows. Shows where the user is in a sequence, which steps are done, and which failed. Use when a task is split across several screens that must be completed in order; prefer `at-tabs` when the sections are independent and can be visited in any order, and `at-timeline` when the entries are historical and there is no current position.
+     * Steps can be slotted as `at-stepper-item` children for full control, or passed
+     * as a `steps` array for the common case of plain labels. The stepper assigns
+     * each child its index, state and orientation, so children never have to be kept
+     * in sync by hand.
+     */
+    interface HTMLAtStepperElement extends Components.AtStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtStepperElementEventMap>(type: K, listener: (this: HTMLAtStepperElement, ev: AtStepperCustomEvent<HTMLAtStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtStepperElementEventMap>(type: K, listener: (this: HTMLAtStepperElement, ev: AtStepperCustomEvent<HTMLAtStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtStepperElement: {
+        prototype: HTMLAtStepperElement;
+        new (): HTMLAtStepperElement;
+    };
+    /**
+     * @category Navigation
+     * @description A single step within an `at-stepper`. Renders a state dot and the connector running to the next step, with a label and optional description. Its `state`, `index` and `is_last` are normally assigned by the parent `at-stepper`; set them directly only when driving the stepper entirely from markup.
+     */
+    interface HTMLAtStepperItemElement extends Components.AtStepperItem, HTMLStencilElement {
+    }
+    var HTMLAtStepperItemElement: {
+        prototype: HTMLAtStepperItemElement;
+        new (): HTMLAtStepperItemElement;
+    };
     /**
      * @category Navigation
      * @description A tab content component for the tab selector.
@@ -5359,6 +5518,8 @@ declare global {
         "at-src-dest": HTMLAtSrcDestElement;
         "at-static-table": HTMLAtStaticTableElement;
         "at-status-bar": HTMLAtStatusBarElement;
+        "at-stepper": HTMLAtStepperElement;
+        "at-stepper-item": HTMLAtStepperItemElement;
         "at-tab-content": HTMLAtTabContentElement;
         "at-tab-trigger": HTMLAtTabTriggerElement;
         "at-table": HTMLAtTableElement;
@@ -8191,6 +8352,125 @@ declare namespace LocalJSX {
     }
     /**
      * @category Navigation
+     * @description A stepper for multi-step and wizard flows. Shows where the user is in a sequence, which steps are done, and which failed. Use when a task is split across several screens that must be completed in order; prefer `at-tabs` when the sections are independent and can be visited in any order, and `at-timeline` when the entries are historical and there is no current position.
+     * Steps can be slotted as `at-stepper-item` children for full control, or passed
+     * as a `steps` array for the common case of plain labels. The stepper assigns
+     * each child its index, state and orientation, so children never have to be kept
+     * in sync by hand.
+     */
+    interface AtStepper {
+        /**
+          * Zero-based index of the current step. Steps before it are `completed`, after it `pending`, unless a step sets its own state.
+          * @default 0
+         */
+        "current"?: number;
+        /**
+          * Whether the sequence is enforced.  - `true` (linear) — steps cannot be jumped to; only visited steps   (completed, success, skipped or errored) can be returned to, so the user   cannot skip ahead past validation. - `false` (non-linear) — any step can be selected directly.
+          * @default true
+         */
+        "linear"?: boolean;
+        /**
+          * Disables Next and Submit. This is how a linear flow gates advancing on the current step's validation: the stepper cannot know whether a step's form is valid, so the host owns that judgement and reports it here.
+          * @default false
+         */
+        "next_disabled"?: boolean;
+        /**
+          * Label of the forward control, on every step but the last.
+          * @default 'Next'
+         */
+        "next_label"?: string;
+        /**
+          * Emitted when the forward control is pressed on any step but the last.
+         */
+        "onAtuiNext"?: (event: AtStepperCustomEvent<number>) => void;
+        /**
+          * Emitted when the back control is pressed.
+         */
+        "onAtuiPrev"?: (event: AtStepperCustomEvent<number>) => void;
+        /**
+          * Emitted when a step is selected, with the zero-based index of that step. The stepper does not move itself — the host owns `current`, so a flow can validate or persist before advancing.
+         */
+        "onAtuiStepChange"?: (event: AtStepperCustomEvent<number>) => void;
+        /**
+          * Emitted when the forward control is pressed on the last step.
+         */
+        "onAtuiSubmit"?: (event: AtStepperCustomEvent<void>) => void;
+        /**
+          * Layout of the stepper.
+          * @default 'horizontal'
+         */
+        "orientation"?: AtStepperOrientation;
+        /**
+          * Label of the back control.
+          * @default 'Back'
+         */
+        "prev_label"?: string;
+        /**
+          * Renders a Back / Next / Submit control row beneath the steps. Off by default — a flow that already has its own footer keeps using it.
+          * @default false
+         */
+        "show_navigation"?: boolean;
+        /**
+          * Accessible label for the stepper, announced before the step list.
+          * @default 'Progress'
+         */
+        "stepper_label"?: string;
+        /**
+          * Steps described declaratively. When set, `at-stepper-item` children are not needed — the stepper renders the steps itself.
+         */
+        "steps"?: AtStepperStep[];
+        /**
+          * Label of the forward control on the last step.
+          * @default 'Submit'
+         */
+        "submit_label"?: string;
+    }
+    /**
+     * @category Navigation
+     * @description A single step within an `at-stepper`. Renders a state dot and the connector running to the next step, with a label and optional description. Its `state`, `index` and `is_last` are normally assigned by the parent `at-stepper`; set them directly only when driving the stepper entirely from markup.
+     */
+    interface AtStepperItem {
+        /**
+          * Supporting line beneath the label.
+         */
+        "description"?: string;
+        /**
+          * Zero-based position of the step, assigned by the parent.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * Whether this is the final step, assigned by the parent. The last step draws no connector, since there is nothing after it to connect to.
+          * @default false
+         */
+        "is_last"?: boolean;
+        /**
+          * Label for the step.
+         */
+        "label"?: string;
+        /**
+          * Whether the step can be navigated to directly. Assigned by the parent from its linear/non-linear mode.
+          * @default false
+         */
+        "navigable"?: boolean;
+        /**
+          * Marks the step as optional, which allows it to be skipped in linear mode.
+          * @default false
+         */
+        "optional"?: boolean;
+        /**
+          * Layout of the parent stepper, assigned by it.
+          * @default 'horizontal'
+         */
+        "orientation"?: AtStepperOrientation1;
+        /**
+          * State of the step. Assigned by the parent `at-stepper` from its `current` index unless set explicitly — an explicit value always wins, which is how a step reports `error` or `skipped`.
+          * @default 'pending'
+         */
+        "state"?: AtStepperItemState;
+    }
+    /**
+     * @category Navigation
      * @description A tab content component for the tab selector.
      */
     interface AtTabContent {
@@ -9321,6 +9601,27 @@ declare namespace LocalJSX {
         "size": Size;
         "disable_tooltip": boolean;
     }
+    interface AtStepperAttributes {
+        "current": number;
+        "orientation": AtStepperOrientation;
+        "linear": boolean;
+        "stepper_label": string;
+        "show_navigation": boolean;
+        "next_disabled": boolean;
+        "prev_label": string;
+        "next_label": string;
+        "submit_label": string;
+    }
+    interface AtStepperItemAttributes {
+        "label": string;
+        "description": string;
+        "state": AtStepperItemState;
+        "index": number;
+        "is_last": boolean;
+        "optional": boolean;
+        "orientation": AtStepperOrientation;
+        "navigable": boolean;
+    }
     interface AtTabContentAttributes {
         "tab_id": string;
         "is_active": boolean;
@@ -9494,6 +9795,8 @@ declare namespace LocalJSX {
         "at-src-dest": Omit<AtSrcDest, keyof AtSrcDestAttributes> & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes]?: AtSrcDest[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `attr:${K}`]?: AtSrcDestAttributes[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `prop:${K}`]?: AtSrcDest[K] };
         "at-static-table": Omit<AtStaticTable, keyof AtStaticTableAttributes> & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes]?: AtStaticTable[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `attr:${K}`]?: AtStaticTableAttributes[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `prop:${K}`]?: AtStaticTable[K] };
         "at-status-bar": Omit<AtStatusBar, keyof AtStatusBarAttributes> & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes]?: AtStatusBar[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `attr:${K}`]?: AtStatusBarAttributes[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `prop:${K}`]?: AtStatusBar[K] };
+        "at-stepper": Omit<AtStepper, keyof AtStepperAttributes> & { [K in keyof AtStepper & keyof AtStepperAttributes]?: AtStepper[K] } & { [K in keyof AtStepper & keyof AtStepperAttributes as `attr:${K}`]?: AtStepperAttributes[K] } & { [K in keyof AtStepper & keyof AtStepperAttributes as `prop:${K}`]?: AtStepper[K] };
+        "at-stepper-item": Omit<AtStepperItem, keyof AtStepperItemAttributes> & { [K in keyof AtStepperItem & keyof AtStepperItemAttributes]?: AtStepperItem[K] } & { [K in keyof AtStepperItem & keyof AtStepperItemAttributes as `attr:${K}`]?: AtStepperItemAttributes[K] } & { [K in keyof AtStepperItem & keyof AtStepperItemAttributes as `prop:${K}`]?: AtStepperItem[K] };
         "at-tab-content": Omit<AtTabContent, keyof AtTabContentAttributes> & { [K in keyof AtTabContent & keyof AtTabContentAttributes]?: AtTabContent[K] } & { [K in keyof AtTabContent & keyof AtTabContentAttributes as `attr:${K}`]?: AtTabContentAttributes[K] } & { [K in keyof AtTabContent & keyof AtTabContentAttributes as `prop:${K}`]?: AtTabContent[K] };
         "at-tab-trigger": Omit<AtTabTrigger, keyof AtTabTriggerAttributes> & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes]?: AtTabTrigger[K] } & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes as `attr:${K}`]?: AtTabTriggerAttributes[K] } & { [K in keyof AtTabTrigger & keyof AtTabTriggerAttributes as `prop:${K}`]?: AtTabTrigger[K] };
         "at-table": Omit<AtTable, keyof AtTableAttributes> & { [K in keyof AtTable & keyof AtTableAttributes]?: AtTable[K] } & { [K in keyof AtTable & keyof AtTableAttributes as `attr:${K}`]?: AtTableAttributes[K] } & { [K in keyof AtTable & keyof AtTableAttributes as `prop:${K}`]?: AtTable[K] };
@@ -9929,6 +10232,20 @@ declare module "@stencil/core" {
              * @description A status bar component for displaying progress, completion, or state information with customizable colors and labels.
              */
             "at-status-bar": LocalJSX.IntrinsicElements["at-status-bar"] & JSXBase.HTMLAttributes<HTMLAtStatusBarElement>;
+            /**
+             * @category Navigation
+             * @description A stepper for multi-step and wizard flows. Shows where the user is in a sequence, which steps are done, and which failed. Use when a task is split across several screens that must be completed in order; prefer `at-tabs` when the sections are independent and can be visited in any order, and `at-timeline` when the entries are historical and there is no current position.
+             * Steps can be slotted as `at-stepper-item` children for full control, or passed
+             * as a `steps` array for the common case of plain labels. The stepper assigns
+             * each child its index, state and orientation, so children never have to be kept
+             * in sync by hand.
+             */
+            "at-stepper": LocalJSX.IntrinsicElements["at-stepper"] & JSXBase.HTMLAttributes<HTMLAtStepperElement>;
+            /**
+             * @category Navigation
+             * @description A single step within an `at-stepper`. Renders a state dot and the connector running to the next step, with a label and optional description. Its `state`, `index` and `is_last` are normally assigned by the parent `at-stepper`; set them directly only when driving the stepper entirely from markup.
+             */
+            "at-stepper-item": LocalJSX.IntrinsicElements["at-stepper-item"] & JSXBase.HTMLAttributes<HTMLAtStepperItemElement>;
             /**
              * @category Navigation
              * @description A tab content component for the tab selector.

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-ChWFprTL.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DTnhfVT-.js';
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -154,7 +154,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: 'dc369bb480c7bde89f3b393cd40073aa61dcb8c3' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'c0b276884770ade2038f634f9ffcda64889216dc' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-C0zY2e5N.js');
+var index = require('./index-BunRc-jd.js');
 
 const sizePx = {
     sm: 10,
@@ -36,7 +36,7 @@ const AtHealthDot = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '8d5ea294ec922edc760ecbaa037b0d9c7a127c55', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
+        return (index.h(index.Host, { key: 'd65cba945eb5fb1476107c2d8edb25670351ea7c', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
     }
 };
 

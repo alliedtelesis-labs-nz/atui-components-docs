@@ -30,6 +30,8 @@ export { AtChartSparklineMode, AtChartSparklineStatus, } from './components/at-c
 export { AtChartGaugeStatus, AtChartGaugePalette, } from './components/at-chart-gauge/at-chart-gauge';
 export { AtITableColumnDef } from './models/searchTableModel';
 export { AtITab } from './components/at-tabs/at-tabs';
+export { AtStepperStep } from './components/at-stepper/at-stepper';
+export { AtStepperItemState, AtStepperOrientation, } from './components/at-stepper/at-stepper-item/at-stepper-item';
 export { AtISearchTableParams, AtISearchData, } from './types/generic-table/index';
 export { AtBadgeType } from './components/at-badge/at-badge';
 export { AtIRadioOption } from './components/at-radio-group/at-radio-group';

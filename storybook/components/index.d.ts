@@ -155,6 +155,10 @@ export { AtStaticTable as AtStaticTable } from '../types/components/table-compon
 export { defineCustomElement as defineCustomElementAtStaticTable } from './at-static-table';
 export { AtStatusBar as AtStatusBar } from '../types/components/at-status-bar/at-status-bar';
 export { defineCustomElement as defineCustomElementAtStatusBar } from './at-status-bar';
+export { AtStepper as AtStepper } from '../types/components/at-stepper/at-stepper';
+export { defineCustomElement as defineCustomElementAtStepper } from './at-stepper';
+export { AtStepperItem as AtStepperItem } from '../types/components/at-stepper/at-stepper-item/at-stepper-item';
+export { defineCustomElement as defineCustomElementAtStepperItem } from './at-stepper-item';
 export { AtTabContent as AtTabContent } from '../types/components/at-tabs/at-tab-content/at-tab-content';
 export { defineCustomElement as defineCustomElementAtTabContent } from './at-tab-content';
 export { AtTabTrigger as AtTabTrigger } from '../types/components/at-tabs/at-tab-trigger/at-tab-trigger';

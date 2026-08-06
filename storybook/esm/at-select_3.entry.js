@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-ChWFprTL.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DTnhfVT-.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
@@ -306,16 +306,16 @@ const AtSelectComponent = class {
         return computed;
     }
     render() {
-        return (h(Host, { key: 'de13c48bbaa512144d2934ef3066191a00aa62d0', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'c2ff215c544f90e2f5a67ec23d60b8ee61ed3fe6', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '56c2ccd20601f389916bb2eb11c90c1e12182f38', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '187972f562ca31e22a5306ea7e1b2b035b0d205e', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '02e799b3da2c30003981291e86520bf7242d98bc' }, this.error_text && this.invalid && (h("span", { key: '5b148708ed0623f91f925f702d8b3c2d3051892a', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: 'a8d8ac3cfc8d777d1cb024bb07be94098d6856fe' }, this.error_text && this.invalid && (h("span", { key: '530f494ead186df27152c33b625fe2aa9b185154', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -410,7 +410,7 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (h(Host, { key: 'f74be24e7d64869a7b6c0b5b5a318a3daf9ac89f', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: '73ff5abbf23431c9a7a1d7d594b4d493a361aaf7', role: "group", "aria-labelledby": this.label }, h("li", { key: 'c7830b7a9400358a91c1f42b31fd73d59762f477', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: '76092dac4696ac5f109d0199dc61465c78d6a00d' }))));
+        return (h(Host, { key: '95213bc20623a048e656df02c7b48dc0511c6bb5', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: 'cbded3e3173c682a7f91a71c5a174fa3e533d33b', role: "group", "aria-labelledby": this.label }, h("li", { key: '95e4e0657075924d1d42c5956b492d10b6686139', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: '941a8bacbedbce7832a49503017bd24630d618db' }))));
     }
 };
 
@@ -467,7 +467,7 @@ const AtSelectOptionComponent = class {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '5e922ae3fefe200588d198411d02a6e9c772a35d', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '07476d5bdd1e78d640b4f65fd3171cb75c9646e0' }), this.label || this.value, h("slot", { key: '3dc38eec6a2b2f9d0767a0e876feae65f11b9249', name: "after" })));
+        return (h("li", { key: 'a932c99ad7b6d64ecdb29c3ac6dba94c70b7fcc9', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '6c12f123e9b3678d659130764dde63865015ab25' }), this.label || this.value, h("slot", { key: '0cf12cb49080c122b3ff8c4a010a8e81f2362aeb', name: "after" })));
     }
 };
 
