@@ -1086,6 +1086,10 @@ export namespace Components {
          */
         "min_seconds": number;
         /**
+          * Restores the from/to/lock_end_date_to_now fields to the last applied values, or the initial defaults if no changes have been applied.
+         */
+        "resetForm": () => Promise<void>;
+        /**
           * Current value of the to date
          */
         "to_date_value": Date;

@@ -54,10 +54,14 @@ export declare class AtCustomTimeRangeComponent {
     translations: any;
     setDateNowSwitch: HTMLAtToggleSwitchElement;
     el: any;
+    private hasSavedInitial;
+    private initialFromDate;
+    private initialToDate;
+    private initialLockEndDateToNow;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
+    private savedInitialState;
     clearSelection(): void;
-    private ceilingMaxDate;
     private floorMinDate;
     private getCustomToDateTime;
     private getCustomFromDateTime;
@@ -79,6 +83,11 @@ export declare class AtCustomTimeRangeComponent {
      * Emitted when the user submits the time range selection
      */
     atuiSubmit: EventEmitter<AtIDateRangeStrings>;
+    /**
+     * Restores the from/to/lock_end_date_to_now fields to the last applied values,
+     * or the initial defaults if no changes have been applied.
+     */
+    resetForm(): Promise<void>;
     handleCancel(): void;
     handleSubmit(): void;
     render(): any;

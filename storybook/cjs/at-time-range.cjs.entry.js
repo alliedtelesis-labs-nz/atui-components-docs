@@ -68,10 +68,13 @@ const AtTimeRangeComponent = class {
     today;
     translations;
     displayedTimeRange;
-    lowerLimit;
     defaultFromDate;
+    defaultToDate;
+    lowerLimit;
     relativeTimeMenuEl;
     absoluteTimeMenuEl;
+    absoluteTimeRangeEl;
+    absoluteTimeApplied = false;
     get el() { return index.getElement(this); }
     /**
      * Emits an event containing the selected time range when it changes
@@ -91,12 +94,28 @@ const AtTimeRangeComponent = class {
         this.translations = await translation.fetchTranslations(this.el);
         this.today = new Date();
         this.displayedTimeRange = this.selected_time_range;
+        const { fromDate, toDate } = this.getDefaultDateRange();
+        this.defaultFromDate = fromDate;
+        this.defaultToDate = toDate;
     }
     componentWillRender() {
         this.lowerLimit = this.enable_range_limit
             ? new Date(Date.now() - this.range_limit * 86400 * 1000)
             : atTimeDate_util.AtTimeDateUtil.floorDateByTimeUnit(date.MIN_DATE, atTimeDate_util.Duration.HOURS);
-        this.defaultFromDate = new Date(this.today.getTime() - 3600 * 1000);
+    }
+    getDefaultDateRange() {
+        const selected = this.displayedTimeRange?.selected;
+        if (selected &&
+            typeof selected === 'object' &&
+            selected.unit &&
+            selected.value) {
+            const { startDate, endDate } = atTimeDate_util.AtTimeDateUtil.getRelativeDateRange(selected);
+            return { fromDate: startDate, toDate: endDate };
+        }
+        return {
+            fromDate: new Date(this.today.getTime() - 3600 * 1000),
+            toDate: this.today,
+        };
     }
     getCustomStartAndEndDate(selectedTime) {
         if (!selectedTime?.custom) {
@@ -128,6 +147,18 @@ const AtTimeRangeComponent = class {
         this.displayedTimeRange = { selected: time, custom: undefined };
         this.atuiTimeChange.emit({ ...this.displayedTimeRange });
     }
+    onAbsoluteMenuStateChange(isOpen) {
+        if (isOpen) {
+            const { fromDate, toDate } = this.getDefaultDateRange();
+            this.defaultFromDate = fromDate;
+            this.defaultToDate = toDate;
+            return;
+        }
+        if (!this.absoluteTimeApplied) {
+            this.absoluteTimeRangeEl?.resetForm();
+        }
+        this.absoluteTimeApplied = false;
+    }
     formatDate(date) {
         return atTimeDate_util.dayjs(date).format('D/M/YY, h:mm A');
     }
@@ -153,7 +184,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '76bc3fb74e96d7717570820e8f70f814888db4a3', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'd5b270cff0e24e6e42e63ed1e7f7c1365febd003', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -181,9 +212,12 @@ const AtTimeRangeComponent = class {
             }, onAtuiCancel: () => this.relativeTimeMenuEl?.closeMenu() })));
     }
     renderAbsoluteTimeMenu() {
-        return (index.h("at-menu", { ref: (el) => (this.absoluteTimeMenuEl = el), trigger: "click", width: "fit-content", align: "end", autoclose: false, trigger_id: `${this.instanceId}-abs` }, index.h("at-custom-time-range", { min_date: this.lowerLimit, default_to_date: this.today, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
+        return (index.h("at-menu", { ref: (el) => (this.absoluteTimeMenuEl = el), trigger: "click", width: "fit-content", align: "end", autoclose: false, trigger_id: `${this.instanceId}-abs`, onAtuiMenuStateChange: (event) => {
+                this.onAbsoluteMenuStateChange(event.detail);
+            } }, index.h("at-custom-time-range", { ref: (el) => (this.absoluteTimeRangeEl = el), min_date: this.lowerLimit, default_to_date: this.defaultToDate, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
                 ?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
                 ?.toDate, lock_end_date_to_now: this.selected_time_range?.custom?.lockEndDateToNow, onAtuiSubmit: (event) => {
+                this.absoluteTimeApplied = true;
                 this.onChangeCustomTime(event.detail);
                 this.absoluteTimeMenuEl?.closeMenu();
             }, onAtuiCancel: () => this.absoluteTimeMenuEl?.closeMenu() })));

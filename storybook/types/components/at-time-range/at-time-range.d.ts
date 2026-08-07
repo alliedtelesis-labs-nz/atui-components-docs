@@ -38,10 +38,13 @@ export declare class AtTimeRangeComponent {
     today: Date;
     translations: any;
     displayedTimeRange: AtSelectedTimeRangeExtended;
+    defaultFromDate: Date;
+    defaultToDate: Date;
     private lowerLimit;
-    private defaultFromDate;
     private relativeTimeMenuEl;
     private absoluteTimeMenuEl;
+    private absoluteTimeRangeEl;
+    private absoluteTimeApplied;
     el: any;
     /**
      * Emits an event containing the selected time range when it changes
@@ -52,11 +55,13 @@ export declare class AtTimeRangeComponent {
     minSeconds: number;
     componentWillLoad(): Promise<void>;
     componentWillRender(): void;
+    private getDefaultDateRange;
     private getCustomStartAndEndDate;
     private getShortUnitDisplay;
     private getVisiblePresetsWithinRangeLimit;
     onChangeCustomTime(customTime: AtIDateRangeStrings): void;
     onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
+    private onAbsoluteMenuStateChange;
     private formatDate;
     private renderSelectedTimeDisplay;
     render(): any;

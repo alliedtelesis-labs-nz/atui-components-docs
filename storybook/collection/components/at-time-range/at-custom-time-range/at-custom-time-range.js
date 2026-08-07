@@ -29,7 +29,7 @@ export class AtCustomTimeRangeComponent {
     validateMaxDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
-        this.max_date = this.ceilingMaxDate(newValue);
+        this.max_date = this.floorMinDate(newValue);
     }
     /**
      * Default value for the from date
@@ -40,6 +40,7 @@ export class AtCustomTimeRangeComponent {
             return;
         this.default_from_date = this.floorMinDate(newValue);
         this.from_date_value = this.default_from_date;
+        this.initialFromDate = this.from_date_value;
     }
     /**
      * Default value for the to date
@@ -48,10 +49,11 @@ export class AtCustomTimeRangeComponent {
     validateDefaultToDate(newValue, oldValue) {
         if (newValue && oldValue && newValue.getTime() === oldValue.getTime())
             return;
-        this.default_to_date = this.ceilingMaxDate(newValue);
+        this.default_to_date = this.floorMinDate(newValue);
         this.to_date_value = this.default_to_date
             ? this.default_to_date
             : this.max_date;
+        this.initialToDate = this.to_date_value;
     }
     /**
      * Current value of the from date
@@ -79,8 +81,8 @@ export class AtCustomTimeRangeComponent {
         if (this.to_date_value === undefined)
             this.to_date_value = new Date();
         if (this.to_date_value.toISOString() !==
-            this.ceilingMaxDate(newValue).toISOString()) {
-            this.to_date_value = newValue && this.ceilingMaxDate(newValue);
+            this.floorMinDate(newValue).toISOString()) {
+            this.to_date_value = newValue && this.floorMinDate(newValue);
         }
         this.setToDateAndTime(this.to_date_value);
         this.updateMinMaxFlags();
@@ -100,6 +102,10 @@ export class AtCustomTimeRangeComponent {
     translations;
     setDateNowSwitch;
     el;
+    hasSavedInitial = false;
+    initialFromDate;
+    initialToDate;
+    initialLockEndDateToNow;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
     }
@@ -108,12 +114,23 @@ export class AtCustomTimeRangeComponent {
             this.from_date_value = this.default_from_date
                 ? this.default_from_date
                 : this.min_date;
+            this.setFromDateAndTime(this.from_date_value);
         }
         if (!this.toDate && !this.toTime) {
             this.to_date_value = this.default_to_date
                 ? this.default_to_date
                 : this.max_date;
+            this.setToDateAndTime(this.to_date_value);
         }
+        if (!this.hasSavedInitial) {
+            this.savedInitialState();
+        }
+    }
+    savedInitialState() {
+        this.initialFromDate = this.from_date_value;
+        this.initialToDate = this.to_date_value;
+        this.initialLockEndDateToNow = this.lock_end_date_to_now;
+        this.hasSavedInitial = true;
     }
     clearSelection() {
         this.from_date_value = this.default_from_date
@@ -122,9 +139,6 @@ export class AtCustomTimeRangeComponent {
         this.to_date_value = this.default_to_date
             ? this.default_to_date
             : this.max_date;
-    }
-    ceilingMaxDate(date) {
-        return AtTimeDateUtil.ceilingDateByTimeUnit(date, Duration.MINUTES);
     }
     floorMinDate(date) {
         return AtTimeDateUtil.floorDateByTimeUnit(date, Duration.MINUTES);
@@ -147,7 +161,7 @@ export class AtCustomTimeRangeComponent {
         const toggleValue = this.setDateNowSwitch.value;
         if (toggleValue) {
             this.lock_end_date_to_now = true;
-            const date = this.ceilingMaxDate(new Date(Date.now()));
+            const date = this.floorMinDate(new Date(Date.now()));
             this.to_date_value = date;
         }
         else {
@@ -204,7 +218,17 @@ export class AtCustomTimeRangeComponent {
      * Emitted when the user submits the time range selection
      */
     atuiSubmit;
+    /**
+     * Restores the from/to/lock_end_date_to_now fields to the last applied values,
+     * or the initial defaults if no changes have been applied.
+     */
+    async resetForm() {
+        this.from_date_value = this.initialFromDate;
+        this.to_date_value = this.initialToDate;
+        this.lock_end_date_to_now = this.initialLockEndDateToNow;
+    }
     handleCancel() {
+        this.resetForm();
         this.atuiCancel.emit();
     }
     handleSubmit() {
@@ -217,24 +241,25 @@ export class AtCustomTimeRangeComponent {
                 .toISOString(),
             lockEndDateToNow: this.lock_end_date_to_now,
         });
+        this.savedInitialState();
     }
     render() {
-        return (h("div", { key: '41fede4e83241b33806e14f090e97ab71035a4c9', class: "flex w-fit flex-col gap-8" }, h("h5", { key: '9679e4ea7570cf37f20e7411f525237002a1ca55', class: "text-h5 text-foreground p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '8192c6cfcfcc54433948fb2c04988180994c9917', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: 'b6de071600de6dc6d2b005a549fe4c0a58a0fb40', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'fc1f1afb6d3f592af5e6849f6ac4098cbec380cd', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
+        return (h("div", { key: '4a699d404ca69a579d48487dd5c321214346f915', class: "flex w-fit flex-col gap-8" }, h("h5", { key: '879d92afc2001cc152d40df02b667fcad506254c', class: "text-h5 text-foreground p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: 'bcef09329f44752a343e01ebe809072a71593dd6', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: '0cd8f68fdfaa72e5b47855dccaeb73a7055aceac', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '9457837548f6f9142f94466e0ac568c480eaecde', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
                 this.from_date_value = event.detail;
-            } }), this.can_set_time && (h("at-input-time", { key: 'bd2a1498acbda4da4c2e9ce279879aa89e72c866', class: "w-full", label: this.translations.ATUI.TIME.FROM_TIME, value: this.fromTime, min: this.fromTimeMin, max: this.fromTimeMax, onAtuiChange: (event) => {
+            } }), this.can_set_time && (h("at-input-time", { key: 'd642bfc466ca028b30ce07f651a028ba8b400f2a', class: "w-full", label: this.translations.ATUI.TIME.FROM_TIME, value: this.fromTime, min: this.fromTimeMin, max: this.fromTimeMax, onAtuiChange: (event) => {
                 if (event.detail) {
                     this.from_date_value = dayjs(`${this.fromDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
                 }
-            } }))), h("div", { key: 'd56e3378c5b9bc73ee508edadbea46b969b5e080', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '34547d35feedc3fd6508211b75090730c79827b8', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+            } }))), h("div", { key: '0635beeae22c0943b1026184c0c13ac46daed9e5', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '23b1a578a883c76dce70e42a2c8942f382395f46', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
                 this.to_date_value = event.detail;
-            } }), this.can_set_time && (h("at-input-time", { key: '50e3cd5a06084a657ed73338a8ba7b9bbe77b662', class: "w-full", label: this.translations.ATUI.TIME.TO_TIME, value: this.toTime, min: this.toTimeMin, max: this.toTimeMax, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+            } }), this.can_set_time && (h("at-input-time", { key: 'daf1b553ee137296d65eadff39b79b198865467f', class: "w-full", label: this.translations.ATUI.TIME.TO_TIME, value: this.toTime, min: this.toTimeMin, max: this.toTimeMax, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
                 if (event.detail) {
                     this.to_date_value = dayjs(`${this.toDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
                 }
-            } })))), h("div", { key: 'c046e2978d93ff3cabb2d4a033f75f8817bcfb0c', class: "align-center rounded-input my-8 flex flex-row justify-between gap-8 px-12" }, h("div", { key: '8b94a40314610abbe1fdf6c04bcf29c6b5828bcc', class: "flex flex-col" }, h("label", { key: '2b0ca0baf9766cb8c9ae6e9e0e9fb68d60288d8b', class: "c-form__label" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '12c8fc5396e52a2fa44de3f3360d3eff51fbb3ed', class: "text-secondary text-xs" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: '73d135ff74f8a86d7f20faf6d92da079c98e70d7', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: '3994ff36508c196753c564222749184eedb9e2f0', class: "flex flex-col gap-4 px-12" }, h("span", { key: '6d08c88e779c0de9745389fa1ceeaebd9c83bb96', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
-            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: 'c750954491348b65fa0e934e47f45140f3dbcf40', class: "flex flex-row justify-between p-8" }, h("at-button", { key: 'b1e507eea64e8b6f77704e791c1e885419e23142', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: '93777c983729a108a4396c2fc1b3c3c697942022', class: "flex flex-row gap-8" }, h("at-button", { key: '52fb922b83ea764ed3f61b0dbee1acab54de86c6', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '7e47c19a19a512dec10f0342cf9d276c2a8b3a70', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
+            } })))), h("div", { key: '8028454e507464bd52da83a0a42d8f0da8027a1e', class: "align-center rounded-input my-8 flex flex-row justify-between gap-8 px-12" }, h("div", { key: 'c002e46cf7e60685265288c90c6c2a2af968409b', class: "flex flex-col" }, h("label", { key: '630603c3f1230dd0a8a387247581e1ab322129d7', class: "c-form__label" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '454d82aeca67d3dbdd490efcc6f1d4dba7cdcf51', class: "text-secondary text-xs" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: '2e85d2a321201f8646e92028f5feaf8122645d6a', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: 'd142b81466a00ac721492c4ebd6ce7651d9812d2', class: "flex flex-col gap-4 px-12" }, h("span", { key: '325b2fa6993b4c464c22834f92380771aa47cc35', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
+            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: 'cb6426cc8ba6a7fc2c1353ec7be2c7c7383aede7', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '9f2f9ecc486785c90c878ebb96fdf50e8ee1f560', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: '091eb9f5817b42fe26e5b5ff3e8b5f0e8396a511', class: "flex flex-row gap-8" }, h("at-button", { key: 'b2a792f22a5ef160ca23ebd38877df0a33a553e8', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '907a6f1fc1ef1d3533bf5fc756300b9476a572fb', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-custom-time-range"; }
     static get properties() {
@@ -488,6 +513,27 @@ export class AtCustomTimeRangeComponent {
                     }
                 }
             }];
+    }
+    static get methods() {
+        return {
+            "resetForm": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Restores the from/to/lock_end_date_to_now fields to the last applied values,\nor the initial defaults if no changes have been applied.",
+                    "tags": []
+                }
+            }
+        };
     }
     static get elementRef() { return "el"; }
     static get watchers() {
