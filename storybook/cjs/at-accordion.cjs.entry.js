@@ -77,7 +77,7 @@ const AtAccordionComponent = class {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (index.h(index.Host, { key: '750cc082016a6721da4b487504227cf28ae2c77f', class: "flex flex-col gap-2" }, index.h("slot", { key: 'a4a281c9951c2eb3cf95cc2dca163e51256feac5' }), this.items &&
+        return (index.h(index.Host, { key: '421af34618218fdf76d42137037937f5a70a4cff', class: "flex flex-col gap-2" }, index.h("slot", { key: 'd10b797078b58a16e0844ce04720f8c4a0d27179' }), this.items &&
             this.items.map((item) => {
                 return (index.h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

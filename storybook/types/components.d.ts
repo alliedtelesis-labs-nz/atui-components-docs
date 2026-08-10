@@ -2347,7 +2347,7 @@ export namespace Components {
          */
         "hint_text"?: string;
         /**
-          * Tooltip description.
+          * Tooltip description, shown as an info icon at the right of the search box.
          */
         "info_text"?: string;
         /**
@@ -2438,17 +2438,9 @@ export namespace Components {
          */
         "search_hidden_columns"?: boolean;
         /**
-          * Hint text displayed below the search label.
-         */
-        "search_hint": string;
-        /**
-          * Info text displayed in the search info tooltip.
+          * Info text displayed in a tooltip at the right of the search input.
          */
         "search_info_tooltip": string;
-        /**
-          * Label for the search input.
-         */
-        "search_label": string;
         /**
           * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
           * @default false
@@ -3103,15 +3095,19 @@ export namespace Components {
           * Currently active filters, used to seed the form when the menu is opened
          */
         "filters"?: AtIFilterGroup;
+        /**
+          * Opens the filter menu, showing the filter form seeded with the active filters.
+         */
+        "openMenu": () => Promise<void>;
     }
     /**
      * @category Data Tables
-     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
      * @dependency at-badge
      */
     interface AtTableFilters {
         /**
-          * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
+          * The active filters to display as a removable chip list, grouped with And/Or operators and nested subgroups.
          */
         "filters"?: AtIFilterGroup;
     }
@@ -5142,10 +5138,11 @@ declare global {
     };
     interface HTMLAtTableFiltersElementEventMap {
         "atChange": AtIFilterGroup;
+        "atFilterClick": AtIFilter;
     }
     /**
      * @category Data Tables
-     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
      * @dependency at-badge
      */
     interface HTMLAtTableFiltersElement extends Components.AtTableFilters, HTMLStencilElement {
@@ -7856,7 +7853,7 @@ declare namespace LocalJSX {
          */
         "hint_text"?: string;
         /**
-          * Tooltip description.
+          * Tooltip description, shown as an info icon at the right of the search box.
          */
         "info_text"?: string;
         /**
@@ -7957,17 +7954,9 @@ declare namespace LocalJSX {
          */
         "search_hidden_columns"?: boolean;
         /**
-          * Hint text displayed below the search label.
-         */
-        "search_hint"?: string;
-        /**
-          * Info text displayed in the search info tooltip.
+          * Info text displayed in a tooltip at the right of the search input.
          */
         "search_info_tooltip"?: string;
-        /**
-          * Label for the search input.
-         */
-        "search_label"?: string;
         /**
           * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
           * @default false
@@ -8632,18 +8621,22 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+     * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
      * @dependency at-badge
      */
     interface AtTableFilters {
         /**
-          * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
+          * The active filters to display as a removable chip list, grouped with And/Or operators and nested subgroups.
          */
         "filters"?: AtIFilterGroup;
         /**
           * Emits the remaining filters whenever a chip is removed or all are cleared.
          */
         "onAtChange"?: (event: AtTableFiltersCustomEvent<AtIFilterGroup>) => void;
+        /**
+          * Emits the clicked filter condition when a chip is clicked (excluding its remove button).
+         */
+        "onAtFilterClick"?: (event: AtTableFiltersCustomEvent<AtIFilter>) => void;
     }
     /**
      * @category Data Tables
@@ -9512,8 +9505,6 @@ declare namespace LocalJSX {
     }
     interface AtSearchTableAttributes {
         "label": string;
-        "search_label": string;
-        "search_hint": string;
         "search_info_tooltip": string;
         "page_size": number;
         "hide_table_filters": boolean;
@@ -10283,7 +10274,7 @@ declare module "@stencil/core" {
             "at-table-filter-menu": LocalJSX.IntrinsicElements["at-table-filter-menu"] & JSXBase.HTMLAttributes<HTMLAtTableFilterMenuElement>;
             /**
              * @category Data Tables
-             * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+             * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
              * @dependency at-badge
              */
             "at-table-filters": LocalJSX.IntrinsicElements["at-table-filters"] & JSXBase.HTMLAttributes<HTMLAtTableFiltersElement>;

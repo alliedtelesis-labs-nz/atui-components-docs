@@ -34,7 +34,7 @@ const AtTitleSubtitleCell = class {
         }
     }
     render() {
-        return (h(Host, { key: '181af2c8abe65e5a96a87f4da67bfe4b8cad82c7', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '9ec2b4c7f4aa97a5fae4915018d7a02fedc502a6', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '1cf77ade22caa62fdb0ca1c57b8cced7ae3edee6', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'd6663a22704707b5d8a1029c3a887b8974b5e34e', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '991169569ec485220b152b61438dc67eb6e5aa4c', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: '8b6a3c174c8d55c1df7f92c8c7175a848bec29c6', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: 'edf31d390835a0fcd82de3a915f83685a6cc4457', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '82c4c130bf2d88ec1b051fea7ed2bf2b9198aedf', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: 'ac88196584c555d37525933bf7aa9a98be0e5b96', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, h("div", { key: 'a3997f51a3976ac11bc2207d1061ab5a4fb69ebb', class: "truncate text-sm leading-normal" }, this.title), h("div", { key: '9b4f2647835796bc8ed9cb4344d03a3f61e0b3dd', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (h("span", { key: 'cf01b389b57c434f8d40f4e58f1ed64a2ee2f655', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

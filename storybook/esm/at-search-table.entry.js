@@ -1,7 +1,8 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-HD-uhvb8.js';
 import { f as fetchTranslations } from './translation-CxDdWBmt.js';
 import { b as flattenFilterConditions, c as countFilterConditions, r as rowMatchesFilterGroup } from './filter-tree.util-CYRBwQ7z.js';
-import { r as resolveCellSearchText } from './cell-search-text-DdEbMlp-.js';
+import { r as resolveCellSearchText } from './cell-search-text-CHtPw_Yl.js';
+import './index-BcMmkkI-.js';
 import './time-date-presentation.util-H5gcGi8Y.js';
 import './at-time-date.util-Bfdzn_RG.js';
 import './date-C3LwY5aR.js';
@@ -31,15 +32,7 @@ const AtSearchTable = class {
      */
     label;
     /**
-     * Label for the search input.
-     */
-    search_label;
-    /**
-     * Hint text displayed below the search label.
-     */
-    search_hint;
-    /**
-     * Info text displayed in the search info tooltip.
+     * Info text displayed in a tooltip at the right of the search input.
      */
     search_info_tooltip;
     /**
@@ -130,6 +123,7 @@ const AtSearchTable = class {
     get el() { return getElement(this); }
     translations;
     agGrid;
+    filterMenuEl;
     tableCreated = false;
     activeFilters = {};
     activeFilterTree;
@@ -583,18 +577,17 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (h(Host, { key: 'c95f4481aef5bf6e2eb5d39d140f474aacc90233', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '2999b3f4b78c6c98f44f9aa539937a2612cd929f', ag_grid: this.agGrid }, h("at-control-group", { key: '107e8b1c7a4211bc3e8ae441e9e870b13d5f0e3d', slot: "search" }, this.shouldShowTableFilters &&
-            !this.search_filters && (h("at-table-filter-menu", { key: 'a53449e9ea59aa549ef3b0eb6f51c0cab9fca631', col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'ab07e4f17fb1a908c53a181b127f4bccff32d14d', class: "w-input-md",
-            // label={this.search_label}
-            hint_text: this.search_hint, info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: '722d6303d34c6210d7ff3edc8bc4947352ff4f76', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), !this.hide_export_menu && (h("at-table-export-menu", { key: 'd92c92bad18e2e70047f6e62f16e8585d04def60', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '3e34303dc188c5bd16d26b4f659e6c9ea4943330', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'ceded9126d65e0b0601dae6a8d1873a6cb8ba5df', slot: "actions" }, h("slot", { key: 'e7e5783af72627e98654ac58f085f690d33df941', name: "actions" }))), h("slot", { key: '41bc1611e74b405593347e23ee7898f637dd55a9', name: "multi-select-actions" }), h("div", { key: 'ff812de50090e0dae6f8bcf21f0330a5411ad963', class: "relative" }, h("at-table", { key: '911b60cea6358e7ed1d743aaa5bc5c68f6e28c35', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+        return (h(Host, { key: 'cdb5d53c4a9e4dfe4620d0030ab4ff4a1256a552', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'e52db1c60d35dce25fb611810964501380d2e185', ag_grid: this.agGrid }, h("at-control-group", { key: '5140b9feefbd07f4d05da69a06be3e4a40d632c7', slot: "search" }, this.shouldShowTableFilters &&
+            !this.search_filters && (h("at-table-filter-menu", { key: '2fdeda379eb823fd732d2e4fb14b2605e318e921', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '8a7bc06915f39183b8a9d151feea61aea602edf3', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: 'df6750252c6f0141a77c55148913e21b93d97cf4', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), !this.hide_export_menu && (h("at-table-export-menu", { key: '43a86708cebecbeb056554e71c712314160cdf0f', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'c79f6ed5f25c37fd7d9b7d77081347205ed064e5', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'e7b98dae04a95e256a0a83192d4e9877390f8661', slot: "actions" }, h("slot", { key: 'd5f34ff3b2c822387a4118a3f6fb6a7042c5c998', name: "actions" }))), h("slot", { key: '7e0d786feb6b062daa4a34f41ef9e636d0f1c1aa', name: "multi-select-actions" }), h("div", { key: 'b6fbbe2cda1526ddff213e7292cecf98548bc0e1', class: "relative" }, h("at-table", { key: 'fba938bd0b8a3bc2bb9935ff0e18ee8338df8ea4', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: '1f420b21239f2aebc70e255ab16fb5dad9dc075f', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'a632625df37ae9bcf24069e69411304510ddfc54', class: "flex items-center" }, h("at-loading", { key: '8ae4d420b68ea9f6c756c4003c2e59a7178723d8', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '41a8a73ed074d5a2d6ea5382b46a5dff4576bf99', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: 'f3e0a0018b66148c6b4c379f291522b5da1a8d08', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '0565b63303f3d3824ce96e020d0c763fca7e212e', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: '8b0c423c6335674b78d282ce1f9975eab3953ea9', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '4f231a189ecff9601475603708841392928a90e2', class: "flex items-center" }, h("at-loading", { key: 'c0453736de95095bac1083fdbff048fc39eed6b3', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '96b946a9f5fa0285e85f001c31c9d10aa93181b3', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '93d15cf48e07d49ffa620cccc27cb7e2bb18eb76', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'cc3aa6d8159b56ceba86766f03729774ff5b5882', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '77f39bc1da6663de89540e4871d0dd8d403848f5', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '522efbce4327abe3a70cb0aa23b360a4c4c29f7d', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '02c262085636d36fd8faefce04c347b95245b307', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '55415969f740e9a277c8579516b938709ffc8977', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "page_size": [{

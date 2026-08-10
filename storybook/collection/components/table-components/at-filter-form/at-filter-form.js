@@ -62,7 +62,15 @@ export class AtFilterForm {
         };
     }
     createFilter() {
-        return { id: '', operator: 'is', value: '' };
+        const defaultConfig = this.filter_config[0];
+        return {
+            id: defaultConfig?.id ?? '',
+            operator: defaultConfig?.filter_options ? 'is' : 'contains',
+            value: '',
+            ...(defaultConfig?.filter_options && {
+                filter_options: defaultConfig.filter_options,
+            }),
+        };
     }
     refresh() {
         this.root = { ...this.root };
@@ -179,7 +187,7 @@ export class AtFilterForm {
         })));
     }
     render() {
-        return (h(Host, { key: '0a56d5a79bf373797e66f50dafdd6b463bffe28e', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '869a34b8729e76e79f5dc8177120488692acf8c2', class: "flex justify-end gap-4" }, h("at-button", { key: '5c2f59c8b205aedb270b5f72ec9ee996c347fbe0', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: '11a0b5753e36487208441ad355fda8ad2957775e', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (h(Host, { key: '55fe265c49e52dc3c047b09691f01b6e8d77dd36', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: 'b3b7259ccb79a21a4702eb0faf94df9fccaa148d', class: "flex justify-end gap-4" }, h("at-button", { key: 'cb1309329c5529778e62b98d7b71a87910f7186e', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: 'b7130e3e48c8f3ad5bbc277126d34207c524f822', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get is() { return "at-filter-form"; }
     static get properties() {

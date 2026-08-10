@@ -37,7 +37,7 @@ const AtTitleSubtitleDateCell = class {
         return TimeDatePresentationUtil.getFormattedDate(this.value, DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (h(Host, { key: '0e6b9bbac787eaa04a99858e04512ff94e427921' }, h("div", { key: 'f03616367d900c6fea00094ef5decdebb3406157', class: "flex h-full flex-col justify-center" }, h("div", { key: 'b3c336661aba35bbe1af995f72828a9864edcb83', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: 'ef316e5f302a7586cd45a11f3a7d8c79fd1cb7d2', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
+        return (h(Host, { key: '26fee10c88f4679b9e23a36ae96672a86c2ffd19' }, h("div", { key: '5297f5fc1177284142597ed5bcefe36c5ca1e1ee', class: "flex h-full flex-col justify-center" }, h("div", { key: '807696be21227bc650e76fe982f4c17a27eccec3', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), h("div", { key: '885a5eee3d9b97419edfcfb0a685a8b6e8413ba2', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
     }
 };
 

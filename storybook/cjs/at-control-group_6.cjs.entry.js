@@ -2,6 +2,7 @@
 
 var index = require('./index-DK-3iCCu.js');
 var translation = require('./translation-D3uILiF8.js');
+var index$1 = require('./index-BFMvfEk4.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
 
 const atControlGroupCss = () => `at-control-group{display:inline-flex;justify-content:center}at-control-group.at-control-group--horizontal{flex-direction:row;align-items:stretch}at-control-group.at-control-group--horizontal>at-button:not(:first-child):not(:last-child){border-radius:0 !important}at-control-group.at-control-group--horizontal>at-button:not(:last-child){border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-button:not(:first-child){border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:first-child):not(:last-child)>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:last-child)>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input:not(:first-child)>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:first-child):not(:last-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:first-child):not(:last-child) [data-name=multi-select-input-container]{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:last-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:last-child) [data-name=multi-select-input-container]{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-select:not(:first-child) [data-name=select-input],at-control-group.at-control-group--horizontal>at-multi-select:not(:first-child) [data-name=multi-select-input-container]{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:first-child):not(:last-child)>div{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:last-child)>div{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-search:not(:first-child)>div{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:first-child):not(:last-child)>div>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:last-child)>div>div>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-date:not(:first-child)>div>div>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:first-child):not(:last-child)>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:last-child)>div>div:last-child{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-input-time:not(:first-child)>div>div:last-child{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:first-child):not(:last-child) at-button[slot=menu-trigger]{border-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:last-child) at-button[slot=menu-trigger]{border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--horizontal>at-menu:not(:first-child) at-button[slot=menu-trigger]{border-top-left-radius:0 !important;border-bottom-left-radius:0 !important}at-control-group.at-control-group--horizontal>*:not(:first-child){margin-left:-1px}at-control-group.at-control-group--vertical{flex-direction:column}at-control-group.at-control-group--vertical>at-button:not(:first-child):not(:last-child){border-radius:0 !important}at-control-group.at-control-group--vertical>at-button:not(:last-child){border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-button:not(:first-child){border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:first-child):not(:last-child)>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:last-child)>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input:not(:first-child)>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:first-child):not(:last-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:first-child):not(:last-child) [data-name=multi-select-input-container]{border-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:last-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:last-child) [data-name=multi-select-input-container]{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-select:not(:first-child) [data-name=select-input],at-control-group.at-control-group--vertical>at-multi-select:not(:first-child) [data-name=multi-select-input-container]{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:first-child):not(:last-child)>div{border-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:last-child)>div{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-search:not(:first-child)>div{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:first-child):not(:last-child)>div>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:last-child)>div>div>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-date:not(:first-child)>div>div>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:first-child):not(:last-child)>div>div:last-child{border-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:last-child)>div>div:last-child{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-input-time:not(:first-child)>div>div:last-child{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:first-child):not(:last-child) at-button[slot=menu-trigger]{border-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:last-child) at-button[slot=menu-trigger]{border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}at-control-group.at-control-group--vertical>at-menu:not(:first-child) at-button[slot=menu-trigger]{border-top-left-radius:0 !important;border-top-right-radius:0 !important}at-control-group.at-control-group--vertical>*:not(:first-child){margin-top:-1px}`;
@@ -15,7 +16,7 @@ const AtControlGroup = class {
      */
     direction = 'horizontal';
     render() {
-        return (index.h(index.Host, { key: 'e42698789fd78ff9527b7ad1e634c68120a66b54', class: `at-control-group at-control-group--${this.direction}` }, index.h("slot", { key: '932d684dd36b7eb24841b2d07bc1e3accc952fc5' })));
+        return (index.h(index.Host, { key: '254e91a5626e33fad7778a7fd8932df2248d5e67', class: `at-control-group at-control-group--${this.direction}` }, index.h("slot", { key: '8d6a1cc8a53b548452f36501b471284937c62b99' })));
     }
 };
 AtControlGroup.style = atControlGroupCss();
@@ -34,7 +35,7 @@ const AtSearch = class {
      */
     hint_text;
     /**
-     * Tooltip description.
+     * Tooltip description, shown as an info icon at the right of the search box.
      */
     info_text;
     /**
@@ -61,15 +62,13 @@ const AtSearch = class {
         this.searchEl.focus();
     }
     render() {
-        return (index.h(index.Host, { key: 'c646be500c927af66de7bafcc1b0f46f8d8501c0' }, (this.label || this.info_text) && (index.h("at-form-label", { key: '20809eaad2515bcc3e6a20cafd89cbcf11977d8c', label: this.label, for: this.label
+        return (index.h(index.Host, { key: 'decf5793090031833adb05d8e5eb7a46579cc846' }, this.label && (index.h("at-form-label", { key: '1911f2d518c8856d858a0bb14eb225e98d79dcbf', label: this.label, for: `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}` })), index.h("div", { key: 'ca6d0d7bb55a515fdb3121af93570f03738f19a1', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, index.h("at-icon", { key: 'd6f6008dcedc6b906d0772897f5f70602ab5f294', class: "fill-foreground px-8", name: "search" }), index.h("input", { key: 'dfa4addf3f3c0ab7a790f836b158780665c1e194', id: this.label
                 ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, info_text: this.info_text })), index.h("div", { key: '9feceec4330df02037dad060f52c6729a52c0523', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, index.h("at-icon", { key: 'e161bf1b72c31cc105d555615e180908ed1b1aae', class: "fill-foreground px-8", name: "search" }), index.h("input", { key: 'f80c3337ffc8c162da4865681c2bd4e73a3b14ee', id: this.label
-                ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), index.h("div", { key: 'a084da155eba69207d360f94d2a36a00ac07f8d9', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), index.h("div", { key: '8680c2f0a4789ef5970ebf9011faa4673fea6e8f', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, index.h("at-button", { key: 'cffcf0b64f85f8027c21ad8cc9884e413ffbca15', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, index.h("at-button", { key: 'e32a8b1ba1909a1e55eb4e27db8156953d318e00', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }, index.h("at-icon", { key: 'a9772024a9e7c5d649ae6b70f85664d0336f8197', slot: "icon", name: "backspace" })))), this.hint_text && (index.h("span", { key: '739a4d43cd7a844eb1b9b781d0a7fef3c01c60c6', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
+                : '-1' }, index.h("at-icon", { key: 'aae16e3160d2fc99605e1b9ba7a242e79c8836b6', slot: "icon", name: "backspace" }))), this.info_text && (index.h("div", { key: '10f14bb31ac218c6ce50ac31419eb2384ff11bc1', class: "flex items-center pr-8", "data-name": "search-info" }, index.h("at-tooltip", { key: '3c7a499c0cade58896aa3fd700db359016737cd8', position: "top" }, index.h("at-icon", { key: 'e09415f0815a93cb33b392cf86cbd9992f48c4c7', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: 'ac0ab50052a6fc8ac0bbf84b8ac70a9f8ef48533' }, this.info_text))))), this.hint_text && (index.h("span", { key: '8a84116fb09f06050f1f16120f7dd3b3b9804096', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
     }
 };
 
@@ -103,6 +102,11 @@ const AtTableExportMenu = class {
     }
 };
 
+const INTERACTION_ONLY_CELL_RENDERERS = [
+    index$1.AvailableCells.CHECKBOX_CELL,
+    index$1.AvailableCells.MENU_CELL,
+    index$1.AvailableCells.MULTI_BTN_CELL,
+];
 const AtTableFilterMenu = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -123,10 +127,15 @@ const AtTableFilterMenu = class {
      * Emits the active filters when the user applies a search
      */
     atChange;
+    /**
+     * Opens the filter menu, showing the filter form seeded with the active filters.
+     */
+    async openMenu() {
+        await this.menuEl?.openMenu();
+    }
     get filterConfig() {
         return (this.col_defs || [])
-            .filter((colDef) => !(colDef.filterOptions &&
-            colDef.filterOptions.exclude === true))
+            .filter((colDef) => this.isFilterableColumn(colDef))
             .map((colDef) => {
             const filterOptions = this.convertDropdownKeysToSelectOptions(colDef);
             return {
@@ -136,6 +145,11 @@ const AtTableFilterMenu = class {
                 ...(filterOptions && { filter_options: filterOptions }),
             };
         });
+    }
+    isFilterableColumn(colDef) {
+        return (!!colDef.field &&
+            colDef.filterOptions?.exclude !== true &&
+            !INTERACTION_ONLY_CELL_RENDERERS.includes(colDef.cellRenderer));
     }
     convertDropdownKeysToSelectOptions(column) {
         if (column?.filterOptions?.dropdownKeys) {
@@ -156,8 +170,8 @@ const AtTableFilterMenu = class {
         await this.menuEl?.closeMenu();
     };
     render() {
-        return (index.h(index.Host, { key: 'e6f2dd2e7be5020fa77b3c018ec4d53570425458' }, index.h("at-menu", { key: '506d6cacef780eb5cfdb4f30da6b68bd822767d5', ref: (el) => (this.menuEl = el), autoclose: false, width: "fit-content", class: "self-start", align: "start" }, index.h("div", { key: '5969b19211aba53856bf6912f29686354ea81e88', class: "relative", slot: "menu-trigger", "data-tooltip": "table-filter-menu" }, this.filters &&
-            filterTree_util.countFilterConditions(this.filters) > 0 && (index.h("at-badge", { key: 'c784c8ef983409766a05ee0685621157a5c792fb', class: "absolute top-[-8px] left-[-6px] z-10", type: "info", size: "sm", label: filterTree_util.countFilterConditions(this.filters).toString() })), index.h("at-button", { key: '55afaca36e9c2b1e5a0bd543dd4a40fcec7b9477', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, index.h("at-icon", { key: '088c16769ba1ae8516cf27330a06272c7d6187bb', slot: "icon", name: "edit_filters" }))), index.h("at-tooltip", { key: 'c76247ef9f995db8d7b838f9b7aa29fab247a75b', "trigger-id": "table-filter-menu", position: "top" }, this.translations.ATUI.TABLE.FILTER_DATA), index.h("at-filter-form", { key: '0807db4ffea660b41f06259a3d36428f8cb1225b', filter_config: this.filterConfig, active_filters: this.filters, onAtSearch: this.handleSearch, onAtCancel: this.handleCancel }))));
+        return (index.h(index.Host, { key: '4ad296edfb5bd73e3c964c14bbda73b3e778ae20' }, index.h("at-menu", { key: '9e7200090d4def994af275b5c327b3f6480b9a17', ref: (el) => (this.menuEl = el), autoclose: false, width: "fit-content", class: "self-start", align: "start" }, index.h("div", { key: '9670e959d173a4f90f8a4bca41358ccc7567be60', class: "relative", slot: "menu-trigger", "data-tooltip": "table-filter-menu" }, this.filters &&
+            filterTree_util.countFilterConditions(this.filters) > 0 && (index.h("at-badge", { key: '9e95b6412756d564bbe00fc6c0e9e47482f1f242', class: "absolute top-[-8px] left-[-6px] z-10", type: "info", size: "sm", label: filterTree_util.countFilterConditions(this.filters).toString() })), index.h("at-button", { key: '5ddcd791e0aae069206fba663047075ab0759c51', slot: "tooltip-trigger", type: "secondaryOutline", class: "h-input", "data-name": "filter-menu-trigger" }, index.h("at-icon", { key: '706f9b74e5131d7eb7bc4f4c73c750f545242ae6', slot: "icon", name: "edit_filters" }))), index.h("at-tooltip", { key: 'cf2de7fead41b9dd62a1794a16d225e484b30f0e', "trigger-id": "table-filter-menu", position: "top" }, this.translations.ATUI.TABLE.FILTER_DATA), index.h("at-filter-form", { key: 'b5645f60169854b0fcaf192be52fe335caf0b608', filter_config: this.filterConfig, active_filters: this.filters, onAtSearch: this.handleSearch, onAtCancel: this.handleCancel }))));
     }
 };
 
@@ -165,15 +179,20 @@ const AtTableFilters = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atChange = index.createEvent(this, "atChange", 7);
+        this.atFilterClick = index.createEvent(this, "atFilterClick", 7);
     }
     /**
-     * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
+     * The active filters to display as a removable chip list, grouped with And/Or operators and nested subgroups.
      */
     filters;
     /**
      * Emits the remaining filters whenever a chip is removed or all are cleared.
      */
     atChange;
+    /**
+     * Emits the clicked filter condition when a chip is clicked (excluding its remove button).
+     */
+    atFilterClick;
     chipLabel(filter) {
         return `${filter.label ?? filter.id} ${filter.operator ?? ''} ${filter.value}`
             .replace(/\s+/g, ' ')
@@ -203,7 +222,14 @@ const AtTableFilters = class {
     };
     renderConditionChip(filter) {
         const label = this.chipLabel(filter);
-        return (index.h("at-badge", { class: "flex items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label }, index.h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
+        return (index.h("at-badge", { class: "flex cursor-pointer items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label, role: "button", tabindex: "0", "aria-label": `Edit ${label}`, onClick: () => this.atFilterClick.emit(filter), onKeyDown: (event) => {
+                if (event.target !== event.currentTarget)
+                    return;
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    this.atFilterClick.emit(filter);
+                }
+            } }, index.h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeCondition(filter);
             } }, index.h("at-icon", { name: "cancel" }))));
@@ -282,7 +308,7 @@ const AtTablePagination = class {
      */
     atPageSizeChange;
     render() {
-        return (index.h(index.Host, { key: 'cb23abef316430f9a699983de1ed92b21bd1d437', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: '53906ebc8649bbf741d30095414c2e3852d89dd2' }, "Page Size: "), index.h("at-select", { key: 'c1ba36a4098d3f115acaa0dcb3d6938573a434b0', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: 'd6babe1cc62840156763b2363261396ad59cd236', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, index.h("at-icon", { key: '586396f2cea5097204c024e82555a4ab870517df', slot: "icon", name: "first_page" })), index.h("at-button", { key: '4a2fbaa01f2ea7feb13f739765ac663fef857064', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, index.h("at-icon", { key: 'e6088ba0d7b179964afae636c6a6bc51d69422b8', slot: "icon", name: "chevron_left" })), index.h("span", { key: 'd76caf62400c28b2bcfc58c04674bcd556304405' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: '82fb5027621faba8e83f5263ebaa22130d918b25', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, index.h("at-icon", { key: 'bd322d60be2e3402fda0a2af47ab0dcc6b109770', slot: "icon", name: "chevron_right" })), index.h("at-button", { key: 'fcefcdf6a7caa66822eb5cf66d11b3fe701061d8', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, index.h("at-icon", { key: 'f05a7f3ac79e3b1ad44ca5fa128cb6b6742e353f', slot: "icon", name: "last_page" }))));
+        return (index.h(index.Host, { key: 'cda1330ca27793f9ab50574a4f2a3e09f2edf0c4', class: "mt-8 flex items-center justify-end gap-8" }, index.h("span", { key: '235c70a0cc29303d48c4b9a2f291caf2f653b8da' }, "Page Size: "), index.h("at-select", { key: '1b8c241b139b44a7a0449a24715cc26b4ca15914', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), index.h("at-button", { key: 'b092851bd35921e6535f7586b2873513814d33ff', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, index.h("at-icon", { key: 'f7cf32c58a5381fa77876a37a808deec2dc07cb4', slot: "icon", name: "first_page" })), index.h("at-button", { key: '1bfc2f3ce002f078a8ddbe9e4ca66eaec7bcb155', disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, index.h("at-icon", { key: 'd9f0fbaf65cf5dc35a405a8b5fc668ad3e07bff9', slot: "icon", name: "chevron_left" })), index.h("span", { key: '0ded69427d20fadf7a2ddc7e42f3d38bb537cd45' }, "Page ", this.current_page, " of ", this.num_pages), index.h("at-button", { key: 'f320b3d8ab8fe2d75f2303bf6174422cd4d9a51a', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, index.h("at-icon", { key: 'e5f475249cadefc45ab37925e709fd44fb5cbe0f', slot: "icon", name: "chevron_right" })), index.h("at-button", { key: 'aad9976c322d296e7a10220e8cc47787a0acbc34', disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, index.h("at-icon", { key: 'b6a64b573659e3d43bf63e8114afbfacaba77b46', slot: "icon", name: "last_page" }))));
     }
 };
 

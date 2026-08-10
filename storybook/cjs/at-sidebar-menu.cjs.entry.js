@@ -9,7 +9,7 @@ const AtSidebarMenuComponent = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '8d00c4dc36eab27454257375f1bf05a04ab269be', role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: '98487cfbae6dd0fee9e073ba58685a82074ee54c' })));
+        return (index.h(index.Host, { key: '08e3dd333ff5a782c127ecb054e364a7691f10d8', role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: '86b0ff490e4daefa6584383fad7cf333d756586d' })));
     }
 };
 AtSidebarMenuComponent.style = atSidebarMenuCss();

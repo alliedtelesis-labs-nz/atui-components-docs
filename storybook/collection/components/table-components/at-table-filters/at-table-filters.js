@@ -2,18 +2,22 @@ import { h, Host } from "@stencil/core";
 import { flattenFilterConditions, isFilterGroup, removeFilterCondition, } from "../../../utils/filter-tree.util";
 /**
  * @category Data Tables
- * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters in parentheses.
+ * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
  * @dependency at-badge
  */
 export class AtTableFilters {
     /**
-     * The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses.
+     * The active filters to display as a removable chip list, grouped with And/Or operators and nested subgroups.
      */
     filters;
     /**
      * Emits the remaining filters whenever a chip is removed or all are cleared.
      */
     atChange;
+    /**
+     * Emits the clicked filter condition when a chip is clicked (excluding its remove button).
+     */
+    atFilterClick;
     chipLabel(filter) {
         return `${filter.label ?? filter.id} ${filter.operator ?? ''} ${filter.value}`
             .replace(/\s+/g, ' ')
@@ -43,7 +47,14 @@ export class AtTableFilters {
     };
     renderConditionChip(filter) {
         const label = this.chipLabel(filter);
-        return (h("at-badge", { class: "flex items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label }, h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
+        return (h("at-badge", { class: "flex cursor-pointer items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label, role: "button", tabindex: "0", "aria-label": `Edit ${label}`, onClick: () => this.atFilterClick.emit(filter), onKeyDown: (event) => {
+                if (event.target !== event.currentTarget)
+                    return;
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    this.atFilterClick.emit(filter);
+                }
+            } }, h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeCondition(filter);
             } }, h("at-icon", { name: "cancel" }))));
@@ -89,7 +100,7 @@ export class AtTableFilters {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "The active filters to display as a removable chip list, grouped with And/Or operators and nested parentheses."
+                    "text": "The active filters to display as a removable chip list, grouped with And/Or operators and nested subgroups."
                 },
                 "getter": false,
                 "setter": false
@@ -116,6 +127,28 @@ export class AtTableFilters {
                             "path": "../../../types",
                             "id": "src/types/index.ts::AtIFilterGroup",
                             "referenceLocation": "AtIFilterGroup"
+                        }
+                    }
+                }
+            }, {
+                "method": "atFilterClick",
+                "name": "atFilterClick",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emits the clicked filter condition when a chip is clicked (excluding its remove button)."
+                },
+                "complexType": {
+                    "original": "AtIFilter",
+                    "resolved": "AtIFilter",
+                    "references": {
+                        "AtIFilter": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtIFilter",
+                            "referenceLocation": "AtIFilter"
                         }
                     }
                 }

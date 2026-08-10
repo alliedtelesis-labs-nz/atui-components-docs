@@ -30,15 +30,7 @@ export declare class AtSearchTable {
      */
     label: string;
     /**
-     * Label for the search input.
-     */
-    search_label: string;
-    /**
-     * Hint text displayed below the search label.
-     */
-    search_hint: string;
-    /**
-     * Info text displayed in the search info tooltip.
+     * Info text displayed in a tooltip at the right of the search input.
      */
     search_info_tooltip: string;
     /**
@@ -129,6 +121,7 @@ export declare class AtSearchTable {
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;
+    private filterMenuEl?;
     tableCreated: boolean;
     activeFilters: {
         [key: string]: string;

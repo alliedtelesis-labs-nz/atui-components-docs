@@ -13,7 +13,7 @@ export declare class AtSearch {
      */
     hint_text?: string;
     /**
-     * Tooltip description.
+     * Tooltip description, shown as an info icon at the right of the search box.
      */
     info_text?: string;
     /**

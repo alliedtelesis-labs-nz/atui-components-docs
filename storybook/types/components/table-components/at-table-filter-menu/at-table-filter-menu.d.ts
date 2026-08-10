@@ -22,7 +22,12 @@ export declare class AtTableFilterMenu {
      * Emits the active filters when the user applies a search
      */
     atChange: EventEmitter<AtIFilterGroup>;
+    /**
+     * Opens the filter menu, showing the filter form seeded with the active filters.
+     */
+    openMenu(): Promise<void>;
     private get filterConfig();
+    private isFilterableColumn;
     private convertDropdownKeysToSelectOptions;
     componentWillLoad(): Promise<void>;
     private handleSearch;
