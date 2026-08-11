@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-Mbn_rbdq.js";const s=o,p=r;export{s as AtFormLabel,p as defineCustomElement}
+import{A as s,d as o}from"./p-B62F0HsV.js";const p=s,r=o;export{p as AtFormLabel,r as defineCustomElement}

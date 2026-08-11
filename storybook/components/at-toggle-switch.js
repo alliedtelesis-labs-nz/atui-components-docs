@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-BXGr1Ha2.js";const s=o,a=r;export{s as AtToggleSwitch,a as defineCustomElement}
+import{A as o,d as s}from"./p-FZx9_B4J.js";const p=o,r=s;export{p as AtToggleSwitch,r as defineCustomElement}

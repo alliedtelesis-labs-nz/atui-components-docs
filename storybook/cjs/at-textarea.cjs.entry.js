@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ku8sY16C.js');
+var index = require('./index-BDNRUnGS.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {

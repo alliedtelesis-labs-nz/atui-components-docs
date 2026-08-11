@@ -3606,12 +3606,6 @@ strong {
   background-color: color-mix(in srgb, var(--token-card-background) 80%, transparent);
 }
 
-.bg-destructive-foreground {
-  --tw-bg-opacity:
-      1;
-  background-color: color-mix(in srgb, var(--token-state-error-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
-}
-
 .bg-disabled-background {
   --tw-bg-opacity:
       1;
@@ -3622,6 +3616,12 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: color-mix(in srgb, var(--token-state-disabled-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
+.bg-disabled-foreground {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-state-disabled-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .bg-disabled-foreground\/40 {
@@ -3664,6 +3664,12 @@ strong {
   background-color: color-mix(in srgb, var(--token-feedback-error-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-feedback-info-accent {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-feedback-info-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
 .bg-feedback-info-background {
   --tw-bg-opacity:
       1;
@@ -3694,6 +3700,12 @@ strong {
   background-color: color-mix(in srgb, var(--token-feedback-success-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
+.bg-feedback-warning-accent {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-feedback-warning-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
 .bg-feedback-warning-background {
   --tw-bg-opacity:
       1;
@@ -3710,12 +3722,6 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: rgb(107, 114, 128, var(--tw-bg-opacity, 1));
-}
-
-.bg-info-foreground {
-  --tw-bg-opacity:
-      1;
-  background-color: color-mix(in srgb, var(--token-state-info-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .bg-input-background {

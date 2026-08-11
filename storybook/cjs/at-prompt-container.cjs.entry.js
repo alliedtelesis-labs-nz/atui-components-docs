@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ku8sY16C.js');
+var index = require('./index-BDNRUnGS.js');
 var translation = require('./translation-D3uILiF8.js');
 
 const AtPromptContainer = class {

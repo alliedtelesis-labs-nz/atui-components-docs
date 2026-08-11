@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-PCdaMB_5.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-ErtVbKpP.js';
 
 const AtColorStatusCell = class {
     constructor(hostRef) {
@@ -18,15 +18,12 @@ const AtColorStatusCell = class {
     }
     render() {
         const statusClasses = {
-            // `-base` does not exist on any state colour, and neither does
-            // `disabled-light`; all four matched no rule, so every state of this cell
-            // rendered unpainted. Issue #285.
             error: 'bg-error-foreground',
             warning: 'bg-warning-foreground',
             success: 'bg-success-foreground',
-            disabled: 'bg-disabled-background',
+            disabled: 'bg-disabled-foreground',
         };
-        return (h(Host, { key: '3502a87ad1b5b80194edbe19854d243247738291', class: "flex h-full items-center" }, h("div", { key: 'f31a6cb5fe72674f7bdf1f94015faf6349a7a46a', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (h(Host, { key: 'cc1ff9da2a0c4ec517351bb2147cd817ded061e4', class: "flex h-full items-center" }, h("div", { key: '37727c4348f61bb4fd6edfdc7ba58d4d9d52719c', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
 };
 

@@ -1,5 +1,5 @@
-import { g as globalScripts, b as bootstrapLazy } from './index-PCdaMB_5.js';
-export { s as setNonce } from './index-PCdaMB_5.js';
+import { g as globalScripts, b as bootstrapLazy } from './index-ErtVbKpP.js';
+export { s as setNonce } from './index-ErtVbKpP.js';
 
 const defineCustomElements = async (win, options) => {
   if (typeof window === 'undefined') return undefined;

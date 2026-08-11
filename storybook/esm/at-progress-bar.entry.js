@@ -1,19 +1,19 @@
-import { r as registerInstance, h, H as Host } from './index-PCdaMB_5.js';
+import { r as registerInstance, h, H as Host } from './index-ErtVbKpP.js';
 
 /**
- * State colours have DEFAULT / foreground / background / *-inv variants — there is
- * no `-base` on any of them (the only `*-base` in the theme is `surface-base`).
- * `bg-success-base` and `bg-warning-base` therefore matched no rule at all and those
- * two fills rendered UNPAINTED rather than merely pale, which hid the at-risk state
- * in every consumer. See issue #285.
+ * The bright `accent` step is only exposed on the `feedback` colour group in
+ * tailwind.config.cjs — the state groups (`success`, `warning`, `info`, `destructive`)
+ * stop at DEFAULT / foreground / background / *-inv. `bg-success-accent` and
+ * `bg-success-base` match no rule at all, so the fill renders unpainted rather than
+ * merely pale, which hid the state entirely in every consumer. See issue #285.
  */
 const progressBarVariants = {
-    success: 'bg-success-foreground',
-    warning: 'bg-warning-foreground',
-    error: 'bg-destructive-foreground',
-    info: 'bg-info-foreground',
+    success: 'bg-feedback-success-accent',
+    warning: 'bg-feedback-warning-accent',
+    error: 'bg-feedback-error-accent',
+    info: 'bg-feedback-info-accent',
 };
-const trackClass = 'bg-surface-2 rounded-[2px] overflow-hidden';
+const trackClass = 'bg-surface-0 rounded-full overflow-hidden';
 const AtProgressBar = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -51,7 +51,7 @@ const AtProgressBar = class {
         }
     }
     get statusBarClass() {
-        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-[2px] overflow-hidden`;
+        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-full overflow-hidden`;
     }
     get segments() {
         return `flex flex-grow items-stretch justify-center transition-all duration-500`;

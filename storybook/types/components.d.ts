@@ -41,7 +41,7 @@ import { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-
 import { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 import { AtISelectOption } from "./types/select";
 import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
-import { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
+import { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 import { AtITableColumnDef } from "./models/searchTableModel";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
@@ -97,7 +97,7 @@ export { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-
 export { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 export { AtISelectOption } from "./types/select";
 export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
-export { AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
+export { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 export { AtITableColumnDef } from "./models/searchTableModel";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";

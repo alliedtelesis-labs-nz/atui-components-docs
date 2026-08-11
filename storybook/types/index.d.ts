@@ -34,6 +34,8 @@ export { AtStepperStep } from './components/at-stepper/at-stepper';
 export { AtStepperItemState, AtStepperOrientation, } from './components/at-stepper/at-stepper-item/at-stepper-item';
 export { AtISearchTableParams, AtISearchData, } from './types/generic-table/index';
 export { AtBadgeType } from './components/at-badge/at-badge';
+export { AtProgressBarType } from './components/at-progress-bar/at-progress-bar';
+export { AtProgressBarSize } from './components/at-progress-bar/at-progress-bar';
 export { AtIRadioOption } from './components/at-radio-group/at-radio-group';
 export { AtIButtonGroupOption } from './components/at-button-group/at-button-group';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
