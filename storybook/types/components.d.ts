@@ -1013,6 +1013,11 @@ export namespace Components {
          */
         "show_clear_all": boolean;
         /**
+          * Keeps the chips on a single line, replacing those that do not fit with a `+N` counter that lists them on hover. Off by default so lists that are meant to grow — a multi-select input, for example — keep wrapping. Use it where the container height is fixed, such as a table cell.
+          * @default false
+         */
+        "show_overflow_counter": boolean;
+        /**
           * Size of the chips. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
@@ -2384,6 +2389,11 @@ export namespace Components {
           * @returns Promise resolving to an array of displayed row nodes.
          */
         "getDisplayedRows": <T>() => Promise<IRowNode<T>[]>;
+        /**
+          * Returns the underlying ag-Grid API, for the cases this component does not wrap — saving and restoring column state, for instance.  The grid is not built until column definitions arrive, so this resolves once it exists rather than returning null to a caller that has no way of knowing when to ask again. Rejects if the table leaves the DOM while the grid is still unbuilt, so a caller is never left hanging on a table that can no longer deliver one.
+          * @returns Promise resolving to the grid API.
+         */
+        "getGridApi": () => Promise<GridApi>;
         /**
           * If true the column manager will not be added
          */
@@ -6401,6 +6411,11 @@ declare namespace LocalJSX {
          */
         "show_clear_all"?: boolean;
         /**
+          * Keeps the chips on a single line, replacing those that do not fit with a `+N` counter that lists them on hover. Off by default so lists that are meant to grow — a multi-select input, for example — keep wrapping. Use it where the container height is fixed, such as a table cell.
+          * @default false
+         */
+        "show_overflow_counter"?: boolean;
+        /**
           * Size of the chips. Determines padding and font-size. For use in input chip lists.
           * @default 'lg'
          */
@@ -9224,6 +9239,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "show_clear_all": boolean;
         "size": AtBadgeSize;
+        "show_overflow_counter": boolean;
     }
     interface AtControlGroupAttributes {
         "direction": AtControlGroupDirection;

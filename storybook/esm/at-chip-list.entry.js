@@ -1,5 +1,14 @@
-import { r as registerInstance, c as createEvent, h } from './index-HD-uhvb8.js';
+import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-PCdaMB_5.js';
 
+const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
+
+/**
+ * Width reserved for the `+N` counter on the pass that first collapses the
+ * list, before the counter itself exists to be measured. Once it renders its
+ * real width is used, so this only has to be close enough to avoid a visible
+ * correction.
+ */
+const COUNTER_WIDTH_ESTIMATE = 48;
 const AtChipList = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -26,9 +35,198 @@ const AtChipList = class {
      */
     size = 'lg';
     /**
+     * Keeps the chips on a single line, replacing those that do not fit with a
+     * `+N` counter that lists them on hover. Off by default so lists that are
+     * meant to grow — a multi-select input, for example — keep wrapping. Use it
+     * where the container height is fixed, such as a table cell.
+     */
+    show_overflow_counter = false;
+    get el() { return getElement(this); }
+    /**
+     * How many chips currently fit. `null` means "not measured yet", which
+     * renders every chip so their natural widths can be read.
+     */
+    visibleCount = null;
+    /**
      * Emitted when the 'X' on a chip, or 'Clear All' is clicked.
      */
     atuiRemoveChip;
+    listEl;
+    observer;
+    /**
+     * Natural width of every chip, measured once while they are all rendered.
+     * Cached because a hidden chip has no width of its own to measure, so
+     * re-reading the DOM after collapsing would report that everything fits.
+     */
+    chipWidths = null;
+    /** Set while waiting for mid-upgrade badges to become measurable. */
+    awaitingChipRender = false;
+    /**
+     * Room the counter needs, kept clear by the last visible chip. State
+     * rather than a plain field: it is read in render for the last chip's
+     * maxWidth, so a corrected measurement must trigger a render even when the
+     * visible count itself has not changed.
+     */
+    counterReserve = COUNTER_WIDTH_ESTIMATE;
+    componentDidLoad() {
+        this.observeResize();
+        // Chip widths measured against a fallback font are stale once the web
+        // font swaps in, and nothing else re-measures: the row's own width does
+        // not change, so the ResizeObserver never fires.
+        if (typeof document !== 'undefined' && document.fonts?.ready) {
+            document.fonts.ready.then(() => {
+                if (this.el?.isConnected) {
+                    this.resetMeasurements();
+                }
+            });
+        }
+    }
+    /**
+     * Re-attaches on reconnect. A grid moves cell renderers in and out of the
+     * DOM as it scrolls and refreshes, and each detach tears the observer down,
+     * so attaching only on first load would leave the list frozen at whatever
+     * width it last saw.
+     */
+    connectedCallback() {
+        this.observeResize();
+    }
+    observeResize() {
+        if (this.observer ||
+            !this.show_overflow_counter ||
+            !this.listEl ||
+            typeof ResizeObserver === 'undefined') {
+            return;
+        }
+        // Observe the row itself rather than the host: it is the element whose
+        // width the fit is calculated against, and an unstyled host is inline,
+        // so its box would not track the available space.
+        this.observer = new ResizeObserver(() => this.fitChips());
+        this.observer.observe(this.listEl);
+    }
+    disconnectedCallback() {
+        this.observer?.disconnect();
+        this.observer = undefined;
+    }
+    componentDidRender() {
+        if (!this.show_overflow_counter) {
+            return;
+        }
+        this.observeResize();
+        this.measureIfPossible();
+        this.fitChips();
+    }
+    /**
+     * Every chip is on the row whenever visibleCount is null, so that is the
+     * only state in which their natural widths can be read. A collapsed row
+     * must never re-measure: the hidden chips have no width to report.
+     *
+     * A badge still upgrading is little more than its padding, and caching
+     * those widths concludes that everything fits, permanently — so an
+     * incomplete subtree is never measured. Instead the badges' own readiness
+     * schedules the retry.
+     */
+    measureIfPossible() {
+        if (this.visibleCount !== null || !this.listEl?.clientWidth) {
+            return;
+        }
+        const chipEls = Array.from(this.listEl.querySelectorAll('[data-name="chip"]'));
+        if (chipEls.some((chip) => !chip.classList.contains('hydrated'))) {
+            if (!this.awaitingChipRender) {
+                this.awaitingChipRender = true;
+                Promise.all(chipEls.map((chip) => chip.componentOnReady?.())).then(() => {
+                    this.awaitingChipRender = false;
+                    forceUpdate(this.el);
+                });
+            }
+            return;
+        }
+        this.chipWidths = chipEls.map((chip) => chip.getBoundingClientRect().width);
+    }
+    resetMeasurements() {
+        this.chipWidths = null;
+        this.visibleCount = null;
+        this.observeResize();
+        // An uncollapsed list nulling an already-null count schedules nothing,
+        // yet the stale cache may now hide a real overflow (the font-swap
+        // case), so a render pass is forced to re-measure either way.
+        forceUpdate(this.el);
+    }
+    /**
+     * Works out how many chips fit on one line and stores it in `visibleCount`.
+     *
+     * Whether the counter is needed is decided before its width is taken into
+     * account: if every chip fits there is no counter, and only once one is
+     * required is its width subtracted. Deciding it in that order keeps the
+     * result stable — reserving counter space up front could hide a chip that
+     * would otherwise fit, which would then make the counter unnecessary.
+     */
+    fitChips() {
+        if (!this.show_overflow_counter || !this.listEl) {
+            return;
+        }
+        const total = this.chips?.length ?? 0;
+        // A row with no width has not been laid out — it is detached, or the
+        // grid has yet to size the cell. Measuring it would fit nothing and
+        // strand the list showing only a counter.
+        if (!total || !this.listEl.clientWidth) {
+            return;
+        }
+        const widths = this.chipWidths;
+        if (!widths || widths.length !== total) {
+            // The widths were never read — the list first rendered without
+            // layout (a hidden tab, a closed dialog) — or were taken before a
+            // re-render added chips. Never measure from here: this also runs
+            // from the ResizeObserver, which can fire while the badges are
+            // still hydrating, and caching their half-rendered widths makes
+            // every chip "fit" for good. Instead force a render, whose
+            // componentDidRender measures once the subtree is complete; while
+            // that completion is what is being waited on, the wait itself
+            // schedules the render, so forcing another here would just spin.
+            this.visibleCount = null;
+            if (!this.awaitingChipRender) {
+                forceUpdate(this.el);
+            }
+            return;
+        }
+        const gap = parseFloat(getComputedStyle(this.listEl).columnGap) || 0;
+        const available = this.listEl.clientWidth - this.trailingWidth(gap);
+        // Gaps sit between items only, so `count` chips carry `count - 1`.
+        const widthUpTo = (count) => widths.slice(0, count).reduce((sum, width) => sum + width, 0) +
+            Math.max(0, count - 1) * gap;
+        let fits = total;
+        if (widthUpTo(total) > available) {
+            const counterEl = this.listEl.querySelector('[data-name="chip-overflow"]');
+            const counterWidth = counterEl
+                ? counterEl.getBoundingClientRect().width + gap
+                : COUNTER_WIDTH_ESTIMATE + gap;
+            this.counterReserve = counterWidth;
+            fits = 0;
+            while (fits < total &&
+                widthUpTo(fits + 1) <= available - counterWidth) {
+                fits++;
+            }
+            // A bare "+N" tells the user nothing about what is in the list, so
+            // always keep one chip even where it does not strictly fit — it
+            // truncates with an ellipsis rather than pushing the counter out.
+            fits = Math.max(fits, 1);
+        }
+        // Guard against a render loop: only a changed count triggers a render,
+        // and each render calls back in here.
+        if (fits !== this.visibleCount) {
+            this.visibleCount = fits;
+        }
+    }
+    /**
+     * Width of everything sharing the line that is neither a chip nor the
+     * counter — the clear-all button and any slotted content. The counter is
+     * excluded because `fitChips` accounts for it separately.
+     */
+    trailingWidth(gap) {
+        return Array.from(this.listEl?.children ?? [])
+            .filter((child) => !child.matches('[data-name="chip"]') &&
+            !child.matches('[data-name="chip-overflow"]'))
+            .reduce((sum, child) => sum + child.getBoundingClientRect().width + gap, 0);
+    }
     keyDownHandler(event, chipsToRemove) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -44,23 +242,74 @@ const AtChipList = class {
             this.chips = this.chips.filter((chip) => chip !== chipsToRemove[0]);
         }
     }
+    /**
+     * Chips that fit on the line. Everything is rendered until a measurement
+     * has been taken, so the natural widths can be read from the DOM.
+     */
+    get shownChips() {
+        if (!this.show_overflow_counter || this.visibleCount === null) {
+            return this.chips ?? [];
+        }
+        return (this.chips ?? []).slice(0, this.visibleCount);
+    }
+    get overflowChips() {
+        return (this.chips ?? []).slice(this.shownChips.length);
+    }
     get getChips() {
         if (!this.chips) {
             return '';
         }
-        return this.chips.map((chip) => (h("at-badge", { class: `flex items-center gap-4 text-center`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip }, !this.disabled && !this.readonly && (h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
+        const shown = this.shownChips;
+        const hasCounter = this.show_overflow_counter && this.overflowChips.length;
+        return shown.map((chip, index) => (h("at-badge", {
+            // The last chip gives up whatever room the counter needs, so a
+            // chip too wide for the row ellipsises rather than pushing the
+            // counter out of sight. Applied per-chip rather than as a class
+            // so the measuring pass, which has no counter, is unaffected.
+            style: hasCounter && index === shown.length - 1
+                ? {
+                    maxWidth: `calc(100% - ${this.counterReserve}px)`,
+                }
+                : undefined,
+            // shrink-0 always, never conditionally: it holds each chip at
+            // its natural width, and measuring a chip that has been allowed
+            // to compress reports a width small enough that the whole list
+            // looks like it fits. The last chip is capped by style instead,
+            // which leaves these measurements untouched.
+            class: `flex items-center gap-4 text-center ${this.show_overflow_counter
+                ? 'max-w-full shrink-0 overflow-hidden'
+                : ''}`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip
+        }, !this.disabled && !this.readonly && (h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeChipHandler([chip]);
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, h("at-icon", { name: "cancel" }))))));
     }
     render() {
-        return (h("div", { key: 'e531a637c28358c760ba596e3929a808bb7bc3f8', class: "flex h-full flex-wrap items-center gap-4" }, this.chips && this.getChips, !this.disabled &&
+        const overflow = this.overflowChips;
+        return (h("div", { key: 'ec9388e75a84c2ad0d471377c80264780eca92a0', class: `flex h-full items-center gap-4 ${this.show_overflow_counter
+                ? 'flex-nowrap overflow-hidden'
+                : 'flex-wrap'}`, ref: (el) => (this.listEl = el) }, this.chips && this.getChips, overflow.length > 0 && (h("at-tooltip", { key: '72305c060ab2c337fced85ea7c68c1342ec3fb88',
+            // Never shrinks: the counter is the only thing telling
+            // the user that chips are missing.
+            class: "shrink-0", "data-name": "chip-overflow", position: "top" }, h("at-badge", { key: '9addfbead61dfc3ccd2e00e8fd50f7178674c304', slot: "tooltip-trigger", class: "flex items-center text-center", rounded: true, "data-name": "chip-overflow-counter", type: this.disabled ? 'disabled' : 'default', size: this.size, label: `+${overflow.length}` }), overflow.join(', '))), !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: '561618f7416f138d0f09de01c9a0fe67eed3e331', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: '151343563caaac8eb2dc6af5f5b1a335dba5c871', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } }, h("at-icon", { key: '834e424ce032bf10909a6050c78ff20ba7a68d15', slot: "icon", name: "backspace" }))), h("slot", { key: '25c33bf2f835a2867a69110038d0def40be2b39c' })));
+            } }, h("at-icon", { key: 'e76e61f1f604ac376658cdce4c2c6ac84a2f76da', slot: "icon", name: "backspace" }))), h("slot", { key: 'e30bc80b34021cabaf52f618f2d3738e8d57b617' })));
     }
+    static get watchers() { return {
+        "chips": [{
+                "resetMeasurements": 0
+            }],
+        "size": [{
+                "resetMeasurements": 0
+            }],
+        "show_overflow_counter": [{
+                "resetMeasurements": 0
+            }]
+    }; }
 };
+AtChipList.style = atChipListCss();
 
 export { AtChipList as at_chip_list };

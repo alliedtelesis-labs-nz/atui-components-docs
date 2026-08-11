@@ -200,7 +200,7 @@ export class AtChartSparkline {
         }
     }
     render() {
-        return (h(Host, { key: '7b25ef8723128b60f0ee0101a16df6e224610ff6', style: { height: '100%', width: '100%' } }, h("canvas", { key: '7ad32810472165f2bda22c051d7748a4ab3246e8', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (h(Host, { key: '7c3ceda6877c306ac36d62505711013b99c178fd', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'bf1e42652800b21877677cedda52c8a4b522b20a', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
     static get is() { return "at-chart-sparkline"; }
     static get properties() {

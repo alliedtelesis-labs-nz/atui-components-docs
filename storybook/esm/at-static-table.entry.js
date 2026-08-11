@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-HD-uhvb8.js';
+import { r as registerInstance, h, H as Host } from './index-PCdaMB_5.js';
 
 const AtStaticTable = class {
     constructor(hostRef) {
@@ -41,7 +41,7 @@ const AtStaticTable = class {
         }
     }
     render() {
-        return (h(Host, { key: 'a60c4f5dc735f939b2631eef53e20e6e3400513a' }, !this.hide_column_manager && (h("at-table-actions", { key: '1420fac9218f87e92d23da920a770da744da5851', ag_grid: this.agGrid }, h("at-column-manager", { key: 'd27c39af58965646072d3681897c3aac0bc83ab8', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '1a7ddabaee789952fdabceb341f5bf18b8e01703', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: '881592b29d806c92f590b06bf20a2841c0267417' }, !this.hide_column_manager && (h("at-table-actions", { key: 'bbb45b691deab5f0cc9c592f220d228d0f4a4f9c', ag_grid: this.agGrid }, h("at-column-manager", { key: 'f4515ba2a363262fefd2814a689e3e2a34ab9935', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: 'cfdbc77082d6614a80c0db42417dbec13430e83e', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
     }
 };
 

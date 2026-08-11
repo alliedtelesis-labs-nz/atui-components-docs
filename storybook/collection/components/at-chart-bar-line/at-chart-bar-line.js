@@ -427,7 +427,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'b485928cbd039c842f2598be40c14bc9ac6f3e80', style: { height: '100%', width: '100%' } }, h("canvas", { key: '3da7c7ce658f4006a387e8370592f483a807de2c', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '40bc21f2578f0845b3eee6bf7a4049695a68a51f', style: { height: '100%', width: '100%' } }, h("canvas", { key: '428d46ff140698502e1000e6a39a8564fef6b60e', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

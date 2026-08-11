@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DK-3iCCu.js');
+var index = require('./index-Ku8sY16C.js');
 
 const atMessageCss = () => `at-message [slot=actions]{align-self:start}`;
 
@@ -68,7 +68,7 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (index.h("div", { key: '0c426cf2872b9e9f930f9e4f3b848824fc2fe614', class: this.hostClasses, "data-name": "message-container" }, index.h("at-icon", { key: '5a5fd717aa0460fc1f9190cd1c02015d6085ddb2', class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName }), index.h("div", { key: 'bba3ad9e094afcc7e163054fc88018661094fb5f', class: "flex w-full flex-row justify-between gap-4 text-sm" }, index.h("div", { key: '46a6cfea00725b6a2ae48db11ab2cb0d09ebcd40' }, this.message_title && (index.h("div", { key: '496d5786bb71008d9f69614d7b418f614143390a', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: '04af12d008dd25a93d4527104c601c11b8ab0680', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: '389f6e219dde0ce96e0824fe51514c3d55d46469' })), index.h("slot", { key: 'a0cafdc4cd39715cf1b33606de1e8850eade3750', name: "actions" }))));
+        return (index.h("div", { key: '52d7143c2a529f9bdb826fc1337cabbc457a606a', class: this.hostClasses, "data-name": "message-container" }, index.h("at-icon", { key: '53ddf21e25021af089b7da76ead3b635ad8343c3', class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName }), index.h("div", { key: 'fb1e0182244b4d4588044f04da3b70789cdbe0f3', class: "flex w-full flex-row justify-between gap-4 text-sm" }, index.h("div", { key: '2b68101cc6142d425109a96cd82354bbc2eb269b' }, this.message_title && (index.h("div", { key: 'c7aac7f5b38bb6ec3e087dcc9983f47d4f7550c6', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (index.h("div", { key: '5d1761df9a14cd4d093a3e72ac1e1782429450eb', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), index.h("slot", { key: 'dee5b8a99dc40a041b5e2852b1e6e466baa7f403' })), index.h("slot", { key: '3f587c4158592f9a7ab9572defc6aee3c8bcfeef', name: "actions" }))));
     }
 };
 AtMessage.style = atMessageCss();

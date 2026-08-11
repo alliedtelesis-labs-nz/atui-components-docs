@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DK-3iCCu.js');
+var index = require('./index-Ku8sY16C.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -76,13 +76,13 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (index.h(index.Host, { key: '89851f43cbe51e0f8cfc4331dfe1ca5b89f444d7', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
+        return (index.h(index.Host, { key: '121edb0686e3d2b06f0c5988a97a5df0d30a989a', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
                 ? this.selected
                     ? 'true'
                     : 'false'
-                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '3d8c7294cc514ca0db7f74d02e11a5bddb47c26c', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: '5f4a90af9364573f3c69b8f71a0a2121c100b1e7', class: "flex gap-4" }, this.has_children && (index.h("at-icon", { key: '14fa4ea9e429c8138911e07dde5bce9147e41538', "data-name": "tree-item-indicator", name: this.selected
+                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'ad405409092b140a437c9510a725b23a67401b93', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: 'effb2257ebc892525bc2cafa880dbf30273a124e', class: "flex gap-4" }, this.has_children && (index.h("at-icon", { key: '6f7806d5eeccb5c254217e9d716422605f3d5074', "data-name": "tree-item-indicator", name: this.selected
                 ? 'chevron_down'
-                : 'chevron_right' })), this.label && (index.h("span", { key: 'f0050440cd8cc218033e5a66829a6da2e20e9ec3', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: 'dc8e82a8b76fb77487183b66098affaa524caf51', name: "label" })), index.h("slot", { key: '98ecf5a03c87377ef085ec404e57508156e058a5' })), index.h("div", { key: 'd232bc5b20830331ee1be828faed5f5bd6a2c7ad', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+                : 'chevron_right' })), this.label && (index.h("span", { key: 'b2d119b8926000cca2e42b0fecdaa861b1416bb7', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: '620ddde16e2e99604781b29ab0b16e7d66996ba9', name: "label" })), index.h("slot", { key: 'cb64f48e2bb6832b25f8e3f945cd5fdb5d6ab4c0' })), index.h("div", { key: '3311e883af399fc28404b652b2aad4ac01eec51f', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
     }
 };
 

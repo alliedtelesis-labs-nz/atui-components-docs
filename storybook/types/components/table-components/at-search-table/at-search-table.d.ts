@@ -121,6 +121,10 @@ export declare class AtSearchTable {
     el: HTMLElement;
     translations: any;
     agGrid: GridApi;
+    /** Pending `getGridApi()` callers, settled once the grid is built. */
+    private gridReady?;
+    private resolveGridReady?;
+    private rejectGridReady?;
     private filterMenuEl?;
     tableCreated: boolean;
     activeFilters: {
@@ -204,6 +208,20 @@ export declare class AtSearchTable {
      * @returns {Promise<IRowNode<T>[]>} Promise resolving to an array of displayed row nodes.
      */
     getDisplayedRows<T>(): Promise<IRowNode<T>[]>;
+    /**
+     * Returns the underlying ag-Grid API, for the cases this component does not
+     * wrap — saving and restoring column state, for instance.
+     *
+     * The grid is not built until column definitions arrive, so this resolves
+     * once it exists rather than returning null to a caller that has no way of
+     * knowing when to ask again. Rejects if the table leaves the DOM while the
+     * grid is still unbuilt, so a caller is never left hanging on a table that
+     * can no longer deliver one.
+     *
+     * @returns {Promise<GridApi>} Promise resolving to the grid API.
+     */
+    getGridApi(): Promise<GridApi>;
+    disconnectedCallback(): void;
     private initGrid;
     /**
      * Matches AG Grid's quick filter, which `at-table` uses on the

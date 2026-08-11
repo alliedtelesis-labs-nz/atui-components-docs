@@ -1,0 +1,5 @@
+at-chip-list at-badge [data-name=badge-label] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
