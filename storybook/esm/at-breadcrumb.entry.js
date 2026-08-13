@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment } from './index-IMi8cNQw.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment } from './index-9VFkhV2N.js';
 
 const AtBreadcrumbComponent = class {
     constructor(hostRef) {
@@ -29,7 +29,7 @@ const AtBreadcrumbComponent = class {
     }
     render() {
         return (h("nav", { key: 'b72b1945b089692a561474b0d6762cf3fb9b0f3f', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-light", name: "chevron_right" }))))), h("slot", { key: '90db39eefa1bb4d99daad0f538c915e2de3acdc7' })));
+            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), h("slot", { key: '90db39eefa1bb4d99daad0f538c915e2de3acdc7' })));
     }
 };
 

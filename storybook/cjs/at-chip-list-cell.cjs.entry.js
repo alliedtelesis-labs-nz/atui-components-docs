@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BrO0jece.js');
+var index = require('./index-DGDau4r1.js');
 
 const AtChipListCell = class {
     constructor(hostRef) {

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BrO0jece.js');
+var index = require('./index-DGDau4r1.js');
 
 const AtBreadcrumbComponent = class {
     constructor(hostRef) {
@@ -31,7 +31,7 @@ const AtBreadcrumbComponent = class {
     }
     render() {
         return (index.h("nav", { key: 'b72b1945b089692a561474b0d6762cf3fb9b0f3f', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-light", name: "chevron_right" }))))), index.h("slot", { key: '90db39eefa1bb4d99daad0f538c915e2de3acdc7' })));
+            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), index.h("slot", { key: '90db39eefa1bb4d99daad0f538c915e2de3acdc7' })));
     }
 };
 

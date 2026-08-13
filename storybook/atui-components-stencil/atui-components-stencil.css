@@ -3905,6 +3905,10 @@ strong {
   fill: color-mix(in srgb, var(--token-text-foreground) 40%, transparent);
 }
 
+.fill-muted {
+  fill: color-mix(in srgb, var(--token-text-muted) 100%, transparent);
+}
+
 .fill-slate-300 {
   fill: #cbd5e1;
 }
@@ -4214,6 +4218,12 @@ strong {
   --tw-text-opacity:
       1 !important;
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
+}
+
+.text-active-accent {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-active-foreground {
