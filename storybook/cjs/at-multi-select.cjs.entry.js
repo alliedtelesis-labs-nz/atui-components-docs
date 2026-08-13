@@ -315,7 +315,7 @@ const AtMultiSelectComponent = class {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist(`placeholder-text-muted transition[background-color,color,box-shadow] relative flex h-input min-h-input w-full gap-4 rounded-input border border-solid py-4 pr-24 pl-input-x duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
+        const getClassname = classlist.classlist(`placeholder-text-muted transition[background-color,color,box-shadow] relative flex min-h-input w-full items-center gap-4 rounded-input border border-solid py-2 pr-24 pl-input-x duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
