@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-ErtVbKpP.js';
+import { r as registerInstance, h, H as Host } from './index-IMi8cNQw.js';
 import { A as AtChartColorPalette } from './chart-color-BeJCqIOU.js';
 
 const AtChartTrend = class {

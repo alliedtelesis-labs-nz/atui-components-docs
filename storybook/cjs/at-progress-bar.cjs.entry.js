@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BDNRUnGS.js');
+var index = require('./index-BrO0jece.js');
 
 /**
  * The bright `accent` step is only exposed on the `feedback` colour group in

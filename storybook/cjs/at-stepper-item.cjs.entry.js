@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BDNRUnGS.js');
+var index = require('./index-BrO0jece.js');
 
 const dotVariants = {
     pending: 'bg-disabled-foreground/40 h-8 w-8',
