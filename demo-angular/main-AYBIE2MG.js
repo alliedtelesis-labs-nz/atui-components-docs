@@ -744,9 +744,9 @@ import{$ as qh,$a as Te,$b as pA,A as VC,Aa as Z,Ab as tp,B as Br,Ba as Ll,Bb as
   --token-font-size-icon-lg: 1.2857rem;
   --token-font-size-icon-xl: 1.5714rem;
   /* Font Weight: Legacy */
-  --token-font-weight-light: 300;
-  --token-font-weight-med: 400;
-  --token-font-weight-bold: 700;
+  --token-font-weight-light: 400;
+  --token-font-weight-med: 500;
+  --token-font-weight-bold: 600;
   /*  Line Height: Legacy */
   /* Type: OneConnect */
   /*
@@ -857,6 +857,7 @@ import{$ as qh,$a as Te,$b as pA,A as VC,Aa as Z,Ab as tp,B as Br,Ba as Ll,Bb as
   /* Sizing (Legacy) */
   --token-width-input-sm: 180px;
   --token-width-input-md: 220px;
+  --token-width-input-lg: 260px;
   --token-width-sidebar-offscreen: 0px;
   --token-width-sidebar-collapsed: 50px;
   --token-width-sidebar: 280px;
