@@ -1433,6 +1433,23 @@ import{$ as Xh,$a as Te,$b as fA,A as qC,Aa as Z,Ab as op,B as Br,Ba as Ll,Bb as
   --chart-onboarding-status-6: #9e9e9e;
 }
 
+/*
+Theme switching
+Purpose: Consumers set data-theme-switching on <html> for the duration of a data-theme
+swap so the new theme paints in one step. Without it, every component carrying a colour
+transition (transition-colors / transition-all / the sidebar and dialog SCSS transitions)
+interpolates for up to 300ms while the page background flips instantly, so stale light
+values sit on the new dark surfaces and read as heavier weights before settling.
+Hover and focus transitions are unaffected: the attribute is only present for the swap.
+*/
+[data-theme-switching],
+[data-theme-switching] *,
+[data-theme-switching] *::before,
+[data-theme-switching] *::after,
+[data-theme-switching] *::backdrop {
+  transition: none !important;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x:
       0;
