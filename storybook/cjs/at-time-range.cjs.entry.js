@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGDau4r1.js');
+var index = require('./index-BzuO8j9_.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-D3uILiF8.js');
 var date = require('./date-DDRmOnS1.js');
@@ -180,16 +180,16 @@ const AtTimeRangeComponent = class {
         if (selected?.value && selected?.unit) {
             const unitLabel = this.getShortUnitDisplay(selected);
             const startDate = atTimeDate_util.AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (index.h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("at-icon", { name: "arrow_right", class: "fill-disabled" }), index.h("span", null, this.translations?.ATUI?.TIME?.NOW || 'Now')));
+            return (index.h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && index.h("span", null, this.formatDate(startDate)), index.h("at-icon", { name: "arrow_right", class: "fill-foreground" }), index.h("span", null, this.translations?.ATUI?.TIME?.NOW || 'Now')));
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'aba68830c3eed5c027488fda3f32235ffd7f9100', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'bd2317f01c8282592cfd759585723b9630cda157', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
     renderRelativeTimeButtonGroup() {
-        return (index.h("at-button-group", { key: "relative-time-group" }, index.h("at-button-group-option", { is_active: !this.displayedTimeRange?.custom, "data-ignore-selection": true, value: this.renderSelectedTimeDisplay(), "data-menu": `${this.instanceId}-rel` }), index.h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, index.h("at-icon", { slot: "icon", name: "schedule" }))));
+        return (index.h("at-button-group", { key: "relative-time-group" }, index.h("at-button-group-option", { is_active: !this.displayedTimeRange?.custom, "data-ignore-selection": true, value: this.renderSelectedTimeDisplay(), "data-menu": `${this.instanceId}-rel` }), index.h("at-button-group-option", { class: "px-8", is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, index.h("at-icon", { slot: "icon", name: "schedule" }))));
     }
     renderPredefinedTimeButtonGroup() {
         const selectedKey = typeof this.displayedTimeRange?.selected === 'object'

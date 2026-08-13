@@ -3829,10 +3829,6 @@ strong {
   fill: color-mix(in srgb, var(--token-button-secondary-foreground) 100%, transparent);
 }
 
-.fill-disabled {
-  fill: color-mix(in srgb, var(--token-state-disabled-default) 100%, transparent);
-}
-
 .fill-disabled-foreground {
   fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent);
 }
