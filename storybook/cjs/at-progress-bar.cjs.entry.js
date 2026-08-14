@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-6KYrJiD1.js');
+var index = require('./index-B7C6g-lb.js');
 
 /**
  * The bright `accent` step is only exposed on the `feedback` colour group in
@@ -15,7 +15,6 @@ const progressBarVariants = {
     error: 'bg-feedback-error-accent',
     info: 'bg-feedback-info-accent',
 };
-const trackClass = 'bg-surface-0 rounded-full overflow-hidden';
 const AtProgressBar = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -53,13 +52,13 @@ const AtProgressBar = class {
         }
     }
     get statusBarClass() {
-        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-full overflow-hidden`;
+        return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch`;
     }
     get segments() {
         return `flex flex-grow items-stretch justify-center transition-all duration-500`;
     }
     renderIndeterminate() {
-        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: `${this.statusBarClass} overflow-hidden` }, index.h("slot", { name: "label-before" }), index.h("div", { class: `relative h-full w-full ${trackClass}` }, index.h("div", { class: `${progressBarVariants[this.type]} motion-safe:animate-progress-left absolute top-0 h-full`, style: {
+        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "bg-surface-2 relative h-full w-full overflow-hidden rounded-full" }, index.h("div", { class: `${progressBarVariants[this.type]} motion-safe:animate-progress-left absolute top-0 h-full`, style: {
                 width: '30%',
                 left: '-30%',
                 willChange: 'left',
@@ -68,9 +67,9 @@ const AtProgressBar = class {
     renderDeterminate() {
         const background = 100 - this.clamped;
         const fill = this.clamped;
-        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-visible" }, index.h("div", { class: `${this.segments} ${progressBarVariants[this.type]}`, style: {
+        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-hidden rounded-full" }, index.h("div", { class: `${this.segments} ${progressBarVariants[this.type]}`, style: {
                 flexBasis: fill.toString() + '%',
-            }, "aria-hidden": "true" }), index.h("div", { class: ` ${this.segments} ${trackClass}`, style: {
+            }, "aria-hidden": "true" }), index.h("div", { class: `bg-surface-2 ${this.segments}`, style: {
                 flexBasis: background.toString() + '%',
             }, "aria-hidden": "true" })), index.h("slot", { name: "label-after" })));
     }

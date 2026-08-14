@@ -3357,10 +3357,6 @@ strong {
   border-radius: 0.3rem;
 }
 
-.rounded-\[2px\] {
-  border-radius: 2px;
-}
-
 .rounded-badge {
   border-radius: var(--token-badge-radius);
 }
@@ -3752,6 +3748,12 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: color-mix(in srgb, var(--token-menu-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
+}
+
+.bg-success-accent {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-state-success-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .bg-success-foreground {
