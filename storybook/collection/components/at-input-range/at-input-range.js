@@ -108,7 +108,7 @@ export class AtInputRangeComponent {
                 '--value': `${this.value}`,
                 '--text-value': `${this.value}`,
                 '--show-min-max': `${this.show_minmax ? 'block' : 'none'}`,
-            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: '0c506dc4021976da9624b89c97b11f3f9f735c84', list: "markers", type: "range", min: this.min, max: this.max, step: this.step, "aria-controls": this.sliderId, disabled: this.disabled || this.readonly
+            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: 'd9850091167cff9fdc27b1348fa69dcbfba7f3fd', type: "range", min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
                 ? true
                 : undefined, id: this.sliderId, value: this.value, class: "custom-slider", "data-name": "slider-range-input", onInput: (event) => {
                 const newValue = parseInt(event.target
@@ -117,7 +117,7 @@ export class AtInputRangeComponent {
                 this.onChange(newValue);
                 this.sliderContainerRef.style.setProperty('--value', String(this.value));
                 this.sliderContainerRef.style.setProperty('--text-value', JSON.stringify(this.value));
-            } }), this.show_value && (h("output", { key: '46ef22c4c64a4273b97421a26bd48b6fbd1a663e', class: "text-sm" }, this.value)), h("div", { key: '8b1b582c170a9edd83ef83abe3ff69565a8e0109', class: "range-slider__progress" })))), this.show_input && (h("div", { key: '329c66c4c0b4046bd0ca71885de558396369c878', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: '52a19c1f07ef8ccad83d992f43b9e616083a1885', readonly: this.readonly, disabled: this.disabled, min: this.min, max: this.max, step: this.step, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: '355bdda1da86cc110d66227367c6c96d6d5243fc', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
+            } }), this.show_value && (h("output", { key: 'efb050c175fa83a3c9bae18d2c7c6aa0f0c07e39', class: "text-sm" }, this.value)), h("div", { key: '5f8aa65ebb9d048938ad1cfdf9963af46454d7dc', class: "range-slider__progress" })))), this.show_input && (h("div", { key: 'a00018c5d95282e1eb7863047c9a78d4f6251af6', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: 'b30ac28af123d5a5a26789ef82463c57b1434a44', readonly: this.readonly, disabled: this.disabled, min: this.min, max: this.max, step: this.step, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: 'd5c584b62f6c3237bdd5a383ce54e95ffce68ced', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
     }
     static get is() { return "at-input-range"; }
     static get originalStyleUrls() {

@@ -101,6 +101,7 @@ const AtMultiSelectComponent = class {
     filteredOptions = [];
     get el() { return index.getElement(this); }
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    inputId = `${this.menuId}-input`;
     menuRef;
     optionEls = [];
     searchInputEl;
@@ -300,19 +301,19 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: '83ab1caaf86dcc79388f1ddcbf1b576a98bbf37c', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '3bbbba2f5812026f1ffb6662a117908073ff3574', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '224f90ba9eda6bb796ce6a1578bc6080b9230727', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'e348bffef74855660ab5a6a87ae92ab1ffc49840', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '30865a33adcb90bd40d3b24c983478b6dabe28de' }, this.error_text && this.invalid && (index.h("span", { key: '553bb5a1eec1acb8bcae9d1b044c00043ff06116', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '103c102abf4ec73c4aed4312eb9abbabd368b51e' }, this.error_text && this.invalid && (index.h("span", { key: '50f7f2fc7c754bbdd9783a6f6aa24b0e666a9390', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
+        return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
         const getClassname = classlist.classlist(`placeholder-text-muted transition[background-color,color,box-shadow] relative flex min-h-input w-full items-center gap-4 rounded-input border border-solid py-2 pr-24 pl-input-x duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
@@ -322,10 +323,10 @@ const AtMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        return (index.h("div", { class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0 }, index.h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (index.h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
+        return (index.h("div", { id: this.inputId, class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", role: "combobox", "aria-label": this.label, "aria-haspopup": "listbox", "aria-expanded": `${this.isOpen}`, "aria-controls": this.menuId, tabindex: 0 }, index.h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (index.h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
     }
     renderOptions() {
-        return (index.h("ul", { id: this.menuId, role: "listbox", class: "contents", onKeyDown: async (event) => {
+        return (index.h("ul", { id: this.menuId, role: "listbox", "aria-multiselectable": "true", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
             } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();

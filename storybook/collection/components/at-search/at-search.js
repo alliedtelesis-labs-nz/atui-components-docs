@@ -25,6 +25,7 @@ export class AtSearch {
      */
     model;
     searchEl;
+    inputId = `search-${Math.random().toString(36).substring(2, 11)}`;
     /**
      * Emits an event when the input is changed. Used by atui-table.
      */
@@ -40,13 +41,13 @@ export class AtSearch {
         this.searchEl.focus();
     }
     render() {
-        return (h(Host, { key: 'fa230057f4557b77d0b37e4a6945ccf32e26e1df' }, this.label && (h("at-form-label", { key: '646b607d98a2b95656b92f2a80533ce07559c6b3', label: this.label, for: `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}` })), h("div", { key: 'cdcee724b8c27d607fa720a61cf250b7cdda6a15', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, h("at-icon", { key: '651e8dd4e9e8939adabd2db326dfa3df6612af7a', class: "fill-foreground px-8", name: "search" }), h("input", { key: '72a57d4ec1dff02ae86e7959c2417d9c73bb3469', id: this.label
-                ? `search-input-${this.label.replace(/\s+/g, '-').toLowerCase()}`
-                : undefined, role: "searchbox", tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: 'f3d9e79fb0c8aeb7e200a0061fbcaa289647c3b2', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
+        return (h(Host, { key: '326bc470dfb43fe9a1c0301f8eec9c07c1cedeaa' }, this.label && (h("at-form-label", { key: '85ae6acc960367036427c87a85e9df79bbecd46c', label: this.label, for: this.inputId })), h("div", { key: '05c6a81171d340fd1bff80f2ebeff6d4a9ec0e4d', class: "transition[background-color,color,box-shadow] border-input bg-input-background focus-within:border-active-accent focus-within:ring-active-glow rounded-input h-input min-h-input relative flex flex-row items-center justify-center border duration-300 ease-in-out focus-within:z-10 focus-within:ring" }, h("at-icon", { key: '89182307c987a24333214c6e0fd1ba67ce7f43ea', class: "fill-foreground px-8", name: "search" }), h("input", { key: '7949ab05f516025e83d72dfd6936cfd336d20ab5', id: this.inputId, role: "searchbox", "aria-label": this.label
+                ? undefined
+                : this.placeholder || 'Search', tabindex: "0", class: "mr-24 h-full w-full bg-transparent p-0 leading-[30px] focus:border-none focus:outline-none", placeholder: this.placeholder, value: this.model, autocomplete: "off", name: "search", onInput: () => this.onChangeFn(), ref: (el) => (this.searchEl = el) }), h("div", { key: '57161c6de0ef77b63eeacd0408f6a995326bfa0f', class: `transition-all duration-300 ease-in-out ${this.model !== '' && this.model !== undefined
                 ? 'pr-4 opacity-100'
-                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: 'a88cc9d773a324205955b68598d2d5f0d31ef90d', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
+                : 'pointer-events-none pr-0 opacity-0'}` }, h("at-button", { key: '5ff0cb568cb6754f7c39ac512826205530979d51', size: "sm", type: "secondaryText", onClick: () => this.clearFn(), "data-name": "search-clear", tabindex: this.model !== '' && this.model !== undefined
                 ? '0'
-                : '-1' }, h("at-icon", { key: '900fc127573cccb3f4a4763ef21aaaeac6b5542e', slot: "icon", name: "backspace" }))), this.info_text && (h("div", { key: '96aaf7f89a87bc227693c9ba3a16fa69405ab75b', class: "flex items-center pr-8", "data-name": "search-info" }, h("at-tooltip", { key: '52b9bc520197dced129ba62d52e518e82fc49982', position: "top" }, h("at-icon", { key: 'a59c2f2eb2562c355da45337a59ad8fa09cf07d7', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), h("span", { key: '1d128739fa4837d5a4e15101b409a27db6ddd382' }, this.info_text))))), this.hint_text && (h("span", { key: '0fa1f205bf39ed36da7ac5f4f7f21185e8ef00fe', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
+                : '-1' }, h("at-icon", { key: '029d70963da6d3d76d4634cb968ac1c61c4ca200', slot: "icon", name: "backspace" }))), this.info_text && (h("div", { key: '7bc8738ad360a66ee1455ae3fd1e73702bc9f140', class: "flex items-center pr-8", "data-name": "search-info" }, h("at-tooltip", { key: '8fb99cdbdc00cec3a567804a8338a64bdbc4fcc8', position: "top" }, h("at-icon", { key: '59b8535f8ef710375253a470b8bb8ec4d16bb9fd', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), h("span", { key: 'da781b8dc8fa0b98678350363e1b0b8674d8b85d' }, this.info_text))))), this.hint_text && (h("span", { key: '8f6eaf4d25839a5534c2e0122800511a364556a3', class: "text-secondary mt-4 truncate text-xs !leading-normal font-normal empty:hidden", "data-name": "search-hint" }, this.hint_text))));
     }
     static get is() { return "at-search"; }
     static get properties() {

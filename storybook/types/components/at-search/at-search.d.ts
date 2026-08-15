@@ -25,6 +25,7 @@ export declare class AtSearch {
      */
     model?: string;
     searchEl: HTMLInputElement;
+    private inputId;
     /**
      * Emits an event when the input is changed. Used by atui-table.
      */

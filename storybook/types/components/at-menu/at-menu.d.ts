@@ -9,7 +9,7 @@ import { EventEmitter } from '../../stencil-public-runtime';
 export type AtPosition = 'top' | 'bottom' | 'left' | 'right';
 export type AtAlign = 'start' | 'end';
 export type AtOpenOn = 'hover' | 'click';
-export type AtAriaRole = 'menu' | 'listbox';
+export type AtAriaRole = 'menu' | 'listbox' | 'presentation';
 export declare class AtMenu {
     /**
      * Menu's x offset from edge in pixels. Only applied for origin_x = 'start' | 'end'

@@ -70,6 +70,7 @@ export declare class AtMultiSelectComponent {
     filteredOptions: AtISelectOption[];
     el: HTMLElement;
     private menuId;
+    private inputId;
     private menuRef;
     private optionEls;
     private searchInputEl;
