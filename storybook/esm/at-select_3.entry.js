@@ -104,6 +104,7 @@ const AtSelectComponent = class {
     selectedLabel = '';
     get el() { return getElement(this); }
     menuId = `dropdown-${Math.random().toString(36).substring(2, 11)}`;
+    inputId = `${this.menuId}-input`;
     menuRef;
     optionEls = [];
     searchInputEl;
@@ -265,7 +266,7 @@ const AtSelectComponent = class {
             }
             return;
         }
-        const menuContainer = this.el.querySelector('ul[id="at-select"]');
+        const menuContainer = this.el.querySelector(`ul[id="${this.menuId}"]`);
         if (!menuContainer)
             return;
         handleArrowNavigation(event, menuContainer);
@@ -306,19 +307,19 @@ const AtSelectComponent = class {
         return computed;
     }
     render() {
-        return (h(Host, { key: '91dfc587830626a3b4d054d8e5dbe10d11713201', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '184cfa79bbb3128cd1401e38e14a0dad37e3df99', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '835917b0d28adbd1a8cdd520ade9be3bbf3bc924', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'c29e078d1a43a3b5c1fb37ece418056858034a2e', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '779ffa79e233709e55d71c2ea2f15eacdab4ea0f' }, this.error_text && this.invalid && (h("span", { key: '5594921ccb703297d19d2a727ada30eccc2a4d71', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '267307947840f9e7a1ed6d9ab90b6922eacc65a8' }, this.error_text && this.invalid && (h("span", { key: '7e3b532b00f8fcff128cfb395084bcc17638b0f6', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
-        return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.menuId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
+        return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
         const getClassname = classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
@@ -327,7 +328,7 @@ const AtSelectComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { class: classname, role: "combobox", list: "at-select", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        return (h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { id: this.inputId, class: classname, role: "combobox", "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
             !this.disabled && (h("div", { class: "absolute top-4 right-24" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onClick: async (event) => {
@@ -340,7 +341,7 @@ const AtSelectComponent = class {
             }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), h("slot", { name: "input-actions" })))));
     }
     renderOptions() {
-        return (h("ul", { class: "contents", id: "at-select", onKeyDown: async (event) => {
+        return (h("ul", { class: "contents", id: this.menuId, role: "listbox", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
             } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 p-4" }, h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();

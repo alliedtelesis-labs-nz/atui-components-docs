@@ -78,6 +78,7 @@ export declare class AtSelectComponent {
     selectedLabel: string;
     el: HTMLElement;
     private menuId;
+    private inputId;
     private menuRef;
     private optionEls;
     private searchInputEl;
