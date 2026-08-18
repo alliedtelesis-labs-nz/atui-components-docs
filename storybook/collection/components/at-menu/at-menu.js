@@ -92,22 +92,45 @@ export class AtMenu {
         this.atuiMenuStateChange.emit(true);
         await this.updatePosition();
         this.updateAriaExpanded();
+        if (this.trigger === 'click') {
+            this.focusIntoMenu();
+        }
     }
     /**
      * Closes the dropdown menu.
      */
     async closeMenu() {
+        const focusWasInMenu = !!this.menuEl?.contains(document.activeElement);
         if (this.menuEl) {
             this.menuEl.hidePopover();
             this.isOpen = false;
         }
         this.atuiMenuStateChange.emit(false);
         this.updateAriaExpanded();
+        if (focusWasInMenu) {
+            this.returnFocusToTrigger();
+        }
     }
     updateAriaExpanded() {
         if (this.trigger_id && this.triggerEl) {
             this.triggerEl.setAttribute('aria-expanded', this.isOpen ? 'true' : 'false');
         }
+    }
+    static FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    focusIntoMenu() {
+        if (!this.menuEl)
+            return;
+        const target = this.menuEl.querySelector(AtMenu.FOCUSABLE_SELECTOR);
+        (target ?? this.menuEl).focus();
+    }
+    returnFocusToTrigger() {
+        const trigger = this.triggerEl ?? this.triggerEls[0];
+        if (!trigger)
+            return;
+        const target = trigger.matches(AtMenu.FOCUSABLE_SELECTOR)
+            ? trigger
+            : trigger.querySelector(AtMenu.FOCUSABLE_SELECTOR);
+        (target ?? trigger).focus();
     }
     /**
      * Return the current menu open state
@@ -423,14 +446,14 @@ export class AtMenu {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '1c0d083add546869291f3650d28fe0a8f6fbfbd8', class: "relative", onBlur: (e) => {
+        return (h(Host, { key: '15366d40d14e5a1af7da4b83860b6eb0a4e30dfc', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (h("div", { key: '4510490c869f1d7568510ae64ce3cf45b9553398', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (h("div", { key: '15694481fa162699fa1fbaabc705dd8ecd851b16', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -458,7 +481,7 @@ export class AtMenu {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '2f4ad763d8bee58d3de226c26a56818afc38aa60', name: "menu-trigger" }))), h("div", { key: '0470471131813c00b485dd6195ad6fe61153ec48', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '93c5f620273d3ed87c2a03868f4b55a296dbb928', name: "menu-trigger" }))), h("div", { key: '0cf62d6b8553f8074608ccbec2e5d311319d436c', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -470,7 +493,7 @@ export class AtMenu {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: 'fafcbd2ea4fc99f97e11bdf60f1e086e6abec533' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '6bbcaccbc0eeb70ab83f9bcda18b1ee9d7881b40' }))));
     }
     static get is() { return "at-menu"; }
     static get properties() {

@@ -78,6 +78,9 @@ export declare class AtMenu {
      */
     closeMenu(): Promise<void>;
     private updateAriaExpanded;
+    private static readonly FOCUSABLE_SELECTOR;
+    private focusIntoMenu;
+    private returnFocusToTrigger;
     /**
      * Return the current menu open state
      */
