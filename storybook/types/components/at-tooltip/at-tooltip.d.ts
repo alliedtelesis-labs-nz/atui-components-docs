@@ -62,8 +62,8 @@ export declare class AtTooltip {
     private cleanupExternalTriggerListeners;
     private setupPopoverEventListeners;
     private setupExternalTriggerListeners;
-    private mouseEnterHandler;
-    private mouseLeaveHandler;
+    private showHandler;
+    private hideHandler;
     private setupFloatingUI;
     private cleanupFloatingUI;
     private updateFloatingPosition;

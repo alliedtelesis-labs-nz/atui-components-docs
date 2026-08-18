@@ -87,7 +87,7 @@ const AtTooltip = class {
     tooltipEl;
     triggerEls = [];
     cleanupAutoUpdate;
-    popoverId;
+    popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
     showTimeout;
     hideTimeout;
     updatePosition = async () => {
@@ -124,7 +124,6 @@ const AtTooltip = class {
         }
     }
     async componentDidLoad() {
-        this.popoverId = `atui-tooltip-${Math.random().toString(36).substr(2, 9)}`;
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-tooltip="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
@@ -181,34 +180,45 @@ const AtTooltip = class {
         if (!this.triggerEls || this.triggerEls.length === 0)
             return;
         this.triggerEls.forEach((el) => {
-            const mouseEnterHandler = () => {
+            const showHandler = () => {
                 if (!this.disabled) {
                     this.triggerEl = el;
-                    this.mouseEnterHandler();
+                    this.showHandler();
                 }
             };
-            const mouseLeaveHandler = () => {
+            const hideHandler = () => {
                 if (!this.disabled) {
                     this.triggerEl = el;
-                    this.mouseLeaveHandler();
+                    this.hideHandler();
                 }
             };
-            el.addEventListener('mouseenter', mouseEnterHandler);
-            el.addEventListener('mouseleave', mouseLeaveHandler);
+            el.addEventListener('mouseenter', showHandler);
+            el.addEventListener('mouseleave', hideHandler);
+            el.addEventListener('focusin', showHandler);
+            el.addEventListener('focusout', hideHandler);
             this.externalTriggerListeners.push({
                 element: el,
                 event: 'mouseenter',
-                handler: mouseEnterHandler,
+                handler: showHandler,
             }, {
                 element: el,
                 event: 'mouseleave',
-                handler: mouseLeaveHandler,
+                handler: hideHandler,
+            }, {
+                element: el,
+                event: 'focusin',
+                handler: showHandler,
+            }, {
+                element: el,
+                event: 'focusout',
+                handler: hideHandler,
             });
             el.setAttribute('aria-haspopup', 'true');
             el.setAttribute('aria-expanded', 'false');
+            el.setAttribute('aria-describedby', this.popoverId);
         });
     }
-    async mouseEnterHandler() {
+    async showHandler() {
         if (this.hideTimeout) {
             clearTimeout(this.hideTimeout);
             this.hideTimeout = undefined;
@@ -225,7 +235,7 @@ const AtTooltip = class {
             this.showTimeout = undefined;
         }, this.delay || 0);
     }
-    async mouseLeaveHandler() {
+    async hideHandler() {
         if (this.showTimeout) {
             clearTimeout(this.showTimeout);
             this.showTimeout = undefined;
@@ -331,7 +341,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'e8c5851be30be3335d65414cb001f9de25986950', class: "relative" }, !this.trigger_id && (h("div", { key: '357a022a02bd7984a6b8904a3a5d1c467ee7eb48', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.mouseEnterHandler() : null, onMouseLeave: () => !this.disabled ? this.mouseLeaveHandler() : null }, h("slot", { key: '53967b972b21d09ce44890f857989a831ca066d8', name: "tooltip-trigger" }))), h("div", { key: '232b782b1ff0c73fe6b0d40ae298ca282143cbce', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '0a1f605eaeaecf0de4a9ef071a4fcd6c5652059e' }))));
+        return (h(Host, { key: '3a2c01850ec2abe8f7a3866189699e81dfe81d42', class: "relative" }, !this.trigger_id && (h("div", { key: '18bac17da3a3dc6a00dc2ac6b9f51ed8a7da0367', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, h("slot", { key: '0a88907da6faae885ffd3ffb5628693549d2a3f3', name: "tooltip-trigger" }))), h("div", { key: '08fc0ffb1d6252bc926b854ff7e55c2aee0c8a03', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '10f88ba55a623b0e2082bd70764f6396c39c9a1c' }))));
     }
     static get watchers() { return {
         "disabled": [{
