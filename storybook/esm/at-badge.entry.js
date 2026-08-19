@@ -1,7 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-B2z78KBX.js';
 
 const badgeVariants = {
-    base: 'inline-block rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 inline-flex items-center',
+    base: 'inline-flex rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 items-center',
     rounded: 'rounded-full',
     contrast: {
         low: {
@@ -63,7 +63,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '444675cbe3716533482b47698e2517e735d4c27a', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: '31a399fe6ba4ec94aec5374e3b2395c13f1e73e6', name: "icon" }), h("span", { key: 'b333d5004ee39acdbfbe74663c879933903c158e', "data-name": "badge-label" }, this.label), h("slot", { key: 'ce44cc0c92540cc48519b308cbaefd029813c33b' })));
+        return (h(Host, { key: 'baa64f32991bce79f45133f358b82e9959c9b7af', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: '93262456fc7f130ac7feb74e2cc7f542956a37fe', name: "icon" }), h("span", { key: 'd364aac26c3bd6eed71d70c9f85e2a6bc3ad9ff7', "data-name": "badge-label" }, this.label), h("slot", { key: '75173362afe8cfc6ad80ff32127a2c65d9ecbb45' })));
     }
 };
 
