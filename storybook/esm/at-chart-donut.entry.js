@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BJOjHwmt.js';
+import { r as registerInstance, h, H as Host } from './index-B2z78KBX.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-BSsHS4sa.js';
 import { A as AtChartColorPalette, b as readChartFontFamily, r as readChartTextColors, a as readChartTypography } from './chart-color-BeJCqIOU.js';
 import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl } from './chart-legend-KYTbVAJR.js';

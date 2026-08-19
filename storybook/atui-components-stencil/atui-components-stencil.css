@@ -1215,7 +1215,7 @@
   --token-state-active-background: var(--token-color-base-blue-900);
   --token-state-active-background-inv: var(--token-color-base-blue-a400);
   --token-state-active-foreground-inv: var(--token-color-base-sky-100);
-  --token-state-active-accent: var(--token-color-base-blue-a400);
+  --token-state-active-accent: var(--token-color-base-blue-a200);
   --token-state-info-foreground: var(--token-color-base-blue-100);
   --token-state-info-background: var(--token-color-base-blue-900);
   --token-state-info-foreground-inv: var(--token-color-base-blue-900);
@@ -5012,11 +5012,6 @@ strong {
 .focus-visible\:ring-offset-0:focus-visible {
   --tw-ring-offset-width:
       0px;
-}
-
-.focus-visible\:ring-offset-2:focus-visible {
-  --tw-ring-offset-width:
-      2px;
 }
 
 .group\/switch:focus-within .group-focus-within\/switch\:ring-4 {

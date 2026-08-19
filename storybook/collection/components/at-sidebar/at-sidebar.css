@@ -126,6 +126,8 @@ at-sidebar.side-right .sidebar {
 }
 at-sidebar.mode-over .sidebar {
   position: absolute;
+  top: 0;
+  bottom: 0;
 }
 at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
   width: var(--token-width-sidebar-offscreen);

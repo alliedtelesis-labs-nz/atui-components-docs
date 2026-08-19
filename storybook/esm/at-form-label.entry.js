@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-BJOjHwmt.js';
+import { r as registerInstance, h } from './index-B2z78KBX.js';
 
 const AtFormLabelComponent = class {
     constructor(hostRef) {
