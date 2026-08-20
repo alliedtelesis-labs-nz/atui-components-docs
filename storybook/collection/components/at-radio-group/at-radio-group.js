@@ -67,6 +67,7 @@ export class AtRadioGroup {
         this.updateSlottedRadiosState(newValue);
     }
     radioEls = [];
+    slotObserver;
     radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
     /**
      * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
@@ -109,23 +110,55 @@ export class AtRadioGroup {
                 }, group: this.label || this.radioGroupId, ref: (el) => this.radioEls.push(el) })));
         }
     }
+    /**
+     * Radios this group rendered from `options` are excluded: they are already
+     * driven by render(), and because their value arrives as a property rather
+     * than an attribute, treating them as slotted would stamp a stand-in value
+     * over the caller's own. Only the rendered ones sit in an `li`, and no
+     * attribute marker can stand in for that - at-radio re-renders its own host
+     * and drops anything this group set on it.
+     */
     getSlottedRadios() {
-        return Array.from(this.el.querySelectorAll('at-radio'));
+        return Array.from(this.el.querySelectorAll('at-radio')).filter((radio) => !radio.closest('li') && !this.radioEls.includes(radio));
     }
     componentDidLoad() {
+        this.syncSlottedRadios();
+        /**
+         * Slotted radios can arrive after this component has loaded - a framework
+         * loop or conditional renders them on its own schedule - and a radio that
+         * appears later would otherwise never have `value` applied to it, leaving
+         * a group with a set value showing nothing selected.
+         */
+        this.slotObserver = new MutationObserver(() => this.syncSlottedRadios());
+        this.slotObserver.observe(this.el, {
+            childList: true,
+            subtree: true,
+            attributeFilter: ['value'],
+        });
+    }
+    disconnectedCallback() {
+        this.slotObserver?.disconnect();
+        this.slotObserver = undefined;
+    }
+    syncSlottedRadios() {
         this.initializeSlottedRadios();
         this.updateSlottedRadiosState(this.value);
     }
     initializeSlottedRadios() {
         const slottedRadios = this.getSlottedRadios();
         const groupName = this.label || this.radioGroupId;
-        slottedRadios.forEach((radio) => {
+        slottedRadios.forEach((radio, index) => {
             if (!radio.getAttribute('group')) {
                 radio.setAttribute('group', groupName);
             }
-            if (!radio.getAttribute('value')) {
-                const value = `radio-${Math.random().toString(36).substring(2, 11)}`;
-                radio.setAttribute('value', value);
+            /**
+             * A radio with no value of its own still has to be selectable, but the
+             * stand-in has to be derivable by the caller: a random id could never
+             * be matched by the group's `value`, so such a radio could be clicked
+             * and never be selected programmatically.
+             */
+            if (!radio.value) {
+                radio.setAttribute('value', `${groupName}-${index}`);
             }
             if (this.disabled !== undefined) {
                 radio.disabled = this.disabled;
@@ -161,8 +194,8 @@ export class AtRadioGroup {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: 'd482e502e3e76ee0a059e4c2d37566abb7665844', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '45c4126859a12e38031904ba1e6ff7d93c049e79', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '64cf516b46d4d1ad0ccf78c11e3622d853098aae', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '2c4e96408d2f678e9d29d439f8f33bde8de92cbe', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'a5c12c4a198754e898bbb7d80dabccf01dcc5440', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '0f69b4a5e5f99d98a0d8f175fc444634ea76b5b3', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '5f2120f2f0a6d5aca9b1810687f953efdd9ceb62' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'c831b51dcc7e7cc62447eee9824abae0a1be9c97', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'aec0d4a1baf7a0cb0469e1896922587291cecb3d', role: "radiogroup", onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: 'bcdb27fa5f1c265f6c809c4f2970b24e1e7c566b', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'e3fab7e2595fd02bb9813d24bdb0c724d210c7ab', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'b3e9aa26c2fceb336e51f10a4ac6780233ac4933', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '84f354076142c0984800ab92ddfde9a8cad7bca5', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '86fb4c04e7bb5e8e692bdf45b19690c5ae2a6db0', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '0eccb7df5afd4c87e57231313d01845d2d48289e' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'e36d411519c0104020cd18da50cda9b24af411d4', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-radio-group"; }
     static get properties() {

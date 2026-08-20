@@ -63,6 +63,7 @@ export declare class AtRadioGroup {
     el: HTMLAtRadioGroupElement;
     watchValue(newValue: string): void;
     private radioEls;
+    private slotObserver?;
     private radioGroupId;
     /**
      * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
@@ -72,8 +73,18 @@ export declare class AtRadioGroup {
     focusAndClickRelativeRadio(relativePosition: number): void;
     handleKeyDown(event: KeyboardEvent): void;
     get getRadios(): JSX.Element[] | undefined;
+    /**
+     * Radios this group rendered from `options` are excluded: they are already
+     * driven by render(), and because their value arrives as a property rather
+     * than an attribute, treating them as slotted would stamp a stand-in value
+     * over the caller's own. Only the rendered ones sit in an `li`, and no
+     * attribute marker can stand in for that - at-radio re-renders its own host
+     * and drops anything this group set on it.
+     */
     getSlottedRadios(): HTMLAtRadioElement[];
     componentDidLoad(): void;
+    disconnectedCallback(): void;
+    private syncSlottedRadios;
     initializeSlottedRadios(): void;
     handleSlottedRadioChange(event: CustomEvent<string>): void;
     updateSlottedRadiosState(selectedOptionId: string): void;
