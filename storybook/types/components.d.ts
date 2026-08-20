@@ -1339,6 +1339,10 @@ export namespace Components {
     }
     interface AtInputDate {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -1391,6 +1395,10 @@ export namespace Components {
      * @description A numeric input component for entering numerical values.
      */
     interface AtInputNumeric {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
         /**
           * Disables interaction with the input
           * @default false
@@ -1460,6 +1468,10 @@ export namespace Components {
      * @description A range input component for selecting a value within a specified range.
      */
     interface AtInputRange {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -1546,6 +1558,10 @@ export namespace Components {
         "warning_text"?: string;
     }
     interface AtInputTime {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
         /**
           * Disabled flag
          */
@@ -2488,6 +2504,10 @@ export namespace Components {
      */
     interface AtSelect {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
+        /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default true
          */
@@ -3234,6 +3254,10 @@ export namespace Components {
      * @description A multi-line text input component for longer text content with auto-resize and validation features. Includes label, hint text, character counting, and accessibility support.
      */
     interface AtTextarea {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
         /**
           * Sets the 'autocomplete' attribute on the textarea
           * @default 'on'
@@ -6765,6 +6789,10 @@ declare namespace LocalJSX {
     }
     interface AtInputDate {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -6821,6 +6849,10 @@ declare namespace LocalJSX {
      * @description A numeric input component for entering numerical values.
      */
     interface AtInputNumeric {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
         /**
           * Disables interaction with the input
           * @default false
@@ -6894,6 +6926,10 @@ declare namespace LocalJSX {
      * @description A range input component for selecting a value within a specified range.
      */
     interface AtInputRange {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -6984,6 +7020,10 @@ declare namespace LocalJSX {
         "warning_text"?: string;
     }
     interface AtInputTime {
+        /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
         /**
           * Disabled flag
          */
@@ -8004,6 +8044,10 @@ declare namespace LocalJSX {
      */
     interface AtSelect {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
+        /**
           * Close the menu when the user clicks within the menu panel. Default for single selection menus.
           * @default true
          */
@@ -8773,6 +8817,10 @@ declare namespace LocalJSX {
      */
     interface AtTextarea {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
+        /**
           * Sets the 'autocomplete' attribute on the textarea
           * @default 'on'
          */
@@ -9314,6 +9362,7 @@ declare namespace LocalJSX {
         "invalid": boolean;
         "readonly": boolean;
         "disabled": boolean;
+        "aria_label": string;
     }
     interface AtInputNumericAttributes {
         "label": string;
@@ -9330,6 +9379,7 @@ declare namespace LocalJSX {
         "step": number;
         "show_buttons": boolean;
         "value": number;
+        "aria_label": string;
     }
     interface AtInputRangeAttributes {
         "label": string;
@@ -9351,6 +9401,7 @@ declare namespace LocalJSX {
         "show_value": boolean;
         "show_input": boolean;
         "label_position": InputPosition;
+        "aria_label": string;
     }
     interface AtInputTimeAttributes {
         "value": string;
@@ -9365,6 +9416,7 @@ declare namespace LocalJSX {
         "info_text": string;
         "error_text": string;
         "invalid": boolean;
+        "aria_label": string;
     }
     interface AtLayoutAttributes {
         "template": AtTemplate;
@@ -9559,6 +9611,7 @@ declare namespace LocalJSX {
         "clearable": boolean;
         "autoclose": boolean;
         "menu_max_height": string;
+        "aria_label": string;
     }
     interface AtSelectGroupAttributes {
         "label": string;
@@ -9689,6 +9742,7 @@ declare namespace LocalJSX {
         "max_rows": number;
         "autocomplete": string;
         "value": string;
+        "aria_label": string;
     }
     interface AtTimeRangeAttributes {
         "range_limit": number;

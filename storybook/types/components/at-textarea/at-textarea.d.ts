@@ -57,6 +57,11 @@ export declare class AtTextareaComponent {
      * Sets the value of the textarea
      */
     value: string;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
     textareaEl: HTMLTextAreaElement;
     el: HTMLAtTextareaElement;
     /**

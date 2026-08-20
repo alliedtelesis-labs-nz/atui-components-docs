@@ -61,6 +61,11 @@ export declare class AtInputNumericComponent {
      * The value of the input
      */
     value: number;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
     inputEl: HTMLInputElement;
     el: HTMLAtInputElement;
     /**

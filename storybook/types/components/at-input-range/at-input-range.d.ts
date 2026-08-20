@@ -86,6 +86,11 @@ export declare class AtInputRangeComponent {
      */
     label_position: InputPosition;
     /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
+    /**
      * Emits an event containing the current value when the text input or slider input's content is changed
      */
     atuiChange: EventEmitter<number>;

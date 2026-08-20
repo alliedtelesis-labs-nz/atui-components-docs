@@ -47,6 +47,11 @@ export class AtInputTime {
     error_text;
     /** Shows the error state styling and error text */
     invalid;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
     /** Emits when value changes (normalized string or null) */
     atuiChange;
     inputId = `timepicker-${Math.random().toString(36).slice(2, 11)}`;
@@ -77,7 +82,7 @@ export class AtInputTime {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: '44026475395dd45cf7808648bd87bc68dad4a1d4' }, h("style", { key: '85e2d9beaee6ad84f26a7487e53e83772602bca0' }, `
+        return (h(Host, { key: 'e0ed81b633d1254d0c89a3fddad795a75c3b8cc8' }, h("style", { key: '634108716428d2ca1bd753dda8015fc4ad298e81' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -89,7 +94,7 @@ export class AtInputTime {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: '85aa950a976096584701273cb586c0efa9c78497', class: "flex flex-col" }, h("div", { key: 'da9cfb05c33036630868c669b2e9099c5be19a4f', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '5d92fe7a14eb3c3c0e3c4e259089f431f806a087', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'cf472d6e923e9f84741fdfb51a112559da6c9f52', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '27112830f455e2c7bdb23b9b3f136b53c7243de1', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '10b3ce040b3ac2a6a2b220ef26b0ae228ab61918', class: classname }, h("input", { key: 'ea56387f474592283627a0c63c0282a4304d7ff8', type: "time", id: this.inputId, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: '8d00f605e323a9eb49d803bcdb17070c51a90fec', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), h("div", { key: 'c78c3bab4918b6d8353e862849645a52e886ec5c', class: "flex flex-col" }, h("div", { key: '79d1a48da345d6a29f79e07e5f2b6a8af8ac5596', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '5900003aadc9fc2fa0b94225bbeecead24ebeb96', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '6e71af62b965cf60c11b2d2e2c86f7cb7bfa72cc', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '2ae0782d32906b50fd769754538731032fec58d6', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '42723331b521687c0d13526020c31dafd803a4f9', class: classname }, h("input", { key: 'd068d2408e97c434b43a08aed986fd6c5295bfcf', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: '0717260701e5a3a4780cc19ef4b462d3fdc83d63', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-time"; }
     static get properties() {
@@ -322,6 +327,25 @@ export class AtInputTime {
                 "setter": false,
                 "reflect": false,
                 "attribute": "invalid"
+            },
+            "aria_label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Accessible name for the input. Use when a shared column header supplies the\nvisible label and `label` is therefore left unset."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "aria_label"
             }
         };
     }

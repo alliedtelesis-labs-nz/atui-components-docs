@@ -60,7 +60,8 @@ export class AtRadio {
      * slotted radio may have no value until its group assigns one, so a
      * value-derived id is neither unique nor available at first render.
      */
-    labelId = `at-radio-label-${Math.random().toString(36).substring(2, 11)}`;
+    inputId = `at-radio-${Math.random().toString(36).substring(2, 11)}`;
+    labelId = `${this.inputId}-label`;
     /**
      * Emits the current state of the radio when clicked.
      */
@@ -83,7 +84,7 @@ export class AtRadio {
             checked: this.checked,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '262bb01df0cd7260dbdb226ccd17674066ed5b60', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, "aria-labelledby": this.label ? this.labelId : undefined, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: 'c241155bbe1d3e5e94aa377202273014600bdd16', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.value, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: 'c2ff6ed6b13d5d5dd4260dd704f3c0f9890f17ac', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: 'ef8bfa8a9eb31c3e39a5e37366dacf734ebc3173', class: "mt-0 pl-4 text-xs font-medium", id: this.labelId, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: 'f4975c70ee46c610b69db09ac62e4ec695ad9a7a', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: '4beba66f21eff0a41a8a63f1519fe502caee706a' }))));
+        return (h(Host, { key: '2564934e8512eeed66acb718149fbd0e7175c360', "aria-checked": this.checked, "aria-disabled": this.disabled, "aria-readonly": this.readonly, "aria-labelledby": this.label ? this.labelId : undefined, role: "radio", tabindex: this.readonly ? -1 : 0, class: classname, "data-name": "radio-container", onKeyDown: (event) => this.handleKeyDown(event), onClick: () => this.handleChange() }, !this.readonly && (h("input", { key: 'beafaa3dbb270987b826147cd8c16a86026486fb', type: "radio", "data-name": "radio-input", tabindex: -1, name: this.group && this.group, checked: this.checked, value: this.value, id: this.inputId, disabled: this.readonly || this.disabled, ref: (el) => (this.radioEl = el) })), h("div", { key: '866941c0c63f93cfe304e4baa9db7d769268d2fc', class: "pointer-events-none flex flex-col" }, this.label && (h("span", { key: '3957bc829648d474220ea5d035cc6dde7271bd32', class: "mt-0 pl-4 text-xs font-medium", id: this.labelId, "data-name": "radio-label" }, this.label)), this.hint_text && (h("span", { key: '14878c413b92d52a7ae541946a10d8927495ee80', class: "text-muted mt-0 pl-4 text-xs", "data-name": "radio-hint" }, this.hint_text)), h("slot", { key: 'f08be135f7cb8065c6c53cfacb0e04b73e69a0e4' }))));
     }
     static get is() { return "at-radio"; }
     static get properties() {

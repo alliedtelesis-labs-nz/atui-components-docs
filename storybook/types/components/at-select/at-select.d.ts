@@ -68,6 +68,11 @@ export declare class AtSelectComponent {
      * Forwarded to the inner <at-menu> via max_height prop.
      */
     menu_max_height?: string;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
     inputEl: HTMLInputElement;
     searchText: string;
     isOpen: boolean;

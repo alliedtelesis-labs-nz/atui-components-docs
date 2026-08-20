@@ -69,6 +69,11 @@ export class AtInputDate {
      * Disables interaction with the input
      */
     disabled = false;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
     selectedDate;
     translations;
     el;
@@ -101,7 +106,7 @@ export class AtInputDate {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '445ad057a3315b4e351b24f06f902226709d1493' }, h("style", { key: '6b61015a3447f8da5b69929974d0de05699a2aa1' }, `
+        return (h(Host, { key: '4df6702dbda78f1f01ec0777fd4cd4f0f8d63318' }, h("style", { key: '35b1b5ec3c0f0f45fd10c8f927ffb7ee9137e302' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -114,9 +119,9 @@ export class AtInputDate {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: 'c4caa1d760d7d8f0933d71786205a9a8369d8d84', class: "flex w-full flex-col" }, h("div", { key: 'f8389ba1c8b0ab3f915bb248a514fb6d434caba4', class: "flex flex-col" }, h("div", { key: 'e3036792a3e0a084ee9f02e90f8ea1dbf2c579f2', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: 'a7bed4063d3283f2a909d35b10c7bb35afd7d4ca', class: "flex w-full flex-col" }, h("div", { key: '057c6c2d7654ccedfdbffe0c4ef328f8a86d23d3', class: "flex flex-col" }, h("div", { key: '2fa880b0fadbb434ef1890dc665c032095ad745b', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '6c538c6b161a8c62fb3e828629c54ca1e35cdb54', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'b9651d66d535e8f08fa8fc80541bb172f29b1561', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'bb0d786c9b1d0b01f4f41e971a3ce1dcfc3f2f25', class: classname }, h("input", { key: 'ac6054595fb9cd8f329cc61566d36b71382f0379', type: "date", id: this.inputId, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: '7bcc55cff2bce28612aac62e811907016930bd00', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '857eb8a2abe2fb35bdd3b75c17945e8d6e0ce741', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '3a2fc2bafc07cc1a89aff61a3dd1794407218e72', class: classname }, h("input", { key: '8863f185c0a8fd266bcc95b08aaaccd0e66d84dd', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -137,7 +142,7 @@ export class AtInputDate {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: 'e984d40d00def33583dc2b6fdb249417dc15381d', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.invalid && (h("span", { key: '8605ab788a6bc6c4f87cf13843054fc436a37549', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-date"; }
     static get properties() {
@@ -362,6 +367,25 @@ export class AtInputDate {
                 "reflect": false,
                 "attribute": "disabled",
                 "defaultValue": "false"
+            },
+            "aria_label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Accessible name for the input. Use when a shared column header supplies the\nvisible label and `label` is therefore left unset."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "aria_label"
             }
         };
     }

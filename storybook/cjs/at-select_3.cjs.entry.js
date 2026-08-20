@@ -96,6 +96,11 @@ const AtSelectComponent = class {
      * Forwarded to the inner <at-menu> via max_height prop.
      */
     menu_max_height;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
     inputEl;
     searchText = '';
     isOpen = false;
@@ -309,16 +314,16 @@ const AtSelectComponent = class {
         return computed;
     }
     render() {
-        return (index.h(index.Host, { key: '6fcb4afefb340753697fbb71e7b13850c02dfc3b', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'dc544a7836369477a3bdbf4dc7d4dcbd4fef3885', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'c0ee81a230598351ea629671ea37a920d3650624', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '31edd1b886b37e8c950d4ee2378fd7ff4e36e2b1', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '674abb3aeeb8853400aebb5c241f821087db70db' }, this.error_text && this.invalid && (index.h("span", { key: '1939d014bc413854729196ff3580926087b5e9ef', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'b56bafe780ec4c7ad50b023eec9d6da8ebf38998' }, this.error_text && this.invalid && (index.h("span", { key: 'bb7baaef5ec32bead1b2e3836c9c0c182b453502', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -330,7 +335,7 @@ const AtSelectComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
             !this.disabled && (index.h("div", { class: "absolute top-4 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {

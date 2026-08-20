@@ -42,6 +42,7 @@ export declare class AtRadio {
      * slotted radio may have no value until its group assigns one, so a
      * value-derived id is neither unique nor available at first render.
      */
+    private inputId;
     private labelId;
     /**
      * Emits the current state of the radio when clicked.

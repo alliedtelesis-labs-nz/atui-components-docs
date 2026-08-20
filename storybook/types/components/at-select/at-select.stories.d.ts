@@ -4,3 +4,4 @@ declare const _default: {
 export default _default;
 export declare const Primary: any;
 export declare const Grouped: any;
+export declare const SharedColumnHeader: any;

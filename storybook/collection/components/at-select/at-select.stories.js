@@ -79,3 +79,32 @@ Grouped.args = {
     readonly: false,
     typeahead: true,
 };
+const ColumnHeaderTemplate = () => `
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+    <at-form-label label="Licence tier"></at-form-label>
+    <at-form-label label="Action"></at-form-label>
+    <at-select aria_label="Licence tier" placeholder="Any tier"></at-select>
+    <at-select aria_label="Action" placeholder="Any action"></at-select>
+</div>
+<script>
+const tiers = [
+    { key: 'Standard', value: 'standard' },
+    { key: 'Advanced', value: 'advanced' },
+];
+const actions = [
+    { key: 'Allocated', value: 'allocated' },
+    { key: 'Released', value: 'released' },
+];
+document.querySelectorAll('at-select')[0].options = tiers;
+document.querySelectorAll('at-select')[1].options = actions;
+</script>
+`;
+export const SharedColumnHeader = ColumnHeaderTemplate.bind({});
+SharedColumnHeader.storyName = 'Shared Column Header';
+SharedColumnHeader.parameters = {
+    docs: {
+        description: {
+            story: 'In a filter row or table-style row the visible label lives in a shared column header, so `label` is left unset and `aria_label` supplies the accessible name instead.',
+        },
+    },
+};

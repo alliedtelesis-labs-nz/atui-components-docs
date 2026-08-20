@@ -25,6 +25,11 @@ export declare class AtInputTime {
     error_text?: string;
     /** Shows the error state styling and error text */
     invalid?: boolean;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
     /** Emits when value changes (normalized string or null) */
     atuiChange: EventEmitter<string | null>;
     private inputId;

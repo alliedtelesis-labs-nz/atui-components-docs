@@ -88,6 +88,11 @@ const AtTextareaComponent = class {
      * Sets the value of the textarea
      */
     value;
+    /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
     textareaEl;
     get el() { return getElement(this); }
     /**
@@ -106,11 +111,11 @@ const AtTextareaComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '68712baf94cce8d2f5cbb7bd3bff02bffd9c28ca' }, h("div", { key: '78c87a9c1ed243d3d194b0cff0a5a8c219f527c8', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '6334620f07222e6ecf656c04d9beafe5ba7f3198', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '9e4b5f17a72f660f6ad60b798a681cae4853e6c5', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '46b1bd4d30f59751760051313e9c1bd0c6517a51', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: 'e97ff2dc2bf7299610168ff974e507d6c0b4d7bb', class: "grid" }, h("textarea", { key: '627cbd48027b0f080a7a18b96e50f38fe0c7a2bb', id: this.textareaId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '2ab47c76280b139c721df98c49c8719825a82732', "data-name": "textarea-resize-container", style: {
+        return (h(Host, { key: 'd98882a633af03df9cfa88700dabb9b40f2b1f38' }, h("div", { key: '30164c0851e43783a7b39b7aa6f7e77016840e30', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'c55fe77a43c98b97c01ce48f029340ac918ba4ff', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '74f2b0f0e902e8ef84b6d46d8ddb1200206ce698', label: this.label, for: this.textareaId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '137067f75654fcde431fc351721cab98b077a4e4', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "textarea-hint" }, this.hint_text))), h("div", { key: '2f5990c46a480940cfd957cba27d22c6e74d1bd5', class: "grid" }, h("textarea", { key: '2608a4a453f54a0a1403eb1e434e727490ff3607', id: this.textareaId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, placeholder: this.placeholder, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.textareaEl = el), style: { gridArea: '1 / 1 / 2 / 2' }, class: classname, "data-name": "textarea-input" }), h("div", { key: '46799efe4bc77412de1cf443309228a12ac80e89', "data-name": "textarea-resize-container", style: {
                 gridArea: '1 / 1 / 2 / 2',
                 minHeight: `${this.min_rows * 1.5 + 1}rem`,
                 maxHeight: `${this.max_rows * 1.5 + 1}rem`,
-            }, class: "text-body invisible rounded-sm border px-8 py-[6px] break-all whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: 'b4be91f5c306860f3064fd773948dc42668e0bce', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
+            }, class: "text-body invisible rounded-sm border px-8 py-[6px] break-all whitespace-pre-wrap" }, this.value)), this.error_text && this.invalid && (h("span", { key: '3d4db895e5b831e1f4d12336153e50ea5da9d69c', class: "text-error text-sm", "data-name": "textarea-error" }, this.error_text))));
     }
 };
 

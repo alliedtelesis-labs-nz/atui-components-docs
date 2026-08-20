@@ -93,6 +93,11 @@ const AtInputRangeComponent = class {
      */
     label_position = 'after';
     /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
+    /**
      * Emits an event containing the current value when the text input or slider input's content is changed
      */
     atuiChange;
@@ -105,14 +110,14 @@ const AtInputRangeComponent = class {
         this.atuiChange.emit(this.value);
     }
     render() {
-        return (index.h(index.Host, { key: '8da71a453b0a8f072ae3271f22f93c4f306bc3b5' }, index.h("div", { key: '7d3031afbffda66eade038601af8e7a892d5ff72', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '7a207bf82c00b4c1762fa7fad3502518d3cf275e', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '2af3324a5cc282db1823f6423d0e1e152955bb7c', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'a6a294fce8f9221d956774acfe4066de4cbf798a', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (index.h("span", { key: 'a4478fb8ccbc45ce27dcca79bb6e03afa504af63', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (index.h("span", { key: '10bd06a110b83dcb4094c5c88eab46fbc5b1890b', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), index.h("div", { key: 'f1d6931c23ad163921a79624cb28a6b8a726bbbf', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, index.h("div", { key: '0314d6b8541e968d270e45b251857f14baf6fb8f', class: "flex flex-grow flex-col" }, index.h("div", { key: 'a73f4275412b9f2fc3890ffdff74a2811f92b8f5', class: "flex flex-grow" }, index.h("div", { key: 'b09928b1ec2bdf093baee945227689251da598c5', class: "range-slider", style: {
+        return (index.h(index.Host, { key: 'b1fce55f880039c62c0af5121709f1b95e70c56a' }, index.h("div", { key: 'ea51ccb8b5001cd63359d66133fac9d591a6a025', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '8a98832d6dae55958f6327842ecc436cb05d3ef4', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'fd560ce5535fdf8d8152a685168d1039186a1e64', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'e22b97c0d49f5e571076f0b87e74789f099d77bf', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (index.h("span", { key: 'e9120eb85afe36ae435ad99aa23411c0325db3cd', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (index.h("span", { key: '98722f61a622921d420d39455950235bdb76d347', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), index.h("div", { key: 'ade663e87d24215ec159361c7dd62c00778f2b56', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, index.h("div", { key: '9a47c40608587c4366b4f3351dcd6027869ad37f', class: "flex flex-grow flex-col" }, index.h("div", { key: '58a820d7b5bae7c3bdee03b40ef3213717d83475', class: "flex flex-grow" }, index.h("div", { key: '170ddd92b794dec5a05e08e6331b9e95fa7f6a5c', class: "range-slider", style: {
                 '--min': `${this.min}`,
                 '--max': `${this.max}`,
                 '--step': `${this.step}`,
                 '--value': `${this.value}`,
                 '--text-value': `${this.value}`,
                 '--show-min-max': `${this.show_minmax ? 'block' : 'none'}`,
-            }, ref: (el) => (this.sliderContainerRef = el) }, index.h("input", { key: 'be4f0e21a1ed90352b0a17d44612f127449d7acb', type: "range", min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
+            }, ref: (el) => (this.sliderContainerRef = el) }, index.h("input", { key: '9cb224ec2b700639abd617f02140d2205b5b902f', type: "range", "aria-label": this.aria_label ?? undefined, min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
                 ? true
                 : undefined, id: this.sliderId, value: this.value, class: "custom-slider", "data-name": "slider-range-input", onInput: (event) => {
                 const newValue = parseInt(event.target
@@ -121,7 +126,7 @@ const AtInputRangeComponent = class {
                 this.onChange(newValue);
                 this.sliderContainerRef.style.setProperty('--value', String(this.value));
                 this.sliderContainerRef.style.setProperty('--text-value', JSON.stringify(this.value));
-            } }), this.show_value && (index.h("output", { key: '981c2ac50af590088822af5f535ad5d8d8d346ff', class: "text-sm" }, this.value)), index.h("div", { key: '541a7d6e4a2b73901aea20e891263c64953699d1', class: "range-slider__progress" })))), this.show_input && (index.h("div", { key: 'fb3c345061dade4893711699b2403d95e234f9d2', class: "relative flex w-80 flex-row items-center gap-8" }, index.h("at-input-numeric", { key: '206e7b9c5c3d91a5eb595d98a40548266c06d6d0', readonly: this.readonly, disabled: this.disabled, min: this.min, max: this.max, step: this.step, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (index.h("span", { key: 'c76f36b4f4f4586b81ad4c36b45091e0a503edfa', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
+            } }), this.show_value && (index.h("output", { key: '4df3a14f3df24f71512d8a93fc4bdce46306634b', class: "text-sm" }, this.value)), index.h("div", { key: '23efefab78af8a5f48c111c9bd27785c5e450c2d', class: "range-slider__progress" })))), this.show_input && (index.h("div", { key: '2033d7e26f9e3284bde3674cc52b656443c9d24a', class: "relative flex w-80 flex-row items-center gap-8" }, index.h("at-input-numeric", { key: 'db99484a7492aa51cc53db1b04b8c9644ede7915', readonly: this.readonly, disabled: this.disabled, min: this.min, max: this.max, step: this.step, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (index.h("span", { key: 'b7c61d441fa6e2f221952d795106c8af994ce79f', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
     }
 };
 AtInputRangeComponent.style = atInputRangeCss();

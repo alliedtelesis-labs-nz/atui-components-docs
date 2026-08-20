@@ -29,6 +29,13 @@ export declare class AtCheckbox {
     disabled: boolean;
     checkboxEl: HTMLInputElement;
     /**
+     * Not derived from `value`: two groups can carry the same values, so a
+     * value-derived id collides, and the label id doubles as the
+     * aria-labelledby target.
+     */
+    private inputId;
+    private labelId;
+    /**
      * When the checkbox is toggled, this will emit true if the current value is checked, vice versa.
      */
     atuiChange: EventEmitter<boolean>;
