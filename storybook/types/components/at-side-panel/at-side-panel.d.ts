@@ -7,6 +7,12 @@ export type AtSidePanelPosition = 'absolute' | 'fixed';
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
  *
  * @slot - Display content within the dialog
+ * @slot title - Replaces the generated title block in the header
+ * @slot actions - Header controls, placed before the close button
+ * @slot footer - An action row below the content. It carries the header's
+ * surface treatment and sits directly under short content, sticking to the
+ * bottom edge only once the panel scrolls. The slot spans the full row width;
+ * arranging the actions inside it is left to the consumer.
  *
  * @dependency at-button
  */
@@ -54,11 +60,13 @@ export declare class AtSidePanelComponent {
     trigger_id?: string;
     isExpanded: boolean;
     isOpen: boolean;
+    hasFooter: boolean;
     /**
      * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
      */
     atuiSidepanelChange: EventEmitter;
     private sidePanelWrapper;
+    private footerObserver;
     private panelDialog;
     private triggerEls;
     private externalTriggerListeners;
@@ -88,6 +96,12 @@ export declare class AtSidePanelComponent {
     offClickHandler(event: any): void;
     componentDidLoad(): Promise<void>;
     disconnectedCallback(): void;
+    /**
+     * The footer drives layout (the content stops stretching once there is a
+     * footer to sit under it), and `:has()` cannot see the slot reliably once
+     * Stencil has relocated slotted nodes - so the state is resolved here.
+     */
+    private syncHasFooter;
     private cleanupExternalTriggerListeners;
     private setupExternalTriggerListeners;
     render(): any;

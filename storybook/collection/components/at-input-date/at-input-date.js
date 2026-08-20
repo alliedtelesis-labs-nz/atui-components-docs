@@ -101,7 +101,7 @@ export class AtInputDate {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'ae0b7e0e689a18d2dbcd799ff0dd8b8202ee8258' }, h("style", { key: '075ef9ed883269ea37b81432a0f15163fe22fe9f' }, `
+        return (h(Host, { key: '445ad057a3315b4e351b24f06f902226709d1493' }, h("style", { key: '6b61015a3447f8da5b69929974d0de05699a2aa1' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -114,9 +114,9 @@ export class AtInputDate {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '5500a7a295e2c3ac33e2caa094bfe45edd99f240', class: "flex w-full flex-col" }, h("div", { key: '34ae7fb500f8dabc5f5a3922117d465d2e93cf3f', class: "flex flex-col" }, h("div", { key: '87864f59a7e6fb12a7d4a67df146978c7ab22dd0', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: 'c4caa1d760d7d8f0933d71786205a9a8369d8d84', class: "flex w-full flex-col" }, h("div", { key: 'f8389ba1c8b0ab3f915bb248a514fb6d434caba4', class: "flex flex-col" }, h("div", { key: 'e3036792a3e0a084ee9f02e90f8ea1dbf2c579f2', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '728bd629f73e8cef4fed19edca254473ff55dd29', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'ad353cb48321dc18b9fba21ce3cc05550eb358a3', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '36cc4ed8334d551d347d90609a39253274e5820a', class: classname }, h("input", { key: '1395c45eab71106a688a1bafb6be2ebe926fe645', type: "date", id: this.inputId, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: '6c538c6b161a8c62fb3e828629c54ca1e35cdb54', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'b9651d66d535e8f08fa8fc80541bb172f29b1561', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'bb0d786c9b1d0b01f4f41e971a3ce1dcfc3f2f25', class: classname }, h("input", { key: 'ac6054595fb9cd8f329cc61566d36b71382f0379', type: "date", id: this.inputId, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -137,7 +137,7 @@ export class AtInputDate {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '7e9b1d5ad2c89c701778f9dd27c77dc13848aa01', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.invalid && (h("span", { key: 'e984d40d00def33583dc2b6fdb249417dc15381d', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-date"; }
     static get properties() {

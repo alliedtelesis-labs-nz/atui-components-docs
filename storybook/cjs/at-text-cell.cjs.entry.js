@@ -64,10 +64,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (index.h(index.Host, { key: '44024fd7b949cd475771f7561639394aa3903adc', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '81ad8235e387268391e2548f7f71c56128b12701', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: 'd1f9977e7b66d90088dbf167e86bdd9a5840fbdc', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (index.h(index.Host, { key: '20f434c82244bf335d7100c7713aa267abebd118', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '8977cd8d06efdcba5ac2fa4d820dc307767ca708', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '98b6e9bccf266067a8acb94ffe5c53631879aa61', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'f077b419d0bb3e74b528a4a1c514bf045fbae97a', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: '8a540d8f5491a2b0eb2e66cd072f5cb68287e8c9', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

@@ -14,7 +14,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return getElement(this); }
     render() {
-        return (h(Host, { key: 'd3573f75efb8202dbe3095764cec9cfc65d89bba', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 transition-colors hover:underline" }, this.label))));
+        return (h(Host, { key: 'e66bd1ab89342ffb48c3c633528045917eb6d742', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-disabled": "true", "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { class: "text-muted hover:text-foreground cursor-pointer rounded-lg px-8 py-2 transition-colors hover:underline" }, this.label))));
     }
 };
 

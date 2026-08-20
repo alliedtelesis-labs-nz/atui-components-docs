@@ -573,7 +573,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? chartColor.readChartTypography(this.el)
             : undefined;
-        return (index.h(index.Host, { key: '523eb7d5e0aa874bc2733991b0f5ccce13240855', style: {
+        return (index.h(index.Host, { key: '7705f23559c98257b50fbfcd752d1f3d2285da69', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -581,24 +581,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: '4ec068344631185ffaaf0f13c40b6d6d19009234', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: '7ab362f865536d76094ca626deb1519f37d4ba69', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: '787c6b8910a0ef1316aae1397b63f80d287b2368', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: '75127bec866c541bf0b3aad071a48f044c0a405a', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: 'be75ce3b2d90508a2c16aa7dccff2e007c703078', style: {
+            } }, this.center_value && (index.h("span", { key: '39a78deca5c1dea906e1184027c587acaeef129a', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: 'cd420561ecab8360594db0e811d83feff5a538bd', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: 'ae1c816889e6fd11ebe966e47283e3b1fcccacae', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

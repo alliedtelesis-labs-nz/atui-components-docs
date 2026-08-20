@@ -4,6 +4,12 @@ import { h, Host, } from "@stencil/core";
  * @description A sliding side panel component for displaying secondary content or forms. Features customizable positioning, backdrop, and animation options.
  *
  * @slot - Display content within the dialog
+ * @slot title - Replaces the generated title block in the header
+ * @slot actions - Header controls, placed before the close button
+ * @slot footer - An action row below the content. It carries the header's
+ * surface treatment and sits directly under short content, sticking to the
+ * bottom edge only once the panel scrolls. The slot spans the full row width;
+ * arranging the actions inside it is left to the consumer.
  *
  * @dependency at-button
  */
@@ -51,11 +57,13 @@ export class AtSidePanelComponent {
     trigger_id;
     isExpanded = false;
     isOpen = false;
+    hasFooter = false;
     /**
      * Emits an event when the side panel is toggled, with `event.detail` being true if the panel is now open
      */
     atuiSidepanelChange;
     sidePanelWrapper;
+    footerObserver;
     panelDialog;
     triggerEls = [];
     externalTriggerListeners = [];
@@ -137,6 +145,12 @@ export class AtSidePanelComponent {
         }
     }
     async componentDidLoad() {
+        this.syncHasFooter();
+        this.footerObserver = new MutationObserver(() => this.syncHasFooter());
+        this.footerObserver.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
@@ -148,6 +162,15 @@ export class AtSidePanelComponent {
     }
     disconnectedCallback() {
         this.cleanupExternalTriggerListeners();
+        this.footerObserver?.disconnect();
+    }
+    /**
+     * The footer drives layout (the content stops stretching once there is a
+     * footer to sit under it), and `:has()` cannot see the slot reliably once
+     * Stencil has relocated slotted nodes - so the state is resolved here.
+     */
+    syncHasFooter() {
+        this.hasFooter = !!this.el.querySelector('[slot="footer"]');
     }
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
@@ -179,7 +202,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '0155b07e5a7e0a5195182d441c227cbe6d727884', "data-open": this.isOpen }, h("dialog", { key: '12779b37ef396c84ff26f1f09fb1ad2727d28aae', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '9b1a52d625c9dbe80675c6320bf9ae076e20de0f', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '7d2fb018eb44cb8de567fe51065576eb32ecfe2c', class: "header", "data-name": "header" }, h("div", { key: '878352d2a139e63a637a6303b79e19cfd7b69706' }, h("slot", { key: '84f808cec335e831d0113257d1874790cecae3c3', name: "title" }), this.panel_title && (h("h3", { key: '08194da72c4f935417249283aa1fb675aeeb2d77', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: '902d769c5db8ae7fd1a4027cd64f5f8ca4e525c6', class: "subtitle" }, this.panel_subtitle))), h("div", { key: '6a626318301be9297241f0121408cc7d6c231c35' }, h("slot", { key: 'b44196cec27718950c053e95161396134196bb09', name: "actions" }), this.has_close_button && (h("at-button", { key: '1d9c49876fd835b6f011d39e2cb5396a47256631', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: 'ad3b48f6a893c7e7ab72d2874c47dc6d913d2ee6', slot: "icon", name: "close" }))))), h("div", { key: 'f434b08e5631c292299a88b8ce3dc57cc318a308', "data-name": "content", class: "content" }, h("slot", { key: 'fa4721e8702cbef2f43ef0847af2aff5adb26d96' }))))));
+        return (h(Host, { key: '684ceb21f5be3bc2d178e0fb41b68b982c4237c5', "data-open": this.isOpen }, h("dialog", { key: '83dd8176a34d202201a072cde650757e11ffec5e', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'cd6601f0db7543309a60961ebc0e2b9e532d5dd0', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: 'e14daa7ede71c13062f7e22341bdd0c323785a69', class: "header", "data-name": "header" }, h("div", { key: '86f4e7bdf6fb9bb90bb78f3f4eb0f6706a8c7e70' }, h("slot", { key: '28cc1437a90125c63c67fa6b51795d273e0bed5a', name: "title" }), this.panel_title && (h("h3", { key: '7f20171da541671c13f23d066d067314547f1bed', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: '3e4fcd20bcac7b2a9fc42ac37ba0bd3ec692512f', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'e532876de154dd6b608d68f6d6c387460338a775' }, h("slot", { key: '9ca5896bb4c3b7c0da403b1cc26324da256e3d4e', name: "actions" }), this.has_close_button && (h("at-button", { key: '2b558cc4fc08f6a83a69d4c56fe519abc774d2bb', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '079107825e5e918632fa2dd080c07ebb59537f0e', slot: "icon", name: "close" }))))), h("div", { key: '069a6c03bbd48f1dde521cc703856e8e6cc9d2a3', "data-name": "content", class: "content" }, h("slot", { key: 'a4b7495f53f53ec22f1aea7e55cdd28b4eef3f23' })), h("div", { key: '5e02a0250da95bc5965e457b7101885db627ce99', "data-name": "footer", class: "footer" }, h("slot", { key: '5548c3d159c756b87d2d016a76cb0399a324397b', name: "footer" }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
@@ -415,7 +438,8 @@ export class AtSidePanelComponent {
     static get states() {
         return {
             "isExpanded": {},
-            "isOpen": {}
+            "isOpen": {},
+            "hasFooter": {}
         };
     }
     static get events() {

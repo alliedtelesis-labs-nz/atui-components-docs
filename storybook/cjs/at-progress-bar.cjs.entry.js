@@ -63,7 +63,7 @@ const AtProgressBar = class {
     renderDeterminate() {
         const background = 100 - this.clamped;
         const fill = this.clamped;
-        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-hidden rounded-full" }, index.h("div", { class: `${this.segments} ${fillClass(this.type)}`, style: {
+        return (index.h(index.Host, { role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": this.clamped, class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-hidden rounded-full" }, index.h("div", { class: `${this.segments} ${fillClass(this.type)}`, style: {
                 flexBasis: fill.toString() + '%',
             }, "aria-hidden": "true" }), index.h("div", { class: `bg-surface-2 ${this.segments}`, style: {
                 flexBasis: background.toString() + '%',

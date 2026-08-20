@@ -34,7 +34,7 @@ const AtHealthDotCell = class {
         return true;
     }
     render() {
-        return (h(Host, { key: 'e56c5b739ef3f6ac52f7c2d43980035eb8c2c3df', class: "flex h-full items-center justify-center" }, h("at-health-dot", { key: '25d5bb434a67b51ab0a48d1bac8abe96eee5f77e', status: this.type })));
+        return (h(Host, { key: 'bd80ec6678b2069de67f81b03d44a5b00c448e31', class: "flex h-full items-center justify-center" }, h("at-health-dot", { key: '320201b374d71895cfe9639f5adb317081110b26', status: this.type })));
     }
 };
 

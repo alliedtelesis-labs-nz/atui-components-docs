@@ -151,8 +151,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: 'ee4422cb9d251684ca7dffb3d872616775ff2080', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '96433c434c4b5c3cd4d8af4827a5e4bfdec73b77', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'a3d539c17cc08f6deb94228f8cc9fa42dc42f11b', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '3bf661e39fdf723a6147e89c016a1737f4198193', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '34912f8e4ed29fab7893477fec9b0fc73b70f830', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '1b55c1efe79123cb43757d4a636f93e45b95da18', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '255464cf149a8ff7542182dd3456d8b9ea890971' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'd25c1afdb84320de8ddca53698b7d6faa6a08d6d', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'c43212281584c7441dc5bca46f3036984ab58be6', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: 'a519d9f546b1a34b9019bff650abda6cd1e1369c', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'f2c2c03eae0ce5b43bbdbbf473ccb84505008af6', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '53d478e5c05a3a8513ac2bc0e63f466c316b56c8', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'd1be201603df9f653251bfaa990573ad9fada87e', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '90651ca586ae989ed89d2019ce08d6e73d0ec3e3', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '18f8112a564a02b73ff817d5c6eb672f77533c7c' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'e7c77cb32ab6cdf967a466f3422b65ca7c4651d1', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
@@ -219,7 +219,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: 'eb381cc1e9fcdf59b75184608dc7120583296d89', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: 'a45df4cede1b7628a7053705f6d564fabef7bbe6', slot: "menu-trigger" }, h("at-tooltip", { key: 'b4ef6cf62b60d3adb8d354442475661219b27568', position: "top" }, h("at-button", { key: '058e7ace38fd69c61581d9a464a4e6f0a4a4fd34', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '19c5f8f4fd48b3dc41de51ca4ebebc2ea0a95d42', slot: "icon", name: "column" })), h("span", { key: '51ddcf09680c5a5c0db313df87d056f02dfeb395' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '8649a08ac1403816aa2f5d88810cfb8a93e2571c', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: 'be8f97a3ae55637499f12b53e7a1800e339fde48', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '0b1df1df7551daafd47eff4c90d67be1e5c03dc7', slot: "menu-trigger" }, h("at-tooltip", { key: '3af6526cb7c5d12726b2d333545c38ec15bfd857', position: "top" }, h("at-button", { key: '2fe3ae634d5238908558709bc4a82a576feb4763', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '75f682516ba5a6bc2fcd4321c57de1004e7d317a', slot: "icon", name: "column" })), h("span", { key: '1e38b3034a5906209a94427f4c82856af2ee0303' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'e30267b0f15879c169b8dbd748e0ed09497860d6', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49327,7 +49327,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '4f3f807dde3acc604e2ae5eacc3a8c394da202ea', class: {
+        return (h(Host, { key: '6db4bbb7d53ac16bea95bd6ebb3510d610cb4cc5', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49449,7 +49449,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '3559af5882deb8069d75874866ce98e2e7463873', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '08e0be16c685e2fcd6531bd97eacd64227f0b4c4', class: "flex justify-between" }, h("div", { key: '11cda6e08721d763b45f965283b0ea8783a11bd1', class: "flex" }, h("slot", { key: '97248b58f19f0bba35e8dcdf8523bed3b659df77', name: "search" })), h("div", { key: 'c4821fcd0af110d1a4cdedd1007e0aa9760be4dc', class: "flex items-center" }, h("slot", { key: '930f69853c699488dcc976a19fea3ff790264353', name: "export-menu" }), h("slot", { key: '894d8d5d5e73039d264ed65818e45abfafce24a6', name: "leading-actions" }), h("slot", { key: 'c5faf1abb5d4a580eabce87e738ab6c1d5bd5a8f', name: "column-manager" }), h("slot", { key: '10ca1402330eb1dc2220c36c866678cca17e337b', name: "actions" }))), h("slot", { key: '497523d13ac0a9f349d781ba01ad3d8ca6cb4776', name: "filters" })));
+        return (h(Host, { key: '950acfd9a25dd0abdb032973128bb7af86076b29', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '8ad131e9d3913718d9a72faaef6ecea45ba649bb', class: "flex justify-between" }, h("div", { key: 'eb7496ab33a1fe60fbc7cbe41072c355067a8d0b', class: "flex" }, h("slot", { key: '41f262e98dade2955261127ca92453c0b6605922', name: "search" })), h("div", { key: '43df719869879daba190866e7cb9a768d60a164c', class: "flex items-center" }, h("slot", { key: 'fda0d198d005543da9be71f0d97b8a623e8de0ec', name: "export-menu" }), h("slot", { key: '83ce6f032c1d43919d84b23470568e98a64d75e8', name: "leading-actions" }), h("slot", { key: '772ddf07a66756aa4481ec24689eed46b2746c22', name: "column-manager" }), h("slot", { key: '09ba986c617dc3a5402a9114a401aafa3b2c07a3', name: "actions" }))), h("slot", { key: 'bd8d76ffe791b9d70e72ed1624f4ca8751136a73', name: "filters" })));
     }
 };
 

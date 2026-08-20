@@ -90,6 +90,25 @@ export default {
         },
     },
 };
+const FooterSlotTemplate = (args) => `
+<at-button data-sidepanel="footer-panel" label="Open Sidepanel" type="primary"></at-button>
+<at-side-panel
+    trigger_id="footer-panel"
+    panel_title="${args.panel_title ?? ''}"
+    panel_subtitle="${args.panel_subtitle ?? ''}"
+    size="${args.size ?? 'md'}"
+>
+    <at-input label="Name"></at-input>
+    <at-input label="Description"></at-input>
+    <div slot="footer" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <at-button label="Delete" type="destructiveOutline"></at-button>
+        <div style="display: flex; gap: 8px;">
+            <at-button label="Cancel" type="secondaryOutline"></at-button>
+            <at-button label="Save" type="primary"></at-button>
+        </div>
+    </div>
+</at-side-panel>
+`;
 export const Default = Template.bind({});
 Default.args = {
     panel_id: 'panel',
@@ -117,6 +136,20 @@ TableRowExample.parameters = {
     docs: {
         description: {
             story: 'Example showing how to use external triggers in table rows with unique IDs to avoid collisions.',
+        },
+    },
+};
+export const FooterSlot = FooterSlotTemplate.bind({});
+FooterSlot.storyName = 'Footer Slot';
+FooterSlot.args = {
+    panel_title: 'Edit item',
+    panel_subtitle: 'Actions live in the footer slot',
+    size: 'md',
+};
+FooterSlot.parameters = {
+    docs: {
+        description: {
+            story: "The footer slot carries the header's surface treatment. It sits directly beneath short content and sticks to the bottom edge only once the panel scrolls.",
         },
     },
 };
