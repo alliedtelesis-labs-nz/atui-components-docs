@@ -1,5 +1,6 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { IClickCell } from '../../../../types';
+import type { AtButtonType } from '../../../at-button/at-button';
 import { AtICSSProperties } from '../../../../types/styles';
 export interface AtMultiBtnCellData {
     buttons: AtIBtnParams[];
@@ -10,6 +11,7 @@ export interface AtIMultiBtnCellParams extends ICellRendererParams, IClickCell {
 }
 export interface AtIBtnParams {
     value: string;
+    type?: AtButtonType;
     containerStyles?: AtICSSProperties;
     click?: (params: ICellRendererParams) => any;
     disabled: boolean;

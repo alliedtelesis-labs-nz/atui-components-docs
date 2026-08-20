@@ -57,3 +57,56 @@ Default.args = {
     },
     page_size: 10,
 };
+export const ButtonTypes = Template.bind({});
+ButtonTypes.storyName = 'Button Types';
+ButtonTypes.args = {
+    col_defs: [
+        {
+            flex: 1,
+            field: 'col_one',
+            colId: 'col_one',
+            sortable: false,
+            cellRenderer: '***AtMultiBtnCell***',
+            headerName: 'Multi Button Cell',
+            valueGetter: "***(params) => params.data['col_one']***",
+            cellRendererParams: {
+                buttons: "***(params) => params.data['col_one']***",
+            },
+        },
+    ],
+    table_data: {
+        items: [
+            {
+                _id: '1',
+                col_one: [
+                    {
+                        value: 'Retry',
+                        disabled: false,
+                        click: '***(params) => console.log("retry")***',
+                    },
+                    {
+                        value: 'Approve',
+                        type: 'primaryText',
+                        disabled: false,
+                        click: '***(params) => console.log("approve")***',
+                    },
+                    {
+                        value: 'Delete',
+                        type: 'destructiveText',
+                        disabled: false,
+                        click: '***(params) => console.log("delete")***',
+                    },
+                ],
+            },
+        ],
+        total: 1,
+    },
+    page_size: 10,
+};
+ButtonTypes.parameters = {
+    docs: {
+        description: {
+            story: 'Each button carries an optional `type`; a button that omits it stays `secondaryText`, so a row can single out the consequential action without restyling the rest.',
+        },
+    },
+};
