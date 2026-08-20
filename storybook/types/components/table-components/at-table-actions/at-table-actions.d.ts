@@ -8,6 +8,7 @@ import { GridApi } from 'ag-grid-community';
  * @slot search - Used to place an at-search
  * @slot filters - Used to place an at-table-filters
  * @slot export-menu - Used to place an at-export-menu
+ * @slot leading-actions - Used to place actions immediately left of the column manager
  * @slot actions - Used to place actions related to table content
 
 */

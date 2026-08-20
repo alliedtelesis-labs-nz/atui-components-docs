@@ -46,7 +46,7 @@ export class AtToggleCell {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (h(Host, { key: 'e4d2912a3dcce99369ea5f4eda4241d07e1fc9ab', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: '81965cea5ae9ea187b99633d4f04ac3961b89e81', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
+        return (h(Host, { key: '047294b28a941bff28b14b9d03bed745bf91ecdd', class: "flex h-full items-center leading-[100%]" }, h("at-toggle-switch", { key: '978ec1d3de26cd4700d600efbed3e0c70d00de11', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
     }
     static get is() { return "at-toggle-cell"; }
     static get states() {

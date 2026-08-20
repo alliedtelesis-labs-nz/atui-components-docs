@@ -308,16 +308,16 @@ export class AtSelectComponent {
         return computed;
     }
     render() {
-        return (h(Host, { key: '184cfa79bbb3128cd1401e38e14a0dad37e3df99', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '2448d9f213206ce06fecbefe4e06c91763cae503', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: 'c29e078d1a43a3b5c1fb37ece418056858034a2e', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'd8ac0370eb9d954f9addb7414d85a7176f61a77a', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '267307947840f9e7a1ed6d9ab90b6922eacc65a8' }, this.error_text && this.invalid && (h("span", { key: '7e3b532b00f8fcff128cfb395084bcc17638b0f6', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '5965f373996b94f68609b30f34cc2c185d535e19' }, this.error_text && this.invalid && (h("span", { key: 'ffd89c5d6fe5644dd52a171368d2b48e73054d0e', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));

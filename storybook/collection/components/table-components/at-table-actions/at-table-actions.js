@@ -7,6 +7,7 @@ import { h, Host, } from "@stencil/core";
  * @slot search - Used to place an at-search
  * @slot filters - Used to place an at-table-filters
  * @slot export-menu - Used to place an at-export-menu
+ * @slot leading-actions - Used to place actions immediately left of the column manager
  * @slot actions - Used to place actions related to table content
 
 */
@@ -101,7 +102,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: '1572da01179ba36c7eb9eab28fa9dec55fdcd61e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '9518a43af88b8ac7c06d2f9444ad02c821c053e5', class: "flex justify-between" }, h("div", { key: '7f0f771b13b262dcc41b98ce7b1506576a7a47e3', class: "flex" }, h("slot", { key: 'cbc7fb00f5fe9e12d6f7b065372147eb283e0506', name: "search" })), h("div", { key: '64bb57ffe96c02680a1108d174cbd4e2dccfc6c9', class: "flex" }, h("slot", { key: '78dc1be220ba1eb78a8f32d444a7387dd7d36cef', name: "export-menu" }), h("slot", { key: '50e15e4312748e952b64b7c4310bcc7b2764704d', name: "column-manager" }), h("slot", { key: '750b4c31ba58d39b8f08996d853dd50bfbc39033', name: "actions" }))), h("slot", { key: 'ce43fc73760fd628364e8d9d7074a7acb67045e8', name: "filters" })));
+        return (h(Host, { key: '3559af5882deb8069d75874866ce98e2e7463873', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '08e0be16c685e2fcd6531bd97eacd64227f0b4c4', class: "flex justify-between" }, h("div", { key: '11cda6e08721d763b45f965283b0ea8783a11bd1', class: "flex" }, h("slot", { key: '97248b58f19f0bba35e8dcdf8523bed3b659df77', name: "search" })), h("div", { key: 'c4821fcd0af110d1a4cdedd1007e0aa9760be4dc', class: "flex items-center" }, h("slot", { key: '930f69853c699488dcc976a19fea3ff790264353', name: "export-menu" }), h("slot", { key: '894d8d5d5e73039d264ed65818e45abfafce24a6', name: "leading-actions" }), h("slot", { key: 'c5faf1abb5d4a580eabce87e738ab6c1d5bd5a8f', name: "column-manager" }), h("slot", { key: '10ca1402330eb1dc2220c36c866678cca17e337b', name: "actions" }))), h("slot", { key: '497523d13ac0a9f349d781ba01ad3d8ca6cb4776', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {

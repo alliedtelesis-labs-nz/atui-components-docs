@@ -14,6 +14,7 @@ type RowUpdate<T> = {
 /**
  * @category Data Tables
  * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
+ * @slot leading-actions - Used to place actions immediately left of the column manager
  * @slot actions - Used to place actions related to table content
  * @slot multi-select-actions - Used to place actions related to row selection
  */

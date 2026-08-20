@@ -193,7 +193,7 @@ const AtFilterForm = class {
         })));
     }
     render() {
-        return (h(Host, { key: '5bc9d05957d6a851308c3a2570e1f586c349e78b', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '34ba9b50a57286d7e8f46fd1a5ce400043364d25', class: "flex justify-end gap-4" }, h("at-button", { key: 'b80e5332d5c15f78ba3491c47478ce0439551d87', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: 'c0931b96db404d71776e1dbb47f35086b8346832', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (h(Host, { key: 'ec3c9117d34f5fa659af9c82497c9613df61b71f', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: 'e471843b8de44b1c5219f708f5cef0209e155486', class: "flex justify-end gap-4" }, h("at-button", { key: 'a095df16352e7a1d1ab37791a55a45838816db2f', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: '9cc704f3d0f4274b25a8470347b8d1e82fb665aa', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get watchers() { return {
         "filter_config": [{

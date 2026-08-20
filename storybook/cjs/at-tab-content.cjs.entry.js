@@ -44,7 +44,7 @@ const AtTabContent = class {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (index.h("div", { key: 'a51af134230e89dc084e988ce572a537b440e024', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '92f25f054b586a9a7806bd088bd0d461dcf94da4' })));
+        return (index.h("div", { key: 'a411bb40bc0f34f99f105701a062a39110c97ac9', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, index.h("slot", { key: '0bc1cc9a303f7b2cad90731139f7d56965d052d0' })));
     }
 };
 

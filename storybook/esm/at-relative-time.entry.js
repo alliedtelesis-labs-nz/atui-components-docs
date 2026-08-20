@@ -84,7 +84,7 @@ const AtRelativeTimeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '6f8a55745e5730c5d06f1320eb91323f05ab2468', class: "inline-flex" }, h("at-tooltip", { key: '1d923fce7a6eae8126a967d3e643f38201b87353', position: "top", disabled: !this.titleText }, h("time", { key: 'ea9d8827b3207af1f7e9bffdf34b63d670964474', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
+        return (h(Host, { key: '617fcf9c3303e7c0df9b02fffa2d04284903e6c8', class: "inline-flex" }, h("at-tooltip", { key: '8b03bcb335190562fa9d33a47cfbdd239c2bbbcf', position: "top", disabled: !this.titleText }, h("time", { key: 'd39633433ccd107749487338be4594b5650bcbaa', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
     }
     static get watchers() { return {
         "timestamp": [{

@@ -53,7 +53,30 @@ document.querySelector('at-table')
     .then((api) => document.querySelector('at-table-actions').ag_grid = api)
 </script>
 `;
+const LeadingActionsTemplate = () => `
+<at-table-actions>
+    <at-search slot="search" label="Search table"></at-search>
+    <at-button slot="leading-actions" label="Add row" type="secondaryOutline"></at-button>
+    <at-column-manager slot="column-manager"></at-column-manager>
+    <at-button slot="actions" label="Refresh" type="secondaryText"></at-button>
+</at-table-actions>
+<script>
+document.querySelector('at-column-manager').col_defs = [
+    { flex: 1, field: "col_one", colId: "col_one", headerName: "col_one" },
+    { flex: 1, field: "col_two", colId: "col_two", headerName: "col_two" },
+];
+</script>
+`;
 export default {
     title: 'Components/Table Components/Table Actions',
 };
 export const Default = Template.bind({});
+export const LeadingActions = LeadingActionsTemplate.bind({});
+LeadingActions.storyName = 'Leading Actions';
+LeadingActions.parameters = {
+    docs: {
+        description: {
+            story: 'The `leading-actions` slot sits immediately left of the column manager, for actions that belong with the toolbar controls rather than with the table content - those go in `actions` at the end of the row.',
+        },
+    },
+};

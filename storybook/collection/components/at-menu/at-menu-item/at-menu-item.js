@@ -43,7 +43,7 @@ export class AtMenuitemComponent {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'a3b4cdf6103963f100f720e048ff35df9b6a5463', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: '91e0fd65a888dc9a4bb270dea22d91f31e23fc4c', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -51,7 +51,7 @@ export class AtMenuitemComponent {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: 'e4af050add056365e3d9b69efacc0be270e64703', class: "flex min-w-0 flex-1" }, h("slot", { key: 'dd6b7583dd0584f6fdbf7a4c4686c82684947c47', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '0dd299af885146d97f172f08744628d821af58d0', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: 'fb8225584b8281e6516fe4d760fe57600ec17177' })), h("slot", { key: '0dd3d99a5acdb96146710bc81f38e2e99adfc81a', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: 'e9fddbb29df6783e5ca7f97b94ce5b680e8e830a', class: "flex min-w-0 flex-1" }, h("slot", { key: 'dc431b5874d53e1d4ceb413e0ee91565589f4baf', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '3318b4c14cc061e179c7fd74ba6bff3a740f9551', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '33065665cb13bbc4416d6dbf1fb1f1aed1942358' })), h("slot", { key: 'd35262c249925a11be64ba42e6dfd75988a568cb', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
     static get is() { return "at-menu-item"; }
     static get properties() {
