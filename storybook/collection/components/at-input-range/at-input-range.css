@@ -7,7 +7,7 @@
   --value-background-hover: var(--primary-color);
   --value-font: 700 var(--token-font-size-xs) var(--token-font-family-base);
   --fill-color: var(--secondary-color);
-  --progress-background: var(--token-input-background);
+  --progress-background: var(--token-surface-1);
   --progress-radius: 20px;
   --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) inset;
   --track-height: calc(var(--thumb-size) / 2);
