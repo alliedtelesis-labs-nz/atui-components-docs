@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-8ckLmqSY.js";const m=o,p=s;export{m as AtMenuItem,p as defineCustomElement}
+import{A as o,d as s}from"./p-DKmVWtRD.js";const t=o,m=s;export{t as AtMenuItem,m as defineCustomElement}

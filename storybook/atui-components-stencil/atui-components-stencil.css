@@ -3750,12 +3750,6 @@ strong {
   background-color: color-mix(in srgb, var(--token-menu-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
-.bg-success-accent {
-  --tw-bg-opacity:
-      1;
-  background-color: color-mix(in srgb, var(--token-state-success-accent) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
-}
-
 .bg-success-foreground {
   --tw-bg-opacity:
       1;

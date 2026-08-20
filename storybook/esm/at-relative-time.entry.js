@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B2z78KBX.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-_QbJz5mf.js';
 import { g as getRelativeTimeString, a as getRefreshDelay } from './relative-time.util-lJSYZp0N.js';
 
 const AtRelativeTimeComponent = class {

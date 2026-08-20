@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BzyfxOU6.js');
+var index = require('./index-B7bW4GPk.js');
 
 const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}`;
 
