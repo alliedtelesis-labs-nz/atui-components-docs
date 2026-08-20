@@ -1277,6 +1277,10 @@ export namespace Components {
      */
     interface AtInput {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label": string;
+        /**
           * Sets the 'autocomplete' attribute on the input element
           * @default 'on'
          */
@@ -6695,6 +6699,10 @@ declare namespace LocalJSX {
      */
     interface AtInput {
         /**
+          * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
+         */
+        "aria_label"?: string;
+        /**
           * Sets the 'autocomplete' attribute on the input element
           * @default 'on'
          */
@@ -9294,6 +9302,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "disabled": boolean;
         "clearable": boolean;
+        "aria_label": string;
         "value": string;
     }
     interface AtInputDateAttributes {

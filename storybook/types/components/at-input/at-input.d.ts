@@ -56,6 +56,11 @@ export declare class AtInputComponent {
      */
     clearable: boolean;
     /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label: string;
+    /**
      * The value of the input
      */
     value: string;

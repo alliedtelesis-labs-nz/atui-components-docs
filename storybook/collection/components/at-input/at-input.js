@@ -77,6 +77,11 @@ export class AtInputComponent {
      */
     clearable;
     /**
+     * Accessible name for the input. Use when a shared column header supplies the
+     * visible label and `label` is therefore left unset.
+     */
+    aria_label;
+    /**
      * The value of the input
      */
     value;
@@ -104,10 +109,10 @@ export class AtInputComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'd80024c01db7d20af2915957473c1a07ff321b89' }, h("div", { key: '9f0e6fbce903a08bf557eeaf76ab185d247a0d7f', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '10c842edf45fff3843997dd65718df7b2483d246', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '14c9b507cf4f6b5d8c682b85404f0030dff3e726', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '08edec64ccea74650a466220434e0fe72b2a06c3', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'd5ac3efc86383a84ea26dbee8e752d60839ceef6', class: classname }, h("input", { key: 'a6c16bdc85c7841e26c636d92af55c9546897ea9', class: "py-input-y pl-input-x flex w-full outline-0", id: this.inputId, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: 'e90c94928d1df23a849dc0465af6db281c3f4753', class: "flex items-center py-4 pr-4" }, h("slot", { key: '8ed0160f71c4ff19cf5ae2fd1b2b9db8070902b0', name: "input-actions" }), this.clearable &&
+        return (h(Host, { key: '206cfce9a3037130b734dfe30b0a5d6759d2ab70' }, h("div", { key: 'b6d7d40f4ecca128c0ef91de0b9ea9570174ec35', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ef858ca9609fd9bdc96a6f9e169295255ed470c3', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '4b00c3af7480ae13778b217caa60982ed86bd33d', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '19cd27d8cdc9ef6cc65f37e397ef405769d288d6', class: "text-muted mb-2 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '14add884309312af4a2abd735113c666a2854b66', class: classname }, h("input", { key: '4169f9e62b371c082d255b674101dd5bf78444cd', class: "py-input-y pl-input-x flex w-full outline-0", id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '197387e47af53744e4f884acb40221bffbe31099', class: "flex items-center py-4 pr-4" }, h("slot", { key: '820d0380c56fff04b190640792e008bfcbd6d8d7', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("at-button", { key: 'bd3f5145cd994fdf8879d5787763dce8c74b0994', class: `transition-all duration-300 ease-in-out ${this.clearable &&
+            this.value && (h("at-button", { key: '6ed9256ca4796c9cb84430da6747897356ac118d', class: `transition-all duration-300 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -115,7 +120,7 @@ export class AtInputComponent {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" }, h("at-icon", { key: '13679fe98ef9bacdb8d480e2b3166f90e685fc4f', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: '1b8c9bc4cd2dfd642826a09e3310352cd475b524', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" }, h("at-icon", { key: 'abfe70f259b50509d80bc6c8807474661f3169ac', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: '9d39d8047634b4ee4a519d81ce086795209588ed', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "at-input"; }
     static get properties() {
@@ -357,6 +362,25 @@ export class AtInputComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "clearable"
+            },
+            "aria_label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Accessible name for the input. Use when a shared column header supplies the\nvisible label and `label` is therefore left unset."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "aria_label"
             },
             "value": {
                 "type": "string",
