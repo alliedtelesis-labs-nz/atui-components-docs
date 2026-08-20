@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-BgvRTreJ.js";const s=o,p=r;export{s as AtCustomTimeRange,p as defineCustomElement}
+import{A as o,d as s}from"./p-BfjSaq-P.js";const a=o,p=s;export{a as AtCustomTimeRange,p as defineCustomElement}

@@ -316,9 +316,9 @@ const AtSelectComponent = class {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '3de22ac82020195fa3b474dee1ce2dfeb2a95eda', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "listbox", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'c0ee81a230598351ea629671ea37a920d3650624', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '10a4129ba518b5fbdebaca5a82efa183027d3b67' }, this.error_text && this.invalid && (index.h("span", { key: '40000a89fcc8f85fc3176898d84020a6b3c44745', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '674abb3aeeb8853400aebb5c241f821087db70db' }, this.error_text && this.invalid && (index.h("span", { key: '1939d014bc413854729196ff3580926087b5e9ef', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -333,7 +333,7 @@ const AtSelectComponent = class {
         return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (index.h("div", { class: "absolute top-4 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onClick: async (event) => {
+            !this.disabled && (index.h("div", { class: "absolute top-4 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
                 this.atuiChange.emit(this.value);
@@ -343,7 +343,7 @@ const AtSelectComponent = class {
             }, "data-name": "select-clear-main" }, index.h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), index.h("slot", { name: "input-actions" })))));
     }
     renderOptions() {
-        return (index.h("ul", { class: "contents", id: this.menuId, role: "listbox", onKeyDown: async (event) => {
+        return (index.h("div", { class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
             } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
@@ -363,14 +363,14 @@ const AtSelectComponent = class {
                     return;
                 }
                 e.stopPropagation();
-            }, "data-name": "select-clear" }, index.h("at-icon", { slot: "icon", name: "cancel" })))))), this.filteredOptions
+            }, "data-name": "select-clear" }, index.h("at-icon", { slot: "icon", name: "cancel" })))))), index.h("ul", { class: "contents", id: this.menuId, role: "listbox" }, this.filteredOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);
             }
             return this.renderOption(option);
         })
-            .filter(Boolean), index.h("slot", null), this.typeahead &&
+            .filter(Boolean), index.h("slot", null)), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
             !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||

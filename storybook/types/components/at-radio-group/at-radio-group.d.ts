@@ -65,6 +65,7 @@ export declare class AtRadioGroup {
     private radioEls;
     private slotObserver?;
     private radioGroupId;
+    private labelId;
     /**
      * Emits an event when active radio element changes. `event.detail` is the ID of the active radio
      */

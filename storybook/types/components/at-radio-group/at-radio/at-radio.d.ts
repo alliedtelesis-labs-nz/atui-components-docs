@@ -38,6 +38,12 @@ export declare class AtRadio {
     readonly: boolean;
     radioEl: HTMLInputElement;
     /**
+     * Not derived from `value`: two groups can carry the same values, and a
+     * slotted radio may have no value until its group assigns one, so a
+     * value-derived id is neither unique nor available at first render.
+     */
+    private labelId;
+    /**
      * Emits the current state of the radio when clicked.
      */
     atuiChange: EventEmitter<string>;
