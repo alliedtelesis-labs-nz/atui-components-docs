@@ -99,7 +99,7 @@ export declare class AtChartBreakdown {
     private legendFontPx;
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
-    chart: Chart;
+    chart: Chart | null;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -152,6 +152,8 @@ export declare class AtChartBreakdown {
     private getLegendOverflowPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;
+    disconnectedCallback(): void;
+    connectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,

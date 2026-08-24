@@ -545,6 +545,23 @@ const AtChartBreakdown = class {
             };
         });
     }
+    disconnectedCallback() {
+        this.chart?.destroy();
+        this.chart = null;
+    }
+    connectedCallback() {
+        // Deferred to rAF so the surrounding layout has settled before Chart.js
+        // measures the canvas; a reparented element reports zero size until then.
+        if (this.data?.datasets?.length && !this.chart) {
+            requestAnimationFrame(() => {
+                if (!this.canvasEl?.isConnected)
+                    return;
+                if (!this.chart && this.data?.datasets?.length) {
+                    this.initChart();
+                }
+            });
+        }
+    }
     componentDidUpdate() {
         if (this.skipInitOnUpdate) {
             this.skipInitOnUpdate = false;
@@ -573,7 +590,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? chartColor.readChartTypography(this.el)
             : undefined;
-        return (index.h(index.Host, { key: 'a27b7f97be19f9b6b29827547eb5efad0e30578e', style: {
+        return (index.h(index.Host, { key: 'bb725463738b0f076975084fb8aa32b1ce435762', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -581,24 +598,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: '5908f715124cff67e603bc976f3146399810575d', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: 'aca86608c553f257997509c1ad88e83db179c985', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: '9a310df4c24695a69b05557a443c3803f7da55f0', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: '670de39ac8c95b6367f0db0687c1f13ff4474b73', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: 'c2f1d48b4728174fd45a70897f925bd87d5c2910', style: {
+            } }, this.center_value && (index.h("span", { key: '0138ba885a7b10ea99c2acf857a6537cdf14e473', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: 'fa537ee858c6eab9b47d78887ae89d674c847f03', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: '7dddf1c43c40bd0e86ce29577c568d0ee730a947', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

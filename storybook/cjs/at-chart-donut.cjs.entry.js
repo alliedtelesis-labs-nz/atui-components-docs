@@ -436,12 +436,8 @@ const AtChartDonut = class {
         this.chart = null;
     }
     connectedCallback() {
-        // Fires on every DOM reconnection (e.g. after a GridStack widget move).
-        // disconnectedCallback() already destroyed this.chart; this.data is
-        // preserved on the element. Re-init via rAF so the grid layout has
-        // settled before Chart.js reads the canvas dimensions.
-        // On the very first connection Angular has not yet bound the data prop,
-        // so this.data will be falsy — the condition guards that case.
+        // Deferred to rAF so the surrounding layout has settled before Chart.js
+        // measures the canvas; a reparented element reports zero size until then.
         if (this.data?.datasets?.length && !this.chart) {
             requestAnimationFrame(() => {
                 if (!this.canvasEl?.isConnected)
@@ -474,7 +470,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '0f0330752b9c5b3db2e59f74d325a88a3376d305', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '9283f853d59900f985c93df690a56491253ba0c9', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: 'e9d407db7425befca83059f54576d3b35f458925', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'c67c99d71d3664fd94d78c5cc562243af1a39666', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

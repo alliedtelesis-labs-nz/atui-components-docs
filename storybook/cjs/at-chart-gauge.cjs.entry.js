@@ -142,6 +142,7 @@ const AtChartGauge = class {
     canvasEl;
     config;
     chart;
+    hasLoaded = false;
     /**
      * Getter method for the chart's configuration object.
      * @returns Configuration of the chart
@@ -508,6 +509,19 @@ const AtChartGauge = class {
         this.chart?.destroy();
         this.chart = null;
     }
+    connectedCallback() {
+        // Deferred to rAF so the surrounding layout has settled before Chart.js
+        // measures the canvas; a reparented element reports zero size until then.
+        if (this.hasLoaded && this.max > this.min && !this.chart) {
+            requestAnimationFrame(() => {
+                if (!this.canvasEl?.isConnected)
+                    return;
+                if (!this.chart && this.max > this.min) {
+                    this.initChart();
+                }
+            });
+        }
+    }
     componentDidUpdate() {
         if (this.max > this.min) {
             this.initChart();
@@ -518,12 +532,13 @@ const AtChartGauge = class {
      * usable yet, the chart initialises later via componentDidUpdate.
      */
     componentDidLoad() {
+        this.hasLoaded = true;
         if (this.max > this.min) {
             this.initChart();
         }
     }
     render() {
-        return (index.h(index.Host, { key: '9bb93b4c7b9a9ce1a76743c327ba703bbf7f6121', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'c07a526ef3c81260bf81c1f1365d1fd5d56a8eef', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (index.h(index.Host, { key: '5edf46483f2c5573e33d8f54bdcc06cb7aa570df', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '62a3f8c1b6b311189f95920a7d20c1fdf493159b', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

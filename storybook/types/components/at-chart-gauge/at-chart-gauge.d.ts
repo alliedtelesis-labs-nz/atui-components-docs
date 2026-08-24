@@ -111,6 +111,7 @@ export declare class AtChartGauge {
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart | null;
+    private hasLoaded;
     /**
      * Getter method for the chart's configuration object.
      * @returns Configuration of the chart
@@ -183,6 +184,7 @@ export declare class AtChartGauge {
     private getTooltipGuardPlugin;
     initChart(): void;
     disconnectedCallback(): void;
+    connectedCallback(): void;
     componentDidUpdate(): void;
     /**
      * componentDidLoad runs once the element is in the DOM. If the scale isn't
