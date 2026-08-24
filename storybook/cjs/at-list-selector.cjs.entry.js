@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B7bW4GPk.js');
+var index = require('./index-B6UemjpQ.js');
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -65,7 +65,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, index.h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (index.h("at-tooltip", { slot: "badge", position: "right" }, index.h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), index.h("span", null, item.badgeTooltip))), item.hasInfoButton && (index.h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, index.h("at-icon", { slot: "icon", name: "help" }))))), index.h("span", null, item.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: '8017d62c524c933c28cc3b7472d30afb2d84b7fe', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: '00f91bf7e1f5f9c372ba29e6bcc027bc6883dadc', name: "header" }), !!this.options.length && (index.h("nav", { key: '5442baa2c2a7d409f6940733e25a54edb597e553', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: 'bf6bc8ae045354ae7db3a7b35bf69f4beb868b21', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: '43cf007f7a123bcb72666229debdee0cbd4f4e42' })));
+        return (index.h(index.Host, { key: 'cc3d48c86bd31ef1faac67a996761151f8693e14', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: '79b58cd5e5c1f7d26a4a5dc3049ff013432d1626', name: "header" }), !!this.options.length && (index.h("nav", { key: 'adc691d6821f93f497ab31d3cc5cfc2ad2848cfe', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: '49e0580793f0082a6d03f5c99fd9496c1eb3e7cb', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: 'cd03db858f35f69773a8e0ae01ea13b0bb92ebe1' })));
     }
 };
 

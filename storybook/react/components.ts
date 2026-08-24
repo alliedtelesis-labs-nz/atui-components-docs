@@ -71,6 +71,7 @@ import { AtRadioGroup as AtRadioGroupElement, defineCustomElement as defineAtRad
 import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio.js";
 import { AtRelativeDatetimeCell as AtRelativeDatetimeCellElement, defineCustomElement as defineAtRelativeDatetimeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-datetime-cell.js";
 import { AtRelativeTime as AtRelativeTimeElement, defineCustomElement as defineAtRelativeTime } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-time.js";
+import { AtReloadButton as AtReloadButtonElement, defineCustomElement as defineAtReloadButton } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-reload-button.js";
 import { AtSearchTable as AtSearchTableElement, defineCustomElement as defineAtSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search-table.js";
 import { AtSearch as AtSearchElement, defineCustomElement as defineAtSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search.js";
 import { AtSelectGroup as AtSelectGroupElement, defineCustomElement as defineAtSelectGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-group.js";
@@ -923,6 +924,17 @@ export const AtRelativeTime: StencilReactComponent<AtRelativeTimeElement, AtRela
     defineCustomElement: defineAtRelativeTime
 });
 
+type AtReloadButtonEvents = { onAtuiReload: EventName<CustomEvent<void>> };
+
+export const AtReloadButton: StencilReactComponent<AtReloadButtonElement, AtReloadButtonEvents> = /*@__PURE__*/ createComponent<AtReloadButtonElement, AtReloadButtonEvents>({
+    tagName: 'at-reload-button',
+    elementClass: AtReloadButtonElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiReload: 'atuiReload' } as AtReloadButtonEvents,
+    defineCustomElement: defineAtReloadButton
+});
+
 type AtSearchEvents = { onAtChange: EventName<CustomEvent<string>> };
 
 export const AtSearch: StencilReactComponent<AtSearchElement, AtSearchEvents> = /*@__PURE__*/ createComponent<AtSearchElement, AtSearchEvents>({
@@ -936,6 +948,7 @@ export const AtSearch: StencilReactComponent<AtSearchElement, AtSearchEvents> = 
 
 type AtSearchTableEvents = {
     onAtSearchParamsChange: EventName<AtSearchTableCustomEvent<AtISearchTableParams>>,
+    onAtuiReload: EventName<CustomEvent<void>>,
     onAtExportCsv: EventName<AtSearchTableCustomEvent<AtIPaginationParams>>,
     onAtExportPdf: EventName<AtSearchTableCustomEvent<AtIColumnDetails[]>>
 };
@@ -947,6 +960,7 @@ export const AtSearchTable: StencilReactComponent<AtSearchTableElement, AtSearch
     react: React,
     events: {
         onAtSearchParamsChange: 'atSearchParamsChange',
+        onAtuiReload: 'atuiReload',
         onAtExportCsv: 'atExportCsv',
         onAtExportPdf: 'atExportPdf'
     } as AtSearchTableEvents,

@@ -2366,6 +2366,17 @@ export namespace Components {
         "update_interval"?: number;
     }
     /**
+     * @category Actions
+     * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
+     */
+    interface AtReloadButton {
+        /**
+          * Shows an indicator on the button when the underlying data has changed since it was last loaded. This component does not detect changes itself — the consumer sets this to true once it knows of an update (e.g. from a websocket or poll) and back to false once the user reloads.
+          * @default false
+         */
+        "has_updates"?: boolean;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -2418,6 +2429,11 @@ export namespace Components {
          */
         "getGridApi": () => Promise<GridApi>;
         /**
+          * Shows an indicator on the reload button when the underlying data has changed since it was last loaded. This component does not detect changes itself — set this to true once the consumer knows of an update (e.g. from a websocket or poll) and back to false once the user reloads.
+          * @default false
+         */
+        "has_updates"?: boolean;
+        /**
           * If true the column manager will not be added
          */
         "hide_column_manager"?: boolean;
@@ -2435,6 +2451,11 @@ export namespace Components {
           * @default false
          */
         "hide_pdf_export"?: boolean;
+        /**
+          * If true the table reload button will not be added. Defaults to true — the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
+          * @default true
+         */
+        "hide_reload_button"?: boolean;
         /**
           * If true the table filters will not be added
          */
@@ -3692,6 +3713,10 @@ export interface AtRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtRadioGroupElement;
 }
+export interface AtReloadButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtReloadButtonElement;
+}
 export interface AtSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSearchElement;
@@ -4807,6 +4832,27 @@ declare global {
         prototype: HTMLAtRelativeTimeElement;
         new (): HTMLAtRelativeTimeElement;
     };
+    interface HTMLAtReloadButtonElementEventMap {
+        "atuiReload": void;
+    }
+    /**
+     * @category Actions
+     * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
+     */
+    interface HTMLAtReloadButtonElement extends Components.AtReloadButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtReloadButtonElementEventMap>(type: K, listener: (this: HTMLAtReloadButtonElement, ev: AtReloadButtonCustomEvent<HTMLAtReloadButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtReloadButtonElementEventMap>(type: K, listener: (this: HTMLAtReloadButtonElement, ev: AtReloadButtonCustomEvent<HTMLAtReloadButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtReloadButtonElement: {
+        prototype: HTMLAtReloadButtonElement;
+        new (): HTMLAtReloadButtonElement;
+    };
     interface HTMLAtSearchElementEventMap {
         "atChange": string;
     }
@@ -4830,6 +4876,7 @@ declare global {
     };
     interface HTMLAtSearchTableElementEventMap {
         "atSearchParamsChange": AtISearchTableParams;
+        "atuiReload": void;
         "atExportCsv": AtIPaginationParams;
         "atExportPdf": AtIColumnDetails[];
     }
@@ -5549,6 +5596,7 @@ declare global {
         "at-radio-group": HTMLAtRadioGroupElement;
         "at-relative-datetime-cell": HTMLAtRelativeDatetimeCellElement;
         "at-relative-time": HTMLAtRelativeTimeElement;
+        "at-reload-button": HTMLAtReloadButtonElement;
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
@@ -7916,6 +7964,21 @@ declare namespace LocalJSX {
         "update_interval"?: number;
     }
     /**
+     * @category Actions
+     * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
+     */
+    interface AtReloadButton {
+        /**
+          * Shows an indicator on the button when the underlying data has changed since it was last loaded. This component does not detect changes itself — the consumer sets this to true once it knows of an update (e.g. from a websocket or poll) and back to false once the user reloads.
+          * @default false
+         */
+        "has_updates"?: boolean;
+        /**
+          * Emitted when the reload button is clicked.
+         */
+        "onAtuiReload"?: (event: AtReloadButtonCustomEvent<void>) => void;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -7961,6 +8024,11 @@ declare namespace LocalJSX {
          */
         "col_defs"?: AtITableColumnDef[];
         /**
+          * Shows an indicator on the reload button when the underlying data has changed since it was last loaded. This component does not detect changes itself — set this to true once the consumer knows of an update (e.g. from a websocket or poll) and back to false once the user reloads.
+          * @default false
+         */
+        "has_updates"?: boolean;
+        /**
           * If true the column manager will not be added
          */
         "hide_column_manager"?: boolean;
@@ -7978,6 +8046,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "hide_pdf_export"?: boolean;
+        /**
+          * If true the table reload button will not be added. Defaults to true — the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
+          * @default true
+         */
+        "hide_reload_button"?: boolean;
         /**
           * If true the table filters will not be added
          */
@@ -8007,6 +8080,10 @@ declare namespace LocalJSX {
           * Event emitted when search params change in server-side mode. Contains filters, search text, pagination info
          */
         "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<AtISearchTableParams>) => void;
+        /**
+          * Event emitted when the reload button is clicked
+         */
+        "onAtuiReload"?: (event: AtSearchTableCustomEvent<void>) => void;
         /**
           * Default page size of the table
           * @default 20
@@ -9582,6 +9659,9 @@ declare namespace LocalJSX {
         "timestamp": string;
         "update_interval": number;
     }
+    interface AtReloadButtonAttributes {
+        "has_updates": boolean;
+    }
     interface AtSearchAttributes {
         "label": string;
         "hint_text": string;
@@ -9595,6 +9675,8 @@ declare namespace LocalJSX {
         "page_size": number;
         "hide_table_filters": boolean;
         "hide_column_manager": boolean;
+        "hide_reload_button": boolean;
+        "has_updates": boolean;
         "hide_export_menu": boolean;
         "hide_csv_export": boolean;
         "hide_pdf_export": boolean;
@@ -9864,6 +9946,7 @@ declare namespace LocalJSX {
         "at-radio-group": Omit<AtRadioGroup, keyof AtRadioGroupAttributes> & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes]?: AtRadioGroup[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `attr:${K}`]?: AtRadioGroupAttributes[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `prop:${K}`]?: AtRadioGroup[K] };
         "at-relative-datetime-cell": AtRelativeDatetimeCell;
         "at-relative-time": Omit<AtRelativeTime, keyof AtRelativeTimeAttributes> & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes]?: AtRelativeTime[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `attr:${K}`]?: AtRelativeTimeAttributes[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `prop:${K}`]?: AtRelativeTime[K] };
+        "at-reload-button": Omit<AtReloadButton, keyof AtReloadButtonAttributes> & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes]?: AtReloadButton[K] } & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes as `attr:${K}`]?: AtReloadButtonAttributes[K] } & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes as `prop:${K}`]?: AtReloadButton[K] };
         "at-search": Omit<AtSearch, keyof AtSearchAttributes> & { [K in keyof AtSearch & keyof AtSearchAttributes]?: AtSearch[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `attr:${K}`]?: AtSearchAttributes[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `prop:${K}`]?: AtSearch[K] };
         "at-search-table": Omit<AtSearchTable, keyof AtSearchTableAttributes> & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes]?: AtSearchTable[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `attr:${K}`]?: AtSearchTableAttributes[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `prop:${K}`]?: AtSearchTable[K] };
         "at-select": Omit<AtSelect, keyof AtSelectAttributes> & { [K in keyof AtSelect & keyof AtSelectAttributes]?: AtSelect[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `attr:${K}`]?: AtSelectAttributes[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `prop:${K}`]?: AtSelect[K] };
@@ -10242,6 +10325,11 @@ declare module "@stencil/core" {
              * <at-relative-time timestamp="2026-06-02T10:30:00Z" />
              */
             "at-relative-time": LocalJSX.IntrinsicElements["at-relative-time"] & JSXBase.HTMLAttributes<HTMLAtRelativeTimeElement>;
+            /**
+             * @category Actions
+             * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
+             */
+            "at-reload-button": LocalJSX.IntrinsicElements["at-reload-button"] & JSXBase.HTMLAttributes<HTMLAtReloadButtonElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.

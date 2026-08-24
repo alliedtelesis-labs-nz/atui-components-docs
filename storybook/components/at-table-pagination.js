@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-B1rdwg4H.js";const s=o,p=r;export{s as AtTablePagination,p as defineCustomElement}
+import{A as s,d as o}from"./p-B55ifG-s.js";const p=s,r=o;export{p as AtTablePagination,r as defineCustomElement}

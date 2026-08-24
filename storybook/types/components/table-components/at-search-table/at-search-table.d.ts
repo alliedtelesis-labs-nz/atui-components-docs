@@ -61,6 +61,20 @@ export declare class AtSearchTable {
      */
     hide_column_manager?: boolean;
     /**
+     * If true the table reload button will not be added. Defaults to true —
+     * the reload button is opt-in, so existing tables don't gain new UI
+     * just from upgrading the library.
+     */
+    hide_reload_button?: boolean;
+    /**
+     * Shows an indicator on the reload button when the underlying data has
+     * changed since it was last loaded. This component does not detect
+     * changes itself — set this to true once the consumer knows of an
+     * update (e.g. from a websocket or poll) and back to false once the
+     * user reloads.
+     */
+    has_updates?: boolean;
+    /**
      * If true the table export menu will not be added
      */
     hide_export_menu?: boolean;
@@ -112,6 +126,10 @@ export declare class AtSearchTable {
      */
     atSearchParamsChange: EventEmitter<AtISearchTableParams>;
     /**
+     * Event emitted when the reload button is clicked
+     */
+    atuiReload: EventEmitter<void>;
+    /**
      * Event emitted when CSV export is requested
      */
     atExportCsv: EventEmitter<AtIPaginationParams>;
@@ -155,6 +173,7 @@ export declare class AtSearchTable {
     handleSearchFiltersChange(): void;
     handleLoadingChange(newValue: boolean): void;
     componentWillLoad(): Promise<void>;
+    warnIfHasUpdatesIsANoOp(): void;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     /**

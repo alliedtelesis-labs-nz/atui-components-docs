@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B7bW4GPk.js');
+var index = require('./index-B6UemjpQ.js');
 
 const AtToggleCell = class {
     constructor(hostRef) {
@@ -48,7 +48,7 @@ const AtToggleCell = class {
         this.timer = setTimeout(() => { }, 2000);
     }
     render() {
-        return (index.h(index.Host, { key: '2ef400b5cddb81a45db2a013ce62b122e66f00cd', class: "flex h-full items-center leading-[100%]" }, index.h("at-toggle-switch", { key: 'affeb97b6c4700d0e7b6eb336401605e7ae424bd', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
+        return (index.h(index.Host, { key: '9106018e1a2745b3b8eabe4d01afc5982d39fb65', class: "flex h-full items-center leading-[100%]" }, index.h("at-toggle-switch", { key: 'd7eeb1f45011cfd238a8ecf3a509fa051f73c604', label: this.label, onChange: () => this.params.onTrigger?.(this.params), label_position: this.labelPosition, show_label: !!this.label, value: this.value, disabled: this.disabled })));
     }
 };
 

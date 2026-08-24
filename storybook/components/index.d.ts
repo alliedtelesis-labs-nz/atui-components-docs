@@ -127,6 +127,8 @@ export { AtRelativeDateTimeCell as AtRelativeDatetimeCell } from '../types/compo
 export { defineCustomElement as defineCustomElementAtRelativeDatetimeCell } from './at-relative-datetime-cell';
 export { AtRelativeTimeComponent as AtRelativeTime } from '../types/components/at-relative-time/at-relative-time';
 export { defineCustomElement as defineCustomElementAtRelativeTime } from './at-relative-time';
+export { AtReloadButton as AtReloadButton } from '../types/components/at-reload-button/at-reload-button';
+export { defineCustomElement as defineCustomElementAtReloadButton } from './at-reload-button';
 export { AtSearch as AtSearch } from '../types/components/at-search/at-search';
 export { defineCustomElement as defineCustomElementAtSearch } from './at-search';
 export { AtSearchTable as AtSearchTable } from '../types/components/table-components/at-search-table/at-search-table';

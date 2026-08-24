@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-B7bW4GPk.js');
-var translation = require('./translation-D3uILiF8.js');
+var index = require('./index-B6UemjpQ.js');
+var translation = require('./translation-DAtK7Gwm.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
 var cellSearchText = require('./cell-search-text-D-KU9XtL.js');
 require('./index-BFMvfEk4.js');
@@ -22,6 +22,7 @@ const AtSearchTable = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atSearchParamsChange = index.createEvent(this, "atSearchParamsChange", 7);
+        this.atuiReload = index.createEvent(this, "atuiReload", 7);
         this.atExportCsv = index.createEvent(this, "atExportCsv", 7);
         this.atExportPdf = index.createEvent(this, "atExportPdf", 7);
     }
@@ -63,6 +64,20 @@ const AtSearchTable = class {
      * If true the column manager will not be added
      */
     hide_column_manager;
+    /**
+     * If true the table reload button will not be added. Defaults to true —
+     * the reload button is opt-in, so existing tables don't gain new UI
+     * just from upgrading the library.
+     */
+    hide_reload_button = true;
+    /**
+     * Shows an indicator on the reload button when the underlying data has
+     * changed since it was last loaded. This component does not detect
+     * changes itself — set this to true once the consumer knows of an
+     * update (e.g. from a websocket or poll) and back to false once the
+     * user reloads.
+     */
+    has_updates = false;
     /**
      * If true the table export menu will not be added
      */
@@ -114,6 +129,10 @@ const AtSearchTable = class {
      * Contains filters, search text, pagination info
      */
     atSearchParamsChange;
+    /**
+     * Event emitted when the reload button is clicked
+     */
+    atuiReload;
     /**
      * Event emitted when CSV export is requested
      */
@@ -196,6 +215,12 @@ const AtSearchTable = class {
     async componentWillLoad() {
         this.pageSize = this.page_size || 10;
         this.translations = await translation.fetchTranslations(this.el);
+        this.warnIfHasUpdatesIsANoOp();
+    }
+    warnIfHasUpdatesIsANoOp() {
+        if (this.has_updates && this.hide_reload_button) {
+            console.warn('atui-search-table: has_updates has no effect while hide_reload_button is true — set hide_reload_button to false to show the reload button (and its indicator).');
+        }
     }
     async componentDidLoad() {
         await this.initGrid();
@@ -612,17 +637,26 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'e479e1ad37b156185037833c8dbc3a34c0b00c40', class: this.server_side_mode ? 'is-loading' : '' }, index.h("at-table-actions", { key: '6f940d78bd3086a1db3d58c06123884fee15392f', ag_grid: this.agGrid }, index.h("at-control-group", { key: '1b2631e5c27fc9fbcecf3cf42b9831a395b707b7', slot: "search" }, this.shouldShowTableFilters &&
-            !this.search_filters && (index.h("at-table-filter-menu", { key: '19e01094ecd45a129ac222fd97f7852c59eeeb9d', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: '0a58ceaf3d1639b3fe9a98583ae982dbe2e27740', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (index.h("at-table-filters", { key: '93b667d20df671ea5f35d372dc3069e3ded8f359', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '6d2c1a2aa8ea80bb865dee6b287c291704c0548c', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: 'ff6406da70df6850648956bef60056e5245a4493', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '37f2dbd21f1726af278607a30589c00057080ee7', slot: "leading-actions" }, index.h("slot", { key: 'b7d2beb95d2c9b09803d954933d6e044e4da3291', name: "leading-actions" })), index.h("div", { key: 'e38f760faf40f9fcaa773af843c9275a5c35b6e5', slot: "actions" }, index.h("slot", { key: '6b38b498d33fd0c8435bd8652913ae29d8b360d5', name: "actions" }))), index.h("slot", { key: '3dd8a712f8516e1393bea9443bf79cfee5b1f123', name: "multi-select-actions" }), index.h("div", { key: '15bde2e835648d234b74ff9fbd379e7ebbd8b5f4', class: "relative" }, index.h("at-table", { key: '786610feb4e7e1b5a2f1ccce7e6e77d17a511f99', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+        return (index.h(index.Host, { key: 'f4a8825094b4bb9571105cebd9dc6b94cf1dc4ef', class: this.server_side_mode ? 'is-loading' : '' }, index.h("at-table-actions", { key: '75b649d18e14b6368410475de3f3718f61b27330', ag_grid: this.agGrid }, index.h("at-control-group", { key: '07c496fe98e860fb925f4007a5a48eb0e6014d4f', slot: "search" }, this.shouldShowTableFilters &&
+            !this.search_filters && (index.h("at-table-filter-menu", { key: '7aabcbacb03f91c212b076167b89134a50796212', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), index.h("at-search", { key: 'db03e5330af72e81708008c271cbe6b31bcef6be', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (index.h("at-table-filters", { key: '5f39c8f9a59d10028a06b5395526b68009ce920a', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), !this.hide_reload_button && (index.h("at-reload-button", { key: '8c80e149bd54f4fd0835ea60e75fb7ee4523c4e1', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+                // at-reload-button's atuiReload otherwise
+                // bubbles straight through this non-shadow
+                // host (same name we re-emit below), so a
+                // consumer listening on <at-search-table>
+                // would see both the bubbled original and
+                // this re-emit for one click.
+                event.stopPropagation();
+                this.atuiReload.emit();
+            } })), !this.hide_export_menu && (index.h("at-table-export-menu", { key: '1c716e81afe5c62af6d4c836928d73571044e49f', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (index.h("at-column-manager", { key: '6bb13d7061b4cdcefd88f7cb1a951f9c6768204e', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), index.h("div", { key: '075f16e4c926cb19bb5ddf0a756f9754ac42998a', slot: "leading-actions" }, index.h("slot", { key: '714d2c0c8bf9d27a084a0766f4e0e39984838260', name: "leading-actions" })), index.h("div", { key: '0d4e5f9733295727da0089663832391e61e8e052', slot: "actions" }, index.h("slot", { key: '0517308ca9423c5ca37a161344a021153560187f', name: "actions" }))), index.h("slot", { key: 'd6b163dca739d3ca26dcdebf06e8b6345c98bdfd', name: "multi-select-actions" }), index.h("div", { key: '80497e4f6230be72fa5ad189c051ebe801421bf0', class: "relative" }, index.h("at-table", { key: 'd2d799c9486ad250e020cb8aaf05ef989d841c7f', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (index.h("div", { key: '5ec4f1bd8d3bee646c1ff1ec748041f646ec8fd9', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, index.h("div", { key: '460486aeb1b7a4e3e9e548efaf5336de77782eb9', class: "flex items-center" }, index.h("at-loading", { key: 'a43d0a8c2850c34469a2127681f9268e7bc364d2', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), index.h("span", { key: '1032f2e7530cc0050e214cfc1041529347d79145', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (index.h("div", { key: 'e0c6cda3c79c7aaaa95c37026d22fca6f0cc3d97', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, index.h("at-icon", { key: '3f201f0328be1edb19329134189ef6012a9b914e', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (index.h("div", { key: '8aab28f2eaf2e8c347328428cbcfa5525b216c22', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, index.h("div", { key: '859e0615216a4b2273a784550681d07e68356804', class: "flex items-center" }, index.h("at-loading", { key: '69b80d2dbe518fc41e9cf908a1f3a6e3d44cf89d', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), index.h("span", { key: '826c01f2f33e736ca9a85b887f157ba37fd5adf7', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (index.h("div", { key: 'd81eeb8996957ad7ad453bfb59c72905176fc67a', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, index.h("at-icon", { key: '93f14a030e0d06f0a069ab7bb53bcfc96fe684ae', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), index.h("span", { key: 'd2498e0cb5157f2b4d5da98b7a70e4883d600899', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), index.h("span", { key: 'b207c877e0d34471ee7803b1faa219b1437e87da', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (index.h("at-table-pagination", { key: 'ba596656e78308c750cda56cd14423228a629f2b', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (index.h("at-table-pagination", { key: 'a490711b06aa1230d598ca619a734d11d61d7b5e', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "page_size": [{
@@ -636,6 +670,12 @@ const AtSearchTable = class {
             }],
         "loading": [{
                 "handleLoadingChange": 0
+            }],
+        "has_updates": [{
+                "warnIfHasUpdatesIsANoOp": 0
+            }],
+        "hide_reload_button": [{
+                "warnIfHasUpdatesIsANoOp": 0
             }]
     }; }
 };

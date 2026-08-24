@@ -20,6 +20,8 @@
             "LOADING_DATA": "データを読み込み中...",
             "NO_DATA": "データなし",
             "SEARCH_BY_KEYWORD": "キーワードで検索",
+            "RELOAD": "再読み込み",
+            "RELOAD_UPDATES_AVAILABLE": "再読み込み（更新あり）",
             "EXPORT_TO_FILE": "ファイルに出力",
             "EXPORT_AS_CSV": "CSV 出力",
             "EXPORT_AS_PDF": "PDF 出力",

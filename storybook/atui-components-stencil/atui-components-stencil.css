@@ -2556,6 +2556,10 @@ strong {
   right: 4px;
 }
 
+.right-\[2px\] {
+  right: 2px;
+}
+
 .right-\[36px\] {
   right: 36px;
 }
@@ -2574,6 +2578,10 @@ strong {
 
 .top-\[-8px\] {
   top: -8px;
+}
+
+.top-\[2px\] {
+  top: 2px;
 }
 
 .z-10 {
@@ -2844,6 +2852,10 @@ strong {
   height: 80px;
 }
 
+.h-\[8px\] {
+  height: 8px;
+}
+
 .h-button-lg {
   height: var(--token-button-height-lg);
 }
@@ -2963,6 +2975,10 @@ strong {
 
 .w-\[40px\] {
   width: 40px;
+}
+
+.w-\[8px\] {
+  width: 8px;
 }
 
 .w-auto {
@@ -3562,6 +3578,12 @@ strong {
 
 .border-e-transparent {
   border-inline-end-color: transparent;
+}
+
+.\!bg-active-foreground {
+  --tw-bg-opacity:
+      1 !important;
+  background-color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
 }
 
 .\!bg-surface-1 {

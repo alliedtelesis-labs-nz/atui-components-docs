@@ -20,6 +20,8 @@
             "LOADING_DATA": "Loading data...",
             "NO_DATA": "No Data",
             "SEARCH_BY_KEYWORD": "Search by keyword",
+            "RELOAD": "Reload",
+            "RELOAD_UPDATES_AVAILABLE": "Reload (updates available)",
             "EXPORT_TO_FILE": "Export to file",
             "EXPORT_AS_CSV": "Export as CSV",
             "EXPORT_AS_PDF": "Export as PDF",

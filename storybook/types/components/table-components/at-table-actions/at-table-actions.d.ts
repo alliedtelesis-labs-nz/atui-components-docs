@@ -7,6 +7,7 @@ import { GridApi } from 'ag-grid-community';
  * @slot column-manager - Used to place an at-column-manager
  * @slot search - Used to place an at-search
  * @slot filters - Used to place an at-table-filters
+ * @slot reload-button - Used to place an at-reload-button
  * @slot export-menu - Used to place an at-export-menu
  * @slot leading-actions - Used to place actions immediately left of the column manager
  * @slot actions - Used to place actions related to table content
