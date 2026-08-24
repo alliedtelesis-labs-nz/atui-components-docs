@@ -54,3 +54,26 @@ Default.args = {
     dismissible: true,
     closeButton: false,
 };
+/**
+ * A toast for a condition rather than an event: `timeout: 0` so it never
+ * expires on its own, and the handle `show` returns is what takes it down when
+ * the condition clears. Dismissing twice, or after the toast has been tapped
+ * away, does nothing.
+ */
+export const DismissedByHandle = () => `
+  <at-button data-name="show" label="Start" type="primary"></at-button>
+  <at-button data-name="dismiss" label="Recovered" type="secondary"></at-button>
+  <script>
+    let handle = null;
+    document.querySelector('[data-name="show"]').onclick = async () => {
+      handle ??= await ToasterService.show("error", "Cannot reach the service", {
+        title: "Reconnecting",
+        timeout: 0,
+      });
+    };
+    document.querySelector('[data-name="dismiss"]').onclick = async () => {
+      await handle?.dismiss();
+      handle = null;
+    };
+  </script>
+`;

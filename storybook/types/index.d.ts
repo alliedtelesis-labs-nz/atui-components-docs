@@ -24,7 +24,7 @@ export { AtIChipCellData } from './components/table-components/cell-components/a
 export { AtICheckboxCellData } from './components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';
 export { type AtIPromptMessage, type AtPromptUserRole, type AtPromptResponseAnimation, AtPromptResponseScore, } from './types/prompt';
 export { ToasterService } from './utils/toaster.service';
-export { AtIToast, AtIToastOptions, AtIToastPosition, AtIToastType, } from './types/toast';
+export { AtIToast, AtIToastHandle, AtIToastOptions, AtIToastPosition, AtIToastType, } from './types/toast';
 export { AtChartColorPalette } from './types/chart-color';
 export { AtChartSparklineMode, AtChartSparklineStatus, } from './components/at-chart-sparkline/at-chart-sparkline';
 export { AtChartGaugeStatus, AtChartGaugePalette, } from './components/at-chart-gauge/at-chart-gauge';

@@ -1408,6 +1408,8 @@ class ToasterService {
      * @param type The type of the toast
      * @param message The message to display in the toast
      * @param options Additional options for the toast (title, position, timeout, dismissible)
+     * @returns A handle to the shown toast, for a caller that needs to take it
+     * down itself. A caller showing an ordinary timed toast can ignore it.
      */
     static async show(type, message, options = {}) {
         const id = this.id++;
@@ -1417,7 +1419,12 @@ class ToasterService {
         };
         const toast = { id, type, message, ...toastOptions };
         const toaster = await this.getToaster(toastOptions.position);
-        toaster.addToast(toast);
+        await toaster.addToast(toast);
+        // Closing over the toaster rather than looking it up again: the handle
+        // has to reach the container this toast went into, which a later
+        // lookup by position would not guarantee if that one has since been
+        // torn down and replaced.
+        return { id, dismiss: () => toaster.removeToast(id) };
     }
     /**
      * Get or create at-toaster component

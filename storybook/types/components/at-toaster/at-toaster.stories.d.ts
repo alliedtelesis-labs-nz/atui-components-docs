@@ -32,3 +32,10 @@ declare const _default: {
 };
 export default _default;
 export declare const Default: any;
+/**
+ * A toast for a condition rather than an event: `timeout: 0` so it never
+ * expires on its own, and the handle `show` returns is what takes it down when
+ * the condition clears. Dismissing twice, or after the toast has been tapped
+ * away, does nothing.
+ */
+export declare const DismissedByHandle: () => string;

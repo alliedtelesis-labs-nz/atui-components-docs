@@ -6,7 +6,7 @@
 
 ### ToasterService
 
-Defined in: [toaster.service.ts:10](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/toaster.service.ts#L10)
+Defined in: [toaster.service.ts:11](https://github.com/alliedtelesis-labs-nz/atui-components/blob/5e5f54a3a7b3ec2a12a2405f934ab396b53fd8bf/atui-components-stencil/src/utils/toaster.service.ts#L11)
 
 #### Constructors
 
@@ -22,9 +22,9 @@ Defined in: [toaster.service.ts:10](https://github.com/alliedtelesis-labs-nz/atu
 
 ##### show()
 
-> `static` **show**(`type`, `message`, `options`): `Promise`\<`void`\>
+> `static` **show**(`type`, `message`, `options?`): `Promise`\<`AtIToastHandle`\>
 
-Defined in: [toaster.service.ts:22](https://github.com/alliedtelesis-labs-nz/atui-components/blob/e76b8a8dd878b5b83b0c272938c6f10452d89877/atui-components-stencil/src/utils/toaster.service.ts#L22)
+Defined in: [toaster.service.ts:25](https://github.com/alliedtelesis-labs-nz/atui-components/blob/5e5f54a3a7b3ec2a12a2405f934ab396b53fd8bf/atui-components-stencil/src/utils/toaster.service.ts#L25)
 
 Show a toast message
 
@@ -32,7 +32,7 @@ Show a toast message
 
 ###### type
 
-`ToastType`
+`AtIToastType`
 
 The type of the toast
 
@@ -42,12 +42,15 @@ The type of the toast
 
 The message to display in the toast
 
-###### options
+###### options?
 
-`ToastOptions` = `{}`
+`AtIToastOptions` = `{}`
 
 Additional options for the toast (title, position, timeout, dismissible)
 
 ###### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`AtIToastHandle`\>
+
+A handle to the shown toast, for a caller that needs to take it
+down itself. A caller showing an ordinary timed toast can ignore it.
