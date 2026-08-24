@@ -110,3 +110,55 @@ ButtonTypes.parameters = {
         },
     },
 };
+export const IconButtons = Template.bind({});
+IconButtons.storyName = 'Icon Buttons';
+IconButtons.args = {
+    col_defs: [
+        {
+            width: 100,
+            field: 'col_one',
+            colId: 'col_one',
+            sortable: false,
+            resizable: false,
+            cellRenderer: '***AtMultiBtnCell***',
+            headerName: 'Actions',
+            valueGetter: "***(params) => params.data['col_one']***",
+            cellRendererParams: {
+                buttons: "***(params) => params.data['col_one']***",
+            },
+        },
+    ],
+    table_data: {
+        items: [
+            {
+                _id: '1',
+                col_one: [
+                    {
+                        value: 'Edit',
+                        icon: 'edit',
+                        tooltip: 'Edit this row',
+                        disabled: false,
+                        click: '***(params) => console.log("edit")***',
+                    },
+                    {
+                        value: 'Delete',
+                        icon: 'delete',
+                        type: 'destructiveText',
+                        tooltip: 'Delete this row',
+                        disabled: false,
+                        click: '***(params) => console.log("delete")***',
+                    },
+                ],
+            },
+        ],
+        total: 1,
+    },
+    page_size: 10,
+};
+IconButtons.parameters = {
+    docs: {
+        description: {
+            story: 'Setting `icon` renders the button as an icon only, which keeps an actions column down to the width of its buttons. `value` becomes the accessible name, so give every icon button a `tooltip` as well to state the action on hover.',
+        },
+    },
+};

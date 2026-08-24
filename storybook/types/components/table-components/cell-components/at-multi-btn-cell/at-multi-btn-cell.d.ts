@@ -12,6 +12,7 @@ export interface AtIMultiBtnCellParams extends ICellRendererParams, IClickCell {
 export interface AtIBtnParams {
     value: string;
     type?: AtButtonType;
+    icon?: string;
     containerStyles?: AtICSSProperties;
     click?: (params: ICellRendererParams) => any;
     disabled: boolean;
@@ -23,6 +24,9 @@ type InitParams = AtIMultiBtnCellParams;
 /**
  * @category Data Tables
  * @description A cell component for displaying multiple buttons.
+ * @dependency at-button
+ * @dependency at-icon
+ * @dependency at-tooltip
  */
 export declare class AtMultiBtnCell implements ICellRendererComp {
     el: HTMLElement;

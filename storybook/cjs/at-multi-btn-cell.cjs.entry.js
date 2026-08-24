@@ -32,11 +32,11 @@ const AtMultiBtnCell = class {
     }
     get buttonsToRender() {
         return this.buttons.map((button) => {
-            return (index.h("at-tooltip", { position: "top", disabled: !button.tooltip, class: "h-fit self-center" }, button && (index.h("at-button", { slot: "tooltip-trigger", type: button.type ?? 'secondaryText', label: button.value, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) })), button && button.tooltip && (index.h("span", { class: `leading-normal` }, button.tooltip))));
+            return (index.h("at-tooltip", { position: "top", disabled: !button.tooltip, class: "h-fit self-center" }, button && (index.h("at-button", { slot: "tooltip-trigger", type: button.type ?? 'secondaryText', label: button.icon ? undefined : button.value, "aria-label": button.icon ? button.value : undefined, disabled: button.disabled, "data-name": button.dataNameValue, onAtuiClick: () => this.handleClick(button) }, button.icon && (index.h("at-icon", { slot: "icon", name: button.icon, size: "16px" })))), button && button.tooltip && (index.h("span", { class: `leading-normal` }, button.tooltip))));
         });
     }
     render() {
-        return (index.h(index.Host, { key: '98c27247aa466e270090ddd1d5376f5ad7cf10fd', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: '173d9bf778bb6c1495f42521cbc3db60cefc5cab', class: "flex h-full items-center" }, this.buttonsToRender));
     }
 };
 

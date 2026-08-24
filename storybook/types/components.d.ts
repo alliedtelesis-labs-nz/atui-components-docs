@@ -1864,6 +1864,9 @@ export namespace Components {
     /**
      * @category Data Tables
      * @description A cell component for displaying multiple buttons.
+     * @dependency at-button
+     * @dependency at-icon
+     * @dependency at-tooltip
      */
     interface AtMultiBtnCell {
     }
@@ -4555,6 +4558,9 @@ declare global {
     /**
      * @category Data Tables
      * @description A cell component for displaying multiple buttons.
+     * @dependency at-button
+     * @dependency at-icon
+     * @dependency at-tooltip
      */
     interface HTMLAtMultiBtnCellElement extends Components.AtMultiBtnCell, HTMLStencilElement {
     }
@@ -7330,6 +7336,9 @@ declare namespace LocalJSX {
     /**
      * @category Data Tables
      * @description A cell component for displaying multiple buttons.
+     * @dependency at-button
+     * @dependency at-icon
+     * @dependency at-tooltip
      */
     interface AtMultiBtnCell {
     }
@@ -10164,6 +10173,9 @@ declare module "@stencil/core" {
             /**
              * @category Data Tables
              * @description A cell component for displaying multiple buttons.
+             * @dependency at-button
+             * @dependency at-icon
+             * @dependency at-tooltip
              */
             "at-multi-btn-cell": LocalJSX.IntrinsicElements["at-multi-btn-cell"] & JSXBase.HTMLAttributes<HTMLAtMultiBtnCellElement>;
             /**
