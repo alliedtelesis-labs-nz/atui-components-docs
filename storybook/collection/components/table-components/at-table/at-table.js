@@ -81,10 +81,15 @@ export class AtTableComponent {
     }
     /**
      * Makes each column searchable by the text its cell renderer displays rather than by the
-     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence,
+     * except on a column flagged `excludeFromGlobalSearch`, which contributes nothing -
+     * the same precedence `at-search-table`'s own matcher applies.
      */
     withSearchText(colDefs) {
         return (colDefs ?? []).map((colDef) => {
+            if (colDef.excludeFromGlobalSearch === true) {
+                return { ...colDef, getQuickFilterText: () => '' };
+            }
             if (colDef.getQuickFilterText) {
                 return colDef;
             }
@@ -261,7 +266,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: '74327ea269f5cb4d602c85bb222b2725dd4d7ab1', class: {
+        return (h(Host, { key: 'bf7eac2a32731f7ee7eac82ccf674530c2fbc509', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

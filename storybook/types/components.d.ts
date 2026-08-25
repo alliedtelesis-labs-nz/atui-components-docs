@@ -2465,7 +2465,7 @@ export namespace Components {
          */
         "search_hidden_columns"?: boolean;
         /**
-          * Info text displayed in a tooltip at the right of the search input.
+          * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is generated automatically listing any visible columns flagged with `excludeFromGlobalSearch` in their column def; no icon is shown when nothing is excluded. Under `server_side_mode` that flag does not filter - the server matches whichever columns it chooses - so supply this text yourself there rather than relying on the generated tooltip.
          */
         "search_info_tooltip": string;
         /**
@@ -8080,7 +8080,7 @@ declare namespace LocalJSX {
          */
         "search_hidden_columns"?: boolean;
         /**
-          * Info text displayed in a tooltip at the right of the search input.
+          * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is generated automatically listing any visible columns flagged with `excludeFromGlobalSearch` in their column def; no icon is shown when nothing is excluded. Under `server_side_mode` that flag does not filter - the server matches whichever columns it chooses - so supply this text yourself there rather than relying on the generated tooltip.
          */
         "search_info_tooltip"?: string;
         /**

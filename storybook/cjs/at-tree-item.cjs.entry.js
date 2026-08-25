@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B6UemjpQ.js');
+var index = require('./index-DxsGpXWy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {

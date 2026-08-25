@@ -75,7 +75,9 @@ export declare class AtTableComponent {
     handlePageSizeChange(newPageSize: number): void;
     /**
      * Makes each column searchable by the text its cell renderer displays rather than by the
-     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence,
+     * except on a column flagged `excludeFromGlobalSearch`, which contributes nothing -
+     * the same precedence `at-search-table`'s own matcher applies.
      */
     private withSearchText;
     handleColDefsChange(newColDefs: ColDef[]): void;

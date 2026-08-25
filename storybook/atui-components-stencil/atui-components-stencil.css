@@ -2572,6 +2572,10 @@ strong {
   top: 50%;
 }
 
+.top-2 {
+  top: 2px;
+}
+
 .top-4 {
   top: 4px;
 }
@@ -2646,10 +2650,6 @@ strong {
 
 .ml-auto {
   margin-left: auto;
-}
-
-.mr-24 {
-  margin-right: 24px;
 }
 
 .mr-4 {
@@ -3341,7 +3341,7 @@ strong {
   white-space: nowrap;
 }
 
-.overflow-ellipsis {
+.text-ellipsis {
   text-overflow: ellipsis;
 }
 
@@ -4101,6 +4101,10 @@ strong {
 
 .pr-8 {
   padding-right: 8px;
+}
+
+.pr-\[28px\] {
+  padding-right: 28px;
 }
 
 .ps-8 {

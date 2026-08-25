@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B6UemjpQ.js');
+var index = require('./index-DxsGpXWy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-DAtK7Gwm.js');
 

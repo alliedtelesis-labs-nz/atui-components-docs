@@ -31,7 +31,12 @@ export declare class AtSearchTable {
      */
     label: string;
     /**
-     * Info text displayed in a tooltip at the right of the search input.
+     * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is
+     * generated automatically listing any visible columns flagged with
+     * `excludeFromGlobalSearch` in their column def; no icon is shown when
+     * nothing is excluded. Under `server_side_mode` that flag does not filter -
+     * the server matches whichever columns it chooses - so supply this text
+     * yourself there rather than relying on the generated tooltip.
      */
     search_info_tooltip: string;
     /**
@@ -170,6 +175,13 @@ export declare class AtSearchTable {
     get totalPages(): number;
     get hasNoData(): boolean;
     get hasActiveSearch(): boolean;
+    /**
+     * A consumer-supplied `search_info_tooltip` always wins. Otherwise the tooltip is
+     * derived from visible columns flagged `excludeFromGlobalSearch`, so the info icon
+     * appears exactly when the keyword search skips a column the user can see, and a
+     * column leaves the list again once the column manager hides it.
+     */
+    get searchInfoTooltip(): string | undefined;
     handlePageSizeProp(newValue?: number): void;
     handleSelectedFiltersChange(newValue: AtIFilterGroup): void;
     handleSearchFiltersChange(): void;

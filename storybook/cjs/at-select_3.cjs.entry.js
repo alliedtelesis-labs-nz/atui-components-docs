@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B6UemjpQ.js');
+var index = require('./index-DxsGpXWy.js');
 var translation = require('./translation-DAtK7Gwm.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -338,7 +338,7 @@ const AtSelectComponent = class {
         return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (index.h("div", { class: "absolute top-4 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
+            !this.disabled && (index.h("div", { class: "absolute top-2 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
                 this.atuiChange.emit(this.value);
@@ -350,7 +350,7 @@ const AtSelectComponent = class {
     renderOptions() {
         return (index.h("div", { class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-24 outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {

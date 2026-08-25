@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B6UemjpQ.js');
+var index = require('./index-DxsGpXWy.js');
 var translation = require('./translation-DAtK7Gwm.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-CBDuvYdu.js');
 var classlist = require('./classlist-BPb95vgj.js');
@@ -108,13 +108,13 @@ const AtInputDate = class {
         }
     }
     render() {
-        const getClassname = classlist.classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig$1);
+        const getClassname = classlist.classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig$1);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h(index.Host, { key: 'c8ea8339387bdd3836d479afe7f9c227eadfdf42' }, index.h("style", { key: 'c3f8c5d3c2fc0d616b0f60bb1741c905cddbaecb' }, `
+        return (index.h(index.Host, { key: '278d57190ce7c4d8d68edb09bcda1b1a2f9b5530' }, index.h("style", { key: '32e8bb25936e382291520c9e67a50d94e1a9c237' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -127,9 +127,9 @@ const AtInputDate = class {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), index.h("div", { key: 'fe2791bfbfb491d7240019c1b78b79e4e7241124', class: "flex w-full flex-col" }, index.h("div", { key: 'fecb437628fa914cca8fc6947526cf4a6aefc75b', class: "flex flex-col" }, index.h("div", { key: '61b06585c0578f43abe9b63706a36c0c50fe34f0', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), index.h("div", { key: '55488659f51c1ab56cb32cb7e57d92e936eacb15', class: "flex w-full flex-col" }, index.h("div", { key: '9bdf74a7b2ad934544078769b819aa793218058b', class: "flex flex-col" }, index.h("div", { key: '2def4ae81c085528ae34af8c33db20275c8c646a', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (index.h("at-form-label", { key: '0a5cd74c565ce81f288dd5912705a03cd0a71385', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'db2d1131bfd61411b02c4a0e2b3809fdf8cf81c9', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), index.h("div", { key: 'e1c97c6c2ee889e1e6cfbb8057f9882c40c01d1e', class: classname }, index.h("input", { key: 'ae2d87f20012a9c2d4bdd158fbdb778a6aee5923', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (index.h("at-form-label", { key: '44d262348f277d1c63a170431cc8e889f19a0ab9', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'af34d8f8baf546497a22a451edcc7b17329b5bf4', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), index.h("div", { key: 'e403952a78edcf2dd77691d4f4732aa0e9faeec0', class: classname }, index.h("input", { key: 'b24a258128037242c1f1fd50ed4e7cc79836fcb3', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -150,7 +150,7 @@ const AtInputDate = class {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (index.h("span", { key: 'a1add607a6ec46680f8adf0b865822c69a6d5b27', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.invalid && (index.h("span", { key: '86429e8948b9f58f9277f966ebb237fe13c0d9f7', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get watchers() { return {
         "value": [{
@@ -239,13 +239,13 @@ const AtInputTime = class {
         this.atuiChange.emit(normalized);
     };
     render() {
-        const getClassname = classlist.classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid overflow-ellipsis transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
+        const getClassname = classlist.classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid transition-colors duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
             invalid: !!this.invalid,
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (index.h(index.Host, { key: '099a66fbb19a36f3a4c185585fcdb4e0a2680c22' }, index.h("style", { key: 'f154b47d312218ca6f9d9278ae874ca4fe6392de' }, `
+        return (index.h(index.Host, { key: 'd18142eb794cf3123e6b55f7ba6bf93ca0cf6b7f' }, index.h("style", { key: '706b4812ddadb2985affda74009af13452971022' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -257,7 +257,7 @@ const AtInputTime = class {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), index.h("div", { key: 'bacb2856bc330988828a011d6fcfcbe6140a43ee', class: "flex flex-col" }, index.h("div", { key: '8ba27cc36c030fc535b2d88fa40aecbce045004d', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '56934dff36d500d88d133517267adba23b77eef1', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'ef3ea2d0da20650567a228d04f466c925e3d4102', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'a62d5a7453e3ded9732960744567af8be2022881', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '1a72e970b29cd67f839bb5b0a86ac3f816b3f911', class: classname }, index.h("input", { key: 'bfa291ac79c0c4168666b0386c59fc2fa80af8bc', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (index.h("span", { key: '1bdd592dffc7ef7731208764d0e8999a85bf4d1f', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), index.h("div", { key: 'c98e4674ab2f3e932f7f848b2ec16bc8eca2cb4f', class: "flex flex-col" }, index.h("div", { key: '49723d29a9ac8787a33b8686bb9778414d1c71d1', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '20b9d57d09c024bd3ddd7c3245f4688257385b41', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'cfa66ef217978b97996296f32c461025129a30d1', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'a372c0cadef07b9b222b9b821fdd1b2946c78866', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '470ef2f7633e185a3c032763c8fd35824372aba3', class: classname }, index.h("input", { key: 'ae1b954fcc37c0ece8e4a90a648083913a823588', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (index.h("span", { key: '700cadac1abe4669354bcec2bb31a9ea8071c135', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
 };
 

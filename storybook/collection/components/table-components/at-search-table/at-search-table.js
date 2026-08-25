@@ -20,7 +20,12 @@ export class AtSearchTable {
      */
     label;
     /**
-     * Info text displayed in a tooltip at the right of the search input.
+     * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is
+     * generated automatically listing any visible columns flagged with
+     * `excludeFromGlobalSearch` in their column def; no icon is shown when
+     * nothing is excluded. Under `server_side_mode` that flag does not filter -
+     * the server matches whichever columns it chooses - so supply this text
+     * yourself there rather than relying on the generated tooltip.
      */
     search_info_tooltip;
     /**
@@ -173,6 +178,29 @@ export class AtSearchTable {
     get hasActiveSearch() {
         return (!!this.searchValue ||
             Object.values(this.activeFilters).some((v) => v !== ''));
+    }
+    /**
+     * A consumer-supplied `search_info_tooltip` always wins. Otherwise the tooltip is
+     * derived from visible columns flagged `excludeFromGlobalSearch`, so the info icon
+     * appears exactly when the keyword search skips a column the user can see, and a
+     * column leaves the list again once the column manager hides it.
+     */
+    get searchInfoTooltip() {
+        if (this.search_info_tooltip) {
+            return this.search_info_tooltip;
+        }
+        const visibleColumns = (this.col_defs ?? []).filter((colDef) => colDef.hide !== true);
+        const excludedColumns = visibleColumns.filter((colDef) => colDef.excludeFromGlobalSearch === true);
+        if (excludedColumns.length === 0) {
+            return undefined;
+        }
+        if (excludedColumns.length === visibleColumns.length) {
+            return this.translations.ATUI.TABLE.NO_GLOBAL_SEARCH_COLUMNS;
+        }
+        return (this.translations.ATUI.TABLE.EXCLUDES_COLUMNS +
+            excludedColumns
+                .map((colDef) => colDef.headerName || colDef.field || colDef.colId)
+                .join(', '));
     }
     handlePageSizeProp(newValue) {
         this.pageSize = newValue || 10;
@@ -403,8 +431,9 @@ export class AtSearchTable {
                 // hide is undefined for a column the manager has never toggled, so this
                 // tests against true rather than falsiness.
                 const columnTexts = this.col_defs
-                    .filter((colDef) => this.search_hidden_columns ||
-                    colDef.hide !== true)
+                    .filter((colDef) => colDef.excludeFromGlobalSearch !== true &&
+                    (this.search_hidden_columns ||
+                        colDef.hide !== true))
                     .map((colDef) => this.getColumnSearchText(colDef, node))
                     .filter((text) => !!text)
                     .map((text) => text.toLowerCase());
@@ -622,9 +651,9 @@ export class AtSearchTable {
         }
     }
     render() {
-        return (h(Host, { key: 'b8f839f95eda56117cc0a3e3b6018f640b64925a', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'f29efe9c99d0be63ea31321f19bb9b9a5cff1a6d', ag_grid: this.agGrid }, h("at-control-group", { key: '9653c183cf497fe593c522f7849ad75881acdd4c', slot: "search" }, this.shouldShowTableFilters &&
-            !this.search_filters && (h("at-table-filter-menu", { key: '0b5b457bb57a81c83c9ef00c2697b3ab95072666', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '0c5ed17d342e9e0e4baa78a14e37477122ca0d07', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: 'eaa7385ba7c7e6bcda124cfee052aad4a801735c', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'd637627a70a87831e1e495ea67a69961dfc46d32', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '9e11613a34bd531496440a14ade2befa0cc636a7', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '31a65b555b141ed160b7322f31c119160ae36c86', ag_grid: this.agGrid }, h("at-control-group", { key: 'e1a85250056f4cf6ad99e477431555ae50341269', slot: "search" }, this.shouldShowTableFilters &&
+            !this.search_filters && (h("at-table-filter-menu", { key: '0489de64890bbafe89becdc964584b85995f5d15', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '3bd3a91cb7820125f16e5c0e85aa884ee21fb9b7', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: '637aa70ba339d5b3c038a66719143521639c3fe3', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'd943333efe1b54cb3381d683db96992df49f124e', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -633,15 +662,15 @@ export class AtSearchTable {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'd5b02fdc8057fa53f3969ebd43bab6c2d2a45b56', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6161f595769d16c7f1af94ad515b58b33f7e223d', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '5c2698e091f3609cec5dc7feeef4ec6f9dde7fdb', slot: "leading-actions" }, h("slot", { key: 'a978dbb092a7bbf9924ab170488c9d2ad8afda35', name: "leading-actions" })), h("div", { key: 'd9a6bfb5a051368c70adfe92704d5f793a424bd8', slot: "actions" }, h("slot", { key: 'c16574e824d6032ca73337a90eb2d87e561ebaa5', name: "actions" }))), h("slot", { key: '38dbade290ce5b3213f2c63aa777e0da20156a0b', name: "multi-select-actions" }), h("div", { key: 'd756f06996ef41a29dc655d454aa7acd54785171', class: "relative" }, h("at-table", { key: 'f347012c942fce90fbe3ad476332ac47bcd83163', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'f2744c3e16ec722a3677f3c5be5f7ee73624320e', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'b55a9bcbaed83177ec767d10ccede471e2d19819', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '09ba7b3fa9b0f3f777539a9ce89d74abde280471', slot: "leading-actions" }, h("slot", { key: '13f1f5f4f581635bc6c221fc741468837ea14069', name: "leading-actions" })), h("div", { key: 'a6565e51e563b12d5ee0fab7bf51895f34762100', slot: "actions" }, h("slot", { key: 'f6430d8b86ce1464531bbe2d3fccac103d4d97f3', name: "actions" }))), h("slot", { key: 'c1b52e95d160aa6e7ddf2061c992b0cd9f071b6c', name: "multi-select-actions" }), h("div", { key: '31b29067f0e288b779f3a8f5e262c2443aef6ab7', class: "relative" }, h("at-table", { key: 'd78d95bdf752ff0dfd4b64567f3124aa06b6662c', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: this.server_side_mode }), this.server_side_mode && (h("div", { key: 'e27e39f080d52c2ab2621ceefd024c620b66f6ce', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'edf1eff68e592831f8e5288ecfd75dc691db59ad', class: "flex items-center" }, h("at-loading", { key: '576c0ffc9113df14f99bc5d9988603538e92d4bd', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'd6bf7efb8a4ed9ce72a0a92cd4da791e9ebab00f', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '7248763490dc1abdea65dd4b8ea5eae3a7b1d494', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'ea03e11f2d98200369922e610f33eeccb8ab9182', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: this.server_side_mode }), this.server_side_mode && (h("div", { key: '9f282721cf21f5a4bcb3978ff3c5116851f55b20', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '9e7f54f2ec90d6a422aca46a54840c9abf6865e0', class: "flex items-center" }, h("at-loading", { key: '4febf53953f44b6ff2e522bd8f6eaa15b4877bac', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'fb8da87fd0d8068ae6eeeb95ef2c91b88d4d1216', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: 'cf723ccbbcf6e1418c1b2299302d65638f6328fc', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '9fd6b3c2d8107848a4e173997d23f52fb3dac910', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: 'd42e51e9a9f69f31af1f15eb682625b5a9e94701', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '4338eb3c995b613fe2e6a24543ed26af2805f8f6', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'd8aae35bbd59abb93fb62240d59707af5b033a58', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '0c95ebf4022be8cdc502bde4ca685fee1f133590', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -704,7 +733,7 @@ export class AtSearchTable {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Info text displayed in a tooltip at the right of the search input."
+                    "text": "Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is\ngenerated automatically listing any visible columns flagged with\n`excludeFromGlobalSearch` in their column def; no icon is shown when\nnothing is excluded. Under `server_side_mode` that flag does not filter -\nthe server matches whichever columns it chooses - so supply this text\nyourself there rather than relying on the generated tooltip."
                 },
                 "getter": false,
                 "setter": false,

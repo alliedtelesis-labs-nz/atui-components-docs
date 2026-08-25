@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B6UemjpQ.js');
+var index = require('./index-DxsGpXWy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-DAtK7Gwm.js');
 var cellSearchText = require('./cell-search-text-D-KU9XtL.js');
@@ -49149,10 +49149,15 @@ const AtTableComponent = class {
     }
     /**
      * Makes each column searchable by the text its cell renderer displays rather than by the
-     * raw field value. A consumer-supplied getQuickFilterText always takes precedence.
+     * raw field value. A consumer-supplied getQuickFilterText always takes precedence,
+     * except on a column flagged `excludeFromGlobalSearch`, which contributes nothing -
+     * the same precedence `at-search-table`'s own matcher applies.
      */
     withSearchText(colDefs) {
         return (colDefs ?? []).map((colDef) => {
+            if (colDef.excludeFromGlobalSearch === true) {
+                return { ...colDef, getQuickFilterText: () => '' };
+            }
             if (colDef.getQuickFilterText) {
                 return colDef;
             }
@@ -49329,7 +49334,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '74327ea269f5cb4d602c85bb222b2725dd4d7ab1', class: {
+        return (index.h(index.Host, { key: 'bf7eac2a32731f7ee7eac82ccf674530c2fbc509', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49451,7 +49456,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '28d9084da37c4243e8b46dabe765d9eb04b0d7e1', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: 'e2c671c06e8ce4d64d350bd20c02d4861391eb57', class: "flex justify-between" }, index.h("div", { key: '3a23a9252ff1b10f9b580bf64ad7ecbd3ed5d03f', class: "flex" }, index.h("slot", { key: 'd88dc2c2f268f30dd39b58fea5e78fc61b73f77f', name: "search" })), index.h("div", { key: '3e7641775bccbd98538a6e5998068e10d55740b6', class: "flex" }, index.h("slot", { key: '22a396b1d443fa49074ae353c05ec21f2167352b', name: "reload-button" }), index.h("slot", { key: '149cc7616e7a63d1a399a257c3a09c08be48f4ff', name: "export-menu" }), index.h("slot", { key: 'a274ef1c1df74b33aec9ea160eb8160bad3e674f', name: "leading-actions" }), index.h("slot", { key: '8f3a98acab28c90155ab26ae9d13c8af4de2dc16', name: "column-manager" }), index.h("slot", { key: 'b67a87a212fa3565914f63a494fb4b6f88200c29', name: "actions" }))), index.h("slot", { key: 'ba88314e80d25697e4d4aae5f80d9d859c31b2d5', name: "filters" })));
+        return (index.h(index.Host, { key: '28d9084da37c4243e8b46dabe765d9eb04b0d7e1', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: 'e2c671c06e8ce4d64d350bd20c02d4861391eb57', class: "flex justify-between" }, index.h("div", { key: '3a23a9252ff1b10f9b580bf64ad7ecbd3ed5d03f', class: "flex" }, index.h("slot", { key: 'd88dc2c2f268f30dd39b58fea5e78fc61b73f77f', name: "search" })), index.h("div", { key: '30d686b387477672217c968f76bcaa9b5723ea72', class: "flex items-center" }, index.h("slot", { key: 'b39b6837fa7500bb208ebd76fd373dc884495df3', name: "reload-button" }), index.h("slot", { key: '65eb9ae5861a733d42dafca8425927aeab2bc924', name: "export-menu" }), index.h("slot", { key: '2485b597151b532889f5c81d85f32202cb14587e', name: "leading-actions" }), index.h("slot", { key: 'd0ad3abe1e2f315998f943f0ebb38afa4d18f90e', name: "column-manager" }), index.h("slot", { key: 'e034c5049466769fd528eda327b2f35263981a6f', name: "actions" }))), index.h("slot", { key: '6b743f0bdac5ac9141157404b4cbffe97ed55652', name: "filters" })));
     }
 };
 
