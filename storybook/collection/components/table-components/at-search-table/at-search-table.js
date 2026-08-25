@@ -42,19 +42,21 @@ export class AtSearchTable {
      */
     page_size_options;
     /**
-     * If true the table filters will not be added
+     * Adds the table filters. Off by default - structured column filters earn
+     * their place on large data sets, where the search box alone stops being
+     * enough to find a row.
      */
-    hide_table_filters;
+    show_table_filters = false;
     /**
-     * If true the column manager will not be added
+     * Adds the column manager. On by default.
      */
-    hide_column_manager;
+    show_column_manager = true;
     /**
-     * If true the table reload button will not be added. Defaults to true —
-     * the reload button is opt-in, so existing tables don't gain new UI
-     * just from upgrading the library.
+     * Adds the table reload button. Off by default - the reload button is
+     * opt-in, so existing tables don't gain new UI just from upgrading the
+     * library.
      */
-    hide_reload_button = true;
+    show_reload_button = false;
     /**
      * Shows an indicator on the reload button when the underlying data has
      * changed since it was last loaded. This component does not detect
@@ -64,17 +66,17 @@ export class AtSearchTable {
      */
     has_updates = false;
     /**
-     * If true the table export menu will not be added
+     * Adds the table export menu. On by default.
      */
-    hide_export_menu;
+    show_export_menu = true;
     /**
-     * If true, hides CSV export option from export menu
+     * Offers the CSV export option in the export menu. On by default.
      */
-    hide_csv_export = false;
+    show_csv_export = true;
     /**
-     * If true, hides PDF export option from export menu
+     * Offers the PDF export option in the export menu. On by default.
      */
-    hide_pdf_export = false;
+    show_pdf_export = true;
     /**
      * If true, disables pagination on the table and shows all data at once.
      *
@@ -103,7 +105,7 @@ export class AtSearchTable {
      * If true, displays a loading placeholder and hides table content.
      * Used for server-side data fetching to indicate loading state.
      */
-    loading = false;
+    is_loading = false;
     /**
      * Message shown in place of the rows when there is no data to display.
      * Defaults to a translated "No Data" message.
@@ -155,12 +157,10 @@ export class AtSearchTable {
     hasEmittedInitialServerParams = false;
     tableEl;
     get shouldShowTableFilters() {
-        return (!this.hide_table_filters &&
-            this.col_defs &&
-            this.col_defs.length > 0);
+        return (this.show_table_filters && this.col_defs && this.col_defs.length > 0);
     }
     get shouldShowColumnManager() {
-        return (!this.hide_column_manager &&
+        return (this.show_column_manager &&
             this.col_defs &&
             this.col_defs.length > 0);
     }
@@ -203,14 +203,14 @@ export class AtSearchTable {
         this.warnIfHasUpdatesIsANoOp();
     }
     warnIfHasUpdatesIsANoOp() {
-        if (this.has_updates && this.hide_reload_button) {
-            console.warn('atui-search-table: has_updates has no effect while hide_reload_button is true — set hide_reload_button to false to show the reload button (and its indicator).');
+        if (this.has_updates && !this.show_reload_button) {
+            console.warn('atui-search-table: has_updates has no effect while show_reload_button is false — set show_reload_button to true to show the reload button (and its indicator).');
         }
     }
     async componentDidLoad() {
         await this.initGrid();
         this.emitInitialServerParamsIfReady();
-        this.handleLoadingChange(this.loading);
+        this.handleLoadingChange(this.is_loading);
     }
     async componentDidUpdate() {
         if (!this.tableCreated) {
@@ -622,9 +622,9 @@ export class AtSearchTable {
         }
     }
     render() {
-        return (h(Host, { key: 'f4a8825094b4bb9571105cebd9dc6b94cf1dc4ef', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '75b649d18e14b6368410475de3f3718f61b27330', ag_grid: this.agGrid }, h("at-control-group", { key: '07c496fe98e860fb925f4007a5a48eb0e6014d4f', slot: "search" }, this.shouldShowTableFilters &&
-            !this.search_filters && (h("at-table-filter-menu", { key: '7aabcbacb03f91c212b076167b89134a50796212', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'db03e5330af72e81708008c271cbe6b31bcef6be', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: '5f39c8f9a59d10028a06b5395526b68009ce920a', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), !this.hide_reload_button && (h("at-reload-button", { key: '8c80e149bd54f4fd0835ea60e75fb7ee4523c4e1', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: 'b8f839f95eda56117cc0a3e3b6018f640b64925a', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'f29efe9c99d0be63ea31321f19bb9b9a5cff1a6d', ag_grid: this.agGrid }, h("at-control-group", { key: '9653c183cf497fe593c522f7849ad75881acdd4c', slot: "search" }, this.shouldShowTableFilters &&
+            !this.search_filters && (h("at-table-filter-menu", { key: '0b5b457bb57a81c83c9ef00c2697b3ab95072666', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '0c5ed17d342e9e0e4baa78a14e37477122ca0d07', class: "w-input-md", info_text: this.search_info_tooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), this.shouldShowTableFilters && (h("at-table-filters", { key: 'eaa7385ba7c7e6bcda124cfee052aad4a801735c', slot: "filters", filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'd637627a70a87831e1e495ea67a69961dfc46d32', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -633,15 +633,15 @@ export class AtSearchTable {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), !this.hide_export_menu && (h("at-table-export-menu", { key: '1c716e81afe5c62af6d4c836928d73571044e49f', slot: "export-menu", hide_csv: this.hide_csv_export, hide_pdf: this.hide_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6bb13d7061b4cdcefd88f7cb1a951f9c6768204e', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '075f16e4c926cb19bb5ddf0a756f9754ac42998a', slot: "leading-actions" }, h("slot", { key: '714d2c0c8bf9d27a084a0766f4e0e39984838260', name: "leading-actions" })), h("div", { key: '0d4e5f9733295727da0089663832391e61e8e052', slot: "actions" }, h("slot", { key: '0517308ca9423c5ca37a161344a021153560187f', name: "actions" }))), h("slot", { key: 'd6b163dca739d3ca26dcdebf06e8b6345c98bdfd', name: "multi-select-actions" }), h("div", { key: '80497e4f6230be72fa5ad189c051ebe801421bf0', class: "relative" }, h("at-table", { key: 'd2d799c9486ad250e020cb8aaf05ef989d841c7f', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'd5b02fdc8057fa53f3969ebd43bab6c2d2a45b56', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '6161f595769d16c7f1af94ad515b58b33f7e223d', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '5c2698e091f3609cec5dc7feeef4ec6f9dde7fdb', slot: "leading-actions" }, h("slot", { key: 'a978dbb092a7bbf9924ab170488c9d2ad8afda35', name: "leading-actions" })), h("div", { key: 'd9a6bfb5a051368c70adfe92704d5f793a424bd8', slot: "actions" }, h("slot", { key: 'c16574e824d6032ca73337a90eb2d87e561ebaa5', name: "actions" }))), h("slot", { key: '38dbade290ce5b3213f2c63aa777e0da20156a0b', name: "multi-select-actions" }), h("div", { key: 'd756f06996ef41a29dc655d454aa7acd54785171', class: "relative" }, h("at-table", { key: 'f347012c942fce90fbe3ad476332ac47bcd83163', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.col_defs, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, disable_auto_init: !this.server_side_mode }), this.server_side_mode && (h("div", { key: '8aab28f2eaf2e8c347328428cbcfa5525b216c22', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '859e0615216a4b2273a784550681d07e68356804', class: "flex items-center" }, h("at-loading", { key: '69b80d2dbe518fc41e9cf908a1f3a6e3d44cf89d', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '826c01f2f33e736ca9a85b887f157ba37fd5adf7', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: 'd81eeb8996957ad7ad453bfb59c72905176fc67a', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '93f14a030e0d06f0a069ab7bb53bcfc96fe684ae', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: this.server_side_mode }), this.server_side_mode && (h("div", { key: 'e27e39f080d52c2ab2621ceefd024c620b66f6ce', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'edf1eff68e592831f8e5288ecfd75dc691db59ad', class: "flex items-center" }, h("at-loading", { key: '576c0ffc9113df14f99bc5d9988603538e92d4bd', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'd6bf7efb8a4ed9ce72a0a92cd4da791e9ebab00f', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '7248763490dc1abdea65dd4b8ea5eae3a7b1d494', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'ea03e11f2d98200369922e610f33eeccb8ab9182', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: 'b207c877e0d34471ee7803b1faa219b1437e87da', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: 'd42e51e9a9f69f31af1f15eb682625b5a9e94701', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'a490711b06aa1230d598ca619a734d11d61d7b5e', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'd8aae35bbd59abb93fb62240d59707af5b033a58', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -804,7 +804,7 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false
             },
-            "hide_table_filters": {
+            "show_table_filters": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -816,14 +816,15 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true the table filters will not be added"
+                    "text": "Adds the table filters. Off by default - structured column filters earn\ntheir place on large data sets, where the search box alone stops being\nenough to find a row."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_table_filters"
+                "attribute": "show_table_filters",
+                "defaultValue": "false"
             },
-            "hide_column_manager": {
+            "show_column_manager": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -835,32 +836,33 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true the column manager will not be added"
+                    "text": "Adds the column manager. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_column_manager"
-            },
-            "hide_reload_button": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "If true the table reload button will not be added. Defaults to true \u2014\nthe reload button is opt-in, so existing tables don't gain new UI\njust from upgrading the library."
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "hide_reload_button",
+                "attribute": "show_column_manager",
                 "defaultValue": "true"
+            },
+            "show_reload_button": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Adds the table reload button. Off by default - the reload button is\nopt-in, so existing tables don't gain new UI just from upgrading the\nlibrary."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "show_reload_button",
+                "defaultValue": "false"
             },
             "has_updates": {
                 "type": "boolean",
@@ -882,7 +884,7 @@ export class AtSearchTable {
                 "attribute": "has_updates",
                 "defaultValue": "false"
             },
-            "hide_export_menu": {
+            "show_export_menu": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -894,14 +896,15 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true the table export menu will not be added"
+                    "text": "Adds the table export menu. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_export_menu"
+                "attribute": "show_export_menu",
+                "defaultValue": "true"
             },
-            "hide_csv_export": {
+            "show_csv_export": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -913,15 +916,15 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true, hides CSV export option from export menu"
+                    "text": "Offers the CSV export option in the export menu. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_csv_export",
-                "defaultValue": "false"
+                "attribute": "show_csv_export",
+                "defaultValue": "true"
             },
-            "hide_pdf_export": {
+            "show_pdf_export": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -933,13 +936,13 @@ export class AtSearchTable {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true, hides PDF export option from export menu"
+                    "text": "Offers the PDF export option in the export menu. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_pdf_export",
-                "defaultValue": "false"
+                "attribute": "show_pdf_export",
+                "defaultValue": "true"
             },
             "use_custom_pagination": {
                 "type": "boolean",
@@ -1021,7 +1024,7 @@ export class AtSearchTable {
                 "attribute": "server_side_mode",
                 "defaultValue": "false"
             },
-            "loading": {
+            "is_loading": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -1038,7 +1041,7 @@ export class AtSearchTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "loading",
+                "attribute": "is_loading",
                 "defaultValue": "false"
             },
             "no_data_message": {
@@ -1288,13 +1291,13 @@ export class AtSearchTable {
                 "propName": "search_filters",
                 "methodName": "handleSearchFiltersChange"
             }, {
-                "propName": "loading",
+                "propName": "is_loading",
                 "methodName": "handleLoadingChange"
             }, {
                 "propName": "has_updates",
                 "methodName": "warnIfHasUpdatesIsANoOp"
             }, {
-                "propName": "hide_reload_button",
+                "propName": "show_reload_button",
                 "methodName": "warnIfHasUpdatesIsANoOp"
             }];
     }

@@ -31,11 +31,11 @@ export declare class AtTableComponent {
      */
     use_custom_pagination: boolean;
     /**
-     * If true, disables automatic grid initialization.
-     * When disabled, you must manually call createGrid().
-     * Used when the table is controlled by a parent component.
+     * Initialises the grid automatically. On by default; turn it off when the
+     * table is controlled by a parent component, which must then call
+     * createGrid() itself.
      */
-    disable_auto_init: boolean;
+    can_auto_init: boolean;
     /**
      * If true, enables automatic column resizing to fit available space.
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.

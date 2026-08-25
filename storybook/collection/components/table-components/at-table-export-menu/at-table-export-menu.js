@@ -6,13 +6,13 @@ import { fetchTranslations } from "../../../utils/translation";
  */
 export class AtTableExportMenu {
     /**
-     * If true, hides the CSV export option in the export menu.
+     * Offers the CSV export option in the export menu. On by default.
      */
-    hide_csv = false;
+    show_csv = true;
     /**
-     * If true, hides the PDF export option in the export menu.
+     * Offers the PDF export option in the export menu. On by default.
      */
-    hide_pdf = false;
+    show_pdf = true;
     el;
     translations;
     async componentWillLoad() {
@@ -23,15 +23,15 @@ export class AtTableExportMenu {
      */
     atChange;
     render() {
-        if (this.hide_csv && this.hide_pdf) {
+        if (!this.show_csv && !this.show_pdf) {
             return null;
         }
-        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, h("at-tooltip", { slot: "menu-trigger", position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", null, !this.hide_csv && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), !this.hide_pdf && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
+        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, h("at-tooltip", { slot: "menu-trigger", position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", null, this.show_csv && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), this.show_pdf && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
     }
     static get is() { return "at-table-export-menu"; }
     static get properties() {
         return {
-            "hide_csv": {
+            "show_csv": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -43,15 +43,15 @@ export class AtTableExportMenu {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true, hides the CSV export option in the export menu."
+                    "text": "Offers the CSV export option in the export menu. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_csv",
-                "defaultValue": "false"
+                "attribute": "show_csv",
+                "defaultValue": "true"
             },
-            "hide_pdf": {
+            "show_pdf": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -63,13 +63,13 @@ export class AtTableExportMenu {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "If true, hides the PDF export option in the export menu."
+                    "text": "Offers the PDF export option in the export menu. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_pdf",
-                "defaultValue": "false"
+                "attribute": "show_pdf",
+                "defaultValue": "true"
             }
         };
     }

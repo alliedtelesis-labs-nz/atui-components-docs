@@ -20,9 +20,9 @@ export declare class AtStaticTable {
      */
     page_size: number;
     /**
-     * If true the column manager will not be added
+     * Adds the column manager. On by default.
      */
-    hide_column_manager: boolean;
+    show_column_manager: boolean;
     /**
      * If true, disables pagination on the table and shows all data at once.
      * Useful for server-side pagination where you want to control pagination externally.

@@ -17,9 +17,9 @@ export class AtStaticTable {
      */
     page_size = 10;
     /**
-     * If true the column manager will not be added
+     * Adds the column manager. On by default.
      */
-    hide_column_manager;
+    show_column_manager = true;
     /**
      * If true, disables pagination on the table and shows all data at once.
      * Useful for server-side pagination where you want to control pagination externally.
@@ -41,7 +41,7 @@ export class AtStaticTable {
         }
     }
     render() {
-        return (h(Host, { key: '89e382a1538b9099cd94740d3dcc95f72e0327e2' }, !this.hide_column_manager && (h("at-table-actions", { key: '9657fbdc1511e80ee0e6e51e2089084dbe6e5192', ag_grid: this.agGrid }, h("at-column-manager", { key: '48d7218b8e05b4737e8aa669eb2e846a2393b464', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '19cbee8abcc2dd33c8c845758f0ccac116a9f0c0', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, disable_auto_init: true })));
+        return (h(Host, { key: 'e29ccb0ed768faa4c5047eafda82d60f8192cb23' }, this.show_column_manager && (h("at-table-actions", { key: 'fd2b943f2fee83afe39969312cf426ba947a6efd', ag_grid: this.agGrid }, h("at-column-manager", { key: 'cda55f3e4bd3c5d63a1ec3b68eeb8941b6762707', slot: "column-manager", col_defs: this.col_defs }))), h("at-table", { key: '23189968a81222d7742a8b6874db12f23cef809a', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, can_auto_init: false })));
     }
     static get is() { return "at-static-table"; }
     static get properties() {
@@ -107,7 +107,7 @@ export class AtStaticTable {
                 "attribute": "page_size",
                 "defaultValue": "10"
             },
-            "hide_column_manager": {
+            "show_column_manager": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -119,12 +119,13 @@ export class AtStaticTable {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "If true the column manager will not be added"
+                    "text": "Adds the column manager. On by default."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "hide_column_manager"
+                "attribute": "show_column_manager",
+                "defaultValue": "true"
             },
             "use_custom_pagination": {
                 "type": "boolean",

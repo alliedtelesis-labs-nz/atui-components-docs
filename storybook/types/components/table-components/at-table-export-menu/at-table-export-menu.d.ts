@@ -5,13 +5,13 @@ import { EventEmitter } from '../../../stencil-public-runtime';
  */
 export declare class AtTableExportMenu {
     /**
-     * If true, hides the CSV export option in the export menu.
+     * Offers the CSV export option in the export menu. On by default.
      */
-    hide_csv?: boolean;
+    show_csv?: boolean;
     /**
-     * If true, hides the PDF export option in the export menu.
+     * Offers the PDF export option in the export menu. On by default.
      */
-    hide_pdf?: boolean;
+    show_pdf?: boolean;
     el: any;
     translations: any;
     componentWillLoad(): Promise<void>;

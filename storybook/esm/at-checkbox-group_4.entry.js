@@ -49099,11 +49099,11 @@ const AtTableComponent = class {
      */
     use_custom_pagination = false;
     /**
-     * If true, disables automatic grid initialization.
-     * When disabled, you must manually call createGrid().
-     * Used when the table is controlled by a parent component.
+     * Initialises the grid automatically. On by default; turn it off when the
+     * table is controlled by a parent component, which must then call
+     * createGrid() itself.
      */
-    disable_auto_init = false;
+    can_auto_init = true;
     /**
      * If true, enables automatic column resizing to fit available space.
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
@@ -49221,7 +49221,7 @@ const AtTableComponent = class {
         api.setGridOption('paginationPageSize', this.page_size);
     }
     async componentDidLoad() {
-        if (this.disable_auto_init) {
+        if (!this.can_auto_init) {
             this.tableCreated = true;
         }
         await this.initGrid();
@@ -49327,7 +49327,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '0ebdae4dd8f78deb283117110358b77443867944', class: {
+        return (h(Host, { key: '74327ea269f5cb4d602c85bb222b2725dd4d7ab1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

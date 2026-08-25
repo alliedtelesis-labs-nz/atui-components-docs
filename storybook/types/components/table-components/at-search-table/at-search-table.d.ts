@@ -53,19 +53,21 @@ export declare class AtSearchTable {
      */
     page_size_options?: AtISelectOption[];
     /**
-     * If true the table filters will not be added
+     * Adds the table filters. Off by default - structured column filters earn
+     * their place on large data sets, where the search box alone stops being
+     * enough to find a row.
      */
-    hide_table_filters?: boolean;
+    show_table_filters?: boolean;
     /**
-     * If true the column manager will not be added
+     * Adds the column manager. On by default.
      */
-    hide_column_manager?: boolean;
+    show_column_manager?: boolean;
     /**
-     * If true the table reload button will not be added. Defaults to true —
-     * the reload button is opt-in, so existing tables don't gain new UI
-     * just from upgrading the library.
+     * Adds the table reload button. Off by default - the reload button is
+     * opt-in, so existing tables don't gain new UI just from upgrading the
+     * library.
      */
-    hide_reload_button?: boolean;
+    show_reload_button?: boolean;
     /**
      * Shows an indicator on the reload button when the underlying data has
      * changed since it was last loaded. This component does not detect
@@ -75,17 +77,17 @@ export declare class AtSearchTable {
      */
     has_updates?: boolean;
     /**
-     * If true the table export menu will not be added
+     * Adds the table export menu. On by default.
      */
-    hide_export_menu?: boolean;
+    show_export_menu?: boolean;
     /**
-     * If true, hides CSV export option from export menu
+     * Offers the CSV export option in the export menu. On by default.
      */
-    hide_csv_export?: boolean;
+    show_csv_export?: boolean;
     /**
-     * If true, hides PDF export option from export menu
+     * Offers the PDF export option in the export menu. On by default.
      */
-    hide_pdf_export?: boolean;
+    show_pdf_export?: boolean;
     /**
      * If true, disables pagination on the table and shows all data at once.
      *
@@ -114,7 +116,7 @@ export declare class AtSearchTable {
      * If true, displays a loading placeholder and hides table content.
      * Used for server-side data fetching to indicate loading state.
      */
-    loading: boolean;
+    is_loading: boolean;
     /**
      * Message shown in place of the rows when there is no data to display.
      * Defaults to a translated "No Data" message.

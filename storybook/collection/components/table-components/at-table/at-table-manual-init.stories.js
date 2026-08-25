@@ -7,7 +7,7 @@ const ManualInitTemplate = (args) => `
   <at-table 
     id="manual-table"
     page_size="${args.page_size ?? 10}" 
-    disable_auto_init="true"
+    can_auto_init="false"
   />
 </div>
 <script>
@@ -55,7 +55,7 @@ const DelayedInitTemplate = (args) => `
   <at-table 
     id="delayed-table"
     page_size="${args.page_size ?? 10}" 
-    disable_auto_init="true"
+    can_auto_init="false"
   />
 </div>
 <script>
@@ -113,7 +113,7 @@ const ConditionalInitTemplate = (args) => `
   <at-table 
     id="conditional-table"
     page_size="${args.page_size ?? 10}" 
-    disable_auto_init="true"
+    can_auto_init="false"
   />
 </div>
 <script>
@@ -184,7 +184,7 @@ const ExternalGridApiTemplate = (args) => `
   <at-table 
     id="external-table"
     page_size="${args.page_size ?? 10}" 
-    disable_auto_init="true"
+    can_auto_init="false"
   />
 </div>
 <script>
@@ -251,7 +251,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'Examples demonstrating manual table initialization using the disable_auto_init prop. This provides precise control over when and how the at-table component is initialized, useful for complex scenarios requiring custom setup or external grid management.',
+                component: 'Examples demonstrating manual table initialization using the can_auto_init prop. This provides precise control over when and how the at-table component is initialized, useful for complex scenarios requiring custom setup or external grid management.',
             },
         },
     },

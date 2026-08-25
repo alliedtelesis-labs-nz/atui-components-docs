@@ -33,11 +33,11 @@ export class AtTableComponent {
      */
     use_custom_pagination = false;
     /**
-     * If true, disables automatic grid initialization.
-     * When disabled, you must manually call createGrid().
-     * Used when the table is controlled by a parent component.
+     * Initialises the grid automatically. On by default; turn it off when the
+     * table is controlled by a parent component, which must then call
+     * createGrid() itself.
      */
-    disable_auto_init = false;
+    can_auto_init = true;
     /**
      * If true, enables automatic column resizing to fit available space.
      * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
@@ -155,7 +155,7 @@ export class AtTableComponent {
         api.setGridOption('paginationPageSize', this.page_size);
     }
     async componentDidLoad() {
-        if (this.disable_auto_init) {
+        if (!this.can_auto_init) {
             this.tableCreated = true;
         }
         await this.initGrid();
@@ -261,7 +261,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: '0ebdae4dd8f78deb283117110358b77443867944', class: {
+        return (h(Host, { key: '74327ea269f5cb4d602c85bb222b2725dd4d7ab1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -380,7 +380,7 @@ export class AtTableComponent {
                 "attribute": "use_custom_pagination",
                 "defaultValue": "false"
             },
-            "disable_auto_init": {
+            "can_auto_init": {
                 "type": "boolean",
                 "mutable": false,
                 "complexType": {
@@ -392,13 +392,13 @@ export class AtTableComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "If true, disables automatic grid initialization.\nWhen disabled, you must manually call createGrid().\nUsed when the table is controlled by a parent component."
+                    "text": "Initialises the grid automatically. On by default; turn it off when the\ntable is controlled by a parent component, which must then call\ncreateGrid() itself."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "disable_auto_init",
-                "defaultValue": "false"
+                "attribute": "can_auto_init",
+                "defaultValue": "true"
             },
             "auto_size_columns": {
                 "type": "boolean",

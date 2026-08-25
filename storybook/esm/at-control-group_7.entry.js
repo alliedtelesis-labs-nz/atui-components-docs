@@ -106,13 +106,13 @@ const AtTableExportMenu = class {
         this.atChange = createEvent(this, "atChange", 7);
     }
     /**
-     * If true, hides the CSV export option in the export menu.
+     * Offers the CSV export option in the export menu. On by default.
      */
-    hide_csv = false;
+    show_csv = true;
     /**
-     * If true, hides the PDF export option in the export menu.
+     * Offers the PDF export option in the export menu. On by default.
      */
-    hide_pdf = false;
+    show_pdf = true;
     get el() { return getElement(this); }
     translations;
     async componentWillLoad() {
@@ -123,10 +123,10 @@ const AtTableExportMenu = class {
      */
     atChange;
     render() {
-        if (this.hide_csv && this.hide_pdf) {
+        if (!this.show_csv && !this.show_pdf) {
             return null;
         }
-        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, h("at-tooltip", { slot: "menu-trigger", position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", null, !this.hide_csv && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), !this.hide_pdf && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
+        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, h("at-tooltip", { slot: "menu-trigger", position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", null, this.show_csv && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), this.show_pdf && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
     }
 };
 

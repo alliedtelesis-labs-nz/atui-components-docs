@@ -2434,41 +2434,14 @@ export namespace Components {
          */
         "has_updates"?: boolean;
         /**
-          * If true the column manager will not be added
-         */
-        "hide_column_manager"?: boolean;
-        /**
-          * If true, hides CSV export option from export menu
+          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
           * @default false
          */
-        "hide_csv_export"?: boolean;
-        /**
-          * If true the table export menu will not be added
-         */
-        "hide_export_menu"?: boolean;
-        /**
-          * If true, hides PDF export option from export menu
-          * @default false
-         */
-        "hide_pdf_export"?: boolean;
-        /**
-          * If true the table reload button will not be added. Defaults to true — the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
-          * @default true
-         */
-        "hide_reload_button"?: boolean;
-        /**
-          * If true the table filters will not be added
-         */
-        "hide_table_filters"?: boolean;
+        "is_loading": boolean;
         /**
           * Label for the table, appears above the search input.
          */
         "label": string;
-        /**
-          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
-          * @default false
-         */
-        "loading": boolean;
         /**
           * Message shown in place of the rows when there is no data to display. Defaults to a translated "No Data" message.
          */
@@ -2500,6 +2473,36 @@ export namespace Components {
           * @default false
          */
         "server_side_mode"?: boolean;
+        /**
+          * Adds the column manager. On by default.
+          * @default true
+         */
+        "show_column_manager"?: boolean;
+        /**
+          * Offers the CSV export option in the export menu. On by default.
+          * @default true
+         */
+        "show_csv_export"?: boolean;
+        /**
+          * Adds the table export menu. On by default.
+          * @default true
+         */
+        "show_export_menu"?: boolean;
+        /**
+          * Offers the PDF export option in the export menu. On by default.
+          * @default true
+         */
+        "show_pdf_export"?: boolean;
+        /**
+          * Adds the table reload button. Off by default - the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
+          * @default false
+         */
+        "show_reload_button"?: boolean;
+        /**
+          * Adds the table filters. Off by default - structured column filters earn their place on large data sets, where the search box alone stops being enough to find a row.
+          * @default false
+         */
+        "show_table_filters"?: boolean;
         /**
           * Table data passed to at-table component.
          */
@@ -2862,14 +2865,15 @@ export namespace Components {
          */
         "col_defs": ColDef[];
         /**
-          * If true the column manager will not be added
-         */
-        "hide_column_manager": boolean;
-        /**
           * Max number of items per page
           * @default 10
          */
         "page_size": number;
+        /**
+          * Adds the column manager. On by default.
+          * @default true
+         */
+        "show_column_manager": boolean;
         /**
           * Data to go into the table
          */
@@ -3072,6 +3076,11 @@ export namespace Components {
          */
         "auto_size_columns": boolean;
         /**
+          * Initialises the grid automatically. On by default; turn it off when the table is controlled by a parent component, which must then call createGrid() itself.
+          * @default true
+         */
+        "can_auto_init": boolean;
+        /**
           * Column definitions for the table
          */
         "col_defs": ColDef[];
@@ -3080,11 +3089,6 @@ export namespace Components {
           * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
          */
         "createGrid": () => Promise<GridApi>;
-        /**
-          * If true, disables automatic grid initialization. When disabled, you must manually call createGrid(). Used when the table is controlled by a parent component.
-          * @default false
-         */
-        "disable_auto_init": boolean;
         /**
           * Gets the AG Grid API instance
           * @returns The AG Grid API
@@ -3129,15 +3133,15 @@ export namespace Components {
      */
     interface AtTableExportMenu {
         /**
-          * If true, hides the CSV export option in the export menu.
-          * @default false
+          * Offers the CSV export option in the export menu. On by default.
+          * @default true
          */
-        "hide_csv"?: boolean;
+        "show_csv"?: boolean;
         /**
-          * If true, hides the PDF export option in the export menu.
-          * @default false
+          * Offers the PDF export option in the export menu. On by default.
+          * @default true
          */
-        "hide_pdf"?: boolean;
+        "show_pdf"?: boolean;
     }
     /**
      * @category Data Tables
@@ -8029,41 +8033,14 @@ declare namespace LocalJSX {
          */
         "has_updates"?: boolean;
         /**
-          * If true the column manager will not be added
-         */
-        "hide_column_manager"?: boolean;
-        /**
-          * If true, hides CSV export option from export menu
+          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
           * @default false
          */
-        "hide_csv_export"?: boolean;
-        /**
-          * If true the table export menu will not be added
-         */
-        "hide_export_menu"?: boolean;
-        /**
-          * If true, hides PDF export option from export menu
-          * @default false
-         */
-        "hide_pdf_export"?: boolean;
-        /**
-          * If true the table reload button will not be added. Defaults to true — the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
-          * @default true
-         */
-        "hide_reload_button"?: boolean;
-        /**
-          * If true the table filters will not be added
-         */
-        "hide_table_filters"?: boolean;
+        "is_loading"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
         "label"?: string;
-        /**
-          * If true, displays a loading placeholder and hides table content. Used for server-side data fetching to indicate loading state.
-          * @default false
-         */
-        "loading"?: boolean;
         /**
           * Message shown in place of the rows when there is no data to display. Defaults to a translated "No Data" message.
          */
@@ -8111,6 +8088,36 @@ declare namespace LocalJSX {
           * @default false
          */
         "server_side_mode"?: boolean;
+        /**
+          * Adds the column manager. On by default.
+          * @default true
+         */
+        "show_column_manager"?: boolean;
+        /**
+          * Offers the CSV export option in the export menu. On by default.
+          * @default true
+         */
+        "show_csv_export"?: boolean;
+        /**
+          * Adds the table export menu. On by default.
+          * @default true
+         */
+        "show_export_menu"?: boolean;
+        /**
+          * Offers the PDF export option in the export menu. On by default.
+          * @default true
+         */
+        "show_pdf_export"?: boolean;
+        /**
+          * Adds the table reload button. Off by default - the reload button is opt-in, so existing tables don't gain new UI just from upgrading the library.
+          * @default false
+         */
+        "show_reload_button"?: boolean;
+        /**
+          * Adds the table filters. Off by default - structured column filters earn their place on large data sets, where the search box alone stops being enough to find a row.
+          * @default false
+         */
+        "show_table_filters"?: boolean;
         /**
           * Table data passed to at-table component.
          */
@@ -8455,14 +8462,15 @@ declare namespace LocalJSX {
          */
         "col_defs"?: ColDef[];
         /**
-          * If true the column manager will not be added
-         */
-        "hide_column_manager"?: boolean;
-        /**
           * Max number of items per page
           * @default 10
          */
         "page_size"?: number;
+        /**
+          * Adds the column manager. On by default.
+          * @default true
+         */
+        "show_column_manager"?: boolean;
         /**
           * Data to go into the table
          */
@@ -8673,14 +8681,14 @@ declare namespace LocalJSX {
          */
         "auto_size_columns"?: boolean;
         /**
+          * Initialises the grid automatically. On by default; turn it off when the table is controlled by a parent component, which must then call createGrid() itself.
+          * @default true
+         */
+        "can_auto_init"?: boolean;
+        /**
           * Column definitions for the table
          */
         "col_defs"?: ColDef[];
-        /**
-          * If true, disables automatic grid initialization. When disabled, you must manually call createGrid(). Used when the table is controlled by a parent component.
-          * @default false
-         */
-        "disable_auto_init"?: boolean;
         /**
           * Emits an event when a column's sorting state changes. Used to perform sorting outside of agGrid, when use_custom_sorting is set. Data in the table should be updated using the agGrid api: ```agGrid.setGridOption("rowData", yourNewData)```
          */
@@ -8739,19 +8747,19 @@ declare namespace LocalJSX {
      */
     interface AtTableExportMenu {
         /**
-          * If true, hides the CSV export option in the export menu.
-          * @default false
-         */
-        "hide_csv"?: boolean;
-        /**
-          * If true, hides the PDF export option in the export menu.
-          * @default false
-         */
-        "hide_pdf"?: boolean;
-        /**
           * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
          */
         "onAtChange"?: (event: AtTableExportMenuCustomEvent<string>) => void;
+        /**
+          * Offers the CSV export option in the export menu. On by default.
+          * @default true
+         */
+        "show_csv"?: boolean;
+        /**
+          * Offers the PDF export option in the export menu. On by default.
+          * @default true
+         */
+        "show_pdf"?: boolean;
     }
     /**
      * @category Data Tables
@@ -9673,18 +9681,18 @@ declare namespace LocalJSX {
         "label": string;
         "search_info_tooltip": string;
         "page_size": number;
-        "hide_table_filters": boolean;
-        "hide_column_manager": boolean;
-        "hide_reload_button": boolean;
+        "show_table_filters": boolean;
+        "show_column_manager": boolean;
+        "show_reload_button": boolean;
         "has_updates": boolean;
-        "hide_export_menu": boolean;
-        "hide_csv_export": boolean;
-        "hide_pdf_export": boolean;
+        "show_export_menu": boolean;
+        "show_csv_export": boolean;
+        "show_pdf_export": boolean;
         "use_custom_pagination": boolean;
         "auto_size_columns": boolean;
         "search_hidden_columns": boolean;
         "server_side_mode": boolean;
-        "loading": boolean;
+        "is_loading": boolean;
         "no_data_message": string;
     }
     interface AtSelectAttributes {
@@ -9758,7 +9766,7 @@ declare namespace LocalJSX {
     }
     interface AtStaticTableAttributes {
         "page_size": number;
-        "hide_column_manager": boolean;
+        "show_column_manager": boolean;
         "use_custom_pagination": boolean;
     }
     interface AtStatusBarAttributes {
@@ -9801,12 +9809,12 @@ declare namespace LocalJSX {
         "page_size": number;
         "use_custom_sorting": boolean;
         "use_custom_pagination": boolean;
-        "disable_auto_init": boolean;
+        "can_auto_init": boolean;
         "auto_size_columns": boolean;
     }
     interface AtTableExportMenuAttributes {
-        "hide_csv": boolean;
-        "hide_pdf": boolean;
+        "show_csv": boolean;
+        "show_pdf": boolean;
     }
     interface AtTablePaginationAttributes {
         "current_page": number;

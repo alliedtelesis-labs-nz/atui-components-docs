@@ -1,7 +1,7 @@
 const Template = (args) => `
 <at-static-table 
     page_size=${args.page_size ?? 10} 
-    ${args.hide_column_manager ? 'hide_column_manager' : ''}
+    show_column_manager="${args.show_column_manager ?? false}"
 />
 <script>
 document.querySelector('at-static-table').table_data = ${JSON.stringify(args.table_data, null, 4)}
@@ -51,5 +51,5 @@ Default.args = {
         total: 4,
     },
     page_size: 10,
-    hide_column_manager: false,
+    show_column_manager: true,
 };
