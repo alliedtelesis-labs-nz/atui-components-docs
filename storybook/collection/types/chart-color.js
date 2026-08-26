@@ -70,7 +70,7 @@ export function readPaletteColors(palette) {
         return [1, 2, 3, 4, 5].map((n) => get(`--chart-device-status-${n}`));
     }
     if (palette === AtChartColorPalette.ONBOARDING_STATUS) {
-        return [1, 2, 3, 4, 5].map((n) => get(`--chart-onboarding-status-${n}`));
+        return [1, 2, 3, 4, 5, 6].map((n) => get(`--chart-onboarding-status-${n}`));
     }
     return null;
 }
