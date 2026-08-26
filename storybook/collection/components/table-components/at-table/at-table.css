@@ -19,6 +19,11 @@
   padding-right: 0 !important;
 }
 
+.ag-cell:has(at-chip-list-cell) {
+  height: 100% !important;
+  align-items: center !important;
+}
+
 .ag-header-cell atui-checkbox[aria-checked],
 .ag-cell atui-checkbox[aria-checked],
 atui-menu atui-checkbox[aria-checked] {
