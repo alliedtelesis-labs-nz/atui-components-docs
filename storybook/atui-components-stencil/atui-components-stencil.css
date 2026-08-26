@@ -1132,6 +1132,94 @@
   --chart-onboarding-status-6: #dfdfdf;
 }
 
+/*
+  Plain-table skin, for the table rung below at-static-table (docs/ux-patterns/tables.md § 1):
+  fixed-length, read-only, non-paginated, non-searchable content, and multi-row builder rows.
+
+  It lives here rather than in each app because the rules target DESCENDANTS — th, td, tr,
+  thead — which a Tailwind utility cannot reach. Every consuming app had therefore re-authored
+  it, five times, and the copies had drifted: two referenced --token-border-light and
+  --token-text-med, neither of which exists, so those apps rendered borderless tables.
+
+  Values are the DS tokens that the ag-grid theme is itself defined from (see the --ag-* block
+  above: --ag-border-color is --token-border-muted, --ag-row-hover-color is
+  --token-surface-background, and so on). Reading the tokens directly puts this skin at the
+  same level as the grid theme rather than downstream of it, and a plain table therefore
+  matches the at-static-table/at-search-table tiers: one screen showing both must not read as
+  two products.
+
+  `.table` is deliberately not a selector here — it is Tailwind's `display: table`, which a
+  <table> element already is.
+*/
+.table-auto,
+.table-fixed {
+  min-width: 100%;
+  overflow-x: auto;
+  font-family: var(--token-font-family-base);
+  font-size: var(--token-font-size-base);
+}
+.table-auto thead,
+.table-fixed thead {
+  border-bottom: 1px solid var(--token-border-muted);
+}
+.table-auto th,
+.table-fixed th {
+  text-align: left;
+  font-weight: var(--token-font-weight-med);
+  color: var(--token-text-muted);
+  /* The thead owns the rule; a per-cell border would double it at every seam. */
+  border-bottom: none;
+}
+.table-auto tr,
+.table-fixed tr {
+  will-change: background-color;
+  transition: var(--token-transition-fast);
+  border-bottom: 1px solid var(--token-border-muted);
+}
+.table-auto tr:hover,
+.table-fixed tr:hover {
+  background-color: var(--token-surface-background);
+}
+.table-auto th,
+.table-auto td,
+.table-fixed th,
+.table-fixed td {
+  padding: var(--token-space-12) var(--token-space-24);
+}
+.table-auto,
+.table-fixed {
+  /* Opt-in: an outer frame. Only then does a radius have anything to round. */
+}
+.table-auto.bordered,
+.table-fixed.bordered {
+  border: 1px solid var(--token-border-muted);
+  border-radius: var(--token-border-radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.table-auto.bordered tr:last-child,
+.table-fixed.bordered tr:last-child {
+  border-bottom: none;
+}
+.table-auto,
+.table-fixed {
+  /*
+      Cells that must not widen the table. Needs max-width: 0 so the ellipsis has a box to
+      overflow — without it a table cell sizes to its content and never truncates.
+    */
+}
+.table-auto.truncated th,
+.table-auto.truncated td,
+.table-fixed.truncated th,
+.table-fixed.truncated td {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
 /* Input density utilities — apply to a container to control the height of all child inputs. density-lg is the :root default — no class needed */
 .density-sm {
   --token-input-height: var(--token-input-height-sm);

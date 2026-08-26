@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-23Nz5eZw.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B6R87LxD.js';
 import { f as fetchTranslations } from './translation-DTZ4TEQl.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-H5gcGi8Y.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
