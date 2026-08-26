@@ -1,5 +1,6 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
 import type { ITooltipCell } from '../../../../types';
+import type { AtBadgeType } from '../../../at-badge/at-badge';
 export interface AtITextBadgeCellData {
     text: string;
     badgeText: string;
@@ -8,7 +9,7 @@ export interface AtITextBadgeCellData {
 export interface AtITextBadgeCellParams extends ICellRendererParams, ITooltipCell {
     text?: (data: any) => string;
     badgeText?: (data: any) => string;
-    badgeType?: string;
+    badgeType?: AtBadgeType;
 }
 /**
  * @category Data Tables

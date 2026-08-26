@@ -35,7 +35,7 @@ export class AtTextBadgeCell {
         this.textValue = this.params.value;
     }
     render() {
-        return (h(Host, { key: '568cdb41f88da0e6daf4d59b2cff031e7964dfb0', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'aa68b67def2bd0b0fbdd976e5267c6499429706b', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '9dffc4af432583334437747c2ae8c998dc21c74b', slot: "tooltip-trigger" }, h("span", { key: '4fbcabe1cfe4586fdd4330739bf21990c6164594', class: "truncate" }, this.textValue), h("at-badge", { key: 'c542e07c6001501004e23d8d2ce80400065a4066', type: "info", class: "ml-4", label: this.badgeTextValue })), this.params?.generateTooltip && (h("span", { key: '6f66302af5082dd7f810e6517e98ca104701be8e', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: '25cf1bfabc4035aefad75f0ba96b1b6dcfbd6afa', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '99acaf34545fdf8e79f35f012465f60bdd64542f', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: 'fa12a2f0ee42bf023652cb26d95f83d7ab12166f', slot: "tooltip-trigger" }, h("span", { key: '15a29c7889cb9f8fa54cad9a12f8876d00065b4b', class: "truncate" }, this.textValue), this.badgeTextValue && (h("at-badge", { key: 'e3038d36e2a4fd8c1e73fa5ef8cf36823d5cca59', type: this.params.badgeType ?? 'info', class: "ml-4", label: this.badgeTextValue }))), this.params?.generateTooltip && (h("span", { key: 'bf14592ac080159103e7049571cc898d8913990e', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "at-text-badge-cell"; }
     static get states() {
