@@ -1,1 +1,1 @@
-import{A as s,d as o}from"./p-BsJZLrfa.js";const r=s,a=o;export{r as AtChipList,a as defineCustomElement}
+import{A as o,d as s}from"./p-BQwZi-du.js";const p=o,r=s;export{p as AtChipList,r as defineCustomElement}
