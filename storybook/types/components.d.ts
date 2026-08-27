@@ -1257,7 +1257,7 @@ export namespace Components {
     interface AtHealthDotCell {
     }
     /**
-     * @category Icon
+     * @category Decoration
      * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
      */
     interface AtIcon {
@@ -3498,7 +3498,7 @@ export namespace Components {
         "value": boolean;
     }
     /**
-     * @category **Overlays**
+     * @category Overlays
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface AtTooltip {
@@ -4358,7 +4358,7 @@ declare global {
         new (): HTMLAtHealthDotCellElement;
     };
     /**
-     * @category Icon
+     * @category Decoration
      * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
      */
     interface HTMLAtIconElement extends Components.AtIcon, HTMLStencilElement {
@@ -5482,7 +5482,7 @@ declare global {
         new (): HTMLAtToggleSwitchElement;
     };
     /**
-     * @category **Overlays**
+     * @category Overlays
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface HTMLAtTooltipElement extends Components.AtTooltip, HTMLStencilElement {
@@ -6761,7 +6761,7 @@ declare namespace LocalJSX {
     interface AtHealthDotCell {
     }
     /**
-     * @category Icon
+     * @category Decoration
      * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
      */
     interface AtIcon {
@@ -9136,7 +9136,7 @@ declare namespace LocalJSX {
         "value"?: boolean;
     }
     /**
-     * @category **Overlays**
+     * @category Overlays
      * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
      */
     interface AtTooltip {
@@ -10199,7 +10199,7 @@ declare module "@stencil/core" {
              */
             "at-health-dot-cell": LocalJSX.IntrinsicElements["at-health-dot-cell"] & JSXBase.HTMLAttributes<HTMLAtHealthDotCellElement>;
             /**
-             * @category Icon
+             * @category Decoration
              * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
              */
             "at-icon": LocalJSX.IntrinsicElements["at-icon"] & JSXBase.HTMLAttributes<HTMLAtIconElement>;
@@ -10550,7 +10550,7 @@ declare module "@stencil/core" {
              */
             "at-toggle-switch": LocalJSX.IntrinsicElements["at-toggle-switch"] & JSXBase.HTMLAttributes<HTMLAtToggleSwitchElement>;
             /**
-             * @category **Overlays**
+             * @category Overlays
              * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
              */
             "at-tooltip": LocalJSX.IntrinsicElements["at-tooltip"] & JSXBase.HTMLAttributes<HTMLAtTooltipElement>;

@@ -1,7 +1,7 @@
 export type AtTooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 export type AtTooltipAlign = 'start' | 'end' | 'center';
 /**
- * @category **Overlays**
+ * @category Overlays
  * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
  *
  * @slot tooltip-trigger - Shows the tooltip when hovered (only used when trigger_id is not provided)

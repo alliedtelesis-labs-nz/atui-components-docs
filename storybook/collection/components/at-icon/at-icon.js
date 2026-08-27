@@ -1,6 +1,6 @@
 import { h } from "@stencil/core";
 /**
- * @category Icon
+ * @category Decoration
  * @description An icon component that renders an SVG icon based on the provided name. The icon must be registered in the global icon registry to be used. You can use built-in icons included in `ATUI_ICONS` or register your own icons. Refer to the [icon documentation](../../documentation/development-guidelines/icons.md) for more details.
  */
 export class AtIcon {
