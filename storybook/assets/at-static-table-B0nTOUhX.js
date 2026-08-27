@@ -1,0 +1,48 @@
+import{j as t,M as o}from"./index-CmQNUqNI.js";import{useMDXComponents as r}from"./index-9Zg55XkM.js";import{at as l}from"./MermaidMarkdown-BNDMDx2O.js";import"./iframe-HvRU15Nb.js";import"./index-DGnb9v-d.js";import"./index-DrFu-skq.js";const i=`# at-static-table
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property                | Attribute               | Description                                                                                                                                              | Type                               | Default     |
+| ----------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| \`col_defs\`              | --                      | Column definitions for the table                                                                                                                         | \`ColDef<any, any>[]\`               | \`undefined\` |
+| \`page_size\`             | \`page_size\`             | Max number of items per page                                                                                                                             | \`number\`                           | \`10\`        |
+| \`show_column_manager\`   | \`show_column_manager\`   | Adds the column manager. On by default.                                                                                                                  | \`boolean\`                          | \`true\`      |
+| \`table_data\`            | --                      | Data to go into the table                                                                                                                                | \`{ items: any[]; total: number; }\` | \`undefined\` |
+| \`use_custom_pagination\` | \`use_custom_pagination\` | If true, disables pagination on the table and shows all data at once. Useful for server-side pagination where you want to control pagination externally. | \`boolean\`                          | \`false\`     |
+
+
+## Dependencies
+
+### Depends on
+
+- [at-table-actions](../at-table-actions)
+- [at-column-manager](../at-column-manager)
+- [at-table](../at-table)
+
+### Graph
+\`\`\`mermaid
+graph TD;
+  at-static-table --> at-table-actions
+  at-static-table --> at-column-manager
+  at-static-table --> at-table
+  at-column-manager --> at-menu
+  at-column-manager --> at-tooltip
+  at-column-manager --> at-button
+  at-column-manager --> at-icon
+  at-column-manager --> at-checkbox-group
+  at-button --> at-loading
+  at-checkbox-group --> at-checkbox
+  at-checkbox-group --> at-form-label
+  at-form-label --> at-tooltip
+  at-form-label --> at-icon
+  style at-static-table fill:#f9f,stroke:#333,stroke-width:4px
+\`\`\`
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*
+`;function e(n){return t.jsxs(t.Fragment,{children:[t.jsx(o,{title:"Components/Static Table"}),`
+`,t.jsx(l,{md:i})]})}function d(n={}){const{wrapper:a}={...r(),...n.components};return a?t.jsx(a,{...n,children:t.jsx(e,{...n})}):e()}export{d as default};

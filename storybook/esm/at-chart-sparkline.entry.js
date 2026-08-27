@@ -10,6 +10,12 @@ const heightVariants = {
     xl: 'h-[240px]',
     auto: 'h-full',
 };
+/**
+ * Mid-tone slot of the selected palette. Sequential palettes run light to dark,
+ * so the earlier slots wash out against a light background at sparkline stroke
+ * widths.
+ */
+const LINE_PALETTE_INDEX = 3;
 const statusPaletteIndex = {
     good: 0,
     warning: 1,
@@ -46,8 +52,9 @@ const AtChartSparkline = class {
     height = 'xs';
     /**
      * Colour palette used for the line when `status` is not set. The sparkline is
-     * a single series, so it uses the first colour of the chosen palette. Values
-     * resolve from theme CSS variables so the line stays theme-aware.
+     * a single series, so it uses one mid-tone slot of the chosen palette, picked
+     * for contrast at stroke width. Values resolve from theme CSS variables so the
+     * line stays theme-aware.
      */
     color_palette = AtChartColorPalette.SEQUENTIAL;
     /**
@@ -69,7 +76,7 @@ const AtChartSparkline = class {
     chart;
     /**
      * Resolve the base line colour. A `status` selects a device-status palette
-     * slot; otherwise the first colour of `color_palette` is used.
+     * slot; otherwise a mid-tone slot of `color_palette` is used.
      */
     resolveColor() {
         if (this.status) {
@@ -77,7 +84,7 @@ const AtChartSparkline = class {
             return colors[statusPaletteIndex[this.status]];
         }
         const colors = getChartColors(this.color_palette);
-        return colors && colors.length ? colors[3] : undefined;
+        return colors && colors.length ? colors[LINE_PALETTE_INDEX] : undefined;
     }
     /**
      * The solid foreground line, shared by both display modes. In `area` mode it
@@ -198,7 +205,7 @@ const AtChartSparkline = class {
         }
     }
     render() {
-        return (h(Host, { key: '382312143552a29b10a92e5d25ff60a1f4a6a9a4', style: { height: '100%', width: '100%' } }, h("canvas", { key: '68d8c5b3c047852eee070314294c1cd35188c9fa', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (h(Host, { key: 'ca70cddf4b9596a62e234bbf2c5bbd57c4ca7536', style: { height: '100%', width: '100%' } }, h("canvas", { key: '16e02ee8a264e7e54234df9af5bd6b9ced5aa17e', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
 };
 

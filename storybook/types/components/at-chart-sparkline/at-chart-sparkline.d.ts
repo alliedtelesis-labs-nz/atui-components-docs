@@ -39,8 +39,9 @@ export declare class AtChartSparkline {
     height?: AtChartHeight;
     /**
      * Colour palette used for the line when `status` is not set. The sparkline is
-     * a single series, so it uses the first colour of the chosen palette. Values
-     * resolve from theme CSS variables so the line stays theme-aware.
+     * a single series, so it uses one mid-tone slot of the chosen palette, picked
+     * for contrast at stroke width. Values resolve from theme CSS variables so the
+     * line stays theme-aware.
      */
     color_palette: AtChartColorPalette;
     /**
@@ -60,7 +61,7 @@ export declare class AtChartSparkline {
     chart: Chart | null;
     /**
      * Resolve the base line colour. A `status` selects a device-status palette
-     * slot; otherwise the first colour of `color_palette` is used.
+     * slot; otherwise a mid-tone slot of `color_palette` is used.
      */
     private resolveColor;
     /**

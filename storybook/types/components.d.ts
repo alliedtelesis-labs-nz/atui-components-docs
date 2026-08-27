@@ -813,7 +813,7 @@ export namespace Components {
      */
     interface AtChartSparkline {
         /**
-          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
+          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses one mid-tone slot of the chosen palette, picked for contrast at stroke width. Values resolve from theme CSS variables so the line stays theme-aware.
           * @default AtChartColorPalette.SEQUENTIAL
          */
         "color_palette": AtChartColorPalette;
@@ -6306,7 +6306,7 @@ declare namespace LocalJSX {
      */
     interface AtChartSparkline {
         /**
-          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses the first colour of the chosen palette. Values resolve from theme CSS variables so the line stays theme-aware.
+          * Colour palette used for the line when `status` is not set. The sparkline is a single series, so it uses one mid-tone slot of the chosen palette, picked for contrast at stroke width. Values resolve from theme CSS variables so the line stays theme-aware.
           * @default AtChartColorPalette.SEQUENTIAL
          */
         "color_palette"?: AtChartColorPalette;
