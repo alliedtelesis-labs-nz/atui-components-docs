@@ -48,7 +48,7 @@ export class AtSelectOptionComponent {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full items-center truncate rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
+        const getOptionClassname = classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
             ? 'pointer-events-none opacity-50 text-disabled-foreground'
             : 'cursor-pointer';
@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: 'ce0f3c8b45d5247a3d732f1a65088575725fdce0', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'b694561dc4b6b9615df72084dfd2b738449f873d' }), this.label || this.value, h("slot", { key: 'a8f0afe1680bc5866b000242a0c27f6dab2024cb', name: "after" })));
+        return (h("li", { key: 'd5de580f2647df1d84f4bdd88f4abb4559d53caa', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'c026023863242aa3dd333b2cb6dc347e5ffa9eaa' }), h("span", { key: '76d2bbf0a79abe4a955059041a79c2d81d139607', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: '6d6c36fb8b6bd133c4c5312911d60c53f2804db9', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B6R87LxD.js';
-import { f as fetchTranslations } from './translation-DTZ4TEQl.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
+import { f as fetchTranslations } from './translation-3Gn82Eck.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 
@@ -299,16 +299,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (h(Host, { key: '41c53d5f1f21850c1cfb6b20c9e779a632fa8edd', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '3f4ed5d4145b4000ce2f385f497a56ec2d6887e1', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '8a9600be4e799669b402e0fc29357abfa9c30978', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'b5ab06e062a2896ddb2f07e223b65f8abf458f68', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'a24cb0c5042c7404903337f74a68b77eb8e43a73' }, this.error_text && this.invalid && (h("span", { key: '2e70e0a28f7aa14f0365faed90d8895bc0870b2c', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '2c69f5e3c00fe454b3e9a13bc5c638bf680e244c' }, this.error_text && this.invalid && (h("span", { key: 'a8bbbb1e267d687ed6b021c80d0929f13424740e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { id: `${this.menuId}-label`, for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));

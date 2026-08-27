@@ -14,6 +14,8 @@
         "OFF": "Off",
         "NO_ITEMS_FOUND": "No Items Found",
         "NO_RESULTS_FOUND": "No Results Found",
+        "USE": "Use",
+        "MORE_MATCHES_REFINE_SEARCH": "more matches. Refine your search.",
         "NO_OPTIONS_AVAILABLE": "No Options Available",
         "NO_PERMISSION_EDIT_SETTING": "You must be an administrator to change the settings",
         "TABLE": {

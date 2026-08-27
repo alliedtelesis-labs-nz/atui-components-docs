@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ToR1OkrH.js');
+var index = require('./index-Bo1AxtqW.js');
 
 const AtHealthDotCell = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtHealthDotCell = class {
         return true;
     }
     render() {
-        return (index.h(index.Host, { key: 'c88b89231d989d3f4a1bf5cdf553c88fa1745a81', class: "flex h-full items-center justify-center" }, index.h("at-health-dot", { key: 'fcb8a1e4eac6d329b0ce4d8c8d081da966e2dc6c', status: this.type })));
+        return (index.h(index.Host, { key: 'a04b28189309ee0fd64548fad805bff6eb4680d7', class: "flex h-full items-center justify-center" }, index.h("at-health-dot", { key: '9d5ebf7719d8afaf461dff2751a8f261b294e064', status: this.type })));
     }
 };
 

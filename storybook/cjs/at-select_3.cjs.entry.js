@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-ToR1OkrH.js');
-var translation = require('./translation-DAtK7Gwm.js');
+var index = require('./index-Bo1AxtqW.js');
+var translation = require('./translation-D3TrzmL3.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
 
@@ -34,6 +34,7 @@ const AtSelectComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atuiChange = index.createEvent(this, "atuiChange", 7);
+        this.atuiSearchChange = index.createEvent(this, "atuiSearchChange", 7);
     }
     /**
      * Value of the currently selected option
@@ -93,16 +94,42 @@ const AtSelectComponent = class {
     autoclose = true;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
      */
-    menu_max_height;
+    menu_max_height = '400px';
     /**
      * Accessible name for the input. Use when a shared column header supplies the
      * visible label and `label` is therefore left unset.
      */
     aria_label;
+    /**
+     * Accept a value that is not one of the options. The dropdown offers the text
+     * entered in the search field as an entry, and the input shows it verbatim.
+     */
+    allow_custom = false;
+    /**
+     * Maximum number of matching entries rendered at once. Any remainder is
+     * summarised in a trailing row. Leave unset to render every match.
+     *
+     * This is a render cap over the options already supplied, not lazy loading:
+     * the full list still lives in `options` and the capped entries are reachable
+     * only by narrowing the search. The component never fetches; lazy loading is
+     * the consumer's responsibility. `atuiSearchChange` is provided as the hook to
+     * build it on.
+     */
+    max_rendered_options;
+    /**
+     * Delay in milliseconds before text entered in the search field is applied.
+     * Defaults to 0, which applies each keystroke immediately.
+     *
+     * Set this when `atuiSearchChange` drives a consumer-side fetch, so a request
+     * is issued once the operator pauses rather than on every keystroke.
+     */
+    search_debounce_ms = 0;
     inputEl;
     searchText = '';
+    searchDraft = '';
+    isSearching = false;
     isOpen = false;
     translations;
     hasMatchingElOptions = false;
@@ -116,6 +143,7 @@ const AtSelectComponent = class {
     optionEls = [];
     searchInputEl;
     slottedOptionLabels = new Map();
+    searchDebounceHandle;
     watchValue(newValue) {
         this.selectedLabel = this.findLabelByValue(newValue);
         this.optionEls.forEach((optionEl) => {
@@ -142,6 +170,10 @@ const AtSelectComponent = class {
      * Emits an event containing the selected value when changed.
      */
     atuiChange;
+    /**
+     * Emits the text entered in the search field.
+     */
+    atuiSearchChange;
     componentWillLoad() {
         this.selectedLabel = this.findLabelByValue(this.value);
         translation.fetchTranslations(this.el).then((translations) => {
@@ -235,21 +267,29 @@ const AtSelectComponent = class {
         });
     }
     updateIsOpenState(event) {
+        const wasOpen = this.isOpen;
         this.isOpen = event.detail;
         const triggerEl = this.el.querySelector('[slot="menu-trigger"]');
         const rect = triggerEl?.getBoundingClientRect();
         if (rect && rect.width > 0) {
             this.parentWidth = `${rect.width}px`;
         }
-        if (this.isOpen && this.typeahead) {
+        // Opening emits twice (the popover's own toggle event, then openMenu's
+        // explicit emit). Resetting on the second one races the operator: under
+        // load it lands after the first keystrokes, blanking the field while
+        // searchText stays applied to the filter.
+        if (this.isOpen && !wasOpen && this.typeahead) {
+            this.isSearching = false;
             requestAnimationFrame(() => {
-                if (this.searchInputEl) {
-                    this.searchInputEl.focus();
-                }
+                this.searchInputEl?.focus();
+                this.searchInputEl?.select();
             });
         }
         else if (!this.isOpen) {
+            this.cancelPendingSearch();
             this.searchText = '';
+            this.searchDraft = '';
+            this.isSearching = false;
         }
     }
     async handleChange(option) {
@@ -258,14 +298,57 @@ const AtSelectComponent = class {
         }
         this.value = option;
         this.selectedLabel = this.findLabelByValue(option);
+        this.cancelPendingSearch();
+        this.searchText = '';
+        this.searchDraft = '';
+        this.isSearching = false;
         this.inputEl.focus();
         this.atuiChange.emit(this.value);
     }
     handleClear() {
-        this.searchText = '';
-        this.searchInputEl.focus();
+        this.cancelPendingSearch();
+        this.searchDraft = '';
+        this.applySearchText('');
+        this.searchInputEl?.focus();
+    }
+    /**
+     * The trigger sits outside the menu's key handler, and at-menu treats Enter and
+     * Space as toggles, which an editable trigger needs for typing instead.
+     */
+    async handleKeyDownInput(event) {
+        if (!this.isEditable || event.key === 'Escape') {
+            return;
+        }
+        if (event.key === ' ') {
+            event.stopPropagation();
+            return;
+        }
+        if (event.key === 'Enter') {
+            event.stopPropagation();
+            await this.handleKeyDownMenu(event);
+            return;
+        }
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            if (!this.isOpen) {
+                event.preventDefault();
+                await this.menuRef?.openMenu();
+                return;
+            }
+            await this.handleKeyDownMenu(event);
+        }
     }
     async handleKeyDownMenu(event) {
+        if (event.key === 'Enter' && event.target === this.searchInputEl) {
+            this.flushPendingSearch();
+            const custom = this.hasAnyMatchingOptions
+                ? ''
+                : this.customEntryText;
+            if (custom) {
+                event.preventDefault();
+                await this.handleChange(custom);
+                return;
+            }
+        }
         if (event.key === 'Enter' || event.key === ' ') {
             if (event.target instanceof HTMLLIElement) {
                 event.preventDefault();
@@ -277,11 +360,43 @@ const AtSelectComponent = class {
         if (!menuContainer)
             return;
         keyboardNavigation.handleArrowNavigation(event, menuContainer);
-        keyboardNavigation.handleHomeEndNavigation(event, menuContainer);
+        if (event.target !== this.inputEl) {
+            keyboardNavigation.handleHomeEndNavigation(event, menuContainer);
+        }
     }
     handleSearchInput(event) {
-        const inputEl = event.target;
-        this.searchText = inputEl.value.toLowerCase();
+        const text = event.target.value;
+        this.cancelPendingSearch();
+        this.searchDraft = text;
+        this.isSearching = true;
+        if (!this.isOpen) {
+            this.menuRef?.openMenu();
+        }
+        if (!this.search_debounce_ms) {
+            this.applySearchText(text);
+            return;
+        }
+        this.searchDebounceHandle = window.setTimeout(() => {
+            this.searchDebounceHandle = undefined;
+            this.applySearchText(text);
+        }, this.search_debounce_ms);
+    }
+    applySearchText(text) {
+        this.searchText = text;
+        this.atuiSearchChange.emit(text);
+    }
+    cancelPendingSearch() {
+        if (this.searchDebounceHandle === undefined)
+            return;
+        window.clearTimeout(this.searchDebounceHandle);
+        this.searchDebounceHandle = undefined;
+    }
+    /** Applies a debounced keystroke early, so Enter acts on what is on screen. */
+    flushPendingSearch() {
+        if (this.searchDebounceHandle === undefined)
+            return;
+        this.cancelPendingSearch();
+        this.applySearchText(this.searchDraft);
     }
     isGroup(option) {
         return !!(option.children && option.children.length > 0);
@@ -306,76 +421,118 @@ const AtSelectComponent = class {
         return ((this.options && this.options.length > 0) ||
             this.optionEls.length > 0);
     }
+    /** The trigger doubles as the search field whenever searching is offered. */
+    get isEditable() {
+        return this.typeahead && !this.readonly && !this.disabled;
+    }
+    get inputValue() {
+        return this.isSearching ? this.searchDraft : this.displayValue;
+    }
     get displayValue() {
         if (!this.value) {
             return '';
         }
         const computed = this.selectedLabel || this.findLabelByValue(this.value);
-        return computed;
+        if (computed) {
+            return computed;
+        }
+        return this.allow_custom ? this.value : '';
+    }
+    /**
+     * The search text when it is a value no option already carries, which is what
+     * the custom entry offers. Empty whenever there is nothing to offer.
+     */
+    get customEntryText() {
+        if (!this.allow_custom)
+            return '';
+        const trimmed = this.searchText.trim();
+        if (!trimmed)
+            return '';
+        const lowered = trimmed.toLowerCase();
+        const covers = (value, label) => value.toLowerCase() === lowered || label.toLowerCase() === lowered;
+        const inOptions = (this.filteredOptions ?? []).some((option) => {
+            const entries = this.isGroup(option) ? option.children : [option];
+            return entries.some((entry) => covers(entry.value, entry.label || ''));
+        });
+        if (inOptions)
+            return '';
+        const inSlotted = this.optionEls.some((optionEl) => covers(optionEl.value, optionEl.label || ''));
+        if (inSlotted)
+            return '';
+        return trimmed;
+    }
+    get visibleOptions() {
+        const options = this.filteredOptions ?? [];
+        if (!this.max_rendered_options || this.max_rendered_options < 0) {
+            return options;
+        }
+        return options.slice(0, this.max_rendered_options);
+    }
+    get hiddenOptionCount() {
+        return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (index.h(index.Host, { key: 'f077bb497967271da5d3bb228257d217b26a77c4', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '04f669a63437e64b76cdb6b8634c58922286b8ec', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '42a11778ffd73d61c974cbce3dfbcfbd0acb0ad8', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '9c158076a85eb4899a734d817529102f9e31c31b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '50ea0e1fc44938c929c1db74fef591ba956943ba' }, this.error_text && this.invalid && (index.h("span", { key: '7d252b4c91fbe3299d47006316c68410cf74d4d0', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '86f3b7a708f4839be0b6d35663418a58d1c655ff' }, this.error_text && this.invalid && (index.h("span", { key: '6737b9c9c4d15492a4004b4b35ca904fc07878bc', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
-        const classname = getClassname({
+        const getClassname = classlist.classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
+        const hasClearButton = this.clearable && !!this.value && !this.readonly && !this.disabled;
+        const hasCaret = !this.readonly && !this.disabled;
+        const trailingPaddingClass = hasClearButton
+            ? 'pr-48'
+            : hasCaret
+                ? 'pr-32'
+                : '';
+        const classname = `${getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
-        });
-        return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        })} ${trailingPaddingClass}`;
+        return (index.h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, index.h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, "aria-autocomplete": this.isEditable ? 'list' : undefined, autoComplete: "off", type: "text", readonly: !this.isEditable, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.inputValue, "data-name": "select-input", onInput: (event) => this.handleSearchInput(event), onClick: (event) => {
+                if (this.isEditable && this.isOpen) {
+                    event.stopPropagation();
+                }
+            }, onKeyDown: (event) => this.handleKeyDownInput(event), ref: (el) => {
+                this.inputEl = el;
+                this.searchInputEl = el;
+            } }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (index.h("div", { class: "absolute top-2 right-24" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
+            !this.disabled && (index.h("div", { class: "absolute top-2 right-24 z-20" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
+                this.handleClear();
                 this.atuiChange.emit(this.value);
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }, index.h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), index.h("slot", { name: "input-actions" })))));
+            }, "data-name": "select-clear-main" }, index.h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (index.h("div", { class: "bg-surface1 rounded-input absolute right-4 z-20 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), index.h("slot", { name: "input-actions" })))));
     }
     renderOptions() {
         return (index.h("div", { class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
-                event.stopPropagation();
-                this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
-                event.stopPropagation();
-                this.handleClear();
-            }, onKeyDown: (e) => {
-                if (e.key === 'Escape') {
-                    return;
-                }
-                if (e.key === 'Enter' ||
-                    e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.handleClear();
-                    return;
-                }
-                e.stopPropagation();
-            }, "data-name": "select-clear" }, index.h("at-icon", { slot: "icon", name: "cancel" })))))), index.h("ul", { class: "contents", id: this.menuId, role: "listbox" }, this.filteredOptions
+            } }, index.h("ul", { class: "contents", id: this.menuId, role: "listbox" }, this.visibleOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);
             }
             return this.renderOption(option);
         })
-            .filter(Boolean), index.h("slot", null)), this.typeahead &&
+            .filter(Boolean), index.h("slot", null), this.customEntryText && (index.h("at-select-option", { key: "select-custom-entry", "data-name": "select-custom-option", value: this.customEntryText, label: `${this.translations?.ATUI?.USE || 'Use'} "${this.customEntryText}"`, is_active: this.value === this.customEntryText, onAtuiClick: () => this.handleChange(this.customEntryText), onMouseDown: () => this.handleChange(this.customEntryText) }))), this.hiddenOptionCount > 0 && (index.h("div", { "data-name": "select-more-matches", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, `${this.hiddenOptionCount} ${this.translations?.ATUI
+            ?.MORE_MATCHES_REFINE_SEARCH ||
+            'more matches. Refine your search.'}`)), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
             !this.hasAnyMatchingOptions && (index.h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
@@ -418,7 +575,7 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (index.h(index.Host, { key: '9e85d8f4377ac6dafec896cfa8bcbfc402cb13bb', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: 'c1a0ff85d95f4268634e5b7dad2eca5c969a1285', role: "group", "aria-labelledby": this.label }, index.h("li", { key: '1ba069368006a951629d072a2f697a53f8417613', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: '0ed344d28e7757a9b4646c92156fd43def93c4ca' }))));
+        return (index.h(index.Host, { key: '5d38e42118368dc356f8fb28b7748328d0e98bb4', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: 'f44579c2d2ad3ca3ef0ff1369abaa09c26ba5aef', role: "group", "aria-labelledby": this.label }, index.h("li", { key: '29cc954ce230fe8022ffb9f00c871d63b443c828', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: '74e611c40215e6873d3dc7c1277d7070bf383f7c' }))));
     }
 };
 
@@ -467,7 +624,7 @@ const AtSelectOptionComponent = class {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full items-center truncate rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
+        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
             ? 'pointer-events-none opacity-50 text-disabled-foreground'
             : 'cursor-pointer';
@@ -475,7 +632,7 @@ const AtSelectOptionComponent = class {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (index.h("li", { key: 'ce0f3c8b45d5247a3d732f1a65088575725fdce0', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'b694561dc4b6b9615df72084dfd2b738449f873d' }), this.label || this.value, index.h("slot", { key: 'a8f0afe1680bc5866b000242a0c27f6dab2024cb', name: "after" })));
+        return (index.h("li", { key: 'd5de580f2647df1d84f4bdd88f4abb4559d53caa', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'c026023863242aa3dd333b2cb6dc347e5ffa9eaa' }), index.h("span", { key: '76d2bbf0a79abe4a955059041a79c2d81d139607', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), index.h("slot", { key: '6d6c36fb8b6bd133c4c5312911d60c53f2804db9', name: "after" })));
     }
 };
 

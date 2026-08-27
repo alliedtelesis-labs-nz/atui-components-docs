@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B6R87LxD.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
 
 const AtChipListCell = class {
     constructor(hostRef) {
@@ -96,9 +96,9 @@ const AtChipListCell = class {
         // measures itself against; w-full stays as the fallback for when there
         // is no column to ask, such as in a story.
         const collapse = this.params?.show_overflow_counter ?? true;
-        return (h(Host, { key: 'c67071fe9928a525de0e879441b1289b8a96b597', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
+        return (h(Host, { key: 'ec21ee8832b0c8c1a83c64ee20643a82d6e802d3', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
                 ? { width: `${this.contentWidth}px` }
-                : undefined }, h("at-chip-list", { key: 'bbf04e57df9215a70836b502da96e6bb95df75fd', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
+                : undefined }, h("at-chip-list", { key: 'a6f4e35ca62c32896b42820d9905f408a9bd734b', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
     }
 };
 

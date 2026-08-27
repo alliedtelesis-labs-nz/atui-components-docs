@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ToR1OkrH.js');
+var index = require('./index-Bo1AxtqW.js');
 
 const AtStaticTable = class {
     constructor(hostRef) {
@@ -43,7 +43,7 @@ const AtStaticTable = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'e29ccb0ed768faa4c5047eafda82d60f8192cb23' }, this.show_column_manager && (index.h("at-table-actions", { key: 'fd2b943f2fee83afe39969312cf426ba947a6efd', ag_grid: this.agGrid }, index.h("at-column-manager", { key: 'cda55f3e4bd3c5d63a1ec3b68eeb8941b6762707', slot: "column-manager", col_defs: this.col_defs }))), index.h("at-table", { key: '23189968a81222d7742a8b6874db12f23cef809a', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, can_auto_init: false })));
+        return (index.h(index.Host, { key: 'e087a7e130e527bd68668d7650fc9c569bbfd16b' }, this.show_column_manager && (index.h("at-table-actions", { key: '589d33efccd95e1e44f36cc74540809d7c0dc4bf', ag_grid: this.agGrid }, index.h("at-column-manager", { key: '4e320e7c50012eaa39505d7ad44d1451ad98664a', slot: "column-manager", col_defs: this.col_defs }))), index.h("at-table", { key: 'ee89e84b74df41b021bf9c72027fc6aac5cd477f', ref: (el) => (this.tableEl = el), ag_grid: this.agGrid, table_data: this.table_data, col_defs: this.col_defs, page_size: this.page_size, use_custom_pagination: this.use_custom_pagination, can_auto_init: false })));
     }
 };
 

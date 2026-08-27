@@ -967,14 +967,20 @@ export const AtSearchTable: StencilReactComponent<AtSearchTableElement, AtSearch
     defineCustomElement: defineAtSearchTable
 });
 
-type AtSelectEvents = { onAtuiChange: EventName<CustomEvent<string>> };
+type AtSelectEvents = {
+    onAtuiChange: EventName<CustomEvent<string>>,
+    onAtuiSearchChange: EventName<CustomEvent<string>>
+};
 
 export const AtSelect: StencilReactComponent<AtSelectElement, AtSelectEvents> = /*@__PURE__*/ createComponent<AtSelectElement, AtSelectEvents>({
     tagName: 'at-select',
     elementClass: AtSelectElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiChange: 'atuiChange' } as AtSelectEvents,
+    events: {
+        onAtuiChange: 'atuiChange',
+        onAtuiSearchChange: 'atuiSearchChange'
+    } as AtSelectEvents,
     defineCustomElement: defineAtSelect
 });
 

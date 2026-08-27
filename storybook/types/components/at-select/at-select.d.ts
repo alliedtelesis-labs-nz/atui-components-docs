@@ -65,7 +65,7 @@ export declare class AtSelectComponent {
     autoclose?: boolean;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
      */
     menu_max_height?: string;
     /**
@@ -73,8 +73,34 @@ export declare class AtSelectComponent {
      * visible label and `label` is therefore left unset.
      */
     aria_label: string;
+    /**
+     * Accept a value that is not one of the options. The dropdown offers the text
+     * entered in the search field as an entry, and the input shows it verbatim.
+     */
+    allow_custom?: boolean;
+    /**
+     * Maximum number of matching entries rendered at once. Any remainder is
+     * summarised in a trailing row. Leave unset to render every match.
+     *
+     * This is a render cap over the options already supplied, not lazy loading:
+     * the full list still lives in `options` and the capped entries are reachable
+     * only by narrowing the search. The component never fetches; lazy loading is
+     * the consumer's responsibility. `atuiSearchChange` is provided as the hook to
+     * build it on.
+     */
+    max_rendered_options?: number;
+    /**
+     * Delay in milliseconds before text entered in the search field is applied.
+     * Defaults to 0, which applies each keystroke immediately.
+     *
+     * Set this when `atuiSearchChange` drives a consumer-side fetch, so a request
+     * is issued once the operator pauses rather than on every keystroke.
+     */
+    search_debounce_ms?: number;
     inputEl: HTMLInputElement;
     searchText: string;
+    searchDraft: string;
+    isSearching: boolean;
     isOpen: boolean;
     translations: any;
     hasMatchingElOptions: boolean;
@@ -88,6 +114,7 @@ export declare class AtSelectComponent {
     private optionEls;
     private searchInputEl;
     private slottedOptionLabels;
+    private searchDebounceHandle;
     watchValue(newValue: string): void;
     watchSearchText(newSearch: string): void;
     watchFilterInputs(): void;
@@ -95,6 +122,10 @@ export declare class AtSelectComponent {
      * Emits an event containing the selected value when changed.
      */
     atuiChange: EventEmitter<string>;
+    /**
+     * Emits the text entered in the search field.
+     */
+    atuiSearchChange: EventEmitter<string>;
     componentWillLoad(): void;
     componentDidLoad(): void;
     private setupOptionElements;
@@ -105,14 +136,33 @@ export declare class AtSelectComponent {
     private updateIsOpenState;
     private handleChange;
     private handleClear;
+    /**
+     * The trigger sits outside the menu's key handler, and at-menu treats Enter and
+     * Space as toggles, which an editable trigger needs for typing instead.
+     */
+    private handleKeyDownInput;
     private handleKeyDownMenu;
     private handleSearchInput;
+    private applySearchText;
+    private cancelPendingSearch;
+    /** Applies a debounced keystroke early, so Enter acts on what is on screen. */
+    private flushPendingSearch;
     private isGroup;
     private findOptionByValue;
     get hasMatchingOptions(): boolean;
     get hasAnyMatchingOptions(): boolean;
     get hasAnyOptions(): boolean;
+    /** The trigger doubles as the search field whenever searching is offered. */
+    private get isEditable();
+    private get inputValue();
     private get displayValue();
+    /**
+     * The search text when it is a value no option already carries, which is what
+     * the custom entry offers. Empty whenever there is nothing to offer.
+     */
+    private get customEntryText();
+    private get visibleOptions();
+    private get hiddenOptionCount();
     render(): any;
     renderLabel(): any;
     renderInput(): any;

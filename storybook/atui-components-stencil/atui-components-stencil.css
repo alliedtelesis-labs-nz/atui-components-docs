@@ -4169,8 +4169,16 @@ strong {
   padding-right: 24px;
 }
 
+.pr-32 {
+  padding-right: 32px;
+}
+
 .pr-4 {
   padding-right: 4px;
+}
+
+.pr-48 {
+  padding-right: 48px;
 }
 
 .pr-8 {

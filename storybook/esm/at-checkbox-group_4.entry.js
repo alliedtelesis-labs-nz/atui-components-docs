@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B6R87LxD.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
-import { f as fetchTranslations } from './translation-DTZ4TEQl.js';
+import { f as fetchTranslations } from './translation-3Gn82Eck.js';
 import { r as resolveCellSearchText } from './cell-search-text-CHtPw_Yl.js';
 import { A as AvailableCells, a as AvailableHeaders } from './index-BcMmkkI-.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
@@ -151,8 +151,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: 'dd0f0e5e0547d7a5faf9dd446105af97b90ebfd1', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '4e267a72c0ab5778defb6e6757a5397976e8fcdf', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '395f172f843e8ea2b3282126234dee48fbda59fb', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'da1cafe5d3cb9f41a0a14bcf6dd5e5604ef7a2bc', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '1127c4cf3d0803c8771500905b48768127fcc4af', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'f8e8265f6070e23d85897fb2aed0dbd4c606eed3', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '9e2f645111dae309afd65a869032fedd5ce8d3ba' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'a5fb59f5382eb1686bffa20b4a28db26b38b595d', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'd79a35ad24990a69b2a5d96654a2dc2569a4e7f5', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: 'a50f02be22efcb39bdbd10214c05472f08101909', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '8ea0bcb36b56cde20e6503bc48892e4da74d94d2', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '4f4981d32548cd7a4c7fbb587b28f7b516174a82', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'a312b1c8173d83fbbcd6bd42f54bdd4cd2765237', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '8b3279b701ba8956b4a782de29a313b69adca3a5', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '8bb24954c747e61fe5fbe0131549528337241f96' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '193cbea3e5c1c5c1be57164540a9f32a05b314ba', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
@@ -219,7 +219,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: 'f8e73633c4020e5a12155b2bf10bf0dbf0280ae2', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '808c924211de481f1b19500b9514a791d8aa7a7c', slot: "menu-trigger" }, h("at-tooltip", { key: '1959b440c57b5bd7fd672016a1854df8fdbbe78d', position: "top" }, h("at-button", { key: 'ea665286518607246232ce897f5a814bc17c4c5b', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: 'cf896831c20912a5c9e9b9dca3ef401299ca2f42', slot: "icon", name: "column" })), h("span", { key: 'acdd08de46c7420117810f83c096a0cdca71cb6f' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '09e2e5e116e648271f96895f2ac27ece60d7df28', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: '580461805909db46550b35c7b4961317eeadca02', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '9b30ccfd936d76cd0d508fb587be7f9047f2b579', slot: "menu-trigger" }, h("at-tooltip", { key: 'e667a1cb2d255bad3f1968bbba10093a1a6ef7d9', position: "top" }, h("at-button", { key: '2df609bfa3fc8d3cb79974455b5f6398f09496af', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '2fc4fd6e95efe3b4ad7191bb3c0f961c7acc349a', slot: "icon", name: "column" })), h("span", { key: '8ea98612db7bf697b09b278950c4860d7ed277a0' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '0e71423b335670ed2d3defeaf22789be819e82bf', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49332,7 +49332,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'bf7eac2a32731f7ee7eac82ccf674530c2fbc509', class: {
+        return (h(Host, { key: '59e8d6c17af4e3acf1f2ed0c5b9a40377d23d79d', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49454,7 +49454,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '28d9084da37c4243e8b46dabe765d9eb04b0d7e1', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'e2c671c06e8ce4d64d350bd20c02d4861391eb57', class: "flex justify-between" }, h("div", { key: '3a23a9252ff1b10f9b580bf64ad7ecbd3ed5d03f', class: "flex" }, h("slot", { key: 'd88dc2c2f268f30dd39b58fea5e78fc61b73f77f', name: "search" })), h("div", { key: '30d686b387477672217c968f76bcaa9b5723ea72', class: "flex items-center" }, h("slot", { key: 'b39b6837fa7500bb208ebd76fd373dc884495df3', name: "reload-button" }), h("slot", { key: '65eb9ae5861a733d42dafca8425927aeab2bc924', name: "export-menu" }), h("slot", { key: '2485b597151b532889f5c81d85f32202cb14587e', name: "leading-actions" }), h("slot", { key: 'd0ad3abe1e2f315998f943f0ebb38afa4d18f90e', name: "column-manager" }), h("slot", { key: 'e034c5049466769fd528eda327b2f35263981a6f', name: "actions" }))), h("slot", { key: '6b743f0bdac5ac9141157404b4cbffe97ed55652', name: "filters" })));
+        return (h(Host, { key: 'dd2903046ccaec88619ba686d96581a11879123e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '4d209985851fad69c8a0119dc5da9f05a30a837d', class: "flex justify-between" }, h("div", { key: '1b00781e399e3500cb42a196a564312a537e4920', class: "flex" }, h("slot", { key: 'a7c86938199c26410da294f3394419966208d39a', name: "search" })), h("div", { key: '4a7db450783e11663549e2ea0f9292811db1fe1f', class: "flex items-center" }, h("slot", { key: '4b9e123d01d3da7bc5440e8831ce5d3e3f803429', name: "reload-button" }), h("slot", { key: '823e303310d1a9bd42af910b269d9223a626d7cd', name: "export-menu" }), h("slot", { key: 'd3b218f77d826924dffa5f884054cdc97bc15b9d', name: "leading-actions" }), h("slot", { key: '000f5522731d1e747357aedc994d07cbf7fb2b18', name: "column-manager" }), h("slot", { key: '5b7ebde1fc4d3bf2a1d99d2df80320c9d770c399', name: "actions" }))), h("slot", { key: 'f2453c0f3c8e0af02708c9f69f30c12bb868e3af', name: "filters" })));
     }
 };
 

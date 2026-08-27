@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B6R87LxD.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {
@@ -14,7 +14,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return getElement(this); }
     render() {
-        return (h(Host, { key: '41c2c8e477a7c5530d94f4658389fd492df0af28', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
+        return (h(Host, { key: '22447d0c5eb55095c82c1e9e27c6fd2d63778c20', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     event.target.click();

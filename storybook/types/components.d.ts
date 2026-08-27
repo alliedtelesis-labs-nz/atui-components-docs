@@ -2531,6 +2531,11 @@ export namespace Components {
      */
     interface AtSelect {
         /**
+          * Accept a value that is not one of the options. The dropdown offers the text entered in the search field as an entry, and the input shows it verbatim.
+          * @default false
+         */
+        "allow_custom"?: boolean;
+        /**
           * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
          */
         "aria_label": string;
@@ -2569,7 +2574,12 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+          * Maximum number of matching entries rendered at once. Any remainder is summarised in a trailing row. Leave unset to render every match.  This is a render cap over the options already supplied, not lazy loading: the full list still lives in `options` and the capped entries are reachable only by narrowing the search. The component never fetches; lazy loading is the consumer's responsibility. `atuiSearchChange` is provided as the hook to build it on.
+         */
+        "max_rendered_options"?: number;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
+          * @default '400px'
          */
         "menu_max_height"?: string;
         /**
@@ -2588,6 +2598,11 @@ export namespace Components {
           * Indicated form field is required.
          */
         "required"?: boolean;
+        /**
+          * Delay in milliseconds before text entered in the search field is applied. Defaults to 0, which applies each keystroke immediately.  Set this when `atuiSearchChange` drives a consumer-side fetch, so a request is issued once the operator pauses rather than on every keystroke.
+          * @default 0
+         */
+        "search_debounce_ms"?: number;
         /**
           * Set the select to appear as a typeahead input.
           * @default false
@@ -4904,6 +4919,7 @@ declare global {
     };
     interface HTMLAtSelectElementEventMap {
         "atuiChange": string;
+        "atuiSearchChange": string;
     }
     /**
      * @category Form Controls
@@ -8137,6 +8153,11 @@ declare namespace LocalJSX {
      */
     interface AtSelect {
         /**
+          * Accept a value that is not one of the options. The dropdown offers the text entered in the search field as an entry, and the input shows it verbatim.
+          * @default false
+         */
+        "allow_custom"?: boolean;
+        /**
           * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
          */
         "aria_label"?: string;
@@ -8175,13 +8196,22 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+          * Maximum number of matching entries rendered at once. Any remainder is summarised in a trailing row. Leave unset to render every match.  This is a render cap over the options already supplied, not lazy loading: the full list still lives in `options` and the capped entries are reachable only by narrowing the search. The component never fetches; lazy loading is the consumer's responsibility. `atuiSearchChange` is provided as the hook to build it on.
+         */
+        "max_rendered_options"?: number;
+        /**
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
+          * @default '400px'
          */
         "menu_max_height"?: string;
         /**
           * Emits an event containing the selected value when changed.
          */
         "onAtuiChange"?: (event: AtSelectCustomEvent<string>) => void;
+        /**
+          * Emits the text entered in the search field.
+         */
+        "onAtuiSearchChange"?: (event: AtSelectCustomEvent<string>) => void;
         /**
           * Sets the options in the dropdown
          */
@@ -8198,6 +8228,11 @@ declare namespace LocalJSX {
           * Indicated form field is required.
          */
         "required"?: boolean;
+        /**
+          * Delay in milliseconds before text entered in the search field is applied. Defaults to 0, which applies each keystroke immediately.  Set this when `atuiSearchChange` drives a consumer-side fetch, so a request is issued once the operator pauses rather than on every keystroke.
+          * @default 0
+         */
+        "search_debounce_ms"?: number;
         /**
           * Set the select to appear as a typeahead input.
           * @default false
@@ -9711,6 +9746,9 @@ declare namespace LocalJSX {
         "autoclose": boolean;
         "menu_max_height": string;
         "aria_label": string;
+        "allow_custom": boolean;
+        "max_rendered_options": number;
+        "search_debounce_ms": number;
     }
     interface AtSelectGroupAttributes {
         "label": string;

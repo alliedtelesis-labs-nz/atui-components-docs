@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ToR1OkrH.js');
+var index = require('./index-Bo1AxtqW.js');
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {
@@ -16,7 +16,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return index.getElement(this); }
     render() {
-        return (index.h(index.Host, { key: '41c2c8e477a7c5530d94f4658389fd492df0af28', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (index.h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
+        return (index.h(index.Host, { key: '22447d0c5eb55095c82c1e9e27c6fd2d63778c20', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (index.h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     event.target.click();

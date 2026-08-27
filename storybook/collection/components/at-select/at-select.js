@@ -92,16 +92,42 @@ export class AtSelectComponent {
     autoclose = true;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
      */
-    menu_max_height;
+    menu_max_height = '400px';
     /**
      * Accessible name for the input. Use when a shared column header supplies the
      * visible label and `label` is therefore left unset.
      */
     aria_label;
+    /**
+     * Accept a value that is not one of the options. The dropdown offers the text
+     * entered in the search field as an entry, and the input shows it verbatim.
+     */
+    allow_custom = false;
+    /**
+     * Maximum number of matching entries rendered at once. Any remainder is
+     * summarised in a trailing row. Leave unset to render every match.
+     *
+     * This is a render cap over the options already supplied, not lazy loading:
+     * the full list still lives in `options` and the capped entries are reachable
+     * only by narrowing the search. The component never fetches; lazy loading is
+     * the consumer's responsibility. `atuiSearchChange` is provided as the hook to
+     * build it on.
+     */
+    max_rendered_options;
+    /**
+     * Delay in milliseconds before text entered in the search field is applied.
+     * Defaults to 0, which applies each keystroke immediately.
+     *
+     * Set this when `atuiSearchChange` drives a consumer-side fetch, so a request
+     * is issued once the operator pauses rather than on every keystroke.
+     */
+    search_debounce_ms = 0;
     inputEl;
     searchText = '';
+    searchDraft = '';
+    isSearching = false;
     isOpen = false;
     translations;
     hasMatchingElOptions = false;
@@ -115,6 +141,7 @@ export class AtSelectComponent {
     optionEls = [];
     searchInputEl;
     slottedOptionLabels = new Map();
+    searchDebounceHandle;
     watchValue(newValue) {
         this.selectedLabel = this.findLabelByValue(newValue);
         this.optionEls.forEach((optionEl) => {
@@ -141,6 +168,10 @@ export class AtSelectComponent {
      * Emits an event containing the selected value when changed.
      */
     atuiChange;
+    /**
+     * Emits the text entered in the search field.
+     */
+    atuiSearchChange;
     componentWillLoad() {
         this.selectedLabel = this.findLabelByValue(this.value);
         fetchTranslations(this.el).then((translations) => {
@@ -234,21 +265,29 @@ export class AtSelectComponent {
         });
     }
     updateIsOpenState(event) {
+        const wasOpen = this.isOpen;
         this.isOpen = event.detail;
         const triggerEl = this.el.querySelector('[slot="menu-trigger"]');
         const rect = triggerEl?.getBoundingClientRect();
         if (rect && rect.width > 0) {
             this.parentWidth = `${rect.width}px`;
         }
-        if (this.isOpen && this.typeahead) {
+        // Opening emits twice (the popover's own toggle event, then openMenu's
+        // explicit emit). Resetting on the second one races the operator: under
+        // load it lands after the first keystrokes, blanking the field while
+        // searchText stays applied to the filter.
+        if (this.isOpen && !wasOpen && this.typeahead) {
+            this.isSearching = false;
             requestAnimationFrame(() => {
-                if (this.searchInputEl) {
-                    this.searchInputEl.focus();
-                }
+                this.searchInputEl?.focus();
+                this.searchInputEl?.select();
             });
         }
         else if (!this.isOpen) {
+            this.cancelPendingSearch();
             this.searchText = '';
+            this.searchDraft = '';
+            this.isSearching = false;
         }
     }
     async handleChange(option) {
@@ -257,14 +296,57 @@ export class AtSelectComponent {
         }
         this.value = option;
         this.selectedLabel = this.findLabelByValue(option);
+        this.cancelPendingSearch();
+        this.searchText = '';
+        this.searchDraft = '';
+        this.isSearching = false;
         this.inputEl.focus();
         this.atuiChange.emit(this.value);
     }
     handleClear() {
-        this.searchText = '';
-        this.searchInputEl.focus();
+        this.cancelPendingSearch();
+        this.searchDraft = '';
+        this.applySearchText('');
+        this.searchInputEl?.focus();
+    }
+    /**
+     * The trigger sits outside the menu's key handler, and at-menu treats Enter and
+     * Space as toggles, which an editable trigger needs for typing instead.
+     */
+    async handleKeyDownInput(event) {
+        if (!this.isEditable || event.key === 'Escape') {
+            return;
+        }
+        if (event.key === ' ') {
+            event.stopPropagation();
+            return;
+        }
+        if (event.key === 'Enter') {
+            event.stopPropagation();
+            await this.handleKeyDownMenu(event);
+            return;
+        }
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            if (!this.isOpen) {
+                event.preventDefault();
+                await this.menuRef?.openMenu();
+                return;
+            }
+            await this.handleKeyDownMenu(event);
+        }
     }
     async handleKeyDownMenu(event) {
+        if (event.key === 'Enter' && event.target === this.searchInputEl) {
+            this.flushPendingSearch();
+            const custom = this.hasAnyMatchingOptions
+                ? ''
+                : this.customEntryText;
+            if (custom) {
+                event.preventDefault();
+                await this.handleChange(custom);
+                return;
+            }
+        }
         if (event.key === 'Enter' || event.key === ' ') {
             if (event.target instanceof HTMLLIElement) {
                 event.preventDefault();
@@ -276,11 +358,43 @@ export class AtSelectComponent {
         if (!menuContainer)
             return;
         handleArrowNavigation(event, menuContainer);
-        handleHomeEndNavigation(event, menuContainer);
+        if (event.target !== this.inputEl) {
+            handleHomeEndNavigation(event, menuContainer);
+        }
     }
     handleSearchInput(event) {
-        const inputEl = event.target;
-        this.searchText = inputEl.value.toLowerCase();
+        const text = event.target.value;
+        this.cancelPendingSearch();
+        this.searchDraft = text;
+        this.isSearching = true;
+        if (!this.isOpen) {
+            this.menuRef?.openMenu();
+        }
+        if (!this.search_debounce_ms) {
+            this.applySearchText(text);
+            return;
+        }
+        this.searchDebounceHandle = window.setTimeout(() => {
+            this.searchDebounceHandle = undefined;
+            this.applySearchText(text);
+        }, this.search_debounce_ms);
+    }
+    applySearchText(text) {
+        this.searchText = text;
+        this.atuiSearchChange.emit(text);
+    }
+    cancelPendingSearch() {
+        if (this.searchDebounceHandle === undefined)
+            return;
+        window.clearTimeout(this.searchDebounceHandle);
+        this.searchDebounceHandle = undefined;
+    }
+    /** Applies a debounced keystroke early, so Enter acts on what is on screen. */
+    flushPendingSearch() {
+        if (this.searchDebounceHandle === undefined)
+            return;
+        this.cancelPendingSearch();
+        this.applySearchText(this.searchDraft);
     }
     isGroup(option) {
         return !!(option.children && option.children.length > 0);
@@ -305,76 +419,118 @@ export class AtSelectComponent {
         return ((this.options && this.options.length > 0) ||
             this.optionEls.length > 0);
     }
+    /** The trigger doubles as the search field whenever searching is offered. */
+    get isEditable() {
+        return this.typeahead && !this.readonly && !this.disabled;
+    }
+    get inputValue() {
+        return this.isSearching ? this.searchDraft : this.displayValue;
+    }
     get displayValue() {
         if (!this.value) {
             return '';
         }
         const computed = this.selectedLabel || this.findLabelByValue(this.value);
-        return computed;
+        if (computed) {
+            return computed;
+        }
+        return this.allow_custom ? this.value : '';
+    }
+    /**
+     * The search text when it is a value no option already carries, which is what
+     * the custom entry offers. Empty whenever there is nothing to offer.
+     */
+    get customEntryText() {
+        if (!this.allow_custom)
+            return '';
+        const trimmed = this.searchText.trim();
+        if (!trimmed)
+            return '';
+        const lowered = trimmed.toLowerCase();
+        const covers = (value, label) => value.toLowerCase() === lowered || label.toLowerCase() === lowered;
+        const inOptions = (this.filteredOptions ?? []).some((option) => {
+            const entries = this.isGroup(option) ? option.children : [option];
+            return entries.some((entry) => covers(entry.value, entry.label || ''));
+        });
+        if (inOptions)
+            return '';
+        const inSlotted = this.optionEls.some((optionEl) => covers(optionEl.value, optionEl.label || ''));
+        if (inSlotted)
+            return '';
+        return trimmed;
+    }
+    get visibleOptions() {
+        const options = this.filteredOptions ?? [];
+        if (!this.max_rendered_options || this.max_rendered_options < 0) {
+            return options;
+        }
+        return options.slice(0, this.max_rendered_options);
+    }
+    get hiddenOptionCount() {
+        return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (h(Host, { key: 'f077bb497967271da5d3bb228257d217b26a77c4', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '04f669a63437e64b76cdb6b8634c58922286b8ec', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '42a11778ffd73d61c974cbce3dfbcfbd0acb0ad8', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '9c158076a85eb4899a734d817529102f9e31c31b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '50ea0e1fc44938c929c1db74fef591ba956943ba' }, this.error_text && this.invalid && (h("span", { key: '7d252b4c91fbe3299d47006316c68410cf74d4d0', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '86f3b7a708f4839be0b6d35663418a58d1c655ff' }, this.error_text && this.invalid && (h("span", { key: '6737b9c9c4d15492a4004b4b35ca904fc07878bc', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
-        const classname = getClassname({
+        const getClassname = classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
+        const hasClearButton = this.clearable && !!this.value && !this.readonly && !this.disabled;
+        const hasCaret = !this.readonly && !this.disabled;
+        const trailingPaddingClass = hasClearButton
+            ? 'pr-48'
+            : hasCaret
+                ? 'pr-32'
+                : '';
+        const classname = `${getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
             readonly: this.readonly,
-        });
-        return (h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, type: "text", readonly: true, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.displayValue, "data-name": "select-input", ref: (el) => (this.inputEl = el) }), this.clearable &&
+        })} ${trailingPaddingClass}`;
+        return (h("div", { class: "h-input min-h-input relative flex items-center gap-4", slot: "menu-trigger", "data-name": "select-input-container" }, h("input", { id: this.inputId, class: classname, role: "combobox", "aria-label": this.aria_label ?? undefined, "aria-haspopup": "listbox", "aria-expanded": this.isOpen, "aria-controls": this.menuId, "aria-autocomplete": this.isEditable ? 'list' : undefined, autoComplete: "off", type: "text", readonly: !this.isEditable, "aria-disabled": this.disabled, disabled: this.disabled, placeholder: this.placeholder, value: this.inputValue, "data-name": "select-input", onInput: (event) => this.handleSearchInput(event), onClick: (event) => {
+                if (this.isEditable && this.isOpen) {
+                    event.stopPropagation();
+                }
+            }, onKeyDown: (event) => this.handleKeyDownInput(event), ref: (el) => {
+                this.inputEl = el;
+                this.searchInputEl = el;
+            } }), this.clearable &&
             this.value &&
             !this.readonly &&
-            !this.disabled && (h("div", { class: "absolute top-2 right-24" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
+            !this.disabled && (h("div", { class: "absolute top-2 right-24 z-20" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", "aria-label": "Clear selection", onClick: async (event) => {
                 event.stopPropagation();
                 this.value = '';
+                this.handleClear();
                 this.atuiChange.emit(this.value);
                 if (this.inputEl) {
                     this.inputEl.focus();
                 }
-            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), h("slot", { name: "input-actions" })))));
+            }, "data-name": "select-clear-main" }, h("at-icon", { slot: "icon", name: "cancel" })))), !this.readonly && !this.disabled && (h("div", { class: "bg-surface1 rounded-input absolute right-4 z-20 flex h-full cursor-pointer items-center p-4 select-none", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down', "data-name": "button-icon-right" }), h("slot", { name: "input-actions" })))));
     }
     renderOptions() {
         return (h("div", { class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 p-4" }, h("input", { type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', name: "", autoComplete: "off", "aria-autocomplete": "list", value: this.searchText, onInput: (event) => {
-                event.stopPropagation();
-                this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
-                event.stopPropagation();
-                this.handleClear();
-            }, onKeyDown: (e) => {
-                if (e.key === 'Escape') {
-                    return;
-                }
-                if (e.key === 'Enter' ||
-                    e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.handleClear();
-                    return;
-                }
-                e.stopPropagation();
-            }, "data-name": "select-clear" }, h("at-icon", { slot: "icon", name: "cancel" })))))), h("ul", { class: "contents", id: this.menuId, role: "listbox" }, this.filteredOptions
+            } }, h("ul", { class: "contents", id: this.menuId, role: "listbox" }, this.visibleOptions
             ?.map((option) => {
             if (this.isGroup(option)) {
                 return this.renderGroupedOption(option);
             }
             return this.renderOption(option);
         })
-            .filter(Boolean), h("slot", null)), this.typeahead &&
+            .filter(Boolean), h("slot", null), this.customEntryText && (h("at-select-option", { key: "select-custom-entry", "data-name": "select-custom-option", value: this.customEntryText, label: `${this.translations?.ATUI?.USE || 'Use'} "${this.customEntryText}"`, is_active: this.value === this.customEntryText, onAtuiClick: () => this.handleChange(this.customEntryText), onMouseDown: () => this.handleChange(this.customEntryText) }))), this.hiddenOptionCount > 0 && (h("div", { "data-name": "select-more-matches", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, `${this.hiddenOptionCount} ${this.translations?.ATUI
+            ?.MORE_MATCHES_REFINE_SEARCH ||
+            'more matches. Refine your search.'}`)), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
             !this.hasAnyMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
@@ -684,12 +840,13 @@ export class AtSelectComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').\nForwarded to the inner <at-menu> via max_height prop."
+                    "text": "Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').\nForwarded to the inner <at-menu> via max_height prop. Defaults to 400px."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "menu_max_height"
+                "attribute": "menu_max_height",
+                "defaultValue": "'400px'"
             },
             "aria_label": {
                 "type": "string",
@@ -709,12 +866,73 @@ export class AtSelectComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "aria_label"
+            },
+            "allow_custom": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Accept a value that is not one of the options. The dropdown offers the text\nentered in the search field as an entry, and the input shows it verbatim."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "allow_custom",
+                "defaultValue": "false"
+            },
+            "max_rendered_options": {
+                "type": "number",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Maximum number of matching entries rendered at once. Any remainder is\nsummarised in a trailing row. Leave unset to render every match.\n\nThis is a render cap over the options already supplied, not lazy loading:\nthe full list still lives in `options` and the capped entries are reachable\nonly by narrowing the search. The component never fetches; lazy loading is\nthe consumer's responsibility. `atuiSearchChange` is provided as the hook to\nbuild it on."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "max_rendered_options"
+            },
+            "search_debounce_ms": {
+                "type": "number",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Delay in milliseconds before text entered in the search field is applied.\nDefaults to 0, which applies each keystroke immediately.\n\nSet this when `atuiSearchChange` drives a consumer-side fetch, so a request\nis issued once the operator pauses rather than on every keystroke."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "search_debounce_ms",
+                "defaultValue": "0"
             }
         };
     }
     static get states() {
         return {
             "searchText": {},
+            "searchDraft": {},
+            "isSearching": {},
             "isOpen": {},
             "translations": {},
             "hasMatchingElOptions": {},
@@ -733,6 +951,21 @@ export class AtSelectComponent {
                 "docs": {
                     "tags": [],
                     "text": "Emits an event containing the selected value when changed."
+                },
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                }
+            }, {
+                "method": "atuiSearchChange",
+                "name": "atuiSearchChange",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emits the text entered in the search field."
                 },
                 "complexType": {
                     "original": "string",
