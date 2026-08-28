@@ -7,7 +7,7 @@ export type AtHeaderSizes = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
  * @slot title-suffix - Placed after the 'header_title'
  * @slot custom-title - Used instead of the 'header_title' prop to place your own title elements
  * @slot subtitle-content - Used to place your own subtitle content
- * @slot actions - Placed at the bottom of the element for additional actions
+ * @slot actions - Right-aligned action group on the title row
  */
 export declare class AtHeader {
     /**
