@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bo1AxtqW.js');
+var index = require('./index-BCGHtseN.js');
 
 const AtMultiBtnCell = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtMultiBtnCell = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '1fd768c37ddcdf7fb6781b1c7ec9692a37eed376', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (index.h(index.Host, { key: '0358108a5d4888eb798d2f6f50adbeb85d3af17f', class: "flex h-full items-center" }, this.buttonsToRender));
     }
 };
 

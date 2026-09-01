@@ -1,10 +1,10 @@
 'use strict';
 
-var index = require('./index-Bo1AxtqW.js');
+var index = require('./index-BCGHtseN.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-D3TrzmL3.js');
-var cellSearchText = require('./cell-search-text-D-KU9XtL.js');
-var index$1 = require('./index-BFMvfEk4.js');
+var translation = require('./translation-Bmo58wpn.js');
+var cellSearchText = require('./cell-search-text-T04zgt7h.js');
+var index$1 = require('./index-Do5plV20.js');
 var atCheckboxCell_entry = require('./at-checkbox-cell.cjs.entry.js');
 var atTextBadgeCell_entry = require('./at-text-badge-cell.cjs.entry.js');
 var atHealthDotCell_entry = require('./at-health-dot-cell.cjs.entry.js');
@@ -23,6 +23,7 @@ var atColorStatusCell_entry = require('./at-color-status-cell.cjs.entry.js');
 var atTextImageCell_entry = require('./at-text-image-cell.cjs.entry.js');
 var atMenuCell_entry = require('./at-menu-cell.cjs.entry.js');
 var atProgressBarCell_entry = require('./at-progress-bar-cell.cjs.entry.js');
+var atBadgeCountCell_entry = require('./at-badge-count-cell.cjs.entry.js');
 require('./time-date-presentation.util-CBDuvYdu.js');
 require('./at-time-date.util-6Fmc04Ie.js');
 require('./date-DDRmOnS1.js');
@@ -153,8 +154,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (index.h(index.Host, { key: 'd79a35ad24990a69b2a5d96654a2dc2569a4e7f5', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, index.h("div", { key: 'a50f02be22efcb39bdbd10214c05472f08101909', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '8ea0bcb36b56cde20e6503bc48892e4da74d94d2', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '4f4981d32548cd7a4c7fbb587b28f7b516174a82', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'a312b1c8173d83fbbcd6bd42f54bdd4cd2765237', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), index.h("ul", { key: '8b3279b701ba8956b4a782de29a313b69adca3a5', class: classname, "data-name": "checkbox-group-options" }, index.h("slot", { key: '8bb24954c747e61fe5fbe0131549528337241f96' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (index.h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (index.h("span", { key: '193cbea3e5c1c5c1be57164540a9f32a05b314ba', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (index.h(index.Host, { key: '7ea907f5c152e7b02ca20d6d8f9d967c50795f12', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, index.h("div", { key: 'b9d68fbb10922a69f7ae76c878b47ffd16e7bd6b', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: 'c9824a7b337ac3517106e0ee79d6f7212a08c1df', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '919885c085b8d2b1697258d28391686eddf60c49', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '7cd16ea1934a53a0476c272ad2b40697b3bb51aa', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), index.h("ul", { key: 'ff71af0fe2adf8aac040715d1ea42bb00782ef77', class: classname, "data-name": "checkbox-group-options" }, index.h("slot", { key: '877d9a4b025e4cb3a0023372d40bb815b5b73613' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (index.h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (index.h("span", { key: 'e66942f382cedbdfc674f1028b77f8ebdc0965b2', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
@@ -221,7 +222,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (index.h("at-menu", { key: '580461805909db46550b35c7b4961317eeadca02', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, index.h("div", { key: '9b30ccfd936d76cd0d508fb587be7f9047f2b579', slot: "menu-trigger" }, index.h("at-tooltip", { key: 'e667a1cb2d255bad3f1968bbba10093a1a6ef7d9', position: "top" }, index.h("at-button", { key: '2df609bfa3fc8d3cb79974455b5f6398f09496af', slot: "tooltip-trigger", type: "secondaryText" }, index.h("at-icon", { key: '2fc4fd6e95efe3b4ad7191bb3c0f961c7acc349a', slot: "icon", name: "column" })), index.h("span", { key: '8ea98612db7bf697b09b278950c4860d7ed277a0' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: '0e71423b335670ed2d3defeaf22789be819e82bf', class: "w-fit", options: this.col_defs
+        return (index.h("at-menu", { key: '39debe8efd54a492174f71e5550cc358ab2ef120', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, index.h("div", { key: '1dddd76b66e03aae1b2094bfb6188f880d43df2a', slot: "menu-trigger" }, index.h("at-tooltip", { key: '3f2d8b5417b30a6a169ac092abaf95534cb5bc89', position: "top" }, index.h("at-button", { key: '65bae93f4a1dca4226af5da2cb51db0b305a6e6e', slot: "tooltip-trigger", type: "secondaryText" }, index.h("at-icon", { key: 'ebcb4d855ad8afe56bf2f82049525087a2a7ff7e', slot: "icon", name: "column" })), index.h("span", { key: '8d5b81cd1b42700e961204d2179a00c7ecf5d216' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), index.h("at-checkbox-group", { key: 'e13b8cb70f5f80f77826f62a5ebdfdd230ccd810', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49021,6 +49022,7 @@ class AtTableComponentsConfigs {
                 atTextImageCell_entry.at_text_image_cell,
                 atMenuCell_entry.at_menu_cell,
                 atProgressBarCell_entry.at_progress_bar_cell,
+                atBadgeCountCell_entry.at_badge_count_cell,
                 atCheckboxHeader_entry.at_checkbox_header,
             ];
             // Force reference to prevent tree-shaking
@@ -49060,6 +49062,7 @@ class AtTableComponentsConfigs {
             [index$1.AvailableCells.TEXT_WITH_IMAGE_CELL]: atTextImageCell_entry.at_text_image_cell,
             [index$1.AvailableCells.MENU_CELL]: atMenuCell_entry.at_menu_cell,
             [index$1.AvailableCells.PROGRESS_BAR_CELL]: atProgressBarCell_entry.at_progress_bar_cell,
+            [index$1.AvailableCells.BADGE_COUNT_CELL]: atBadgeCountCell_entry.at_badge_count_cell,
         };
     }
     /**
@@ -49070,7 +49073,7 @@ class AtTableComponentsConfigs {
     }
 }
 
-const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-cell-wrapper,.ag-cell-value{min-width:0}.ag-cell:has(at-checkbox-cell),.ag-header-cell:has(at-checkbox-header){padding-left:0 !important;padding-right:0 !important}.ag-cell:has(at-chip-list-cell){height:100% !important;align-items:center !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell-text{font-size:var(--token-font-size-xs);font-weight:var(--token-font-weight-med)}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}`;
+const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-cell-wrapper,.ag-cell-value{min-width:0}.ag-cell:has(at-checkbox-cell),.ag-cell:has([data-name=selection-cell]),.ag-header-cell:has(at-checkbox-header),.ag-header-cell:has([data-name=selection-header]){padding-left:6px !important;padding-right:6px !important;justify-content:center}.ag-cell-wrapper:has(at-checkbox-cell),.ag-cell-value:has(at-checkbox-cell),.ag-cell-wrapper:has([data-name=selection-cell]),.ag-cell-value:has([data-name=selection-cell]){width:100%;min-width:0}.ag-header-cell:has(at-checkbox-header) .ag-header-cell-comp-wrapper,.ag-header-cell:has(at-checkbox-header) .ag-header-cell-label{width:100%;justify-content:center}.ag-cell:has(at-chip-list-cell){height:100% !important;align-items:center !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell-text{font-size:var(--token-font-size-xs);font-weight:var(--token-font-weight-med)}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}`;
 
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
 const AtTableComponent = class {
@@ -49078,6 +49081,7 @@ const AtTableComponent = class {
         index.registerInstance(this, hostRef);
         this.atSortChange = index.createEvent(this, "atSortChange", 7);
         this.atColumnVisibilityChange = index.createEvent(this, "atColumnVisibilityChange", 7);
+        this.atGridReady = index.createEvent(this, "atGridReady", 7);
     }
     /**
      * Data provided to the table
@@ -49113,6 +49117,12 @@ const AtTableComponent = class {
      */
     auto_size_columns = true;
     /**
+     * Field on each row whose value uniquely identifies it. Supplying it lets AG Grid
+     * match incoming rows to the ones it already has, so a `table_data` swap updates
+     * rows in place instead of rebuilding every node.
+     */
+    row_id_field;
+    /**
      * The AG Grid API
      */
     ag_grid;
@@ -49131,6 +49141,12 @@ const AtTableComponent = class {
      * goes through.
      */
     atColumnVisibilityChange;
+    /**
+     * Emits the live AG Grid API whenever a grid is built. `createGrid()` destroys any
+     * previous grid, so a host that cached an earlier one is holding a destroyed
+     * instance until this re-publishes.
+     */
+    atGridReady;
     activeFilters = {};
     agGrid;
     tableCreated = false;
@@ -49282,6 +49298,9 @@ const AtTableComponent = class {
             columnDefs: this.withSearchText(this.col_defs),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
+            ...(this.row_id_field && {
+                getRowId: (params) => String(params.data?.[this.row_id_field]),
+            }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
             onModelUpdated: (event) => {
@@ -49330,6 +49349,7 @@ const AtTableComponent = class {
         this.agGrid = gridApi;
         this.tableCreated = true;
         this.updateDisplayedRowsState(gridApi);
+        this.atGridReady.emit(gridApi);
         return gridApi;
     }
     /**
@@ -49347,7 +49367,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '92969d534d02b8979677cb0ddad798010cfe65a1', class: {
+        return (index.h(index.Host, { key: '1c634445704f6f86418eca1a40c74f321eb52e27', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -49469,7 +49489,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'dd2903046ccaec88619ba686d96581a11879123e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '4d209985851fad69c8a0119dc5da9f05a30a837d', class: "flex justify-between" }, index.h("div", { key: '1b00781e399e3500cb42a196a564312a537e4920', class: "flex" }, index.h("slot", { key: 'a7c86938199c26410da294f3394419966208d39a', name: "search" })), index.h("div", { key: '4a7db450783e11663549e2ea0f9292811db1fe1f', class: "flex items-center" }, index.h("slot", { key: '4b9e123d01d3da7bc5440e8831ce5d3e3f803429', name: "reload-button" }), index.h("slot", { key: '823e303310d1a9bd42af910b269d9223a626d7cd', name: "export-menu" }), index.h("slot", { key: 'd3b218f77d826924dffa5f884054cdc97bc15b9d', name: "leading-actions" }), index.h("slot", { key: '000f5522731d1e747357aedc994d07cbf7fb2b18', name: "column-manager" }), index.h("slot", { key: '5b7ebde1fc4d3bf2a1d99d2df80320c9d770c399', name: "actions" }))), index.h("slot", { key: 'f2453c0f3c8e0af02708c9f69f30c12bb868e3af', name: "filters" })));
+        return (index.h(index.Host, { key: '1fe9d4420aa865dd46cae828aff29b90e1961bd4', class: "relative flex flex-col gap-8 pt-8 pb-8" }, index.h("div", { key: '8ce3cbb343c1b07bd9c62909ae4b1f9eb4f6e83f', class: "flex justify-between" }, index.h("div", { key: '58c5b591667a45b8d01b75a078b97f0b291c31a3', class: "flex flex-wrap items-end gap-8" }, index.h("slot", { key: 'afbda3fd855092f2bf476a852938d2db9307789d', name: "search" }), index.h("slot", { key: '7bccbcb10b6d95082fe5054e1cd327ae0facd429', name: "filter-bar" })), index.h("div", { key: 'f557d1b32f7c932d330bfa34297f974c74e2bb75', class: "flex items-center" }, index.h("slot", { key: 'c9be2ccd08788bf57f74da97b96b3319d209726f', name: "reload-button" }), index.h("slot", { key: 'b90db62f9ef84209b51ef4f3239d92621b97ad92', name: "export-menu" }), index.h("slot", { key: '28c7e3539729b392076982ee6530ac29ebd72e74', name: "leading-actions" }), index.h("slot", { key: 'd8fee24039e56f25a9942663cfe4fa9e5bdb9273', name: "column-manager" }), index.h("slot", { key: '4fc9a2d73d91f1e8eb84aaef7fd8001e2f4b1da2', name: "actions" }))), index.h("slot", { key: '97b420c72cde9592cf8016af7b821e66e24faf81', name: "filters" })));
     }
 };
 

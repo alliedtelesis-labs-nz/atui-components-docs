@@ -30,7 +30,20 @@
             "MANAGE_COLUMNS": "Manage Columns",
             "FILTER_DATA": "Filter data",
             "EXCLUDES_COLUMNS": "Excludes: ",
-            "NO_GLOBAL_SEARCH_COLUMNS": "Cannot search on the column(s) displayed"
+            "NO_GLOBAL_SEARCH_COLUMNS": "Cannot search on the column(s) displayed",
+            "SELECTION": {
+                "PAGE_SELECTED": "{count} {noun} selected.",
+                "SELECTED": "{count} {noun} selected.",
+                "SELECTED_ACROSS_PAGES": "{count} {noun} selected across all pages.",
+                "SELECT_ALL_MATCHING": "Select all {total} that match this filter",
+                "SELECT_PAGE_ONLY": "Select all in the current page",
+                "ALL_MATCHING_SELECTED": "All {total} {noun} matching your filter are selected.",
+                "ALL_MATCHING_SELECTED_EXCLUDED": "All {count} of {total} {noun} matching your filter are selected.",
+                "SELECT_ROW": "Select row",
+                "SELECT_ALL_ON_PAGE": "Select all rows on this page",
+                "ROW": "row",
+                "ROWS": "rows"
+            }
         },
         "TIME": {
             "SELECT_ABSOLUTE_TIME": "Select Absolute time",

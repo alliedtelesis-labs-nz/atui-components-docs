@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-m_dTEvgo.js';
 
 const AtAccordionComponent = class {
     constructor(hostRef) {
@@ -75,7 +75,7 @@ const AtAccordionComponent = class {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: 'd84a71c82b0b8b95d01e84ad55cddf3a0aad73d6', class: "flex flex-col gap-2" }, h("slot", { key: '55007170bbaf9da62a15f5805be2f84430902ea0' }), this.items &&
+        return (h(Host, { key: '4c8db011dc7019bade030b2431a2256cce5353e9', class: "flex flex-col gap-2" }, h("slot", { key: '1462b855e9ca043a85774485b35c8fdc9627d8d7' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

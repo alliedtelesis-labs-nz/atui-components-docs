@@ -42,6 +42,12 @@ export declare class AtTableComponent {
      */
     auto_size_columns: boolean;
     /**
+     * Field on each row whose value uniquely identifies it. Supplying it lets AG Grid
+     * match incoming rows to the ones it already has, so a `table_data` swap updates
+     * rows in place instead of rebuilding every node.
+     */
+    row_id_field: string;
+    /**
      * The AG Grid API
      */
     ag_grid: GridApi;
@@ -63,6 +69,12 @@ export declare class AtTableComponent {
      * goes through.
      */
     atColumnVisibilityChange: EventEmitter<string[]>;
+    /**
+     * Emits the live AG Grid API whenever a grid is built. `createGrid()` destroys any
+     * previous grid, so a host that cached an earlier one is holding a destroyed
+     * instance until this re-publishes.
+     */
+    atGridReady: EventEmitter<GridApi>;
     activeFilters: {
         [key: string]: string;
     };

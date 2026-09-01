@@ -1,5 +1,5 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
-import { f as fetchTranslations } from './translation-3Gn82Eck.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-m_dTEvgo.js';
+import { f as fetchTranslations } from './translation-DJgkls7W.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
 
@@ -87,6 +87,21 @@ const AtMultiSelectComponent = class {
      * Forwarded to the inner <at-menu> via max_height prop.
      */
     menu_max_height;
+    /**
+     * How the trigger displays the current selection.
+     *
+     * `chips` renders the selected values as removable chips inside the trigger,
+     * which grows with the selection - the right behaviour for a form field.
+     * `count` renders the placeholder plus a badge carrying the number selected,
+     * at a fixed height however much is selected. Use it in a filter bar, paired
+     * with an external `at-chip-list` for the selection itself, so the bar does
+     * not reflow as the user picks. In `count` the placeholder carries the field
+     * name inside the trigger, so the outside label and hint text are not
+     * rendered - set `label` anyway and it becomes the control's accessible name.
+     * The badge says how many, never which, so `count` belongs on a surface that
+     * displays the selection somewhere else - a chip row of its own, or a table's.
+     */
+    selection_display = 'chips';
     /**
      * The selected items
      */
@@ -299,18 +314,21 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (h(Host, { key: '3f4ed5d4145b4000ce2f385f497a56ec2d6887e1', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '2d7c092ab60d31144828d772d0988f565b473778', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: 'b5ab06e062a2896ddb2f07e223b65f8abf458f68', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '73913a623142ee59d10233830113cdcb50085b42', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '2c69f5e3c00fe454b3e9a13bc5c638bf680e244c' }, this.error_text && this.invalid && (h("span", { key: 'a8bbbb1e267d687ed6b021c80d0929f13424740e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: 'f7dd5b4f183d41cb20ac28c18d13cd3446f304a7' }, this.error_text && this.invalid && (h("span", { key: '90b01b0652a06d8797f93ee8aced395a2d0eb1b0', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
+        if (this.selection_display === 'count') {
+            return null;
+        }
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { id: `${this.menuId}-label`, for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
@@ -321,7 +339,20 @@ const AtMultiSelectComponent = class {
             readonly: this.readonly,
             typeahead: this.typeahead,
         });
-        return (h("div", { id: this.inputId, class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0, role: "combobox", "aria-haspopup": "listbox", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": this.menuId, "aria-labelledby": this.label ? `${this.menuId}-label` : undefined }, h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))), !this.readonly && !this.disabled && (h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
+        return (h("div", { id: this.inputId, class: classname, slot: "menu-trigger", "data-name": "multi-select-input-container", tabindex: 0, role: "combobox", "aria-haspopup": "listbox", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": this.menuId, "aria-label": this.selection_display === 'count' ? this.label : undefined, "aria-labelledby": this.label && this.selection_display !== 'count'
+                ? `${this.menuId}-label`
+                : undefined }, this.selection_display === 'count'
+            ? this.renderCountSelection()
+            : this.renderChipSelection(), !this.readonly && !this.disabled && (h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
+    }
+    renderChipSelection() {
+        return (h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))));
+    }
+    renderCountSelection() {
+        const count = this.value?.length ?? 0;
+        return (h("div", { class: "flex w-full items-center gap-8 overflow-hidden", "data-name": "multi-select-count-inside" }, h("span", { class: count
+                ? 'text-body truncate'
+                : 'text-body text-disabled truncate select-none' }, this.placeholder), count > 0 && (h("at-badge", { type: "info", size: "sm", label: count.toString(), "data-name": "multi-select-count-badge" }))));
     }
     renderOptions() {
         return (h("ul", { id: this.menuId, role: "listbox", "aria-multiselectable": "true", class: "contents", onKeyDown: async (event) => {

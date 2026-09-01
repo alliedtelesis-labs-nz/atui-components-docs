@@ -5,6 +5,7 @@
     "components/at-badge/at-badge.js",
     "components/table-components/cell-components/at-text-status-cell/at-text-status-cell.js",
     "components/table-components/cell-components/at-text-badge-cell/at-text-badge-cell.js",
+    "components/table-components/cell-components/at-badge-count-cell/at-badge-count-cell.js",
     "components/table-components/cell-components/at-text-icon-cell/at-text-icon-cell.js",
     "components/at-toggle-switch/at-toggle-switch.js",
     "components/table-components/cell-components/at-toggle-cell/at-toggle-cell.js",

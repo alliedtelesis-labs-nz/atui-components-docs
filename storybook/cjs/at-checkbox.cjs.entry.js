@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bo1AxtqW.js');
+var index = require('./index-BCGHtseN.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variants = classlist.classlist('group/checkbox transition-[color,background-color, box-shadow] focus-visible:ring-active-glow relative flex w-full cursor-pointer items-start gap-8 rounded-input p-8 outline-0 duration-300 ease-in-out focus:outline-0 focus-visible:ring', {
@@ -54,6 +54,11 @@ const AtCheckbox = class {
      * Disables interaction with the checkbox
      */
     disabled;
+    /**
+     * Shows the mixed state, for a checkbox standing for a set that is only partly
+     * selected. Takes precedence over `checked` in what is displayed.
+     */
+    indeterminate;
     checkboxEl;
     /**
      * Not derived from `value`: two groups can carry the same values, so a
@@ -70,6 +75,14 @@ const AtCheckbox = class {
         this.checked = value.target.checked;
         this.atuiChange.emit(this.checked);
     }
+    /**
+     * `indeterminate` is a property with no attribute, so JSX cannot set it.
+     */
+    componentDidRender() {
+        if (this.checkboxEl) {
+            this.checkboxEl.indeterminate = !!this.indeterminate;
+        }
+    }
     render() {
         const classname = variants({
             disabled: this.disabled,
@@ -79,8 +92,12 @@ const AtCheckbox = class {
             checked: this.checked,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: '29308ca53e7031b57151b30a49b33580e8780059', role: "checkbox", "aria-checked": this.checked, "aria-labelledby": this.label ? this.labelId : undefined, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
-                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, index.h("input", { key: 'faf6985982bf68ae5aa90703f124556ad12e3953', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.checked, onChange: (event) => this.handleChange(event), id: this.inputId, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (index.h("div", { key: '067291c34d58178cc4a5c5b6639fa444218a0290', class: "pointer-events-none flex flex-col" }, index.h("slot", { key: '50b1004da2d2a114fa3af8b888c0398756bc8612', name: "label" }), this.label && (index.h("label", { key: '78fdb81aded166c95bbb79aa109cd93f68957c45', class: "mt-0 pl-4 text-xs font-medium", id: this.labelId, "data-name": "checkbox-label" }, this.label)), this.hint_text && (index.h("span", { key: '3b8edf8e6fc872df4e1f742436c0aca68f48e872', class: "text-muted mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), index.h("slot", { key: '0ad179d7fffb05f34584abb4ea7ad9bcab98047e' })));
+        return (index.h(index.Host, { key: '5665ebbec16d613e1f45935196021b9cd238ce5c', role: "checkbox", "aria-checked": this.indeterminate
+                ? 'mixed'
+                : this.checked
+                    ? 'true'
+                    : 'false', "aria-labelledby": this.label ? this.labelId : undefined, tabindex: 0, class: classname, "data-name": "checkbox-container", onKeyDown: (event) => (event.key === 'Enter' || event.key === ' ') &&
+                this.checkboxEl.click(), onClick: () => this.checkboxEl.click() }, index.h("input", { key: '29b18e60d8aeea6a7213226609993928b6298c95', type: "checkbox", class: checkboxClassname, "data-name": "checkbox-input", checked: this.checked, onChange: (event) => this.handleChange(event), id: this.inputId, tabindex: -1, ref: (el) => (this.checkboxEl = el), disabled: this.disabled }), (this.label || this.hint_text) && (index.h("div", { key: '83ad33915d64a52c1e496ba0245ded1e953e4595', class: "pointer-events-none flex flex-col" }, index.h("slot", { key: '05ec621ec8713f84d643721f3c00f463be6ba566', name: "label" }), this.label && (index.h("label", { key: '10d9a17129085b244aa262b0b1dacfe297095fe1', class: "mt-0 pl-4 text-xs font-medium", id: this.labelId, "data-name": "checkbox-label" }, this.label)), this.hint_text && (index.h("span", { key: 'a689355aab3e36987a893acc0f36eda0d7fcf5ac', class: "text-muted mt-0 pl-4 text-xs", "data-name": "checkbox-hint" }, this.hint_text)))), index.h("slot", { key: 'e3c338afb58865b6b87acb287425a4b94141fcba' })));
     }
 };
 

@@ -9,6 +9,8 @@ export { AtAvatar as AtAvatar } from '../types/components/at-avatar/at-avatar';
 export { defineCustomElement as defineCustomElementAtAvatar } from './at-avatar';
 export { AtBadgeComponent as AtBadge } from '../types/components/at-badge/at-badge';
 export { defineCustomElement as defineCustomElementAtBadge } from './at-badge';
+export { AtBadgeCountCell as AtBadgeCountCell } from '../types/components/table-components/cell-components/at-badge-count-cell/at-badge-count-cell';
+export { defineCustomElement as defineCustomElementAtBadgeCountCell } from './at-badge-count-cell';
 export { AtBreadcrumbComponent as AtBreadcrumb } from '../types/components/at-breadcrumb/at-breadcrumb';
 export { defineCustomElement as defineCustomElementAtBreadcrumb } from './at-breadcrumb';
 export { AtBreadcrumbItem as AtBreadcrumbItem } from '../types/components/at-breadcrumb/at-breadcrumb-item/at-breadcrumb-item';

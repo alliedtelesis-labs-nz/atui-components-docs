@@ -538,7 +538,7 @@ export class AtChartGauge {
         }
     }
     render() {
-        return (h(Host, { key: '021b603817c33096d40540db89011838263c9999', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'fd84428af8af5fa1e19a64805445b2f4ab0aaded', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: '2c857aea3cd81ee9fbea45b07ab1a7cb18823a7f', style: { height: '100%', width: '100%' } }, h("canvas", { key: '262ea9f42a06f35e9ceaea89dd23ed3a89a48db7', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
     static get is() { return "at-chart-gauge"; }
     static get properties() {

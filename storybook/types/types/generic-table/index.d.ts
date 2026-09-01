@@ -1,3 +1,4 @@
+import { AtIFilterGroup } from '../filter';
 import { SortDirection } from '../sort';
 import { AtITimeWithUnit } from '../time';
 import { ColumnState } from 'ag-grid-community';
@@ -25,6 +26,37 @@ export interface AtISearchTableParams {
     columns?: string[];
     customDateFilter?: DateRange;
     relativeTime?: AtITimeWithUnit;
+}
+export type AtSelectionScope = 'none' | 'explicit' | 'all-matching';
+/**
+ * What the user has selected. Two scopes, because they are two different things: a set
+ * of rows the user picked, or every row matching the current query - which server-side
+ * is a set the browser has never held and cannot enumerate.
+ */
+export interface AtISelection<T = any> {
+    scope: AtSelectionScope;
+    /** The picked rows' ids. Empty when scope is 'all-matching'. */
+    ids: string[];
+    /** Rows unticked after expanding to the whole result. Empty otherwise. */
+    excluded_ids: string[];
+    /** The picked rows, limited to those the grid currently holds. */
+    rows: T[];
+    /** How many rows an action would affect. */
+    count: number;
+    /** Rows matching the query, as the host last reported it in `table_data.total`. */
+    total_matching: number;
+    /** True while `count` is derived from `total_matching` rather than counted ids. */
+    count_is_estimate: boolean;
+    /**
+     * The query the selection is relative to, for acting on 'all-matching' server-side.
+     * Paging is deliberately absent: this describes the whole matching set, and sending
+     * a paged query to a bulk endpoint would act on one page of it.
+     */
+    query?: AtISelectionQuery;
+}
+export interface AtISelectionQuery extends Omit<AtISearchTableParams, 'startRow' | 'endRow'> {
+    /** The merged filter tree. Authoritative: `fieldFilters` flattens operators away. */
+    filter_tree?: AtIFilterGroup;
 }
 export interface AtIPaging {
     num?: number;

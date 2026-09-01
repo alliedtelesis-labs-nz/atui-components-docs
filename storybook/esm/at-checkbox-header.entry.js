@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h } from './index-lWb16Ay7.js';
+import { r as registerInstance, a as getElement, h } from './index-m_dTEvgo.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -6,47 +6,90 @@ const AtCheckboxHeaderComponent = class {
     }
     params;
     disabled;
-    isChecked;
     get el() { return getElement(this); }
     init(params) {
         this.params = params;
         this.params.width = 60;
         this.setDisabled();
-        const nodes = this.params.api.getRenderedNodes().filter(Boolean);
+    }
+    /**
+     * Resolved while rendering rather than in `init()`: ag-grid builds the header
+     * component before the grid is ready to be asked about its rows, and anything thrown
+     * in `init()` leaves the component without a GUI for ag-grid to attach.
+     *
+     * A caller that owns the selection itself supplies `checked`/`setValue` and keeps the
+     * state; without them the checkbox reads and writes a boolean field on each row, which
+     * is the original contract and the only one that works when nobody else is tracking.
+     */
+    checkedState() {
+        const nodes = this.pageNodes();
+        if (this.params?.checked) {
+            return this.params.checked(nodes);
+        }
         const checkedNodes = nodes.filter((rowNode) => {
             return typeof rowNode.data === 'boolean'
                 ? rowNode.data
                 : rowNode.data[this.params.column.colId];
         });
-        this.isChecked = nodes.length && nodes.length === checkedNodes.length;
+        return !!nodes.length && nodes.length === checkedNodes.length;
+    }
+    /**
+     * The rows on the current page, which is what the header checkbox acts on.
+     * Not `getRenderedNodes()`: that returns the nodes the viewport has drawn, so
+     * with virtualization on a tall page it silently means "the rows you happen
+     * to have scrolled past" - the checkbox would tick a different number of rows
+     * depending on scroll position.
+     */
+    pageNodes() {
+        const api = this.params?.api;
+        if (!api)
+            return [];
+        const nodes = [];
+        api.forEachNodeAfterFilterAndSort((node) => {
+            if (node)
+                nodes.push(node);
+        });
+        if (!api.paginationGetPageSize)
+            return nodes;
+        const pageSize = api.paginationGetPageSize();
+        if (!pageSize)
+            return nodes;
+        const page = api.paginationGetCurrentPage();
+        return nodes.slice(page * pageSize, (page + 1) * pageSize);
     }
     getGui() {
         return this.el;
     }
     refresh(params) {
-        this.params = params;
+        this.params = { ...params };
         this.setDisabled();
         return true;
     }
     setRowsValue(checked) {
-        if (checked !== undefined) {
-            const nodes = this.params.api.getRenderedNodes().filter(Boolean);
+        if (checked === undefined)
+            return;
+        const nodes = this.pageNodes();
+        if (this.params?.setValue) {
+            this.params.setValue(checked, nodes);
+        }
+        else {
             nodes.forEach((rowNode) => {
                 rowNode.setDataValue(this.params.column.colId, checked);
             });
         }
+        this.params = { ...this.params };
     }
     setDisabled() {
         if (!this.params?.api)
             return;
-        const renderedNodes = this.params.api.getRenderedNodes();
-        const data = renderedNodes.map((node) => node.data);
+        const data = this.pageNodes().map((node) => node.data);
         if (this.params.getDisabled !== undefined) {
             this.disabled = this.params.getDisabled(data);
         }
     }
     render() {
-        return (h("at-checkbox", { key: '1ea5b2625c15feb2ec4f1bfdb5115ca0415edd4d', disabled: this.disabled, checked: this.isChecked, onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        const state = this.checkedState();
+        return (h("at-checkbox", { key: '5b5f1b2220feb4688f70510ee4bc092de8825c48', disabled: this.disabled, checked: state === true, indeterminate: state === 'indeterminate', onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
 };
 

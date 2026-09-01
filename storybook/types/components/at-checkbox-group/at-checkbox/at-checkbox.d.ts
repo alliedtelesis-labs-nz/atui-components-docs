@@ -27,6 +27,11 @@ export declare class AtCheckbox {
      * Disables interaction with the checkbox
      */
     disabled: boolean;
+    /**
+     * Shows the mixed state, for a checkbox standing for a set that is only partly
+     * selected. Takes precedence over `checked` in what is displayed.
+     */
+    indeterminate?: boolean;
     checkboxEl: HTMLInputElement;
     /**
      * Not derived from `value`: two groups can carry the same values, so a
@@ -40,5 +45,9 @@ export declare class AtCheckbox {
      */
     atuiChange: EventEmitter<boolean>;
     handleChange(value: any): void;
+    /**
+     * `indeterminate` is a property with no attribute, so JSX cannot set it.
+     */
+    componentDidRender(): void;
     render(): any;
 }

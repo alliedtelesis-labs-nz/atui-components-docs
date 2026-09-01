@@ -21,6 +21,7 @@ export var AvailableCells;
     AvailableCells["TEXT_WITH_IMAGE_CELL"] = "AtTextImageCell";
     AvailableCells["MENU_CELL"] = "AtMenuCell";
     AvailableCells["PROGRESS_BAR_CELL"] = "AtProgressBarCell";
+    AvailableCells["BADGE_COUNT_CELL"] = "AtBadgeCountCell";
 })(AvailableCells || (AvailableCells = {}));
 export var AvailableHeaders;
 (function (AvailableHeaders) {

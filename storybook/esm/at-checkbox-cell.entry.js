@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-m_dTEvgo.js';
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {
@@ -30,7 +30,7 @@ const AtCheckboxCellComponent = class {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (h(Host, { key: 'e13f8f4341a0aa177e447136bd843174b4d34f74', class: "flex h-full items-center" }, h("at-checkbox", { key: '151549edcd7b9711d1824e162c4524668820685f', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
+        return (h(Host, { key: '2de7ef2e72b7d70d2aaf3ad1e765f1be1c51f32b', class: "flex h-full items-center" }, h("at-checkbox", { key: '396d78ab144b34d20ce360d311c9a92849df8f81', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
 };
 

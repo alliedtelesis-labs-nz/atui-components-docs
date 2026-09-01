@@ -5,6 +5,7 @@ import { h, Host, } from "@stencil/core";
  *
  * @slot column-manager - Used to place an at-column-manager
  * @slot search - Used to place an at-search
+ * @slot filter-bar - Used to place the persistent filter controls that sit beside the search field
  * @slot filters - Used to place an at-table-filters
  * @slot reload-button - Used to place an at-reload-button
  * @slot export-menu - Used to place an at-export-menu
@@ -103,7 +104,7 @@ export class AtTableActionsComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'dd2903046ccaec88619ba686d96581a11879123e', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '4d209985851fad69c8a0119dc5da9f05a30a837d', class: "flex justify-between" }, h("div", { key: '1b00781e399e3500cb42a196a564312a537e4920', class: "flex" }, h("slot", { key: 'a7c86938199c26410da294f3394419966208d39a', name: "search" })), h("div", { key: '4a7db450783e11663549e2ea0f9292811db1fe1f', class: "flex items-center" }, h("slot", { key: '4b9e123d01d3da7bc5440e8831ce5d3e3f803429', name: "reload-button" }), h("slot", { key: '823e303310d1a9bd42af910b269d9223a626d7cd', name: "export-menu" }), h("slot", { key: 'd3b218f77d826924dffa5f884054cdc97bc15b9d', name: "leading-actions" }), h("slot", { key: '000f5522731d1e747357aedc994d07cbf7fb2b18', name: "column-manager" }), h("slot", { key: '5b7ebde1fc4d3bf2a1d99d2df80320c9d770c399', name: "actions" }))), h("slot", { key: 'f2453c0f3c8e0af02708c9f69f30c12bb868e3af', name: "filters" })));
+        return (h(Host, { key: '1fe9d4420aa865dd46cae828aff29b90e1961bd4', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '8ce3cbb343c1b07bd9c62909ae4b1f9eb4f6e83f', class: "flex justify-between" }, h("div", { key: '58c5b591667a45b8d01b75a078b97f0b291c31a3', class: "flex flex-wrap items-end gap-8" }, h("slot", { key: 'afbda3fd855092f2bf476a852938d2db9307789d', name: "search" }), h("slot", { key: '7bccbcb10b6d95082fe5054e1cd327ae0facd429', name: "filter-bar" })), h("div", { key: 'f557d1b32f7c932d330bfa34297f974c74e2bb75', class: "flex items-center" }, h("slot", { key: 'c9be2ccd08788bf57f74da97b96b3319d209726f', name: "reload-button" }), h("slot", { key: 'b90db62f9ef84209b51ef4f3239d92621b97ad92', name: "export-menu" }), h("slot", { key: '28c7e3539729b392076982ee6530ac29ebd72e74', name: "leading-actions" }), h("slot", { key: 'd8fee24039e56f25a9942663cfe4fa9e5bdb9273', name: "column-manager" }), h("slot", { key: '4fc9a2d73d91f1e8eb84aaef7fd8001e2f4b1da2', name: "actions" }))), h("slot", { key: '97b420c72cde9592cf8016af7b821e66e24faf81', name: "filters" })));
     }
     static get is() { return "at-table-actions"; }
     static get properties() {

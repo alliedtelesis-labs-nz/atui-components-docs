@@ -2754,6 +2754,10 @@ strong {
   margin-top: 0;
 }
 
+.mt-16 {
+  margin-top: 16px;
+}
+
 .mt-2 {
   margin-top: 2px;
 }
@@ -3345,6 +3349,10 @@ strong {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-12 {
+  gap: 12px;
 }
 
 .gap-16 {
@@ -4134,6 +4142,11 @@ strong {
 .py-\[2px\] {
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+.py-\[4px\] {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .py-\[6px\] {

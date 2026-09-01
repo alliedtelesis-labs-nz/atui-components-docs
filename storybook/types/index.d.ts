@@ -13,6 +13,7 @@ export { AtITitleSubtitleData } from './components/table-components/cell-compone
 export { AtITitleSubtitleDateData } from './components/table-components/cell-components/at-title-subtitle-date-cell/at-title-subtitle-date-cell';
 export { AtITextStatusCellData } from './components/table-components/cell-components/at-text-status-cell/at-text-status-cell';
 export { AtITextBadgeCellData } from './components/table-components/cell-components/at-text-badge-cell/at-text-badge-cell';
+export { AtIBadgeCountSegment, AtIBadgeCountCellParams, } from './components/table-components/cell-components/at-badge-count-cell/at-badge-count-cell';
 export { AtITextIconCellData, AtIconConfig, } from './components/table-components/cell-components/at-text-icon-cell/at-text-icon-cell';
 export { AtIToggleCellData } from './components/table-components/cell-components/at-toggle-cell/at-toggle-cell';
 export { AtITextCellData } from './components/table-components/cell-components/at-text-cell/at-text-cell';
@@ -32,7 +33,7 @@ export { AtITableColumnDef } from './models/searchTableModel';
 export { AtITab } from './components/at-tabs/at-tabs';
 export { AtStepperStep } from './components/at-stepper/at-stepper';
 export { AtStepperItemState, AtStepperOrientation, } from './components/at-stepper/at-stepper-item/at-stepper-item';
-export { AtISearchTableParams, AtISearchData, } from './types/generic-table/index';
+export { AtISearchTableParams, AtISearchData, AtISelection, AtISelectionQuery, AtSelectionScope, } from './types/generic-table/index';
 export { AtBadgeType } from './components/at-badge/at-badge';
 export { AtProgressBarType } from './components/at-progress-bar/at-progress-bar';
 export { AtProgressBarSize } from './components/at-progress-bar/at-progress-bar';

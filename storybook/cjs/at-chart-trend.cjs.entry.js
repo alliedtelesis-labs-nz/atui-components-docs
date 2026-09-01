@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bo1AxtqW.js');
+var index = require('./index-BCGHtseN.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
 const AtChartTrend = class {
@@ -97,14 +97,14 @@ const AtChartTrend = class {
     }
     render() {
         const delta = this.resolveDelta();
-        return (index.h(index.Host, { key: '329829430a44fb19db4fcd9ffeed9bb8cf74e881', style: { display: 'block', height: '100%', width: '100%' } }, index.h("div", { key: '686d9c537ccb682cf8cfe0d63711c0ddaad9ecc5', class: "flex h-full flex-col justify-between gap-4" }, index.h("div", { key: '637b459c933ed97df6d53d91048c714d0209d249', class: "flex items-baseline justify-between gap-8" }, index.h("span", { key: '499c2c74b06e2cb545f18eb42f812b381e53bffa', style: {
+        return (index.h(index.Host, { key: 'a9b34d206f98c02430229cf0614a0531c94cc391', style: { display: 'block', height: '100%', width: '100%' } }, index.h("div", { key: 'a913696edf7f2a5cbf55ceb31239ea126af30bef', class: "flex h-full flex-col justify-between gap-4" }, index.h("div", { key: '03b9192c8327b4444419e6d0b57e5be87e6ba627', class: "flex items-baseline justify-between gap-8" }, index.h("span", { key: 'e537738500c2af0729dbb0e425126c8dd4e38a58', style: {
                 fontSize: '3rem',
                 fontWeight: '700',
                 lineHeight: '1.1',
-            }, "data-name": "value" }, this.value, this.unit && (index.h("span", { key: '5342ec82bc0f0154ae1caf6049792c6dd461fd8c', style: {
+            }, "data-name": "value" }, this.value, this.unit && (index.h("span", { key: '1067f19781a61f2d5b2079dad94383972d4e6bc9', style: {
                 fontSize: '0.65em',
                 fontWeight: '500',
-            }, "data-name": "value-unit" }, this.unit)))), index.h("div", { key: 'd5a634e2b28e94504f54d8bd3e570412d6c4530a', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, index.h("at-chart-sparkline", { key: 'a9c776d59e87cfd6a0c94cd90fd043288300254f', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
+            }, "data-name": "value-unit" }, this.unit)))), index.h("div", { key: 'd655c145be2462ac0acb0404bf5d980f00d3f20e', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, index.h("at-chart-sparkline", { key: 'e41c7306328c4a17280f172480ede0fed50aa75e', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
     }
 };
 

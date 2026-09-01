@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-m_dTEvgo.js';
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -154,7 +154,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: '8f231e1711ae07895bfeb607bf164a957608ab39' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'cfa83d3a38968a01535a346c7a74539e0121f6e0' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

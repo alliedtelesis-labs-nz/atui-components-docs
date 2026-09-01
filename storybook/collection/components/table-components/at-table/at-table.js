@@ -44,6 +44,12 @@ export class AtTableComponent {
      */
     auto_size_columns = true;
     /**
+     * Field on each row whose value uniquely identifies it. Supplying it lets AG Grid
+     * match incoming rows to the ones it already has, so a `table_data` swap updates
+     * rows in place instead of rebuilding every node.
+     */
+    row_id_field;
+    /**
      * The AG Grid API
      */
     ag_grid;
@@ -62,6 +68,12 @@ export class AtTableComponent {
      * goes through.
      */
     atColumnVisibilityChange;
+    /**
+     * Emits the live AG Grid API whenever a grid is built. `createGrid()` destroys any
+     * previous grid, so a host that cached an earlier one is holding a destroyed
+     * instance until this re-publishes.
+     */
+    atGridReady;
     activeFilters = {};
     agGrid;
     tableCreated = false;
@@ -213,6 +225,9 @@ export class AtTableComponent {
             columnDefs: this.withSearchText(this.col_defs),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
+            ...(this.row_id_field && {
+                getRowId: (params) => String(params.data?.[this.row_id_field]),
+            }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
             onModelUpdated: (event) => {
@@ -261,6 +276,7 @@ export class AtTableComponent {
         this.agGrid = gridApi;
         this.tableCreated = true;
         this.updateDisplayedRowsState(gridApi);
+        this.atGridReady.emit(gridApi);
         return gridApi;
     }
     /**
@@ -278,7 +294,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: '92969d534d02b8979677cb0ddad798010cfe65a1', class: {
+        return (h(Host, { key: '1c634445704f6f86418eca1a40c74f321eb52e27', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -437,6 +453,25 @@ export class AtTableComponent {
                 "attribute": "auto_size_columns",
                 "defaultValue": "true"
             },
+            "row_id_field": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Field on each row whose value uniquely identifies it. Supplying it lets AG Grid\nmatch incoming rows to the ones it already has, so a `table_data` swap updates\nrows in place instead of rebuilding every node."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "row_id_field"
+            },
             "ag_grid": {
                 "type": "unknown",
                 "mutable": false,
@@ -501,6 +536,28 @@ export class AtTableComponent {
                     "original": "string[]",
                     "resolved": "string[]",
                     "references": {}
+                }
+            }, {
+                "method": "atGridReady",
+                "name": "atGridReady",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emits the live AG Grid API whenever a grid is built. `createGrid()` destroys any\nprevious grid, so a host that cached an earlier one is holding a destroyed\ninstance until this re-publishes."
+                },
+                "complexType": {
+                    "original": "GridApi",
+                    "resolved": "GridApi<any>",
+                    "references": {
+                        "GridApi": {
+                            "location": "import",
+                            "path": "ag-grid-community",
+                            "id": "../node_modules/ag-grid-community/dist/types/main.d.ts::GridApi",
+                            "referenceLocation": "GridApi"
+                        }
+                    }
                 }
             }];
     }

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-lWb16Ay7.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-m_dTEvgo.js';
 
 const AtTextBadgeCell = class {
     constructor(hostRef) {
@@ -35,7 +35,7 @@ const AtTextBadgeCell = class {
         this.textValue = this.params.value;
     }
     render() {
-        return (h(Host, { key: 'e7172b4be2680c7811e226ee4049d19d5e6ec2eb', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '2b4d61dc3dba435da6cd03f750bb725e02720e1a', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: 'e77c5bcefb8cb81766cbe17056bc7b6a8b4bd154', slot: "tooltip-trigger" }, h("span", { key: '16840e6c8b7093f6011ad91d55c004afcc7e8da2', class: "truncate" }, this.textValue), this.badgeTextValue && (h("at-badge", { key: '996431e801b271cfbd437c2d1a3d294d4e9ba2cb', type: this.params.badgeType ?? 'info', class: "ml-4", label: this.badgeTextValue }))), this.params?.generateTooltip && (h("span", { key: '92f21855eb848d10b6f5367b22490739e7c1be2e', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (h(Host, { key: 'e7861a6bfe948c8c06d0d5c1dee73b6d280df116', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '589bd3965113fef96a16ae16a785b1127c9efee8', position: "top", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: 'f4643faff72757283c6fa88a1400166608b4fcf3', slot: "tooltip-trigger" }, h("span", { key: '6250fc55304b54e532947a60f2c7a46a28afb3bd', class: "truncate" }, this.textValue), this.badgeTextValue && (h("at-badge", { key: '64718136029c615bc04d7e1b6f6a95bb6d6dd24b', type: this.params.badgeType ?? 'info', class: "ml-4", label: this.badgeTextValue }))), this.params?.generateTooltip && (h("span", { key: '63043a5035267c8e3213a7ea6544d61e72fd2db1', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

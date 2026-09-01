@@ -47,7 +47,7 @@ export class AtTableFilters {
     };
     renderConditionChip(filter) {
         const label = this.chipLabel(filter);
-        return (h("at-badge", { class: "flex cursor-pointer items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label, role: "button", tabindex: "0", "aria-label": `Edit ${label}`, onClick: () => this.atFilterClick.emit(filter), onKeyDown: (event) => {
+        return (h("at-badge", { class: "border-active-accent flex cursor-pointer items-center gap-4 text-center", rounded: true, "data-name": "filter-chip", label: label, role: "button", tabindex: "0", "aria-label": `Edit ${label}`, onClick: () => this.atFilterClick.emit(filter), onKeyDown: (event) => {
                 if (event.target !== event.currentTarget)
                     return;
                 if (event.key === 'Enter' || event.key === ' ') {

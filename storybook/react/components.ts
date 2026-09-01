@@ -7,11 +7,12 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIExternalFiltersChange, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtISelection, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type GridApi, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
 import { AtAvatar as AtAvatarElement, defineCustomElement as defineAtAvatar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-avatar.js";
+import { AtBadgeCountCell as AtBadgeCountCellElement, defineCustomElement as defineAtBadgeCountCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-badge-count-cell.js";
 import { AtBadge as AtBadgeElement, defineCustomElement as defineAtBadge } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-badge.js";
 import { AtBreadcrumbItem as AtBreadcrumbItemElement, defineCustomElement as defineAtBreadcrumbItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-breadcrumb-item.js";
 import { AtBreadcrumb as AtBreadcrumbElement, defineCustomElement as defineAtBreadcrumb } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-breadcrumb.js";
@@ -170,6 +171,17 @@ export const AtBadge: StencilReactComponent<AtBadgeElement, AtBadgeEvents> = /*@
     react: React,
     events: {} as AtBadgeEvents,
     defineCustomElement: defineAtBadge
+});
+
+type AtBadgeCountCellEvents = NonNullable<unknown>;
+
+export const AtBadgeCountCell: StencilReactComponent<AtBadgeCountCellElement, AtBadgeCountCellEvents> = /*@__PURE__*/ createComponent<AtBadgeCountCellElement, AtBadgeCountCellEvents>({
+    tagName: 'at-badge-count-cell',
+    elementClass: AtBadgeCountCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtBadgeCountCellEvents,
+    defineCustomElement: defineAtBadgeCountCell
 });
 
 type AtBreadcrumbEvents = { onAtuiClick: EventName<CustomEvent<number>> };
@@ -950,7 +962,9 @@ type AtSearchTableEvents = {
     onAtSearchParamsChange: EventName<AtSearchTableCustomEvent<AtISearchTableParams>>,
     onAtuiReload: EventName<CustomEvent<void>>,
     onAtExportCsv: EventName<AtSearchTableCustomEvent<AtIPaginationParams>>,
-    onAtExportPdf: EventName<AtSearchTableCustomEvent<AtIColumnDetails[]>>
+    onAtExportPdf: EventName<AtSearchTableCustomEvent<AtIColumnDetails[]>>,
+    onAtExternalFiltersChange: EventName<AtSearchTableCustomEvent<AtIExternalFiltersChange>>,
+    onAtSelectionChange: EventName<AtSearchTableCustomEvent<AtISelection>>
 };
 
 export const AtSearchTable: StencilReactComponent<AtSearchTableElement, AtSearchTableEvents> = /*@__PURE__*/ createComponent<AtSearchTableElement, AtSearchTableEvents>({
@@ -962,7 +976,9 @@ export const AtSearchTable: StencilReactComponent<AtSearchTableElement, AtSearch
         onAtSearchParamsChange: 'atSearchParamsChange',
         onAtuiReload: 'atuiReload',
         onAtExportCsv: 'atExportCsv',
-        onAtExportPdf: 'atExportPdf'
+        onAtExportPdf: 'atExportPdf',
+        onAtExternalFiltersChange: 'atExternalFiltersChange',
+        onAtSelectionChange: 'atSelectionChange'
     } as AtSearchTableEvents,
     defineCustomElement: defineAtSearchTable
 });
@@ -1164,7 +1180,8 @@ type AtTableEvents = {
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
     }>>,
-    onAtColumnVisibilityChange: EventName<CustomEvent<string[]>>
+    onAtColumnVisibilityChange: EventName<CustomEvent<string[]>>,
+    onAtGridReady: EventName<AtTableCustomEvent<GridApi>>
 };
 
 export const AtTable: StencilReactComponent<AtTableElement, AtTableEvents> = /*@__PURE__*/ createComponent<AtTableElement, AtTableEvents>({
@@ -1174,7 +1191,8 @@ export const AtTable: StencilReactComponent<AtTableElement, AtTableEvents> = /*@
     react: React,
     events: {
         onAtSortChange: 'atSortChange',
-        onAtColumnVisibilityChange: 'atColumnVisibilityChange'
+        onAtColumnVisibilityChange: 'atColumnVisibilityChange',
+        onAtGridReady: 'atGridReady'
     } as AtTableEvents,
     defineCustomElement: defineAtTable
 });

@@ -28,7 +28,7 @@ import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 import { AtHeaderSizes } from "./components/at-header/at-header";
@@ -40,10 +40,12 @@ import { AtIListSelectorItem } from "./components/at-list-selector/at-list-selec
 import { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-loading/at-loading";
 import { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 import { AtISelectOption } from "./types/select";
+import { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-multi-select";
 import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 import { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 import { AtITableColumnDef } from "./models/searchTableModel";
+import { AtIExternalFiltersChange } from "./types/filter";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
@@ -84,7 +86,7 @@ export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 export { AtHeaderSizes } from "./components/at-header/at-header";
@@ -96,10 +98,12 @@ export { AtIListSelectorItem } from "./components/at-list-selector/at-list-selec
 export { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-loading/at-loading";
 export { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 export { AtISelectOption } from "./types/select";
+export { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-multi-select";
 export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
 export { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 export { AtITableColumnDef } from "./models/searchTableModel";
+export { AtIExternalFiltersChange } from "./types/filter";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
@@ -264,6 +268,13 @@ export namespace Components {
           * @default 'default'
          */
         "type": AtBadgeType;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a distribution as a row of counted badges - how a population splits across states, such as devices by health. Segments keep the order they are given so a state sits in the same place in every row, and zero counts are dropped unless asked for.
+     * @dependency at-badge
+     */
+    interface AtBadgeCountCell {
     }
     /**
      * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
@@ -914,6 +925,10 @@ export namespace Components {
           * Subtitle of the checkbox component.
          */
         "hint_text"?: string;
+        /**
+          * Shows the mixed state, for a checkbox standing for a set that is only partly selected. Takes precedence over `checked` in what is displayed.
+         */
+        "indeterminate"?: boolean;
         /**
           * Title of the checkbox component.
          */
@@ -1929,6 +1944,11 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
+          * How the trigger displays the current selection.  `chips` renders the selected values as removable chips inside the trigger, which grows with the selection - the right behaviour for a form field. `count` renders the placeholder plus a badge carrying the number selected, at a fixed height however much is selected. Use it in a filter bar, paired with an external `at-chip-list` for the selection itself, so the bar does not reflow as the user picks. In `count` the placeholder carries the field name inside the trigger, so the outside label and hint text are not rendered - set `label` anyway and it becomes the control's accessible name. The badge says how many, never which, so `count` belongs on a surface that displays the selection somewhere else - a chip row of its own, or a table's.
+          * @default 'chips'
+         */
+        "selection_display"?: AtMultiSelectSelectionDisplay;
+        /**
           * Set the select to enable typeahead search.
          */
         "typeahead"?: boolean;
@@ -2413,6 +2433,10 @@ export namespace Components {
          */
         "auto_size_columns": boolean;
         /**
+          * Clears the selection and emits `atSelectionChange`.
+         */
+        "clearSelection": () => Promise<void>;
+        /**
           * Column definitions passed to at-table component.
           * @default []
          */
@@ -2428,6 +2452,14 @@ export namespace Components {
           * @returns Promise resolving to the grid API.
          */
         "getGridApi": () => Promise<GridApi>;
+        /**
+          * The selected rows the grid currently holds. In `all-matching` scope, or for a selection made on another page, this is fewer rows than are selected - use `getSelection()` to act on the selection.
+         */
+        "getSelectedRows": <T = any>() => Promise<T[]>;
+        /**
+          * Returns what the user has selected. In `all-matching` scope the ids are absent by design - server-side the table holds one page, so the selection is the query it carries plus whatever the user unticked.
+         */
+        "getSelection": () => Promise<AtISelection>;
         /**
           * Shows an indicator on the reload button when the underlying data has changed since it was last loaded. This component does not detect changes itself — set this to true once the consumer knows of an update (e.g. from a websocket or poll) and back to false once the user reloads.
           * @default false
@@ -2456,6 +2488,27 @@ export namespace Components {
          */
         "page_size_options"?: AtISelectOption[];
         /**
+          * Field on each row whose value uniquely identifies it. Required by `row_selection`: a page of rows is replaced wholesale as the user pages, so a selection outlives the rows it was made from only if each one can be named.
+         */
+        "row_id_field"?: string;
+        /**
+          * What one row is called, for the selection copy ("3 devices selected"). Defaults to the translated "row".
+         */
+        "row_noun"?: string;
+        /**
+          * Plural of `row_noun`, for languages the component cannot pluralise.
+         */
+        "row_noun_plural"?: string;
+        /**
+          * Decides which rows can be selected. A row it rejects renders a disabled checkbox, is left out of the header checkbox, and never reads as selected in either scope. It cannot be applied to rows the browser has not loaded, so in `all-matching` scope the server must apply the same rule - and `count` there is `total_matching` less the exclusions, which cannot discount rejected rows the table has never seen.
+         */
+        "row_selectable"?: (row: any) => boolean;
+        /**
+          * Adds a checkbox column and the selection bar. Off by default.
+          * @default false
+         */
+        "row_selection"?: boolean;
+        /**
           * External search filters applied to the table data.
          */
         "search_filters"?: AtIFilterGroup;
@@ -2469,10 +2522,18 @@ export namespace Components {
          */
         "search_info_tooltip": string;
         /**
+          * Expands the selection to every row matching the current filter, as the selection bar's own offer does. Declines when the host reports no total, matching the offer, which is withheld for the same reason: the scope would describe a set whose size the table cannot state.
+         */
+        "selectAllMatching": () => Promise<void>;
+        /**
           * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
           * @default false
          */
         "server_side_mode"?: boolean;
+        /**
+          * Selects the given rows by id, for restoring a selection the host kept.
+         */
+        "setSelection": (ids: string[]) => Promise<void>;
         /**
           * Adds the column manager. On by default.
           * @default true
@@ -3114,6 +3175,10 @@ export namespace Components {
           * @default 10
          */
         "page_size": number;
+        /**
+          * Field on each row whose value uniquely identifies it. Supplying it lets AG Grid match incoming rows to the ones it already has, so a `table_data` swap updates rows in place instead of rebuilding every node.
+         */
+        "row_id_field": string;
         /**
           * Data provided to the table
          */
@@ -3883,6 +3948,17 @@ declare global {
     var HTMLAtBadgeElement: {
         prototype: HTMLAtBadgeElement;
         new (): HTMLAtBadgeElement;
+    };
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a distribution as a row of counted badges - how a population splits across states, such as devices by health. Segments keep the order they are given so a state sits in the same place in every row, and zero counts are dropped unless asked for.
+     * @dependency at-badge
+     */
+    interface HTMLAtBadgeCountCellElement extends Components.AtBadgeCountCell, HTMLStencilElement {
+    }
+    var HTMLAtBadgeCountCellElement: {
+        prototype: HTMLAtBadgeCountCellElement;
+        new (): HTMLAtBadgeCountCellElement;
     };
     interface HTMLAtBreadcrumbElementEventMap {
         "atuiClick": number;
@@ -4898,6 +4974,8 @@ declare global {
         "atuiReload": void;
         "atExportCsv": AtIPaginationParams;
         "atExportPdf": AtIColumnDetails[];
+        "atExternalFiltersChange": AtIExternalFiltersChange;
+        "atSelectionChange": AtISelection;
     }
     /**
      * @category Data Tables
@@ -5163,6 +5241,7 @@ declare global {
         sortDirection: 'asc' | 'desc' | null;
     };
         "atColumnVisibilityChange": string[];
+        "atGridReady": GridApi;
     }
     /**
      * @category Data Tables
@@ -5558,6 +5637,7 @@ declare global {
         "at-accordion-trigger": HTMLAtAccordionTriggerElement;
         "at-avatar": HTMLAtAvatarElement;
         "at-badge": HTMLAtBadgeElement;
+        "at-badge-count-cell": HTMLAtBadgeCountCellElement;
         "at-breadcrumb": HTMLAtBreadcrumbElement;
         "at-breadcrumb-item": HTMLAtBreadcrumbItemElement;
         "at-button": HTMLAtButtonElement;
@@ -5785,6 +5865,13 @@ declare namespace LocalJSX {
           * @default 'default'
          */
         "type"?: AtBadgeType;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component for displaying a distribution as a row of counted badges - how a population splits across states, such as devices by health. Segments keep the order they are given so a state sits in the same place in every row, and zero counts are dropped unless asked for.
+     * @dependency at-badge
+     */
+    interface AtBadgeCountCell {
     }
     /**
      * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
@@ -6403,6 +6490,10 @@ declare namespace LocalJSX {
           * Subtitle of the checkbox component.
          */
         "hint_text"?: string;
+        /**
+          * Shows the mixed state, for a checkbox standing for a set that is only partly selected. Takes precedence over `checked` in what is displayed.
+         */
+        "indeterminate"?: boolean;
         /**
           * Title of the checkbox component.
          */
@@ -7474,6 +7565,11 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * How the trigger displays the current selection.  `chips` renders the selected values as removable chips inside the trigger, which grows with the selection - the right behaviour for a form field. `count` renders the placeholder plus a badge carrying the number selected, at a fixed height however much is selected. Use it in a filter bar, paired with an external `at-chip-list` for the selection itself, so the bar does not reflow as the user picks. In `count` the placeholder carries the field name inside the trigger, so the outside label and hint text are not rendered - set `label` anyway and it becomes the control's accessible name. The badge says how many, never which, so `count` belongs on a surface that displays the selection somewhere else - a chip row of its own, or a table's.
+          * @default 'chips'
+         */
+        "selection_display"?: AtMultiSelectSelectionDisplay;
+        /**
           * Set the select to enable typeahead search.
          */
         "typeahead"?: boolean;
@@ -8071,9 +8167,17 @@ declare namespace LocalJSX {
          */
         "onAtExportPdf"?: (event: AtSearchTableCustomEvent<AtIColumnDetails[]>) => void;
         /**
+          * Emitted when the user removes a chip belonging to `search_filters`.  The table never edits a prop it does not own, so the removal is a request: the payload carries the conditions taken away and the external tree with them gone, ready for the host to assign back to `search_filters`. Chips the table authored itself are removed internally and do not emit this.
+         */
+        "onAtExternalFiltersChange"?: (event: AtSearchTableCustomEvent<AtIExternalFiltersChange>) => void;
+        /**
           * Event emitted when search params change in server-side mode. Contains filters, search text, pagination info
          */
         "onAtSearchParamsChange"?: (event: AtSearchTableCustomEvent<AtISearchTableParams>) => void;
+        /**
+          * Emitted whenever the selection or its scope changes, including when the table clears it itself because the query changed.
+         */
+        "onAtSelectionChange"?: (event: AtSearchTableCustomEvent<AtISelection>) => void;
         /**
           * Event emitted when the reload button is clicked
          */
@@ -8087,6 +8191,27 @@ declare namespace LocalJSX {
           * Options offered in the pagination page-size selector. When omitted a standard set is used. The currently active page size is always included so the selector reflects the number of rows actually being loaded.
          */
         "page_size_options"?: AtISelectOption[];
+        /**
+          * Field on each row whose value uniquely identifies it. Required by `row_selection`: a page of rows is replaced wholesale as the user pages, so a selection outlives the rows it was made from only if each one can be named.
+         */
+        "row_id_field"?: string;
+        /**
+          * What one row is called, for the selection copy ("3 devices selected"). Defaults to the translated "row".
+         */
+        "row_noun"?: string;
+        /**
+          * Plural of `row_noun`, for languages the component cannot pluralise.
+         */
+        "row_noun_plural"?: string;
+        /**
+          * Decides which rows can be selected. A row it rejects renders a disabled checkbox, is left out of the header checkbox, and never reads as selected in either scope. It cannot be applied to rows the browser has not loaded, so in `all-matching` scope the server must apply the same rule - and `count` there is `total_matching` less the exclusions, which cannot discount rejected rows the table has never seen.
+         */
+        "row_selectable"?: (row: any) => boolean;
+        /**
+          * Adds a checkbox column and the selection bar. Off by default.
+          * @default false
+         */
+        "row_selection"?: boolean;
         /**
           * External search filters applied to the table data.
          */
@@ -8730,6 +8855,10 @@ declare namespace LocalJSX {
          */
         "onAtColumnVisibilityChange"?: (event: AtTableCustomEvent<string[]>) => void;
         /**
+          * Emits the live AG Grid API whenever a grid is built. `createGrid()` destroys any previous grid, so a host that cached an earlier one is holding a destroyed instance until this re-publishes.
+         */
+        "onAtGridReady"?: (event: AtTableCustomEvent<GridApi>) => void;
+        /**
           * Emits an event when a column's sorting state changes. Used to perform sorting outside of agGrid, when use_custom_sorting is set. Data in the table should be updated using the agGrid api: ```agGrid.setGridOption("rowData", yourNewData)```
          */
         "onAtSortChange"?: (event: AtTableCustomEvent<{
@@ -8741,6 +8870,10 @@ declare namespace LocalJSX {
           * @default 10
          */
         "page_size"?: number;
+        /**
+          * Field on each row whose value uniquely identifies it. Supplying it lets AG Grid match incoming rows to the ones it already has, so a `table_data` swap updates rows in place instead of rebuilding every node.
+         */
+        "row_id_field"?: string;
         /**
           * Data provided to the table
          */
@@ -9413,6 +9546,7 @@ declare namespace LocalJSX {
         "value": string;
         "checked": boolean;
         "disabled": boolean;
+        "indeterminate": boolean;
     }
     interface AtCheckboxGroupAttributes {
         "label": string;
@@ -9620,6 +9754,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "typeahead": boolean;
         "menu_max_height": string;
+        "selection_display": AtMultiSelectSelectionDisplay;
     }
     interface AtPlaceholderAttributes {
         "size": AtPlaceholderSize;
@@ -9723,6 +9858,10 @@ declare namespace LocalJSX {
         "page_size": number;
         "show_table_filters": boolean;
         "show_column_manager": boolean;
+        "row_selection": boolean;
+        "row_id_field": string;
+        "row_noun": string;
+        "row_noun_plural": string;
         "show_reload_button": boolean;
         "has_updates": boolean;
         "show_export_menu": boolean;
@@ -9854,6 +9993,7 @@ declare namespace LocalJSX {
         "use_custom_pagination": boolean;
         "can_auto_init": boolean;
         "auto_size_columns": boolean;
+        "row_id_field": string;
     }
     interface AtTableExportMenuAttributes {
         "show_csv": boolean;
@@ -9938,6 +10078,7 @@ declare namespace LocalJSX {
         "at-accordion-trigger": Omit<AtAccordionTrigger, keyof AtAccordionTriggerAttributes> & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes]?: AtAccordionTrigger[K] } & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes as `attr:${K}`]?: AtAccordionTriggerAttributes[K] } & { [K in keyof AtAccordionTrigger & keyof AtAccordionTriggerAttributes as `prop:${K}`]?: AtAccordionTrigger[K] };
         "at-avatar": Omit<AtAvatar, keyof AtAvatarAttributes> & { [K in keyof AtAvatar & keyof AtAvatarAttributes]?: AtAvatar[K] } & { [K in keyof AtAvatar & keyof AtAvatarAttributes as `attr:${K}`]?: AtAvatarAttributes[K] } & { [K in keyof AtAvatar & keyof AtAvatarAttributes as `prop:${K}`]?: AtAvatar[K] };
         "at-badge": Omit<AtBadge, keyof AtBadgeAttributes> & { [K in keyof AtBadge & keyof AtBadgeAttributes]?: AtBadge[K] } & { [K in keyof AtBadge & keyof AtBadgeAttributes as `attr:${K}`]?: AtBadgeAttributes[K] } & { [K in keyof AtBadge & keyof AtBadgeAttributes as `prop:${K}`]?: AtBadge[K] };
+        "at-badge-count-cell": AtBadgeCountCell;
         "at-breadcrumb": Omit<AtBreadcrumb, keyof AtBreadcrumbAttributes> & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes]?: AtBreadcrumb[K] } & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes as `attr:${K}`]?: AtBreadcrumbAttributes[K] } & { [K in keyof AtBreadcrumb & keyof AtBreadcrumbAttributes as `prop:${K}`]?: AtBreadcrumb[K] };
         "at-breadcrumb-item": Omit<AtBreadcrumbItem, keyof AtBreadcrumbItemAttributes> & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes]?: AtBreadcrumbItem[K] } & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes as `attr:${K}`]?: AtBreadcrumbItemAttributes[K] } & { [K in keyof AtBreadcrumbItem & keyof AtBreadcrumbItemAttributes as `prop:${K}`]?: AtBreadcrumbItem[K] } & OneOf<"label", AtBreadcrumbItem["label"], AtBreadcrumbItemAttributes["label"]>;
         "at-button": Omit<AtButton, keyof AtButtonAttributes> & { [K in keyof AtButton & keyof AtButtonAttributes]?: AtButton[K] } & { [K in keyof AtButton & keyof AtButtonAttributes as `attr:${K}`]?: AtButtonAttributes[K] } & { [K in keyof AtButton & keyof AtButtonAttributes as `prop:${K}`]?: AtButton[K] };
@@ -10072,6 +10213,12 @@ declare module "@stencil/core" {
              * @description A badge component for displaying status indicators, counts, or labels with various styling variants. Supports different sizes, colors, and can be used for notifications or categorization.
              */
             "at-badge": LocalJSX.IntrinsicElements["at-badge"] & JSXBase.HTMLAttributes<HTMLAtBadgeElement>;
+            /**
+             * @category Data Tables
+             * @description A cell component for displaying a distribution as a row of counted badges - how a population splits across states, such as devices by health. Segments keep the order they are given so a state sits in the same place in every row, and zero counts are dropped unless asked for.
+             * @dependency at-badge
+             */
+            "at-badge-count-cell": LocalJSX.IntrinsicElements["at-badge-count-cell"] & JSXBase.HTMLAttributes<HTMLAtBadgeCountCellElement>;
             /**
              * A navigation breadcrumb component showing the user's current location in a hierarchical structure.
              * Provides clickable path navigation with customizable separators and accessibility features.

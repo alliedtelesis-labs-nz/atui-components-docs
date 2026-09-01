@@ -1,5 +1,6 @@
 const Template = (args) => `
 <at-multi-select
+    id="${args.id ?? 'multi-select'}"
     label="${args.label ?? ''}"
     error_text="${args.error_text ?? ''}"
     info_text="${args.info_text ?? ''}"
@@ -7,16 +8,20 @@ const Template = (args) => `
     placeholder="${args.placeholder ?? ''}"
     ${args.disabled ? 'disabled' : ''}
     ${args.clearable ? 'clearable' : ''}
-    ${args.chip_list ? 'chip_list' : ''}
     ${args.invalid ? 'invalid' : ''}
     ${args.readonly ? 'readonly' : ''}
     ${args.required ? 'required' : ''}
     ${args.typeahead ? 'typeahead' : ''}
+    selection_display="${args.selection_display ?? 'chips'}"
 />
 ${args.options
     ? `
 <script>
-document.querySelector('at-multi-select').options = ${JSON.stringify(args.options, null, 4)}
+(() => {
+    const el = document.getElementById('${args.id ?? 'multi-select'}');
+    el.options = ${JSON.stringify(args.options, null, 4)};
+    el.value = ${JSON.stringify(args.value ?? [])};
+})();
 </script>`
     : ''}
 `;
@@ -35,7 +40,19 @@ Default.args = {
     disabled: false,
     readonly: false,
     clearable: true,
-    chip_list: false,
     required: true,
     invalid: false,
+};
+export const CountTrigger = Template.bind({});
+CountTrigger.args = {
+    ...Default.args,
+    id: 'multi-select-count',
+    selection_display: 'count',
+    value: ['one', 'three'],
+    label: 'Site',
+    placeholder: 'Site',
+    hint_text: '',
+    info_text: '',
+    error_text: '',
+    required: false,
 };

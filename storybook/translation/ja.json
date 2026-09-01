@@ -30,7 +30,20 @@
             "MANAGE_COLUMNS": "列を管理",
             "FILTER_DATA": "フィルター",
             "EXCLUDES_COLUMNS": "以下を除く: ",
-            "NO_GLOBAL_SEARCH_COLUMNS": "表示中の列では検索ができません。"
+            "NO_GLOBAL_SEARCH_COLUMNS": "表示中の列では検索ができません。",
+            "SELECTION": {
+                "PAGE_SELECTED": "{count}件の{noun}を選択しました。",
+                "SELECTED": "{count}件の{noun}を選択しました。",
+                "SELECTED_ACROSS_PAGES": "全ページで{count}件の{noun}を選択しました。",
+                "SELECT_ALL_MATCHING": "このフィルターに一致する{total}件をすべて選択",
+                "SELECT_PAGE_ONLY": "現在のページをすべて選択",
+                "ALL_MATCHING_SELECTED": "フィルターに一致する{total}件の{noun}をすべて選択しました。",
+                "ALL_MATCHING_SELECTED_EXCLUDED": "フィルターに一致する{total}件のうち{count}件の{noun}を選択しました。",
+                "SELECT_ROW": "行を選択",
+                "SELECT_ALL_ON_PAGE": "このページのすべての行を選択",
+                "ROW": "行",
+                "ROWS": "行"
+            }
         },
         "TIME": {
             "SELECT_ABSOLUTE_TIME": "日付を指定",
