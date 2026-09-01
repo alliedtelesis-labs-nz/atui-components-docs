@@ -56,6 +56,12 @@ export class AtTableComponent {
      * ```agGrid.setGridOption("rowData", yourNewData)```
      */
     atSortChange;
+    /**
+     * Emits the fields of every column AG Grid currently has hidden, whenever that set
+     * changes - including when a column is dragged off the grid, which no host control
+     * goes through.
+     */
+    atColumnVisibilityChange;
     activeFilters = {};
     agGrid;
     tableCreated = false;
@@ -212,6 +218,12 @@ export class AtTableComponent {
             onModelUpdated: (event) => {
                 this.updateDisplayedRowsState(event.api);
             },
+            onColumnVisible: (event) => {
+                this.atColumnVisibilityChange.emit(event.api
+                    .getColumnState()
+                    .filter((state) => state.hide)
+                    .map((state) => state.colId));
+            },
             onSortChanged: (event) => {
                 const sortColumns = event.api
                     .getColumnState()
@@ -266,7 +278,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: '59e8d6c17af4e3acf1f2ed0c5b9a40377d23d79d', class: {
+        return (h(Host, { key: '92969d534d02b8979677cb0ddad798010cfe65a1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
@@ -473,6 +485,21 @@ export class AtTableComponent {
                 "complexType": {
                     "original": "{\n        colId: string;\n        sortDirection: 'asc' | 'desc' | null;\n    }",
                     "resolved": "{ colId: string; sortDirection: \"desc\" | \"asc\"; }",
+                    "references": {}
+                }
+            }, {
+                "method": "atColumnVisibilityChange",
+                "name": "atColumnVisibilityChange",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Emits the fields of every column AG Grid currently has hidden, whenever that set\nchanges - including when a column is dragged off the grid, which no host control\ngoes through."
+                },
+                "complexType": {
+                    "original": "string[]",
+                    "resolved": "string[]",
                     "references": {}
                 }
             }];

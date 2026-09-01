@@ -49077,6 +49077,7 @@ const AtTableComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
         this.atSortChange = index.createEvent(this, "atSortChange", 7);
+        this.atColumnVisibilityChange = index.createEvent(this, "atColumnVisibilityChange", 7);
     }
     /**
      * Data provided to the table
@@ -49124,6 +49125,12 @@ const AtTableComponent = class {
      * ```agGrid.setGridOption("rowData", yourNewData)```
      */
     atSortChange;
+    /**
+     * Emits the fields of every column AG Grid currently has hidden, whenever that set
+     * changes - including when a column is dragged off the grid, which no host control
+     * goes through.
+     */
+    atColumnVisibilityChange;
     activeFilters = {};
     agGrid;
     tableCreated = false;
@@ -49280,6 +49287,12 @@ const AtTableComponent = class {
             onModelUpdated: (event) => {
                 this.updateDisplayedRowsState(event.api);
             },
+            onColumnVisible: (event) => {
+                this.atColumnVisibilityChange.emit(event.api
+                    .getColumnState()
+                    .filter((state) => state.hide)
+                    .map((state) => state.colId));
+            },
             onSortChanged: (event) => {
                 const sortColumns = event.api
                     .getColumnState()
@@ -49334,7 +49347,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '59e8d6c17af4e3acf1f2ed0c5b9a40377d23d79d', class: {
+        return (index.h(index.Host, { key: '92969d534d02b8979677cb0ddad798010cfe65a1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

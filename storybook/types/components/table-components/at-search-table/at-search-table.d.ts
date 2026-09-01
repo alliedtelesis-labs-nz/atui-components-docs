@@ -267,6 +267,12 @@ export declare class AtSearchTable {
     private splitSearchTerms;
     private getColumnSearchText;
     private setupExternalFilters;
+    /**
+     * AG Grid hides a column when it is dragged off the grid, which never goes through
+     * the column manager, so `col_defs` - the source of truth for both the manager's
+     * checkboxes and the keyword-search exclusion - would still call it visible.
+     */
+    private syncColumnVisibility;
     handleColumnChange(event: CustomEvent): void;
     handleFilterChange(event: CustomEvent<AtIFilterGroup>): void;
     private relabelFilterNode;

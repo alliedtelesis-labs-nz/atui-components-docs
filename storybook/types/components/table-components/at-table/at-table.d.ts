@@ -57,6 +57,12 @@ export declare class AtTableComponent {
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
     }>;
+    /**
+     * Emits the fields of every column AG Grid currently has hidden, whenever that set
+     * changes - including when a column is dragged off the grid, which no host control
+     * goes through.
+     */
+    atColumnVisibilityChange: EventEmitter<string[]>;
     activeFilters: {
         [key: string]: string;
     };

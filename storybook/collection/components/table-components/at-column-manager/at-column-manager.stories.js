@@ -9,11 +9,13 @@ const col_defs = [
         flex: 1,
         field: "col_one",
         colId: "col_one",
+        headerName: "Column one",
     },
     {
         flex: 1,
         field: "col_two",
         colId: "col_two",
+        headerName: "Column two",
     },
 ];
 const table_data = {
@@ -41,10 +43,24 @@ const table_data = {
     ],
     total: 4,
 };
-document.querySelector('at-table').table_data = table_data
-document.querySelector('at-table').col_defs = col_defs
-document.querySelector('at-column-manager').col_defs = col_defs
-document.querySelector('at-table')
+const table = document.querySelector('at-table');
+const manager = document.querySelector('at-column-manager');
+
+table.table_data = table_data
+table.col_defs = col_defs
+manager.col_defs = col_defs
+
+// Dragging a column header off the grid hides it without going through the
+// manager, so the manager is fed the grid's own hidden set to stay in step.
+table.addEventListener('atColumnVisibilityChange', (event) => {
+    const hidden = new Set(event.detail);
+    manager.col_defs = col_defs.map((colDef) => ({
+        ...colDef,
+        hide: hidden.has(colDef.field),
+    }));
+});
+
+table
     .createGrid()
     .then((api) => document.querySelector('at-table-actions').ag_grid = api)
 </script>

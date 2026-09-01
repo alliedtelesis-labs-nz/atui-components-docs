@@ -31,6 +31,14 @@ export declare class AtStaticTable {
     agGrid: GridApi;
     tableEl: HTMLAtTableElement;
     tableCreated: boolean;
+    private hiddenFields;
+    resetHiddenFields(): void;
+    /**
+     * The column manager reads visibility off the col defs it is given, and AG Grid hides
+     * a column dragged off the grid without going through it. The grid stays the authority
+     * on what is visible; `col_defs` is left as the host wrote it.
+     */
+    private get managerColDefs();
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     render(): any;

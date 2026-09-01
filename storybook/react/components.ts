@@ -1163,7 +1163,8 @@ type AtTableEvents = {
     onAtSortChange: EventName<CustomEvent<{
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
-    }>>
+    }>>,
+    onAtColumnVisibilityChange: EventName<CustomEvent<string[]>>
 };
 
 export const AtTable: StencilReactComponent<AtTableElement, AtTableEvents> = /*@__PURE__*/ createComponent<AtTableElement, AtTableEvents>({
@@ -1171,7 +1172,10 @@ export const AtTable: StencilReactComponent<AtTableElement, AtTableEvents> = /*@
     elementClass: AtTableElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtSortChange: 'atSortChange' } as AtTableEvents,
+    events: {
+        onAtSortChange: 'atSortChange',
+        onAtColumnVisibilityChange: 'atColumnVisibilityChange'
+    } as AtTableEvents,
     defineCustomElement: defineAtTable
 });
 

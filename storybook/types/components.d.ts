@@ -5162,6 +5162,7 @@ declare global {
         colId: string;
         sortDirection: 'asc' | 'desc' | null;
     };
+        "atColumnVisibilityChange": string[];
     }
     /**
      * @category Data Tables
@@ -8724,6 +8725,10 @@ declare namespace LocalJSX {
           * Column definitions for the table
          */
         "col_defs"?: ColDef[];
+        /**
+          * Emits the fields of every column AG Grid currently has hidden, whenever that set changes - including when a column is dragged off the grid, which no host control goes through.
+         */
+        "onAtColumnVisibilityChange"?: (event: AtTableCustomEvent<string[]>) => void;
         /**
           * Emits an event when a column's sorting state changes. Used to perform sorting outside of agGrid, when use_custom_sorting is set. Data in the table should be updated using the agGrid api: ```agGrid.setGridOption("rowData", yourNewData)```
          */
