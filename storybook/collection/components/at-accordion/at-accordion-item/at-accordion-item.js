@@ -46,11 +46,18 @@ export class AtAccordionItemComponent {
      * Emitted when the accordion item's open state changes
      */
     atuiAccordionChange;
+    /**
+     * The `<details>` element's own open state, which trails `open` on the way
+     * closed so the collapse can animate before the content is taken out of the
+     * page. Rendered rather than assigned after mount: content that measures
+     * itself on load - a chart sizing its canvas - reads zero inside a details
+     * that is still closed for its first frame, and never re-measures without an
+     * interaction.
+     */
+    detailsOpen = false;
     detailsEl;
-    componentDidLoad() {
-        if (this.open && this.detailsEl && !this.detailsEl.open) {
-            this.detailsEl.open = true;
-        }
+    componentWillLoad() {
+        this.detailsOpen = this.open;
     }
     async handleSummaryInteraction(event) {
         if (this.disabled) {
@@ -71,12 +78,13 @@ export class AtAccordionItemComponent {
     }
     handleOpenChange(newValue) {
         if (newValue) {
+            this.detailsOpen = true;
             this.detailsEl.open = true;
         }
         else {
             this.detailsEl.addEventListener('transitionend', () => {
                 if (!this.open) {
-                    this.detailsEl.open = false;
+                    this.detailsOpen = false;
                 }
             }, { once: true });
         }
@@ -87,6 +95,9 @@ export class AtAccordionItemComponent {
     async openAccordion() {
         if (this.open)
             return;
+        this.detailsOpen = true;
+        // Also set directly: the expansion animates from this frame, and a
+        // Stencil re-render may not have committed by the time it starts.
         this.detailsEl.open = true;
         requestAnimationFrame(() => {
             this.open = true;
@@ -112,11 +123,11 @@ export class AtAccordionItemComponent {
         const classname = getAccordionClasses({
             disabled: this.disabled,
         });
-        return (h(Host, { key: '6b5a244d64306c6af0b6588b7ffd6a475c42d845', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: '4a87797f216097df74bc3b5ff70cc7030c4899e3', class: "group/accordion-item", role: "group", ref: (el) => (this.detailsEl = el) }, h("summary", { key: 'c7322c25f4c58c458ae72494008e610c6ab74851', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
+        return (h(Host, { key: 'ff2ed5f3d89ac42fbb7daed6a91806e1ecb96c0c', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: '071e45a479e32f9e568bcfaa34a8d61807d92476', class: "group/accordion-item", role: "group", open: this.detailsOpen, ref: (el) => (this.detailsEl = el) }, h("summary", { key: '9511cf7038dde70419a8c7568ed21007bc5e0e68', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     this.handleSummaryInteraction(event);
                 }
-            }, "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: 'd1f865b34a6da1d489a5fd8844e0292bd9f8eadf', label: this.label })), h("slot", { key: 'fa7623a67447f45b72f0f18a576965132f52e219', name: "accordion-trigger" })), h("div", { key: 'bec779f09018e6990ae32576625c12ecbf4d648a', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (h("div", { key: 'e157f50d170d803314e11a5e3ced452c989e3a7c', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: '60f9bb81ee6eb4cf528e4d802cc634c0cae55861' })))));
+            }, "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: 'e9a4c3bcdf02d3e9db4030eb1417203ac6533d4a', label: this.label })), h("slot", { key: '41d4e2514246ca9fd00088399f0fd4157706cc17', name: "accordion-trigger" })), h("div", { key: '86b8123bf02dfe39ef8f0d6329a186d2f5239d7e', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (h("div", { key: '5760db611b07f2488cb2b997f3c49b9e2ae2e123', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: '9643366fee3e5ddca837aaa23d0120787bef3456' })))));
     }
     static get is() { return "at-accordion-item"; }
     static get originalStyleUrls() {
@@ -247,6 +258,11 @@ export class AtAccordionItemComponent {
                 "reflect": false,
                 "attribute": "disabled"
             }
+        };
+    }
+    static get states() {
+        return {
+            "detailsOpen": {}
         };
     }
     static get events() {

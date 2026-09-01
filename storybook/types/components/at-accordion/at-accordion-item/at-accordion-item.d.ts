@@ -36,8 +36,17 @@ export declare class AtAccordionItemComponent {
      * Emitted when the accordion item's open state changes
      */
     atuiAccordionChange: EventEmitter<boolean>;
+    /**
+     * The `<details>` element's own open state, which trails `open` on the way
+     * closed so the collapse can animate before the content is taken out of the
+     * page. Rendered rather than assigned after mount: content that measures
+     * itself on load - a chart sizing its canvas - reads zero inside a details
+     * that is still closed for its first frame, and never re-measures without an
+     * interaction.
+     */
+    private detailsOpen;
     private detailsEl;
-    componentDidLoad(): void;
+    componentWillLoad(): void;
     private handleSummaryInteraction;
     handleOpenChange(newValue: boolean): void;
     /**
