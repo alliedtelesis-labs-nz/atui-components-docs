@@ -22,37 +22,19 @@
   }
 }
 
-/**
- * The bar's box - flex, gap, padding, border, radius, background - is set by
- * utility classes on the element itself, not here. This file only styles what a
- * utility class cannot: the popover mechanics below. Written as `var(--spacing-12)`
- * and friends it silently collapsed to nothing in any app that does not define
- * those names, which is every consumer: the bar rendered unstyled and, worse,
- * unpositioned, since its offset came from the same place.
- */
 .selection-bar.is-hidden {
   display: none;
 }
 
-/* Manual popover: the top layer keeps ag-grid's transformed viewport from clipping the
-   bar, and nothing dismisses it but clearing the selection. */
 .selection-bar--floating {
   position: fixed;
   inset: auto auto 48px 50%;
   translate: -50% 0;
   margin: 0;
   width: min(42rem, 100vw - 2rem);
-  /* The token layer, not Tailwind's `shadow-lg`: that utility resolves through
-     `--shadow-lg`, which belongs to this repo's own Tailwind build and is absent
-     in a consuming app, so the raised bar rendered flat. */
   box-shadow: var(--token-shadow-lg);
   opacity: 0;
   transition: opacity 220ms ease-out, translate 220ms cubic-bezier(0.2, 0.9, 0.3, 1), display 220ms allow-discrete, overlay 220ms allow-discrete;
-  /* `.selection-bar`'s own `display: flex` is an author rule, so it wins over the UA
-     stylesheet's `[popover]:not(:popover-open) { display: none }`. Without this the
-     closed bar stays laid out at `opacity: 0` - invisible to the eye but still in the
-     page for hit-testing, focus order and assistive tech. `display` is already in the
-     transition list above with `allow-discrete`, so the exit stays animated. */
 }
 .selection-bar--floating:not(:popover-open) {
   display: none;
@@ -68,8 +50,6 @@
     translate: -50% 16px;
   }
 }
-/* The floating bar covers the last rows; without this the user cannot reach the rows
-   the bar is talking about. */
 :host(:has(.selection-bar--floating:popover-open)) .ag-root-wrapper,
 at-search-table:has(.selection-bar--floating:popover-open) .ag-root-wrapper {
   padding-bottom: calc(var(--at-selection-bar-height, 0px) + 48px);
@@ -81,8 +61,6 @@ at-search-table:has(.selection-bar--floating:popover-open) .ag-root-wrapper {
     translate: -50% 0;
   }
 }
-/* Selection off: the wrapper exists only to keep the slots' parent stable, so it takes
-   no part in layout. */
 .selection-bar--passive {
   display: contents;
 }

@@ -13,16 +13,6 @@
   min-width: 0;
 }
 
-/**
- * A checkbox column is 48px wide and the control wants 32 of them (a 16px box in
- * the padding that makes it a 32px pointer target). The default 13px cell padding
- * leaves only 22px, so the control is squeezed and clipped. 6px leaves 36px.
- *
- * Both kinds are matched: `at-checkbox-cell` is the registered renderer a host
- * puts in its own column, and `[data-name="selection-cell"]` is the column
- * at-search-table adds for `row_selection`, which is plain DOM and so matches
- * neither the tag nor the other selector.
- */
 .ag-cell:has(at-checkbox-cell),
 .ag-cell:has([data-name=selection-cell]),
 .ag-header-cell:has(at-checkbox-header),
@@ -32,13 +22,6 @@
   justify-content: center;
 }
 
-/**
- * `.ag-cell` is `inline-flex` (directives.scss) and ag-grid gives `.ag-cell-value`
- * `flex: 0 1 auto`, so the value shrink-wraps the checkbox and packs it against
- * the left edge. The renderer then has no width to centre within, which is why
- * centring inside `at-checkbox-cell` alone does nothing. Same shape of fix as
- * `at-progress-bar-cell.scss`, scoped by `:has()` so no other cell type moves.
- */
 .ag-cell-wrapper:has(at-checkbox-cell),
 .ag-cell-value:has(at-checkbox-cell),
 .ag-cell-wrapper:has([data-name=selection-cell]),
