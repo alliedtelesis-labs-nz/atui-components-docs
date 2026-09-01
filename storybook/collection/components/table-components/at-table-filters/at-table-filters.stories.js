@@ -59,30 +59,6 @@ Promise.all([
         atFilterForm.active_filters = event.detail;
     });
 });
-        {
-            _id: "2",
-            col_one: "Feb 1,  2018 - Feb 28,  2018",
-            col_two: "value 2",
-        },
-        {
-            _id: "1",
-            col_one: "Jan 1,  2018 - Jan 31,  2018",
-            col_two: "value 3",
-        },
-        {
-            _id: "0",
-            col_one: "Dec 1,  2017 - Dec 31,  2017",
-            col_two: "value 4",
-        },
-    ],
-    total: 4,
-};
-document.querySelector('at-table').table_data = table_data
-document.querySelector('at-table').col_defs = col_defs
-document.querySelector('at-table-filters').col_defs = col_defs
-document.querySelector('at-table')
-    .createGrid()
-    .then((api) => document.querySelector('at-table-actions').ag_grid = api)
 </script>
 `;
 export default {
