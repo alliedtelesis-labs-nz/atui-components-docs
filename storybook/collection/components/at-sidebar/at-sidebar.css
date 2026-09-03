@@ -58,7 +58,7 @@ at-sidebar {
   overflow: hidden;
   position: relative;
 }
-at-sidebar .backdrop {
+at-sidebar > .backdrop {
   position: fixed;
   top: 0;
   left: 0;
