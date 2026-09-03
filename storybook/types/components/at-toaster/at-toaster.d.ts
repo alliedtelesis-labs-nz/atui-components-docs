@@ -18,6 +18,12 @@ export declare class AtToasterComponent {
      * @param toast The toast to add
      */
     addToast(toast: AtIToast): Promise<void>;
+    /**
+     * A modal at-dialog sits in the browser's top layer, which no z-index can
+     * reach — showing the host as a manual popover joins that layer, and
+     * re-showing on every toast re-inserts it above dialogs opened since.
+     */
+    private raiseAboveModals;
     disconnectedCallback(): void;
     /**
      * Removes a toast from the toaster container by its ID

@@ -50,6 +50,19 @@
     transform: scale(0.95);
   }
 }
+:host([popover]) {
+  position: fixed;
+  inset: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+}
+
 .at-toaster {
   position: fixed;
   display: flex;
@@ -57,6 +70,7 @@
   z-index: var(--token-z-index-modal);
   gap: 8px;
   padding: 12px;
+  pointer-events: none;
 }
 .at-toaster.top-right {
   top: 12px;
@@ -92,6 +106,7 @@
 }
 
 .at-toast {
+  pointer-events: auto;
   min-width: var(--token-width-panel-xs);
   max-width: var(--token-width-panel-sm);
   box-shadow: var(--token-shadow-1);

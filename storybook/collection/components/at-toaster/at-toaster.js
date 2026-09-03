@@ -26,6 +26,29 @@ export class AtToasterComponent {
             }, toast.timeout);
             this.dismissTimers.add(timer);
         }
+        this.raiseAboveModals();
+    }
+    /**
+     * A modal at-dialog sits in the browser's top layer, which no z-index can
+     * reach — showing the host as a manual popover joins that layer, and
+     * re-showing on every toast re-inserts it above dialogs opened since.
+     */
+    raiseAboveModals() {
+        if (!('showPopover' in HTMLElement.prototype)) {
+            return;
+        }
+        try {
+            this.el.setAttribute('popover', 'manual');
+            if (this.el.matches(':popover-open')) {
+                this.el.hidePopover();
+            }
+            this.el.showPopover();
+        }
+        catch {
+            // An unshown popover is display: none — worse than sitting
+            // behind a backdrop, so put the attribute back.
+            this.el.removeAttribute('popover');
+        }
     }
     disconnectedCallback() {
         this.dismissTimers.forEach((timer) => clearTimeout(timer));
@@ -77,7 +100,7 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: 'dbe1614e708cd72a6413506ac4d7f2b8b1c12828', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+        return (h("div", { key: '441db181d5204d258346c48e4b8d5fc84379514b', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))))))));
