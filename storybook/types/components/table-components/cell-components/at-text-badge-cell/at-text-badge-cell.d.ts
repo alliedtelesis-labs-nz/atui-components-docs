@@ -23,6 +23,6 @@ export declare class AtTextBadgeCell implements ICellRendererComp {
     init(params: ICellRendererParams): void;
     getGui(): HTMLElement;
     refresh(params: ICellRendererParams): boolean;
-    private updateCell;
+    private applyParams;
     render(): any;
 }
