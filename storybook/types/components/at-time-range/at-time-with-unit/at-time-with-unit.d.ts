@@ -66,6 +66,9 @@ export declare class AtTimeWithUnitComponent {
     private initSelectedTime;
     updateSelectedTime(): void;
     private formatDuration;
+    private getMaxSeconds;
+    private getMaxTimeValue;
+    private getMinTimeValue;
     private validateInput;
     private updateSelectedRange;
     private isSelectedOption;

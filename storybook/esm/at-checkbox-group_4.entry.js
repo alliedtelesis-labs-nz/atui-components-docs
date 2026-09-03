@@ -49299,6 +49299,9 @@ const AtTableComponent = class {
             ...(this.row_id_field && {
                 getRowId: (params) => String(params.data?.[this.row_id_field]),
             }),
+            ...(this.auto_size_columns && {
+                autoSizeStrategy: { type: 'fitGridWidth' },
+            }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
             onModelUpdated: (event) => {
@@ -49365,7 +49368,7 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '1c634445704f6f86418eca1a40c74f321eb52e27', class: {
+        return (h(Host, { key: 'c53d3ad69f95d74dc2af11df0d22bbac0fcb5055', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));
