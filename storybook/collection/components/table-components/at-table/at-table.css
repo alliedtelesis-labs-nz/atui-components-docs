@@ -19,7 +19,13 @@
 .ag-header-cell:has([data-name=selection-header]) {
   padding-left: 6px !important;
   padding-right: 6px !important;
-  justify-content: center;
+}
+
+.ag-cell:has(at-checkbox-cell) at-checkbox,
+.ag-cell:has([data-name=selection-cell]) at-checkbox,
+.ag-header-cell:has(at-checkbox-header) at-checkbox,
+.ag-header-cell:has([data-name=selection-header]) at-checkbox {
+  width: auto;
 }
 
 .ag-cell-wrapper:has(at-checkbox-cell),
@@ -28,6 +34,11 @@
 .ag-cell-value:has([data-name=selection-cell]) {
   width: 100%;
   min-width: 0;
+  overflow: visible;
+}
+
+.ag-cell:has(at-checkbox-cell) at-checkbox-cell {
+  justify-content: center;
 }
 
 .ag-header-cell:has(at-checkbox-header) .ag-header-cell-comp-wrapper,
