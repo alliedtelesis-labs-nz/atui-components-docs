@@ -1,0 +1,1 @@
+import{c as E}from"./chunk-JAURE7GF.js";var H=[{unit:E.MINUTES,value:30},{unit:E.HOURS,value:1},{unit:E.HOURS,value:6},{unit:E.HOURS,value:12},{unit:E.HOURS,value:24},{unit:E.DAYS,value:7},{unit:E.MONTHS,value:1}],O=(function(S){return S.SECONDS="s",S.MINUTES="min",S.HOURS="hr",S.DAYS="d",S.WEEKS="w",S.MONTHS="m",S.YEARS="yr",S})(O||{});export{H as a,O as b};
