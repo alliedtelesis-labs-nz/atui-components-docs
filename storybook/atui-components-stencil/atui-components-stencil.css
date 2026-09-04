@@ -637,6 +637,7 @@
   --token-color-base-amber-800: #ff8f00;
   --token-color-base-amber-850: #cc5900;
   --token-color-base-amber-900: #ff6f00;
+  --token-color-base-amber-950: #cb4800;
   --token-color-base-amber-a100: #ffe57f;
   --token-color-base-amber-a200: #ffd740;
   --token-color-base-amber-a400: #ffc400;
@@ -1368,11 +1369,9 @@
         var(--token-state-success-background) var(--mix-muted),
         var(--root-color)
     );
-  --token-feedback-success-foreground-inv: var(
-        --token-state-success-foreground-inv
-    );
+  --token-feedback-success-foreground-inv: var(--token-text-foreground);
   --token-feedback-success-background-inv: var(
-        --token-state-success-background-inv
+        --token-state-success-background
     );
   --token-feedback-success-background-accent: var(
         --token-state-success-accent
@@ -1383,12 +1382,10 @@
         var(--token-state-warning-background) var(--mix-muted),
         var(--root-color)
     );
-  --token-feedback-warning-foreground-inv: var(
-        --token-state-warning-foreground-inv
-    );
-  --token-feedback-warning-background-inv: var(
-        --token-state-warning-background-inv
-    );
+  --token-feedback-warning-foreground-inv: var(--token-text-foreground);
+  /* The darkest amber in the state layer still only reaches 4.20 against
+       white, so the high-impact warning reaches past it to a primitive. */
+  --token-feedback-warning-background-inv: var(--token-color-base-amber-950);
   --token-feedback-warning-backgroundaccent: var(
         --token-state-warning-accent
     );
@@ -1398,12 +1395,8 @@
         var(--token-state-error-background) var(--mix-muted),
         var(--root-color)
     );
-  --token-feedback-error-foreground-inv: var(
-        --token-state-error-foreground-inv
-    );
-  --token-feedback-error-background-inv: var(
-        --token-state-error-background-inv
-    );
+  --token-feedback-error-foreground-inv: var(--token-text-foreground);
+  --token-feedback-error-background-inv: var(--token-state-error-background);
   --token-feedback-error-accent: var(--token-state-error-accent);
   --token-feedback-info-foreground: var(--token-state-info-foreground);
   --token-feedback-info-background: color-mix(
@@ -1411,12 +1404,8 @@
         var(--token-state-info-background) var(--mix-muted),
         var(--root-color)
     );
-  --token-feedback-info-foreground-inv: var(
-        --token-state-info-foreground-inv
-    );
-  --token-feedback-info-background-inv: var(
-        --token-state-info-background-inv
-    );
+  --token-feedback-info-foreground-inv: var(--token-text-foreground);
+  --token-feedback-info-background-inv: var(--token-state-info-background);
   --token-feedback-info-accent: var(--token-state-info-accent);
   /* Button */
   --token-button-foreground: var(--token-text-foreground);

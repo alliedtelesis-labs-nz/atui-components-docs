@@ -1,1 +1,1 @@
-import{A as o,d as p}from"./p-Cq-jp7VJ.js";const s=o,r=p;export{s as AtTitleSubtitleCell,r as defineCustomElement}
+import{A as o,d as p}from"./p-CUKq2wSp.js";const s=o,r=p;export{s as AtTitleSubtitleCell,r as defineCustomElement}
