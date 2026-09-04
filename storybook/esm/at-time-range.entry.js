@@ -132,7 +132,10 @@ const AtTimeRangeComponent = class {
         this.atuiTimeChange.emit({ ...this.displayedTimeRange });
     }
     onChangeRelativeTime(time) {
-        this.displayedTimeRange = { selected: time, custom: undefined };
+        this.displayedTimeRange =
+            time === TimeRangeDisplay.ALL
+                ? { selected: TimeRangeDisplay.ALL, custom: undefined }
+                : { selected: time, custom: undefined };
         this.atuiTimeChange.emit({ ...this.displayedTimeRange });
     }
     onAbsoluteMenuStateChange(isOpen) {
@@ -178,7 +181,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '0c5917247ea20d2cb78918cd8fd691addb045940', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: 'fa3f3fb28b8cf54e0e99424c7197da25bc9e5db5', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
