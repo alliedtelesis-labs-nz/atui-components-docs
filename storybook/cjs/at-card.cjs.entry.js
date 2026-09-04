@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DnmjgnzG.js');
+var index = require('./index-DYE55yNY.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const containerVariantsConfig = {

@@ -3443,7 +3443,8 @@ export namespace Components {
          */
         "enable_relative_time": boolean;
         /**
-          * Define the presets for the relative time ranges.
+          * Define the presets for the relative time ranges. Presets longer than the range limit are not shown.
+          * @default [...AT_DEFAULT_TIME_PRESETS]
          */
         "presets": AtTimePresets[];
         /**
@@ -9172,7 +9173,8 @@ declare namespace LocalJSX {
          */
         "onAtuiTimeChange"?: (event: AtTimeRangeCustomEvent<AtSelectedTimeRangeExtended>) => void;
         /**
-          * Define the presets for the relative time ranges.
+          * Define the presets for the relative time ranges. Presets longer than the range limit are not shown.
+          * @default [...AT_DEFAULT_TIME_PRESETS]
          */
         "presets"?: AtTimePresets[];
         /**

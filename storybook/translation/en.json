@@ -96,7 +96,25 @@
                 "FROM_MUST_BE_BEFORE_TO": "From date must be earlier than to date"
             },
             "ALL": "All Time",
-            "ALL_TIME_LABEL": "All Time (No filter applied)"
+            "ALL_TIME_LABEL": "All Time (No filter applied)",
+            "RANGE_LABEL": {
+                "SECONDS_ONE": "Last second",
+                "SECONDS_OTHER": "Last {value} seconds",
+                "MINUTES_ONE": "Last minute",
+                "MINUTES_OTHER": "Last {value} minutes",
+                "HOURS_ONE": "Last hour",
+                "HOURS_OTHER": "Last {value} hours",
+                "DAYS_ONE": "Last day",
+                "DAYS_OTHER": "Last {value} days",
+                "WEEKS_ONE": "Last week",
+                "WEEKS_OTHER": "Last {value} weeks",
+                "MONTHS_ONE": "Last month",
+                "MONTHS_OTHER": "Last {value} months",
+                "YEARS_ONE": "Last year",
+                "YEARS_OTHER": "Last {value} years"
+            },
+            "TO_SEPARATOR": "to",
+            "ALL_TIME_SINCE": "All Time (since {date})"
         },
         "PROMPT": {
             "NO_MESSAGES_YET": "No messages yet",

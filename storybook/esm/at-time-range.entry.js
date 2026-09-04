@@ -1,28 +1,9 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Dnh7MvHP.js';
-import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration, d as dayjs } from './at-time-date.util-Bfdzn_RG.js';
-import { f as fetchTranslations } from './translation-DJgkls7W.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CKYs7vaG.js';
+import { A as AT_DEFAULT_TIME_PRESETS, a as AbreviatedTimeUnits } from './at-time-range.models-yUuqzo3S.js';
+import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration } from './at-time-date.util-Bfdzn_RG.js';
+import { f as fetchTranslations } from './translation-TgeIMQBw.js';
+import { a as atGetTimestampLabel, b as atGetAbsoluteRangeParts, c as atGetRelativeRangeLabel } from './time-range-label.util-CpeObe-s.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
-
-var AbreviatedTimeUnits;
-(function (AbreviatedTimeUnits) {
-    AbreviatedTimeUnits["SECONDS"] = "s";
-    AbreviatedTimeUnits["MINUTES"] = "min";
-    AbreviatedTimeUnits["HOURS"] = "hr";
-    AbreviatedTimeUnits["DAYS"] = "d";
-    AbreviatedTimeUnits["WEEKS"] = "w";
-    AbreviatedTimeUnits["MONTHS"] = "m";
-    AbreviatedTimeUnits["YEARS"] = "yr";
-})(AbreviatedTimeUnits || (AbreviatedTimeUnits = {}));
-var FullTimeUnits;
-(function (FullTimeUnits) {
-    FullTimeUnits["SECONDS"] = "SECONDS";
-    FullTimeUnits["MINUTES"] = "MINUTES";
-    FullTimeUnits["HOURS"] = "HOURS";
-    FullTimeUnits["DAYS"] = "DAYS";
-    FullTimeUnits["WEEKS"] = "WEEKS";
-    FullTimeUnits["MONTHS"] = "MONTHS";
-    FullTimeUnits["YEARS"] = "YEARS";
-})(FullTimeUnits || (FullTimeUnits = {}));
 
 const AtTimeRangeComponent = class {
     constructor(hostRef) {
@@ -38,14 +19,18 @@ const AtTimeRangeComponent = class {
             value: 1,
         },
     };
+    watchSelectedTimeRange(next) {
+        this.displayedTimeRange = next;
+    }
     /**
      * Lower limit of the time range.
      */
     range_limit = 7;
     /**
-     * Define the presets for the relative time ranges.
+     * Define the presets for the relative time ranges. Presets longer than the
+     * range limit are not shown.
      */
-    presets;
+    presets = [...AT_DEFAULT_TIME_PRESETS];
     /**
      * Enable relative time selection.
      */
@@ -63,12 +48,14 @@ const AtTimeRangeComponent = class {
      * the value of range limit.
      */
     enable_range_limit = true;
-    today;
     translations;
     displayedTimeRange;
     defaultFromDate;
     defaultToDate;
-    lowerLimit;
+    absoluteMaxDate;
+    // Bumped on hover so the tooltip resolves the range as it is shown rather
+    // than as it was last rendered.
+    previewedAt;
     relativeTimeMenuEl;
     absoluteTimeMenuEl;
     absoluteTimeRangeEl;
@@ -90,14 +77,16 @@ const AtTimeRangeComponent = class {
     minSeconds = 300;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
-        this.today = new Date();
         this.displayedTimeRange = this.selected_time_range;
         const { fromDate, toDate } = this.getDefaultDateRange();
         this.defaultFromDate = fromDate;
         this.defaultToDate = toDate;
+        this.absoluteMaxDate = new Date();
     }
-    componentWillRender() {
-        this.lowerLimit = this.enable_range_limit
+    // Every limit below is measured from the current time, so it is derived when
+    // read rather than cached: a dashboard can sit open for days between renders.
+    getLowerLimit() {
+        return this.enable_range_limit
             ? new Date(Date.now() - this.range_limit * 86400 * 1000)
             : AtTimeDateUtil.floorDateByTimeUnit(MIN_DATE, Duration.HOURS);
     }
@@ -110,9 +99,10 @@ const AtTimeRangeComponent = class {
             const { startDate, endDate } = AtTimeDateUtil.getRelativeDateRange(selected);
             return { fromDate: startDate, toDate: endDate };
         }
+        const now = new Date();
         return {
-            fromDate: new Date(this.today.getTime() - 3600 * 1000),
-            toDate: this.today,
+            fromDate: new Date(now.getTime() - 3600 * 1000),
+            toDate: now,
         };
     }
     getCustomStartAndEndDate(selectedTime) {
@@ -131,7 +121,7 @@ const AtTimeRangeComponent = class {
         if (!this.presets) {
             return [];
         }
-        const maxSeconds = AtTimeDateUtil.getSecondsAgoFromDate(this.lowerLimit);
+        const maxSeconds = AtTimeDateUtil.getSecondsAgoFromDate(this.getLowerLimit());
         return this.presets.filter((preset) => AtTimeDateUtil.convertToSeconds(preset) <= maxSeconds);
     }
     onChangeCustomTime(customTime) {
@@ -150,6 +140,7 @@ const AtTimeRangeComponent = class {
             const { fromDate, toDate } = this.getDefaultDateRange();
             this.defaultFromDate = fromDate;
             this.defaultToDate = toDate;
+            this.absoluteMaxDate = new Date();
             return;
         }
         if (!this.absoluteTimeApplied) {
@@ -157,32 +148,37 @@ const AtTimeRangeComponent = class {
         }
         this.absoluteTimeApplied = false;
     }
-    formatDate(date) {
-        return dayjs(date).format('D/M/YY, h:mm A');
-    }
     renderSelectedTimeDisplay() {
         const time = this.displayedTimeRange;
         if (!time?.selected) {
             return null;
         }
         if (time.selected === TimeRangeDisplay.ALL) {
-            return (h("div", { class: "text-foreground flex items-center gap-4 font-normal" }, this.translations?.ATUI?.TIME?.ALL_TIME_LABEL ||
-                'All Time'));
+            // "All time" reaches only as far back as the range limit allows, so
+            // say where it actually starts rather than claiming no limit.
+            const label = this.enable_range_limit
+                ? (this.translations?.ATUI?.TIME?.ALL_TIME_SINCE ||
+                    'All Time (since {date})').replace('{date}', atGetTimestampLabel(this.getLowerLimit()))
+                : this.translations?.ATUI?.TIME?.ALL_TIME_LABEL || 'All Time';
+            return (h("div", { id: "all", class: "text-foreground flex items-center gap-4 font-normal" }, label));
         }
         if (time.custom) {
-            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, this.formatDate(time.custom.from)), h("at-icon", { name: "arrow_right", class: "text-muted" }), h("span", null, time.custom.lockEndDateToNow
+            const { start, end } = atGetAbsoluteRangeParts(time.custom.from, time.custom.to);
+            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, start), h("span", { class: "text-muted", "aria-hidden": "true" }, "-"), h("span", { class: "sr-only" }, this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to'), h("span", null, time.custom.lockEndDateToNow
                 ? this.translations?.ATUI?.TIME?.NOW || 'Now'
-                : this.formatDate(time.custom.to))));
+                : end)));
         }
         const selected = time.selected;
         if (selected?.value && selected?.unit) {
-            const unitLabel = this.getShortUnitDisplay(selected);
-            const startDate = AtTimeDateUtil.getRelativeDateRange(selected)?.startDate;
-            return (h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, "Last ", selected.value, " ", unitLabel, ":"), startDate && h("span", null, this.formatDate(startDate)), h("at-icon", { name: "arrow_right", class: "fill-foreground" }), h("span", null, this.translations?.ATUI?.TIME?.NOW || 'Now')));
+            const { startDate, endDate } = AtTimeDateUtil.getRelativeDateRange(selected);
+            const resolved = atGetAbsoluteRangeParts(startDate, endDate);
+            const now = this.translations?.ATUI?.TIME?.NOW || 'Now';
+            const to = this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to';
+            return (h("div", { id: "relative", class: "text-foreground flex items-center gap-4 font-normal", onMouseEnter: () => (this.previewedAt = Date.now()), onFocusin: () => (this.previewedAt = Date.now()) }, h("at-tooltip", { position: "bottom" }, h("span", { slot: "tooltip-trigger" }, atGetRelativeRangeLabel(selected, this.translations)), `${resolved.start} ${to} ${now}`)));
         }
     }
     render() {
-        return (h(Host, { key: '5ec4a1423c6ca50ed1f236132adc8e5342de8c1b', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: 'fe0fc69a10f9fde2ee5fc32be091f75eb9100bbe', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -201,7 +197,7 @@ const AtTimeRangeComponent = class {
             } }, presets.map((preset, idx) => (h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}`, label: `${preset.value}${this.getShortUnitDisplay(preset)}` }))), h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, h("at-icon", { slot: "icon", name: "schedule" }))));
     }
     renderRelativeTimeMenu() {
-        return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.lowerLimit, min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===
+        return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.getLowerLimit(), min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
                 : this.selected_time_range?.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => {
@@ -212,7 +208,7 @@ const AtTimeRangeComponent = class {
     renderAbsoluteTimeMenu() {
         return (h("at-menu", { ref: (el) => (this.absoluteTimeMenuEl = el), trigger: "click", width: "fit-content", align: "end", autoclose: false, trigger_id: `${this.instanceId}-abs`, onAtuiMenuStateChange: (event) => {
                 this.onAbsoluteMenuStateChange(event.detail);
-            } }, h("at-custom-time-range", { ref: (el) => (this.absoluteTimeRangeEl = el), min_date: this.lowerLimit, default_to_date: this.defaultToDate, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
+            } }, h("at-custom-time-range", { ref: (el) => (this.absoluteTimeRangeEl = el), min_date: this.getLowerLimit(), max_date: this.absoluteMaxDate, default_to_date: this.defaultToDate, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
                 ?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
                 ?.toDate, lock_end_date_to_now: this.selected_time_range?.custom?.lockEndDateToNow, onAtuiSubmit: (event) => {
                 this.absoluteTimeApplied = true;
@@ -220,6 +216,11 @@ const AtTimeRangeComponent = class {
                 this.absoluteTimeMenuEl?.closeMenu();
             }, onAtuiCancel: () => this.absoluteTimeMenuEl?.closeMenu() })));
     }
+    static get watchers() { return {
+        "selected_time_range": [{
+                "watchSelectedTimeRange": 0
+            }]
+    }; }
 };
 
 export { AtTimeRangeComponent as at_time_range };

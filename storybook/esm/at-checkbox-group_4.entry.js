@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Dnh7MvHP.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CKYs7vaG.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
-import { f as fetchTranslations } from './translation-DJgkls7W.js';
+import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { r as resolveCellSearchText } from './cell-search-text-D4FLMtCG.js';
 import { A as AvailableCells, a as AvailableHeaders } from './index-D2ly98i_.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';

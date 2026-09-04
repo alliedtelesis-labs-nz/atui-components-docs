@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-DnmjgnzG.js');
-var translation = require('./translation-Bmo58wpn.js');
+var index = require('./index-DYE55yNY.js');
+var translation = require('./translation-NP6A4XKu.js');
 
 const AtPromptContainer = class {
     constructor(hostRef) {

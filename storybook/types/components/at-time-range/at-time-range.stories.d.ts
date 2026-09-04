@@ -7,3 +7,4 @@ export declare const PredefinedPresetsOnly: any;
 export declare const CustomPresetsShortRange: any;
 export declare const RelativeTimeWithPresets: any;
 export declare const WithAllTime: any;
+export declare const AllPresetsWithinRangeLimit: any;

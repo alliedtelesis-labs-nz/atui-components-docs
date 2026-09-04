@@ -10,12 +10,14 @@ export declare class AtTimeRangeComponent {
      * Selected time range.
      */
     selected_time_range: AtSelectedTimeRangeExtended;
+    watchSelectedTimeRange(next: AtSelectedTimeRangeExtended): void;
     /**
      * Lower limit of the time range.
      */
     range_limit: number;
     /**
-     * Define the presets for the relative time ranges.
+     * Define the presets for the relative time ranges. Presets longer than the
+     * range limit are not shown.
      */
     presets: AtTimePresets[];
     /**
@@ -35,12 +37,12 @@ export declare class AtTimeRangeComponent {
      * the value of range limit.
      */
     enable_range_limit: boolean;
-    today: Date;
     translations: any;
     displayedTimeRange: AtSelectedTimeRangeExtended;
     defaultFromDate: Date;
     defaultToDate: Date;
-    private lowerLimit;
+    absoluteMaxDate: Date;
+    previewedAt: number;
     private relativeTimeMenuEl;
     private absoluteTimeMenuEl;
     private absoluteTimeRangeEl;
@@ -54,7 +56,7 @@ export declare class AtTimeRangeComponent {
     units: AtTimeUnit[];
     minSeconds: number;
     componentWillLoad(): Promise<void>;
-    componentWillRender(): void;
+    private getLowerLimit;
     private getDefaultDateRange;
     private getCustomStartAndEndDate;
     private getShortUnitDisplay;
@@ -62,7 +64,6 @@ export declare class AtTimeRangeComponent {
     onChangeCustomTime(customTime: AtIDateRangeStrings): void;
     onChangeRelativeTime(time: AtITimeWithUnit | TimeRangeDisplay.ALL): void;
     private onAbsoluteMenuStateChange;
-    private formatDate;
     private renderSelectedTimeDisplay;
     render(): any;
     private renderRelativeTimeButtonGroup;

@@ -1,11 +1,3 @@
-const defaultPresets = [
-    { unit: 'HOURS', value: 1 },
-    { unit: 'HOURS', value: 12 },
-    { unit: 'DAYS', value: 7 },
-    { unit: 'MONTHS', value: 1 },
-    { unit: 'YEARS', value: 1 },
-    { unit: 'YEARS', value: 5 },
-];
 const Template = (args) => `
 <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px;">
     <at-time-range
@@ -20,7 +12,7 @@ const Template = (args) => `
 (function() {
     var el = document.querySelector('at-time-range');
     var debug = document.querySelector('#debug-output');
-    el.presets = ${JSON.stringify(args.presets ?? defaultPresets)};
+    ${args.presets ? `el.presets = ${JSON.stringify(args.presets)};` : ''}
     el.selected_time_range = ${JSON.stringify(args.selected_time_range ?? { selected: { unit: 'HOURS', value: 1 } })};
     debug.textContent = 'Initial: ' + JSON.stringify(el.selected_time_range, null, 2);
     el.addEventListener('atuiTimeChange', function(e) {
@@ -34,7 +26,9 @@ const setProps = async ({ canvasElement, args }) => {
     const el = canvasElement.querySelector('at-time-range');
     const debug = canvasElement.querySelector('#debug-output');
     if (el) {
-        el.presets = args.presets ?? defaultPresets;
+        if (args.presets) {
+            el.presets = args.presets;
+        }
         el.selected_time_range = args.selected_time_range ?? {
             selected: { unit: 'HOURS', value: 1 },
         };
@@ -55,7 +49,6 @@ export default {
 };
 export const Default = Template.bind({});
 Default.args = {
-    presets: defaultPresets,
     enable_range_limit: true,
     enable_relative_time: true,
     range_limit: 7,
@@ -65,7 +58,6 @@ Default.args = {
 Default.play = setProps;
 export const PredefinedPresetsOnly = Template.bind({});
 PredefinedPresetsOnly.args = {
-    presets: defaultPresets,
     enable_range_limit: false,
     enable_relative_time: false,
     show_all_time: false,
@@ -90,7 +82,6 @@ CustomPresetsShortRange.args = {
 CustomPresetsShortRange.play = setProps;
 export const RelativeTimeWithPresets = Template.bind({});
 RelativeTimeWithPresets.args = {
-    presets: defaultPresets,
     enable_range_limit: true,
     enable_relative_time: true,
     range_limit: 30,
@@ -100,10 +91,18 @@ RelativeTimeWithPresets.args = {
 RelativeTimeWithPresets.play = setProps;
 export const WithAllTime = Template.bind({});
 WithAllTime.args = {
-    presets: defaultPresets,
     enable_range_limit: false,
     enable_relative_time: true,
     show_all_time: true,
     selected_time_range: { selected: 'all' },
 };
 WithAllTime.play = setProps;
+export const AllPresetsWithinRangeLimit = Template.bind({});
+AllPresetsWithinRangeLimit.args = {
+    enable_range_limit: true,
+    enable_relative_time: true,
+    range_limit: 400,
+    show_all_time: false,
+    selected_time_range: { selected: { unit: 'DAYS', value: 7 } },
+};
+AllPresetsWithinRangeLimit.play = setProps;

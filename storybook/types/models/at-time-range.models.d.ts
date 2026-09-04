@@ -34,6 +34,7 @@ export type AtTimePresets = {
     unit: AtTimeUnit.YEARS;
     value: 5;
 };
+export declare const AT_DEFAULT_TIME_PRESETS: AtTimePresets[];
 export declare enum AbreviatedTimeUnits {
     SECONDS = "s",
     MINUTES = "min",

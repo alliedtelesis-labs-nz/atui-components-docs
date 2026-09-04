@@ -14,4 +14,5 @@ export { ToasterService } from './utils/toaster.service';
 export { AtChartColorPalette } from './types/chart-color';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
 export { atGetRelativeTime } from './utils/relative-time.util';
+export { AT_DEFAULT_TIME_PRESETS, } from './models/at-time-range.models';
 export { AtTimeUnit } from './types/time';

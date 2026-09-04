@@ -41,7 +41,7 @@ export { AtIRadioOption } from './components/at-radio-group/at-radio-group';
 export { AtIButtonGroupOption } from './components/at-button-group/at-button-group';
 export { AtTimeDateUtil } from './utils/at-time-date.util';
 export { atGetRelativeTime } from './utils/relative-time.util';
-export { type AtSelectedTimeRangeExtended, AtTimePresets, } from './models/at-time-range.models';
+export { type AtSelectedTimeRangeExtended, AtTimePresets, AT_DEFAULT_TIME_PRESETS, } from './models/at-time-range.models';
 export { type AtIDateRange, type AtIDateRangeStrings } from './types/date';
 export { AtTimeUnit, type AtITimeWithUnit } from './types/time';
 export { AtIconDescriptor } from './types/svg-icon';
