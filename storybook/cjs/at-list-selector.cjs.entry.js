@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -65,7 +65,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, index.h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (index.h("at-tooltip", { slot: "badge", position: "right" }, index.h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), index.h("span", null, item.badgeTooltip))), item.hasInfoButton && (index.h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, index.h("at-icon", { slot: "icon", name: "help" }))))), index.h("span", null, item.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: 'ed71a02dcbca6e23243de311197ff15b09218323', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: '2103927a3f2fbf1eefff53f8b6524d1e33dd1ac5', name: "header" }), !!this.options.length && (index.h("nav", { key: '17902fdb790a88a9a786ad3e8dd1a908cc721bc6', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: 'a159623e47ae9565282704e0029224715f7200c3', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: '9a9114e9385de11792713151a32c3b2323315610' })));
+        return (index.h(index.Host, { key: 'd3e3acdf1448a01096f38f3c7c6cc547355507a0', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: 'a507babe1c283d8ae489169ddcce7eeccf4ffc8d', name: "header" }), !!this.options.length && (index.h("nav", { key: 'e6b891171727bdb949904198d23a7b1b80f602a3', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: '4a87081ee81f552a44514c3f97b244caea38f9a8', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: 'fc20560fcd4722a8bdca9220eea15b56bce90b4d' })));
     }
 };
 

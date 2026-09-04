@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-CKYs7vaG.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-CT99rxub.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const variantsConfig = {
@@ -40,7 +40,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '8a28a953a7d27359b5f9eeabca44d3afead86cb0', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (h(Host, { key: 'fe5d6d4497cbac0d9d95070b1ff49435440baeff', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -48,7 +48,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, h("div", { key: 'cb3511773585df2fd47789e80c689e1ffe73bbaf', class: "flex min-w-0 flex-1" }, h("slot", { key: '7a52b4459361991a250dfeaad3ac7c1bdab93495', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: '5c8e64e622da9d71dbf95c6324c2499e2472bf49', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '660367511f899f3a159d65613ae7446020eb9e03' })), h("slot", { key: '3ddba785d701210186c20fcfcb6bada5547fd51d', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, h("div", { key: '70e98e7d355c3f86223eb871b686790fb8b07474', class: "flex min-w-0 flex-1" }, h("slot", { key: '3767f974593f1818061e9f18a99fdfcff81468d1', name: "icon", "data-name": "menu-item-icon" }), this.label && (h("span", { key: 'b79515e04e593d8e22dbd49d8ebf55de0a3144b9', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), h("slot", { key: '045ce6c6e2792034f932d485bf0c2551738fb69e' })), h("slot", { key: '6c2d3add0541d5258f0ff06d59e3d7ecea3f0c13', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

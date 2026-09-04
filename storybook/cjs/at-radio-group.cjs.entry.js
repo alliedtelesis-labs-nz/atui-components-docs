@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {
@@ -203,8 +203,8 @@ const AtRadioGroup = class {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (index.h(index.Host, { key: 'a55ac24eca6d34ac7e912557482a4419495722ac', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined, onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, index.h("div", { key: 'ae175a965dd0292632192a5cd1dc864cd52555db', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '4ab9d66bb9c6173de149365917d34b2a825d9098', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '650ba3feb448a7335962c678b69125e9696613a0', id: this.labelId, label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'cd36ce629cd3aff7490143d08ff054fc36f39443', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), index.h("ul", { key: '72543b8f5045acc91d4148a57b574584b4749886', class: classname, "data-name": "radio-group-options" }, index.h("slot", { key: 'dfabe4979256f85153c73fb2545abddd97c63961' }), this.getRadios &&
-            this.getRadios.map((radio) => (index.h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (index.h("span", { key: '98cab7cd0c6de0ef91a687aaa7c515cb5b33c460', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (index.h(index.Host, { key: '75d105b7957b21a49ba4b2c916f32f0fee01280b', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined, onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, index.h("div", { key: 'c36dff9098f051ac5bd99b24afc5371d9d24ac49', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '9ad01215d8b9e27e327186f5ab6f5f9fac1a0f94', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'd246a16706fa0d6ab26a4b774dcfdf63ad0018ea', id: this.labelId, label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '37b4662fbd58bdd1a9a7f15f7440582d323bb314', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), index.h("ul", { key: 'd217861807b997e489d9a69c75834f68c347e95a', class: classname, "data-name": "radio-group-options" }, index.h("slot", { key: '4180df25e8f830bdd446218f73e46962d1d07a80' }), this.getRadios &&
+            this.getRadios.map((radio) => (index.h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (index.h("span", { key: '66fe0d72e7c1da7d4336eec33a284cbf9fce56d5', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "value": [{

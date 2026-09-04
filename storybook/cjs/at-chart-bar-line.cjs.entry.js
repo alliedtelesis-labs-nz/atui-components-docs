@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 var chartColor = require('./chart-color-C4k0UCda.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var chartColor$1 = require('./chart-color-CbbmT7Il.js');
@@ -21888,7 +21888,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '2ce66d1c975c8675c80a16e487811eebff27e21d', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '992b658e672e5a716501a31dbca3aaec08841f06', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'cb5ccd90924da9673bd84eb593562cbdba60d5bf', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '9aeabe338988116ef9b4e7f65dd9ad838481ceda', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

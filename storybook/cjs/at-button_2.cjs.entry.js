@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -160,7 +160,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: '3b8feefb9a648c0f56dfcc8557672e215bd774de', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'cd88d47d2f9473948938502cc4e981cf84ba5e10', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '0337b81973675b43d3b2330c670eca57ce230844', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: 'd32ce14f5b03bf0979cc96283dd756863be7d202', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '7c09095bf02a14165ac7a5fc89f890b74582f0d8', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '2894dbe4806fd9f4ef211e32a14fa2d144b72243' }), !this.in_progress && (index.h("slot", { key: '9cc854789b4ab20a476b12456538fd1c179e06df', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '27f4a70f2ee4a5dc85a14ab5856dca531829ad12', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '0a5fb70af1222636471c2727dbea1a891d2f8ed7', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'a29672d5f47f1a9217f7cefee58d599b566d9eca', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: 'cd850cb940ff684fcb9311c68e00af46c039f9bd', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: 'ba440ef07f9a9f4336ff578668f49a7fb677fb49', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '210a2518dea863531ab6f820c7683f91662dbfb6', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'f999b91fa02cd1f6851f592729721b9e7b19eee0' }), !this.in_progress && (index.h("slot", { key: '351c1adf5103d844f29183aa6a4947542309ebe6', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '04ca7efa677fc2b61f55cd8f98268db6fdd0255f', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();

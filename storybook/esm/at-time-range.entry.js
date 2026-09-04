@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CKYs7vaG.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CT99rxub.js';
 import { A as AT_DEFAULT_TIME_PRESETS, a as AbreviatedTimeUnits } from './at-time-range.models-yUuqzo3S.js';
 import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration } from './at-time-date.util-Bfdzn_RG.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
@@ -164,7 +164,7 @@ const AtTimeRangeComponent = class {
         }
         if (time.custom) {
             const { start, end } = atGetAbsoluteRangeParts(time.custom.from, time.custom.to);
-            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, start), h("span", { class: "text-muted", "aria-hidden": "true" }, "-"), h("span", { class: "sr-only" }, this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to'), h("span", null, time.custom.lockEndDateToNow
+            return (h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, h("span", null, start), h("span", { class: "text-muted", "aria-hidden": "true" }, "\u2013"), h("span", { class: "sr-only" }, this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to'), h("span", null, time.custom.lockEndDateToNow
                 ? this.translations?.ATUI?.TIME?.NOW || 'Now'
                 : end)));
         }
@@ -178,7 +178,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'fe0fc69a10f9fde2ee5fc32be091f75eb9100bbe', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (h(Host, { key: '0c5917247ea20d2cb78918cd8fd691addb045940', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

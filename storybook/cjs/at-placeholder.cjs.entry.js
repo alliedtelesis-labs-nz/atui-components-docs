@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 
 const placeholderVariants = {
     sizes: {
@@ -41,7 +41,7 @@ const AtPlaceholderComponent = class {
         return placeholderVariants.sizes[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: '1c3ccc6aefeb95bfacb2820475a075f3f91471cb', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, index.h("span", { key: 'ede35c80c22a300668dd0413c766f0b53e64767b', class: "fill-slate-300", "data-name": "placeholder-icon" }, index.h("slot", { key: '54227cc1331e9d74e3e9427022cf1d85b3057bf6', name: "icon" })), index.h("div", { key: '2e45da1400687093f55994f39548a94887f9c61a', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: '76fd813ca1fdb0352ec8a3bbb5039bc085eeb153', class: "flex items-center" }, this.show_loading_spinner && (index.h("at-loading", { key: 'ac44e23b6b921a39cfae20124bf2e832612b45a5', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: '2829726f4c6d4a32a1595cbf1842e949a18dc979', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '43ae359ed61f7e7476a7fe27fe031acf928b1ff3', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: '463863788f522b8a3237666db898b93ed88b6b52' }))));
+        return (index.h(index.Host, { key: '6b85539fa21677aeca0f35780fb33e858533e8b3', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, index.h("span", { key: '3d12ed18a40d58282703d235f19c56015cbbd8d9', class: "fill-slate-300", "data-name": "placeholder-icon" }, index.h("slot", { key: 'be47756abe97820d4a751a92e762ebd941c439fa', name: "icon" })), index.h("div", { key: '6df5aec41bbc3c5131e7343ade7bff53f448b2e5', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, index.h("div", { key: '905a48acda2b39a7039c384e3ebbb4c133385652', class: "flex items-center" }, this.show_loading_spinner && (index.h("at-loading", { key: 'e558d1810432658c3bde3dc696d59c17d332ae85', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" })), this.placeholder_title && (index.h("h5", { key: '654a20f3c6763e7ffb938248917c5b9af9c4c071', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), index.h("p", { key: '204aa6a09a49e7a1662359adbb543cf71ba532fa', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), index.h("slot", { key: '3ecd6d2fc1680489fbf35d13c5c4cb2a9a5451c6' }))));
     }
 };
 

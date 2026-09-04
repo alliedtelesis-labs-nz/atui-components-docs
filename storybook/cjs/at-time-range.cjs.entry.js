@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DYE55yNY.js');
+var index = require('./index-ChtkW4Eq.js');
 var atTimeRange_models = require('./at-time-range.models-BPZ2R6EI.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-NP6A4XKu.js');
@@ -166,7 +166,7 @@ const AtTimeRangeComponent = class {
         }
         if (time.custom) {
             const { start, end } = timeRangeLabel_util.atGetAbsoluteRangeParts(time.custom.from, time.custom.to);
-            return (index.h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, start), index.h("span", { class: "text-muted", "aria-hidden": "true" }, "-"), index.h("span", { class: "sr-only" }, this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to'), index.h("span", null, time.custom.lockEndDateToNow
+            return (index.h("div", { id: "custom", class: "text-foreground flex items-center gap-4 font-normal" }, index.h("span", null, start), index.h("span", { class: "text-muted", "aria-hidden": "true" }, "\u2013"), index.h("span", { class: "sr-only" }, this.translations?.ATUI?.TIME?.TO_SEPARATOR || 'to'), index.h("span", null, time.custom.lockEndDateToNow
                 ? this.translations?.ATUI?.TIME?.NOW || 'Now'
                 : end)));
         }
@@ -180,7 +180,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'fe0fc69a10f9fde2ee5fc32be091f75eb9100bbe', class: "relative flex justify-center gap-8" }, this.enable_relative_time
+        return (index.h(index.Host, { key: '0c5917247ea20d2cb78918cd8fd691addb045940', class: "relative flex justify-center gap-8" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

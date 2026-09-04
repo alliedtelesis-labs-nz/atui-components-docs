@@ -36,7 +36,7 @@ export class AtTextStatusCellComponent {
         return badgeType || 'default';
     }
     render() {
-        return (h(Host, { key: 'd4def2f0480bb390416b033e68ece27e8d76e89e', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'c181afc67687ccf7ee900d0b979fcbc57428c510', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: 'aaf014f12404f4056bdc6d7ad259bf4c153a5af2', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '5707ca62aeeeaeeb274be53177a27a662fde59d8', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (h("at-tooltip", { position: "top", class: "h-fit self-center" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
     }

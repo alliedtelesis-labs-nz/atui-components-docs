@@ -3292,6 +3292,10 @@ strong {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-\[1fr_1fr\] {
+  grid-template-columns: 1fr 1fr;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -3551,6 +3555,10 @@ strong {
 
 .border-r {
   border-right-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .border-t-2 {
