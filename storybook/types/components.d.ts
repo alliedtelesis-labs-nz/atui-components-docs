@@ -1138,6 +1138,10 @@ export namespace Components {
      */
     interface AtDialog {
         /**
+          * Accessible name for the dialog. Leave unset when the slotted `at-card` or `at-header` carries a title — that title is used as the name instead.
+         */
+        "aria_label"?: string;
+        /**
           * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
           * @default true
          */
@@ -6740,6 +6744,10 @@ declare namespace LocalJSX {
      */
     interface AtDialog {
         /**
+          * Accessible name for the dialog. Leave unset when the slotted `at-card` or `at-header` carries a title — that title is used as the name instead.
+         */
+        "aria_label"?: string;
+        /**
           * Whether to show a backdrop behind the panel, prevents any interaction with background UI.
           * @default true
          */
@@ -9585,6 +9593,7 @@ declare namespace LocalJSX {
         "close_backdrop": boolean;
         "close_esc": boolean;
         "trigger_id": string;
+        "aria_label": string;
     }
     interface AtFormLabelAttributes {
         "label": string;

@@ -34,9 +34,15 @@ export class AtDialogComponent {
      */
     trigger_id;
     /**
+     * Accessible name for the dialog. Leave unset when the slotted `at-card` or
+     * `at-header` carries a title — that title is used as the name instead.
+     */
+    aria_label;
+    /**
      * Internal state to track if dialog is open
      */
     isOpen = false;
+    labelledById;
     /**
      * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open.
      * Emitted exactly once per open and once per close, whichever path caused it.
@@ -47,6 +53,7 @@ export class AtDialogComponent {
      * which path closed it. Always accompanies an `atuiDialogChange(false)`.
      */
     atuiDialogClose;
+    dialogId = `dialog-${Math.random().toString(36).substring(2, 11)}`;
     dialog;
     dialogWrapper;
     triggerEls = [];
@@ -69,6 +76,7 @@ export class AtDialogComponent {
      */
     async openDialog() {
         if (this.dialog && !this.isOpen) {
+            this.resolveLabelledBy();
             if (this.backdrop === true) {
                 this.dialog.showModal();
             }
@@ -85,6 +93,28 @@ export class AtDialogComponent {
      */
     async closeDialog() {
         this.dismiss('programmatic');
+    }
+    /**
+     * Names the dialog from the slotted card or header title, which modal-workflows
+     * § 5.3 requires and only the host can supply. Resolved on open rather than
+     * on load because the slotted card renders its title on its own schedule,
+     * and a title bound to app state can change between openings.
+     */
+    resolveLabelledBy() {
+        if (this.aria_label) {
+            this.labelledById = undefined;
+            return;
+        }
+        const title = this.el.querySelector('[data-name="card-title"]') ??
+            this.el.querySelector('[data-name="header-title"]');
+        if (!title) {
+            this.labelledById = undefined;
+            return;
+        }
+        if (!title.id) {
+            title.id = `${this.dialogId}-title`;
+        }
+        this.labelledById = title.id;
     }
     /**
      * The single path through which the dialog closes.
@@ -198,7 +228,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '1d99266968dfb00811120d9712362f7c6fb66bd7', "data-open": this.isOpen }, h("dialog", { key: 'e4cf8ff1bf358ed945b8b07e6a0e779d9330b042', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: 'deaf1099709eebdd55623ae56dcef40c0323a384', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'c0d8df45fde1bcc183187cc2486a5db050660786' })))));
+        return (h(Host, { key: '4dc87de422f210cc95bd053ee3dfa5e1d642c7ee', "data-open": this.isOpen }, h("dialog", { key: '74aebf05e5f68011188ad7118002bd2724bf1198', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '8fd99623df572cba2219dca7c8b86a796ec285ce', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'd69a991f798766ee0e8215495d2dc3bd5d1042c1' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }
@@ -312,12 +342,32 @@ export class AtDialogComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "trigger_id"
+            },
+            "aria_label": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Accessible name for the dialog. Leave unset when the slotted `at-card` or\n`at-header` carries a title \u2014 that title is used as the name instead."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "aria_label"
             }
         };
     }
     static get states() {
         return {
-            "isOpen": {}
+            "isOpen": {},
+            "labelledById": {}
         };
     }
     static get events() {

@@ -44,9 +44,15 @@ export declare class AtDialogComponent {
      */
     trigger_id?: string;
     /**
+     * Accessible name for the dialog. Leave unset when the slotted `at-card` or
+     * `at-header` carries a title — that title is used as the name instead.
+     */
+    aria_label?: string;
+    /**
      * Internal state to track if dialog is open
      */
     isOpen: boolean;
+    private labelledById?;
     /**
      * Emits an event when the dialog is toggled, with `event.detail` being true if the dialog is now open.
      * Emitted exactly once per open and once per close, whichever path caused it.
@@ -59,6 +65,7 @@ export declare class AtDialogComponent {
     atuiDialogClose: EventEmitter<{
         reason: AtDialogCloseReason;
     }>;
+    private dialogId;
     private dialog;
     private dialogWrapper;
     private triggerEls;
@@ -78,6 +85,13 @@ export declare class AtDialogComponent {
      * @returns Promise that resolves when the dialog is closed
      */
     closeDialog(): Promise<void>;
+    /**
+     * Names the dialog from the slotted card or header title, which modal-workflows
+     * § 5.3 requires and only the host can supply. Resolved on open rather than
+     * on load because the slotted card renders its title on its own schedule,
+     * and a title bound to app state can change between openings.
+     */
+    private resolveLabelledBy;
     /**
      * The single path through which the dialog closes.
      *
