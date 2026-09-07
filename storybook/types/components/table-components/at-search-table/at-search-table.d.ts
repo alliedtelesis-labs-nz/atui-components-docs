@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { GridApi, IRowNode } from 'ag-grid-community';
-import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams, AtIFilterGroup, AtISelection } from '../../../types';
+import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams, AtIFilterGroup, AtISelection, AtSelectionMode } from '../../../types';
 import { AtITableColumnDef } from '../../../models/searchTableModel';
 import { AtIExternalFiltersChange } from '../../../types/filter';
 import { AtISelectOption } from '../../../types/select';
@@ -73,6 +73,12 @@ export declare class AtSearchTable {
      * Adds a checkbox column and the selection bar. Off by default.
      */
     row_selection?: boolean;
+    /**
+     * How many rows can be selected at once. `single` swaps the checkbox column for a
+     * radio one, drops the select-all header and the selection bar, and holds at most one
+     * id - the shape a form field needs. Ignored while `row_selection` is off.
+     */
+    selection_mode?: AtSelectionMode;
     /**
      * Field on each row whose value uniquely identifies it. Required by `row_selection`:
      * a page of rows is replaced wholesale as the user pages, so a selection outlives the
@@ -356,7 +362,20 @@ export declare class AtSearchTable {
      * filters, the search columns, the export) then passes over it without special cases.
      */
     private static readonly SELECTION_COL_ID;
+    /**
+     * Names the radio group in single-selection mode. `at-radio` renders a real input,
+     * so two tables on one page would share a native group and unpick each other
+     * without an id per instance.
+     */
+    private selectionGroupId;
+    /**
+     * The live header component, handed over by its own `init`. The table updates it in
+     * place; `api.refreshHeader()` rebuilds it instead, and the replacement `at-checkbox`
+     * paints one unstyled frame, which reads as the box jumping left and back.
+     */
+    private selectionHeaderRef;
     private get selectionEnabled();
+    private get isSingleSelection();
     private rowId;
     private isRowSelectable;
     private isRowSelected;
@@ -371,10 +390,35 @@ export declare class AtSearchTable {
      */
     get canExpandSelection(): boolean;
     get canReduceSelectionToPage(): boolean;
+    /**
+     * The single-selection write. There is no unpick leg: `at-radio` reports only the
+     * transition into checked, so the previous row is cleared by being replaced.
+     */
+    private selectRow;
+    /**
+     * Anything that answers a click itself keeps it. `enableCellTextSelection` is on, so
+     * a drag that ends up highlighting text is a read, not a pick, and is let through
+     * too.
+     */
+    private static readonly INTERACTIVE_IN_ROW;
+    /**
+     * A click anywhere on the row reaches the same write as the selection control, so the
+     * whole row is the target rather than a 16px box. The control's own column is skipped
+     * - it has already reported through `atuiChange`, and handling it here would toggle
+     * twice and land back where it started.
+     */
+    private handleCellClick;
     private toggleRowSelection;
     private togglePageSelection;
     private pageSelectionState;
     private refreshSelectionColumn;
+    /**
+     * The selected background is set on the row element rather than through
+     * `rowClassRules`, which ag-grid only re-reads when the row is redrawn - and a redraw
+     * rebuilds every cell renderer in the row, including the selection control the user
+     * just clicked.
+     */
+    private paintSelectedRows;
     private selectionColDef;
     /**
      * `col_defs` belongs to the host, so the selection column is added on the way to the

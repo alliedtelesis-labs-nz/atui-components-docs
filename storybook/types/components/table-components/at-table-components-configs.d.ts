@@ -1,4 +1,5 @@
 import { AtCheckboxCellComponent } from './cell-components/at-checkbox-cell/at-checkbox-cell';
+import { AtRadioCellComponent } from './cell-components/at-radio-cell/at-radio-cell';
 import { AtTextBadgeCell } from './cell-components/at-text-badge-cell/at-text-badge-cell';
 import { AtHealthDotCell } from './cell-components/at-health-dot-cell/at-health-dot-cell';
 import { AtRelativeDateTimeCell } from './cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
@@ -42,6 +43,7 @@ export declare class AtTableComponentsConfigs {
         AtEditTextCell: typeof AtEditTextCell;
         AtChipListCell: typeof AtChipListCell;
         AtCheckboxCell: typeof AtCheckboxCellComponent;
+        AtRadioCell: typeof AtRadioCellComponent;
         checkboxHeader: typeof AtCheckboxHeaderComponent;
         AtToggleCell: typeof AtToggleCell;
         AtMultiBtnCell: typeof AtMultiBtnCell;

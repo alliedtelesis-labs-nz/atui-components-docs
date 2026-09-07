@@ -1,5 +1,6 @@
 import { AvailableCells, AvailableHeaders } from "../../types/table-cells";
 import { AtCheckboxCellComponent } from "./cell-components/at-checkbox-cell/at-checkbox-cell";
+import { AtRadioCellComponent } from "./cell-components/at-radio-cell/at-radio-cell";
 import { AtTextBadgeCell } from "./cell-components/at-text-badge-cell/at-text-badge-cell";
 import { AtHealthDotCell } from "./cell-components/at-health-dot-cell/at-health-dot-cell";
 import { AtRelativeDateTimeCell } from "./cell-components/at-relative-datetime-cell/at-relative-datetime-cell";
@@ -33,6 +34,7 @@ export class AtTableComponentsConfigs {
             // Prevent tree-shaking by referencing all components
             const cellComponents = [
                 AtCheckboxCellComponent,
+                AtRadioCellComponent,
                 AtHealthDotCell,
                 AtRelativeDateTimeCell,
                 AtTextCellComponent,
@@ -82,6 +84,7 @@ export class AtTableComponentsConfigs {
             [AvailableCells.EDIT_TEXT_CELL]: AtEditTextCell,
             [AvailableCells.CHIP_LIST_CELL]: AtChipListCell,
             [AvailableCells.CHECKBOX_CELL]: AtCheckboxCellComponent,
+            [AvailableCells.RADIO_CELL]: AtRadioCellComponent,
             [AvailableHeaders.CHECKBOX_HEADER]: AtCheckboxHeaderComponent,
             [AvailableCells.TOGGLE_CELL]: AtToggleCell,
             [AvailableCells.MULTI_BTN_CELL]: AtMultiBtnCell,

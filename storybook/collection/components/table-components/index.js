@@ -12,6 +12,7 @@ export * from './cell-components/at-toggle-cell/at-toggle-cell';
 export * from './cell-components/at-menu-cell/at-menu-cell';
 export * from './cell-components/at-multi-btn-cell/at-multi-btn-cell';
 export * from './cell-components/at-checkbox-cell/at-checkbox-cell';
+export * from './cell-components/at-radio-cell/at-radio-cell';
 export * from './cell-components/at-edit-text-cell/at-edit-text-cell';
 export * from './cell-components/at-chip-list-cell/at-chip-list-cell';
 export * from './cell-components/at-title-subtitle-cell/at-title-subtitle-cell';

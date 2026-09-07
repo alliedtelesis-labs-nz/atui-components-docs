@@ -23,6 +23,7 @@ export { AtIColorStatusCellData } from './components/table-components/cell-compo
 export { AtITextImageCellData } from './components/table-components/cell-components/at-text-image-cell/at-text-image-cell';
 export { AtIChipCellData } from './components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell';
 export { AtICheckboxCellData } from './components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell';
+export { AtIRadioCellData } from './components/table-components/cell-components/at-radio-cell/at-radio-cell';
 export { type AtIPromptMessage, type AtPromptUserRole, type AtPromptResponseAnimation, AtPromptResponseScore, } from './types/prompt';
 export { ToasterService } from './utils/toaster.service';
 export { AtIToast, AtIToastAction, AtIToastHandle, AtIToastOptions, AtIToastPosition, AtIToastType, } from './types/toast';
@@ -33,7 +34,7 @@ export { AtITableColumnDef } from './models/searchTableModel';
 export { AtITab } from './components/at-tabs/at-tabs';
 export { AtStepperStep } from './components/at-stepper/at-stepper';
 export { AtStepperItemState, AtStepperOrientation, } from './components/at-stepper/at-stepper-item/at-stepper-item';
-export { AtISearchTableParams, AtISearchData, AtISelection, AtISelectionQuery, AtSelectionScope, } from './types/generic-table/index';
+export { AtISearchTableParams, AtISearchData, AtISelection, AtISelectionQuery, AtSelectionScope, AtSelectionMode, } from './types/generic-table/index';
 export { AtBadgeType } from './components/at-badge/at-badge';
 export { AtProgressBarType } from './components/at-progress-bar/at-progress-bar';
 export { AtProgressBarSize } from './components/at-progress-bar/at-progress-bar';

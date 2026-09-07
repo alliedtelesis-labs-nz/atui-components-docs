@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-x_ZHEetR.js');
+var index = require('./index-ByfMXhOa.js');
 
 const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}`;
 
@@ -9,7 +9,7 @@ const AtSidebarMenuComponent = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '5aa65256da335cf5fa9038ea113c8fc0625cdaaa', role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: '015ebfd9a5f4881f994d5933a2abd86e6d06faac' })));
+        return (index.h(index.Host, { key: '1b3be9c9d456b0de9ff278febea4ed147384f864', role: "menu", "data-name": "sidebar-menu" }, index.h("slot", { key: 'be2664459477a0d11899338e253ac8f795cd5961' })));
     }
 };
 AtSidebarMenuComponent.style = atSidebarMenuCss();

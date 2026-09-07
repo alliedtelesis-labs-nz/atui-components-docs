@@ -106,6 +106,27 @@ selectionTable.addEventListener('atSelectionChange', (event) => {
 });
 </script>
 `;
+const SingleSelectionTemplate = (args) => `
+<at-search-table
+    id="single-selection-table"
+    page_size=${args.page_size ?? 5}
+    row_selection
+    selection_mode="single"
+    row_id_field="_id"
+></at-search-table>
+<pre id="single-selection-readout" class="mt-16 text-xs"></pre>
+<script>
+const singleTable = document.querySelector('#single-selection-table');
+singleTable.table_data = ${JSON.stringify(args.table_data, null, 4)}
+singleTable.col_defs = ${JSON.stringify(args.col_defs, null, 4)}
+
+singleTable.addEventListener('atSelectionChange', (event) => {
+    const { ids, rows } = event.detail;
+    document.querySelector('#single-selection-readout').textContent =
+        ids.length ? 'picked: ' + ids[0] : 'nothing picked';
+});
+</script>
+`;
 /**
  * Server-side: the table holds one page and the host owns the rest. The selection
  * cannot be a list of ids the browser has never seen, so expanding it carries the
@@ -261,6 +282,21 @@ ExternalFilters.args = Default.args;
  */
 export const RowSelection = RowSelectionTemplate.bind({});
 RowSelection.args = {
+    ...Default.args,
+    page_size: 5,
+};
+/**
+ * `selection_mode="single"` is the picker: a radio column, no select-all header and no
+ * selection bar, holding one row. Reach for it when the choice needs columns to be made
+ * - comparing a version, a site and a status - and a plain `at-select` cannot show them.
+ * A named thing chosen from a list is still an `at-select` with `typeahead`.
+ *
+ * There is no unpick. `at-radio` reports only the move into checked, so a picked row is
+ * replaced rather than emptied, which is what a required field wants; a host that needs
+ * an empty state calls `clearSelection()`.
+ */
+export const SingleRowSelection = SingleSelectionTemplate.bind({});
+SingleRowSelection.args = {
     ...Default.args,
     page_size: 5,
 };

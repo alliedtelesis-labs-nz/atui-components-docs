@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-bgrrg3yc.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CGGSFxDu.js';
 
 const AtTextStatusCellComponent = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtTextStatusCellComponent = class {
         return badgeType || 'default';
     }
     render() {
-        return (h(Host, { key: 'aaf014f12404f4056bdc6d7ad259bf4c153a5af2', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '5707ca62aeeeaeeb274be53177a27a662fde59d8', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: '5199703d9011073d56cf88833986f751a399dc08', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '567f309834fc8106c261eeaaf8a74db09639a854', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (h("at-tooltip", { position: "top", class: "h-fit self-center" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
     }

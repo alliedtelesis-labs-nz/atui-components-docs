@@ -3,7 +3,7 @@ import { fetchTranslations, interpolate } from "../../../utils/translation";
 import { SortDirection } from "../../../types/sort";
 import { countFilterConditions, isFilterGroup, rowMatchesFilterGroup, flattenFilterConditions, } from "../../../utils/filter-tree.util";
 import { resolveCellSearchText } from "../utils/cell-search-text";
-import { AtSelectionCell, AtSelectionHeader } from "./selection-column";
+import { AtSelectionCell, AtSelectionHeader, AtSelectionRadioCell, } from "./selection-column";
 /**
  * @category Data Tables
  * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
@@ -62,6 +62,12 @@ export class AtSearchTable {
      * Adds a checkbox column and the selection bar. Off by default.
      */
     row_selection = false;
+    /**
+     * How many rows can be selected at once. `single` swaps the checkbox column for a
+     * radio one, drops the select-all header and the selection bar, and holds at most one
+     * id - the shape a form field needs. Ignored while `row_selection` is off.
+     */
+    selection_mode = 'multiple';
     /**
      * Field on each row whose value uniquely identifies it. Required by `row_selection`:
      * a page of rows is replaced wholesale as the user pages, so a selection outlives the
@@ -334,7 +340,9 @@ export class AtSearchTable {
         const bar = this.selectionBarEl;
         if (!bar)
             return;
-        const shouldShow = this.selectionEnabled && this.selectionCount > 0;
+        const shouldShow = this.selectionEnabled &&
+            !this.isSingleSelection &&
+            this.selectionCount > 0;
         if (!this.hasFloatingSelectionActions) {
             bar.classList.toggle('is-hidden', !shouldShow);
             return;
@@ -481,6 +489,9 @@ export class AtSearchTable {
                     this.emitSearchParamsChange();
                 }
             });
+            this.el.classList.toggle('atui-rows-selectable', this.selectionEnabled);
+            this.agGrid.addEventListener('cellClicked', this.handleCellClick);
+            this.agGrid.addEventListener('modelUpdated', () => this.paintSelectedRows());
             this.attachDisplayedRowsListener();
             if (this.table_data?.items) {
                 this.agGrid.setGridOption('rowData', this.table_data.items);
@@ -643,8 +654,25 @@ export class AtSearchTable {
      * filters, the search columns, the export) then passes over it without special cases.
      */
     static SELECTION_COL_ID = '__atui_select__';
+    /**
+     * Names the radio group in single-selection mode. `at-radio` renders a real input,
+     * so two tables on one page would share a native group and unpick each other
+     * without an id per instance.
+     */
+    selectionGroupId = `atui-selection-${Math.random()
+        .toString(36)
+        .substring(2, 11)}`;
+    /**
+     * The live header component, handed over by its own `init`. The table updates it in
+     * place; `api.refreshHeader()` rebuilds it instead, and the replacement `at-checkbox`
+     * paints one unstyled frame, which reads as the box jumping left and back.
+     */
+    selectionHeaderRef = null;
     get selectionEnabled() {
         return !!this.row_selection && !!this.row_id_field;
+    }
+    get isSingleSelection() {
+        return this.selection_mode === 'single';
     }
     rowId(row) {
         return String(row?.[this.row_id_field]);
@@ -691,6 +719,8 @@ export class AtSearchTable {
      * total, because then the offer would name a number the table does not have.
      */
     get canExpandSelection() {
+        if (this.isSingleSelection)
+            return false;
         if (this.selectionScope !== 'explicit')
             return false;
         const page = this.selectableRowsOnPage();
@@ -700,9 +730,71 @@ export class AtSearchTable {
             (this.table_data?.total ?? 0) > this.selectedIds.size);
     }
     get canReduceSelectionToPage() {
-        return (this.selectionScope === 'all-matching' &&
+        return (!this.isSingleSelection &&
+            this.selectionScope === 'all-matching' &&
             !!this.selectableRowsOnPage().length);
     }
+    /**
+     * The single-selection write. There is no unpick leg: `at-radio` reports only the
+     * transition into checked, so the previous row is cleared by being replaced.
+     */
+    selectRow(row) {
+        const id = this.rowId(row);
+        if (this.selectedIds.size === 1 && this.selectedIds.has(id))
+            return;
+        this.selectedIds = new Set([id]);
+        this.excludedIds = new Set();
+        this.selectionScope = 'explicit';
+        this.refreshSelectionColumn();
+        this.emitSelectionChange();
+    }
+    /**
+     * Anything that answers a click itself keeps it. `enableCellTextSelection` is on, so
+     * a drag that ends up highlighting text is a read, not a pick, and is let through
+     * too.
+     */
+    static INTERACTIVE_IN_ROW = [
+        'a[href]',
+        'button',
+        'input',
+        'select',
+        'textarea',
+        '[role="button"]',
+        '[role="menuitem"]',
+        '[role="checkbox"]',
+        '[role="radio"]',
+        'at-button',
+        'at-menu-cell',
+        'at-multi-btn-cell',
+        'at-toggle-cell',
+        'at-edit-text-cell',
+        'at-chip-list-cell',
+    ].join(',');
+    /**
+     * A click anywhere on the row reaches the same write as the selection control, so the
+     * whole row is the target rather than a 16px box. The control's own column is skipped
+     * - it has already reported through `atuiChange`, and handling it here would toggle
+     * twice and land back where it started.
+     */
+    handleCellClick = (event) => {
+        if (!this.selectionEnabled)
+            return;
+        if (event.column?.getColId() === AtSearchTable.SELECTION_COL_ID)
+            return;
+        const row = event.data;
+        if (!row || !this.isRowSelectable(row))
+            return;
+        const target = event.event?.target;
+        if (target?.closest(AtSearchTable.INTERACTIVE_IN_ROW))
+            return;
+        if (window.getSelection()?.toString())
+            return;
+        if (this.isSingleSelection) {
+            this.selectRow(row);
+            return;
+        }
+        this.toggleRowSelection(row, !this.isRowSelected(row));
+    };
     toggleRowSelection(row, checked) {
         const id = this.rowId(row);
         if (this.selectionScope === 'all-matching') {
@@ -761,7 +853,22 @@ export class AtSearchTable {
             columns: [AtSearchTable.SELECTION_COL_ID],
             force: true,
         });
-        this.agGrid.refreshHeader();
+        this.selectionHeaderRef?.applyState();
+        this.paintSelectedRows();
+    }
+    /**
+     * The selected background is set on the row element rather than through
+     * `rowClassRules`, which ag-grid only re-reads when the row is redrawn - and a redraw
+     * rebuilds every cell renderer in the row, including the selection control the user
+     * just clicked.
+     */
+    paintSelectedRows() {
+        if (!this.agGrid)
+            return;
+        this.agGrid.forEachNode((node) => {
+            const rows = this.el.querySelectorAll(`.ag-row[row-id="${CSS.escape(String(node.id))}"]`);
+            rows.forEach((row) => row.classList.toggle('atui-row-selected', this.isRowSelected(node.data)));
+        });
     }
     selectionColDef() {
         const selection = this.translations?.ATUI?.TABLE?.SELECTION ?? {};
@@ -781,19 +888,34 @@ export class AtSearchTable {
             filterOptions: { exclude: true },
             getQuickFilterText: () => '',
             valueGetter: (params) => this.isRowSelected(params.data),
-            cellRenderer: AtSelectionCell,
-            cellRendererParams: {
-                label: selection.SELECT_ROW,
-                isSelected: (row) => this.isRowSelected(row),
-                isSelectable: (row) => this.isRowSelectable(row),
-                setSelected: (row, selected) => this.toggleRowSelection(row, selected),
-            },
-            headerComponent: AtSelectionHeader,
-            headerComponentParams: {
-                label: selection.SELECT_ALL_ON_PAGE,
-                getState: () => this.pageSelectionState(),
-                setSelected: (selected) => this.togglePageSelection(selected),
-            },
+            ...(this.isSingleSelection
+                ? {
+                    cellRenderer: AtSelectionRadioCell,
+                    cellRendererParams: {
+                        label: selection.SELECT_ROW,
+                        group: this.selectionGroupId,
+                        rowId: (row) => this.rowId(row),
+                        isSelected: (row) => this.isRowSelected(row),
+                        isSelectable: (row) => this.isRowSelectable(row),
+                        setSelected: (row) => this.selectRow(row),
+                    },
+                }
+                : {
+                    cellRenderer: AtSelectionCell,
+                    cellRendererParams: {
+                        label: selection.SELECT_ROW,
+                        isSelected: (row) => this.isRowSelected(row),
+                        isSelectable: (row) => this.isRowSelectable(row),
+                        setSelected: (row, selected) => this.toggleRowSelection(row, selected),
+                    },
+                    headerComponent: AtSelectionHeader,
+                    headerComponentParams: {
+                        label: selection.SELECT_ALL_ON_PAGE,
+                        register: (header) => (this.selectionHeaderRef = header),
+                        getState: () => this.pageSelectionState(),
+                        setSelected: (selected) => this.togglePageSelection(selected),
+                    },
+                }),
         };
     }
     /**
@@ -891,7 +1013,8 @@ export class AtSearchTable {
      * Selects the given rows by id, for restoring a selection the host kept.
      */
     async setSelection(ids) {
-        this.selectedIds = new Set(ids ?? []);
+        const requested = ids ?? [];
+        this.selectedIds = new Set(this.isSingleSelection ? requested.slice(0, 1) : requested);
         this.excludedIds = new Set();
         this.selectionScope = this.selectedIds.size ? 'explicit' : 'none';
         this.refreshSelectionColumn();
@@ -904,6 +1027,10 @@ export class AtSearchTable {
      * the table cannot state.
      */
     async selectAllMatching() {
+        if (this.isSingleSelection) {
+            console.warn('atui-search-table: selectAllMatching() does nothing while selection_mode is "single" - a single selection holds one row.');
+            return;
+        }
         if (!this.table_data?.total) {
             console.warn('atui-search-table: selectAllMatching() needs table_data.total - without it the selection cannot say how many rows it covers.');
             return;
@@ -1235,8 +1362,8 @@ export class AtSearchTable {
         }
     }
     render() {
-        return (h(Host, { key: 'dee42808c514aa8f870b6e0a1926532ecd1e4976', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'e80378708cef731bb2ecdcc9b4b3fe3dc5aa633c', ag_grid: this.agGrid }, h("at-control-group", { key: '2671b64dd81b83843ae02edd74aadd2ab1ab775b', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '3136b3c362ae6935214ff50751da482542e46c8b', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd1f976e49173591610abdd8094960689c885edd3', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'fff6eb4a54367581b59c52cd485e2041a558e729', class: "contents", slot: "filter-bar" }, h("slot", { key: 'a82d675ad162550576eba28d70aaa88361719405', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '2a6be9add16719384eef5de62d5fbd69b1fb3446', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'b166d7016755df5456d5719d647899145dd36734', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: 'ec4c003eeb929defe2243bbe8e2ec0cd7e956b99', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '0c1176a5e358214fc8beb9e8a63ff8421cd40c31', ag_grid: this.agGrid }, h("at-control-group", { key: '8e09085a912339227ba86e097764180c0364012e', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '7f4efc1d4920864baf1a6ca43af4f704c94d4cc2', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'fc7da115e0507e5461b64048c2a4131148aea40d', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'fdbe11b00dbaa1a9562e6df81b777afbad5f3fcd', class: "contents", slot: "filter-bar" }, h("slot", { key: '83f0f460b1373d5ecd8d1ae088dd6f65f23cd744', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: 'ea5a65d0f72b401ef94100da4543587ce6729690', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'ff89e7bf7e9d5d58a88d3bdf34a31e58513ec1d0', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1245,15 +1372,15 @@ export class AtSearchTable {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: '01203c9f0c090da9ad283994f9d8dcbe73e41343', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '5791b6087c8475493088cf10d05632af612fc9b4', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'dd6e132d87d891da6c78a44152e763122ece771d', slot: "leading-actions" }, h("slot", { key: 'b74eb6e52dd5de7acbbf608031eaa811f87f911c', name: "leading-actions" })), h("div", { key: '52183bfbcb9f047bd9dd558bb44951743be49694', slot: "actions" }, h("slot", { key: 'fa508fca5058a2994bb2feb652ad59bb5d0aa743', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'dddaef4e369d8958c7b68ea45dce642648aaefd2', class: "relative" }, h("at-table", { key: '14220eeca517437dc3bec0f44f81d7b8e0173b16', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'd23e7b828b6ddb45a251b492d43e9c870943e301', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'e81d966a44bdd70de9a130c619b643d9b270a706', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '69e9bfee7d01c831fec43e9ca025fa16d9630a21', slot: "leading-actions" }, h("slot", { key: '2e71d745f9cd7fcde3a515e28f5124d7571de2d2', name: "leading-actions" })), h("div", { key: '9acb355121e48f71d471ebbf5e7e173db799cd24', slot: "actions" }, h("slot", { key: '19d2054ec514327ac4a583d333964dcd48d4ab96', name: "actions" }))), this.renderSelectionBar(), h("div", { key: '22ac78e340660ce9638719ba19f538f7018b45cf', class: "relative" }, h("at-table", { key: 'c74b53279c04d57a2c57db04b543762d3021c690', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '27ffab5b978623f39c6dfcaf77073b118d279f39', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '9f6188e2d24628daa67a4288622ad2e0d8f101b9', class: "flex items-center" }, h("at-loading", { key: 'e452a7aaf8e735e34364cfb3d1ba142ec904ed25', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '14adf849289da22467cafc9e05d4bf5e637a7d35', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '1cac16977960d2308c83b3255a5cee986568aaa6', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '57f331e1dda8f4ec78275d447d803ec0988d7006', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '2f29abdc507cff4246cbd24ba9590077fa9864b8', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '925486120fa326781fd870d6f323fef23f710e17', class: "flex items-center" }, h("at-loading", { key: '29d0bde0db47f9ceac1db4192c9f667357e86a38', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '90e2d94dd5dcac7b4311d1119be9106225ea2943', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '7a540512dad8e52ecaf7f3b3c17150d74fae38bf', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '628845e314796bd33193eb3c07c5508d397324fa', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '228c6ffc3ab0841d3ee27b8cbd45bce9326078be', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '496d3ad38c3285c42a1655e9f59a228311b23c49', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'a2c16bd9995c8160d99707ed8c69fbc803555516', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'eeaee2eee6adb346e413cf954f4a50ee322fad04', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -1475,6 +1602,33 @@ export class AtSearchTable {
                 "reflect": false,
                 "attribute": "row_selection",
                 "defaultValue": "false"
+            },
+            "selection_mode": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "AtSelectionMode",
+                    "resolved": "\"multiple\" | \"single\"",
+                    "references": {
+                        "AtSelectionMode": {
+                            "location": "import",
+                            "path": "../../../types",
+                            "id": "src/types/index.ts::AtSelectionMode",
+                            "referenceLocation": "AtSelectionMode"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "How many rows can be selected at once. `single` swaps the checkbox column for a\nradio one, drops the select-all header and the selection bar, and holds at most one\nid - the shape a form field needs. Ignored while `row_selection` is off."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "selection_mode",
+                "defaultValue": "'multiple'"
             },
             "row_id_field": {
                 "type": "string",

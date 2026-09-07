@@ -28,7 +28,7 @@ import { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 import { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 import { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 import { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole, AtSelectionMode } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 import { AtHeaderSizes } from "./components/at-header/at-header";
@@ -86,7 +86,7 @@ export { AtBadgeSize as AtBadgeSize1 } from "./components/at-chip-list/at-chip-l
 export { ColDef, GridApi, GridOptions, IRowNode } from "ag-grid-community";
 export { AtIColumnManagerChangeEvent } from "./components/table-components/at-column-manager/at-column-manager";
 export { AtControlGroupDirection } from "./components/at-control-group/at-control-group";
-export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole } from "./types";
+export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole, AtSelectionMode } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
 export { AtHeaderSizes } from "./components/at-header/at-header";
@@ -2315,6 +2315,12 @@ export namespace Components {
         "value"?: string;
     }
     /**
+     * @category Data Tables
+     * @description A radio cell component for single row selection in data tables. Selecting a row reports through the cell renderer params and clears every other row in the column.
+     */
+    interface AtRadioCell {
+    }
+    /**
      * @category Form Controls
      * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
      */
@@ -2529,6 +2535,11 @@ export namespace Components {
           * Expands the selection to every row matching the current filter, as the selection bar's own offer does. Declines when the host reports no total, matching the offer, which is withheld for the same reason: the scope would describe a set whose size the table cannot state.
          */
         "selectAllMatching": () => Promise<void>;
+        /**
+          * How many rows can be selected at once. `single` swaps the checkbox column for a radio one, drops the select-all header and the selection bar, and holds at most one id - the shape a form field needs. Ignored while `row_selection` is off.
+          * @default 'multiple'
+         */
+        "selection_mode"?: AtSelectionMode;
         /**
           * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
           * @default false
@@ -4887,6 +4898,16 @@ declare global {
         prototype: HTMLAtRadioElement;
         new (): HTMLAtRadioElement;
     };
+    /**
+     * @category Data Tables
+     * @description A radio cell component for single row selection in data tables. Selecting a row reports through the cell renderer params and clears every other row in the column.
+     */
+    interface HTMLAtRadioCellElement extends Components.AtRadioCell, HTMLStencilElement {
+    }
+    var HTMLAtRadioCellElement: {
+        prototype: HTMLAtRadioCellElement;
+        new (): HTMLAtRadioCellElement;
+    };
     interface HTMLAtRadioGroupElementEventMap {
         "atuiChange": string;
     }
@@ -5699,6 +5720,7 @@ declare global {
         "at-prompt-message": HTMLAtPromptMessageElement;
         "at-prompt-thread": HTMLAtPromptThreadElement;
         "at-radio": HTMLAtRadioElement;
+        "at-radio-cell": HTMLAtRadioCellElement;
         "at-radio-group": HTMLAtRadioGroupElement;
         "at-relative-datetime-cell": HTMLAtRelativeDatetimeCellElement;
         "at-relative-time": HTMLAtRelativeTimeElement;
@@ -8011,6 +8033,12 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * @category Data Tables
+     * @description A radio cell component for single row selection in data tables. Selecting a row reports through the cell renderer params and clears every other row in the column.
+     */
+    interface AtRadioCell {
+    }
+    /**
      * @category Form Controls
      * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.
      */
@@ -8234,6 +8262,11 @@ declare namespace LocalJSX {
           * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is generated automatically listing any visible columns flagged with `excludeFromGlobalSearch` in their column def; no icon is shown when nothing is excluded. Under `server_side_mode` that flag does not filter - the server matches whichever columns it chooses - so supply this text yourself there rather than relying on the generated tooltip.
          */
         "search_info_tooltip"?: string;
+        /**
+          * How many rows can be selected at once. `single` swaps the checkbox column for a radio one, drops the select-all header and the selection bar, and holds at most one id - the shape a form field needs. Ignored while `row_selection` is off.
+          * @default 'multiple'
+         */
+        "selection_mode"?: AtSelectionMode;
         /**
           * If true, enables server-side data loading mode where filtering, searching, and pagination are handled externally
           * @default false
@@ -9870,6 +9903,7 @@ declare namespace LocalJSX {
         "show_table_filters": boolean;
         "show_column_manager": boolean;
         "row_selection": boolean;
+        "selection_mode": AtSelectionMode;
         "row_id_field": string;
         "row_noun": string;
         "row_noun_plural": string;
@@ -10146,6 +10180,7 @@ declare namespace LocalJSX {
         "at-prompt-message": Omit<AtPromptMessage, keyof AtPromptMessageAttributes> & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes]?: AtPromptMessage[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `attr:${K}`]?: AtPromptMessageAttributes[K] } & { [K in keyof AtPromptMessage & keyof AtPromptMessageAttributes as `prop:${K}`]?: AtPromptMessage[K] };
         "at-prompt-thread": Omit<AtPromptThread, keyof AtPromptThreadAttributes> & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes]?: AtPromptThread[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `attr:${K}`]?: AtPromptThreadAttributes[K] } & { [K in keyof AtPromptThread & keyof AtPromptThreadAttributes as `prop:${K}`]?: AtPromptThread[K] };
         "at-radio": Omit<AtRadio, keyof AtRadioAttributes> & { [K in keyof AtRadio & keyof AtRadioAttributes]?: AtRadio[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `attr:${K}`]?: AtRadioAttributes[K] } & { [K in keyof AtRadio & keyof AtRadioAttributes as `prop:${K}`]?: AtRadio[K] };
+        "at-radio-cell": AtRadioCell;
         "at-radio-group": Omit<AtRadioGroup, keyof AtRadioGroupAttributes> & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes]?: AtRadioGroup[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `attr:${K}`]?: AtRadioGroupAttributes[K] } & { [K in keyof AtRadioGroup & keyof AtRadioGroupAttributes as `prop:${K}`]?: AtRadioGroup[K] };
         "at-relative-datetime-cell": AtRelativeDatetimeCell;
         "at-relative-time": Omit<AtRelativeTime, keyof AtRelativeTimeAttributes> & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes]?: AtRelativeTime[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `attr:${K}`]?: AtRelativeTimeAttributes[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `prop:${K}`]?: AtRelativeTime[K] };
@@ -10515,6 +10550,11 @@ declare module "@stencil/core" {
              * @description A radio button component for selecting a single option from a predefined list.
              */
             "at-radio": LocalJSX.IntrinsicElements["at-radio"] & JSXBase.HTMLAttributes<HTMLAtRadioElement>;
+            /**
+             * @category Data Tables
+             * @description A radio cell component for single row selection in data tables. Selecting a row reports through the cell renderer params and clears every other row in the column.
+             */
+            "at-radio-cell": LocalJSX.IntrinsicElements["at-radio-cell"] & JSXBase.HTMLAttributes<HTMLAtRadioCellElement>;
             /**
              * @category Form Controls
              * @description A radio button group component for selecting a single option from a predefined list. Provides grouped validation, labeling, and accessibility features for radio button collections.

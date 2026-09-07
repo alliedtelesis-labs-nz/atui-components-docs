@@ -5,6 +5,7 @@
 export var AvailableCells;
 (function (AvailableCells) {
     AvailableCells["CHECKBOX_CELL"] = "AtCheckboxCell";
+    AvailableCells["RADIO_CELL"] = "AtRadioCell";
     AvailableCells["TEXT_CELL"] = "AtTextCell";
     AvailableCells["TEXT_STATUS_CELL"] = "AtTextStatusCell";
     AvailableCells["HEALTH_DOT_CELL"] = "AtHealthDotCell";

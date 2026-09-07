@@ -65,6 +65,7 @@ export class AtSelectionHeader {
         this.checkbox.addEventListener('atuiChange', this.onChange);
         this.el.appendChild(this.checkbox);
         this.applyState();
+        params.register?.(this);
     }
     getGui() {
         return this.el;
@@ -76,6 +77,7 @@ export class AtSelectionHeader {
     }
     destroy() {
         this.checkbox?.removeEventListener('atuiChange', this.onChange);
+        this.params?.register?.(null);
     }
     /**
      * Called by the table after it changes the selection, since ag-grid refreshes a
@@ -85,5 +87,50 @@ export class AtSelectionHeader {
         const state = this.params.getState();
         this.checkbox.checked = state === true;
         this.checkbox.indeterminate = state === 'indeterminate';
+    }
+}
+/**
+ * The single-selection counterpart of `AtSelectionCell`. It reports a pick and never an
+ * unpick: `at-radio` fires only on the transition into checked, matching a radio group,
+ * so the selection is cleared by picking elsewhere or by the host calling
+ * `clearSelection()`.
+ */
+export class AtSelectionRadioCell {
+    el;
+    radio;
+    params;
+    onChange = () => {
+        this.params.setSelected(this.params.data);
+    };
+    init(params) {
+        this.params = params;
+        this.el = document.createElement('div');
+        this.el.className = 'flex h-full w-full items-center justify-center';
+        this.el.setAttribute('data-name', 'selection-radio-cell');
+        this.radio = document.createElement('at-radio');
+        if (params.label) {
+            this.radio.setAttribute('aria-label', params.label);
+        }
+        this.radio.group = params.group;
+        this.radio.addEventListener('atuiChange', this.onChange);
+        this.el.appendChild(this.radio);
+        this.applyState();
+    }
+    getGui() {
+        return this.el;
+    }
+    refresh(params) {
+        this.params = params;
+        this.applyState();
+        return true;
+    }
+    destroy() {
+        this.radio?.removeEventListener('atuiChange', this.onChange);
+    }
+    applyState() {
+        const row = this.params.data;
+        this.radio.value = this.params.rowId(row);
+        this.radio.checked = this.params.isSelected(row);
+        this.radio.disabled = !this.params.isSelectable(row);
     }
 }

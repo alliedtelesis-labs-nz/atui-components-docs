@@ -29,6 +29,11 @@ export interface AtISearchTableParams {
 }
 export type AtSelectionScope = 'none' | 'explicit' | 'all-matching';
 /**
+ * How many rows can be selected at once. `single` is the picker shape: a radio column,
+ * no select-all header, and no way to unpick other than picking elsewhere.
+ */
+export type AtSelectionMode = 'multiple' | 'single';
+/**
  * What the user has selected. Two scopes, because they are two different things: a set
  * of rows the user picked, or every row matching the current query - which server-side
  * is a set the browser has never held and cannot enumerate.

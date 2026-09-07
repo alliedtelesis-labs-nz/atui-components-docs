@@ -3276,6 +3276,12 @@ strong {
   user-select: none;
 }
 
+.select-all {
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  user-select: all;
+}
+
 .resize-none {
   resize: none;
 }

@@ -68,6 +68,7 @@ import { AtPromptContainer as AtPromptContainerElement, defineCustomElement as d
 import { AtPromptInput as AtPromptInputElement, defineCustomElement as defineAtPromptInput } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-input.js";
 import { AtPromptMessage as AtPromptMessageElement, defineCustomElement as defineAtPromptMessage } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-message.js";
 import { AtPromptThread as AtPromptThreadElement, defineCustomElement as defineAtPromptThread } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-prompt-thread.js";
+import { AtRadioCell as AtRadioCellElement, defineCustomElement as defineAtRadioCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio-cell.js";
 import { AtRadioGroup as AtRadioGroupElement, defineCustomElement as defineAtRadioGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio-group.js";
 import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-radio.js";
 import { AtRelativeDatetimeCell as AtRelativeDatetimeCellElement, defineCustomElement as defineAtRelativeDatetimeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-datetime-cell.js";
@@ -901,6 +902,17 @@ export const AtRadio: StencilReactComponent<AtRadioElement, AtRadioEvents> = /*@
     react: React,
     events: { onAtuiChange: 'atuiChange' } as AtRadioEvents,
     defineCustomElement: defineAtRadio
+});
+
+type AtRadioCellEvents = NonNullable<unknown>;
+
+export const AtRadioCell: StencilReactComponent<AtRadioCellElement, AtRadioCellEvents> = /*@__PURE__*/ createComponent<AtRadioCellElement, AtRadioCellEvents>({
+    tagName: 'at-radio-cell',
+    elementClass: AtRadioCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtRadioCellEvents,
+    defineCustomElement: defineAtRadioCell
 });
 
 type AtRadioGroupEvents = { onAtuiChange: EventName<CustomEvent<string>> };

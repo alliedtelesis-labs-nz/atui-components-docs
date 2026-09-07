@@ -7,6 +7,7 @@ import { AtICSSProperties } from '../styles';
  */
 export declare enum AvailableCells {
     CHECKBOX_CELL = "AtCheckboxCell",
+    RADIO_CELL = "AtRadioCell",
     TEXT_CELL = "AtTextCell",
     TEXT_STATUS_CELL = "AtTextStatusCell",
     HEALTH_DOT_CELL = "AtHealthDotCell",

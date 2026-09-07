@@ -34,6 +34,17 @@ export declare const ExternalFilters: any;
  */
 export declare const RowSelection: any;
 /**
+ * `selection_mode="single"` is the picker: a radio column, no select-all header and no
+ * selection bar, holding one row. Reach for it when the choice needs columns to be made
+ * - comparing a version, a site and a status - and a plain `at-select` cannot show them.
+ * A named thing chosen from a list is still an `at-select` with `typeahead`.
+ *
+ * There is no unpick. `at-radio` reports only the move into checked, so a picked row is
+ * replaced rather than emptied, which is what a required field wants; a host that needs
+ * an empty state calls `clearSelection()`.
+ */
+export declare const SingleRowSelection: any;
+/**
  * The same selection against a server-side table. `scope` is what a host must
  * branch on: `explicit` carries the ids the user picked, while `all-matching`
  * carries the query the selection was made against plus any rows unticked after

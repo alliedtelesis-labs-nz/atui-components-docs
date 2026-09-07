@@ -18,6 +18,7 @@
     "components/table-components/cell-components/at-text-image-cell/at-text-image-cell.js",
     "components/table-components/cell-components/at-chip-list-cell/at-chip-list-cell.js",
     "components/table-components/cell-components/at-checkbox-cell/at-checkbox-cell.js",
+    "components/table-components/cell-components/at-radio-cell/at-radio-cell.js",
     "components/at-toaster/at-toaster.js",
     "components/at-chart-sparkline/at-chart-sparkline.js",
     "components/at-chart-gauge/at-chart-gauge.js",

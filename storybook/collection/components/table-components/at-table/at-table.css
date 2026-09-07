@@ -15,6 +15,7 @@
 
 .ag-cell:has(at-checkbox-cell),
 .ag-cell:has([data-name=selection-cell]),
+.ag-cell:has([data-name=selection-radio-cell]),
 .ag-header-cell:has(at-checkbox-header),
 .ag-header-cell:has([data-name=selection-header]) {
   padding-left: 6px !important;
@@ -31,7 +32,9 @@
 .ag-cell-wrapper:has(at-checkbox-cell),
 .ag-cell-value:has(at-checkbox-cell),
 .ag-cell-wrapper:has([data-name=selection-cell]),
-.ag-cell-value:has([data-name=selection-cell]) {
+.ag-cell-value:has([data-name=selection-cell]),
+.ag-cell-wrapper:has([data-name=selection-radio-cell]),
+.ag-cell-value:has([data-name=selection-radio-cell]) {
   width: 100%;
   min-width: 0;
   overflow: visible;
@@ -74,4 +77,25 @@ atui-menu atui-checkbox[aria-checked] {
 .ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,
 .ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport {
   min-height: unset !important;
+}
+
+/**
+ * A selected row reads as selected without the checkbox having to be found again. The
+ * background sits on the row and its cells: ag-grid paints pinned columns in their own
+ * container, so colouring only `.ag-row` would leave the selection column unpainted.
+ * `--token-state-active-background` is the same token the checked control carries.
+ */
+.ag-row.atui-row-selected,
+.ag-row.atui-row-selected .ag-cell {
+  background-color: var(--token-state-active-background);
+}
+
+/* Only where a click actually picks the row - see `atui-rows-selectable` below. */
+.atui-rows-selectable .ag-row .ag-cell {
+  cursor: pointer;
+}
+
+.atui-rows-selectable .ag-row .ag-cell:has(a[href]),
+.atui-rows-selectable .ag-row .ag-cell:has(button) {
+  cursor: auto;
 }

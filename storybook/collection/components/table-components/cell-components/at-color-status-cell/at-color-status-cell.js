@@ -23,7 +23,7 @@ export class AtColorStatusCell {
             success: 'bg-success-foreground',
             disabled: 'bg-disabled-foreground',
         };
-        return (h(Host, { key: '9f5aabfe9675036ea4554d378e629c7828816733', class: "flex h-full items-center" }, h("div", { key: '7c819941f34e2305b5797174577dc97339a92573', class: `h-full w-full ${statusClasses[this.type]}` })));
+        return (h(Host, { key: 'e490386af0b0421cb9b2ddece93059c4bcd1d523', class: "flex h-full items-center" }, h("div", { key: 'cef64e9bfcb6ea7fe1dc3981942069adb4fff31c', class: `h-full w-full ${statusClasses[this.type]}` })));
     }
     static get is() { return "at-color-status-cell"; }
     static get states() {

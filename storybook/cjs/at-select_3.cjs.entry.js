@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-x_ZHEetR.js');
+var index = require('./index-ByfMXhOa.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -472,16 +472,16 @@ const AtSelectComponent = class {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (index.h(index.Host, { key: '0624bcca7600bbd968a6d5aa40e887853bce1609', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '27cf1ca5c355ab1f07b38201ab85d648d52cc179', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '77a247d1f5de1b04b901a009f3fd3a9414848ed2', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '5896f9017afc77b7b95a77b8ca8a0ee21ab382bb', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'bb154cb0be3f46c654b41ec45e72475f0a0be56e' }, this.error_text && this.invalid && (index.h("span", { key: '6a0236c947f1c84a0b0c5be8ccfccaf97dddaf0f', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '2134ca7b171264b028b29dd5109e6de166d558f9' }, this.error_text && this.invalid && (index.h("span", { key: 'bfc1f76b9d35283874ab6f52b3f7dd87b0a2cfab', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -575,7 +575,7 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (index.h(index.Host, { key: '98e1c563ab7f77406ff989a669661fccb832ce3c', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: 'e6c4c1cdf05e7661b02f4769a6b5f5b1e2960f8c', role: "group", "aria-labelledby": this.label }, index.h("li", { key: '27d56bded1bef8e29cb5ae1e0a2874a6827ae7a4', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: 'ea9b5e35b80a1f783a43a2404b8db9bdcf84bac8' }))));
+        return (index.h(index.Host, { key: 'a7bd647fab84f61ae0c80ea252e9dbc9c14aac0a', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, index.h("div", { key: 'df5e052f4ffd45dbe2c48a559c709daefd4501b3', role: "group", "aria-labelledby": this.label }, index.h("li", { key: 'c23de1a7d29c35c56cf43bfafab85d11e4e68beb', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), index.h("slot", { key: '4faffe33224a5c02cd3cee47360e6272e01dc6f3' }))));
     }
 };
 
@@ -632,7 +632,7 @@ const AtSelectOptionComponent = class {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (index.h("li", { key: '3b0793053626d9e658f9225f3e2457c7bcba7e21', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'ef68cab01cd9629f37d5e2b0471a70dea57d3ce5' }), index.h("span", { key: '63825cd8adaa9b6a322b4a52dce1b03099b3f265', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), index.h("slot", { key: '9ce04c8e860fc49e4ff695f12a4a05754ff9843c', name: "after" })));
+        return (index.h("li", { key: '993deea16edd048e1d3b5933d04df362d90a4bab', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: 'b3ddc58ba3d2dbfb502a38ba435fb82f8a803be9' }), index.h("span", { key: '844865d5129cbb6bd0a16255aa844eed78ba0428', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), index.h("slot", { key: '6c00e7226e677937234f88a2d122ffdd926d83ec', name: "after" })));
     }
 };
 

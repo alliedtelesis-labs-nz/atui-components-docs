@@ -123,6 +123,8 @@ export { AtPromptThread as AtPromptThread } from '../types/components/prompt-com
 export { defineCustomElement as defineCustomElementAtPromptThread } from './at-prompt-thread';
 export { AtRadio as AtRadio } from '../types/components/at-radio-group/at-radio/at-radio';
 export { defineCustomElement as defineCustomElementAtRadio } from './at-radio';
+export { AtRadioCellComponent as AtRadioCell } from '../types/components/table-components/cell-components/at-radio-cell/at-radio-cell';
+export { defineCustomElement as defineCustomElementAtRadioCell } from './at-radio-cell';
 export { AtRadioGroup as AtRadioGroup } from '../types/components/at-radio-group/at-radio-group';
 export { defineCustomElement as defineCustomElementAtRadioGroup } from './at-radio-group';
 export { AtRelativeDateTimeCell as AtRelativeDatetimeCell } from '../types/components/table-components/cell-components/at-relative-datetime-cell/at-relative-datetime-cell';
