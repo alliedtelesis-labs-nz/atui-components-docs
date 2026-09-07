@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ChtkW4Eq.js');
+var index = require('./index-CsFbabx6.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -215,10 +215,10 @@ const AtLoadingComponent = class {
     }
     renderSpinner() {
         const borderColor = this.type === 'default'
-            ? 'border-primary'
+            ? 'border-active'
             : this.type === 'error'
                 ? 'border-destructive-foreground'
-                : 'border-primary-foreground';
+                : 'border-foreground';
         return (index.h(index.Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
     }
     renderDots() {

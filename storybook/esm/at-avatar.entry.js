@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CT99rxub.js';
+import { r as registerInstance, h, H as Host } from './index-D41WwXto.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const avatarVariantsConfig = {
@@ -9,7 +9,7 @@ const avatarVariantsConfig = {
             lg: 'h-40 w-40 text-base',
         },
         variant: {
-            primary: 'bg-primary text-foreground',
+            primary: 'bg-surface-inv text-foreground-inv',
             secondary: 'bg-secondary text-secondary-foreground',
             muted: 'bg-muted text-muted-foreground',
         },
@@ -56,7 +56,7 @@ const AtAvatar = class {
             size: this.size,
             variant: this.variant,
         });
-        return (h(Host, { key: '6ad1c33beed41ddcfe39b613fb0861e864c26ea7', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '2aca6110122bf98de62359dcbae3c4134329d121', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: '3aca0cf424891d1296b947322c74629d85c4af67', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: '49d717d09a43ec2d3c99d300ccfa9665e84b0a91' })));
+        return (h(Host, { key: 'abef6acb9039d932b7319bb617619d1f917afcf2', class: classes, "data-name": "avatar-container" }, this.src && (h("img", { key: '40072596866abd508e07f40e887abc840b963211', src: this.src, alt: this.alt || 'Avatar', class: "h-full w-full object-cover", "data-name": "avatar-image" })), !this.src && this.initials && (h("span", { key: 'd659df12d8372e2ecc48b991b2aae1fbc53153a5', "data-name": "avatar-initials" }, this.initials)), h("slot", { key: 'b21b3a5d1a11580fa6c99ef967f16071bba8c9d9' })));
     }
 };
 

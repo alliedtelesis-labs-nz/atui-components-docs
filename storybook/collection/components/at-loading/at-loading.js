@@ -48,10 +48,10 @@ export class AtLoadingComponent {
     }
     renderSpinner() {
         const borderColor = this.type === 'default'
-            ? 'border-primary'
+            ? 'border-active'
             : this.type === 'error'
                 ? 'border-destructive-foreground'
-                : 'border-primary-foreground';
+                : 'border-foreground';
         return (h(Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
     }
     renderDots() {

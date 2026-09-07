@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-CT99rxub.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-D41WwXto.js';
 
 const dotVariants = {
     pending: 'bg-disabled-foreground/40 h-8 w-8',
@@ -27,9 +27,9 @@ const connectorVariants = {
 };
 const labelVariants = {
     pending: 'text-secondary',
-    current: 'text-primary font-medium',
-    completed: 'text-primary',
-    success: 'text-primary',
+    current: 'text-foreground font-medium',
+    completed: 'text-foreground',
+    success: 'text-foreground',
     error: 'text-error font-medium',
     skipped: 'text-secondary',
 };
@@ -91,13 +91,13 @@ const AtStepperItem = class {
     }
     render() {
         const isVertical = this.orientation === 'vertical';
-        return (h(Host, { key: 'eb818bcefd75baea0f5eec998e755a4ad5e34c0b', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
+        return (h(Host, { key: 'f01d539318e0c1304f2b21976bb6003022052722', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
                 ? 'flex-row items-stretch gap-8'
                 : `flex-col gap-4 ${this.is_last ? '' : 'flex-1'}`} ${this.navigable
                 ? 'focus-visible:ring-active-glow cursor-pointer rounded-sm outline-0 focus-visible:ring'
-                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: 'bc6608382a3c1713d0f0f7a077f4663f58f673ee', class: `flex shrink-0 ${isVertical
+                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: 'db120b4368e9fc9c741f3d96d2d319f5330b2d92', class: `flex shrink-0 ${isVertical
                 ? 'w-24 flex-col items-center'
-                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: 'db9b84511242ad9d118da2d5344777f44fa8c7db', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: '664af481ba8be698831fc19bfc02597183250fa2', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: 'e6f372f73dad9c1754c0980df3f10771f6508629', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: '54c4c094bd9fb52ae9d659fd9e53f3503a6a4696', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: 'cf37263ed3f44289a914a4b3c050db031f6d91ba', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: 'd37897415259f04258cc0b1decdf2cdc9f5a9d55' }))));
+                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: '47c39f325ba75215f5cbe036ce0f7aab81acebb4', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: 'dde89e58920225c99914068f04af410f871888ce', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: '695733fdcf3bec88689376a09331a6407d3cf202', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: '1d0eb5addb742e4ecea0ce148f8a4d80d67cb067', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: '8665f19a383aa7a13a2808ba7b3aeedf5011811d', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: 'c96aefb2fc8c8039acb5764a3e0d98de6e1b3455' }))));
     }
 };
 

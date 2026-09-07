@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CT99rxub.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D41WwXto.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -213,10 +213,10 @@ const AtLoadingComponent = class {
     }
     renderSpinner() {
         const borderColor = this.type === 'default'
-            ? 'border-primary'
+            ? 'border-active'
             : this.type === 'error'
                 ? 'border-destructive-foreground'
-                : 'border-primary-foreground';
+                : 'border-foreground';
         return (h(Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
     }
     renderDots() {

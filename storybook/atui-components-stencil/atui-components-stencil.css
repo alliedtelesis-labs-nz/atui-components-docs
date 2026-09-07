@@ -3577,10 +3577,10 @@ strong {
   border-style: none;
 }
 
-.border-active-accent {
+.border-active {
   --tw-border-opacity:
       1;
-  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+  border-color: color-mix(in srgb, var(--token-border-active) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-button-destructive {
@@ -3645,6 +3645,12 @@ strong {
   border-color: color-mix(in srgb, var(--token-feedback-warning-foreground) 30%, transparent);
 }
 
+.border-foreground {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .border-input {
   --tw-border-opacity:
       1;
@@ -3655,12 +3661,6 @@ strong {
   --tw-border-opacity:
       1;
   border-color: color-mix(in srgb, var(--token-border-muted) calc(var(--tw-border-opacity, 1) * 100%), transparent);
-}
-
-.border-primary {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-border-primary) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .border-transparent {
@@ -3901,6 +3901,12 @@ strong {
 
 .bg-surface-foreground\/80 {
   background-color: color-mix(in srgb, var(--token-surface-foreground) 80%, transparent);
+}
+
+.bg-surface-inv {
+  --tw-bg-opacity:
+      1;
+  background-color: color-mix(in srgb, var(--token-surface-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
 .bg-surface-overlay\/90 {
@@ -4341,12 +4347,6 @@ strong {
   line-height: 1.25;
 }
 
-.\!text-active-foreground {
-  --tw-text-opacity:
-      1 !important;
-  color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
-}
-
 .\!text-disabled {
   --tw-text-opacity:
       1 !important;
@@ -4357,18 +4357,6 @@ strong {
   --tw-text-opacity:
       1 !important;
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
-}
-
-.text-active-accent {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
-.text-active-foreground {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-button-accent {
@@ -4551,12 +4539,6 @@ strong {
   color: color-mix(in srgb, var(--token-text-muted) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
-.text-primary {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-text-primary) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
 .text-secondary {
   --tw-text-opacity:
       1;
@@ -4566,13 +4548,7 @@ strong {
 .text-success {
   --tw-text-opacity:
       1;
-  color: color-mix(in srgb, var(--token-state-success-default) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
-.text-warning-foreground {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-state-warning-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+  color: color-mix(in srgb, var(--token-text-success) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .no-underline {
@@ -4889,12 +4865,6 @@ strong {
   z-index: 10;
 }
 
-.focus-within\:border-active-accent:focus-within {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
-}
-
 .focus-within\:border-destructive:focus-within {
   --tw-border-opacity:
       1;
@@ -4997,12 +4967,6 @@ strong {
   border-style: none;
 }
 
-.focus\:border-active-accent:focus {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
-}
-
 .focus\:bg-surface-overlay\/20:focus {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 20%, transparent);
 }
@@ -5050,12 +5014,6 @@ strong {
 
 .focus-visible\:z-20:focus-visible {
   z-index: 20;
-}
-
-.focus-visible\:border-active-accent:focus-visible {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .focus-visible\:bg-surface-overlay\/10:focus-visible {
@@ -5189,12 +5147,6 @@ strong {
 
 .group\/checkbox:focus-visible .group-focus-visible\/checkbox\:border-0 {
   border-width: 0px;
-}
-
-.group\/checkbox:focus-visible .group-focus-visible\/checkbox\:border-active-accent {
-  --tw-border-opacity:
-      1;
-  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .group\/checkbox:focus-visible .group-focus-visible\/checkbox\:ring {
