@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CsFbabx6.js');
+var index = require('./index-x_ZHEetR.js');
 
 const AtMultiBtnCell = class {
     constructor(hostRef) {

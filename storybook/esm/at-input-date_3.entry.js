@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D41WwXto.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-bgrrg3yc.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-H5gcGi8Y.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
@@ -17,7 +17,7 @@ const inputVariantsConfig$1 = {
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
+            true: 'border-error focus-within:border-error focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -112,7 +112,7 @@ const AtInputDate = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '74310448833f17f19fd77f574669c6b77e56edeb' }, h("style", { key: '94ac881de61c90a5a4606ad6f789a09c90092110' }, `
+        return (h(Host, { key: 'c1c5e1de1fb27fe257f4202a767dba55e69bd141' }, h("style", { key: '5e98c2b48512895af3009acfcf175fe5b63dc383' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -125,9 +125,9 @@ const AtInputDate = class {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '93222ccb913ad8904fab5859316738929f87b39b', class: "flex w-full flex-col" }, h("div", { key: '3c050636c8b0b5a9f707e7749f44a8801a2ffa06', class: "flex flex-col" }, h("div", { key: '8437c20514cf4b9e851c4f3b45a15b94aeae3db0', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: 'aa89df0c7d3b71f1045305bafb9eea210ac9b8fc', class: "flex w-full flex-col" }, h("div", { key: '96b5a6bc2527675eb09f0edf682a3e068b501ade', class: "flex flex-col" }, h("div", { key: 'ef986f762b26bc5fc3fa71649779123e477422a5', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '2656be869c7e5a11bcf64bb772c14a64ca1da6bd', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'bd67f45a2fc1351f3b7c848a8546ca950822846e', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'c073b73e06b2b7c955afd6d55b3ae11f7feca44d', class: classname }, h("input", { key: 'f5d5167bdeca783cfc89317fcca6dcdd6faa222f', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: 'c4926d71086b3fc3feb2619334cca8e32edcc585', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '4cd65abbdf54101d4bdbc8c9cfacbba7d3c9f3b5', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'e5e2bf65bbf305cd0bf72e035f4ffb56afb016a1', class: classname }, h("input", { key: '2874f1b58ccdbc92a22f1d97f4de4327ae0aeb62', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 // Validate year is 4 digits (between 0000-9999)
@@ -148,7 +148,7 @@ const AtInputDate = class {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '9abbd7e39da38f932289d1a1363296e3ba4e30a7', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.invalid && (h("span", { key: '89c5a1f2b4df587410c93604e8c05aef8a400cd7', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get watchers() { return {
         "value": [{
@@ -169,7 +169,7 @@ const inputVariantsConfig = {
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
+            true: 'border-error focus-within:border-error focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -243,7 +243,7 @@ const AtInputTime = class {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: '423e40a43cd5369ccaafe0e75c7141e8e6f6c336' }, h("style", { key: '5db27690d080e690ff1a479da93fb96a70afbb27' }, `
+        return (h(Host, { key: '38373ef999250f86af511e5d5c6d94cb3bea92af' }, h("style", { key: '179db3ef21230b56ae735547bb6f5c601f71bbfe' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -255,7 +255,7 @@ const AtInputTime = class {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: '9417108f82801edf42645ada65e96d19525befe0', class: "flex flex-col" }, h("div", { key: '772f85687c5acf581aadc8e93d7e4d70a4215a04', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ae30ad6fdb08d2a1f13b13d685400bb3a5bd09c6', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '091559a4a37ec6c18fcf87be9ed5f7de176a89a6', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '97fb8de99bf4098965e17f2a395f7df33babd412', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: 'e1560dbda0f08a0bf3a221694b02073f3e85d528', class: classname }, h("input", { key: '5b307ba6d34cdb160ec2bfdc3e7b5d4d13227ade', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: '3bda6c164bcd0ba1011ea4c5e45701fbd2165fd3', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), h("div", { key: '9cb9b4491395d716a08b84dd1062c2134d394749', class: "flex flex-col" }, h("div", { key: '2289ba6eb1c4c82e8c6f1f647aa2ef0e0041b537', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '832ff59562cd2e2d1b5ec5d472ef9b83fb86752b', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'fd5fada51440bb87122b59a862605100a136c42c', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '1a83823ad4677b10f53dfce3ba441a63936fc108', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '08e8b1dbbdbc210e903dd7ba7a3f27abf55f8672', class: classname }, h("input", { key: 'a4e083530384f12a9ac111cbbe78759998a19ddc', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: 'd95d07b8df8fe47f1f6a65a23e82ac1a423299d4', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
 };
 

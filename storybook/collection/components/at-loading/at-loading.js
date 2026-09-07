@@ -1,7 +1,7 @@
 import { h, Host } from "@stencil/core";
 const loadingVariants = {
     type: {
-        default: 'text-foreground',
+        default: 'text-active',
         error: 'text-destructive-foreground',
         secondary: 'text-foreground',
     },

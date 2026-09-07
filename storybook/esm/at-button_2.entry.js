@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D41WwXto.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-bgrrg3yc.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -167,7 +167,7 @@ const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0
 
 const loadingVariants = {
     type: {
-        default: 'text-foreground',
+        default: 'text-active',
         error: 'text-destructive-foreground',
         secondary: 'text-foreground',
     },

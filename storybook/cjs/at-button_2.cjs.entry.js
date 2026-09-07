@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CsFbabx6.js');
+var index = require('./index-x_ZHEetR.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -169,7 +169,7 @@ const atLoadingCss = () => `@keyframes bounce-dots{0%,80%,100%{transform:scale(0
 
 const loadingVariants = {
     type: {
-        default: 'text-foreground',
+        default: 'text-active',
         error: 'text-destructive-foreground',
         secondary: 'text-foreground',
     },

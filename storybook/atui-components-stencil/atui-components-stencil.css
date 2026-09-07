@@ -4359,6 +4359,12 @@ strong {
   color: color-mix(in srgb, var(--token-text-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
 }
 
+.text-active {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-text-active) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
 .text-button-accent {
   --tw-text-opacity:
       1;
@@ -4913,6 +4919,13 @@ strong {
       color-mix(in srgb, var(--token-state-error-default) calc(0.3 * 100%), transparent);
 }
 
+.focus-within\:ring-error-glow:focus-within {
+  --tw-ring-opacity:
+      1;
+  --tw-ring-color:
+      color-mix(in srgb, var(--token-state-error-accent) calc(var(--tw-ring-opacity, 1) * 50%), transparent);
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }
@@ -5012,6 +5025,13 @@ strong {
       color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-ring-opacity, 1) * 50%), transparent);
 }
 
+.focus\:ring-error-glow:focus {
+  --tw-ring-opacity:
+      1;
+  --tw-ring-color:
+      color-mix(in srgb, var(--token-state-error-accent) calc(var(--tw-ring-opacity, 1) * 50%), transparent);
+}
+
 .focus-visible\:z-20:focus-visible {
   z-index: 20;
 }
@@ -5089,6 +5109,13 @@ strong {
 .focus-visible\:ring-destructive-foreground\/30:focus-visible {
   --tw-ring-color:
       color-mix(in srgb, var(--token-state-error-foreground) calc(0.3 * 100%), transparent);
+}
+
+.focus-visible\:ring-error-glow:focus-visible {
+  --tw-ring-opacity:
+      1;
+  --tw-ring-color:
+      color-mix(in srgb, var(--token-state-error-accent) calc(var(--tw-ring-opacity, 1) * 50%), transparent);
 }
 
 .focus-visible\:ring-offset-0:focus-visible {

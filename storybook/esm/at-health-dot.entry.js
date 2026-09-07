@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D41WwXto.js';
+import { r as registerInstance, h, H as Host } from './index-bgrrg3yc.js';
 
 const sizePx = {
     sm: 10,

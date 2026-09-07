@@ -12,7 +12,7 @@ const inputVariantsConfig = {
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
-            true: 'border-error-base focus-within:border-error-base focus-within:ring-error-glow',
+            true: 'border-error focus-within:border-error focus-within:ring-error-glow',
         },
     },
     defaultVariants: {
@@ -82,7 +82,7 @@ export class AtInputTime {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: '423e40a43cd5369ccaafe0e75c7141e8e6f6c336' }, h("style", { key: '5db27690d080e690ff1a479da93fb96a70afbb27' }, `
+        return (h(Host, { key: '38373ef999250f86af511e5d5c6d94cb3bea92af' }, h("style", { key: '179db3ef21230b56ae735547bb6f5c601f71bbfe' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -94,7 +94,7 @@ export class AtInputTime {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: '9417108f82801edf42645ada65e96d19525befe0', class: "flex flex-col" }, h("div", { key: '772f85687c5acf581aadc8e93d7e4d70a4215a04', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ae30ad6fdb08d2a1f13b13d685400bb3a5bd09c6', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '091559a4a37ec6c18fcf87be9ed5f7de176a89a6', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '97fb8de99bf4098965e17f2a395f7df33babd412', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: 'e1560dbda0f08a0bf3a221694b02073f3e85d528', class: classname }, h("input", { key: '5b307ba6d34cdb160ec2bfdc3e7b5d4d13227ade', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: '3bda6c164bcd0ba1011ea4c5e45701fbd2165fd3', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), h("div", { key: '9cb9b4491395d716a08b84dd1062c2134d394749', class: "flex flex-col" }, h("div", { key: '2289ba6eb1c4c82e8c6f1f647aa2ef0e0041b537', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '832ff59562cd2e2d1b5ec5d472ef9b83fb86752b', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'fd5fada51440bb87122b59a862605100a136c42c', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '1a83823ad4677b10f53dfce3ba441a63936fc108', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '08e8b1dbbdbc210e903dd7ba7a3f27abf55f8672', class: classname }, h("input", { key: 'a4e083530384f12a9ac111cbbe78759998a19ddc', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: 'd95d07b8df8fe47f1f6a65a23e82ac1a423299d4', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-time"; }
     static get properties() {
