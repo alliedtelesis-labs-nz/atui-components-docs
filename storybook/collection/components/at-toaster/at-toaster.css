@@ -124,3 +124,37 @@
 .at-toast.close {
   animation: animOut 200ms ease-out forwards;
 }
+
+.at-toast-progress {
+  height: 3px;
+  width: 100%;
+  flex: none;
+  background: var(--token-border-muted);
+}
+
+/*
+ * The fill is driven by transform writes from the component's clock, not by a
+ * keyframe, so no reduced-motion query can switch it off. That is deliberate:
+ * the bar says how long is left to reach an Undo, which is information rather
+ * than decoration.
+ */
+.at-toast-progress-fill {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left center;
+  will-change: transform;
+  background: var(--token-feedback-foreground);
+}
+.at-toast-progress-fill.success {
+  background: var(--token-feedback-success-accent);
+}
+.at-toast-progress-fill.warning {
+  background: var(--token-feedback-warning-accent);
+}
+.at-toast-progress-fill.error {
+  background: var(--token-feedback-error-accent);
+}
+.at-toast-progress-fill.info {
+  background: var(--token-feedback-info-accent);
+}

@@ -9,6 +9,16 @@ export interface AtIToastOptions {
     timeout?: number;
     dismissible?: boolean;
     closeButton?: boolean;
+    action?: AtIToastAction;
+}
+/**
+ * A single action offered on the toast itself, which is how the friction
+ * ladder's low tier is served: act now, then offer `Undo` here rather than
+ * pre-confirming. Taking the action dismisses the toast.
+ */
+export interface AtIToastAction {
+    label: string;
+    onTrigger: () => void;
 }
 /**
  * A live reference to a shown toast, returned by `ToasterService.show`.
