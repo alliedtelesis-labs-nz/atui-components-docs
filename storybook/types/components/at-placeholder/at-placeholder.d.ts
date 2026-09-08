@@ -24,7 +24,7 @@ export declare class AtPlaceholderComponent {
      */
     show_loading_spinner: boolean;
     el: HTMLElement;
-    componentDidLoad(): void;
+    componentDidRender(): void;
     get placeholderSizeClass(): string;
     render(): any;
 }

@@ -28,7 +28,6 @@ export class AtListSelector {
      */
     atuiInfoButtonClick;
     el;
-    listItemEls = [];
     onSelect(item) {
         this.selected_item_id = item.id;
         this.atuiChange.emit(item);
@@ -39,13 +38,17 @@ export class AtListSelector {
             componentType: 'at-list-selector',
         });
     }
+    getListItemElements() {
+        return Array.from(this.el.querySelectorAll('at-list-selector-item'));
+    }
     focusAndClickRelativeItem(relativePosition) {
-        const indexOfActiveItem = this.listItemEls.indexOf(this.el.ownerDocument
+        const itemEls = this.getListItemElements();
+        if (!itemEls.length)
+            return;
+        const indexOfActiveItem = itemEls.indexOf(this.el.ownerDocument
             .activeElement);
-        const nextActiveItem = this.listItemEls[(indexOfActiveItem +
-            relativePosition +
-            this.listItemEls.length) %
-            this.listItemEls.length];
+        const nextActiveItem = itemEls[(indexOfActiveItem + relativePosition + itemEls.length) %
+            itemEls.length];
         nextActiveItem.click();
         nextActiveItem.focus();
     }
@@ -61,10 +64,10 @@ export class AtListSelector {
     }
     get getListItems() {
         return this.options.map((item) => (h("at-tooltip", { position: "right", disabled: !item.tooltip }, h("div", { slot: "tooltip-trigger" }, h("at-list-selector-item", { item_id: item.id, item_title: item.title, subtitle: item.subtitle, item_prefix: item.prefix, has_border: this.has_border, is_selected: this.selected_item_id &&
-                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0", ref: (el) => this.listItemEls.push(el) }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
+                item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0" }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: '644dc026a795a8f5fa9f58a279c34f56d25f238d', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '028e54cf7a2597c855f8833d17fbf8bd6116d3ee', name: "header" }), !!this.options.length && (h("nav", { key: 'cd045f88935c8e52f8630fd942ec3ac306ec5c04', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '4191559eff8ff582700556ad81687be2d0bd834a', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '218501408c56e87763c3d3949f429c87add57fbb' })));
+        return (h(Host, { key: 'adb5f4ce931284b9e346683e74c43736e5f953f3', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'b534520425b3688b18fae2b7c20ca080db18b5a9', name: "header" }), !!this.options.length && (h("nav", { key: 'b8d52818572c1d6d6af81a85f8d4a650b8eb79a1', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '1c79c6e3aa77bcd29769149cbd83324c46b5fc7c', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '10abf41f92188c4f54049ead28a490e4773fa783' })));
     }
     static get is() { return "at-list-selector"; }
     static get properties() {

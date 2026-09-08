@@ -45,7 +45,7 @@ export class AtRadioCellComponent {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (h(Host, { key: 'd17381c67bcc84329f105c5d89a72bab5f536d10', class: "flex h-full items-center" }, h("at-radio", { key: '504140f6669907379780bd02d3fe2e6bfd94e62d', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, group: this.groupName(), value: String(this.params.node?.id ?? ''), onAtuiChange: () => this.setValue() })));
+        return (h(Host, { key: 'f548a3ec2b5e1ee5adef3a9d070409c0417ef459', class: "flex h-full items-center" }, h("at-radio", { key: 'b0a558f9dc0da92752d90b64c118c82d821d7972', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, group: this.groupName(), value: String(this.params.node?.id ?? ''), onAtuiChange: () => this.setValue() })));
     }
     static get is() { return "at-radio-cell"; }
     static get states() {

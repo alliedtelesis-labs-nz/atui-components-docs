@@ -3,7 +3,8 @@ export type AtLoadingType = 'default' | 'error' | 'secondary';
 export type AtLoadingSize = 'sm' | 'md' | 'lg';
 /**
  * @category Feedback
- * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+ * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
+ * @slot - Label content rendered beside the animation
  */
 export declare class AtLoadingComponent {
     /**
@@ -18,16 +19,11 @@ export declare class AtLoadingComponent {
      * Size of the loading indicator
      */
     size: AtLoadingSize;
-    /**
-     * Custom text to display with text-based animations
-     */
-    text: string;
     get typeClasses(): string;
     get sizeClasses(): string;
     get spinnerSizeClasses(): string;
     private renderSpinner;
-    private renderDots;
-    private renderWave;
-    private renderTyping;
+    private renderShapes;
+    private renderIndicator;
     render(): any;
 }

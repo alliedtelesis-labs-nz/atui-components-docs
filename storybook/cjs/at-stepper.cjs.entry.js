@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ByfMXhOa.js');
+var index = require('./index-Bc1nzv_X.js');
 
 const AtStepper = class {
     constructor(hostRef) {
@@ -221,7 +221,7 @@ const AtStepper = class {
     render() {
         const states = this.resolvedStates();
         const isVertical = this.orientation === 'vertical';
-        return (index.h(index.Host, { key: 'e04fc8f641f0a5623191334f98b621e5e0f80f27', class: "flex flex-col gap-16" }, index.h("div", { key: 'ab270568ef10eb64cc3550fc53b70f9b60730aff', role: "list", "aria-label": this.stepper_label, "data-name": "stepper", class: `flex ${isVertical ? 'flex-col' : 'flex-row items-start'}` }, this.steps ? (this.steps.map((step, index$1) => (index.h("at-stepper-item", { label: step.label, description: step.description, optional: step.optional, state: states[index$1], index: index$1, is_last: index$1 === this.count - 1, orientation: this.orientation, navigable: this.isNavigable(states[index$1]) })))) : (index.h("slot", null))), this.show_navigation && this.renderNavigation()));
+        return (index.h(index.Host, { key: '934d37373638850bc5bcd9fc3ad95a455c3ddae9', class: "flex flex-col gap-16" }, index.h("div", { key: 'd09c94992d84761c736d6006105be1c118e9a3ff', role: "list", "aria-label": this.stepper_label, "data-name": "stepper", class: `flex ${isVertical ? 'flex-col' : 'flex-row items-start'}` }, this.steps ? (this.steps.map((step, index$1) => (index.h("at-stepper-item", { label: step.label, description: step.description, optional: step.optional, state: states[index$1], index: index$1, is_last: index$1 === this.count - 1, orientation: this.orientation, navigable: this.isNavigable(states[index$1]) })))) : (index.h("slot", null))), this.show_navigation && this.renderNavigation()));
     }
     static get watchers() { return {
         "current": [{

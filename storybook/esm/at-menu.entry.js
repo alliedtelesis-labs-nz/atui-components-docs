@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CGGSFxDu.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-vSlhROK9.js';
 import { a as autoUpdate, c as computePosition, o as offset, f as flip, s as shift, b as size } from './floating-ui.dom-DDtwbwIl.js';
 
 const AtMenu = class {
@@ -451,14 +451,14 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'bcab8b3d3633f5aa038e38f7cf807f3283872ee4', class: "relative", onBlur: (e) => {
+        return (h(Host, { key: '62a03acd7ed334ca8edd5a1789d80bd12a9d6f5a', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (h("div", { key: 'a31665b8aea1794ec5fada4569488249514277e6', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (h("div", { key: '5255bf851df29faba81f8ad5c246ef5695ad738f', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -486,7 +486,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '029cbf47ac29013595161602058878cb966dcf1a', name: "menu-trigger" }))), h("div", { key: '7c95c237ecba2ea438d71a0582fb8aebdd6a5444', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '051a7d3faea8d4d9f509a2e0a57cf1a1feb2808d', name: "menu-trigger" }))), h("div", { key: '06ad99c21bcfa386caaf334f9e72ab2506f887ed', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -498,7 +498,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '4fdf54b2323d22cfe2a8d9eda95612736829195a' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '00e98fc002f316cf1d80cb13d409de9c70251208' }))));
     }
     static get watchers() { return {
         "disabled": [{

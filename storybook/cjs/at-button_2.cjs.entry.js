@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ByfMXhOa.js');
+var index = require('./index-Bc1nzv_X.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -160,7 +160,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: '34c8fab7466d7f70b79c02e21160d9a57d81d502', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'aa4b99976ac5c37b7de1011cf11d5ad876593018', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '7949413190c067a873a7c7f35901353f4d96d617', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: '1969d33d6169b5b47f62c87a6abc0ec934c8f805', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '207863216742e1e10f3e744fb748cf9885bb98c0', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '467ed5aa8dde63f814a58aa6cb6091e1a93092a2' }), !this.in_progress && (index.h("slot", { key: '37501106f30b950d84b8bb123486908bc29189db', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '56d47c08524706c610beadafa6d61be902ca9d55', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: 'cba825d43cecab2261638bf3c3bb33400d0180e8', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '75b755c85162b5fa111aec0b6d884c5f82bbe67f', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '4aef5635aed29ba94b449065ac8abc67507db894', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: '95fa44b17459c37e847d758008aef11c031eafa9', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '9ab4c6f3efc5209a415247100ef5b91178608796', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'b4417c8a36843ce451fdffb0bb06eb27781250e2' }), !this.in_progress && (index.h("slot", { key: '849a3f1772ce1ee22f4bb06a039a0faea581b48e', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: 'd82220457c9e7182074d5c0d4f39e49b718ef696', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();
@@ -175,8 +175,8 @@ const loadingVariants = {
     },
     size: {
         sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
+        md: 'text-body',
+        lg: 'text-xl',
     },
     spinnerSize: {
         sm: 'h-16 w-16 border',
@@ -200,10 +200,6 @@ const AtLoadingComponent = class {
      * Size of the loading indicator
      */
     size = 'md';
-    /**
-     * Custom text to display with text-based animations
-     */
-    text = 'Loading';
     get typeClasses() {
         return loadingVariants.type[this.type];
     }
@@ -219,29 +215,26 @@ const AtLoadingComponent = class {
             : this.type === 'error'
                 ? 'border-destructive-foreground'
                 : 'border-foreground';
-        return (index.h(index.Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
+        return (index.h("span", { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, "data-name": "loading-spinner" }));
     }
-    renderDots() {
-        return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 250, 500].map((delay) => (index.h("span", { class: "inline-block h-4 w-4 animate-[bounce-dots_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    renderShapes(name, shapeClasses, delays) {
+        return (index.h("span", { class: `${this.typeClasses} flex items-center gap-4`, "data-name": name }, delays.map((delay) => (index.h("span", { class: `${shapeClasses} inline-block rounded-full bg-current`, style: { animationDelay: `${delay}ms` }, "data-name": "loading-shape" })))));
     }
-    renderWave() {
-        return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 100, 200, 300, 400].map((delay) => (index.h("span", { class: "inline-block h-16 w-4 animate-[wave_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
-    }
-    renderTyping() {
-        return (index.h(index.Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Typing" }, index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '0ms' } }), index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '250ms' } }), index.h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '500ms' } })));
-    }
-    render() {
+    renderIndicator() {
         switch (this.variant) {
             case 'typing':
-                return this.renderTyping();
+                return this.renderShapes('loading-typing', 'h-4 w-4 animate-[typing_1s_infinite]', [0, 250, 500]);
             case 'dots':
-                return this.renderDots();
+                return this.renderShapes('loading-dots', 'h-4 w-4 animate-[bounce-dots_1s_infinite]', [0, 250, 500]);
             case 'wave':
-                return this.renderWave();
+                return this.renderShapes('loading-wave', 'h-16 w-4 animate-[wave_1s_infinite]', [0, 100, 200, 300, 400]);
             case 'spinner':
             default:
                 return this.renderSpinner();
         }
+    }
+    render() {
+        return (index.h(index.Host, { key: '95b988c0a4fc3b28a78587669bffdee57e2016fd', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'cc0cede6ae4d0a1fcce2482ba4c1d135adbd1eb0' })));
     }
 };
 AtLoadingComponent.style = atLoadingCss();

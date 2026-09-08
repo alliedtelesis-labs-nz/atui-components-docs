@@ -7,8 +7,8 @@ const loadingVariants = {
     },
     size: {
         sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
+        md: 'text-body',
+        lg: 'text-xl',
     },
     spinnerSize: {
         sm: 'h-16 w-16 border',
@@ -18,7 +18,8 @@ const loadingVariants = {
 };
 /**
  * @category Feedback
- * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+ * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
+ * @slot - Label content rendered beside the animation
  */
 export class AtLoadingComponent {
     /**
@@ -33,10 +34,6 @@ export class AtLoadingComponent {
      * Size of the loading indicator
      */
     size = 'md';
-    /**
-     * Custom text to display with text-based animations
-     */
-    text = 'Loading';
     get typeClasses() {
         return loadingVariants.type[this.type];
     }
@@ -52,29 +49,26 @@ export class AtLoadingComponent {
             : this.type === 'error'
                 ? 'border-destructive-foreground'
                 : 'border-foreground';
-        return (h(Host, { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, role: "status", "aria-label": "Loading" }));
+        return (h("span", { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, "data-name": "loading-spinner" }));
     }
-    renderDots() {
-        return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 250, 500].map((delay) => (h("span", { class: "inline-block h-4 w-4 animate-[bounce-dots_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
+    renderShapes(name, shapeClasses, delays) {
+        return (h("span", { class: `${this.typeClasses} flex items-center gap-4`, "data-name": name }, delays.map((delay) => (h("span", { class: `${shapeClasses} inline-block rounded-full bg-current`, style: { animationDelay: `${delay}ms` }, "data-name": "loading-shape" })))));
     }
-    renderWave() {
-        return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Loading" }, [0, 100, 200, 300, 400].map((delay) => (h("span", { class: "inline-block h-16 w-4 animate-[wave_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: `${delay}ms` } })))));
-    }
-    renderTyping() {
-        return (h(Host, { class: `flex items-center gap-4`, role: "status", "aria-label": "Typing" }, h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '0ms' } }), h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '250ms' } }), h("span", { class: "inline-block h-4 w-4 animate-[typing_1s_infinite] rounded-full bg-gray-500", style: { animationDelay: '500ms' } })));
-    }
-    render() {
+    renderIndicator() {
         switch (this.variant) {
             case 'typing':
-                return this.renderTyping();
+                return this.renderShapes('loading-typing', 'h-4 w-4 animate-[typing_1s_infinite]', [0, 250, 500]);
             case 'dots':
-                return this.renderDots();
+                return this.renderShapes('loading-dots', 'h-4 w-4 animate-[bounce-dots_1s_infinite]', [0, 250, 500]);
             case 'wave':
-                return this.renderWave();
+                return this.renderShapes('loading-wave', 'h-16 w-4 animate-[wave_1s_infinite]', [0, 100, 200, 300, 400]);
             case 'spinner':
             default:
                 return this.renderSpinner();
         }
+    }
+    render() {
+        return (h(Host, { key: '95b988c0a4fc3b28a78587669bffdee57e2016fd', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), h("slot", { key: 'cc0cede6ae4d0a1fcce2482ba4c1d135adbd1eb0' })));
     }
     static get is() { return "at-loading"; }
     static get originalStyleUrls() {
@@ -166,26 +160,6 @@ export class AtLoadingComponent {
                 "reflect": false,
                 "attribute": "size",
                 "defaultValue": "'md'"
-            },
-            "text": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Custom text to display with text-based animations"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "text",
-                "defaultValue": "'Loading'"
             }
         };
     }

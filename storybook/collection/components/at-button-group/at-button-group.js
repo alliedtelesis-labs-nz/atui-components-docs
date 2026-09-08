@@ -36,10 +36,6 @@ export class AtButtonGroup {
      * Disables the button group and prevents interaction
      */
     disabled;
-    /**
-     * Defines the emit type defaults to string. Boolean shoudl be used when you are
-     */
-    type = 'string';
     el;
     buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
     /**
@@ -51,6 +47,15 @@ export class AtButtonGroup {
      */
     atuiChange;
     buttonEls = [];
+    /**
+     * What each slotted option asked for on its own, so the group's `disabled`
+     * can be lifted again without re-enabling an option that was never meant to
+     * be interactive.
+     */
+    optionOwnDisabled = new WeakMap();
+    handleDisabledChange() {
+        this.applyDisabledToButtons();
+    }
     handleValueChange(newValue) {
         if (!this.options || this.options.length === 0) {
             this.buttonEls.forEach((child) => {
@@ -65,7 +70,6 @@ export class AtButtonGroup {
             this.attachEventListenersToButtons();
             setTimeout(() => this.activateOptionButton());
         }
-        this.el.addEventListener('keydown', this.handleKeyDown);
     }
     getButtonElements() {
         return Array.from(this.el.querySelectorAll('at-button-group-option:not([data-ignore-selection])'));
@@ -83,7 +87,16 @@ export class AtButtonGroup {
             if (this.value !== undefined && this.value !== null) {
                 buttonEl.is_active = this.value === buttonEl.value;
             }
-            buttonEl.disabled = this.disabled || buttonEl.disabled;
+            if (!this.optionOwnDisabled.has(buttonEl)) {
+                this.optionOwnDisabled.set(buttonEl, !!buttonEl.disabled);
+            }
+        });
+        this.applyDisabledToButtons();
+    }
+    applyDisabledToButtons() {
+        this.buttonEls.forEach((buttonEl) => {
+            buttonEl.disabled =
+                this.disabled || this.optionOwnDisabled.get(buttonEl) === true;
         });
     }
     attachEventListenersToButtons() {
@@ -105,7 +118,7 @@ export class AtButtonGroup {
                     ? option.label
                     : option.icon
                         ? ''
-                        : option.value, is_active: this.value === option.value, disabled: option.disabled, onAtuiClick: (event) => this.handleChange(event, option.value, index) }, option.icon && (h("at-icon", { slot: "icon", name: option.icon })))));
+                        : option.value, is_active: this.value === option.value, disabled: option.disabled || this.disabled, onAtuiClick: (event) => this.handleChange(event, option.value, index) }, option.icon && (h("at-icon", { slot: "icon", name: option.icon })))));
         }
         return null;
     }
@@ -118,35 +131,9 @@ export class AtButtonGroup {
             child.is_active = child.value === optionValue;
         });
     }
-    /**
-     * Handles keyboard navigation for all button options.
-     */
-    handleKeyDown = (evt) => {
-        if (evt.key !== 'Enter' && evt.key !== ' ')
-            return;
-        const target = evt.target;
-        if (target.tagName !== 'AT-BUTTON-GROUP-OPTION')
-            return;
-        const option = target;
-        if (!option || option.disabled)
-            return;
-        evt.preventDefault();
-        const index = this.options?.length > 0
-            ? this.options.findIndex((opt) => opt.value === option.value)
-            : this.buttonEls.indexOf(option);
-        if (index >= 0) {
-            const customEvent = new CustomEvent('atuiClick', {
-                detail: { element: option },
-            });
-            this.handleChange(customEvent, option.value, index);
-        }
-    };
-    disconnectedCallback() {
-        this.el.removeEventListener('keydown', this.handleKeyDown);
-    }
     render() {
-        return (h(Host, { key: 'e9baa024be98a42e7a91ef6aa90b2a37632ee883', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: '791b9a34333cec42d329061614d88ca117e69574', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '76af24829083bc4d14143cd23e3593dee756d2b8', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'a2772e5390490d24ae461e394a8c45d9ae36027f', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: '805fc2469ca5f2f7ce63cf751e009bd46ee32706', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: 'db915268bb9de3a1d88d61ffcef8fb9685dcbf98', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '623bc7fd3370778e65e0e78399d7c9f8501c7901', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '342fdd4723103cc896a17e5b9ce278b58a40dca4' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: 'f1f00658d863f6ccff2ceaedb6c7a72ae9d16c77', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'e330486c609fa5b648efaf8c32b6aac8f76814f9', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: 'd6e0de4497275e16070a225a440d18cd13ea5bb2', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'cdbc9625d615dac3e549b48d3e43fd6512b92f45', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'fdbbf90f8ff3b48f60fbe0b162adbd10b87c7824', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: '6f45bf6049cc7a56ad4ff76c8f3eac856699b353', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '47e6e0252d59caa0bcb7053ee4786f5ed67c99df', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: 'e5b6ee49b05b0f3b8dd541a9301bc352eb798a6c', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '7b1c03e14ce35498e68c817847ce4ba8062546a5' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '62996846327d10e22ea458ec3b3b7e2adb9813bd', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {
@@ -288,26 +275,6 @@ export class AtButtonGroup {
                 "setter": false,
                 "reflect": false,
                 "attribute": "disabled"
-            },
-            "type": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "'string' | 'bool'",
-                    "resolved": "\"bool\" | \"string\"",
-                    "references": {}
-                },
-                "required": false,
-                "optional": true,
-                "docs": {
-                    "tags": [],
-                    "text": "Defines the emit type defaults to string. Boolean shoudl be used when you are"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "type",
-                "defaultValue": "'string'"
             }
         };
     }
@@ -347,6 +314,9 @@ export class AtButtonGroup {
     static get elementRef() { return "el"; }
     static get watchers() {
         return [{
+                "propName": "disabled",
+                "methodName": "handleDisabledChange"
+            }, {
                 "propName": "value",
                 "methodName": "handleValueChange"
             }];

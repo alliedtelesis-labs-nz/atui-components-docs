@@ -43,10 +43,6 @@ export declare class AtButtonGroup {
      * Disables the button group and prevents interaction
      */
     disabled?: boolean;
-    /**
-     * Defines the emit type defaults to string. Boolean shoudl be used when you are
-     */
-    type?: 'string' | 'bool';
     el: HTMLAtButtonGroupElement;
     private buttonGroupId;
     /**
@@ -58,18 +54,21 @@ export declare class AtButtonGroup {
      */
     atuiChange: EventEmitter<string>;
     buttonEls: HTMLAtButtonGroupOptionElement[];
+    /**
+     * What each slotted option asked for on its own, so the group's `disabled`
+     * can be lifted again without re-enabling an option that was never meant to
+     * be interactive.
+     */
+    private optionOwnDisabled;
+    handleDisabledChange(): void;
     handleValueChange(newValue: any): void;
     componentDidLoad(): void;
     getButtonElements(): HTMLAtButtonGroupOptionElement[];
     initializeButtons(): void;
+    private applyDisabledToButtons;
     attachEventListenersToButtons(): void;
     activateOptionButton(): void;
     get getButtonGroupOptions(): any;
     handleChange(event: CustomEvent, optionValue: any, index: number): void;
-    /**
-     * Handles keyboard navigation for all button options.
-     */
-    private handleKeyDown;
-    disconnectedCallback(): void;
     render(): any;
 }

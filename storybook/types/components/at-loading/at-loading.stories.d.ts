@@ -19,10 +19,11 @@ declare const _default: {
                 type: string;
             };
         };
-        text: {
+        label: {
             control: {
                 type: string;
             };
+            description: string;
         };
     };
 };
@@ -34,3 +35,4 @@ export declare const Wave: any;
 export declare const Thinking: any;
 export declare const Sizes: () => string;
 export declare const AllVariants: () => string;
+export declare const RichLabel: () => string;

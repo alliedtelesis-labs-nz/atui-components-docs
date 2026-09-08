@@ -89,7 +89,7 @@ export class AtCheckboxHeaderComponent {
     }
     render() {
         const state = this.checkedState();
-        return (h("at-checkbox", { key: '6474f31eeb09f23402258b2c49842b19b81929a8', disabled: this.disabled, checked: state === true, indeterminate: state === 'indeterminate', onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: '741deef31b9481a0f22dde5bfd3f69e6734417f8', disabled: this.disabled, checked: state === true, indeterminate: state === 'indeterminate', onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
     static get is() { return "at-checkbox-header"; }
     static get states() {

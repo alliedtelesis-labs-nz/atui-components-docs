@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ByfMXhOa.js');
+var index = require('./index-Bc1nzv_X.js');
 
 const badgeVariants = {
     base: 'inline-flex rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 items-center',
@@ -65,7 +65,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: '7524cc8e3c367b600aadfe25490ec27f4afe59f5', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: '128c17d326bdd283b1f1f6b0edf5eb3c98e085aa', name: "icon" }), index.h("span", { key: '1302f4702c1c0a7969e73931103288c3dc79a515', "data-name": "badge-label" }, this.label), index.h("slot", { key: 'dd0fdec56d8f1019ca1ca3ef7334accc2081aeae' })));
+        return (index.h(index.Host, { key: '71b903df93ad461d9f543c72c8c2c947b51b1918', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: 'dd8062d3bfed45d139772b056e20fc34aace8d47', name: "icon" }), index.h("span", { key: '06b2f62c6d818e00791b3439b4883232a5f3afa7', "data-name": "badge-label" }, this.label), index.h("slot", { key: '4bfb5247f68459cca71650368449b84b180c4d54' })));
     }
 };
 

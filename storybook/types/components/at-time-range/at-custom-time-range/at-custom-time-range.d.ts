@@ -62,7 +62,7 @@ export declare class AtCustomTimeRangeComponent {
     componentWillRender(): void;
     private savedInitialState;
     clearSelection(): void;
-    private floorMinDate;
+    private floorToMinute;
     private getCustomToDateTime;
     private getCustomFromDateTime;
     private updateMinMaxFlags;

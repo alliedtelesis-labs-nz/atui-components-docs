@@ -3,8 +3,7 @@ const Template = (args) => `
     size="${args.size ?? 'md'}"
     type="${args.type ?? 'default'}"
     variant="${args.variant ?? 'spinner'}"
-    text="${args.text ?? 'Loading'}"
-/>`;
+>${args.label ?? 'Loading'}</at-loading>`;
 export default {
     title: 'Components/Loading',
     argTypes: {
@@ -20,8 +19,9 @@ export default {
             options: ['sm', 'md', 'lg'],
             control: { type: 'radio' },
         },
-        text: {
+        label: {
             control: { type: 'text' },
+            description: 'Slotted label content',
         },
     },
 };
@@ -42,7 +42,7 @@ Typing.args = {
     variant: 'typing',
     size: 'md',
     type: 'default',
-    text: 'Typing',
+    label: 'Typing',
 };
 export const Wave = Template.bind({});
 Wave.args = {
@@ -86,7 +86,7 @@ export const AllVariants = () => `
     </div>
     <div style="text-align: center; padding: 10px;">
         <div style="margin-bottom: 10px; font-weight: bold;">Typing</div>
-        <at-loading variant="typing" size="md" type="default" text="Loading" />
+        <at-loading variant="typing" size="md" type="default">Loading</at-loading>
     </div>
     <div style="text-align: center; padding: 10px;">
         <div style="margin-bottom: 10px; font-weight: bold;">Wave</div>
@@ -97,4 +97,11 @@ export const AllVariants = () => `
         <at-loading variant="thinking" size="md" type="default" />
     </div>
 </div>
+`;
+export const RichLabel = () => `
+<at-loading variant="spinner" size="md" type="default">
+    <span style="display: inline-flex; align-items: center; gap: 8px;">
+        Fetching devices <at-badge type="info" label="3 of 12"></at-badge>
+    </span>
+</at-loading>
 `;

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ByfMXhOa.js');
+var index = require('./index-Bc1nzv_X.js');
 var translation = require('./translation-NP6A4XKu.js');
 
 const AtPromptContainer = class {
@@ -131,7 +131,6 @@ const AtPromptContainer = class {
                 score: event.detail.score,
             };
             this.messages = updatedMessages;
-            this.atMessageVote.emit(event.detail);
         }
         this.atMessageVote.emit(event.detail);
     }
@@ -214,7 +213,7 @@ const AtPromptContainer = class {
         return (index.h("div", { class: "p-4" }, index.h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (index.h(index.Host, { key: 'fc1d18e8d8f6c432102d9b883c866083832ed9f0', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '61c5e1f0039be84f908803506cb04c872fde58e0', name: "prompt-container-header" }), index.h("div", { key: 'd003af4b9c90914dea410d2468d65bb08bcd94bb', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: 'ee14cfd4c20e8db1c2e460d80c5f4a3159d77421', chatbot_title: this.chatbot_title, messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: 'c2f01937502d2070dce090f95ead66d8f535d131', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '55e25df7695577a393f5a18283b17e3ce9576892', name: "prompt-container-footer" }))));
+        return (index.h(index.Host, { key: 'fc82330b039b07a39042e73ad03aeaeba0e5195f', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: 'b1840a5e10d8c32219c677b568f44b6f5b1a2823', name: "prompt-container-header" }), index.h("div", { key: '274f3201061f52d51410ad912200082e0c3b75ba', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: 'b1fb2733d9b796d561b6df56140bec8979b9579b', chatbot_title: this.chatbot_title, messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: '01eef4b2c37f68e18643a5ac028925d6ae64258f', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '4f7984bc0d31ee4a12fc1a2a46608ed4e8207375', name: "prompt-container-footer" }))));
     }
 };
 

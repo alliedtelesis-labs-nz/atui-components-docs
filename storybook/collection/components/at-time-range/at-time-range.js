@@ -180,7 +180,7 @@ export class AtTimeRangeComponent {
         }
     }
     render() {
-        return (h(Host, { key: '6df092142cf62900d6a55570d9556bd4c514dee1', class: "relative flex justify-center" }, this.enable_relative_time
+        return (h(Host, { key: '9fd800f54e41359c34d084ef7521b644eca49c70', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

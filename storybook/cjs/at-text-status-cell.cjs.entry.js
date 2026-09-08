@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ByfMXhOa.js');
+var index = require('./index-Bc1nzv_X.js');
 
 const AtTextStatusCellComponent = class {
     constructor(hostRef) {
@@ -38,7 +38,7 @@ const AtTextStatusCellComponent = class {
         return badgeType || 'default';
     }
     render() {
-        return (index.h(index.Host, { key: '5199703d9011073d56cf88833986f751a399dc08', class: "flex h-full items-center" }, this.showSimpleText && this.params && (index.h("span", { key: '567f309834fc8106c261eeaaf8a74db09639a854', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (index.h(index.Host, { key: '093e9564fe67d5552d99e488b819155ebaa52df9', class: "flex h-full items-center" }, this.showSimpleText && this.params && (index.h("span", { key: '3f7f7cfcac40509097e46ae4d67b8e334478ddb5', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (index.h("at-tooltip", { position: "top", class: "h-fit self-center" }, index.h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), index.h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (index.h("at-badge", { type: this.type, label: this.text })))));
     }

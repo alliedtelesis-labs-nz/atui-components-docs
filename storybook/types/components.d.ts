@@ -382,11 +382,6 @@ export namespace Components {
          */
         "options": AtIButtonGroupOption[];
         /**
-          * Defines the emit type defaults to string. Boolean shoudl be used when you are
-          * @default 'string'
-         */
-        "type"?: 'string' | 'bool';
-        /**
           * Sets the current active button
          */
         "value": string;
@@ -1731,7 +1726,7 @@ export namespace Components {
     }
     /**
      * @category Feedback
-     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
      */
     interface AtLoading {
         /**
@@ -1739,11 +1734,6 @@ export namespace Components {
           * @default 'md'
          */
         "size": AtLoadingSize;
-        /**
-          * Custom text to display with text-based animations
-          * @default 'Loading'
-         */
-        "text": string;
         /**
           * Visual type/color of the loading indicator
           * @default 'default'
@@ -4625,7 +4615,7 @@ declare global {
     };
     /**
      * @category Feedback
-     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
      */
     interface HTMLAtLoadingElement extends Components.AtLoading, HTMLStencilElement {
     }
@@ -6022,11 +6012,6 @@ declare namespace LocalJSX {
          */
         "options"?: AtIButtonGroupOption[];
         /**
-          * Defines the emit type defaults to string. Boolean shoudl be used when you are
-          * @default 'string'
-         */
-        "type"?: 'string' | 'bool';
-        /**
           * Sets the current active button
          */
         "value"?: string;
@@ -7383,7 +7368,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Feedback
-     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+     * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
      */
     interface AtLoading {
         /**
@@ -7391,11 +7376,6 @@ declare namespace LocalJSX {
           * @default 'md'
          */
         "size"?: AtLoadingSize;
-        /**
-          * Custom text to display with text-based animations
-          * @default 'Loading'
-         */
-        "text"?: string;
         /**
           * Visual type/color of the loading indicator
           * @default 'default'
@@ -9502,7 +9482,6 @@ declare namespace LocalJSX {
         "error_text": string;
         "value": string;
         "disabled": boolean;
-        "type": 'string' | 'bool';
     }
     interface AtButtonGroupOptionAttributes {
         "value": string;
@@ -9758,7 +9737,6 @@ declare namespace LocalJSX {
         "variant": AtLoadingVariant;
         "type": AtLoadingType;
         "size": AtLoadingSize;
-        "text": string;
     }
     interface AtMenuAttributes {
         "offset_x": number;
@@ -10478,7 +10456,7 @@ declare module "@stencil/core" {
             "at-list-selector-item": LocalJSX.IntrinsicElements["at-list-selector-item"] & JSXBase.HTMLAttributes<HTMLAtListSelectorItemElement>;
             /**
              * @category Feedback
-             * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Perfect for indicating ongoing processes or data fetching states across different contexts.
+             * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
              */
             "at-loading": LocalJSX.IntrinsicElements["at-loading"] & JSXBase.HTMLAttributes<HTMLAtLoadingElement>;
             "at-menu": LocalJSX.IntrinsicElements["at-menu"] & JSXBase.HTMLAttributes<HTMLAtMenuElement>;

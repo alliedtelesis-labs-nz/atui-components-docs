@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h } from './index-CGGSFxDu.js';
+import { r as registerInstance, c as createEvent, h } from './index-vSlhROK9.js';
 
 const AtTreeComponent = class {
     constructor(hostRef) {
@@ -61,7 +61,7 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (h("div", { key: 'ed80dbcb1f7e50ac381458a6e3959ba233e2d441', class: "w-full" }, h("slot", { key: '6aea2b23ba16d25964e29a7966a1bf52c4155a27' }), this.flattenedItemList &&
+        return (h("div", { key: '97b63ed8930e0afb0fd1ab542a263a42c1f74e0e', class: "w-full" }, h("slot", { key: 'd139413e691f6cba3145aaff8065e0ca7a39d8b7' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "block w-full" }, h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));

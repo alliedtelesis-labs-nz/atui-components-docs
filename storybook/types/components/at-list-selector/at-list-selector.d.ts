@@ -40,9 +40,9 @@ export declare class AtListSelector {
      */
     atuiInfoButtonClick: EventEmitter<AtEvent>;
     el: HTMLAtListSelectorElement;
-    listItemEls: HTMLAtListSelectorItemElement[];
     onSelect(item: AtIListSelectorItem): void;
     onClickInfoButton(event: Event): void;
+    getListItemElements(): HTMLAtListSelectorItemElement[];
     focusAndClickRelativeItem(relativePosition: number): void;
     handleKeyDown(event: KeyboardEvent): void;
     get getListItems(): any;

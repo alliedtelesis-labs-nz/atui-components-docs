@@ -2811,6 +2811,10 @@ strong {
   display: contents;
 }
 
+.list-item {
+  display: list-item;
+}
+
 .hidden {
   display: none;
 }
@@ -3589,6 +3593,12 @@ strong {
   border-color: color-mix(in srgb, var(--token-border-active) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
+.border-active-accent {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .border-button-destructive {
   --tw-border-opacity:
       1;
@@ -3739,6 +3749,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-card-background) 80%, transparent);
 }
 
+.bg-current {
+  background-color: currentColor;
+}
+
 .bg-disabled-background {
   --tw-bg-opacity:
       1;
@@ -3849,12 +3863,6 @@ strong {
   --tw-bg-opacity:
       1;
   background-color: color-mix(in srgb, var(--token-feedback-warning-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
-}
-
-.bg-gray-500 {
-  --tw-bg-opacity:
-      1;
-  background-color: rgb(107, 114, 128, var(--tw-bg-opacity, 1));
 }
 
 .bg-input-background {
@@ -4279,6 +4287,10 @@ strong {
   font-size: var(--token-font-size-sm);
 }
 
+.text-xl {
+  font-size: var(--token-font-size-xl);
+}
+
 .text-xs {
   font-size: var(--token-font-size-xs);
 }
@@ -4353,6 +4365,12 @@ strong {
   line-height: 1.25;
 }
 
+.\!text-active-foreground {
+  --tw-text-opacity:
+      1 !important;
+  color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent) !important;
+}
+
 .\!text-disabled {
   --tw-text-opacity:
       1 !important;
@@ -4369,6 +4387,18 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-active) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-active-accent {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-active-foreground {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-button-accent {
@@ -4441,6 +4471,12 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-error) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-error-foreground {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-error-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-feedback-error-accent {
@@ -4561,6 +4597,12 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-success) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-warning-foreground {
+  --tw-text-opacity:
+      1;
+  color: color-mix(in srgb, var(--token-state-warning-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .no-underline {
@@ -4877,6 +4919,12 @@ strong {
   z-index: 10;
 }
 
+.focus-within\:border-active-accent:focus-within {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .focus-within\:border-destructive:focus-within {
   --tw-border-opacity:
       1;
@@ -4986,6 +5034,12 @@ strong {
   border-style: none;
 }
 
+.focus\:border-active-accent:focus {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
+}
+
 .focus\:bg-surface-overlay\/20:focus {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 20%, transparent);
 }
@@ -5040,6 +5094,12 @@ strong {
 
 .focus-visible\:z-20:focus-visible {
   z-index: 20;
+}
+
+.focus-visible\:border-active-accent:focus-visible {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .focus-visible\:bg-surface-overlay\/10:focus-visible {
@@ -5180,6 +5240,12 @@ strong {
 
 .group\/checkbox:focus-visible .group-focus-visible\/checkbox\:border-0 {
   border-width: 0px;
+}
+
+.group\/checkbox:focus-visible .group-focus-visible\/checkbox\:border-active-accent {
+  --tw-border-opacity:
+      1;
+  border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
 .group\/checkbox:focus-visible .group-focus-visible\/checkbox\:ring {
