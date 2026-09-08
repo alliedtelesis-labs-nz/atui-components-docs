@@ -237,8 +237,7 @@ const AtSelectComponent = class {
             if (this.isGroup(option)) {
                 const filteredChildren = option.children.filter((child) => {
                     const searchableText = (child.label || child.value).toLowerCase();
-                    return (searchableText.includes(trimmedSearch) ||
-                        child.value.toLowerCase().includes(trimmedSearch));
+                    return searchableText.includes(trimmedSearch);
                 });
                 if (filteredChildren.length > 0) {
                     return { ...option, children: filteredChildren };
@@ -246,19 +245,14 @@ const AtSelectComponent = class {
                 return null;
             }
             const searchableText = (option.label || option.value).toLowerCase();
-            return searchableText.includes(trimmedSearch) ||
-                option.value.toLowerCase().includes(trimmedSearch)
-                ? option
-                : null;
+            return searchableText.includes(trimmedSearch) ? option : null;
         })
             .filter(Boolean);
     }
     filterSlottedContent(trimmedSearch) {
         this.optionEls.forEach((optionEl) => {
             const label = optionEl.label || optionEl.value;
-            const matches = !trimmedSearch ||
-                label.toLowerCase().includes(trimmedSearch) ||
-                optionEl.value.toLowerCase().includes(trimmedSearch);
+            const matches = !trimmedSearch || label.toLowerCase().includes(trimmedSearch);
             optionEl.style.display = matches ? '' : 'none';
         });
         this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
@@ -472,16 +466,16 @@ const AtSelectComponent = class {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (index.h(index.Host, { key: '27cf1ca5c355ab1f07b38201ab85d648d52cc179', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'df96448957ce26a8b044cd8026aa97ad8db6cc76', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '5896f9017afc77b7b95a77b8ca8a0ee21ab382bb', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: 'f62bec0fa67c0eba5c483f1d450bcb5d67163f24', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '2134ca7b171264b028b29dd5109e6de166d558f9' }, this.error_text && this.invalid && (index.h("span", { key: 'bfc1f76b9d35283874ab6f52b3f7dd87b0a2cfab', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '71a63892bd99a1514e834646636f776b57c1e302' }, this.error_text && this.invalid && (index.h("span", { key: '72bf7b434c44aef3a1355d6f65775a9a060489b5', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));

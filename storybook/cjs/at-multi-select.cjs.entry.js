@@ -169,8 +169,7 @@ const AtMultiSelectComponent = class {
             if (this.isGroup(option)) {
                 const filteredChildren = option.children.filter((child) => {
                     const searchableText = (child.label || child.value).toLowerCase();
-                    return (searchableText.includes(trimmedSearch) ||
-                        child.value.toLowerCase().includes(trimmedSearch));
+                    return searchableText.includes(trimmedSearch);
                 });
                 if (filteredChildren.length > 0) {
                     return { ...option, children: filteredChildren };
@@ -178,19 +177,14 @@ const AtMultiSelectComponent = class {
                 return null;
             }
             const searchableText = (option.label || option.value).toLowerCase();
-            return searchableText.includes(trimmedSearch) ||
-                option.value.toLowerCase().includes(trimmedSearch)
-                ? option
-                : null;
+            return searchableText.includes(trimmedSearch) ? option : null;
         })
             .filter(Boolean);
     }
     filterSlottedContent(trimmedSearch) {
         this.optionEls.forEach((optionEl) => {
             const label = optionEl.label || optionEl.value;
-            const matches = !trimmedSearch ||
-                label.toLowerCase().includes(trimmedSearch) ||
-                optionEl.value.toLowerCase().includes(trimmedSearch);
+            const matches = !trimmedSearch || label.toLowerCase().includes(trimmedSearch);
             optionEl.style.display = matches ? '' : 'none';
         });
         this.el.querySelectorAll('at-select-group').forEach((groupEl) => {
@@ -316,16 +310,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: 'a6524ab13100e57b2b1f8570a3c1cfbcc53770e0', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'e2e150c9636f286b2b01a18c2bc696c89f7e0746', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '0d2732a0d4d1e85d52cbbd37d7cbf3bf70ee7736', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '56c7ac1da652783f7ad37f372469fa5ef53f7ebe', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '1757f1e4d87ac3bdc32617bb00b5298bbcb85c9a' }, this.error_text && this.invalid && (index.h("span", { key: '0ccf315f0746aa5bfe4755ea076afbd243efec67', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'ff13a51355f17d55af7f094f5137ab643d75d908' }, this.error_text && this.invalid && (index.h("span", { key: '8a806d018674283434a0b4bc34d0802229bd7d1e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {
