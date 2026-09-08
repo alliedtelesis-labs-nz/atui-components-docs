@@ -26,3 +26,12 @@ Default.args = {
     size: 'sm',
     disable_tooltip: false,
 };
+export const PartialBreakdown = Template.bind({});
+PartialBreakdown.args = {
+    status_bar: [
+        { tooltip: 'upgraded', percentage: 35, backgroundColor: 'green' },
+        { tooltip: 'failed', percentage: 15, backgroundColor: 'red' },
+    ],
+    size: 'lg',
+    disable_tooltip: false,
+};
