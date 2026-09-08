@@ -36,6 +36,13 @@ export class AtSidePanelComponent {
      */
     has_scrollbar = true;
     /**
+     * Apply or remove padding from the panel content area. Remove it when the
+     * slotted content owns its own spacing -- a peek view rendering a page
+     * summary usually pads at the page component, and would otherwise be
+     * indented twice.
+     */
+    padding = true;
+    /**
      * Displays a close button if set
      */
     has_close_button = true;
@@ -202,7 +209,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '242c3707814be435abb08bb21b0e6014c1010b0a', "data-open": this.isOpen }, h("dialog", { key: 'a3222a6fbf1003bfb56ba36934575f28a60ea9eb', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'e789875665863eb8bcf6c7b0fde605efb3c13497', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '3c423e7f307c6fbc29ebb4cace1be6bf8a0b6681', class: "header", "data-name": "header" }, h("div", { key: 'ad58d88e89d9f44d222ebea566ba2e8be58750ae' }, h("slot", { key: 'fd4ee3c21d1a4e35ae3d3ad83824ea5767582a0b', name: "title" }), this.panel_title && (h("h3", { key: 'e06f1a946820a5a6f66176428f88a7bdf0c9487f', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'f96b7a71a622b0d2dc14a5aac1e9ac0f1626f668', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'd4ce21e17be391d36fc4a8a447e16f9851d57db2' }, h("slot", { key: '90f5d8d12db2d0af66e309d7e50f8004d112aa92', name: "actions" }), this.has_close_button && (h("at-button", { key: '249124e11c4bdb307a3d19eeec5f40fefacecf33', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '3935dfa9eeca7302221d54ad369571478870be30', slot: "icon", name: "close" }))))), h("div", { key: '37dd05f71fe4409f4172fe0fd0a9103ffef81db1', "data-name": "content", class: "content" }, h("slot", { key: '5e4879d832084327d651865e69434149d145f6b0' })), h("div", { key: 'df9b601b32f8732513f738bb7a70b749dfe83279', "data-name": "footer", class: "footer" }, h("slot", { key: '0279efd82e96a47a3970442a869f7d2c177f3c95', name: "footer" }))))));
+        return (h(Host, { key: '962f74decc3ec389f5ed35e2ead18c30f268b6aa', "data-open": this.isOpen }, h("dialog", { key: '3e5b6492c7f739b008fbb932ef12664b4a591c60', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'bd2f2fc9976068dbacdba50bf0cdf3e36502ee72', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '2be0acbe2c3349ed4b5c1b6d2d8a65b35afb9475', class: "header", "data-name": "header" }, h("div", { key: '12a167474d9e903c8af62c018a832df263b57f08' }, h("slot", { key: '284c7d7b613a6f8f30187dfc816b7b710edd0f86', name: "title" }), this.panel_title && (h("h3", { key: 'b345c9cc2f551ced01d58be0608b26d998b2543a', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'ade121a83cb4bc9edffded73f9220a5ab7041fb4', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'baf99557508df5ef2b196f88bf38346b4e60eac5' }, h("slot", { key: 'f65ff2ea64c6f31fe14bfe47a9229aeba91ec639', name: "actions" }), this.has_close_button && (h("at-button", { key: 'c321ee20db8f18586aaf107408ff0da4a83bf0af', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '36a587c8bd3de23b0b8ef693b4f740f3b04af241', slot: "icon", name: "close" }))))), h("div", { key: 'acc5c21d3ef2d0b0653e5fd3e33ad4989ce6109d', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: '04d32835ab9605053774bdb5e9f450524df6069c' })), h("div", { key: '649aac7d8e8fad9941bed4b463e540be0a8e3fde', "data-name": "footer", class: "footer" }, h("slot", { key: 'f379e7ac3e0cba6bf98df633b7905a0672d39645', name: "footer" }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
@@ -326,6 +333,26 @@ export class AtSidePanelComponent {
                 "setter": false,
                 "reflect": true,
                 "attribute": "has_scrollbar",
+                "defaultValue": "true"
+            },
+            "padding": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Apply or remove padding from the panel content area. Remove it when the\nslotted content owns its own spacing -- a peek view rendering a page\nsummary usually pads at the page component, and would otherwise be\nindented twice."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "padding",
                 "defaultValue": "true"
             },
             "has_close_button": {

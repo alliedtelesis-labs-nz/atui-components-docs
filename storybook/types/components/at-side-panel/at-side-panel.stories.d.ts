@@ -20,3 +20,4 @@ export declare const Default: any;
 export declare const ExternalTrigger: any;
 export declare const TableRowExample: any;
 export declare const FooterSlot: any;
+export declare const FlushContent: any;

@@ -2767,6 +2767,11 @@ export namespace Components {
          */
         "origin": AtSidePanelDirection;
         /**
+          * Apply or remove padding from the panel content area. Remove it when the slotted content owns its own spacing -- a peek view rendering a page summary usually pads at the page component, and would otherwise be indented twice.
+          * @default true
+         */
+        "padding"?: boolean;
+        /**
           * Subtitle displayed in the side panel
          */
         "panel_subtitle": string;
@@ -8472,6 +8477,11 @@ declare namespace LocalJSX {
          */
         "origin"?: AtSidePanelDirection;
         /**
+          * Apply or remove padding from the panel content area. Remove it when the slotted content owns its own spacing -- a peek view rendering a page summary usually pads at the page component, and would otherwise be indented twice.
+          * @default true
+         */
+        "padding"?: boolean;
+        /**
           * Subtitle displayed in the side panel
          */
         "panel_subtitle"?: string;
@@ -9933,6 +9943,7 @@ declare namespace LocalJSX {
         "panel_subtitle": string;
         "origin": AtSidePanelDirection;
         "has_scrollbar": boolean;
+        "padding": boolean;
         "has_close_button": boolean;
         "position": AtSidePanelPosition;
         "backdrop": boolean;

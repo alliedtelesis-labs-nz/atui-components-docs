@@ -63,7 +63,6 @@ dialog.backdrop::backdrop {
 }
 
 :host {
-  --token-color-white-rgb: 255, 255, 255;
   display: contents;
 }
 :host .container {
@@ -149,6 +148,8 @@ dialog.backdrop::backdrop {
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
+}
+:host .content.padded {
   padding: 16px;
 }
 :host .footer {

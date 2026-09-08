@@ -39,6 +39,13 @@ export declare class AtSidePanelComponent {
      */
     has_scrollbar: boolean;
     /**
+     * Apply or remove padding from the panel content area. Remove it when the
+     * slotted content owns its own spacing -- a peek view rendering a page
+     * summary usually pads at the page component, and would otherwise be
+     * indented twice.
+     */
+    padding?: boolean;
+    /**
      * Displays a close button if set
      */
     has_close_button: boolean;

@@ -109,6 +109,20 @@ const FooterSlotTemplate = (args) => `
     </div>
 </at-side-panel>
 `;
+const FlushContentTemplate = (args) => `
+<at-button data-sidepanel="flush-panel" label="Open Sidepanel" type="primary"></at-button>
+<at-side-panel
+    trigger_id="flush-panel"
+    panel_title="${args.panel_title ?? ''}"
+    size="${args.size ?? 'lg'}"
+    padding="false"
+>
+    <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
+        <h3 style="margin: 0;">Site summary</h3>
+        <at-message message_title="This page component owns its own spacing" icon="info"></at-message>
+    </div>
+</at-side-panel>
+`;
 export const Default = Template.bind({});
 Default.args = {
     panel_id: 'panel',
@@ -150,6 +164,19 @@ FooterSlot.parameters = {
     docs: {
         description: {
             story: "The footer slot carries the header's surface treatment. It sits directly beneath short content and sticks to the bottom edge only once the panel scrolls.",
+        },
+    },
+};
+export const FlushContent = FlushContentTemplate.bind({});
+FlushContent.storyName = 'Flush Content';
+FlushContent.args = {
+    panel_title: 'Site summary',
+    size: 'lg',
+};
+FlushContent.parameters = {
+    docs: {
+        description: {
+            story: 'The content area is padded by default. Set `padding="false"` when the slotted content pads itself -- a peek view rendering a page summary usually spaces at the page component, and would otherwise be indented twice.',
         },
     },
 };
