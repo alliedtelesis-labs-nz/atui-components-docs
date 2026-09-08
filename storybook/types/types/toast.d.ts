@@ -9,6 +9,14 @@ export interface AtIToastOptions {
     timeout?: number;
     dismissible?: boolean;
     closeButton?: boolean;
+    /**
+     * Draws a countdown bar along the bottom edge, running down with the
+     * timeout. Opt in where the remaining time is a deadline the user is meant
+     * to act inside -- an `action` they may want to take, most of all an
+     * `Undo`. On a toast that only reports, it is chrome counting down to
+     * nothing.
+     */
+    showProgress?: boolean;
     action?: AtIToastAction;
 }
 /**

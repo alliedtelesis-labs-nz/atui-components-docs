@@ -32,6 +32,7 @@ const AtToasterComponent = class {
                 paused: false,
                 hovered: false,
                 focused: false,
+                paints: this.hasCountdown(toast),
                 handle: setTimeout(() => this.removeToast(toast.id), toast.timeout),
             });
             this.scheduleFrame();
@@ -86,7 +87,12 @@ const AtToasterComponent = class {
         this.scheduleFrame();
     };
     scheduleFrame() {
-        if (!this.frame && this.timers.size) {
+        if (this.frame) {
+            return;
+        }
+        let paints = false;
+        this.timers.forEach((timer) => (paints ||= timer.paints));
+        if (paints) {
             this.frame = requestAnimationFrame(this.paint);
         }
     }
@@ -232,14 +238,14 @@ const AtToasterComponent = class {
         return `at-toast ${toast.dismissible ? '' : 'undismissible'}`;
     }
     hasCountdown(toast) {
-        return toast.dismissible && toast.timeout > 0;
+        return toast.dismissible && toast.timeout > 0 && !!toast.showProgress;
     }
     /**
      * Renders the toaster container and all active toasts.
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (index.h("div", { key: '52fedc59c998bb4294b8746bb2f1cec2258f4e5d', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (index.h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHold(toast.id, 'hovered', true), onMouseLeave: () => this.setHold(toast.id, 'hovered', false) }, index.h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
+        return (index.h("div", { key: '9aef81f011690aa871ecf14aba704e80446b7a0a', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (index.h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHold(toast.id, 'hovered', true), onMouseLeave: () => this.setHold(toast.id, 'hovered', false) }, index.h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
                 event.stopPropagation();
                 this.clickActionButton(toast);
             } })), toast.closeButton && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {

@@ -1398,6 +1398,7 @@ const DEFAULT_TOAST_OPTIONS = {
     timeout: 5000,
     dismissible: true,
     closeButton: false,
+    showProgress: false,
 };
 
 class ToasterService {

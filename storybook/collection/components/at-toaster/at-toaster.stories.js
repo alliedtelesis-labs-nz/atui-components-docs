@@ -53,11 +53,13 @@ Default.args = {
     timeout: 5000,
     dismissible: true,
     closeButton: false,
+    showProgress: false,
 };
 /**
  * The friction ladder's low tier: act now, then offer the way back on the toast
  * itself rather than pre-confirming. Taking the action dismisses the toast. The
- * countdown bar says how long the offer stands, and hovering the toast or
+ * countdown bar -- opted into with `showProgress`, which is what an offer with
+ * a deadline is for -- says how long it stands, and hovering the toast or
  * tabbing into it stops the clock, resuming with the time that was left.
  */
 export const WithUndoAction = () => `
@@ -69,6 +71,7 @@ export const WithUndoAction = () => `
       state.textContent = "Widget removed";
       ToasterService.show("info", "Widget removed.", {
         timeout: 8000,
+        showProgress: true,
         action: {
           label: "Undo",
           onTrigger: () => {
@@ -103,10 +106,10 @@ export const DismissedByHandle = () => `
   </script>
 `;
 /**
- * Every dismissible toast with a timeout carries a countdown bar. Hover it, or
- * tab into it, and the clock stops until you leave: a toast the user is reading
- * or reaching for should not be pulled out from under them. A long timeout here
- * so the pause is easy to see by hand.
+ * The pause is not opt-in the way the bar is: hover any timed toast, or tab
+ * into it, and the clock stops until you leave, because a toast the user is
+ * reading or reaching for should not be pulled out from under them. The bar is
+ * on here so the hold is visible; a long timeout so it is easy to see by hand.
  */
 export const PausesOnHover = () => `
   <at-button data-name="show" label="Show a slow toast" type="primary"></at-button>
@@ -115,6 +118,7 @@ export const PausesOnHover = () => `
       ToasterService.show("success", "Hover me, or tab to the Undo.", {
         title: "Saved",
         timeout: 15000,
+        showProgress: true,
         action: { label: "Undo", onTrigger: () => {} },
       });
     };
@@ -132,6 +136,7 @@ export const CountdownByType = () => `
       ["default", "info", "success", "warning", "error"].forEach((type) =>
         ToasterService.show(type, \`A \${type} toast, counting down.\`, {
           timeout: 15000,
+          showProgress: true,
         }),
       );
     };
