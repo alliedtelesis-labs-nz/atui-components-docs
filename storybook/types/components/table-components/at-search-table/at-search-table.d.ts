@@ -395,19 +395,6 @@ export declare class AtSearchTable {
      * transition into checked, so the previous row is cleared by being replaced.
      */
     private selectRow;
-    /**
-     * Anything that answers a click itself keeps it. `enableCellTextSelection` is on, so
-     * a drag that ends up highlighting text is a read, not a pick, and is let through
-     * too.
-     */
-    private static readonly INTERACTIVE_IN_ROW;
-    /**
-     * A click anywhere on the row reaches the same write as the selection control, so the
-     * whole row is the target rather than a 16px box. The control's own column is skipped
-     * - it has already reported through `atuiChange`, and handling it here would toggle
-     * twice and land back where it started.
-     */
-    private handleCellClick;
     private toggleRowSelection;
     private togglePageSelection;
     private pageSelectionState;

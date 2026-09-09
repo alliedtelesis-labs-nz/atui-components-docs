@@ -89,13 +89,3 @@ atui-menu atui-checkbox[aria-checked] {
 .ag-row.atui-row-selected .ag-cell {
   background-color: var(--token-state-active-background);
 }
-
-/* Only where a click actually picks the row - see `atui-rows-selectable` below. */
-.atui-rows-selectable .ag-row .ag-cell {
-  cursor: pointer;
-}
-
-.atui-rows-selectable .ag-row .ag-cell:has(a[href]),
-.atui-rows-selectable .ag-row .ag-cell:has(button) {
-  cursor: auto;
-}
