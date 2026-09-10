@@ -36,18 +36,18 @@ export class AtTextImageCell {
         return this.params.imageSource(this.params.data);
     }
     render() {
-        return (h(Host, { key: '4c9c77d45841067590362d65c4ab5cc74d20d014', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'e99d15d6f455534b5b79ea14cb0639972f1bba56', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '4ecd7bef56b041ee3c8b5f93b9d6771de2c72cfd', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
-            this.imageSource && (h("img", { key: '5dd7095b739e5c3aaf2c03185c4ce23635c509bf', src: this.imageSource, style: {
+        return (h(Host, { key: '78b15074fe50591460f68e4bfe8388dcc90700cd', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '077d8166e870b37dd5df79bb3fe007ca152b821e', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, h("div", { key: '47abdf5f6fcc68cda07dc3846dd9c1bdeea24010', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
+            this.imageSource && (h("img", { key: '0071703eae1b880eaa9a6fac94f819774475b623', src: this.imageSource, style: {
                 height: `${this.imageHeight}px`,
                 width: this.imageWidth
                     ? `${this.imageWidth}px`
                     : undefined,
-            }, class: this.imageClass && this.imageClass, alt: "" })), this.text && h("span", { key: 'a9bf06a4e6f18fbbf6bbd91e8b62546c4b795c70', class: "truncate" }, this.text), this.imagePosition === 'after' && this.imageSource && (h("img", { key: '9c2058e16888cff3daa66307577bc1e408b8e27e', src: this.imageSource, style: {
+            }, class: this.imageClass && this.imageClass, alt: "" })), this.text && h("span", { key: '5657c49c5da67ba5eee8db0f228fa07ea0aee931', class: "truncate" }, this.text), this.imagePosition === 'after' && this.imageSource && (h("img", { key: 'fdb788af573768d37366ce38a56c8385f24ca9f2', src: this.imageSource, style: {
                 height: `${this.imageHeight}px`,
                 width: this.imageWidth
                     ? `${this.imageWidth}px`
                     : undefined,
-            }, class: this.imageClass && this.imageClass, alt: "" }))), this.params?.generateTooltip && (h("span", { key: '8a6d0174ac8fd0dcc587c7eb62d078edd01c10c7' }, this.params.generateTooltip(this.params))))));
+            }, class: this.imageClass && this.imageClass, alt: "" }))), this.params?.generateTooltip && (h("span", { key: 'ebc5bf38093172fc24c89417f7b48fba0b16afb3' }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "at-text-image-cell"; }
     static get states() {

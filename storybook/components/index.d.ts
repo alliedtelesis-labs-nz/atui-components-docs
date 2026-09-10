@@ -147,10 +147,14 @@ export { AtSidePanelComponent as AtSidePanel } from '../types/components/at-side
 export { defineCustomElement as defineCustomElementAtSidePanel } from './at-side-panel';
 export { AtSidebarComponent as AtSidebar } from '../types/components/at-sidebar/at-sidebar';
 export { defineCustomElement as defineCustomElementAtSidebar } from './at-sidebar';
+export { AtSidebarInsetComponent as AtSidebarInset } from '../types/components/at-sidebar/at-sidebar-inset/at-sidebar-inset';
+export { defineCustomElement as defineCustomElementAtSidebarInset } from './at-sidebar-inset';
 export { AtSidebarMenuComponent as AtSidebarMenu } from '../types/components/at-sidebar/at-sidebar-menu/at-sidebar-menu';
 export { defineCustomElement as defineCustomElementAtSidebarMenu } from './at-sidebar-menu';
 export { AtSidebarMenuitemComponent as AtSidebarMenuitem } from '../types/components/at-sidebar/at-sidebar-menuitem/at-sidebar-menuitem';
 export { defineCustomElement as defineCustomElementAtSidebarMenuitem } from './at-sidebar-menuitem';
+export { AtSidebarProviderComponent as AtSidebarProvider } from '../types/components/at-sidebar/at-sidebar-provider/at-sidebar-provider';
+export { defineCustomElement as defineCustomElementAtSidebarProvider } from './at-sidebar-provider';
 export { AtSidebarSubmenuComponent as AtSidebarSubmenu } from '../types/components/at-sidebar/at-sidebar-submenu/at-sidebar-submenu';
 export { defineCustomElement as defineCustomElementAtSidebarSubmenu } from './at-sidebar-submenu';
 export { AtSidebarTriggerComponent as AtSidebarTrigger } from '../types/components/at-sidebar/at-sidebar-trigger/at-sidebar-trigger';

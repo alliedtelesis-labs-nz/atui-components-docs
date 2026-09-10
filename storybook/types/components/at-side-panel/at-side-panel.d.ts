@@ -100,6 +100,17 @@ export declare class AtSidePanelComponent {
     private handleClose;
     private handleDialogClose;
     private handleKeyDown;
+    /**
+     * position:fixed's containing block is the viewport, which is what a
+     * panel opened outside a multi-sidebar layout wants. Nested inside
+     * at-sidebar-inset, the panel is meant to stay confined to that content
+     * region instead — at-sidebar-inset is position:relative specifically so
+     * an absolute-positioned container here is contained by it. Only
+     * overridden when the consumer left position at its 'fixed' default.
+     */
+    private insideSidebarInset;
+    componentWillLoad(): void;
+    private get effectivePosition();
     offClickHandler(event: any): void;
     componentDidLoad(): Promise<void>;
     disconnectedCallback(): void;

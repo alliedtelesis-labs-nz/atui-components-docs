@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 
 const AtChipListCell = class {
     constructor(hostRef) {
@@ -98,9 +98,9 @@ const AtChipListCell = class {
         // measures itself against; w-full stays as the fallback for when there
         // is no column to ask, such as in a story.
         const collapse = this.params?.show_overflow_counter ?? true;
-        return (index.h(index.Host, { key: '5198fec97ff77aaa53ec398b3f81633aff3d19e7', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
+        return (index.h(index.Host, { key: 'd4c52ac9aef16ece677be2095dda3896c22224cb', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
                 ? { width: `${this.contentWidth}px` }
-                : undefined }, index.h("at-chip-list", { key: 'bfec81660ecee6b0ed9e22c3fa22c10c8bb7f27d', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
+                : undefined }, index.h("at-chip-list", { key: 'c4f55d48ca47db5986cd754fae95ba7e4e440d56', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
     }
 };
 

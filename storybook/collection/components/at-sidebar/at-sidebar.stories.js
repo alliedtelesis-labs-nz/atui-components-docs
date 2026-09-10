@@ -19,14 +19,15 @@ const Template = (args) => `
           >
           </at-sidebar-menuitem>
           
-          <at-sidebar-menu-sub>
+          <at-sidebar-submenu label="submenu">
             <at-sidebar-menuitem
+              slot="submenu-content"
               label="menuitem in sub menu"
               icon="settings"
               badge="87"
             >
             </at-sidebar-menuitem>
-          </at-sidebar-menu-sub>
+          </at-sidebar-submenu>
 
         </at-sidebar-menu>
         <div slot="page-content" class="h-[400px] w-full bg-warning">

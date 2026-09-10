@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-vSlhROK9.js';
+import { r as registerInstance, h } from './index-46ti_ijN.js';
 
 const atMessageCss = () => `at-message [slot=actions]{align-self:start}`;
 
@@ -66,7 +66,7 @@ const AtMessage = class {
         return `${messageVariants.base} ${messageVariants.background[this.impact][this.type]}`;
     }
     render() {
-        return (h("div", { key: '9c5b3804b420a39b1f6d3e51072e8dd4e156a028', class: this.hostClasses, "data-name": "message-container" }, h("at-icon", { key: '1dd6af2b3e471fb20d45e9c5144f98ee05d1a5fd', class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName }), h("div", { key: 'caf577e98f79c74897d7ae38b04df17b8c0d17f2', class: "flex w-full flex-row justify-between gap-4 text-sm" }, h("div", { key: '5ca912f10266e23f12cd94df3eceecca4ff3ecd2' }, this.message_title && (h("div", { key: '7ee101afaaab60f2c849e80d4a9e4f46309533f3', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: '33c4c29426dfcf7ebd290c6cba93b737512f5190', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: 'f83d42393296f03f27b126c0297ec41f919eb217' })), h("slot", { key: 'bf583a462a10879c27989a07575314f94ec165d9', name: "actions" }))));
+        return (h("div", { key: '5b34669e07328dcfbc9463c34f03889519bce66a', class: this.hostClasses, "data-name": "message-container" }, h("at-icon", { key: '7bf2f47a66d48204a962fd9aa69bd59a1b5c0584', class: `mr-8 ${messageVariants.iconFill[this.type]}`, "data-name": "message-icon", name: this.iconName }), h("div", { key: 'f1931daa319db495890e574e6f57a68916b8df2f', class: "flex w-full flex-row justify-between gap-4 text-sm" }, h("div", { key: '9d24be4108eb9e7bcb1e377caf4d09f6d5cb9738' }, this.message_title && (h("div", { key: '5c53d2a08d2aa95a22e8e2ef24107869b81f86c8', class: "text-foreground mb-4 leading-normal font-medium", "data-name": "message-title" }, this.message_title)), this.content && (h("div", { key: 'e0f846187aaa38426ae2495d9cbe0a07ec4ea493', class: "text-foreground leading-normal", "data-name": "message-content" }, this.content)), h("slot", { key: '0857df46dcc77ae9fe6c8914416656cccd39a279' })), h("slot", { key: '5c4c108b0735f757fecbaa01b965203b6b19b079', name: "actions" }))));
     }
 };
 AtMessage.style = atMessageCss();

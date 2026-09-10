@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIExternalFiltersChange, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtISelection, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtTableCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type GridApi, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIExternalFiltersChange, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtISelection, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtSidebarProviderChangeDetail, type AtSidebarProviderCustomEvent, type AtTableCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type GridApi, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -80,8 +80,10 @@ import { AtSelectGroup as AtSelectGroupElement, defineCustomElement as defineAtS
 import { AtSelectOption as AtSelectOptionElement, defineCustomElement as defineAtSelectOption } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-option.js";
 import { AtSelect as AtSelectElement, defineCustomElement as defineAtSelect } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select.js";
 import { AtSidePanel as AtSidePanelElement, defineCustomElement as defineAtSidePanel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-side-panel.js";
+import { AtSidebarInset as AtSidebarInsetElement, defineCustomElement as defineAtSidebarInset } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-inset.js";
 import { AtSidebarMenu as AtSidebarMenuElement, defineCustomElement as defineAtSidebarMenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-menu.js";
 import { AtSidebarMenuitem as AtSidebarMenuitemElement, defineCustomElement as defineAtSidebarMenuitem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-menuitem.js";
+import { AtSidebarProvider as AtSidebarProviderElement, defineCustomElement as defineAtSidebarProvider } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-provider.js";
 import { AtSidebarSubmenu as AtSidebarSubmenuElement, defineCustomElement as defineAtSidebarSubmenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-submenu.js";
 import { AtSidebarTrigger as AtSidebarTriggerElement, defineCustomElement as defineAtSidebarTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-trigger.js";
 import { AtSidebar as AtSidebarElement, defineCustomElement as defineAtSidebar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar.js";
@@ -1056,6 +1058,17 @@ export const AtSidebar: StencilReactComponent<AtSidebarElement, AtSidebarEvents>
     defineCustomElement: defineAtSidebar
 });
 
+type AtSidebarInsetEvents = NonNullable<unknown>;
+
+export const AtSidebarInset: StencilReactComponent<AtSidebarInsetElement, AtSidebarInsetEvents> = /*@__PURE__*/ createComponent<AtSidebarInsetElement, AtSidebarInsetEvents>({
+    tagName: 'at-sidebar-inset',
+    elementClass: AtSidebarInsetElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtSidebarInsetEvents,
+    defineCustomElement: defineAtSidebarInset
+});
+
 type AtSidebarMenuEvents = NonNullable<unknown>;
 
 export const AtSidebarMenu: StencilReactComponent<AtSidebarMenuElement, AtSidebarMenuEvents> = /*@__PURE__*/ createComponent<AtSidebarMenuElement, AtSidebarMenuEvents>({
@@ -1076,6 +1089,23 @@ export const AtSidebarMenuitem: StencilReactComponent<AtSidebarMenuitemElement, 
     react: React,
     events: { onAtuiClick: 'atuiClick' } as AtSidebarMenuitemEvents,
     defineCustomElement: defineAtSidebarMenuitem
+});
+
+type AtSidebarProviderEvents = {
+    onAtuiSidebarProviderChange: EventName<AtSidebarProviderCustomEvent<AtSidebarProviderChangeDetail>>,
+    onAtuiSidebarBackdropChange: EventName<CustomEvent<boolean>>
+};
+
+export const AtSidebarProvider: StencilReactComponent<AtSidebarProviderElement, AtSidebarProviderEvents> = /*@__PURE__*/ createComponent<AtSidebarProviderElement, AtSidebarProviderEvents>({
+    tagName: 'at-sidebar-provider',
+    elementClass: AtSidebarProviderElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiSidebarProviderChange: 'atuiSidebarProviderChange',
+        onAtuiSidebarBackdropChange: 'atuiSidebarBackdropChange'
+    } as AtSidebarProviderEvents,
+    defineCustomElement: defineAtSidebarProvider
 });
 
 type AtSidebarSubmenuEvents = NonNullable<unknown>;

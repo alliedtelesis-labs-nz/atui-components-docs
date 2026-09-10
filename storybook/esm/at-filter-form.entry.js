@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-vSlhROK9.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-46ti_ijN.js';
 import { c as countFilterConditions, f as flattenSingleChildAndRemoveEmptyGroups, a as flattenSingleChildGroup, e as everyConditionValid, i as isFilterGroup } from './filter-tree.util-CYRBwQ7z.js';
 
 const AtFilterForm = class {
@@ -193,7 +193,7 @@ const AtFilterForm = class {
         })));
     }
     render() {
-        return (h(Host, { key: '5f421bc4cc34b27fe88d86a5367cfb61b8681587', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '209bafb38613f8ad4df2a589be86d9a7ed525c1c', class: "flex justify-end gap-4" }, h("at-button", { key: 'd5b67dbb0d327d1c92b3c3ce858867f23c55f6af', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: '1c9f98b57c48e9bb9a803b876eb569a337bf1beb', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (h(Host, { key: 'f9916f7702970984fb5f5aae99cbf912e0d79ef2', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '51211e5a92b94959c3abaf67214d59d139205b5e', class: "flex justify-end gap-4" }, h("at-button", { key: '87ee0f1cc20d243a9ca58249915eb889a3e62184', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: 'b8ef38632378443b1f57bd718385836648d9fe4b', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get watchers() { return {
         "filter_config": [{

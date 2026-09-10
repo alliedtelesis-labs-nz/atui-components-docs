@@ -48,6 +48,7 @@ import { AtITableColumnDef } from "./models/searchTableModel";
 import { AtIExternalFiltersChange } from "./types/filter";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
+import { AtSidebarProviderChangeDetail, AtSidebarProviderPanelState } from "./components/at-sidebar/at-sidebar-provider/at-sidebar-provider";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtStepperStep } from "./components/at-stepper/at-stepper";
@@ -106,6 +107,7 @@ export { AtITableColumnDef } from "./models/searchTableModel";
 export { AtIExternalFiltersChange } from "./types/filter";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
+export { AtSidebarProviderChangeDetail, AtSidebarProviderPanelState } from "./components/at-sidebar/at-sidebar-provider/at-sidebar-provider";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtStepperStep } from "./components/at-stepper/at-stepper";
@@ -2801,7 +2803,7 @@ export namespace Components {
     }
     /**
      * @category Navigation
-     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
+     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation. Nest inside at-sidebar-provider (instead of using it standalone) to place more than one sidebar on the same page.
      */
     interface AtSidebar {
         /**
@@ -2837,10 +2839,20 @@ export namespace Components {
          */
         "toggleSidebar": () => Promise<void>;
         /**
+          * Identifies this panel so external elements can toggle it by adding a matching `data-sidebar` attribute, and so at-sidebar-trigger can address it remotely (`data-sidebar` on the trigger). Also used as the panel's id when nested inside at-sidebar-provider. Auto-generated when omitted.
+         */
+        "trigger_id"?: string;
+        /**
           * Width of the sidebar
           * @default 'menu'
          */
         "width": AtSideBarWidth;
+    }
+    /**
+     * @category Navigation
+     * @description The shared page-content region for a multi-sidebar layout under at-sidebar-provider. Goes inert while a sibling at-sidebar panel is a modal (backdropped) overlay.
+     */
+    interface AtSidebarInset {
     }
     /**
      * @category Navigation
@@ -2877,6 +2889,36 @@ export namespace Components {
     }
     /**
      * @category Navigation
+     * @description Shares open/closed state across multiple at-sidebar panels on one page (e.g. a left nav plus a right utility rail), so panels can sit side by side without either addressing the wrong ancestor. Wrap the panels and an at-sidebar-inset in this element instead of using at-sidebar standalone.
+     */
+    interface AtSidebarProvider {
+        /**
+          * Returns a panel's current open state.
+         */
+        "getIsOpen": (id: string) => Promise<boolean>;
+        /**
+          * Registers a panel with the provider. Called by a child at-sidebar on load. Returns an owner token the caller must pass back to unregisterPanel.
+         */
+        "registerPanel": (id: string, state: AtSidebarProviderPanelState) => Promise<symbol>;
+        /**
+          * A panel reports whether it currently needs the shared backdrop (mode="over", backdrop=true, and open). The provider renders a single backdrop while any panel requests one, so two modal panels never stack two scrims.
+         */
+        "setBackdrop": (id: string, active: boolean) => Promise<void>;
+        /**
+          * Sets a panel's open state directly.
+         */
+        "setOpen": (id: string, isOpen: boolean) => Promise<void>;
+        /**
+          * Toggles a panel's open state.
+         */
+        "toggle": (id: string) => Promise<void>;
+        /**
+          * Removes a panel from the provider. Called by a child at-sidebar on disconnect with the owner token it received from registerPanel — a stale instance's call is ignored if another instance has since re-registered under the same id.
+         */
+        "unregisterPanel": (id: string, owner: symbol) => Promise<void>;
+    }
+    /**
+     * @category Navigation
      * @description Display nested sub-menus in the atui-sidebar.
      * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
      * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
@@ -2902,7 +2944,7 @@ export namespace Components {
     }
     /**
      * @category Navigation
-     * @description A sidebar trigger component for the sidebar.
+     * @description A sidebar trigger component for the sidebar. Nested inside an at-sidebar, it addresses its closest ancestor; given a `data-sidebar` attribute matching a target at-sidebar's `trigger_id`, it addresses that sidebar remotely instead.
      */
     interface AtSidebarTrigger {
     }
@@ -3839,6 +3881,10 @@ export interface AtSidebarCustomEvent<T> extends CustomEvent<T> {
 export interface AtSidebarMenuitemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtSidebarMenuitemElement;
+}
+export interface AtSidebarProviderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtSidebarProviderElement;
 }
 export interface AtStepperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5098,7 +5144,7 @@ declare global {
     }
     /**
      * @category Navigation
-     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
+     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation. Nest inside at-sidebar-provider (instead of using it standalone) to place more than one sidebar on the same page.
      */
     interface HTMLAtSidebarElement extends Components.AtSidebar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtSidebarElementEventMap>(type: K, listener: (this: HTMLAtSidebarElement, ev: AtSidebarCustomEvent<HTMLAtSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5113,6 +5159,16 @@ declare global {
     var HTMLAtSidebarElement: {
         prototype: HTMLAtSidebarElement;
         new (): HTMLAtSidebarElement;
+    };
+    /**
+     * @category Navigation
+     * @description The shared page-content region for a multi-sidebar layout under at-sidebar-provider. Goes inert while a sibling at-sidebar panel is a modal (backdropped) overlay.
+     */
+    interface HTMLAtSidebarInsetElement extends Components.AtSidebarInset, HTMLStencilElement {
+    }
+    var HTMLAtSidebarInsetElement: {
+        prototype: HTMLAtSidebarInsetElement;
+        new (): HTMLAtSidebarInsetElement;
     };
     /**
      * @category Navigation
@@ -5145,6 +5201,28 @@ declare global {
         prototype: HTMLAtSidebarMenuitemElement;
         new (): HTMLAtSidebarMenuitemElement;
     };
+    interface HTMLAtSidebarProviderElementEventMap {
+        "atuiSidebarProviderChange": AtSidebarProviderChangeDetail;
+        "atuiSidebarBackdropChange": boolean;
+    }
+    /**
+     * @category Navigation
+     * @description Shares open/closed state across multiple at-sidebar panels on one page (e.g. a left nav plus a right utility rail), so panels can sit side by side without either addressing the wrong ancestor. Wrap the panels and an at-sidebar-inset in this element instead of using at-sidebar standalone.
+     */
+    interface HTMLAtSidebarProviderElement extends Components.AtSidebarProvider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtSidebarProviderElementEventMap>(type: K, listener: (this: HTMLAtSidebarProviderElement, ev: AtSidebarProviderCustomEvent<HTMLAtSidebarProviderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtSidebarProviderElementEventMap>(type: K, listener: (this: HTMLAtSidebarProviderElement, ev: AtSidebarProviderCustomEvent<HTMLAtSidebarProviderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtSidebarProviderElement: {
+        prototype: HTMLAtSidebarProviderElement;
+        new (): HTMLAtSidebarProviderElement;
+    };
     /**
      * @category Navigation
      * @description Display nested sub-menus in the atui-sidebar.
@@ -5160,7 +5238,7 @@ declare global {
     };
     /**
      * @category Navigation
-     * @description A sidebar trigger component for the sidebar.
+     * @description A sidebar trigger component for the sidebar. Nested inside an at-sidebar, it addresses its closest ancestor; given a `data-sidebar` attribute matching a target at-sidebar's `trigger_id`, it addresses that sidebar remotely instead.
      */
     interface HTMLAtSidebarTriggerElement extends Components.AtSidebarTrigger, HTMLStencilElement {
     }
@@ -5727,8 +5805,10 @@ declare global {
         "at-select-option": HTMLAtSelectOptionElement;
         "at-side-panel": HTMLAtSidePanelElement;
         "at-sidebar": HTMLAtSidebarElement;
+        "at-sidebar-inset": HTMLAtSidebarInsetElement;
         "at-sidebar-menu": HTMLAtSidebarMenuElement;
         "at-sidebar-menuitem": HTMLAtSidebarMenuitemElement;
+        "at-sidebar-provider": HTMLAtSidebarProviderElement;
         "at-sidebar-submenu": HTMLAtSidebarSubmenuElement;
         "at-sidebar-trigger": HTMLAtSidebarTriggerElement;
         "at-src-dest": HTMLAtSrcDestElement;
@@ -8506,7 +8586,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Navigation
-     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
+     * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation. Nest inside at-sidebar-provider (instead of using it standalone) to place more than one sidebar on the same page.
      */
     interface AtSidebar {
         /**
@@ -8537,10 +8617,20 @@ declare namespace LocalJSX {
          */
         "side"?: 'left' | 'right';
         /**
+          * Identifies this panel so external elements can toggle it by adding a matching `data-sidebar` attribute, and so at-sidebar-trigger can address it remotely (`data-sidebar` on the trigger). Also used as the panel's id when nested inside at-sidebar-provider. Auto-generated when omitted.
+         */
+        "trigger_id"?: string;
+        /**
           * Width of the sidebar
           * @default 'menu'
          */
         "width"?: AtSideBarWidth;
+    }
+    /**
+     * @category Navigation
+     * @description The shared page-content region for a multi-sidebar layout under at-sidebar-provider. Goes inert while a sibling at-sidebar panel is a modal (backdropped) overlay.
+     */
+    interface AtSidebarInset {
     }
     /**
      * @category Navigation
@@ -8581,6 +8671,20 @@ declare namespace LocalJSX {
     }
     /**
      * @category Navigation
+     * @description Shares open/closed state across multiple at-sidebar panels on one page (e.g. a left nav plus a right utility rail), so panels can sit side by side without either addressing the wrong ancestor. Wrap the panels and an at-sidebar-inset in this element instead of using at-sidebar standalone.
+     */
+    interface AtSidebarProvider {
+        /**
+          * Emits true when at least one registered panel is a modal (backdropped, mode="over") overlay, false when none are. at-sidebar-inset listens for this to go inert while a modal panel is open.
+         */
+        "onAtuiSidebarBackdropChange"?: (event: AtSidebarProviderCustomEvent<boolean>) => void;
+        /**
+          * Emits whenever a registered panel's open state changes, with the panel's id, side, and new open state. Named distinctly from at-sidebar's own `atuiSidebarChange` (a plain boolean) — a nested at-sidebar's event bubbles by default, and sharing the same name would let a listener on this element receive either shape with no way to tell them apart.
+         */
+        "onAtuiSidebarProviderChange"?: (event: AtSidebarProviderCustomEvent<AtSidebarProviderChangeDetail>) => void;
+    }
+    /**
+     * @category Navigation
      * @description Display nested sub-menus in the atui-sidebar.
      * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
      * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
@@ -8606,7 +8710,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Navigation
-     * @description A sidebar trigger component for the sidebar.
+     * @description A sidebar trigger component for the sidebar. Nested inside an at-sidebar, it addresses its closest ancestor; given a `data-sidebar` attribute matching a target at-sidebar's `trigger_id`, it addresses that sidebar remotely instead.
      */
     interface AtSidebarTrigger {
     }
@@ -9957,6 +10061,7 @@ declare namespace LocalJSX {
         "mode": 'over' | 'push';
         "backdrop": boolean;
         "default_open": boolean;
+        "trigger_id": string;
     }
     interface AtSidebarMenuitemAttributes {
         "label": string;
@@ -10181,8 +10286,10 @@ declare namespace LocalJSX {
         "at-select-option": Omit<AtSelectOption, keyof AtSelectOptionAttributes> & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes]?: AtSelectOption[K] } & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes as `attr:${K}`]?: AtSelectOptionAttributes[K] } & { [K in keyof AtSelectOption & keyof AtSelectOptionAttributes as `prop:${K}`]?: AtSelectOption[K] };
         "at-side-panel": Omit<AtSidePanel, keyof AtSidePanelAttributes> & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes]?: AtSidePanel[K] } & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes as `attr:${K}`]?: AtSidePanelAttributes[K] } & { [K in keyof AtSidePanel & keyof AtSidePanelAttributes as `prop:${K}`]?: AtSidePanel[K] };
         "at-sidebar": Omit<AtSidebar, keyof AtSidebarAttributes> & { [K in keyof AtSidebar & keyof AtSidebarAttributes]?: AtSidebar[K] } & { [K in keyof AtSidebar & keyof AtSidebarAttributes as `attr:${K}`]?: AtSidebarAttributes[K] } & { [K in keyof AtSidebar & keyof AtSidebarAttributes as `prop:${K}`]?: AtSidebar[K] };
+        "at-sidebar-inset": AtSidebarInset;
         "at-sidebar-menu": AtSidebarMenu;
         "at-sidebar-menuitem": Omit<AtSidebarMenuitem, keyof AtSidebarMenuitemAttributes> & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes]?: AtSidebarMenuitem[K] } & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes as `attr:${K}`]?: AtSidebarMenuitemAttributes[K] } & { [K in keyof AtSidebarMenuitem & keyof AtSidebarMenuitemAttributes as `prop:${K}`]?: AtSidebarMenuitem[K] };
+        "at-sidebar-provider": AtSidebarProvider;
         "at-sidebar-submenu": Omit<AtSidebarSubmenu, keyof AtSidebarSubmenuAttributes> & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes]?: AtSidebarSubmenu[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `attr:${K}`]?: AtSidebarSubmenuAttributes[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `prop:${K}`]?: AtSidebarSubmenu[K] } & OneOf<"label", AtSidebarSubmenu["label"], AtSidebarSubmenuAttributes["label"]>;
         "at-sidebar-trigger": AtSidebarTrigger;
         "at-src-dest": Omit<AtSrcDest, keyof AtSrcDestAttributes> & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes]?: AtSrcDest[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `attr:${K}`]?: AtSrcDestAttributes[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `prop:${K}`]?: AtSrcDest[K] };
@@ -10603,9 +10710,14 @@ declare module "@stencil/core" {
             "at-side-panel": LocalJSX.IntrinsicElements["at-side-panel"] & JSXBase.HTMLAttributes<HTMLAtSidePanelElement>;
             /**
              * @category Navigation
-             * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation.
+             * @description A collapsible sidebar navigation component with menu support and responsive behavior. Features animation, auto-collapse, and keyboard navigation. Nest inside at-sidebar-provider (instead of using it standalone) to place more than one sidebar on the same page.
              */
             "at-sidebar": LocalJSX.IntrinsicElements["at-sidebar"] & JSXBase.HTMLAttributes<HTMLAtSidebarElement>;
+            /**
+             * @category Navigation
+             * @description The shared page-content region for a multi-sidebar layout under at-sidebar-provider. Goes inert while a sibling at-sidebar panel is a modal (backdropped) overlay.
+             */
+            "at-sidebar-inset": LocalJSX.IntrinsicElements["at-sidebar-inset"] & JSXBase.HTMLAttributes<HTMLAtSidebarInsetElement>;
             /**
              * @category Navigation
              * @description 
@@ -10618,6 +10730,11 @@ declare module "@stencil/core" {
             "at-sidebar-menuitem": LocalJSX.IntrinsicElements["at-sidebar-menuitem"] & JSXBase.HTMLAttributes<HTMLAtSidebarMenuitemElement>;
             /**
              * @category Navigation
+             * @description Shares open/closed state across multiple at-sidebar panels on one page (e.g. a left nav plus a right utility rail), so panels can sit side by side without either addressing the wrong ancestor. Wrap the panels and an at-sidebar-inset in this element instead of using at-sidebar standalone.
+             */
+            "at-sidebar-provider": LocalJSX.IntrinsicElements["at-sidebar-provider"] & JSXBase.HTMLAttributes<HTMLAtSidebarProviderElement>;
+            /**
+             * @category Navigation
              * @description Display nested sub-menus in the atui-sidebar.
              * Sub-menu's can be collapsed via atui-accordion-item when the parent sidebar is expanded.
              * Submenu content is collapsed and hidden when the parent sidebar is collapsed.
@@ -10626,7 +10743,7 @@ declare module "@stencil/core" {
             "at-sidebar-submenu": LocalJSX.IntrinsicElements["at-sidebar-submenu"] & JSXBase.HTMLAttributes<HTMLAtSidebarSubmenuElement>;
             /**
              * @category Navigation
-             * @description A sidebar trigger component for the sidebar.
+             * @description A sidebar trigger component for the sidebar. Nested inside an at-sidebar, it addresses its closest ancestor; given a `data-sidebar` attribute matching a target at-sidebar's `trigger_id`, it addresses that sidebar remotely instead.
              */
             "at-sidebar-trigger": LocalJSX.IntrinsicElements["at-sidebar-trigger"] & JSXBase.HTMLAttributes<HTMLAtSidebarTriggerElement>;
             /**

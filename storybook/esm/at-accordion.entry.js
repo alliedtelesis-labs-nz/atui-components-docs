@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-vSlhROK9.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-46ti_ijN.js';
 
 const AtAccordionComponent = class {
     constructor(hostRef) {
@@ -75,7 +75,7 @@ const AtAccordionComponent = class {
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
     render() {
-        return (h(Host, { key: 'd09502d7c30b2ae3bd3b1ca38277192533f78dcb', class: "flex flex-col gap-2" }, h("slot", { key: 'a9ffdfcdf4e8d261c919470514987d370d874962' }), this.items &&
+        return (h(Host, { key: '525f4c3f8186cf8ec401e14ec88d77424cd67ec5', class: "flex flex-col gap-2" }, h("slot", { key: '20a61fd39c3f860b8be87070c3f3386640e26527' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
             })));

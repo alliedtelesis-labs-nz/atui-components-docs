@@ -65,12 +65,16 @@ dialog.backdrop::backdrop {
 :host {
   display: contents;
 }
+:host dialog {
+  position: static;
+}
 :host .container {
   position: fixed;
   display: flex;
   flex-direction: column;
   z-index: var(--token-z-index-nav);
   min-width: var(--token-width-panel-xs);
+  max-width: 100%;
   background-color: var(--token-surface-foreground);
   box-shadow: var(--token-shadow-md);
   overflow-x: hidden;
@@ -107,6 +111,8 @@ dialog.backdrop::backdrop {
 }
 :host .container.position-absolute {
   position: absolute;
+  bottom: 0;
+  height: auto;
 }
 :host .container:not([data-scrollable]) {
   overflow-y: hidden;

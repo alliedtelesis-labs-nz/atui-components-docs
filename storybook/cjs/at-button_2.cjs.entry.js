@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -160,7 +160,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: 'cba825d43cecab2261638bf3c3bb33400d0180e8', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '75b755c85162b5fa111aec0b6d884c5f82bbe67f', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '4aef5635aed29ba94b449065ac8abc67507db894', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: '95fa44b17459c37e847d758008aef11c031eafa9', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '9ab4c6f3efc5209a415247100ef5b91178608796', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'b4417c8a36843ce451fdffb0bb06eb27781250e2' }), !this.in_progress && (index.h("slot", { key: '849a3f1772ce1ee22f4bb06a039a0faea581b48e', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: 'd82220457c9e7182074d5c0d4f39e49b718ef696', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '0a5fb70af1222636471c2727dbea1a891d2f8ed7', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'a29672d5f47f1a9217f7cefee58d599b566d9eca', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: 'cd850cb940ff684fcb9311c68e00af46c039f9bd', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: 'ba440ef07f9a9f4336ff578668f49a7fb677fb49', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '210a2518dea863531ab6f820c7683f91662dbfb6', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'f999b91fa02cd1f6851f592729721b9e7b19eee0' }), !this.in_progress && (index.h("slot", { key: '351c1adf5103d844f29183aa6a4947542309ebe6', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '04ca7efa677fc2b61f55cd8f98268db6fdd0255f', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();
@@ -234,7 +234,7 @@ const AtLoadingComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '95b988c0a4fc3b28a78587669bffdee57e2016fd', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'cc0cede6ae4d0a1fcce2482ba4c1d135adbd1eb0' })));
+        return (index.h(index.Host, { key: '2ded0068e2c33065dc79e23cf7ec0df698ffdc0c', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'dc039ca5696e8d9089e8856f3ab1049f1415c422' })));
     }
 };
 AtLoadingComponent.style = atLoadingCss();

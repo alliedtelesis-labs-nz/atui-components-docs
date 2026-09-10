@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-vSlhROK9.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-46ti_ijN.js';
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -66,7 +66,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0" }, h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (h("at-tooltip", { slot: "badge", position: "right" }, h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), h("span", null, item.badgeTooltip))), item.hasInfoButton && (h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, h("at-icon", { slot: "icon", name: "help" }))))), h("span", null, item.tooltip))));
     }
     render() {
-        return (h(Host, { key: 'adb5f4ce931284b9e346683e74c43736e5f953f3', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: 'b534520425b3688b18fae2b7c20ca080db18b5a9', name: "header" }), !!this.options.length && (h("nav", { key: 'b8d52818572c1d6d6af81a85f8d4a650b8eb79a1', class: "flex-fill overflow-visible pb-16" }, h("div", { key: '1c79c6e3aa77bcd29769149cbd83324c46b5fc7c', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '10abf41f92188c4f54049ead28a490e4773fa783' })));
+        return (h(Host, { key: 'a330653af5c953a535c12cb5de1a7ef21fdfe700', onKeyDown: (event) => this.handleKeyDown(event) }, h("slot", { key: '25720b85e6ad6dcc2cfde3331816816f57504c05', name: "header" }), !!this.options.length && (h("nav", { key: '1828326d5deea375d9c6380637a44a3d8f22d808', class: "flex-fill overflow-visible pb-16" }, h("div", { key: 'f63cd9554a96c8dc73b52aed00264b5092ebefde', class: "flex flex-col", role: "menu" }, this.getListItems))), h("slot", { key: '44dbe8516c1c3a367f8c9e9e4b6803c609327d81' })));
     }
 };
 

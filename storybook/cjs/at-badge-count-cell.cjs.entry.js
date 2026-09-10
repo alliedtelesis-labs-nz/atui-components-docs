@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 
 const AtBadgeCountCell = class {
     constructor(hostRef) {
@@ -25,7 +25,7 @@ const AtBadgeCountCell = class {
     render() {
         const showZeros = this.params?.show_zero_counts ?? false;
         const visible = this.segments.filter((segment) => showZeros || segment.count !== 0);
-        return (index.h(index.Host, { key: 'cff9aadfe46c3d507a1a58b265442be062fa69c8', class: "flex h-full min-w-0 items-center gap-4 overflow-hidden" }, visible.map((segment, index$1) => (index.h("at-badge", { key: segment.label ?? index$1, label: String(segment.count), type: segment.type ?? 'default', impact: this.params?.impact ?? 'low',
+        return (index.h(index.Host, { key: '38f76c48b14ce72e33b03563cff287c7e4296130', class: "flex h-full min-w-0 items-center gap-4 overflow-hidden" }, visible.map((segment, index$1) => (index.h("at-badge", { key: segment.label ?? index$1, label: String(segment.count), type: segment.type ?? 'default', impact: this.params?.impact ?? 'low',
             // A bare aria-label on an element with no role is
             // dropped by most screen readers, so the badge would
             // read as a number with nothing to attach it to.

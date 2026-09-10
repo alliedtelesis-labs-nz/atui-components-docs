@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 
 const AtStatusBar = class {
     constructor(hostRef) {
@@ -31,7 +31,7 @@ const AtStatusBar = class {
             } }), index.h("span", null, segment.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: '443725c2e5f0f52d7730992caaa1b1a532cd630a', class: this.statusBarClass }, index.h("div", { key: '3e02fc1901f4fec665f181bf54284d54c1b598f4', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
+        return (index.h(index.Host, { key: '38d94f7691d97209ffbc897510aab244347d7a53', class: this.statusBarClass }, index.h("div", { key: '1d60c616aa1e8441491f2a3ff196d0a360a2646c', class: "flex flex-1 items-stretch justify-start overflow-visible" }, this.segments)));
     }
 };
 

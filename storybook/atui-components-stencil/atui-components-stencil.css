@@ -861,8 +861,8 @@
   --token-width-input-lg: 260px;
   --token-width-sidebar-offscreen: 0px;
   --token-width-sidebar-collapsed: 50px;
-  --token-width-sidebar: 280px;
-  --token-width-menu: 300px;
+  --token-width-sidebar: 300px;
+  --token-width-menu: 280px;
   --token-width-panel-xs: 320px;
   --token-width-panel-sm: 400px;
   --token-width-panel-md: 500px;
@@ -3090,8 +3090,28 @@ strong {
   width: max-content;
 }
 
+.w-menu {
+  width: var(--token-width-menu);
+}
+
+.w-panel-lg {
+  width: var(--token-width-panel-lg);
+}
+
+.w-panel-md {
+  width: var(--token-width-panel-md);
+}
+
 .w-panel-sm {
   width: var(--token-width-panel-sm);
+}
+
+.w-panel-xl {
+  width: var(--token-width-panel-xl);
+}
+
+.w-panel-xs {
+  width: var(--token-width-panel-xs);
 }
 
 .w-sidebar {

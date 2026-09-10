@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -42,7 +42,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: '003bf263e7eb7809c94e760b143bf6aabfb59190', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: 'c868bfeaef2c6a36f47da9f805603f04b673f3f2', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -50,7 +50,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, index.h("div", { key: '9b257a3478af9fa8329adaaeaff8946250082dcb', class: "flex min-w-0 flex-1" }, index.h("slot", { key: '1bf6c7a9dbf311b9fcb3413e6e0368412150fe0a', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '5062e2b6176810bcfec69a04b493406c668b7a1d', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'a6b3214551c2d5504893864a3f9cbc3815c7c375' })), index.h("slot", { key: '3a8f6337c83fdfeb399a12a560f904dbfc6a89c1', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, index.h("div", { key: '2745aad0c59adcc5a6b38868dbe8db938db90509', class: "flex min-w-0 flex-1" }, index.h("slot", { key: '090ed9d1b4f6e9fe2013ea7a32d82ac72ea1d2e4', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '5ae536968e7556d3ae384b92ebe0c2c73c1fa27d', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: '8bc4a61b50ad18dfc9d19a5c96465563067dcaf1' })), index.h("slot", { key: 'ae0c69f1ccb0fddfadaebdc13e0ff0acb2589ced', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

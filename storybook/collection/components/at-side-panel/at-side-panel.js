@@ -144,6 +144,23 @@ export class AtSidePanelComponent {
             this.closeSidePanel();
         }
     };
+    /**
+     * position:fixed's containing block is the viewport, which is what a
+     * panel opened outside a multi-sidebar layout wants. Nested inside
+     * at-sidebar-inset, the panel is meant to stay confined to that content
+     * region instead — at-sidebar-inset is position:relative specifically so
+     * an absolute-positioned container here is contained by it. Only
+     * overridden when the consumer left position at its 'fixed' default.
+     */
+    insideSidebarInset = false;
+    componentWillLoad() {
+        this.insideSidebarInset = !!this.el.closest('at-sidebar-inset');
+    }
+    get effectivePosition() {
+        return this.position === 'fixed' && this.insideSidebarInset
+            ? 'absolute'
+            : this.position;
+    }
     offClickHandler(event) {
         if (!this.close_backdrop || !this.panelDialog?.open)
             return;
@@ -209,7 +226,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '962f74decc3ec389f5ed35e2ead18c30f268b6aa', "data-open": this.isOpen }, h("dialog", { key: '3e5b6492c7f739b008fbb932ef12664b4a591c60', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'bd2f2fc9976068dbacdba50bf0cdf3e36502ee72', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '2be0acbe2c3349ed4b5c1b6d2d8a65b35afb9475', class: "header", "data-name": "header" }, h("div", { key: '12a167474d9e903c8af62c018a832df263b57f08' }, h("slot", { key: '284c7d7b613a6f8f30187dfc816b7b710edd0f86', name: "title" }), this.panel_title && (h("h3", { key: 'b345c9cc2f551ced01d58be0608b26d998b2543a', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'ade121a83cb4bc9edffded73f9220a5ab7041fb4', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'baf99557508df5ef2b196f88bf38346b4e60eac5' }, h("slot", { key: 'f65ff2ea64c6f31fe14bfe47a9229aeba91ec639', name: "actions" }), this.has_close_button && (h("at-button", { key: 'c321ee20db8f18586aaf107408ff0da4a83bf0af', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '36a587c8bd3de23b0b8ef693b4f740f3b04af241', slot: "icon", name: "close" }))))), h("div", { key: 'acc5c21d3ef2d0b0653e5fd3e33ad4989ce6109d', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: '04d32835ab9605053774bdb5e9f450524df6069c' })), h("div", { key: '649aac7d8e8fad9941bed4b463e540be0a8e3fde', "data-name": "footer", class: "footer" }, h("slot", { key: 'f379e7ac3e0cba6bf98df633b7905a0672d39645', name: "footer" }))))));
+        return (h(Host, { key: '7f35f49a2a4a54f2045cdc59a2a95a1ad93542c3', "data-open": this.isOpen }, h("dialog", { key: 'd6f93fbf22f4b382869482e3125b4e25ec5ffd67', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '4c163f0dd93439f29e20fdf718a91802a4664979', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.effectivePosition}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: 'f0d6080136a6c792be06c299d60e664017871a3d', class: "header", "data-name": "header" }, h("div", { key: '9073c040e06ea4c727761acacf94f9386a24982c' }, h("slot", { key: '5d9b7ce1a824b9293f29c45077d145aa529bc74b', name: "title" }), this.panel_title && (h("h3", { key: '67bf326b1aef3407e87c17afdf6caf16fa084e2b', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'f6101553c952cb35285f9480fde1397c0e11c118', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'b4f80d82df9b34fd00fc6d047b1d3a1ff164e39a' }, h("slot", { key: '3a9c14433531404630b3454266f2beaadae5a94b', name: "actions" }), this.has_close_button && (h("at-button", { key: 'b47236362633bf45da34596cde8cff2e7e68b432', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: 'c4c49b794fd95aa57a3e46f0c2774970c3f7b13c', slot: "icon", name: "close" }))))), h("div", { key: '7bb1c489ed612397028636821616e7f539e6e4ac', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: 'ffa7fb73c4a5e3f52c3f348fc9f16ac10ca9c0a3' })), h("div", { key: 'a28bf7ccb4297e5a04571645b70e916957e15e58', "data-name": "footer", class: "footer" }, h("slot", { key: 'c23fdf8ef8c150154a9d41d185426d9313b7fabf', name: "footer" }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }

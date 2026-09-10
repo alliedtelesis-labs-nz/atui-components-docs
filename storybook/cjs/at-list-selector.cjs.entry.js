@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bc1nzv_X.js');
+var index = require('./index-zRWHCAJe.js');
 
 const AtListSelector = class {
     constructor(hostRef) {
@@ -68,7 +68,7 @@ const AtListSelector = class {
                 item.id === this.selected_item_id, onClick: () => this.onSelect(item), tabindex: "0" }, index.h("at-icon", { slot: "icon", name: item.icon }), item.badgeText && item.badgeTooltip && (index.h("at-tooltip", { slot: "badge", position: "right" }, index.h("at-badge", { class: "ml-4", slot: "tooltip-trigger", impact: "high", type: "info", label: item.badgeText }), index.h("span", null, item.badgeTooltip))), item.hasInfoButton && (index.h("at-button", { slot: "info", size: "sm", type: "secondaryText", onClick: (event) => this.onClickInfoButton(event) }, index.h("at-icon", { slot: "icon", name: "help" }))))), index.h("span", null, item.tooltip))));
     }
     render() {
-        return (index.h(index.Host, { key: 'adb5f4ce931284b9e346683e74c43736e5f953f3', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: 'b534520425b3688b18fae2b7c20ca080db18b5a9', name: "header" }), !!this.options.length && (index.h("nav", { key: 'b8d52818572c1d6d6af81a85f8d4a650b8eb79a1', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: '1c79c6e3aa77bcd29769149cbd83324c46b5fc7c', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: '10abf41f92188c4f54049ead28a490e4773fa783' })));
+        return (index.h(index.Host, { key: 'a330653af5c953a535c12cb5de1a7ef21fdfe700', onKeyDown: (event) => this.handleKeyDown(event) }, index.h("slot", { key: '25720b85e6ad6dcc2cfde3331816816f57504c05', name: "header" }), !!this.options.length && (index.h("nav", { key: '1828326d5deea375d9c6380637a44a3d8f22d808', class: "flex-fill overflow-visible pb-16" }, index.h("div", { key: 'f63cd9554a96c8dc73b52aed00264b5092ebefde', class: "flex flex-col", role: "menu" }, this.getListItems))), index.h("slot", { key: '44dbe8516c1c3a367f8c9e9e4b6803c609327d81' })));
     }
 };
 
