@@ -74,7 +74,6 @@ at-sidebar > .backdrop {
 at-sidebar .sidebar {
   display: flex;
   position: relative;
-  width: var(--token-width-sidebar);
   flex-direction: column;
   flex: 0 0 auto;
   background-color: var(--token-sidebar-background);
