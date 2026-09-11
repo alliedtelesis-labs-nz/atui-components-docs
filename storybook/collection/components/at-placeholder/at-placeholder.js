@@ -1,4 +1,5 @@
 import { h, Host } from "@stencil/core";
+import { renderChartNoDataImage, renderNoAccessImage, renderNoDataImage, renderNoResultsImage, } from "./placeholder-images";
 const placeholderVariants = {
     sizes: {
         xs: 'p-16 flex-row gap-8',
@@ -31,7 +32,18 @@ export class AtPlaceholderComponent {
      * Will show a loading spinner when set
      */
     show_loading_spinner;
+    /**
+     * Built-in illustration and empty-state situation. Prefer this over
+     * slotting your own icon so empty states stay consistent across apps.
+     * `no-data` for a collection that is genuinely empty (pair with a create
+     * action), `no-results` when a search or filter matched nothing,
+     * `no-access` when the emptiness is permission or scope caused,
+     * `chart-no-data` for an empty chart surface. A failed load is not a
+     * placeholder — use `at-message` with a retry action.
+     */
+    type = 'none';
     el;
+    gradientId = `placeholder-${Math.random().toString(36).substring(2, 11)}`;
     componentDidRender() {
         const iconEl = this.el.querySelector('[slot="icon"]');
         if (iconEl) {
@@ -41,8 +53,22 @@ export class AtPlaceholderComponent {
     get placeholderSizeClass() {
         return placeholderVariants.sizes[this.size];
     }
+    renderImage() {
+        switch (this.type) {
+            case 'chart-no-data':
+                return renderChartNoDataImage(this.gradientId);
+            case 'no-data':
+                return renderNoDataImage(this.size);
+            case 'no-results':
+                return renderNoResultsImage(this.size);
+            case 'no-access':
+                return renderNoAccessImage(this.size);
+            default:
+                return null;
+        }
+    }
     render() {
-        return (h(Host, { key: 'e899ce721e00e5640892c372e5b1d9c13706c72e', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, h("span", { key: '1b607c01278cc059e2ecd3663c4df1baf7a6af2d', class: "fill-slate-300", "data-name": "placeholder-icon" }, h("slot", { key: '62d4a4033523d84e7adf7d0cc2a7fc50837b6a66', name: "icon" })), h("div", { key: 'f83b6fed72c8bd5de2c25b9d2ff1e7a0298f471b', class: `border-radius-sm flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '2f3e46f51f3d42da5d3b6bbd0c03efeeb9ccf61a', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: 'be4882b2a929797504b897532748c6ec39bfde8a', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '187202ee9e232ede6a0c3570dd31c07c91970439', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: 'bf05e877741535b04ede57f81e3bf5eeb671afcf', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: '90abc4813a06c51e9aa4ba83af518601746fe5b0' }))));
+        return (h(Host, { key: '420ab37b7e4f061a99f88887a0691745ff7ccec0', class: `${this.placeholderSizeClass} bg-surface-foreground text-muted rounded-placeholder relative flex w-full items-center gap-16 text-center`, "data-name": "placeholder-container" }, h("span", { key: '2f9525f3feacaeca111a14c9026c4731f4551c98', class: "relative z-10 fill-slate-300", "data-name": "placeholder-icon" }, h("slot", { key: 'f3f3d7e0783286e062aee34e396779c9dfe4ac18', name: "icon" })), this.type !== 'none' && (h("span", { key: '6c010eba038a3c9e27747a5a0c674f8af6d8339d', class: `z-0 flex justify-center fill-[var(--token-border-muted)] ${this.type === 'chart-no-data' ? 'absolute inset-0' : ''}`, "data-name": "placeholder-image" }, this.renderImage())), h("div", { key: 'aec9eeb7157d2caaaea5e18f6f1c1483e7b5606b', class: `border-radius-sm relative z-10 flex flex-col justify-center ${this.size === 'xs' ? 'items-start text-left' : 'items-center text-center'}` }, h("div", { key: '4e732bd9d725b4c3da5451a39f2e89d98afde978', class: "flex items-center" }, this.show_loading_spinner && (h("at-loading", { key: '040ba7a3234937b21d14f4bba42458e5ebb0114d', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" })), this.placeholder_title && (h("h5", { key: '68dc5290cd7dc7a5f03fef8a1f3806c7a3dada8c', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.placeholder_title))), h("p", { key: '81d1e62fa715973b9c5a18140e87a96b623c4a00', class: "text-secondary text-sm", "data-name": "placeholder-content" }, this.content), h("slot", { key: 'c4a17e36059552fc69f1f2c9dd008281152b8146' }))));
     }
     static get is() { return "at-placeholder"; }
     static get properties() {
@@ -129,6 +155,32 @@ export class AtPlaceholderComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "show_loading_spinner"
+            },
+            "type": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "AtPlaceholderType",
+                    "resolved": "\"chart-no-data\" | \"no-access\" | \"no-data\" | \"no-results\" | \"none\"",
+                    "references": {
+                        "AtPlaceholderType": {
+                            "location": "local",
+                            "path": "/home/runner/work/atui-components/atui-components/atui-components-stencil/src/components/at-placeholder/at-placeholder.tsx",
+                            "id": "src/components/at-placeholder/at-placeholder.tsx::AtPlaceholderType"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Built-in illustration and empty-state situation. Prefer this over\nslotting your own icon so empty states stay consistent across apps.\n`no-data` for a collection that is genuinely empty (pair with a create\naction), `no-results` when a search or filter matched nothing,\n`no-access` when the emptiness is permission or scope caused,\n`chart-no-data` for an empty chart surface. A failed load is not a\nplaceholder \u2014 use `at-message` with a retry action."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "type",
+                "defaultValue": "'none'"
             }
         };
     }

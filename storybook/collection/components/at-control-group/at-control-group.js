@@ -11,7 +11,7 @@ export class AtControlGroup {
      */
     direction = 'horizontal';
     render() {
-        return (h(Host, { key: 'a529e34be10d97a7944b5e587d9d17fd1a71674d', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: '547214b162578b95b51ac3a41c1aebf37004a971' })));
+        return (h(Host, { key: '61581d034bea58839accb9532f059eb91f099af3', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: '37b70330cbea496e607a81d0e2db757f4240ed45' })));
     }
     static get is() { return "at-control-group"; }
     static get originalStyleUrls() {

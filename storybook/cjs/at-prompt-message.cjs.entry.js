@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-zRWHCAJe.js');
+var index = require('./index-DLWZuLsW.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var translation = require('./translation-NP6A4XKu.js');
 var prompt = require('./prompt-DoMXcdvl.js');
@@ -2606,7 +2606,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: '0539fc138d0f6f6661970871a7dc63181a76fc5c', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'b525109ccb5d413b110146db55b94d10bc16f24a', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '455c7dedf3d6ac981329cf1ac19061b07c81a29a', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: '905525b9d959979e3569f6a291e1c4e472b0ddd3', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '11fc6772a5b1549d8c53031be15614fa1a30f147', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '5e7e9a451c55f7a22406229fb589677fb0b063a3', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '04e78f1f376e2512f29f920c5fb426d2bfeb51d0', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: 'ab4fa4f876de5762f99a1662e7ab6bca589dfb9b', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

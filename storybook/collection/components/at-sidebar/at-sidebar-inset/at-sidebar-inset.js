@@ -35,7 +35,7 @@ export class AtSidebarInsetComponent {
         this.provider?.removeEventListener('atuiSidebarBackdropChange', this.handleBackdropChange);
     }
     render() {
-        return (h(Host, { key: '31107de1a43418e0b193ffcdb1e19ed89f545e55', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, h("slot", { key: '43dd9f6fea342e65013850a0358901700bffd5b6' })));
+        return (h(Host, { key: '66ee3bfbbf77d17875673d5562cee531eb54d682', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, h("slot", { key: '72992d6a4658d158df7f8f6fb991fccb4a1f1653' })));
     }
     static get is() { return "at-sidebar-inset"; }
     static get originalStyleUrls() {

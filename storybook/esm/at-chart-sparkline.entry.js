@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-46ti_ijN.js';
+import { r as registerInstance, h, H as Host } from './index-BQ4XN8sR.js';
 import { g as getChartColors, c as color, C as Chart, L as LinearScale, b as CategoryScale, d as LineController, e as LineElement, P as PointElement, i as index } from './chart-color-D0s5MbHz.js';
 import { A as AtChartColorPalette } from './chart-color-PVoy06gY.js';
 
@@ -205,7 +205,7 @@ const AtChartSparkline = class {
         }
     }
     render() {
-        return (h(Host, { key: '228d1d3edbf13254e8a96830b15eda0b9dd3d48f', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'ae12b22b5f090336aaf7cae2a5cc67f8ccca4d93', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (h(Host, { key: '1fe9add0f6ab323f0b246c481a8a836df3239d64', style: { height: '100%', width: '100%' } }, h("canvas", { key: '4cfb2985a244887035e46dfc275c23bf1933f987', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
 };
 

@@ -41,7 +41,7 @@ import { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-
 import { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 import { AtISelectOption } from "./types/select";
 import { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-multi-select";
-import { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
+import { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholder/at-placeholder";
 import { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 import { AtITableColumnDef } from "./models/searchTableModel";
@@ -100,7 +100,7 @@ export { AtLoadingSize, AtLoadingType, AtLoadingVariant } from "./components/at-
 export { AtAlign, AtAriaRole, AtOpenOn, AtPosition } from "./components/at-menu/at-menu";
 export { AtISelectOption } from "./types/select";
 export { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-multi-select";
-export { AtPlaceholderSize } from "./components/at-placeholder/at-placeholder";
+export { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholder/at-placeholder";
 export { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 export { AtITableColumnDef } from "./models/searchTableModel";
@@ -1976,6 +1976,11 @@ export namespace Components {
           * @default 'md'
          */
         "size": AtPlaceholderSize;
+        /**
+          * Built-in illustration and empty-state situation. Prefer this over slotting your own icon so empty states stay consistent across apps. `no-data` for a collection that is genuinely empty (pair with a create action), `no-results` when a search or filter matched nothing, `no-access` when the emptiness is permission or scope caused, `chart-no-data` for an empty chart surface. A failed load is not a placeholder — use `at-message` with a retry action.
+          * @default 'none'
+         */
+        "type": AtPlaceholderType;
     }
     /**
      * @category Data Visualization
@@ -7697,6 +7702,11 @@ declare namespace LocalJSX {
           * @default 'md'
          */
         "size"?: AtPlaceholderSize;
+        /**
+          * Built-in illustration and empty-state situation. Prefer this over slotting your own icon so empty states stay consistent across apps. `no-data` for a collection that is genuinely empty (pair with a create action), `no-results` when a search or filter matched nothing, `no-access` when the emptiness is permission or scope caused, `chart-no-data` for an empty chart surface. A failed load is not a placeholder — use `at-message` with a retry action.
+          * @default 'none'
+         */
+        "type"?: AtPlaceholderType;
     }
     /**
      * @category Data Visualization
@@ -9897,6 +9907,7 @@ declare namespace LocalJSX {
         "placeholder_title": string;
         "content": string;
         "show_loading_spinner": boolean;
+        "type": AtPlaceholderType;
     }
     interface AtProgressBarAttributes {
         "percentage": number;

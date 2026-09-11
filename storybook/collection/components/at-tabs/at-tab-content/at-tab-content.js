@@ -43,7 +43,7 @@ export class AtTabContent {
         this.isActive = selectedTabId === this.tab_id;
     };
     render() {
-        return (h("div", { key: 'e7fc3a9e97bd4739b18bd32030c34daaacae0bfc', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '66336e51b793213106f8fa4221b6cf779d9de2d8' })));
+        return (h("div", { key: '7cf521d620cd2467617c494bc6095f322cfc6151', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '0f447f47e5e5a82ab37e31cd598a2d39e22d2547' })));
     }
     static get is() { return "at-tab-content"; }
     static get properties() {

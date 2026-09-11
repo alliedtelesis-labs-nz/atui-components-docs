@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-zRWHCAJe.js');
+var index = require('./index-DLWZuLsW.js');
 var relativeTimeLabel = require('./relative-time-label-Cl44YHvZ.js');
 
 const AtRelativeDateTimeCell = class {
@@ -39,7 +39,7 @@ const AtRelativeDateTimeCell = class {
         this.dateTimeLabel = sourceDateTime;
     }
     render() {
-        return (index.h(index.Host, { key: '6f3b1394acf5845b2f034ff67240392c5b8ca33a', class: "flex h-full items-center" }, index.h("div", { key: 'c021c01311ded4d12c24529b28079609219aadaa', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '61d63d741fe3d1916c39c2c64300d8a6d84a49e0', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (index.h("div", { key: '0974275138a71dbc810d67391c5f242969c5ea0b', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (index.h(index.Host, { key: 'a0927ffd3e79aabf09bdcf9aa8d3138f9781fa20', class: "flex h-full items-center" }, index.h("div", { key: '7f6e5159e370cf2929d12b666ad336f71b41be85', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '8080ca24845479dcd6fd653cb6a3b92d80cfd439', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (index.h("div", { key: '4dce05b5ad49ed057c57d8bcb420be85f33b59f8', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
 };
 

@@ -96,9 +96,9 @@ export class AtChipListCell {
         // measures itself against; w-full stays as the fallback for when there
         // is no column to ask, such as in a story.
         const collapse = this.params?.show_overflow_counter ?? true;
-        return (h(Host, { key: 'd4c52ac9aef16ece677be2095dda3896c22224cb', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
+        return (h(Host, { key: 'c60d5099985cfcf21e13400f4deac830162324ae', class: `flex h-full w-full min-w-0 items-center ${collapse ? 'overflow-hidden' : ''}`, style: this.contentWidth
                 ? { width: `${this.contentWidth}px` }
-                : undefined }, h("at-chip-list", { key: 'c4f55d48ca47db5986cd754fae95ba7e4e440d56', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
+                : undefined }, h("at-chip-list", { key: '0688d164d5fca055523622557d4784ea6eff9e52', class: "w-full min-w-0", chips: this.chips, show_clear_all: false, readonly: true, show_overflow_counter: collapse })));
     }
     static get is() { return "at-chip-list-cell"; }
     static get states() {

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-46ti_ijN.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-BQ4XN8sR.js';
 
 const AtMenuCell = class {
     constructor(hostRef) {
@@ -29,7 +29,7 @@ const AtMenuCell = class {
         const actions = typeof this.params.actions === 'function'
             ? this.params.actions(this.params)
             : this.params.actions;
-        return (h(Host, { key: '6224b1de3f29e89f5201d955727ba451533206a6', class: "flex h-full items-center gap-4" }, h("at-menu", { key: 'cd9d6685239d98b272dd6e9203126aad2bec2699', width: "fit-content", position: "left" }, h("at-button", { key: 'fde09dbe35cf6490cb435fbf355a0a5437c5b11f', type: "secondaryText", slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: 'dd3ad590d98df7c0bb483a208e8b053751060552', slot: "icon", name: "overflow_menu" }))), h("div", { key: 'c04e9f3956cc88ec5c8a959d09f122f871c3bad4', class: "flex flex-col" }, actions &&
+        return (h(Host, { key: 'c176607f4e8249060fdd0e30499fb53560295ba3', class: "flex h-full items-center gap-4" }, h("at-menu", { key: '782e8dff18a795c32906b10d3b911f9912bbc877', width: "fit-content", position: "left" }, h("at-button", { key: '61a0c304d912e1ee289856f6deaccd9244d1d960', type: "secondaryText", slot: "menu-trigger" }, !this.params.icon && (h("at-icon", { key: '0f50f9afcc89bd1cc7b342e6dcbf154e7b45bcb8', slot: "icon", name: "overflow_menu" }))), h("div", { key: 'e24d26f88b622a71effc112303319174b9ec72da', class: "flex flex-col" }, actions &&
             actions.map((action) => typeof action === 'object' &&
                 (action.disabled &&
                     action.disabled(this.params.data) &&

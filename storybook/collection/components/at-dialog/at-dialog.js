@@ -228,7 +228,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '4dc87de422f210cc95bd053ee3dfa5e1d642c7ee', "data-open": this.isOpen }, h("dialog", { key: '74aebf05e5f68011188ad7118002bd2724bf1198', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '8fd99623df572cba2219dca7c8b86a796ec285ce', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'd69a991f798766ee0e8215495d2dc3bd5d1042c1' })))));
+        return (h(Host, { key: '4269db5125229ef48ca45a393f1684e3e8fb35a4', "data-open": this.isOpen }, h("dialog", { key: '16a59afd511aaf720d0150fa02fb965bd36497ae', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: 'fc18ae188a27d55a8057fcc01db0ff99cb6257f5', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '74a638c6aea4fc5086176dbf4e795a9897996fb6' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }

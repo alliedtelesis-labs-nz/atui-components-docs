@@ -68,7 +68,7 @@ export class AtLoadingComponent {
         }
     }
     render() {
-        return (h(Host, { key: '2ded0068e2c33065dc79e23cf7ec0df698ffdc0c', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), h("slot", { key: 'dc039ca5696e8d9089e8856f3ab1049f1415c422' })));
+        return (h(Host, { key: '2002513bf712b0d2201df0097df89d9b6bf79623', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), h("slot", { key: '1a7faeb1bf038180fbf3fa8836db9efd062fd9e9' })));
     }
     static get is() { return "at-loading"; }
     static get originalStyleUrls() {

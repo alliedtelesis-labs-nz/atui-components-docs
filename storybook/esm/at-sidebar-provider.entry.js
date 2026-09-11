@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-46ti_ijN.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BQ4XN8sR.js';
 
 const atSidebarProviderCss = () => `at-sidebar-provider{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar-provider>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar-provider>at-sidebar{flex:0 0 auto;width:auto;height:100%}at-sidebar-provider>at-sidebar[side=right]{order:1}`;
 
@@ -115,7 +115,7 @@ const AtSidebarProviderComponent = class {
         }
     };
     render() {
-        return (h(Host, { key: 'c8515e2fcb1d29742be29e5f0a824f9d7e21df46' }, this.backdropRequests.size > 0 && (h("div", { key: '292ec7729ccae3e4fd0a02afed70d6b820bf75a9', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: '6931ff1bfcf10a0c6d7cfa23303b279084710339' })));
+        return (h(Host, { key: 'f32768ea8e7d035e6dff75f197cf02ac6f9c3cfb' }, this.backdropRequests.size > 0 && (h("div", { key: '9a3a3323493b7893e50113f5f0dc9c9646730ac3', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: 'aa41905e8bf88bde0fe90a283d50f712ac466a7c' })));
     }
 };
 AtSidebarProviderComponent.style = atSidebarProviderCss();
