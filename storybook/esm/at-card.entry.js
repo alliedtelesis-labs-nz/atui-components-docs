@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-BQ4XN8sR.js';
+import { r as registerInstance, h, H as Host } from './index-DiMbulBS.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const containerVariantsConfig = {

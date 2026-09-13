@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DLWZuLsW.js');
+var index = require('./index-D0lZ3Nn_.js');
 
 const AtAccordionComponent = class {
     constructor(hostRef) {

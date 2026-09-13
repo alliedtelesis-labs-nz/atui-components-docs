@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BQ4XN8sR.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DiMbulBS.js';
 
 const atSidebarProviderCss = () => `at-sidebar-provider{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar-provider>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar-provider>at-sidebar{flex:0 0 auto;width:auto;height:100%}at-sidebar-provider>at-sidebar[side=right]{order:1}`;
 

@@ -695,9 +695,9 @@
   --token-color-base-zinc-900: #18181b;
   --token-color-base-zinc-950: #09090b;
   --token-font-size-root: 13px;
-  --token-font-family-inter: 'Inter', 'Helvetica Neue', Helvetica, Arial,
-        sans-serif;
-  --token-font-family-mono: 'Roboto Mono', monospace;
+  --token-font-family-inter: 'Inter Variable', 'Inter', 'Helvetica Neue',
+        Helvetica, Arial, sans-serif;
+  --token-font-family-mono: 'Roboto Mono Variable', 'Roboto Mono', monospace;
   --token-font-family-base: var(--token-font-family-inter);
   --token-space-0: 0;
   --token-space-2: 2px;
