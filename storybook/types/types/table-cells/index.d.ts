@@ -88,6 +88,7 @@ export interface ITextCellParams extends IClickCell {
     textStyles?: AtICSSProperties | ((params: ICellRendererParams) => AtICSSProperties);
     containerStyles?: AtICSSProperties;
     click?: (params: ICellRendererParams) => void;
+    isLink?: boolean;
     textClass?: string;
     rowIndex: any;
     textTransform?: (data: any, value: any) => string;

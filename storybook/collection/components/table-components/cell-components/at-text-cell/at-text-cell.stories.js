@@ -39,3 +39,30 @@ Default.args = {
     },
     page_size: 10,
 };
+export const Link = Template.bind({});
+Link.args = {
+    col_defs: [
+        {
+            flex: 1,
+            field: 'col_one',
+            colId: 'col_one',
+            sortable: false,
+            headerName: 'Text Link',
+            cellRenderer: '***AtTextCell***',
+            cellRendererParams: {
+                isLink: true,
+                click: '***(params) => alert(`Link clicked: ${params.value}`)***',
+            },
+        },
+    ],
+    table_data: {
+        items: [
+            {
+                _id: '1',
+                col_one: 'Clickable value',
+            },
+        ],
+        total: 1,
+    },
+    page_size: 10,
+};

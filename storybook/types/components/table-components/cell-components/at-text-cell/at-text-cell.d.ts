@@ -8,6 +8,7 @@ export interface AtITextCellData {
 export interface AtITextCellParams extends ICellRendererParams, ITooltipCell {
     text?: (data: AtITextCellData) => string;
     color?: string;
+    isLink?: boolean;
     textStyles?: any | ((params: ICellRendererParams) => any);
     textClass?: string;
     textTransform?: (data: any, value: any) => string;
@@ -21,6 +22,7 @@ export declare class AtTextCellComponent implements ICellRendererComp {
     containerStyles: AtICSSProperties;
     textStyles: AtICSSProperties;
     textClass: string;
+    isLink: boolean;
     textValue: string;
     params: InitTextCellParams;
     init(params: InitTextCellParams): void;

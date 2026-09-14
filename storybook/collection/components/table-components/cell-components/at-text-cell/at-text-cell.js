@@ -1,4 +1,5 @@
 import { h, Host } from "@stencil/core";
+const LINK_CLASSES = 'text-active-foreground cursor-pointer font-medium hover:underline';
 /**
  * @category Data Tables
  * @description A basic text cell component for displaying simple text content in data tables. Provides consistent typography and overflow handling.
@@ -8,11 +9,13 @@ export class AtTextCellComponent {
     containerStyles;
     textStyles;
     textClass;
+    isLink;
     textValue;
     params;
     init(params) {
-        const { size, color, textStyles, containerStyles, textClass, textTransform, } = params;
+        const { size, color, textStyles, containerStyles, textClass, textTransform, isLink, } = params;
         this.textClass = textClass;
+        this.isLink = isLink;
         this.containerStyles = containerStyles;
         this.params = params;
         if (typeof textStyles == 'function') {
@@ -62,10 +65,10 @@ export class AtTextCellComponent {
         return String(textVal);
     }
     render() {
-        return (h(Host, { key: 'c9d24d452e65abf36ada2384e6ee0af86e96fc5f', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '7440f52eb3e47cf3208f8d4593ac2f98df6838f8', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '29a5ad54fe38a9295f64b2a0c4e4644b4adfa135', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (h(Host, { key: 'd2fc9a35274c2b635a2cc697c2ad6832daf15f37', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '4eb2c916e4b8df92e320e5fb4bf97b50f40fac1b', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: 'a269b7240c663272f0178d182713f458d998d55b', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '12f1591d741702d1b6c8036ef6466c078bc55880', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '0f1176bd030bd49d4d01c57835ff6c3505546e8d', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
     static get is() { return "at-text-cell"; }
     static get states() {
@@ -73,6 +76,7 @@ export class AtTextCellComponent {
             "containerStyles": {},
             "textStyles": {},
             "textClass": {},
+            "isLink": {},
             "textValue": {},
             "params": {}
         };
