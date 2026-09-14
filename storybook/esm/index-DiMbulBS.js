@@ -291,6 +291,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-placeholder.entry.js').then(processMod, consoleError);
+                case 'at-resizable-group':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-resizable-group.entry.js').then(processMod, consoleError);
+                case 'at-resizable-handle':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-resizable-handle.entry.js').then(processMod, consoleError);
+                case 'at-resizable-panel':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-resizable-panel.entry.js').then(processMod, consoleError);
                 case 'at-side-panel':
                     return import(
                       /* webpackMode: "lazy" */

@@ -133,6 +133,12 @@ export { AtRelativeTimeComponent as AtRelativeTime } from '../types/components/a
 export { defineCustomElement as defineCustomElementAtRelativeTime } from './at-relative-time';
 export { AtReloadButton as AtReloadButton } from '../types/components/at-reload-button/at-reload-button';
 export { defineCustomElement as defineCustomElementAtReloadButton } from './at-reload-button';
+export { AtResizableGroupComponent as AtResizableGroup } from '../types/components/at-resizable/at-resizable-group/at-resizable-group';
+export { defineCustomElement as defineCustomElementAtResizableGroup } from './at-resizable-group';
+export { AtResizableHandleComponent as AtResizableHandle } from '../types/components/at-resizable/at-resizable-handle/at-resizable-handle';
+export { defineCustomElement as defineCustomElementAtResizableHandle } from './at-resizable-handle';
+export { AtResizablePanelComponent as AtResizablePanel } from '../types/components/at-resizable/at-resizable-panel/at-resizable-panel';
+export { defineCustomElement as defineCustomElementAtResizablePanel } from './at-resizable-panel';
 export { AtSearch as AtSearch } from '../types/components/at-search/at-search';
 export { defineCustomElement as defineCustomElementAtSearch } from './at-search';
 export { AtSearchTable as AtSearchTable } from '../types/components/table-components/at-search-table/at-search-table';

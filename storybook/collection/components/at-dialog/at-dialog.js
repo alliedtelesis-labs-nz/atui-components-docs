@@ -56,6 +56,18 @@ export class AtDialogComponent {
     dialogId = `dialog-${Math.random().toString(36).substring(2, 11)}`;
     dialog;
     dialogWrapper;
+    /**
+     * A non-modal dialog (backdrop=false) opens via the plain `.show()` path, which renders a
+     * real position:fixed element subject to ordinary ancestor positioning — unlike backdrop=true
+     * (`.showModal()`), which promotes it to the top layer regardless of ancestors. Nested inside
+     * at-sidebar-inset, that plain position:fixed would otherwise escape the content region the
+     * same way at-side-panel's did (see at-side-panel.tsx's insideSidebarInset), floating over
+     * the full viewport instead of staying confined. Computed live, not cached, so a reparent
+     * after mount isn't stuck on a stale answer.
+     */
+    get isContainedToSidebarInset() {
+        return !this.backdrop && !!this.el.closest('at-sidebar-inset');
+    }
     triggerEls = [];
     externalTriggerListeners = [];
     /**
@@ -228,7 +240,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '4269db5125229ef48ca45a393f1684e3e8fb35a4', "data-open": this.isOpen }, h("dialog", { key: '16a59afd511aaf720d0150fa02fb965bd36497ae', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: 'fc18ae188a27d55a8057fcc01db0ff99cb6257f5', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '74a638c6aea4fc5086176dbf4e795a9897996fb6' })))));
+        return (h(Host, { key: '5af2cf0c04a9aa63db495bceccb9e8b3c10f2c19', "data-open": this.isOpen }, h("dialog", { key: 'd0c166e522a68935c8dfc8932e0f4e3fdf8e0d9d', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '6df8c75f99e5887dc7edd967d88688554ab07afd', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '692b048c208aa3f333c3d95866e5c3a34cb6866f' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }

@@ -589,7 +589,7 @@ export class AtChartBreakdown {
         const typography = showSideText
             ? readChartTypography(this.el)
             : undefined;
-        return (h(Host, { key: '243cc9612d2afba01a84277bbb32f35e84a434b5', style: {
+        return (h(Host, { key: 'f1b753f6e9bc596f4dec2b912d719db5a0d4692c', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -597,24 +597,24 @@ export class AtChartBreakdown {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: 'c985c3ae455b8f57691c97bfe8086e14c8465fbc', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '8b052311bb4f844976ef49201e6bd10b25d13198', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: '1882282f265dd65996ad99df99cb21cd342c2078', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: '0081ff1dfb85a108388fbc66f4f88bad5fed26e5', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '985ddd4f5cb4c6ab14833bcfc0544a70280d4d12', style: {
+            } }, this.center_value && (h("span", { key: 'a420696f08b57ad4031165aea9e29a54f8313ba1', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (h("span", { key: '9b967c080ccb9097501bc9d003d4099e1e74866f', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: 'f60dd9cb44afbeccca788121b7af960af0afa8e9', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

@@ -7,7 +7,7 @@
 
 /* eslint-disable */
 
-import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIExternalFiltersChange, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtISelection, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtSidebarProviderChangeDetail, type AtSidebarProviderCustomEvent, type AtTableCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type GridApi, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
+import { type AtButtonCustomEvent, type AtButtonGroupOptionCustomEvent, type AtColumnManagerCustomEvent, type AtCustomTimeRangeCustomEvent, type AtDashboardCustomEvent, type AtDialogCloseReason, type AtDialogCustomEvent, type AtEvent, type AtFilterFormCustomEvent, type AtIColumnDetails, type AtIColumnManagerChangeEvent, type AtICustomGridStackItem, type AtIDateRangeStrings, type AtIExternalFiltersChange, type AtIFilter, type AtIFilterGroup, type AtIListSelectorItem, type AtIPaginationParams, type AtISearchTableParams, type AtISelection, type AtITimeWithUnit, type AtITreeNode, type AtInputDateCustomEvent, type AtListSelectorCustomEvent, type AtMenuItemCustomEvent, type AtResizableChangeEntry, type AtResizableGroupCustomEvent, type AtSearchTableCustomEvent, type AtSelectedTimeRangeExtended, type AtSidebarMenuitemCustomEvent, type AtSidebarProviderChangeDetail, type AtSidebarProviderCustomEvent, type AtTableCustomEvent, type AtTableFilterMenuCustomEvent, type AtTableFiltersCustomEvent, type AtTimeRangeCustomEvent, type AtTimeWithUnitCustomEvent, type AtTreeCustomEvent, type AtTreeItemCustomEvent, type GridApi, type TimeRangeDisplay } from "@alliedtelesis-labs-nz/atui-components-stencil";
 import { AtAccordionItem as AtAccordionItemElement, defineCustomElement as defineAtAccordionItem } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-item.js";
 import { AtAccordionTrigger as AtAccordionTriggerElement, defineCustomElement as defineAtAccordionTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion-trigger.js";
 import { AtAccordion as AtAccordionElement, defineCustomElement as defineAtAccordion } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-accordion.js";
@@ -74,6 +74,9 @@ import { AtRadio as AtRadioElement, defineCustomElement as defineAtRadio } from 
 import { AtRelativeDatetimeCell as AtRelativeDatetimeCellElement, defineCustomElement as defineAtRelativeDatetimeCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-datetime-cell.js";
 import { AtRelativeTime as AtRelativeTimeElement, defineCustomElement as defineAtRelativeTime } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-relative-time.js";
 import { AtReloadButton as AtReloadButtonElement, defineCustomElement as defineAtReloadButton } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-reload-button.js";
+import { AtResizableGroup as AtResizableGroupElement, defineCustomElement as defineAtResizableGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-resizable-group.js";
+import { AtResizableHandle as AtResizableHandleElement, defineCustomElement as defineAtResizableHandle } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-resizable-handle.js";
+import { AtResizablePanel as AtResizablePanelElement, defineCustomElement as defineAtResizablePanel } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-resizable-panel.js";
 import { AtSearchTable as AtSearchTableElement, defineCustomElement as defineAtSearchTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search-table.js";
 import { AtSearch as AtSearchElement, defineCustomElement as defineAtSearch } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-search.js";
 import { AtSelectGroup as AtSelectGroupElement, defineCustomElement as defineAtSelectGroup } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-select-group.js";
@@ -961,6 +964,45 @@ export const AtReloadButton: StencilReactComponent<AtReloadButtonElement, AtRelo
     defineCustomElement: defineAtReloadButton
 });
 
+type AtResizableGroupEvents = { onAtuiResizableChange: EventName<AtResizableGroupCustomEvent<AtResizableChangeEntry[]>> };
+
+export const AtResizableGroup: StencilReactComponent<AtResizableGroupElement, AtResizableGroupEvents> = /*@__PURE__*/ createComponent<AtResizableGroupElement, AtResizableGroupEvents>({
+    tagName: 'at-resizable-group',
+    elementClass: AtResizableGroupElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onAtuiResizableChange: 'atuiResizableChange' } as AtResizableGroupEvents,
+    defineCustomElement: defineAtResizableGroup
+});
+
+type AtResizableHandleEvents = NonNullable<unknown>;
+
+export const AtResizableHandle: StencilReactComponent<AtResizableHandleElement, AtResizableHandleEvents> = /*@__PURE__*/ createComponent<AtResizableHandleElement, AtResizableHandleEvents>({
+    tagName: 'at-resizable-handle',
+    elementClass: AtResizableHandleElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtResizableHandleEvents,
+    defineCustomElement: defineAtResizableHandle
+});
+
+type AtResizablePanelEvents = {
+    onAtuiResize: EventName<CustomEvent<number | null>>,
+    onAtuiCollapse: EventName<CustomEvent<boolean>>
+};
+
+export const AtResizablePanel: StencilReactComponent<AtResizablePanelElement, AtResizablePanelEvents> = /*@__PURE__*/ createComponent<AtResizablePanelElement, AtResizablePanelEvents>({
+    tagName: 'at-resizable-panel',
+    elementClass: AtResizablePanelElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onAtuiResize: 'atuiResize',
+        onAtuiCollapse: 'atuiCollapse'
+    } as AtResizablePanelEvents,
+    defineCustomElement: defineAtResizablePanel
+});
+
 type AtSearchEvents = { onAtChange: EventName<CustomEvent<string>> };
 
 export const AtSearch: StencilReactComponent<AtSearchElement, AtSearchEvents> = /*@__PURE__*/ createComponent<AtSearchElement, AtSearchEvents>({
@@ -1047,14 +1089,20 @@ export const AtSidePanel: StencilReactComponent<AtSidePanelElement, AtSidePanelE
     defineCustomElement: defineAtSidePanel
 });
 
-type AtSidebarEvents = { onAtuiSidebarChange: EventName<CustomEvent<any>> };
+type AtSidebarEvents = {
+    onAtuiSidebarChange: EventName<CustomEvent<any>>,
+    onAtuiSidebarResize: EventName<CustomEvent<number>>
+};
 
 export const AtSidebar: StencilReactComponent<AtSidebarElement, AtSidebarEvents> = /*@__PURE__*/ createComponent<AtSidebarElement, AtSidebarEvents>({
     tagName: 'at-sidebar',
     elementClass: AtSidebarElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: { onAtuiSidebarChange: 'atuiSidebarChange' } as AtSidebarEvents,
+    events: {
+        onAtuiSidebarChange: 'atuiSidebarChange',
+        onAtuiSidebarResize: 'atuiSidebarResize'
+    } as AtSidebarEvents,
     defineCustomElement: defineAtSidebar
 });
 

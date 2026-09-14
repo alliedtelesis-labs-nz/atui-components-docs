@@ -47,7 +47,10 @@ export class AtSidePanelComponent {
      */
     has_close_button = true;
     /**
-     * If sidepanel should use fixed positioning (will fallback to absolute)
+     * Whether the panel overlays the viewport ('fixed', the default) or is
+     * positioned relative to its nearest positioned ancestor ('absolute') —
+     * e.g. to stay confined to at-sidebar-inset's content region instead of
+     * covering the full viewport.
      */
     position = 'fixed';
     /**
@@ -72,6 +75,10 @@ export class AtSidePanelComponent {
     sidePanelWrapper;
     footerObserver;
     panelDialog;
+    headerEl = null;
+    railEl = null;
+    confineObserver;
+    confinementMutationObserver;
     triggerEls = [];
     externalTriggerListeners = [];
     /**
@@ -144,23 +151,6 @@ export class AtSidePanelComponent {
             this.closeSidePanel();
         }
     };
-    /**
-     * position:fixed's containing block is the viewport, which is what a
-     * panel opened outside a multi-sidebar layout wants. Nested inside
-     * at-sidebar-inset, the panel is meant to stay confined to that content
-     * region instead — at-sidebar-inset is position:relative specifically so
-     * an absolute-positioned container here is contained by it. Only
-     * overridden when the consumer left position at its 'fixed' default.
-     */
-    insideSidebarInset = false;
-    componentWillLoad() {
-        this.insideSidebarInset = !!this.el.closest('at-sidebar-inset');
-    }
-    get effectivePosition() {
-        return this.position === 'fixed' && this.insideSidebarInset
-            ? 'absolute'
-            : this.position;
-    }
     offClickHandler(event) {
         if (!this.close_backdrop || !this.panelDialog?.open)
             return;
@@ -175,6 +165,9 @@ export class AtSidePanelComponent {
             childList: true,
             subtree: true,
         });
+        if (this.position === 'fixed' && this.el.closest('at-sidebar-inset')) {
+            this.setupConfinement();
+        }
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
@@ -187,6 +180,8 @@ export class AtSidePanelComponent {
     disconnectedCallback() {
         this.cleanupExternalTriggerListeners();
         this.footerObserver?.disconnect();
+        this.confineObserver?.disconnect();
+        this.confinementMutationObserver?.disconnect();
     }
     /**
      * The footer drives layout (the content stops stretching once there is a
@@ -195,6 +190,74 @@ export class AtSidePanelComponent {
      */
     syncHasFooter() {
         this.hasFooter = !!this.el.querySelector('[slot="footer"]');
+    }
+    /**
+     * Only called for position:fixed panels nested in at-sidebar-inset (see
+     * the componentDidLoad guard) — those stay true viewport overlays (an
+     * absolute-positioned descendant of a scrolling ancestor scrolls away
+     * with it, which is exactly what used to break here) and so can't rely
+     * on CSS containment to avoid at-header and whichever at-sidebar rail
+     * shares their origin side. A position:absolute panel doesn't need any
+     * of this: its containing block (at-sidebar-inset) is already laid out
+     * below the header and beside the rail by ordinary flex layout. So this
+     * measures those elements directly and exposes the offsets as custom
+     * properties for the CSS to consume only for the fixed case.
+     *
+     * ResizeObserver, not a one-time measurement: at-header's height is
+     * fairly static, but the at-sidebar rail's width isn't — it changes on
+     * collapse/expand today, and will change on drag once at-sidebar panels
+     * are user-resizable (planned). Observing the actual rendered box means
+     * this stays correct either way without new code when that lands.
+     */
+    setupConfinement() {
+        this.confineObserver = new ResizeObserver(() => this.updateConfinementOffsets());
+        this.resolveConfinementTargets();
+    }
+    /**
+     * The convention is to author at-sidebar-inset before a right-side
+     * at-sidebar rail in the DOM (see at-sidebar-provider.scss), so this
+     * panel's own componentDidLoad can easily run before the rail has
+     * connected — a single lookup here would then miss it permanently, the
+     * same class of registration-order race at-sidebar-trigger's remote
+     * resolution and at-sidebar's scanForTriggers both retry for. Keep
+     * watching for whichever of at-header/the rail hasn't shown up yet,
+     * rather than giving up after one attempt.
+     */
+    resolveConfinementTargets() {
+        if (!this.headerEl) {
+            const header = document.querySelector('at-header');
+            if (header) {
+                this.headerEl = header;
+                this.confineObserver?.observe(this.headerEl);
+            }
+        }
+        if (!this.railEl) {
+            const rail = document.querySelector(`at-sidebar[side="${this.origin}"]`);
+            if (rail) {
+                this.railEl = rail;
+                this.confineObserver?.observe(this.railEl);
+            }
+        }
+        if (this.headerEl && this.railEl) {
+            this.confinementMutationObserver?.disconnect();
+            this.confinementMutationObserver = undefined;
+        }
+        else if (!this.confinementMutationObserver) {
+            this.confinementMutationObserver = new MutationObserver(() => this.resolveConfinementTargets());
+            this.confinementMutationObserver.observe(document.body, {
+                childList: true,
+                subtree: true,
+            });
+        }
+        this.updateConfinementOffsets();
+    }
+    updateConfinementOffsets() {
+        const topOffset = this.headerEl?.getBoundingClientRect().height ?? 0;
+        const railOffset = this.railEl?.getBoundingClientRect().width ?? 0;
+        this.el.style.setProperty('--at-side-panel-confine-top', `${topOffset}px`);
+        this.el.style.setProperty(this.origin === 'left'
+            ? '--at-side-panel-confine-left'
+            : '--at-side-panel-confine-right', `${railOffset}px`);
     }
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
@@ -226,7 +289,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: '67c217696685ec295a5757c912eda0d97deef990', "data-open": this.isOpen }, h("dialog", { key: 'f65bb87efd5912d91dd88d7e342c8fb091f6f298', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: 'e04260f9d1399d5b233cbb69f2cf0794c435a44f', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.effectivePosition}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '2bf2eaea2e2cd7b90f3b57cc26d57ebe48dd9e20', class: "header", "data-name": "header" }, h("div", { key: '25a602a41e5daa4f08cf59586f8f34fb30ba7235' }, h("slot", { key: '2e2f827e5a28bee3aecde90f86c8a4da4e856a33', name: "title" }), this.panel_title && (h("h3", { key: 'd8d1d5f5a372700dde0c5af4222d9eafe19bffff', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'ac5723e5a90e4bc961b03e32934dcaa4e74f62a5', class: "subtitle" }, this.panel_subtitle))), h("div", { key: '520c7f5e1efb792f23478d5c16e2a1a8f27a2519' }, h("slot", { key: 'c27254ffea05369a88c59aec596389abea0abe86', name: "actions" }), this.has_close_button && (h("at-button", { key: 'fa4b312c813835decfe8025168b13ee917046346', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: 'ea1c08d2d909a0f7521937dab1b546d0beaad2cf', slot: "icon", name: "close" }))))), h("div", { key: 'a9d1919d4447227b69690f07b2d2fd23b2a54611', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: 'abab73b18e669b4912c6a64f138d886cc83e4efb' })), h("div", { key: 'cf6b5719fac7fc9442fc863f83a52428d5e6cb31', "data-name": "footer", class: "footer" }, h("slot", { key: '1f82e63112a76497e2b8019c13328c42c980d138', name: "footer" }))))));
+        return (h(Host, { key: 'df30d87f6526918a5cdfaea0069e3c471b1b168b', "data-open": this.isOpen }, h("dialog", { key: '8f7b22adf74f30ba08eed9c44928e4e94a71795d', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '5af117649509ed463317e76bda5e224a54d79265', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '13d8f6332304eccb1b444ee05ea769f2e343cc73', class: "header", "data-name": "header" }, h("div", { key: 'a1520d719027bedcc30dd0e2606d3e486f49f28d' }, h("slot", { key: '0a752619063c415767d72e33f05baf23191aa7b7', name: "title" }), this.panel_title && (h("h3", { key: '321d8c91107628e918ee3310591ba633a594f322', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'c84b0df9d7062d757c6c2f881f0471f4f1d25335', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'ab1001c01256ed801224a05890e6c17f8608a48b' }, h("slot", { key: '1424c959e0e215934f585abd8b23ae11504274d6', name: "actions" }), this.has_close_button && (h("at-button", { key: '8db2fe5d9604fae707f6979b00f8f0b66bda4aa0', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '1d06be1f8b0f999ba010325a2fd68f4fa4aea797', slot: "icon", name: "close" }))))), h("div", { key: 'c3ebaf4a2a86413c553af4ff4c404764b2aa5add', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: '5c016b3239beb62ed9b9b2f880759c4147fdea03' })), h("div", { key: 'a5d8852c2ad73c4fee3a4077b542043b5be2fee9', "data-name": "footer", class: "footer" }, h("slot", { key: '6fd594c6af27afaf705e793e5edd02b1feca9bfb', name: "footer" }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
@@ -410,7 +473,7 @@ export class AtSidePanelComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "If sidepanel should use fixed positioning (will fallback to absolute)"
+                    "text": "Whether the panel overlays the viewport ('fixed', the default) or is\npositioned relative to its nearest positioned ancestor ('absolute') \u2014\ne.g. to stay confined to at-sidebar-inset's content region instead of\ncovering the full viewport."
                 },
                 "getter": false,
                 "setter": false,

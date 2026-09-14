@@ -245,7 +245,7 @@ const AtToasterComponent = class {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (index.h("div", { key: '1f6110420bbfecc42195647def6c74817a09ea42', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (index.h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHold(toast.id, 'hovered', true), onMouseLeave: () => this.setHold(toast.id, 'hovered', false) }, index.h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
+        return (index.h("div", { key: 'fb081d63a8b7375b1c549e736c6d8c671d4fd648', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (index.h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHold(toast.id, 'hovered', true), onMouseLeave: () => this.setHold(toast.id, 'hovered', false) }, index.h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
                 event.stopPropagation();
                 this.clickActionButton(toast);
             } })), toast.closeButton && (index.h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {

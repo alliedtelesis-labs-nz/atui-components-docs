@@ -34,7 +34,7 @@ export class AtHealthDotCell {
         return true;
     }
     render() {
-        return (h(Host, { key: '6159b1e9f5ff357dd621efc5e0b8d88f0730dfe4', class: "flex h-full items-center justify-center" }, h("at-health-dot", { key: 'cd6038c1de1a3a90fb84388e40e13b34e3f9c157', status: this.type })));
+        return (h(Host, { key: 'a7abe68046a8f1962d433cc7899d7edb7f05dc1e', class: "flex h-full items-center justify-center" }, h("at-health-dot", { key: '275a1ce23d3c5ffd2ca6bccfb38879168aabc636', status: this.type })));
     }
     static get is() { return "at-health-dot-cell"; }
     static get states() {

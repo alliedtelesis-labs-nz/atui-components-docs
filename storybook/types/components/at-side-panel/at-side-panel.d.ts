@@ -50,7 +50,10 @@ export declare class AtSidePanelComponent {
      */
     has_close_button: boolean;
     /**
-     * If sidepanel should use fixed positioning (will fallback to absolute)
+     * Whether the panel overlays the viewport ('fixed', the default) or is
+     * positioned relative to its nearest positioned ancestor ('absolute') —
+     * e.g. to stay confined to at-sidebar-inset's content region instead of
+     * covering the full viewport.
      */
     position: AtSidePanelPosition;
     /**
@@ -75,6 +78,10 @@ export declare class AtSidePanelComponent {
     private sidePanelWrapper;
     private footerObserver;
     private panelDialog;
+    private headerEl;
+    private railEl;
+    private confineObserver?;
+    private confinementMutationObserver?;
     private triggerEls;
     private externalTriggerListeners;
     /**
@@ -100,17 +107,6 @@ export declare class AtSidePanelComponent {
     private handleClose;
     private handleDialogClose;
     private handleKeyDown;
-    /**
-     * position:fixed's containing block is the viewport, which is what a
-     * panel opened outside a multi-sidebar layout wants. Nested inside
-     * at-sidebar-inset, the panel is meant to stay confined to that content
-     * region instead — at-sidebar-inset is position:relative specifically so
-     * an absolute-positioned container here is contained by it. Only
-     * overridden when the consumer left position at its 'fixed' default.
-     */
-    private insideSidebarInset;
-    componentWillLoad(): void;
-    private get effectivePosition();
     offClickHandler(event: any): void;
     componentDidLoad(): Promise<void>;
     disconnectedCallback(): void;
@@ -120,6 +116,37 @@ export declare class AtSidePanelComponent {
      * Stencil has relocated slotted nodes - so the state is resolved here.
      */
     private syncHasFooter;
+    /**
+     * Only called for position:fixed panels nested in at-sidebar-inset (see
+     * the componentDidLoad guard) — those stay true viewport overlays (an
+     * absolute-positioned descendant of a scrolling ancestor scrolls away
+     * with it, which is exactly what used to break here) and so can't rely
+     * on CSS containment to avoid at-header and whichever at-sidebar rail
+     * shares their origin side. A position:absolute panel doesn't need any
+     * of this: its containing block (at-sidebar-inset) is already laid out
+     * below the header and beside the rail by ordinary flex layout. So this
+     * measures those elements directly and exposes the offsets as custom
+     * properties for the CSS to consume only for the fixed case.
+     *
+     * ResizeObserver, not a one-time measurement: at-header's height is
+     * fairly static, but the at-sidebar rail's width isn't — it changes on
+     * collapse/expand today, and will change on drag once at-sidebar panels
+     * are user-resizable (planned). Observing the actual rendered box means
+     * this stays correct either way without new code when that lands.
+     */
+    private setupConfinement;
+    /**
+     * The convention is to author at-sidebar-inset before a right-side
+     * at-sidebar rail in the DOM (see at-sidebar-provider.scss), so this
+     * panel's own componentDidLoad can easily run before the rail has
+     * connected — a single lookup here would then miss it permanently, the
+     * same class of registration-order race at-sidebar-trigger's remote
+     * resolution and at-sidebar's scanForTriggers both retry for. Keep
+     * watching for whichever of at-header/the rail hasn't shown up yet,
+     * rather than giving up after one attempt.
+     */
+    private resolveConfinementTargets;
+    private updateConfinementOffsets;
     private cleanupExternalTriggerListeners;
     private setupExternalTriggerListeners;
     render(): any;

@@ -115,7 +115,7 @@ const AtSidebarProviderComponent = class {
         }
     };
     render() {
-        return (h(Host, { key: 'f32768ea8e7d035e6dff75f197cf02ac6f9c3cfb' }, this.backdropRequests.size > 0 && (h("div", { key: '9a3a3323493b7893e50113f5f0dc9c9646730ac3', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: 'aa41905e8bf88bde0fe90a283d50f712ac466a7c' })));
+        return (h(Host, { key: '9ac1d754fd748795d382eee78c385d276b0e6e86' }, this.backdropRequests.size > 0 && (h("div", { key: '326baf6a329e7d10ba2e9783b890c445a7090065', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: '6b45e68bdd17242d5eaeba32fe38913d56a58cc9' })));
     }
 };
 AtSidebarProviderComponent.style = atSidebarProviderCss();

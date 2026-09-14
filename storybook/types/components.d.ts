@@ -44,6 +44,7 @@ import { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-m
 import { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholder/at-placeholder";
 import { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+import { AtResizableChangeEntry, ResizablePanelConfig, ResizeDirection } from "./utils/resize-controller";
 import { AtITableColumnDef } from "./models/searchTableModel";
 import { AtIExternalFiltersChange } from "./types/filter";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
@@ -103,6 +104,7 @@ export { AtMultiSelectSelectionDisplay } from "./components/at-multi-select/at-m
 export { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholder/at-placeholder";
 export { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
+export { AtResizableChangeEntry, ResizablePanelConfig, ResizeDirection } from "./utils/resize-controller";
 export { AtITableColumnDef } from "./models/searchTableModel";
 export { AtIExternalFiltersChange } from "./types/filter";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
@@ -2404,6 +2406,122 @@ export namespace Components {
         "has_updates"?: boolean;
     }
     /**
+     * @category Layout
+     * @description A container that lays out at-resizable-panel children along one axis, separated by draggable at-resizable-handle elements. Owns the shared size math so a drag on one handle can grow one neighbor and shrink the other in lockstep.
+     */
+    interface AtResizableGroup {
+        /**
+          * Begins a drag on the handle at handleIndex, capturing the group's current pixel size along its axis.
+         */
+        "beginDrag": (handleIndex: number, startClientPos: number) => Promise<void>;
+        /**
+          * Collapses a panel by id, if collapsible. Called by at-resizable-panel's own collapse() method.
+         */
+        "collapsePanel": (id: string) => Promise<void>;
+        /**
+          * Layout axis for child panels and handles. Reflected so a runtime change is observable as an attribute mutation (at-resizable-handle watches it to stay in sync).
+          * @default 'horizontal'
+         */
+        "direction": ResizeDirection;
+        /**
+          * Ends the in-progress drag and persists the result, if storage_key is set.
+         */
+        "endDrag": () => Promise<void>;
+        /**
+          * Expands a panel by id. Called by at-resizable-panel's own expand() method.
+         */
+        "expandPanel": (id: string) => Promise<void>;
+        /**
+          * Resolves the panel ids on either side of the handle at the given index (position among sibling at-resizable-handle elements). Returns null until both neighbors have actually finished registering — handing out an id the controller has no state for would let a drag or keyboard nudge silently no-op against a panel that never registered (or hasn't yet).
+         */
+        "getAdjacentPanelIds": (handleIndex: number) => Promise<{ prevId: string; nextId: string; } | null>;
+        /**
+          * Returns a single panel's current size/collapsed state, for a panel to read its own starting state right after registering.
+         */
+        "getPanelState": (id: string) => Promise<AtResizableChangeEntry | undefined>;
+        /**
+          * Jumps the previous panel to its min (toStart) or max (!toStart) bound.
+         */
+        "jumpToBound": (handleIndex: number, toStart: boolean) => Promise<void>;
+        /**
+          * Keyboard nudge: moves deltaPercent from the next panel into the previous panel (negative shrinks it).
+         */
+        "nudge": (handleIndex: number, deltaPercent: number) => Promise<void>;
+        /**
+          * Registers a panel with the group. Called by a child at-resizable-panel on load. Registration is async (the panel awaits this call), so registration order can differ from DOM order — layout order is always derived fresh from live DOM position (getPanelOrder), never from the sequence panels happened to register in. Returns an owner token the caller must pass back to unregisterPanel.
+         */
+        "registerPanel": (id: string, el: HTMLElement, config: ResizablePanelConfig) => Promise<symbol>;
+        /**
+          * Resets both panels adjacent to the handle back to their default_size.
+         */
+        "resetPair": (handleIndex: number) => Promise<void>;
+        /**
+          * When set, panel sizes persist to localStorage under this key and are restored on load.
+         */
+        "storage_key"?: string;
+        /**
+          * Removes a panel from the group. Called by a child at-resizable-panel on disconnect with the owner token it received from registerPanel — a stale instance's call is ignored if another instance has since re-registered under the same id.
+         */
+        "unregisterPanel": (id: string, owner: symbol) => Promise<void>;
+        /**
+          * Updates an in-progress drag with the pointer's current position along the resize axis.
+         */
+        "updateDrag": (clientPos: number) => Promise<void>;
+    }
+    /**
+     * @category Layout
+     * @description The draggable separator between two at-resizable-panel children of the same at-resizable-group. Supports pointer drag, keyboard resize (arrow keys, Home/End, Enter to collapse, double-click to reset), and reduced-motion.
+     */
+    interface AtResizableHandle {
+        /**
+          * Renders a small visual grip indicator on the handle.
+          * @default false
+         */
+        "has_grip": boolean;
+    }
+    /**
+     * @category Layout
+     * @description An individual resizable section within an at-resizable-group. Give it default_size to have it participate in the group's percentage layout, or omit it to let the panel hug its content and absorb whatever space its sized siblings don't claim.
+     */
+    interface AtResizablePanel {
+        /**
+          * Collapses this panel, if collapsible. No-op otherwise.
+         */
+        "collapse": () => Promise<void>;
+        /**
+          * Flex-basis percentage this panel snaps to once collapsed.
+          * @default 0
+         */
+        "collapsed_size": number;
+        /**
+          * Enables snap-to-collapsed behavior once a drag pushes this panel near its min_size.
+          * @default false
+         */
+        "collapsible": boolean;
+        /**
+          * Initial flex-basis percentage. Omit to let the panel size itself to its content instead of participating in the resize percentages.
+         */
+        "default_size"?: number;
+        /**
+          * Expands this panel from its collapsed state.
+         */
+        "expand": () => Promise<void>;
+        /**
+          * Returns whether this panel is currently collapsed.
+         */
+        "getIsCollapsed": () => Promise<boolean>;
+        /**
+          * Maximum flex-basis percentage a drag or keyboard nudge can grow this panel to.
+          * @default 100
+         */
+        "max_size": number;
+        /**
+          * Minimum flex-basis percentage a drag or keyboard nudge can shrink this panel to.
+          * @default 10
+         */
+        "min_size": number;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -2787,7 +2905,7 @@ export namespace Components {
          */
         "panel_title": string;
         /**
-          * If sidepanel should use fixed positioning (will fallback to absolute)
+          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport.
           * @default 'fixed'
          */
         "position": AtSidePanelPosition;
@@ -2831,14 +2949,33 @@ export namespace Components {
          */
         "getIsOpen": () => Promise<boolean>;
         /**
+          * Largest width a resizable sidebar can be dragged or nudged to (any valid CSS length, including a design token var(), or 'none' for no ceiling — the sidebar can then be dragged out to fill its entire group). Ignored unless resizable is true.
+          * @default 'var(--token-width-panel-xl)'
+         */
+        "max_width": string;
+        /**
+          * Smallest width a drag or keyboard nudge can resize the sidebar down to — a hard floor, not a threshold that closes it (any valid CSS length, including a design token var()). Ignored unless resizable is true.
+          * @default 'var(--token-width-sidebar-collapsed)'
+         */
+        "min_width": string;
+        /**
           * How the sidenav interacts with main content when open
          */
         "mode": 'over' | 'push';
+        /**
+          * Lets the user drag-resize the sidebar's width by its trailing edge, between min_width and max_width. Off by default.
+          * @default false
+         */
+        "resizable": boolean;
         /**
           * Position of the sidebar on the page
           * @default 'left'
          */
         "side": 'left' | 'right';
+        /**
+          * When set, a resizable sidebar's width persists to localStorage under this key and is restored on load. Ignored unless resizable is true.
+         */
+        "storage_key"?: string;
         /**
           * Toggles the sidebar's open state.
          */
@@ -2848,7 +2985,7 @@ export namespace Components {
          */
         "trigger_id"?: string;
         /**
-          * Width of the sidebar
+          * Width of the sidebar. If resizable, only sets the initial width — the user's drag (or a restored persisted/collapsed size) takes over after that, and later changes to this prop are not followed.
           * @default 'menu'
          */
         "width": AtSideBarWidth;
@@ -3858,6 +3995,14 @@ export interface AtRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface AtReloadButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtReloadButtonElement;
+}
+export interface AtResizableGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtResizableGroupElement;
+}
+export interface AtResizablePanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtResizablePanelElement;
 }
 export interface AtSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5020,6 +5165,59 @@ declare global {
         prototype: HTMLAtReloadButtonElement;
         new (): HTMLAtReloadButtonElement;
     };
+    interface HTMLAtResizableGroupElementEventMap {
+        "atuiResizableChange": AtResizableChangeEntry[];
+    }
+    /**
+     * @category Layout
+     * @description A container that lays out at-resizable-panel children along one axis, separated by draggable at-resizable-handle elements. Owns the shared size math so a drag on one handle can grow one neighbor and shrink the other in lockstep.
+     */
+    interface HTMLAtResizableGroupElement extends Components.AtResizableGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtResizableGroupElementEventMap>(type: K, listener: (this: HTMLAtResizableGroupElement, ev: AtResizableGroupCustomEvent<HTMLAtResizableGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtResizableGroupElementEventMap>(type: K, listener: (this: HTMLAtResizableGroupElement, ev: AtResizableGroupCustomEvent<HTMLAtResizableGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtResizableGroupElement: {
+        prototype: HTMLAtResizableGroupElement;
+        new (): HTMLAtResizableGroupElement;
+    };
+    /**
+     * @category Layout
+     * @description The draggable separator between two at-resizable-panel children of the same at-resizable-group. Supports pointer drag, keyboard resize (arrow keys, Home/End, Enter to collapse, double-click to reset), and reduced-motion.
+     */
+    interface HTMLAtResizableHandleElement extends Components.AtResizableHandle, HTMLStencilElement {
+    }
+    var HTMLAtResizableHandleElement: {
+        prototype: HTMLAtResizableHandleElement;
+        new (): HTMLAtResizableHandleElement;
+    };
+    interface HTMLAtResizablePanelElementEventMap {
+        "atuiResize": number | null;
+        "atuiCollapse": boolean;
+    }
+    /**
+     * @category Layout
+     * @description An individual resizable section within an at-resizable-group. Give it default_size to have it participate in the group's percentage layout, or omit it to let the panel hug its content and absorb whatever space its sized siblings don't claim.
+     */
+    interface HTMLAtResizablePanelElement extends Components.AtResizablePanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtResizablePanelElementEventMap>(type: K, listener: (this: HTMLAtResizablePanelElement, ev: AtResizablePanelCustomEvent<HTMLAtResizablePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtResizablePanelElementEventMap>(type: K, listener: (this: HTMLAtResizablePanelElement, ev: AtResizablePanelCustomEvent<HTMLAtResizablePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLAtResizablePanelElement: {
+        prototype: HTMLAtResizablePanelElement;
+        new (): HTMLAtResizablePanelElement;
+    };
     interface HTMLAtSearchElementEventMap {
         "atChange": string;
     }
@@ -5146,6 +5344,7 @@ declare global {
     };
     interface HTMLAtSidebarElementEventMap {
         "atuiSidebarChange": any;
+        "atuiSidebarResize": number;
     }
     /**
      * @category Navigation
@@ -5803,6 +6002,9 @@ declare global {
         "at-relative-datetime-cell": HTMLAtRelativeDatetimeCellElement;
         "at-relative-time": HTMLAtRelativeTimeElement;
         "at-reload-button": HTMLAtReloadButtonElement;
+        "at-resizable-group": HTMLAtResizableGroupElement;
+        "at-resizable-handle": HTMLAtResizableHandleElement;
+        "at-resizable-panel": HTMLAtResizablePanelElement;
         "at-search": HTMLAtSearchElement;
         "at-search-table": HTMLAtSearchTableElement;
         "at-select": HTMLAtSelectElement;
@@ -8208,6 +8410,74 @@ declare namespace LocalJSX {
         "onAtuiReload"?: (event: AtReloadButtonCustomEvent<void>) => void;
     }
     /**
+     * @category Layout
+     * @description A container that lays out at-resizable-panel children along one axis, separated by draggable at-resizable-handle elements. Owns the shared size math so a drag on one handle can grow one neighbor and shrink the other in lockstep.
+     */
+    interface AtResizableGroup {
+        /**
+          * Layout axis for child panels and handles. Reflected so a runtime change is observable as an attribute mutation (at-resizable-handle watches it to stay in sync).
+          * @default 'horizontal'
+         */
+        "direction"?: ResizeDirection;
+        /**
+          * Fires whenever any panel's size or collapsed state changes, with the full ordered panel state.
+         */
+        "onAtuiResizableChange"?: (event: AtResizableGroupCustomEvent<AtResizableChangeEntry[]>) => void;
+        /**
+          * When set, panel sizes persist to localStorage under this key and are restored on load.
+         */
+        "storage_key"?: string;
+    }
+    /**
+     * @category Layout
+     * @description The draggable separator between two at-resizable-panel children of the same at-resizable-group. Supports pointer drag, keyboard resize (arrow keys, Home/End, Enter to collapse, double-click to reset), and reduced-motion.
+     */
+    interface AtResizableHandle {
+        /**
+          * Renders a small visual grip indicator on the handle.
+          * @default false
+         */
+        "has_grip"?: boolean;
+    }
+    /**
+     * @category Layout
+     * @description An individual resizable section within an at-resizable-group. Give it default_size to have it participate in the group's percentage layout, or omit it to let the panel hug its content and absorb whatever space its sized siblings don't claim.
+     */
+    interface AtResizablePanel {
+        /**
+          * Flex-basis percentage this panel snaps to once collapsed.
+          * @default 0
+         */
+        "collapsed_size"?: number;
+        /**
+          * Enables snap-to-collapsed behavior once a drag pushes this panel near its min_size.
+          * @default false
+         */
+        "collapsible"?: boolean;
+        /**
+          * Initial flex-basis percentage. Omit to let the panel size itself to its content instead of participating in the resize percentages.
+         */
+        "default_size"?: number;
+        /**
+          * Maximum flex-basis percentage a drag or keyboard nudge can grow this panel to.
+          * @default 100
+         */
+        "max_size"?: number;
+        /**
+          * Minimum flex-basis percentage a drag or keyboard nudge can shrink this panel to.
+          * @default 10
+         */
+        "min_size"?: number;
+        /**
+          * Fires when this panel's collapsed state changes, with the new isCollapsed value.
+         */
+        "onAtuiCollapse"?: (event: AtResizablePanelCustomEvent<boolean>) => void;
+        /**
+          * Fires whenever this panel's size changes, with the new flex-basis percentage (null while unsized).
+         */
+        "onAtuiResize"?: (event: AtResizablePanelCustomEvent<number | null>) => void;
+    }
+    /**
      * @category Form Controls
      * @description A search component for filtering data.
      */
@@ -8580,7 +8850,7 @@ declare namespace LocalJSX {
          */
         "panel_title"?: string;
         /**
-          * If sidepanel should use fixed positioning (will fallback to absolute)
+          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport.
           * @default 'fixed'
          */
         "position"?: AtSidePanelPosition;
@@ -8614,6 +8884,16 @@ declare namespace LocalJSX {
          */
         "default_open"?: boolean;
         /**
+          * Largest width a resizable sidebar can be dragged or nudged to (any valid CSS length, including a design token var(), or 'none' for no ceiling — the sidebar can then be dragged out to fill its entire group). Ignored unless resizable is true.
+          * @default 'var(--token-width-panel-xl)'
+         */
+        "max_width"?: string;
+        /**
+          * Smallest width a drag or keyboard nudge can resize the sidebar down to — a hard floor, not a threshold that closes it (any valid CSS length, including a design token var()). Ignored unless resizable is true.
+          * @default 'var(--token-width-sidebar-collapsed)'
+         */
+        "min_width"?: string;
+        /**
           * How the sidenav interacts with main content when open
          */
         "mode"?: 'over' | 'push';
@@ -8622,16 +8902,29 @@ declare namespace LocalJSX {
          */
         "onAtuiSidebarChange"?: (event: AtSidebarCustomEvent<any>) => void;
         /**
+          * Emits the sidebar's current width in pixels whenever a resize drag or keyboard nudge changes it. Only fires when resizable is true.
+         */
+        "onAtuiSidebarResize"?: (event: AtSidebarCustomEvent<number>) => void;
+        /**
+          * Lets the user drag-resize the sidebar's width by its trailing edge, between min_width and max_width. Off by default.
+          * @default false
+         */
+        "resizable"?: boolean;
+        /**
           * Position of the sidebar on the page
           * @default 'left'
          */
         "side"?: 'left' | 'right';
         /**
+          * When set, a resizable sidebar's width persists to localStorage under this key and is restored on load. Ignored unless resizable is true.
+         */
+        "storage_key"?: string;
+        /**
           * Identifies this panel so external elements can toggle it by adding a matching `data-sidebar` attribute, and so at-sidebar-trigger can address it remotely (`data-sidebar` on the trigger). Also used as the panel's id when nested inside at-sidebar-provider. Auto-generated when omitted.
          */
         "trigger_id"?: string;
         /**
-          * Width of the sidebar
+          * Width of the sidebar. If resizable, only sets the initial width — the user's drag (or a restored persisted/collapsed size) takes over after that, and later changes to this prop are not followed.
           * @default 'menu'
          */
         "width"?: AtSideBarWidth;
@@ -9992,6 +10285,20 @@ declare namespace LocalJSX {
     interface AtReloadButtonAttributes {
         "has_updates": boolean;
     }
+    interface AtResizableGroupAttributes {
+        "direction": ResizeDirection;
+        "storage_key": string;
+    }
+    interface AtResizableHandleAttributes {
+        "has_grip": boolean;
+    }
+    interface AtResizablePanelAttributes {
+        "default_size": number;
+        "min_size": number;
+        "max_size": number;
+        "collapsible": boolean;
+        "collapsed_size": number;
+    }
     interface AtSearchAttributes {
         "label": string;
         "hint_text": string;
@@ -10073,6 +10380,10 @@ declare namespace LocalJSX {
         "backdrop": boolean;
         "default_open": boolean;
         "trigger_id": string;
+        "resizable": boolean;
+        "min_width": string;
+        "max_width": string;
+        "storage_key": string;
     }
     interface AtSidebarMenuitemAttributes {
         "label": string;
@@ -10290,6 +10601,9 @@ declare namespace LocalJSX {
         "at-relative-datetime-cell": AtRelativeDatetimeCell;
         "at-relative-time": Omit<AtRelativeTime, keyof AtRelativeTimeAttributes> & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes]?: AtRelativeTime[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `attr:${K}`]?: AtRelativeTimeAttributes[K] } & { [K in keyof AtRelativeTime & keyof AtRelativeTimeAttributes as `prop:${K}`]?: AtRelativeTime[K] };
         "at-reload-button": Omit<AtReloadButton, keyof AtReloadButtonAttributes> & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes]?: AtReloadButton[K] } & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes as `attr:${K}`]?: AtReloadButtonAttributes[K] } & { [K in keyof AtReloadButton & keyof AtReloadButtonAttributes as `prop:${K}`]?: AtReloadButton[K] };
+        "at-resizable-group": Omit<AtResizableGroup, keyof AtResizableGroupAttributes> & { [K in keyof AtResizableGroup & keyof AtResizableGroupAttributes]?: AtResizableGroup[K] } & { [K in keyof AtResizableGroup & keyof AtResizableGroupAttributes as `attr:${K}`]?: AtResizableGroupAttributes[K] } & { [K in keyof AtResizableGroup & keyof AtResizableGroupAttributes as `prop:${K}`]?: AtResizableGroup[K] };
+        "at-resizable-handle": Omit<AtResizableHandle, keyof AtResizableHandleAttributes> & { [K in keyof AtResizableHandle & keyof AtResizableHandleAttributes]?: AtResizableHandle[K] } & { [K in keyof AtResizableHandle & keyof AtResizableHandleAttributes as `attr:${K}`]?: AtResizableHandleAttributes[K] } & { [K in keyof AtResizableHandle & keyof AtResizableHandleAttributes as `prop:${K}`]?: AtResizableHandle[K] };
+        "at-resizable-panel": Omit<AtResizablePanel, keyof AtResizablePanelAttributes> & { [K in keyof AtResizablePanel & keyof AtResizablePanelAttributes]?: AtResizablePanel[K] } & { [K in keyof AtResizablePanel & keyof AtResizablePanelAttributes as `attr:${K}`]?: AtResizablePanelAttributes[K] } & { [K in keyof AtResizablePanel & keyof AtResizablePanelAttributes as `prop:${K}`]?: AtResizablePanel[K] };
         "at-search": Omit<AtSearch, keyof AtSearchAttributes> & { [K in keyof AtSearch & keyof AtSearchAttributes]?: AtSearch[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `attr:${K}`]?: AtSearchAttributes[K] } & { [K in keyof AtSearch & keyof AtSearchAttributes as `prop:${K}`]?: AtSearch[K] };
         "at-search-table": Omit<AtSearchTable, keyof AtSearchTableAttributes> & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes]?: AtSearchTable[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `attr:${K}`]?: AtSearchTableAttributes[K] } & { [K in keyof AtSearchTable & keyof AtSearchTableAttributes as `prop:${K}`]?: AtSearchTable[K] };
         "at-select": Omit<AtSelect, keyof AtSelectAttributes> & { [K in keyof AtSelect & keyof AtSelectAttributes]?: AtSelect[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `attr:${K}`]?: AtSelectAttributes[K] } & { [K in keyof AtSelect & keyof AtSelectAttributes as `prop:${K}`]?: AtSelect[K] };
@@ -10686,6 +11000,21 @@ declare module "@stencil/core" {
              * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
              */
             "at-reload-button": LocalJSX.IntrinsicElements["at-reload-button"] & JSXBase.HTMLAttributes<HTMLAtReloadButtonElement>;
+            /**
+             * @category Layout
+             * @description A container that lays out at-resizable-panel children along one axis, separated by draggable at-resizable-handle elements. Owns the shared size math so a drag on one handle can grow one neighbor and shrink the other in lockstep.
+             */
+            "at-resizable-group": LocalJSX.IntrinsicElements["at-resizable-group"] & JSXBase.HTMLAttributes<HTMLAtResizableGroupElement>;
+            /**
+             * @category Layout
+             * @description The draggable separator between two at-resizable-panel children of the same at-resizable-group. Supports pointer drag, keyboard resize (arrow keys, Home/End, Enter to collapse, double-click to reset), and reduced-motion.
+             */
+            "at-resizable-handle": LocalJSX.IntrinsicElements["at-resizable-handle"] & JSXBase.HTMLAttributes<HTMLAtResizableHandleElement>;
+            /**
+             * @category Layout
+             * @description An individual resizable section within an at-resizable-group. Give it default_size to have it participate in the group's percentage layout, or omit it to let the panel hug its content and absorb whatever space its sized siblings don't claim.
+             */
+            "at-resizable-panel": LocalJSX.IntrinsicElements["at-resizable-panel"] & JSXBase.HTMLAttributes<HTMLAtResizablePanelElement>;
             /**
              * @category Form Controls
              * @description A search component for filtering data.

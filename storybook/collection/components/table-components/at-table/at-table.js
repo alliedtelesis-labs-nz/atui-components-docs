@@ -297,7 +297,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'c53d3ad69f95d74dc2af11df0d22bbac0fcb5055', class: {
+        return (h(Host, { key: 'bfa0c572f0a6b40fe302d1a3431968977261af35', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             } }));

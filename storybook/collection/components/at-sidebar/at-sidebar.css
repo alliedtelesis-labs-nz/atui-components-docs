@@ -82,12 +82,34 @@ at-sidebar .sidebar {
   z-index: var(--token-z-index-nav);
   will-change: width;
   transition: width var(--token-transition-time);
-  overflow: auto;
+  overflow-x: visible;
+  overflow-y: auto;
   border-right: 1px solid var(--token-sidebar-border);
 }
 at-sidebar .sidebar at-sidebar-trigger {
   display: flex;
   width: 100%;
+}
+at-sidebar .sidebar .resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -4px;
+  width: 9px;
+  cursor: col-resize;
+  touch-action: none;
+  z-index: 1;
+}
+at-sidebar .sidebar .resize-handle:hover, at-sidebar .sidebar .resize-handle:focus-visible, at-sidebar .sidebar .resize-handle[data-dragging=true] {
+  background-color: var(--token-border-focus, currentColor);
+  opacity: 0.15;
+}
+at-sidebar[resizable] .sidebar {
+  transition: none;
+}
+at-sidebar.side-right .sidebar .resize-handle {
+  right: auto;
+  left: -4px;
 }
 at-sidebar .sidebar-content {
   display: flex;

@@ -79,7 +79,7 @@ dialog.backdrop::backdrop {
   box-shadow: var(--token-shadow-md);
   overflow-x: hidden;
   overflow-y: auto;
-  height: 100%;
+  height: calc(100% - var(--at-side-panel-confine-top, 0px));
   opacity: 0;
   transition: all 300ms ease;
   will-change: transform, opacity;
@@ -100,13 +100,13 @@ dialog.backdrop::backdrop {
   width: var(--token-width-panel-xl);
 }
 :host .container.origin-left {
-  left: 0;
-  top: 0;
+  left: var(--at-side-panel-confine-left, 0px);
+  top: var(--at-side-panel-confine-top, 0px);
   transform: translateX(-100%);
 }
 :host .container.origin-right {
-  right: 0;
-  top: 0;
+  right: var(--at-side-panel-confine-right, 0px);
+  top: var(--at-side-panel-confine-top, 0px);
   transform: translateX(100%);
 }
 :host .container.position-absolute {

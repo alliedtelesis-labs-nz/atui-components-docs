@@ -311,6 +311,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './at-placeholder.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-resizable-group.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-resizable-group.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-resizable-handle.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-resizable-handle.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'at-resizable-panel.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './at-resizable-panel.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'at-side-panel.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

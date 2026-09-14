@@ -21886,7 +21886,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: '276032915a23e8cc6610ecb86fb8b9802ea00094', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'd54196e81b9028816fede534949ea3be24921c76', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '32016a3533e609c5fb1a8831df12c3aa836be871', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b89b1a60bbf560922c9dbab8209364fa2ec82baa', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

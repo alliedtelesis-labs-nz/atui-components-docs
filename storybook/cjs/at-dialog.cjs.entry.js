@@ -2,7 +2,7 @@
 
 var index = require('./index-D0lZ3Nn_.js');
 
-const atDialogCss = () => `@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fade-in.sc-at-dialog{animation:fadeIn 0.2s ease-in}@keyframes fadeOut{from{opacity:1}to{opacity:0}}.fade-out.sc-at-dialog{animation:fadeOut 0.2s ease-out forwards}@keyframes fadeInBackdrop{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}dialog.backdrop.sc-at-dialog::backdrop{margin:0;inset:0;background:rgba(0, 0, 0, 0.2);animation:fadeInBackdrop 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop.sc-at-dialog::backdrop{z-index:var(--z-backdrop, 1000)}.sc-at-dialog-h{display:contents}.sc-at-dialog-h dialog.sc-at-dialog{position:fixed;inset:0;margin:0;display:flex;align-items:center;justify-content:center;min-width:100vw;min-height:100vh;overflow:hidden;border:0;padding:0;background:transparent;z-index:var(--token-z-index-modal);transform-origin:center;opacity:0;box-shadow:var(--token-shadow-3);visibility:hidden;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s}.sc-at-dialog-h dialog.backdrop.sc-at-dialog{display:flex;width:100vw;height:100vh}.sc-at-dialog-h dialog[open].sc-at-dialog{translate:0 0;scale:1;opacity:1;visibility:visible;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear}@starting-style{.sc-at-dialog-h dialog[open]{opacity:0}}.sc-at-dialog-h dialog.sc-at-dialog:not([open]){opacity:0;visibility:hidden}`;
+const atDialogCss = () => `@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fade-in.sc-at-dialog{animation:fadeIn 0.2s ease-in}@keyframes fadeOut{from{opacity:1}to{opacity:0}}.fade-out.sc-at-dialog{animation:fadeOut 0.2s ease-out forwards}@keyframes fadeInBackdrop{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}dialog.backdrop.sc-at-dialog::backdrop{margin:0;inset:0;background:rgba(0, 0, 0, 0.2);animation:fadeInBackdrop 0.3s ease forwards;transition:opacity var(--token-transition-time) ease-in-out allow-discrete}dialog.backdrop.sc-at-dialog::backdrop{z-index:var(--z-backdrop, 1000)}.sc-at-dialog-h{display:contents}.sc-at-dialog-h dialog.sc-at-dialog{position:fixed;inset:0;margin:0;display:flex;align-items:center;justify-content:center;min-width:100vw;min-height:100vh;overflow:hidden;border:0;padding:0;background:transparent;z-index:var(--token-z-index-modal);transform-origin:center;opacity:0;box-shadow:var(--token-shadow-3);visibility:hidden;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s}.sc-at-dialog-h dialog.backdrop.sc-at-dialog{display:flex;width:100vw;height:100vh}.sc-at-dialog-h dialog.contained.sc-at-dialog{position:absolute;min-width:100%;min-height:100%}.sc-at-dialog-h dialog.contained.backdrop.sc-at-dialog{width:100%;height:100%}.sc-at-dialog-h dialog[open].sc-at-dialog{translate:0 0;scale:1;opacity:1;visibility:visible;transition:translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear}@starting-style{.sc-at-dialog-h dialog[open]{opacity:0}}.sc-at-dialog-h dialog.sc-at-dialog:not([open]){opacity:0;visibility:hidden}`;
 
 const AtDialogComponent = class {
     constructor(hostRef) {
@@ -56,6 +56,18 @@ const AtDialogComponent = class {
     dialogId = `dialog-${Math.random().toString(36).substring(2, 11)}`;
     dialog;
     dialogWrapper;
+    /**
+     * A non-modal dialog (backdrop=false) opens via the plain `.show()` path, which renders a
+     * real position:fixed element subject to ordinary ancestor positioning — unlike backdrop=true
+     * (`.showModal()`), which promotes it to the top layer regardless of ancestors. Nested inside
+     * at-sidebar-inset, that plain position:fixed would otherwise escape the content region the
+     * same way at-side-panel's did (see at-side-panel.tsx's insideSidebarInset), floating over
+     * the full viewport instead of staying confined. Computed live, not cached, so a reparent
+     * after mount isn't stuck on a stale answer.
+     */
+    get isContainedToSidebarInset() {
+        return !this.backdrop && !!this.el.closest('at-sidebar-inset');
+    }
     triggerEls = [];
     externalTriggerListeners = [];
     /**
@@ -228,7 +240,7 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '4269db5125229ef48ca45a393f1684e3e8fb35a4', "data-open": this.isOpen }, index.h("dialog", { key: '16a59afd511aaf720d0150fa02fb965bd36497ae', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, index.h("div", { key: 'fc18ae188a27d55a8057fcc01db0ff99cb6257f5', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: '74a638c6aea4fc5086176dbf4e795a9897996fb6' })))));
+        return (index.h(index.Host, { key: '5af2cf0c04a9aa63db495bceccb9e8b3c10f2c19', "data-open": this.isOpen }, index.h("dialog", { key: 'd0c166e522a68935c8dfc8932e0f4e3fdf8e0d9d', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, index.h("div", { key: '6df8c75f99e5887dc7edd967d88688554ab07afd', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: '692b048c208aa3f333c3d95866e5c3a34cb6866f' })))));
     }
 };
 AtDialogComponent.style = atDialogCss();

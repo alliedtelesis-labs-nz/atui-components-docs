@@ -68,6 +68,16 @@ export declare class AtDialogComponent {
     private dialogId;
     private dialog;
     private dialogWrapper;
+    /**
+     * A non-modal dialog (backdrop=false) opens via the plain `.show()` path, which renders a
+     * real position:fixed element subject to ordinary ancestor positioning — unlike backdrop=true
+     * (`.showModal()`), which promotes it to the top layer regardless of ancestors. Nested inside
+     * at-sidebar-inset, that plain position:fixed would otherwise escape the content region the
+     * same way at-side-panel's did (see at-side-panel.tsx's insideSidebarInset), floating over
+     * the full viewport instead of staying confined. Computed live, not cached, so a reparent
+     * after mount isn't stuck on a stale answer.
+     */
+    private get isContainedToSidebarInset();
     private triggerEls;
     private externalTriggerListeners;
     /**
