@@ -94,6 +94,7 @@ export class AtSidebarComponent {
     atuiSidebarResize;
     el;
     panelId;
+    hasLoaded = false;
     hasExplicitTriggerId = false;
     provider = null;
     providerOwner;
@@ -146,19 +147,50 @@ export class AtSidebarComponent {
         // the provider/DOM (id, aria-controls) actually use, even when the
         // consumer didn't set trigger_id explicitly.
         this.trigger_id = this.panelId;
-        this.provider = this.el.parentElement?.closest('at-sidebar-provider');
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
-        if (this.provider) {
-            this.providerOwner = await this.provider.registerPanel(this.panelId, {
-                side: this.side,
-                isOpen: this.isOpen,
-            });
-        }
+        await this.attachToProvider();
         this.atuiSidebarChange.emit(this.isOpen);
     }
     componentDidLoad() {
+        this.hasLoaded = true;
+        this.bindToDom();
+    }
+    /**
+     * A sidebar that is removed and re-inserted — an Angular @if, a Vue v-if, any framework
+     * that moves the element — gets connectedCallback again but NOT componentWillLoad or
+     * componentDidLoad, which Stencil runs only on first load. Everything those two set up was
+     * torn down by disconnectedCallback, so without this the re-inserted element renders but is
+     * inert: unregistered with its provider (so toggleSidebar and at-sidebar-trigger do
+     * nothing), deaf to menu-item clicks, and with no resize controller behind its handle.
+     */
+    connectedCallback() {
+        if (!this.hasLoaded)
+            return;
+        void this.reattach();
+    }
+    /** Re-binding waits on the provider lookup so bindToDom listens on the provider this
+     * sidebar has just registered with, not the one it was under before being moved. */
+    async reattach() {
+        await this.attachToProvider();
+        this.bindToDom();
+        this.provider?.setBackdrop(this.panelId, this.isModalOverlay());
+    }
+    /**
+     * Resolved on every connect, not cached from first load: re-insertion can land the sidebar
+     * under a different provider (or none at all).
+     */
+    async attachToProvider() {
+        this.provider = this.el.parentElement?.closest('at-sidebar-provider');
+        if (!this.provider)
+            return;
+        this.providerOwner = await this.provider.registerPanel(this.panelId, {
+            side: this.side,
+            isOpen: this.isOpen,
+        });
+    }
+    bindToDom() {
         this.el.addEventListener('atuiClick', this.handleMenuItemClick);
         if (this.provider) {
             this.provider.addEventListener('atuiSidebarProviderChange', this.handleProviderChange);
@@ -228,6 +260,7 @@ export class AtSidebarComponent {
             this.provider.removeEventListener('atuiSidebarProviderChange', this.handleProviderChange);
             if (this.providerOwner) {
                 this.provider.unregisterPanel(this.panelId, this.providerOwner);
+                this.providerOwner = undefined;
             }
         }
         this.triggerObserver?.disconnect();
@@ -360,6 +393,10 @@ export class AtSidebarComponent {
             element.removeEventListener(event, handler);
         });
         this.externalTriggerListeners = [];
+        // scanForTriggers only wires elements missing from triggerEls, so leaving the
+        // already-seen triggers in it would make a re-scan after reconnect treat every
+        // surviving trigger as still-wired and silently never re-bind it.
+        this.triggerEls = [];
     }
     /**
      * The pixel size of the axis the drag/nudge math is a percentage of. Standalone, that's

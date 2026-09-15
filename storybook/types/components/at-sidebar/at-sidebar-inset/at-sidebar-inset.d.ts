@@ -7,6 +7,7 @@ export declare class AtSidebarInsetComponent {
     el: HTMLElement;
     private isInert;
     private provider;
+    private hasLoaded;
     private handleBackdropChange;
     /**
      * This region never scrolls horizontally (see `overflow-x: clip` in the
@@ -21,6 +22,13 @@ export declare class AtSidebarInsetComponent {
      */
     handleScroll(): void;
     componentDidLoad(): void;
+    /**
+     * Re-insertion (an Angular @if, a Vue v-if) disconnects the element, which drops the
+     * subscription below, but Stencil re-runs only connectedCallback — not componentDidLoad —
+     * so without this the re-inserted inset would never go inert behind a modal panel again.
+     */
+    connectedCallback(): void;
+    private subscribeToProvider;
     disconnectedCallback(): void;
     render(): any;
 }

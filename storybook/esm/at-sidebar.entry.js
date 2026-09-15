@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-p5TDLQHl.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D7oToYCE.js';
 import { R as ResizeController } from './resize-controller-uwz5j95j.js';
 
-const atSidebarCss = () => `@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fade-in{animation:fadeIn 0.2s ease-in}@keyframes fadeOut{from{opacity:1}to{opacity:0}}.fade-out{animation:fadeOut 0.2s ease-out forwards}@keyframes fadeInBackdrop{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}at-sidebar{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar .sidebar{display:flex;position:relative;flex-direction:column;flex:0 0 auto;background-color:var(--token-sidebar-background);color:var(--token-sidebar-foreground);fill:var(--token-sidebar-foreground);z-index:var(--token-z-index-nav);will-change:width;transition:width var(--token-transition-time);overflow-x:visible;overflow-y:auto;border-right:1px solid var(--token-sidebar-border)}at-sidebar .sidebar at-sidebar-trigger{display:flex;width:100%}at-sidebar .sidebar .resize-handle{position:absolute;top:0;bottom:0;right:-4px;width:9px;cursor:col-resize;touch-action:none;z-index:1}at-sidebar .sidebar .resize-handle:hover,at-sidebar .sidebar .resize-handle:focus-visible,at-sidebar .sidebar .resize-handle[data-dragging=true]{background-color:var(--token-border-focus, currentColor);opacity:0.15}at-sidebar[resizable] .sidebar{transition:none}at-sidebar.side-right .sidebar .resize-handle{right:auto;left:-4px}at-sidebar .sidebar-content{display:flex;flex:1;flex-direction:column;align-items:stretch;width:100%;padding:var(--token-sidebar-item-padding);overflow-y:auto}at-sidebar .sidebar-header,at-sidebar .sidebar-footer{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:var(--token-sidebar-item-padding)}at-sidebar .sidebar-header:empty,at-sidebar .sidebar-footer:empty{display:none}at-sidebar .page-content{display:flex;flex-direction:column;flex-grow:1;overflow:auto}at-sidebar.side-right{flex-direction:row-reverse}at-sidebar.side-right .sidebar{border-right:none;border-left:1px solid var(--token-border-muted)}at-sidebar.mode-over .sidebar{position:absolute;top:0;bottom:0}at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas{width:var(--token-width-sidebar-offscreen);overflow:hidden}at-sidebar[data-state=collapsed] .sidebar.collapse-icon{width:var(--token-width-sidebar-collapsed)}at-sidebar[data-state=collapsed] .sidebar.collapse-none{width:var(--token-width-sidebar)}at-sidebar[data-state=collapsed] i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-sidebar-menuitem [data-name=sidebar-menu-item-label]{opacity:0;visibility:hidden;transition:opacity 150ms ease 0s, visibility 0s linear 150ms}at-sidebar[data-state=collapsed] at-sidebar-submenu [data-name=submenu-content]{display:none}at-sidebar[data-state=collapsed] at-menu{display:block}at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] at-sidebar-menuitem [data-name=sidebar-menu-item-label]{visibility:visible;opacity:1}at-sidebar .sidebar at-sidebar-trigger{width:100%;justify-content:flex-end}at-sidebar.collapse-icon.mode-over:not(.side-right) .at-sidebar__content{padding-left:var(--token-width-sidebar-collapsed)}at-sidebar.collapse-icon.mode-over.side-right .at-sidebar__content{padding-right:var(--token-width-sidebar-collapsed)}at-sidebar i[slot=menu-item-actions],at-sidebar at-sidebar-menuitem [data-name=sidebar-menu-item-label]{opacity:1;visibility:visible;transition:opacity 150ms ease 150ms, visibility 0s}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:40px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:50px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:60px}at-sidebar .sc-at-sidebar-menuitem .label,at-sidebar at-accordion-item details summary at-sidebar-menuitem .label{font-weight:var(--token-font-weight-med) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label,at-sidebar at-accordion-item [data-name=accordion-item-content] at-sidebar-menuitem .label{font-weight:var(--token-font-weight-normal) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label{color:var(--token-sidebar-foreground)}at-sidebar .sidebar-content at-sidebar-trigger{display:flex;justify-content:flex-end}at-sidebar .sidebar-content at-sidebar-trigger i{font-size:22px !important}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger{display:flex;justify-content:center}at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i{min-width:24px}at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}at-sidebar .sidebar-content [data-name=accordion-item-content]{padding-bottom:16px}`;
+const atSidebarCss = () => `@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fade-in{animation:fadeIn 0.2s ease-in}@keyframes fadeOut{from{opacity:1}to{opacity:0}}.fade-out{animation:fadeOut 0.2s ease-out forwards}@keyframes fadeInBackdrop{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}at-sidebar{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar .sidebar{display:flex;position:relative;flex-direction:column;flex:0 0 auto;background-color:var(--token-sidebar-background);color:var(--token-sidebar-foreground);fill:var(--token-sidebar-foreground);z-index:var(--token-z-index-nav);will-change:width;transition:width var(--token-transition-time);overflow-x:visible;overflow-y:auto;border-right:1px solid var(--token-sidebar-border)}at-sidebar .sidebar at-sidebar-trigger{display:flex;width:100%}at-sidebar .sidebar .resize-handle{position:absolute;top:0;bottom:0;right:-4px;width:9px;cursor:col-resize;touch-action:none;z-index:1}at-sidebar .sidebar .resize-handle:hover,at-sidebar .sidebar .resize-handle:focus-visible,at-sidebar .sidebar .resize-handle[data-dragging=true]{background-color:var(--token-border-focus, currentColor);opacity:0.15}at-sidebar[resizable] .sidebar{transition:none}at-sidebar.side-right .sidebar .resize-handle{right:auto;left:-4px}at-sidebar .sidebar-content{display:flex;flex:1;flex-direction:column;align-items:stretch;width:100%;padding:var(--token-sidebar-item-padding);overflow-y:auto}at-sidebar .sidebar-header,at-sidebar .sidebar-footer{display:flex;flex-direction:column;align-items:stretch;width:100%;padding:var(--token-sidebar-item-padding)}at-sidebar .sidebar-header:empty,at-sidebar .sidebar-footer:empty{display:none}at-sidebar .page-content{display:flex;flex-direction:column;flex-grow:1;overflow:auto}at-sidebar.side-right{flex-direction:row-reverse}at-sidebar.side-right .sidebar{border-right:none;border-left:1px solid var(--token-border-muted)}at-sidebar.mode-over .sidebar{position:absolute;top:0;bottom:0}at-sidebar[data-state=collapsed]>.sidebar.collapse-offcanvas{width:var(--token-width-sidebar-offscreen);overflow:hidden}at-sidebar[data-state=collapsed]>.sidebar.collapse-icon{width:var(--token-width-sidebar-collapsed)}at-sidebar[data-state=collapsed]>.sidebar.collapse-none{width:var(--token-width-sidebar)}at-sidebar[data-state=collapsed] i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-sidebar-menuitem [data-name=sidebar-menu-item-label]{opacity:0;visibility:hidden;transition:opacity 150ms ease 0s, visibility 0s linear 150ms}at-sidebar[data-state=collapsed] at-sidebar-submenu [data-name=submenu-content]{display:none}at-sidebar[data-state=collapsed] at-menu{display:block}at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] at-sidebar-menuitem [data-name=sidebar-menu-item-label]{visibility:visible;opacity:1}at-sidebar[data-state=expanded] i[slot=menu-item-actions],at-sidebar[data-state=expanded] at-sidebar-menuitem [data-name=sidebar-menu-item-label]{opacity:1;visibility:visible;transition:opacity 150ms ease 150ms, visibility 0s}at-sidebar[data-state=expanded] at-sidebar-submenu [data-name=submenu-content]{display:block}at-sidebar .sidebar at-sidebar-trigger{width:100%;justify-content:flex-end}at-sidebar.collapse-icon.mode-over:not(.side-right) .at-sidebar__content{padding-left:var(--token-width-sidebar-collapsed)}at-sidebar.collapse-icon.mode-over.side-right .at-sidebar__content{padding-right:var(--token-width-sidebar-collapsed)}at-sidebar i[slot=menu-item-actions],at-sidebar at-sidebar-menuitem [data-name=sidebar-menu-item-label]{opacity:1;visibility:visible;transition:opacity 150ms ease 150ms, visibility 0s}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:40px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:50px}at-sidebar at-sidebar-menu at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-submenu [slot=submenu-content] at-sidebar-menuitem{padding-left:60px}at-sidebar .sc-at-sidebar-menuitem .label,at-sidebar at-accordion-item details summary at-sidebar-menuitem .label{font-weight:var(--token-font-weight-med) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label,at-sidebar at-accordion-item [data-name=accordion-item-content] at-sidebar-menuitem .label{font-weight:var(--token-font-weight-normal) !important}at-sidebar [data-name=submenu-hover-content] at-sidebar-menuitem .label{color:var(--token-sidebar-foreground)}at-sidebar .sidebar-content at-sidebar-trigger{display:flex;justify-content:flex-end}at-sidebar .sidebar-content at-sidebar-trigger i{font-size:22px !important}at-sidebar[data-state=collapsed]>.sidebar .sidebar-content at-sidebar-trigger{display:flex;justify-content:center}at-sidebar[data-state=collapsed]>.sidebar .sidebar-content at-sidebar-trigger i{min-width:24px}at-sidebar .sidebar-content at-menu [data-name=menu-content-wrapper]{background-color:var(--token-sidebar-background)}at-sidebar .sidebar-content [data-name=accordion-item-content]{padding-bottom:16px}`;
 
 // Ref-counted per storage_key, across every <at-sidebar> instance on the page — not per-instance
 // state, since the whole point is catching two *different* instances sharing one key. A dev-only
@@ -94,6 +94,7 @@ const AtSidebarComponent = class {
     atuiSidebarResize;
     get el() { return getElement(this); }
     panelId;
+    hasLoaded = false;
     hasExplicitTriggerId = false;
     provider = null;
     providerOwner;
@@ -146,19 +147,50 @@ const AtSidebarComponent = class {
         // the provider/DOM (id, aria-controls) actually use, even when the
         // consumer didn't set trigger_id explicitly.
         this.trigger_id = this.panelId;
-        this.provider = this.el.parentElement?.closest('at-sidebar-provider');
         if (this.default_open !== undefined) {
             this.isOpen = this.default_open;
         }
-        if (this.provider) {
-            this.providerOwner = await this.provider.registerPanel(this.panelId, {
-                side: this.side,
-                isOpen: this.isOpen,
-            });
-        }
+        await this.attachToProvider();
         this.atuiSidebarChange.emit(this.isOpen);
     }
     componentDidLoad() {
+        this.hasLoaded = true;
+        this.bindToDom();
+    }
+    /**
+     * A sidebar that is removed and re-inserted — an Angular @if, a Vue v-if, any framework
+     * that moves the element — gets connectedCallback again but NOT componentWillLoad or
+     * componentDidLoad, which Stencil runs only on first load. Everything those two set up was
+     * torn down by disconnectedCallback, so without this the re-inserted element renders but is
+     * inert: unregistered with its provider (so toggleSidebar and at-sidebar-trigger do
+     * nothing), deaf to menu-item clicks, and with no resize controller behind its handle.
+     */
+    connectedCallback() {
+        if (!this.hasLoaded)
+            return;
+        void this.reattach();
+    }
+    /** Re-binding waits on the provider lookup so bindToDom listens on the provider this
+     * sidebar has just registered with, not the one it was under before being moved. */
+    async reattach() {
+        await this.attachToProvider();
+        this.bindToDom();
+        this.provider?.setBackdrop(this.panelId, this.isModalOverlay());
+    }
+    /**
+     * Resolved on every connect, not cached from first load: re-insertion can land the sidebar
+     * under a different provider (or none at all).
+     */
+    async attachToProvider() {
+        this.provider = this.el.parentElement?.closest('at-sidebar-provider');
+        if (!this.provider)
+            return;
+        this.providerOwner = await this.provider.registerPanel(this.panelId, {
+            side: this.side,
+            isOpen: this.isOpen,
+        });
+    }
+    bindToDom() {
         this.el.addEventListener('atuiClick', this.handleMenuItemClick);
         if (this.provider) {
             this.provider.addEventListener('atuiSidebarProviderChange', this.handleProviderChange);
@@ -228,6 +260,7 @@ const AtSidebarComponent = class {
             this.provider.removeEventListener('atuiSidebarProviderChange', this.handleProviderChange);
             if (this.providerOwner) {
                 this.provider.unregisterPanel(this.panelId, this.providerOwner);
+                this.providerOwner = undefined;
             }
         }
         this.triggerObserver?.disconnect();
@@ -360,6 +393,10 @@ const AtSidebarComponent = class {
             element.removeEventListener(event, handler);
         });
         this.externalTriggerListeners = [];
+        // scanForTriggers only wires elements missing from triggerEls, so leaving the
+        // already-seen triggers in it would make a re-scan after reconnect treat every
+        // surviving trigger as still-wired and silently never re-bind it.
+        this.triggerEls = [];
     }
     /**
      * The pixel size of the axis the drag/nudge math is a percentage of. Standalone, that's

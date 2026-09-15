@@ -27,3 +27,10 @@ at-sidebar-provider > at-sidebar {
 at-sidebar-provider > at-sidebar[side=right] {
   order: 1;
 }
+at-sidebar-provider > at-sidebar.mode-over {
+  overflow: visible;
+}
+at-sidebar-provider > at-sidebar.mode-over.side-right .sidebar {
+  left: auto;
+  right: 0;
+}

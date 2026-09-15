@@ -73,6 +73,7 @@ export declare class AtSidebarComponent {
     atuiSidebarResize: EventEmitter<number>;
     el: HTMLAtSidebarElement;
     private panelId;
+    private hasLoaded;
     private hasExplicitTriggerId;
     private provider;
     private providerOwner?;
@@ -109,6 +110,24 @@ export declare class AtSidebarComponent {
     private get resizeNextId();
     componentWillLoad(): Promise<void>;
     componentDidLoad(): void;
+    /**
+     * A sidebar that is removed and re-inserted — an Angular @if, a Vue v-if, any framework
+     * that moves the element — gets connectedCallback again but NOT componentWillLoad or
+     * componentDidLoad, which Stencil runs only on first load. Everything those two set up was
+     * torn down by disconnectedCallback, so without this the re-inserted element renders but is
+     * inert: unregistered with its provider (so toggleSidebar and at-sidebar-trigger do
+     * nothing), deaf to menu-item clicks, and with no resize controller behind its handle.
+     */
+    connectedCallback(): void;
+    /** Re-binding waits on the provider lookup so bindToDom listens on the provider this
+     * sidebar has just registered with, not the one it was under before being moved. */
+    private reattach;
+    /**
+     * Resolved on every connect, not cached from first load: re-insertion can land the sidebar
+     * under a different provider (or none at all).
+     */
+    private attachToProvider;
+    private bindToDom;
     /**
      * resizable is a plain, externally-settable @Prop — a consumer can flip it post-mount (e.g. a
      * responsive/preference toggle) same as any other prop, even though componentDidLoad only

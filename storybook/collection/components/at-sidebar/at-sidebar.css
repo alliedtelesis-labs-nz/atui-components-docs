@@ -150,14 +150,14 @@ at-sidebar.mode-over .sidebar {
   top: 0;
   bottom: 0;
 }
-at-sidebar[data-state=collapsed] .sidebar.collapse-offcanvas {
+at-sidebar[data-state=collapsed] > .sidebar.collapse-offcanvas {
   width: var(--token-width-sidebar-offscreen);
   overflow: hidden;
 }
-at-sidebar[data-state=collapsed] .sidebar.collapse-icon {
+at-sidebar[data-state=collapsed] > .sidebar.collapse-icon {
   width: var(--token-width-sidebar-collapsed);
 }
-at-sidebar[data-state=collapsed] .sidebar.collapse-none {
+at-sidebar[data-state=collapsed] > .sidebar.collapse-none {
   width: var(--token-width-sidebar);
 }
 at-sidebar[data-state=collapsed] i[slot=menu-item-actions],
@@ -176,6 +176,15 @@ at-sidebar[data-state=collapsed] at-menu i[slot=menu-item-actions],
 at-sidebar[data-state=collapsed] at-menu [data-name=menu-content-wrapper] at-sidebar-menuitem [data-name=sidebar-menu-item-label] {
   visibility: visible;
   opacity: 1;
+}
+at-sidebar[data-state=expanded] i[slot=menu-item-actions],
+at-sidebar[data-state=expanded] at-sidebar-menuitem [data-name=sidebar-menu-item-label] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 150ms ease 150ms, visibility 0s;
+}
+at-sidebar[data-state=expanded] at-sidebar-submenu [data-name=submenu-content] {
+  display: block;
 }
 at-sidebar .sidebar at-sidebar-trigger {
   width: 100%;
@@ -225,12 +234,12 @@ at-sidebar .sidebar-content at-sidebar-trigger i {
   font-size: 22px !important;
 }
 
-at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger {
+at-sidebar[data-state=collapsed] > .sidebar .sidebar-content at-sidebar-trigger {
   display: flex;
   justify-content: center;
 }
 
-at-sidebar[data-state=collapsed] .sidebar-content at-sidebar-trigger i {
+at-sidebar[data-state=collapsed] > .sidebar .sidebar-content at-sidebar-trigger i {
   min-width: 24px;
 }
 
