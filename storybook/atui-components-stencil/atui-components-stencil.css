@@ -4437,12 +4437,6 @@ strong {
   color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
-.text-button-accent {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-button-accent) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
 .text-button-destructive {
   --tw-text-opacity:
       1;
@@ -4776,6 +4770,12 @@ strong {
 
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-\[background-color\,color\,box-shadow\,border-color\] {
+  transition-property: background-color, color, box-shadow, border-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }

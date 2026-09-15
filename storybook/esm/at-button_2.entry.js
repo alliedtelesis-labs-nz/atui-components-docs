@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DiMbulBS.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-p5TDLQHl.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -19,7 +19,7 @@ const buttonVariantsConfig = {
             primaryOutline: 'border-button-primary text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
             primaryText: 'text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
             secondary: 'bg-button-secondary-background text-button-secondary-foreground fill-button-secondary-foreground focus-visible:ring-active-glow focus-visible:ring',
-            secondaryOutline: 'border-muted text-button-accent fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            secondaryOutline: 'border-muted text-foreground fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
             secondaryText: 'text-button-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
             destructive: 'bg-button-destructive text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
             destructiveOutline: 'border-button-destructive text-button-destructive fill-button-destructive focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
@@ -150,7 +150,7 @@ const AtButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
+        const classname = classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[background-color,color,box-shadow,border-color] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
@@ -158,7 +158,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: '49d79e6f9a7099bdeb6aed4f563938ab1a1161be', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'a3a0db3679c899f3f86f777ef79ff8d73d206eb3', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '9472631e2e5a60f9d79bb0913383f231e007e5ba', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '9a4ff6eb2999832e227655880a125d9305937051', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'a6791bf02bd59e693768d347359556bdb698d003', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'e03c844dd375641c7a1c1389f5e0a47d11d25d1b' }), !this.in_progress && (h("slot", { key: '37248fc8b1f2b02753ebfc1c433b6bf11095c247', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '797d0c73661cf904f4a405d3881dd22f6cadf1b6', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '7a4419c610b087e6ffaa1e0be881a9339b977177', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'b4fc88a8f3b892ab185db4dc988d1892b38477df', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '75d63f1d997fed36ae2a4a0dc238264b7554c544', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: 'd854197b828a01c2d053b886f05b8fe5b20d1fc1', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: '2e8fbc311ac5d477a0720ba525d418b79e535c9d', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '6677dc1c3b79304533d4533a505e8b40bfb2bf78' }), !this.in_progress && (h("slot", { key: '314254fd43e486abb14f9bb3ce96a631a3a09b33', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '68be17bf7df0dffcf83e6d22f9ab7442ce33b525', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();

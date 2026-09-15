@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D0lZ3Nn_.js');
+var index = require('./index-CEfHcGhz.js');
 var floatingUi_dom = require('./floating-ui.dom-BZk7Blsu.js');
 
 const AtMenu = class {
