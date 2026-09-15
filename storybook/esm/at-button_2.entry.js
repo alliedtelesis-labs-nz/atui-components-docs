@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D7oToYCE.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-BblngpEh.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -15,15 +15,15 @@ const buttonVariantsConfig = {
             lg: 'h-button-lg py-button-lg px-button-lg',
         },
         type: {
-            primary: 'bg-button-primary-background text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
-            primaryOutline: 'border-button-primary text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
-            primaryText: 'text-button-primary-foreground fill-button-primary-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
-            secondary: 'bg-button-secondary-background text-button-secondary-foreground fill-button-secondary-foreground focus-visible:ring-active-glow focus-visible:ring',
+            primary: 'bg-active-accent text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
+            primaryOutline: 'border-active-accent text-active-accent fill-active-accent focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            primaryText: 'text-active-accent fill-active-accent focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            secondary: 'bg-surface-2 text-foreground fill-foreground focus-visible:ring-active-glow focus-visible:ring',
             secondaryOutline: 'border-muted text-foreground fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
-            secondaryText: 'text-button-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
-            destructive: 'bg-button-destructive text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
-            destructiveOutline: 'border-button-destructive text-button-destructive fill-button-destructive focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
-            destructiveText: 'text-button-destructive-foreground fill-button-destructive focus-visible:ring-destructive-foreground/30 bg-transparent focus-visible:ring-2',
+            secondaryText: 'text-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            destructive: 'bg-error-accent text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
+            destructiveOutline: 'border-error-accent text-error-accent fill-error-accent focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
+            destructiveText: 'text-error-accent fill-error-accent focus-visible:ring-error-glow bg-transparent focus-visible:ring-2',
         },
     },
     defaultVariants: {
@@ -35,15 +35,15 @@ const buttonVariantsConfig = {
 const focusIndicatorVariantsConfig = {
     variants: {
         type: {
-            primary: 'group-hover:bg-surface-overlay/30 group-active:bg-button-primary-background/70',
-            primaryOutline: 'group-hover:bg-button-primary-background/10 group-active:bg-button-primary-background/20',
-            primaryText: 'group-hover:bg-button-primary-background/10 group-active:bg-button-primary-background/20',
-            secondary: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
-            secondaryOutline: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
-            secondaryText: 'group-hover:bg-surface-overlay/10 group-active:bg-button-secondary-background/20',
-            destructive: 'group-hover:bg-surface-overlay/30 group-active:bg-button-destructive-background/70',
-            destructiveOutline: 'group-hover:bg-button-destructive-background/10 group-active:bg-button-destructive-background/20',
-            destructiveText: 'group-hover:bg-button-destructive-background/10 group-active:bg-button-destructive-background/20',
+            primary: 'group-hover:bg-surface-overlay/30 group-active:bg-active-accent/70',
+            primaryOutline: 'group-hover:bg-active-accent/10 group-active:bg-active-accent/20',
+            primaryText: 'group-hover:bg-active-accent/10 group-active:bg-active-accent/20',
+            secondary: 'group-hover:bg-surface-overlay/10 group-active:bg-surface-2/20',
+            secondaryOutline: 'group-hover:bg-surface-overlay/10 group-active:bg-surface-2/20',
+            secondaryText: 'group-hover:bg-surface-overlay/10 group-active:bg-surface-2/20',
+            destructive: 'group-hover:bg-surface-overlay/30 group-active:bg-error-accent/70',
+            destructiveOutline: 'group-hover:bg-error-accent/10 group-active:bg-error-accent/20',
+            destructiveText: 'group-hover:bg-error-accent/10 group-active:bg-error-accent/20',
         },
     },
 };
@@ -150,15 +150,15 @@ const AtButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[background-color,color,box-shadow,border-color] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
+        const classname = classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
         });
-        const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out', focusIndicatorVariantsConfig)({
+        const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (h(Host, { key: '7a4419c610b087e6ffaa1e0be881a9339b977177', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'b4fc88a8f3b892ab185db4dc988d1892b38477df', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '75d63f1d997fed36ae2a4a0dc238264b7554c544', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: 'd854197b828a01c2d053b886f05b8fe5b20d1fc1', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: '2e8fbc311ac5d477a0720ba525d418b79e535c9d', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: '6677dc1c3b79304533d4533a505e8b40bfb2bf78' }), !this.in_progress && (h("slot", { key: '314254fd43e486abb14f9bb3ce96a631a3a09b33', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '68be17bf7df0dffcf83e6d22f9ab7442ce33b525', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: 'c74f88d84273c6a7a4d98f10ea9bcc92daf3c60a', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'b95c2ee0c888be260d9503440f362d69aea6f2c9', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '0d2b26c34b10e50de3ec5e8c202f9d6e14bb197a', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '37edb42ac4414d16046eeeda463147fb35c23854', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: '45f4fce210e7de2a9a40e801d0069d91b3441eb6', class: `leading-[16px] ${this.in_progress ? 'invisible' : 'visible'}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'cbf8e8af986d827dc2ba39ec888a157e0771b677' }), !this.in_progress && (h("slot", { key: 'a60b20b2a31965ef3f6572c0dbc53090cae6a96d', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '93489b976cb6b8c0079b08d8a295f2b4abce23e8', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();

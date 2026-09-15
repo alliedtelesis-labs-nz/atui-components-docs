@@ -1,11 +1,11 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var prompt = require('./prompt-DoMXcdvl.js');
 
-const promptInputContainerVariants = classlist.classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[background-color,color,box-shadow] duration-300 ease-in-out', {
+const promptInputContainerVariants = classlist.classlist('relative flex flex-col items-end gap-2 rounded-lg border border-solid p-8 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', {
     variants: {
         invalid: {
             true: 'border-destructive focus-within:border-destructive focus-within:ring-destructive/30 focus-within:ring',
@@ -181,16 +181,16 @@ const AtPromptInputComponent = class {
             invalid: this.invalid,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: '7258f1cef33a1d1b682ec03b7d2d2ee4bbd51f7a', id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: '6aaa340c1833508cea12aa965adfd7b06958ddb0', class: "flex flex-col empty:hidden" }, index.h("slot", { key: '2a6a0713f52945cde0c6e59437184fc497fb45f4', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: 'c4d513612b571dfcb2cbded6b89c39e360a80b60', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: 'b29c6a57e3fd426975f29788edc5ed9c1a58720e', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: 'b6708932e0284ffb263f6bf85f29d58dd8eacf54', class: containerClass }, index.h("textarea", { key: '1a68d382c0cb6a17168f4e6d01b1face51c675d6', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
+        return (index.h(index.Host, { key: '065fd28a9ee3412de51d003dd628d8a348058bb5', id: this.inputId + '-container', class: "w-full px-16" }, index.h("div", { key: '582a80f81c67ed7a19a0cdb20328be2346f30ba1', class: "flex flex-col empty:hidden" }, index.h("slot", { key: '47ff0c259478909885ac1b72903fdcc20aed3b14', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: '71d107a11ac49c1172fbb01a3d4cb66d44047d79', label: this.label, for: this.inputId, info_text: this.info_text, "data-name": "prompt-input-label" })), this.hint_text && (index.h("span", { key: '0729764c336f68191cf3e6bd149988e174f94f1e', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "prompt-input-hint" }, this.hint_text))), index.h("div", { key: 'a5b15ec1202dc6f646e60fd11f2d05a7df86b90e', class: containerClass }, index.h("textarea", { key: '5728643ae90af3e6c11d440e8f4a1b871ced60d9', class: inputClass, disabled: this.disabled, id: this.inputId, placeholder: this.placeholder, onInput: (event) => this.handleInput(event), onKeyDown: (event) => this.handleKeyDown(event), value: this.value, ref: (el) => (this.textareaEl = el), style: {
                 minHeight: '44px',
                 maxHeight: this.max_height + 'px',
                 overflow: 'auto',
-            }, "data-name": "prompt-input" }), index.h("div", { key: '4daa3bc1838477babe916f68be4614e98003345f', class: "flex w-full items-center justify-between gap-1" }, index.h("div", { key: '79890d656b042040042896aca73d4e7f312b566f', class: "flex items-center gap-4" }, index.h("slot", { key: 'ccb2f9b37956691ea813f650afe2198e85f575de', name: "actions-left" })), index.h("div", { key: 'e742a2c2833b561eafb44f17d90e9de3c8f53761', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: 'c93ab0718facb8d7a2f5e7ccf283f4cce7eeb6d5', name: "actions-right" }), index.h("at-button", { key: '4f8d4fb2147b53d6efdfa7ab8139f5479c97bf79', class: "rounded-lg", size: "sm", type: "primary", disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
+            }, "data-name": "prompt-input" }), index.h("div", { key: '7dbb5bf93b8fd65e1b54c539fb246cb635c18d4a', class: "flex w-full items-center justify-between gap-1" }, index.h("div", { key: '399a4f46bff8ecdd9edff00170d4a54cda6bff03', class: "flex items-center gap-4" }, index.h("slot", { key: 'd1d98d15e968946b078e00ff1c429feb8047584b', name: "actions-left" })), index.h("div", { key: '9df82c38f5d414389bbbf3a87993853b6861d675', class: "flex items-center gap-4 self-end" }, index.h("slot", { key: '99cd56d97d390a8f1ce5e588b2328d248fffed8d', name: "actions-right" }), index.h("at-button", { key: '996ef7f6307eb36c0a13499139ef545bb85d8365', class: "rounded-lg", size: "sm", type: "primary", disabled: !canSend, onClick: () => this.sendMessage(), onKeyDown: (event) => {
                 if (event.key === 'Enter' ||
                     event.key === ' ') {
                     this.sendMessage();
                 }
-            }, "data-name": "prompt-send-button" }, index.h("at-icon", { key: '2fbd778b3819c446fc0099a737bc87b053de9439', slot: "icon", name: this.in_progress ? 'stop' : 'send' }))))), index.h("slot", { key: 'c6a79523b0af29a7c3ebb062d208495e3461214b', name: "footer" }), this.invalid && (index.h("span", { key: 'e904b92c449f498d8de59b71c0f244db808ab174', class: "text-error-foreground text-xs", "data-name": "error-text" }, this.error_text
+            }, "data-name": "prompt-send-button" }, index.h("at-icon", { key: 'c1eecd9a4349dbb1c9f96397a6766559a087bed7', slot: "icon", name: this.in_progress ? 'stop' : 'send' }))))), index.h("slot", { key: 'c60ecf06d9a043479921bbf256367df64967fbe5', name: "footer" }), this.invalid && (index.h("span", { key: 'f641c42ef83bbd5e3fe0dc1ea8917000c7edc8b4', class: "text-error-foreground text-xs", "data-name": "error-text" }, this.error_text
             ? this.error_text
             : this.translations.ATUI.PROMPT.ERROR_MESSAGE))));
     }

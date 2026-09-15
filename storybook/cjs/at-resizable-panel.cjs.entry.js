@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 
 const atResizablePanelCss = () => `at-resizable-panel{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto}at-resizable-panel.is-collapsed{overflow:hidden}`;
 

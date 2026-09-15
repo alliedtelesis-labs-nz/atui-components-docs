@@ -154,7 +154,7 @@
   border: 1px solid var(--token-border-muted);
   /* border: none;*/
   pointer-events: auto;
-  transition: 0.2s;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
 .range-slider > input::-moz-range-thumb {
   appearance: none;
@@ -167,7 +167,7 @@
   border: 1px solid var(--token-border-muted);
   /* border: none;*/
   pointer-events: auto;
-  transition: 0.2s;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
 .range-slider > input::-ms-thumb {
   appearance: none;
@@ -180,7 +180,7 @@
   border: 1px solid var(--token-border-muted);
   /* border: none;*/
   pointer-events: auto;
-  transition: 0.2s;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 }
 .range-slider > input:focus::-webkit-slider-thumb {
   outline: 2px solid var(--primary-color);
@@ -272,7 +272,7 @@
   padding: 2px 4px;
   left: var(--pos);
   transform: translate(var(--x-offset), calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
-  transition: all 0.12s ease-out, left 0s;
+  transition: opacity 150ms ease-out, transform 150ms ease-out, left 0s;
 }
 .range-slider > input + output::after {
   content: var(--prefix, "") var(--text-value-b) var(--suffix, "");

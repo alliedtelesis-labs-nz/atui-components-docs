@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-D7oToYCE.js';
+import { r as registerInstance, h, H as Host, a as getElement } from './index-BblngpEh.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -84,12 +84,12 @@ const AtTabTrigger = class {
         }
     }
     render() {
-        const getClassname = classlist('group/tab text-button no-underline relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-input border border-solid border-transparent !font-medium capitalize transition-colors duration-150 ease-in-out p-8 outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-active-glow', variantsConfig);
+        const getClassname = classlist('group/tab text-button no-underline relative box-border flex cursor-pointer items-center gap-4 overflow-hidden rounded-input border border-solid border-transparent !font-medium capitalize transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out p-8 outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-active-glow', variantsConfig);
         const classname = getClassname({
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: '2b01ba7d1d4a4e5e4250f8056c8672f26bd718cc', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '7313999d2a1bd40c4514b1c2aee864dd4a59afb0' })));
+        return (h(Host, { key: '6c8be80bde45c20cfee90985a424b3409701aafd', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '137ed73eef081db3e38622cc0d28bba53e5563ab' })));
     }
 };
 

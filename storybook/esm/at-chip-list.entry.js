@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-D7oToYCE.js';
+import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-BblngpEh.js';
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 
@@ -279,24 +279,24 @@ const AtChipList = class {
             class: `flex items-center gap-4 text-center ${this.show_overflow_counter
                 ? 'max-w-full shrink-0 overflow-hidden'
                 : ''}`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip
-        }, !this.disabled && !this.readonly && (h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[fill] duration-150", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
+        }, !this.disabled && !this.readonly && (h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeChipHandler([chip]);
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, h("at-icon", { name: "cancel" }))))));
     }
     render() {
         const overflow = this.overflowChips;
-        return (h("div", { key: '54baa3cfba442932932f748f2999a322ae310317', class: `flex h-full items-center gap-4 ${this.show_overflow_counter
+        return (h("div", { key: 'fda94b757a79208d40cabf9b09ac42c48b1202bf', class: `flex h-full items-center gap-4 ${this.show_overflow_counter
                 ? 'flex-nowrap overflow-hidden'
-                : 'flex-wrap'}`, ref: (el) => (this.listEl = el) }, this.chips && this.getChips, overflow.length > 0 && (h("at-tooltip", { key: '5f269593f17e6605e0150e5e054e698e87d7fb6f',
+                : 'flex-wrap'}`, ref: (el) => (this.listEl = el) }, this.chips && this.getChips, overflow.length > 0 && (h("at-tooltip", { key: '75f66130c4edc0a2948f3ea1189fb73254b198f3',
             // Never shrinks: the counter is the only thing telling
             // the user that chips are missing.
-            class: "shrink-0", "data-name": "chip-overflow", position: "top" }, h("at-badge", { key: '9945b3bbcc15105607923ec189b70db534ff035a', slot: "tooltip-trigger", class: "flex items-center text-center", rounded: true, "data-name": "chip-overflow-counter", type: this.disabled ? 'disabled' : 'default', size: this.size, label: `+${overflow.length}` }), overflow.join(', '))), !this.disabled &&
+            class: "shrink-0", "data-name": "chip-overflow", position: "top" }, h("at-badge", { key: '76cf315581e3802b7f437012f6d9de8f860d7323', slot: "tooltip-trigger", class: "flex items-center text-center", rounded: true, "data-name": "chip-overflow-counter", type: this.disabled ? 'disabled' : 'default', size: this.size, label: `+${overflow.length}` }), overflow.join(', '))), !this.disabled &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: 'eab96fa7e92a4880f21d2955ad3a637a1d1bdec2', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: 'eae8df4bff723546e0e72a472280a74db6e6fcbb', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": "Clear all chips", onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } }, h("at-icon", { key: '2c9424d92f9ea8487eb823a9e15fc18a3df74650', slot: "icon", name: "backspace" }))), h("slot", { key: 'e69a3dcd08d413d099b0c9a491ba96aebfb6ca22' })));
+            } }, h("at-icon", { key: '18ae2b43e63fcf6cba0cc8f2c1dfe385732ded25', slot: "icon", name: "backspace" }))), h("slot", { key: '151468b10db633c30af41af166ab5e9b58275d12' })));
     }
     static get watchers() { return {
         "chips": [{

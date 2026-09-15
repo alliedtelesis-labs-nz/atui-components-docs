@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -328,7 +328,7 @@ const AtMultiSelectComponent = class {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { id: `${this.menuId}-label`, for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-secondary text-xs leading-tight", "data-name": "multi-select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist(`placeholder-text-muted transition[background-color,color,box-shadow] relative flex min-h-input w-full items-center gap-4 rounded-input border border-solid py-2 pr-24 pl-input-x duration-300 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
+        const getClassname = classlist.classlist(`placeholder-text-muted transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out relative flex min-h-input w-full items-center gap-4 rounded-input border border-solid py-2 pr-24 pl-input-x outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
             invalid: this.invalid,
             disabled: this.disabled,
@@ -353,7 +353,7 @@ const AtMultiSelectComponent = class {
     renderOptions() {
         return (index.h("ul", { id: this.menuId, role: "listbox", "aria-multiselectable": "true", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "transition[background-color,color,box-shadow] bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 duration-300 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
+            } }, this.typeahead && this.hasAnyOptions && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {

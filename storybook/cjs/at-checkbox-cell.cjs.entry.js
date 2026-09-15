@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {

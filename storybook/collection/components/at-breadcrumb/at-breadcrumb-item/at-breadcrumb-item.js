@@ -19,7 +19,7 @@ export class AtBreadcrumbItem {
                     event.preventDefault();
                     event.target.click();
                 }
-            }, class: "text-muted hover:text-foreground focus-visible:ring-active-glow cursor-pointer rounded-lg px-8 py-2 transition-colors outline-none hover:underline focus-visible:ring" }, this.label))));
+            }, class: "text-muted hover:text-foreground focus-visible:ring-active-glow cursor-pointer rounded-lg px-8 py-2 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none hover:underline focus-visible:ring" }, this.label))));
     }
     static get is() { return "at-breadcrumb-item"; }
     static get properties() {

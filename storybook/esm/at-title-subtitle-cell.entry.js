@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-D7oToYCE.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-BblngpEh.js';
 
 const AtTitleSubtitleCell = class {
     constructor(hostRef) {

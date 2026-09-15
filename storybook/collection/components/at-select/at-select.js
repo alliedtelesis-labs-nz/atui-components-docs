@@ -479,7 +479,7 @@ export class AtSelectComponent {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
+        const getClassname = classlist(`transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 select-none focus:ring focus:z-10`, inputVariantsConfig);
         const hasClearButton = this.clearable && !!this.value && !this.readonly && !this.disabled;
         const hasCaret = !this.readonly && !this.disabled;
         const trailingPaddingClass = hasClearButton

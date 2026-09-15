@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -481,7 +481,7 @@ const AtSelectComponent = class {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
     }
     renderInput() {
-        const getClassname = classlist.classlist(`transition[background-color,color,box-shadow] placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 duration-300 ease-in-out select-none focus:ring focus:z-10`, inputVariantsConfig);
+        const getClassname = classlist.classlist(`transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out placeholder-text-muted group/select:focus-within:ring w-full cursor-pointer rounded-input border border-solid h-input min-h-input py-input-y px-input-x text-ellipsis outline-0 select-none focus:ring focus:z-10`, inputVariantsConfig);
         const hasClearButton = this.clearable && !!this.value && !this.readonly && !this.disabled;
         const hasCaret = !this.readonly && !this.disabled;
         const trailingPaddingClass = hasClearButton
@@ -618,7 +618,7 @@ const AtSelectOptionComponent = class {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist.classlist('transition[background-color,color,box-shadow] text-body focus:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal duration-300 ease-in-out focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
+        const getOptionClassname = classlist.classlist('transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out text-body focus:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
             ? 'pointer-events-none opacity-50 text-disabled-foreground'
             : 'cursor-pointer';
@@ -626,7 +626,7 @@ const AtSelectOptionComponent = class {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (index.h("li", { key: '4f2a594a3c0820d4c4c2cd726468d6f7b1b4b4be', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: '074fed17be0f152c4f954e1c28a2b6ac8ec558f6' }), index.h("span", { key: '15f51df1c07e1d99788abd3819409bbcd6a3456e', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), index.h("slot", { key: '3d426b88afdbfab1bb3040b542a23d9e12a2c56d', name: "after" })));
+        return (index.h("li", { key: '760767ce9e3a4bc7ac7ee2e2ffdec7c0413c92d6', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, index.h("slot", { key: '81b81155a1dcefaf093475aa5bdf4274b0870963' }), index.h("span", { key: '5bfdc3e1c57dfc03a47252a93995fc54619d158b', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), index.h("slot", { key: '3e04e386b8bbde61f12b1189cf7cac84a8cc977d', name: "after" })));
     }
 };
 

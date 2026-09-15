@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D7oToYCE.js';
+import { r as registerInstance, h, H as Host } from './index-BblngpEh.js';
 
 const progressBarVariants = {
     success: 'bg-feedback-success-accent',
@@ -49,7 +49,7 @@ const AtProgressBar = class {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch`;
     }
     get segments() {
-        return `flex flex-grow items-stretch justify-center transition-all duration-500`;
+        return `flex flex-grow items-stretch justify-center transition-[flex-grow,background-color] duration-500`;
     }
     renderIndeterminate() {
         return (h(Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, h("slot", { name: "label-before" }), h("div", { class: "bg-surface-1 relative h-full w-full overflow-hidden rounded-full" }, h("div", { class: `${fillClass(this.type)} motion-safe:animate-progress-left absolute top-0 h-full`, style: {

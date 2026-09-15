@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Ctb-u5MC.js');
+var index = require('./index-MSnZXonF.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -16,7 +16,7 @@ const variantsConfig = {
         },
     },
 };
-const getTreeItemClasses = classlist.classlist('group text-button text-foreground fill-foreground hover:bg-surface-overlay/10 focus-visible:bg-surface-overlay/10 focus-visible:ring-active-glow relative box-border flex w-full cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] bg-transparent font-medium whitespace-nowrap capitalize duration-150 ease-in-out outline-none group-focus:bg-slate-200 focus:outline-none focus-visible:ring', variantsConfig);
+const getTreeItemClasses = classlist.classlist('group text-button text-foreground fill-foreground hover:bg-surface-overlay/10 focus-visible:bg-surface-overlay/10 focus-visible:ring-active-glow relative box-border flex w-full cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-[0.3rem] bg-transparent font-medium whitespace-nowrap capitalize transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none group-focus:bg-slate-200 focus:outline-none focus-visible:ring', variantsConfig);
 const AtTreeItemComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -76,13 +76,13 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (index.h(index.Host, { key: 'a1583520b8f17297fdbed10667e0d46ea763f82c', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
+        return (index.h(index.Host, { key: '1e062c4e4a779bfe8039eb87f3c36fe64d1c4f52', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
                 ? this.selected
                     ? 'true'
                     : 'false'
-                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '5c53671eab59bb5c1d418991aabf8ca435344183', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: '87c4293bac0f00bfec8e19a3b749ed90f4f7d21b', class: "flex gap-4" }, this.has_children && (index.h("at-icon", { key: '91e82a863ffffd787951cd26071cfcfa9acc4fc4', "data-name": "tree-item-indicator", name: this.selected
+                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'efc49a3c8566865c4a94f5adc20002758a290daf', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, index.h("div", { key: 'e10f62171960109efcedf11d491aa383168f10e3', class: "flex gap-4" }, this.has_children && (index.h("at-icon", { key: 'e0106f099f870eab3627e7fe856635640866b81d', "data-name": "tree-item-indicator", name: this.selected
                 ? 'chevron_down'
-                : 'chevron_right' })), this.label && (index.h("span", { key: '1c34a63569a3b1b9ed36572864ef9c7c35eb5fd5', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: 'a80614271548ed058cd65572d3af1b25f0806bc6', name: "label" })), index.h("slot", { key: '05bcdfff3690f1334697bdc8a7afdbfbb1f9da68' })), index.h("div", { key: '286009f08408be8a2b227862fef096a9ec3e044f', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-colors duration-300 ease-in-out" })));
+                : 'chevron_right' })), this.label && (index.h("span", { key: '9704e4b9c19b61919f40fa2aa81128f1e843e2c9', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), index.h("slot", { key: '7f7394d2256a8f76f39576a5f97405cb61623537', name: "label" })), index.h("slot", { key: 'ab0c5d902e2fb97d5d59f76bc13d1020dadd8062' })), index.h("div", { key: 'ae3e19f5fbb000981927e61fa513c189a216da24', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out" })));
     }
 };
 
