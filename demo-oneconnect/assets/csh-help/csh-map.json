@@ -1,0 +1,79 @@
+{
+  "oc-customers-manage": {
+    "path": "Managing Customers.html",
+    "title": "Managing Customers",
+    "shortdesc": "Add Customers, add their sites, and let your team reach them.",
+    "topics": [
+      "to_customer_management.dita",
+      "t_add_a_new_customer.dita",
+      "t_add_customer_sites.dita",
+      "t_enable_customer_access_for_PartnerUsers.dita"
+    ]
+  },
+  "oc-assets-add-device": {
+    "path": "Adding a device.html",
+    "title": "Adding a device",
+    "shortdesc": "Check that a device meets the requirements, then add it for a Customer.",
+    "topics": [
+      "c_requirements_for_oneconnect_devices.dita",
+      "t_add_a_device_for_a_customer.dita"
+    ]
+  },
+  "oc-assets-bootstrap": {
+    "path": "Setting up bootstrapping.html",
+    "title": "Setting up bootstrapping",
+    "shortdesc": "Provide a bootstrap configuration and choose the release to install.",
+    "topics": [
+      "t_set_up_bootstrapping.dita"
+    ]
+  },
+  "oc-assets-license-device": {
+    "path": "Licensing a device.html",
+    "title": "Licensing a device",
+    "shortdesc": "Add a license to a Customer’s device using a key or a license file.",
+    "topics": [
+      "t_add_a_license_to_a_device.dita"
+    ]
+  },
+  "oc-licensing-how-licenses-work": {
+    "path": "How device licenses work.html",
+    "title": "How device licenses work",
+    "shortdesc": "What a device license covers, and the order to do things in.",
+    "topics": [
+      "c_device_license_management.dita"
+    ]
+  },
+  "oc-licensing-add-allocate": {
+    "path": "Adding and allocating licenses.html",
+    "title": "Adding and allocating licenses",
+    "shortdesc": "Add newly bought licenses, allocate them to a Customer, and license a device.",
+    "topics": [
+      "t_add_new_device_licenses.dita",
+      "t_allocate_device_licenses_to_a_customer.dita",
+      "t_add_a_license_to_a_device.dita"
+    ]
+  },
+  "oc-ai-assistant-get-started": {
+    "path": "Using the AI Network Assistant.html",
+    "title": "Using the AI Network Assistant",
+    "shortdesc": "What the assistant does, what needs a license, and how to start your first chat.",
+    "topics": [
+      "c_ai_network_assistant.dita",
+      "c_ai_network_assistant_licensing.dita",
+      "t_enable_the_ai_network_assistant.dita",
+      "t_start_a_chat.dita"
+    ]
+  },
+  "oc-ai-assistant-what-to-ask": {
+    "path": "What you can ask the assistant.html",
+    "title": "What you can ask the assistant",
+    "shortdesc": "The kinds of question it answers, with sample wording for each.",
+    "topics": [
+      "r_request_information_about_network_devices.dita",
+      "r_request_a_summary_of_recent_events.dita",
+      "t_upgrade_firmware_on_network_devices.dita",
+      "r_get_product_information.dita",
+      "r_ask_about_networking_concepts.dita"
+    ]
+  }
+}

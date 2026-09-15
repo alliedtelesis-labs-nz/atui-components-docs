@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Add Customers, add their sites, and let your team reach them.">
+<meta name="content-id" content="oc-customers-manage">
+<meta name="copyright" content="(C) Copyright Allied Telesis">
+<title>Managing Customers</title>
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<main role="main">
+<article role="article" aria-labelledby="ariaid-title1">
+<h1 class="title topictitle1" id="ariaid-title1">Managing Customers</h1>
+
+<article class="topic nested1" aria-labelledby="t-cm_over">
+  <h2 class="title topictitle2" id="t-cm_over">Customer Management</h2>
+  <div class="body"><p>In OneConnect, a Customer is an organization that is managed by an Allied Telesis Partner.</p><p>A OneConnect user with the PartnerAdmin privilege level can perform all management tasks for all Customers, while a user with the PartnerUser privilege level can perform some management tasks for Customers to which they are given access or linked.</p><p>This table provides a summary of supported customer management tasks and which Partner users can perform each task.</p><table class="dt"><caption>Table 1. Customer Management Tasks</caption><tr><th>Tasks</th><th>Who Can Perform Tasks</th></tr><tr><td><span class="xref">Add a New Customer</span></td><td>PartnerAdmins, PartnerUsers</td></tr><tr><td><span class="xref">Add Customer Sites</span></td><td>PartnerAdmins, PartnerUsers</td></tr><tr><td><span class="xref">Enable Customer Access for PartnerUsers</span></td><td>PartnerAdmins</td></tr><tr><td><span class="xref">Allocate Device Licenses to a Customer</span></td><td>PartnerAdmins</td></tr></table></div>
+</article>
+
+<article class="topic nested1" aria-labelledby="t-cm_add">
+  <h2 class="title topictitle2" id="t-cm_add">Add a New Customer</h2>
+  <div class="body"><p>This topic explains how a PartnerAdmin or a PartnerUser can add a new Customer to OneConnect.</p><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>.<div class="info">The Customers page will appear.</div></li><li>In the Customers page, click <span class="uicontrol">+ New Customer</span> in the upper right corner.<div class="info">The New Customer dialog will appear.</div></li><li>Add the customer’s details and any notes, then click <span class="uicontrol">Save</span>.</li><li>Back in the Customers page, verify that the new customer now appears in the table.</li><li>If you need to change any of the customer’s details, click the <span class="uicontrol">Actions</span> icon associated with the customer, and from the drop-down list that appears, select <span class="uicontrol">Edit</span>.<div class="info">The Edit Customer dialog will appear.</div></li><li>Make the desired changes, and click <span class="uicontrol">Save</span>.</li></ol></div>
+</article>
+
+<article class="topic nested1" aria-labelledby="t-cm_sites">
+  <h2 class="title topictitle2" id="t-cm_sites">Add Customer Sites</h2>
+  <div class="body"><p>After a Customer is added to OneConnect, a PartnerAdmin or a PartnerUser can add one or more sites for the Customer. Once Customer sites are added, a PartnerAdmin or PartnerUser can select a site when adding a device for the Customer. Sites provide another way to organize, monitor, and manage Customer devices.</p><p>To add a Customer site:</p><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>.<div class="info">The Customers page will appear.</div></li><li>In the Customers table, click the name of the customer, for example, Customer One, to which you want to add one or more sites.<div class="info">The customer page will appear.</div></li><li>In the customer page, click <span class="uicontrol">+ New Site</span> in the upper right corner.<div class="info">The New Site dialog will appear.</div></li><li>Enter the site details, and click <span class="uicontrol">Save</span>.</li><li>Back in the customer page, click the <span class="uicontrol">Sites</span> tab and verify that the new site appears in the table.</li></ol></div>
+</article>
+
+<article class="topic nested1" aria-labelledby="t-cm_access">
+  <h2 class="title topictitle2" id="t-cm_access">Enable Customer Access for PartnerUsers</h2>
+  <div class="body"><div class="prereq"><p>These Customer access rules apply to the Partner users:</p><ul><li>A PartnerAdmin can access all Customers added for a Partner.</li><li>A PartnerUser can access a Customer only if they have added the customer to OneConnect.</li></ul></div><p>This topic explains how a PartnerAdmin can enable access for PartnerUsers who didn’t add a particular Customer to OneConnect but still need access.</p><p>To enable a PartnerUser to access to a customer:</p><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>.<div class="info">The Customers page will appear.</div></li><li>In the Customers table, find the name of the Customer that you want the PartnerUser to access, for example, Customer One. Click the associated <span class="uicontrol">Actions</span> icon, and from the drop-down list that appears, select <span class="uicontrol">Link Users</span>.<div class="info">The Link Users dialog will display PartnerUsers that don’t currently have access to the Customer.</div></li><li>Select the user for which you want to enable access, then click <span class="uicontrol">Save</span>.<div class="info">A confirmation message will appear at the bottom of the screen.</div></li></ol></div>
+</article>
+
+</article>
+</main>
+</body>
+</html>

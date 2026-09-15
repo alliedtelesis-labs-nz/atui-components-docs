@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Provide a bootstrap configuration and choose the release to install.">
+<meta name="content-id" content="oc-assets-bootstrap">
+<meta name="copyright" content="(C) Copyright Allied Telesis">
+<title>Setting up bootstrapping</title>
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<main role="main">
+<article role="article" aria-labelledby="ariaid-title1">
+<h1 class="title topictitle1" id="ariaid-title1">Setting up bootstrapping</h1>
+
+<article class="topic nested1" aria-labelledby="t-dc_boot">
+  <h2 class="title topictitle2" id="t-dc_boot">Set Up Bootstrapping</h2>
+  <div class="body"><div class="prereq"><p>To set up bootstrapping for a Customer’s device, a PartnerAdmin or a PartnerUser that has access to the Customer must perform these steps:</p><ul><li><strong>Verify the bootstrap setting</strong> — By default, bootstrapping is enabled. However, before onboarding a device, the best practice is to verify that bootstrapping is enabled.</li><li><strong>Provide a bootstrap configuration file</strong> — copy and paste a configuration directly into the bootstrap UI, or upload a file to OneConnect.</li><li><strong>Select the bootstrap release.</strong></li></ul></div><p>To set up bootstrapping for a device:</p><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>, then in the customer table that appears, click a customer name, for example, Customer One.<div class="info">The customer page appears.</div></li><li>In the customer page, click the <span class="uicontrol">Devices</span> tab, then in the devices table that displays, click a device name, for example, Switch1.<div class="info">The device page displays.</div></li><li>In the device page, click the <span class="uicontrol">Bootstrap Config</span> tab.<div class="info">The Bootstrap Settings and Bootstrap Config panes open.</div></li><li>In the <span class="uicontrol">Bootstrap Settings</span> pane, verify that <span class="uicontrol">Bootstrap Enabled</span> is set to <span class="uicontrol">Enabled</span>, and optionally set <span class="uicontrol">Verbose Events</span> to <span class="uicontrol">Enabled</span> for a greater level of detail in the event log.</li><li>To provide a bootstrap configuration using the copy and paste option, copy and paste it into the text box of the <span class="uicontrol">Bootstrap Config</span> pane, then click <span class="uicontrol">Save</span>.<div class="note"><span class="lbl">Note:</span> OneConnect will automatically add the <span class="uicontrol">service cloud-client</span> command to the configuration that you paste into the text box. This command enables the device to connect to a cloud service, which monitors and manages the device.</div></li><li>To provide a bootstrap configuration using the upload option, click <span class="uicontrol">Upload</span> in the <span class="uicontrol">Bootstrap Config</span> pane, select the file, and click <span class="uicontrol">Open</span>.<div class="info">The contents of the selected file will appear in the text box.</div></li><li>Select a bootstrap release: in the <span class="uicontrol">Bootstrap Settings</span> pane, click the <span class="uicontrol">Bootstrap Release</span> edit icon, select a release from the drop-down list, and click <span class="uicontrol">Save</span>.<div class="info">The releases that appear in the list are approved by Allied Telesis for the device you are setting up.</div></li></ol></div>
+</article>
+
+</article>
+</main>
+</body>
+</html>

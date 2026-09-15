@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Add newly bought licenses, allocate them to a Customer, and license a device.">
+<meta name="content-id" content="oc-licensing-add-allocate">
+<meta name="copyright" content="(C) Copyright Allied Telesis">
+<title>Adding and allocating licenses</title>
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<main role="main">
+<article role="article" aria-labelledby="ariaid-title1">
+<h1 class="title topictitle1" id="ariaid-title1">Adding and allocating licenses</h1>
+
+<article class="topic nested1" aria-labelledby="t-lm_add">
+  <h2 class="title topictitle2" id="t-lm_add">Add New Device Licenses</h2>
+  <div class="body"><div class="prereq"><p>Before you begin this task:</p><ul><li>Check with the Allied Telesis Administrator to ensure that they have not already added the new licenses to OneConnect.</li><li>If the licenses still need to be added, make sure that you have the license key on hand.</li></ul></div><p>OneConnect supports device licenses for 1, 10, 100 or 1,000 devices for a period of 1 year. Once they have the license key, a PartnerAdmin can add the new licenses to OneConnect.</p><p>To add one or more new device licenses to OneConnect:</p><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>.<div class="info">The Customers page will display.</div></li><li>In the Customers page, click <span class="uicontrol">Add/Extend Licenses</span> in the upper right corner.<div class="info">The Add/Extend Licenses dialog appears.</div></li><li>In the dialog, select <span class="uicontrol">Add Devices</span>, enter the license key, and click <span class="uicontrol">Save</span>.</li><li>Back in the Customers page, check the <span class="uicontrol">Total Device Licenses</span> and <span class="uicontrol">License Expiry</span> widgets to verify that the license details are properly reflected.</li></ol></div>
+</article>
+
+<article class="topic nested1" aria-labelledby="t-lm_alloc">
+  <h2 class="title topictitle2" id="t-lm_alloc">Allocate Device Licenses to a Customer</h2>
+  <div class="body"><div class="prereq"><p>Before you allocate device licenses to the customers, make sure that:</p><ul><li>The licenses were added to OneConnect as described in <span class="xref">Add New Device Licenses</span>.</li><li>There are enough licenses for each customer. If more licenses are needed, contact your Allied Telesis representative.</li></ul></div><p>A PartnerAdmin can allocate device licenses to each Customer that the Partner supports. For example, if a license supports 100 devices for 1 year, the PartnerAdmin can allocate 20 device licenses to each of the four Customers that the Partner supports and reserve 20 licenses for future use.</p><div class="note"><span class="lbl">Note:</span> The number of device licenses allocated to a Customer represents the maximum number of devices that can be added for the Customer.</div><ol class="steps"><li>In the left pane, click <span class="uicontrol">Customer Management</span>.<div class="info">The Customers page will display.</div></li><li>In the table in the Customers page, click the <span class="uicontrol">Actions</span> icon associated with a customer, and from the drop-down list that appears, select <span class="uicontrol">Allocate Device Licenses</span>.<div class="info">The Allocate Device Licenses dialog will appear.</div></li><li>In the dialog, enter the number of licenses, and click <span class="uicontrol">Save</span>.</li><li>Back in the Customers page, verify that the newly allocated device licenses count appears in the table.</li><li>Repeat this procedure for each customer to which you want to allocate device licenses.</li></ol></div>
+</article>
+
+<article class="topic nested1" aria-labelledby="t-dc_lic">
+  <h2 class="title topictitle2" id="t-dc_lic">Add a License to a Device</h2>
+  <div class="body"><p>A PartnerAdmin or PartnerUser can add a license to a Customer’s device.</p><p>By default, you can add a license by specifying a license key. Alternatively, you can upload a file containing the license information.</p><p>To add a license to a device:</p><ol class="steps"><li>Click <span class="uicontrol">Customer Management</span> in the left pane and in the Customers table that appears, click a customer name, for example, Customer One.<div class="info">The customer page will appear.</div></li><li>In the customer page, click the <span class="uicontrol">Devices</span> tab.<div class="info">In the Devices table, click the device to which you want to add a license.</div></li><li>In the device page that appears, click the <span class="uicontrol">Bootstrap Licenses</span> tab, and above and to the right of the table that appears, click <span class="uicontrol">+ New Device License</span>.<div class="info">The <span class="uicontrol">New Device License</span> dialog will open.</div></li><li>For License Type, select <span class="uicontrol">key</span> or <span class="uicontrol">file</span>.<ol class="substeps" type="a"><li>If you selected <span class="uicontrol">key</span>, enter the License Name and License Key.</li><li>If you selected <span class="uicontrol">file</span>, click <span class="uicontrol">Upload File</span> and navigate to the file.</li></ol></li><li>Click <span class="uicontrol">Save</span>.</li><li>Back in the <span class="uicontrol">Bootstrap Licenses</span> tab, verify that the newly added license appears in the table.</li></ol></div>
+</article>
+
+</article>
+</main>
+</body>
+</html>
