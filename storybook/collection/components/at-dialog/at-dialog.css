@@ -69,7 +69,7 @@ dialog.backdrop::backdrop {
   position: fixed;
   inset: 0;
   margin: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   min-width: 100vw;
@@ -82,11 +82,9 @@ dialog.backdrop::backdrop {
   transform-origin: center;
   opacity: 0;
   box-shadow: var(--token-shadow-3);
-  visibility: hidden;
-  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+  transition: translate 0.15s ease, scale 0.15s ease, opacity 0.15s ease, display 0.15s allow-discrete;
 }
 :host dialog.backdrop {
-  display: flex;
   width: 100vw;
   height: 100vh;
 }
@@ -100,11 +98,11 @@ dialog.backdrop::backdrop {
   height: 100%;
 }
 :host dialog[open] {
+  display: flex;
   translate: 0 0;
   scale: 1;
   opacity: 1;
-  visibility: visible;
-  transition: translate 0.3s ease, scale 0.3s ease, opacity 0.3s ease, visibility 0s linear;
+  transition: translate 0.15s ease, scale 0.15s ease, opacity 0.15s ease, display 0.15s allow-discrete;
 }
 @starting-style {
   :host dialog[open] {
@@ -113,5 +111,5 @@ dialog.backdrop::backdrop {
 }
 :host dialog:not([open]) {
   opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
 }
