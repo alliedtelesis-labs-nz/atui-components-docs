@@ -48,6 +48,7 @@ export declare class AtToasterComponent {
      * go of one while the other still has the toast must not restart the clock.
      */
     private setHold;
+    private setHoverHold;
     private pause;
     private resume;
     /**

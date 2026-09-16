@@ -28,6 +28,12 @@ declare const _default: {
         closeButton: {
             control: string;
         };
+        showProgress: {
+            control: string;
+        };
+        pauseOnHover: {
+            control: string;
+        };
     };
 };
 export default _default;
@@ -36,8 +42,9 @@ export declare const Default: any;
  * The friction ladder's low tier: act now, then offer the way back on the toast
  * itself rather than pre-confirming. Taking the action dismisses the toast. The
  * countdown bar -- opted into with `showProgress`, which is what an offer with
- * a deadline is for -- says how long it stands, and hovering the toast or
- * tabbing into it stops the clock, resuming with the time that was left.
+ * a deadline is for -- says how long it stands. `pauseOnHover` belongs on a
+ * toast like this one too: the offer should not expire under the pointer of
+ * someone deciding whether to take it.
  */
 export declare const WithUndoAction: () => string;
 /**
@@ -48,10 +55,13 @@ export declare const WithUndoAction: () => string;
  */
 export declare const DismissedByHandle: () => string;
 /**
- * The pause is not opt-in the way the bar is: hover any timed toast, or tab
- * into it, and the clock stops until you leave, because a toast the user is
- * reading or reaching for should not be pulled out from under them. The bar is
- * on here so the hold is visible; a long timeout so it is easy to see by hand.
+ * `pauseOnHover` opts the toast into stopping its clock under the pointer,
+ * resuming with the time that was left. Off by default, so a toast under a
+ * resting pointer still expires on schedule. Tabbing in always holds the toast
+ * whether or not you opt in, since that is how a keyboard user reaches the
+ * action at all. The bar is on here so the hold is visible.
+ *
+ * Raises both to compare: hover each in turn and watch only one bar stop.
  */
 export declare const PausesOnHover: () => string;
 /**

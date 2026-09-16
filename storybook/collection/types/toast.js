@@ -4,4 +4,5 @@ export const DEFAULT_TOAST_OPTIONS = {
     dismissible: true,
     closeButton: false,
     showProgress: false,
+    pauseOnHover: false,
 };

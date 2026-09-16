@@ -17,6 +17,15 @@ export interface AtIToastOptions {
      * nothing.
      */
     showProgress?: boolean;
+    /**
+     * Stops the timeout while the pointer is over the toast. Opt in where the
+     * toast carries something the user must finish reading or reach for -- an
+     * `action`, most of all an `Undo`. Left off, a toast under a resting
+     * pointer still expires on schedule, which is what an automated pointer
+     * parked over the corner needs. Focus always holds the toast, opted in or
+     * not, so a keyboard user can still reach the action.
+     */
+    pauseOnHover?: boolean;
     action?: AtIToastAction;
 }
 /**

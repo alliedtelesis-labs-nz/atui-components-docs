@@ -25,6 +25,8 @@ export default {
         timeout: { control: 'number' },
         dismissible: { control: 'boolean' },
         closeButton: { control: 'boolean' },
+        showProgress: { control: 'boolean' },
+        pauseOnHover: { control: 'boolean' },
     },
 };
 const Template = (args) => `
@@ -40,6 +42,8 @@ const Template = (args) => `
         timeout: ${args.timeout},
         dismissible: ${args.dismissible},
       closeButton: ${args.closeButton},
+      showProgress: ${args.showProgress},
+      pauseOnHover: ${args.pauseOnHover},
     });
   };
   </script>
@@ -54,13 +58,15 @@ Default.args = {
     dismissible: true,
     closeButton: false,
     showProgress: false,
+    pauseOnHover: false,
 };
 /**
  * The friction ladder's low tier: act now, then offer the way back on the toast
  * itself rather than pre-confirming. Taking the action dismisses the toast. The
  * countdown bar -- opted into with `showProgress`, which is what an offer with
- * a deadline is for -- says how long it stands, and hovering the toast or
- * tabbing into it stops the clock, resuming with the time that was left.
+ * a deadline is for -- says how long it stands. `pauseOnHover` belongs on a
+ * toast like this one too: the offer should not expire under the pointer of
+ * someone deciding whether to take it.
  */
 export const WithUndoAction = () => `
   <at-button data-name="remove" label="Remove Widget" type="destructive"></at-button>
@@ -72,6 +78,7 @@ export const WithUndoAction = () => `
       ToasterService.show("info", "Widget removed.", {
         timeout: 8000,
         showProgress: true,
+        pauseOnHover: true,
         action: {
           label: "Undo",
           onTrigger: () => {
@@ -106,20 +113,29 @@ export const DismissedByHandle = () => `
   </script>
 `;
 /**
- * The pause is not opt-in the way the bar is: hover any timed toast, or tab
- * into it, and the clock stops until you leave, because a toast the user is
- * reading or reaching for should not be pulled out from under them. The bar is
- * on here so the hold is visible; a long timeout so it is easy to see by hand.
+ * `pauseOnHover` opts the toast into stopping its clock under the pointer,
+ * resuming with the time that was left. Off by default, so a toast under a
+ * resting pointer still expires on schedule. Tabbing in always holds the toast
+ * whether or not you opt in, since that is how a keyboard user reaches the
+ * action at all. The bar is on here so the hold is visible.
+ *
+ * Raises both to compare: hover each in turn and watch only one bar stop.
  */
 export const PausesOnHover = () => `
-  <at-button data-name="show" label="Show a slow toast" type="primary"></at-button>
+  <at-button data-name="show" label="Show both toasts" type="primary"></at-button>
   <script>
     document.querySelector('[data-name="show"]').onclick = () => {
-      ToasterService.show("success", "Hover me, or tab to the Undo.", {
-        title: "Saved",
+      ToasterService.show("success", "Hover me, or tab to the Undo. I hold.", {
+        title: "pauseOnHover: true",
         timeout: 15000,
         showProgress: true,
+        pauseOnHover: true,
         action: { label: "Undo", onTrigger: () => {} },
+      });
+      ToasterService.show("default", "Hover me. I keep counting down.", {
+        title: "pauseOnHover: false",
+        timeout: 15000,
+        showProgress: true,
       });
     };
   </script>
