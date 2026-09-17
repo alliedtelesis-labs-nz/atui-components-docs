@@ -1,0 +1,1 @@
+import{r as e,h as a,H as d}from"./p-LINu0edR.js";const c=class{constructor(a){e(this,a)}render(){return a(d,{key:"d42717762c7c5fdbb562c38ccae8d9efef66808d",role:"menu","data-name":"sidebar-menu"},a("slot",{key:"78dc7e9682ae879de4cd9ebea3069f18bb34c18f"}))}};c.style=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}";export{c as at_sidebar_menu}
