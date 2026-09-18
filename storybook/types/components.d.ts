@@ -2651,6 +2651,10 @@ export namespace Components {
          */
         "selectAllMatching": () => Promise<void>;
         /**
+          * Rows to tick, by the value of `row_id_field`. For a table opened with a selection the host already holds; assigning it replaces whatever is selected, and ids for rows on another page (or not yet loaded) are kept and tick once those rows arrive. `atSelectionChange` is not emitted for it - the host set the value. Leave it unset to let the user own the selection, and use `setSelection()` for a one-off write.
+         */
+        "selected_ids"?: string[];
+        /**
           * How many rows can be selected at once. `single` swaps the checkbox column for a radio one, drops the select-all header and the selection bar, and holds at most one id - the shape a form field needs. Ignored while `row_selection` is off.
           * @default 'multiple'
          */
@@ -8607,6 +8611,10 @@ declare namespace LocalJSX {
           * Info text displayed in a tooltip at the right of the search input. When omitted, a tooltip is generated automatically listing any visible columns flagged with `excludeFromGlobalSearch` in their column def; no icon is shown when nothing is excluded. Under `server_side_mode` that flag does not filter - the server matches whichever columns it chooses - so supply this text yourself there rather than relying on the generated tooltip.
          */
         "search_info_tooltip"?: string;
+        /**
+          * Rows to tick, by the value of `row_id_field`. For a table opened with a selection the host already holds; assigning it replaces whatever is selected, and ids for rows on another page (or not yet loaded) are kept and tick once those rows arrive. `atSelectionChange` is not emitted for it - the host set the value. Leave it unset to let the user own the selection, and use `setSelection()` for a one-off write.
+         */
+        "selected_ids"?: string[];
         /**
           * How many rows can be selected at once. `single` swaps the checkbox column for a radio one, drops the select-all header and the selection bar, and holds at most one id - the shape a form field needs. Ignored while `row_selection` is off.
           * @default 'multiple'

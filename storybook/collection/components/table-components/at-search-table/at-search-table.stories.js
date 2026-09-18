@@ -69,6 +69,26 @@ externalTable.addEventListener('atExternalFiltersChange', (event) => {
 });
 </script>
 `;
+const PreselectedTemplate = (args) => `
+<at-search-table
+    id="preselected-table"
+    page_size=${args.page_size ?? 5}
+    row_selection
+    row_id_field="_id"
+    row_noun="device"
+    row_noun_plural="devices"
+>
+    <div class="flex gap-8" slot="multi-select-actions">
+        <at-button size="sm" type="secondaryOutline" label="Export"></at-button>
+    </div>
+</at-search-table>
+<script>
+const preselectedTable = document.querySelector('#preselected-table');
+preselectedTable.selected_ids = ['1', '3'];
+preselectedTable.table_data = ${JSON.stringify(args.table_data, null, 4)}
+preselectedTable.col_defs = ${JSON.stringify(args.col_defs, null, 4)}
+</script>
+`;
 /**
  * Client-side: the table holds every row, so an expansion to "all matching" can be
  * answered from what it already has.
@@ -329,6 +349,18 @@ ServerSideRowSelection.args = {
  */
 export const FloatingActionBar = FloatingSelectionTemplate.bind({});
 FloatingActionBar.args = {
+    ...Default.args,
+    page_size: 5,
+};
+/**
+ * A table opened with rows already chosen - a scope carried in from another screen, a
+ * duplicated campaign, a deep link. `selected_ids` hands those ids over before the rows
+ * arrive; they tick as each page loads, and the bar and header checkbox read the same as
+ * they would had the user ticked them. The table emits nothing back for it: the host set
+ * the value. Once the user takes over, `atSelectionChange` reports as usual.
+ */
+export const PreselectedRows = PreselectedTemplate.bind({});
+PreselectedRows.args = {
     ...Default.args,
     page_size: 5,
 };

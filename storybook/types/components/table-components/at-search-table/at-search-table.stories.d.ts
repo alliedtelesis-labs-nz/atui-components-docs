@@ -68,3 +68,11 @@ export declare const ServerSideRowSelection: any;
  * describing that selection, and neither does Escape.
  */
 export declare const FloatingActionBar: any;
+/**
+ * A table opened with rows already chosen - a scope carried in from another screen, a
+ * duplicated campaign, a deep link. `selected_ids` hands those ids over before the rows
+ * arrive; they tick as each page loads, and the bar and header checkbox read the same as
+ * they would had the user ticked them. The table emits nothing back for it: the host set
+ * the value. Once the user takes over, `atSelectionChange` reports as usual.
+ */
+export declare const PreselectedRows: any;

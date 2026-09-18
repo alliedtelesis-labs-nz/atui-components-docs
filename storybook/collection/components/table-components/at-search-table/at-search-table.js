@@ -75,6 +75,14 @@ export class AtSearchTable {
      */
     row_id_field;
     /**
+     * Rows to tick, by the value of `row_id_field`. For a table opened with a selection
+     * the host already holds; assigning it replaces whatever is selected, and ids for
+     * rows on another page (or not yet loaded) are kept and tick once those rows arrive.
+     * `atSelectionChange` is not emitted for it - the host set the value. Leave it unset
+     * to let the user own the selection, and use `setSelection()` for a one-off write.
+     */
+    selected_ids;
+    /**
      * What one row is called, for the selection copy ("3 devices selected"). Defaults to
      * the translated "row".
      */
@@ -294,6 +302,12 @@ export class AtSearchTable {
         this.pageSize = this.page_size || 10;
         this.translations = await fetchTranslations(this.el);
         this.warnIfHasUpdatesIsANoOp();
+        this.applySelectedIdsProp();
+    }
+    applySelectedIdsProp() {
+        if (!this.selected_ids)
+            return;
+        this.applySelection(this.selected_ids);
     }
     /**
      * Checked after a render rather than on a prop change: a host setting both props
@@ -964,12 +978,15 @@ export class AtSearchTable {
      * Selects the given rows by id, for restoring a selection the host kept.
      */
     async setSelection(ids) {
+        this.applySelection(ids);
+        this.emitSelectionChange();
+    }
+    applySelection(ids) {
         const requested = ids ?? [];
         this.selectedIds = new Set(this.isSingleSelection ? requested.slice(0, 1) : requested);
         this.excludedIds = new Set();
         this.selectionScope = this.selectedIds.size ? 'explicit' : 'none';
         this.refreshSelectionColumn();
-        this.emitSelectionChange();
     }
     /**
      * Expands the selection to every row matching the current filter, as the selection
@@ -1313,8 +1330,8 @@ export class AtSearchTable {
         }
     }
     render() {
-        return (h(Host, { key: 'addd8fe75c58dbeaa56c30d60861b3344fd2d9d3', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: 'fcb647d808fccc51942b92c022bd519c3db47bc7', ag_grid: this.agGrid }, h("at-control-group", { key: '48136cf0ce8c057313917f30bcadb9da7287e5fd', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: 'bf56247f9fc3b7e9927916aab8c0b0816084b567', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '20fe7256f90877455b774ed8e7f2897a4c45c934', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'aef4a7d644f7a4b40f0575fd28b694d8541e644c', class: "contents", slot: "filter-bar" }, h("slot", { key: '5178a69bb595abb6f845a4bf6adce012a24abca1', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: 'f9565817f4b61b4925214cf2c5f92b1f46c43e08', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '25d079af035daba2feb1d32e6758a447dd9a122a', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '11661b4c778cc24839a766f9e6fdbdd68f3211df', class: this.server_side_mode ? 'is-loading' : '' }, h("at-table-actions", { key: '8ca58876014a17ed5b5827904e920f64b054f351', ag_grid: this.agGrid }, h("at-control-group", { key: '54dcbff5eb20443eb5c7e4f55b055f81f2043689', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: 'a6d08ccafa3c9e3e16fba6924161d1241b17677d', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: '12e93415a9935442e27a2b849e4be60dffc45de5', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'd13a3b4f7e3b014ddf266fdd4ade1fe23776a0f0', class: "contents", slot: "filter-bar" }, h("slot", { key: '8eef474fccd3790c355658b8a66de61dcd4ba289', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: 'c96cf94ff2ec9f9148b4236bb249b9a8ac4fa101', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'f23666829548473d8477d5c57a3e385ac6599377', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1323,15 +1340,15 @@ export class AtSearchTable {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'b25819ff7caaed079718f3181b1c39bc1aeb4b11', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '345015d9728e4376581d7baf776dcd9b3f7adeda', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'feb2a0a6a9696714c820b3ed4838200ff55349ce', slot: "leading-actions" }, h("slot", { key: '99acc6a8b6ce183d4f73600c3ed04f01e7b0bc9b', name: "leading-actions" })), h("div", { key: '3ee29bd8059ac37a5ad3f59f3d6dd09e6433fac1', slot: "actions" }, h("slot", { key: '609b0c943e0340bf592f847099b60507cab40541', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'd5c5211c36d4010a609faaca566efbf187d9bbc1', class: "relative" }, h("at-table", { key: '5f99126399541ac66317f50b36f0bfbb3552a9e7', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: '4a147be8dceb49579b3e53792d68f2166f1018da', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'f84372e4e01d2e9262a0d50ba13d6bedc7cf1b4b', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '988f8e0fd2fc69c131813913ac593e8c89648578', slot: "leading-actions" }, h("slot", { key: '4b5dd812b18b3b2bf8a7e78874d431c7a4733f3d', name: "leading-actions" })), h("div", { key: '13d1d7303ff297cba9e669e06a7aa9f45b0fb22f', slot: "actions" }, h("slot", { key: 'dbc19860c365d547cb4291cf7eb8201cf0e08f10', name: "actions" }))), this.renderSelectionBar(), h("div", { key: '0c75b726e48b356bf8243cdd47d2d7d6c4876b67', class: "relative" }, h("at-table", { key: '66e7471f7ef62f0165a752a14d5ab3d444f4ee96', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '36798d8d48befe08a55de9083f0820783533acb4', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'f23d0858ba3cc4df40b976307b9edef22ccfeff3', class: "flex items-center" }, h("at-loading", { key: 'd8950944363c631ae115b5300504e0a2f05fabb7', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'a202a4749ccfdb0de9d713524e100aab853c572a', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '26b1ff2c254d08e31c5c0db88cccb7366c28af67', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: 'dd68324dc98d8f3ca49433f6c3a3c0512f2c9e3c', class: "fill-slate-300", name: this.hasActiveSearch
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '2f39c5f87e10d8a96014a8df14623ff49f32f4f4', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center py-120 ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '8965ba6d15b9cf1927f60859c574be282ca03368', class: "flex items-center" }, h("at-loading", { key: '2628bfa2b64bf83d2869fbbb039d5fb965afb212', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '9a2470ef7fb87b2c5be41818bcc3da472ecd7be5', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA)))), this.server_side_mode && (h("div", { key: '50dc5615303436aaaf4e7d469ba3de4da473de9c', class: `no-data-overlay absolute inset-0 z-10 flex-col items-center justify-center gap-8 py-120 ${!this.is_loading && this.hasNoData ? 'is-visible' : ''}` }, h("at-icon", { key: '332c2395a26c7b9da97c399f919fbaaa3094307f', class: "fill-slate-300", name: this.hasActiveSearch
                 ? 'search'
-                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: '1297ff175fbaee64ab80b714a168fd5bd1808cf1', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
+                : 'data_table', size: "sm", "data-name": "no-data-icon" }), h("span", { key: 'a82784dbf72a6b5aba62092b62736c254f14acde', class: "text-secondary text-sm font-medium", "data-name": "no-data-title" }, this.hasActiveSearch
             ? this.translations?.ATUI?.NO_RESULTS_FOUND
             : (this.no_data_message ??
-                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'e80f5f7d334e5703736fda634937f47e5e736733', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                this.translations?.ATUI?.TABLE?.NO_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '9700e1a3da03c4a9856f0d3fd8e8310eeb19cc1c', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -1599,6 +1616,23 @@ export class AtSearchTable {
                 "setter": false,
                 "reflect": false,
                 "attribute": "row_id_field"
+            },
+            "selected_ids": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "string[]",
+                    "resolved": "string[]",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Rows to tick, by the value of `row_id_field`. For a table opened with a selection\nthe host already holds; assigning it replaces whatever is selected, and ids for\nrows on another page (or not yet loaded) are kept and tick once those rows arrive.\n`atSelectionChange` is not emitted for it - the host set the value. Leave it unset\nto let the user own the selection, and use `setSelection()` for a one-off write."
+                },
+                "getter": false,
+                "setter": false
             },
             "row_noun": {
                 "type": "string",
@@ -2252,6 +2286,9 @@ export class AtSearchTable {
             }, {
                 "propName": "is_loading",
                 "methodName": "handleLoadingChange"
+            }, {
+                "propName": "selected_ids",
+                "methodName": "applySelectedIdsProp"
             }, {
                 "propName": "has_updates",
                 "methodName": "warnIfHasUpdatesIsANoOp"

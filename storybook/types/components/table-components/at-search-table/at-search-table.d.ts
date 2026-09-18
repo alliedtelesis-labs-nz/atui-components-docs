@@ -86,6 +86,14 @@ export declare class AtSearchTable {
      */
     row_id_field?: string;
     /**
+     * Rows to tick, by the value of `row_id_field`. For a table opened with a selection
+     * the host already holds; assigning it replaces whatever is selected, and ids for
+     * rows on another page (or not yet loaded) are kept and tick once those rows arrive.
+     * `atSelectionChange` is not emitted for it - the host set the value. Leave it unset
+     * to let the user own the selection, and use `setSelection()` for a one-off write.
+     */
+    selected_ids?: string[];
+    /**
      * What one row is called, for the selection copy ("3 devices selected"). Defaults to
      * the translated "row".
      */
@@ -252,6 +260,7 @@ export declare class AtSearchTable {
     handleSearchFiltersChange(): void;
     handleLoadingChange(newValue: boolean): void;
     componentWillLoad(): Promise<void>;
+    applySelectedIdsProp(): void;
     /**
      * Checked after a render rather than on a prop change: a host setting both props
      * assigns them one at a time, so a watcher sees a moment where selection is on and
@@ -449,6 +458,7 @@ export declare class AtSearchTable {
      * Selects the given rows by id, for restoring a selection the host kept.
      */
     setSelection(ids: string[]): Promise<void>;
+    private applySelection;
     /**
      * Expands the selection to every row matching the current filter, as the selection
      * bar's own offer does. Declines when the host reports no total, matching the offer,
