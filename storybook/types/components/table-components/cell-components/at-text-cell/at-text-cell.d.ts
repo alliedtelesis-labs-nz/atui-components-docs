@@ -28,6 +28,7 @@ export declare class AtTextCellComponent implements ICellRendererComp {
     init(params: InitTextCellParams): void;
     getGui(): HTMLElement;
     refresh(params: InitTextCellParams): boolean;
+    private setCellData;
     private getTextValue;
     private transferArrayValueToString;
     render(): any;
