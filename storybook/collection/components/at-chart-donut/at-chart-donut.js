@@ -2,7 +2,7 @@ import { h, Host } from "@stencil/core";
 import { ArcElement, Chart, DoughnutController, Filler, Legend, Tooltip, } from "chart.js";
 import { AtChartColorPalette, readChartFontFamily, readChartTextColors, readChartTypography, } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
-import { ensureLegendTooltipEl, generateLegendLabels, setLegendTooltip, } from "../../utils/chart-legend";
+import { ensureLegendTooltipEl, generateLegendLabels, LEGEND_ITEM_PADDING, setLegendTooltip, } from "../../utils/chart-legend";
 const heightVariants = {
     xs: 'h-[70px]',
     sm: 'h-[160px]',
@@ -346,6 +346,7 @@ export class AtChartDonut {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: LEGEND_ITEM_PADDING,
                             font: {
                                 size: Math.round(typography.remPx * typography.legendRem),
                             },
@@ -469,7 +470,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: 'c3437f341a9df2b006c39d29b5a542f7cee6c7ee', style: { height: '100%', width: '100%' } }, h("canvas", { key: '8889209f7b6fc626708e987b8c6188a9bffdd4c5', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '9a0dfc85aba1c559c420d0f59bb8d3df587cb1d5', style: { height: '100%', width: '100%' } }, h("canvas", { key: '0366826d0357f1482265ce26bc74ca2cd21a8e8d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {

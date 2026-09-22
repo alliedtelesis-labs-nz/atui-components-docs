@@ -4,7 +4,7 @@ import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineContr
 import { AtTimeDateUtil } from "../../utils/at-time-date.util";
 import { AtChartColorPalette, readChartTextColors, } from "../../types/chart-color";
 import { getChartColors } from "../../utils/chart-color";
-import { ensureLegendTooltipEl, generateLegendLabels, setLegendTooltip, } from "../../utils/chart-legend";
+import { ensureLegendTooltipEl, generateLegendLabels, LEGEND_ITEM_PADDING, setLegendTooltip, } from "../../utils/chart-legend";
 const heightVariants = {
     xs: 'h-[70px]',
     sm: 'h-[160px]',
@@ -289,6 +289,7 @@ export class AtChartBarLine {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: LEGEND_ITEM_PADDING,
                             fontSize: 10,
                             useBorderRadius: true,
                             borderRadius: 2,
@@ -423,7 +424,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '32016a3533e609c5fb1a8831df12c3aa836be871', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b89b1a60bbf560922c9dbab8209364fa2ec82baa', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'ca563ee7fd9ae6f44b9eaa4cdbb1bff1314ad3b0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '8144dca099c738ce411312bea70e3d47fb1bf733', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

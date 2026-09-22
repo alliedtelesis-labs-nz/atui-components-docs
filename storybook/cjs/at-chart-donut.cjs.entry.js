@@ -3,7 +3,7 @@
 var index = require('./index-CEz1eizW.js');
 var chartColor$1 = require('./chart-color-C4k0UCda.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
-var chartLegend = require('./chart-legend-BwCqx-OI.js');
+var chartLegend = require('./chart-legend-B3vfgg1q.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -347,6 +347,7 @@ const AtChartDonut = class {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: chartLegend.LEGEND_ITEM_PADDING,
                             font: {
                                 size: Math.round(typography.remPx * typography.legendRem),
                             },
@@ -470,7 +471,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'c3437f341a9df2b006c39d29b5a542f7cee6c7ee', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '8889209f7b6fc626708e987b8c6188a9bffdd4c5', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (index.h(index.Host, { key: '9a0dfc85aba1c559c420d0f59bb8d3df587cb1d5', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '0366826d0357f1482265ce26bc74ca2cd21a8e8d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

@@ -4,7 +4,7 @@ var index = require('./index-CEz1eizW.js');
 var chartColor = require('./chart-color-C4k0UCda.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var chartColor$1 = require('./chart-color-CbbmT7Il.js');
-var chartLegend = require('./chart-legend-BwCqx-OI.js');
+var chartLegend = require('./chart-legend-B3vfgg1q.js');
 
 var dateFns = {};
 
@@ -21754,6 +21754,7 @@ const AtChartBarLine = class {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: chartLegend.LEGEND_ITEM_PADDING,
                             fontSize: 10,
                             useBorderRadius: true,
                             borderRadius: 2,
@@ -21888,7 +21889,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '32016a3533e609c5fb1a8831df12c3aa836be871', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: 'b89b1a60bbf560922c9dbab8209364fa2ec82baa', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (index.h(index.Host, { key: 'ca563ee7fd9ae6f44b9eaa4cdbb1bff1314ad3b0', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '8144dca099c738ce411312bea70e3d47fb1bf733', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

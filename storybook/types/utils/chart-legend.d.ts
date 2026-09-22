@@ -2,6 +2,7 @@ import { Chart, LegendItem } from 'chart.js';
 export declare const SIDE_LEGEND_CHAR_RATIO = 0.046;
 export declare const HORIZONTAL_LEGEND_CHAR_RATIO = 0.032;
 export declare const MIN_LEGEND_CHAR_COUNT = 8;
+export declare const LEGEND_ITEM_PADDING = 4;
 export type TruncatedLegendItem = LegendItem & {
     originalText?: string;
     isTruncated?: boolean;

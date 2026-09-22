@@ -2,7 +2,7 @@ import { r as registerInstance, h, H as Host } from './index-LINu0edR.js';
 import { f as adapters, C as Chart, L as LinearScale, B as BarController, b as CategoryScale, h as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, j as plugin_colors, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-D0s5MbHz.js';
 import { a as AtTimeDateUtil } from './at-time-date.util-Bfdzn_RG.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-PVoy06gY.js';
-import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels } from './chart-legend-DUoKUddP.js';
+import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels, L as LEGEND_ITEM_PADDING } from './chart-legend-DqqEUOQW.js';
 
 var dateFns = {};
 
@@ -21752,6 +21752,7 @@ const AtChartBarLine = class {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: LEGEND_ITEM_PADDING,
                             fontSize: 10,
                             useBorderRadius: true,
                             borderRadius: 2,
@@ -21886,7 +21887,7 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: '32016a3533e609c5fb1a8831df12c3aa836be871', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'b89b1a60bbf560922c9dbab8209364fa2ec82baa', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'ca563ee7fd9ae6f44b9eaa4cdbb1bff1314ad3b0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '8144dca099c738ce411312bea70e3d47fb1bf733', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
 };
 

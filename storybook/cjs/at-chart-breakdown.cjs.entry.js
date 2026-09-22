@@ -3,6 +3,7 @@
 var index = require('./index-CEz1eizW.js');
 var chartColor$1 = require('./chart-color-C4k0UCda.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
+var chartLegend = require('./chart-legend-B3vfgg1q.js');
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -224,7 +225,6 @@ const AtChartBreakdown = class {
             afterDraw: (chart) => {
                 const { chartArea, ctx, data } = chart;
                 const legendY = chartArea.top;
-                const lineHeight = 22;
                 const swatchSize = 10;
                 const swatchGap = 6;
                 // Rebuild hit regions each draw so they stay in sync with layout.
@@ -237,6 +237,7 @@ const AtChartBreakdown = class {
                 ctx.font = `${legendFontPx}px ${legendFontFamily}`;
                 ctx.textAlign = 'left';
                 ctx.textBaseline = 'middle';
+                const lineHeight = Math.max(legendFontPx, swatchSize) + chartLegend.LEGEND_ITEM_PADDING;
                 const widestLabel = Math.max(...(data.labels?.map((label) => ctx.measureText(String(label)).width) ?? [0]));
                 const legendWidth = swatchSize + swatchGap + widestLabel;
                 // The legend is drawn immediately to the right of the donut,
@@ -372,7 +373,7 @@ const AtChartBreakdown = class {
                     this.legendFontPx;
                 const legendFontFamily = this.legend_options?.labels?.font?.family ??
                     'sans-serif';
-                const itemHeight = legendFontPx + 8;
+                const itemHeight = legendFontPx + chartLegend.LEGEND_ITEM_PADDING;
                 const swatchSize = 10;
                 const swatchGap = 6;
                 const ctx = chart.ctx;
@@ -380,9 +381,12 @@ const AtChartBreakdown = class {
                 ctx.font = `${legendFontPx}px ${legendFontFamily}`;
                 const widestLabel = Math.max(...(chart.data.labels?.map((l) => ctx.measureText(String(l)).width) ?? [0]));
                 ctx.restore();
-                // 16px accounts for internal padding Chart.js adds around legend items.
-                const requiredWidth = swatchSize + swatchGap + widestLabel + 16;
-                const requiredHeight = labelCount * itemHeight + 8;
+                // Chart.js adds labels.padding on each side of a legend item.
+                const requiredWidth = swatchSize +
+                    swatchGap +
+                    widestLabel +
+                    chartLegend.LEGEND_ITEM_PADDING * 2;
+                const requiredHeight = labelCount * itemHeight + chartLegend.LEGEND_ITEM_PADDING * 2;
                 const pos = this.legend_position;
                 let fits;
                 if (pos === 'right' || pos === 'left') {
@@ -456,6 +460,7 @@ const AtChartBreakdown = class {
                         labels: {
                             boxWidth: 10,
                             boxHeight: 10,
+                            padding: chartLegend.LEGEND_ITEM_PADDING,
                             font: { size: this.legendFontPx },
                             useBorderRadius: true,
                             borderRadius: 2,
@@ -590,7 +595,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? chartColor.readChartTypography(this.el)
             : undefined;
-        return (index.h(index.Host, { key: 'f1b753f6e9bc596f4dec2b912d719db5a0d4692c', style: {
+        return (index.h(index.Host, { key: '456122a45f05c27b83664424a88af08e7016318f', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -598,24 +603,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: '8b052311bb4f844976ef49201e6bd10b25d13198', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: '1d66a2b765fdabf17941b7c9569078cc01e4af6f', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: '0081ff1dfb85a108388fbc66f4f88bad5fed26e5', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: '0aff7422a9964844575db1e10b6559ac02091fd4', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: 'a420696f08b57ad4031165aea9e29a54f8313ba1', style: {
+            } }, this.center_value && (index.h("span", { key: '5b39c34f1c3e86518136a752a196f519a809fa6c', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: 'f60dd9cb44afbeccca788121b7af960af0afa8e9', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: 'abd999948a4b3c7011bdf40fe42f784b75504490', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',
