@@ -1,8 +1,9 @@
-import { r as registerInstance, a as getElement, h } from './index-LINu0edR.js';
+import { r as registerInstance, c as createEvent, a as getElement, h } from './index-LINu0edR.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.atuiActivate = createEvent(this, "atuiActivate", 7);
     }
     get el() { return getElement(this); }
     /**
@@ -13,10 +14,21 @@ const AtTabContent = class {
      * Determines if the tab content is active
      */
     is_active = false;
+    /**
+     * True once this panel's tab has been selected at least once. Reflected, and
+     * set before at-tabs emits atuiTabChange, so a consumer can defer building
+     * expensive panel content until the tab is first opened.
+     */
+    has_activated = false;
     isActive = false;
+    /**
+     * Emits this panel's tab_id the first time its tab is selected
+     */
+    atuiActivate;
     tabSelector;
     componentWillLoad() {
         this.isActive = this.is_active;
+        this.has_activated = this.has_activated || this.is_active;
     }
     async componentDidLoad() {
         this.tabSelector = this.el.closest('at-tabs');
@@ -31,19 +43,31 @@ const AtTabContent = class {
             this.tabSelector.removeEventListener('atuiTabChange', this.updateActiveState);
         }
     }
+    handleActivated(isActivated, wasActivated) {
+        if (isActivated && !wasActivated) {
+            this.atuiActivate.emit(this.tab_id);
+        }
+    }
     setIsActive(id) {
         this.isActive = id === this.tab_id;
+        if (this.isActive) {
+            this.has_activated = true;
+        }
     }
     updateActiveState = (event) => {
         if (event.target !== this.tabSelector) {
             return;
         }
-        const selectedTabId = event.detail;
-        this.isActive = selectedTabId === this.tab_id;
+        this.setIsActive(event.detail);
     };
     render() {
-        return (h("div", { key: '2bb256833ef4f6f5928fe4ccdce418f19cd5d1cf', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: 'ee115e5224ee9a573e26de4b017730cde0700b24' })));
+        return (h("div", { key: 'ea4b0c87fd67c75afa91e60c7151f43e31a9fb8f', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '1bee134ba3e13ff32e29feaed042697bb7e1bf2b' })));
     }
+    static get watchers() { return {
+        "has_activated": [{
+                "handleActivated": 0
+            }]
+    }; }
 };
 
 export { AtTabContent as at_tab_content };

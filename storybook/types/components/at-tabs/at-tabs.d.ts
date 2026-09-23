@@ -58,6 +58,8 @@ export declare class AtTabs {
     getTabsElements(): HTMLAtTabTriggerElement[];
     componentDidUpdate(): void;
     handleActiveTabChange(newValue: string): void;
+    markPanelActivated(id: string): void;
+    getTabContentElements(): HTMLAtTabContentElement[];
     updateTabActiveStates(newValue: string): void;
     private tabsetId;
     private get indicatorRef();

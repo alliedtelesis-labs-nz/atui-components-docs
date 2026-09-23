@@ -3295,8 +3295,14 @@ export namespace Components {
     /**
      * @category Navigation
      * @description A tab content component for the tab selector.
+     * @event atuiActivate - Emitted the first time this panel's tab is selected, carrying its tab_id.
      */
     interface AtTabContent {
+        /**
+          * True once this panel's tab has been selected at least once. Reflected, and set before at-tabs emits atuiTabChange, so a consumer can defer building expensive panel content until the tab is first opened.
+          * @default false
+         */
+        "has_activated": boolean;
         /**
           * Determines if the tab content is active
           * @default false
@@ -4043,6 +4049,10 @@ export interface AtSidebarProviderCustomEvent<T> extends CustomEvent<T> {
 export interface AtStepperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAtStepperElement;
+}
+export interface AtTabContentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAtTabContentElement;
 }
 export interface AtTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5522,11 +5532,23 @@ declare global {
         prototype: HTMLAtStepperItemElement;
         new (): HTMLAtStepperItemElement;
     };
+    interface HTMLAtTabContentElementEventMap {
+        "atuiActivate": string;
+    }
     /**
      * @category Navigation
      * @description A tab content component for the tab selector.
+     * @event atuiActivate - Emitted the first time this panel's tab is selected, carrying its tab_id.
      */
     interface HTMLAtTabContentElement extends Components.AtTabContent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLAtTabContentElementEventMap>(type: K, listener: (this: HTMLAtTabContentElement, ev: AtTabContentCustomEvent<HTMLAtTabContentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLAtTabContentElementEventMap>(type: K, listener: (this: HTMLAtTabContentElement, ev: AtTabContentCustomEvent<HTMLAtTabContentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLAtTabContentElement: {
         prototype: HTMLAtTabContentElement;
@@ -9234,13 +9256,23 @@ declare namespace LocalJSX {
     /**
      * @category Navigation
      * @description A tab content component for the tab selector.
+     * @event atuiActivate - Emitted the first time this panel's tab is selected, carrying its tab_id.
      */
     interface AtTabContent {
+        /**
+          * True once this panel's tab has been selected at least once. Reflected, and set before at-tabs emits atuiTabChange, so a consumer can defer building expensive panel content until the tab is first opened.
+          * @default false
+         */
+        "has_activated"?: boolean;
         /**
           * Determines if the tab content is active
           * @default false
          */
         "is_active"?: boolean;
+        /**
+          * Emits this panel's tab_id the first time its tab is selected
+         */
+        "onAtuiActivate"?: (event: AtTabContentCustomEvent<string>) => void;
         /**
           * ID of the tab
          */
@@ -10448,6 +10480,7 @@ declare namespace LocalJSX {
     interface AtTabContentAttributes {
         "tab_id": string;
         "is_active": boolean;
+        "has_activated": boolean;
     }
     interface AtTabTriggerAttributes {
         "tab_id": string;
@@ -11126,6 +11159,7 @@ declare module "@stencil/core" {
             /**
              * @category Navigation
              * @description A tab content component for the tab selector.
+             * @event atuiActivate - Emitted the first time this panel's tab is selected, carrying its tab_id.
              */
             "at-tab-content": LocalJSX.IntrinsicElements["at-tab-content"] & JSXBase.HTMLAttributes<HTMLAtTabContentElement>;
             /**

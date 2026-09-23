@@ -1243,14 +1243,14 @@ export const AtStepperItem: StencilReactComponent<AtStepperItemElement, AtSteppe
     defineCustomElement: defineAtStepperItem
 });
 
-type AtTabContentEvents = NonNullable<unknown>;
+type AtTabContentEvents = { onAtuiActivate: EventName<CustomEvent<string>> };
 
 export const AtTabContent: StencilReactComponent<AtTabContentElement, AtTabContentEvents> = /*@__PURE__*/ createComponent<AtTabContentElement, AtTabContentEvents>({
     tagName: 'at-tab-content',
     elementClass: AtTabContentElement,
     // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
     react: React,
-    events: {} as AtTabContentEvents,
+    events: { onAtuiActivate: 'atuiActivate' } as AtTabContentEvents,
     defineCustomElement: defineAtTabContent
 });
 

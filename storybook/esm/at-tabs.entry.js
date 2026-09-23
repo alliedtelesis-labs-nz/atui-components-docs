@@ -81,6 +81,7 @@ const AtTabs = class {
     handleActiveTabChange(newValue) {
         const activeTab = this.tabs.find((tab) => tab.id === newValue);
         const activeManualtab = this.tabManualAdded.find((tab) => tab.id === newValue);
+        this.markPanelActivated(newValue);
         if (activeTab) {
             this.atuiTabChange.emit(activeTab.id);
             this.updateTabActiveStates(newValue);
@@ -95,6 +96,15 @@ const AtTabs = class {
                 this.updateIndicatorPosition();
             });
         }
+    }
+    markPanelActivated(id) {
+        const panel = this.getTabContentElements().find((contentEl) => contentEl.tab_id === id);
+        if (panel && !panel.has_activated) {
+            panel.has_activated = true;
+        }
+    }
+    getTabContentElements() {
+        return Array.from(this.el.querySelectorAll('at-tab-content')).filter((contentEl) => contentEl.closest('at-tabs') === this.el);
     }
     updateTabActiveStates(newValue) {
         this.tabEls.forEach((tab) => {
@@ -154,7 +164,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: 'c350f8e47b39383689eb28aec59bce0dd13cd19f' }, this.checkLayoutAndRender());
+        return h(Host, { key: '83f8260afcbcec0a34dfac32961dd14ff5a5d8ae' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
