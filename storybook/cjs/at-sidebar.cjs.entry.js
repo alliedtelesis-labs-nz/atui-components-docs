@@ -320,14 +320,18 @@ const AtSidebarComponent = class {
     Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
      */
     handleMenuItemClick = (event) => {
-        const target = event.target;
-        if (target.getAttribute('slot') === 'accordion-trigger') {
+        if (!this.isOwnNavigationItem(event.target)) {
             return;
         }
         if (this.collapsible === 'offcanvas' && this.isOpen) {
             this.toggleSidebar();
         }
     };
+    isOwnNavigationItem(target) {
+        return (target.tagName === 'AT-SIDEBAR-MENUITEM' &&
+            target.getAttribute('slot') !== 'accordion-trigger' &&
+            target.closest('at-sidebar') === this.el);
+    }
     setupExternalTriggers() {
         this.scanForTriggers();
         this.triggerObserver = new MutationObserver(() => this.scanForTriggers());

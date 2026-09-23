@@ -169,6 +169,7 @@ export declare class AtSidebarComponent {
     Automate closing of the menu via menu-item click if the menu is in offcanvas mode and currently open
      */
     private handleMenuItemClick;
+    private isOwnNavigationItem;
     private setupExternalTriggers;
     private scanForTriggers;
     private updateTriggerAria;
