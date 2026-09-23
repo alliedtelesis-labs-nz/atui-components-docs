@@ -1,7 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-LINu0edR.js';
-import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-D0s5MbHz.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, b as readChartFontFamily, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
-import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl, L as LEGEND_ITEM_PADDING } from './chart-legend-DqqEUOQW.js';
+import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl, L as LEGEND_ITEM_PADDING } from './chart-legend-BNvwc8jm.js';
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -418,7 +418,7 @@ const AtChartDonut = class {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
-            const color = dataset.data.map((_, index) => colors[index % colors.length]);
+            const color = resolveSeriesColors(colors, dataset.data.length, this.color_palette);
             return {
                 ...dataset,
                 backgroundColor: color,
@@ -469,7 +469,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '9a0dfc85aba1c559c420d0f59bb8d3df587cb1d5', style: { height: '100%', width: '100%' } }, h("canvas", { key: '0366826d0357f1482265ce26bc74ca2cd21a8e8d', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'fad8085fc42c1889db4dd57ca0a24253e4fd1fd2', style: { height: '100%', width: '100%' } }, h("canvas", { key: '7d235aa1e3ce6e118e4d74e74898cb350faccefe', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

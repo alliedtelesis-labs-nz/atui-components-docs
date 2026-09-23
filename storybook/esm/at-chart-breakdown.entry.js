@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-LINu0edR.js';
-import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors } from './chart-color-D0s5MbHz.js';
+import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
-import { L as LEGEND_ITEM_PADDING } from './chart-legend-DqqEUOQW.js';
+import { L as LEGEND_ITEM_PADDING } from './chart-legend-BNvwc8jm.js';
 
 const heightVariants = {
     xs: 'h-[70px]',
@@ -538,7 +538,7 @@ const AtChartBreakdown = class {
             return;
         }
         this.data.datasets = this.data.datasets.map((dataset) => {
-            const color = dataset.data.map((_, index) => colors[index % colors.length]);
+            const color = resolveSeriesColors(colors, dataset.data.length, this.color_palette);
             return {
                 ...dataset,
                 backgroundColor: color,
@@ -593,7 +593,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? readChartTypography(this.el)
             : undefined;
-        return (h(Host, { key: '456122a45f05c27b83664424a88af08e7016318f', style: {
+        return (h(Host, { key: '4d695c2d1c6bdd59cdb3a2b5f1451c5ab7df548c', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -601,24 +601,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '1d66a2b765fdabf17941b7c9569078cc01e4af6f', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '9cea63313fac68a75d221657b5de35a488815b5f', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: '0aff7422a9964844575db1e10b6559ac02091fd4', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: '978d06def4922df70bc40e1ec337811b46972424', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '5b39c34f1c3e86518136a752a196f519a809fa6c', style: {
+            } }, this.center_value && (h("span", { key: '42c292cbeaeb4a1f5ec8b372efbbc33fe1457d91', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (h("span", { key: 'abd999948a4b3c7011bdf40fe42f784b75504490', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: '707d12925fb2b1ceb5236b99039410bdb986d2b7', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

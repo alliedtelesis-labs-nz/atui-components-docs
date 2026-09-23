@@ -3,7 +3,7 @@ import { h, Host } from "@stencil/core";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, TimeScale, Legend, Tooltip, PointElement, Filler, Colors, } from "chart.js";
 import { AtTimeDateUtil } from "../../utils/at-time-date.util";
 import { AtChartColorPalette, readChartTextColors, } from "../../types/chart-color";
-import { getChartColors } from "../../utils/chart-color";
+import { getChartColors, resolveSeriesColors } from "../../utils/chart-color";
 import { ensureLegendTooltipEl, generateLegendLabels, LEGEND_ITEM_PADDING, setLegendTooltip, } from "../../utils/chart-legend";
 const heightVariants = {
     xs: 'h-[70px]',
@@ -375,8 +375,9 @@ export class AtChartBarLine {
         if (this.color_palette === AtChartColorPalette.CUSTOM) {
             return;
         }
+        const seriesColors = resolveSeriesColors(colors, this.data.datasets.length, this.color_palette);
         this.data.datasets = this.data.datasets.map((dataset, index) => {
-            const color = colors[index % colors.length];
+            const color = seriesColors[index];
             return {
                 ...dataset,
                 backgroundColor: color,
@@ -424,7 +425,7 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'ca563ee7fd9ae6f44b9eaa4cdbb1bff1314ad3b0', style: { height: '100%', width: '100%' } }, h("canvas", { key: '8144dca099c738ce411312bea70e3d47fb1bf733', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: 'aae51d771218501741ca515e6e5da920ef4e1541', style: { height: '100%', width: '100%' } }, h("canvas", { key: '6a0fba7d7fd33521e2630ba0e740171ef923f44d', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-CEz1eizW.js');
-var chartColor$1 = require('./chart-color-C4k0UCda.js');
+var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
 const heightVariants = {
