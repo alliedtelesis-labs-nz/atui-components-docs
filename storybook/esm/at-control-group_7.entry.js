@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-Cwortk4y.js';
+import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-CIMU6MgJ.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { A as AvailableCells } from './index-Cr5pwqxy.js';
 import { c as countFilterConditions, i as isFilterGroup, d as removeFilterCondition, b as flattenFilterConditions } from './filter-tree.util-CYRBwQ7z.js';
@@ -257,7 +257,7 @@ const AtTableFilters = class {
                     event.preventDefault();
                     this.atFilterClick.emit(filter);
                 }
-            } }, h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
+            } }, h("button", { type: "button", class: "text-foreground/40 hover:text-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out", "data-name": "filter-chip-remove", "aria-label": `Remove ${label}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeCondition(filter);
             } }, h("at-icon", { name: "cancel" }))));

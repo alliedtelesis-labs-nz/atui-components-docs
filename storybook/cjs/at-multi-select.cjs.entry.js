@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BPZZ2ScW.js');
+var index = require('./index-JVxrGXVZ.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -339,7 +339,7 @@ const AtMultiSelectComponent = class {
                 ? `${this.menuId}-label`
                 : undefined }, this.selection_display === 'count'
             ? this.renderCountSelection()
-            : this.renderChipSelection(), !this.readonly && !this.disabled && (index.h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
+            : this.renderChipSelection(), !this.readonly && !this.disabled && (index.h("div", { class: "user-select-none pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, index.h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
     }
     renderChipSelection() {
         return (index.h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (index.h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))));

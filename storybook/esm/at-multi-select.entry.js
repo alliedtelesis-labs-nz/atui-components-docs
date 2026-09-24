@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Cwortk4y.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CIMU6MgJ.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
@@ -337,7 +337,7 @@ const AtMultiSelectComponent = class {
                 ? `${this.menuId}-label`
                 : undefined }, this.selection_display === 'count'
             ? this.renderCountSelection()
-            : this.renderChipSelection(), !this.readonly && !this.disabled && (h("div", { class: "user-select-none fill-foreground pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
+            : this.renderChipSelection(), !this.readonly && !this.disabled && (h("div", { class: "user-select-none pointer-events-none absolute right-4 flex items-center bg-transparent p-4", "data-name": "expand-button", role: "presentation", tabindex: -1 }, h("at-icon", { class: "fill-foreground", name: this.isOpen ? 'caret_up' : 'caret_down' })))));
     }
     renderChipSelection() {
         return (h("at-chip-list", { size: "sm", class: "w-full focus-within:ring-0", readonly: this.readonly, disabled: this.disabled, show_clear_all: this.clearable, onAtRemoveChip: (event) => this.handleRemoveChip(event), chips: this.getSelectedLabels(), "data-name": "multi-select-chips-inside" }, this.value.length === 0 && (h("div", { class: "text-body text-disabled pointer-events-none select-none" }, this.placeholder))));

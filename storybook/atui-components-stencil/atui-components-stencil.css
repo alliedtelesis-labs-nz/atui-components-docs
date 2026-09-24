@@ -2443,6 +2443,13 @@ body {
   background-color: var(--token-surface-background);
 }
 
+/* An icon is the colour of the text around it. A fill utility on the
+       at-icon itself still wins; one on an ancestor is never inherited past
+       this rule, so colour icons the way text is coloured. */
+at-icon {
+  fill: currentColor;
+}
+
 h1,
 .h1 {
   font-size: var(--token-font-size-h1);
@@ -3951,10 +3958,6 @@ strong {
   fill: color-mix(in srgb, var(--token-button-foreground-inv) 100%, transparent) !important;
 }
 
-.\!fill-disabled-foreground {
-  fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent) !important;
-}
-
 .\!fill-foreground {
   fill: color-mix(in srgb, var(--token-text-foreground) 100%, transparent) !important;
 }
@@ -3963,92 +3966,24 @@ strong {
   fill: var(--token-border-muted);
 }
 
-.fill-active-accent {
-  fill: color-mix(in srgb, var(--token-state-active-accent) 100%, transparent);
-}
-
-.fill-active-foreground {
-  fill: color-mix(in srgb, var(--token-state-active-foreground) 100%, transparent);
-}
-
-.fill-button-foreground-inv {
-  fill: color-mix(in srgb, var(--token-button-foreground-inv) 100%, transparent);
-}
-
-.fill-disabled-foreground {
-  fill: color-mix(in srgb, var(--token-state-disabled-foreground) 100%, transparent);
-}
-
-.fill-disabled-foreground-inv {
-  fill: color-mix(in srgb, var(--token-state-disabled-foreground-inv) 100%, transparent);
-}
-
-.fill-error-accent {
-  fill: color-mix(in srgb, var(--token-state-error-accent) 100%, transparent);
-}
-
 .fill-feedback-error-accent {
   fill: color-mix(in srgb, var(--token-feedback-error-accent) 100%, transparent);
-}
-
-.fill-feedback-error-foreground {
-  fill: color-mix(in srgb, var(--token-feedback-error-foreground) 100%, transparent);
-}
-
-.fill-feedback-error-foreground-inv {
-  fill: color-mix(in srgb, var(--token-feedback-error-foreground-inv) 100%, transparent);
-}
-
-.fill-feedback-foreground {
-  fill: color-mix(in srgb, var(--token-feedback-foreground) 100%, transparent);
-}
-
-.fill-feedback-foreground-inv {
-  fill: color-mix(in srgb, var(--token-feedback-foreground-inv) 100%, transparent);
 }
 
 .fill-feedback-info-accent {
   fill: color-mix(in srgb, var(--token-feedback-info-accent) 100%, transparent);
 }
 
-.fill-feedback-info-foreground {
-  fill: color-mix(in srgb, var(--token-feedback-info-foreground) 100%, transparent);
-}
-
-.fill-feedback-info-foreground-inv {
-  fill: color-mix(in srgb, var(--token-feedback-info-foreground-inv) 100%, transparent);
-}
-
 .fill-feedback-success-accent {
   fill: color-mix(in srgb, var(--token-feedback-success-accent) 100%, transparent);
-}
-
-.fill-feedback-success-foreground {
-  fill: color-mix(in srgb, var(--token-feedback-success-foreground) 100%, transparent);
-}
-
-.fill-feedback-success-foreground-inv {
-  fill: color-mix(in srgb, var(--token-feedback-success-foreground-inv) 100%, transparent);
 }
 
 .fill-feedback-warning-accent {
   fill: color-mix(in srgb, var(--token-feedback-warning-accent) 100%, transparent);
 }
 
-.fill-feedback-warning-foreground {
-  fill: color-mix(in srgb, var(--token-feedback-warning-foreground) 100%, transparent);
-}
-
-.fill-feedback-warning-foreground-inv {
-  fill: color-mix(in srgb, var(--token-feedback-warning-foreground-inv) 100%, transparent);
-}
-
 .fill-foreground {
   fill: color-mix(in srgb, var(--token-text-foreground) 100%, transparent);
-}
-
-.fill-foreground\/40 {
-  fill: color-mix(in srgb, var(--token-text-foreground) 40%, transparent);
 }
 
 .fill-muted {
@@ -4553,6 +4488,10 @@ strong {
   color: color-mix(in srgb, var(--token-text-inv) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
+.text-foreground\/40 {
+  color: color-mix(in srgb, var(--token-text-foreground) 40%, transparent);
+}
+
 .text-info-foreground {
   --tw-text-opacity:
       1;
@@ -4569,6 +4508,12 @@ strong {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-text-secondary) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-slate-300 {
+  --tw-text-opacity:
+      1;
+  color: rgb(203, 213, 225, var(--tw-text-opacity, 1));
 }
 
 .text-success {
@@ -4980,10 +4925,6 @@ strong {
 
 .hover\:bg-surface-overlay\/10:hover {
   background-color: color-mix(in srgb, var(--token-surface-overlay) 10%, transparent);
-}
-
-.hover\:fill-foreground:hover {
-  fill: color-mix(in srgb, var(--token-text-foreground) 100%, transparent);
 }
 
 .hover\:text-disabled:hover {

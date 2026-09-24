@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BPZZ2ScW.js');
+var index = require('./index-JVxrGXVZ.js');
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 
@@ -281,7 +281,7 @@ const AtChipList = class {
             class: `flex items-center gap-4 text-center ${this.show_overflow_counter
                 ? 'max-w-full shrink-0 overflow-hidden'
                 : ''}`, rounded: true, "data-name": "chip", type: this.disabled ? 'disabled' : 'default', size: this.size, label: chip
-        }, !this.disabled && !this.readonly && (index.h("button", { type: "button", class: "fill-foreground/40 hover:fill-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
+        }, !this.disabled && !this.readonly && (index.h("button", { type: "button", class: "text-foreground/40 hover:text-foreground inline-flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent p-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out", "data-name": "chip-remove", "aria-label": `Remove ${chip}`, onClick: (event) => {
                 event.stopPropagation();
                 this.removeChipHandler([chip]);
             }, onKeyDown: (event) => this.keyDownHandler(event, [chip]) }, index.h("at-icon", { name: "cancel" }))))));

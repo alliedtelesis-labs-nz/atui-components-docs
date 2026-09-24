@@ -4,20 +4,20 @@ const badgeVariants = {
     rounded: 'rounded-full',
     contrast: {
         low: {
-            default: 'text-feedback-foreground fill-feedback-foreground bg-feedback-background border text-feedback-foreground',
-            success: 'text-feedback-success-foreground fill-feedback-success-foreground bg-feedback-success-background border border-feedback-success-foreground/30',
-            warning: 'text-feedback-warning-foreground fill-feedback-warning-foreground bg-feedback-warning-background border border-feedback-warning-foreground/30',
-            error: 'text-feedback-error-foreground fill-feedback-error-foreground bg-feedback-error-background border border-feedback-error-foreground/30',
-            info: 'text-feedback-info-foreground fill-feedback-info-foreground bg-feedback-info-background border border-feedback-info-foreground/30',
-            disabled: 'text-disabled-foreground fill-disabled-foreground bg-disabled-background border border-disabled-foreground/30',
+            default: 'text-feedback-foreground bg-feedback-background border text-feedback-foreground',
+            success: 'text-feedback-success-foreground bg-feedback-success-background border border-feedback-success-foreground/30',
+            warning: 'text-feedback-warning-foreground bg-feedback-warning-background border border-feedback-warning-foreground/30',
+            error: 'text-feedback-error-foreground bg-feedback-error-background border border-feedback-error-foreground/30',
+            info: 'text-feedback-info-foreground bg-feedback-info-background border border-feedback-info-foreground/30',
+            disabled: 'text-disabled-foreground bg-disabled-background border border-disabled-foreground/30',
         },
         high: {
-            default: 'text-feedback-foreground-inv fill-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
-            success: 'text-feedback-success-foreground-inv fill-feedback-success-foreground-inv bg-feedback-success-background-inv',
-            warning: 'text-feedback-warning-foreground-inv fill-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
-            error: 'text-feedback-error-foreground-inv fill-feedback-error-foreground-inv bg-feedback-error-background-inv',
-            info: 'text-feedback-info-foreground-inv fill-feedback-info-foreground-inv bg-feedback-info-background-inv',
-            disabled: 'text-disabled-foreground-inv fill-disabled-foreground-inv bg-disabled-background-inv',
+            default: 'text-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
+            success: 'text-feedback-success-foreground-inv bg-feedback-success-background-inv',
+            warning: 'text-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
+            error: 'text-feedback-error-foreground-inv bg-feedback-error-background-inv',
+            info: 'text-feedback-info-foreground-inv bg-feedback-info-background-inv',
+            disabled: 'text-disabled-foreground-inv bg-disabled-background-inv',
         },
     },
     size: {
@@ -65,7 +65,7 @@ export class AtBadgeComponent {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (h(Host, { key: '4289ce414524376171d86c2ee7f518f063667869', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: '72d78eb66eb115158a369b1b3ff06b9a05c9a421', name: "icon" }), h("span", { key: 'a725cbba64f58435fe4e29946761ed8efee98f51', "data-name": "badge-label" }, this.label), h("slot", { key: 'de40a06eb8930d8bc4bafef0a7bf7a9ae6d7256a' })));
+        return (h(Host, { key: '6f38fdbc018369304863bf759c3835a2b0701d55', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, h("slot", { key: '2f7175ffe3ed0a4c4512dfe1e3c58fd6433fb0ea', name: "icon" }), h("span", { key: 'cc7012242976e24457ae123bc06ef7123fa85a52', "data-name": "badge-label" }, this.label), h("slot", { key: 'a8a9a2c4c7a6ffd6d58f01977d56810e0667c247' })));
     }
     static get is() { return "at-badge"; }
     static get properties() {

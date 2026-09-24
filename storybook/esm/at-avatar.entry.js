@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-Cwortk4y.js';
+import { r as registerInstance, h, H as Host } from './index-CIMU6MgJ.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const avatarVariantsConfig = {

@@ -3,15 +3,15 @@ import { classlist } from "../../../utils/classlist";
 const variantsConfig = {
     variants: {
         active: {
-            true: 'bg-active-background text-active-foreground fill-active-foreground',
-            false: 'text-foreground fill-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
+            true: 'bg-active-background text-active-foreground',
+            false: 'text-foreground hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
         },
         disabled: {
-            true: '!text-disabled !fill-disabled-foreground pointer-events-none',
+            true: '!text-disabled pointer-events-none',
             false: null,
         },
         hostDisabled: {
-            true: '!text-disabled !fill-disabled-foreground pointer-events-none',
+            true: '!text-disabled pointer-events-none',
             false: null,
         },
     },
@@ -84,7 +84,7 @@ export class AtButtonGroupOption {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (h(Host, { key: '7db68bdd409650e4f261de18c7273f72de7392e4', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '02fc3438f6988f61cc5f3811eec06dfd40eeab5b', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '270a2a4ef1ee92bb7f66c33c5b768b6be6b3119e' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '52ce963f622ab541ac8dd95a935c55abd10fa787', name: "after" })));
+        return (h(Host, { key: '3d07923345e57e1764429fbce8448e5f6d540bc2', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: 'f4d4e00ab7977c8d33b5446619f9fa49a5fce3d2', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: 'b1bed80f31fa6f7b0d166231b7b81f75ca4ae52a' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: 'e43fd2d4a20699028d948715bc74df60e8e5b77a', name: "after" })));
     }
     static get is() { return "at-button-group-option"; }
     static get properties() {

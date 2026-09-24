@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BPZZ2ScW.js');
+var index = require('./index-JVxrGXVZ.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -17,15 +17,15 @@ const buttonVariantsConfig = {
             lg: 'h-button-lg py-button-lg px-button-lg',
         },
         type: {
-            primary: 'bg-active-accent text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
-            primaryOutline: 'border-active-accent text-active-accent fill-active-accent focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
-            primaryText: 'text-active-accent fill-active-accent focus-visible:ring-active-glow bg-transparent focus-visible:ring',
-            secondary: 'bg-surface-2 text-foreground fill-foreground focus-visible:ring-active-glow focus-visible:ring',
-            secondaryOutline: 'border-muted text-foreground fill-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
-            secondaryText: 'text-foreground fill-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
-            destructive: 'bg-error-accent text-button-foreground-inv fill-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
-            destructiveOutline: 'border-error-accent text-error-accent fill-error-accent focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
-            destructiveText: 'text-error-accent fill-error-accent focus-visible:ring-error-glow bg-transparent focus-visible:ring-2',
+            primary: 'bg-active-accent text-button-foreground-inv focus-visible:ring-active-glow focus-visible:ring',
+            primaryOutline: 'border-active-accent text-active-accent focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            primaryText: 'text-active-accent focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            secondary: 'bg-surface-2 text-foreground focus-visible:ring-active-glow focus-visible:ring',
+            secondaryOutline: 'border-muted text-foreground focus-visible:ring-active-glow border border-solid bg-transparent focus-visible:ring',
+            secondaryText: 'text-foreground focus-visible:ring-active-glow bg-transparent focus-visible:ring',
+            destructive: 'bg-error-accent text-button-foreground-inv focus-visible:ring-error-glow focus-visible:ring',
+            destructiveOutline: 'border-error-accent text-error-accent focus-visible:ring-error-glow border border-solid bg-transparent focus-visible:ring',
+            destructiveText: 'text-error-accent focus-visible:ring-error-glow bg-transparent focus-visible:ring-2',
         },
     },
     defaultVariants: {
@@ -160,7 +160,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: 'c74f88d84273c6a7a4d98f10ea9bcc92daf3c60a', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'b95c2ee0c888be260d9503440f362d69aea6f2c9', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '0d2b26c34b10e50de3ec5e8c202f9d6e14bb197a', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: '37edb42ac4414d16046eeeda463147fb35c23854', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '3b4392ae1245d288662838576f379d2bb85ba551', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'c4887b60adad0342dc7762311112b67206bb4fd1' }), !this.in_progress && (index.h("slot", { key: '51a27a99c4f89657173062cdf78eec4c1d86ab86', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '6891e1bd8c45498a95dc18e99a6dc1588122a701', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: 'bb58b298c658d4fed2b3b1eb1538d22371a570ec', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '3a19e4486dd27314c1f3e6d1e3c2aac7a3e11597', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '960733a93da788417d9c86d2b31afffa05b943c1', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: '2f6c23aa9697858efeec0c5e9b269dccadbb205e', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: 'aa73e49830a5672f49ffcbab267000709d65ff63', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '2aa420f1667c2dbb3ab8557737d4c9d1c9a90d39' }), !this.in_progress && (index.h("slot", { key: 'e964199bd876360ab724bec3e5cb9aec9405c86f', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '2970e8427f9bbf1722a59be5aa7bd2394e561945', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();
