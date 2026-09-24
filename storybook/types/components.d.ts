@@ -2558,7 +2558,7 @@ export namespace Components {
          */
         "auto_size_columns": boolean;
         /**
-          * Clears the selection and emits `atSelectionChange`.
+          * Clears the selection and emits `atSelectionChange`. A bulk action is terminal, so call this as the action is invoked: the bar dismisses with the selection it describes, which is also what keeps it off a side panel the action opens - the bar is a top-layer popover and would otherwise paint over one.
          */
         "clearSelection": () => Promise<void>;
         /**
