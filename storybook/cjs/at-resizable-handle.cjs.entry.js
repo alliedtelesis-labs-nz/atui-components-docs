@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CEz1eizW.js');
+var index = require('./index-BPZZ2ScW.js');
 
 const atResizableHandleCss = () => `at-resizable-handle{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 auto;background:transparent;outline:none}at-resizable-handle::before{content:"";position:absolute;background:var(--token-border-muted);transition:background-color 0.15s ease}at-resizable-handle:hover::before,at-resizable-handle[data-dragging=true]::before{background:var(--token-color-brand-primary)}at-resizable-handle:focus-visible{background:var(--token-color-brand-active-light)}at-resizable-handle .grip{position:absolute;border-radius:999px;background:var(--token-border-muted)}at-resizable-handle[aria-orientation=horizontal]{width:8px;cursor:col-resize}at-resizable-handle[aria-orientation=horizontal]::before{top:0;bottom:0;left:3.5px;width:1px}at-resizable-handle[aria-orientation=horizontal] .grip{width:3px;height:24px}at-resizable-handle[aria-orientation=vertical]{height:8px;cursor:row-resize}at-resizable-handle[aria-orientation=vertical]::before{left:0;right:0;top:3.5px;height:1px}at-resizable-handle[aria-orientation=vertical] .grip{width:24px;height:3px}@media (prefers-reduced-motion: reduce){at-resizable-handle::before{transition:none}}`;
 

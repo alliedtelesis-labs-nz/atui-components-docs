@@ -4059,6 +4059,10 @@ strong {
   fill: #cbd5e1;
 }
 
+.fill-warning {
+  fill: color-mix(in srgb, var(--token-state-warning-default) 100%, transparent);
+}
+
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;
