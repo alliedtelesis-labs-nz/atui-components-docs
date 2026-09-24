@@ -54,11 +54,11 @@ export declare class AtInputDate {
     el: any;
     private inputId;
     /**
-     * Emitted when the date selection changes
+     * Emitted when the date selection changes. Emits `null` when the date is cleared.
      */
-    atuiChange: EventEmitter<Date>;
+    atuiChange: EventEmitter<Date | null>;
     componentWillLoad(): Promise<void>;
-    watchValue(newValue: Date): void;
+    watchValue(newValue: Date | null): void;
     componentWillRender(): void;
     render(): any;
 }

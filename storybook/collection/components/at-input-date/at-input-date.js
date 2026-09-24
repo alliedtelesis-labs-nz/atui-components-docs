@@ -79,7 +79,7 @@ export class AtInputDate {
     el;
     inputId = `datepicker-${Math.random().toString(36).substring(2, 11)}`;
     /**
-     * Emitted when the date selection changes
+     * Emitted when the date selection changes. Emits `null` when the date is cleared.
      */
     atuiChange;
     async componentWillLoad() {
@@ -90,9 +90,9 @@ export class AtInputDate {
         this.selectedDate = TimeDatePresentationUtil.getFormattedDate(this.value, 'YYYY-MM-DD');
     }
     watchValue(newValue) {
-        if (newValue) {
-            this.selectedDate = TimeDatePresentationUtil.getFormattedDate(newValue, 'YYYY-MM-DD');
-        }
+        this.selectedDate = newValue
+            ? TimeDatePresentationUtil.getFormattedDate(newValue, 'YYYY-MM-DD')
+            : '';
     }
     componentWillRender() {
         if (!this.selectedDate && this.value) {
@@ -106,7 +106,7 @@ export class AtInputDate {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'ad31eed0f66894b0d63826886c81a905f801c40f' }, h("style", { key: '04ee374d51b25298909a100e018ad6dadb931b78' }, `
+        return (h(Host, { key: '86fc0f96ac5c7bd077bc525e33b76a8c8470f677' }, h("style", { key: '0678325d7dfa693e1ae663bf66183af3749cb58c' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -119,11 +119,17 @@ export class AtInputDate {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '504452a2e582b544aa391aedbc5dff158e7212cd', class: "flex w-full flex-col" }, h("div", { key: '6d00d100380fe4646fc16ce7f9a62f139042b2b3', class: "flex flex-col" }, h("div", { key: '9ea044ce8e7c6c7bdf80aa5282a8849ffbef8371', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: '09b2a924ebf705ed4c82057957e7cc521147eb18', class: "flex w-full flex-col" }, h("div", { key: 'b0afcec412689712edfb1562abfedf8b039a5a46', class: "flex flex-col" }, h("div", { key: '357501f8fdeba472206247a8d4443540db53cbcd', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '07b6f372fa1b9a84bfde1c82457e80acee6f1fbc', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '9f776f5fc3f0c2ae7defa816b7f4e4b8d0d3a975', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'b15b0c9f8ef124c1afb7c9ffe01f4ebc05af3470', class: classname }, h("input", { key: '71e57b2b262d20b6b3c8910d736fc9e7efc7d9a8', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: 'ca5eb5673dc50a9c9d256b87f6f80e82fcebf977', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '89d645306d2083cf5333b1cb0372df034c2c2769', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'c37cd60f55ef7ad252e9c29dd97df75b9dd01821', class: classname }, h("input", { key: '27cdb3ca9fdfcb8697602ade0b89e1634e9c5e1e', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
+                if (dateString === '') {
+                    this.value = null;
+                    this.invalid = !input.validity.valid;
+                    this.atuiChange.emit(null);
+                    return;
+                }
                 // Validate year is 4 digits (between 0000-9999)
                 const yearMatch = dateString.match(/^(\d{4})-/);
                 if (!yearMatch ||
@@ -142,7 +148,7 @@ export class AtInputDate {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '0a8d3a70ca47dd0b619755cb4878e58b7770dd7d', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.invalid && (h("span", { key: '63981ace89eb08b00a9e534563b094b93a33787f', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-date"; }
     static get properties() {
@@ -404,10 +410,10 @@ export class AtInputDate {
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emitted when the date selection changes"
+                    "text": "Emitted when the date selection changes. Emits `null` when the date is cleared."
                 },
                 "complexType": {
-                    "original": "Date",
+                    "original": "Date | null",
                     "resolved": "Date",
                     "references": {
                         "Date": {

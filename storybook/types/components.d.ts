@@ -4701,7 +4701,7 @@ declare global {
         new (): HTMLAtInputElement;
     };
     interface HTMLAtInputDateElementEventMap {
-        "atuiChange": Date;
+        "atuiChange": Date | null;
     }
     interface HTMLAtInputDateElement extends Components.AtInputDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtInputDateElementEventMap>(type: K, listener: (this: HTMLAtInputDateElement, ev: AtInputDateCustomEvent<HTMLAtInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7328,9 +7328,9 @@ declare namespace LocalJSX {
          */
         "min_date"?: Date;
         /**
-          * Emitted when the date selection changes
+          * Emitted when the date selection changes. Emits `null` when the date is cleared.
          */
-        "onAtuiChange"?: (event: AtInputDateCustomEvent<Date>) => void;
+        "onAtuiChange"?: (event: AtInputDateCustomEvent<Date | null>) => void;
         /**
           * Makes the input read only
          */

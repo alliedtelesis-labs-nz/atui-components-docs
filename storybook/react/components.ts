@@ -592,7 +592,7 @@ export const AtInput: StencilReactComponent<AtInputElement, AtInputEvents> = /*@
     defineCustomElement: defineAtInput
 });
 
-type AtInputDateEvents = { onAtuiChange: EventName<AtInputDateCustomEvent<Date>> };
+type AtInputDateEvents = { onAtuiChange: EventName<AtInputDateCustomEvent<Date | null>> };
 
 export const AtInputDate: StencilReactComponent<AtInputDateElement, AtInputDateEvents> = /*@__PURE__*/ createComponent<AtInputDateElement, AtInputDateEvents>({
     tagName: 'at-input-date',
