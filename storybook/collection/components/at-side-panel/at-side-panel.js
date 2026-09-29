@@ -50,7 +50,9 @@ export class AtSidePanelComponent {
      * Whether the panel overlays the viewport ('fixed', the default) or is
      * positioned relative to its nearest positioned ancestor ('absolute') —
      * e.g. to stay confined to at-sidebar-inset's content region instead of
-     * covering the full viewport.
+     * covering the full viewport. An 'absolute' panel always opens
+     * non-modally, so with `backdrop` its dim covers only that ancestor and
+     * keyboard focus is not trapped inside the panel.
      */
     position = 'fixed';
     /**
@@ -99,7 +101,10 @@ export class AtSidePanelComponent {
      */
     async openSidePanel() {
         if (this.panelDialog && !this.panelDialog.open) {
-            if (this.backdrop === true) {
+            // showModal() puts the dialog in the top layer, which ignores every
+            // ancestor's positioning and overflow clipping, so a modal panel can
+            // never be contained by the frame position="absolute" targets.
+            if (this.backdrop === true && this.position !== 'absolute') {
                 this.panelDialog.showModal();
             }
             else {
@@ -289,7 +294,7 @@ export class AtSidePanelComponent {
         });
     }
     render() {
-        return (h(Host, { key: 'df30d87f6526918a5cdfaea0069e3c471b1b168b', "data-open": this.isOpen }, h("dialog", { key: '8f7b22adf74f30ba08eed9c44928e4e94a71795d', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '5af117649509ed463317e76bda5e224a54d79265', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: '13d8f6332304eccb1b444ee05ea769f2e343cc73', class: "header", "data-name": "header" }, h("div", { key: 'a1520d719027bedcc30dd0e2606d3e486f49f28d' }, h("slot", { key: '0a752619063c415767d72e33f05baf23191aa7b7', name: "title" }), this.panel_title && (h("h3", { key: '321d8c91107628e918ee3310591ba633a594f322', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: 'c84b0df9d7062d757c6c2f881f0471f4f1d25335', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'ab1001c01256ed801224a05890e6c17f8608a48b' }, h("slot", { key: '1424c959e0e215934f585abd8b23ae11504274d6', name: "actions" }), this.has_close_button && (h("at-button", { key: '8db2fe5d9604fae707f6979b00f8f0b66bda4aa0', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '1d06be1f8b0f999ba010325a2fd68f4fa4aea797', slot: "icon", name: "close" }))))), h("div", { key: 'c3ebaf4a2a86413c553af4ff4c404764b2aa5add', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: '5c016b3239beb62ed9b9b2f880759c4147fdea03' })), h("div", { key: 'a5d8852c2ad73c4fee3a4077b542043b5be2fee9', "data-name": "footer", class: "footer" }, h("slot", { key: '6fd594c6af27afaf705e793e5edd02b1feca9bfb', name: "footer" }))))));
+        return (h(Host, { key: '1aa0f49d859f27f449d9087cfdd02941e3a03d32', "data-open": this.isOpen }, h("dialog", { key: '1bdf487467de47bfb771cf7283e67c868f6df3f8', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''} position-${this.position}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, h("div", { key: '80b28c58aeb01b664f3b9b8a598b7eb822cbb012', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, h("header", { key: 'a165321f84b74b1114095dce3e96173dffd9f9f8', class: "header", "data-name": "header" }, h("div", { key: '31aff6dc7e562665bd98c57d9b4c687cd7d7cc26' }, h("slot", { key: '5a83a8af1676767da6529ba2b3c44863106882fc', name: "title" }), this.panel_title && (h("h3", { key: '6f5e872aa08040cb67235fe970a326e54b5c78f0', class: "title" }, this.panel_title)), this.panel_subtitle && (h("p", { key: '4c0ad3efc9d40fb3006de14b5cb49e6b16c10b9a', class: "subtitle" }, this.panel_subtitle))), h("div", { key: 'd8d53c7369db95a9a6f2777040eece636706e4a5' }, h("slot", { key: 'ded36bbeb46a7bb40c0c1f4426a151fc69ce9a39', name: "actions" }), this.has_close_button && (h("at-button", { key: 'ab29ad99123a3f91b0b62080dcd9ea4afbdf6d2f', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, h("at-icon", { key: '0c7c69a3ffd786d6bfb9e4928bb356095d03b2a2', slot: "icon", name: "close" }))))), h("div", { key: '2e92e206fa1ea0766780a0201cd98c35147a8348', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, h("slot", { key: '1b4bac6abda50144b4db67f6556d4fae3d7388db' })), h("div", { key: 'b335d77e29a189af203f8d7121e231aeb2a4c88c', "data-name": "footer", class: "footer" }, h("slot", { key: 'a060351147500a4e84b5d56fb753d686dfdb2b5d', name: "footer" }))))));
     }
     static get is() { return "at-side-panel"; }
     static get encapsulation() { return "scoped"; }
@@ -473,7 +478,7 @@ export class AtSidePanelComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Whether the panel overlays the viewport ('fixed', the default) or is\npositioned relative to its nearest positioned ancestor ('absolute') \u2014\ne.g. to stay confined to at-sidebar-inset's content region instead of\ncovering the full viewport."
+                    "text": "Whether the panel overlays the viewport ('fixed', the default) or is\npositioned relative to its nearest positioned ancestor ('absolute') \u2014\ne.g. to stay confined to at-sidebar-inset's content region instead of\ncovering the full viewport. An 'absolute' panel always opens\nnon-modally, so with `backdrop` its dim covers only that ancestor and\nkeyboard focus is not trapped inside the panel."
                 },
                 "getter": false,
                 "setter": false,

@@ -2909,7 +2909,7 @@ export namespace Components {
          */
         "panel_title": string;
         /**
-          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport.
+          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport. An 'absolute' panel always opens non-modally, so with `backdrop` its dim covers only that ancestor and keyboard focus is not trapped inside the panel.
           * @default 'fixed'
          */
         "position": AtSidePanelPosition;
@@ -8880,7 +8880,7 @@ declare namespace LocalJSX {
          */
         "panel_title"?: string;
         /**
-          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport.
+          * Whether the panel overlays the viewport ('fixed', the default) or is positioned relative to its nearest positioned ancestor ('absolute') — e.g. to stay confined to at-sidebar-inset's content region instead of covering the full viewport. An 'absolute' panel always opens non-modally, so with `backdrop` its dim covers only that ancestor and keyboard focus is not trapped inside the panel.
           * @default 'fixed'
          */
         "position"?: AtSidePanelPosition;

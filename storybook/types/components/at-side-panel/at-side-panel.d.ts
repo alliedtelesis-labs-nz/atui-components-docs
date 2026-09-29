@@ -53,7 +53,9 @@ export declare class AtSidePanelComponent {
      * Whether the panel overlays the viewport ('fixed', the default) or is
      * positioned relative to its nearest positioned ancestor ('absolute') —
      * e.g. to stay confined to at-sidebar-inset's content region instead of
-     * covering the full viewport.
+     * covering the full viewport. An 'absolute' panel always opens
+     * non-modally, so with `backdrop` its dim covers only that ancestor and
+     * keyboard focus is not trapped inside the panel.
      */
     position: AtSidePanelPosition;
     /**

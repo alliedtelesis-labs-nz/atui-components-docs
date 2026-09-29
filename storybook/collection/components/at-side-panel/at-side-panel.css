@@ -68,6 +68,14 @@ dialog.backdrop::backdrop {
 :host dialog {
   position: static;
 }
+:host dialog.backdrop.position-absolute::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--token-z-index-nav);
+  background: rgba(0, 0, 0, 0.2);
+  animation: fadeInBackdrop 0.3s ease forwards;
+}
 :host .container {
   position: fixed;
   display: flex;
