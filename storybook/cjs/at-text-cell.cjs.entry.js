@@ -2,7 +2,7 @@
 
 var index = require('./index-DO9EgR1J.js');
 
-const LINK_CLASSES = 'text-active-foreground cursor-pointer font-medium hover:underline';
+const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const AtTextCellComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -69,10 +69,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (index.h(index.Host, { key: '8f3f5a2ef402da05058a1b47549c335e1c86c8a7', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '56635df608d129db8d5f18cab53721ac854b06ef', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '159158f9b338d77a65fde1e5c639f35b0a267cfe', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (index.h(index.Host, { key: 'ae6d801f01a058a464ebaa2ed4d2254748413bee', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '7761a70bb73e437a811cb7b064cd2d7749431c19', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '748baacfee18ed19448cce590500df4be88762d1', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'f489912d6dd8e8f90df29318ee6bde0ce3488011', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: '01856f10ac0fffba3a7b6325ee26c1faed38a1df', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 
