@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-JVxrGXVZ.js');
+var index = require('./index-DO9EgR1J.js');
 
 const LINE_COLOR = 'var(--token-border-muted, currentColor)';
 const TOP_FACE_COLOR = 'var(--token-surface-foreground, transparent)';

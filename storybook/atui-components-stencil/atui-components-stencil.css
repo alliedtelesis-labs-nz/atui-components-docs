@@ -5185,6 +5185,10 @@ strong {
   background-color: color-mix(in srgb, var(--token-surface-2) 20%, transparent);
 }
 
+.has-\[\:focus-visible\]\:bg-surface-overlay\/10:has(:focus-visible) {
+  background-color: color-mix(in srgb, var(--token-surface-overlay) 10%, transparent);
+}
+
 .group\/sidebar-wrapper[data-state=collapsed] .group-data-\[state\=collapsed\]\/sidebar-wrapper\:hidden {
   display: none;
 }

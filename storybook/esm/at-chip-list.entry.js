@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-CIMU6MgJ.js';
+import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-C6frdPfF.js';
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 

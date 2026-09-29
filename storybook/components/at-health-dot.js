@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-DO2yN1kt.js";const t=o,p=s;export{t as AtHealthDot,p as defineCustomElement}
+import{A as o,d as s}from"./p-BXqM9-oT.js";const p=o,r=s;export{p as AtHealthDot,r as defineCustomElement}
