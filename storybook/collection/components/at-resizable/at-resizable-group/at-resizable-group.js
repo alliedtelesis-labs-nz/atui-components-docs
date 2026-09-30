@@ -185,7 +185,7 @@ export class AtResizableGroupComponent {
         });
     }
     render() {
-        return (h(Host, { key: '9add119598b56237d6cdc0e0570c0877e97af79a', class: `direction-${this.direction}`, "data-name": "resizable-group" }, h("slot", { key: 'fd293c65aa48f497148b1360ab14a73cb91bddf2' })));
+        return (h(Host, { key: '75c9e216db51f85f912cfd4e71297394c0a5fdb2', class: `direction-${this.direction}`, "data-name": "resizable-group" }, h("slot", { key: '10e2a7cc7cdd0b6d3c5d6687ab6e37cd9b779bb9' })));
     }
     static get is() { return "at-resizable-group"; }
     static get originalStyleUrls() {

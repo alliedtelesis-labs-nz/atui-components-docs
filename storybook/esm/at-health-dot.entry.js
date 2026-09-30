@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C6frdPfF.js';
+import { r as registerInstance, h, H as Host } from './index-B7T1fCND.js';
 
 const sizePx = {
     sm: 10,
@@ -34,7 +34,7 @@ const AtHealthDot = class {
         }
     }
     render() {
-        return (h(Host, { key: '6d39a7c3bdfd72e4a601f24746a50c8e19293c16', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
+        return (h(Host, { key: '5d62340d9be000a26ece796984d84b48d70a0dbe', "data-name": "health-dot", class: "inline-flex h-full items-center justify-start", role: "img", "aria-label": statusLabels[this.status] }, this.renderGlyph(this.status, sizePx[this.size])));
     }
 };
 

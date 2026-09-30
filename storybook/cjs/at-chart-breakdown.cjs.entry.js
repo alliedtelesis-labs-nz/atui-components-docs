@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DO9EgR1J.js');
+var index = require('./index-DIxGLplJ.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 var chartLegend = require('./chart-legend-ZRv8H6_T.js');
@@ -595,7 +595,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? chartColor.readChartTypography(this.el)
             : undefined;
-        return (index.h(index.Host, { key: '4d695c2d1c6bdd59cdb3a2b5f1451c5ab7df548c', style: {
+        return (index.h(index.Host, { key: 'a8640a16ca8fb9d7166cf7b036c850d79761b8bf', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -603,24 +603,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: '9cea63313fac68a75d221657b5de35a488815b5f', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: 'e9601af76b583f128841aa7d99788b2023f97b92', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: '978d06def4922df70bc40e1ec337811b46972424', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: 'bb02592be8c08d5d6eaa79103ee7b840a4da311d', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: '42c292cbeaeb4a1f5ec8b372efbbc33fe1457d91', style: {
+            } }, this.center_value && (index.h("span", { key: '6c9d550d90fef8b51549f10fa49af8623d80784c', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: '707d12925fb2b1ceb5236b99039410bdb986d2b7', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: '06191500f80f5764bce31d9a40cdb5574a599000', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DO9EgR1J.js');
+var index = require('./index-DIxGLplJ.js');
 
 const AtTreeComponent = class {
     constructor(hostRef) {
@@ -63,7 +63,7 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (index.h("div", { key: '81409e66c9ef7c4c5d6d519e89b8567d13c88ae7', class: "w-full" }, index.h("slot", { key: '51c584e8d3bc8296efd8536d7d750beb187470cf' }), this.flattenedItemList &&
+        return (index.h("div", { key: '76617a69f7e83f20c8e69d67ac2ad3064bca3473', class: "w-full" }, index.h("slot", { key: '3ee613abc22ca9df0c3ed3f9fcc1db66fc8ecf54' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index$1) => (index.h("div", { key: index$1, class: `flex w-full` }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "block w-full" }, index.h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, index.h("slot", { name: "item-content" })), index.h("span", null, item.tooltip))) : (index.h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, index.h("slot", { name: "item-content" }))))))));

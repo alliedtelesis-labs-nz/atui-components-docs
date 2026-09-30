@@ -3990,10 +3990,6 @@ strong {
   fill: color-mix(in srgb, var(--token-text-muted) 100%, transparent);
 }
 
-.fill-slate-300 {
-  fill: #cbd5e1;
-}
-
 .fill-warning {
   fill: color-mix(in srgb, var(--token-state-warning-default) 100%, transparent);
 }

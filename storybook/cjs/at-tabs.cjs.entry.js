@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DO9EgR1J.js');
+var index = require('./index-DIxGLplJ.js');
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -166,7 +166,7 @@ const AtTabs = class {
         }
     }
     render() {
-        return index.h(index.Host, { key: '83f8260afcbcec0a34dfac32961dd14ff5a5d8ae' }, this.checkLayoutAndRender());
+        return index.h(index.Host, { key: 'f81baa2f3b2dc9d7134b4a8fcb716534066d48ca' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

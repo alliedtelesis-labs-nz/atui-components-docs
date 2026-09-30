@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DO9EgR1J.js');
+var index = require('./index-DIxGLplJ.js');
 
 const atSidebarInsetCss = () => `at-sidebar-inset{display:flex;flex-direction:column;flex-grow:1;min-width:0;overflow-y:auto;overflow-x:clip;position:relative}`;
 
@@ -53,7 +53,7 @@ const AtSidebarInsetComponent = class {
         this.provider?.removeEventListener('atuiSidebarBackdropChange', this.handleBackdropChange);
     }
     render() {
-        return (index.h(index.Host, { key: '6bcadc4f05783477ed6327df3a99b2ef3ea6d34a', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, index.h("slot", { key: 'ea9bb8916424ead30be2d1117be239a66a37db94' })));
+        return (index.h(index.Host, { key: '3cea16517df5ca524554419b098ac2809e844b07', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, index.h("slot", { key: 'd91b2424df5d512f4dac963bac901b57cd960b6d' })));
     }
 };
 AtSidebarInsetComponent.style = atSidebarInsetCss();
