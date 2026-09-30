@@ -6358,6 +6358,7 @@ GridStack.GDRev = '12.4.1';
 const atDashboardCss = () => `.grid-stack{position:relative}.grid-stack-rtl{direction:ltr}.grid-stack-rtl>.grid-stack-item{direction:rtl}.grid-stack-placeholder>.placeholder-content{background-color:rgba(0,0,0,.1);margin:0;position:absolute;width:auto;z-index:0!important}.grid-stack>.grid-stack-item{position:absolute;padding:0;top:0;left:0;width:var(--gs-column-width);height:var(--gs-cell-height)}.grid-stack>.grid-stack-item>.grid-stack-item-content{margin:0;position:absolute;width:auto;overflow-x:hidden;overflow-y:auto}.grid-stack>.grid-stack-item.size-to-content:not(.size-to-content-max)>.grid-stack-item-content{overflow-y:hidden}.grid-stack>.grid-stack-item>.grid-stack-item-content,.grid-stack>.grid-stack-placeholder>.placeholder-content{top:var(--gs-item-margin-top);right:var(--gs-item-margin-right);bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-handle{position:absolute;font-size:.1px;display:block;-ms-touch-action:none;touch-action:none}.grid-stack-item.ui-resizable-autohide>.ui-resizable-handle,.grid-stack-item.ui-resizable-disabled>.ui-resizable-handle{display:none}.grid-stack-item>.ui-resizable-ne,.grid-stack-item>.ui-resizable-nw,.grid-stack-item>.ui-resizable-se,.grid-stack-item>.ui-resizable-sw{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 20 20"><path d="m10 3 2 2H8l2-2v14l-2-2h4l-2 2"/></svg>');background-repeat:no-repeat;background-position:center}.grid-stack-item>.ui-resizable-ne{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-sw{transform:rotate(45deg)}.grid-stack-item>.ui-resizable-nw{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-se{transform:rotate(-45deg)}.grid-stack-item>.ui-resizable-nw{cursor:nw-resize;width:20px;height:20px;top:var(--gs-item-margin-top);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-n{cursor:n-resize;height:10px;top:var(--gs-item-margin-top);left:25px;right:25px}.grid-stack-item>.ui-resizable-ne{cursor:ne-resize;width:20px;height:20px;top:var(--gs-item-margin-top);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-e{cursor:e-resize;width:10px;top:15px;bottom:15px;right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-se{cursor:se-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);right:var(--gs-item-margin-right)}.grid-stack-item>.ui-resizable-s{cursor:s-resize;height:10px;left:25px;bottom:var(--gs-item-margin-bottom);right:25px}.grid-stack-item>.ui-resizable-sw{cursor:sw-resize;width:20px;height:20px;bottom:var(--gs-item-margin-bottom);left:var(--gs-item-margin-left)}.grid-stack-item>.ui-resizable-w{cursor:w-resize;width:10px;top:15px;bottom:15px;left:var(--gs-item-margin-left)}.grid-stack-item.ui-draggable-dragging>.ui-resizable-handle{display:none!important}.grid-stack-item.ui-draggable-dragging{will-change:left,top}.grid-stack-item.ui-resizable-resizing{will-change:width,height}.ui-draggable-dragging,.ui-resizable-resizing{z-index:10000}.ui-draggable-dragging>.grid-stack-item-content,.ui-resizable-resizing>.grid-stack-item-content{box-shadow:1px 4px 6px rgba(0,0,0,.2);opacity:.8}.grid-stack-animate,.grid-stack-animate .grid-stack-item{transition:left .3s,top .3s,height .3s,width .3s}.grid-stack-animate .grid-stack-item.grid-stack-placeholder,.grid-stack-animate .grid-stack-item.ui-draggable-dragging,.grid-stack-animate .grid-stack-item.ui-resizable-resizing{transition:left 0s,top 0s,height 0s,width 0s}.grid-stack>.grid-stack-item[gs-y="0"]{top:0}.grid-stack>.grid-stack-item[gs-x="0"]{left:0}`;
 
 const MIN_SIZE = { w: 2, h: 2 };
+const COLUMN_MAX = 24;
 const MAX_SIZE = { w: 100, h: 100 };
 const clampWidgetWidth = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.w), MAX_SIZE.w);
 const clampWidgetHeight = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.h), MAX_SIZE.h);
@@ -6396,6 +6397,14 @@ const AtDashboard = class {
      */
     read_only = false;
     /**
+     * When true, widgets keep their proportional widths down to the 768px
+     * (tablet portrait) breakpoint, where they stack into a single full-width
+     * column. Without it the grid reflows to an 8-column list below 768px,
+     * where narrow widgets can still sit side by side. Use for a fixed row of
+     * equal cards, such as the table-header metric row.
+     */
+    has_fixed_columns = false;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -6415,7 +6424,46 @@ const AtDashboard = class {
     readOnlyChanged() {
         this.grid?.setStatic(!!this.read_only);
     }
+    hasFixedColumnsChanged() {
+        if (!this.grid)
+            return;
+        this.grid.opts.columnOpts = this.columnOpts;
+        this.layoutWidgets();
+    }
+    get columnOpts() {
+        return {
+            columnMax: COLUMN_MAX,
+            // Widest first: GridStack's own resize check walks them in this order.
+            breakpoints: this.has_fixed_columns
+                ? [
+                    { w: 1280, c: 16, layout: 'moveScale' },
+                    { w: 768, c: 1, layout: 'list' },
+                ]
+                : [
+                    { w: 1280, c: 16, layout: 'moveScale' }, // medium: widths scale proportionally
+                    { w: 768, c: 8, layout: 'list' }, // small tablet — 3 charts still fit (2 cols each)
+                    { w: 480, c: 4, layout: 'list' }, // mobile — full stack
+                ],
+        };
+    }
+    applyBreakpoint() {
+        const width = this.gridContainerRef?.clientWidth ?? window.innerWidth;
+        const breakpoint = [...this.columnOpts.breakpoints]
+            .reverse()
+            .find((b) => width <= b.w);
+        const column = breakpoint?.c ?? COLUMN_MAX;
+        if (this.grid.getColumn() === column)
+            return;
+        this.isScalingToBreakpoint = true;
+        try {
+            this.grid.column(column, breakpoint?.layout ?? 'moveScale');
+        }
+        finally {
+            this.isScalingToBreakpoint = false;
+        }
+    }
     grid;
+    isScalingToBreakpoint = false;
     gridContainerRef;
     componentDidLoad() {
         if (!this.gridContainerRef)
@@ -6426,14 +6474,7 @@ const AtDashboard = class {
             maxRow: 100,
             float: true,
             staticGrid: !!this.read_only,
-            columnOpts: {
-                columnMax: 24,
-                breakpoints: [
-                    { w: 480, c: 4, layout: 'list' }, // mobile — full stack
-                    { w: 768, c: 8, layout: 'list' }, // small tablet — 3 charts still fit (2 cols each)
-                    { w: 1280, c: 16, layout: 'moveScale' }, // medium: widths scale proportionally
-                ],
-            },
+            columnOpts: this.columnOpts,
             ...(this.drag_handle
                 ? { draggable: { handle: this.drag_handle } }
                 : {}),
@@ -6441,10 +6482,11 @@ const AtDashboard = class {
         // Register handlers BEFORE layoutWidgets() so the 'added' events that fire
         // during makeWidget() are captured and resizeChartComponents runs for every
         // widget on the initial load — not just after subsequent drag/resize actions.
-        this.grid.on('added change', (_event, items) => {
+        this.grid.on('added change', (event, items) => {
+            const isOwnRescale = this.isScalingToBreakpoint && event.type === 'change';
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
-                if (dashboardItem) {
+                if (dashboardItem && !isOwnRescale) {
                     this.changedItem.emit({
                         ...dashboardItem,
                         x: item.x,
@@ -6482,7 +6524,12 @@ const AtDashboard = class {
         if (!this.grid)
             return;
         this.grid.removeAll(false);
+        // Widget sizes are authored on the full grid; place them there, then
+        // scale to the current breakpoint, or they keep full-grid widths on a
+        // narrower grid and wrap.
+        this.grid.column(COLUMN_MAX, 'none');
         this.widget_items.forEach((widget) => this.makeWidget(widget));
+        this.applyBreakpoint();
     }
     makeWidget(widget) {
         const elSelector = `#${widget.id}`;
@@ -6531,7 +6578,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: 'ef02d0cd1196f458cf5bdd9725e4b01a4573d01d', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: '19fdca695b23bece0c202a6264bc686cc850581b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
@@ -6543,6 +6590,9 @@ const AtDashboard = class {
             }],
         "read_only": [{
                 "readOnlyChanged": 0
+            }],
+        "has_fixed_columns": [{
+                "hasFixedColumnsChanged": 0
             }]
     }; }
 };

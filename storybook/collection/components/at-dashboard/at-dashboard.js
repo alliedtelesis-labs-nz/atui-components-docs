@@ -1,6 +1,7 @@
 import { h, } from "@stencil/core";
 import { GridStack, } from "gridstack";
 const MIN_SIZE = { w: 2, h: 2 };
+const COLUMN_MAX = 24;
 const MAX_SIZE = { w: 100, h: 100 };
 const clampWidgetWidth = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.w), MAX_SIZE.w);
 const clampWidgetHeight = (value, fallback) => Math.min(Math.max(value ?? fallback, MIN_SIZE.h), MAX_SIZE.h);
@@ -32,6 +33,14 @@ export class AtDashboard {
      */
     read_only = false;
     /**
+     * When true, widgets keep their proportional widths down to the 768px
+     * (tablet portrait) breakpoint, where they stack into a single full-width
+     * column. Without it the grid reflows to an 8-column list below 768px,
+     * where narrow widgets can still sit side by side. Use for a fixed row of
+     * equal cards, such as the table-header metric row.
+     */
+    has_fixed_columns = false;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem;
@@ -51,7 +60,46 @@ export class AtDashboard {
     readOnlyChanged() {
         this.grid?.setStatic(!!this.read_only);
     }
+    hasFixedColumnsChanged() {
+        if (!this.grid)
+            return;
+        this.grid.opts.columnOpts = this.columnOpts;
+        this.layoutWidgets();
+    }
+    get columnOpts() {
+        return {
+            columnMax: COLUMN_MAX,
+            // Widest first: GridStack's own resize check walks them in this order.
+            breakpoints: this.has_fixed_columns
+                ? [
+                    { w: 1280, c: 16, layout: 'moveScale' },
+                    { w: 768, c: 1, layout: 'list' },
+                ]
+                : [
+                    { w: 1280, c: 16, layout: 'moveScale' }, // medium: widths scale proportionally
+                    { w: 768, c: 8, layout: 'list' }, // small tablet — 3 charts still fit (2 cols each)
+                    { w: 480, c: 4, layout: 'list' }, // mobile — full stack
+                ],
+        };
+    }
+    applyBreakpoint() {
+        const width = this.gridContainerRef?.clientWidth ?? window.innerWidth;
+        const breakpoint = [...this.columnOpts.breakpoints]
+            .reverse()
+            .find((b) => width <= b.w);
+        const column = breakpoint?.c ?? COLUMN_MAX;
+        if (this.grid.getColumn() === column)
+            return;
+        this.isScalingToBreakpoint = true;
+        try {
+            this.grid.column(column, breakpoint?.layout ?? 'moveScale');
+        }
+        finally {
+            this.isScalingToBreakpoint = false;
+        }
+    }
     grid;
+    isScalingToBreakpoint = false;
     gridContainerRef;
     componentDidLoad() {
         if (!this.gridContainerRef)
@@ -62,14 +110,7 @@ export class AtDashboard {
             maxRow: 100,
             float: true,
             staticGrid: !!this.read_only,
-            columnOpts: {
-                columnMax: 24,
-                breakpoints: [
-                    { w: 480, c: 4, layout: 'list' }, // mobile — full stack
-                    { w: 768, c: 8, layout: 'list' }, // small tablet — 3 charts still fit (2 cols each)
-                    { w: 1280, c: 16, layout: 'moveScale' }, // medium: widths scale proportionally
-                ],
-            },
+            columnOpts: this.columnOpts,
             ...(this.drag_handle
                 ? { draggable: { handle: this.drag_handle } }
                 : {}),
@@ -77,10 +118,11 @@ export class AtDashboard {
         // Register handlers BEFORE layoutWidgets() so the 'added' events that fire
         // during makeWidget() are captured and resizeChartComponents runs for every
         // widget on the initial load — not just after subsequent drag/resize actions.
-        this.grid.on('added change', (_event, items) => {
+        this.grid.on('added change', (event, items) => {
+            const isOwnRescale = this.isScalingToBreakpoint && event.type === 'change';
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
-                if (dashboardItem) {
+                if (dashboardItem && !isOwnRescale) {
                     this.changedItem.emit({
                         ...dashboardItem,
                         x: item.x,
@@ -118,7 +160,12 @@ export class AtDashboard {
         if (!this.grid)
             return;
         this.grid.removeAll(false);
+        // Widget sizes are authored on the full grid; place them there, then
+        // scale to the current breakpoint, or they keep full-grid widths on a
+        // narrower grid and wrap.
+        this.grid.column(COLUMN_MAX, 'none');
         this.widget_items.forEach((widget) => this.makeWidget(widget));
+        this.applyBreakpoint();
     }
     makeWidget(widget) {
         const elSelector = `#${widget.id}`;
@@ -167,7 +214,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: 'ef02d0cd1196f458cf5bdd9725e4b01a4573d01d', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: '19fdca695b23bece0c202a6264bc686cc850581b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
@@ -247,6 +294,26 @@ export class AtDashboard {
                 "setter": false,
                 "reflect": false,
                 "attribute": "read_only",
+                "defaultValue": "false"
+            },
+            "has_fixed_columns": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "When true, widgets keep their proportional widths down to the 768px\n(tablet portrait) breakpoint, where they stack into a single full-width\ncolumn. Without it the grid reflows to an 8-column list below 768px,\nwhere narrow widgets can still sit side by side. Use for a fixed row of\nequal cards, such as the table-header metric row."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "has_fixed_columns",
                 "defaultValue": "false"
             }
         };
@@ -346,6 +413,9 @@ export class AtDashboard {
             }, {
                 "propName": "read_only",
                 "methodName": "readOnlyChanged"
+            }, {
+                "propName": "has_fixed_columns",
+                "methodName": "hasFixedColumnsChanged"
             }];
     }
 }

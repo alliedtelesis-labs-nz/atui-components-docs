@@ -28,6 +28,14 @@ export declare class AtDashboard {
      */
     read_only?: boolean;
     /**
+     * When true, widgets keep their proportional widths down to the 768px
+     * (tablet portrait) breakpoint, where they stack into a single full-width
+     * column. Without it the grid reflows to an 8-column list below 768px,
+     * where narrow widgets can still sit side by side. Use for a fixed row of
+     * equal cards, such as the table-header metric row.
+     */
+    has_fixed_columns?: boolean;
+    /**
      * Emitted when a widget's position or size changes in the grid.
      */
     changedItem: EventEmitter<AtICustomGridStackItem>;
@@ -45,7 +53,11 @@ export declare class AtDashboard {
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
     readOnlyChanged(): void;
+    hasFixedColumnsChanged(): void;
+    private get columnOpts();
+    private applyBreakpoint;
     private grid?;
+    private isScalingToBreakpoint;
     private gridContainerRef?;
     componentDidLoad(): void;
     componentDidUpdate(): void;

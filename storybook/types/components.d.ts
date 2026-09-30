@@ -1119,6 +1119,11 @@ export namespace Components {
          */
         "drag_handle"?: string;
         /**
+          * When true, widgets keep their proportional widths down to the 768px (tablet portrait) breakpoint, where they stack into a single full-width column. Without it the grid reflows to an 8-column list below 768px, where narrow widgets can still sit side by side. Use for a fixed row of equal cards, such as the table-header metric row.
+          * @default false
+         */
+        "has_fixed_columns"?: boolean;
+        /**
           * When true the dashboard is read-only: widgets keep their positions and sizes but cannot be dragged, resized or deleted (the per-widget menu is hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
           * @default false
          */
@@ -7035,6 +7040,11 @@ declare namespace LocalJSX {
          */
         "drag_handle"?: string;
         /**
+          * When true, widgets keep their proportional widths down to the 768px (tablet portrait) breakpoint, where they stack into a single full-width column. Without it the grid reflows to an 8-column list below 768px, where narrow widgets can still sit side by side. Use for a fixed row of equal cards, such as the table-header metric row.
+          * @default false
+         */
+        "has_fixed_columns"?: boolean;
+        /**
           * Emitted when a widget's position or size changes in the grid.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
@@ -10055,6 +10065,7 @@ declare namespace LocalJSX {
     interface AtDashboardAttributes {
         "drag_handle": string;
         "read_only": boolean;
+        "has_fixed_columns": boolean;
     }
     interface AtDialogAttributes {
         "role": 'dialog' | 'alertdialog';
