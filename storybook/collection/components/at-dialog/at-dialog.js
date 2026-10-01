@@ -1,7 +1,7 @@
 import { h, Host, } from "@stencil/core";
 /**
  * @category Overlays
- * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+ * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
  *
  * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
  * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
@@ -240,7 +240,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '84af352c5d2a2886d82b1904b549d216ba8341e3', "data-open": this.isOpen }, h("dialog", { key: 'ad790be0c162648e3bec80d60a4e0fc5ed03471a', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '9fae1be4b46f1f00afc5951e5bf53b71c5795262', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'ac1e14374e6e8acecf2c881a6ec0de8592b8864c' })))));
+        return (h(Host, { key: 'f7823e2b50f6ec3e1a8804a8b7abdf0db2d5fed5', "data-open": this.isOpen }, h("dialog", { key: '54c14dbf6f08232419e5362f286a3b7fdca70821', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '7493cf41b56ed464832b08dafa76347a977d6127', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '952310ab9fe62bcf886f6d8042e84f72e450d34d' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }

@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const AtTextCellComponent = class {

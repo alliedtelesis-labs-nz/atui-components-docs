@@ -11,7 +11,7 @@ import { EventEmitter } from '../../stencil-public-runtime';
 export type AtDialogCloseReason = 'backdrop' | 'esc' | 'close' | 'programmatic';
 /**
  * @category Overlays
- * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+ * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
  *
  * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
  * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.

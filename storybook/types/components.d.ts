@@ -441,7 +441,7 @@ export namespace Components {
     }
     /**
      * @category Layout
-     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
+     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
      */
     interface AtCard {
         /**
@@ -453,7 +453,7 @@ export namespace Components {
          */
         "content"?: string;
         /**
-          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped by the card container.
+          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped, except inside an `at-dialog`, where it always scrolls.
           * @default false
          */
         "overflow_content"?: boolean;
@@ -1136,7 +1136,7 @@ export namespace Components {
     }
     /**
      * @category Overlays
-     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
      * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
@@ -4305,7 +4305,7 @@ declare global {
     };
     /**
      * @category Layout
-     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
+     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
      */
     interface HTMLAtCardElement extends Components.AtCard, HTMLStencilElement {
     }
@@ -4588,7 +4588,7 @@ declare global {
     }
     /**
      * @category Overlays
-     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
      * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
@@ -6398,7 +6398,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Layout
-     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
+     * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
      */
     interface AtCard {
         /**
@@ -6410,7 +6410,7 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped by the card container.
+          * When true the content area scrolls its own overflow (overflow-y auto), keeping sticky headers/footers visible. When false, content that exceeds the card is clipped, except inside an `at-dialog`, where it always scrolls.
           * @default false
          */
         "overflow_content"?: boolean;
@@ -7073,7 +7073,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Overlays
-     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+     * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
      * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
      * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
      */
@@ -10771,7 +10771,7 @@ declare module "@stencil/core" {
             "at-button-switch": LocalJSX.IntrinsicElements["at-button-switch"] & JSXBase.HTMLAttributes<HTMLAtButtonSwitchElement>;
             /**
              * @category Layout
-             * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
+             * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
              */
             "at-card": LocalJSX.IntrinsicElements["at-card"] & JSXBase.HTMLAttributes<HTMLAtCardElement>;
             /**
@@ -10876,7 +10876,7 @@ declare module "@stencil/core" {
             "at-dashboard": LocalJSX.IntrinsicElements["at-dashboard"] & JSXBase.HTMLAttributes<HTMLAtDashboardElement>;
             /**
              * @category Overlays
-             * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control.
+             * @description A modal dialog component for displaying content that requires user interaction or attention. Features backdrop click handling, escape key support, and programmatic open/close control. Content is capped to the dialog less a 16px gutter on each side; a slotted `at-card` scrolls its body within that cap, so it needs no `max-h-*` or `overflow-y-auto` classes.
              * @Event - atuiDialogChange: Emitted when dialog is opened/closed.
              * @Event - atuiDialogClose: Emitted once per close, carrying the reason the dialog closed.
              */

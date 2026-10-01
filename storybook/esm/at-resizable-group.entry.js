@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
 import { R as ResizeController } from './resize-controller-uwz5j95j.js';
 
 const atResizableGroupCss = () => `at-resizable-group{display:flex;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}at-resizable-group.direction-horizontal{flex-direction:row}at-resizable-group.direction-vertical{flex-direction:column}`;

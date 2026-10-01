@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DIxGLplJ.js');
+var index = require('./index-B73N6Yu9.js');
 var floatingUi_dom = require('./floating-ui.dom-BZk7Blsu.js');
 
 const AtIcon = class {

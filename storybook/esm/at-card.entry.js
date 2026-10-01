@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, h, H as Host } from './index-j2eM3-GV.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const containerVariantsConfig = {
@@ -18,7 +18,9 @@ const contentVariantsConfig = {
         },
         overflow: {
             true: 'overflow-y-auto',
-            false: '',
+            // Scrolls only when the host resolved a scroll value from an
+            // enclosing at-dialog; resolves to visible everywhere else.
+            false: '[overflow-y:var(--at-card-body-overflow-resolved)]',
         },
     },
 };
@@ -57,7 +59,8 @@ const AtCardComponent = class {
     /**
      * When true the content area scrolls its own overflow (overflow-y auto),
      * keeping sticky headers/footers visible. When false, content that
-     * exceeds the card is clipped by the card container.
+     * exceeds the card is clipped, except inside an `at-dialog`, where it
+     * always scrolls.
      */
     overflow_content = false;
     /**
@@ -77,7 +80,11 @@ const AtCardComponent = class {
      */
     shadow = 'none';
     render() {
-        const getContainerClassname = classlist('relative z-1  bg-card-background border-muted flex flex-col overflow-hidden rounded-lg', containerVariantsConfig);
+        // Inside an at-dialog the host is capped by the `at-dialog at-card` rule
+        // in directives.scss. Here it resolves the body's overflow from the var
+        // at-dialog publishes; elsewhere the var is unset and it resolves to
+        // visible, leaving the card unchanged.
+        const getContainerClassname = classlist('relative z-1  bg-card-background border-muted flex flex-col overflow-hidden rounded-lg [--at-card-body-overflow-resolved:var(--at-card-content-overflow,visible)]', containerVariantsConfig);
         const containerClassname = getContainerClassname({
             shadow: this.shadow,
         });
@@ -85,7 +92,10 @@ const AtCardComponent = class {
         const headerClassname = getHeaderClassname({
             sticky: this.sticky_header,
         });
-        const getContentClassname = classlist('relative flex flex-auto flex-col min-h-0', contentVariantsConfig);
+        // The body resets the public vars so a nested card gets no cap and no
+        // scrollbar of its own. The reset sits here, not on the host, so it
+        // never overrides the value this card's host has already resolved.
+        const getContentClassname = classlist('relative flex flex-auto flex-col min-h-0 [--at-dialog-max-height:initial] [--at-dialog-max-width:initial] [--at-card-content-overflow:initial]', contentVariantsConfig);
         const contentClassname = getContentClassname({
             padding: this.padding,
             overflow: this.overflow_content,
@@ -94,7 +104,7 @@ const AtCardComponent = class {
         const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (h(Host, { key: '40671bf0bbafd012c1faef3fb94ad8ce76583f0f', class: containerClassname }, h("div", { key: 'cc9954296814f5c430faa5ec3cbf84676b392663', class: `${headerClassname}` }, h("slot", { key: '40457a18920bc1045e7d434a066d681541cef4ae', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '3de899a714a14457689db871ae3c393e3a5385e7', class: "flex min-w-0 flex-1 flex-col break-words" }, this.card_title && (h("h4", { key: 'b64f851b2074c45469140e6d893f1e70fac04c15', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '5c0b546aeda087b2dcecca0f3aa06654ae522609', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '2be694ab35acb7671961ec00278aa58a7707d062', name: "card-header-actions" })), h("div", { key: 'c4b65d4fd9f9a1d057e98ddea2dae9c4efab411b', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: '0a75f935e2b037f8a95fa30d16e9f1d3873de807' })), h("div", { key: '24d39eef42fe45d668ea32abe831adee5c1d71ec', class: footerClassname }, h("slot", { key: 'c52c0f45fe59bd2214ed1807867acb3baaf5fa01', name: "card-footer" }))));
+        return (h(Host, { key: '50a74b0f4e3086cb37da4051fd0f54e8ad9b208a', class: containerClassname }, h("div", { key: '3bf5fae6a762ea3c567a292ee4123ba782004424', class: `${headerClassname}` }, h("slot", { key: '3026be07162f5ffa22cc9c5507a6fb2571a5645e', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '177afa207a67aa4ef2a9a4ccde4d5c71de388684', class: "flex min-w-0 flex-1 flex-col break-words" }, this.card_title && (h("h4", { key: 'ce73eece716c202b5ea4c3569be80b6889c67b9d', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '438f49ce2053c365f858c2840c913d819c74ef13', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '3ed6eeca6934a3b6297d78216cc9bea85e46f170', name: "card-header-actions" })), h("div", { key: '7746d437f10f023ef037c374e8740a9f26a6fc7a', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: 'e0f4c2e5afb6f37a38663426acca778b5c344696' })), h("div", { key: 'ff3e9b1dce4cfbe1c714ef6c156f00a4fef198d5', class: footerClassname }, h("slot", { key: '68b26f8b8ce4f4593faca7bdd90defbba8333a72', name: "card-footer" }))));
     }
 };
 

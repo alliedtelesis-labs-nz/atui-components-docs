@@ -1,6 +1,6 @@
 /**
  * @category Layout
- * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling.
+ * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
  *
  * @slot card-header - Placed in the header of the card, above the header actions & before the icon and title
  * @slot card-header-actions - Placed in the header of the card, below the header content & after the icon and title
@@ -23,7 +23,8 @@ export declare class AtCardComponent {
     /**
      * When true the content area scrolls its own overflow (overflow-y auto),
      * keeping sticky headers/footers visible. When false, content that
-     * exceeds the card is clipped by the card container.
+     * exceeds the card is clipped, except inside an `at-dialog`, where it
+     * always scrolls.
      */
     overflow_content?: boolean;
     /**

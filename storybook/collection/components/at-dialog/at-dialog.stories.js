@@ -60,6 +60,20 @@ const TableRowExampleTemplate = () => `
     </div>
 </at-dialog>
 `;
+const LongContentTemplate = (args) => `
+<at-button label="Open Dialog" type="primary" onclick="document.querySelector('at-dialog[dialog_id=&quot;${args.dialog_id}&quot;]').openDialog()"></at-button>
+<at-dialog dialog_id="${args.dialog_id}">
+    <at-card card_title="Edit network profile" subtitle="The card is capped to the dialog, and its content scrolls" class="w-[480px]">
+        <div class="flex flex-col gap-16">
+            ${Array.from({ length: args.field_count }, (_, i) => `<at-input label="Field ${i + 1}" placeholder="Value ${i + 1}"></at-input>`).join('')}
+        </div>
+        <div slot="card-footer" class="flex justify-end gap-8">
+            <at-button label="Cancel" type="secondary" onclick="document.querySelector('at-dialog[dialog_id=&quot;${args.dialog_id}&quot;]').closeDialog()"></at-button>
+            <at-button label="Save" type="primary" onclick="document.querySelector('at-dialog[dialog_id=&quot;${args.dialog_id}&quot;]').closeDialog()"></at-button>
+        </div>
+    </at-card>
+</at-dialog>
+`;
 export default {
     title: 'Components/Dialog',
 };
@@ -79,6 +93,19 @@ TableRowExample.parameters = {
     docs: {
         description: {
             story: 'Example showing how to use external triggers in table rows with unique IDs to avoid collisions.',
+        },
+    },
+};
+export const LongContent = LongContentTemplate.bind({});
+LongContent.storyName = 'Dialog with long content';
+LongContent.args = {
+    dialog_id: 'long-content-dialog',
+    field_count: 20,
+};
+LongContent.parameters = {
+    docs: {
+        description: {
+            story: 'A slotted at-card is capped to the dialog less a 16px gutter on each side. Its content area scrolls while the header and footer stay in view. The card needs no max-h-* or overflow-y-auto classes.',
         },
     },
 };

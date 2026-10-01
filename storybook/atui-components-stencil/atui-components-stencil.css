@@ -2533,6 +2533,16 @@ strong {
   /* ensures the border doesn’t overlay the background */
 }
 
+at-dialog at-card {
+  max-height: var(--at-dialog-max-height) !important;
+  max-width: var(--at-dialog-max-width) !important;
+  min-height: auto !important;
+}
+
+at-dialog :where([data-name=card-content]) > at-card {
+  flex-shrink: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2876,6 +2886,10 @@ strong {
   height: 180px;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-\[20px\] {
   height: 20px;
 }
@@ -2977,8 +2991,24 @@ strong {
   height: var(--token-input-height-md);
 }
 
+.\!max-h-\[300px\] {
+  max-height: 300px !important;
+}
+
+.max-h-\[100px\] {
+  max-height: 100px;
+}
+
+.max-h-\[200vh\] {
+  max-height: 200vh;
+}
+
 .max-h-input-md {
   max-height: var(--token-input-height-md);
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .\!min-h-16 {
@@ -3007,6 +3037,10 @@ strong {
 
 .min-h-input {
   min-height: var(--token-input-height);
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-0 {
@@ -3067,6 +3101,10 @@ strong {
 
 .w-\[40px\] {
   width: 40px;
+}
+
+.w-\[480px\] {
+  width: 480px;
 }
 
 .w-\[8px\] {
@@ -4780,6 +4818,30 @@ strong {
 .at-button .material-icons {
   font-size: var(--token-font-size-icon-md);
   line-height: 1;
+}
+
+.\[--at-card-body-overflow-resolved\:var\(--at-card-content-overflow\,visible\)\] {
+  --at-card-body-overflow-resolved:
+      var(--at-card-content-overflow,visible);
+}
+
+.\[--at-card-content-overflow\:initial\] {
+  --at-card-content-overflow:
+      initial;
+}
+
+.\[--at-dialog-max-height\:initial\] {
+  --at-dialog-max-height:
+      initial;
+}
+
+.\[--at-dialog-max-width\:initial\] {
+  --at-dialog-max-width:
+      initial;
+}
+
+.\[overflow-y\:var\(--at-card-body-overflow-resolved\)\] {
+  overflow-y: var(--at-card-body-overflow-resolved);
 }
 
 .material-icons {

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;

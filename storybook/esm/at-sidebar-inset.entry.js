@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
 
 const atSidebarInsetCss = () => `at-sidebar-inset{display:flex;flex-direction:column;flex-grow:1;min-width:0;overflow-y:auto;overflow-x:clip;position:relative}`;
 

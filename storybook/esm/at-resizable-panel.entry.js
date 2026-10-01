@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B7T1fCND.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
 
 const atResizablePanelCss = () => `at-resizable-panel{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto}at-resizable-panel.is-collapsed{overflow:hidden}`;
 

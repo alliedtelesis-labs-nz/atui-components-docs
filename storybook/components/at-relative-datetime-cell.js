@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-D0rLwegB.js";const s=o,p=r;export{s as AtRelativeDatetimeCell,p as defineCustomElement}
+import{A as o,d as s}from"./p-BcidqQcj.js";const c=o,p=s;export{c as AtRelativeDatetimeCell,p as defineCustomElement}
