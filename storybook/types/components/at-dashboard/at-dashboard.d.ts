@@ -28,6 +28,12 @@ export declare class AtDashboard {
      */
     read_only?: boolean;
     /**
+     * When false, GridStack's position and size transitions are turned off,
+     * so a static dashboard appears in place on load instead of sliding into
+     * its layout.
+     */
+    is_animated?: boolean;
+    /**
      * When true, widgets keep their proportional widths down to the 768px
      * (tablet portrait) breakpoint, where they stack into a single full-width
      * column. Without it the grid reflows to an 8-column list below 768px,
@@ -53,6 +59,7 @@ export declare class AtDashboard {
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
     readOnlyChanged(): void;
+    isAnimatedChanged(): void;
     hasFixedColumnsChanged(): void;
     private get columnOpts();
     private applyBreakpoint;

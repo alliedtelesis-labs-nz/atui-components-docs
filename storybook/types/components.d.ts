@@ -1124,6 +1124,11 @@ export namespace Components {
          */
         "has_fixed_columns"?: boolean;
         /**
+          * When false, GridStack's position and size transitions are turned off, so a static dashboard appears in place on load instead of sliding into its layout.
+          * @default true
+         */
+        "is_animated"?: boolean;
+        /**
           * When true the dashboard is read-only: widgets keep their positions and sizes but cannot be dragged, resized or deleted (the per-widget menu is hidden). Use for fixed/system dashboards whose layout is owned elsewhere.
           * @default false
          */
@@ -7045,6 +7050,11 @@ declare namespace LocalJSX {
          */
         "has_fixed_columns"?: boolean;
         /**
+          * When false, GridStack's position and size transitions are turned off, so a static dashboard appears in place on load instead of sliding into its layout.
+          * @default true
+         */
+        "is_animated"?: boolean;
+        /**
           * Emitted when a widget's position or size changes in the grid.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
@@ -10065,6 +10075,7 @@ declare namespace LocalJSX {
     interface AtDashboardAttributes {
         "drag_handle": string;
         "read_only": boolean;
+        "is_animated": boolean;
         "has_fixed_columns": boolean;
     }
     interface AtDialogAttributes {

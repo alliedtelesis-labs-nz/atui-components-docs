@@ -6397,6 +6397,12 @@ const AtDashboard = class {
      */
     read_only = false;
     /**
+     * When false, GridStack's position and size transitions are turned off,
+     * so a static dashboard appears in place on load instead of sliding into
+     * its layout.
+     */
+    is_animated = true;
+    /**
      * When true, widgets keep their proportional widths down to the 768px
      * (tablet portrait) breakpoint, where they stack into a single full-width
      * column. Without it the grid reflows to an 8-column list below 768px,
@@ -6423,6 +6429,9 @@ const AtDashboard = class {
     widgetItemsChanged() { }
     readOnlyChanged() {
         this.grid?.setStatic(!!this.read_only);
+    }
+    isAnimatedChanged() {
+        this.grid?.setAnimation(this.is_animated !== false);
     }
     hasFixedColumnsChanged() {
         if (!this.grid)
@@ -6474,6 +6483,7 @@ const AtDashboard = class {
             maxRow: 100,
             float: true,
             staticGrid: !!this.read_only,
+            animate: this.is_animated !== false,
             columnOpts: this.columnOpts,
             ...(this.drag_handle
                 ? { draggable: { handle: this.drag_handle } }
@@ -6578,7 +6588,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: '19fdca695b23bece0c202a6264bc686cc850581b', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: 'ca6e4237bda6a4518e186a7beb094fcaa6c01f75', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
@@ -6590,6 +6600,9 @@ const AtDashboard = class {
             }],
         "read_only": [{
                 "readOnlyChanged": 0
+            }],
+        "is_animated": [{
+                "isAnimatedChanged": 0
             }],
         "has_fixed_columns": [{
                 "hasFixedColumnsChanged": 0
