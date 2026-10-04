@@ -1280,7 +1280,7 @@ export namespace Components {
     }
     /**
      * @category Data Tables
-     * @description A cell component for displaying a compact health status dot.
+     * @description A cell component for displaying a compact health status dot, or with `display: 'bar'` an 8px vertical bar spanning the full cell height at its left edge.
      */
     interface AtHealthDotCell {
     }
@@ -4671,7 +4671,7 @@ declare global {
     };
     /**
      * @category Data Tables
-     * @description A cell component for displaying a compact health status dot.
+     * @description A cell component for displaying a compact health status dot, or with `display: 'bar'` an 8px vertical bar spanning the full cell height at its left edge.
      */
     interface HTMLAtHealthDotCellElement extends Components.AtHealthDotCell, HTMLStencilElement {
     }
@@ -7218,7 +7218,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description A cell component for displaying a compact health status dot.
+     * @description A cell component for displaying a compact health status dot, or with `display: 'bar'` an 8px vertical bar spanning the full cell height at its left edge.
      */
     interface AtHealthDotCell {
     }
@@ -10915,7 +10915,7 @@ declare module "@stencil/core" {
             "at-health-dot": LocalJSX.IntrinsicElements["at-health-dot"] & JSXBase.HTMLAttributes<HTMLAtHealthDotElement>;
             /**
              * @category Data Tables
-             * @description A cell component for displaying a compact health status dot.
+             * @description A cell component for displaying a compact health status dot, or with `display: 'bar'` an 8px vertical bar spanning the full cell height at its left edge.
              */
             "at-health-dot-cell": LocalJSX.IntrinsicElements["at-health-dot-cell"] & JSXBase.HTMLAttributes<HTMLAtHealthDotCellElement>;
             /**

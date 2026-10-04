@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 
 const atResizableHandleCss = () => `at-resizable-handle{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 auto;background:transparent;outline:none}at-resizable-handle::before{content:"";position:absolute;background:var(--token-border-muted);transition:background-color 0.15s ease}at-resizable-handle:hover::before,at-resizable-handle[data-dragging=true]::before{background:var(--token-color-brand-primary)}at-resizable-handle:focus-visible{background:var(--token-color-brand-active-light)}at-resizable-handle .grip{position:absolute;border-radius:999px;background:var(--token-border-muted)}at-resizable-handle[aria-orientation=horizontal]{width:8px;cursor:col-resize}at-resizable-handle[aria-orientation=horizontal]::before{top:0;bottom:0;left:3.5px;width:1px}at-resizable-handle[aria-orientation=horizontal] .grip{width:3px;height:24px}at-resizable-handle[aria-orientation=vertical]{height:8px;cursor:row-resize}at-resizable-handle[aria-orientation=vertical]::before{left:0;right:0;top:3.5px;height:1px}at-resizable-handle[aria-orientation=vertical] .grip{width:24px;height:3px}@media (prefers-reduced-motion: reduce){at-resizable-handle::before{transition:none}}`;
 
@@ -179,9 +179,9 @@ const AtResizableHandleComponent = class {
         this.group?.resetPair(this.handleIndex);
     };
     render() {
-        return (index.h(index.Host, { key: 'a61197faae0c5b1f135df3f57e7baddd34d5d0b1', "data-name": "resizable-handle", "data-dragging": this.isDragging ? 'true' : 'false', role: "separator", "aria-orientation": this.direction, "aria-controls": [this.prevId, this.nextId]
+        return (index.h(index.Host, { key: 'c0f1c0d27eee10ee1da2265834421445f59c04fb', "data-name": "resizable-handle", "data-dragging": this.isDragging ? 'true' : 'false', role: "separator", "aria-orientation": this.direction, "aria-controls": [this.prevId, this.nextId]
                 .filter(Boolean)
-                .join(' '), "aria-valuenow": this.prevState?.size ?? undefined, "aria-valuemin": this.prevState?.minSize ?? 0, "aria-valuemax": this.prevState?.maxSize ?? 100, tabindex: 0, onPointerDown: this.handlePointerDown, onKeyDown: this.handleKeyDown, onDblClick: this.handleDoubleClick }, this.has_grip && (index.h("div", { key: 'ed64187dbed34130c3c7428fdedf96c186a5c5f8', class: "grip", "aria-hidden": "true" }))));
+                .join(' '), "aria-valuenow": this.prevState?.size ?? undefined, "aria-valuemin": this.prevState?.minSize ?? 0, "aria-valuemax": this.prevState?.maxSize ?? 100, tabindex: 0, onPointerDown: this.handlePointerDown, onKeyDown: this.handleKeyDown, onDblClick: this.handleDoubleClick }, this.has_grip && (index.h("div", { key: '00cf4ba52458b63a70ca67bb57735d988a101c94', class: "grip", "aria-hidden": "true" }))));
     }
 };
 AtResizableHandleComponent.style = atResizableHandleCss();

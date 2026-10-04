@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 
 const AtFormLabelComponent = class {
     constructor(hostRef) {
@@ -23,9 +23,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (index.h("div", { key: '05faf043929e969ff00e810f7a0834a3e8f5ad69', class: "flex items-center gap-8" }, [
-            (this.label || this.required) && (index.h("label", { key: '7af917f0ac19bd3bd09a864d023a65ad81a723bd', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '0db38090ae6f75e5a726261645e2546201e7a8b6', class: "text-error" }, "*"))),
-            this.info_text && (index.h("at-tooltip", { key: 'd0a9ca63849de0f106a5aa7e6fe09a188483aea3', position: "right" }, index.h("at-icon", { key: '4d5240f43948f497b152f086eb8e5e530c0e931f', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: '3c5ba342751bb1bd64406b09d734443632590f98' }, this.info_text))),
+        return (index.h("div", { key: '3f280b0fc7739531335d2ce508025605f15c9823', class: "flex items-center gap-8" }, [
+            (this.label || this.required) && (index.h("label", { key: '5a0e9cc45309610601d128532b653e43e5691b2a', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: 'cda96da481956820a31a3f900beea21548f7f883', class: "text-error" }, "*"))),
+            this.info_text && (index.h("at-tooltip", { key: '0c5129a1e162384d2f9d139a053fe9f3bd2eaa5a', position: "right" }, index.h("at-icon", { key: 'db562c982e0782d39d5ccd41ae2d21ca943338f3', slot: "tooltip-trigger", class: "fill-muted cursor-pointer", name: "info", size: "1rem" }), index.h("span", { key: 'bfaf8e1092a14003003c144811f77ea1adea3c20' }, this.info_text))),
         ]));
     }
 };

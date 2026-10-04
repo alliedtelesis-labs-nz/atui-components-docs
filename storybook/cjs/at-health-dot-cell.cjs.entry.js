@@ -1,14 +1,26 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 
+const barColors = {
+    good: 'var(--chart-alert-1, #4caf50)',
+    warn: 'var(--chart-alert-2, #f59f00)',
+    bad: 'var(--chart-alert-3, #ff5252)',
+};
+const statusLabels = {
+    good: 'Healthy',
+    warn: 'Warning',
+    bad: 'Critical',
+};
 const AtHealthDotCell = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
     get el() { return index.getElement(this); }
     type = 'good';
+    display = 'dot';
     init(params) {
+        this.display = params.display ?? 'dot';
         const mappedType = params.mapValueToStatus
             ? params.mapValueToStatus(params.data)
             : params.value;
@@ -36,7 +48,10 @@ const AtHealthDotCell = class {
         return true;
     }
     render() {
-        return (index.h(index.Host, { key: 'ea6279aa21d90579cc4a6aaf5800b917e176a895', class: "flex h-full items-center justify-center" }, index.h("at-health-dot", { key: 'ac7effc8101e0de9eda026ebf74226fa18fe9f36', status: this.type })));
+        if (this.display === 'bar') {
+            return (index.h(index.Host, { class: "block h-full" }, index.h("span", { "data-name": "health-bar", class: "absolute inset-y-0 left-0 w-8", style: { backgroundColor: barColors[this.type] }, role: "img", "aria-label": statusLabels[this.type] })));
+        }
+        return (index.h(index.Host, { class: "flex h-full items-center justify-center" }, index.h("at-health-dot", { status: this.type })));
     }
 };
 

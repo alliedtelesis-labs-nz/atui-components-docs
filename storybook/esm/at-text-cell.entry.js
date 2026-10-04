@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-C56p-u4D.js';
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const AtTextCellComponent = class {
@@ -67,10 +67,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (h(Host, { key: 'e11e6b07b1be180f17473364c35218427620799d', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'bd665c83431dde2c6b3d0b06cc9ae366cd15da9a', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: 'c5f9dd34310151dd0ebc417ce24058ff9a519506', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (h(Host, { key: 'ddf3b4ac4a114e68ccfa595c74bccc0043cb70b7', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'f2b869a2b0cc13cf82abee5ee4688dc5e2361227', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: 'c79c47ac4aa17e80dc1edad16c7a8b67bd6d9537', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'd2bc59ee5558def76d70d6b522be78b4dfb53f8e', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: '36f52746714a6582e9471bf670aa3b4b33165df1', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

@@ -174,7 +174,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: 'f81baa2f3b2dc9d7134b4a8fcb716534066d48ca' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'dc0015859cddd528ae8236c593d07e484e3ef877' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {

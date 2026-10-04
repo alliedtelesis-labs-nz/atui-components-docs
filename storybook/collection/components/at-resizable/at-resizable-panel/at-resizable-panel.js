@@ -79,7 +79,7 @@ export class AtResizablePanelComponent {
         }
     };
     render() {
-        return (h(Host, { key: '6cb391aab9eeb0fecb397f8fd9d877d9733cd4e6', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, h("slot", { key: '3422485ec121015690d4d6fc3f7b075be64a3de2' })));
+        return (h(Host, { key: '7f428720831005d6481eaa34be2575a75e76a0fa', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, h("slot", { key: 'a01b2d56f5b25a48e767d82cb3d3fac182f0d7fa' })));
     }
     static get is() { return "at-resizable-panel"; }
     static get originalStyleUrls() {

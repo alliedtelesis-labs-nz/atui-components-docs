@@ -8,7 +8,7 @@ export class AtAccordionTriggerComponent {
      */
     label;
     render() {
-        return (h(Host, { key: '6e80b3ffe87ceb6659100c030ea2fdcd23cebf44', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (h("span", { key: '00f891c2910fb9e46a02483ce1f7ab1694fc3c5f', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), h("slot", { key: '5cb312c57c8c29016790652566cee31469968343' }), h("at-icon", { key: 'a528e6e7f2aeebf0750902cd1d25ef8c0c58c8c2', role: "presentation", "aria-hidden": "true", class: "fill-foreground group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
+        return (h(Host, { key: '5c0d30e084c74c01d2210ab5862e5d4b012797e9', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (h("span", { key: '27138c40d39ebf2061dfa7d8462b68ab3bd18627', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), h("slot", { key: '7a5bfeca4dba4a48eb963737e54381f5e28aeef3' }), h("at-icon", { key: '2b762965b7094a4926cc87cc303b8fcfc749b85e', role: "presentation", "aria-hidden": "true", class: "fill-foreground group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
     }
     static get is() { return "at-accordion-trigger"; }
     static get properties() {

@@ -112,7 +112,7 @@ export class AtSidebarProviderComponent {
         }
     };
     render() {
-        return (h(Host, { key: 'dcf24c0ed0739d55e28b711df76c7f25dda8b836' }, this.backdropRequests.size > 0 && (h("div", { key: '50c19c9553f1bb05d1d9e232c95f9350afd3d93b', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: '970ee8a6a4d6bcb66d840904a51054798e60b8db' })));
+        return (h(Host, { key: '8f8b3d13b86f1f8585b04e62bf8b7faf9dfc8ce3' }, this.backdropRequests.size > 0 && (h("div", { key: '81b7d7149343906cf573bf2cff276a127f6803f4', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: 'e8981e0f2f90dd7a4f88ee5f08a564e0db9a5dd7' })));
     }
     static get is() { return "at-sidebar-provider"; }
     static get originalStyleUrls() {

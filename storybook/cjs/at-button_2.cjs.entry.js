@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -160,7 +160,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.type,
         });
-        return (index.h(index.Host, { key: '29cf6ce5e71f55f930f324054ca74bebb6c434cd', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'f556a9ddb5d8696e2d959c1b1f25bec55831ac48', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: 'b4146c50cc8ba20fc1510e962fa658557eab9791', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: 'de114e8211866b00e62913a3f33aebdd7cc8964b', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: 'de4c91e9e4ab8a3518d87448aceaa3fe2c18a57a', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '3db78f1b93e818b364b2f31d9811031d0f368bbc' }), !this.in_progress && (index.h("slot", { key: 'd0ede16c5edbb7cd1246ab24eac2a803cda117d0', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '46e6b1625c0614131625ecc621fc43ac48260356', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '9dae15888869a3bd986546bcc630d88ad4f8e3b1', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'ba41d3628093b6eea32030f4fc559c6d06870a26', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (index.h("at-loading", { key: '2c3e5dfbeabfc37cdb75bbd82fabdbc8f8135cf6', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (index.h("slot", { key: 'd31d6cf4ff0c5ec0a91182e76a237b2093bcb23c', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: 'd53d8f1a00c88c0a150991121376b1a37d0a4521', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '5611a9a30ab6ba502de8a7d3eca18d216e5d8d05' }), !this.in_progress && (index.h("slot", { key: 'cc491d19f9003f832b72905b0a5fbe61cf7a9b61', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: 'ac91fe39c739f91c1c62346610a19b60ffa4a422', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();
@@ -234,7 +234,7 @@ const AtLoadingComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '95b988c0a4fc3b28a78587669bffdee57e2016fd', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'cc0cede6ae4d0a1fcce2482ba4c1d135adbd1eb0' })));
+        return (index.h(index.Host, { key: '1163da8fc004e5a6dff2c87a95817aa62e9d906b', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: '33d5cdb49a2be1b689035af4c1d945ac230fdf02' })));
     }
 };
 AtLoadingComponent.style = atLoadingCss();

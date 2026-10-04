@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-j2eM3-GV.js';
+import { r as registerInstance, h, H as Host } from './index-C56p-u4D.js';
 import { g as getChartColors, c as color, C as Chart, D as DoughnutController, A as ArcElement, a as plugin_tooltip, i as index } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, b as readChartFontFamily, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
 
@@ -536,7 +536,7 @@ const AtChartGauge = class {
         }
     }
     render() {
-        return (h(Host, { key: '1494dd815c4dac4f301fbe38330e16c4c22fe19b', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'a4f78774151ad7ac2eab0b686810d93b88ddd431', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: '34ef56ffd7779606b1a944f7cd43ac7d2aad7960', style: { height: '100%', width: '100%' } }, h("canvas", { key: 'a41bd21117209625ade80201f1e95b23ee49ee1a', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

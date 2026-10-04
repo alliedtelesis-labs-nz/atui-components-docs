@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 
 const AtTitleSubtitleCell = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtTitleSubtitleCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'c2db50d24697bc7530833200b56c500821d7cfe3', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'b0900dc49c11a0b9a07187fde978f123c317720d', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: '948a094626090bb3881bdef3ba93b228b8ce1843', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, index.h("div", { key: '70ba908664d7e824f6dccf30950ea9c5368b7094', class: "truncate text-sm leading-normal" }, this.title), index.h("div", { key: 'bcd7e545f667d78dd3696222216c30602c444749', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (index.h("span", { key: '8248ca54dfe4660d9bd47033a39d0985e582ddee', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        return (index.h(index.Host, { key: 'f86ef8e8f73c100360164de33b5798a0d13888b0', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '4a9a7a427e98103b6adb6622d1b4ebbde42c08d4', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: 'add848af6cfb1b91966664febbb4bfdc52dce095', class: "flex flex-col justify-center", slot: "tooltip-trigger" }, index.h("div", { key: 'c85cc77530015dc48f1050e3667d98eb1820c0b4', class: "truncate text-sm leading-normal" }, this.title), index.h("div", { key: '53b5f7a06323e82339889a0468f44fb4e5e66ff4', class: "text-secondary truncate text-xs leading-normal font-normal" }, this.subtitle)), this.params?.generateTooltip && (index.h("span", { key: '046c5da54ef2f51b0eb1abcc357a8bd2eb09e2de', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 

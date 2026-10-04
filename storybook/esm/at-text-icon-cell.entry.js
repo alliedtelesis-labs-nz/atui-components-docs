@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, F as Fragment, H as Host } from './index-j2eM3-GV.js';
+import { r as registerInstance, a as getElement, h, F as Fragment, H as Host } from './index-C56p-u4D.js';
 
 const AtTextIconCell = class {
     constructor(hostRef) {
@@ -31,7 +31,7 @@ const AtTextIconCell = class {
     }
     render() {
         const iconPosition = this.params?.iconPosition || 'before';
-        return (h(Host, { key: '67637b337970bf3e4cba9e6ead8c2130afa4ead0', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: '84e6aaa25798068d35d5c17bc6db99293034251d', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
+        return (h(Host, { key: 'f207e21e056395ae1a00afd7f8922dd0b4444519', class: "flex h-full items-center gap-4 overflow-hidden leading-normal" }, iconPosition === 'before' && this.renderIcons(), h("span", { key: '0a492fea5107bd6d4d4046b3dab23f9cf53c3aec', class: "truncate" }, this.text), iconPosition === 'after' && this.renderIcons()));
     }
 };
 

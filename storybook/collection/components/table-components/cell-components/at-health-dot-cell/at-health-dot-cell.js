@@ -1,12 +1,24 @@
 import { h, Host } from "@stencil/core";
+const barColors = {
+    good: 'var(--chart-alert-1, #4caf50)',
+    warn: 'var(--chart-alert-2, #f59f00)',
+    bad: 'var(--chart-alert-3, #ff5252)',
+};
+const statusLabels = {
+    good: 'Healthy',
+    warn: 'Warning',
+    bad: 'Critical',
+};
 /**
  * @category Data Tables
- * @description A cell component for displaying a compact health status dot.
+ * @description A cell component for displaying a compact health status dot, or with `display: 'bar'` an 8px vertical bar spanning the full cell height at its left edge.
  */
 export class AtHealthDotCell {
     el;
     type = 'good';
+    display = 'dot';
     init(params) {
+        this.display = params.display ?? 'dot';
         const mappedType = params.mapValueToStatus
             ? params.mapValueToStatus(params.data)
             : params.value;
@@ -34,12 +46,16 @@ export class AtHealthDotCell {
         return true;
     }
     render() {
-        return (h(Host, { key: 'ea6279aa21d90579cc4a6aaf5800b917e176a895', class: "flex h-full items-center justify-center" }, h("at-health-dot", { key: 'ac7effc8101e0de9eda026ebf74226fa18fe9f36', status: this.type })));
+        if (this.display === 'bar') {
+            return (h(Host, { class: "block h-full" }, h("span", { "data-name": "health-bar", class: "absolute inset-y-0 left-0 w-8", style: { backgroundColor: barColors[this.type] }, role: "img", "aria-label": statusLabels[this.type] })));
+        }
+        return (h(Host, { class: "flex h-full items-center justify-center" }, h("at-health-dot", { status: this.type })));
     }
     static get is() { return "at-health-dot-cell"; }
     static get states() {
         return {
-            "type": {}
+            "type": {},
+            "display": {}
         };
     }
     static get elementRef() { return "el"; }

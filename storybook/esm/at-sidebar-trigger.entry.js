@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-j2eM3-GV.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-C56p-u4D.js';
 
 const atSidebarTriggerCss = () => `.material-icons.sc-at-sidebar-trigger{font-family:"Material Icons";font-size:16px}.sc-at-sidebar-trigger-h{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--token-border-radius-md);cursor:pointer;font-weight:var(--token-font-weight-med);color:var(--token-sidebar-foreground);fill:var(--token-sidebar-foreground);background-color:var(--token-sidebar-background);transition:background-color var(--token-transition-time-fast), color var(--token-transition-time-fast), box-shadow var(--token-transition-time-fast)}.sc-at-sidebar-trigger-h .focus-indicator.sc-at-sidebar-trigger{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-color:var(--token-sidebar-foreground);opacity:0;transition:background-color var(--token-transition-time-fast)}.sc-at-sidebar-trigger-h:hover .focus-indicator.sc-at-sidebar-trigger{opacity:0.1}.sc-at-sidebar-trigger-h:focus-visible{outline:none;box-shadow:0 0 0 2px color-mix(in srgb, var(--token-state-active-foreground) 40%, transparent)}`;
 
@@ -86,7 +86,7 @@ const AtSidebarTriggerComponent = class {
         this.isOpen = event.detail;
     };
     render() {
-        return (h(Host, { key: 'cabf7733a1a230db4b4ad9ee79a25a6e637920a4', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("at-icon", { key: '298dc26e2372f430a5efbba3549a65fe1df7350d', name: this.isOpen ? 'menu_collapse' : 'menu_expand', size: "22" })), h("div", { key: '608885a67f7adf61ffcca5cd1bdfb4fe6e1343df', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
+        return (h(Host, { key: '6f8ea5bfa916e86824f4cc949349e3a7d1216768', role: "button", "data-name": "sidebar-trigger", tabIndex: 0, onKeyDown: this.handleKeyDown, onClick: () => this.toggleSidebar() }, this.isOpen !== undefined && (h("at-icon", { key: '1bd98dd734eb506cc428d1b388dddaeb64d7a6a1', name: this.isOpen ? 'menu_collapse' : 'menu_expand', size: "22" })), h("div", { key: '108b37448272e450f83f216069de9331e4fd7492', class: "focus-indicator", "data-name": "focus-indicator", role: "presentation" })));
     }
 };
 AtSidebarTriggerComponent.style = atSidebarTriggerCss();

@@ -37,7 +37,7 @@ export class AtMultiBtnCell {
         });
     }
     render() {
-        return (h(Host, { key: '0358108a5d4888eb798d2f6f50adbeb85d3af17f', class: "flex h-full items-center" }, this.buttonsToRender));
+        return (h(Host, { key: 'a8f28e16a4c0acfa658cd75aaae6c27de9716b01', class: "flex h-full items-center" }, this.buttonsToRender));
     }
     static get is() { return "at-multi-btn-cell"; }
     static get states() {

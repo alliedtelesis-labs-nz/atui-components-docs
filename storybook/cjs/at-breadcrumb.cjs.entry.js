@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B73N6Yu9.js');
+var index = require('./index-V7Urjg2R.js');
 
 const AtBreadcrumbComponent = class {
     constructor(hostRef) {
@@ -30,8 +30,8 @@ const AtBreadcrumbComponent = class {
             this.atuiClick.emit(idOfEventTarget);
     }
     render() {
-        return (index.h("nav", { key: 'f77332692cd3ef4650a3e8b3b3ba80ab07a8f733', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), index.h("slot", { key: '5f2eb6afa8a4bbba14651ca579f6e4bb8f01fad2' })));
+        return (index.h("nav", { key: '2a95561a79178bc81aa07abfc811092833454de1', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
+            this.values.map((value, index$1) => (index.h(index.Fragment, null, index.h("at-breadcrumb-item", { label: `${this.get_prefix(index$1)}${this.prefix_delimiter}${value}`, is_active: index$1 === this.values.length - 1 }), index$1 < this.values.length - 1 && (index.h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), index.h("slot", { key: '0176a76ffd798068af0620c5e09bf1b91ea8ff60' })));
     }
 };
 
