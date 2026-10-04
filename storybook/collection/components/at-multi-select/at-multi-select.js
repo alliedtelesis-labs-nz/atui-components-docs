@@ -307,16 +307,16 @@ export class AtMultiSelectComponent {
         return result;
     }
     render() {
-        return (h(Host, { key: '5b442131afa60e83bf14e6a476c821458bf65199', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'e2e150c9636f286b2b01a18c2bc696c89f7e0746', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '54f88dfdece39c930a7bf6ccdc6ede75c0546970', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '56c7ac1da652783f7ad37f372469fa5ef53f7ebe', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '63def7ff40efe066d00b68b26c9885ca5442da5a' }, this.error_text && this.invalid && (h("span", { key: 'b1e44178bd2611dc37f7c14cf9df5d5252af1418', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: 'ff13a51355f17d55af7f094f5137ab643d75d908' }, this.error_text && this.invalid && (h("span", { key: '8a806d018674283434a0b4bc34d0802229bd7d1e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {

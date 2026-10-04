@@ -79,6 +79,11 @@ atui-menu atui-checkbox[aria-checked] {
   min-height: unset !important;
 }
 
+.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-container,
+.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-viewport {
+  min-height: var(--at-table-empty-state-height, 150px);
+}
+
 /**
  * A selected row reads as selected without the checkbox having to be found again. The
  * background sits on the row and its cells: ag-grid paints pinned columns in their own

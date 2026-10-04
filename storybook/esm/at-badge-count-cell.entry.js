@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 
 const AtBadgeCountCell = class {
     constructor(hostRef) {
@@ -23,7 +23,7 @@ const AtBadgeCountCell = class {
     render() {
         const showZeros = this.params?.show_zero_counts ?? false;
         const visible = this.segments.filter((segment) => showZeros || segment.count !== 0);
-        return (h(Host, { key: 'fc95eed87c5548e3558cb373b994664a0b49937e', class: "flex h-full min-w-0 items-center gap-4 overflow-hidden" }, visible.map((segment, index) => (h("at-badge", { key: segment.label ?? index, label: String(segment.count), type: segment.type ?? 'default', impact: this.params?.impact ?? 'low',
+        return (h(Host, { key: 'a06ef6fd59d174a79fe011781603aca71757cdc6', class: "flex h-full min-w-0 items-center gap-4 overflow-hidden" }, visible.map((segment, index) => (h("at-badge", { key: segment.label ?? index, label: String(segment.count), type: segment.type ?? 'default', impact: this.params?.impact ?? 'low',
             // A bare aria-label on an element with no role is
             // dropped by most screen readers, so the badge would
             // read as a number with nothing to attach it to.

@@ -30,7 +30,7 @@ export { AtIToast, AtIToastAction, AtIToastHandle, AtIToastOptions, AtIToastPosi
 export { AtChartColorPalette } from './types/chart-color';
 export { AtChartSparklineMode, AtChartSparklineStatus, } from './components/at-chart-sparkline/at-chart-sparkline';
 export { AtChartGaugeStatus, AtChartGaugePalette, } from './components/at-chart-gauge/at-chart-gauge';
-export { AtITableColumnDef } from './models/searchTableModel';
+export { AtITableColumnDef, AtITableEmptyState, } from './models/searchTableModel';
 export { AtITab } from './components/at-tabs/at-tabs';
 export { AtStepperStep } from './components/at-stepper/at-stepper';
 export { AtStepperItemState, AtStepperOrientation, } from './components/at-stepper/at-stepper-item/at-stepper-item';

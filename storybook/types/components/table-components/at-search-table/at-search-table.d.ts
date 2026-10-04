@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { GridApi, IRowNode } from 'ag-grid-community';
 import { AtIColumnDetails, AtIPaginationParams, AtISearchTableParams, AtIFilterGroup, AtISelection, AtSelectionMode } from '../../../types';
-import { AtITableColumnDef } from '../../../models/searchTableModel';
+import { AtITableColumnDef, AtITableEmptyState } from '../../../models/searchTableModel';
 import { AtIExternalFiltersChange } from '../../../types/filter';
 import { AtISelectOption } from '../../../types/select';
 type RowUpdateOptions = {
@@ -216,6 +216,7 @@ export declare class AtSearchTable {
      */
     private pageEpoch;
     private lastDisplayedFirstRowId;
+    private currentEmptyState?;
     private hasWarnedAboutRowIdField;
     private selectionBarEl?;
     translations: any;
@@ -247,7 +248,12 @@ export declare class AtSearchTable {
     get shouldShowTableFilters(): boolean;
     get shouldShowColumnManager(): boolean;
     get totalPages(): number;
-    get hasNoData(): boolean;
+    /**
+     * Returns the same object until the type or title changes. A fresh object on every
+     * render would re-render `at-table` each time, which defers this component's
+     * `componentDidRender` by a cycle.
+     */
+    get emptyState(): AtITableEmptyState;
     get hasActiveSearch(): boolean;
     /**
      * A consumer-supplied `search_info_tooltip` always wins. Otherwise the tooltip is

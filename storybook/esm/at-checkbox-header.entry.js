@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h } from './index-C56p-u4D.js';
+import { r as registerInstance, a as getElement, h } from './index-Baj27LS8.js';
 
 const AtCheckboxHeaderComponent = class {
     constructor(hostRef) {
@@ -89,7 +89,7 @@ const AtCheckboxHeaderComponent = class {
     }
     render() {
         const state = this.checkedState();
-        return (h("at-checkbox", { key: '66ddc97309511667229ffaba61a22834fb92b592', disabled: this.disabled, checked: state === true, indeterminate: state === 'indeterminate', onAtuiChange: (event) => this.setRowsValue(event.detail) }));
+        return (h("at-checkbox", { key: '78aec33d0e159bf7bacdbf9068b32ceda3623c21', disabled: this.disabled, checked: state === true, indeterminate: state === 'indeterminate', onAtuiChange: (event) => this.setRowsValue(event.detail) }));
     }
 };
 

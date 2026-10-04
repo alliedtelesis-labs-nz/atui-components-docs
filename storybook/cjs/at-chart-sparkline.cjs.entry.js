@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-V7Urjg2R.js');
+var index = require('./index-Dzqi4iVM.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
@@ -207,7 +207,7 @@ const AtChartSparkline = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '91e912a44c0ed296de17871b17f090b30da0287e', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '4501ee7ffae2fad88e2fd6822c4399c95310c607', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (index.h(index.Host, { key: 'a9dc25f2ba2cf7f25920f254e0d0bb34709e0976', style: { height: '100%', width: '100%' } }, index.h("canvas", { key: '4f93286db712b99d790aac4c8bb7cc9d2ddf097a', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
     }
 };
 

@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { ColDef, GridApi } from 'ag-grid-community';
+import { AtITableEmptyState } from '../../../models/searchTableModel';
 /**
  * @category Data Tables
  * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
@@ -48,6 +49,14 @@ export declare class AtTableComponent {
      */
     row_id_field: string;
     /**
+     * Empty state drawn in the grid body, under the column headers, whenever no rows are
+     * displayed - including when a filter or search hides every row. Shows an
+     * `at-placeholder` of the given `type` and `title`. Read when the grid is created;
+     * later changes to `type` or `title` update the placeholder in place. Leave unset to
+     * keep AG Grid's own no-rows message.
+     */
+    empty_state?: AtITableEmptyState;
+    /**
      * The AG Grid API
      */
     ag_grid: GridApi;
@@ -81,6 +90,9 @@ export declare class AtTableComponent {
     private agGrid;
     tableCreated: boolean;
     private hasDisplayedRows;
+    private emptyStateHeight?;
+    private attachedEmptyStateOverlays;
+    handleEmptyStateChange(newEmptyState?: AtITableEmptyState, oldEmptyState?: AtITableEmptyState): void;
     handleTableDataChange(newData: {
         items: any[];
         total: number;
@@ -132,6 +144,12 @@ export declare class AtTableComponent {
     componentDidUpdate(): Promise<void>;
     private initGrid;
     private updateDisplayedRowsState;
+    private emptyStateOverlayParams;
+    /**
+     * AG Grid only shows its no-rows overlay when the row data itself is empty, so a
+     * filter or search that hides every row would otherwise leave a blank body.
+     */
+    private syncEmptyStateOverlay;
     /**
      * Method used to initialize the table.
      *

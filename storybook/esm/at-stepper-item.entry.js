@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 
 const dotVariants = {
     pending: 'bg-disabled-foreground/40 h-8 w-8',
@@ -91,13 +91,13 @@ const AtStepperItem = class {
     }
     render() {
         const isVertical = this.orientation === 'vertical';
-        return (h(Host, { key: '21d804aa23f59c705f774fde2cbefeb785221563', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
+        return (h(Host, { key: '979198756dfe30f08b34d6399556008577cf1486', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
                 ? 'flex-row items-stretch gap-8'
                 : `flex-col gap-4 ${this.is_last ? '' : 'flex-1'}`} ${this.navigable
                 ? 'focus-visible:ring-active-glow cursor-pointer rounded-sm outline-0 focus-visible:ring'
-                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: 'c0ab9aaedff94838cc53fdee24fb78b08251b327', class: `flex shrink-0 ${isVertical
+                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: '0f1e35d4fad484c76bc109960721e0d30abebc1d', class: `flex shrink-0 ${isVertical
                 ? 'w-24 flex-col items-center'
-                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: '1a931a64ef87cd3fa34e1be1423a4075444c5d61', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: 'cbbeb9031a25607bcf12a7d4ea16c7e8bb5d107e', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: '81ccef10955f52725297208c96a77e3e9dc8f421', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: 'f40ec047833d4a0055151cbc62d0ac26cca6ecb8', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: 'd84fb25e5e1d588b81ab010f38e1ade133c3e984', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: '59ebfdf79f02e883530aeea10e6a752d27607c23' }))));
+                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: 'c2da5328bd2c85fb6320e3bd9e00fd1fc96e5e09', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: 'bc366add220fda68da6ccfaf9525b4dc6f050a77', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: 'a799a4ae1e439261ab4d30f33833819e52db29f0', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: 'ffbf385c4ced835aa08c651b6bbda55505489017', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: '8d20ce6868bd2be4093f928d3471c82583f55397', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: '6d8fc87e0409d3280820807af1bdd0b78981bc4e' }))));
     }
 };
 

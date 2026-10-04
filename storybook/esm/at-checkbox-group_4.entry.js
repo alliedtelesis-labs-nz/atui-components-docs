@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { r as resolveCellSearchText } from './cell-search-text-B24uvFuL.js';
@@ -153,8 +153,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: '49c15d28d164c4f2d47bf5372be0175001476e49', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '26edbcbf916981a03b2ae625912ca0c9caf5a2f3', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '50743f2a3d6d3efe210220f169d0b1d87738010d', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'd833247da5145a179be99fcf713e49908c302704', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '709603107a79c87139f1aebd30baa48b8e36cb95', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'e90b64f5746e15007bb6bfe08d15de975a491984', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '8d117f7a01f769a7e064f5e8b8c4ea318989886c' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '04894c866ef75a60d881b49514a858e14953337f', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '14981ee04802397ded8cb6f1ee32fbea02fd5044', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '0285b59bc8bc0b488cc74b02ace25841850710fd', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '4b4788a15c824f0f9a72108ef544fb321268bf2c', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '4c1563fcea2f95aee8198c4649408de5c9e28317', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: 'dcf96cbc09dec10966c861c23bca9358efd56c92', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'fa4b5099f8cc40e04a3f101c4a80f38cd7ede6bb', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '4520bc437ce669aed1f8154cc95d926268ebb49b' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: 'ba9e7acca7f12cb90e4b35c87d0edeecd18d4bd5', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
@@ -221,7 +221,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '7ba79fcba13d4b7fb09eb2ea89c02930cd027b4d', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '82a2203b7e484956101235458e7d0febcebba1c1', slot: "menu-trigger" }, h("at-tooltip", { key: 'cfc07e9abe2d868d17e67b2f7daba7046b2c1a0b', position: "top" }, h("at-button", { key: 'dda584db21ec9cec852d767e768b8f326ee12a0e', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: 'ec0fab21c2fe7dfe8f26c1d8f5e474520733c5bb', slot: "icon", name: "column" })), h("span", { key: '14d58631de5c45d3f70a8c9c1ff951e87c91d17b' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'c9ee7260c3c34b210a1ced022fb3d74b75eb0008', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: 'bffbea4af4bf53a9ad3ec04ff7fcae055ea1f3bf', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: '903f4bfc6885465ab66af3be548045e4f6f1ef9a', slot: "menu-trigger" }, h("at-tooltip", { key: '56d846eae0ca147aabbe7f1adffd04379ff76ddb', position: "top" }, h("at-button", { key: '00ae26a9b2fa1fc4e311aa5f56ecd0d59ef6cd4f', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '44e61bb9361607c7313fb31d1454235c3c2b3408', slot: "icon", name: "column" })), h("span", { key: 'c21e0b2218cfcf99fcbbc57e5ca28b1709bca08b' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '91589bc3f97a561ddfdbd358e0c623ae795ce6b0', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')
@@ -49074,7 +49074,46 @@ class AtTableComponentsConfigs {
     }
 }
 
-const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-cell-wrapper,.ag-cell-value{min-width:0}.ag-cell:has(at-checkbox-cell),.ag-cell:has([data-name=selection-cell]),.ag-cell:has([data-name=selection-radio-cell]),.ag-header-cell:has(at-checkbox-header),.ag-header-cell:has([data-name=selection-header]){padding-left:6px !important;padding-right:6px !important}.ag-cell:has(at-checkbox-cell) at-checkbox,.ag-cell:has([data-name=selection-cell]) at-checkbox,.ag-header-cell:has(at-checkbox-header) at-checkbox,.ag-header-cell:has([data-name=selection-header]) at-checkbox{width:auto}.ag-cell-wrapper:has(at-checkbox-cell),.ag-cell-value:has(at-checkbox-cell),.ag-cell-wrapper:has([data-name=selection-cell]),.ag-cell-value:has([data-name=selection-cell]),.ag-cell-wrapper:has([data-name=selection-radio-cell]),.ag-cell-value:has([data-name=selection-radio-cell]){width:100%;min-width:0;overflow:visible}.ag-cell:has(at-checkbox-cell) at-checkbox-cell{justify-content:center}.ag-header-cell:has(at-checkbox-header) .ag-header-cell-comp-wrapper,.ag-header-cell:has(at-checkbox-header) .ag-header-cell-label{width:100%;justify-content:center}.ag-cell:has(at-chip-list-cell){height:100% !important;align-items:center !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell-text{font-size:var(--token-font-size-xs);font-weight:var(--token-font-weight-med)}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}.ag-row.atui-row-selected,.ag-row.atui-row-selected .ag-cell{background-color:var(--token-state-active-background)}`;
+class AtTableEmptyStateOverlay {
+    el;
+    placeholder;
+    resizeObserver;
+    onAttachedChange;
+    init(params) {
+        this.el = document.createElement('div');
+        this.el.className = 'w-full';
+        this.el.setAttribute('data-name', 'no-data-overlay');
+        this.placeholder = document.createElement('at-placeholder');
+        this.placeholder.size = 'md';
+        this.el.appendChild(this.placeholder);
+        this.applyEmptyState(params);
+        this.resizeObserver = new ResizeObserver(() => {
+            const height = this.el.offsetHeight;
+            if (height > 0) {
+                params.onHeightChange(height);
+            }
+        });
+        this.resizeObserver.observe(this.el);
+        this.onAttachedChange = params.onAttachedChange;
+        this.onAttachedChange(true);
+    }
+    getGui() {
+        return this.el;
+    }
+    refresh(params) {
+        this.applyEmptyState(params);
+    }
+    destroy() {
+        this.resizeObserver.disconnect();
+        this.onAttachedChange(false);
+    }
+    applyEmptyState(emptyState) {
+        this.placeholder.type = emptyState.type;
+        this.placeholder.placeholder_title = emptyState.title;
+    }
+}
+
+const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-cell-wrapper,.ag-cell-value{min-width:0}.ag-cell:has(at-checkbox-cell),.ag-cell:has([data-name=selection-cell]),.ag-cell:has([data-name=selection-radio-cell]),.ag-header-cell:has(at-checkbox-header),.ag-header-cell:has([data-name=selection-header]){padding-left:6px !important;padding-right:6px !important}.ag-cell:has(at-checkbox-cell) at-checkbox,.ag-cell:has([data-name=selection-cell]) at-checkbox,.ag-header-cell:has(at-checkbox-header) at-checkbox,.ag-header-cell:has([data-name=selection-header]) at-checkbox{width:auto}.ag-cell-wrapper:has(at-checkbox-cell),.ag-cell-value:has(at-checkbox-cell),.ag-cell-wrapper:has([data-name=selection-cell]),.ag-cell-value:has([data-name=selection-cell]),.ag-cell-wrapper:has([data-name=selection-radio-cell]),.ag-cell-value:has([data-name=selection-radio-cell]){width:100%;min-width:0;overflow:visible}.ag-cell:has(at-checkbox-cell) at-checkbox-cell{justify-content:center}.ag-header-cell:has(at-checkbox-header) .ag-header-cell-comp-wrapper,.ag-header-cell:has(at-checkbox-header) .ag-header-cell-label{width:100%;justify-content:center}.ag-cell:has(at-chip-list-cell){height:100% !important;align-items:center !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell-text{font-size:var(--token-font-size-xs);font-weight:var(--token-font-weight-med)}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-viewport{min-height:var(--at-table-empty-state-height, 150px)}.ag-row.atui-row-selected,.ag-row.atui-row-selected .ag-cell{background-color:var(--token-state-active-background)}`;
 
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
 const AtTableComponent = class {
@@ -49124,6 +49163,14 @@ const AtTableComponent = class {
      */
     row_id_field;
     /**
+     * Empty state drawn in the grid body, under the column headers, whenever no rows are
+     * displayed - including when a filter or search hides every row. Shows an
+     * `at-placeholder` of the given `type` and `title`. Read when the grid is created;
+     * later changes to `type` or `title` update the placeholder in place. Leave unset to
+     * keep AG Grid's own no-rows message.
+     */
+    empty_state;
+    /**
      * The AG Grid API
      */
     ag_grid;
@@ -49152,6 +49199,15 @@ const AtTableComponent = class {
     agGrid;
     tableCreated = false;
     hasDisplayedRows = false;
+    emptyStateHeight;
+    attachedEmptyStateOverlays = 0;
+    handleEmptyStateChange(newEmptyState, oldEmptyState) {
+        const isUnchanged = newEmptyState?.type === oldEmptyState?.type &&
+            newEmptyState?.title === oldEmptyState?.title;
+        if (this.agGrid && this.tableCreated && !isUnchanged) {
+            this.agGrid.setGridOption('noRowsOverlayComponentParams', this.emptyStateOverlayParams());
+        }
+    }
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', newData?.items || []);
@@ -49277,6 +49333,34 @@ const AtTableComponent = class {
     updateDisplayedRowsState(api) {
         this.hasDisplayedRows = api.getDisplayedRowCount() > 0;
     }
+    emptyStateOverlayParams() {
+        return {
+            ...this.empty_state,
+            onHeightChange: (height) => {
+                this.emptyStateHeight = height;
+            },
+            onAttachedChange: (isAttached) => {
+                this.attachedEmptyStateOverlays += isAttached ? 1 : -1;
+            },
+        };
+    }
+    /**
+     * AG Grid only shows its no-rows overlay when the row data itself is empty, so a
+     * filter or search that hides every row would otherwise leave a blank body.
+     */
+    syncEmptyStateOverlay(api) {
+        if (!this.empty_state) {
+            return;
+        }
+        const isEmpty = api.getDisplayedRowCount() === 0;
+        const isShown = this.attachedEmptyStateOverlays > 0;
+        if (isEmpty && !isShown) {
+            api.showNoRowsOverlay();
+        }
+        else if (!isEmpty && isShown) {
+            api.hideOverlay();
+        }
+    }
     /**
      * Method used to initialize the table.
      *
@@ -49307,8 +49391,13 @@ const AtTableComponent = class {
             }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
+            ...(this.empty_state && {
+                noRowsOverlayComponent: AtTableEmptyStateOverlay,
+                noRowsOverlayComponentParams: this.emptyStateOverlayParams(),
+            }),
             onModelUpdated: (event) => {
                 this.updateDisplayedRowsState(event.api);
+                this.syncEmptyStateOverlay(event.api);
             },
             onColumnVisible: (event) => {
                 this.atColumnVisibilityChange.emit(event.api
@@ -49371,12 +49460,19 @@ const AtTableComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'bcccd0af8417b6eaad4a36dfb508d69411098996', class: {
+        return (h(Host, { key: 'e2b7d0402796f7f5a33d9081f64a31496c17f87f', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
-            } }));
+            }, style: this.emptyStateHeight
+                ? {
+                    '--at-table-empty-state-height': `${this.emptyStateHeight}px`,
+                }
+                : undefined }));
     }
     static get watchers() { return {
+        "empty_state": [{
+                "handleEmptyStateChange": 0
+            }],
         "table_data": [{
                 "handleTableDataChange": 0
             }],
@@ -49493,7 +49589,7 @@ const AtTableActionsComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: 'b84c1f6a2a5f078dc8d483f80c1650357ee5644c', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: 'dc27dec3eaab13e9429b7bdad20c46c39d1e645e', class: "flex justify-between" }, h("div", { key: '6bf35cc366644a1bde6bc0d244e506cb1395f305', class: "flex flex-wrap items-end gap-8" }, h("slot", { key: '6550685967070d84a850e2ade7d1c5255078cadb', name: "search" }), h("slot", { key: 'ee6d3c2c6ec881178d1b447fa46ce4a0304fceb4', name: "filter-bar" })), h("div", { key: '5bcc38f5630f7987fc38250be9505d2c1a62204d', class: "flex items-center" }, h("slot", { key: '030f9d70468d0bd75f6c81708e6586fa3dcd31dc', name: "reload-button" }), h("slot", { key: '6bff8e9571c8a3da9418f37c181e23c99b07e3fa', name: "export-menu" }), h("slot", { key: '2f2d1082053357cf91f15fe1e5dada83fbe68f42', name: "leading-actions" }), h("slot", { key: 'f142010391ee47f868a44f9a492859bd27bf6b4e', name: "column-manager" }), h("slot", { key: '3ef0a8282f35f879aeabacf5fc279c0b6c993322', name: "actions" }))), h("slot", { key: '0625b64963fe201dffbfd7d5d2beb22650efe7a3', name: "filters" })));
+        return (h(Host, { key: '00a274ec6505ad1693bd509bedb21759a798bd52', class: "relative flex flex-col gap-8 pt-8 pb-8" }, h("div", { key: '118297fef1ed0cd3ef272022f68fcc1fa5fe5ac1', class: "flex justify-between" }, h("div", { key: '4f30e5dc77535f6b8d7c7ec7241a1c7b31a4dd13', class: "flex flex-wrap items-end gap-8" }, h("slot", { key: 'b2acaab79741529622705e9de0ab8e759662775a', name: "search" }), h("slot", { key: '18e620c590ceed6f144cd79f9644fd41ee1f4cbd', name: "filter-bar" })), h("div", { key: 'a0a753027b21d1a98c5a9d9982a2a593006f05af', class: "flex items-center" }, h("slot", { key: '3c435602cb7a69a1d0063a44fd36df2cd9e772ef', name: "reload-button" }), h("slot", { key: '273cea3d029164c799fbec4aa56ba2f2988e85fa', name: "export-menu" }), h("slot", { key: 'ebec76f3872d195ee912d12a61fb939d5f0af1b7', name: "leading-actions" }), h("slot", { key: '0ed3ffc293b8dbcee9402178b2a75416a2546438', name: "column-manager" }), h("slot", { key: '25045f0a795e71a239b3f6ff8cde336b02f3a7ba', name: "actions" }))), h("slot", { key: 'cc576d433188aa421b0c91fbd5bfab7bcbd4059c', name: "filters" })));
     }
 };
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 
 const atSidebarProviderCss = () => `at-sidebar-provider{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar-provider>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar-provider>at-sidebar{flex:0 0 auto;width:auto;height:100%}at-sidebar-provider>at-sidebar[side=right]{order:1}at-sidebar-provider>at-sidebar.mode-over{overflow:visible}at-sidebar-provider>at-sidebar.mode-over.side-right .sidebar{left:auto;right:0}`;
 
@@ -115,7 +115,7 @@ const AtSidebarProviderComponent = class {
         }
     };
     render() {
-        return (h(Host, { key: '8f8b3d13b86f1f8585b04e62bf8b7faf9dfc8ce3' }, this.backdropRequests.size > 0 && (h("div", { key: '81b7d7149343906cf573bf2cff276a127f6803f4', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: 'e8981e0f2f90dd7a4f88ee5f08a564e0db9a5dd7' })));
+        return (h(Host, { key: '2cb2798f4d25b60744f946bcc83e4b88c1dbb877' }, this.backdropRequests.size > 0 && (h("div", { key: '2a5b170a8b2db6a9f4acda6ee388979df7d53c3f', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), h("slot", { key: '9a18e18570b4fde473874fced2b2e15c289251f5' })));
     }
 };
 AtSidebarProviderComponent.style = atSidebarProviderCss();

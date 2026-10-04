@@ -1,5 +1,6 @@
 import { ColDef, Column, GridOptions } from 'ag-grid-community';
 import { AtIDropdownKey } from '../types/generic-table';
+import type { AtPlaceholderType } from '../components/at-placeholder/at-placeholder';
 export interface AtITableColumnDef extends ColDef {
     /**
      * Keeps this column out of the keyword search. Client-side only: under
@@ -13,6 +14,10 @@ export interface AtITableColumnDef extends ColDef {
         character?: string;
     };
     sortable?: boolean;
+}
+export interface AtITableEmptyState {
+    type: AtPlaceholderType;
+    title?: string;
 }
 export declare const defaultGridOptions: GridOptions;
 export interface ICellInfo {

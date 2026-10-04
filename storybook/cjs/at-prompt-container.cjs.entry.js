@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-V7Urjg2R.js');
+var index = require('./index-Dzqi4iVM.js');
 var translation = require('./translation-NP6A4XKu.js');
 
 const AtPromptContainer = class {
@@ -213,7 +213,7 @@ const AtPromptContainer = class {
         return (index.h("div", { class: "p-4" }, index.h("at-prompt-input", { ref: (el) => (this.inputComponent = el), placeholder: this.placeholder, in_progress: this.loading, max_length: this.max_message_length, error_text: this.error_text, "data-name": "prompt-container-input", onAtSubmit: (event) => this.handleSubmit(event.detail), onAtStop: () => this.handleStop() })));
     }
     render() {
-        return (index.h(index.Host, { key: '9e1a5feb9636b68da278c0c2d8899dd8c61574c5', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '42c9e515c320114c9e2555ca3f00414ca02c1a77', name: "prompt-container-header" }), index.h("div", { key: '6253a04237cd7db91716eebc08ac10914a45ad11', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: '500f3d5117752e885968b57c9dd27303790e80cc', chatbot_title: this.chatbot_title, messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: '2697b4eda58a69de18a68f200baf8420726f86d9', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '3728466277a0dfb2f12c219df439545ab22a5036', name: "prompt-container-footer" }))));
+        return (index.h(index.Host, { key: '70a29806eac91af380d54ce8c16f229cbf14a7f4', class: "flex h-full w-full flex-col overflow-hidden", "data-name": "prompt-container" }, this.renderHeader(), index.h("slot", { key: '6639d3732399d502825861194141e3ae3c44f4ab', name: "prompt-container-header" }), index.h("div", { key: 'ba7dff8fc711f18613c4ab0affff090f9c82362a', class: "min-h-0 flex-1", "data-name": "thread-wrapper" }, index.h("at-prompt-thread", { key: '8f5bc2bcf2991c37c6726bcd7996d921f635838b', chatbot_title: this.chatbot_title, messages: this.messages, loading: this.loading, auto_scroll: true, enable_vote: this.enable_vote, enable_copy: this.enable_copy, enable_edit: this.enable_edit, response_animation: this.response_animation, "data-name": "container-thread" })), index.h("div", { key: '1c2e1c88a458ebf981c05ef201d9ca749f607483', class: "flex flex-col gap-4" }, this.renderFooter(), index.h("slot", { key: '03d50371e2a179f7cf5b0b9f62cbbe765804312e', name: "prompt-container-footer" }))));
     }
 };
 

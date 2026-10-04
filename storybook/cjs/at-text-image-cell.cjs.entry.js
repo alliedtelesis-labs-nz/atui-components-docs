@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-V7Urjg2R.js');
+var index = require('./index-Dzqi4iVM.js');
 
 const AtTextImageCell = class {
     constructor(hostRef) {
@@ -38,18 +38,18 @@ const AtTextImageCell = class {
         return this.params.imageSource(this.params.data);
     }
     render() {
-        return (index.h(index.Host, { key: 'a4119fa865ec9767a2bc60d3a1c51acad036c395', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '964f05f668891c4151ad9e4ca6d3fb94f2156c77', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: '276f95150ad8aa078fef34d079f0be56b1d1c172', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
-            this.imageSource && (index.h("img", { key: '5ff1e6c92d1711c1488f55fc5ec3773e07a8b928', src: this.imageSource, style: {
+        return (index.h(index.Host, { key: '72029615e3edff43ff16e767a1e97654419fec4a', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: '0ef467878ad5d5bbc7c51caa1d06285febcbd15e', position: "top", disabled: !this.params?.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("div", { key: 'a26357b74587374a124eec95989622b64e158aaf', class: "flex items-center gap-8", slot: "tooltip-trigger" }, this.imagePosition === 'before' &&
+            this.imageSource && (index.h("img", { key: '24563ef5410c76c733fbbb642b5eb20a5beeea0e', src: this.imageSource, style: {
                 height: `${this.imageHeight}px`,
                 width: this.imageWidth
                     ? `${this.imageWidth}px`
                     : undefined,
-            }, class: this.imageClass && this.imageClass, alt: "" })), this.text && index.h("span", { key: '2495230d3af6900de241b4664e4821afa83ef542', class: "truncate" }, this.text), this.imagePosition === 'after' && this.imageSource && (index.h("img", { key: '960739b60ab4559cb511584865fbe733b05c8860', src: this.imageSource, style: {
+            }, class: this.imageClass && this.imageClass, alt: "" })), this.text && index.h("span", { key: 'c6bdfcd2426f0330cb9de5c94e443e4d600167d1', class: "truncate" }, this.text), this.imagePosition === 'after' && this.imageSource && (index.h("img", { key: '468024c33a0504cd01f73be7314b99f9ec05b9e1', src: this.imageSource, style: {
                 height: `${this.imageHeight}px`,
                 width: this.imageWidth
                     ? `${this.imageWidth}px`
                     : undefined,
-            }, class: this.imageClass && this.imageClass, alt: "" }))), this.params?.generateTooltip && (index.h("span", { key: '07ac3285f62d820d9f321ecc2209e496caab4622' }, this.params.generateTooltip(this.params))))));
+            }, class: this.imageClass && this.imageClass, alt: "" }))), this.params?.generateTooltip && (index.h("span", { key: '14adc90b7dc44db28e866285316ee2aecd2f01ac' }, this.params.generateTooltip(this.params))))));
     }
 };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-V7Urjg2R.js');
+var index = require('./index-Dzqi4iVM.js');
 
 const atResizablePanelCss = () => `at-resizable-panel{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto}at-resizable-panel.is-collapsed{overflow:hidden}`;
 
@@ -84,7 +84,7 @@ const AtResizablePanelComponent = class {
         }
     };
     render() {
-        return (index.h(index.Host, { key: '7f428720831005d6481eaa34be2575a75e76a0fa', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, index.h("slot", { key: 'a01b2d56f5b25a48e767d82cb3d3fac182f0d7fa' })));
+        return (index.h(index.Host, { key: '339aa0778d14e4074486c350caec5c552627f53b', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, index.h("slot", { key: 'ce7b9e792e3c36f9df19ac8ddf5f6f661fc5bc96' })));
     }
 };
 AtResizablePanelComponent.style = atResizablePanelCss();

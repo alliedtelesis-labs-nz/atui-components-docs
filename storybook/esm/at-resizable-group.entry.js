@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 import { R as ResizeController } from './resize-controller-uwz5j95j.js';
 
 const atResizableGroupCss = () => `at-resizable-group{display:flex;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}at-resizable-group.direction-horizontal{flex-direction:row}at-resizable-group.direction-vertical{flex-direction:column}`;
@@ -187,7 +187,7 @@ const AtResizableGroupComponent = class {
         });
     }
     render() {
-        return (h(Host, { key: '6e64de3af5187f4bc753e80cf4c0e2088643bc13', class: `direction-${this.direction}`, "data-name": "resizable-group" }, h("slot", { key: '09a5612dbe6cf31f96a29cf7dae6f4e71d4bd4e7' })));
+        return (h(Host, { key: 'dda211a7bcf9d89d2b4e468c22322b70369e7b2b', class: `direction-${this.direction}`, "data-name": "resizable-group" }, h("slot", { key: 'efe17775d30f523b747cf8a7e38acdb9251cfcec' })));
     }
 };
 AtResizableGroupComponent.style = atResizableGroupCss();

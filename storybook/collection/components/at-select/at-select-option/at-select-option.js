@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '2df36ffd89b3ebad24c6a2a4dc8abe6412bfcbbb', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '4c7df063c351bc6afff6bdadb7ee390d1ec3fa1a' }), h("span", { key: '01ed8923b411a9247d0ffccbea11a0ef17e83c4b', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: '86fba0466293f52a14a9da43d2a5710474926e10', name: "after" })));
+        return (h("li", { key: '3c986d3466f3e0b0a4857f24c9ac7c05758092c1', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '83098e9190dfb0329be036cbacae02fe58c50e81' }), h("span", { key: '4ec1562c17c18da174720c19d73873204895529e', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: 'cc23a5b2c85ce2b85b49b2468bf0a524512cd9bd', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

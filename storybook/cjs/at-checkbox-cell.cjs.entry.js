@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-V7Urjg2R.js');
+var index = require('./index-Dzqi4iVM.js');
 
 const AtCheckboxCellComponent = class {
     constructor(hostRef) {
@@ -32,7 +32,7 @@ const AtCheckboxCellComponent = class {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (index.h(index.Host, { key: '3f18e8deb402e64cae68484694287221c8768ca6', class: "flex h-full items-center" }, index.h("at-checkbox", { key: 'b0f409a136f9ceb6b214497a976c7d989b28d707', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
+        return (index.h(index.Host, { key: 'b53ffc0a5942d63d75212a87c910aff7284f5dda', class: "flex h-full items-center" }, index.h("at-checkbox", { key: '535a73257eecbaa0e8d4c6ead1384e37afa6ffb8', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
 };
 

@@ -1,9 +1,10 @@
 import { h, Host, } from "@stencil/core";
-import { createGrid } from "ag-grid-community";
+import { createGrid, } from "ag-grid-community";
 import { resolveCellSearchText } from "../utils/cell-search-text";
 import { themeQuartz } from "ag-grid-community";
 import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
+import { AtTableEmptyStateOverlay, } from "./table-empty-state-overlay";
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
 /**
  * @category Data Tables
@@ -50,6 +51,14 @@ export class AtTableComponent {
      */
     row_id_field;
     /**
+     * Empty state drawn in the grid body, under the column headers, whenever no rows are
+     * displayed - including when a filter or search hides every row. Shows an
+     * `at-placeholder` of the given `type` and `title`. Read when the grid is created;
+     * later changes to `type` or `title` update the placeholder in place. Leave unset to
+     * keep AG Grid's own no-rows message.
+     */
+    empty_state;
+    /**
      * The AG Grid API
      */
     ag_grid;
@@ -78,6 +87,15 @@ export class AtTableComponent {
     agGrid;
     tableCreated = false;
     hasDisplayedRows = false;
+    emptyStateHeight;
+    attachedEmptyStateOverlays = 0;
+    handleEmptyStateChange(newEmptyState, oldEmptyState) {
+        const isUnchanged = newEmptyState?.type === oldEmptyState?.type &&
+            newEmptyState?.title === oldEmptyState?.title;
+        if (this.agGrid && this.tableCreated && !isUnchanged) {
+            this.agGrid.setGridOption('noRowsOverlayComponentParams', this.emptyStateOverlayParams());
+        }
+    }
     async handleTableDataChange(newData) {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', newData?.items || []);
@@ -203,6 +221,34 @@ export class AtTableComponent {
     updateDisplayedRowsState(api) {
         this.hasDisplayedRows = api.getDisplayedRowCount() > 0;
     }
+    emptyStateOverlayParams() {
+        return {
+            ...this.empty_state,
+            onHeightChange: (height) => {
+                this.emptyStateHeight = height;
+            },
+            onAttachedChange: (isAttached) => {
+                this.attachedEmptyStateOverlays += isAttached ? 1 : -1;
+            },
+        };
+    }
+    /**
+     * AG Grid only shows its no-rows overlay when the row data itself is empty, so a
+     * filter or search that hides every row would otherwise leave a blank body.
+     */
+    syncEmptyStateOverlay(api) {
+        if (!this.empty_state) {
+            return;
+        }
+        const isEmpty = api.getDisplayedRowCount() === 0;
+        const isShown = this.attachedEmptyStateOverlays > 0;
+        if (isEmpty && !isShown) {
+            api.showNoRowsOverlay();
+        }
+        else if (!isEmpty && isShown) {
+            api.hideOverlay();
+        }
+    }
     /**
      * Method used to initialize the table.
      *
@@ -233,8 +279,13 @@ export class AtTableComponent {
             }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
+            ...(this.empty_state && {
+                noRowsOverlayComponent: AtTableEmptyStateOverlay,
+                noRowsOverlayComponentParams: this.emptyStateOverlayParams(),
+            }),
             onModelUpdated: (event) => {
                 this.updateDisplayedRowsState(event.api);
+                this.syncEmptyStateOverlay(event.api);
             },
             onColumnVisible: (event) => {
                 this.atColumnVisibilityChange.emit(event.api
@@ -297,10 +348,14 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'bcccd0af8417b6eaad4a36dfb508d69411098996', class: {
+        return (h(Host, { key: 'e2b7d0402796f7f5a33d9081f64a31496c17f87f', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
-            } }));
+            }, style: this.emptyStateHeight
+                ? {
+                    '--at-table-empty-state-height': `${this.emptyStateHeight}px`,
+                }
+                : undefined }));
     }
     static get is() { return "at-table"; }
     static get originalStyleUrls() {
@@ -475,6 +530,30 @@ export class AtTableComponent {
                 "reflect": false,
                 "attribute": "row_id_field"
             },
+            "empty_state": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "AtITableEmptyState",
+                    "resolved": "AtITableEmptyState",
+                    "references": {
+                        "AtITableEmptyState": {
+                            "location": "import",
+                            "path": "../../../models/searchTableModel",
+                            "id": "src/models/searchTableModel.ts::AtITableEmptyState",
+                            "referenceLocation": "AtITableEmptyState"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Empty state drawn in the grid body, under the column headers, whenever no rows are\ndisplayed - including when a filter or search hides every row. Shows an\n`at-placeholder` of the given `type` and `title`. Read when the grid is created;\nlater changes to `type` or `title` update the placeholder in place. Leave unset to\nkeep AG Grid's own no-rows message."
+                },
+                "getter": false,
+                "setter": false
+            },
             "ag_grid": {
                 "type": "unknown",
                 "mutable": false,
@@ -506,7 +585,8 @@ export class AtTableComponent {
             "activeFilters": {},
             "agGrid": {},
             "tableCreated": {},
-            "hasDisplayedRows": {}
+            "hasDisplayedRows": {},
+            "emptyStateHeight": {}
         };
     }
     static get events() {
@@ -633,6 +713,9 @@ export class AtTableComponent {
     static get elementRef() { return "el"; }
     static get watchers() {
         return [{
+                "propName": "empty_state",
+                "methodName": "handleEmptyStateChange"
+            }, {
                 "propName": "table_data",
                 "methodName": "handleTableDataChange"
             }, {

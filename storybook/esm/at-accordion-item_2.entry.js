@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atAccordionItemCss = () => `details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}[data-name=accordion-item-content]{display:grid;grid-template-rows:1fr;transition:grid-template-rows 200ms ease-in-out, opacity 200ms ease;opacity:1}[data-name=accordion-item-content][data-state=collapsed]{grid-template-rows:0fr;overflow:hidden;opacity:0}[data-name=accordion-item-content]>*{overflow:hidden}`;
@@ -123,11 +123,11 @@ const AtAccordionItemComponent = class {
         const classname = getAccordionClasses({
             disabled: this.disabled,
         });
-        return (h(Host, { key: 'e436f15084b3bf768715958117ee9bd6b7416d9e', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: '282885b9da4086c24cdb12cde0970fd4506a947a', class: "group/accordion-item", role: "group", open: this.detailsOpen, ref: (el) => (this.detailsEl = el) }, h("summary", { key: '9511ecfb69ab0ff9c34b80355a42c1240db99f3e', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
+        return (h(Host, { key: 'e121b4dbe583dc391ba525afcc03020c7fd8b711', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, h("details", { key: 'da66dabe0b75631f5c9d4cdcf7124f8dbd4d6ebd', class: "group/accordion-item", role: "group", open: this.detailsOpen, ref: (el) => (this.detailsEl = el) }, h("summary", { key: 'e8ebc47eaeee59a2b46b4fb6615121c258c498a0', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     this.handleSummaryInteraction(event);
                 }
-            }, "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: 'aaacf600f5def9f8d1ab683d32aa5ce9ddf8f3c1', label: this.label })), h("slot", { key: 'cc69b10a06d5cebd74e3a6b328d6d575eabbd04b', name: "accordion-trigger" })), h("div", { key: '9b62a348261acfaf2dfe3b2546a954d470e9367f', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (h("div", { key: '6615f877236dbdd745c5d441eb9cddd8a1843b07', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: '8eac5c8ab9faf5d711f023103af6bbaa0a44cb24' })))));
+            }, "aria-controls": `content-${this.item_id}` }, this.label && (h("at-accordion-trigger", { key: 'a31c464166e818dbb73950b5f607a488daf3d240', label: this.label })), h("slot", { key: '97fe6b86c6ccc19dd1bd7590850f65151d3eaf9a', name: "accordion-trigger" })), h("div", { key: '53fffc9f89d1a3e643ee196a8f2bfccb3e8e6ee7', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (h("div", { key: 'f5c67b88cd03a49867ff1e2b8663b8e0dafa35b7', class: "flex flex-col p-16 leading-normal" }, this.content)), h("slot", { key: '7b849b1e02db50c6638b2cda9e5894c51d72ec6f' })))));
     }
     static get watchers() { return {
         "open": [{
@@ -146,7 +146,7 @@ const AtAccordionTriggerComponent = class {
      */
     label;
     render() {
-        return (h(Host, { key: '5c0d30e084c74c01d2210ab5862e5d4b012797e9', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (h("span", { key: '27138c40d39ebf2061dfa7d8462b68ab3bd18627', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), h("slot", { key: '7a5bfeca4dba4a48eb963737e54381f5e28aeef3' }), h("at-icon", { key: '2b762965b7094a4926cc87cc303b8fcfc749b85e', role: "presentation", "aria-hidden": "true", class: "fill-foreground group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
+        return (h(Host, { key: 'b44a2311eca6d6298be487ea582d67f7a1b93194', class: "group flex flex-1 items-center justify-between p-8", "data-name": "accordion-trigger" }, this.label && (h("span", { key: '2d8a6e8d85a446583dadfebb66914a3e2990f9e3', class: "flex flex-grow truncate text-sm font-medium group-hover:underline" }, this.label)), h("slot", { key: '1ee9099f51b5bbf80473df1bbc3b607c271ae033' }), h("at-icon", { key: '7f6a48b3ba9d224b2927868a73079fd40208ce6f', role: "presentation", "aria-hidden": "true", class: "fill-foreground group-data-[state=expanded]/accordion-item:rotate-180", name: "chevron_down" })));
     }
 };
 

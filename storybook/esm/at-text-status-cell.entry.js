@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-C56p-u4D.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-Baj27LS8.js';
 
 const AtTextStatusCellComponent = class {
     constructor(hostRef) {
@@ -36,7 +36,7 @@ const AtTextStatusCellComponent = class {
         return badgeType || 'default';
     }
     render() {
-        return (h(Host, { key: '6c36c43194e97561c85066455c59c619c049cdc1', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: 'f83a653813b3d1c3a08602a8615488cec8478cc4', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
+        return (h(Host, { key: '458f3e77c919c4ecee4398d0525210d733c220d8', class: "flex h-full items-center" }, this.showSimpleText && this.params && (h("span", { key: '0a3001e3b6d481559f59eb1fe263f872b6bfd97c', class: "truncate text-sm" }, this.text)), !this.showSimpleText &&
             this.params &&
             (this.params.generateTooltip ? (h("at-tooltip", { position: "top", class: "h-fit self-center" }, h("at-badge", { slot: "tooltip-trigger", type: this.type, label: this.text }), h("span", { class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params)))) : (h("at-badge", { type: this.type, label: this.text })))));
     }

@@ -45,7 +45,7 @@ import { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholde
 import { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 import { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 import { AtResizableChangeEntry, ResizablePanelConfig, ResizeDirection } from "./utils/resize-controller";
-import { AtITableColumnDef } from "./models/searchTableModel";
+import { AtITableColumnDef, AtITableEmptyState } from "./models/searchTableModel";
 import { AtIExternalFiltersChange } from "./types/filter";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
@@ -105,7 +105,7 @@ export { AtPlaceholderSize, AtPlaceholderType } from "./components/at-placeholde
 export { AtProgressBarSize, AtProgressBarType } from "./components/at-progress-bar/at-progress-bar";
 export { AtIRadioOption, AtRadioLayout } from "./components/at-radio-group/at-radio-group";
 export { AtResizableChangeEntry, ResizablePanelConfig, ResizeDirection } from "./utils/resize-controller";
-export { AtITableColumnDef } from "./models/searchTableModel";
+export { AtITableColumnDef, AtITableEmptyState } from "./models/searchTableModel";
 export { AtIExternalFiltersChange } from "./types/filter";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
@@ -3379,6 +3379,10 @@ export namespace Components {
           * @returns The [AG Grid API](https://www.ag-grid.com/javascript-data-grid/grid-api/)
          */
         "createGrid": () => Promise<GridApi>;
+        /**
+          * Empty state drawn in the grid body, under the column headers, whenever no rows are displayed - including when a filter or search hides every row. Shows an `at-placeholder` of the given `type` and `title`. Read when the grid is created; later changes to `type` or `title` update the placeholder in place. Leave unset to keep AG Grid's own no-rows message.
+         */
+        "empty_state"?: AtITableEmptyState;
         /**
           * Gets the AG Grid API instance
           * @returns The AG Grid API
@@ -9349,6 +9353,10 @@ declare namespace LocalJSX {
           * Column definitions for the table
          */
         "col_defs"?: ColDef[];
+        /**
+          * Empty state drawn in the grid body, under the column headers, whenever no rows are displayed - including when a filter or search hides every row. Shows an `at-placeholder` of the given `type` and `title`. Read when the grid is created; later changes to `type` or `title` update the placeholder in place. Leave unset to keep AG Grid's own no-rows message.
+         */
+        "empty_state"?: AtITableEmptyState;
         /**
           * Emits the fields of every column AG Grid currently has hidden, whenever that set changes - including when a column is dragged off the grid, which no host control goes through.
          */
