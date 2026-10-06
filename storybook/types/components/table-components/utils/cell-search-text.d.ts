@@ -6,5 +6,8 @@ import { ColDef } from 'ag-grid-community';
  * was searchable by its underlying code or ISO date stays searchable by it, and becomes
  * searchable by what the user can actually see. Object and array values contribute nothing,
  * which is what stops them matching "[object Object]".
+ *
+ * Renderers in DISPLAYED_TEXT_ONLY contribute only their displayed text, so a value the cell
+ * hides (signal bars without the dBm value, or no signal) never matches.
  */
 export declare function resolveCellSearchText(colDef: ColDef, value: any, data: any): string;

@@ -5,7 +5,7 @@ var chartColor = require('./chart-color-CbbmT7Il.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var relativeTime_util = require('./relative-time.util-_FQbwGgQ.js');
 var atTimeRange_models = require('./at-time-range.models-BPZ2R6EI.js');
-var signalStrength = require('./signal-strength-I0fwJv32.js');
+var signalStrength = require('./signal-strength-CunZSyq8.js');
 
 /**
  * Copyright IBM Corp. 2016, 2023

@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-Dzqi4iVM.js');
-var signalStrength = require('./signal-strength-I0fwJv32.js');
+var signalStrength = require('./signal-strength-CunZSyq8.js');
 
 const AtSignalStrengthCell = class {
     constructor(hostRef) {
