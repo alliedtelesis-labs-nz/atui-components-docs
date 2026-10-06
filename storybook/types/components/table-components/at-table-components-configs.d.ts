@@ -18,6 +18,7 @@ import { AtTextImageCell } from './cell-components/at-text-image-cell/at-text-im
 import { AtMenuCell } from './cell-components/at-menu-cell/at-menu-cell';
 import { AtProgressBarCell } from './cell-components/at-progress-bar-cell/at-progress-bar-cell';
 import { AtBadgeCountCell } from './cell-components/at-badge-count-cell/at-badge-count-cell';
+import { AtSignalStrengthCell } from './cell-components/at-signal-strength-cell/at-signal-strength-cell';
 export declare class AtTableComponentsConfigs {
     static readonly defaultPageSize = 10;
     private static cellComponentsLoaded;
@@ -52,6 +53,7 @@ export declare class AtTableComponentsConfigs {
         AtMenuCell: typeof AtMenuCell;
         AtProgressBarCell: typeof AtProgressBarCell;
         AtBadgeCountCell: typeof AtBadgeCountCell;
+        AtSignalStrengthCell: typeof AtSignalStrengthCell;
     };
     /**
      * Force reset the loading state (useful for testing)

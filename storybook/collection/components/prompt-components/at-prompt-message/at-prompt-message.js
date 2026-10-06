@@ -289,7 +289,7 @@ export class AtPromptMessage {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: '3d455110186db89a3024253f6efa879ff711f8d4', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'bcd5f447fee9e77902dc502d9f3ce1b0c2d4a9be', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'a7196d8f810998a4e5188e7cbeeefbb17082d9f7', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '753059e9c13908131e30c5ec02d55adbe481d7af', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'ba9867cfe5054f57ef0b342ab509453b1afb790e', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'cb7b93172d18a32971657c4aa4bcebe9c8d8d332', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: '3a4cd31e520244ef1d96d44f662f0cf10361bf34', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'e57fbf44793e3833f08698babf6c6f37f020a164', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get is() { return "at-prompt-message"; }
     static get originalStyleUrls() {

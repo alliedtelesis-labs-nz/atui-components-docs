@@ -23,6 +23,7 @@ export var AvailableCells;
     AvailableCells["MENU_CELL"] = "AtMenuCell";
     AvailableCells["PROGRESS_BAR_CELL"] = "AtProgressBarCell";
     AvailableCells["BADGE_COUNT_CELL"] = "AtBadgeCountCell";
+    AvailableCells["SIGNAL_STRENGTH_CELL"] = "AtSignalStrengthCell";
 })(AvailableCells || (AvailableCells = {}));
 export var AvailableHeaders;
 (function (AvailableHeaders) {

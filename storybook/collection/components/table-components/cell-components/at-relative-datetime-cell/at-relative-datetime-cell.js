@@ -37,7 +37,7 @@ export class AtRelativeDateTimeCell {
         this.dateTimeLabel = sourceDateTime;
     }
     render() {
-        return (h(Host, { key: '6aacfa890ff85945638373ca83e1e44b0abea8a4', class: "flex h-full items-center" }, h("div", { key: 'e345df71a4d6edd4444c2dd743160c02e06ed921', class: "flex h-full flex-col justify-center" }, h("div", { key: 'd7086f6277ad72d210fed9bbf8cfcd9cd557e311', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: '3b1ce3042c20f5ef0eb08a48dd0d3688f7cbc7db', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
+        return (h(Host, { key: 'dffe1e6964f3417cc45b2aeeab8187dc248200d0', class: "flex h-full items-center" }, h("div", { key: 'e4133b25f1469f6fc428fc3476a3487b52def9f8', class: "flex h-full flex-col justify-center" }, h("div", { key: 'e14fb5bc49e8587831c1aa1cff2793aed4839dde', class: "truncate text-sm leading-normal" }, this.relativeLabel), this.dateTimeLabel && (h("div", { key: '398b5b1acc4fe7427e91a170dbdcfb7756220aca', class: "text-med truncate text-[10px] leading-normal font-normal" }, "(", this.dateTimeLabel, ")")))));
     }
     static get is() { return "at-relative-datetime-cell"; }
     static get states() {

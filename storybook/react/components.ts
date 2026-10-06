@@ -90,6 +90,8 @@ import { AtSidebarProvider as AtSidebarProviderElement, defineCustomElement as d
 import { AtSidebarSubmenu as AtSidebarSubmenuElement, defineCustomElement as defineAtSidebarSubmenu } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-submenu.js";
 import { AtSidebarTrigger as AtSidebarTriggerElement, defineCustomElement as defineAtSidebarTrigger } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar-trigger.js";
 import { AtSidebar as AtSidebarElement, defineCustomElement as defineAtSidebar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-sidebar.js";
+import { AtSignalStrengthCell as AtSignalStrengthCellElement, defineCustomElement as defineAtSignalStrengthCell } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-signal-strength-cell.js";
+import { AtSignalStrength as AtSignalStrengthElement, defineCustomElement as defineAtSignalStrength } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-signal-strength.js";
 import { AtSrcDest as AtSrcDestElement, defineCustomElement as defineAtSrcDest } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-src-dest.js";
 import { AtStaticTable as AtStaticTableElement, defineCustomElement as defineAtStaticTable } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-static-table.js";
 import { AtStatusBar as AtStatusBarElement, defineCustomElement as defineAtStatusBar } from "@alliedtelesis-labs-nz/atui-components-stencil/dist/components/at-status-bar.js";
@@ -1176,6 +1178,28 @@ export const AtSidebarTrigger: StencilReactComponent<AtSidebarTriggerElement, At
     react: React,
     events: {} as AtSidebarTriggerEvents,
     defineCustomElement: defineAtSidebarTrigger
+});
+
+type AtSignalStrengthEvents = NonNullable<unknown>;
+
+export const AtSignalStrength: StencilReactComponent<AtSignalStrengthElement, AtSignalStrengthEvents> = /*@__PURE__*/ createComponent<AtSignalStrengthElement, AtSignalStrengthEvents>({
+    tagName: 'at-signal-strength',
+    elementClass: AtSignalStrengthElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtSignalStrengthEvents,
+    defineCustomElement: defineAtSignalStrength
+});
+
+type AtSignalStrengthCellEvents = NonNullable<unknown>;
+
+export const AtSignalStrengthCell: StencilReactComponent<AtSignalStrengthCellElement, AtSignalStrengthCellEvents> = /*@__PURE__*/ createComponent<AtSignalStrengthCellElement, AtSignalStrengthCellEvents>({
+    tagName: 'at-signal-strength-cell',
+    elementClass: AtSignalStrengthCellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as AtSignalStrengthCellEvents,
+    defineCustomElement: defineAtSignalStrengthCell
 });
 
 type AtSrcDestEvents = NonNullable<unknown>;

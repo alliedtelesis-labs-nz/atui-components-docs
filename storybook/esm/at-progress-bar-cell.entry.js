@@ -72,10 +72,10 @@ const AtProgressBarCell = class {
         // `w-full` on the host is load-bearing: ag-grid lays the cell out as a
         // flex container, so without it the host shrinks to fit the label and the
         // bar resolves to zero width.
-        return (h(Host, { key: 'f779d83e01faf5c7f23283ac90d553e3285b5ad7', class: "flex h-full w-full min-w-0 items-center" }, h("at-tooltip", { key: '753a1491915d6f4b8a9d7e40a3a988bcdd76f827', position: "top", disabled: !this.params?.generateTooltip, class: "min-w-0 flex-1 self-center" }, h("div", { key: '96d223f05a445e4527682a5091416eb723c9677a', slot: "tooltip-trigger", class: "flex min-w-0 items-center gap-8" }, h("at-progress-bar", { key: 'd35cf95ae8576255a6716a657d8825674853dd81', class: "min-w-0 flex-1", percentage: this.percentage, type: this.type, size: this.params?.size ?? 'sm' }), !this.params?.hideLabel && (
+        return (h(Host, { key: '9e03fac41b92eec8d4528adc80cc4220c7e1b9c8', class: "flex h-full w-full min-w-0 items-center" }, h("at-tooltip", { key: '9e8b9f8bfc4e10c99eb35b19ea034787913c7972', position: "top", disabled: !this.params?.generateTooltip, class: "min-w-0 flex-1 self-center" }, h("div", { key: '953aff87f3abe44e3dcf14ade627f34331faa03b', slot: "tooltip-trigger", class: "flex min-w-0 items-center gap-8" }, h("at-progress-bar", { key: 'd04621b0ed563bce13f550ef1f4bba3f54ec37f6', class: "min-w-0 flex-1", percentage: this.percentage, type: this.type, size: this.params?.size ?? 'sm' }), !this.params?.hideLabel && (
         // Reserved width so the bars align down the column
         // rather than jittering with the label's digit count.
-        h("span", { key: 'a26fe12e742d66ec946442b738ed318d693be9bf', class: "text-secondary min-w-[2.5rem] shrink-0 text-right text-xs leading-normal font-normal tabular-nums" }, this.labelValue))), this.params?.generateTooltip && (h("span", { key: '08dd3ee8d0213b0ea52e8bde30b662cbba69fd13', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
+        h("span", { key: '0dbe3d6f7141bbffab65cb04a86964395cad00eb', class: "text-secondary min-w-[2.5rem] shrink-0 text-right text-xs leading-normal font-normal tabular-nums" }, this.labelValue))), this.params?.generateTooltip && (h("span", { key: '87c97966b0d43e4d996365fb2064a03cc054bb29', class: "leading-normal" }, this.params.generateTooltip(this.params))))));
     }
 };
 AtProgressBarCell.style = atProgressBarCellCss();

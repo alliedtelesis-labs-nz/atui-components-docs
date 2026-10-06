@@ -165,6 +165,10 @@ export { AtSidebarSubmenuComponent as AtSidebarSubmenu } from '../types/componen
 export { defineCustomElement as defineCustomElementAtSidebarSubmenu } from './at-sidebar-submenu';
 export { AtSidebarTriggerComponent as AtSidebarTrigger } from '../types/components/at-sidebar/at-sidebar-trigger/at-sidebar-trigger';
 export { defineCustomElement as defineCustomElementAtSidebarTrigger } from './at-sidebar-trigger';
+export { AtSignalStrength as AtSignalStrength } from '../types/components/at-signal-strength/at-signal-strength';
+export { defineCustomElement as defineCustomElementAtSignalStrength } from './at-signal-strength';
+export { AtSignalStrengthCell as AtSignalStrengthCell } from '../types/components/table-components/cell-components/at-signal-strength-cell/at-signal-strength-cell';
+export { defineCustomElement as defineCustomElementAtSignalStrengthCell } from './at-signal-strength-cell';
 export { AtSrcDestComponent as AtSrcDest } from '../types/components/at-src-dest/at-src-dest';
 export { defineCustomElement as defineCustomElementAtSrcDest } from './at-src-dest';
 export { AtStaticTable as AtStaticTable } from '../types/components/table-components/at-static-table/at-static-table';

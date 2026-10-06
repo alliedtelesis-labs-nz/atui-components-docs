@@ -45,7 +45,7 @@ const AtMenuitemComponent = class {
             active: this.is_active,
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: 'c906cce3ab34b659486020960c642ad34519e7ed', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
+        return (index.h(index.Host, { key: '77711dc88bcbf2df6058f115f9b32fd138e2749e', role: "menuitem", tabindex: "0", class: classname, onClick: (e) => {
                 if (this.disabled) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -53,7 +53,7 @@ const AtMenuitemComponent = class {
                 else {
                     this.atuiClick.emit();
                 }
-            } }, index.h("div", { key: 'fa481e61693d1b2e0253011adc1eb5d94b475552', class: "flex min-w-0 flex-1" }, index.h("slot", { key: 'e0bae0f67736474f8189b6d6ab38c0de6705c53f', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: 'eacabb0b58370b90515c5e180d222e799bd5a9d6', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'c9a96c5fa56de31571322e7d7b168f3d139270db' })), index.h("slot", { key: '3566accde117f8d1a96ce1ea9caa049b161b8266', name: 'icon-after', "data-name": "menu-item-icon-after" })));
+            } }, index.h("div", { key: 'dc01b39934e59c0c53d1256f08dddada62515c69', class: "flex min-w-0 flex-1" }, index.h("slot", { key: 'a5509e82c1b8832fc9856202d08581dba799a1eb', name: "icon", "data-name": "menu-item-icon" }), this.label && (index.h("span", { key: '6f1b6cf5eff73b1d5044256a7d5772562a91b89e', "data-name": "menu-item-label", class: "text-body min-w-0 flex-1 truncate leading-normal font-normal whitespace-nowrap group-data-[state=collapsed]/sidebar-wrapper:hidden" }, this.label)), index.h("slot", { key: 'd8a64559a4c86368421fcd955cdf2a495e9971e6' })), index.h("slot", { key: 'b4c9a57c481cee9196b70ad8bc96441481eee281', name: 'icon-after', "data-name": "menu-item-icon-after" })));
     }
 };
 

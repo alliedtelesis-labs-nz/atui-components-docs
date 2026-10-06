@@ -63,7 +63,7 @@ const AtTreeComponent = class {
         }
     }
     render() {
-        return (index.h("div", { key: '212d03485025c4f1443b7e1c244180f282895bd2', class: "w-full" }, index.h("slot", { key: 'c536b4946c764f9187e1ea3abba1c4e938adae31' }), this.flattenedItemList &&
+        return (index.h("div", { key: 'ab96903d5781ac318365527a658a0031e9e2a6d0', class: "w-full" }, index.h("slot", { key: '15d376c8db753c5b2d91191062c4b79fd000bb97' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index$1) => (index.h("div", { key: index$1, class: `flex w-full` }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "block w-full" }, index.h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, index.h("slot", { name: "item-content" })), index.h("span", null, item.tooltip))) : (index.h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, index.h("slot", { name: "item-content" }))))))));

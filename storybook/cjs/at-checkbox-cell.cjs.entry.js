@@ -32,7 +32,7 @@ const AtCheckboxCellComponent = class {
         const isDisabled = this.params.getDisabled
             ? this.params.getDisabled(this.params.data)
             : false;
-        return (index.h(index.Host, { key: 'b53ffc0a5942d63d75212a87c910aff7284f5dda', class: "flex h-full items-center" }, index.h("at-checkbox", { key: '535a73257eecbaa0e8d4c6ead1384e37afa6ffb8', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
+        return (index.h(index.Host, { key: '611f006d39ec0689cf5aee63431271dd6423d86a', class: "flex h-full items-center" }, index.h("at-checkbox", { key: 'f059c5abb83935f7ddb43406cca649d051940f7e', class: "w-auto self-center", disabled: isDisabled, checked: isChecked, onAtuiChange: (event) => this.setValue(event.detail) })));
     }
 };
 

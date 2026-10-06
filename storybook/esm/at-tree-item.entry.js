@@ -74,13 +74,13 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: '50c6ebb01f33add0783ea00e149d64a422e860dd', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
+        return (h(Host, { key: '6c198a7aa067f6f81315d100ebc46313aeacb69c', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
                 ? this.selected
                     ? 'true'
                     : 'false'
-                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '6f15e4d107d24e4d815671cbdd75102361d29d65', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'e51c402d96548aec66c73471bd441bb4a0c98a0b', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: 'bd749803d8ea7ac59fff135bb836cc342009c546', "data-name": "tree-item-indicator", name: this.selected
+                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '498861446bade16fb20f298f0f6d140ad57f9b23', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: 'ebce8aae066b24f2cab5125257f97e15368c31ed', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: '7531917374dd59e930c292295f3c4b2ef771c52e', "data-name": "tree-item-indicator", name: this.selected
                 ? 'chevron_down'
-                : 'chevron_right' })), this.label && (h("span", { key: '6e79139cd43a12662a5dc9cea6f398a0aedf21cd', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: 'cef3c5f80cf8710f814f2b4be0eeca8d15010ca3', name: "label" })), h("slot", { key: '8db6bc4af9955762c9708512aff6d3f50b9d687f' })), h("div", { key: '68f179de8c47992c62166bc30dafa384f22c9c83', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out" })));
+                : 'chevron_right' })), this.label && (h("span", { key: 'e2feca3e66fb63433b7b99c1dc06c39ae7973ca6', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: 'd7d69c9d0645e8b46e819f20a7dd60d5e1233db2', name: "label" })), h("slot", { key: 'f28402fdfe20c45fc2117c68458e9dca92a3f628' })), h("div", { key: '9e575788298e9c227cb37b271f2aa0199ec1822b', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out" })));
     }
 };
 

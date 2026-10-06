@@ -2,6 +2,7 @@ import { AvailableCells } from "../../../types/table-cells";
 import { TimeDatePresentationUtil } from "../../../utils/time-date-presentation.util";
 import { DateFormat } from "../../../types/date";
 import { getRelativeTimeLabel, parseCellDateTime } from "./relative-time-label";
+import { atFormatRssi, atParseRssi } from "../../../utils/signal-strength";
 const NO_VISIBLE_TEXT = () => '';
 function toFiniteNumber(value) {
     const parsed = Number(value);
@@ -114,6 +115,10 @@ const DERIVERS = {
         return Array.isArray(buttons)
             ? join(buttons.map((button) => button?.value))
             : '';
+    },
+    [AvailableCells.SIGNAL_STRENGTH_CELL]: (value, data, params) => {
+        const rssi = atParseRssi(params.mapValueToRssi ? params.mapValueToRssi(data) : value);
+        return params.show_value === false ? '' : atFormatRssi(rssi);
     },
     [AvailableCells.COLOR_STATUS_CELL]: NO_VISIBLE_TEXT,
     [AvailableCells.HEALTH_DOT_CELL]: NO_VISIBLE_TEXT,

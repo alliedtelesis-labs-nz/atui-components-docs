@@ -29,6 +29,8 @@
     "components/at-progress-bar/at-progress-bar.js",
     "components/at-radio-group/at-radio-group.js",
     "components/at-button-group/at-button-group.js",
+    "components/at-signal-strength/at-signal-strength.js",
+    "components/table-components/cell-components/at-signal-strength-cell/at-signal-strength-cell.js",
     "components/at-accordion/at-accordion.js",
     "components/at-accordion/at-accordion-item/at-accordion-item.js",
     "components/at-accordion/at-accordion-item/at-accordion-trigger/at-accordion-trigger.js",

@@ -235,6 +235,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-progress-bar.entry.js').then(processMod, consoleError);
+                case 'at-signal-strength':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-signal-strength.entry.js').then(processMod, consoleError);
                 case 'at-stepper-item':
                     return import(
                       /* webpackMode: "lazy" */
@@ -455,6 +459,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './at-relative-datetime-cell.entry.js').then(processMod, consoleError);
+                case 'at-signal-strength-cell':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './at-signal-strength-cell.entry.js').then(processMod, consoleError);
                 case 'at-text-badge-cell':
                     return import(
                       /* webpackMode: "lazy" */

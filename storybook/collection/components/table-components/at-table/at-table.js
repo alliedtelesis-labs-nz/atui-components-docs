@@ -348,7 +348,7 @@ export class AtTableComponent {
         }
     }
     render() {
-        return (h(Host, { key: 'e2b7d0402796f7f5a33d9081f64a31496c17f87f', class: {
+        return (h(Host, { key: '2cb550f835d0d9b221ac3068c8c9fe6d8a3ead5d', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight

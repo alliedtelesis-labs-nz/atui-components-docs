@@ -46,3 +46,6 @@ export { type AtSelectedTimeRangeExtended, AtTimePresets, AT_DEFAULT_TIME_PRESET
 export { type AtIDateRange, type AtIDateRangeStrings } from './types/date';
 export { AtTimeUnit, type AtITimeWithUnit } from './types/time';
 export { AtIconDescriptor } from './types/svg-icon';
+export { type AtSignalStrengthLevel, AT_SIGNAL_STRENGTH_DEFAULT_THRESHOLDS, AT_SIGNAL_STRENGTH_LABELS, atFormatRssi, atGetSignalLevel, atParseRssi, } from './utils/signal-strength';
+export { AtSignalStrengthSize, AtSignalStrengthVariant, } from './components/at-signal-strength/at-signal-strength';
+export { AtISignalStrengthCellParams } from './components/table-components/cell-components/at-signal-strength-cell/at-signal-strength-cell';

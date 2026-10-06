@@ -23,7 +23,7 @@ export class AtReloadButton {
      */
     atuiReload;
     render() {
-        return (h("at-tooltip", { key: 'a466de269a00fa6fe79dd16d3dfb2c1aaccf546c', position: "top" }, h("div", { key: '9156db7ff9f3c5dc33bdeb00458d650819452c4c', slot: "tooltip-trigger", class: "relative" }, this.has_updates && (h("span", { key: '00914e8a0f8396af80d6326f52dfdbdce0adc7c6', class: "!bg-active-foreground pointer-events-none absolute top-[2px] right-[2px] z-10 h-[8px] w-[8px] rounded-full", "data-name": "reload-updates-indicator" })), h("at-button", { key: '8416b81ef6eb91ed7cc752695642c06a7bfe034e', type: "secondaryText", onAtuiClick: () => this.atuiReload.emit() }, h("at-icon", { key: '1ffadbc7e386bf3f26275b38a6c3dcb56bf399f3', slot: "icon", name: "retry" }))), h("span", { key: 'f5cceafeac951e6034538f880dfbb5b1eb928895' }, this.has_updates
+        return (h("at-tooltip", { key: 'c8b0a623391c96c38a8a4462c128b37934fbcb6c', position: "top" }, h("div", { key: '4bcd51eaeaa2ab1daa83f9a96df836ff837f23de', slot: "tooltip-trigger", class: "relative" }, this.has_updates && (h("span", { key: '2ed62b254e487549b4c9407cf7d38c303295d90f', class: "!bg-active-foreground pointer-events-none absolute top-[2px] right-[2px] z-10 h-[8px] w-[8px] rounded-full", "data-name": "reload-updates-indicator" })), h("at-button", { key: '981ff5a420ed4ef7647e812ead7014bed0f9a7bb', type: "secondaryText", onAtuiClick: () => this.atuiReload.emit() }, h("at-icon", { key: '693f72a921272334df039838254d91468a92cdc7', slot: "icon", name: "retry" }))), h("span", { key: '0ecb6476e32e722d12b19164535a4e603bface0d' }, this.has_updates
             ? this.translations.ATUI.TABLE.RELOAD_UPDATES_AVAILABLE
             : this.translations.ATUI.TABLE.RELOAD)));
     }

@@ -84,7 +84,7 @@ const AtResizablePanelComponent = class {
         }
     };
     render() {
-        return (index.h(index.Host, { key: '339aa0778d14e4074486c350caec5c552627f53b', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, index.h("slot", { key: 'ce7b9e792e3c36f9df19ac8ddf5f6f661fc5bc96' })));
+        return (index.h(index.Host, { key: '3dee9334150e3d395394d53824f5a42d3ff0d77b', "data-name": "resizable-panel", "data-collapsed": this.isCollapsed ? 'true' : 'false', role: "group" }, index.h("slot", { key: 'b937d327d639db8883fd476f17463231bf357a86' })));
     }
 };
 AtResizablePanelComponent.style = atResizablePanelCss();

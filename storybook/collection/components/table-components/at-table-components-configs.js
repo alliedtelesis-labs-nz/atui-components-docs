@@ -19,6 +19,7 @@ import { AtTextImageCell } from "./cell-components/at-text-image-cell/at-text-im
 import { AtMenuCell } from "./cell-components/at-menu-cell/at-menu-cell";
 import { AtProgressBarCell } from "./cell-components/at-progress-bar-cell/at-progress-bar-cell";
 import { AtBadgeCountCell } from "./cell-components/at-badge-count-cell/at-badge-count-cell";
+import { AtSignalStrengthCell } from "./cell-components/at-signal-strength-cell/at-signal-strength-cell";
 export class AtTableComponentsConfigs {
     static defaultPageSize = 10;
     static cellComponentsLoaded = false;
@@ -52,6 +53,7 @@ export class AtTableComponentsConfigs {
                 AtMenuCell,
                 AtProgressBarCell,
                 AtBadgeCountCell,
+                AtSignalStrengthCell,
                 AtCheckboxHeaderComponent,
             ];
             // Force reference to prevent tree-shaking
@@ -93,6 +95,7 @@ export class AtTableComponentsConfigs {
             [AvailableCells.MENU_CELL]: AtMenuCell,
             [AvailableCells.PROGRESS_BAR_CELL]: AtProgressBarCell,
             [AvailableCells.BADGE_COUNT_CELL]: AtBadgeCountCell,
+            [AvailableCells.SIGNAL_STRENGTH_CELL]: AtSignalStrengthCell,
         };
     }
     /**

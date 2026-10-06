@@ -50,6 +50,7 @@ import { AtIExternalFiltersChange } from "./types/filter";
 import { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 import { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 import { AtSidebarProviderChangeDetail, AtSidebarProviderPanelState } from "./components/at-sidebar/at-sidebar-provider/at-sidebar-provider";
+import { AtSignalStrengthSize, AtSignalStrengthVariant } from "./components/at-signal-strength/at-signal-strength";
 import { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 import { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 import { AtStepperStep } from "./components/at-stepper/at-stepper";
@@ -110,6 +111,7 @@ export { AtIExternalFiltersChange } from "./types/filter";
 export { AtSidePanelDirection, AtSidePanelPosition, AtSidePanelSize } from "./components/at-side-panel/at-side-panel";
 export { AtSideBarWidth } from "./components/at-sidebar/at-sidebar";
 export { AtSidebarProviderChangeDetail, AtSidebarProviderPanelState } from "./components/at-sidebar/at-sidebar-provider/at-sidebar-provider";
+export { AtSignalStrengthSize, AtSignalStrengthVariant } from "./components/at-signal-strength/at-signal-strength";
 export { AtSrcDestAlign } from "./components/at-src-dest/at-src-dest";
 export { AtIStatusBarSegment } from "./components/at-status-bar/at-status-bar";
 export { AtStepperStep } from "./components/at-stepper/at-stepper";
@@ -3110,6 +3112,42 @@ export namespace Components {
     interface AtSidebarTrigger {
     }
     /**
+     * @category Feedback
+     * @description A compact signal-strength indicator that converts an RSSI value in dBm into one to four bars, with an optional dBm value.
+     */
+    interface AtSignalStrength {
+        /**
+          * Received signal strength in dBm (e.g. -62). A missing value renders as "No signal".
+         */
+        "rssi"?: number;
+        /**
+          * Shows the dBm value after the bars.
+          * @default false
+         */
+        "show_value": boolean;
+        /**
+          * Size of the bars glyph.
+          * @default 'md'
+         */
+        "size": AtSignalStrengthSize;
+        /**
+          * Minimum dBm for one, two, three and four bars. Defaults to -85, -75, -67 and -60.
+          * @default [...AT_SIGNAL_STRENGTH_DEFAULT_THRESHOLDS]
+         */
+        "thresholds": number[];
+        /**
+          * `status` colours the filled bars by level (good, warning, poor); `mono` fills them in the current text colour.
+          * @default 'status'
+         */
+        "variant": AtSignalStrengthVariant;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component that renders an RSSI value in dBm as signal-strength bars, followed by the dBm value by default.
+     */
+    interface AtSignalStrengthCell {
+    }
+    /**
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
@@ -5484,6 +5522,26 @@ declare global {
         new (): HTMLAtSidebarTriggerElement;
     };
     /**
+     * @category Feedback
+     * @description A compact signal-strength indicator that converts an RSSI value in dBm into one to four bars, with an optional dBm value.
+     */
+    interface HTMLAtSignalStrengthElement extends Components.AtSignalStrength, HTMLStencilElement {
+    }
+    var HTMLAtSignalStrengthElement: {
+        prototype: HTMLAtSignalStrengthElement;
+        new (): HTMLAtSignalStrengthElement;
+    };
+    /**
+     * @category Data Tables
+     * @description A cell component that renders an RSSI value in dBm as signal-strength bars, followed by the dBm value by default.
+     */
+    interface HTMLAtSignalStrengthCellElement extends Components.AtSignalStrengthCell, HTMLStencilElement {
+    }
+    var HTMLAtSignalStrengthCellElement: {
+        prototype: HTMLAtSignalStrengthCellElement;
+        new (): HTMLAtSignalStrengthCellElement;
+    };
+    /**
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
@@ -6063,6 +6121,8 @@ declare global {
         "at-sidebar-provider": HTMLAtSidebarProviderElement;
         "at-sidebar-submenu": HTMLAtSidebarSubmenuElement;
         "at-sidebar-trigger": HTMLAtSidebarTriggerElement;
+        "at-signal-strength": HTMLAtSignalStrengthElement;
+        "at-signal-strength-cell": HTMLAtSignalStrengthCellElement;
         "at-src-dest": HTMLAtSrcDestElement;
         "at-static-table": HTMLAtStaticTableElement;
         "at-status-bar": HTMLAtStatusBarElement;
@@ -9082,6 +9142,42 @@ declare namespace LocalJSX {
     interface AtSidebarTrigger {
     }
     /**
+     * @category Feedback
+     * @description A compact signal-strength indicator that converts an RSSI value in dBm into one to four bars, with an optional dBm value.
+     */
+    interface AtSignalStrength {
+        /**
+          * Received signal strength in dBm (e.g. -62). A missing value renders as "No signal".
+         */
+        "rssi"?: number;
+        /**
+          * Shows the dBm value after the bars.
+          * @default false
+         */
+        "show_value"?: boolean;
+        /**
+          * Size of the bars glyph.
+          * @default 'md'
+         */
+        "size"?: AtSignalStrengthSize;
+        /**
+          * Minimum dBm for one, two, three and four bars. Defaults to -85, -75, -67 and -60.
+          * @default [...AT_SIGNAL_STRENGTH_DEFAULT_THRESHOLDS]
+         */
+        "thresholds"?: number[];
+        /**
+          * `status` colours the filled bars by level (good, warning, poor); `mono` fills them in the current text colour.
+          * @default 'status'
+         */
+        "variant"?: AtSignalStrengthVariant;
+    }
+    /**
+     * @category Data Tables
+     * @description A cell component that renders an RSSI value in dBm as signal-strength bars, followed by the dBm value by default.
+     */
+    interface AtSignalStrengthCell {
+    }
+    /**
      * @category Utilities
      * @description A src-dest component for displaying source and destination information.
      */
@@ -10479,6 +10575,12 @@ declare namespace LocalJSX {
         "badge": string;
         "is_active": boolean;
     }
+    interface AtSignalStrengthAttributes {
+        "rssi": number;
+        "variant": AtSignalStrengthVariant;
+        "size": AtSignalStrengthSize;
+        "show_value": boolean;
+    }
     interface AtSrcDestAttributes {
         "src_title": string;
         "src_text": string;
@@ -10699,6 +10801,8 @@ declare namespace LocalJSX {
         "at-sidebar-provider": AtSidebarProvider;
         "at-sidebar-submenu": Omit<AtSidebarSubmenu, keyof AtSidebarSubmenuAttributes> & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes]?: AtSidebarSubmenu[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `attr:${K}`]?: AtSidebarSubmenuAttributes[K] } & { [K in keyof AtSidebarSubmenu & keyof AtSidebarSubmenuAttributes as `prop:${K}`]?: AtSidebarSubmenu[K] } & OneOf<"label", AtSidebarSubmenu["label"], AtSidebarSubmenuAttributes["label"]>;
         "at-sidebar-trigger": AtSidebarTrigger;
+        "at-signal-strength": Omit<AtSignalStrength, keyof AtSignalStrengthAttributes> & { [K in keyof AtSignalStrength & keyof AtSignalStrengthAttributes]?: AtSignalStrength[K] } & { [K in keyof AtSignalStrength & keyof AtSignalStrengthAttributes as `attr:${K}`]?: AtSignalStrengthAttributes[K] } & { [K in keyof AtSignalStrength & keyof AtSignalStrengthAttributes as `prop:${K}`]?: AtSignalStrength[K] };
+        "at-signal-strength-cell": AtSignalStrengthCell;
         "at-src-dest": Omit<AtSrcDest, keyof AtSrcDestAttributes> & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes]?: AtSrcDest[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `attr:${K}`]?: AtSrcDestAttributes[K] } & { [K in keyof AtSrcDest & keyof AtSrcDestAttributes as `prop:${K}`]?: AtSrcDest[K] };
         "at-static-table": Omit<AtStaticTable, keyof AtStaticTableAttributes> & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes]?: AtStaticTable[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `attr:${K}`]?: AtStaticTableAttributes[K] } & { [K in keyof AtStaticTable & keyof AtStaticTableAttributes as `prop:${K}`]?: AtStaticTable[K] };
         "at-status-bar": Omit<AtStatusBar, keyof AtStatusBarAttributes> & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes]?: AtStatusBar[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `attr:${K}`]?: AtStatusBarAttributes[K] } & { [K in keyof AtStatusBar & keyof AtStatusBarAttributes as `prop:${K}`]?: AtStatusBar[K] };
@@ -11168,6 +11272,16 @@ declare module "@stencil/core" {
              * @description A sidebar trigger component for the sidebar. Nested inside an at-sidebar, it addresses its closest ancestor; given a `data-sidebar` attribute matching a target at-sidebar's `trigger_id`, it addresses that sidebar remotely instead.
              */
             "at-sidebar-trigger": LocalJSX.IntrinsicElements["at-sidebar-trigger"] & JSXBase.HTMLAttributes<HTMLAtSidebarTriggerElement>;
+            /**
+             * @category Feedback
+             * @description A compact signal-strength indicator that converts an RSSI value in dBm into one to four bars, with an optional dBm value.
+             */
+            "at-signal-strength": LocalJSX.IntrinsicElements["at-signal-strength"] & JSXBase.HTMLAttributes<HTMLAtSignalStrengthElement>;
+            /**
+             * @category Data Tables
+             * @description A cell component that renders an RSSI value in dBm as signal-strength bars, followed by the dBm value by default.
+             */
+            "at-signal-strength-cell": LocalJSX.IntrinsicElements["at-signal-strength-cell"] & JSXBase.HTMLAttributes<HTMLAtSignalStrengthCellElement>;
             /**
              * @category Utilities
              * @description A src-dest component for displaying source and destination information.

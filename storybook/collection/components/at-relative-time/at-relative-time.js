@@ -90,7 +90,7 @@ export class AtRelativeTimeComponent {
         }
     }
     render() {
-        return (h(Host, { key: '16f51ea4f0ad6ae33e5e4db6cf4b253f567f6dfa', class: "inline-flex" }, h("at-tooltip", { key: '9cee1e7b4275849e7d2dc345e374442e972a3ab0', position: "top", disabled: !this.titleText }, h("time", { key: 'c9768381ef4891b227b3cca9ac4f3c89ae36244d', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
+        return (h(Host, { key: '0f8f3d2765c95c3fe42393494ef1d1cb6d1041bf', class: "inline-flex" }, h("at-tooltip", { key: '99c6599bfecf2806d5b10621e54c3b56b9b4518b', position: "top", disabled: !this.titleText }, h("time", { key: '9d14c9f6d3fcfa33662bca4a2a1eb3039be55caa', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
     }
     static get is() { return "at-relative-time"; }
     static get encapsulation() { return "shadow"; }
