@@ -87,6 +87,12 @@ export class AtMultiSelectComponent {
      */
     menu_max_height;
     /**
+     * Accept values that are not among the options. The dropdown offers the text
+     * entered in the search field as an entry, and the selection shows it
+     * verbatim. Requires `typeahead`, which supplies the search field.
+     */
+    allow_custom = false;
+    /**
      * How the trigger displays the current selection.
      *
      * `chips` renders the selected values as removable chips inside the trigger,
@@ -259,7 +265,48 @@ export class AtMultiSelectComponent {
             this.searchInputEl.focus();
         }
     }
+    addCustomEntry() {
+        const custom = this.customEntryText;
+        if (!custom)
+            return;
+        if (!this.value.includes(custom)) {
+            this.value = [...this.value, custom];
+            this.atuiChange.emit(this.value);
+        }
+        this.searchText = '';
+    }
+    /**
+     * The search text when it is a value no option already carries, which is what
+     * the custom entry offers. Empty whenever there is nothing to offer.
+     */
+    get customEntryText() {
+        if (!this.allow_custom || !this.typeahead)
+            return '';
+        const trimmed = this.searchText.trim();
+        if (!trimmed)
+            return '';
+        const lowered = trimmed.toLowerCase();
+        const covers = (value, label) => value.toLowerCase() === lowered || label.toLowerCase() === lowered;
+        const inOptions = (this.filteredOptions ?? []).some((option) => {
+            const entries = this.isGroup(option) ? option.children : [option];
+            return entries.some((entry) => covers(entry.value, entry.label || ''));
+        });
+        if (inOptions)
+            return '';
+        const inSlotted = this.optionEls.some((optionEl) => covers(optionEl.value, optionEl.label || ''));
+        if (inSlotted)
+            return '';
+        return trimmed;
+    }
     async handleKeyDownMenu(event) {
+        if (event.key === 'Enter' &&
+            event.target === this.searchInputEl &&
+            !this.hasAnyMatchingOptions &&
+            this.customEntryText) {
+            event.preventDefault();
+            this.addCustomEntry();
+            return;
+        }
         if (event.key === 'Enter' || event.key === ' ') {
             if (event.target instanceof HTMLLIElement) {
                 event.preventDefault();
@@ -301,22 +348,25 @@ export class AtMultiSelectComponent {
         }
         return this.hasMatchingElOptions;
     }
+    get hasSearchField() {
+        return !!this.typeahead && (this.hasAnyOptions || !!this.allow_custom);
+    }
     get hasAnyOptions() {
         const result = (this.options && this.options.length > 0) ||
             this.optionEls.length > 0;
         return result;
     }
     render() {
-        return (h(Host, { key: 'e2e150c9636f286b2b01a18c2bc696c89f7e0746', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '6386d1fb077ac48ae005f1686693537a11b6f95e', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '56c7ac1da652783f7ad37f372469fa5ef53f7ebe', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'd8c35bdf7d2cba479fc46936b42e52e53e310fa1', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'ff13a51355f17d55af7f094f5137ab643d75d908' }, this.error_text && this.invalid && (h("span", { key: '8a806d018674283434a0b4bc34d0802229bd7d1e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: 'a6aaf6db4fea93ad47e31035b6eddedc28763b8e' }, this.error_text && this.invalid && (h("span", { key: '806bedafa63829ee19fdc2c4a49601223e8a742b', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {
@@ -350,7 +400,7 @@ export class AtMultiSelectComponent {
     renderOptions() {
         return (h("ul", { id: this.menuId, role: "listbox", "aria-multiselectable": "true", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.typeahead && this.hasAnyOptions && (h("div", { class: "relative z-10 p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
+            } }, this.hasSearchField && (h("div", { class: "relative z-10 p-4" }, h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
             }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (h("div", { class: "absolute top-4 right-4" }, h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
@@ -375,11 +425,12 @@ export class AtMultiSelectComponent {
             }
             return this.renderOption(option);
         })
-            .filter(Boolean), h("slot", null), this.typeahead &&
+            .filter(Boolean), h("slot", null), this.customEntryText && (h("at-select-option", { key: "multi-select-custom-entry", "data-name": "multi-select-custom-option", value: this.customEntryText, label: `${this.translations?.ATUI?.USE || 'Use'} "${this.customEntryText}"`, is_active: this.value.includes(this.customEntryText), onAtuiClick: () => this.addCustomEntry() })), this.typeahead &&
             this.searchText &&
             this.hasAnyOptions &&
-            !this.hasAnyMatchingOptions && (h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
-            'No results found')), !this.hasAnyOptions && (h("div", { "data-name": "no-options-available", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
+            !this.hasAnyMatchingOptions &&
+            !this.customEntryText && (h("div", { "data-name": "no-results-found", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_RESULTS_FOUND ||
+            'No results found')), !this.hasAnyOptions && !this.customEntryText && (h("div", { "data-name": "no-options-available", class: "text-body text-muted bg-input-background w-full px-16 py-8" }, this.translations?.ATUI?.NO_OPTIONS_AVAILABLE ||
             'No options available'))));
     }
     renderGroupedOption(option) {
@@ -652,6 +703,26 @@ export class AtMultiSelectComponent {
                 "setter": false,
                 "reflect": false,
                 "attribute": "menu_max_height"
+            },
+            "allow_custom": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Accept values that are not among the options. The dropdown offers the text\nentered in the search field as an entry, and the selection shows it\nverbatim. Requires `typeahead`, which supplies the search field."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "allow_custom",
+                "defaultValue": "false"
             },
             "selection_display": {
                 "type": "string",

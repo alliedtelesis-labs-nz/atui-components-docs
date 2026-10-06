@@ -60,6 +60,12 @@ export declare class AtMultiSelectComponent {
      */
     menu_max_height?: string;
     /**
+     * Accept values that are not among the options. The dropdown offers the text
+     * entered in the search field as an entry, and the selection shows it
+     * verbatim. Requires `typeahead`, which supplies the search field.
+     */
+    allow_custom?: boolean;
+    /**
      * How the trigger displays the current selection.
      *
      * `chips` renders the selected values as removable chips inside the trigger,
@@ -110,12 +116,19 @@ export declare class AtMultiSelectComponent {
     private updateIsOpenState;
     private handleChange;
     private handleClear;
+    private addCustomEntry;
+    /**
+     * The search text when it is a value no option already carries, which is what
+     * the custom entry offers. Empty whenever there is nothing to offer.
+     */
+    private get customEntryText();
     private handleKeyDownMenu;
     private handleSearchInput;
     private isGroup;
     private handleRemoveChip;
     get hasMatchingOptions(): boolean;
     get hasAnyMatchingOptions(): boolean;
+    get hasSearchField(): boolean;
     get hasAnyOptions(): boolean;
     render(): any;
     renderLabel(): any;

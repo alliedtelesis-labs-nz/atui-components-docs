@@ -12,6 +12,7 @@ const Template = (args) => `
     ${args.readonly ? 'readonly' : ''}
     ${args.required ? 'required' : ''}
     ${args.typeahead ? 'typeahead' : ''}
+    ${args.allow_custom ? 'allow_custom' : ''}
     selection_display="${args.selection_display ?? 'chips'}"
 />
 ${args.options
@@ -55,4 +56,29 @@ CountTrigger.args = {
     info_text: '',
     error_text: '',
     required: false,
+};
+export const AllowCustom = Template.bind({});
+AllowCustom.args = {
+    ...Default.args,
+    id: 'multi-select-allow-custom',
+    options: [
+        { value: '0x004C', label: 'Apple (0x004C)' },
+        { value: '0x0059', label: 'Nordic Semiconductor (0x0059)' },
+        { value: '0x0087', label: 'Fitbit (0x0087)' },
+    ],
+    value: ['0x004C', '0x0499'],
+    label: 'Companies',
+    placeholder: 'Search a company or type a hex ID',
+    hint_text: '',
+    info_text: 'Pick companies or type a hex ID, e.g. 0x0499',
+    error_text: '',
+    required: false,
+    allow_custom: true,
+};
+AllowCustom.parameters = {
+    docs: {
+        description: {
+            story: 'With `allow_custom` the dropdown offers the search text as an entry when no option carries it, and the selection then shows that value verbatim. Requires `typeahead`. Use it where the option list is a convenience rather than the full set of legal values.',
+        },
+    },
 };

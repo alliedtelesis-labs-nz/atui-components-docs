@@ -1899,6 +1899,11 @@ export namespace Components {
      */
     interface AtMultiSelect {
         /**
+          * Accept values that are not among the options. The dropdown offers the text entered in the search field as an entry, and the selection shows it verbatim. Requires `typeahead`, which supplies the search field.
+          * @default false
+         */
+        "allow_custom"?: boolean;
+        /**
           * Set the select to be clearable.
          */
         "clearable"?: boolean;
@@ -7861,6 +7866,11 @@ declare namespace LocalJSX {
      */
     interface AtMultiSelect {
         /**
+          * Accept values that are not among the options. The dropdown offers the text entered in the search field as an entry, and the selection shows it verbatim. Requires `typeahead`, which supplies the search field.
+          * @default false
+         */
+        "allow_custom"?: boolean;
+        /**
           * Set the select to be clearable.
          */
         "clearable"?: boolean;
@@ -10263,6 +10273,7 @@ declare namespace LocalJSX {
         "readonly": boolean;
         "typeahead": boolean;
         "menu_max_height": string;
+        "allow_custom": boolean;
         "selection_display": AtMultiSelectSelectionDisplay;
     }
     interface AtPlaceholderAttributes {

@@ -4,3 +4,4 @@ declare const _default: {
 export default _default;
 export declare const Default: any;
 export declare const CountTrigger: any;
+export declare const AllowCustom: any;
