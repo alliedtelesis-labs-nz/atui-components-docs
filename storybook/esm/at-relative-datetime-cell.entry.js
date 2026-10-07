@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-Baj27LS8.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-Cw-6gA7Z.js';
 import { p as parseCellDateTime, g as getRelativeTimeLabel } from './relative-time-label-CLVJlEqK.js';
 
 const AtRelativeDateTimeCell = class {

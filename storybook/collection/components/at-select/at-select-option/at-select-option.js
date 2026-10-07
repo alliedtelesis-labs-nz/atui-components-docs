@@ -4,7 +4,7 @@ const optionVariantsConfig = {
     variants: {
         active: {
             true: 'bg-active-background hover:bg-active-background text-active-foreground',
-            false: 'hover:bg-surface-overlay/10 focus-within:bg-surface-overlay/10',
+            false: 'hover:bg-surface-overlay/10 focus-visible:bg-surface-overlay/10',
         },
         group_option: {
             true: 'px-16 ',
@@ -48,7 +48,7 @@ export class AtSelectOptionComponent {
         this.atuiClick.emit(this.value);
     }
     render() {
-        const getOptionClassname = classlist('transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out text-body focus:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal focus:ring focus:outline-0 focus:ring-inset gap-4', optionVariantsConfig);
+        const getOptionClassname = classlist('transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out text-body focus-visible:ring-active-glow flex w-full min-w-0 items-center rounded-menu-item p-8 font-normal focus-visible:ring focus:outline-0 focus-visible:ring-inset gap-4', optionVariantsConfig);
         const disabledClass = this.disabled
             ? 'pointer-events-none opacity-50 text-disabled-foreground'
             : 'cursor-pointer';
@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: 'd7297b8634f8ed9c2af2eab62c440f35286157f3', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '1b6967e4b4e40ed04ba5f5301ed6cb6ce5a1b5e4' }), h("span", { key: 'd0ed3c6afbca1c4245b72ad1a0b9bff374be3a90', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: 'a816488c23fa299925bbeb914e40930bc158417f', name: "after" })));
+        return (h("li", { key: '266863fc1edc116582c975f82428cbaa71b545b3', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: 'b72470d4d15e0559852a1f2eba61fc9293fbf912' }), h("span", { key: 'f9fd20167d4fd559ea88af27a9b7907a3646fdd7', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: '6a996b8b44cbbe88381c9a524f996befe325a9d1', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

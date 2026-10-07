@@ -5048,11 +5048,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 rgba(0, 0, 0, 0));
 }
 
-.focus\:ring-inset:focus {
-  --tw-ring-inset:
-      inset;
-}
-
 .focus\:ring-active-glow:focus {
   --tw-ring-opacity:
       1;

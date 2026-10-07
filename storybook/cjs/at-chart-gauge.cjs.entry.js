@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Dzqi4iVM.js');
+var index = require('./index-D62KzS1q.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
