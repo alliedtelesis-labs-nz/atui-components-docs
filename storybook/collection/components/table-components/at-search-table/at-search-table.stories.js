@@ -69,6 +69,66 @@ externalTable.addEventListener('atExternalFiltersChange', (event) => {
 });
 </script>
 `;
+const ServerFiltersTemplate = (args) => `
+<at-search-table id="server-filters-table" page_size=${args.page_size ?? 10} server_side_mode show_table_filters>
+    <div class="flex items-end gap-8" slot="filter-bar">
+        <at-select class="w-input-sm" label="Value" placeholder="Any value" clearable id="server-filters-facet"></at-select>
+    </div>
+</at-search-table>
+<pre id="server-filters-readout" class="mt-16 text-xs"></pre>
+<script>
+const serverFiltersTable = document.querySelector('#server-filters-table');
+const serverFiltersFacet = document.querySelector('#server-filters-facet');
+const allRows = ${JSON.stringify(args.table_data.items, null, 4)};
+serverFiltersTable.col_defs = ${JSON.stringify(args.col_defs, null, 4)}
+serverFiltersTable.table_data = { items: allRows, total: allRows.length };
+serverFiltersFacet.options = allRows.map((row) => ({ label: row.col_two, value: row.col_two }));
+
+serverFiltersFacet.addEventListener('atuiChange', (event) => {
+    serverFiltersTable.search_filters = {
+        id: 'facets',
+        logical_operator: 'And',
+        children: event.detail
+            ? [{ id: 'col_two', label: 'Value', operator: 'is', value: event.detail }]
+            : [],
+    };
+});
+
+serverFiltersTable.addEventListener('atExternalFiltersChange', (event) => {
+    serverFiltersTable.search_filters = event.detail.filters;
+    serverFiltersFacet.value = '';
+});
+
+const matches = (row, node) => {
+    if (!node) return true;
+    if (node.children) {
+        const results = node.children.map((child) => matches(row, child));
+        if (!results.length) return true;
+        return node.logical_operator === 'Or' ? results.some(Boolean) : results.every(Boolean);
+    }
+    if (!node.value) return true;
+    const actual = String(row[node.id] ?? '').toLowerCase();
+    const wanted = node.value.toLowerCase();
+    if (node.operator === 'is') return actual === wanted;
+    if (node.operator === 'is not') return actual !== wanted;
+    return actual.includes(wanted);
+};
+
+// Stands in for the server: it evaluates filter_tree, the only field that keeps
+// the And/Or grouping.
+serverFiltersTable.addEventListener('atSearchParamsChange', (event) => {
+    const { filter_tree, fieldFilters, startRow, endRow } = event.detail;
+    const matching = allRows.filter((row) => matches(row, filter_tree));
+    serverFiltersTable.table_data = {
+        items: matching.slice(startRow ?? 0, endRow ?? matching.length),
+        total: matching.length,
+    };
+    document.querySelector('#server-filters-readout').textContent =
+        'filter_tree: ' + JSON.stringify(filter_tree, null, 2) +
+        '\\n\\nfieldFilters: ' + JSON.stringify(fieldFilters, null, 2);
+});
+</script>
+`;
 const PreselectedTemplate = (args) => `
 <at-search-table
     id="preselected-table"
@@ -290,6 +350,18 @@ WithFilterBar.args = Default.args;
  */
 export const ExternalFilters = ExternalFiltersTemplate.bind({});
 ExternalFilters.args = Default.args;
+/**
+ * In `server_side_mode` the table filters nothing: it emits `atSearchParamsChange`
+ * and renders what the host hands back. Build the query from `filter_tree`, which
+ * carries the facet bar's `search_filters` and the column filters joined by And,
+ * with every operator and And/Or group intact. `fieldFilters` keeps one value per
+ * column and drops the grouping, so a backend cannot rebuild the query from it.
+ *
+ * Pick a value in the facet, then add a column filter with an Or group, and
+ * compare the two payloads under the table.
+ */
+export const ServerSideFilters = ServerFiltersTemplate.bind({});
+ServerSideFilters.args = Default.args;
 /**
  * Selection is opt-in twice over: `row_selection` is off by default, and the
  * checkbox column renders only when `row_id_field` names the field identifying a

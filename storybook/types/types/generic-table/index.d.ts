@@ -22,7 +22,16 @@ export interface AtISearchTableParams {
     endRow?: number;
     direction?: SortDirection.ASC | SortDirection.DESC;
     globalFilter?: string;
+    /**
+     * One value per column, flattened: And/Or grouping is lost, and a column filtered
+     * twice keeps only one value. Build server queries from `filter_tree` instead.
+     */
     fieldFilters?: AtIFieldFilters;
+    /**
+     * Every active condition with its And/Or grouping: the host's `search_filters` and
+     * the column filters, joined by And. Absent when no condition is set.
+     */
+    filter_tree?: AtIFilterGroup;
     columns?: string[];
     customDateFilter?: DateRange;
     relativeTime?: AtITimeWithUnit;
@@ -59,10 +68,7 @@ export interface AtISelection<T = any> {
      */
     query?: AtISelectionQuery;
 }
-export interface AtISelectionQuery extends Omit<AtISearchTableParams, 'startRow' | 'endRow'> {
-    /** The merged filter tree. Authoritative: `fieldFilters` flattens operators away. */
-    filter_tree?: AtIFilterGroup;
-}
+export type AtISelectionQuery = Omit<AtISearchTableParams, 'startRow' | 'endRow'>;
 export interface AtIPaging {
     num?: number;
     page?: number;

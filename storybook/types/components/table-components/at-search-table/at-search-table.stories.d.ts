@@ -23,6 +23,17 @@ export declare const WithFilterBar: any;
  */
 export declare const ExternalFilters: any;
 /**
+ * In `server_side_mode` the table filters nothing: it emits `atSearchParamsChange`
+ * and renders what the host hands back. Build the query from `filter_tree`, which
+ * carries the facet bar's `search_filters` and the column filters joined by And,
+ * with every operator and And/Or group intact. `fieldFilters` keeps one value per
+ * column and drops the grouping, so a backend cannot rebuild the query from it.
+ *
+ * Pick a value in the facet, then add a column filter with an Or group, and
+ * compare the two payloads under the table.
+ */
+export declare const ServerSideFilters: any;
+/**
  * Selection is opt-in twice over: `row_selection` is off by default, and the
  * checkbox column renders only when `row_id_field` names the field identifying a
  * row - a selection that outlives a page change cannot be held by row position.
