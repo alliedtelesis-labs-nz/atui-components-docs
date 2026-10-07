@@ -498,7 +498,13 @@ export declare class AtSearchTable {
      */
     private syncColumnVisibility;
     handleColumnChange(event: CustomEvent): void;
-    handleFilterChange(event: CustomEvent<AtIFilterGroup>): void;
+    /**
+     * The filter menu is seeded with the table's own conditions only, so a host
+     * condition missing from its tree was never offered for removal.
+     */
+    handleMenuFilterChange(event: CustomEvent<AtIFilterGroup>): void;
+    handleChipFilterChange(event: CustomEvent<AtIFilterGroup>): void;
+    private applyInternalFilterTree;
     /** A copy of `group` without the listed conditions, leaving the source untouched. */
     private pruneConditions;
     private relabelFilterNode;

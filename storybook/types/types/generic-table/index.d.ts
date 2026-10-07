@@ -13,6 +13,7 @@ export interface AtISearchData<T> {
 export type AtTableFilterContent = string | string[] | number | {
     [key: string]: any;
 };
+/** @deprecated Only the deprecated `AtISearchTableParams.fieldFilters` uses it. */
 export interface AtIFieldFilters {
     [key: string]: AtTableFilterContent;
 }
@@ -23,15 +24,18 @@ export interface AtISearchTableParams {
     direction?: SortDirection.ASC | SortDirection.DESC;
     globalFilter?: string;
     /**
-     * One value per column, flattened: And/Or grouping is lost, and a column filtered
-     * twice keeps only one value. Build server queries from `filter_tree` instead.
+     * @deprecated Use `column_filters`, and join it with your own `search_filters`. This
+     * flat map keeps one value per column and drops operators and And/Or grouping, so a
+     * query built from it can return the wrong rows. It will be removed in the next minor
+     * release.
      */
     fieldFilters?: AtIFieldFilters;
     /**
-     * Every active condition with its And/Or grouping: the host's `search_filters` and
-     * the column filters, joined by And. Absent when no condition is set.
+     * The conditions built in the column filter menu, with their And/Or grouping. The
+     * host's own `search_filters` are not included: the host holds them already and
+     * joins the two with And when it builds a query. Absent when no column filter is set.
      */
-    filter_tree?: AtIFilterGroup;
+    column_filters?: AtIFilterGroup;
     columns?: string[];
     customDateFilter?: DateRange;
     relativeTime?: AtITimeWithUnit;

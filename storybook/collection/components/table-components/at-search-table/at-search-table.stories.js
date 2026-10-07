@@ -114,18 +114,23 @@ const matches = (row, node) => {
     return actual.includes(wanted);
 };
 
-// Stands in for the server: it evaluates filter_tree, the only field that keeps
-// the And/Or grouping.
+// Stands in for the server. The host joins its own facets with the table's
+// column_filters, so the server receives one tree.
 serverFiltersTable.addEventListener('atSearchParamsChange', (event) => {
-    const { filter_tree, fieldFilters, startRow, endRow } = event.detail;
-    const matching = allRows.filter((row) => matches(row, filter_tree));
+    const { column_filters, startRow, endRow } = event.detail;
+    const query = {
+        id: 'query',
+        logical_operator: 'And',
+        children: [serverFiltersTable.search_filters, column_filters].filter(Boolean),
+    };
+    const matching = allRows.filter((row) => matches(row, query));
     serverFiltersTable.table_data = {
         items: matching.slice(startRow ?? 0, endRow ?? matching.length),
         total: matching.length,
     };
     document.querySelector('#server-filters-readout').textContent =
-        'filter_tree: ' + JSON.stringify(filter_tree, null, 2) +
-        '\\n\\nfieldFilters: ' + JSON.stringify(fieldFilters, null, 2);
+        'column_filters: ' + JSON.stringify(column_filters, null, 2) +
+        '\\n\\nquery sent to the server: ' + JSON.stringify(query, null, 2);
 });
 </script>
 `;
@@ -352,13 +357,13 @@ export const ExternalFilters = ExternalFiltersTemplate.bind({});
 ExternalFilters.args = Default.args;
 /**
  * In `server_side_mode` the table filters nothing: it emits `atSearchParamsChange`
- * and renders what the host hands back. Build the query from `filter_tree`, which
- * carries the facet bar's `search_filters` and the column filters joined by And,
- * with every operator and And/Or group intact. `fieldFilters` keeps one value per
- * column and drops the grouping, so a backend cannot rebuild the query from it.
+ * and renders what the host hands back. `column_filters` carries the conditions
+ * built in the column filter menu, with every operator and And/Or group intact.
+ * The facets are the host's own `search_filters`, so the host joins the two with
+ * And when it builds the query.
  *
  * Pick a value in the facet, then add a column filter with an Or group, and
- * compare the two payloads under the table.
+ * compare `column_filters` with the query under the table.
  */
 export const ServerSideFilters = ServerFiltersTemplate.bind({});
 ServerSideFilters.args = Default.args;

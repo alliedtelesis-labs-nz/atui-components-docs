@@ -24,13 +24,13 @@ export declare const WithFilterBar: any;
 export declare const ExternalFilters: any;
 /**
  * In `server_side_mode` the table filters nothing: it emits `atSearchParamsChange`
- * and renders what the host hands back. Build the query from `filter_tree`, which
- * carries the facet bar's `search_filters` and the column filters joined by And,
- * with every operator and And/Or group intact. `fieldFilters` keeps one value per
- * column and drops the grouping, so a backend cannot rebuild the query from it.
+ * and renders what the host hands back. `column_filters` carries the conditions
+ * built in the column filter menu, with every operator and And/Or group intact.
+ * The facets are the host's own `search_filters`, so the host joins the two with
+ * And when it builds the query.
  *
  * Pick a value in the facet, then add a column filter with an Or group, and
- * compare the two payloads under the table.
+ * compare `column_filters` with the query under the table.
  */
 export declare const ServerSideFilters: any;
 /**

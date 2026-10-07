@@ -1265,7 +1265,14 @@ const AtSearchTable = class {
         });
         this.col_defs = updatedColDefs;
     }
-    handleFilterChange(event) {
+    /**
+     * The filter menu is seeded with the table's own conditions only, so a host
+     * condition missing from its tree was never offered for removal.
+     */
+    handleMenuFilterChange(event) {
+        this.applyInternalFilterTree(event.detail);
+    }
+    handleChipFilterChange(event) {
         const tree = event.detail;
         const externalKeys = this.externalConditionKeys();
         if (externalKeys.size) {
@@ -1281,7 +1288,9 @@ const AtSearchTable = class {
         // Whatever the chip row returned, the internal set keeps only the
         // conditions the table itself authored. External ones are the host's to
         // drop, and arrive back through `search_filters`.
-        const internalTree = this.pruneConditions(tree, flattenFilterConditions(tree).filter((condition) => externalKeys.has(this.conditionKey(condition))));
+        this.applyInternalFilterTree(this.pruneConditions(tree, flattenFilterConditions(tree).filter((condition) => externalKeys.has(this.conditionKey(condition)))));
+    }
+    applyInternalFilterTree(internalTree) {
         if (!internalTree || countFilterConditions(internalTree) === 0) {
             // Handle clear all case
             this.selectedFilters = {
@@ -1460,9 +1469,8 @@ const AtSearchTable = class {
             ...(hasPopulatedFieldFilter
                 ? { fieldFilters: this.activeFilters }
                 : {}),
-            ...(this.activeFilterTree &&
-                countFilterConditions(this.activeFilterTree) > 0
-                ? { filter_tree: this.activeFilterTree }
+            ...(countFilterConditions(this.selectedFilters) > 0
+                ? { column_filters: this.selectedFilters }
                 : {}),
             startRow: startRow,
             endRow: endRow,
@@ -1503,8 +1511,8 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (h(Host, { key: 'b09234c91a11b91ee9e964574bb4f6429f54df99', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: 'dfbad0a7bf5490bdf10ad7b625abd54b265422f4', ag_grid: this.agGrid }, h("at-control-group", { key: 'c1b1455235f0d74faaae2b630dcc63243158cb70', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '3e6c08708b6a1ab3149ba7c02da0da4277c0bbbc', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleFilterChange(event) })), h("at-search", { key: 'd27a52d48ae2c55341ec119ef5788c2ab3bfa11a', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'c94a541015ae65388f1007dce34b1429ee8ead9d', class: "contents", slot: "filter-bar" }, h("slot", { key: '10526f66746ab9700f8b5717b6f6d26dd83593d3', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '945b4432f095d64a404a9ebca1167edb7a89b49f', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'b5e3e6ce3c831354272aa8cfb2c6e3dab682e902', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '607a46dcbe83446b5e83ddf8d816ebae4ca5ce86', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: 'bd2ba08f45eaa48cfee5a7acf497e1acca0b9b9c', ag_grid: this.agGrid }, h("at-control-group", { key: '77e4891f444d7c28ac6dd6f537248063f501a2af', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: 'a280bb6a15577afbdb32021a44a2eda09b232b9b', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: '6bde28131fa32c6610dc94f412fad58194d6c841', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'a6a0e0a9b23b82181df3c9a65a56fce0480c4db5', class: "contents", slot: "filter-bar" }, h("slot", { key: 'c2f1b7236df195c1105590731037b2e7a7ddab84', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '1a5eddedcbea4cb63c97951eaabfb17582395695', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '2b48ee23fa8d885baed299396ac31cc46e5ab417', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1513,10 +1521,10 @@ const AtSearchTable = class {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: '3c23175b898feafb698ae22a5b4436f7a5426817', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '08a8339b6997ea76be6f6d982824b4fbd3d2ada2', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: 'c9351571366816dac4e49343d310a1e69a41b223', slot: "leading-actions" }, h("slot", { key: '3041e9dea28e9adecdc5f86a6c9fd1396ddfecb4', name: "leading-actions" })), h("div", { key: '396d59182d1c8aa37077781944ddd3d9316fbba0', slot: "actions" }, h("slot", { key: 'e46e55edb1b88637436a28e1164c51f15b489edb', name: "actions" }))), this.renderSelectionBar(), h("div", { key: '51a4abad3b4a3e0560701b21b2ed82f3c2093d27', class: "relative" }, h("at-table", { key: '11166b3997e86b03c57c382d86e4e61b7c94e3ae', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'd1230beac474670c77e30337667f774d2cb358c7', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '07d8f1ce5f77f9d58825bbb9d2333b42e8b82872', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '69a002cd5e74d070c936c5a0ad11110ed4f07fc4', slot: "leading-actions" }, h("slot", { key: 'e1699fa7d3bb0b3af467369e0707437bea87e207', name: "leading-actions" })), h("div", { key: '62cb27a535a2ee1c02451bf7e87a0903bc8cc9ed', slot: "actions" }, h("slot", { key: 'e21d9a5213b1b9ed7f386ca37c0484c9750fd644', name: "actions" }))), this.renderSelectionBar(), h("div", { key: '9f20ee125c1f3f32a54ff150128395f43e1c5db9', class: "relative" }, h("at-table", { key: '208b63cf9c341dab36a2c1a375b1a83084268167', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: 'dbd5d37e4c771e7993ccea6fa9b7e4c274379f27', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '749070ee7507b8defd915d37ced12a3354e77fb2', class: "flex items-center" }, h("at-loading", { key: '13c06035a92ef03655fccdd73bef4970b697ed72', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '10aac26ba28b8333f3930555da5bbc26dd59eb89', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '6fe450878acfa8d51bf90fd8b1623ee0d5043485', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '26f975815ae4f29ca3217d2ce43e39ff9e970fba', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'a63dbbfbf12b278f04194ed1d086827cac3f5651', class: "flex items-center" }, h("at-loading", { key: '45afd57136122707c0d01422bcdede263e3f0396', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '05dbebbe1a3831f8b985407f7dc2d68bd0a1633a', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'c25ca0129392c9c1f3768add305d081d5c082879', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "page_size": [{
