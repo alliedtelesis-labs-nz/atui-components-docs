@@ -1,9 +1,11 @@
 import { ICellRendererComp, ICellRendererParams } from 'ag-grid-community';
+import type { AtHealthDotSize } from '../../../at-health-dot/at-health-dot';
 export type AtHealthDotCellStatus = 'good' | 'warn' | 'bad';
 export type AtHealthDotCellDisplay = 'dot' | 'bar';
 export interface AtIHealthDotCellParams extends ICellRendererParams {
     mapValueToStatus?: (data: any) => AtHealthDotCellStatus;
     display?: AtHealthDotCellDisplay;
+    size?: AtHealthDotSize;
 }
 /**
  * @category Data Tables
@@ -13,6 +15,7 @@ export declare class AtHealthDotCell implements ICellRendererComp {
     el: HTMLElement;
     type: AtHealthDotCellStatus;
     display: AtHealthDotCellDisplay;
+    size: AtHealthDotSize;
     init(params: AtIHealthDotCellParams): void;
     getGui(): HTMLElement;
     refresh(params: AtIHealthDotCellParams): boolean;

@@ -17,8 +17,10 @@ const AtHealthDotCell = class {
     get el() { return getElement(this); }
     type = 'good';
     display = 'dot';
+    size = 'md';
     init(params) {
         this.display = params.display ?? 'dot';
+        this.size = params.size ?? 'md';
         const mappedType = params.mapValueToStatus
             ? params.mapValueToStatus(params.data)
             : params.value;
@@ -49,7 +51,7 @@ const AtHealthDotCell = class {
         if (this.display === 'bar') {
             return (h(Host, { class: "block h-full" }, h("span", { "data-name": "health-bar", class: "absolute inset-y-0 left-0 w-8", style: { backgroundColor: barColors[this.type] }, role: "img", "aria-label": statusLabels[this.type] })));
         }
-        return (h(Host, { class: "flex h-full items-center justify-center" }, h("at-health-dot", { status: this.type })));
+        return (h(Host, { class: "flex h-full items-center justify-center" }, h("at-health-dot", { status: this.type, size: this.size })));
     }
 };
 
