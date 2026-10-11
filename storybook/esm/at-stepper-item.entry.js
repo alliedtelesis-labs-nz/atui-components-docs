@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-Cw-6gA7Z.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DJOijW_g.js';
 
 const dotVariants = {
     pending: 'bg-disabled-foreground/40 h-8 w-8',

@@ -1,4 +1,4 @@
-import { h, r as registerInstance, a as getElement, H as Host } from './index-Cw-6gA7Z.js';
+import { h, r as registerInstance, a as getElement, H as Host } from './index-DJOijW_g.js';
 
 const LINE_COLOR = 'var(--token-border-muted, currentColor)';
 const TOP_FACE_COLOR = 'var(--token-surface-foreground, transparent)';

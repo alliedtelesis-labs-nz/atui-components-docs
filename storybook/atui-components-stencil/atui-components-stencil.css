@@ -2510,11 +2510,14 @@ strong {
   font-weight: var(--token-font-weight-bold);
 }
 
-* {
-  scrollbar-width: auto;
-  scrollbar-color: var(--token-color-base-slate-400) transparent;
+/* Chromium ignores ::-webkit-scrollbar styles while scrollbar-color is set,
+       falling back to a native scrollbar that is overlaid (hover-only) on macOS. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--token-color-base-slate-400) transparent;
+  }
 }
-
 *::-webkit-scrollbar {
   height: 8px;
   width: 8px;
