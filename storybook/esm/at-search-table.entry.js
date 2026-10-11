@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DJOijW_g.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-0agitfAf.js';
 import { f as fetchTranslations, i as interpolate } from './translation-TgeIMQBw.js';
 import { b as flattenFilterConditions, c as countFilterConditions, r as rowMatchesFilterGroup, i as isFilterGroup } from './filter-tree.util-CYRBwQ7z.js';
 import { r as resolveCellSearchText } from './cell-search-text-CpjHbnfb.js';
@@ -385,6 +385,7 @@ const AtSearchTable = class {
      * exactly once, whichever lifecycle first sees the grid and columns ready.
      */
     hasEmittedInitialServerParams = false;
+    adoptedPageSizeProp;
     tableEl;
     get shouldShowTableFilters() {
         return (this.show_table_filters && this.col_defs && this.col_defs.length > 0);
@@ -440,9 +441,6 @@ const AtSearchTable = class {
                 .map((colDef) => colDef.headerName || colDef.field || colDef.colId)
                 .join(', '));
     }
-    handlePageSizeProp(newValue) {
-        this.pageSize = newValue || 10;
-    }
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = flattenFilterConditions(newValue).map((f) => f.id);
     }
@@ -464,7 +462,6 @@ const AtSearchTable = class {
         }
     }
     async componentWillLoad() {
-        this.pageSize = this.page_size || 10;
         this.translations = await fetchTranslations(this.el);
         this.warnIfHasUpdatesIsANoOp();
         this.applySelectedIdsProp();
@@ -503,6 +500,27 @@ const AtSearchTable = class {
             await this.initGrid();
         }
         this.emitInitialServerParamsIfReady();
+    }
+    /**
+     * The custom-elements build only arms `@Watch` once a
+     * `customElements.whenDefined()` callback runs, which can land after the
+     * first load, so a `page_size` bound in that window would never reach a
+     * watcher. A prop change always schedules a render, so the render is where
+     * the bound value is adopted.
+     */
+    componentWillRender() {
+        this.adoptPageSizeProp();
+    }
+    adoptPageSizeProp() {
+        if (this.page_size === this.adoptedPageSizeProp)
+            return;
+        this.adoptedPageSizeProp = this.page_size;
+        this.pageSize = this.page_size || 10;
+        if (this.hasEmittedInitialServerParams) {
+            this.currentPage = 1;
+            this.clearSelectionForQueryChange();
+            this.emitSearchParamsChange();
+        }
     }
     componentDidRender() {
         this.warnIfRowIdFieldMissing();
@@ -1511,8 +1529,8 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (h(Host, { key: '607a46dcbe83446b5e83ddf8d816ebae4ca5ce86', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: 'bd2ba08f45eaa48cfee5a7acf497e1acca0b9b9c', ag_grid: this.agGrid }, h("at-control-group", { key: '77e4891f444d7c28ac6dd6f537248063f501a2af', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: 'a280bb6a15577afbdb32021a44a2eda09b232b9b', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: '6bde28131fa32c6610dc94f412fad58194d6c841', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'a6a0e0a9b23b82181df3c9a65a56fce0480c4db5', class: "contents", slot: "filter-bar" }, h("slot", { key: 'c2f1b7236df195c1105590731037b2e7a7ddab84', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '1a5eddedcbea4cb63c97951eaabfb17582395695', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '2b48ee23fa8d885baed299396ac31cc46e5ab417', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '274efdb3a82d94118fbb5c731862c8cf726a20de', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: 'f24134a761f8f23e2ab843fc3863fbc93ac67b22', ag_grid: this.agGrid }, h("at-control-group", { key: '3e23be1598233499b10241a604139dcbdb2ac146', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '5b11c5f78e7a81a87202fb8f434cf6986c0f5021', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: 'dea55c2f718a4e68bf155dd098e4ea867137e8a1', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'cfc7d4655268328bb785775c2920a6ec9ceaf09d', class: "contents", slot: "filter-bar" }, h("slot", { key: 'c3d9bb737bf9510f67048a743e8537d6e7703f8f', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '1890a2886cc5a142c40faee67d77b45d935ac725', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '7acda20d4440d3112e7d8f1e9b860c0eca0a183f', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1521,15 +1539,12 @@ const AtSearchTable = class {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: 'd1230beac474670c77e30337667f774d2cb358c7', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '07d8f1ce5f77f9d58825bbb9d2333b42e8b82872', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '69a002cd5e74d070c936c5a0ad11110ed4f07fc4', slot: "leading-actions" }, h("slot", { key: 'e1699fa7d3bb0b3af467369e0707437bea87e207', name: "leading-actions" })), h("div", { key: '62cb27a535a2ee1c02451bf7e87a0903bc8cc9ed', slot: "actions" }, h("slot", { key: 'e21d9a5213b1b9ed7f386ca37c0484c9750fd644', name: "actions" }))), this.renderSelectionBar(), h("div", { key: '9f20ee125c1f3f32a54ff150128395f43e1c5db9', class: "relative" }, h("at-table", { key: '208b63cf9c341dab36a2c1a375b1a83084268167', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: '2207a69433597c1d96df9fe41de32d97ddeff041', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'ae472539ac7bce68ea7e6fd75257a663df025356', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '96d95537dafb155a51e8cfd0119b27c96c6046c5', slot: "leading-actions" }, h("slot", { key: 'f8012d261a352d382b9f2dd6e15a10f04c5a1ea4', name: "leading-actions" })), h("div", { key: 'be2d08f109b87ffa4a0a77e46eb87107ffd846c9', slot: "actions" }, h("slot", { key: 'd7bedd193b950a8b10d3b31ffcd1fd412d91839c', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'bd1e19f4239eb83ace6c165fb2e0e06b20b3cd78', class: "relative" }, h("at-table", { key: '0b1e1ba9e24eba695ee4765b11d489ae9104fd0b', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '26f975815ae4f29ca3217d2ce43e39ff9e970fba', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'a63dbbfbf12b278f04194ed1d086827cac3f5651', class: "flex items-center" }, h("at-loading", { key: '45afd57136122707c0d01422bcdede263e3f0396', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '05dbebbe1a3831f8b985407f7dc2d68bd0a1633a', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'c25ca0129392c9c1f3768add305d081d5c082879', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '8a02f2221a417728a2d9becce1c52536ac3586d1', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '4942112141a34e27ecdcf0cf124336a8540f1343', class: "flex items-center" }, h("at-loading", { key: 'f31eec29531203f2fb8b7990b8c2939227402cd3', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '95009ac58c021b320216daf109c4d006feef278f', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'c154c54800015da45c5cc2b1fcc496d828832f02', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
-        "page_size": [{
-                "handlePageSizeProp": 0
-            }],
         "selectedFilters": [{
                 "handleSelectedFiltersChange": 0
             }],

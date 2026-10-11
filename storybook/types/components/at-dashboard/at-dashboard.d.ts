@@ -58,16 +58,21 @@ export declare class AtDashboard {
      */
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
-    readOnlyChanged(): void;
-    isAnimatedChanged(): void;
-    hasFixedColumnsChanged(): void;
     private get columnOpts();
     private applyBreakpoint;
     private grid?;
     private isScalingToBreakpoint;
     private gridContainerRef?;
     componentDidLoad(): void;
+    /**
+     * The custom-elements build only arms `@Watch` once a
+     * `customElements.whenDefined()` callback runs, which can land after
+     * `componentDidLoad`, so a grid option bound in that window would never
+     * reach a watcher. A prop change always schedules a render, so the grid
+     * options are re-applied after each one.
+     */
     componentDidUpdate(): void;
+    private applyGridOptionProps;
     disconnectedCallback(): void;
     private layoutWidgets;
     private makeWidget;
