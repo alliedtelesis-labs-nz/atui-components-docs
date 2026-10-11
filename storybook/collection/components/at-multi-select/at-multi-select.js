@@ -241,6 +241,13 @@ export class AtMultiSelectComponent {
     }
     updateIsOpenState(event) {
         this.isOpen = event.detail;
+        // The width measured in componentDidLoad is 0 when the select first loads
+        // inside a closed dialog or hidden tab, so re-measure whenever the menu opens.
+        const triggerEl = this.el.querySelector('[slot="menu-trigger"]');
+        const rect = triggerEl?.getBoundingClientRect();
+        if (rect && rect.width > 0) {
+            this.parentWidth = `${rect.width}px`;
+        }
         if (this.isOpen && this.typeahead) {
             requestAnimationFrame(() => {
                 if (this.searchInputEl) {
@@ -357,16 +364,16 @@ export class AtMultiSelectComponent {
         return result;
     }
     render() {
-        return (h(Host, { key: '2e435e05e898c7926faf1661f5adac56867a5ec4', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'f9d9f71f7adbc45b1fbfed7fee5357d3d681b1eb', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '414e54977c050caca3db055919287c05069baeb6', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'ec62a43635b88fa2228c67e0435f813cfca0e276', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '91f8673305cb1d7c658f03b300b238181243bf31' }, this.error_text && this.invalid && (h("span", { key: '58d124df5fa1c7b2f9589c39dc15527436f12f1e', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '702753d7a3cb44894b7c007f775e9cb7027f3260' }, this.error_text && this.invalid && (h("span", { key: '9c372060d10a071243e8a13427ebaf6a96623960', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {
