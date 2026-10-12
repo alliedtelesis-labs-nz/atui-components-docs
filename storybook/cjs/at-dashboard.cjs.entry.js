@@ -6429,6 +6429,18 @@ const AtDashboard = class {
      */
     resizeDragEvent;
     widgetItemsChanged() { }
+    readOnlyChanged() {
+        this.grid?.setStatic(!!this.read_only);
+    }
+    isAnimatedChanged() {
+        this.grid?.setAnimation(this.is_animated !== false);
+    }
+    hasFixedColumnsChanged() {
+        if (!this.grid)
+            return;
+        this.grid.opts.columnOpts = this.columnOpts;
+        this.layoutWidgets();
+    }
     get columnOpts() {
         return {
             columnMax: COLUMN_MAX,
@@ -6514,23 +6526,8 @@ const AtDashboard = class {
         });
         this.layoutWidgets();
     }
-    /**
-     * The custom-elements build only arms `@Watch` once a
-     * `customElements.whenDefined()` callback runs, which can land after
-     * `componentDidLoad`, so a grid option bound in that window would never
-     * reach a watcher. A prop change always schedules a render, so the grid
-     * options are re-applied after each one.
-     */
     componentDidUpdate() {
-        this.applyGridOptionProps();
         this.layoutWidgets();
-    }
-    applyGridOptionProps() {
-        if (!this.grid)
-            return;
-        this.grid.setStatic(!!this.read_only);
-        this.grid.setAnimation(this.is_animated !== false);
-        this.grid.opts.columnOpts = this.columnOpts;
     }
     disconnectedCallback() {
         this.grid?.destroy(false);
@@ -6593,7 +6590,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: 'c18a54a117069dd0d3ba3c197396a04c1ea51eef', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("div", { class: "flex min-w-[140px] flex-col py-1" }, index.h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (index.h("div", { key: 'cfab83061f6860aa5775c90990e00d8bc8867969', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("div", { class: "flex min-w-[140px] flex-col py-1" }, index.h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), index.h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);
@@ -6602,6 +6599,15 @@ const AtDashboard = class {
     static get watchers() { return {
         "widget_items": [{
                 "widgetItemsChanged": 0
+            }],
+        "read_only": [{
+                "readOnlyChanged": 1
+            }],
+        "is_animated": [{
+                "isAnimatedChanged": 1
+            }],
+        "has_fixed_columns": [{
+                "hasFixedColumnsChanged": 1
             }]
     }; }
 };

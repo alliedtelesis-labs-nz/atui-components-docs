@@ -244,7 +244,7 @@ export declare class AtSearchTable {
      * exactly once, whichever lifecycle first sees the grid and columns ready.
      */
     private hasEmittedInitialServerParams;
-    private adoptedPageSizeProp?;
+    private hasLoaded;
     tableEl: HTMLAtTableElement;
     get shouldShowTableFilters(): boolean;
     get shouldShowColumnManager(): boolean;
@@ -264,6 +264,7 @@ export declare class AtSearchTable {
      */
     get searchInfoTooltip(): string | undefined;
     handleSelectedFiltersChange(newValue: AtIFilterGroup): void;
+    handlePageSizeProp(newValue?: number): void;
     handleSearchFiltersChange(): void;
     handleLoadingChange(newValue: boolean): void;
     componentWillLoad(): Promise<void>;
@@ -277,15 +278,6 @@ export declare class AtSearchTable {
     warnIfHasUpdatesIsANoOp(): void;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
-    /**
-     * The custom-elements build only arms `@Watch` once a
-     * `customElements.whenDefined()` callback runs, which can land after the
-     * first load, so a `page_size` bound in that window would never reach a
-     * watcher. A prop change always schedules a render, so the render is where
-     * the bound value is adopted.
-     */
-    componentWillRender(): void;
-    private adoptPageSizeProp;
     componentDidRender(): void;
     /**
      * The floating bar is a manual popover so it sits in the top layer, where ag-grid's
@@ -536,6 +528,7 @@ export declare class AtSearchTable {
     private externalConditionKeys;
     get hasDisplayableFilters(): boolean;
     private updateActiveFilters;
+    private deriveActiveFilters;
     handleSearchChange(event: CustomEvent): void;
     handlePageChange(event: CustomEvent<number>): void;
     handlePageSizeChange(event: CustomEvent<number>): void;

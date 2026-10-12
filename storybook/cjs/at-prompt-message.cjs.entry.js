@@ -2421,16 +2421,22 @@ const AtPromptMessage = class {
     animationTargetContent = '';
     pendingWords = [];
     animationTimer;
+    hasLoaded = false;
     errorEl;
     get el() { return index.getElement(this); }
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
         this.initializeContent();
     }
+    componentDidLoad() {
+        this.hasLoaded = true;
+    }
     disconnectedCallback() {
         clearTimeout(this.animationTimer);
     }
     watchContentChange(newContent) {
+        if (!this.hasLoaded)
+            return;
         if (newContent &&
             this.response_animation === 'words' &&
             this.role === 'assistant') {
@@ -2606,11 +2612,11 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (index.h(index.Host, { key: 'ba9867cfe5054f57ef0b342ab509453b1afb790e', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: 'cb7b93172d18a32971657c4aa4bcebe9c8d8d332', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '3a4cd31e520244ef1d96d44f662f0cf10361bf34', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: 'e57fbf44793e3833f08698babf6c6f37f020a164', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (index.h(index.Host, { key: '95c102a16a49ca75f46625741340998a611e81d7', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, index.h("div", { key: '70f6c66cf5a274fc344e254b720b6ce315e6c449', class: "flex flex-1 flex-col" }, this.name && (index.h("span", { key: '5776b2af932d8f2b6bdb4ddf0aaa62b9345eb438', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), index.h("div", { key: 'a9eae2ab10ba83437033082d35229ffe06052e6e', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{
-                "watchContentChange": 0
+                "watchContentChange": 1
             }]
     }; }
 };

@@ -129,7 +129,7 @@ const AtMultiSelectComponent = class {
     slottedOptionLabels = new Map();
     watchValue(newValue) {
         const values = newValue ?? [];
-        this.optionEls.forEach((optionEl) => {
+        this.optionEls?.forEach((optionEl) => {
             const shouldBeActive = values.includes(optionEl.value);
             if (optionEl.is_active !== shouldBeActive) {
                 optionEl.is_active = shouldBeActive;
@@ -367,16 +367,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: 'f9d9f71f7adbc45b1fbfed7fee5357d3d681b1eb', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '2721766cbf6d7e675a42150ff207b170a327eeb9', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'ec62a43635b88fa2228c67e0435f813cfca0e276', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '5f00c052cdb6938646c4dca712d58ac26d6d67e7', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '702753d7a3cb44894b7c007f775e9cb7027f3260' }, this.error_text && this.invalid && (index.h("span", { key: '9c372060d10a071243e8a13427ebaf6a96623960', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '7894be0e9b5a7b339a9fe35f25274d1fe4ae78da' }, this.error_text && this.invalid && (index.h("span", { key: '4ac5b7f6313d49c0c7924d25b284caef12795fb4', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {
@@ -456,10 +456,10 @@ const AtMultiSelectComponent = class {
     }
     static get watchers() { return {
         "value": [{
-                "watchValue": 0
+                "watchValue": 1
             }],
         "options": [{
-                "watchOptions": 0
+                "watchOptions": 1
             }],
         "searchText": [{
                 "watchSearchText": 0

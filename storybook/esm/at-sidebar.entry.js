@@ -213,7 +213,7 @@ const AtSidebarComponent = class {
      * or key presses.
      */
     watchResizableForToggle(isResizable, wasResizable) {
-        if (isResizable === wasResizable)
+        if (!this.hasLoaded || isResizable === wasResizable)
             return;
         if (isResizable) {
             if (!this.resizeController) {
@@ -703,13 +703,13 @@ const AtSidebarComponent = class {
     }
     static get watchers() { return {
         "resizable": [{
-                "watchResizableForToggle": 0
+                "watchResizableForToggle": 1
             }],
         "min_width": [{
-                "watchResizeBoundsChange": 0
+                "watchResizeBoundsChange": 1
             }],
         "max_width": [{
-                "watchResizeBoundsChange": 0
+                "watchResizeBoundsChange": 1
             }],
         "isOpen": [{
                 "watchIsOpenForResize": 0

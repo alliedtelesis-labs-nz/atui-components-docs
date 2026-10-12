@@ -31,21 +31,9 @@ const AtProgressBar = class {
      * Height of the progress bar
      */
     size = 'sm';
-    clamped = 0;
-    onPercentageChange() {
-        this.clampPercentage();
-    }
-    componentWillLoad() {
-        this.clampPercentage();
-    }
-    clampPercentage() {
+    get clamped() {
         const n = Number(this.percentage);
-        if (Number.isFinite(n)) {
-            this.clamped = Math.min(100, Math.max(0, n));
-        }
-        else {
-            this.clamped = 0;
-        }
+        return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 0;
     }
     get statusBarClass() {
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch`;
@@ -74,11 +62,6 @@ const AtProgressBar = class {
             ? this.renderIndeterminate()
             : this.renderDeterminate();
     }
-    static get watchers() { return {
-        "percentage": [{
-                "onPercentageChange": 0
-            }]
-    }; }
 };
 
 exports.at_progress_bar = AtProgressBar;

@@ -23,10 +23,7 @@ export declare class AtProgressBar {
      * Height of the progress bar
      */
     size?: AtProgressBarSize;
-    private clamped;
-    onPercentageChange(): void;
-    componentWillLoad(): void;
-    private clampPercentage;
+    private get clamped();
     get statusBarClass(): string;
     get segments(): string;
     renderIndeterminate(): any;

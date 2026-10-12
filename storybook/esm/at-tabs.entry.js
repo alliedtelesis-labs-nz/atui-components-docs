@@ -34,6 +34,10 @@ const AtTabs = class {
     tabEls = [];
     tabManualAdded = [];
     boundTabEls = new WeakSet();
+    hasLoaded = false;
+    componentDidLoad() {
+        this.hasLoaded = true;
+    }
     componentDidRender() {
         this.tabEls = this.getTabsElements();
         requestAnimationFrame(() => {
@@ -79,6 +83,8 @@ const AtTabs = class {
         this.updateIndicatorPosition();
     }
     handleActiveTabChange(newValue) {
+        if (!this.hasLoaded)
+            return;
         const activeTab = this.tabs.find((tab) => tab.id === newValue);
         const activeManualtab = this.tabManualAdded.find((tab) => tab.id === newValue);
         this.markPanelActivated(newValue);
@@ -164,11 +170,11 @@ const AtTabs = class {
         }
     }
     render() {
-        return h(Host, { key: '0122b6ba39df11b46a7beb70e5db5589cb0fd50f' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'dd335a985f7f0d35637e36dc3a2a9fb7f6e4edfa' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{
-                "handleActiveTabChange": 0
+                "handleActiveTabChange": 1
             }]
     }; }
 };

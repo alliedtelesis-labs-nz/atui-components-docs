@@ -85,9 +85,11 @@ export declare class AtPromptMessage {
     private animationTargetContent;
     private pendingWords;
     private animationTimer?;
+    private hasLoaded;
     errorEl: HTMLDivElement;
     el: HTMLAtInputElement;
     componentWillLoad(): Promise<void>;
+    componentDidLoad(): void;
     disconnectedCallback(): void;
     watchContentChange(newContent: string): void;
     private initializeContent;

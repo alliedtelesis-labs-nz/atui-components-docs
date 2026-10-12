@@ -33,6 +33,8 @@ const AtRelativeTimeComponent = class {
         this.clearRefreshTimer();
     }
     onInputChange() {
+        if (!this.el.isConnected)
+            return;
         this.updateRelativeTime();
     }
     updateRelativeTime() {
@@ -86,14 +88,14 @@ const AtRelativeTimeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '0f8f3d2765c95c3fe42393494ef1d1cb6d1041bf', class: "inline-flex" }, index.h("at-tooltip", { key: '99c6599bfecf2806d5b10621e54c3b56b9b4518b', position: "top", disabled: !this.titleText }, index.h("time", { key: '9d14c9f6d3fcfa33662bca4a2a1eb3039be55caa', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
+        return (index.h(index.Host, { key: '5a6967e9b2362962b8a46b44a28aa1fb719f3405', class: "inline-flex" }, index.h("at-tooltip", { key: '641d06b5e9cc8da6a53e5568a9b18bb2d6d5fa50', position: "top", disabled: !this.titleText }, index.h("time", { key: '4b5292164150e717e282416578fdff9d0f570201', slot: "tooltip-trigger", part: "time", "data-name": "relative-time", dateTime: this.datetimeAttr }, this.relativeTimeText), this.titleText)));
     }
     static get watchers() { return {
         "timestamp": [{
-                "onInputChange": 0
+                "onInputChange": 1
             }],
         "update_interval": [{
-                "onInputChange": 0
+                "onInputChange": 1
             }]
     }; }
 };

@@ -385,7 +385,7 @@ const AtSearchTable = class {
      * exactly once, whichever lifecycle first sees the grid and columns ready.
      */
     hasEmittedInitialServerParams = false;
-    adoptedPageSizeProp;
+    hasLoaded = false;
     tableEl;
     get shouldShowTableFilters() {
         return (this.show_table_filters && this.col_defs && this.col_defs.length > 0);
@@ -444,7 +444,17 @@ const AtSearchTable = class {
     handleSelectedFiltersChange(newValue) {
         this.menuSelectedIds = flattenFilterConditions(newValue).map((f) => f.id);
     }
+    handlePageSizeProp(newValue) {
+        this.pageSize = newValue || 10;
+        if (this.hasEmittedInitialServerParams) {
+            this.currentPage = 1;
+            this.clearSelectionForQueryChange();
+            this.emitSearchParamsChange();
+        }
+    }
     handleSearchFiltersChange() {
+        if (!this.hasLoaded)
+            return;
         this.updateActiveFilters();
     }
     handleLoadingChange(newValue) {
@@ -462,9 +472,14 @@ const AtSearchTable = class {
         }
     }
     async componentWillLoad() {
+        this.pageSize = this.page_size || 10;
         this.translations = await fetchTranslations(this.el);
         this.warnIfHasUpdatesIsANoOp();
         this.applySelectedIdsProp();
+        if (this.search_filters &&
+            countFilterConditions(this.search_filters) > 0) {
+            this.deriveActiveFilters();
+        }
     }
     applySelectedIdsProp() {
         if (!this.selected_ids)
@@ -490,6 +505,7 @@ const AtSearchTable = class {
         }
     }
     async componentDidLoad() {
+        this.hasLoaded = true;
         await this.initGrid();
         this.emitInitialServerParamsIfReady();
         this.handleLoadingChange(this.is_loading);
@@ -500,27 +516,6 @@ const AtSearchTable = class {
             await this.initGrid();
         }
         this.emitInitialServerParamsIfReady();
-    }
-    /**
-     * The custom-elements build only arms `@Watch` once a
-     * `customElements.whenDefined()` callback runs, which can land after the
-     * first load, so a `page_size` bound in that window would never reach a
-     * watcher. A prop change always schedules a render, so the render is where
-     * the bound value is adopted.
-     */
-    componentWillRender() {
-        this.adoptPageSizeProp();
-    }
-    adoptPageSizeProp() {
-        if (this.page_size === this.adoptedPageSizeProp)
-            return;
-        this.adoptedPageSizeProp = this.page_size;
-        this.pageSize = this.page_size || 10;
-        if (this.hasEmittedInitialServerParams) {
-            this.currentPage = 1;
-            this.clearSelectionForQueryChange();
-            this.emitSearchParamsChange();
-        }
     }
     componentDidRender() {
         this.warnIfRowIdFieldMissing();
@@ -1423,16 +1418,7 @@ const AtSearchTable = class {
         return (this.shouldShowTableFilters || this.externalConditions().length > 0);
     }
     updateActiveFilters() {
-        this.activeFilters = this.col_defs.reduce((acc, col) => {
-            acc[col.field] = '';
-            return acc;
-        }, {});
-        this.activeFilterTree = this.mergeFilterTrees();
-        flattenFilterConditions(this.activeFilterTree).forEach((filter) => {
-            if (filter.value) {
-                this.activeFilters[filter.id] = filter.value;
-            }
-        });
+        this.deriveActiveFilters();
         this.currentPage = 1;
         this.clearSelectionForQueryChange();
         if (this.server_side_mode) {
@@ -1447,6 +1433,18 @@ const AtSearchTable = class {
                 console.log('agGrid not available, cannot apply filter');
             }
         }
+    }
+    deriveActiveFilters() {
+        this.activeFilters = this.col_defs.reduce((acc, col) => {
+            acc[col.field] = '';
+            return acc;
+        }, {});
+        this.activeFilterTree = this.mergeFilterTrees();
+        flattenFilterConditions(this.activeFilterTree).forEach((filter) => {
+            if (filter.value) {
+                this.activeFilters[filter.id] = filter.value;
+            }
+        });
     }
     handleSearchChange(event) {
         this.searchValue = event.detail || '';
@@ -1529,8 +1527,8 @@ const AtSearchTable = class {
         }
     }
     render() {
-        return (h(Host, { key: '274efdb3a82d94118fbb5c731862c8cf726a20de', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: 'f24134a761f8f23e2ab843fc3863fbc93ac67b22', ag_grid: this.agGrid }, h("at-control-group", { key: '3e23be1598233499b10241a604139dcbdb2ac146', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '5b11c5f78e7a81a87202fb8f434cf6986c0f5021', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: 'dea55c2f718a4e68bf155dd098e4ea867137e8a1', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'cfc7d4655268328bb785775c2920a6ec9ceaf09d', class: "contents", slot: "filter-bar" }, h("slot", { key: 'c3d9bb737bf9510f67048a743e8537d6e7703f8f', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '1890a2886cc5a142c40faee67d77b45d935ac725', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '7acda20d4440d3112e7d8f1e9b860c0eca0a183f', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '273e9a0fc1565a1764d1ac1b6fde6c42c9632c41', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: '8fa5e825ef3a1055a7c190baf211f6ad23741954', ag_grid: this.agGrid }, h("at-control-group", { key: '9c7a474567d32a8b45a3a160bd131041f4ba0e14', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '1f565e4ef277ca32bb2c50fdf34ac633d513d2b0', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: 'bf8d43a4973af5556db646ebd516fee28ee37b28', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: 'be99851338e471d5decd02817e9221ffd4bc9f46', class: "contents", slot: "filter-bar" }, h("slot", { key: '547d994c9ced0be546a23d9c9ed798f0cfe3323d', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '97611ed4b282f2bb6591e3fbe09eeeb85f7c6382', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: 'ad5b7561d9e354cd7869d545c368acc036fa6398', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1539,23 +1537,26 @@ const AtSearchTable = class {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: '2207a69433597c1d96df9fe41de32d97ddeff041', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: 'ae472539ac7bce68ea7e6fd75257a663df025356', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '96d95537dafb155a51e8cfd0119b27c96c6046c5', slot: "leading-actions" }, h("slot", { key: 'f8012d261a352d382b9f2dd6e15a10f04c5a1ea4', name: "leading-actions" })), h("div", { key: 'be2d08f109b87ffa4a0a77e46eb87107ffd846c9', slot: "actions" }, h("slot", { key: 'd7bedd193b950a8b10d3b31ffcd1fd412d91839c', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'bd1e19f4239eb83ace6c165fb2e0e06b20b3cd78', class: "relative" }, h("at-table", { key: '0b1e1ba9e24eba695ee4765b11d489ae9104fd0b', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: '677301f86599436b1cd61a2d8cf2416128f48a61', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '7126ff516ab0bb48480abb565cc342b72f75c4dd', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '3ce65fdd74d41a9aa7e7b997563bdf80ca61f9bf', slot: "leading-actions" }, h("slot", { key: '219732f47138d4b28d3a4830a3cbda0e8a89652d', name: "leading-actions" })), h("div", { key: 'eb9541840854f9eea4b39288f053c2e91684721d', slot: "actions" }, h("slot", { key: 'd8dde3a6bd990c57e457513f2e4a37305f107779', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'b2e35d41f921991cdeca7d9174e1f4201fe98bed', class: "relative" }, h("at-table", { key: 'c9726205c5da012001cbddae828906b766be0c42', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '8a02f2221a417728a2d9becce1c52536ac3586d1', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: '4942112141a34e27ecdcf0cf124336a8540f1343', class: "flex items-center" }, h("at-loading", { key: 'f31eec29531203f2fb8b7990b8c2939227402cd3', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '95009ac58c021b320216daf109c4d006feef278f', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'c154c54800015da45c5cc2b1fcc496d828832f02', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '80181568c4ef9f641db82b1df63001958b959bda', class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'b0892d46eec6a680323be96aeb918382e78fb3f6', class: "flex items-center" }, h("at-loading", { key: '4c56f911db40760a471ff88c13b6fd3fcb57a3c7', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'a0e2378e1ed6360837349cd2c62f0a06d360c27c', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '70ac12077a25cf23df5988206aff986ef75abb0e', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get watchers() { return {
         "selectedFilters": [{
                 "handleSelectedFiltersChange": 0
             }],
+        "page_size": [{
+                "handlePageSizeProp": 1
+            }],
         "search_filters": [{
-                "handleSearchFiltersChange": 0
+                "handleSearchFiltersChange": 1
             }],
         "is_loading": [{
                 "handleLoadingChange": 0
             }],
         "selected_ids": [{
-                "applySelectedIdsProp": 0
+                "applySelectedIdsProp": 1
             }],
         "has_updates": [{
                 "warnIfHasUpdatesIsANoOp": 0

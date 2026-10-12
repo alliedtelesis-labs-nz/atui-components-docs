@@ -68,6 +68,7 @@ export declare class AtButtonGroup {
     private applyDisabledToButtons;
     attachEventListenersToButtons(): void;
     activateOptionButton(): void;
+    private isBoundValue;
     get getButtonGroupOptions(): any;
     handleChange(event: CustomEvent, optionValue: any, index: number): void;
     render(): any;

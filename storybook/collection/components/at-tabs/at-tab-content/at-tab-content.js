@@ -62,7 +62,7 @@ export class AtTabContent {
         this.setIsActive(event.detail);
     };
     render() {
-        return (h("div", { key: '33149c62b0e0b58609ddf5ebe4e03daca168718b', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '24203d0ae6aa54fa44efa8dbaa9bc8a8961c6fc9' })));
+        return (h("div", { key: '72a56e26ca8268cf54c448f34b607b1d36f493f4', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '24b005e88a1c09d8422a125c9a084a9a2ee55721' })));
     }
     static get is() { return "at-tab-content"; }
     static get properties() {
@@ -155,7 +155,10 @@ export class AtTabContent {
     static get watchers() {
         return [{
                 "propName": "has_activated",
-                "methodName": "handleActivated"
+                "methodName": "handleActivated",
+                "handlerOptions": {
+                    "immediate": true
+                }
             }];
     }
 }

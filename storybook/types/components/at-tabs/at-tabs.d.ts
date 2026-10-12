@@ -52,6 +52,8 @@ export declare class AtTabs {
         title: string;
     }[];
     boundTabEls: WeakSet<HTMLAtTabTriggerElement>;
+    private hasLoaded;
+    componentDidLoad(): void;
     componentDidRender(): void;
     initializeTabs(): void;
     addEventListenersToTabs(): void;

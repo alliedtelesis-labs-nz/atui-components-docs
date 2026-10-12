@@ -111,12 +111,19 @@ const AtButtonGroup = class {
         });
     }
     activateOptionButton() {
-        const activeChild = this.buttonEls.find((child) => child.is_active && !child.disabled);
-        const initialButton = activeChild || this.buttonEls.find((child) => !child.disabled);
+        const enabledButtons = this.buttonEls.filter((child) => !child.disabled);
+        const initialButton = enabledButtons.find((child) => this.isBoundValue(child.value)) ||
+            enabledButtons.find((child) => child.is_active) ||
+            enabledButtons[0];
         if (initialButton) {
-            initialButton.is_active = true;
             this.value = initialButton.value;
+            this.handleValueChange(this.value);
         }
+    }
+    isBoundValue(optionValue) {
+        return (this.value !== undefined &&
+            this.value !== null &&
+            optionValue === this.value);
     }
     get getButtonGroupOptions() {
         if (this.options) {
@@ -138,15 +145,15 @@ const AtButtonGroup = class {
         });
     }
     render() {
-        return (h(Host, { key: '2ee562f3b36aea764e936cdfc4d260b000300586', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: '5856ee3faeefe534a942bdd84c0dd1dc5e212406', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'a17ed766b2a8db852388242bc186d68e05c94464', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '145b3e4cbe8ed6d99201663bfb58336675a21144', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: '72a626e5e9eaafa2aa9edc8185cd4b4874714176', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '901aa72ed45aae93939a9aff8a87af104c896b32', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '44575996aa7fa6cd6a03f60ad989dd3ca783f5cd', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '3ba32fc1edecf72367554609efb70a00fc76e3f6' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '7407abb1d25e95054f6797f26b5e2b9ebed0d2d9', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '2322a185aec9f940d06bc5daca5bdf07cbc0b41e', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: '2520d14c801c632b6b10d091314e9c48983f3171', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'b559e62a292704128f989926ef8f3188c6739ba2', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'cb2b82117c5b6b7b1d2774a109ac77f8d1abfdc5', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: 'e4b7cf88b874f6ea4baafff8ab3bee147fc4a90b', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: 'cfb1e1808039dc6a5837d9cc58ab8dd66868fd8d', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '90eff68411abf96af3bfa0b8eef8dd75f5fc0b8d', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '2ec72a00eb688fb7028ac77a71345ad89b5db5c6' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '1d6250ab7d1ced78820e25e39507b783b53df972', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "disabled": [{
-                "handleDisabledChange": 0
+                "handleDisabledChange": 1
             }],
         "value": [{
-                "handleValueChange": 0
+                "handleValueChange": 1
             }]
     }; }
 };
@@ -396,41 +403,41 @@ const AtCustomTimeRangeComponent = class {
         this.savedInitialState();
     }
     render() {
-        return (h("div", { key: '617e2a09f43777f1d3c7ff2caefc5f5c9c82d30a', class: "flex w-fit flex-col gap-8" }, h("h5", { key: '0e23987d6acf319b2149fe5306179fda57cd52c7', class: "text-h5 text-foreground p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: 'bd3acf46a082441139e6cbc640aeea1e0a467ee5', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: '3a6c92f32a8537b1556d6e27093cd7f850e77813', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '0af99b1dde89ef56d12c364b30645c2bdc3fe5eb', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
+        return (h("div", { key: '740f120f8bcfaac251c5d6ce026d414082883bf9', class: "flex w-fit flex-col gap-8" }, h("h5", { key: 'eef8dfd48eb55494528b5aec79dff2f2111f06d8', class: "text-h5 text-foreground p-12 font-medium" }, this.translations.ATUI.TIME.SELECT_ABSOLUTE_TIME), h("div", { key: '5c0bec66cc11d85269b441459428c32e5a2941c8', class: "grid grid-cols-2 gap-16 px-12" }, h("div", { key: 'b7d7cf93211faebc8236b8ed60ddb99698f68048', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '0e12d7af35fded31a5b911c9bf3553d7c08f4eb9', class: "w-full", label: this.translations.ATUI.TIME.FROM_DATE, value: this.from_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, onAtuiChange: (event) => {
                 this.from_date_value = event.detail;
-            } }), this.can_set_time && (h("at-input-time", { key: '78296d80047ab2697c2955689c7df4ab59a7a1fa', class: "w-full", label: this.translations.ATUI.TIME.FROM_TIME, value: this.fromTime, min: this.fromTimeMin, max: this.fromTimeMax, onAtuiChange: (event) => {
+            } }), this.can_set_time && (h("at-input-time", { key: '188d5ed97e1b2542aa71bc5c7afbfaf9d8265c3d', class: "w-full", label: this.translations.ATUI.TIME.FROM_TIME, value: this.fromTime, min: this.fromTimeMin, max: this.fromTimeMax, onAtuiChange: (event) => {
                 if (event.detail) {
                     this.from_date_value = dayjs(`${this.fromDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
                 }
-            } }))), h("div", { key: 'add63ce111b161f013f491347efc80c0772b6986', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: '03f6edc595d1010032998699175cd2281abf5f0f', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+            } }))), h("div", { key: '6830dae2c6974904518ae8d9b0d05268e4bda1ee', class: "flex-fill flex flex-col gap-8" }, h("at-input-date", { key: 'bfdb7fedb2552f8a353868ed42d3baac83a33ef0', class: "w-full", label: this.translations.ATUI.TIME.TO_DATE, value: this.to_date_value, min_date: this.min_date, max_date: this.max_date, invalid: this.isFromDateAfterToDate, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
                 this.to_date_value = event.detail;
-            } }), this.can_set_time && (h("at-input-time", { key: '677d95c223283ba9195c0155eee576682d48ee2b', class: "w-full", label: this.translations.ATUI.TIME.TO_TIME, value: this.toTime, min: this.toTimeMin, max: this.toTimeMax, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
+            } }), this.can_set_time && (h("at-input-time", { key: '29d7d9754b3c47cc230ade9183c54da632220ee3', class: "w-full", label: this.translations.ATUI.TIME.TO_TIME, value: this.toTime, min: this.toTimeMin, max: this.toTimeMax, disabled: this.lock_end_date_to_now, onAtuiChange: (event) => {
                 if (event.detail) {
                     this.to_date_value = dayjs(`${this.toDate} ${event.detail}`, 'YYYY-MM-DD HH:mm').toDate();
                 }
-            } })))), h("div", { key: '4d740ab348164d5261698de67e67c65815a49e96', class: "align-center rounded-input my-8 flex flex-row justify-between gap-8 px-12" }, h("div", { key: '094c38f45b063d9975aca19b8893c9b3c0eda969', class: "flex flex-col" }, h("label", { key: 'be533dd9ae5e2260c922f9be93cfe897d7253cbd', class: "c-form__label" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '1429f94163cb3f115f17cfea388d66b0970a87b3', class: "text-secondary text-xs" }, this.translations.ATUI.TIME
-            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: 'b120dcebd64ff5446be7a6ac18e3285563af2a03', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: '7c649f159df8f42314f8ba7152f9f56db81deee0', class: "flex flex-col gap-4 px-12" }, h("span", { key: '56decb30dfe7cee3c64414c10b77a40a2b96b658', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
-            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: '90c806f0e3873332763cb1a07a330d8cfa04dbdc', class: "flex flex-row justify-between p-8" }, h("at-button", { key: 'f22143f197e35941bdc9b36b50da211e946ea430', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: '320a99b1b8e720f565d75aa6922743cd3354405c', class: "flex flex-row gap-8" }, h("at-button", { key: '2638688d60947e9481e2ad27b5f16bb1dff4b81d', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '6698383be2fffc18a29c9b8620845b6cd3b01bb8', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
+            } })))), h("div", { key: 'cc1b846e9ad8d09da786b85617e9917685ca229d', class: "align-center rounded-input my-8 flex flex-row justify-between gap-8 px-12" }, h("div", { key: '899aed848e2022d36aaef4aa061c571dadf7f2d9', class: "flex flex-col" }, h("label", { key: '39453a2cb618f8a32b4e6fc651f986dc24671da0', class: "c-form__label" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW), h("span", { key: '07f58f6540c7e0783e990fb73c6fdb528c00f158', class: "text-secondary text-xs" }, this.translations.ATUI.TIME
+            .SET_END_DATE_AND_TIME_TO_NOW_DESCRIPTION)), h("at-toggle-switch", { key: '8063e17b78c963d008981077391dea7278bee4d9', value: this.lock_end_date_to_now, onChange: () => this.setDateNow(), ref: (el) => (this.setDateNowSwitch = el) })), this.isFromDateAfterToDate && (h("div", { key: '800de7800ab210e464b639462e7460f61bc25689', class: "flex flex-col gap-4 px-12" }, h("span", { key: '2c511bf622b88b349a59b4211f01d13fe7fce54d', class: "text-error text-sm", "data-name": "custom-time-range-error-from" }, this.translations.ATUI.TIME.VALIDATION
+            .FROM_MUST_BE_BEFORE_TO))), h("div", { key: 'fc0c98f23b8bae4dac06df4ec65be2ede3e371e0', class: "flex flex-row justify-between p-8" }, h("at-button", { key: '4856f6dee28e40751cb46db5e86cc96604a50e16', type: "secondaryOutline", "data-name": "custom-time-range-clear", label: this.translations.ATUI.CLEAR_SELECTION, onAtuiClick: () => this.clearSelection() }), h("div", { key: 'abf471092fc11d1c67ce0f2680497c8c9d2bd266', class: "flex flex-row gap-8" }, h("at-button", { key: '35d8ee12ad73de0162ffd57380a0fccb08d3043d', type: "secondaryOutline", "data-name": "custom-time-range-cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'b6aa51c15237c72137989b5322fd94a01b640d0c', "data-name": "custom-time-range-apply", label: this.translations.ATUI.APPLY, disabled: this.isRangeInvalid, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
         "min_date": [{
-                "validateMinDate": 0
+                "validateMinDate": 1
             }],
         "max_date": [{
-                "validateMaxDate": 0
+                "validateMaxDate": 1
             }],
         "default_from_date": [{
-                "validateDefaultFromDate": 0
+                "validateDefaultFromDate": 1
             }],
         "default_to_date": [{
-                "validateDefaultToDate": 0
+                "validateDefaultToDate": 1
             }],
         "from_date_value": [{
-                "validateFromDateValue": 0
+                "validateFromDateValue": 1
             }],
         "to_date_value": [{
-                "validateToDateValue": 0
+                "validateToDateValue": 1
             }]
     }; }
 };

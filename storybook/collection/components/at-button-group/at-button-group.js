@@ -105,12 +105,19 @@ export class AtButtonGroup {
         });
     }
     activateOptionButton() {
-        const activeChild = this.buttonEls.find((child) => child.is_active && !child.disabled);
-        const initialButton = activeChild || this.buttonEls.find((child) => !child.disabled);
+        const enabledButtons = this.buttonEls.filter((child) => !child.disabled);
+        const initialButton = enabledButtons.find((child) => this.isBoundValue(child.value)) ||
+            enabledButtons.find((child) => child.is_active) ||
+            enabledButtons[0];
         if (initialButton) {
-            initialButton.is_active = true;
             this.value = initialButton.value;
+            this.handleValueChange(this.value);
         }
+    }
+    isBoundValue(optionValue) {
+        return (this.value !== undefined &&
+            this.value !== null &&
+            optionValue === this.value);
     }
     get getButtonGroupOptions() {
         if (this.options) {
@@ -132,8 +139,8 @@ export class AtButtonGroup {
         });
     }
     render() {
-        return (h(Host, { key: '2ee562f3b36aea764e936cdfc4d260b000300586', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: '5856ee3faeefe534a942bdd84c0dd1dc5e212406', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'a17ed766b2a8db852388242bc186d68e05c94464', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '145b3e4cbe8ed6d99201663bfb58336675a21144', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: '72a626e5e9eaafa2aa9edc8185cd4b4874714176', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '901aa72ed45aae93939a9aff8a87af104c896b32', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '44575996aa7fa6cd6a03f60ad989dd3ca783f5cd', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '3ba32fc1edecf72367554609efb70a00fc76e3f6' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '7407abb1d25e95054f6797f26b5e2b9ebed0d2d9', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '2322a185aec9f940d06bc5daca5bdf07cbc0b41e', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, h("div", { key: '2520d14c801c632b6b10d091314e9c48983f3171', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'b559e62a292704128f989926ef8f3188c6739ba2', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'cb2b82117c5b6b7b1d2774a109ac77f8d1abfdc5', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (h("span", { key: 'e4b7cf88b874f6ea4baafff8ab3bee147fc4a90b', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: 'cfb1e1808039dc6a5837d9cc58ab8dd66868fd8d', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '90eff68411abf96af3bfa0b8eef8dd75f5fc0b8d', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '2ec72a00eb688fb7028ac77a71345ad89b5db5c6' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '1d6250ab7d1ced78820e25e39507b783b53df972', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {
@@ -315,10 +322,16 @@ export class AtButtonGroup {
     static get watchers() {
         return [{
                 "propName": "disabled",
-                "methodName": "handleDisabledChange"
+                "methodName": "handleDisabledChange",
+                "handlerOptions": {
+                    "immediate": true
+                }
             }, {
                 "propName": "value",
-                "methodName": "handleValueChange"
+                "methodName": "handleValueChange",
+                "handlerOptions": {
+                    "immediate": true
+                }
             }];
     }
 }

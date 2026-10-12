@@ -181,7 +181,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: 'ba6953855254ffa457f9acc60b4c5d7c482b6ed6', class: "relative flex justify-center" }, this.enable_relative_time
+        return (h(Host, { key: '66b83d772fad3a55c654a9a315f382c314e113c5', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }
@@ -221,7 +221,7 @@ const AtTimeRangeComponent = class {
     }
     static get watchers() { return {
         "selected_time_range": [{
-                "watchSelectedTimeRange": 0
+                "watchSelectedTimeRange": 1
             }]
     }; }
 };
