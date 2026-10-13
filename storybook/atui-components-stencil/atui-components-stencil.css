@@ -2890,10 +2890,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   height: 16px;
 }
 
-.h-\[180px\] {
-  height: 180px;
-}
-
 .h-\[200px\] {
   height: 200px;
 }
@@ -2914,10 +2910,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   height: 235px;
 }
 
-.h-\[240px\] {
-  height: 240px;
-}
-
 .h-\[28px\] {
   height: 28px;
 }
@@ -2936,10 +2928,6 @@ at-dialog :where([data-name=card-content]) > at-card {
 
 .h-\[400px\] {
   height: 400px;
-}
-
-.h-\[40px\] {
-  height: 40px;
 }
 
 .h-\[420px\] {

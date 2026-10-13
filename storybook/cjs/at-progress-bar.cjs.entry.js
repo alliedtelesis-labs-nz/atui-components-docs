@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-B8T305ST.js');
+var index = require('./index-EWqghDoX.js');
 
 const progressBarVariants = {
     success: 'bg-feedback-success-accent',

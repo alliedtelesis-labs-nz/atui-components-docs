@@ -1,14 +1,15 @@
-import { r as registerInstance, h, H as Host } from './index-0agitfAf.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-r_AZltRJ.js';
 import { g as getChartColors, c as color, C as Chart, L as LinearScale, b as CategoryScale, d as LineController, e as LineElement, P as PointElement, i as index } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette } from './chart-color-PVoy06gY.js';
+import { C as ChartDrawGate } from './chart-draw-gate-CqV46vp0.js';
 
 const heightVariants = {
-    xs: 'h-[40px]',
-    sm: 'h-[70px]',
-    md: 'h-[120px]',
-    lg: 'h-[180px]',
-    xl: 'h-[240px]',
-    auto: 'h-full',
+    xs: '40px',
+    sm: '70px',
+    md: '120px',
+    lg: '180px',
+    xl: '240px',
+    auto: '100%',
 };
 /**
  * Mid-tone slot of the selected palette. Sequential palettes run light to dark,
@@ -71,7 +72,9 @@ const AtChartSparkline = class {
     async getConfig() {
         return this.config;
     }
+    get el() { return getElement(this); }
     canvasEl;
+    drawGate = null;
     config;
     chart;
     /**
@@ -171,41 +174,37 @@ const AtChartSparkline = class {
             this.chart.destroy();
         }
         this.chart = new Chart(this.canvasEl, this.config);
-        this.canvasEl.style.width = '';
-        this.canvasEl.style.height = '';
     }
     disconnectedCallback() {
+        this.drawGate?.disconnect();
+        this.drawGate = null;
         this.chart?.destroy();
         this.chart = null;
     }
     connectedCallback() {
-        if (this.data?.length && !this.chart) {
-            requestAnimationFrame(() => {
-                if (!this.canvasEl?.isConnected) {
-                    return;
-                }
-                if (!this.chart && this.data?.length) {
-                    this.initChart();
-                }
-            });
-        }
+        this.drawGate = new ChartDrawGate(this.el, () => {
+            if (this.data?.length) {
+                this.initChart();
+            }
+        });
+        this.drawGate.requestDraw();
     }
     componentDidUpdate() {
-        if (this.data && this.data.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     /**
      * componentDidLoad runs once the element is in the DOM. If the data prop
      * hasn't been set yet, the chart initialises later via componentDidUpdate.
      */
     componentDidLoad() {
-        if (this.data && this.data.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     render() {
-        return (h(Host, { key: 'ccb21219f3034d0d53cc6de29f3f654882251906', style: { height: '100%', width: '100%' } }, h("canvas", { key: '869456c3bf5bd1d423cccc9b70dbfd1e06f65da2', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "sparkline-canvas" })));
+        return (h(Host, { key: 'f27f4928a54fa0a945931760e5490c694c867dbf', style: {
+                display: 'block',
+                height: heightVariants[this.height],
+                width: '100%',
+            } }, h("canvas", { key: '961124b7126ad2fa93dc8b542bb111aa02d834a1', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
 };
 

@@ -1,7 +1,8 @@
-import { r as registerInstance, h, H as Host } from './index-0agitfAf.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-r_AZltRJ.js';
 import { f as adapters, C as Chart, L as LinearScale, B as BarController, b as CategoryScale, h as BarElement, T as TimeScale, d as LineController, e as LineElement, P as PointElement, j as plugin_colors, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { a as AtTimeDateUtil } from './at-time-date.util-Bfdzn_RG.js';
 import { A as AtChartColorPalette, r as readChartTextColors } from './chart-color-PVoy06gY.js';
+import { C as ChartDrawGate } from './chart-draw-gate-CqV46vp0.js';
 import { e as ensureLegendTooltipEl, s as setLegendTooltip, g as generateLegendLabels, L as LEGEND_ITEM_PADDING } from './chart-legend-BNvwc8jm.js';
 
 var dateFns = {};
@@ -21494,12 +21495,12 @@ adapters._date.override({
 });
 
 const heightVariants = {
-    xs: 'h-[70px]',
-    sm: 'h-[160px]',
-    md: 'h-[235px]',
-    lg: 'h-[330px]',
-    xl: 'h-[440px]',
-    auto: 'h-full',
+    xs: '70px',
+    sm: '160px',
+    md: '235px',
+    lg: '330px',
+    xl: '440px',
+    auto: '100%',
 };
 const AtChartBarLine = class {
     constructor(hostRef) {
@@ -21586,7 +21587,9 @@ const AtChartBarLine = class {
     async getLegendItems() {
         return this.chart?.legend?.legendItems ?? [];
     }
+    get el() { return getElement(this); }
     canvasEl;
+    drawGate = null;
     legendTooltipEl = null;
     config;
     chart;
@@ -21787,33 +21790,26 @@ const AtChartBarLine = class {
             this.chart.destroy();
         }
         this.chart = new Chart(this.canvasEl, this.config);
-        this.canvasEl.style.width = '';
-        this.canvasEl.style.height = '';
     }
     disconnectedCallback() {
+        this.drawGate?.disconnect();
+        this.drawGate = null;
         this.legendTooltipEl?.remove();
         this.legendTooltipEl = null;
         this.chart?.destroy();
         this.chart = null;
     }
     connectedCallback() {
-        // Deferred to rAF so the surrounding layout has settled before Chart.js
-        // measures the canvas; a reparented element reports zero size until then.
-        if (this.data?.datasets?.length && !this.chart) {
-            requestAnimationFrame(() => {
-                if (!this.canvasEl?.isConnected)
-                    return;
-                if (!this.chart && this.data?.datasets?.length) {
-                    this.initChart();
-                }
-            });
-        }
+        this.drawGate = new ChartDrawGate(this.el, () => {
+            if (this.data?.datasets?.length) {
+                this.initChart();
+            }
+        });
+        this.drawGate.requestDraw();
     }
     componentDidUpdate() {
         this.ensureTooltipEl();
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,
@@ -21822,9 +21818,7 @@ const AtChartBarLine = class {
      */
     componentDidLoad() {
         this.ensureTooltipEl();
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     pointStylesSetup() {
         this.data.datasets = this.data.datasets.map((dataset) => {
@@ -21888,7 +21882,11 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (h(Host, { key: 'aae51d771218501741ca515e6e5da920ef4e1541', style: { height: '100%', width: '100%' } }, h("canvas", { key: '6a0fba7d7fd33521e2630ba0e740171ef923f44d', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '305b7691ca57a9ffb5bb9f5855c1819c39c12205', style: {
+                display: 'block',
+                height: heightVariants[this.height],
+                width: '100%',
+            } }, h("canvas", { key: '61f0def1f6e372d007ca6da8ef640cfe9a5e73f8', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
     }
 };
 

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-0agitfAf.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-r_AZltRJ.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 

@@ -100,6 +100,7 @@ export declare class AtChartBreakdown {
     canvasEl: HTMLCanvasElement;
     config: ChartConfiguration;
     chart: Chart | null;
+    private drawGate;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart

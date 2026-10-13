@@ -4,14 +4,15 @@ import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineContr
 import { AtTimeDateUtil } from "../../utils/at-time-date.util";
 import { AtChartColorPalette, readChartTextColors, } from "../../types/chart-color";
 import { getChartColors, resolveSeriesColors } from "../../utils/chart-color";
+import { ChartDrawGate } from "../../utils/chart-draw-gate";
 import { ensureLegendTooltipEl, generateLegendLabels, LEGEND_ITEM_PADDING, setLegendTooltip, } from "../../utils/chart-legend";
 const heightVariants = {
-    xs: 'h-[70px]',
-    sm: 'h-[160px]',
-    md: 'h-[235px]',
-    lg: 'h-[330px]',
-    xl: 'h-[440px]',
-    auto: 'h-full',
+    xs: '70px',
+    sm: '160px',
+    md: '235px',
+    lg: '330px',
+    xl: '440px',
+    auto: '100%',
 };
 /**
  * @category Data Visualization
@@ -123,7 +124,9 @@ export class AtChartBarLine {
     async getLegendItems() {
         return this.chart?.legend?.legendItems ?? [];
     }
+    el;
     canvasEl;
+    drawGate = null;
     legendTooltipEl = null;
     config;
     chart;
@@ -324,33 +327,26 @@ export class AtChartBarLine {
             this.chart.destroy();
         }
         this.chart = new Chart(this.canvasEl, this.config);
-        this.canvasEl.style.width = '';
-        this.canvasEl.style.height = '';
     }
     disconnectedCallback() {
+        this.drawGate?.disconnect();
+        this.drawGate = null;
         this.legendTooltipEl?.remove();
         this.legendTooltipEl = null;
         this.chart?.destroy();
         this.chart = null;
     }
     connectedCallback() {
-        // Deferred to rAF so the surrounding layout has settled before Chart.js
-        // measures the canvas; a reparented element reports zero size until then.
-        if (this.data?.datasets?.length && !this.chart) {
-            requestAnimationFrame(() => {
-                if (!this.canvasEl?.isConnected)
-                    return;
-                if (!this.chart && this.data?.datasets?.length) {
-                    this.initChart();
-                }
-            });
-        }
+        this.drawGate = new ChartDrawGate(this.el, () => {
+            if (this.data?.datasets?.length) {
+                this.initChart();
+            }
+        });
+        this.drawGate.requestDraw();
     }
     componentDidUpdate() {
         this.ensureTooltipEl();
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,
@@ -359,9 +355,7 @@ export class AtChartBarLine {
      */
     componentDidLoad() {
         this.ensureTooltipEl();
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     pointStylesSetup() {
         this.data.datasets = this.data.datasets.map((dataset) => {
@@ -425,7 +419,11 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: 'aae51d771218501741ca515e6e5da920ef4e1541', style: { height: '100%', width: '100%' } }, h("canvas", { key: '6a0fba7d7fd33521e2630ba0e740171ef923f44d', ref: (el) => (this.canvasEl = el), class: `min-w-100 ${heightVariants[this.height]}` })));
+        return (h(Host, { key: '305b7691ca57a9ffb5bb9f5855c1819c39c12205', style: {
+                display: 'block',
+                height: heightVariants[this.height],
+                width: '100%',
+            } }, h("canvas", { key: '61f0def1f6e372d007ca6da8ef640cfe9a5e73f8', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {
@@ -770,4 +768,5 @@ export class AtChartBarLine {
             }
         };
     }
+    static get elementRef() { return "el"; }
 }

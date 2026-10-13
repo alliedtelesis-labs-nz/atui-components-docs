@@ -1,6 +1,7 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-0agitfAf.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-r_AZltRJ.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
+import { C as ChartDrawGate } from './chart-draw-gate-CqV46vp0.js';
 import { L as LEGEND_ITEM_PADDING } from './chart-legend-BNvwc8jm.js';
 
 const heightVariants = {
@@ -102,6 +103,7 @@ const AtChartBreakdown = class {
     canvasEl;
     config;
     chart;
+    drawGate = null;
     /**
      * Getter method for the chart's configuration object
      * @returns Configuration of the chart
@@ -549,21 +551,18 @@ const AtChartBreakdown = class {
         });
     }
     disconnectedCallback() {
+        this.drawGate?.disconnect();
+        this.drawGate = null;
         this.chart?.destroy();
         this.chart = null;
     }
     connectedCallback() {
-        // Deferred to rAF so the surrounding layout has settled before Chart.js
-        // measures the canvas; a reparented element reports zero size until then.
-        if (this.data?.datasets?.length && !this.chart) {
-            requestAnimationFrame(() => {
-                if (!this.canvasEl?.isConnected)
-                    return;
-                if (!this.chart && this.data?.datasets?.length) {
-                    this.initChart();
-                }
-            });
-        }
+        this.drawGate = new ChartDrawGate(this.el, () => {
+            if (this.data?.datasets?.length) {
+                this.initChart();
+            }
+        });
+        this.drawGate.requestDraw();
     }
     componentDidUpdate() {
         if (this.skipInitOnUpdate) {
@@ -574,9 +573,7 @@ const AtChartBreakdown = class {
             this.chart?.render();
             return;
         }
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     /**
      * componentDidLoad will be run, but if the props haven't been passed to it yet,
@@ -584,16 +581,14 @@ const AtChartBreakdown = class {
      * to the component where it will run componentDidUpdate.
      */
     componentDidLoad() {
-        if (this.data && this.data.datasets.length) {
-            this.initChart();
-        }
+        this.drawGate?.requestDraw();
     }
     render() {
         const showSideText = this.center_value || this.center_text;
         const typography = showSideText
             ? readChartTypography(this.el)
             : undefined;
-        return (h(Host, { key: '4d695c2d1c6bdd59cdb3a2b5f1451c5ab7df548c', style: {
+        return (h(Host, { key: 'a5a6b2dd7fb473254d6865b3b2c2b7d86752c1bb', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -601,24 +596,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '9cea63313fac68a75d221657b5de35a488815b5f', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '195271b8afeec9cf7a53b238737bb4790e06044b', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: '978d06def4922df70bc40e1ec337811b46972424', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: 'a2b7142221c4c8b994c511f00819c9a98b95f8b0', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: '42c292cbeaeb4a1f5ec8b372efbbc33fe1457d91', style: {
+            } }, this.center_value && (h("span", { key: '596ceab8ebb8ac7298405e89631cadcd55995901', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (h("span", { key: '707d12925fb2b1ceb5236b99039410bdb986d2b7', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: 'b930de3873dd2ddd320e3d2d382cf75355ef6353', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

@@ -133,7 +133,9 @@ export declare class AtChartBarLine {
      * @returns Array of legend items
      */
     getLegendItems(): Promise<TruncatedLegendItem[]>;
+    el: HTMLAtChartBarLineElement;
     canvasEl: HTMLCanvasElement;
+    private drawGate;
     legendTooltipEl: HTMLDivElement | null;
     config: ChartConfiguration;
     chart: Chart | null;

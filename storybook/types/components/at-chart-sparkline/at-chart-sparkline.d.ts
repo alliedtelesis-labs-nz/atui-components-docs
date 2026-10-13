@@ -56,7 +56,9 @@ export declare class AtChartSparkline {
      * @returns Configuration of the chart
      */
     getConfig(): Promise<object>;
+    el: HTMLAtChartSparklineElement;
     canvasEl: HTMLCanvasElement;
+    private drawGate;
     config: ChartConfiguration;
     chart: Chart | null;
     /**
