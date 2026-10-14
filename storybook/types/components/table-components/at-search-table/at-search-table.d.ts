@@ -135,6 +135,7 @@ export declare class AtSearchTable {
     show_csv_export?: boolean;
     /**
      * Offers the PDF export option in the export menu. On by default.
+     * @deprecated PDF export is being removed. Set it to false and offer CSV export.
      */
     show_pdf_export?: boolean;
     /**

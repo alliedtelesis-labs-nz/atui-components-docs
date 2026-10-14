@@ -2702,6 +2702,7 @@ export namespace Components {
         "show_export_menu"?: boolean;
         /**
           * Offers the PDF export option in the export menu. On by default.
+          * @deprecated PDF export is being removed. Set it to false and offer CSV export.
           * @default true
          */
         "show_pdf_export"?: boolean;
@@ -3470,7 +3471,7 @@ export namespace Components {
     }
     /**
      * @category Data Tables
-     * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
+     * @description Exports table data as CSV or PDF. With both formats offered it opens a menu; with one, its button exports that format directly.
      */
     interface AtTableExportMenu {
         /**
@@ -3480,6 +3481,7 @@ export namespace Components {
         "show_csv"?: boolean;
         /**
           * Offers the PDF export option in the export menu. On by default.
+          * @deprecated PDF export is being removed. Set it to false and offer CSV export.
           * @default true
          */
         "show_pdf"?: boolean;
@@ -5695,7 +5697,7 @@ declare global {
     }
     /**
      * @category Data Tables
-     * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
+     * @description Exports table data as CSV or PDF. With both formats offered it opens a menu; with one, its button exports that format directly.
      */
     interface HTMLAtTableExportMenuElement extends Components.AtTableExportMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtTableExportMenuElementEventMap>(type: K, listener: (this: HTMLAtTableExportMenuElement, ev: AtTableExportMenuCustomEvent<HTMLAtTableExportMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8758,6 +8760,7 @@ declare namespace LocalJSX {
         "show_export_menu"?: boolean;
         /**
           * Offers the PDF export option in the export menu. On by default.
+          * @deprecated PDF export is being removed. Set it to false and offer CSV export.
           * @default true
          */
         "show_pdf_export"?: boolean;
@@ -9529,11 +9532,11 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Tables
-     * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
+     * @description Exports table data as CSV or PDF. With both formats offered it opens a menu; with one, its button exports that format directly.
      */
     interface AtTableExportMenu {
         /**
-          * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
+          * Emits the chosen format, either 'CSV' or 'PDF'.
          */
         "onAtChange"?: (event: AtTableExportMenuCustomEvent<string>) => void;
         /**
@@ -9543,6 +9546,7 @@ declare namespace LocalJSX {
         "show_csv"?: boolean;
         /**
           * Offers the PDF export option in the export menu. On by default.
+          * @deprecated PDF export is being removed. Set it to false and offer CSV export.
           * @default true
          */
         "show_pdf"?: boolean;
@@ -11334,7 +11338,7 @@ declare module "@stencil/core" {
             "at-table-actions": LocalJSX.IntrinsicElements["at-table-actions"] & JSXBase.HTMLAttributes<HTMLAtTableActionsElement>;
             /**
              * @category Data Tables
-             * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
+             * @description Exports table data as CSV or PDF. With both formats offered it opens a menu; with one, its button exports that format directly.
              */
             "at-table-export-menu": LocalJSX.IntrinsicElements["at-table-export-menu"] & JSXBase.HTMLAttributes<HTMLAtTableExportMenuElement>;
             /**

@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 /**
  * @category Data Tables
- * @description A menu component for exporting table data in CSV or PDF formats. Provides a user-friendly interface for exporting data from tables.
+ * @description Exports table data as CSV or PDF. With both formats offered it opens a menu; with one, its button exports that format directly.
  */
 export declare class AtTableExportMenu {
     /**
@@ -10,14 +10,16 @@ export declare class AtTableExportMenu {
     show_csv?: boolean;
     /**
      * Offers the PDF export option in the export menu. On by default.
+     * @deprecated PDF export is being removed. Set it to false and offer CSV export.
      */
     show_pdf?: boolean;
     el: any;
     translations: any;
     componentWillLoad(): Promise<void>;
     /**
-     * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
+     * Emits the chosen format, either 'CSV' or 'PDF'.
      */
     atChange: EventEmitter<string>;
+    private renderTrigger;
     render(): any;
 }

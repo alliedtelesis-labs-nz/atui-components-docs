@@ -111,6 +111,7 @@ const AtTableExportMenu = class {
     show_csv = true;
     /**
      * Offers the PDF export option in the export menu. On by default.
+     * @deprecated PDF export is being removed. Set it to false and offer CSV export.
      */
     show_pdf = true;
     get el() { return getElement(this); }
@@ -119,14 +120,22 @@ const AtTableExportMenu = class {
         this.translations = await fetchTranslations(this.el);
     }
     /**
-     * Emits id of the clicked menu item, either 'CSV' or 'PDF'.
+     * Emits the chosen format, either 'CSV' or 'PDF'.
      */
     atChange;
+    renderTrigger(tooltip, slot, onClick) {
+        return (h("at-tooltip", { slot: slot, position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText", "data-name": "export-trigger", onAtuiClick: onClick }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, tooltip)));
+    }
     render() {
         if (!this.show_csv && !this.show_pdf) {
             return null;
         }
-        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, h("at-tooltip", { slot: "menu-trigger", position: "top" }, h("at-button", { slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { slot: "icon", name: "download" })), h("span", null, this.translations.ATUI.TABLE.EXPORT_TO_FILE)), h("div", null, this.show_csv && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') })), this.show_pdf && (h("at-menu-item", { label: this.translations.ATUI.TABLE.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') })))));
+        const labels = this.translations.ATUI.TABLE;
+        if (this.show_csv !== this.show_pdf) {
+            const format = this.show_csv ? 'CSV' : 'PDF';
+            return this.renderTrigger(this.show_csv ? labels.EXPORT_AS_CSV : labels.EXPORT_AS_PDF, undefined, () => this.atChange.emit(format));
+        }
+        return (h("at-menu", { width: "fit-content", position: "left", align: "end" }, this.renderTrigger(labels.EXPORT_TO_FILE, 'menu-trigger'), h("div", null, h("at-menu-item", { label: labels.EXPORT_AS_CSV, id: "CSV", onAtuiClick: () => this.atChange.emit('CSV') }), h("at-menu-item", { label: labels.EXPORT_AS_PDF, id: "PDF", onAtuiClick: () => this.atChange.emit('PDF') }))));
     }
 };
 
