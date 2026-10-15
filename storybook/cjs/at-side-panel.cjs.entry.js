@@ -73,9 +73,12 @@ const AtSidePanelComponent = class {
     footerObserver;
     panelDialog;
     headerEl = null;
-    railEl = null;
+    railEls = new Set();
+    providerEl = null;
     confineObserver;
     confinementMutationObserver;
+    railMutationObserver;
+    hasLoaded = false;
     triggerEls = [];
     externalTriggerListeners = [];
     /**
@@ -165,9 +168,10 @@ const AtSidePanelComponent = class {
             childList: true,
             subtree: true,
         });
-        if (this.position === 'fixed' && this.el.closest('at-sidebar-inset')) {
+        if (this.needsConfinement) {
             this.setupConfinement();
         }
+        this.hasLoaded = true;
         if (this.trigger_id) {
             this.triggerEls = Array.from(document.querySelectorAll(`[data-sidepanel="${this.trigger_id}"]`));
             if (this.triggerEls.length === 0) {
@@ -177,11 +181,18 @@ const AtSidePanelComponent = class {
             this.setupExternalTriggerListeners();
         }
     }
+    connectedCallback() {
+        if (this.hasLoaded && this.needsConfinement) {
+            this.setupConfinement();
+        }
+    }
     disconnectedCallback() {
         this.cleanupExternalTriggerListeners();
         this.footerObserver?.disconnect();
-        this.confineObserver?.disconnect();
-        this.confinementMutationObserver?.disconnect();
+        this.teardownConfinement();
+    }
+    get needsConfinement() {
+        return (this.position === 'fixed' && !!this.el.closest('at-sidebar-inset'));
     }
     /**
      * The footer drives layout (the content stops stretching once there is a
@@ -210,8 +221,63 @@ const AtSidePanelComponent = class {
      * this stays correct either way without new code when that lands.
      */
     setupConfinement() {
+        this.teardownConfinement();
         this.confineObserver = new ResizeObserver(() => this.updateConfinementOffsets());
+        this.watchProviderRails();
         this.resolveConfinementTargets();
+    }
+    teardownConfinement() {
+        this.confineObserver?.disconnect();
+        this.confinementMutationObserver?.disconnect();
+        this.railMutationObserver?.disconnect();
+        this.confineObserver = undefined;
+        this.confinementMutationObserver = undefined;
+        this.railMutationObserver = undefined;
+        this.headerEl = null;
+        this.providerEl = null;
+        this.railEls = new Set();
+    }
+    watchProviderRails() {
+        this.providerEl = this.el.closest('at-sidebar-provider');
+        if (!this.providerEl)
+            return;
+        this.confineObserver.observe(this.providerEl);
+        this.railMutationObserver = new MutationObserver(() => {
+            if (this.syncRails())
+                this.updateConfinementOffsets();
+        });
+        this.railMutationObserver.observe(this.providerEl, { childList: true });
+    }
+    findRails() {
+        // `side` is not reflected, so a framework property binding leaves no
+        // `side` attribute; at-sidebar renders `data-side` either way.
+        const selector = `at-sidebar[data-side="${this.origin}"]`;
+        if (!this.providerEl) {
+            const rail = document.querySelector(selector);
+            return rail ? [rail] : [];
+        }
+        const providerRails = Array.from(this.providerEl.querySelectorAll(':scope > at-sidebar'));
+        providerRails.forEach((rail) => this.railMutationObserver?.observe(rail, {
+            attributeFilter: ['data-side'],
+        }));
+        return providerRails.filter((rail) => rail.dataset.side === this.origin);
+    }
+    syncRails() {
+        const rails = new Set(this.findRails());
+        const unchanged = rails.size === this.railEls.size &&
+            Array.from(rails).every((rail) => this.railEls.has(rail));
+        if (unchanged)
+            return false;
+        this.railEls.forEach((rail) => {
+            if (!rails.has(rail))
+                this.confineObserver?.unobserve(rail);
+        });
+        rails.forEach((rail) => {
+            if (!this.railEls.has(rail))
+                this.confineObserver?.observe(rail);
+        });
+        this.railEls = rails;
+        return true;
     }
     /**
      * The convention is to author at-sidebar-inset before a right-side
@@ -231,14 +297,11 @@ const AtSidePanelComponent = class {
                 this.confineObserver?.observe(this.headerEl);
             }
         }
-        if (!this.railEl) {
-            const rail = document.querySelector(`at-sidebar[side="${this.origin}"]`);
-            if (rail) {
-                this.railEl = rail;
-                this.confineObserver?.observe(this.railEl);
-            }
+        if (this.railEls.size === 0) {
+            this.syncRails();
         }
-        if (this.headerEl && this.railEl) {
+        const railsWatched = !!this.providerEl || this.railEls.size > 0;
+        if (this.headerEl && railsWatched) {
             this.confinementMutationObserver?.disconnect();
             this.confinementMutationObserver = undefined;
         }
@@ -253,11 +316,21 @@ const AtSidePanelComponent = class {
     }
     updateConfinementOffsets() {
         const topOffset = this.headerEl?.getBoundingClientRect().height ?? 0;
-        const railOffset = this.railEl?.getBoundingClientRect().width ?? 0;
+        const railOffset = this.measureRailOffset();
         this.el.style.setProperty('--at-side-panel-confine-top', `${topOffset}px`);
         this.el.style.setProperty(this.origin === 'left'
             ? '--at-side-panel-confine-left'
             : '--at-side-panel-confine-right', `${railOffset}px`);
+    }
+    measureRailOffset() {
+        const rects = Array.from(this.railEls, (rail) => rail.getBoundingClientRect()).filter((rect) => rect.width > 0 || rect.height > 0);
+        if (rects.length === 0)
+            return 0;
+        if (this.origin === 'left') {
+            return Math.max(0, ...rects.map((rect) => rect.right));
+        }
+        const innermostRailLeft = Math.min(...rects.map((rect) => rect.left));
+        return Math.max(0, document.documentElement.clientWidth - innermostRailLeft);
     }
     cleanupExternalTriggerListeners() {
         this.externalTriggerListeners.forEach(({ element, event, handler }) => {
@@ -289,7 +362,7 @@ const AtSidePanelComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '1aa0f49d859f27f449d9087cfdd02941e3a03d32', "data-open": this.isOpen }, index.h("dialog", { key: '1bdf487467de47bfb771cf7283e67c868f6df3f8', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''} position-${this.position}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '80b28c58aeb01b664f3b9b8a598b7eb822cbb012', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, index.h("header", { key: 'a165321f84b74b1114095dce3e96173dffd9f9f8', class: "header", "data-name": "header" }, index.h("div", { key: '31aff6dc7e562665bd98c57d9b4c687cd7d7cc26' }, index.h("slot", { key: '5a83a8af1676767da6529ba2b3c44863106882fc', name: "title" }), this.panel_title && (index.h("h3", { key: '6f5e872aa08040cb67235fe970a326e54b5c78f0', class: "title" }, this.panel_title)), this.panel_subtitle && (index.h("p", { key: '4c0ad3efc9d40fb3006de14b5cb49e6b16c10b9a', class: "subtitle" }, this.panel_subtitle))), index.h("div", { key: 'd8d53c7369db95a9a6f2777040eece636706e4a5' }, index.h("slot", { key: 'ded36bbeb46a7bb40c0c1f4426a151fc69ce9a39', name: "actions" }), this.has_close_button && (index.h("at-button", { key: 'ab29ad99123a3f91b0b62080dcd9ea4afbdf6d2f', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, index.h("at-icon", { key: '0c7c69a3ffd786d6bfb9e4928bb356095d03b2a2', slot: "icon", name: "close" }))))), index.h("div", { key: '2e92e206fa1ea0766780a0201cd98c35147a8348', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, index.h("slot", { key: '1b4bac6abda50144b4db67f6556d4fae3d7388db' })), index.h("div", { key: 'b335d77e29a189af203f8d7121e231aeb2a4c88c', "data-name": "footer", class: "footer" }, index.h("slot", { key: 'a060351147500a4e84b5d56fb753d686dfdb2b5d', name: "footer" }))))));
+        return (index.h(index.Host, { key: '5df564958fd9d03083bbf825994ec08c101960d0', "data-open": this.isOpen }, index.h("dialog", { key: '6007c80f3c495ff25f32ffce53fba23db767cf19', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''} position-${this.position}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '28bcf21a1ab854432032810c08e5331c306389d5', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, index.h("header", { key: '932bb8a8aab027977d8e3fdbb8b7259ef028fc72', class: "header", "data-name": "header" }, index.h("div", { key: '430a1a0fb3c2576dd86ea91498baf87b0baa255a' }, index.h("slot", { key: '807183b5d0fd96196bf5c56edd4f4288e45241da', name: "title" }), this.panel_title && (index.h("h3", { key: '3b2c280179221614281e70401c152021176d51ac', class: "title" }, this.panel_title)), this.panel_subtitle && (index.h("p", { key: 'd16683c7a6af856dabd27ecf742c7cc23ffef5e3', class: "subtitle" }, this.panel_subtitle))), index.h("div", { key: '38a1cf5b51dd1f717b63b524b9082f21cb1e5c19' }, index.h("slot", { key: '5ddac8de48c79671fdd63a581942a37b3f3128b6', name: "actions" }), this.has_close_button && (index.h("at-button", { key: 'dae878376b146fc41ec321e03329bfc1dad52f31', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, index.h("at-icon", { key: '28e13cd271aebdb945b0681a7c26e91f17d3d00c', slot: "icon", name: "close" }))))), index.h("div", { key: '72622e714b69efe1d1b52e5069f8e6882cf1ab5f', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, index.h("slot", { key: '22596b35e17f683d297635cc2b344e1a78fac0d2' })), index.h("div", { key: 'd85448697c269fae8f3eb3ff203d95b3792b8941', "data-name": "footer", class: "footer" }, index.h("slot", { key: '3ba9f48cb21058a9fd86d986470b71541577cc26', name: "footer" }))))));
     }
 };
 AtSidePanelComponent.style = atSidePanelCss();

@@ -81,9 +81,12 @@ export declare class AtSidePanelComponent {
     private footerObserver;
     private panelDialog;
     private headerEl;
-    private railEl;
+    private railEls;
+    private providerEl;
     private confineObserver?;
     private confinementMutationObserver?;
+    private railMutationObserver?;
+    private hasLoaded;
     private triggerEls;
     private externalTriggerListeners;
     /**
@@ -111,7 +114,9 @@ export declare class AtSidePanelComponent {
     private handleKeyDown;
     offClickHandler(event: any): void;
     componentDidLoad(): Promise<void>;
+    connectedCallback(): void;
     disconnectedCallback(): void;
+    private get needsConfinement();
     /**
      * The footer drives layout (the content stops stretching once there is a
      * footer to sit under it), and `:has()` cannot see the slot reliably once
@@ -137,6 +142,10 @@ export declare class AtSidePanelComponent {
      * this stays correct either way without new code when that lands.
      */
     private setupConfinement;
+    private teardownConfinement;
+    private watchProviderRails;
+    private findRails;
+    private syncRails;
     /**
      * The convention is to author at-sidebar-inset before a right-side
      * at-sidebar rail in the DOM (see at-sidebar-provider.scss), so this
@@ -149,6 +158,7 @@ export declare class AtSidePanelComponent {
      */
     private resolveConfinementTargets;
     private updateConfinementOffsets;
+    private measureRailOffset;
     private cleanupExternalTriggerListeners;
     private setupExternalTriggerListeners;
     render(): any;
