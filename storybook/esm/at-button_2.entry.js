@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-r_AZltRJ.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-D8Aeqmel.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -6,8 +6,8 @@ const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:ha
 const buttonVariantsConfig = {
     variants: {
         disabled: {
-            false: null,
-            true: 'pointer-events-none opacity-30 grayscale-[1]',
+            false: 'cursor-pointer',
+            true: 'cursor-not-allowed opacity-30 grayscale-[1]',
         },
         size: {
             sm: 'h-button-sm py-button-sm px-button-sm',
@@ -81,7 +81,8 @@ const AtButtonComponent = class {
      */
     label;
     /**
-     * When set the button's styling will change and will no longer be interactive
+     * When set the button is styled as disabled and ignores clicks, Enter and Space. It stays
+     * focusable and hoverable so an `at-tooltip` on it can say why it is disabled.
      */
     disabled = false;
     /**
@@ -118,10 +119,19 @@ const AtButtonComponent = class {
             this.hideSpinnerIfAfterMinimumDisplayPeriod();
         }
     }
-    handleClick(event) {
+    blockClickWhileDisabled(event) {
         if (this.disabled) {
-            return;
+            event.preventDefault();
+            event.stopImmediatePropagation();
         }
+    }
+    blockActivationKeysWhileDisabled(event) {
+        if (this.disabled && (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+    }
+    handleClick(event) {
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-button',
@@ -131,9 +141,6 @@ const AtButtonComponent = class {
         }
     }
     handleKeyDown(event) {
-        if (this.disabled) {
-            return;
-        }
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
             this.atuiClick.emit({
@@ -150,15 +157,15 @@ const AtButtonComponent = class {
         this.setSpinner();
     }
     render() {
-        const classname = classlist('at-button group relative box-border flex inline-flex cursor-pointer items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
+        const classname = classlist('at-button group relative box-border flex inline-flex items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
             disabled: this.disabled,
             size: this.size,
             type: this.type,
         });
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
-            type: this.type,
+            type: this.disabled ? undefined : this.type,
         });
-        return (h(Host, { key: 'bb58b298c658d4fed2b3b1eb1538d22371a570ec', class: classname, role: "button", tabIndex: this.disabled ? -1 : 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '3a19e4486dd27314c1f3e6d1e3c2aac7a3e11597', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '960733a93da788417d9c86d2b31afffa05b943c1', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '2f6c23aa9697858efeec0c5e9b269dccadbb205e', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'aa73e49830a5672f49ffcbab267000709d65ff63', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), h("slot", { key: '2aa420f1667c2dbb3ab8557737d4c9d1c9a90d39' }), !this.in_progress && (h("slot", { key: 'e964199bd876360ab724bec3e5cb9aec9405c86f', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '2970e8427f9bbf1722a59be5aa7bd2394e561945', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '86d3c9debdc20068d8a887174fa13b3cde4126a1', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '04ad98c5fd65177e9f48ac07bd87f3daa9b5f109', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '0f149616c7b1bdadb16d6bb65a897cc652ba987e', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '77ccfa2d4c0f600468f6b8585c3b251eff2cd7e1', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'e5600616df90b18c910550ed15a197b60bc33d61', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f5d0279ee121b4b081f7f25fca436b5177885c5f' }), !this.in_progress && (h("slot", { key: '1555873ea91b804decd951ca2fc778bc8f2d7bfc', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '897e6273eba7289e01edc922054ccd7fb577415a', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
 };
 AtButtonComponent.style = atButtonCss();

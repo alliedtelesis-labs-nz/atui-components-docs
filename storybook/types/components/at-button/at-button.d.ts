@@ -28,7 +28,8 @@ export declare class AtButtonComponent {
      */
     label: string;
     /**
-     * When set the button's styling will change and will no longer be interactive
+     * When set the button is styled as disabled and ignores clicks, Enter and Space. It stays
+     * focusable and hoverable so an `at-tooltip` on it can say why it is disabled.
      */
     disabled: boolean;
     /**
@@ -48,6 +49,8 @@ export declare class AtButtonComponent {
     get spinnerColour(): AtLoadingType;
     private hideSpinnerIfAfterMinimumDisplayPeriod;
     private setSpinner;
+    blockClickWhileDisabled(event: MouseEvent): void;
+    blockActivationKeysWhileDisabled(event: KeyboardEvent): void;
     handleClick(event: Event): void;
     handleKeyDown(event: KeyboardEvent): void;
     componentWillUpdate(): void;

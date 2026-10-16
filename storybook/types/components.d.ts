@@ -323,7 +323,7 @@ export namespace Components {
      */
     interface AtButton {
         /**
-          * When set the button's styling will change and will no longer be interactive
+          * When set the button is styled as disabled and ignores clicks, Enter and Space. It stays focusable and hoverable so an `at-tooltip` on it can say why it is disabled.
           * @default false
          */
         "disabled": boolean;
@@ -6334,7 +6334,7 @@ declare namespace LocalJSX {
      */
     interface AtButton {
         /**
-          * When set the button's styling will change and will no longer be interactive
+          * When set the button is styled as disabled and ignores clicks, Enter and Space. It stays focusable and hoverable so an `at-tooltip` on it can say why it is disabled.
           * @default false
          */
         "disabled"?: boolean;
