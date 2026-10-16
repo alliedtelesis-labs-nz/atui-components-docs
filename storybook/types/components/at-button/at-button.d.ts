@@ -1,5 +1,4 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { AtLoadingType } from '../at-loading/at-loading';
 import { AtEvent } from '../../types/events';
 export type AtButtonType = 'primary' | 'primaryOutline' | 'primaryText' | 'secondary' | 'secondaryOutline' | 'secondaryText' | 'destructive' | 'destructiveOutline' | 'destructiveText';
 export type AtButtonSize = 'sm' | 'md' | 'lg';
@@ -33,11 +32,13 @@ export declare class AtButtonComponent {
      */
     disabled: boolean;
     /**
-     * When set, will display a loading spinner inside the button and hide all labels & icons
+     * When set, will display a loading spinner inside the button and hide all labels & icons.
+     * The button never clears it: set it back to false when the work finishes.
      */
     in_progress: boolean;
     /**
-     * Delay period on spinner
+     * Minimum time in ms the spinner stays visible once shown. If `in_progress` is cleared
+     * sooner, the spinner stays up for the remainder.
      */
     spinner_delay_ms: number;
     el: HTMLAtButtonElement;
@@ -45,14 +46,18 @@ export declare class AtButtonComponent {
      * Emits when the button is clicked
      */
     atuiClick: EventEmitter<AtEvent>;
-    canHideSpinner: boolean;
-    get spinnerColour(): AtLoadingType;
-    private hideSpinnerIfAfterMinimumDisplayPeriod;
-    private setSpinner;
+    isHoldingSpinner: boolean;
+    private spinnerShownAt;
+    private spinnerReleaseTimer;
+    get isSpinnerVisible(): boolean;
+    holdSpinnerForMinimumDisplay(isInProgress: boolean): void;
+    private cancelSpinnerRelease;
+    private releaseSpinner;
     blockClickWhileDisabled(event: MouseEvent): void;
     blockActivationKeysWhileDisabled(event: KeyboardEvent): void;
     handleClick(event: Event): void;
     handleKeyDown(event: KeyboardEvent): void;
-    componentWillUpdate(): void;
+    componentWillLoad(): void;
+    disconnectedCallback(): void;
     render(): any;
 }

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-D8Aeqmel.js';
+import { r as registerInstance, h, H as Host, c as createEvent, a as getElement } from './index-Bpy_h9bd.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { A as AvailableCells } from './index-CXLyuXhr.js';
 import { c as countFilterConditions, i as isFilterGroup, d as removeFilterCondition, b as flattenFilterConditions } from './filter-tree.util-CYRBwQ7z.js';
@@ -14,7 +14,7 @@ const AtControlGroup = class {
      */
     direction = 'horizontal';
     render() {
-        return (h(Host, { key: '0f986f9245ed6bbdc6c158327d186684837187cf', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: '5a1b492217a382eaafe22f98c219f44f09d22ae6' })));
+        return (h(Host, { key: 'f20c0e2e4b1f2d7beebbadcdd8672390b6df4017', class: `at-control-group at-control-group--${this.direction}` }, h("slot", { key: '0e517b0f74cc91f18e2fc80916ee8b64e6c67509' })));
     }
 };
 AtControlGroup.style = atControlGroupCss();

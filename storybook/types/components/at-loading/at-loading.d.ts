@@ -1,5 +1,5 @@
 export type AtLoadingVariant = 'spinner' | 'dots' | 'typing' | 'wave';
-export type AtLoadingType = 'default' | 'error' | 'secondary';
+export type AtLoadingType = 'default' | 'error' | 'secondary' | 'current';
 export type AtLoadingSize = 'sm' | 'md' | 'lg';
 /**
  * @category Feedback
@@ -12,7 +12,7 @@ export declare class AtLoadingComponent {
      */
     variant: AtLoadingVariant;
     /**
-     * Visual type/color of the loading indicator
+     * Visual type/color of the loading indicator. `current` inherits the surrounding text colour.
      */
     type: AtLoadingType;
     /**

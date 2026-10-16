@@ -4,6 +4,7 @@ const loadingVariants = {
         default: 'text-active',
         error: 'text-destructive-foreground',
         secondary: 'text-foreground',
+        current: 'text-current',
     },
     size: {
         sm: 'text-sm',
@@ -16,6 +17,12 @@ const loadingVariants = {
         lg: 'h-64 w-64 border-4',
     },
 };
+const spinnerBorderPerType = {
+    default: 'border-active',
+    error: 'border-destructive-foreground',
+    secondary: 'border-foreground',
+    current: 'border-current',
+};
 /**
  * @category Feedback
  * @description A versatile loading component with multiple animation types including spinner, dots, typing, wave, and thinking indicators. Use for indicating ongoing processes or data fetching states across different contexts.
@@ -27,7 +34,7 @@ export class AtLoadingComponent {
      */
     variant = 'spinner';
     /**
-     * Visual type/color of the loading indicator
+     * Visual type/color of the loading indicator. `current` inherits the surrounding text colour.
      */
     type = 'default';
     /**
@@ -44,11 +51,7 @@ export class AtLoadingComponent {
         return loadingVariants.spinnerSize[this.size];
     }
     renderSpinner() {
-        const borderColor = this.type === 'default'
-            ? 'border-active'
-            : this.type === 'error'
-                ? 'border-destructive-foreground'
-                : 'border-foreground';
+        const borderColor = spinnerBorderPerType[this.type];
         return (h("span", { class: `${borderColor} ${this.spinnerSizeClasses} inline-block animate-spin rounded-full border-solid border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]`, "data-name": "loading-spinner" }));
     }
     renderShapes(name, shapeClasses, delays) {
@@ -68,7 +71,7 @@ export class AtLoadingComponent {
         }
     }
     render() {
-        return (h(Host, { key: '12f5109a4f8a8b4beee4f67f460a0588cb4cd03e', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), h("slot", { key: 'dbe3445551e7f24cb85ef24fac4d7c148a74cb25' })));
+        return (h(Host, { key: 'bda227c9973b828760c3faf19bc1c7d7e5c3490f', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), h("slot", { key: 'b24860df32579c8cfa9c1cade071ce5ded113998' })));
     }
     static get is() { return "at-loading"; }
     static get originalStyleUrls() {
@@ -114,7 +117,7 @@ export class AtLoadingComponent {
                 "mutable": false,
                 "complexType": {
                     "original": "AtLoadingType",
-                    "resolved": "\"default\" | \"error\" | \"secondary\"",
+                    "resolved": "\"current\" | \"default\" | \"error\" | \"secondary\"",
                     "references": {
                         "AtLoadingType": {
                             "location": "local",
@@ -127,7 +130,7 @@ export class AtLoadingComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Visual type/color of the loading indicator"
+                    "text": "Visual type/color of the loading indicator. `current` inherits the surrounding text colour."
                 },
                 "getter": false,
                 "setter": false,

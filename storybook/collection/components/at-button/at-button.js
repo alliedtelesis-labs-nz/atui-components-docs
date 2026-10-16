@@ -45,17 +45,6 @@ const focusIndicatorVariantsConfig = {
     },
 };
 // Note: iconVariantsConfig was unused; removed to satisfy TS noUnusedLocals
-const spinnerColourPerType = {
-    primary: 'default',
-    primaryOutline: 'secondary',
-    primaryText: 'secondary',
-    secondary: 'secondary',
-    secondaryOutline: 'secondary',
-    secondaryText: 'secondary',
-    destructive: 'default',
-    destructiveOutline: 'error',
-    destructiveText: 'error',
-};
 /**
  * @category Actions
  * @description A versatile button component for user interactions with multiple styling variants, sizes, and loading states. Supports icons, custom content through slots, and accessibility features.
@@ -86,11 +75,13 @@ export class AtButtonComponent {
      */
     disabled = false;
     /**
-     * When set, will display a loading spinner inside the button and hide all labels & icons
+     * When set, will display a loading spinner inside the button and hide all labels & icons.
+     * The button never clears it: set it back to false when the work finishes.
      */
     in_progress = false;
     /**
-     * Delay period on spinner
+     * Minimum time in ms the spinner stays visible once shown. If `in_progress` is cleared
+     * sooner, the spinner stays up for the remainder.
      */
     spinner_delay_ms = 1000;
     el;
@@ -98,25 +89,38 @@ export class AtButtonComponent {
      * Emits when the button is clicked
      */
     atuiClick;
-    canHideSpinner = true;
-    get spinnerColour() {
-        return spinnerColourPerType[this.type];
+    isHoldingSpinner;
+    spinnerShownAt;
+    spinnerReleaseTimer;
+    get isSpinnerVisible() {
+        return this.in_progress || this.isHoldingSpinner;
     }
-    hideSpinnerIfAfterMinimumDisplayPeriod() {
-        if (this.in_progress && this.canHideSpinner) {
-            this.in_progress = false;
+    holdSpinnerForMinimumDisplay(isInProgress) {
+        if (isInProgress) {
+            this.cancelSpinnerRelease();
+            this.spinnerShownAt ??= Date.now();
+            return;
         }
+        if (this.spinnerShownAt === undefined) {
+            return;
+        }
+        const remainingMs = this.spinnerShownAt + this.spinner_delay_ms - Date.now();
+        if (remainingMs <= 0) {
+            this.releaseSpinner();
+            return;
+        }
+        this.isHoldingSpinner = true;
+        this.spinnerReleaseTimer = setTimeout(() => this.releaseSpinner(), remainingMs);
     }
-    setSpinner() {
-        if (this.in_progress) {
-            this.canHideSpinner = false;
-            setTimeout(() => {
-                this.canHideSpinner = true;
-                this.hideSpinnerIfAfterMinimumDisplayPeriod();
-            }, this.spinner_delay_ms);
-        }
-        else {
-            this.hideSpinnerIfAfterMinimumDisplayPeriod();
+    cancelSpinnerRelease() {
+        clearTimeout(this.spinnerReleaseTimer);
+        this.spinnerReleaseTimer = undefined;
+        this.isHoldingSpinner = false;
+    }
+    releaseSpinner() {
+        this.cancelSpinnerRelease();
+        if (!this.in_progress) {
+            this.spinnerShownAt = undefined;
         }
     }
     blockClickWhileDisabled(event) {
@@ -153,8 +157,12 @@ export class AtButtonComponent {
             }
         }
     }
-    componentWillUpdate() {
-        this.setSpinner();
+    componentWillLoad() {
+        this.cancelSpinnerRelease();
+        this.spinnerShownAt = this.in_progress ? Date.now() : undefined;
+    }
+    disconnectedCallback() {
+        this.releaseSpinner();
     }
     render() {
         const classname = classlist('at-button group relative box-border flex inline-flex items-center justify-center gap-4 overflow-hidden rounded-button font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus:outline-none', buttonVariantsConfig)({
@@ -165,7 +173,7 @@ export class AtButtonComponent {
         const focusIndicatorClassname = classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.disabled ? undefined : this.type,
         });
-        return (h(Host, { key: '86d3c9debdc20068d8a887174fa13b3cde4126a1', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '04ad98c5fd65177e9f48ac07bd87f3daa9b5f109', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.in_progress && (h("at-loading", { key: '0f149616c7b1bdadb16d6bb65a897cc652ba987e', class: "absolute", size: "sm", type: this.spinnerColour })), !this.in_progress && (h("slot", { key: '77ccfa2d4c0f600468f6b8585c3b251eff2cd7e1', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: 'e5600616df90b18c910550ed15a197b60bc33d61', class: `leading-[16px] ${this.in_progress ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'f5d0279ee121b4b081f7f25fca436b5177885c5f' }), !this.in_progress && (h("slot", { key: '1555873ea91b804decd951ca2fc778bc8f2d7bfc', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: '897e6273eba7289e01edc922054ccd7fb577415a', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (h(Host, { key: '6aa05bf28cd37e2dd8cbf27da37d7693b2c22a15', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'd156f19d8d3ccb3a30edeba9f2bdf28e0fd66003', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.isSpinnerVisible && (h("at-loading", { key: 'ad73e2e3c9008efc6b26f6540ec5b0f9ecf7fe05', "data-name": "button-spinner", class: "absolute", size: "sm", type: "current" })), !this.isSpinnerVisible && (h("slot", { key: '884802116901f0fb585ca458ea6ed1de5cf57a8d', name: "icon", "data-name": "button-icon" })), this.label && (h("span", { key: '63b6b24f831e4514abc285d8e58431f587a779ec', class: `leading-[16px] ${this.isSpinnerVisible ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), h("slot", { key: 'e66c9c7e91454c5d2967e2749f54421aea1621f6' }), !this.isSpinnerVisible && (h("slot", { key: '77d74bc42eabad3110031697be465a0c96a08b31', name: "icon_after", "data-name": "button-icon-right" }))), h("div", { key: 'cafb8822054d72f4f9793fa3e2da7066020e80e3', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get is() { return "at-button"; }
     static get originalStyleUrls() {
@@ -303,7 +311,7 @@ export class AtButtonComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "When set, will display a loading spinner inside the button and hide all labels & icons"
+                    "text": "When set, will display a loading spinner inside the button and hide all labels & icons.\nThe button never clears it: set it back to false when the work finishes."
                 },
                 "getter": false,
                 "setter": false,
@@ -323,7 +331,7 @@ export class AtButtonComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Delay period on spinner"
+                    "text": "Minimum time in ms the spinner stays visible once shown. If `in_progress` is cleared\nsooner, the spinner stays up for the remainder."
                 },
                 "getter": false,
                 "setter": false,
@@ -331,6 +339,11 @@ export class AtButtonComponent {
                 "attribute": "spinner_delay_ms",
                 "defaultValue": "1000"
             }
+        };
+    }
+    static get states() {
+        return {
+            "isHoldingSpinner": {}
         };
     }
     static get events() {
@@ -359,6 +372,15 @@ export class AtButtonComponent {
             }];
     }
     static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "in_progress",
+                "methodName": "holdSpinnerForMinimumDisplay",
+                "handlerOptions": {
+                    "immediate": true
+                }
+            }];
+    }
     static get listeners() {
         return [{
                 "name": "click",

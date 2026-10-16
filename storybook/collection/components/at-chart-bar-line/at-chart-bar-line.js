@@ -419,11 +419,11 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '305b7691ca57a9ffb5bb9f5855c1819c39c12205', style: {
+        return (h(Host, { key: 'b436347573ec3e9cdad27c50e833ad2b2eb84118', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, h("canvas", { key: '61f0def1f6e372d007ca6da8ef640cfe9a5e73f8', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
+            } }, h("canvas", { key: 'b2592001c88c4ca28396fcc8af07e98c82604e34', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

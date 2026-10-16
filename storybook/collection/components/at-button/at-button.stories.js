@@ -3,7 +3,7 @@ const Template = (args) => `
     label="${args.label ?? ''}"
     size="${args.size ?? 'lg'}"
     type="${args.type ?? 'primary'}"
-    spinner_minimum_display_period_ms=${args.spinner_minimum_display_period_ms ?? 1000}
+    spinner_delay_ms=${args.spinner_delay_ms ?? 1000}
     ${args.submit ? 'submit' : ''}
     ${args.border ? 'border' : ''}
     ${args.rounded ? 'rounded' : ''}
@@ -45,7 +45,7 @@ Default.args = {
     icon_after: '',
     in_progress: false,
     size: 'lg',
-    spinner_minimum_display_period_ms: 1000,
+    spinner_delay_ms: 1000,
     submit: false,
     type: 'primary',
 };
@@ -57,7 +57,7 @@ Disabled.args = {
     icon_after: '',
     in_progress: false,
     size: 'lg',
-    spinner_minimum_display_period_ms: 1000,
+    spinner_delay_ms: 1000,
     submit: false,
     type: 'primary',
 };
@@ -69,7 +69,31 @@ Spinner.args = {
     icon_after: '',
     in_progress: true,
     size: 'lg',
-    spinner_minimum_display_period_ms: 1000,
+    spinner_delay_ms: 1000,
     submit: false,
     type: 'primary',
+};
+const InProgressAfterLoadTemplate = (args) => `
+<at-button
+    id="in-progress-after-load"
+    label="${args.label}"
+    spinner_delay_ms=${args.spinner_delay_ms}
+></at-button>
+<script>
+{
+    const button = document.querySelector('#in-progress-after-load');
+    button.addEventListener('atuiClick', () => {
+        button.in_progress = true;
+        setTimeout(() => {
+            button.in_progress = false;
+        }, ${args.work_duration_ms});
+    });
+}
+</script>
+`;
+export const InProgressAfterLoad = InProgressAfterLoadTemplate.bind({});
+InProgressAfterLoad.args = {
+    label: 'Save',
+    spinner_delay_ms: 1000,
+    work_duration_ms: 3000,
 };

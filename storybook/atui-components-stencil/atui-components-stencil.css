@@ -3670,6 +3670,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   border-color: color-mix(in srgb, var(--token-state-active-accent) calc(var(--tw-border-opacity, 1) * 100%), transparent);
 }
 
+.border-current {
+  border-color: currentColor;
+}
+
 .border-destructive {
   --tw-border-opacity:
       1;
@@ -4381,6 +4385,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-button-foreground-inv) calc(var(--tw-text-opacity, 1) * 100%), transparent);
+}
+
+.text-current {
+  color: currentColor;
 }
 
 .text-destructive-foreground {

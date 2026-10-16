@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ClXqHDM_.js');
+var index = require('./index-CnLXNc1Z.js');
 var translation = require('./translation-NP6A4XKu.js');
 var index$1 = require('./index-CmXMuEr6.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
@@ -16,7 +16,7 @@ const AtControlGroup = class {
      */
     direction = 'horizontal';
     render() {
-        return (index.h(index.Host, { key: '0f986f9245ed6bbdc6c158327d186684837187cf', class: `at-control-group at-control-group--${this.direction}` }, index.h("slot", { key: '5a1b492217a382eaafe22f98c219f44f09d22ae6' })));
+        return (index.h(index.Host, { key: 'f20c0e2e4b1f2d7beebbadcdd8672390b6df4017', class: `at-control-group at-control-group--${this.direction}` }, index.h("slot", { key: '0e517b0f74cc91f18e2fc80916ee8b64e6c67509' })));
     }
 };
 AtControlGroup.style = atControlGroupCss();

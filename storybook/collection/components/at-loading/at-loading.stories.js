@@ -12,7 +12,7 @@ export default {
             control: { type: 'radio' },
         },
         type: {
-            options: ['default', 'secondary', 'error'],
+            options: ['default', 'secondary', 'error', 'current'],
             control: { type: 'radio' },
         },
         size: {
@@ -56,6 +56,11 @@ Thinking.args = {
     size: 'md',
     type: 'default',
 };
+export const CurrentColour = () => `
+<div class="text-error-accent">
+    <at-loading variant="spinner" size="md" type="current">Inherits the text colour</at-loading>
+</div>
+`;
 // Size variants example
 export const Sizes = () => `
 <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">

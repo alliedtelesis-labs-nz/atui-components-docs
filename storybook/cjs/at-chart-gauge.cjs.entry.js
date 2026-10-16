@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-ClXqHDM_.js');
+var index = require('./index-CnLXNc1Z.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
@@ -538,7 +538,7 @@ const AtChartGauge = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '2ec9c2dce03067d5cf45ca047c62f2de1d2f7b0e', style: { display: 'block', height: '100%', width: '100%' } }, index.h("canvas", { key: '7f17d9feb3cc9efcf0ebd8f2d62b3884c3e9b6ed', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (index.h(index.Host, { key: '6b06aea36e04bcf2246214e8e7333ff81d20a6be', style: { display: 'block', height: '100%', width: '100%' } }, index.h("canvas", { key: '15bafe3f09f6adde80fbe349c982a9c9924b9b05', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
 };
 

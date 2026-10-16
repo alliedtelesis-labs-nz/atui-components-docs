@@ -19,3 +19,4 @@ export default _default;
 export declare const Default: any;
 export declare const Disabled: any;
 export declare const Spinner: any;
+export declare const InProgressAfterLoad: any;

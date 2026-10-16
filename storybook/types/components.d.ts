@@ -328,7 +328,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * When set, will display a loading spinner inside the button and hide all labels & icons
+          * When set, will display a loading spinner inside the button and hide all labels & icons. The button never clears it: set it back to false when the work finishes.
           * @default false
          */
         "in_progress": boolean;
@@ -342,7 +342,7 @@ export namespace Components {
          */
         "size": AtButtonSize;
         /**
-          * Delay period on spinner
+          * Minimum time in ms the spinner stays visible once shown. If `in_progress` is cleared sooner, the spinner stays up for the remainder.
           * @default 1000
          */
         "spinner_delay_ms": number;
@@ -1751,7 +1751,7 @@ export namespace Components {
          */
         "size": AtLoadingSize;
         /**
-          * Visual type/color of the loading indicator
+          * Visual type/color of the loading indicator. `current` inherits the surrounding text colour.
           * @default 'default'
          */
         "type": AtLoadingType;
@@ -6339,7 +6339,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * When set, will display a loading spinner inside the button and hide all labels & icons
+          * When set, will display a loading spinner inside the button and hide all labels & icons. The button never clears it: set it back to false when the work finishes.
           * @default false
          */
         "in_progress"?: boolean;
@@ -6357,7 +6357,7 @@ declare namespace LocalJSX {
          */
         "size"?: AtButtonSize;
         /**
-          * Delay period on spinner
+          * Minimum time in ms the spinner stays visible once shown. If `in_progress` is cleared sooner, the spinner stays up for the remainder.
           * @default 1000
          */
         "spinner_delay_ms"?: number;
@@ -7786,7 +7786,7 @@ declare namespace LocalJSX {
          */
         "size"?: AtLoadingSize;
         /**
-          * Visual type/color of the loading indicator
+          * Visual type/color of the loading indicator. `current` inherits the surrounding text colour.
           * @default 'default'
          */
         "type"?: AtLoadingType;

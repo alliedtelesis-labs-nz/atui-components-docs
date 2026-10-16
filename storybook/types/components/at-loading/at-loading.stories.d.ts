@@ -33,6 +33,7 @@ export declare const Dots: any;
 export declare const Typing: any;
 export declare const Wave: any;
 export declare const Thinking: any;
+export declare const CurrentColour: () => string;
 export declare const Sizes: () => string;
 export declare const AllVariants: () => string;
 export declare const RichLabel: () => string;
