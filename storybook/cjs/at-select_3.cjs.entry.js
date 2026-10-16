@@ -193,7 +193,8 @@ const AtSelectComponent = class {
     }
     setupOptionElements() {
         this.slottedOptionLabels.clear();
-        this.el.querySelectorAll('at-select-option').forEach((option) => {
+        const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="select-menu-option"]):not([data-name="select-custom-option"])');
+        slottedOptions.forEach((option) => {
             const optionEl = option;
             const label = optionEl.label;
             if (label) {
@@ -466,16 +467,16 @@ const AtSelectComponent = class {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (index.h(index.Host, { key: '87be6442c3f07765a230408dd90e691e33fb9d1d', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: 'd987fa35c8d6042369f9971024e1df0e6102f69d', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'e7a37e7c55013c0ee8ad8f11d8091068169446f8', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '0b9f5ce7d2564ef7c9dda2a9a28ce23cfe773915', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: 'c543e59ef092253c0ecb5b8364cc7bf00cf2f9bc' }, this.error_text && this.invalid && (index.h("span", { key: 'b7876dcddf569540fd18f632ffc1b1a312e381a9', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '8b1e46944cef230a08177f632e8e6238412ba51f' }, this.error_text && this.invalid && (index.h("span", { key: 'd6925e06640af60d2e0bd9afa43a6286c7c9b8e3', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -534,7 +535,7 @@ const AtSelectComponent = class {
             'No options available'))));
     }
     renderOption(option) {
-        return (index.h("at-select-option", { key: option.value, value: option.value, label: option.label || option.value, is_active: this.value === option.value, disabled: option.disabled, onAtuiClick: () => this.handleChange(option.value), onMouseDown: () => {
+        return (index.h("at-select-option", { key: option.value, value: option.value, label: option.label || option.value, is_active: this.value === option.value, disabled: option.disabled, "data-name": "select-menu-option", onAtuiClick: () => this.handleChange(option.value), onMouseDown: () => {
                 if (!option.disabled)
                     this.handleChange(option.value);
             } }));
@@ -545,7 +546,7 @@ const AtSelectComponent = class {
             option.children.length === 0) {
             return null;
         }
-        return (index.h("at-select-group", { key: option.value, label: option.label || option.value }, option.children.map((child) => (index.h("at-select-option", { value: child.value, label: child.label || child.value, is_active: this.value === child.value, disabled: child.disabled, option_group: true, onAtuiClick: () => this.handleChange(child.value) })))));
+        return (index.h("at-select-group", { key: option.value, label: option.label || option.value }, option.children.map((child) => (index.h("at-select-option", { value: child.value, label: child.label || child.value, is_active: this.value === child.value, disabled: child.disabled, "data-name": "select-menu-option", option_group: true, onAtuiClick: () => this.handleChange(child.value) })))));
     }
     static get watchers() { return {
         "value": [{

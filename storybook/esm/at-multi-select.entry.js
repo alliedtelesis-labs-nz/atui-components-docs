@@ -199,7 +199,8 @@ const AtMultiSelectComponent = class {
     setupOptionElements() {
         this.slottedOptionLabels.clear();
         this.optionEls = [];
-        this.el.querySelectorAll('at-select-option').forEach((option) => {
+        const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="multi-select-option"])');
+        slottedOptions.forEach((option) => {
             const optionEl = option;
             const label = optionEl.label;
             if (label) {
@@ -365,16 +366,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (h(Host, { key: '2721766cbf6d7e675a42150ff207b170a327eeb9', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: 'c2bdc8ba6bf7060538a46d4f547f137101437b29', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '5f00c052cdb6938646c4dca712d58ac26d6d67e7', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'ce2a789bd7b87407bbdd4e2ef6197f53fa2ad9c1', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '7894be0e9b5a7b339a9fe35f25274d1fe4ae78da' }, this.error_text && this.invalid && (h("span", { key: '4ac5b7f6313d49c0c7924d25b284caef12795fb4', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '1909d790bee3e5035e71ac04ddd9453ba380a1c8' }, this.error_text && this.invalid && (h("span", { key: '18bae43af09d380af8141ffb1de479003f9895bf', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {
