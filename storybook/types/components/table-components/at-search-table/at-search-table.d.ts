@@ -146,8 +146,10 @@ export declare class AtSearchTable {
      */
     use_custom_pagination?: boolean;
     /**
-     * If true, enables automatic column resizing to fit available space.
-     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     * If true, scales the columns to fill the table's width, keeping their relative widths
+     * and never shrinking a column below its configured width. Skipped while any shown,
+     * unpinned column has `flex`, because flex already fills the table, and once the user
+     * resizes a column. Set `suppressSizeToFit` on a column to keep its width.
      */
     auto_size_columns: boolean;
     /**

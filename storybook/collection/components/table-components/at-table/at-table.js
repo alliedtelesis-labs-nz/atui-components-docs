@@ -1,11 +1,14 @@
 import { h, Host, } from "@stencil/core";
 import { createGrid, } from "ag-grid-community";
 import { resolveCellSearchText } from "../utils/cell-search-text";
+import { AvailableCells } from "../../../types/table-cells";
 import { themeQuartz } from "ag-grid-community";
 import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
 import { AtTableEmptyStateOverlay, } from "./table-empty-state-overlay";
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
+/** The menu cell's icon button plus the cell's padding. */
+const MENU_COLUMN_WIDTH = 56;
 /**
  * @category Data Tables
  * @description A comprehensive data table component with sorting, filtering, pagination, and selection capabilities. Features responsive design, customizable columns, and accessibility support.
@@ -40,8 +43,10 @@ export class AtTableComponent {
      */
     can_auto_init = true;
     /**
-     * If true, enables automatic column resizing to fit available space.
-     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     * If true, scales the columns to fill the table's width, keeping their relative widths
+     * and never shrinking a column below its configured width. Skipped while any shown,
+     * unpinned column has `flex`, because flex already fills the table, and once the user
+     * resizes a column. Set `suppressSizeToFit` on a column to keep its width.
      */
     auto_size_columns = true;
     /**
@@ -63,7 +68,8 @@ export class AtTableComponent {
      */
     ag_grid;
     el;
-    resizeListener;
+    hasUserResizedColumn = false;
+    resizeObserver;
     /**
      * Emits an event when a column's sorting state changes.
      * Used to perform sorting outside of agGrid, when use_custom_sorting is set.
@@ -100,9 +106,7 @@ export class AtTableComponent {
         if (this.agGrid && this.tableCreated) {
             this.agGrid.setGridOption('rowData', newData?.items || []);
             this.updateDisplayedRowsState(this.agGrid);
-            if (this.auto_size_columns) {
-                setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
-            }
+            setTimeout(() => this.fitColumnsToGrid(this.agGrid), 0);
         }
     }
     /**
@@ -137,11 +141,72 @@ export class AtTableComponent {
     }
     handleColDefsChange(newColDefs) {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', this.withSearchText(newColDefs));
-            if (this.auto_size_columns) {
-                setTimeout(() => this.agGrid.sizeColumnsToFit(), 0);
-            }
+            this.agGrid.setGridOption('columnDefs', this.withSearchText(this.withColumnDefaults(newColDefs)));
+            setTimeout(() => this.fitColumnsToGrid(this.agGrid), 0);
         }
+    }
+    /**
+     * ag-grid clears a column's `flex` once anything sets its width, so fitting a grid
+     * with a flex column would stop that column filling the table.
+     */
+    fitColumnsToGrid(api) {
+        if (!this.auto_size_columns || this.hasUserResizedColumn) {
+            return;
+        }
+        const configuredWidths = api
+            .getAllDisplayedColumns()
+            .flatMap((column) => {
+            const { width, initialWidth } = column.getColDef();
+            const configured = width ?? initialWidth;
+            return configured === undefined || column.getFlex() > 0
+                ? []
+                : [{ key: column, width: configured }];
+        });
+        // ag-grid only flexes unpinned columns.
+        const hasFlexColumn = api
+            .getDisplayedCenterColumns()
+            .some((column) => column.getFlex() > 0);
+        if (hasFlexColumn) {
+            // Undoes a fit made while the flex column was hidden.
+            api.applyColumnState({
+                state: configuredWidths.map(({ key, width }) => ({
+                    colId: key.getColId(),
+                    width,
+                })),
+            });
+            return;
+        }
+        // A configured width is a floor, so a narrow table scrolls rather than cutting text off.
+        api.sizeColumnsToFit({
+            columnLimits: configuredWidths.map(({ key, width }) => ({
+                key,
+                minWidth: width,
+            })),
+        });
+    }
+    /**
+     * Sizes a menu column to its button when the column defs leave it unsized, since
+     * otherwise it is ag-grid's default 200px once a flex column stops the fit.
+     */
+    withColumnDefaults(colDefs) {
+        return (colDefs ?? []).map((colDef) => {
+            const isSized = [
+                colDef.width,
+                colDef.initialWidth,
+                colDef.minWidth,
+                colDef.maxWidth,
+                colDef.flex,
+            ].some((value) => value !== undefined);
+            if (colDef.cellRenderer !== AvailableCells.MENU_CELL || isSized) {
+                return colDef;
+            }
+            return {
+                ...colDef,
+                minWidth: MENU_COLUMN_WIDTH,
+                maxWidth: MENU_COLUMN_WIDTH,
+                suppressSizeToFit: true,
+            };
+        });
     }
     /**
      * Re-applies the column defs so ag-grid's own sorting is neutralised, or
@@ -152,7 +217,7 @@ export class AtTableComponent {
      */
     handleUseCustomSortingChange() {
         if (this.agGrid && this.tableCreated) {
-            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(this.col_defs));
+            this.agGrid.setGridOption('columnDefs', this.resolveColumnDefs(this.withColumnDefaults(this.col_defs)));
         }
     }
     /**
@@ -194,6 +259,27 @@ export class AtTableComponent {
         }
         api.setGridOption('pagination', true);
         api.setGridOption('paginationPageSize', this.page_size);
+    }
+    /** Re-attaches on reconnect, as disconnecting tears the observer down. */
+    connectedCallback() {
+        this.observeGridResize();
+    }
+    /**
+     * ag-grid's gridSizeChanged doesn't fire when an autoHeight grid narrows. The grid's
+     * root is observed rather than the host, which is inline and so never reports a size.
+     */
+    observeGridResize() {
+        this.resizeObserver?.disconnect();
+        const gridRoot = this.el.querySelector('.ag-root-wrapper');
+        if (!gridRoot || typeof ResizeObserver === 'undefined') {
+            return;
+        }
+        this.resizeObserver = new ResizeObserver(() => this.fitColumnsToGrid(this.agGrid));
+        this.resizeObserver.observe(gridRoot);
+    }
+    disconnectedCallback() {
+        this.resizeObserver?.disconnect();
+        this.resizeObserver = undefined;
     }
     async componentDidLoad() {
         if (!this.can_auto_init) {
@@ -258,6 +344,7 @@ export class AtTableComponent {
         if (this.agGrid) {
             this.agGrid.destroy();
         }
+        this.hasUserResizedColumn = false;
         const agAtuiTheme = themeQuartz.withParams({
             browserColorScheme: 'inherit',
             fontFamily: TOKEN_FONT_FAMILY_BASE,
@@ -268,14 +355,11 @@ export class AtTableComponent {
             theme: agAtuiTheme,
             domLayout: 'autoHeight',
             rowData: this.table_data ? this.table_data.items : [],
-            columnDefs: this.withSearchText(this.col_defs),
+            columnDefs: this.resolveColumnDefs(this.withSearchText(this.withColumnDefaults(this.col_defs))),
             enableBrowserTooltips: true,
             enableCellTextSelection: true,
             ...(this.row_id_field && {
                 getRowId: (params) => String(params.data?.[this.row_id_field]),
-            }),
-            ...(this.auto_size_columns && {
-                autoSizeStrategy: { type: 'fitGridWidth' },
             }),
             animateRows: true,
             components: AtTableComponentsConfigs.getFrameworkComponents(),
@@ -287,11 +371,17 @@ export class AtTableComponent {
                 this.updateDisplayedRowsState(event.api);
                 this.syncEmptyStateOverlay(event.api);
             },
+            onColumnResized: (event) => {
+                if (event.source === 'uiColumnResized') {
+                    this.hasUserResizedColumn = true;
+                }
+            },
             onColumnVisible: (event) => {
                 this.atColumnVisibilityChange.emit(event.api
                     .getColumnState()
                     .filter((state) => state.hide)
                     .map((state) => state.colId));
+                this.fitColumnsToGrid(event.api);
             },
             onSortChanged: (event) => {
                 const sortColumns = event.api
@@ -311,12 +401,6 @@ export class AtTableComponent {
                 }
             },
         };
-        if (this.use_custom_sorting) {
-            gridOptions.columnDefs = this.withSearchText(this.col_defs).map((colDef) => ({
-                ...colDef,
-                comparator: () => 0,
-            }));
-        }
         if (!this.use_custom_pagination) {
             gridOptions.pagination = true;
             gridOptions.paginationPageSize = this.page_size;
@@ -330,6 +414,7 @@ export class AtTableComponent {
         this.agGrid = gridApi;
         this.tableCreated = true;
         this.updateDisplayedRowsState(gridApi);
+        this.observeGridResize();
         this.atGridReady.emit(gridApi);
         return gridApi;
     }
@@ -341,14 +426,8 @@ export class AtTableComponent {
     async getGridApi() {
         return this.agGrid;
     }
-    disconnectedCallback() {
-        // Clean up resize listener
-        if (this.resizeListener) {
-            window.removeEventListener('resize', this.resizeListener);
-        }
-    }
     render() {
-        return (h(Host, { key: '2cb550f835d0d9b221ac3068c8c9fe6d8a3ead5d', class: {
+        return (h(Host, { key: '6826a46c7fdb311420a9cd88f236d3e44b6d29a0', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight
@@ -503,7 +582,7 @@ export class AtTableComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "If true, enables automatic column resizing to fit available space.\nColumns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected."
+                    "text": "If true, scales the columns to fill the table's width, keeping their relative widths\nand never shrinking a column below its configured width. Skipped while any shown,\nunpinned column has `flex`, because flex already fills the table, and once the user\nresizes a column. Set `suppressSizeToFit` on a column to keep its width."
                 },
                 "getter": false,
                 "setter": false,

@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-DBQPUzEk.js";const p=o,r=s;export{p as AtTable,r as defineCustomElement}
+import{A as o,d as s}from"./p-CsB-Lmor.js";const r=o,m=s;export{r as AtTable,m as defineCustomElement}

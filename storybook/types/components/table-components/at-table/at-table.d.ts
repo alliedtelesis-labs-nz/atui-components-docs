@@ -38,8 +38,10 @@ export declare class AtTableComponent {
      */
     can_auto_init: boolean;
     /**
-     * If true, enables automatic column resizing to fit available space.
-     * Columns will be sized proportionally based on their content and constraints. Fixed widths in column defs will be respected.
+     * If true, scales the columns to fill the table's width, keeping their relative widths
+     * and never shrinking a column below its configured width. Skipped while any shown,
+     * unpinned column has `flex`, because flex already fills the table, and once the user
+     * resizes a column. Set `suppressSizeToFit` on a column to keep its width.
      */
     auto_size_columns: boolean;
     /**
@@ -61,7 +63,8 @@ export declare class AtTableComponent {
      */
     ag_grid: GridApi;
     el: HTMLAtTableElement;
-    private resizeListener;
+    private hasUserResizedColumn;
+    private resizeObserver?;
     /**
      * Emits an event when a column's sorting state changes.
      * Used to perform sorting outside of agGrid, when use_custom_sorting is set.
@@ -112,6 +115,16 @@ export declare class AtTableComponent {
     private withSearchText;
     handleColDefsChange(newColDefs: ColDef[]): void;
     /**
+     * ag-grid clears a column's `flex` once anything sets its width, so fitting a grid
+     * with a flex column would stop that column filling the table.
+     */
+    private fitColumnsToGrid;
+    /**
+     * Sizes a menu column to its button when the column defs leave it unsized, since
+     * otherwise it is ag-grid's default 200px once a flex column stops the fit.
+     */
+    private withColumnDefaults;
+    /**
      * Re-applies the column defs so ag-grid's own sorting is neutralised, or
      * restored, when the prop arrives after the grid has been created - the
      * same late-binding case as `use_custom_pagination`. Without this a
@@ -140,6 +153,14 @@ export declare class AtTableComponent {
      * set once in `createGrid` rather than here.
      */
     private applyPaginationOptions;
+    /** Re-attaches on reconnect, as disconnecting tears the observer down. */
+    connectedCallback(): void;
+    /**
+     * ag-grid's gridSizeChanged doesn't fire when an autoHeight grid narrows. The grid's
+     * root is observed rather than the host, which is inline and so never reports a size.
+     */
+    private observeGridResize;
+    disconnectedCallback(): void;
     componentDidLoad(): Promise<void>;
     componentDidUpdate(): Promise<void>;
     private initGrid;
@@ -162,6 +183,5 @@ export declare class AtTableComponent {
      * @returns The AG Grid API
      */
     getGridApi(): Promise<GridApi>;
-    disconnectedCallback(): void;
     render(): any;
 }
