@@ -28,7 +28,7 @@ const SlotTriggerTemplate = (args) => `
 >
     <at-button slot="menu-trigger" label="${args.triggerLabel}" type="secondary"></at-button>
     <div>
-        <at-menu-item label="View Details"></at-menu-item>
+        <at-menu-item label="View details"></at-menu-item>
         <at-menu-item label="Edit Item"></at-menu-item>
         <at-menu-item label="Archive"></at-menu-item>
         <at-menu-item label="Delete" disabled></at-menu-item>
@@ -47,7 +47,7 @@ const ExternalTriggerTemplate = (args) => `
         width="${args.width}"
     >
         <div>
-            <at-menu-item label="View Details"></at-menu-item>
+            <at-menu-item label="View details"></at-menu-item>
             <at-menu-item label="Edit Item"></at-menu-item>
             <at-menu-item label="Archive"></at-menu-item>
             <at-menu-item label="Delete" disabled></at-menu-item>

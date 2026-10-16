@@ -32,13 +32,13 @@ const TableRowExampleTemplate = () => `
         <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">John Doe</td>
             <td style="border: 1px solid #ddd; padding: 8px;">
-                <at-button data-dialog="user-action-1" label="View Details" type="primary" size="sm"></at-button>
+                <at-button data-dialog="user-action-1" label="View details" type="primary" size="sm"></at-button>
             </td>
         </tr>
         <tr>
             <td style="border: 1px solid #ddd; padding: 8px;">Jane Smith</td>
             <td style="border: 1px solid #ddd; padding: 8px;">
-                <at-button data-dialog="user-action-2" label="View Details" type="primary" size="sm"></at-button>
+                <at-button data-dialog="user-action-2" label="View details" type="primary" size="sm"></at-button>
             </td>
         </tr>
     </tbody>
