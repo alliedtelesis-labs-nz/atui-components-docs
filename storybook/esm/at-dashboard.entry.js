@@ -6374,6 +6374,7 @@ const AtDashboard = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
         this.changedItem = createEvent(this, "changedItem", 7);
+        this.atLayoutChange = createEvent(this, "atLayoutChange", 7);
         this.removedItem = createEvent(this, "removedItem", 7);
         this.editItem = createEvent(this, "editItem", 7);
         this.resizeDragEvent = createEvent(this, "resizeDragEvent", 7);
@@ -6411,9 +6412,17 @@ const AtDashboard = class {
      */
     has_fixed_columns = false;
     /**
-     * Emitted when a widget's position or size changes in the grid.
+     * Emitted when a widget's position or size changes in the grid, with the
+     * position and size on the full 24-column grid.
      */
     changedItem;
+    /**
+     * Emitted when the user finishes resizing or dragging a widget, with every
+     * widget's position and size on the full 24-column grid - including widgets
+     * the grid moved out of the way. This is the layout to save: passing it back
+     * as `widget_items` leaves the grid exactly as the user left it.
+     */
+    atLayoutChange;
     /**
      * Emitted when a widget is removed from the dashboard.
      */
@@ -6423,7 +6432,9 @@ const AtDashboard = class {
      */
     editItem;
     /**
-     * Emitted when a widget finishes resizing or dragging.
+     * Emitted when a widget finishes resizing or dragging, with its position and
+     * size on the full 24-column grid. Widgets the grid moved out of the way are
+     * not included; save `atLayoutChange` instead.
      */
     resizeDragEvent;
     widgetItemsChanged() { }
@@ -6494,16 +6505,12 @@ const AtDashboard = class {
         // widget on the initial load — not just after subsequent drag/resize actions.
         this.grid.on('added change', (event, items) => {
             const isOwnRescale = this.isScalingToBreakpoint && event.type === 'change';
+            const layout = isOwnRescale ? undefined : this.fullGridLayout();
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
-                if (dashboardItem && !isOwnRescale) {
-                    this.changedItem.emit({
-                        ...dashboardItem,
-                        x: item.x,
-                        y: item.y,
-                        w: clampWidgetWidth(item.w, MIN_SIZE.w),
-                        h: clampWidgetHeight(item.h, MIN_SIZE.h),
-                    });
+                const placed = layout?.get(item.el.id);
+                if (dashboardItem && placed) {
+                    this.changedItem.emit({ ...dashboardItem, ...placed });
                 }
                 // Always notify chart components so compact mode is evaluated
                 // both on initial add and whenever a widget moves/resizes.
@@ -6511,20 +6518,32 @@ const AtDashboard = class {
             });
         });
         this.grid.on('resizestop dragstop', (_event, el) => {
-            const node = el.gridstackNode;
-            const dashboardItem = {
-                id: el.id,
-                x: node.x,
-                y: node.y,
-                w: clampWidgetWidth(node.w, MIN_SIZE.w),
-                h: clampWidgetHeight(node.h, MIN_SIZE.h),
-            };
             this.resizeChartComponents(el);
-            this.resizeDragEvent.emit(dashboardItem);
+            // GridStack fires the stop event before it records the move in its
+            // full-grid layout cache, later in the same call, so read the layout
+            // once that call has returned.
+            queueMicrotask(() => {
+                const layout = this.fullGridLayout();
+                const placed = layout.get(el.id);
+                if (placed) {
+                    this.resizeDragEvent.emit({ id: el.id, ...placed });
+                }
+                this.atLayoutChange.emit(this.widget_items
+                    .filter((item) => layout.has(item.id))
+                    .map((item) => ({
+                    ...item,
+                    ...layout.get(item.id),
+                })));
+            });
         });
         this.layoutWidgets();
     }
     componentDidUpdate() {
+        // A host that saves the layout it was given passes it straight back.
+        // Rebuilding the grid from it would undo GridStack's own placement of the
+        // widgets it pushed aside, so only rebuild when something really changed.
+        if (this.gridMatches(this.widget_items))
+            return;
         this.layoutWidgets();
     }
     disconnectedCallback() {
@@ -6540,6 +6559,47 @@ const AtDashboard = class {
         this.grid.column(COLUMN_MAX, 'none');
         this.widget_items.forEach((widget) => this.makeWidget(widget));
         this.applyBreakpoint();
+    }
+    /**
+     * Every widget's position and size on the full COLUMN_MAX grid, keyed by id.
+     * At a narrower breakpoint GridStack keeps the full-grid layout cached and
+     * carries the user's moves into it, so this is what the host should store,
+     * not the scaled positions the grid is drawing.
+     */
+    fullGridLayout() {
+        const saved = this.grid?.save(false, false, undefined, COLUMN_MAX);
+        const widgets = Array.isArray(saved) ? saved : [];
+        return new Map(widgets.map((widget) => [
+            String(widget.id),
+            {
+                x: widget.x,
+                y: widget.y,
+                w: clampWidgetWidth(widget.w, MIN_SIZE.w),
+                h: clampWidgetHeight(widget.h, MIN_SIZE.h),
+            },
+        ]));
+    }
+    /** Whether the grid already shows exactly these widgets, placed as given. */
+    gridMatches(items) {
+        if (!this.grid)
+            return false;
+        const layout = this.fullGridLayout();
+        if (layout.size !== items.length)
+            return false;
+        return items.every((item) => {
+            const placed = layout.get(item.id);
+            const node = this.grid.engine.nodes.find((n) => n.id === item.id);
+            return (!!placed &&
+                !!node?.el?.isConnected &&
+                placed.x === item.x &&
+                placed.y === item.y &&
+                placed.w === item.w &&
+                placed.h === item.h &&
+                node.minW === clampWidgetWidth(item.minW, MIN_SIZE.w) &&
+                node.minH === clampWidgetHeight(item.minH, MIN_SIZE.h) &&
+                node.maxW === clampWidgetMaxWidth(item.maxW) &&
+                node.maxH === clampWidgetMaxHeight(item.maxH));
+        });
     }
     makeWidget(widget) {
         const elSelector = `#${widget.id}`;
@@ -6588,7 +6648,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: 'f9c3e3fdebebf1ff1f1f54ebeb79af65a54369a5', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: 'ec677f16e9e1efbfa73876acf86443635c753ef3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);

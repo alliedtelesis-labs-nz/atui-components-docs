@@ -51,7 +51,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         description: {
-            story: "Widgets are positioned by `widget_items`; each entry's `id` names the slot its content goes in. Widgets can be dragged and resized, and every change emits `changedItem`.",
+            story: "Widgets are positioned by `widget_items`; each entry's `id` names the slot its content goes in. Widgets can be dragged and resized: every change emits `changedItem`, and the end of each drag or resize emits `atLayoutChange` with the whole layout to save.",
         },
     },
 };

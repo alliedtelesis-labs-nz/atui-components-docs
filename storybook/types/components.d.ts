@@ -4618,6 +4618,7 @@ declare global {
     };
     interface HTMLAtDashboardElementEventMap {
         "changedItem": AtICustomGridStackItem;
+        "atLayoutChange": AtICustomGridStackItem[];
         "removedItem": AtICustomGridStackItem;
         "editItem": AtICustomGridStackItem;
         "resizeDragEvent": AtICustomGridStackItem;
@@ -7126,7 +7127,11 @@ declare namespace LocalJSX {
          */
         "is_animated"?: boolean;
         /**
-          * Emitted when a widget's position or size changes in the grid.
+          * Emitted when the user finishes resizing or dragging a widget, with every widget's position and size on the full 24-column grid - including widgets the grid moved out of the way. This is the layout to save: passing it back as `widget_items` leaves the grid exactly as the user left it.
+         */
+        "onAtLayoutChange"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem[]>) => void;
+        /**
+          * Emitted when a widget's position or size changes in the grid, with the position and size on the full 24-column grid.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
@@ -7138,7 +7143,7 @@ declare namespace LocalJSX {
          */
         "onRemovedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
-          * Emitted when a widget finishes resizing or dragging.
+          * Emitted when a widget finishes resizing or dragging, with its position and size on the full 24-column grid. Widgets the grid moved out of the way are not included; save `atLayoutChange` instead.
          */
         "onResizeDragEvent"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**

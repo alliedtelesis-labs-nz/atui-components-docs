@@ -42,9 +42,17 @@ export declare class AtDashboard {
      */
     has_fixed_columns?: boolean;
     /**
-     * Emitted when a widget's position or size changes in the grid.
+     * Emitted when a widget's position or size changes in the grid, with the
+     * position and size on the full 24-column grid.
      */
     changedItem: EventEmitter<AtICustomGridStackItem>;
+    /**
+     * Emitted when the user finishes resizing or dragging a widget, with every
+     * widget's position and size on the full 24-column grid - including widgets
+     * the grid moved out of the way. This is the layout to save: passing it back
+     * as `widget_items` leaves the grid exactly as the user left it.
+     */
+    atLayoutChange: EventEmitter<AtICustomGridStackItem[]>;
     /**
      * Emitted when a widget is removed from the dashboard.
      */
@@ -54,7 +62,9 @@ export declare class AtDashboard {
      */
     editItem: EventEmitter<AtICustomGridStackItem>;
     /**
-     * Emitted when a widget finishes resizing or dragging.
+     * Emitted when a widget finishes resizing or dragging, with its position and
+     * size on the full 24-column grid. Widgets the grid moved out of the way are
+     * not included; save `atLayoutChange` instead.
      */
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
     widgetItemsChanged(): void;
@@ -70,6 +80,15 @@ export declare class AtDashboard {
     componentDidUpdate(): void;
     disconnectedCallback(): void;
     private layoutWidgets;
+    /**
+     * Every widget's position and size on the full COLUMN_MAX grid, keyed by id.
+     * At a narrower breakpoint GridStack keeps the full-grid layout cached and
+     * carries the user's moves into it, so this is what the host should store,
+     * not the scaled positions the grid is drawing.
+     */
+    private fullGridLayout;
+    /** Whether the grid already shows exactly these widgets, placed as given. */
+    private gridMatches;
     private makeWidget;
     private removeWidget;
     private resizeChartComponents;
