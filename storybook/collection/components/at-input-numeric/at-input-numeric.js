@@ -3,9 +3,21 @@ import { classlist } from "../../utils/classlist";
 const containerVariantsConfig = {
     variants: {
         showButtons: {
-            true: 'border-input border border-solid',
+            true: 'border border-solid',
             false: '',
         },
+        invalid: {
+            true: '',
+            false: '',
+        },
+    },
+    compoundVariants: [
+        { showButtons: true, invalid: false, class: 'border-input' },
+        { showButtons: true, invalid: true, class: 'border-error' },
+    ],
+    defaultVariants: {
+        showButtons: true,
+        invalid: false,
     },
 };
 const inputVariantsConfig = {
@@ -166,6 +178,7 @@ export class AtInputNumericComponent {
         const getContainerClassname = classlist(`h-input min-h-input relative flex rounded-input`, containerVariantsConfig);
         const containerClassname = getContainerClassname({
             showButtons: this.show_buttons,
+            invalid: this.invalid,
         });
         const getClassname = classlist(`transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out w-full rounded-input py-input-y px-input-x text-right outline-0 focus:z-10`, inputVariantsConfig);
         const classname = getClassname({
@@ -174,7 +187,7 @@ export class AtInputNumericComponent {
             readonly: this.readonly,
             showButtons: this.show_buttons,
         });
-        return (h(Host, { key: '2f60db8a378e32449ffa90d7dd9d0e1e9d0ff58a', class: "w-full" }, h("div", { key: '071a50dbb0ad02d5e198182d16a833509831ba10', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'c32f07fa596d0c2d3138113fd748094f19a5d0f0', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '22e51d227888f0a02bbb69929f8e744263f6e1ce', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '552bb18b87489f528eec38fcb5d9bcbdb14de566', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '550dc2b97042f31ced4f364b8a9cb688b87f9371', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '188709205d94fe19a93048fab42a1dfdd08bf4b1', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, h("at-icon", { key: '9e46a42651143edcd830e80fa5ece4c0940988dc', slot: "icon", name: "subtract" }))), h("input", { key: '81d812672302de32e945d0c7494bd3eaea5e2bfa', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '9c68d84bd247ccfdd02c5abdd9a408e481ac8a1e', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, h("at-icon", { key: 'ec69b54c5f91eb29b4c049ec65f954ed3f8b3a3a', slot: "icon", name: "add" })))), this.error_text && this.invalid && (h("span", { key: '79079de430ee59313ef3e989174a15c14beb424a', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+        return (h(Host, { key: 'a9295fdb009d8f079e962a668b84a475446f8964', class: "w-full" }, h("div", { key: 'b29adce4e952c8fb31b93d0a950284578a8f5ac0', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '7900c90b95dab09eb7432e9ccb9bbac63036f509', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'dbfe3aad6a8f2b7ca05eba48c5515659d24d7c66', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'd1886896b52fdce30a9d395a16ba203e7dd8efc0', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '568e66c516ddada5e71a2825de9da43bfc342228', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '32d1e859bc831463d278c7566fad66a9f6b5858f', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, h("at-icon", { key: '7db3c485698198562e313053defe7c0554c377c6', slot: "icon", name: "subtract" }))), h("input", { key: '4ed8e35bafc41064de2e64acfd74110f381092d2', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '158261c7f8914fac773c9243b18fafd24284e034', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, h("at-icon", { key: '479dbe577085cb63c7f37e827a170eb28d12d02e', slot: "icon", name: "add" })))), this.error_text && this.invalid && (h("span", { key: 'ec8a6017a132dfd3a72649de88621566269ae600', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "at-input-numeric"; }
     static get originalStyleUrls() {
