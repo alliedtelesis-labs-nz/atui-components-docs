@@ -26,10 +26,18 @@ export declare class AtSidebarSubmenuComponent {
      * Will change the styling of the menuitem when set
      */
     is_active?: boolean;
+    /**
+     * Whether the submenu starts expanded. When set, the submenu keeps its own
+     * expanded state: it is restored after the sidebar is collapsed and
+     * re-expanded, and expanding the sidebar no longer opens every submenu.
+     * When unset, the submenu follows the sidebar's open state.
+     */
+    default_open?: boolean;
     isSidebarOpen: boolean;
     isAccordionOpen: boolean;
     el: HTMLElement;
     private atuiAccordionItem;
+    private openStateBeforeCollapse?;
     constructor();
     componentDidLoad(): Promise<void>;
     private updateInitialStates;

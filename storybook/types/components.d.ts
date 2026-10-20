@@ -3094,6 +3094,10 @@ export namespace Components {
          */
         "badge"?: string;
         /**
+          * Whether the submenu starts expanded. When set, the submenu keeps its own expanded state: it is restored after the sidebar is collapsed and re-expanded, and expanding the sidebar no longer opens every submenu. When unset, the submenu follows the sidebar's open state.
+         */
+        "default_open"?: boolean;
+        /**
           * Icon to be displayed with the label
          */
         "icon"?: string;
@@ -9131,6 +9135,10 @@ declare namespace LocalJSX {
          */
         "badge"?: string;
         /**
+          * Whether the submenu starts expanded. When set, the submenu keeps its own expanded state: it is restored after the sidebar is collapsed and re-expanded, and expanding the sidebar no longer opens every submenu. When unset, the submenu follows the sidebar's open state.
+         */
+        "default_open"?: boolean;
+        /**
           * Icon to be displayed with the label
          */
         "icon"?: string;
@@ -10583,6 +10591,7 @@ declare namespace LocalJSX {
         "icon": string;
         "badge": string;
         "is_active": boolean;
+        "default_open": boolean;
     }
     interface AtSignalStrengthAttributes {
         "rssi": number;
