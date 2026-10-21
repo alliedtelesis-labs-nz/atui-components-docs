@@ -28,7 +28,7 @@ Default.args = {
             cellRendererParams: {
                 used: '***(data) => data.usage.used***',
                 total: '***(data) => data.usage.total***',
-                generateTooltip: '***(params) => `${params.data.usage.used} of ${params.data.usage.total} devices consuming this licence`***',
+                generateTooltip: '***(params) => `${params.data.usage.used} of ${params.data.usage.total} devices consuming this license`***',
             },
         },
     ],
@@ -44,20 +44,20 @@ Default.args = {
     page_size: 10,
 };
 /**
- * The licensing Usage column: a bar per redeemed licence, paired with a
+ * The licensing Usage column: a bar per redeemed license, paired with a
  * separate `Used / Avail` text column. Tier-B is at 100% and Tier-D is over
  * its limit, so both colour as at-risk.
  */
-export const LicenceUsage = Template.bind({});
-LicenceUsage.args = {
+export const LicenseUsage = Template.bind({});
+LicenseUsage.args = {
     col_defs: [
         {
             flex: 1,
-            field: 'licence',
-            colId: 'licence',
+            field: 'license',
+            colId: 'license',
             sortable: false,
             headerName: 'License (invoice)',
-            valueGetter: "***(params) => params.data['licence']***",
+            valueGetter: "***(params) => params.data['license']***",
         },
         {
             width: 80,
@@ -92,25 +92,25 @@ LicenceUsage.args = {
         items: [
             {
                 _id: '1',
-                licence: 'INV-20871',
+                license: 'INV-20871',
                 tier: 'A',
                 usage: { used: 20, total: 25 },
             },
             {
                 _id: '2',
-                licence: 'INV-20872',
+                license: 'INV-20872',
                 tier: 'B',
                 usage: { used: 15, total: 15 },
             },
             {
                 _id: '3',
-                licence: 'INV-20873',
+                license: 'INV-20873',
                 tier: 'C',
                 usage: { used: 2, total: 10 },
             },
             {
                 _id: '4',
-                licence: 'INV-20874',
+                license: 'INV-20874',
                 tier: 'D',
                 usage: { used: 22, total: 20 },
             },

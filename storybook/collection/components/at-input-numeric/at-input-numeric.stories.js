@@ -19,11 +19,11 @@ const Template = (args) => `
 `;
 const ColumnHeaderTemplate = () => `
 <div style="display: grid; grid-template-columns: minmax(0, 1fr) 12ch; gap: 8px;">
-    <at-form-label label="Licence tier"></at-form-label>
+    <at-form-label label="License tier"></at-form-label>
     <at-form-label label="Devices" required="true"></at-form-label>
-    <at-input label="" aria_label="Licence tier" value="Standard" readonly></at-input>
+    <at-input label="" aria_label="License tier" value="Standard" readonly></at-input>
     <at-input-numeric aria_label="Devices to allocate, Standard tier" value="0" min="0" max="50"></at-input-numeric>
-    <at-input label="" aria_label="Licence tier" value="Advanced" readonly></at-input>
+    <at-input label="" aria_label="License tier" value="Advanced" readonly></at-input>
     <at-input-numeric aria_label="Devices to allocate, Advanced tier" value="0" min="0" max="10"></at-input-numeric>
 </div>
 `;

@@ -97,9 +97,9 @@ GroupedNoTypeahead.args = {
 };
 const ColumnHeaderTemplate = () => `
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-    <at-form-label label="Licence tier"></at-form-label>
+    <at-form-label label="License tier"></at-form-label>
     <at-form-label label="Action"></at-form-label>
-    <at-select aria_label="Licence tier" placeholder="Any tier"></at-select>
+    <at-select aria_label="License tier" placeholder="Any tier"></at-select>
     <at-select aria_label="Action" placeholder="Any action"></at-select>
 </div>
 <script>
