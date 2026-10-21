@@ -1,0 +1,32 @@
+{
+  "MessageType": "response",
+  "Timestamp": 1792368020,
+  "HostID": "73b36696-5306-4bd9-a21b-0b6f8e703101",
+  "Customer": "A-240943",
+  "Features": [
+    {
+      "Key": "FL-C-OC-BSC-A",
+      "Count": 25,
+      "Start": "18-10-2026",
+      "End": "18-10-2031"
+    },
+    {
+      "Key": "FL-C-OC-BSC-B",
+      "Count": 20,
+      "Start": "18-10-2026",
+      "End": "18-10-2029"
+    },
+    {
+      "Key": "FL-C-OC-BSC-C",
+      "Count": 10,
+      "Start": "18-10-2026",
+      "End": "18-10-2027"
+    },
+    {
+      "Key": "FL-C-OC-BSC-D",
+      "Count": 10,
+      "Start": "18-10-2026",
+      "End": "18-10-2027"
+    }
+  ]
+}

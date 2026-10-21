@@ -1,0 +1,14 @@
+{
+  "MessageType": "response",
+  "Timestamp": 1792368025,
+  "HostID": "73b36696-5306-4bd9-a21b-0b6f8e703106",
+  "Customer": "A-310772",
+  "Features": [
+    {
+      "Key": "FL-C-OC-BSC-C",
+      "Count": 10,
+      "Start": "18-10-2026",
+      "End": "18-10-2029"
+    }
+  ]
+}
