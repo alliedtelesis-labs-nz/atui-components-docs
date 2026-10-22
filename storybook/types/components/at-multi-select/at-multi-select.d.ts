@@ -56,7 +56,7 @@ export declare class AtMultiSelectComponent {
     typeahead?: boolean;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
      */
     menu_max_height?: string;
     /**

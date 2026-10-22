@@ -86,9 +86,9 @@ const AtMultiSelectComponent = class {
     typeahead;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
      */
-    menu_max_height;
+    menu_max_height = '250px';
     /**
      * Accept values that are not among the options. The dropdown offers the text
      * entered in the search field as an entry, and the selection shows it
@@ -368,16 +368,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: 'c2bdc8ba6bf7060538a46d4f547f137101437b29', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '7fcd408e7492ccf42b696ccf975b406956a46664', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: 'ce2a789bd7b87407bbdd4e2ef6197f53fa2ad9c1', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '35265817f1248fc56867aff579df4e7d6e1c7e54', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '1909d790bee3e5035e71ac04ddd9453ba380a1c8' }, this.error_text && this.invalid && (index.h("span", { key: '18bae43af09d380af8141ffb1de479003f9895bf', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: 'd7fc9e349f97b7c8485f8488e1dea361a2942767' }, this.error_text && this.invalid && (index.h("span", { key: '581adaca706588627b42d97b1cfc5008bce91df2', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {

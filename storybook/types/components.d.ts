@@ -1938,7 +1938,8 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
+          * @default '250px'
          */
         "menu_max_height"?: string;
         /**
@@ -2791,8 +2792,8 @@ export namespace Components {
          */
         "max_rendered_options"?: number;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
-          * @default '400px'
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
+          * @default '250px'
          */
         "menu_max_height"?: string;
         /**
@@ -7974,7 +7975,8 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop.
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
+          * @default '250px'
          */
         "menu_max_height"?: string;
         /**
@@ -8849,8 +8851,8 @@ declare namespace LocalJSX {
          */
         "max_rendered_options"?: number;
         /**
-          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
-          * @default '400px'
+          * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh'). Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
+          * @default '250px'
          */
         "menu_max_height"?: string;
         /**

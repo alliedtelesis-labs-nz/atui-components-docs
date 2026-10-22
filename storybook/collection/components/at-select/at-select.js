@@ -92,9 +92,9 @@ export class AtSelectComponent {
     autoclose = true;
     /**
      * Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').
-     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 400px.
+     * Forwarded to the inner <at-menu> via max_height prop. Defaults to 250px.
      */
-    menu_max_height = '400px';
+    menu_max_height = '250px';
     /**
      * Accessible name for the input. Use when a shared column header supplies the
      * visible label and `label` is therefore left unset.
@@ -835,13 +835,13 @@ export class AtSelectComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').\nForwarded to the inner <at-menu> via max_height prop. Defaults to 400px."
+                    "text": "Maximum CSS height for the dropdown menu (e.g., '300px', '50vh').\nForwarded to the inner <at-menu> via max_height prop. Defaults to 250px."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
                 "attribute": "menu_max_height",
-                "defaultValue": "'400px'"
+                "defaultValue": "'250px'"
             },
             "aria_label": {
                 "type": "string",
