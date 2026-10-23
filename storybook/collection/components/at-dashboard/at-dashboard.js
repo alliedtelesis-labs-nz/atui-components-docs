@@ -120,6 +120,8 @@ export class AtDashboard {
     grid;
     isScalingToBreakpoint = false;
     gridContainerRef;
+    // Each widget's columns when the current resize or drag began, keyed by id.
+    columnsAtStart;
     componentDidLoad() {
         if (!this.gridContainerRef)
             return;
@@ -140,6 +142,9 @@ export class AtDashboard {
         // widget on the initial load — not just after subsequent drag/resize actions.
         this.grid.on('added change', (event, items) => {
             const isOwnRescale = this.isScalingToBreakpoint && event.type === 'change';
+            if (!isOwnRescale && event.type === 'change') {
+                this.alignFullGridColumns(items ?? []);
+            }
             const layout = isOwnRescale ? undefined : this.fullGridLayout();
             items?.forEach((item) => {
                 const dashboardItem = this.widget_items.find((w) => w.id === item.el.id);
@@ -152,12 +157,19 @@ export class AtDashboard {
                 this.resizeChartComponents(item.el);
             });
         });
+        this.grid.on('resizestart dragstart', () => {
+            this.columnsAtStart = new Map(this.grid.engine.nodes.map((node) => [
+                String(node.id),
+                { x: node.x, w: node.w },
+            ]));
+        });
         this.grid.on('resizestop dragstop', (_event, el) => {
             this.resizeChartComponents(el);
             // GridStack fires the stop event before it records the move in its
             // full-grid layout cache, later in the same call, so read the layout
             // once that call has returned.
             queueMicrotask(() => {
+                this.columnsAtStart = undefined;
                 const layout = this.fullGridLayout();
                 const placed = layout.get(el.id);
                 if (placed) {
@@ -183,6 +195,9 @@ export class AtDashboard {
     }
     disconnectedCallback() {
         this.grid?.destroy(false);
+        // A destroyed GridStack has no engine, so an update after disconnect
+        // must not reach it.
+        this.grid = undefined;
     }
     layoutWidgets() {
         if (!this.grid)
@@ -213,6 +228,54 @@ export class AtDashboard {
                 h: clampWidgetHeight(widget.h, MIN_SIZE.h),
             },
         ]));
+    }
+    /**
+     * Below COLUMN_MAX, GridStack carries a resize or move into its cached
+     * full-grid layout by scaling x and w separately, and only the one that
+     * changed. A resize keeps the cached x and rounds the new width on its own,
+     * so the widget's right edge can land past its neighbour's left edge and the
+     * saved layout overlaps. Scale both edges of each widget the user changed
+     * from where it is drawn instead, then keep it clear of the widgets left
+     * alone, whose cached columns may have rounded the other way.
+     */
+    alignFullGridColumns(items) {
+        const column = this.grid?.getColumn();
+        if (!this.columnsAtStart || !column || column >= COLUMN_MAX)
+            return;
+        const changed = items.filter((node) => {
+            const start = this.columnsAtStart.get(String(node.id));
+            return !!start && (start.x !== node.x || start.w !== node.w);
+        });
+        if (!changed.length)
+            return;
+        const ratio = COLUMN_MAX / column;
+        const layout = this.fullGridLayout();
+        const changedIds = new Set(changed.map((node) => String(node.id)));
+        const untouched = [...layout]
+            .filter(([id]) => !changedIds.has(id))
+            .map(([, placed]) => placed);
+        changed.forEach((node) => {
+            const cached = layout.get(String(node.id));
+            if (!cached)
+                return;
+            let left = Math.round(node.x * ratio);
+            let right = Math.round((node.x + node.w) * ratio);
+            untouched.forEach((other) => {
+                const sharesRows = other.y < cached.y + cached.h &&
+                    cached.y < other.y + other.h;
+                const sharesColumns = other.x < right && left < other.x + other.w;
+                if (!sharesRows || !sharesColumns)
+                    return;
+                if (other.x >= left)
+                    right = Math.min(right, other.x);
+                else
+                    left = Math.max(left, other.x + other.w);
+            });
+            if (right - left < MIN_SIZE.w)
+                return;
+            // Spread the node so the cache entry keeps GridStack's internal id.
+            this.grid.engine.cacheOneLayout({ ...node, x: left, y: cached.y, w: right - left }, COLUMN_MAX);
+        });
     }
     /** Whether the grid already shows exactly these widgets, placed as given. */
     gridMatches(items) {
@@ -283,7 +346,7 @@ export class AtDashboard {
         });
     }
     render() {
-        return (h("div", { key: 'ec677f16e9e1efbfa73876acf86443635c753ef3', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: '66683477c582ae2f99ebb84ed9dec98f5b4ccc92', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);

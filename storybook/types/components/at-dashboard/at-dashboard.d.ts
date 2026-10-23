@@ -76,6 +76,7 @@ export declare class AtDashboard {
     private grid?;
     private isScalingToBreakpoint;
     private gridContainerRef?;
+    private columnsAtStart?;
     componentDidLoad(): void;
     componentDidUpdate(): void;
     disconnectedCallback(): void;
@@ -87,6 +88,16 @@ export declare class AtDashboard {
      * not the scaled positions the grid is drawing.
      */
     private fullGridLayout;
+    /**
+     * Below COLUMN_MAX, GridStack carries a resize or move into its cached
+     * full-grid layout by scaling x and w separately, and only the one that
+     * changed. A resize keeps the cached x and rounds the new width on its own,
+     * so the widget's right edge can land past its neighbour's left edge and the
+     * saved layout overlaps. Scale both edges of each widget the user changed
+     * from where it is drawn instead, then keep it clear of the widgets left
+     * alone, whose cached columns may have rounded the other way.
+     */
+    private alignFullGridColumns;
     /** Whether the grid already shows exactly these widgets, placed as given. */
     private gridMatches;
     private makeWidget;
