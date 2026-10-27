@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CnLXNc1Z.js');
+var index = require('./index-CwnFn_Q4.js');
 var resizeController = require('./resize-controller-DnOcuHpr.js');
 
 const atResizableGroupCss = () => `at-resizable-group{display:flex;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}at-resizable-group.direction-horizontal{flex-direction:row}at-resizable-group.direction-vertical{flex-direction:column}`;

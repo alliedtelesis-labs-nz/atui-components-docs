@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-Bpy_h9bd.js';
+import { r as registerInstance, h, H as Host } from './index-CjAoXTs1.js';
 
 const atSidebarMenuCss = () => `.sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}`;
 

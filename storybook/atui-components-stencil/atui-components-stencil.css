@@ -3844,12 +3844,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   background-color: color-mix(in srgb, var(--token-feedback-background) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
 }
 
-.bg-feedback-background-inv {
-  --tw-bg-opacity:
-      1;
-  background-color: color-mix(in srgb, var(--token-feedback-background-inv) calc(var(--tw-bg-opacity, 1) * 100%), transparent);
-}
-
 .bg-feedback-error-accent {
   --tw-bg-opacity:
       1;
@@ -4455,12 +4449,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   --tw-text-opacity:
       1;
   color: color-mix(in srgb, var(--token-feedback-foreground) calc(var(--tw-text-opacity, 1) * 100%), transparent);
-}
-
-.text-feedback-foreground-inv {
-  --tw-text-opacity:
-      1;
-  color: color-mix(in srgb, var(--token-feedback-foreground-inv) calc(var(--tw-text-opacity, 1) * 100%), transparent);
 }
 
 .text-feedback-info-accent {

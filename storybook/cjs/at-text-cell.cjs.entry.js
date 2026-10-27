@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CnLXNc1Z.js');
+var index = require('./index-CwnFn_Q4.js');
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const AtTextCellComponent = class {

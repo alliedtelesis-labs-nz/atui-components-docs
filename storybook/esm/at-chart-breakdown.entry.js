@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-Bpy_h9bd.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CjAoXTs1.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
 import { C as ChartDrawGate } from './chart-draw-gate-CqV46vp0.js';

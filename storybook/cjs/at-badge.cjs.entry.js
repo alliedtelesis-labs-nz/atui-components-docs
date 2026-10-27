@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CnLXNc1Z.js');
+var index = require('./index-CwnFn_Q4.js');
 
 const badgeVariants = {
     base: 'inline-flex rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 items-center',
@@ -15,7 +15,7 @@ const badgeVariants = {
             disabled: 'text-disabled-foreground bg-disabled-background border border-disabled-foreground/30',
         },
         high: {
-            default: 'text-feedback-foreground-inv bg-feedback-background-inv border text-feedback-foreground',
+            default: 'text-foreground-inv bg-surface-inv',
             success: 'text-feedback-success-foreground-inv bg-feedback-success-background-inv',
             warning: 'text-feedback-warning-foreground-inv bg-feedback-warning-background-inv',
             error: 'text-feedback-error-foreground-inv bg-feedback-error-background-inv',
@@ -65,7 +65,7 @@ const AtBadgeComponent = class {
         return badgeVariants.size[this.size];
     }
     render() {
-        return (index.h(index.Host, { key: '6f38fdbc018369304863bf759c3835a2b0701d55', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: '2f7175ffe3ed0a4c4512dfe1e3c58fd6433fb0ea', name: "icon" }), index.h("span", { key: 'cc7012242976e24457ae123bc06ef7123fa85a52', "data-name": "badge-label" }, this.label), index.h("slot", { key: 'a8a9a2c4c7a6ffd6d58f01977d56810e0667c247' })));
+        return (index.h(index.Host, { key: '6b2866045d81ab5ed146568dd1c7c6b03fbca964', class: `${this.baseClasses} ${this.variantClasses} ${this.sizeClasses}` }, index.h("slot", { key: '99277b9f78d7ba1e0fd3c7dc7dd75d6b40e6de49', name: "icon" }), index.h("span", { key: '5ab7b6d50cdefdf34b3280899f53da7189de9a80', "data-name": "badge-label" }, this.label), index.h("slot", { key: '630faf41b2dbec55c8fb5f789e209d5956f85caa' })));
     }
 };
 
