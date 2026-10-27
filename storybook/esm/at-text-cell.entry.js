@@ -47,10 +47,13 @@ const AtTextCellComponent = class {
     // with a different cell type - this one is designed for displaying a single string value.
     getTextValue(params) {
         const { value } = params;
-        if (value === '') {
+        // A missing value reads as a dash. Reading it as anything else would
+        // throw, and a renderer that throws stops the grid drawing every row
+        // after this one.
+        if (value === '' || value === null || value === undefined) {
             return '-';
         }
-        if (value.constructor === Array) {
+        if (Array.isArray(value)) {
             return this.transferArrayValueToString(value);
         }
         return String(value);
@@ -67,10 +70,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (h(Host, { key: '14eaa9db04ac18601f39b89575cce568af31bf59', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'cf81855d9a44842a30afd5d0605313d84ffa7be3', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '9f48ffb790016918a2f68aa323fa0523aa2a19e6', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (h(Host, { key: 'cbe2684400c952c3fde62de369c42c48d51151c4', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'aea5ddd325943682778085ac373f55bd84f64f54', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '6376c03865e5ebcd21bfa5fd94bd21e1d3034e4f', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'c1bae5a2fd0ba4169ef1a2c2b8adc4f3c4c84007', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'a6cc7000182ac3dd15abd2ec95a03bb0dab1d398', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 
