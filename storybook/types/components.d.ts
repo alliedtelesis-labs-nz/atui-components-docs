@@ -3231,9 +3231,19 @@ export namespace Components {
      */
     interface AtStatusBar {
         /**
-          * Disables the tooltip when hovered
+          * Space in pixels between adjacent segments. Segments share the remaining width in proportion to their percentages.
+          * @default 0
          */
-        "disable_tooltip"?: boolean;
+        "segment_gap": number;
+        /**
+          * Shows each segment's label and percentage inside the bar. The bar grows with its text, never shorter than the `lg` size, and ignores `size`. Text colour is derived from each segment's background.
+         */
+        "show_internal_value"?: boolean;
+        /**
+          * Shows a tooltip with the segment's label and percentage on hover
+          * @default true
+         */
+        "show_tooltip"?: boolean;
         /**
           * Height of the status bar
           * @default 'sm'
@@ -9278,9 +9288,19 @@ declare namespace LocalJSX {
      */
     interface AtStatusBar {
         /**
-          * Disables the tooltip when hovered
+          * Space in pixels between adjacent segments. Segments share the remaining width in proportion to their percentages.
+          * @default 0
          */
-        "disable_tooltip"?: boolean;
+        "segment_gap"?: number;
+        /**
+          * Shows each segment's label and percentage inside the bar. The bar grows with its text, never shorter than the `lg` size, and ignores `size`. Text colour is derived from each segment's background.
+         */
+        "show_internal_value"?: boolean;
+        /**
+          * Shows a tooltip with the segment's label and percentage on hover
+          * @default true
+         */
+        "show_tooltip"?: boolean;
         /**
           * Height of the status bar
           * @default 'sm'
@@ -10628,7 +10648,9 @@ declare namespace LocalJSX {
     }
     interface AtStatusBarAttributes {
         "size": Size;
-        "disable_tooltip": boolean;
+        "show_tooltip": boolean;
+        "show_internal_value": boolean;
+        "segment_gap": number;
     }
     interface AtStepperAttributes {
         "current": number;

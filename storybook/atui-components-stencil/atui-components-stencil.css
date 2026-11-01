@@ -3019,6 +3019,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   min-height: 16px;
 }
 
+.min-h-\[16px\] {
+  min-height: 16px;
+}
+
 .min-h-\[32px\] {
   min-height: 32px;
 }
@@ -5269,4 +5273,7 @@ at-dialog :where([data-name=card-content]) > at-card {
   .motion-reduce\:animate-\[spin_1\.5s_linear_infinite\] {
     animation: spin 1.5s linear infinite;
   }
+}
+.\[\&\>\[data-name\=tooltip-trigger\]\]\:w-full > [data-name=tooltip-trigger] {
+  width: 100%;
 }
