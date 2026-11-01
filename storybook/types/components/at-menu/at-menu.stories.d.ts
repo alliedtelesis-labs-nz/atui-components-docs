@@ -29,3 +29,4 @@ export declare const AutoOpenMenu: any;
 export declare const SlotTrigger: any;
 export declare const ExternalTrigger: any;
 export declare const TableRowExample: any;
+export declare const Persistent: any;

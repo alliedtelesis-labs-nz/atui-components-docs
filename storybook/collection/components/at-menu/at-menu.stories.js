@@ -34,6 +34,23 @@ const SlotTriggerTemplate = (args) => `
         <at-menu-item label="Delete" disabled></at-menu-item>
     </div>
 </at-menu>`;
+const PersistentTemplate = (args) => `
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+    <at-menu
+        position="${args.position}"
+        width="${args.width}"
+        autoclose="false"
+        is_persistent="true"
+    >
+        <at-button slot="menu-trigger" label="${args.triggerLabel}" type="secondary"></at-button>
+        <div>
+            <at-menu-item label="Online"></at-menu-item>
+            <at-menu-item label="Offline"></at-menu-item>
+            <at-menu-item label="Warning"></at-menu-item>
+        </div>
+    </at-menu>
+    <at-input placeholder="Click here: the menu stays open"></at-input>
+</div>`;
 const ExternalTriggerTemplate = (args) => `
 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
     <div style="display: flex; gap: 16px; align-items: center;">
@@ -144,3 +161,9 @@ ExternalTrigger.args = {
 };
 export const TableRowExample = TableExampleTemplate.bind({});
 TableRowExample.args = {};
+export const Persistent = PersistentTemplate.bind({});
+Persistent.args = {
+    position: 'bottom',
+    width: 'fit-content',
+    triggerLabel: 'Legend',
+};

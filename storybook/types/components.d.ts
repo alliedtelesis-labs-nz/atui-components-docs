@@ -1786,6 +1786,11 @@ export namespace Components {
          */
         "getIsOpen": () => Promise<boolean>;
         /**
+          * Keep the menu open while the user interacts with the rest of the page. A persistent menu ignores outside clicks, focus leaving and item clicks, and opens or closes only from its trigger or the open/close/toggle methods. It never takes focus when opened. Escape still closes it when focus is on the trigger or inside the panel.
+          * @default false
+         */
+        "is_persistent": boolean;
+        /**
           * Maximum CSS height for menu (e.g., '300px', '50vh'). When provided, menu's max-height will be the minimum of the available viewport space and this value.
          */
         "max_height"?: string;
@@ -7823,6 +7828,11 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Keep the menu open while the user interacts with the rest of the page. A persistent menu ignores outside clicks, focus leaving and item clicks, and opens or closes only from its trigger or the open/close/toggle methods. It never takes focus when opened. Escape still closes it when focus is on the trigger or inside the panel.
+          * @default false
+         */
+        "is_persistent"?: boolean;
+        /**
           * Maximum CSS height for menu (e.g., '300px', '50vh'). When provided, menu's max-height will be the minimum of the available viewport space and this value.
          */
         "max_height"?: string;
@@ -10361,6 +10371,7 @@ declare namespace LocalJSX {
         "trigger": AtOpenOn;
         "role": AtAriaRole;
         "disabled": boolean;
+        "is_persistent": boolean;
         "trigger_id": string;
     }
     interface AtMenuItemAttributes {

@@ -54,6 +54,10 @@ export declare class AtMenu {
      */
     disabled: boolean;
     /**
+     * Keep the menu open while the user interacts with the rest of the page. A persistent menu ignores outside clicks, focus leaving and item clicks, and opens or closes only from its trigger or the open/close/toggle methods. It never takes focus when opened. Escape still closes it when focus is on the trigger or inside the panel.
+     */
+    is_persistent: boolean;
+    /**
      * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
     trigger_id?: string;
     disabledChanged(newValue: boolean): void;

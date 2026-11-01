@@ -51,6 +51,10 @@ const AtMenu = class {
      */
     disabled = false;
     /**
+     * Keep the menu open while the user interacts with the rest of the page. A persistent menu ignores outside clicks, focus leaving and item clicks, and opens or closes only from its trigger or the open/close/toggle methods. It never takes focus when opened. Escape still closes it when focus is on the trigger or inside the panel.
+     */
+    is_persistent = false;
+    /**
      * Target an external element to use as the trigger. When provided, clicking an element wia matching data-menu attribute value will toggle the side panel.     */
     trigger_id;
     disabledChanged(newValue) {
@@ -99,7 +103,7 @@ const AtMenu = class {
         this.atuiMenuStateChange.emit(true);
         await this.updatePosition();
         this.updateAriaExpanded();
-        if (this.trigger === 'click') {
+        if (this.trigger === 'click' && !this.is_persistent) {
             this.focusIntoMenu();
         }
     }
@@ -194,7 +198,7 @@ const AtMenu = class {
         this.pointerDownInside = this.isInsideMenuOrTrigger(event.target);
     };
     outsideClickHandler = (event) => {
-        if (!this.isOpen)
+        if (!this.isOpen || this.is_persistent)
             return;
         const isInside = this.isInsideMenuOrTrigger(event.target);
         const startedInside = this.pointerDownInside;
@@ -210,6 +214,10 @@ const AtMenu = class {
             if (this.menuEl?.querySelector('[data-name="menu-content-wrapper"]:popover-open')) {
                 return;
             }
+            if (this.is_persistent &&
+                !this.isInsideMenuOrTrigger(event.target)) {
+                return;
+            }
             const escapeEvent = event;
             if (escapeEvent.atMenuEscapeHandled)
                 return;
@@ -217,6 +225,8 @@ const AtMenu = class {
             this.closeMenu();
             return;
         }
+        if (this.is_persistent)
+            return;
         if (event.key === 'Enter' || event.key === ' ') {
             if (!this.isInsideMenuOrTrigger(event.target)) {
                 this.closeMenu();
@@ -224,7 +234,7 @@ const AtMenu = class {
         }
     };
     outsideFocusinHandler = (event) => {
-        if (!this.isOpen)
+        if (!this.isOpen || this.is_persistent)
             return;
         if (!this.isInsideMenuOrTrigger(event.target)) {
             this.closeMenu();
@@ -349,6 +359,8 @@ const AtMenu = class {
         }
     }
     async mouseLeaveHandler() {
+        if (this.is_persistent)
+            return;
         await this.closeMenu();
     }
     async setupFloatingUI() {
@@ -453,14 +465,14 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: '4f2fae97552f825d15db6f68e10f1d35237282c4', class: "relative", onBlur: (e) => {
-                if (this.disabled || !this.isOpen)
+        return (index.h(index.Host, { key: '2665fca51f1420be369b883bc8bf8461df994720', class: "relative", onBlur: (e) => {
+                if (this.disabled || !this.isOpen || this.is_persistent)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (index.h("div", { key: 'c19950509b8bd90bc94a10540bed6e275767670b', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (index.h("div", { key: '41bd981fdbe061c85b7edce2a875ff246b3634b5', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -488,7 +500,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: 'a9518c08ab1c4ea484013f993e5d143d0a202e12', name: "menu-trigger" }))), index.h("div", { key: 'e2c710132b76476ecd3b5a2def3a9f5cdb79fe76', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, index.h("slot", { key: '0a7367fa5bd811537588c86ab14100a61898e8b4', name: "menu-trigger" }))), index.h("div", { key: '5aec8d63f5d2bd63384408125075a9dba99d5d44', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -500,7 +512,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '99fe957cd11274c0c212c958da023280381a6db5' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, index.h("slot", { key: '50ff702743dd762cd7f686914a7ad2598bd8114d' }))));
     }
     static get watchers() { return {
         "disabled": [{
