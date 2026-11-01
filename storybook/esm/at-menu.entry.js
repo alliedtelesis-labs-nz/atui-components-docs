@@ -389,12 +389,12 @@ const AtMenu = class {
                                 fallbackStrategy: 'bestFit',
                                 padding: 8,
                             }),
-                            shift({
-                                padding: 8,
-                                mainAxis: true,
-                                crossAxis: true,
-                            }),
+                            // No crossAxis shift: it slides a menu that fits on
+                            // neither side over its own trigger. size shrinks it
+                            // to the side flip chose instead.
+                            shift({ padding: 8 }),
                             size({
+                                padding: 8,
                                 apply({ availableWidth, availableHeight, elements, }) {
                                     const maxHeightValue = maxHeightProp
                                         ? `min(${availableHeight}px, ${maxHeightProp})`
@@ -463,14 +463,14 @@ const AtMenu = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '2665fca51f1420be369b883bc8bf8461df994720', class: "relative", onBlur: (e) => {
+        return (h(Host, { key: '1a1acc6184d5714e1b10f546e49287c6e6c83e19', class: "relative", onBlur: (e) => {
                 if (this.disabled || !this.isOpen || this.is_persistent)
                     return;
                 const related = e.relatedTarget;
                 if (!this.menuEl?.contains(related)) {
                     this.closeMenu();
                 }
-            } }, !this.trigger_id && (h("div", { key: '41bd981fdbe061c85b7edce2a875ff246b3634b5', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
+            } }, !this.trigger_id && (h("div", { key: 'c2c68adfced8a7f31090973b0c47bebde9bb6b7e', "aria-haspopup": "true", "data-name": "menu-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, onMouseEnter: () => this.trigger === 'hover' && !this.disabled
                 ? this.mouseEnterHandler()
                 : null, onKeyDown: async (event) => {
                 switch (event.key) {
@@ -498,7 +498,7 @@ const AtMenu = class {
                         await this.openMenu();
                     }
                 }
-            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: '0a7367fa5bd811537588c86ab14100a61898e8b4', name: "menu-trigger" }))), h("div", { key: '5aec8d63f5d2bd63384408125075a9dba99d5d44', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
+            }, class: this.disabled ? 'contents' : '' }, h("slot", { key: 'd7631acf17b283c8b5681e7e1b5edb64578f1ef8', name: "menu-trigger" }))), h("div", { key: '27057ead40236244015fac6f10a3e63505732784', role: this.role, "data-position": this.position, "data-align": this.align, ref: (el) => (this.menuEl = el), "aria-hidden": `${this.isOpen ? 'false' : 'true'}`, popover: "manual", tabindex: -1, id: this.popoverId, onMouseEnter: () => this.trigger === 'hover' &&
                 !this.disabled &&
                 this.mouseEnterHandler(), onMouseLeave: () => this.trigger === 'hover' &&
                 !this.disabled &&
@@ -510,7 +510,7 @@ const AtMenu = class {
                         await this.mouseLeaveHandler();
                     }
                 }
-            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '50ff702743dd762cd7f686914a7ad2598bd8114d' }))));
+            }, onClick: () => this.autoclose && this.mouseLeaveHandler(), class: `bg-menu border-muted rounded-menu w-max min-w-0 flex-none border p-4 shadow-lg transition-opacity duration-150 ${this.isOpen ? 'opacity-100' : 'opacity-0'}`, "data-name": "menu-content-wrapper" }, h("slot", { key: '317a88e6cbca7ffc1f8fcb55316adc1be536e78b' }))));
     }
     static get watchers() { return {
         "disabled": [{

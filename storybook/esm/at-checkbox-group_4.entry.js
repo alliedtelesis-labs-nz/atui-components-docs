@@ -49300,11 +49300,19 @@ const AtTableComponent = class {
         });
     }
     /**
-     * Sizes a menu column to its button when the column defs leave it unsized, since
-     * otherwise it is ag-grid's default 200px once a flex column stops the fit.
+     * Gives every named column its name as a header tooltip, so a header cut off by a
+     * narrow column can still be read. Also sizes a menu column to its button when the
+     * column defs leave it unsized, since otherwise it is ag-grid's default 200px once a
+     * flex column stops the fit.
      */
     withColumnDefaults(colDefs) {
         return (colDefs ?? []).map((colDef) => {
+            const withTooltip = colDef.headerName
+                ? {
+                    ...colDef,
+                    headerTooltip: colDef.headerTooltip ?? colDef.headerName,
+                }
+                : colDef;
             const isSized = [
                 colDef.width,
                 colDef.initialWidth,
@@ -49313,10 +49321,10 @@ const AtTableComponent = class {
                 colDef.flex,
             ].some((value) => value !== undefined);
             if (colDef.cellRenderer !== AvailableCells.MENU_CELL || isSized) {
-                return colDef;
+                return withTooltip;
             }
             return {
-                ...colDef,
+                ...withTooltip,
                 minWidth: MENU_COLUMN_WIDTH,
                 maxWidth: MENU_COLUMN_WIDTH,
                 suppressSizeToFit: true,
@@ -49542,7 +49550,7 @@ const AtTableComponent = class {
         return this.agGrid;
     }
     render() {
-        return (h(Host, { key: '6826a46c7fdb311420a9cd88f236d3e44b6d29a0', class: {
+        return (h(Host, { key: 'f32171b0b8060f459a36e9543259d305c18ee294', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight

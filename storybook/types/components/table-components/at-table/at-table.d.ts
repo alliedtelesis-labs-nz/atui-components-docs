@@ -120,8 +120,10 @@ export declare class AtTableComponent {
      */
     private fitColumnsToGrid;
     /**
-     * Sizes a menu column to its button when the column defs leave it unsized, since
-     * otherwise it is ag-grid's default 200px once a flex column stops the fit.
+     * Gives every named column its name as a header tooltip, so a header cut off by a
+     * narrow column can still be read. Also sizes a menu column to its button when the
+     * column defs leave it unsized, since otherwise it is ag-grid's default 200px once a
+     * flex column stops the fit.
      */
     private withColumnDefaults;
     /**
