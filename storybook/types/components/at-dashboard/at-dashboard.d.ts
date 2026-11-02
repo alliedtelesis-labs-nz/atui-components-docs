@@ -77,7 +77,10 @@ export declare class AtDashboard {
     private isScalingToBreakpoint;
     private gridContainerRef?;
     private columnsAtStart?;
+    private hasLoaded;
+    connectedCallback(): void;
     componentDidLoad(): void;
+    private initGrid;
     componentDidUpdate(): void;
     disconnectedCallback(): void;
     private layoutWidgets;
