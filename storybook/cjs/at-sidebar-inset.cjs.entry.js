@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-E25G0lY5.js');
+var index = require('./index-DUZVJiVD.js');
 
 const atSidebarInsetCss = () => `at-sidebar-inset{display:flex;flex-direction:column;flex-grow:1;min-width:0;overflow-y:auto;overflow-x:clip;position:relative}`;
 

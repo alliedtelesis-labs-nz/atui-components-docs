@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-E25G0lY5.js');
+var index = require('./index-DUZVJiVD.js');
 
 const LIGHT_TEXT = 'var(--token-color-base-slate-100)';
 const DARK_TEXT = 'var(--token-color-base-slate-900)';

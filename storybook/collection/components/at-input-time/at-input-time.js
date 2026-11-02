@@ -8,7 +8,7 @@ const inputVariantsConfig = {
         },
         readonly: {
             false: 'focus-within:ring-active-glow',
-            true: '!bg-surface-1 !text-foreground cursor-text border-none',
+            true: '!bg-[var(--token-input-readonly-background)] !text-foreground cursor-text border-none',
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
@@ -82,7 +82,7 @@ export class AtInputTime {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: 'f65828da3b28b8d06c7a04627c5fa2c00d01daa8' }, h("style", { key: '9f3875b6fab44a51fccb59ef1c1ff2fd81d220a7' }, `
+        return (h(Host, { key: '25eba1a0def08ffd6cba13af2d496c533fe457aa' }, h("style", { key: '0e8ab58b0dbd58523235d6aaa45f6726441cf1fd' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -94,7 +94,7 @@ export class AtInputTime {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: 'a8c8f3a9b538748901a2cff34ca0460bccdea5c1', class: "flex flex-col" }, h("div", { key: 'c30de5fd1ac65dd03a05efc7ace78168a3628d90', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '30ad5ec31a34a157a3b4af2b899a38a562f8d6ee', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'b5c2da7376a8b062d25c29318f429231c9fd6b20', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'f5e61998fe216eda416a73c506d33dfb2cfdfbbb', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: 'a132da0603d47dfad53e85943b3f0d66b6c9d222', class: classname }, h("input", { key: 'a2cf870228d12b4645ffcaf421b82a105be8a9be', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: 'a934e080cfab084ff18735566edd6a4a47640494', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), h("div", { key: '38126311a09458200d7121f1457a197c6c0997bc', class: "flex flex-col" }, h("div", { key: '508b6e3c067cae5544e6ddd88e81c1470642ea0d', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'fc87c6d258c318c92f4e8854095c3ad09e8e066e', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '3d875b997959cff0af10ff1b374d84e9e47433b0', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '3abb9d12715d793a6c7ad0b7201b223e05cf08db', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: 'e6e4c28b46975a9af9453f22af76a800eceae6b0', class: classname }, h("input", { key: '5d3214c9f45a164a268d826575aac18d9e3f922d', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (h("span", { key: '6b293081ca968a1ef362738d9c7cd2f2378bd247', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-time"; }
     static get properties() {

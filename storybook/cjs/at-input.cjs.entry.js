@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-E25G0lY5.js');
+var index = require('./index-DUZVJiVD.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const inputVariantsConfig = {
@@ -11,7 +11,7 @@ const inputVariantsConfig = {
         },
         readonly: {
             false: 'focus-within:ring-active-glow',
-            true: '!bg-surface-1 !text-foreground cursor-text border-none',
+            true: '!bg-[var(--token-input-readonly-background)] !text-foreground cursor-text border-none',
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
@@ -110,10 +110,10 @@ const AtInputComponent = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (index.h(index.Host, { key: '96be4b0595f449c2a88e351a7e22064c6409cab5' }, index.h("div", { key: '28eafb6d0ea4f90ddfc0b108835f5a8004d4aa78', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '8592bdddb8e19864ff96fc52dcc0f5f8d649d396', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'f94a069ea77d0ca6bf58ef3fc032baf9b89a18f5', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'ddf9bd265935eba0974b6c102acab4857a3fd587', class: "text-muted mb-2 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '02bbca451bf3a29d7516b56c5d7ab05c8fafe94b', class: classname }, index.h("input", { key: '8e6b48f713e90ffc0703366a95b5e96a9c21f315', class: "py-input-y pl-input-x flex w-full min-w-0 text-ellipsis outline-0", id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), index.h("div", { key: 'e5ffb778e4c01f160fa14e990b1eff6d2a77634b', class: "flex items-center py-4 pr-4" }, index.h("slot", { key: '4c58efdfa2fc3eb64cf8aa760911dc06c7c602fc', name: "input-actions" }), this.clearable &&
+        return (index.h(index.Host, { key: 'c74aa23bceeb9f596bb86bbcf5a4ca901ffba7a9' }, index.h("div", { key: 'fb4fe77c865ecb553283c85cd96408550df0d9ba', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '52328a239782d55de170216eace8fcfd7afa244e', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'b776a40830f967ea9b09024b1696a21014cc7c0b', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '4f307b3f23fc94661372a6288d06da338dfd7eeb', class: "text-muted mb-2 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '0345177c816323f0f3f0650bbbc438a8e4afb8eb', class: classname }, index.h("input", { key: 'b15fc7348409b55af0f20e481f1e25e2fbd4b3db', class: "py-input-y pl-input-x flex w-full min-w-0 text-ellipsis outline-0", id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), index.h("div", { key: '1677b73d4ee0aede03daa6b0df59e381ac9eab4a', class: "flex items-center py-4 pr-4" }, index.h("slot", { key: '1b6d95d28cc464316a236cc674768d3f472159f5', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (index.h("at-button", { key: '4baaf97e98fe3ae4f61dd64e2801550ba41ba999', class: `transition-[opacity,transform] duration-150 ease-in-out ${this.clearable &&
+            this.value && (index.h("at-button", { key: '754fcca7e3352f29edb332617740f46d39ebbafc', class: `transition-[opacity,transform] duration-150 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -121,7 +121,7 @@ const AtInputComponent = class {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" }, index.h("at-icon", { key: '01cff58c8370ee1eace2c4f955fd10ec3d07b1c9', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (index.h("span", { key: 'ea62c98fe96f6c542217812bf51d429b3e512bc9', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" }, index.h("at-icon", { key: '25503359b66aa987a61343a65328eb1f0c78e13a', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (index.h("span", { key: '378cee3ed98a17c2ba2571019e1c9c8dd89e77fe', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
 

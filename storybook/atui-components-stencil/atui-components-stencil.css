@@ -924,6 +924,7 @@
     );
   /* cascade variable — overridden by density classes */
   --token-input-background: var(--token-surface-foreground);
+  --token-input-readonly-background: var(--token-surface-1);
   --token-input-disabled-bg: var(--token-state-disabled-background);
   --token-input-disabled-color: var(--token-state-disabled-foreground);
   --token-input-border-color: var(--token-border-input);
@@ -1309,6 +1310,7 @@
   --token-sidebar-border: var(--token-border-muted);
   /* Input */
   --token-input-background: var(--token-surface-foreground);
+  --token-input-readonly-background: var(--token-surface-2);
   --token-input-disabled-bg: var(--token-state-disabled-background);
   --token-input-disabled-color: var(--token-state-disabled-foreground);
   --token-input-border-color: var(--token-border-input);
@@ -3760,16 +3762,14 @@ at-dialog :where([data-name=card-content]) > at-card {
   border-inline-end-color: transparent;
 }
 
+.\!bg-\[var\(--token-input-readonly-background\)\] {
+  background-color: var(--token-input-readonly-background) !important;
+}
+
 .\!bg-active-foreground {
   --tw-bg-opacity:
       1 !important;
   background-color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
-}
-
-.\!bg-surface-1 {
-  --tw-bg-opacity:
-      1 !important;
-  background-color: color-mix(in srgb, var(--token-surface-1) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
 }
 
 .bg-active-accent {

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-E25G0lY5.js');
+var index = require('./index-DUZVJiVD.js');
 var translation = require('./translation-NP6A4XKu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -17,7 +17,7 @@ const inputVariantsConfig = {
         },
         readonly: {
             false: 'focus-within:ring-active-glow',
-            true: '!bg-surface-1 !text-foreground cursor-text border-none',
+            true: '!bg-[var(--token-input-readonly-background)] !text-foreground cursor-text border-none',
         },
         invalid: {
             false: 'border-input focus-within:border-active-accent focus-within:ring-active-glow',
@@ -467,16 +467,16 @@ const AtSelectComponent = class {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (index.h(index.Host, { key: 'd987fa35c8d6042369f9971024e1df0e6102f69d', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '7e39f326df9c24ec008b08e6b0e49762d1536687', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '0b9f5ce7d2564ef7c9dda2a9a28ce23cfe773915', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '688a81725d11b38bfd975c41f5bea1911a58d487', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '8b1e46944cef230a08177f632e8e6238412ba51f' }, this.error_text && this.invalid && (index.h("span", { key: 'd6925e06640af60d2e0bd9afa43a6286c7c9b8e3', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), index.h("div", { key: '7bd751ee2419bbf35e3b426810b00bfafe738f7a' }, this.error_text && this.invalid && (index.h("span", { key: '40de0640173433a2336fdb1f85fc1adafa5172f1', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (index.h("div", { class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
