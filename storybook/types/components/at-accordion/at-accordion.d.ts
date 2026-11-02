@@ -52,5 +52,6 @@ export declare class AtAccordionComponent {
     toggleAll(): Promise<void>;
     private refreshAccordionItems;
     private accordionId;
+    private prefixedItemId;
     render(): any;
 }

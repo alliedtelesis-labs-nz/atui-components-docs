@@ -30,7 +30,8 @@ const AtAccordionComponent = class {
     async toggleById(value) {
         this.refreshAccordionItems();
         this.accordionItems.forEach((item) => {
-            if (item.item_id === value) {
+            if (item.item_id === value ||
+                item.item_id === this.prefixedItemId(value)) {
                 if (item.open) {
                     item.closeAccordion();
                 }
@@ -76,10 +77,13 @@ const AtAccordionComponent = class {
         this.accordionItems = Array.from(this.el.querySelectorAll('at-accordion-item'));
     }
     accordionId = `accordion-${Math.random().toString(36).substring(2, 11)}`;
+    prefixedItemId(itemId) {
+        return `${this.accordionId}-${itemId}`;
+    }
     render() {
-        return (index.h(index.Host, { key: '09c9ee4b37ffccffbbc435d82411122f50d4f57d', class: "flex flex-col gap-2" }, index.h("slot", { key: 'ead4125592c919b138f66fa1a68ab426ce36e347' }), this.items &&
+        return (index.h(index.Host, { key: 'a236f4edf136a1e1387f52dac6cf7b10aa446c5b', class: "flex flex-col gap-2" }, index.h("slot", { key: '7ea61cea8c446bb2a4aed50b1ba24f6cb5fa0f34' }), this.items &&
             this.items.map((item) => {
-                return (index.h("at-accordion-item", { item_id: `${this.accordionId}-${item.item_id}`, label: item.label, content: item.content }));
+                return (index.h("at-accordion-item", { item_id: this.prefixedItemId(item.item_id), label: item.label, content: item.content }));
             })));
     }
 };
