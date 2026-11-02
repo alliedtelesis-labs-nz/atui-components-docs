@@ -29,10 +29,6 @@ const AtAccordionItemComponent = class {
      */
     label;
     /**
-     * Puts a light gray separator below the accordion item
-     */
-    border = true;
-    /**
      * String content to display when the accordion is open
      */
     content;
@@ -127,11 +123,11 @@ const AtAccordionItemComponent = class {
         const classname = getAccordionClasses({
             disabled: this.disabled,
         });
-        return (index.h(index.Host, { key: '7c6db31efc78fba17338faa43c42929a22a8ab5b', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: '724d3bc58ff09dad35a03bb3433cf7487067a5ec', class: "group/accordion-item", role: "group", open: this.detailsOpen, ref: (el) => (this.detailsEl = el) }, index.h("summary", { key: 'fbe21e8aff39158a076d302fb6b71bed680a759d', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
+        return (index.h(index.Host, { key: '0aa0a5f43517bd5afe6ea7a7b90e139d372d5454', "data-name": this.item_id, "data-state": this.open ? 'expanded' : 'collapsed' }, index.h("details", { key: 'c6c4f1922755d859166a04265e86f00ad2b7862d', class: "group/accordion-item", role: "group", open: this.detailsOpen, ref: (el) => (this.detailsEl = el) }, index.h("summary", { key: '765a86f62730ca6042693a14861f6b5f64aab008', id: `trigger-${this.item_id}`, role: "button", "aria-expanded": this.open, "aria-disabled": this.disabled ? 'true' : undefined, "data-state": this.open ? 'expanded' : 'collapsed', class: classname, onClick: (event) => this.handleSummaryInteraction(event), onTouchEnd: (event) => this.handleSummaryInteraction(event), onKeyDown: (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     this.handleSummaryInteraction(event);
                 }
-            }, "aria-controls": `content-${this.item_id}` }, this.label && (index.h("at-accordion-trigger", { key: 'c5e71b784231259d7d5def44e816d20cf9bc8cd6', label: this.label })), index.h("slot", { key: 'e206b4de83be741796103c96d15517540c6fe3cd', name: "accordion-trigger" })), index.h("div", { key: '9a24f0c6d8534c1f4c4993e78feff1ac6b5b8d33', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: 'f95ea1e26f09f43f6fb76164539f78295d614f02', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: 'd5d3a9c7006d8b7ae60c0044ec5d373b17462835' })))));
+            }, "aria-controls": `content-${this.item_id}` }, this.label && (index.h("at-accordion-trigger", { key: '04f0bea1e518e2730b6667269b8b7b45a3f95060', label: this.label })), index.h("slot", { key: 'd737decac74a64a85d3115b4a5658356f0e5f214', name: "accordion-trigger" })), index.h("div", { key: '9efe90838fbfa76fefbd351f0cbc4f88e009783f', id: `content-${this.item_id}`, "aria-labelledby": `trigger-${this.item_id}`, "data-state": this.open ? 'expanded' : 'collapsed', "data-name": "accordion-item-content" }, this.content && (index.h("div", { key: 'ba794049555a8e8905ec2d6dafed7d59fc9b6d8e', class: "flex flex-col p-16 leading-normal" }, this.content)), index.h("slot", { key: 'b484f5d3218be7cd2a0d02673499b1034c3d1dca' })))));
     }
     static get watchers() { return {
         "open": [{

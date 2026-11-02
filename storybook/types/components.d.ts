@@ -173,11 +173,6 @@ export namespace Components {
      */
     interface AtAccordionItem {
         /**
-          * Puts a light gray separator below the accordion item
-          * @default true
-         */
-        "border": boolean;
-        /**
           * Closes this accordion item
          */
         "closeAccordion": () => Promise<void>;
@@ -6209,11 +6204,6 @@ declare namespace LocalJSX {
      */
     interface AtAccordionItem {
         /**
-          * Puts a light gray separator below the accordion item
-          * @default true
-         */
-        "border"?: boolean;
-        /**
           * String content to display when the accordion is open
          */
         "content"?: string;
@@ -10077,7 +10067,6 @@ declare namespace LocalJSX {
     interface AtAccordionItemAttributes {
         "item_id": string;
         "label": string;
-        "border": boolean;
         "content": string;
         "open": boolean;
         "disabled": boolean;

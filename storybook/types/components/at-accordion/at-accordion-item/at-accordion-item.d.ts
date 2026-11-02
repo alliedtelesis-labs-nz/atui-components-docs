@@ -17,10 +17,6 @@ export declare class AtAccordionItemComponent {
      */
     label: string;
     /**
-     * Puts a light gray separator below the accordion item
-     */
-    border: boolean;
-    /**
      * String content to display when the accordion is open
      */
     content: string;
