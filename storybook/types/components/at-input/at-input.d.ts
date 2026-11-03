@@ -64,6 +64,10 @@ export declare class AtInputComponent {
      * The value of the input
      */
     value: string;
+    /**
+     * Maximum number of decimal places for `type="number"`; Defaults to `0` (whole numbers only). Only digits, a minus sign and a decimal point are accepted; other characters and non-numeric values are rejected. Rounded when the user commits the value.
+     */
+    decimal_places: number;
     inputEl: HTMLInputElement;
     el: HTMLAtInputElement;
     /**
@@ -72,6 +76,10 @@ export declare class AtInputComponent {
     atuiChange: EventEmitter<string | number>;
     private inputId;
     handleChange(event: Event): void;
+    private get hasDecimalLimit();
+    private isNumericText;
+    private roundNumberText;
+    private handleKeyDown;
     handleClear(): void;
     render(): any;
 }

@@ -54,6 +54,10 @@ export declare class AtInputNumericComponent {
      */
     step?: number;
     /**
+     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+     */
+    decimal_places: number;
+    /**
      * Show buttons inside input or outside
      */
     show_buttons: boolean;
@@ -75,7 +79,11 @@ export declare class AtInputNumericComponent {
     private inputId;
     handleChange(event: Event): void;
     handleInput(event: Event): void;
+    private get allowedCharacters();
+    private handleKeyDown;
+    private handlePaste;
     private clampToRange;
+    private roundToDecimalPlaces;
     handleDecrease: () => void;
     handleIncrease: () => void;
     private handleStepKeyDown;

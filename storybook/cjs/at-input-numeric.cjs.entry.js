@@ -123,6 +123,10 @@ const AtInputNumericComponent = class {
      */
     step = 1;
     /**
+     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+     */
+    decimal_places = 0;
+    /**
      * Show buttons inside input or outside
      */
     show_buttons = true;
@@ -157,8 +161,32 @@ const AtInputNumericComponent = class {
             this.value = parsed;
         }
     }
+    get allowedCharacters() {
+        const sign = this.min < 0 ? '-' : '';
+        const point = this.decimal_places > 0 ? '.' : '';
+        return new RegExp(`^[0-9${sign}${point}]$`);
+    }
+    handleKeyDown = (event) => {
+        const isTextCharacter = event.key.length === 1;
+        const isShortcut = event.ctrlKey || event.metaKey || event.altKey;
+        if (isTextCharacter &&
+            !isShortcut &&
+            !this.allowedCharacters.test(event.key)) {
+            event.preventDefault();
+        }
+    };
+    handlePaste = (event) => {
+        const pasted = event.clipboardData?.getData('text') ?? '';
+        const isNumeric = [...pasted.trim()].every((character) => this.allowedCharacters.test(character));
+        if (!isNumeric) {
+            event.preventDefault();
+        }
+    };
     clampToRange(value) {
-        return Math.min(Math.max(value, this.min), this.max);
+        return this.roundToDecimalPlaces(Math.min(Math.max(value, this.min), this.max));
+    }
+    roundToDecimalPlaces(value) {
+        return Number(value.toFixed(Math.max(0, this.decimal_places ?? 0)));
     }
     handleDecrease = () => {
         if (this.value > this.min) {
@@ -191,7 +219,11 @@ const AtInputNumericComponent = class {
             readonly: this.readonly,
             showButtons: this.show_buttons,
         });
-        return (index.h(index.Host, { key: '0cdf37ae0b122335c499ac626a5f506bf33893c6', class: "w-full" }, index.h("div", { key: '9194d9233c4fe03ff7b1be1bf00e2e4a3570c536', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '13108f310267f6f0516be1cb4f778ec97a744ec9', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '3a91b146703070f04830875ddb9ba4fde2027bc7', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '30b4ed6c7759907db884960114603218b705159d', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '764b9f456446adf3302200198191664a7e0c9131', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '4498b952cf369278f968a12186f509475acdac3c', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, index.h("at-icon", { key: 'cc648612f9f336c1642076e5f6f3cc758fd8512c', slot: "icon", name: "subtract" }))), index.h("input", { key: '64df807cbf30c159f74a2c11ac1fe136d82a433a', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '9ba57c026215c293f0d982828432212941ac6693', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, index.h("at-icon", { key: 'f6a3270d7108b9f72cb587e2e9d81cfa14470a01', slot: "icon", name: "add" })))), this.error_text && this.invalid && (index.h("span", { key: '9f9ef682eb447aab7d0860ca928ec773e612f5e2', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+        return (index.h(index.Host, { key: '14b929d4740436d43e9d07b4d8eb9270a30e79ae', class: "w-full" }, index.h("div", { key: 'a912998fd0ec4fb843ab5758b2307a697581bc78', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '9e4ad289b88184869b6df4d074101aeb80e7f877', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '65f26f28860318c5506cee41e7bac971a211b6ab', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '2dd90010ed7c27618312c63ded5c4f44c1c5fb01', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), index.h("div", { key: '6a1f40cf41542f0b5e9d3e474458b28973ba66d8', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '9460ec96e7276e98f112f5468119b1027cc7ff84', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, index.h("at-icon", { key: '2656154b5d3cac0aae22db8f9bf77be67ca2640b', slot: "icon", name: "subtract" }))), index.h("input", { key: '985d0faaee29efc24948dbd156a5bb62b49963ba', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onKeyDown: this.handleKeyDown, onPaste: this.handlePaste, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value === null ||
+                this.value === undefined ||
+                !isFinite(Number(this.value))
+                ? ''
+                : this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (index.h("at-button", { key: '7beb865c40ff70d5f470c97ff0a363ce54ee4438', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, index.h("at-icon", { key: '7dbe8148b4fc35a66db61d0276f8c0ff6560d0f0', slot: "icon", name: "add" })))), this.error_text && this.invalid && (index.h("span", { key: 'e85cc6e034d22e73f4067307efa81fb936633126', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
 AtInputNumericComponent.style = atInputNumericCss();

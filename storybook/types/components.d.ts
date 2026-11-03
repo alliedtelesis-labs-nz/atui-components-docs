@@ -1315,6 +1315,11 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
+          * Maximum number of decimal places for `type="number"`; Defaults to `0` (whole numbers only). Only digits, a minus sign and a decimal point are accepted; other characters and non-numeric values are rejected. Rounded when the user commits the value.
+          * @default 0
+         */
+        "decimal_places": number;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -1425,6 +1430,11 @@ export namespace Components {
          */
         "aria_label": string;
         /**
+          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+          * @default 0
+         */
+        "decimal_places": number;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -1497,6 +1507,11 @@ export namespace Components {
           * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
          */
         "aria_label": string;
+        /**
+          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+          * @default 0
+         */
+        "decimal_places": number;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -7347,6 +7362,11 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
+          * Maximum number of decimal places for `type="number"`; Defaults to `0` (whole numbers only). Only digits, a minus sign and a decimal point are accepted; other characters and non-numeric values are rejected. Rounded when the user commits the value.
+          * @default 0
+         */
+        "decimal_places"?: number;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -7465,6 +7485,11 @@ declare namespace LocalJSX {
          */
         "aria_label"?: string;
         /**
+          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+          * @default 0
+         */
+        "decimal_places"?: number;
+        /**
           * Disables interaction with the input
           * @default false
          */
@@ -7541,6 +7566,11 @@ declare namespace LocalJSX {
           * Accessible name for the input. Use when a shared column header supplies the visible label and `label` is therefore left unset.
          */
         "aria_label"?: string;
+        /**
+          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+          * @default 0
+         */
+        "decimal_places"?: number;
         /**
           * Disable user interaction. Disabled state should be applied via form control.
          */
@@ -10279,6 +10309,7 @@ declare namespace LocalJSX {
         "clearable": boolean;
         "aria_label": string;
         "value": string;
+        "decimal_places": number;
     }
     interface AtInputDateAttributes {
         "label": string;
@@ -10304,6 +10335,7 @@ declare namespace LocalJSX {
         "min": number;
         "max": number;
         "step": number;
+        "decimal_places": number;
         "show_buttons": boolean;
         "value": number;
         "aria_label": string;
@@ -10323,6 +10355,7 @@ declare namespace LocalJSX {
         "min": number;
         "max": number;
         "step": number;
+        "decimal_places": number;
         "show_minmax": boolean;
         "show_ticks": boolean;
         "show_value": boolean;

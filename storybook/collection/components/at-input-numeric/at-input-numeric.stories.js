@@ -9,6 +9,7 @@ const Template = (args) => `
     min="${args.min ?? 0}"
     max="${args.max ?? 100}"
     step="${args.step ?? 1}"
+    ${args.decimal_places !== undefined ? `decimal_places="${args.decimal_places}"` : ''}
     ${args.show_buttons ? 'show_buttons' : ''}
     ${args.required ? 'required' : ''}
     ${args.readonly ? 'readonly' : ''}

@@ -53,7 +53,8 @@ export class AtInputRangeComponent {
         return this._value;
     }
     set value(val) {
-        this._value = Math.max(this.min, Math.min(this.max, val));
+        const numeric = Number(val);
+        this._value = Math.max(this.min, Math.min(this.max, isFinite(numeric) ? numeric : this.min));
     }
     _value;
     /**
@@ -68,6 +69,10 @@ export class AtInputRangeComponent {
      * Interval between selections.
      */
     step = 1;
+    /**
+     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+     */
+    decimal_places = 0;
     /**
      * Display min and max text values.
      */
@@ -101,28 +106,32 @@ export class AtInputRangeComponent {
     sliderContainerRef;
     sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
     onChange(inputVal) {
-        const newValue = Math.max(this.min, Math.min(this.max, inputVal)); // Clamp value
+        const clamped = Math.max(this.min, Math.min(this.max, inputVal)); // Clamp value
+        const newValue = Number(clamped.toFixed(Math.max(0, this.decimal_places ?? 0)));
         this.value = newValue;
         this.atuiChange.emit(this.value);
     }
     render() {
-        return (h(Host, { key: '3eaa1ced0086c3e49d6d71eef47fe029f130a83d' }, h("div", { key: 'b7768f1410d2f0e3bff5c9f27cce543c3d3ba1c4', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '3e9d3cca5dbd0bb9ba6199f9bc02e0ce2bd70b51', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'ba642b3735fc2879e645bcad677b32454beac0bd', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '798cd363f72b8e6a764ea204315961095cb2d678', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (h("span", { key: '020943b6d6fa2973b08b43807434851abad14841', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (h("span", { key: 'b1c1e81d8c207d49e8897ce7c7a5b5e11b25e011', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), h("div", { key: '55af87ae15fd9c9331d91d0053b9377b09fefcbe', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, h("div", { key: 'd59ae70c1126324107f87a290ebd68b93ee0af5e', class: "flex flex-grow flex-col" }, h("div", { key: '525c23ce6937f2b671261122b30baf363dd60f7d', class: "flex flex-grow" }, h("div", { key: '430fe9ee79bf8547393499e5ba86218d09abbba4', class: "range-slider", style: {
+        return (h(Host, { key: 'd5325f2d4bd0faaee54563ca24088d4cb6fae4d9' }, h("div", { key: 'b5468d52218df0f04c715b645971b95f6e05b801', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ca8965abd3edc68e70c30bedd4383bfd4f37db6f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'a14507f98102f3a41a2f4ab909aa5228650ae577', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '28f1e59557ba6fd984b185e469d555018a69cacf', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (h("span", { key: '50ead604e841946ebfb5acc6a897893a88d07e7e', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (h("span", { key: '8dfaf246c332f21482b18dedaa6bb1ee6981c904', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), h("div", { key: 'ca707ec3c6de7fb4d691e8a7bcf66a540be16df5', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, h("div", { key: 'be07763c13f13ad098c271bb44dfefa815932977', class: "flex flex-grow flex-col" }, h("div", { key: '31b3dad7d7bb6ad576f8e5355ce882785e897224', class: "flex flex-grow" }, h("div", { key: '28674e09157dea6dd08b4e1dd0b7e32aa4703ec7', class: "range-slider", style: {
                 '--min': `${this.min}`,
                 '--max': `${this.max}`,
                 '--step': `${this.step}`,
                 '--value': `${this.value}`,
                 '--text-value': `${this.value}`,
                 '--show-min-max': `${this.show_minmax ? 'block' : 'none'}`,
-            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: '1fa353b553729549fdbe03cf2d33a1bc10e00a4c', type: "range", "aria-label": this.aria_label ?? undefined, min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
+                ...(this.show_ticks
+                    ? {}
+                    : { '--ticks-height': '0px' }),
+            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: 'f7c0837a8a7fdd20fa4b3c28dcc6b3a00ba1aa1e', type: "range", "aria-label": this.aria_label ?? undefined, min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
                 ? true
                 : undefined, id: this.sliderId, value: this.value, class: "custom-slider", "data-name": "slider-range-input", onInput: (event) => {
-                const newValue = parseInt(event.target
-                    .value);
+                const sliderValue = event.target.value;
+                const newValue = Number(sliderValue);
                 this.value = newValue;
                 this.onChange(newValue);
                 this.sliderContainerRef.style.setProperty('--value', String(this.value));
                 this.sliderContainerRef.style.setProperty('--text-value', JSON.stringify(this.value));
-            } }), this.show_value && (h("output", { key: '5cd2d2c1c3876c340469867fe4aaf900002a5189', class: "text-sm" }, this.value)), h("div", { key: '0d81b40d29921dfcb1f2ab6c5239e50bbee9a6e9', class: "range-slider__progress" })))), this.show_input && (h("div", { key: 'a52d885d6ab93981f49473c19b942f837ea156db', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: '0ef1144fd9efaaa031f28209cd034ae7cfe5db4b', readonly: this.readonly, disabled: this.disabled, invalid: this.invalid, min: this.min, max: this.max, step: this.step, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: 'ce566074e81f93a2d923bcb5debb3a3577ff2c92', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
+            } }), this.show_value && (h("output", { key: '1e47bcb138edab36fd399df93b40ac877cae85af', class: "text-sm" }, this.value)), h("div", { key: '7a0034779aa2dcccf2ba96511cd20d758308b8c5', class: "range-slider__progress" })))), this.show_input && (h("div", { key: '24e45c12e36b763c53acbe1d55371ef3af9107e7', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: '291170dd0e7d62945561ff3c4a3c054e4407c0f8', readonly: this.readonly, disabled: this.disabled, invalid: this.invalid, min: this.min, max: this.max, step: this.step, decimal_places: this.decimal_places, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: '6be772d3bd89565fa69d388876e092f3ea0a4b9d', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
     }
     static get is() { return "at-input-range"; }
     static get originalStyleUrls() {
@@ -405,6 +414,26 @@ export class AtInputRangeComponent {
                 "reflect": false,
                 "attribute": "step",
                 "defaultValue": "1"
+            },
+            "decimal_places": {
+                "type": "number",
+                "mutable": false,
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "decimal_places",
+                "defaultValue": "0"
             },
             "show_minmax": {
                 "type": "boolean",

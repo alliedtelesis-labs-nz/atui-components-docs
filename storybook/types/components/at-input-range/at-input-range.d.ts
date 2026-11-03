@@ -66,6 +66,10 @@ export declare class AtInputRangeComponent {
      */
     step?: number;
     /**
+     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+     */
+    decimal_places: number;
+    /**
      * Display min and max text values.
      */
     show_minmax?: boolean;
