@@ -1430,7 +1430,7 @@ export namespace Components {
          */
         "aria_label": string;
         /**
-          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only). A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
           * @default 0
          */
         "decimal_places": number;
@@ -1508,7 +1508,7 @@ export namespace Components {
          */
         "aria_label": string;
         /**
-          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input. A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
           * @default 0
          */
         "decimal_places": number;
@@ -7485,7 +7485,7 @@ declare namespace LocalJSX {
          */
         "aria_label"?: string;
         /**
-          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+          * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only). A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
           * @default 0
          */
         "decimal_places"?: number;
@@ -7567,7 +7567,7 @@ declare namespace LocalJSX {
          */
         "aria_label"?: string;
         /**
-          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+          * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input. A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
           * @default 0
          */
         "decimal_places"?: number;

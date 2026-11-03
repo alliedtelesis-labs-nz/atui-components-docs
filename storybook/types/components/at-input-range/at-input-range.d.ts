@@ -66,7 +66,7 @@ export declare class AtInputRangeComponent {
      */
     step?: number;
     /**
-     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input. A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
      */
     decimal_places: number;
     /**

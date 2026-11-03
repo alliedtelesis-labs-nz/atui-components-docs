@@ -54,7 +54,7 @@ export declare class AtInputNumericComponent {
      */
     step?: number;
     /**
-     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only). A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
      */
     decimal_places: number;
     /**
@@ -83,7 +83,7 @@ export declare class AtInputNumericComponent {
     private handleKeyDown;
     private handlePaste;
     private clampToRange;
-    private roundToDecimalPlaces;
+    private get decimalPlaces();
     handleDecrease: () => void;
     handleIncrease: () => void;
     private handleStepKeyDown;

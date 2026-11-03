@@ -1,4 +1,5 @@
 import { h, Host, } from "@stencil/core";
+import { effectiveDecimalPlaces, roundToDecimalPlaces, } from "../../utils/decimal-places.util";
 /**
  * @category Form Controls
  * @description A range input component for selecting a value within a specified range.
@@ -70,7 +71,7 @@ export class AtInputRangeComponent {
      */
     step = 1;
     /**
-     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input.
+     * Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input. A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
      */
     decimal_places = 0;
     /**
@@ -107,12 +108,12 @@ export class AtInputRangeComponent {
     sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
     onChange(inputVal) {
         const clamped = Math.max(this.min, Math.min(this.max, inputVal)); // Clamp value
-        const newValue = Number(clamped.toFixed(Math.max(0, this.decimal_places ?? 0)));
+        const newValue = roundToDecimalPlaces(clamped, effectiveDecimalPlaces(this.decimal_places, this.step));
         this.value = newValue;
         this.atuiChange.emit(this.value);
     }
     render() {
-        return (h(Host, { key: 'd5325f2d4bd0faaee54563ca24088d4cb6fae4d9' }, h("div", { key: 'b5468d52218df0f04c715b645971b95f6e05b801', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ca8965abd3edc68e70c30bedd4383bfd4f37db6f', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'a14507f98102f3a41a2f4ab909aa5228650ae577', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '28f1e59557ba6fd984b185e469d555018a69cacf', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (h("span", { key: '50ead604e841946ebfb5acc6a897893a88d07e7e', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (h("span", { key: '8dfaf246c332f21482b18dedaa6bb1ee6981c904', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), h("div", { key: 'ca707ec3c6de7fb4d691e8a7bcf66a540be16df5', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, h("div", { key: 'be07763c13f13ad098c271bb44dfefa815932977', class: "flex flex-grow flex-col" }, h("div", { key: '31b3dad7d7bb6ad576f8e5355ce882785e897224', class: "flex flex-grow" }, h("div", { key: '28674e09157dea6dd08b4e1dd0b7e32aa4703ec7', class: "range-slider", style: {
+        return (h(Host, { key: '19776ce14ceaf4be5b319b3abc6f45de2bad43a2' }, h("div", { key: '714f406aa5a3ec4942232b8de4234fe6d7e708a7', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'd98fb6d6b4046459e5b698e26488c4e9027a4b86', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'e502345d8735573a2c7696c2a33053f936f1f895', label: this.label, for: this.sliderId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'a9a7c2f72cc61e7c5accb08b50018a5c3178275c', class: "text-muted inline-block text-xs leading-tight", "data-name": "slider-hint" }, this.hint_text)), this.error_text && this.invalid && (h("span", { key: '5b52b6d6953b1a4c430ee515ea2e484d685c932e', class: "text-error text-xs font-normal", "data-name": "slider-error" }, this.error_text)), this.warning_text && !this.invalid && (h("span", { key: '9c71ea7cd94609a25bfaedd2e1fd0326c55b2bea', class: "text-warning-foreground text-xs font-normal", "data-name": "slider-warning" }, this.warning_text))), h("div", { key: '537d4f6ec5e497db7ab32c2815c9c1e135b12e16', class: `mt-4 flex items-start gap-8 ${this.label_position == 'before' ? 'flex-row-reverse' : 'flex-row'}` }, h("div", { key: 'bf3a4bc0953268b3595e8251f3494ae2636f296d', class: "flex flex-grow flex-col" }, h("div", { key: '8d776136f919babb8a9e84a222fd81ffc739c625', class: "flex flex-grow" }, h("div", { key: 'a94c95296ffeb41d579e2826ce188d12a99ced83', class: "range-slider", style: {
                 '--min': `${this.min}`,
                 '--max': `${this.max}`,
                 '--step': `${this.step}`,
@@ -122,7 +123,7 @@ export class AtInputRangeComponent {
                 ...(this.show_ticks
                     ? {}
                     : { '--ticks-height': '0px' }),
-            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: 'f7c0837a8a7fdd20fa4b3c28dcc6b3a00ba1aa1e', type: "range", "aria-label": this.aria_label ?? undefined, min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
+            }, ref: (el) => (this.sliderContainerRef = el) }, h("input", { key: 'c12a937227d3604caf798643d28e96cbd192bbe8', type: "range", "aria-label": this.aria_label ?? undefined, min: this.min, max: this.max, step: this.step, disabled: this.disabled || this.readonly
                 ? true
                 : undefined, id: this.sliderId, value: this.value, class: "custom-slider", "data-name": "slider-range-input", onInput: (event) => {
                 const sliderValue = event.target.value;
@@ -131,7 +132,7 @@ export class AtInputRangeComponent {
                 this.onChange(newValue);
                 this.sliderContainerRef.style.setProperty('--value', String(this.value));
                 this.sliderContainerRef.style.setProperty('--text-value', JSON.stringify(this.value));
-            } }), this.show_value && (h("output", { key: '1e47bcb138edab36fd399df93b40ac877cae85af', class: "text-sm" }, this.value)), h("div", { key: '7a0034779aa2dcccf2ba96511cd20d758308b8c5', class: "range-slider__progress" })))), this.show_input && (h("div", { key: '24e45c12e36b763c53acbe1d55371ef3af9107e7', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: '291170dd0e7d62945561ff3c4a3c054e4407c0f8', readonly: this.readonly, disabled: this.disabled, invalid: this.invalid, min: this.min, max: this.max, step: this.step, decimal_places: this.decimal_places, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: '6be772d3bd89565fa69d388876e092f3ea0a4b9d', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
+            } }), this.show_value && (h("output", { key: '6da36c4e3e1d4d49a061a39511884e89a6bd2271', class: "text-sm" }, this.value)), h("div", { key: '2ae6dcabd4f756f3d55d46953e503ce32984cc62', class: "range-slider__progress" })))), this.show_input && (h("div", { key: '718b95a6e4c61546e1d653f2e27d69f7634be153', class: "relative flex w-80 flex-row items-center gap-8" }, h("at-input-numeric", { key: 'cfd02035b9d9f7a9b63e04360f97bd4b66d1ff4f', readonly: this.readonly, disabled: this.disabled, invalid: this.invalid, min: this.min, max: this.max, step: this.step, decimal_places: this.decimal_places, value: this.value, show_buttons: false, "data-name": "slider-text-input", onAtuiChange: (event) => this.onChange(event.detail) }), this.suffix && (h("span", { key: '0e886cf89a84b8002b3b98c30c89928eac393696', "data-name": "slider-suffix", class: "text-muted absolute top-1/2 right-[36px] -translate-y-1/2" }, this.suffix)))))));
     }
     static get is() { return "at-input-range"; }
     static get originalStyleUrls() {
@@ -427,7 +428,7 @@ export class AtInputRangeComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input."
+                    "text": "Maximum number of decimal places for the value; Defaults to `0` (whole numbers only). Also applied to the text input. A fractional `step` raises it to the step's own decimal places, so `step=\"0.5\"` always allows one."
                 },
                 "getter": false,
                 "setter": false,

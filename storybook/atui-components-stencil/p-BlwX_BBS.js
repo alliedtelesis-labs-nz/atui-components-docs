@@ -1,0 +1,1 @@
+const r=(r,e)=>Math.max(0,r??0,(r=>{if(!isFinite(r))return 0;const[e,t]=String(r).toLowerCase().split("e"),n=e.split(".")[1]?.length??0;return Math.max(0,n-Number(t??0))})(Number(e??1))),e=(r,e)=>Number(r.toFixed(e));export{r as e,e as r}

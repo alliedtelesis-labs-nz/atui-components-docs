@@ -1,4 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DR-CD1o0.js';
+import { r as roundToDecimalPlaces, e as effectiveDecimalPlaces } from './decimal-places.util-BlwX_BBS.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const atInputNumericCss = () => `input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}`;
@@ -121,7 +122,7 @@ const AtInputNumericComponent = class {
      */
     step = 1;
     /**
-     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only).
+     * Maximum number of decimal places. Applied when the user changes the value (typing or stepper buttons); programmatic values are displayed as-is. Defaults to `0` (whole numbers only). A fractional `step` raises it to the step's own decimal places, so `step="0.5"` always allows one.
      */
     decimal_places = 0;
     /**
@@ -161,7 +162,7 @@ const AtInputNumericComponent = class {
     }
     get allowedCharacters() {
         const sign = this.min < 0 ? '-' : '';
-        const point = this.decimal_places > 0 ? '.' : '';
+        const point = this.decimalPlaces > 0 ? '.' : '';
         return new RegExp(`^[0-9${sign}${point}]$`);
     }
     handleKeyDown = (event) => {
@@ -181,10 +182,10 @@ const AtInputNumericComponent = class {
         }
     };
     clampToRange(value) {
-        return this.roundToDecimalPlaces(Math.min(Math.max(value, this.min), this.max));
+        return roundToDecimalPlaces(Math.min(Math.max(value, this.min), this.max), this.decimalPlaces);
     }
-    roundToDecimalPlaces(value) {
-        return Number(value.toFixed(Math.max(0, this.decimal_places ?? 0)));
+    get decimalPlaces() {
+        return effectiveDecimalPlaces(this.decimal_places, this.step);
     }
     handleDecrease = () => {
         if (this.value > this.min) {
@@ -217,11 +218,11 @@ const AtInputNumericComponent = class {
             readonly: this.readonly,
             showButtons: this.show_buttons,
         });
-        return (h(Host, { key: '14b929d4740436d43e9d07b4d8eb9270a30e79ae', class: "w-full" }, h("div", { key: 'a912998fd0ec4fb843ab5758b2307a697581bc78', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '9e4ad289b88184869b6df4d074101aeb80e7f877', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '65f26f28860318c5506cee41e7bac971a211b6ab', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '2dd90010ed7c27618312c63ded5c4f44c1c5fb01', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '6a1f40cf41542f0b5e9d3e474458b28973ba66d8', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '9460ec96e7276e98f112f5468119b1027cc7ff84', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, h("at-icon", { key: '2656154b5d3cac0aae22db8f9bf77be67ca2640b', slot: "icon", name: "subtract" }))), h("input", { key: '985d0faaee29efc24948dbd156a5bb62b49963ba', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onKeyDown: this.handleKeyDown, onPaste: this.handlePaste, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value === null ||
+        return (h(Host, { key: 'a5baa4b46ce01dff006cee4026d4bc8e5605cab5', class: "w-full" }, h("div", { key: 'db7c8975b13addb2f5348a16b4161f8db7ad6c19', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '72394b95a7d914099eaa68a093c67aa079420135', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '2af1a73d98243ef446ead22e09cee349637e8baf', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'dbf9b3660eb1bb7fa1c89d26b83538b3f7afe89b', class: "text-muted inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '750abf41a2d6ec463f14ca7a3170348340aadd99', class: containerClassname }, this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '8d30c7faed36cbf1d7d6f0767c4574c448945ff9', class: "border-input rounded-l-md rounded-r-none border-r border-solid", type: "secondaryText", onClick: this.handleDecrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleDecrease), disabled: this.value <= this.min, "aria-label": "Subtract", "data-name": "input-subtract" }, h("at-icon", { key: '61e1f52acf0591ff6063b4e167298c56ceb7ceea', slot: "icon", name: "subtract" }))), h("input", { key: '2887b22808bb84be0ee37d1df6cd7eb4bf2ea158', id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: "number", min: this.min, max: this.max, step: this.step, placeholder: `${this.placeholder}`, onKeyDown: this.handleKeyDown, onPaste: this.handlePaste, onInput: (event) => this.handleInput(event), onChange: (event) => this.handleChange(event), value: this.value === null ||
                 this.value === undefined ||
                 !isFinite(Number(this.value))
                 ? ''
-                : this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '7beb865c40ff70d5f470c97ff0a363ce54ee4438', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, h("at-icon", { key: '7dbe8148b4fc35a66db61d0276f8c0ff6560d0f0', slot: "icon", name: "add" })))), this.error_text && this.invalid && (h("span", { key: 'e85cc6e034d22e73f4067307efa81fb936633126', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+                : this.value, ref: (el) => (this.inputEl = el), class: classname, "data-name": "input" }), this.show_buttons && !this.disabled && !this.readonly && (h("at-button", { key: '33f0c8dce40800d6357c75faf961574d1b3a417d', class: "border-input rounded-l-none rounded-r-md border-l border-solid", type: "secondaryText", onClick: this.handleIncrease, onKeyDown: (event) => this.handleStepKeyDown(event, this.handleIncrease), disabled: this.value >= this.max, "aria-label": "Add", "data-name": "input-add" }, h("at-icon", { key: '0ab48cf79a51869396990d53684919d1c4189937', slot: "icon", name: "add" })))), this.error_text && this.invalid && (h("span", { key: 'b8b4f795d9765665719cb143494951d720290d1a', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
 };
 AtInputNumericComponent.style = atInputNumericCss();
