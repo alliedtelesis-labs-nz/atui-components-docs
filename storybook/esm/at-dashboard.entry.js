@@ -6378,6 +6378,7 @@ const AtDashboard = class {
         this.removedItem = createEvent(this, "removedItem", 7);
         this.editItem = createEvent(this, "editItem", 7);
         this.resizeDragEvent = createEvent(this, "resizeDragEvent", 7);
+        this.atuiLayoutChange = createEvent(this, "atuiLayoutChange", 7);
     }
     get el() { return getElement(this); }
     /**
@@ -6412,8 +6413,9 @@ const AtDashboard = class {
      */
     has_fixed_columns = false;
     /**
-     * Emitted when a widget's position or size changes in the grid, with the
+     * Emitted for each widget whose position or size changes in the grid, with the
      * position and size on the full 24-column grid.
+     * x and w are in 24-column units at every breakpoint.
      */
     changedItem;
     /**
@@ -6434,9 +6436,17 @@ const AtDashboard = class {
     /**
      * Emitted when a widget finishes resizing or dragging, with its position and
      * size on the full 24-column grid. Widgets the grid moved out of the way are
-     * not included; save `atLayoutChange` instead.
+     * not included; save `atLayoutChange` instead. Carries only the
+     * dragged widget; to save the layout, use atuiLayoutChange, which also
+     * carries the widgets the drag pushed aside.
      */
     resizeDragEvent;
+    /**
+     * Emitted when a widget finishes resizing or dragging, with every widget's
+     * position and size in 24-column units at every breakpoint. Pass it back
+     * as widget_items to persist the layout.
+     */
+    atuiLayoutChange;
     widgetItemsChanged() { }
     readOnlyChanged() {
         this.grid?.setStatic(!!this.read_only);
@@ -6549,12 +6559,14 @@ const AtDashboard = class {
                 if (placed) {
                     this.resizeDragEvent.emit({ id: el.id, ...placed });
                 }
-                this.atLayoutChange.emit(this.widget_items
+                const savedLayout = this.widget_items
                     .filter((item) => layout.has(item.id))
                     .map((item) => ({
                     ...item,
                     ...layout.get(item.id),
-                })));
+                }));
+                this.atLayoutChange.emit(savedLayout);
+                this.atuiLayoutChange.emit(savedLayout);
             });
         });
         this.layoutWidgets();
@@ -6720,7 +6732,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: '13d31b1601e3023baaffd9823e3ae53030e7d978', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (h("div", { key: 'bfdbe5bfb1d1dfff2db7ea1b442777f4419dffd0', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);

@@ -45,6 +45,7 @@ export declare class AtButtonGroup {
     disabled?: boolean;
     el: HTMLAtButtonGroupElement;
     private buttonGroupId;
+    private labelId;
     /**
      * When the active button is changed, this will emit the 0-based index of the active button
      */

@@ -42,8 +42,9 @@ export declare class AtDashboard {
      */
     has_fixed_columns?: boolean;
     /**
-     * Emitted when a widget's position or size changes in the grid, with the
+     * Emitted for each widget whose position or size changes in the grid, with the
      * position and size on the full 24-column grid.
+     * x and w are in 24-column units at every breakpoint.
      */
     changedItem: EventEmitter<AtICustomGridStackItem>;
     /**
@@ -64,9 +65,17 @@ export declare class AtDashboard {
     /**
      * Emitted when a widget finishes resizing or dragging, with its position and
      * size on the full 24-column grid. Widgets the grid moved out of the way are
-     * not included; save `atLayoutChange` instead.
+     * not included; save `atLayoutChange` instead. Carries only the
+     * dragged widget; to save the layout, use atuiLayoutChange, which also
+     * carries the widgets the drag pushed aside.
      */
     resizeDragEvent: EventEmitter<AtICustomGridStackItem>;
+    /**
+     * Emitted when a widget finishes resizing or dragging, with every widget's
+     * position and size in 24-column units at every breakpoint. Pass it back
+     * as widget_items to persist the layout.
+     */
+    atuiLayoutChange: EventEmitter<AtICustomGridStackItem[]>;
     widgetItemsChanged(): void;
     readOnlyChanged(): void;
     isAnimatedChanged(): void;

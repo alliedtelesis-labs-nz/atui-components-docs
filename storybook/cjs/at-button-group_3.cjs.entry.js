@@ -46,6 +46,7 @@ const AtButtonGroup = class {
     disabled;
     get el() { return index.getElement(this); }
     buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
+    labelId = `${this.buttonGroupId}-label`;
     /**
      * When the active button is changed, this will emit the 0-based index of the active button
      */
@@ -147,8 +148,8 @@ const AtButtonGroup = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '7ee1211b170441d612c7b0ef65408a3569281434', role: "radiogroup", "aria-labelledby": this.buttonGroupId }, index.h("div", { key: '784b164530522d46c25705c6879b56845e64c909', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '9aa4cd02f43c907e00ed526599f4efd00bd32399', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: 'f92d65620262245fe4fb3230da7b8af99c1e809e', label: this.label, for: this.buttonGroupId, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'ff3cc0779a39c669e90666208c62aa74d7bc827f', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), index.h("div", { key: '06618cf3dbe7a3257fb9f75d24a367489652d0eb', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, index.h("ul", { key: '871c29ccd76f2045a515c3e5b86027943d385f84', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, index.h("slot", { key: '626c859a7028211648ecd18b739d643db68390b3' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (index.h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (index.h("span", { key: 'a71447d55c4f93ea14598d0cfa1cffe4896321bb', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (index.h(index.Host, { key: 'bdabbea4bb371d85530a6007db4d0a6a52676161', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined }, index.h("div", { key: '3fd32d2273a8b9f282fdad0170f3f3d912e5e66a', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: 'a10c22030a9569e54f28634d4ca67bd2049b075d', name: "label" }), (this.label || this.info_text) && (index.h("at-form-label", { key: 'd33e7540960a55bc228b609d66a0f2909cdcd0e5', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '2611ec3851640c43720ee3c4fad5d74a93d167d5', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), index.h("div", { key: '48e9431c689f4616456320ba90b04a20eccba9bb', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, index.h("ul", { key: 'd1e0e010aa1386c2e30ec7a46a824b5e0eb900bb', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, index.h("slot", { key: '85f287f58f3e48765948d499efca44d59881c09b' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (index.h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (index.h("span", { key: '900d2110f3975561f369d4c3661ab532f9433a9f', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "disabled": [{

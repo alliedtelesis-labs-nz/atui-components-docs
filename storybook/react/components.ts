@@ -467,7 +467,8 @@ type AtDashboardEvents = {
     onAtLayoutChange: EventName<AtDashboardCustomEvent<AtICustomGridStackItem[]>>,
     onRemovedItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
     onEditItem: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
-    onResizeDragEvent: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>
+    onResizeDragEvent: EventName<AtDashboardCustomEvent<AtICustomGridStackItem>>,
+    onAtuiLayoutChange: EventName<AtDashboardCustomEvent<AtICustomGridStackItem[]>>
 };
 
 export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardEvents> = /*@__PURE__*/ createComponent<AtDashboardElement, AtDashboardEvents>({
@@ -480,7 +481,8 @@ export const AtDashboard: StencilReactComponent<AtDashboardElement, AtDashboardE
         onAtLayoutChange: 'atLayoutChange',
         onRemovedItem: 'removedItem',
         onEditItem: 'editItem',
-        onResizeDragEvent: 'resizeDragEvent'
+        onResizeDragEvent: 'resizeDragEvent',
+        onAtuiLayoutChange: 'atuiLayoutChange'
     } as AtDashboardEvents,
     defineCustomElement: defineAtDashboard
 });

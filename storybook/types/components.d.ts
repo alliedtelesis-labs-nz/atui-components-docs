@@ -4637,6 +4637,7 @@ declare global {
         "removedItem": AtICustomGridStackItem;
         "editItem": AtICustomGridStackItem;
         "resizeDragEvent": AtICustomGridStackItem;
+        "atuiLayoutChange": AtICustomGridStackItem[];
     }
     interface HTMLAtDashboardElement extends Components.AtDashboard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtDashboardElementEventMap>(type: K, listener: (this: HTMLAtDashboardElement, ev: AtDashboardCustomEvent<HTMLAtDashboardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7141,7 +7142,11 @@ declare namespace LocalJSX {
          */
         "onAtLayoutChange"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem[]>) => void;
         /**
-          * Emitted when a widget's position or size changes in the grid, with the position and size on the full 24-column grid.
+          * Emitted when a widget finishes resizing or dragging, with every widget's position and size in 24-column units at every breakpoint. Pass it back as widget_items to persist the layout.
+         */
+        "onAtuiLayoutChange"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem[]>) => void;
+        /**
+          * Emitted for each widget whose position or size changes in the grid, with the position and size on the full 24-column grid. x and w are in 24-column units at every breakpoint.
          */
         "onChangedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
@@ -7153,7 +7158,7 @@ declare namespace LocalJSX {
          */
         "onRemovedItem"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**
-          * Emitted when a widget finishes resizing or dragging, with its position and size on the full 24-column grid. Widgets the grid moved out of the way are not included; save `atLayoutChange` instead.
+          * Emitted when a widget finishes resizing or dragging, with its position and size on the full 24-column grid. Widgets the grid moved out of the way are not included; save `atLayoutChange` instead. Carries only the dragged widget; to save the layout, use atuiLayoutChange, which also carries the widgets the drag pushed aside.
          */
         "onResizeDragEvent"?: (event: AtDashboardCustomEvent<AtICustomGridStackItem>) => void;
         /**

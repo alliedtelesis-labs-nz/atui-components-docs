@@ -30,6 +30,7 @@ export declare class AtButtonSwitchComponent {
     el: HTMLElement;
     translations: any;
     private toggleId;
+    private labelId;
     /**
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */
