@@ -471,7 +471,8 @@ const AtTimeWithUnitComponent = class {
      */
     max_seconds = Number.MAX_SAFE_INTEGER;
     /**
-     * Initial time selection value
+     * Initial time selection value. Read once, on the first render: changing it
+     * afterwards does not update the relative menu.
      */
     initial_selected_time;
     /**
@@ -665,9 +666,9 @@ const AtTimeWithUnitComponent = class {
     }
     render() {
         const visibleCommonOptions = this.getVisibleCommonOptionsWithinRangeLimit();
-        return (h("div", { key: 'ede5982e10902edc748a9eb11a06054a905196dc', class: "w-panel-sm flex flex-col" }, h("div", { key: '98d49ac7e53d77ba172358a4aff647b1d5d68129', class: "grid grid-cols-[1fr_1fr] gap-8" }, h("div", { key: 'cc4699235485cd130c08e9328d273ab210549061', class: "border-muted flex flex-col gap-8 border-r p-12" }, h("h5", { key: 'c0ea29062d6036d27e9e2fbea8db8276a22c4222', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: 'de8eb26513482569ebe11142c43137354d8023eb', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '0cec172878a46e9a19f9d8fcc324d898e0c4b297', value: this.timeValue, min: 1, max: this.getMaxTimeValue(), disabled: this.disabledTimeValue, onAtuiChange: (event) => {
+        return (h("div", { key: 'd112a10f344b1eb42cef64f7f94617b426726ec2', class: "w-panel-sm flex flex-col" }, h("div", { key: '47af45c91a2aa5a07c28732068bdc60f2c7e1103', class: "grid grid-cols-[1fr_1fr] gap-8" }, h("div", { key: 'd1d0ee4433dd81d8dfbacf05ce24b59a5f4b6707', class: "border-muted flex flex-col gap-8 border-r p-12" }, h("h5", { key: '70bbe69b2afb68791fbe5540cfaaecd9ba49652d', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: 'd95443734686a4ec7a59225263d1d24b2d605f09', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '105b45c72640b4e3166f39ee211b40d9ec542d19', value: this.timeValue, min: 1, max: this.getMaxTimeValue(), disabled: this.disabledTimeValue, onAtuiChange: (event) => {
                 this.timeValue = event.detail;
-            } }), h("at-select", { key: '7ad8c72a814e6e67f497a978c0b85b6d34b537d3', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
+            } }), h("at-select", { key: 'bc621dc5d9b8ff8d492cf26525c8e94634cc03da', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => ({
                     value: option,
                     label: this.translations.ATUI
@@ -675,12 +676,12 @@ const AtTimeWithUnitComponent = class {
                 }))
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
             this.selectedTime?.unit && (h("span", { class: "text-secondary text-sm font-normal" }, this.startDate.toLocaleString(), " \u2013", ' ', this.translations?.ATUI?.TIME?.NOW ||
-            'Now'))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-secondary text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), visibleCommonOptions.length > 0 && (h("div", { key: '48b82cbd308f7fd4d3fd6248ec97086755e8a341', class: "flex flex-col gap-8 p-12" }, h("h5", { key: 'daa2a2f507c4d4ea5a66980be755d5ead180c985', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: 'b05db0c3d03007caffe067084e7515070cef7364', class: "flex flex-col content-stretch", "data-name": "time-with-unit-common-options" }, visibleCommonOptions.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
+            'Now'))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-secondary text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), visibleCommonOptions.length > 0 && (h("div", { key: 'a2ad338eeb71ff2088becd224bd69a01e24106d1', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '954db10f1cedce53dd856c7c722fb97554b9860d', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '711cc7b8fefb943de8e361ed20fdbf36e75dcdeb', class: "flex flex-col content-stretch", "data-name": "time-with-unit-common-options" }, visibleCommonOptions.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
                 // Native buttons already fire click on
                 // Enter/Space; only stop the key from
                 // reaching ancestor handlers.
                 event.stopPropagation();
-            }, tabindex: 0, class: `focus-visible:ring-active-glow cursor-pointer rounded-sm px-[6px] py-2 text-left focus-visible:ring ${this.isSelectedOption(timerange) ? 'bg-active-background text-foreground' : 'hover:bg-surface-2'}` }, h("small", null, atGetRelativeRangeLabel(timerange, this.translations))))))))), h("footer", { key: '5bd0b6f467893ce0a3d6466752db869f55bbc0d2', class: "border-muted flex justify-between border-t p-8" }, h("at-button", { key: 'f2aaeac1adc80fbae1fde1a3b88a371152961797', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '30c0d5e571a8f702bbe81578ae761dfed6fc6f61', class: "flex gap-8" }, h("at-button", { key: '3a4c49e37075a8a3e7734ee533f51c2da90409cd', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '6d207170b70a30790be0ae42efdd0f21c2ee1b49', "data-name": "apply", label: this.translations.ATUI.APPLY, disabled: !!this.errorText, onAtuiClick: () => this.handleSubmit() })))));
+            }, tabindex: 0, class: `focus-visible:ring-active-glow cursor-pointer rounded-sm px-[6px] py-2 text-left focus-visible:ring ${this.isSelectedOption(timerange) ? 'bg-active-background text-foreground' : 'hover:bg-surface-2'}` }, h("small", null, atGetRelativeRangeLabel(timerange, this.translations))))))))), h("footer", { key: 'dd6614ed381987c9dd113c2ce1494dbb0f690b66', class: "border-muted flex justify-between border-t p-8" }, h("at-button", { key: 'bc69640d76c0b1e3a75f990634d7d389986446ea', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '480061423144ceacfa60239d748a8b27fe1e8e34', class: "flex gap-8" }, h("at-button", { key: '976d51d4c770ff59d89bb2d6d3ecf9404501a490', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'cc916e9c1726d6cffc6a9f48c66201824d71305b', "data-name": "apply", label: this.translations.ATUI.APPLY, disabled: !!this.errorText, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get watchers() { return {
         "timeValue": [{

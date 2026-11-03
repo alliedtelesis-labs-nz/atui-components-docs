@@ -28,7 +28,8 @@ export declare class AtTimeWithUnitComponent {
      */
     max_seconds: number;
     /**
-     * Initial time selection value
+     * Initial time selection value. Read once, on the first render: changing it
+     * afterwards does not update the relative menu.
      */
     initial_selected_time: AtITimeWithUnit | TimeRangeDisplay.ALL;
     /**
