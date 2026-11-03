@@ -199,10 +199,10 @@ export class AtTimeRangeComponent {
             } }, presets.map((preset, idx) => (h("at-button-group-option", { key: idx, value: `${preset.unit}-${preset.value}`, label: `${preset.value}${this.getShortUnitDisplay(preset)}` }))), h("at-button-group-option", { is_active: !!this.displayedTimeRange?.custom, "data-ignore-selection": true, "data-menu": `${this.instanceId}-abs` }, h("at-icon", { slot: "icon", name: "schedule" }))));
     }
     renderRelativeTimeMenu() {
-        return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.getLowerLimit(), min_seconds: this.minSeconds, initial_selected_time: this.selected_time_range?.selected ===
+        return (h("at-menu", { ref: (el) => (this.relativeTimeMenuEl = el), trigger: "click", width: "fit-content", autoclose: false, align: "end", trigger_id: `${this.instanceId}-rel` }, h("at-time-with-unit", { units: this.units, common_options: this.presets, min_date: this.getLowerLimit(), min_seconds: this.minSeconds, initial_selected_time: this.displayedTimeRange?.selected ===
                 TimeRangeDisplay.CUSTOM
                 ? TimeRangeDisplay.ALL
-                : this.selected_time_range?.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => {
+                : this.displayedTimeRange?.selected, custom_error_message: this.custom_error_message, show_all_time: this.show_all_time, onAtuiSubmit: (event) => {
                 this.onChangeRelativeTime(event.detail);
                 this.relativeTimeMenuEl?.closeMenu();
             }, onAtuiCancel: () => this.relativeTimeMenuEl?.closeMenu() })));
@@ -210,9 +210,9 @@ export class AtTimeRangeComponent {
     renderAbsoluteTimeMenu() {
         return (h("at-menu", { ref: (el) => (this.absoluteTimeMenuEl = el), trigger: "click", width: "fit-content", align: "end", autoclose: false, trigger_id: `${this.instanceId}-abs`, onAtuiMenuStateChange: (event) => {
                 this.onAbsoluteMenuStateChange(event.detail);
-            } }, h("at-custom-time-range", { ref: (el) => (this.absoluteTimeRangeEl = el), min_date: this.getLowerLimit(), max_date: this.absoluteMaxDate, default_to_date: this.defaultToDate, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
-                ?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.selected_time_range)
-                ?.toDate, lock_end_date_to_now: this.selected_time_range?.custom?.lockEndDateToNow, onAtuiSubmit: (event) => {
+            } }, h("at-custom-time-range", { ref: (el) => (this.absoluteTimeRangeEl = el), min_date: this.getLowerLimit(), max_date: this.absoluteMaxDate, default_to_date: this.defaultToDate, default_from_date: this.defaultFromDate, from_date_value: this.getCustomStartAndEndDate(this.displayedTimeRange)
+                ?.fromDate, to_date_value: this.getCustomStartAndEndDate(this.displayedTimeRange)
+                ?.toDate, lock_end_date_to_now: this.displayedTimeRange?.custom?.lockEndDateToNow, onAtuiSubmit: (event) => {
                 this.absoluteTimeApplied = true;
                 this.onChangeCustomTime(event.detail);
                 this.absoluteTimeMenuEl?.closeMenu();
