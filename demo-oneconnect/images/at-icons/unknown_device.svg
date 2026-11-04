@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 50 40">
+  <title>Unidentified device</title>
+  <!--
+    The picture an unrecognised device gets: a box with no front panel.
+
+    Deliberately featureless. Every other drawing in this set is identified by
+    what is on its face - port rows, antennae, a DIN-rail profile - so a face
+    with nothing on it is the one honest thing to draw for a chassis we cannot
+    name, and it borrows no channel that already means something else. It is
+    not a question mark: the map spends that glyph on a device whose *status*
+    could not be read (g6-node-visuals.ts), and a second reading of the same
+    mark would make the two indistinguishable.
+
+    Taller and squarer than any real entry here, so it does not read as the 1U
+    switch at node size. Colours are the set's own. Paths and rects only, no
+    text: these load through an <img>, where fonts do not resolve.
+  -->
+  <g fill="#333333">
+    <rect x="11" y="33" width="5.5" height="2.6" rx="0.6" />
+    <rect x="33.5" y="33" width="5.5" height="2.6" rx="0.6" />
+  </g>
+  <rect x="5.75" y="6.75" width="38.5" height="26.5" rx="3" fill="#ededeb" />
+  <path d="M 5.75,14 L 5.75,9.75 A 3,3 0 0 1 8.75,6.75 L 41.25,6.75 A 3,3 0 0 1 44.25,9.75 L 44.25,14 Z" fill="#e2e2e0" />
+  <path d="M 5.75,14 L 44.25,14" stroke="#999996" stroke-width="1" />
+  <rect x="5.75" y="6.75" width="38.5" height="26.5" rx="3" fill="none" stroke="#333333" stroke-width="1.5" />
+</svg>
