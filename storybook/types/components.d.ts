@@ -3771,7 +3771,7 @@ export namespace Components {
          */
         "custom_error_message": any;
         /**
-          * Initial time selection value. Read once, on the first render: changing it afterwards does not update the relative menu.
+          * Initial time selection value. It sets the selection on the first render. Changing it later does not move the current selection, but Reset and Cancel restore its latest value.
          */
         "initial_selected_time": AtITimeWithUnit | TimeRangeDisplay.ALL;
         /**
@@ -9894,7 +9894,7 @@ declare namespace LocalJSX {
          */
         "custom_error_message"?: any;
         /**
-          * Initial time selection value. Read once, on the first render: changing it afterwards does not update the relative menu.
+          * Initial time selection value. It sets the selection on the first render. Changing it later does not move the current selection, but Reset and Cancel restore its latest value.
          */
         "initial_selected_time"?: AtITimeWithUnit | TimeRangeDisplay.ALL;
         /**

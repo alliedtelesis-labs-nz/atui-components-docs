@@ -31,8 +31,9 @@ export class AtTimeWithUnitComponent {
      */
     max_seconds = Number.MAX_SAFE_INTEGER;
     /**
-     * Initial time selection value. Read once, on the first render: changing it
-     * afterwards does not update the relative menu.
+     * Initial time selection value. It sets the selection on the first render.
+     * Changing it later does not move the current selection, but Reset and
+     * Cancel restore its latest value.
      */
     initial_selected_time;
     /**
@@ -226,9 +227,9 @@ export class AtTimeWithUnitComponent {
     }
     render() {
         const visibleCommonOptions = this.getVisibleCommonOptionsWithinRangeLimit();
-        return (h("div", { key: 'd112a10f344b1eb42cef64f7f94617b426726ec2', class: "w-panel-sm flex flex-col" }, h("div", { key: '47af45c91a2aa5a07c28732068bdc60f2c7e1103', class: "grid grid-cols-[1fr_1fr] gap-8" }, h("div", { key: 'd1d0ee4433dd81d8dfbacf05ce24b59a5f4b6707', class: "border-muted flex flex-col gap-8 border-r p-12" }, h("h5", { key: '70bbe69b2afb68791fbe5540cfaaecd9ba49652d', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: 'd95443734686a4ec7a59225263d1d24b2d605f09', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '105b45c72640b4e3166f39ee211b40d9ec542d19', value: this.timeValue, min: 1, max: this.getMaxTimeValue(), disabled: this.disabledTimeValue, onAtuiChange: (event) => {
+        return (h("div", { key: '9a41ae0a4f58b28473b77f5ba96dd2344ed628f3', class: "w-panel-sm flex flex-col" }, h("div", { key: 'fcf8d70511ed3d78071880fdf33c33f2f56a229e', class: "grid grid-cols-[1fr_1fr] gap-8" }, h("div", { key: 'a79367726dacdc79418ea7eb75d153c38515a610', class: "border-muted flex flex-col gap-8 border-r p-12" }, h("h5", { key: 'bf4665d1cc0a4a189fdca4ae65bcc5a0ce512e42', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.SELECT_RELATIVE_TIME), h("div", { key: '37f01f453d9ac0291ad865fb213e03ece6840f2a', class: "flex flex-col gap-8" }, h("at-input-numeric", { key: '8fe8afeaa6f69524f7d4da0c2b17af36de0c64f2', value: this.timeValue, min: 1, max: this.getMaxTimeValue(), disabled: this.disabledTimeValue, onAtuiChange: (event) => {
                 this.timeValue = event.detail;
-            } }), h("at-select", { key: 'bc621dc5d9b8ff8d492cf26525c8e94634cc03da', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
+            } }), h("at-select", { key: '13058971e4d38c9ad2e32f5c6aaca8abd0869f89', class: "flex-fill", value: this.timeUnit, options: this.dropdownOptions
                 ? this.dropdownOptions.map((option) => ({
                     value: option,
                     label: this.translations.ATUI
@@ -236,12 +237,12 @@ export class AtTimeWithUnitComponent {
                 }))
                 : null, onAtuiChange: (event) => this.handleSelectChange(event) })), this.errorText ? (h(Fragment, null, h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error" }, this.errorText), this.secondaryErrorText && (h("span", { class: "text-error text-sm", "data-name": "time-with-unit-error-secondary" }, this.secondaryErrorText)))) : this.selectedTime !== TimeRangeDisplay.ALL ? (this.timeValue &&
             this.selectedTime?.unit && (h("span", { class: "text-secondary text-sm font-normal" }, this.startDate.toLocaleString(), " \u2013", ' ', this.translations?.ATUI?.TIME?.NOW ||
-            'Now'))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-secondary text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), visibleCommonOptions.length > 0 && (h("div", { key: 'a2ad338eeb71ff2088becd224bd69a01e24106d1', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '954db10f1cedce53dd856c7c722fb97554b9860d', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: '711cc7b8fefb943de8e361ed20fdbf36e75dcdeb', class: "flex flex-col content-stretch", "data-name": "time-with-unit-common-options" }, visibleCommonOptions.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
+            'Now'))) : (this.selectedTime === TimeRangeDisplay.ALL && (h("span", { class: "text-secondary text-sm font-normal" }, this.translations.ATUI.TIME.ALL_TIME_LABEL)))), visibleCommonOptions.length > 0 && (h("div", { key: '585c7346623f40ce85b0ff06f1ec378e09ea1a0a', class: "flex flex-col gap-8 p-12" }, h("h5", { key: '2973838c74d8bf877b9484e08af1799ac5a5c532', class: "text-h5 text-foreground mb-8 font-medium" }, this.translations.ATUI.TIME.COMMONLY_USED), h("div", { key: 'd8c4e15ab1cea07e0e3e756f69c8fa0a4833e839', class: "flex flex-col content-stretch", "data-name": "time-with-unit-common-options" }, visibleCommonOptions.map((timerange) => (h("button", { onClick: () => this.updateSelectedRange(timerange), onKeyDown: (event) => {
                 // Native buttons already fire click on
                 // Enter/Space; only stop the key from
                 // reaching ancestor handlers.
                 event.stopPropagation();
-            }, tabindex: 0, class: `focus-visible:ring-active-glow cursor-pointer rounded-sm px-[6px] py-2 text-left focus-visible:ring ${this.isSelectedOption(timerange) ? 'bg-active-background text-foreground' : 'hover:bg-surface-2'}` }, h("small", null, atGetRelativeRangeLabel(timerange, this.translations))))))))), h("footer", { key: 'dd6614ed381987c9dd113c2ce1494dbb0f690b66', class: "border-muted flex justify-between border-t p-8" }, h("at-button", { key: 'bc69640d76c0b1e3a75f990634d7d389986446ea', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '480061423144ceacfa60239d748a8b27fe1e8e34', class: "flex gap-8" }, h("at-button", { key: '976d51d4c770ff59d89bb2d6d3ecf9404501a490', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: 'cc916e9c1726d6cffc6a9f48c66201824d71305b', "data-name": "apply", label: this.translations.ATUI.APPLY, disabled: !!this.errorText, onAtuiClick: () => this.handleSubmit() })))));
+            }, tabindex: 0, class: `focus-visible:ring-active-glow cursor-pointer rounded-sm px-[6px] py-2 text-left focus-visible:ring ${this.isSelectedOption(timerange) ? 'bg-active-background text-foreground' : 'hover:bg-surface-2'}` }, h("small", null, atGetRelativeRangeLabel(timerange, this.translations))))))))), h("footer", { key: '99a276c0d526416c9b0e0a4fb31d7f727c08c5bc', class: "border-muted flex justify-between border-t p-8" }, h("at-button", { key: '4a708f53a6f4d39843516bb0c4d278b893f5f597', type: "secondaryOutline", "data-name": "clear", label: this.translations.ATUI.RESET, onAtuiClick: () => this.clearSelection() }), h("div", { key: '21e8e1d888ee20c4416803d15e9ad17ea644b14c', class: "flex gap-8" }, h("at-button", { key: '5fd91ca46a6564d98071dcdbbc33abe0fb1b477a', type: "secondaryOutline", "data-name": "cancel", label: this.translations.ATUI.CANCEL, onAtuiClick: () => this.handleCancel() }), h("at-button", { key: '4cd3106cb355ee70ac21a9dda90d7274ac90aafb', "data-name": "apply", label: this.translations.ATUI.APPLY, disabled: !!this.errorText, onAtuiClick: () => this.handleSubmit() })))));
     }
     static get is() { return "at-time-with-unit"; }
     static get properties() {
@@ -382,7 +383,7 @@ export class AtTimeWithUnitComponent {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Initial time selection value. Read once, on the first render: changing it\nafterwards does not update the relative menu."
+                    "text": "Initial time selection value. It sets the selection on the first render.\nChanging it later does not move the current selection, but Reset and\nCancel restore its latest value."
                 },
                 "getter": false,
                 "setter": false,
