@@ -281,7 +281,7 @@ const AtSidebarComponent = class {
     /**
      * Bridges isOpen (however it changed — trigger click or provider toggle) onto the resize
      * styling: closed means the width this.sidebarEl carries is whatever the ordinary
-     * collapse-icon/-offcanvas/-none CSS says, not a stale dragged flex-basis, so the inline
+     * collapse-icon/-offcanvas/-none CSS says, not a stale dragged width, so the inline
      * override is cleared rather than left fighting that CSS. Reopening restores the last
      * dragged/persisted width.
      */
@@ -485,7 +485,7 @@ const AtSidebarComponent = class {
         this.resizeController = undefined;
         this.resizePanelsRegistered = false;
         if (this.sidebarEl) {
-            this.sidebarEl.style.flex = '';
+            this.sidebarEl.style.width = '';
             this.sidebarEl.style.minWidth = '';
             this.sidebarEl.style.maxWidth = '';
         }
@@ -567,7 +567,7 @@ const AtSidebarComponent = class {
             maxSize: 100 - minPercent,
         });
         // updateBounds only calls onChange (and so, indirectly, syncResizeStyling) when the new
-        // bounds actually force panel.size to clamp — but syncResizeStyling's own px flex-basis is
+        // bounds actually force panel.size to clamp — but syncResizeStyling's own px width is
         // a function of groupSizePx too, which just changed (this only runs from the container's
         // own ResizeObserver). A resize that doesn't force a clamp would otherwise leave the
         // sidebar's rendered width frozen at its old, now-stale pixel value, so this resyncs
@@ -586,37 +586,32 @@ const AtSidebarComponent = class {
         }
     }
     /**
-     * Closed means whatever width the ordinary collapse-icon/-offcanvas/-none CSS gives .sidebar.
-     * An inline flex-basis (or min/max-width) left over from being open would out-specificity that
-     * CSS and get stuck showing a stale expanded width instead — or, at mount with default_open
-     * false, break the collapsed width from the very first render — so all three are cleared
-     * whenever closed rather than left in place, and only (re)applied once actually open.
+     * When closed, the collapse-icon/-offcanvas/-none CSS sets the width. Inline width,
+     * min-width and max-width would override it, so they are set only while open.
      *
-     * flex-basis in PIXELS, not the controller's own percentage — deliberately. Standalone,
-     * .sidebar's immediate flex container is this.el, the same box groupSizePx measures, so a
-     * percentage would resolve fine there. Nested in at-sidebar-provider, though, .sidebar's
-     * immediate flex container is the at-sidebar HOST, which at-sidebar-provider.scss sizes as
-     * `width: auto` (shrink-to-fit) — and per the flex spec, a percentage flex-basis against a
-     * flex container with an indefinite size resolves as if it were 0, clamped back up only by
-     * min-width. A pixel value has no such ambiguity: it's definite regardless of which box it's
-     * read against, so the host's own shrink-to-fit sizing (and .sidebar's rendered width) both
-     * end up correct in either arrangement.
+     * width, not flex-basis: .sidebar has `flex: 0 0 auto`, so width also sets its flex-basis.
+     * In at-sidebar-provider the host is shrink-to-fit, and Firefox sizes it from .sidebar's
+     * width only. With flex-basis, the host stays at the token width and .sidebar overlaps
+     * at-sidebar-inset.
+     *
+     * px, because a percentage has no definite base in a shrink-to-fit host. refreshResizeBounds
+     * calls this again when the container resizes.
      */
     syncResizeStyling() {
         if (!this.sidebarEl)
             return;
         const panel = this.resizeController?.getPanel(this.resizePanelId);
         if (!this.isOpen) {
-            this.sidebarEl.style.flex = '';
+            this.sidebarEl.style.width = '';
             this.sidebarEl.style.minWidth = '';
             this.sidebarEl.style.maxWidth = '';
         }
         else {
             this.sidebarEl.style.minWidth = this.min_width;
             this.sidebarEl.style.maxWidth = this.max_width;
-            this.sidebarEl.style.flex =
+            this.sidebarEl.style.width =
                 panel?.size != null
-                    ? `0 0 ${(panel.size / 100) * this.groupSizePx()}px`
+                    ? `${(panel.size / 100) * this.groupSizePx()}px`
                     : '';
         }
         // Direct DOM writes rather than a re-render, since this can run on every step of a drag —
