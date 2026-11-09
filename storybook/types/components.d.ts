@@ -354,7 +354,7 @@ export namespace Components {
     }
     /**
      * @category Form Controls
-     * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
+     * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
      */
     interface AtButtonGroup {
         /**
@@ -378,6 +378,11 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Lets each option toggle on and off independently. The selection is held in `values` and reported by `atuiValuesChange`, and the group is announced as a group of checkboxes.
+          * @default false
+         */
+        "multiple": boolean;
+        /**
           * List of options to be displayed on the button group.
           * @default []
          */
@@ -386,6 +391,11 @@ export namespace Components {
           * Sets the current active button
          */
         "value": string;
+        /**
+          * The selected option values when `multiple` is set.
+          * @default []
+         */
+        "values": string[];
     }
     /**
      * @category Form Controls
@@ -4326,10 +4336,11 @@ declare global {
     interface HTMLAtButtonGroupElementEventMap {
         "atuiIndexChange": number;
         "atuiChange": string;
+        "atuiValuesChange": string[];
     }
     /**
      * @category Form Controls
-     * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
+     * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
      */
     interface HTMLAtButtonGroupElement extends Components.AtButtonGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtButtonGroupElementEventMap>(type: K, listener: (this: HTMLAtButtonGroupElement, ev: AtButtonGroupCustomEvent<HTMLAtButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6401,7 +6412,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Form Controls
-     * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
+     * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
      */
     interface AtButtonGroup {
         /**
@@ -6425,6 +6436,11 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Lets each option toggle on and off independently. The selection is held in `values` and reported by `atuiValuesChange`, and the group is announced as a group of checkboxes.
+          * @default false
+         */
+        "multiple"?: boolean;
+        /**
           * When the active button is changed, this will emit the text value of the active button
          */
         "onAtuiChange"?: (event: AtButtonGroupCustomEvent<string>) => void;
@@ -6432,6 +6448,10 @@ declare namespace LocalJSX {
           * When the active button is changed, this will emit the 0-based index of the active button
          */
         "onAtuiIndexChange"?: (event: AtButtonGroupCustomEvent<number>) => void;
+        /**
+          * When `multiple` is set and an option is toggled, this will emit the selected values in option order
+         */
+        "onAtuiValuesChange"?: (event: AtButtonGroupCustomEvent<string[]>) => void;
         /**
           * List of options to be displayed on the button group.
           * @default []
@@ -6441,6 +6461,11 @@ declare namespace LocalJSX {
           * Sets the current active button
          */
         "value"?: string;
+        /**
+          * The selected option values when `multiple` is set.
+          * @default []
+         */
+        "values"?: string[];
     }
     /**
      * @category Form Controls
@@ -10146,6 +10171,7 @@ declare namespace LocalJSX {
         "error_text": string;
         "value": string;
         "disabled": boolean;
+        "multiple": boolean;
     }
     interface AtButtonGroupOptionAttributes {
         "value": string;
@@ -10970,7 +10996,7 @@ declare module "@stencil/core" {
             "at-button": LocalJSX.IntrinsicElements["at-button"] & JSXBase.HTMLAttributes<HTMLAtButtonElement>;
             /**
              * @category Form Controls
-             * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
+             * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
              */
             "at-button-group": LocalJSX.IntrinsicElements["at-button-group"] & JSXBase.HTMLAttributes<HTMLAtButtonGroupElement>;
             /**

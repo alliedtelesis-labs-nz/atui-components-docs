@@ -33,6 +33,7 @@ export declare class AtButtonGroupOption {
     host_disabled: boolean;
     private provider;
     componentDidLoad(): Promise<void>;
+    private get inMultipleGroup();
     handleClick(event: Event): void;
     handleKeydown(event: KeyboardEvent): void;
     private hasIcon;

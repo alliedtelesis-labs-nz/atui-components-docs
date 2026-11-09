@@ -227,7 +227,8 @@ export const AtButton: StencilReactComponent<AtButtonElement, AtButtonEvents> = 
 
 type AtButtonGroupEvents = {
     onAtuiIndexChange: EventName<CustomEvent<number>>,
-    onAtuiChange: EventName<CustomEvent<string>>
+    onAtuiChange: EventName<CustomEvent<string>>,
+    onAtuiValuesChange: EventName<CustomEvent<string[]>>
 };
 
 export const AtButtonGroup: StencilReactComponent<AtButtonGroupElement, AtButtonGroupEvents> = /*@__PURE__*/ createComponent<AtButtonGroupElement, AtButtonGroupEvents>({
@@ -237,7 +238,8 @@ export const AtButtonGroup: StencilReactComponent<AtButtonGroupElement, AtButton
     react: React,
     events: {
         onAtuiIndexChange: 'atuiIndexChange',
-        onAtuiChange: 'atuiChange'
+        onAtuiChange: 'atuiChange',
+        onAtuiValuesChange: 'atuiValuesChange'
     } as AtButtonGroupEvents,
     defineCustomElement: defineAtButtonGroup
 });

@@ -8,7 +8,7 @@ export interface AtIButtonGroupOption {
 }
 /**
  * @category Form Controls
- * @description A button group component that allows single or multiple selection from a set of toggle options. Provides a cohesive way to group related action buttons with shared styling and behavior.
+ * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
  *
  * @slot - used to place your own at-button-group-options if 'options' prop isn't set. Parent will manage button selection and emit change events.
  */
@@ -43,6 +43,15 @@ export declare class AtButtonGroup {
      * Disables the button group and prevents interaction
      */
     disabled?: boolean;
+    /**
+     * Lets each option toggle on and off independently. The selection is held in `values` and
+     * reported by `atuiValuesChange`, and the group is announced as a group of checkboxes.
+     */
+    multiple: boolean;
+    /**
+     * The selected option values when `multiple` is set.
+     */
+    values: string[];
     el: HTMLAtButtonGroupElement;
     private buttonGroupId;
     private labelId;
@@ -54,6 +63,10 @@ export declare class AtButtonGroup {
      * When the active button is changed, this will emit the text value of the active button
      */
     atuiChange: EventEmitter<string>;
+    /**
+     * When `multiple` is set and an option is toggled, this will emit the selected values in option order
+     */
+    atuiValuesChange: EventEmitter<string[]>;
     buttonEls: HTMLAtButtonGroupOptionElement[];
     /**
      * What each slotted option asked for on its own, so the group's `disabled`
@@ -63,6 +76,10 @@ export declare class AtButtonGroup {
     private optionOwnDisabled;
     handleDisabledChange(): void;
     handleValueChange(newValue: any): void;
+    handleValuesChange(): void;
+    handleMultipleChange(): void;
+    private isSelected;
+    private syncMultipleSelection;
     componentDidLoad(): void;
     getButtonElements(): HTMLAtButtonGroupOptionElement[];
     initializeButtons(): void;
@@ -72,5 +89,7 @@ export declare class AtButtonGroup {
     private isBoundValue;
     get getButtonGroupOptions(): any;
     handleChange(event: CustomEvent, optionValue: any, index: number): void;
+    private optionOrder;
+    private toggleValue;
     render(): any;
 }

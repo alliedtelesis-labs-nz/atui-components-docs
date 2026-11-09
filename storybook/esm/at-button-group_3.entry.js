@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host, F as Fragment } from './index-DR-CD1o0.js';
+import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h, H as Host, F as Fragment } from './index-DR-CD1o0.js';
 import { a as AtTimeDateUtil, D as Duration, d as dayjs, T as TimeExtraOptions } from './at-time-date.util-Bfdzn_RG.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-H5gcGi8Y.js';
@@ -11,6 +11,7 @@ const AtButtonGroup = class {
         registerInstance(this, hostRef);
         this.atuiIndexChange = createEvent(this, "atuiIndexChange", 7);
         this.atuiChange = createEvent(this, "atuiChange", 7);
+        this.atuiValuesChange = createEvent(this, "atuiValuesChange", 7);
     }
     /**
      * Label for button group.
@@ -42,6 +43,15 @@ const AtButtonGroup = class {
      * Disables the button group and prevents interaction
      */
     disabled;
+    /**
+     * Lets each option toggle on and off independently. The selection is held in `values` and
+     * reported by `atuiValuesChange`, and the group is announced as a group of checkboxes.
+     */
+    multiple = false;
+    /**
+     * The selected option values when `multiple` is set.
+     */
+    values = [];
     get el() { return getElement(this); }
     buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
     labelId = `${this.buttonGroupId}-label`;
@@ -53,6 +63,10 @@ const AtButtonGroup = class {
      * When the active button is changed, this will emit the text value of the active button
      */
     atuiChange;
+    /**
+     * When `multiple` is set and an option is toggled, this will emit the selected values in option order
+     */
+    atuiValuesChange;
     buttonEls = [];
     /**
      * What each slotted option asked for on its own, so the group's `disabled`
@@ -64,11 +78,33 @@ const AtButtonGroup = class {
         this.applyDisabledToButtons();
     }
     handleValueChange(newValue) {
+        if (this.multiple)
+            return;
         if (!this.options || this.options.length === 0) {
             this.buttonEls.forEach((child) => {
                 child.is_active = child.value === newValue;
             });
         }
+    }
+    handleValuesChange() {
+        if (!this.multiple)
+            return;
+        if (!this.options || this.options.length === 0) {
+            this.syncMultipleSelection();
+        }
+    }
+    handleMultipleChange() {
+        this.buttonEls?.forEach((child) => forceUpdate(child));
+        if (this.multiple)
+            this.syncMultipleSelection();
+    }
+    isSelected(optionValue) {
+        return (this.values ?? []).includes(optionValue);
+    }
+    syncMultipleSelection() {
+        this.buttonEls?.forEach((child) => {
+            child.is_active = this.isSelected(child.value);
+        });
     }
     componentDidLoad() {
         if (!this.options || this.options.length === 0) {
@@ -91,7 +127,10 @@ const AtButtonGroup = class {
                     : typeof buttonEl.value === 'string'
                         ? buttonEl.value
                         : undefined;
-            if (this.value !== undefined && this.value !== null) {
+            if (this.multiple) {
+                buttonEl.is_active = this.isSelected(buttonEl.value);
+            }
+            else if (this.value !== undefined && this.value !== null) {
                 buttonEl.is_active = this.value === buttonEl.value;
             }
             if (!this.optionOwnDisabled.has(buttonEl)) {
@@ -112,6 +151,8 @@ const AtButtonGroup = class {
         });
     }
     activateOptionButton() {
+        if (this.multiple)
+            return;
         const enabledButtons = this.buttonEls.filter((child) => !child.disabled);
         const initialButton = enabledButtons.find((child) => this.isBoundValue(child.value)) ||
             enabledButtons.find((child) => child.is_active) ||
@@ -132,12 +173,18 @@ const AtButtonGroup = class {
                     ? option.label
                     : option.icon
                         ? ''
-                        : option.value, is_active: this.value === option.value, disabled: option.disabled || this.disabled, onAtuiClick: (event) => this.handleChange(event, option.value, index) }, option.icon && (h("at-icon", { slot: "icon", name: option.icon })))));
+                        : option.value, is_active: this.multiple
+                    ? this.isSelected(option.value)
+                    : this.value === option.value, disabled: option.disabled || this.disabled, onAtuiClick: (event) => this.handleChange(event, option.value, index) }, option.icon && (h("at-icon", { slot: "icon", name: option.icon })))));
         }
         return null;
     }
     handleChange(event, optionValue, index) {
         event.stopPropagation();
+        if (this.multiple) {
+            this.toggleValue(optionValue, index);
+            return;
+        }
         this.value = optionValue;
         this.atuiChange.emit(this.value);
         this.atuiIndexChange.emit(index);
@@ -145,9 +192,23 @@ const AtButtonGroup = class {
             child.is_active = child.value === optionValue;
         });
     }
+    optionOrder() {
+        return this.options && this.options.length > 0
+            ? this.options.map((option) => option.value)
+            : this.buttonEls.map((child) => child.value);
+    }
+    toggleValue(optionValue, index) {
+        const next = this.isSelected(optionValue)
+            ? this.values.filter((value) => value !== optionValue)
+            : [...(this.values ?? []), optionValue];
+        this.values = this.optionOrder().filter((value) => next.includes(value));
+        this.syncMultipleSelection();
+        this.atuiValuesChange.emit(this.values);
+        this.atuiIndexChange.emit(index);
+    }
     render() {
-        return (h(Host, { key: 'bdabbea4bb371d85530a6007db4d0a6a52676161', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined }, h("div", { key: '3fd32d2273a8b9f282fdad0170f3f3d912e5e66a', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'a10c22030a9569e54f28634d4ca67bd2049b075d', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'd33e7540960a55bc228b609d66a0f2909cdcd0e5', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '2611ec3851640c43720ee3c4fad5d74a93d167d5', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '48e9431c689f4616456320ba90b04a20eccba9bb', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: 'd1e0e010aa1386c2e30ec7a46a824b5e0eb900bb', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '85f287f58f3e48765948d499efca44d59881c09b' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '900d2110f3975561f369d4c3661ab532f9433a9f', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: 'b8872e3057c7ce2c2aefccb55889bc21439bc5e3', role: this.multiple ? 'group' : 'radiogroup', "aria-labelledby": this.label ? this.labelId : undefined }, h("div", { key: 'e4f47f48429789294135382c7c3bf789e334c128', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'd401e7775b6a51985514efd5a7f7eb96c964ccd3', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'fe0bca600b980fab580e5936f159e31f16608670', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: 'b6eac802fc890fd4c83fc49e37459c59d4063e51', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '7f738488dcf9db147d6b9f1cecc3f3ed40296e6b', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '144bbdfefcf3e6af298ccc021da9f35828aa1409', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '72b3fb86d0c377c9df51f066eccd0553c43c0564' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: 'c3d0c37afc4f83d5bd38d7038a0c3901e2fffdbf', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "disabled": [{
@@ -155,6 +216,12 @@ const AtButtonGroup = class {
             }],
         "value": [{
                 "handleValueChange": 1
+            }],
+        "values": [{
+                "handleValuesChange": 1
+            }],
+        "multiple": [{
+                "handleMultipleChange": 1
             }]
     }; }
 };

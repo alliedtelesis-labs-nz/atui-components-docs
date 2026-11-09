@@ -6,6 +6,7 @@ const Template = (args) => `
     info_text="${args.info_text ?? ''}"
     ${args.invalid ? 'invalid' : ''}
     ${args.disabled ? 'disabled' : ''}
+    ${args.multiple ? 'multiple' : ''}
 />
 ${args.options
     ? `
@@ -31,4 +32,19 @@ Default.args = {
     error_text: 'Error',
     disabled: false,
     invalid: false,
+};
+export const Multiple = Template.bind({});
+Multiple.args = {
+    options: [
+        { value: 'mon', label: 'Mon' },
+        { value: 'tue', label: 'Tue' },
+        { value: 'wed', label: 'Wed' },
+        { value: 'thu', label: 'Thu' },
+        { value: 'fri', label: 'Fri' },
+        { value: 'sat', label: 'Sat' },
+        { value: 'sun', label: 'Sun' },
+    ],
+    label: 'Days',
+    hint_text: 'Pick every day the window runs',
+    multiple: true,
 };

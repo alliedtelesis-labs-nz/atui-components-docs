@@ -53,10 +53,14 @@ export class AtButtonGroupOption {
         this.provider = this.el.closest('at-button-group');
         this.host_disabled = this.provider?.disabled;
     }
+    get inMultipleGroup() {
+        return !!this.el.closest('at-button-group')?.multiple;
+    }
     handleClick(event) {
         if (this.disabled || this.host_disabled)
             return;
-        if (!this.el.hasAttribute('data-ignore-selection')) {
+        if (!this.el.hasAttribute('data-ignore-selection') &&
+            !this.inMultipleGroup) {
             this.is_active = true;
         }
         this.atuiClick.emit({
@@ -84,7 +88,7 @@ export class AtButtonGroupOption {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (h(Host, { key: '60b000dbb93e78b5241bb39fba7906b5c3f300d4', class: classname, role: "radio", tabindex: 0, "aria-checked": this.is_active, "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '6c9052b24aae185363af7a2aef1bb834707f427a', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '2382536296815e33f8085e6d202e834db47e5a57' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '43b114d749d5e5e7accc1ae518aa05504b46f9af', name: "after" })));
+        return (h(Host, { key: 'b0ef8cd426fc30ccd105f88e7856119196c61918', class: classname, role: this.inMultipleGroup ? 'checkbox' : 'radio', tabindex: 0, "aria-checked": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, h("slot", { key: '765e643b524d697f7ff692457d1db1cd9dc8387f', name: "icon", "data-name": "button-group-option-icon" }), h("slot", { key: '5811efe8fc21a71b590c36fdccb9c500fccec72c' }), this.label ? this.label : hasIcon ? '' : this.value, h("slot", { key: '0d2e29c34fa5c5ef6195e90c81d3f68a4de81ec5', name: "after" })));
     }
     static get is() { return "at-button-group-option"; }
     static get properties() {
