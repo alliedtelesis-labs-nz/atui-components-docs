@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DR-CD1o0.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-owTY0b1N.js';
 import { f as fetchTranslations } from './translation-TgeIMQBw.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { h as handleArrowNavigation, a as handleHomeEndNavigation } from './keyboard-navigation-CF3ljWUs.js';
@@ -366,16 +366,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (h(Host, { key: '7acea15a79907a848cad83c1049e1b4c1601030b', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '984b820456d548c30e8842f7a6054a277d62be25', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '3ab010a071ee7875e98243ccd8df335cdf53992d', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: '822dccbebfd8e12af612b380f2cf3c55a48d6f83', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: 'b87a720cfaf840e2911f2ce283b7bcea15b08bde' }, this.error_text && this.invalid && (h("span", { key: 'bd68042bd218789f097a2f8a8ea5d9997b4317ea', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), h("div", { key: '439e7dff9db39226fe50e1b8d7c97d5a36dadfe4' }, this.error_text && this.invalid && (h("span", { key: '529c22547db620784a0425a20785a535224c1481', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {

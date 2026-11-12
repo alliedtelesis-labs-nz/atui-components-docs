@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 var signalStrength = require('./signal-strength-CunZSyq8.js');
 
 const sizePx = {
@@ -70,7 +70,7 @@ const AtSignalStrength = class {
         const accessibleName = value
             ? `Signal strength: ${label}, ${value}`
             : `Signal strength: ${label}`;
-        return (index.h(index.Host, { key: '986f02028f32ca976e7ba7fea133ece27bca5f01', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (index.h("span", { key: '3cbd6fea02717ac4197990cca4f0e398ff7b1fe8', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), index.h("slot", { key: '33ca2587c6fc2941b5b21ef9b4e6b3b750cf6dba' })));
+        return (index.h(index.Host, { key: '20e2d2b4902ed312dd2f5496d6334214056379d6', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (index.h("span", { key: '1ecea9d3c86e0326d229462a547d4059b3dd212e', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), index.h("slot", { key: 'bcf6cf5b77e2b5bfba037731cf910347fac5b851' })));
     }
 };
 

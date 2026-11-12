@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 
 /**
  * utils.ts 12.4.1
@@ -6734,7 +6734,7 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (index.h("div", { key: 'bfdbe5bfb1d1dfff2db7ea1b442777f4419dffd0', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("div", { class: "flex min-w-[140px] flex-col py-1" }, index.h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        return (index.h("div", { key: '11dfcac1ccf9a371be3944806135d4c997ab7e37', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (index.h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, index.h("div", { class: "grid-stack-item-content" }, !this.read_only && (index.h("div", { class: "absolute top-0 right-0 z-10" }, index.h("at-menu", null, index.h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, index.h("at-icon", { slot: "icon", name: "overflow_menu" })), index.h("div", { class: "flex min-w-[140px] flex-col py-1" }, index.h("at-menu-item", { label: "Edit", onAtuiClick: () => {
                 this.editItem.emit(widget);
             } }), index.h("at-menu-item", { label: "Delete", onAtuiClick: () => {
                 this.removeWidget(widget);

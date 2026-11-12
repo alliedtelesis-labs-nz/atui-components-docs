@@ -23,7 +23,7 @@ export class AtSignalStrengthCell {
         return true;
     }
     render() {
-        return (h(Host, { key: 'a0a576c66d00a68c8ce47ff0229c974e3e1c8528', class: "flex h-full items-center" }, h("at-signal-strength", { key: 'b24ca20dd71a798fa15e73516d8d2e86fb20d336', rssi: this.rssi, thresholds: this.params?.thresholds, variant: this.params?.variant ?? 'status', size: this.params?.size ?? 'md', show_value: this.params?.show_value ?? true })));
+        return (h(Host, { key: '6fc9fe8a1dcf0338501f74cbab4c4ed2b25bc98d', class: "flex h-full items-center" }, h("at-signal-strength", { key: 'd33373d02e3ef255c98df75877b03cd8c56d71c9', rssi: this.rssi, thresholds: this.params?.thresholds, variant: this.params?.variant ?? 'status', size: this.params?.size ?? 'md', show_value: this.params?.show_value ?? true })));
     }
     static get is() { return "at-signal-strength-cell"; }
     static get states() {

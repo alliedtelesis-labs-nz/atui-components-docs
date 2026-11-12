@@ -4,6 +4,7 @@ const Template = (args) => `
     segment_gap="${args.segment_gap ?? 0}"
     show_tooltip="${args.show_tooltip ?? true}"
     show_internal_value="${args.show_internal_value ?? false}"
+    tooltip_mode="${args.tooltip_mode ?? 'segment'}"
 ></at-status-bar>
 <script>
 document.querySelector('at-status-bar').status_bar = ${JSON.stringify(args.status_bar, null, 4)}
@@ -20,6 +21,10 @@ export default {
         segment_gap: { control: { type: 'number', min: 0, step: 1 } },
         show_tooltip: { control: 'boolean' },
         show_internal_value: { control: 'boolean' },
+        tooltip_mode: {
+            options: ['segment', 'summary'],
+            control: { type: 'radio' },
+        },
     },
 };
 const baseArgs = {
@@ -27,6 +32,7 @@ const baseArgs = {
     segment_gap: 0,
     show_tooltip: true,
     show_internal_value: false,
+    tooltip_mode: 'segment',
 };
 export const Default = Template.bind({});
 Default.args = {
@@ -65,6 +71,31 @@ InternalValue.args = {
             label: 'Network 3',
             percentage: 10,
             backgroundColor: 'var(--chart-sequential-2)',
+        },
+    ],
+};
+export const SummaryTooltip = Template.bind({});
+SummaryTooltip.args = {
+    ...baseArgs,
+    tooltip_mode: 'summary',
+    status_bar: [
+        {
+            label: 'On release',
+            percentage: 85,
+            backgroundColor: 'var(--chart-device-status-1)',
+            value: '17 devices',
+        },
+        {
+            label: 'Behind',
+            percentage: 10,
+            backgroundColor: 'var(--chart-device-status-2)',
+            value: '2 devices',
+        },
+        {
+            label: 'Not reporting',
+            percentage: 5,
+            backgroundColor: 'var(--chart-device-status-4)',
+            value: '1 device',
         },
     ],
 };

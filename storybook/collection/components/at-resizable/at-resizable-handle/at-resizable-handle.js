@@ -175,9 +175,9 @@ export class AtResizableHandleComponent {
         this.group?.resetPair(this.handleIndex);
     };
     render() {
-        return (h(Host, { key: '710e1500360bcebe878dec303a07f4be184c45df', "data-name": "resizable-handle", "data-dragging": this.isDragging ? 'true' : 'false', role: "separator", "aria-orientation": this.direction, "aria-controls": [this.prevId, this.nextId]
+        return (h(Host, { key: 'c7c058e9df86406073775e5178255d7d845ebe0d', "data-name": "resizable-handle", "data-dragging": this.isDragging ? 'true' : 'false', role: "separator", "aria-orientation": this.direction, "aria-controls": [this.prevId, this.nextId]
                 .filter(Boolean)
-                .join(' '), "aria-valuenow": this.prevState?.size ?? undefined, "aria-valuemin": this.prevState?.minSize ?? 0, "aria-valuemax": this.prevState?.maxSize ?? 100, tabindex: 0, onPointerDown: this.handlePointerDown, onKeyDown: this.handleKeyDown, onDblClick: this.handleDoubleClick }, this.has_grip && (h("div", { key: '4e7d5eba718150890a310a62436f511fca52d62d', class: "grip", "aria-hidden": "true" }))));
+                .join(' '), "aria-valuenow": this.prevState?.size ?? undefined, "aria-valuemin": this.prevState?.minSize ?? 0, "aria-valuemax": this.prevState?.maxSize ?? 100, tabindex: 0, onPointerDown: this.handlePointerDown, onKeyDown: this.handleKeyDown, onDblClick: this.handleDoubleClick }, this.has_grip && (h("div", { key: '35300a384bf144c8ac7157655e4de13467cc05e7', class: "grip", "aria-hidden": "true" }))));
     }
     static get is() { return "at-resizable-handle"; }
     static get originalStyleUrls() {

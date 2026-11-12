@@ -23,9 +23,16 @@ declare const _default: {
         show_internal_value: {
             control: string;
         };
+        tooltip_mode: {
+            options: string[];
+            control: {
+                type: string;
+            };
+        };
     };
 };
 export default _default;
 export declare const Default: any;
 export declare const PartialBreakdown: any;
 export declare const InternalValue: any;
+export declare const SummaryTooltip: any;

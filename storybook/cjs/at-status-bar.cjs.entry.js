@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 
 const LIGHT_TEXT = 'var(--token-color-base-slate-100)';
 const DARK_TEXT = 'var(--token-color-base-slate-900)';
@@ -64,6 +64,12 @@ const AtStatusBar = class {
      */
     show_tooltip = true;
     /**
+     * `segment` gives each segment its own tooltip. `summary` gives the whole bar one
+     * tooltip that lists every segment with a colour swatch, so the reader does not
+     * have to hit a narrow segment to read it.
+     */
+    tooltip_mode = 'segment';
+    /**
      * Shows each segment's label and percentage inside the bar. The bar grows with
      * its text, never shorter than the `lg` size, and ignores `size`. Text colour is
      * derived from each segment's background.
@@ -105,10 +111,13 @@ const AtStatusBar = class {
         }
         return `${this.size === 'lg' ? 'h-[16px]' : 'h-8'} flex items-stretch rounded-full overflow-hidden`;
     }
+    segmentValue(segment) {
+        return segment.value ?? `${segment.percentage}%`;
+    }
     segmentSummary(segment) {
         return segment.label
-            ? `${segment.label}: ${segment.percentage}%`
-            : `${segment.percentage}%`;
+            ? `${segment.label}: ${this.segmentValue(segment)}`
+            : this.segmentValue(segment);
     }
     get coveredPercentage() {
         return this.status_bar.reduce((total, segment) => total + segment.percentage, 0);
@@ -129,6 +138,21 @@ const AtStatusBar = class {
         const totalGap = this.segment_gap * (this.flexItemCount - 1);
         return `calc((100% - ${totalGap}px) * ${percentage / 100})`;
     }
+    renderSummarySegment(segment) {
+        return (index.h("div", { class: "h-full min-w-0 overflow-hidden", role: "img", "data-name": "status-bar-segment", "aria-label": this.segmentSummary(segment), style: {
+                flex: `0 0 ${this.segmentBasis(segment.percentage)}`,
+                background: segment.backgroundColor,
+            } }, this.show_internal_value && this.renderInternalValue(segment)));
+    }
+    renderInternalValue(segment) {
+        return (index.h("div", { class: "flex h-full flex-col justify-center overflow-hidden px-8 py-4 text-left", "data-name": "status-bar-segment-value" }, index.h("span", { class: "truncate text-xs" }, segment.label), index.h("span", { class: "truncate text-sm font-bold" }, segment.percentage, "%")));
+    }
+    renderSummaryTooltip() {
+        return (index.h("ul", { class: "flex flex-col gap-4 py-4", "data-name": "status-bar-tooltip" }, this.status_bar.map((segment) => (index.h("li", { class: "flex items-center gap-8", "data-name": "status-bar-tooltip-item" }, index.h("span", { class: "h-[10px] w-[10px] shrink-0 rounded-sm", "data-name": "status-bar-tooltip-swatch", "aria-hidden": "true", style: { background: segment.backgroundColor } }), segment.label && (index.h("span", { class: "flex-1" }, segment.label)), index.h("span", { class: "font-medium" }, this.segmentValue(segment)))))));
+    }
+    renderSummary() {
+        return (index.h("at-tooltip", { position: "top", class: "flex flex-1 items-stretch [&>[data-name=tooltip-trigger]]:flex [&>[data-name=tooltip-trigger]]:w-full", disabled: !this.show_tooltip }, index.h("div", { slot: "tooltip-trigger", class: "flex w-full items-stretch justify-start", "data-name": "status-bar-track", style: { gap: `${this.segment_gap}px` } }, this.status_bar.map((segment) => this.renderSummarySegment(segment)), this.hasRemainder && this.renderRemainder()), this.renderSummaryTooltip()));
+    }
     get segments() {
         return this.status_bar.map((segment) => (index.h("at-tooltip", { position: "top", class: `flex items-stretch justify-center ${this.show_internal_value
                 ? '[&>[data-name=tooltip-trigger]]:w-full'
@@ -138,10 +162,14 @@ const AtStatusBar = class {
                 ? 'relative'
                 : 'absolute inset-0'}`, slot: "tooltip-trigger", role: "img", "data-name": "status-bar-segment", "aria-label": this.segmentSummary(segment), style: {
                 background: segment.backgroundColor,
-            } }, this.show_internal_value && (index.h("div", { class: "flex h-full flex-col justify-center overflow-hidden px-8 py-4 text-left", "data-name": "status-bar-segment-value" }, index.h("span", { class: "truncate text-xs" }, segment.label), index.h("span", { class: "truncate text-sm font-bold" }, segment.percentage, "%")))), index.h("span", null, this.segmentSummary(segment)))));
+            } }, this.show_internal_value &&
+            this.renderInternalValue(segment)), index.h("span", null, this.segmentSummary(segment)))));
     }
     render() {
-        return (index.h(index.Host, { key: '04b52eae30339639322a3fd46787a50968bd276e', class: this.statusBarClass }, index.h("div", { key: '6d7401c7548f912b338f10d9f32f0c98507de921', class: "flex flex-1 items-stretch justify-start overflow-visible", style: { gap: `${this.segment_gap}px` } }, this.segments, this.hasRemainder && this.renderRemainder())));
+        if (this.tooltip_mode === 'summary') {
+            return (index.h(index.Host, { class: this.statusBarClass }, this.renderSummary()));
+        }
+        return (index.h(index.Host, { class: this.statusBarClass }, index.h("div", { class: "flex flex-1 items-stretch justify-start overflow-visible", style: { gap: `${this.segment_gap}px` } }, this.segments, this.hasRemainder && this.renderRemainder())));
     }
 };
 

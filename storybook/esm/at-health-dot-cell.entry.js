@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-DR-CD1o0.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-owTY0b1N.js';
 
 const barColors = {
     good: 'var(--chart-alert-1, #4caf50)',

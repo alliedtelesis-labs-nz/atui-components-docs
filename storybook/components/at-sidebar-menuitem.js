@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-D1T2d_SB.js";const p=o,r=s;export{p as AtSidebarMenuitem,r as defineCustomElement}
+import{A as o,d as s}from"./p-DWgM8eju.js";const p=o,r=s;export{p as AtSidebarMenuitem,r as defineCustomElement}

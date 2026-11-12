@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-Dx5t34E0.js";const t=o,p=s;export{t as AtButtonGroup,p as defineCustomElement}
+import{A as o,d as s}from"./p-CPJ2jdS2.js";const p=o,r=s;export{p as AtButtonGroup,r as defineCustomElement}

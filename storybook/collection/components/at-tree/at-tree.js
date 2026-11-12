@@ -72,7 +72,7 @@ export class AtTreeComponent {
         }
     }
     render() {
-        return (h("div", { key: 'ab96903d5781ac318365527a658a0031e9e2a6d0', class: "w-full" }, h("slot", { key: '15d376c8db753c5b2d91191062c4b79fd000bb97' }), this.flattenedItemList &&
+        return (h("div", { key: '508bf1aaf7b750363fb377079fb81e3b28d1165f', class: "w-full" }, h("slot", { key: 'f781afa749056043994ed03707051ba373987c52' }), this.flattenedItemList &&
             this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "block w-full" }, h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
                     item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
                     item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));

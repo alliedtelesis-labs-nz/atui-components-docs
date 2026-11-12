@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atButtonCss = () => `at-button:not(:has([data-name=button-label])):not(:has(span:not([data-name]):not([slot]))):has([slot=icon]){padding-inline:0;aspect-ratio:1}`;
@@ -174,7 +174,7 @@ const AtButtonComponent = class {
         const focusIndicatorClassname = classlist.classlist('pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out', focusIndicatorVariantsConfig)({
             type: this.disabled ? undefined : this.type,
         });
-        return (index.h(index.Host, { key: '6aa05bf28cd37e2dd8cbf27da37d7693b2c22a15', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: 'd156f19d8d3ccb3a30edeba9f2bdf28e0fd66003', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.isSpinnerVisible && (index.h("at-loading", { key: 'ad73e2e3c9008efc6b26f6540ec5b0f9ecf7fe05', "data-name": "button-spinner", class: "absolute", size: "sm", type: "current" })), !this.isSpinnerVisible && (index.h("slot", { key: '884802116901f0fb585ca458ea6ed1de5cf57a8d', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '63b6b24f831e4514abc285d8e58431f587a779ec', class: `leading-[16px] ${this.isSpinnerVisible ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: 'e66c9c7e91454c5d2967e2749f54421aea1621f6' }), !this.isSpinnerVisible && (index.h("slot", { key: '77d74bc42eabad3110031697be465a0c96a08b31', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: 'cafb8822054d72f4f9793fa3e2da7066020e80e3', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
+        return (index.h(index.Host, { key: '80f6941052d71369c6e4ab592630e1fcbe7133f7', class: classname, role: "button", tabIndex: 0, "aria-disabled": this.disabled ? 'true' : undefined, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, index.h("div", { key: '0ed55c33f9e028097f038dfa689e0763bedddc0d', class: "z-20 flex h-full w-full items-center justify-center gap-4" }, this.isSpinnerVisible && (index.h("at-loading", { key: '9385d73e99d633d0ecee4532c19c8e4d5f30ff94', "data-name": "button-spinner", class: "absolute", size: "sm", type: "current" })), !this.isSpinnerVisible && (index.h("slot", { key: '65352187bbd28dfe55ffdae7e6c43bae5f96f9c6', name: "icon", "data-name": "button-icon" })), this.label && (index.h("span", { key: '443894f7627e5688a4994ee82af79e910a9ee099', class: `leading-[16px] ${this.isSpinnerVisible ? 'invisible' : ''}`, "data-name": "button-label" }, this.label)), index.h("slot", { key: '4d31f6a1a30636be4340fc3715d5ff87de5db726' }), !this.isSpinnerVisible && (index.h("slot", { key: '2de2950429cd9ceedcadd567b428ef4605894d86', name: "icon_after", "data-name": "button-icon-right" }))), index.h("div", { key: '166364e5111ac1e6c934b793eb920a9eac8d9118', "data-name": "focus-indicator", role: "presentation", class: focusIndicatorClassname })));
     }
     static get watchers() { return {
         "in_progress": [{
@@ -256,7 +256,7 @@ const AtLoadingComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'bda227c9973b828760c3faf19bc1c7d7e5c3490f', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'b24860df32579c8cfa9c1cade071ce5ded113998' })));
+        return (index.h(index.Host, { key: '66661cb771deaf57f0624aa1eeaedbeab8e6f69b', class: `${this.sizeClasses} inline-flex items-center gap-8`, role: "status", "aria-label": this.variant === 'typing' ? 'Typing' : 'Loading' }, this.renderIndicator(), index.h("slot", { key: 'd2d6a5a983a8d20de89e77af13a815b6d31aacb8' })));
     }
 };
 AtLoadingComponent.style = atLoadingCss();

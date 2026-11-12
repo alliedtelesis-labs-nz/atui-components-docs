@@ -2880,6 +2880,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   height: 8px;
 }
 
+.h-\[10px\] {
+  height: 10px;
+}
+
 .h-\[120px\] {
   height: 120px;
 }
@@ -3095,6 +3099,10 @@ at-dialog :where([data-name=card-content]) > at-card {
 
 .w-\[100px\] {
   width: 100px;
+}
+
+.w-\[10px\] {
+  width: 10px;
 }
 
 .w-\[16px\] {
@@ -5274,6 +5282,10 @@ at-dialog :where([data-name=card-content]) > at-card {
     animation: spin 1.5s linear infinite;
   }
 }
+.\[\&\>\[data-name\=tooltip-trigger\]\]\:flex > [data-name=tooltip-trigger] {
+  display: flex;
+}
+
 .\[\&\>\[data-name\=tooltip-trigger\]\]\:w-full > [data-name=tooltip-trigger] {
   width: 100%;
 }

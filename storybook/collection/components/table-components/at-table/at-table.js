@@ -435,7 +435,7 @@ export class AtTableComponent {
         return this.agGrid;
     }
     render() {
-        return (h(Host, { key: 'f32171b0b8060f459a36e9543259d305c18ee294', class: {
+        return (h(Host, { key: 'a3d4ff2e83b777fc0356038c3c1cfa3723408f14', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight

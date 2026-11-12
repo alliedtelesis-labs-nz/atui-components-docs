@@ -24,6 +24,7 @@ export declare class AtTextCellComponent implements ICellRendererComp {
     textClass: string;
     isLink: boolean;
     textValue: string;
+    isEmpty: boolean;
     params: InitTextCellParams;
     init(params: InitTextCellParams): void;
     getGui(): HTMLElement;

@@ -1,8 +1,9 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
+const EMPTY_TEXT = '-';
 const AtTextCellComponent = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -13,6 +14,7 @@ const AtTextCellComponent = class {
     textClass;
     isLink;
     textValue;
+    isEmpty;
     params;
     init(params) {
         const { size, color, textStyles, containerStyles, textClass, isLink } = params;
@@ -43,6 +45,7 @@ const AtTextCellComponent = class {
         this.textValue = params.textTransform
             ? params.textTransform(params.data, params.value)
             : this.getTextValue(params);
+        this.isEmpty = !params.textTransform && this.textValue === EMPTY_TEXT;
     }
     // If you are using objects for the value, they will appear as [object Object].
     // This indicates that you may need to use a valueGetter (see ag-grid API),
@@ -53,7 +56,7 @@ const AtTextCellComponent = class {
         // throw, and a renderer that throws stops the grid drawing every row
         // after this one.
         if (value === '' || value === null || value === undefined) {
-            return '-';
+            return EMPTY_TEXT;
         }
         if (Array.isArray(value)) {
             return this.transferArrayValueToString(value);
@@ -63,7 +66,7 @@ const AtTextCellComponent = class {
     transferArrayValueToString(value) {
         const compactValue = value.filter((val) => !!val);
         if (!compactValue.length) {
-            return '-';
+            return EMPTY_TEXT;
         }
         const textVal = compactValue.reduce((acc, current) => {
             acc = acc ? `${acc},${current}` : `${current}`;
@@ -72,10 +75,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (index.h(index.Host, { key: 'cbe2684400c952c3fde62de369c42c48d51151c4', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'aea5ddd325943682778085ac373f55bd84f64f54', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '6376c03865e5ebcd21bfa5fd94bd21e1d3034e4f', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} block truncate`, onClick: () => {
+        return (index.h(index.Host, { key: 'c0911c5f58ee595badf82297a847f9dd24995482', class: "flex h-full min-w-0 items-center" }, index.h("at-tooltip", { key: 'a8495b020201ab00d65dfb544192a342417eeeec', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, index.h("span", { key: '94e25e46b7347562ab7ed18c5d8c45f280209b1d', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} ${this.isEmpty ? 'text-muted' : ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'a6cc7000182ac3dd15abd2ec95a03bb0dab1d398', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (index.h("span", { key: 'c222cd3e0c3e24775cf4f8b4f3b3ec7c1a70cdf8', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

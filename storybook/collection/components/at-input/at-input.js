@@ -152,15 +152,15 @@ export class AtInputComponent {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '456f21c96cc961c272b978df7dd34c9d0216b7f5' }, h("div", { key: 'ce10cde05eb8b8eadeb264e2b48a103134a02571', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'ba3b50bf56dca90fef215f39eb35e4ba40c2ab2e', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '7a0f900d5334809dcd08dad2d53d56f1c1acdb05', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'eea2d76c862662aa487404b6c38bcf88f3f54587', class: "text-muted mb-2 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: 'fe3a2da9db05cef08a7dd69652e48c97d9f2e207', class: classname }, h("input", { key: '3eeed0918881b510a894208bc29c251d79f8fa73', class: "py-input-y pl-input-x flex w-full min-w-0 text-ellipsis outline-0", id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", step: this.hasDecimalLimit
+        return (h(Host, { key: '7d7bf7c94ccfbc9de829822179a4e1b07ab6be48' }, h("div", { key: 'a1151798b9ce904d962984c2fe52b30651051375', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '1c7eeb27db4b64503097c6746352631803c8ef87', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '3dee2b8ed01adbf07f289bbd8281110b2fe18f6f', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '1e6a41ab2c66d81b629406d13b877417d873ed08', class: "text-muted mb-2 inline-block text-xs leading-tight", "data-name": "input-hint" }, this.hint_text))), h("div", { key: '541ae9929194d677a803f3d5a5afe99d3aa21a63', class: classname }, h("input", { key: '97eaf1d69ddd00928f691fb297cba5f5f29b8f40', class: "py-input-y pl-input-x flex w-full min-w-0 text-ellipsis outline-0", id: this.inputId, "aria-label": this.aria_label ?? undefined, readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, type: this.type, placeholder: `${this.placeholder}`, autocomplete: this.autocomplete, autocapitalize: "none", step: this.hasDecimalLimit
                 ? String(10 ** -Math.max(0, this.decimal_places))
                 : undefined, onKeyDown: (event) => this.handleKeyDown(event), onInput: (event) => this.handleChange(event), onChange: (event) => this.handleChange(event), value: this.type === 'number' &&
                 !this.isNumericText(this.value)
                 ? ''
-                : this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '6d60428e8c58b8b5c75203cc8bcb99f575f41513', class: "flex items-center py-4 pr-4" }, h("slot", { key: '6aa8653de4972c8c779d85b0b33ee9e524279bcd', name: "input-actions" }), this.clearable &&
+                : this.value, ref: (el) => (this.inputEl = el), "data-name": "input" }), h("div", { key: '8a691a45c5042b1ee8f2342951cfa5ca9a3098d8', class: "flex items-center py-4 pr-4" }, h("slot", { key: '28445616dbe72ba189bceeaac73385d67b982130', name: "input-actions" }), this.clearable &&
             !this.readonly &&
             !this.disabled &&
-            this.value && (h("at-button", { key: '19ab6e85bd62b386b8082e3ddad2ec1054d8f9d0', class: `transition-[opacity,transform] duration-150 ease-in-out ${this.clearable &&
+            this.value && (h("at-button", { key: '033e10454c8b2134b23f1b06fefae3ac423f8a0f', class: `transition-[opacity,transform] duration-150 ease-in-out ${this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
                 this.value
@@ -168,7 +168,7 @@ export class AtInputComponent {
                 : 'pointer-events-none scale-90 opacity-0'}`, size: "sm", type: "secondaryText", onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
-            }, "data-name": "input-clear" }, h("at-icon", { key: '6deb7a49e39bdb019891c58514d4bf6839e98b98', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: 'e0b9d6780f44195a4aeaa0b93447aafd762b2071', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
+            }, "data-name": "input-clear" }, h("at-icon", { key: 'bdebe1b526fcaf84823e00ccc61b6fb0a5d6f9b8', slot: "icon", name: "cancel" }))))), this.error_text && this.invalid && (h("span", { key: '55ecdd508460d97e998ed30add39b9fb51671897', class: "text-error text-sm", "data-name": "input-error" }, this.error_text))));
     }
     static get is() { return "at-input"; }
     static get properties() {

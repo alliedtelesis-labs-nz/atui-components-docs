@@ -76,7 +76,7 @@ LeadingActions.storyName = 'Leading Actions';
 LeadingActions.parameters = {
     docs: {
         description: {
-            story: 'The `leading-actions` slot sits immediately left of the column manager, for actions that belong with the toolbar controls rather than with the table content - those go in `actions` at the end of the row.',
+            story: 'The `leading-actions` slot sits immediately right of the column manager, for actions that belong with the toolbar controls rather than with the table content - those go in `actions` at the end of the row.',
         },
     },
 };

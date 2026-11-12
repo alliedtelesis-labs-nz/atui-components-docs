@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h } from './index-DR-CD1o0.js';
+import { r as registerInstance, c as createEvent, a as getElement, h } from './index-owTY0b1N.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -61,7 +61,7 @@ const AtTabContent = class {
         this.setIsActive(event.detail);
     };
     render() {
-        return (h("div", { key: '72a56e26ca8268cf54c448f34b607b1d36f493f4', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '24b005e88a1c09d8422a125c9a084a9a2ee55721' })));
+        return (h("div", { key: '3b59b3ac9a1cd9a699c97bdc1b8cce32792bb241', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '5bac5d0e7d063aab34178d401ddce9b33de9b316' })));
     }
     static get watchers() { return {
         "has_activated": [{

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 
 const atSidebarProviderCss = () => `at-sidebar-provider{display:flex;height:100%;width:100%;align-items:stretch;overflow:hidden;position:relative}at-sidebar-provider>.backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:rgba(0, 0, 0, 0.2);z-index:calc(var(--token-z-index-nav) - 1);cursor:pointer;will-change:opacity;transition:opacity var(--token-transition-time);animation:fadeInBackdrop 300ms forwards}at-sidebar-provider>at-sidebar{flex:0 0 auto;width:auto;height:100%}at-sidebar-provider>at-sidebar[side=right]{order:1}at-sidebar-provider>at-sidebar.mode-over{overflow:visible}at-sidebar-provider>at-sidebar.mode-over.side-right .sidebar{left:auto;right:0}`;
 
@@ -117,7 +117,7 @@ const AtSidebarProviderComponent = class {
         }
     };
     render() {
-        return (index.h(index.Host, { key: '9ac1d754fd748795d382eee78c385d276b0e6e86' }, this.backdropRequests.size > 0 && (index.h("div", { key: '326baf6a329e7d10ba2e9783b890c445a7090065', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), index.h("slot", { key: '6b45e68bdd17242d5eaeba32fe38913d56a58cc9' })));
+        return (index.h(index.Host, { key: '96efcbbb8ad89594f305ca063da4ff8f9f7acbd4' }, this.backdropRequests.size > 0 && (index.h("div", { key: 'f7cf719a45084099e0c72582c42c7e4605a43fd2', class: "backdrop", "data-name": "backdrop", onClick: this.handleBackdropClick, "aria-hidden": "true" })), index.h("slot", { key: '48716ff9f44a78e79992c77433504fb1796f6f68' })));
     }
 };
 AtSidebarProviderComponent.style = atSidebarProviderCss();

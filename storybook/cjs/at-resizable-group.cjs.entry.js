@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 var resizeController = require('./resize-controller-DnOcuHpr.js');
 
 const atResizableGroupCss = () => `at-resizable-group{display:flex;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}at-resizable-group.direction-horizontal{flex-direction:row}at-resizable-group.direction-vertical{flex-direction:column}`;
@@ -189,7 +189,7 @@ const AtResizableGroupComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '684c9f5be90904eb99be7d03e606f016bc03a5f8', class: `direction-${this.direction}`, "data-name": "resizable-group" }, index.h("slot", { key: '34114db56a6ccc498b175c53d00487c63d6a2579' })));
+        return (index.h(index.Host, { key: '90c32f40705d5040f6134546b9afab4277ec5154', class: `direction-${this.direction}`, "data-name": "resizable-group" }, index.h("slot", { key: 'e914eb283861034710d4591e2c5c7e6967cfab54' })));
     }
 };
 AtResizableGroupComponent.style = atResizableGroupCss();

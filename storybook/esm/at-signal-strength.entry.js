@@ -1,5 +1,5 @@
-import { r as registerInstance, h, H as Host } from './index-DR-CD1o0.js';
-import { A as AT_SIGNAL_STRENGTH_DEFAULT_THRESHOLDS, c as atGetSignalLevel, b as atFormatRssi, d as AT_SIGNAL_STRENGTH_LABELS } from './signal-strength-DX_XGxPw.js';
+import { r as registerInstance, h, H as Host } from './index-owTY0b1N.js';
+import { A as AT_SIGNAL_STRENGTH_DEFAULT_THRESHOLDS, a as atGetSignalLevel, b as atFormatRssi, c as AT_SIGNAL_STRENGTH_LABELS } from './signal-strength-BpZOPn4u.js';
 
 const sizePx = {
     sm: 12,
@@ -68,7 +68,7 @@ const AtSignalStrength = class {
         const accessibleName = value
             ? `Signal strength: ${label}, ${value}`
             : `Signal strength: ${label}`;
-        return (h(Host, { key: '986f02028f32ca976e7ba7fea133ece27bca5f01', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (h("span", { key: '3cbd6fea02717ac4197990cca4f0e398ff7b1fe8', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), h("slot", { key: '33ca2587c6fc2941b5b21ef9b4e6b3b750cf6dba' })));
+        return (h(Host, { key: '20e2d2b4902ed312dd2f5496d6334214056379d6', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (h("span", { key: '1ecea9d3c86e0326d229462a547d4059b3dd212e', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), h("slot", { key: 'bcf6cf5b77e2b5bfba037731cf910347fac5b851' })));
     }
 };
 

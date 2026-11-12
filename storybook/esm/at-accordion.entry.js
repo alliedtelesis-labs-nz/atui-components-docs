@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-DR-CD1o0.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-owTY0b1N.js';
 
 const AtAccordionComponent = class {
     constructor(hostRef) {
@@ -79,7 +79,7 @@ const AtAccordionComponent = class {
         return `${this.accordionId}-${itemId}`;
     }
     render() {
-        return (h(Host, { key: 'a236f4edf136a1e1387f52dac6cf7b10aa446c5b', class: "flex flex-col gap-2" }, h("slot", { key: '7ea61cea8c446bb2a4aed50b1ba24f6cb5fa0f34' }), this.items &&
+        return (h(Host, { key: '15208ef7ba662d3571d36068ba644ab2ea1df967', class: "flex flex-col gap-2" }, h("slot", { key: 'f606e845e136f15313c433d20b1e4ae4ef701d4a' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: this.prefixedItemId(item.item_id), label: item.label, content: item.content }));
             })));

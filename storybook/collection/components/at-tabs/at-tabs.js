@@ -180,7 +180,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: 'dd335a985f7f0d35637e36dc3a2a9fb7f6e4edfa' }, this.checkLayoutAndRender());
+        return h(Host, { key: '0481eb4f82b70e0a817aea1b57e8a59f600d5099' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {

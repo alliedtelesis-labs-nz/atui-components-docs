@@ -470,7 +470,7 @@ export class AtChartDonut {
         }
     }
     render() {
-        return (h(Host, { key: '12d44a229ed4fbdd62947af0156aaba2681a5f76', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'a65459c005da27d234674fe9e803b5ac5caad5d0', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: '97ca1be37ee9eb2a8f2a49b8a58b022a48b2b405', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'a247fe90b45ec652328508c5dde02071f3feec46', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
     static get is() { return "at-chart-donut"; }
     static get properties() {

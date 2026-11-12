@@ -10,7 +10,7 @@ import { GridApi } from 'ag-grid-community';
  * @slot filters - Used to place an at-table-filters
  * @slot reload-button - Used to place an at-reload-button
  * @slot export-menu - Used to place an at-export-menu
- * @slot leading-actions - Used to place actions immediately left of the column manager
+ * @slot leading-actions - Used to place actions immediately right of the column manager, ahead of `actions`
  * @slot actions - Used to place actions related to table content
 
 */

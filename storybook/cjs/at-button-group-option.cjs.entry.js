@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const variantsConfig = {
@@ -87,7 +87,7 @@ const AtButtonGroupOption = class {
             hostDisabled: this.host_disabled,
         });
         const hasIcon = this.hasIcon();
-        return (index.h(index.Host, { key: 'b0ef8cd426fc30ccd105f88e7856119196c61918', class: classname, role: this.inMultipleGroup ? 'checkbox' : 'radio', tabindex: 0, "aria-checked": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: '765e643b524d697f7ff692457d1db1cd9dc8387f', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: '5811efe8fc21a71b590c36fdccb9c500fccec72c' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: '0d2e29c34fa5c5ef6195e90c81d3f68a4de81ec5', name: "after" })));
+        return (index.h(index.Host, { key: '7e720a4b5666ec9c9044aa3cf60ee86101e96305', class: classname, role: this.inMultipleGroup ? 'checkbox' : 'radio', tabindex: 0, "aria-checked": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled || this.host_disabled ? 'true' : undefined, onClick: (event) => this.handleClick(event), onKeyDown: (event) => this.handleKeydown(event), "data-name": "button-group-option" }, index.h("slot", { key: '6f1f4df6f14c7354118019ca88d9603fe8f1abe7', name: "icon", "data-name": "button-group-option-icon" }), index.h("slot", { key: 'b99fa5ba8224a54812210e785bcda8ca7bd0ce00' }), this.label ? this.label : hasIcon ? '' : this.value, index.h("slot", { key: '9af498f8deb5a038bc336e8ee0bfd3c0391f7626', name: "after" })));
     }
 };
 

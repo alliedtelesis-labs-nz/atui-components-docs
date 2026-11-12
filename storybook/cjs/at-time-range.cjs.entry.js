@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DUZVJiVD.js');
+var index = require('./index-CjCsBbN_.js');
 var atTimeRange_models = require('./at-time-range.models-BPZ2R6EI.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-NP6A4XKu.js');
@@ -183,7 +183,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '66b83d772fad3a55c654a9a315f382c314e113c5', class: "relative flex justify-center" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'f70f236a0de2463c512c025ef37f56bab8820a0a', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

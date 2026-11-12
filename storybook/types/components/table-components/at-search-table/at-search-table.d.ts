@@ -16,7 +16,7 @@ type RowUpdate<T> = {
  * @category Data Tables
  * @description A searchable data table component that combines table functionality with integrated search capabilities. Provides real-time filtering and search result highlighting.
  * @slot filter-bar - Used to place the persistent filter controls (facets such as site, severity or status) that sit beside the search field. This is where a surface's always-visible filters belong; the query builder behind `show_table_filters` authors ad-hoc conditions, and the chip row below reports what is currently applied.
- * @slot leading-actions - Used to place actions immediately left of the column manager
+ * @slot leading-actions - Used to place actions immediately right of the column manager, ahead of `actions`
  * @slot actions - Used to place actions related to table content
  * @slot multi-select-actions - Used to place actions related to row selection, drawn inline above the table
  * @slot floating-multi-select-actions - The same actions, drawn as a bar floating over the table instead of inline above it. Fill one slot or the other, not both.

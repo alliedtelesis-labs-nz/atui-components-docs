@@ -3274,6 +3274,11 @@ export namespace Components {
           * @default []
          */
         "status_bar": AtIStatusBarSegment[];
+        /**
+          * `segment` gives each segment its own tooltip. `summary` gives the whole bar one tooltip that lists every segment with a colour swatch, so the reader does not have to hit a narrow segment to read it.
+          * @default 'segment'
+         */
+        "tooltip_mode": TooltipMode;
     }
     /**
      * @category Navigation
@@ -9366,6 +9371,11 @@ declare namespace LocalJSX {
           * @default []
          */
         "status_bar"?: AtIStatusBarSegment[];
+        /**
+          * `segment` gives each segment its own tooltip. `summary` gives the whole bar one tooltip that lists every segment with a colour swatch, so the reader does not have to hit a narrow segment to read it.
+          * @default 'segment'
+         */
+        "tooltip_mode"?: TooltipMode;
     }
     /**
      * @category Navigation
@@ -10712,6 +10722,7 @@ declare namespace LocalJSX {
     interface AtStatusBarAttributes {
         "size": Size;
         "show_tooltip": boolean;
+        "tooltip_mode": TooltipMode;
         "show_internal_value": boolean;
         "segment_gap": number;
     }
