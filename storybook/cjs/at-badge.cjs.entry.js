@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CjCsBbN_.js');
+var index = require('./index-IIXwPU2S.js');
 
 const badgeVariants = {
     base: 'inline-flex rounded-badge cursor-default font-normal whitespace-nowrap leading-[0.9286rem] gap-2 items-center',

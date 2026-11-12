@@ -16,7 +16,7 @@ export declare class AtChipList {
      */
     disabled: boolean;
     /**
-     * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+     * Disables the list of chips but keeps the text readable. Prevents removing a chip and hides the 'Clear All' button.
      */
     readonly: boolean;
     /**

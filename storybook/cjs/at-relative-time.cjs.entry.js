@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CjCsBbN_.js');
+var index = require('./index-IIXwPU2S.js');
 var relativeTime_util = require('./relative-time.util-_FQbwGgQ.js');
 
 const AtRelativeTimeComponent = class {

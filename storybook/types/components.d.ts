@@ -1025,7 +1025,7 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+          * Disables the list of chips but keeps the text readable. Prevents removing a chip and hides the 'Clear All' button.
          */
         "readonly": boolean;
         /**
@@ -7069,7 +7069,7 @@ declare namespace LocalJSX {
          */
         "onAtRemoveChip"?: (event: AtChipListCustomEvent<string[]>) => void;
         /**
-          * Disables the list of chips but keeps the text readable. Prevents removing a chip.
+          * Disables the list of chips but keeps the text readable. Prevents removing a chip and hides the 'Clear All' button.
          */
         "readonly"?: boolean;
         /**

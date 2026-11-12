@@ -782,6 +782,7 @@
   --token-text-success: var(--token-color-base-green-600);
   --token-text-active: var(--token-color-base-blue-a400);
   --token-text-inv: var(--token-color-base-slate-100);
+  --token-text-foreground-inv: var(--token-text-inv);
   /*
     Surface Color
     Use Case: Surface colors define UI elevation
@@ -1244,6 +1245,7 @@
   --token-text-success: var(--token-color-base-green-400);
   --token-text-active: var(--token-color-base-blue-a100);
   --token-text-inv: var(--token-color-base-slate-900);
+  --token-text-foreground-inv: var(--token-text-inv);
   /*
     Surface Color
     Use Case: Surface colors define UI elevation

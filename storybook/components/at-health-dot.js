@@ -1,1 +1,1 @@
-import{A as o,d as r}from"./p-CJHCroby.js";const s=o,p=r;export{s as AtHealthDot,p as defineCustomElement}
+import{A as s,d as o}from"./p-BEWusD6m.js";const m=s,p=o;export{m as AtHealthDot,p as defineCustomElement}

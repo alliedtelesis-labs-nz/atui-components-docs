@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CjCsBbN_.js');
+var index = require('./index-IIXwPU2S.js');
 var decimalPlaces_util = require('./decimal-places.util-C7a0coy_.js');
 var classlist = require('./classlist-BPb95vgj.js');
 

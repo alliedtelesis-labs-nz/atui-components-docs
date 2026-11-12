@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CjCsBbN_.js');
+var index = require('./index-IIXwPU2S.js');
 
 const atMessageCss = () => `at-message [slot=actions]{align-self:start}`;
 
