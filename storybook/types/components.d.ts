@@ -62,7 +62,7 @@ import { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 import { TimeRangeDisplay } from "./types/date";
 import { AtIToast, AtIToastPosition } from "./types/toast";
 import { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
-import { AtTooltipAlign, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
+import { AtTooltipAlign, AtTooltipPopoverMode, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
 import { AtITreeNode } from "./types/tree";
 import { AtButtonSize as AtButtonSize1 } from "./components/at-button/at-button";
 import { AtTreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
@@ -123,7 +123,7 @@ export { AtITimeWithUnit, AtTimeUnit } from "./types/time";
 export { TimeRangeDisplay } from "./types/date";
 export { AtIToast, AtIToastPosition } from "./types/toast";
 export { AtLabelPosition } from "./components/at-toggle-switch/at-toggle-switch";
-export { AtTooltipAlign, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
+export { AtTooltipAlign, AtTooltipPopoverMode, AtTooltipPosition } from "./components/at-tooltip/at-tooltip";
 export { AtITreeNode } from "./types/tree";
 export { AtButtonSize as AtButtonSize1 } from "./components/at-button/at-button";
 export { AtTreeItemSize } from "./components/at-tree/at-tree-item/at-tree-item";
@@ -3914,6 +3914,11 @@ export namespace Components {
           * Opens the tooltip.
          */
         "openTooltip": () => Promise<void>;
+        /**
+          * The popover type the tooltip opens as. With 'auto', any click outside the tooltip closes it, including a click on its own trigger. Use 'manual' for a tooltip that must stay open through a click on its trigger, e.g. one that changes to "Copied". A 'manual' tooltip doesn't close on Escape.
+          * @default 'auto'
+         */
+        "popover_mode": AtTooltipPopoverMode;
         /**
           * Position of opened tooltip element relative to the trigger element.
           * @default 'top'
@@ -10047,6 +10052,11 @@ declare namespace LocalJSX {
          */
         "offset"?: number;
         /**
+          * The popover type the tooltip opens as. With 'auto', any click outside the tooltip closes it, including a click on its own trigger. Use 'manual' for a tooltip that must stay open through a click on its trigger, e.g. one that changes to "Copied". A 'manual' tooltip doesn't close on Escape.
+          * @default 'auto'
+         */
+        "popover_mode"?: AtTooltipPopoverMode;
+        /**
           * Position of opened tooltip element relative to the trigger element.
           * @default 'top'
          */
@@ -10810,6 +10820,7 @@ declare namespace LocalJSX {
         "offset": number;
         "delay": number;
         "trigger_id": string;
+        "popover_mode": AtTooltipPopoverMode;
     }
     interface AtTreeAttributes {
         "size": AtButtonSize;

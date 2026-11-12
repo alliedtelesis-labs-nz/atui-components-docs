@@ -78,6 +78,10 @@ const AtTooltip = class {
      * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
      * */
     trigger_id;
+    /**
+     * The popover type the tooltip opens as. With 'auto', any click outside the tooltip closes it, including a click on its own trigger. Use 'manual' for a tooltip that must stay open through a click on its trigger, e.g. one that changes to "Copied". A 'manual' tooltip doesn't close on Escape.
+     */
+    popover_mode = 'auto';
     async disabledChanged(newValue) {
         if (newValue && this.isOpen) {
             await this.closeTooltip();
@@ -343,7 +347,7 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (index.h(index.Host, { key: 'ce89a8203da86b6bab73966b8aab3162620e6237', class: "relative" }, !this.trigger_id && (index.h("div", { key: 'd288c8a2e96e11896558619d8f6961dd2d94c5b9', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, index.h("slot", { key: '7fa35c3689192373e63c18a368a7bf13dfd4aa05', name: "tooltip-trigger" }))), index.h("div", { key: '19216f379590600d521918f8f180c273ed379cb4', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: "auto", id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '788c19f37674bc38e727ae05cc7cb051ae92cff5' }))));
+        return (index.h(index.Host, { key: '5dfd204739b56e923e75b66efc4292f2cc21a899', class: "relative" }, !this.trigger_id && (index.h("div", { key: '34457e29d103d950d7906a52d9d3f1e0b0e1f6e8', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, index.h("slot", { key: '7348d3bfebab6ba2720264c2bec985b23a207c5f', name: "tooltip-trigger" }))), index.h("div", { key: '649501bc4cc7a3ebad1483cc4201de4eabe867ed', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: this.popover_mode, id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, index.h("slot", { key: '2db9f61c2353fd8827bc169cd9e5fec1ef8928c2' }))));
     }
     static get watchers() { return {
         "disabled": [{

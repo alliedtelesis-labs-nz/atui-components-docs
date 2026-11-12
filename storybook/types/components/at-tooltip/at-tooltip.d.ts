@@ -1,5 +1,6 @@
 export type AtTooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 export type AtTooltipAlign = 'start' | 'end' | 'center';
+export type AtTooltipPopoverMode = 'auto' | 'manual';
 /**
  * @category Overlays
  * @description **A tooltip popover component that displays contextual information when hovering over or focusing on an element.**
@@ -36,6 +37,10 @@ export declare class AtTooltip {
      * Target an external element to use as the trigger. When provided, clicking an element with a matching data-tooltip attribute value will toggle the side panel.
      * */
     trigger_id?: string;
+    /**
+     * The popover type the tooltip opens as. With 'auto', any click outside the tooltip closes it, including a click on its own trigger. Use 'manual' for a tooltip that must stay open through a click on its trigger, e.g. one that changes to "Copied". A 'manual' tooltip doesn't close on Escape.
+     */
+    popover_mode: AtTooltipPopoverMode;
     disabledChanged(newValue: boolean): Promise<void>;
     isOpen: boolean;
     el: HTMLElement;
