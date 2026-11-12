@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-IIXwPU2S.js');
+var index = require('./index-DGi-f7lA.js');
 var translation = require('./translation-NP6A4XKu.js');
 var index$1 = require('./index-CmXMuEr6.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
@@ -21,6 +21,11 @@ const AtControlGroup = class {
 };
 AtControlGroup.style = atControlGroupCss();
 
+const INDICATOR_COLOR = {
+    info: '!bg-active-foreground',
+    warning: '!bg-warning-foreground',
+    error: '!bg-error-foreground',
+};
 const AtReloadButton = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
@@ -36,6 +41,11 @@ const AtReloadButton = class {
      * reloads.
      */
     has_updates = false;
+    /**
+     * Colours the updates indicator to signal how urgent the pending
+     * update is. Only visible while `has_updates` is true.
+     */
+    updates_severity = 'info';
     async componentWillLoad() {
         this.translations = await translation.fetchTranslations(this.el);
     }
@@ -44,7 +54,7 @@ const AtReloadButton = class {
      */
     atuiReload;
     render() {
-        return (index.h("at-tooltip", { key: '93d53831f020f41da9a76ef08c6bc22019030c05', position: "top" }, index.h("div", { key: 'a12d029aafb8ba5bd96162b32ca29faed4729786', slot: "tooltip-trigger", class: "relative" }, this.has_updates && (index.h("span", { key: 'd3baaa3575d2c6fc3bf1335639a3db8810b10c0a', class: "!bg-active-foreground pointer-events-none absolute top-[2px] right-[2px] z-10 h-[8px] w-[8px] rounded-full", "data-name": "reload-updates-indicator" })), index.h("at-button", { key: 'ba3936594223b1c8e9a87fdc92d0e54fc7f63d5e', type: "secondaryText", onAtuiClick: () => this.atuiReload.emit() }, index.h("at-icon", { key: 'be0818f93a980c331ada4cd9b3ce24b304989a81', slot: "icon", name: "retry" }))), index.h("span", { key: 'fc6bbd0ed2f1893b0a34980572556094a9e7d199' }, this.has_updates
+        return (index.h("at-tooltip", { key: 'bcc853b626fe35e0b155657b09a440a7733d2304', position: "top" }, index.h("div", { key: '31160ec550d58f680ec522596c47ccc9175bb98b', slot: "tooltip-trigger", class: "relative" }, this.has_updates && (index.h("span", { key: 'f894a9c221a3ee74ee1f8e6af11d78bd071a7172', class: `${INDICATOR_COLOR[this.updates_severity] ?? INDICATOR_COLOR.info} pointer-events-none absolute top-[2px] right-[2px] z-10 h-[8px] w-[8px] rounded-full`, "data-name": "reload-updates-indicator" })), index.h("at-button", { key: '624653a4f25034d3ef64b586d5f32d26cc9a8b25', type: "secondaryText", onAtuiClick: () => this.atuiReload.emit() }, index.h("at-icon", { key: '57b5d287c5ce62f7d675b5c3d1725cf10c60eba4', slot: "icon", name: "retry" }))), index.h("span", { key: 'c20938fe632314496e242f2cdb463eb7936f9f60' }, this.has_updates
             ? this.translations.ATUI.TABLE.RELOAD_UPDATES_AVAILABLE
             : this.translations.ATUI.TABLE.RELOAD)));
     }

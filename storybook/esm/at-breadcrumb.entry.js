@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment } from './index-DNWg9p_L.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment } from './index-B_iXjeZH.js';
 
 const AtBreadcrumbComponent = class {
     constructor(hostRef) {

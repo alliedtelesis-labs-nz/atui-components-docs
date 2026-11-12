@@ -1,6 +1,6 @@
 const Template = (args) => `
 <at-table-actions>
-    <at-reload-button slot="reload-button" has_updates="${!!args?.has_updates}"></at-reload-button>
+    <at-reload-button slot="reload-button" has_updates="${!!args?.has_updates}" updates_severity="${args?.updates_severity ?? 'info'}"></at-reload-button>
 </at-table-actions>
 <at-table></at-table>
 <script>
@@ -50,8 +50,14 @@ document.querySelector('at-table')
 `;
 export default {
     title: 'Components/Reload Button',
+    argTypes: {
+        updates_severity: {
+            options: ['info', 'warning', 'error'],
+            control: { type: 'select' },
+        },
+    },
 };
 export const Default = Template.bind({});
-Default.args = { has_updates: false };
+Default.args = { has_updates: false, updates_severity: 'info' };
 export const WithUpdatesAvailable = Template.bind({});
-WithUpdatesAvailable.args = { has_updates: true };
+WithUpdatesAvailable.args = { has_updates: true, updates_severity: 'info' };

@@ -3782,6 +3782,18 @@ at-dialog :where([data-name=card-content]) > at-card {
   background-color: color-mix(in srgb, var(--token-state-active-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
 }
 
+.\!bg-error-foreground {
+  --tw-bg-opacity:
+      1 !important;
+  background-color: color-mix(in srgb, var(--token-state-error-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
+}
+
+.\!bg-warning-foreground {
+  --tw-bg-opacity:
+      1 !important;
+  background-color: color-mix(in srgb, var(--token-state-warning-foreground) calc(var(--tw-bg-opacity, 1) * 100%), transparent) !important;
+}
+
 .bg-active-accent {
   --tw-bg-opacity:
       1;

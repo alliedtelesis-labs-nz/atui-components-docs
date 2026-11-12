@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DNWg9p_L.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B_iXjeZH.js';
 
 const AtTabs = class {
     constructor(hostRef) {

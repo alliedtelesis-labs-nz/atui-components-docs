@@ -2447,6 +2447,11 @@ export namespace Components {
           * @default false
          */
         "has_updates"?: boolean;
+        /**
+          * Colours the updates indicator to signal how urgent the pending update is. Only visible while `has_updates` is true.
+          * @default 'info'
+         */
+        "updates_severity"?: UpdatesSeverity;
     }
     /**
      * @category Layout
@@ -8621,6 +8626,11 @@ declare namespace LocalJSX {
           * Emitted when the reload button is clicked.
          */
         "onAtuiReload"?: (event: AtReloadButtonCustomEvent<void>) => void;
+        /**
+          * Colours the updates indicator to signal how urgent the pending update is. Only visible while `has_updates` is true.
+          * @default 'info'
+         */
+        "updates_severity"?: UpdatesSeverity;
     }
     /**
      * @category Layout
@@ -10584,6 +10594,7 @@ declare namespace LocalJSX {
     }
     interface AtReloadButtonAttributes {
         "has_updates": boolean;
+        "updates_severity": UpdatesSeverity;
     }
     interface AtResizableGroupAttributes {
         "direction": ResizeDirection;

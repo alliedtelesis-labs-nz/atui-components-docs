@@ -1,4 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
+type UpdatesSeverity = 'info' | 'warning' | 'error';
 /**
  * @category Actions
  * @description A button for requesting a reload of data. Rendered as an icon-only button with a tooltip.
@@ -14,6 +15,11 @@ export declare class AtReloadButton {
      * reloads.
      */
     has_updates?: boolean;
+    /**
+     * Colours the updates indicator to signal how urgent the pending
+     * update is. Only visible while `has_updates` is true.
+     */
+    updates_severity?: UpdatesSeverity;
     componentWillLoad(): Promise<void>;
     /**
      * Emitted when the reload button is clicked.
@@ -21,3 +27,4 @@ export declare class AtReloadButton {
     atuiReload: EventEmitter<void>;
     render(): any;
 }
+export {};

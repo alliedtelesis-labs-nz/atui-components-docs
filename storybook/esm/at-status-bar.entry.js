@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-DNWg9p_L.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-B_iXjeZH.js';
 
 const LIGHT_TEXT = 'var(--token-color-base-slate-100)';
 const DARK_TEXT = 'var(--token-color-base-slate-900)';
