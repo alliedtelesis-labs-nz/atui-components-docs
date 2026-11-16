@@ -24,6 +24,9 @@ export declare class AtTablePagination {
      * The number of table rows displayed per page
      */
     page_size: number;
+    el: HTMLElement;
+    translations: any;
+    componentWillLoad(): Promise<void>;
     /**
      * The options actually rendered in the selector: the provided (or default)
      * options, with the active `page_size` guaranteed to be present so the

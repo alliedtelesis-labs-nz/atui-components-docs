@@ -43,6 +43,17 @@
                 "SELECT_ALL_ON_PAGE": "このページのすべての行を選択",
                 "ROW": "行",
                 "ROWS": "行"
+            },
+            "PAGINATION": {
+                "PAGE_SIZE": "表示件数:",
+                "PAGE_OF": "{current} / {total} ページ",
+                "PAGE": "ページ",
+                "OF": "/",
+                "TO": "～",
+                "FIRST_PAGE": "最初のページ",
+                "PREVIOUS_PAGE": "前のページ",
+                "NEXT_PAGE": "次のページ",
+                "LAST_PAGE": "最後のページ"
             }
         },
         "TIME": {

@@ -2,7 +2,7 @@
 
 var index = require('./index-CWfGEe1_.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-Bb5se7s8.js');
+var translation = require('./translation-jMTNU3-0.js');
 var agGridColumnId = require('./ag-grid-column-id-DxporS6H.js');
 var index$1 = require('./index-CmXMuEr6.js');
 var atCheckboxCell_entry = require('./at-checkbox-cell.cjs.entry.js');
@@ -49122,6 +49122,20 @@ class AtTableEmptyStateOverlay {
 const atTableCss = () => `.ag-header-cell{height:48px}.ag-cell,.ag-header-cell{padding-left:13px !important;padding-right:13px !important}.ag-cell-wrapper,.ag-cell-value{min-width:0}.ag-cell:has(at-checkbox-cell),.ag-cell:has([data-name=selection-cell]),.ag-cell:has([data-name=selection-radio-cell]),.ag-header-cell:has(at-checkbox-header),.ag-header-cell:has([data-name=selection-header]){padding-left:6px !important;padding-right:6px !important}.ag-cell:has(at-checkbox-cell) at-checkbox,.ag-cell:has([data-name=selection-cell]) at-checkbox,.ag-header-cell:has(at-checkbox-header) at-checkbox,.ag-header-cell:has([data-name=selection-header]) at-checkbox{width:auto}.ag-cell-wrapper:has(at-checkbox-cell),.ag-cell-value:has(at-checkbox-cell),.ag-cell-wrapper:has([data-name=selection-cell]),.ag-cell-value:has([data-name=selection-cell]),.ag-cell-wrapper:has([data-name=selection-radio-cell]),.ag-cell-value:has([data-name=selection-radio-cell]){width:100%;min-width:0;overflow:visible}.ag-cell:has(at-checkbox-cell) at-checkbox-cell{justify-content:center}.ag-header-cell:has(at-checkbox-header) .ag-header-cell-comp-wrapper,.ag-header-cell:has(at-checkbox-header) .ag-header-cell-label{width:100%;justify-content:center}.ag-cell:has(at-chip-list-cell){height:100% !important;align-items:center !important}.ag-header-cell atui-checkbox[aria-checked],.ag-cell atui-checkbox[aria-checked],atui-menu atui-checkbox[aria-checked]{background-color:transparent}.ag-header-cell-text{font-size:var(--token-font-size-xs);font-weight:var(--token-font-weight-med)}.ag-header-cell[col-id=colorStatusCell],.ag-cell[col-id=colorStatusCell]{padding-left:0 !important;padding-right:0 !important;width:var(--colorStatusColWidth) !important;border:none !important}.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui--has-rows .ag-layout-auto-height .ag-center-cols-viewport{min-height:unset !important}.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-container,.ag-theme-atui:not(.ag-theme-atui--has-rows) .ag-layout-auto-height .ag-center-cols-viewport{min-height:var(--at-table-empty-state-height, 150px)}.ag-row.atui-row-selected,.ag-row.atui-row-selected .ag-cell{background-color:var(--token-state-active-background)}`;
 
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
+function paginationLocaleText(labels) {
+    const pageSizeWithoutColon = labels.PAGE_SIZE.replace(/[:：]\s*$/, '');
+    return {
+        pageSizeSelectorLabel: labels.PAGE_SIZE,
+        ariaPageSizeSelectorLabel: pageSizeWithoutColon,
+        page: labels.PAGE,
+        of: labels.OF,
+        to: labels.TO,
+        firstPage: labels.FIRST_PAGE,
+        previousPage: labels.PREVIOUS_PAGE,
+        nextPage: labels.NEXT_PAGE,
+        lastPage: labels.LAST_PAGE,
+    };
+}
 /** The menu cell's icon button plus the cell's padding. */
 const MENU_COLUMN_WIDTH = 56;
 const AtTableComponent = class {
@@ -49535,6 +49549,8 @@ const AtTableComponent = class {
         else {
             gridOptions.pagination = false;
         }
+        const translations = await translation.fetchTranslations(this.el);
+        gridOptions.localeText = paginationLocaleText(translations.ATUI.TABLE.PAGINATION);
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
@@ -49552,7 +49568,7 @@ const AtTableComponent = class {
         return this.agGrid;
     }
     render() {
-        return (index.h(index.Host, { key: 'a3d4ff2e83b777fc0356038c3c1cfa3723408f14', class: {
+        return (index.h(index.Host, { key: '145b29ed3eb8b302b2666631b442b97da9f1aad1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight

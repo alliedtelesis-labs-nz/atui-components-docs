@@ -5,8 +5,23 @@ import { AvailableCells } from "../../../types/table-cells";
 import { themeQuartz } from "ag-grid-community";
 import { TOKEN_FONT_FAMILY_BASE, TOKEN_FONT_SIZE_BASE, TOKEN_STATE_ACTIVE_BASE, } from "@alliedtelesis-labs-nz/atui-design-tokens/build/javascript/vista-manager/_tokens.js";
 import { AtTableComponentsConfigs } from "../at-table-components-configs";
+import { fetchTranslations } from "../../../utils/translation";
 import { AtTableEmptyStateOverlay, } from "./table-empty-state-overlay";
 const PAGINATION_PAGE_SIZE_SELECTOR = [5, 10, 20, 50, 100];
+function paginationLocaleText(labels) {
+    const pageSizeWithoutColon = labels.PAGE_SIZE.replace(/[:：]\s*$/, '');
+    return {
+        pageSizeSelectorLabel: labels.PAGE_SIZE,
+        ariaPageSizeSelectorLabel: pageSizeWithoutColon,
+        page: labels.PAGE,
+        of: labels.OF,
+        to: labels.TO,
+        firstPage: labels.FIRST_PAGE,
+        previousPage: labels.PREVIOUS_PAGE,
+        nextPage: labels.NEXT_PAGE,
+        lastPage: labels.LAST_PAGE,
+    };
+}
 /** The menu cell's icon button plus the cell's padding. */
 const MENU_COLUMN_WIDTH = 56;
 /**
@@ -418,6 +433,8 @@ export class AtTableComponent {
         else {
             gridOptions.pagination = false;
         }
+        const translations = await fetchTranslations(this.el);
+        gridOptions.localeText = paginationLocaleText(translations.ATUI.TABLE.PAGINATION);
         const gridApi = createGrid(this.el, gridOptions);
         this.agGrid = gridApi;
         this.tableCreated = true;
@@ -435,7 +452,7 @@ export class AtTableComponent {
         return this.agGrid;
     }
     render() {
-        return (h(Host, { key: 'a3d4ff2e83b777fc0356038c3c1cfa3723408f14', class: {
+        return (h(Host, { key: '145b29ed3eb8b302b2666631b442b97da9f1aad1', class: {
                 'ag-theme-atui': true,
                 'ag-theme-atui--has-rows': this.hasDisplayedRows,
             }, style: this.emptyStateHeight

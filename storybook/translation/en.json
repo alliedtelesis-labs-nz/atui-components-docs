@@ -43,6 +43,17 @@
                 "SELECT_ALL_ON_PAGE": "Select all rows on this page",
                 "ROW": "row",
                 "ROWS": "rows"
+            },
+            "PAGINATION": {
+                "PAGE_SIZE": "Page Size:",
+                "PAGE_OF": "Page {current} of {total}",
+                "PAGE": "Page",
+                "OF": "of",
+                "TO": "to",
+                "FIRST_PAGE": "First page",
+                "PREVIOUS_PAGE": "Previous page",
+                "NEXT_PAGE": "Next page",
+                "LAST_PAGE": "Last page"
             }
         },
         "TIME": {
