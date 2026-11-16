@@ -50,6 +50,7 @@ export declare class AtInputDate {
      */
     aria_label: string;
     selectedDate: string;
+    private hasNativeError;
     translations: any;
     el: any;
     private inputId;
@@ -60,5 +61,6 @@ export declare class AtInputDate {
     componentWillLoad(): Promise<void>;
     watchValue(newValue: Date | null): void;
     componentWillRender(): void;
+    private get showsError();
     render(): any;
 }

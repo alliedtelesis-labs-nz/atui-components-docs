@@ -75,6 +75,7 @@ export class AtInputDate {
      */
     aria_label;
     selectedDate;
+    hasNativeError = false;
     translations;
     el;
     inputId = `datepicker-${Math.random().toString(36).substring(2, 11)}`;
@@ -99,14 +100,17 @@ export class AtInputDate {
             this.selectedDate = TimeDatePresentationUtil.getFormattedDate(this.value, 'YYYY-MM-DD');
         }
     }
+    get showsError() {
+        return !!this.invalid || this.hasNativeError;
+    }
     render() {
         const getClassname = classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
-            invalid: this.invalid,
+            invalid: this.showsError,
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: '29c64418a54613833187f34b485e3ea7464ebb3e' }, h("style", { key: '95b4b4e1862f3266f283a14a547c4498950ef216' }, `
+        return (h(Host, { key: 'a64645afcdb3faaf0fc63365459264c5dac8081a' }, h("style", { key: '72cf467f41a751cd2a86a51365f03ba8ef5ab8d3' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -119,14 +123,15 @@ export class AtInputDate {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: '459af5a16c8a1038359eadae0ce6f18931082ee6', class: "flex w-full flex-col" }, h("div", { key: 'b62b4735050c977eb26b3765c4a392fc17c91a31', class: "flex flex-col" }, h("div", { key: '78f5b4167ba99893ab31043e9a5ae9dca2369d31', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: 'dd4066ecd5440895a059d9e8fa5ee6ebd293f8f2', class: "flex w-full flex-col" }, h("div", { key: '140a45de1434140a97520bad4f0136741abdafae', class: "flex flex-col" }, h("div", { key: 'a1698fc4ff134aefbdc8a9d298f3f1110adff62d', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '21fcf79d2a01d4a5cf411fb418f39653205276da', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '31bf94f654c0409dc5b44daf81b8fa93d6bf4b08', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '50c6ae20559b9b3a479785a3242b6841313e3add', class: classname }, h("input", { key: '900f4500db5dccee0e5fb8f2359eae924c177054', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: 'f1b5db0a987d61e162e7ab335b74c4617638dc90', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '0865c4070b52d85fff3c1e86e76c8bf533c16565', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'b367b48e4be1dfe9cb6ab615cd304ac40ecaeb68', class: classname }, h("input", { key: '35bb2b029b57efd4a4211de287a44bbcafdb3714', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
                 const dateString = event.target.value;
                 const input = event.target;
                 if (dateString === '') {
                     this.value = null;
-                    this.invalid = !input.validity.valid;
+                    this.hasNativeError =
+                        !input.validity.valid;
                     this.atuiChange.emit(null);
                     return;
                 }
@@ -139,7 +144,7 @@ export class AtInputDate {
                     return;
                 }
                 this.selectedDate = dateString;
-                this.invalid = !input.validity.valid;
+                this.hasNativeError = !input.validity.valid;
                 // Parse as a local date: new Date('YYYY-MM-DD')
                 // parses as UTC midnight, which shifts the
                 // displayed day in negative-UTC-offset zones.
@@ -148,7 +153,7 @@ export class AtInputDate {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.invalid && (h("span", { key: '18d519ce9e0a2d1c1f176b169eafb9f8a9e5713d', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.error_text && this.showsError && (h("span", { key: 'f1547a9055952a36c922a8569aeb677240b6d02f', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
     }
     static get is() { return "at-input-date"; }
     static get properties() {
@@ -318,7 +323,7 @@ export class AtInputDate {
             },
             "invalid": {
                 "type": "boolean",
-                "mutable": true,
+                "mutable": false,
                 "complexType": {
                     "original": "boolean",
                     "resolved": "boolean",
@@ -398,6 +403,7 @@ export class AtInputDate {
     static get states() {
         return {
             "selectedDate": {},
+            "hasNativeError": {},
             "translations": {}
         };
     }
