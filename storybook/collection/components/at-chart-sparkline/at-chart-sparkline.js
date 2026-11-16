@@ -30,7 +30,7 @@ const GLOW_ALPHA = 0.2;
 const FILL_TOP_ALPHA = 0.35;
 /**
  * @category Data Visualization
- * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+ * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
  */
 export class AtChartSparkline {
     /**
@@ -202,11 +202,11 @@ export class AtChartSparkline {
         this.drawGate?.requestDraw();
     }
     render() {
-        return (h(Host, { key: '49cfaa8778e9f9adc434d6974d0b6eab037b85cb', style: {
+        return (h(Host, { key: 'c06511379a948780b22106cb1a310ef307bf3e73', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, h("canvas", { key: 'efef4c9337dc56f4b983fa4fc6892e9f5eb7968c', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
+            } }, h("canvas", { key: 'e8f2514ef43166a9278c5e602f130065583b49f0', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
     static get is() { return "at-chart-sparkline"; }
     static get properties() {

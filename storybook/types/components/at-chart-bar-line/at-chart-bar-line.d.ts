@@ -25,10 +25,6 @@ export interface AtIThreshold {
     stepped?: boolean;
 }
 /**
- * @category Data Visualization
- * @description A flexible chart component for displaying bar and line charts with extensive customization options. Supports multiple data series, thresholds, time-based data, and various color palettes.
- */
-/**
  * ### ```interface PointStyles```
  * ```
  *  pointBackgroundColor: Color;
@@ -51,6 +47,9 @@ export interface AtIThreshold {
  *  dashLine?: boolean;
  *  stepped?: boolean;
  * ```
+ *
+ * @category Data Visualization
+ * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
  */
 export declare class AtChartBarLine {
     /**

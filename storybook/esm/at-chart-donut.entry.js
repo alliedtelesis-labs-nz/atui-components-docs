@@ -72,6 +72,11 @@ const AtChartDonut = class {
      */
     cutout = 70;
     /**
+     * Space in pixels between adjacent segments. The gap is transparent, so the
+     * surface behind the chart shows through. `0` leaves the segments touching.
+     */
+    segment_gap = 0;
+    /**
      * Pass the active theme value here to trigger a chart redraw when the theme changes.
      * The value itself is not used — any change to this prop causes the chart to reinitialise
      * so colors and text are re-read from the current CSS variables.
@@ -184,6 +189,54 @@ const AtChartDonut = class {
             chart.render();
         }
     }
+    /**
+     * Separates touching arcs by clearing a hairline along each segment boundary.
+     *
+     * Neither of the obvious approaches works here. A transparent `borderColor`
+     * paints nothing, because `borderWidth` strokes over the arc rather than
+     * carving into it. Chart.js `spacing` offsets every arc radially outward
+     * instead of separating neighbours. Painting an opaque border in a resolved
+     * surface token would work, but it has to guess which surface the chart is
+     * on and be re-resolved whenever the theme changes.
+     *
+     * Erasing with `destination-out` avoids all of that: the gap becomes genuinely
+     * transparent canvas, so the real background shows through in any theme and on
+     * any card or panel. Boundaries are read from the live arc geometry, so the
+     * gap tracks `hoverOffset` as segments lift.
+     */
+    getSegmentGapPlugin() {
+        return {
+            id: 'AtSegmentGapPlugin',
+            afterDatasetsDraw: (chart) => {
+                const ctx = chart.ctx;
+                if (!ctx || !(this.segment_gap > 0)) {
+                    return;
+                }
+                const arcs = (chart.getDatasetMeta(0)?.data ??
+                    []);
+                const visible = arcs.filter((arc) => arc.circumference > 0);
+                // A single visible segment is a closed ring with no neighbour to
+                // separate from — cutting it would just leave an arbitrary seam.
+                if (visible.length < 2) {
+                    return;
+                }
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = this.segment_gap;
+                ctx.strokeStyle = '#000';
+                for (const arc of visible) {
+                    const { x, y, innerRadius, outerRadius, startAngle } = arc;
+                    const cos = Math.cos(startAngle);
+                    const sin = Math.sin(startAngle);
+                    ctx.beginPath();
+                    ctx.moveTo(x + cos * innerRadius, y + sin * innerRadius);
+                    ctx.lineTo(x + cos * outerRadius, y + sin * outerRadius);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            },
+        };
+    }
     getDrawCenterTextPlugin(typography) {
         return {
             id: 'DrawCenterTextPlugin',
@@ -291,6 +344,7 @@ const AtChartDonut = class {
             this.applyPresetPalette(colors);
         }
         const plugins = this.plugins ? [...this.plugins] : [];
+        plugins.push(this.getSegmentGapPlugin());
         if (this.center_text || this.center_value) {
             plugins.push(this.getDrawCenterTextPlugin(typography));
         }
@@ -469,7 +523,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: '97ca1be37ee9eb2a8f2a49b8a58b022a48b2b405', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'a247fe90b45ec652328508c5dde02071f3feec46', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'f54e470db43f6c7b27e71f6f0b0f9772218d8705', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'e49e9746fec5e69f3f36a56303d99be3e3598a6e', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

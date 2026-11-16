@@ -45,7 +45,7 @@ const CENTER_UNIT_SCALE = 0.65;
 const CENTER_UNIT_WEIGHT = 500;
 /**
  * @category Data Visualization
- * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+ * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
  */
 export class AtChartGauge {
     /**
@@ -538,7 +538,7 @@ export class AtChartGauge {
         }
     }
     render() {
-        return (h(Host, { key: '6828b5f2914d62984d6d5e8ec481bb4cb86ed6bb', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'a87b83668f8120ab4d6ad8c4ddec4868dfaf4718', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
+        return (h(Host, { key: '039ab80b8cbedf191093dc0e1c4064a46ccb870b', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: '9ae427db87a525834ec9130feef5fe3abab2f45b', ref: (el) => (this.canvasEl = el), class: `w-full ${heightVariants[this.height]}`, "data-name": "gauge-canvas" })));
     }
     static get is() { return "at-chart-gauge"; }
     static get properties() {

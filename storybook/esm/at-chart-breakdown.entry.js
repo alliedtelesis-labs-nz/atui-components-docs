@@ -77,6 +77,11 @@ const AtChartBreakdown = class {
      */
     cutout = 70;
     /**
+     * Space in pixels between adjacent segments. The gap is transparent, so the
+     * surface behind the chart shows through. `0` leaves the segments touching.
+     */
+    segment_gap = 0;
+    /**
      * Emitted when a legend item is toggled. The event detail contains the
      * zero-based `index` of the toggled segment and `visible` — true if the
      * segment is now visible, false if it was hidden.
@@ -334,6 +339,54 @@ const AtChartBreakdown = class {
      * explicit chart.resize() calls). Used to keep compactOffset in sync with
      * the actual canvas height so the side-text div is positioned correctly.
      */
+    /**
+     * Separates touching arcs by clearing a hairline along each segment boundary.
+     *
+     * Neither of the obvious approaches works here. A transparent `borderColor`
+     * paints nothing, because `borderWidth` strokes over the arc rather than
+     * carving into it. Chart.js `spacing` offsets every arc radially outward
+     * instead of separating neighbours. Painting an opaque border in a resolved
+     * surface token would work, but it has to guess which surface the chart is
+     * on and be re-resolved whenever the theme changes.
+     *
+     * Erasing with `destination-out` avoids all of that: the gap becomes genuinely
+     * transparent canvas, so the real background shows through in any theme and on
+     * any card or panel. Boundaries are read from the live arc geometry, so the
+     * gap tracks `hoverOffset` as segments lift.
+     */
+    getSegmentGapPlugin() {
+        return {
+            id: 'AtSegmentGapPlugin',
+            afterDatasetsDraw: (chart) => {
+                const ctx = chart.ctx;
+                if (!ctx || !(this.segment_gap > 0)) {
+                    return;
+                }
+                const arcs = (chart.getDatasetMeta(0)?.data ??
+                    []);
+                const visible = arcs.filter((arc) => arc.circumference > 0);
+                // A single visible segment is a closed ring with no neighbour to
+                // separate from — cutting it would just leave an arbitrary seam.
+                if (visible.length < 2) {
+                    return;
+                }
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = this.segment_gap;
+                ctx.strokeStyle = '#000';
+                for (const arc of visible) {
+                    const { x, y, innerRadius, outerRadius, startAngle } = arc;
+                    const cos = Math.cos(startAngle);
+                    const sin = Math.sin(startAngle);
+                    ctx.beginPath();
+                    ctx.moveTo(x + cos * innerRadius, y + sin * innerRadius);
+                    ctx.lineTo(x + cos * outerRadius, y + sin * outerRadius);
+                    ctx.stroke();
+                }
+                ctx.restore();
+            },
+        };
+    }
     getCompactOffsetPlugin() {
         return {
             id: 'compactOffsetTracker',
@@ -422,6 +475,7 @@ const AtChartBreakdown = class {
         // a custom legend is drawn alongside it.
         const useLeftAlign = this.legend_position === 'right';
         const plugins = this.plugins ? [...this.plugins] : [];
+        plugins.push(this.getSegmentGapPlugin());
         if (useLeftAlign) {
             plugins.push(this.getLeftAlignPlugin());
         }
@@ -588,7 +642,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? readChartTypography(this.el)
             : undefined;
-        return (h(Host, { key: '742fbcf6f5ab6377d63c6869dc694b96d92e06f7', style: {
+        return (h(Host, { key: '4f4a5518434be222ae3bda44b350e0559cd7e645', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -596,24 +650,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, h("canvas", { key: '01e288ecc4b3c5e88cc61b58704efc82245e4dcc', class: heightVariants[this.height], style: {
+            } }, h("canvas", { key: '65b976aab6a0090fe5b2bc27d7a6eec4937d15e2', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (h("div", { key: 'ef468120217adae19c9da14d3ca79f7f112faeee', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (h("div", { key: 'e4b8e0977c4e5421d40a47f0be8f5343d479b3e5', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (h("span", { key: 'be6a86df14d62203b6ac5b8b6b85906450cc6338', style: {
+            } }, this.center_value && (h("span", { key: '4ad63f1b0c98ba848ebdd4d45c3a0af72d063435', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (h("span", { key: '8852769bade576aad9a95a777b306dfe28916eb4', style: {
+            } }, this.center_value)), this.center_text && (h("span", { key: '62228b5b950ee869108c4a57075494e3504150a2', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

@@ -14,7 +14,7 @@ export type AtChartGaugeStatus = 'good' | 'warning' | 'bad' | 'unreachable';
 export type AtChartGaugePalette = AtChartColorPalette.ALERT | AtChartColorPalette.CATEGORICAL;
 /**
  * @category Data Visualization
- * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+ * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
  */
 export declare class AtChartGauge {
     /**

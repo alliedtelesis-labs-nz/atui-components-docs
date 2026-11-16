@@ -5,7 +5,7 @@ import { AtChartHeight } from '../../types/chart';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization
- * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
+ * @description A compact, dashboard-friendly donut for the proportional distribution of categories, with the legend and center text beside it. Use when a dashboard widget shows how a whole divides into parts. Prefer `at-chart-donut` when the chart owns its surface and has room for a full legend.
  */
 export declare class AtChartBreakdown {
     /**
@@ -70,6 +70,11 @@ export declare class AtChartBreakdown {
      * Default is 70.
      */
     cutout?: number;
+    /**
+     * Space in pixels between adjacent segments. The gap is transparent, so the
+     * surface behind the chart shows through. `0` leaves the segments touching.
+     */
+    segment_gap: number;
     /**
      * Emitted when a legend item is toggled. The event detail contains the
      * zero-based `index` of the toggled segment and `visible` — true if the
@@ -144,6 +149,22 @@ export declare class AtChartBreakdown {
      * explicit chart.resize() calls). Used to keep compactOffset in sync with
      * the actual canvas height so the side-text div is positioned correctly.
      */
+    /**
+     * Separates touching arcs by clearing a hairline along each segment boundary.
+     *
+     * Neither of the obvious approaches works here. A transparent `borderColor`
+     * paints nothing, because `borderWidth` strokes over the arc rather than
+     * carving into it. Chart.js `spacing` offsets every arc radially outward
+     * instead of separating neighbours. Painting an opaque border in a resolved
+     * surface token would work, but it has to guess which surface the chart is
+     * on and be re-resolved whenever the theme changes.
+     *
+     * Erasing with `destination-out` avoids all of that: the gap becomes genuinely
+     * transparent canvas, so the real background shows through in any theme and on
+     * any card or panel. Boundaries are read from the live arc geometry, so the
+     * gap tracks `hoverOffset` as segments lift.
+     */
+    private getSegmentGapPlugin;
     private getCompactOffsetPlugin;
     /**
      * Plugin that hides the built-in Chart.js legend before layout whenever the

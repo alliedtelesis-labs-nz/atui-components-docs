@@ -512,6 +512,8 @@ export namespace Components {
      *  dashLine?: boolean;
      *  stepped?: boolean;
      * ```
+     * @category Data Visualization
+     * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
      */
     interface AtChartBarLine {
         /**
@@ -588,7 +590,7 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
+     * @description A compact, dashboard-friendly donut for the proportional distribution of categories, with the legend and center text beside it. Use when a dashboard widget shows how a whole divides into parts. Prefer `at-chart-donut` when the chart owns its surface and has room for a full legend.
      */
     interface AtChartBreakdown {
         /**
@@ -652,6 +654,11 @@ export namespace Components {
          */
         "resize": (containerHeight?: number) => Promise<void>;
         /**
+          * Space in pixels between adjacent segments. The gap is transparent, so the surface behind the chart shows through. `0` leaves the segments touching.
+          * @default 0
+         */
+        "segment_gap": number;
+        /**
           * Toggles the visibility of the dataset segment at the given index, mirroring a click on the corresponding legend item. Emits `atuiLegendToggle` with the new visibility state.
          */
         "toggleLegendItem": (index: number) => Promise<void>;
@@ -662,7 +669,7 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A donut chart for proportional data, with customizable colors and a legend. Use when the chart is the focus of its card or panel and shows how a whole divides into parts. Prefer `at-chart-breakdown` in a compact dashboard widget and `at-chart-gauge` for a single ratio against a target.
      */
     interface AtChartDonut {
         /**
@@ -735,6 +742,11 @@ export namespace Components {
          */
         "resize": () => Promise<void>;
         /**
+          * Space in pixels between adjacent segments. The gap is transparent, so the surface behind the chart shows through. `0` leaves the segments touching.
+          * @default 0
+         */
+        "segment_gap": number;
+        /**
           * Toggles the visibility of the dataset segment at the given index, mirroring a click on the corresponding legend item.
          */
         "toggleLegendItem": (index: number) => Promise<void>;
@@ -745,7 +757,7 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
      */
     interface AtChartGauge {
         /**
@@ -826,7 +838,7 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
      */
     interface AtChartSparkline {
         /**
@@ -865,7 +877,7 @@ export namespace Components {
     }
     /**
      * @category Data Visualization
-     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     * @description A single-metric trend tile: a large current value, an up/down delta over the period, and an `at-chart-sparkline` of the recent series. Use when a dashboard stat widget needs the current value, the change and the recent shape of one metric together. Prefer `at-chart-sparkline` when only the shape is needed and `at-chart-bar-line` to compare several series.
      */
     interface AtChartTrend {
         /**
@@ -4452,6 +4464,8 @@ declare global {
      *  dashLine?: boolean;
      *  stepped?: boolean;
      * ```
+     * @category Data Visualization
+     * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
      */
     interface HTMLAtChartBarLineElement extends Components.AtChartBarLine, HTMLStencilElement {
     }
@@ -4467,7 +4481,7 @@ declare global {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
+     * @description A compact, dashboard-friendly donut for the proportional distribution of categories, with the legend and center text beside it. Use when a dashboard widget shows how a whole divides into parts. Prefer `at-chart-donut` when the chart owns its surface and has room for a full legend.
      */
     interface HTMLAtChartBreakdownElement extends Components.AtChartBreakdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtChartBreakdownElementEventMap>(type: K, listener: (this: HTMLAtChartBreakdownElement, ev: AtChartBreakdownCustomEvent<HTMLAtChartBreakdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4485,7 +4499,7 @@ declare global {
     };
     /**
      * @category Data Visualization
-     * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A donut chart for proportional data, with customizable colors and a legend. Use when the chart is the focus of its card or panel and shows how a whole divides into parts. Prefer `at-chart-breakdown` in a compact dashboard widget and `at-chart-gauge` for a single ratio against a target.
      */
     interface HTMLAtChartDonutElement extends Components.AtChartDonut, HTMLStencilElement {
     }
@@ -4495,7 +4509,7 @@ declare global {
     };
     /**
      * @category Data Visualization
-     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
      */
     interface HTMLAtChartGaugeElement extends Components.AtChartGauge, HTMLStencilElement {
     }
@@ -4505,7 +4519,7 @@ declare global {
     };
     /**
      * @category Data Visualization
-     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
      */
     interface HTMLAtChartSparklineElement extends Components.AtChartSparkline, HTMLStencilElement {
     }
@@ -4515,7 +4529,7 @@ declare global {
     };
     /**
      * @category Data Visualization
-     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     * @description A single-metric trend tile: a large current value, an up/down delta over the period, and an `at-chart-sparkline` of the recent series. Use when a dashboard stat widget needs the current value, the change and the recent shape of one metric together. Prefer `at-chart-sparkline` when only the shape is needed and `at-chart-bar-line` to compare several series.
      */
     interface HTMLAtChartTrendElement extends Components.AtChartTrend, HTMLStencilElement {
     }
@@ -6612,6 +6626,8 @@ declare namespace LocalJSX {
      *  dashLine?: boolean;
      *  stepped?: boolean;
      * ```
+     * @category Data Visualization
+     * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
      */
     interface AtChartBarLine {
         /**
@@ -6674,7 +6690,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Visualization
-     * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
+     * @description A compact, dashboard-friendly donut for the proportional distribution of categories, with the legend and center text beside it. Use when a dashboard widget shows how a whole divides into parts. Prefer `at-chart-donut` when the chart owns its surface and has room for a full legend.
      */
     interface AtChartBreakdown {
         /**
@@ -6736,13 +6752,18 @@ declare namespace LocalJSX {
          */
         "refresh_theme"?: string;
         /**
+          * Space in pixels between adjacent segments. The gap is transparent, so the surface behind the chart shows through. `0` leaves the segments touching.
+          * @default 0
+         */
+        "segment_gap"?: number;
+        /**
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
     /**
      * @category Data Visualization
-     * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+     * @description A donut chart for proportional data, with customizable colors and a legend. Use when the chart is the focus of its card or panel and shows how a whole divides into parts. Prefer `at-chart-breakdown` in a compact dashboard widget and `at-chart-gauge` for a single ratio against a target.
      */
     interface AtChartDonut {
         /**
@@ -6797,13 +6818,18 @@ declare namespace LocalJSX {
          */
         "refresh_theme"?: string;
         /**
+          * Space in pixels between adjacent segments. The gap is transparent, so the surface behind the chart shows through. `0` leaves the segments touching.
+          * @default 0
+         */
+        "segment_gap"?: number;
+        /**
           * Options merged into the tooltip plugin config. ATUI defaults are preserved unless explicitly overridden.
          */
         "tooltip_options"?: object;
     }
     /**
      * @category Data Visualization
-     * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+     * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
      */
     interface AtChartGauge {
         /**
@@ -6875,7 +6901,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Visualization
-     * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+     * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
      */
     interface AtChartSparkline {
         /**
@@ -6909,7 +6935,7 @@ declare namespace LocalJSX {
     }
     /**
      * @category Data Visualization
-     * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+     * @description A single-metric trend tile: a large current value, an up/down delta over the period, and an `at-chart-sparkline` of the recent series. Use when a dashboard stat widget needs the current value, the change and the recent shape of one metric together. Prefer `at-chart-sparkline` when only the shape is needed and `at-chart-bar-line` to compare several series.
      */
     interface AtChartTrend {
         /**
@@ -10253,6 +10279,7 @@ declare namespace LocalJSX {
         "center_value": string;
         "center_text": string;
         "cutout": number;
+        "segment_gap": number;
     }
     interface AtChartDonutAttributes {
         "height": AtChartHeight;
@@ -10261,6 +10288,7 @@ declare namespace LocalJSX {
         "center_value": string;
         "center_text": string;
         "cutout": number;
+        "segment_gap": number;
         "refresh_theme": string;
     }
     interface AtChartGaugeAttributes {
@@ -11084,31 +11112,33 @@ declare module "@stencil/core" {
              *  dashLine?: boolean;
              *  stepped?: boolean;
              * ```
+             * @category Data Visualization
+             * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
              */
             "at-chart-bar-line": LocalJSX.IntrinsicElements["at-chart-bar-line"] & JSXBase.HTMLAttributes<HTMLAtChartBarLineElement>;
             /**
              * @category Data Visualization
-             * @description A breakdown chart component for visualizing proportional distribution of categories with customizable colors and legends. Built on Chart.js with a compact dashboard-friendly layout (donut left; custom canvas legend when legend_position='right'; center text rendered alongside).
+             * @description A compact, dashboard-friendly donut for the proportional distribution of categories, with the legend and center text beside it. Use when a dashboard widget shows how a whole divides into parts. Prefer `at-chart-donut` when the chart owns its surface and has room for a full legend.
              */
             "at-chart-breakdown": LocalJSX.IntrinsicElements["at-chart-breakdown"] & JSXBase.HTMLAttributes<HTMLAtChartBreakdownElement>;
             /**
              * @category Data Visualization
-             * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+             * @description A donut chart for proportional data, with customizable colors and a legend. Use when the chart is the focus of its card or panel and shows how a whole divides into parts. Prefer `at-chart-breakdown` in a compact dashboard widget and `at-chart-gauge` for a single ratio against a target.
              */
             "at-chart-donut": LocalJSX.IntrinsicElements["at-chart-donut"] & JSXBase.HTMLAttributes<HTMLAtChartDonutElement>;
             /**
              * @category Data Visualization
-             * @description A semicircle gauge for a single metric against a min/max scale. A thick inner value arc is coloured by health status, an optional thin outer ring shows persistent threshold zones, and the value plus a label sit in the centre. Colours resolve from theme CSS variables so the gauge stays theme-aware.
+             * @description A semicircle gauge for a single metric against a min/max scale. The value arc is coloured by health status, an optional outer ring shows threshold zones, and the value and label sit in the centre. Use when one percentage or ratio is measured against a target, limit or capacity. Prefer `at-chart-donut` or `at-chart-breakdown` for parts of a whole and `at-chart-trend` for movement over time.
              */
             "at-chart-gauge": LocalJSX.IntrinsicElements["at-chart-gauge"] & JSXBase.HTMLAttributes<HTMLAtChartGaugeElement>;
             /**
              * @category Data Visualization
-             * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+             * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
              */
             "at-chart-sparkline": LocalJSX.IntrinsicElements["at-chart-sparkline"] & JSXBase.HTMLAttributes<HTMLAtChartSparklineElement>;
             /**
              * @category Data Visualization
-             * @description A single-metric trend tile: a large current value, an up/down delta indicator over the period, and a compact `at-chart-sparkline` of the recent series. Composes `at-chart-sparkline` for the line so the sparkline itself stays a pure, reusable primitive. Suited to dashboard stat widgets summarising one metric (CPU, memory, response time, throughput, etc.).
+             * @description A single-metric trend tile: a large current value, an up/down delta over the period, and an `at-chart-sparkline` of the recent series. Use when a dashboard stat widget needs the current value, the change and the recent shape of one metric together. Prefer `at-chart-sparkline` when only the shape is needed and `at-chart-bar-line` to compare several series.
              */
             "at-chart-trend": LocalJSX.IntrinsicElements["at-chart-trend"] & JSXBase.HTMLAttributes<HTMLAtChartTrendElement>;
             /**

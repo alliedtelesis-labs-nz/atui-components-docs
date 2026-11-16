@@ -15,10 +15,6 @@ const heightVariants = {
     auto: '100%',
 };
 /**
- * @category Data Visualization
- * @description A flexible chart component for displaying bar and line charts with extensive customization options. Supports multiple data series, thresholds, time-based data, and various color palettes.
- */
-/**
  * ### ```interface PointStyles```
  * ```
  *  pointBackgroundColor: Color;
@@ -41,6 +37,9 @@ const heightVariants = {
  *  dashLine?: boolean;
  *  stepped?: boolean;
  * ```
+ *
+ * @category Data Visualization
+ * @description A bar and line chart with multiple data series, thresholds, time-based data and a choice of color palettes. Use when comparing categories or several series, or for a time series whose values must be read off an axis. Prefer `at-chart-trend` or `at-chart-sparkline` for one metric summarised in a tile, and `at-chart-donut` or `at-chart-breakdown` for parts of a whole.
  */
 export class AtChartBarLine {
     /**
@@ -419,11 +418,11 @@ export class AtChartBarLine {
         }
     }
     render() {
-        return (h(Host, { key: '84b4280653de8274603cfb4c968700ef830b6670', style: {
+        return (h(Host, { key: 'e41ca89ec1ffc6496fbfd7e8ca6cfd0f33f4a239', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, h("canvas", { key: 'a42fdb070ff02793909bfedbcf093af76b804310', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
+            } }, h("canvas", { key: '7fcb1de17a41a0ac95fe44cc3911511c1d103dfe', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
     }
     static get is() { return "at-chart-bar-line"; }
     static get properties() {

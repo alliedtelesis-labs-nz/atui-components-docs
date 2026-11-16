@@ -5,7 +5,7 @@ import { AtChartHeight } from '../../types/chart';
 export type AtLegendPosition = 'top' | 'bottom' | 'left' | 'right';
 /**
  * @category Data Visualization
- * @description A donut chart component for visualizing proportional data with customizable colors and legends. Built on Chart.js with responsive design and interactive hover effects.
+ * @description A donut chart for proportional data, with customizable colors and a legend. Use when the chart is the focus of its card or panel and shows how a whole divides into parts. Prefer `at-chart-breakdown` in a compact dashboard widget and `at-chart-gauge` for a single ratio against a target.
  */
 export declare class AtChartDonut {
     /**
@@ -68,6 +68,11 @@ export declare class AtChartDonut {
      */
     cutout?: number;
     /**
+     * Space in pixels between adjacent segments. The gap is transparent, so the
+     * surface behind the chart shows through. `0` leaves the segments touching.
+     */
+    segment_gap: number;
+    /**
      * Pass the active theme value here to trigger a chart redraw when the theme changes.
      * The value itself is not used — any change to this prop causes the chart to reinitialise
      * so colors and text are re-read from the current CSS variables.
@@ -125,6 +130,22 @@ export declare class AtChartDonut {
      * onClick handler and the toggleLegendItem() method.
      */
     private toggleDatasetVisibility;
+    /**
+     * Separates touching arcs by clearing a hairline along each segment boundary.
+     *
+     * Neither of the obvious approaches works here. A transparent `borderColor`
+     * paints nothing, because `borderWidth` strokes over the arc rather than
+     * carving into it. Chart.js `spacing` offsets every arc radially outward
+     * instead of separating neighbours. Painting an opaque border in a resolved
+     * surface token would work, but it has to guess which surface the chart is
+     * on and be re-resolved whenever the theme changes.
+     *
+     * Erasing with `destination-out` avoids all of that: the gap becomes genuinely
+     * transparent canvas, so the real background shows through in any theme and on
+     * any card or panel. Boundaries are read from the live arc geometry, so the
+     * gap tracks `hoverOffset` as segments lift.
+     */
+    private getSegmentGapPlugin;
     private getDrawCenterTextPlugin;
     initChart(): void;
     applyPresetPalette(colors: string[]): void;

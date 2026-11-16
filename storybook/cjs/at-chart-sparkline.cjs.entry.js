@@ -202,11 +202,11 @@ const AtChartSparkline = class {
         this.drawGate?.requestDraw();
     }
     render() {
-        return (index.h(index.Host, { key: '49cfaa8778e9f9adc434d6974d0b6eab037b85cb', style: {
+        return (index.h(index.Host, { key: 'c06511379a948780b22106cb1a310ef307bf3e73', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, index.h("canvas", { key: 'efef4c9337dc56f4b983fa4fc6892e9f5eb7968c', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
+            } }, index.h("canvas", { key: 'e8f2514ef43166a9278c5e602f130065583b49f0', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
 };
 

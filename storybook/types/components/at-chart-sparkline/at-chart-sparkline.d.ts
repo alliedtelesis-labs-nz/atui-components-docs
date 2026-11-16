@@ -14,7 +14,7 @@ export type AtChartSparklineMode = 'line' | 'area';
 export type AtChartSparklineStatus = 'good' | 'warning' | 'bad' | 'unreachable';
 /**
  * @category Data Visualization
- * @description A minimal sparkline chart that renders a single styled line with no axes, grid, legend, or tooltip. Suited to compact health/trend indicators inside table cells, cards, or stat tiles. Supports a device-status colour mode and line/area display treatments.
+ * @description A minimal sparkline: one styled line with no axes, grid, legend or tooltip, in a line or area treatment with an optional device-status colour mode. Use when a compact trend has to fit inside a table cell, list row or stat tile. Prefer `at-chart-trend` to show the value and delta beside the line and `at-chart-bar-line` when values must be read off an axis.
  */
 export declare class AtChartSparkline {
     /**
