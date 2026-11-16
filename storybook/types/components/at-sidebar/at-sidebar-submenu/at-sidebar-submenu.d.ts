@@ -15,7 +15,7 @@ export declare class AtSidebarSubmenuComponent {
      */
     label: string;
     /**
-     * Icon to be displayed with the label
+     * Carbon icon or svg to be displayed with the label
      */
     icon?: string;
     /**

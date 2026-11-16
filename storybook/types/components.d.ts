@@ -3135,7 +3135,7 @@ export namespace Components {
          */
         "default_open"?: boolean;
         /**
-          * Icon to be displayed with the label
+          * Carbon icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**
@@ -9244,7 +9244,7 @@ declare namespace LocalJSX {
          */
         "default_open"?: boolean;
         /**
-          * Icon to be displayed with the label
+          * Carbon icon or svg to be displayed with the label
          */
         "icon"?: string;
         /**

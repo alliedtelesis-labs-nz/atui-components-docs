@@ -16,7 +16,7 @@ export class AtSidebarSubmenuComponent {
      */
     label;
     /**
-     * Icon to be displayed with the label
+     * Carbon icon or svg to be displayed with the label
      */
     icon;
     /**
@@ -83,7 +83,7 @@ export class AtSidebarSubmenuComponent {
         return this.is_active;
     }
     render() {
-        return (h(Host, { key: '86ec81a36030673e417a7eeaa71828bdd0e09c43' }, h("at-menu", { key: '581e2a8ec18bd4e25f3c4ac865553b16e9c6051a', class: "hover-menu", "data-name": "hover-menu", trigger: "hover", position: "right", align: "start", width: "200px", disabled: this.isSidebarOpen }, h("at-accordion-item", { key: '2ad244a41d63a7c0c025a692a0448051d410e38a', slot: "menu-trigger", ref: (el) => (this.atuiAccordionItem = el), item_id: this.label, open: this.isAccordionOpen, disabled: !this.isSidebarOpen, class: `${!this.isSidebarOpen ? 'select-none' : ''}`, onAtuiAccordionChange: (e) => (this.isAccordionOpen = e.detail) }, h("at-sidebar-menuitem", { key: '29004230011a27d187e38ef244ab109c430fde71', slot: "accordion-trigger", is_trigger: true, label: this.label, is_active: this.getIsActive(), badge: this.badge }, h("slot", { key: '9704298b96f23b8078d4c0342c92b6a12cb439ff', name: "icon", slot: "icon" }), this.isSidebarOpen && (h("at-icon", { key: '2a76f7de7d36425152386dfb4ca2eb01e49a0f00', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", name: `chevron_down`, class: `${this.isAccordionOpen ? 'rotate-180' : ''}` }))), h("div", { key: '573ee160c346b0ce0440952b464d9f93c3bba227', class: "content", "data-name": "submenu-content" }, h("slot", { key: '8b03f76d8a8d572db9f2eb8f3f8e86b7ced16db2', name: "submenu-content" }))), h("div", { key: '4c5075ad40e4b396817f80e8ee165c25211c7b30', class: "hover-content", "data-name": "hover-content" }, h("slot", { key: 'f346692562a422e550620a3e50b237cb3715a14c', name: "submenu-hover-content" })))));
+        return (h(Host, { key: '087e6199693d5f018f94b88217cda9e95d2eaaad' }, h("at-menu", { key: '2cdd7e2c4c212c15ef14ef5662e90a8e816ece8f', class: "hover-menu", "data-name": "hover-menu", trigger: "hover", position: "right", align: "start", width: "200px", disabled: this.isSidebarOpen }, h("at-accordion-item", { key: '9555d344bccc30e089a0873eb7188ae2d99c16dc', slot: "menu-trigger", ref: (el) => (this.atuiAccordionItem = el), item_id: this.label, open: this.isAccordionOpen, disabled: !this.isSidebarOpen, class: `${!this.isSidebarOpen ? 'select-none' : ''}`, onAtuiAccordionChange: (e) => (this.isAccordionOpen = e.detail) }, h("at-sidebar-menuitem", { key: '3e561a502580fbebd43be5fe8cd57e558d49097e', slot: "accordion-trigger", is_trigger: true, label: this.label, icon: this.icon, is_active: this.getIsActive(), badge: this.badge }, h("slot", { key: 'f62faa6d728c8e3f82ccb85e4268711f3339d61b', name: "icon", slot: "icon" }), this.isSidebarOpen && (h("at-icon", { key: '961db0d6ff696092337e11675042724bdfcc33b4', slot: "sidebar-menu-item-actions", role: "presentation", "aria-hidden": "true", name: `chevron_down`, class: `${this.isAccordionOpen ? 'rotate-180' : ''}` }))), h("div", { key: 'ac233f02999e01e6a87d23bf1d8f70f7fad58ade', class: "content", "data-name": "submenu-content" }, h("slot", { key: '80a64efd7ae15eb65edafc5c16d58504f364aba8', name: "submenu-content" }))), h("div", { key: '63643c0244d6166ffd827fb6e867a7fe3e9979e0', class: "hover-content", "data-name": "hover-content" }, h("slot", { key: '43c8fc904473515a409a5521ecad6d0f491e3686', name: "submenu-hover-content" })))));
     }
     static get is() { return "at-sidebar-submenu"; }
     static get originalStyleUrls() {
@@ -129,7 +129,7 @@ export class AtSidebarSubmenuComponent {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Icon to be displayed with the label"
+                    "text": "Carbon icon or svg to be displayed with the label"
                 },
                 "getter": false,
                 "setter": false,
