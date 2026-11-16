@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-B_iXjeZH.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DdGm_rA6.js';
 
 // Vertical padding only — the container (e.g. `at-card`, which already applies
 // 16px of content padding) owns the horizontal inset, so rows sit flush with the
@@ -34,14 +34,36 @@ const AtListItem = class {
      */
     size = 'sm';
     /**
-     * Applied styling for hover background color and cursor.
+     * Applied styling for hover background color and cursor. Makes the item focusable, and Enter or
+     * Space activates it as a click does.
      */
     selectable = false;
+    get el() { return getElement(this); }
+    get inList() {
+        const parent = this.el.parentElement;
+        return (!!parent &&
+            (parent.getAttribute('role') === 'list' ||
+                parent.tagName === 'UL' ||
+                parent.tagName === 'OL'));
+    }
+    handleKeyDown(event) {
+        if (!this.selectable || event.target !== this.el)
+            return;
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.el.click();
+        }
+    }
+    showTitleWhenTruncated(event) {
+        const span = event.currentTarget;
+        span.title =
+            span.scrollWidth > span.clientWidth ? (this.item_title ?? '') : '';
+    }
     get sizeClasses() {
         return listItemVariants[this.size];
     }
     render() {
-        return (h(Host, { key: '563c2734b3d6765b227c3fe4cc5e1d13d9297ba1', role: "listitem", tabIndex: this.selectable ? 0 : undefined, class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b`, "data-name": "list-item" }, h("div", { key: '62f4a60ac6c3fff86275d55ccd245dbd5f420da5', class: "flex flex-grow flex-col", "data-name": "list-item-details" }, h("div", { key: 'a48b8a694b2e1e126d71d32fe64177f68ea22be7', class: "flex items-center justify-start gap-8 whitespace-nowrap" }, h("span", { key: '60406a7928c04cd56693ac65079debbd667e45e3' }, h("slot", { key: '4a6f8c7e6d13e587b46b890616d2edf3caf67578', name: "icon" })), this.item_prefix && (h("span", { key: '52df7bb2492803b09cf16c94605b5f5955897842', class: "text-secondary mr-[4px] font-normal", "data-name": "prefix" }, this.item_prefix)), h("span", { key: '950cfb1aca2142bcc433f34c0f60388aa90f11a0', class: `flex flex-grow truncate pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: 'd1b5cacfdac7a10fef6753e99ef40a699b2cb53d', class: "flex flex-row font-normal" }, h("span", { key: '5fcf3ec1b0a5d76b4b9ccc0c706dd2de9ce93c71', class: "mr-4", "data-name": "title" }, this.item_title), h("slot", { key: '4f87c2c4c0da2d76ba51bfd78e4d5f1600948fe5', name: "title" })), this.subtitle && (h("span", { key: '7e7b333a4038142b22d7456775b9bcc676e35cfa', class: "text-secondary inline text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '90ea120d50a313aa35727c72c954e600d8070bfa', class: "flex flex-wrap items-end justify-end gap-8 text-right", "data-name": "list-item-content" }, h("slot", { key: 'f39d850bbf7c3e692706c05719d0c3eddfdbc756' }), this.content && (h("span", { key: '20bb088047727170cbca4bd51c6827da6cdfcd62', "data-name": "content" }, this.content)))));
+        return (h(Host, { key: '39c89a477f1761bb4aff668fb2420019d3ca580e', role: this.inList ? 'listitem' : undefined, tabIndex: this.selectable ? 0 : undefined, onKeyDown: (event) => this.handleKeyDown(event), class: `${this.sizeClasses} ${this.selectable ? 'hover:bg-surface-1 cursor-pointer' : ''} border-muted flex items-center gap-3 border-b`, "data-name": "list-item" }, h("div", { key: '29864b62857055a918a3e6a77eeb39c4e3e5ed3a', class: "flex max-w-[60%] min-w-0 shrink-0 flex-col", "data-name": "list-item-details" }, h("div", { key: '25d26af7215caf2812f3daa4aa447771b5708b59', class: "flex min-w-0 items-center justify-start gap-8 whitespace-nowrap" }, h("span", { key: '3b4abf631568edc3ee7ce1657ed896aca76a4551' }, h("slot", { key: 'd90c219f10373aeff6d21bc3c2a6836c04ecdd94', name: "icon" })), this.item_prefix && (h("span", { key: '0bc313a1887409d647973d3712eb90d3de4c155d', class: "text-secondary mr-[4px] font-normal", "data-name": "prefix" }, this.item_prefix)), h("span", { key: '7ef94c1c953c03d28deef81dd8e93cf9538db408', class: `flex min-w-0 flex-grow pr-8 font-medium ${this.item_prefix && this.subtitle ? 'flex flex-col' : ''}` }, h("span", { key: '52e8032c1321a5ab0e6f908df084e99328600241', class: "flex max-w-full min-w-0 shrink-0 flex-row font-normal" }, h("span", { key: '84a787da5313d78927962d19ebde17a941c88aa1', class: "mr-4 truncate", "data-name": "title", onMouseEnter: (event) => this.showTitleWhenTruncated(event) }, this.item_title), h("slot", { key: 'a70ae1e0d68edf4b49c57b328a2bb8b3e13c45d6', name: "title" })), this.subtitle && (h("span", { key: '1a70d65abfb5b17c2721698e2dc4e7192f493aed', class: "text-secondary inline min-w-0 truncate text-sm font-normal", "data-name": "subtitle" }, this.subtitle))))), h("div", { key: '1419c3501964caee0e2299571fb0c4ce4743b821', class: "flex min-w-0 flex-1 flex-wrap items-end justify-end gap-8 text-right", "data-name": "list-item-content" }, h("slot", { key: '40936c08c7de97e2c5fb9767b781388cc69f3d85' }), this.content && (h("span", { key: 'b914b77d0040552bbd6f426a58aa53e893e92e15', "data-name": "content" }, this.content)))));
     }
 };
 

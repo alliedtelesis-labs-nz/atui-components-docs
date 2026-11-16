@@ -3213,6 +3213,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   max-width: 56rem;
 }
 
+.max-w-\[60\%\] {
+  max-width: 60%;
+}
+
 .max-w-full {
   max-width: 100%;
 }

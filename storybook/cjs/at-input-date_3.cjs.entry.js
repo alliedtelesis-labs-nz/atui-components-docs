@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGi-f7lA.js');
+var index = require('./index-CWfGEe1_.js');
 var translation = require('./translation-Bb5se7s8.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-CBDuvYdu.js');
 var classlist = require('./classlist-BPb95vgj.js');
@@ -245,9 +245,15 @@ const AtInputTime = class {
     get el() { return index.getElement(this); }
     /** Current value in "HH:MM" or "HH:MM:SS" */
     value;
-    /** Minimum time (e.g., "08:00") */
+    /**
+     * Earliest time the user can enter (e.g., "08:00"). A typed time outside
+     * `min` and `max` shows a range error once the field loses focus.
+     */
     min;
-    /** Maximum time (e.g., "18:30") */
+    /**
+     * Latest time the user can enter (e.g., "18:30"). A typed time outside
+     * `min` and `max` shows a range error once the field loses focus.
+     */
     max;
     /** Required flag */
     required;
@@ -266,11 +272,14 @@ const AtInputTime = class {
     /** Error text displayed when invalid is set */
     error_text;
     /**
-     * Shows the error state styling and error text. The host owns validation:
-     * the component never sets this, including for `min`, `max` and `required`.
-     * A partly typed time counts as empty and emits `atuiChange` with no value.
+     * Shows the error state styling and `error_text`. The host owns this: the
+     * component never sets it. The component shows its own range error for a
+     * time outside `min` and `max`, and leaves `required` to the host. A partly
+     * typed time counts as empty and emits `atuiChange` with no value.
      */
     invalid;
+    hasLeftField = false;
+    translations;
     /**
      * Accessible name for the input. Use when a shared column header supplies the
      * visible label and `label` is therefore left unset.
@@ -292,6 +301,35 @@ const AtInputTime = class {
         const ss = m[3];
         return ss ? `${hh}:${mm}:${ss}` : `${hh}:${mm}`;
     }
+    async componentWillLoad() {
+        this.translations = await translation.fetchTranslations(this.el);
+    }
+    get isOutOfRange() {
+        if (!this.value)
+            return false;
+        return ((!!this.min && this.value < this.min) ||
+            (!!this.max && this.value > this.max));
+    }
+    get rangeErrorText() {
+        const messages = this.translations?.ATUI?.TIME?.VALIDATION;
+        if (!messages || !this.hasLeftField || !this.isOutOfRange)
+            return;
+        const bounds = { min: this.min ?? '', max: this.max ?? '' };
+        if (this.min && this.max) {
+            return translation.interpolate(messages.TIME_RANGE, bounds);
+        }
+        return this.min
+            ? translation.interpolate(messages.TIME_AT_OR_AFTER, bounds)
+            : translation.interpolate(messages.TIME_AT_OR_BEFORE, bounds);
+    }
+    get errorText() {
+        if (this.invalid && this.error_text)
+            return this.error_text;
+        return this.rangeErrorText;
+    }
+    onBlur = () => {
+        this.hasLeftField = true;
+    };
     onInput = (ev) => {
         const input = ev.target;
         const normalized = this.normalizeTimeString(input.value);
@@ -301,11 +339,11 @@ const AtInputTime = class {
     render() {
         const getClassname = classlist.classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig);
         const classname = getClassname({
-            invalid: !!this.invalid,
+            invalid: !!this.invalid || !!this.rangeErrorText,
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (index.h(index.Host, { key: '8f8ef14e240ca28021a405ce13513e6f0105955d' }, index.h("style", { key: '6ff57657f4c3957cd6695a4582b74ab511307612' }, `
+        return (index.h(index.Host, { key: '41b3164db6bd3b84a935785e71702eb9390880fc' }, index.h("style", { key: '0b87496f940cccbfd062e4b16c354fe9f3b60436' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -317,7 +355,9 @@ const AtInputTime = class {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), index.h("div", { key: '4b9153017a63787fae23be4248955c812c256c8d', class: "flex flex-col" }, index.h("div", { key: '66ca00f3b3b734e48cee22103b3d5a1fb9431a4d', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '87d7920be33c9e94230bc98f6120ac8a8a395f66', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '6faf8a1cf6d21e60fc4e6b9bb859515ee2c05667', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '36f5f9d33dad3f59aec8be13c4a0639d84138c8b', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '17e0e0e4cef0d859d18a5da8e827f48af568ca8b', class: classname }, index.h("input", { key: '22434873d219fa24e85ce5a5e856a26405edaa5b', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (index.h("span", { key: 'c4fbb6ab832bbf0fb414a6c93ee2d7d665f0cbdd', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), index.h("div", { key: '416e137dfc8ca03c853141c9b0b9a7b4c1fc33e6', class: "flex flex-col" }, index.h("div", { key: '196641459de6afc32b3fbde813f7bade7057eecf', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '3b371be4c9a24e64df02aca69350cd7e7439b2cc', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: 'd50069fae665ba70fd89ec50c66714260162ee54', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: 'd4f83d8bd3c9d482a3519bc7871661fc525e551c', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '1a139213dff84c1fe127502ec28bc13c674a9858', class: classname }, index.h("input", { key: '896d0f32ebdce477f7a0de08881911f66f4b8ffb', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", "aria-invalid": this.invalid || this.rangeErrorText
+                ? 'true'
+                : undefined, onInput: this.onInput, onBlur: this.onBlur })), this.errorText && (index.h("span", { key: '7bbe40615a72c1513854c3fed97a1bed166ca931', class: "text-error text-sm", "data-name": "timepicker-error" }, this.errorText)))));
     }
 };
 

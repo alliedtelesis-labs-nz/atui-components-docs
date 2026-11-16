@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGi-f7lA.js');
+var index = require('./index-CWfGEe1_.js');
 
 const atProgressBarCellCss = () => `@charset "UTF-8";.ag-cell-wrapper:has(at-progress-bar-cell),.ag-cell-value:has(at-progress-bar-cell){width:100%;min-width:0}`;
 

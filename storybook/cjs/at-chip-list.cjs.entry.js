@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DGi-f7lA.js');
+var index = require('./index-CWfGEe1_.js');
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 

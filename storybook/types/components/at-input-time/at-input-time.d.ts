@@ -3,9 +3,15 @@ export declare class AtInputTime {
     el: HTMLElement;
     /** Current value in "HH:MM" or "HH:MM:SS" */
     value?: string;
-    /** Minimum time (e.g., "08:00") */
+    /**
+     * Earliest time the user can enter (e.g., "08:00"). A typed time outside
+     * `min` and `max` shows a range error once the field loses focus.
+     */
     min?: string;
-    /** Maximum time (e.g., "18:30") */
+    /**
+     * Latest time the user can enter (e.g., "18:30"). A typed time outside
+     * `min` and `max` shows a range error once the field loses focus.
+     */
     max?: string;
     /** Required flag */
     required?: boolean;
@@ -24,11 +30,14 @@ export declare class AtInputTime {
     /** Error text displayed when invalid is set */
     error_text?: string;
     /**
-     * Shows the error state styling and error text. The host owns validation:
-     * the component never sets this, including for `min`, `max` and `required`.
-     * A partly typed time counts as empty and emits `atuiChange` with no value.
+     * Shows the error state styling and `error_text`. The host owns this: the
+     * component never sets it. The component shows its own range error for a
+     * time outside `min` and `max`, and leaves `required` to the host. A partly
+     * typed time counts as empty and emits `atuiChange` with no value.
      */
     invalid?: boolean;
+    private hasLeftField;
+    private translations;
     /**
      * Accessible name for the input. Use when a shared column header supplies the
      * visible label and `label` is therefore left unset.
@@ -38,6 +47,11 @@ export declare class AtInputTime {
     atuiChange: EventEmitter<string | null>;
     private inputId;
     private normalizeTimeString;
+    componentWillLoad(): Promise<void>;
+    private get isOutOfRange();
+    private get rangeErrorText();
+    private get errorText();
+    private onBlur;
     private onInput;
     render(): any;
 }

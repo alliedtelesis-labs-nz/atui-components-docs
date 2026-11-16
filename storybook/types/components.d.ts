@@ -1629,7 +1629,7 @@ export namespace Components {
          */
         "info_text"?: string;
         /**
-          * Shows the error state styling and error text. The host owns validation: the component never sets this, including for `min`, `max` and `required`. A partly typed time counts as empty and emits `atuiChange` with no value.
+          * Shows the error state styling and `error_text`. The host owns this: the component never sets it. The component shows its own range error for a time outside `min` and `max`, and leaves `required` to the host. A partly typed time counts as empty and emits `atuiChange` with no value.
          */
         "invalid"?: boolean;
         /**
@@ -1637,11 +1637,11 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Maximum time (e.g., "18:30")
+          * Latest time the user can enter (e.g., "18:30"). A typed time outside `min` and `max` shows a range error once the field loses focus.
          */
         "max"?: string;
         /**
-          * Minimum time (e.g., "08:00")
+          * Earliest time the user can enter (e.g., "08:00"). A typed time outside `min` and `max` shows a range error once the field loses focus.
          */
         "min"?: string;
         /**
@@ -1680,7 +1680,8 @@ export namespace Components {
     }
     /**
      * @category Layout
-     * @description A list item component for data in key:value format.
+     * @description A list item component for data in key:value format. It takes the `listitem` role only
+     * inside a list (`role="list"`, `ul` or `ol`), so wrap a set of rows in `<div role="list">`.
      */
     interface AtListItem {
         /**
@@ -1696,7 +1697,7 @@ export namespace Components {
          */
         "item_title": string;
         /**
-          * Applied styling for hover background color and cursor.
+          * Applied styling for hover background color and cursor. Makes the item focusable, and Enter or Space activates it as a click does.
           * @default false
          */
         "selectable"?: boolean;
@@ -4905,7 +4906,8 @@ declare global {
     };
     /**
      * @category Layout
-     * @description A list item component for data in key:value format.
+     * @description A list item component for data in key:value format. It takes the `listitem` role only
+     * inside a list (`role="list"`, `ul` or `ol`), so wrap a set of rows in `<div role="list">`.
      */
     interface HTMLAtListItemElement extends Components.AtListItem, HTMLStencilElement {
     }
@@ -7722,7 +7724,7 @@ declare namespace LocalJSX {
          */
         "info_text"?: string;
         /**
-          * Shows the error state styling and error text. The host owns validation: the component never sets this, including for `min`, `max` and `required`. A partly typed time counts as empty and emits `atuiChange` with no value.
+          * Shows the error state styling and `error_text`. The host owns this: the component never sets it. The component shows its own range error for a time outside `min` and `max`, and leaves `required` to the host. A partly typed time counts as empty and emits `atuiChange` with no value.
          */
         "invalid"?: boolean;
         /**
@@ -7730,11 +7732,11 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Maximum time (e.g., "18:30")
+          * Latest time the user can enter (e.g., "18:30"). A typed time outside `min` and `max` shows a range error once the field loses focus.
          */
         "max"?: string;
         /**
-          * Minimum time (e.g., "08:00")
+          * Earliest time the user can enter (e.g., "08:00"). A typed time outside `min` and `max` shows a range error once the field loses focus.
          */
         "min"?: string;
         /**
@@ -7777,7 +7779,8 @@ declare namespace LocalJSX {
     }
     /**
      * @category Layout
-     * @description A list item component for data in key:value format.
+     * @description A list item component for data in key:value format. It takes the `listitem` role only
+     * inside a list (`role="list"`, `ul` or `ol`), so wrap a set of rows in `<div role="list">`.
      */
     interface AtListItem {
         /**
@@ -7793,7 +7796,7 @@ declare namespace LocalJSX {
          */
         "item_title"?: string;
         /**
-          * Applied styling for hover background color and cursor.
+          * Applied styling for hover background color and cursor. Makes the item focusable, and Enter or Space activates it as a click does.
           * @default false
          */
         "selectable"?: boolean;
@@ -11209,7 +11212,8 @@ declare module "@stencil/core" {
             "at-layout": LocalJSX.IntrinsicElements["at-layout"] & JSXBase.HTMLAttributes<HTMLAtLayoutElement>;
             /**
              * @category Layout
-             * @description A list item component for data in key:value format.
+             * @description A list item component for data in key:value format. It takes the `listitem` role only
+             * inside a list (`role="list"`, `ul` or `ol`), so wrap a set of rows in `<div role="list">`.
              */
             "at-list-item": LocalJSX.IntrinsicElements["at-list-item"] & JSXBase.HTMLAttributes<HTMLAtListItemElement>;
             /**

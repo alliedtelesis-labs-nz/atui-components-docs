@@ -1,7 +1,8 @@
 type Size = 'xs' | 'sm' | 'md' | 'lg';
 /**
  * @category Layout
- * @description A list item component for data in key:value format.
+ * @description A list item component for data in key:value format. It takes the `listitem` role only
+ * inside a list (`role="list"`, `ul` or `ol`), so wrap a set of rows in `<div role="list">`.
  *
  * @slot icon - Carbon icon placed at the left of the list item
  * @slot title - Placed in the title position
@@ -29,9 +30,14 @@ export declare class AtListItem {
      */
     size?: Size;
     /**
-     * Applied styling for hover background color and cursor.
+     * Applied styling for hover background color and cursor. Makes the item focusable, and Enter or
+     * Space activates it as a click does.
      */
     selectable?: boolean;
+    el: HTMLAtListItemElement;
+    private get inList();
+    private handleKeyDown;
+    private showTitleWhenTruncated;
     get sizeClasses(): string;
     render(): any;
 }
