@@ -219,7 +219,11 @@ const AtInputTime = class {
     info_text;
     /** Error text displayed when invalid is set */
     error_text;
-    /** Shows the error state styling and error text */
+    /**
+     * Shows the error state styling and error text. The host owns validation:
+     * the component never sets this, including for `min`, `max` and `required`.
+     * A partly typed time counts as empty and emits `atuiChange` with no value.
+     */
     invalid;
     /**
      * Accessible name for the input. Use when a shared column header supplies the
@@ -246,7 +250,6 @@ const AtInputTime = class {
         const input = ev.target;
         const normalized = this.normalizeTimeString(input.value);
         this.value = normalized;
-        this.invalid = !input.validity.valid;
         this.atuiChange.emit(normalized);
     };
     render() {
@@ -256,7 +259,7 @@ const AtInputTime = class {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (index.h(index.Host, { key: '2cd4337e7fa0e29b2465d115b5ce9258fd3e53e2' }, index.h("style", { key: 'df24feca79c96ae7780cb4f2e1b045e7c7e1623a' }, `
+        return (index.h(index.Host, { key: '8f8ef14e240ca28021a405ce13513e6f0105955d' }, index.h("style", { key: '6ff57657f4c3957cd6695a4582b74ab511307612' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -268,7 +271,7 @@ const AtInputTime = class {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), index.h("div", { key: '676b35401eb63cf04cd2b89bc797bdc62ef9a2d0', class: "flex flex-col" }, index.h("div", { key: 'b419f9887bfb095ce7188e450463d6b288da6577', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '0a1b39c33bb54a6fe505ff4c63d7ccfbc3fde4f9', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '39dc3824687276ed63240bbf62b6be5864b7a55d', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '6c255d7da253b74983a89191e300b2b33419cac6', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '90a095cf0c70239335ed2fb0d88c42641456c748', class: classname }, index.h("input", { key: '2658b49e19218de51f1cba80ea98204e6d0a511e', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (index.h("span", { key: 'c47fe1e9e82903ebcaee95d9b9e4150a98dd59dc', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
+                `), index.h("div", { key: '4b9153017a63787fae23be4248955c812c256c8d', class: "flex flex-col" }, index.h("div", { key: '66ca00f3b3b734e48cee22103b3d5a1fb9431a4d', class: "mb-4 flex flex-col empty:hidden" }, index.h("slot", { key: '87d7920be33c9e94230bc98f6120ac8a8a395f66', name: "label" }), (this.label || this.required || this.info_text) && (index.h("at-form-label", { key: '6faf8a1cf6d21e60fc4e6b9bb859515ee2c05667', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (index.h("span", { key: '36f5f9d33dad3f59aec8be13c4a0639d84138c8b', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), index.h("div", { key: '17e0e0e4cef0d859d18a5da8e827f48af568ca8b', class: classname }, index.h("input", { key: '22434873d219fa24e85ce5a5e856a26405edaa5b', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", onInput: this.onInput })), this.error_text && this.invalid && (index.h("span", { key: 'c4fbb6ab832bbf0fb414a6c93ee2d7d665f0cbdd', class: "text-error text-sm", "data-name": "timepicker-error" }, this.error_text)))));
     }
 };
 

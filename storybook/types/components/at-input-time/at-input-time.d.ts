@@ -23,7 +23,11 @@ export declare class AtInputTime {
     info_text?: string;
     /** Error text displayed when invalid is set */
     error_text?: string;
-    /** Shows the error state styling and error text */
+    /**
+     * Shows the error state styling and error text. The host owns validation:
+     * the component never sets this, including for `min`, `max` and `required`.
+     * A partly typed time counts as empty and emits `atuiChange` with no value.
+     */
     invalid?: boolean;
     /**
      * Accessible name for the input. Use when a shared column header supplies the
