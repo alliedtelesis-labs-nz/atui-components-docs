@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B_iXjeZH.js';
-import { f as fetchTranslations, i as interpolate } from './translation-TgeIMQBw.js';
+import { f as fetchTranslations, i as interpolate } from './translation-Bf_6dum8.js';
 import { b as flattenFilterConditions, c as countFilterConditions, r as rowMatchesFilterGroup, i as isFilterGroup } from './filter-tree.util-CYRBwQ7z.js';
 import { r as resolveCellSearchText, a as agGridColumnId } from './ag-grid-column-id-CLcRs3DE.js';
 import './index-CXLyuXhr.js';

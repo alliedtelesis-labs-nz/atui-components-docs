@@ -1400,7 +1400,7 @@ export namespace Components {
          */
         "info_text"?: string;
         /**
-          * Shows the error text
+          * Shows the error state styling and `error_text`. The host owns this: the component never sets it. The component shows its own range error for a date outside `min_date` and `max_date`, and leaves `required` to the host. A partly typed date counts as empty and emits `atuiChange` with null.
          */
         "invalid": boolean;
         /**
@@ -1408,12 +1408,12 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Maximum selectable date
+          * Latest selectable date. The calendar disables later days, and a typed date outside `min_date` and `max_date` shows a range error once the field loses focus.
           * @default MAX_DATE
          */
         "max_date": Date;
         /**
-          * Minimum selectable date
+          * Earliest selectable date. The calendar disables earlier days, and a typed date outside `min_date` and `max_date` shows a range error once the field loses focus.
           * @default MIN_DATE
          */
         "min_date": Date;
@@ -7481,7 +7481,7 @@ declare namespace LocalJSX {
          */
         "info_text"?: string;
         /**
-          * Shows the error text
+          * Shows the error state styling and `error_text`. The host owns this: the component never sets it. The component shows its own range error for a date outside `min_date` and `max_date`, and leaves `required` to the host. A partly typed date counts as empty and emits `atuiChange` with null.
          */
         "invalid"?: boolean;
         /**
@@ -7489,12 +7489,12 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Maximum selectable date
+          * Latest selectable date. The calendar disables later days, and a typed date outside `min_date` and `max_date` shows a range error once the field loses focus.
           * @default MAX_DATE
          */
         "max_date"?: Date;
         /**
-          * Minimum selectable date
+          * Earliest selectable date. The calendar disables earlier days, and a typed date outside `min_date` and `max_date` shows a range error once the field loses focus.
           * @default MIN_DATE
          */
         "min_date"?: Date;

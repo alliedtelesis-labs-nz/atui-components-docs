@@ -93,7 +93,13 @@
                 "TIME_REQUIRED": "Time is required",
                 "PLEASE_ENTER_TIME": "Please select a time period",
                 "INTEGER_ONLY_ERROR": "Please enter integer only",
-                "FROM_MUST_BE_BEFORE_TO": "From date must be earlier than to date"
+                "FROM_MUST_BE_BEFORE_TO": "From date must be earlier than to date",
+                "DATE_RANGE": "Enter a date from {min} to {max}",
+                "DATE_ON_OR_AFTER": "Enter a date on or after {min}",
+                "DATE_ON_OR_BEFORE": "Enter a date on or before {max}",
+                "TIME_RANGE": "Enter a time from {min} to {max}",
+                "TIME_AT_OR_AFTER": "Enter a time at or after {min}",
+                "TIME_AT_OR_BEFORE": "Enter a time at or before {max}"
             },
             "ALL": "All Time",
             "ALL_TIME_LABEL": "All Time (No filter applied)",

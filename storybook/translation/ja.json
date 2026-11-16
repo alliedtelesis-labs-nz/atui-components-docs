@@ -93,7 +93,13 @@
                 "TIME_REQUIRED": "時刻を指定してください。",
                 "PLEASE_ENTER_TIME": "期間を選択してください。",
                 "INTEGER_ONLY_ERROR": "整数のみで指定できます。",
-                "FROM_MUST_BE_BEFORE_TO": "開始日は終了日より前の日付にしてください。"
+                "FROM_MUST_BE_BEFORE_TO": "開始日は終了日より前の日付にしてください。",
+                "DATE_RANGE": "{min}から{max}までの日付を指定してください。",
+                "DATE_ON_OR_AFTER": "{min} 以降の日付を指定してください。",
+                "DATE_ON_OR_BEFORE": "{max} 以前の日付を指定してください。",
+                "TIME_RANGE": "{min}から{max}までの時刻を指定してください。",
+                "TIME_AT_OR_AFTER": "{min} 以降の時刻を指定してください。",
+                "TIME_AT_OR_BEFORE": "{max} 以前の時刻を指定してください。"
             },
             "ALL": "全期間",
             "ALL_TIME_LABEL": "全期間（フィルターなし）",

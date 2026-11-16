@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B_iXjeZH.js';
-import { f as fetchTranslations } from './translation-TgeIMQBw.js';
+import { f as fetchTranslations, i as interpolate } from './translation-Bf_6dum8.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-H5gcGi8Y.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { M as MIN_DATE, a as MAX_DATE } from './date-C3LwY5aR.js';
@@ -32,11 +32,15 @@ const AtInputDate = class {
         this.atuiChange = createEvent(this, "atuiChange", 7);
     }
     /**
-     * Minimum selectable date
+     * Earliest selectable date. The calendar disables earlier days, and a typed
+     * date outside `min_date` and `max_date` shows a range error once the field
+     * loses focus.
      */
     min_date = MIN_DATE;
     /**
-     * Maximum selectable date
+     * Latest selectable date. The calendar disables later days, and a typed
+     * date outside `min_date` and `max_date` shows a range error once the field
+     * loses focus.
      */
     max_date = MAX_DATE;
     /**
@@ -64,7 +68,11 @@ const AtInputDate = class {
      */
     required;
     /**
-     * Shows the error text
+     * Shows the error state styling and `error_text`. The host owns this: the
+     * component never sets it. The component shows its own range error for a
+     * date outside `min_date` and `max_date`, and leaves `required` to the
+     * host. A partly typed date counts as empty and emits `atuiChange` with
+     * null.
      */
     invalid;
     /**
@@ -81,8 +89,8 @@ const AtInputDate = class {
      */
     aria_label;
     selectedDate;
-    hasNativeError = false;
     translations;
+    hasLeftField = false;
     get el() { return getElement(this); }
     inputId = `datepicker-${Math.random().toString(36).substring(2, 11)}`;
     /**
@@ -106,17 +114,55 @@ const AtInputDate = class {
             this.selectedDate = TimeDatePresentationUtil.getFormattedDate(this.value, 'YYYY-MM-DD');
         }
     }
-    get showsError() {
-        return !!this.invalid || this.hasNativeError;
+    formatBound(date) {
+        return TimeDatePresentationUtil.getFormattedDate(date, 'YYYY-MM-DD');
+    }
+    get hasMinBound() {
+        return (!!this.min_date && this.min_date.getTime() !== MIN_DATE.getTime());
+    }
+    get hasMaxBound() {
+        return (!!this.max_date && this.max_date.getTime() !== MAX_DATE.getTime());
+    }
+    get isOutOfRange() {
+        if (!this.value || !this.selectedDate)
+            return false;
+        return ((this.hasMinBound &&
+            this.selectedDate < this.formatBound(this.min_date)) ||
+            (this.hasMaxBound &&
+                this.selectedDate > this.formatBound(this.max_date)));
+    }
+    displayBound(date) {
+        const lang = this.el.closest('[lang]')?.lang || 'en';
+        return date.toLocaleDateString(lang, { dateStyle: 'medium' });
+    }
+    get rangeErrorText() {
+        const messages = this.translations?.ATUI?.TIME?.VALIDATION;
+        if (!messages || !this.hasLeftField || !this.isOutOfRange)
+            return;
+        const bounds = {
+            min: this.hasMinBound ? this.displayBound(this.min_date) : '',
+            max: this.hasMaxBound ? this.displayBound(this.max_date) : '',
+        };
+        if (this.hasMinBound && this.hasMaxBound) {
+            return interpolate(messages.DATE_RANGE, bounds);
+        }
+        return this.hasMinBound
+            ? interpolate(messages.DATE_ON_OR_AFTER, bounds)
+            : interpolate(messages.DATE_ON_OR_BEFORE, bounds);
+    }
+    get errorText() {
+        if (this.invalid && this.error_text)
+            return this.error_text;
+        return this.rangeErrorText;
     }
     render() {
         const getClassname = classlist(`placeholder-text-muted relative flex h-input min-h-input w-full flex-shrink flex-grow basis-0 gap-4 overflow-hidden rounded-input border border-solid transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus-within:ring focus-within:outline-0 focus-within:z-10`, inputVariantsConfig$1);
         const classname = getClassname({
-            invalid: this.showsError,
+            invalid: !!this.invalid || !!this.rangeErrorText,
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'a64645afcdb3faaf0fc63365459264c5dac8081a' }, h("style", { key: '72cf467f41a751cd2a86a51365f03ba8ef5ab8d3' }, `
+        return (h(Host, { key: '582f2d7efd339af30f4838e51c2b8c3584fec86c' }, h("style", { key: 'cf32b1eceb9d3fc5b79fd83a2f25e119c3296ed6' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -129,15 +175,16 @@ const AtInputDate = class {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: 'dd4066ecd5440895a059d9e8fa5ee6ebd293f8f2', class: "flex w-full flex-col" }, h("div", { key: '140a45de1434140a97520bad4f0136741abdafae', class: "flex flex-col" }, h("div", { key: 'a1698fc4ff134aefbdc8a9d298f3f1110adff62d', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: '28068d1549b06979e718f9deca724ca04f99d0c6', class: "flex w-full flex-col" }, h("div", { key: 'fda82f3a69061ed0f66846d0cfc920eb608c1cab', class: "flex flex-col" }, h("div", { key: '4db45716c55035be9de3e063ba50c5cfd6b7d74b', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: 'f1b5db0a987d61e162e7ab335b74c4617638dc90', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '0865c4070b52d85fff3c1e86e76c8bf533c16565', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: 'b367b48e4be1dfe9cb6ab615cd304ac40ecaeb68', class: classname }, h("input", { key: '35bb2b029b57efd4a4211de287a44bbcafdb3714', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", onChange: (event) => {
+            this.info_text) && (h("at-form-label", { key: 'fca1c95d9a20dfaa58307a3526742e9262c56c82', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '147118628a20efc0828bc15d49e6cbbeff154d88', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '1ed7e1feebdaa255fd89d80b13a4e9da4e0996d9', class: classname }, h("input", { key: '79d0a0beadd53b61144a11ec08169aa1fd94c2f2', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", "aria-invalid": this.invalid || this.rangeErrorText
+                ? 'true'
+                : undefined, onBlur: () => {
+                this.hasLeftField = true;
+            }, onChange: (event) => {
                 const dateString = event.target.value;
-                const input = event.target;
                 if (dateString === '') {
                     this.value = null;
-                    this.hasNativeError =
-                        !input.validity.valid;
                     this.atuiChange.emit(null);
                     return;
                 }
@@ -150,7 +197,6 @@ const AtInputDate = class {
                     return;
                 }
                 this.selectedDate = dateString;
-                this.hasNativeError = !input.validity.valid;
                 // Parse as a local date: new Date('YYYY-MM-DD')
                 // parses as UTC midnight, which shifts the
                 // displayed day in negative-UTC-offset zones.
@@ -159,7 +205,7 @@ const AtInputDate = class {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.error_text && this.showsError && (h("span", { key: 'f1547a9055952a36c922a8569aeb677240b6d02f', class: "text-error text-sm", "data-name": "datepicker-error" }, this.error_text)))));
+            } }))), this.errorText && (h("span", { key: 'dc2281825864ce872d3ba5edea488bcfd559976c', class: "text-error text-sm", "data-name": "datepicker-error" }, this.errorText)))));
     }
     static get watchers() { return {
         "value": [{

@@ -1,11 +1,15 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export declare class AtInputDate {
     /**
-     * Minimum selectable date
+     * Earliest selectable date. The calendar disables earlier days, and a typed
+     * date outside `min_date` and `max_date` shows a range error once the field
+     * loses focus.
      */
     min_date: Date;
     /**
-     * Maximum selectable date
+     * Latest selectable date. The calendar disables later days, and a typed
+     * date outside `min_date` and `max_date` shows a range error once the field
+     * loses focus.
      */
     max_date: Date;
     /**
@@ -33,7 +37,11 @@ export declare class AtInputDate {
      */
     required: boolean;
     /**
-     * Shows the error text
+     * Shows the error state styling and `error_text`. The host owns this: the
+     * component never sets it. The component shows its own range error for a
+     * date outside `min_date` and `max_date`, and leaves `required` to the
+     * host. A partly typed date counts as empty and emits `atuiChange` with
+     * null.
      */
     invalid: boolean;
     /**
@@ -50,8 +58,8 @@ export declare class AtInputDate {
      */
     aria_label: string;
     selectedDate: string;
-    private hasNativeError;
     translations: any;
+    private hasLeftField;
     el: any;
     private inputId;
     /**
@@ -61,6 +69,12 @@ export declare class AtInputDate {
     componentWillLoad(): Promise<void>;
     watchValue(newValue: Date | null): void;
     componentWillRender(): void;
-    private get showsError();
+    private formatBound;
+    private get hasMinBound();
+    private get hasMaxBound();
+    private get isOutOfRange();
+    private displayBound;
+    private get rangeErrorText();
+    private get errorText();
     render(): any;
 }

@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-B_iXjeZH.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
-import { f as fetchTranslations } from './translation-TgeIMQBw.js';
+import { f as fetchTranslations } from './translation-Bf_6dum8.js';
 import { a as agGridColumnId, r as resolveCellSearchText } from './ag-grid-column-id-CLcRs3DE.js';
 import { A as AvailableCells, a as AvailableHeaders } from './index-CXLyuXhr.js';
 import { at_checkbox_cell as AtCheckboxCellComponent } from './at-checkbox-cell.entry.js';
