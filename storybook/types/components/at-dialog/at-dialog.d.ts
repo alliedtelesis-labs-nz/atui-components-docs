@@ -130,6 +130,9 @@ export declare class AtDialogComponent {
      * a reason and can be suppressed. `preventDefault()` runs on both branches:
      * without it the browser would close the dialog itself, which would either
      * bypass `close_esc={false}` or report the close as `'close'`.
+     *
+     * An Escape that arrives already `defaultPrevented` was spent by an inner
+     * layer (an open menu, tooltip or nested dialog) dismissing itself.
      */
     private handleKeyDown;
     /**

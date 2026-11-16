@@ -60,6 +60,12 @@ export declare class AtTooltip {
      * Closes the tooltip.
      */
     closeTooltip(): Promise<void>;
+    /**
+     * Capture phase on the document so an open tooltip spends the Escape
+     * before an enclosing dialog or side panel sees it: `preventDefault()` is
+     * what tells those layers to stay open.
+     */
+    closeOnEscape(event: KeyboardEvent): void;
     private updateAriaExpanded;
     componentDidLoad(): Promise<void>;
     disconnectedCallback(): void;

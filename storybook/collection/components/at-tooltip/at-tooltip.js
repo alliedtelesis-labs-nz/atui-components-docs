@@ -83,6 +83,21 @@ export class AtTooltip {
         }
         this.updateAriaExpanded();
     }
+    /**
+     * Capture phase on the document so an open tooltip spends the Escape
+     * before an enclosing dialog or side panel sees it: `preventDefault()` is
+     * what tells those layers to stay open.
+     */
+    closeOnEscape(event) {
+        if (event.key !== 'Escape' ||
+            event.defaultPrevented ||
+            this.popover_mode !== 'auto' ||
+            !this.tooltipEl?.matches(':popover-open')) {
+            return;
+        }
+        event.preventDefault();
+        this.closeTooltip();
+    }
     updateAriaExpanded() {
         if (this.trigger_id && this.triggerEl) {
             this.triggerEl.setAttribute('aria-expanded', this.isOpen ? 'true' : 'false');
@@ -306,7 +321,7 @@ export class AtTooltip {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: '5450c6d11874298245ca2e812b12851b3973e4ab', class: "relative" }, !this.trigger_id && (h("div", { key: '1da17ddd74224ed8ab84f99f5734317e758c6ec5', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, h("slot", { key: 'be97c240bea44c0eef1da04cfa66a8b11699e970', name: "tooltip-trigger" }))), h("div", { key: '93d8b1c20701327a3e7c1b6b27b58939766596b9', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: this.popover_mode, id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'f91c9f29f49d02db5816fd281169c8831fa62921' }))));
+        return (h(Host, { key: 'b29d64805b80015767cc138091b9315c8c9058fa', class: "relative" }, !this.trigger_id && (h("div", { key: 'e096060a7dec29e8e2fee5ac7eebe9198634ea88', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, h("slot", { key: 'c989f7934e01bd9f3ff993a414a658b65b2a3a14', name: "tooltip-trigger" }))), h("div", { key: 'd9230f9cce8df9a84927f31040004128baa6f0f5', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: this.popover_mode, id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '917a54b2bdf23bded6a3841df08e7e50889185d9' }))));
     }
     static get is() { return "at-tooltip"; }
     static get properties() {
@@ -538,6 +553,15 @@ export class AtTooltip {
         return [{
                 "propName": "disabled",
                 "methodName": "disabledChanged"
+            }];
+    }
+    static get listeners() {
+        return [{
+                "name": "keydown",
+                "method": "closeOnEscape",
+                "target": "document",
+                "capture": true,
+                "passive": false
             }];
     }
 }

@@ -59,6 +59,13 @@ const AtSidePanelComponent = class {
      */
     close_backdrop = false;
     /**
+     * Whether pressing Escape dismisses the side panel. Set to `false` for a
+     * flow that must confirm before closing, such as an unsaved-changes guard.
+     * The host then closes it via `closeSidePanel()`. The close button is
+     * unaffected.
+     */
+    close_esc = true;
+    /**
      * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
      */
     trigger_id;
@@ -148,9 +155,30 @@ const AtSidePanelComponent = class {
             this.closeSidePanel();
         }
     };
+    /**
+     * `preventDefault()` runs whether or not the panel closes, so the browser
+     * never closes a modal panel behind `close_esc={false}`. An Escape that
+     * arrives already `defaultPrevented` was spent by an inner layer (an open
+     * menu, tooltip or dialog) dismissing itself.
+     */
     handleKeyDown = (event) => {
-        if (event.key === 'Escape' && this.isExpanded) {
-            event.preventDefault();
+        if (event.key !== 'Escape' ||
+            !this.isExpanded ||
+            event.defaultPrevented) {
+            return;
+        }
+        event.preventDefault();
+        if (this.close_esc) {
+            this.closeSidePanel();
+        }
+    };
+    /**
+     * The browser's own Escape handling on a modal panel surfaces as `cancel`
+     * and can arrive without a keydown this component sees.
+     */
+    handleCancel = (event) => {
+        event.preventDefault();
+        if (this.close_esc && this.isExpanded) {
             this.closeSidePanel();
         }
     };
@@ -362,7 +390,7 @@ const AtSidePanelComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '2102509d6f564087e19e59766894a186b678271b', "data-open": this.isOpen }, index.h("dialog", { key: '854fa0fa4b9f4cbbf8ce6d6aa022446a0cb7929c', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''} position-${this.position}`, onClose: this.handleDialogClose, onKeyDown: this.handleKeyDown }, index.h("div", { key: '23ea670a805735860cf4175af896e09a7616a3f5', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, index.h("header", { key: 'd7696eabdcba2cd4b053cfde25284b2714775da1', class: "header", "data-name": "header" }, index.h("div", { key: '9692c0f8ade9fb435fe52b1c2f5b0ba0b2995158' }, index.h("slot", { key: 'b5ec8c270925cea385fa32ce7dca0e6ebd367cc5', name: "title" }), this.panel_title && (index.h("h3", { key: '1794eb47715b424296272c484f70e8f4498b0473', class: "title" }, this.panel_title)), this.panel_subtitle && (index.h("p", { key: '4309837fffef787e190844c14c3658dfa3b5afb7', class: "subtitle" }, this.panel_subtitle))), index.h("div", { key: '031a23deeeaf8edcc51c7a10c4a4328e2fa9deac' }, index.h("slot", { key: '7126c3e305fe294342e82d094be57a55416bc34d', name: "actions" }), this.has_close_button && (index.h("at-button", { key: '3e7edb283238da2106e839ee8a34b380100d0fa6', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, index.h("at-icon", { key: 'e25b2095a9a613c7c6a89f4848684b5100ad6614', slot: "icon", name: "close" }))))), index.h("div", { key: 'df6bac706a51ef810c17249f42ac7c2e34aa3442', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, index.h("slot", { key: '3a85dee2def157eba9fe4a14dc63c2b6b2795b56' })), index.h("div", { key: '8412836c2d131d87b6a3c50a0f38f363aeb2751e', "data-name": "footer", class: "footer" }, index.h("slot", { key: 'bd2e68aae5c5bd449e087c8d37f276c91a358295', name: "footer" }))))));
+        return (index.h(index.Host, { key: '190cbd974faf2b2efd5c2b84169cfe5927cc39c7', "data-open": this.isOpen }, index.h("dialog", { key: '6982ac1039c4d33b7d2fcf1c6d0e9afcdba3e669', ref: (el) => (this.panelDialog = el), class: `${this.backdrop ? 'backdrop' : ''} position-${this.position}`, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, index.h("div", { key: '005a6028d018035565758d47bd6dc10949622b33', "data-scrollable": this.has_scrollbar, "data-open": this.isOpen, "data-has-footer": this.hasFooter ? 'true' : null, class: `container origin-${this.origin} width-${this.size} size-${this.size} position-${this.position}`, ref: (el) => (this.sidePanelWrapper = el), "data-name": "container" }, index.h("header", { key: 'b688858c844594fd016aeab78ce9fd4000874d5c', class: "header", "data-name": "header" }, index.h("div", { key: '724bbb1316192b4ccf4ca5bb2637ecc2ea8597cb' }, index.h("slot", { key: 'd3e75be63b36643518755723672c6d3f1c6f1859', name: "title" }), this.panel_title && (index.h("h3", { key: 'ddf7c53d25eee93fd3a323b8ed04146bd8a5d9cc', class: "title" }, this.panel_title)), this.panel_subtitle && (index.h("p", { key: '768fb662416508b9a33c901b8585241abc2ae444', class: "subtitle" }, this.panel_subtitle))), index.h("div", { key: '4ac6c1a4fe74a34b50dabfe7ed3cad9b4ad1fe6a' }, index.h("slot", { key: '7482ae6e9ba0fd41602c36f9989db01064621c83', name: "actions" }), this.has_close_button && (index.h("at-button", { key: '3dc9a02475a85077601043d16984eed4e122df28', size: "md", type: "secondaryText", "data-name": "panel-close", onClick: this.handleClose }, index.h("at-icon", { key: '8ba1aa01892b4d5f68304cc959b65162d873394b', slot: "icon", name: "close" }))))), index.h("div", { key: '23b814ad4f72f3b0eff9d53796e37094a24ade8e', "data-name": "content", class: `content ${this.padding ? 'padded' : ''}` }, index.h("slot", { key: 'bba661954d361512448569284481676c8c9f31c5' })), index.h("div", { key: 'e96d4663d83674ee7c4d753525aa3f310cc19344', "data-name": "footer", class: "footer" }, index.h("slot", { key: '80c281a4d10da63d0ad86a87e45cb837dddaa4a9', name: "footer" }))))));
     }
 };
 AtSidePanelComponent.style = atSidePanelCss();

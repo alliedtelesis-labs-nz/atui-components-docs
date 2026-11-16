@@ -67,6 +67,13 @@ export declare class AtSidePanelComponent {
      */
     close_backdrop: boolean;
     /**
+     * Whether pressing Escape dismisses the side panel. Set to `false` for a
+     * flow that must confirm before closing, such as an unsaved-changes guard.
+     * The host then closes it via `closeSidePanel()`. The close button is
+     * unaffected.
+     */
+    close_esc: boolean;
+    /**
      * Target an external element to use as the trigger. When provided, clicking an element wia matching data-sidepanel attribute value will toggle the side panel.
      */
     trigger_id?: string;
@@ -111,7 +118,18 @@ export declare class AtSidePanelComponent {
     getIsOpen(): Promise<boolean>;
     private handleClose;
     private handleDialogClose;
+    /**
+     * `preventDefault()` runs whether or not the panel closes, so the browser
+     * never closes a modal panel behind `close_esc={false}`. An Escape that
+     * arrives already `defaultPrevented` was spent by an inner layer (an open
+     * menu, tooltip or dialog) dismissing itself.
+     */
     private handleKeyDown;
+    /**
+     * The browser's own Escape handling on a modal panel surfaces as `cancel`
+     * and can arrive without a keydown this component sees.
+     */
+    private handleCancel;
     offClickHandler(event: any): void;
     componentDidLoad(): Promise<void>;
     connectedCallback(): void;

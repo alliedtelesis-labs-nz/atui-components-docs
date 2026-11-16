@@ -169,9 +169,12 @@ const AtDialogComponent = class {
      * a reason and can be suppressed. `preventDefault()` runs on both branches:
      * without it the browser would close the dialog itself, which would either
      * bypass `close_esc={false}` or report the close as `'close'`.
+     *
+     * An Escape that arrives already `defaultPrevented` was spent by an inner
+     * layer (an open menu, tooltip or nested dialog) dismissing itself.
      */
     handleKeyDown = (event) => {
-        if (event.key !== 'Escape' || !this.isOpen) {
+        if (event.key !== 'Escape' || !this.isOpen || event.defaultPrevented) {
             return;
         }
         event.preventDefault();
@@ -240,7 +243,7 @@ const AtDialogComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '8920a1cd54daa9462224271534af023a9db6ea5c', "data-open": this.isOpen }, index.h("dialog", { key: '56dc75a9c6b7a380705d11464780ac7bb4d91709', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, index.h("div", { key: 'b435635ca4c439676a2ba738445451bc6b0746cb', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: 'f3079313d8af1701a01cb951f8d04680a9dd89b9' })))));
+        return (index.h(index.Host, { key: '2c5fd154d3513b2d0d75bd48e0c2da0b2bacc7f5', "data-open": this.isOpen }, index.h("dialog", { key: '5762fc5268e2e9b2573c523c53959f1d5c0ebf55', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, index.h("div", { key: '0cd8f6193922efd0605a8b8175154f171a408146', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, index.h("slot", { key: 'c6b14455e2010c8f60c8e96925bde6cd118de188' })))));
     }
 };
 AtDialogComponent.style = atDialogCss();

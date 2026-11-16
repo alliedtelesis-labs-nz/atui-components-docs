@@ -2921,6 +2921,11 @@ export namespace Components {
          */
         "close_backdrop": boolean;
         /**
+          * Whether pressing Escape dismisses the side panel. Set to `false` for a flow that must confirm before closing, such as an unsaved-changes guard. The host then closes it via `closeSidePanel()`. The close button is unaffected.
+          * @default true
+         */
+        "close_esc": boolean;
+        /**
           * Getter method for the open state of the side panel
           * @returns The current open state of the side panel
          */
@@ -9049,6 +9054,11 @@ declare namespace LocalJSX {
          */
         "close_backdrop"?: boolean;
         /**
+          * Whether pressing Escape dismisses the side panel. Set to `false` for a flow that must confirm before closing, such as an unsaved-changes guard. The host then closes it via `closeSidePanel()`. The close button is unaffected.
+          * @default true
+         */
+        "close_esc"?: boolean;
+        /**
           * Displays a close button if set
           * @default true
          */
@@ -10684,6 +10694,7 @@ declare namespace LocalJSX {
         "position": AtSidePanelPosition;
         "backdrop": boolean;
         "close_backdrop": boolean;
+        "close_esc": boolean;
         "trigger_id": string;
     }
     interface AtSidebarAttributes {
