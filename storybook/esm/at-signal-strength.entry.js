@@ -68,7 +68,7 @@ const AtSignalStrength = class {
         const accessibleName = value
             ? `Signal strength: ${label}, ${value}`
             : `Signal strength: ${label}`;
-        return (h(Host, { key: '20e2d2b4902ed312dd2f5496d6334214056379d6', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (h("span", { key: '1ecea9d3c86e0326d229462a547d4059b3dd212e', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), h("slot", { key: 'bcf6cf5b77e2b5bfba037731cf910347fac5b851' })));
+        return (h(Host, { key: 'e9faad596e6cdfe5868e7093303d562b87adbdb5', "data-name": "signal-strength", "data-level": level, class: `inline-flex items-center gap-4 ${textSizeClass[this.size]}` }, this.renderBars(level, accessibleName), this.show_value && value && (h("span", { key: '45adb1ca3e47b47c9d7f2503aabf5e2e84464a2d', "data-name": "signal-strength-value", class: "text-foreground whitespace-nowrap tabular-nums", "aria-hidden": "true" }, value)), h("slot", { key: 'a694ad713175491938d4f9f1b0ef358f70c4ace9' })));
     }
 };
 

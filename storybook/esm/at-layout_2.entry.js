@@ -24,7 +24,7 @@ const AtLayout = class {
         }
     }
     render() {
-        return h(Host, { key: '59de435a141402a17432be9079c601e23d2ed0ea' }, this.layoutElement);
+        return h(Host, { key: '02ef77be50539c154d13f61b8674fbf538271f72' }, this.layoutElement);
     }
 };
 
@@ -89,7 +89,7 @@ const AtTabTrigger = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'd4c8b2d9add0a3b190e4b60986e2275d731a5724', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '36415d196665dfa0610790696ff25c0dbe4a0431' })));
+        return (h(Host, { key: 'c3c857f06667ef95e42b0862b13036a70162fc45', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '3c873f780c780748e4432e883f87d93adee43b44' })));
     }
 };
 

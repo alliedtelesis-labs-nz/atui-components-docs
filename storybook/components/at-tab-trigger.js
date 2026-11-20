@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-8D1k5vmP.js";const m=o,p=s;export{m as AtTabTrigger,p as defineCustomElement}
+import{A as o,d as p}from"./p-CLpOkrTw.js";const r=o,s=p;export{r as AtTabTrigger,s as defineCustomElement}
