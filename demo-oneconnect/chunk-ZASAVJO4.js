@@ -1,0 +1,1 @@
+import{a as e}from"./chunk-USOD3V74.js";function r(t){return e({headerName:"",colId:"actions",field:"actions",excludeFromExport:!0,getQuickFilterText:()=>"",sortable:!1,resizable:!1,filterOptions:{exclude:!0},lockPosition:"right",width:56,minWidth:56,maxWidth:56,suppressSizeToFit:!0,cellClass:"justify-center",cellRenderer:"AtMenuCell"},t)}export{r as a};

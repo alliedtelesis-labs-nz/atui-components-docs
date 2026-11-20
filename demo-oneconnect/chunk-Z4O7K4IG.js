@@ -1,0 +1,1 @@
+function e(t){return r=>{let n=r.value;if(n==null)return null;let l=String(n).trim().length;return l>t?{maxlength:{requiredLength:t,actualLength:l}}:null}}var a=t=>{let r=t.value;return r==null||Number.isInteger(Number(r))?null:{integer:!0}};export{e as a,a as b};
