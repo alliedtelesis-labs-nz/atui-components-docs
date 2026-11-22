@@ -18,6 +18,9 @@ export declare class AtTableFilters {
      * Emits the clicked filter condition when a chip is clicked (excluding its remove button).
      */
     atFilterClick: EventEmitter<AtIFilter>;
+    translations: any;
+    el: HTMLAtTableFiltersElement;
+    componentWillLoad(): Promise<void>;
     private chipLabel;
     private groupBackground;
     private hasValidCondition;

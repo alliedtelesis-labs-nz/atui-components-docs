@@ -1,5 +1,7 @@
-import { h, Host } from "@stencil/core";
+import { h, Host, } from "@stencil/core";
 import { flattenFilterConditions, isFilterGroup, removeFilterCondition, } from "../../../utils/filter-tree.util";
+import { filterConditionLabel, filterLogicalOperatorLabel, } from "../../../utils/filter-labels.util";
+import { fetchTranslations } from "../../../utils/translation";
 /**
  * @category Data Tables
  * @description Displays the active table filters as a removable chip list, showing And/Or logical operators and grouping nested filters.
@@ -18,10 +20,13 @@ export class AtTableFilters {
      * Emits the clicked filter condition when a chip is clicked (excluding its remove button).
      */
     atFilterClick;
+    translations;
+    el;
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     chipLabel(filter) {
-        return `${filter.label ?? filter.id} ${filter.operator ?? ''} ${filter.value}`
-            .replace(/\s+/g, ' ')
-            .trim();
+        return filterConditionLabel(this.translations, filter);
     }
     groupBackground(depth) {
         return depth % 2 === 0 ? 'bg-surface-0' : 'bg-surface-1';
@@ -65,7 +70,7 @@ export class AtTableFilters {
         return children.flatMap((child, index) => {
             const items = [];
             if (index > 0) {
-                items.push(h("span", { class: "text-muted text-xs font-semibold", "data-name": "filter-chip-operator" }, group.logical_operator));
+                items.push(h("span", { class: "text-muted text-xs font-semibold", "data-name": "filter-chip-operator" }, filterLogicalOperatorLabel(this.translations, group.logical_operator)));
             }
             items.push(isFilterGroup(child) ? (h("span", { class: `flex items-center gap-4 rounded-full p-2 ${bgClass}`, "data-name": "filter-chip-group" }, this.renderGroupChips(child, depth + 1))) : (this.renderConditionChip(child)));
             return items;
@@ -105,6 +110,11 @@ export class AtTableFilters {
                 "getter": false,
                 "setter": false
             }
+        };
+    }
+    static get states() {
+        return {
+            "translations": {}
         };
     }
     static get events() {
@@ -154,4 +164,5 @@ export class AtTableFilters {
                 }
             }];
     }
+    static get elementRef() { return "el"; }
 }

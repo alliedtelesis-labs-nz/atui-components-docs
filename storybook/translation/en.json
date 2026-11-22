@@ -54,6 +54,20 @@
                 "PREVIOUS_PAGE": "Previous page",
                 "NEXT_PAGE": "Next page",
                 "LAST_PAGE": "Last page"
+            },
+            "FILTER": {
+                "AND": "AND",
+                "OR": "OR",
+                "SELECT_FILTER": "Select Filter",
+                "SELECT_OPERATOR": "Select Operator",
+                "SELECT_VALUE": "Select Value",
+                "ENTER_VALUE": "Enter Value",
+                "CONDITION": "{field} {operator} {value}",
+                "OPERATORS": {
+                    "IS": "is",
+                    "IS_NOT": "is not",
+                    "CONTAINS": "contains"
+                }
             }
         },
         "TIME": {

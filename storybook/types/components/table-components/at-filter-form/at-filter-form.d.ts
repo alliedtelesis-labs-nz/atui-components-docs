@@ -12,6 +12,8 @@ export declare class AtFilterForm {
     active_filters?: AtIFilterGroup;
     filter_ids: AtISelectOption[];
     operator_options: AtISelectOption[];
+    translations: any;
+    el: HTMLAtFilterFormElement;
     root: AtIFilterGroup;
     isFormValid: boolean;
     /**
@@ -27,7 +29,7 @@ export declare class AtFilterForm {
      * Event emitted with the current filters when the user initiates a filter search
      */
     atSearch: EventEmitter<AtIFilterGroup>;
-    componentWillLoad(): void;
+    componentWillLoad(): Promise<void>;
     onFilterConfigChange(): void;
     private setDefaultFilters;
     private createFilter;
@@ -44,6 +46,7 @@ export declare class AtFilterForm {
     private onCancel;
     private attachLabels;
     private onSearch;
+    private get filterText();
     private renderCondition;
     private renderGroup;
     render(): any;

@@ -1,5 +1,7 @@
 import { Host, h, } from "@stencil/core";
 import { countFilterConditions, everyConditionValid, isFilterGroup, flattenSingleChildAndRemoveEmptyGroups, flattenSingleChildGroup, } from "../../../utils/filter-tree.util";
+import { filterLogicalOperatorLabel, filterOperatorLabel, } from "../../../utils/filter-labels.util";
+import { fetchTranslations } from "../../../utils/translation";
 export class AtFilterForm {
     /**
      * Configuration for the available filters
@@ -15,6 +17,8 @@ export class AtFilterForm {
         { value: 'is not' },
         { value: 'contains' },
     ];
+    translations;
+    el;
     root = {
         id: 'root',
         logical_operator: 'And',
@@ -34,8 +38,9 @@ export class AtFilterForm {
      * Event emitted with the current filters when the user initiates a filter search
      */
     atSearch;
-    componentWillLoad() {
+    async componentWillLoad() {
         this.onFilterConfigChange();
+        this.translations = await fetchTranslations(this.el);
     }
     onFilterConfigChange() {
         this.filter_ids = this.filter_config.map((config) => ({
@@ -112,9 +117,13 @@ export class AtFilterForm {
         }
     }
     getOperatorOptions(filterOptions) {
-        return filterOptions
+        const operators = filterOptions
             ? this.operator_options.filter((option) => option.value !== 'contains')
             : this.operator_options;
+        return operators.map((option) => ({
+            ...option,
+            label: filterOperatorLabel(this.translations, option.value),
+        }));
     }
     handleFilterIdChange(group, index, event) {
         const filter = group.children[index];
@@ -168,8 +177,11 @@ export class AtFilterForm {
         const result = this.attachLabels(this.root);
         this.atSearch.emit(result);
     }
+    get filterText() {
+        return this.translations?.ATUI?.TABLE?.FILTER ?? {};
+    }
     renderCondition(group, filter, index) {
-        return (h("div", { class: "mb-4 flex flex-row items-end gap-4", "data-name": "filter-condition" }, h("at-select", { placeholder: "Select Filter", value: filter.id, options: this.filter_ids, onAtuiChange: (event) => this.handleFilterIdChange(group, index, event) }), h("at-select", { key: `${index}-${this.renderKey}`, value: filter.operator, placeholder: "Select Operator", class: "w-[100px]", options: this.getOperatorOptions(filter.filter_options), onAtuiChange: (event) => this.handleOperatorChange(group, index, event) }), filter.filter_options ? (h("at-select", { class: "w-input-sm", key: `${index}-${this.renderKey}`, placeholder: "Select Value", value: filter.value, options: filter.filter_options, onAtuiChange: (event) => this.handleValueChange(group, index, event) })) : (h("at-input", { key: `${index}-${this.renderKey}`, placeholder: "Enter Value", value: filter.value, onAtuiChange: (event) => this.handleValueChange(group, index, event) })), h("at-button", { type: "secondaryOutline", disabled: countFilterConditions(this.root) === 1, onAtuiClick: () => this.remove(group, index), "data-name": "filter-remove" }, h("at-icon", { slot: "icon", name: "delete" })), h("at-button", { type: "primaryText", onAtuiClick: () => this.addOr(group, index), "data-name": "filter-add-or" }, h("at-icon", { slot: "icon", name: "add" }), h("span", null, "OR")), h("at-button", { type: "primaryText", onAtuiClick: () => this.addAnd(group, index), "data-name": "filter-add-and" }, h("at-icon", { slot: "icon", name: "add" }), h("span", null, "AND"))));
+        return (h("div", { class: "mb-4 flex flex-row items-end gap-4", "data-name": "filter-condition" }, h("at-select", { placeholder: this.filterText.SELECT_FILTER, value: filter.id, options: this.filter_ids, onAtuiChange: (event) => this.handleFilterIdChange(group, index, event) }), h("at-select", { key: `${index}-${this.renderKey}`, value: filter.operator, placeholder: this.filterText.SELECT_OPERATOR, class: "w-[100px]", options: this.getOperatorOptions(filter.filter_options), onAtuiChange: (event) => this.handleOperatorChange(group, index, event) }), filter.filter_options ? (h("at-select", { class: "w-input-sm", key: `${index}-${this.renderKey}`, placeholder: this.filterText.SELECT_VALUE, value: filter.value, options: filter.filter_options, onAtuiChange: (event) => this.handleValueChange(group, index, event) })) : (h("at-input", { key: `${index}-${this.renderKey}`, placeholder: this.filterText.ENTER_VALUE, value: filter.value, onAtuiChange: (event) => this.handleValueChange(group, index, event) })), h("at-button", { type: "secondaryOutline", disabled: countFilterConditions(this.root) === 1, onAtuiClick: () => this.remove(group, index), "data-name": "filter-remove" }, h("at-icon", { slot: "icon", name: "delete" })), h("at-button", { type: "primaryText", onAtuiClick: () => this.addOr(group, index), "data-name": "filter-add-or" }, h("at-icon", { slot: "icon", name: "add" }), h("span", null, filterLogicalOperatorLabel(this.translations, 'Or'))), h("at-button", { type: "primaryText", onAtuiClick: () => this.addAnd(group, index), "data-name": "filter-add-and" }, h("at-icon", { slot: "icon", name: "add" }), h("span", null, filterLogicalOperatorLabel(this.translations, 'And')))));
     }
     renderGroup(group, isRoot = false, depth = 0) {
         const bgClass = depth % 2 === 1 ? 'bg-surface-foreground' : 'bg-surface-2';
@@ -178,7 +190,7 @@ export class AtFilterForm {
                 : `border-muted ${bgClass} ml-6 flex flex-col rounded-lg border p-4`, "data-name": isRoot ? undefined : 'filter-group' }, group.children.flatMap((child, index) => {
             const items = [];
             if (index > 0) {
-                items.push(h("div", { class: "text-muted mb-2 ml-1 text-xs font-semibold", "data-name": "filter-group-label" }, group.logical_operator));
+                items.push(h("div", { class: "text-muted mb-2 ml-1 text-xs font-semibold", "data-name": "filter-group-label" }, filterLogicalOperatorLabel(this.translations, group.logical_operator)));
             }
             items.push(isFilterGroup(child)
                 ? this.renderGroup(child, false, depth + 1)
@@ -187,7 +199,7 @@ export class AtFilterForm {
         })));
     }
     render() {
-        return (h(Host, { key: '88b7861ef1acc5a76a45de26bc4df09cad05b3d6', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '60e5a5d219d2211ea5841204b2af13eff561b2f5', class: "flex justify-end gap-4" }, h("at-button", { key: '729c2a54bba1333b7d2973cfe97a667cae2b47c0', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: '4787a4de5f7d20b045ce5993f829e5d14e243860', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (h(Host, { key: '10630fe7fba1c01c8e4d1796f52951377ca21789', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), h("div", { key: '5e1fee956a83a784416694e3b056cafd9b359402', class: "flex justify-end gap-4" }, h("at-button", { key: '53d41060f715a462c5b7701fb455e5d93a39ab92', label: this.translations?.ATUI?.CANCEL, type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), h("at-button", { key: '0ffd4693b0a592dddd6145128b3ecd66f0ac420d', label: this.translations?.ATUI?.SEARCH, type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get is() { return "at-filter-form"; }
     static get properties() {
@@ -247,6 +259,7 @@ export class AtFilterForm {
         return {
             "filter_ids": {},
             "operator_options": {},
+            "translations": {},
             "root": {},
             "isFormValid": {}
         };
@@ -291,6 +304,7 @@ export class AtFilterForm {
                 }
             }];
     }
+    static get elementRef() { return "el"; }
     static get watchers() {
         return [{
                 "propName": "filter_config",

@@ -2,6 +2,8 @@
 
 var index = require('./index-CWfGEe1_.js');
 var filterTree_util = require('./filter-tree.util-DfYwq3Yg.js');
+var filterLabels_util = require('./filter-labels.util-CYGk3ZFX.js');
+var translation = require('./translation-D8CDff5F.js');
 
 const AtFilterForm = class {
     constructor(hostRef) {
@@ -23,6 +25,8 @@ const AtFilterForm = class {
         { value: 'is not' },
         { value: 'contains' },
     ];
+    translations;
+    get el() { return index.getElement(this); }
     root = {
         id: 'root',
         logical_operator: 'And',
@@ -42,8 +46,9 @@ const AtFilterForm = class {
      * Event emitted with the current filters when the user initiates a filter search
      */
     atSearch;
-    componentWillLoad() {
+    async componentWillLoad() {
         this.onFilterConfigChange();
+        this.translations = await translation.fetchTranslations(this.el);
     }
     onFilterConfigChange() {
         this.filter_ids = this.filter_config.map((config) => ({
@@ -120,9 +125,13 @@ const AtFilterForm = class {
         }
     }
     getOperatorOptions(filterOptions) {
-        return filterOptions
+        const operators = filterOptions
             ? this.operator_options.filter((option) => option.value !== 'contains')
             : this.operator_options;
+        return operators.map((option) => ({
+            ...option,
+            label: filterLabels_util.filterOperatorLabel(this.translations, option.value),
+        }));
     }
     handleFilterIdChange(group, index, event) {
         const filter = group.children[index];
@@ -176,8 +185,11 @@ const AtFilterForm = class {
         const result = this.attachLabels(this.root);
         this.atSearch.emit(result);
     }
+    get filterText() {
+        return this.translations?.ATUI?.TABLE?.FILTER ?? {};
+    }
     renderCondition(group, filter, index$1) {
-        return (index.h("div", { class: "mb-4 flex flex-row items-end gap-4", "data-name": "filter-condition" }, index.h("at-select", { placeholder: "Select Filter", value: filter.id, options: this.filter_ids, onAtuiChange: (event) => this.handleFilterIdChange(group, index$1, event) }), index.h("at-select", { key: `${index$1}-${this.renderKey}`, value: filter.operator, placeholder: "Select Operator", class: "w-[100px]", options: this.getOperatorOptions(filter.filter_options), onAtuiChange: (event) => this.handleOperatorChange(group, index$1, event) }), filter.filter_options ? (index.h("at-select", { class: "w-input-sm", key: `${index$1}-${this.renderKey}`, placeholder: "Select Value", value: filter.value, options: filter.filter_options, onAtuiChange: (event) => this.handleValueChange(group, index$1, event) })) : (index.h("at-input", { key: `${index$1}-${this.renderKey}`, placeholder: "Enter Value", value: filter.value, onAtuiChange: (event) => this.handleValueChange(group, index$1, event) })), index.h("at-button", { type: "secondaryOutline", disabled: filterTree_util.countFilterConditions(this.root) === 1, onAtuiClick: () => this.remove(group, index$1), "data-name": "filter-remove" }, index.h("at-icon", { slot: "icon", name: "delete" })), index.h("at-button", { type: "primaryText", onAtuiClick: () => this.addOr(group, index$1), "data-name": "filter-add-or" }, index.h("at-icon", { slot: "icon", name: "add" }), index.h("span", null, "OR")), index.h("at-button", { type: "primaryText", onAtuiClick: () => this.addAnd(group, index$1), "data-name": "filter-add-and" }, index.h("at-icon", { slot: "icon", name: "add" }), index.h("span", null, "AND"))));
+        return (index.h("div", { class: "mb-4 flex flex-row items-end gap-4", "data-name": "filter-condition" }, index.h("at-select", { placeholder: this.filterText.SELECT_FILTER, value: filter.id, options: this.filter_ids, onAtuiChange: (event) => this.handleFilterIdChange(group, index$1, event) }), index.h("at-select", { key: `${index$1}-${this.renderKey}`, value: filter.operator, placeholder: this.filterText.SELECT_OPERATOR, class: "w-[100px]", options: this.getOperatorOptions(filter.filter_options), onAtuiChange: (event) => this.handleOperatorChange(group, index$1, event) }), filter.filter_options ? (index.h("at-select", { class: "w-input-sm", key: `${index$1}-${this.renderKey}`, placeholder: this.filterText.SELECT_VALUE, value: filter.value, options: filter.filter_options, onAtuiChange: (event) => this.handleValueChange(group, index$1, event) })) : (index.h("at-input", { key: `${index$1}-${this.renderKey}`, placeholder: this.filterText.ENTER_VALUE, value: filter.value, onAtuiChange: (event) => this.handleValueChange(group, index$1, event) })), index.h("at-button", { type: "secondaryOutline", disabled: filterTree_util.countFilterConditions(this.root) === 1, onAtuiClick: () => this.remove(group, index$1), "data-name": "filter-remove" }, index.h("at-icon", { slot: "icon", name: "delete" })), index.h("at-button", { type: "primaryText", onAtuiClick: () => this.addOr(group, index$1), "data-name": "filter-add-or" }, index.h("at-icon", { slot: "icon", name: "add" }), index.h("span", null, filterLabels_util.filterLogicalOperatorLabel(this.translations, 'Or'))), index.h("at-button", { type: "primaryText", onAtuiClick: () => this.addAnd(group, index$1), "data-name": "filter-add-and" }, index.h("at-icon", { slot: "icon", name: "add" }), index.h("span", null, filterLabels_util.filterLogicalOperatorLabel(this.translations, 'And')))));
     }
     renderGroup(group, isRoot = false, depth = 0) {
         const bgClass = depth % 2 === 1 ? 'bg-surface-foreground' : 'bg-surface-2';
@@ -186,7 +198,7 @@ const AtFilterForm = class {
                 : `border-muted ${bgClass} ml-6 flex flex-col rounded-lg border p-4`, "data-name": isRoot ? undefined : 'filter-group' }, group.children.flatMap((child, index$1) => {
             const items = [];
             if (index$1 > 0) {
-                items.push(index.h("div", { class: "text-muted mb-2 ml-1 text-xs font-semibold", "data-name": "filter-group-label" }, group.logical_operator));
+                items.push(index.h("div", { class: "text-muted mb-2 ml-1 text-xs font-semibold", "data-name": "filter-group-label" }, filterLabels_util.filterLogicalOperatorLabel(this.translations, group.logical_operator)));
             }
             items.push(filterTree_util.isFilterGroup(child)
                 ? this.renderGroup(child, false, depth + 1)
@@ -195,7 +207,7 @@ const AtFilterForm = class {
         })));
     }
     render() {
-        return (index.h(index.Host, { key: '88b7861ef1acc5a76a45de26bc4df09cad05b3d6', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), index.h("div", { key: '60e5a5d219d2211ea5841204b2af13eff561b2f5', class: "flex justify-end gap-4" }, index.h("at-button", { key: '729c2a54bba1333b7d2973cfe97a667cae2b47c0', label: "Cancel", type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), index.h("at-button", { key: '4787a4de5f7d20b045ce5993f829e5d14e243860', label: "Search", type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (index.h(index.Host, { key: '10630fe7fba1c01c8e4d1796f52951377ca21789', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), index.h("div", { key: '5e1fee956a83a784416694e3b056cafd9b359402', class: "flex justify-end gap-4" }, index.h("at-button", { key: '53d41060f715a462c5b7701fb455e5d93a39ab92', label: this.translations?.ATUI?.CANCEL, type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), index.h("at-button", { key: '0ffd4693b0a592dddd6145128b3ecd66f0ac420d', label: this.translations?.ATUI?.SEARCH, type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get watchers() { return {
         "filter_config": [{

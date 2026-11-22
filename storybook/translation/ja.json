@@ -54,6 +54,20 @@
                 "PREVIOUS_PAGE": "前のページ",
                 "NEXT_PAGE": "次のページ",
                 "LAST_PAGE": "最後のページ"
+            },
+            "FILTER": {
+                "AND": "かつ",
+                "OR": "または",
+                "SELECT_FILTER": "フィルターを選択",
+                "SELECT_OPERATOR": "演算子を選択",
+                "SELECT_VALUE": "値を選択",
+                "ENTER_VALUE": "値を入力",
+                "CONDITION": "{field}が{value}{operator}",
+                "OPERATORS": {
+                    "IS": "と一致",
+                    "IS_NOT": "と不一致",
+                    "CONTAINS": "を含む"
+                }
             }
         },
         "TIME": {

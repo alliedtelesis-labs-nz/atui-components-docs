@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DdGm_rA6.js';
-import { f as fetchTranslations } from './translation-l-N4VWT_.js';
+import { f as fetchTranslations } from './translation-BV6bz-3S.js';
 
 const AtPromptContainer = class {
     constructor(hostRef) {
