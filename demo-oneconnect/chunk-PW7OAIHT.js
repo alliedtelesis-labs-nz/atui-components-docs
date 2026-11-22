@@ -1,1 +1,0 @@
-import{Ib as e}from"./chunk-OA5DBSFB.js";async function a(r){try{return await r(),!0}catch(t){if(t instanceof e)return!1;throw t}}async function i(r,t){try{return await r()}catch(o){if(o instanceof e)return t;throw o}}var c=r=>`${r.value}`;export{a,i as b,c};
