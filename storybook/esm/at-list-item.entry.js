@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-DdGm_rA6.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
 
 // Vertical padding only — the container (e.g. `at-card`, which already applies
 // 16px of content padding) owns the horizontal inset, so rows sit flush with the

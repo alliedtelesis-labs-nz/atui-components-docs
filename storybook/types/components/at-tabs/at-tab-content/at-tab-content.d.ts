@@ -28,8 +28,11 @@ export declare class AtTabContent {
     atuiActivate: EventEmitter<string>;
     private tabSelector;
     componentWillLoad(): void;
+    private hasLoaded;
+    connectedCallback(): void;
     componentDidLoad(): Promise<void>;
     disconnectedCallback(): void;
+    private attachToTabSelector;
     handleActivated(isActivated: boolean, wasActivated: boolean): void;
     setIsActive(id: string): void;
     updateActiveState: (event: Event) => void;

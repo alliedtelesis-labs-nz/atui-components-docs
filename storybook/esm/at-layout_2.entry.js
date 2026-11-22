@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-DdGm_rA6.js';
+import { r as registerInstance, h, H as Host, a as getElement } from './index-CNjTRhUr.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const AtLayout = class {
@@ -35,7 +35,7 @@ const variantsConfig = {
             vertical: 'flex justify-start',
         },
         active: {
-            true: 'z-index-20',
+            true: '',
             false: 'text-muted hover:text-foreground',
         },
     },
@@ -80,6 +80,7 @@ const AtTabTrigger = class {
     get el() { return getElement(this); }
     handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
             this.el.click();
         }
     }
@@ -89,7 +90,7 @@ const AtTabTrigger = class {
             layout: this.layout,
             active: this.is_active,
         });
-        return (h(Host, { key: 'c3c857f06667ef95e42b0862b13036a70162fc45', role: "tab", tabindex: "0", "aria-selected": this.is_active, "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : undefined}` }, this.tab_title, h("slot", { key: '3c873f780c780748e4432e883f87d93adee43b44' })));
+        return (h(Host, { key: 'e38552414c8016519078cc1ff41169d63e567b7c', role: "tab", id: `tab-${this.tab_id}`, "aria-controls": `panel-${this.tab_id}`, tabindex: this.is_active ? '0' : '-1', "aria-selected": this.is_active ? 'true' : 'false', "data-active": this.is_active ? 'true' : 'false', "data-name": `tab-${this.tab_id}`, onKeyDown: (event) => this.handleKeyDown(event), class: `${classname} ${this.fill ? 'flex-1' : ''}` }, this.tab_title, h("slot", { key: 'da10bfd2dcf90f7caac642876bda96be88140810' })));
     }
 };
 

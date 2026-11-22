@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CWfGEe1_.js');
+var index = require('./index-D6_HFEr-.js');
 var relativeTimeLabel = require('./relative-time-label-Cl44YHvZ.js');
 
 const AtRelativeDateTimeCell = class {

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DdGm_rA6.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
 
 const AtTabs = class {
     constructor(hostRef) {
@@ -35,11 +35,30 @@ const AtTabs = class {
     tabManualAdded = [];
     boundTabEls = new WeakSet();
     hasLoaded = false;
+    tabResizeObserver;
+    connectedCallback() {
+        if (this.hasLoaded) {
+            this.observeTabSizes();
+        }
+    }
     componentDidLoad() {
         this.hasLoaded = true;
     }
+    disconnectedCallback() {
+        this.tabResizeObserver?.disconnect();
+        this.tabResizeObserver = undefined;
+    }
+    observeTabSizes() {
+        this.tabResizeObserver ??= new ResizeObserver(() => this.updateIndicatorPosition());
+        this.tabResizeObserver.disconnect();
+        if (this.containerRef) {
+            this.tabResizeObserver.observe(this.containerRef);
+        }
+        this.tabEls.forEach((tabEl) => this.tabResizeObserver.observe(tabEl, { box: 'border-box' }));
+    }
     componentDidRender() {
         this.tabEls = this.getTabsElements();
+        this.observeTabSizes();
         requestAnimationFrame(() => {
             this.initializeTabs();
             this.addEventListenersToTabs();
@@ -62,6 +81,37 @@ const AtTabs = class {
                 !!this.active_tab && tabEl.tab_id === this.active_tab;
             tabEl.fill = this.fill;
         });
+        this.syncRovingTabindex();
+    }
+    syncRovingTabindex() {
+        const hasActiveTab = this.tabEls.some((tabEl) => tabEl.tab_id === this.active_tab);
+        this.tabEls.forEach((tabEl, index) => {
+            const isTabStop = hasActiveTab
+                ? tabEl.tab_id === this.active_tab
+                : index === 0;
+            tabEl.setAttribute('tabindex', isTabStop ? '0' : '-1');
+        });
+    }
+    handleTabKeyDown(event, tabEl) {
+        const index = this.tabEls.indexOf(tabEl);
+        if (index === -1)
+            return;
+        const last = this.tabEls.length - 1;
+        const targetIndexByKey = {
+            ArrowRight: index === last ? 0 : index + 1,
+            ArrowDown: index === last ? 0 : index + 1,
+            ArrowLeft: index === 0 ? last : index - 1,
+            ArrowUp: index === 0 ? last : index - 1,
+            Home: 0,
+            End: last,
+        };
+        const targetIndex = targetIndexByKey[event.key];
+        if (targetIndex === undefined)
+            return;
+        event.preventDefault();
+        const target = this.tabEls[targetIndex];
+        this.handleTabChange(target.tab_id);
+        target.focus();
     }
     addEventListenersToTabs() {
         this.tabEls.forEach((tabEl) => {
@@ -71,6 +121,7 @@ const AtTabs = class {
             tabEl.addEventListener('click', () => {
                 this.handleTabChange(tabEl.tab_id);
             });
+            tabEl.addEventListener('keydown', (event) => this.handleTabKeyDown(event, tabEl));
         });
     }
     getTabsElements() {
@@ -116,6 +167,7 @@ const AtTabs = class {
         this.tabEls.forEach((tab) => {
             tab.is_active = tab.tab_id === newValue;
         });
+        this.syncRovingTabindex();
     }
     tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
@@ -163,14 +215,14 @@ const AtTabs = class {
             return (h("at-layout", { class: "flex flex-grow", template: "tabset", "data-name": "navigation-top" }, !this.hide_nav && (h("div", { slot: "tabset-navigation" }, h("nav", { role: "tablist", class: "border-muted relative flex flex-wrap gap-2 border-b px-2 text-center text-sm font-medium", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }), h("div", { id: `indicator-${this.tabsetId}`, class: "bg-active-accent pointer-events-none absolute bottom-0 z-10 mx-8 h-2 rounded-sm transition-[left] duration-150 ease-in-out", style: {
                     left: '0',
                     opacity: '0',
-                }, "aria-hidden": "true", role: "presentation" })))), h("div", { role: "tabpanel", slot: "tabset-content" }, h("slot", { name: "tab-content" }))));
+                }, "aria-hidden": "true", role: "presentation" })))), h("div", { slot: "tabset-content" }, h("slot", { name: "tab-content" }))));
         }
         if (this.layout === 'vertical') {
-            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col p-[2px] p-[16px]", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { role: "tabpanel", slot: "detail", class: "flex-col] flex flex-grow" }, h("slot", { name: "tab-content" }))));
+            return (h("at-layout", { class: "flex flex-grow", template: "master-detail", "data-name": "navigation-left" }, h("div", { slot: "master" }, h("nav", { role: "tablist", class: "flex flex-grow flex-col p-16", id: `container-${this.tabsetId}` }, this.tabOptions, h("slot", { name: "tab-list" }), h("slot", { name: "tab-nav" }))), h("div", { slot: "detail", class: "flex flex-grow flex-col" }, h("slot", { name: "tab-content" }))));
         }
     }
     render() {
-        return h(Host, { key: '508bbde44c3fd97a8d97c92bc99436b3da9f0eba' }, this.checkLayoutAndRender());
+        return h(Host, { key: '863a960b1dd325c41ddd2503829157e9cb083611' }, this.checkLayoutAndRender());
     }
     static get watchers() { return {
         "active_tab": [{

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CWfGEe1_.js');
+var index = require('./index-D6_HFEr-.js');
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const EMPTY_TEXT = '-';

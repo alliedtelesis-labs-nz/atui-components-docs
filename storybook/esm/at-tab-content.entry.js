@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h } from './index-DdGm_rA6.js';
+import { r as registerInstance, c as createEvent, a as getElement, h } from './index-CNjTRhUr.js';
 
 const AtTabContent = class {
     constructor(hostRef) {
@@ -30,18 +30,26 @@ const AtTabContent = class {
         this.isActive = this.is_active;
         this.has_activated = this.has_activated || this.is_active;
     }
-    async componentDidLoad() {
-        this.tabSelector = this.el.closest('at-tabs');
-        if (this.tabSelector) {
-            const activeTab = await this.tabSelector.getActiveTab();
-            this.setIsActive(activeTab);
-            this.tabSelector.addEventListener('atuiTabChange', this.updateActiveState);
+    hasLoaded = false;
+    connectedCallback() {
+        if (this.hasLoaded) {
+            this.attachToTabSelector();
         }
     }
+    async componentDidLoad() {
+        this.hasLoaded = true;
+        await this.attachToTabSelector();
+    }
     disconnectedCallback() {
-        if (this.tabSelector) {
-            this.tabSelector.removeEventListener('atuiTabChange', this.updateActiveState);
-        }
+        this.tabSelector?.removeEventListener('atuiTabChange', this.updateActiveState);
+        this.tabSelector = undefined;
+    }
+    async attachToTabSelector() {
+        this.tabSelector = this.el.closest('at-tabs');
+        if (!this.tabSelector)
+            return;
+        this.tabSelector.addEventListener('atuiTabChange', this.updateActiveState);
+        this.setIsActive(await this.tabSelector.getActiveTab());
     }
     handleActivated(isActivated, wasActivated) {
         if (isActivated && !wasActivated) {
@@ -61,7 +69,7 @@ const AtTabContent = class {
         this.setIsActive(event.detail);
     };
     render() {
-        return (h("div", { key: '931f2bdd6f38424575df3f00c095f70842a86a2e', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '0194e33a18c5fceb19461342886d5633eecd9bd3' })));
+        return (h("div", { key: '4a8f302c29e566a918003c74fa100dea57677f2f', class: `${this.isActive ? 'flex flex-col focus-visible:outline-none' : 'hidden'}`, role: "tabpanel", id: `panel-${this.tab_id}`, "aria-labelledby": `tab-${this.tab_id}`, tabIndex: this.isActive ? 0 : -1, "aria-hidden": !this.isActive }, h("slot", { key: '0cea3e1b5e370e566a610ac7a43ee638e30b272d' })));
     }
     static get watchers() { return {
         "has_activated": [{

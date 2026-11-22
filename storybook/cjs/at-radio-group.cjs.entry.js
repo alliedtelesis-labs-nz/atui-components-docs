@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-CWfGEe1_.js');
+var index = require('./index-D6_HFEr-.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const layoutVariantsConfig = {

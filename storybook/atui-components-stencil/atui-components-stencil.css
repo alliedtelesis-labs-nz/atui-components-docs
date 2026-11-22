@@ -4105,10 +4105,6 @@ at-dialog :where([data-name=card-content]) > at-card {
   padding: 15vh;
 }
 
-.p-\[16px\] {
-  padding: 16px;
-}
-
 .p-\[2px\] {
   padding: 2px;
 }

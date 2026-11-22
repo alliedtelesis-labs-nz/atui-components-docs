@@ -53,9 +53,15 @@ export declare class AtTabs {
     }[];
     boundTabEls: WeakSet<HTMLAtTabTriggerElement>;
     private hasLoaded;
+    private tabResizeObserver?;
+    connectedCallback(): void;
     componentDidLoad(): void;
+    disconnectedCallback(): void;
+    private observeTabSizes;
     componentDidRender(): void;
     initializeTabs(): void;
+    private syncRovingTabindex;
+    private handleTabKeyDown;
     addEventListenersToTabs(): void;
     getTabsElements(): HTMLAtTabTriggerElement[];
     componentDidUpdate(): void;
@@ -82,7 +88,3 @@ export declare class AtTabs {
     checkLayoutAndRender(): any;
     render(): any;
 }
-/**
- * @category Form Controls
- * @description A tab selector component for switching between different content sections. Provides keyboard navigation and accessible tab panel management.
- */
