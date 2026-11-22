@@ -51,6 +51,8 @@ export class AtDialogComponent {
     /**
      * Emits once each time the dialog closes, with `event.detail.reason` describing
      * which path closed it. Always accompanies an `atuiDialogChange(false)`.
+     * Does not bubble, so a listener on an outer dialog never hears a nested
+     * dialog close. Run a dialog's cleanup here, whatever the reason.
      */
     atuiDialogClose;
     dialogId = `dialog-${Math.random().toString(36).substring(2, 11)}`;
@@ -243,7 +245,7 @@ export class AtDialogComponent {
         });
     }
     render() {
-        return (h(Host, { key: '985af33fffb03671a2d012c746e97b3d6cff7cf5', "data-open": this.isOpen }, h("dialog", { key: '55548232eb197c0a1b587d0289fee3ad4b4ceb86', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: 'e0f1db4ed7622a7fb0cbb8349329e068beaef174', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: 'c8ed179de63409fefa4b06757c76b988a4d2f364' })))));
+        return (h(Host, { key: 'de57bf84f2d1a3138da9b2a210303aa6795b0adb', "data-open": this.isOpen }, h("dialog", { key: '682944286790200241a851929f7b2ae2cab0ba88', ref: (el) => (this.dialog = el), "data-name": "dialog", class: `${this.backdrop ? 'backdrop' : ''} ${this.isContainedToSidebarInset ? 'contained' : ''}`, role: this.role, "aria-modal": "true", "aria-label": this.aria_label ?? undefined, "aria-labelledby": this.aria_label ? undefined : this.labelledById, onClose: this.handleDialogClose, onCancel: this.handleCancel, onKeyDown: this.handleKeyDown }, h("div", { key: '8b7bbbe4ed054f6440f7c912a9ddac9c6e252ae3', "data-name": "content", ref: (el) => (this.dialogWrapper = el) }, h("slot", { key: '30e16f6af4dfd5a4f0139e9bd0ba81ceca96cc43' })))));
     }
     static get is() { return "at-dialog"; }
     static get encapsulation() { return "scoped"; }
@@ -404,12 +406,12 @@ export class AtDialogComponent {
             }, {
                 "method": "atuiDialogClose",
                 "name": "atuiDialogClose",
-                "bubbles": true,
+                "bubbles": false,
                 "cancelable": true,
                 "composed": true,
                 "docs": {
                     "tags": [],
-                    "text": "Emits once each time the dialog closes, with `event.detail.reason` describing\nwhich path closed it. Always accompanies an `atuiDialogChange(false)`."
+                    "text": "Emits once each time the dialog closes, with `event.detail.reason` describing\nwhich path closed it. Always accompanies an `atuiDialogChange(false)`.\nDoes not bubble, so a listener on an outer dialog never hears a nested\ndialog close. Run a dialog's cleanup here, whatever the reason."
                 },
                 "complexType": {
                     "original": "{ reason: AtDialogCloseReason }",

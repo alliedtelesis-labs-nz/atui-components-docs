@@ -7291,7 +7291,7 @@ declare namespace LocalJSX {
          */
         "onAtuiDialogChange"?: (event: AtDialogCustomEvent<boolean>) => void;
         /**
-          * Emits once each time the dialog closes, with `event.detail.reason` describing which path closed it. Always accompanies an `atuiDialogChange(false)`.
+          * Emits once each time the dialog closes, with `event.detail.reason` describing which path closed it. Always accompanies an `atuiDialogChange(false)`. Does not bubble, so a listener on an outer dialog never hears a nested dialog close. Run a dialog's cleanup here, whatever the reason.
          */
         "onAtuiDialogClose"?: (event: AtDialogCustomEvent<{ reason: AtDialogCloseReason }>) => void;
         /**
