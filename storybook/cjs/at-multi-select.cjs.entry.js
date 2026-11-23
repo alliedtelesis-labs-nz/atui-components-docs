@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D6_HFEr-.js');
+var index = require('./index-D8ktVGcW.js');
 var translation = require('./translation-Cr-s1VAe.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var keyboardNavigation = require('./keyboard-navigation-DKLJuNMB.js');
@@ -411,10 +411,10 @@ const AtMultiSelectComponent = class {
     renderOptions() {
         return (index.h("ul", { id: this.menuId, role: "listbox", "aria-multiselectable": "true", class: "contents", onKeyDown: async (event) => {
                 await this.handleKeyDownMenu(event);
-            } }, this.hasSearchField && (index.h("div", { class: "relative z-10 p-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
+            } }, this.hasSearchField && (index.h("div", { "data-name": "multi-select-search", class: "bg-menu sticky -top-4 z-10 -mx-4 -mt-4 p-8 pb-4" }, index.h("input", { "data-name": "multi-select-search-input", autocomplete: "off", type: "text", class: "bg-input-background h-input-md max-h-input-md rounded-input border-input focus:border-active-accent focus:ring-active-glow mb-4 h-[28px] w-full flex-shrink flex-grow basis-0 border border-solid p-8 pr-[28px] text-ellipsis outline-0 transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out focus:ring focus:outline-0", placeholder: this.translations?.ATUI?.SEARCH || 'Search', value: this.searchText, onInput: (event) => {
                 event.stopPropagation();
                 this.handleSearchInput(event);
-            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-4 right-4" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
+            }, onClick: (e) => e.stopPropagation(), ref: (el) => (this.searchInputEl = el) }), this.searchText !== '' && (index.h("div", { class: "absolute top-8 right-8" }, index.h("at-button", { class: "m-2", size: "sm", type: "secondaryText", onMouseDown: (e) => e.preventDefault(), onClick: (event) => {
                 event.stopPropagation();
                 this.handleClear();
             }, onKeyDown: (e) => {

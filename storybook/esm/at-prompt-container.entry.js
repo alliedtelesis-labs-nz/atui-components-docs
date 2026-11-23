@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-DTcI15Wk.js';
 import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
 
 const AtPromptContainer = class {

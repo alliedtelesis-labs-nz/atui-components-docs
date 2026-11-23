@@ -2615,6 +2615,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   bottom: 0;
 }
 
+.-top-4 {
+  top: -4px;
+}
+
 .bottom-0 {
   bottom: 0;
 }
@@ -2639,6 +2643,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   right: 4px;
 }
 
+.right-8 {
+  right: 8px;
+}
+
 .right-\[2px\] {
   right: 2px;
 }
@@ -2659,8 +2667,8 @@ at-dialog :where([data-name=card-content]) > at-card {
   top: 2px;
 }
 
-.top-4 {
-  top: 4px;
+.top-8 {
+  top: 8px;
 }
 
 .top-\[-8px\] {
@@ -2713,6 +2721,10 @@ at-dialog :where([data-name=card-content]) > at-card {
 .my-8 {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.-mt-4 {
+  margin-top: -4px;
 }
 
 .mb-2 {

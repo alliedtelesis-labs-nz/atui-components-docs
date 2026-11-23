@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D6_HFEr-.js');
+var index = require('./index-D8ktVGcW.js');
 
 const AtBreadcrumbItem = class {
     constructor(hostRef) {

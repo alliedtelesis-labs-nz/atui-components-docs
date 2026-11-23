@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h, H as Host, F as Fragment } from './index-CNjTRhUr.js';
+import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h, H as Host, F as Fragment } from './index-DTcI15Wk.js';
 import { s as slottedLabelId } from './slotted-label-id-yAuyDwgx.js';
 import { a as AtTimeDateUtil, D as Duration, d as dayjs, T as TimeExtraOptions } from './at-time-date.util-Bfdzn_RG.js';
 import { f as fetchTranslations } from './translation-DNQTZ_VC.js';

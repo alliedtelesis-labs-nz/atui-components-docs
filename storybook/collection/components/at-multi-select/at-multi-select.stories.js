@@ -31,7 +31,18 @@ export default {
 };
 export const Default = Template.bind({});
 Default.args = {
-    options: [{ value: 'one' }, { value: 'two' }, { value: 'three' }],
+    options: [
+        { value: 'one' },
+        { value: 'two' },
+        { value: 'three' },
+        { value: 'four' },
+        { value: 'five' },
+        { value: 'six' },
+        { value: 'seven' },
+        { value: 'eight' },
+        { value: 'nine' },
+        { value: 'ten' },
+    ],
     label: 'Multi select',
     hint_text: 'Hint text',
     info_text: 'Info text',
