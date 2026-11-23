@@ -29,6 +29,11 @@ export declare class AtPromptInputComponent {
      */
     placeholder: string;
     /**
+     * Accessible name for the message field. Use when the visible label comes from the `label`
+     * slot or from surrounding content. Without it or `label`, the placeholder names the field.
+     */
+    aria_label: string;
+    /**
      * Maximum height in pixels for auto-resize
      */
     max_height: number;

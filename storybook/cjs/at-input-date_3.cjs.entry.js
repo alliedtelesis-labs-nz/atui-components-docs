@@ -1,10 +1,11 @@
 'use strict';
 
 var index = require('./index-D6_HFEr-.js');
-var translation = require('./translation-CmxBYSNo.js');
+var translation = require('./translation-Cr-s1VAe.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-CBDuvYdu.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var date = require('./date-DDRmOnS1.js');
+var slottedLabelId = require('./slotted-label-id-D9J5SVli.js');
 require('./at-time-date.util-6Fmc04Ie.js');
 
 const inputVariantsConfig$1 = {
@@ -432,6 +433,11 @@ const AtToggleSwitchComponent = class {
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */
     atuiChange;
+    get el() { return index.getElement(this); }
+    slottedLabelId;
+    componentWillRender() {
+        this.slottedLabelId = slottedLabelId.slottedLabelId(this.el, `${this.toggleId}-slotted-label`);
+    }
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);
@@ -452,14 +458,15 @@ const AtToggleSwitchComponent = class {
             disabled: this.disabled,
             active: this.value,
         });
-        return (index.h(index.Host, { key: 'ed9d7c06486a4d426e715294d29aab9d511171e2', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": this.label && this.show_label
-                ? `${this.toggleId}-label`
-                : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        const labelledBy = this.label && this.show_label
+            ? `${this.toggleId}-label`
+            : this.slottedLabelId;
+        return (index.h(index.Host, { key: 'c587c06e423f8feeccbb79fa3503cdb7a4bf751e', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": labelledBy, "aria-describedby": this.hint_text ? `${this.toggleId}-hint` : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, index.h("div", { key: '69cc96785fd258e94b9b7473cb48585820637242', class: "flex flex-col empty:hidden" }, index.h("slot", { key: '103ab5a580fa583b6cea6217e1f188eab42ff25d', name: "label" }), !!this.label && this.show_label && (index.h("at-form-label", { key: '2be7adaca0eef1fa3691ca5fcc2c9a75f5dc6312', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: '17914de5e2ad392091fde5c9674cdf7f1140e2d6', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: '43ea9b062c781d04578bf8e0ab385dac1daf2d5f', class: "relative flex h-20 w-40" }, index.h("input", { key: 'c8a579202ee24a8078a3884934c5bc8b02bb1e6b', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '8841cc8d48d7df76413a42da2b719bf0656aa366', class: trackClassname }, index.h("at-icon", { key: 'fb5b1fcdfbc590bc8b8563ff376d103161a62ff4', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+            } }, index.h("div", { key: '1ff20baa723140d7dc6b963a799e85b44e3891f5', class: "flex flex-col empty:hidden" }, index.h("slot", { key: '888687cdf0ec638884553dd20c64be0c10c0cb07', name: "label" }), !!this.label && this.show_label && (index.h("at-form-label", { key: 'b85d5e5aecec1ce38bff11e4d854cfd6826f9418', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (index.h("span", { key: '47b34f005e766c32ccb120fbd45043c55e41acdd', id: `${this.toggleId}-hint`, class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), index.h("div", { key: '97cc8a526b930213c2bcd262a4383efa34b13506', class: "relative flex h-20 w-40" }, index.h("input", { key: '1aaec2573a47bdc4ed94d8a68c2552c90f1ab921', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, "aria-hidden": "true", onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), index.h("span", { key: '8e368fcb4dd5a59d9526f48eeab68dc36b759e0a', class: trackClassname }, index.h("at-icon", { key: 'b087ec2a7189f0707973a24cafec14b0c59afefb', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
                 transform: `translateX(${this.value ? '10px' : '-10px'})`,
             } })))));
     }

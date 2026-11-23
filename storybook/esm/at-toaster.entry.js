@@ -1,7 +1,9 @@
 import { r as registerInstance, a as getElement, h } from './index-CNjTRhUr.js';
+import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
 
 const atToasterCss = () => `@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fade-in.sc-at-toaster{animation:fadeIn 0.2s ease-in}@keyframes fadeOut{from{opacity:1}to{opacity:0}}.fade-out.sc-at-toaster{animation:fadeOut 0.2s ease-out forwards}@keyframes fadeInBackdrop{from{background-color:rgba(0, 0, 0, 0)}to{background-color:rgba(0, 0, 0, 0.2)}}@keyframes animInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes animOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}[popover].sc-at-toaster-h{position:fixed;inset:auto;width:auto;height:auto;margin:0;border:0;padding:0;overflow:visible;background:transparent;color:inherit}.at-toaster.sc-at-toaster{position:fixed;display:flex;flex-direction:column;z-index:var(--token-z-index-modal);gap:8px;padding:12px;pointer-events:none}.at-toaster.top-right.sc-at-toaster{top:12px;right:12px;align-items:flex-end}.at-toaster.top-left.sc-at-toaster{top:12px;left:12px;align-items:flex-start}.at-toaster.bottom-right.sc-at-toaster{bottom:12px;right:12px;align-items:flex-end}.at-toaster.bottom-left.sc-at-toaster{bottom:12px;left:12px;align-items:flex-start}.at-toaster.top-center.sc-at-toaster{top:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toaster.bottom-center.sc-at-toaster{bottom:12px;left:50%;transform:translateX(-50%);align-items:center}.at-toast.sc-at-toaster{pointer-events:auto;min-width:var(--token-width-panel-xs);max-width:var(--token-width-panel-sm);box-shadow:var(--token-shadow-1);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;animation:animInUp 300ms ease-out forwards}.at-toast.undismissible.sc-at-toaster{cursor:default}.at-toast.close.sc-at-toaster{animation:animOut 200ms ease-out forwards}.at-toast-progress.sc-at-toaster{height:3px;width:100%;flex:none;background:var(--token-border-muted)}.at-toast-progress-fill.sc-at-toaster{height:100%;width:100%;transform:scaleX(1);transform-origin:left center;will-change:transform;background:var(--token-feedback-foreground)}.at-toast-progress-fill.success.sc-at-toaster{background:var(--token-feedback-success-accent)}.at-toast-progress-fill.warning.sc-at-toaster{background:var(--token-feedback-warning-accent)}.at-toast-progress-fill.error.sc-at-toaster{background:var(--token-feedback-error-accent)}.at-toast-progress-fill.info.sc-at-toaster{background:var(--token-feedback-info-accent)}`;
 
+const EXIT_ANIMATION_FALLBACK_MS = 400;
 const AtToasterComponent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -12,6 +14,7 @@ const AtToasterComponent = class {
      */
     position = 'bottom-right';
     toasts = [];
+    translations;
     timers = new Map();
     frame = 0;
     /**
@@ -171,6 +174,9 @@ const AtToasterComponent = class {
             this.timers.delete(id);
         }
     }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     componentDidLoad() {
         this.el.addEventListener('focusin', this.handleFocusShift);
         this.el.addEventListener('focusout', this.handleFocusShift);
@@ -202,13 +208,20 @@ const AtToasterComponent = class {
         // Every animation inside the toast bubbles animationend here, so the
         // exit has to be identified by name and target; dropping the state
         // entry on any other animation would take the toast down mid-life.
-        const onExit = (event) => {
-            if (event.target !== toastEl || event.animationName !== 'animOut') {
-                return;
-            }
+        const dropToast = () => {
             toastEl.removeEventListener('animationend', onExit);
+            clearTimeout(exitFallback);
             this.toasts = this.toasts.filter((toast) => toast.id !== id);
         };
+        const onExit = (event) => {
+            if (event.target === toastEl && event.animationName === 'animOut') {
+                dropToast();
+            }
+        };
+        // animationend never fires when animations are switched off (a
+        // reduced-motion override, a hidden tab), so the toast leaves anyway
+        // once the exit animation would have finished.
+        const exitFallback = setTimeout(dropToast, EXIT_ANIMATION_FALLBACK_MS);
         toastEl.addEventListener('animationend', onExit);
     }
     /**
@@ -249,10 +262,10 @@ const AtToasterComponent = class {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '14b52ad01acc984c172b26ee99909808dd0e5907', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHoverHold(toast, true), onMouseLeave: () => this.setHoverHold(toast, false) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
+        return (h("div", { key: '201fe73e3e17cf04950df2a0eb3cec579ef685e8', class: `at-toaster ${this.position}`, role: "status", "aria-live": "polite", "data-name": "toaster" }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHoverHold(toast, true), onMouseLeave: () => this.setHoverHold(toast, false) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
                 event.stopPropagation();
                 this.clickActionButton(toast);
-            } })), toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+            } })), toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-close", "aria-label": this.translations?.ATUI.CLOSE, onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))), this.hasCountdown(toast) && (h("div", { class: "at-toast-progress", "data-name": "toast-progress", "aria-hidden": "true" }, h("div", { class: `at-toast-progress-fill ${toast.type}`, ref: (el) => this.attachBar(toast.id, el) }))))))));

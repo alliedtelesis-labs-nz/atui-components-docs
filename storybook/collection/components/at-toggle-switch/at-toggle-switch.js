@@ -1,5 +1,6 @@
-import { h, Host } from "@stencil/core";
+import { h, Host, } from "@stencil/core";
 import { classlist } from "../../utils/classlist";
+import { slottedLabelId } from "../../utils/slotted-label-id";
 const variantsConfig = {
     variants: {
         disabled: {
@@ -72,6 +73,11 @@ export class AtToggleSwitchComponent {
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */
     atuiChange;
+    el;
+    slottedLabelId;
+    componentWillRender() {
+        this.slottedLabelId = slottedLabelId(this.el, `${this.toggleId}-slotted-label`);
+    }
     onToggle(change) {
         this.value = change;
         this.atuiChange.emit(change);
@@ -92,14 +98,15 @@ export class AtToggleSwitchComponent {
             disabled: this.disabled,
             active: this.value,
         });
-        return (h(Host, { key: 'ed9d7c06486a4d426e715294d29aab9d511171e2', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": this.label && this.show_label
-                ? `${this.toggleId}-label`
-                : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        const labelledBy = this.label && this.show_label
+            ? `${this.toggleId}-label`
+            : this.slottedLabelId;
+        return (h(Host, { key: 'c587c06e423f8feeccbb79fa3503cdb7a4bf751e', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": labelledBy, "aria-describedby": this.hint_text ? `${this.toggleId}-hint` : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '69cc96785fd258e94b9b7473cb48585820637242', class: "flex flex-col empty:hidden" }, h("slot", { key: '103ab5a580fa583b6cea6217e1f188eab42ff25d', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '2be7adaca0eef1fa3691ca5fcc2c9a75f5dc6312', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '17914de5e2ad392091fde5c9674cdf7f1140e2d6', class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '43ea9b062c781d04578bf8e0ab385dac1daf2d5f', class: "relative flex h-20 w-40" }, h("input", { key: 'c8a579202ee24a8078a3884934c5bc8b02bb1e6b', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '8841cc8d48d7df76413a42da2b719bf0656aa366', class: trackClassname }, h("at-icon", { key: 'fb5b1fcdfbc590bc8b8563ff376d103161a62ff4', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+            } }, h("div", { key: '1ff20baa723140d7dc6b963a799e85b44e3891f5', class: "flex flex-col empty:hidden" }, h("slot", { key: '888687cdf0ec638884553dd20c64be0c10c0cb07', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'b85d5e5aecec1ce38bff11e4d854cfd6826f9418', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '47b34f005e766c32ccb120fbd45043c55e41acdd', id: `${this.toggleId}-hint`, class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '97cc8a526b930213c2bcd262a4383efa34b13506', class: "relative flex h-20 w-40" }, h("input", { key: '1aaec2573a47bdc4ed94d8a68c2552c90f1ab921', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, "aria-hidden": "true", onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '8e368fcb4dd5a59d9526f48eeab68dc36b759e0a', class: trackClassname }, h("at-icon", { key: 'b087ec2a7189f0707973a24cafec14b0c59afefb', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
                 transform: `translateX(${this.value ? '10px' : '-10px'})`,
             } })))));
     }
@@ -249,4 +256,5 @@ export class AtToggleSwitchComponent {
                 }
             }];
     }
+    static get elementRef() { return "el"; }
 }

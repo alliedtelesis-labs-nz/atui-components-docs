@@ -1,4 +1,6 @@
 import { h } from "@stencil/core";
+import { fetchTranslations } from "../../utils/translation";
+const EXIT_ANIMATION_FALLBACK_MS = 400;
 /**
  * @category Overlays
  * @description A toaster component for displaying messages to users. Supports toast types, positions, timeout and dismissible.
@@ -10,6 +12,7 @@ export class AtToasterComponent {
      */
     position = 'bottom-right';
     toasts = [];
+    translations;
     timers = new Map();
     frame = 0;
     /**
@@ -169,6 +172,9 @@ export class AtToasterComponent {
             this.timers.delete(id);
         }
     }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     componentDidLoad() {
         this.el.addEventListener('focusin', this.handleFocusShift);
         this.el.addEventListener('focusout', this.handleFocusShift);
@@ -200,13 +206,20 @@ export class AtToasterComponent {
         // Every animation inside the toast bubbles animationend here, so the
         // exit has to be identified by name and target; dropping the state
         // entry on any other animation would take the toast down mid-life.
-        const onExit = (event) => {
-            if (event.target !== toastEl || event.animationName !== 'animOut') {
-                return;
-            }
+        const dropToast = () => {
             toastEl.removeEventListener('animationend', onExit);
+            clearTimeout(exitFallback);
             this.toasts = this.toasts.filter((toast) => toast.id !== id);
         };
+        const onExit = (event) => {
+            if (event.target === toastEl && event.animationName === 'animOut') {
+                dropToast();
+            }
+        };
+        // animationend never fires when animations are switched off (a
+        // reduced-motion override, a hidden tab), so the toast leaves anyway
+        // once the exit animation would have finished.
+        const exitFallback = setTimeout(dropToast, EXIT_ANIMATION_FALLBACK_MS);
         toastEl.addEventListener('animationend', onExit);
     }
     /**
@@ -247,10 +260,10 @@ export class AtToasterComponent {
      * Each toast is wrapped with <at-message> for UI presentation.
      */
     render() {
-        return (h("div", { key: '14b52ad01acc984c172b26ee99909808dd0e5907', class: `at-toaster ${this.position}` }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, role: "status", "aria-live": "polite", onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHoverHold(toast, true), onMouseLeave: () => this.setHoverHold(toast, false) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
+        return (h("div", { key: '201fe73e3e17cf04950df2a0eb3cec579ef685e8', class: `at-toaster ${this.position}`, role: "status", "aria-live": "polite", "data-name": "toaster" }, this.toasts.map((toast) => (h("div", { class: this.classSet(toast), key: toast.id, "data-id": toast.id, onClick: () => this.tapToast(toast), onMouseEnter: () => this.setHoverHold(toast, true), onMouseLeave: () => this.setHoverHold(toast, false) }, h("at-message", { type: toast.type, message_title: toast.title, content: toast.message }, toast.action && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-action", label: toast.action.label, onClick: (event) => {
                 event.stopPropagation();
                 this.clickActionButton(toast);
-            } })), toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", onClick: (event) => {
+            } })), toast.closeButton && (h("at-button", { slot: "actions", type: "secondaryText", size: "sm", "data-name": "toast-close", "aria-label": this.translations?.ATUI.CLOSE, onClick: (event) => {
                 event.stopPropagation();
                 this.clickCloseButton(toast);
             } }, h("at-icon", { slot: "icon", name: "close" })))), this.hasCountdown(toast) && (h("div", { class: "at-toast-progress", "data-name": "toast-progress", "aria-hidden": "true" }, h("div", { class: `at-toast-progress-fill ${toast.type}`, ref: (el) => this.attachBar(toast.id, el) }))))))));
@@ -300,7 +313,8 @@ export class AtToasterComponent {
     }
     static get states() {
         return {
-            "toasts": {}
+            "toasts": {},
+            "translations": {}
         };
     }
     static get methods() {

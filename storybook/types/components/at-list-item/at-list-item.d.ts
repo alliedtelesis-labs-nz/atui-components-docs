@@ -35,6 +35,9 @@ export declare class AtListItem {
      */
     selectable?: boolean;
     el: HTMLAtListItemElement;
+    private hasLoaded;
+    componentDidLoad(): void;
+    connectedCallback(): void;
     private get inList();
     private handleKeyDown;
     private showTitleWhenTruncated;

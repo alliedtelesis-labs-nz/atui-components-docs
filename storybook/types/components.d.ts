@@ -2046,6 +2046,10 @@ export namespace Components {
      */
     interface AtProgressBar {
         /**
+          * Accessible name for the progress bar, e.g. "Firmware upload". Required unless the page names it another way, since a progressbar without a name is announced only as a number.
+         */
+        "aria_label"?: string;
+        /**
           * Mode of the progress bar, either determinate or indeterminate (loading).
           * @default 'determinate'
          */
@@ -2166,6 +2170,10 @@ export namespace Components {
      * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
     interface AtPromptInput {
+        /**
+          * Accessible name for the message field. Use when the visible label comes from the `label` slot or from surrounding content. Without it or `label`, the placeholder names the field.
+         */
+        "aria_label": string;
         /**
           * Disable input interactions and apply visual indication
           * @default false
@@ -8168,6 +8176,10 @@ declare namespace LocalJSX {
      */
     interface AtProgressBar {
         /**
+          * Accessible name for the progress bar, e.g. "Firmware upload". Required unless the page names it another way, since a progressbar without a name is announced only as a number.
+         */
+        "aria_label"?: string;
+        /**
           * Mode of the progress bar, either determinate or indeterminate (loading).
           * @default 'determinate'
          */
@@ -8300,6 +8312,10 @@ declare namespace LocalJSX {
      * @description A specialized input component optimized for AI prompt-components interfaces. Supports both single-line and multi-line variants with auto-resize, character counting, send/stop functionality, and enhanced UX for conversational interfaces.
      */
     interface AtPromptInput {
+        /**
+          * Accessible name for the message field. Use when the visible label comes from the `label` slot or from surrounding content. Without it or `label`, the placeholder names the field.
+         */
+        "aria_label"?: string;
         /**
           * Disable input interactions and apply visual indication
           * @default false
@@ -10558,6 +10574,7 @@ declare namespace LocalJSX {
         "mode": 'determinate' | 'indeterminate';
         "type": AtProgressBarType;
         "size": AtProgressBarSize;
+        "aria_label": string;
     }
     interface AtPromptContainerAttributes {
         "placeholder": string;
@@ -10578,6 +10595,7 @@ declare namespace LocalJSX {
         "info_text": string;
         "error_text": string;
         "placeholder": string;
+        "aria_label": string;
         "max_height": number;
         "max_length": number;
         "in_progress": boolean;

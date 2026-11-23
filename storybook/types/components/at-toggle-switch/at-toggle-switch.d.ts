@@ -36,6 +36,9 @@ export declare class AtToggleSwitchComponent {
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */
     atuiChange: EventEmitter<boolean>;
+    el: HTMLElement;
+    private slottedLabelId?;
+    componentWillRender(): void;
     onToggle(change: boolean): void;
     render(): any;
 }

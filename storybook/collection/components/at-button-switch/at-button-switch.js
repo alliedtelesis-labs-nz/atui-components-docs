@@ -1,5 +1,6 @@
 import { h, Host, } from "@stencil/core";
 import { classlist } from "../../utils/classlist";
+import { slottedLabelId } from "../../utils/slotted-label-id";
 import { fetchTranslations } from "../../utils/translation";
 const variantsConfig = {
     variants: {
@@ -13,7 +14,7 @@ const variantsConfig = {
         },
     },
 };
-const getButtonClasses = classlist('focus-visible:border-active-accent focus-visible:ring-active-glow relative flex h-[30px] items-center gap-4 rounded-input border border-solid border-transparent px-12 py-8 leading-none font-normal transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus-visible:ring focus-visible:ring-offset-0', variantsConfig);
+const getButtonClasses = classlist('focus-visible:border-active-accent focus-visible:ring-active-glow relative flex h-[30px] items-center gap-4 rounded-input border border-solid border-transparent px-12 py-8 leading-none font-normal transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out outline-none focus-visible:z-20 focus-visible:ring focus-visible:ring-offset-0', variantsConfig);
 /**
  * @category Form Controls
  * @description A toggle switch component for binary on/off selections. Provides accessible alternative to checkboxes with visual toggle behavior.
@@ -46,6 +47,10 @@ export class AtButtonSwitchComponent {
     translations;
     toggleId = `toggle-${Math.random().toString(36).substring(2, 11)}`;
     labelId = `${this.toggleId}-label`;
+    slottedLabelId;
+    componentWillRender() {
+        this.slottedLabelId = slottedLabelId(this.el, `${this.toggleId}-slotted-label`);
+    }
     /**
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */
@@ -68,7 +73,7 @@ export class AtButtonSwitchComponent {
             active: this.value === false,
             disabled: this.disabled,
         });
-        return (h(Host, { key: '64edafe5992a3feb0dbdea50c43d821fadf310da', id: `${this.toggleId}-host`, role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined }, h("div", { key: '5ff6ccaf6b873b084fc447ac1c3c28739c4e34e1', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'a6cf94f9886bfe3d534cb977b58e6f0ae6b46af1', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '60559256b2f64a56d5f8b68515b3da4eb647731d', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '325c2f7c9f971746bdff216191b9dab3645ba75c', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-switch-hint" }, this.hint_text))), h("div", { key: '2ab7d1803b5b0a4a2da8d49924ca8ba90f86228a', class: "border-input bg-input-background relative w-fit rounded-lg border inset-shadow-xs" }, h("div", { key: 'b59820a6bf7352e3e347a12604a9fa7500815d97', class: "relative z-20 m-[2px] flex flex-row", "data-name": "switch-options" }, h("button", { key: '2413e2e57b870e7c7ece2cdad6b1679aee16809e', class: offButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === false, disabled: this.disabled, onClick: () => this.onToggle(false), "data-name": "switch-off-button", "data-value": "false", type: "button" }, this.translations?.ATUI?.OFF || 'Off'), h("button", { key: 'de71901e63d90eda6651918f8231838de4f4cce9', class: onButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === true, disabled: this.disabled, onClick: () => this.onToggle(true), "data-name": "switch-on-button", "data-value": "true", type: "button" }, this.translations?.ATUI?.ON || 'On')))));
+        return (h(Host, { key: '3ab23cadf22d99878452e9dbbc9f905f7ecdb228', id: `${this.toggleId}-host`, role: "radiogroup", "aria-labelledby": this.label ? this.labelId : this.slottedLabelId }, h("div", { key: '35396a3f57951e7fbbbef9d1bb9418a1cdaec75b', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '976b2799208125b3488f5c04c7b500a7fe11ced8', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '0f3954c99d56ff03880da0a6910c6c72cdd0cf9d', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '15e2edf566cd9cdc303c0ade17ff60a79dd02747', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-switch-hint" }, this.hint_text))), h("div", { key: '8ab1a432ee09af37e5d8f4563a8f0e27b46308e8', class: "border-input bg-input-background relative w-fit rounded-lg border inset-shadow-xs" }, h("div", { key: 'a7eabc2784df1bad34de5638fbed18facb29f4d1', class: "relative z-20 m-[2px] flex flex-row", "data-name": "switch-options" }, h("button", { key: '6bb93569db9494de28f8652205f979b6bf880b1d', class: offButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === false, disabled: this.disabled, onClick: () => this.onToggle(false), "data-name": "switch-off-button", "data-value": "false", type: "button" }, this.translations?.ATUI?.OFF || 'Off'), h("button", { key: 'c62e6380d9ae48b0a92493a8fc085cd01cd0fbc6', class: onButtonClasses, role: "radio", tabindex: 0, "aria-checked": this.value === true, disabled: this.disabled, onClick: () => this.onToggle(true), "data-name": "switch-on-button", "data-value": "true", type: "button" }, this.translations?.ATUI?.ON || 'On')))));
     }
     static get is() { return "at-button-switch"; }
     static get properties() {

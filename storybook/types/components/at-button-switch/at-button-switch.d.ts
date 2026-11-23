@@ -31,6 +31,8 @@ export declare class AtButtonSwitchComponent {
     translations: any;
     private toggleId;
     private labelId;
+    private slottedLabelId?;
+    componentWillRender(): void;
     /**
      * Emits an event when toggled with `event.detail` being true if the switch is enabled
      */

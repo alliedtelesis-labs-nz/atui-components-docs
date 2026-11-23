@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
 import { c as countFilterConditions, f as flattenSingleChildAndRemoveEmptyGroups, a as flattenSingleChildGroup, e as everyConditionValid, i as isFilterGroup } from './filter-tree.util-CYRBwQ7z.js';
-import { f as filterOperatorLabel, a as filterLogicalOperatorLabel } from './filter-labels.util-BJ2mdMHf.js';
-import { f as fetchTranslations } from './translation-Bmdl6o2j.js';
+import { f as filterOperatorLabel, a as filterLogicalOperatorLabel } from './filter-labels.util-C5HKVTiD.js';
+import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
 
 const AtFilterForm = class {
     constructor(hostRef) {

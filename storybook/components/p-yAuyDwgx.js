@@ -1,0 +1,1 @@
+function r(r,t){const n=Array.from(r.querySelectorAll('[slot="label"]')).find((t=>function(r){let t=r.parentElement;for(;t&&!t.tagName.includes("-");)t=t.parentElement;return t}(t)===r));if(n)return n.id||(n.id=t),n.id}export{r as s}

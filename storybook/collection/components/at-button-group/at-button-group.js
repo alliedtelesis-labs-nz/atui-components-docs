@@ -1,4 +1,5 @@
 import { h, Host, forceUpdate, } from "@stencil/core";
+import { slottedLabelId } from "../../utils/slotted-label-id";
 /**
  * @category Form Controls
  * @description A button group component that allows single or multiple selection from a set of toggle options. Single selection uses `value` and `atuiChange`. Set `multiple` for multiple selection, which uses `values` and `atuiValuesChange`.
@@ -48,6 +49,10 @@ export class AtButtonGroup {
     el;
     buttonGroupId = `buttonGroup-${Math.random().toString(36).substring(2, 11)}`;
     labelId = `${this.buttonGroupId}-label`;
+    slottedLabelId;
+    componentWillRender() {
+        this.slottedLabelId = slottedLabelId(this.el, `${this.buttonGroupId}-slotted-label`);
+    }
     /**
      * When the active button is changed, this will emit the 0-based index of the active button
      */
@@ -200,8 +205,8 @@ export class AtButtonGroup {
         this.atuiIndexChange.emit(index);
     }
     render() {
-        return (h(Host, { key: 'c428235908c0a6c7a4c383a0a41f241a69049d59', role: this.multiple ? 'group' : 'radiogroup', "aria-labelledby": this.label ? this.labelId : undefined }, h("div", { key: '7f05d17b3dba1e32cae3592c05fe5d0a8ba25229', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '8ac214366436dfdfa9f4fabf4a3e3603362f30df', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: 'dcf45a5421f0c03dd8a3aea03429843a0ea640f7', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '9cec09c2118ad0bc1f4870acacbfd0254d20a75a', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '3b923260c6d34a5815a26cd17527675d795d02c4', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '56bf8761000773462b241208fe0205751c8c1a1d', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '5212ebdf9d0488df7ab2007667e2dc11150ea7a1' }), this.getButtonGroupOptions &&
-            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: 'd6b4b970620b0bf8891924ba2158d0011a0939b0', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '61474e345f37a8a9841f28e423b4630da013ea4d', role: this.multiple ? 'group' : 'radiogroup', "aria-labelledby": this.label ? this.labelId : this.slottedLabelId }, h("div", { key: '655b3ce9053bd40634bda325d935405c28d383b6', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '8875ffc318eb63817221e71e7cf930217937455d', name: "label" }), (this.label || this.info_text) && (h("at-form-label", { key: '00825627994c12aaa72c13cee3a46ad2ef06f186', id: this.labelId, label: this.label, info_text: this.info_text })), this.hint_text && (h("span", { key: '4ec680aa2e5f74411c23970b7ef8fcc506ecd26e', class: "text-muted inline-block text-xs leading-tight", "data-name": "button-group-hint" }, this.hint_text))), h("div", { key: '10e6e42bd102984342bb29da4e4ece403cd45b8e', class: "border-input h-input bg-surface-background rounded-input relative w-fit border p-[2px] inset-shadow-xs" }, h("ul", { key: '5e2843749ac1545fd13b8d46c3bfdee79a9eb821', class: "relative z-20 flex h-full flex-row", "data-name": "button-group-options" }, h("slot", { key: '1ec889af66b2d84dffc48562c632f2ca66bc9e49' }), this.getButtonGroupOptions &&
+            this.getButtonGroupOptions.map((button) => (h("li", { class: "relative z-10 mr-[-1px] flex" }, button))))), this.error_text && (h("span", { key: '45a3b95445f5e7969fb8c3f5c2497c3e431f6b75', class: "text-error text-xs font-medium", "data-name": "button-group-error-text" }, this.error_text))));
     }
     static get is() { return "at-button-group"; }
     static get properties() {

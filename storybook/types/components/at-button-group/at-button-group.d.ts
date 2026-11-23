@@ -55,6 +55,8 @@ export declare class AtButtonGroup {
     el: HTMLAtButtonGroupElement;
     private buttonGroupId;
     private labelId;
+    private slottedLabelId?;
+    componentWillRender(): void;
     /**
      * When the active button is changed, this will emit the 0-based index of the active button
      */

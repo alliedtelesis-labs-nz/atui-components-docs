@@ -10,6 +10,7 @@ export declare class AtToasterComponent {
      */
     position: AtIToastPosition;
     toasts: AtIToast[];
+    translations: any;
     private timers;
     private frame;
     /**
@@ -59,6 +60,7 @@ export declare class AtToasterComponent {
      */
     private handleFocusShift;
     private clearTimer;
+    componentWillLoad(): Promise<void>;
     componentDidLoad(): void;
     disconnectedCallback(): void;
     /**

@@ -23,6 +23,11 @@ export declare class AtProgressBar {
      * Height of the progress bar
      */
     size?: AtProgressBarSize;
+    /**
+     * Accessible name for the progress bar, e.g. "Firmware upload". Required unless the page
+     * names it another way, since a progressbar without a name is announced only as a number.
+     */
+    aria_label?: string;
     private get clamped();
     get statusBarClass(): string;
     get segments(): string;

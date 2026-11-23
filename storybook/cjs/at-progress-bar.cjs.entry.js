@@ -31,6 +31,11 @@ const AtProgressBar = class {
      * Height of the progress bar
      */
     size = 'sm';
+    /**
+     * Accessible name for the progress bar, e.g. "Firmware upload". Required unless the page
+     * names it another way, since a progressbar without a name is announced only as a number.
+     */
+    aria_label;
     get clamped() {
         const n = Number(this.percentage);
         return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 0;
@@ -42,7 +47,7 @@ const AtProgressBar = class {
         return `flex flex-grow items-stretch justify-center transition-[flex-grow,background-color] duration-500`;
     }
     renderIndeterminate() {
-        return (index.h(index.Host, { role: "progressbar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "bg-surface-1 relative h-full w-full overflow-hidden rounded-full" }, index.h("div", { class: `${fillClass(this.type)} motion-safe:animate-progress-left absolute top-0 h-full`, style: {
+        return (index.h(index.Host, { role: "progressbar", "aria-label": this.aria_label, "data-name": "progress-bar", "aria-busy": "true", "aria-valuemin": "0", "aria-valuemax": "100", class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "bg-surface-1 relative h-full w-full overflow-hidden rounded-full", "data-name": "progress-bar-track" }, index.h("div", { class: `${fillClass(this.type)} motion-safe:animate-progress-left absolute top-0 h-full`, style: {
                 width: '30%',
                 left: '-30%',
                 willChange: 'left',
@@ -51,7 +56,7 @@ const AtProgressBar = class {
     renderDeterminate() {
         const background = 100 - this.clamped;
         const fill = this.clamped;
-        return (index.h(index.Host, { role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": this.clamped, class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-hidden rounded-full" }, index.h("div", { class: `${this.segments} ${fillClass(this.type)}`, style: {
+        return (index.h(index.Host, { role: "progressbar", "aria-label": this.aria_label, "data-name": "progress-bar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": this.clamped, class: this.statusBarClass }, index.h("slot", { name: "label-before" }), index.h("div", { class: "flex w-full flex-1 items-stretch justify-start overflow-hidden rounded-full", "data-name": "progress-bar-track" }, index.h("div", { class: `${this.segments} ${fillClass(this.type)}`, style: {
                 flexBasis: fill.toString() + '%',
             }, "aria-hidden": "true" }), index.h("div", { class: `bg-surface-2 ${this.segments}`, style: {
                 flexBasis: background.toString() + '%',

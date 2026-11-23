@@ -35,6 +35,8 @@ export declare class AtChipList {
      */
     show_overflow_counter: boolean;
     el: HTMLElement;
+    private translations;
+    componentWillLoad(): Promise<void>;
     /**
      * How many chips currently fit. `null` means "not measured yet", which
      * renders every chip so their natural widths can be read.
