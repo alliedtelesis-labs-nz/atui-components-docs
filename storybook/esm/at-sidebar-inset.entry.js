@@ -51,7 +51,7 @@ const AtSidebarInsetComponent = class {
         this.provider?.removeEventListener('atuiSidebarBackdropChange', this.handleBackdropChange);
     }
     render() {
-        return (h(Host, { key: '6bcadc4f05783477ed6327df3a99b2ef3ea6d34a', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, h("slot", { key: 'ea9bb8916424ead30be2d1117be239a66a37db94' })));
+        return (h(Host, { key: '991bb68f586f30e840f052f5104a251bf38baec3', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, h("slot", { key: '9c1f425e933377eaa7fc35af1c3aae15050ba1c6' })));
     }
 };
 AtSidebarInsetComponent.style = atSidebarInsetCss();

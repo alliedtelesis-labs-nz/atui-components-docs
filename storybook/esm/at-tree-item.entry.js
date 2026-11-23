@@ -49,7 +49,14 @@ const AtTreeItemComponent = class {
      * Emits when the button is clicked
      */
     atuiClick;
+    connectedCallback() {
+        if (!this.el.hasAttribute('tabindex')) {
+            this.el.tabIndex = 0;
+        }
+    }
     handleClick(event) {
+        if (this.disabled)
+            return;
         this.atuiClick.emit({
             originalEvent: event,
             componentType: 'at-tree-item',
@@ -59,6 +66,8 @@ const AtTreeItemComponent = class {
     handleKeyDown(event) {
         if (event.key === ' ' || event.key === 'Enter') {
             event.preventDefault();
+            if (this.disabled)
+                return;
             this.atuiClick.emit({
                 originalEvent: event,
                 componentType: 'at-tree-item',
@@ -74,13 +83,13 @@ const AtTreeItemComponent = class {
         const depth = this.depth ?? 0;
         const hasChildren = !!this.has_children;
         const indent = hasChildren ? `${depth * 20}px` : `${depth * 20 + 20}px`;
-        return (h(Host, { key: '83fd3a993c35290798b37177c0d90cccbe76c380', class: classname, role: "button", tabIndex: 0, "aria-expanded": this.has_children
+        return (h(Host, { key: 'cc9599fe0e1e8b1b4dd22b5ddc946b71d352580d', class: classname, role: "treeitem", "aria-level": depth + 1, "aria-expanded": this.has_children
                 ? this.selected
                     ? 'true'
                     : 'false'
-                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: 'f0299b378e56c63fedbe7280cd758ffade238b1e', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '427f0d4350e88a1a5238155e2acf61642228887f', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: 'f996fb24e10587d261afb1337d093a754d63a4e2', "data-name": "tree-item-indicator", name: this.selected
+                : undefined, "aria-disabled": this.disabled, onKeyDown: (event) => this.handleKeyDown(event), onClick: (event) => this.handleClick(event) }, h("div", { key: '62d772adcc3b1efa919a0dd0782e7eec94f74dc5', class: "z-20 flex h-full w-full items-center justify-between gap-4", style: { paddingLeft: indent } }, h("div", { key: '78a6bbc0386fbe137688e3288b00b3e975c8934f', class: "flex gap-4" }, this.has_children && (h("at-icon", { key: '5c772bfb3d5e47a101ecd6f9ac234ce3aa11abdb', "data-name": "tree-item-indicator", name: this.selected
                 ? 'chevron_down'
-                : 'chevron_right' })), this.label && (h("span", { key: '45f4a0d91320e822cd3f8fa5362ca600adbd9ce3', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '338d04a137dae642985be971e0e2ef1eee6ab05e', name: "label" })), h("slot", { key: '4a7e99557a7f4cf221da2a4fc8a3a0bf5fba5a9a' })), h("div", { key: 'b4ca271a6853a6e5cf58a257d259cbbdb98c8678', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out" })));
+                : 'chevron_right' })), this.label && (h("span", { key: '23a8ab27dbcbddeae914b7580b8a5ae332621878', class: "leading-[16px]", "data-name": "tree-item-label" }, this.label)), h("slot", { key: '498e2f060364e6cd396ca1c031cc74f9a2ad43a4', name: "label" })), h("slot", { key: 'ca4a04a2df8c6c0ff54187b30e1cae5e297ff95c' })), h("div", { key: '613991a7bedc90d958e41a9b7a450e6d279b8ce0', "data-name": "focus-indicator", role: "presentation", class: "pointer-events-none absolute top-0 left-0 z-10 h-full w-full transition-[color,background-color,border-color,box-shadow,fill] duration-150 ease-in-out" })));
     }
 };
 

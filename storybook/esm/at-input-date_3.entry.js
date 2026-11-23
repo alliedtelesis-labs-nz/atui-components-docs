@@ -163,7 +163,7 @@ const AtInputDate = class {
             disabled: this.disabled,
             readonly: this.readonly,
         });
-        return (h(Host, { key: 'd6d57197f984d4d91e223352462b6ca9527b8924' }, h("style", { key: 'a96875cbf31dbde1f502bdc00a016f36020f37ad' }, `
+        return (h(Host, { key: '582f2d7efd339af30f4838e51c2b8c3584fec86c' }, h("style", { key: 'cf32b1eceb9d3fc5b79fd83a2f25e119c3296ed6' }, `
                 input[data-name="datepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -176,9 +176,9 @@ const AtInputDate = class {
                     padding-right: 22px;
                     position: relative;
                 }
-                `), h("div", { key: 'cfb88e5a7c7324877daac7a70f44ea972d888e87', class: "flex w-full flex-col" }, h("div", { key: '0c1ec206018185e10a0dd063f2bef2aa8c1eadca', class: "flex flex-col" }, h("div", { key: '23cf42d1520ddc817ea7fc49159aba0c290af707', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
+                `), h("div", { key: '28068d1549b06979e718f9deca724ca04f99d0c6', class: "flex w-full flex-col" }, h("div", { key: 'fda82f3a69061ed0f66846d0cfc920eb608c1cab', class: "flex flex-col" }, h("div", { key: '4db45716c55035be9de3e063ba50c5cfd6b7d74b', class: "mb-4 flex flex-col empty:hidden" }, (this.label ||
             this.required ||
-            this.info_text) && (h("at-form-label", { key: '41a9feac756272fd74882871f86ccc9d53fa9207', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'bfa2722899e55b52a1705d6e4f73142b64723e93', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '8ef96faeabf8fec76bc499ee42a679968e5c8e9c', class: classname }, h("input", { key: '2e97ee2f2eb96be2ba72c09b699bef69ac27922f', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", "aria-invalid": this.invalid || this.rangeErrorText
+            this.info_text) && (h("at-form-label", { key: 'fca1c95d9a20dfaa58307a3526742e9262c56c82', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '147118628a20efc0828bc15d49e6cbbeff154d88', class: "text-muted mb-8 inline-block text-xs leading-tight", "data-name": "datepicker-hint" }, this.hint_text))), h("div", { key: '1ed7e1feebdaa255fd89d80b13a4e9da4e0996d9', class: classname }, h("input", { key: '79d0a0beadd53b61144a11ec08169aa1fd94c2f2', type: "date", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "datePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readonly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.selectedDate, min: TimeDatePresentationUtil.getFormattedDate(this.min_date, 'YYYY-MM-DD'), max: TimeDatePresentationUtil.getFormattedDate(this.max_date, 'YYYY-MM-DD'), "data-name": "datepicker", "aria-invalid": this.invalid || this.rangeErrorText
                 ? 'true'
                 : undefined, onBlur: () => {
                 this.hasLeftField = true;
@@ -206,7 +206,7 @@ const AtInputDate = class {
                     .map(Number);
                 this.value = new Date(year, month - 1, day);
                 this.atuiChange.emit(this.value);
-            } }))), this.errorText && (h("span", { key: '05db8f0dcdb23cfd4079c90f89dc2e0b76be67d1', class: "text-error text-sm", "data-name": "datepicker-error" }, this.errorText)))));
+            } }))), this.errorText && (h("span", { key: 'dc2281825864ce872d3ba5edea488bcfd559976c', class: "text-error text-sm", "data-name": "datepicker-error" }, this.errorText)))));
     }
     static get watchers() { return {
         "value": [{
@@ -342,7 +342,7 @@ const AtInputTime = class {
             disabled: !!this.disabled,
             readonly: !!this.readonly,
         });
-        return (h(Host, { key: '8040862d17eb0494a2cc058bea085b431b8c323c' }, h("style", { key: 'db54b2c712994962d2be8f21b58a32aceeacfb48' }, `
+        return (h(Host, { key: '41b3164db6bd3b84a935785e71702eb9390880fc' }, h("style", { key: '0b87496f940cccbfd062e4b16c354fe9f3b60436' }, `
                 input[data-name="timepicker"]::-webkit-calendar-picker-indicator {
                     cursor: pointer;
                     position: absolute;
@@ -354,9 +354,9 @@ const AtInputTime = class {
                     padding-right: 32px;
                     position: relative;
                 }
-                `), h("div", { key: '6b0439d8c3775304480d5145deb9890b47a4597a', class: "flex flex-col" }, h("div", { key: '392f54494db6417b5e60b623c23cf72f421c0b8e', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'd4c5dcefc06fd7a18d9fca01aa2659f04cf83737', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '07a8bb542ced3e4f7edd970ff3df84115effcb54', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: '71e5aa3172d1b561d164b47873c0e7ead22d5ae5', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '2d8500117ecdc43f98a00d6407cda3ca1ad1632d', class: classname }, h("input", { key: '0daa22c35a2f67145a0282d3aaa6f4b15717eff2', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", "aria-invalid": this.invalid || this.rangeErrorText
+                `), h("div", { key: '416e137dfc8ca03c853141c9b0b9a7b4c1fc33e6', class: "flex flex-col" }, h("div", { key: '196641459de6afc32b3fbde813f7bade7057eecf', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '3b371be4c9a24e64df02aca69350cd7e7439b2cc', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: 'd50069fae665ba70fd89ec50c66714260162ee54', label: this.label, for: this.inputId, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { key: 'd4f83d8bd3c9d482a3519bc7871661fc525e551c', class: "text-muted inline-block text-xs leading-tight", "data-name": "timepicker-hint" }, this.hint_text))), h("div", { key: '1a139213dff84c1fe127502ec28bc13c674a9858', class: classname }, h("input", { key: '896d0f32ebdce477f7a0de08881911f66f4b8ffb', type: "time", id: this.inputId, "aria-label": this.aria_label ?? undefined, name: "timePicker", class: "py-input-y px-input-x flex w-full cursor-pointer outline-0", readOnly: this.readonly ? true : undefined, disabled: this.disabled ? true : undefined, required: this.required, value: this.value ?? '', min: this.min, max: this.max, step: this.step, "data-name": "timepicker", "aria-invalid": this.invalid || this.rangeErrorText
                 ? 'true'
-                : undefined, onInput: this.onInput, onBlur: this.onBlur })), this.errorText && (h("span", { key: 'ace4f7edfa08b5686e8a7b899684be734e1629ed', class: "text-error text-sm", "data-name": "timepicker-error" }, this.errorText)))));
+                : undefined, onInput: this.onInput, onBlur: this.onBlur })), this.errorText && (h("span", { key: '7bbe40615a72c1513854c3fed97a1bed166ca931', class: "text-error text-sm", "data-name": "timepicker-error" }, this.errorText)))));
     }
 };
 
@@ -459,12 +459,12 @@ const AtToggleSwitchComponent = class {
         const labelledBy = this.label && this.show_label
             ? `${this.toggleId}-label`
             : this.slottedLabelId;
-        return (h(Host, { key: 'c587c06e423f8feeccbb79fa3503cdb7a4bf751e', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": labelledBy, "aria-describedby": this.hint_text ? `${this.toggleId}-hint` : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
+        return (h(Host, { key: '172162b23ee516f06ede99c3a20e21860dd2e571', id: `${this.toggleId}-host`, role: "switch", "aria-checked": this.value ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : undefined, "aria-labelledby": labelledBy, "aria-describedby": this.hint_text ? `${this.toggleId}-hint` : undefined, "aria-label": this.label && !this.show_label ? this.label : undefined, class: classname, tabIndex: this.disabled ? -1 : 0, onClick: () => this.inputEl.click(), onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter') {
                     event.preventDefault();
                     this.inputEl.click();
                 }
-            } }, h("div", { key: '1ff20baa723140d7dc6b963a799e85b44e3891f5', class: "flex flex-col empty:hidden" }, h("slot", { key: '888687cdf0ec638884553dd20c64be0c10c0cb07', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: 'b85d5e5aecec1ce38bff11e4d854cfd6826f9418', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: '47b34f005e766c32ccb120fbd45043c55e41acdd', id: `${this.toggleId}-hint`, class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: '97cc8a526b930213c2bcd262a4383efa34b13506', class: "relative flex h-20 w-40" }, h("input", { key: '1aaec2573a47bdc4ed94d8a68c2552c90f1ab921', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, "aria-hidden": "true", onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '8e368fcb4dd5a59d9526f48eeab68dc36b759e0a', class: trackClassname }, h("at-icon", { key: 'b087ec2a7189f0707973a24cafec14b0c59afefb', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
+            } }, h("div", { key: '5920d58055e0062e34f6c607b663d0c7f8b064d5', class: "flex flex-col empty:hidden" }, h("slot", { key: 'd23676b99cfbf784b654248b8f4f0d6e174068c0', name: "label" }), !!this.label && this.show_label && (h("at-form-label", { key: '83eb67b812011c1e7bb3bad6fcc73321afcade66', label: this.label, class: "pointer-events-none select-none", for: this.toggleId, id: `${this.toggleId}-label`, "data-name": "switch-label" })), this.hint_text && (h("span", { key: 'c59b5ccfecf2643d0744bf8c059c82484e3e1373', id: `${this.toggleId}-hint`, class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))), h("div", { key: 'c608c9c9cc2194e20d64610c87bbcbef6ad1d564', class: "relative flex h-20 w-40" }, h("input", { key: '887b17a27c04ce7fc92d2a2d7fcdddfa1fa0dae4', id: this.toggleId, class: "h-0 w-0 opacity-0", disabled: this.disabled, type: "checkbox", checked: this.value, tabIndex: -1, "aria-hidden": "true", onChange: (e) => this.onToggle(e.target.checked), ref: (el) => (this.inputEl = el), "data-name": "switch-input" }), h("span", { key: '768244b8ded1e073589b2547f645b242040fdc45', class: trackClassname }, h("at-icon", { key: '53f8c96eaf6d33f18341fa15fbd2c9bbe9e2afb1', name: this.value ? 'checkmark' : 'subtract', class: thumbClassname, style: {
                 transform: `translateX(${this.value ? '10px' : '-10px'})`,
             } })))));
     }

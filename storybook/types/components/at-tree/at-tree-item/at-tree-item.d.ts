@@ -34,6 +34,7 @@ export declare class AtTreeItemComponent {
      * Emits when the button is clicked
      */
     atuiClick: EventEmitter<AtEvent>;
+    connectedCallback(): void;
     handleClick(event: Event): void;
     handleKeyDown(event: KeyboardEvent): void;
     render(): any;

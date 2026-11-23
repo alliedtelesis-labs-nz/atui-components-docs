@@ -3971,14 +3971,16 @@ export namespace Components {
         "width"?: string;
     }
     /**
-     * ### ```interface ItemNode```
+     * ### ```interface AtITreeNode```
      * ```
      *  id: string;
      *  displayName: string;
-     *  children: ItemNode[];
-     *  isSelected?: boolean;
+     *  children: AtITreeNode[];
+     *  selected?: boolean;
      *  tooltip?: string;
      * ```
+     * @category Navigation
+     * @description A tree component for displaying hierarchical data.
      */
     interface AtTree {
         /**
@@ -6086,14 +6088,16 @@ declare global {
         "atuiClick": AtITreeNode;
     }
     /**
-     * ### ```interface ItemNode```
+     * ### ```interface AtITreeNode```
      * ```
      *  id: string;
      *  displayName: string;
-     *  children: ItemNode[];
-     *  isSelected?: boolean;
+     *  children: AtITreeNode[];
+     *  selected?: boolean;
      *  tooltip?: string;
      * ```
+     * @category Navigation
+     * @description A tree component for displaying hierarchical data.
      */
     interface HTMLAtTreeElement extends Components.AtTree, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtTreeElementEventMap>(type: K, listener: (this: HTMLAtTreeElement, ev: AtTreeCustomEvent<HTMLAtTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -10147,14 +10151,16 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     /**
-     * ### ```interface ItemNode```
+     * ### ```interface AtITreeNode```
      * ```
      *  id: string;
      *  displayName: string;
-     *  children: ItemNode[];
-     *  isSelected?: boolean;
+     *  children: AtITreeNode[];
+     *  selected?: boolean;
      *  tooltip?: string;
      * ```
+     * @category Navigation
+     * @description A tree component for displaying hierarchical data.
      */
     interface AtTree {
         /**
@@ -11641,14 +11647,16 @@ declare module "@stencil/core" {
              */
             "at-tooltip": LocalJSX.IntrinsicElements["at-tooltip"] & JSXBase.HTMLAttributes<HTMLAtTooltipElement>;
             /**
-             * ### ```interface ItemNode```
+             * ### ```interface AtITreeNode```
              * ```
              *  id: string;
              *  displayName: string;
-             *  children: ItemNode[];
-             *  isSelected?: boolean;
+             *  children: AtITreeNode[];
+             *  selected?: boolean;
              *  tooltip?: string;
              * ```
+             * @category Navigation
+             * @description A tree component for displaying hierarchical data.
              */
             "at-tree": LocalJSX.IntrinsicElements["at-tree"] & JSXBase.HTMLAttributes<HTMLAtTreeElement>;
             "at-tree-item": LocalJSX.IntrinsicElements["at-tree-item"] & JSXBase.HTMLAttributes<HTMLAtTreeItemElement>;

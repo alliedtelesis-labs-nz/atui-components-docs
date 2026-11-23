@@ -30,8 +30,8 @@ export class AtBreadcrumbComponent {
             this.atuiClick.emit(idOfEventTarget);
     }
     render() {
-        return (h("nav", { key: 'eb11a30cf73fabaadeba4fdc1cc2b1d873d9f724', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
-            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), h("slot", { key: '60b72b87cb6bfb02449fd5f1bf27824277dab9ad' })));
+        return (h("nav", { key: '2737197860df9d1461341068b59f43d99a291cc9', role: "navigation", "aria-label": "breadcrumb", class: "inline-flex items-center", onClick: (event) => this.handleClick(event) }, this.values &&
+            this.values.map((value, index) => (h(Fragment, null, h("at-breadcrumb-item", { label: `${this.get_prefix(index)}${this.prefix_delimiter}${value}`, is_active: index === this.values.length - 1 }), index < this.values.length - 1 && (h("at-icon", { "aria-hidden": "true", role: "presentation", class: "fill-muted", name: "chevron_right" }))))), h("slot", { key: '00e0efdc4a07a2bbc912ad5d1e66aec3cf3a6c4d' })));
     }
     static get is() { return "at-breadcrumb"; }
     static get properties() {

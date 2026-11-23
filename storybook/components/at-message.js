@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-BmGSnoO4.js";const m=o,p=s;export{m as AtMessage,p as defineCustomElement}
+import{A as o,d as s}from"./p-B8IQZOdm.js";const m=o,p=s;export{m as AtMessage,p as defineCustomElement}

@@ -1,19 +1,16 @@
-import { h } from "@stencil/core";
+import { h, } from "@stencil/core";
 /**
- * @category Navigation
- * @description A tree component for displaying hierarchical data.
- * @slot - Use this slot to add custom elements before the tree navigation.
- * @slot item-content - Use this slot to add custom content inside each tree item.
- */
-/**
- * ### ```interface ItemNode```
+ * ### ```interface AtITreeNode```
  * ```
  *  id: string;
  *  displayName: string;
- *  children: ItemNode[];
- *  isSelected?: boolean;
+ *  children: AtITreeNode[];
+ *  selected?: boolean;
  *  tooltip?: string;
  * ```
+ * @category Navigation
+ * @description A tree component for displaying hierarchical data.
+ * @slot - Use this slot to add custom elements before the tree navigation.
  */
 export class AtTreeComponent {
     /**
@@ -28,7 +25,8 @@ export class AtTreeComponent {
      * Emits when the button is clicked
      */
     atuiClick;
-    flattenedItemList = [];
+    el;
+    focusedItemId;
     handleClick = (id) => {
         let clickedItem = null;
         const updateIsSelected = (items) => {
@@ -47,12 +45,11 @@ export class AtTreeComponent {
             return tempItems;
         };
         this.item_list = updateIsSelected(this.item_list);
-        this.flattenItemList(this.item_list);
         if (clickedItem) {
             this.atuiClick.emit(clickedItem);
         }
     };
-    flattenItemList = (itemList) => {
+    flattenVisibleItems(itemList) {
         const tempItemList = [];
         const addToFlattenedAndCheckChildren = (items, layer) => {
             items.forEach((item) => {
@@ -64,18 +61,80 @@ export class AtTreeComponent {
             });
         };
         addToFlattenedAndCheckChildren(itemList, 0);
-        this.flattenedItemList = tempItemList;
-    };
-    componentWillRender() {
-        if (this.item_list && this.item_list.length) {
-            this.flattenItemList(this.item_list);
+        return tempItemList;
+    }
+    get visibleItems() {
+        return this.flattenVisibleItems(this.item_list ?? []);
+    }
+    tabStopId(items) {
+        return items.some((item) => item.id === this.focusedItemId)
+            ? this.focusedItemId
+            : items[0]?.id;
+    }
+    focusItem(id) {
+        this.focusedItemId = id;
+        this.el
+            .querySelector(`[data-name="tree"] at-tree-item[data-item-id="${CSS.escape(id)}"]`)
+            ?.focus();
+    }
+    handleKeyDown(event) {
+        const items = this.visibleItems;
+        const index = items.findIndex((item) => item.id === this.focusedItemId);
+        if (index === -1)
+            return;
+        const item = items[index];
+        const hasChildren = !!item.children?.length;
+        switch (event.key) {
+            case 'ArrowDown':
+                if (index < items.length - 1)
+                    this.focusItem(items[index + 1].id);
+                break;
+            case 'ArrowUp':
+                if (index > 0)
+                    this.focusItem(items[index - 1].id);
+                break;
+            case 'Home':
+                this.focusItem(items[0].id);
+                break;
+            case 'End':
+                this.focusItem(items[items.length - 1].id);
+                break;
+            case 'ArrowRight':
+                if (hasChildren && !item.selected) {
+                    this.handleClick(item.id);
+                }
+                else if (hasChildren) {
+                    this.focusItem(items[index + 1].id);
+                }
+                break;
+            case 'ArrowLeft': {
+                if (hasChildren && item.selected) {
+                    this.handleClick(item.id);
+                    break;
+                }
+                const parent = items
+                    .slice(0, index)
+                    .reverse()
+                    .find((candidate) => candidate.depth === item.depth - 1);
+                if (parent)
+                    this.focusItem(parent.id);
+                break;
+            }
+            default:
+                return;
         }
+        event.preventDefault();
+    }
+    renderItem(item, isTabStop, isTooltipTrigger) {
+        return (h("at-tree-item", { "data-item-id": item.id, slot: isTooltipTrigger ? 'tooltip-trigger' : undefined, depth: item.depth, label: item.displayName, size: this.size, has_children: item.children && item.children.length > 0, selected: item.selected,
+            // The attribute, not tabIndex: Stencil skips a property write that matches
+            // the element's current value, and an unfocusable element already reads -1.
+            tabindex: isTabStop ? 0 : -1, onAtuiClick: () => this.handleClick(item.id), onFocus: () => (this.focusedItemId = item.id) }));
     }
     render() {
-        return (h("div", { key: '76617a69f7e83f20c8e69d67ac2ad3064bca3473', class: "w-full" }, h("slot", { key: '3ee613abc22ca9df0c3ed3f9fcc1db66fc8ecf54' }), this.flattenedItemList &&
-            this.flattenedItemList.map((item, index) => (h("div", { key: index, class: `flex w-full` }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "block w-full" }, h("at-tree-item", { depth: item.depth, slot: "tooltip-trigger", onAtuiClick: () => this.handleClick(item.id), key: item.id, label: item.displayName, size: this.size, has_children: item.children &&
-                    item.children.length > 0, selected: item.selected }, h("slot", { name: "item-content" })), h("span", null, item.tooltip))) : (h("at-tree-item", { depth: item.depth, onAtuiClick: () => this.handleClick(item.id), has_children: item.children &&
-                    item.children.length > 0, key: item.id, label: item.displayName, size: this.size }, h("slot", { name: "item-content" }))))))));
+        const items = this.visibleItems;
+        const tabStopId = this.tabStopId(items);
+        return (h("div", { key: '87a8fde78bdec32ee4b0a5f6a509512a3c1bbb05', class: "w-full" }, h("slot", { key: '6901dce2540dbcf031fc1701f6a01c63bd31e736' }), h("div", { key: 'c89d5098336ea0f5ffc576f563dfa94349c4e598', role: "tree", "data-name": "tree", onKeyDown: (event) => this.handleKeyDown(event) }, items.map((item) => (h("div", { key: item.id, role: "none", class: "flex w-full" }, item.tooltip !== undefined ? (h("at-tooltip", { position: "right", class: "block w-full" }, this.renderItem(item, item.id === tabStopId, true), h("span", null, item.tooltip))) : (this.renderItem(item, item.id === tabStopId, false))))))));
     }
     static get is() { return "at-tree"; }
     static get properties() {
@@ -135,7 +194,7 @@ export class AtTreeComponent {
     }
     static get states() {
         return {
-            "flattenedItemList": {}
+            "focusedItemId": {}
         };
     }
     static get events() {
@@ -163,4 +222,5 @@ export class AtTreeComponent {
                 }
             }];
     }
+    static get elementRef() { return "el"; }
 }

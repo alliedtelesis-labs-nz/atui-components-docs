@@ -73,10 +73,10 @@ const AtTextCellComponent = class {
         return String(textVal);
     }
     render() {
-        return (h(Host, { key: '4b070f01b6a914522e86348b467ce963453765b3', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: '2b70a4c71869adc12189195e475677ad54007521', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: 'be99b5886b4bbfc6842de4d8bfd51810e664e5e0', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} ${this.isEmpty ? 'text-muted' : ''} block truncate`, onClick: () => {
+        return (h(Host, { key: 'c0911c5f58ee595badf82297a847f9dd24995482', class: "flex h-full min-w-0 items-center" }, h("at-tooltip", { key: 'a8495b020201ab00d65dfb544192a342417eeeec', position: "right", disabled: !this.params.generateTooltip, class: "h-fit min-w-0 self-center" }, h("span", { key: '94e25e46b7347562ab7ed18c5d8c45f280209b1d', slot: "tooltip-trigger", "data-index": `column-${this.params.rowIndex}-data`, style: this.textStyles, class: `${this.isLink ? LINK_CLASSES : ''} ${this.textClass ?? ''} ${this.isEmpty ? 'text-muted' : ''} block truncate`, onClick: () => {
                 if (this.params.click)
                     this.params.click(this.params);
-            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'ddd4f42cd57d28179997c5185f30a6d9e4af1846', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
+            } }, this.textValue), this.params.generateTooltip && (h("span", { key: 'c222cd3e0c3e24775cf4f8b4f3b3ec7c1a70cdf8', class: `${this.params.tooltipClass ?? ''} leading-normal` }, this.params.generateTooltip(this.params))))));
     }
 };
 

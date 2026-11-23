@@ -21884,11 +21884,11 @@ const AtChartBarLine = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'cf4a12dd3d3596ba4e0c03e3c7388f7d88b1cc82', style: {
+        return (index.h(index.Host, { key: 'e41ca89ec1ffc6496fbfd7e8ca6cfd0f33f4a239', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, index.h("canvas", { key: 'ad604b341d0b6eb42a93c5364cfaa3985e897cb1', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
+            } }, index.h("canvas", { key: '7fcb1de17a41a0ac95fe44cc3911511c1d103dfe', ref: (el) => (this.canvasEl = el), class: "min-w-100" })));
     }
 };
 

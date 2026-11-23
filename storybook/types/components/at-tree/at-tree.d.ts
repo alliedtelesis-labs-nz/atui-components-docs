@@ -2,20 +2,17 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { AtButtonSize } from '../at-button/at-button';
 import { AtITreeNode } from '../../types/tree';
 /**
- * @category Navigation
- * @description A tree component for displaying hierarchical data.
- * @slot - Use this slot to add custom elements before the tree navigation.
- * @slot item-content - Use this slot to add custom content inside each tree item.
- */
-/**
- * ### ```interface ItemNode```
+ * ### ```interface AtITreeNode```
  * ```
  *  id: string;
  *  displayName: string;
- *  children: ItemNode[];
- *  isSelected?: boolean;
+ *  children: AtITreeNode[];
+ *  selected?: boolean;
  *  tooltip?: string;
  * ```
+ * @category Navigation
+ * @description A tree component for displaying hierarchical data.
+ * @slot - Use this slot to add custom elements before the tree navigation.
  */
 export declare class AtTreeComponent {
     /**
@@ -30,9 +27,14 @@ export declare class AtTreeComponent {
      * Emits when the button is clicked
      */
     atuiClick: EventEmitter<AtITreeNode>;
-    flattenedItemList: Array<AtITreeNode>;
+    el: HTMLAtTreeElement;
+    private focusedItemId?;
     handleClick: (id: string) => void;
-    flattenItemList: (itemList: AtITreeNode[]) => void;
-    componentWillRender(): void;
+    private flattenVisibleItems;
+    private get visibleItems();
+    private tabStopId;
+    private focusItem;
+    private handleKeyDown;
+    private renderItem;
     render(): any;
 }
