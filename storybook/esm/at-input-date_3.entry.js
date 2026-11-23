@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
-import { f as fetchTranslations, i as interpolate } from './translation-BV6bz-3S.js';
+import { f as fetchTranslations, i as interpolate } from './translation-Bmdl6o2j.js';
 import { T as TimeDatePresentationUtil } from './time-date-presentation.util-H5gcGi8Y.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { M as MIN_DATE, a as MAX_DATE } from './date-C3LwY5aR.js';

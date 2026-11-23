@@ -87,6 +87,8 @@ export declare class AtDashboard {
     private gridContainerRef?;
     private columnsAtStart?;
     private hasLoaded;
+    translations: any;
+    componentWillLoad(): Promise<void>;
     connectedCallback(): void;
     componentDidLoad(): void;
     private initGrid;

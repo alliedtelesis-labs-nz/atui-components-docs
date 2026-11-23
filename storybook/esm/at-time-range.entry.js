@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CNjTRhUr.js';
 import { A as AT_DEFAULT_TIME_PRESETS, a as AbreviatedTimeUnits } from './at-time-range.models-yUuqzo3S.js';
 import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration } from './at-time-date.util-Bfdzn_RG.js';
-import { f as fetchTranslations } from './translation-BV6bz-3S.js';
+import { f as fetchTranslations } from './translation-Bmdl6o2j.js';
 import { a as atGetTimestampLabel, b as atGetAbsoluteRangeParts, c as atGetRelativeRangeLabel } from './time-range-label.util-CpeObe-s.js';
 import { M as MIN_DATE, T as TimeRangeDisplay } from './date-C3LwY5aR.js';
 

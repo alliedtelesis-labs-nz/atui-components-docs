@@ -2,6 +2,7 @@
     "ATUI": {
         "CANCEL": "Cancel",
         "APPLY": "Apply",
+        "EDIT": "Edit",
         "DELETE": "Delete",
         "RESET": "Reset",
         "CLEAR_SELECTION": "Clear selection",
@@ -18,6 +19,9 @@
         "MORE_MATCHES_REFINE_SEARCH": "more matches. Refine your search.",
         "NO_OPTIONS_AVAILABLE": "No Options Available",
         "NO_PERMISSION_EDIT_SETTING": "You must be an administrator to change the settings",
+        "DASHBOARD": {
+            "WIDGET_ACTIONS": "Widget actions"
+        },
         "TABLE": {
             "LOADING_DATA": "Loading data...",
             "NO_DATA": "No Data",

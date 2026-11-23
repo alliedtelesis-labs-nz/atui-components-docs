@@ -1,4 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h } from './index-CNjTRhUr.js';
+import { f as fetchTranslations } from './translation-Bmdl6o2j.js';
 
 /**
  * utils.ts 12.4.1
@@ -6498,6 +6499,10 @@ const AtDashboard = class {
     // Each widget's columns when the current resize or drag began, keyed by id.
     columnsAtStart;
     hasLoaded = false;
+    translations;
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     connectedCallback() {
         if (this.hasLoaded && !this.grid)
             this.initGrid();
@@ -6732,9 +6737,10 @@ const AtDashboard = class {
         });
     }
     render() {
-        return (h("div", { key: '7bd05b7568fb9a23b7bc8d645e69b9546d90f89f', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": `Widget ${widget.id} options` }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: "Edit", onAtuiClick: () => {
+        const labels = this.translations.ATUI;
+        return (h("div", { key: '5ccc963b5695ab17789f8a6ee34c2a0b3ede948f', class: "grid-stack", ref: (el) => (this.gridContainerRef = el) }, this.widget_items.map((widget) => (h("div", { class: "grid-stack-item", id: widget.id, key: widget.id }, h("div", { class: "grid-stack-item-content" }, !this.read_only && (h("div", { class: "absolute top-0 right-0 z-10" }, h("at-menu", null, h("at-button", { slot: "menu-trigger", type: "secondaryText", "aria-label": labels.DASHBOARD.WIDGET_ACTIONS }, h("at-icon", { slot: "icon", name: "overflow_menu" })), h("div", { class: "flex min-w-[140px] flex-col py-1" }, h("at-menu-item", { label: labels.EDIT, onAtuiClick: () => {
                 this.editItem.emit(widget);
-            } }), h("at-menu-item", { label: "Delete", onAtuiClick: () => {
+            } }), h("at-menu-item", { label: labels.DELETE, onAtuiClick: () => {
                 this.removeWidget(widget);
             } }))))), h("slot", { name: widget.id })))))));
     }

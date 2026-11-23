@@ -2,7 +2,7 @@
 
 var index = require('./index-D6_HFEr-.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var translation = require('./translation-D8CDff5F.js');
+var translation = require('./translation-CmxBYSNo.js');
 var timeDatePresentation_util = require('./time-date-presentation.util-CBDuvYdu.js');
 var date = require('./date-DDRmOnS1.js');
 var timeRangeLabel_util = require('./time-range-label.util-BR6KvMfz.js');
