@@ -14,6 +14,7 @@ export type AtChartTrendDeltaDirection = 'up-is-bad' | 'up-is-good';
  * @description A single-metric trend tile: a large current value, an up/down delta over the period, and an `at-chart-sparkline` of the recent series. Use when a dashboard stat widget needs the current value, the change and the recent shape of one metric together. Prefer `at-chart-sparkline` when only the shape is needed and `at-chart-bar-line` to compare several series.
  */
 export declare class AtChartTrend {
+    el: HTMLElement;
     /**
      * The numeric series plotted as the underlying sparkline. For multi-series,
      * labelled or time-based data use `at-chart-bar-line` instead.

@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, h, H as Host } from './index-CYwPWCYK.js';
 import { C as Chart, D as DoughnutController, A as ArcElement, p as plugin_legend, a as plugin_tooltip, i as index, g as getChartColors, r as resolveSeriesColors } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette, b as readChartFontFamily, r as readChartTextColors, a as readChartTypography } from './chart-color-PVoy06gY.js';
 import { g as generateLegendLabels, s as setLegendTooltip, e as ensureLegendTooltipEl, L as LEGEND_ITEM_PADDING } from './chart-legend-BNvwc8jm.js';
@@ -523,7 +523,7 @@ const AtChartDonut = class {
         }
     }
     render() {
-        return (h(Host, { key: 'f54e470db43f6c7b27e71f6f0b0f9772218d8705', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'e49e9746fec5e69f3f36a56303d99be3e3598a6e', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
+        return (h(Host, { key: 'dfd7bd64519d339bfa5d8d10bf02d934b71910f7', style: { display: 'block', height: '100%', width: '100%' } }, h("canvas", { key: 'bb5a0f095b5bf0bbd72d13c69470a525e42a3427', class: `w-full ${heightVariants[this.height]}`, ref: (el) => (this.canvasEl = el) })));
     }
 };
 

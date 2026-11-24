@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-7uIEF_8T.js');
+var index = require('./index-5-knLVXx.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const atAccordionItemCss = () => `details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}[data-name=accordion-item-content]{display:grid;grid-template-rows:1fr;transition:grid-template-rows 200ms ease-in-out, opacity 200ms ease;opacity:1}[data-name=accordion-item-content][data-state=collapsed]{grid-template-rows:0fr;overflow:hidden;opacity:0}[data-name=accordion-item-content]>*{overflow:hidden}`;

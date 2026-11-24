@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
 import { g as getChartColors, c as color, C as Chart, L as LinearScale, b as CategoryScale, d as LineController, e as LineElement, P as PointElement, i as index } from './chart-color-DZR_knTu.js';
 import { A as AtChartColorPalette } from './chart-color-PVoy06gY.js';
 import { C as ChartDrawGate } from './chart-draw-gate-CqV46vp0.js';
@@ -200,11 +200,11 @@ const AtChartSparkline = class {
         this.drawGate?.requestDraw();
     }
     render() {
-        return (h(Host, { key: 'c06511379a948780b22106cb1a310ef307bf3e73', style: {
+        return (h(Host, { key: 'fa163d403776e04b6ade6e7c33a1d877dca98665', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, h("canvas", { key: 'e8f2514ef43166a9278c5e602f130065583b49f0', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
+            } }, h("canvas", { key: '79cafc61e2f34be6e94a8c831a631f2c5ebaad96', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
 };
 

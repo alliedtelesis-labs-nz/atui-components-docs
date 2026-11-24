@@ -1,6 +1,7 @@
 const Template = (args) => `
 <at-card
     card_title="${args.card_title ?? ''}"
+    title_size="${args.title_size ?? 'h4'}"
     subtitle="${args.subtitle ?? ''}"
     content="${args.content ?? ''}"
     shadow="${args.shadow ?? 'sm'}"
@@ -25,11 +26,16 @@ export default {
             options: ['none', 'sm', 'lg'],
             control: { type: 'radio' },
         },
+        title_size: {
+            options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+            control: { type: 'select' },
+        },
     },
 };
 export const Default = Template.bind({});
 Default.args = {
     card_title: 'Title',
+    title_size: 'h4',
     icon: 'overflow_menu',
     subtitle: 'Subtitle',
     content: 'Content',

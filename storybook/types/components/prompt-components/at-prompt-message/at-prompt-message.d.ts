@@ -85,6 +85,7 @@ export declare class AtPromptMessage {
     private animationTargetContent;
     private pendingWords;
     private animationTimer?;
+    private copyFeedbackTimer?;
     private hasLoaded;
     errorEl: HTMLDivElement;
     el: HTMLAtInputElement;

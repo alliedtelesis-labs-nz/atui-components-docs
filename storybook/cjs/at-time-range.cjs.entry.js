@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-7uIEF_8T.js');
+var index = require('./index-5-knLVXx.js');
 var atTimeRange_models = require('./at-time-range.models-BPZ2R6EI.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
 var translation = require('./translation-Cr-s1VAe.js');
@@ -67,7 +67,7 @@ const AtTimeRangeComponent = class {
      * Emits an event containing the selected time range when it changes
      */
     atuiTimeChange;
-    instanceId = `atr-${Math.random().toString(36).slice(2, 8)}`;
+    instanceId = `time-range-${Math.random().toString(36).substring(2, 11)}`;
     units = [
         atTimeDate_util.AtTimeUnit.MINUTES,
         atTimeDate_util.AtTimeUnit.HOURS,
@@ -183,7 +183,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '7788113e664fa78d89c127d528483f554c65b4e2', class: "relative flex justify-center" }, this.enable_relative_time
+        return (index.h(index.Host, { key: 'ea2644fdb876358fc385d029de44b07c059c1eed', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
 import { a as agGridColumnId, r as resolveCellSearchText } from './ag-grid-column-id-CLcRs3DE.js';
@@ -155,8 +155,8 @@ const AtCheckboxGroup = class {
         const classname = getLayoutClassname({
             layout: this.layout,
         });
-        return (h(Host, { key: '695202e66cf834fe9613a677d6eb6fa1b6336a02', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: 'c05038209f646ef96596c5485c3e584a6d1dfa09', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '203c04bbb921a23b79ef01cf10cc657f10713287', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '490f2b6b6bdb28672637b12bea57f42b8dc85288', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '41de35313755fb443ad9ffeedac25c2bc6d93275', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: 'e363b79bba2de9844638f85730f00b3acad9d523', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '4086a075ad95ab88f755f013004d3832a4f6d790' }), this.getCheckBoxes &&
-            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '138fd845170a5af2e527ca47953d4eb6953cd5b9', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '36574cb820094caab18ef51f179628c18ad7a1fc', role: "group", "aria-label": this.label, "aria-description": this.info_text, class: "flex w-full flex-col" }, h("div", { key: '42f618aeaedbd9c4c6fcdcddca6367c330c1eb20', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '7f8e92cb8a4b3cf6af3f159a423620ed9a9e88ed', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '858aef6e223c86f2db3c947a4a4face429701fbd', label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '6241761b64fceba44fa320ada99edb091f7016a7', class: "text-muted inline-block text-xs leading-tight", "data-name": "checkbox-group-hint" }, this.hint_text))), h("ul", { key: '5061794e588f10d97578fe6843296fe7b2aa8b13', class: classname, "data-name": "checkbox-group-options" }, h("slot", { key: '35f597654f2748ea242364f088d9cd77d7589f52' }), this.getCheckBoxes &&
+            this.getCheckBoxes.map((checkbox) => (h("li", { class: "flex" }, checkbox)))), this.error_text && this.invalid && (h("span", { key: '59d68c8526ab10275600d5462dfacbe309f2d305', class: "text-error text-sm", "data-name": "checkbox-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "options": [{
@@ -223,7 +223,7 @@ const AtColumnManagerComponent = class {
         this.checkedColumns = selectedColumns;
     }
     render() {
-        return (h("at-menu", { key: '92a42a0aa4dc9f1101518844eefe45f59dfe96ab', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: 'f70ed279580a2c0737aa25cce3cae49fd8476b71', slot: "menu-trigger" }, h("at-tooltip", { key: '5a33b521a723472bb3526cd1e3cbaeaaf5ca0c19', position: "top" }, h("at-button", { key: 'acfc30f4e8d37f478fa7e58c5d7bd2c5167f893f', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: 'cd9e98a66e3b8865ac63bb53ea5464e7eebb3610', slot: "icon", name: "column" })), h("span", { key: '728cd09cbd350ea181256511e52309fdcd11e043' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: '54c061520e9133d867b0544110cef55062233f1d', class: "w-fit", options: this.col_defs
+        return (h("at-menu", { key: '4ceffe445dd3aaa393ab3cf09bc2d269c6cca4a6', autoclose: false, width: "fit-content", position: "bottom", align: "end" }, h("div", { key: 'b0455a7f11bdf9fbdabb5a97c7717dfaa67403bd', slot: "menu-trigger" }, h("at-tooltip", { key: '66fd6568878b2412df0fba2313da24a850b418f1', position: "top" }, h("at-button", { key: '25dafe4a780a376682dd0cb8098223f95912e4e6', slot: "tooltip-trigger", type: "secondaryText" }, h("at-icon", { key: '40067a7970edeb907ac2759de16473c44a54715c', slot: "icon", name: "column" })), h("span", { key: '536a01df4655324ed2de1d8fab20887a1be5a5ac' }, this.translations.ATUI.TABLE.MANAGE_COLUMNS))), h("at-checkbox-group", { key: 'bfcd0fa8f8046692046cfa412902c331b1ab1083', class: "w-fit", options: this.col_defs
                 ? this.col_defs
                     .filter((colDef) => colDef.headerName &&
                     colDef.headerName.trim() !== '')

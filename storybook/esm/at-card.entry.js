@@ -1,6 +1,7 @@
-import { r as registerInstance, h, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, h, H as Host } from './index-CYwPWCYK.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
+const validTitleSizes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 const containerVariantsConfig = {
     variants: {
         shadow: {
@@ -79,12 +80,16 @@ const AtCardComponent = class {
      * Box-shadow around card.
      */
     shadow = 'none';
+    /**
+     * Size of the title. Sets both its heading level and its text size.
+     */
+    title_size = 'h4';
     render() {
         // Inside an at-dialog the host is capped by the `at-dialog at-card` rule
         // in directives.scss. Here it resolves the body's overflow from the var
         // at-dialog publishes; elsewhere the var is unset and it resolves to
         // visible, leaving the card unchanged.
-        const getContainerClassname = classlist('relative z-1  bg-card-background border-muted flex flex-col overflow-hidden rounded-lg [--at-card-body-overflow-resolved:var(--at-card-content-overflow,visible)]', containerVariantsConfig);
+        const getContainerClassname = classlist('relative bg-card-background border-muted flex flex-col overflow-hidden rounded-lg [--at-card-body-overflow-resolved:var(--at-card-content-overflow,visible)]', containerVariantsConfig);
         const containerClassname = getContainerClassname({
             shadow: this.shadow,
         });
@@ -100,11 +105,14 @@ const AtCardComponent = class {
             padding: this.padding,
             overflow: this.overflow_content,
         });
-        const getFooterClassname = classlist('hide-empty z-index-10 p-16', footerVariantsConfig);
+        const getFooterClassname = classlist('hide-empty z-10 p-16', footerVariantsConfig);
         const footerClassname = getFooterClassname({
             sticky: this.sticky_footer,
         });
-        return (h(Host, { key: '6feffefede16b54bd44567a4d070960f142e1c47', class: containerClassname }, h("div", { key: 'feda50917a494f39b7420d7f090598f064a6d139', class: `${headerClassname}` }, h("slot", { key: '2fe5784c1ce587570373826aad6405b68b109030', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: 'df15662e9d82d0b1f3d6c992bc88fc287e06acb4', class: "flex min-w-0 flex-1 flex-col break-words" }, this.card_title && (h("h4", { key: '3f9ea23abf7caf74a7468420ff567570dfe5d5d8', "data-name": "card-title", class: "text-h4 font-medium" }, this.card_title)), this.subtitle && (h("h5", { key: '60e807a57da1aac118e8eb172dd07577f5fe213b', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: '059fd26feeea33eb0be961240864eefc559d1300', name: "card-header-actions" })), h("div", { key: '4c6ab44a99a7a7df95d1c03efabb6e52524bec5f', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: '71b1909aba60e783e4c911a9e91a873125d0ff1a' })), h("div", { key: '8bf1728b27278de0565be564742eb5ff407040d8', class: footerClassname }, h("slot", { key: '125c54b3aa77db81a393eedff6d6418074cdb03e', name: "card-footer" }))));
+        const TitleHeading = validTitleSizes.includes(this.title_size)
+            ? this.title_size
+            : 'h4';
+        return (h(Host, { key: 'dd5cc511bd2ddf7b07e487fc22c7b10a2752d96e', class: containerClassname }, h("div", { key: '989fad1de473eddb42fc98de50bba5d729474524', class: headerClassname, "data-name": "card-header" }, h("slot", { key: '487393ce49f00ea3ef8c7e092b8e3675724e5525', name: "card-header" }), (this.card_title || this.subtitle) && (h("div", { key: '78fbb1bb511adaf3346bee0fa2c87621deace6be', class: "flex min-w-0 flex-1 flex-col break-words" }, this.card_title && (h(TitleHeading, { key: '0f6d4fe7eeabf24be7a663e6c36d67c7323a6197', "data-name": "card-title", class: TitleHeading }, this.card_title)), this.subtitle && (h("p", { key: 'a113c9a7a81eae122b0eeb8cd44b6d664945adda', class: "text-muted text-sm font-normal", "data-name": "card-subtitle" }, this.subtitle)))), h("slot", { key: 'f6b41626c82146f5c3216161cb0992b4cc4f42fe', name: "card-header-actions" })), h("div", { key: '1e2954458417240f9a5af5db02134b0913b73e2c', class: contentClassname, "data-name": "card-content" }, this.content, h("slot", { key: '92fffd7a223b4342ab37a2fcefaaf06b8cb370f2' })), h("div", { key: '3e4f26f998ee6161732a9eaeedf21eb668038900', class: footerClassname, "data-name": "card-footer" }, h("slot", { key: '46a2031405d7480a3b07d244248bacff35844ecd', name: "card-footer" }))));
     }
 };
 

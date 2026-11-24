@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
 import { A as AT_DEFAULT_TIME_PRESETS, a as AbreviatedTimeUnits } from './at-time-range.models-yUuqzo3S.js';
 import { A as AtTimeUnit, a as AtTimeDateUtil, D as Duration } from './at-time-date.util-Bfdzn_RG.js';
 import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
@@ -65,7 +65,7 @@ const AtTimeRangeComponent = class {
      * Emits an event containing the selected time range when it changes
      */
     atuiTimeChange;
-    instanceId = `atr-${Math.random().toString(36).slice(2, 8)}`;
+    instanceId = `time-range-${Math.random().toString(36).substring(2, 11)}`;
     units = [
         AtTimeUnit.MINUTES,
         AtTimeUnit.HOURS,
@@ -181,7 +181,7 @@ const AtTimeRangeComponent = class {
         }
     }
     render() {
-        return (h(Host, { key: '7788113e664fa78d89c127d528483f554c65b4e2', class: "relative flex justify-center" }, this.enable_relative_time
+        return (h(Host, { key: 'ea2644fdb876358fc385d029de44b07c059c1eed', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

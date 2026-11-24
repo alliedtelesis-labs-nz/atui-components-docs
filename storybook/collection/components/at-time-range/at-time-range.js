@@ -64,7 +64,7 @@ export class AtTimeRangeComponent {
      * Emits an event containing the selected time range when it changes
      */
     atuiTimeChange;
-    instanceId = `atr-${Math.random().toString(36).slice(2, 8)}`;
+    instanceId = `time-range-${Math.random().toString(36).substring(2, 11)}`;
     units = [
         AtTimeUnit.MINUTES,
         AtTimeUnit.HOURS,
@@ -180,7 +180,7 @@ export class AtTimeRangeComponent {
         }
     }
     render() {
-        return (h(Host, { key: '7788113e664fa78d89c127d528483f554c65b4e2', class: "relative flex justify-center" }, this.enable_relative_time
+        return (h(Host, { key: 'ea2644fdb876358fc385d029de44b07c059c1eed', class: "relative flex justify-center" }, this.enable_relative_time
             ? this.renderRelativeTimeButtonGroup()
             : this.renderPredefinedTimeButtonGroup(), this.enable_relative_time && this.renderRelativeTimeMenu(), this.renderAbsoluteTimeMenu()));
     }

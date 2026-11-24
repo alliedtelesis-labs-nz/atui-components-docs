@@ -26,7 +26,10 @@ export declare class AtTablePagination {
     page_size: number;
     el: HTMLElement;
     translations: any;
+    private langObserver?;
     componentWillLoad(): Promise<void>;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
     /**
      * The options actually rendered in the selector: the provided (or default)
      * options, with the active `page_size` guaranteed to be present so the

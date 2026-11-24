@@ -7,6 +7,12 @@ declare const _default: {
                 type: string;
             };
         };
+        title_size: {
+            options: string[];
+            control: {
+                type: string;
+            };
+        };
     };
 };
 export default _default;

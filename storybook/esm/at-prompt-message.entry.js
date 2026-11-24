@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment, H as Host } from './index-hF8UbJgm.js';
+import { r as registerInstance, c as createEvent, a as getElement, h, F as Fragment, H as Host } from './index-CYwPWCYK.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
 import { A as AtPromptResponseScore } from './prompt-CQKUaTzD.js';
@@ -2419,6 +2419,7 @@ const AtPromptMessage = class {
     animationTargetContent = '';
     pendingWords = [];
     animationTimer;
+    copyFeedbackTimer;
     hasLoaded = false;
     errorEl;
     get el() { return getElement(this); }
@@ -2431,6 +2432,8 @@ const AtPromptMessage = class {
     }
     disconnectedCallback() {
         clearTimeout(this.animationTimer);
+        clearTimeout(this.copyFeedbackTimer);
+        this.copyFeedbackVisible = false;
     }
     watchContentChange(newContent) {
         if (!this.hasLoaded)
@@ -2518,7 +2521,8 @@ const AtPromptMessage = class {
         try {
             await this.writeToClipboard(this.content);
             this.copyFeedbackVisible = true;
-            setTimeout(() => {
+            clearTimeout(this.copyFeedbackTimer);
+            this.copyFeedbackTimer = setTimeout(() => {
                 this.copyFeedbackVisible = false;
             }, 2000);
         }
@@ -2610,7 +2614,7 @@ const AtPromptMessage = class {
             role: this.role,
             loading: this.loading,
         });
-        return (h(Host, { key: 'a01ef2017ced2f25c754a4602e7d790a5377c6d6', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'a32b482f5948a381083c691921c257c3bfb41a1c', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'd3d0f7894457fed3403bf599e6668e8264a34040', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: '4ecbc21d243cb4cb6b4d6380ec2f9a8a2c3cfa0d', class: messageClasses }, this.renderContent()), this.renderActions())));
+        return (h(Host, { key: 'b3d9c143abb36cb931e30582470454a384606622', class: "flex w-full gap-8", "data-name": "message-container", "data-role": this.role }, h("div", { key: 'e4a651b03956d0f713e351807a39d8f1e8b82621', class: "flex flex-1 flex-col" }, this.name && (h("span", { key: 'd9d9158bd1d8640828c75e55748245b9bdac8493', class: "text-muted self-start text-sm", "data-name": "message-name" }, this.name)), h("div", { key: 'c1de0d84a385e2c870a5a26dfba11a1795b2b474', class: messageClasses }, this.renderContent()), this.renderActions())));
     }
     static get watchers() { return {
         "content": [{

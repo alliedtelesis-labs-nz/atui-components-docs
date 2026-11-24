@@ -4273,6 +4273,10 @@ at-dialog :where([data-name=card-content]) > at-card {
   vertical-align: -0.125em;
 }
 
+.text-\[0\.65em\] {
+  font-size: 0.65em;
+}
+
 .text-\[10px\] {
   font-size: 10px;
 }
@@ -4353,6 +4357,10 @@ at-dialog :where([data-name=card-content]) > at-card {
 
 .leading-\[0\.9286rem\] {
   line-height: 0.9286rem;
+}
+
+.leading-\[1\.1\] {
+  line-height: 1.1;
 }
 
 .leading-\[100\%\] {

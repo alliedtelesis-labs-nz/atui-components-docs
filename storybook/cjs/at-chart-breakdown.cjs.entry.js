@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-7uIEF_8T.js');
+var index = require('./index-5-knLVXx.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 var chartDrawGate = require('./chart-draw-gate-DcjDmmL7.js');
@@ -644,7 +644,7 @@ const AtChartBreakdown = class {
         const typography = showSideText
             ? chartColor.readChartTypography(this.el)
             : undefined;
-        return (index.h(index.Host, { key: '4f4a5518434be222ae3bda44b350e0559cd7e645', style: {
+        return (index.h(index.Host, { key: 'd35486675f5ea3254c4c9dd6cb5acba09320acc7', style: {
                 height: '100%',
                 width: '100%',
                 minHeight: '65px',
@@ -652,24 +652,24 @@ const AtChartBreakdown = class {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
-            } }, index.h("canvas", { key: '65b976aab6a0090fe5b2bc27d7a6eec4937d15e2', class: heightVariants[this.height], style: {
+            } }, index.h("canvas", { key: '4ae65e7d7af08edd8e2078304e0b26306c5bc631', class: heightVariants[this.height], style: {
                 aspectRatio: '1 / 1',
                 flexShrink: '0',
             }, ref: (el) => {
                 if (el) {
                     this.canvasEl = el;
                 }
-            } }), showSideText && (index.h("div", { key: 'e4b8e0977c4e5421d40a47f0be8f5343d479b3e5', class: "flex flex-col justify-center ps-8", style: {
+            } }), showSideText && (index.h("div", { key: '904d5bdaca060784537ea75c0096b80ccd6e4baa', class: "flex flex-col justify-center ps-8", style: {
                 position: 'absolute',
                 left: `${this.compactOffset}px`,
             }, ref: (el) => {
                 this.sideTextEl = el ?? undefined;
-            } }, this.center_value && (index.h("span", { key: '4ad63f1b0c98ba848ebdd4d45c3a0af72d063435', style: {
+            } }, this.center_value && (index.h("span", { key: 'd6e0fe5c371886b8ed0b0b1ef0be4fefce16711f', style: {
                 fontSize: `${typography.valueRem}rem`,
                 fontWeight: String(typography.weightBold),
                 lineHeight: '1.1',
                 color: 'var(--chart-title)',
-            } }, this.center_value)), this.center_text && (index.h("span", { key: '62228b5b950ee869108c4a57075494e3504150a2', style: {
+            } }, this.center_value)), this.center_text && (index.h("span", { key: '5907ff0019957b3e4f2692b7f7ffc247a17ebeba', style: {
                 fontSize: `${typography.textRem}rem`,
                 fontWeight: String(typography.weightLight),
                 color: 'var(--chart-title)',

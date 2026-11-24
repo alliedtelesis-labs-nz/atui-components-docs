@@ -1,12 +1,13 @@
 'use strict';
 
-var index = require('./index-7uIEF_8T.js');
+var index = require('./index-5-knLVXx.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 
 const AtChartTrend = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
+    get el() { return index.getElement(this); }
     /**
      * The numeric series plotted as the underlying sparkline. For multi-series,
      * labelled or time-based data use `at-chart-bar-line` instead.
@@ -66,19 +67,21 @@ const AtChartTrend = class {
      * otherwise derives `last − first` from the series (0 for < 2 points).
      */
     resolveDelta() {
-        if (this.delta !== undefined) {
-            return this.delta;
-        }
-        return this.data.length >= 2
-            ? this.data[this.data.length - 1] - this.data[0]
-            : 0;
+        const series = this.data ?? [];
+        const delta = this.delta ??
+            (series.length >= 2 ? series[series.length - 1] - series[0] : 0);
+        return Number.isFinite(delta) ? delta : 0;
     }
     /**
      * Signed, unit-suffixed delta label (e.g. `+3%`, `-1.2ms`).
      */
     deltaLabel(delta) {
-        const sign = delta > 0 ? '+' : '';
-        return `${sign}${delta}${this.unit ?? ''}`;
+        const locale = this.el.closest('[lang]')?.getAttribute('lang') || undefined;
+        const formatted = new Intl.NumberFormat(locale, {
+            maximumFractionDigits: 2,
+            signDisplay: 'exceptZero',
+        }).format(delta);
+        return `${formatted}${this.unit ?? ''}`;
     }
     /**
      * Whether the delta reads as a regression given `delta_direction`. Drives
@@ -97,14 +100,7 @@ const AtChartTrend = class {
     }
     render() {
         const delta = this.resolveDelta();
-        return (index.h(index.Host, { key: '63411eb63ba6e6497ee234d222359fc59acffcb7', style: { display: 'block', height: '100%', width: '100%' } }, index.h("div", { key: '765b144bc4b96bcacda1881fafcdf43eea0c05bd', class: "flex h-full flex-col justify-between gap-4" }, index.h("div", { key: '8aa935d35f207a26b5b469b272e5f11586093a29', class: "flex items-baseline justify-between gap-8" }, index.h("span", { key: '69c703085e4a7deaa3ce713edd640d0b73ea82ab', style: {
-                fontSize: '3rem',
-                fontWeight: '700',
-                lineHeight: '1.1',
-            }, "data-name": "value" }, this.value, this.unit && (index.h("span", { key: '672dd6fc67b31dcfc5fbc70b61eb5aa486d66882', style: {
-                fontSize: '0.65em',
-                fontWeight: '500',
-            }, "data-name": "value-unit" }, this.unit)))), index.h("div", { key: '5f8ad37ea5a61b56a38026d7e43978c8218f5f23', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, index.h("at-chart-sparkline", { key: 'fe5bafc61a66bea537c938c3f5520b599f143472', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
+        return (index.h(index.Host, { key: 'efa31b33098f99b2998ac349ba3a7a0b1e9b8a1e', style: { display: 'block', height: '100%', width: '100%' } }, index.h("div", { key: 'f7cb2d13a09dd996cb8785872597e8fdbbf217c6', class: "flex h-full flex-col justify-between gap-4", "data-name": "chart-trend" }, index.h("div", { key: 'c65e0cb7929467515c560ed7953fb4fed562c0ad', class: "flex items-baseline justify-between gap-8" }, index.h("span", { key: 'd35c38ef6a62c69853a0474e9af05b151a55b017', class: "text-xl leading-[1.1] font-bold", "data-name": "value" }, this.value, this.unit && (index.h("span", { key: 'c4b962cc81df8f6a1c6fe0dfd3f4c3e73ef014a0', class: "text-[0.65em] font-medium", "data-name": "value-unit" }, this.unit)))), index.h("div", { key: '6df74c1026ba4ce86112ae7fcf1101f37d6aa46c', class: "relative min-h-0 flex-1", "data-name": "sparkline" }, index.h("at-chart-sparkline", { key: '13d388354929a850335313db3734eca862a40e13', class: "absolute inset-0 block h-full w-full", data: this.data, mode: this.mode, status: this.status, color_palette: this.color_palette, height: this.height, refresh_theme: this.refresh_theme })), delta !== 0 ? this.renderDelta(delta) : null)));
     }
 };
 

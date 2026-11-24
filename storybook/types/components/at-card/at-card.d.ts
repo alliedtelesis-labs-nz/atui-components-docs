@@ -1,3 +1,4 @@
+import type { AtHeaderSizes } from '../at-header/at-header';
 /**
  * @category Layout
  * @description A flexible container component for organizing content with header, body, and footer sections. Features sticky headers/footers, configurable padding, shadows, and overflow handling. Inside an `at-dialog` the card is always bounded to the dialog and scrolls its body with the header and footer pinned; `max-h-*`, `max-w-*` and `min-h-*` on its host are ignored.
@@ -43,5 +44,9 @@ export declare class AtCardComponent {
      * Box-shadow around card.
      */
     shadow?: 'none' | 'sm' | 'lg';
+    /**
+     * Size of the title. Sets both its heading level and its text size.
+     */
+    title_size?: AtHeaderSizes;
     render(): any;
 }

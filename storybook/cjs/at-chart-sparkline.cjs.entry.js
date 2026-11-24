@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-7uIEF_8T.js');
+var index = require('./index-5-knLVXx.js');
 var chartColor$1 = require('./chart-color-DUMPQJxl.js');
 var chartColor = require('./chart-color-CbbmT7Il.js');
 var chartDrawGate = require('./chart-draw-gate-DcjDmmL7.js');
@@ -202,11 +202,11 @@ const AtChartSparkline = class {
         this.drawGate?.requestDraw();
     }
     render() {
-        return (index.h(index.Host, { key: 'c06511379a948780b22106cb1a310ef307bf3e73', style: {
+        return (index.h(index.Host, { key: 'fa163d403776e04b6ade6e7c33a1d877dca98665', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, index.h("canvas", { key: 'e8f2514ef43166a9278c5e602f130065583b49f0', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
+            } }, index.h("canvas", { key: '79cafc61e2f34be6e94a8c831a631f2c5ebaad96', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
 };
 

@@ -33,8 +33,23 @@ export class AtTablePagination {
     page_size = 20;
     el;
     translations;
+    langObserver;
     async componentWillLoad() {
         this.translations = await fetchTranslations(this.el);
+    }
+    connectedCallback() {
+        this.langObserver = new MutationObserver(async () => {
+            this.translations = await fetchTranslations(this.el);
+        });
+        this.langObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['lang'],
+            subtree: true,
+        });
+    }
+    disconnectedCallback() {
+        this.langObserver?.disconnect();
+        this.langObserver = undefined;
     }
     /**
      * The options actually rendered in the selector: the provided (or default)
@@ -60,10 +75,10 @@ export class AtTablePagination {
     atPageSizeChange;
     render() {
         const labels = this.translations.ATUI.TABLE.PAGINATION;
-        return (h(Host, { key: '99a5d725d740f9c9db34cde60a55e410a7e38a7e', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: 'e3044975e4355d20d7819838573ae35583398e80', "data-name": "pagination-page-size-label" }, labels.PAGE_SIZE), h("at-select", { key: '7017f95966e8908b922d27f409b1e83a4d776d00', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '8662880b6a5c0d746aa464a56c36c670a5ef140f', "data-name": "pagination-first", "aria-label": labels.FIRST_PAGE, disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '908beb11ddd1a6dcce3457e703030c75f6c02a90', slot: "icon", name: "first_page" })), h("at-button", { key: '7ac2656a77d86b342c774a5b815945df77c6d7c9', "data-name": "pagination-previous", "aria-label": labels.PREVIOUS_PAGE, disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: 'df16bee18c1f8c4101838c77bd006a200d246e1b', slot: "icon", name: "chevron_left" })), h("span", { key: '722581a7565f5dbe240090bdf5751141af9eb5eb', "data-name": "pagination-page-status" }, interpolate(labels.PAGE_OF, {
+        return (h(Host, { key: '9fe83146b444d336129e5c5256b276ffc28888e3', class: "mt-8 flex items-center justify-end gap-8" }, h("span", { key: '6df92227b98e1a9f970fd061b10d6fb7eb092800', "data-name": "pagination-page-size-label" }, labels.PAGE_SIZE), h("at-select", { key: 'ba1d34e62c9b9b2579351744e6563b40cc5fb371', options: this.resolvedPageSizeOptions, value: String(this.page_size), clearable: false, onAtuiChange: (event) => this.atPageSizeChange.emit(parseInt(event.detail)) }), h("at-button", { key: '35f11ecf628aedd429944ec7f2b342dee2ac4fd8', "data-name": "pagination-first", "aria-label": labels.FIRST_PAGE, disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(1) }, h("at-icon", { key: '6d0420cbcb657b07fa5a56f472d2f7595ca5eebe', slot: "icon", name: "first_page" })), h("at-button", { key: '2110d1f0bdc9ba44b48e445816bf6ec9c00d4c0e', "data-name": "pagination-previous", "aria-label": labels.PREVIOUS_PAGE, disabled: this.current_page === 1, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page - 1) }, h("at-icon", { key: '090e1d23f3adb3e7f247d58c1dac0aec350a3a1a', slot: "icon", name: "chevron_left" })), h("span", { key: '2478cb7581346929dac43e999390e6b26b434150', "data-name": "pagination-page-status" }, interpolate(labels.PAGE_OF, {
             current: this.current_page,
             total: this.num_pages,
-        })), h("at-button", { key: '3ffcdf3fbbaf0dc175daae452872214547b35a5e', "data-name": "pagination-next", "aria-label": labels.NEXT_PAGE, disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: '276eb11bf215839395f24d6c26c0a477f43df18a', slot: "icon", name: "chevron_right" })), h("at-button", { key: '8ff653a5bb87634776d0f655f38cf8b80d52efb1', "data-name": "pagination-last", "aria-label": labels.LAST_PAGE, disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: 'e9fc5cfef85a3bf12f3890e4fe55d81086ce14fd', slot: "icon", name: "last_page" }))));
+        })), h("at-button", { key: '78fd73c15d9d55d3eaef059243387edcc2a3d6ca', "data-name": "pagination-next", "aria-label": labels.NEXT_PAGE, disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.current_page + 1) }, h("at-icon", { key: '6842b2864171e5d7364d706309769e98a6b1bc42', slot: "icon", name: "chevron_right" })), h("at-button", { key: '9ea0369b8f49627ddfa8371630ab6226f10b2f32', "data-name": "pagination-last", "aria-label": labels.LAST_PAGE, disabled: this.current_page === this.num_pages, type: "secondaryText", onAtuiClick: () => this.atChange.emit(this.num_pages) }, h("at-icon", { key: '57316a15a49dc4a4f3767abd622ddf4a2f99030f', slot: "icon", name: "last_page" }))));
     }
     static get is() { return "at-table-pagination"; }
     static get properties() {

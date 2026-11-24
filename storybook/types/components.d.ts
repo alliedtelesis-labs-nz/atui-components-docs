@@ -11,6 +11,7 @@ import { AtBadgeContrast, AtBadgeSize, AtBadgeType } from "./components/at-badge
 import { AtButtonSize, AtButtonType } from "./components/at-button/at-button";
 import { AtEvent } from "./types/events";
 import { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
+import { AtHeaderSizes } from "./components/at-header/at-header";
 import { ChartDataset, Plugin } from "chart.js";
 import { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 import { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
@@ -31,7 +32,7 @@ import { AtControlGroupDirection } from "./components/at-control-group/at-contro
 import { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole, AtSelectionMode } from "./types";
 import { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 import { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
-import { AtHeaderSizes } from "./components/at-header/at-header";
+import { AtHeaderSizes as AtHeaderSizes1 } from "./components/at-header/at-header";
 import { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 import { AtInputType } from "./components/at-input/at-input";
 import { InputPosition } from "./components/at-input-range/at-input-range";
@@ -72,6 +73,7 @@ export { AtBadgeContrast, AtBadgeSize, AtBadgeType } from "./components/at-badge
 export { AtButtonSize, AtButtonType } from "./components/at-button/at-button";
 export { AtEvent } from "./types/events";
 export { AtIButtonGroupOption } from "./components/at-button-group/at-button-group";
+export { AtHeaderSizes } from "./components/at-header/at-header";
 export { ChartDataset, Plugin } from "chart.js";
 export { AtIPointStyles, AtIThreshold } from "./components/at-chart-bar-line/at-chart-bar-line";
 export { AtSelectedTimeRangeExtended, AtTimePresets } from "./models/at-time-range.models";
@@ -92,7 +94,7 @@ export { AtControlGroupDirection } from "./components/at-control-group/at-contro
 export { AtIColumnDetails, AtIDateRangeStrings, AtIFilter, AtIFilterGroup, AtIPaginationParams, AtIPromptMessage, AtISearchTableParams, AtISelection, AtPromptResponseAnimation, AtPromptResponseScore, AtPromptUserRole, AtSelectionMode } from "./types";
 export { AtICustomGridStackItem } from "./components/at-dashboard/at-dashboard";
 export { AtDialogCloseReason } from "./components/at-dialog/at-dialog";
-export { AtHeaderSizes } from "./components/at-header/at-header";
+export { AtHeaderSizes as AtHeaderSizes1 } from "./components/at-header/at-header";
 export { AtHealthDotSize, AtHealthDotStatus } from "./components/at-health-dot/at-health-dot";
 export { AtInputType } from "./components/at-input/at-input";
 export { InputPosition } from "./components/at-input-range/at-input-range";
@@ -488,6 +490,11 @@ export namespace Components {
           * Subtitle of the card, placed below title.
          */
         "subtitle"?: string;
+        /**
+          * Size of the title. Sets both its heading level and its text size.
+          * @default 'h4'
+         */
+        "title_size"?: AtHeaderSizes;
     }
     /**
      * ### ```interface PointStyles```
@@ -1275,7 +1282,7 @@ export namespace Components {
           * Size of the header.
           * @default 'h1'
          */
-        "size": AtHeaderSizes;
+        "size": AtHeaderSizes1;
         /**
           * Subtitle of the header.
          */
@@ -6614,6 +6621,11 @@ declare namespace LocalJSX {
           * Subtitle of the card, placed below title.
          */
         "subtitle"?: string;
+        /**
+          * Size of the title. Sets both its heading level and its text size.
+          * @default 'h4'
+         */
+        "title_size"?: AtHeaderSizes;
     }
     /**
      * ### ```interface PointStyles```
@@ -7385,7 +7397,7 @@ declare namespace LocalJSX {
           * Size of the header.
           * @default 'h1'
          */
-        "size"?: AtHeaderSizes;
+        "size"?: AtHeaderSizes1;
         /**
           * Subtitle of the header.
          */
@@ -10286,6 +10298,7 @@ declare namespace LocalJSX {
         "sticky_footer": boolean;
         "padding": boolean;
         "shadow": 'none' | 'sm' | 'lg';
+        "title_size": AtHeaderSizes;
     }
     interface AtChartBarLineAttributes {
         "type": 'bar' | 'line';
