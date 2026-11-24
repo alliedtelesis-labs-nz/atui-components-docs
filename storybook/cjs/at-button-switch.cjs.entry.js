@@ -3,7 +3,7 @@
 var index = require('./index-5-knLVXx.js');
 var classlist = require('./classlist-BPb95vgj.js');
 var slottedLabelId = require('./slotted-label-id-D9J5SVli.js');
-var translation = require('./translation-Cr-s1VAe.js');
+var translation = require('./translation-Cv_xtyw_.js');
 
 const variantsConfig = {
     variants: {

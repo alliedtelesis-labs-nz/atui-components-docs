@@ -26,6 +26,7 @@ export interface AtStepperStep {
  */
 export declare class AtStepper {
     el: HTMLElement;
+    private translations;
     /**
      * Steps described declaratively. When set, `at-stepper-item` children are not
      * needed — the stepper renders the steps itself.
@@ -50,9 +51,10 @@ export declare class AtStepper {
      */
     linear: boolean;
     /**
-     * Accessible label for the stepper, announced before the step list.
+     * Accessible label for the stepper, announced before the step list. Defaults to the
+     * translated "Progress".
      */
-    stepper_label: string;
+    stepper_label?: string;
     /**
      * Emitted when a step is selected, with the zero-based index of that step.
      * The stepper does not move itself — the host owns `current`, so a flow can
@@ -71,17 +73,18 @@ export declare class AtStepper {
      */
     next_disabled: boolean;
     /**
-     * Label of the back control.
+     * Label of the back control. Defaults to the translated "Back".
      */
-    prev_label: string;
+    prev_label?: string;
     /**
-     * Label of the forward control, on every step but the last.
+     * Label of the forward control, on every step but the last. Defaults to the translated
+     * "Next".
      */
-    next_label: string;
+    next_label?: string;
     /**
-     * Label of the forward control on the last step.
+     * Label of the forward control on the last step. Defaults to the translated "Submit".
      */
-    submit_label: string;
+    submit_label?: string;
     /**
      * Emitted when the back control is pressed.
      */
@@ -104,6 +107,7 @@ export declare class AtStepper {
      * itself.
      */
     getIsComplete(): Promise<boolean>;
+    componentWillLoad(): Promise<void>;
     componentDidLoad(): void;
     componentDidUpdate(): void;
     handleStateChange(): void;
@@ -135,6 +139,7 @@ export declare class AtStepper {
      * slotted children and array-rendered steps with the same code path.
      */
     private itemFromEvent;
+    private isStepButton;
     handleItemClick(event: MouseEvent): void;
     handleItemKeydown(event: KeyboardEvent): void;
     private renderNavigation;

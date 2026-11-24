@@ -3351,39 +3351,35 @@ export namespace Components {
          */
         "next_disabled": boolean;
         /**
-          * Label of the forward control, on every step but the last.
-          * @default 'Next'
+          * Label of the forward control, on every step but the last. Defaults to the translated "Next".
          */
-        "next_label": string;
+        "next_label"?: string;
         /**
           * Layout of the stepper.
           * @default 'horizontal'
          */
         "orientation": AtStepperOrientation;
         /**
-          * Label of the back control.
-          * @default 'Back'
+          * Label of the back control. Defaults to the translated "Back".
          */
-        "prev_label": string;
+        "prev_label"?: string;
         /**
           * Renders a Back / Next / Submit control row beneath the steps. Off by default — a flow that already has its own footer keeps using it.
           * @default false
          */
         "show_navigation": boolean;
         /**
-          * Accessible label for the stepper, announced before the step list.
-          * @default 'Progress'
+          * Accessible label for the stepper, announced before the step list. Defaults to the translated "Progress".
          */
-        "stepper_label": string;
+        "stepper_label"?: string;
         /**
           * Steps described declaratively. When set, `at-stepper-item` children are not needed — the stepper renders the steps itself.
          */
         "steps"?: AtStepperStep[];
         /**
-          * Label of the forward control on the last step.
-          * @default 'Submit'
+          * Label of the forward control on the last step. Defaults to the translated "Submit".
          */
-        "submit_label": string;
+        "submit_label"?: string;
     }
     /**
      * @category Navigation
@@ -9483,8 +9479,7 @@ declare namespace LocalJSX {
          */
         "next_disabled"?: boolean;
         /**
-          * Label of the forward control, on every step but the last.
-          * @default 'Next'
+          * Label of the forward control, on every step but the last. Defaults to the translated "Next".
          */
         "next_label"?: string;
         /**
@@ -9509,8 +9504,7 @@ declare namespace LocalJSX {
          */
         "orientation"?: AtStepperOrientation;
         /**
-          * Label of the back control.
-          * @default 'Back'
+          * Label of the back control. Defaults to the translated "Back".
          */
         "prev_label"?: string;
         /**
@@ -9519,8 +9513,7 @@ declare namespace LocalJSX {
          */
         "show_navigation"?: boolean;
         /**
-          * Accessible label for the stepper, announced before the step list.
-          * @default 'Progress'
+          * Accessible label for the stepper, announced before the step list. Defaults to the translated "Progress".
          */
         "stepper_label"?: string;
         /**
@@ -9528,8 +9521,7 @@ declare namespace LocalJSX {
          */
         "steps"?: AtStepperStep[];
         /**
-          * Label of the forward control on the last step.
-          * @default 'Submit'
+          * Label of the forward control on the last step. Defaults to the translated "Submit".
          */
         "submit_label"?: string;
     }

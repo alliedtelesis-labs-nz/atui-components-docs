@@ -1,4 +1,5 @@
 import { r as registerInstance, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
+import { f as fetchTranslations } from './translation-BTrmt4Pb.js';
 
 const dotVariants = {
     pending: 'bg-disabled-foreground/40 h-8 w-8',
@@ -38,6 +39,10 @@ const AtStepperItem = class {
         registerInstance(this, hostRef);
     }
     get el() { return getElement(this); }
+    translations;
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
+    }
     /**
      * Label for the step.
      */
@@ -91,13 +96,13 @@ const AtStepperItem = class {
     }
     render() {
         const isVertical = this.orientation === 'vertical';
-        return (h(Host, { key: '7c9455a614556e3fb0e2a94666b19019c980e842', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
+        return (h(Host, { key: '8a377522666f7a718fdf5961d2031089037301d6', role: "listitem", "aria-current": this.state === 'current' ? 'step' : undefined, "data-state": this.state, "data-name": "stepper-item", class: `flex min-w-0 ${isVertical
                 ? 'flex-row items-stretch gap-8'
-                : `flex-col gap-4 ${this.is_last ? '' : 'flex-1'}`} ${this.navigable
-                ? 'focus-visible:ring-active-glow cursor-pointer rounded-sm outline-0 focus-visible:ring'
-                : ''}`, tabindex: this.navigable ? 0 : undefined }, h("span", { key: '8495480ac5c0e0de71d0dad486b2fba344ad6ee4', class: `flex shrink-0 ${isVertical
+                : `flex-col gap-4 ${this.is_last ? '' : 'flex-1'}`} ${this.navigable ? 'cursor-pointer' : ''}` }, h("span", { key: '4f75afc42ec8cd979adebb171cd649072efe9d36', class: `flex shrink-0 ${isVertical
                 ? 'w-24 flex-col items-center'
-                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: '1a0c215c0a0b1dc7d2ebb70863e932fe534d9dba', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: '6251418a10a4307bf8768ef5762025651b497ea1', class: `truncate text-sm font-medium ${labelVariants[this.state]}`, "data-name": "stepper-label" }, this.label, this.optional && (h("span", { key: '058b70d53f4b7ef79558774a0a8ebae04d7334f5', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, "Optional")), this.state === 'skipped' && (h("at-badge", { key: 'fc4743ee0e61de79b1e29e73ce73682a86e0f3d4', class: "ml-4", label: "Skipped", size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: '830775e3d49265ab23d1b45fddae0a689f42b70c', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: 'bacf8e2e1d438af26f2e701247fdfce68d3b7098' }))));
+                : 'items-center'}`, "data-name": "stepper-rail" }, this.renderMarker(), this.renderConnector()), h("span", { key: '8410bebc28efc6352b92351f1aa8fff53afe9f51', class: `flex min-w-0 flex-col gap-2 ${isVertical ? (this.is_last ? '' : 'pb-16') : 'pr-16'}` }, h("span", { key: '23b030aa1d38a476fdc5d739944567e44de79613', class: `truncate text-sm font-medium ${labelVariants[this.state]} ${this.navigable
+                ? 'focus-visible:ring-active-glow rounded-sm outline-0 focus-visible:ring'
+                : ''}`, "data-name": "stepper-label", role: this.navigable ? 'button' : undefined, tabindex: this.navigable ? 0 : undefined }, this.label, this.optional && (h("span", { key: 'fed04d829a3a1adc15f39533c2730f580ae4b5c5', class: "text-secondary ml-4 text-xs font-normal", "data-name": "stepper-optional" }, this.translations.ATUI.STEPPER.OPTIONAL)), this.state === 'skipped' && (h("at-badge", { key: '3b64a4f5d204699cf60de0c4de25aef74f566327', class: "ml-4", label: this.translations.ATUI.STEPPER.SKIPPED, size: "sm", "data-name": "stepper-skipped" }))), this.description && (h("span", { key: '47eb700e6fc57dccac2302c6c3a8e7c0073127fd', class: "text-secondary truncate text-xs", "data-name": "stepper-description" }, this.description)), h("slot", { key: 'c02bebab3cfb24dd5a8808d2a2683dc311ca3b4d' }))));
     }
 };
 

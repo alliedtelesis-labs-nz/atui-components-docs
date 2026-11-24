@@ -24,6 +24,14 @@
         "MORE_MATCHES_REFINE_SEARCH": "more matches. Refine your search.",
         "NO_OPTIONS_AVAILABLE": "No Options Available",
         "NO_PERMISSION_EDIT_SETTING": "You must be an administrator to change the settings",
+        "STEPPER": {
+            "PROGRESS": "Progress",
+            "OPTIONAL": "Optional",
+            "SKIPPED": "Skipped",
+            "BACK": "Back",
+            "NEXT": "Next",
+            "SUBMIT": "Submit"
+        },
         "DASHBOARD": {
             "WIDGET_ACTIONS": "Widget actions"
         },

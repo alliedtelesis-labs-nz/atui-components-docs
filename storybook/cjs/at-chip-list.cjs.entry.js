@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-5-knLVXx.js');
-var translation = require('./translation-Cr-s1VAe.js');
+var translation = require('./translation-Cv_xtyw_.js');
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 

@@ -65,7 +65,6 @@ const AtRadioGroup = class {
     watchValue(newValue) {
         this.updateSlottedRadiosState(newValue);
     }
-    radioEls = [];
     slotObserver;
     radioGroupId = `radiogroup-${Math.random().toString(36).substring(2, 11)}`;
     labelId = `${this.radioGroupId}-label`;
@@ -80,24 +79,37 @@ const AtRadioGroup = class {
         }
     }
     focusAndClickRelativeRadio(relativePosition) {
-        const indexOfActiveRadio = this.radioEls.indexOf(this.el.ownerDocument.activeElement);
-        const nextRadioEl = this.radioEls[(indexOfActiveRadio + relativePosition + this.radioEls.length) %
-            this.radioEls.length];
-        nextRadioEl.click();
-        nextRadioEl.focus();
+        const radioEls = Array.from(this.el.querySelectorAll('at-radio'));
+        const activeElement = this.el.ownerDocument.activeElement;
+        const indexOfActiveRadio = radioEls.findIndex((radio) => radio.contains(activeElement));
+        if (indexOfActiveRadio === -1)
+            return false;
+        for (let offset = 1; offset < radioEls.length; offset++) {
+            const candidate = radioEls[(indexOfActiveRadio +
+                relativePosition * offset +
+                radioEls.length) %
+                radioEls.length];
+            if (!candidate.disabled && !candidate.readonly) {
+                candidate.click();
+                candidate.focus();
+                break;
+            }
+        }
+        return true;
     }
     handleKeyDown(event) {
-        switch (event.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-                event.preventDefault();
-                this.focusAndClickRelativeRadio(1);
-                break;
-            case 'ArrowUp':
-            case 'ArrowLeft':
-                event.preventDefault();
-                this.focusAndClickRelativeRadio(-1);
-                break;
+        const relativePositionByKey = {
+            ArrowRight: 1,
+            ArrowDown: 1,
+            ArrowUp: -1,
+            ArrowLeft: -1,
+        };
+        const relativePosition = relativePositionByKey[event.key];
+        if (!relativePosition)
+            return;
+        const focusWasOnRadio = this.focusAndClickRelativeRadio(relativePosition);
+        if (focusWasOnRadio) {
+            event.preventDefault();
         }
     }
     get getRadios() {
@@ -107,7 +119,7 @@ const AtRadioGroup = class {
                     if (!this.disabled && !this.readonly) {
                         this.handleChange(option.value);
                     }
-                }, group: this.label || this.radioGroupId, ref: (el) => this.radioEls.push(el) })));
+                }, group: this.label || this.radioGroupId })));
         }
     }
     /**
@@ -119,7 +131,7 @@ const AtRadioGroup = class {
      * and drops anything this group set on it.
      */
     getSlottedRadios() {
-        return Array.from(this.el.querySelectorAll('at-radio')).filter((radio) => !radio.closest('li') && !this.radioEls.includes(radio));
+        return Array.from(this.el.querySelectorAll('at-radio')).filter((radio) => !radio.closest('li'));
     }
     componentDidLoad() {
         this.syncSlottedRadios();
@@ -201,8 +213,8 @@ const AtRadioGroup = class {
         const classname = getLayoutClass({
             layout: this.layout,
         });
-        return (h(Host, { key: 'a748d89804b9cb585e72fc1dcd6411d797092b8c', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined, onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '3cd9a2e55bd691cd4e5498f96cfe668ca5ff5533', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: '54fc9c0471ee360bc8d1a71ed90f189a7977a2a0', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '5a37bea7a74407e879c8d6dbdd254d59b26ad5e2', id: this.labelId, label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '00a641792c6ce5cf44d47958802e701ca97932ff', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '7d0eaaf5f89db00fead3259f9193dca406ee372e', class: classname, "data-name": "radio-group-options" }, h("slot", { key: '9456398403a7b8fcf7401a3d06378a8261c5ffb6' }), this.getRadios &&
-            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: 'cc856370801b4e3d6e502d83c5f54b778e507d43', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
+        return (h(Host, { key: '4ad75f600fa11cf2d244741f7c966935e9477b95', role: "radiogroup", "aria-labelledby": this.label ? this.labelId : undefined, onKeyDown: (event) => this.handleKeyDown(event), class: "block w-full" }, h("div", { key: '23d02003f2073e2b35f06311c6d4c6c4c089a0d4', class: "mb-4 flex flex-col empty:hidden" }, h("slot", { key: 'dec63315bdf23311001caa65ca5a4e9b3844f093', name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { key: '3b814cf99351307186b95e4243e2ebd383e6225e', id: this.labelId, label: this.label, required: this.required, info_text: this.info_text })), this.hint_text && (h("span", { key: '03319a7ff0d7550325ba5045cb2cc55e62282481', class: "text-muted inline-block text-xs leading-tight", "data-name": "radio-group-hint" }, this.hint_text))), h("ul", { key: '354db0c55723b29aabf274db23114507b8d6024d', class: classname, "data-name": "radio-group-options" }, h("slot", { key: 'bef5ebdbb7fe648c7c87f66db1c169fe0f420456' }), this.getRadios &&
+            this.getRadios.map((radio) => (h("li", { class: "flex" }, radio)))), this.error_text && this.invalid && (h("span", { key: '6714d75cd7282d28f123c291c5346558a2ddfda9', class: "text-error text-sm", "data-name": "radio-group-error-text" }, this.error_text))));
     }
     static get watchers() { return {
         "value": [{

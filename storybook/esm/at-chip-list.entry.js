@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, f as forceUpdate, h } from './index-CYwPWCYK.js';
-import { f as fetchTranslations, i as interpolate } from './translation-DNQTZ_VC.js';
+import { f as fetchTranslations, i as interpolate } from './translation-BTrmt4Pb.js';
 
 const atChipListCss = () => `at-chip-list at-badge [data-name=badge-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
 

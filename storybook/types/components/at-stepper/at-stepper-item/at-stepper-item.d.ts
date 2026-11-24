@@ -22,6 +22,8 @@ export type AtStepperOrientation = 'horizontal' | 'vertical';
  */
 export declare class AtStepperItem {
     el: HTMLElement;
+    private translations;
+    componentWillLoad(): Promise<void>;
     /**
      * Label for the step.
      */

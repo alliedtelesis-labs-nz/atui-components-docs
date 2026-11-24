@@ -2,7 +2,7 @@
 
 var index = require('./index-5-knLVXx.js');
 var classlist = require('./classlist-BPb95vgj.js');
-var translation = require('./translation-Cr-s1VAe.js');
+var translation = require('./translation-Cv_xtyw_.js');
 var prompt = require('./prompt-DoMXcdvl.js');
 
 /**

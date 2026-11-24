@@ -3,7 +3,7 @@
 var index = require('./index-5-knLVXx.js');
 var atTimeRange_models = require('./at-time-range.models-BPZ2R6EI.js');
 var atTimeDate_util = require('./at-time-date.util-6Fmc04Ie.js');
-var translation = require('./translation-Cr-s1VAe.js');
+var translation = require('./translation-Cv_xtyw_.js');
 var timeRangeLabel_util = require('./time-range-label.util-BR6KvMfz.js');
 var date = require('./date-DDRmOnS1.js');
 

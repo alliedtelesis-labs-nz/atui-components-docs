@@ -24,6 +24,14 @@
         "MORE_MATCHES_REFINE_SEARCH": "件以上の候補があります。検索条件を絞り込んでください。",
         "NO_OPTIONS_AVAILABLE": "選択可能なオプションがありません。",
         "NO_PERMISSION_EDIT_SETTING": "管理者アカウントでのみ設定を変更できます。",
+        "STEPPER": {
+            "PROGRESS": "進捗",
+            "OPTIONAL": "任意",
+            "SKIPPED": "スキップ",
+            "BACK": "戻る",
+            "NEXT": "次へ",
+            "SUBMIT": "送信"
+        },
         "DASHBOARD": {
             "WIDGET_ACTIONS": "ウィジェットの操作"
         },

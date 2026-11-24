@@ -62,7 +62,6 @@ export declare class AtRadioGroup {
     value: string;
     el: HTMLAtRadioGroupElement;
     watchValue(newValue: string): void;
-    private radioEls;
     private slotObserver?;
     private radioGroupId;
     private labelId;
@@ -71,7 +70,7 @@ export declare class AtRadioGroup {
      */
     atuiChange: EventEmitter<string>;
     handleChange(optionId: string): void;
-    focusAndClickRelativeRadio(relativePosition: number): void;
+    focusAndClickRelativeRadio(relativePosition: number): boolean;
     handleKeyDown(event: KeyboardEvent): void;
     get getRadios(): JSX.Element[] | undefined;
     /**

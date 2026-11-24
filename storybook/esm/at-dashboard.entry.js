@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, a as getElement, h } from './index-CYwPWCYK.js';
-import { f as fetchTranslations } from './translation-DNQTZ_VC.js';
+import { f as fetchTranslations } from './translation-BTrmt4Pb.js';
 
 /**
  * utils.ts 12.4.1

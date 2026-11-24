@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-5-knLVXx.js');
-var translation = require('./translation-Cr-s1VAe.js');
+var translation = require('./translation-Cv_xtyw_.js');
 
 /**
  * utils.ts 12.4.1

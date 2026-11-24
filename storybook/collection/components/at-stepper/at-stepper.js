@@ -1,4 +1,5 @@
 import { Host, h, } from "@stencil/core";
+import { fetchTranslations } from "../../utils/translation";
 /**
  * @category Navigation
  * @description A stepper for multi-step and wizard flows. Shows where the user is in a sequence, which steps are done, and which failed. Use when a task is split across several screens that must be completed in order; prefer `at-tabs` when the sections are independent and can be visited in any order, and `at-timeline` when the entries are historical and there is no current position.
@@ -12,6 +13,7 @@ import { Host, h, } from "@stencil/core";
  */
 export class AtStepper {
     el;
+    translations;
     /**
      * Steps described declaratively. When set, `at-stepper-item` children are not
      * needed — the stepper renders the steps itself.
@@ -36,9 +38,10 @@ export class AtStepper {
      */
     linear = true;
     /**
-     * Accessible label for the stepper, announced before the step list.
+     * Accessible label for the stepper, announced before the step list. Defaults to the
+     * translated "Progress".
      */
-    stepper_label = 'Progress';
+    stepper_label;
     /**
      * Emitted when a step is selected, with the zero-based index of that step.
      * The stepper does not move itself — the host owns `current`, so a flow can
@@ -57,17 +60,18 @@ export class AtStepper {
      */
     next_disabled = false;
     /**
-     * Label of the back control.
+     * Label of the back control. Defaults to the translated "Back".
      */
-    prev_label = 'Back';
+    prev_label;
     /**
-     * Label of the forward control, on every step but the last.
+     * Label of the forward control, on every step but the last. Defaults to the translated
+     * "Next".
      */
-    next_label = 'Next';
+    next_label;
     /**
-     * Label of the forward control on the last step.
+     * Label of the forward control on the last step. Defaults to the translated "Submit".
      */
-    submit_label = 'Submit';
+    submit_label;
     /**
      * Emitted when the back control is pressed.
      */
@@ -96,6 +100,9 @@ export class AtStepper {
             state === 'success' ||
             state === 'skipped' ||
             this.stepAt(index)?.optional === true);
+    }
+    async componentWillLoad() {
+        this.translations = await fetchTranslations(this.el);
     }
     componentDidLoad() {
         this.syncChildren();
@@ -187,6 +194,10 @@ export class AtStepper {
             ? item
             : null;
     }
+    isStepButton(el, item) {
+        return (el.matches('[data-name="stepper-label"]') &&
+            el.closest('at-stepper-item') === item);
+    }
     handleItemClick(event) {
         const item = this.itemFromEvent(event);
         if (!item) {
@@ -195,7 +206,7 @@ export class AtStepper {
         // A control slotted into a step (a retry button, a link) owns its own
         // click — activating it must not also change the step.
         const interactive = event.target.closest('at-button, button, a, input, select, textarea, [role="button"]');
-        if (interactive && interactive !== item) {
+        if (interactive && !this.isStepButton(interactive, item)) {
             return;
         }
         this.handleSelect(item.index, item.state);
@@ -207,7 +218,7 @@ export class AtStepper {
         const item = this.itemFromEvent(event);
         // Only when the step itself is focused — keystrokes inside slotted
         // content (an input mid-form) must keep their meaning.
-        if (!item || event.target !== item) {
+        if (!item || !this.isStepButton(event.target, item)) {
             return;
         }
         event.preventDefault();
@@ -215,14 +226,19 @@ export class AtStepper {
     }
     renderNavigation() {
         const isLastStep = this.current >= this.count - 1;
-        return (h("div", { class: "flex items-center justify-end gap-8", "data-name": "stepper-navigation" }, h("at-button", { type: "secondaryOutline", label: this.prev_label, disabled: this.current <= 0, "data-name": "stepper-prev", onAtuiClick: () => this.atuiPrev.emit(this.current) }), h("at-button", { type: "primary", label: isLastStep ? this.submit_label : this.next_label, disabled: this.next_disabled, "data-name": "stepper-next", onAtuiClick: () => isLastStep
+        return (h("div", { class: "flex items-center justify-end gap-8", "data-name": "stepper-navigation" }, h("at-button", { type: "secondaryOutline", label: this.prev_label ?? this.translations.ATUI.STEPPER.BACK, disabled: this.current <= 0, "data-name": "stepper-prev", onAtuiClick: () => this.atuiPrev.emit(this.current) }), h("at-button", { type: "primary", label: isLastStep
+                ? (this.submit_label ??
+                    this.translations.ATUI.STEPPER.SUBMIT)
+                : (this.next_label ??
+                    this.translations.ATUI.STEPPER.NEXT), disabled: this.next_disabled, "data-name": "stepper-next", onAtuiClick: () => isLastStep
                 ? this.atuiSubmit.emit()
                 : this.atuiNext.emit(this.current) })));
     }
     render() {
         const states = this.resolvedStates();
         const isVertical = this.orientation === 'vertical';
-        return (h(Host, { key: 'ca3aec30b6b78badc97d1708bb147811897216e9', class: "flex flex-col gap-16" }, h("div", { key: '3a42f2d005eccc95201415ddb2bfc947b83e29cc', role: "list", "aria-label": this.stepper_label, "data-name": "stepper", class: `flex ${isVertical ? 'flex-col' : 'flex-row items-start'}` }, this.steps ? (this.steps.map((step, index) => (h("at-stepper-item", { label: step.label, description: step.description, optional: step.optional, state: states[index], index: index, is_last: index === this.count - 1, orientation: this.orientation, navigable: this.isNavigable(states[index]) })))) : (h("slot", null))), this.show_navigation && this.renderNavigation()));
+        return (h(Host, { key: 'b821b95e605b6ae56b9a71ff526b75ec4c921124', class: "flex flex-col gap-16" }, h("div", { key: '61eae5c6aed5af4fb6f97281dea73fe907530ae8', role: "list", "aria-label": this.stepper_label ??
+                this.translations.ATUI.STEPPER.PROGRESS, "data-name": "stepper", class: `flex ${isVertical ? 'flex-col' : 'flex-row items-start'}` }, this.steps ? (this.steps.map((step, index) => (h("at-stepper-item", { label: step.label, description: step.description, optional: step.optional, state: states[index], index: index, is_last: index === this.count - 1, orientation: this.orientation, navigable: this.isNavigable(states[index]) })))) : (h("slot", null))), this.show_navigation && this.renderNavigation()));
     }
     static get is() { return "at-stepper"; }
     static get properties() {
@@ -326,16 +342,15 @@ export class AtStepper {
                     "references": {}
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Accessible label for the stepper, announced before the step list."
+                    "text": "Accessible label for the stepper, announced before the step list. Defaults to the\ntranslated \"Progress\"."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "stepper_label",
-                "defaultValue": "'Progress'"
+                "attribute": "stepper_label"
             },
             "show_navigation": {
                 "type": "boolean",
@@ -386,16 +401,15 @@ export class AtStepper {
                     "references": {}
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Label of the back control."
+                    "text": "Label of the back control. Defaults to the translated \"Back\"."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "prev_label",
-                "defaultValue": "'Back'"
+                "attribute": "prev_label"
             },
             "next_label": {
                 "type": "string",
@@ -406,16 +420,15 @@ export class AtStepper {
                     "references": {}
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Label of the forward control, on every step but the last."
+                    "text": "Label of the forward control, on every step but the last. Defaults to the translated\n\"Next\"."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "next_label",
-                "defaultValue": "'Next'"
+                "attribute": "next_label"
             },
             "submit_label": {
                 "type": "string",
@@ -426,17 +439,21 @@ export class AtStepper {
                     "references": {}
                 },
                 "required": false,
-                "optional": false,
+                "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Label of the forward control on the last step."
+                    "text": "Label of the forward control on the last step. Defaults to the translated \"Submit\"."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "submit_label",
-                "defaultValue": "'Submit'"
+                "attribute": "submit_label"
             }
+        };
+    }
+    static get states() {
+        return {
+            "translations": {}
         };
     }
     static get events() {
