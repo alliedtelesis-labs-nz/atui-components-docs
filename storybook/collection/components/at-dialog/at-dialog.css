@@ -27,7 +27,7 @@
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--token-surface-backdrop, rgba(0, 0, 0, 0.1));
   }
 }
 @keyframes animInUp {
@@ -53,7 +53,7 @@
 dialog.backdrop::backdrop {
   margin: 0;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--token-surface-backdrop, rgba(0, 0, 0, 0.1));
   animation: fadeInBackdrop 0.3s ease forwards;
   transition: opacity var(--token-transition-time) ease-in-out allow-discrete;
 }

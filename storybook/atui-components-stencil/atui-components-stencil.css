@@ -798,6 +798,7 @@
         --token-surface-inv
     );
   /* Tooltips, modal backdrop */
+  --token-surface-backdrop: rgba(0, 0, 0, 0.1);
   --token-focus-indicator: var(--token-surface-inv);
   /* Button  */
   /*
@@ -1258,6 +1259,7 @@
   --token-surface-foreground: var(--token-color-base-neutral-800);
   --token-surface-inv: var(--token-color-base-slate-50);
   --token-surface-overlay: var(--token-color-base-neutral-300);
+  --token-surface-backdrop: rgba(0, 0, 0, 0.2);
   --token-focus-indicator: var(--token-color-surface-inv);
   /*
     Status Color

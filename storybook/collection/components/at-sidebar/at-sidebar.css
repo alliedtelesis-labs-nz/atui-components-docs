@@ -27,7 +27,7 @@
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--token-surface-backdrop, rgba(0, 0, 0, 0.1));
   }
 }
 @keyframes animInUp {
