@@ -1,0 +1,1 @@
+import{E as r}from"./chunk-IDRGW764.js";var e=class n{debug(...o){console.debug(...o)}info(...o){console.info(...o)}warn(...o){console.warn(...o)}error(...o){console.error(...o)}static \u0275fac=function(i){return new(i||n)};static \u0275prov=r({token:n,factory:n.\u0275fac,providedIn:"root"})};export{e as a};
