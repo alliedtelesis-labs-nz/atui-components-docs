@@ -798,7 +798,11 @@ import{$ as Mc,$a as me,A as Bb,Aa as ae,Ab as Yb,B as ja,Ba as qa,Bb as eM,Ca a
         --token-surface-inv
     );
   /* Tooltips, modal backdrop */
-  --token-surface-backdrop: rgba(0, 0, 0, 0.1);
+  --token-surface-backdrop: color-mix(
+        in srgb,
+        var(--token-surface-1) 80%,
+        transparent
+    );
   --token-focus-indicator: var(--token-surface-inv);
   /* Button  */
   /*
