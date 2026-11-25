@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-5-knLVXx.js');
+var index = require('./index-GH7gxrjy.js');
 var classlist = require('./classlist-BPb95vgj.js');
 
 const validTitleSizes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];

@@ -1,1 +1,1 @@
-import{A as o,d as s}from"./p-CzSeN7vo.js";const p=o,r=s;export{p as AtAccordionItem,r as defineCustomElement}
+import{A as o,d as s}from"./p-CYm5aZ51.js";const a=o,m=s;export{a as AtAccordionItem,m as defineCustomElement}

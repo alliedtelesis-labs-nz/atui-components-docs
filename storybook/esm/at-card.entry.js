@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CYwPWCYK.js';
+import { r as registerInstance, h, H as Host } from './index-DTCxn2cp.js';
 import { c as classlist } from './classlist-COG8_R0C.js';
 
 const validTitleSizes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];

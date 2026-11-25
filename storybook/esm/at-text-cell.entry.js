@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DTCxn2cp.js';
 
 const LINK_CLASSES = 'text-active cursor-pointer font-medium hover:underline';
 const EMPTY_TEXT = '-';

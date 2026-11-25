@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-5-knLVXx.js');
+var index = require('./index-GH7gxrjy.js');
 
 const barColors = {
     good: 'var(--chart-alert-1, #4caf50)',

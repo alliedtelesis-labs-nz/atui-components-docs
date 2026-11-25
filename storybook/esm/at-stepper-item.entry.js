@@ -1,4 +1,4 @@
-import { r as registerInstance, a as getElement, h, H as Host } from './index-CYwPWCYK.js';
+import { r as registerInstance, a as getElement, h, H as Host } from './index-DTCxn2cp.js';
 import { f as fetchTranslations } from './translation-BTrmt4Pb.js';
 
 const dotVariants = {
