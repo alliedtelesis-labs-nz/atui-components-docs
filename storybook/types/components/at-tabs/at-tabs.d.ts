@@ -60,7 +60,6 @@ export declare class AtTabs {
     private observeTabSizes;
     componentDidRender(): void;
     initializeTabs(): void;
-    private syncRovingTabindex;
     private handleTabKeyDown;
     addEventListenersToTabs(): void;
     getTabsElements(): HTMLAtTabTriggerElement[];

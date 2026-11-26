@@ -91,16 +91,6 @@ export class AtTabs {
                 !!this.active_tab && tabEl.tab_id === this.active_tab;
             tabEl.fill = this.fill;
         });
-        this.syncRovingTabindex();
-    }
-    syncRovingTabindex() {
-        const hasActiveTab = this.tabEls.some((tabEl) => tabEl.tab_id === this.active_tab);
-        this.tabEls.forEach((tabEl, index) => {
-            const isTabStop = hasActiveTab
-                ? tabEl.tab_id === this.active_tab
-                : index === 0;
-            tabEl.setAttribute('tabindex', isTabStop ? '0' : '-1');
-        });
     }
     handleTabKeyDown(event, tabEl) {
         const index = this.tabEls.indexOf(tabEl);
@@ -177,7 +167,6 @@ export class AtTabs {
         this.tabEls.forEach((tab) => {
             tab.is_active = tab.tab_id === newValue;
         });
-        this.syncRovingTabindex();
     }
     tabsetId = `tabset-${Math.random().toString(36).substring(2, 11)}`;
     get indicatorRef() {
@@ -232,7 +221,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: 'd05bf66b83e0c702c28ccc7a2f0e84c984bd63e6' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'aaf513380467cc54ad8434e8f1c71a0c1c3410b9' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {
