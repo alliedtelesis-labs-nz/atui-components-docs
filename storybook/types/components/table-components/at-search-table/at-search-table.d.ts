@@ -402,6 +402,8 @@ export declare class AtSearchTable {
     /** Rows the grid holds, which in server-side mode is exactly the current page. */
     private loadedRows;
     private selectableRowsOnPage;
+    /** Client-side the host's `total` predates the table's own search and filters. */
+    private get matchingTotal();
     get selectionCount(): number;
     /**
      * Only once the whole page is selected, which is the point at which the user has
