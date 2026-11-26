@@ -189,7 +189,7 @@ const AtResizableGroupComponent = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '90c32f40705d5040f6134546b9afab4277ec5154', class: `direction-${this.direction}`, "data-name": "resizable-group" }, index.h("slot", { key: 'e914eb283861034710d4591e2c5c7e6967cfab54' })));
+        return (index.h(index.Host, { key: '25b11ef02d4bc47bab344d544b61a917631c2048', class: `direction-${this.direction}`, "data-name": "resizable-group" }, index.h("slot", { key: '6628f7c56e81e77827e0379130a0619a426c684e' })));
     }
 };
 AtResizableGroupComponent.style = atResizableGroupCss();

@@ -236,7 +236,7 @@ const AtStepper = class {
     render() {
         const states = this.resolvedStates();
         const isVertical = this.orientation === 'vertical';
-        return (index.h(index.Host, { key: 'b821b95e605b6ae56b9a71ff526b75ec4c921124', class: "flex flex-col gap-16" }, index.h("div", { key: '61eae5c6aed5af4fb6f97281dea73fe907530ae8', role: "list", "aria-label": this.stepper_label ??
+        return (index.h(index.Host, { key: '4b3985a62c5d991e3c139f9926d42609aa990cf0', class: "flex flex-col gap-16" }, index.h("div", { key: 'cffca19730043e630fa0c0109952bb5c46463985', role: "list", "aria-label": this.stepper_label ??
                 this.translations.ATUI.STEPPER.PROGRESS, "data-name": "stepper", class: `flex ${isVertical ? 'flex-col' : 'flex-row items-start'}` }, this.steps ? (this.steps.map((step, index$1) => (index.h("at-stepper-item", { label: step.label, description: step.description, optional: step.optional, state: states[index$1], index: index$1, is_last: index$1 === this.count - 1, orientation: this.orientation, navigable: this.isNavigable(states[index$1]) })))) : (index.h("slot", null))), this.show_navigation && this.renderNavigation()));
     }
     static get watchers() { return {

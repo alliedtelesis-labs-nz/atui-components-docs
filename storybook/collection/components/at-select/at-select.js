@@ -141,6 +141,9 @@ export class AtSelectComponent {
     optionEls = [];
     searchInputEl;
     slottedOptionLabels = new Map();
+    listenedOptionEls = new WeakSet();
+    optionObserver;
+    slottedOptionCount = 0;
     searchDebounceHandle;
     watchValue(newValue) {
         this.selectedLabel = this.findLabelByValue(newValue);
@@ -180,6 +183,7 @@ export class AtSelectComponent {
     }
     componentDidLoad() {
         this.setupOptionElements();
+        this.observeSlottedOptions();
         if (this.options && this.options.length > 0) {
             this.filteredOptions = this.options;
         }
@@ -189,8 +193,33 @@ export class AtSelectComponent {
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
     }
+    connectedCallback() {
+        this.optionObserver?.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
+    disconnectedCallback() {
+        this.optionObserver?.disconnect();
+    }
+    observeSlottedOptions() {
+        this.optionObserver = new MutationObserver((records) => {
+            const optionsChanged = records.some((record) => Array.from(record.addedNodes)
+                .concat(Array.from(record.removedNodes))
+                .some((node) => node instanceof HTMLElement &&
+                (node.matches('at-select-option') ||
+                    !!node.querySelector('at-select-option'))));
+            if (optionsChanged)
+                this.setupOptionElements();
+        });
+        this.optionObserver.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
     setupOptionElements() {
         this.slottedOptionLabels.clear();
+        this.optionEls = [];
         const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="select-menu-option"]):not([data-name="select-custom-option"])');
         slottedOptions.forEach((option) => {
             const optionEl = option;
@@ -199,9 +228,14 @@ export class AtSelectComponent {
                 this.slottedOptionLabels.set(optionEl.value, label);
             }
             optionEl.is_active = this.value === optionEl.value;
-            this.addListenerToOptionElements(optionEl);
+            if (!this.listenedOptionEls.has(optionEl)) {
+                this.listenedOptionEls.add(optionEl);
+                this.addListenerToOptionElements(optionEl);
+            }
             this.optionEls.push(optionEl);
         });
+        this.slottedOptionCount = this.optionEls.length;
+        this.selectedLabel = this.findLabelByValue(this.value);
     }
     addListenerToOptionElements(optionEl) {
         optionEl.addEventListener('atuiClick', (event) => {
@@ -465,16 +499,16 @@ export class AtSelectComponent {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (h(Host, { key: '7f91ffd064c85ea97201463265ba5e861f26bab7', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '811d573891aa842ee42c70950a6126eae029a3c6', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '26b0f63a7f914562fb14d2e77139a527a0bd5759', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'ffe3acfa7dd73c89bc8e25be2d061d5a5258ae8b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '83023ea341754dcbbb4c993bb4edd07c381ed8dc' }, this.error_text && this.invalid && (h("span", { key: '1b521cdfbcf71b1dbdde9588d8d75fd5bcdafc38', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '8970bd5427cfad91c25b5b38cfae95af31b28288' }, this.error_text && this.invalid && (h("span", { key: '19e572053ac2c32535228e3bf28ff2881ebc1bdb', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -933,7 +967,8 @@ export class AtSelectComponent {
             "hasMatchingElOptions": {},
             "parentWidth": {},
             "filteredOptions": {},
-            "selectedLabel": {}
+            "selectedLabel": {},
+            "slottedOptionCount": {}
         };
     }
     static get events() {

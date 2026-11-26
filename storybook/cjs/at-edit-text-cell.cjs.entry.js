@@ -25,7 +25,7 @@ const AtEditTextCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '0c36d1c28844ebfe76a0feb06ad108fbcf0d86ea', class: "flex h-full items-center leading-[100%]" }, index.h("at-input", { key: '0bf03d41859d7f43fe4cedce6d2483fa36ef6f4b', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
+        return (index.h(index.Host, { key: '90dce83156dbbd4dc6368ffe85817bee9e009c16', class: "flex h-full items-center leading-[100%]" }, index.h("at-input", { key: '67d1d123b0883498867ab913c08d75949ba9ec5b', readonly: !this.params.writePermission, value: this.params.value, onAtuiChange: (event) => {
                 // Changed to onAtuiChange
                 this.updateCell(event.detail);
             }, onMouseDown: (event) => event.stopPropagation() })));

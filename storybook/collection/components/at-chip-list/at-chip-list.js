@@ -290,18 +290,18 @@ export class AtChipList {
     }
     render() {
         const overflow = this.overflowChips;
-        return (h("div", { key: '9337942ca1bd1152cc399bf973d5d661aceaef47', class: `flex h-full items-center gap-4 ${this.show_overflow_counter
+        return (h("div", { key: '04f0cecb5132b221f0dd5331959381c70967bcda', class: `flex h-full items-center gap-4 ${this.show_overflow_counter
                 ? 'flex-nowrap overflow-hidden'
-                : 'flex-wrap'}`, ref: (el) => (this.listEl = el) }, this.chips && this.getChips, overflow.length > 0 && (h("at-tooltip", { key: '343aed7025675c6f4e7ea8555c0ec041d2aba0c4',
+                : 'flex-wrap'}`, ref: (el) => (this.listEl = el) }, this.chips && this.getChips, overflow.length > 0 && (h("at-tooltip", { key: '514c0728935b9a03a871f2552f6e935954db1b92',
             // Never shrinks: the counter is the only thing telling
             // the user that chips are missing.
-            class: "shrink-0", "data-name": "chip-overflow", position: "top" }, h("at-badge", { key: 'f0513562ba609e4ba9bd8d400d9335c4f04451cf', slot: "tooltip-trigger", class: "flex items-center text-center", rounded: true, "data-name": "chip-overflow-counter", type: this.disabled ? 'disabled' : 'default', size: this.size, label: `+${overflow.length}` }), overflow.join(', '))), !this.disabled &&
+            class: "shrink-0", "data-name": "chip-overflow", position: "top" }, h("at-badge", { key: '3d3b25534092c394353dd4f9854693b195d1f033', slot: "tooltip-trigger", class: "flex items-center text-center", rounded: true, "data-name": "chip-overflow-counter", type: this.disabled ? 'disabled' : 'default', size: this.size, label: `+${overflow.length}` }), h("ul", { key: '55924efc9fa031ee1f68f97e4a7cf13118ba1506', class: "flex flex-col gap-2 text-left", "data-name": "chip-overflow-list" }, overflow.map((chip) => (h("li", null, chip)))))), !this.disabled &&
             !this.readonly &&
             this.chips &&
             this.chips.length > 1 &&
-            this.show_clear_all && (h("at-button", { key: '96e44fd0a1e2b5cfebf49d058227025e2721a2c5', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": this.translations.ATUI.CHIP_LIST.CLEAR_ALL, onAtuiClick: () => {
+            this.show_clear_all && (h("at-button", { key: '49a2a85fc01a688d935e40d45a71f7330013be16', size: "sm", type: "secondaryText", "data-name": "clear-all", "aria-label": this.translations.ATUI.CHIP_LIST.CLEAR_ALL, onAtuiClick: () => {
                 this.removeChipHandler(this.chips);
-            } }, h("at-icon", { key: 'd06ee2faf9594a4e7093832e91ed98d35eeef87c', slot: "icon", name: "backspace" }))), h("slot", { key: 'cdeb7180ebec42b48eadbb94ba97854d6f5c83da' })));
+            } }, h("at-icon", { key: '23347379fe8894e3d6d533e8564df95516dff8a6', slot: "icon", name: "backspace" }))), h("slot", { key: '71396430a914038dca9d9bb7f9be2920a2e601a0' })));
     }
     static get is() { return "at-chip-list"; }
     static get originalStyleUrls() {

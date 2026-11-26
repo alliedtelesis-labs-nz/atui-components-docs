@@ -53,7 +53,7 @@ const AtSidebarInsetComponent = class {
         this.provider?.removeEventListener('atuiSidebarBackdropChange', this.handleBackdropChange);
     }
     render() {
-        return (index.h(index.Host, { key: '991bb68f586f30e840f052f5104a251bf38baec3', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, index.h("slot", { key: '9c1f425e933377eaa7fc35af1c3aae15050ba1c6' })));
+        return (index.h(index.Host, { key: '6c127e286fa9831f84d7c5ff9a0f630523017a3a', "data-name": "page-content", "aria-hidden": this.isInert ? 'true' : 'false', inert: this.isInert }, index.h("slot", { key: '911889a433c5e4c4d9b3018f564d8a05e05b01cd' })));
     }
 };
 AtSidebarInsetComponent.style = atSidebarInsetCss();

@@ -23,9 +23,9 @@ const AtFormLabelComponent = class {
      */
     for;
     render() {
-        return (index.h("div", { key: '62cc4f6dc5f0a5855dff50292f6be59a4014f5d3', class: "flex items-center gap-8", "data-name": "form-label" }, [
-            (this.label || this.required) && (index.h("label", { key: '4314c53c512fb37a92141d5a0df4c8ee1a94968b', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '81a7d8ad13f668225d9ee41111dc97ef61dd4762', class: "text-error" }, "*"))),
-            this.info_text && (index.h("at-tooltip", { key: '51c76065788cff732bf6a6ef3532ef308d692a46', position: "right" }, index.h("at-icon", { key: 'aa8a611945fb14de0c0f5884e9828e683f9e3344', slot: "tooltip-trigger", class: "fill-muted focus-visible:ring-active-glow inline-flex cursor-pointer rounded-full outline-none focus-visible:ring", name: "info", size: "1rem", tabindex: "0", role: "img", "aria-label": this.info_text, "data-name": "form-label-info" }), index.h("span", { key: '6157458f8a700fa4bb6296b38aba3c45596de896' }, this.info_text))),
+        return (index.h("div", { key: '35b1229d9d95fb560551ac664d45fe91bdaf92d3', class: "flex items-center gap-8", "data-name": "form-label" }, [
+            (this.label || this.required) && (index.h("label", { key: '391a3d5a7d45260cf3cf961c31e600c04474449b', htmlFor: this.for ?? undefined, class: "flex gap-4" }, this.label, this.required && index.h("span", { key: '5b2e15ccdb03b4235c13368dfc49cad43009850a', class: "text-error" }, "*"))),
+            this.info_text && (index.h("at-tooltip", { key: '8ab7b78ba434de52245caf8c2741e2b99a195a68', position: "right" }, index.h("at-icon", { key: '9c78490af15c1a0228501dbb835af2d8896bded9', slot: "tooltip-trigger", class: "fill-muted focus-visible:ring-active-glow inline-flex cursor-pointer rounded-full outline-none focus-visible:ring", name: "info", size: "1rem", tabindex: "0", role: "img", "aria-label": this.info_text, "data-name": "form-label-info" }), index.h("span", { key: '1e3c12a9962f906bfd8fcb660916b62da82ea3bf' }, this.info_text))),
         ]));
     }
 };

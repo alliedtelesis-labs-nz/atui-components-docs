@@ -141,6 +141,9 @@ const AtSelectComponent = class {
     optionEls = [];
     searchInputEl;
     slottedOptionLabels = new Map();
+    listenedOptionEls = new WeakSet();
+    optionObserver;
+    slottedOptionCount = 0;
     searchDebounceHandle;
     watchValue(newValue) {
         this.selectedLabel = this.findLabelByValue(newValue);
@@ -180,6 +183,7 @@ const AtSelectComponent = class {
     }
     componentDidLoad() {
         this.setupOptionElements();
+        this.observeSlottedOptions();
         if (this.options && this.options.length > 0) {
             this.filteredOptions = this.options;
         }
@@ -189,8 +193,33 @@ const AtSelectComponent = class {
         const parentRect = this.el.getBoundingClientRect();
         this.parentWidth = `${parentRect.width}px`;
     }
+    connectedCallback() {
+        this.optionObserver?.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
+    disconnectedCallback() {
+        this.optionObserver?.disconnect();
+    }
+    observeSlottedOptions() {
+        this.optionObserver = new MutationObserver((records) => {
+            const optionsChanged = records.some((record) => Array.from(record.addedNodes)
+                .concat(Array.from(record.removedNodes))
+                .some((node) => node instanceof HTMLElement &&
+                (node.matches('at-select-option') ||
+                    !!node.querySelector('at-select-option'))));
+            if (optionsChanged)
+                this.setupOptionElements();
+        });
+        this.optionObserver.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
     setupOptionElements() {
         this.slottedOptionLabels.clear();
+        this.optionEls = [];
         const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="select-menu-option"]):not([data-name="select-custom-option"])');
         slottedOptions.forEach((option) => {
             const optionEl = option;
@@ -199,9 +228,14 @@ const AtSelectComponent = class {
                 this.slottedOptionLabels.set(optionEl.value, label);
             }
             optionEl.is_active = this.value === optionEl.value;
-            this.addListenerToOptionElements(optionEl);
+            if (!this.listenedOptionEls.has(optionEl)) {
+                this.listenedOptionEls.add(optionEl);
+                this.addListenerToOptionElements(optionEl);
+            }
             this.optionEls.push(optionEl);
         });
+        this.slottedOptionCount = this.optionEls.length;
+        this.selectedLabel = this.findLabelByValue(this.value);
     }
     addListenerToOptionElements(optionEl) {
         optionEl.addEventListener('atuiClick', (event) => {
@@ -465,16 +499,16 @@ const AtSelectComponent = class {
         return (this.filteredOptions?.length ?? 0) - this.visibleOptions.length;
     }
     render() {
-        return (h(Host, { key: '7f91ffd064c85ea97201463265ba5e861f26bab7', class: "group/select", onFocusout: async (event) => {
+        return (h(Host, { key: '811d573891aa842ee42c70950a6126eae029a3c6', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), h("at-menu", { key: '26b0f63a7f914562fb14d2e77139a527a0bd5759', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), h("at-menu", { key: 'ffe3acfa7dd73c89bc8e25be2d061d5a5258ae8b', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), h("div", { key: '83023ea341754dcbbb4c993bb4edd07c381ed8dc' }, this.error_text && this.invalid && (h("span", { key: '1b521cdfbcf71b1dbdde9588d8d75fd5bcdafc38', class: "text-error", "data-name": "select-error" }, this.error_text)))));
+            : null), h("div", { key: '8970bd5427cfad91c25b5b38cfae95af31b28288' }, this.error_text && this.invalid && (h("span", { key: '19e572053ac2c32535228e3bf28ff2881ebc1bdb', class: "text-error", "data-name": "select-error" }, this.error_text)))));
     }
     renderLabel() {
         return (h("div", { class: "mb-4 flex flex-col empty:hidden" }, h("slot", { name: "label" }), (this.label || this.required || this.info_text) && (h("at-form-label", { for: this.inputId, label: this.label, required: this.required && !this.readonly, info_text: this.info_text })), this.hint_text && (h("span", { class: "text-muted inline-block text-xs leading-tight", "data-name": "select-hint" }, this.hint_text))));
@@ -568,7 +602,7 @@ const AtSelectGroupComponent = class {
      */
     label;
     render() {
-        return (h(Host, { key: 'b1161ce522ecac835d2466708387405fdad81bd2', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: 'be237d9bc406bd8bc8ebd0933fe89e535d95d434', role: "group", "aria-labelledby": this.label }, h("li", { key: 'bbb4a8903a5d835e18a4b02875001bbf52ac2309', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: '55d01de08fcd407079a1537bab3b0f0f9e954a7b' }))));
+        return (h(Host, { key: '2fa28d1816e4c2e774d576907135b213e81fcf4f', role: "group", "aria-labelledby": this.label, "data-name": "select-option-group" }, h("div", { key: 'f4002c2a60f1e52d3aecb707fe45b4e5764a0220', role: "group", "aria-labelledby": this.label }, h("li", { key: '873dde29f71d744069a03f84a8495dd268b90c7c', id: this.label, class: "text-muted border-muted border-b px-0 pt-8 pb-4 text-sm", "data-name": "select-option-group-title" }, this.label), h("slot", { key: '255a771aaf43b663b5f3bf22e6a6c3450a92d443' }))));
     }
 };
 
@@ -625,7 +659,7 @@ const AtSelectOptionComponent = class {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '0e7c0f2b712dd7f5dfb884f69e59d3543bc110b7', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '605b5549dff695aa0527c44c8b658d7ef278d655' }), h("span", { key: 'e1affbecd5c498cb4fb3d1ffb5ef4b2d8ede4122', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: 'f951e2d0a482c2603d4b47055468754486ab3aef', name: "after" })));
+        return (h("li", { key: '81c0940e0b95052a34cf268f2a2b3318bcc23691', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '665023b7b4d6be570960210346bee32bc163b6a2' }), h("span", { key: 'e8ded0fc802f4302933ee88041bb11aeda11f2a7', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: '529b3202f965faee6536d8a436240bcab6bd5b6d', name: "after" })));
     }
 };
 

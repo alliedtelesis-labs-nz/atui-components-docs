@@ -84,7 +84,6 @@ dialog.backdrop::backdrop {
   z-index: var(--token-z-index-modal);
   transform-origin: center;
   opacity: 0;
-  box-shadow: var(--token-shadow-3);
   transition: translate 0.15s ease, scale 0.15s ease, opacity 0.15s ease, display 0.15s allow-discrete;
 }
 :host dialog.contained {
@@ -116,4 +115,6 @@ dialog.backdrop::backdrop {
   --at-card-content-overflow: auto;
   max-width: var(--at-dialog-max-width);
   max-height: var(--at-dialog-max-height);
+  border-radius: var(--token-card-radius);
+  box-shadow: var(--token-shadow-lg);
 }

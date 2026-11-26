@@ -1,0 +1,1 @@
+import{r as e,h as r,H as s}from"./p-DTCxn2cp.js";const a=class{constructor(r){e(this,r)}render(){return r(s,{key:"71f6b0361366d7cb44cec73830252b45e4c321d2",role:"menu","data-name":"sidebar-menu"})}};a.style=".sc-at-sidebar-menu-h{display:flex;min-width:0;flex:1;flex-direction:column}";export{a as at_sidebar_menu}

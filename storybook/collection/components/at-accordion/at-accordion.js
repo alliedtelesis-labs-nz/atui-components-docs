@@ -93,7 +93,7 @@ export class AtAccordionComponent {
         return `${this.accordionId}-${itemId}`;
     }
     render() {
-        return (h(Host, { key: '15208ef7ba662d3571d36068ba644ab2ea1df967', class: "flex flex-col gap-2" }, h("slot", { key: 'f606e845e136f15313c433d20b1e4ae4ef701d4a' }), this.items &&
+        return (h(Host, { key: 'a0e782e73f62885f705923f7f1d3c7b0a3c72e8d', class: "flex flex-col gap-2" }, h("slot", { key: 'fac2d1aeb4e24e8d40934475c67406f5e448700e' }), this.items &&
             this.items.map((item) => {
                 return (h("at-accordion-item", { item_id: this.prefixedItemId(item.item_id), label: item.label, content: item.content }));
             })));

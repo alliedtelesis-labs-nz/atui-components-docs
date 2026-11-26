@@ -127,6 +127,9 @@ const AtMultiSelectComponent = class {
     optionEls = [];
     searchInputEl;
     slottedOptionLabels = new Map();
+    listenedOptionEls = new WeakSet();
+    optionObserver;
+    slottedOptionCount = 0;
     watchValue(newValue) {
         const values = newValue ?? [];
         this.optionEls?.forEach((optionEl) => {
@@ -160,6 +163,7 @@ const AtMultiSelectComponent = class {
     }
     componentDidLoad() {
         this.setupOptionElements();
+        this.observeSlottedOptions();
         if (this.options && this.options.length > 0) {
             this.filteredOptions = this.options;
         }
@@ -198,10 +202,34 @@ const AtMultiSelectComponent = class {
             groupEl.style.display = hasVisibleChild ? '' : 'none';
         });
     }
+    connectedCallback() {
+        this.optionObserver?.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
+    disconnectedCallback() {
+        this.optionObserver?.disconnect();
+    }
+    observeSlottedOptions() {
+        this.optionObserver = new MutationObserver((records) => {
+            const optionsChanged = records.some((record) => Array.from(record.addedNodes)
+                .concat(Array.from(record.removedNodes))
+                .some((node) => node instanceof HTMLElement &&
+                (node.matches('at-select-option') ||
+                    !!node.querySelector('at-select-option'))));
+            if (optionsChanged)
+                this.setupOptionElements();
+        });
+        this.optionObserver.observe(this.el, {
+            childList: true,
+            subtree: true,
+        });
+    }
     setupOptionElements() {
         this.slottedOptionLabels.clear();
         this.optionEls = [];
-        const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="multi-select-option"])');
+        const slottedOptions = this.el.querySelectorAll('at-select-option:not([data-name="multi-select-option"]):not([data-name="multi-select-custom-option"])');
         slottedOptions.forEach((option) => {
             const optionEl = option;
             const label = optionEl.label;
@@ -209,9 +237,13 @@ const AtMultiSelectComponent = class {
                 this.slottedOptionLabels.set(optionEl.value, label);
             }
             optionEl.is_active = (this.value ?? []).includes(optionEl.value);
-            this.addListenerToOptionElements(optionEl);
+            if (!this.listenedOptionEls.has(optionEl)) {
+                this.listenedOptionEls.add(optionEl);
+                this.addListenerToOptionElements(optionEl);
+            }
             this.optionEls.push(optionEl);
         });
+        this.slottedOptionCount = this.optionEls.length;
     }
     addListenerToOptionElements(optionEl) {
         optionEl.addEventListener('atuiClick', (event) => {
@@ -368,16 +400,16 @@ const AtMultiSelectComponent = class {
         return result;
     }
     render() {
-        return (index.h(index.Host, { key: '984b820456d548c30e8842f7a6054a277d62be25', class: "group/select", onFocusout: async (event) => {
+        return (index.h(index.Host, { key: '2c084df3a31a0052bc309a3535a61cddc78acc2b', class: "group/select", onFocusout: async (event) => {
                 const relatedTarget = event.relatedTarget;
                 if (!relatedTarget || !this.el.contains(relatedTarget)) {
                     setTimeout(async () => {
                         await this.menuRef?.closeMenu();
                     }, 100);
                 }
-            } }, this.renderLabel(), index.h("at-menu", { key: '822dccbebfd8e12af612b380f2cf3c55a48d6f83', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
+            } }, this.renderLabel(), index.h("at-menu", { key: '4479741391cc1e84fd8d0f9afbdf2584a1da656e', ref: (el) => (this.menuRef = el), trigger: "click", align: "start", width: this.parentWidth, max_height: this.menu_max_height, role: "presentation", autoclose: false, disabled: this.disabled || this.readonly, onAtuiMenuStateChange: (event) => this.updateIsOpenState(event) }, this.renderInput(), !this.disabled && !this.readonly
             ? this.renderOptions()
-            : null), index.h("div", { key: '439e7dff9db39226fe50e1b8d7c97d5a36dadfe4' }, this.error_text && this.invalid && (index.h("span", { key: '529c22547db620784a0425a20785a535224c1481', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
+            : null), index.h("div", { key: '8d89edd3f0af3cb7599cc1456ed917c6b878955e' }, this.error_text && this.invalid && (index.h("span", { key: '90070993b3b6c4ebb320bc74f2112d45ef854ed4', "data-name": "multi-select-error", class: "text-error" }, this.error_text)))));
     }
     renderLabel() {
         if (this.selection_display === 'count') {

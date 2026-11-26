@@ -2899,7 +2899,7 @@ export namespace Components {
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
      * @Slot - Places content before the label.
-     * @After - Places content after the label.
+     * @Slot after - Places content after the label.
      */
     interface AtSelectOption {
         /**
@@ -5469,7 +5469,7 @@ declare global {
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
      * @Slot - Places content before the label.
-     * @After - Places content after the label.
+     * @Slot after - Places content after the label.
      */
     interface HTMLAtSelectOptionElement extends Components.AtSelectOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAtSelectOptionElementEventMap>(type: K, listener: (this: HTMLAtSelectOptionElement, ev: AtSelectOptionCustomEvent<HTMLAtSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -9060,7 +9060,7 @@ declare namespace LocalJSX {
      * @category Form Controls
      * @description A select option component used within the AtSelect component.
      * @Slot - Places content before the label.
-     * @After - Places content after the label.
+     * @Slot after - Places content after the label.
      */
     interface AtSelectOption {
         /**
@@ -11438,7 +11438,7 @@ declare module "@stencil/core" {
              * @category Form Controls
              * @description A select option component used within the AtSelect component.
              * @Slot - Places content before the label.
-             * @After - Places content after the label.
+             * @Slot after - Places content after the label.
              */
             "at-select-option": LocalJSX.IntrinsicElements["at-select-option"] & JSXBase.HTMLAttributes<HTMLAtSelectOptionElement>;
             /**

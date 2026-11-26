@@ -4,7 +4,7 @@ import { EventEmitter } from '../../../stencil-public-runtime';
  * @description A select option component used within the AtSelect component.
  *
  * @Slot - Places content before the label.
- * @After - Places content after the label.
+ * @Slot after - Places content after the label.
  */
 export declare class AtSelectOptionComponent {
     /**

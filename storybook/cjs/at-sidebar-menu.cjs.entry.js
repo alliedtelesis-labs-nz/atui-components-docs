@@ -11,7 +11,7 @@ const AtSidebarMenuComponent = class {
     render() {
         // No <slot />: Stencil relocates a scoped host's slotted children on every ancestor
         // render, and that moves items a framework inserts after load to the top of the menu.
-        return (index.h(index.Host, { key: '5c9b380fe5f16b74583807999e792ee3cdbbfda0', role: "menu", "data-name": "sidebar-menu" }));
+        return (index.h(index.Host, { key: '71f6b0361366d7cb44cec73830252b45e4c321d2', role: "menu", "data-name": "sidebar-menu" }));
     }
 };
 AtSidebarMenuComponent.style = atSidebarMenuCss();

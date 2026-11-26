@@ -97,6 +97,9 @@ export declare class AtMultiSelectComponent {
     private optionEls;
     private searchInputEl;
     private slottedOptionLabels;
+    private listenedOptionEls;
+    private optionObserver?;
+    slottedOptionCount: number;
     watchValue(newValue: string[]): void;
     watchOptions(): void;
     watchSearchText(newSearch: string): void;
@@ -108,6 +111,9 @@ export declare class AtMultiSelectComponent {
     componentDidLoad(): void;
     private filterOptions;
     private filterSlottedContent;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    private observeSlottedOptions;
     private setupOptionElements;
     addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
     private findOptionByValue;

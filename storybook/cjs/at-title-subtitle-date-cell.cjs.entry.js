@@ -39,7 +39,7 @@ const AtTitleSubtitleDateCell = class {
         return timeDatePresentation_util.TimeDatePresentationUtil.getFormattedDate(this.value, date.DateFormat.YEAR_MONTH_DAY);
     }
     render() {
-        return (index.h(index.Host, { key: '6081bc9519fbc5bda98338165e2d2430856723b7' }, index.h("div", { key: '6d21a2c19b0d1ce7d2924b7145d18017e2e168bc', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '8b6b0bc5442bdec47c138d1ae815a21e2a058dd2', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), index.h("div", { key: 'ac2d1524c5131450f312fa0805ebb75ab38d1c8e', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
+        return (index.h(index.Host, { key: '05f4cbb68de43b2a974b396c57c83ac8cb4fd01e' }, index.h("div", { key: 'e96ff8be03de11d1d5ecbed2ca81f98c483e0a6d', class: "flex h-full flex-col justify-center" }, index.h("div", { key: '552101d24f6dc6f1c5f84f94d8f7125592156fae', class: "truncate text-sm leading-[100%]" }, this.hourMinuteSecond), index.h("div", { key: '774e3872830635ca4e887ae87f964a1267484d5f', class: "text-secondary truncate text-xs leading-[100%] font-normal" }, this.yearMonthDay))));
     }
 };
 

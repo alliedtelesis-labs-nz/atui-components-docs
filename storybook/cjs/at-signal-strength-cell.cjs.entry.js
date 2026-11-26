@@ -25,7 +25,7 @@ const AtSignalStrengthCell = class {
         return true;
     }
     render() {
-        return (index.h(index.Host, { key: '6fc9fe8a1dcf0338501f74cbab4c4ed2b25bc98d', class: "flex h-full items-center" }, index.h("at-signal-strength", { key: 'd33373d02e3ef255c98df75877b03cd8c56d71c9', rssi: this.rssi, thresholds: this.params?.thresholds, variant: this.params?.variant ?? 'status', size: this.params?.size ?? 'md', show_value: this.params?.show_value ?? true })));
+        return (index.h(index.Host, { key: '4224dd62df6a30b84578d58c2e90e614fcc21be6', class: "flex h-full items-center" }, index.h("at-signal-strength", { key: '3f0485ed732f8d6b15c66b1d9aea96f1b418ee21', rssi: this.rssi, thresholds: this.params?.thresholds, variant: this.params?.variant ?? 'status', size: this.params?.size ?? 'md', show_value: this.params?.show_value ?? true })));
     }
 };
 

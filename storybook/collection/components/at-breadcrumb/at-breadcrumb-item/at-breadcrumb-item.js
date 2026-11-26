@@ -14,7 +14,7 @@ export class AtBreadcrumbItem {
     label;
     el;
     render() {
-        return (h(Host, { key: 'f9b87985f38f31af270c85a6e6ba28476be53b31', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
+        return (h(Host, { key: '0bc04b02897be9268eff68f8f9162a8de9f70eb1', class: "flex w-fit items-center" }, this.is_active ? (h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     event.target.click();

@@ -232,7 +232,7 @@ export class AtTabs {
         }
     }
     render() {
-        return h(Host, { key: 'aaf58beaf2796a66a6dd449b8266345070135a82' }, this.checkLayoutAndRender());
+        return h(Host, { key: 'd05bf66b83e0c702c28ccc7a2f0e84c984bd63e6' }, this.checkLayoutAndRender());
     }
     static get is() { return "at-tabs"; }
     static get properties() {

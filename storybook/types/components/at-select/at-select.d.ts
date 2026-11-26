@@ -114,6 +114,9 @@ export declare class AtSelectComponent {
     private optionEls;
     private searchInputEl;
     private slottedOptionLabels;
+    private listenedOptionEls;
+    private optionObserver?;
+    slottedOptionCount: number;
     private searchDebounceHandle;
     watchValue(newValue: string): void;
     watchSearchText(newSearch: string): void;
@@ -128,6 +131,9 @@ export declare class AtSelectComponent {
     atuiSearchChange: EventEmitter<string>;
     componentWillLoad(): void;
     componentDidLoad(): void;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    private observeSlottedOptions;
     private setupOptionElements;
     addListenerToOptionElements(optionEl: HTMLAtSelectOptionElement): void;
     private findLabelByValue;

@@ -44,6 +44,8 @@ const AtIcon = class {
 };
 
 const DEFAULT_TOOLTIP_MAX_WIDTH = 200;
+// Focus restored by a closing dialog or menu is not focus-visible, so it does not open the tooltip.
+const isKeyboardFocus = (event) => event.target?.matches?.(':focus-visible') ?? false;
 const AtTooltip = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -213,7 +215,11 @@ const AtTooltip = class {
             };
             el.addEventListener('mouseenter', showHandler);
             el.addEventListener('mouseleave', hideHandler);
-            el.addEventListener('focusin', showHandler);
+            const focusHandler = (event) => {
+                if (isKeyboardFocus(event))
+                    showHandler();
+            };
+            el.addEventListener('focusin', focusHandler);
             el.addEventListener('focusout', hideHandler);
             this.externalTriggerListeners.push({
                 element: el,
@@ -226,7 +232,7 @@ const AtTooltip = class {
             }, {
                 element: el,
                 event: 'focusin',
-                handler: showHandler,
+                handler: focusHandler,
             }, {
                 element: el,
                 event: 'focusout',
@@ -360,7 +366,9 @@ const AtTooltip = class {
         return `${position}-${align}`;
     }
     render() {
-        return (h(Host, { key: 'b29d64805b80015767cc138091b9315c8c9058fa', class: "relative" }, !this.trigger_id && (h("div", { key: 'e096060a7dec29e8e2fee5ac7eebe9198634ea88', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: () => !this.disabled ? this.showHandler() : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, h("slot", { key: 'c989f7934e01bd9f3ff993a414a658b65b2a3a14', name: "tooltip-trigger" }))), h("div", { key: 'd9230f9cce8df9a84927f31040004128baa6f0f5', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: this.popover_mode, id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: '917a54b2bdf23bded6a3841df08e7e50889185d9' }))));
+        return (h(Host, { key: '4229462bdc8bf71357abe695fb86bdf63a8475c0', class: "relative" }, !this.trigger_id && (h("div", { key: '9e6d654cd43179ffac9cb5c03d41fc7a609ab3d6', "aria-haspopup": "true", "data-name": "tooltip-trigger", ref: (el) => (this.triggerEl = el), "aria-expanded": `${this.isOpen ? 'true' : 'false'}`, "aria-describedby": this.popoverId, class: this.disabled ? 'contents' : '', onMouseEnter: () => !this.disabled ? this.showHandler() : null, onMouseLeave: () => !this.disabled ? this.hideHandler() : null, onFocusin: (event) => !this.disabled && isKeyboardFocus(event)
+                ? this.showHandler()
+                : null, onFocusout: () => !this.disabled ? this.hideHandler() : null }, h("slot", { key: '702feaad6e4789e0f6b18d94d3b37672c2a95b8e', name: "tooltip-trigger" }))), h("div", { key: 'a99bf3eefa91867835a00195985d3df5d26bce74', ref: (el) => (this.tooltipEl = el), "data-position": this.position, "data-align": this.align, popover: this.popover_mode, id: this.popoverId, class: "bg-surface-overlay/90 text-foreground-inv pointer-events-none w-fit rounded-md px-[6px] py-[2px] text-sm leading-tight break-words whitespace-normal opacity-0 shadow-md transition-opacity duration-200 ease-out", "data-name": "tooltip-content-wrapper" }, h("slot", { key: 'f572cb458df4aa730eb5836a742ceb7bf4b61077' }))));
     }
     static get watchers() { return {
         "disabled": [{

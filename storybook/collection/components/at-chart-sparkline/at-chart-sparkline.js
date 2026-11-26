@@ -202,11 +202,11 @@ export class AtChartSparkline {
         this.drawGate?.requestDraw();
     }
     render() {
-        return (h(Host, { key: 'fa163d403776e04b6ade6e7c33a1d877dca98665', style: {
+        return (h(Host, { key: '81d72333a10375051bfe785f5cf73251b2dbda5d', style: {
                 display: 'block',
                 height: heightVariants[this.height],
                 width: '100%',
-            } }, h("canvas", { key: '79cafc61e2f34be6e94a8c831a631f2c5ebaad96', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
+            } }, h("canvas", { key: '32aff5a6bf4e164aaaf3fd7b991626106eeed73a', ref: (el) => (this.canvasEl = el), "data-name": "sparkline-canvas" })));
     }
     static get is() { return "at-chart-sparkline"; }
     static get properties() {

@@ -207,7 +207,7 @@ const AtFilterForm = class {
         })));
     }
     render() {
-        return (index.h(index.Host, { key: '8475f1f73b506fca8f833b2c82af2a00c5b48dc2', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), index.h("div", { key: 'd76316b7b065262104b16cd00aad27aaa0e1a46a', class: "flex justify-end gap-4" }, index.h("at-button", { key: '45fc0fa2d8a94aedbdcc63fab7829da21b803064', label: this.translations?.ATUI?.CANCEL, type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), index.h("at-button", { key: '896dfb6aa4b08136b52f3a3a0637465513aa3ae2', label: this.translations?.ATUI?.SEARCH, type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
+        return (index.h(index.Host, { key: 'd2f3481655eb5005f278060f44132d3d8008c88b', class: "flex flex-col gap-4 p-8" }, this.renderGroup(this.root, true), index.h("div", { key: '6202d8bd3117ad49a73f1364e3cecc5f89076961', class: "flex justify-end gap-4" }, index.h("at-button", { key: 'bd03eda7e5be8a7aa060f9dc68aa0816eb2d93d7', label: this.translations?.ATUI?.CANCEL, type: "secondaryOutline", onAtuiClick: () => this.onCancel() }), index.h("at-button", { key: '58df4500d648b27a3abc2d43f7124b447e546ea2', label: this.translations?.ATUI?.SEARCH, type: "primary", disabled: !this.isFormValid, onAtuiClick: () => this.onSearch() }))));
     }
     static get watchers() { return {
         "filter_config": [{

@@ -17,7 +17,7 @@ const optionVariantsConfig = {
  * @description A select option component used within the AtSelect component.
  *
  * @Slot - Places content before the label.
- * @After - Places content after the label.
+ * @Slot after - Places content after the label.
  */
 export class AtSelectOptionComponent {
     /**
@@ -56,7 +56,7 @@ export class AtSelectOptionComponent {
             active: this.is_active,
             group_option: this.option_group,
         })} ${disabledClass}`;
-        return (h("li", { key: '0e7c0f2b712dd7f5dfb884f69e59d3543bc110b7', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '605b5549dff695aa0527c44c8b658d7ef278d655' }), h("span", { key: 'e1affbecd5c498cb4fb3d1ffb5ef4b2d8ede4122', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: 'f951e2d0a482c2603d4b47055468754486ab3aef', name: "after" })));
+        return (h("li", { key: '81c0940e0b95052a34cf268f2a2b3318bcc23691', role: "option", value: this.value, "data-name": "select-option", "aria-selected": this.is_active ? 'true' : 'false', "aria-disabled": this.disabled ? 'true' : 'false', tabIndex: this.disabled ? -1 : 0, class: classname, onClick: this.disabled ? undefined : () => this.handleClick() }, h("slot", { key: '665023b7b4d6be570960210346bee32bc163b6a2' }), h("span", { key: 'e8ded0fc802f4302933ee88041bb11aeda11f2a7', class: "min-w-0 flex-1 truncate", "data-name": "select-option-label" }, this.label || this.value), h("slot", { key: '529b3202f965faee6536d8a436240bcab6bd5b6d', name: "after" })));
     }
     static get is() { return "at-select-option"; }
     static get properties() {

@@ -16,7 +16,7 @@ const AtBreadcrumbItem = class {
     label;
     get el() { return index.getElement(this); }
     render() {
-        return (index.h(index.Host, { key: 'f9b87985f38f31af270c85a6e6ba28476be53b31', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (index.h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
+        return (index.h(index.Host, { key: '0bc04b02897be9268eff68f8f9162a8de9f70eb1', class: "flex w-fit items-center" }, this.is_active ? (index.h("span", { "aria-current": "page", class: "text-active-accent cursor-default rounded-lg px-8 py-2" }, this.label)) : (index.h("a", { role: "link", tabIndex: 0, onKeyDown: (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     event.target.click();

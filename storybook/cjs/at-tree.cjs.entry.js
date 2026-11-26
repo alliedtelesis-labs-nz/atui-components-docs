@@ -128,7 +128,7 @@ const AtTreeComponent = class {
     render() {
         const items = this.visibleItems;
         const tabStopId = this.tabStopId(items);
-        return (index.h("div", { key: '87a8fde78bdec32ee4b0a5f6a509512a3c1bbb05', class: "w-full" }, index.h("slot", { key: '6901dce2540dbcf031fc1701f6a01c63bd31e736' }), index.h("div", { key: 'c89d5098336ea0f5ffc576f563dfa94349c4e598', role: "tree", "data-name": "tree", onKeyDown: (event) => this.handleKeyDown(event) }, items.map((item) => (index.h("div", { key: item.id, role: "none", class: "flex w-full" }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "block w-full" }, this.renderItem(item, item.id === tabStopId, true), index.h("span", null, item.tooltip))) : (this.renderItem(item, item.id === tabStopId, false))))))));
+        return (index.h("div", { key: '697b503fba926c0ed87b19e42c22c9e54d694671', class: "w-full" }, index.h("slot", { key: '62afc28dd761b25c9b5e038438498d4f0bd435dc' }), index.h("div", { key: '097e529d2954611225fcd978f6fb032e965a01d3', role: "tree", "data-name": "tree", onKeyDown: (event) => this.handleKeyDown(event) }, items.map((item) => (index.h("div", { key: item.id, role: "none", class: "flex w-full" }, item.tooltip !== undefined ? (index.h("at-tooltip", { position: "right", class: "block w-full" }, this.renderItem(item, item.id === tabStopId, true), index.h("span", null, item.tooltip))) : (this.renderItem(item, item.id === tabStopId, false))))))));
     }
 };
 
