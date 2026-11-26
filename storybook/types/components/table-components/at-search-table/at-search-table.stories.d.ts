@@ -87,3 +87,13 @@ export declare const FloatingActionBar: any;
  * the value. Once the user takes over, `atSelectionChange` reports as usual.
  */
 export declare const PreselectedRows: any;
+/**
+ * A table used as a picker, where the selection is the value being built - a campaign's
+ * device scope, the members of a group. `keep_selection_on_query_change` keeps the ticks
+ * through a search, a filter or a page-size change, so the user can search for each row
+ * in turn. Rows the search hides stay selected and the bar counts them.
+ *
+ * Leave it off for a bulk-action table: there a selection made against one query must
+ * not drive an action against rows the user can no longer see.
+ */
+export declare const Picker: any;

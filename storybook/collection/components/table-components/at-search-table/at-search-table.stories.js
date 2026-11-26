@@ -134,6 +134,29 @@ serverFiltersTable.addEventListener('atSearchParamsChange', (event) => {
 });
 </script>
 `;
+const PickerTemplate = (args) => `
+<at-search-table
+    id="picker-table"
+    page_size=${args.page_size ?? 5}
+    row_selection
+    keep_selection_on_query_change
+    row_id_field="_id"
+    row_noun="device"
+    row_noun_plural="devices"
+></at-search-table>
+<pre id="picker-readout" class="mt-16 text-xs"></pre>
+<script>
+const pickerTable = document.querySelector('#picker-table');
+pickerTable.table_data = ${JSON.stringify(args.table_data, null, 4)}
+pickerTable.col_defs = ${JSON.stringify(args.col_defs, null, 4)}
+
+pickerTable.addEventListener('atSelectionChange', (event) => {
+    const { scope, count, ids } = event.detail;
+    document.querySelector('#picker-readout').textContent =
+        'scope: ' + scope + '  count: ' + count + '  ids: [' + ids.join(', ') + ']';
+});
+</script>
+`;
 const PreselectedTemplate = (args) => `
 <at-search-table
     id="preselected-table"
@@ -438,6 +461,20 @@ FloatingActionBar.args = {
  */
 export const PreselectedRows = PreselectedTemplate.bind({});
 PreselectedRows.args = {
+    ...Default.args,
+    page_size: 5,
+};
+/**
+ * A table used as a picker, where the selection is the value being built - a campaign's
+ * device scope, the members of a group. `keep_selection_on_query_change` keeps the ticks
+ * through a search, a filter or a page-size change, so the user can search for each row
+ * in turn. Rows the search hides stay selected and the bar counts them.
+ *
+ * Leave it off for a bulk-action table: there a selection made against one query must
+ * not drive an action against rows the user can no longer see.
+ */
+export const Picker = PickerTemplate.bind({});
+Picker.args = {
     ...Default.args,
     page_size: 5,
 };

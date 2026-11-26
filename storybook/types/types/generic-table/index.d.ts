@@ -53,7 +53,10 @@ export type AtSelectionMode = 'multiple' | 'single';
  */
 export interface AtISelection<T = any> {
     scope: AtSelectionScope;
-    /** The picked rows' ids. Empty when scope is 'all-matching'. */
+    /**
+     * The picked rows' ids. In 'all-matching' scope, client-side, the matching rows' ids
+     * less `excluded_ids`; server-side, empty.
+     */
     ids: string[];
     /** Rows unticked after expanding to the whole result. Empty otherwise. */
     excluded_ids: string[];

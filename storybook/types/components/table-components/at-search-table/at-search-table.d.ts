@@ -112,6 +112,18 @@ export declare class AtSearchTable {
      */
     row_selectable?: (row: any) => boolean;
     /**
+     * Keeps an explicit selection when the query changes: a keyword search, a column
+     * filter, `search_filters` or the page size. Turn it on when the table is a picker,
+     * where the selection is the value being built and a search is only a way to find
+     * rows. Selected rows the query hides stay selected and are counted. Off by default,
+     * because a bulk action must not reach rows the user can no longer see.
+     *
+     * An `all-matching` selection is the query itself, so it cannot outlive one.
+     * Client-side it becomes an explicit selection of the rows that matched before the
+     * change; server-side the table cannot list those rows, so it is cleared.
+     */
+    keep_selection_on_query_change?: boolean;
+    /**
      * Adds the table reload button. Off by default - the reload button is
      * opt-in, so existing tables don't gain new UI just from upgrading the
      * library.
@@ -402,6 +414,8 @@ export declare class AtSearchTable {
     /** Rows the grid holds, which in server-side mode is exactly the current page. */
     private loadedRows;
     private selectableRowsOnPage;
+    /** Client-side only: server-side the grid holds one page of the matching set. */
+    private allMatchingSelectedIds;
     /** Client-side the host's `total` predates the table's own search and filters. */
     private get matchingTotal();
     get selectionCount(): number;
@@ -442,19 +456,28 @@ export declare class AtSearchTable {
      * rows that may no longer match, so neither survives the query changing: carrying
      * either across would point a bulk action at a set the user never saw. Paging and
      * sorting reorder the same set and are left alone.
+     *
+     * Callers run this before the grid re-filters, so under `keep_selection_on_query_change`
+     * an all-matching selection is still read against the query the user saw.
      */
     private clearSelectionForQueryChange;
+    private convertAllMatchingToExplicit;
     private resetSelectionState;
     /**
      * The other half of the header checkbox's two tiers: from a selection that spans the
      * whole result set, back to the rows the user can see.
      */
     private reduceSelectionToPage;
+    /**
+     * A picker's selection can hold rows the current query hides, and an all-matching
+     * scope would drop them, so client-side they are kept by listing the matching rows.
+     */
     private expandSelectionToAllMatching;
     /**
-     * Returns what the user has selected. In `all-matching` scope the ids are absent by
-     * design - server-side the table holds one page, so the selection is the query it
-     * carries plus whatever the user unticked.
+     * Returns what the user has selected. In `all-matching` scope server-side the ids are
+     * absent by design - the table holds one page, so the selection is the query it
+     * carries plus whatever the user unticked. Client-side the table holds every row and
+     * lists the matching ids.
      */
     getSelection(): Promise<AtISelection>;
     /**

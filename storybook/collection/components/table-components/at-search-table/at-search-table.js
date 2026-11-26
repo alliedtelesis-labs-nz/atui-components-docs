@@ -102,6 +102,18 @@ export class AtSearchTable {
      */
     row_selectable;
     /**
+     * Keeps an explicit selection when the query changes: a keyword search, a column
+     * filter, `search_filters` or the page size. Turn it on when the table is a picker,
+     * where the selection is the value being built and a search is only a way to find
+     * rows. Selected rows the query hides stay selected and are counted. Off by default,
+     * because a bulk action must not reach rows the user can no longer see.
+     *
+     * An `all-matching` selection is the query itself, so it cannot outlive one.
+     * Client-side it becomes an explicit selection of the rows that matched before the
+     * change; server-side the table cannot list those rows, so it is cleared.
+     */
+    keep_selection_on_query_change = false;
+    /**
      * Adds the table reload button. Off by default - the reload button is
      * opt-in, so existing tables don't gain new UI just from upgrading the
      * library.
@@ -758,6 +770,16 @@ export class AtSearchTable {
     selectableRowsOnPage() {
         return this.loadedRows().filter((row) => this.isRowSelectable(row));
     }
+    /** Client-side only: server-side the grid holds one page of the matching set. */
+    allMatchingSelectedIds() {
+        const ids = [];
+        this.agGrid?.forEachNodeAfterFilter((node) => {
+            if (node?.data && this.isRowSelected(node.data)) {
+                ids.push(this.rowId(node.data));
+            }
+        });
+        return ids;
+    }
     /** Client-side the host's `total` predates the table's own search and filters. */
     get matchingTotal() {
         const total = this.table_data?.total ?? 0;
@@ -953,9 +975,13 @@ export class AtSearchTable {
     }
     currentSelection() {
         const isAllMatching = this.selectionScope === 'all-matching';
+        let ids = Array.from(this.selectedIds);
+        if (isAllMatching) {
+            ids = this.server_side_mode ? [] : this.allMatchingSelectedIds();
+        }
         return {
             scope: this.selectionScope,
-            ids: isAllMatching ? [] : Array.from(this.selectedIds),
+            ids,
             excluded_ids: isAllMatching ? Array.from(this.excludedIds) : [],
             rows: this.loadedRows().filter((row) => this.isRowSelected(row)),
             count: this.selectionCount,
@@ -972,11 +998,29 @@ export class AtSearchTable {
      * rows that may no longer match, so neither survives the query changing: carrying
      * either across would point a bulk action at a set the user never saw. Paging and
      * sorting reorder the same set and are left alone.
+     *
+     * Callers run this before the grid re-filters, so under `keep_selection_on_query_change`
+     * an all-matching selection is still read against the query the user saw.
      */
     clearSelectionForQueryChange() {
         if (this.selectionScope === 'none')
             return;
+        if (this.keep_selection_on_query_change) {
+            if (this.selectionScope === 'explicit')
+                return;
+            if (!this.server_side_mode) {
+                this.convertAllMatchingToExplicit();
+                return;
+            }
+        }
         this.resetSelectionState();
+        this.refreshSelectionColumn();
+        this.emitSelectionChange();
+    }
+    convertAllMatchingToExplicit() {
+        this.selectedIds = new Set(this.allMatchingSelectedIds());
+        this.excludedIds = new Set();
+        this.selectionScope = this.selectedIds.size ? 'explicit' : 'none';
         this.refreshSelectionColumn();
         this.emitSelectionChange();
     }
@@ -996,7 +1040,28 @@ export class AtSearchTable {
         this.refreshSelectionColumn();
         this.emitSelectionChange();
     }
+    /**
+     * A picker's selection can hold rows the current query hides, and an all-matching
+     * scope would drop them, so client-side they are kept by listing the matching rows.
+     */
     expandSelectionToAllMatching() {
+        if (this.keep_selection_on_query_change && !this.server_side_mode) {
+            const matching = new Set();
+            this.agGrid?.forEachNodeAfterFilter((node) => {
+                if (node?.data && this.isRowSelectable(node.data)) {
+                    matching.add(this.rowId(node.data));
+                }
+            });
+            const hidden = Array.from(this.selectedIds).filter((id) => !matching.has(id));
+            if (hidden.length) {
+                this.selectedIds = new Set([...hidden, ...matching]);
+                this.excludedIds = new Set();
+                this.selectionScope = 'explicit';
+                this.refreshSelectionColumn();
+                this.emitSelectionChange();
+                return;
+            }
+        }
         this.selectedIds = new Set();
         this.excludedIds = new Set();
         this.selectionScope = 'all-matching';
@@ -1004,9 +1069,10 @@ export class AtSearchTable {
         this.emitSelectionChange();
     }
     /**
-     * Returns what the user has selected. In `all-matching` scope the ids are absent by
-     * design - server-side the table holds one page, so the selection is the query it
-     * carries plus whatever the user unticked.
+     * Returns what the user has selected. In `all-matching` scope server-side the ids are
+     * absent by design - the table holds one page, so the selection is the query it
+     * carries plus whatever the user unticked. Client-side the table holds every row and
+     * lists the matching ids.
      */
     async getSelection() {
         return this.currentSelection();
@@ -1404,8 +1470,8 @@ export class AtSearchTable {
         }
     }
     render() {
-        return (h(Host, { key: 'ab257ea1cfeac01da0ce788c6d8e161e929c5396', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: '844425eb7e3c737af0f7e06da6e7745037aeda51', ag_grid: this.agGrid }, h("at-control-group", { key: 'e3c2a215d86a823e4edf1d8152496088e06d53a2', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: 'b59693727f22e8082f6e670cc37ec8f4d6d601f4', ref: (el) => (this.filterMenuEl =
-                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: '57b9aaff0f6ed37831bb7dfd061b56e3730e68c8', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: '07ffa663b385b9230b86c96db2be384f094233d9', class: "contents", slot: "filter-bar" }, h("slot", { key: 'e7695a69f9d128b49be266b8829a1ed917e603da', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: '9e1dc1a5d596d37c0354ad2bcf8a5d50944ee1ec', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '47941051d16adc6996bfc724837c8a0bbda0f223', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
+        return (h(Host, { key: '02e1bcbefc0bff35ba9c2811dcc08949a32e06e7', class: this.server_side_mode && this.is_loading ? 'is-loading' : '' }, h("at-table-actions", { key: '3064d77a6381986076621297d8c1e59155f6fd87', ag_grid: this.agGrid }, h("at-control-group", { key: '5704108600dd136ae4114fccb561c1a5cc52bf0c', slot: "search" }, this.shouldShowTableFilters && (h("at-table-filter-menu", { key: '4cb361ad4de2a2c86bf443a3d7896769fb7efb4b', ref: (el) => (this.filterMenuEl =
+                el), col_defs: this.col_defs, filters: this.selectedFilters, onAtChange: (event) => this.handleMenuFilterChange(event) })), h("at-search", { key: '44c16d5df9d3f03f3588fc93a04cab7786883aa9', class: "w-input-md", info_text: this.searchInfoTooltip, placeholder: this.translations.ATUI.TABLE.SEARCH_BY_KEYWORD, onAtChange: (event) => this.handleSearchChange(event) })), h("div", { key: '48000a089bbb2e1c8d7bf91a8131be80f437b297', class: "contents", slot: "filter-bar" }, h("slot", { key: '21412869cc197447dfd25a4d018f12d4a0931757', name: "filter-bar" })), this.hasDisplayableFilters && (h("at-table-filters", { key: 'a0690f1c63622b3f95a352013e96c40fcf956f67', slot: "filters", filters: this.chipFilterTree(), onAtChange: (event) => this.handleChipFilterChange(event), onAtFilterClick: () => this.filterMenuEl?.openMenu() })), this.show_reload_button && (h("at-reload-button", { key: '9a01b4d01afa89cf0cd04e8b6e9f0a5273670a36', slot: "reload-button", has_updates: this.has_updates, onAtuiReload: (event) => {
                 // at-reload-button's atuiReload otherwise
                 // bubbles straight through this non-shadow
                 // host (same name we re-emit below), so a
@@ -1414,10 +1480,10 @@ export class AtSearchTable {
                 // this re-emit for one click.
                 event.stopPropagation();
                 this.atuiReload.emit();
-            } })), this.show_export_menu && (h("at-table-export-menu", { key: '02ea43f459ace7fcf9392b88f9f30e98161cb5e8', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '33527257c2c868da129758e39cbbc7a4d5d0a766', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '00e93704e692613559eae0a373a95dabcd7b5a2c', class: "contents", slot: "leading-actions" }, h("slot", { key: '98b0834c797602fa4b19e45b458e5124fec9cf98', name: "leading-actions" })), h("div", { key: '31cc9933446162e31633261bea7a057fcc272c6a', class: "contents", slot: "actions" }, h("slot", { key: '6ab839d8a4ad039a820041fb2a2224a95acf4e78', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'a74b34e7b32fe0fe39d9685716ba5a77fa62734c', class: "relative" }, h("at-table", { key: '58980e8cd4a9375f885fe3a0025457a87a05922b', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
+            } })), this.show_export_menu && (h("at-table-export-menu", { key: '414204b8f2958368e83414765c6a092570f4604e', slot: "export-menu", show_csv: this.show_csv_export, show_pdf: this.show_pdf_export, onAtChange: (event) => this.handleExport(event) })), this.shouldShowColumnManager && (h("at-column-manager", { key: '9c9f06137adf79ba421f5f0b33e1a66a95f87bda', slot: "column-manager", col_defs: this.col_defs, onAtChange: (event) => this.handleColumnChange(event) })), h("div", { key: '5762bee441569491a61b656b920a59ec47101e07', class: "contents", slot: "leading-actions" }, h("slot", { key: 'aae142d31af1cfa6f59a6db1a7f2e14be6c80363', name: "leading-actions" })), h("div", { key: '51cd9d5cb22c0212bc1ce9e7f6c85cbf9556a89b', class: "contents", slot: "actions" }, h("slot", { key: 'b431cd831f89bc52c1d89e7a0d366b200ef7c4a4', name: "actions" }))), this.renderSelectionBar(), h("div", { key: 'c54c871f3c899f828ffa278e65906135d6a695cb', class: "relative" }, h("at-table", { key: '9324fbcc51a4b7466c893aebf45575e69cf9deb7', ref: (el) => (this.tableEl = el), table_data: this.table_data, col_defs: this.gridColDefs, row_id_field: this.row_id_field, page_size: this.server_side_mode
                 ? this.pageSize
-                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: 'b84169978cfc0e1e226e153586d28bb6d154a734', "data-name": "loading-overlay", class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'ba0de2fa2e75bf2c4cd0afabc3749a78e0e45906', class: "flex items-center" }, h("at-loading", { key: '23fbc3fa85db190a5da5ec49c3a786fd1fc6aa84', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: 'fd33db7f0a65d1c8f8c21009bacdc7d674f7b8f1', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
-            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: '01f5369d2e8bb030afee9b442078891e8175e756', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
+                : this.page_size, use_custom_pagination: this.server_side_mode || this.use_custom_pagination, use_custom_sorting: this.server_side_mode, auto_size_columns: this.auto_size_columns, empty_state: this.emptyState, can_auto_init: false, onAtColumnVisibilityChange: (event) => this.syncColumnVisibility(event) }), this.server_side_mode && (h("div", { key: '7bac54e4d4d9268bdd05e86b04b37dc5214ee691', "data-name": "loading-overlay", class: `loading-overlay bg-surface-foreground/80 absolute inset-0 z-10 items-center justify-center ${this.showLoadingOverlay ? 'is-visible' : ''}` }, h("div", { key: 'c2f06c03fa85ff8fd8c827a0c4d028a837edcf5d', class: "flex items-center" }, h("at-loading", { key: 'cf315023ed61126ae267bc50e9eec9acb952e3f5', class: "relative mr-8", size: "sm", "data-name": "placeholder-spinner" }), h("span", { key: '4c18ca427f6bea92619ed93ed2e0201520c94cce', class: "text-secondary text-sm font-medium", "data-name": "placeholder-title" }, this.translations?.ATUI?.TABLE
+            ?.LOADING_DATA))))), this.server_side_mode && (h("at-table-pagination", { key: 'fa1a96899ee4b9219020f5d412f99ffaa58dda04', current_page: this.currentPage, num_pages: this.totalPages, page_size: this.pageSize, page_size_options: this.page_size_options, onAtChange: (event) => this.handlePageChange(event), onAtPageSizeChange: (event) => this.handlePageSizeChange(event) }))));
     }
     static get is() { return "at-search-table"; }
     static get originalStyleUrls() {
@@ -1757,6 +1823,26 @@ export class AtSearchTable {
                 },
                 "getter": false,
                 "setter": false
+            },
+            "keep_selection_on_query_change": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Keeps an explicit selection when the query changes: a keyword search, a column\nfilter, `search_filters` or the page size. Turn it on when the table is a picker,\nwhere the selection is the value being built and a search is only a way to find\nrows. Selected rows the query hides stay selected and are counted. Off by default,\nbecause a bulk action must not reach rows the user can no longer see.\n\nAn `all-matching` selection is the query itself, so it cannot outlive one.\nClient-side it becomes an explicit selection of the rows that matched before the\nchange; server-side the table cannot list those rows, so it is cleared."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "keep_selection_on_query_change",
+                "defaultValue": "false"
             },
             "show_reload_button": {
                 "type": "boolean",
@@ -2262,7 +2348,7 @@ export class AtSearchTable {
                     "return": "Promise<AtISelection<any>>"
                 },
                 "docs": {
-                    "text": "Returns what the user has selected. In `all-matching` scope the ids are absent by\ndesign - server-side the table holds one page, so the selection is the query it\ncarries plus whatever the user unticked.",
+                    "text": "Returns what the user has selected. In `all-matching` scope server-side the ids are\nabsent by design - the table holds one page, so the selection is the query it\ncarries plus whatever the user unticked. Client-side the table holds every row and\nlists the matching ids.",
                     "tags": []
                 }
             },

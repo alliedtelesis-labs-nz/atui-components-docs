@@ -2658,7 +2658,7 @@ export namespace Components {
          */
         "getSelectedRows": <T = any>() => Promise<T[]>;
         /**
-          * Returns what the user has selected. In `all-matching` scope the ids are absent by design - server-side the table holds one page, so the selection is the query it carries plus whatever the user unticked.
+          * Returns what the user has selected. In `all-matching` scope server-side the ids are absent by design - the table holds one page, so the selection is the query it carries plus whatever the user unticked. Client-side the table holds every row and lists the matching ids.
          */
         "getSelection": () => Promise<AtISelection>;
         /**
@@ -2671,6 +2671,11 @@ export namespace Components {
           * @default false
          */
         "is_loading": boolean;
+        /**
+          * Keeps an explicit selection when the query changes: a keyword search, a column filter, `search_filters` or the page size. Turn it on when the table is a picker, where the selection is the value being built and a search is only a way to find rows. Selected rows the query hides stay selected and are counted. Off by default, because a bulk action must not reach rows the user can no longer see.  An `all-matching` selection is the query itself, so it cannot outlive one. Client-side it becomes an explicit selection of the rows that matched before the change; server-side the table cannot list those rows, so it is cleared.
+          * @default false
+         */
+        "keep_selection_on_query_change"?: boolean;
         /**
           * Label for the table, appears above the search input.
          */
@@ -8818,6 +8823,11 @@ declare namespace LocalJSX {
          */
         "is_loading"?: boolean;
         /**
+          * Keeps an explicit selection when the query changes: a keyword search, a column filter, `search_filters` or the page size. Turn it on when the table is a picker, where the selection is the value being built and a search is only a way to find rows. Selected rows the query hides stay selected and are counted. Off by default, because a bulk action must not reach rows the user can no longer see.  An `all-matching` selection is the query itself, so it cannot outlive one. Client-side it becomes an explicit selection of the rows that matched before the change; server-side the table cannot list those rows, so it is cleared.
+          * @default false
+         */
+        "keep_selection_on_query_change"?: boolean;
+        /**
           * Label for the table, appears above the search input.
          */
         "label"?: string;
@@ -10698,6 +10708,7 @@ declare namespace LocalJSX {
         "row_id_field": string;
         "row_noun": string;
         "row_noun_plural": string;
+        "keep_selection_on_query_change": boolean;
         "show_reload_button": boolean;
         "has_updates": boolean;
         "show_export_menu": boolean;
